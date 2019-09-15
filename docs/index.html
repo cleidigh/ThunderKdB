@@ -10,9 +10,11 @@
 	<script>
 	function search_exts() {
 		console.debug('test'+document.getElementById('topic').value);
-		console.debug('Topic: '+document.getElementById('topic').getAttribute('label'));
+		let q = document.getElementById('topic').getAttribute('label');
+
+		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
 	}
-	
+
 	</script>
 </body>
 </html>
