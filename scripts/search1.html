@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Document</title>
+</head>
+<body>
+	<input id="topic" type="text" label="Topic: "/>
+	<button id="topic_btn" type="button" onclick="search_exts()" >Search</button>
+
+	<script>
+	function search_exts() {
+		console.debug('test'+document.getElementById('topic').value);
+		console.debug('Topic: '+document.getElementById('topic').getAttribute('label'));
+	}
+	
+	</script>
+</body>
+</html>
