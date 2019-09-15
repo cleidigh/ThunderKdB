@@ -4,7 +4,11 @@ const download = require('download');
 const url = require('url');
 const path = require('path');
 var GitHub = require('github-api');
- 
+var JSZip = require("jszip");
+const _7z = require('7zip-min');
+
+
+
 // unauthenticated client
 const gh = new GitHub({
 	// username: 'cleidigh@gmail.com',
@@ -12,9 +16,9 @@ const gh = new GitHub({
 });
 
 
-// let addon_identifier = 90003;
+let addon_identifier = 90003;
 // let addon_identifier = "lightning";
-let addon_identifier = "2313";
+// let addon_identifier = "2313";
 
 let extSearchRequest = "app=thunderbird&type=extension&sort=created"
 
@@ -124,16 +128,37 @@ async function getExtensionFiles() {
 
 	console.debug(ext.authors);
 	console.debug(ext.slug);
-	const extRootName = `.\\${addon_identifier}-${ext.slug}`;
+	const extRootName = `${addon_identifier}-${ext.slug}`;
 	let jfile = `.\\${extRootName}\\${extRootName}.json`
 	writePrettyJSONFile(jfile, ext)
 	const xpiFileURL = ext.current_version.files[0].url;
 	const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
-	await downloadURL(xpiFileURL, `.\\${extRootName}\\src`);
+	await downloadURL(xpiFileURL, `.\\${extRootName}\\xpi`);
 	console.debug('filename '+xpiFileName);
 	fs.ensureDirSync(`.\\${extRootName}\\xpi`);
-	fs.copySync(`.\\${extRootName}\\src`, `.\\${extRootName}\\xpi`);
+	// fs.copySync(`.\\${extRootName}\\src`, `.\\${extRootName}\\xpi`);
+
+	_7zCommand = ['x', `./${extRootName}/xpi/${xpiFileName}`, `-o./${extRootName}/src`];
+	// _7zCommand = ['x', `./${extRootName}/src/${xpiFileName}`];
+	await _7CmdSync(_7zCommand);
+
 }
+
+function _7CmdSync(_7zCommand) {
+	return new Promise((resolve, reject) => {
+
+		console.error(_7zCommand);
+		_7z.cmd(_7zCommand, err => {
+			if (err) {
+				console.debug('Error '+err);
+				reject(err);
+			}
+			else resolve();
+		});
+
+	});
+}
+
 
 async function test() {
 let ext = await requestURL(addon_identifier)
@@ -175,6 +200,6 @@ const getDirectories = source =>
 
 // console.debug('Finished');
 
-// getExtensionFiles();
+getExtensionFiles();
 // ghSearch();
-console.debug(getDirectories('.'));
+// console.debug(getDirectories('.'));
