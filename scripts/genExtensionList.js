@@ -41,8 +41,13 @@ function genExtensionList() {
 
 function createExtMDTableRow(extJson) {
 	let row = "|";
-	const default_locale = extJson.default_locale;
+	let default_locale = extJson.default_locale;
+	if (default_locale === undefined) {
+		default_locale = "en-US";
+	}
+	
 	const name = extJson.name[default_locale];
+	
 	let summary = extJson.summary[default_locale].substr(0,42);
 	summary = summary.replace(/\n/g, ' ');
 	const srcLink = `[Src](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`

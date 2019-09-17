@@ -21,14 +21,15 @@ const gh = new GitHub({
 // let addon_identifier = "lightning";
 // let addon_identifier = "2313";
 
+// let extArray = [
+// 	90003,
+// 	640,
+// 	634298,
+// 	986686
+// ];
+
 let extArray = [
-	90003,
-	640,
-	634298,
-	986686
-
-
-
+	195275
 ];
 
 let extSearchRequest = "app=thunderbird&type=extension&sort=created"
