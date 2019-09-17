@@ -1,0 +1,97 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url(chrome://lightning-common/skin/lightning.css);
+
+.lightning-notification-bar {
+    background-color: #baeeff;
+    padding: 6px 8px;
+    color: #000;
+}
+
+#calendarContent:-moz-lwtheme {
+    color: -moz-dialogText;
+    text-shadow: none;
+}
+
+/* Calendar list rules */
+#calendar-panel {
+    padding-bottom: 5px;
+}
+
+/* iMIP notification bar */
+#imip-bar > image {
+    margin-inline-end: 8px;
+}
+
+#calsidebar_splitter {
+  border-inline-end: 1px solid var(--splitter-color);
+  /* make only the splitter border visible */
+  margin-inline-start: -2px;
+}
+
+/* Lightning sidebar background in calendar and task mode */
+#ltnSidebar {
+  background-color: -moz-field;
+  border-inline-end: 1px solid #8B8B8B;
+  margin-inline-end: -3px !important;
+}
+
+/* Today pane button in status bar */
+#calendar-status-todaypane-button,
+#calendar-status-todaypane-button[checked="true"] {
+  padding: 0 2px !important;
+}
+
+#calendar-status-todaypane-button > stack > .toolbarbutton-day-text {
+  margin-top: 5px;
+  margin-inline-end: 0;
+}
+
+/* shift the today pane button label up by one pixel to center it */
+#calendar-status-todaypane-button > .toolbarbutton-text {
+  margin: 0 6px 1px !important;
+}
+
+#calMinimonthBox {
+    margin-top: 3px;
+}
+
+.calendar-splitter[orient="vertical"] {
+  border-bottom: 1px solid var(--splitter-color);
+  min-height: 0;
+  height: 5px;
+  background-color: transparent;
+  margin-top: -5px;
+  position: relative;
+  z-index: 10;
+}
+
+.calendar-sidebar-splitter {
+  background-image: none;
+  min-width: 3px;
+  width: 3px;
+}
+
+#today-splitter {
+  border-inline-start: 1px solid var(--splitter-color);
+  margin-inline-end: -4px;
+  position: relative;
+}
+
+/* ::: imip button icons ::: */
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-button,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-dropmarker {
+  color: -moz-DialogText;
+  background-color: white;
+}
+
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button:hover,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button:-moz-any(:hover,[open="true"]) >
+  .toolbarbutton-menubutton-button,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button:hover >
+  .toolbarbutton-menubutton-dropmarker {
+  background-color: rgb(230, 230, 230) !important;
+}

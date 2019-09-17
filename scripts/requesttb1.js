@@ -17,9 +17,15 @@ const gh = new GitHub({
 });
 
 
-let addon_identifier = 90003;
+// let addon_identifier = 90003;
 // let addon_identifier = "lightning";
 // let addon_identifier = "2313";
+
+let extArray = [
+	90003,
+	2313
+
+];
 
 let extSearchRequest = "app=thunderbird&type=extension&sort=created"
 
@@ -85,11 +91,11 @@ function getExtensionJSON(addon_identifier, query_type) {
 
 }
 
-async function requestURL(req, query_type) {
-	console.debug('request ' + req + " Type: "+query_type);
+async function requestURL(addon_id, query_type) {
+	console.debug('request ' + addon_id + " Type: "+query_type);
 	// let response = await request.get('https://addons.thunderbird.net/api/v4/addons/addon/90003');
 	let extRequestOptions = {
-		url: `https://addons.thunderbird.net/api/v4/addons/addon/${addon_identifier}`,
+		url: `https://addons.thunderbird.net/api/v4/addons/addon/${addon_id}`,
 		// "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015140/localfolders-2.0.2-tb.xpi?src=",
 		// qs: {page: 59, app: "thunderbird", type: "extension", sort:"created"},
 		// url: 'https://api.github.com/repos/request/request',
@@ -100,7 +106,7 @@ async function requestURL(req, query_type) {
 	};
 
 	if (query_type === 'versions') {
-		extRequestOptions.url = `https://addons.thunderbird.net/api/v4/addons/addon/${addon_identifier}/versions/`;
+		extRequestOptions.url = `https://addons.thunderbird.net/api/v4/addons/addon/${addon_id}/versions/`;
 	}
 
 	try {
@@ -128,6 +134,7 @@ function genExtensionSummaryMD (addon_identifier, extJson) {
 	const name = extJson.name[default_locale];
 	const summary = extJson.summary[default_locale];
 	const srcLink = `[Src](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`;
+	const xpiLink = `[XPI](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\xpi)`;
 	// const iconPath = `${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src\\${extJson.icon_url}`;
 	const iconPath = `${extJson.icon_url}`;
 	const minv = extJson.current_version.compatibility.thunderbird.min;
@@ -135,12 +142,14 @@ function genExtensionSummaryMD (addon_identifier, extJson) {
 	const id = extJson.id;
 
 	console.debug('summary name '+name);
-	extSummaryFile = extSummaryFile.replace('__ext-name__', name);
+	extSummaryFile = extSummaryFile.replace(/__ext-name__/g, name);
 	extSummaryFile = extSummaryFile.replace('__ext-id__', extJson.id);
 	extSummaryFile = extSummaryFile.replace('__ext-slug__', extJson.slug);
 	extSummaryFile = extSummaryFile.replace('__ext-minv__', minv);
 	extSummaryFile = extSummaryFile.replace('__ext-maxv__', maxv);
 	extSummaryFile = extSummaryFile.replace('__ext-icon64px-path__', iconPath);
+	extSummaryFile = extSummaryFile.replace('__ext-src-path__', srcLink);
+	extSummaryFile = extSummaryFile.replace('__ext-xpi-path__', xpiLink);
 	extSummaryFile = extSummaryFile.replace('__ext-description__', (summary+"\n"));
 
 
@@ -151,7 +160,7 @@ function genExtensionSummaryMD (addon_identifier, extJson) {
 
 console.log("Starting...");
 
-async function getExtensionFiles() {
+async function getExtensionFiles(addon_identifier) {
 	console.log('Get Files');
 	// let ext = getExtensionJSON(90003);
 	let ext = await requestURL(addon_identifier, 'details')
@@ -237,6 +246,9 @@ const getDirectories = source =>
 
 // console.debug('Finished');
 
-getExtensionFiles();
+extArray.map( extId => {
+getExtensionFiles(extId);
+});
+
 // ghSearch();
 // console.debug(getDirectories('.'));
