@@ -1,10 +1,8 @@
-# ![LocalFolders icon](scripts/90003-localfolder/src/chrome/skin/classic/LocalFolders-64px.png "LocalFolders")  LocalFolders
-
-|Id | Name | Description | Icon|
-|---|---|---|---|
-|90003 | LocalFolders | had lots of folders | l-icon|
+# ![Thunderbird icon](../rep-resources/Thunderbird-icon.png) ThunderKdB: xpiLib , Extensions KnowledgeBase
 
 
-|71003|ColorFolders|had lots of folders|![LocalFolders icon](scripts/90003-localfolder/src/chrome/skin/classic/LocalFolders-64px.png)|
+## Thunderbird Developer Tools
+Extension List - Thunderbird 68 Compatible[el68](..\extensions-all\exts-tb68-comp\extension-list-tb68.md)
 
-Test
+xpiLib Browser [xb](https://cleidigh.github.io/ThunderKdB/press)
+
