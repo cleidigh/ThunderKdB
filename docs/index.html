@@ -4,15 +4,25 @@
 	<title>Document</title>
 </head>
 <body>
-	<input id="topic" type="text" />
+
+
+	Thunderbird xpiLib : Extension Browser
+	<hr>
+	<span>Search : </span><input id="topic" type="text" />
 	<button id="topic_btn" type="button" onclick="search_exts()" >Search</button>
 
+	<select>
+		<option name="js">Javascript</option>
+		<option name="xul">XUL</option>
+		<option name="html">HTML, XHTML</option>
+
+	</select>
 	<a href="r.md">TestLink</a>
 	<script>
 	function search_exts() {
 		console.debug('test'+document.getElementById('topic').value);
 		let q = document.getElementById('topic').value;
-
+		q += "+extension:js";
 		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
 	}
 
