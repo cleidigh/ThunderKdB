@@ -6,7 +6,7 @@
 <body>
 
 	<img href='Thunderbird-icon.png'/>
-	
+
 	<h1>Thunderbird xpiLib : Extension Browser</h1>
 	<hr>
 	<br>
@@ -29,7 +29,7 @@
 		console.debug('test'+document.getElementById('topic').value);
 		let q = document.getElementById('topic').value;
 		// q += "+extension:js+extension:xul";
-		q += '+' + document.getElementById('file_types').selected;
+		q += '+' + document.getElementById('file_types').value;
 		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
 	}
 
