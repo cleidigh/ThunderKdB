@@ -7,7 +7,8 @@ var GitHub = require('github-api');
 var JSZip = require("jszip");
 const _7z = require('7zip-min');
 
-
+const ext68CompDir = '..\\extensions-all\\exts-tb68-comp';
+const ext68CompDirU = '../extensions-all/exts-tb68-comp';
 
 // unauthenticated client
 const gh = new GitHub({
@@ -36,9 +37,7 @@ var options = {
 async function writeJSONFile(f, json) {
 	try {
 		await fs.outputJson(f, json);
-
 		const data = await fs.readJson(f)
-
 		console.log(data.name) // => JP
 	} catch (err) {
 		console.error(err)
@@ -68,7 +67,7 @@ function callback(error, response, body) {
 	}
 }
 
-function getExtensionJSON(addon_identifier) {
+function getExtensionJSON(addon_identifier, query_type) {
 
 	let extRequestOptions = {
 		url: `https://addons.thunderbird.net/api/v4/addons/addon/${addon_identifier}`,
@@ -79,14 +78,15 @@ function getExtensionJSON(addon_identifier) {
 			'User-Agent': 'request'
 		}
 	};
+
 	request(extRequestOptions, callback);
 	// var result = await request(extRequestOptions);
 	console.debug('result ' + body);
 
 }
 
-async function requestURL(req, res) {
-	console.debug('request ' + req);
+async function requestURL(req, query_type) {
+	console.debug('request ' + req + " Type: "+query_type);
 	// let response = await request.get('https://addons.thunderbird.net/api/v4/addons/addon/90003');
 	let extRequestOptions = {
 		url: `https://addons.thunderbird.net/api/v4/addons/addon/${addon_identifier}`,
@@ -99,12 +99,16 @@ async function requestURL(req, res) {
 		}
 	};
 
+	if (query_type === 'versions') {
+		extRequestOptions.url = `https://addons.thunderbird.net/api/v4/addons/addon/${addon_identifier}/versions/`;
+	}
+
 	try {
 		let response = await request.get(extRequestOptions);
 		if (response.err) { console.log('error'); }
 		else {
 			console.log('fetched response');
-			console.debug(response.id);
+			console.debug(response);
 			return response;
 		}
 	}
@@ -114,6 +118,35 @@ async function requestURL(req, res) {
 	}
 }
 
+function genExtensionSummaryMD (addon_identifier, extJson) {
+	const extRootName = `${addon_identifier}-${extJson.slug}`;
+	const extSummaryFileName = `${ext68CompDir}\\${extRootName}\\${extRootName}-summary.md`;
+
+	let extSummaryFile = fs.readFileSync('extension-summary-templ.md', 'utf8');
+	
+	const default_locale = extJson.default_locale;
+	const name = extJson.name[default_locale];
+	const summary = extJson.summary[default_locale];
+	const srcLink = `[Src](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`;
+	// const iconPath = `${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src\\${extJson.icon_url}`;
+	const iconPath = `${extJson.icon_url}`;
+	const minv = extJson.current_version.compatibility.thunderbird.min;
+	const maxv = extJson.current_version.compatibility.thunderbird.max;
+	const id = extJson.id;
+
+	console.debug('summary name '+name);
+	extSummaryFile = extSummaryFile.replace('__ext-name__', name);
+	extSummaryFile = extSummaryFile.replace('__ext-id__', extJson.id);
+	extSummaryFile = extSummaryFile.replace('__ext-slug__', extJson.slug);
+	extSummaryFile = extSummaryFile.replace('__ext-minv__', minv);
+	extSummaryFile = extSummaryFile.replace('__ext-maxv__', maxv);
+	extSummaryFile = extSummaryFile.replace('__ext-icon64px-path__', iconPath);
+	extSummaryFile = extSummaryFile.replace('__ext-description__', (summary+"\n"));
+
+
+	fs.writeFileSync(`${extSummaryFileName}`, extSummaryFile);
+
+}
 
 
 console.log("Starting...");
@@ -121,30 +154,35 @@ console.log("Starting...");
 async function getExtensionFiles() {
 	console.log('Get Files');
 	// let ext = getExtensionJSON(90003);
-	let ext = await requestURL(addon_identifier)
-
-	// console.debug(requestURL(90003000, 0));
-	// console.debug('ExtensionData:\n' + ext);
-
-	console.debug(ext.authors);
-	console.debug(ext.slug);
+	let ext = await requestURL(addon_identifier, 'details')
 	const extRootName = `${addon_identifier}-${ext.slug}`;
-	let jfile = `.\\${extRootName}\\${extRootName}.json`
+	let jfile = `${ext68CompDir}\\${extRootName}\\${extRootName}.json`
 	writePrettyJSONFile(jfile, ext)
+	console.debug(ext.slug);
+
+	
 	const xpiFileURL = ext.current_version.files[0].url;
 	const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
-	await downloadURL(xpiFileURL, `.\\${extRootName}\\xpi`);
+	await downloadURL(xpiFileURL, `${ext68CompDir}\\${extRootName}\\xpi`);
 	console.debug('filename '+xpiFileName);
-	fs.ensureDirSync(`.\\${extRootName}\\xpi`);
-	// fs.copySync(`.\\${extRootName}\\src`, `.\\${extRootName}\\xpi`);
+	fs.ensureDirSync(`${ext68CompDir}\\${extRootName}\\xpi`);
 
-	_7zCommand = ['x', `./${extRootName}/xpi/${xpiFileName}`, `-o./${extRootName}/src`];
+	_7zCommand = ['x', `${ext68CompDirU}/${extRootName}/xpi/${xpiFileName}`, `-o${ext68CompDirU}/${extRootName}/src`];
 	// _7zCommand = ['x', `./${extRootName}/src/${xpiFileName}`];
 	await _7CmdSync(_7zCommand);
 
+	console.debug('unpacked source');
+	let ext_versions = await requestURL(addon_identifier, 'versions');
+	console.debug('downloaded versions');
+
+	jfile = `.\\${ext68CompDir}\\${extRootName}\\${extRootName}-versions.json`
+	writePrettyJSONFile(jfile, ext_versions);
+
+	console.debug('generate mark	');
+	genExtensionSummaryMD(addon_identifier, ext)
 }
 
-function _7CmdSync(_7zCommand) {
+async function _7CmdSync(_7zCommand) {
 	return new Promise((resolve, reject) => {
 
 		console.error(_7zCommand);
@@ -196,7 +234,6 @@ const getDirectories = source =>
   fs.readdirSync(source, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
-// test();
 
 // console.debug('Finished');
 
