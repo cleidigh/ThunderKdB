@@ -26,7 +26,7 @@
 	<br>
 	<br>
 	<span>Search DXR: </span><input type="checkbox" id="search_dxr"/>
-	<span>Search Bugzill: </span><input type="checkbox" id="search_dxr"/>
+	<span>Search Bugzill: </span><input type="checkbox" id="search_bugzilla"/>
 
 	<br>
 	<h2>Locale Files Search:</h2>
@@ -48,7 +48,13 @@
 
 	function search_exts_locales() {
 		let q = document.getElementById('locale_topic').value;
-		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}+extension:dtd+extension:properties+extension:json`)
+		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}+extension:dtd+extension:properties+extension:json`);
+
+		if (document.getElementById("search_dxr").checked  === true) {
+			let q_dxr = q;
+			window.open(`https://dxr.mozilla.org/comm-central/source/comm/suite/themes/modern/global/progressmeter?q=${q_dxr}&redirect_type=direct`);
+		}
+		
 	}
 
 	</script>
