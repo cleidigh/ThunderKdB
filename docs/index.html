@@ -44,17 +44,19 @@
 		// q += "+extension:js+extension:xul";
 		q += '+' + document.getElementById('file_types').value;
 		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
+
+		if (document.getElementById("search_dxr").checked) {
+			console.debug('DX are checked');
+			let q_dxr = q;
+			window.open(`https://dxr.mozilla.org/comm-central/source/comm/suite/themes/modern/global?q=${q_dxr}&redirect_type=direct`);
+		}
+
 	}
 
 	function search_exts_locales() {
 		let q = document.getElementById('locale_topic').value;
 		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}+extension:dtd+extension:properties+extension:json`);
 
-		if (document.getElementById("search_dxr").checked) {
-			console.debug('DX are checked');
-			let q_dxr = q;
-			window.open(`https://dxr.mozilla.org/comm-central/source/comm/suite/themes/modern/global/progressmeter?q=${q_dxr}&redirect_type=direct`);
-		}
 		
 	}
 
