@@ -5,9 +5,11 @@
 </head>
 <body>
 
-	<img src='Thunderbird-icon.png'/>
+	<div>
+	<img src='Thunderbird-icon.png' style="padding-right: 60px;"/>
 
 	<h1>Thunderbird xpiLib : Extension Browser</h1>
+</div>
 	<hr>
 	<br>
 	<h2>Extension File Search:</h2>
@@ -23,6 +25,9 @@
 	</select>
 	<br>
 	<br>
+	<span>Search DXR: </span><input type="checkbox" id="search_dxr"/>
+	<span>Search Bugzill: </span><input type="checkbox" id="search_dxr"/>
+
 	<br>
 	<h2>Locale Files Search:</h2>
 	<span>Words : </span><input id="locale_topic" type="text" />
@@ -43,7 +48,7 @@
 
 	function search_exts_locales() {
 		let q = document.getElementById('locale_topic').value;
-		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}+extension:dtd+extension:properties+file:messages.json`)
+		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}+extension:dtd+extension:properties+filename:messages.json`)
 	}
 
 	</script>
