@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!-- for mouseover -->
+<?xml-stylesheet href="chrome://calendar/skin/calendar-views.css" type="text/css"?>
+
+<!DOCTYPE window [
+	<!ENTITY % calendarDTD SYSTEM "chrome://calendar/locale/calendar.dtd"> %calendarDTD;
+	<!ENTITY % eventContactsDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookEventContacts.dtd"> %eventContactsDTD;
+	<!ENTITY % buttonsDTD SYSTEM "chrome://cardbook/locale/wdw_editionButtons.dtd"> %buttonsDTD;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	id="wdw_cardbookEventContacts"
+	persist="width height screenX screenY sizemode"
+	onload="wdw_cardbookEventContacts.load();" resizable="true"
+	style="min-width:400px;min-height:300px">
+	
+	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/lightning/wdw_cardbookEventContacts.js"/>
+	<!-- for getEventStatusString -->
+	<script src="chrome://calendar/content/calUtils.js"/>
+	<script src="chrome://calendar/content/mouseoverPreviews.js"/>
+	<!-- for editting -->
+	<script src="chrome://calendar/content/calendar-item-editing.js"/>
+	<!-- for mouseover -->
+	<script src="chrome://calendar/content/calendar-ui-utils.js"/>
+	<script src="chrome://calendar/content/mouseoverPreviews.js"/>
+
+	<keyset id="wdw_cardbookEventContacts-keys">
+		<key keycode="VK_ESCAPE" oncommand="wdw_cardbookEventContacts.do_close();" />
+	</keyset>
+
+	<popupset id="calendar-popupset">
+		<tooltip id="eventTreeTooltip" onpopupshowing="return showToolTip(this, wdw_cardbookEventContacts.getItemFromEvent(event))" noautohide="true"/>
+	</popupset>
+
+	<menupopup id="eventsTreeContextMenu" onpopupshowing="return wdw_cardbookEventContacts.eventsTreeContextShowing();">
+		<menuitem id="editEvent" label="&editEventLabel;" accesskey="&editEventAccesskey;" oncommand="wdw_cardbookEventContacts.editEvent();"/>
+	</menupopup>
+	
+	<tree id="eventsTree" flex="1" context="eventsTreeContextMenu" seltype="single" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="startDate" enableColumnDrag="true"
+		onkeypress="wdw_cardbookEventContacts.chooseActionForKey(event);" onclick="wdw_cardbookEventContacts.sortTrees(event);">
+		<treecols id="eventsTreeCols">
+			<treecol id="title" label="&calendar.unifinder.tree.title.label;" tooltiptext="&calendar.unifinder.tree.title.tooltip2;" itemproperty="title" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<splitter class="tree-splitter"/>
+			<treecol id="startDate" label="&calendar.unifinder.tree.startdate.label;" tooltiptext="&calendar.unifinder.tree.startdate.tooltip2;" itemproperty="startDate" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<splitter class="tree-splitter"/>
+			<treecol id="endDate" label="&calendar.unifinder.tree.enddate.label;" tooltiptext="&calendar.unifinder.tree.enddate.tooltip2;" itemproperty="endDate" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<splitter class="tree-splitter"/>
+			<treecol id="categories" label="&calendar.unifinder.tree.categories.label;" tooltiptext="&calendar.unifinder.tree.categories.tooltip2;" itemproperty="categories" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<splitter class="tree-splitter"/>
+			<treecol id="location" label="&calendar.unifinder.tree.location.label;" tooltiptext="&calendar.unifinder.tree.location.tooltip2;" itemproperty="location" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<splitter class="tree-splitter"/>
+			<treecol id="status" label="&calendar.unifinder.tree.status.label;" tooltiptext="&calendar.unifinder.tree.status.tooltip2;" itemproperty="status" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<splitter class="tree-splitter"/>
+			<treecol id="calendarName" label="&calendar.unifinder.tree.calendarname.label;" tooltiptext="&calendar.unifinder.tree.calendarname.tooltip2;" itemproperty="calendar" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<splitter class="tree-splitter"/>
+		</treecols>
+		<treechildren id="eventsTreeChildren" ondblclick="wdw_cardbookEventContacts.doubleClickTree(event);" tooltip="eventTreeTooltip"/>
+	</tree>
+
+	<hbox>
+		<spacer flex="1"/>
+		<button id="createEventLabel" label="&createEventLabel;" accesskey="&createEventAccesskey;" oncommand="wdw_cardbookEventContacts.createEvent();"/>
+		<button id="editEventLabel" label="&editEventLabel;" accesskey="&editEventAccesskey;" oncommand="wdw_cardbookEventContacts.editEvent();"/>
+		<button id="closeEditionLabel" label="&closeEditionLabel;" accesskey="&closeEditionAccesskey;" oncommand="wdw_cardbookEventContacts.do_close();"/>
+	</hbox>
+</window>

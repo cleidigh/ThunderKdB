@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://cardbook-os/skin/mainToolbarButton.css" type="text/css"?>
+<!DOCTYPE window [
+	<!ENTITY % ovl_cardbookDTD SYSTEM "chrome://cardbook/locale/ovl_cardbook.dtd"> %ovl_cardbookDTD;
+]>
+
+<overlay id="ovl_cardbook"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<script src="chrome://cardbook/content/cardbookRichContext.js"/>
+	<script src="chrome://cardbook/content/cardbookEncryptor.js"/>
+	<script src="chrome://cardbook/content/cardbookIndexedDB.js"/>
+	<script src="chrome://cardbook/content/cardbookHttpRequest.js"/>
+	<script src="chrome://cardbook/content/cardbookWebDAV.js"/>
+	<script src="chrome://cardbook/content/cardbookSynchronization.js"/>
+	<script src="chrome://cardbook/content/cardbookActions.js"/>
+	<script src="chrome://cardbook/content/cardbookDiscovery.js"/>
+	<script src="chrome://cardbook/content/cardbookTypes.js"/>
+	<script src="chrome://cardbook/content/cardbookWindowUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookMailPopularity.js"/>
+	<script src="chrome://cardbook/content/cardbookDates.js"/>
+	<script src="chrome://cardbook/content/cardbookLog.js"/>
+	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
+	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
+	<script src="chrome://cardbook/content/cardbookPasswordManager.js"/>
+	<script src="chrome://cardbook/content/cardbookActions.js"/>
+	<script src="chrome://cardbook/content/observers/cardBookObserverRepository.js"/>
+	<script src="chrome://cardbook/content/observers/cardBookObserver.js"/>
+	<script src="chrome://cardbook/content/cardEdition/wdw_imageEdition.js"/>
+	<script src="chrome://cardbook/content/standalone/ovl_winTaskBar.js"/>
+	<script src="chrome://cardbook/content/ovl_init.js"/>
+	<script src="chrome://cardbook/content/formatEmailCorrespondents/ovl_formatEmailCorrespondents.js"/>
+	<script src="chrome://cardbook/content/layout/ovl_cardbookLayout.js"/>
+	<script src="chrome://cardbook/content/wdw_cardbook.js"/>
+	<script src="chrome://cardbook/content/ovl_cardbook.js"/>
+	
+	<window id="messengerWindow">
+		<broadcasterset id="cardbookBroadcasters">
+			<broadcaster id="cardboookModeBroadcasterTab" mode="mail"/>
+		</broadcasterset>
+	</window>
+
+	<!-- horrible hack to have the CardBook keys defined -->
+	<keyset id="viewZoomKeys">
+		<key id="CardBookKey" key="&cardbookMenuItemKey;" modifiers="accel, shift" oncommand="ovl_cardbook.open();"/>
+		<key id="CardBookNewContactKey" key="&newCardBookCardMenuKey;" modifiers="accel, shift" oncommand="wdw_cardbook.newKey();"/>
+		<key id="CardBookMenuKey" keycode="VK_F9" oncommand="wdw_cardbook.F9Key();"/>
+	</keyset>
+
+	<menupopup id="menu_NewPopup">
+		<menuitem id="newCardBookCardMenu" label="&newCardBookCardMenuLabel;" accesskey="&newCardBookCardMenuAccesskey;"
+				key="CardBookNewContactKey"
+				insertafter="menu_newCard" oncommand="wdw_cardbook.newKey();"/>
+	</menupopup>
+	<menupopup id="menu_FindPopup">
+		<menuitem id="newCardBookSearchMenu" label="&newCardBookSearchMenuLabel;" accesskey="&newCardBookSearchMenuAccesskey;"
+				insertafter="searchAddressesCmd" oncommand="wdw_cardbook.addAddressbook('search');"/>
+	</menupopup>
+	<menupopup id="view_layout_popup">
+		<menuitem id="cardbookABPaneItem"
+			type="checkbox"
+			label="&cardbookABPaneItemLabel;" accesskey="&cardbookABPaneItemAccesskey;"
+			oncommand="ovl_cardbookLayout.changeResizePanes('viewABPane')"
+			insertafter="menu_showFolderPane"/>
+		<menuitem id="cardbookContactPaneItem"
+			type="checkbox" key="key_toggleMessagePane"
+			label="&cardbookContactPaneItemLabel;" accesskey="&cardbookContactPaneItemAccesskey;"
+			command="cmd_toggleMessagePane"
+			insertafter="menu_showMessage"/>
+	</menupopup>
+	<menupopup id="taskPopup">
+		<menuitem id="cardbookMenuItem"
+			label="&cardbookMenuItemLabel;" accesskey="&cardbookMenuItemAccesskey;"
+			key="CardBookKey"
+			tooltiptext="&cardbookMenuItemTooltip;"
+			oncommand="ovl_cardbook.open()"
+			insertafter="addressBook"/>
+	</menupopup>
+	<menupopup id="appmenu_taskPopup">
+		<menuitem id="cardbookAppMenuItem"
+			label="&cardbookMenuItemLabel;" accesskey="&cardbookMenuItemAccesskey;"
+			key="CardBookKey"
+			tooltiptext="&cardbookMenuItemTooltip;"
+			oncommand="ovl_cardbook.open()"
+			insertafter="appmenu_addressBook"/>
+	</menupopup>
+
+	<toolbarpalette id="MailToolbarPalette">
+		<toolbarbutton id="cardbookToolbarButton"
+			label="&cardbookToolbarButtonLabel;"
+			tooltiptext="&cardbookToolbarButtonTooltip;"
+			oncommand="ovl_cardbook.open();"
+			class="toolbarbutton-1"/>
+	</toolbarpalette>
+
+	<window id="messengerWindow">
+		<commandset id="cardbook_commands">
+			<command id="cardbookTabButtonOpen"
+				oncommand="ovl_cardbook.open();"/>
+		</commandset>
+	</window>
+
+	<toolbar id="tabbar-toolbar">
+		<toolbarbutton id="cardbookTabButton"
+			class="toolbarbutton-1"
+			title="&cardbookTabButtonLabel;"
+			tooltiptext="&cardbookTabButtonTooltip;"
+			command="cardbookTabButtonOpen"/>
+	</toolbar>
+
+	<statusbarpanel id="totalMessageCount" onclick="wdw_cardbook.openLogEdition();"/>
+</overlay>

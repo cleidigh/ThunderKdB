@@ -1,0 +1,100 @@
+# autocompletion
+manifest components/cardbookAutocompleteSearch.manifest
+
+# startup with -cardbook
+# manifest does not work components/cmd-line-handler.manifest
+component  {823f4516-885f-492d-b8d3-d5e8c8316be1}  components/cmd-line-handler.js
+contract   @mozilla.org/commandlinehandler/general-startup;1?type=cardbook  {823f4516-885f-492d-b8d3-d5e8c8316be1}
+category   command-line-handler   m-cardbook   @mozilla.org/commandlinehandler/general-startup;1?type=cardbook
+
+resource cardbook-phonenumbers  modules/formautofill/phonenumberutils/
+resource cardbook-modules       modules/
+resource cardbook-locale-US     chrome/locale/en-US/
+
+content  cardbook       chrome/content/
+
+# locale
+locale   cardbook cs    chrome/locale/cs/
+locale   cardbook da    chrome/locale/da/
+locale   cardbook de    chrome/locale/de/
+locale   cardbook el    chrome/locale/el/
+locale   cardbook en-US chrome/locale/en-US/
+locale   cardbook es-ES chrome/locale/es-ES/
+locale   cardbook fr    chrome/locale/fr/
+locale   cardbook hr    chrome/locale/hr/
+locale   cardbook hu    chrome/locale/hu/
+locale   cardbook id    chrome/locale/id/
+locale   cardbook it    chrome/locale/it/
+locale   cardbook ja    chrome/locale/ja/
+locale   cardbook ko    chrome/locale/ko/
+locale   cardbook lt    chrome/locale/lt/
+locale   cardbook nl    chrome/locale/nl/
+locale   cardbook pl    chrome/locale/pl/
+locale   cardbook pt-BR chrome/locale/pt-BR/
+locale   cardbook pt-PT chrome/locale/pt-PT/
+locale   cardbook ro    chrome/locale/ro/
+locale   cardbook ru    chrome/locale/ru/
+locale   cardbook sl    chrome/locale/sl/
+locale   cardbook sv-SE chrome/locale/sv-SE/
+locale   cardbook uk    chrome/locale/uk/
+locale   cardbook vi    chrome/locale/vi/
+locale   cardbook zh-CN chrome/locale/zh-CN/
+
+# skin
+skin   cardbook             classic/1.0   chrome/skin/
+skin   cardbook-icons       classic/1.0   chrome/skin/icons/
+skin   cardbook-os          classic/1.0   chrome/skin/os/unix/
+skin   cardbook-os          classic/1.0   chrome/skin/os/windows/            os=WINNT
+skin   cardbook-os          classic/1.0   chrome/skin/os/mac/                os=Darwin
+
+# support for customizing toolbars
+style    chrome://global/content/customizeToolbar.xul chrome://cardbook-os/skin/mainToolbarButton.css        appversion<59.0a1
+style    chrome://messenger/content/customizeToolbar.xul chrome://cardbook-os/skin/mainToolbarButton.css        appversion>=59.0a1
+style    chrome://global/content/customizeToolbar.xul chrome://cardbook-os/skin/cardbookToolbarButtons.css   appversion<59.0a1
+style    chrome://messenger/content/customizeToolbar.xul chrome://cardbook-os/skin/cardbookToolbarButtons.css   appversion>=59.0a1
+
+# support for CardBook, yellow stars, creation from emails, formatting email fields
+overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/ovl_cardbook.xul
+overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/ovl_cardbookContexts.xul
+
+# support for filter messages
+overlay  chrome://messenger/content/FilterEditor.xul chrome://cardbook/content/filters/ovl_filterEditor.xul
+overlay  chrome://messenger/content/SearchDialog.xul chrome://cardbook/content/filters/ovl_filterEditor.xul
+overlay  chrome://messenger/content/mailViewSetup.xul chrome://cardbook/content/filters/ovl_filterEditor.xul
+overlay  chrome://messenger/content/virtualFolderProperties.xul chrome://cardbook/content/filters/ovl_filterEditor.xul
+
+# support for Lightning attendees
+overlay  chrome://calendar/content/calendar-event-dialog-attendees.xul chrome://cardbook/content/lightning/ovl_lightningAttendees.xul
+
+# support for birthdays
+overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/birthdays/ovl_birthdays.xul
+
+# support for importing attachments
+overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/attachments/ovl_attachments.xul
+
+# support for CardBook Tab
+overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/ovl_cardbookTab.xul
+
+# support for Contacts sidebar
+overlay  chrome://messenger/content/messengercompose/messengercompose.xul chrome://cardbook/content/contactsSidebar/ovl_cardbookContactsSidebarMain.xul
+
+# support for attaching a vCard
+overlay  chrome://messenger/content/messengercompose/messengercompose.xul chrome://cardbook/content/attachvCard/ovl_attachvCard.xul
+
+# support for CardBook menu in composition window
+overlay  chrome://messenger/content/messengercompose/messengercompose.xul chrome://cardbook/content/ovl_cardbookComposeMsg.xul
+
+# support for collected mail
+overlay  chrome://messenger/content/messengercompose/messengercompose.xul chrome://cardbook/content/collected/ovl_collected.xul
+
+# support for expanding list
+overlay  chrome://messenger/content/messengercompose/messengercompose.xul chrome://cardbook/content/lists/ovl_list.xul
+
+# support for the message window
+overlay  chrome://messenger/content/messageWindow.xul chrome://cardbook/content/ovl_cardbookContexts.xul
+
+# support for filters
+overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/filters/ovl_filters.xul
+
+# support for the quick filter bar
+overlay  chrome://messenger/content/messenger.xul chrome://cardbook/content/quickfilterbar/ovl_quickfilterbar.xul

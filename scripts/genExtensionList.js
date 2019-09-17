@@ -43,10 +43,11 @@ function createExtMDTableRow(extJson) {
 	let row = "|";
 	const default_locale = extJson.default_locale;
 	const name = extJson.name[default_locale];
-	const summary = extJson.summary[default_locale].substr(0,32);
+	const summary = extJson.summary[default_locale].substr(0,42);
 	const srcLink = `[Src](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`
+	const xpiLink = `[XPI](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\xpi)`;
 	// const srcLink = "s";
-	row += `${extJson.id} | ${name} | ${summary} | ${srcLink} | x|\n`;
+	row += `${extJson.id} | ${name} | ${summary} | ${srcLink} | ${xpiLink}|\n`;
 	return row;
 }
 

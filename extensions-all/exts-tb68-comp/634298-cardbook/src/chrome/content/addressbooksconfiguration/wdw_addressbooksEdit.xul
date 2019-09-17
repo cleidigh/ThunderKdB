@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://cardbook/skin/cardbookAddressBooks.css" type="text/css"?>
+<!-- for the groupbox -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<!DOCTYPE window [
+	<!ENTITY % addressbooksEditDTD SYSTEM "chrome://cardbook/locale/wdw_addressbooksEdit.dtd"> %addressbooksEditDTD;
+	<!ENTITY % configurationDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfiguration.dtd"> %configurationDTD;
+	<!ENTITY % formulaDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookFormulas.dtd"> %formulaDTD;
+	<!ENTITY % buttonsDTD SYSTEM "chrome://cardbook/locale/wdw_editionButtons.dtd"> %buttonsDTD;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onload="wdw_addressbooksEdit.load();" resizable="true"
+	onclose="wdw_addressbooksEdit.cancel();"
+	id="wdw_addressbooksEdit" title="&wdw_addressbooksEditTitle;"
+	persist="screenX screenY width height sizemode"
+	windowtype="CardBook:addressbookEditionWindow"
+	style="max-width:800px;max-height:600px;">
+	
+	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
+	<script src="chrome://cardbook/content/cardbookLog.js"/>
+	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
+	<script src="chrome://cardbook/content/cardbookActions.js"/>
+	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookSynchronization.js"/>
+	<script src="chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksEdit.js"/>
+
+	<keyset id="wdw_addressbooksEdit-keys">
+		<key keycode="VK_ESCAPE" oncommand="wdw_addressbooksEdit.cancel();"/>
+	</keyset>
+
+	<tabbox id="accountPrefs" flex="1">
+
+		<tabs>
+			<tab id="generalTab" label="&generalTabLabel;"/>
+			<tab id="syncTab" label="&syncTabLabel;"/>
+			<tab id="miscTab" label="&miscTabLabel;"/>
+		</tabs>
+
+		<tabpanels>
+			<tabpanel orient="vertical" style="overflow:auto">
+				<groupbox>
+					<label class="header">&generalTabLabel;</label>
+					<hbox flex="1">
+						<grid align="center" flex="1">
+							<columns>
+								<column/>
+								<column flex="1"/>
+							</columns>
+				
+							<rows>
+								<row align="center">
+									<label id="nameLabel" value="&nameLabel;" accesskey="&nameAccesskey;" control="nameTextBox"/>
+									<textbox id="nameTextBox"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label value="&nodesLabel;" control="nodeRadiogroup" id="nodesLabel"/>
+									<radiogroup id="nodeRadiogroup" orient="horizontal">
+										<radio value="categories" label="&categoriesNodeLabel;"/>
+										<radio value="org" label="&orgNodeLabel;"/>
+									</radiogroup>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label value="&colorLabel;" control="colorInput"/>
+									<hbox align="center">
+										<html:input id="colorInput" type="color"/>
+									</hbox>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label id="typeLabel" value="&typeLabel;" control="typeTextBox"/>
+									<textbox id="typeTextBox" class="plain"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label id="urlLabel" value="&urlLabel;" control="urlTextBox"/>
+									<textbox id="urlTextBox" class="plain"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label id="usernameLabel" value="&usernameLabel;" control="usernameTextBox"/>
+									<textbox id="usernameTextBox" class="plain"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<label value="&vCardVersionLabel;" control="vCardVersionTextBox"/>
+									<textbox id="vCardVersionTextBox" class="plain"/>
+									<button id="convertVCardsLabel" label="&convertVCardsLabel;" accesskey="&convertVCardsAccesskey;"
+										tooltiptext="&convertVCardsTooltip;" hidden="true" oncommand="wdw_addressbooksEdit.convertVCards();"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<checkbox id="readonlyCheckBox" label="&readonlyLabel;" accesskey="&readonlyAccesskey;"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<checkbox id="urnuuidCheckBox" label="&urnuuidLabel;" disabled="true"/>
+								</row>
+								<separator class="thin"/>
+								<row align="center">
+									<checkbox id="DBCachedCheckBox" label="&DBCachedLabel;" disabled="true"/>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+				</groupbox>
+			</tabpanel>
+
+			<tabpanel orient="vertical" style="overflow:auto">
+				<groupbox>
+					<label class="header">&autoSyncGroupboxLabel;</label>
+					<hbox align="center">
+						<checkbox id="autoSyncCheckBox" label="&autoSyncLabel;" accesskey="&autoSyncAccesskey;"
+							oncommand="wdw_addressbooksEdit.showAutoSyncInterval();"/>
+					</hbox>
+					<hbox align="center" class="indent">
+						<label value="&autoSyncIntervalLabel;" accesskey="&autoSyncIntervalAccesskey;"
+							control="autoSyncIntervalTextBox"
+							id="autoSyncInterval"/>
+						<textbox id="autoSyncIntervalTextBox"/>
+					</hbox>
+				</groupbox>
+			</tabpanel>
+
+			<tabpanel orient="vertical" style="overflow:auto">
+				<groupbox flex="1">
+					<label class="header">&fnFormulaCaption;</label>
+					<description>&fnFormulaExplanation;</description>
+					<description class="indent">&formulaExplanation1;</description>
+					<description class="indent">&formulaExplanation2;</description>
+					<description class="indent">&formulaExplanation3;</description>
+					<description class="indent">&formulaExplanation4;</description>
+					<description class="indent">&formulaExplanation5;</description>
+					<description class="indent">&formulaExplanation6;</description>
+					<description id="fnFormula7" class="indent"/>
+					<description id="fnFormula8" class="indent"/>
+					<hbox flex="1">
+						<grid align="center" flex="1">
+							<columns>
+								<column/>
+								<column flex="1"/>
+								<column/>
+							</columns>
+			
+							<rows>
+								<row align="center">
+									<label value="&fnFormulaLabel;" accesskey="&fnFormulaAccesskey;" control="fnFormulaTextBox"/>
+									<textbox id="fnFormulaTextBox"/>
+									<button id="resetFnFormulaButton" label="&resetFnFormulaLabel;" accesskey="&resetFnFormulaAccesskey;"
+										oncommand="wdw_addressbooksEdit.resetFnFormula();"/>
+								</row>
+								<row align="center">
+									<label value=""/>
+									<label value=""/>
+									<button id="applyToABButton" type="menu" label="&applyToABButtonLabel;" accesskey="&applyToABButtonAccesskey;" 
+												sizetopopup="none" crop="center" flex="1" oncommand="wdw_addressbooksEdit.applyApplyToAB(event);">
+										<menupopup id="applyToABMenupopup"/>
+									</button>
+								</row>
+							</rows>
+						</grid>
+					</hbox>
+				</groupbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+
+	<hbox>
+		<spacer flex="1"/>
+		<button id="saveEditionLabel" label="&saveEditionLabel;" accesskey="&saveEditionAccesskey;" oncommand="wdw_addressbooksEdit.save();"/>
+		<button id="cancelEditionLabel" label="&cancelEditionLabel;" accesskey="&cancelEditionAccesskey;" oncommand="wdw_addressbooksEdit.cancel();"/>
+	</hbox>
+</window>

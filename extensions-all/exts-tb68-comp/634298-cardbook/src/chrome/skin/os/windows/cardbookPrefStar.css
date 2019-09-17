@@ -1,0 +1,9 @@
+.cardbookPrefStarClass {
+	list-style-image: url("chrome://messenger/skin/icons/star.svg");
+	-moz-context-properties: fill;
+	fill: currentColor;
+}
+.cardbookPrefStarClass[haspref="true"] {
+	list-style-image: url("chrome://messenger/skin/icons/starred.svg");
+	fill: var(--toolbarbutton-icon-fill-attention);
+}

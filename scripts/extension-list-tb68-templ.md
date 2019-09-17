@@ -1,4 +1,4 @@
-# ![Thunderstorm icon](rep-resources/images/thunderstorm.png) ThunderKdB: Extension List - TB 68 Compatible
+# ![Thunderstorm icon](rep-resources/Thunderbird-icon.png) ThunderKdB: Extension List - TB 68 Compatible
 
 
 | Id | Name | Description | Source | XPI |

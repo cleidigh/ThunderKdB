@@ -23,7 +23,11 @@ const gh = new GitHub({
 
 let extArray = [
 	90003,
-	2313
+	640,
+	634298,
+	986686
+
+
 
 ];
 
