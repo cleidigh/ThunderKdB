@@ -5,20 +5,25 @@
 </head>
 <body>
 
-
+	<img href='Thunderbird-icon.png'/>
+	
 	<h1>Thunderbird xpiLib : Extension Browser</h1>
 	<hr>
 	<br>
 	<span>Search : </span><input id="topic" type="text" />
 	<button id="topic_btn" type="button" onclick="search_exts()" >Search</button>
-	<br>
+	<br><br>
 	<span>File Types : </span><select>
-		<option name="extension:js">Javascript</option>
-		<option name="extension:xul">XUL</option>
-		<option name="extension:html+extension:xhtml">HTML, XHTML</option>
+		<option value="extension:js">Javascript</option>
+		<option value="extension:xul">XUL</option>
+		<option value="extension:html+extension:xhtml">HTML, XHTML</option>
+		<option value="extension:dtd+extension:properties">dtd, properties</option>
 
 	</select>
-	<a href="r.md">TestLink</a>
+	<br>
+	<br>
+	<br>
+	<a href="r.md">Extension List</a>
 	<script>
 	function search_exts() {
 		console.debug('test'+document.getElementById('topic').value);
