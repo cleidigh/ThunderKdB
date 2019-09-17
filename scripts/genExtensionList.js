@@ -50,7 +50,8 @@ function createExtMDTableRow(extJson) {
 	
 	let summary = extJson.summary[default_locale].substr(0,42);
 	summary = summary.replace(/\n/g, ' ');
-	const srcLink = `[Src](https://github.com\\cleidigh\\ThunderKdB\\tree\\master\\${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`
+	// const srcLink = `[Src](https://github.com\\cleidigh\\ThunderKdB\\tree\\master\\${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`
+	const srcLink = `[Src](..\\${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`
 
 	// https://github.com/cleidigh/ThunderKdB/tree/master/extensions-all/exts-tb68-comp/90003-localfolder/src
 	const xpiLink = `[XPI](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\xpi)`;
