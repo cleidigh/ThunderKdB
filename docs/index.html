@@ -22,7 +22,7 @@
 	function search_exts() {
 		console.debug('test'+document.getElementById('topic').value);
 		let q = document.getElementById('topic').value;
-		q += "+extension:js";
+		q += "+extension:js+extension:xul";
 		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
 	}
 
