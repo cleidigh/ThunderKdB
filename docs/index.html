@@ -5,15 +5,16 @@
 </head>
 <body>
 
-	<img href='Thunderbird-icon.png'/>
+	<img src='Thunderbird-icon.png'/>
 
 	<h1>Thunderbird xpiLib : Extension Browser</h1>
 	<hr>
 	<br>
+	<h2>Extension File Search:</h2>
 	<span>Search : </span><input id="topic" type="text" />
 	<button id="topic_btn" type="button" onclick="search_exts()" >Search</button>
 	<br><br>
-	<span>File Types : </span><select>
+	<span>File Types : </span><select id="file_types">
 		<option value="extension:js">Javascript</option>
 		<option value="extension:xul">XUL</option>
 		<option value="extension:html+extension:xhtml">HTML, XHTML</option>
@@ -23,6 +24,13 @@
 	<br>
 	<br>
 	<br>
+	<h2>Locale Files Search:</h2>
+	<span>Words : </span><input id="locale_topic" type="text" />
+	<button id="locale_topic_btn" type="button" onclick="search_exts_locales()" >Search</button>
+	<br><br>
+	
+	<br><br>
+	<hr>
 	<a href="r.md">Extension List</a>
 	<script>
 	function search_exts() {
@@ -31,6 +39,11 @@
 		// q += "+extension:js+extension:xul";
 		q += '+' + document.getElementById('file_types').value;
 		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
+	}
+
+	function search_exts_locales() {
+		let q = document.getElementById('locale_topic').value;
+		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}+extension:dtd+extension:properties+file:messages.json`)
 	}
 
 	</script>
