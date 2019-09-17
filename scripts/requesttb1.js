@@ -29,7 +29,11 @@ const gh = new GitHub({
 // ];
 
 let extArray = [
-	195275
+	711780,
+	54035,
+	773590
+
+
 ];
 
 let extSearchRequest = "app=thunderbird&type=extension&sort=created"
