@@ -6,15 +6,16 @@
 <body>
 
 
-	Thunderbird xpiLib : Extension Browser
+	<h1>Thunderbird xpiLib : Extension Browser</h1>
 	<hr>
+	<br>
 	<span>Search : </span><input id="topic" type="text" />
 	<button id="topic_btn" type="button" onclick="search_exts()" >Search</button>
-
-	<select>
-		<option name="js">Javascript</option>
-		<option name="xul">XUL</option>
-		<option name="html">HTML, XHTML</option>
+	<br>
+	<span>File Types : </span><select>
+		<option name="extension:js">Javascript</option>
+		<option name="extension:xul">XUL</option>
+		<option name="extension:html+extension:xhtml">HTML, XHTML</option>
 
 	</select>
 	<a href="r.md">TestLink</a>
@@ -22,7 +23,8 @@
 	function search_exts() {
 		console.debug('test'+document.getElementById('topic').value);
 		let q = document.getElementById('topic').value;
-		q += "+extension:js+extension:xul";
+		// q += "+extension:js+extension:xul";
+		q += '+' + document.getElementById('file_types').selected;
 		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
 	}
 
