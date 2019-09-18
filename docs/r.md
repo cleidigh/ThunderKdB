@@ -13,7 +13,7 @@ permalink: /ExtensionList/
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 30 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
 | 100 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
-
+{: .tablelines}
 
 | hello   	| : Micz  	|   	|   	|   	|
 |---------	|---------	|---	|---	|---	|
@@ -21,12 +21,6 @@ permalink: /ExtensionList/
 | German  	|         	|   	|   	|   	|
 | French  	| : Goofy 	|   	|   	|   	|
 
-
-<style>
-.tablelines table, .tablelines td, .tablelines th {
-        border: 1px solid black;
-        }
-</style>
 
 | P | Q | P * Q |
 | - | - | - |
@@ -62,3 +56,10 @@ permalink: /ExtensionList/
 
 [index](./index.html)
 Test
+
+
+<style>
+.tablelines table, .tablelines td, .tablelines th {
+        border: 1px solid black;
+        }
+</style>
