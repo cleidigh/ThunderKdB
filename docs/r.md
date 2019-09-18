@@ -33,7 +33,6 @@ permalink: /ExtensionList/
 |---|---|---|
 |a  | b | c|
 | 1|2|3|
-{: .tablelines}
 
 |-----------------+------------+-----------------+----------------|
 | Default aligned |Left aligned| Center aligned  | Right aligned  |
@@ -51,7 +50,6 @@ permalink: /ExtensionList/
 
 | A simple | table |
 | with multiple | lines|
-{: .tablelines}
 
 
 [index](./index.html)
