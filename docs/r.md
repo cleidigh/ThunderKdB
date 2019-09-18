@@ -3,6 +3,7 @@ title: Test
 layout: Post
 permalink: /ExtensionList/
 ---
+![Thunderbird icon](images/Thunderbird-icon.png)
 
 # ExtensionList
 
@@ -12,6 +13,5 @@ permalink: /ExtensionList/
 | 30 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
 | 100 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
 
-![LocalFolders icon](images/Thunderbird-icon64px.png)
 [index](./index.html)
 Test
