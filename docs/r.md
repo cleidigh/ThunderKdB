@@ -1,8 +1,10 @@
 ---
 title: Test
 layout: Post
-permalink: /Test/
+permalink: /r/
 ---
+
+# r
 
 # ![LocalFolders icon](scripts/90003-localfolder/src/chrome/skin/classic/LocalFolders-64px.png "LocalFolders")  LocalFolders
 
