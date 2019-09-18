@@ -56,7 +56,7 @@ function createExtMDTableRow(extJson) {
 	// https://github.com/cleidigh/ThunderKdB/tree/master/extensions-all/exts-tb68-comp/90003-localfolder/src
 	const xpiLink = `[XPI](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\xpi)`;
 	// const srcLink = "s";
-	row += `${extJson.id} | ${name} | ${summary} | ${srcLink} | ${xpiLink}|\n`;
+	row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created} | ${srcLink} | ${xpiLink} |..`;
 	return row;
 }
 

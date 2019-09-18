@@ -1,18 +1,9 @@
 # ![Thunderstorm icon](../../rep-resources/Thunderbird-icon.png) ThunderKdB: Extension List - TB 68 Compatible
 
 
-| Id | Name | Description | Source | XPI |
-|---|---|---|---|---|
-|195275 | Send Later | True "Send Later" functionality to schedul | [Src](./195275-send-later-3/src) | [XPI](..\extensions-all\exts-tb68-comp\195275-send-later-3\xpi)|
-|54035 | Thunderbird Conversations | This addon provides a conversation view fo | [Src](./54035-gmail-conversation-view/src) | [XPI](..\extensions-all\exts-tb68-comp\54035-gmail-conversation-view\xpi)|
-|634298 | CardBook | A new Thunderbird address book based on th | [Src](./634298-cardbook/src) | [XPI](..\extensions-all\exts-tb68-comp\634298-cardbook\xpi)|
-|640 | Quicktext | Quicktext is an extension for Thunderbird  | [Src](./640-quicktext/src) | [XPI](..\extensions-all\exts-tb68-comp\640-quicktext\xpi)|
-|711780 | LookOut (fix version) | LookOut is a plugin which allows Thunderbi | [Src](./711780-lookout-fix-version/src) | [XPI](..\extensions-all\exts-tb68-comp\711780-lookout-fix-version\xpi)|
-|773590 | TbSync | TbSync is a central user interface to mana | [Src](./773590-tbsync/src) | [XPI](..\extensions-all\exts-tb68-comp\773590-tbsync\xpi)|
-|90003 | LocalFolders | Add as many local folders as you want to.  | [Src](./90003-localfolder/src) | [XPI](..\extensions-all\exts-tb68-comp\90003-localfolder\xpi)|
-|986686 | ImportExportTools NG | Adds tools to import/export messages and f | [Src](./986686-importexporttools-ng/src) | [XPI](..\extensions-all\exts-tb68-comp\986686-importexporttools-ng\xpi)|
-|596736 | ThunderStats! Your Thunderbird Statistics! | Do you remember the old good Eudora statis | [Src](./596736-thunderstats/src) | [XPI](..\extensions-all\exts-tb68-comp\596736-thunderstats\xpi)|
-
+| Id | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
+|---|---|---|---|---|---|---|---|---|
+|195275 | Send Later | True "Send Later" functionality to schedul | 7.1.2 | 2019-09-10T01:05:12Z | [Src](./195275-send-later-3/src) | [XPI](..\extensions-all\exts-tb68-comp\195275-send-later-3\xpi) |..|54035 | Thunderbird Conversations | This addon provides a conversation view fo | 2.15.12 | 2019-09-15T20:32:41Z | [Src](./54035-gmail-conversation-view/src) | [XPI](..\extensions-all\exts-tb68-comp\54035-gmail-conversation-view\xpi) |..|634298 | CardBook | A new Thunderbird address book based on th | 42.0 | 2019-09-13T11:41:10Z | [Src](./634298-cardbook/src) | [XPI](..\extensions-all\exts-tb68-comp\634298-cardbook\xpi) |..|640 | Quicktext | Quicktext is an extension for Thunderbird  | 2.3 | 2019-08-30T17:43:50Z | [Src](./640-quicktext/src) | [XPI](..\extensions-all\exts-tb68-comp\640-quicktext\xpi) |..|711780 | LookOut (fix version) | LookOut is a plugin which allows Thunderbi | 2.0.0 | 2019-08-30T07:50:32Z | [Src](./711780-lookout-fix-version/src) | [XPI](..\extensions-all\exts-tb68-comp\711780-lookout-fix-version\xpi) |..|773590 | TbSync | TbSync is a central user interface to mana | 2.4 | 2019-08-28T23:05:38Z | [Src](./773590-tbsync/src) | [XPI](..\extensions-all\exts-tb68-comp\773590-tbsync\xpi) |..|90003 | LocalFolders | Add as many local folders as you want to.  | 2.0.2 | 2019-08-16T03:51:56Z | [Src](./90003-localfolder/src) | [XPI](..\extensions-all\exts-tb68-comp\90003-localfolder\xpi) |..|986686 | ImportExportTools NG | Adds tools to import/export messages and f | 4.0.3 | 2019-09-12T03:44:08Z | [Src](./986686-importexporttools-ng/src) | [XPI](..\extensions-all\exts-tb68-comp\986686-importexporttools-ng\xpi) |..|596736 | ThunderStats! Your Thunderbird Statistics! | Do you remember the old good Eudora statis | 1.4.4 | 2019-02-22T23:28:34Z | [Src](./596736-thunderstats/src) | [XPI](..\extensions-all\exts-tb68-comp\596736-thunderstats\xpi) |..
 
 
 
