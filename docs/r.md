@@ -9,8 +9,9 @@ permalink: /ExtensionList/
 
 | Id | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
 |---|---|---|---|---|---|---|---|---|
+| 30 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
+| 100 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
 
-
-![LocalFolders icon](scripts/90003-localfolder/src/chrome/skin/classic/LocalFolders-64px.png)|
-[index](./)
+![LocalFolders icon](images/Thunderbird-icon64px.png)
+[index](./index.html)
 Test
