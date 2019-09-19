@@ -5,5 +5,5 @@
 [Extension List - Thunderbird 68 Compatible](extensions-all/exts-tb68-comp/extension-list-tb68.md)
 
 
-[xpiLib Browser](https://cleidigh.github.io/ThunderKdB/xpiLib-search.html)
+[xpiLib Browser](https://cleidigh.github.io/ThunderKdB/docs/xpiLib-search.html)
 
