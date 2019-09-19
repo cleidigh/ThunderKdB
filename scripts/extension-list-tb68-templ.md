@@ -1,8 +1,8 @@
 # ![Thunderstorm icon](../../rep-resources/Thunderbird-icon.png) ThunderKdB: Extension List - TB 68 Compatible
 
 
-| Id | Name | Description | Ver | Date | Users | Compatibility | MinV : MaxV |
-|---|---|---|---|---|---|---|---|
+| Name | Description | Ver | Date | Users | Compatibility |
+|---|---|---|---|---|---|
 __ext-table-tb68__
 
 
