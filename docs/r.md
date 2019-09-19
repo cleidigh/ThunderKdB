@@ -14,24 +14,8 @@ permalink: /ExtensionList/
 | 30 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
 | 100 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
 
-| hello   	| : Micz  	|   	|   	|   	|
-|---------	|---------	|---	|---	|---	|
-| Italian 	| : Micz  	|   	|   	|   	|
-| German  	|         	|   	|   	|   	|
-| French  	| : Goofy 	|   	|   	|   	|
 
 
-| P | Q | P * Q |
-| - | - | - |
-| T | T | T |
-| T | F | F |
-| F | T | F |
-| F | F | F |
-{: .tablelines}
-
-|---|---|---|
-|a  | b | c|
-| 1|2|3|
 
 |-----------------+------------+-----------------+----------------|
 | Default aligned |Left aligned| Center aligned  | Right aligned  |
@@ -47,14 +31,17 @@ permalink: /ExtensionList/
 |-----------------+------------+-----------------+----------------|
 
 
-| A simple | table |
-| with multiple | lines|
 
 
 [index](./index.html)
+
+[readme](./README1.md)
+
+[readme2](./README1.html)
+
 Test
 
-
+<html>
 <style>
 .tablelines table, .tablelines td, .tablelines th {
         border: 1px solid black;
@@ -65,3 +52,4 @@ table {
 	border-collapse: collapse;
 }
 </style>
+</html>
