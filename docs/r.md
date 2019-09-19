@@ -13,7 +13,6 @@ permalink: /ExtensionList/
 | ---- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 30 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
 | 100 | Name | Description | Ver | Date | Users | Source | XPI | Homepage |
-{:.table-striped}
 
 | hello   	| : Micz  	|   	|   	|   	|
 |---------	|---------	|---	|---	|---	|
@@ -60,4 +59,9 @@ Test
 .tablelines table, .tablelines td, .tablelines th {
         border: 1px solid black;
         }
+
+table {
+	border: 2px solid red;
+	border-collapse: collapse;
+}
 </style>
