@@ -42,6 +42,7 @@ permalink: /ExtensionList/
 Test
 
 <html>
+<head>
 <style>
 .tablelines table, .tablelines td, .tablelines th {
         border: 1px solid black;
@@ -52,4 +53,5 @@ table {
 	border-collapse: collapse;
 }
 </style>
+</head>
 </html>
