@@ -1,3 +1,11 @@
 # Dependencies
-markdown:    kramdown
-highlighter: pygments2
+highlighter: rouge
+pretty: filename.markdown
+
+
+sass:
+  sass_dir:  /docs/_sass
+  
+include:
+ - r.md
+ - r2.md

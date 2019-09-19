@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ThunderKdB</title>
+</head>
+<body>
+
+	<div>
+	<img src='Thunderbird-icon.png' style="padding-right: 60px;"/>
+
+	<h1>Thunderbird xpiLib : Extension Browser</h1>
+</div>
+	<hr>
+	<br>
+	<h2>Extension Code/Issue Search:</h2>
+	<span>Search : </span><input id="topic" type="text" />
+	<button id="topic_btn" type="button" onclick="search_exts()" >Search</button>
+	<br><br>
+	<span>File Types : </span><select id="file_types">
+		<option value="extension:js">Javascript</option>
+		<option value="extension:xul">XUL</option>
+		<option value="extension:html+extension:xhtml">HTML, XHTML</option>
+		<option value="extension:dtd+extension:properties">dtd, properties</option>
+
+	</select>
+	<br>
+	<br>
+	<span>Search DXR: </span><input type="checkbox" id="search_dxr"/>
+	<span>Search Bugzill: </span><input type="checkbox" id="search_bugzilla"/>
+
+	<br>
+	<h2>Locale Files Search:</h2>
+	<span>Words : </span><input id="locale_topic" type="text" />
+	<button id="locale_topic_btn" type="button" onclick="search_exts_locales()" >Search</button>
+	<br><br>
+	
+	<br><br>
+	<hr>
+	<a href="r2.html">Extension List 1</a>
+
+	<a href="./r2.html">Extension List 2</a>
+	<!-- [List](./rmd) -->
+	<a href="/r2.html">Extension List 3</a>
+	<a href="/EL/">Extension List 3</a>
+	<a href="r.html">Extension List 3</a>
+	<a href="https://github.com/cleidigh/ThunderKdB/blob/master/extensions-all/exts-tb68-comp/extension-list-tb68.md">Extension List main rep</a>
+	<a href="https://github.com/cleidigh/ThunderKdB/tree/master/extensions-all/exts-tb68-comp/">Extension List main rep</a>
+
+
+	<script>
+	function search_exts() {
+		console.debug('test'+document.getElementById('topic').value);
+		let q = document.getElementById('topic').value;
+		// q += "+extension:js+extension:xul";
+		q += '+' + document.getElementById('file_types').value;
+		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
+
+		if (document.getElementById("search_dxr").checked) {
+			console.debug('DX are checked');
+			let q_dxr = q;
+			// window.open(`https://dxr.mozilla.org/comm-central/source/comm/suite/themes/modern/global?q=${q_dxr}&redirect_type=direct`);
+			window.open(`https://dxr.mozilla.org/comm-central/source?q=${q_dxr}`);
+		}
+
+	}
+
+	function search_exts_locales() {
+		let q = document.getElementById('locale_topic').value;
+		window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}+extension:dtd+extension:properties+extension:json`);
+
+		
+	}
+
+	</script>
+</body>
+</html>
