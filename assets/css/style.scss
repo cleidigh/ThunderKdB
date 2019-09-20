@@ -37,7 +37,15 @@ table {
 	@extend .table;
 	@extend .table-bordered;
 	@extend .table-striped;
-	
+	@extend .table-sm;
+	@extend .thead-dark;
 	border-collapse: collapse;
 }
 
+th {
+	background-color: cornflowerblue !important;
+}
+
+td {
+	text-align: left;
+}

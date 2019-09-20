@@ -17,9 +17,9 @@ const _7z = require('7zip-min');
 
 const ext68CompDir = '..\\extensions-all\\exts-tb68-comp';
 
-const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/TB%2068-%20cV-brightgreen.png)"
-const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/TB%2068-%20pV-green.png)"
-const cBadge_tb68_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/TB%2068+-%20v*-blue.png)"
+const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-brightgreen.png)"
+const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png)"
+const cBadge_tb68_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68+-%20v*-blue.png)"
 
 function genExtensionList() {
 	let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
@@ -51,7 +51,7 @@ function createExtMDTableRow(extJson) {
 		default_locale = "en-US";
 	}
 	
-	const name = extJson.name[default_locale];
+	const name = extJson.name[default_locale].substr(0,26);
 	
 	let summary = extJson.summary[default_locale].substr(0,42);
 	summary = summary.replace(/\n/g, ' ');
@@ -68,7 +68,7 @@ function createExtMDTableRow(extJson) {
 	let rank = " 1";
 	
 	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
-	row += `${rank} | ${extJson.id} :| ${name} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} :| ${v_mM} | ${comp_badges} |\n`;
+	row += `${rank} | ${extJson.id} | ${name} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_mM} | ${comp_badges} |\n`;
 	
 	return row;
 }
