@@ -62,13 +62,13 @@ function createExtMDTableRow(extJson) {
 	const xpiLink = `[XPI](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\xpi)`;
 	// const srcLink = "s";
 	
-	let comp_badges = cBadge_tb68 + cBadge_tb68_plus;
+	let comp_badges = cBadge_tb68 + " " + cBadge_tb68_plus;
 	let v_mM = "60.0 - 69.*";
 
-	let rank = 1;
+	let rank = " 1";
 	
 	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
-	row += `${rank} | ${extJson.id} | ${name} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_mM} | ${comp_badges} |\n`;
+	row += `${rank} | ${extJson.id} :| ${name} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} :| ${v_mM} | ${comp_badges} |\n`;
 	
 	return row;
 }
