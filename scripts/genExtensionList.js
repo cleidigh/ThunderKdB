@@ -41,7 +41,7 @@ function genExtensionList() {
 	extsListFile = extsListFile.replace('__ext-table-tb68__', extRows);
 	console.debug(extsListFile );
 	fs.writeFileSync(`${ext68CompDir}\\extension-list-tb68.md`, extsListFile);
-
+	console.debug('Done');
 }
 
 function createExtMDTableRow(extJson) {
