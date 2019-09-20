@@ -16,6 +16,11 @@ const _7z = require('7zip-min');
 // Id | Name | Description | Source | XPI |
 
 const ext68CompDir = '..\\extensions-all\\exts-tb68-comp';
+
+const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/TB%2068-%20cV-brightgreen.png)"
+const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/TB%2068-%20pV-green.png)"
+const cBadge_tb68_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/TB%2068+-%20v*-blue.png)"
+
 function genExtensionList() {
 	let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
 	let extRows = "";
@@ -57,10 +62,13 @@ function createExtMDTableRow(extJson) {
 	const xpiLink = `[XPI](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\xpi)`;
 	// const srcLink = "s";
 	
-	let comp_badges = "1 2 3";
+	let comp_badges = cBadge_tb68 + cBadge_tb68_plus;
+	let v_mM = "60.0 - 69.*";
+
+	let rank = 1;
 	
 	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
-	row += `${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} |\n`;
+	row += `${rank} | ${extJson.id} | ${name} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_mM} | ${comp_badges} |\n`;
 	
 	return row;
 }
