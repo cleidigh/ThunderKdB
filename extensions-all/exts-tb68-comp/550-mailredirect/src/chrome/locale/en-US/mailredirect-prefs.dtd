@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Redirecting">
+
+<!ENTITY mailredirectSettings.title "Mail Redirect Settings">
+
+<!ENTITY copyToSentMails.label "Place a copy of redirected mail in Sent folder?">
+<!ENTITY copyToSentMails.accesskey "P">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "If this option is checked, a copy of redirected message is placed in the Sent folder. If this option is unchecked, a copy of the redirected message is not copied to any folder.\nNote: If this option is checked and your settings for the account used for redirecting are 'not to save sent messages at all', a copy of the redirected messages will not be saved either.">
+
+<!ENTITY addToForwardAs.label "Add Redirect to Forward As menus and buttons">
+<!ENTITY addToForwardAs.accesskey "A">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "By adding Redirect to the Forward As menus and buttons you group all forwarding actions under one item.\nYou can remove the buttons from the toolbars by customizing them and by checking the option below, you can hide the separate menu items because they have become redundant.">
+
+<!ENTITY hideRedirectMenuitems.label "Hide Redirect menu item from Message, Application and context menus">
+<!ENTITY hideRedirectMenuitems.accesskey "H">
+<!ENTITY hideRedirectMenuitems.tooltip "Hides the separate Redirect menu items from the Message, Application and context menus.">
+
+<!ENTITY concurrentConnections.label "Number of concurrent SMTP connections:">
+<!ENTITY concurrentConnections.accesskey "N">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "The option specifies number of connections that will be established to your SMTP server while sending messages. In general, this allows you to increase performance of sending process when you choose to redirect huge amount of messages.\nNote: If you set this parameter to zero no limits of concurrent connections will apply - be warned that it could have impact on stability of your SMTP server or sending of some messages could fail. In case of any problems set this value to one.">
+
+<!ENTITY defaultRecipientsGroup.label "Default Recipients">
+
+<!ENTITY defaultResendTo.label "Resend-To:">
+<!ENTITY defaultResendTo.accesskey "T">
+<!ENTITY defaultResendTo.tooltip "Comma separated list of e-mail addresses.">
+
+<!ENTITY defaultResendCc.label "Resend-Cc:">
+<!ENTITY defaultResendCc.accesskey "C">
+<!ENTITY defaultResendCc.tooltip "Comma separated list of e-mail addresses.">
+
+<!ENTITY defaultResendBcc.label "Resend-Bcc:">
+<!ENTITY defaultResendBcc.accesskey "B">
+<!ENTITY defaultResendBcc.tooltip "Comma separated list of e-mail addresses.">
+
+<!ENTITY defaultMode.label "Default mode:">
+<!ENTITY defaultMode.accesskey "m">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Choose how you want to redirect messages by default.\nThis setting only has effect when you have not specified any default recipients.">
+<!ENTITY defaultModeResendTo.label "Resend-To">
+<!ENTITY defaultModeResendCc.label "Resend-Cc">
+<!ENTITY defaultModeResendBcc.label "Resend-Bcc">
+
+<!ENTITY debug.label "Debug">
+<!ENTITY debug.accesskey "D">
+<!ENTITY debug.tooltip "Turn on/off debugging for the Mail Redirect extension. Logs are directed to the Error Console.">
+
+<!ENTITY saveConsoleContent.label2 "Save Error Console content…">
+<!ENTITY saveConsoleContent.accesskey2 "S">
+<!ENTITY sendViaEmail.label "Send via email">
+<!ENTITY sendViaEmail.accesskey "e">

@@ -846,7 +846,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		sendRequestForFinds: function (aEmail, aDomain) {
-			let request = new CardbookHttpRequest();
+			let request = CardbookHttpRequest(wdw_addressbooksAdd.gAutoconfigURL + aDomain, "");
 			request.open('GET', wdw_addressbooksAdd.gAutoconfigURL + aDomain, true);
 			request.onreadystatechange = function() {
 				if (request.readyState == 4) {
@@ -874,6 +874,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 									vCardVersion = infos.vCardVersion[0];
 								}
 								wdw_addressbooksAdd.createBoxesForFinds("CARDDAV", aEmail, password, vCardVersion, url, aEmail);
+								wdw_addressbooksAdd.setFindLinesHeader();
 							}
 						} catch(e) {}
 					} else {
@@ -1015,6 +1016,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			}
 			cardbookUtils.sortArrayByString(sortedEmailAccounts,1);
 			sortedEmailAccounts = cardbookRepository.arrayUnique(sortedEmailAccounts);
+			cardbookLog.updateStatusProgressInformationWithDebug1(wdw_addressbooksAdd.gValidateDescription + " : debug mode : sortedEmailAccounts : ", sortedEmailAccounts);
 
 			for (let email of sortedEmailAccounts) {
 				let found = false;
@@ -1033,7 +1035,11 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					wdw_addressbooksAdd.sendRequestForFinds(email, domain);
 				}
 			}
-			
+			wdw_addressbooksAdd.setFindLinesHeader();
+			wdw_addressbooksAdd.checkFindLinesRequired();
+		},
+
+		setFindLinesHeader: function () {
 			if (document.getElementById('findRows').childNodes.length == 1) {
 				document.getElementById('findHeadersRow').setAttribute('hidden', 'true');
 				document.getElementById('findPageName1Description').removeAttribute('hidden');
@@ -1050,7 +1056,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('findPageName2Description').setAttribute('hidden', 'true');
 				document.getElementById('findPageName3Description').removeAttribute('hidden');
 			}
-			wdw_addressbooksAdd.checkFindLinesRequired();
 		},
 
 		findAdvance: function () {
@@ -1229,7 +1234,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						cardbookRepository.cardbookDirRequest[myAccount.dirPrefId]++;
 						var myMode = "WINDOW";
 						wdw_migrate.importCards(myAccount.sourceDirPrefId, myAccount.dirPrefId, myAccount.name, myAccount.vcard, myMode);
-						cardbookSynchronization.waitForDirFinished(myAccount.dirPrefId, myAccount.name, myMode);
+						cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode);
 						// if the first proposed import of standard address books is finished OK
 						// then set CardBook as exclusive
 						if (myAccount.firstAction) {
@@ -1254,7 +1259,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						}
 						var myMode = "WINDOW";
 						cardbookSynchronization.loadFile(myFile, myAccount.dirPrefId, myAccount.dirPrefId, myMode, "NOIMPORTFILE", "");
-						cardbookSynchronization.waitForDirFinished(myAccount.dirPrefId, myAccount.name, myMode);
+						cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode);
 					} else if (myAccount.type === "DIRECTORY") {
 						var myDir = myAccount.file;
 						if (myAccount.actionType === "CREATEDIRECTORY") {
@@ -1294,7 +1299,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						cardbookRepository.cardbookDirRequest[myAccount.dirPrefId]++;
 						var myMode = "WINDOW";
 						cardbookSynchronization.loadDir(myDir, myAccount.dirPrefId, myAccount.dirPrefId, myMode, "NOIMPORTDIR", "");
-						cardbookSynchronization.waitForDirFinished(myAccount.dirPrefId, myAccount.name, myMode);
+						cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode);
 					}
 					cardbookUtils.formatStringForOutput("addressbookCreated", [myAccount.name]);
 					cardbookActions.addActivity("addressbookCreated", [myAccount.name], "addItem");

@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Ανακατεύθυνση">
+
+<!ENTITY mailredirectSettings.title "Ρυθμίσεις Mail Redirect">
+
+<!ENTITY copyToSentMails.label "Τοποθέτηση ενός αντιγράφου του ανακατευθυνόμενου e-mail στο φάκελο &quot;Απεσταλμένα&quot;;">
+<!ENTITY copyToSentMails.accesskey "Τ">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Αν αυτή η επιλογή είναι ενεργή, ένα αντίγραφο του ανακατευθυνόμενου μηνύματος θα τοποθετείται στο φάκελο &quot;Απεσταλμένα&quot;. Αν αυτή η επιλογή είναι ανενεργή, το ανακατευθυνόμενο μήνυμα δεν θα αντιγράφεται σε κανένα φάκελο.\nΣημείωση: Αν αυτή η επιλογή είναι ενεργή και ο λογαριασμός που χρησιμοποιείται για ανακατεύθυνση έχει ρυθμιστεί ώστε να 'μην αποθηκεύει απεσταλμένα μηνύματα', δεν θα αποθηκεύονται αντίγραφα των ανακατευθυνόμενων μηνυμάτων.">
+
+<!ENTITY addToForwardAs.label "Προσθήκη στοιχείου &quot;Ανακατεύθυνση&quot; στα μενού και κουμπιά &quot;Προώθηση ως&quot;">
+<!ENTITY addToForwardAs.accesskey "θ">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Προσθέτοντας το στοιχείο &quot;Ανακατεύθυνση&quot; στα μενού και τα κουμπιά &quot;Προώθηση ως&quot;, μπορείτε να ομαδοποιήσετε όλες τις ενέργειες προώθησης κάτω από ένα στοιχείο.\nΜπορείτε να αφαιρέσετε τα κουμπιά από τις εργαλειοθήκες προσαρμόζοντάς τα και με την παρακάτω επιλογή, μπορείτε να αποκρύψετε τα ξεχωριστά στοιχεία μενού επειδή έχουν καταστεί περιττά.">
+
+<!ENTITY hideRedirectMenuitems.label "Απόκρυψη στοιχείου μενού &quot;Ανακατεύθυνση&quot; από μήνυμα, εφαρμογή και μενού περιεχομένου">
+<!ENTITY hideRedirectMenuitems.accesskey "κ">
+<!ENTITY hideRedirectMenuitems.tooltip "Αποκρύπτει τα ξεχωριστά στοιχεία μενού &quot;Ανακατεύθυνση&quot; από μήνυμα, εφαρμογή και μενού περιεχομένου.">
+
+<!ENTITY concurrentConnections.label "Αριθμός ταυτόχρονων συνδέσεων SMTP:">
+<!ENTITY concurrentConnections.accesskey "Α">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "Η επιλογή καθορίζει τον αριθμό των συνδέσεων που θα δημιουργηθούν στο διακομιστή SMTP σας κατά την αποστολή μηνυμάτων. Γενικά, αυτό σάς επιτρέπει να αυξήσετε την απόδοση της διαδικασίας αποστολής όταν επιλέγετε να ανακατευθύνετε ένα μεγάλο αριθμό μηνυμάτων.\nΣημείωση: Αν ρυθμίσετε αυτή την παράμετρο σε μηδέν, δεν θα υπάρχει όριο ταυτόχρονων συνδέσεων - να σημειωθεί ότι αυτό θα μπορούσε να επηρεάσει την σταθερότητα του διακομιστή SMTP σας ή η αποστολή ορισμένων μηνυμάτων θα μπορούσε να αποτύχει. Σε περίπτωση προβλήματος, ορίσετε αυτή την τιμή σε ένα.">
+
+<!ENTITY defaultRecipientsGroup.label "Προεπιλεγμένοι παραλήπτες">
+
+<!ENTITY defaultResendTo.label "Εκ νέου αποστολή-Προς:">
+<!ENTITY defaultResendTo.accesskey "Π">
+<!ENTITY defaultResendTo.tooltip "Λίστα διευθύνσεων e-mail διαχωρισμένες με κόμμα.">
+
+<!ENTITY defaultResendCc.label "Εκ νέου αποστολή-Κοινοποίηση:">
+<!ENTITY defaultResendCc.accesskey "σ">
+<!ENTITY defaultResendCc.tooltip "Λίστα διευθύνσεων e-mail διαχωρισμένες με κόμμα.">
+
+<!ENTITY defaultResendBcc.label "Εκ νέου αποστολή-Κρυφή κοινοποίηση:">
+<!ENTITY defaultResendBcc.accesskey "Ρ">
+<!ENTITY defaultResendBcc.tooltip "Λίστα διευθύνσεων e-mail διαχωρισμένες με κόμμα.">
+
+<!ENTITY defaultMode.label "Προεπιλεγμένη λειτουργία:">
+<!ENTITY defaultMode.accesskey "λ">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Επιλέξτε πώς θέλετε να ανακατευθύνονται τα μηνύματά σας από προεπιλογή\nΑυτή η ρύθμιση ενεργοποιείται μόνο όταν δεν έχετε καθορίσει προεπιλεγμένους παραλήπτες.">
+<!ENTITY defaultModeResendTo.label "Εκ νέου αποστολή-Προς">
+<!ENTITY defaultModeResendCc.label "Εκ νέου αποστολή-Κοινοποίηση">
+<!ENTITY defaultModeResendBcc.label "Εκ νέου αποστολή-Κρυφή κοινοποίηση">
+
+<!ENTITY debug.label "Εντοπισμός σφαλμάτων">
+<!ENTITY debug.accesskey "Ε">
+<!ENTITY debug.tooltip "Ενεργοποίηση/απενεργοποίηση εντοπισμού σφαλμάτων για την επέκταση Mail Redirect. Τα αρχεία καταγραφής κατευθύνονται στην κονσόλα σφαλμάτων.">
+
+<!ENTITY saveConsoleContent.label2 "Αποθήκευση περιεχομένου κονσόλας σφαλμάτων…">
+<!ENTITY saveConsoleContent.accesskey2 "Α">
+<!ENTITY sendViaEmail.label "Αποστολή μέσω e-mail">
+<!ENTITY sendViaEmail.accesskey "e">

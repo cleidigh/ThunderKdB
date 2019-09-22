@@ -225,6 +225,7 @@ if ("undefined" == typeof(cardbookTypes)) {
 
 		getIMPPLineForProtocol: function (aProtocol) {
 			var serviceLine = [];
+			var myPrefResults = [];
 			myPrefResults = cardbookPreferences.getAllIMPPs();
 			for (var i = 0; i < myPrefResults.length; i++) {
 				if (aProtocol.toLowerCase() == myPrefResults[i][2].toLowerCase()) {

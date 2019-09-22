@@ -28,6 +28,7 @@ Preferences.addAll([
 	{ id: "extensions.cardbook.URLPhoneBackground", type: "bool" },
 	{ id: "extensions.cardbook.kindCustom", type: "string" },
 	{ id: "extensions.cardbook.memberCustom", type: "string" },
+	{ id: "extensions.cardbook.syncAfterChange", type: "bool" },
 	{ id: "extensions.cardbook.initialSync", type: "bool" },
 	{ id: "extensions.cardbook.initialSyncDelay", type: "string" },
 	{ id: "extensions.cardbook.solveConflicts", type: "string" },

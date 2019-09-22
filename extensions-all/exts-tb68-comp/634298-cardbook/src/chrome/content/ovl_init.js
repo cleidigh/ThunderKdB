@@ -33,6 +33,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setBoolPref("advancedTabView", false);
 			
 			prefs.setCharPref("panesView", "modern");
+			prefs.setBoolPref("syncAfterChange", false);
 			prefs.setBoolPref("initialSync", true);
 			prefs.setCharPref("initialSyncDelay", "0");
 			prefs.setCharPref("solveConflicts", "User");
@@ -102,7 +103,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
 			prefs.setCharPref("categoryColors", "");
-			prefs.setCharPref("addonVersion", "42.0");
+			prefs.setCharPref("addonVersion", "42.3");
 			prefs.setCharPref("defaultRegion", "NOTSET");
 
 			prefs.setBoolPref("localDataEncryption", false);

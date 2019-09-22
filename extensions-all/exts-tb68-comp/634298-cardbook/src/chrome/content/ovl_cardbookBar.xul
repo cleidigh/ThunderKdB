@@ -132,9 +132,9 @@
 				title="&cardbookToolbarSearchBoxLabel;"
 				tooltiptext="&cardbookToolbarSearchBoxTooltip;"
 				class="toolbaritem-noline chromeclass-toolbar-additional">
-				<textbox id="cardbookSearchInput" flex="1"
-					type="search" class="searchBox"
-					oninput="wdw_cardbook.startSearch();" onclick="wdw_cardbook.startSearch();"/>
+				<textbox is="search-textbox" id="cardbookSearchInput" flex="1"
+					class="themeableSearchBox"
+					oncommand="wdw_cardbook.startSearch();"/>
 			</toolbaritem>
 			<toolbarbutton id="cardbookToolbarComplexSearch"
 				label="&cardbookToolbarComplexSearchLabel;"
@@ -240,7 +240,7 @@
 	<menupopup id="adrTreeContextMenu" onpopupshowing="wdw_cardbook.adrTreeContextShowing(event);">
 		<menuitem id="localizeadrTree" label="&localizeadrTreeLabel;" oncommand="wdw_cardbook.localizeCardFromTree();"/>
 		<menuseparator/>
-		<menuitem id="copyadrTree" oncommand="wdw_cardbook.copyEntryFromAdr();"/>
+		<menuitem id="copyadrTree" oncommand="wdw_cardbook.copyEntryFromTree();"/>
 	</menupopup>
 
 	<menupopup id="telTreeContextMenu" onpopupshowing="wdw_cardbook.telTreeContextShowing();">

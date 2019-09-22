@@ -24,7 +24,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js", this);
 	loader.loadSubScript("chrome://cardbook/content/cardbookActions.js", this);
-	loader.loadSubScript("chrome://cardbook/content/cardbookHttpRequest.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookPasswordManager.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookDiscovery.js");
@@ -64,8 +63,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookServerDiscoveryError[aPrefId] = 0;
 			cardbookRepository.cardbookServerSyncRequest[aPrefId] = 0;
 			cardbookRepository.cardbookServerSyncResponse[aPrefId] = 0;
-			cardbookRepository.cardbookServerSyncLoadCacheDone[aPrefId] = 0;
-			cardbookRepository.cardbookServerSyncLoadCacheTotal[aPrefId] = 0;
 			cardbookRepository.cardbookServerSyncDone[aPrefId] = 0;
 			cardbookRepository.cardbookServerSyncTotal[aPrefId] = 0;
 			cardbookRepository.cardbookServerSyncError[aPrefId] = 0;
@@ -390,7 +387,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			var myArgs = {message: aMessage, button1: aButton1, button2: aButton2, button3: aButton3, button4: aButton4,
 							confirmMessage: aConfirmMessage, confirmValue: aConfirmValue,
 							result: "cancel", resultConfirm: false};
-			var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookAskUser.xul", "", cardbookRepository.modalWindowParams, myArgs);
+			Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/wdw_cardbookAskUser.xul", "", cardbookRepository.modalWindowParams, myArgs);
 			return {result: myArgs.result, resultConfirm: myArgs.resultConfirm};
 		},
 		
@@ -878,12 +875,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			}
 		},
 
-		getFilesFromCache: function (aPrefId) {
-			var cacheDir = cardbookRepository.getLocalDirectory();
-			cacheDir.append(aPrefId);
-			return cardbookSynchronization.getFilesFromDir(cacheDir.path);
-		},
-
 		getCacheFiles: function (aPrefId) {
 			cardbookRepository.filesFromCacheDB[aPrefId] = {};
 			if (cardbookRepository.cardbookFileCacheCards[aPrefId]) {
@@ -912,60 +903,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				}
 			} catch(e) {}
 			return listOfFileName;
-		},
-
-		loadCache: function (aPrefId, aPrefName, aPrefType, aPrefUser, aPrefUrl, aSync, aMode, aDBCached) {
-			if (aDBCached) {
-				cardbookRepository.cardbookServerSyncEmptyCache[aPrefId] = false;
-				cardbookRepository.cardbookDBRequest[aPrefId]++;
-				cardbookIndexedDB.loadDB(aPrefId, aPrefName, aMode);
-			} else {
-				cardbookRepository.cardbookServerSyncEmptyCache[aPrefId] = true;
-				var aListOfFileName = [];
-				aListOfFileName = cardbookSynchronization.getFilesFromCache(aPrefId);
-				for (var i = 0; i < aListOfFileName.length; i++) {
-					cardbookRepository.cardbookServerSyncLoadCacheTotal[aPrefId]++;
-					cardbookRepository.cardbookServerSyncEmptyCache[aPrefId] = false;
-					myFileName = aListOfFileName[i];
-					var cacheDir = cardbookRepository.getLocalDirectory();
-					cacheDir.append(aPrefId);
-					cacheDir.append(myFileName);
-					if (cacheDir.exists() && cacheDir.isFile()) {
-						var params = {};
-						params["showError"] = true;
-						params["aPrefId"] = aPrefId;
-						params["aPrefName"] = aPrefName;
-						params["aMode"] = aMode;
-						params["aFileName"] = myFileName;
-						params["aCacheDir"] = cacheDir;
-						cardbookSynchronization.getFileDataAsync(cacheDir.path, cardbookSynchronization.loadCacheAsync, params);
-					}
-				}
-			}
-			if (aSync) {
-				cardbookSynchronization.waitForLoadCacheFinished(aPrefId, aPrefName, aPrefType, aPrefUser, aPrefUrl, aMode);
-			} else {
-				cardbookSynchronization.waitForSyncFinished(aPrefId, aPrefName, aMode);
-			}
-
-		},
-
-		loadCacheAsync: function (aContent, aParams) {
-			if (aContent) {
-				try {
-					var myCard = new cardbookCardParser(aContent, "", "", aParams.aPrefId);
-					if (!(cardbookRepository.cardbookCards[aParams.aPrefId+"::"+myCard.uid])) {
-						cardbookRepository.addCardToRepository(myCard, aParams.aMode, aParams.aFileName);
-						cardbookUtils.formatStringForOutput("cardLoadedFromCache", [aParams.aPrefName, myCard.fn]);
-					}
-				}
-				catch (e) {
-					aParams.aCacheDir.remove(true);
-				}
-			} else {
-				aParams.aCacheDir.remove(true);
-			}
-			cardbookRepository.cardbookServerSyncLoadCacheDone[aParams.aPrefId]++;
 		},
 
 		loadDir: function (aDir, aDirPrefId, aTarget, aMode, aImportMode, aActionId) {
@@ -1427,6 +1364,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 														cardbookRepository.cardbookServerSyncTotal[aConnection.connPrefId]++;
 														cardbookRepository.cardbookServerSyncCompareWithCacheTotal[aConnection.connPrefId]++;
 														var aCardConnection = {connPrefId: aConnection.connPrefId, connUrl: myUrl, connDescription: aConnection.connDescription};
+														if (aPrefIdType == "YAHOO") {
+															aCardConnection.accessToken = aConnection.accessToken;
+														}
 														cardbookSynchronization.compareServerCardWithCache(aCardConnection, aConnection, aMode, aPrefIdType, myUrl, etag, myFileName);
 														if (cardbookRepository.filesFromCacheDB[aConnection.connPrefId][myFileName]) {
 															delete cardbookRepository.filesFromCacheDB[aConnection.connPrefId][myFileName];
@@ -1719,7 +1659,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookRepository.cardbookServerDiscoveryRequest[aConnection.connPrefId]++;
 			cardbookUtils.formatStringForOutput("synchronizationRequestDiscovery3", [aConnection.connDescription, aConnection.connUrl]);
 			var request = new cardbookWebDAV(aConnection, listener_checkpropfind3, "", true);
-			request.propfind(["D:current-user-privilege-set", "D:resourcetype", "D:displayname"], true); //test
+			request.propfind(["D:resourcetype", "D:displayname"], true);
 		},
 
 		discoverPhase2: function(aConnection, aRootUrl, aOperationType, aParams) {
@@ -1935,9 +1875,13 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			cardbookSynchronization.syncAccount(aDirPrefId);
 		},
 
-		syncAccounts: function () {
-			var result = [];
-			result = cardbookPreferences.getAllPrefIds();
+		syncAccounts: function (aAccountList) {
+			if (aAccountList) {
+				var result = aAccountList;
+			} else {
+				var result = [];
+				result = cardbookPreferences.getAllPrefIds();
+			}
 			for (let i = 0; i < result.length; i++) {
 				cardbookSynchronization.syncAccount(result[i]);
 			}
@@ -2076,7 +2020,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 										// should check if some should be restarted because of a changed password
 										var syncAgain = [];
 										var syncFailed = [];
-										for (i in cardbookRepository.cardbookServerChangedPwd) {
+										for (let i in cardbookRepository.cardbookServerChangedPwd) {
 											if (cardbookRepository.cardbookServerChangedPwd[i].pwdChanged) {
 												syncAgain = syncAgain.concat(cardbookRepository.cardbookServerChangedPwd[i].dirPrefIdList);
 											} else {
@@ -2111,58 +2055,44 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
 		},
 
-		waitForDirFinished: function (aPrefId, aPrefName, aMode) {
+		waitForLoadFinished: function (aPrefId, aPrefName, aMode, aSync = null) {
 			cardbookRepository.lTimerDirAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lTimerDir = cardbookRepository.lTimerDirAll[aPrefId];
 			lTimerDir.initWithCallback({ notify: function(lTimerDir) {
 						cardbookUtils.notifyObservers("syncRunning", aPrefId);
-						if (cardbookRepository.cardbookServerSyncHandleRemainingDone[aPrefId] == cardbookRepository.cardbookServerSyncHandleRemainingTotal[aPrefId]) {
-							var request = cardbookSynchronization.getRequest(aPrefId, aPrefName) + cardbookSynchronization.getTotal(aPrefId, aPrefName);
-							var response = cardbookSynchronization.getResponse(aPrefId, aPrefName) + cardbookSynchronization.getDone(aPrefId, aPrefName);
+						var request = cardbookSynchronization.getRequest(aPrefId, aPrefName) + cardbookSynchronization.getTotal(aPrefId, aPrefName);
+						var response = cardbookSynchronization.getResponse(aPrefId, aPrefName) + cardbookSynchronization.getDone(aPrefId, aPrefName);
+						if (request == response) {
 							var myPrefIdType = cardbookPreferences.getType(aPrefId);
-							if (request == response) {
-								cardbookSynchronization.finishSync(aPrefId, aPrefName, myPrefIdType);
-								cardbookSynchronization.finishMultipleOperations(aPrefId);
-								var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
-								if (total === 0) {
-									if (aMode == "INITIAL") {
-										ovl_birthdays.onLoad();
-									}
-								}
-								lTimerDir.cancel();
-							}
-						}
-					}
-					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
-		},
-
-		waitForLoadCacheFinished: function (aPrefId, aPrefName, aPrefType, aPrefUser, aPrefUrl, aMode) {
-			cardbookRepository.lTimerLoadCacheAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
-			var lTimerLoadCache = cardbookRepository.lTimerLoadCacheAll[aPrefId];
-			lTimerLoadCache.initWithCallback({ notify: function(lTimerLoadCache) {
-					cardbookUtils.notifyObservers("syncRunning", aPrefId);
-					cardbookLog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerSyncEmptyCache : ", cardbookRepository.cardbookServerSyncEmptyCache[aPrefId]);
-					cardbookLog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerSyncLoadCacheDone : ", cardbookRepository.cardbookServerSyncLoadCacheDone[aPrefId]);
-					cardbookLog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookServerSyncLoadCacheTotal : ", cardbookRepository.cardbookServerSyncLoadCacheTotal[aPrefId]);
-					cardbookLog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookDBRequest : ", cardbookRepository.cardbookDBRequest[aPrefId]);
-					cardbookLog.updateStatusProgressInformationWithDebug1(aPrefName + " : debug mode : cardbookRepository.cardbookDBResponse : ", cardbookRepository.cardbookDBResponse[aPrefId]);
-					if ((cardbookRepository.cardbookServerSyncEmptyCache[aPrefId]) ||
-						((!cardbookRepository.cardbookServerSyncEmptyCache[aPrefId]) &&
-							(cardbookRepository.cardbookServerSyncLoadCacheDone[aPrefId] + cardbookRepository.cardbookDBRequest[aPrefId] ==
-								cardbookRepository.cardbookServerSyncLoadCacheTotal[aPrefId] + cardbookRepository.cardbookDBResponse[aPrefId]))) {
+							cardbookSynchronization.finishSync(aPrefId, aPrefName, myPrefIdType);
 							cardbookSynchronization.finishMultipleOperations(aPrefId);
-							cardbookPreferences.setDBCached(aPrefId, true);
-							// Web requests are delayed for a preference value
-							var initialSyncDelay = cardbookPreferences.getStringPref("extensions.cardbook.initialSyncDelay");
-							try {
-								var initialSyncDelayMs = initialSyncDelay * 1000;
-							} catch(e) {
-								var initialSyncDelayMs = 0;
-							}
-							setTimeout(function() {
+							if (aSync && aSync === true) {
+								if (aMode == "INITIAL") {
+									// Web requests are delayed for a preference value
+									var initialSyncDelay = cardbookPreferences.getStringPref("extensions.cardbook.initialSyncDelay");
+									try {
+										var initialSyncDelayMs = initialSyncDelay * 1000;
+									} catch(e) {
+										var initialSyncDelayMs = 0;
+									}
+									if (initialSyncDelayMs == 0) {
+										cardbookSynchronization.syncAccount(aPrefId, aMode);
+									} else {
+										setTimeout(function() {
+												cardbookSynchronization.syncAccount(aPrefId, aMode);
+										}, initialSyncDelayMs);
+									}
+								} else {
 									cardbookSynchronization.syncAccount(aPrefId, aMode);
-							}, initialSyncDelayMs);
-							lTimerLoadCache.cancel();
+								}
+							}
+							var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
+							if (total === 0) {
+								if (aMode == "INITIAL") {
+									ovl_birthdays.onLoad();
+								}
+							}
+							lTimerDir.cancel();
 						}
 					}
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
@@ -2272,26 +2202,28 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			if (myPrefEnabled) {
 				if (cardbookUtils.isMyAccountRemote(myPrefType) && myPrefDBCached) {
 					cardbookSynchronization.initMultipleOperations(aDirPrefId);
-					cardbookSynchronization.loadCache(aDirPrefId, myPrefName, myPrefType, myPrefUser, myPrefUrl, aSync, aMode, myPrefDBCached);
+					cardbookRepository.cardbookDBRequest[aDirPrefId]++;
+					cardbookIndexedDB.loadDB(aDirPrefId, myPrefName, aMode);
+					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode, aSync);
 				} else if (myPrefType === "LOCALDB") {
 					cardbookSynchronization.initMultipleOperations(aDirPrefId);
 					cardbookRepository.cardbookDBRequest[aDirPrefId]++;
 					cardbookIndexedDB.loadDB(aDirPrefId, myPrefName, aMode);
-					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
+					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode);
 				} else if (myPrefType === "FILE") {
 					cardbookSynchronization.initMultipleOperations(aDirPrefId);
 					cardbookRepository.cardbookFileRequest[aDirPrefId]++;
 					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myFile.initWithPath(myPrefUrl);
 					cardbookSynchronization.loadFile(myFile, aDirPrefId, aDirPrefId, aMode, "NOIMPORTFILE", "");
-					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
+					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode);
 				} else if (myPrefType === "DIRECTORY") {
 					cardbookSynchronization.initMultipleOperations(aDirPrefId);
 					cardbookRepository.cardbookDirRequest[aDirPrefId]++;
 					var myDir = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myDir.initWithPath(myPrefUrl);
 					cardbookSynchronization.loadDir(myDir, aDirPrefId, aDirPrefId, aMode, "NOIMPORTDIR", "");
-					cardbookSynchronization.waitForDirFinished(aDirPrefId, myPrefName, aMode);
+					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode);
 				}
 			}
 		},

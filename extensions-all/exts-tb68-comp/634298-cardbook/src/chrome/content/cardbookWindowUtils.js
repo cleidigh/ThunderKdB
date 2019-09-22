@@ -331,7 +331,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				if (myBackground) {
 					var myUser = cardbookPreferences.getStringPref("extensions.cardbook.URLPhoneUser");
 					var myPassword = cardbookPasswordManager.getPassword(myUser, myUrl);
-					var req = new CardbookHttpRequest();
+					var req = CardbookHttpRequest(myUrl, myUser);
 					req.withCredentials = true;					
 					req.open('GET', myUrl, true, myUser, myPassword);
 					req.send(null);

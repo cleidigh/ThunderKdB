@@ -138,6 +138,27 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 			cursorRequest.onerror = cardbookRepository.cardbookDatabase.onerror;
 		},
 		
+		// Check if a card is present in the database
+		checkCardForUndoAction: function (aMessage, aCard, aActionId) {
+			var db = cardbookRepository.cardbookDatabase.db;
+			var transaction = db.transaction(["cards"], "readonly");
+			var store = transaction.objectStore("cards");
+			var cursorRequest = store.get(aCard.cbid);
+		
+			cursorRequest.onsuccess = function(e) {
+				cardbookLog.updateStatusProgressInformationWithDebug2(aMessage);
+				cardbookUtils.addTagCreated(aCard);
+				var card = e.target.result;
+				if (card) {
+					aCard.etag = card.etag;
+				}
+				cardbookRepository.saveCard({}, aCard, aActionId, false);
+				cardbookUtils.notifyObservers(cardbookRepository.currentAction[aActionId].actionCode);
+			};
+			
+			cursorRequest.onerror = cardbookRepository.cardbookDatabase.onerror;
+		},
+		
 		// once the DB is open, this is the second step for the AB
 		// which use the DB caching
 		loadCards: function (aDirPrefId, aDirPrefName, aMode, aCallback) {
@@ -393,7 +414,7 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 			var store = transaction.objectStore("cardUndos");
 			var keyRange = IDBKeyRange.bound(aUndoId, aUndoId);
 			var cursorRequest = store.getAll(keyRange);
-		    
+
 			const handleItem = async item => {
 				try {
 					item = await cardbookIndexedDB.checkUndoItem(item);
@@ -407,7 +428,7 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 					document.getElementById(aButtonName).removeAttribute('disabled');
 				}
 			};
-            
+
 			cursorRequest.onsuccess = async function(e) {
 				var result = e.target.result;
 				if (result && result.length != 0) {
@@ -445,15 +466,33 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 				}
 				var myTopic = "undoActionDone";
 				var myActionId = cardbookActions.startAction(myTopic, [item.undoMessage]);
-				for (var i = 0; i < item.newCards.length; i++) {
-					var myCard = item.newCards[i];
-					cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " deleting myCard.uid : "+ myCard.uid.toSource());
-					cardbookRepository.deleteCards([myCard], myActionId);
+				for (let myCardToDelete of item.newCards) {
+					let myCardToCreate1 = item.oldCards.find(child => child.cbid == myCardToDelete.cbid);
+					if (!myCardToCreate1) {
+						let myCardToCreate2 = cardbookRepository.cardbookDisplayCards[myCardToDelete.dirPrefId].cards.find(child => child.cbid == myCardToDelete.cbid);
+						if (myCardToCreate2.created === true) {
+							cardbookUtils.addTagCreated(myCardToDelete);
+							cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " deleting myCardToDelete.cbid : " + myCardToDelete.cbid);
+							cardbookRepository.deleteCards([myCardToDelete], myActionId);
+						} else {
+							cardbookUtils.addTagDeleted(myCardToDelete);
+							myCardToDelete.etag = myCardToCreate2.etag;
+							cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " deleting myCardToDelete.cbid : " + myCardToDelete.cbid);
+							cardbookRepository.deleteCards([myCardToDelete], myActionId);
+						}
+					}
 				}
-				for (var i = 0; i < item.oldCards.length; i++) {
-					var myCard = item.oldCards[i];
-					cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " adding myCard.uid : "+ myCard.uid.toSource());
-					cardbookRepository.saveCard({}, myCard, myActionId, false);
+				for (let myCardToCreate of item.oldCards) {
+					let myCardToDelete = cardbookRepository.cardbookDisplayCards[myCardToCreate.dirPrefId].cards.find(child => child.cbid == myCardToCreate.cbid);
+					if (!myCardToDelete) {
+						var myMessage = "debug mode : executing undo " + cardbookRepository.currentUndoId + " adding myCardToCreate.cbid : " + myCardToCreate.cbid;
+						cardbookIndexedDB.checkCardForUndoAction(myMessage, myCardToCreate, myActionId);
+					} else {
+						cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " updating myCardToCreate.cbid : " + myCardToCreate.cbid);
+						cardbookUtils.addTagUpdated(myCardToCreate);
+						myCardToCreate.etag = myCardToDelete.etag;
+						cardbookRepository.saveCard(myCardToDelete, myCardToCreate, myActionId, false);
+					}
 				}
 				cardbookRepository.currentUndoId--;
 				cardbookActions.saveCurrentUndoId();
@@ -494,15 +533,33 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 				}
 				var myTopic = "redoActionDone";
 				var myActionId = cardbookActions.startAction(myTopic, [item.undoMessage]);
-				for (var i = 0; i < item.oldCards.length; i++) {
-					var myCard = item.oldCards[i];
-					cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing redo " + nextUndoId + " deleting myCard.uid : "+ myCard.uid.toSource());
-					cardbookRepository.deleteCards([myCard], myActionId);
+				for (let myCardToDelete of item.oldCards) {
+					let myCardToCreate1 = item.newCards.find(child => child.cbid == myCardToDelete.cbid);
+					if (!myCardToCreate1) {
+						let myCardToCreate2 = cardbookRepository.cardbookDisplayCards[myCardToDelete.dirPrefId].cards.find(child => child.cbid == myCardToDelete.cbid);
+						if (myCardToCreate2.created === true) {
+							cardbookUtils.addTagCreated(myCardToDelete);
+							cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing redo " + cardbookRepository.currentUndoId + " deleting myCardToDelete.cbid : " + myCardToDelete.cbid);
+							cardbookRepository.deleteCards([myCardToDelete], myActionId);
+						} else {
+							cardbookUtils.addTagDeleted(myCardToDelete);
+							myCardToDelete.etag = myCardToCreate2.etag;
+							cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing redo " + cardbookRepository.currentUndoId + " deleting myCardToDelete.cbid : " + myCardToDelete.cbid);
+							cardbookRepository.deleteCards([myCardToDelete], myActionId);
+						}
+					}
 				}
-				for (var i = 0; i < item.newCards.length; i++) {
-					var myCard = item.newCards[i];
-					cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing redo " + nextUndoId + " adding myCard.uid : "+ myCard.uid.toSource());
-					cardbookRepository.saveCard({}, myCard, myActionId, false);
+				for (let myCardToCreate of item.newCards) {
+					let myCardToDelete = cardbookRepository.cardbookDisplayCards[myCardToCreate.dirPrefId].cards.find(child => child.cbid == myCardToCreate.cbid);
+					if (!myCardToDelete) {
+						var myMessage = "debug mode : executing undo " + cardbookRepository.currentUndoId + " adding myCardToCreate.cbid : " + myCardToCreate.cbid;
+						cardbookIndexedDB.checkCardForUndoAction(myMessage, myCardToCreate, myActionId);
+					} else {
+						cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing redo " + cardbookRepository.currentUndoId + " updating myCardToCreate.cbid : " + myCardToCreate.cbid);
+						cardbookUtils.addTagUpdated(myCardToCreate);
+						myCardToCreate.etag = myCardToDelete.etag;
+						cardbookRepository.saveCard(myCardToDelete, myCardToCreate, myActionId, false);
+					}
 				}
 				cardbookRepository.currentUndoId++;
 				cardbookActions.saveCurrentUndoId();

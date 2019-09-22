@@ -1,0 +1,11 @@
+radio[pane=paneRedirect] > .radio-check {
+  list-style-image: url("chrome://mailredirect-shared/skin/redirect.svg");
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+  fill-opacity: 1;
+}
+
+#xToolTip {
+  -moz-binding: url("chrome://mailredirect/content/xtooltip.xml#xtooltip");
+  padding: 0px !important;
+}

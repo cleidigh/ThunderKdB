@@ -573,6 +573,11 @@
 								<label><html:h2>&syncGroupboxLabel;</html:h2></label>
 								<description>&syncWarn;</description>
 								<hbox align="center">
+									<checkbox id="syncAfterChangeCheckBox" label="&syncAfterChangeLabel;"
+										accesskey="&syncAfterChangeAccesskey;" oncommand="wdw_cardbookConfiguration.showInitialSyncDelay();"
+										preference="extensions.cardbook.syncAfterChange"/>
+								</hbox>
+								<hbox align="center">
 									<checkbox id="initialSyncCheckBox" label="&initialSyncLabel;"
 										accesskey="&initialSyncAccesskey;" oncommand="wdw_cardbookConfiguration.showInitialSyncDelay();"
 										preference="extensions.cardbook.initialSync"/>

@@ -24,7 +24,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 	}
 	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js", this);
-	loader.loadSubScript("chrome://cardbook/content/cardbookHttpRequest.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookPasswordManager.js");
 
@@ -1166,7 +1165,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 								myPref = true;
 							}
 							var myType2 = "";
-							if (myType != "notype") {
+							if (myType != "notype" && myType != "all") {
 								for (var j = 0; j < cardbookRepository.cardbookCoreTypes["CARDDAV"][myField].length; j++) {
 									if (cardbookRepository.cardbookCoreTypes["CARDDAV"][myField][j][0] == myType) {
 										var myCode = cardbookRepository.cardbookCoreTypes["CARDDAV"][myField][j][1].split(";");
@@ -1176,13 +1175,13 @@ if ("undefined" == typeof(cardbookUtils)) {
 								}
 							}
 							if (myPref) {
-								if (myType != "notype") {
+								if (myType != "notype" && myType != "all") {
 									aCard[myField].push([ [aValueArray[i]], ["TYPE=PREF", "TYPE=" + myType2], "", [] ]);
 								} else {
 									aCard[myField].push([ [aValueArray[i]], ["TYPE=PREF"], "", [] ]);
 								}
 							} else {
-								if (myType != "notype") {
+								if (myType != "notype" && myType != "all") {
 									aCard[myField].push([ [aValueArray[i]], ["TYPE=" + myType2], "", [] ]);
 								} else {
 									aCard[myField].push([ [aValueArray[i]], [], "", [] ]);

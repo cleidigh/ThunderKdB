@@ -98,10 +98,10 @@
 			<label value="&searchContacts.label;"
 				accesskey="&searchContacts.accesskey;"
 				control="cardbookpeopleSearchInput"/>
-			<textbox id="cardbookpeopleSearchInput"
+			<textbox is="search-textbox" id="cardbookpeopleSearchInput"
 				class="searchBox"
 				flex="1"
-				onchange="wdw_cardbookContactsSidebar.onSearchEntered();"/>
+				oncommand="wdw_cardbookContactsSidebar.onSearchEntered();"/>
 		</vbox>
 		
 		<separator class="thin"/>

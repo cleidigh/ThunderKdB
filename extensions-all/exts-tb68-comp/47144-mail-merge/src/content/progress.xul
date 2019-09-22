@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailmerge/content/progress.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://mailmerge/locale/mailmerge.dtd">
+
+<dialog
+	id="mailmerge"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	title="Mail Merge"
+	buttons=","
+	onload="mailmerge.load();">
+	
+	<script type="application/x-javascript" src="chrome://mailmerge/content/progress.js" />
+	
+	<stringbundleset>
+		<stringbundle id="mailmerge-stringbundle" src="chrome://mailmerge/locale/mailmerge.properties" />
+	</stringbundleset>
+	
+	<vbox id="mailmerge-content">
+		
+		<html:fieldset id="mailmerge-progress">
+			<html:legend>&mailmerge.progress.progress;</html:legend>
+			<html:div>
+				<html:span>&mailmerge.progress.progress.index;</html:span>
+				<html:span />
+				<html:span id="mailmerge-progress-index"></html:span>
+			</html:div>
+			<html:div>
+				<html:span>&mailmerge.progress.progress.total;</html:span>
+				<html:span />
+				<html:span id="mailmerge-progress-total"></html:span>
+			</html:div>
+			<html:div>
+				<html:span>&mailmerge.progress.progress.time;</html:span>
+				<html:span />
+				<html:span id="mailmerge-progress-time"></html:span>
+			</html:div>
+			<html:div>
+				<html:span>&mailmerge.progress.progress.progress;</html:span>
+				<html:span />
+				<html:span><html:progress id="mailmerge-progress-progress" /></html:span>
+			</html:div>
+			<html:div>
+				<html:span>&mailmerge.progress.progress.status;</html:span>
+				<html:span />
+				<html:span id="mailmerge-progress-status"></html:span>
+			</html:div>
+		</html:fieldset>
+		
+	</vbox>
+	
+</dialog>

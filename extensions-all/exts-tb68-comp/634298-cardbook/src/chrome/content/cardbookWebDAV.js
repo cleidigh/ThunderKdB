@@ -44,6 +44,7 @@ if ("undefined" == typeof(XMLToJSONParser)) {
 
 if ("undefined" == typeof(cardbookWebDAV)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+	var { CardbookHttpRequest } = ChromeUtils.import("chrome://cardbook/content/cardbookHttpRequest.jsm");
 
 	function cardbookWebDAV(connection, target, etag, asJSON) {
 		this.prefId = connection.connPrefId;
@@ -196,10 +197,8 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				this.password = "";
 			} else {
 				if (!this.username) {
-					console.log("test SET CREDENTIALS / prefId: " + this.prefId);
 					if (this.prefId) {
 						this.username = cardbookPreferences.getUser(this.prefId);
-						console.log("test SET CREDENTIALS / cardbookPreferences.getUser: " + this.username);
 					} else {
 						this.username = "";
 					}
@@ -207,7 +206,6 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				if (this.username) {
 					this.password = cardbookPasswordManager.getNotNullPassword(this.username, this.prefId, this.url);
 				}
-				console.log("test SET CREDENTIALS: " + this.username + ':' + this.password);
 				aHeader["Authorization"] = "Basic " + this.b64EncodeUnicode(this.username + ':' + this.password);
 			}
 		},
@@ -354,13 +352,6 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 		},
 	
 		makeHTTPRequest: function(method, body, headers, aCleanBody, aXhrOrig) {
-			var httpChannel = new CardbookHttpRequest();
-			//httpChannel.loadFlags |= Components.interfaces.nsIRequest.LOAD_ANONYMOUS | Components.interfaces.nsIRequest.LOAD_BYPASS_CACHE | Components.interfaces.nsIRequest.INHIBIT_PERSISTENT_CACHING;
-			//httpChannel.notificationCallbacks = this;
-			if (this.timeout) {
-				httpChannel.timeout = this.timeout;
-			}
-
 			headers["User-Agent"] = cardbookRepository.userAgent;
 			
 			if (aXhrOrig) {
@@ -369,6 +360,13 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				this.setCredentials(headers);
 			}
 
+			// CardbookHttpRequest must be called after the username is fix, so it must be
+			// called after setCredentials(), which may change it.
+			var httpChannel = CardbookHttpRequest(this.url, this.username);
+			if (this.timeout) {
+				httpChannel.timeout = this.timeout;
+			}
+			
 			cardbookLog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : method : ", method);
 			if (headers) {
 				cardbookLog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : headers : ", cardbookUtils.cleanWebObject(headers));
@@ -488,7 +486,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				}
 				this.sendHTTPRequest("GET", null, headers, null, null, true);
 			} else if (operation == "PUT") {
-				if (this.etag) {
+				if (this.etag && this.etag != "0") {
 					this.sendHTTPRequest(operation, parameters.data, { "Content-Type": parameters.contentType,
 																		"If-Match": this.etag });
 				} else {

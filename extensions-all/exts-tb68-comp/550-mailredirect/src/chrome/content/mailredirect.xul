@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://mailredirect/skin/mailredirect.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailredirect/skin/mailredirect-subjectCol.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % mailredirectDTD SYSTEM "chrome://mailredirect/locale/mailredirect.dtd">
+  %mailredirectDTD;
+]>
+
+<overlay id="mailRedirectOverlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+
+  <script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="application/javascript" src="chrome://mailredirect/content/mailredirect-prefs.js"/>
+  <script type="application/javascript" src="chrome://mailredirect/content/mailredirect-debug.js"/>
+  <script type="application/javascript" src="chrome://mailredirect/content/mailredirect.js"/>
+
+  <commandset id="mailToolbarItems">
+    <command id="cmd_mailredirect" oncommand="goDoCommand('cmd_mailredirect')" />
+  </commandset>
+
+  <keyset id="mailKeys">
+    <key id="key_mailredirect" key="&bounceMsgCmd.key;" modifiers="&bounceMsgCmd.modifiers;"
+      oncommand="goDoCommand('cmd_mailredirect')" />
+  </keyset>
+
+  <menupopup id="messageMenuPopup">
+    <menuitem id="MailredirectMenuItem"
+      label="&bounceCommand.label;"
+      accesskey="&bounceCommand.accesskey;"
+      insertafter="forwardAsMenu"
+      key="key_mailredirect"
+      command="cmd_mailredirect" />
+  </menupopup>
+
+  <menupopup id="menu_forwardAsPopup">
+    <menuitem id="menu_forwardAsRedirect"
+      label="&forwardAsRedirect.label;"
+      accesskey="&forwardAsRedirect.accesskey;"
+      insertafter="menu_forwardAsAttachment"
+      command="cmd_mailredirect" />
+  </menupopup>
+
+  <!-- Thunderbird -->
+  <toolbarpalette id="MailToolbarPalette">
+    <toolbarbutton id="mailredirect-toolbarbutton" class="toolbarbutton-1" label="&bounceCommand.label;"
+      tooltiptext="&bounceCommand.tooltip;" observes="cmd_mailredirect" insertafter="button-forward" />
+  </toolbarpalette>
+
+  <!-- SeaMonkey -->
+  <hbox id="toolbar_button_box">
+    <toolbarbutton id="mailredirect-toolbarbutton" class="toolbarbutton-1" label="&bounceCommand.label;"
+      tooltiptext="&bounceCommand.tooltip;" observes="cmd_mailredirect" insertafter="button-forward" />
+  </hbox>
+
+  <!-- Thunderbird -->
+  <menupopup id="button-ForwardPopup">
+    <menuitem id="button-ForwardAsRedirect"
+      label="&forwardAsRedirect.label;"
+      tooltiptext="&forwardAsRedirect.tooltip;"
+      insertafter="button-ForwardAsAttachmentMenu,button-forwardAsMenu-forwardAsAttachment"
+      command="cmd_mailredirect" /> <!-- button-forwardAsMenu-forwardAsAttachment is added by Forward add-on -->
+  </menupopup>
+
+  <!-- SeaMonkey, menu has a different id, menuitems have no id -->
+  <menupopup id="button-forwardPopup">
+    <menuitem id="button-ForwardAsRedirect"
+      label="&forwardAsRedirect.label;"
+      accesskey="&forwardAsRedirect.accesskey;"
+      tooltiptext="&forwardAsRedirect.tooltip;"
+      command="cmd_mailredirect" />
+  </menupopup>
+
+  <menupopup id="mailContext">
+    <menuitem id="mailContext-mailredirect"
+      label="&bounceCommand.label;"
+      accesskey="&bounceCommand.accesskey;"
+      insertafter="mailContext-forwardAsMenu,mailContext-forward"
+      insertbefore="mailContext-multiForwardAsAttachment"
+      command="cmd_mailredirect" />
+    <menuitem id="mailContext-multiMailredirect"
+      label="&bounceCommand.label;"
+      accesskey="&bounceCommand.accesskey;"
+      insertafter="mailContext-multiForwardAsAttachment"
+      insertbefore="mailContext-editAsNew"
+      command="cmd_mailredirect" />
+  </menupopup>
+
+  <menupopup id="mailContext-forwardAsPopup">
+    <menuitem id="mailContext-forwardAsMailredirect" insertafter="mailContext-forwardAsAttachment"
+      label="&forwardAsRedirect.label;" accesskey="&forwardAsRedirect.accesskey;"
+      command="cmd_mailredirect" />
+  </menupopup>
+
+</overlay>

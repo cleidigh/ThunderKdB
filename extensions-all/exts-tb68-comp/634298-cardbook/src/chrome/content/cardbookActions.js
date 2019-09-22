@@ -278,7 +278,6 @@ if ("undefined" == typeof(cardbookActions)) {
 			if (cardbookRepository.currentAction[aActionId]) {
 				var myAction = cardbookRepository.currentAction[aActionId];
 				if (myAction.files.length > 0) {
-					cardbookRepository.reWriteFiles(myAction.files);
 					cardbookActions.addActivityFromUndo(aActionId);
 					if (myAction.actionCode != "undoActionDone" && myAction.actionCode != "redoActionDone") {
 						cardbookActions.addUndoCardsAction(myAction.actionCode, myAction.message, myAction.oldCards, myAction.newCards);
@@ -287,6 +286,10 @@ if ("undefined" == typeof(cardbookActions)) {
 						cardbookUtils.notifyObservers(myAction.actionCode, "force::" + myAction.refresh);
 					} else {
 						cardbookUtils.notifyObservers(myAction.actionCode);
+					}
+					cardbookRepository.reWriteFiles(myAction.files);
+					if (cardbookPreferences.getBoolPref("extensions.cardbook.syncAfterChange")) {
+						cardbookSynchronization.syncAccounts(myAction.files);
 					}
 				} else if (aForceRefresh == true) {
 					cardbookUtils.notifyObservers(myAction.actionCode, "force::" + myAction.refresh);

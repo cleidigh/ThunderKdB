@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <rdf:Description rdf:about="urn:mozilla:install-manifest">
+    <em:id>{CC3C233D-6668-41bc-AAEB-F3A1D1D594F5}</em:id>
+    <em:type>2</em:type>
+    <em:name>Mail Redirect</em:name>
+    <em:version>0.10.4</em:version>
+    <em:unpack>true</em:unpack>
+    <em:description>Allow to redirect (a.k.a. &quot;remail&quot;) mail messages to other recipients.</em:description>
+    <em:creator>Paweł Krześniak</em:creator>
+    <em:developer>Ronald Wahl</em:developer>
+    <em:developer>Onno Ekker</em:developer>
+    <em:translator>Khaled Hosny &amp; Safa Alfulaij (ar)</em:translator>
+    <em:translator>Dremski &amp; Стоян Димитров (bg)</em:translator>
+    <em:translator>David Gimeno i Ayuso (ca)</em:translator>
+    <em:translator>Tomáš Drbohlav &amp; Stanislav Horáček (cs)</em:translator>
+    <em:translator>Joergen (da)</em:translator>
+    <em:translator>Lars Roth, Alexander Ihrig &amp; Archaeopteryx (de)</em:translator>
+    <em:translator>Anna Florou, Jim Spentzos &amp; George Malamas (el)</em:translator>
+    <em:translator>Thad McGinnis &amp; acushnir (es-AR)</em:translator>
+    <em:translator>Antonio Pardo &amp; urko (es-ES)</em:translator>
+    <em:translator>Ans tec &amp; Notuo (es-MX)</em:translator>
+    <em:translator>Sami Kuusisto (fi)</em:translator>
+    <em:translator>Laurent Malgras &amp; Goofy (fr)</em:translator>
+    <em:translator>Mihovil Stanić (hr)</em:translator>
+    <em:translator>Óvári (hu)</em:translator>
+    <em:translator>quincy87 &amp; Mienz Louveinski (id)</em:translator>
+    <em:translator>Luana Di Muzio &amp; Leopoldo Saggin (it)</em:translator>
+    <em:translator>matsumoto &amp; Masahiko Imanaka (ja)</em:translator>
+    <em:translator>Rimas Kudelis (lt)</em:translator>
+    <em:translator>Øistein Rian (nb)</em:translator>
+    <em:translator>Onno Ekker (nl)</em:translator>
+    <em:translator>Lukasz Stelmach &amp; Leszek(teo)Życzkowski (pl)</em:translator>
+    <em:translator>Marco A.G. Pinto (pt)</em:translator>
+    <em:translator>Carlos Hix (pt-BR)</em:translator>
+    <em:translator>Lari Tanase &amp; Gabriel Tudor (ro)</em:translator>
+    <em:translator>Evgeny Lavrov, Anton Pinsky &amp; Alexander L. Slovesnik (ru)</em:translator>
+    <em:translator>Branislav Rozbora &amp; aceman (sk)</em:translator>
+    <em:translator>Peter Klofutar (sl)</em:translator>
+    <em:translator>Besnik Bleta (sq)</em:translator>
+    <em:translator>Rancher &amp; ДакСРБИЈА (sr)</em:translator>
+    <em:translator>Niklas Bjärholm, Mikael Hiort af Ornäs &amp; A. Regnander (sv-SE)</em:translator>
+    <em:translator>Sinan Kaan Yerli (tr)</em:translator>
+    <em:translator>Artem Polivanchuk (uk-UA)</em:translator>
+    <em:translator>Wang.H.K &amp; Fan Yang (zh-CN)</em:translator>
+    <em:translator>Chan Chris Lo Man &amp; Peter Pin-Guang Chen (zh-TW)</em:translator>
+    <em:homepageURL>https://mailredirect.sourceforge.io/</em:homepageURL>
+    <em:optionsURL>chrome://mailredirect/content/mailredirect-prefs.xul</em:optionsURL>
+    <em:optionsType>3</em:optionsType>
+    <em:targetApplication>
+      <rdf:Description rdf:about="rdf:#thunderbird">
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>6.0</em:minVersion>
+        <em:maxVersion>75.*</em:maxVersion>
+      </rdf:Description>
+    </em:targetApplication>
+    <em:targetApplication>
+      <rdf:Description rdf:about="rdf:#seamonkey">
+        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+        <em:minVersion>2.3</em:minVersion>
+        <em:maxVersion>2.57.*</em:maxVersion>
+      </rdf:Description>
+    </em:targetApplication>
+  </rdf:Description>
+</rdf:RDF>

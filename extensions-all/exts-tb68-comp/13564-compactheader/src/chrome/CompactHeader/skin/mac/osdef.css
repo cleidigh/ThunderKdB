@@ -1,0 +1,222 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is Mozilla Communicator client code, released
+ * March 31, 1998.
+ *
+ * The Initial Developer of the Original Code is
+ * Netscape Communications Corporation.
+ * Portions created by the Initial Developer are Copyright (C) 1998-1999
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+/* ===== messageHeader.css ==============================================
+  == Styles for the header toolbars of a mail message.
+  ======================================================================= */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* All values copied from gnomestrip theme. Have to be checked */
+#otherActionsButton {
+  list-style-image: url("chrome://CompactHeader-os/skin/other-action.png");
+}
+
+toolbar[iconsize="small"] #otherActionsButton {
+  list-style-image: url("chrome://CompactHeader-os/skin/other-action-small.png");
+}
+
+#expandedButtonBox {
+  margin: 0px;
+  padding: 0px;
+}
+
+/*
+toolbox[labelalign="end"] toolbar[mode="full"] .hdrJunkButton .toolbarbutton-icon,
+toolbox[labelalign="end"] toolbar[mode="full"] toolbarpaletteitem .hdrJunkButton .toolbarbutton-icon {
+  display: -moz-box;
+}
+
+toolbox[labelalign="end"] toolbar[mode="full"] .hdrJunkButton .toolbarbutton-text,
+toolbox[labelalign="end"] toolbar[mode="full"] toolbarpaletteitem .hdrJunkButton .toolbarbutton-text {
+  -moz-margin-start: 2px !important;
+}
+
+toolbox[labelalign="end"] toolbar[mode="full"] .hdrJunkButton,
+toolbox[labelalign="end"] toolbar[mode="full"] toolbarpaletteitem .hdrJunkButton {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+*/
+/*
+toolbarpaletteitem[place="palette"] .msgHeaderView-button-out {
+  -moz-appearance: button;
+}
+*/
+.msgHeaderView-button-out-item .msgHeaderView-button-out,
+.msgHeaderView-button-out {
+  -moz-appearance: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  -moz-margin-start: 2px !important;
+  -moz-margin-end: 2px !important;
+  /*border-width: 3px !important;
+  border-style: solid !important; */
+}
+
+.msgHeaderView-button-out-item .msgHeaderView-button-out .toolbarbutton-menubutton-button,
+.msgHeaderView-button-out .toolbarbutton-menubutton-button {
+  -moz-appearance: button;
+  min-width: 1em;
+  min-height: 1ex;
+  margin: 0;
+  /* important required to override messenger.css rule */
+  padding: 0 !important;
+}
+
+toolbar[mode="text"] .msgHeaderView-button-out .toolbarbutton-text,
+toolbar[mode="text"] toolbarpaletteitem .msgHeaderView-button-out .toolbarbutton-text,
+toolbar[mode="text"] .msgHeaderView-button .toolbarbutton-text,
+toolbar[mode="text"] toolbarpaletteitem .msgHeaderView-button .toolbarbutton-text {
+  margin: 0 !important;
+  padding-top: 1px !important;
+  padding-bottom: 2px !important;
+  -moz-padding-start: 0px !important;
+  -moz-padding-end: 0px !important;
+}
+
+/*
+toolbarpaletteitem[place="palette"] .msgHeaderView-flat-button-out-item,
+toolbarpaletteitem[place="palette"] .msgHeaderView-flat-button-out-item .msgHeaderView-flat-button-out,
+toolbarpaletteitem[place="palette"] .msgHeaderView-flat-button-out,
+toolbarpaletteitem[place="palette"] .msgHeaderView-flat-button {
+  -moz-appearance: button;
+}
+*/
+
+.msgHeaderView-flat-button-out-item .msgHeaderView-flat-button-out,
+.msgHeaderView-flat-button-out {
+  -moz-appearance: none;
+  margin: 1px 2px !important;
+  padding: 0px !important;
+  border: 1px !important;
+  min-width: 1px;
+  color: ButtonText;
+  -moz-border-radius: 4px;
+  min-height: 1ex;
+}
+
+.msgHeaderView-flat-button-out-item:hover {
+  -moz-appearance: none;
+}
+
+.msgHeaderView-flat-button-out-item .msgHeaderView-flat-button-out:hover,
+.msgHeaderView-flat-button-out:hover {
+  -moz-appearance: none !important;
+  margin: 0px 1px !important;
+  border: 1px solid ButtonShadow !important;
+}
+
+.msgHeaderView-flat-button-out-item .msgHeaderView-flat-button-out .toolbarbutton-menubutton-button,
+.msgHeaderView-flat-button-out .toolbarbutton-menubutton-button {
+  -moz-appearance: none;
+  background-color: transparent;
+  margin: 0px 0px;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  -moz-padding-start: 5px !important;
+  -moz-padding-end: 5px !important;
+  border: 3px !important;
+}
+
+/*
+.msgHeaderView-button-out  > .toolbarbutton-menubutton-dropmarker {
+  -moz-margin-start: 3px;
+  -moz-margin-end: 4px;
+}
+*/
+.msgHeaderView-flat-button-out-item .msgHeaderView-flat-button-out .toolbarbutton-menubutton-button:hover,
+.msgHeaderView-flat-button-out .toolbarbutton-menubutton-button:hover {
+  -moz-appearance: button;
+  background-color: -moz-buttonhovertext;
+  -moz-padding-start: 0px !important;
+  -moz-padding-end: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin: 0px !important;
+}
+
+
+toolbar[mode="text"] .msgHeaderView-flat-button-out .toolbarbutton-text,
+toolbar[mode="text"] toolbarpaletteitem .msgHeaderView-flat-button-out .toolbarbutton-text {
+  margin: 0 !important;
+  padding-top: 1px !important;
+  padding-bottom: 0px !important;
+  -moz-padding-start: 0px !important;
+  -moz-padding-end: 0px !important;
+}
+
+toolbox[labelalign="end"] toolbar[mode="full"] .msgHeaderView-button-out .toolbarbutton-text,
+toolbox[labelalign="end"] toolbar[mode="full"] .msgHeaderView-flat-button-out .toolbarbutton-text {
+  -moz-margin-start: 2px !important;
+}
+
+#collapsedHeaderView #dispMUAicon {
+  height: 20px !important;
+  width: 20px !important;
+}
+
+#header-view-toolbar > toolbarbutton > image,
+#header-view-toolbar > toolbarpaletteitem > toolbarbutton > image {
+   height: 18px !important;
+   width: 16px !important;
+}
+
+toolbar[orient="vertical"] toolbarpaletteitem {
+  margin: -2px 0px;
+  border: none;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+toolbar[orient="vertical"] toolbarpaletteitem[dragover="left"] {
+  border-color: transparent;
+  border-top-color: #000000;
+}
+
+toolbar[orient="vertical"] toolbarpaletteitem[dragover="right"] {
+  border-color: transparent;
+  border-bottom-color: #000000;
+}
+
+#header-view-toolbar[orient="vertical"] toolbarbutton {
+  -moz-box-orient: vertical !important;
+}
+
+toolbar[orient="vertical"] toolbarbutton {
+    margin: 2px 1px;
+}

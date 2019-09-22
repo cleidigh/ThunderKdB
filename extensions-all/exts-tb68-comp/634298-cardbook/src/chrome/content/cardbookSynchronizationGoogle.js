@@ -15,7 +15,6 @@ if ("undefined" == typeof(cardbookSynchronizationGoogle)) {
 		XPCOMUtils.defineLazyModuleGetter(this, "cardbookUtils", "chrome://cardbook/content/cardbookUtils.js");
 	}
 	var loader = Services.scriptloader;
-	loader.loadSubScript("chrome://cardbook/content/cardbookHttpRequest.js");
 	loader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js");
 	
 	var EXPORTED_SYMBOLS = ["cardbookSynchronizationGoogle"];
