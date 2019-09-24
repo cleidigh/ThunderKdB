@@ -61,16 +61,18 @@ function genExtensionListFromJson(extsJson) {
 
 	// console.debug(extsListFile);
 
-	extsJson.map( extJson => {
+	extsJson.map( (extJson, index) => {
+		extJson.xpilib = {};
+		extJson.xpilib.rank = index;
 		console.debug('Extension ' + extJson.id);
 		return createExtMDTableRow(extJson);
 	})
 	.map( extRow => {
-		console.debug('Row '+ extRow);
+		// console.debug('Row '+ extRow);
 		extRows += extRow;
 	});
 	extsListFile = extsListFile.replace('__ext-table-tb68__', extRows);
-	console.debug(extsListFile );
+	// console.debug(extsListFile );
 	fs.writeFileSync(`${ext68CompDir}\\extension-list-tb68.md`, extsListFile);
 	console.debug('Done');
 }
@@ -95,13 +97,14 @@ function createExtMDTableRow(extJson) {
 	
 	let v_min = `${extJson.current_version.compatibility.thunderbird.min}`;
 	let v_max = `${extJson.current_version.compatibility.thunderbird.max}`;
-	let mext = `${extJson.current_version.files[0].is_webextension}`;
+	let mext = extJson.current_version.files[0].is_webextension;
 
 	const p = /[\d\.]+/;
 	let v_max_num = p.exec(v_max);
 	let v_min_num = p.exec(v_min);
 
-	console.debug('versions '+ Number(v_max) + " n: "+v_max_num);
+	console.debug('versions '+ Number(v_max) + " n: "+v_max_num + " ME "+mext);
+	
 	let comp_badges =" ";
 
 	if (v_min_num <= 68 && v_max_num >= 68) {
@@ -117,7 +120,7 @@ function createExtMDTableRow(extJson) {
 		comp_badges += " " + cBadge_tb68_plus;
 	}
 
-	if (v_min_num <= 60 && v_max_num >= 60) {
+	if (v_min_num <= 60 && (v_max_num >= 60 || v_max === "*") ) {
 		comp_badges += " " + cBadge_tb60;
 		if (v_max_num >= 61 && v_max_num < 68) {
 			comp_badges += " " + cBadge_tb60_plus;
@@ -128,14 +131,15 @@ function createExtMDTableRow(extJson) {
 		comp_badges += " " + cBadge_maxv_star_warn;
 	}
 
-	if (mext) {
+	if (mext == true) {
+		console.debug('ME '+mext);
 		comp_badges += " " + cBadge_mx;
 	}
 
-	let rank = " 1";
+	let rank = extJson.xpilib.rank;
 	
 	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
-	row += `$	{rank} | ${extJson.id} | ${name} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
+	row += `${rank} | ${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
 	
 	return row;
 }
