@@ -16,14 +16,23 @@
 <body>
 
 	<div>
-	<img src='Thunderbird-icon.png' style="padding-right: 60px;"/>
+	<img src='./images/Thunderbird-Banner.png' style="padding-right: 60px; height: 32px; width: 136px"/>
 
-	<h1>Thunderbird xpiLib : Extension Browser</h1>
+	<h2>xpiLib Extension Browser</h2>
 </div>
 	<hr>
 	<br>
-	<h2>Extension File Search:</h2>
-	<span>Search : </span><input id="topic" type="text" />
+
+	<h2>Extension File/Issue Search:</h2>
+	<div width="25%"><hr></div>
+
+	<div width="25%">
+	<span>Search : </span>
+	</div>
+	<div width="75%">
+	<input id="topic" type="text" />
+	</div>
+
 	<button id="topic_btn" type="button" onclick="search_exts()" >Search</button>
 	<br><br>
 	<span>File Types : </span><select id="file_types">
