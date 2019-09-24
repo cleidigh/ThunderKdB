@@ -150,14 +150,18 @@ function createExtMDTableRow(extJson) {
 	}
 
 	if (mext == true) {
-		console.debug('ME '+mext);
 		comp_badges += " " + cBadge_mx;
+	}
+
+	// vision filters
+	if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb68)) ) {
+		return "";
 	}
 
 	let rank = extJson.xpilib.rank;
 	
 	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
-	row += `${rank} | ${extJson.id} | ${name} | ${extJson.current_version.version.substr(0,20)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
+	row += `${rank} | ${extJson.id} | ${name} | ${extJson.current_version.version.substr(0,18)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
 	
 	return row;
 }
