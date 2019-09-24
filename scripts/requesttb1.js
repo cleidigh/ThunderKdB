@@ -12,6 +12,9 @@ const rootDir = "C:/Dev/Thunderbird/ThunderKdB";
 const ext68CompDir = '..\\extensions-all\\exts-tb68-comp';
 const ext68CompDirU = '/extensions-all/exts-tb68-comp';
 
+
+const extsAllJsonFileName = `${rootDir}/exall/exall.json`;
+
 // unauthenticated client
 const gh = new GitHub({
 	// username: 'cleidigh@gmail.com',
@@ -59,7 +62,6 @@ let extArray = [
 
 ];
 
-let extSearchRequest = "app=thunderbird&type=extension&sort=created"
 
 var options = {
 	url: "https://addons.thunderbird.net/api/v4/addons/search/",
@@ -123,8 +125,8 @@ function getExtensionJSON(addon_identifier, query_type) {
 
 }
 
-async function requestURL(addon_id, query_type) {
-	console.debug('request ' + addon_id + " Type: " + query_type);
+async function requestATN_URL(addon_id, query_type, options) {
+	// console.debug('request ' + addon_id + " Type: " + query_type);
 	// let response = await request.get('https://addons.thunderbird.net/api/v4/addons/addon/90003');
 	let extRequestOptions = {
 		url: `https://addons.thunderbird.net/api/v4/addons/addon/${addon_id}`,
@@ -141,11 +143,18 @@ async function requestURL(addon_id, query_type) {
 		extRequestOptions.url = `https://addons.thunderbird.net/api/v4/addons/addon/${addon_id}/versions/`;
 	}
 
+	if (query_type === 'search') {
+		extRequestOptions.url = "https://addons.thunderbird.net/api/v4/addons/search/";
+		// extRequestOptions.qs = { page: page, app: "thunderbird", type: "extension", sort: "created" };
+		extRequestOptions.qs = options;
+
+	}
+
 	try {
 		let response = await request.get(extRequestOptions);
 		if (response.err) { console.log('error'); }
 		else {
-			console.log(' Done response: ' + addon_id);
+			// console.log(' Done response: ' + addon_id);
 			// console.debug(response);
 			return response;
 		}
@@ -197,7 +206,7 @@ async function getExtensionFiles(addon_identifier) {
 	try {
 		console.log('Get Files: ' + addon_identifier);
 		// let ext = getExtensionJSON(90003);
-		let ext = await requestURL(addon_identifier, 'details')
+		let ext = await requestATN_URL(addon_identifier, 'details')
 		const extRootName = `${addon_identifier}-${ext.slug}`;
 		const extRootDir = `${ext68CompDir}\\${extRootName}`;
 		console.debug('CheckingFolder: ' + extRootDir);
@@ -226,7 +235,7 @@ async function getExtensionFiles(addon_identifier) {
 		// await _7CmdSync(_7zCommand);
 		console.debug('unpacked source');
 
-		let ext_versions = await requestURL(addon_identifier, 'versions');
+		let ext_versions = await requestATN_URL(addon_identifier, 'versions');
 		console.debug('downloaded versions');
 
 		jfile = `.\\${ext68CompDir}\\${extRootName}\\${extRootName}-versions.json`
@@ -269,7 +278,7 @@ function fileUnzip(source, options) {
 }
 
 async function test() {
-	let ext = await requestURL(addon_identifier)
+	let ext = await requestATN_URL(addon_identifier)
 	console.debug(ext);
 }
 
@@ -316,6 +325,33 @@ async function fetchAllCounts(users) {
 	return Promise.all(promises);
 }
 
+var extsJson = [];
+
+async function getAllExtensionDetails(pageStart, pageEnd) {
+	let qs = { page: 0, app: "thunderbird", type: "extension", sort: "users" };
+
+	let ap = [];
+	for (let i = pageStart; i < pageEnd + 1; i++) {
+		qs.page = i;
+		// json_resp = await requestATN_URL(null, 'search', qs);
+		let resp = await requestATN_URL(null, 'search', qs)
+		// console.debug('page:\n'+ JSON.stringify( resp.results));
+		// console.debug(`page: ${i} ${resp.results[0].id} ${resp.results.length} \n\n\n\n`);
+		ap += resp;
+		extsJson = extsJson.concat(resp.results);
+		// console.debug('page:\n' + JSON.stringify( extsJson));
+
+	
+	}
+
+	// console.debug('Await All'); 
+	let ap2 = Promise.all(ap);
+	// console.debug('All Promises ' + ap.length + " " + ap);
+
+	return ap2;
+}
+
+
 async function getAll() {
 	// let p = [];
 
@@ -334,8 +370,23 @@ async function getAll() {
 // ghSearch();
 // console.debug(getDirectories('.'));
 async function g1() {
-	await getAll();
-	console.debug('after get all');
+	// await getAll();
+	let startTime = new Date();
+	console.debug('' + startTime);
+	await getAllExtensionDetails(1, 4);
+
+	console.debug('after get all '+ extsJson.length);
+	console.debug(new Date() - startTime);
+	console.debug(new Date());
+
+	// extsJson.map( ext => {
+	// 	console.debug(`${ext.id}  ${ext.slug} ${ext.average_daily_users}`);
+	// });
+
+	writePrettyJSONFile(extsAllJsonFileName, extsJson);
 }
 g1();
+
+
+
 console.debug('Totally Done');
