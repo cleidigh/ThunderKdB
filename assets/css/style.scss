@@ -1,82 +1,72 @@
----
----
-
-@import "_tables.scss";
+--- --- @import "_tables.scss";
 // @import "{{ site.theme }}";
-
 // site CSS
-
-@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap');
-
-
+// @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap');
 @font-face {
     font-family: 'Roboto';
-	src: url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap');
-	//     src: url('Roboto-ThinItalic-webfont.eot');
-//     src: url('Roboto-ThinItalic-webfont.eot?#iefix') format('embedded-opentype'),
-//          url('Roboto-ThinItalic-webfont.woff') format('woff'),
-//          url('Roboto-ThinItalic-webfont.ttf') format('truetype'),
-//          url('Roboto-ThinItalic-webfont.svg#RobotoThinItalic') format('svg');
-//     font-weight: 200;
-//     font-style: italic;
+    // src: url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap');
+    src: url('https://fonts.googleapis.com/css?family=Roboto:200');
+    //     src: url('Roboto-ThinItalic-webfont.eot');
+    //     src: url('Roboto-ThinItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    //          url('Roboto-ThinItalic-webfont.woff') format('woff'),
+    //          url('Roboto-ThinItalic-webfont.ttf') format('truetype'),
+    //          url('Roboto-ThinItalic-webfont.svg#RobotoThinItalic') format('svg');
+    //     font-weight: 200;
+    //     font-style: italic;
 }
-
 
 .test2 {
-	color: aqua;
+    color: aqua;
 }
 
-
 .content {
-	margin-right: 40px;
+    margin-right: 40px;
     margin-left: 40px;
     // padding: 15px 0;
-	// font-family: 'Roboto', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	font-family: 'Roboto' !important;
+    // font-family: 'Roboto', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Roboto' !important;
 }
 
 .container-lg {
-	margin-right: 20px !important;
+    margin-right: 20px !important;
     margin-left: 20px !important;
     // padding: 15px 0;
 }
 
 header {
-	display: none;
+    display: none;
 }
 
 .markdown-body {
-	// font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    // font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 table {
-	@extend .table;
-	@extend .table-bordered;
-	@extend .table-striped;
-	@extend .table-sm;
-	border-collapse: collapse;
+    @extend .table;
+    @extend .table-bordered;
+    @extend .table-striped;
+    @extend .table-sm;
+    border-collapse: collapse;
 }
 
 th {
-	background-color: cornflowerblue !important;
-	text-align: left;
+    background-color: cornflowerblue !important;
+    text-align: left;
 }
 
 td {
-	text-align: left;
+    text-align: left;
 }
 
 table tr td:nth-child(1) {
-	width: 30px;
+    width: 30px;
 }
 
 table tr td:nth-child(2) {
-	width: 40px;
-	text-align: right;
+    width: 40px;
+    text-align: right;
 }
-
-
 
 // @font-face {
 //     font-family: 'YourFontName'; /*a name to be used later*/
