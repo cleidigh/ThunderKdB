@@ -80,14 +80,32 @@ function genExtensionListFromJson(extsJson) {
 function createExtMDTableRow(extJson) {
 	let row = "|";
 	let default_locale = extJson.default_locale;
+	console.debug('name: '+ JSON.stringify(extJson.name) + '  '+default_locale);
 	if (default_locale === undefined) {
-		default_locale = "en-US";
+		console.debug('NoLocale: '+ extJson.name);
+		if (typeof extJson.name["en-US"]  === 'string'){
+			default_locale = "en-US";
+		} else {
+			let locales = Object.keys(extJson.name);
+			console.debug('Locales: '+locales);
+			default_locale = extJson.name[locales[0]];
+			console.debug('Locale 0: '+default_locale);
+		}
+	} else {
+		if (typeof extJson.name["en-US"]  !== 'string'){
+			let locales = Object.keys(extJson.name);
+			console.debug('Locales: '+locales);
+			default_locale = locales[0];
+			console.debug('Locale 0: '+default_locale);
+		}
 	}
 	
 	const name = extJson.name[default_locale].substr(0,26);
 	
-	let summary = extJson.summary[default_locale].substr(0,42);
-	summary = summary.replace(/\n/g, ' ');
+	let summary;
+	// let summary = extJson.summary[default_locale].substr(0,42);
+	// summary = summary.replace(/\n/g, ' ');
+
 	// const srcLink = `[Src](https://github.com\\cleidigh\\ThunderKdB\\tree\\master\\${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`
 	const srcLink = `[Src](./${extJson.id}-${extJson.slug}/src)`
 

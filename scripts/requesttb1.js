@@ -373,7 +373,7 @@ async function g1() {
 	// await getAll();
 	let startTime = new Date();
 	console.debug('' + startTime);
-	await getAllExtensionDetails(1, 3);
+	await getAllExtensionDetails(1, 54);
 
 	console.debug('after get all '+ extsJson.length);
 	console.debug(new Date() - startTime);
