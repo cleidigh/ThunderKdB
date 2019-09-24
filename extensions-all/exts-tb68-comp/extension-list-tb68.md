@@ -2,7 +2,7 @@
 
 
 | # | Id | Name | Ver | Date | Users | Min | Max | Compatibility |
-|---| ---: |---|---|---|---|---|---|---|
+|---| ---: |---|---|---|---: |---|---|---|
 |$	{rank} | 2313 | Lightning | 68.0 | 2019-08-31 | 6743210 | 68.0 | 68.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-green.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |$	{rank} | 324492 | ImportExportTools | 3.3.2 | 2019-01-27 | 466347 | 14.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |$	{rank} | 4631 | Provider for Google Calend | 68.0 | 2019-09-02 | 289700 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-green.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
