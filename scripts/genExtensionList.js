@@ -101,13 +101,15 @@ function createExtMDTableRow(extJson) {
 	}
 	
 	const name = extJson.name[default_locale].substr(0,26);
-	
+	const name_full = extJson.name[default_locale];
+
 	let summary;
 	// let summary = extJson.summary[default_locale].substr(0,42);
 	// summary = summary.replace(/\n/g, ' ');
 
 	// const srcLink = `[Src](https://github.com\\cleidigh\\ThunderKdB\\tree\\master\\${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`
 	const srcLink = `[Src](./${extJson.id}-${extJson.slug}/src)`
+	const name_link = `[${name}](./${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}.json)`
 
 	// https://github.com/cleidigh/ThunderKdB/tree/master/extensions-all/exts-tb68-comp/90003-localfolder/src
 	const xpiLink = `[XPI](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\xpi)`;
@@ -161,7 +163,7 @@ function createExtMDTableRow(extJson) {
 	let rank = extJson.xpilib.rank;
 	
 	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
-	row += `${rank} | ${extJson.id} | ${name} | ${extJson.current_version.version.substr(0,18)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
+	row += `${rank} | ${extJson.id} | ${name_link} | ${extJson.current_version.version.substr(0,18)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
 	
 	return row;
 }
