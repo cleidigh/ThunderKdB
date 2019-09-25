@@ -63,7 +63,7 @@ function genExtensionListFromJson(extsJson) {
 
 	extsJson.map( (extJson, index) => {
 		extJson.xpilib = {};
-		extJson.xpilib.rank = index;
+		extJson.xpilib.rank = index+1;
 		console.debug('Extension ' + extJson.id);
 		return createExtMDTableRow(extJson);
 	})
