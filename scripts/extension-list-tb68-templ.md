@@ -1,3 +1,4 @@
+<html>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap');
 
@@ -19,7 +20,7 @@ body {
 </div>
 	<hr>
 	<br>
-
+</html>
 | # | Id | Name | Ver | Date | Users | Min | Max | Compatibility |
 |---: |---: |---|---: |---: |---: |---: |---: |---|
 __ext-table-tb68__
