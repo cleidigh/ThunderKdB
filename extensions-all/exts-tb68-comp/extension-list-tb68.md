@@ -17,6 +17,8 @@ body {
 	<label class="banner-header">ThunderKdB: Extension Developer Resources</label>
 	<label class="banner-header-rt">2019-09-24</label>
 </div>
+	<hr>
+	<br>
 
 | # | Id | Name | Ver | Date | Users | Min | Max | Compatibility |
 |---: |---: |---|---: |---: |---: |---: |---: |---|
