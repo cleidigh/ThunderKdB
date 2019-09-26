@@ -135,7 +135,7 @@ function createExtMDTableRow(extJson) {
 		
 	} else if (mext && v_max === "*" && v_min_num >= 61) {
 		comp_badges += cBadge_tb68;
-	} else if (mext && v_max === "*" && extJson.current_version.files[0].created.split('T')[0] > tb68_threshold_date ) {
+	} else if (mext && v_max === "*" && ( new Date(extJson.current_version.files[0].created.split('T')[0]) > tb68_threshold_date) ) {
 		comp_badges += cBadge_tb68;
 	}
 
