@@ -160,6 +160,11 @@ function createExtMDTableRow(extJson) {
 	// 	return "";
 	// }
 
+	// vision filters
+	if ( !(comp_badges.includes(cBadge_tb60) ) ) {
+		return "";
+	}
+
 	let rank = extJson.xpilib.rank;
 	
 	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
