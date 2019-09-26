@@ -100,7 +100,7 @@ function createExtMDTableRow(extJson) {
 		}
 	}
 	
-	const name = extJson.name[default_locale].substr(0,26);
+	const name = extJson.name[default_locale].substr(0,32);
 	const name_full = extJson.name[default_locale];
 
 	let summary;
@@ -156,9 +156,9 @@ function createExtMDTableRow(extJson) {
 	}
 
 	// vision filters
-	if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb68)) ) {
-		return "";
-	}
+	// if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb68)) ) {
+	// 	return "";
+	// }
 
 	let rank = extJson.xpilib.rank;
 	
