@@ -164,10 +164,9 @@ function createExtMDTableRow(extJson) {
 	// 	return "";
 	// }
 
-	// vision filters
-	// if ( !(comp_badges.includes(cBadge_tb60) ) ) {
-	// 	return "";
-	// }
+	if ( !(comp_badges.includes(cBadge_tb60) ) ) {
+		return "";
+	}
 
 	let rank = extJson.xpilib.rank;
 	
