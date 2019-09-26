@@ -100,7 +100,7 @@ function createExtMDTableRow(extJson) {
 		}
 	}
 	
-	const name = extJson.name[default_locale].substr(0,32);
+	const name = extJson.name[default_locale].substr(0,38);
 	const name_full = extJson.name[default_locale];
 
 	let summary;
@@ -126,6 +126,7 @@ function createExtMDTableRow(extJson) {
 	console.debug('versions '+ Number(v_max) + " n: "+v_max_num + " ME "+mext);
 	
 	let comp_badges =" ";
+	const  tb68_threshold_date = new Date("2019-2-1");
 
 	if (v_min_num <= 68 && v_max_num >= 68) {
 		comp_badges += cBadge_tb68;
@@ -134,7 +135,10 @@ function createExtMDTableRow(extJson) {
 		
 	} else if (mext && v_max === "*" && v_min_num >= 61) {
 		comp_badges += cBadge_tb68;
+	} else if (mext && v_max === "*" && extJson.current_version.files[0].created.split('T')[0] > tb68_threshold_date ) {
+		comp_badges += cBadge_tb68;
 	}
+
 
 	if (v_max_num >= 69) {
 		comp_badges += " " + cBadge_tb68_plus;
@@ -161,14 +165,14 @@ function createExtMDTableRow(extJson) {
 	// }
 
 	// vision filters
-	if ( !(comp_badges.includes(cBadge_tb60) ) ) {
-		return "";
-	}
+	// if ( !(comp_badges.includes(cBadge_tb60) ) ) {
+	// 	return "";
+	// }
 
 	let rank = extJson.xpilib.rank;
 	
 	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
-	row += `${rank} | ${extJson.id} | ${name_link} | ${extJson.current_version.version.substr(0,18)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
+	row += `${rank} | ${extJson.id} | ${name_link} | ${extJson.current_version.version.substr(0,12)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
 	
 	return row;
 }
