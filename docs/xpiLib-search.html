@@ -123,6 +123,9 @@
 			let q = document.getElementById('topic').value;
 			// q += "+extension:js+extension:xul";
 			q += '+' + document.getElementById('file_types').value;
+			if (document.getElementById("comp60").checked) {
+				q += "+path:/extensions-all/exts-tb60-comp"
+			}
 			window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
 
 			if (document.getElementById("search_dxr").checked) {

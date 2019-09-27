@@ -370,20 +370,22 @@ async function getAll() {
 // ghSearch();
 // console.debug(getDirectories('.'));
 async function g1() {
-	// await getAll();
 	let startTime = new Date();
 	console.debug('' + startTime);
-	await getAllExtensionDetails(1, 54);
+	// await getAllExtensionDetails(1, 55);
+
+	await getAll();
 
 	console.debug('after get all '+ extsJson.length);
 	console.debug(new Date() - startTime);
 	console.debug(new Date());
 
-	// extsJson.map( ext => {
-	// 	console.debug(`${ext.id}  ${ext.slug} ${ext.average_daily_users}`);
-	// });
 
-	writePrettyJSONFile(extsAllJsonFileName, extsJson);
+	// writePrettyJSONFile(extsAllJsonFileName, extsJson);
+
+	// extArray = extsJson;
+	// await getAll();
+
 }
 g1();
 

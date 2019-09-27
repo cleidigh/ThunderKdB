@@ -1,4 +1,4 @@
-# ![Extension icon](https://addons.thunderbird.net/user-media/addon_icons/15/15102-64.png?modified=1505246693) Manually sort folders : Extension Summary
+# ![Extension icon](https://addons.thunderbird.net/user-media/addon_icons/15/15102-64.png?modified=1569186668) Manually sort folders : Extension Summary
 
 Name: Manually sort folders  
 Id: 15102  
