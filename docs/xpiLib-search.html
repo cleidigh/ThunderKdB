@@ -95,27 +95,6 @@
 		<button id="locale_topic_btn" type="button" onclick="search_exts_locales()" class="search-input-col button icon btn-primary search" onclick="search_exts()">Search</button>
 
 	</div>
-	<!-- 
-	<h2>Locale Files Search:</h2>
-	<span>Words : </span><input id="locale_topic" type="text" />
-	<button id="locale_topic_btn" type="button" onclick="search_exts_locales()">Search</button>
-	<br><br>
- -->
-<!-- 
-	<a href="./r2.html">Extension List 2</a><br>
-	<a href="../index.html">Index 3</a><br>
-	<a href="./extensions-all/exts-tb68-comp/extension-list-tb68.html">Extension List main rep</a>>Extension List
-	3</a><br>
-	<a href="/extensions-all/exts-tb68-comp/extension-list-tb68.html">Extension List main rep</a>>Extension List
-	3</a><br>
-	<a href="/ThunderKdB/extensions-all/exts-tb68-comp/extension-list-tb68.html">Extension List main rep</a>">Extension
-	List 3</a><br>
-
-	<a href="https://github.com/cleidigh/ThunderKdB/blob/master/extensions-all/exts-tb68-comp/extension-list-tb68.md">Extension
-		List main rep</a><br>
-	<a href="https://github.com/cleidigh/ThunderKdB/tree/master/extensions-all/exts-tb68-comp/">Extension List main
-		rep</a><br>
- -->
 
 	<script>
 		function search_exts() {
@@ -123,9 +102,14 @@
 			let q = document.getElementById('topic').value;
 			// q += "+extension:js+extension:xul";
 			q += '+' + document.getElementById('file_types').value;
-			if (document.getElementById("comp60").checked) {
+			if (document.getElementById("comp_tb60").checked) {
 				q += "+path:/extensions-all/exts-tb60-comp"
 			}
+			
+			if (document.getElementById("comp_tb68").checked) {
+				q += "+path:/extensions-all/exts-tb68-comp"
+			}
+			
 			window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
 
 			if (document.getElementById("search_dxr").checked) {
