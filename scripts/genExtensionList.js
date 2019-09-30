@@ -171,7 +171,11 @@ function createExtMDTableRow(extJson) {
 	}
 
 	// vision filters
-	if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb68)) ) {
+	// if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb68)) ) {
+	// 	return "";
+	// }
+
+	if ( !(comp_badges.includes(cBadge_tb60)) || comp_badges.includes(cBadge_tb68))  {
 		return "";
 	}
 
