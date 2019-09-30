@@ -330,20 +330,20 @@ async function getExtensionFiles(addon_identifier) {
 		const xpiFileURL = ext.current_version.files[0].url;
 		const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
 		
-		// await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
-		// console.debug('Downloaded filename ' + xpiFileName);
-		// fs.ensureDirSync(`${extRootDir}/xpi`);
+		await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
+		console.debug('Downloaded filename ' + xpiFileName);
+		fs.ensureDirSync(`${extRootDir}/xpi`);
 
-		if (fs.existsSync(`${extRootDir}/xpi`)) {
-			fs.removeSync(`${extRootDir}/xpi`);
-			console.debug('Removing: ' + `${extRootName}`);
-		}
+		// if (fs.existsSync(`${extRootDir}/xpi`)) {
+		// 	fs.removeSync(`${extRootDir}/xpi`);
+		// 	console.debug('Removing: ' + `${extRootName}`);
+		// }
 		
 		
-		if (fs.existsSync(`${extRootDir}/src`)) {
-			fs.removeSync(`${extRootDir}/src`);
-			console.debug('Removing: ' + `${extRootName}`);
-		}
+		// if (fs.existsSync(`${extRootDir}/src`)) {
+		// 	fs.removeSync(`${extRootDir}/src`);
+		// 	console.debug('Removing: ' + `${extRootName}`);
+		// }
 		
 
 		// _7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
@@ -519,7 +519,7 @@ async function g1() {
 	// extsJson = extArray;
 	// try {
 	let p = [];
-	for (let index = 0; index < 68; index++) {
+	for (let index = 0; index < 2; index++) {
 		console.debug('GetIndex ' + index);
 		p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 
