@@ -185,15 +185,15 @@ async function requestATN_URL(addon_id, query_type, options) {
 
 function genExtensionSummaryMD(addon_identifier, extJson) {
 	const extRootName = `${addon_identifier}-${extJson.slug}`;
-	const extSummaryFileName = `${ext68CompDir}\\${extRootName}\\${extRootName}-summary.md`;
+	const extSummaryFileName = `${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/${extRootName}/${extRootName}-summary.md`;
 
 	let extSummaryFile = fs.readFileSync('extension-summary-templ.md', 'utf8');
 
 	const default_locale = extJson.default_locale;
 	const name = extJson.name[default_locale];
 	const summary = extJson.summary[default_locale];
-	const srcLink = `[Src](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`;
-	const xpiLink = `[XPI](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\xpi)`;
+	const srcLink = `[Src](${extGroupTB68Dir}/${extJson.id}-${extJson.slug}/src)`;
+	const xpiLink = `[XPI](${extGroupTB68Dir}/${extJson.id}-${extJson.slug}/xpi)`;
 	// const iconPath = `${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src\\${extJson.icon_url}`;
 	const iconPath = `${extJson.icon_url}`;
 	const minv = extJson.current_version.compatibility.thunderbird.min;
@@ -314,7 +314,8 @@ async function getExtensionFiles(addon_identifier) {
 
 		const extRootName = `${addon_identifier}-${ext.slug}`;
 		const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
-		console.debug('CheckingFolder: ' + extRootDir);
+/* 		console.debug('CheckingFolder: ' + extRootDir);
+
 
 		if (fs.existsSync(extRootDir)) {
 			fs.removeSync(extRootDir);
@@ -325,28 +326,34 @@ async function getExtensionFiles(addon_identifier) {
 		writePrettyJSONFile(jfile, ext)
 		console.debug(ext.slug);
 
-
+*/
 		const xpiFileURL = ext.current_version.files[0].url;
 		const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
-		await downloadURL(xpiFileURL, `${extRootDir}/${extRootName}/xpi`);
-		console.debug('Downloaded filename ' + xpiFileName);
-		fs.ensureDirSync(`${extRootDir}/${extRootName}/xpi`);
+		// await downloadURL(xpiFileURL, `${extRootDir}/${extRootName}/xpi`);
+		// console.debug('Downloaded filename ' + xpiFileName);
+		// fs.ensureDirSync(`${extRootDir}/${extRootName}/xpi`);
 
-
-		// _7zCommand = ['x', `${ext68CompDirU}/${extRootName}/xpi/${xpiFileName}`, `-o${ext68CompDirU}/${extRootName}/src`];
+		if (fs.existsSync(`${extRootDir}/${extRootName}`)) {
+			fs.removeSync(`${extRootDir}/${extRootName}`);
+			console.debug('Removing: ' + `${extRootName}`);
+		}
+		
+		_7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
 		// console.debug('Starting unzip: ' + xpiFileName);
-		// fileUnzip(`${rootDir}/${ext68CompDirU}/${extRootName}/xpi/${xpiFileName}`, { dir: `${rootDir}/${ext68CompDirU}/${extRootName}/src` });
+		// fileUnzip(`${extRootDir}/xpi/${xpiFileName}`, { dir: `${extRootDir}/src` });
 		// console.debug('unpacked source');
 
-		let ext_versions = await requestATN_URL(addon_identifier, 'versions');
-		console.debug('downloaded versions');
+		// let ext_versions = await requestATN_URL(addon_identifier, 'versions');
+		// console.debug('downloaded versions');
 
-		jfile = `${extRootDir}/${extRootName}-versions.json`;
-		await writePrettyJSONFile(jfile, ext_versions);
+		// jfile = `${extRootDir}/${extRootName}-versions.json`;
+		// await writePrettyJSONFile(jfile, ext_versions);
 
 		// console.debug('generate markDown	');
 		// genExtensionSummaryMD(addon_identifier, ext);
+
 		console.debug('Finished: ' + addon_identifier);
+
 		return 1;
 		// resolve();
 	} catch (e) {
@@ -502,7 +509,7 @@ async function g1() {
 	// extsJson = extArray;
 	// try {
 	let p = [];
-	for (let index = 0; index < 70; index++) {
+	for (let index = 0; index < 68; index++) {
 		console.debug('GetIndex ' + index);
 		p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 
