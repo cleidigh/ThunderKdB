@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://mailredirect/skin/mailredirect.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailredirect/skin/messageHeader.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailredirect/skin/mailredirect-compose.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailredirect-shared/skin/mailredirect.css" type="text/css"?>
+
+<overlay id="mailRedirectCustomizeToolbarOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <toolbarpaletteitem id="wrapper-mailredirect-toolbarbutton"
+    insertafter="wrapper-button-forward,wrapper-button-replylist,wrapper-button-replyall,wrapper-button-reply"/>
+  <toolbarpaletteitem id="wrapper-hdrMailredirectButton"
+    insertafter="wrapper-hdrMenuForwardButton,wrapper-hdrForwardButton,wrapper-hdrReplyToSenderButton,wrapper-hdrSmartReplyButton"/>
+</overlay>

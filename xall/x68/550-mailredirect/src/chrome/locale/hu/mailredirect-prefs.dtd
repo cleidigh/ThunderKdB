@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Átirányítás">
+
+<!ENTITY mailredirectSettings.title "Üzenet átirányítás beállítások">
+
+<!ENTITY copyToSentMails.label "Üzenet átirányításkor az elküldött elemek mappába másolat elhelyezése?">
+<!ENTITY copyToSentMails.accesskey "á">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Ha ez az opció be van jelölve másolatát átirányított üzenet kerül az Elküldött mappába. Ha az opció nincs bejelölve másolata átirányított üzenet nem másolható bármelyik mappába.\nMegjegyzés: Ha ez az opció be van jelölve, és a beállítások a használt fiók átirányítása a „ne mentse az elküldött üzenetek minden” példányát átirányított üzenetek nem kerülnek mentésre sem.">
+
+<!ENTITY addToForwardAs.label "Átirányítás továbbítás módja menük és gombok hozzáadása">
+<!ENTITY addToForwardAs.accesskey "o">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Ha az átirányítás menükhöz és gombokhoz kapcsolja az átirányítást, az összes továbbítási műveletet egy elem alatt csoportosítja.\nA gombokat eltávolíthatja az eszköztárakból testreszabással és az alábbi opcióval ellenőrizheti, elrejtheti az önálló menüpontokat, mert feleslegessé váltak.">
+
+<!ENTITY hideRedirectMenuitems.label "Az átirányítás elrejtése menüpont az üzenet, az alkalmazás és a környezeti menük között">
+<!ENTITY hideRedirectMenuitems.accesskey "y">
+<!ENTITY hideRedirectMenuitems.tooltip "Elrejti az elkülönített átirányítás menüelemeket az üzenet, az alkalmazás és a környezeti menük között.">
+
+<!ENTITY concurrentConnections.label "Számú egyidejű SMTP kapcsolatok:">
+<!ENTITY concurrentConnections.accesskey "S">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "A beállítás megadja, hány kapcsolat jön létre, hogy az SMTP-kiszolgáló közben üzeneteket küldünk. Általában, ez lehetővé teszi, hogy növelje teljesítményét küldő folyamat, amikor úgy dönt, hogy irányítsa át hatalmas mennyiségű üzenet.\nMegjegyzés: Ha ezt a paramétert nullára nem korlátozza az egyidejű kapcsolatok vonatkoznak - legyen tisztában azzal, hogy milyen hatással lehetnek a stabilitás az SMTP szerver vagy küldését néhány üzenetet meghiúsulhat. Abban az esetben, ha bármilyen probléma ennek értéke egy.">
+
+<!ENTITY defaultRecipientsGroup.label "Alapértelmezett címzettek">
+
+<!ENTITY defaultResendTo.label "Címzett újraküldés:">
+<!ENTITY defaultResendTo.accesskey "C">
+<!ENTITY defaultResendTo.tooltip "Vesszővel elválasztott listája e-mail címeket.">
+
+<!ENTITY defaultResendCc.label "Másolat újraküldés:">
+<!ENTITY defaultResendCc.accesskey "M">
+<!ENTITY defaultResendCc.tooltip "Vesszővel elválasztott listája e-mail címeket.">
+
+<!ENTITY defaultResendBcc.label "Rejtett másolat újraküldés:">
+<!ENTITY defaultResendBcc.accesskey "R">
+<!ENTITY defaultResendBcc.tooltip "Vesszővel elválasztott listája e-mail címeket.">
+
+<!ENTITY defaultMode.label "Alapértelmezett mód:">
+<!ENTITY defaultMode.accesskey "A">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Válassza ki, hogyan szeretné átirányítani az üzeneteket alapértelmezés szerint.\nEz a beállítás csak akkor érvényesül, ha nem adott meg alapértelmezett címzettet.">
+<!ENTITY defaultModeResendTo.label "Címzett újraküldés">
+<!ENTITY defaultModeResendCc.label "Másolat újraküldés">
+<!ENTITY defaultModeResendBcc.label "Rejtett másolat újraküldés">
+
+<!ENTITY debug.label "Hibakeresés">
+<!ENTITY debug.accesskey "H">
+<!ENTITY debug.tooltip "Kapcsolja be / ki hibakeresést „Üzenet átirányítás” kiterjesztése. Naplók irányítjuk JavaScriptkonzol.">
+
+<!ENTITY saveConsoleContent.label2 "Hibakonzol tartalom mentése…">
+<!ENTITY saveConsoleContent.accesskey2 "t">
+<!ENTITY sendViaEmail.label "Email küldés keresztül">
+<!ENTITY sendViaEmail.accesskey "E">

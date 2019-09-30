@@ -1,0 +1,49 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url(chrome://calendar-common/skin/calendar-task-view.css);
+
+:root[lwt-tree-brighttext] #calendar-task-details-container {
+    --toolbarbutton-hover-background: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .25));
+    --toolbarbutton-hover-bordercolor: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .5));
+    --toolbarbutton-header-bordercolor: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .25));
+    --toolbarbutton-active-background: var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .4));
+    --toolbarbutton-active-bordercolor: var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .7));
+    --toolbarbutton-active-boxshadow: 0 0 0 1px var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .4)) inset;
+    --toolbarbutton-checkedhover-backgroundcolor: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .5));
+}
+
+#calendar-task-view-splitter {
+     -moz-appearance: none;
+    border-bottom: 1px solid var(--splitter-color);
+    /* splitter grip area */
+    height: 5px;
+    /* make only the splitter border visible */
+    margin-top: -5px;
+    /* because of the negative margin needed to make the splitter visible */
+    position: relative;
+    z-index: 10;
+}
+
+#task-addition-box {
+    height: 37px;
+}
+
+#calendar-task-details-container {
+    padding-top: 1px;
+}
+
+#other-actions-box {
+    margin-inline-end: -1px;
+}
+
+#task-text-filter-field {
+    margin: 5px;
+}
+
+/* ::::: task actions toolbar ::::: */
+
+#calendar-add-task-button[disabled="true"] {
+    fill-opacity: 0.4;
+}

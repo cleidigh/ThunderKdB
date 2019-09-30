@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="24" height="24"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 24 24">
+  <style>
+    use:not(:target) {
+      display: none;
+    }
+    use {
+      fill: #fbfbfb;
+      stroke: rgba(0,0,0,0.4);
+      stroke-width: .5px;
+    }
+    use[id$="-native"] {
+      fill: ThreeDHighlight;
+    }
+  </style>
+  <defs style="display: none;">
+    <g id="redirect-shape">
+      <path
+        d="m 11.5639494,2.46955245 9.4687506,7.640625 -9.4687506,7.73437455
+          0,-4.31249955 c -1.8416625,-0.076611 -3.37348995,0.0918045
+          -4.59374895,1.07812485 0.0714,3.1544052 3.23437395,6.5624997
+          3.23437395,6.5624997 l -0.84375,1.21875 c 0,0 -1.64833395,-0.673293
+          -3.32812395,-1.96875 -1.67979,-1.295457 -3.46875,-3.274713
+          -3.46875,-5.95312455 0,-4.9361037 4.6920795,-6.890625
+          8.99999895,-6.890625 z" />
+    </g>
+  </defs>
+  <use id="redirect" xlink:href="#redirect-shape"/>
+  <use id="redirect-native" xlink:href="#redirect-shape"/>
+</svg>

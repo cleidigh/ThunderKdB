@@ -1,0 +1,82 @@
+content  mailredirect        chrome/content/
+content  mailredirect-icons  chrome/icons/
+
+overlay  chrome://messenger/content/messenger.xul                chrome://mailredirect/content/mailredirectMessengerOverlay.xul
+overlay  chrome://messenger/content/msgHdrViewOverlay.xul        chrome://mailredirect/content/msgHdrViewOverlay.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<61
+overlay  chrome://messenger/content/messenger.xul                chrome://mailredirect/content/msgHdrViewOverlay.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=61
+overlay  chrome://messenger/content/messageWindow.xul            chrome://mailredirect/content/msgHdrViewOverlay.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=61
+overlay  chrome://messenger/content/msgHdrViewOverlay.xul        chrome://mailredirect/content/msgHdrViewOverlay.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+overlay  chrome://messenger/content/mailWindowOverlay.xul        chrome://mailredirect/content/mailredirect.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<61
+overlay  chrome://messenger/content/messenger.xul                chrome://mailredirect/content/mailredirect.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=61
+overlay  chrome://messenger/content/messageWindow.xul            chrome://mailredirect/content/mailredirect.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=61
+overlay  chrome://messenger/content/mailWindowOverlay.xul        chrome://mailredirect/content/mailredirect.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+overlay  chrome://global/content/customizeToolbar.xul            chrome://mailredirect/content/mailredirectCustomizeToolbar.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<=58.0b3
+overlay  chrome://messenger/content/customizeToolbar.xul         chrome://mailredirect/content/mailredirectCustomizeToolbar.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=59.0a1
+overlay  chrome://global/content/customizeToolbar.xul            chrome://mailredirect/content/mailredirectCustomizeToolbar.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+# Add options to new in-content prefs
+overlay  about:preferences                                       chrome://mailredirect/content/mailredirectIncontentPrefsOverlay.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=67.0a1
+# In-content prefs in Thunderbird 60.* and before
+overlay  about:preferences                                       chrome://mailredirect/content/mailredirectPrefsOverlay.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<61
+# Change icon for old in-content prefs
+overlay  about:preferences                                       chrome://mailredirect/content/mailredirectIncontentPrefsOverlayPre60.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<60
+# Add options to old prefs in a popup window
+overlay  chrome://messenger/content/preferences/preferences.xul  chrome://mailredirect/content/mailredirectPrefsOverlay.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<61
+# Add options to SeaMonkey prefs
+overlay  chrome://communicator/content/pref/preferences.xul      chrome://mailredirect/content/mailredirectPrefsOverlay.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+# Change Options in add-on manager to open the right thing
+overlay  about:addons                                            chrome://mailredirect/content/mailredirectAddonsOverlay.xul
+
+override  chrome://mailredirect/content/aw.js                    chrome://mailredirect/content/awPre31.js application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<31.0
+
+locale  mailredirect  en     chrome/locale/en-US/
+locale  mailredirect  en-US  chrome/locale/en-US/
+locale  mailredirect  ar     chrome/locale/ar/
+locale  mailredirect  bg     chrome/locale/bg/
+locale  mailredirect  ca     chrome/locale/ca/
+locale  mailredirect  cs     chrome/locale/cs/
+locale  mailredirect  da     chrome/locale/da/
+locale  mailredirect  de     chrome/locale/de/
+locale  mailredirect  el     chrome/locale/el/
+locale  mailredirect  es-AR  chrome/locale/es-AR/
+locale  mailredirect  es-ES  chrome/locale/es-ES/
+locale  mailredirect  es-MX  chrome/locale/es-MX/
+locale  mailredirect  fi     chrome/locale/fi/
+locale  mailredirect  fr     chrome/locale/fr/
+locale  mailredirect  hr     chrome/locale/hr/
+locale  mailredirect  hu     chrome/locale/hu/
+locale  mailredirect  id     chrome/locale/id/
+locale  mailredirect  it     chrome/locale/it/
+locale  mailredirect  ja     chrome/locale/ja/
+locale  mailredirect  lt     chrome/locale/lt/
+locale  mailredirect  nb     chrome/locale/nb/
+locale  mailredirect  nl     chrome/locale/nl/
+locale  mailredirect  pl     chrome/locale/pl/
+locale  mailredirect  pt     chrome/locale/pt/
+locale  mailredirect  pt-BR  chrome/locale/pt-BR/
+locale  mailredirect  ro     chrome/locale/ro/
+locale  mailredirect  ru     chrome/locale/ru/
+locale  mailredirect  sk     chrome/locale/sk/
+locale  mailredirect  sl     chrome/locale/sl/
+locale  mailredirect  sq     chrome/locale/sq/
+locale  mailredirect  sr     chrome/locale/sr/
+locale  mailredirect  sv-SE  chrome/locale/sv-SE/
+locale  mailredirect  tr     chrome/locale/tr/
+locale  mailredirect  uk-UA  chrome/locale/uk-UA/
+locale  mailredirect  zh-CN  chrome/locale/zh-CN/
+locale  mailredirect  zh-TW  chrome/locale/zh-TW/
+
+skin  mailredirect-shared  classic/1.0  chrome/skin/shared/
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/aero/      application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/aeroPre58/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<58  os=WINNT osversion>=6.1
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/aeroPre45/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<45  os=WINNT osversion>=6.1
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/windows/   application={3550f703-e582-4d05-9a08-453d09bdfdc6} os=WINNT osversion<6.1
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/unix/      application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=58 os=Linux
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/unixPre58/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<58  os=Linux
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/unixPre45/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<45  os=Linux
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/mac/       application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=58 os=Darwin
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/macPre58/  application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<58  os=Darwin
+skin  mailredirect         classic/1.0  chrome/skin/classic/thunderbird/macPre45/  application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<45  os=Darwin
+skin  mailredirect         classic/1.0  chrome/skin/classic/seamonkey/             application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+
+skin  mailredirect-shared  modern/1.0   chrome/skin/shared/
+skin  mailredirect         modern/1.0   chrome/skin/modern/seamonkey/              application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}

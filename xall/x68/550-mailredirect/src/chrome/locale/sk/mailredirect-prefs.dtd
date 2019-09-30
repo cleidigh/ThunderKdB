@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Presmerovať">
+
+<!ENTITY mailredirectSettings.title "Možnosti rozšírenia Mail Redirect">
+
+<!ENTITY copyToSentMails.label "Uložiť kópiu presmerovanej pošty do priečinka Odoslaná pošta?">
+<!ENTITY copyToSentMails.accesskey "k">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Pokiaľ je táto voľba zapnutá, kópia presmerovanej správy sa uloží do priečinku Odoslaná pošta. Pokiaľ je táto voľba vypnutá, presmerované správy sa nikde neukladajú.\nPozn.: Pokiaľ je táto voľba zapnutá, ale zároveň nie je v Nastaveniach účtov / Kópie &amp; priečinky - vyznačená možnosť: Uložiť kópiu do… , kópie presmerovaných správ sa nebudú ukladať.">
+
+<!ENTITY addToForwardAs.label "Pridať Presmerovanie do menu Odoslať ďalej ako">
+<!ENTITY addToForwardAs.accesskey "e">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Pridaním položky Presmerovanie do menu Odoslať ďalej ako zoskupíte všetky možnosti odoslania ďalej.\nMôžete odstrániť tlačidlá z panelu nástrojov ich prispôsobením. Pomocou voľby nižšie môžete skryť samostatné položky Presmerovania v menu pretože potom budú nadbytočné.">
+
+<!ENTITY hideRedirectMenuitems.label "Skryť Presmerovanie z kontextových menu a menu Správa a Aplikačného menu">
+<!ENTITY hideRedirectMenuitems.accesskey "m">
+<!ENTITY hideRedirectMenuitems.tooltip "Skryje samostatnú položku Presmerovanie z kontextových menu a menu Správa a Aplikačného menu">
+
+<!ENTITY concurrentConnections.label "Počet paralelných SMTP spojení:">
+<!ENTITY concurrentConnections.accesskey "S">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "Táto voľba určuje počet spojení, které budú naraz použité pre komunikáciu z SMTP serverom pri odosielaní správ. Obecne povedané - môžete tým urýchliť odosielanie, hlavne ak sa jedná o presmerovanie väčšieho počtu správ.\nPri nastavení na 0 nebude počet súčasných spojení vôbec obmedzovaný - to môže mať vpliv hlavne na stabilitu SMTP servera a na odosielanie presmerovávaných správ. V prípade problémov nastavte na hodnotu 1.">
+
+<!ENTITY defaultRecipientsGroup.label "Predvolení príjemcovia">
+
+<!ENTITY defaultResendTo.label "Znovu odoslať - Komu:">
+<!ENTITY defaultResendTo.accesskey "Z">
+<!ENTITY defaultResendTo.tooltip "Čiarkami oddelený zoznam e-mailových adries.">
+
+<!ENTITY defaultResendCc.label "Znovu odoslať - Kópia:">
+<!ENTITY defaultResendCc.accesskey "p">
+<!ENTITY defaultResendCc.tooltip "Čiarkami oddelený zoznam e-mailových adries.">
+
+<!ENTITY defaultResendBcc.label "Znovu odoslať - Skrytá kópia:">
+<!ENTITY defaultResendBcc.accesskey "y">
+<!ENTITY defaultResendBcc.tooltip "Čiarkami oddelený zoznam e-mailových adries.">
+
+<!ENTITY defaultMode.label "Predvolený režim:">
+<!ENTITY defaultMode.accesskey "r">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Vyberte si, ako chcete presmerovať správy v predvolenom nastavení.\n Toto nastavenie má vplyv iba vtedy, ak ste predvolených príjemcov nešpecifikovali inak.">
+<!ENTITY defaultModeResendTo.label "Znovu odoslať - Komu">
+<!ENTITY defaultModeResendCc.label "Znovu odoslať - Kópia">
+<!ENTITY defaultModeResendBcc.label "Znovu odoslať - Skrytá kópia">
+
+<!ENTITY debug.label "Ladiť">
+<!ENTITY debug.accesskey "L">
+<!ENTITY debug.tooltip "Zapnúť / vypnúť ladenie Mail Redirect. Komentáre o ladení sú zapisované do konzoly JavaScript.">
+
+<!ENTITY saveConsoleContent.label2 "Uložiť obsah chybovej konzoly…">
+<!ENTITY saveConsoleContent.accesskey2 "U">
+<!ENTITY sendViaEmail.label "Odoslať cez e-mail">
+<!ENTITY sendViaEmail.accesskey "O">

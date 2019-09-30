@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+ ***** BEGIN LICENSE BLOCK *****
+ * This file is part of ExQuilla by Mesquilla.
+ *
+ * Copyright 2010 R. Kent James. All Rights Reserved
+ *
+ * ***** END LICENSE BLOCK *****
+ */
+-->
+
+<!DOCTYPE overlay [
+<!ENTITY % AccountManagerOverlayDTD SYSTEM "chrome://exquilla/locale/AccountManagerOverlay.dtd" >
+%AccountManagerOverlayDTD;
+<!ENTITY % AccountWizardDTD SYSTEM "chrome://messenger/locale/AccountManager.dtd" >
+%AccountWizardDTD;
+]>
+
+<overlay id='exquillaAMOverlay'
+         xmlns='http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul'>
+  <script type="application/javascript" src="chrome://exquilla/content/AccountManagerOverlay.js"/>
+  <menupopup id="accountActionsDropdown">
+    <menuitem id="exquilla-account" label="&ews.addExchangeAccount;" insertbefore="accountActionsDropdownSep1"
+              oncommand="exquilla.addExchangeAccount();"/>
+  </menupopup>
+</overlay>
+

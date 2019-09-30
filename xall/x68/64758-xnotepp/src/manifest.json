@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.3.1",
+  "author": "Lorenz Froihofer: support for TB >= 3.0, since Dec. 2009",
+  "homepage_url": "http://www.froihofer.net/xnote/",
+  "applications": {
+    "gecko": {
+      "id": "xnote@froihofer.net",
+      "strict_min_version": "68.0",
+      "strict_max_version": "68.*"
+    }
+  },
+  "default_locale" : "en_US",
+  "legacy": {
+    "type" : "xul",
+    "options": {
+      "page": "chrome://xnote/content/preferences.xul",
+      "open_in_tab": false
+    }
+  },
+  "icons": {
+    "32": "chrome/skin/icon32.png"
+  }
+}

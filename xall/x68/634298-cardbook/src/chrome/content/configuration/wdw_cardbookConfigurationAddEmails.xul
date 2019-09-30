@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://messenger/skin/addressbook/abContactsPanel.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/skin/cardbookAddressBooks.css" type="text/css"?>
+
+<!DOCTYPE window [
+	<!ENTITY % cardbookConfigurationAddRestrictionDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookConfigurationAddEmails.dtd"> %cardbookConfigurationAddRestrictionDTD;
+	<!ENTITY % buttonsDTD SYSTEM "chrome://cardbook/locale/wdw_editionButtons.dtd"> %buttonsDTD;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onload="wdw_cardbookConfigurationAddEmails.load();" resizable="true"
+	onclose="wdw_cardbookConfigurationAddEmails.cancel();"
+	id="wdw_cardbookConfigurationAddEmails"
+	persist="screenX screenY width height"
+	style="min-width:400px;min-height:200px;">
+	
+	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/cardbookElementTools.js"/>
+	<script src="chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddEmails.js"/>
+
+	<keyset id="wdw_cardbookConfigurationAddEmails-keys">
+		<key keycode="VK_ESCAPE" oncommand="wdw_cardbookConfigurationAddEmails.cancel();"/>
+	</keyset>
+
+	<hbox flex="1">
+		<vbox flex="1">
+			<grid align="center" flex="1">
+				<columns>
+					<column/>
+					<column flex="1"/>
+				</columns>
+				<rows>
+					<row id="typeRow" align="center">
+						<label value="&typeLabel;" control="typeMenulist"/>
+						<menulist id="typeMenulist">
+							<menupopup id="typeMenupopup"/>
+						</menulist>
+					</row>
+					<row align="center">
+						<label value="&mailAccountLabel;" control="mailAccountMenulist"/>
+						<menulist id="mailAccountMenulist">
+							<menupopup id="mailAccountMenupopup"/>
+						</menulist>
+					</row>
+					<row align="center">
+						<label value="&addressbookLabel;" control="CardBookABMenulist"/>
+						<menulist id="CardBookABMenulist" oncommand="wdw_cardbookConfigurationAddEmails.loadCategories();">
+							<menupopup id="CardBookABMenupopup"/>
+						</menulist>
+					</row>
+					<row align="center">
+						<label value="&categoryLabel;" control="categoryMenulist"/>
+						<menulist id="categoryMenulist">
+							<menupopup id="categoryMenupopup"/>
+						</menulist>
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</hbox>
+
+	<hbox>
+		<spacer flex="1"/>
+		<button id="saveEditionLabel" label="&saveEditionLabel;" accesskey="&saveEditionAccesskey;" oncommand="wdw_cardbookConfigurationAddEmails.save();"/>
+		<button id="cancelEditionLabel" label="&cancelEditionLabel;" accesskey="&cancelEditionAccesskey;" oncommand="wdw_cardbookConfigurationAddEmails.cancel();"/>
+	</hbox>
+</window>

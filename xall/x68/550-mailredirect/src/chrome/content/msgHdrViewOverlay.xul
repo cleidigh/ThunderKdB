@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % msgHdrViewOverlayDTD SYSTEM "chrome://mailredirect/locale/msgHdrViewOverlay.dtd">
+  %msgHdrViewOverlayDTD;
+  <!ENTITY % mailredirectDTD SYSTEM "chrome://mailredirect/locale/mailredirect.dtd">
+  %mailredirectDTD;
+]>
+
+<?xml-stylesheet href="chrome://mailredirect/skin/messageHeader.css" type="text/css"?>
+
+<overlay id="mailRedirectMsgHdrOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <toolbarpalette id="header-view-toolbar-palette">
+    <toolbarbutton id="hdrMailredirectButton"
+                   label="&hdrMailredirectButton1.label;"
+                   tooltiptext="&hdrMailredirectButton1.tooltip;"
+                   oncommand="cmd_mailredirect(event);RestoreFocusAfterHdrButton();"
+                   observes="cmd_mailredirect"
+                   class="toolbarbutton-1 msgHeaderView-button hdrMailredirectButton" />
+  </toolbarpalette>
+
+  <menupopup id="hdrForwardDropdown">
+    <menuitem id="hdrForwardAsRedirectMenu"
+              label="&bounceCommand.label;"
+              tooltiptext="&forwardAsRedirect.tooltip;"
+              insertafter="hdrForwardAsAttachmentMenu"
+              command="cmd_mailredirect"/>
+  </menupopup>
+
+  <toolbar id="header-view-toolbar"
+           defaultset="hdrReplyToSenderButton,hdrSmartReplyButton,hdrForwardButton,hdrMailredirectButton,hdrArchiveButton,hdrJunkButton,hdrTrashButton,otherActionsButton"/>
+
+</overlay>

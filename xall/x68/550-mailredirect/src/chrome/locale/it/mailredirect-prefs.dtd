@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Reindirizza">
+
+<!ENTITY mailredirectSettings.title "Opzioni di Mail Redirect">
+
+<!ENTITY copyToSentMails.label "Lasciare una copia del messaggio reindirizzato nella cartella Posta inviata?">
+<!ENTITY copyToSentMails.accesskey "c">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Se questa opzione è selezionata, viene lasciata una copia del messaggio reindirizzato nella cartella della posta inviata. Deselezionando tale opzione non viene effettuata alcuna copia del messaggio reindirizzato\nNota: se questa opzione è selezionata e le impostazioni dell'account usato per il reindirizzamento sono 'non salvare i messaggi' in nessun caso verranno salvate copie dei messaggi reindirizzati">
+
+<!ENTITY addToForwardAs.label "Aggiunge Reindirizza al menu e ai pulsanti di 'Inoltra come'">
+<!ENTITY addToForwardAs.accesskey "A">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Aggiungendo Reindirizza al menu e ai pulsanti di 'Inoltra come' si raggruppano tutte le funzioni di inoltro dei messaggi sotto un'unica voce.\nÈ così possibile rimuovere i pulsanti dalle barre degli strumenti personalizzandoli e, selezionando l'opzione sottostante è anche possibile nascondere le singole voci di menu essendo queste diventate ridondanti">
+
+<!ENTITY hideRedirectMenuitems.label "Nasconde la voce Reindirizza dai menu Messaggio, Applicazione e dal menu contestuale">
+<!ENTITY hideRedirectMenuitems.accesskey "N">
+<!ENTITY hideRedirectMenuitems.tooltip "Nasconde le singole voci del menu Reindirizza dai menu Messaggio, Applicazione e dal menu contestuale">
+
+<!ENTITY concurrentConnections.label "Numero di connessioni SMTP simultanee:">
+<!ENTITY concurrentConnections.accesskey "N">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "Questa opzione specifica il numero di connessioni SMTP che si creano durante l'invio dei messaggi. In generale, questo consente di potenziare il processo di invio qualora si debba reindirizzare una notevole quantità di messaggi\nNota: impostando come parametro lo zero (0) il numero di connessioni simultanee sarà illimitato - si noti però che questa impostazione potrebbe rendere instabile il server SMTP e non consentire l'invio di alcuni messaggi. Nel caso insorgessero dei problemi si consiglia di impostare questo parametro a uno (1)">
+
+<!ENTITY defaultRecipientsGroup.label "Destinatari predefiniti">
+
+<!ENTITY defaultResendTo.label "Reindirizza a:">
+<!ENTITY defaultResendTo.accesskey "R">
+<!ENTITY defaultResendTo.tooltip "Elenco di indirizzi e-mail (separati da virgola) ai quali reindirizzare i messaggi di posta">
+
+<!ENTITY defaultResendCc.label "Reindirizza in Cc a:">
+<!ENTITY defaultResendCc.accesskey "C">
+<!ENTITY defaultResendCc.tooltip "Elenco di indirizzi e-mail (separati da virgola) ai quali reindirizzare in copia carbone i messaggi di posta">
+
+<!ENTITY defaultResendBcc.label "Reindirizza in Ccn a:">
+<!ENTITY defaultResendBcc.accesskey "a">
+<!ENTITY defaultResendBcc.tooltip "Elenco di indirizzi e-mail (separati da virgola) ai quali reindirizzare in copia carbone nascosta i messaggi di posta">
+
+<!ENTITY defaultMode.label "Modo predefinito:">
+<!ENTITY defaultMode.accesskey "M">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Selezionare quale metodo utilizzare per reindirizzare i messaggi\nNota: questa opzione ha effetto solo quando non viene specificato alcun destinatario">
+<!ENTITY defaultModeResendTo.label "Reindirizza a:">
+<!ENTITY defaultModeResendCc.label "Reindirizza in Cc a:">
+<!ENTITY defaultModeResendBcc.label "Reindirizza in Ccn a:">
+
+<!ENTITY debug.label "Attiva/disattiva il debug">
+<!ENTITY debug.accesskey "d">
+<!ENTITY debug.tooltip "Attiva/disattiva il debug degli errori per Mail Redirect. La registrazione degli errori verrà salvata nella console JavaScript">
+
+<!ENTITY saveConsoleContent.label2 "Salva il contenuto della console degli errori…">
+<!ENTITY saveConsoleContent.accesskey2 "S">
+<!ENTITY sendViaEmail.label "Invia tramite e-mail">
+<!ENTITY sendViaEmail.accesskey "e">

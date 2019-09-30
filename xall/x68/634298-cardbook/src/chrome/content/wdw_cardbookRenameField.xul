@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!-- for notificationbox.xml -->
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/notification.css" type="text/css"?>
+
+<!DOCTYPE window [
+	<!ENTITY % buttonsDTD SYSTEM "chrome://cardbook/locale/wdw_editionButtons.dtd"> %buttonsDTD;
+	<!ENTITY % renameFieldDTD SYSTEM "chrome://cardbook/locale/wdw_cardbookRenameField.dtd"> %renameFieldDTD;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onload="wdw_cardbookRenameField.load();" resizable="true"
+	onclose="wdw_cardbookRenameField.cancel();"
+	id="wdw_cardbookRenameField"
+	persist="screenX screenY width height"
+	style="min-width:200px;min-height:50px;">
+	
+	<script src="chrome://cardbook/content/cardbookRichContext.js"/>
+	<script src="chrome://cardbook/content/cardbookNotifications.js"/>
+	<script src="chrome://cardbook/content/cardbookUtils.js"/>
+	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
+	<script src="chrome://cardbook/content/wdw_cardbookRenameField.js"/>
+
+	<keyset id="wdw_cardbookRenameField-keys">
+		<key keycode="VK_ESCAPE" oncommand="wdw_cardbookRenameField.cancel();"/>
+	</keyset>
+
+	<hbox flex="1">
+		<vbox flex="1">
+			<grid align="center" flex="1">
+				<columns>
+					<column/>
+					<column flex="1"/>
+				</columns>
+	
+				<rows>
+					<row align="center">
+						<label id="typeLabel" control="typeTextBox"/>
+						<textbox id="typeTextBox" oninput="wdw_cardbookRenameField.validate();"/>
+					</row>
+					<row align="center" id="colorRow">
+						<label value="&colorLabel;" control="useColorCheck"/>
+						<hbox align="center">
+							<checkbox id="useColorCheck" label="&useColorCheckLabel;"/>
+							<html:input id="colorInput" type="color"/>
+						</hbox>
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</hbox>
+	<hbox id="errorNotificationsHbox" class="notification-inline">
+		<!-- notificationbox will be added here lazily. -->
+	</hbox>
+
+	<hbox>
+		<spacer flex="1"/>
+		<button id="saveEditionLabel" label="&saveEditionLabel;" accesskey="&saveEditionAccesskey;" oncommand="wdw_cardbookRenameField.save();"/>
+		<button id="cancelEditionLabel" label="&cancelEditionLabel;" accesskey="&cancelEditionAccesskey;" oncommand="wdw_cardbookRenameField.cancel();"/>
+	</hbox>
+</window>

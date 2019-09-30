@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Redirecionamento">
+
+<!ENTITY mailredirectSettings.title "Configurações do Mail Redirect">
+
+<!ENTITY copyToSentMails.label "Enviar cópia do e-mail redirecionado para a pasta Itens Enviados?">
+<!ENTITY copyToSentMails.accesskey "r">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Se esta opção estiver marcada, uma cópia da mensagem redirecionada é enviada para a pasta Itens Enviados. Se estiver desmarcada, a mensagem redirecionada não é copiada para pasta alguma.\nNota: Se esta opção estiver marcada mas as configuração da conta sendo usada para redireccionar for 'nunca salvar mensagens enviadas', nenhuma cópia das mensagens redirecionadas será gravada.">
+
+<!ENTITY addToForwardAs.label "Adicionar Redirecionar aos menus e botões de Encaminhar Como">
+<!ENTITY addToForwardAs.accesskey "A">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Adicionando Redirecionar aos menus e botões de Encaminhar Como você agrupa todas as ações de encaminhar sob um único item. \nVocê pode remover os botões da barras de ferramentas marcando a opção abaixo e você pode ocultar os itens de menu separados já que eles se tornaram redundantes.">
+
+<!ENTITY hideRedirectMenuitems.label "Ocultar o menu de redirecionamento da Mensagem, Aplicação e menus de contexto">
+<!ENTITY hideRedirectMenuitems.accesskey "O">
+<!ENTITY hideRedirectMenuitems.tooltip "Oculta o menu de redirecionamento da Mensagem, Aplicação e menus de contexto.">
+
+<!ENTITY concurrentConnections.label "Número de conexões SMTP simultâneas:">
+<!ENTITY concurrentConnections.accesskey "N">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "Esta opção define o número de conexões simultâneas que serão estabelecidas com o seu servidor de SMTP ao enviar as mensagens. Em geral, isto possibilita aumentar o desempenho do processo de envio quando um grande número de mensagens estiverem sendo redirecionadas.\nNota: Se este parâmetro for zero, nenhum limite de conexões simultâneas é aplicado - esteja ciente de que isso pode afetar a estabilidade do seu servidor SMTP ou que o envio de algumas mensagens pode falhar. Em caso de qualquer problema, defina esse valor como um.">
+
+<!ENTITY defaultRecipientsGroup.label "Destinatários Predefinidos">
+
+<!ENTITY defaultResendTo.label "Reenviar-Para:">
+<!ENTITY defaultResendTo.accesskey "P">
+<!ENTITY defaultResendTo.tooltip "Lista de endereços de e-mail separados por vírgula.">
+
+<!ENTITY defaultResendCc.label "Reenviar-Cc:">
+<!ENTITY defaultResendCc.accesskey "C">
+<!ENTITY defaultResendCc.tooltip "Lista de endereços de e-mail separados por vírgula.">
+
+<!ENTITY defaultResendBcc.label "Reenviar-Cco:">
+<!ENTITY defaultResendBcc.accesskey "o">
+<!ENTITY defaultResendBcc.tooltip "Lista de endereços de e-mail separados por vírgula.">
+
+<!ENTITY defaultMode.label "Modo Padrão:">
+<!ENTITY defaultMode.accesskey "M">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Escolha como você deseja redirecionar as mensagens por padrão. \nEsta configuração tem efeito apenas quando nenhum destinatário padrão tiver sido especificado.">
+<!ENTITY defaultModeResendTo.label "Reenviar-Para">
+<!ENTITY defaultModeResendCc.label "Reenviar-Cc">
+<!ENTITY defaultModeResendBcc.label "Reenviar-Cco">
+
+<!ENTITY debug.label "Depurar">
+<!ENTITY debug.accesskey "D">
+<!ENTITY debug.tooltip "Ativar/desativar a depuração para a extensão Mail Redirect. Os logs serão direcionados para a Console JavaScript.">
+
+<!ENTITY saveConsoleContent.label2 "Salvar conteúdo da Console de Erro…">
+<!ENTITY saveConsoleContent.accesskey2 "S">
+<!ENTITY sendViaEmail.label "Enviar por e-mail">
+<!ENTITY sendViaEmail.accesskey "E">

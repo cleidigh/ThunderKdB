@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Heradresseren">
+
+<!ENTITY mailredirectSettings.title "Mail Redirect-instellingen">
+
+<!ENTITY copyToSentMails.label "Kopie van geheradresseerde berichten in map Verzonden plaatsen?">
+<!ENTITY copyToSentMails.accesskey "K">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Als deze optie is aangevinkt, wordt een kopie van geheradresseerde berichten in de map Verzonden geplaatst. Als deze optie niet is aangevinkt, wordt er geen kopie van geheradresseerde berichten bewaard.\nNB Als deze optie is aangevinkt en de account die voor heradressering wordt gebruikt op ‘geen kopie plaatsen’ is ingesteld, wordt er ook geen kopie van geheradresseerde berichten opgeslagen.">
+
+<!ENTITY addToForwardAs.label "‘Heradresseren’ toevoegen aan ‘Doorsturen als’ menu’s en knoppen">
+<!ENTITY addToForwardAs.accesskey "H">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Door ‘Heradresseren’ aan de ‘Doorsturen als’ menu’s en knoppen toe te voegen, groepeert u alle doorstuuracties bij elkaar.\nU kunt de knoppen van de taakbalken verwijderen door de taakbalk aan te passen en door onderstaande optie aan te vinken, kunt u de losse menu-items verbergen, omdat deze redundant zijn geworden.">
+
+<!ENTITY hideRedirectMenuitems.label "Menu-item `Heradresseren’ verbergen in bericht-, applicatie- en context-menu’s">
+<!ENTITY hideRedirectMenuitems.accesskey "M">
+<!ENTITY hideRedirectMenuitems.tooltip "Verbergt het menu-item ‘Heradresseren’ in de bericht-, applicatie- en contextmenu’s.">
+
+<!ENTITY concurrentConnections.label "Aantal gelijktijdige SMTP-verbindingen:">
+<!ENTITY concurrentConnections.accesskey "S">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "Hiermee stelt u het aantal verbindingen in dat bij het verzenden van berichten met uw SMTP-server wordt opgezet. Doorgaans bereikt u hier betere prestaties mee als u veel berichten tegelijk heradresseert.\nNB Als u deze parameter op 0 instelt, geldt er geen limiet voor het aantal gelijktijdige verbindingen - dit kan de stabiliteit van uw SMTP-server beïnvloeden of het heradresseren van enkele berichten zou kunnen mislukken. Als u problemen ondervindt, stel dan de waarde in op 1.">
+
+<!ENTITY defaultRecipientsGroup.label "Standaardontvangers">
+
+<!ENTITY defaultResendTo.label "Heradresseer-Aan:">
+<!ENTITY defaultResendTo.accesskey "A">
+<!ENTITY defaultResendTo.tooltip "Kommagescheiden lijst van e-mailadressen.">
+
+<!ENTITY defaultResendCc.label "Heradresseer-Cc:">
+<!ENTITY defaultResendCc.accesskey "C">
+<!ENTITY defaultResendCc.tooltip "Kommagescheiden lijst van e-mailadressen.">
+
+<!ENTITY defaultResendBcc.label "Heradresseer-Bcc:">
+<!ENTITY defaultResendBcc.accesskey "B">
+<!ENTITY defaultResendBcc.tooltip "Kommagescheiden lijst van e-mailadressen.">
+
+<!ENTITY defaultMode.label "Standaardmodus:">
+<!ENTITY defaultMode.accesskey "t">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Kiezen hoe u berichten standaard wilt heradresseren\nDeze instelling heeft alleen effect als u geen standaardontvangers hebt opgegeven.">
+<!ENTITY defaultModeResendTo.label "Heradresseer-Aan">
+<!ENTITY defaultModeResendCc.label "Heradresseer-Cc">
+<!ENTITY defaultModeResendBcc.label "Heradresseer-Bcc">
+
+<!ENTITY debug.label "Foutopsporing">
+<!ENTITY debug.accesskey "F">
+<!ENTITY debug.tooltip "Foutopsporing voor Mail Redirect-extensie aan-/uitzetten. Logboekvermeldingen worden naar de foutconsole gestuurd.">
+
+<!ENTITY saveConsoleContent.label2 "Inhoud van foutconsole opslaan…">
+<!ENTITY saveConsoleContent.accesskey2 "I">
+<!ENTITY sendViaEmail.label "Verzenden via e-mail">
+<!ENTITY sendViaEmail.accesskey "V">

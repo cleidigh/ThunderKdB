@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/skin/logEdition.css" type="text/css"?>
+<!DOCTYPE window [
+	<!ENTITY % bulkOperationDTD SYSTEM "chrome://cardbook/locale/wdw_bulkOperation.dtd"> %bulkOperationDTD;
+	<!ENTITY % buttonsDTD SYSTEM "chrome://cardbook/locale/wdw_editionButtons.dtd"> %buttonsDTD;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onload="wdw_bulkOperation.load();" resizable="true"
+	onclose="wdw_bulkOperation.cancel();"
+	id="wdw_bulkOperation" title="&wdw_bulkOperationTitle;"
+	persist="screenX screenY width height"
+	style="min-width:100px;min-height:100px;">
+	
+	<script src="chrome://cardbook/content/preferences/cardbookPreferences.js"/>
+	<script src="cardbookElementTools.js"/>
+	<script src="wdw_bulkOperation.js"/>
+
+	<keyset id="wdw_bulkOperation-keys">
+		<key id="escapeKey" keycode="VK_ESCAPE" oncommand="wdw_bulkOperation.cancel();"/>
+	</keyset>
+
+	<grid id="bulkOperationGrid" align="center" flex="1">
+		<columns>
+			<column/>
+			<column flex="1"/>
+		</columns>
+		<rows id="bulkOperationRows"/>
+	</grid>
+
+	<hbox>
+		<spacer flex="1"/>
+		<button id="closeEditionLabel" label="&closeEditionLabel;" accesskey="&closeEditionAccesskey;" oncommand="wdw_bulkOperation.cancel();"/>
+	</hbox>
+</window>

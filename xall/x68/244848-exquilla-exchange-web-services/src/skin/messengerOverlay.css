@@ -1,0 +1,11 @@
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="exquilla"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-exquilla) {
+  list-style-image: url("chrome://exquilla/skin/letter-x-icon-16.png");
+}
+
+#exquilla-notification-box > notification[value="exquilla_license_welcome"] {
+  background-color: #00b7d5;
+  color: white;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}

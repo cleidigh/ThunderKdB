@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Preusmjeri">
+
+<!ENTITY mailredirectSettings.title "Mail Redirect postavke">
+
+<!ENTITY copyToSentMails.label "Spremi kopiju preusmjerene pošte u mapu Poslana pošta?">
+<!ENTITY copyToSentMails.accesskey "p">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Ukoliko je ova mogućnost odabrana, kopija preusmjerene pošte će se spremiti u mapu Poslanu poštu. Ukoliko nije, kopija neće biti spremljena niti u jednu mapu.\nNapomena: Ukoliko je ova mogućnost odabrana, ali vaše postavke računa koji se koristi za preusmjeravanje su namještene da se poslana pošta ne sprema, preusmjerene poruke se također neće spremiti.">
+
+<!ENTITY addToForwardAs.label "Dodaj Preusmjeri u Proslijedi kao izbornik i tipke">
+<!ENTITY addToForwardAs.accesskey "a">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Dodajući Prusmjeri u Proslijedi kao izbornik i tipke grupirate sve radnje za prosljeđivanje pod jednu stavku.\nMožete ukloniti tipke iz alatnih traka prilagođavajući ih i označavajući mogućnost ispod, možete sakriti odvojeni izbornik stavki iz razloga što postaje nepotreban.">
+
+<!ENTITY hideRedirectMenuitems.label "Sakrijte Preusmjeri stavku izbornika iz Poruka, Aplikacija i kontekstnih izbornika">
+<!ENTITY hideRedirectMenuitems.accesskey "S">
+<!ENTITY hideRedirectMenuitems.tooltip "Sakriva odvojene stavke Preusmjeri izbornika iz Poruka, Aplikacija i kontekstnih izbornika.">
+
+<!ENTITY concurrentConnections.label "Broj trenutnih SMTP veza:">
+<!ENTITY concurrentConnections.accesskey "B">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "Ova mogućnost određuje broj veza koji će biti uspostavljen s vašim SMTP poslužiteljem prilikom slanja poruka. Ovo omogućuje povećanje brzine slanja kada odaberete preusmjeravanje velikog broja poruka.\nNapomena: Ukoliko postavite ovaj parametar na nulu, omogućiti ćete neograničeni broj veza - ovo može imati ozbiljne posljedice na stabilnost vašeg SMTP poslužitelja ili slanje nekih poruka može biti neuspješno. U slučaju problema, postavite ovaj broj na 1.">
+
+<!ENTITY defaultRecipientsGroup.label "Zadani primatelji">
+
+<!ENTITY defaultResendTo.label "Ponovno-pošalji-prima:">
+<!ENTITY defaultResendTo.accesskey "P">
+<!ENTITY defaultResendTo.tooltip "Popis adresa e-pošte odvojen zarezom.">
+
+<!ENTITY defaultResendCc.label "Ponovno-pošalji-Cc:">
+<!ENTITY defaultResendCc.accesskey "C">
+<!ENTITY defaultResendCc.tooltip "Popis adresa e-pošte odvojen zarezom.">
+
+<!ENTITY defaultResendBcc.label "Ponovno-pošalji-Bcc:">
+<!ENTITY defaultResendBcc.accesskey "B">
+<!ENTITY defaultResendBcc.tooltip "Popis adresa e-pošte odvojen zarezom.">
+
+<!ENTITY defaultMode.label "Zadani način:">
+<!ENTITY defaultMode.accesskey "n">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Odaberite zadani način preusmjeravanja poruka.\nOve postavke su aktivne kada nemate određene zadane primatelje.">
+<!ENTITY defaultModeResendTo.label "Ponovno-pošalji-prima">
+<!ENTITY defaultModeResendCc.label "Ponovno-pošalji-Cc">
+<!ENTITY defaultModeResendBcc.label "Ponovno-pošalji-Bcc">
+
+<!ENTITY debug.label "Ispravljanje grešaka">
+<!ENTITY debug.accesskey "k">
+<!ENTITY debug.tooltip "Uključite i isključite način ispravljanja grešaka za Mail Redirect dodatak. Zapisi se preusmjeravaju u Konzolu greški.">
+
+<!ENTITY saveConsoleContent.label2 "Spremi sadržaj Konzole greški…">
+<!ENTITY saveConsoleContent.accesskey2 "S">
+<!ENTITY sendViaEmail.label "Pošalji putem e-pošte">
+<!ENTITY sendViaEmail.accesskey "e">

@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is gContactSync.
+   -
+   - The Initial Developer of the Original Code is
+   - Josh Geenen <gcontactsync@pirules.org>.
+   - Portions created by the Initial Developer are Copyright (C) 2013-2015
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://gcontactsync/skin/Accounts.css" type="text/css"?>
+
+<!--<?xml-stylesheet href="chrome://gcontactsync/skin/AccountSetupWizard.css" type="text/css"?>-->
+<!DOCTYPE wizard [
+  <!ENTITY % initialSetupDTD SYSTEM "chrome://gcontactsync/locale/AccountSetupWizard.dtd">
+  %initialSetupDTD;
+  <!ENTITY % accountsDTD SYSTEM "chrome://gcontactsync/locale/Accounts.dtd">
+  %accountsDTD;
+  <!ENTITY % optionsDTD SYSTEM "chrome://gcontactsync/locale/options.dtd">
+  %optionsDTD;
+]>
+
+<wizard id="newAccountWizard" title="&title.label;"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        height="740px"
+        width="700px">
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/misc.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/LoginManager.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/StringBundle.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/FileIO.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/Logger.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/Pref.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/Namespace.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/GElement.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/gdata.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/Preferences.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/HttpRequest.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/GHttpRequest.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/AddressBook.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/GAddressBook.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/AbManager.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/GAbManager.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/Group.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/Accounts.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/OAuth2.js"/>
+  <script type="application/x-javascript"
+          src="chrome://gcontactsync/content/AccountSetupWizard.js"/>
+
+  <wizardpage pageid="accountPage"
+              id="accountPage"
+              next="oauthPage">
+    <description>
+      &account.description;
+    </description>
+
+    <radiogroup id="accountOption"
+                onselect="gContactSync.AccountSetupWizard.updateAccountIDs();">
+      <radio id="existingAccount"
+             label="&existingAccount.label;"
+             accesskey="&existingAccount.accesskey;"
+             value="existing"
+             selected="true"/>
+      <menulist id="existingAccountList">
+        <menupopup id="existingAccountPopup"/>
+      </menulist>
+      <spacer height="5px"/>
+      <radio id="newAccount" label="&newAccount.label;" accesskey="&newAccount.accesskey;" value="new"/>
+        <vbox>
+          <label id="emailLabel" value="&email.value;" control="email" accesskey="&email.accesskey;"/>
+          <textbox id="email"/>
+        </vbox>
+    </radiogroup>
+  </wizardpage>
+  <wizardpage description="&accountSettings.description;"
+              pageid="oauthPage"
+              id="oauthPage"
+              next="settingsPage">
+    <hbox flex="1">
+      <browser id="browser" type="content" src="" flex="1" />
+    </hbox>
+  </wizardpage>
+  <wizardpage description="&accountSettings.description;"
+              id="settingsPage"
+              pageid="settingsPage">
+    <label control="abName" value="&abName.value;" accesskey="&abName.accesskey;"/>
+    <hbox>
+      <menulist id="abName">
+        <menupopup id="abNamePopup"/>
+      </menulist>
+      <button id="newABButton"
+              label="&newABButton.label;"
+              accesskey="&newABButton.accesskey;"
+              oncommand="gContactSync.AccountSetupWizard.newAddressBook();"/>
+    </hbox>
+    <spacer height="5px"/>
+    <label control="Groups" value="&Groups.label;" accesskey="&Groups.accesskey;"/>
+    <hbox id="GroupsBox">
+      <menulist id="Groups">
+        <menupopup id="GroupsPopup">
+          <menuitem class="default" value="All"        label="&AllGroups.label;"/>
+          <menuitem class="default" value="false"      label="&NoGroups.label;"/>
+          <menuitem class="default" value="contacts"   label="&Contacts.label;" selected="true"/>
+          <menuitem class="default" value="coworkers"  label="&Coworkers.label;"/>
+          <menuitem class="default" value="family"     label="&Family.label;"/>
+          <menuitem class="default" value="friends"    label="&Friends.label;"/>
+        </menupopup>
+      </menulist>
+      <button id="GetGroups"
+              oncommand="gContactSync.Accounts.getAllGroups(gContactSync.AccountSetupWizard.mEmailAddress);"
+              label="&GetGroups.label;"
+              accesskey="&GetGroups.accesskey;"/>
+    </hbox>
+    <spacer height="5px"/>
+    <hbox>
+      <label control="SyncDirection"  value="&SyncDirection.label;" accesskey="&SyncDirection.accesskey;"/>
+      <label id="link-label"    value="&DirectionHelp.label;"
+             onclick="gContactSync.Accounts.directionPopup();"/>
+    </hbox>
+    <menulist id="SyncDirection">
+      <menupopup id="SyncDirectionPopup">
+        <menuitem value="Complete"  label="&Complete.label;"/>
+        <menuitem value="ReadOnly"  label="&ReadOnly.label;"/>
+        <menuitem value="WriteOnly" label="&WriteOnly.label;"/>
+      </menupopup>
+    </menulist>
+    <checkbox id="skipContactsWithoutEmail" label="&SkipContactsWithoutEmail.label;" accesskey="&SkipContactsWithoutEmail.accesskey;" checked="true"/>
+    <spacer flex="1"/>
+    <label align="end" value="&finish.value;"/>
+  </wizardpage>
+</wizard>

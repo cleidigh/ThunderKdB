@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Перенаправить">
+
+<!ENTITY mailredirectSettings.title "Настройки Mail Redirect">
+
+<!ENTITY copyToSentMails.label "Копировать перенаправленные сообщения в папку Отправленные?">
+<!ENTITY copyToSentMails.accesskey "К">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Если флажок стоит, то копия перенаправленного сообщения будет направлена в папку Отправленные. Если флажок снят, то копия не будет создана вообще.\nКопия также не будет создана, если в настройках учетной записи, используемой для перенаправления, указано не сохранять отправленные сообщения.">
+
+<!ENTITY addToForwardAs.label "Добавить «Перенаправить» в меню и кнопки «Переслать как»">
+<!ENTITY addToForwardAs.accesskey "а">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Добавив «Перенаправить» в меню и кнопки «Переслать как», вы соберёте все действия по пересылке в одном пункте меню.\nВы можете удалить кнопки с панелей инструментов путём их настройки, а также скрыть отдельные избыточные пункты меню, использовав расположенную ниже настройку.">
+
+<!ENTITY hideRedirectMenuitems.label "Скрыть пункт меню «Перенаправить» из меню «Сообщение», «Приложение» и контекстных меню">
+<!ENTITY hideRedirectMenuitems.accesskey "ы">
+<!ENTITY hideRedirectMenuitems.tooltip "Скрывает отдельные пункты меню «Перенаправить» из меню «Сообщение», «Приложение» и контекстных меню.">
+
+<!ENTITY concurrentConnections.label "Количество конкурирующих соединений по протоколу SMTP:">
+<!ENTITY concurrentConnections.accesskey "о">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "Настройка определяет количество одновременных соединений при отправке сообщений. Вы можете с ее помощью ускорить процесс при отправке большого количества сообщений.\nЕсли указанная величина равна нулю, будет использовано неограниченное количество соединений. Это может привести к проблемам на сервере или обрыву соединения. Рекомендуемая величина в случае проблем равна единице.">
+
+<!ENTITY defaultRecipientsGroup.label "Получатели по умолчанию">
+
+<!ENTITY defaultResendTo.label "Перенаправить:">
+<!ENTITY defaultResendTo.accesskey "П">
+<!ENTITY defaultResendTo.tooltip "Список адресов, разделенных запятыми.">
+
+<!ENTITY defaultResendCc.label "Копия:">
+<!ENTITY defaultResendCc.accesskey "и">
+<!ENTITY defaultResendCc.tooltip "Список адресов, разделенных запятыми.">
+
+<!ENTITY defaultResendBcc.label "Скрытая копия:">
+<!ENTITY defaultResendBcc.accesskey "р">
+<!ENTITY defaultResendBcc.tooltip "Список адресов, разделенных запятыми.">
+
+<!ENTITY defaultMode.label "Стандартный режим:">
+<!ENTITY defaultMode.accesskey "С">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Укажите стандартный способ перенаправления\nНастройка действует только если не указаны получатели по умолчанию.">
+<!ENTITY defaultModeResendTo.label "Перенаправить">
+<!ENTITY defaultModeResendCc.label "Копия">
+<!ENTITY defaultModeResendBcc.label "Скрытая копия">
+
+<!ENTITY debug.label "Отладка">
+<!ENTITY debug.accesskey "т">
+<!ENTITY debug.tooltip "Включение/Выключение отладки расширения Mail Redirect. Отладочные сообщения выводятся в консоль JavaScript.">
+
+<!ENTITY saveConsoleContent.label2 "Сохранить консоль ошибок…">
+<!ENTITY saveConsoleContent.accesskey2 "C">
+<!ENTITY sendViaEmail.label "Послать по почте">
+<!ENTITY sendViaEmail.accesskey "л">

@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Lightning Calendar Tabs",
+  "description": "An addon which extends the Lighting calendar views with tabs.",
+  "version": "2.3",
+  "author": "jlx84",
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://lightningcalendartabs/content/options.xul",
+      "open_in_tab": false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "lightningcalendartabs@jlx.84",
+      "strict_min_version": "68.0a1"
+    }
+  }
+}

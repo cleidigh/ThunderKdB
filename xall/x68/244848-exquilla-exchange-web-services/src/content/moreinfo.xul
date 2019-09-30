@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!-- 
+/*
+ ***** BEGIN LICENSE BLOCK *****
+ * This file is part of ExQuilla by Mesquilla.
+ *
+ * Copyright 2013 R. Kent James. All Rights Reserved
+ *
+ * ***** END LICENSE BLOCK *****
+ */
+-->
+<window title=""
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <notificationbox id="notifications"/>
+  <browser id="maincontent"
+           type="content-primary"
+           disablehistory="true"
+           src="about:blank"
+           flex="1"/>
+</window>
