@@ -334,15 +334,22 @@ async function getExtensionFiles(addon_identifier) {
 		// console.debug('Downloaded filename ' + xpiFileName);
 		// fs.ensureDirSync(`${extRootDir}/xpi`);
 
-		// if (fs.existsSync(`${extRootDir}/${extRootName}`)) {
-		// 	fs.removeSync(`${extRootDir}/${extRootName}`);
-		// 	console.debug('Removing: ' + `${extRootName}`);
-		// }
+		if (fs.existsSync(`${extRootDir}/xpi`)) {
+			fs.removeSync(`${extRootDir}/xpi`);
+			console.debug('Removing: ' + `${extRootName}`);
+		}
 		
-		_7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
-		console.debug('Starting unzip: ' + xpiFileName);
-		fileUnzip(`${extRootDir}/xpi/${xpiFileName}`, { dir: `${extRootDir}/src` });
-		console.debug('unpacked source');
+		
+		if (fs.existsSync(`${extRootDir}/src`)) {
+			fs.removeSync(`${extRootDir}/src`);
+			console.debug('Removing: ' + `${extRootName}`);
+		}
+		
+
+		// _7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
+		// console.debug('Starting unzip: ' + xpiFileName);
+		// fileUnzip(`${extRootDir}/xpi/${xpiFileName}`, { dir: `${extRootDir}/src` });
+		// console.debug('unpacked source');
 
 		// let ext_versions = await requestATN_URL(addon_identifier, 'versions');
 		// console.debug('downloaded versions');
@@ -510,7 +517,7 @@ async function g1() {
 	// extsJson = extArray;
 	// try {
 	let p = [];
-	for (let index = 0; index < 2; index++) {
+	for (let index = 0; index < 5; index++) {
 		console.debug('GetIndex ' + index);
 		p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 
