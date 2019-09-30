@@ -1,0 +1,184 @@
+{
+    "id": 477467,
+    "authors": [
+        {
+            "id": 10446181,
+            "name": "Brummolix",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Brummolix/",
+            "username": "Brummolix",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 7337,
+    "categories": {
+        "thunderbird": [
+            "chat",
+            "importexport"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2472667,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autoarchivereloaded/versions/2472667",
+        "files": [
+            {
+                "id": 1015750,
+                "created": "2019-09-25T22:37:47Z",
+                "hash": "sha256:293d2afc922649a7e0bdd325f719df671dc3ad111cce5396e22d789d17a749be",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 142062,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015750/autoarchivereloaded-1.0.0.1-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "accountsRead",
+                    "messagesRead",
+                    "messagesMove"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoarchivereloaded/versions/1.0.0.1",
+        "version": "1.0.0.1"
+    },
+    "default_locale": "de",
+    "description": {
+        "ru": "Thunderbird позволяет архивировать сообщения, но необходимо запускать процесс вручную для каждого сообщения.\nЭто дополнение позволяет автоматически архивировать сообщения по истечении определенного установленного времени.\nМожно, например, использовать архивацию учетной записи IMAP (когда место на сервере ограничено) на локальный компьютер.\nИнструкцию доступны по адресу <a href=\"http://brummolix.github.io/AutoarchiveReloaded/\" rel=\"nofollow\">http://brummolix.github.io/AutoarchiveReloaded/</a>\nСообщить о найденных ошибках можно по адресу <a href=\"https://github.com/Brummolix/AutoarchiveReloaded/issues\" rel=\"nofollow\">https://github.com/Brummolix/AutoarchiveReloaded/issues</a>\n\n<b>Пожалуйста, обратите внимание</b>\nИспользуйте дополнение на свой страх и риск! Некоторые (немногие) пользователи сообщают о потери данных.\n\nДополнение представляет собой улучшенную версию дополнения \"Autoarchive\".\nУлучшения:\n<ul><li>Архивирование не только папки Входящие, но и другие папки, такие как Отправленные (Корзина, Шаблоны, Черновики, Исходящие и Архивы, игнорируются)</li><li>Архивирование вложенных папок</li><li>Отдельная настройка для непрочитанных сообщений (помимо отмеченных сообщений и сообщений с меткой)</li><li>Улучшена обработка, если сообщение отмечено или есть метка</li><li>Архивирование с помощью Меню/Инструменты</li><li>Вы можете выбрать авто архивирование при каждом запуске Thunderbird или вручную</li><li>Добавлена (ограничено) возможность архивирования RSS аккаунтов (только с настройками по умолчанию, т.к. нет настроек архивирования RSS)</li></ul>",
+        "en-US": "Thunderbird can archive messages but you have to do it manually for every message.\nThis add-on helps you and archives your messages automatically after the time you have configured.\nYou can use it for example if you want to archive your mails from an IMAP account (where you usually does not have so much space) to your local computer. \n\n<a href=\"http://brummolix.github.io/AutoarchiveReloaded/\" rel=\"nofollow\">Open some instructions under http://brummolix.github.io/AutoarchiveReloaded/</a>\nReport Bugs under <a href=\"https://github.com/Brummolix/AutoarchiveReloaded/issues\" rel=\"nofollow\">https://github.com/Brummolix/AutoarchiveReloaded/issues</a>.\n\n<strong>Attention</strong>\nUse the AddOn on your own risk! Some (few) users reported data loss.\n\nThis add-on is an improved version of another add-on called \"Autoarchive\".\nImprovements:\n- does not only archive Inbox but also other folders like Sent (Junk, Trash, Drafts, Templates,Outbox and Archiv will be still ignored)\n- handle subfolders\n- configure unread mails separately (besides marked messages and messages with keywords)\n- improve handling if a message for example is marked <i>and</i> has keywords\n- archiving via menu/toolbar\n- you can select if you want autoarchiving at every start of Thunderbird or manual only\n- add (limited) possibility to archive RSS accounts (it is limited because you don't have Thunderbird archive options at such an account, therefore you can only archive with default settings)",
+        "de": "Thunderbird archiviert Nachrichten, aber man muss es manuell für jede Nachricht machen.\nDieses Add-on hilft und archiviert Nachrichten automatisch nach einer bestimmten, einstellbaren Zeit.\nMan kann es z.B. benutzen, um seine Mails von einem IMAP Account (wo man normalerweise nicht soviel Platz auf dem Server zur Verfügung hat) auf den lokalen Computer zu archivieren. \n\n<a href=\"http://brummolix.github.io/AutoarchiveReloaded/\" rel=\"nofollow\">Unter http://brummolix.github.io/AutoarchiveReloaded/ gibts eine (englische) Anleitung</a>\nEventuelle Fehler bitte unter <a href=\"https://github.com/Brummolix/AutoarchiveReloaded/issues\" rel=\"nofollow\">https://github.com/Brummolix/AutoarchiveReloaded/issues</a> melden.\n\n<strong>Bitte beachten</strong>\nDie Benutzung des AddOns erfolgt auf eigene Gefahr! Einige (wenige) Benutzer berichten von Datenverlust.\n\nDas Add-on ist eine verbesserte Version vom Add-on \"Autoarchive\".\nVerbesserungen:\n- archiviert nicht nur den Posteingang, sondern auch andere Ordner z.B. Gesendete (Junk, Papierkorb, Vorlagen, Entwürfe, Postausgang und Archive werden aber ignoriert)\n- archiviert auch Unterordner\n- neben gekennzeichneten Nachrichten und Nachrichten mit Schlüsselwörtern kann man auch ungelesene Nachrichten separat konfigurieren\n- verbesserte Behandlung, wenn eine Nachricht z.B. gekennzeichnet <i>und</i> mit Schlüsselwörtern versehen ist\n- Archivierung per Menü/Symbolleiste\n- einstellbar, ob Archivierung bei jedem Start von Thunderbird oder manuell\n- Feed Konten (RSS) können jetzt auch archiviert werden (allerdings bietet Thunderbird selbst dort keine Archivierungseinstellungen, so dass nur mit Standardeinstellungen archiviert werden kann)",
+        "fr": "Thunderbird peut archiver les messages mais vous devez le faire manuellement pour chaque message.\nCette extension vous permet d'archiver automatiquement vos mails après une certaine période.\nVous pouvez par exemple l'utiliser pour archiver les messages de votre compte IMAP (ou généralement l'espace est restreint) vers vos dossiers locaux.\n\nVoir les instructions : <a href=\"http://brummolix.github.io/AutoarchiveReloaded/\" rel=\"nofollow\">http://brummolix.github.io/AutoarchiveReloaded/</a>\nRapporter un bug : <a href=\"https://github.com/Brummolix/AutoarchiveReloaded/issues\" rel=\"nofollow\">https://github.com/Brummolix/AutoarchiveReloaded/issues</a>\n\n<strong>Attention</strong>\nVous utilisez l'extension à vos risques et périls. Certains utilisateurs (peu) ont reporté avoir perdu des données.\n\nCette extension est une version améliorée de l'extension appelée \"Autoarchive\".\nAméliorations:\n\n- Archivage du Courrier entrant mais aussi d'autres dossiers comme Messages envoyés (Spam, Corbeille, Brouillons, Modèles, Boîte d'envoi et Archives seront toujours ignorés)\n- Gestion des sous-dossiers\n- Configuration des messages non-lus séparément (en plus de messages suivis et des messages avec des mots clés)\n- Amélioration du traitement si un message est par exemple suivi et a des mots-clés\n- Archivage via le menu / la barre d'outils\n- Choix du lancement de l'archivage automatique à chaque démarrage de Thunderbird ou manuellement\n- Ajout de possibilité (limitées) pour archiver les comptes RSS (limitées car Thunderbird ne possède pas d'options pour archiver les comptes de flux, vous ne pouvez donc utiliser que les paramètres par défaut)",
+        "es": "Thunderbird puede archivar mensajes pero tienes que hacerlo manualmente para cada mensaje. \nEsta extensión te ayuda archivar tus mensajes automáticamente después del tiempo configurado. \nTu puedes usarlo por ejemplo si quieres archivar tus correos de una cuenta IMAP (cuando no tienes mucho espacio) en tu computadora local.\n\nInstrucciones en: <a href=\"http://brummolix.github.io/AutoarchiveReloaded/\" rel=\"nofollow\">http://brummolix.github.io/AutoarchiveReloaded/</a>\nReporte de errores en: <a href=\"https://github.com/Brummolix/AutoarchiveReloaded/issues\" rel=\"nofollow\">https://github.com/Brummolix/AutoarchiveReloaded/issues</a> \n\n<strong>Atención</strong>\n¡Usa esta extensión bajo tu propio riesgo!, algunos (pocos) usuarios\nreportan perdida de datos.\n\nEsta extensión es una versión mejorada de otra extensión llamada \"Autoarchive\".\n\nMejoras: \n* No solo archiva mensajes en la bandeja de entrada si no también otras carpetas como enviados. (Basura, papelera, plantillas, enviados pero es ignorado el de Archivados). \n* Manejo de subcarpetas. \n* Configura mensajes sin leer en forma separada (así como mensajes marcados y etiquetados). \n* Mejora el manejo si los mensajes son marcados o etiquetados. \n* Archivado vía menú o barra de herramientas. \n* Puedes seleccionar si quieres archivar al iniciar Thunderbird o manualmente. \n* Agrega (limitado) la posibilidad de archivar cuentas RSS (es limitado porque Thunderbird no tiene opciones para archivar ese tipo de cuenta, así que solo puede archivar con la configuración predeterminada)."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autoarchivereloaded/edit",
+    "guid": "AutoarchiveReloaded@brummolix.addons.mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "ru": "http://brummolix.github.io/AutoarchiveReloaded/",
+        "en-US": "http://brummolix.github.io/AutoarchiveReloaded/",
+        "de": "http://brummolix.github.io/AutoarchiveReloaded/",
+        "fr": "http://brummolix.github.io/AutoarchiveReloaded/",
+        "es": "http://brummolix.github.io/AutoarchiveReloaded/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-09-25T22:40:03Z",
+    "name": {
+        "ru": "AutoarchiveReloaded",
+        "en-US": "AutoarchiveReloaded",
+        "de": "AutoarchiveReloaded",
+        "fr": "AutoarchiveReloaded",
+        "es": "AutoarchiveReloaded"
+    },
+    "previews": [
+        {
+            "id": 205805,
+            "caption": null,
+            "image_size": [
+                1062,
+                781
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205805.png?modified=1569445120",
+            "thumbnail_size": [
+                272,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205805.png?modified=1569445120"
+        },
+        {
+            "id": 205806,
+            "caption": null,
+            "image_size": [
+                1062,
+                781
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205806.png?modified=1569445120",
+            "thumbnail_size": [
+                272,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205806.png?modified=1569445120"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.63157,
+        "count": 11,
+        "average": 3.7273,
+        "text_count": 10
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoarchivereloaded/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/477467",
+    "slug": "autoarchivereloaded",
+    "status": "public",
+    "summary": {
+        "ru": "Автоматическое архивирование старых писем (улучшенная версия оригинального дополнения Autoarchive)",
+        "en-US": "Automatically archives old mails (Improved version of the orginal Autoarchive Add-on)",
+        "de": "Archiviert E-Mails automatisch (Verbesserte Version vom \"Autoarchive\" Add-on)",
+        "fr": "Archive automatiquement les anciens mails (version améliorée de l'extension Autoarchive)",
+        "es": "Archiva automáticamente los correos antiguos (Mejorando la versión original de la extensión \"Autoarchive\")"
+    },
+    "support_email": null,
+    "support_url": {
+        "de": "https://github.com/Brummolix/AutoarchiveReloaded/issues"
+    },
+    "tags": [
+        "archiv",
+        "archive",
+        "backup",
+        "firefox57",
+        "imap",
+        "sicherung"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoarchivereloaded/",
+    "weekly_downloads": 253
+}

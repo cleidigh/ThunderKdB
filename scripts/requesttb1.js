@@ -9,11 +9,16 @@ const _7z = require('7zip-min');
 var extract = require('extract-zip')
 
 const rootDir = "C:/Dev/Thunderbird/ThunderKdB";
+const extGroupAllDir = 'xall';
+const extGroupTB68Dir = 'x68';
+const extGroupTB60Dir = 'x60';
+const extGroupTBOtherDir = 'xOther';
+
 const ext68CompDir = '..\\extensions-all\\exts-tb68-comp';
 const ext68CompDirU = '/extensions-all/exts-tb68-comp';
 
 
-const extsAllJsonFileName = `${rootDir}/exall/exall.json`;
+const extsAllJsonFileName = `${rootDir}/xall/xall.json`;
 
 // unauthenticated client
 const gh = new GitHub({
@@ -150,18 +155,31 @@ async function requestATN_URL(addon_id, query_type, options) {
 
 	}
 
-	try {
-		let response = await request.get(extRequestOptions);
-		if (response.err) { console.log('error'); }
-		else {
-			// console.log(' Done response: ' + addon_id);
-			// console.debug(response);
-			return response;
+	for (reqCnt = 0; reqCnt < 3; reqCnt++) {
+		try {
+			console.log('StartRequest: ' + reqCnt +'  ' + addon_id);
+			let response = await request.get(extRequestOptions);
+			if (response.err) {
+				console.log('Request error' + response.err);
+				response = await request.get(extRequestOptions);
+				console.debug('retry');
+				return response;
+			}
+			else {
+				console.log(' Done response: ' + addon_id);
+				// console.debug(response);
+				return response;
+			}
 		}
-	}
-	catch (err) {
-		console.debug('Error ' + err);
+		catch (err) {
+			console.debug('Error ' + extRequestOptions.url + '  ' + err);
+			if (reqCnt < 3) {
+				console.debug('Continue');
+				continue;
+			}
+		}
 		return { err: 404 };
+
 	}
 }
 
@@ -199,6 +217,81 @@ function genExtensionSummaryMD(addon_identifier, extJson) {
 }
 
 
+function isCompatible(checkVersion, minv, maxv) {
+	// unambiguous compatibility
+
+}
+
+
+function compatibilityCheck(extJson) {
+
+	// console.debug(`CompatibilityCheck: ${extJson.slug} `);
+	let compSet = {};
+	let v_min = `${extJson.current_version.compatibility.thunderbird.min}`;
+	let v_max = `${extJson.current_version.compatibility.thunderbird.max}`;
+	let mext = extJson.current_version.files[0].is_webextension;
+
+	const p = /[\d\.]+/;
+	let v_max_num = 0;
+
+	if (v_max === "*") {
+		v_max_num = -1;
+		compSet.compNoMax = true;
+	} else {
+		v_max_num = p.exec(v_max);
+	}
+	let v_min_num = p.exec(v_min);
+
+	// console.debug(`${extJson.slug} : vMin: ${v_min} vMax: ${v_max} vMax_nun: ${v_max_num}  ME: ${mext}`);
+
+	compSet.mext = mext;
+
+	// if both numbers - unambiguous
+	if (v_max_num > 0 && !isNaN(v_min_num)) {
+		// console.debug('unambiguous versions');
+		// check compatibilities
+		if (v_min_num <= 68 && v_max_num >= 68) {
+			compSet.comp68 = true;
+
+		}
+		if (v_max_num >= 69) {
+			compSet.comp69plus = true;
+		}
+
+		if (v_min_num <= 60 && v_max_num >= 60) {
+			compSet.comp60 = true;
+		}
+		if (v_max_num >= 61) {
+			compSet.comp61plus = true;
+		}
+
+		if (v_max_num < 60) {
+			compSet.compOther = true;
+		}
+
+	} else {
+		// console.debug('ambiguous');
+		if (v_min_num >= 68 && v_min_num <= 69 && mext) {
+			compSet.comp68 = true;
+		} else if (v_min_num >= 60 && mext) {
+			compSet.comp68 = true;
+		}
+
+		if (v_min_num >= 60 && v_min_num <= 61) {
+			compSet.comp60 = true;
+		}
+
+		if (v_min_num < 60) {
+			compSet.compOther = true;
+		}
+
+
+	}
+	console.debug(`${extJson.slug} comp: ` + JSON.stringify(compSet));
+
+	return compSet;
+}
+
 console.log("Starting...");
 
 async function getExtensionFiles(addon_identifier) {
@@ -207,8 +300,20 @@ async function getExtensionFiles(addon_identifier) {
 		console.log('Get Files: ' + addon_identifier);
 		// let ext = getExtensionJSON(90003);
 		let ext = await requestATN_URL(addon_identifier, 'details')
+
+		let ext_comp = compatibilityCheck(ext);
+		// return 1;
+
+		if (ext_comp.comp68) {
+			targetGroupDir = extGroupTB68Dir;
+		} else if (ext_comp.comp60) {
+			targetGroupDir = extGroupTB60Dir;
+		} else {
+			targetGroupDir = extGroupTBOtherDir;
+		}
+
 		const extRootName = `${addon_identifier}-${ext.slug}`;
-		const extRootDir = `${ext68CompDir}\\${extRootName}`;
+		const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
 		console.debug('CheckingFolder: ' + extRootDir);
 
 		if (fs.existsSync(extRootDir)) {
@@ -216,40 +321,39 @@ async function getExtensionFiles(addon_identifier) {
 			console.debug('Removing: ' + `${extRootDir}`);
 		}
 		console.debug('  Done');
-		let jfile = `${ext68CompDir}\\${extRootName}\\${extRootName}.json`
+		let jfile = `${extRootDir}/${extRootName}.json`
 		writePrettyJSONFile(jfile, ext)
 		console.debug(ext.slug);
 
 
 		const xpiFileURL = ext.current_version.files[0].url;
 		const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
-		await downloadURL(xpiFileURL, `${ext68CompDir}\\${extRootName}\\xpi`);
+		await downloadURL(xpiFileURL, `${extRootDir}/${extRootName}/xpi`);
 		console.debug('Downloaded filename ' + xpiFileName);
-		fs.ensureDirSync(`${ext68CompDir}\\${extRootName}\\xpi`);
+		fs.ensureDirSync(`${extRootDir}/${extRootName}/xpi`);
 
 
-		_7zCommand = ['x', `${ext68CompDirU}/${extRootName}/xpi/${xpiFileName}`, `-o${ext68CompDirU}/${extRootName}/src`];
-		console.debug('Starting unzip: ' + xpiFileName);
-		fileUnzip(`${rootDir}/${ext68CompDirU}/${extRootName}/xpi/${xpiFileName}`, { dir: `${rootDir}/${ext68CompDirU}/${extRootName}/src` });
-
-		// await _7CmdSync(_7zCommand);
-		console.debug('unpacked source');
+		// _7zCommand = ['x', `${ext68CompDirU}/${extRootName}/xpi/${xpiFileName}`, `-o${ext68CompDirU}/${extRootName}/src`];
+		// console.debug('Starting unzip: ' + xpiFileName);
+		// fileUnzip(`${rootDir}/${ext68CompDirU}/${extRootName}/xpi/${xpiFileName}`, { dir: `${rootDir}/${ext68CompDirU}/${extRootName}/src` });
+		// console.debug('unpacked source');
 
 		let ext_versions = await requestATN_URL(addon_identifier, 'versions');
 		console.debug('downloaded versions');
 
-		jfile = `.\\${ext68CompDir}\\${extRootName}\\${extRootName}-versions.json`
+		jfile = `${extRootDir}/${extRootName}-versions.json`;
 		await writePrettyJSONFile(jfile, ext_versions);
 
-		console.debug('generate markDown	');
-		genExtensionSummaryMD(addon_identifier, ext);
+		// console.debug('generate markDown	');
+		// genExtensionSummaryMD(addon_identifier, ext);
 		console.debug('Finished: ' + addon_identifier);
 		return 1;
 		// resolve();
 	} catch (e) {
 		// reject(0);
-		console.debug('error ' + e);
-		throw e;
+		console.debug('Error Files '+'  ' + e);
+		// throw e;
+		return 0;
 	}
 	// });
 	// await p;
@@ -341,7 +445,7 @@ async function getAllExtensionDetails(pageStart, pageEnd) {
 		extsJson = extsJson.concat(resp.results);
 		// console.debug('page:\n' + JSON.stringify( extsJson));
 
-	
+
 	}
 
 	// console.debug('Await All'); 
@@ -352,18 +456,38 @@ async function getAllExtensionDetails(pageStart, pageEnd) {
 }
 
 
-async function getAll() {
+async function getAll(extArray, options) {
 	// let p = [];
 
-	const p = extArray.map(async extId => {
-		const pc = await getExtensionFiles(extId);
+	// for (let index = 0; index < extArray.length; index++) {
+	// 	const element = extArray[index];
+	// 	const pc = await getExtensionFiles( element);
+	// 	p.push(pc);
+	// }
+	exts = extArray.slice(options.start, options.end);
+	console.debug(`StartingGet: ${options.start} - ${options.end} : ${exts.length}`);
+
+	const p = exts.map(async (extObj, index) => {
+		console.debug('map start ' + index);
+
+		let pc = {};
+		if (typeof extObj === 'number') {
+			pc = await getExtensionFiles(extObj);
+			// console.debug('after get ' + pc);
+			// console.debug('after get ' + pc);
+		} else {
+			pc = await getExtensionFiles(extObj.id);
+		}
+		// const pc = await getExtensionFiles(extId);
+		console.debug('after get return ' + pc);
+
 		return pc;
 	});
-	// extArray.forEach(element => {
+
 	console.debug('Await All');
 	let ap = Promise.all(p);
 	console.debug('All Promises ' + ap.length + " " + ap);
-	// });
+
 	return ap;
 }
 
@@ -372,11 +496,24 @@ async function getAll() {
 async function g1() {
 	let startTime = new Date();
 	console.debug('' + startTime);
-	// await getAllExtensionDetails(1, 55);
+	await getAllExtensionDetails(1, 54);
 
-	await getAll();
+	console.debug('TotalExtensions: '+extsJson.length);
+	// extsJson = extArray;
+	// try {
+	let p = [];
+	for (let index = 0; index < 70; index++) {
+		console.debug('GetIndex ' + index);
+		p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 
-	console.debug('after get all '+ extsJson.length);
+	}
+
+	let ap = Promise.all(p);
+	// } catch (error) {
+	// 	console.debug('outside error ' + error);
+	// }
+
+	console.debug('after get all ' + extsJson.length);
 	console.debug(new Date() - startTime);
 	console.debug(new Date());
 
@@ -391,4 +528,4 @@ g1();
 
 
 
-console.debug('Totally Done');
+console.debug('Totally Done'); 

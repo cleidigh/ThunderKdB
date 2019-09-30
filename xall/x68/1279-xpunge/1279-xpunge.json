@@ -1,0 +1,159 @@
+{
+    "id": 1279,
+    "authors": [
+        {
+            "id": 6199,
+            "name": "Theodore Tegos",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/theodore-tegos/",
+            "username": "theodore-tegos",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/6/6199.png?modified=1403764529"
+        }
+    ],
+    "average_daily_users": 11438,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=xpungetb%40gmail.com&item_name=Xpunge+For+Mozilla+Thunderbird&currency_code=EUR&source=url",
+    "current_version": {
+        "id": 2472584,
+        "compatibility": {
+            "thunderbird": {
+                "max": "68.*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xpunge/versions/2472584",
+        "files": [
+            {
+                "id": 1015656,
+                "created": "2019-09-13T22:17:08Z",
+                "hash": "sha256:d2a6092d28633784eab3dba764adb40709100e050c89ee0aa7be614b81065035",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 62770,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015656/xpunge-1.0.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "This release contains changes to make Xpunge compatible with Thunderbird 68. For older versions of Thunderbird, please download an older version of Xpunge.\n\nTranslations included: Danish (da), French (fr-FR), German (de), Greek (el), Japanese (ja) and Russian (ru).\n\nPlease take a look at the release notes for more information:\n\n<a href=\"http://www.theodoretegos.net/mozilla/tb/releases/xpunge/index.html\" rel=\"nofollow\">http://www.theodoretegos.net/mozilla/tb/releases/xpunge/index.html</a>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xpunge/versions/1.0.0",
+        "version": "1.0.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Xpunge is an extension that combines the functionality of emptying certain folders (trash and junk) and also compacting user-specified folders in a single action and for multiple accounts. This can be done with a single mouse click on a toolbar button or through a sub-menu under Thunderbird's \"Tools\" menu. The functionality to empty junk folders is available since version 0.5.\n\nXpunge can be invoked either on the currently selected account only (\"Xpunge\" button) or on a configurable list of multiple Thunderbird accounts (\"MultiXpunge\" button). There is also a separately configurable timer feature that allows the functionality offered by \"MultiXpunge\" to be automatically applied at regular intervals and at a specific time every day.\n\nXpunge works on all types of Thunderbird accounts.\n\n<b>ATTENTION:</b> Compacting folders means that all the messages you have previously deleted from those folders are permanently deleted from the hard disk and cannot be retrieved again.\n\n<b>ATTENTION:</b> Be careful when you use the new functionality for emptying the junk folders. It is not the same as emptying the trash folder, in the sense that messages are deleted on purpose, whereas your spam filter may put useful (non-spam) emails in the junk folder, so emptying this folder will cause you to lose those emails. Xpunge has all the new junk features turned off by default to avoid accidents. Please enable and use the junk functionality at your own risk.\n\n<b>ATTENTION:</b> When you select to empty the Junk of an account, all the folders of that account that are known to Thunderbird to be \"junk\" folders will be emptied. For example, if you set up a Gmail IMAP account, where the junk folder is called \"Spam\", and you also change the settings of that account in Thunderbird to move new junk messages to a folder called \"Junk\", both folders will be emptied if you enable emptying the Junk for that account in Xpunge.",
+        "es": "Xpunge es una extensión que combina las funcionalidades de vaciar la papelera y compactar las carpetas en una única acción. Puede realizar esta tarea con un único click del ratón en el botón de la barra de herramientas, o usando el submenú correspondiente en el menú \"Herramientas\" de Thunderbird.\n\nXpunge puede actuar tanto en una única cuenta seleccionada (botón \"Xpunge\") o en una lista configurable con varias cuentas (botón \"MultiXpunge\"). Existe también una opción configurable de programador, que permite aplicar automáticamente la funcionalidad de \"MultiXpunge\" en intervalos regulares y a una hora concreta cada día.\n\nXpunge funciona con todos los tipos de cuentas de Thunderbird.",
+        "da": "Xpunge er en udvidelse, som i én handling kombinerer funktionerne tøm papirkurv og optimer mapper. Dette kan gøres med et enkelt klik på en knap på værktøjslinjen eller ved at vælge en undermenu til menuen Funktioner i Thunderbird.\n\nXpunge kan udføres på den pågældende konto (knappen \"Xpunge\") eller på en brugerdefineret liste over flere Thunderbird-konti (knappen \"Mulitxpunge\"). Der er også en selvstændig brugerdefineret timer-funktion, som lader funktionen fra \"MultiXpunge\" udføre automatisk med regelmæssige intervaller og på et bestemt tidspunkt hver dag.\n\nXpunge virker på alle slags Thunderbird-konti."
+    },
+    "developer_comments": {
+        "en-US": "<b>ATTENTION:</b> Compacting folders means that all the messages you have previously deleted from those folders are permanently deleted from the hard disk and cannot be retrieved again.\n\n<b>ATTENTION:</b> Be careful when you use the new functionality for emptying the junk folders. It is not the same as emptying the trash folder, in the sense that messages are deleted on purpose, whereas your spam filter may put useful (non-spam) emails in the junk folder, so emptying this folder will cause you to lose those emails. Xpunge has all the new junk features turned off by default to avoid accidents. Please enable and use the junk functionality at your own risk.\n\n<b>ATTENTION:</b> When you select to empty the Junk of an account, all the folders of that account that are known to Thunderbird to be \"junk\" folders will be emptied. For example, if you set up a Gmail IMAP account, where the junk folder is called \"Spam\", and you also change the settings of that account in Thunderbird to move new junk messages to a folder called \"Junk\", both folders will be emptied if you enable emptying the Junk for that account in Xpunge.\n\nThe two buttons offered by Xpunge do not appear on the main Thunderbird toolbar by default, you will have to add them yourself. Also, the button icons contained in the package offered here are of size 16x16 (small) and 24x24 (large) pixels. If these icons are smaller than what your current theme is using, you can find a version with slightly larger icons on Xpunge's homepage.\n\nFor usage information and more details about this extension, please visit Xpunge's homepage:\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f9c6fe364ba7f1abb894c7c3506e8b232f46b891f723f2c33b53c9c27b4eaeaa/http%3A//www.theodoretegos.net/mozilla/tb/index.html\">http://www.theodoretegos.net/mozilla/tb/index.html</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xpunge/edit",
+    "guid": "{786abda0-fd14-d247-bf69-38b2fc18491b}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.theodoretegos.net/mozilla/tb/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1279-64.png?modified=1568422739",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1279-32.png?modified=1568422739",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1279-64.png?modified=1568422739"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2019-09-16T13:24:00Z",
+    "name": {
+        "en-US": "Xpunge"
+    },
+    "previews": [
+        {
+            "id": 40221,
+            "caption": {
+                "en-US": "Toolbar Icons"
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/40/40221.png?modified=1530207934",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/40/40221.png?modified=1530207934"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.40255,
+        "count": 39,
+        "average": 4.4359,
+        "text_count": 39
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xpunge/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/1279",
+    "slug": "xpunge",
+    "status": "public",
+    "summary": {
+        "en-US": "Empties the Trash and Junk folders, and compacts folders in multiple Thunderbird accounts.",
+        "es": "Permite vaciar la papelara y compactar las carpetas en múltiples cuentas de Thunderbird.",
+        "da": "Tømmer papirkurven og optimerer mapper på flere Thunderbird-konti."
+    },
+    "support_email": {
+        "en-US": "xpungetb@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://www.theodoretegos.net/mozilla/tb/"
+    },
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xpunge/",
+    "weekly_downloads": 166
+}

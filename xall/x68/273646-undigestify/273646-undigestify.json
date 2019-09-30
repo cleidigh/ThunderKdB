@@ -1,0 +1,132 @@
+{
+    "id": 273646,
+    "authors": [
+        {
+            "id": 5389259,
+            "name": "Jonathan Kamens",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jikamens/",
+            "username": "jikamens",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1567718031"
+        }
+    ],
+    "average_daily_users": 94,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Undigestify%20add%2don&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted",
+    "current_version": {
+        "id": 2469639,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/undigestify/versions/2469639",
+        "files": [
+            {
+                "id": 1012698,
+                "created": "2019-04-01T00:41:38Z",
+                "hash": "sha256:dd9425f0104a83d64e3bfb52fe44644c5ef6e7e8ac6f51a17e2fd0159a946c57",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 38678,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012698/undigestify-2.0.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Thunderbird 68 compatibility.\n\nPeople using older versions of Thunderbird should use <a href=\"/thunderbird/addon/undigestify/versions/?page=1#version-1.0.3\" rel=\"nofollow\">version 1.0.3</a>."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/undigestify/versions/2.0.0",
+        "version": "2.0.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<strong>Executive summary</strong>\nTo undigestify a message containing an RFC 1153 or ListStar digest, select it and then select the \"Undigestify\" command on the \"Message\" menu, or right-click on it in the thread pane and select \"Undigestify\" in the pop-up menu. If the message is a valid digest, then its constituent messages will be appear in the same folder as the original. Otherwise, an error message will be displayed explaining why the message could not be undigestified.\n<strong>Additional information</strong>\nInternet <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ae52ac6b64382ad2ca07da10d6a8090ce50ac6405e440cebedc8336b316cf687/http%3A//www.rfc-editor.org/rfc/rfc1153.txt\">Request For Comments (RFC) 1153</a> defines the \"Digest Message Format\", a simple format for encapsulating a series of plain-text email messages within a single message. Briefly, each digest message contains:\n<ol><li>a preamble followed by a separator line of 70 hyphens and a blank line;</li><li>one or more enclosed messages, each followed by a separator line of 30 hyphens and a blank line; and</li><li>a footer whose first line starts with \"End of\" and whose second line consists of nothing but asterisks.</li></ol>Years ago, when digested mailing lists were much more common, many mail readers had a built-in command for splitting a digest message into its constituent messages so that each could be read and replied to separately.\nNowadays, digests are much less common, but there are still some mailing lists, e.g., <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/da1b77b81e7b0eb7193f9654d48b3d7e3473a68ad9247ddf29e12b89a6e9a47c/http%3A//catless.ncl.ac.uk/risks\">the RISKS Digest</a>, that use them. This add-on adds digest splitting functionality to Thunderbird for people who still receive RFC 1153 digests.\nNote that this add-on is compatible with Postbox in addition to Thunderbird."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/undigestify/edit",
+    "guid": "undigestify@kamens.us",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-04-02T08:59:28Z",
+    "name": {
+        "en-US": "Undigestify"
+    },
+    "previews": [],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/undigestify/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/273646",
+    "slug": "undigestify",
+    "status": "public",
+    "summary": {
+        "en-US": "Undigestify RFC 1153, ListStar, and Yahoo digest messages"
+    },
+    "support_email": {
+        "en-US": "jik+undigestify@kamens.us"
+    },
+    "support_url": null,
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/undigestify/",
+    "weekly_downloads": 22
+}

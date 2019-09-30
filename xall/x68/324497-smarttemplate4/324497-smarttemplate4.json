@@ -1,0 +1,371 @@
+{
+    "id": 324497,
+    "authors": [
+        {
+            "id": 66492,
+            "name": "Realraven (Axel Grude)",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/realraven/",
+            "username": "realraven",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
+        },
+        {
+            "id": 2448736,
+            "name": "Marky Mark DE",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/marky-mark-de/",
+            "username": "marky-mark-de",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 13508,
+    "categories": {
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2472647,
+        "compatibility": {
+            "thunderbird": {
+                "max": "69.0",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2472647",
+        "files": [
+            {
+                "id": 1015728,
+                "created": "2019-09-20T13:42:06Z",
+                "hash": "sha256:dfbf3685a27ad4ed6276854ab37b20431e779d9903183bf298b67e9384aa437a",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 622921,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015728/smarttemplate4-2.3.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 7344,
+            "name": {
+                "en-US": "CC BY-ND 4.0"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.3.1"
+        },
+        "release_notes": {
+            "en-US": "<b>2.3.1 Maintenance version with important fixes for the new file templates feature.</b>\n\nRelease video - showcases the new file templates feature: <a href=\"https://youtu.be/AWdZWB0_ym0\" rel=\"nofollow\">https://youtu.be/AWdZWB0_ym0</a>\n\n<b>Improvements</b>\n<ul><li>2.3.1 - Improved handling of non-working Stationery in Thunderbird 68. You can now jump straight into configuring file templates and \"support stationery\" will be automatically disabled if it cannot be run in the current Tb version.</li><li>[<a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/8\" rel=\"nofollow\">issue #8</a>] Support File Templates - to replace Stationery from Thunderbird 68 forward. \n\nI have repeatedly reached out to the author of the excellent Stationery Add-on over the last 8 months, but unfortunately did not get any reply. I also attempted to patch it for Thunderbird68 but it is just too much work. (I estimate 2-3 man weeks)\n\nSmartTemplate⁴ still supports it, but it looks like it will stop working as soon as Thunderbird 68 lands in August / September 2019; therefore we need another solution to be able to use ad-hoc templates in the form of HTML files.\n\nThe template management system will be tightly integrated into the familiar SmartTemplate⁴ settings interface, as a separate entry in the Accounts drop-down.</li><li>[v2.3.1] Fixed <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/14\" rel=\"nofollow\">[issue 14]</a>: If Lightning is not installed in Thunderbird 68, currently the new \"file templates\" function will not load the template, but may open 2 composer windows instead.</li><li>[v2.3.1] Fixed <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/15\" rel=\"nofollow\">[issue 15]</a>: file templates only work on an account if the box <i>Apply following template</i> is active.</li><li><a href=\"https://www.mozdev.org/bugs/show_bug.cgi?id=26689\" rel=\"nofollow\">[Bug 26689]</a> New function to set E-mail priority\n\n Add a function to set the priority of the composed Email.\n\nExamples:\n\n%header.set(priority,highest)%\n%header.set(priority,high)%\n%header.set(priority,normal)%\n%header.set(priority,low)%\n%header.set(priority,lowest)%</li></ul><b>Known Issues</b>\n<ul><li> You have to disable the option <i>Global Settings</i>»<i>Global Settings</i>»<i>Advanced Functions</i>»<i>Support Stationery Add-on</i>.\nI have raised <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/13\" rel=\"nofollow\">issue 13</a> to handle this bug.</li></ul><b>Bug Fixes</b>\n<ul><li>Fixed a problem with the Czech translation file that caused an error when trying to display the SmartTemplate Settings dialog.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.3.1",
+        "version": "2.3.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>What is SmartTemplate⁴?</b>\n\nSmartTemplate⁴ is the next generation of the popular addon <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate\" title=\"Visit Homepage of SmartTemplate on AMO\" rel=\"nofollow\">SmartTemplate</a>\n\nYou can use it for automatically filling fields like first name, last name into your reply email, or adding keywords to the subject line. You can even change the reply-to address based on search words with powerful match &amp; replace functions. 17,000 users agree that it is a great time saver. In conjunction with the Stationery Add-on you can manage many powerful html templates for all your email needs.\n\nSmartTemplate⁴ is currently translated in the following 18 languages:\nGerman, Dutch, English, Spanish, Finnish, French, Italian, Japanese,  Occitan, Polish, Brazilian (Portuguese), Russian, Serbian, Slovenian, Swedish, Ukrainian, Simplified Chinese and Tw Chinese. \nIf you would like to help translating SmartTemplate⁴ into your own language, please visit the <a href=\"https://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=0&amp;type=show&amp;extension=5773\" title=\"Visit Babelzilla\" rel=\"nofollow\">Babelzilla.org</a>\n\n<b>The current Version can be found here:</b>\n<a href=\"https://addons.thunderbird.net/thunderbird/addon/324497/versions/\" rel=\"nofollow\">https://addons.thunderbird.net/thunderbird/addon/324497/versions/</a>\n\n<b>Features</b>\n<ul><li>Custom templates can be automatically used for compose, reply and forward messages</li><li>supports HTML and plain-text - some features are HTML only.</li><li>adding your signature to your mail template (from Thunderbird Account settings)</li><li>Define separate templates for new messages (compose), reply and forward messages</li><li>Mail templates can be used by a single account or common for all accounts</li><li>Intelligent content in your template by use of keywords (variables)</li><li>This add-on does not change the default config settings. (e.g., mailnews.reply_header_xxx) *\n* This means that global settings and other Addons are not affected by its installation</li><li>Version <a href=\"https://addons.thunderbird.net/thunderbird/addon/324497/versions/0.8.5.6\" rel=\"nofollow\">0.8.5.6</a> onwards internal functions rewritten into <a href=\"https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode\" title=\"Explanation ECMA strict mode on MDN (english)\" rel=\"nofollow\">ECMAScript5 strict mode</a> (\"use strict\";) for more security</li><li>Version <a href=\"https://addons.thunderbird.net/thunderbird/addon/324497/versions/0.9.3\" rel=\"nofollow\">0.9.3</a> onwards do support the integration of <a href=\"https://addons.thunderbird.net/thunderbird/addon/4394/\" rel=\"nofollow\">Stationery</a> Add-on for more power with HTML e-Mails!</li></ul>\n<b> Licensing </b>\n\nAs of July 2019, SmartTemplate⁴ is financed via a yearly license - there is an affordable standard license (around 5 bucks, that less than 50cents/month) and a more comprehensive Pro license which will give you additional <a href=\"http://smarttemplate4.mozdev.org/premium.html\" rel=\"nofollow\">premium features</a>.  The reason for this is that unlike compiled software that runs on an operating system, the constant changes on the host mail software (Thunderbird) require substantial ongoing changes with a high effort; something which cannot be provided for free (\"as in beer\") anymore. You may have noticed many Add-on authors abandoning their Add-ons on Firefox and Thunderbird because it was not possible for them to support their Add-ons anymore - this is directly caused by not trying to involve the users in funding the required work. \n\n<b>Support</b>\nYou can find example templates &amp; many more on our <a href=\"http://smarttemplate4.mozdev.org/\" title=\"Visit our Support Site\" rel=\"nofollow\"><b>Support Site</b></a>.\n\nPlease email us if you find a bug or have a question instead of reporting your issue in a review.  \nIf you have any problems, please contact us via email (see following). <i>Incomplete</i> bug reports without any comments or detailed bug description are not helpful to anyone.\nAlternatively you can post your <a href=\"http://smarttemplate4.mozdev.org/bugs.html\" rel=\"nofollow\">Bugreport on our Support Site (Bugzilla account required)</a>.\n\n• Contact <b><a href=\"http://smarttemplate4.mozdev.org#contact\" title=\"Contact us!\" rel=\"nofollow\">Marky Mark DE</a></b> (available languages de, en-US):\n<b>Support only</b>\n\n• Contact <b><a href=\"http://smarttemplate4.mozdev.org#contact\" title=\"Contact us!\" rel=\"nofollow\">Realraven (Axel Grude)</a></b> (available languages de, en-US):\n<b>Development &amp; Troubleshooting</b>\n\n<b>For effective assistance, we need the following information:</b>\n<ul><li>which OS you use</li><li>your installed Thunderbird version</li><li>your templates (you can save them with the purple button beside the Accounts drop down). If you are using Stationery you can send that as well</li><li>composition &amp; addressing options in account settings</li><li>mail account type (IMAP or POP3)</li><li>which kind of mails are affected (HTML or Plaintext)</li></ul>\nFrom version 2.1.1, if you have a license you can find a support form on the rightmost tab of the advanced settings dialog; this makes it possible to write me an email directly.\n\nTo help to reproduce your problem, is it more helpful when you attach some screenshots to your problem report if you contact us. We also have a detailed <a href=\"http://smarttemplate4.mozdev.org/support.html\" rel=\"nofollow\">Troubleshooting guide</a> that explains how you can generate an error log.\n\n<b>Source Code</b>\n\nIf you want to help with development or see the source code, it's <a href=\"https://github.com/RealRaven2000/SmartTemplate4/\" rel=\"nofollow\">on github</a>. License is open source: Creative Commons  Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)  which means you can use some of the source code (with attribution) but not build a competing Add-on from our source code. \n\nThanks to <a href=\"http://carlitus.deviantart.com/\" rel=\"nofollow\">carlitus</a> for his great Noia Iconset, which is used on our settings dialog.\n\n<b>Originating Add-on</b>\n\nDevelopment of the original SmartTemplate by gaby_hy (H. Yasuda) has stopped (2012) for time reasons. SmartTemplate⁴ was based on this original addon with written friendly permission from the original author.",
+        "de": "&lt;meta charset=\"UTF-8\"&gt;\n&lt;style&gt;b { display: block; margin-top: 10px; } &lt;/style&gt;\n\n<b>Was ist SmartTemplate⁴?</b>\nSmartTemplate⁴ ist der Nachfolger des populären Addons <a href=\"https://addons.thunderbird.net/de/thunderbird/addon/smarttemplate\" title=\"Besuche die Add-on Homepage von SmartTemplate auf AMO\" rel=\"nofollow\">SmartTemplate</a>.\n\nSie können SmartTemplate⁴ nutzen um automatisch Informationen wie Vorname, Nachname in Ihre Antworten einzufügen oder z.B. Schlagwörter in die Betreffzeile einzufügen. Sie können sogar die Antwortadresse basierend auf Suchwörtern mit leistungsstarken Match &amp; Replace-Funktionen ändern. Vorlagen können für jedes Konto sowie für das Standard Konto erstellt werden. In Verbindung mit dem Stationery Add-on können Sie viele leistungsstarke HTML-Vorlagen für alle Ihre E-Mail-Anforderungen verwalten - demnächst wird SmartTemplate⁴ auch externe HTML Vorlagen mit einfach klick auf das Antworten-Menü unterstützen. \n\n\nDas Add-on ist bisher in folgende 16 Sprachen übersetzt:\nDeutsch, Englisch, Spanisch, Finnisch, Französisch, Italienisch, Japanisch, Holländisch, Occitan, Polnisch, Portugiesisch (Brasilien), Russisch, schwedisch, Ukrainisch, Chinesisch Standard und Simplified. Falls Sie bei der Übersetzung von SmartTemplate⁴ in Ihre eigene Sprache helfen möchten, besuchen Sie bitte <a href=\"https://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=0&amp;type=show&amp;extension=5773\" rel=\"nofollow\">Babelzilla</a>.\n\n<b>Die aktuellsten Versionen sind immer hier zu finden:</b>\n<a href=\"https://addons.thunderbird.net/thunderbird/addon/324497/versions/\" rel=\"nofollow\">https://addons.thunderbird.net/thunderbird/addon/324497/versions/</a>\n\n<b>Merkmale</b>\n<ul><li>Vorlagen können automatisch in neue Nachrichten, Antworten oder in weitergeleitete Nachrichten eingefügt werden</li><li>HTML-Formatierung und Plaintext ist möglich. Manche Funkionen sind nur in HTML Modus nutzbar.</li><li> verwenden der Signatur aus den Thunderbird Account Einstellungen innerhalb der Mailvorlage</li><li>Es kann für neue Mails, Antworten und weitergeleitete Nachrichten je eine individuelle Vorlage in den Addon Einstellungen definiert werden</li><li>Pro E-Mail-Konto können andere Vorlagen verwendet werden. Darüber hinaus können gemeinsame Einstellungen festgelegt werden</li><li>Eine flexible Anpassung der quote-Header wird durch die Verwendung von Schlüsselwörtern (Variablen) innerhalb der Vorlagen möglich</li><li>Das Addon ändert nicht die Standardeinstellungen (bspw. mailnews.reply_header_xxx) *\n* globale Einstellungen und andere Add-ons werden nach der Installation nicht beeinflusst</li><li>Seit Version <a href=\"https://addons.thunderbird.net/thunderbird/addon/324497/versions/0.8.5.6\" rel=\"nofollow\">0.8.5.6</a>  sind nahezu alle internen Funktionen in den <a href=\"https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode\" title=\"Erklärung ECMA strict mode auf MDN (english)\" rel=\"nofollow\">ECMAScript5 strict mode</a> (\"use strict\";) umgeschrieben für mehr Sicherheit</li>   <li>Seit Version <a href=\"https://addons.thunderbird.net/thunderbird/addon/324497/versions/0.9.3\" rel=\"nofollow\">0.9.3</a> unterstützen wir die Einbindung des Add-ons <a href=\"https://addons.thunderbird.net/thunderbird/addon/4394/\" rel=\"nofollow\">Stationery</a> für mehr Power beim arbeiten mit HTML e-Mails!</li></ul>\n<b>Lizenzen</b>\n\nSeit Juli 2019 wird SmartTemplate⁴ über eine jährliche Lizenz finanziert - es gibt eine erschwingliche Standardlizenz (ca. 5 Dollar, das sind weniger als 50 Cent / Monat) und eine umfassendere Pro-Lizenz, die Ihnen zusätzliche <a href=\"http: / /smarttemplate4.mozdev.org/premium.html\" rel=\"nofollow\"> Premium-Funktionen </a> bietet. Der Grund dafür ist, dass im Gegensatz zu kompilierter Software, die auf einem Betriebssystem ausgeführt wird, die ständigen Änderungen an der Host-Mail-Software (Thunderbird) erhebliche, fortlaufende Änderungen mit hohem Aufwand erfordern. Etwas, das nicht mehr kostenlos zur Verfügung gestellt werden kann (\"für lau, wie Freibier\"). Möglicherweise haben Sie bemerkt, dass viele Add-On-Autoren ihre Add-Ons für Firefox und Thunderbird aufgegeben haben, weil sie ihre Add-Ons nicht mehr unterstützen konnten - dies ist direkt darauf zurückzuführen, dass sie nicht versucht haben, die Benutzer in die Finanzierung der erforderlichen Arbeit einzubeziehen.\n\n<b>Support</b>\nBeispieltemplates &amp; vieles mehr finden Sie auf unserer <a href=\"http://smarttemplate4.mozdev.org/\" title=\"Besuche unsere Hilfeseite\" rel=\"nofollow\"><b>Hilfeseite</b></a>.\n\n<b>Add-on Compatibility Reporter Add-On</b>\nBei Problemen sollte eine Email an uns geschrieben werden (Adresse folgend). <b>Falsche Fehlerberichte</b> über die \"Reportfunktion\" der Erweiterung \"Add-on compatibility Reporter\" ohne Kommentare und ausführlicher Fehlerbeschreibung haben für niemandem einen sinnvollen Nutzen.\n\n<b>Bitte maile uns wenn du ein Problem hast oder einen BUG gefunden hast und mache es NICHT in einer Review! Das Reviewsystem erlaubt es uns einmal zu antworten und das ist nicht adequat um dein Problem zu lösen.\nAlternativ kannst du uns Bugs auch auf <a href=\"http://smarttemplate4.mozdev.org/bugs.html\" rel=\"nofollow\">unserer Supportseite melden (Bugzilla Konto erforderlich)</a>.</b>\n \n• Kontaktmöglichkeit <a href=\"http://smarttemplate4.mozdev.org#contact\" title=\"Kontaktiere uns!\" rel=\"nofollow\">Marky Mark DE</a> (mögliche Sprachen de, en-US):\n<b>NUR Unterstützung</b>\n\n• Kontaktmöglichkeit <a href=\"http://smarttemplate4.mozdev.org#contact\" title=\"Kontaktiere uns!\" rel=\"nofollow\">Realraven (Axel Grude)</a> (mögliche Sprachen de, en-US):\n<b>Programmierung</b>\n\n<b>Damit wir effektiv Unterstützen können, benötigen wir zusätzlich folgende Informationen:</b>\n<ul><li>dein eingesetztes Betriebssystem</li><li>deine eingesetzte Thunderbird Version</li><li>deine eingesetzte SmartTemplate⁴ Version</li><li>genaue Informationen welche Konteneinstellungen gesetzt sind</li><li>genaue Informationen welche Optionen in SmartTemplate⁴ gesetzt sind</li><li>welche Kontoart wird verwendet (IMAP oder POP3)</li><li>bei welcher Mailart tritt das Problem auf (HTML oder Plaintext)</li><li>dein Template (Vorlage)</li></ul>\n\nAb Version 2.1.1 finden Sie, wenn Sie eine Lizenz besitzen, ein Support-Formular ganz rechts im Dialogfeld \"Erweiterte Einstellungen\". Dadurch ist es möglich, mir direkt eine E-Mail zu schreiben.\n\nUm Ihr Problem besser reproduzieren zu können, ist es hilfreicher, wenn Sie Ihrem Problembericht einige Screenshots anhängen, wenn Sie mit uns Kontakt aufnehmen. Wir haben auch eine detaillierte <a href=\"http://smarttemplate4.mozdev.org/support.html\" rel=\"nofollow\"> Anleitung zur Fehlerbehebung </a>, in der erläutert wird, wie Sie ein Fehlerprotokoll erstellen können. \n\n<b>Quellcode</b>\n\nWenn Sie bei der Entwicklung helfen oder den Quellcode einsehen möchten, den gibt es <a href=\"https://github.com/RealRaven2000/SmartTemplate4/\" rel=\"nofollow\"> auf github </a>. Die Lizenz ist Open Source: Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0), as heisst Sie können Teile des Quellcodes (mit Namensnennung) verwenden, jedoch kein konkurrierendes Add-on aus unserem Quellcode erstellen.\n\n\nDanke an <a href=\"http://carlitus.deviantart.com/\" rel=\"nofollow\">carlitus</a> für seine großartiges Noia Iconset, welches wir in unserem Einstellungsdialog verwenden."
+    },
+    "developer_comments": {
+        "en-US": "Source code available at:\n<a href=\"https://github.com/RealRaven2000/SmartTemplate4/\" rel=\"nofollow\">https://github.com/RealRaven2000/SmartTemplate4/</a>",
+        "de": ""
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/edit",
+    "guid": "smarttemplate4@thunderbird.extension",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://smarttemplate4.mozdev.org/",
+        "de": "http://smarttemplate4.mozdev.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1568650154",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-32.png?modified=1568650154",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1568650154"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-09-20T13:46:51Z",
+    "name": {
+        "ru": "SmartTemplate4",
+        "fr": "SmartTemplate4",
+        "de": "SmartTemplate4",
+        "nl": "SmartTemplate4",
+        "en-US": "SmartTemplate4",
+        "it": "SmartTemplate4",
+        "pt-BR": "SmartTemplate4",
+        "pl": "SmartTemplate4",
+        "sv-SE": "SmartTemplate4",
+        "fi": "SmartTemplate4",
+        "ja": "SmartTemplate4",
+        "es": "SmartTemplate4"
+    },
+    "previews": [
+        {
+            "id": 111163,
+            "caption": {
+                "en-US": "Providing a New Template for a specific mail Identity",
+                "de": "Bereitstellung einer neuen Vorlage für eine bestimmte Mail-Identität"
+            },
+            "image_size": [
+                581,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/111/111163.png?modified=1568650154",
+            "thumbnail_size": [
+                221,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/111/111163.png?modified=1568650154"
+        },
+        {
+            "id": 111164,
+            "caption": {
+                "en-US": "Reply Tab  with separate \"Quote Header\" and Template Box",
+                "de": "Antwort Tab mit getrennten Boxen für \"Kopfzeile\" und \"Nachrichtenvorlage\""
+            },
+            "image_size": [
+                583,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/111/111164.png?modified=1568650154",
+            "thumbnail_size": [
+                222,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/111/111164.png?modified=1568650154"
+        },
+        {
+            "id": 205800,
+            "caption": {
+                "en-US": "Add external HTML files and choose with a single click",
+                "de": "Externe HTML Dateien können mit einem Klick geladen werden"
+            },
+            "image_size": [
+                378,
+                373
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205800.png?modified=1568650154",
+            "thumbnail_size": [
+                203,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205800.png?modified=1568650154"
+        },
+        {
+            "id": 205801,
+            "caption": {
+                "en-US": "template menu configuration: 3 separate lists of HTML files.",
+                "de": "Vorlagen-Konfiguration: 3 separate Listen mit HTML Dateien."
+            },
+            "image_size": [
+                524,
+                510
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205801.png?modified=1568650154",
+            "thumbnail_size": [
+                205,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205801.png?modified=1568650154"
+        },
+        {
+            "id": 110115,
+            "caption": {
+                "en-US": "Variables Tab - simply insert variables by clicking on them",
+                "de": "Variablen Reiter - einfügen mit einem Klick!"
+            },
+            "image_size": [
+                700,
+                362
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/110/110115.png?modified=1568650154",
+            "thumbnail_size": [
+                320,
+                165
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/110/110115.png?modified=1568650154"
+        },
+        {
+            "id": 110120,
+            "caption": {
+                "en-US": "status bar button",
+                "de": "Statusbar Button"
+            },
+            "image_size": [
+                267,
+                23
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/110/110120.png?modified=1568650154",
+            "thumbnail_size": [
+                267,
+                23
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/110/110120.png?modified=1568650154"
+        },
+        {
+            "id": 142964,
+            "caption": {
+                "en-US": "Global Settings",
+                "de": "Globale Einstellungen"
+            },
+            "image_size": [
+                488,
+                497
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/142/142964.png?modified=1568650154",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/142/142964.png?modified=1568650154"
+        },
+        {
+            "id": 205802,
+            "caption": {
+                "en-US": "Advanced settings",
+                "de": "Advanced settingsErweiterte Einstellungen"
+            },
+            "image_size": [
+                497,
+                473
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205802.png?modified=1568650154",
+            "thumbnail_size": [
+                210,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205802.png?modified=1568650154"
+        },
+        {
+            "id": 111165,
+            "caption": {
+                "en-US": "Examples Tab - get powerful presets directly from our support page",
+                "de": "Beispiele Tab - enthält Beispiele direkt von unserer Supportseite"
+            },
+            "image_size": [
+                657,
+                494
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/111/111165.png?modified=1568650154",
+            "thumbnail_size": [
+                266,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/111/111165.png?modified=1568650154"
+        },
+        {
+            "id": 111158,
+            "caption": {
+                "en-US": "Example 1: A generated quote header",
+                "de": "Beispiel 1: eine generierte Antwortkopfzeile"
+            },
+            "image_size": [
+                521,
+                85
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/111/111158.png?modified=1568650154",
+            "thumbnail_size": [
+                320,
+                52
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/111/111158.png?modified=1568650154"
+        },
+        {
+            "id": 111159,
+            "caption": {
+                "en-US": "Example 2: A shorter quote header that fits into one line",
+                "de": "Beispiel  2: kürzere Kopfzeile (1-zeilig)"
+            },
+            "image_size": [
+                700,
+                24
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/111/111159.png?modified=1568650154",
+            "thumbnail_size": [
+                320,
+                11
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/111/111159.png?modified=1568650154"
+        },
+        {
+            "id": 111160,
+            "caption": {
+                "en-US": "Example 3: quote header formatted as a table",
+                "de": "Beispiel  3: Kopfzeile als Tabelle formatiert"
+            },
+            "image_size": [
+                320,
+                119
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/111/111160.png?modified=1568650154",
+            "thumbnail_size": [
+                320,
+                119
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/111/111160.png?modified=1568650154"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.5901,
+        "count": 57,
+        "average": 4.614,
+        "text_count": 57
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/reviews/",
+    "requires_payment": true,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/324497",
+    "slug": "smarttemplate4",
+    "status": "public",
+    "summary": {
+        "ru": "SmartTemplate4 настраивает заголовок цитат для каждой учётной записи. SmartTemplate4 позволяет настраивать заголовки цитат используя шаблоны. Шаблоны могут быть созданы как для всех, так и для каждой учетной записи.",
+        "fr": "Le smart modèle qui peut personnaliser l'en-tête de la citation pour les comptes. SmartTemplate4 permet de personalizar aisidament las entèstas de Thunderbird en utilizant de modèls. Los modèls pòdon èsser creats per cada compte o d'un biais global.",
+        "de": "SmartTemplate⁴ automatisiert das Erstellen von Antworten und Einfügen von verschiedenen Mail-Informationen. Vorlagen können für jedes Konto sowie für das Standard Konto erstellt werden. Unterstützt das Stationery Add-on.",
+        "nl": "SmartTemplate4 biedt een intelligente / gemakkelijke manier om sjablonen die de standaard aanhalingskoptekst in Thunderbird aanpassen te gebruiken. \n\nSjablonen (voor de aanhalingskoptekst) kunnen worden gebruikt voor een losse account of algemeen.",
+        "en-US": "SmartTemplate⁴ offers an easy and powerful way to automatically create customized replies by auto-inserting various mail headers. Templates can be created for every mail identity, Stationery can now be imported and used directly (from 2.3)",
+        "it": "SmartTemplate4 permette di personalizzare con facilità l'intestazione dei messaggi di risposta ed inoltrati, mediante dei modelli. I modelli possono essere specifici per ogni account oppure comuni a tutti gli account.",
+        "pt-BR": "SmartTemplate4 oferece um modelos inteligentes / mais fácil forma de usar o que personalizar o Thunderbird padrão citação cabeçalho. Modelos (citação do cabeçalho) pode ser usado para a conta única ou para configurações globais (contas comuns).",
+        "pl": "SmartTemplate4 oferuje inteligentne, proste w użyciu szablony do dostosowania nagłówka cytowanej wiadomości. Szablony mogą być używane dla pojedynczego konta lub w ustawieniach globalnych dla wszystkich kont.",
+        "sv-SE": "SmartTemplate4 offers an easy way to customize Thunderbirds default quote header by using templates. Templates can be created for every account as well as for global settings (for all email accounts).",
+        "fi": "Avulla voit muokata lainauksen otsakkeita tileittän ja luoda valmiita pohjia viesteille. \n\nSmartTemplate4 tarjoaa helpon tavan muokata Thunderbirdin perusotsaketietoja lainauksille. Pohjia (lainausotsakkeiden) voi käyttää tileittäin tai yleisesti.",
+        "ja": "Thunderbird の既定の引用ヘッダをカスタマイズします。テンプレートは全アカウント共通にもアカウントごとにも作成できます。",
+        "es": "SmartTemplate4 ofrece plantillas fáciles de usar para personalizar el encabezado predeterminado de respuesta de Thunderbird. Se pueden usar para cada cuenta o para la configuración global (cuentas comunes)."
+    },
+    "support_email": {
+        "en-US": "axel.grude@gmail.com",
+        "de": "axel.grude@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://smarttemplate4.mozdev.org/",
+        "de": "http://smarttemplate4.mozdev.org/"
+    },
+    "tags": [
+        "account",
+        "common",
+        "compose",
+        "custom mail header",
+        "customize",
+        "default quote header",
+        "fields",
+        "firefox57",
+        "forward",
+        "html",
+        "localized",
+        "mail template",
+        "quote",
+        "reply",
+        "signature",
+        "stationery",
+        "templates"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/",
+    "weekly_downloads": 414
+}

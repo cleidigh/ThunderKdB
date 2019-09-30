@@ -1,0 +1,162 @@
+{
+    "id": 367989,
+    "authors": [
+        {
+            "id": 5162928,
+            "name": "rsjtdrjgfuzkfg",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/rsjtdrjgfuzkfg/",
+            "username": "rsjtdrjgfuzkfg",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5162/5162928.png?modified=1398762384"
+        }
+    ],
+    "average_daily_users": 2593,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2469981,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rise-of-the-tools/versions/2469981",
+        "files": [
+            {
+                "id": 1013041,
+                "created": "2019-06-02T01:03:59Z",
+                "hash": "sha256:fd934b64c89cbdcd5f28191b38ea2720345105426dc33d91a8110480d84e84aa",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 3335,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1013041/rise_of_the_tools-1.2.0.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Update for Thunderbird 68",
+            "de": "Update für Thunderbird 68."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rise-of-the-tools/versions/1.2.0.1",
+        "version": "1.2.0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Moves the toolbar for mails back up above the tabbar. Note that this might cause the design to suffer when using a theme not supporting this extsion. So the default theme has issues with aero on windows (and looks as terrible as it looked before the changes in 1.11).\n\nNote that additional custom toolbars might still go into the tab, and tabs still do have toolbars other than the toolbar for mails (like the calendar when <a href=\"https://addons.mozilla.org/thunderbird/addon/lightning/\" rel=\"nofollow\">Lightning</a> is installed). I personally use it with my theme <a href=\"https://addons.mozilla.org/thunderbird/addon/ignore-aero/?src=external-riseofthetools\" rel=\"nofollow\">Ignore Aero</a> on windows, to prevent the aero glitch to reappear.",
+        "de": "Verschiebt die Werkzeugleiste zurück über die Tableiste. Berücksichtigen Sie, das das Design darunter leiden kann, wenn das verwendete Theme diese Erweiterung nicht unterstützt. Das Standard-Thema beispielsweise fällt unter Windows auf die grausame Überbenutzung von Aero aus Zeiten vor Thunderbird 11.0 zurück.\n\nZusätzliche, benutzerdefinierte Werkzeugleisten werden weiterhin unter der Tableiste abgelegt werden, desweiteren bleiben Werkzeugleisten beispielsweise für den Kalender erhalten (der Kalender ist Teil von <a href=\"https://addons.mozilla.org/thunderbird/addon/lightning/\" rel=\"nofollow\">Lightning</a>).\nMit der Verwendung eines anderen Theme wie <a href=\"https://addons.mozilla.org/thunderbird/addon/ignore-aero/?src=external-riseofthetools\" rel=\"nofollow\">Ignore Aero</a> werden die Darstellungsfehler im Bezug auf Aero unter Windows unterbunden."
+    },
+    "developer_comments": {
+        "en-US": "As I stated above, there are design issues. By altering the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6d05e350e3cfd7a19e4902a4a8741deeaf1537adab567431dc48838365374ac5/http%3A//kb.mozillazine.org/UserChrome.css\">userchrome.css</a> file you can insert own style rules fixing them. As inserting them for all users causes a risk of breaks in rare cases, I do not include fixes for that, that's the theme's authors buissness. Maybe you want to contact the author of your favorite theme and ask him/her to support this extension?\n\n<b>Missing toolbar divider line in default theme on Windows XP or earlier</b>\nThis fix was provided by <a rel=\"nofollow\" href=\"https://addons.mozilla.org/user/178407/\">RDL</a>. Thanks!\n<code>#mail-bar3 {\nborder-bottom-style: solid !important;\nborder-bottom-width: 1px !important;\nborder-bottom-color: threeDShadow !important;\n}\n#tabs-toolbar {\nborder-top-style: solid !important;\nborder-top-width: 1px !important;\nborder-top-color: threeDHighlight !important;\n}</code>\n\n<b>Transparent menu bar with the default theme</b>\nThis fix was provided by rctgamer3. Thanks!\n<code>@media all and (-moz-windows-compositor) {\n  #mail-toolbar-menubar2 {\n    background: transparent !important;\n  }\n  #messengerWindow:not([sizemode=\"maximized\"]) #mail-toolbar-menubar2 {\n    margin: 0 1px !important;\n    border: 0 !important;\n  }\n\n  #menubar-items {\n    background-color: rgba(255, 255, 255, .5) !important;\n    border-radius: 4px !important;\n  }\n\n  menubar &gt; menu:-moz-window-inactive {\n    color: ThreeDShadow !important;\n  }\n}</code>\n\n<b>Background for the Toolbar with the default theme</b>\nThis fix was provided by CryingByte. Thanks!\n<code>#mail-bar3 {\n  background-color: #e9eff5 !important;\n}</code>\n\n<b>Remove empty space with Oxybird2 theme without custom toolbars</b>\nThis fix was provided by <a rel=\"nofollow\" href=\"http://addons.mozilla.org/user/5712893/\">uyar</a>. Thanks!\n<code>#mail-toolbox { display: none !important; }</code>",
+        "de": "Wie oben bereits erwähnt, gibt es mit einigen Themes Darstellungsprobleme. Änderungen in der Datei <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6d05e350e3cfd7a19e4902a4a8741deeaf1537adab567431dc48838365374ac5/http%3A//kb.mozillazine.org/UserChrome.css\">userchrome.css</a> können diese beheben. Da eine derartige Änderung für alle Nutzer in seltenen fällen zu Problemen führen könnte, werde ich keine derartigen Änderungen in die Erweiterung integrieren. Vielleicht kontaktieren Sie den Autor Ihres Lieblingsthemes und bitten um die Unterstützung dieses Add-ons?\n\n<b>Fehlende Trennlinie zwischen Werkzeug- und Tableiste im Standardtheme unter Windows XP oder früheren</b>\nEingebracht von <a rel=\"nofollow\" href=\"https://addons.mozilla.org/user/178407/\">RDL</a>. Danke!\n<code>#mail-bar3 {\nborder-bottom-style: solid !important;\nborder-bottom-width: 1px !important;\nborder-bottom-color: threeDShadow !important;\n}\n#tabs-toolbar {\nborder-top-style: solid !important;\nborder-top-width: 1px !important;\nborder-top-color: threeDHighlight !important;\n}</code>\n\n<b>Transparente Menüleiste im Standardtheme</b>\nEingebracht von rctgamer3. Danke!\n<code>@media all and (-moz-windows-compositor) {\n  #mail-toolbar-menubar2 {\n    background: transparent !important;\n  }\n  #messengerWindow:not([sizemode=\"maximized\"]) #mail-toolbar-menubar2 {\n    margin: 0 1px !important;\n    border: 0 !important;\n  }\n\n  #menubar-items {\n    background-color: rgba(255, 255, 255, .5) !important;\n    border-radius: 4px !important;\n  }\n\n  menubar &gt; menu:-moz-window-inactive {\n    color: ThreeDShadow !important;\n  }\n}</code>\n\n<b>Werkzeugleisten-Hintergrund im Standardtheme</b>\nEingebracht von CryingByte. Danke!\n<code>#mail-bar3 {\n  background-color: #e9eff5 !important;\n}</code>\n\n<b>Leeren Bereich im Thema Oxybird2 ohne benutzerdefinierte Toolbars entfernen</b>\nEingebracht von <a rel=\"nofollow\" href=\"http://addons.mozilla.org/user/5712893/\">uyar</a>. Danke!\n<code>#mail-toolbox { display: none !important; }</code>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rise-of-the-tools/edit",
+    "guid": "riseofthetools@rsjtdrjgfuzkfg.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/367/367989-64.png?modified=1522774684",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/367/367989-32.png?modified=1522774684",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/367/367989-64.png?modified=1522774684"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-06-16T09:27:46Z",
+    "name": {
+        "en-US": "Rise of the Tools",
+        "de": "Rise of the Tools"
+    },
+    "previews": [
+        {
+            "id": 68782,
+            "caption": null,
+            "image_size": [
+                180,
+                120
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/68/68782.png?modified=1530208876",
+            "thumbnail_size": [
+                180,
+                120
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/68/68782.png?modified=1530208876"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.68574,
+        "count": 57,
+        "average": 4.7544,
+        "text_count": 57
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rise-of-the-tools/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/367989",
+    "slug": "rise-of-the-tools",
+    "status": "public",
+    "summary": {
+        "en-US": "Moves the toolbar back above the tabbar.",
+        "de": "Verschiebt die Werkzeugleiste zurück über die Tableiste"
+    },
+    "support_email": {
+        "en-US": "public@rsjtdrjgfuzkfg.com",
+        "de": "rsjtdrjgfuzkfg2@abwesend.de"
+    },
+    "support_url": null,
+    "tags": [
+        "firefox57",
+        "move",
+        "old",
+        "restartless",
+        "tabbar",
+        "thunderbird 3",
+        "toolbar",
+        "up"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rise-of-the-tools/",
+    "weekly_downloads": 67
+}

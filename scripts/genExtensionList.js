@@ -16,11 +16,15 @@ const _7z = require('7zip-min');
 // Id | Name | Description | Source | XPI |
 
 const rootDir = "C:/Dev/Thunderbird/ThunderKdB";
-const ext68CompDir = '..\\extensions-all\\exts-tb68-comp';
+const extGroupAllDir = 'xall';
+const extGroupTB68Dir = 'x68';
+const extGroupTB60Dir = 'x60';
+const extGroupTBOtherDir = 'xOther';
+
 const ext68CompDirU = '/extensions-all/exts-tb68-comp';
 
 
-const extsAllJsonFileName = `${rootDir}/exall/exall.json`;
+const extsAllJsonFileName = `${rootDir}/xall/xall.json`;
 
 const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-green.png)"
 const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png)"
@@ -36,11 +40,11 @@ function genExtensionListFromFolders() {
 
 	console.debug(extsListFile);
 	// Create directory array
-	let extsDirs = getDirectories(ext68CompDir);
+	let extsDirs = getDirectories(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/`);
 	console.debug(extsDirs);
 	extsDirs.map( dir => {
-		let extJson = fs.readJSONSync(`${ext68CompDir}\\${dir}\\${dir}.json`);
-		console.debug('Extension '+dir);
+		let extJson = fs.readJSONSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/${dir}/${dir}.json`);
+		console.debug('Extension '+dir+' '+extJson.id);
 		return createExtMDTableRow(extJson);
 	})
 	.map( extRow => {
@@ -49,7 +53,7 @@ function genExtensionListFromFolders() {
 	});
 	extsListFile = extsListFile.replace('__ext-table-tb68__', extRows);
 	console.debug(extsListFile );
-	fs.writeFileSync(`${ext68CompDir}\\extension-list-tb68.md`, extsListFile);
+	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/extension-list-tb68.md`, extsListFile);
 	console.debug('Done');
 }
 
@@ -62,9 +66,15 @@ function genExtensionListFromJson(extsJson) {
 	// console.debug(extsListFile);
 
 	extsJson.map( (extJson, index) => {
+		console.debug('ExtensionIndex ' + index);
+
+		if (extJson  === null) {
+			return "";
+		}
+		// console.debug('Extension ' + extJson.id);
+
 		extJson.xpilib = {};
 		extJson.xpilib.rank = index+1;
-		console.debug('Extension ' + extJson.id);
 		return createExtMDTableRow(extJson);
 	})
 	.map( extRow => {
@@ -73,7 +83,7 @@ function genExtensionListFromJson(extsJson) {
 	});
 	extsListFile = extsListFile.replace('__ext-table-tb68__', extRows);
 	// console.debug(extsListFile );
-	fs.writeFileSync(`${ext68CompDir}\\extension-list-tb68.md`, extsListFile);
+	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/extension-list-tb68.md`, extsListFile);
 	console.debug('Done');
 }
 
@@ -112,7 +122,7 @@ function createExtMDTableRow(extJson) {
 	const name_link = `[${name}](./${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
 
 	// https://github.com/cleidigh/ThunderKdB/tree/master/extensions-all/exts-tb68-comp/90003-localfolder/src
-	const xpiLink = `[XPI](${ext68CompDir}\\${extJson.id}-${extJson.slug}\\xpi)`;
+	const xpiLink = `[XPI](${extGroupTB68Dir}/${extJson.id}-${extJson.slug}/xpi)`;
 	// const srcLink = "s";
 	
 	let v_min = `${extJson.current_version.compatibility.thunderbird.min}`;
@@ -164,9 +174,9 @@ function createExtMDTableRow(extJson) {
 	// 	return "";
 	// }
 
-	if ( !(comp_badges.includes(cBadge_tb60) ) ) {
-		return "";
-	}
+	// if ( !(comp_badges.includes(cBadge_tb68) ) ) {
+	// 	return "";
+	// }
 
 	let rank = extJson.xpilib.rank;
 	

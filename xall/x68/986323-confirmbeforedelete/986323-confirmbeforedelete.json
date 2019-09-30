@@ -1,0 +1,176 @@
+{
+    "id": 986323,
+    "authors": [
+        {
+            "id": 14156066,
+            "name": "caligraf",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/caligraf/",
+            "username": "caligraf",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 455,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2472238,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/confirmbeforedelete/versions/2472238",
+        "files": [
+            {
+                "id": 1015306,
+                "created": "2019-09-04T19:23:26Z",
+                "hash": "sha256:630759982b2b28bec10d018e684fc1b3e6e1ac89b4477ef70ecacd636b806e36",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 31265,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015306/confirmbeforedelete-1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "fr": "",
+            "en-US": "fix exception when drag message into trash\nfix disable button in options for calendar delete confirmation"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirmbeforedelete/versions/1.1",
+        "version": "1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "fr": "Ajoute une confirmation pour:\n- la suppression des messages avec maj+suppr\n- la suppression des contacts du carnet d'adresse\n- la suppression des messages et des dossiers\n- la suppressions des elements du calendrier\n- le vidage de la corbeille\n- le déplacement des messages dans la corbeille\n- la suppressions des messages depuis la fenêtre de recherche\nIl y a une option pour bloquer la suppressions des messages et des dossiers\nCette extensions est disponible en anglais, français, italien et allemand\nPar défaut toutes les confirmations sont activées et elles peuvent être modifiées depuis le menu Outils -&gt; Options des modules\nLa confirmation pour la suppression des messages avec maj+suppr existe déjà dans TB, quand l'option est cochée la fenêtre de confirmation de suppression de TB est affichée.",
+        "en-US": "an extension for Thunderbird that introduce a confirm request to:\n- delete directly the mail with shift+del (this function is native on TB)\n- delete the contacts in the addressbook and in the contacts panel\n- delete mails and folders from the trash\n- delete calendar items (if you've Lightning installed)\n- empty the trash (this function is native on TB3)\n- move messages in the trash \n- delete messages from search window\nMoreover it can block deletion of messages and folder\nAll the confirms are active for default, but can be disabled from Add-on Options in Tools menu.\nThe confirmation for delete mails with Shift+Delete is bound to native TB function, when the option \"Enable the confirm to delete the messages with shift+del\" is checked it re-enable the TB default confirmation prompt on Shift+Delete.\nLocalized in english, italian, french, and (thanks to Mark Gerber) german."
+    },
+    "developer_comments": {
+        "en-US": "The source code is available at <a href=\"https://github.com/caligraf/ConfirmBeforeDelete\" rel=\"nofollow\">https://github.com/caligraf/ConfirmBeforeDelete</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/confirmbeforedelete/edit",
+    "guid": "confirmbeforedelete@caligraf",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "fr": "https://github.com/caligraf/ConfirmBeforeDelete/blob/0.3.7/README.md",
+        "en-US": "https://github.com/caligraf/ConfirmBeforeDelete/blob/0.3.7/README.md"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/986/986323-64.png?modified=bb96a84c",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/986/986323-32.png?modified=bb96a84c",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/986/986323-64.png?modified=bb96a84c"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-09-05T11:36:15Z",
+    "name": {
+        "fr": "ConfirmBeforeDelete",
+        "en-US": "ConfirmBeforeDelete"
+    },
+    "previews": [
+        {
+            "id": 205493,
+            "caption": {
+                "fr": "Options de l'extension",
+                "en-US": "Options of ConfirmBeforeDelete"
+            },
+            "image_size": [
+                560,
+                403
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205493.png?modified=1539636265",
+            "thumbnail_size": [
+                278,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205493.png?modified=1539636265"
+        },
+        {
+            "id": 205494,
+            "caption": {
+                "fr": "Message de confirmation",
+                "en-US": "Confirmation message"
+            },
+            "image_size": [
+                440,
+                154
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205494.png?modified=1539636265",
+            "thumbnail_size": [
+                320,
+                112
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205494.png?modified=1539636265"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.34638,
+        "count": 3,
+        "average": 3.6667,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirmbeforedelete/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/986323",
+    "slug": "confirmbeforedelete",
+    "status": "public",
+    "summary": {
+        "fr": "Confirmation avant suppression",
+        "en-US": "Ask a confirm before to delete some items"
+    },
+    "support_email": {
+        "fr": "olivier2042@outlook.fr",
+        "en-US": "olivier2042@outlook.fr"
+    },
+    "support_url": null,
+    "tags": [
+        "confirmation",
+        "confirmation dialog",
+        "firefox57",
+        "supprimer"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirmbeforedelete/",
+    "weekly_downloads": 0
+}

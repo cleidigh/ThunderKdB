@@ -1,0 +1,171 @@
+{
+    "id": 363545,
+    "authors": [
+        {
+            "id": 6098061,
+            "name": "dlech",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dlech/",
+            "username": "dlech",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 455,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2472128,
+        "compatibility": {
+            "thunderbird": {
+                "max": "68.*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmailbuttons/versions/2472128",
+        "files": [
+            {
+                "id": 1015196,
+                "created": "2019-08-20T20:38:46Z",
+                "hash": "sha256:63959c9f9401eba9cdcc0f92097b0cffd7147aba2e954825dffd814ef6dbb9fc",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 20054,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015196/gmail_buttons-1.0.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "Works with Thunderbird 68.\n\nOAuth is fixed."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmailbuttons/versions/1.0.0",
+        "version": "1.0.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>Note: This is intended only for those using Thunderbird with Gmail IMAP</b>\n\n* Before using, make sure you have followed the recommended settings <a href=\"http://support.google.com/mail/bin/answer.py?hl=en&amp;answer=78892\" rel=\"nofollow\">here</a>.\n\nIn Gmail's IMAP interface, the IMAP folders correspond to Labels in the Gmail web interface. Some of the labels, namely Spam and Trash, perform special functions behind the scenes. This can cause some unexpected results. For example if you set Thunderbird to move deleted items to the [Gmail]/Trash folder,you will get autosaved drafts and other unwanted items showing up in the Trash and All Mail folders in Gmail. \n\nThis plugin modifies Thunderbird to function according to Gmail's rules by doing the following:\n<ul><li>Adds a Trash button that moves a message to the [Gmail]/Trash folder</li><li>Replaces the Junk button with a Spam button that moves junk mail to the [Gmail]/Spam folder</li><li>Displays Gmail labels for messages and allows users to delete labels.</li></ul>\nIf the version available here is not working, additional versions are available on <a href=\"https://github.com/dlech/gmailbuttons/releases\" rel=\"nofollow\">GitHub</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmailbuttons/edit",
+    "guid": "gmailbuttons@d.lech",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://lechnology.com/GmailButtons"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/363/363545-64.png?modified=1566334727",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/363/363545-32.png?modified=1566334727",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/363/363545-64.png?modified=1566334727"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-08-20T20:52:05Z",
+    "name": {
+        "en-US": "Gmail Buttons"
+    },
+    "previews": [
+        {
+            "id": 67801,
+            "caption": {
+                "en-US": "Gmailbuttons shown in message-specific toolbar"
+            },
+            "image_size": [
+                512,
+                520
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67801.png?modified=1530208846",
+            "thumbnail_size": [
+                197,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67801.png?modified=1530208846"
+        },
+        {
+            "id": 80088,
+            "caption": {
+                "en-US": "Message with GMail lables"
+            },
+            "image_size": [
+                700,
+                301
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/80/80088.png?modified=1530208846",
+            "thumbnail_size": [
+                320,
+                138
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/80/80088.png?modified=1530208846"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.36658,
+        "count": 11,
+        "average": 3.4545,
+        "text_count": 11
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmailbuttons/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/363545",
+    "slug": "gmailbuttons",
+    "status": "public",
+    "summary": {
+        "en-US": "Adds message-specific buttons to Thunderbird that are consistent with the way Gmail handles Trash and Spam."
+    },
+    "support_email": {
+        "en-US": "gismho+gmailbuttons@gmail.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/dlech/gmailbuttons/issues"
+    },
+    "tags": [
+        "firefox57",
+        "gmail",
+        "gmail imap",
+        "gmail labels",
+        "thunderbird"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmailbuttons/",
+    "weekly_downloads": 77
+}

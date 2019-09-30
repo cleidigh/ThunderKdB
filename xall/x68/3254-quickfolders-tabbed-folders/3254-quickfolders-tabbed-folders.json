@@ -1,0 +1,556 @@
+{
+    "id": 3254,
+    "authors": [
+        {
+            "id": 66492,
+            "name": "Realraven (Axel Grude)",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/realraven/",
+            "username": "realraven",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
+        },
+        {
+            "id": 40600,
+            "name": "Alexander Malfait",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/alexander-malfait/",
+            "username": "alexander-malfait",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 22100,
+    "categories": {
+        "seamonkey": [
+            "bookmarks",
+            "interface-customizations"
+        ],
+        "thunderbird": [
+            "folders-and-filters",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2472218,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2472218",
+        "files": [
+            {
+                "id": 1015286,
+                "created": "2019-09-01T16:56:16Z",
+                "hash": "sha256:c5c036e99497c908ec8496e247b549e457bc94562f14e182bd535ba90f724ff1",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 1097777,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015286/quickfolders_tabbed_folders-4.16-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5006,
+            "name": {
+                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.16"
+        },
+        "release_notes": {
+            "en-US": "<b>Version 4.16</b>\n<ul><li> New option to hide folder from results in quickump / quickMove</li><li> Improved look of search box especially in dark themes.</li><li> Improved look of current folder bar background by better matching standard theme background colors.</li></ul>\n<b>Thunderbird 68 specific Fixes</b>\n<ul><li> As Mozilla removed xbl bindings for most xul elements, the quickMove / quickJump box had stopped working. This version fixes it and brings back the automatic suggestions that are shown during typing a folder name.</li><li><a href=\"https://www.mozdev.org/bugs/show_bug.cgi?id=26694\" rel=\"nofollow\">[Bug 26694]</a> Subfolder menus do not expand - A regression has caused subfolders (2nd and higher level) not to be expanded on the drag / click context menus of the folder tabs.</li><li> Fixed: creating new subfolders from QF menus fails because XPCOMUtils.generateQI was removed.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.16",
+        "version": "4.16"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Bookmark mail folders in Thunderbird. \n\nThis extension adds an extra toolbar to Thunderbird. When you drag a mail folder to it, you get a fully customizable shortcut to that mail folder. This supports full drag and drop, like the corresponding folder in the folder tree - You can drag messages on it to move/copy them to the folder, and access the bookmarked folders through keyboard shortcuts.\n\nThis is handy when you have a large tree of folders for clients or projects, but use only a few of them at the same time.\n\nThe Category feature adds more usability by adding distinct areas to work in; this can make it easier to focus on a task that needs just a subset of the folders visible. There is also excellent integration with the Thunderbird tabbed interface provided since Tb version 3.",
+        "de": "Bookmark Mail Ordner in Thunderbird. \n\nDiese Erweiterung erzeugt eine neue Werkzeugleiste in Thunderbird. Wenn Sie darauf einen Mail Ordner ziehen, erhalten Sie eine Verknüpfung auf diesen Ordner. Sie können damit auch Mails per drag &amp; drop verschieben / kopieren. \n\nDies ist praktisch wenn man eine große Verzeichnisstruktur mit vielen Ordnern hat (z.B. für Kunden, Projekte) aber normalerweise nur mit einer kleineren Auswahl davon arbeitet. \n\nDurch die neuen Kategorien lässt sich die Arbeit mit Mails noch einfacher strukturieren. Damit lassen sich die wichtigsten Ordner einer Kategorie (z.B. Arbeit / Hobby etc.) darstellen - spezielle Ordner wie z.B. Posteingang können permanent angezeigt werden. Eine genauere Beschreibung der Features können Sie auf <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/81bcacaae04e4e59b290fb2137cc5f8ad1bd9eb32bb108b05409206945d16194/http%3A//quickfolders.mozdev.org\">http://quickfolders.mozdev.org</a> ansehen.\n\nKompatibel mit Thunderbird 3.0 (beta2)"
+    },
+    "developer_comments": {
+        "en-US": "<strong>Milestones</strong>\n\nFind the complete history + bug list, visit <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f3e9c1a2fede81fbc82d9b29a51545b4a14777be31985a5c8923c9108d3a453e/http%3A//quickfolders.org/version.html\">quickfolders.org/version.html</a>\n\nThanks!!\n  Axel",
+        "de": "<strong>Was gibt's Neues und Gutes?</strong>\nErstmal hab ich die Fehlerliste von hier entfernt um diese Seite lesbarer zu machen. Für die komplette Versionsgeschichte bitte nach <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f3e9c1a2fede81fbc82d9b29a51545b4a14777be31985a5c8923c9108d3a453e/http%3A//quickfolders.org/version.html\">quickfolders.mozdev.org/version.html</a> gehen.\n&lt;br&gt;\n\n\n<strong>Version 4.6</strong>\nQuickFolders ist jetzt mit Postbox 5.0 kompatibel.\nMehr Informationen und Tips zu QuickFolders gibt's hier: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7884d44501521b7d5285f9264a282735b877896c67d9c8b62963cba7cff8a2f0/http%3A//quickfolders.org/faq_tips.htm\">http://quickfolders.org/faq_tips.htm</a>\n&lt;br&gt;&lt;br&gt;\nFalls Sie es sich vorstellen könnten mich bei der Weiterentwicklung von QuickFolders zu unterstützen, bitte ich <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b46afd2831810ab7452501fe308b6053261c65696f61f29c606e34b815bfb8ec/http%3A//quickfolders.org/donate.html\">eine Spende in Erwägung zu ziehen</a>...\n&lt;br&gt;\nVielen Dank,\n  Axel"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/edit",
+    "guid": "quickfolders@curious.be",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://quickfolders.org/index.html",
+        "de": "http://quickfolders.mozdev.org/index.html"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/3/3254-64.png?modified=1513636963",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/3/3254-32.png?modified=1513636963",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/3/3254-64.png?modified=1513636963"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": true,
+    "is_source_public": true,
+    "last_updated": "2019-09-02T06:47:07Z",
+    "name": {
+        "en-US": "QuickFolders (Tabbed Folders)",
+        "de": "QuickFolders (Ordner Tabs)",
+        "nl": "QuickFolders (Tabbed Folders)"
+    },
+    "previews": [
+        {
+            "id": 69682,
+            "caption": {
+                "en-US": "Tabbed folders for Thunderbird. Productivity Enhancement for the Serious Emailer. Supports Thunderbird, Postbox and SeaMonkey"
+            },
+            "image_size": [
+                700,
+                378
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/69/69682.png?modified=1530208227",
+            "thumbnail_size": [
+                320,
+                173
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/69/69682.png?modified=1530208227"
+        },
+        {
+            "id": 154194,
+            "caption": {
+                "en-US": "Right-click to open subfolders. See new mail counts at a glance."
+            },
+            "image_size": [
+                581,
+                241
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154194.png?modified=1530208229",
+            "thumbnail_size": [
+                320,
+                133
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154194.png?modified=1530208229"
+        },
+        {
+            "id": 29050,
+            "caption": {
+                "en-US": "Drag Emails into your favorite folders",
+                "de": "E-Mails schnell und einfach in ihre Lieblingsverzeichnisse verschieben."
+            },
+            "image_size": [
+                570,
+                327
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/29/29050.png?modified=1530208230",
+            "thumbnail_size": [
+                320,
+                184
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/29/29050.png?modified=1530208230"
+        },
+        {
+            "id": 27537,
+            "caption": {
+                "en-US": "Drag Email into a sub folder via a tab",
+                "de": "Drag und drop: Emails in ein [Unter-]Verzeichnis verschieben =>"
+            },
+            "image_size": [
+                532,
+                180
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/27/27537.png?modified=1530208231",
+            "thumbnail_size": [
+                320,
+                108
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/27/27537.png?modified=1530208231"
+        },
+        {
+            "id": 52099,
+            "caption": {
+                "en-US": "Recent Folders - display the visited folders and the ones that mail was moved to",
+                "de": "Mit dem \"Letzte Ordner\" Tab kann man die zuletzt benutzten Verzeichnisse schnell und bequem ansprechen"
+            },
+            "image_size": [
+                440,
+                284
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/52/52099.png?modified=1530208233",
+            "thumbnail_size": [
+                310,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/52/52099.png?modified=1530208233"
+        },
+        {
+            "id": 72106,
+            "caption": {
+                "en-US": "Current Folder Bar - additional Commands right above current the mail preview"
+            },
+            "image_size": [
+                700,
+                195
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72106.png?modified=1530208234",
+            "thumbnail_size": [
+                320,
+                89
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72106.png?modified=1530208234"
+        },
+        {
+            "id": 58315,
+            "caption": {
+                "en-US": "Current Folder Bar"
+            },
+            "image_size": [
+                672,
+                396
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58315.png?modified=1530208235",
+            "thumbnail_size": [
+                320,
+                189
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58315.png?modified=1530208235"
+        },
+        {
+            "id": 130996,
+            "caption": {
+                "en-US": "Recent folders button for quick access and to drag mails to"
+            },
+            "image_size": [
+                499,
+                189
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/130/130996.png?modified=1530208237",
+            "thumbnail_size": [
+                320,
+                121
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/130/130996.png?modified=1530208237"
+        },
+        {
+            "id": 25832,
+            "caption": {
+                "en-US": "re-order the tabs by dragging them",
+                "de": "Drag und Drop: Reihenfolge ändern =>"
+            },
+            "image_size": [
+                455,
+                53
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/25/25832.png?modified=1530208238",
+            "thumbnail_size": [
+                320,
+                37
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/25/25832.png?modified=1530208238"
+        },
+        {
+            "id": 28762,
+            "caption": {
+                "en-US": "Use Categories for showing just a sub set of tabs",
+                "de": "Kategorien erleichtern das Arbeiten."
+            },
+            "image_size": [
+                571,
+                315
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28762.png?modified=1530208239",
+            "thumbnail_size": [
+                320,
+                177
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28762.png?modified=1530208239"
+        },
+        {
+            "id": 72102,
+            "caption": {
+                "en-US": "Use the command menu for advanced feature, such as painting tabs"
+            },
+            "image_size": [
+                227,
+                237
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72102.png?modified=1530208241",
+            "thumbnail_size": [
+                192,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72102.png?modified=1530208241"
+        },
+        {
+            "id": 72101,
+            "caption": {
+                "en-US": "Color tabs individually with the palette"
+            },
+            "image_size": [
+                354,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72101.png?modified=1530208242",
+            "thumbnail_size": [
+                135,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72101.png?modified=1530208242"
+        },
+        {
+            "id": 113924,
+            "caption": {
+                "en-US": "general options"
+            },
+            "image_size": [
+                700,
+                493
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113924.png?modified=1530208243",
+            "thumbnail_size": [
+                284,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113924.png?modified=1530208243"
+        },
+        {
+            "id": 113925,
+            "caption": {
+                "en-US": "advanced options"
+            },
+            "image_size": [
+                668,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113925.png?modified=1530208245",
+            "thumbnail_size": [
+                254,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113925.png?modified=1530208245"
+        },
+        {
+            "id": 113922,
+            "caption": {
+                "en-US": "layout options (bling!) - icons - colors - mac-like themes - natural tabs. Choose from 2 palettes for coloring."
+            },
+            "image_size": [
+                633,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113922.png?modified=1530208246",
+            "thumbnail_size": [
+                241,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113922.png?modified=1530208246"
+        },
+        {
+            "id": 69684,
+            "caption": {
+                "en-US": "quick help - the full documentation website is just one click away..."
+            },
+            "image_size": [
+                696,
+                440
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/69/69684.png?modified=1530208247",
+            "thumbnail_size": [
+                316,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/69/69684.png?modified=1530208247"
+        },
+        {
+            "id": 69685,
+            "caption": {
+                "en-US": "support options: report bugs, request Features, contact the developer directly, translate QF into your language, version history, donations."
+            },
+            "image_size": [
+                544,
+                508
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/69/69685.png?modified=1530208248",
+            "thumbnail_size": [
+                214,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/69/69685.png?modified=1530208248"
+        },
+        {
+            "id": 60224,
+            "caption": {
+                "en-US": "Different Styles and Colors: Flat style, Apple Pills, Native tabs, Native Buttons"
+            },
+            "image_size": [
+                700,
+                150
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/60/60224.png?modified=1530208250",
+            "thumbnail_size": [
+                320,
+                69
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/60/60224.png?modified=1530208250"
+        },
+        {
+            "id": 32393,
+            "caption": {
+                "en-US": "multi-rows tabs",
+                "de": "mehrzeilige Darstellung"
+            },
+            "image_size": [
+                700,
+                255
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/32/32393.png?modified=1530208251",
+            "thumbnail_size": [
+                320,
+                117
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/32/32393.png?modified=1530208251"
+        },
+        {
+            "id": 47186,
+            "caption": {
+                "en-US": "Personas Support: Translucent tabs and transparent toolbar"
+            },
+            "image_size": [
+                621,
+                274
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47186.png?modified=1530208252",
+            "thumbnail_size": [
+                320,
+                141
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47186.png?modified=1530208252"
+        },
+        {
+            "id": 67902,
+            "caption": {
+                "en-US": "Start \"Create Filter\" mode"
+            },
+            "image_size": [
+                700,
+                70
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67902.png?modified=1530208254",
+            "thumbnail_size": [
+                320,
+                32
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67902.png?modified=1530208254"
+        },
+        {
+            "id": 67903,
+            "caption": {
+                "en-US": "Filtering learning: just drag and drop emails, as usual leave the rest to the Wizard..."
+            },
+            "image_size": [
+                700,
+                481
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67903.png?modified=1530208255",
+            "thumbnail_size": [
+                291,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67903.png?modified=1530208255"
+        },
+        {
+            "id": 72103,
+            "caption": {
+                "en-US": "... tell the filter assistant about the email you filed away ..."
+            },
+            "image_size": [
+                536,
+                366
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72103.png?modified=1530208256",
+            "thumbnail_size": [
+                293,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72103.png?modified=1530208256"
+        },
+        {
+            "id": 67905,
+            "caption": {
+                "en-US": "...and it opens a brand new filter to customize, with matching conditions and filter action (move to folder ...)"
+            },
+            "image_size": [
+                700,
+                394
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67905.png?modified=1530208257",
+            "thumbnail_size": [
+                320,
+                180
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67905.png?modified=1530208257"
+        },
+        {
+            "id": 63977,
+            "caption": {
+                "en-US": "better Theme Support - Integrates well, even with dark themes"
+            },
+            "image_size": [
+                700,
+                494
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/63/63977.png?modified=1530208259",
+            "thumbnail_size": [
+                283,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/63/63977.png?modified=1530208259"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.92875,
+        "count": 133,
+        "average": 4.9398,
+        "text_count": 133
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/3254",
+    "slug": "quickfolders-tabbed-folders",
+    "status": "public",
+    "summary": {
+        "en-US": "The \"Swiss army knife\" of folders. Turn your favorites into tabs - open folders and subfolders, move mails without scrolling around or searching. powerful + easy.\n\nSee new mail at a glance after automatic filtering - supports quickFilters addon!",
+        "de": "Ordner Tabs - vereinfacht das Chaos im Verzeichnisbaum indem die wichtigsten Ordner zu Tabs gemacht werden. Verzeichnisse und Unterverzeichnisse öffnen, mails verschieben - alles ohne scrollen und suchen.  Jetzt auch mit Kategorien, zum Filtern!",
+        "nl": "Het ‘Zwitserse zakmes’ van mappen. Zet uw favorieten om naar tabbladen - open mappen en tabbladen, verplaats e-mails zonder scrollen of zoeken. Krachtig en eenvoudig."
+    },
+    "support_email": {
+        "en-US": "axelg@gofree.indigo.ie",
+        "de": "axelg@gofree.indigo.ie"
+    },
+    "support_url": null,
+    "tags": [
+        "favorites",
+        "favourite folders",
+        "firefox57",
+        "folder",
+        "folder enhancement",
+        "navigation",
+        "newsgroups",
+        "organize",
+        "postbox",
+        "productivity",
+        "quick navigation",
+        "seamonkey",
+        "shortcuts",
+        "simplification",
+        "smart folders",
+        "tabbed",
+        "tabbed folders",
+        "tabs",
+        "toolbar"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/",
+    "weekly_downloads": 576
+}

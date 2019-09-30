@@ -1,0 +1,135 @@
+{
+    "id": 337144,
+    "authors": [
+        {
+            "id": 5850439,
+            "name": "José Fontanil",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/fontajos/",
+            "username": "fontajos",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5850/5850439.png?modified=1469820457"
+        }
+    ],
+    "average_daily_users": 52,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2472242,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mail-sent-notifier/versions/2472242",
+        "files": [
+            {
+                "id": 1015310,
+                "created": "2019-09-05T09:45:43Z",
+                "hash": "sha256:7bd88e930126471b47b725b61aa2466cf137e320956e5df352e96b3ed62cd19d",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 19601,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015310/mail_sent_notifier-0.7.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mail-sent-notifier/versions/0.7.0",
+        "version": "0.7.0"
+    },
+    "default_locale": "de",
+    "description": {
+        "de": "In our company, we use an internal time registration system (German: Zeiterfassungssystem). To automatically transfer all email work (elapsed time, to edit and send an email to a customer), we created this Mozilla Thunderburd Add-On, since there was no adequate extension around. In the extension preferences you can activate or deactivate the extension and define a webserver URL. Everytime an email is sent, this url is asynchronously called with the following populated GET-parameters: subject (String), to (email or comma separated list of emails), from (email), edit_time (elapsed edit time in minutes), worker_id (numerical user id, free of use).\nThe extension consists of a preferences dialog, a status-bar info (activation sign), account name context menu extension and the transparent compose window business logic.\nPlease inform users, that this extension is active due to privacy policy."
+    },
+    "developer_comments": {
+        "de": "Mail sending trackable by webservices."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mail-sent-notifier/edit",
+    "guid": "mail_sent_notifier@phpeppershop.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "de": "http://www.phpeppershop.com/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/feeds-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/feeds-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/feeds-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-09-05T11:52:31Z",
+    "name": {
+        "de": "Mail Sent Notifier"
+    },
+    "previews": [],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mail-sent-notifier/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/337144",
+    "slug": "mail-sent-notifier",
+    "status": "public",
+    "summary": {
+        "de": "Allows to notify a HTTP-GET based webservice after successfully sent an email, e.g. for time registration systems."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "firefox57",
+        "time registration",
+        "webservice",
+        "zeiterfassung"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mail-sent-notifier/",
+    "weekly_downloads": 21
+}

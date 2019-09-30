@@ -1,0 +1,520 @@
+{
+    "id": 445196,
+    "authors": [
+        {
+            "id": 66492,
+            "name": "Realraven (Axel Grude)",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/realraven/",
+            "username": "realraven",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
+        }
+    ],
+    "average_daily_users": 1301,
+    "categories": {
+        "firefox": [
+            "appearance",
+            "bookmarks"
+        ],
+        "thunderbird": [
+            "appearance",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2470344,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/menu-on-top/versions/2470344",
+        "files": [
+            {
+                "id": 1013404,
+                "created": "2019-06-17T18:14:34Z",
+                "hash": "sha256:415650bbfde8f5b28ae76ec5f19a405e23be88bb9dc791fca5a25abdd1da5463",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 439963,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1013404/menu_on_top_supermenu_avatar-1.15-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "<ul><li> Improved loading UI on Thunderbird 68 beta.</li><li> Support for new HTML color picker which replaces the XUL version of same in modern versions orf Thunderbird.</li><li> Support for new Preferences system, but backwards compatible with Thunderbird 60.</li><li> Replacement of document.createElement with createXULElement</li><li> Improved loading custom icon (avatar) in modern versions of Thunderbird.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/menu-on-top/versions/1.15",
+        "version": "1.15"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This Addon will not work from Firefox version 57 as both access to XPCOM interfaces and XUL will be disabled. If there are any developers who would like to port this into something using the new web extensions technology please contact me using the support site. For users - you can use Firefox ESR 52 for the next couple of month or switch to Firefox Pale Moon, or alternatively find another addon to carry out the missing functionality.\n\nMove the menu back to where it belongs.Integrates well into various user interface styles. Roll back the changes made by Tb11, when the menus were pushed underneath the tabs. \n\nChose from a variety of theme-supporting styles. Add frequently used bookmarks under your avatar icon without wasting precious screen space. Bookmark your favorite sites, emails, folders or configuration pages. Add a drag area for Thunderbird and finally elevate the search box for clutter free UI. Choose your favorite LOL / BL2 chibis as avatars.\n\nIt is convenient to have the menu on top of the tabs like Firefox; this is also a good area for placing \"global\" toolbar buttons like Navigation or get mail."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/menu-on-top/edit",
+    "guid": "menuOnTop@agrude.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://quickfolders.mozdev.org/menuOnTop.html"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/445/445196-64.png?modified=1509787222",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/445/445196-32.png?modified=1509787222",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/445/445196-64.png?modified=1509787222"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-06-18T05:05:59Z",
+    "name": {
+        "en-US": "Menu On Top (SuperMenu Avatar)"
+    },
+    "previews": [
+        {
+            "id": 166448,
+            "caption": {
+                "en-US": "Example for an avatar: Leona Chibi with matching Theme"
+            },
+            "image_size": [
+                700,
+                84
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166448.png?modified=1530209002",
+            "thumbnail_size": [
+                320,
+                38
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166448.png?modified=1530209002"
+        },
+        {
+            "id": 166452,
+            "caption": {
+                "en-US": "Bookmarks menu: add any tab to bookmark mails, folders, web pages and selected addons; will add more on request"
+            },
+            "image_size": [
+                528,
+                346
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166452.png?modified=1530209002",
+            "thumbnail_size": [
+                305,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166452.png?modified=1530209002"
+        },
+        {
+            "id": 166484,
+            "caption": {
+                "en-US": "League of Legend avatars - original artwork by http://justduet.tumblr.com/"
+            },
+            "image_size": [
+                320,
+                192
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166484.png?modified=1530209003",
+            "thumbnail_size": [
+                320,
+                192
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166484.png?modified=1530209003"
+        },
+        {
+            "id": 112459,
+            "caption": {
+                "en-US": "Running with default theme and 2birds personas - green flavor"
+            },
+            "image_size": [
+                700,
+                102
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/112/112459.png?modified=1530209003",
+            "thumbnail_size": [
+                320,
+                47
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/112/112459.png?modified=1530209003"
+        },
+        {
+            "id": 166450,
+            "caption": {
+                "en-US": "Avatar: Ashe with matching Theme"
+            },
+            "image_size": [
+                700,
+                86
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166450.png?modified=1530209003",
+            "thumbnail_size": [
+                320,
+                39
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166450.png?modified=1530209003"
+        },
+        {
+            "id": 166444,
+            "caption": {
+                "en-US": "Preferences dialog: choose color schemes and other theme-specific attributes"
+            },
+            "image_size": [
+                608,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166444.png?modified=1530209004",
+            "thumbnail_size": [
+                232,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166444.png?modified=1530209004"
+        },
+        {
+            "id": 166446,
+            "caption": {
+                "en-US": "Advanced: Add bookmarks with an avatar Icon - chose Chibis from LOL and Borderlands 2 - will make more on request"
+            },
+            "image_size": [
+                629,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166446.png?modified=1530209004",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166446.png?modified=1530209004"
+        },
+        {
+            "id": 166456,
+            "caption": {
+                "en-US": "Walnut Full Theme with \"Gnar\" chibi"
+            },
+            "image_size": [
+                700,
+                67
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166456.png?modified=1530209004",
+            "thumbnail_size": [
+                320,
+                31
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166456.png?modified=1530209004"
+        },
+        {
+            "id": 166458,
+            "caption": {
+                "en-US": "Avatar \"Ahri\" with matching theme"
+            },
+            "image_size": [
+                700,
+                85
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166458.png?modified=1530209004",
+            "thumbnail_size": [
+                320,
+                39
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166458.png?modified=1530209004"
+        },
+        {
+            "id": 166466,
+            "caption": {
+                "en-US": "Avatar \"Jinx\" with matching theme"
+            },
+            "image_size": [
+                700,
+                91
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166466.png?modified=1530209005",
+            "thumbnail_size": [
+                320,
+                42
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166466.png?modified=1530209005"
+        },
+        {
+            "id": 166464,
+            "caption": {
+                "en-US": "Avatar \"Lucian\" with matching Theme (Firefox)"
+            },
+            "image_size": [
+                700,
+                88
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166464.png?modified=1530209005",
+            "thumbnail_size": [
+                320,
+                40
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166464.png?modified=1530209005"
+        },
+        {
+            "id": 166468,
+            "caption": {
+                "en-US": "Avatar \"Elise\" with Thunderbird default theme"
+            },
+            "image_size": [
+                700,
+                86
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166468.png?modified=1530209005",
+            "thumbnail_size": [
+                320,
+                39
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166468.png?modified=1530209005"
+        },
+        {
+            "id": 166460,
+            "caption": {
+                "en-US": "Lilith (borderlands 2) with Thunderbird default theme"
+            },
+            "image_size": [
+                700,
+                83
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166460.png?modified=1530209006",
+            "thumbnail_size": [
+                320,
+                38
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166460.png?modified=1530209006"
+        },
+        {
+            "id": 166462,
+            "caption": {
+                "en-US": "Avatar \"Jack\" (borderlands 2) with Dark Fox theme"
+            },
+            "image_size": [
+                700,
+                79
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/166/166462.png?modified=1530209006",
+            "thumbnail_size": [
+                320,
+                36
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/166/166462.png?modified=1530209006"
+        },
+        {
+            "id": 102640,
+            "caption": {
+                "en-US": "Colored styles: the coloring is provided by the Windowblinds UI style - here the Theme \"Lantana\""
+            },
+            "image_size": [
+                700,
+                138
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/102/102640.png?modified=1530209006",
+            "thumbnail_size": [
+                320,
+                63
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/102/102640.png?modified=1530209006"
+        },
+        {
+            "id": 102848,
+            "caption": {
+                "en-US": "Nautipolis"
+            },
+            "image_size": [
+                392,
+                120
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/102/102848.png?modified=1530209007",
+            "thumbnail_size": [
+                320,
+                98
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/102/102848.png?modified=1530209007"
+        },
+        {
+            "id": 102838,
+            "caption": {
+                "en-US": "Australis"
+            },
+            "image_size": [
+                522,
+                133
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/102/102838.png?modified=1530209007",
+            "thumbnail_size": [
+                320,
+                82
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/102/102838.png?modified=1530209007"
+        },
+        {
+            "id": 102844,
+            "caption": {
+                "en-US": "TT deepdark"
+            },
+            "image_size": [
+                436,
+                133
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/102/102844.png?modified=1530209008",
+            "thumbnail_size": [
+                320,
+                98
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/102/102844.png?modified=1530209008"
+        },
+        {
+            "id": 112460,
+            "caption": {
+                "en-US": "Nuvola - with large and small icons"
+            },
+            "image_size": [
+                470,
+                245
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/112/112460.png?modified=1530209008",
+            "thumbnail_size": [
+                320,
+                167
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/112/112460.png?modified=1530209008"
+        },
+        {
+            "id": 102840,
+            "caption": {
+                "en-US": "Charamel"
+            },
+            "image_size": [
+                430,
+                132
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/102/102840.png?modified=1530209008",
+            "thumbnail_size": [
+                320,
+                98
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/102/102840.png?modified=1530209008"
+        },
+        {
+            "id": 102842,
+            "caption": {
+                "en-US": "Noia"
+            },
+            "image_size": [
+                533,
+                105
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/102/102842.png?modified=1530209009",
+            "thumbnail_size": [
+                320,
+                63
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/102/102842.png?modified=1530209009"
+        },
+        {
+            "id": 102846,
+            "caption": {
+                "en-US": "Walnut 2"
+            },
+            "image_size": [
+                487,
+                119
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/102/102846.png?modified=1530209009",
+            "thumbnail_size": [
+                320,
+                78
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/102/102846.png?modified=1530209009"
+        },
+        {
+            "id": 102864,
+            "caption": {
+                "en-US": "Littlebird"
+            },
+            "image_size": [
+                393,
+                103
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/102/102864.png?modified=1530209010",
+            "thumbnail_size": [
+                320,
+                84
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/102/102864.png?modified=1530209010"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.58246,
+        "count": 8,
+        "average": 4.75,
+        "text_count": 8
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/menu-on-top/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/445196",
+    "slug": "menu-on-top",
+    "status": "public",
+    "summary": {
+        "en-US": "Move the Thunderbird menu bar to the top. Choose from a selection of visual styles + colors. Add frequently used bookmarks and an avatar icon without wasting precious screen space. Bookmark your favorite sites, emails, folders or configuration pages."
+    },
+    "support_email": {
+        "en-US": "axelg@gofree.indigo.ie"
+    },
+    "support_url": {
+        "en-US": "http://quickfolders.mozdev.org/menuOnTop.html"
+    },
+    "tags": [
+        "avatar",
+        "bookmarks",
+        "borderlands",
+        "chibi",
+        "customize",
+        "firefox57",
+        "league of legends",
+        "lol",
+        "menu bar",
+        "menu on top",
+        "menus",
+        "restartless",
+        "themes",
+        "toolbars",
+        "usability"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/menu-on-top/",
+    "weekly_downloads": 74
+}

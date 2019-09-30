@@ -1,0 +1,219 @@
+{
+    "id": 438634,
+    "authors": [
+        {
+            "id": 1890578,
+            "name": "Philippe Lieser",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/lieser/",
+            "username": "lieser",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 10131,
+    "categories": {
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2472651,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dkim-verifier/versions/2472651",
+        "files": [
+            {
+                "id": 1015732,
+                "created": "2019-09-22T18:42:16Z",
+                "hash": "sha256:68f44ed7429df256bdf6a89e2221a67b8c41b61a0e76659552613f8a2df112fe",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 705061,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015732/dkim_verifier-3.0.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "- fixed incompatibility with Thunderbird 70 (#167)\n - fixed DKIM status not visible when a message is opened in a new window (#172)\n - fixed incompatibility with CompactHeader add-on (#177)\n - JSDNS: fixed proxy support (#173)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/versions/3.0.1",
+        "version": "3.0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "fr": "<a href=\"https://fr.wikipedia.org/wiki/DomainKeys_Identified_Mail\" rel=\"nofollow\">DomainKeys Identified Mail (DKIM)</a> est une méthode autorise les domaines a signer les emails. Ce module vérifie les signatures DKIM et affiche le résultate dans l'entête du courriel. Ainsi il est possible de visualiser la vérification du domaine et identifier les responsabiltés pour courriel spécifiquement. L'affichage du résultat peut être changer dans les options.\n\nIl est important de noter que ce mail peut être signer par un domaine arbitraire. Une signature DKIM valide seule n'est pas un indicateur d'un courriel authentique. Toujours vérifier le signataire pour déterminer si ce courriel est sûr!\n\nDans certains cas, l'absence de signatures DKIM peut être pratique pour identifier une arnaque. Si vous connaissez certains domaines qui signe tous les courriels avec DKIM, l'absence de signature DKIM est un indictauer fort d'un courriel corrompu\n\nPour faciliter la vérification de qui a signé un courriel, ce module supporte des règles de signatures. Avec des règles de signatures, il est possible de spécifier que les courriels envoyés de certains expéditeurs sont toujours signés pour certains domaines (veuillez vous référer au SDID). En savoir plus a propos des règles de signatures  à <a href=\"https://github.com/lieser/dkim_verifier/wiki/Sign-rules\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Sign-rules</a>.\n\nUne description de toutes les options disponibles peut être trouvés à <a href=\"https://github.com/lieser/dkim_verifier/wiki/Options\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Options</a>.",
+        "de": "<a href=\"https://de.wikipedia.org/wiki/DomainKeys_Identified_Mail\" rel=\"nofollow\">DomainKeys Identified Mail (DKIM)</a> ist eine Methode, die es Domains erlaubt E-Mails zu signieren. Das Add-on überprüft diese DKIM Signaturen und zeigt das Ergebnis in der Kopfzeile der E-Mail an. Auf diese Weise ist es möglich zu sehen, welche Domain Verantwortung für eine bestimmte E-Mail übernimmt. Die Art und Weise wie das Ergebnis angezeigt wird, kann in den Einstellungen geändert werden.\n\nEs ist wichtig zu beachten, dass eine E-Mail durch eine beliebige Domain signiert seinen kann. Eine gültige Signatur alleine ist daher kein Hinweis auf eine vertrauenswürdige E-Mail. Um zu entscheiden ob eine E-Mail vertrauenswürdig ist sollte immer überprüft werden wer der Signierende ist!\n\nIn einigen Fällen kann die Abwesenheit einer DKIM Signatur nützlich sein um betrügerische E-Mails zu erkennen. Falls bekannt ist, dass eine Domain alle ihre E-Mails mittels DKIM signiert, ist das Nichtvorhandensein einer DKIM Signatur ein starker Hinweis auf eine gefälschte E-Mail.\n\nUm das Überprüfen zu vereinfachen, ob und durch wen eine E-Mail signiert ist, unterstützt das Add-on Signierregeln. Mittels der Signierregeln ist es möglich festzulegen, dass E-Mails von einem bestimmtem Sender immer von einer vorgegebenen Domain (auch genannt SDID) signiert sein müssen. Mehr zu den Signierregeln in Englisch auf <a href=\"https://github.com/lieser/dkim_verifier/wiki/Sign-rules\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Sign-rules</a>.\n\nEine Beschreibung aller vorhandenen Add-on Einstellungen kann in Englisch auf <a href=\"https://github.com/lieser/dkim_verifier/wiki/Options\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Options</a> gefunden werden.",
+        "en-US": "<a href=\"https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail\" rel=\"nofollow\">DomainKeys Identified Mail (DKIM)</a> is a method which allows domains to sign e-mails. The add-on verifies these DKIM signatures and shows the result in the e-mail header. This way it is possible to see which domain is claiming responsibility for a specific e-mail. How the result is shown can be changed in the options.\n\nIt is important to note that an e-mail can be signed by an arbitrary domains. A valid DKIM signature alone is therefore not an indicator for a trustworthy e-mail. Always check who the signer is to determine if an e-mail is trustworthy!\n\nIn some cases, the absence of a DKIM signature can be useful to identify scam e-mails. If it is known that a certain domain is signing all its e-mails with DKIM, the absence of a DKIM signature is a strong indicator for a forged e-mail.\n\nTo ease the checking of if and by who an e-mail is signed, the add-on supports the use of sign rules. With sign rules it is possible to specify that e-mails from a certain sender have to be always signed by a specific domain (also referred to as SDID). More about sign rules at <a href=\"https://github.com/lieser/dkim_verifier/wiki/Sign-rules\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Sign-rules</a>.\n\nA description of all the available add-on options can be found at <a href=\"https://github.com/lieser/dkim_verifier/wiki/Options\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Options</a>.",
+        "it": "<a href=\"https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail\" rel=\"nofollow\">DomainKeys Identified Mail (DKIM)</a> è una tecnica di firma delle email da parte dei domini. Il componente aggiuntivo verifica queste firme DKIM e mostra i risultati di questa verifica nell’intestazione dell’email. In questo modo è possibile visualizzare quale dominio rivendica la responsibilità di una specifica email. La modalità di visualizzazione dei risultati può essere modificata nelle opzioni.\n\nÈ importante notare che un’email può essere firmata da domini arbitrari. Una firma DKIM valida da sola non è quindi un’indicatore di un’email attendibile. È sempre opportuno verificare chi ha firmato per determinare se un’email è attendibile!\n\nIn alcuni casi l’assenza di una firma DKIM può essere utile per identificare email fraudolente. Se si sa che un dominio firma tutte le sue email con DKIM, l’assenza di una firma DKIM è un significativo indicatore di un’email contraffatta.\n\nPer facilitare la verifica sia della presenza della firma sia del suo mittente, il componente aggiuntivo supporta le regole delle firme. Con tali regole è possibile specificare che le email provenienti da un determinato mittente devono essere sempre firmate da uno specifico dominio (chiamato anche SDID). Ulteriori informazioni sulle regole delle firme sono disponibili qui: <a href=\"https://github.com/lieser/dkim_verifier/wiki/Sign-rules\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Sign-rules</a>\n\nUna descrizione di tutte le opzioni del componente aggiuntivo possono essere trovate qui: <a href=\"https://github.com/lieser/dkim_verifier/wiki/Options\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Options</a>",
+        "hu": "A <a href=\"https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail\" rel=\"nofollow\">DKIM (DomainKeys Identified Mail – TartományKulcsok azonosított levelek)</a> egy olyan módszer, amely lehetővé teszi a tartománynak, hogy e-maileket írjon alá. A kiegészítő ellenőrzi ezeket a DKIM aláírásokat, és megjeleníti az eredményt az e-mail fejlécében. Ily módon láthatjuk, hogy melyik tartomány állítja felelősséget egy adott e-mailért. Az eredmény megjelenítésének módja az opciókban megváltoztatható.\n\nFontos megjegyezni, hogy az e-maileket tetszőleges tartomány aláírhatja. Ezért önmagában az érvényes DKIM aláírás nem jelzi a megbízható e-maileket. Mindig ellenőrizze, hogy ki az aláíró-e, hogy megbízható-e az e-mailek!\n\nBizonyos esetekben a DKIM aláírás hiánya hasznos lehet a becsapott e-mailek azonosításához. Ha ismert, hogy egy adott tartomány minden e-mailt aláír a DKIM-mel, a DKIM-aláírás hiánya erősen jelzi a hamis e-maileket.\n\nA megkönnyítés érdekében megvizsgálja, hogy az e-mail aláírt, a kiegészítő támogatja az aláírási szabályok használatát. A aláírási szabályokkal meghatározható, hogy egy bizonyos feladó e-mailéit mindig egy meghatározott tartomány (SDID-nek is nevezzük) aláírja. A jelszabályokról bővebben a <a href=\"https://github.com/lieser/dkim_verifier/wiki/Sign-rules\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Sign-rules</a>.\n\nA rendelkezésre álló kiegészítő lehetőségek leírása megtalálható a <a href=\"https://github.com/lieser/dkim_verifier/wiki/Options\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Options</a> oldalon.",
+        "zh-CN": "验证邮件的 <a href=\"http://zh.wikipedia.org/wiki/DKIM\" rel=\"nofollow\">DKIM 签名</a>。\n验证结果显示在邮件的头部分，并可根据喜好显示在状态栏、高亮发送者地址，或者在 From 头上悬停时显示工具提示。\n\n此外，其他一些操作功能，像是“重新验证 DKIM 签名”等，可在邮件头的“其他操作”下拉菜单中找到。另外，可以指定签名规则来指示特定的电子邮件始终应该被签名。更多有关签名规则的信息请见 <a href=\"https://github.com/lieser/dkim_verifier/wiki/Sign-rules\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Sign-rules</a>。\n\n本附加组件可用的选项的描述也可在 <a href=\"https://github.com/lieser/dkim_verifier/wiki/Options\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Options</a> 中找到。",
+        "ja": "<a href=\"https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%AD%E3%83%BC%E3%83%BB%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%95%E3%82%A1%E3%82%A4%E3%83%89%E3%83%BB%E3%83%A1%E3%83%BC%E3%83%AB\" rel=\"nofollow\">ドメインキー・アイデンティファイド・メール</a>はドメインがメールに署名をすることを可能にします。このアドオンはメールヘッダーの DKIM 署名を検証し結果を表示します。そのためどのドメインが特定のメールに対して責任を持っているか確認をすることが可能になります。オプション設定で結果の表示方法の変更も可能です。\n\nどのドメインでもメールに署名することが可能です。そのため有効な DKIM 署名だけでは信頼できるメールということにはなりません。メールが信頼出来るかどうかを判断するために、誰が署名したのかを常にチェックしてください！\n\n場合によっては、DKIM 署名が無いことが詐欺メールを特定するのに役立つことがあります。仮に、あるドメインが全てのメールに DKIM 署名を付けていることが知られている場合、DKIM 署名が無いことは偽メールであることを示す強力な情報です。\n\nメールが署名されているかどうか、そして誰に署名されているかを簡単にチェックするために、このアドオンは署名ルールの利用をサポートします。署名ルールにより、ある送信者からの全てのメールは特定のドメイン（SDID とも言われる）により署名されると規定することも可能です。署名ルールの詳細は <a href=\"https://github.com/lieser/dkim_verifier/wiki/Sign-rules\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Sign-rules</a> を参照してください。\n\nアドオンの全てのオプションの説明は <a href=\"https://github.com/lieser/dkim_verifier/wiki/Options\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/wiki/Options</a> を参照してください。"
+    },
+    "developer_comments": {
+        "fr": "Le support est donné à l'adresse <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>, <a href=\"http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121</a> ou par courriel à lieser+dkim@posteo.net (en Anglais ou Allemand).\n\nPour remonter un anomalie est de créer un ticket à l'adresse <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>.",
+        "de": "Support wird auf <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>, <a href=\"http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121</a> oder per E-Mail an lieser+dkim@posteo.net (in Englisch oder Deutsch) gegeben.\n\nDer bevorzugte weg Fehler zu melden ist das erstellen eines Issues auf <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>.",
+        "en-US": "Support is given at <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>, <a href=\"http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121</a> or by e-mail to lieser+dkim@posteo.net (in English or German).\n\nThe preferred way to report bugs is by creating an issue at <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>.",
+        "it": "Per ricevere supporto usare <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>, <a href=\"http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121</a> o inviare un’email a lieser+dkim@posteo.net (in inglese o in tedesco).\n\nPer segnalare bug è preferibile utilizzare <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>.",
+        "hu": "Támogatást a <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>, <a href=\"http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121</a> webhelyen, vagy e-mailen küld a lieser+dkim@posteo.net. (angol vagy német nyelven).\n\nA hibák jelentésének preferált módja egy probléma létrehozása a <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a> webhelyen.",
+        "zh-CN": "我们提供支持于 <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a>, <a href=\"http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121</a> 或者发送电子邮件到 lieser+dkim@posteo.net (使用英语或德语)。\n\n报告 bug 的首选方法是在 <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a> 创建一个 issue。",
+        "ja": "サポートは <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a> 、 <a href=\"http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=2704121</a> またはメールで lieser+dkim@posteo.net （英語またはドイツ語）まで。\n\nバグレポートはイシューを <a href=\"https://github.com/lieser/dkim_verifier/issues\" rel=\"nofollow\">https://github.com/lieser/dkim_verifier/issues</a> に作成していただけると幸いです。"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dkim-verifier/edit",
+    "guid": "dkim_verifier@pl",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": {
+        "fr": "https://github.com/lieser/dkim_verifier/wiki",
+        "de": "https://github.com/lieser/dkim_verifier/wiki",
+        "en-US": "https://github.com/lieser/dkim_verifier/wiki",
+        "it": "https://github.com/lieser/dkim_verifier/wiki",
+        "hu": "https://github.com/lieser/dkim_verifier/wiki",
+        "zh-CN": "https://github.com/lieser/dkim_verifier/wiki",
+        "ja": "https://github.com/lieser/dkim_verifier/wiki"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/438/438634-64.png?modified=1567109390",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/438/438634-32.png?modified=1567109390",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/438/438634-64.png?modified=1567109390"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-09-22T22:21:52Z",
+    "name": {
+        "fr": "DKIM Verifier",
+        "de": "DKIM Verifier",
+        "en-US": "DKIM Verifier",
+        "it": "DKIM Verifier",
+        "hu": "DKIM ellenőrző (DKIM Verifier)",
+        "zh-CN": "DKIM Verifier",
+        "ja": "DKIM Verifier"
+    },
+    "previews": [
+        {
+            "id": 178811,
+            "caption": {
+                "en-US": "The result of the verification is shown in the e-mail header."
+            },
+            "image_size": [
+                600,
+                98
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/178/178811.png?modified=1530209002",
+            "thumbnail_size": [
+                320,
+                52
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/178/178811.png?modified=1530209002"
+        },
+        {
+            "id": 178813,
+            "caption": {
+                "en-US": "If the DKIM signature has some minor issues, but is otherwise correct, a warning icon is shown in the DKIM header. This warning icon has a tooltip with additional information."
+            },
+            "image_size": [
+                600,
+                200
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/178/178813.png?modified=1530209002",
+            "thumbnail_size": [
+                320,
+                107
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/178/178813.png?modified=1530209002"
+        },
+        {
+            "id": 178812,
+            "caption": {
+                "en-US": "How the result of the verification should be shown can be changed in the options. More screenshots of the different Display options at https://github.com/lieser/dkim_verifier/wiki/Display-Options."
+            },
+            "image_size": [
+                600,
+                177
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/178/178812.png?modified=1530209003",
+            "thumbnail_size": [
+                320,
+                94
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/178/178812.png?modified=1530209003"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.17156,
+        "count": 22,
+        "average": 4.2273,
+        "text_count": 22
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/438634",
+    "slug": "dkim-verifier",
+    "status": "public",
+    "summary": {
+        "fr": "Vérifie la signature DKIM des courriels.",
+        "de": "Überprüft die DKIM-Signatur von E-Mails.",
+        "en-US": "Verifies the DKIM-Signature of an e-mail.",
+        "it": "Verifica la firma DKIM di un’email.",
+        "hu": "Ellenőrzi az e-mailek DKIM-aláírásait",
+        "zh-CN": "验证邮件的 DKIM 签名。",
+        "ja": "メールの DKIM 署名を検証します。"
+    },
+    "support_email": {
+        "en-US": "lieser+dkim@posteo.net"
+    },
+    "support_url": {
+        "en-US": "https://github.com/lieser/dkim_verifier/issues"
+    },
+    "tags": [
+        "authentication-results",
+        "dkim",
+        "domainkeys identified mail",
+        "firefox57",
+        "signature"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/",
+    "weekly_downloads": 2129
+}
