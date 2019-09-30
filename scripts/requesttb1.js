@@ -519,7 +519,7 @@ async function g1() {
 	// extsJson = extArray;
 	// try {
 	let p = [];
-	for (let index = 30; index < 40; index++) {
+	for (let index = 40; index < 50; index++) {
 		console.debug('GetIndex ' + index);
 		p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 
