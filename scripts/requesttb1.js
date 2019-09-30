@@ -511,13 +511,15 @@ async function getAll(extArray, options) {
 async function g1() {
 	let startTime = new Date();
 	console.debug('' + startTime);
-	await getAllExtensionDetails(1, 54);
+
+	extsJson = fs.readJSONSync(extsAllJsonFileName);
+	// await getAllExtensionDetails(1, 54);
 
 	console.debug('TotalExtensions: '+extsJson.length);
 	// extsJson = extArray;
 	// try {
 	let p = [];
-	for (let index = 0; index < 5; index++) {
+	for (let index = 0; index < 68; index++) {
 		console.debug('GetIndex ' + index);
 		p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 
