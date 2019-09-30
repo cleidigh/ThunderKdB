@@ -1,0 +1,135 @@
+{
+    "id": 674047,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 4,
+    "categories": {
+        "thunderbird": [
+            "composition",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2299669,
+        "compatibility": {
+            "thunderbird": {
+                "max": "52.*",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/check-attachment-before-send/versions/2299669",
+        "files": [
+            {
+                "id": 839880,
+                "created": "2018-01-18T05:28:37Z",
+                "hash": "sha256:343b5f48003bddfe0503b6986fcad13f20979a2abf20ec62374133d0ac933e32",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 39092,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/839880/check_attachment_before_send-0.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-attachment-before-send/versions/0.6",
+        "version": "0.6"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This provides ability to confirm that the mail is really safe to be sent, before sending.\nWhen *ALL* of following conditions are satisfied, a confirmation dialog will be shown:\n\n * The sending mail has one or more attachments.\n * There are one or more recipients which are not matched to the list of \"Exceptional domains\".\n * No matching regular expression is given, or the subject or the body match to the given regexp.\n\nUntil you verify all recipients are correct, you cannot send the mail actually.\n\n\n## Bypassing of confirmation dialogs provided by other addons\n\nThere are some addons similar to this.\nWhen you use them with this addon, you'll see similar confirmations again and again.\nTo avoid such an annoying result, this provides ability to bypass other confirmations if you confirmed with this addon.\n\nCurrently this supports bypassing for only following addons:\n\n * Check and Send <a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/check-and-send/\">https://addons.mozilla.org/thunderbird/addon/check-and-send/</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/check-attachment-before-send/edit",
+    "guid": "check-attachment-before-send@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/alerts-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/alerts-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/alerts-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-01-18T06:05:45Z",
+    "name": {
+        "en-US": "Check Attachment before Send"
+    },
+    "previews": [
+        {
+            "id": 169323,
+            "caption": {
+                "en-US": "Configurations"
+            },
+            "image_size": [
+                700,
+                368
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/169/169323.png?modified=1530209273",
+            "thumbnail_size": [
+                320,
+                168
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/169/169323.png?modified=1530209273"
+        },
+        {
+            "id": 169324,
+            "caption": {
+                "en-US": "Confirmation dialog"
+            },
+            "image_size": [
+                700,
+                453
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/169/169324.png?modified=1530209274",
+            "thumbnail_size": [
+                309,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/169/169324.png?modified=1530209274"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.64167,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-attachment-before-send/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/674047",
+    "slug": "check-attachment-before-send",
+    "status": "public",
+    "summary": {
+        "en-US": "Confirms to send a mail with any attachment."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-attachment-before-send/",
+    "weekly_downloads": 32
+}

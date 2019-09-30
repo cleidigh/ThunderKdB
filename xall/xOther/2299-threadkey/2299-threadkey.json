@@ -1,0 +1,175 @@
+{
+    "id": 2299,
+    "authors": [
+        {
+            "id": 131881,
+            "name": "Onno Ekker",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/oeekker/",
+            "username": "oeekker",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/131/131881.png?modified=1517549845"
+        },
+        {
+            "id": 10287,
+            "name": "Luca Porzio",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/luca-porzio/",
+            "username": "luca-porzio",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1438,
+    "categories": {
+        "seamonkey": [
+            "interface-customizations"
+        ],
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MQ9MHQUW23YSA",
+    "current_version": {
+        "id": 2471854,
+        "compatibility": {
+            "seamonkey": {
+                "max": "*",
+                "min": "2.49"
+            },
+            "thunderbird": {
+                "max": "*",
+                "min": "52.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/threadkey/versions/2471854",
+        "files": [
+            {
+                "id": 1014920,
+                "created": "2019-07-29T19:41:36Z",
+                "hash": "sha256:376b4134d1333b5f0d16ec9774398eed8d795f6ca9f881810989d257dce9b4de",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 19733,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1014920/threadkey-1.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Changed minimum version to Thunderbird 52.0"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/threadkey/versions/1.4",
+        "version": "1.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "ru": "Очень простое расширение, позволяет включать группировку по обсуждениям нажатием клавиши 'T', группировку по методу сортировки нажатием клавиши 'G' и отменять группировку нажатием клавиши 'U'.\n\nУчтите: обычно клавиша 'T' привязана к меню \"Переход → Следующее → непрочитанное обсуждение\". Для предотвращения конфликта комбинация изменена на 'Shift+T'.",
+        "fr": "C'est une extension très simple qui permet à l'utilisateur d'afficher ses messages selon leur fil de discussion en appuyant sur la touche « T », tout comme la touche « G » permet de les classer par groupes. Vous pouvez aussi utiliser la touche U pour revenir à l'affichage non-classé.\n\nNotez bien que la touche T est couramment assignée à l'entrée de menu « Aller au message non lu suivant » : cette fontion sera assignée à « Shift+T ».",
+        "de": "Eine sehr einfache Erweiterung, die erlaubt „Gruppiert nach Thema“ durch Drücken von Taste ‚T‘ auszuführen, „Gruppiert nach Sortierung“ durch Drücken von Taste ‚G‘ und „Nicht gruppiert“ durch Drücken von Taste ‚U‘.\n\nWichtige Anmerkung: die Taste ‘T’ ist an die Menüpunkt ‚Navigation → Nächste → Ungelesenes Thema‘ gebunden: das wird auf ‚Umschalt - T‘ umgebunden",
+        "nl": "Dit is een heel eenvoudige extensie, waardoor je als gebruiker op de ‘T’ kunt drukken om de berichten gegroepeerd op conversatie weer te geven, net zoals je met de ‘G’ toets wisselt naar gegroepeerd op soort. Je kan ook op de ‘U’ toets drukken om de berichten ongegroepeerd weer te geven.\n\nN.B. De ‘T’ toets is op dit moment toegekend aan het menu item ‘Ga &gt; Volgende &gt; Ongelezen conversatie’: deze toets zal vervangen worden door ‘Shift+T’.",
+        "en-US": "This is a very simple extension that let the user strike the 'T' key and get the Threaded view, just like the 'G' key switches to Grouped By Sort view by default. You can also strike the 'U' key in order to get back the Unthreaded view.\n\nPlease note that the 'T' key is currently assigned to the menu item 'Go &gt; Next &gt; Unread Thread': this key assignment will be replaced by 'Shift+T'.",
+        "zh-CN": "这是一个非常简单的扩展，它允许用户通过按下“T”键获得按主题分组的视图，就像默认情况下“G”键切换到按排序分组的视图一样。你也可以通过按下“U”键取消按主题分组的视图。\n\n注意“T”键现在被分配给了“前往下一个未读主题”菜单项：这个按键将被替换为“Shift+T”。",
+        "sv-SE": "Det här är ett mycket enkelt tillägg, som låter användaren trycka ned T-tangenten för att växla till vyn Trådade meddelanden, precis som G-tangenten växlar till vyn Grupperade efter ordning. För att gå tillbaka till vyn Otrådade meddelanden kan du trycka ned U-tangenten.\n\nObservera att T-tangenten för närvarande har tilldelats menyobjektet Gå till → Nästa → Olästa tråd: denna tangenttilldelning kommer att ersättas av Skift+T."
+    },
+    "developer_comments": {
+        "ru": "Although the add-on is now restartless, there seems to be a problem in Thunderbird that a key that has been used stays active, even if it is changed later by the add-on. If this happens, you'll have to restart Thunderbird to get the keys working correctly again.",
+        "fr": "Although the add-on is now restartless, there seems to be a problem in Thunderbird that a key that has been used stays active, even if it is changed later by the add-on. If this happens, you'll have to restart Thunderbird to get the keys working correctly again.",
+        "de": "Although the add-on is now restartless, there seems to be a problem in Thunderbird that a key that has been used stays active, even if it is changed later by the add-on. If this happens, you'll have to restart Thunderbird to get the keys working correctly again.",
+        "nl": "Hoewel de add-on nu zonder Thunderbird te herstarten geïnstalleerd kan worden, lijkt er een probleem met Thunderbird te zijn, waardoor een toetscombinatie die al gebruikt is actief blijft, ook al wordt deze later veranderd door een add-on. Als dit gebeurt, dan moet u Thunderbird herstarten om ervoor te zorgen dat de toetsen weer goed werken.",
+        "en-US": "Although the add-on is now restartless, there seems to be a problem in Thunderbird that a key that has been used stays active, even if it is changed later by the add-on. If this happens, you'll have to restart Thunderbird to get the keys working correctly again.",
+        "zh-CN": "Although the add-on is now restartless, there seems to be a problem in Thunderbird that a key that has been used stays active, even if it is changed later by the add-on. If this happens, you'll have to restart Thunderbird to get the keys working correctly again.",
+        "sv-SE": "Although the add-on is now restartless, there seems to be a problem in Thunderbird that a key that has been used stays active, even if it is changed later by the add-on. If this happens, you'll have to restart Thunderbird to get the keys working correctly again."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/threadkey/edit",
+    "guid": "{1a2d9681-ba56-11da-959b-00e08161165f}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "ru": "https://threadkey.sourceforge.io/",
+        "fr": "https://threadkey.sourceforge.io/",
+        "de": "https://threadkey.sourceforge.io/",
+        "nl": "https://threadkey.sourceforge.io/",
+        "en-US": "https://threadkey.sourceforge.io/",
+        "zh-CN": "https://threadkey.sourceforge.io/",
+        "sv-SE": "https://threadkey.sourceforge.io/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2299-64.png?modified=1557427010",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2299-32.png?modified=1557427010",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2299-64.png?modified=1557427010"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-08-03T20:57:48Z",
+    "name": {
+        "ru": "ThreadKey",
+        "fr": "ThreadKey",
+        "de": "ThreadKey",
+        "nl": "ThreadKey",
+        "en-US": "ThreadKey",
+        "zh-CN": "ThreadKey",
+        "sv-SE": "ThreadKey"
+    },
+    "previews": [
+        {
+            "id": 24703,
+            "caption": {
+                "en-US": "\"View → Sort By\" menu"
+            },
+            "image_size": [
+                135,
+                118
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/24/24703.png?modified=1530208165",
+            "thumbnail_size": [
+                135,
+                118
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/24/24703.png?modified=1530208165"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.38818,
+        "count": 25,
+        "average": 4.44,
+        "text_count": 25
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/threadkey/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/2299",
+    "slug": "threadkey",
+    "status": "public",
+    "summary": {
+        "ru": "Нажмите 'T' для группировки по обсуждениям, 'U' для группировки не по обсуждениям, 'G' для группировки по методу сортировки.",
+        "fr": "Tapez sur la touche « T » pour classer les messages par fil de discussion, et la touche « U » pour revenir à leur état précédent non-trié, tout comme la touche « G » permet de les classer par groupes.",
+        "de": "Drücken Sie Taste ‚T‘ um nach Thema zu gruppieren, ‚U‘ um nicht zu gruppieren, ‚G‘ um nach Sortierung zu gruppieren.",
+        "nl": "Druk op de toets ‘T’ om berichten op conversatie te groeperen, druk op de toets ‘U’ om ze weer ongegroepeerd weer te geven, net als je met ‘G’ gegroepeerd op soort weergeeft.",
+        "en-US": "Strike the 'T' key to sort messages by thread, strike the 'U' key to sort them unthreaded again, just like the 'G' key switches to Grouped By Sort view.",
+        "zh-CN": "按下“T”键将消息按主题分组，按下“U”键取消按主题分组，就像“G”键切换按排序分组视图一样。",
+        "sv-SE": "Tryck ned T-tangenten för att sortera meddelanden efter tråd, tryck ned U-tangenten för att sortera dem otrådade/ogrupperade igen."
+    },
+    "support_email": {
+        "en-US": "o.e.ekker+threadkey@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "firefox57",
+        "group",
+        "sort",
+        "thread"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/threadkey/",
+    "weekly_downloads": 53
+}

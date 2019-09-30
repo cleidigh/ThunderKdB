@@ -1,0 +1,144 @@
+{
+    "id": 5759,
+    "authors": [
+        {
+            "id": 231136,
+            "name": "Daniel Folkinshteyn",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/daniel-folkinshteyn/",
+            "username": "daniel-folkinshteyn",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 49966,
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachment-reminder/versions/49966",
+        "files": [
+            {
+                "id": 33509,
+                "created": "2008-07-12T21:40:14Z",
+                "hash": "sha256:80e25952ec417e16e66a6cd8cb07cb37fe6d373e052dd141685fc2e6a1c6700e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 17408,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/33509/attachment_reminder-0.3.10-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Attachment Reminder Changelog\n---------------------\n\n-----\nVersion 0.3.10 (2008-07-07)\n\n*) Make attachment reminder dialog size persistent after user resize. Fixes bug <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f478f8389b220d82920df9555c960c13def235b1cdc40c63a924f0c3db63c747/http%3A//sourceforge.net/tracker/index.php%3Ffunc=detail&amp;aid=2008984&amp;group_id=206061&amp;atid=996146\">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=2008984&amp;group_id=206061&amp;atid=996146</a>\n\n-----\nVersion 0.3.9 (2008-07-01)\n\n*) Add German translation.\n*) Localize the button faces on the attachment reminder prompt.\n*) Add link to regexp help in the options dialog.\n*) Add a 'restore defaults' button to the options dialog.\n*) Fix removing quoted email in html messages. The previous code wasn't always using the correct parent (in case of nested quotations), and further wasn't using proper indexing (for more than one quote block). Fixing this bug: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/123509a30390287e63737d7625f875338708c1c61e9e8f4b827ca681ab01c9d3/http%3A//sourceforge.net/tracker/index.php%3Ffunc=detail&amp;aid=1965407&amp;group_id=206061&amp;atid=996146\">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1965407&amp;group_id=206061&amp;atid=996146</a> . Thanks to this page for a tip: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c538989cab63fd3dac3997c5433c1ef7cfe093c928794d5eca9ce00ecb7a56a5/http%3A//javascript.about.com/library/bldom09.htm\">http://javascript.about.com/library/bldom09.htm</a>\n\n-----\nVersion 0.3.8 (2008-03-28)\n\n*) Now that Attachment Reminder has been released out of the sandbox on <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a>, remove the custom updateURL so that <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a> is used for updates (default when updateURL is not specified). We might have continued just using <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f23bc649574999b493d4bfdc474e1ad77e6b5254fc274d1266ff7f7b47f84df7/http%3A//sf.net\">sf.net</a> for updates, but addons.mozilla does not allow custom updateURLs for security reasons.\n\n-----\nVersion 0.3.7 (2008-02-11)\n\n*) Add configuration option to include email subject line in the scan, with default value of \"true\" (subject scan used to be unconfigurable).\n\n-----\nVersion 0.3.6 (2008-02-03)\n\n*) Appended newline to mailbody variable prior to processing, to fix buglet where some of the default keywords (those requiring a '\\W' at the end) would fail to match if the relevant word occurs at the very end of a plain-text message (with no other characters following, and thus not matching the '\\W' bit).\n*) Add script type declarations to script inclusion directives in the XUL files for extra correctness.\n*) Remove non-existing locales from chrome.manifest. This fixes bug for this extension on non-\"en-US\" versions of T-bird, which would cause the menu item to not show up, and the extension overall to fail. (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5a75736a186c1d1e485f34926e5a8bc55246d360b161639aad59ee99b705be66/http%3A//forums.mozillazine.org/viewtopic.php%3Ft=589435\">http://forums.mozillazine.org/viewtopic.php?t=589435</a>)\n\n-----\nVersion 0.3.5 (2008-02-03)\n\n*) The reminder dialog now includes information as to which keyword triggered the reminder.\n*) Cleaned out some old comment cruft from the code.\n\n-----\nVersion 0.3.4 (2008-01-30)\n\n*) Fix bug where the default keyword list would not have any backslashes, because they would be parsed out in the XML DTD. Double-backslashed everything.\n*) The options dialog no longer has pre-set size, and is automatically sized. That should make it easier on the windows users, for whom the options dialog is not resizable when called from the Add-ons list. A user reported a problem when using large font sizes in windows. ( see this help forum thread: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/877d38ae12722b42a05c57f7ca0831e11a526a111bb514df48a6d19e635d7138/http%3A//sourceforge.net/forum/forum.php%3Fthread_id=1923637&amp;forum_id=737330\">http://sourceforge.net/forum/forum.php?thread_id=1923637&amp;forum_id=737330</a> )\n*) Broke up a long line in the options dialog for prettier dialog size.\n\n-----\nVersion 0.3.3 (2008-01-28)\n\n*) Add the updateURL attribute to install.rdf (and put in the appropriate infrastructure on the website) to enable automatic update checking for this extension.\n\n-----\nVersion 0.3.2 (2008-01-26)\n\n*) Also check for attachments when using the keyboard shortcut to send a message (overriding function SendMessageWithCheck). Thanks to this forum post for pointing out the bug: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7d5d93e2ed2592ea3a518934894a9a3610ae0a7a5335a2db2eda7ab5cbe0d906/https%3A//sourceforge.net/forum/message.php%3Fmsg_id=4743977\">https://sourceforge.net/forum/message.php?msg_id=4743977</a>\n*) Use a safer function override technique (thanks to the AttachmentRemember extension for a bit of code).\n\n-----\nVersion 0.3.1 (2008-01-23)\n\n*) Also check for attachments when doing \"Send Later\", same way as was done for \"Send Now\". Thanks goes to Todd T for the suggestion in bug report 1878150 (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/963f2255c6ce816a4b3f8e925683b534718b7c19660c011932be38c49a9f8172/http%3A//sourceforge.net/tracker/index.php%3Ffunc=detail&amp;aid=1878150&amp;group_id=206061&amp;atid=996146\">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1878150&amp;group_id=206061&amp;atid=996146</a>)\n\n-----\nVersion 0.3.0 (2008-01-21)\n\n*) Instead of hooking the \"compose-send-message\" event, we now override the \"SendMessage\" function. The previous behavior caused the reminder to pop up not only when sending, but also when saving a message, and also during autosave. Now, only actual message sending triggers the attachment scan and reminder.\n\n-----\nVersion 0.2.1 (2007-11-26)\n\n*) Set default reminder dialog item to be the OK button\n*) Change button labels to be more descriptive and useful\n*) Add \"please donate\" button\n\n-----\nVersion 0.2.0 (2007-09-26)\n\n*) Add the Attachment Reminder preferences item to the Tools menu of the main window and the compose window\n*) Localize the options window title\n*) Localize the extension description\n*) Improve informativeness of the options window text\n*) Change the minimum and maximum version numbers to comply with official requirements as per <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/pages/appversions\">https://addons.mozilla.org/en-US/thunderbird/pages/appversions</a>\n\n-----\nVersion 0.1.0 (2007-09-23)\n\nFirst release of the Attachment Reminder extension for Thunderbird. The following features are present:\n\n*) Customizable list of keywords to use for scanning.\n*) Full support for Javascript's regular expression syntax.\n*) A robust keyword list included with the default setup.\n*) Option to not include text of quoted email in the scan.\n*) Option to turn off scanning."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachment-reminder/versions/0.3.10",
+        "version": "0.3.10"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Attachment Reminder is a simple Add-on (extension) for Mozilla Thunderbird that scans your outgoing email when you click the send button and checks it for the presence of user-defined keywords that signal that an attachment should be included. If there is no attachment even though the scan indicates there should be, it will show a message box asking you to confirm whether you want to send the email without attachments. You can choose to continue on and send it, or to cancel, and edit the email further.\n\nMajor features:\n* Customizable list of keywords to use for scanning.\n* Full support for Javascript's regular expression syntax.\n* A robust keyword list included with the default setup.\n* Option to exclude text of quoted email from the scan (default).\n* Option to include subject line in the scan (default).\n\nLatest version is always first available on the extension homepage. (Current latest version is 0.3.10)\n\nHomepage: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/55b1e8434745c9c480439255a990cb08ecc059c06635175b8e35d4da271b6783/http%3A//attachreminder.sourceforge.net/\">http://attachreminder.sourceforge.net/</a>\n\nTo file bugs, feature requests, or general comments, please feel free to use the forums and trackers on the project homepage.",
+        "de": "Attachment Reminder ist eine einfache Erweiterung für Mozilla Thunderbird, die ausgehende Emails beim Senden auf Benutzerdefinierte Stichwörter überprüft, die auf einen Anhang hindeuten. Enthät die Email keinen Anhang, so wird der Benutzer benachrichtigt und gefragt, ob die Email versendet, oder ob sie noch weiter bearbeitet werden soll.\n\nWichtige Funktionen:\n* Einstellbare Liste von Stichtwörtern die zu überprüfen sind.\n* Volle unterstützung von Javascript regulären Ausdrücken.\n* Eine robuste voreingestellte Stichwortliste.\n* Option um auch den zitierten Text zu überprüfen.\n* Option um die Betreffzeile von der überprüfung auszuschließen.\n\nDie aktuelle Version steht zuerst auf der Projektwebseite zur verfügung. (Aktuelle Version momentan 0.3.10)\n\nProjektwebseite: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/55b1e8434745c9c480439255a990cb08ecc059c06635175b8e35d4da271b6783/http%3A//attachreminder.sourceforge.net/\">http://attachreminder.sourceforge.net/</a>\n\nUm Fehler, neue Funktionen oder allgemeine Kommentare loszuwerden, bitte benutzen sie die Foren und Issue Trackers auf der Projektwebseite."
+    },
+    "developer_comments": {
+        "en-US": "Please let me know if you run into any serious (or not so serious) bugs.",
+        "de": "Bitte lassen sie es mich wissen, wenn irgendwelche Fehler auftauchen."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachment-reminder/edit",
+    "guid": "attachmentreminder@sourceforge.net",
+    "has_eula": true,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://attachreminder.sourceforge.net",
+        "de": "http://attachreminder.sourceforge.net"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/5/5759-64.png?modified=1335929154",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/5/5759-32.png?modified=1335929154",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/5/5759-64.png?modified=1335929154"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2008-07-26T20:51:12Z",
+    "name": {
+        "en-US": "Attachment Reminder",
+        "de": "Attachment Reminder"
+    },
+    "previews": [
+        {
+            "id": 16527,
+            "caption": {
+                "en-US": "Attachment Reminder preferences dialog",
+                "de": "Attachment Reminder Einstellungsdialog"
+            },
+            "image_size": [
+                510,
+                269
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16527.png?modified=1530208329",
+            "thumbnail_size": [
+                320,
+                169
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16527.png?modified=1530208329"
+        },
+        {
+            "id": 18312,
+            "caption": {
+                "en-US": "Attachment Reminder makes an appearance in the Add-Ons list.",
+                "de": "Attachment Reminder taucht im Addons Dialog auf"
+            },
+            "image_size": [
+                642,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/18/18312.png?modified=1530208330",
+            "thumbnail_size": [
+                245,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/18/18312.png?modified=1530208330"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.31182,
+        "count": 28,
+        "average": 4.3571,
+        "text_count": 28
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachment-reminder/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/5759",
+    "slug": "attachment-reminder",
+    "status": "public",
+    "summary": {
+        "en-US": "Prompts you if it looks like you wanted to attach a file but didn't.",
+        "de": "Bei Emails, die den Eindruck erwecken es würde ein Anhang fehlen, wird der Benutzer benachrichtigt."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://attachreminder.sourceforge.net",
+        "de": "http://attachreminder.sourceforge.net"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachment-reminder/",
+    "weekly_downloads": 22
+}

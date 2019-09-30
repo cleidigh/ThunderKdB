@@ -1,0 +1,137 @@
+{
+    "id": 488834,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "appearance"
+        ],
+        "thunderbird": [
+            "appearance"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1524118,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "31.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/hide-option-pane/versions/1524118",
+        "files": [
+            {
+                "id": 245570,
+                "created": "2014-02-23T22:55:59Z",
+                "hash": "sha256:ff457739d61be6a89099816330d2a415acaffe2db930f59312f905ef8ae950b0",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 11841,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/245570/hide_option_pane-1.0-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2014-02-27T17:09:32Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/hide-option-pane/versions/1.0.1-signed.1-signed",
+        "version": "1.0.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "## What's this?\n\nProvides ability to hide needless option panes via those boolean preferences:\n\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneMain.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneTabs.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneContent.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneFeeds.enabled\", true); // for old Firefox\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneApplications.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.panePrivacy.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneSecurity.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneSync.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneAdvanced.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneGeneral.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneDisplay.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneCompose.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneSecurity.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneApplications.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.panePrivacy.enabled\", true); // for old Thunderbird\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneDownloads.enabled\", true); // for old Thunderbird\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneAdvanced.enabled\", true);\n\nMoreover, on future versions of Firefox/Thunderbird, this will work with preferences like `extensions.hideoptionpane@clear-code.com.browser.(pane id).enabled`.\n\nThis is mainly designed for corporate-use.",
+        "ja": "## これは何？\n\n必要のない設定パネルを、以下の真偽値の設定を変更するだけで隠せるようにします。\n\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneMain.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneTabs.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneContent.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneFeeds.enabled\", true); // for old Firefox\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneApplications.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.panePrivacy.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneSecurity.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneSync.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.browser.paneAdvanced.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneGeneral.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneDisplay.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneCompose.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneSecurity.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneApplications.enabled\", true);\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.panePrivacy.enabled\", true); // for old Thunderbird\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneDownloads.enabled\", true); // for old Thunderbird\n\tpref(\"extensions.hideoptionpane@clear-code.com.messenger.paneAdvanced.enabled\", true);\n\nこれ以外にも、将来のバージョンのFirefox/Thunderbirdで追加されたパネルについて、 `extensions.hideoptionpane@clear-code.com.browser.(pane id).enabled` のような設定を作成する事で同様に表示・非表示を管理することができます。\n\nこのアドオンは主に法人利用を想定して開発されています。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/hide-option-pane/edit",
+    "guid": "hideoptionpane@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/hide-option-pane",
+        "ja": "https://github.com/clear-code/hide-option-pane"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-02-27T17:09:36Z",
+    "name": {
+        "en-US": "Hide Option Pane",
+        "ja": "Hide Option Pane"
+    },
+    "previews": [
+        {
+            "id": 127694,
+            "caption": {
+                "en-US": "Option dialog without some panes (hidden by preferences)"
+            },
+            "image_size": [
+                598,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/127/127694.png?modified=1530209128",
+            "thumbnail_size": [
+                228,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/127/127694.png?modified=1530209128"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/hide-option-pane/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/488834",
+    "slug": "hide-option-pane",
+    "status": "public",
+    "summary": {
+        "en-US": "Provides ability to hide option panes.",
+        "ja": "設定ダイアログの各パネルを隠せるようにします。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/hide-option-pane/issues"
+    },
+    "tags": [
+        "corporate",
+        "disable",
+        "options"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/hide-option-pane/",
+    "weekly_downloads": 25
+}

@@ -1,0 +1,218 @@
+{
+    "id": 5817,
+    "authors": [
+        {
+            "id": 237862,
+            "name": "lazierthanthou",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/lazierthanthou/",
+            "username": "lazierthanthou",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 501,
+    "categories": {
+        "firefox": [
+            "web-development"
+        ],
+        "seamonkey": [
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1664416,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "22.0"
+            },
+            "seamonkey": {
+                "max": "2.36",
+                "min": "2.1"
+            },
+            "thunderbird": {
+                "max": "39.0",
+                "min": "22.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sqlite-manager/versions/1664416",
+        "files": [
+            {
+                "id": 301270,
+                "created": "2015-02-28T22:57:22Z",
+                "hash": "sha256:93495d6d0a012b6b1d4fc520c7f9210be9c0a977b7e556a6c5e00379210093f2",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 266656,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/301270/sqlite_manager-0.8.3-tb+sm+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "fixed CSV import problem"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sqlite-manager/versions/0.8.3.1-signed.1-signed",
+        "version": "0.8.3.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This extension depended upon the interface to sqlite engine embedded in Firefox. As the interface has been removed in Firefox 57, this extension no longer functions. However, the extension can be used on ESR release of Firefox, which can be downloaded at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9436d567ebdef98663673c115acd26a512c52e768ecb234e039a2cbb0b623055/https%3A//www.mozilla.org/en-US/firefox/organizations/all/\">https://www.mozilla.org/en-US/firefox/organizations/all/</a>.\n\n<ul>Features:\n<li>Manage any SQLite database on your computer.</li><li>An intuitive heirarchical tree showing database objects.</li><li>Helpful dialogs to manage tables, indexes, views and triggers.</li><li>You can browse and search the tables, as well as add, edit, delete and duplicate the records.</li><li>Facility to execute any sql query.</li><li>The views can be searched too.</li><li>A dropdown menu helps with the sql syntax thus making writing sql easier.</li><li>Easy access to common operations through menu, toolbars, buttons and context-menu.</li><li>Export tables/views/database in csv/xml/sql format. Import from csv/xml/sql (both UTF-8 and UTF-16). </li><li>Possible to execute multiple sql statements in Execute tab.</li><li>You can save the queries.</li><li>Support for ADS on Windows.</li></ul>"
+    },
+    "developer_comments": {
+        "en-US": "The source code and various scripts used in this project are hosted as a git repository at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d84bc38f721aa7d816c46526d73d4fe72c2bc5a499024b51103b0724ba3a01cd/https%3A//github.com/lazierthanthou/sqlite-manager\">https://github.com/lazierthanthou/sqlite-manager</a>.\n\nThe following command will create a clone of the project in your current directory:\n<code>git clone git://<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cc987486b4fb37e74071dbf0e2653c8daf7802f679212dbccdd898f1910b4e5f/http%3A//github.com/lazierthanthou/sqlite-manager.git\">github.com/lazierthanthou/sqlite-manager.git</a></code>\n\nIn case you would like to download the source without having to clone the repository,\n<ul><li>you can <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/fbe753ba28b42cad6d97c376bf9e536d4069d89a75dd409be878bf269cb1ad83/https%3A//github.com/lazierthanthou/sqlite-manager/tarball/master\">download the tarball</a></li><li>or, you can <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/58d2ed26569b159a37ccd7734d202ad2970de119f8a019cb8377975896acbef3/https%3A//github.com/lazierthanthou/sqlite-manager/zipball/master\">download the zip</a></li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sqlite-manager/edit",
+    "guid": "SQLiteManager@mrinalkant.blogspot.com",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": {
+        "en-US": "https://github.com/lazierthanthou/sqlite-manager"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/5/5817-64.png?modified=1510897787",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/5/5817-32.png?modified=1510897787",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/5/5817-64.png?modified=1510897787"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-02-28T23:06:21Z",
+    "name": {
+        "en-US": "SQLite Manager"
+    },
+    "previews": [
+        {
+            "id": 17219,
+            "caption": {
+                "en-US": "Main screen"
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17219.png?modified=1530208317",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17219.png?modified=1530208317"
+        },
+        {
+            "id": 17038,
+            "caption": {
+                "en-US": "Main window"
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17038.png?modified=1530208317",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17038.png?modified=1530208317"
+        },
+        {
+            "id": 17042,
+            "caption": {
+                "en-US": "Create a Table"
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17042.png?modified=1530208318",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17042.png?modified=1530208318"
+        },
+        {
+            "id": 17043,
+            "caption": {
+                "en-US": "Search"
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17043.png?modified=1530208319",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17043.png?modified=1530208319"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.04139,
+        "count": 354,
+        "average": 4.0537,
+        "text_count": 186
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sqlite-manager/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/5817",
+    "slug": "sqlite-manager",
+    "status": "public",
+    "summary": {
+        "en-US": "Manage any SQLite database on your computer."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/lazierthanthou/sqlite-manager"
+    },
+    "tags": [
+        "application",
+        "base de dados",
+        "database",
+        "sqlite"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sqlite-manager/",
+    "weekly_downloads": 2313
+}

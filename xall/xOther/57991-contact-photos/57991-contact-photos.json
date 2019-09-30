@@ -1,0 +1,178 @@
+{
+    "id": 57991,
+    "authors": [
+        {
+            "id": 2233840,
+            "name": "Josh Geenen",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/joshgeenen/",
+            "username": "joshgeenen",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 347,
+    "categories": {
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "contacts",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2245675,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.56",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "59.0",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/contact-photos/versions/2245675",
+        "files": [
+            {
+                "id": 786778,
+                "created": "2017-11-23T14:39:57Z",
+                "hash": "sha256:b52dfba1e18d1c702931bf6701a51c5db69a63075d29e898acc37f818cae9284",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 26993,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/786778/contact_photos-1.0.1-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Version 1.0.1\n * Issue #2: Fix for TB 57.0"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/contact-photos/versions/1.0.1",
+        "version": "1.0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on displays the photo of the contact from whom the message was sent in the message header of Thunderbird 3 and Seamonkey 2.  If a photo cannot be found for the sender then a <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e5af06c93613886aeec7509f2503ac80fe44493e3cbf388059657b0b9bed55f9/http%3A//en.gravatar.com/\">Gravatar</a> is used.\n\n<strong>Note:</strong> If a contact doesn't have a photo when you think it should then click on the Gravatar and check the <strong>Photo</strong> tab.  If a contact with that e-mail address exists in more than one address book the right contact might not get picked.\n\n<strong>Please use the support forum or e-mail for reporting issues and incompatibilities</strong>: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8c405164aab720d61d5a6c820fb349320faaec5516efafa0b6058ca0b6fbaeda/http%3A//pirules.org/forum/index.php\">http://pirules.org/forum/index.php</a>"
+    },
+    "developer_comments": {
+        "en-US": "This add-on supports any version of Thunderbird 3.0 and Seamonkey 2.0 final and above, including TB 3.2a1pre.\n\nThis add-on is not fully compatible with CompactHeader (the image always appears on the right side of the header regardless of the preference).  I will look into this.\n\nLet me know what other features you would like to see via #maildev, e-mail, my blog, or the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4f3a55f61c6d127521696cd298e7de7737117408319e3e773988b13001b56149/http%3A//pirules.org/forum/\">support forum</a>."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/contact-photos/edit",
+    "guid": "contactphotos@pirules.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.pirules.org/extensions/contactphotos/index.php"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-11-23T16:39:25Z",
+    "name": {
+        "en-US": "Contact Photos"
+    },
+    "previews": [
+        {
+            "id": 40477,
+            "caption": null,
+            "image_size": [
+                197,
+                86
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/40/40477.png?modified=1530208703",
+            "thumbnail_size": [
+                197,
+                86
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/40/40477.png?modified=1530208703"
+        },
+        {
+            "id": 40478,
+            "caption": {
+                "en-US": "The Options for displaying photos and Gravatars"
+            },
+            "image_size": [
+                439,
+                311
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/40/40478.png?modified=1530208703",
+            "thumbnail_size": [
+                282,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/40/40478.png?modified=1530208703"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.78216,
+        "count": 28,
+        "average": 3.8214,
+        "text_count": 28
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/contact-photos/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/57991",
+    "slug": "contact-photos",
+    "status": "public",
+    "summary": {
+        "en-US": "Displays contact photos in the message header."
+    },
+    "support_email": {
+        "en-US": "joshgeenen+contactphotos@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://pirules.org/forum/index.php"
+    },
+    "tags": [
+        "contact photos",
+        "gravatar"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/contact-photos/",
+    "weekly_downloads": 164
+}

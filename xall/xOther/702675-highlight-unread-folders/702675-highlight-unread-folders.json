@@ -1,0 +1,118 @@
+{
+    "id": 702675,
+    "authors": [
+        {
+            "id": 12304507,
+            "name": "Jan Singon Slaný",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Singon/",
+            "username": "Singon",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 26,
+    "categories": {
+        "thunderbird": [
+            "appearance"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1863526,
+        "compatibility": {
+            "thunderbird": {
+                "max": "45.0",
+                "min": "22.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/highlight-unread-folders/versions/1863526",
+        "files": [
+            {
+                "id": 438576,
+                "created": "2016-05-15T13:46:11Z",
+                "hash": "sha256:0f7df72362bf95e254206ce948751d790c54021e6a26c9dc5e2cdcc586001685",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 5102,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/438576/highlight_unread_folders-1.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2016-05-16T11:14:08Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/highlight-unread-folders/versions/1.0",
+        "version": "1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on enables highlighting the account names which contain unread messages.\n\nNormally, a folder and its parent account name will flash briefly\nto indicate it contains new mail.\n(Please note the difference between <em>new mail</em> and <em>unread mail</em>.)\nAfter a while, this highlight disappears, leaving the folder marked in bold,\nbut dropping any indication on the account name completely.\nThis can be a nuisance for collapsed accounts,\nas it makes it easy to overlook unread mail.\n\nThis add-on attempts to solve that by keeping the folders and accounts\nhighlighted even if they contain <em>unread</em> mail, but no <em>new</em> mail.\nHighlighting folders and account names can be toggled separately\nin the add-on options dialog.\n\nThe functionality is achieved by enabling the account name object\nto receive the <code>hasUnreadMessages-true</code> property.\nAlso, the regular folders receive additional <code>isServer-false</code> property,\nin order to distinguish them from account names easily in CSS.\n\nCurrently, there are two options for either account names or folder names:\n\n<ol>\t<li>Use the default Thunderbird style</li>\t<li>Use the blue highlight which is seen on new mail.\n\t\t(This uses <code>color: -moz-hyperlinktext;</code> CSS\n\t\tand is subject to change if you mess with the variable.</li></ol>\nFurther customization is possible via userChrome.css. In the CSS, use the selectors\n<code>treechildren::-moz-tree-cell-text(hasUnreadMessages-true, isServer-false)</code>\nfor regular folders, and\n<code>treechildren::-moz-tree-cell-text(hasUnreadMessages-true, isServer-true)</code>\nfor account names."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/highlight-unread-folders/edit",
+    "guid": "unreadAccounts@slanyj.cz",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-05-16T11:14:08Z",
+    "name": {
+        "en-US": "Highlight Unread Folders"
+    },
+    "previews": [
+        {
+            "id": 174176,
+            "caption": {
+                "en-US": "Account names with unread messages (not new messages) highlighted."
+            },
+            "image_size": [
+                377,
+                265
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/174/174176.png?modified=1530209212",
+            "thumbnail_size": [
+                285,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/174/174176.png?modified=1530209212"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.87553,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/highlight-unread-folders/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/702675",
+    "slug": "highlight-unread-folders",
+    "status": "public",
+    "summary": {
+        "en-US": "This add-on enables highlighting the account names which contain unread messages."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/highlight-unread-folders/",
+    "weekly_downloads": 24
+}

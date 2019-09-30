@@ -1,0 +1,164 @@
+{
+    "id": 4390,
+    "authors": [
+        {
+            "id": 66077,
+            "name": "David White",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/whitedavidp/",
+            "username": "whitedavidp",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 318,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 1488437,
+        "compatibility": {
+            "thunderbird": {
+                "max": "57.0",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderplunger/versions/1488437",
+        "files": [
+            {
+                "id": 227824,
+                "created": "2013-09-15T11:30:00Z",
+                "hash": "sha256:be27f7e5ee263c4160ce784f92145f122705fe2d94f6f7af7abac15ca9c97c75",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 205023,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/227824/thunderplunger-2.14-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Adaptations to Thunderbird 24."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderplunger/versions/2.14",
+        "version": "2.14"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>Sorry but this addon is no longer supported in TB 60.  Addon authors have been told \"Many things have changed in the Mozilla platform code on which Thunderbird and add-ons are based.\" We have also been told \"the picture beyond Thunderbird version 60 is less certain, given the continued high rate of change in Firefox platform code.\" Under these conditions, it no longer makes sense to maintain this addon. I for one have simply stopped updating the Mozilla products. Do so at your own risk.</b>\nSUMMARY:\nThis add-on provides a few new ways to keep Thunderbird clean (hence its name).\n\nPLATFORMS:\nI have personally tested version 2.x of this add-on only in Thunderbird 2.x/3.x and only under XP Pro. Earlier versions worked under 1.5x/2.x releases of Thunderbird and I have been informed by users that this add-on appears to function on other platforms. Let me know what you find.\n\nDETAILS:\nMark All Read\n\nWhile Thunderbird, by default, provides a context menu item for each individual folder that marks that folder read, it does not provide one that recursively marks each folder and subfolder as read. Having such a feature adds some convenience. So here it is! If enabled in this addon's options, you will see the Mark All Read menu item on the account folder context menu for the following account types: POP3, IMAP, Local Folders, News, and RSS. If a folder within a POP3, IMAP, or Local Folders account has one or more subfolders, you will see the Mark All Read menu item on that folder's context menu as well. You can also mark all folders in all accounts as read with a single click or keyboard shortcut. If the Mark All Read function is enabled, the menu item for triggering Mark All Accounts Read can be found on this addon's status bar icon menu. The option panel offers the ability to assign the Mark All Accounts Read to a single keystroke.\n\nRemoving 'Phantom' Messages in Newsgroups\n\nI have also noted that Thunderbird's News Client will occasionally show that there are new messages to be read (newsgroup displayed in bold followed by the number of messages in parenthesis) for a group when there are really none available. I call these 'Phantom' Messages. There are already some official bug reports related to this behavior (see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7a822a9544625471cb4f15cb1e1a878cc39c2bbd3097d103bba30226ace7680f/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=71728\">https://bugzilla.mozilla.org/show_bug.cgi?id=71728</a> and <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e75f2d7a1c36583d6240673fd2ed48c0e17304d10dd10ae179c37846ec11c407/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=24592\">https://bugzilla.mozilla.org/show_bug.cgi?id=24592</a>) but there is little sign of action being taken to fix this in the near term.\n\nIn this bug report ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/02f7c40a4ed1006b11ee44487e6a1a25438338770487c9554051633defc0882e/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=294754%23c3%29\">https://bugzilla.mozilla.org/show_bug.cgi?id=294754#c3)</a>, a responder describes a work-around to this issue but the technique requires stopping Thunderbird followed by manual editing of newshost.rc files. This is something of a pain. So in keeping with the 'cleaning' theme of this add-on, I have added a feature that will automate this process on user demand. A restart of Thunderbird is required to complete the task but that seems a small price to pay. To access this function, bring up the context menu for any individual newsgroup folder and choose 'Remove Phantom Messages'. Once you restart Thunderbird, bogus new messages should no longer be shown for that newsgroup folder.\n\nRemoving 'Orphaned' News Files\n\nUnless you are way too fastidious about such things, you may not have not have noticed that Thunderbird will leave files on disk for newsgroups from which you have unsubscribed. The size of these files may not be large but they serve no purpose. This function will remove these files from your disk. Access this function from the context menu for any news account folder by selecting 'Remove Orphaned Files'. Once you restart Thunderbird, any such files will be removed for that account.\n\nClean Accounts\n\nWhen you remove a POP3 email, IMAP email, RSS, or News account Thunderbird seems to leave many of the account's files lying around on disk. This may be to assist in a future 'un-remove' or archival process. But the disk consumed by some accounts can become quite large and sometimes you really just want to permanently and completely remove an account. This function helps keep your computer clean by removing folders that are determined to be 'orphaned' from any known current account. Select 'Clean Accounts' from the menu available from ThunderPlunger's status bar icon. At the next Thunderbird restart, this add-on will check the following to identify probable 'orphaned' folders for removal:\n\n    * Thunderbird's default POP3 email storage location\n    * Thunderbird's default IMAP email storage location\n    * Thunderbird's default NNTP (News) storage location\n    * A historical log, established and maintained by this add-on, of past and current accounts\n\nBefore a probable 'orphaned' folder is removed, you will be prompted to confirm the action. Please carefully consider each prompt before responding as results cannot be undone.\n\nRemove Email Addresses From Address Books\n\nA net newsgroup user recently stated that she would like to be able to easily remove the email address associated with a bounced email message from her address books. By default, a user must copy the e-mail address from the bounced mail, search each address book, and finally delete any matched items.\n\nThis function simplifies that process. You simply right-click on any email address link shown in a message and choose the menu item 'Remove From Address Books' that ThunderPlunger has added to the popup menu. A submenu permits you to choose among those local address books known to contain a card with this email or all local address books containing this email. You will optionally be prompted for permission to process each local address book and to confirm the card's deletion.\n\nNote: It is possible to have more than one card in an address book for the same email address. So you may be prompted multiple times to approve card deletions within an address book. Responding to these confirmations with the Cancel button will prevent that card from being deleted and you will be given the opportunity to cancel the entire operation (with no items deleted) for the current address book.\n\nAlso Note:: This function also removes entries that reference the email address from mailing lists. However, it does NOT delete the mailing list if the deleted entry should leave the list empty.\n\nAdd Email Address To Selected Address Book\n\nA user recently pointed out how difficult is has become, in Thunderbrid 3.x, to add an email address found in a message header to a specific address book. This was easy to accomplish in previous versions but starting with 3.x, multiple steps are required. That others found this a problem was easily verified by a web search.\n\nThis function simplifies the process. You simply right-click on any email address link shown in a message and choose the menu item 'Add To Selected Address Book' that ThunderPlunger has added to the popup menu. A submenu permits you to choose among those local address books known to not already contain a card with this email address. After the card is added, you will optionally be prompted to edit the new card's properties.\n\nEdit Email Address In Selected Address Book\n\nThis function simplifies the process of showing the address book properties panel for a displayed email address. You simply right-click on any email address link shown in a message and choose the menu item 'Edit In Selected Address Book' that ThunderPlunger has added to the popup menu. A submenu permits you to choose among those local address books known to already contain a card with this email address.When one of these address books is selected, you will shown the card's properties for editing.\n\nThis idea had its germination in response to a newsgroup posting and while this function proved to NOT solve the original poster's problem (since he was on Mac), it seemed worthwhile to keep in place. For Thunderbird 3.x and above, something close to this function exists. But I think this more convenient. If you do not, it can be disabled on the addon's options panel.\n\nValidate Email Addresses\n\nOver time, most of us discover that some of the email addresses in our address books have gone stale - i.e., they are no longer valid. We generally detect this only once we have sent an email and it is bounced back to us. In those cases, the Remove Email Addresses From Address Books (above) will help you to easily remove that card.\n\nHowever, you may not want to wait until your email bounces to discover that an email address is no longer valid. For this reason, ThunderPlunger now offers a Validate Email Address function:\n\n    * Right-click on a card shown in the address book window to invoke this function. A request is sent to a specially-written ThunderPlunger web service which will do its best to verify the validity of that card's primary and secondary email addresses. This is done by directly communicating with the mail server for the email's domain.\n\n    * Right-click on an address book shown in the address book window to invoke this function against either the primary or secondary email addresses for all cards in the address book. This may take a while depending upon the number of cards in the address book. But you can continue to work in ThunderBird during processing. All cards determined to contain a suspect email address are then displayed in the results window. From here you can review the results and select those cards you wish to either remove from the address book, have the suspect email address erased from the card, or moved into a different address book.\n\n\nNote: Due to the variations in mail server configurations and other factors beyond our control, this function cannot be considered 100 percent accurate. It is possible that some email addresses that are actually bad can be reported as good and vis-a-vis. So use care when interpreting the results and deciding to delete a suspect card.\n\nAlso Note: Some potential users of this function may be concerned that it is a nefarious attempt to 'harvest' email addresses from their address books. Nothing could be further from the truth. No information of any kind is retained by ThunderPlunger's web component. The web component is written in well-dcoumented PHP and the code can easily be downloaded/reviewed for content and purpose. The location of the web component being used is shown in the add-on's options window. I urge anyone with doubts to do so.\n\nFinal Note: Upon release, only one instance of the ThunderPlunger web component will be supported. It is suspected that, with increase in usage, a single instance will not suffice. So more locations will have to be added. If you are able to support ThunderPlunger by hosting an instance of the web component, please contact me. As more instances become available, their URLs will be posted on the add-on's web site.\n\nCopy Email Address From Address Book Card and Message Headers\n\nRight-click on an address book card or a contact shown in a message header. If the address book card has a primary email address you will see a menu item that permits you to copy that email address into the clipboard for your use elsewhere. If that card has a value for its Display Name property or if the message header shows more than just the email address, you will see a menu item that permits you to copy both the name and the email address into the clipboard.\n\nI recognize that this function is not exactly in-keeping with ThunderPlunger's general theme of keeping your ThunderBird environment neat and tidy. But I have been seeking this ability for some time now and since I was working in the address book, I decided to do it here anyway. I do not understand why it is not built-into ThunderBird but now users of this add-in will have it.\n\nWarn on Address Book Card Delete\n\nIn cases where you have multiple entries in an address book for a single person and one of them is used in a mailing list, you want to be able to avoid deleting the card used in the mailing list and thereby damaging the mailing list. Thunderbird gives no warning and shows no indication that a card is used in one or more mailing lists. So, when enabled, this function intercepts both menu and button driven attempts to delete an entry from an address book (not from a mailing list) and checks to see if the entry is in use on one or more mailing lists in that address book. If so, a warning is given and you can optionally cancel the delete operation.\n\nClear All Expired for News\n\nDepending upon your newsgroup retention policy settings, Thunderbird may retain newsgroup information for articles which are no longer available on the newsgroup server due to time expiration. When this occurs, Thunderbird displays something similar to this:\n\nError!\nnewsgroup server responded:no such article number in group\n\nPerhaps the article has expired\n\n&lt;rvwBrDqRIHA.1356@pviiweb&gt; (8115)\n\nClick here to remove all expired articles \n\nThis function performs the same action as clicking on the link in the above message. Access this method at any time from the folder pane context menu for any newsgroup folder by choosing Clear All Expired. This will cause Thunderbird to remove information for articles which are no longer on the server for that newsgroup. Clear All Expired is also available on the context menu for newsgroup server folders. In this case, all newsgroup folders associated with that server will be similarly processed.\n\nCompress Sqlite Files\n\nStarting with version 3, Thunderbird uses Sqlite to store some of its information. To prevent unbounded growth in size, these files should be compressed on occasion. This function can be triggered manually from the menu on ThunderPlunger's status bar icon. Or it can be performed on each startup via an option setting. Due to reported conflicts, the files extensions.sqlite and addons.sqlite are not processed.\n\nMonitor Size of Email Folders\n\nIf the size of email folders grows too large, Thunderbird can find it difficult to handle the data efficiently. Also, such folders present problems for backup strategies. So it is in your best interests to take action in preventing these folders from becoming oversize. This function will optionally check all email folders on Thunderbird startup and warn you if one or more folders have exceeded a user-specified maximum size (by default, 500 MB). Sometimes, these folders will benefit from simply being compacted, so information is also presented to allow you to decide if this is something you should try first. This function can also be triggered via the menu on ThunderPlunger's status bar icon.\n\nOPTIONS:\nThis add-on offers a few simple options which control its behavior. These can most easily be manipulated via the built-in add-on options dialog. To easily access this dialog, select 'Options' from the context menu available from ThunderPlunger's status bar icon. No options require a restart of Thunderbird to take effect.\n\nOTHER:\nAs I become aware of additional functions in keeping with this add-on's theme of sustaining a tidy Thunderbird environment, I will try to add them. Contact me with your suggestions. No warranty that I will include them but if I do you will be credited as a contributor to the add-on. Thanks."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderplunger/edit",
+    "guid": "{bfec0750-aa6f-11db-abbd-0800200c9a66}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://thunderplunger.mozdev.org"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4390-64.png?modified=1525260192",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4390-32.png?modified=1525260192",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4390-64.png?modified=1525260192"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2013-09-15T14:55:20Z",
+    "name": {
+        "en-US": "ThunderPlunger"
+    },
+    "previews": [
+        {
+            "id": 12555,
+            "caption": {
+                "en-US": "News Account Context Menu"
+            },
+            "image_size": [
+                300,
+                146
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12555.png?modified=1530208258",
+            "thumbnail_size": [
+                300,
+                146
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12555.png?modified=1530208258"
+        },
+        {
+            "id": 12556,
+            "caption": {
+                "en-US": "Status Bar Icon and Menu"
+            },
+            "image_size": [
+                311,
+                69
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12556.png?modified=1530208259",
+            "thumbnail_size": [
+                311,
+                69
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12556.png?modified=1530208259"
+        },
+        {
+            "id": 12557,
+            "caption": {
+                "en-US": "Newsgroup Context Menu"
+            },
+            "image_size": [
+                338,
+                243
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12557.png?modified=1530208260",
+            "thumbnail_size": [
+                278,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12557.png?modified=1530208260"
+        },
+        {
+            "id": 71368,
+            "caption": {
+                "en-US": "Address Book Email Validation Results"
+            },
+            "image_size": [
+                700,
+                372
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71368.png?modified=1530208261",
+            "thumbnail_size": [
+                320,
+                170
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71368.png?modified=1530208261"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.28197,
+        "count": 31,
+        "average": 4.3226,
+        "text_count": 31
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderplunger/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/4390",
+    "slug": "thunderplunger",
+    "status": "public",
+    "summary": {
+        "en-US": "Sorry but this addon is no longer supported in TB 60.  See below.\n\nThis add-on provides a few new ways to keep Thunderbird clean."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderplunger/",
+    "weekly_downloads": 48
+}

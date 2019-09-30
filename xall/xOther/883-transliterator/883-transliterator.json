@@ -1,0 +1,188 @@
+{
+    "id": 883,
+    "authors": [
+        {
+            "id": 3102,
+            "name": "Alex Benenson",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/alex-benenson/",
+            "username": "alex-benenson",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 61,
+    "categories": {
+        "firefox": [
+            "language-support"
+        ],
+        "seamonkey": [
+            "language-support-and-translation"
+        ],
+        "thunderbird": [
+            "language-support",
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1630036,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "10.0"
+            },
+            "seamonkey": {
+                "max": "2.33.*",
+                "min": "2.7"
+            },
+            "thunderbird": {
+                "max": "36.*",
+                "min": "10.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/transliterator/versions/1630036",
+        "files": [
+            {
+                "id": 287854,
+                "created": "2014-12-09T19:08:03Z",
+                "hash": "sha256:cd99ed69e97bf66e9290cdbb02fac2a58c778337bf12ffd99f05bacc66dff6c1",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 60160,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/287854/transliterator-0.9.1-tb+sm+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "- fix for facebook comments bug\n- fix for google docs\n- updated Arabic layout\n- added Russian layout яВерты\n- default hot key for window mapping mode changed to Ctrl+Shift+F2"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/transliterator/versions/0.9.1.1-signed.1-signed",
+        "version": "0.9.1.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>Note regarding Firefox 57</b>\nThere are currently no plans to update Transliterator to work with Firefox 57. Some of the changes implemented in recent version, combined with the switch to web extensions API, make intercepting keystrokes impossible.\n\nIf / when I learn how to send trusted key events from web extension content script, I will resume work and release a new version\n\nMy apologies to everyone affected by this develoment.\n\n\nTransliterator offers as-you-type conversion of transliterated text to native alphabet, and conversion both from and to transliterated text anywhere within web pages.\n\nChoose Tools -&gt; Transliterator in the menu to select your alphabet or mapping of choice, then hit F2 and start typing. A blue border around the input area will indicate that translit mode is active. \n\nSelect transliterated text in an email or web page, hit Ctrl+Shift+Q, and change it to native alphabet for easy reading.\n\nTransliterator is compatible with Firefox, Thunderbird, Seamonkey, Blue Griffon and Instantbird.\n\n<b>Attention Thunderbird Users!</b>\nStarting with Thunderbird 12, <b>F2</b> is a built-in shortcut for renaming folders or attachments. The new version of transliterator offers an option to override built-in shortcuts, however we recommend that you instead choose a different hot key for enabling translit mode. Go to Tools -&gt; Transliterator Options in the menu, click in the appropriate text box and hit your preferred hot key. Then click OK\n\n\nOpen Transliterator Options in Tools menu to preview &amp; switch to one of the following included transliteration tables:\n\n    * Bulgarian Extended\n    * Bulgarian Translit\n    * Беларускі Трансліт\n    * Serbian Latin/Cyrillic\n    * Georgian/Kartuli (ქართული)\n    * Kazakh - <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ae3a570bc583763ecb2d0be08252a8cd0b4f5c7d82aceef7a89b8afda17e9ba9/http%3A//QazTranslit.com\">QazTranslit.com</a>\n    * Macedonian - English Letters\n    * Macedonian - Unicode\n    * Macedonian Latinica\n    * Ukrainian - <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c2f79818c7c8d576c310daf4016e6ccf0d790aa7c0b0f7c807ba2e86b3385e79/http%3A//translit.ru\">translit.ru</a>\n    * ᏣᎳᎩ (Cherokee transliteration)\n    * Обыкновенная Латиница (default)\n    * Phonetics (X-SAMPA)\n    * Phonetics (Kirshenbaum)\n    * Phonetics (dk.kultur.sprog)\n    * Русская Транслитерация - <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c2f79818c7c8d576c310daf4016e6ccf0d790aa7c0b0f7c807ba2e86b3385e79/http%3A//translit.ru\">translit.ru</a>+\n    * Русская Транслитерация: ГОСТ 7.79-2000\n    * Стандартная Русская Клавиатура ЙЦУКЕН\n    * Фонетическая раскладка яЖерты\n    * 台灣/闽南白話字 (Taiwanese POJ)\n    * ひらがなとカタカナ (kana)\n    * Pīnyīn\n    * Greek / Latin\n    * Georgian (Typing)\n    * Pali-Velthuis\n    * Serbo-Croatian (Latin)\n    * Esperanto \n    * Russian / AZERTY \n    * Kyrgyz\n    * Karakalpak\n    * Armenian\n    * Hrvatska latinica/glagoljica\n    * Canadian Native Languages\n    * Arabic ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/07db4cb691ba7ebf9c3d82aed6ce29b920594d5e9345d8029e86566d4ae46182/http%3A//arabeasy.net/\">http://arabeasy.net/</a> )\n\nsee home page (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b5df0a0c2c660ed6be4a0e82f596b9d08f6290a71969dee849f7a230a360de56/http%3A//www.benya.com/transliterator/\">http://www.benya.com/transliterator/</a>) for more details and info about adding custom transliteration mapping",
+        "es": "Transliterator debería ser compatible con Firefox, Thunderbird, Seamonkey 2, Sunbird, NVU / KompoZer, Songbird e Instantbird. Si no lo es, infórmenos para que podamos solucionarlo.\n\nPulse F2 en cualquier área editable para activar la transliteración al alfabeto elegido. ¡Escriba directamente en ruso sin cambiar la distribución de su teclado! Pulse Ctrl+Shift+Q para transliterar de vuelta el texto seleccionado.\n\nAbra las opciones de Transliterator en el menú Herramientas para seleccionar una de las siguientes posibilidades de transliteración ya incluidas:\n\n    * Bulgarian Extended\n    * Bulgarian Translit\n    * Беларускі Трансліт\n    * Serbian Latin/Cyrillic\n    * Georgian/Kartuli (ქართული)\n    * Kazakh - <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ae3a570bc583763ecb2d0be08252a8cd0b4f5c7d82aceef7a89b8afda17e9ba9/http%3A//QazTranslit.com\">QazTranslit.com</a>\n    * Macedonian - English Letters\n    * Macedonian - Unicode\n    * Macedonian Latinica\n    * Ukrainian - <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c2f79818c7c8d576c310daf4016e6ccf0d790aa7c0b0f7c807ba2e86b3385e79/http%3A//translit.ru\">translit.ru</a>\n    * ᏣᎳᎩ (Cherokee transliteration)\n    * Обыкновенная Латиница (default)\n    * Phonetics (X-SAMPA)\n    * Phonetics (Kirshenbaum)\n    * Phonetics (dk.kultur.sprog)\n    * Русская Транслитерация - <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c2f79818c7c8d576c310daf4016e6ccf0d790aa7c0b0f7c807ba2e86b3385e79/http%3A//translit.ru\">translit.ru</a>+\n    * Русская Транслитерация: ГОСТ 7.79-2000\n    * Стандартная Русская Клавиатура ЙЦУКЕН\n    * Фонетическая раскладка яЖерты\n    * 台灣/闽南白話字 (Taiwanese POJ)\n    * ひらがなとカタカナ (kana)\n    * Pīnyīn\n    * Greek / Latin\n    * Georgian (Typing)\n    * Pali-Velthuis\n    * Serbo-Croatian (Latin)\n    * Esperanto \n    * Russian / AZERTY \n    * Kyrgyz\n    * Karakalpak\n    * Armenian\n    * Hrvatska latinica/glagoljica"
+    },
+    "developer_comments": {
+        "en-US": "source code available on github: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8f68cb8a37218802d9e384523a85988d375d89f25ed694dc9a03ebc0ed4c8c46/https%3A//github.com/alexbenenson/transliterator\">https://github.com/alexbenenson/transliterator</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/transliterator/edit",
+    "guid": "{07d43380-b306-4a08-a47a-140efd1b4700}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.benya.com/transliterator/",
+        "es": "http://www.benya.com/transliterator/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/883-64.png?modified=1509816522",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/883-32.png?modified=1509816522",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/883-64.png?modified=1509816522"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-12-09T20:47:04Z",
+    "name": {
+        "en-US": "Transliterator",
+        "es": "Transliterator"
+    },
+    "previews": [
+        {
+            "id": 17068,
+            "caption": {
+                "en-US": "Options / choosing transliteration table"
+            },
+            "image_size": [
+                296,
+                325
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17068.png?modified=1530207925",
+            "thumbnail_size": [
+                182,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17068.png?modified=1530207925"
+        },
+        {
+            "id": 17069,
+            "caption": {
+                "en-US": "Using transliterated input mode"
+            },
+            "image_size": [
+                279,
+                196
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17069.png?modified=1530207927",
+            "thumbnail_size": [
+                279,
+                196
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17069.png?modified=1530207927"
+        },
+        {
+            "id": 126096,
+            "caption": {
+                "en-US": "Transliterator options"
+            },
+            "image_size": [
+                573,
+                308
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/126/126096.png?modified=1530207928",
+            "thumbnail_size": [
+                320,
+                172
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/126/126096.png?modified=1530207928"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.62376,
+        "count": 94,
+        "average": 4.6383,
+        "text_count": 91
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/transliterator/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/883",
+    "slug": "transliterator",
+    "status": "public",
+    "summary": {
+        "en-US": "As-you-type phonetic conversion of text from one alphabet to another, as well as transliteration/detransliteration  of selected text anywhere within documents. Supports multiple languages and custom transliteration schemes.",
+        "es": "Transliterator permite convertir texto de un alfabeto a otro mientras se escribe, al igual que transliterar (de forma directa o inversa) en cualquier parte de una página."
+    },
+    "support_email": {
+        "en-US": "alex.benenson@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://www.benya.com/transliterator/"
+    },
+    "tags": [
+        "conversor",
+        "entrada",
+        "latinica",
+        "teclado",
+        "translit",
+        "transliteration",
+        "кириллица",
+        "латиница"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/transliterator/",
+    "weekly_downloads": 145
+}

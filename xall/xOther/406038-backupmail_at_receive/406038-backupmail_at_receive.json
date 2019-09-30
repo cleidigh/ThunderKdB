@@ -1,0 +1,184 @@
+{
+    "id": 406038,
+    "authors": [
+        {
+            "id": 6634043,
+            "name": "Oyayubi11",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Oyayubi11/",
+            "username": "Oyayubi11",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 42,
+    "categories": {
+        "thunderbird": [
+            "importexport"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1639910,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "11.*"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/backupmail_at_receive/versions/1639910",
+        "files": [
+            {
+                "id": 291924,
+                "created": "2015-01-07T07:52:46Z",
+                "hash": "sha256:865bc358750978ba739a7958b8a7accb51206f90792b95e6aedddfeb6ea1a72e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 10909,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/291924/backupmail_at_receive-0.3.0-tb-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 291926,
+                "created": "2015-01-07T07:52:47Z",
+                "hash": "sha256:865bc358750978ba739a7958b8a7accb51206f90792b95e6aedddfeb6ea1a72e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 10909,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/291926/backupmail_at_receive-0.3.0-tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": null,
+        "reviewed": "2015-01-08T14:45:37Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/backupmail_at_receive/versions/0.3.0",
+        "version": "0.3.0"
+    },
+    "default_locale": "ja",
+    "description": {
+        "en-US": "<strong>overview</strong>\nWhen Thunderbird receives an e-mail, this add-on exports an e-mail to selected folder as .eml format.\nThis add-on creates a folder which name is based on date, then it exports an e-mail.\n\nBefore you use this add-on, you have to set target folder from add-on configuration in Thunderbird.\nIf you set a config file which is json format, you can filter e-mail by mail address.\n\n<strong>How to use</strong>\nFirst, set target folder by add-on configuration in Thunderbird.\nIf path which you set is valid, this add-on export an e-mail to a folter separated by date.\n\n<strong>filtering e-mails</strong>\nyou can also filter received e-mails.\nyou can put a config file(json format) as you like.\nplease set config file path by add-on configration in Thunderbird.\n\nyou can set 2parameters in the config file.\n<code>\n{\n　　　　\"account\": [\n　　　　　　　　\"account1@gmail.com\",\n　　　　　　　　\"account2@gmail.com\"\n　　　　],\n　　　　\"address\": [\n　　　　　　　　\"address1@gmail.com\",\n　　　　　　　　\"address2@gmail.com\"\n　　　　]\n}\n</code>\naccount: if it matches \"to\" field of received e-mails, it will be exported.\naddress: if it matches \"to\" or \"from\" fileds of received e-mails, it will be exported.\n\n<strong>history</strong>\n<strong>2015/1/7 ver 0.3.0 update</strong>\n<li>update for latest Thunderbird.</li><li>change config file format to json format.</li><li>add config file path field in add-on configuration window.</li>\nI am very sorry that I have not done update for long time.",
+        "ja": "<strong>概要</strong>\nメール受信時に指定フォルダへeml形式で受信メールを保存するアドオンです。\n保存の際、受信日でフォルダ分けします。\nアドオン設定から保存先フォルダを指定してください。\nJSON形式の設定ファイルがあれば、保存対象とするメールアドレスを絞り込むことができます。\n\n<strong>使い方</strong>\n まずアドオンの設定からメール保存フォルダを指定してください。\n 適切なパスが指定されていれば、指定フォルダ以下に日付ごとにフォルダ分けしてメールを\n .eml形式で保存します。\n\n<strong>保存メールのフィルタリング</strong>\n　JSON形式のコンフィグファイルで、メールアドレスによるフィルタリングが可能です。\n　コンフィグファイル(JSON形式)は２パラメータ指定可能です。\n<code>\n{\n　　　　\"account\": [\n　　　　　　　　\"account1@gmail.com\",\n　　　　　　　　\"account2@gmail.com\"\n　　　　],\n　　　　\"address\": [\n　　　　　　　　\"address1@gmail.com\",\n　　　　　　　　\"address2@gmail.com\"\n　　　　]\n}\n</code>\n　accountに含まれるメールアドレスがtoに一致すればメールを保存します。\n　addressに含まれるメールアドレスがfromもしくはtoに一致すればメールを保存します。\n\n<strong>更新履歴</strong>\n<strong>2015/1/7 ver 0.3.0 update</strong>\n<li>最新版Thunderbirdに対応にしました。</li><li>コンフィグファイルの形式をJSON形式に変更しました。</li><li>コンフィグファイルパスを設定可能にしました。</li>\n久々に更新しました。ダウンロードしてくださった皆様ごめんなさい。\n全然関係ありませんが、北海道の百貨店で安くて美味しい甘エビが買えるのでぜひ足を運んでみてください。\n\n<strong>2012/12/1 ver0.2.0 update</strong>\n<li>メールアドレスによるフィルタリング機能を追加しました。</li>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/backupmail_at_receive/edit",
+    "guid": "backup@gmail.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://bigoyayubi.hatenablog.com/entry/2015/01/07/222451",
+        "ja": "http://bigoyayubi.hatenablog.com/entry/2015/01/07/222451"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/downloads-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/downloads-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/downloads-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-01-08T14:45:37Z",
+    "name": {
+        "en-US": "backupMail",
+        "ja": "backupMail_at_Receive"
+    },
+    "previews": [
+        {
+            "id": 81540,
+            "caption": null,
+            "image_size": [
+                459,
+                206
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81540.png?modified=1530208799",
+            "thumbnail_size": [
+                320,
+                144
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81540.png?modified=1530208799"
+        },
+        {
+            "id": 81542,
+            "caption": null,
+            "image_size": [
+                269,
+                99
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81542.png?modified=1530208799",
+            "thumbnail_size": [
+                269,
+                99
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81542.png?modified=1530208799"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.51348,
+        "count": 4,
+        "average": 3,
+        "text_count": 4
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/backupmail_at_receive/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/406038",
+    "slug": "backupmail_at_receive",
+    "status": "public",
+    "summary": {
+        "en-US": "export an e-mail to selected folder as .eml format.",
+        "ja": "メール受信時に指定フォルダへeml形式で受信メールを保存するアドオン"
+    },
+    "support_email": {
+        "en-US": "yourinfo23@gmail.com",
+        "ja": "yourinfo23@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://bigoyayubi.hatenablog.com/entry/2015/01/07/222451",
+        "ja": ""
+    },
+    "tags": [
+        "backup",
+        "eml",
+        "save"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/backupmail_at_receive/",
+    "weekly_downloads": 65
+}

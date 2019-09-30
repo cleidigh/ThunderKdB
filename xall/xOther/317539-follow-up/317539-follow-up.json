@@ -1,0 +1,227 @@
+{
+    "id": 317539,
+    "authors": [
+        {
+            "id": 5758310,
+            "name": "Amulya",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/amulyakhare/",
+            "username": "amulyakhare",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 121,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1262469,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "3.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/follow-up/versions/1262469",
+        "files": [
+            {
+                "id": 127968,
+                "created": "2011-08-02T12:07:58Z",
+                "hash": "sha256:9729438242d7c3fa24c99171bb165a39b0b4ac3c03ddf27644ecf67e500744da",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 39936,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/127968/follow_up-2.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "<b>New features</b>\n<ul><li>Added keyboard shortcuts.</li><li>Integrated with context menu.</li><li>Setup Wizard.</li></ul>\n<b>Bugs Fixed</b> \n<ul><li>Use of default 'Home' calendar was not possible in some cases.</li><li>Pending status was not updated for calendar items.</li><li>Updating a calendar item threw exception in multi-month view.</li><li>Follow up to an older date was added but status was not set as pending.</li><li>Allowed one to add follow-up when no mail is selected.</li></ul>\n<b>Issue that still remain</b>\n<ul><li>If date changes overnight, pending tags are not updated. Thunderbird must be re-started to ensure changes.</li> <li>Clean up unused tags deletes even used tags if mails with these tags are in a different folder. DO NOT use this feature if u use follow-ups for many folders in your Thunderbird.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/follow-up/versions/2.0",
+        "version": "2.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This extension provides a 'Follow-Up' toolbar. When a user is unable to reply to an email at a time and wants to follow up on it later, all he needs to do is click on the follow up button. A dialog box pops up asking for a date for which the user wants to add a follow up reminder for. The user enters a date and clicks on the button. That's all the user needs to do.\n\nThe extension provides the following features:\n\n1) The email will appear in a different color in the Inbox to visually differentiate it from the others.\n\n2) At any time the user can click on the view today button in the follow up toolbar to view those emails that he is supposed to reply by today. This way the user would be able to get rid of all the clutter and see what emails are awaiting his replies.\n\n3) The feature automatically keeps track of the current day and moves emails that were to be followed up at a previous date to the 'pending' group.\n\n4) The email appears in the user's lightning calendar as an event. When the day arrives and the user logins he receives a pop-up window to remind him of the email to follow up.\n\n5) When the user has replied to the email, he can mark the follow up as done by clicking on the 'Mark Done' button.\n\n<b>Keyboard Shortcuts</b>\n\nKey Combination (Mac) : Command + Option\nKey Combination (Windows) : Ctrl + Alt\n\nAdd Follow Up : Key Combination + F\nMark Done : Key Combination + G\nView Pending : Key Combination + R\nView All : Key Combination + E\nView Today : Key Combination + W\n\nYou can also manage follow ups by <b>right click</b> on any message.\n\nThis feature does not already exist in Thunderbird. People who want to achieve this follow a lot of methods like using tags and adding manual reminders. The proposed extension serves for better user interaction and efficiency as it works by a click of two buttons. The rest of the process is undertaken automatically and the user does not have to care or know about it.\n\nWatch it in action: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/899b603167d7f4182ab51720b3b4d67437d5064c7f60e34a6616d27bbab1b911/http%3A//www.youtube.com/watch%3Fv=6SxTWx9QLo0\">http://www.youtube.com/watch?v=6SxTWx9QLo0</a>\n\n--------------------------------------------------------------------------------------------------------\n\n&lt;Strong&gt;Known Problems: \n\n1) The toolbar buttons do not appear by default. Kindly go to toolbar menu option and drag and drop the buttons to your toolbar.\n\n2) If date changes overnight, pending tags are not updated. Thunderbird must be re-started to ensure changes.\n\n3) Clean up unused tags deletes even used tags if mails with these tags are in a different folder. DO NOT use this feature if u use follow-ups for many folders in your Thunderbird.\n\n4) You need to have Lightning Calendar Installed for this extension to work.\n--------------------------------------------------------------------------------------------------------\n\n&lt;Strong&gt;Help and Support&lt;/Strong&gt;\n\nIf you are having any issues you can report them at my github repository at : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/829202260379e50f3744887bcfad7990230a8c3a9b830c39db2d9c1de6ea3eb9/https%3A//github.com/amulyakhare/Thunderbird-Follow-Up-Extension/issues\">https://github.com/amulyakhare/Thunderbird-Follow-Up-Extension/issues</a>\n\nYou can also send me a personal email. \n\nIf you like my extension, please rate it or leave a comment below. :)"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/follow-up/edit",
+    "guid": "followup@amulya.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/amulyakhare/Thunderbird-Follow-Up-Extension"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/posts-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/posts-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/posts-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-08-10T20:55:35Z",
+    "name": {
+        "en-US": "Follow Up"
+    },
+    "previews": [
+        {
+            "id": 58237,
+            "caption": {
+                "en-US": "Follow Up Emails"
+            },
+            "image_size": [
+                700,
+                386
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58237.png?modified=1530208988",
+            "thumbnail_size": [
+                320,
+                176
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58237.png?modified=1530208988"
+        },
+        {
+            "id": 58238,
+            "caption": {
+                "en-US": "Emails get flagged"
+            },
+            "image_size": [
+                700,
+                341
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58238.png?modified=1530208988",
+            "thumbnail_size": [
+                320,
+                156
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58238.png?modified=1530208988"
+        },
+        {
+            "id": 58239,
+            "caption": {
+                "en-US": "Pending emails appear in red"
+            },
+            "image_size": [
+                700,
+                286
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58239.png?modified=1530208989",
+            "thumbnail_size": [
+                320,
+                131
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58239.png?modified=1530208989"
+        },
+        {
+            "id": 58240,
+            "caption": {
+                "en-US": "Added as calendar event / task"
+            },
+            "image_size": [
+                700,
+                345
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58240.png?modified=1530208989",
+            "thumbnail_size": [
+                320,
+                158
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58240.png?modified=1530208989"
+        },
+        {
+            "id": 61403,
+            "caption": {
+                "en-US": "Use the tags button in the quick filter bar to easily view / filter follow ups."
+            },
+            "image_size": [
+                700,
+                131
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/61/61403.png?modified=1530208990",
+            "thumbnail_size": [
+                320,
+                60
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/61/61403.png?modified=1530208990"
+        },
+        {
+            "id": 61405,
+            "caption": {
+                "en-US": "Right click on any message to manage follow-ups."
+            },
+            "image_size": [
+                496,
+                522
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/61/61405.png?modified=1530208990",
+            "thumbnail_size": [
+                190,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/61/61405.png?modified=1530208990"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.23071,
+        "count": 22,
+        "average": 3.2727,
+        "text_count": 22
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/follow-up/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/317539",
+    "slug": "follow-up",
+    "status": "public",
+    "summary": {
+        "en-US": "This add-on provides a follow-up email feature for Thunderbird."
+    },
+    "support_email": {
+        "en-US": "amulyakhare@gmail.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/amulyakhare/Thunderbird-Follow-Up-Extension/issues"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/follow-up/",
+    "weekly_downloads": 26
+}

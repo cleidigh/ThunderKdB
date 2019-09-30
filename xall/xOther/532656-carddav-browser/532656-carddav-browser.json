@@ -1,0 +1,420 @@
+{
+    "id": 532656,
+    "authors": [
+        {
+            "id": 10749358,
+            "name": "Michael Talbot",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mtalbot/",
+            "username": "mtalbot",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/10/10749/10749358.png?modified=1515750531"
+        }
+    ],
+    "average_daily_users": 62,
+    "categories": {
+        "firefox": [
+            "social-communication"
+        ],
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "contacts"
+        ]
+    },
+    "contributions_url": "https://paypal.me/MTalbotAU/5",
+    "current_version": {
+        "id": 2435138,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "24.0"
+            },
+            "seamonkey": {
+                "max": "2.49.*",
+                "min": "2.20"
+            },
+            "thunderbird": {
+                "max": "52.*",
+                "min": "24.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/carddav-browser/versions/2435138",
+        "files": [
+            {
+                "id": 977787,
+                "created": "2018-06-05T09:41:01Z",
+                "hash": "sha256:44303d2491dd3943f93fa61a23f923c531eac753a6a75aa6f84a1c2266d00214",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 64220,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/977787/carddav_browser-6.2-fx+sm+tb-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 977788,
+                "created": "2018-06-05T09:41:01Z",
+                "hash": "sha256:da9b2a3598090d4dcf3b369f0ae86ff72bdd16f73017b3f5f85af6b1336a71ac",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 64216,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/977788/carddav_browser-6.2-fx+sm+tb-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 977789,
+                "created": "2018-06-05T09:41:02Z",
+                "hash": "sha256:4a6eabd1626507b7c82e543f00584c1112bce00b6f2afa1ab7c2398455cf2ea7",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 64219,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/977789/carddav_browser-6.2-fx+sm+tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "If there is an SSL certificate error and you add an exception then CardDAV Browser will automatically re-try to access the server and download the vCards."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/carddav-browser/versions/6.2",
+        "version": "6.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "CardDAV Browser gives you a quick and easy way to connect to a CardDAV server and view vCard details.\n\nOnce installed the menu entry will appear under the \"Tools\" menu. If you are using Firefox and the main menu bar is hidden then the entry can be found under \"Developer\" in the \"burger stack\" menu.\n\nYou can copy any text or number entry when viewing a vCard by right-clicking on that entry.\n\nVersion 6.2: Adding an SSL certificate exception now results in CardDAV Browser re-trying the connection.\n\nKnown Issues:\n1) Certain binary vCard fields (eg: Sound) are not displayed.\n2) Only 100% CardDAV compliant servers are supported (tested using DAViCal).\n3) The only authentication systems available are those built in to Firefox (OAuth is not currently supported).\n\nUnsupported CardDAV Servers:\n1) Google (Uses OAuth for authentication).\n2) Yahoo (Uses OAuth for authentication).\n3) SOGo Open Source Groupware (Is <strong>not</strong> standards compliant. See <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/75f3bb7988b0207701c52ca3abfcd122487a633684f50691b8ae788066853605/https%3A//www.spinifexdragon.com/support/kb6.php%23l2\">here</a> for more information).\n4) ownCloud version 9 doesn't work in my testing (Version X <strong>does</strong> work)."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/carddav-browser/edit",
+    "guid": "carddavbrowser@mtalbot.addons.mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://www.spinifexdragon.com/carddavbrowser.php"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/532/532656-64.png?modified=1568029752",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/532/532656-32.png?modified=1568029752",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/532/532656-64.png?modified=1568029752"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-06-05T12:08:59Z",
+    "name": {
+        "en-US": "CardDAV Browser"
+    },
+    "previews": [
+        {
+            "id": 192677,
+            "caption": {
+                "en-US": "CardDAV Browser Empty Dialog"
+            },
+            "image_size": [
+                502,
+                326
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/192/192677.png?modified=1530209179",
+            "thumbnail_size": [
+                308,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/192/192677.png?modified=1530209179"
+        },
+        {
+            "id": 192678,
+            "caption": {
+                "en-US": "CardDAV Browser Authentication Dialog"
+            },
+            "image_size": [
+                402,
+                226
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/192/192678.png?modified=1530209179",
+            "thumbnail_size": [
+                320,
+                180
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/192/192678.png?modified=1530209179"
+        },
+        {
+            "id": 185318,
+            "caption": {
+                "en-US": "CardDAV Browser With vCards Loaded"
+            },
+            "image_size": [
+                508,
+                328
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185318.png?modified=1530209180",
+            "thumbnail_size": [
+                310,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185318.png?modified=1530209180"
+        },
+        {
+            "id": 185319,
+            "caption": {
+                "en-US": "vCard Details - Contact"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185319.png?modified=1530209180",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185319.png?modified=1530209180"
+        },
+        {
+            "id": 185320,
+            "caption": {
+                "en-US": "vCard Details - Details"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185320.png?modified=1530209180",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185320.png?modified=1530209180"
+        },
+        {
+            "id": 185321,
+            "caption": {
+                "en-US": "vCard Details - Address"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185321.png?modified=1530209181",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185321.png?modified=1530209181"
+        },
+        {
+            "id": 185322,
+            "caption": {
+                "en-US": "vCard Details - Address Pull-down Menu"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185322.png?modified=1530209181",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185322.png?modified=1530209181"
+        },
+        {
+            "id": 185323,
+            "caption": {
+                "en-US": "vCard Details - Address Showing Different Element"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185323.png?modified=1530209182",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185323.png?modified=1530209182"
+        },
+        {
+            "id": 185324,
+            "caption": {
+                "en-US": "vCard Details - Label Pull-down Menu"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185324.png?modified=1530209182",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185324.png?modified=1530209182"
+        },
+        {
+            "id": 185325,
+            "caption": {
+                "en-US": "vCard Details - Label Showing Different Element"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185325.png?modified=1530209183",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185325.png?modified=1530209183"
+        },
+        {
+            "id": 185326,
+            "caption": {
+                "en-US": "vCard Details - Misc"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185326.png?modified=1530209183",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185326.png?modified=1530209183"
+        },
+        {
+            "id": 185327,
+            "caption": {
+                "en-US": "vCard Details - Notes"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185327.png?modified=1530209183",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185327.png?modified=1530209183"
+        },
+        {
+            "id": 185328,
+            "caption": {
+                "en-US": "vCard Details - Graphics"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185328.png?modified=1530209184",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185328.png?modified=1530209184"
+        },
+        {
+            "id": 185329,
+            "caption": {
+                "en-US": "vCard Details - Other"
+            },
+            "image_size": [
+                535,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185329.png?modified=1530209184",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185329.png?modified=1530209184"
+        },
+        {
+            "id": 185330,
+            "caption": {
+                "en-US": "Add To Addressbook Dialog"
+            },
+            "image_size": [
+                268,
+                178
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185330.png?modified=1530209184",
+            "thumbnail_size": [
+                268,
+                178
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185330.png?modified=1530209184"
+        },
+        {
+            "id": 185331,
+            "caption": {
+                "en-US": "Add To Addressbook Dialog - Pull-down Menu"
+            },
+            "image_size": [
+                268,
+                178
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185331.png?modified=1530209185",
+            "thumbnail_size": [
+                268,
+                178
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185331.png?modified=1530209185"
+        },
+        {
+            "id": 185332,
+            "caption": {
+                "en-US": "SSL Certificate Error Report"
+            },
+            "image_size": [
+                502,
+                355
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/185/185332.png?modified=1530209185",
+            "thumbnail_size": [
+                283,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/185/185332.png?modified=1530209185"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.74762,
+        "count": 7,
+        "average": 2.8571,
+        "text_count": 7
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/carddav-browser/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/532656",
+    "slug": "carddav-browser",
+    "status": "public",
+    "summary": {
+        "en-US": "A utility to browse vCards stored on a CardDAV server."
+    },
+    "support_email": {
+        "en-US": "developer@spinifexdragon.com"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/carddav-browser/",
+    "weekly_downloads": 178
+}

@@ -1,0 +1,201 @@
+{
+    "id": 406802,
+    "authors": [
+        {
+            "id": 4471504,
+            "name": "bgmCoder",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/bgmCoder/",
+            "username": "bgmCoder",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/4/4471/4471504.png?modified=1478971422"
+        }
+    ],
+    "average_daily_users": 63,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1951929,
+        "compatibility": {
+            "seamonkey": {
+                "max": "*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "52.0",
+                "min": "13.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/pastehyperlink/versions/1951929",
+        "files": [
+            {
+                "id": 518708,
+                "created": "2016-10-11T21:12:30Z",
+                "hash": "sha256:685ca9b2dac09fcce5893cafdf6f27b0942caec73312154d527242457fff6de6",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 49788,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/518708/pastehyperlink-1.5.3-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "<ul><li>Stopped working at Thunderbird 45, so this is fixed now!</li><li>Added a true German Translation, courtesy of Joseph Bach</li><li>Added PasteHyperlink Buttons to the Format Toolbar</li><li>Added option to toggle the new buttons on the Format Toolbar</li><li>Added PasteHyperlink Options link to the Message Compose Tools Menu</li><li>Removed the first-run adding of the Compose Toolbar Buttons (don't need both by default)</li><li>Added FetchHyperlink feature for copying hyperlinks from linked text</li><li>Fixed part of the French translation</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastehyperlink/versions/1.5.3",
+        "version": "1.5.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "NOTE: This addon stopped working with Thunderbird 45 - PasteHyperlink 1.5.3 fixes this.\n\nSometimes you need to create a lot of hyperlinks in your message.  This addon saves you the trouble of opening the hyperlink menu, and makes your emails more beautiful.   The tool only appears in the message-composer - that is, you only need it when you <i>write</i> a message. \n\n<ul><li>Simply assure that your url is on your clipboard, select the text you want to turn into a link, and choose <i>Paste Hyperlink</i> from the context menu. </li><li>If you want to remove a hyperlink, select the text of the link and choose <i>Remove Hyperlink</i> from the menu. You can remove the entire hyperlink by simply placing the cursor in the link and calling PasteHyperlink.  Or, you only want to remove the hyperlink from part of the text, make a selection before calling PasteHyperlink.</li><li>You can also use the <i>FetchHyperlink</i> to fetch the url back out of a hyperlink.</li><li><ul>There are also hotkeys\n<li>Paste Hyperlink = <i>alt+shift+Y</i></li><li>Remove Hyperlink = <i>alt+shift+R</i></li><li>Fetch Hyperlink = <i>alt+shift+F</i></li></ul></li><li>It comes complete with toolbar buttons for the main toolbar in the Message Compose Window, format-toolbar buttons in the Message Compose Window, and an entry in the main <i>Edit</i> menu.  </li><li>There is an option to confirm pasting of a non-valid url.</li><li>If no text is selected, you can paste the contents of the clipboard as a hyperlink.</li><li>Finally, it will convert an email on the clipboard into a mailto link.</li></ul>"
+    },
+    "developer_comments": {
+        "en-US": "This is my favourite Thunderbird addon now, if I must say so myself.  I use it every day.  I copy and paste hyperlinks all the time.  Be sure that if I discover any bugs that I have a vested interest in fixing the addon!\n\n\nMy personal settings (options) :\n<ul><li>False  - Confirm if clipboard contents do not contain valid hyperlinks</li><li>True    - Prepend 'http' if needed</li><li>False  - Url encode the hyperlink</li><li>True    - Linkify email addresses</li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/pastehyperlink/edit",
+    "guid": "PasteHyperlink@sspxusa.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://addons.mozilla.org/en-US/thunderbird/addon/pastehyperlink/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/406/406802-64.png?modified=1476246018",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/406/406802-32.png?modified=1476246018",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/406/406802-64.png?modified=1476246018"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-10-12T03:28:59Z",
+    "name": {
+        "en-US": "PasteHyperlink"
+    },
+    "previews": [
+        {
+            "id": 179322,
+            "caption": {
+                "en-US": "Message Compose Toolbar and Format Toolbar Buttons"
+            },
+            "image_size": [
+                700,
+                345
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/179/179322.png?modified=1530208765",
+            "thumbnail_size": [
+                320,
+                158
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/179/179322.png?modified=1530208765"
+        },
+        {
+            "id": 179320,
+            "caption": {
+                "en-US": "Message Compose Edit Menu"
+            },
+            "image_size": [
+                440,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/179/179320.png?modified=1530208766",
+            "thumbnail_size": [
+                168,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/179/179320.png?modified=1530208766"
+        },
+        {
+            "id": 179321,
+            "caption": {
+                "en-US": "Tools Menu"
+            },
+            "image_size": [
+                480,
+                392
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/179/179321.png?modified=1530208766",
+            "thumbnail_size": [
+                245,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/179/179321.png?modified=1530208766"
+        },
+        {
+            "id": 179319,
+            "caption": {
+                "en-US": "PasteHyperlink's options panel"
+            },
+            "image_size": [
+                555,
+                267
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/179/179319.png?modified=1530208766",
+            "thumbnail_size": [
+                320,
+                154
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/179/179319.png?modified=1530208766"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.21599,
+        "count": 7,
+        "average": 4.7143,
+        "text_count": 7
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastehyperlink/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/406802",
+    "slug": "pastehyperlink",
+    "status": "public",
+    "summary": {
+        "en-US": "Paste the clipboard contents into the selected text as a hyperlink."
+    },
+    "support_email": {
+        "en-US": "bgmcoder@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "edit hyperlink"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastehyperlink/",
+    "weekly_downloads": 25
+}

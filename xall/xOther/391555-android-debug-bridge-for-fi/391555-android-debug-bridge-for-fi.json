@@ -1,0 +1,117 @@
+{
+    "id": 391555,
+    "authors": [
+        {
+            "id": 5647196,
+            "name": "Mike Hommey",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/glandium/",
+            "username": "glandium",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "firefox": [
+            "web-development"
+        ],
+        "seamonkey": [
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1368339,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0b10pre"
+            },
+            "seamonkey": {
+                "max": "2.19a1",
+                "min": "2.1"
+            },
+            "thunderbird": {
+                "max": "24.*",
+                "min": "5.0b1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/android-debug-bridge-for-fi/versions/1368339",
+        "files": [
+            {
+                "id": 164603,
+                "created": "2012-08-23T09:08:18Z",
+                "hash": "sha256:5fdabe1b9de4bf3fd02d5947904cc393f5fc8e7aece7397b7f17612223a11401",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 15205,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/164603/android_debug_bridge_for_firefox-0.0.1-fx+tb+fn+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 2513,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/android-debug-bridge-for-fi/license/0.0.1.1-signed.1-signed"
+        },
+        "release_notes": null,
+        "reviewed": "2012-08-29T13:46:53Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/android-debug-bridge-for-fi/versions/0.0.1.1-signed.1-signed",
+        "version": "0.0.1.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This addon gives filesystem access to Android and Firefox OS devices through the adb:// protocol.\nadb:// alone will give a list of connected devices. adb://&lt;device-serial&gt;/ gives access to the filesystem on the given device.\n\nThis addon also gives access to Android and Firefox OS devices framebuffer through the adbview:// protocol. Like adb://, adbview:// alone will give a list of connected devices. adbview://&lt;device-serial&gt;/ will give a screen capture of the given device, in the form of a PNG image.\n\nThis addon also gives direct access to Android and Firefox OS devices to the Remote Debugger feature from Firefox (without requiring adb forward commands). This feature has only been tested on Firefox 17 and is not guaranteed to work on earlier versions.\n\nThis addon is experimental. It is known to leak small amounts of data, and to have difficulties handling errors."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/android-debug-bridge-for-fi/edit",
+    "guid": "adb4ff@glandium.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-08-29T13:46:53Z",
+    "name": {
+        "en-US": "Android Debug Bridge For Firefox"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.79706,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/android-debug-bridge-for-fi/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/391555",
+    "slug": "android-debug-bridge-for-fi",
+    "status": "public",
+    "summary": {
+        "en-US": "This addon adds some Android Debug Bridge access to Firefox. It requires access to the adb/adb.exe executable from the Android SDK."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "restartless"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/android-debug-bridge-for-fi/",
+    "weekly_downloads": 28
+}

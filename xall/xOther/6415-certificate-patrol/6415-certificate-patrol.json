@@ -1,0 +1,265 @@
+{
+    "id": 6415,
+    "authors": [
+        {
+            "id": 715307,
+            "name": "Carlo v. Loesch",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/carlo-v-loesch/",
+            "username": "carlo-v-loesch",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/715/715307.png?modified=1372999699"
+        },
+        {
+            "id": 2037635,
+            "name": "tg(x)",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/tg-x/",
+            "username": "tg-x",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/2/2037/2037635.png?modified=1378207459"
+        },
+        {
+            "id": 137354,
+            "name": "20after4",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/20after4/",
+            "username": "20after4",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/137/137354.png?modified=1432827317"
+        }
+    ],
+    "average_daily_users": 104,
+    "categories": {
+        "firefox": [
+            "alerts-updates",
+            "privacy-security"
+        ],
+        "seamonkey": [
+            "privacy-and-security"
+        ],
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2091275,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "3.5"
+            },
+            "seamonkey": {
+                "max": "2.7a1",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "10.0a1",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/certificate-patrol/versions/2091275",
+        "files": [
+            {
+                "id": 639647,
+                "created": "2017-04-30T14:12:50Z",
+                "hash": "sha256:1ff1f36be78d5cb6ac6c2126016138c094cb3098cf85a860aab77fe3a41773d7",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 80687,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/639647/certificate_patrol-2.0.16-fx+sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Some UX improvements."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/certificate-patrol/versions/2.0.16",
+        "version": "2.0.16"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Your web browser trusts a lot of certification authorities and chained sub-authorities, and it does so blindly. \"<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/47a6df2d74bde95c443b3a478df1fc0123fabf346998a2bbb1a44765b9b48bdb/http%3A//en.wikipedia.org/wiki/Intermediate_certificate_authorities\">Subordinate or intermediate certification authorities</a>\" are a little known device: The root CAs in your browser can delegate permission to issue certificates to an unlimited amount of subordinate CAs (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/99a037f63fbe6bfebccd7e7dd1ee12ca4446d95951c95a053c07aa77dba627f5/http%3A//www.linuxsecurity.com/component/option%2Ccom_dictionary/task%2Cview/id%2C411/\">SCA</a>) just by signing their certificate, not by borrowing their precious private key to them. You can even buy yourself such a CA from <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4d971fc9ca283915d7465f6d5395042527b53168aee4e38fc4b53dbaa91e885a/http%3A//geotrust.com/enterprise-ssl-certificates/georoot/\">GeoTrust</a> or <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d1dc1f8115994a634494fc6fef5b0528451f640448b584ef9326c3f53ea983d5/http%3A//www.sslshopper.com/article-trusted-root-signing-certificates.html\">elsewhere</a>.\n\nIt is unclear how many intermediate certification authorities really exist, and yet each of them has \"god-like power\" to impersonate any https web site using a <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e06715244d199204c5b167bee0452fc6ae957b4dd65dc64f08c2adcff27c4b0e/http%3A//en.wikipedia.org/wiki/Man-in-the-middle_attack\">Man in the Middle</a> (MITM) attack scenario. <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/226da17a879c9fa4516104e84cd95c0dea5026fda1b838a9b758973eb24e078d/http%3A//www.freedom-to-tinker.com/blog/sjs/web-security-trust-models\">Researchers at Princeton are acknowledging this problem</a> and recommending Certificate Patrol.  Revealing the inner workings of <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d249266a72a169662e9b19f14bdbfff3d0296b234db832f3a7d050721b16ccd6/http%3A//en.wikipedia.org/wiki/X.509\">X.509</a> to end users is still deemed too difficult, but only getting familiar with this will really help you get in control. That's why Certificate Patrol gives you insight of what is happening.\n\nIf you still think a MITM attack is unlikely to happen to you, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d366c638e20f7c373ca99e64d90d0054a27cc747ff02ad6a7ae28b6600e8525a/http%3A//bitsandchaos.wordpress.com/2010/03/29/certificate-patrol-can-really-save-your-pocket/\">read this user report</a>.",
+        "de": "Dein Web-Browser vertraut vielen Zertifikationsautoritäten (CAs), welche wiederrum noch mehr <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/47a6df2d74bde95c443b3a478df1fc0123fabf346998a2bbb1a44765b9b48bdb/http%3A//en.wikipedia.org/wiki/Intermediate_certificate_authorities\">Zwischenzertifizierungsstellen</a> vertrauen. Manche können es sich sogar leisten solch eine \"intermediate\" CA zu erwerben und können damit Legitim digital signierte Zertifikate ausstellen für jede Adresse und Website, die sie wollen. Dieses Add-on hilft den Überblick zu behalten und <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1f7778608b1f6d0bc7b712b054a13825b20079439fc0149b7e98d669dbf64bc5/http%3A//de.wikipedia.org/wiki/Man-In-The-Middle-Angriff\">MITM-Angriffe</a> abzuwehren.",
+        "it": "Il tuo web browser ha molta fiducia per tante autorita` e sub-autorita` di certificazione, e lo fa ciecamente, perche` rivelare il funzionamento interiore di X.509 e` considerato troppo difficile per comuni mortali. Tu per fortuna sei un utente in gamba che apprezza tenere d'occhio quali certificati vengono aggiornati e assicurarti che nessuna delle autorita` ed <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/47a6df2d74bde95c443b3a478df1fc0123fabf346998a2bbb1a44765b9b48bdb/http%3A//en.wikipedia.org/wiki/Intermediate_certificate_authorities\">autorita` intermedie</a> abusi della fiducia del tuo browser a scopo di monitorare le tue attivita` su siti https."
+    },
+    "developer_comments": {
+        "en-US": "You'll see certificate information pop up whenever you visit a\nnew https: website, including <a rel=\"nofollow\" href=\"https://addons.mozilla.org\">https://addons.mozilla.org</a> for\nexample. \"New\" is anything Patrol hasn't seen and stored yet.\n\nYou are also prompted whenever a web site updates its certificate\nand given the opportunity to compare the two certificates side by\nside, line by line. See the screenshot for an example.\n\n\n<b>Even if you do not fully understand what is shown to you, you\nget a chance of distinguishing legitimate from suspicious changes.</b>\nHere's a little list of things to look out for:\n<ol><li>If the old certificate is about to expire (Validity / Expires On),\n  it was necessary to replace it with a new one. <i>CertPatrol\n  will check this for you.</i></li><li>In most cases web sites keep using the same certification\n  authority (Issued By) over time. Should the web site have changed\n  its certification authority, make sure the old certificate was\n  about to expire. <i>CertPatrol will assist you with this.</i></li><li>You may want to consider the most popular CAs (like maybe CAcert, Entrust,\n  Equifax, GoDaddy, NetworkSolutions, Thawte and VeriSign.. to mention some)\n  to be less likely to help in MITM attacks, but that is only a guess.\n  Especially since in each country local CAs may be legitimately\n  well established.</li><li>Comodo, GeoTrust, GlobalSign, QuoVadis, RSA WebTrust and StartCom\n  are known to offer intermediate CA for money. Still StartCom is extremely\n  popular with small and private web sites for its free services.</li><li>If all certificates you see are always issued by the same\n  certification authority, you should be very suspicious. Try\n  searching for random https: sites and see if they still all seem\n  signed by the same CA.</li><li>In case of doubt install the <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/firefox/addon/perspectives/\">Perspectives</a> or <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/firefox/search/?q=convergence&amp;cat=all\">Convergence</a> add-ons to make further checks on the credibility of a certificate. The downside of these add-ons is, you reveal who you communicate with to an external service — so better only use it when necessary. In theory you could have some tech savvy friends run notaries for you, the more the better, but would you want to expose your surfing habits to them?</li><li>If the web site is important to you, make a research on the name of\n  the new CA. Make a phone call to the owner of the web site and ask them\n  to confirm the SHA1 fingerprint shown on your screen.\n  The fingerprint is currently close to impossible to falsify.\n  Ask them to send you future certificate fingerprints by snail mail\n  <i>before</i> they install it.</li><li>Some clustered sites such as <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8a2e4337094982781911a88c16aac09f5b06ef25aa3cc18201f722822c7511e7/http%3A//bookryanair.com\">bookryanair.com</a> make things\n  more complicated by using several inconsistent certificates for the same\n  domain name. That will look unnecessarily suspicious. Usually such\n\n  certificates will look very similar to each other and appear to be\n  changing frequently. We can only hope for these companies to fix\n  their set-ups.</li></ol>It is very important to understand that certificates do not make a statement about the trustworthiness of a web site, but whether that web site is indeed what you think it is. In practice you should always be very suspicious if there are problems with your electronic banking or other sites you trust for very important operations, whereas you can probably relax if a certification problem arises for a web site that you are merely intending to have a quick look at. <b>The more a web site is important to YOU, the more you should be cautious!</b> That is the most essential rule of thumb in dealing with the wild west of Internet certification today.\n\nThis extension is similar to the as yet unreleased 'Certlock'. More info on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6bb4ada1ee107bfa2e4861fc7343850516351143d63b004fadb8c0b2d1e09152/http%3A//patrol.psyced.org/\">http://patrol.psyced.org</a>."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/certificate-patrol/edit",
+    "guid": "CertPatrol@PSYC.EU",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://patrol.psyced.org",
+        "de": "http://patrol.psyced.org",
+        "it": "http://patrol.psyced.org"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/6/6415-64.png?modified=1493641219",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/6/6415-32.png?modified=1493641219",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/6/6415-64.png?modified=1493641219"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-05-01T11:51:16Z",
+    "name": {
+        "en-US": "Certificate Patrol",
+        "de": "Certificate Patrol",
+        "it": "Certificate Patrol"
+    },
+    "previews": [
+        {
+            "id": 44317,
+            "caption": {
+                "en-US": "Certificate Patrol on duty."
+            },
+            "image_size": [
+                400,
+                300
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/44/44317.png?modified=1530208337",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/44/44317.png?modified=1530208337"
+        },
+        {
+            "id": 59945,
+            "caption": {
+                "en-US": "Adding and inspecting closely a new certificate."
+            },
+            "image_size": [
+                700,
+                446
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/59/59945.png?modified=1530208338",
+            "thumbnail_size": [
+                314,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/59/59945.png?modified=1530208338"
+        },
+        {
+            "id": 59946,
+            "caption": {
+                "en-US": "Updating a certificate, comparing the changes."
+            },
+            "image_size": [
+                501,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/59/59946.png?modified=1530208338",
+            "thumbnail_size": [
+                191,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/59/59946.png?modified=1530208338"
+        },
+        {
+            "id": 59947,
+            "caption": {
+                "en-US": "Certificate Manager."
+            },
+            "image_size": [
+                600,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/59/59947.png?modified=1530208339",
+            "thumbnail_size": [
+                229,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/59/59947.png?modified=1530208339"
+        },
+        {
+            "id": 59948,
+            "caption": {
+                "en-US": "Preferences and Clear Recent History."
+            },
+            "image_size": [
+                624,
+                440
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/59/59948.png?modified=1530208339",
+            "thumbnail_size": [
+                284,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/59/59948.png?modified=1530208339"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.92318,
+        "count": 68,
+        "average": 3.9706,
+        "text_count": 68
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/certificate-patrol/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/6415",
+    "slug": "certificate-patrol",
+    "status": "public",
+    "summary": {
+        "en-US": "Your browser trusts many certification authorities and intermediate sub-authorities quietly, every time you enter an HTTPS web site. This add-on reveals when certificates are updated, so you can ensure it was a legitimate change.",
+        "de": "Dein Web-Browser vertraut vielen Zertifikationsautoritäten (CAs), welche wiederrum noch mehr Sub-CAs vertrauen. Legitim digital signierte Zertifikate können von irgendwo herkommen. Dieses Add-on hilft Dir den Überblick zu behalten.",
+        "it": "Il tuo web browser ha molta fiducia per tante autorita` e sub-autorita` di certificazione. Questo add-on ti permette di monitorare tutti gli aggiornamenti di certificati, anche quelli considerati legittimi che normalmente accadono in silenzio."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://patrol.psyced.org"
+    },
+    "tags": [
+        "certificate",
+        "certification authority",
+        "encryption",
+        "https",
+        "issuer",
+        "man in the middle",
+        "mitm",
+        "privacy",
+        "security",
+        "ssl",
+        "tls",
+        "x509"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/certificate-patrol/",
+    "weekly_downloads": 70
+}

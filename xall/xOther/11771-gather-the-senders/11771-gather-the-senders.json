@@ -1,0 +1,181 @@
+{
+    "id": 11771,
+    "authors": [
+        {
+            "id": 4723245,
+            "name": "Fabien Arcellier",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/fabien-arcellier/",
+            "username": "fabien-arcellier",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/4/4723/4723245.png?modified=1361934387"
+        }
+    ],
+    "average_daily_users": 112,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 125190,
+        "compatibility": {
+            "thunderbird": {
+                "max": "12.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/125190",
+        "files": [
+            {
+                "id": 107311,
+                "created": "2011-01-06T01:25:53Z",
+                "hash": "sha256:4608ef184ee349cd24c050440982c6da7d25bf3332d8274dada1af14784a9345",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 11264,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/107311/gather_the_senders_!-1.2.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "* 1.2.2 *\n- Add the German translation de-DE (Thanks to Marcus Barkhahn)\n\n* 1.2.1 *\n- Add 3 options for Gather the recipients (To:, Cc:, To&amp;Cc:)\n- Move menu separator after the options\n- Add variables {$VERSION} and {$DEBUG} that are preprocessed when the application is built\n- Rename skin/icon.png to skin/icon_32_32.png\n- Rename gatherTheSenders.common.js in gatherTheSenders.js\n- Rename content/gatherTheSendersMenuOverlayT3.xul in content/gatherTheSendersMenuOverlay.xul\n\n* 1.2.0 *\n- Features works on smart directories of Thunderbird 3\n- Features works with Topic view\n- Drop compatibility with branch 2 of Thunderbird\n- Add Gather the recipients feature\n- Add an icon to the extension\n\n* 1.1.0 *\n- compatible with directory from Thunderbird 3 (not smart directory)\n\n* 1.0.0a *\n- Correction in the translation : en-US/ and fr-FR/\n- Turn off the debug mode"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.2.2",
+        "version": "1.2.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "fr": "Grace à cette extension, sélectionnez en un clic tous les mails du dossier provenant des expéditeurs des mails déjà sélectionnés.\n\nVous pourrez les déplacer, les copier vers un autre dossier pour travailler plus facilement, les supprimer ...\n\nVous pouvez, par exemple, supprimer facilement le spam.\n\nComment utiliser cette extension :\n- sélectionner des messages\n- clique-droit sur eux avec la souris\n- cliquez sur \"Selectionner les mails des memes expediteurs\"\n\n\n<strong>Proposer des idées pour améliorer Rassembler les expéditeurs</strong>\nVenez proposer et partager vos idées pour améliorer cette extension sur <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e6cb6958c4b73904f421f98bd1542034b90aa2d335ac8384a804eef6b733ba95/http%3A//code.google.com/p/gather-the-sender/wiki/Suggestions\">la page de suggestion de Gather the sender</a> sur <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/77f339bb76d6eebc25902e9e44d9f833c63d0be48716b7ea901baafb859eafc0/http%3A//code.google.com/p/gather-the-sender/\">Google code</a>.",
+        "en-US": "Thanks to this extension, with just one click you can select all other emails in the directory from the same sender as a selected email.\n\nThen you can move, copy, delete them, paste them into another directory ...\nYou could, for example, easily delete the spam.\n\nHow to use this extension:\n\n- select the folder containing the messages you want to choose.\n- select one or many messages by using Left click, CTRL + Left click or Shift + Left click\n- right click with the mouse on one of those messages\n- from the menu that opens up click on \"Select the mails from the same senders\"\n\nThis process will highlight all the messages from the senders of mails selected, which you can then either delete, copy or move to another folder, mark \"unread\", save etc.\n\n<strong>Propose suggestions to improve Gather the senders</strong>\nCome to propose and share your ideas to improve Gather the sender on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e6cb6958c4b73904f421f98bd1542034b90aa2d335ac8384a804eef6b733ba95/http%3A//code.google.com/p/gather-the-sender/wiki/Suggestions\">the suggestion page of Gather the sender</a> on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/77f339bb76d6eebc25902e9e44d9f833c63d0be48716b7ea901baafb859eafc0/http%3A//code.google.com/p/gather-the-sender/\">Google code</a>."
+    },
+    "developer_comments": {
+        "fr": "Cette extension a été testée sous Window et sous linux (par Krisztian).\n\nSi vous l'avez essayez sur d'autres plates-formes, envoyez moi un email à fabien_arcellier@yahoo.fr pour me communiquer vos résultats.\n\nSi vous avez une idée de fonctionnalité associé à cette extension, vous pouvez m'envoyer un email. C'est plus facile pour comprendre ce que vous imaginez que dans une critique.",
+        "en-US": "This extension has been tested on Window and linux (by Krisztian).\nIf you have tested on another OS, you could send me an email to fabien_arcellier@yahoo.fr"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/edit",
+    "guid": "gatherauthors@fabien-tools.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://code.google.com/p/gather-the-sender/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/11/11771-64.png?modified=1294382586",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/11/11771-32.png?modified=1294382586",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/11/11771-64.png?modified=1294382586"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-01-07T06:42:14Z",
+    "name": {
+        "fr": "Rassembler les expéditeurs!",
+        "en-US": "Gather the senders !"
+    },
+    "previews": [
+        {
+            "id": 32045,
+            "caption": {
+                "fr": "Sélection de tous les mails envoyés par les auteurs des 2 mails sélectionnés - avant",
+                "en-US": "Selection of all mails sent by the authors of 2 mails selected - before"
+            },
+            "image_size": [
+                700,
+                310
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/32/32045.png?modified=1530208489",
+            "thumbnail_size": [
+                320,
+                142
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/32/32045.png?modified=1530208489"
+        },
+        {
+            "id": 32046,
+            "caption": {
+                "fr": "Sélection de tous les mails envoyés par les auteurs des 2 mails sélectionnés - après",
+                "en-US": "Selection of all mails sent by the authors of 2 mails selected - after"
+            },
+            "image_size": [
+                700,
+                207
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/32/32046.png?modified=1530208490",
+            "thumbnail_size": [
+                320,
+                95
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/32/32046.png?modified=1530208490"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.48647,
+        "count": 24,
+        "average": 4.5417,
+        "text_count": 24
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/11771",
+    "slug": "gather-the-senders",
+    "status": "public",
+    "summary": {
+        "fr": "Sélectionner tous les emails où les expéditeurs sont identiques à ceux des mails déjà sélectionnés",
+        "en-US": "Select all the mails in a directory sent by the selected authors."
+    },
+    "support_email": {
+        "fr": "fabien_arcellier@yahoo.fr",
+        "en-US": "fabien_arcellier@yahoo.fr"
+    },
+    "support_url": {
+        "en-US": "http://code.google.com/p/gather-the-sender/issues/list"
+    },
+    "tags": [
+        "gather",
+        "helper",
+        "mails",
+        "sort",
+        "spam",
+        "useful"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/",
+    "weekly_downloads": 24
+}

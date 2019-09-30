@@ -1,0 +1,182 @@
+{
+    "id": 318229,
+    "authors": [
+        {
+            "id": 66077,
+            "name": "David White",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/whitedavidp/",
+            "username": "whitedavidp",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 578,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 1729228,
+        "compatibility": {
+            "thunderbird": {
+                "max": "57.0",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/use-bcc-instead/versions/1729228",
+        "files": [
+            {
+                "id": 333138,
+                "created": "2015-08-01T13:10:23Z",
+                "hash": "sha256:1fa3f59b822ef0f91af082efcd1ffc26a8b17fa5f85b076ce70154f2ce7c319d",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 206485,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/333138/use_bcc_instead-3.4.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Fix for Extended Recipients Column which was recently broken by changes made to Thunderbird."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/use-bcc-instead/versions/3.4.1",
+        "version": "3.4.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "fr": "SOMMAIRE:\n\nQui parmi vous n'a jamais fait l'erreur d'envoyer un message à un grand nombre de destinataires sans utiliser le mode \"Copie Cachée à:\" ? Révélant ainsi à tous les destinataires l'adresse électronique de chacun!\n\nCe module complémentaire ou extension propose plusieurs fonctions destinées à éviter ce type de désagrément. Avant tout, ce module contrôle chaque message au moment de l'envoi, afin de déterminer si une action de sa part est nécessaire afin d'éviter ce type d'incident.\n\nPate-formes d'exploitation:\n\nJ'ai testé personnellement la version 1.x de l'extension uniquement sur Windows pro XP. J'ai de bonnes raisons de penser que cette extension fonctionne avec d'autres systèmes d'exploitation. SVP, faites moi part de vos observations.\n\nDETAILS:\nLors de l'envoi d'un messsage\n\nAprès installation, cette extesnion inspectera la liste des destinataires de chaque message. Avant l'envoi, il cherchera les destinataires en mode \"Pour:\" et \"Copie à:\". Pour ceux-là, il modifiera si nécessaire le mode en fonction des options spécifiées par l'utilisateur dans le menu options du module complémentaire.\n\nSi l'option \"toujours remplacer \"Pour:\" et \"Copie à:\" par \"Copie Cachée à:\" est sélectionnée (cette option n'est pas cochée par défaut après l'installation), chaque destinataire en mode \"Pour:\" ou \"Copie à:\" sera automatiquement changé en \"Copie Cachée à:\".  Cela signifie qu'aucun message ne sera envoyé avec des destinataires en mode \"Pour:\" ou \"Copie à:\".  Ces modes seront toujours modifiés  en \"Copie Cachée à:\".\n\nSi l'option \"toujours remplacer \"Pour:\" et \"Copie à:\" par \"Copie Cachée à:\" n'est pas sélectionnée, cette extension compte le nombre de destinataires qui sont en mode \"Pour:\" ou \"Copie Cachée à:\". Si ce nombre dépasse la valeur choisie par l'utilisateur dans la fenêtre option du module complémentaire, ou si chaque ligne de destinataires est occupée par un groupe de contacts en mode \"Pour:\" ou \"Copie Cachée à:\", cette extension permettra d'éviter la divulgation involontaire des adresses électroniques. L'action du module dépendra des choix de configuration de l'utilisateur dans la fenêtre options du module complémentaire. Par défaut, un message d'avertissement est affiché au moment de l'envoi et donne ainsi une dernière chance à l'expéditeur de reconsidérer l'envoi de ce message. Cette option peut être configurée dans l'optique d'empêcher l'envoi du message.\n\nLors de la création d'un message\n\nPar défaut,  Thunderbird ouvre toujours un nouveau message ou un \"message à transférer\" avec le mode \"Pour:\". Grace à cette extension, vous pouvez changer \"Pour:\" en \"Copie à:\" ou en \"Copie Cachée à:\". Ainsi, lorsque Thunderbird ouvre un nouveau message ou un \"message à transférer\", le premier destinataire est affiché avec le mode sélectionné dans le menu options du module complémentaire.\n\nParfois vous pouvez avoir envie de changer le mode de tous les destinataires d'un message de l'option \"Pour:\" vers \"Copie à:\" ou \"Copie Cachée à:\". Par défaut, Thunderbird requiert le changement de chaque destinataire un à un. Cette extension offre la possibilité d'opérer ce changement depuis plusieurs endroits:\n\n   élément du menu Options\n   élément du menu Contextuel\n   Bouton que vous pouvez faire glisser sur la barre d'outils depuis la fenêtre \"Modification de la Barre d'Outils\", accessible par le chemin suivant : \"affichage\" -  \" Barre d'Outils\" - \"Personnaliser\"\n\nOPTIONS:\nCette extension est articulée en une configuration principale et deux secondaires pour planifier l'action du module lors de l'envoi d'un message. Elle propose également deux options de contrôle lors de la création d'un message. Ces options peuvent être facilement utilisées via la fenêtre Options du module complémentaire. Chemin d'accès: \"Outils\" - \"Modules Complémentaires\" - puis, dans la nouvelle fenêtre, la liste des extensions s'affiche: sélectionnez Options dans l'extension Bcc Instead. La plupart des options proposées ne nécessitent pas le redémarrage de Thunderbird.\n\nNOTES:\nCette extension est connue pour être incompatible avec l'extension SendLater3 et doit être également incompatible avec d'autres fonctionnalités de Thunderbird. Aucune solution à ce problème n'est disponible pour le moment. Désolé.",
+        "en-US": "<b>Sorry but this addon is no longer supported in TB 60.  Addon authors have been told \"Many things have changed in the Mozilla platform code on which Thunderbird and add-ons are based.\" We have also been told \"the picture beyond Thunderbird version 60 is less certain, given the continued high rate of change in Firefox platform code.\" Under these conditions, it no longer makes sense to maintain this addon. I for one have simply stopped updating the Mozilla products. Do so at your own risk. Also, note that someone else has modified this addon on their own and maybe that will work into the future. This developer has nothing to do with that project however. See  <a href=\"https://github.com/revad/use_bcc_instead_A\" rel=\"nofollow\">https://github.com/revad/use_bcc_instead_A</a>.</b>\nSUMMARY:\nWho among us has not made the mistake of sending a 'broadcast' email to a large number of recipients without using BCC; thereby revealing everyone's email addresses to all?\n\nThis simple add-on offers several functions designed to prevent this from occurring. First and foremost it does so by checking each email, upon sending, to see if any corrective action should be taken to prevent this mishap.\n\nPLATFORMS:\nI have personally tested version 3.x of the add-on only under Windows XP Pro. I have every reason to expect that this add-on will work on other platforms as well - please let me know what you find.\n\nDETAILS:\nWhen Sending Email\n\nAfter installation, this add-on will inspect the recipient list for each email sent. Before the sending occurs it looks for recipients addressed using either TO or CC. When found, it will take action based upon the user-specified options that have been set.\n\nIf the Always Substitute BCC for TO and CC option is enabled (it is not by default), any recipients addressed using TO or CC are automatically changed so that BCC is used instead before the message is actually sent. This means that no email will ever be sent with a TO or CC recipient. The TO or CC will be changed to BCC every time.\n\nIf the Always Substitute BCC for TO and CC option is not enabled, this add-on will count the number of recipients that are addressed using either TO or CC. If that count exceeds a value set by the user in this add-on's options panel or if any recipient is a mailing list addressed using TO or CC, this add-on will take action to help prevent the unintended revelation of recipient email addresses. The action that this add-on takes depends on how the user has configured an additional setting in the add-on's options panel. By default, a warning message is displayed giving the user a chance to reconsider the sending of the email. This option can be changed to simply prohibit the sending of the email.\n\nWhen Composing Email\n\nBy default, Thunderbird always creates new and forwarded messages with recipients addressed using TO. With this add-on, you can optionally change this from TO to either CC or BCC. So when Thunderbird's compose window opens for new or forwarded messages, the first blank recipient will be shown as addressed using the selected method.\n\nSometimes you might want to change all of a message's recipients from TO to CC or BCC. By default, Thunderbird requires that you change each recipient one-by-one. This add-on optionally provides the ability to trigger this change from the following locations:\n\n   1. a menu item on the compose window Options menu\n   2. a menu item on the compose window context menu\n   3. a button you can drag onto the compose window toolbar\n\nWhen Viewing Email Headers in Thunderbird's Thread Pane\n\nBy default, when sending an email containing only BCC'ed recipients, Thunderbird adds a TO recipient named 'undisclosed-recipients:;'. This is the value shown in the standard Recipient column of the thread pane (upper, right panel) for the Sent and similar folders. This information is not particularly informative to the end user who would likely prefer to see the BCC recipient list instead.\n\nSo for Thunderbird versions above 2.x, this addon provides a new custom column for the thread pane called 'Recipient-Extended' that is intended to be used as a replacement for the standard Recipient column. Once added to the pane view for the Sent and similar folders, this column will show the following: TO recipients (unless 'undisclosed-recipients:;') OR CC recipients OR BCC recipients.\n\nOPTIONS:\nThis add-on offers one main and two secondary user-configured options that control its behavior when sending email. It also provides two options that control its behavior when composing email. These can most easily be manipulated via the built-in add-on options dialog. To access this dialog, go to the Tools menu and select 'Add-ons'. You will see a list of installed add-ons and 'Use Bcc Instead' should be in the list. If not, the installation did not succeed. If so, just press the Options button. Most of these options do not require a restart of Thunderbird to take effect.\n\nNOTES:\nThis add-on is known to be incompatible with the the very fine, SendLater3 add-on and may be incompatible with other add-ons which 'hook' the Thunderbird send functionality. At this point, no known solution is available. Sorry."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/use-bcc-instead/edit",
+    "guid": "{cc138c46-ac77-4397-afc0-6cb6a13b7242}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/318/318229-64.png?modified=1546889214",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/318/318229-32.png?modified=1546889214",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/318/318229-64.png?modified=1546889214"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-08-01T21:41:11Z",
+    "name": {
+        "fr": "Use Bcc Instead",
+        "en-US": "Use Bcc Instead"
+    },
+    "previews": [
+        {
+            "id": 67452,
+            "caption": {
+                "en-US": "Addon provides a warning message when either too many recipients or a mailing list are not BCC'ed. Also note toolbar button to provide easy change of addressing mode for all recipients."
+            },
+            "image_size": [
+                700,
+                454
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67452.png?modified=1530208964",
+            "thumbnail_size": [
+                308,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67452.png?modified=1530208964"
+        },
+        {
+            "id": 67453,
+            "caption": {
+                "en-US": "Addon options dialog. Options available for both sending and composing email. Control the number of non-mailing list recipients required to trigger a warning (mailing lists always trigger a warning) and control if the email send is strictly prohibited or not."
+            },
+            "image_size": [
+                573,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67453.png?modified=1530208964",
+            "thumbnail_size": [
+                218,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67453.png?modified=1530208964"
+        },
+        {
+            "id": 67715,
+            "caption": {
+                "en-US": "For TB 3+, provides a Recipient-Extended column for the message list that shows BCC recipients in cases where all recipients were addressed using BCC. TB's default recipient column shows either \"undisclosed-recipients\" or the sender's name - neither of which are very informative to the end user."
+            },
+            "image_size": [
+                700,
+                425
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67715.png?modified=1530208965",
+            "thumbnail_size": [
+                320,
+                194
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67715.png?modified=1530208965"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.57415,
+        "count": 29,
+        "average": 4.6207,
+        "text_count": 29
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/use-bcc-instead/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/318229",
+    "slug": "use-bcc-instead",
+    "status": "public",
+    "summary": {
+        "fr": "Who among us has not made the mistake of sending a 'broadcast' email to a large number of recipients without using BCC; thereby revealing everyone's email addresses to all? This simple add-on attempts to prevent this from occurring.",
+        "en-US": "Sorry but this addon is no longer supported in TB 60.  See below.\nWho among us has not made the mistake of sending a 'broadcast' email to a large number of recipients without using BCC; thereby revealing everyone's email addresses to all?"
+    },
+    "support_email": {
+        "en-US": "whitedavidp@yahoo.com"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/use-bcc-instead/",
+    "weekly_downloads": 75
+}

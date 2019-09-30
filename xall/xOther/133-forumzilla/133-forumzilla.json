@@ -1,0 +1,106 @@
+{
+    "id": 133,
+    "authors": [
+        {
+            "id": 429,
+            "name": "Myk Melez",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mykmelez/",
+            "username": "mykmelez",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/429.png?modified=1561478368"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "seamonkey": [
+            "rss-news-and-blogging"
+        ],
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 34486,
+        "compatibility": {
+            "seamonkey": {
+                "max": "1.1.*",
+                "min": "1.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "0.6"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/34486",
+        "files": [
+            {
+                "id": 17763,
+                "created": "2007-07-21T18:49:48Z",
+                "hash": "sha256:03da180dc3b201518a88eee89f9b604b99d14bad89706ae5557d8f3349da9934",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 69632,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17763/forumzilla-0.5.8-tb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version:\n\n    * adds an \"Export OPML...\" function that writes your list of subscriptions to an OPML XML file;\n\n    * reduces duplicates by reverting to identifying stories by URL instead of a hash of URL, date, and title when the feed doesn't provide unique IDs for its items; Forumzilla still uses a hash for feeds in \"quick mode\" (i.e. when you tell Forumzilla to show you \"just the summary\" via the advanced options section of the subscriptions dialog box);\n\n    * reduces duplicates by checking a few variations on URLs when using URLs to identify feeds; specifically, Forumzilla tries the URL with or without a trailing slash and \"www.\" at the beginning of the hostname;\n\n    * supports the XML base attribute when added to the root element of an Atom feed;\n\n    * fixes a couple bugs when retrieving the timestamp and escaped HTML content of items in an Atom feed.\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.8",
+        "version": "0.5.8"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Forumzilla lets you read news and blog feeds in your email application.  It is similar to the feed reader built into Thunderbird, but it lets you download stories into any folder in any POP, IMAP, or local account (configurable per feed).\n\nYou can manage feeds with all the regular features of Thunderbird/SeaMonkey, like filters, labels, searches, and views.  And you can choose to display entire stories or just summaries (configurable per feed).\n\nForumzilla downloads feeds every 30 minutes or on another schedule you specify (configurable per feed), and you can import OPML feed lists (a.k.a. blog rolls).\n\nIt supports all common feed formats (RSS 0.9, 1.0, and 2.0 plus Atom 0.3 and 1.0).\n\nTo try it out, install it, following the instructions above, restart Thunderbird/SeaMonkey, and then select Feed Subscriptions from the Tools menu (in SeaMonkey, open the Mail window first).\n\nTip: add a Feeds button to your toolbar in Thunderbird for quick access to your feeds subscriptions.  Just right-click on the toolbar, select Customize... from the context menu, then drag-and-drop the Feeds button from the Customize palette to the toolbar.\n"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/edit",
+    "guid": "{bf63b470-0199-4a8d-8bdd-622c8320ac9e}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://forumzilla.mozdev.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2007-07-23T03:50:32Z",
+    "name": {
+        "en-US": "Forumzilla"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.76498,
+        "count": 5,
+        "average": 3.2,
+        "text_count": 5
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/133",
+    "slug": "forumzilla",
+    "status": "public",
+    "summary": {
+        "en-US": "Forumzilla lets you read news and blog feeds in your email application.  It is similar to the feed reader built into Thunderbird, but it lets you download stories into any folder in any POP, IMAP, or local account (configurable per..."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/",
+    "weekly_downloads": 27
+}

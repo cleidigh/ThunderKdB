@@ -1,0 +1,166 @@
+{
+    "id": 390359,
+    "authors": [
+        {
+            "id": 85036,
+            "name": "Philipp Kewisch",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kewisch/",
+            "username": "kewisch",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/85/85036.png?modified=1509020086"
+        }
+    ],
+    "average_daily_users": 214,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "https://paypal.me/kewisch",
+    "current_version": {
+        "id": 1612074,
+        "compatibility": {
+            "thunderbird": {
+                "max": "45.*",
+                "min": "14.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/webdav-for-filelink/versions/1612074",
+        "files": [
+            {
+                "id": 280862,
+                "created": "2014-10-18T11:49:41Z",
+                "hash": "sha256:6ab27e5fbb67be180732d51796942768118358134c27fc1e239c0c24a8e384ce",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 24834,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/280862/webdav_for_filelink-1.5-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/webdav-for-filelink/versions/1.5",
+        "version": "1.5"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This extension supports DAV quotas, but the feature is not provided by Apache's mod_dav by default. This may be different for other servers. For more information on webdav, see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5271d736b512d5bcd9a8c108d445abf502efc47fbb7f8c1e51f04be564880bf1/http%3A//www.webdav.org/\">webdav.org</a>.\n\nTo configure Apache's mod_dav to require authentication for writes but allow public access, you may use this configuration. GET and PROPFIND are still allowed.\n\n<code>\nDAV On\nAllowOverride None\nAuthUserFile    /path/to/htpasswd\nAuthType        Basic\nAuthName        \"DAV\"\n&lt;Limit PUT POST DELETE PROPPATCH MKCOL COPY MOVE LOCK UNLOCK&gt;\n  Require valid-user\n&lt;/Limit&gt;\n# No directory listing with GET method\nOptions -Indexes\n# No directory listing with webdav PROPFIND method\nRequestHeader set Depth 0\n</code>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/webdav-for-filelink/edit",
+    "guid": "cloudfile-webdav@mozilla.kewis.ch",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/390/390359-64.png?modified=1507651138",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/390/390359-32.png?modified=1507651138",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/390/390359-64.png?modified=1507651138"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-10-18T11:53:16Z",
+    "name": {
+        "en-US": "WebDAV for Filelink"
+    },
+    "previews": [
+        {
+            "id": 76071,
+            "caption": {
+                "en-US": "Composing an Email using a WebDAV store for upload"
+            },
+            "image_size": [
+                640,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/76/76071.png?modified=1530209050",
+            "thumbnail_size": [
+                244,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/76/76071.png?modified=1530209050"
+        },
+        {
+            "id": 76073,
+            "caption": {
+                "en-US": "A DAV storage with quotas"
+            },
+            "image_size": [
+                568,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/76/76073.png?modified=1530209051",
+            "thumbnail_size": [
+                216,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/76/76073.png?modified=1530209051"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.14675,
+        "count": 19,
+        "average": 4.2105,
+        "text_count": 19
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/webdav-for-filelink/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/390359",
+    "slug": "webdav-for-filelink",
+    "status": "public",
+    "summary": {
+        "en-US": "Adds the possibility to use a WebDAV store for Filelink. With this extension you can link attachments to a WebDAV service, for example as provided by Apache's mod_dav or some public services."
+    },
+    "support_email": {
+        "en-US": "mozilla-extensions-webdav-filelink@kewis.ch"
+    },
+    "support_url": null,
+    "tags": [
+        "attachment",
+        "compose",
+        "filelink",
+        "webdav"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/webdav-for-filelink/",
+    "weekly_downloads": 47
+}

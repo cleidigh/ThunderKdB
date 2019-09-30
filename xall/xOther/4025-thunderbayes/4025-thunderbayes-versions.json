@@ -1,0 +1,213 @@
+{
+    "page_size": 25,
+    "page_count": 1,
+    "count": 6,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 36405,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "2.0.0.*",
+                    "min": "1.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbayes/versions/36405",
+            "files": [
+                {
+                    "id": 19699,
+                    "created": "2007-10-01T20:19:31Z",
+                    "hash": "sha256:3cef9199d2083350bc64c6935eb0445d45ee9184eb88afb0b705e4381f795cfe",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 5146624,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/19699/thunderbayes-1.0.1-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": null,
+            "release_notes": {
+                "en-US": "1.0.1 is a bug fix release. It fixes issues with loading and saving ThunderBayes settings.\n\nNew in version 1.0:\n\n- Added integrated SpamBayes proxy server (can be disabled/bypassed).\n- Added ThunderBayes configuration in Thunderbird Account Settings (POP3 accounts only).\n- Implemented REST API for SpamBayes, which allows more efficient trainging and automatically updates the SpamBayes review page when training in Thunderbird."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbayes/versions/1.0.1",
+            "version": "1.0.1"
+        },
+        {
+            "id": 36268,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "2.0.0.*",
+                    "min": "1.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbayes/versions/36268",
+            "files": [
+                {
+                    "id": 19559,
+                    "created": "2007-09-25T19:23:36Z",
+                    "hash": "sha256:1986a5215120e8d6cde08645e1082377dbe4084324deb2f8164b8706f223c513",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 5649408,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/19559/thunderbayes-1.0-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": null,
+            "release_notes": {
+                "en-US": "Changes in this version\n\n- Added integrated SpamBayes proxy server (can be disabled/bypassed).\n- Added ThunderBayes configuration in Thunderbird Account Settings (POP3 accounts only).\n- Implemented REST API for SpamBayes, which allows more efficient trainging and automatically updates the SpamBayes review page when training in Thunderbird."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbayes/versions/1.0",
+            "version": "1.0"
+        },
+        {
+            "id": 31733,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "2.0.0.*",
+                    "min": "1.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbayes/versions/31733",
+            "files": [
+                {
+                    "id": 14951,
+                    "created": "2007-04-19T16:23:29Z",
+                    "hash": "sha256:7cf0c0de51ccd7369e5085dd0cb5bfeda34e8699775ad0bdbd50899b64ede1ac",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 20480,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/14951/thunderbayes-0.2.2-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": null,
+            "release_notes": {
+                "en-US": "Very small update here. It appears that the nsICustomColumnHandler interface changed between Thunderbird 2.0b2 and 2.0.0.0 (a getRowProperties() method was added). Thanks to Kevin Yank for pointing this out! In plain English: it was a minor issue. Your error console will have less junk in it now.\n\nNew in version 0.2\n- Improved the toolbar button to allow messages to be marked as ham or spam\nregardless of the actual spam status of the message.\n- Added \"Move on mark as ham\" feature, which moves messages to Local\nFolders Inbox by default (the folder can be customized in the\nThunderBayes extension options).\n- Added two new columns to the message list (Thunderbird 2.0 only):\n1. Spam Status - a column that shows spam status with four icons:\n- Spam - red circle with slash\n- Unsure - yellow question mark\n- Ham - gray dot\n- Unknown - gray question mark (this means the message did not have\na \"X-Spambayes-Classification\" header, which probably\nmeans it did not pass through the SpamBayes proxy)\n2. Spam Probability - a column that shows the spam probability as a\npercentage (0% is ham, 100% is spam). Note that this column will be\nblank for messages that were received before ThunderBayes 0.2 was\ninstalled.\n- Added a new \"unsure\" button state to the toolbar button.\n- Improved spam status recognition. ThunderBayes now uses the\nX-SpamBayes-Classification header to determine the spam status. In the\npast it relied on the junk status which was set using a filter.\n- Thunderbird 2.0 compatibility."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbayes/versions/0.2.2",
+            "version": "0.2.2"
+        },
+        {
+            "id": 31506,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "2.0.0.*",
+                    "min": "1.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbayes/versions/31506",
+            "files": [
+                {
+                    "id": 14721,
+                    "created": "2007-04-11T15:10:45Z",
+                    "hash": "sha256:03650bd1c9766313cdaa13df67ccee6f000c9398ff18c5d60d586f28082de1b2",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 20480,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/14721/thunderbayes-0.2.1-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": null,
+            "release_notes": {
+                "en-US": "Update: bumped max version to make ThunderBayes work with Thunderbird 2.0.0.* (the previous version only worked with Thunderbird 2.0b2).\n\nNew in version 0.2\n- Improved the toolbar button to allow messages to be marked as ham or spam\nregardless of the actual spam status of the message.\n- Added \"Move on mark as ham\" feature, which moves messages to Local\nFolders Inbox by default (the folder can be customized in the\nThunderBayes extension options).\n- Added two new columns to the message list (Thunderbird 2.0 only):\n1. Spam Status - a column that shows spam status with four icons:\n- Spam - red circle with slash\n- Unsure - yellow question mark\n- Ham - gray dot\n- Unknown - gray question mark (this means the message did not have\na \"X-Spambayes-Classification\" header, which probably\nmeans it did not pass through the SpamBayes proxy)\n2. Spam Probability - a column that shows the spam probability as a\npercentage (0% is ham, 100% is spam). Note that this column will be\nblank for messages that were received before ThunderBayes 0.2 was\ninstalled.\n- Added a new \"unsure\" button state to the toolbar button.\n- Improved spam status recognition. ThunderBayes now uses the\nX-SpamBayes-Classification header to determine the spam status. In the\npast it relied on the junk status which was set using a filter.\n- Thunderbird 2.0 compatibility."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbayes/versions/0.2.1",
+            "version": "0.2.1"
+        },
+        {
+            "id": 30413,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "2.0b2",
+                    "min": "1.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbayes/versions/30413",
+            "files": [
+                {
+                    "id": 12823,
+                    "created": "2007-03-05T13:20:30Z",
+                    "hash": "sha256:be482b81b22ead65e42f8293f98edf4d55261318d975f4f1286f53218f26f6f9",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 20480,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/12823/thunderbayes-0.2-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": null,
+            "release_notes": {
+                "en-US": "New in version 0.2\n- Improved the toolbar button to allow messages to be marked as ham or spam\n  regardless of the actual spam status of the message.\n- Added \"Move on mark as ham\" feature, which moves messages to Local\n  Folders Inbox by default (the folder can be customized in the\n  ThunderBayes extension options).\n- Added two new columns to the message list (Thunderbird 2.0 only):\n  1. Spam Status - a column that shows spam status with four icons:\n     - Spam - red circle with slash\n     - Unsure - yellow question mark\n     - Ham - gray dot\n     - Unknown - gray question mark (this means the message did not have\n                 a \"X-Spambayes-Classification\" header, which probably\n                 means it did not pass through the SpamBayes proxy)\n  2. Spam Probability - a column that shows the spam probability as a\n     percentage (0% is ham, 100% is spam). Note that this column will be\n     blank for messages that were received before ThunderBayes 0.2 was\n     installed.\n- Added a new \"unsure\" button state to the toolbar button.\n- Improved spam status recognition. ThunderBayes now uses the\n  X-SpamBayes-Classification header to determine the spam status. In the\n  past it relied on the junk status which was set using a filter.\n- Thunderbird 2.0b2 compatibility. "
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbayes/versions/0.2",
+            "version": "0.2"
+        },
+        {
+            "id": 27920,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "1.5.0.*",
+                    "min": "1.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbayes/versions/27920",
+            "files": [
+                {
+                    "id": 12822,
+                    "created": "2007-03-05T13:20:30Z",
+                    "hash": "sha256:09b0b055db7c55daa44bacfc1942f1fabd880ad62e8f222b5ef0eb44d7ed9733",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 14336,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/12822/thunderbayes-0.1.1-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": null,
+            "release_notes": {
+                "en-US": "New in 0.1.1: progress feedback in status bar (training SpamBayes does not block GUI anymore)."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbayes/versions/0.1.1",
+            "version": "0.1.1"
+        }
+    ]
+}

@@ -1,0 +1,139 @@
+{
+    "id": 13509,
+    "authors": [
+        {
+            "id": 4777175,
+            "name": "Julian Fitzell",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/julian-fitzell/",
+            "username": "julian-fitzell",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 8,
+    "categories": {
+        "firefox": [
+            "privacy-security"
+        ],
+        "seamonkey": [
+            "privacy-and-security"
+        ],
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 1950268,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "32.0a1"
+            },
+            "seamonkey": {
+                "max": "2.35.*",
+                "min": "2.29a1"
+            },
+            "thunderbird": {
+                "max": "49.*",
+                "min": "32.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/keychain-services-integration/versions/1950268",
+        "files": [
+            {
+                "id": 517130,
+                "created": "2016-10-08T17:55:44Z",
+                "hash": "sha256:3cedd8afc29d5deaada192771ce579954e8d06f41d229d7e17c2e9b3b80cc009",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 58133,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/517130/keychain_services_integration-1.1.10-tb+fx+sm-mac.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-GB": "",
+            "en-US": "Basic searchLogins() implementation to support FF 49 (thanks to user bkimmett)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/keychain-services-integration/versions/1.1.10",
+        "version": "1.1.10"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Apple Keychain Services integration for Mozilla Gecko Toolkit\n\nStore your Firefox website usernames and passwords in Apple's Keychain Services, just like Safari and other browsers do on OS X. This allows you to use the same stored logins in any browser that uses the Keychain. It also allows you to take advantage of the security features of Keychain Services such as auto-locking when the screensaver is activated.\n\n<b>Note regarding support for Firefox 57+:</b>\n<blockquote>Unfortunately Mozilla is deprecating the interfaces needed to make this extension work and will be disabling them in Firefox 57. They will need to implement new APIs in order to keep this working in 57+ and it's not clear when or if this will happen. More details in <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/85dd4b5005dace4ab62e7c6546aa54ebf22a7ae0ffcad2cfd9d2ab0e77340961/https%3A//github.com/jfitzell/mozilla-keychain/issues/88\">the github issue</a>. Feel free to add your voice to the relevant Bugzilla tickets:<ul><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/93d8efb5c290ce2036f9cc33a7e310c1f4318a644cc4dfdb9d6771c4213315e5/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=106400\">[RFE] Pwmgr should support OS X Keychain</a></li><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a51340060cf925ec0f1d56b67a1b1631e14fa1ddba8c94388f87b25d1637d428/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1344788\">Implement login storage API</a></li></ul></blockquote>\nOnce installed, Firefox's password manager will continue to operate as normal, but passwords should be stored and read from the OS X Keychain instead of from Firefox's own database. You should normally be prompted once to migrate passwords from Firefox into the Keychain, but there is little other evidence within Firefox that the extension is running. The easiest way to check that the extension has loaded successfully is to open <code>Preferences</code>, click on the <code>Security</code> tab and look for the message <i>“Passwords are being managed by the Keychain Services Integration add-on”</i>. You will also probably see a <code>Manage Passwords...</code> button there that will launch the Keychain app.\n\nIf you encounter problems, turn on logging by typing <code>about:config</code> in the address bar, then searching for <code>signon.debug</code> and setting it to <code>true</code>. Log output can be found by selecting <code>Tools -&gt; Web Developer -&gt; Browser Console</code> from the menu.\n\nAs always, please <i>backup your keychain files before upgrading</i>, just in case.\n\n<b>Note about iCloud:</b> Because of Apple security controls, it does <i>not</i> seem possible to support iCloud storage unless Mozilla chooses to distribute Firefox via the App Store. Appropriate entitlements must also be requested when building the application. Unfortunately, it's not clear that either of these is likely to happen soon."
+    },
+    "developer_comments": {
+        "en-US": "Current versions (<a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/firefox/addon/keychain-services-integration/versions/1.1\">version 1.1</a> and later) require Firefox 4 and either OS X 10.6 or 10.5. Firefox Sync is not yet properly supported - these passwords will still be written to your Firefox password storage.\n\nUsers of older versions of Firefox, should try one of the older versions of this extension which is listed as compatible with their version.\n\n<b>Note: Recent changes to Mozilla Nightly 24.0a1 (ca. 2013-06-20) have broken this extension when \"Always use private browsing mode\" or \"Never remember history\" is enabled in Privacy preferences, or when signon.autofilForms is set to false. See <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6019cdeb266457b979a98ae21bd3e82835995c561ac4a66699e83a95c771978a/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=839961\">this issue</a> for more details.</b>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/keychain-services-integration/edit",
+    "guid": "macos-keychain@fitzell.ca",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2016-10-09T14:08:11Z",
+    "name": {
+        "en-US": "Keychain Services Integration"
+    },
+    "previews": [
+        {
+            "id": 36296,
+            "caption": null,
+            "image_size": [
+                700,
+                482
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/36/36296.png?modified=1530208593",
+            "thumbnail_size": [
+                290,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/36/36296.png?modified=1530208593"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.92945,
+        "count": 92,
+        "average": 3.9674,
+        "text_count": 91
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/keychain-services-integration/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/13509",
+    "slug": "keychain-services-integration",
+    "status": "public",
+    "summary": {
+        "en-US": "Store usernames and passwords in your Mac OS X Keychain."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/jfitzell/mozilla-keychain/"
+    },
+    "tags": [
+        "access control",
+        "keychain",
+        "keychain services",
+        "login",
+        "mac os x",
+        "nsiloginmanagerstorage",
+        "password"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/keychain-services-integration/",
+    "weekly_downloads": 29
+}

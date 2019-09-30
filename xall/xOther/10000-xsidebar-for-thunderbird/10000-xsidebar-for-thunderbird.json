@@ -1,0 +1,173 @@
+{
+    "id": 10000,
+    "authors": [
+        {
+            "id": 408,
+            "name": "Philip Chee",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/philip-chee/",
+            "username": "philip-chee",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 18,
+    "categories": {
+        "thunderbird": [
+            "contacts",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 122609,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.1.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xsidebar-for-thunderbird/versions/122609",
+        "files": [
+            {
+                "id": 104516,
+                "created": "2010-11-28T20:37:18Z",
+                "hash": "sha256:23c6a4dfd358ff77d753dc47488880bab9e1d233fa92150872004d22be5ef3ee",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 40960,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/104516/xsidebar_for_thunderbird-0.7-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 570,
+            "name": {
+                "en-US": "Custom License"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xsidebar-for-thunderbird/license/0.7"
+        },
+        "release_notes": {
+            "en-US": "What's new:\n    * Minimum supported version is now Thunderbird 3.0.\n    * Compact styles for the addons sidebar updated for Thunderbird 3.0 and 3.1. "
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xsidebar-for-thunderbird/versions/0.7",
+        "version": "0.7"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "xSidebar for Thunderbird ports the Firefox sidebar to Thunderbird. After installation there will be a sidebar in the Messenger, ViewMessage, and MessageCompose windows. These sidebars can be toggled open and closed with the F9 key, or from the View —&gt; Sidebar menu. Once installed, Firefox sidebar extensions that use the Firefox API can be made to work in Thunderbird.\n\nThese resources cover the basics of creating a Firefox sidebar extension:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/88568b4a2f893dcc95e0022a9f6feb2d5ef782527ab4516a95367dc8b98634d9/http%3A//developer.mozilla.org/en/docs/Creating_a_Firefox_sidebar\">http://developer.mozilla.org/en/docs/Creating_a_Firefox_sidebar</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cf17c085e80e22f4ad239b858a3d1376c9957376de4ba50e91446184562c4db0/http%3A//occidopagus.nl/firefox/emptysidebar/\">http://occidopagus.nl/firefox/emptysidebar/</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/dfef4234bad418413dafd201afe427a9b2f4e821ad573f7af3568541e4534836/http%3A//kb.mozillazine.org//Creating_sidebar\">http://kb.mozillazine.org//Creating_sidebar</a>"
+    },
+    "developer_comments": {
+        "en-US": "2010-07-21: xSidebarTIG v0.7:\n\n    * Minimum supported version is now Thunderbird 3.0.\n    * Compact styles for the addons sidebar updated for Thunderbird 3.0 and 3.1. \n\n2008-18-13: xSidebarTIG v0.6:\n\n    * [fix] Fix session history error in browser.xml (disable history in our sidebar browser element).\n    * [fix] Theme splitter not oriented vertical in TB &gt;= 2.0.\n    * [new] Added da-DK, pl-PL, sr-RS, and zh-CN locales from Babelzilla.\n    * [enh] Better support for tabmail UI in TB3.0b3.\n\n2008-12-12: xSidebarTIG v0.5:\n\n    * [fix] Sidebar splitter not totally hidden on Thunderbrird startup.\n    * [fix] Nesting error which showed the splitter but not the persisted sidebar on application startup.\n    * [fix] xSidebar bug 17854 - xSidebar for Tb problem persisting visiblity on restart.\n    * [new] Added ca-AD and pt-BR locales from Babelzilla.\n    * [new] Added tr-TR, and uk-UA locales from Babelzilla.\n    * [new] Added tr-TR, uk-UA, cs-CZ, mk-MK and ru-RU locales from Babelzilla.\n    * [fix] xSidebarTIG broken on Shredder 3.0b1.\n    * Updated addon sidebar styles for Shredder 3.0b1.\n    * [fix] Sending from contacts sidebar fails if no message folder is focused/loaded.\n\n2007-08-02: xSidebarTIG v0.4:\n\n    * [updated] Adapt more slim styles from userstyles.org for the Add-ons sidebar.\n    * [new] When the contacts sidebar is in messenger, hide non functioning context menu items and buttons.\n    * [new] When the contacts sidebar is in messenger, add context menu items to open the compose window with the highlighted address in the to, cc, or bcc field.\n    * [fix] fixed bustage on trunk due to the landing of the tabbed interface.\n    * [new] Added latest Babelzilla translations.\n\n2007-03-20: xSidebarTIG v0.3:\n\n    * [fix] For *nix platforms change the toggleSidebar hotkey from F9 to F4.\n    * [new] Added a toolbarbutton for the Contacts sidebar.\n    * [fix] Fix load, unload and js errors in abContactsPanel.\n    * [new] Added sidebar-picker toolbar button to the sidebar.\n    * [new] Override Contacts Sidebar in message compose window.\n    * [fix] Improve compatibility with Contactssidebar Extension.\n\n2007-01-04: xSidebarTIG v0.2:\n\n[New] Extension and Theme managers (Thunderbird 1.5), and Addons manager (Thunderbird 2.0) in the sidebar.\n\n2006-12-23: Initial release v0.1:\n\nBased on the xSidebar code contributed to the sidebar in Moji 0.9a3. "
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xsidebar-for-thunderbird/edit",
+    "guid": "xsidebarTIG@aleytys.pc.my",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://xsidebar.mozdev.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2010-12-03T11:52:26Z",
+    "name": {
+        "en-US": "xSidebar for Thunderbird"
+    },
+    "previews": [
+        {
+            "id": 28027,
+            "caption": {
+                "en-US": "xSidebar displaying the addons manager in the sidebar."
+            },
+            "image_size": [
+                400,
+                400
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28027.png?modified=1530208492",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28027.png?modified=1530208492"
+        },
+        {
+            "id": 28036,
+            "caption": {
+                "en-US": "xSidebar in the Message Window:"
+            },
+            "image_size": [
+                400,
+                400
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28036.png?modified=1530208492",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28036.png?modified=1530208492"
+        },
+        {
+            "id": 28038,
+            "caption": {
+                "en-US": "xSidebar in the Message Window:"
+            },
+            "image_size": [
+                400,
+                400
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28038.png?modified=1530208492",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28038.png?modified=1530208492"
+        },
+        {
+            "id": 28040,
+            "caption": {
+                "en-US": "xSidebar in the Compose Window:"
+            },
+            "image_size": [
+                400,
+                400
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28040.png?modified=1530208493",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28040.png?modified=1530208493"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.4715,
+        "count": 11,
+        "average": 3.7273,
+        "text_count": 11
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xsidebar-for-thunderbird/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/10000",
+    "slug": "xsidebar-for-thunderbird",
+    "status": "public",
+    "summary": {
+        "en-US": "Firefox sidebars for Thunderbird."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xsidebar-for-thunderbird/",
+    "weekly_downloads": 27
+}

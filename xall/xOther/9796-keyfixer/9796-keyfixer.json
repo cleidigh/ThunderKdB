@@ -1,0 +1,164 @@
+{
+    "id": 9796,
+    "authors": [
+        {
+            "id": 1374683,
+            "name": "Matthew Ball",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mattball/",
+            "username": "mattball",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 4,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1630526,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "2.0.0.8"
+            },
+            "thunderbird": {
+                "max": "34.*",
+                "min": "2.0.0.8"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/keyfixer/versions/1630526",
+        "files": [
+            {
+                "id": 288124,
+                "created": "2014-12-11T07:07:07Z",
+                "hash": "sha256:2d561348813a5d343506d860cffa885b0825c21d223dc34b6824c8db9d2512b9",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 28579,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/288124/keyfixer-0.5.34-fx+tb-mac.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "This version fixes the following issue: \n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c4cc7dcdd64cfd98f7721c35b428a77c83ec48b80f917365fe0aea6f54916d17/https%3A//github.com/heisencoder/keyfixer/issues/2\">https://github.com/heisencoder/keyfixer/issues/2</a>\n\nIn this bug, TextAreas and InputFields would disappear.  \n\nThis has been resolved by getting a new baseline for the platformHTMLBindings.xml file, which included a  bindToUntrustedContent=\"true\" annotation on the keybindings for TextAreas and InputFields."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/keyfixer/versions/0.5.34.1-signed.1-signed",
+        "version": "0.5.34.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Changes keyboard bindings for Mac OS X users to match Windows key bindings.  Keyfixer binds both the Control and Command keys to the Windows-like shortcuts so that users can pick the key they are more comfortable with."
+    },
+    "developer_comments": {
+        "en-US": "The Keyfixer Extension substitutes the platformHTMLBindings.xml file (within the toolkit.jar chrome file) with a new version that is functionally the same as the equivalent Windows version, except it also maps the 'accel' key (i.e., Command) to every binding that uses the 'Control' key.  This could cause compatibility issues with other extensions that also modify this file, although there are no known issues at this time."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/keyfixer/edit",
+    "guid": "keyfixer@mavaball.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://mavaball.net/wiki/index.php/Keyfixer"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/9/9796-64.png?modified=1418282011",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/9/9796-32.png?modified=1418282011",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/9/9796-64.png?modified=1418282011"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-12-11T07:26:49Z",
+    "name": {
+        "en-US": "Keyfixer"
+    },
+    "previews": [
+        {
+            "id": 27750,
+            "caption": {
+                "en-US": "keyfixer - use Windows keyboard shortcuts on Mac Firefox and Thunderbird"
+            },
+            "image_size": [
+                128,
+                128
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/27/27750.png?modified=1530208474",
+            "thumbnail_size": [
+                128,
+                128
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/27/27750.png?modified=1530208474"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.31569,
+        "count": 33,
+        "average": 4.4242,
+        "text_count": 33
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/keyfixer/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/9796",
+    "slug": "keyfixer",
+    "status": "public",
+    "summary": {
+        "en-US": "(Note: Version 0.5.34 has been updated to work with Firefox 34)\n\nKeyfixer patches the key bindings for Mac OS X users of Firefox and Thunderbird to match the key bindings of Windows"
+    },
+    "support_email": {
+        "en-US": "keyfixer@mavaball.net"
+    },
+    "support_url": {
+        "en-US": "https://github.com/heisencoder/keyfixer"
+    },
+    "tags": [
+        "end",
+        "home",
+        "key bindings",
+        "keyboard",
+        "windows"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/keyfixer/",
+    "weekly_downloads": 23
+}

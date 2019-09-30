@@ -1,0 +1,137 @@
+{
+    "id": 345,
+    "authors": [
+        {
+            "id": 201,
+            "name": "Joshua Tauberer",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/joshua-tauberer/",
+            "username": "joshua-tauberer",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 42005,
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "0.6"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sender-verification-anti-phish/versions/42005",
+        "files": [
+            {
+                "id": 25392,
+                "created": "2008-03-18T07:58:01Z",
+                "hash": "sha256:bd33e2b8d144423a952e0f12e37de5e83c8bcecd5980311ca2c534965403ccb8",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 69632,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/25392/sender_verification_extension-0.9.0.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version recognizes some situations where the sender cannot be verified, adds an option to skip verification for some domains, and adds a Spanish translation by Gerardo Bueno."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sender-verification-anti-phish/versions/0.9.0.2",
+        "version": "0.9.0.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This is an extension that reports, when possible, whether the sender shown in the From: header was actually the sender of the email. In fact, forging the From: address is possible! This is intended to be a tool to identify phishing attacks, fraudulent emails asking for your sensitive data, so that you don't fall prey. The extension uses Sender Policy Framework (SPF) (albeit in a nonstandard way) to verify the sending domain and SURBL, Spamhaus, DNSWL, and SenderScoreCertified for reputation information on the domain."
+    },
+    "developer_comments": {
+        "en-US": "BE AWARE: Please be sure to read about the extension on the extension's website (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c0d748e8289a10fe8bcec48d9c6ea63ec734cbeed2709add2d91b33954753531/http%3A//razor.occams.info/code/spf\">http://razor.occams.info/code/spf</a>) so you know what the extension is actually protecting you against, and how it works.  Not all emails can be verified, so don't be surprised if the extension has nothing to report for most of your email.  When you see an email *is* verified, then you can have more, but not complete, confidence in its authenticity.\n\nCritics say the extension uses SPF improperly by comparing the From: address of emails, rather than the return path, against SPF records.  it's really besides the point, so don't worry about that.\n\nMany have suggested checking the Received-SPF and Authentication-Results mail headers.  There's no way to know if these headers have been inserted by your ISP or by the malicious phisher, so the extension simply ignores them."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sender-verification-anti-phish/edit",
+    "guid": "{ff7e40e0-08b4-11d9-9669-0800200c9a66}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://razor.occams.info/code/spf"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2008-04-29T05:19:35Z",
+    "name": {
+        "en-US": "Sender Verification Anti-Phishing Extension"
+    },
+    "previews": [
+        {
+            "id": 19587,
+            "caption": {
+                "en-US": "Sender Verification lines at the tops of emails report whether you can believe the sender is who he says he is. In this case, the From: address was forged."
+            },
+            "image_size": [
+                611,
+                335
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/19/19587.png?modified=1530207912",
+            "thumbnail_size": [
+                320,
+                175
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/19/19587.png?modified=1530207912"
+        },
+        {
+            "id": 19593,
+            "caption": {
+                "en-US": "Sender Verification lines at the tops of emails report whether you can believe the sender is who he says he is. In this case, the From: address was both verified and confirmed as reputable."
+            },
+            "image_size": [
+                626,
+                425
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/19/19593.png?modified=1530207913",
+            "thumbnail_size": [
+                295,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/19/19593.png?modified=1530207913"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.5555,
+        "count": 20,
+        "average": 3.7,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sender-verification-anti-phish/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/345",
+    "slug": "sender-verification-anti-phish",
+    "status": "public",
+    "summary": {
+        "en-US": "Protects you from phishing attacks by verifying the From: address domain name of emails as you read them.  Sender Policy Framework (SPF) and DNS-based reputation lists are used."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://razor.occams.info/code/spf"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sender-verification-anti-phish/",
+    "weekly_downloads": 28
+}

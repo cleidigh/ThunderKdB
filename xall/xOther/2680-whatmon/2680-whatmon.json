@@ -1,0 +1,156 @@
+{
+    "id": 2680,
+    "authors": [
+        {
+            "id": 24363,
+            "name": "JP Mens",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jp-mens/",
+            "username": "jp-mens",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "alerts-updates"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 74557,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "3.0.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/whatmon/versions/74557",
+        "files": [
+            {
+                "id": 60149,
+                "created": "2009-07-27T02:31:55Z",
+                "hash": "sha256:85dcafdc351e4751962224335d93c3eefe9b0e75bb9d1110e6cf2248755965cc",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 16550,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/60149/whatmon-3.1.0-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "Upgraded for Firefox 3.5"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/whatmon/versions/3.1.0.1-signed.1-signed",
+        "version": "3.1.0.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Monitor Whatever: a tiny Firefox and Thunderbird extension called whatmon, which can monitor almost anything you wish to monitor. Number of logged on users? Current load average? Health of your LDAP servers? Mail server queues? No problem for whatmon, as long as you can create a CGI(Common Gateway Interface) program in Perl, C, or any other language you are comfortable with, or even a PHP or Active-Whatever script which runs on your web server and can produce a wee bit o' XML(eXtensible Markup Language).\n\nThe XML contains an integer status and a single line of text. In practice, that line of text can contain whatever the administrator desires.\n\nThe program that produces that line of text also returns a numeric integer indicating okay, warning or critical so that the extension can colour-code the status bar accordingly.\n\n&lt;whatmon&gt;\n  &lt; code&gt;0\n  &lt;text&gt;nprocs 112&lt;/text&gt;\n&lt;/whatmon&gt;\n\nThe monitoring extension requires two preferences to be set. I've named these whatmon.url and whatmon.refresh. They are the URL from which the XML is to be read and the frequency in seconds in which the extension should do a GET request from the URL."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/whatmon/edit",
+    "guid": "{bc5e7c90-f53d-11da-974d-0800200c9a66}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://jpmens.net/pages/whatmon-mozilla-extension-for-monitoring-whatever/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2680-64.png?modified=1331869452",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2680-32.png?modified=1331869452",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2680-64.png?modified=1331869452"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2009-09-09T15:38:27Z",
+    "name": {
+        "en-US": "whatmon"
+    },
+    "previews": [
+        {
+            "id": 8888,
+            "caption": {
+                "en-US": "Sample process monitor"
+            },
+            "image_size": [
+                119,
+                27
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/8/8888.png?modified=1530208180",
+            "thumbnail_size": [
+                119,
+                27
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/8/8888.png?modified=1530208180"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.15663,
+        "count": 3,
+        "average": 4,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/whatmon/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/2680",
+    "slug": "whatmon",
+    "status": "public",
+    "summary": {
+        "en-US": "Monitor Whatever: a tiny Firefox extension called whatmon, which can monitor almost anything you wish to monitor. Number of logged on users? Current load average? Health of your LDAP servers? Mail server queues? No problem for..."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://jpmens.net/pages/whatmon-mozilla-extension-for-monitoring-whatever/"
+    },
+    "tags": [
+        "monitoring"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/whatmon/",
+    "weekly_downloads": 21
+}

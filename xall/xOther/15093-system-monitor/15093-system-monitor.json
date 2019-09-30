@@ -1,0 +1,299 @@
+{
+    "id": 15093,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2,
+    "categories": {
+        "firefox": [
+            "appearance",
+            "web-development"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1414036,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "10.0"
+            },
+            "thunderbird": {
+                "max": "24.*",
+                "min": "10.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/system-monitor/versions/1414036",
+        "files": [
+            {
+                "id": 187862,
+                "created": "2013-01-17T19:55:18Z",
+                "hash": "sha256:bfc1f52eea6ef09188d85b7485f50d911a899c941f03c905f315bd70e8ae3dd2",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 76458,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/187862/system_monitor-0.7.0-fx+tb-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 187864,
+                "created": "2013-01-17T19:55:18Z",
+                "hash": "sha256:c9c07175ca0a016d863f6c4cb7ffbd44d5dbfc53749155aa1123bef635f52243",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 76456,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/187864/system_monitor-0.7.0-fx+tb-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 187866,
+                "created": "2013-01-17T19:55:18Z",
+                "hash": "sha256:cf6b24fbac257085920c66982033489a4e5b3791ff51cfaae894b365c0517f4a",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 76461,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/187866/system_monitor-0.7.0-fx+tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 1443,
+            "name": {
+                "en-US": "Custom License"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/system-monitor/license/0.7.0.1-signed.1-signed"
+        },
+        "release_notes": {
+            "en-US": "* Now network usage monitor is available.\n* Made binary components free. Now all features are implemented in JavaScript.\n* Refactoring.",
+            "ja": "* ネットワーク通信量のモニタ機能を追加\n* バイナリ形式のコンポーネントを全廃\n* その他、リファクタリング"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/system-monitor/versions/0.7.0.1-signed.1-signed",
+        "version": "0.7.0.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Provides CPU usage and memory usage graphs on the toolbar.\n\nAnd, this addon provides API for web applications. For example, you can monitor CPU usage by following script:\n-------------------------------------------------------------------\nvar listener = function(aUsage){ print(aUsage); }\nwindow.system.addMonitor(\"cpu-usage\", listener, 1000);\nwindow.system.removeMonitor(\"cpu-usage\", listener);\n-------------------------------------------------------------------\nor:\n-------------------------------------------------------------------\nvar listener = {\n  console : document.getElementById('console'),\n  monitor : function(aUsage){ this.console.innerHTML += ''+aUsage; }\n};\nwindow.system.addMonitor(\"cpu-usage\", listener, 1000);\nwindow.system.removeMonitor(\"cpu-usage\", listener);\n-------------------------------------------------------------------\n\nGit repository: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1d3202ec060a017348960d3fdb697efc78e5aa57285fa4bca8bbfa4f55d9c5e5/http%3A//git.clear-code.com/xul/extensions/system-monitor/\">http://git.clear-code.com/xul/extensions/system-monitor/</a>",
+        "ja": "ツールバーにCPU使用率とメモリ使用量のグラフを表示します。\n\nまた、このアドオンはWebアプリケーション向けのAPIも提供します。APIを使うことで、以下のようにしてCPUの使用率を監視することができます：\n-------------------------------------------------------------------\nvar listener = function(aUsage){ print(aUsage); }\nwindow.system.addMonitor(\"cpu-usage\", listener, 1000);\nwindow.system.removeMonitor(\"cpu-usage\", listener);\n-------------------------------------------------------------------\n別の例：\n-------------------------------------------------------------------\nvar listener = {\n  console : document.getElementById('console'),\n  monitor : function(aUsage){ this.console.innerHTML += ''+aUsage; }\n};\nwindow.system.addMonitor(\"cpu-usage\", listener, 1000);\nwindow.system.removeMonitor(\"cpu-usage\", listener);\n-------------------------------------------------------------------\n\nGitリポジトリ: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1d3202ec060a017348960d3fdb697efc78e5aa57285fa4bca8bbfa4f55d9c5e5/http%3A//git.clear-code.com/xul/extensions/system-monitor/\">http://git.clear-code.com/xul/extensions/system-monitor/</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/system-monitor/edit",
+    "guid": "system-monitor@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/system-monitor"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/15/15093-64.png?modified=1393206685",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/15/15093-32.png?modified=1393206685",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/15/15093-64.png?modified=1393206685"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-01-30T12:58:52Z",
+    "name": {
+        "en-US": "System Monitor",
+        "ja": "システムモニター (System Monitor)"
+    },
+    "previews": [
+        {
+            "id": 50266,
+            "caption": {
+                "en-US": "Bar graph (CPU usages are overlayed)",
+                "ja": "棒グラフ表示（CPU使用率は各CPUを重ねて描画）"
+            },
+            "image_size": [
+                225,
+                159
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/50/50266.png?modified=1530208626",
+            "thumbnail_size": [
+                225,
+                159
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/50/50266.png?modified=1530208626"
+        },
+        {
+            "id": 50264,
+            "caption": {
+                "en-US": "Bar graph (CPU usage is the sum of all processors)",
+                "ja": "棒グラフ表示（CPU使用率は全CPUの合計）"
+            },
+            "image_size": [
+                225,
+                159
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/50/50264.png?modified=1530208626",
+            "thumbnail_size": [
+                225,
+                159
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/50/50264.png?modified=1530208626"
+        },
+        {
+            "id": 50265,
+            "caption": {
+                "en-US": "Bar graph (CPU usages are stacked)",
+                "ja": "棒グラフ表示（CPU使用率は全CPUの積み上げ）"
+            },
+            "image_size": [
+                225,
+                159
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/50/50265.png?modified=1530208627",
+            "thumbnail_size": [
+                225,
+                159
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/50/50265.png?modified=1530208627"
+        },
+        {
+            "id": 50267,
+            "caption": {
+                "en-US": "Polygonal graph (CPU usage is the sum of all processors)",
+                "ja": "折れ線グラフ表示（CPU使用率は全CPUの合計）"
+            },
+            "image_size": [
+                225,
+                159
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/50/50267.png?modified=1530208627",
+            "thumbnail_size": [
+                225,
+                159
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/50/50267.png?modified=1530208627"
+        },
+        {
+            "id": 50268,
+            "caption": {
+                "en-US": "Polygonal graph (CPU usages are stacked)",
+                "ja": "折れ線グラフ表示（CPU使用率は全CPUの積み上げ）"
+            },
+            "image_size": [
+                225,
+                159
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/50/50268.png?modified=1530208627",
+            "thumbnail_size": [
+                225,
+                159
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/50/50268.png?modified=1530208627"
+        },
+        {
+            "id": 50269,
+            "caption": {
+                "en-US": "Polygonal graph (CPU usages are overlayed)",
+                "ja": "折れ線グラフ表示（CPU使用率は各CPUを重ねて描画）"
+            },
+            "image_size": [
+                225,
+                159
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/50/50269.png?modified=1530208628",
+            "thumbnail_size": [
+                225,
+                159
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/50/50269.png?modified=1530208628"
+        },
+        {
+            "id": 50285,
+            "caption": {
+                "en-US": "Preview with a quad core CPU.",
+                "ja": "クアッドコアでの様子"
+            },
+            "image_size": [
+                276,
+                146
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/50/50285.png?modified=1530208628",
+            "thumbnail_size": [
+                276,
+                146
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/50/50285.png?modified=1530208628"
+        },
+        {
+            "id": 50287,
+            "caption": {
+                "en-US": "Bar graph (usage of each CPU is shown as independent graph)",
+                "ja": "棒グラフ表示（CPU使用率は各CPUごとに別々に表示）"
+            },
+            "image_size": [
+                225,
+                159
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/50/50287.png?modified=1530208629",
+            "thumbnail_size": [
+                225,
+                159
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/50/50287.png?modified=1530208629"
+        },
+        {
+            "id": 50288,
+            "caption": {
+                "en-US": "Polygonal graph (usage of each CPU is shown as independent graph)",
+                "ja": "折れ線グラフ表示（CPU使用率は各CPUごとに別々に表示）"
+            },
+            "image_size": [
+                225,
+                159
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/50/50288.png?modified=1530208629",
+            "thumbnail_size": [
+                225,
+                159
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/50/50288.png?modified=1530208629"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.69133,
+        "count": 13,
+        "average": 3.9231,
+        "text_count": 13
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/system-monitor/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/15093",
+    "slug": "system-monitor",
+    "status": "public",
+    "summary": {
+        "en-US": "Provides CPU usage and memory usage graphs on the toolbar.",
+        "ja": "ツールバーにCPU使用率とメモリ使用量のグラフを表示します。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/system-monitor/issues"
+    },
+    "tags": [
+        "cpu",
+        "monitor"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/system-monitor/",
+    "weekly_downloads": 65
+}

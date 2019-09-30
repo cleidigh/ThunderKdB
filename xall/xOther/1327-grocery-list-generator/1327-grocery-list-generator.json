@@ -1,0 +1,231 @@
+{
+    "id": 1327,
+    "authors": [
+        {
+            "id": 620,
+            "name": "Captain Caveman",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/captain-caveman/",
+            "username": "captain-caveman",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/620.png?modified=1400322450"
+        }
+    ],
+    "average_daily_users": 4,
+    "categories": {
+        "firefox": [
+            "shopping"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1346289,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "12.0"
+            },
+            "thunderbird": {
+                "max": "27.*",
+                "min": "12.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/grocery-list-generator/versions/1346289",
+        "files": [
+            {
+                "id": 156537,
+                "created": "2012-06-26T12:04:11Z",
+                "hash": "sha256:9763de1ecd043e5490b1dc0ab18decff49aa3f3c056e366875220d448c6bf946",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 212819,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/156537/grocery_list_generator-2.3-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "- Rewritten innerHTML usages\n- No longer opens main app window after options are closed from about:addons"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/grocery-list-generator/versions/2.3.1-signed.1-let-fixed.1-signed",
+        "version": "2.3.1-signed.1-let-fixed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "/************************************************************************\nI am sorry to announce that I have decided to quit developing Firefox extensions.\nYou can read the complete announcement on my website.\n\nThanks for all the love and support in the past 7 years!\nMartijn\n************************************************************************/\n\nThe GLG (Grocery List Generator) is a helpful little tool to store your recipe-ingredients and other groceries you need regularly. It creates a well-organized grocery list to help make your grocery shopping as easy as possible.\nFeatures:\n\n    * Share your own recipes with the world on the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0639f77e399d95cba8822dd3ebc416eed9c26f352514f22f0aa986fa94251ed1/http%3A//addon.grocerylistgenerator.com/\">http://addon.grocerylistgenerator.com/</a> website\n    * 7 great international example dishes brought to you by LX, more complete recipes can be added to your GLG on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0639f77e399d95cba8822dd3ebc416eed9c26f352514f22f0aa986fa94251ed1/http%3A//addon.grocerylistgenerator.com/\">http://addon.grocerylistgenerator.com/</a>\n    * Never forget an ingredient needed for a recipe anymore.\n    * Easy to maintain database with all your favourite recipes, and other items you often need.\n    * Items are all grouped by super market department type.\n    * Sort your list to your own super market's walking route.\n    * (Optionaly) Keeps a running list of items selected, even after you restart Firefox.\n    * Directly print your grocery list, or export it to disk/pda.\n    * Supports unicode data (UTF8).\n    * Available in: en-US, nl-NL, fr-FR, es-AR, it-IT, es-ES, pt-BR, el-GR, nb-NO, tr-TR, hr-HR, sv-SE, zh-CN",
+        "es": "GLG (Generador de la lista de la compra) es una pequeña herramienta para guardar los ingredientes de las recetas y su lista de la compra que necesite regularmente. Crea una lista bien organizada y hace su compra lo más fácil posible.\nCaracterísticas:\n\n* Comparta sus propias recetas con el resto a través de la página <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/676403b890e58c5a743a82f4cdfc0255f95c6a4fa2611c6fd680af3c667462be/http%3A//grocerylistgenerator.com\">grocerylistgenerator.com</a>\n* 7 ejemplos de platos internacionales por cortesía de <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/76ddebd2bb8f019bc79046fa21976c9ee3520e40dc0dda7e37c3e1eee9e95069/http%3A//LXweb.nl\">LXweb.nl</a>, puede añadir recetas más completas en <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/676403b890e58c5a743a82f4cdfc0255f95c6a4fa2611c6fd680af3c667462be/http%3A//grocerylistgenerator.com\">grocerylistgenerator.com</a>\n* No olvide nunca más un ingrediente que necesite para una receta.\n* Fácil de mantener una base de datos con todas sus recetas preferidas, y otros elementos que necesite con frecuencia.\n* Todos los elementos se agrupan en función del tipo.\n* Ordene su lista según la ruta de su propio supermercado.\n* (Opcional) Mantenga una lista de los elementos seleccionados, incluso después de reiniciar Firefox.\n* Importe directamente su lista de la compre, o exportela a su disco/pda.\n* Soprota datos unicode (UTF8).\n* Disponible en: en-US, nl-NL, fr-FR, es-AR, it-IT, es-ES, pt-BR, el-GR, nb-NO, tr-TR, hr-HR, sv-SE, zh-TW"
+    },
+    "developer_comments": {
+        "en-US": "For detailed help and information, visit the forum: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ebab8608d8d560b9eaad987820efd9c1528f3b6c808c5ba85e5e6b03af0fada9/http%3A//forum.captaincaveman.nl\">http://forum.captaincaveman.nl</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/grocery-list-generator/edit",
+    "guid": "{AD84B1F3-FED5-4b8d-9EB6-DDF0DE54B95B}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://addon.grocerylistgenerator.com/",
+        "es": "http://www.grocerylistgenerator.com/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1327-64.png?modified=1349501243",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1327-32.png?modified=1349501243",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1327-64.png?modified=1349501243"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2012-06-26T15:41:29Z",
+    "name": {
+        "en-US": "Grocery List Generator",
+        "es": "Grocery List Generator"
+    },
+    "previews": [
+        {
+            "id": 16591,
+            "caption": {
+                "en-US": "Grocery List Generator - Overview"
+            },
+            "image_size": [
+                480,
+                360
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16591.png?modified=1530207986",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16591.png?modified=1530207986"
+        },
+        {
+            "id": 16592,
+            "caption": {
+                "en-US": "Grocery List Generator - Details"
+            },
+            "image_size": [
+                480,
+                360
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16592.png?modified=1530207987",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16592.png?modified=1530207987"
+        },
+        {
+            "id": 16594,
+            "caption": {
+                "en-US": "Grocery List Generator - Generated List"
+            },
+            "image_size": [
+                480,
+                360
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16594.png?modified=1530207988",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16594.png?modified=1530207988"
+        },
+        {
+            "id": 16595,
+            "caption": {
+                "en-US": "Grocery List Generator - Generated Recipe"
+            },
+            "image_size": [
+                448,
+                360
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16595.png?modified=1530207990",
+            "thumbnail_size": [
+                249,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16595.png?modified=1530207990"
+        },
+        {
+            "id": 16596,
+            "caption": {
+                "en-US": "Grocery List Generator - Options"
+            },
+            "image_size": [
+                480,
+                360
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16596.png?modified=1530207991",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16596.png?modified=1530207991"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.54662,
+        "count": 24,
+        "average": 3.6667,
+        "text_count": 24
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/grocery-list-generator/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/1327",
+    "slug": "grocery-list-generator",
+    "status": "public",
+    "summary": {
+        "en-US": "The GLG (Grocery List Generator) is a helpful little tool to store your recipe-ingredients and other groceries you need regularly. It creates a well-organized grocery list to help make your grocery shopping as easy as possible.",
+        "es": "GLG (Generador de la lista de la compra) es una pequeña herramienta para guardar los ingredientes de las recetas y su lista de la compra que necesite regularmente. Crea una lista bien organizada y hace su compra lo más fácil posible."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://www.captaincaveman.nl",
+        "es": "http://forum.captaincaveman.nl"
+    },
+    "tags": [
+        "lists",
+        "organization",
+        "recipes"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/grocery-list-generator/",
+    "weekly_downloads": 21
+}

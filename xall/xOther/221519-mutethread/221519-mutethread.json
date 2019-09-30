@@ -1,0 +1,122 @@
+{
+    "id": 221519,
+    "authors": [
+        {
+            "id": 9810,
+            "name": "dmose",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dmose/",
+            "username": "dmose",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 116276,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "3.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mutethread/versions/116276",
+        "files": [
+            {
+                "id": 97569,
+                "created": "2010-08-26T18:06:35Z",
+                "hash": "sha256:991d0f9e9b4ecf6acc061beecbadea9aef230da6abaf90e35b84d2afa3d91ca8",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 6144,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/97569/mutethread-0.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mutethread/versions/0.2",
+        "version": "0.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>How It Works</b>\n\nMuteThread adds <i>Ignore Thread</i> and <i>Ignore Subthread</i> menu entries to the <i>Message</i> menu for email messages, like Thunderbird already does for newsgroup messages.\n\nWARNING: It's possible to lose track of email threads by inadvertently hitting \"K\" (the shortcut), and not notice.\n  \nTo see which messages, if any, are hidden from view in a given folder, select the \"View -&gt; Threads -&gt; Ignored Threads\" menu item while in that folder. Due to a bug in current versions of Thunderbird, you'll have to exit and re-enter the folder in order for the ignored threads to re-appear.\n"
+    },
+    "developer_comments": {
+        "en-US": "<b>Other Known Issues</b>\n\n* Ignored unread messages still keep the folder bolded and show up in folder counts.  (Workaround: when in a folder that has hidden threads keeping the unread-count non-zero, one can mark all threads, including the ignored ones, as read by pressing \"C\")\n\n* No shortcut for \"View -&gt; Threads -&gt; Ignored Threads\".\n\n<b>Version History</b>\n\n0.2:\n* automatic updating to future versions is in place\n* misc non-user-visible tweaks\n\n<b>Contributors sought!</b>\n\nSee the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1c16b3fca9d211bc286e492e7eeff2bc3963128fb650dce7e57808000540a372/http%3A//bitbucket.org/dmose/mutethread\">the source on bitbucket</a><a>, or email me directly at </a><a rel=\"nofollow\" href=\"/\">dmose@mozilla.org</a>."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mutethread/edit",
+    "guid": "MuteThread@redpuma.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://bitbucket.org/dmose/mutethread/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2011-01-26T02:20:29Z",
+    "name": {
+        "en-US": "MuteThread"
+    },
+    "previews": [
+        {
+            "id": 48692,
+            "caption": {
+                "en-US": "Selecting the \"Ignore Thread\" menu item"
+            },
+            "image_size": [
+                549,
+                414
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/48/48692.png?modified=1530208874",
+            "thumbnail_size": [
+                265,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/48/48692.png?modified=1530208874"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.1058,
+        "count": 4,
+        "average": 2.5,
+        "text_count": 4
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mutethread/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/221519",
+    "slug": "mutethread",
+    "status": "public",
+    "summary": {
+        "en-US": "For a long time, Thunderbird has supported ignoring threads in newsgroups.  This is a prototype that explores bringing that functionality to email.  "
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://feedback.mozillalabs.com/forums/68185-messaging-add-ons/"
+    },
+    "tags": [
+        "ignore",
+        "kill",
+        "mute"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mutethread/",
+    "weekly_downloads": 21
+}

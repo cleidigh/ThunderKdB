@@ -1,0 +1,103 @@
+{
+    "id": 682671,
+    "authors": [
+        {
+            "id": 12099889,
+            "name": "paul",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/tetrep/",
+            "username": "tetrep",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1809108,
+        "compatibility": {
+            "thunderbird": {
+                "max": "45.0",
+                "min": "38.5.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rm-external/versions/1809108",
+        "files": [
+            {
+                "id": 392881,
+                "created": "2016-01-29T14:35:43Z",
+                "hash": "sha256:5b764c3f421adcdd7f7231bce9903fab3ef2250fbbe2febb45fa747b921b10f4",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 1918,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/392881/rm_external-0.5-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5678,
+            "name": {
+                "en-US": "WTFPL"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rm-external/license/0.5"
+        },
+        "release_notes": {
+            "en-US": ".5 - I forgot that 'FWD:' should stack, so I've removed the deduplication of them; only 'RE:' will be deduplicated after the removal of 'EXTERNAL:'."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rm-external/versions/0.5",
+        "version": "0.5"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Removes 'EXTERNAL: ' from the start of an email subject if it is preceded by 'RE:' or 'FWD:' (case insensitive). The removal is done after the 'Send' button is pressed.\n\nIf the removal of 'EXTERNAL: ' causes an 'RE:' to be duplicated, the 2nd instance of 'RE:' will be removed.\n\nThere is no configuration; this addon will always be enabled once installed."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rm-external/edit",
+    "guid": "rm_external@paul.tetreau",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/682/682671-64.png?modified=1454080815",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/682/682671-32.png?modified=1454080815",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/682/682671-64.png?modified=1454080815"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-01-29T14:38:06Z",
+    "name": {
+        "en-US": "RM: EXTERNAL:"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rm-external/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/682671",
+    "slug": "rm-external",
+    "status": "public",
+    "summary": {
+        "en-US": "Removes 'EXTERNAL: ' from the start of an email subject if it is preceded by 'RE:' or 'FWD:' (case insensitive). The removal is done after the 'Send' button is pressed."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rm-external/",
+    "weekly_downloads": 23
+}

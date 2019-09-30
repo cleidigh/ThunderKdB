@@ -1,0 +1,162 @@
+{
+    "id": 395384,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "composition",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468820,
+        "compatibility": {
+            "thunderbird": {
+                "max": "52.*",
+                "min": "17.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dont-send-linked-files/versions/2468820",
+        "files": [
+            {
+                "id": 1012040,
+                "created": "2018-11-08T03:51:53Z",
+                "hash": "sha256:7cbd961b9cc034645bfc33e88468ab4d48e291e1bb827c5848ba43f8d050bc84",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 5874,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012040/addon-0.4-tb-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 1012041,
+                "created": "2018-11-08T03:51:54Z",
+                "hash": "sha256:7cbd961b9cc034645bfc33e88468ab4d48e291e1bb827c5848ba43f8d050bc84",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 5874,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012041/addon-0.4-tb-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 1012042,
+                "created": "2018-11-08T03:51:54Z",
+                "hash": "sha256:7cbd961b9cc034645bfc33e88468ab4d48e291e1bb827c5848ba43f8d050bc84",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 5874,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012042/addon-0.4-tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 2582,
+            "name": {
+                "en-US": "MPL 1.1/GPL 2.0/LGPL 2.1"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dont-send-linked-files/license/0.4"
+        },
+        "release_notes": {
+            "en-US": "Fix error on closing window. Fix error on closing window. It caused losing of drafts.",
+            "ja": "編集ウィンドウを閉じる時のエラーを修正（自動保存された下書きが失われる問題を解消）"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dont-send-linked-files/versions/0.4",
+        "version": "0.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "In a composition window for an HTML mail, Thunderbird asks you to attach a local file to the mail or not, when you try to embed a link to a local file. This add-on prevents attaching of local confidential files, from being leaked accidentally.",
+        "ja": "ThunderbirdではHTMLメールの編集時に、画像やリンクなどを埋め込む際にリンク先のファイルをメッセージに添付することができます。この拡張機能は、リンク先のファイルを添付する機能を完全に無効にし、社外などに流出しては困る機密ファイルを不注意によって流出させてしまうなどのトラブルを防ぐ物です。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dont-send-linked-files/edit",
+    "guid": "donotsend@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/donotsendlinkedfile",
+        "ja": "https://github.com/clear-code/donotsendlinkedfile"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-11-11T06:02:56Z",
+    "name": {
+        "en-US": "Don't Send Linked Files",
+        "ja": "リンク先ファイルの送信禁止"
+    },
+    "previews": [
+        {
+            "id": 77732,
+            "caption": {
+                "en-US": "To prevent users from attaching files accidentally, the corresponding checkbox is hidden by this add-on.",
+                "ja": "誤ってファイルを添付することがないよう、ファイルを添付するチェックボックスが消滅します。"
+            },
+            "image_size": [
+                337,
+                368
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/77/77732.png?modified=1530209048",
+            "thumbnail_size": [
+                183,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/77/77732.png?modified=1530209048"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0.698207,
+        "count": 1,
+        "average": 1,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dont-send-linked-files/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/395384",
+    "slug": "dont-send-linked-files",
+    "status": "public",
+    "summary": {
+        "en-US": "Prevents sending of linked files if they are file: URLs.",
+        "ja": "ファイルURLへのリンクを埋め込んだメッセージについて、リンク先ファイルを添付しないようにします。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/donotsendlinkedfile/issues"
+    },
+    "tags": [
+        "attachment",
+        "compose",
+        "html",
+        "link"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dont-send-linked-files/",
+    "weekly_downloads": 24
+}

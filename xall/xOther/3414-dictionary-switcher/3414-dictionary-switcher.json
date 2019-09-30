@@ -1,0 +1,254 @@
+{
+    "id": 3414,
+    "authors": [
+        {
+            "id": 15165,
+            "name": "Dao Gottwald",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dao-gottwald/",
+            "username": "dao-gottwald",
+            "picture_url": null
+        },
+        {
+            "id": 5802610,
+            "name": "MrWarper",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mrwarper/",
+            "username": "mrwarper",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5802/5802610.png?modified=1393983472"
+        }
+    ],
+    "average_daily_users": 389,
+    "categories": {
+        "firefox": [
+            "language-support"
+        ],
+        "seamonkey": [
+            "language-support-and-translation"
+        ],
+        "thunderbird": [
+            "language-support"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1521546,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "2.0"
+            },
+            "seamonkey": {
+                "max": "2.17.*",
+                "min": "1.1"
+            },
+            "thunderbird": {
+                "max": "18.*",
+                "min": "2.0b2"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dictionary-switcher/versions/1521546",
+        "files": [
+            {
+                "id": 244320,
+                "created": "2014-02-17T14:48:00Z",
+                "hash": "sha256:4874c2c10b8104a7775579ef265a151610724f87605be85254ee198c97cf4991",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 24993,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/244320/dictionary_switcher-1.3.3-fx+tb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Got Mozilla to fix their documentation, and now proper code is used to query installed dictionaries. Hopefully no more time will have to be diverted from real development, if we can ever get back to it again...",
+            "es": "Conseguido que en Mozilla corrigieran la documentación, ahora se utiliza el código apropiado para listar los diccionarios instalados. Con un poco de suerte no habrá que distraer más tiempo del verdadero desarrollo, si es que nos podemos volver a dedicar a ello..."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dictionary-switcher/versions/1.3.3.1-signed.1-signed",
+        "version": "1.3.3.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Toggles dictionaries automatically or manually and displays the currently selected one. In FireFox 3.6 and similarly old versions of Mozilla products, dictionary switcher was added to their status bars. In modern versions of Mozilla applications, it must be dragged from the toolbar customization palette and dropped on the preferred area of the user interface (see screenshots).\n\n<b><em>Please contact the developer at mrwarper &lt;whirly thing&gt; yahoo dot es for bug reports and feature requests -- don't use the reviews for that!</em></b>\n\n<b><em>Troubleshooting</em></b>\n<b>1. If the switcher lists many pre-installed dictionaries you don't want in the menu</b>\nAt least 3 workarounds have been used by different users:\n1) Delete unused dictionaries from /usr/share/myspell/dicts (*.dic and *.aff files), and leave only the languages you use (*.dic and *.aff). [Backup before you delete anything.]\n2) Remove symlinks from /usr/share/myspell\n3) 1. Delete the dictionaries symbolic links in /usr/lib/thunderbird/ (from a command prompt, issue 'sudo rm /usr/lib/thunderbird/dictionaries')\n2. Add a dpkg-divert rule to prevent link from being restored after each TB update ('sudo dpkg-divert --add /usr/lib/thunderbird/dictionaries').\n3. Manually install the dictionaries you do want (Tools &gt; Options or Edit &gt; Preferences &gt; Composition &gt; Download more dictionaries). \n\n<b>2. Localizations</b>\nThe following localizations have been temporarily removed complying with Mozilla's policies because they are outdated:\nca-AD, da, hr, it, ko-KR, pt-BR, ru, sk, sv-SE, tr-TR, uk-UA, zh-CN, zh-TW. Old localizations and directions are available upon request to ease translation volunteering.",
+        "de": "Lässt manuell oder automatisch zwischen installierten Wörterbüchern wechseln und zeigt das momentane Wörterbuch in der Statusleiste an.",
+        "es": "Cambia automática o manualmente de diccionario y muestra el que se ha seleccionado. En FireFox 3.6 y versiones comparablemente antiguas de los productos Mozilla, dictionary switcher se agregaba a la barra de estado. En las versiones modernas de los productos Mozilla, hay que arrastrarlo desde la paleta de herramientas a la zona del interfaz de usuario que se prefiera (ver capturas de pantalla).\n\n<b><em>Por favor, contacten con el desarrollador en \"mrwarper &lt;remolino&gt; yahoo punto es\" para informar de errores o sugerir nuevas funciones -- ¡no utilicen las valoraciones con este fin!</em></b>\n\n<b><em>Solución de problemas</em></b>\n<b>1. Si hay muchos diccionarios preinstalados que no quiere ver en el menú:</b>\nLos usuarios han informado de al menos tres soluciones distintas:\n1) Elimine los diccionarios que no utilice de /usr/share/myspell/dicts (archivos *.dic y *.aff), y deje sólo los que sí utilice (archivos *.dic y *.aff) [Recuerde hacer copias de seguridad antes de borrar nada]\n2) Elimine los enlaces simbólicos de /usr/share/myspell\n3) 3.1. Elimine los enlaces simbólicos de los diccionarios de /usr/lib/thunderbird/ (en un indicador de mandatos, tecleee 'sudo rm /usr/lib/thunderbird/dictionaries')\n3.2. Añada una regla dpkg-divert para evitar que se restauren los enlaces tras cada actualización de TB ('sudo dpkg-divert --add /usr/lib/thunderbird/dictionaries').\n3.3. Instale manualmente los diccionarios que sí quiera (Herramientas &gt; Opciones o Editar &gt; Preferencias &gt; Escritura &gt; Descargar más diccionarios).\n\n<b>2. Traducciones</b>\nLas siguientes traducciones han sido retiradas temporalmente y necesitan ser actualizadas:\nca-AD, da, hr, it, ko-KR, pt-BR, ru, sk, sv-SE, tr-TR, uk-UA, zh-CN, zh-TW. Están disponibles (bajo petición) las traducciones antiguas e instrucciones para facilitar la tarea a quienes se presenten voluntarios ."
+    },
+    "developer_comments": {
+        "en-US": "As of v1.3 includes and supersedes Dictionary Switcher for Thunderbird: <a rel=\"nofollow\" href=\"https://addons.mozilla.org/addon/dictionary-switcher-for-thunde/\">https://addons.mozilla.org/addon/dictionary-switcher-for-thunde/</a>\n\nSwitcher for Thunderbird should be removed before installing this version.",
+        "es": "Desde la v1.3 incluye y sustituye Dictionary Switcher para Thunderbird: <a rel=\"nofollow\" href=\"https://addons.mozilla.org/addon/dictionary-switcher-for-thunde/\">https://addons.mozilla.org/addon/dictionary-switcher-for-thunde/</a>\n\nDebería eliminarse Switcher para Thunderbird antes de instalar esta versión."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dictionary-switcher/edit",
+    "guid": "dictionary-switcher@design-noir.de",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/3/3414-64.png?modified=1392649108",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/3/3414-32.png?modified=1392649108",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/3/3414-64.png?modified=1392649108"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-02-17T16:01:24Z",
+    "name": {
+        "en-US": "Dictionary Switcher",
+        "de": "Wörterbuch-Manager",
+        "es": "Dictionary Switcher"
+    },
+    "previews": [
+        {
+            "id": 68711,
+            "caption": {
+                "en-US": "If the browser has no status bar (FireFox v4 and newer), dictionary switcher is integrated in the toolbar customization palette with all the other tools that let users customize the app interface by dropping them where they prefer",
+                "es": "Si su navegador no tiene barra de estado (FireFox 4 o posterior), dictionary switcher se integra con el resto de herramientas que permiten personalizar el interfaz de usuario arrastrándolas donde uno prefiera"
+            },
+            "image_size": [
+                616,
+                179
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/68/68711.png?modified=1530208213",
+            "thumbnail_size": [
+                320,
+                93
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/68/68711.png?modified=1530208213"
+        },
+        {
+            "id": 68712,
+            "caption": {
+                "en-US": "Sorry, no toolbar icon yet!",
+                "es": "¡Aún no hay icono para las barras de herramientas!"
+            },
+            "image_size": [
+                587,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/68/68712.png?modified=1530208214",
+            "thumbnail_size": [
+                224,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/68/68712.png?modified=1530208214"
+        },
+        {
+            "id": 68909,
+            "caption": {
+                "en-US": "This is dictionary switcher on the new add-ons bar (the add-ons bar is made [in]visible as a whole -- on the menu in the first screenshot > \"add-on bar\")",
+                "es": "Aquí vemos dictionary switcher en la barra de complementos (la barra de complementos se hace [in]visible como un todo; en el menú de la primera imagen > \"add-on bar\")"
+            },
+            "image_size": [
+                574,
+                387
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/68/68909.png?modified=1530208215",
+            "thumbnail_size": [
+                297,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/68/68909.png?modified=1530208215"
+        },
+        {
+            "id": 68910,
+            "caption": {
+                "en-US": "You can put dictionary switcher pretty much anywhere -- for example, on the application menu bar",
+                "es": "Dictionary switcher puede colocarse casi en cualquier sitio; por ejemplo, en la barra del menú de la aplicación."
+            },
+            "image_size": [
+                573,
+                358
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/68/68910.png?modified=1530208217",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/68/68910.png?modified=1530208217"
+        },
+        {
+            "id": 68911,
+            "caption": {
+                "en-US": "Once the tool is somewhere in your user interface, this is its pop-up menu. The default action (MB1 click) is cycling through all installed dictionaries.",
+                "es": "Una vez que dictionary switcher está en algún lugar del interfaz, este es su menú de contexto. La acción por omisión (BR1) es alternar entre los diccionarios instalados."
+            },
+            "image_size": [
+                200,
+                125
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/68/68911.png?modified=1530208218",
+            "thumbnail_size": [
+                200,
+                125
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/68/68911.png?modified=1530208218"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.72337,
+        "count": 180,
+        "average": 3.7444,
+        "text_count": 179
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dictionary-switcher/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/3414",
+    "slug": "dictionary-switcher",
+    "status": "public",
+    "summary": {
+        "en-US": "Toggles dictionaries automatically or manually and displays the currently selected one",
+        "de": "Lässt zwischen installierten Wörterbüchern wechseln und zeigt das momentane Wörterbuch in der Statusleiste an ...",
+        "es": "Permite cambiar automática o manualmente de diccionario y muestra el seleccionado actualmente."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "diccionario",
+        "diccionarios",
+        "dictionaries",
+        "dictionary",
+        "idioma",
+        "idiomas",
+        "language",
+        "languages"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dictionary-switcher/",
+    "weekly_downloads": 48
+}

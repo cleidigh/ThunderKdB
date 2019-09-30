@@ -1,0 +1,164 @@
+{
+    "id": 4433,
+    "authors": [
+        {
+            "id": 100945,
+            "name": "Aron Rubin",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/aron-rubin/",
+            "username": "aron-rubin",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 17668,
+    "categories": {
+        "thunderbird": [
+            "contacts",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1271857,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.6.*",
+                "min": "1.1"
+            },
+            "thunderbird": {
+                "max": "12.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lookout/versions/1271857",
+        "files": [
+            {
+                "id": 133484,
+                "created": "2011-09-30T13:47:22Z",
+                "hash": "sha256:c6b53096adb5a708b4a67907b49677117c588caf056ecaca90a3d8b837de8b24",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 35840,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/133484/lookout-1.2.13-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "LookOut 1.2.13\n  * Fixed compatibility with Thunderbird 7"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout/versions/1.2.13",
+        "version": "1.2.13"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "LookOut is a plugin which allows Thunderbird to interface with Microsoft's mail tools by decoding metadata and attachments encapsulated/embedded in a TNEF encoded attachment (aka winmail.dat). The TNEF decoding engine was inspired (with permission) by the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9bd9c1a8c7ea35c09b0fd3176680b6b92ad4b204afab2ed802083a7cd175babc/http%3A//tnef.sf.net\">tnef.sf.net</a> project. LookOut has a full MAPI decoder and the ability to transcode some of those properties to iCalendar (ics) and vCard (vcf) formats. As an option all MAPI properties within a email can be viewed so other types of information can be deciphered. \n\nVersion 1.2.13\n  * Fixed compatibility with Thunderbird 7\n\nVersion 1.2.12\n* Fixed crash if TNEF message class is not defined\n* Added preference to disable filename character set conversion\n* Updated compatibility with Thunderbird and Seamonkey\n\nVersion 1.2.10\n  * Updated Thunderbird and Seamonkey compatibility to 3.0.* and 2.0.* respectively\n  * Added I18N filename support contributed by Hongwei Zeng\n\nVersion 1.2.9\n  * Thunderbird 3 version number compatibility update\n  * Change so only the filename and not a directory path are used for an attachment\n  * Changes to avoid Mozilla JS parser bug (which resulted in mysterious missing functions)\n  * Fixed GUID flag check\n  * Improved debug prints and raw MAPI property output some\n\nVersion 1.2.6\n  * Fixed use of some functions which could not be counted on to exist.\n\nVersion 1.2.5\n  * Compatibility with the Thunderbird 3.0 betas\n  * Better discovery of email addresses MS felt were implicit\n  * Worked around an intermittent bug in Mozilla JS engine\n  * Merged code from nickel_chrome which improves attachment pane interaction\n\nVersion 1.2.4\n  * Fixed race that made attachments not show up\n  * Added more complete MAPI decoding\n  * Added initial transcoding of appointment and contact data\n  * Added preference to view all decoded MAPI properties as a text file attachment\n\nEnjoy"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lookout/edit",
+    "guid": "lookout@aron.rubin",
+    "has_eula": true,
+    "has_privacy_policy": true,
+    "homepage": {
+        "en-US": "http://lookout.mozdev.org"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-10-05T10:14:18Z",
+    "name": {
+        "en-US": "LookOut"
+    },
+    "previews": [
+        {
+            "id": 28502,
+            "caption": {
+                "en-US": "Original TNEF file with extracted attachments"
+            },
+            "image_size": [
+                244,
+                148
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28502.png?modified=1530208304",
+            "thumbnail_size": [
+                244,
+                148
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28502.png?modified=1530208304"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.8262,
+        "count": 156,
+        "average": 3.8333,
+        "text_count": 156
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/4433",
+    "slug": "lookout",
+    "status": "public",
+    "summary": {
+        "en-US": "LookOut is a plugin which allows Thunderbird to interface with Microsoft's mail tools by decoding metadata and attachments encapsulated/embedded in a TNEF encoded attachment (aka winmail.dat)."
+    },
+    "support_email": {
+        "en-US": "aronrubin@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://lookout.mozdev.org"
+    },
+    "tags": [
+        "attachment",
+        "decoder",
+        "mapi",
+        "microsoft",
+        "outlook",
+        "tnef",
+        "winmail"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout/",
+    "weekly_downloads": 1562
+}

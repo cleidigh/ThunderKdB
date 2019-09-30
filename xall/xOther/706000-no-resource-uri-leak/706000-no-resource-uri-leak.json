@@ -1,0 +1,185 @@
+{
+    "id": 706000,
+    "authors": [
+        {
+            "id": 12314278,
+            "name": "Desktopd Collaboration",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/desktopd-collaboration/",
+            "username": "desktopd-collaboration",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12314/12314278.png?modified=1473079761"
+        },
+        {
+            "id": 12404775,
+            "name": "nord-stream",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/nord-stream/",
+            "username": "nord-stream",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12404/12404775.png?modified=1467981646"
+        }
+    ],
+    "average_daily_users": 43,
+    "categories": {
+        "firefox": [
+            "privacy-security"
+        ],
+        "android": [
+            "security-privacy"
+        ],
+        "seamonkey": [
+            "privacy-and-security"
+        ],
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1902052,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "38.0a1"
+            },
+            "android": {
+                "max": "56.*",
+                "min": "38.0a1"
+            },
+            "seamonkey": {
+                "max": "2.48",
+                "min": "2.38"
+            },
+            "thunderbird": {
+                "max": "52.*",
+                "min": "38.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/no-resource-uri-leak/versions/1902052",
+        "files": [
+            {
+                "id": 473069,
+                "created": "2016-07-25T13:30:51Z",
+                "hash": "sha256:2791548a424b2f2a1c34699f4c5627d1a4bf025b58ed487c5f5fe97349abdbc3",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 34471,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/473069/no_resource_uri_leak-1.1.0-an+tb+sm+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "<ul><li>Reverted the default preferences.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/no-resource-uri-leak/versions/1.1.0",
+        "version": "1.1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<strong>From Firefox 57 onward, Add-ons no longer have control over privileged schemes such as resource:// or chrome:// so this add-on cannnot be used anymore. This add-on will be unsupported.\nFortunately, latest Firefox blocks most privacy-threatening instances of previously content-accessible resources.</strong>\n\nThis extension hides private and important metadata of your browser, usually obtainable using <code>resource://</code> URIs, against the Web. You should have it installed if you use many extensions, because having many extensions means having many tracking and fingerprinting vectors. Also, Web sites can generally probe Firefox for installed extensions in many cases without this. The extension makes that privacy threat less effective. It may break some extensions which depend on this leak.\n\nHow to test: Visit <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5b29c0a91337d58b283ec0c63dc60ce25a90ced7f863af1674576c5882f38617/https%3A//www.browserleaks.com/firefox\">https://www.browserleaks.com/firefox</a> before and after installation.\nAlso: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1e1ee3fd2009733a15d819e9d9236410a8c6ffc087771d90bb9870917c1bec2b/http%3A//cs1.ca/ttest/dump.html\">http://cs1.ca/ttest/dump.html</a>\n\n<strong>Known issues and support: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0dc7529196c3b9ef76425bf3ed5ad6604161b9a4a30d1d8ee950205298488889/https%3A//discourse.mozilla-community.org/t/support-no-resource-uri-leak/9004/2%3Fu=desktopd\">https://discourse.mozilla-community.org/t/support-no-resource-uri-leak/9004/2?u=desktopd</a></strong>\n\n<em>Looking for a Pale Moon version? This was a lot of work... <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cf9180eb148c9338dfaae1043e3c2a7903f5b3c147106d15f918c1af95c1fbef/https%3A//notabug.org/neuemars/xpi-bucket/raw/master/palemoon/%40no-resource-uri-leak-0.2.1-pm.xpi\">https://notabug.org/neuemars/xpi-bucket/raw/master/palemoon/@no-resource-uri-leak-0.2.1-pm.xpi</a></em>\n\n<em>Since many add-ons (and possibly certain part of the browser) depend on this leak available by default, it is <strong>expected</strong> that some add-ons break due to this fix.</em> (But you are encouraged to report a problem anyway.) This add-on was created as a stop-gap measure. With Mozilla we need to create a browser-level solution that allow <em>both</em> better privacy and functional add-ons. We need more attention to finally fix the root of the problem. Thank you!\n\n\n<strong>If you need to unblock some elements</strong>\n\nYou can customize the settings in the add-on preferences. about:addons\n\n<strong>We want to hear from you</strong>\n\nPlease do not use the review interface here for reporting problems! <strong>It makes it more difficult to collect enough information and share details about the problem.</strong>  Please use the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4fd1162ef7a8680983835b9a5ff6619d05b642a88030d4eef9794724555259a7/https%3A//discourse.mozilla-community.org/t/support-no-resource-uri-leak/9004%3Fu=desktopd\">forum</a> or the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4ad4e68374ba6a55b0de8fca134fec1eb598a88bab97fe78adb1e5500932aeac/https%3A//notabug.org/desktopd/no-resource-uri-leak/issues\">issue tracker</a>\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8ea2a58d881c2f8e0d5d15cc07266e2d41009554addfc9f9ae08b6172ac5b531/https%3A//discourse.mozilla-community.org/t/support-no-resource-uri-leak/9004/9%3Fu=desktopd\">Problem reporting guide</a>"
+    },
+    "developer_comments": {
+        "en-US": "<strong>Future Tor Browser will include a temporary fix based on this add-on!</strong> (Thanks to yawning)\n\nMore information:\n<ul><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/67d64715a5aee36f6f7dbeda494ceda09dc67cfbc57de9d2726119f4d48c82a9/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=503221\">https://bugzilla.mozilla.org/show_bug.cgi?id=503221</a></li><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d50e7329780e1c0d058608c0a18faa8ae5332146ec98304b2a64da3cb8ed6159/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=863246\">https://bugzilla.mozilla.org/show_bug.cgi?id=863246</a></li><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4ae3debb15df45fe228b1f73ef7675bcb5d27b89239ff6c18b2aa9ee890be06d/https%3A//trac.torproject.org/projects/tor/ticket/8725\">https://trac.torproject.org/projects/tor/ticket/8725</a></li><li>(Undisclosed XHR-related security issue) <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c28256ba4932a9493f91072492eab4f0126c126eb8ac51ae055cfcfa3ca378a5/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1120398\">https://bugzilla.mozilla.org/show_bug.cgi?id=1120398</a></li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/no-resource-uri-leak/edit",
+    "guid": "@no-resource-uri-leak",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://notabug.org/desktopd/no-resource-uri-leak"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/706/706000-64.png?modified=1508903845",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/706/706000-32.png?modified=1508903845",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/706/706000-64.png?modified=1508903845"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-07-25T13:42:37Z",
+    "name": {
+        "en-US": "No Resource URI Leak"
+    },
+    "previews": [
+        {
+            "id": 174718,
+            "caption": {
+                "en-US": "Blocked access attempt"
+            },
+            "image_size": [
+                700,
+                445
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/174/174718.png?modified=1530209230",
+            "thumbnail_size": [
+                315,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/174/174718.png?modified=1530209230"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.21138,
+        "count": 31,
+        "average": 4.3548,
+        "text_count": 28
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/no-resource-uri-leak/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/706000",
+    "slug": "no-resource-uri-leak",
+    "status": "public",
+    "summary": {
+        "en-US": "Deny resource:// access to Web content: We fill the hole to defend against fingerprinting. Very important to Firefox privacy. A direct workaround for <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6519f47f80eb15f4a428dc5d31b079889a67abcb77b64b0fd0e19fc2e5ce9ce2/http%3A//bugzil.la/863246\">bugzil.la/863246</a>"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://notabug.org/desktopd/no-resource-uri-leak/issues"
+    },
+    "tags": [
+        "block",
+        "filter",
+        "fingerprint",
+        "fingerprinting",
+        "jetpack",
+        "leak",
+        "resource",
+        "tracking",
+        "uri"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/no-resource-uri-leak/",
+    "weekly_downloads": 139
+}

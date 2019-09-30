@@ -1,0 +1,143 @@
+{
+    "id": 467220,
+    "authors": [
+        {
+            "id": 10318689,
+            "name": "Attila K. Mergl",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/amergl/",
+            "username": "amergl",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 481,
+    "categories": {
+        "seamonkey": [
+            "downloading-and-file-management"
+        ],
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1494006,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.47",
+                "min": "1.0"
+            },
+            "thunderbird": {
+                "max": "50.0",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lookout-1/versions/1494006",
+        "files": [
+            {
+                "id": 230809,
+                "created": "2013-10-15T09:20:54Z",
+                "hash": "sha256:be24a8d3a40a128a4f942c0e97332fb3bb9348886ce6fd724c94d6a020b81831",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 48438,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/230809/lookout-1.2.15-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "I made changes according to the validator: mainly removed unnecessary / deprecated code.",
+            "hu": "Kiszedtem pár régi, már nem támogatott sort az addon-validátor ajánlásának megfelelően."
+        },
+        "reviewed": "2013-11-05T17:00:25Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout-1/versions/1.2.15",
+        "version": "1.2.15"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This version is a fix for Seamonkey 2.*. It is provided as a separate add-on, because the original was not updated (i.e. no GIT pull made) by Aron Rubin since Oct. 2011.\nPlease find the original add-on at <a rel=\"nofollow\" href=\"https://addons.mozilla.org/hu/seamonkey/addon/lookout/\">LookOut</a>.\n\nLookOut reads and integrates TNEF encoded parts in emails. The TNEF decoding engine was inspired (with permission) by the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9bd9c1a8c7ea35c09b0fd3176680b6b92ad4b204afab2ed802083a7cd175babc/http%3A//tnef.sf.net\">TNEF project</a>. LookOut has a full MAPI decoder and the ability to transcode some of those properties to iCalendar (ics) and vCard (vcf) formats. As an option all MAPI properties within a email can be viewed so other types of information can be deciphered.\n\nVersion 1.2.15\n* Taking over corrections for saving the attachment by Paul Richardson\n* Adding icons\n* Removed obsolete code\n* Code changes according to Mozilla validation results\n\nVersion 1.2.14\n* Fixed compatibility with SeaMonkey 2\n* Localisation for Hungarian and German",
+        "hu": "Ez a verzió a Seamonkey 2.* változataihoz készült javítás. Azért lett önálló kiegészítés, mert az eredeti LookOut fejlesztője, Aron Rubin, 2011. októbere óta nem vette át a GIT-en felkínált módosításokat.\nAz eredeti kiegészítő <a rel=\"nofollow\" href=\"https://addons.mozilla.org/hu/seamonkey/addon/lookout/\">LookOut</a> néven továbbra is megtalálható.\n\nA MutasdMeg! (LookOut) képes olvasni és integrálni a levelezőben a TNEF kódolású részeket. A dekódoló a <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9bd9c1a8c7ea35c09b0fd3176680b6b92ad4b204afab2ed802083a7cd175babc/http%3A//tnef.sf.net\">TNEF projekt</a> engedélyével és eredményeinek felhasználásával készült. A kiegészítő egy teljes MAPI dekóder, és képes az Outlook naptári meghívók (bizonyos) tulajdonságait iCalendar (ics) és vCard (vcf) formátumokba konvertálni. Opcionálisan egy levél összes MAPI tulajdonsága megtekinthető, és így más típusú információk is kinyerhetők. \n\nVersion 1.2.15\n* Paul Richardson módosításainak átvétele a csatolmány mentéséhez\n* Ikonok hozzáadása\n* Felesleges kódrészletek törlése\n* Kódváltoztatások a Mozilla addon-validátor figyelmeztetései szerint\n\nVersion 1.2.14\n* Kompatibilitás a SeaMonkey 2 verziójával.\n* Magyar és német nyelvi lokalizáció."
+    },
+    "developer_comments": {
+        "en-US": "This version is a fix for Seamonkey 2.*. It is provided as a separate add-on, because the original was not updated (i.e. no GIT pull made) by Aron Rubin since Oct. 2011.",
+        "hu": "Ez a verzió a Seamonkey 2.* változataihoz készült javítás. Azért lett önálló kiegészítés, mert az eredeti LookOut fejlesztője, Aron Rubin, 2011. októbere óta nem vette át a GIT-en felkínált módosításokat."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lookout-1/edit",
+    "guid": "lookout@addons.mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/AKMergl/LookOut",
+        "hu": "https://github.com/AKMergl/LookOut"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/downloads-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/downloads-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/downloads-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-11-05T17:01:33Z",
+    "name": {
+        "en-US": "LookOut+",
+        "hu": "LookOut+"
+    },
+    "previews": [
+        {
+            "id": 115048,
+            "caption": null,
+            "image_size": [
+                240,
+                90
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/115/115048.png?modified=1530209100",
+            "thumbnail_size": [
+                240,
+                90
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/115/115048.png?modified=1530209100"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.61181,
+        "count": 5,
+        "average": 4.2,
+        "text_count": 5
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout-1/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/467220",
+    "slug": "lookout-1",
+    "status": "public",
+    "summary": {
+        "en-US": "LookOut is a plugin which allows to interface with Microsoft's mail tools by decoding metadata and attachments encapsulated/embedded in a TNEF encoded attachment (aka winmail.dat). \n\nThis version is a fix for Seamonkey 2.*.",
+        "hu": "A MutasdMeg! kiegészítő lehetővé teszi, hogy a Microsoft Outlook-ban TNEF kódolással készített mellékleteket (általában winmail.dat) dekódoljuk és a benne lévő fájlokat letöltsük.\n\nEz a verzió a Seamonkey 2.* változataihoz készült javítás."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "attachment",
+        "decoder",
+        "mapi",
+        "microsoft",
+        "outlook",
+        "tnef",
+        "winmail"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout-1/",
+    "weekly_downloads": 96
+}

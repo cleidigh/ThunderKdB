@@ -1,0 +1,120 @@
+{
+    "id": 8789,
+    "authors": [
+        {
+            "id": 1165448,
+            "name": "Marcin Szewczyk",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/wodny/",
+            "username": "wodny",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1165/1165448.png?modified=1369353089"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 53485,
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0.0.8"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/colorify-unread-watched-nntp/versions/53485",
+        "files": [
+            {
+                "id": 37111,
+                "created": "2008-09-07T10:01:40Z",
+                "hash": "sha256:6f7d5c29f3599ac3ed83b058d9ecf188a210a88c07ab1e85dbcdba531b2deab1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 6144,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/37111/colorify_unread_watched_nntp-0.1.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Add-on adding engine on this service did not accept minVersion equal to 2.0.0.9, but this is the real minimum version as earlier ones had a flaw in the JS engine which combined with this extension caused a crash.\n\nSee <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6126c4aa68e24b986fa66696d5e182e2fa1a21fc284f099d24ee218f860c4b50/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=397006\">https://bugzilla.mozilla.org/show_bug.cgi?id=397006</a> for more details."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/colorify-unread-watched-nntp/versions/0.1.6",
+        "version": "0.1.6"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Colorization happens after you enter a newsgroup and download messages or mark a message read/unread.\n\nThe real trigger in the source code is the change of the Total Unread Messages count on a newsgroup.\n\nSince version 0.1.6 it adds keyboard shortcuts:\n! - All threads\n@ - Unread threads\n# - Threads with unread\n$ - Watched threads with unread\n% - Ignored threads\n\nHighlighting color is customizable through userChrome.css, like this:\ntreechildren::-moz-tree-cell-text(serverType-nntp, biffState-NewMail) {\n        color: red !important;\n}\n\nThis is a BETA version, it can crash your Thunderbird or something like that. Please use it only if you have a nature of a tester."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/colorify-unread-watched-nntp/edit",
+    "guid": "watch_unread_nntp@wodny.org",
+    "has_eula": true,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://wodny.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/8/8789-64.png?modified=1295497249",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/8/8789-32.png?modified=1295497249",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/8/8789-64.png?modified=1295497249"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-01-20T03:58:00Z",
+    "name": {
+        "en-US": "Colorify Unread Watched NNTP"
+    },
+    "previews": [
+        {
+            "id": 25749,
+            "caption": {
+                "en-US": "Unread message makes a folder glow"
+            },
+            "image_size": [
+                491,
+                230
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/25/25749.png?modified=1530208418",
+            "thumbnail_size": [
+                320,
+                150
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/25/25749.png?modified=1530208418"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0.802066,
+        "count": 2,
+        "average": 1,
+        "text_count": 2
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/colorify-unread-watched-nntp/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/8789",
+    "slug": "colorify-unread-watched-nntp",
+    "status": "public",
+    "summary": {
+        "en-US": "Colorizes names of newsgroups that have watched threads with unread messages."
+    },
+    "support_email": {
+        "en-US": "wodny@tlen.pl"
+    },
+    "support_url": {
+        "en-US": "http://wodny.org/"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/colorify-unread-watched-nntp/",
+    "weekly_downloads": 21
+}

@@ -1,0 +1,161 @@
+{
+    "id": 316903,
+    "authors": [
+        {
+            "id": 5760381,
+            "name": "Craig Miskell",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/cmiskell/",
+            "username": "cmiskell",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1241305,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.1.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filter-subfolders/versions/1241305",
+        "files": [
+            {
+                "id": 120911,
+                "created": "2011-05-20T18:15:53Z",
+                "hash": "sha256:a4bbe73d6c4a49c51c7210ba1e8e58b5be136886401054a253da347125bf132d",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 15360,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/120911/filter_subfolders-1.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": null,
+        "reviewed": "2011-06-15T09:35:25Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filter-subfolders/versions/1.0",
+        "version": "1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This extension will apply your mail filters to any (and potentially all) sub folders of an IMAP account, not just the Inbox.  This is useful for shared mailbox situations where server side filtering is in place to send mail to various sub folders, but you want to apply filters that update \"read\" state, cause specific notifications, or other client-side and client-specific actions.  \nIt is possible to control which folders it will apply the filters to, with a simple inheritance scheme accessible through a new tab in the folder properties.\nIt is also possible to manually initiate a run of your mail filters across all your folders (respecting the configuration you have made which might stop them being applied to certain folders).\n\nUPDATE: It turns out that there's already functionality to do filtering on sub\nfolders in Thunderbird, it's just not well documented.  It can be enabled by setting the preference \"mail.server.default.applyIncomingFilters\" to true, or can be applied per folder by setting the \"applyIncomingFilters\" property to a folder.   FilterQuilla (<a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-us/thunderbird/addon/filtaquilla/\">https://addons.mozilla.org/en-us/thunderbird/addon/filtaquilla/</a>) is reported to be able to set that property, although I haven't tested it.\n\nAs such, I don't see any need to develop this extension any further; this is it kiddies."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filter-subfolders/edit",
+    "guid": "filtersubfolders@stroppykitten.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.stroppykitten.com/filterSubFolders/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-06-15T09:35:23Z",
+    "name": {
+        "en-US": "Filter SubFolders"
+    },
+    "previews": [
+        {
+            "id": 58065,
+            "caption": {
+                "en-US": "The new menu item"
+            },
+            "image_size": [
+                215,
+                302
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58065.png?modified=1530208968",
+            "thumbnail_size": [
+                142,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58065.png?modified=1530208968"
+        },
+        {
+            "id": 58066,
+            "caption": {
+                "en-US": "The new folder properties tab to control whether this extension will apply filters to a given folder or not"
+            },
+            "image_size": [
+                634,
+                360
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58066.png?modified=1530208969",
+            "thumbnail_size": [
+                320,
+                182
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58066.png?modified=1530208969"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.66864,
+        "count": 3,
+        "average": 4.6667,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filter-subfolders/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/316903",
+    "slug": "filter-subfolders",
+    "status": "public",
+    "summary": {
+        "en-US": "Applies mail filters to sub folders of an IMAP account, not just the Inbox"
+    },
+    "support_email": {
+        "en-US": "craig@stroppykitten.com"
+    },
+    "support_url": {
+        "en-US": "http://www.stroppykitten.com/filterSubFolders/"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filter-subfolders/",
+    "weekly_downloads": 25
+}

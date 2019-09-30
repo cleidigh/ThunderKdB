@@ -1,0 +1,138 @@
+{
+    "id": 4500,
+    "authors": [
+        {
+            "id": 155502,
+            "name": "Jane Ocean (Seamaiden)",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jane-ocean-seamaiden/",
+            "username": "jane-ocean-seamaiden",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/155/155502.png?modified=1453573141"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 34193,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "3.0a1",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/options-toolbar-button/versions/34193",
+        "files": [
+            {
+                "id": 17467,
+                "created": "2007-07-10T10:20:18Z",
+                "hash": "sha256:102da449b095ae6a16b5701d1a6e819e8009aa1c035ecea18c1670db3d4d7f70",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 8192,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17467/options_toolbar_button-0.4-fx+tb+sb+ns+fl.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Version 0.4 has this compatibility:\n- Firefox 1.5 - 3.0a7\n- Thunderbird 1.5 - 3.0a1\n- Sunbird 0.2 - 0.6a1\n- Flock 0.4 - 1.5+\n- Netscape 9.0 - 9.0 (minVersion SHOULD be changed to 9.0b1)\n\nThe AMO system would not let me upload the file when minVersion for Netscape was set to 9.0b1. Can the AMO techs please fix that? Netscape 9.0b1 is the current official version. Netscape 9.0 is not yet available. So this extension will not install into Netscape 9.0b1 if minVersion is set to 9.0.\n\nIn the Discussion section, you will find some links where you can download an alternative Version 0.4 from Add-ons Mirror (AMI). That build has Netscape 9.0b1 as the minVersion for that browser. AMO needs to fix the upload problem here for Netscape."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/options-toolbar-button/versions/0.4",
+        "version": "0.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "***************************************************************\n*  I am not updating this extension any more. If you want     *\n*  this extension, please use my Custom Button Maker at       *\n*  <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0c35a11277d6689d8c7ebe079ce6250a8b27258b17fe032d6cb3c4ba264409f8/http%3A//codefisher.org/toolbar_button/toolbar_button_maker\">http://codefisher.org/toolbar_button/toolbar_button_maker</a>  *\n*  to generate the extension, maybe with a few extra buttons  *\n*  if you want them.  Options Toolbar Button is included in   *\n*  my Toolbar Buttons extension and is updated as it is.      *\n*  I have given Seamaiden joint ownership of this extension.  *\n*  If she chooses to maintain it, she can.                    *\n*************************************************************** \n\nThis is a small devision of Toolbar Buttons <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/2377/\">https://addons.mozilla.org/firefox/2377/</a> and one of the most popular on my web site.\n\nPlease don't install this if you have Toolbar Buttons. They tend to conflict, and Toolbar Buttons has this button included already.\n\nYou can find more buttons at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e09a6da9afa5ed6b673f0f3716034f962b5023c55fa4776df18a0d2f811508aa/http%3A//codefisher.org/toolbar_button/\">http://codefisher.org/toolbar_button/</a>\n\nThis one adds a toolbar button to open the Options dialog (Tools -&gt; Options). You must add the button to your toolbar by right-clicking the toolbar, selecting \"customize\", and dragging this new button to the toolbar or menu bar.\n\nICON SOURCE:\nThe icon for this button is from the Nuvola icon set by David Vignoni. \n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b0dcc7687af73760eb30f814ed8290771e7bbac2c42dfa393a1ec030a1e0e374/http%3A//www.kde-look.org/content/show.php%3Fcontent=5358\">http://www.kde-look.org/content/show.php?content=5358</a>\n\nHis icons are licensed under the LGPL, and we have permission to use them in our extensions.\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cdbb94a7ca7b1e4d94916bfe133f729affa84d6c7e70b4417d5a38951cecc1c4/http%3A//www.gnu.org/licenses/lgpl.html\">http://www.gnu.org/licenses/lgpl.html</a>"
+    },
+    "developer_comments": {
+        "en-US": "This extension uses a different Options button icon than the one included with MR Tech Local Install (5.3.2.4 and earlier). You can have Options Toolbar Button and MTLI installed at the same time, so you can choose which Options button you like best. There are no conflicts. In future versions of MTLI, if Mel Reyes chooses to use this icon, then you do not need both extensions installed.\n\nYou can find an alternative build of Options Toolbar Button at Add-ons Mirror (AMI):\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/dc450148eadb16bc1a66e712ff63159c2fabc41272c559d99a818ab2ee6a9a92/http%3A//forum.addonsmirror.net/index.php%3Fshowtopic=6810\">http://forum.addonsmirror.net/index.php?showtopic=6810</a>\n\nRead the version notes in the next section to see why that is needed."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/options-toolbar-button/edit",
+    "guid": "{97956ca5-de59-11da-b2c3-0050c2490048}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://codefisher.org/toolbar_button/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2007-07-10T13:36:22Z",
+    "name": {
+        "en-US": "Options Toolbar Button"
+    },
+    "previews": [
+        {
+            "id": 15114,
+            "caption": {
+                "en-US": "toolbar style - icons only"
+            },
+            "image_size": [
+                33,
+                30
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/15/15114.png?modified=1530208303",
+            "thumbnail_size": [
+                33,
+                30
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/15/15114.png?modified=1530208303"
+        },
+        {
+            "id": 15117,
+            "caption": {
+                "en-US": "toolbar style - icons and text"
+            },
+            "image_size": [
+                56,
+                55
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/15/15117.png?modified=1530208303",
+            "thumbnail_size": [
+                56,
+                55
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/15/15117.png?modified=1530208303"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.5546,
+        "count": 2,
+        "average": 5,
+        "text_count": 2
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/options-toolbar-button/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/4500",
+    "slug": "options-toolbar-button",
+    "status": "public",
+    "summary": {
+        "en-US": "This is a small devision of Michael Buckley's Toolbar Buttons extension. <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/2377/\">https://addons.mozilla.org/firefox/2377/</a> or <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e09a6da9afa5ed6b673f0f3716034f962b5023c55fa4776df18a0d2f811508aa/http%3A//codefisher.org/toolbar_button/\">http://codefisher.org/toolbar_button/</a>"
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/options-toolbar-button/",
+    "weekly_downloads": 22
+}

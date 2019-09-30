@@ -1,0 +1,148 @@
+{
+    "id": 9030,
+    "authors": [
+        {
+            "id": 346935,
+            "name": "gekacheka",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/gekacheka/",
+            "username": "gekacheka",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 66277,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.2a1pre",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/file-bug-report/versions/66277",
+        "files": [
+            {
+                "id": 50843,
+                "created": "2009-04-12T11:46:00Z",
+                "hash": "sha256:c968d6c6825d0c7732b20a678c0c64b9c26f73c18368f54bb1d574b6ed94a2c1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 3072,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/50843/file_bug_report-0.4-sb+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/file-bug-report/versions/0.4",
+        "version": "0.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "From Mozilla non-browser applications, FileBugReport opens a new bug report page for the appropriate product and fills the build-identifier field.  Benefits:\n\n • Testers reporting bugs will appreciate not having to (remember to) find the build-identifier and then cut and paste it into the report.\n • Triagers confirming bugs will appreciate receiving reports with the correct product and build-identifier for the buggy system, making it easier to reproduce the problem.\n\nAfter successful installation and application restart:\n\n • Thunderbird: The Tools menu now contains \"File Thunderbird Bug Report\". Invoking it opens your browser at the Mozilla Bugzilla site, on the Thunderbird guided enter-bug page, with the build-id field filled with Thunderbird's navigator.userAgent string.\n\n • Thunderbird: The Tools menu now contains \"File Lightning Bug Report\".  Invoking it opens your browser at the Mozilla Bugzilla site, on the Calendar guided enter-bug page, with the build-id field filled with Thunderbird's navigator.userAgent string.\n\n • Sunbird: The Tools menu now contains \"File Sunbird Bug Report\".  Invoking it opens your browser at the Mozilla Bugzilla site, on the Calendar guided enter-bug page, with the build-id field filled with Sunbird's navigator.userAgent string.\n\nAs always, be sure to search previous bug reports for the problem you've discovered before deciding to file a new bug report on that problem.  It may save you the time it will take to write up a detailed report on how to reproduce the problem, and save you the disappointment of having your report marked 'duplicate'.\n\n"
+    },
+    "developer_comments": {
+        "en-US": "Known issues:\n\nFile Lightning Bug Report appears in Thunderbird even if Lightning is not installed.  If it bothers you, you can try hiding it by adding the following to chrome/userChrome.css in your profile directory:\n  #FileBugReport-Lightning-file-report-item { display: none; }  \n   \nThis extension does not install into Firefox.  Browsers like Firefox do not need this extension because the enter-bug web page can continue to fill the build-id field using the userAgent string from the browser.\n\nReferences:\nbug 308943 Remove auto-fill build-id for non-browser products\nbug 308950 Add build-id URL parameter to guided enter-bug page\n\nChanges:\n0.4 20090412 Added sunbird.jar to manifest for Sunbird 1.0pre\n0.3 20080927 Added changed Tools menu id for Sunbird 0.9\n0.2 20061209 Added separate Lightning menu item\n0.1 20050927 Initial"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/file-bug-report/edit",
+    "guid": "{113e8160-6a1a-4524-9b6f-61318cb80d93}",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-02-14T09:13:53Z",
+    "name": {
+        "en-US": "File Bug Report"
+    },
+    "previews": [
+        {
+            "id": 31345,
+            "caption": {
+                "en-US": "In Thunderbird, \"File Thunderbird Bug Report\" opens the Bugzilla guided \"Enter a bug\" page for product \"Thunderbird\", with the build id field filled."
+            },
+            "image_size": [
+                700,
+                375
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31345.png?modified=1530208424",
+            "thumbnail_size": [
+                320,
+                171
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31345.png?modified=1530208424"
+        },
+        {
+            "id": 31346,
+            "caption": {
+                "en-US": "In Thunderbird, \"File Lightning Bug Report\" opens the Bugzilla guided \"Enter a bug\" page for product \"Calendar\", with the build id field filled."
+            },
+            "image_size": [
+                700,
+                375
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31346.png?modified=1530208424",
+            "thumbnail_size": [
+                320,
+                171
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31346.png?modified=1530208424"
+        },
+        {
+            "id": 31347,
+            "caption": {
+                "en-US": "In Sunbird, \"File Sunbird Bug Report\" opens the Bugzilla guided \"Enter a bug\" page for product \"Calendar\", with the build id field filled."
+            },
+            "image_size": [
+                700,
+                375
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31347.png?modified=1530208425",
+            "thumbnail_size": [
+                320,
+                171
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31347.png?modified=1530208425"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.79641,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/file-bug-report/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/9030",
+    "slug": "file-bug-report",
+    "status": "public",
+    "summary": {
+        "en-US": "For testers and developers who submit bug reports:   Adds \"File Bug Report\" command to Tools menu.  Opens browser at the Bugzilla enter-bug page in guided format with product and build identifier.\n    "
+    },
+    "support_email": {
+        "en-US": "gekacheka@yahoo.com"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/file-bug-report/",
+    "weekly_downloads": 24
+}

@@ -1,0 +1,287 @@
+{
+    "id": 8051,
+    "authors": [
+        {
+            "id": 866509,
+            "name": "arai_a",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/arai_a/",
+            "username": "arai_a",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/866/866509.png?modified=1401958849"
+        }
+    ],
+    "average_daily_users": 189,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2115809,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "38.0"
+            },
+            "android": {
+                "max": "56.*",
+                "min": "38.0"
+            },
+            "seamonkey": {
+                "max": "2.39.*",
+                "min": "2.33"
+            },
+            "thunderbird": {
+                "max": "55.*",
+                "min": "38.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unmht/versions/2115809",
+        "files": [
+            {
+                "id": 662569,
+                "created": "2017-06-10T05:22:31Z",
+                "hash": "sha256:286255cbd671c9ae9a2674c751f6feaa98da0dc88feb0174cdb21736f30a2d20",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 518788,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/662569/unmht-8.3.2-an+fx+sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 306,
+            "name": {
+                "en-US": "Custom License",
+                "ja": "MPL 1.1/GPL 2.0/LGPL 2.1"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unmht/license/8.3.2"
+        },
+        "release_notes": {
+            "en-US": "<ul><li><b>[FIXED]</b> Duplicated links for original page inserted into saved MHT file.</li><li><b>[FIXED]</b> Support the change in DeferredTask.jsm in Firefox 55.</li></ul>",
+            "ja": "<ul><li><b>[修正]</b> 保存された MHT ファイルの元のページへのリンクが二重に入るバグを修正しました</li><li><b>[修正]</b> Firefox 55 での DeferredTask.jsm の変更に対応しました</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unmht/versions/8.3.2",
+        "version": "8.3.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "UnMHT adds MHT file reading/writing support to Firefox and SeaMonkey.\n\nUnMHT provides following features:\n<ul><li>Save webpage as MHT file.</li><li>Insert URL of the webpage and date you saved into saved MHT file.</li><li>Save multiple tabs as MHT files at once.</li><li>Save multiple tabs into a single MHT file.</li><li>Save webpage by single click into prespecified directory with Quick Save feature.</li><li>Convert HTML files and directory which contains files used by the HTML into MHT file.</li><li>View the MHT file saved by UnMHT, IE, PowerPoint, etc.</li></ul>\nIn Thunderbird, only saving webpage as MHT is supported.\n\n<strong>Please do not post bug report as review, you cannot get any support here.</strong>\n\nUnMHT is not compatible with e10s.",
+        "ja": "Firefox および SeaMonkey に MHT ファイルの保存、表示のサポートを追加します。 \n\nUnMHT を利用することで、以下の事が可能になります:\n<ul><li>ウェブページを MHT ファイルとして保存できます</li><li>保存する MHT ファイル中に保存元のページの URL や保存時刻を挿入する事ができます</li><li>一度に複数のタブを MHT ファイルとして保存できます</li><li>複数のタブを 1 つの MHT ファイルとして保存できます</li><li>Quick Save 機能を使用すると、前もって指定したディレクトリ以下にワンクリックで保存できます</li><li>過去に HTML + ディレクトリとして保存したウェブページを MHT に変換できます</li><li>UnMHT で保存した MHT ファイルは勿論、IE や PowerPoint 等で保存した MHT ファイルも表示できます</li></ul>\nThunderbird では MHT ファイルの保存のみサポートしています。\n\n<strong>バグレポートをレビューに投稿しないでください。ここではサポートは受けられません。</strong>\n\nUnMHT は e10s 互換ではありません。"
+    },
+    "developer_comments": {
+        "en-US": "If you installed IETab, UnMHT will failed to display the MHT file in your local machine. Please disable following from IETab's site filter.\n/^file:\\/\\/\\/.*\\.(mht|mhtml)$/",
+        "ja": "UnMHT と IETab を同時に使用すると, ローカルファイルを正しく表示できない場合があります. この場合, IETab のサイトフィルタから以下を無効にしてください.\n/^file:\\/\\/\\/.*\\.(mht|mhtml)$/"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unmht/edit",
+    "guid": "{f759ca51-3a91-4dd1-ae78-9db5eee9ebf0}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.unmht.org/unmht/en_index.html",
+        "ja": "http://www.unmht.org/unmht/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/8/8051-64.png?modified=1497602060",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/8/8051-32.png?modified=1497602060",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/8/8051-64.png?modified=1497602060"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-06-10T13:33:12Z",
+    "name": {
+        "en-US": "UnMHT",
+        "ja": "UnMHT"
+    },
+    "previews": [
+        {
+            "id": 120152,
+            "caption": {
+                "en-US": "Toolbar icons provide quick access to UnMHT features, Save as MHT, Save multiple tabs as MHT, and Quick Save.",
+                "ja": "ツールバーのアイコンから、MHT で保存、複数のタブを MHT で保存、Quick Save 等の UnMHT の機能にすばやくアクセスできます。"
+            },
+            "image_size": [
+                305,
+                195
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/120/120152.png?modified=1530208396",
+            "thumbnail_size": [
+                305,
+                195
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/120/120152.png?modified=1530208396"
+        },
+        {
+            "id": 120153,
+            "caption": {
+                "en-US": "Insert URL of the webpage and date you saved into saved MHT file.",
+                "ja": "保存する MHT ファイル中に保存元のページの URL や保存時刻を挿入する事ができます。"
+            },
+            "image_size": [
+                700,
+                176
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/120/120153.png?modified=1530208396",
+            "thumbnail_size": [
+                320,
+                80
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/120/120153.png?modified=1530208396"
+        },
+        {
+            "id": 120154,
+            "caption": {
+                "en-US": "Save only selection instead of whole page.",
+                "ja": "ページ全体ではなく選択範囲のみも保存できます。"
+            },
+            "image_size": [
+                347,
+                217
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/120/120154.png?modified=1530208398",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/120/120154.png?modified=1530208398"
+        },
+        {
+            "id": 120155,
+            "caption": {
+                "en-US": "Save linked page without opening it in tab.",
+                "ja": "リンク先のページをタブに開く事なく保存できます。"
+            },
+            "image_size": [
+                303,
+                214
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/120/120155.png?modified=1530208398",
+            "thumbnail_size": [
+                283,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/120/120155.png?modified=1530208398"
+        },
+        {
+            "id": 120156,
+            "caption": {
+                "en-US": "Save multiple tabs as MHT files or into single MHT file at a time.",
+                "ja": "一度に複数のタブをそれぞれ別の MHT ファイルとして、または１つの MHT ファイルとして保存できます。"
+            },
+            "image_size": [
+                421,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/120/120156.png?modified=1530208398",
+            "thumbnail_size": [
+                160,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/120/120156.png?modified=1530208398"
+        },
+        {
+            "id": 120157,
+            "caption": {
+                "en-US": "Convert HTML files and directory which contains files used by the HTML into MHT file.",
+                "ja": "過去に HTML + ディレクトリとして保存したウェブページを MHT に変換できます。"
+            },
+            "image_size": [
+                575,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/120/120157.png?modified=1530208399",
+            "thumbnail_size": [
+                219,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/120/120157.png?modified=1530208399"
+        },
+        {
+            "id": 120158,
+            "caption": {
+                "en-US": "See information of MHT file in current tab in information panel.",
+                "ja": "現在のタブに開いている MHT ファイルの情報を情報パネルで見る事ができます。"
+            },
+            "image_size": [
+                668,
+                146
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/120/120158.png?modified=1530208399",
+            "thumbnail_size": [
+                320,
+                70
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/120/120158.png?modified=1530208399"
+        },
+        {
+            "id": 120159,
+            "caption": {
+                "en-US": "Compatible with Firefox for Mobile.",
+                "ja": "Firefox for Mobile でも使えます。"
+            },
+            "image_size": [
+                365,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/120/120159.png?modified=1530208399",
+            "thumbnail_size": [
+                139,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/120/120159.png?modified=1530208399"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.46048,
+        "count": 300,
+        "average": 4.4767,
+        "text_count": 282
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unmht/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/8051",
+    "slug": "unmht",
+    "status": "public",
+    "summary": {
+        "fr": "UnMHT vous permet d'afficher les MHT (MHTML) qui est un format d'archive Web, et d'enregistrer des pages Web complètes, y compris textes et images, en un seul fichier MHT.",
+        "zh-TW": "UnMHT 允許您檢視 MHT (MHTML) 網頁封存檔案，同時能幫您將完整的網頁 (包括文字和圖片) 儲存成單一的 MHT 檔案。",
+        "en-US": "UnMHT allows you to view MHT (MHTML) web archive format files, and save complete web pages, including text and graphics, into a single MHT file in Firefox/SeaMonkey.",
+        "it": "UnMHT permette di visualizzare MHT (MHTML) formato compresso per il web, e salvare pagine web complete, includendo testo ed elementi grafici, in un unico file MHT.",
+        "hu": "Az UnMHT kiegészítővel megnyithatod az MHT (MHTML) webarchívum fájlokat, és menthetsz el teljes weblapokat szöveggel és képekkel egy MHT fájlba.",
+        "zh-CN": "UnMHT 可以让你查看MHT(MHTML)文件,保存整个网页为一个 MHT 文件,包括文本和图像.",
+        "pl": "UnMHT pozwala na przeglądanie plików MHT (MHTML), będących formatem archiwum stron internetowych, i zapisywanie całych stron internetowych, włącznie z ich treścią i umieszczonymi nań grafikami, do pojedynczego pliku MHT.",
+        "cs": "UnMHT umožňuje prohlížet soubory webových archivů MHT (MHTML) a ukládat celé webové stránky, včetně textu a grafiky, do jednoho souboru.",
+        "ja": "UnMHT を利用すると、Firefox/SeaMonkey で MHT (MHTML) ウェブアーカイブファイルを表示したり、ウェブページをテキストや画像を含めて完全な形で MHT ファイルとして保存したりできます。",
+        "es": "UnMHT le permite ver archivos web MHT (MHTML), y guardar páginas web completas, incluyendo texto y gráficos, en un único archivo MHT."
+    },
+    "support_email": {
+        "en-US": "arai_a@mac.com",
+        "ja": "arai_a@mac.com"
+    },
+    "support_url": {
+        "en-US": "http://www.unmht.org/unmht/en_index.html",
+        "ja": "http://www.unmht.org/unmht/"
+    },
+    "tags": [
+        "mht",
+        "mhtml",
+        "restartless"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unmht/",
+    "weekly_downloads": 930
+}

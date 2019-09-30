@@ -1,0 +1,97 @@
+{
+    "id": 1396,
+    "authors": [
+        {
+            "id": 7156,
+            "name": "Michael Buschbeck",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/michael-buschbeck/",
+            "username": "michael-buschbeck",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 3,
+    "categories": {},
+    "contributions_url": null,
+    "current_version": {
+        "id": 10121,
+        "compatibility": {
+            "thunderbird": {
+                "max": "1.5.0.*",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sync-on-arrival/versions/10121",
+        "files": [
+            {
+                "id": 6198,
+                "created": "2007-03-05T13:14:16Z",
+                "hash": "sha256:93efe568ba522d377f24dd6c0d236d2953d59a510062742c5a384547f117c53f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 12288,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/6198/sync_on_arrival-1.3-mz+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "[Version 1.3, uploaded 2006-01-03]\n\n* Fix for all sorts of incompatibilities with other extensions; Mozilla bug 174320 is responsible for that (though that bug wouldn't have surfaced if I had done things slightly different).\n\n* Added troubleshooting option for some IMAP servers which only download the first message body when moving or copying several messages.  Kudos to Ketil Lund who reported this problem and greatly helped me in ironing out the kinks of this new release.\n\n* Added a nifty new \"Report a Bug\" wizard (available from the \"Options\" dialog) to encourage users to write bug reports when something's not working, and to help them doing it in a way that's useful to me."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sync-on-arrival/versions/1.3",
+        "version": "1.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Downloads new message headers (and bodies, if configured) immediately when Thunderbird detects new messages in an IMAP folder - that's more or less what the \"download_on_biff\" preference promises to do, but somehow fails to deliver. Normally, Thunderbird won't download message headers (let alone bodies) until the folder they're in is opened.\n\nAs an additional benefit, this keeps Saved Search folders up-to-date in IMAP accounts even if \"search online\" isn't checked.  Very handy if you have a Saved Search configured to show all of your unread email."
+    },
+    "developer_comments": {
+        "en-US": "Please send bug reports and feature requests to my email address, michael@buschbeck.net.\n\nAs of version 1.3, Sync On Arrival has a \"Report a Bug\" wizard dialog built into it, available through the \"Troubleshooting\" tab in its options dialog.  It asks a few question and then pre-compiles an email for you which you can review, change (if you want to) and send.  The information it adds automatically is your exact Thunderbird version and the names and versions of the extensions you are using.  Please use it!\n\nBUGS I CANNOT REPRODUCE CANNOT BE FIXED. Sorry. :-/ I simply can't do anything about bugs that I can't trace back to their root cause, so I need your information to make my system behave more like yours (including the buggy behavior).\n\nSource code:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/fe31c4a8fb3ffbf8d5b7ba0b5628242b179ad80226f0d7c331a11fe9ee95b584/http%3A//home.buschbeck.net/viewcvs/Thunderbird-SyncOnArrival/\">http://home.buschbeck.net/viewcvs/Thunderbird-SyncOnArrival/</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sync-on-arrival/edit",
+    "guid": "{304fe8a0-ad69-442a-9fe6-4226a073ae6a}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://forums.mozillazine.org/viewtopic.php?t=334530"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2007-03-05T13:14:16Z",
+    "name": {
+        "en-US": "Sync On Arrival"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.14318,
+        "count": 18,
+        "average": 4.3333,
+        "text_count": 18
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sync-on-arrival/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/1396",
+    "slug": "sync-on-arrival",
+    "status": "public",
+    "summary": {
+        "en-US": "Downloads new message headers (and bodies, if configured) immediately when Thunderbird detects new messages in an IMAP folder - that's more or less what the \"download_on_biff\" preference promises to do, but somehow fails to deliver..."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sync-on-arrival/",
+    "weekly_downloads": 24
+}

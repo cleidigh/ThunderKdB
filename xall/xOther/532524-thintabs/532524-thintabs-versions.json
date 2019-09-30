@@ -1,0 +1,230 @@
+{
+    "page_size": 25,
+    "page_count": 1,
+    "count": 5,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1933968,
+            "channel": "listed",
+            "compatibility": {
+                "firefox": {
+                    "max": "56.*",
+                    "min": "4.0"
+                },
+                "thunderbird": {
+                    "max": "38.*",
+                    "min": "5.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thintabs/versions/1933968",
+            "files": [
+                {
+                    "id": 502105,
+                    "created": "2016-09-13T18:18:23Z",
+                    "hash": "sha256:5bc4373d492a257b27a93cda0f5507c0b95505d7648cba37c501fc4b91a44ef7",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 18750,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/502105/thin_tabs-1.6-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "* Fixed that hiding the tabbar would break the tab system.\n * The gap between the icon and the sitename can now be set.\n * Added an option to force the height of the tab bar.\n * Fixed typo which could misplace the throbber.\n * Added options for the sound icon.\n * The preferences window is now using tabs.\n\nNote: I've seen performance degradations especially on older versions (applying the changes takes two to four seconds). Version 45 did not show such signs, however 41 does.\n\nNote: I've tested the addon with Colorful Tabs, it \"seems to work\" in so far as you can adjust the settings to be actually usable. However, Colorful Tabs and ThinTabs does have quite some overlap when it comes to the styles that are applied to the tabs, I do not believe that that can be fixed on my end. A possible solution might be to have an option on Colorful Tabs to disable all \"theme settings\" that it applies.\n\nKnown bugs:\n * Setting the tab width does nothing in Thunderbird.\n * Changing the heights of the tabs while the multirow tabbar is active might lead to visual glitches (tabbar too small or large for the tabs). A restart of Firefox *might* be required, could also be that fiddling with the row setting of TabMix Plus fixes it, or closing tabs until the tabbar collapses to one row."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thintabs/versions/1.6",
+            "version": "1.6"
+        },
+        {
+            "id": 1715932,
+            "channel": "listed",
+            "compatibility": {
+                "firefox": {
+                    "max": "56.*",
+                    "min": "4.0"
+                },
+                "thunderbird": {
+                    "max": "38.*",
+                    "min": "5.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thintabs/versions/1715932",
+            "files": [
+                {
+                    "id": 325978,
+                    "created": "2015-07-01T11:07:23Z",
+                    "hash": "sha256:096577e46cd5e16f8175d5f07de063e533fed9d63e9be1fa4e561bd282897aef",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 12372,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/325978/thin_tabs-1.5.3-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "Attention: Because of the changes needed for TabMix Plus, you may need to recalibrate your settings (the defaults have been adjusted). I'm sorry for that, but it was inevitable in the end.\n\n * Minimum required Firefox version is no 4.0.\n * Removed the nonsense padding below the tabbar.\n * Added setting to completely hide the tabbar.\n * Added setting to hide the text of the tabs.\n * Added setting to force a certain width of tabs.\n * Added Thunderbird support.\n * Added TabMix Plus support (Multirow tabbar).\n\nKnown bugs:\n\n * Setting the tab width does nothing in Thunderbird.\n * Changing the heights of the tabs while the multirow tabbar is active might lead to visual glitches (tabbar too small or large for the tabs). A restart of Firefox *might* be required, could also be that fiddling with the row setting of TabMix Plus fixes it, or closing tabs until the tabbar collapses to one row."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thintabs/versions/1.5.3",
+            "version": "1.5.3"
+        },
+        {
+            "id": 1604412,
+            "channel": "listed",
+            "compatibility": {
+                "firefox": {
+                    "max": "39.*",
+                    "min": "29.0a1"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thintabs/versions/1604412",
+            "files": [
+                {
+                    "id": 277612,
+                    "created": "2014-09-25T13:01:54Z",
+                    "hash": "sha256:a3d2cf7c9eb8e22883fb11b27171a281de8320829cb0778b3aa40834cbfdab7a",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 8261,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/277612/thin_tabs-1.4-fx.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "* Added possibility to define the padding (from the top) for the icon and the close button.\n * All paddings can be negative.\n * Upped compatibility to 34.*"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thintabs/versions/1.4.1-signed",
+            "version": "1.4.1-signed"
+        },
+        {
+            "id": 1589124,
+            "channel": "listed",
+            "compatibility": {
+                "firefox": {
+                    "max": "32.*",
+                    "min": "29.0a1"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thintabs/versions/1589124",
+            "files": [
+                {
+                    "id": 271094,
+                    "created": "2014-08-11T10:40:28Z",
+                    "hash": "sha256:8bfa4d0a7a72b28e6607b6ffd70659d195f5f297c237670817955476e0bd4d34",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 8050,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/271094/thin_tabs-1.2-fx.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "Added an options dialog."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thintabs/versions/1.2.1-signed",
+            "version": "1.2.1-signed"
+        },
+        {
+            "id": 1583628,
+            "channel": "listed",
+            "compatibility": {
+                "firefox": {
+                    "max": "32.*",
+                    "min": "29.0a1"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thintabs/versions/1583628",
+            "files": [
+                {
+                    "id": 268454,
+                    "created": "2014-07-23T12:19:14Z",
+                    "hash": "sha256:90e7d94c083b7673cddd2ddf80469c8ebfcb5447eabf4ed5ee836b2ff65422d5",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 3110,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/268454/thin_tabs-1.0-fx.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": null,
+            "reviewed": "2014-07-24T04:33:07Z",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thintabs/versions/1.0.1-signed",
+            "version": "1.0.1-signed"
+        }
+    ]
+}

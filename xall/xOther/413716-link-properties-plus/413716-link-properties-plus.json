@@ -1,0 +1,327 @@
+{
+    "id": 413716,
+    "authors": [
+        {
+            "id": 397803,
+            "name": "Infocatcher",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Infocatcher/",
+            "username": "Infocatcher",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 63,
+    "categories": {
+        "firefox": [
+            "download-management",
+            "web-development"
+        ],
+        "seamonkey": [
+            "downloading-and-file-management",
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2057550,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "2.52a1",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "55.0a1",
+                "min": "3.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/link-properties-plus/versions/2057550",
+        "files": [
+            {
+                "id": 608626,
+                "created": "2017-03-13T18:49:34Z",
+                "hash": "sha256:c19cd0cdfdd5ae477546de6d87611882877cd347955b3bf62a7b02bbb226e7f7",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 80183,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/608626/link_properties_plus-1.6.1-fx+sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "ru": "[x] Исправлена совместимость с мультипроцессным режимом (Electrolysis aka e10s) в Firefox 47+ (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/456b076891eb6c95267df1f5c4ee2218989e8f25a6fe59b00d711b6e727ab46b/https%3A//github.com/Infocatcher/Link_Properties_Plus/issues/20\">#20</a>).\n[x] Исправлена совместимость с Firefox 48+ (из-за изменений в nsIIOService, см. <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/fac58fe1f9afe6eb4266ae370273839edc59e320005688bf42ed78bf0f99e16c/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1254752\">bug 1254752</a>).\n[x] Исправлена интеграция с окном информации со странице в Firefox 44+ (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/33e6b849635da57c297dfeb15777d57b3c478d1299df94c6123b9de3e3f43cfa/https%3A//github.com/Infocatcher/Link_Properties_Plus/issues/22\">#22</a>).\n[+] Добавлена китайская (упрощённая) локаль (zh-CN), спасибо <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/09cb4de957b7b1a7c0f6875b7c7bdcb4a89f7b58cead7c4b102203bd5f0ffe42/https%3A//github.com/yfdyh000\">YFdyh000</a> (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c33bfe8707f5fef6671fea15e48ead62fc53f74f6dffd7907fb1f59cdb422e42/https%3A//github.com/Infocatcher/Link_Properties_Plus/pull/23\">#23</a>).\n[*] Улучшена производительность при запуске: код для контекстного меню и команд перемещен в отдельный лениво загружаемый файл (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b8a7640e3df6174180145fa46ef33cd09a009ba4bf9c09897974e10f5ab74bc9/https%3A//github.com/Infocatcher/Link_Properties_Plus/issues/21\">#21</a>).\n[x] Исправлена совместимость с будущими версиями Firefox: прекращено использование Array generics вида `Array.forEach()` (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f097ea3f32737a8e0725bf2c0b8cce47c44b051b6bd7354b13b0cf69d18032b1/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1222547\">bug 1222547</a>).\n[+] Добавлено отображение флага перенаправления <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/fb2412bedef0299ebec11404d6f10bb369095aa7f70e41593ba79cddfc15f268/https%3A//ru.wikipedia.org/wiki/HSTS\">HSTS</a> во всплывающей подсказке для поля «Прямая ссылка».\n[*] Обновлена совместимость с расширением <a rel=\"nofollow\" href=\"https://addons.mozilla.org/addon/private-tab/\">Private Tab</a>: добавлено отслеживание переключения приватности через дублирование вкладки в Firefox 51+ (см. <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1d5904b1ca8842ca1f781f2f829bb426b2395812911ea3165cd018e5ba74cb54/https%3A//github.com/Infocatcher/Private_Tab/issues/244\">Private Tab #244</a>).\n[x] Исправлена валидация ссылок в Firefox 37-43 (возникало исключение в `nsIIOService.newChannelFromURIWithLoadInfo(…, null)`).\n[x] Исправлено определение диалога открытия файла в Firefox 52+.",
+            "en-US": "[x] Fixed compatibility with multi-process mode (Electrolysis aka e10s) in Firefox 47+ (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/456b076891eb6c95267df1f5c4ee2218989e8f25a6fe59b00d711b6e727ab46b/https%3A//github.com/Infocatcher/Link_Properties_Plus/issues/20\">#20</a>).\n[x] Fixed compatibility with Firefox 48+ (due to changes in nsIIOService, see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/fac58fe1f9afe6eb4266ae370273839edc59e320005688bf42ed78bf0f99e16c/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1254752\">bug 1254752</a>).\n[x] Fixed integration with Page Info window in Firefox 44+ (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/33e6b849635da57c297dfeb15777d57b3c478d1299df94c6123b9de3e3f43cfa/https%3A//github.com/Infocatcher/Link_Properties_Plus/issues/22\">#22</a>).\n[+] Added Chinese (Simplified) locale (zh-CN), thanks to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/09cb4de957b7b1a7c0f6875b7c7bdcb4a89f7b58cead7c4b102203bd5f0ffe42/https%3A//github.com/yfdyh000\">YFdyh000</a> (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c33bfe8707f5fef6671fea15e48ead62fc53f74f6dffd7907fb1f59cdb422e42/https%3A//github.com/Infocatcher/Link_Properties_Plus/pull/23\">#23</a>).\n[*] Improved startup performance: code around context menu and commands was moved into lazily loaded separate file (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b8a7640e3df6174180145fa46ef33cd09a009ba4bf9c09897974e10f5ab74bc9/https%3A//github.com/Infocatcher/Link_Properties_Plus/issues/21\">#21</a>).\n[x] Fixed compatibility with future Firefox versions: don't use Array generics like `Array.forEach()` (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f097ea3f32737a8e0725bf2c0b8cce47c44b051b6bd7354b13b0cf69d18032b1/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1222547\">bug 1222547</a>).\n[+] Show <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7ffa7e45e113c3043f0128b6c3ee15a379b227da57b76cb844637654360bd509/https%3A//en.wikipedia.org/wiki/HSTS\">HSTS</a> redirect flag in tooltip for “Direct Link” field.\n[*] Updated compatibility with <a rel=\"nofollow\" href=\"https://addons.mozilla.org/addon/private-tab/\">Private Tab</a> extension: track toggling of private state using tab duplication in Firefox 51+ (see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1d5904b1ca8842ca1f781f2f829bb426b2395812911ea3165cd018e5ba74cb54/https%3A//github.com/Infocatcher/Private_Tab/issues/244\">Private Tab #244</a>).\n[x] Fixed URIs validation in Firefox 37-43 (caused by `nsIIOService.newChannelFromURIWithLoadInfo(…, null)` failure).\n[x] Fixed detection of opening file dialog in Firefox 52+."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/link-properties-plus/versions/1.6.1",
+        "version": "1.6.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "ru": "Предоставляет расширенные свойства для ссылок: размер файла по ссылке, дату последнего изменения и т.п.\n\nЭто форк расширения <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/extended-link-properties/\">Extended Link Properties</a> от <a rel=\"nofollow\" href=\"https://addons.mozilla.org/user/22/\">Torisugari</a> (сейчас отключено).\nОсновано на версии 1.2.5, взятой на <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/29d6a183c5802b16d9bbebcfc6b04682f6672680acca86395853b859b93689b1/http%3A//forum.addonsmirror.net/index.php%3Fshowtopic=6594\">forum.addonsmirror.net</a> (сохраненная страница на <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bb6aa715dec401f23e8d627ebc8de0f1327c382dd24353b2c9203b9fd04957c8/http%3A//web.archive.org/web/20110811234800/http%3A//forum.addonsmirror.net/index.php%3Fshowtopic=6594\">web.archive.org</a>).\nЯвляется продолжением моих старых (неофициальных) разработок: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c544ecb79480d6cd7237cd05528146d27c3dc7b0878b0d89c0c653833870daef/https%3A//forum.mozilla-russia.org/viewtopic.php%3Fpid=376740%23p376740\">forum.mozilla-russia.org/viewtopic.php?pid=376740</a> (и далее).\n\nИсходный код и баг-трекер: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a5e509caa9973cdebdda84fc8ba830fcf28d6c3031829f5371dfdfa2a72dce68/https%3A//github.com/Infocatcher/Link_Properties_Plus\">https://github.com/Infocatcher/Link_Properties_Plus</a>",
+        "en-US": "Provides extended link properties: size of linked file, last modified time, etc.\n\nThis is a fork of <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/extended-link-properties/\">Extended Link Properties</a> by <a rel=\"nofollow\" href=\"https://addons.mozilla.org/user/22/\">Torisugari</a> (now disabled).\nBased on version 1.2.5 from <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/29d6a183c5802b16d9bbebcfc6b04682f6672680acca86395853b859b93689b1/http%3A//forum.addonsmirror.net/index.php%3Fshowtopic=6594\">forum.addonsmirror.net</a> (saved page on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bb6aa715dec401f23e8d627ebc8de0f1327c382dd24353b2c9203b9fd04957c8/http%3A//web.archive.org/web/20110811234800/http%3A//forum.addonsmirror.net/index.php%3Fshowtopic=6594\">web.archive.org</a>).\nContinuation of my old (unofficial) development: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c544ecb79480d6cd7237cd05528146d27c3dc7b0878b0d89c0c653833870daef/https%3A//forum.mozilla-russia.org/viewtopic.php%3Fpid=376740%23p376740\">forum.mozilla-russia.org/viewtopic.php?pid=376740</a> (and following).\n\nSource code and issues tracker: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a5e509caa9973cdebdda84fc8ba830fcf28d6c3031829f5371dfdfa2a72dce68/https%3A//github.com/Infocatcher/Link_Properties_Plus\">https://github.com/Infocatcher/Link_Properties_Plus</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/link-properties-plus/edit",
+    "guid": "linkPropertiesPlus@infocatcher",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/413/413716-64.png?modified=1495952420",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/413/413716-32.png?modified=1495952420",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/413/413716-64.png?modified=1495952420"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-05-28T06:08:53Z",
+    "name": {
+        "ru": "Link Properties Plus",
+        "en-US": "Link Properties Plus"
+    },
+    "previews": [
+        {
+            "id": 168164,
+            "caption": {
+                "ru": "Свойства ссылки",
+                "en-US": "Link properties"
+            },
+            "image_size": [
+                498,
+                338
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168164.png?modified=1530208852",
+            "thumbnail_size": [
+                295,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168164.png?modified=1530208852"
+        },
+        {
+            "id": 168170,
+            "caption": {
+                "ru": "Свойства ссылки в диалоге загрузки",
+                "en-US": "Link properties in download dialog"
+            },
+            "image_size": [
+                442,
+                286
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168170.png?modified=1530208852",
+            "thumbnail_size": [
+                309,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168170.png?modified=1530208852"
+        },
+        {
+            "id": 168178,
+            "caption": {
+                "ru": "Окно информации о странице",
+                "en-US": "Page info window"
+            },
+            "image_size": [
+                589,
+                510
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168178.png?modified=1530208853",
+            "thumbnail_size": [
+                231,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168178.png?modified=1530208853"
+        },
+        {
+            "id": 168166,
+            "caption": {
+                "ru": "Контекстное меню для ссылок",
+                "en-US": "Context menu for links"
+            },
+            "image_size": [
+                388,
+                242
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168166.png?modified=1530208853",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168166.png?modified=1530208853"
+        },
+        {
+            "id": 168168,
+            "caption": {
+                "ru": "Контекстное меню для текстовых ссылок",
+                "en-US": "Context menu for text links"
+            },
+            "image_size": [
+                337,
+                213
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168168.png?modified=1530208853",
+            "thumbnail_size": [
+                316,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168168.png?modified=1530208853"
+        },
+        {
+            "id": 168182,
+            "caption": {
+                "ru": "Всплывающая подсказка со всеми перенаправлениями",
+                "en-US": "Tooltip with all redirects"
+            },
+            "image_size": [
+                695,
+                418
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168182.png?modified=1530208854",
+            "thumbnail_size": [
+                320,
+                192
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168182.png?modified=1530208854"
+        },
+        {
+            "id": 168180,
+            "caption": {
+                "ru": "Контекстное меню в окне свойств",
+                "en-US": "Context menu in properties window"
+            },
+            "image_size": [
+                568,
+                436
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168180.png?modified=1530208854",
+            "thumbnail_size": [
+                261,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168180.png?modified=1530208854"
+        },
+        {
+            "id": 168172,
+            "caption": {
+                "ru": "Настройки: основные",
+                "en-US": "Options: general"
+            },
+            "image_size": [
+                356,
+                421
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168172.png?modified=1530208854",
+            "thumbnail_size": [
+                169,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168172.png?modified=1530208854"
+        },
+        {
+            "id": 168174,
+            "caption": {
+                "ru": "Настройки: интеграция",
+                "en-US": "Options: integration"
+            },
+            "image_size": [
+                356,
+                421
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168174.png?modified=1530208855",
+            "thumbnail_size": [
+                169,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168174.png?modified=1530208855"
+        },
+        {
+            "id": 168176,
+            "caption": {
+                "ru": "Настройки: разное",
+                "en-US": "Options: miscellaneous"
+            },
+            "image_size": [
+                356,
+                421
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168176.png?modified=1530208855",
+            "thumbnail_size": [
+                169,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168176.png?modified=1530208855"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.64276,
+        "count": 17,
+        "average": 4.9412,
+        "text_count": 17
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/link-properties-plus/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/413716",
+    "slug": "link-properties-plus",
+    "status": "public",
+    "summary": {
+        "ru": "Предоставляет расширенные свойства для ссылок: размер файла по ссылке, дату последнего изменения и т.п.",
+        "en-US": "Provides extended link properties: size of linked file, last modified time, etc."
+    },
+    "support_email": null,
+    "support_url": {
+        "ru": "https://github.com/Infocatcher/Link_Properties_Plus/issues",
+        "en-US": "https://github.com/Infocatcher/Link_Properties_Plus/issues"
+    },
+    "tags": [
+        "extended link properties",
+        "get file size",
+        "link",
+        "properties"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/link-properties-plus/",
+    "weekly_downloads": 68
+}

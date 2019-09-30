@@ -1,0 +1,184 @@
+{
+    "id": 5239,
+    "authors": [
+        {
+            "id": 9480,
+            "name": "Piro (piro_or)",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/piro-piro_or/",
+            "username": "piro-piro_or",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/9/9480.png?modified=1529589020"
+        }
+    ],
+    "average_daily_users": 8,
+    "categories": {
+        "firefox": [
+            "language-support",
+            "search-tools"
+        ],
+        "thunderbird": [
+            "language-support"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1881276,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "45.0"
+            },
+            "thunderbird": {
+                "max": "50.0a1",
+                "min": "45.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1881276",
+        "files": [
+            {
+                "id": 454236,
+                "created": "2016-06-15T14:33:33Z",
+                "hash": "sha256:f0c78198851360667e7cf0bd6bd5058e4f737c2e1bc95466e924115245a71bab",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 438050,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/454236/xulmigemo-0.14.9-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 88,
+            "name": {
+                "en-US": "Custom License"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.9"
+        },
+        "release_notes": {
+            "en-US": "0.14.9 (2016.6.15):<ul><li>Suppress warning about an useless <code>return</code> statement.</li><li>Never show progress message multiply for dictionary downloading.</li></ul>",
+            "ja": "0.14.9 (2016.6.15):<ul><li>不要な<code>return</code>による警告が表示されないようにした</li><li>辞書のダウンロード中に進行状況のメッセージが重複して表示されないようにした</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.9",
+        "version": "0.14.9"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This provides a feature to find Japanese terms in roman-letter spelling. For example, if you input \"kanji\", Firefox finds any terms of the sound, like \"感じ\", \"幹事\" and \"漢字\". Demonstration video:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/24454140f2ee14784d4bec434a0a15cc3e4ad1684674f2bf0b90231603549ced/http%3A//piro.sakura.ne.jp/xul/_video/xulmigemo.html.en\">http://piro.sakura.ne.jp/xul/_video/xulmigemo.html.en</a>\n\nAdditionally, you can find modified latin letters with their simple versions. For example, \"Frédéric\" can be found by the input \"frederic\".\n\nOr, if you want and you switch the find mode, you can do regular expression search for web contents.\n\nXUL/Migemo is available on:\n\n    * Find in this page (FIrefox)\n    * Smart Location Bar (Firefox)\n    * Search boxes of History and Bookmarks (Firefox)\n    * Find in this message (Thunderbird)\n    * Quick Find feature in the thread pane (Thunderbird)\n\nThis project is inspired from \"Migemo\" project ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cda487cc07b7c643ca024ef0d56900b0d1ca3f19fbf32acfb093727c6e8ad6d2/http%3A//0xcc.net/migemo/\">http://0xcc.net/migemo/</a> ), which provides same feature for Emacs and other applications.",
+        "ja": "Firefoxにおける日本語でのページ内検索生活を快適かつ高速にする拡張機能です。いちいち漢字に変換しなくても、ローマ字で「kanzi」と入力するだけでそのまま「感じ」とか「幹事」とか「漢字」とかを検索できるようになります。いまいちピンとこない方は、実際に動いてる様子の動画をご覧下さい。\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b8701c8b48113841bd3017f7bcb585012719fb8646d0d1132ad74d95ce43c4c3/http%3A//piro.sakura.ne.jp/xul/_video/xulmigemo.html\">http://piro.sakura.ne.jp/xul/_video/xulmigemo.html</a>\n\nラテン文字の発音記号などを無視する機能もあります。例えば「frederic」で「Frédéric」がヒットするようになります。\n検索モードを切り替えることで、任意の正規表現でページ内検索を実行することもできます。\n\nXUL/Migemoが利用できる場面は以下の通りです。\n\n    * ページ内検索（Firefox）\n    * スマートロケーションバー（Firefox）\n    * 履歴とブックマークの検索ボックス（Firefox）\n    * メッセージ内検索（Thunderbird）\n    * スレッドペインでのクイック検索（Thunderbird）\n\nこのプロジェクトは、Emacsなどのアプリケーションで同様の機能を提供する「Migemo」プロジェクト（ <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cda487cc07b7c643ca024ef0d56900b0d1ca3f19fbf32acfb093727c6e8ad6d2/http%3A//0xcc.net/migemo/\">http://0xcc.net/migemo/</a> ）にインスパイアされて誕生しました。"
+    },
+    "developer_comments": {
+        "en-US": "* For other languages...\n\nI NEED HELP BY CJK DEVELOPERS. To implement Chinese and Korean engines, I want help. This will help CJK users powerfully because we need to use IMEs to input find terms in our languages. This possibly make IMEs needless to find terms in webpages.\n\nThis extension is designed to use custom engines for multiple languages. If you implement new engines, XUL/Migemo can provide advanced - dictionary-assisted and rapid - infremental search for other languages. But now, only two engines -Japanese and English- are available because I'm Japanese. If you've developed a new engine for another language, please contact me.\n\nDocuments for developers:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/255ebbc0d364d86614c733fc9990755ad735d743a5f8a2835501a32e9f887798/http%3A//piro.sakura.ne.jp/xul/_xulmigemo.html.en%23api-engine\">http://piro.sakura.ne.jp/xul/_xulmigemo.html.en#api-engine</a>",
+        "ja": "* 機能ごとに別々のアドオンにしない理由\n\nFirefoxのページ内検索の仕組みは、Firefox 1.0の頃のタブブラウズ機能のAPIのように、アドオン開発者にとっては非常に扱い辛い物となっています。ユーザの操作に応じたイベントも発行されませんし、検索ツールバーの状態の変化も通知されません。なので、このアドオンでは検索周りの処理の大部分を上書きして再実装しています。仮にこのアドオンを機能ごとに分割したとしても、それぞれのアドオンは90％くらいまでは同じ物と言っていい状態になるでしょう。\n\n* 朗報\n\nFirefox 3.6以降では、「現在のスクロール位置から検索を開始する」処理が高速になりました。また、Firefox 4.0では一番のボトルネックが解消されるので、Firefox本来のページ内検索とほとんど変わらないスピードが出るようになります。今すぐ試してみたいという人は、XUL/Migemo 0.13.3以降をMinefield 4.0betaにインストールしてみて下さい。\n\n* 他の言語用のエンジンについて\n\nこの拡張機能は、日本語以外のエンジンを組み込むこともできるように設計されています。適切な変換エンジンを実装することで、中国語や韓国語など他の言語でも、辞書と変換エンジンに支援された高速なページ内検索を利用できます。\n\nしかしながら、作者は日本人なので、現段階では日本語用エンジンと英語用エンジンしか実装していません。もし他の言語用のエンジンと辞書を開発された場合は、作者までご連絡下さい。\n\nエンジン開発のための資料：\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/da0569d5227f2313998e50f1a475422fb903e4e994dd8fce869675cd47b669cb/http%3A//piro.sakura.ne.jp/xul/_xulmigemo.html%23api-engine\">http://piro.sakura.ne.jp/xul/_xulmigemo.html#api-engine</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/edit",
+    "guid": "{01F8DAE3-FCF4-43D6-80EA-1223B2A9F025}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://piro.sakura.ne.jp/xul/_xulmigemo.html.en",
+        "ja": "http://piro.sakura.ne.jp/xul/_xulmigemo.html"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/5/5239-64.png?modified=1466004017",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/5/5239-32.png?modified=1466004017",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/5/5239-64.png?modified=1466004017"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-06-15T14:50:59Z",
+    "name": {
+        "en-US": "XUL/Migemo",
+        "ja": "XUL/Migemo"
+    },
+    "previews": [
+        {
+            "id": 14985,
+            "caption": {
+                "en-US": "Find Japanese terms in roman-letter spelling",
+                "ja": "日本語の単語をローマ字入力で検索"
+            },
+            "image_size": [
+                386,
+                119
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14985.png?modified=1530208261",
+            "thumbnail_size": [
+                320,
+                99
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14985.png?modified=1530208261"
+        },
+        {
+            "id": 20371,
+            "caption": {
+                "en-US": "Regular expression search",
+                "ja": "正規表現での検索"
+            },
+            "image_size": [
+                401,
+                108
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/20/20371.png?modified=1530208262",
+            "thumbnail_size": [
+                320,
+                86
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/20/20371.png?modified=1530208262"
+        },
+        {
+            "id": 22926,
+            "caption": {
+                "en-US": "Working on Smart Location Bar (ver.0.10.0 or later)",
+                "ja": "スマートロケーションバーでの検索（ver.0.10.0以降）"
+            },
+            "image_size": [
+                463,
+                357
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/22/22926.png?modified=1530208263",
+            "thumbnail_size": [
+                259,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/22/22926.png?modified=1530208263"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.61345,
+        "count": 49,
+        "average": 3.6735,
+        "text_count": 49
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/5239",
+    "slug": "xulmigemo",
+    "status": "public",
+    "summary": {
+        "en-US": "This provides dictionary-assisted search (Migemo search) and regular expression powered search for \"find in this page\" and other features.",
+        "ja": "ページ内検索やその他の場面で、辞書の支援を受けた検索（Migemo検索）や正規表現での検索を可能にします。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/piroor/xulmigemo/issues"
+    },
+    "tags": [
+        "expression",
+        "find",
+        "find bar",
+        "findbar",
+        "on page",
+        "regex",
+        "regular",
+        "toolbar"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/",
+    "weekly_downloads": 31
+}

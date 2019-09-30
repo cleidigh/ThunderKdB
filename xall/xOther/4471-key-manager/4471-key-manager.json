@@ -1,0 +1,500 @@
+{
+    "id": 4471,
+    "authors": [
+        {
+            "id": 62305,
+            "name": "Subrata Mazumdar",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/subrataxmazumdar/",
+            "username": "subrataxmazumdar",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/62/62305.png?modified=1440228176"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "privacy-security",
+            "web-development"
+        ],
+        "seamonkey": [
+            "privacy-and-security",
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1484177,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "24.0a1"
+            },
+            "seamonkey": {
+                "max": "2.21.*",
+                "min": "2.21a1"
+            },
+            "thunderbird": {
+                "max": "24.*",
+                "min": "24.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/key-manager/versions/1484177",
+        "files": [
+            {
+                "id": 225661,
+                "created": "2013-08-22T09:59:21Z",
+                "hash": "sha256:33670c0a86c004ba8c7f70f675b9389b5aaf60e7765a9e3cdb8f0b551e5fd980",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 7319600,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/225661/key_manager-0.1.240.20130821-sm+tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "This version is compatibility update for  Firefox 24/Thunderbird 24/SeaMonkey 2.21.\n\nThe CRL Manager component (for  signing of Certificate Revocation List (CRLs) ) is removed because Mozilla PSM does not provide support for CRL any more."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/key-manager/versions/0.1.240.20130821",
+        "version": "0.1.240.20130821"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "KeyManager is a client side PKI tool for key generation, certificate enrollment,  and identity and authority delegation.   \nCurrently, Mozilla Personal Security Manager (PSM) allows import and export of keys but does not provide GUI for local key generation. Our KeyManager tool extends the Certificate Manager wizard in Mozilla PSM and adds the capability for key generation and SCEP based certificate enrollment.  Our extension enables Mozilla PSM to act as a key management tool. In addition, the tool supports signing of proxy certificates for credential delegation and provides XUL based GUI for signing of XPI files as well as update manifest. \n\n\nThe KeyManager tool has following features : \n  - Generation of keys and <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8cfe5aeda2ab6112ba31daa7659f25e7e1022ad3a8fb8a64957979ef01fc6c44/http%3A//www.ietf.org/rfc/rfc3280.txt\">X.509</a> based self-signed certificate\n  - Generation of <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ac5132a38357325d1a2072d34b29e5e7ae96e47efed5bc7fda9ff190519af8d7/http%3A//tools.ietf.org/html/rfc2986\">PKCS#10 based Certificate Signing Requests</a> (CSR)\n  - <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7e6765741879eb1edb42dd647c73ebc3d3144055188ca3e4211172c1d11df984/http%3A//tools.ietf.org/html/draft-nourse-scep-20\">SCEP</a> based Certificate enrollment - it enables Firefox to acts as SCEP client. The SCEP client can be invoked from other extensions and XPCOM based components. \n   \n  - XPI Signing (for Mozilla add-ons) and signing of archive files - provides an XUL based GUI for command-line <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/074168546d19796654a9e5610bfd484469f09df2db9c9b13073e029f7eaabf56/http%3A//docs.sun.com/source/816-5531-10/app_sign.htm\">'signtool' </a> in Mozilla NSS \n  - <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d91b40b3001d347005520cfd80337e880440e746c693604e9556451d64fc4baa/https%3A//developer.mozilla.org/en/extension_versioning%2C_update_and_compatibility%23Signing_Update_Manifests\">Signing of update manifest</a> using keys associated with certificate in the browser's certificate DB. You can use this tool as alternative to Mozilla's <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a27d7c7cdb075a830488cf98b24e98f90c470ab07788a49c350f1a05bcf77c26/https%3A//developer.mozilla.org/en/McCoy\">McCoy</a> tool. \n  - Signing of Proxy Certificates (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/91fad034495611076bf922640666e677bcfcfb91bb4035a3ae1c21a0b328d88a/http%3A//www.ietf.org/rfc/rfc3820.txt\">RFC 3820</a>) and other users' certificates \n  - Signing and verification of Attribute certificates (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b899a79d0491bdea8f0b4fae68e84f4aac6ce29b40f662a8c72c659589b1aa4a/http%3A//www.ietf.org/rfc/rfc3281.txt\">RFC3281</a>) \n  - Exporting of keys and certificate in the following formats: PKCS#7, PKCS#8, PKCS#10, PKCS#12,  <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c6655c1a22750f1c9eaaae8cccde247f9829d3376dba2bc4cd73d7b668032c8b/http%3A//www.openssl.org/\">OpenSSL</a>, and <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/82dcf55f5159e14f560b5e27ea1742c1d972ad40c166e2cc11a3da211d55243f/http%3A//tools.ietf.org/html/rfc4251\">SSH-2</a>\n   - Backup and Synchronization of keys and certificates for OpenSSL based applications: cURL, Globus toolkit, etc as well as other Mozilla-NSS based soft-tokens\n   - Managing keys and sign certificates in <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5f3a10a0b3d1224944e22ab853c77a7f0c3d8adb11b6aa87340cd1dd7bfc1020/http%3A//download.oracle.com/docs/cd/E17476_01/javase/1.5.0/docs/tooldocs/solaris/keytool.html\">Java Keystores </a>\n\nFor more info: \n  - Key Manager Tool: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cc9dd0ad24f603b806cb19397007459eb5c808b386f2b5fd947f9e9ea57c0b2b/http%3A//pubs.research.avayalabs.com/pdfs/ALR-2006-044.pdf\">http://pubs.research.avayalabs.com/pdfs/ALR-2006-044.pdf</a> \n\n  - Use case on on-line proxy certificate signing and credential delegation for Globus Grid based portal: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/528e8efa01d8f2fc397b22bd1b9ca05f2f8e04e66c3fefe0f0a6adb79a7c6dc1/http%3A//pubs.research.avayalabs.com/pdfs/ALR-2007-023.pdf\">http://pubs.research.avayalabs.com/pdfs/ALR-2007-023.pdf</a>"
+    },
+    "developer_comments": {
+        "en-US": "This tool is intended for software developers working in the area of PKI based security. \n\nFF  version of this add-on is successfully tested on following x86 based OSes: GNU/Linux (Fedora8(x86), Fedora12(x86_64)), Windows ( XP-SP3), Mac OSX (Snow Leopard).  \n\nNote: For Ubuntu, this add-on works only with the Firefox downloaded from Mozilla site. This add-on may not work with Firefox that comes with Ubuntu distribution.\n\nSCEP client tool is tested with <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/458ba04afc1a37b588aa55ea12957e95e5982f3e390f78718fbaec7f144da9de/http%3A//www.openca.org/projects/openca/\">OpenCA</a>, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f4379b7debc7a833aa409057a9b57ca00b1a2b1635cebdea7311e6ef41fedb7/http%3A//www.ejbca.org/\">EJBCA</a> and <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/154d18289de88fda581d3792f0376e4474f0621a6ee24d6cf143d676a1433ba2/http%3A//technet.microsoft.com/en-us/library/cc753784%2528WS.10%2529.aspx\">MS-SCEP</a>.\n\nYou can think of this tool as XUL based GUI for following <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/3e329a949bbae67f9739d268f59581fa36720789956deec461247aecac9f6ece/http%3A//www.mozilla.org/projects/security/pki/nss/tools/\">NSS command line tools</a>:  <code>certutil, pk12util, signtool,</code> and <code>crlutil</code>. If you are not really keen on learning these excellent Mozilla-NSS command line tools, you  can use this extension to do the same tasks.  This extension also borrows from the web-interface for <code>certcgi</code> tool to provide XUL forms for fine grain control on specifying various certificate extensions. \n\nYou can also generate keys and import certificates for hardware tokens (e.g. Smart card), if the smart card and the associated PKCS#11 driver supports key generation.  \n\nFor signing of XPI files for Firefox add-ons  or creating digitally-signed jar archives containing files and/or code, you must have a code signing certificate. For details follow the link for <code>signtool</code> in <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/3e329a949bbae67f9739d268f59581fa36720789956deec461247aecac9f6ece/http%3A//www.mozilla.org/projects/security/pki/nss/tools/\">NSS tools  page</a>.\n\nInstallation Instructions:\n  Please install the \"KeyManager\" extension using a different profile than your default Firefox profile until you are familiar and comfortable with various features of the tools. In order to create new profile, \n    - On Windows, run <code>\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" /p </code>\n    - On Linux, run <code>firefox -ProfileManager  </code>\n\nFor more info on architecture and  implementation, please review the following document: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cc9dd0ad24f603b806cb19397007459eb5c808b386f2b5fd947f9e9ea57c0b2b/http%3A//pubs.research.avayalabs.com/pdfs/ALR-2006-044.pdf\">http://pubs.research.avayalabs.com/pdfs/ALR-2006-044.pdf</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/key-manager/edit",
+    "guid": "{772c690c-ee0f-4c26-bf8c-5e0ed9ae59c4}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-09-25T15:11:42Z",
+    "name": {
+        "en-US": "Key Manager"
+    },
+    "previews": [
+        {
+            "id": 17689,
+            "caption": {
+                "en-US": "Key Management Tab"
+            },
+            "image_size": [
+                700,
+                323
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17689.png?modified=1530208261",
+            "thumbnail_size": [
+                320,
+                148
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17689.png?modified=1530208261"
+        },
+        {
+            "id": 17690,
+            "caption": {
+                "en-US": "Your Proxy Certificates Tab"
+            },
+            "image_size": [
+                700,
+                297
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17690.png?modified=1530208262",
+            "thumbnail_size": [
+                320,
+                136
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17690.png?modified=1530208262"
+        },
+        {
+            "id": 17691,
+            "caption": {
+                "en-US": "Other's Proxy  to You Certificate Tab"
+            },
+            "image_size": [
+                700,
+                297
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17691.png?modified=1530208264",
+            "thumbnail_size": [
+                320,
+                136
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17691.png?modified=1530208264"
+        },
+        {
+            "id": 17699,
+            "caption": {
+                "en-US": "Software Architecture of Key Manager using Mozilla PSM and NSS"
+            },
+            "image_size": [
+                338,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17699.png?modified=1530208265",
+            "thumbnail_size": [
+                129,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17699.png?modified=1530208265"
+        },
+        {
+            "id": 17731,
+            "caption": {
+                "en-US": "Form for Generating of Key-pair, Self-signed Certifcate and PKCS#10 CSR  - Basic Profile Tab"
+            },
+            "image_size": [
+                551,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17731.png?modified=1530208266",
+            "thumbnail_size": [
+                210,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17731.png?modified=1530208266"
+        },
+        {
+            "id": 17732,
+            "caption": {
+                "en-US": "Form for Generating of Key-pair, Self-signed Certifcate and PKCS#10 CSR - X.509v1 Cert Tab"
+            },
+            "image_size": [
+                578,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17732.png?modified=1530208267",
+            "thumbnail_size": [
+                220,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17732.png?modified=1530208267"
+        },
+        {
+            "id": 17733,
+            "caption": {
+                "en-US": "Form for Generating of Key-pair, Self-signed Certificate and PKCS#10 CSR - X509v3 Extensions Tab"
+            },
+            "image_size": [
+                578,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17733.png?modified=1530208269",
+            "thumbnail_size": [
+                220,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17733.png?modified=1530208269"
+        },
+        {
+            "id": 17734,
+            "caption": {
+                "en-US": "Export/Import of Certificate Using Certificate Viewer"
+            },
+            "image_size": [
+                505,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17734.png?modified=1530208270",
+            "thumbnail_size": [
+                192,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17734.png?modified=1530208270"
+        },
+        {
+            "id": 17735,
+            "caption": {
+                "en-US": "Proxy Certificate Signing Form - Basic Tab"
+            },
+            "image_size": [
+                631,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17735.png?modified=1530208271",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17735.png?modified=1530208271"
+        },
+        {
+            "id": 17736,
+            "caption": {
+                "en-US": "Proxy Certificate Signing Form - X.509v3 extensions Tab"
+            },
+            "image_size": [
+                692,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17736.png?modified=1530208273",
+            "thumbnail_size": [
+                264,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17736.png?modified=1530208273"
+        },
+        {
+            "id": 17737,
+            "caption": {
+                "en-US": "SCEP Client Wizard - PKCS7 Request Message"
+            },
+            "image_size": [
+                700,
+                389
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17737.png?modified=1530208274",
+            "thumbnail_size": [
+                320,
+                178
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17737.png?modified=1530208274"
+        },
+        {
+            "id": 17738,
+            "caption": {
+                "en-US": "Simple Certificate Enrollment Protocol (SCEP) Client Wizard - Pending Request Message"
+            },
+            "image_size": [
+                700,
+                438
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17738.png?modified=1530208276",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17738.png?modified=1530208276"
+        },
+        {
+            "id": 17739,
+            "caption": {
+                "en-US": "Archive File (Including XPI files for Add-ons) Signing Tool"
+            },
+            "image_size": [
+                700,
+                415
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17739.png?modified=1530208277",
+            "thumbnail_size": [
+                320,
+                190
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17739.png?modified=1530208277"
+        },
+        {
+            "id": 17740,
+            "caption": {
+                "en-US": "Attribute Certificate Tool - Basic Tab"
+            },
+            "image_size": [
+                636,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17740.png?modified=1530208278",
+            "thumbnail_size": [
+                242,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17740.png?modified=1530208278"
+        },
+        {
+            "id": 17741,
+            "caption": {
+                "en-US": "Attribute Certificate Tool - Attributes Tab"
+            },
+            "image_size": [
+                582,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17741.png?modified=1530208280",
+            "thumbnail_size": [
+                222,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17741.png?modified=1530208280"
+        },
+        {
+            "id": 17742,
+            "caption": {
+                "en-US": "Attribute Certificate Tool - Extension Tab"
+            },
+            "image_size": [
+                582,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17742.png?modified=1530208281",
+            "thumbnail_size": [
+                222,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17742.png?modified=1530208281"
+        },
+        {
+            "id": 17743,
+            "caption": {
+                "en-US": "Form for generating Keys/Certs for OpenSSL-based App (Globus Grid) using browser Cert DB"
+            },
+            "image_size": [
+                700,
+                484
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17743.png?modified=1530208282",
+            "thumbnail_size": [
+                289,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17743.png?modified=1530208282"
+        },
+        {
+            "id": 17744,
+            "caption": {
+                "en-US": "Online provisioning of proxy certificate use case for credential delegation to grid-based portal."
+            },
+            "image_size": [
+                700,
+                441
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/17/17744.png?modified=1530208284",
+            "thumbnail_size": [
+                317,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/17/17744.png?modified=1530208284"
+        },
+        {
+            "id": 19792,
+            "caption": {
+                "en-US": "Form for adding  \"Update Key\" to Install Manifest (install.rdf) of XPI file"
+            },
+            "image_size": [
+                700,
+                417
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/19/19792.png?modified=1530208285",
+            "thumbnail_size": [
+                320,
+                191
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/19/19792.png?modified=1530208285"
+        },
+        {
+            "id": 19793,
+            "caption": {
+                "en-US": "Form for signing  Update Manifest (update.rdf) as well as configuring install.rdf for add-ons."
+            },
+            "image_size": [
+                700,
+                457
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/19/19793.png?modified=1530208286",
+            "thumbnail_size": [
+                306,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/19/19793.png?modified=1530208286"
+        },
+        {
+            "id": 28701,
+            "caption": {
+                "en-US": "Dialog window for setting up terminal window for OpenSSH-2 based connection."
+            },
+            "image_size": [
+                684,
+                329
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28701.png?modified=1530208287",
+            "thumbnail_size": [
+                320,
+                154
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28701.png?modified=1530208287"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.02797,
+        "count": 21,
+        "average": 3.1429,
+        "text_count": 21
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/key-manager/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/4471",
+    "slug": "key-manager",
+    "status": "public",
+    "summary": {
+        "en-US": "KeyManager Tool: Firefox Add-on for Key Generation, Certificate Enrollment, CRL Signing, and Identity and Authority Delegation"
+    },
+    "support_email": {
+        "en-US": "subrata.mazumdar@ieee.org"
+    },
+    "support_url": null,
+    "tags": [
+        "attribute certificate",
+        "certificate signing",
+        "code signing",
+        "crl signing",
+        "java keystore manager",
+        "key management",
+        "openssh",
+        "openssl",
+        "personal ca",
+        "pkcs10 csr",
+        "pki",
+        "proxy certificate",
+        "scep client",
+        "xpi signing"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/key-manager/",
+    "weekly_downloads": 71
+}

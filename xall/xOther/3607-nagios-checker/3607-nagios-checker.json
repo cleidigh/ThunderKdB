@@ -1,0 +1,165 @@
+{
+    "id": 3607,
+    "authors": [
+        {
+            "id": 2936,
+            "name": "Petr Šimek",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/petr-%C5%A1imek/",
+            "username": "petr-šimek",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/2/2936.png?modified=1293724252"
+        }
+    ],
+    "average_daily_users": 16,
+    "categories": {
+        "firefox": [
+            "alerts-updates"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 124732,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "3.0"
+            },
+            "thunderbird": {
+                "max": "3.1.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nagios-checker/versions/124732",
+        "files": [
+            {
+                "id": 106812,
+                "created": "2010-12-30T16:00:41Z",
+                "hash": "sha256:ee77efdded6ec52439adaf8dbf830a6ae6f1c286bd0f46dd21eb303e472b076d",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 177260,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/106812/nagios_checker-0.16-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "0.16\n* INTERNAL: update FF maxVersion to 4.0.*\n* LANG: updated zh-TW from babelzilla\n* FIX: changed working in FF4 addon toolbar instead in statusbar \n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nagios-checker/versions/0.16.1-signed.1-signed",
+        "version": "0.16.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "cs": "Pomůcka pro rychlé zobrazení událostí ze monitorovacích systémů Nagios. Informace jsou získávány z webového rozhraní Nagiosů. V nastavení rozšíření stačí pouze vyplnit centrální stránku webového rozhraní vašeho Nagiosu, např. <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bd9bee2ec5538efddfc37e80ce4582a752cac5662e28af386a0849377191ddcc/http%3A//www.vasefirma.com/nagios/\">http://www.vasefirma.com/nagios/</a> a nechat si vyhledat url stavového skriptu.\nRozšíření je úspěšně otestováno na Nagiosech verzí 2.5 a vyšší, 2.0b4, 1.5, 1.3 a 1.2.",
+        "en-US": "The statusbar indicator of the events from the network monitoring system Nagios. Information is parsed from Nagios web interface. In the extension settings dialog simply fill the start page URL of your Nagios web interface, eg. <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/730ac7692d73687e2c9bfc9bb6ac48493f53f0ca72432cdb9d98c17b872b0a2b/http%3A//www.yourfirm.com/nagios/\">http://www.yourfirm.com/nagios/</a> and let the button to locate status script url.\nIt is succesfully tested with Nagios 3, 2.5+, 2.0b4, 1.5, 1.3 and 1.2.\nFor translators: Please, use <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/530c754511476288357b05d59a0aa64305e0b1be17e86ec324629131ec0dd31b/http%3A//BabelZilla.org\">BabelZilla.org</a> for translating, thanks."
+    },
+    "developer_comments": {
+        "en-US": "You can use <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7cff95e2c8aa60eade03d27c36aff24d52be6d6ab32eda21a5b5f263a496a3f9/http%3A//code.google.com/p/nagioschecker/\">http://code.google.com/p/nagioschecker/</a> for reporting issues."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nagios-checker/edit",
+    "guid": "{123b2220-59cb-11db-b0de-0800200c9a66}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "cs": "http://psimek.fxnet.cz/nagios-checker/",
+        "en-US": "http://code.google.com/p/nagioschecker/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2011-01-04T15:09:10Z",
+    "name": {
+        "cs": "Nagios Checker",
+        "en-US": "Nagios Checker"
+    },
+    "previews": [
+        {
+            "id": 12739,
+            "caption": {
+                "en-US": "Nagios Checker"
+            },
+            "image_size": [
+                307,
+                183
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12739.png?modified=1530208103",
+            "thumbnail_size": [
+                307,
+                183
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12739.png?modified=1530208103"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.66623,
+        "count": 69,
+        "average": 4.7391,
+        "text_count": 68
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nagios-checker/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/3607",
+    "slug": "nagios-checker",
+    "status": "public",
+    "summary": {
+        "cs": "Pomůcka pro rychlé zobrazení událostí ze monitorovacích systémů Nagios.",
+        "en-US": "The statusbar indicator of the events from the network monitoring system Nagios."
+    },
+    "support_email": {
+        "en-US": "petr.simek@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://code.google.com/p/nagioschecker/issues/list"
+    },
+    "tags": [
+        "monitoring",
+        "nagios",
+        "statusbar"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nagios-checker/",
+    "weekly_downloads": 81
+}

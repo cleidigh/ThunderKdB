@@ -1,0 +1,108 @@
+{
+    "id": 2824,
+    "authors": [
+        {
+            "id": 27151,
+            "name": " SecondWheel",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/secondwheel/",
+            "username": "secondwheel",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 41923,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0b3pre",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/41923",
+        "files": [
+            {
+                "id": 25305,
+                "created": "2008-03-17T07:19:08Z",
+                "hash": "sha256:fd9ac2418b6b1a3d3fa234403cd5b949e0b147bacb7eb7b4c71b0ff979d3787b",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 15360,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/25305/knujon-2.0.0.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version adds a lot of new features (optional inline attachments, move to any folder after reporting, custom reporting addresses, updated tips), fixes bugs and stability problems (conflicts with Habu/Okopipi plugins, failure to delete/move messages if you change folders while sending, junk subject lines didn't show up as attachment names, and many more), and adds support for SeaMonkey."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/2.0.0.0",
+        "version": "2.0.0.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Forwards all emails marked Junk (as attachments) to KnujOn.com (note: they collect email reports on the coldrain.net domain).  KnujOn is an organization that works to shut down junk mailers by contacting law enforcement, web hosts, credit card fraud investigators, etc..  If you are familiar with BlueFrog (now extinct), this is NOT the same approach, and KnujOn does not offer list-cleaning software to spammers... so you may not see such a dramatic reduction in spam, but you are also safer.  If you register with KnujOn (not required) you will get personalized progress reports based on the spam you've reported.\n\nThis extension is not developed or supported by KnujOn (though they appreciate it!).\n\nSee the homepage for detailed usage instructions.  The basics: this extension will put a \"Report to KnujOn\" button on your toolbar (you might need to customize your toolbar buttons to make it show up...).  Clicking the button will create a new email with a set of the emails marked \"Junk\" in the current folder attached (you can configure how many to send at a time), ready to send to KnujOn's reporting address at coldrain.net. If you are a subscriber, you can set your personal reporting address -- and/or add in any other reporting addresses you like, such as spamcop.  Just click send and it will be sent -- this might take a while if you have a lot of spam! -- and those junk messages will be moved to the folder you've chosen, deleted or left alone... also configurable."
+    },
+    "developer_comments": {
+        "en-US": "This extension makes it easy for Thunderbird and SeaMonkey users to forward their junk email to KnujOn, where it is reported to law enforcement, webhosts, anti-phishing groups, and more.  You do not need to be a KnujOn subscriber to report junk.\n\nInstalling it will put a \"KnujOn\" button on your toolbar. Click the button to create a new message with a subset of the emails marked \"Junk\" in the current folder attached (you control how many to send at a time), ready to send to KnujOn's reporting address @coldrain.net. Just click send and you're done -- this might take a while if you have a lot of spam! -- and those junk messages can be purged, or moved to another folder if you want (also configurable).\n\nThe KnujOn logo and name are used with permission, but while they appreciate the extension, but it is not officially endorsed, developed, or supported by KnujOn.\n\nPatches, bug reports and suggestions are welcome!"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/edit",
+    "guid": "knujon@secondwheel.googlepages.com",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": {
+        "en-US": "http://secondwheel.googlepages.com/knujonthunderbirdextension"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2824-64.png?modified=1352940540",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2824-32.png?modified=1352940540",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2824-64.png?modified=1352940540"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2008-04-24T09:01:20Z",
+    "name": {
+        "en-US": "KnujOn"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.33179,
+        "count": 13,
+        "average": 3.5385,
+        "text_count": 13
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/2824",
+    "slug": "knujon",
+    "status": "public",
+    "summary": {
+        "en-US": "Forwards all emails marked Junk (as attachments) to KnujOn.com (note: they collect email reports on the coldrain.net domain).  KnujOn is an organization that works to shut down junk mailers by contacting law enforcement, web hosts, etc.."
+    },
+    "support_email": {
+        "en-US": "secondwheel@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://secondwheel.googlepages.com/knujonthunderbirdextension"
+    },
+    "tags": [
+        "junk",
+        "spam"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/",
+    "weekly_downloads": 24
+}

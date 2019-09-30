@@ -1,0 +1,140 @@
+{
+    "id": 607756,
+    "authors": [
+        {
+            "id": 11612952,
+            "name": "Jan Kiszka",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jan-kiszka/",
+            "username": "jan-kiszka",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/11/11612/11612952.png?modified=1430013327"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1797213,
+        "compatibility": {
+            "thunderbird": {
+                "max": "38.*",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/archived-at/versions/1797213",
+        "files": [
+            {
+                "id": 382982,
+                "created": "2016-01-06T04:14:46Z",
+                "hash": "sha256:6559aa3be2ee3b0822bd129e57913a60fc1f80782c926afa66502946fedee886",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 19111,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/382982/archived_at-1.0.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Changes in 1.0.1:\n - Add &lt;em:type&gt; tag to install manifest\n - Do not flip hidden attributes back and forth to avoid UI glitch"
+        },
+        "reviewed": "2016-01-06T06:21:34Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/archived-at/versions/1.0.1",
+        "version": "1.0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This makes citing of mailing list postings more efficient if the list attaches Archived-At tags to the message headers. RFC 5062 defines that this tag shall contain a URL to a page that contains the archived version of the message. More and more mailing lists adopt this, e.g. the news server of the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9a66a35f541b9fa9b3a948ad902be2f1ebb83d546ec5d0671836ec4bf5c00ee1/http%3A//gmane.org\">gmane.org</a> archive.\n\nThis add-on scans for the tag and, if found, inserts menu items to the \"Other Actions\" or context menu of the message to copy the URL to the clipboard. Optionally, you can define a search-and-replace rule to post-process the URL, e.g. to use the threaded view of <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9a66a35f541b9fa9b3a948ad902be2f1ebb83d546ec5d0671836ec4bf5c00ee1/http%3A//gmane.org\">gmane.org</a>."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/archived-at/edit",
+    "guid": "archived-at@kiszka.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://git.kiszka.org/archived-at.git"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/607/607756-64.png?modified=1436286025",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/607/607756-32.png?modified=1436286025",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/607/607756-64.png?modified=1436286025"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-01-06T06:21:34Z",
+    "name": {
+        "en-US": "Archived-At"
+    },
+    "previews": [
+        {
+            "id": 157594,
+            "caption": {
+                "en-US": "Direct access to the Archived-At URL via a new menu item"
+            },
+            "image_size": [
+                700,
+                344
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/157/157594.png?modified=1530209235",
+            "thumbnail_size": [
+                320,
+                157
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/157/157594.png?modified=1530209235"
+        },
+        {
+            "id": 157598,
+            "caption": {
+                "en-US": "Configuration of the Archived-At add-on"
+            },
+            "image_size": [
+                454,
+                306
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/157/157598.png?modified=1530209235",
+            "thumbnail_size": [
+                297,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/157/157598.png?modified=1530209235"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/archived-at/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/607756",
+    "slug": "archived-at",
+    "status": "public",
+    "summary": {
+        "en-US": "Add menu items for copying Archived-At (RFC 5064) URLs from emails"
+    },
+    "support_email": {
+        "en-US": "jan.kiszka@web.de"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/archived-at/",
+    "weekly_downloads": 22
+}

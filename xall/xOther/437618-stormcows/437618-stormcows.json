@@ -1,0 +1,122 @@
+{
+    "id": 437618,
+    "authors": [
+        {
+            "id": 9913556,
+            "name": "Moldy Beats",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/moldybeats/",
+            "username": "moldybeats",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 16,
+    "categories": {
+        "thunderbird": [
+            "calendar"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1753948,
+        "compatibility": {
+            "thunderbird": {
+                "max": "38.*",
+                "min": "38.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/stormcows/versions/1753948",
+        "files": [
+            {
+                "id": 350898,
+                "created": "2015-09-13T17:27:33Z",
+                "hash": "sha256:874dd253f9aa1268a0947eb1ef3bf9dd047e6dedc805f2033ca2a27992e37365",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 14500,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/350898/stormcows-0.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Version 0.4 fixes some issues that were preventing StormCows from working with Thunderbird 38 and Lightning 4.0.2.\n\nNo new functionality has been added with this version."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/stormcows/versions/0.4.1-let-fixed",
+        "version": "0.4.1-let-fixed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This extension will let you add a calendar that is connected to a specific list in Remember The Milk. Changes to calendar events or todo items in Thunderbird/Lightning will update your tasks in Remember The Milk, and changes you make in Remember The Milk will be reflected in your calendar.\n\nBefore using this extension, you will need:\n1) the Lightning calendar extension\n2) an account with Remember The Milk\n\nEach calendar you create with StormCows corresponds to a particular list in Remember The Milk. You can choose to add a calendar either as Events or Todos.\n\nIf you choose an Events calendar, the following properties will sync:\n* Task name &lt;=&gt; Event title\n* Task due date &lt;=&gt; Event start date\n* Task priority &lt;=&gt; Event priority\n\nIf you choose a Todo calendar, the following properties will sync:\n* Task name &lt;=&gt; Task title\n* Task due date &lt;=&gt; Task due date\n* Task completion &lt;=&gt; Task completion\n* Task priority &lt;=&gt; Task priority\n\n<b>NOTE</b>: Keep in mind that each time the calendar refreshes in Thunderbird, all calendar items are refreshed from Remember The Milk. That means properties not synced with Remember The Milk will be lost, including reminders, event durations, and notes.\n\n<b>Configuration</b>\nAfter installing the add-on in Thunderbird, choose Tools &gt; Configure StormCows...\n\nFirst, you'll need to authenticate with Remember The Milk. Click the \"Start Authentication\" button to do this. You'll be asked to login to your Remember The Milk account. After authorizing the addon, return to the StormCows configuration dialog and click \"Finish Authentication\".\n\nNext, you can add a new calendar by choosing a Remember The Milk list from the \"New Calendar\" dropdown and clicking either \"Add Events\" or \"Add Todos\". This will create a calendar in Thunderbird that corresponds to the list, displaying the tasks from RTM either as Events or Todos.\n\nFrom there, you can make changes to the Todos or Events in Thunderbird/Lightning. These changes will be reflected in RTM. Likewise, changes you make in RTM will be reflected in Thunderbird the next time the calendars are synchronized.\n\n<i>This product uses the Remember The Milk API but is not endorsed or certified by Remember The Milk.</i>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/stormcows/edit",
+    "guid": "{62227ad7-1b03-4ada-b640-8d794157cda3}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/moldybeats/stormcows"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-09-13T21:37:08Z",
+    "name": {
+        "en-US": "StormCows"
+    },
+    "previews": [
+        {
+            "id": 99234,
+            "caption": {
+                "en-US": "StormCows configuration screen"
+            },
+            "image_size": [
+                476,
+                398
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/99/99234.png?modified=1530208961",
+            "thumbnail_size": [
+                239,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/99/99234.png?modified=1530208961"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.69793,
+        "count": 10,
+        "average": 4,
+        "text_count": 10
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/stormcows/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/437618",
+    "slug": "stormcows",
+    "status": "public",
+    "summary": {
+        "en-US": "Allows two-way access between Remember The Milk and calendar events or todo items."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/stormcows/",
+    "weekly_downloads": 31
+}

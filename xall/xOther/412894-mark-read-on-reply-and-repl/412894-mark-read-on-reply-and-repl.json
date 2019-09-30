@@ -1,0 +1,128 @@
+{
+    "id": 412894,
+    "authors": [
+        {
+            "id": 6413305,
+            "name": "JJohnston2",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/JJohnston2/",
+            "username": "JJohnston2",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 63,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1500282,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "11.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mark-read-on-reply-and-repl/versions/1500282",
+        "files": [
+            {
+                "id": 234036,
+                "created": "2013-11-15T22:26:42Z",
+                "hash": "sha256:2f128bed011e99c8c4309d1cc7a208e00401eb89bf93dec19e9a6e4ca6e47bd8",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 6776,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/234036/mark_read_on_reply_and_reply_all-2.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "v2.1 corrects the issue reported where the message-preview reply button (in the preview pane) would not mark as read if there was not also a reply-all button present for that message."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mark-read-on-reply-and-repl/versions/2.1",
+        "version": "2.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "\"There are no options for this extension, just install it to mark the message (or messages) you are replying to as read. This works for the Message Menu, Context Menu, Reply Buttons and Keyboard Shortcuts.\"\n\nThis extension is copied exactly from the Mark Read On Reply extension because it appears the developer is not going to fix the Reply All issue.  Minimal changes were made to the extension ID in order to get it to upload to Mozilla correctly.  The only code change is a fix the copy/paste error in the original extension on Line 42 of overlay.xul: change to MsgReplyToAllMessage instead of MsgReplyMessage.  This was previously causing the reply-all button to behave as a singular reply."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mark-read-on-reply-and-repl/edit",
+    "guid": "copiedfrommarkreadonreply@aimcosoftware.co.uk",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/412/412894-64.png?modified=1384593626",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/412/412894-32.png?modified=1384593626",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/412/412894-64.png?modified=1384593626"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-11-16T09:08:39Z",
+    "name": {
+        "en-US": "Mark Read On Reply and Reply-All"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.33917,
+        "count": 9,
+        "average": 3.4444,
+        "text_count": 9
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mark-read-on-reply-and-repl/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/412894",
+    "slug": "mark-read-on-reply-and-repl",
+    "status": "public",
+    "summary": {
+        "en-US": "Mark messages read after clicking Reply or Reply All"
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mark-read-on-reply-and-repl/",
+    "weekly_downloads": 22
+}

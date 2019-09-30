@@ -1,0 +1,190 @@
+{
+    "id": 460320,
+    "authors": [
+        {
+            "id": 10220047,
+            "name": "coco",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/binarycoco/",
+            "username": "binarycoco",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2,
+    "categories": {
+        "firefox": [
+            "photos-music-videos",
+            "privacy-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1607134,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "36.0",
+                "min": "17.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-steganography/versions/1607134",
+        "files": [
+            {
+                "id": 278726,
+                "created": "2014-10-03T16:23:50Z",
+                "hash": "sha256:b042fb69956f717144883b31fdd4cea9514c0defd9bd5d0e8df3f31b389a8ef8",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 58392,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/278726/simple_steganography-0.1.5.4-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-steganography/versions/0.1.5.4.1-signed.1-signed",
+        "version": "0.1.5.4.1-signed.1-signed"
+    },
+    "default_locale": "de",
+    "description": {
+        "de": "This is an experiment by <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2025a35ed2568245ceea380c8b549e60d23d156e11d6912608e5bdf0d3d1cc1c/http%3A//www.leinelab.org\" title=\"LeineLab Hanover\">LeineLab</a> about how to make steganography - in the sense of covered communication, not watermarking - easy enough for common users. There are many great algorithms and programs out there, but most of them are far too complicated for daily use. The \"Simple Steganography\" plugin tries to combine hiding information with actual usability.\n\n<b>Pictures in Firefox</b>\n\nTo hide a text message in a picture:\nRight-click any image on a page and choose \"Embed stego message in selected image/text\" - you will be prompted to (1) enter your text and (2) download the finished picture as *.png.\n\nTo extract the text from a given picture:\nRight-click the certain image on the page and choose \"Check selected image/text for stego\" - the text will be displayed, if it can be extracted with your key.\n\n<b>Pictures in Thunderbird</b>\n\nTo hide a text message in a picture attachment:\nUse the command \"Attach PNG image with stego message\" from the menu \"Stego\". You will be prompted to select an image file (which can be any format, not only PNG) and then enter your text. After that, the image will be converted to PNG format and attached to the e-mail.\n\nTo extract the text from a given picture attachment:\nOpen the attachment in Firefox and use the context menu. ;-)\n\n<b>Text Lists in Firefox and/or Thunderbird</b>\n\nTo hide a really very short text message by sorting a list of other texts and/or appending whitespaces to the lines:\nMark the carrier list (i.e.last week's shopping list or an index of chapters from Wikipedia), right-click and choose \"Embed stego message in selected image/text\". You will be prompted to enter your text and choose whether or not to re-sort the lines and/or append whitespace characters to the lines. Then the stego list (sorted and/or containing additional spaces) will pop up in a dialog. You can choose some HTML formatting for your new list or copy it as plain text.\n\nTo extract the text from a given list:\nMark the carrier list, right-click and choose \"Check selected image/text for stego\" - the message will be displayed, if it can be reconstructed with your key.\n\n<b>Symmetric Passphrase</b>\n\nPlease use the settings dialog to change your personal passphrase. As it is a symmetric key, the person you exchange your messages with must use the same key.\n\nFor images, the key is used to calculated the positions of the pixels that will carry the message. For text lists, the key defines a reference alphabet.\n\nSince version 1.4 you can choose to save your personal key or not. If you prefer to enter the passphrase everytime you process an image/list, make sure the the option \"Enter passphrase on demand\" is checked.\n\nIf you are tired of typing and want to store your passphrase in the options, then PLEASE READ: Your key is NOT save, in the current version it is stored as plain text in your browser settings. Use this version of the plugin to play around, try everything, report bugs and wishes - but don't save any standard passwords!"
+    },
+    "developer_comments": {
+        "de": "Known bugs:\nFirefox seems to have a problem handling and saving alpha channels. Simple Steganography works around that by making the pixels is uses opaque. Please try to use only non-transparent pictures. If you hide a message in a partly transparent picture, the transparent areas will look blotty."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-steganography/edit",
+    "guid": "simplesteganography@leinelab.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "de": "http://www.leinelab.org/projekte:steganography"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/460/460320-64.png?modified=1412355588",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/460/460320-32.png?modified=1412355588",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/460/460320-64.png?modified=1412355588"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-10-04T04:42:11Z",
+    "name": {
+        "de": "Simple Steganography"
+    },
+    "previews": [
+        {
+            "id": 114159,
+            "caption": null,
+            "image_size": [
+                429,
+                203
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/114/114159.png?modified=1530209044",
+            "thumbnail_size": [
+                320,
+                151
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/114/114159.png?modified=1530209044"
+        },
+        {
+            "id": 115158,
+            "caption": null,
+            "image_size": [
+                412,
+                439
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/115/115158.png?modified=1530209045",
+            "thumbnail_size": [
+                188,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/115/115158.png?modified=1530209045"
+        },
+        {
+            "id": 115157,
+            "caption": null,
+            "image_size": [
+                562,
+                488
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/115/115157.png?modified=1530209045",
+            "thumbnail_size": [
+                230,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/115/115157.png?modified=1530209045"
+        },
+        {
+            "id": 115159,
+            "caption": null,
+            "image_size": [
+                435,
+                226
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/115/115159.png?modified=1530209045",
+            "thumbnail_size": [
+                320,
+                166
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/115/115159.png?modified=1530209045"
+        },
+        {
+            "id": 144514,
+            "caption": null,
+            "image_size": [
+                700,
+                507
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/144/144514.png?modified=1530209046",
+            "thumbnail_size": [
+                276,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/144/144514.png?modified=1530209046"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 2.79641,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-steganography/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/460320",
+    "slug": "simple-steganography",
+    "status": "public",
+    "summary": {
+        "de": "Hide messages in PNG-32 images, extract them via context menu. The text is embedded invisibly by a \"Least Significant Bit\" algorithm.\n\nYou can also encode very short messages by re-sorting text lists and extract them via context menu."
+    },
+    "support_email": {
+        "de": "firefox@steganografie.eu"
+    },
+    "support_url": null,
+    "tags": [
+        "images",
+        "least significant bit",
+        "lsb",
+        "pictures",
+        "steganography",
+        "stego"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-steganography/",
+    "weekly_downloads": 28
+}

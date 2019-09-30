@@ -1,0 +1,150 @@
+{
+    "id": 4634,
+    "authors": [
+        {
+            "id": 85036,
+            "name": "Philipp Kewisch",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kewisch/",
+            "username": "kewisch",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/85/85036.png?modified=1509020086"
+        },
+        {
+            "id": 97044,
+            "name": "sdwilsh",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/sdwilsh/",
+            "username": "sdwilsh",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "appearance",
+            "download-management"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 34159,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0b2"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/growl-notifications/versions/34159",
+        "files": [
+            {
+                "id": 17433,
+                "created": "2007-07-09T09:28:10Z",
+                "hash": "sha256:07e770e5a4f3dea5ccd2adb9948e4bbdb2514b8e1f97cecdf61c321032d86734",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 88064,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17433/growl_notifications-1.0.2-fx+tb+fl-macosx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "(Thunderbird) Fixed subject encoding issues that sometimes occurred with messages.\n(All) Added a de localization.\n(Thunderbird) Stopped displaying RSS feeds due to the vast number of notifications that were sent.  This is only temporary until a delayed system for dispatching notifications is created that will handle a large load of notifications (Growl will actually handle this in 1.1, so it may not be worthwhile)",
+            "de": "(Thunderbird) Kodierungsprobleme bei der Betreffzeile einiger Emails gelöst.\n(Alle) Deutsche Sprachunterstützung\n(Thunderbird) Unterstützung für RSS Feeds temporär herausgenommen, bis ein System um mehrere Meldungen in einer Benachrichtigung anzuzeigen programmiert ist. Dies wird eventuell in der Growl Version 1.1 automatisch gehandhabt."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/growl-notifications/versions/1.0.2",
+        "version": "1.0.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "You can now receive a Growl notification when a download starts, finishes, fails, or is canceled in Firefox.  Clicking on the notification will open the download manager.\n\nIn Thunderbird, it displays a notification for new mail (displays the sender and subject). Clicking on the notification will focus Thunderbird.\n\nIf you have Chatzilla installed, several notifications can also be displayed!  Clicking on a notification will focus Chatzilla.\n\nYou can turn off these notifications by changing what notifications Growl displays in the Growl prefpane.\n\nOnce you install and restart your browser, you should get a Growl notification indicating that the application has registered.\n\nIf you want some other extension to have Growl Notifications support, contact them and point them to this page: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/161eaccb0004f8139ccc160c0000f15b2226037a062a87e30075995266e90e2f/http%3A//trac.growl.info/wiki/MozillaGrowlNotifications\">http://trac.growl.info/wiki/MozillaGrowlNotifications</a>",
+        "de": "Es ist nun möglich, Benachrichtigungen über Growl zu bekommen, wenn in Firefox ein Download startet, fertiggestellt ist, ein Fehler aufgetreten ist, oder dieser abgebrochen wurde. Durch klicken der Benachrichtigung werden die Downloads in Firefox angezeigt.\n\nIn Thunderbird wird eine Benachrichtigung für neue Emails angezeigt (zeigt Absender und Betreff). Durch anklicken wird das Thunderbird Fenster fokussiert.\n\nWenn Chatzilla installiert ist, können diverse Nachrichten rund um IRC angezeigt werden. Ein anklicken der Benachrichtigung fokussiert das Chatzilla Fenster.\n\nWelche Benachrichtigungen angezeigt werden, kann direkt in Growl eingestellt werden. Nach einem Neustart des Browsers kommt als erstes eine Benachrichtigung, dass die Erweiterung erfolgreich installiert wurde.\n\nFehlt einer anderen Erweiterung Unterstützung für Growl Benachrichtigungen? Schreiben Sie dem Autor eine Email und weisen Sie ihn auf die Seite <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/161eaccb0004f8139ccc160c0000f15b2226037a062a87e30075995266e90e2f/http%3A//trac.growl.info/wiki/MozillaGrowlNotifications\">http://trac.growl.info/wiki/MozillaGrowlNotifications</a> hin."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/growl-notifications/edit",
+    "guid": "growl@growl.info",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://growl.info/",
+        "de": "http://growl.info/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4634-64.png?modified=1327573742",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4634-32.png?modified=1327573742",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4634-64.png?modified=1327573742"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2007-07-10T19:15:33Z",
+    "name": {
+        "en-US": "Growl Notifications",
+        "de": "Growl Benachrichtigungen"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.59427,
+        "count": 22,
+        "average": 3.7273,
+        "text_count": 22
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/growl-notifications/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/4634",
+    "slug": "growl-notifications",
+    "status": "public",
+    "summary": {
+        "en-US": "Official Growl project to integrate it with the Mozilla code base.",
+        "de": "Offizielles Growl projekt zur Integration mit Mozilla Produkten."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "growl",
+        "osx"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/growl-notifications/",
+    "weekly_downloads": 21
+}

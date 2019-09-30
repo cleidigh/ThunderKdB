@@ -1,0 +1,153 @@
+{
+    "id": 399856,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 458,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2100961,
+        "compatibility": {
+            "thunderbird": {
+                "max": "52.*",
+                "min": "45.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autoconfiguration-hook/versions/2100961",
+        "files": [
+            {
+                "id": 648517,
+                "created": "2017-05-16T06:12:47Z",
+                "hash": "sha256:7c08e86c577f1b63155c20c860f26c5b5255765be1d3a85f2cea78412520738e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 116491,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/648517/autoconfiguration_hook-3.5-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 2705,
+            "name": {
+                "en-US": "MPL 2.0"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoconfiguration-hook/license/3.5"
+        },
+        "release_notes": {
+            "en-US": "* Works on Thunderbird 52\n * Suppress some errors and warnings",
+            "ja": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoconfiguration-hook/versions/3.5",
+        "version": "3.5"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "## Abstract\n\nAutoconfiguration, which is introduced in Thunderbird 3.1, allows system administrators to arrange already configured mail accounts where user have to input only few things such as username. However, the number of configurable account information in autoconfiguration is limited, and thus it cannot be used in some cases. To address this problem, achook provides features that allow system administrators to configure most account information.\n\n## Pre-configured account creation\n\nA system administrator arranges preset values of account information as a setting file (in XML format), and place it to the certain place such as a server in his company's network. After that, in Thunderbird with achook, pre-configured account creation menu item appears, and when an user clicks the item, pre-configured account creation wizard starts.\n\nThe remainder of this document shows the steps to use achook in real-systems.\n\n### Arranging a setting file\n\nFirst, we need a setting file that contains pre-configured setting values. Setting files can be placed in local place or remote place from user environments.\n\nSetting files are written in XML, and example.com.xml packed in achook is a good example for writing setting files. You may find useful information in a documentation of autoconfiguration.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/498458f761f584cc3142486facaf15ff0dcfbefd35d7a9e2e13690345a501601/https%3A//wiki.mozilla.org/Thunderbird%3AAutoconfiguration%3AConfigFileFormat\">https://wiki.mozilla.org/Thunderbird:Autoconfiguration:ConfigFileFormat</a>\n\nAn extra placeholder \"%USERNAME%\" is available in the configuration file. If the secret preference \"extensions.achook.staticConfig.separatedUsername\" is \"true\" and the input field for the account ID has any value, then the placeholder will be replaced to the value of the field. Otherwise, it will be replaced to the value same to \"%EMAILLOCALPART%\" .\n\nYou can customize the pretty name of the created account by &lt;achook:prettyNameFormat&gt;.\nThere are some template variables for the field:\n\n| Variable name                 | Expanded into                                                         |\n| %real_username%               | Full name of the user                                                 |\n| %username%                    | User name part of the e-mail address                                  |\n| %hostname%                    | Host name part of the e-mail address                                  |\n| %port%                        | Port number of the mail receive server  (e.g., \"12345\")               |\n| %not_default_port_expression% | Port number of the mail receive server with a colon  (e.g., \":12345\") |\n\nIf you don't specify &lt;achook:prettyNameFormat&gt;, the result becomes \"%username%@%hostname%%not_default_port_expression%\".\n\n### Specifying the location of the setting file\n\nSecond, install achook into user Thunderbird, and specify the location of the setting file via \"extensions.achook.staticConfig.source\" as an URI string (ex. File URL).\n\n### Specifying to use separated account ID or don't\n\nBy default, Thunderbird creates a mail account with an account ID same to the local part of the mail address. If you have to use an account ID different from the local part of the address, then set the preference \"extensions.achook.staticConfig.separatedUsername\" to \"true\" (boolean).\n\n### Specifying the domain name\n\nOptionally, system administrator can specify the domain name of pre-configured accounts via \"extensions.achook.staticConfig.domain\". This value is used as a label of a menu item.\n\n## Disable default account creation wizard\n\nSystem administrators can limit mail-accounts used in users Thunderbird to inter-company accounts, by setting \"extensions.achook.disableGenericWizard\" to true. This customization disables default account creation wizard, and force users to use pre-configured mail accounts.",
+        "ja": "## 概要\n\nThunderbird 3.1 より導入されたアカウント情報の自動設定システムを使うと、あらかじめメールサーバなどの情報をプリセットしておき、ユーザ名などの限られた情報をユーザに入力させるだけでアカウントのセットアップを完了することができます。しかし、このシステムで自動設定できる項目は限られており、ケースによっては要求を達成できないこともありました。この問題に対し、本アドオンはThunderbirdでアカウントに対して設定可能なほぼ全ての項目を自動設定できるようにした独自のウィザードを提供します。\n\n#### 専用アカウントの作成機能\n\n管理者は専用アカウントのプリセット値を設定ファイル (XML 形式) として用意し、社内サーバなど特定の場所に配置します。すると、本アドオンをインストールしたユーザのアカウント作成メニューに、専用アカウントを作成するメニュー項目が出現します。このメニュー項目をクリックすれば、自動設定の済んだ専用アカウントを作成するための、独自ウィザードが開始されます。\n\n以下で、実際の環境で専用アカウントの作成機能を利用するための手順を説明します。\n\n### 設定ファイルの用意\n\nはじめに、自動設定する項目を記述した設定ファイルを用意し、適当な場所へ配置します。ファイルはユーザのマシンから見てリモートにあっても、ローカルにあっても構いません。\n\n設定ファイルのフォーマットがどのようなものになっているかについては、アドオンに同梱されている example.com.xml をご覧ください。Autoconfiguration のドキュメントも参考になることでしょう（下記）。\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/498458f761f584cc3142486facaf15ff0dcfbefd35d7a9e2e13690345a501601/https%3A//wiki.mozilla.org/Thunderbird%3AAutoconfiguration%3AConfigFileFormat\">https://wiki.mozilla.org/Thunderbird:Autoconfiguration:ConfigFileFormat</a>\n\n設定ファイル内では既定のプレースホルダに加えて、 \"%USERNAME%\" というプレースホルダを利用できます。\n後述する \"extensions.achook.staticConfig.separatedUsername\" の値が \"true\" である場合は、 \"%USERNAME%\" はアカウントID専用の入力欄の値で置き換えられます。\nアカウントID専用の入力欄が使われない場合や、入力欄が空の場合は、 \"%EMAILLOCALPART%\" の値が代わりに使われます。\n\n作成されるアカウントの名前は、設定ファイル内の &lt;achook:prettyNameFormat&gt; でカスタマイズできます。\nここでは以下に示すいくつかの特殊なテンプレート変数を利用できます。\n\n|_. 変数名                      |_. 展開後の値                                           |\n| %real_username%               | ユーザの入力した名前                                   |\n| %username%                    | メールアドレスのユーザ名部分                           |\n| %hostname%                    | メールアドレスのホスト名部分                           |\n| %port%                        | メール受信サーバのポート番号 (例 \"12345\")              |\n| %not_default_port_expression% | コロン付きのメール受信サーバのポート番号 (例 \":12345\") |\n\n&lt;achook:prettyNameFormat&gt; を省略した場合は、%username%@%hostname%%not_default_port_expression% に相当する内容になります。\n\n### 設定ファイルの場所指定\n\nつぎに、ユーザの Thunderbird へ achook をインストールした上で、Thunderbird の設定値 \"extensions.achook.staticConfig.source\" に設定ファイルの場所をURI形式（ファイルURLなど）で設定します。\n\n### メールアドレスと異なるアカウントIDを使用するかどうかの設定\n\n通常、メールサーバにログインする際のユーザアカウントIDは、メールアドレスのローカルパートが使われます。メールアドレスのローカルパートとは異なるアカウントIDを使ってログインする必要がある場合は、Thunderbird の設定値 \"extensions.achook.staticConfig.separatedUsername\" を \"true\" （真偽値）に設定します。\n\n### ドメインの設定\n\n最後に、ユーザの Thunderbird の設定値 \"extensions.achook.staticConfig.domain\" へ、専用アカウントで使うドメインを設定して下さい。これは、メニュー項目のラベルとして利用されます。\n\n## 通常アカウント作成機能の無効化\n\n企業内での導入などで社内で利用するメールアカウントを社内のものに統一したい場合、その他のアカウントの作成を禁止する必要があります。本アドオンの設定項目値 \"extensions.achook.disableGenericWizard\" を true に設定すると、そうしたその他のアカウント作成機能が無効化され、ユーザに社内メールアカウントの利用を強制することができます。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autoconfiguration-hook/edit",
+    "guid": "achook@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/achook",
+        "ja": "http://www.clear-code.com/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-07-21T11:22:23Z",
+    "name": {
+        "en-US": "AutoConfiguration Hook",
+        "ja": "AutoConfiguration Hook"
+    },
+    "previews": [
+        {
+            "id": 79118,
+            "caption": {
+                "en-US": "The menu item to start pre-configured account creation wizard",
+                "ja": "独自アカウント作成用のメニュー"
+            },
+            "image_size": [
+                533,
+                291
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/79/79118.png?modified=1530209041",
+            "thumbnail_size": [
+                320,
+                175
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/79/79118.png?modified=1530209041"
+        },
+        {
+            "id": 79120,
+            "caption": {
+                "en-US": "Pre-configured account creation wizard",
+                "ja": "独自アカウント作成用のウィザード"
+            },
+            "image_size": [
+                624,
+                444
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/79/79120.png?modified=1530209041",
+            "thumbnail_size": [
+                281,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/79/79120.png?modified=1530209041"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoconfiguration-hook/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/399856",
+    "slug": "autoconfiguration-hook",
+    "status": "public",
+    "summary": {
+        "en-US": "Provides ability to create E-mail accounts for specific ISP via the account creation wizard.",
+        "ja": "メールアカウント作成ウィザードから任意のISP向けのメールアカウントを簡単に作成できるようにします。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/achook/issues"
+    },
+    "tags": [
+        "autoconfiguration",
+        "corporate",
+        "isp",
+        "isp hook",
+        "new account"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoconfiguration-hook/",
+    "weekly_downloads": 60
+}

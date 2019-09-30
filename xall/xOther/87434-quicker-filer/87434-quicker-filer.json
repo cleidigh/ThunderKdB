@@ -1,0 +1,204 @@
+{
+    "id": 87434,
+    "authors": [
+        {
+            "id": 5202575,
+            "name": "Eivind Rovik",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/eivind-rovik/",
+            "username": "eivind-rovik",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5202/5202575.png?modified=1388505325"
+        }
+    ],
+    "average_daily_users": 118,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1605720,
+        "compatibility": {
+            "thunderbird": {
+                "max": "33.*",
+                "min": "24.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quicker-filer/versions/1605720",
+        "files": [
+            {
+                "id": 278094,
+                "created": "2014-09-29T12:29:18Z",
+                "hash": "sha256:47869138534e44cead91d2bb4e3ea371628d2516316ff3fbd2aa91e7e8a6b7b6",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 23641,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/278094/quicker_filer-0.6.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version is in essence the same as v0.6.2 as v0.6.3 could under some circumstances completely ignore the users selected folder and use the first folder in the selection list instead. So until a proper fix can be made I just revert to the old version instead."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quicker-filer/versions/0.6.4",
+        "version": "0.6.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Select one or more messages, hit ALT+Q (default), start typing and select the folder you want to move the message to. You can also setup shortcuts in the options dialog for copy, instant move and instant copy. For the instant operations a default folder to move/copy to must be selected in the options dialog. The scope of the suggested folders may also be tuned in the options dialog.\n\n<b>You can re-size the dialog if it's not big enough, and the new size will be retrieved on next start-up.</b>\n\nYou may also find and select a folder by pressing ALT+R (default) start typing and select the folder and the folder will be selected and opened in the folder tree view.\n\nQuicker Filer now also brings a lot of the features you have requested in reviews and in mails to me:\n\n1. Create Folder. When the folder can not be found Quicker Filer will ask if you want to create the folder and then copy the selected messages into the newly created folder. Beware though that this follows the same notation as before i.e. first token has to be the account name and then the complete path to the folder. If the path doesn't start with an account name and the user only has one account this will automatically be used. Quicker Filer will create all missing sub-folders along the path. You will get an error message if you don't start with an account name.\n2. Select Folder. Quicker Filer search dialog may now also be used to just select a folder. Defaults to \"Alt + R\"\n3. Space between search words will now be searched for in folder paths independently. White space is no longer significant in searches and the order of search words is not significant either.\n4. When you have typed enough letters to limit the folder list to one entry, one can just press 'enter' or 'tab' to complete the move.\n5. New option to offer the previously-selected folder as default suggested folder.\n6. Added option to copy sending mail to a selectable folder. Extra field present in compose dialog. Defaults to current folder. The \"place a copy in\" options for the account still works and a mail will be copied to both folder if user select this. Recommend that the account \"place a copy in\" is disabled though."
+    },
+    "developer_comments": {
+        "en-US": "As far as I know all old Quickfile features have now been implemented. So I will now concentrate on totally new features, but please let me know if you miss anything!\n\nIf the add-on is not working for you, send me an error report with as much info as possible and I'll look into it.\n"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quicker-filer/edit",
+    "guid": "qfiler@eivind.rovik",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2014-09-29T12:45:48Z",
+    "name": {
+        "en-US": "Quicker Filer"
+    },
+    "previews": [
+        {
+            "id": 42790,
+            "caption": {
+                "en-US": "Easily move messages using keyboard shortcut and navigation."
+            },
+            "image_size": [
+                440,
+                213
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/42/42790.png?modified=1530208727",
+            "thumbnail_size": [
+                320,
+                155
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/42/42790.png?modified=1530208727"
+        },
+        {
+            "id": 44608,
+            "caption": null,
+            "image_size": [
+                348,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/44/44608.png?modified=1530208728",
+            "thumbnail_size": [
+                133,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/44/44608.png?modified=1530208728"
+        },
+        {
+            "id": 44609,
+            "caption": null,
+            "image_size": [
+                344,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/44/44609.png?modified=1530208728",
+            "thumbnail_size": [
+                131,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/44/44609.png?modified=1530208728"
+        },
+        {
+            "id": 44712,
+            "caption": null,
+            "image_size": [
+                342,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/44/44712.png?modified=1530208728",
+            "thumbnail_size": [
+                130,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/44/44712.png?modified=1530208728"
+        },
+        {
+            "id": 44713,
+            "caption": null,
+            "image_size": [
+                342,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/44/44713.png?modified=1530208729",
+            "thumbnail_size": [
+                130,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/44/44713.png?modified=1530208729"
+        },
+        {
+            "id": 44714,
+            "caption": null,
+            "image_size": [
+                342,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/44/44714.png?modified=1530208729",
+            "thumbnail_size": [
+                130,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/44/44714.png?modified=1530208729"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.42482,
+        "count": 44,
+        "average": 4.4545,
+        "text_count": 44
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quicker-filer/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/87434",
+    "slug": "quicker-filer",
+    "status": "public",
+    "summary": {
+        "en-US": "Quicker Filer helps you file your messages into folders using keyboard shortcuts and quick search method. Navigate through folders by typing the start of a folder name and the Quicker Filer dialog will show you all folders that matches as you type."
+    },
+    "support_email": {
+        "en-US": "eivind@rovik.com"
+    },
+    "support_url": null,
+    "tags": [
+        "archive",
+        "copy",
+        "fast",
+        "file",
+        "folder",
+        "keyboard",
+        "move",
+        "navigation",
+        "organize",
+        "pane",
+        "quick",
+        "quickfile",
+        "shortcut",
+        "tree",
+        "view"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quicker-filer/",
+    "weekly_downloads": 37
+}

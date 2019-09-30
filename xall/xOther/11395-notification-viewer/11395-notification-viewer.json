@@ -1,0 +1,178 @@
+{
+    "id": 11395,
+    "authors": [
+        {
+            "id": 4660347,
+            "name": "Trustedbird",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/trustedbird/",
+            "username": "trustedbird",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 118286,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.1.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/notification-viewer/versions/118286",
+        "files": [
+            {
+                "id": 99789,
+                "created": "2010-09-24T01:29:25Z",
+                "hash": "sha256:2c7ecb53c23e4f78b173099f11840ddcd075f4a3a59a2ddaa0777c24f2cf25ba",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 83968,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/99789/notification_viewer-1.0.3beta-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "notification-viewer (1.0.3)\n  * Add Thunderbird 3.1 compatibility\n  * Fix notification info for messages displayed in tabs\n  * Fix Microsoft Exchange DSN compatibility\n-- Sep 24 2010\n"
+        },
+        "reviewed": "2011-05-04T14:31:28Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/notification-viewer/versions/1.0.3beta",
+        "version": "1.0.3beta"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "fr": "Notification Viewer est un module complémentaire pour Mozilla Thunderbird 2 and 3 qui identifie et affiche l'état des notifications attendues et reçues pour les messages envoyés avec demande de notifications.\n\nFonctionnalités :\n    * Types de notifications à prendre en compte : DSN (Delivery Status Notification), MDN (Message Disposition Notification)\n    * Marquer une notification reçue comme lue\n    * Déplacer une notification dans le dossier et le fil du message associé\n    * Délai de livraison pour les demandes de DSN\n\nPré-requis:\nThunderbird 2 n'est pas capable d'envoyer de demandes de DSN. Pour suivre les requêtes DSN, vous aurez besoin d'une version de Thunderbird avec support DSN :\n    * Trustedbird (basé sur Thunderbird 2). Voir <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/fcde15f7999b3c4113842fa3953036163a4f1bbe38ff0af549ac622dd9e41c4d/http%3A//www.trustedbird.org/tb/Trustedbird/fr\">http://www.trustedbird.org/tb/Trustedbird/fr</a>\nou\n    * Thunderbird 3\n\nCe module fonctionne aussi avec la version officielle de Thunderbird 2 mais avec des fonctionnalités limitées pour la gestion des DSN. \n\n\nProjet Trustedbird/Milimail",
+        "en-US": "Notification Viewer is an add-on for Mozilla Thunderbird 2 and 3 which identifies and displays the status of pending and received notifications for messages sent with notification requests.\n\nFeatures:\n    * Select which types of notifications to manage: DSN (Delivery Status Notification), MDN (Message Disposition Notification)\n    * Mark a received notification as read\n    * Move notification to the folder and thread of the related message\n    * Delivery time for DSN requests\n\nRequirements:\nThunderbird 2 is not able to send DSN requests. In order to track DSN requests, you'll need a build of Thunderbird with the DSN feature:\n    * Trustedbird (based on Thunderbird 2). See <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0446093a890f01a490bfc0b19e40470ee095407cfbd150e519b9d13bb13fc09a/http%3A//www.trustedbird.org/tb/Trustedbird\">http://www.trustedbird.org/tb/Trustedbird</a>\nor\n    * Thunderbird 3\n\nThis add-on works also with the official version of Thunderbird 2 but with limited features for DSN. \n\n\nTrustedbird/Milimail project"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/notification-viewer/edit",
+    "guid": "notificationviewer@trustedbird.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "fr": "http://www.trustedbird.org/tb/Notification_Viewer/fr",
+        "en-US": "http://www.trustedbird.org/tb/Notification_Viewer"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/11/11395-64.png?modified=1304607434",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/11/11395-32.png?modified=1304607434",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/11/11395-64.png?modified=1304607434"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-05-04T14:31:29Z",
+    "name": {
+        "fr": "Notification Viewer",
+        "en-US": "Notification Viewer"
+    },
+    "previews": [
+        {
+            "id": 31202,
+            "caption": null,
+            "image_size": [
+                544,
+                179
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31202.png?modified=1530208515",
+            "thumbnail_size": [
+                320,
+                105
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31202.png?modified=1530208515"
+        },
+        {
+            "id": 31203,
+            "caption": null,
+            "image_size": [
+                509,
+                181
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31203.png?modified=1530208515",
+            "thumbnail_size": [
+                320,
+                114
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31203.png?modified=1530208515"
+        },
+        {
+            "id": 31204,
+            "caption": null,
+            "image_size": [
+                700,
+                220
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31204.png?modified=1530208516",
+            "thumbnail_size": [
+                320,
+                101
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31204.png?modified=1530208516"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.457,
+        "count": 7,
+        "average": 3.8571,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/notification-viewer/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/11395",
+    "slug": "notification-viewer",
+    "status": "public",
+    "summary": {
+        "fr": "Identifie et affiche l'état des notifications attendues et reçues (DSN, MDN) pour les messages envoyés avec demande de notifications.",
+        "en-US": "Identifies and displays the status of pending and received notifications (DSN, MDN) for messages sent with notification requests. To get full experience with this addon, don't forget to use DSN settings and MDN extended addons too."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://www.trustedbird.org/"
+    },
+    "tags": [
+        "beobachtung"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/notification-viewer/",
+    "weekly_downloads": 26
+}

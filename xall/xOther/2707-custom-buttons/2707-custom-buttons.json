@@ -1,0 +1,167 @@
+{
+    "id": 2707,
+    "authors": [
+        {
+            "id": 8852,
+            "name": " Yan",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/yan/",
+            "username": "yan",
+            "picture_url": null
+        },
+        {
+            "id": 302065,
+            "name": "cubegm",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/cubegm/",
+            "username": "cubegm",
+            "picture_url": null
+        },
+        {
+            "id": 82573,
+            "name": "SCClockDr",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/scclockdr/",
+            "username": "scclockdr",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 235,
+    "categories": {
+        "seamonkey": [
+            "interface-customizations"
+        ],
+        "firefox": [
+            "appearance",
+            "web-development"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1834543,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "2.10a1",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "13.0a1",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/custom-buttons/versions/1834543",
+        "files": [
+            {
+                "id": 414139,
+                "created": "2016-03-20T13:50:56Z",
+                "hash": "sha256:eeab715da5f60777a8c381f64a3bf5266a4e2cbb9d8f51795d4bc43fb9264f49",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 123404,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/414139/custom_buttons-0.0.5.8.9-sm+tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "ru": "# Исправлено: не работает преобразование изображений в base64",
+            "en-US": "# Fixed: Image conversion to base64 doesn't work"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/custom-buttons/versions/0.0.5.8.9",
+        "version": "0.0.5.8.9"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "ru": "Позволяет создавать новые кнопки для панелей инструментов\n\nСовместимость:\n  Mozilla Firefox 1.5+\n  SeaMonkey 2.0+\n  Mozilla Thunderbird 2.0+\n  Mozilla Sunbird 0.8-0.9 / Calendar 1.0pre\n  KompoZer 0.8b1-0.8b3\n\nЧтобы создать новую кнопку:\n  * В меню \"Вид\" выберите пункт \"Добавить новую кнопку....\"\n  * Заполните поля \"Имя\" и \"Код\".\n    (Вы можете оставить поле \"Картинка\" пустым - в этом случае кнопка будет иметь стандартный значок).\n  * Код из поля \"Инициализация\" выполняется единственный раз при запуске браузера, и при пересоздании кнопки, например после редактирования или переноса кнопки из диалога \"Настройка панелей инструментов\". Это поле можно оставить пустым.\n  * Перейдите в меню \"Вид\" -&gt; \"Панели инструментов\" -&gt; \"Настроить...\", найдите новую кнопку и перенесите её на какую-нибудь панель инструментов.\n\nРасширение добавляет в браузер новый протокол \"custombutton\", что позволяет устанавливать кнопки с веб-страниц.\n\nОбсуждение (на русском и английском языках):\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/79f8f9a8fdcc61b9f85d432dc44a73b3c2c60cc51888c31037ca7dbdca9901ba/http%3A//custombuttons.sf.net/forum/\">http://custombuttons.sf.net/forum/</a>\n\nОбсуждение (на русском языке): <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/de796dea9d6d7c7429f5b7085f8f329599e0b41d5452fc599fc250e96db7625f/http%3A//forum.mozilla-russia.org/viewtopic.php%3Fid=9591\">http://forum.mozilla-russia.org/viewtopic.php?id=9591</a>\n\nЕсли Вы обнаружили ошибку попробуйте объяснить её здесь: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2b5fb4e7bf27994e8e1249404510cbb9396f9be4efbf46a6b1d9b0e4f55f9039/http%3A//sourceforge.net/p/custombuttons/tickets\">http://sourceforge.net/p/custombuttons/tickets</a>\n\nСтарая домашняя страница:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/81fc8100e89c5b600a1bc30d3dabb6c92d4f41d8b4a77f6cbb494c1ceeeb2f32/http%3A//xsms.nm.ru/custombuttons/\">http://xsms.nm.ru/custombuttons/</a>",
+        "en-US": "Gives a possibility to create custom toolbarbuttons.\n\nCompatibility:\n  Mozilla Firefox 1.5+\n  SeaMonkey 2.0+\n  Mozilla Thunderbird 2.0+\n  Mozilla Sunbird 0.8-0.9 / Calendar 1.0pre\n  KompoZer 0.8b1-0.8b3\n  Flock 0.7-1.5+\n\nTo add new button you should:\n  * Go into menu View -&gt; Add new Button....\n  * Fill in the fields Name and Code.\n    (You can leave the field Image empty. Then the button will have a standart image).\n  * The Initialization code executes once a time when the browser startups, and at any time a custom button was recreated, i. e. edited or dragged from \"Customize Toolbar\" dialog. You can leave it empty too.\n  * Go into menu View -&gt; Toolbars -&gt; Customize... , find new button and drag it to any toolbar.\n\nThe extension adds to Firefox a \"custombutton\" protocol, that allows to install buttons from web-pages.\n\nDiscussion (both in English and Russian):\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/79f8f9a8fdcc61b9f85d432dc44a73b3c2c60cc51888c31037ca7dbdca9901ba/http%3A//custombuttons.sf.net/forum/\">http://custombuttons.sf.net/forum/</a>\n\nDiscussion (in Russian): <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/de796dea9d6d7c7429f5b7085f8f329599e0b41d5452fc599fc250e96db7625f/http%3A//forum.mozilla-russia.org/viewtopic.php%3Fid=9591\">http://forum.mozilla-russia.org/viewtopic.php?id=9591</a>\n\nIf you have found a bug, don't complain here, but try to explain it here <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2b5fb4e7bf27994e8e1249404510cbb9396f9be4efbf46a6b1d9b0e4f55f9039/http%3A//sourceforge.net/p/custombuttons/tickets\">http://sourceforge.net/p/custombuttons/tickets</a> if you want to have it fixed\n\nOld homepage:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2de6c22254d8cc4e2039d41fb8bf812a6e43d0ffff4df84f2bd9c2c21eba744a/http%3A//xsms.nm.ru/custombuttons/en/\">http://xsms.nm.ru/custombuttons/en/</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/custom-buttons/edit",
+    "guid": "custombuttons@xsms.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "ru": "http://custombuttons.sourceforge.net/",
+        "en-US": "http://custombuttons.sourceforge.net/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2707-64.png?modified=1458559216",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2707-32.png?modified=1458559216",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2707-64.png?modified=1458559216"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-03-21T10:23:15Z",
+    "name": {
+        "ru": "Custom Buttons",
+        "en-US": "Custom Buttons"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.95879,
+        "count": 125,
+        "average": 3.968,
+        "text_count": 124
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/custom-buttons/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/2707",
+    "slug": "custom-buttons",
+    "status": "public",
+    "summary": {
+        "ru": "Позволяет создавать новые кнопки для панелей инструментов.",
+        "en-US": "Gives a possibility to create custom toolbarbuttons..."
+    },
+    "support_email": {
+        "en-US": "custombuttonsextension@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://custombuttons.sf.net/forum/"
+    },
+    "tags": [
+        "buttons",
+        "custom buttons",
+        "run javascript",
+        "toolbar",
+        "新增自訂按鈕"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/custom-buttons/",
+    "weekly_downloads": 165
+}

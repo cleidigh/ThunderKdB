@@ -1,0 +1,175 @@
+{
+    "id": 5538,
+    "authors": [
+        {
+            "id": 166942,
+            "name": "xzer lr",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/xzer-lr/",
+            "username": "xzer-lr",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 378,
+    "categories": {
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1509369,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.0a2",
+                "min": "1.0"
+            },
+            "thunderbird": {
+                "max": "31.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-filter/versions/1509369",
+        "files": [
+            {
+                "id": 238280,
+                "created": "2013-12-31T19:12:01Z",
+                "hash": "sha256:a6f8ae0eaf9e3a615189b1e840841a7a03cb8d7bf80d19871e6ff92a08d4df97",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 14070,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/238280/send_filter-1.0.6-tb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "zh-CN": "",
+            "en-US": "compatibility fix for thunderbird 24"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-filter/versions/1.0.6.1-let-fixed",
+        "version": "1.0.6.1-let-fixed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "zh-CN": "这个扩展在已发送邮件的保存目录（在帐户设定中指定的目录）上自动启动过滤器。它在过滤器设置窗口增加了一个选项使你可以在发送邮件后允许过滤器在保存目录上自动运行。\n\n注意：这个扩展实际上等同于你在菜单上选择\"工具-》执行过滤器\"，只是在你发送邮件之后自动运行。因此，你必须小心你的过滤器定义，也许你定义了针对接受邮件的过滤器，但是Tb并不能识别哪些过滤器是面向来信，哪些过滤器是面向发信的，因此，你可能会得到一些奇怪的结果。避免这个问题的一个方法是，为你的面向来信的过滤器增加一个“to”条件，并为面向发信的过滤器增加一个“from”条件，当然，都设定为你自己的邮件地址。\n\n1.0版本也可用于SeaMonkey.\n\n----------------------------------------------\n\n我除了修正bug不会再开发新的版本。\n\n参看https://<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/36cb80473a693ab540f991ab8d0610b60cd40f5a9b4f0bb8563097d747d2a175/http%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=11039\">bugzilla.mozilla.org/show_bug.cgi?id=11039</a>\n\nTB24兼容的版本。<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9058ca9c027d9a050952ffe7543b9eeffbcb558023dcf5ee20960e587fb9aaa1/http%3A//www.xzer.net/harvest/sendfilter/zh-CN\">http://www.xzer.net/harvest/sendfilter/zh-CN</a>\n\n<strong>谢谢hctapeurtlaera 所作的兼容性修改。</strong>\n\n现在，代码已经公开在https://<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/55df3a1b94d3cc74f6cac4568c94a851b6d809ffa67baa6176267ea7881413a0/http%3A//github.com/xzer/sendfilter%EF%BC%8C\">github.com/xzer/sendfilter，</a> 欢迎pull request。\n----------------------------------------------\n\n如果有任何问题，请不要在这里留言，给我发邮件，或者在上面提到的github页面上提交bug报告。",
+        "en-US": "Enable the message filters automatically on sent folder. It adds a checkbox in the filter's configuration panel, which enables the filters to autorun on the \"sent items\" folder.\n\nNOTE:The alternative to run this add-on is as follows, select from menu Tools-&gt;Run Filters on Folder, just autorun after sending. So you should be careful with the filter's settings. It could be the case if you just set your filter against the incoming messages, then TB would not be able to differentiate the incoming filter from the outgoing filter. So when they are run at the sent folder, something may happen unexpectedly. A work-around is to add a \"from\" condition onto the filters that to be run on message sending, and also add a \"to\" condition for incoming messages filter. Of course, the value is your own mail address. \n\nAs the new version 1.0, it can work with SeaMonkey too.\n\n-----------------------------------------------\n\nI will not continue the developing of new version except bug fix.\n\nSee here: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/174cf780e2340cba91ee6ff8dccdde0a20deab3d89d4a6c5d9fe0c65b32ccf38/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=11039\">https://bugzilla.mozilla.org/show_bug.cgi?id=11039</a>\n\nTB 24 compatible version is downloadable at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d78afe94cd1c2539cf3e62423f1a0d8aac33da8c21ae2b8673c21c9d9949f9c7/http%3A//www.xzer.net/harvest/sendfilter\">http://www.xzer.net/harvest/sendfilter</a>, or wait for the amo's version in audit.\n\n<strong>Thanks hctapeurtlaera for the compatibility fix.</strong>\n\nNow the source is open at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ce591f3ccf6546cbd28e388624014a7afae7d22ba2070acb03194d73384ddf89/https%3A//github.com/xzer/sendfilter\">https://github.com/xzer/sendfilter</a>, pull request is welcome.\n-------------------------------------------------\n\nPlease mail to me or submit issue report at github which is mentioned above. Do not comment here if you have any problem!!!",
+        "ja": "送信済みメッセージの保存フォルダに対してメッセージフィルタを適用します。メッセージフィルタの設定画面にチェックボックスを追加しますのでチェックを入れて有効にしてください。メッセージの送信後にアカウント設定で指定した送信済みメッセージの保存先フォルダに対してメッセージフィルタを自動実行します。\n\n注意事項：本アドオンの動きは、メニューから”ツールー＞フィルタ実行”の指定と同じ効果で、送信後に自動実行となります。そのゆえ、貴方のフィルタの定義を注意してください。もともと受信に対して定義していますが、TBはどのフィルタが受信向け、どのフィルタが送信向けとは識別できないので、おかしい結果が出ている可能性があります。この問題を回避するには、受信向けのフィルタへ”to”条件を追加し、送信向けのフィルタへ”from”条件を追加するようにしてください。条件の値が当然に貴方のメールアドレスです。\n\nバージョン1.0とは、SeaMonkeyでも使えます。\n\n----------------------------------------------\n\nバグ対応以外の新バージョンの開発計画がございません。\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/174cf780e2340cba91ee6ff8dccdde0a20deab3d89d4a6c5d9fe0c65b32ccf38/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=11039\">https://bugzilla.mozilla.org/show_bug.cgi?id=11039</a>　を参照してください。\n\nTB 24へ互換できるバージョンをリリースしました。<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f9b78da18a8af185578c9be8aabcbdf92f29c9f49b940785677b59054ff755bb/http%3A//www.xzer.net/harvest/sendfilter/ja\">http://www.xzer.net/harvest/sendfilter/ja</a>\n\n<strong>hctapeurtlaeraからのTB２４への互換性修正は、ありがとうございました。</strong>\n\n今ソースはhttps://<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/03622aa274cbd82c058aefd636aa6e5fd66b012c48e1dac4128c21634bff217a/http%3A//github.com/xzer/sendfilter%E3%81%AB%E5%85%AC%E9%96%8B%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%81%AE%E3%81%A7%E3%80%81pull\">github.com/xzer/sendfilterに公開されていますので、pull</a> requestは大歓迎。\n----------------------------------------------\n\n問題がある場合、こちらにコメントをしなく、メールもしくは上記のgithubのアドレスにバグを報告してください。",
+        "zh-TW": "這個擴展在已發送郵件的保存目錄（在帐户设定中指定的目录）上自動啟動過濾器。它在過濾器設置窗口增加了一個選項使你可以在發送郵件后允許過濾器在保存目錄上自動運行。\n\n注意：這個擴展實際上等同于你在菜單上選擇\"工具-》執行過濾器\"，只是在你發送郵件之后自動運行。因此，你必須小心你的過濾器定義，也許你定義了針對接受郵件的過濾器，但是Tb并不能識別哪些過濾器是面向來信，哪些過濾器是面向發信的，因此，你可能會得到一些奇怪的結果。避免這個問題的一個方法是，為你的面向來信的過濾器增加一個“to”條件，并為面向發信的過濾器增加一個“from”條件，當然，都設定為你自己的郵件地址。\n\n1.0版本也可用于SeaMonkey。\n\n----------------------------------------------\n\n我除了修正bug不會再開發新的版本。\n\n參看https://<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/36cb80473a693ab540f991ab8d0610b60cd40f5a9b4f0bb8563097d747d2a175/http%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=11039\">bugzilla.mozilla.org/show_bug.cgi?id=11039</a>\n\nTB24兼容的版本。<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9058ca9c027d9a050952ffe7543b9eeffbcb558023dcf5ee20960e587fb9aaa1/http%3A//www.xzer.net/harvest/sendfilter/zh-CN\">http://www.xzer.net/harvest/sendfilter/zh-CN</a>\n\n<strong>謝謝hctapeurtlaera 所作的兼容性修改。</strong>\n\n現在，代碼已經公開在https://<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/55df3a1b94d3cc74f6cac4568c94a851b6d809ffa67baa6176267ea7881413a0/http%3A//github.com/xzer/sendfilter%EF%BC%8C\">github.com/xzer/sendfilter，</a> 歡迎pull request。\n----------------------------------------------\n\n如果有任何問題，請不要在這裏留言，給我發郵件，或者在上面提到的github頁面上提交bug報告。"
+    },
+    "developer_comments": {
+        "zh-CN": "这里有几个已知问题，但并不是bug：\n 1. 发送邮件后发件箱中保存的邮件消失了。这不是bug，请仔细阅读上面给出的注意事项，你可能需要修正你的过滤器定义。\n 2. 发送邮件后过滤器在所有帐户上都自动运行了。这是正常现象，现在，这个扩展只有一个全局定义，还不支持针对帐户分别定义是否有效。\n 3. 过滤器在同一个邮件上被反复执行。这不是bug，Send Filter现在的设计是在发件箱上执行过滤器而不是在单个邮件上执行。事实上， 要回避这个问题非常简单。你可以在过滤器定义上增加一个tag的操作，然后追加一个“不包含tag”的条件，就可以了。另外还有一个 类似的做法，你可以用一个filter把所有的已发送邮件转移到别的目录中去从而保证发件箱中只有新发送的尚未执行filter的邮件。 \n 4. 有人报告不能正常工作，如果你也遇到同样的情况，请务必向我发邮件，我会分析并找出原因。\n\nPlease mail to me but not comment here if you have any problem!!!",
+        "en-US": "There are some known issues, but they are not bugs:\n 1. Mails in sent folder disappeared after sending a mail. It is not a bug, please read the NOTE above, perhaps you should modify your filter defines.\n 2. It autorun on all accounts after sending a mail. It is the correct action, now this addon has only a global setting for enable or disable, can not be set to a special account.\n 3. Filters are repeatedly executed on same message. It is not a bug, this add-on execute the filters on the folder but not on the certain message. There are simply ways to avoid repeated filtering.For example, add a \"tagging\" action to your filter definition, then add a \"not containing tag\" to your filter's condition definition. Another way is similar with adding tag, moving all outgoing messages to other folder by a filter and then ensure that there are only new messages in your sent folder.\n 4. Someone reported that it can not work well, so please mail to me and Ｉ will try to find out reason.\n\nPlease mail to me but not comment here if you have any problem!!!",
+        "ja": "いくつの判明している問題がありますが、バグではありません：\n　１．送信後に送信済みフォルダに保存されているメールがなくなってしまいました。これはバグではなく、上記の注意事項をお読みになってください。 フィルタの定義を修正する必要があるかもしれません。\n　２．送信後に全てのアカウントにフィルタが自動実行されました。これは正しい動きです。現状でグローバルの有効設定しかないです。アカウント別に 有効か無効かの設定はまだサポートしておりません。\n　３．同じメッセージに対してフィルタは重複的に実行しています。これは設計通りです。Send Filterはメッセージではなく、送信済みの保存フォルダに フィルタを実行させるようにしています。けれども、重複実行を回避するのは簡単にできます。たとえば、「タグ追加」という動作を追加して、「タグ ない」という条件も追加すれば、重複実行しないようになります。また、ほかの似ているやり方もあります。たとえば、フィルタを利用して全部の送信 メッセージをほかのフォルダへ移動して送信済みフォルダに新メッセージしかないことを確保するようにします。 \n　４．正しく動かない報告がありますが、ぜひ僕へメールしてください、僕が原因を検討できます。\n\nPlease mail to me but not comment here if you have any problem!!!",
+        "zh-TW": "這里有幾個已知問題，但并不是bug：\n 1. 發送郵件後發件箱中保存的郵件消失了。這不是bug，請仔細閱讀上面給出的注意事項，你可能需要修正你的過濾器定義。\n 2. 發送郵件後過濾器在所有帳戶上都自動運行了。這是正常現像，現在，這個擴展只有一個全局定義，還不支持針對帳戶分別定義是否有效。\n 3. 過濾器在同一個郵件上被反復執行。這不是bug，Send Filter現在的設計是在發件箱上執行過濾器而不是在單個郵件上執行。事實上， 要回避這個問題非常簡單。你可以在過濾器定義上增加一個tag的操作，然後追加一個“不包含tag”的條件，就可以了。另外還有一個 類似的做法，你可以用一個filter把所有的已發送郵件轉移到別的目錄中去從而保證發件箱中只有新發送的尚未執行filter的郵件。 \n 4. 有人報告不能正常工作，如果你也遇到相同問題，請務必向我發郵件，我會嘗試找出原因。\n\nPlease mail to me but not comment here if you have any problem!!!"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-filter/edit",
+    "guid": "sendfilter@xzer.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "zh-CN": "http://www.xzer.net/harvest/sendfilter/zh-CN",
+        "en-US": "http://www.xzer.net/harvest/sendfilter",
+        "ja": "http://www.xzer.net/harvest/sendfilter/ja",
+        "zh-TW": "http://www.xzer.net/harvest/sendfilter/zh-TW"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-02-05T12:51:53Z",
+    "name": {
+        "zh-CN": "Send Filter",
+        "en-US": "Send Filter",
+        "ja": "Send Filter",
+        "zh-TW": "Send Filter"
+    },
+    "previews": [
+        {
+            "id": 15846,
+            "caption": null,
+            "image_size": [
+                549,
+                406
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/15/15846.png?modified=1530208318",
+            "thumbnail_size": [
+                270,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/15/15846.png?modified=1530208318"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.96952,
+        "count": 38,
+        "average": 4,
+        "text_count": 38
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-filter/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/5538",
+    "slug": "send-filter",
+    "status": "public",
+    "summary": {
+        "zh-CN": "这个扩展让你可以在发送邮件后在已发送邮件保存邮箱中自动使用邮件过滤器。",
+        "en-US": "This add-on allows you run your message filters automatically on outgoing messages after sending. In other words, it's a outgoing filter for thunderbird and seamonkey.",
+        "ja": "このアドオンはメッセージの送信時に送信済みメッセージに対してメッセージフィルタの適用を可能にします。",
+        "zh-TW": "這個擴展讓你可以在發送郵件后在已发送邮件保存邮箱中自動使用邮件過濾器。"
+    },
+    "support_email": {
+        "zh-CN": "hvsupport@xzer.net",
+        "en-US": "hvsupport@xzer.net",
+        "ja": "hvsupport@xzer.net",
+        "zh-TW": "hvsupport@xzer.net"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-filter/",
+    "weekly_downloads": 33
+}

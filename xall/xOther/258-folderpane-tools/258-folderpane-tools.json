@@ -1,0 +1,121 @@
+{
+    "id": 258,
+    "authors": [
+        {
+            "id": 67,
+            "name": "chuonthis",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/chuonthis/",
+            "username": "chuonthis",
+            "picture_url": null
+        },
+        {
+            "id": 408,
+            "name": "Philip Chee",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/philip-chee/",
+            "username": "philip-chee",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2007,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1260979,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.12a1",
+                "min": "1.0"
+            },
+            "thunderbird": {
+                "max": "23.*",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folderpane-tools/versions/1260979",
+        "files": [
+            {
+                "id": 127433,
+                "created": "2011-07-27T10:55:51Z",
+                "hash": "sha256:1af0ab935e9e70bd57df0b6d9626315837ab516b776e61f1ca49378695778377",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 32768,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/127433/folderpane_tools-0.6.1-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 1113,
+            "name": {
+                "en-US": "Custom License"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folderpane-tools/license/0.6.1"
+        },
+        "release_notes": {
+            "en-US": "What's New:\n    * Updated for Thunderbird 5 and SeaMonkey 2.2.\n    * Added Hungarian Locale contributed by \"DirektX\" &lt;direktx@freemail.hu&gt;.\n    * Renamed locales [de-DE, fr-FR, nl-NL, pl-PL] to [de, fr, nl, pl].\n    * Updated locales: de, es-ES.\n    * New locales ca-AD, cs-CZ, pt-PT, sv-SE, sr.\n    * [fix] On OSX don't show the first run alert message as it can't be dismissed."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folderpane-tools/versions/0.6.1",
+        "version": "0.6.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>Status</b>\n\n<b>This extension is no longer being maintained.  Please use this extension as an alternative:\n<a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-us/thunderbird/addon/manually-sort-folders/\">Manually sort folders</a></b>\n\nThis extension is in maintenance mode. No new features are planned and only urgent bug fixes will be considered. Patches are welcome; and if someone wants to take over this project and/or actively contribute code and features they too are welcome!\n\n<b>Credits</b>\n\nOriginal Author: chuonthis <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/87cecac533ebef1a9613413b63d557cda4f08ba984aa7d9a6542325e294ce0e0/http%3A//www.chuonthis.com/extensions/\">http://www.chuonthis.com/extensions/</a>\nCurrent Author: Phil Chee <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ff64a6a50135f3e468d4ccc25d3c42cead2f790316079c31b15d784f0b8ca529/http%3A//xsidebar.mozdev.org/modifiedmailnews.html%23folderpanetools\">http://xsidebar.mozdev.org/modifiedmailnews.html#folderpanetools</a>\n\n<b>Options</b>\n\n<strong>This extension must be configured before use</strong>.  To open the options window, open the <b>Tools</b> menu, select <b>Extensions</b>, and double-click on the extension.\n<ul><li><b>Override startup folder:</b> Enable this option to override the folder that is displayed on startup.\n  <ul><li><b>Select folder:</b> Select the folder to display at startup from the dropdown menu.  To select a folder which has subfolders, open its submenu and select <b>choose this folder</b>.</li></ul>  </li>  <li><b>Rearrange accounts:</b> Use the listbox and buttons in this section to rearrange the order that accounts are displayed.  The <b>Default account</b> is always listed first.  Select an account from the listbox and click on one of the buttons below to either set the account as the default, move the account up in the list, or move the account down in the list.\n    <ul><li>Email accounts and RSS accounts are always placed above the Local Folders.  The Local Folders are always placed above Newsgroup accounts.  If the Local Folders or a Newsgroup account is set as the Default account, it will be placed at the top.</li></ul></li></ul>"
+    },
+    "developer_comments": {
+        "en-US": "NOTE: There is a rule which the order must follow with one exception.  The rule is that \"Mail\" and \"News\" accounts are listed first, then the \"Local Folders\" account, and finally \"Newsgroup\" accounts.  The one exception is that the default account is always listed first.\n\nWARNING: If you are using version 0.0.2 and see the message \"58: fpAM.getAccount(accounts[i]).incomingServer has no properties\" when you open the options window, please click Cancel for the window titled \"Folderpane Tools Options\".  Please upgrade to version 0.0.3 to avoid this bug.  To those who have been affected by this bug, please send me an email so I can help you recover your accounts."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folderpane-tools/edit",
+    "guid": "{b243fe83-b8a7-47de-855d-21d865243d5d}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://xsidebar.mozdev.org/modifiedmailnews.html#folderpanetools"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/258-64.png?modified=1425603360",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/258-32.png?modified=1425603360",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/258-64.png?modified=1425603360"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-07-29T11:37:23Z",
+    "name": {
+        "en-US": "Folderpane Tools"
+    },
+    "previews": [],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.48383,
+        "count": 124,
+        "average": 3.4919,
+        "text_count": 124
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folderpane-tools/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/258",
+    "slug": "folderpane-tools",
+    "status": "public",
+    "summary": {
+        "en-US": "Allows for customization of the folder pane. Accounts can be rearranged and the startup folder can be chosen."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "folder pane",
+        "thunderbird"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folderpane-tools/",
+    "weekly_downloads": 72
+}

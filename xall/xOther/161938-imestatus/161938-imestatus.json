@@ -1,0 +1,260 @@
+{
+    "id": 161938,
+    "authors": [
+        {
+            "id": 1707673,
+            "name": "Shadow912",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/shadow912/",
+            "username": "shadow912",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "firefox": [
+            "alerts-updates",
+            "appearance"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 119025,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "3.6"
+            },
+            "thunderbird": {
+                "max": "3.3a4pre",
+                "min": "3.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/imestatus/versions/119025",
+        "files": [
+            {
+                "id": 100594,
+                "created": "2010-10-07T05:01:22Z",
+                "hash": "sha256:947fcd738cee362b31adbf61e6cbebed71ee2992dfbe11d63eb0993a68bcef00",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 27219,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/100594/imestatus-0.6-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Changing points from version 0.5, as follows:\n* Fixed: Background image is repeated after inputting tab group name on Panorama(TabCandy/Tab set/Tab view), Minefield.\n* Fixed: Possibility that IME inactivation doesn't work on automatically focused page(e.g. Google) or depending on a cache.\n* Fixed: There is possibility that background color doesn't recover.\n* Added: \"IMEStatus Options\" on Tools menu\n* Added: \"Hide IMEStatus Options on Tools menu\" setting\n* Added: Toolbar button(instead of status bar icon for Minefield/Firefox 4)\n\nLimitations/Known issues:\n* If check on 'Inactivate IME anywhere', IME is inactive on all text areas(input, textarea and textbox) where doesn't change background color.\n* IME inactivation doesn't work on Linux.\n* Doesn't work on WYSIWYG HTML editor area or Thunderbird message composing window's message body.",
+            "ja": "バージョン 0.5 からの変更点は以下のとおりです：\n・ Minefield の Panorama(TabCandy/Tab set/Tab View)でタブグループ名を入力したあとに、背景パターンが繰り返して描画される問題を修正\n・ 自動的にフォーカスを奪うページ (例、Google) やキャッシュの状態によっては IME オフ機能が動作しないことがある問題を修正\n・ 背景色が通常の状態に戻らないことがある問題を修正\n・ツールメニューに「IMEStaus オプション」を追加\n・「ツールメニューに IMEStatus オプションを表示しない」設定を追加\n・ツールバーボタンを追加 (Minefield/Firefox 4 でステータスバーアイコンの代わりに使用するために)\n\n\n制限事項/既知の問題：\n・ 「どこでも IME をオフにする」設定にしていた場合、背景色が変わらないテキスト入力エリア (input、textarea、textbox) でも IME がオフになります\n・ Linux では IME オフ機能は動作しません\n・ WYSIWYG HTML エディタの入力欄や Thunderbird のメール作成ウィンドウのメッセージ本文欄では動作しません\n・ ニコニコ動画の検索用テキスト入力ボックスで、背景色が下半分しか描画されません (ニコニコ動画側の CSS 指定に問題があるため)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/imestatus/versions/0.6.1-signed.1-signed",
+        "version": "0.6.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "IMEStatus show IME status by background color when you input sentences on web contents and Firefox/Thunderbird.",
+        "ja": "ウェブコンテンツや Firefox/Thunderbird 上で文章を入力するときに、IMEStatus は IME の状態を背景色によって表示します。"
+    },
+    "developer_comments": {
+        "en-US": "Included locales: en-US, ja\n\nPlease read 'Release Notes' or check 'View all versions' about changing points and limitations/known issues.\n\nThis extension is inspired from i7a16k's <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/4687/\">IME and DiMENSiON</a>, its source code is referenced. And Piro's <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/7699/\">Auto Disable IME</a> source code is referenced too.\nThanks a lot!, i7a16k and Piro.",
+        "ja": "収録ロケール： en-US, ja\n\n変更点や制限事項/既知の問題に関しては、リリースノートもしくはすべてのバージョンを表示からご覧ください。\n\nこの拡張は、i7a16k さんの <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/4687/\">IME and DiMENSiON</a> に着想を得て作成し、そのソースコードを参考にさせていただきました。また、Piro さんの <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/7699/\">IME自動無効(Auto Disable IME)</a> のソースコードも参考にさせていただいております。\ni7a16k さん、Piro さんのお二方には感謝いたします。"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/imestatus/edit",
+    "guid": "{6611d28d-494b-43dc-9614-c506c79eff68}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://mozilla-ext-ja.way-nifty.com/blog/imestatus/index.html",
+        "ja": "http://mozilla-ext-ja.way-nifty.com/blog/imestatus/index.html"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/161/161938-64.png?modified=1286788388",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/161/161938-32.png?modified=1286788388",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/161/161938-64.png?modified=1286788388"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2010-10-11T09:12:19Z",
+    "name": {
+        "en-US": "IMEStatus",
+        "ja": "IMEStatus"
+    },
+    "previews": [
+        {
+            "id": 45941,
+            "caption": {
+                "en-US": "IME is active",
+                "ja": "IME オン"
+            },
+            "image_size": [
+                567,
+                235
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/45/45941.png?modified=1530208747",
+            "thumbnail_size": [
+                320,
+                133
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/45/45941.png?modified=1530208747"
+        },
+        {
+            "id": 45942,
+            "caption": {
+                "en-US": "IME is inactive",
+                "ja": "IME オフ"
+            },
+            "image_size": [
+                567,
+                231
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/45/45942.png?modified=1530208748",
+            "thumbnail_size": [
+                320,
+                130
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/45/45942.png?modified=1530208748"
+        },
+        {
+            "id": 46075,
+            "caption": {
+                "en-US": "IME is active on message composing window Subject:",
+                "ja": "メッセージ作成ウィンドウの件名欄で IME オン"
+            },
+            "image_size": [
+                399,
+                265
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46075.png?modified=1530208748",
+            "thumbnail_size": [
+                301,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46075.png?modified=1530208748"
+        },
+        {
+            "id": 46076,
+            "caption": {
+                "en-US": "IMS is inactive on message composing window Subject:",
+                "ja": "メッセージ作成ウィンドウの件名欄で IME オフ"
+            },
+            "image_size": [
+                399,
+                265
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46076.png?modified=1530208748",
+            "thumbnail_size": [
+                301,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46076.png?modified=1530208748"
+        },
+        {
+            "id": 46077,
+            "caption": {
+                "en-US": "Options dialog(en)",
+                "ja": "オプションダイアログ(英語)"
+            },
+            "image_size": [
+                489,
+                497
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46077.png?modified=1530208749",
+            "thumbnail_size": [
+                197,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46077.png?modified=1530208749"
+        },
+        {
+            "id": 46078,
+            "caption": {
+                "en-US": "Options dialog(ja)",
+                "ja": "オプションダイアログ(日本語)"
+            },
+            "image_size": [
+                529,
+                497
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46078.png?modified=1530208749",
+            "thumbnail_size": [
+                213,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46078.png?modified=1530208749"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.92116,
+        "count": 4,
+        "average": 3.5,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/imestatus/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/161938",
+    "slug": "imestatus",
+    "status": "public",
+    "summary": {
+        "en-US": "Show IME status by input/textarea/textbox background color.",
+        "ja": "テキスト入力欄の背景色で IME の状態を表示します"
+    },
+    "support_email": {
+        "en-US": "Shadow912kage@gmail.com",
+        "ja": "Shadow912kage@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://mozilla-ext-ja.way-nifty.com/blog/imestatus/index.html",
+        "ja": "http://mozilla-ext-ja.way-nifty.com/blog/imestatus/index.html"
+    },
+    "tags": [
+        "im",
+        "ime",
+        "input method",
+        "input method editor"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/imestatus/",
+    "weekly_downloads": 25
+}

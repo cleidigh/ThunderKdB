@@ -1,0 +1,188 @@
+{
+    "id": 344925,
+    "authors": [
+        {
+            "id": 102741,
+            "name": "mehtuus",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mehtuus/",
+            "username": "mehtuus",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 171,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "android": [
+            "experimental"
+        ],
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1480287,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "2.0"
+            },
+            "seamonkey": {
+                "max": "2.38",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "41.0",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-as-plain-text/versions/1480287",
+        "files": [
+            {
+                "id": 223720,
+                "created": "2013-08-02T04:14:51Z",
+                "hash": "sha256:67e2038ca7ba1c211ae28955feafd9f79ad16393e4a6ad68204816a803fff2a0",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 27934,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/223720/copy_as_plain_text-1.0.9-tb+fn+fx+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "2013-08-02\n- Access keys have been updated\n- Plain text as default mode now works\n- Got rid of a bunch of bugs\n- AutoCopy support has been switched to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a4808be919211e00a9974896b1e60b4345b5a9722ab8c54cafe6beaa0f861e77/http%3A//forum.infas.net/viewforum.php%3Ff=8\">Auto Copy Plus</a>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-as-plain-text/versions/1.0.9.1-signed",
+        "version": "1.0.9.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>NOTE:</b> An unsigned updated version with <i>new features</i> is available on the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f43a73948ea78f1002c96a946166364cfb1726c85a93049dcb830b665488b439/http%3A//forum.infas.net/viewtopic.php%3Ff=8&amp;t=2\" title=\"We want your feedback!\">forum</a>. There are <b><i>significant</i></b> updates and fixes with this version. They will be included in the next version that shows up here, but you can start using them right away by downloading from the forum.\n\nHave you ever <i>copy &amp; pasted</i> something into your <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird\">email</a> or <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e1bbcd48d5efe3e74cf37ed173cceea3493bd93cc3ff8d00c151104e26f9b818/http%3A//www.libreoffice.org\">office</a> program and been annoyed that the text formatting (bold, font size, table cells, etc) came with it? Don't you wish you could just copy the text itself, without having to copy it, paste it into a plain text editor, then copy it again? This extension gives you an option to copy text without the formatting. And unlike the keyboard shortcut (Ctrl+Shift+V), you can customize how it will copy <i>before</i> you paste.\n\n<ul><b>Options Include:</b>\n    <li>Trim space from both ends of selected text\n    </li><li>Remove duplicate spaces\n    </li><li>Remove blank lines\n    </li><li><b>NEW</b> Remove carriage returns (IE: line brakes) - <i>(unsigned update available on the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f43a73948ea78f1002c96a946166364cfb1726c85a93049dcb830b665488b439/http%3A//forum.infas.net/viewtopic.php%3Ff=8&amp;t=2\" title=\"We want your feedback!\">forum</a>)</i>\n    </li><li><b>NEW</b> Remove ALL spaces &amp; lines - <i>(unsigned update available on the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f43a73948ea78f1002c96a946166364cfb1726c85a93049dcb830b665488b439/http%3A//forum.infas.net/viewtopic.php%3Ff=8&amp;t=2\" title=\"We want your feedback!\">forum</a>)</i>\n    </li><li><b>NEW</b> Copy numbers ONLY - <i>(unsigned update available on the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f43a73948ea78f1002c96a946166364cfb1726c85a93049dcb830b665488b439/http%3A//forum.infas.net/viewtopic.php%3Ff=8&amp;t=2\" title=\"We want your feedback!\">forum</a>)</i>\n    </li><li>Use plain text as default copy method\n<i>(<b>FIXED</b> in v1.00.75 - unsigned update available on the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f43a73948ea78f1002c96a946166364cfb1726c85a93049dcb830b665488b439/http%3A//forum.infas.net/viewtopic.php%3Ff=8&amp;t=2\" title=\"We want your feedback!\">forum</a>)</i></li></ul>\n<ul><b>Features:</b>\n    <li>Works with numerous applications such as:\nFirefox, Thunderbird, SeaMonkey, Nightingale, etc.\n    </li><li>Works with beta and alpha versions; such as:\nAurora <i>(Firefox, SeaMonkey)</i> and Earlybird <i>(Thunderbird)</i>.\n    </li><li>Works with Auto Copy Plus\n    </li><li>Uses key-combo <b>Ctrl+Shift+C</b>. Alternatively, you can use the right-click-menu and choose \"Copy As Plain Text\".\n    </li><li>Multiplatform; runs on operating systems such as BSD, Linux, Mac, Solaris, and Windows.\n    </li><li>Multilingual; includes locale files for:\n<b>cs</b>*,<b>de-DE</b>*, <b>en-US</b>, <b>es</b>, <b>fr-FR</b>, <b>it-IT</b>, <b>ja-JP</b>*, <b>nl</b>*, <b>pl</b>*, <b>pt</b>*, <b>ru</b>*. </li></ul><b>NOTE:</b> Due to recent updates, aside from en-US, <i>ALL TRANSLATIONS</i> need to be updated. Both the updated addon &amp; the translation template are available on the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f43a73948ea78f1002c96a946166364cfb1726c85a93049dcb830b665488b439/http%3A//forum.infas.net/viewtopic.php%3Ff=8&amp;t=2\" title=\"We want your feedback!\">forum</a>.\n\n<ul><b>Supported Programs:</b>\n    <li><b>Gold:</b> <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/34283e06b717c50351fde60a95dc197c9847d28588151a440b1b6a23a9bd7216/http%3A//www.mozilla.org/firefox\">Firefox</a>, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ccce8f5db79caee89f9c723c9e234ea4265bd8055610b239e653501180c45514/http%3A//www.mozilla.org/thunderbird\">Thunderbird</a>.\n    </li><li><b>Beta:</b> <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/23a15be166e96030776bb7a61c2cd389cd53ceeb14b3007fd6be80dfea365dca/http%3A//www.seamonkey-project.org\">SeaMonkey</a>, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b29d26e65ede9e3eb313e3c63c4b17603b66848123d02a89e511d59c811716e6/http%3A//getnightingale.com\" title=\"Available for Linux and Windows\">Nightingale</a>.\n    </li><li><b>Alpha:</b> </li></ul>\n\n<b>Copy As Plain Text</b> has it's own <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f43a73948ea78f1002c96a946166364cfb1726c85a93049dcb830b665488b439/http%3A//forum.infas.net/viewtopic.php%3Ff=8&amp;t=2\" title=\"We want your feedback!\">dedicated forum</a> where you can always find <b>the most current version</b>, beta versions, and also a special <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8c835bf0d06bc39d5e1bd7c03f4cef52bbb5dcaf2c541bdad4b223021e0ab92f/http%3A//forum.infas.net/viewtopic.php%3Ff=8&amp;t=4\" title=\"EVE Explained\">EVE</a> version. The forum has been updated to allow guest posting (moderated). Now you can leave feedback for this add-on without having to first bother with creating an account. Much <i>faster</i>!\n\n\n<i>* These language files need to be verified for proper grammar by a natural speaker. Help out or submit a new translation and get immortalized as a contributor.</i>"
+    },
+    "developer_comments": {
+        "en-US": ".\n<b>Known Issues:</b>\n● Please see our official <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f43a73948ea78f1002c96a946166364cfb1726c85a93049dcb830b665488b439/http%3A//forum.infas.net/viewtopic.php%3Ff=8&amp;t=2\">forum</a> for any known issues."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-as-plain-text/edit",
+    "guid": "{1a5dabbd-0e74-41da-b532-a364bb552cab}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://forum.infas.net/viewtopic.php?f=8&t=2"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/344/344925-64.png?modified=1444291312",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/344/344925-32.png?modified=1444291312",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/344/344925-64.png?modified=1444291312"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-08-16T16:31:08Z",
+    "name": {
+        "en-US": "Copy As Plain Text"
+    },
+    "previews": [
+        {
+            "id": 110161,
+            "caption": {
+                "en-US": "v1.0.9: Right-click menu item."
+            },
+            "image_size": [
+                272,
+                290
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/110/110161.png?modified=1530208756",
+            "thumbnail_size": [
+                188,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/110/110161.png?modified=1530208756"
+        },
+        {
+            "id": 110126,
+            "caption": {
+                "en-US": "v1.0.9: The options window showing the default settings. (Win8)"
+            },
+            "image_size": [
+                235,
+                267
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/110/110126.png?modified=1530208757",
+            "thumbnail_size": [
+                176,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/110/110126.png?modified=1530208757"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.15324,
+        "count": 58,
+        "average": 4.2241,
+        "text_count": 58
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-as-plain-text/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/344925",
+    "slug": "copy-as-plain-text",
+    "status": "public",
+    "summary": {
+        "en-US": "Removes formatting from copied text."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://forum.infas.net/viewtopic.php?f=8&t=2"
+    },
+    "tags": [
+        "copy",
+        "copy as",
+        "copy plain text",
+        "paste",
+        "plain text",
+        "text",
+        "text format"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-as-plain-text/",
+    "weekly_downloads": 63
+}

@@ -1,0 +1,175 @@
+{
+    "id": 70,
+    "authors": [
+        {
+            "id": 52,
+            "name": "Jeroen Peters",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jeroen-peters/",
+            "username": "jeroen-peters",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2053,
+    "categories": {
+        "thunderbird": [
+            "contacts"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 36048,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0a1",
+                "min": "1.5b"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/contacts-sidebar/versions/36048",
+        "files": [
+            {
+                "id": 19337,
+                "created": "2007-09-16T14:43:47Z",
+                "hash": "sha256:96bbd58c5e4c9c5568f97db11c3e661f1d2f41cc24c62adf867352655310b5a1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 95232,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/19337/contacts_sidebar-0.7.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "New features:\n    * For each search result, the number of matches is shown in the status bar. \n\nFixes:\n    * Fixed an issue which broke wildcard searches (*). Because of this auto populate for LDAP address book no longer worked. Happend whenever the search condition was not \"is\".\n    * Fixed an encoding issue in nl-NL locale. Because of this issue the sidebar did not load in the Dutch locale an and xml parse error message was shown instead.\n    * Fixed issue in restoring the persistent state of the collapsable address book switcher and search field.\n    * Compatibility fix for xSidebarTIG contributed by Philip Chee (author of xSidebarTIG)\n    * Fixed an incompatibility with the extension ConQuery and Minimize to Tray Enhancer. Starting a new message from the Contacts Sidebar did not open a new compose window. The Error Console showed the error: \"window.parent.GetSelectedFolderURI is not a function\" "
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/contacts-sidebar/versions/0.7.1",
+        "version": "0.7.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Contacts Sidebar supports many locales: en-US, bg-BG, cs-CZ, de-DE, el-GR, es-ES, fr-FR, hu-HU, it-IT, ja-JP, pl-PL, pt-BR, pt-PT, ru-RU, zh-TW. \nMany thanks to all localizers.\n\nContacts Sidebar displays all available address books in a sidebar in the 3-pane-window of Thunderbird. It makes all your contacts easy accessible from the main window to quickly write messages, or to edit the properties of a contact card.\n\nAs of version 0.6, the Contacts Sidebar also replaces the sidebar in the compose window. The sidebar in Thunderbirds main window and the sidebar in the compose window have the same context menu and share the same features.\n\nThere a quite some features in the Contacts Sidebar that you can change to match personal preference. As for all extension, the Contacts Sidebar options can be found in the \"Tools | Add-ons\" list. In this list either double click on the Contacts Sidebar entry, or select the sidebar entry and choose \"Options\" in the context menu. \n\nFeature highlights\n\n* Collapsable address book selection and search field to save space for contacts and accounts.\n* Quick search contacts. Search your contacts with different search criteria modes and multiple search terms\n* Write message to selected contacts. Add the recipients to the To, Cc or Bcc field of the new message.\n* Forward Contact, to send contact info as a vCard attachment.\n* Drag &amp; Drop files and messages to a contact to easily add attachments to a new message to this contact.\n* Automatically populate LDAP address books with a user-defined search query (see Contacts Sidebar Options).\n* Toolbar button, F4 key and a menu item \"View | Layout | Contacts Sidebar\" to toggle the display of Contacts Sidebar.\n"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/contacts-sidebar/edit",
+    "guid": "{4dce973c-25a5-4657-8e37-6c2a85c24a7e}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "el": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "fr": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "de": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "nl": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "pt-PT": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "zh-TW": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "en-US": "http://extensions.sanjer.nl/?page=tb_cs",
+        "it": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "da": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "pt-BR": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "pl": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "cs": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "ja": "http://jpeters.no-ip.com/extensions/?page=tb_cs",
+        "es": "http://jpeters.no-ip.com/extensions/?page=tb_cs"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/70-64.png?modified=1353443838",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/70-32.png?modified=1353443838",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/70-64.png?modified=1353443838"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2007-09-16T23:42:11Z",
+    "name": {
+        "el": "Contacts Sidebar",
+        "fr": "Contacts Sidebar",
+        "de": "Contacts Sidebar",
+        "nl": "Contacts Sidebar",
+        "pt-PT": "Contacts Sidebar",
+        "zh-TW": "Contacts Sidebar",
+        "en-US": "Contacts Sidebar",
+        "it": "Contacts Sidebar",
+        "da": "Contacts Sidebar",
+        "pt-BR": "Contacts Sidebar",
+        "pl": "Contacts Sidebar",
+        "cs": "Contacts Sidebar",
+        "ja": "Contacts Sidebar",
+        "es": "Contacts Sidebar"
+    },
+    "previews": [
+        {
+            "id": 1822,
+            "caption": {
+                "en-US": "Contacts Sidebar preview"
+            },
+            "image_size": [
+                200,
+                150
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/1/1822.png?modified=1530207934",
+            "thumbnail_size": [
+                200,
+                150
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/1/1822.png?modified=1530207934"
+        },
+        {
+            "id": 1823,
+            "caption": null,
+            "image_size": [
+                621,
+                468
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/1/1823.png?modified=1530207935",
+            "thumbnail_size": [
+                265,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/1/1823.png?modified=1530207935"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.87875,
+        "count": 243,
+        "average": 3.8848,
+        "text_count": 243
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/contacts-sidebar/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/70",
+    "slug": "contacts-sidebar",
+    "status": "public",
+    "summary": {
+        "el": "Παρουσιάζει τα βιβλία διευθύνσεων σε μία πλαϊνή μπάρα.",
+        "fr": "Cette extension affiche les contacts dans un panneau latéral qui peut être activé via la touche F4 ou un bouton de la barre d'outils.",
+        "de": "Integriert eine Kontakte-Sidebar im Hauptfenster des Thunderbird.",
+        "nl": "Toont het adresboek in een zijbalk in het hoofdscherm van Thunderbird en kan eenvoudig aan- en uitgezet worden met de F4 functietoets.",
+        "pt-PT": "Exibe o livro de endereços numa janela lateral de 3 paineis.",
+        "zh-TW": "在側邊欄顯示通訊錄。",
+        "en-US": "Displays the address books in a sidebar in Thunderbirds 3-pane-window and can be toggled with the F4 key or a toolbar button.\n\nVisit my <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a4b4464fff8721b2ada3ee302b021888e0316c45f7246fd5c89441b56bebd295/http%3A//extensions.sanjer.nl/\">Contacts Sidebar site</a> for recent versions and news.",
+        "it": "Visualizza la rubrica nella barra laterale sotto l'elenco delle cartelle degli account.",
+        "da": "Viser adressebogen i et sidepanel i tre-felts-vinduet og kan blive slået til/fra med F4 tasten eller en knap på værktøjslinjen.",
+        "pt-BR": "Exibe o catálogo de endereços numa barra lateral no formato de 3 painéis.",
+        "pl": "Wyświetla książkę adresową w panelu bocznym.",
+        "cs": "Zobrazí adresář v postranní liště v třípanelovém pohledu.",
+        "ja": "アドレス帳を 3 ペインウインドウのサイドバーに表示します。F4 キーまたは ツールバーアイコンで表示を切り替えられます。",
+        "es": "Muestra la libreta de direcciones en una barra lateral en un tercer panel de la ventana."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "contacts",
+        "display",
+        "sidebar",
+        "боковая панель",
+        "контакты"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/contacts-sidebar/",
+    "weekly_downloads": 77
+}

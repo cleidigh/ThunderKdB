@@ -1,0 +1,113 @@
+{
+    "id": 656756,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "firefox": [
+            "appearance",
+            "privacy-security"
+        ],
+        "thunderbird": [
+            "appearance",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2018259,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "45.0"
+            },
+            "thunderbird": {
+                "max": "53.0a1",
+                "min": "45.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/disable-about-something/versions/2018259",
+        "files": [
+            {
+                "id": 575917,
+                "created": "2017-01-23T04:36:16Z",
+                "hash": "sha256:389434776e4d668b8b54dc462a457c3ddf031864dc6d9bb098d2eb22edb6ccc9",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 23371,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/575917/disable_about_something-1.1-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Some syntax fixes around deprecated features of JavaScript, to support Firefox 53.0a1.",
+            "ja": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-about-something/versions/1.1",
+        "version": "1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This makes your Firefox and Thunderbird more secure from accidental operations on dangerous \"about:*\" pages.\n\nTo block loading of an \"about:*\" page, you just have to define a new boolean preference \"extensions.disable-about-something@clear-code.com.about.*\" with the value \"false\". For example if you want to block loading of \"about:permissions\", just set \"extensions.disable-about-something@clear-code.com.about.permissions\" to \"false\". Otherwise - with no value or \"true\", the page is never blocked.\n\nThere are similar addons for specific \"about:*\" pages. They disables related menu items and others for the page, so they are recommended for general cases.\n\n * \"about:addons\" : Disable Addons <a href=\"https://addons.mozilla.org/addon/disable-addons/\" rel=\"nofollow\">https://addons.mozilla.org/addon/disable-addons/</a>\n * \"about:accounts\" and \"about:sync-*\" : Disable Sync <a href=\"https://addons.mozilla.org/addon/disable-sync/\" rel=\"nofollow\">https://addons.mozilla.org/addon/disable-sync/</a>\n * \"about:config\" : Disable about:config <a href=\"https://addons.mozilla.org/addon/disable-aboutconfig/\" rel=\"nofollow\">https://addons.mozilla.org/addon/disable-aboutconfig/</a>\n\nThis addon is created mainly for enterprise users."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/disable-about-something/edit",
+    "guid": "disable-about-something@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-01-24T07:27:45Z",
+    "name": {
+        "en-US": "Disable About Something"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.55518,
+        "count": 2,
+        "average": 5,
+        "text_count": 2
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-about-something/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/656756",
+    "slug": "disable-about-something",
+    "status": "public",
+    "summary": {
+        "en-US": "Provides ability to disable \"about:*\" pages by the configuration."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-about-something/",
+    "weekly_downloads": 22
+}

@@ -1,0 +1,245 @@
+{
+    "id": 191033,
+    "authors": [
+        {
+            "id": 1224279,
+            "name": "Giovanni Coriasco",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/giovanni-coriasco/",
+            "username": "giovanni-coriasco",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1224/1224279.png?modified=1379921154"
+        }
+    ],
+    "average_daily_users": 438,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1269782,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.1b2",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "39.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/new-mail-attention/versions/1269782",
+        "files": [
+            {
+                "id": 131210,
+                "created": "2011-09-07T02:33:21Z",
+                "hash": "sha256:fc7a3098ee2159a77d87956ed13bf8db71b3995f3d906063862cf047f2d1f6c1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 15360,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/131210/new_mail_attention-1.2.1-tb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "- This version fixes a bug in Tools menu visualization.",
+            "it": "- Questa versione corregge un baco nella visualizzazione del menu Strumenti"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-mail-attention/versions/1.2.1.1-let-fixed",
+        "version": "1.2.1.1-let-fixed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This extension calls attention to main window on new message arrival, usually flashing its icon in the application bar: the real behavior varies based on OS and window manager.\n\nFor this addon to have effect with <i>SeaMonkey</i>, the \"<i>Mail &amp; Newsgroups</i>\" window must be opened.\n\nThis addon adds a Message Filter Action able to get main window attention only for specific Message Filters defined by the user (a big thank to <strong>Agata Tringale</strong> for this idea): the filter action name is 'Get Attention' [available only in Thunderbird 3.* and SeaMonkey].\nIn order to use this <strong>only</strong> as a Message FIlter, the menu entry 'Tools --&gt; New Mail Attention --&gt; Enable' must be <strong>unchecked</strong>.\n\n<strong>Note</strong>: If you need to be notified of new messages in other folders than Inbox and you do not wish to create a custom message filter, you must set the \"CheckNew\" flag on that folders (RightClick on folder-&gt; Properties -&gt; \"When getting new messages for this account, always check this folder\").",
+        "it": "Questa estensione richiama l'attenzione sulla finestra principale di Thunderbird (o Seamonkey) nel momento in cui arriva un nuovo messaggio. Solitamente ne viene fatta lampeggiare l'icona nella barra delle applicazioni, ma il reale comportamento varia a seconda del sistema operativo e del <i>Window Manager</i> (Gnome, KDE, Windows XP, 7even, ...).\n\nAffinché questa estensione funzioni in <i>SeaMoneky</i>, la finestra \"<i>Mail &amp; Newsgroups</i>\" deve essere aperta.\n\nQuesta estensione aggiunge un'azione a quelle dei filtri messaggi, in grado di far richiamare l'attenzione solo da specifici filtri definiti dall'utente (un grande ringraziamento va ad <strong>Agata Tringale</strong> per questa idea): l'azione del filtro è 'Richiama l'attenzione' [disponibile solo in Thunderbird 3.* e SeaMonkey].\nPer utilizzare questa estensione <strong>solo</strong> nei filtri dei messaggi, deve essere <strong>disabilitata</strong> l'opzione di menu 'Strumenti --&gt; New Mail Attention --&gt; Abilita'.\n\n<strong>Nota:</strong> Per ricevere la notifica di nuovi messaggi in cartelle diverse dalla \"Posta in arrivo\" nel caso non si voglia creare un filtro messaggi <i>ad hoc</i>, occorre impostare il flag \"Controlla questa cartella per nuovi messaggi\" su tale cartella (Pulsante destro del mouse sulla cartella --&gt; Proprietà --&gt; \"Durante lo scaricamento dei nuovi messaggi per questo account controllare sempre questa cartella\")."
+    },
+    "developer_comments": {
+        "en-US": "The addon icon comes from the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a7813d2a8c16ae3ce5fde43c81d64b678eb786bad0fad30b0936b46ee59317cb/http%3A//tango.freedesktop.org/Tango_Icon_Library\">Tango Icon Library</a>.\n\nSince <strong>version 1.1.9</strong>, I tried to solve some compatibility issues with <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/2110/\">MinimizeToTray</a> and <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/2831/\">MinimizeToTray Plus</a> addons. This is working by restoring TB from the tray and then minimizing it: this may result in being a little annoying under Windows and thus I added an option in the Tools menu for disabling this behavior (<strong>sorry for that</strong>).",
+        "it": "L'icona di questa estensione proviene dalla <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a7813d2a8c16ae3ce5fde43c81d64b678eb786bad0fad30b0936b46ee59317cb/http%3A//tango.freedesktop.org/Tango_Icon_Library\">Tango Icon Library</a>.\n\nA partire dalla <strong>1.1.9 versione</strong>, ho provato a risolvere i problemi di compatibilità con le estensioni <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/2110/\">MinimizeToTray</a> e <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/2831/\">MinimizeToTray Plus</a>. Il meccanismo opera ripristinando Thunderbird dalla <i>system tray</i> e poi riducendolo a icona: questo comportamento può apparire un po' fastidioso nei sistemi Windows e così ho inserito un opzione nel menu strumenti in grado di disabilitare questo comportamento (<strong>mi scuso per questa soluzione non particolarmente <i>elegante</i></strong>)."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/new-mail-attention/edit",
+    "guid": "mail-attention@giovanni.coriasco",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/191/191033-64.png?modified=1351591832",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/191/191033-32.png?modified=1351591832",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/191/191033-64.png?modified=1351591832"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2011-09-15T09:48:50Z",
+    "name": {
+        "en-US": "New Mail Attention"
+    },
+    "previews": [
+        {
+            "id": 47665,
+            "caption": {
+                "en-US": "Example of alert in Gnome (avant-window-navigator)",
+                "it": "Esempio di notifica in Gnome (avant-window-navigator)"
+            },
+            "image_size": [
+                560,
+                300
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47665.png?modified=1530208818",
+            "thumbnail_size": [
+                320,
+                171
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47665.png?modified=1530208818"
+        },
+        {
+            "id": 47663,
+            "caption": {
+                "en-US": "Preference window",
+                "it": "Finestra delle preferenze"
+            },
+            "image_size": [
+                387,
+                136
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47663.png?modified=1530208818",
+            "thumbnail_size": [
+                320,
+                112
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47663.png?modified=1530208818"
+        },
+        {
+            "id": 47664,
+            "caption": {
+                "en-US": "Example of alert in Gnome (gnome-panel)",
+                "it": "Esempio di notifica in Gnome (gnome-panel)"
+            },
+            "image_size": [
+                560,
+                300
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47664.png?modified=1530208819",
+            "thumbnail_size": [
+                320,
+                171
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47664.png?modified=1530208819"
+        },
+        {
+            "id": 47668,
+            "caption": {
+                "en-US": "Example of alert in Windows 7",
+                "it": "Esempio di notifica in Windows 7"
+            },
+            "image_size": [
+                358,
+                229
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47668.png?modified=1530208820",
+            "thumbnail_size": [
+                313,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47668.png?modified=1530208820"
+        },
+        {
+            "id": 48525,
+            "caption": {
+                "en-US": "Entry in \"Tools\" menu",
+                "it": "Voce nel menu \"Strumenti\""
+            },
+            "image_size": [
+                474,
+                254
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/48/48525.png?modified=1530208820",
+            "thumbnail_size": [
+                320,
+                171
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/48/48525.png?modified=1530208820"
+        },
+        {
+            "id": 49142,
+            "caption": {
+                "en-US": "Message Filter",
+                "it": "Filtro messaggi"
+            },
+            "image_size": [
+                694,
+                453
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/49/49142.png?modified=1530208820",
+            "thumbnail_size": [
+                306,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/49/49142.png?modified=1530208820"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.95523,
+        "count": 48,
+        "average": 3.9792,
+        "text_count": 48
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-mail-attention/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/191033",
+    "slug": "new-mail-attention",
+    "status": "public",
+    "summary": {
+        "en-US": "This addon calls attention to main window on new message arrival.",
+        "it": "Questa estensione riporta l'attenzione sulla finestra principale dell'applicazione all'arrivo di un nuovo messaggio."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "alert",
+        "mail",
+        "message",
+        "new",
+        "new mail",
+        "new message",
+        "notification"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-mail-attention/",
+    "weekly_downloads": 43
+}

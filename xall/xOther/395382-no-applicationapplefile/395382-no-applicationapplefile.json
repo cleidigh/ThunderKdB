@@ -1,0 +1,153 @@
+{
+    "id": 395382,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 33,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1375078,
+        "compatibility": {
+            "thunderbird": {
+                "max": "16.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/no-applicationapplefile/versions/1375078",
+        "files": [
+            {
+                "id": 167264,
+                "created": "2012-09-11T00:04:07Z",
+                "hash": "sha256:9c00867b172a7a21644eb469006d08a59f93b5e91d255e0689b2b5a44a50ffa2",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 16384,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/167264/no_applicationapplefile-0.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": null,
+        "reviewed": "2012-09-20T12:15:23Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/no-applicationapplefile/versions/0.1",
+        "version": "0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on prevents mails which Thunderbird sent from being rejected by specific mail servers such as Microsoft Exchange Server 2007.\n\n<b>Detailed information</b>\n\nThe cause of this problem is described as follows.\n\n * Some mail clients in Mac OS may attach both the actual file (data fork, e.g., application/pdf) and the meta data of the file (resource fork: application/applefile) in file attaching process for a file.\n * Exchange Server 2007 rejects a mail if the mail contains an attached file whose MIME Type is application/applefile.\n * If an attached file with the MIME Type unknown to Thunderbird is opened, Thunderbird records the relationship of the extension and the MIME Type of the file. Then if a file with the recorded extension is attached, Thunderbird uses the recorded MIME Type in priority to the MIME Type provided by OS.\n\nAs a result, Thunderbird may use the false MIME Type (application/applefile) instead of the actual MIME Type (application/pdf) in a mail, making the mail to be rejected by a recipient who uses Exchange Server.\n\nA widely known workaround for the problem is that remove mimeTypes.rdf in a profile folder of Thunderbird. This workaround resets the recorded MIME types and make Thunderbird use the MIME Type provided by OS.\n\nHowever, if you receive a mail with an attached file whose MIME Type is \"application/applefile\", Thunderbird records the false MIME Type into the mimeTypes.rdf and the problem recurs.\n\n<b>Add-on details</b>\n\nThis add-on (\"No application/applefile\") checks for the content of mimeTypes.rdf at start-up. If mimeTypes.rdf contains a problematic MIME Type \"application/applefile\", the add-on remove the MIME Type.\n\nIn addition, if the MIME Type of an attached mail is \"application/applefile\", the add-on guesses the correct MIME Type of the file from the extension of the file name, and make Thunderbird use the guessed MIME Type.\n\nBy doing so, this add-on prevents the problem.",
+        "ja": "Thunderbirdから送信したメールがMicrosoft Exchange Server 2007等のメールサーバによって拒絶される問題の発生を抑止します。\n\n<b>問題の詳細な情報</b>\n\nこの問題は以下の原因により発生します。\n\n * Mac OS上のメールクライアントでメールにファイルを1つ添付すると、ファイルの実体（データフォーク：application/pdfなど）とファイルのメタ情報（リソースフォーク：application/applefile）の両方が添付される場合があります。\n * Exchange Server 2007は、MIME Typeが「application/applefile」である添付ファイルを含むメールを拒絶する仕様になっています。\n * Thunderbirdは、（Thunderbirdにとって）未知のMIME Typeが設定された添付ファイル付きのメールを受信し、添付ファイルをダブルクリックするなどの方法で開いた場合、そのファイルの拡張子とMIME Typeを関連付けて記憶します。また、次に同じ拡張子のファイルを添付して送信しようとした場合には、Thunderbirdは、OSが提供する情報よりも、この時記憶したMIME Typeを優先して使用します。\n\nこれらの原因によって、Thunderbirdでメールにファイルを添付するとMIME Typeが「application/pdf」などの本来のMIME Typeではなく「application/applefile」になってしまい、Exchange Serverを使用している相手に送ったメールが必ず拒絶されるようになるという事態が発生し得ます。\n\nこの問題の回避方法として、Thunderbirdのプロファイルフォルダにあるファイル「mimeTypes.rdf」を削除するという方法が広く知られています。これは、Thunderbirdが記憶してしまった「application/applefile」というMIME Typeの情報を強制的に消去し、OSが提供する情報に基づいて添付ファイルのMIME Typeを設定するようにするというものです。\n\nしかしながら、上記のThunderbirdの仕様により、メールをよくやりとりする相手の中に、添付ファイルのMIME Typeに「application/applefile」が設定されたメールを送信する人が1人でもいると、mimeTypes.rdfに誤った情報が再び保存されてしまうため、すぐに問題が再発してしまうことになります。\n\n<b>このアドオンの詳細</b>\n\n本アドオン「No application/applefile」は、Thunderbird起動時にmimeTypes.rdfの内容を確認して、MIME Type「application/applefile」の情報が存在する場合はそれを自動的に消去します。\n\nまた、受信したメールの添付ファイルのMIME Typeが「application/applefile」であった場合には、ファイル名（拡張子）から正しいMIME Typeを推測し、添付ファイルのMIME Typeとしてその正しいMIME Typeが設定されていたものとしてThunderbirdに認識させます。\n\nこれらの処理により、本アドオンは上記の問題の発生を抑制します。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/no-applicationapplefile/edit",
+    "guid": "noapplefile@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/noapplefile",
+        "ja": "https://github.com/clear-code/noapplefile"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-09-20T12:15:26Z",
+    "name": {
+        "en-US": "No application/applefile",
+        "ja": "MIME Type「application/applefile」による問題の回避"
+    },
+    "previews": [
+        {
+            "id": 77730,
+            "caption": {
+                "en-US": "Accidentally stored false MIME Type \"application/applefile\" is corrected after this add-on's installation.",
+                "ja": "誤って保存された \"application/applefile\" MIME Type が、アドオンのインストール後は正しい MIME Type となります。"
+            },
+            "image_size": [
+                364,
+                425
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/77/77730.png?modified=1530209048",
+            "thumbnail_size": [
+                171,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/77/77730.png?modified=1530209048"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.79706,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/no-applicationapplefile/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/395382",
+    "slug": "no-applicationapplefile",
+    "status": "public",
+    "summary": {
+        "en-US": "Prevents storing of the MIME Type \"application/applefile\".",
+        "ja": "MIME Typeとして \"application/applefile\" が保存されないようにします。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/noapplefile/issues",
+        "ja": "https://github.com/clear-code/noapplefile/issues"
+    },
+    "tags": [
+        "applefile",
+        "mac os",
+        "mimetype"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/no-applicationapplefile/",
+    "weekly_downloads": 22
+}

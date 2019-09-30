@@ -1,0 +1,197 @@
+{
+    "id": 394970,
+    "authors": [
+        {
+            "id": 5389259,
+            "name": "Jonathan Kamens",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jikamens/",
+            "username": "jikamens",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1567718031"
+        }
+    ],
+    "average_daily_users": 14,
+    "categories": {
+        "seamonkey": [
+            "interface-customizations"
+        ],
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1378874,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.15a1",
+                "min": "2.9"
+            },
+            "thunderbird": {
+                "max": "19.*",
+                "min": "8.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/fromto-column/versions/1378874",
+        "files": [
+            {
+                "id": 168682,
+                "created": "2012-09-21T07:49:24Z",
+                "hash": "sha256:7519b883620f55f785dd6761c19cbb92560ad49aace9cc0e3f808396faac36c0",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 38565,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/168682/fromto_column-1.2-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/fromto-column/versions/1.2",
+        "version": "1.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Adds a custom header called \"From/To\" in the message list which displays the senders of messages sent to you, or the recipients of messages sent from you.\n\n It turns out that <strong>THERE IS ALREADY AN ADD-ON THAT DOES THIS</strong>, <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/show-inout/\" rel=\"nofollow\">Show InOut</a>. That add-on is far more functional than this one, so I'm going to stop maintaining it and defer to Show InOut.\n\nIf you specifically like the behavior of From/To Column with regards to putting a \"to\" prefix in front of the recipient for outgoing messages, you can achieve this same functionality in Show InOut by editing these preferences (not available through the preferences GUI, but available through the advanced configuration editor):\n\n<ul><li>Set \"extensions.showInOut.PrefixType\" to \"text\".</li><li>Set \"extensions.showInOut.InTextPrefix\" and/or \"extensions.showInOut.OutTextPrefix\" to the prefix you want for inbound and/or outbound messages.</li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/fromto-column/edit",
+    "guid": "fromto@kamens.us",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-09-27T14:31:57Z",
+    "name": {
+        "el": "Από/Προς Στήλη",
+        "vi": "Từ/Tới Column",
+        "ca": "Remitent/A Columna",
+        "it": "Colonna Mittente/A",
+        "cs": "Od/Komu Sloupec",
+        "ar": "مِن/إلى عمود",
+        "eu": "Nork/Nori Zutabea",
+        "sv-SE": "Från/Till Kolumnen",
+        "id": "Dari/Kepada Kolom",
+        "es": "Remitente/A Columna",
+        "ru": "От/Кому Столбец",
+        "nl": "Van/Aan Kolom",
+        "en-US": "From/To Column",
+        "ro": "De la/Către Coloană",
+        "pl": "Nadawca/Adresat Kolumna",
+        "fr": "Colonne De/Pour",
+        "bg": "От/До Колона",
+        "de": "Von/An Spalte",
+        "da": "Fra/Til Kolonne",
+        "pt-BR": "De/Para Coluna",
+        "fi": "Lähettäjä/Vastaanottaja Sarake",
+        "hu": "Feladó/Címzett Oszlop",
+        "ja": "差出人/宛先 カラム",
+        "he": "עמודת מאת/אל",
+        "pt-PT": "De/Para Coluna",
+        "zh-TW": "從/到 欄",
+        "sq": "Prej/Për Shtyllë",
+        "ko": "보낸 사람/받는 사람 열",
+        "ga-IE": "Ó/Chuig Colún",
+        "sk": "Odosielateľ/Komu Stĺpec",
+        "zh-CN": "发件人/收件人 列",
+        "uk": "Відправник/Кому Column",
+        "sl": "Od/Za Stolpec"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.21104,
+        "count": 2,
+        "average": 4.5,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/fromto-column/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/394970",
+    "slug": "fromto-column",
+    "status": "public",
+    "summary": {
+        "el": "Προσθήκη “Από/Προς” στήλη που δείχνει τον παραλήπτη, αν είναι ο αποστολέας.",
+        "vi": "Add a “From/To” column which shows the recipient if you are the sender.",
+        "ca": "Afegir una “Remitent/A” columna que mostra el destinatari si vostè és el remitent.",
+        "it": "Aggiungere una colonna “Mittente/A”, che indica il destinatario se si è il mittente.",
+        "cs": "Přidat “Od/Komu” sloupec, který ukazuje příjemce, pokud jste odesílatel.",
+        "ar": "إضافة \"من / إلى\" عمود مما يدل على المتلقي إذا كنت المرسل.",
+        "eu": "Gehitu “Nork/Nori” hartzaileak erakusten duen zutabe bat dira, bidaltzailea izanez gero.",
+        "sv-SE": "Lägg till en “Från/Till”-kolumnen som visar mottagaren om du är avsändaren.",
+        "id": "Tambahkan “Dari/Kepada” kolom yang menunjukkan penerima jika Anda pengirim.",
+        "es": "Añadir una “Remitente/A” columna que muestra el destinatario si usted es el remitente.",
+        "ru": "Add a “From/To” column which shows the recipient if you are the sender.",
+        "nl": "Voeg een “Van/Aan” kolom die de ontvanger geeft aan of u de afzender.",
+        "en-US": "Add a “From/To” column which shows the recipient if you are the sender.",
+        "ro": "Adauga un “De la/Către” coloana care prezinta destinatarul dacă sunteți expeditorul.",
+        "pl": "Dodaj “Nadawca/Adresat” kolumny, które pokazuje odbiorcy jeśli nadawca.",
+        "fr": "Ajouter un colonne “De/Pour” qui affiche le destinataire si vous êtes l'expéditeur.",
+        "bg": "Добави “От/До” колона, която показва на получателя, ако сте на подателя.",
+        "de": "Fügen Sie einen “Von/An”-Spalte, die den Empfänger zeigt an, ob Sie den Absender sind.",
+        "da": "Tilføj en “Fra/Til” kolonnen, der viser modtageren, hvis du er afsenderen.",
+        "pt-BR": "Adicionar um “De/Para” coluna que mostra o destinatário se você é o remetente.",
+        "fi": "Lisää “Lähettäjä/Vastaanottaja” sarake, joka osoittaa vastaanottajalle, jos olet lähettäjä.",
+        "hu": "Add a “Feladó/Címzett” oszlop, amely azt mutatja, a címzett, ha a feladó.",
+        "ja": "Add a “From/To” column which shows the recipient if you are the sender.",
+        "he": "הוסף עמודת מאת/אל שמראה את הנעמן אם אתה השולח.",
+        "pt-PT": "Adicionar um “De/Para” coluna que mostra o destinatário se você é o remetente.",
+        "zh-TW": "Add a “From/To” column which shows the recipient if you are the sender.",
+        "sq": "Shto një “Prej/Për” shtyllën e cila tregon marrësit nëse ju jeni dërguesi.",
+        "ko": "Add a “From/To” column which shows the recipient if you are the sender.",
+        "ga-IE": "Cuir “Ó/Chuig” colún a léiríonn an faighteoir má tá tú an seoltóir.",
+        "sk": "Pridať “Odosielateľ/Komu” stĺpec, ktorý ukazuje príjemcu, ak ste odosielateľ.",
+        "zh-CN": "Add a “From/To” column which shows the recipient if you are the sender.",
+        "uk": "Add a “From/To” column which shows the recipient if you are the sender.",
+        "sl": "Dodaj “Od/Za” stolpec, ki prikazuje prejemnika, če ste pošiljatelj."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/fromto-column/",
+    "weekly_downloads": 22
+}

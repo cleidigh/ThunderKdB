@@ -1,0 +1,117 @@
+{
+    "id": 964241,
+    "authors": [
+        {
+            "id": 13818641,
+            "name": "DJ 'Cuppa' T",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/djcuppat/",
+            "username": "djcuppat",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13818/13818641.png?modified=1523636263"
+        }
+    ],
+    "average_daily_users": 38,
+    "categories": {
+        "thunderbird": [
+            "folders-and-filters"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2443247,
+        "compatibility": {
+            "thunderbird": {
+                "max": "59.*",
+                "min": "20.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-filter-timer/versions/2443247",
+        "files": [
+            {
+                "id": 986004,
+                "created": "2018-06-13T13:05:19Z",
+                "hash": "sha256:cabf620201863c0fb0a4ef954e6f5018a407dbada1e18e84d5c56808e94df238",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 7635,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/986004/auto_filter_timer-1.043-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "* 1.04: Stephane - added strong folder ref\n * 1.041: djcuppat - better support for localisation\n * 1.042: djcuppat - made timer limits and def global\n * 1.043: djcuppat - code tidy"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-filter-timer/versions/1.043",
+        "version": "1.043"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "A word of warning. Message filters can seriously damage your email's health! Great swaths of email can be lost forever if you're not paying attention. If you're not comfortable constructing logical arguments then this extension is not for you!\n\nThis extension allows the user to run fully independant message filtration at specific time intervals. Currently, message filters (created using the built-in system) only operate on Inbox email and are triggered only by incoming email (allegedly!). Instead of having to manually run these filters, the user may opt to have them automatically triggered at a user-defined frequency\n\nThe main aim is to allow the user to perform fully-automated time-based filtration on ANY folder they choose. Email becomes less important over time, so the use of filters with an age definition (i.e.: older than X days) can perform essential operations on a folder that would otherwise grow too big without continual maintenance or have important mail swamped by inconsequential rubbish\n\nA pratical example would include any of the big online retailers. Notifications from these companies ordinarily include 5 or so distinct email addresses from which one receives general info, purchasing confirmations, despatch info, feedback and perhaps direct vendor contact. The only information that realistically needs to be retained are the transaction details. This means that a large proportion of the accompanying email has little value and that value diminishes rapidly over time. It's generally not deleted immediately because it may / will be useful in the short term, but once the transaction is completed (and the customer entirely satisfied!), those emails lose their relevance and are most likely already lost in amongst other mail or already too far from one's memory to readily identify and delete\n\nFilters with age-based definitions allow email to persist until such time as the user can confidently say they cease to have any value\n\nA rather indiscriminate \"email-killer\" filter could simply declare that if an email is over 90 days old and has not been read or starred then it shall be cleansed\n\nOne fundamental principle applies to all information; it's relevance dimishes over time unless it is continually sustained, therefore the same consideration applies to email and its storage or deletion. How an individual chooses to organise their email  (or not!) isn't exactly established science, so it is crucial to afford the user every opportunity to exercise their creativity, particularly with respect to Time!"
+    },
+    "developer_comments": {
+        "en-US": "This is a hack of another extension called Shedule Filters (<a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/shedule-filters/?src=search\">https://addons.mozilla.org/en-US/thunderbird/addon/shedule-filters/?src=search</a>)\n\nAll coding respect should go to the original authors; I've made it easier to use, that's all\n\nBTW: I have zero extension coding experience, but am not unfamiliar with code and coding practices; this is the work of an hour or so's study and patience. If anyone would like to improve upon it, mi codigo es su codigo"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-filter-timer/edit",
+    "guid": "autofilt@disegno.co.uk",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://disegno.co.uk/autofilt"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-06-13T13:44:36Z",
+    "name": {
+        "en-US": "Auto Filter Timer"
+    },
+    "previews": [],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 1.61307,
+        "count": 1,
+        "average": 3,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-filter-timer/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/964241",
+    "slug": "auto-filter-timer",
+    "status": "public",
+    "summary": {
+        "en-US": "Run existing message filters on any folder at a specified interval. Simply right-click the desired folder then choose from the [AUTOFILT] menu items. This is a hack/clean-up of another coder's work, but works perfectly. Use at your own risk"
+    },
+    "support_email": {
+        "en-US": "support@disegno.co.uk"
+    },
+    "support_url": {
+        "en-US": "https://disegno.co.uk/autofilt"
+    },
+    "tags": [
+        "automatic",
+        "automation",
+        "filter",
+        "filtration",
+        "message filters"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-filter-timer/",
+    "weekly_downloads": 68
+}

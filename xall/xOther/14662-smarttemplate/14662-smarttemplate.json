@@ -1,0 +1,188 @@
+{
+    "id": 14662,
+    "authors": [
+        {
+            "id": 147337,
+            "name": "gaby_hy",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/gaby_hy/",
+            "username": "gaby_hy",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 109584,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.2a1pre",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate/versions/109584",
+        "files": [
+            {
+                "id": 91213,
+                "created": "2010-06-06T02:08:00Z",
+                "hash": "sha256:84054133afff86b2f193a70adb46b53a60fd962fcbf309786cf8005ac912d3c3",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 35840,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/91213/smarttemplate-0.6.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Fix a bug.\n  * Wrong conversion in addresses contained newlines.\nSupport a few features.\n * Support %X:=sent% and %X:=today%. The %A-Za-z% is converted with original message sent or today.\n * Support %I% and %l%. The %I% is converted into 00-12, %l% is converted into 1-12.\n * Support  %p% that is converted into AM or PM.  In addition, %p(1)% and %p(2) is available for a.m. or A.M.\n * Support %from(firstname)%.  In addition, %to(firstname)% and %cc(firstname)% is available."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate/versions/0.6.0",
+        "version": "0.6.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This Add-on provides the smart and simple templates and abilities to customize the quote header flexibly.\n(It is different from normal template function of Thunderbird.)\n\n<strong>Features:</strong>\n(1) Templates can be inserted automatically at the new/repling/forwarding message. You can setting templates as Add-on options.\n(2) Possible to use HTML format.\n(3) A different template can be used respectively at the new/repling/forwarding message.\n(4) A different template can be used respectively per account. Moreover, can use common setting.\n(5) A flexible customizing the quote header is possible by the description of \"Reserved word \" to the templates. And, a standard quote header can be nullified. \n\nAnd, those functions can be disabled by setting.\n\n<strong>Options:</strong>\nThe setup options are in\n * Tools - Add-ons - SmartTemplate - Options , or\n * Tools - Account Settings - Composition&amp;Addressing - Edit template and quote headers\n\n<strong>Reserved words:</strong>\nYou can customize the quote header by using the following reserved words.\n%ownname% - Own account name \n%ownmail% - Own mail address \n%Y% - Year (1970...)\n%m% / %n% - Month (01..12 / 1..12)\n%d% / %e% - Day of month (01..31 / 1..31)\n%H% / %k% - Hour (00..23 / 0..23)\n%I% / %l% - Hour (01..12 / 1..12)\n%M% - Minute (00..59)\n%S% - Second (00..59)\n%p% / %p(x)% - AM or PM, x=1(a.m.)/x=2(A.M.)/x=3(AM)\n%A% / %a% - Locale's weekday name (Sunday..Saturday / Sun..Sat)\n%B% / %b% - Locale's month name (January..December / Jan..Dec)\n%from% - Author \n%from(name)% - Author name \n%from(firstname)% - Author firstname\n%from(mail)% - Author mail address \n%date% - Date string (same as mail header syntax) \n%datelocal% - Date string (locale format) \n%dateshort% - Date string (such as 2000/01/01 1:23:45) \n%date_tz% - Time zone (e.g., +0100)\n%to% - Recipients(to) \n%to(name)% - Recipients name(to) (mail address, if name is not available.) \n%to(mail)% - Recipients mail address(to) \n%cc% - Recipients(cc) \n%cc(name)% - Recipients name(cc) (mail address, if name is not available.) \n%cc(mail)% - Recipients mail address(cc) \n%subject% - Subject\n%........% - An any e-mail header(e.g., %Message-Id%, %Newsgroups%, %X-Mailer%, ...)",
+        "de": "Dieses Add-on bietet die intelligente und einfache Vorlagen und Funktion, um die quote-Header flexibel anpassen.\n\n<strong>Merkmalspunkt:</strong>\n(1) Vorlagen können automatisch auf die Neuen / Antworten / Weiterleiten Nachricht eingefügt werden. Sie können als Vorlagen Einstellung Add-On-Einstelungen.\n(2) Möglich, HTML-Format.\n(3) Eine andere Vorlage kann jeweils an die Neuen / Antworten / Weiterleiten Nachricht verwendet werden.\n(4) Eine andere Vorlage können jeweils pro Konto verwendet werden. Darüber hinaus können gemeinsame Einstellung.\n(5) Eine flexible Anpassung der quote-Header wird durch die Beschreibung der \"reservierte Wort\" auf die Vorlagen möglich. Und kann ein standard quote-Header zunichte gemacht.\n\nDiese Funktionen können deaktiviert werden.\n\n<strong>Einstellungen:</strong>\nDas Setup-Einstellungen werden in\n * Extras – Add-ons – SmartTemplate - Einstellungen\n * Extras – Konten-Einstellungen – Verfassen&amp;Adressieren – Einstellung vorlagen und quote-Header\n\n<strong>Reservierte Wörter:</strong>\nSie können das quote-Header anpassen, indem Sie die folgenden reservierten Wörter.\n%ownname% - Ihr Name\n%ownmail% - Ihre E-Mail-Adresse\n%Y% - Jahr (1970...)\n%m% / %n% - Monat (01..12 / 1..12)\n%d% / %e% - Tag des Monats (01..31 / 1..31)\n%H% / %k% - Stunde (00..23 / 0..23)\n%I% / %l% - Stunde (01..12 / 1..12)\n%M% - Minute (00..59)\n%S% - Sekunde (00..59)\n%p% / %p(x)% - AM oder PM, x=1(a.m.)/x=2(A.M.)/x=3(AM)\n%A% / %a% - Locales Name des Wochentags (Sonntag..Samstag / So..Sa)\n%B% / %b% - Locales Monatsname (Januar..Dezember / Jan..Dez)\n%from% - Absender\n%from(name)% - Absender-Name\n%from(firstname)% - Absender-Vorname\n%from(mail)% - Absender-E-Mail-Adresse\n%date% - Datum und Zeit (dieselbe E-Mail header format)\n%datelocal% - Datum und Zeit (lokal format)\n%dateshort% - Datum und Zeit (z. B. 2000/01/01 1:23:45)\n%date_tz% - Zeitzone (z. B. +0100)\n%to% - Empfänger(An:)\n%to(name)% - Empfänger-Name(An:) (Es ist E-Mail-Adresse, falls der Name ist nicht verfügbar.)\n%to(mail)% - Empfänger-E-Mail-Adresse(An:)\n%cc% - Empfänger(CC:)\n%cc(name)% - Empfänger-Name(CC:) (Es ist E-Mail-Adresse, falls der Name ist nicht verfügbar.)\n%cc(mail)% - Empfänger-E-Mail-Adresse(CC:)\n%subject% - Betreff\n%........% - Eine beliebige E-Mail-Header(z.B. %Message-Id%, %Newsgroups%, %X-Mailer%, ...)",
+        "fr": "Cet add-on fournit des modèles simple et intelligente et aptitudes nécessaires pour personnaliser l'en-tête de la citation souplesse.\n\n<strong>Fonctions:</strong>\n(1) Les modèles peuvent être insérés automatiquement à le nouveau / répondre / transférer message. Vous pouvez personnaliser les modèles comme Add-on options.\n(2) Possible d'utiliser le format HTML.\n(3) A différents modèles peuvent être utilisés respectivement à le nouveau / répondre / transférer message.\n(4) A différents modèles peuvent être utilisés respectivement par les comptes. En outre, peut utiliser les préférences globales.\n(5) Un formule souple personnalisation de l'en-tête est possible grâce à le description de «mots réservé» pour les modèles. Et, l'en-tête standard peut être annulée.\n\nCes fonctions peuvent être désactivées en paramètre.\n\n<strong>Options:</strong>\nLes options de configuration sont\n * Qutils - Modules complèmentaires - SmartTemplate - Options\n * Qutils - Paramètres des comptes - Rédaction et adressage - Modifier les modèles et l'en-têtes\n\n<strong>Mots réservé:</strong>\nVous pouvez personnaliser l'en-tête de devis en utilisant les suivants mots réservés.\n%ownname% - Votre nom de compte\n%ownmail% - Votre E-Mail\n%Y% - année (1970...)\n%m% / %n% - mois (01..12 / 1..12)\n%d% / %e% - jour du mois (01..31 / 1..31)\n%H% / %k% - heure (00..23 / 0..23)\n%I% / %l% - heure (01..12 / 1..12)\n%M% - minute (00..59)\n%S% - secondes (00..59)\n%p% / %p(x)% - AM ou PM, x=1(a.m.)/x=2(A.M.)/x=3(AM)\n%A% / %a% - nom local du jour de la semaine (Dimanche..Samedi / Dim..Sam)\n%B% / %b% - nom local du mois (Janvier..Décembre / Jan..Déc)\n%from% - L'expéditeur\n%from(name)% - Nom de l'expéditeur\n%from(firstname)% - Prénom de l'expéditeur(De)\n%from(mail)% - E-adresse mail de l'expéditeur\n%date% - Date et heure (Il est même syntaxe comme en-tête de l'e-mail.)\n%datelocal% - Date et heure (locales format)\n%dateshort% - Date et heure (par ex., 2000/01/01 1:23:45)\n%date_tz% - Fuseau horaire (par ex., +0100)\n%to% - Les bénéficiaires(Pour:)\n%to(name)% - Nom du bénéficiaire(Pour:) (Adresse e-mail, si le nom n'est pas disponible)\n%to(mail)% - E-adresse mail du bénéficiaire(Pour:)\n%cc% - Les bénéficiaires(Copie à:)\n%cc(name)% - Nom du bénéficiaire(Copie à:) (Adresse e-mail, si le nom n'est pas disponible)\n%cc(mail)% - E-adresse mail du bénéficiaire(Copie à:)\n%subject% - Sujet\n%........% - Une des e-tête du courrier(par ex., %Message-Id%, %Newsgroups%, %X-Mailer%, ...)",
+        "ja": "このアドオンは、シンプルなテンプレート機能と、引用ヘッダをカスタマイズする機能を実現します。\n（Thunderbirdの通常のテンプレート機能とは全く異なる機能です）\n\n<strong>特徴：</strong>\n(1) メッセージの新規作成／返信／転送時に、自動的にテンプレートを適用できます。テンプレートはアドオンのオプションで編集できます。\n(2) テンプレートにHTMLフォーマットを用いることができます。\n(3) 新規作成／返信／転送時に異なるテンプレートを用いることができます。\n(4) アカウント毎に異なるテンプレートを用いることができます。また、共通の設定を用いることもできます。\n(5) テンプレートに \"予約語\" を用いることで、引用ヘッダの柔軟なカスタマイズが可能です。また、標準の引用ヘッダを無効化することができます。\n\nこれらの機能は、全て無効にすることもできます。\n\n<strong>オプション：</strong>\n以下のいずれかの方法でアクセスできます。\n* ツール - アドオン - 拡張機能 - SmartTemplate - 設定\n* ツール - アカウント設定 - 編集とアドレス入力 - テンプレートと引用ヘッダの設定\n\n<strong>予約語：</strong>\n%ownname% - あなたの名前\n%ownmail% - あなたのメールアドレス\n%Y% - 年 (1970...)\n%m% / %n% - 月 (01..12 / 1..12)\n%d% / %e% - 日 (01..31 / 1..31)\n%H% / %k% - 時 (00..23 / 0..23)\n%I% / %l% - 時 (01..12 / 1..12)\n%M% - 分 (00..59)\n%S% - 秒 (00..59)\n%p% / %p(x)% - AM または PM、x=1(a.m.)/x=2(A.M.)/x=3(AM)\n%A% / %a% - 曜日 (日曜日..土曜日 / 日..土)\n%B% / %b% - 月 (睦月..師走 / １月..１２月)\n%from% - 差出人\n%from(name)% - 差出人の名前\n%from(firstname)% - 差出人の名前\n%from(mail)% - 差出人のメールアドレス\n%date%   - 日付時刻 (メールヘッダ書式)\n%datelocal% - 日付時刻 (ローカル表現)\n%dateshort% - 日付時刻 (2000/01/01 1:23:45)\n%date_tz% - タイムゾーン (例 +0100)\n%to% - メール受信者(to)\n%to(name)% - メール受信者の名前(to)   (名前がない場合はメールアドレス)\n%to(mail)% - メール受信者のメールアドレス(to)\n%cc% - メール受信者(cc)\n%cc(name)% - メール受信者の名前(cc)   (名前がない場合はメールアドレス)\n%cc(mail)% - メール受信者のメールアドレス(cc)\n%subject% - 題名\n%........% - 任意のヘッダ (例：%Message-Id%, %Newsgroups%, %X-Mailer%, ...)"
+    },
+    "developer_comments": {
+        "en-US": "<b>Knowledge base:</b>\n<ul><li>This add-on do not change the default config settings. (e.g., mailnews.reply_header_xxx)\n Therefore, I promise return to completely original when you uninstalled this add-on.</li><li>Change font\nFor example, write template message below and check the 'Use HTML'.\n ----------------------------------------\n &lt;font face=\"Arial Black\"&gt;Subject: &lt;/font&gt;%subject%\n &lt;font face=\"Arial Black\"&gt;Sent: &lt;/font&gt;%date%\n &lt;font face=\"Arial Black\"&gt;From: &lt;/font&gt;%from%\n &lt;font face=\"Arial Black\"&gt;To: &lt;/font&gt;%to%{\n &lt;font face=\"Arial Black\"&gt;Cc: &lt;/font&gt;%cc%}\n ----------------------------------------</li><li>Use table\nFor example, write template message below and check the 'Use HTML'.\n ----------------------------------------\n &lt;table&gt;&lt;tbody&gt;\n  &lt;tr&gt;&lt;td&gt;Subject:&lt;td&gt;%subject%\n  &lt;tr&gt;&lt;td&gt;Sent:&lt;td&gt;%date%\n  &lt;tr&gt;&lt;td&gt;From:&lt;td&gt;%from%\n  &lt;tr&gt;&lt;td&gt;To:&lt;td&gt;%to%{\n  &lt;tr&gt;&lt;td&gt;Cc:&lt;td&gt;%cc%}\n &lt;/tbody&gt;&lt;/table&gt;\n ----------------------------------------</li><li>Mail addresses with name (such as \"ABC\" &lt;abc@example.com&gt;) is replaced as shown below:<ul><li>In the %to%, %cc%, %from% and %any%,\n           ABC &lt;abc@example.com&gt;\n    </li><li>In the %to(name)%, %cc(name)%, %from(name)% and %any(name)%,\n           ABC\n    </li><li>In the %to(mail)%, %cc(mail)%, %from(mail)% and %any(mail)%,\n           abc@example.com\n    </li></ul></li><li>Mail addresses without name (such as &lt;abc@example.com&gt;) is replaced as shown below:<ul><li>In the %to%, %cc%, %from% and %any%,\n           abc@example.com\n    </li><li>In the %to(name)%, %cc(name)%, %from(name)% and %any(name)%,\n           abc\n    </li><li>In the %to(mail)%, %cc(mail)%, %from(mail)% and %any(mail)%,\n           abc@example.com\n    </li></ul></li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate/edit",
+    "guid": "smarttemplate@thunderbird.extension",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/14/14662-64.png?modified=1281054753",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/14/14662-32.png?modified=1281054753",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/14/14662-64.png?modified=1281054753"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2010-06-10T11:53:58Z",
+    "name": {
+        "en-US": "SmartTemplate",
+        "ja": "SmartTemplate"
+    },
+    "previews": [
+        {
+            "id": 37522,
+            "caption": {
+                "en-US": "Preferences window.",
+                "ja": "日本語版ThunderBirdでは、Preferenceウィンドウも日本語で表示されます。"
+            },
+            "image_size": [
+                445,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/37/37522.png?modified=1530208606",
+            "thumbnail_size": [
+                170,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/37/37522.png?modified=1530208606"
+        },
+        {
+            "id": 37532,
+            "caption": {
+                "en-US": "This is preferences windows in japanese.",
+                "ja": "Preferencesウィンドウ"
+            },
+            "image_size": [
+                415,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/37/37532.png?modified=1530208606",
+            "thumbnail_size": [
+                158,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/37/37532.png?modified=1530208606"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.1795,
+        "count": 99,
+        "average": 4.1919,
+        "text_count": 99
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/14662",
+    "slug": "smarttemplate",
+    "status": "public",
+    "summary": {
+        "en-US": "This Add-on provides the smart and simple templates and abilities to customize the quote header flexibly.\nTemplates can be inserted automatically at the new/repling/forwarding message. A different template can be used respectively per account.",
+        "de": "Dieses Add-on bietet die intelligente und einfache Vorlagen und Funktion, um die quote-Header flexibel anpassen.\nEine andere Vorlage(quote-Header) können jeweils pro Konto verwendet werden.",
+        "fr": "Cet add-on fournit des modèles simple et intelligente et aptitudes nécessaires pour personnaliser l'en-tête de la citation souplesse.\nA différents modèles(l'en-tête) peuvent être utilisés respectivement par les comptes.",
+        "ja": "このアドオンは、シンプルなテンプレート機能と、引用ヘッダをカスタマイズする機能を実現します。\nメッセージの新規作成／返信／転送時に、自動的にテンプレートを適用できます。アカウント毎に異なるテンプレートを用いることができます。"
+    },
+    "support_email": {
+        "en-US": "gabygaby.hy@gmail.com",
+        "ja": "gabygaby.hy@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "header",
+        "quote header",
+        "reply header",
+        "signature",
+        "template",
+        "テンプレート",
+        "ヘッダ",
+        "リプライヘッダ",
+        "定型文",
+        "引用ヘッダ",
+        "署名",
+        "返信ヘッダ"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate/",
+    "weekly_downloads": 36
+}

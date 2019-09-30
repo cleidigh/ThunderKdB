@@ -1,0 +1,151 @@
+{
+    "id": 778959,
+    "authors": [
+        {
+            "id": 12805309,
+            "name": "Grier Forensics",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jnaegele/",
+            "username": "jnaegele",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 4,
+    "categories": {
+        "thunderbird": [
+            "contacts",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2110684,
+        "compatibility": {
+            "thunderbird": {
+                "max": "54.0",
+                "min": "3.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/great-dane-smime/versions/2110684",
+        "files": [
+            {
+                "id": 657797,
+                "created": "2017-06-01T15:55:53Z",
+                "hash": "sha256:aa2a22c910dbcb308d3d5aa978a9a1981902a702ad162bf7e90c973797678e29",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 15785,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/657797/great_dane-1.1.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6498,
+            "name": {
+                "en-US": "Dual Apache 2.0 and 3-clause BSD Licenses"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/great-dane-smime/license/1.1.0"
+        },
+        "release_notes": {
+            "en-US": "This version handles the new API response schema in the Great DANE Engine, and changes the default Great DANE Engine URL to the one hosted at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6ff1336d232d989f85841e38da47b223846576008b35d46e7a4fd427b414701e/https%3A//tools.greatdanenow.com/engine\">https://tools.greatdanenow.com/engine</a>, rather than defaulting to a locally-installed instance (since most users just want to easily try it out)."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/great-dane-smime/versions/1.1.0",
+        "version": "1.1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This extension enables users to automatically retrieve S/MIME certificates using the Great DANE Engine (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2206af86e75dfb17d3c1b683a1313a22557870a2893bb2689f4c14d2dc388ddd/https%3A//github.com/grierforensics/Great-DANE-Engine%29\">https://github.com/grierforensics/Great-DANE-Engine)</a>. Once configured, you can send encrypted emails to and verify signed emails from any recipient having S/MIME certificates in DNS, without having to exchange keys beforehand.\n\nDANE SMIMEA is an Internet Draft specifying how to store and retrieve S/MIME certificates and keys using DNS and DNSSEC.\n\nGreat DANE is a suite of tools enabling users to take advantage of the benefits of DANE SMIMEA, particularly automatic S/MIME certificate retrieval."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/great-dane-smime/edit",
+    "guid": "greatdane@grierforensics.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/grierforensics/Great-DANE-Thunderbird"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-06-12T16:13:00Z",
+    "name": {
+        "en-US": "Great DANE"
+    },
+    "previews": [
+        {
+            "id": 182014,
+            "caption": {
+                "en-US": "Encrypt outgoing messages to automatically retrieve certificate(s)."
+            },
+            "image_size": [
+                683,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/182/182014.png?modified=1530209352",
+            "thumbnail_size": [
+                260,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/182/182014.png?modified=1530209352"
+        },
+        {
+            "id": 182015,
+            "caption": {
+                "en-US": "Configure the extension to connect to your Great DANE Engine."
+            },
+            "image_size": [
+                270,
+                208
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/182/182015.png?modified=1530209353",
+            "thumbnail_size": [
+                260,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/182/182015.png?modified=1530209353"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/great-dane-smime/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/778959",
+    "slug": "great-dane-smime",
+    "status": "public",
+    "summary": {
+        "en-US": "Retrieve DANE S/MIME Certificates for Encryption/Signing.\n\nThis extension enables users to automatically retrieve S/MIME certificates using the Great DANE Engine (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2206af86e75dfb17d3c1b683a1313a22557870a2893bb2689f4c14d2dc388ddd/https%3A//github.com/grierforensics/Great-DANE-Engine%29\">https://github.com/grierforensics/Great-DANE-Engine)</a>."
+    },
+    "support_email": {
+        "en-US": "jnaegele@grierforensics.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/grierforensics/Great-DANE-Thunderbird"
+    },
+    "tags": [
+        "cryptography",
+        "dane",
+        "encryption",
+        "privacy",
+        "security",
+        "signing",
+        "smime"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/great-dane-smime/",
+    "weekly_downloads": 51
+}

@@ -1,0 +1,222 @@
+{
+    "id": 361,
+    "authors": [
+        {
+            "id": 210,
+            "name": "Didier Ernotte",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/didier-ernotte/",
+            "username": "didier-ernotte",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 40,
+    "categories": {
+        "firefox": [
+            "feeds-news-blogging",
+            "social-communication"
+        ],
+        "seamonkey": [
+            "rss-news-and-blogging"
+        ],
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1403236,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "1.0"
+            },
+            "seamonkey": {
+                "max": "2.14.*",
+                "min": "1.0"
+            },
+            "thunderbird": {
+                "max": "20.0a1",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/inforss/versions/1403236",
+        "files": [
+            {
+                "id": 181426,
+                "created": "2012-12-09T07:37:02Z",
+                "hash": "sha256:e19706a8d5908d045cd15d5c3377716c99e344499fb64cc516f5a4ace0fb587d",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 550746,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/181426/inforss-1.4.2-tb+fx+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "Compatibility with Firefox 17"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/inforss/versions/1.4.2.1-signed.1-signed.1-signed",
+        "version": "1.4.2.1-signed.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "##########################################\nMore Flash demo can be viewed here\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b17467149b371a5c5ffef2538d19ed3e877e4e9fb2038575e44ad08e370e77ce/http%3A//inforss.mozdev.org/demo.html\">http://inforss.mozdev.org/demo.html</a>\n##########################################\n\nDisplays RSS, Atom, Twitter, parsed HTML and NNTP feed in a scrolling area in the status bar. Compatible with podcasting RSS which can be downloaded directly.\nIt's also a good Google email notifier. \n\nThe different features of this extension are\n    * RSS feed including RSS Google email notifier (with <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f7d05bd4a40779e3460a574c6f9fbe996cc2ba9f69a359084cd99e7985ff8593/https%3A//mail.google.com/mail/feed/atom%29\">https://mail.google.com/mail/feed/atom)</a>\n    * ATOM feed\n    * NNTP feed\n    * Parsed HTML feed (in fact any text document on internet: RDF, txt, HTML...). Extraction with regular expression\n    * Pre-defined blog search feed (technorati, blogger, ,...)\n    * Support for SSL feed (HTTPS)\n    * Customized refresh time per feed\n    * Automatic or manual refresh\n    * Customized number of headlines to display per feed\n    * Customized number of character to display per feed (status bar is a limited area...)\n    * Customized favicon per feed or group\n    * Customized filter per feed : filter on title, subject, headline number, published date, received date, ...\n    * Enable/Disable filter\n    * Group of feeds\n    * Customized filter per group : filter for the group or combination with feed's filter and group\n    * Full associated HTML article in a simple clic on the headline\n    * Customized style sheet for headlines : font family, font size, background color, foreground color\n    * Display headlines in the status bar or in a separate bar (top or bottom)\n    * Manual resize of the status bar area\n    * Automatic size adjustment with the window width\n    * Skip headline\n    * Scrolling feeds in the headline area\n    * Manual scrolling with the mouse wheel\n    * Right to left or left to right scrolling direction\n    * Customized scrolling speed\n    * Fade in/out headlines\n    * All headlines in the main menu as a submenu\n    * Automatic cycling between feed or group or within feed of a group\n    * Skip empty feed in cycling mode\n    * Popup when new headlines\n    * Customized icon bar beside the headline bar\n    * Mark all headlines as read\n    * View all headlines at once\n    * Flashing icon when refreshing\n    * Read article in tooltip, a new tab or a new window\n    * Tooltip on headline to see the full title, begin of article or full article without opening a new tab\n    * Tooltip in HTML mode for rich description\n    * Tooltip that supports multimedia in ENCLOSURE tag : images are displayed beside the description, and audio and video files are played (podcasting, try feed <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/97d86efc2fab7b5e3ede6a0d758d1db84dc0aa297fc716dc5691b1d0878f7f99/http%3A//inforss.mozdev.org/inforss.xml%29\">http://inforss.mozdev.org/inforss.xml)</a> with the firefox embedded multimedia plugin\n    * Tooltip on main icon to display the number of hedline / unread headline\n    * Option to play/mute podcast\n    * Display icon near headline in case of enclosure tag\n    * Persistence of viewed and banned headline even after the session\n    * Remote synchronization with FTP or WebDav serverrn    * OPML import and export from a local file or a distant ressource (on internet)\n    * Export the repository in the bookmark hierarchy\n    * Display the repository on screen\n    * Display the RSS file in the browser by dragging the feed in the menu on the browser\n    * Detect RSS feed in the current page and add an item in the menu\n    * Contextual menu in Firefox to add a feed in the extension repository\n    * Add any URL in the clipboard to the menu to simply add it to the repository\n    * Detete a feed in the menu with drag and drop on the trash bin\n    * Add a feed in a group with drag and drop on the group icon in the menu\n    * Link to the main web page in one click\n    * Customized FF add feed menu (orange radar icon) to add feed in infoRSS\n    * Global activity switch\n    * Activity switch at the feed/group level\n    * Collapse headline bar if no headline\n    * Thumbnail image of the main URL in the option dialog\n    * Quick filter icon to filter in one click all displayed headlines\n    * Auto or manual decoding in the HTML feed"
+    },
+    "developer_comments": {
+        "en-US": "Before submitting any comment, please try the latest version on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/857e576ec381a0b18cbd2c32527cd0e5c85e1b6c0f5fdb248f9a674fe48dce82/http%3A//inforss.mozdev.org\">http://inforss.mozdev.org</a>.\n\nIf you have found a bug, don't complain here, but try to explain it here (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2a7233dd40107ea2acf278d042fcf9c9263fa1a5832ffffa2ce6c5b248bd340f/http%3A//inforss.mozdev.org/bugs-extension-rss.html\">http://inforss.mozdev.org/bugs-extension-rss.html</a>) if you want to have it fixed .\n\nIf you want to know how to use this extension read the homepage (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/857e576ec381a0b18cbd2c32527cd0e5c85e1b6c0f5fdb248f9a674fe48dce82/http%3A//inforss.mozdev.org\">http://inforss.mozdev.org</a>) or the FAQ (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/3f8c64643527551931d6d9eb27b303f86ef482346b00d655c372ddbfa22604d1/http%3A//inforss.mozdev.org/faq-extension-rss.html%29\">http://inforss.mozdev.org/faq-extension-rss.html)</a>.\n\nIf you want to ask a question, read other users  question on the note page (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7251dbf6cd10d90a4ac2292d648f8f243e7f3932e4ebde7268be1d0115825153/http%3A//inforss.mozdev.org/notes.html%29\">http://inforss.mozdev.org/notes.html)</a>.\n\nAnd you can use this extension as a Google email notifier too..."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/inforss/edit",
+    "guid": "{f65bf62a-5ffc-4317-9612-38907a779583}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://inforss.mozdev.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/361-64.png?modified=1353851926",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/361-32.png?modified=1353851926",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/361-64.png?modified=1353851926"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-12-09T09:56:02Z",
+    "name": {
+        "en-US": "infoRSS"
+    },
+    "previews": [
+        {
+            "id": 8684,
+            "caption": {
+                "en-US": "infoRSS Logo"
+            },
+            "image_size": [
+                150,
+                150
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/8/8684.png?modified=1530207928",
+            "thumbnail_size": [
+                150,
+                150
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/8/8684.png?modified=1530207928"
+        },
+        {
+            "id": 5603,
+            "caption": {
+                "en-US": "InfoRSS in the status bar"
+            },
+            "image_size": [
+                200,
+                64
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5603.png?modified=1530207930",
+            "thumbnail_size": [
+                200,
+                64
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5603.png?modified=1530207930"
+        },
+        {
+            "id": 5686,
+            "caption": {
+                "en-US": "Option dialog"
+            },
+            "image_size": [
+                690,
+                401
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5686.png?modified=1530207931",
+            "thumbnail_size": [
+                320,
+                186
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5686.png?modified=1530207931"
+        },
+        {
+            "id": 5687,
+            "caption": {
+                "en-US": "Option dialog (screen 2)"
+            },
+            "image_size": [
+                690,
+                400
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5687.png?modified=1530207932",
+            "thumbnail_size": [
+                320,
+                186
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5687.png?modified=1530207932"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.37375,
+        "count": 81,
+        "average": 3.4074,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/inforss/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/361",
+    "slug": "inforss",
+    "status": "public",
+    "summary": {
+        "en-US": "Displays RSS, Atom, Twitter, parsed HTML and NNTP feed in a scrolling area in the status bar. Compatible with podcasting RSS which can be downloaded directly. It's also a good Google email notifier."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://inforss.mozdev.org"
+    },
+    "tags": [
+        "atom",
+        "email",
+        "google email",
+        "google email notifier",
+        "html marshup",
+        "mail",
+        "nntp",
+        "notifier",
+        "recommended",
+        "rss",
+        "twitter reader"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/inforss/",
+    "weekly_downloads": 33
+}

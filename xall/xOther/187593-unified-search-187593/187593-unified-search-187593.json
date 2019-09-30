@@ -1,0 +1,224 @@
+{
+    "id": 187593,
+    "authors": [
+        {
+            "id": 3290806,
+            "name": "IagoSRL",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/iagosrl/",
+            "username": "iagosrl",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/3/3290/3290806.png?modified=1401342783"
+        }
+    ],
+    "average_daily_users": 163,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2206217,
+        "compatibility": {
+            "thunderbird": {
+                "max": "57.*",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unified-search-187593/versions/2206217",
+        "files": [
+            {
+                "id": 747601,
+                "created": "2017-10-19T12:56:13Z",
+                "hash": "sha256:f8507f2688829e68841edc7fe7dbf21cf78dd2393e156f5655b58cc25b88e1e8",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 54352,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/747601/unified_search_busqueda_unificada-0.7.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Unified Search Widget enhancements, bugfixes and compatibility with latest Thunderbird versions (since version 31 to 57).\n\nBig thanks to Onno Ekker for make the extension compatible with TB 57.\n\nVersion 0.7.0:\n    Visually details to recognize the filtering status (background colors)\n    Message with number of elements found when filtering.\n    Bugfixes:\n    Some filter shortcuts in conflict with menu shortcuts, new shortcuts are:\n        'Filter messages with tags' change from G to L.\n        'Filter by subject' change from T to J\n        'Use Bar' (to place options in a horizontal bar): from O to H\n        (only in spanish) 'Filter messages with Attachments' change from A to X\n    A de-synchronization problem between QFB and USW fixed\n    General enhancements:\n    Better visualization of Options Window using tab groups and better size window.\n    About window up to date.\n\nVersion 0.7.1:\nBugix: Results tooltip don't show when there are no text but quick filter options checked.\n\nVersion 0.7.2:\nBugfix: Fixed the issue #17, annoying behavior of the information tooltip\non filtering from the Unified Search Widget, being showed on top\nof every window and application; now is hidden when the widget\nlost the focus, same behavior as the horizontal filtering bar.\n\nVersion 0.7.3:\nRemoved unneed references to some DTD files, one of them\nchanged on recent 'daily' builds and breaks the widget at all.\nIt was described at issue #25, getting fixed.\n\nVersion 0.7.4:\nFiltering on Unified Search Widget gets disabled when the active tab doesn't contain messages (issue #12).\nInternal elements IDs renamed, as requested by AMO reviewers.\nMinor fixes for TB 31 compatibility (still not full compatible, but most things work).\n\nVersion 0.7.5:\nUpdated supported Thunderbird versions, minimum version now is TB 31\nAuto place the Unified Search Widget at toolbar\n\nVersion 0.7.6:\nCompatible with TB 57 (thanks to Onno Ekker)\n\nAdditional note: latest changes on TB have fixed an error thrown by this extension on previous beta versions (starting with TB31) that prevented me for publishing a new versions.",
+            "es": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unified-search-187593/versions/0.7.6",
+        "version": "0.7.6"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This extension allow to unify the global search boxes of Thunderbird: the global search (up right in Thunderbird window, ever visible, 'Search all messages...') and the quick filter box (in the filter bar, 'filter these messages...').\nLet you to either apply a filter or open a global search in both boxes, and hide one to use only the another.\nYou can preserve the two boxes if you want (see the options to show again the filter box that is disabled by default) and enjoy the extra features that the extension added to each box.\n\n<strong>Widget</strong>\nPlus, add a new widget to Thunderbird (Unified Search Widget): you can choice it from the Toolbar Customize window (menu View-&gt;Toolbars-&gt;Customize..) and place it wherever you want. It's more compact that the standard quick filter bar, with all their options, and with search capabilities and a global autocomplete mode. You can replace the standard search box with this.\n\n<strong>Features:</strong>\n- Quick Filter box: you can open a global search from here -with simple shorcuts and without need the global search box-.\n- Global Search box: you can filter the folder from here when write -without need the quick filter box-, and enable/disable autocomplete suggestions.\n- Can hide the box you want (search or filter) and use only the another with all features (unified boxes).\n- Allow cycle global search autocomplete suggestions pressing the 'Tab' key and 'Shift+Tab' (like in Firefox)\n- Enable and disable the autocomplete suggestions using a shortcut.\n- Can choice if Thunderbird must remember or not the filter options from the last session.\n\n<strong>Unified Search Widget features: </strong>\n- Have two work modes: \n  - Filter mode: the default. Will filter the messages in current folder with the wrote text; you have quick filter options in the float bar/menu; you can open a global search for the text pressing &lt;Control+Enter&gt;.\n  - Global search with autocomplete: analogous to the standard search box, the folder will not filtered, only will be showed search suggestions to do a global search pressing &lt;Enter&gt;.\n- A shortcut (&lt;Control+A&gt;) allow you change the work mode quickly, without retype your search!\n- The shortcut &lt;Control+Shift+K&gt; will focus the widget.\n- There are available two modes to select the quick filter options (criteria panel): vertical menu or horizontal bar; both are float small windows that only are showed when needed to preserve space.\n- Press &lt;Down arrow=\"\"&gt; inside the widget will show the criteria panel.\n- You can place the widget wherever you want.\n\nSee the extension options for more minor features!",
+        "es": "Ésta extensión permite unificar los dos cuadros de búsqueda incorporadas en Thunderbird 3.1: el cuadro de búsqueda global (arriba a la derecha en la ventana principal, siempre visible, con el texto 'Buscar todos los mensajes...') y el cuadro de filtrado rápido (en la nueva barra de filtrado, 'filtrar éstos mensajes')\n\nTe permite tanto aplicar un filtro como abrir una búsqueda global en ambos cuadros, y ocultar uno de ellos para usar sólo el otro.\nPuedes conservar ambos cuadros de búsqueda y filtrado si quieres (mira las opciones para mostrar de nuevo el cuadro de filtrado rápido que se deshabilita por defecto) y disfrutar las opciones extra que la extensión añade a cada cuadro.\n\n<strong>Widget</strong>\nAdicionalmente, añade un nuevo 'widget' a Thunderbird (Unified Search Widget): puedes elegirlo desde la ventana de Personalización de las Barras de Herramientas (en el menú Ver-&gt;Barras de herramientas-&gt;Personalizar..) y colocarlo donde quieras. Es más compacto que la barra de filtro estándar, pero con todas sus opciones, y con capacidades de búsqueda y modo de autocompletado global. Puedes reemplazar el cuadro de búsqueda estándard con éste más potente.\n\n<strong>Características actuales:</strong>\n- Cuadro de Filtrado Rápido: puedes abrir una búsqueda global desde aquí -con simples atajos de teclado y sin necesitad de usar el cuadro de búsqueda global-.\n- Cuadro de Búsqueda Global: puedes filtrar la carpeta desde aquí -sin necesitad de usar el cuadro de filtrado rápido-, y te permite habilitar/deshabilitar las sugerencias de autocompletado usando un atajo de teclado.\n- Puedes ocultar el cuadro que quieras (el de búsqueda o el de filtrado) y usar sólo uno de ellos que incluya todas las características (búsqueda unificada)\n- Te Permite recorrer y seleccionar las sugerencias de autocompletado del cuadro de búsqueda global usando las teclas 'Tab' y 'Mayús+Tab' (como en Firefox).\n- Habilita y deshabilita las sugerencias de autocompletado usando un atajo de teclado.\n- Puedes elegir si quieres que Thunderbird recuerde las opciones de filtrado de la última sesión o no.\n\n<strong>Características del Unified Search Widget:</strong>\n- Tiene dos modos de trabajo: \n  - Filtrado: por defecto. Filtrará los mensajes de la carpeta actual con el texto escrito; dispones de las opciones de filtrado rápido en la barra/menú flotante; puedes abrir una búsqueda global al instante pulsando sólamente &lt;Control+Enter&gt;.\n  - Búsqueda global con autocompletado: análogo al cuadro de búsqueda estándar, la carpeta no será filtrada, tan sólo se mostrarán sugerencias de búsqueda realizando una búsqueda global al pulsar &lt;Enter&gt;.\n- Un atajo de teclado (&lt;Control+A&gt;) te permite intercambiar el modo rápidamente, sin reescribir tu búsqueda!\n- El atajo de teclado &lt;Control+Mayús+K&gt; te llevará inmediatamente al 'widget'.\n- Hay disponibles dos modos de seleccionar las opciones de filtrado rápido (panel de opciones): el menú vertical o la barra horizontal; ambos son pequeñas ventanas flotantes que sólo se mostrarán cuando sean necesarias para no malgastar espacio.\n- Presionando &lt;Flecha Abajo=\"\"&gt; dentro del 'widget' mostrará el panel de opciones.\n- Puedes colocar el 'widget' dónde quieras.\n\nNo olvides echar un vistazo a las opciones de la extensión para algunos detalles más!"
+    },
+    "developer_comments": {
+        "en-US": "Technically, the extension is a try for the Bug 526221 at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/35a69bdbc511e573389d17611b085d4e54253ef59f4489addc6853e0eb00a4a2/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=526221\">https://bugzilla.mozilla.org/show_bug.cgi?id=526221</a>\nAlso include a solution for Bug 520040 at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/924247062649a340ac5ad5c25f95e19036fa1be23e000bc2b53781e88d3b31d5/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=520040\">https://bugzilla.mozilla.org/show_bug.cgi?id=520040</a>\nFrom 0.5 version, includes an implementation for the Bug 570815 at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8d3e2f74d86a1a9c32d1cde06f5d92bb8e33de1049d4ce389f5e75a563bd3c63/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=qfwidget\">https://bugzilla.mozilla.org/show_bug.cgi?id=qfwidget</a>\nFrom 0.6.4 version, includes an implementation for the Bug 582576, and this was added to Thunderbird 10.0: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/abdd5fbb1d34bc58e0d1face8353b174de470e2b88db9bf79f05a0ea984b6edb/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=582576\">https://bugzilla.mozilla.org/show_bug.cgi?id=582576</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unified-search-187593/edit",
+    "guid": "{FAD2EADC-7D70-11DF-8B33-89D1DED72085}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/IagoSRL/TBX-Unified-Search",
+        "es": "https://github.com/IagoSRL/TBX-Unified-Search"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-10-20T07:00:02Z",
+    "name": {
+        "en-US": "Unified Search",
+        "es": "Unified Search (búsqueda unificada)"
+    },
+    "previews": [
+        {
+            "id": 51757,
+            "caption": {
+                "en-US": "Unified Search Widget in the main toolbar, in filter mode with the options float bar opened."
+            },
+            "image_size": [
+                574,
+                58
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51757.png?modified=1530208790",
+            "thumbnail_size": [
+                320,
+                32
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51757.png?modified=1530208790"
+        },
+        {
+            "id": 51755,
+            "caption": {
+                "en-US": "Unified Search Widget in the default filter mode."
+            },
+            "image_size": [
+                322,
+                32
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51755.png?modified=1530208791",
+            "thumbnail_size": [
+                320,
+                32
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51755.png?modified=1530208791"
+        },
+        {
+            "id": 51756,
+            "caption": {
+                "en-US": "Unified Search Widget in search with autocomplete mode."
+            },
+            "image_size": [
+                323,
+                32
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51756.png?modified=1530208791",
+            "thumbnail_size": [
+                320,
+                32
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51756.png?modified=1530208791"
+        },
+        {
+            "id": 51758,
+            "caption": {
+                "en-US": "Unified Search Widget in the main toolbar, in filter mode with the options menu opened and the 'keep filter between folders' option applied (red sticky pin)."
+            },
+            "image_size": [
+                700,
+                274
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51758.png?modified=1530208791",
+            "thumbnail_size": [
+                320,
+                125
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51758.png?modified=1530208791"
+        },
+        {
+            "id": 51759,
+            "caption": {
+                "en-US": "Unified Search Widget in the main toolbar (replacing the standard global search widget), in filter mode with the options float bar opened and a lightweight theme (persona) applied."
+            },
+            "image_size": [
+                576,
+                79
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51759.png?modified=1530208791",
+            "thumbnail_size": [
+                320,
+                44
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51759.png?modified=1530208791"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.34727,
+        "count": 28,
+        "average": 4.3929,
+        "text_count": 28
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unified-search-187593/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/187593",
+    "slug": "unified-search-187593",
+    "status": "public",
+    "summary": {
+        "en-US": "Unify the global search box and the quick filter box in a new widget (the 'Unified Search Widget') with all filter and search capabilities at once.",
+        "es": "Unifica los cuadros de búsqueda global y de filtrado rápido en un nuevo widget (el 'Unified Search Widget') con todas las características de filtrado y búsqueda en uno."
+    },
+    "support_email": {
+        "en-US": "iagosrl@gmail.com"
+    },
+    "support_url": {
+        "en-US": "https://twitter.com/#!/iagosrl"
+    },
+    "tags": [
+        "search"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unified-search-187593/",
+    "weekly_downloads": 73
+}

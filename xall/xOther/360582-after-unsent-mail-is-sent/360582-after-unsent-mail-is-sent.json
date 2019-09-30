@@ -1,0 +1,179 @@
+{
+    "id": 360582,
+    "authors": [
+        {
+            "id": 66077,
+            "name": "David White",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/whitedavidp/",
+            "username": "whitedavidp",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 1709002,
+        "compatibility": {
+            "thunderbird": {
+                "max": "57.0",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/after-unsent-mail-is-sent/versions/1709002",
+        "files": [
+            {
+                "id": 322670,
+                "created": "2015-06-13T11:42:33Z",
+                "hash": "sha256:59e513ecd114ebe41156b95a748b0acee2335285b896a4b998bda21b7d848c55",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 19151,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/322670/after_unsent_mail_is_sent-2.01-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Major bug fix - the command was being run immediately. Now command does not execute until after all unsent mail is sent. Thanks to Danilo Krahl!"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/after-unsent-mail-is-sent/versions/2.01",
+        "version": "2.01"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>Sorry but this addon is no longer supported in TB 60.  Addon authors have been told \"Many things have changed in the Mozilla platform code on which Thunderbird and add-ons are based.\" We have also been told \"the picture beyond Thunderbird version 60 is less certain, given the continued high rate of change in Firefox platform code.\" Under these conditions, it no longer makes sense to maintain this addon. I for one have simply stopped updating the Mozilla products. Do so at your own risk.</b>\nSome Thunderbird users make significant use of the \"Send Later\" function which accumulates outgoing email in the Unsent Messages folder to be sent at a later time. Often this is done because such emails are large in number and/or have large attachments which will make the overhead of sending in real time unattractive. Users will wait until an attractive time and then trigger the sending of these emails using the \"Send Unsent Messages\" function on the Unsent Messages context menu.\n\nThis simple addon permits you to specify a program and associated parameters to be run after the completion of sending unsent messages in this way. One common use for this will be to shut down the computer after this task is completed. On Windows, one would specify C:\\windows\\system32\\shutdown.exe as the program to run and -s as the program parameter. Other systems have similar capabilities. Of course, you could run a program that starts a backup, virus scan, or anything else that suits your fancy.\n\nThe addon's options panel permits you to specify default values for both command and parameters. You may also specify that the addon NOT prompt you to enter this information each time you trigger Send Unsent Messages - instead it will always run the default command/parameters without asking.\n\nIf you opt to be prompted each time (the default), you will be presented with the last command/parameters used as defaults. Whatever you enter becomes the new default. If you are prompted and do NOT want to run any program at all, simply press the Cancel button on the dialog.\n\nSpecifying parameters is done one parameter at a time. A parameter is generally a single, space delimited element that is needed to control the execution of the program in question. For example, the Windows shutdown command accepts several parameters some of which include:\n\n        -s                             Shutdown the computer\n        -t xx                          Set timeout for shutdown to xx seconds\n        -c \"comment\"            Shutdown comment\n\nIf you wanted to specify all of these, you will need to respond to the parameters prompt a total of 5 times:\n\n1) -s\n2) -t\n3) xx (the number of seconds)\n4) -c\n5) \"shutdown after sending unsent messages\" (a shutdown comment)\n\nThe options panel permits you to test the command and parameters you have entered. When you do this, the program will actually be executed so please be aware."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/after-unsent-mail-is-sent/edit",
+    "guid": "{3c6e2514-e97b-401a-8559-6ce25356926f}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-07-02T05:50:32Z",
+    "name": {
+        "en-US": "After Unsent Mail Is Sent"
+    },
+    "previews": [
+        {
+            "id": 67222,
+            "caption": {
+                "en-US": "Addon options..."
+            },
+            "image_size": [
+                561,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67222.png?modified=1530208856",
+            "thumbnail_size": [
+                214,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67222.png?modified=1530208856"
+        },
+        {
+            "id": 67223,
+            "caption": {
+                "en-US": "Prompt to enter a command..."
+            },
+            "image_size": [
+                652,
+                201
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67223.png?modified=1530208857",
+            "thumbnail_size": [
+                320,
+                99
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67223.png?modified=1530208857"
+        },
+        {
+            "id": 67224,
+            "caption": {
+                "en-US": "Prompt to enter a parameter/argument..."
+            },
+            "image_size": [
+                513,
+                185
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67224.png?modified=1530208857",
+            "thumbnail_size": [
+                320,
+                115
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67224.png?modified=1530208857"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.79641,
+        "count": 1,
+        "average": 5,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/after-unsent-mail-is-sent/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/360582",
+    "slug": "after-unsent-mail-is-sent",
+    "status": "public",
+    "summary": {
+        "en-US": "Sorry but this addon is no longer supported in TB 60.  See below.\n\nRun a program of your choice after unsent mail has been sent."
+    },
+    "support_email": {
+        "en-US": "whitedavidp@yahoo.com"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/after-unsent-mail-is-sent/",
+    "weekly_downloads": 22
+}

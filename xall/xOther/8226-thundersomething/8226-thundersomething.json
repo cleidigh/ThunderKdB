@@ -1,0 +1,161 @@
+{
+    "id": 8226,
+    "authors": [
+        {
+            "id": 2104980,
+            "name": "derDoc80",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/derdoc80/",
+            "username": "derdoc80",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 3,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1252766,
+        "compatibility": {
+            "thunderbird": {
+                "max": "12.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thundersomething/versions/1252766",
+        "files": [
+            {
+                "id": 124613,
+                "created": "2011-06-27T23:01:12Z",
+                "hash": "sha256:02bda711e641cb600383380e2326186e5fefd7cfb80173441ebed0c4a653abb8",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 66560,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/124613/thundersomething-1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "-indicated ThunderBird 5 support"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thundersomething/versions/1.1",
+        "version": "1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This is based on and does the same for Thunderbird as the excellent Firesomething for Firefox. A new random name is generated every time the application starts. The parts used to generate the full name are fully customizable.\n\nFeatures:\n- Modifies the product name in the mailer's titlebar, and About dialog titlebar.\n- Generates random names using multiple name lists.\n- Optionally modifies the User-Agent header in every outgoing mail to reflect your custom name.\n-Allows you to add a custom X-Mailer header to every outgoing mail.\n-Lets you append the generated name to the window title.\n-If the option 'same name for every window' is not selected, every mail-compose window will generate a new name for itself, that is used for the headers for that particular email. \n-Allows you to set the User-Agent string that is submitted on every HTTP request that the mailer makes.\n-Lets you chose a post-processing function for messing with the name after it has been chosen. The choices are:\n     : CamelCase, rANdCAsE, 1337 and Über1337"
+    },
+    "developer_comments": {
+        "en-US": "Known Bugs:\n\n-There is a rare bug when the user switches some settings under Preferences-&gt;User-Agent and then clicks on Suggestions... It is not always reproducible and I had problems tracking it down, though it seems to be actually occurring in the code I copied from Firesomething (that has to do with passing the conf. string on to TB).\n-Somebody reported a bug with a swedish locale, but I couldn't reproduce it with a German TB. Added german localization in v1.0.1 to test it, as well: no dime."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thundersomething/edit",
+    "guid": "ThunderSomething@derdoc.info",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/8/8226-64.png?modified=1309815052",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/8/8226-32.png?modified=1309815052",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/8/8226-64.png?modified=1309815052"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2011-07-04T13:13:05Z",
+    "name": {
+        "en-US": "Thundersomething"
+    },
+    "previews": [
+        {
+            "id": 23753,
+            "caption": {
+                "en-US": "Random Name generation."
+            },
+            "image_size": [
+                700,
+                265
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/23/23753.png?modified=1530208459",
+            "thumbnail_size": [
+                320,
+                121
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/23/23753.png?modified=1530208459"
+        },
+        {
+            "id": 47278,
+            "caption": {
+                "en-US": "Compose window with main window behind, showing all available buttons."
+            },
+            "image_size": [
+                700,
+                330
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47278.png?modified=1530208459",
+            "thumbnail_size": [
+                320,
+                151
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47278.png?modified=1530208459"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.518,
+        "count": 8,
+        "average": 3.875,
+        "text_count": 8
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thundersomething/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/8226",
+    "slug": "thundersomething",
+    "status": "public",
+    "summary": {
+        "en-US": "Changes the product name in various parts of Thunderbird for everlasting naming fun.\nMake your Thunderbird wear a new mask every time."
+    },
+    "support_email": {
+        "en-US": "derDoc@gmx.de"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thundersomething/",
+    "weekly_downloads": 22
+}

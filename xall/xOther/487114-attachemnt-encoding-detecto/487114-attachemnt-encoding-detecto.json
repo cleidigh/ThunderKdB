@@ -1,0 +1,129 @@
+{
+    "id": 487114,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 51,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1521704,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "10.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachemnt-encoding-detecto/versions/1521704",
+        "files": [
+            {
+                "id": 244408,
+                "created": "2014-02-18T00:42:31Z",
+                "hash": "sha256:35bf4285f2dd187112bd967ff8d4e84e5b889e746a52ceca30665e2e1e0dc7a0",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 5736,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/244408/attachemnt_encoding_detector-1.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3998,
+            "name": {
+                "en-US": "MPL 1.1/GPL 2.0/LGPL 2.1"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachemnt-encoding-detecto/license/1.0"
+        },
+        "release_notes": null,
+        "reviewed": "2014-02-24T15:41:46Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachemnt-encoding-detecto/versions/1.0",
+        "version": "1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "# What's this?\n\nWhen I attach plaintext files to a mail, Thunderbird automatically tries to detect their character encoding from their contents, by the commit:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8c320255e5397a754145a874a9b6da36bcd9e3f42d4698a4bcdc722f1fc5eb9b/http%3A//hg.mozilla.org/comm-central/rev/2b9773749c86\">http://hg.mozilla.org/comm-central/rev/2b9773749c86</a>\n\nHowever, because the universal (global, generic) detector is always used, Thunderbird often fails to detect character encoding of files. For example, on a Japanese environment, \"Shift_JIS\" and \"EUC-JP\" are wrongly detected as \"windows-1252\".\n\nThis addon forces Thunderbird to use localized encoding detector based on the system language, As the result, plain text files will be attached with correct encoding.\n\n## Steps to test\n\nNote: these steps are just for a Japanese environments. In other languages, they are possibly detected unexpected encodings...\n\n 1. Attach samples/*.txt files to a new message.\n 2. Save it to the Draft folder.\n 3. Choose \"View\" =&gt; \"View Sorce\".\n 4. You'll see detection result for file contents as \"Content-Type:text/plain; charset=....\" in each header of attachments.\n\nWithout this addon, sjis.txt and euc.txt are detected as \"windows-1252\" unexpectedly.\nWith this addon, they are correctly detected as Shift_JIS or EUC-JP.",
+        "ja": "# これは何？\n\n以下のコミットが反映されて以降のバージョンのThunderbirdでは、プレーンテキスト形式のファイルをメールに添付する際に、内容の文字エンコーディングが自動判別されるようになりました。\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8c320255e5397a754145a874a9b6da36bcd9e3f42d4698a4bcdc722f1fc5eb9b/http%3A//hg.mozilla.org/comm-central/rev/2b9773749c86\">http://hg.mozilla.org/comm-central/rev/2b9773749c86</a>\n\nしかしながら、常に一般的な判別器が使われるために、Thunderbirdはしばしば文字エンコーディングの判別に失敗します。例えば日本語環境では、Shift_JISとEUC-JPはwindows-1252と誤判定されやすいです。\n\nこのアドオンは、上記の場面でシステムの言語に適した判別器を使うよう、Thunderbirdに対して矯正します。その結果、プレーンテキスト形式の添付ファイルは正しいエンコーディング情報を伴って添付されるようになります。\n\n## テストの手順\n\n注意：以下の手順は日本語環境でのものです。他の言語では別の判別結果になる可能性がありますので注意して下さい。\n\n 1. リポジトリのsamples/*.txtを新しいメッセージに添付します。\n 2. 下書きフォルダにメッセージを保存します。\n 3. 「表示」→「ソースを表示」を選択します。\n 4. 各添付ファイルのヘッダ領域の\"Content-Type:text/plain; charset=....\"という部分を見ます。\n\nこのアドオン無しの環境では、sjis.txtとeuc.txtはwindows-1252と誤判定されます。\nこのアドオンがあると、正しくShift_JISおよびEUC-JPと判定されます。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachemnt-encoding-detecto/edit",
+    "guid": "attachment-encoding-localized-autodetect@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/attachment-encoding-localized-autodetect",
+        "ja": "https://github.com/clear-code/attachment-encoding-localized-autodetect"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/posts-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/posts-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/posts-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-02-24T15:41:46Z",
+    "name": {
+        "en-US": "Attachemnt Encoding Detector",
+        "ja": "Attachemnt Encoding Detector"
+    },
+    "previews": [
+        {
+            "id": 126688,
+            "caption": {
+                "en-US": "Attachments with correct encoding detected by the local detector"
+            },
+            "image_size": [
+                675,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/126/126688.png?modified=1530209069",
+            "thumbnail_size": [
+                257,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/126/126688.png?modified=1530209069"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachemnt-encoding-detecto/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/487114",
+    "slug": "attachemnt-encoding-detecto",
+    "status": "public",
+    "summary": {
+        "en-US": "To detect file encoding of attachments, this forces to Thunderbird to use an encoding detector for a specific locale instead of the generic one.",
+        "ja": "添付ファイルのエンコーディングの自動判別において、既定の判別器ではなく言語ごとの判別器を使用するようにします。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/attachment-encoding-localized-autodetect/issues"
+    },
+    "tags": [
+        "attachment",
+        "encoding"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachemnt-encoding-detecto/",
+    "weekly_downloads": 24
+}

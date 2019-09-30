@@ -1,0 +1,161 @@
+{
+    "id": 5109,
+    "authors": [
+        {
+            "id": 166942,
+            "name": "xzer lr",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/xzer-lr/",
+            "username": "xzer-lr",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 45,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1509240,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-ht-jumper/versions/1509240",
+        "files": [
+            {
+                "id": 238228,
+                "created": "2013-12-30T23:31:47Z",
+                "hash": "sha256:cc09d2496e78705381e74e27e67bf279d621e4aa4225a4a90110ffcd06264819",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 29704,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/238228/simple_ht_jumper-1.0.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "zh-CN": "",
+            "en-US": "compatibility fix for new thunderbird version"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-ht-jumper/versions/1.0.4.1-let-fixed",
+        "version": "1.0.4.1-let-fixed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "zh-CN": "Thunderbird在浏览邮件和撰写新邮件时，可以设置缺省的模式为HTML或者简单文本。但是，很多时候，我们需要临时的改变当前的设置而不修改缺省设置，另外，如果你设置新邮件缺省格式为文本方式，虽然Thunderbird可以在按下shift键的情况下以HTML的格式回复或者转发邮件，但是，它仅仅是将新邮件格式设置为HTML而不是以HTML格式加载原邮件的原始信息。\n\n这个插件可以解决这个问题，你可以临时的改变浏览模式而不会修改缺省设置，也可以在回复邮件中引用完整的HTML格式的原始信息。\n\n另外，此插件也同时支持在转发和打印时临时设置为HTML格式，但是，因为Thunderbird有一个既存的bug（<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/3b337a06fe256dd4ff26adab318b8610bbf4f5f08076de94dae8c0f5bd75c977/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=228562%EF%BC%89%EF%BC%8C%E6%89%80%E4%BB%A5%E5%BD%93%E4%BD%A0%E7%9A%84%E6%96%B0%E9%82%AE%E4%BB%B6%E7%BC%BA%E7%9C%81%E6%A0%BC%E5%BC%8F%E4%B8%BA%E7%AE%80%E5%8D%95%E6%96%87%E6%9C%AC%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E8%BD%AC%E5%8F%91%E9%82%AE%E4%BB%B6%E7%9A%84%E5%8A%9F%E8%83%BD%E5%B9%B6%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E7%9A%84%E5%B7%A5%E4%BD%9C%EF%BC%8C%E6%88%91%E4%BB%85%E4%BB%85%E6%98%AF%E5%8A%A0%E5%85%A5%E8%BF%99%E4%B8%AA%E5%8A%9F%E8%83%BD%E5%B9%B6%E7%AD%89%E5%BE%85Thunderbird%E5%BC%80%E5%8F%91%E5%B0%8F%E7%BB%84%E8%83%BD%E5%A4%9F%E4%BF%AE%E6%AD%A3%E5%AE%83...%28fixed\">https://bugzilla.mozilla.org/show_bug.cgi?id=228562），所以当你的新邮件缺省格式为简单文本的时候，转发邮件的功能并不能正常的工作，我仅仅是加入这个功能并等待Thunderbird开发小组能够修正它...(fixed</a> in 3.0)\n\nThunderbird 3.0兼容版本1.0.2发布，您可以从这里下载，或者从下面的主页地址下载。",
+        "en-US": "Thunderbird can change the view mode of message and compose new message between HTML and Plan Text, but often that we set a default mode and need to view a message in another mode temporarily, also that thunderbird can reply a HTML mail by hold shift key when your setting is text, but thunderbird just set the new message as HTML but not load the original message as HTML. \n\nYes, these are what this add-on do! You can change the view mode temporarily without changing the default setting, and you can reply a message with full HTML of the original message.\n\nAlso that you can forward or print a message in HTML mode temporarily, but there is a bug in Thunderbird(<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c706c6ae04fabd92a2a821cd69d8e022cb40fe9df141841a999ddcdd7fe9b577/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=228562%29\">https://bugzilla.mozilla.org/show_bug.cgi?id=228562)</a>,\nso that when your default setting is \"compose message as Plan Text\", foward will not work well, I just add this function and wait for the fix from Thunderbird...(fixed in 3.0)\n\nThunderbird 3.0 compatible new version 1.0.2 released, you can download from here or the homepage below.",
+        "ja": "Thunderbirdには、メールを読むと新メールを作る時、ディフォルトのHTMLもしくはテキストフォーマットを設定できるが、たまに、ディフォルト設定を変えなく、一時にこの設定を変えたいであり、また、もし新メールのディフォルトフォーマットをテキストと設定する場合、shiftを押すままHTMLでメールを返事と転送ができるが、Thunderbirdはただ新メールのフォーマットをHTMLと設定して元のメールのHTML情報を導入しない。\n\nこのAdd-onは前文の問題を解決するために作成したものである。ディフォルト設定を直さなくて一時に当メールしかを異なるビューモードで読まないようにすることであり、返事メールの中に、元メールの完全なHTML情報を導入することもできる。\n\nまた、メールを転送と印刷する場合、一時にHTMLのフォーマットを設定できるが、Thunderbirdの既存バグのため（<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e1a511883c73118cc9aaa6d723f45df59d27deb3c79fadba8d62812a19113ce8/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=228562%EF%BC%89%E3%80%81%E6%96%B0%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%87%E3%82%A3%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E3%81%AF%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%AE%E5%A0%B4%E5%90%88%E3%80%81%E8%BB%A2%E9%80%81%E6%A9%9F%E8%83%BD%E3%81%AF%E6%AD%A3%E3%81%97%E3%81%8F%E5%8B%95%E3%81%84%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B%E3%80%82%E5%83%95%E3%81%AF%E3%81%93%E3%81%AE%E6%A9%9F%E8%83%BD%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97%E3%80%81Thunderbird%E3%81%AE%E5%85%AC%E5%BC%8F%E4%BF%AE%E6%AD%A3%E3%82%92%E5%BE%85%E3%81%A4%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%97%E3%81%8B%E3%81%AA%E3%81%84%E3%80%82%E3%80%82%E3%80%82%28fixed\">https://bugzilla.mozilla.org/show_bug.cgi?id=228562）、新メールのディフォルトフォーマットはテキストの場合、転送機能は正しく動いていないことがある。僕はこの機能を追加し、Thunderbirdの公式修正を待つすることしかない。。。(fixed</a> in 3.0)\n\nThunderbird 3.0 へ交換性ある新しいバージョン1.0.2がリリースしました。こちからダウンロードか、もしくは下記のホームページからダウンロードしてください。",
+        "zh-TW": "Thunderbird在瀏覽郵件和撰寫新郵件時，可以設置缺省的模式為HTML或者簡單文本。但是，很多時候，我們需要臨時的改變當前的設置而不修改缺省設置，另外，如果你設置新郵件缺省格式為文本方式，雖然Thunderbird可以在按下shift鍵的情況下以HTML的格式回復或者轉發郵件，但是，它僅僅是將新郵件格式設置為HTML而不是以HTML格式加載原郵件的原始信息。\n\n這個插件可以解決這個問題，你可以臨時的改變瀏覽模式而不會修改缺省設置，也可以在回復郵件中引用完整的HTML格式的原始信息。\n\n另外，此插件也同時支持在轉發和打印時臨時設置為HTML格式，但是，因為Thunderbird有一個既存的bug（<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d5eceff1e100b82ae5c0067a02ad3230dec19a01bc1d24626f92f2e54eceb56e/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=228562%EF%BC%89%EF%BC%8C%E6%89%80%E4%BB%A5%E7%95%B6%E4%BD%A0%E7%9A%84%E6%96%B0%E9%83%B5%E4%BB%B6%E7%BC%BA%E7%9C%81%E6%A0%BC%E5%BC%8F%E7%82%BA%E7%B0%A1%E5%96%AE%E6%96%87%E6%9C%AC%E7%9A%84%E6%99%82%E5%80%99%EF%BC%8C%E8%BD%89%E7%99%BC%E9%83%B5%E4%BB%B6%E7%9A%84%E5%8A%9F%E8%83%BD%E5%B9%B6%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E7%9A%84%E5%B7%A5%E4%BD%9C%EF%BC%8C%E6%88%91%E5%83%85%E5%83%85%E6%98%AF%E5%8A%A0%E5%85%A5%E9%80%99%E5%80%8B%E5%8A%9F%E8%83%BD%E5%B9%B6%E7%AD%89%E5%BE%85Thunderbird%E9%96%8B%E7%99%BC%E5%B0%8F%E7%B5%84%E8%83%BD%E5%A4%A0%E4%BF%AE%E6%AD%A3%E5%AE%83...%28fixed\">https://bugzilla.mozilla.org/show_bug.cgi?id=228562），所以當你的新郵件缺省格式為簡單文本的時候，轉發郵件的功能并不能正常的工作，我僅僅是加入這個功能并等待Thunderbird開發小組能夠修正它...(fixed</a> in 3.0)\n\nThunderbird 3.0兼容版本1.0.2發布，您可以從這裡下載，或者從下面的網站首頁地址下載。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-ht-jumper/edit",
+    "guid": "simplehtjumper@xzer.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "zh-CN": "http://www.xzer.net/harvest/simplehtjumper/zh-CN",
+        "en-US": "http://www.xzer.net/harvest/simplehtjumper",
+        "ja": "http://www.xzer.net/harvest/simplehtjumper/ja",
+        "zh-TW": "http://www.xzer.net/harvest/simplehtjumper/zh-TW"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/5/5109-64.png?modified=1288422988",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/5/5109-32.png?modified=1288422988",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/5/5109-64.png?modified=1288422988"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-12-31T02:27:06Z",
+    "name": {
+        "zh-CN": "Simple HT Jumper",
+        "en-US": "Simple HT Jumper",
+        "ja": "Simple HT Jumper",
+        "zh-TW": "Simple HT Jumper"
+    },
+    "previews": [
+        {
+            "id": 14529,
+            "caption": null,
+            "image_size": [
+                395,
+                208
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14529.png?modified=1530208329",
+            "thumbnail_size": [
+                320,
+                169
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14529.png?modified=1530208329"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.45577,
+        "count": 16,
+        "average": 4.6875,
+        "text_count": 16
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-ht-jumper/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/5109",
+    "slug": "simple-ht-jumper",
+    "status": "public",
+    "summary": {
+        "zh-CN": "一个简单的浏览模式切换器，它可以使你在使用Thunderbird浏览邮件或者回复邮件时临时的切换当前模式为HTML或者简单文本格式而不修改缺省设置。",
+        "en-US": "A temporal simple jumper of HTML and Plan TEXT view mode on showing messages and replying messages for Thunderbird without changing the default setting.\n",
+        "ja": "シンプルなビューモード切替器である。Thunderbirdでメールを読むと返事する場合、ディフォルト設定を変えないように一時にHTMLとテキストモード間に切り替えができるものである。",
+        "zh-TW": "一個簡單的瀏覽模式切換器，它可以使你在使用Thunderbird瀏覽郵件或者回復郵件時臨時的切換當前模式為HTML或者簡單文本格式而不修改缺省設置。"
+    },
+    "support_email": {
+        "zh-CN": "hvsupport@xzer.net",
+        "en-US": "hvsupport@xzer.net",
+        "ja": "hvsupport@xzer.net",
+        "zh-TW": "hvsupport@xzer.net"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-ht-jumper/",
+    "weekly_downloads": 28
+}

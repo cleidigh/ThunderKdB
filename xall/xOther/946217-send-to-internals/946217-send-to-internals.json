@@ -1,0 +1,109 @@
+{
+    "id": 946217,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 6,
+    "categories": {
+        "thunderbird": [
+            "appearance"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2341346,
+        "compatibility": {
+            "thunderbird": {
+                "max": "52.*",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-to-internals/versions/2341346",
+        "files": [
+            {
+                "id": 881915,
+                "created": "2018-03-05T08:38:02Z",
+                "hash": "sha256:8aa0d1033b3f8c3a26459a15c2323e0864ba305ce4adf2a3bb7febeefa11fd03",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 28655,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/881915/send_to_internals-0.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2018-03-15T08:40:08Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-to-internals/versions/0.2",
+        "version": "0.2"
+    },
+    "default_locale": "ja",
+    "description": {
+        "en-US": "Special send button is placed on original send button position (replaced!) and add a feature to confirm domain which is treated by \"internals\".\nNote that original send button is moved to right side of toolbar  in mail compose window.\n\nHow to setup after installing this addon:\n\n1. Open Config Editor\n2. Set <code>extensions.send-to-internals@clear-code.com.domains</code> to \"LIST OF TARGET DOMAINS\".\n\nThe list of target domains are treated as check list when sending E-mail to different domains. It must be space separated such as \"<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2141eac2eacda036b00afc30fd0a7e6f24e9bddf402cf4393fe5144f468147e8/http%3A//example.com\">example.com</a> <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0c6b88b70003219bf04c0f69986472bf7f1bfa53fb842927b8b3025c0284915f/http%3A//example.jp\">example.jp</a>\" and so on.",
+        "ja": "既定の送信ボタンの代わりに社内へ送信ボタンが追加されます。(既定の送信ボタンは社外へ送信)\n\nアドオンインストール後の設定方法:\n\n1. 設定エディタを開く\n2.  <code>extensions.send-to-internals@clear-code.com.domains</code>に社内とみなすドメインのリストを設定する。\n\n社内送信時の送信先のドメインが異なる場合に警告します。複数のドメインを指定する場合はスペース区切りで指定します。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-to-internals/edit",
+    "guid": "send-to-internals@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/tb-send-to-internals",
+        "ja": "http://www.clear-code.com/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-03-15T08:40:08Z",
+    "name": {
+        "en-US": "Send to Internals",
+        "ja": "Send to Internals"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-to-internals/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/946217",
+    "slug": "send-to-internals",
+    "status": "public",
+    "summary": {
+        "en-US": "Provides a special button to send mail to internals. \"Internals\" may be company, organization, or user group and so on.",
+        "ja": "社内送信ボタンをメール作成画面に追加します。(従来の送信ボタンは社外送信ボタンになります)"
+    },
+    "support_email": null,
+    "support_url": {
+        "ja": "https://github.com/clear-code/tb-send-to-internals"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-to-internals/",
+    "weekly_downloads": 44
+}

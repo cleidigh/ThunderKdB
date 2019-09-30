@@ -1,0 +1,307 @@
+{
+    "id": 421,
+    "authors": [
+        {
+            "id": 253,
+            "name": "mrtech",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mrtech/",
+            "username": "mrtech",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 12,
+    "categories": {
+        "seamonkey": [
+            "downloading-and-file-management",
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 87052,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "2.0"
+            },
+            "seamonkey": {
+                "max": "2.1a1pre",
+                "min": "1.0a"
+            },
+            "thunderbird": {
+                "max": "3.2a1pre",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mr-tech-toolkit/versions/87052",
+        "files": [
+            {
+                "id": 72198,
+                "created": "2009-12-08T21:52:06Z",
+                "hash": "sha256:def71d0cf829deaabd6eecc5dbf61ac578b5497a957b813d24473d944fa9204e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 323584,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/72198/mr_tech_toolkit-6.0.4-fx+tb+sb+fn.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "6.0.4 Released\n    *  Added: Plug-ins Now include reported version number Firefox 3.5 (might work with 3.0 though)   \n    *  Added: Initial support for Seamonkey 2.0 - manually re-enable Tools|Extension Options and Theme Switcher if they're not showing up\n    *  Added: Now supporting generic Gecko Toolkit version 1.9 should future proof for newer apps\n    *  Added: Codebase now detects and supports Postbox 1.0 and 1.1\n    *  Updated: Now sorting About Plug-ins list\n    *  Updated: JA locale updated, thanks Orro.\n    *  Updated: extensions.checkCompatibility updates for latest 3.6 branch and trunk builds\n    *  Updated: Total cleanup of legacy global namespace pollution\n    *  Updated: Addtional support for more nightlies brand names in a few spots\n    *  Fixed: Patched leakiness and startup sequencing in Extensions window\n    *  Fixed: Properly checking for Extensions and Themes filename extensions, allows archiving from AMO and other paths with querystring variables, etc. (must still have a file extension of either xpi or jar though)\n    *  Fixed: Now really supporting Sunbird 1.0pre/beta builds, main xul window location, etc\n    *  Fixed: About Plug-ins broken with Firefox Nightlies\n    *  Fixed: Title functionality now includes (Private Browsing) labeling when applicable\n    *  Fixed: 'Get More Extensions' linnks were not resolving due to changes in 3.7 codebase"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mr-tech-toolkit/versions/6.0.4",
+        "version": "6.0.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "The primary goal of this extension is to provide the tools needed to install and manage extensions and themes locally.\n\nTo do this the extension provides multi-extension installation support, hacking capabilities to the Extension/Theme manager windows, features to find and troubleshoot Extensions/Themes Build, GUID and Profile information.\n\nNote: With Toolkit 6.0 Auto Archiving is fully working in Firefox 2.0 and temporarily disabled for Firefox 3.0, fix coming soon."
+    },
+    "developer_comments": {
+        "en-US": "Post questions, installation issues or feature requests here:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f5423db211565a572c885bf86a73af5f927f187b55ab8dc6288763fa673593f2/http%3A//forums.mozillazine.org/viewtopic.php%3Ff=48&amp;t=669795\">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=669795</a>\n\nSpecial Notes:\n- New Hacks list is available on my site: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/eed9417fc9c054aaca1811d8f1f44a326d6946f76e066f0b2df2f911d6ed5aa7/http%3A//www.mrtech.com/extensions/local_install/hacks.html\">http://www.mrtech.com/extensions/local_install/hacks.html</a>\n- Smaller locale specific installer are available on my site: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8ceb600c395d7b48d08cc1a7a49edb16c7b6081549e8b35c10e3156df8c389fb/http%3A//www.mrtech.com/extensions/local_install/\">http://www.mrtech.com/extensions/local_install/</a>\n- Mozilla Suite &amp; Seamonkey users have to uninstall previous version to use locale specific version or when locales are added in the full installer.\n\nIMPORTANT: Please post your issues, comments, concerns, rants, tech support questions to the official \"MR Tech Local Install\" support forum posting here:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f5423db211565a572c885bf86a73af5f927f187b55ab8dc6288763fa673593f2/http%3A//forums.mozillazine.org/viewtopic.php%3Ff=48&amp;t=669795\">http://forums.mozillazine.org/viewtopic.php?f=48&amp;t=669795</a>\n\nSpecial Note:\nJust as a heads up the following extensions can be disabled or uninstalled if you have version 5.3.2 installed:\n   1. About [Button]\n   2. AboutConfig (Thunderbird 1.5 or newer)\n   3. About:Config (ff) by Sonny Piers (pitux)\n   4. About:Config (Sunbird)\n   5. about:kitchensink\n   6. AboutPlug\n   7. Add-ons Sidebar\n   8. Browse Extension\n   9. ChromEdit\n  10. ChromEdit 2\n  11. ChromEdit Plus\n  12. Config Files Editor\n  13. Clear Cache Button\n  14. Clear Private Data... (Add-Ons)\n  15. Close All Child Windows\n  16. Disallow XPInstall\n  17. EMButtons: Firefox &amp; Thunderbird\n  18. Edit Config Files\n  19. Ext2Abc\n  20. Ext2File\n  21. Extension List Dumper\n  22. Get All Mail\n  23. HideUpdate\n  24. Install New Theme\n  25. ListZilla\n  26. MR Tech's About:About\n  27. MR Tech's Disable XPI Delay\n  28. MR Tech's Toggle Preview Pane\n  29. Nightly Tester Tools Lite\n  30. Open Profile Folder\n  31. Option Menu\n  32. Options Toolbar\n  33. Profile Folder\n  34. QuickRestart\n  35. Restart Firefox\n  36. Restart Thunderbird\n  37. Sanitize\n  38. Show Extension Directory\n  39. Show Failed URL (for Firefox 1.0.x based browser)\n  40. Simple Add-ons Button\n  41. Simple Clear Button\n  42. Simple EMbuttons\n  43. Simple Options Button\n  44. Slim Extension List\n  45. Sort Extensions\n  46. Throbber Button\n  47. Titlebar Tweaks\n  48. Toggle Preview Pane"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mr-tech-toolkit/edit",
+    "guid": "{9669CC8F-B388-42FE-86F4-CB5E7F5A8BDC}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.mrtech.com/extensions/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/421-64.png?modified=1353014606",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/421-32.png?modified=1353014606",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/421-64.png?modified=1353014606"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2009-12-09T05:07:09Z",
+    "name": {
+        "en-US": "MR Tech Toolkit"
+    },
+    "previews": [
+        {
+            "id": 3747,
+            "caption": {
+                "en-US": "Extension Window Preview"
+            },
+            "image_size": [
+                200,
+                143
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/3/3747.png?modified=1530207877",
+            "thumbnail_size": [
+                200,
+                143
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/3/3747.png?modified=1530207877"
+        },
+        {
+            "id": 5960,
+            "caption": {
+                "en-US": "Extension Manager"
+            },
+            "image_size": [
+                411,
+                367
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5960.png?modified=1530207878",
+            "thumbnail_size": [
+                224,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5960.png?modified=1530207878"
+        },
+        {
+            "id": 5961,
+            "caption": {
+                "en-US": "Theme Manager"
+            },
+            "image_size": [
+                382,
+                415
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5961.png?modified=1530207880",
+            "thumbnail_size": [
+                184,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5961.png?modified=1530207880"
+        },
+        {
+            "id": 5962,
+            "caption": {
+                "en-US": "My Config"
+            },
+            "image_size": [
+                558,
+                520
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5962.png?modified=1530207881",
+            "thumbnail_size": [
+                215,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5962.png?modified=1530207881"
+        },
+        {
+            "id": 5963,
+            "caption": {
+                "en-US": "Multiple Local Extension Installation"
+            },
+            "image_size": [
+                337,
+                356
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5963.png?modified=1530207883",
+            "thumbnail_size": [
+                189,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5963.png?modified=1530207883"
+        },
+        {
+            "id": 5964,
+            "caption": {
+                "en-US": "Custom Toolbar Icons Available"
+            },
+            "image_size": [
+                411,
+                103
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5964.png?modified=1530207884",
+            "thumbnail_size": [
+                320,
+                80
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5964.png?modified=1530207884"
+        },
+        {
+            "id": 5965,
+            "caption": {
+                "en-US": "Disable XPI Installation Delay Option Available"
+            },
+            "image_size": [
+                355,
+                175
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5965.png?modified=1530207886",
+            "thumbnail_size": [
+                320,
+                158
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5965.png?modified=1530207886"
+        },
+        {
+            "id": 5966,
+            "caption": {
+                "en-US": "Chrome Editor"
+            },
+            "image_size": [
+                516,
+                470
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5966.png?modified=1530207887",
+            "thumbnail_size": [
+                220,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5966.png?modified=1530207887"
+        },
+        {
+            "id": 5967,
+            "caption": {
+                "en-US": "About: Menu Options"
+            },
+            "image_size": [
+                367,
+                520
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5967.png?modified=1530207889",
+            "thumbnail_size": [
+                141,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5967.png?modified=1530207889"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.25727,
+        "count": 134,
+        "average": 4.2836,
+        "text_count": 134
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mr-tech-toolkit/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/421",
+    "slug": "mr-tech-toolkit",
+    "status": "public",
+    "summary": {
+        "en-US": "(Formerly Local Install) The primary goal of this extension is to provide the tools needed to install and manage extensions and themes locally and tons of other features.\n\nNote: With Toolkit 6.0 Auto Archiving is fully working in Firefox 2.0 and temporarily disabled for Firefox 3.0, fix coming soon."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://forums.mozillazine.org/viewtopic.php?f=48&t=669795"
+    },
+    "tags": [
+        "about screens",
+        "addons",
+        "addson toolkit",
+        "archiving",
+        "backup",
+        "config",
+        "developer",
+        "extension",
+        "extensions",
+        "management",
+        "mr tech",
+        "options",
+        "package manager",
+        "themes",
+        "troubleshooting"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mr-tech-toolkit/",
+    "weekly_downloads": 22
+}

@@ -1,0 +1,148 @@
+{
+    "id": 358040,
+    "authors": [
+        {
+            "id": 13616734,
+            "name": "Wladimir Palant",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/palant/",
+            "username": "palant",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13616/13616734.png?modified=1513773604"
+        }
+    ],
+    "average_daily_users": 29,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "android": [
+            "experimental"
+        ],
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 1935152,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "45.0"
+            },
+            "android": {
+                "max": "56.*",
+                "min": "45.0"
+            },
+            "seamonkey": {
+                "max": "2.54",
+                "min": "2.42"
+            },
+            "thunderbird": {
+                "max": "57.0",
+                "min": "45.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autoinstaller/versions/1935152",
+        "files": [
+            {
+                "id": 503112,
+                "created": "2016-09-15T11:35:14Z",
+                "hash": "sha256:c99ea9369a5ab269a45dc400653b2570f1074af69b34645918316e6daea40fc9",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 15821,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/503112/extension_auto_installer-1.3-sm+an+fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "* If installation fails for unsigned add-ons, a prompt will now offer installing as a temporary add-on.\n* Various error messages (e.g. disallowed IPs trying to install) have been made visible."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoinstaller/versions/1.3",
+        "version": "1.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This is a tool for extension developers tired of the usual test cycle: make a change, create a new extension build, install it in the browser (with wait time and confirmations), restart the browser, test. This extension will receive new extension packages on a TCP port, automatically install them and restart the browser if necessary. All you need to do is send your extension package to this port, e.g. with the wget command line tool:\n\n<code>wget --post-file=extension.xpi http://127.0.0.1:8888/</code>\n\nOr with the curl command line tool (removing Expect header here is important):\n\n<code>curl --data-binary '@extension.xpi' -H 'Expect:' http://127.0.0.1:8888/</code>\n\nIt will be even simpler if you integrate this step into the build script of your extension. <em>Note</em>: The response to this request is always \"500 No Content\" to prevent the command line tools from saving results, this is not an issue.\n\n<strong>Configuration</strong>\n\nBy default, the extension will accept connections on port 8888 with 127.0.0.1 (localhost) as the only address allowed to connect. Connection attempts from other IP addresses will show up in Error Console. To accept connections from other addresses add them to the \"Accept IP addresses\" options field. If you do that please keep in mind that IP addresses can be spoofed on unprotected networks (e.g. public WiFi).\n\n<strong>Firefox Mobile notes</strong>\n\nYou can also test your extension on a mobile phone while developing on your desktop, simply send the extension package to the IP address of your phone instead of localhost. You have to configure Auto-Installer on your phone however and add the IP address of your desktop to the allowed addresses.\n\n<strong>Known issues</strong>\n\n<ul><li>Your firewall might ask you about allowing incoming connections even if 127.0.0.1 is the only allowed IP address.</li><li>No connections will be accepted after switching the browser into offline mode and back, Extension Auto-Installer needs to be restarted.</li></ul>\n<strong>Source code / Contributing</strong>\n\nThe extension source code is available under <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4f447c8bda45d04a1c576e8c0a6ab3471e6b34de09555bb7540a78001b049151/https%3A//github.com/palant/autoinstaller\">https://github.com/palant/autoinstaller</a>."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autoinstaller/edit",
+    "guid": "autoinstaller@adblockplus.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/palant/autoinstaller"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-09-15T15:55:32Z",
+    "name": {
+        "en-US": "Extension Auto-Installer"
+    },
+    "previews": [
+        {
+            "id": 66680,
+            "caption": {
+                "en-US": "Configuration options",
+                "de": ""
+            },
+            "image_size": [
+                700,
+                318
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/66/66680.png?modified=1530208793",
+            "thumbnail_size": [
+                320,
+                145
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/66/66680.png?modified=1530208793"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.62027,
+        "count": 48,
+        "average": 4.7083,
+        "text_count": 24
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoinstaller/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/358040",
+    "slug": "autoinstaller",
+    "status": "public",
+    "summary": {
+        "en-US": "Important note: This extension will not work in Firefox 57 and above. Providing this functionality in Firefox is no longer possible, the extension is discontinued."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/palant/autoinstaller/issues"
+    },
+    "tags": [
+        "restartless"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoinstaller/",
+    "weekly_downloads": 45
+}

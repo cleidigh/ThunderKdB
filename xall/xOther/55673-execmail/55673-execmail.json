@@ -1,0 +1,102 @@
+{
+    "id": 55673,
+    "authors": [
+        {
+            "id": 212790,
+            "name": "kzmi",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kzmi/",
+            "username": "kzmi",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 5,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1376698,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/execmail/versions/1376698",
+        "files": [
+            {
+                "id": 167882,
+                "created": "2012-09-15T22:47:01Z",
+                "hash": "sha256:a0890c94047ca8f764adbb09abf9a53d1d18100488fcda290e45dd91f14759eb",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 7168,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/167882/execmail-1.1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Fixed issue that replacing text fails on TB15."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/execmail/versions/1.1.1",
+        "version": "1.1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on adds a menu that execute JavaScript written in the editing mail.\nYou can generate a new mail with JavaScript you wrote.\n\nTo try a sample :\n1. Open Compose window (edit a new message)\n2. Dlete all text in the message editor (also your signature)\n3. Select menu : Options &gt; ExecMail &gt; Insert sample code\n4. Select menu : Options &gt; ExecMail &gt; Execute\n\n<b>[Caution] (Version 1.0.*)</b>\nVersion 1.0.* has a security risk.\nThe execution context is not separated from the context Thunderbird uses internally.\nThunderbird's internal objects are not protected from your script.\nSince Version 1.1.0, Javscript code is executed in sandbox. The script cannot access Thunderbird's internal objects.",
+        "ja": "このアドオンは、編集中のメールに書かれたJavaScriptを実行するメニューを追加します。\n自分で書いたJavaScriptで、新規メールを生成できます。\n\nサンプルを試すには、\n1. 作成ウィンドウを開く (新規メッセージの作成)\n2. メッセージエディタのテキストをすべて削除する (署名も削除)\n3. メニューから、オプション &gt; ExecMail &gt; サンプルコード挿入 を選択\n4. メニューから、オプション &gt; ExecMail &gt; 実行 を選択\n\n<b>[注意] (Version 1.0.*)</b>\nVersion 1.0.* にはセキュリティリスクがあります。\n実行コンテキストは、Thunderbirdが内部で使用するコンテキストとは分離されていません。\nThunderbird内部のオブジェクトは、あなたが書いたスクリプトから保護されません。\nVersion 1.1.0 からは、Javscriptコードはサンドボックスで実行されます。スクリプトはThunderbird内部のオブジェクトにアクセスすることはできません。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/execmail/edit",
+    "guid": "{27c84640-86d9-4f98-8ee8-3e205dbf3190}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://sites.google.com/site/icantlivewithoutit/",
+        "ja": "http://sites.google.com/site/icantlivewithoutit/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-09-25T13:36:05Z",
+    "name": {
+        "en-US": "ExecMail"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0.698215,
+        "count": 1,
+        "average": 1,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/execmail/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/55673",
+    "slug": "execmail",
+    "status": "public",
+    "summary": {
+        "en-US": "Executes JavaScript in the editing mail.",
+        "ja": "編集しているメールのJavaScriptを実行します."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/execmail/",
+    "weekly_downloads": 23
+}

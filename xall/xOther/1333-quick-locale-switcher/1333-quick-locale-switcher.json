@@ -1,0 +1,236 @@
+{
+    "id": 1333,
+    "authors": [
+        {
+            "id": 6636647,
+            "name": "ppclick",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ppclick/",
+            "username": "ppclick",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6636/6636647.png?modified=1399868887"
+        }
+    ],
+    "average_daily_users": 1007,
+    "categories": {
+        "firefox": [
+            "language-support",
+            "web-development"
+        ],
+        "seamonkey": [
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "language-support"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1425892,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0"
+            },
+            "thunderbird": {
+                "max": "21.0a1",
+                "min": "5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quick-locale-switcher/versions/1425892",
+        "files": [
+            {
+                "id": 194794,
+                "created": "2013-02-26T06:41:17Z",
+                "hash": "sha256:4a092f2b4d459ad1faec650957e219e7635bfb2bdc15407a0f16cfd148936ebb",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 540261,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/194794/quick_locale_switcher-1.7.8.5-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quick-locale-switcher/versions/1.7.8.5.1-signed.1-signed",
+        "version": "1.7.8.5.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "ru": "Позволяет быстро переключиться на другой язык (интерфейс пользователя, проверка орфографии и язык кодировки веб-сайта) в Вашем приложении Mozilla.\nОб этом дополнении:\nПозволяет быстро изменить и применить различные настройки локали связанных с меню инструментов, строку состояния или панели инструментов.\nОсобенности дополнения:\n* Удобный инструмент для всех людей, связанных с использованием многоязычных приложений Mozilla.\n* Переключатели языка интерфейса пользователя Mozilla (general.useragent.locale предпочтения)\n* Переключатели accept_language предпочтения, для полного перевода сайтов. (Если поддерживается язык заголовка http, например, как делает Google)\n* Переключатели словаря проверки орфографии. (Если эта функция поддерживается приложением Mozilla)\n* Помнит словарь и содержания языка для каждого сайта и автоматически переключается при загрузке этого сайта. Она также пытается определить язык сайтов, и если он найден автоматически переключается на этот язык. В Thunderbird автоматическое переключение на основе адреса электронной почты.\n* Автоматическая перезагрузка приложения в версии 1.4 + (только если это необходимо)\n* Включает флаг страны, значки для \"всех\" стран по данным <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/efeafcbd3b2be2582f472842d79183b6447c2d5d9a311cffc37e1ceca109153a/http%3A//famfamfam.com\">famfamfam.com</a>.\n* Отображение флага выбранного языка в строке состояния программы Mozilla.\n* Добавление 3-х Ваших собственных локалей.\n* Выберите только необходимые из списка около 200 локалей которые должны быть видны в меню.\n* Выберите, какие параметры вы хотите переключать.\n* Быстро переключиться обратно на ранее выбранный язык, нажав CTRL + SHIFT + Q.\n* Доступно для Firefox 1.0 - 3.0, Thunderbird 1.0 - 2.0, NVU 1.0, Mozilla Suite 1.7, Seamonkey, Sunbird, Flock и Netscape\n* Доступно для языков: en-US, nl-NL, fr-FR, it-IT, de-DE, es-ES, tr-TR, ko-KR, pl-PL, cs-CZ, bg-BG, pt-PT, sl-SI, zh-CN, sk-SK, ru-RU, fy-NL, zh-TW, pt-BR, da-DK, lt-LT, ja-JP-mac, gl-ES, sq-AL, he-IL, en-GB, fa-IR, km-KH, uk-UA, hr-HR, be-BY, ro-RO, es-AR, hu-HU, nb-NO, fi-FI, ca-AD, ar, ml-IN, wa-BE, is-IS, mk-MK\n* Внимание! После добавления кнопки в панели инструментов (меню Вид / Панели инструментов / Настроить), Вам необходимо перезагрузить приложение Mozilla.",
+        "en-US": "Allows you to quickly change and apply a different locale related setting from the tools menu, the statusbar, or your Toolbar.\nFeatures:\n    * Handy tool for all people involved with multilingual usage of Mozilla applications.\n    * Switches the Mozilla User Interface language (general.useragent.locale preference)\n    * Switches the accept_language preference, so complete websites will be translated. (if the http accept language header is supported, e.g. like Google does)\n    * Switches the Spell Checker Dictionary preference. (if supported by your Mozilla application)\n    * Remembers the dictionary and content locale for each site and automatically switches when you load that site. It also tries to detect the language of sites itself, and if found automatically switches to that language. In Thunderbird the automatic switching is based on e-mail addresses.\n    * Auto restarts the application in versions 1.4+ (only if needed)\n    * Includes country flag icons for 'all' countries by <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/efeafcbd3b2be2582f472842d79183b6447c2d5d9a311cffc37e1ceca109153a/http%3A//famfamfam.com\">famfamfam.com</a>.\n    * Displays the flag of the currently selected locale on your statusbar.\n    * Add 3 of your own custom defined locales.\n    * Select from a list of ~200 locales which locales should be visible in the menu.\n    * Select which settings you want to switch.\n    * Quickly switch back to the previously selected locale by pressing CTRL + SHIFT + Q.\n    * Available for Firefox 1.0 - 3.0, Thunderbird 1.0 - 2.0, NVU 1.0, Mozilla Suite 1.7, Seamonkey, Sunbird, Flock and Netscape\n    * Available in: en-US, nl-NL, fr-FR, it-IT, de-DE, es-ES, tr-TR, ko-KR, pl-PL, cs-CZ, bg-BG, pt-PT, sl-SI, zh-CN, sk-SK, ru-RU, fy-NL, zh-TW, pt-BR, da-DK, lt-LT, ja-JP-mac, gl-ES, sq-AL, he-IL, en-GB, fa-IR, km-KH, uk-UA, hr-HR, be-BY, ro-RO, es-AR, hu-HU, nb-NO, fi-FI, ca-AD, ar, ml-IN, wa-BE, is-IS, mk-MK\n\n    * Note! After adding the toolbar button (menu View/toolbars/Customize) you need to restart your Mozilla application before it actually works",
+        "es": "Le permite cambiar y aplicar rápidamente un idioma diferente desde el menú herramientas, la barra de estado, o su barra de herramientas.\nCaracterísticas:\n* Herramienta útil para todo el mundo involucrado en el uso multilenguaje de las aplicaciones Mozilla.\n* Cambia el idioma de la interfaz de usuario de Mozilla (opción general.useragent.locale)\n* Cambia la preferencia de idiomas aceptados, por lo que se traducirán las páginas web completas (siempre que la cabecera de http accept está soportada, por ejemplo como por ejemplo hace Google).\n* Cambiar la preferencia del corrector ortográfico (si está soportado en su aplicación Mozilla).\n* Recuerda el idioma del diccionario y el contenido para cada sitio, y lo cambia de modo automático al cargar la página. También intenta detectar el idioma de las páginas por sí mismo, y si lo encuentra cambia a ese idioma. En Thunderbird, el cambio automático se hace en base a la dirección de correo.\n* Reinicia automáticamente la aplicación en versiones superiores a la 1.4 (sólo cuando sea necesario)\n* Incluye las banderas de todos los países, por colaboración de <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/efeafcbd3b2be2582f472842d79183b6447c2d5d9a311cffc37e1ceca109153a/http%3A//famfamfam.com\">famfamfam.com</a>.\n* Muestra la bandera del idioma seleccionado actualmente en la barra de estado.\n* Añada tres idiomas propios definidos de manera personalizada.\n* Seleccione de una lista de unos 200 idiomas con los idiomas que serán visibles en el menú.\n* Seleccione qué opciones quiere cambiar.\n* Disponible para Firefox 1.0 - 3.0, Thunderbird 1.0 - 2.0, NVU 1.0, Mozilla Suite 1.7, Seamonkey, Sunbird, Flock y Netscape\n* Disponible en: en-US, nl-NL, fr-FR, it-IT, ja-JP, de-DE, es-ES, tr-TR, ko-KR, pl-PL, cs-CZ, bg-BG, pt-PT, sl-SI, zh-CN, sk-SK, ru-RU, fy-NL, zh-TW, pt-BR, da-DK, lt-LT, ja-JP-mac, gl-ES, sq-AL, he-IL, en-GB, fa-IR, km-KH, uk-UA, hr-HR, be-BY, ro-RO, es-AR, hu-HU, nb-NO, fi-FI, ca-AD, ar, ml-IN, wa-BE, is-IS, mk-MK\n\n* Nota! Después de añadir el botón de la barra de herramientas (menú Ver/Barras de herramientas/Personalizar) es necesario que reinicie su aplicación Mozilla antes de que funcione."
+    },
+    "developer_comments": {
+        "en-US": "***NO Restart is required***\nThe restart of your Browser/Mail application is only required if you want to switch the user interface language. So not if you only need to switch the dictionary. You can choose what you want to switch in the settings window, by default it switches both the user interface and the spellchecker dictionary.\n***NO Restart is required***\n\nFor detailed help and information, visit the forum"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quick-locale-switcher/edit",
+    "guid": "{25A1388B-6B18-46c3-BEBA-A81915D0DE8F}",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1333-64.png?modified=1362639110",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1333-32.png?modified=1362639110",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1333-64.png?modified=1362639110"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2013-02-26T09:41:18Z",
+    "name": {
+        "en-US": "Quick Locale Switcher",
+        "es": "Quick Locale Switcher"
+    },
+    "previews": [
+        {
+            "id": 19444,
+            "caption": {
+                "en-US": "QLS - Options Screen - Autoswitch Pane"
+            },
+            "image_size": [
+                230,
+                300
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/19/19444.png?modified=1530208001",
+            "thumbnail_size": [
+                153,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/19/19444.png?modified=1530208001"
+        },
+        {
+            "id": 19440,
+            "caption": {
+                "en-US": "QLS - Tools Menu Zoomed"
+            },
+            "image_size": [
+                443,
+                502
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/19/19440.png?modified=1530208002",
+            "thumbnail_size": [
+                176,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/19/19440.png?modified=1530208002"
+        },
+        {
+            "id": 19441,
+            "caption": {
+                "en-US": "QLS - Tools Menu"
+            },
+            "image_size": [
+                516,
+                505
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/19/19441.png?modified=1530208003",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/19/19441.png?modified=1530208003"
+        },
+        {
+            "id": 19442,
+            "caption": {
+                "en-US": "QLS - Options Screen - General Pane"
+            },
+            "image_size": [
+                516,
+                505
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/19/19442.png?modified=1530208005",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/19/19442.png?modified=1530208005"
+        },
+        {
+            "id": 19443,
+            "caption": {
+                "en-US": "QLS - Options Screen - Locales Pane"
+            },
+            "image_size": [
+                516,
+                505
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/19/19443.png?modified=1530208006",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/19/19443.png?modified=1530208006"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.37548,
+        "count": 88,
+        "average": 3.3864,
+        "text_count": 87
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quick-locale-switcher/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/1333",
+    "slug": "quick-locale-switcher",
+    "status": "public",
+    "summary": {
+        "en-US": "Allows you to quickly switch to a different language (User Interface, Spell Checker Dictionary and Website content) in your Mozilla application.",
+        "es": "Le permite cambiar rápidamente el idioma (interfaz de usuario, diccionario ortográfico y contenido de la página) en sus aplicaciones Mozilla."
+    },
+    "support_email": {
+        "en-US": "support@ppclick.com",
+        "es": "extensions@captaincaveman.nl"
+    },
+    "support_url": null,
+    "tags": [
+        "country flag",
+        "dictionary",
+        "dictionnary",
+        "language",
+        "languages",
+        "locale",
+        "spell checker",
+        "statusbar"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quick-locale-switcher/",
+    "weekly_downloads": 284
+}

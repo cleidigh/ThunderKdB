@@ -1,0 +1,155 @@
+{
+    "id": 460209,
+    "authors": [
+        {
+            "id": 10164246,
+            "name": "benniven",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/benniven/",
+            "username": "benniven",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/10/10164/10164246.png?modified=1379070701"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1488115,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "12.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nomapi/versions/1488115",
+        "files": [
+            {
+                "id": 227649,
+                "created": "2013-09-13T11:13:21Z",
+                "hash": "sha256:9027820c957bab6afd25c7013c2df05170cc48ec8ed68a34949c2d6fd0c26230",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 73965,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/227649/nomapi-0.0.5-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nomapi/versions/0.0.5",
+        "version": "0.0.5"
+    },
+    "default_locale": "de",
+    "description": {
+        "de": "Generelles:\nMit diesem Add-on können E-Mails über Programme von Drittherstellern direkt über Thunderbird verschickt werden. Ähnlich wie über MAPI und Outlook und Outlook Express.\n\nFunktionsweise:\nMittels eines HTTP/Post der im Anhang eine XML Datei enthält, können einfach E-Mails via http://localhost:4411/sendmail verschickt werden.\n\nDieser Request kann mit einem einfachen Webbrowser oder einer beliebigen Anwendung heraus vorgenommen werden. Der Implementierungsaufwand ist sehr gering.\n\nDie Struktur der XML-Datei sieht wie folgt aus:\n\n&lt;nomapi-message&gt;\n  &lt;from&gt;&lt;/from&gt;\n  &lt;to&gt;receiver@ww.com&lt;/to&gt;\n  &lt;cc&gt;&lt;/cc&gt;&lt;bcc&gt;&lt;/bcc&gt;\n  &lt;subject&gt;I am just a subject&lt;/subject&gt;\n  &lt;dsn&gt;&lt;/dsn&gt;&lt;mdn&gt;&lt;/mdn&gt;\n  &lt;body&gt;Dear Mr. Magpie, .....&lt;/body&gt;\n  &lt;att&gt;C:\\Bilder\\Hydrangeas.jpg&lt;/att&gt;\n&lt;/nomapi-message&gt;\n\nHauptmerkmale:\n- Versand nur von vertrauenswürdigen Anwendungen aus\n- Unterstützt HTML Formatierung der E-Mail\n- Unterstützt Anhänge\n- Unterstützt senden sofort oder später"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nomapi/edit",
+    "guid": "nomapi@venditti.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/feeds-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/feeds-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/feeds-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-09-13T11:41:49Z",
+    "name": {
+        "de": "nomapi"
+    },
+    "previews": [
+        {
+            "id": 112236,
+            "caption": null,
+            "image_size": [
+                357,
+                424
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/112/112236.png?modified=1530209033",
+            "thumbnail_size": [
+                168,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/112/112236.png?modified=1530209033"
+        },
+        {
+            "id": 113098,
+            "caption": null,
+            "image_size": [
+                700,
+                424
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113098.png?modified=1530209033",
+            "thumbnail_size": [
+                320,
+                194
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113098.png?modified=1530209033"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nomapi/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/460209",
+    "slug": "nomapi",
+    "status": "public",
+    "summary": {
+        "de": "not a mapi plugin"
+    },
+    "support_email": {
+        "de": "benjamin.venditti@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "mapi"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nomapi/",
+    "weekly_downloads": 21
+}

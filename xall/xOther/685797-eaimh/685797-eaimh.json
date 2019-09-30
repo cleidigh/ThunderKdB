@@ -1,0 +1,157 @@
+{
+    "id": 685797,
+    "authors": [
+        {
+            "id": 6583070,
+            "name": "Patrick Dark",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Patrick_Dark/",
+            "username": "Patrick_Dark",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6583/6583070.png?modified=1458853695"
+        }
+    ],
+    "average_daily_users": 25,
+    "categories": {
+        "thunderbird": [
+            "appearance",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1846308,
+        "compatibility": {
+            "thunderbird": {
+                "max": "47.0a2",
+                "min": "38.5.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eaimh/versions/1846308",
+        "files": [
+            {
+                "id": 424025,
+                "created": "2016-04-12T02:32:45Z",
+                "hash": "sha256:e2ef2da34e7ebc41ce211450f78d1674a34cb90ba7ec177ba3db6e6dbd9dbd7d",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9163,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/424025/email_addresses_in_message_headers-3.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "I fixed a localization issue that would result in the <code>to</code> header’s variant of of the “Me” display name for identity (i.e., sending) email addresses to be used for all email address headers (i.e., <code>from</code>, <code>reply-to</code>, <code>to</code>, <code>cc</code>, and <code>bcc</code>). The original behavior was fine for languages like English—where the keyword is the same for all headers—but doesn't work for locales like German (which uses “Mich” and “Mir” contextually)."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eaimh/versions/3.2",
+        "version": "3.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This extension shows email addresses in message headers, including those of contacts, by appending the email address as a parenthetical to the email address’s associated display name.\n\nIf there is no display name, only the email address will show.\n\nIf there is no email address (‍ ‍<abbr title=\"id est\">i.e.</abbr>, the email address is malformed‍ ‍), only the malformed email address will show. Malformed email addresses are shown alone with a line through them.\n\nThis extension is most useful for users who prefer that the “Show only display names for people in my address book” option be enabled (‍ ‍under Tools: Options: Display‍ ‍), but will also work with it disabled.\n\nEmail address associations with contact cards (‍ ‍and thereby display names‍ ‍) are done automatically by Mozilla Thunderbird, so this extension will not utilize contact card display names in cases where Thunderbird does not correctly associate contact cards with a corresponding email address. Specifically, this extension will not reflect the Additional Email field in contact cards. I recommend not using this field and creating additional contact cards instead (‍ ‍which utilize only the Email field‍ ‍) if a contact has multiple email addresses.\n\nThere are three preferences that may be set.\n\nThe first is <code>extensions.EAIMH.allow_email_address_display_name</code>, which defaults to the Boolean value <code>false</code>. This preference hides display names when they’re a case‑insensitive match for the email address. For example, a mailing list—such as www-style@w3.org—may have a display name that is identical to its email address; by default, only www-style@w3.org will appear unless this preference is toggled.\n\nThe second and third preferences control which characters are used to demarcate email addresses:\n<ul>\t<li><code>extensions.EAIMH.email_address_prefix_hex_codes</code></li>\t<li><code>extensions.EAIMH.email_address_suffix_hex_codes</code></li></ul>\nThe preference values require a space‑separated list of hexadecimal codes. The <abbr title=\"hexadecimal\">hex</abbr> codes are written using an ECMAScript‍ ‍/‍ ‍JavaScript syntax. The default values are:\n<ul>\t<li><code>0xa0 0x28 0x200d 0x200a 0x200d</code></li>\t<li><code>0x200d 0x200a 0x200d 0x29</code></li></ul>\nA description of the default value <abbr title=\"hexadecimal\">hex</abbr> codes:\n<ul>\t<li><code>0xa0</code>: non‑breaking space</li>\t<li><code>0x28</code>: left parenthesis</li>\t<li><code>0x29</code>: right parenthesis</li>\t<li><code>0x200a</code>: hair space</li>\t<li><code>0x200d</code>: zero‑width joiner</li>\t<li><code>0x200d 0x200a 0x200d</code>: non‑breaking hair space</li></ul>\n<abbr title=\"Hexadecimal\">Hex</abbr> codes (‍ ‍instead of direct character entry‍ ‍) must be used to overcome design weaknesses in both ECMAScript and Thunderbird.\n\nI recommend the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/649118e798e584058144c64bc9afc1577db237d09b6574ccb0e7643f70a8f235/http%3A//www.babelstone.co.uk/Software/BabelMap.html\">BabelMap</a> program by Andrew West for looking up <abbr title=\"hexadecimal\">hex</abbr> codes of characters. In BabelMap, you can get the <abbr title=\"hexadecimal\">hex</abbr> codes of a character by selecting it; the <abbr title=\"hexadecimal\">hex</abbr> code will then appear to the lower‑left of the character frame preceded by the characters “U+”. Note that preceding zeros are unnecessary (‍ ‍e.g., U+003C should be written as <code>0x3c</code> instead of <code>0x003c</code>‍ ‍).\n\nNote that preference validity is enforced, so entering an invalid value will reset the relevant preference."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eaimh/edit",
+    "guid": "extension-eaimh@patrick.dark.name",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://patrick.dark.name/projects/eaimh/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/appearance-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/appearance-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/appearance-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-04-12T23:44:01Z",
+    "name": {
+        "en-US": "Email Addresses in Message Headers"
+    },
+    "previews": [
+        {
+            "id": 171263,
+            "caption": {
+                "en-US": "Modified message headers consistently display email addresses with display names used depending on (native) user settings as shown in this compilation of before and after screenshots.\r\n\r\nA screenshot compilation of the original interface is at left. A screenshot compilation of the modified interface is at right. The options used to to create a given interface are in the middle, to the side of the relevant interface screenshots."
+            },
+            "image_size": [
+                700,
+                269
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/171/171263.png?modified=1530209138",
+            "thumbnail_size": [
+                320,
+                123
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/171/171263.png?modified=1530209138"
+        },
+        {
+            "id": 171264,
+            "caption": {
+                "en-US": "Modified message headers provide a clearer and cleaner indication that an “email address” is malformed.\r\n\r\nA screenshot of the original interface is at top. A screenshot of the modified interface is at bottom."
+            },
+            "image_size": [
+                557,
+                260
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/171/171264.png?modified=1530209138",
+            "thumbnail_size": [
+                320,
+                149
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/171/171264.png?modified=1530209138"
+        },
+        {
+            "id": 171265,
+            "caption": {
+                "en-US": "Modified message headers’ email address prefixes and suffixes can be customized to a user’s liking.\r\n\r\nA screenshot of the modified interface is at top. A screenshot of a customized, modified interface is at bottom. The customized email address prefix utilizes an arrow character surrounded by two spaces and the customized email address suffix is specified to be an empty string."
+            },
+            "image_size": [
+                492,
+                260
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/171/171265.png?modified=1530209138",
+            "thumbnail_size": [
+                320,
+                169
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/171/171265.png?modified=1530209138"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.17862,
+        "count": 2,
+        "average": 3,
+        "text_count": 2
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eaimh/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/685797",
+    "slug": "eaimh",
+    "status": "public",
+    "summary": {
+        "en-US": "Shows email addresses in message headers, including those of contacts, and provides control over message header presentation."
+    },
+    "support_email": {
+        "en-US": "extension-eaimh@patrick.dark.name"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eaimh/",
+    "weekly_downloads": 25
+}

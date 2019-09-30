@@ -1,0 +1,295 @@
+{
+    "id": 376073,
+    "authors": [
+        {
+            "id": 4805713,
+            "name": "spaceShot",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/spaceshot/",
+            "username": "spaceshot",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1407508,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "3.0"
+            },
+            "seamonkey": {
+                "max": "*",
+                "min": "2.9"
+            },
+            "thunderbird": {
+                "max": "52.0",
+                "min": "3.0b1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/boinc-stats-2/versions/1407508",
+        "files": [
+            {
+                "id": 184706,
+                "created": "2012-12-30T03:46:07Z",
+                "hash": "sha256:1f73b9cd3f17495e8e186aa984ab7b2743c3cd00c5cc0c9de02b620b9a5a607e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 116006,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/184706/boinc_stats_2-1.1.1-tb+fx+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "-Killed an error in the config update code when no prior version exists."
+        },
+        "reviewed": "2013-01-16T13:03:36Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/boinc-stats-2/versions/1.1.1.1-signed.1-signed",
+        "version": "1.1.1.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "BOINC Stats 2 displays a user's total and recent average credit in the status bar for <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/421022bae21b2048b8a4576e824fffbbb2c99c140349732fe443cfd77c3a949b/http%3A//boinc.berkeley.edu/\">BOINC</a> distributed computing projects in which they are actively participating. It is available for Firefox and SeaMonkey and hopefully soon for Thunderbird.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/421022bae21b2048b8a4576e824fffbbb2c99c140349732fe443cfd77c3a949b/http%3A//boinc.berkeley.edu/\">BOINC</a> is a distributed computing platform created by the University of California, Berkeley. It allows you to \"Use the idle time on your computer (Windows, Mac, or Linux) to cure diseases, study global warming, discover pulsars, and do many other types of scientific research\" as part of projects such as the famous <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bfc57a727d2119a7f413c8c3dde46d7412cd56707a5e9cbddb7cf1388508c20a/http%3A//setiathome.berkeley.edu/\">SETI@Home</a>. \n\n<b>User Options</b>\nUpdate frequency (minimum 1 hour), display or not display project icons, 12 or 24 hour time format, and selection of projects for which stats are displayed.\n\nBOINC Stats 2 is now capable of displaying a user's stats for all known <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/421022bae21b2048b8a4576e824fffbbb2c99c140349732fe443cfd77c3a949b/http%3A//boinc.berkeley.edu/\">BOINC</a> projects.\n\n<b>Credits</b>\nBOINC Stats 2 is based on <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/firefox/addon/boinc-stats/\">BOINC Stats</a> by tekwyzrd. It hadn't been updated since 2006 and I thought it would be nice to have it available for current versions of Firefox.\n\n<b>Note</b>\nIt was necessary to change the location of the extension's preferences to pass the initial upload check. As a result, the extension will run a one-time update to move your prefs if you are updating from a version earlier than 1.1."
+    },
+    "developer_comments": {
+        "en-US": "Changes in version 1.1\n\n<ul><li>-Added some new projects.</li><li>-Added es-ES and nl locales.</li><li>-Bumped supported version numbers.</li><li>-Added additional stats site options.</li><li>-Added translators to the about box.</li><li>-Moved the prefs to \"extensions.\" to please AMO and added a function to update existing prefs.</li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/boinc-stats-2/edit",
+    "guid": "{beb78d12-416e-43aa-8a4c-51f3e866338e}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/376/376073-64.png?modified=1358342423",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/376/376073-32.png?modified=1358342423",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/376/376073-64.png?modified=1358342423"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-01-16T13:03:37Z",
+    "name": {
+        "en-US": "BOINC Stats 2"
+    },
+    "previews": [
+        {
+            "id": 71799,
+            "caption": {
+                "en-US": "The status bar"
+            },
+            "image_size": [
+                152,
+                26
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71799.png?modified=1530208954",
+            "thumbnail_size": [
+                152,
+                26
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71799.png?modified=1530208954"
+        },
+        {
+            "id": 71800,
+            "caption": {
+                "en-US": "Options 1"
+            },
+            "image_size": [
+                700,
+                380
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71800.png?modified=1530208954",
+            "thumbnail_size": [
+                320,
+                174
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71800.png?modified=1530208954"
+        },
+        {
+            "id": 71801,
+            "caption": {
+                "en-US": "Options 2"
+            },
+            "image_size": [
+                700,
+                380
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71801.png?modified=1530208955",
+            "thumbnail_size": [
+                320,
+                174
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71801.png?modified=1530208955"
+        },
+        {
+            "id": 71802,
+            "caption": {
+                "en-US": "Options 3"
+            },
+            "image_size": [
+                700,
+                380
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71802.png?modified=1530208955",
+            "thumbnail_size": [
+                320,
+                174
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71802.png?modified=1530208955"
+        },
+        {
+            "id": 71803,
+            "caption": {
+                "en-US": "Options 4"
+            },
+            "image_size": [
+                700,
+                380
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71803.png?modified=1530208955",
+            "thumbnail_size": [
+                320,
+                174
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71803.png?modified=1530208955"
+        },
+        {
+            "id": 71804,
+            "caption": {
+                "en-US": "Options 5"
+            },
+            "image_size": [
+                700,
+                380
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71804.png?modified=1530208956",
+            "thumbnail_size": [
+                320,
+                174
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71804.png?modified=1530208956"
+        },
+        {
+            "id": 71805,
+            "caption": {
+                "en-US": "Options 6"
+            },
+            "image_size": [
+                700,
+                380
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71805.png?modified=1530208956",
+            "thumbnail_size": [
+                320,
+                174
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71805.png?modified=1530208956"
+        },
+        {
+            "id": 71806,
+            "caption": {
+                "en-US": "Options 7"
+            },
+            "image_size": [
+                700,
+                380
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71806.png?modified=1530208957",
+            "thumbnail_size": [
+                320,
+                174
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71806.png?modified=1530208957"
+        },
+        {
+            "id": 71807,
+            "caption": {
+                "en-US": "Options 8"
+            },
+            "image_size": [
+                700,
+                380
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71807.png?modified=1530208957",
+            "thumbnail_size": [
+                320,
+                174
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71807.png?modified=1530208957"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.55518,
+        "count": 2,
+        "average": 5,
+        "text_count": 2
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/boinc-stats-2/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/376073",
+    "slug": "boinc-stats-2",
+    "status": "public",
+    "summary": {
+        "en-US": "Displays your Total and Recent Average Credits for BOINC distributed computing projects in the status bar."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "boinc",
+        "crunching",
+        "distributed computing",
+        "grid computing",
+        "research",
+        "science",
+        "statistics",
+        "stats",
+        "volunteer computing"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/boinc-stats-2/",
+    "weekly_downloads": 21
+}

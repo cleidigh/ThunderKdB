@@ -1,0 +1,232 @@
+{
+    "id": 4025,
+    "authors": [
+        {
+            "id": 79497,
+            "name": "Daniel Miller",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/daniel-miller/",
+            "username": "daniel-miller",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 36405,
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbayes/versions/36405",
+        "files": [
+            {
+                "id": 19699,
+                "created": "2007-10-01T20:19:31Z",
+                "hash": "sha256:3cef9199d2083350bc64c6935eb0445d45ee9184eb88afb0b705e4381f795cfe",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 5146624,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/19699/thunderbayes-1.0.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "1.0.1 is a bug fix release. It fixes issues with loading and saving ThunderBayes settings.\n\nNew in version 1.0:\n\n- Added integrated SpamBayes proxy server (can be disabled/bypassed).\n- Added ThunderBayes configuration in Thunderbird Account Settings (POP3 accounts only).\n- Implemented REST API for SpamBayes, which allows more efficient trainging and automatically updates the SpamBayes review page when training in Thunderbird."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbayes/versions/1.0.1",
+        "version": "1.0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "ThunderBayes provides a toolbar button similar to Thunderbird's Junk button with which email can be classified as Spam or Ham. Clicking the button causes two things to happen: (1) it sends the source of the selected messages to SpamBayes to be classified and (2) it optionally moves the messages to a folder of your choice (this can be configured in the extension options). It includes a custom version of SpamBayes, and provides a simple preference page in the Thunderbird Account Settings where the SpamBayes POP3 proxy and message filters can be configured.\n\nEverything needed to run ThunderBayes on Windows is included in the XPI file. Non-Windows users must have Python 2.2 or later (2.3 recommended) installed. It works great with the Python 2.3.5 that ships with Mac OS X 10.4 (it should work fine with earlier versions of Mac OS X as well).\n\nFor setup instructions go to:\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/07d27096bdbc3fa411355cbc0c5b84391daa6c2aa39d091b0d7f33719058ae03/http%3A//pieces.openpolitics.com/thunderbayes/\">http://pieces.openpolitics.com/thunderbayes/</a>"
+    },
+    "developer_comments": {
+        "en-US": "Send bug reports and feature requests to the email address found on the \"About\" page on my blog: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ba5a56391d6f67db06e7d974fcb41bced16a2dd8ed03d0ac75af930b51a28102/http%3A//pieces.openpolitics.com/about/\">http://pieces.openpolitics.com/about/</a> (include the word \"ThunderBayes\" in the subject line)."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbayes/edit",
+    "guid": "{83d1f945-8280-11db-96a7-00e08161165f}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://pieces.openpolitics.com/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2007-10-02T07:46:25Z",
+    "name": {
+        "en-US": "ThunderBayes"
+    },
+    "previews": [
+        {
+            "id": 12506,
+            "caption": {
+                "en-US": "Toolbar button: mark as Spam (default, or choose from menu)"
+            },
+            "image_size": [
+                200,
+                120
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12506.png?modified=1530208200",
+            "thumbnail_size": [
+                200,
+                120
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12506.png?modified=1530208200"
+        },
+        {
+            "id": 12507,
+            "caption": {
+                "en-US": "Toolbar button: mark as Ham (default, or choose from menu)"
+            },
+            "image_size": [
+                200,
+                120
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12507.png?modified=1530208202",
+            "thumbnail_size": [
+                200,
+                120
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12507.png?modified=1530208202"
+        },
+        {
+            "id": 12509,
+            "caption": {
+                "en-US": "Toolbar button: mark as Spam or Ham (choose from menu)"
+            },
+            "image_size": [
+                200,
+                120
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12509.png?modified=1530208203",
+            "thumbnail_size": [
+                200,
+                120
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12509.png?modified=1530208203"
+        },
+        {
+            "id": 12510,
+            "caption": {
+                "en-US": "Spam Status and Probability columns (Thunderbird 2.0 only)"
+            },
+            "image_size": [
+                420,
+                300
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12510.png?modified=1530208204",
+            "thumbnail_size": [
+                280,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12510.png?modified=1530208204"
+        },
+        {
+            "id": 12511,
+            "caption": {
+                "en-US": "ThunderBayes options dialog"
+            },
+            "image_size": [
+                368,
+                295
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12511.png?modified=1530208205",
+            "thumbnail_size": [
+                249,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12511.png?modified=1530208205"
+        },
+        {
+            "id": 12512,
+            "caption": {
+                "en-US": "Spam filter (this is a normal Thunderbird message filter)"
+            },
+            "image_size": [
+                626,
+                374
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12512.png?modified=1530208207",
+            "thumbnail_size": [
+                320,
+                191
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12512.png?modified=1530208207"
+        },
+        {
+            "id": 12513,
+            "caption": {
+                "en-US": "Unsure filter (this is a normal Thunderbird message filter)"
+            },
+            "image_size": [
+                626,
+                374
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12513.png?modified=1530208208",
+            "thumbnail_size": [
+                320,
+                191
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12513.png?modified=1530208208"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.97565,
+        "count": 15,
+        "average": 3.1333,
+        "text_count": 15
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbayes/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/4025",
+    "slug": "thunderbayes",
+    "status": "public",
+    "summary": {
+        "en-US": "SpamBayes integration for Thunderbird - a better spam filter."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "antispam",
+        "bayesian",
+        "classification",
+        "filter",
+        "ham",
+        "hapax",
+        "portable",
+        "proxy",
+        "python",
+        "spam",
+        "spambayes",
+        "statistics",
+        "thunderbayes",
+        "tokenizer",
+        "training",
+        "unsure"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbayes/",
+    "weekly_downloads": 35
+}

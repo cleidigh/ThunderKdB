@@ -1,0 +1,222 @@
+{
+    "id": 4415,
+    "authors": [
+        {
+            "id": 3930,
+            "name": "Ben Dodson",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ben-dodson/",
+            "username": "ben-dodson",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/3/3930.png?modified=1396662479"
+        },
+        {
+            "id": 3690611,
+            "name": "Eric Caron",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/eric-caron/",
+            "username": "eric-caron",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/3/3690/3690611.png?modified=1411911669"
+        },
+        {
+            "id": 5232859,
+            "name": "Jake Smith",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jake-smith5232859/",
+            "username": "jake-smith5232859",
+            "picture_url": null
+        },
+        {
+            "id": 5429276,
+            "name": "Andy Portmen",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/AndyPortmen/",
+            "username": "AndyPortmen",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 57,
+    "categories": {
+        "firefox": [
+            "web-development"
+        ],
+        "seamonkey": [
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/addondonation/10usd",
+    "current_version": {
+        "id": 1982380,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "*",
+                "min": "2.0a1pre"
+            },
+            "thunderbird": {
+                "max": "54.0",
+                "min": "3.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/font-finder/versions/1982380",
+        "files": [
+            {
+                "id": 546065,
+                "created": "2016-11-30T08:16:15Z",
+                "hash": "sha256:8bbcc3145d168ce8e2421043410f4e86275311ca19c609e30e0c50e1d55e6bea",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 35037,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/546065/font_finder-1.2.3-fx+sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/font-finder/versions/1.2.3",
+        "version": "1.2.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>\nFor e10s compatible FontFinder try <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/firefox/addon/font-inspect/\">https://addons.mozilla.org/en-US/firefox/addon/font-inspect/</a>\n</b>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1aca0cff3f5a9368db25cdbabf07c614eef1203cb6cb6d73ff89f65a122f61e6/http%3A//firefox.add0n.com/font-finder.html\">FontFinder</a> has 4 key pieces of functionality:\n<ol><li>Any font on a page can be completely analyzed</li><li>Any piece of an element's information can be copied to the clipboard</li><li>Font-families can be disabled from the entire page, to test degradation for cross-OS support</li><li>Any active element can have any piece of the font's options (such as color, size or family) adjusted inline</li></ol>\nAny of these options can be quickly accessed through highlight &amp; right-click, or through the use of toggling the icon in the statusbar (which makes it easy to analyze fonts before a :focus action occurs, such as input fields or links).\n\n<strong>Information Captured</strong>\n<ul><li>Font color (rgb and hex)</li><li>Background color (rgb and hex)</li><li>Font family (including actual font being rendered!)</li><li>Font size</li><li>Line-height, vertical-align, letter and word spacing</li><li>Font weight, style, variant</li><li>Text transform, decoration, align and indent</li><li>Element's type, class and ID</li></ul>"
+    },
+    "developer_comments": {
+        "en-US": "The 1.0 release has been submitted for approval and includes a host of new features.\n\nThank you to everyone who has downloaded and to the large number of people who have emailed and commented with suggestions.  \n\nPlease post any comments here or email andy.portmen@gmail.com - all constructive criticism is appreciated and will be used to shape future releases."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/font-finder/edit",
+    "guid": "fontfinder@bendodson.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://firefox.add0n.com/font-finder.html"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4415-64.png?modified=1510317714",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4415-32.png?modified=1510317714",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4415-64.png?modified=1510317714"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2016-12-01T12:43:39Z",
+    "name": {
+        "en-US": "Font Finder"
+    },
+    "previews": [
+        {
+            "id": 43939,
+            "caption": {
+                "en-US": "Through highlighting & right-click, users can analyze the selection, copy pieces of it to the clipboard, or perform inline adjustments of size, color, family and spacing."
+            },
+            "image_size": [
+                474,
+                401
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/43/43939.png?modified=1530208297",
+            "thumbnail_size": [
+                236,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/43/43939.png?modified=1530208297"
+        },
+        {
+            "id": 12063,
+            "caption": {
+                "en-US": "When analyzing an element, FontFinder shows a dialog box that shows information such as color, font family & sizing, spacing, and element details (ID, class & type)."
+            },
+            "image_size": [
+                200,
+                150
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/12/12063.png?modified=1530208298",
+            "thumbnail_size": [
+                200,
+                150
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/12/12063.png?modified=1530208298"
+        },
+        {
+            "id": 43940,
+            "caption": {
+                "en-US": "FontFinder's statusbar, in addition to all the features in the right-click menu, lets a user disable fonts from the entire body - great for testing font degradation across platforms and installs."
+            },
+            "image_size": [
+                182,
+                148
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/43/43940.png?modified=1530208298",
+            "thumbnail_size": [
+                182,
+                148
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/43/43940.png?modified=1530208298"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.96067,
+        "count": 80,
+        "average": 3.975,
+        "text_count": 77
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/font-finder/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/4415",
+    "slug": "font-finder",
+    "status": "public",
+    "summary": {
+        "en-US": "FontFinder is created for designers, developers and typographers. It allows a user to analyze the font information of any element on a page, copy any piece(s) of that information to the clipboard, and perform inline replacements to test new layouts."
+    },
+    "support_email": {
+        "en-US": "andy.portmen@gmail.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/ecaron/firefox-font-finder/issues"
+    },
+    "tags": [
+        "css",
+        "font",
+        "fontface",
+        "fontfamily",
+        "fonts",
+        "typography",
+        "web design"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/font-finder/",
+    "weekly_downloads": 155
+}

@@ -1,0 +1,136 @@
+{
+    "id": 700342,
+    "authors": [
+        {
+            "id": 11066970,
+            "name": "Qeole",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Qeole/",
+            "username": "Qeole",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/11/11066/11066970.png?modified=1408630854"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1858938,
+        "compatibility": {
+            "thunderbird": {
+                "max": "58.0",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/generate-patch-command/versions/1858938",
+        "files": [
+            {
+                "id": 434812,
+                "created": "2016-05-05T17:10:35Z",
+                "hash": "sha256:9308940df85deef69bb26286451888e6b5ab00586db8520de1ee30f46fe52127",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9834,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/434812/generate_patch_command-1.1.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5875,
+            "name": {
+                "fr": "Public domain",
+                "en-US": "Unlicense"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/generate-patch-command/license/1.1.0"
+        },
+        "release_notes": {
+            "fr": "",
+            "en-US": "Add user preferences and configuration interface."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/generate-patch-command/versions/1.1.0",
+        "version": "1.1.0"
+    },
+    "default_locale": "fr",
+    "description": {
+        "fr": "<strong>Presentation</strong>\n\nYou have to send a lot of patches to mailing list with the <code>git send-email</code> command line utility, but are tired of manually picking email addresses and email IDs to paste them in your command line? This Thuderbird add-on has been made just to address your needs. From a given email in Thuderbird, it generates the whole command line to answer to this email and selects it; all you need to do is to copy/paste this single line into your terminal to send your patch.\n\nOh, well, technically you still have to add the name of the patch you want to send… but the <code>--to=</code> and <code>--cc=</code> and <code>--in-reply-to=</code> should all be handled for you.\n\n<strong>Usage</strong>\n\nOnce installed, go to Thunderbird and select an email, and go to the email pane (the one in which the body of the email is displayed). You have <code>Reply</code> and <code>Reply All</code>/<code>Reply List</code> and <code>Forward</code> and <code>Archive</code>, <code>Junk</code> buttons and so on at the top of the pane, on the header box. The last of those buttons labeled <code>More ⏷</code>. It opens a drop-down menu if you click on it. Do so: there is now a new item entitled Generate patch command. This is it! Click on it, and a pop-up window will show you the generated command line, already selected for you to copy.\n\nNote that the text box is editable, so that you can edit the command before you copy it.\n\n<strong>Disclaimers</strong>\n\n<b>Regarding security</b>\n\nAlways be <strong>extremely careful</strong> with what you copy and paste into your terminal. People have shown <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/aa05f9a243d550fe4951030e86b15b069e414627622838bd77c6ddaf48eadea4/https%3A//thejh.net/misc/website-terminal-copy-paste\" title=\"here is a detailed example\">many times</a> that it is possible to hide rogue code. Even if this add-on is on Mozilla's official platform, you should remain careful.\n\nAlso, it could be that some input coming from the headers will break the commands. The add-on encloses it with single quotes, and tries to escape single quotes coming from the input, but there might be some subtleties I forgot to deal with. Just be cautious, and check for correctness of the command.\n\n<b>Regarding responsibility</b>\n\nBe cautious before you validate your command line: read and proofread whatever command you enter. The add-on provide the commands as a best effort, but is not error prone. I will not be responsible if you send trash to a public mailing list, or if you send emails to the wrong people. So again: verify that everything looks fine before sending the email."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/generate-patch-command/edit",
+    "guid": "patchcmd@qoba.lt",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "fr": "https://github.com/Qeole/PatchCmd/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-05-06T13:13:15Z",
+    "name": {
+        "fr": "Generate patch command"
+    },
+    "previews": [
+        {
+            "id": 173730,
+            "caption": null,
+            "image_size": [
+                612,
+                243
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/173/173730.png?modified=1530209350",
+            "thumbnail_size": [
+                320,
+                127
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/173/173730.png?modified=1530209350"
+        },
+        {
+            "id": 173864,
+            "caption": null,
+            "image_size": [
+                700,
+                321
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/173/173864.png?modified=1530209351",
+            "thumbnail_size": [
+                320,
+                147
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/173/173864.png?modified=1530209351"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/generate-patch-command/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/700342",
+    "slug": "generate-patch-command",
+    "status": "public",
+    "summary": {
+        "fr": "Generate a command (or part of it) to send a patch as a reply to a thread − primarily intended for use with `git send-email`"
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/generate-patch-command/",
+    "weekly_downloads": 23
+}

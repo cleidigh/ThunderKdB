@@ -1,0 +1,190 @@
+{
+    "id": 9995,
+    "authors": [
+        {
+            "id": 3359682,
+            "name": "CySlider",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/cyslider/",
+            "username": "cyslider",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 106,
+    "categories": {
+        "thunderbird": [
+            "contacts"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 117083,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.1.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/email-address-crawler/versions/117083",
+        "files": [
+            {
+                "id": 98429,
+                "created": "2010-09-07T05:49:05Z",
+                "hash": "sha256:28cf71938eeb7073c98e24d875e160aad49f52045cc5f1b165bbf27f00af1568",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 23552,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/98429/email_address_crawler_3-3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/email-address-crawler/versions/3",
+        "version": "3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "version 3 available now\nmain code has not changed, just tweaked accepted thunderbird versions\ntested on windows vista/7 \n\nVersion 2.0.0 beta with TB3 support available:\n\nThanks to Paolo aka \"Kaosmos\" (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c34814e1d61b32d8f1a4ac8a43fdefca7fc238d2d3a466dd5574f9241f21ddad/https%3A//nic-nac-project.org/%7Ekaosmos/morecols-en.html\">https://nic-nac-project.org/~kaosmos/morecols-en.html</a>) who did find some of the needed tweaks to enable this addon for TB3 and sending those to me, I could upload this update. I crosschecked every change made, and added some tweaks myself, but this version is unfortunately still far from completely supporting TB3. Please see the version notes for what is not working.\n\n<strong>!!!!!!You have to download this addon version here: <a rel=\"nofollow\" href=\"https://addons.mozilla.org/de/thunderbird/addons/versions/9995#version-2.0.0\">https://addons.mozilla.org/de/thunderbird/addons/versions/9995#version-2.0.0</a></strong>\n\nAlso thanks goes to Damien Degois who did provide me with an french translation for this addon.\n\n-------------------------------------------------\n\n\n\nBoost thunderbirds address auto completion\nor\nAutomatically create mail lists\n\n\nYou can select any of your e-mail folders, and specify any of your address books as a target. \"EMail Address Crawler\" will then search that folder and its sub folders for e-mail addresses and will add them to your address book.\n\nNEW SINCE 1.7.0: You can also specifie to send a new email via CC or BCC instead of filling an address book. This way you can quickly send an email to all reciepients sorted to a folder - like friends or project participants, etc.\n\nYou can specify if \"EMail Address Crawler\" should search in the TO, FROM or CC field. And how often he needs to find an address before he adds it.\n\nIf there are several different formats, he will choose the one most complete:\n\"Full Name email@address.org\"   is preferred over \n\"Name email@address.org\"  which is preferred over\nemail@address.org\n\nFind e-mail addresses of long forgotten friends or easily create mailing lists for large groups.\n\nCySlider",
+        "de": "Version 2.0.0 beta mit TB3 Unterstützung ist da:\n\nDank Paolo aka \"Kaosmos\" (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/66677ca774a719ce8de9672ca831b518e9da2718be628782e79b7a2331c193d4/https%3A//nic-nac-project.org/%7Ekaosmos/morecols-en.html%29\">https://nic-nac-project.org/~kaosmos/morecols-en.html)</a>, der einige der nötigen Änderungen für TB3.0 aufgespürt und mir geschickt hat, konnte ich nun eine neue Version hochladen. Ich habe alle seine Änderungen gegengelesen und selbst noch ein paar Feinheiten korrigiert. Leider ist diese Version trozdessen noch weit davon entfernt alle alten Funktionen komplett zu unterstützen. Bitte lesen sie die Versionshinweise für weitere Details.\n\n<strong>!!!!!Sie müssen die neue Addon Version hier herunterladen: <a rel=\"nofollow\" href=\"https://addons.mozilla.org/de/thunderbird/addons/versions/9995#version-2.0.0\">https://addons.mozilla.org/de/thunderbird/addons/versions/9995#version-2.0.0</a></strong>\n\nDank geht auch an Damien Degois, der eine französische Übersetzung angefertigt hat.\n-------------------------------------------------\n\n\nVerbessern Sie den Nutzen von Thunderbirds E-Mail Adressen Autovervollständigung!\n\noder \n\nkreieren Sie automatisch große Mailinglisten\n\n\nSie können jeden E-Mail Ordner auswählen und jedes Adressbuch Ihrer Wahl als Ziel angeben.\n\"EMail Address Crawler\" wird dann diesen Ordner und alle seine Unterordner nach E-Mail Adressen durchsuchen und diese zu Ihrem Adressbuch hinzufügen. \n\nNeu seit 1.7.0: Sie können anstatt des Adressbuchs auch das CC oder BCC Feld einer neuen E-Mail angeben um schnell eine E-mail an alle in einem Ordner sortierten Absender zu schicken.\n\nSie können bestimmen, ob der \"EMail Address Crawler\" im AN, VON oder CC Feld suchen soll und wie oft er eine Adresse finden muss, bevor er sie zum Adressbuch hinzufügen darf. \n\nSollte er mehrere unterschiedliche Adressformate finden, so wählt er die beste Version:\n\n\"Max Mustermann\" max.mustermann@email.de ist besser als\n\"Max\" max.mustermann@email.de ist besser als\nmax.mustermann@email.de\n\nFinden Sie E-Mail Adressen von alten Freunden oder erzeugen sie leicht große Adresslisten aus den schon sortierten Ordnern.\n\nCySlider"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/email-address-crawler/edit",
+    "guid": "emailcrawler@torge.kummerow",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2010-09-07T11:33:12Z",
+    "name": {
+        "en-US": "EMail Address Crawler",
+        "de": "EMail Address Crawler"
+    },
+    "previews": [
+        {
+            "id": 28018,
+            "caption": {
+                "en-US": "Options to determine which addresses should be taken and where they should go to.",
+                "de": "Dialog um festzulegen welche E-Mailaddressen übernommen werden und wohin sie wandern sollen."
+            },
+            "image_size": [
+                430,
+                511
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28018.png?modified=1530208489",
+            "thumbnail_size": [
+                168,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28018.png?modified=1530208489"
+        },
+        {
+            "id": 28019,
+            "caption": {
+                "en-US": "Select a folder of your choise and right click on it",
+                "de": "Wählen Sie einen ordner Ihrer Wahl und machen sie einen Rechtsklick auf ihn."
+            },
+            "image_size": [
+                324,
+                57
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28019.png?modified=1530208489",
+            "thumbnail_size": [
+                320,
+                56
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28019.png?modified=1530208489"
+        },
+        {
+            "id": 28020,
+            "caption": {
+                "en-US": "Never search for the one email you got 5 years ago",
+                "de": "Finde jede Adresse über die Autovervollständigung"
+            },
+            "image_size": [
+                402,
+                81
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28020.png?modified=1530208489",
+            "thumbnail_size": [
+                320,
+                64
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28020.png?modified=1530208489"
+        },
+        {
+            "id": 33595,
+            "caption": {
+                "en-US": "Now you can specify how the \"Reply-To\" Field is beeing threated if you select to search the \"From\" field.",
+                "de": "Jetzt können sie auch bestimmen, wie mit dem Feld \"Antwort an\" (Reply-To) umgegangen werden soll, wenn sie das \"Von\" feld durchsuchen lassen."
+            },
+            "image_size": [
+                392,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/33/33595.png?modified=1530208490",
+            "thumbnail_size": [
+                149,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/33/33595.png?modified=1530208490"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.73026,
+        "count": 93,
+        "average": 3.7419,
+        "text_count": 93
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/email-address-crawler/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/9995",
+    "slug": "email-address-crawler",
+    "status": "public",
+    "summary": {
+        "en-US": "Automatically fill your address books or send mass mails with e-mail addresses extracted from all your e-mails.",
+        "de": "Füllt automatisch Ihre Adressbücher mit E-Mail Adressen aus Ihren E-Mails"
+    },
+    "support_email": {
+        "en-US": "cyslider@gmx.org",
+        "de": "cyslider@gmx.org"
+    },
+    "support_url": null,
+    "tags": [
+        "address",
+        "adressen",
+        "automatically",
+        "collect",
+        "contacts",
+        "crawl",
+        "durchsuchen",
+        "email",
+        "find",
+        "kontakte",
+        "sammeln",
+        "search",
+        "suchen"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/email-address-crawler/",
+    "weekly_downloads": 140
+}

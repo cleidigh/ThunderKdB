@@ -1,0 +1,123 @@
+{
+    "id": 452926,
+    "authors": [
+        {
+            "id": 2501750,
+            "name": "Connor Behan",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/connor-behan/",
+            "username": "connor-behan",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2,
+    "categories": {
+        "thunderbird": [
+            "appearance",
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1618820,
+        "compatibility": {
+            "thunderbird": {
+                "max": "35.0",
+                "min": "7.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/posting-style-enforcer/versions/1618820",
+        "files": [
+            {
+                "id": 283196,
+                "created": "2014-11-07T19:58:07Z",
+                "hash": "sha256:dee74e4ad5d68b3992e6e7ba1303f34fdccc7bee846cc14bce9596d81329fd99",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 110875,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/283196/posting_style_enforcer-1.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "* Do not attempt blockquote reordering when composing a plaintext message with no blockquotes.\n* Fix the code reading identity-specific prefs.\n* The easiest way to do this requires Thunderbird 7+. Will add support for older versions if anyone complains.\n* Remove innerHTML from everything but the heading catcher."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/posting-style-enforcer/versions/1.4",
+        "version": "1.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "If all goes well, you will never again have to know that an email was not formatted to your liking. When viewing or quoting a message, this rearranges the HTML so that bottom-posting or top-posting is enforced. This may be a nasty surprise to the person at the other end!\n\n* Supports moving \"Foo wrote:\" headings.\n* Attempts to remove quoted signatures.\n* Changes \"&gt;\" symbols and gmail blockquotes to mozilla blockquotes.\n* Allows blacklisting and whitelisting certain contacts.\n* Does not work for Hotmail."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/posting-style-enforcer/edit",
+    "guid": "psenforcer@smallperturbation.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/452/452926-64.png?modified=1415406029",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/452/452926-32.png?modified=1415406029",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/452/452926-64.png?modified=1415406029"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-11-07T23:41:57Z",
+    "name": {
+        "en-US": "Posting Style Enforcer"
+    },
+    "previews": [
+        {
+            "id": 106708,
+            "caption": {
+                "en-US": "This person did not bottom-post before ;)."
+            },
+            "image_size": [
+                700,
+                323
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/106/106708.png?modified=1530209057",
+            "thumbnail_size": [
+                320,
+                148
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/106/106708.png?modified=1530209057"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.66909,
+        "count": 3,
+        "average": 4.6667,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/posting-style-enforcer/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/452926",
+    "slug": "posting-style-enforcer",
+    "status": "public",
+    "summary": {
+        "en-US": "Automatically converts top-posted messages to use bottom-positng or vice versa. Interleaved posts are left alone. Detects automatically added text and supports a per-contact list of exceptions."
+    },
+    "support_email": {
+        "en-US": "connor.behan@gmail.com"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/posting-style-enforcer/",
+    "weekly_downloads": 23
+}

@@ -1,0 +1,187 @@
+{
+    "id": 358679,
+    "authors": [
+        {
+            "id": 5971761,
+            "name": "Peter J. Sloetjes, MSc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/SloetjesPJ/",
+            "username": "SloetjesPJ",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5971/5971761.png?modified=1488145024"
+        }
+    ],
+    "average_daily_users": 41,
+    "categories": {
+        "firefox": [
+            "appearance",
+            "web-development"
+        ],
+        "thunderbird": [
+            "appearance",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2013259,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "35.0"
+            },
+            "seamonkey": {
+                "max": "*",
+                "min": "2.1"
+            },
+            "thunderbird": {
+                "max": "56.0",
+                "min": "35.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/color-transform/versions/2013259",
+        "files": [
+            {
+                "id": 571790,
+                "created": "2017-01-17T01:05:50Z",
+                "hash": "sha256:b0484736554a4f2fbaa96174fdaf32d460a450612bc526c916f99f058bba0e2c",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 42166,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/571790/color_transform-6.4-fx+sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "FIX: The panel again uses native scrolling in order to restore touch device compatibility."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/color-transform/versions/6.4",
+        "version": "6.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>Introduction</b>\n\n<i>Color Transform</i> enables you to adapt the colors of web pages or page elements to your taste or need by combining complete themes and basic transforms, and to save applied transformations for automatic coloration of pages on specific web domains.\n\nThe toolbar panel contains four kinds of buttons (all buttons have a descriptive tool tip):\n1) At the top, the toolbar panel contains a row of action buttons.\n2) The last action button toggles the visibility of the next two rows with round buttons. These are detailed options which may be switched on and off with a click.\n3) The next 40 buttons are for applying a predefined color transformation or 'theme' directly to the current page or selected element. The themes are designed so as to obtain readable and predictable results on the majority of web pages.\n4) The last 32 buttons are for changing the hue, saturation, lightness and opacity (HSLA) of all colors in the same way. These basic transforms may be used to compose a desired color transformation.\n\n<b>Usage</b>\n\n&gt; To apply a theme or transform to the current page or selected element, simply click one or more of the theme or transform buttons in the toolbar panel.\n&gt; To save the color transformation which was applied to the current page or selected element, click the 'star' button to make it the default transform, or the 'plus' button to save it for the current web domain.\n&gt; To switch automatic coloration on or off, click the toolbar button.\n&gt; To manually apply the saved or default transform to the current page, double-click the toolbar button.\n&gt; To select an element on the page in order to transform its colors, click the arrow button.\n&gt; To reload the current page without applying a color transformation, click the 'reload' button in the toolbar panel.\n&gt; To switch an option on or off, click one of the round buttons in the toolbar panel (those may be hidden). The first option controls automatic coloration, the second option determines whether a white list is used and the third option determines whether domain-specific transforms are used instead of the default transform. The other options apply to the current transformation only, but they are stored with each saved transform.\n\n<b>Tips</b>\n\n&gt; Take some time to read the tool tips on the buttons in the toolbar panel.\n&gt; You probably want to exclude background images from the transformation on the new tab page (about:newtab), or to switch it to showing an empty page.\n&gt; This extension attempts to use semantic information, but this is of limited use for CSS background images, which are used by authors to present photos, icons, backgrounds, and other art work. You may want to disable the transformation of CSS background images on certain sites, but this will also disable the transformation of actual backgrounds and of large sprite maps from which icons are drawn. No general solution exists for this issue.\n&gt; Dark content themes are best combined with dark scroll bars (see the <i>New Scrollbars</i> extension) and/or dark Firefox complete themes (like <i>FT Deepdark</i>).\n&gt; You may want to check out my extension <i>Colorific</i>, which provides color-map previews and more accurate control of color properties and transforms.\n\n<b>About</b>\n\n<i>Color Transform</i> has been available since January 2012. Further development of this extension has been paused as of February 2017."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/color-transform/edit",
+    "guid": "colortransform@pjs.nl",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/358/358679-64.png?modified=1509808672",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/358/358679-32.png?modified=1509808672",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/358/358679-64.png?modified=1509808672"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-01-18T06:35:58Z",
+    "name": {
+        "en-US": "Color Transform"
+    },
+    "previews": [
+        {
+            "id": 180992,
+            "caption": {
+                "en-US": "Two light and two dark themes applied to a Wikipedia page."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/180/180992.png?modified=1530208786",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/180/180992.png?modified=1530208786"
+        },
+        {
+            "id": 180991,
+            "caption": {
+                "en-US": "The panel with action buttons, option buttons, theme buttons and basic transform buttons. The images at the right show the results when themes and transforms are applied to the simple example web page shown at the top."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/180/180991.png?modified=1530208787",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/180/180991.png?modified=1530208787"
+        },
+        {
+            "id": 180993,
+            "caption": {
+                "en-US": "Panels of extensions developed by P.J.Sloetjes."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/180/180993.png?modified=1530208787",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/180/180993.png?modified=1530208787"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.61804,
+        "count": 25,
+        "average": 3.76,
+        "text_count": 25
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/color-transform/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/358679",
+    "slug": "color-transform",
+    "status": "public",
+    "summary": {
+        "en-US": "Transform the colors of entire web pages or selected elements. Combine predefined themes with basic transforms. Save transforms for specific web domains."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "background",
+        "black",
+        "brightness",
+        "color",
+        "contrast",
+        "dark",
+        "filter",
+        "hsl",
+        "hue",
+        "image",
+        "inversion",
+        "night",
+        "opacity",
+        "page",
+        "photo",
+        "restartless",
+        "saturation",
+        "stylish",
+        "text",
+        "transform",
+        "transparency"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/color-transform/",
+    "weekly_downloads": 911
+}

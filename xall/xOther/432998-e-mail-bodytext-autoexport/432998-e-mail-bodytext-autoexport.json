@@ -1,0 +1,203 @@
+{
+    "id": 432998,
+    "authors": [
+        {
+            "id": 6943576,
+            "name": "Seba",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Seba7/",
+            "username": "Seba7",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 8,
+    "categories": {
+        "thunderbird": [
+            "importexport",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1442546,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "14.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/e-mail-bodytext-autoexport/versions/1442546",
+        "files": [
+            {
+                "id": 204606,
+                "created": "2013-04-21T10:47:56Z",
+                "hash": "sha256:f4f60bfd7d8ab80aac44a046d5c4b92586096dfd3c5270adf7698c431c875fd0",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 7926,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/204606/e_mail_bodytext_autoexport-1.02-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2013-05-23T12:52:27Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/e-mail-bodytext-autoexport/versions/1.02",
+        "version": "1.02"
+    },
+    "default_locale": "de",
+    "description": {
+        "de": "Dieses Add-on extrahiert den Textinhalt (ohne Anhang) von einer hineinkommenden E-Mail, welche einen bestimmten Betreff aufweist. Angenommen der zu extrahierende Betreff sei immer \"B1\", dann sollte der Text von jedem E-Mail das mit demjenigen Betreff herein kommt, in einer externen Textdatei gespeichert werden. Nicht extrahiert werden E-Mails mit dem Betreff \"b1\". Der externe Speicherort der Textdatei sowie der Betreff können in den Einstellungen individuell gesetzt weden. Das angeben von mehreren Betreffs ist möglich.\nDer Name der exportierten Datei ist wie folgt zusammengebaut: Betreff + \"-\" + eine einmalige Zufallszahl die auf dem Datumformat basiert.\n\nThis Add-On does extract the Textcontent (whitout attachement) from an incomming e-mail with does have a specific subject (=Betreff). \nIn the settings from this add-on you able to set the subject that starts the export routine as well as the filepath. \nIn the first inputfield you can set the export Filepath(=Speicherpfad) (Root must exists; Example: C:\\MyDocuments\\ExportThunderbird\\). At the end you have to fill in a backslash (\\).\n\nIn the second Field you can set the subjects that starts the exporting routine. If you have more than one subject, you can separate those by using a coma. Pay Attention by setting the exporting subject. B1 is not the same as b1. Also look, that you don't use space in a subject. (Example: B1,Web_Form,Mytest) That means that any incomming Mail with the subject B1 or Web_Form or Mytest will be exportet into the Path C:\\MyDocuments\\ExportThunderbird\\. There it creates for any exportet mail an *.txt File. the filename is based on the Timeformat + a variable constant."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/e-mail-bodytext-autoexport/edit",
+    "guid": "E-Mail_Bodytext_Autoexport@sebrasoft.ch",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/432/432998-64.png?modified=1425290526",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/432/432998-32.png?modified=1425290526",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/432/432998-64.png?modified=1425290526"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-05-23T12:52:32Z",
+    "name": {
+        "de": "E-Mail Bodytext Autoexport"
+    },
+    "previews": [
+        {
+            "id": 154132,
+            "caption": null,
+            "image_size": [
+                700,
+                434
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154132.png?modified=1530208938",
+            "thumbnail_size": [
+                320,
+                198
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154132.png?modified=1530208938"
+        },
+        {
+            "id": 154134,
+            "caption": null,
+            "image_size": [
+                700,
+                336
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154134.png?modified=1530208939",
+            "thumbnail_size": [
+                320,
+                154
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154134.png?modified=1530208939"
+        },
+        {
+            "id": 154140,
+            "caption": null,
+            "image_size": [
+                700,
+                336
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154140.png?modified=1530208939",
+            "thumbnail_size": [
+                320,
+                154
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154140.png?modified=1530208939"
+        },
+        {
+            "id": 154136,
+            "caption": null,
+            "image_size": [
+                608,
+                240
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154136.png?modified=1530208940",
+            "thumbnail_size": [
+                320,
+                126
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154136.png?modified=1530208940"
+        },
+        {
+            "id": 154142,
+            "caption": null,
+            "image_size": [
+                509,
+                283
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154142.png?modified=1530208940",
+            "thumbnail_size": [
+                320,
+                178
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154142.png?modified=1530208940"
+        },
+        {
+            "id": 154144,
+            "caption": null,
+            "image_size": [
+                700,
+                336
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154144.png?modified=1530208941",
+            "thumbnail_size": [
+                320,
+                154
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154144.png?modified=1530208941"
+        },
+        {
+            "id": 154138,
+            "caption": null,
+            "image_size": [
+                509,
+                283
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154138.png?modified=1530208941",
+            "thumbnail_size": [
+                320,
+                178
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154138.png?modified=1530208941"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.26774,
+        "count": 4,
+        "average": 3.5,
+        "text_count": 4
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/e-mail-bodytext-autoexport/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/432998",
+    "slug": "e-mail-bodytext-autoexport",
+    "status": "public",
+    "summary": {
+        "de": "Extracts the bodytext from an E-Mail with the specific subject into a setable directory."
+    },
+    "support_email": {
+        "de": "s.rastberger@sebrasoft.ch"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/e-mail-bodytext-autoexport/",
+    "weekly_downloads": 32
+}

@@ -1,0 +1,148 @@
+{
+    "id": 479520,
+    "authors": [
+        {
+            "id": 85036,
+            "name": "Philipp Kewisch",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kewisch/",
+            "username": "kewisch",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/85/85036.png?modified=1509020086"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "web-development"
+        ],
+        "seamonkey": [
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1510878,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "29.0"
+            },
+            "seamonkey": {
+                "max": "2.26.*",
+                "min": "2.26"
+            },
+            "thunderbird": {
+                "max": "31.*",
+                "min": "29.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remote-developer-tools-server/versions/1510878",
+        "files": [
+            {
+                "id": 239048,
+                "created": "2014-01-09T00:41:36Z",
+                "hash": "sha256:52202c510b11c2fe75a1ef0fc88e65b36bc82582dd74858317e785640a596e3b",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 15073,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/239048/remote_developer_tools_server-29.0-fx+tb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2014-07-18T17:17:49Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remote-developer-tools-server/versions/29.0.1-signed.1-signed",
+        "version": "29.0.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This addon provides extra user options to start the developer tools server. It is not needed in Firefox or Thunderbird, support for debugging is already built in. You can use it in XULRunner applications, but be sure to use the extension version corresponding to the SDK you are developing for. Please see the other versions page for more details.\n\n<ul>  <li>For debugging Firefox, please use the Browser Debugger.\n  </li><li>For debugging Thunderbird, please see the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/332d7626fd2a33896ece5b69af178d6dcdebdd1bd98acfd171f114daa2b20956/https%3A//developer.mozilla.org/en-US/docs/Tools/Remote_Debugging\">setup guide</a></li></ul>\nFor debugging XULRunner, you must first enable the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/75729eb3be9cfecbe3ed7a2b70cec5fa3812d9ab1fe65978086310e01c2ae95b/https%3A//developer.mozilla.org/en/docs/XULRunner_tips%23Extension_Manager\">Extensions Manager</a>. After installing this extension, you can then visit the preferences from the extension manager and set up remote debugging.\n\nAfterwards, prepare Firefox as described in the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/332d7626fd2a33896ece5b69af178d6dcdebdd1bd98acfd171f114daa2b20956/https%3A//developer.mozilla.org/en-US/docs/Tools/Remote_Debugging\">Thunderbird setup guide</a> and use the connect page to connect to your XULRunner Application.\n\nIf you are looking for a version compatible with Gecko 31 ESR, please use version <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/firefox/addon/remote-developer-tools-server/versions/29.0\">29.0</a>."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remote-developer-tools-server/edit",
+    "guid": "remote-debugger@mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/feeds-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/feeds-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/feeds-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-07-18T17:17:51Z",
+    "name": {
+        "en-US": "Remote Developer Tools Server"
+    },
+    "previews": [
+        {
+            "id": 122269,
+            "caption": {
+                "en-US": "Extension Options"
+            },
+            "image_size": [
+                414,
+                414
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/122/122269.png?modified=1530209142",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/122/122269.png?modified=1530209142"
+        },
+        {
+            "id": 122270,
+            "caption": {
+                "en-US": "Usage of the Web Console when connected to Thunderbird"
+            },
+            "image_size": [
+                660,
+                413
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/122/122270.png?modified=1530209142",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/122/122270.png?modified=1530209142"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remote-developer-tools-server/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/479520",
+    "slug": "remote-developer-tools-server",
+    "status": "public",
+    "summary": {
+        "en-US": "This addon provides options for starting the developer tools server. It is especially valuable in XULRunner Apps where there is no UI to start the server.\n\nNOTE: This addon is not mandatory in Firefox or Thunderbird, as support is built in."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remote-developer-tools-server/",
+    "weekly_downloads": 23
+}

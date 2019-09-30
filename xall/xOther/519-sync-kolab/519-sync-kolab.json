@@ -1,0 +1,235 @@
+{
+    "id": 519,
+    "authors": [
+        {
+            "id": 463,
+            "name": "Niko Berger",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/niko-berger/",
+            "username": "niko-berger",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 216,
+    "categories": {
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "contacts",
+            "importexport"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1599640,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.32",
+                "min": "2.8"
+            },
+            "thunderbird": {
+                "max": "35.0",
+                "min": "10.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sync-kolab/versions/1599640",
+        "files": [
+            {
+                "id": 275904,
+                "created": "2014-09-12T09:21:24Z",
+                "hash": "sha256:2d22dc279ca1264403dec589ecae4e2c14fa6de1067fe23b51b3103a6e4b1ce5",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 188760,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/275904/synckolab-3.1.6-tb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "This Version fixes issues with the preference saving.\n* introduces a new config key format by appending \"extensions.\" to preferences (i.e. extensions.SyncKolab.accounts)\n* includes automatic converions of configuration from old format"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sync-kolab/versions/3.1.6",
+        "version": "3.1.6"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "NOTE: PLEASE WRITE BUG REPORTS INTO BUGZILLA OR AS MAIL (mailing list/directly) - NOT IN THE COMMENTS!\n\nSyncKolab reads a selected Imap folder and synchronizes it with the local address book and calendar. It uses vCard/iCal/xml as format. Using shared-IMAP folders or a Kolab server (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c4dbca632c3c44f74c0e451dc4698d97d40496eb87fecbc72fd88cc6e14e25e0/http%3A//www.kolab.org\">www.kolab.org</a>) you can achieve almost fully collaboration functionality (there is an autosync option).\n\nIt is a good idea to install lightning <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/302f131fce459b03ca7e9e25613d0f6bf65d709e250a630beb432c70e0f848c8/http%3A//www.mozilla.org/projects/calendar/lightning/index.html\">http://www.mozilla.org/projects/calendar/lightning/index.html</a> in order to be able to use the full functionality (calendar and task sync) - but it works without it if you only need contact sync.\n\nThere are clients for android, ios, outlook and more available.\nMake sure that you specify a different folder for each type of sync (one for calendar one for contacts and one for tasks) - mixing types is not a good idea!\n\nFor nightly builds check out htttp://<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/828ac57793fedb2c352f54483fdd41d68e3759c36b90005176468290e23d14c2/http%3A//www.gargan.org/extensions/\">www.gargan.org/extensions/</a> \nSource code is available on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2e386f04fcad5147c46b9e914a44dcce94ae5f6729c01a619f534482b37102c4/https%3A//github.com/corinis/synckolab\">https://github.com/corinis/synckolab</a>\n\nFor configuration info check out <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e450fb64d8170818bc071aa99b773ac339ddd39550f5844ca26e9c50805e0ebf/http%3A//www.gargan.org/en/Mozilla_Extensions/SyncKolab/Installation/\">http://www.gargan.org/en/Mozilla_Extensions/SyncKolab/Installation/</a> . \n\n<b>Issues</b>\nAgain: Please do not write issues in the comment section (I can only reply once!). Please write a bug in <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1549c2eb3179ae4a32bbb0f9b5dc8c3a1b777707877ab8b01162bb2b36cd8d93/https%3A//www.mozdev.org/bugs/enter_bug.cgi%3Fproduct=synckolab\">bugzilla</a> or write me directly. \n<ul><li>Make sure that you have at least one IMAP account setup (synckolab does not work with POP!)</li><li>Check if you have at least one address book other than \"collected\" addresses</li><li>If no Calendar has yet been created, create one. </li><li>Make sure <b>not</b> to use the \"collected address\" address book for sync. Use another one (you can copy collected addresses to this).</li><li>    If sync suddenly stops or you do not see anything in the cnfiguration window, make sure to enable javascript errors by adding following line in your prefs.js (located in your profile folder)\n<code>user_pref(“javascript.options.showInConsole”, true);</code> Make sure Thunderbird is CLOSED when editing this file, otherwise it will be overwritten!</li><li>You can manualle set the logging level to debug by adding: <code>user_pref(\"SyncKolab.debugLevel\", 3);</code> to your prefs.js. This should give more output when even configuration does not seem to work.</li><li>Try installing the most current nightly from <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1bfd74e5fd94f23bfe6b89b37d256223e1eade6041e1bde462b439af98c179dd/http%3A//www.gargan.org/en/Mozilla_Extensions/SyncKolab/CVS_Nightly/\">http://www.gargan.org/en/Mozilla_Extensions/SyncKolab/CVS_Nightly/</a> (but make a backup of your data first!)</li><li>you can also checkout the FAQ on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ccee43dda0feb80ee2fba5e8ff879cc2cd32e94c57949962c32be2d71d982515/http%3A//www.gargan.org/en/Mozilla_Extensions/SyncKolab/FAQ/\">http://www.gargan.org/en/Mozilla_Extensions/SyncKolab/FAQ/</a></li></ul>",
+        "de": "SyncKolab ist kompatibel mit dem Kolab Server (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c4dbca632c3c44f74c0e451dc4698d97d40496eb87fecbc72fd88cc6e14e25e0/http%3A//www.kolab.org\">www.kolab.org</a>) und mit allen anderen kolab clients (Outlook, Kontact, ...).\nMithilfe von gemeinsamen IMAP Verzeichnissenoder dem Kolab Server kann man mit SyncKolab ein Kollaborationstool wie Outlook mit Exchange schaffen (es gibt eine automatischer-Abgleich Einstellung).\n\nUm die gesamte Funktionalität zu erhalten, muss das lightning Plugin installiert werden: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/302f131fce459b03ca7e9e25613d0f6bf65d709e250a630beb432c70e0f848c8/http%3A//www.mozilla.org/projects/calendar/lightning/index.html\">http://www.mozilla.org/projects/calendar/lightning/index.html</a> .\n\nFür kompatible Programme siehe die liste auf <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5d81eeef921c57a43b2e16a4accb166a54e231976fb13667338b4f28ec0b7fbd/http%3A//www.kolab.org/about-kolab-clients.html\">http://www.kolab.org/about-kolab-clients.html</a> .\n\nDamit keine Konflikte auftreten, muss für jede Datenart (Kontakte/Kalender/..) ein <b>eigenes IMAP Verzeichnis</b> verwendet werden - mischungen können funktionieren, sind aber keine gute Idee und werden auch nicht unterstützt.\n\nFür nightly-builds siehe htttp://<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/828ac57793fedb2c352f54483fdd41d68e3759c36b90005176468290e23d14c2/http%3A//www.gargan.org/extensions/\">www.gargan.org/extensions/</a> \n\nEs sollte meist stabil laufen, tritt dennoch ein Fehler auf, dann bitte auf <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/685c116f00fe000a7869542ddfc2a84f3ae923382f24288cb5c3319e349d63c8/http%3A//synckolab.mozdev.org/bugs.html\">http://synckolab.mozdev.org/bugs.html</a> melden.\n\nSollte bei der Konfiguration etwas nicht funktionieren bitte überprüfen ob:\n<ul><li>ein IMAP Account angelegt wurde</li><li>mindesten ein Addressbuch (außer \"gesammelte addressen\") existiert</li><li>mindestens ein Kalender angelegt wurde</li></ul>\nSeit einigen Versionen werden schwere Fehler nicht mehr in der javascript konsole angezeigt. Sollte etwas nicht funktionieren bitte die fehleranzeige aktivieren. Dazu im projs.js (im Profil Verzeichnis) folgende zeile hinzufügen:\n<code>user_pref(\"javascript.options.showInConsole\", true);\n</code>\nWichtig: Thunderbird muss geschlossen sein, sonst wird die Änderung wieder überschrieben!"
+    },
+    "developer_comments": {
+        "en-US": "<ul><li>Since 0.4.20 lightning is required. Download the lightning plugin from <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/302f131fce459b03ca7e9e25613d0f6bf65d709e250a630beb432c70e0f848c8/http%3A//www.mozilla.org/projects/calendar/lightning/index.html\">http://www.mozilla.org/projects/calendar/lightning/index.html</a> </li><li>For all having problems or found bug: please refer to the homepage <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/21e0f28bfdf282f60f0dd38ddda9b65ff0fffe3bca584965297c835aeef721fe/http%3A//www.gargan.org/extensions/synckolab.html\">http://www.gargan.org/extensions/synckolab.html</a> </li><li>You can get the code from:  <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2e386f04fcad5147c46b9e914a44dcce94ae5f6729c01a619f534482b37102c4/https%3A//github.com/corinis/synckolab\">https://github.com/corinis/synckolab</a></li><li><b>Installation notice:</b>\nAfter installing/restarting tbird: rightclick on the icon bar (next to Stop) go to customize and drag the \"Sync Kolab\" Icon to the bar, this way you can also include the calendar icon.</li><li><b>Errors</b>\nIf sync suddenly stops or you do not see anything in the cnfiguration window, make sure to enable javascript errors by adding following line in your prefs.js (located in your profile folder)</li></ul><code>user_pref(“javascript.options.showInConsole”, true);</code>\n\nMake sure Thunderbird is CLOSED when editing this file, otherwise it will be overwritten!",
+        "de": "<ul><li>Lightning ist mittlerweile vorraussetung: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/302f131fce459b03ca7e9e25613d0f6bf65d709e250a630beb432c70e0f848c8/http%3A//www.mozilla.org/projects/calendar/lightning/index.html\">http://www.mozilla.org/projects/calendar/lightning/index.html</a> </li><li>Bei Problemen, am besten einmal den aktuellen Nightly Build von  <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/21e0f28bfdf282f60f0dd38ddda9b65ff0fffe3bca584965297c835aeef721fe/http%3A//www.gargan.org/extensions/synckolab.html\">http://www.gargan.org/extensions/synckolab.html</a> ausprobieren. (Vorher ein Backup des Thunderbird Profil-Verzeichnisses anlegen!)</li><li>Der Source Code ist auf <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2e386f04fcad5147c46b9e914a44dcce94ae5f6729c01a619f534482b37102c4/https%3A//github.com/corinis/synckolab\">https://github.com/corinis/synckolab</a> zu finden</li><li><b>Zur Installation:</b>\nNach der installation kann man ein Icon zur manuellen Synchronisation hinzufügen, indem man auf der Menüleiste rechtsklickt und dann auf \"Anpassen\" geht. Dort kann man das Synckolab Icon einfach in die Menüleiste ziehen.</li><li><b>Fehler</b> können passieren, bitte nicht im kommentar von hier Fehler beschrieben (ich kann nur einmal antworten!), sondern direkt per mail oder mit bugzilla schreiben. Eine Englische FAQ gibt es auch auf <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ccee43dda0feb80ee2fba5e8ff879cc2cd32e94c57949962c32be2d71d982515/http%3A//www.gargan.org/en/Mozilla_Extensions/SyncKolab/FAQ/\">http://www.gargan.org/en/Mozilla_Extensions/SyncKolab/FAQ/</a></li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sync-kolab/edit",
+    "guid": "{571CFACF-0F7D-49b4-BD77-E6FC7B209ADC}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.gargan.org/en/Mozilla_Extensions/SyncKolab/",
+        "de": "http://www.gargan.org/extensions/synckolab.html"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/519-64.png?modified=1397206509",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/519-32.png?modified=1397206509",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/519-64.png?modified=1397206509"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-12-07T16:12:59Z",
+    "name": {
+        "en-US": "SyncKolab",
+        "de": "Sync Kolab"
+    },
+    "previews": [
+        {
+            "id": 7431,
+            "caption": {
+                "en-US": "synckolab main window"
+            },
+            "image_size": [
+                142,
+                150
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/7/7431.png?modified=1530208060",
+            "thumbnail_size": [
+                142,
+                150
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/7/7431.png?modified=1530208060"
+        },
+        {
+            "id": 7432,
+            "caption": {
+                "en-US": "synckolab icon"
+            },
+            "image_size": [
+                323,
+                148
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/7/7432.png?modified=1530208062",
+            "thumbnail_size": [
+                320,
+                147
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/7/7432.png?modified=1530208062"
+        },
+        {
+            "id": 71704,
+            "caption": {
+                "en-US": "Initial Configuration dialog"
+            },
+            "image_size": [
+                653,
+                485
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71704.png?modified=1530208063",
+            "thumbnail_size": [
+                269,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71704.png?modified=1530208063"
+        },
+        {
+            "id": 71705,
+            "caption": {
+                "en-US": "Add a new Configuration"
+            },
+            "image_size": [
+                653,
+                485
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71705.png?modified=1530208065",
+            "thumbnail_size": [
+                269,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71705.png?modified=1530208065"
+        },
+        {
+            "id": 71706,
+            "caption": {
+                "en-US": "Configure Calendar"
+            },
+            "image_size": [
+                653,
+                485
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71706.png?modified=1530208066",
+            "thumbnail_size": [
+                269,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71706.png?modified=1530208066"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.27355,
+        "count": 77,
+        "average": 3.2857,
+        "text_count": 77
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sync-kolab/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/519",
+    "slug": "sync-kolab",
+    "status": "public",
+    "summary": {
+        "en-US": "SyncKolab can synchronize your calendar, address book and tasks against an IMAP server in Kolab formats version 1 (vCard/iCal) or version 2 (XML) or turn your Thunderbird/Lightning into a native Kolab Client (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5a53d471a1cce92ee9d6fc2326bb3bf1257eb71f0ddafbd666f6cc4cbf408a70/http%3A//kolab.org\">http://kolab.org</a>).",
+        "de": "SyncKolab vergleicht die Kontakt und Kalenderdaten mit vcard/ical/xml daten in einem Imap Verzeichnis und erlaubt so ein synchronisieren zwischen mehreren Rechnern und/oder Personen."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://synckolab.mozdev.org/",
+        "de": "http://synckolab.mozdev.org/"
+    },
+    "tags": [
+        "automatic",
+        "contacts",
+        "imap",
+        "lightning",
+        "sync"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sync-kolab/",
+    "weekly_downloads": 74
+}

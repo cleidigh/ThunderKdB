@@ -1,0 +1,169 @@
+{
+    "id": 3448,
+    "authors": [
+        {
+            "id": 48359,
+            "name": "Mitar",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mitar/",
+            "username": "mitar",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 24,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1305073,
+        "compatibility": {
+            "thunderbird": {
+                "max": "54.0",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/growl-new-message-notification/versions/1305073",
+        "files": [
+            {
+                "id": 140850,
+                "created": "2012-01-06T04:51:45Z",
+                "hash": "sha256:16f30ed0e99c941cea8f8f0dc5509fb7726bbb5eeb20809c5078ead6721a3f85",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 9216,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/140850/growl_new_message_notification-0.4.2-tb-mac.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "Version compatible with Thunderbird 9."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/growl-new-message-notification/versions/0.4.2",
+        "version": "0.4.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Since <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7bebe60d4ac9e61a0106b82f35e56e117743cf6682f4907814aec9e32c8cebec/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=308552\">bug 308552</a> there is official support for Growl in Thunderbird. But I keep this extension up for everybody who loves and likes it as it is. It has been the first extension to allow Growl notifications and it seems there are some nostalgia around.\n\n<strong>Some outstanding features</strong>:\n- Account type independent (works with POP3, IMAP ...)\n- Notification messages can be customized with header data\n- Works with IMAP accounts which does not poll new messages from the server\n- Works when application is running in the background/is hidden\n\n<strong>Requirements</strong>:\n- <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/647a2cbf625670861f3317b68525c508999c0a134efff5e2f2c18b8b77761600/http%3A//growl.info/\">Growl</a> working on the system\n- growlnotify command line utility in /usr/local/bin/ (with correct permissions)\n\nSome Thunderbird preferences which have something to do with the behaviour of the extension:\n- <i>Tools</i> -&gt; <i>Account Settings...</i> -&gt; <i>Server Settings</i> -&gt; <i>Check for new messages ...</i>\n- For IMAP folders: <i>Properties...</i> -&gt; <i>General Information</i> -&gt; <i>Check this folder for new messages</i>\n- For POP3 accounts: <i>Tools</i> -&gt; <i>Account Settings...</i> -&gt; <i>Server Settings</i> -&gt; <i>Automatically download new messages</i> has to be checked\n- The nature (inbox, bulk ...) of folders\n- Enable <i>mail.check_all_imap_folders_for_new</i> for notification on all folders by default (useful when using filters)\n\nDo not forget to set <i>Check for new messages every ... minutes</i> on POP3 accounts or on IMAP accounts which do not support checking for new messages without polling!\n\nThe almost general rule is something like this: if normal Thunderbird biff would be triggered (bouncing dock icon for example) then you will get Growl notification. (Note: normal biffs do not need to be enabled, this extension only uses roughly the same rules as normal biffs to decide if you want a notify.)\n\n<strong>Stickiness</strong> <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/091bee51ad1381fea5d28ea84728ec3df056f7d1dfa1f47dd674bac0d0673107/http%3A//growl.info/about.php\">should be enabled through Growl preference panel</a> in system preferences and not through application.\n\nPlease do understand that this extension works only on <strong>Mac OS X</strong>."
+    },
+    "developer_comments": {
+        "en-US": "<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bdbf5d6ac5c306c4e4212a7899cd377f9102080b3d07d135ea1d9a5b4f7eca56/https%3A//github.com/mitar/growlnotify\">git repository on GitHub.</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/growl-new-message-notification/edit",
+    "guid": "{9935cbe6-a9b7-4f2e-8829-c433da75d66f}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://mitar.tnode.com/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/3/3448-64.png?modified=1364347033",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/3/3448-32.png?modified=1364347033",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/3/3448-64.png?modified=1364347033"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-01-15T04:14:34Z",
+    "name": {
+        "en-US": "Growl New Message Notification"
+    },
+    "previews": [
+        {
+            "id": 9083,
+            "caption": {
+                "en-US": "Notification"
+            },
+            "image_size": [
+                200,
+                70
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/9/9083.png?modified=1530208085",
+            "thumbnail_size": [
+                200,
+                70
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/9/9083.png?modified=1530208085"
+        },
+        {
+            "id": 9078,
+            "caption": {
+                "en-US": "Preferences & testing"
+            },
+            "image_size": [
+                370,
+                490
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/9/9078.png?modified=1530208086",
+            "thumbnail_size": [
+                151,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/9/9078.png?modified=1530208086"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.56667,
+        "count": 9,
+        "average": 3.8889,
+        "text_count": 9
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/growl-new-message-notification/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/3448",
+    "slug": "growl-new-message-notification",
+    "status": "public",
+    "summary": {
+        "en-US": "Displays a notification using Growl when a new message is received..."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/mitar/growlnotify"
+    },
+    "tags": [
+        "biff",
+        "growl",
+        "mac os x",
+        "macosx",
+        "notification"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/growl-new-message-notification/",
+    "weekly_downloads": 21
+}

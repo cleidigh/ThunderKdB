@@ -1,0 +1,136 @@
+{
+    "id": 487132,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1521730,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "17.0"
+            },
+            "thunderbird": {
+                "max": "31.*",
+                "min": "17.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/always-default-client/versions/1521730",
+        "files": [
+            {
+                "id": 244428,
+                "created": "2014-02-18T01:36:59Z",
+                "hash": "sha256:41a308c9fc95d2202b72cdca6c69bb71ac04bd082a917085a97458b3e6d899d9",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 29227,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/244428/always_default_client-1.0-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2014-02-24T15:58:02Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/always-default-client/versions/1.0.1-signed.1-signed",
+        "version": "1.0.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Makes Firefox/Thunderbird as the default client on every startup.\n\nYou can control the behavior by following preferences:\n\n    // true =&gt; set default for all users on the computer (*require administrator permission)\n    user_pref(\"extensions.alwaysdefaultclient@clear-code.com.allUsers\", false);\n    \n    // true =&gt; use Firefox for http, https, .xhtml, etc.\n    // false =&gt; use Firefox for http only\n    user_pref(\"extensions.alwaysdefaultclient@clear-code.com.browser.allTypes\", false);\n    \n    // 1 = Mail\n    // 2 = News\n    // 4 = Feed\n    // (1 + 2 + 4 = 7 = All)\n    user_pref(\"extensions.alwaysdefaultclient@clear-code.com.mail.types\", 1);",
+        "ja": "Firefox/Thunderbirdを起動する度に自動的に既定のクライアントに設定します。\n\nこの挙動は以下の設定で変更できます。\n\n    // true =&gt; コンピュータの全ユーザ向けに既定のクライアントに設定する（※管理者権限が必要）\n    user_pref(\"extensions.alwaysdefaultclient@clear-code.com.allUsers\", false);\n    \n    // true =&gt; Firefoxを以下に関連付ける： http, https, .xhtml, その他サポートしている形式すべて\n    // false =&gt; Firefoxをhttpにのみ関連付ける\n    user_pref(\"extensions.alwaysdefaultclient@clear-code.com.browser.allTypes\", false);\n    \n    // 1 = 既定のメールクライアントとして登録\n    // 2 = 既定のニュースリーダーとして登録\n    // 4 = 既定のフィードリーダーとして登録\n    // (1 + 2 + 4 = 7 = すべてに対して登録)\n    user_pref(\"extensions.alwaysdefaultclient@clear-code.com.mail.types\", 1);\n\nこのアドオンは法人利用を前提に開発されています。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/always-default-client/edit",
+    "guid": "alwaysdefaultclient@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/always-default-client",
+        "ja": "https://github.com/clear-code/always-default-client"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-02-24T15:58:03Z",
+    "name": {
+        "en-US": "Always Default Client",
+        "ja": "Always Default Client"
+    },
+    "previews": [
+        {
+            "id": 126698,
+            "caption": {
+                "en-US": "\"Default Client\" confirmation dialog won't be shown."
+            },
+            "image_size": [
+                513,
+                241
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/126/126698.png?modified=1530209071",
+            "thumbnail_size": [
+                320,
+                150
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/126/126698.png?modified=1530209071"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/always-default-client/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/487132",
+    "slug": "always-default-client",
+    "status": "public",
+    "summary": {
+        "en-US": "Makes the application to the default client on every startup.",
+        "ja": "毎回起動時に、必ず既定のクライアントに設定します。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/always-default-client/issues"
+    },
+    "tags": [
+        "corporate",
+        "default client"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/always-default-client/",
+    "weekly_downloads": 21
+}

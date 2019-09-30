@@ -1,0 +1,175 @@
+{
+    "id": 6357,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "web-development"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2046701,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "45.0"
+            },
+            "thunderbird": {
+                "max": "52.*",
+                "min": "45.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/uxu-unittestxul/versions/2046701",
+        "files": [
+            {
+                "id": 599206,
+                "created": "2017-02-27T04:25:56Z",
+                "hash": "sha256:8120c705a47be5cf66725a440f21484720b72880f4729cd79f20fb0048fbd221",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 287872,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/599206/uxu_unittestxul-2.0.2-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "* Supports Thunderbird 52.\n* Text input related APIs under \"action\" are now asynchronous, and they return Promise.",
+            "ja": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/uxu-unittestxul/versions/2.0.2",
+        "version": "2.0.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This helps you to test your addons. This is based on MozLab, and this is compatible to it. You can run test cases written for MozUnit, on this tool.\n\nYou can run not only unit tests for your custom classes, but also functional tests of actual features. \"yield\" statement is avalable in test cases like as \"wait\", so you can wait Firefox's actions (ex. page loadings).\n\nAnd, some useful helper-functions are available, like:\n * Open a Firefox window for testing.\n * Import (include) external scripts.\n * Send click event to elements.\netc.\n\nTo learn testcase syntaxes, see: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ed9021ad96f21560e03a343cf24956572cd80cb33f9bc0f77bb858cb325ff6c3/http%3A//www.clear-code.com/software/uxu/index.html.en\">http://www.clear-code.com/software/uxu/index.html.en</a>",
+        "ja": "このツールはあなたの開発するアドオンのテストを支援します。このツールはMozLabをベースに開発されており、MozUnit用にかかれたテストケースを実行できるなどの上位互換性があります。\n\n自作クラスの機能をテストするなどの単体テストに利用できるほか、\"yield\"文を\"wait\"のように使って簡単に処理待ちを行えるなどの拡張を行っているので、結合テスト・機能テストにも利用できます。\n\nテストケース内では以下のようなヘルパー関数が利用できます。\n * テスト用のウィンドウを開く。\n * 外部のスクリプトをインポートする。\n * 指定した座標にクリックイベントを発行する。\netc.\n\nテストケースの書き方等は <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2cfe12b67b23d843c65366c048d7ac334711897f366545a7481a467d921a5be3/http%3A//www.clear-code.com/software/uxu/\">http://www.clear-code.com/software/uxu/</a> を参照してください。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/uxu-unittestxul/edit",
+    "guid": "uxu@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.clear-code.com/software/uxu/index.html.en",
+        "ja": "http://www.clear-code.com/software/uxu/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-04-13T12:30:29Z",
+    "name": {
+        "en-US": "UxU - UnitTest.XUL",
+        "ja": "UxU - UnitTest.XUL"
+    },
+    "previews": [
+        {
+            "id": 23550,
+            "caption": {
+                "en-US": "Test Runner (compatible to MozUnit)",
+                "ja": "MozUnitテストランナー"
+            },
+            "image_size": [
+                700,
+                371
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/23/23550.png?modified=1530208410",
+            "thumbnail_size": [
+                320,
+                170
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/23/23550.png?modified=1530208410"
+        },
+        {
+            "id": 31459,
+            "caption": {
+                "en-US": "Colored \"Diff\" of expected vs actual",
+                "ja": "期待値と実測値の差分のカラー表示"
+            },
+            "image_size": [
+                700,
+                485
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31459.png?modified=1530208411",
+            "thumbnail_size": [
+                289,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31459.png?modified=1530208411"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.76498,
+        "count": 5,
+        "average": 3.2,
+        "text_count": 5
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/uxu-unittestxul/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/6357",
+    "slug": "uxu-unittestxul",
+    "status": "public",
+    "summary": {
+        "en-US": "This is a testing tool for addon developers.",
+        "ja": "アドオン開発者向けのテストツールです。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/uxu/issues"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/uxu-unittestxul/",
+    "weekly_downloads": 42
+}

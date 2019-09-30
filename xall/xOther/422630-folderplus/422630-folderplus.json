@@ -1,0 +1,217 @@
+{
+    "id": 422630,
+    "authors": [
+        {
+            "id": 5121701,
+            "name": "gilles.orsini",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/gillesorsini/",
+            "username": "gillesorsini",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5121/5121701.png?modified=1402361180"
+        }
+    ],
+    "average_daily_users": 38,
+    "categories": {
+        "thunderbird": [
+            "folders-and-filters"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1588208,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "17.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folderplus/versions/1588208",
+        "files": [
+            {
+                "id": 270744,
+                "created": "2014-08-07T13:09:37Z",
+                "hash": "sha256:0364d76adca90b025ca4158c264b3be32cd53ccb6c94e19989c8f9a297761f45",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 25199,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/270744/folderplus-1.9-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "fr": "c'est maintenant possible de choisir le niveau de recherche (conversation &lt; sujet &lt; prefixe) ainsi que la liste des prefixes à exclure (re, fw, fwd, tr, urgent).\nLa fenêtre des préférences montre maintenant des statistiques sur les recherches.",
+            "en-US": "it's now possible to customize the search level (conversation &gt; subject &gt; prefix) and the excluded prefix list (re, fw, urgent). \nadded some search statistics into preferences window"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folderplus/versions/1.9",
+        "version": "1.9"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "fr": "Le but de cette extension est de vous faciliter la vie si vous utilisez beaucoup de dossiers.\n\nNouvelles commandes et raccourcis :\n- déplacer un message dans le dossier de sa discussion (D)\n- aller dans la boite de réception (CTRL-SHIFT-H)\n- aller dans le dernier dossier où un message a été déplacé (CTRL-SHIFT-W).\n- aller dans le dossier du message courant (CTRL-SHIFT-S) ; utile après une recherche de message ou dans un dossier virtuel,\n- aller dans le dossier du message courant et marquer 'non lu' ; utile après avoir rapidement lu un email et que vous voulez le ranger pour le lire plus tard\n\n\nEn complément du fonction naturel de Thunderbird, le dossier de la discussion est déterminé à l'aide du sujet du message. Cela est utile si vous échangez des messages avec des personnes utilisant Outlook.\n\nL'utilisation classique de cette extension est, par exemple, si vous utilisez un dossier par projet, qu'une fois que vous ayez lu un message arrivé dans votre boite de réception, vous le classiez rapidement. La liste des dossiers récents est souvent trop courte et nécessite, quoi qu'il arrive, un choix dans un menu. Ici, un clic suffit !\n\nSi plusieurs messages sont sélectionnés, la conversation est déterminée à partir du 1° message de la liste.\n\nDepuis la version 1.6, il est possible de définir une BlackList de dossiers à exclure de la recherche des conversations. Aller dans le gestionnaire de modules complémentaires et cliquer sur le bouton 'Options'.\n\nDepuis la version 1.9, il est possible de choisir le niveau de recherche (conversation &lt; sujet &lt; prefixe) ainsi que les prefixes standard à exclure (re:fw:urgent:).\n\nCette extension nécessite que la rechercher et l'indexation des messages soit active.",
+        "en-US": "The purpose of this extension is to make your life easier if you use a lot of folders.\n\nNews commands and shortcuts :\n- move messages to their conversation folder ('D' key)\n- go to inbox (CTRL-SHIFT-H)\n- go to the folder where the last message was moved (CTRL-SHIFT-W).\n- go to the folder of the current message (CTRL-SHIFT-S) ; useful when you read a message after a search or you use a virtual folder.\n- go to the folder of the current message and set unread ; useful when you quickly read a message and want to read it later.\n\nConversations are found by 3 ways : first, the thunderbird natural one, second,  by looking for messages that have the same subject and last one, messages whose subjects start with the same subject's prefix.\n\nThe classical use of this addon is, by example, if you use one folder by project :  a message arrives into your inbox and you can classify it easily. The recent folder list is too short and requires a choice into a menu. Here, only one click is necessary !\n\nSince release 1.6, a folder blackList can be defined to exclude some folders from the conversation searchs. go to addon manager and click the Options button.\n\nThe search level (conversation &lt; subject &lt; prefix) is customizable (since 1.9) and the list of prefix to excluded (re:fw:urgent:) can be modified into Preferences.\n\nWhen selected several messages, they are all moved to the conversation of the first one.\n\nThis extension needs gloda search to work."
+    },
+    "developer_comments": {
+        "en-US": "This addon use gloda search."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folderplus/edit",
+    "guid": "folderplus@gorsini.free.fr",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/422/422630-64.png?modified=1407487522",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/422/422630-32.png?modified=1407487522",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/422/422630-64.png?modified=1407487522"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-08-07T13:42:46Z",
+    "name": {
+        "fr": "folderplus",
+        "en-US": "folderplus"
+    },
+    "previews": [
+        {
+            "id": 110710,
+            "caption": {
+                "fr": "",
+                "en-US": "A new command to move messages into their conversation folder."
+            },
+            "image_size": [
+                700,
+                522
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/110/110710.png?modified=1530208914",
+            "thumbnail_size": [
+                268,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/110/110710.png?modified=1530208914"
+        },
+        {
+            "id": 110763,
+            "caption": {
+                "fr": "",
+                "en-US": "A new command to go into the current message folder."
+            },
+            "image_size": [
+                498,
+                513
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/110/110763.png?modified=1530208915",
+            "thumbnail_size": [
+                194,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/110/110763.png?modified=1530208915"
+        },
+        {
+            "id": 110705,
+            "caption": {
+                "fr": "",
+                "en-US": "An new message header with an icon."
+            },
+            "image_size": [
+                700,
+                288
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/110/110705.png?modified=1530208915",
+            "thumbnail_size": [
+                320,
+                132
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/110/110705.png?modified=1530208915"
+        },
+        {
+            "id": 124076,
+            "caption": {
+                "fr": "Définition de la BlackList des dossiers à exclure des recherches dans le gestionnaire de modules complémentaires.",
+                "en-US": "Folder Blacklist definition in addon manager"
+            },
+            "image_size": [
+                700,
+                418
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/124/124076.png?modified=1530208916",
+            "thumbnail_size": [
+                320,
+                191
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/124/124076.png?modified=1530208916"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.43147,
+        "count": 7,
+        "average": 3.5714,
+        "text_count": 7
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folderplus/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/422630",
+    "slug": "folderplus",
+    "status": "public",
+    "summary": {
+        "fr": "Cette extension rajoute des fonctionnalités manquantes pour la gestion des dossiers telles que déplacer les messages dans leurs dossiers de discussion, naviguer dans les répertoires grâce à des raccourcis clavier.",
+        "en-US": "This extension adds some basic missing features about folders.\nMove mails to their conversation folder. Navigate to folder with new keyboard shortcuts."
+    },
+    "support_email": {
+        "fr": "gilles.orsini@gmail.com",
+        "en-US": "gilles.orsini@gmail.com"
+    },
+    "support_url": {
+        "fr": "http://code.google.com/p/folderplus/",
+        "en-US": "http://code.google.com/p/folderplus/"
+    },
+    "tags": [
+        "classify",
+        "conversation",
+        "file messages",
+        "folder",
+        "go to",
+        "move",
+        "organize"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folderplus/",
+    "weekly_downloads": 28
+}

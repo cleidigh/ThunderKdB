@@ -1,0 +1,189 @@
+{
+    "id": 394306,
+    "authors": [
+        {
+            "id": 6392845,
+            "name": "Kyle L. Huff",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kylehuff/",
+            "username": "kylehuff",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6392/6392845.png?modified=1401254880"
+        }
+    ],
+    "average_daily_users": 12,
+    "categories": {
+        "firefox": [
+            "privacy-security",
+            "social-communication"
+        ],
+        "seamonkey": [
+            "interface-customizations",
+            "privacy-and-security"
+        ],
+        "thunderbird": [
+            "message-and-news-reading",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1407984,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "13.0"
+            },
+            "seamonkey": {
+                "max": "2.16a1",
+                "min": "2.1"
+            },
+            "thunderbird": {
+                "max": "18.0a1",
+                "min": "13.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/webpg-firefox/versions/1407984",
+        "files": [
+            {
+                "id": 185236,
+                "created": "2013-01-03T11:07:27Z",
+                "hash": "sha256:fb45326354b6ddf0aae19b82ad316f189b6e14585924ebeff597613b366f2720",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 3534676,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/185236/webpg_for_firefox-0.9.2-sm+tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "Changes for v0.9.2\n\n* Added support for named groups\n* Added search ability to Encrypt-to key dialog\n* Added review dialog for import of public keys\n* Improved GMAIL compose integration\n* Added support for new GMAIL compose window (for in4mer, enjoy!)\n* Added WebPG action menu to text-area fields [BETA]\n* Fixed Firefox options dialog sizing and decoration\n* Added ability to publish keys to defined key-server\n* Added ability to retrieve keys from defined key-server\n* Added Email and UID aliases to Encrypt-to dialog\n* Minor bug fix to key expiration dialog\n* Moved to webpg-npapi v0.6.3"
+        },
+        "reviewed": "2013-01-23T12:13:10Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/webpg-firefox/versions/0.9.2.1-signed.1-signed",
+        "version": "0.9.2.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "WebPG for Firefox is a browser extension for the Mozilla Firefox browser that provides GnuPG cryptography functions, including:\n\n<ul><li>Key Generation</li><li>Public/Private Key Management</li><li>Sign/Verify/Encrypt/Decrypt methods</li><li>Inline Public Key detection (for importation, verification, etc.)</li><li>Inline Signed data detection</li><li>Gmail Integration [<b>EXPERIMENTAL</b>]</li></ul>\nGnuPG is *must* be installed on the system. WebPG does not replace GnuPG, it merely extends it.\n\nSource code for WebPG and related modules can be found here: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c530ca7df60ad1a45903453d5702d8a05ee94c527e44a765900e083cf9311329/http%3A//webpg.org/%3Fview=downloads\">http://webpg.org/?view=downloads</a>"
+    },
+    "developer_comments": {
+        "en-US": "This extension uses the WebPG NPAPI module webpg-npapi, which is a cross browser and cross platform browser plugin that provides access to the GnuPG GPGME C API.\n\nThe source for this extension can be found here -\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a01544a4f990eef4ec8e1de4db1a03ff66c83c8fea09897e6a94b2da4675d491/https%3A//github.com/kylehuff/webpg-firefox\">https://github.com/kylehuff/webpg-firefox</a>\n\nThe source for the NPAPI plugin webpg-npapi can be found here -\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0f16ad94b727061c12799117b204a47b23b1238274f6ff1574aebb379ab4086d/https%3A//github.com/kylehuff/webpg-npapi\">https://github.com/kylehuff/webpg-npapi</a>\n\nThe extension and it's packaged NPAPI plugin is open source, and provided as-is, without any warranty. They were written with the intent of making common Cryptography operations easy, portable and accessible.\n\nIf you find bugs with the extension or it's module(s), please contact support at webpg-support@curetheitch.com\n\nIf you would like to contribute, patches, enhancements, donations and suggestions are always welcome. If there is something we can do to make this product better, just let us know."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/webpg-firefox/edit",
+    "guid": "webpg-firefox@curetheitch.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://webpg.org"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/394/394306-64.png?modified=1376485574",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/394/394306-32.png?modified=1376485574",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/394/394306-64.png?modified=1376485574"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-01-23T12:13:13Z",
+    "name": {
+        "en-US": "WebPG for Mozilla"
+    },
+    "previews": [
+        {
+            "id": 77360,
+            "caption": {
+                "en-US": "Key Manager"
+            },
+            "image_size": [
+                624,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/77/77360.png?modified=1530209051",
+            "thumbnail_size": [
+                238,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/77/77360.png?modified=1530209051"
+        },
+        {
+            "id": 77362,
+            "caption": {
+                "en-US": "Example of inline detected PGP blocks"
+            },
+            "image_size": [
+                700,
+                367
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/77/77362.png?modified=1530209051",
+            "thumbnail_size": [
+                320,
+                168
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/77/77362.png?modified=1530209051"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.7034,
+        "count": 24,
+        "average": 2.7917,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/webpg-firefox/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/394306",
+    "slug": "webpg-firefox",
+    "status": "public",
+    "summary": {
+        "en-US": "An extension which provides GnuPG/GPG/PGP related functions to Moizilla Firefox, Thunderbird and Seamonkey"
+    },
+    "support_email": {
+        "en-US": "webpg-support@curetheitch.com"
+    },
+    "support_url": {
+        "en-US": "http://webpg.org/"
+    },
+    "tags": [
+        "encryption",
+        "firegpg",
+        "gmail",
+        "gnupg",
+        "gpg",
+        "pgp"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/webpg-firefox/",
+    "weekly_downloads": 31
+}

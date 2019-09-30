@@ -1,0 +1,185 @@
+{
+    "id": 77491,
+    "authors": [
+        {
+            "id": 4912703,
+            "name": "John Leveille",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jleveille/",
+            "username": "jleveille",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 134,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1270670,
+        "compatibility": {
+            "thunderbird": {
+                "max": "19.*",
+                "min": "2.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/freebusy/versions/1270670",
+        "files": [
+            {
+                "id": 132203,
+                "created": "2011-09-19T13:54:51Z",
+                "hash": "sha256:f754b02e23bbd29f0d81e4487d3268002b219d638d6680a4ab9b340c125beea4",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 21504,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/132203/freebusy-2.0-tb+sb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Updated for TB 5, TB 6.  The FB publishing was previously including a year of past events and a year of future events.  With this release, the events are trimmed to only include 1 month of past events and a year of future events.\n\nThe addon now replaces the username multiple times when reading FB urls in the meeting invitation window.  For example, if you have a URL like\nhttp://myserver/&lt;username&gt;/freebusy/&lt;username&gt;.ifb\nthe previous releases would only replace the first occurrence of &lt;username&gt;.  This release will replace multiple occurrences as denoted by asterisks like this\nhttp://myserver/*/freebusy/*.ifb\nThanks for the that one Christoph!\n\n<b>Special thanks to Chistoph Mueller</b> for the extensive testing and insightful feedback for this addon.\n\nCheers!\nJohn Leveille"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/freebusy/versions/2.0",
+        "version": "2.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on allows you to automatically publish your Lightning calendar information (not the events, just busy times) to a file on your hard drive or on an ftp server.  Other users can use this file to determine when you are available for meetings and events.  Users in either Thunderbird or Outlook can consume this *.ifb file and use it to schedule meetings.  Once you publish, you can provide either a ftp or http link to your *.ifb file and the other users can plug that into their Outlook or Thunderbird to see your availability.\n\nThe Lightning meeting scheduler (Invite Attendees...) can be enhanced by configuring the free/busy extension to read the free/busy information for other people.  First, have the other users publish their free/busy (*.ifb) files to a public web address.  How?  Using this addon (Thunderbird) or using a publishing step (Outlook).  Second, configure the Settings tab in your Free/Busy extension (under Tools in Thunderbird) to fetch their free/busy info from a http or ftp link.\n\nFinally, you may need to lobby the Outlook users to publish their free/busy information so that you can see if from Thunderbird.  Here is an information link to help with that: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a0f1e88db0f26fa5e08d434bce3aa581377541ee3ea3873716eed790bf957352/http%3A//support.microsoft.com/kb/291621\">http://support.microsoft.com/kb/291621</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/freebusy/edit",
+    "guid": "freebusy-thunderbird@d-wise.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.d-wise.com/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-09-27T09:57:36Z",
+    "name": {
+        "en-US": "Free/Busy"
+    },
+    "previews": [
+        {
+            "id": 42428,
+            "caption": {
+                "en-US": "Free/Busy dialog.  Accessible from the Tools menu."
+            },
+            "image_size": [
+                564,
+                494
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/42/42428.png?modified=1530208674",
+            "thumbnail_size": [
+                228,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/42/42428.png?modified=1530208674"
+        },
+        {
+            "id": 47686,
+            "caption": {
+                "en-US": "Second tab showing how you instruct the addon to read the free/busy information for other people.  Configuring this tab will enable the Invite Attendees window to show free/busy info and enable meeting planning."
+            },
+            "image_size": [
+                552,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47686.png?modified=1530208675",
+            "thumbnail_size": [
+                210,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47686.png?modified=1530208675"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.01097,
+        "count": 14,
+        "average": 3.0714,
+        "text_count": 14
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/freebusy/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/77491",
+    "slug": "freebusy",
+    "status": "public",
+    "summary": {
+        "en-US": "Publish free/busy calendar file (*.ifb) via ftp or to a file.  View other people's free/busy info in meeting organizer window.  Integrate Thunderbird and Outlook calendars without Exchange server."
+    },
+    "support_email": {
+        "en-US": "itsupport@d-wise.com"
+    },
+    "support_url": null,
+    "tags": [
+        "busy",
+        "caldav",
+        "calendar",
+        "collaborate",
+        "event",
+        "exchange",
+        "free",
+        "freebusy",
+        "ftp",
+        "ics",
+        "ifb",
+        "lightning",
+        "meet",
+        "meeting",
+        "outlook",
+        "publish",
+        "schedule",
+        "sogo",
+        "tentative"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/freebusy/",
+    "weekly_downloads": 35
+}

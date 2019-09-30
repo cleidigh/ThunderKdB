@@ -1,0 +1,177 @@
+{
+    "id": 197369,
+    "authors": [
+        {
+            "id": 1478413,
+            "name": "kobashi",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kobashi/",
+            "username": "kobashi",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 114043,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.2a1pre",
+                "min": "3.0a1pre"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailad/versions/114043",
+        "files": [
+            {
+                "id": 95401,
+                "created": "2010-07-29T23:24:57Z",
+                "hash": "sha256:38e988e7d6ba29d3fe4b217760c07411b89612f0398f496734713aba0bf307a9",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 8192,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/95401/-1.0.5a.20100730-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailad/versions/1.0.5a.20100730",
+        "version": "1.0.5a.20100730"
+    },
+    "default_locale": "ja",
+    "description": {
+        "ja": "MailADは、メールマガジンなどの中にある広告を削除するアドオンです。\nFirefoxにはAdblock Plusがあるのに、メールには存在しないのかということか\nら作成しました。\n\n私も結構いろいろなメールマガジンを読んだりしますが、結構広告がうるさく\nて、読みにくくて・・・\n\nそんなことを解消するために作成しました。まだまだ中身が荒削りで、皆さんの\nご期待にこたえることが出来ていないかもしれませんが、大部分の広告が削除さ\nれているので、いい感じに利用できています。\n\nなお、メール広告削除設定には、正規表現が利用できます。ワイルドカード使う\nだけでも正規表現が必要なので要注意です。\n\nまた、メール本文そのものは一切いじってませんので、安心してください。\n万が一設定を間違ってしまって、画面が真っ白になっても大丈夫です。\nソース表示の時には、メール広告部分も表示されますよ。\n\n【開発者のコメント 】\n設定画面GUIなどがないため、現在は設定用XMLファイルを全て手作業で修正して\nあげる必要があります。\n\nしかしながら、ある程度は初期設定で入れてあるので、何とかなるのかなぁと。\nそのうち設定画面を作っていきますが、設定画面を作るだけのスキルが私にまだ\nないので、時間がかかるかと思います。\n\n下記のように各自で設定ファイルいじってください。\n\n\n【使い方マニュアル】\nアドオンをインストールしてください。\nMailADのON/OFFや、現在有効化されているかは、画面右下のステータスバーに表\n示されます。(そのうちアイコンにでもするかも・・・)\n\nmailAD:ON  ← 現在削除している状態です。\nmailAD:OFF ← 現在削除していない状態です。\n\nこの文字をクリックすることで表示のON/OFFの切り替えが出来ます。\n\n\n設定ファイルの設定方法\n\n1.設定は、&lt;mailad&gt;&lt;/mailad&gt;ブロック内に記載します。\n2.設定は、&lt;setting&gt;&lt;/setting&gt;で囲まれ、下記の3つのブロックで構成されます。\n　a.&lt;address&gt;&lt;/address&gt; : 削除対象のメールアドレスを記載します。\n  b.&lt;start&gt;&lt;/start&gt;     : 広告が始まるときの文字列を記載します。\n  c.&lt;end&gt;&lt;/end&gt;         : 広告が終わるときの文字列を記載します。\n\n3.記載例としては、下記のようになります。\n\nまず、下記のようなメールがあるとします。\n\n送信者: admail@mailad.com\n---------メール本文---------------------\n\n--☆PR☆--------------------------------------------------------------------\n　広告本文・・・・・・・・・・・・・・・・・・・・・・・・・・　\n・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・\n　・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・\n　・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・\n  ⇒ <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e0d07d2c317b4ab35ea8a065f122dd0b82d2b1c205b0d415d0803b5fabde568e/http%3A//xxxx.xxx.com/koukokuurl/dir/folder/index.htm\">http://xxxx.xxx.com/koukokuurl/dir/folder/index.htm</a>\n--------------------------------------------------------------------☆PR☆--\n\nメール本文・・・・・・・・・・・・・・・・・・・・・・・・・・\n・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・\n・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・\n・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・\n---------本文終わり ---------------------\n\nこのような場合、次のように分類されます。\n\n送信者: admail@mailad.com\n広告開始文字\n列:--☆PR☆--------------------------------------------------------------------\n広告終了文字\n列:--------------------------------------------------------------------☆PR☆--\n\nそのため、次のようなブロックを作ります。\n&lt;setting&gt;\n&lt;address&gt;admail@mailad.com&lt;/address&gt;\n&lt;start&gt;--☆PR☆--------------------------------------------------------------------&lt;/start&gt;\n&lt;end&gt;--------------------------------------------------------------------☆PR☆--&lt;/end&gt;\n&lt;/setting&gt;\n\nこれをsetting.xmlに追加していってください。\n\nなお、正規表現も利用できます。利用できるのは、送信者、広告開始文字列、広\n告終了文字列です。\n正規表現を利用する場合には、必ずはじめと終わりを/でくくってください。上\n記を正規表現で記載するとこんな感じになります。\n\n&lt;setting&gt;\n &lt;address&gt;/,*\\@mailad\\.com/&lt;/address&gt;\n &lt;start&gt;/-+☆PR☆-,*$/&lt;/start&gt;\n &lt;end&gt;/-+☆PR☆-*$/&lt;/end&gt;\n&lt;/setting&gt;\n\nかなりすっきりすると思います。\nなお、タグの直後に/を書かないと、認識しません。従って、次のような場合は\n正規表現ではなく、通常文字列として認識されます。\n\n&lt;start&gt; /-+☆PR☆-,*$/&lt;/start&gt;\n\n&lt;start&gt;タグの後に半角スペースが入ってしまっているため、通常文字列として\n認識しています。\n\n通常時はワイルドカードも利用できませんので、何かあれば全て正規表現で記載\nしていただく必要があります。\n\nなお、ひとつのメールの中に複数の広告文字列が発生している場合があります。\nその際には、複数記載していただくことで対応できます。"
+    },
+    "developer_comments": {
+        "ja": "1.0.3a.20100714\nα版ではありますが、一応正式公開開始しました。\nこれから少しずつではありますが、設定画面などを追加していきたいと思います。\n\n現在の問題点は、下記のとおりです。\n\n【重大な問題】\n・連続する2行のみの広告の場合、正しく設定しても動きません。\n　⇒これは個人的にも何とかしたいと思っているのですが、うまくいきません。広告を正規表現を利用して削除していますが、それがうまくいかないのではないかと思っています。いい正規表現がわかったら教えてください。\n　(広告開始文字列)([\\s\\S]+?)(広告終了文字列)\nこれで広告をマッチさせています。\n\n【そのうち対応】\n・行内広告は対応できません。\n・設定画面がありません。テキストエディタで根性で修正してください。\n・広告を折りたたむなどの対応は出来ていません。\n　⇒広告を非表示にしてしまうと、間違った設定で必要な情報が欠如してしまう問題があります。\n・必ず広告開始行、広告終了行が必要となります。この文字から、この文字までという範囲選択が出来ません。\n　⇒ある特定の行から開始され、空行で終わるような広告に対応できません。\n\n【意識的に放置】\n・ローカライズされていません。\n　⇒別にローカライズするような内容もないので、設定画面が出来たらローカライズします。\n・メールのソース表示時に広告を削除する対応をしていません。\n　⇒ソースはきっちり表示できたほうがいいと思っているので、今のところ対応する予定はありません。\n"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailad/edit",
+    "guid": "mailad@kobayashi.ch",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "ja": "http://www.kobayashi.ch"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2011-02-07T18:50:47Z",
+    "name": {
+        "ja": "mailAD"
+    },
+    "previews": [
+        {
+            "id": 47317,
+            "caption": null,
+            "image_size": [
+                670,
+                357
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47317.png?modified=1530208855",
+            "thumbnail_size": [
+                320,
+                171
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47317.png?modified=1530208855"
+        },
+        {
+            "id": 47318,
+            "caption": null,
+            "image_size": [
+                679,
+                367
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47318.png?modified=1530208855",
+            "thumbnail_size": [
+                320,
+                173
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47318.png?modified=1530208855"
+        },
+        {
+            "id": 47319,
+            "caption": null,
+            "image_size": [
+                190,
+                40
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47319.png?modified=1530208856",
+            "thumbnail_size": [
+                190,
+                40
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47319.png?modified=1530208856"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailad/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/197369",
+    "slug": "mailad",
+    "status": "public",
+    "summary": {
+        "ja": "MailADは、メールの中の広告を削除するアドオンです。\nAdblock Plusのメール版みたいなイメージです。\n"
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "メルマガ",
+        "メールマガジン",
+        "広告"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailad/",
+    "weekly_downloads": 22
+}

@@ -1,0 +1,144 @@
+{
+    "id": 5792,
+    "authors": [
+        {
+            "id": 194035,
+            "name": "orev",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/orev/",
+            "username": "orev",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 67,
+    "categories": {
+        "firefox": [
+            "appearance",
+            "web-development"
+        ],
+        "seamonkey": [
+            "interface-customizations",
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "appearance"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1282215,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "2.6.*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "6.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/firesizer/versions/1282215",
+        "files": [
+            {
+                "id": 134751,
+                "created": "2011-10-16T18:29:09Z",
+                "hash": "sha256:85c2e822e2ce8fabf064d6c162ae99df9343935ab995f5d15e45f99fad2eeba4",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 22495,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/134751/firesizer-1.7-tb+sm+fx+sb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 1,
+            "name": {
+                "en-US": "Custom License"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/firesizer/license/1.7.1-signed.1-signed"
+        },
+        "release_notes": {
+            "en-US": "Fixed bug with missing status bar display\nSeamonkey 2.6.* support"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/firesizer/versions/1.7.1-signed.1-signed",
+        "version": "1.7.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Provides a menu and status bar to resize the window dimensions to a specific size.  Unlike other similar extensions, this one sets the size of the *entire window*, not just the HTML area, which better reflects the environment that end users will be using.\n\nThis add-on uses the \"Add On\" bar at the bottom of the Firefox window, which is hidden by default on recent versions of Firefox.  I highly recommend the <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/firefox/addon/barlesque/\">Barlesque</a> add-on to get the best of both worlds.\n\nHeavily inspired by \"Yet Another Window Resizer\" by  Galoca\n\n<b>FAQ:</b>\n<ul><li><i><b>Why doesn't Firesizer resize only the HTML area (viewport)?</b></i>\nThis extension is meant to resize the entire browser window to the specified size, not only the HTML viewport. I really feel that most, if not all web site designs seem to target some sort of ideal viewport size (like 1024x768), and always seem to forget about window borders, scroll bars, etc..., and it really drives me nuts. You can't ignore the fact that browsers have all of these interface elements. If you're developing for mobile devices, this is a different story, and in that case, using the viewport size would make more sense (but Firesizer doesn't support that mode).</li><li><i><b>Why are the measurements incorrect (such as when the window is maximized)?</b></i>\nFiresizer's measurements include window borders, top/bottom status bars, menus, navigation buttons, etc... When these are included, the measurements are accurate. \n\nFurther, when the window is maximized, Windows actually just makes the window so big that you can't see the borders, but they're still there. This will cause the measurements to appear to be inaccurate in a maximized window. There is no way to account for this in the extension because the border widths are OS specific, and users can change them if they want.</li><li><i><b>Why doesn't Firesizer work in Firefox 29 and higher?</b></i>\nFirefox 29 and above users will also need to install <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/firefox/addon/the-addon-bar/\">The Addon Bar</a> extension to use Firesizer, which relies on the status bar to display the current resolution.</li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/firesizer/edit",
+    "guid": "{04426594-bce6-4705-b811-bcdba2fd9c7b}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://addons.mozilla.org/en-US/firefox/addon/5792"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-10-19T01:56:22Z",
+    "name": {
+        "en-US": "Firesizer"
+    },
+    "previews": [
+        {
+            "id": 16655,
+            "caption": null,
+            "image_size": [
+                158,
+                149
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16655.png?modified=1530208347",
+            "thumbnail_size": [
+                158,
+                149
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16655.png?modified=1530208347"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.15595,
+        "count": 127,
+        "average": 4.189,
+        "text_count": 127
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/firesizer/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/5792",
+    "slug": "firesizer",
+    "status": "public",
+    "summary": {
+        "en-US": "Allows you to resize the window to specific dimensions.\n\nNOTE: Users of Firefox 29 and above must install \"The Addon Bar\" extension to use this, as Firesizer uses the add-on bar that has been removed in Firefox 29."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://addons.mozilla.org/en-US/firefox/addon/5792"
+    },
+    "tags": [
+        "resize",
+        "resizer",
+        "testing",
+        "web development",
+        "window"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/firesizer/",
+    "weekly_downloads": 130
+}

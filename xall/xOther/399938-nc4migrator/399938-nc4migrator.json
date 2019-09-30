@@ -1,0 +1,153 @@
+{
+    "id": 399938,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 3,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1389607,
+        "compatibility": {
+            "thunderbird": {
+                "max": "17.*",
+                "min": "3.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nc4migrator/versions/1389607",
+        "files": [
+            {
+                "id": 173785,
+                "created": "2012-10-23T01:02:35Z",
+                "hash": "sha256:4844cd394a7e99eccae6cfe16ece3cb136ce21a8051dec0ddce114ac9b43f800",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 190515,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/173785/netscapecommunicator_4x_account_settings_migrator-1.0.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 2652,
+            "name": {
+                "en-US": "MPL 2.0"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nc4migrator/license/1.0.1"
+        },
+        "release_notes": {
+            "en-US": "Work with Netscape profiles including odd format prefs.js",
+            "ja": "JavaScriptとして不正な書式であるprefs.jsを含んだNetscapeプロファイルでも動作するように修正"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nc4migrator/versions/1.0.1",
+        "version": "1.0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on provides ability to import E-mail accounts from Netscape Messenger 4.x to Thunderbird. If there are multiple Netscape Communicator 4.x profiles, then this imports each NC4.x profile as a Thunderbird mail account.\n\n<strong>Migration wizard</strong>\n\nMigration wizard starts in the following two ways.\n\n<ul><li>Launching Thunderbird with no accounts.</li><li>Selecting \"Tool\" -&gt; \"Netscape 4 migration wizard\".</li></ul>\n<strong>Overriding setting values</strong>\n\nIf a setting extensions.nc4migrator.override.&lt;setting_name_to_be_overridden&gt; exists, this add-on overrides the value of &lt;setting_name_to_be_overridden&gt; with that setting value. For instance, by arranging a setting pref(\"extensions.nc4migrator.override.mail.server.*.empty_trash_on_exit\", true);, this add-on overrides the value of &lt;mail.server.*.empty_trash_on_exit&gt; with true, and as a consequence, Thunderbird automatically clears trashes. Special setting value [[CLEAR]] let this add-on to ignore the corresponding setting by leaving its value empty.\n\n<strong>Restrictions</strong>\n\n<ul><li>Currently only IMAP mail accounts can be imported. POP3 accounts are not supported.</li><li>Currently only following options can be imported.<ul><li>Identity<ul><li>Your name</li><li>Email address</li><li>Reply-to address</li><li>Organization</li><li>Signature File</li></ul></li><li>Mail Servers<ul><li>Incoming Mail Servers (only IMAP servers are imported)<ul><li>Server Name</li><li>Server Type (IMAP only)</li><li>User Name</li><li>Mark new folders for offline download</li><li>Use secure connection (SSL)</li><li>When I delete a message</li><li>Clean up (\"Expunge\") Inbox on Quit</li><li>Empty Trash on Quit</li><li>IMAP server directory</li><li>Show only subscribed folders</li><li>Server supports folders that contain sub-folders and messages</li><li>Personal namespace</li><li>Public (shared)</li><li>Other Users</li><li>Allow server to override these namespaces</li></ul></li><li>Outgoing Mail Server<ul><li>Outgoint mail (SMTP) server</li><li>Outgoing mail server user name</li><li>Use Secure Socket Layer (SSL) or TLS for outgoing messages</li></ul></li></ul></li><li>Copies and Folders</li><li>Formatting</li></ul></li><li>Currently following options are ignored and configured with Thunderbird's default value.<ul><li>Contents of local address books</li><li>Mail &amp; Newsgroups<ul><li>Plain quoted text beginning with \"&gt;\" is displayed with</li><li>Display plaintext messages and articles with</li><li>Play sound when messages arrive</li><li>Remember the last selected message</li><li>Confirm when moving folders to the trash</li><li>Use Netscape Messenger from MAPI-based applications</li></ul></li><li>Identity<ul><li>Attach my personal card to messages (as a vCard)</li><li>Anything in the \"Edit Card\" dialog</li></ul></li><li>Mail Servers<ul><li>Incoming Mail Servers<ul><li>Check for mail every N minutes</li><li>Clean up all folders on exit (Thunderbird doesn't inlucde this feature)</li><li>Rmember password</li><li>Local mail directory: migrated to a new folder in the Thunderbird profile.</li></ul></li></ul></li><li>Newsgroup Servers (anything)</li><li>Addressing (anything)</li><li>Messages (anything)</li><li>Window Settings (anything)</li><li>Copies and Folders<ul><li>When sending a newsgroup message, automatically</li></ul></li><li>Formatting<ul><li>When sending HTML mail messages to recipients who are not listed as being able to receive them</li></ul></li><li>Return Receipts (anything)</li><li>Disk Space (anything)</li></ul></li></ul>",
+        "ja": "このアドオンは、Netscape Messenger 4.xのメールアカウント設定をThunderbirdのメールアカウントとしてインポートする機能を提供します。複数のNetscape Communicator 4.xプロファイルがある場合は、個々のNC4.xプロファイルを個々のThunderbirdメールアカウントとしてインポートします。\n\n<strong>移行ウィザード</strong>\n\n以下に示す２つの方法で、移行ウィザードを開始することができます。\n\n<ul><li>何もアカウントが存在しない状態で Thunderbird を起動する。</li><li>「ツール」メニューの「Netscape 4 移行ウィザード」を選択する。</li></ul>\nウィザードが開始されれば、あとは指示に従うだけで Netscape のアカウントをインポートすることができます。\n\n<strong>設定値の上書き機能</strong>\n\nextensions.nc4migrator.override.&lt;上書きしたい設定名&gt; という設定を作成しておくと、設定の移行時にその値で上書きします。例えば pref(\"extensions.nc4migrator.override.mail.server.*.empty_trash_on_exit\", true); としておくと、移行前の設定がどうであったかに関わらず、すべての受信サーバでごみ箱を自動的に空にするようになります。また、値を文字列で [[CLEAR]] としておくことで、その設定値を移行せずに空にしておくことができます。\n\n<strong>制限事項</strong>\n\n<ul><li>現在のバージョンは、IMAPアカウントのインポートにのみ対応しています。POP3アカウントのインポートについては未対応です。</li><li>現在のバージョンは、以下の設定項目のインポートにのみ対応しています。<ul><li>個人情報<ul><li>名前</li><li>電子メールアドレス</li><li>返信アドレス</li><li>組織</li><li>署名ファイル</li></ul></li><li>メールサーバ<ul><li>受信メールサーバ（IMAPサーバのみ移行されます）<ul><li>ホスト名</li><li>サーバの種類（IMAP）</li><li>ユーザ名</li><li>新しいフォルダをオフライン ダウンロードに設定する</li><li>保護付きの接続（SSL）を使用する</li><li>メッセージを削除するとき</li><li>終了時に受信フォルダをクリーンアップする</li><li>終了時にごみ箱フォルダを空にする</li><li>IMAPサーバ ディレクトリ</li><li>購読中のフォルダのみを表示</li><li>サーバはサブフォルダとメッセージの両方を格納できるフォルダをサポート</li><li>個人用ネームスペース</li><li>公共（共用）</li><li>他のユーザ</li><li>これらのネームスペースをサーバ側で上書きすることを許可する</li></ul></li><li>送信メール サーバー<ul><li>送信メール（SMTP）サーバ</li><li>送信メール サーバのユーザ名</li><li>SSL・TLS</li></ul></li></ul></li><li>コピーとフォルダ</li><li>書式</li></ul></li><li>現在のバージョンは、以下の設定項目のインポートに対応していません。以下の設定項目はThunderbirdのメールアカウントの初期設定値になります。<ul><li>ローカルアドレス帳の内容</li><li>メールとグループ<ul><li>\"&gt;\" で始まるテキストの引用文の表示方法</li><li>テキストのみのメッセージや記事の表示方法</li><li>メッセージ到着時に音で知らせる</li><li>最後に選択したメッセージを記憶しておく</li><li>フォルダをごみ箱に移動する際に、確認する</li><li>MAPIアプリケーションでNetscape Messangerを使用する</li></ul></li><li>個人情報<ul><li>メッセージにパーソナル カードを添付する（vCard）</li><li>「カードを編集」ダイアログのすべての設定</li></ul></li><li>メールサーバ<ul><li>受信メールサーバ<ul><li>新着メールをN分ごとに確認する</li><li>「終了時にすべてのフォルダをクリーンアップする」の設定（当該機能がThunderbirdに存在しないため）</li><li>パスワードを保存する</li><li>ローカルメールディレクトリ：Thunderbirdプロファイル内のディレクトリとなる</li></ul></li></ul></li><li>グループ サーバ（すべての設定）</li><li>アドレス（すべての設定）</li><li>メッセージ（すべての設定）</li><li>Windowの設定（すべての設定）</li><li>コピーとフォルダ<ul><li>ニュースグループ メッセージを送信するとき</li></ul></li><li>書式<ul><li>HTMLメッセージを受信可能な一覧に入っていない受取人に、HTMLメッセージを送信する時</li></ul></li><li>受信確認（すべての設定）</li><li>ディスク スペース（すべての設定）</li></ul></li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nc4migrator/edit",
+    "guid": "nc4migrator@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/nc4migrator",
+        "ja": ""
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-10-23T11:38:53Z",
+    "name": {
+        "en-US": "NetscapeCommunicator 4.x Account Settings Migrator",
+        "ja": "NetscapeCommunicator 4.x アカウント設定移行ツール"
+    },
+    "previews": [
+        {
+            "id": 79148,
+            "caption": {
+                "en-US": "The menu item to start migration wizard",
+                "ja": "ウィザードを開始するためのメニュー項目"
+            },
+            "image_size": [
+                295,
+                362
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/79/79148.png?modified=1530209047",
+            "thumbnail_size": [
+                163,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/79/79148.png?modified=1530209047"
+        },
+        {
+            "id": 79150,
+            "caption": {
+                "en-US": "Migration wizard",
+                "ja": "アカウント移行ウィザード"
+            },
+            "image_size": [
+                521,
+                425
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/79/79150.png?modified=1530209048",
+            "thumbnail_size": [
+                245,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/79/79150.png?modified=1530209048"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nc4migrator/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/399938",
+    "slug": "nc4migrator",
+    "status": "public",
+    "summary": {
+        "en-US": "Provies ability to migrates account settings and preferences from NC4.x profiles.",
+        "ja": "NC4.xのプロファイルをThunderbirdのメールアカウントに移行する機能を提供します。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/nc4migrator/issues"
+    },
+    "tags": [
+        "account settings",
+        "communicator",
+        "messenger",
+        "migration",
+        "netscape"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nc4migrator/",
+    "weekly_downloads": 21
+}

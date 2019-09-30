@@ -1,0 +1,159 @@
+{
+    "id": 764831,
+    "authors": [
+        {
+            "id": 1204889,
+            "name": "Mitsugu Oyama",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mitsugu-oyama/",
+            "username": "mitsugu-oyama",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1204/1204889.png?modified=1498621899"
+        }
+    ],
+    "average_daily_users": 5,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2076281,
+        "compatibility": {
+            "thunderbird": {
+                "max": "52.*",
+                "min": "17.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/h%C3%BCtte-nippon-for-thunderbird/versions/2076281",
+        "files": [
+            {
+                "id": 625967,
+                "created": "2017-04-08T02:31:11Z",
+                "hash": "sha256:6f5d4ecb69ad67d3beb1089fe5a93074722843dd1b36cda1ad12bce1bd38ab90",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 111874,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/625967/hutte_nippon_for_thunderbird-1.6.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/h%C3%BCtte-nippon-for-thunderbird/versions/1.6.6",
+        "version": "1.6.6"
+    },
+    "default_locale": "ja",
+    "description": {
+        "ja": "【これは何】\n　株式会社ウェザーマップ ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9590025a474d16a111c53a28b945c793df46ca96f33ae33d87a991926d3bf6a8/http%3A//www.weathermap.co.jp/hitokuchi_rss/index.html\">http://www.weathermap.co.jp/hitokuchi_rss/index.html</a> ) から取得した RSS を元に日本の週間天気予報をグラフィカルに表示します。機能の詳細は \"主な機能\" をご参照ください。\n　将来日本の山小屋等でネット接続が可能になったときに、この拡張により山小屋で登山者への最新気象情報が提供できるようになることを期待しています。また登山者の方の登山の計画時に利用いただければ幸いです。\n　もちろん日常生活での気象情報の取得にも御利用ください。\n　また地域の防災に役立てれば幸いです。\n\n【主な機能】\n■設定した地方の週間天気予報の表示 ( \"長野県/中部(松本)\"等 )\n■設定した地方の天気概要の表示\n■速報天気図の表示\n■降雨レーダーナウキャストの表示\n■雷ナウキャストの表示\n■気象警報・注意報の表示\n■Thunderbirdによる気象警報・注意報ページの表示\n■Thunderbirdによる気象庁ホームページの表示\n■外部ソフトによる北海道放送・専門天気図ホームページの表示\n■Thunderbirdによる気象庁が公開している高層天気図の表示 ( png )\n■外部ソフトによる北海道放送が公開しているPDF天気図の表示\n■地域時系列予報の表示\n■気象衛星写真の表示\n■竜巻発生確度ナウキャストの表示\n\n【起動方法】\n■Thunderbird のツール・メニューから \"Hütte Nippon\" を選択する\n■Thunderbird のツールバーの \"Hütte Nippon\" アイコンをクリックする\n■キーボードでCtrl+Alt+Wを押下する\n\n【使い方】\n■初回起動時\n　都道府県と地域の入力を促されますので、表示されるダイアログ・ボックスにて入力設定してください。\n■都道府県と地域の変更\n　一次細分区域 ( ex. 長野県：中部(松本) ) が表示されているボタンをクリックし、表示されるダイアログ・ボックスにて入力設定してください。\n■週間天気予報の表示\n　Hütte Nippon を起動してください。\n■終了方法\n　\"終了\" ボタンをクリックしてください。\n■天気概要の表示\n　\"天気概況\" ボタンをクリックしてください。\n■天気速報図の表示\n　\"速報天気図\" ボタンをクリックしてください。\n■降雨レーダーナウキャストの表示\n　\"気象レーダー\" ボタンをクリックしてください。\n■雷ナウキャストの表示\n　\"雷情報\" ボタンをクリックしてください。\n■気象警報・注意報の表示\n　\"警報・注意報\" ボタンをクリックしてください。\n■Firefoxによる気象警報・注意報ページの表示\n　警報・注意報ダイアログボックスで \"ブラウザで開く\" ボタンをクリックしてください。\n■以下 Hütte Nippon コンテキスト・メニューから表示\n　○気象庁ホームページ\n　○北海道放送・専門天気図ホームページ\n　○気象庁各高層天気図\n　○北海道放送 PDF 各天気図\n■地域時系列予報の表示\n　\"地域時系列予報\" ボタンをクリックしてください。\n■気象衛星写真の表示\n　\"気象衛星写真\" ボタンをクリックしてください。\n■竜巻発生確度ナウキャストの表示\n　\"竜巻情報\" ボタンをクリックしてください。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/h%C3%BCtte-nippon-for-thunderbird/edit",
+    "guid": "huttenippon_for_thunderbird@mitsugu.ne.jp",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "ja": "https://github.com/mitsugu/HutteNipponForThunderbird"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/764/764831-64.png?modified=1491715219",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/764/764831-32.png?modified=1491715219",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/764/764831-64.png?modified=1491715219"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-04-09T05:15:14Z",
+    "name": {
+        "ja": "Hütte Nippon for Thunderbird"
+    },
+    "previews": [
+        {
+            "id": 181273,
+            "caption": null,
+            "image_size": [
+                570,
+                345
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/181/181273.png?modified=1530209327",
+            "thumbnail_size": [
+                320,
+                194
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/181/181273.png?modified=1530209327"
+        },
+        {
+            "id": 181418,
+            "caption": null,
+            "image_size": [
+                570,
+                347
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/181/181418.png?modified=1530209327",
+            "thumbnail_size": [
+                320,
+                195
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/181/181418.png?modified=1530209327"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/h%C3%BCtte-nippon-for-thunderbird/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/764831",
+    "slug": "hütte-nippon-for-thunderbird",
+    "status": "public",
+    "summary": {
+        "ja": "Display weather report for a week of Japan."
+    },
+    "support_email": {
+        "ja": "mitsugu.oyama@gmail.com"
+    },
+    "support_url": {
+        "ja": "https://github.com/mitsugu/HutteNipponForThunderbird"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/h%C3%BCtte-nippon-for-thunderbird/",
+    "weekly_downloads": 1
+}

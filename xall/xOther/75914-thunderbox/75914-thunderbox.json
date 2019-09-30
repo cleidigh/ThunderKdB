@@ -1,0 +1,168 @@
+{
+    "id": 75914,
+    "authors": [
+        {
+            "id": 4154908,
+            "name": "Honolulu Henk",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/honolulu-henk/",
+            "username": "honolulu-henk",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 36,
+    "categories": {
+        "thunderbird": [
+            "contacts"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 113288,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbox/versions/113288",
+        "files": [
+            {
+                "id": 94626,
+                "created": "2010-07-21T11:48:24Z",
+                "hash": "sha256:1498b9f0d1707dfdc693e928fa8aabd0432a1f5d6b5b9e833d1bad2278ba8347",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 32768,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/94626/thunder!box-0.9.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "Bugfix release:\n- The Dialpad will correctly convert the dialled number if it's stored w/ intl. prefix and the number is in your own country",
+            "de": "Nur ein Bugfix, keine neue Funktionalität:\n- Bei der Wählfunktion wird die Zielrufnummer nun entsprechend korrigiert wenn sie mit Ländervorwahl vom eigenen Land (z.B. +49) gespeichert wurde"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbox/versions/0.9.1",
+        "version": "0.9.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "THUNDER!Box introduces fields \"Vanity\", \"Quickdial\" and \"Important Person\" from the FRITZ!Box built-in phonebook to the Thunderbird Addressbook. This data alongside the phone numbers may be transmitted to the FRITZ!Box.\nOptionally a dial button may be enabled to start calls. This feature uses the FRITZ!Box feature to dial the contact and then ring your phone as soon as the called person picks up.\n",
+        "de": "THUNDER!Box erweitert das Thunderbird-Adressbuch um die FRITZ!Box-Felder \"Kurzwahl\", \"Vanity\" und \"Wichtige Person\". Diese Felder können dann zusammen mit den Telefonnummern in das FRITZ!Box Telefonbuch übertragen oder von dort importiert werden.\nWeiterhin können Anrufe direkt vom Adressbuch heraus gestartet werden. Hierzu wird die Wählfunktion der FRITZ!Box benutzt: die ausgewählte Nummer wird angerufen. Sobald der Angerufene abhebt klingelt das eigene Telefon.\n"
+    },
+    "developer_comments": {
+        "en-US": "I'd really like to support images in the phonebook, but I don't have a Fritz!Box that does support these. At the minimum, I need a phonebook backup file from the web gui that does contain at least one image. Please upload this file to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/65a889c9de227cb2a1e67d7570e77d9070c1b6911658d7737047071128f5f046/http%3A//sourceforge.net/tracker/%3Ffunc=detail&amp;aid=3021680&amp;group_id=294837&amp;atid=1245158\">our issue tracking system</a>.\n\nPlease enter bug reports or feature requests into our <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1115a22e91d42f00387cefb31741242ca6dc799f1342b21d15b7f4f2fc3852b6/https%3A//sourceforge.net/projects/thunderbox/support\">issue tracking system</a>.",
+        "de": "Auf vielfachen Wunsch würde ich gerne Bilder im FRITZ!Box Telefonbuch unterstützen. Leider kann das meine Box nicht und ich tappe vorerst im Dunkeln... Daher benötige ich zumindest die Datei welche bei einer Telefonbuchsicherung in der FRITZ!Box Web-Oberfläche erstellt wird. Diese Datei bitte <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/65a889c9de227cb2a1e67d7570e77d9070c1b6911658d7737047071128f5f046/http%3A//sourceforge.net/tracker/%3Ffunc=detail&amp;aid=3021680&amp;group_id=294837&amp;atid=1245158\">hier hochladen</a>.\n\n\nFehlermeldungen oder Erweiterungswünsche bitte in unser <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1115a22e91d42f00387cefb31741242ca6dc799f1342b21d15b7f4f2fc3852b6/https%3A//sourceforge.net/projects/thunderbox/support\">Fehlermanagementsystem</a> eintragen. Fehlerreports in den Diskussionen unten werden evtl. erst verspätet bemerkt."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbox/edit",
+    "guid": "thunderbox@sourceforge.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://thunderbox.sourceforge.net",
+        "de": "http://thunderbox.sourceforge.net"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/75/75914-64.png?modified=1294995629",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/75/75914-32.png?modified=1294995629",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/75/75914-64.png?modified=1294995629"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2010-07-26T11:24:47Z",
+    "name": {
+        "en-US": "THUNDER!Box",
+        "de": "THUNDER!Box"
+    },
+    "previews": [
+        {
+            "id": 42127,
+            "caption": null,
+            "image_size": [
+                700,
+                371
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/42/42127.png?modified=1530208720",
+            "thumbnail_size": [
+                320,
+                170
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/42/42127.png?modified=1530208720"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.22277,
+        "count": 29,
+        "average": 4.3448,
+        "text_count": 29
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbox/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/75914",
+    "slug": "thunderbox",
+    "status": "public",
+    "summary": {
+        "en-US": "Thunder!Box allows transferring contacts from your Thunderbird-Addressbook to the phonebook of a connected AVM FRITZ!Box FON router and back. You may also use your addressbook to initiate calls.",
+        "de": "Thunder!Box ermöglicht es, die Kontakte aus Thunderbird in die Telefonbücher der AVM FRITZ!Box FON DSL-Modem/Router Produktfamilie zu übertragen. Weiterhin kann direkt aus dem Adressbuch gewählt werden."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://sourceforge.net/projects/thunderbox/support"
+    },
+    "tags": [
+        "7170",
+        "7270",
+        "7390",
+        "abgleich",
+        "adressbuch",
+        "avm",
+        "call",
+        "dial",
+        "fritzbox",
+        "kontakte",
+        "synchronisieren",
+        "synchronisierung",
+        "telefonbuch",
+        "thunderbird",
+        "übertragen",
+        "übertragung"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbox/",
+    "weekly_downloads": 31
+}

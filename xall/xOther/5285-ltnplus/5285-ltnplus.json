@@ -1,0 +1,155 @@
+{
+    "id": 5285,
+    "authors": [
+        {
+            "id": 177630,
+            "name": "Sven Giermann",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/sven-giermann/",
+            "username": "sven-giermann",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/177/177630.png?modified=1423711646"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 78988,
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/ltnplus/versions/78988",
+        "files": [
+            {
+                "id": 65031,
+                "created": "2009-09-21T04:06:10Z",
+                "hash": "sha256:37166d48e7dd3b94c4f144f8d073250b0ee4b45ee0716bac638f716c2bc0735d",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 35840,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/65031/ltnplus-0.9.1-tb+sb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Fixed existing Week and Month Grid printers to correctly handle events if tasks are present."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ltnplus/versions/0.9.1",
+        "version": "0.9.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Version 0.9:\nAdds a simple task list to print layouts and the ability to include tasks in MonthGrid and WeekGrid. [5]\n\nUp to version 0.2:\nThis extension was created to make Lightning look more like Sunbird...\n\nThere are 4 options you can choose:\n\n1. Move MiniMonthPick (small calendar in sidebar) to its own tab to conserve vertical space. (as requested in [1])\n\n2. Hide buttons (new, edit, delete) on calendar tab in sidebar to conserve horizontal space (they are not needed, as these functions are available in context menu and rarely used).\nThese buttons will be completely removed in future versions of Lightning\n\n3. Use UnifinderToDo (from Sunbird) to replace Lighning ToDo list. (as requested in [2])\nThis one is more functional looks better ;-)\n\n4. Use Unifinder (from Sunbird) to display an event list on top of the calendar view. (as requested in [3])\nThis is the only way to get a list of all events in Lightning 0.3.1 - in 0.5 you can print, but not display an event list.\nFor this to work, you have to modify 2 lines in 'messenger-overlay-sidebar.xul' and 'messenger-overlay-sidebar.js' (see Bug 386714, [4]).\n\nThere are still some bugs, I was not able to fix until now:\n- make Unifinder work without changes to Lightning\n- SelectAll in Unifinder event list only works in month-view\n- I was unable to change the context-menu of calendar views to Sunbird's\n\nIt was tested with Lightning 0.3.1, 0.5 and nightly builds up to build 2007070304 on Windows XP SP2 and Thunderbird 1.5 and 2.0.0.4.\n\nPlease feel free to report any errors or comments!\n\n[1] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6152b5e983b9da859d6d1caa92bba0b59f192507af587d1d3cc2c98dd85ab7a8/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=372833\">https://bugzilla.mozilla.org/show_bug.cgi?id=372833</a>\n[2] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e5aade8c73a0df2332227e93a34d2d1fc2792520867f6545bb9f5bcdd177bec4/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=372830\">https://bugzilla.mozilla.org/show_bug.cgi?id=372830</a>\n[3] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6cdccb06a58af3fd5cb6151aa01d2ea70d8f93768b1cb0f5681627eafaa15438/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=372829\">https://bugzilla.mozilla.org/show_bug.cgi?id=372829</a>\n[4] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2bec4a08a249159c8c5030257e8d49f14b7db487ef091996d37d4618af190a73/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=386714\">https://bugzilla.mozilla.org/show_bug.cgi?id=386714</a>\n\n[5] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4a1225ff4c20e1acc674a54bc4f420e6d4cd89a85df47c8208402db368459c48/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=325137\">https://bugzilla.mozilla.org/show_bug.cgi?id=325137</a>",
+        "de": "Version 0.9:\nFügt eine einfache Aufgabenliste als Drucklayout hinzu und ermöglicht den Ausdruck von Aufgaben in der Monatsübersicht und Wochenplanung. [5]\n\nBis Version 0.2:\nDiese Erweiterung wurde geschrieben, um Lightning mehr nach Sunbird aussehen zu lassen...\n\nEs gibt 4 einstellbare Optionen:\n\n1. MiniMonthPick (Monatskalender) in ein eigenes Tab im Tabpanel verschieben, um den vertikalen Platzbedarf zu reduzieren (wie in [1] gefordert)\n\n2. Schaltflächen auf dem Kalender-Tab (Neu, Bearbeiten, Löschen) verstecken, um den horizontalen Platzbedarf zu reduzieren (da diese auch im Kontextmenü verfügbar sind und eher selten benutzt werden)\nDiese Schaltflächen werden in zukünftigen Versionen von Lightning ohnehin entfernt.\n\n\n3. UnifinderToDo (aus Sunbird) als Ersatz für die Lightning ToDo-Liste benutzen (wie in [2] gefordert)\nDieses hat mehr Funktionen und sieht besser aus ;-)\n\n4. Unifinder (aus Sunbird) benutzen, um eine Terminliste oberhalb der Kalender Ansicht anzuzeigen. (wie in [3] gefordert)\nDas ist die einzige Möglichkeit, in Lightning 0.3.1 eine Liste aller Termine zu erhalten - in Lightning 0.5 kann diese ausgedruckt, aber nicht angezeigt werden.\nUm diese Funktion zu erhalten, müssen 2 Zeilen in den Dateien 'messenger-overlay-sidebar.xul' und 'messenger-overlay-sidebar.js' geändert werden (vgl. Bug 386714, [4]).\n\nLeider sind immer noch einige Bugs enthalten, die ich bisher nicht lösen konnte:\n- Unifinder ohne Änderungen an Lightning zu integrieren\n- \"Alles markieren\" im Unifinder funktioniert nur in der Monatsansicht\n- das Kontextmenü der Kalenderansicht konnte ich bisher nicht nachträglich auf das von Sunbird ändern\n\nDie Erweiterung wurde unter Lightning 0.3.1, 0.5 und den Nightly-Builds bis 2007070304 unter Windows XP SP2 und Thunderbird 1.5 und 2.0.0.4 getestet.\n\nJede Art von Kommentar oder Fehlermeldung ist willkommen!\n\n[1] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6152b5e983b9da859d6d1caa92bba0b59f192507af587d1d3cc2c98dd85ab7a8/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=372833\">https://bugzilla.mozilla.org/show_bug.cgi?id=372833</a>\n[2] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e5aade8c73a0df2332227e93a34d2d1fc2792520867f6545bb9f5bcdd177bec4/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=372830\">https://bugzilla.mozilla.org/show_bug.cgi?id=372830</a>\n[3] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6cdccb06a58af3fd5cb6151aa01d2ea70d8f93768b1cb0f5681627eafaa15438/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=372829\">https://bugzilla.mozilla.org/show_bug.cgi?id=372829</a>\n[4] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2bec4a08a249159c8c5030257e8d49f14b7db487ef091996d37d4618af190a73/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=386714\">https://bugzilla.mozilla.org/show_bug.cgi?id=386714</a>\n\n[5] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4a1225ff4c20e1acc674a54bc4f420e6d4cd89a85df47c8208402db368459c48/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=325137\">https://bugzilla.mozilla.org/show_bug.cgi?id=325137</a>"
+    },
+    "developer_comments": {
+        "en-US": "This AddOn should remain in Sandbox; it is only intended to demonstrate proposed solutions to known bugs...",
+        "de": "Diese Erweiterung sollte im Sandkasten verbleiben; sie dient nur der Demonstration von Lösungsmöglichkeiten bekannter Bugs."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/ltnplus/edit",
+    "guid": "ltnPlus@funke.de",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2011-01-28T13:39:54Z",
+    "name": {
+        "en-US": "ltnPlus",
+        "de": "ltnPlus"
+    },
+    "previews": [
+        {
+            "id": 15030,
+            "caption": {
+                "en-US": "Lightning with Unifinders",
+                "de": "Lightning mit Unifinder"
+            },
+            "image_size": [
+                679,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/15/15030.png?modified=1530208305",
+            "thumbnail_size": [
+                259,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/15/15030.png?modified=1530208305"
+        },
+        {
+            "id": 15031,
+            "caption": {
+                "en-US": "MiniMonth in its own Tab",
+                "de": "MiniMonth im eigenen Tab"
+            },
+            "image_size": [
+                646,
+                488
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/15/15031.png?modified=1530208306",
+            "thumbnail_size": [
+                265,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/15/15031.png?modified=1530208306"
+        },
+        {
+            "id": 15032,
+            "caption": {
+                "en-US": "Calendar tab without buttons",
+                "de": "Kalender Tab ohne Schaltflächen"
+            },
+            "image_size": [
+                646,
+                488
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/15/15032.png?modified=1530208306",
+            "thumbnail_size": [
+                265,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/15/15032.png?modified=1530208306"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.732,
+        "count": 8,
+        "average": 3,
+        "text_count": 8
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ltnplus/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/5285",
+    "slug": "ltnplus",
+    "status": "public",
+    "summary": {
+        "en-US": "Version 0.9:\nSupport printing of tasks for Lightning 0.8/0.9.\n\nUp to version 0.2:\nEnhancements to Lightning that are known from Sunbird: Unifinder (for events and todos) and moving MiniMonth to Tabpanel",
+        "de": "Version 0.9:\nErmöglicht den Ausdruck einer Aufgaben-Liste in Lightning 0.8/0.9.\n\nBis Version 0.2:\nErweiterungen für Lightning, die von Sunbird bekannt sind: Unifinder und die Integration des Mini-Kalenders in das Tabpanel in der Sidebar."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ltnplus/",
+    "weekly_downloads": 21
+}

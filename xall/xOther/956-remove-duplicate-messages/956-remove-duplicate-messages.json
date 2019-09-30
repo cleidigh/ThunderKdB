@@ -1,0 +1,153 @@
+{
+    "id": 956,
+    "authors": [
+        {
+            "id": 3643,
+            "name": "Thorsten W. Schmidt",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/thorsten-w-schmidt/",
+            "username": "thorsten-w-schmidt",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 3352,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1604392,
+        "compatibility": {
+            "thunderbird": {
+                "max": "32.*",
+                "min": "5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remove-duplicate-messages/versions/1604392",
+        "files": [
+            {
+                "id": 277604,
+                "created": "2014-09-25T11:02:42Z",
+                "hash": "sha256:ea10f26db2ce97a6681ba82a31cdb2e85c2a7df047c3de582004108021dad8ac",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 86582,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/277604/remove_duplicate_messages-0.1.14-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicate-messages/versions/0.1.14",
+        "version": "0.1.14"
+    },
+    "default_locale": "de",
+    "description": {
+        "en-US": "If you have duplicate messages (e.g. from merging folders or downloading messages several times) you can use this tool to find and remove them from the selected folder and its subfolder by right clicking on a folder and choosing \"Remove Duplicate Messages\".\nIt allows you to configure what you want to compare (sender, messageid, subject, ...).\n\nChanges for version 0.1.14\n* Feature: New option to reverse the folder search. This enables keep the last found message instead of the first found one.\n* Bugfix: As many asked for it I have switched the right with the middle click.\n* Bugfix: In the Remove Duplicate Messages Dialog a MIME encoded subject and sender is not shown correct.\n* Bugfix: Since Thunderbird 31 the Trash and Inbox folder are again recognized according to the setting to ignore or search them (occurred only sometimes).\n* Bugfix: The number of found messages in the folder were sometimes wrong. It included e.g. virtual (search) folder.\n\n\nFeatures (some for version 0.0.11):\n* Also checks subfolders\n* View found messages in main view\n* Option to make manual changes to the messages to be deleted.\n* Supported Languages: en-US, de-AT, de-CH, de-DE, de-LI, de-LU, es-ES, fr-FR, it-IT, ja-JP, nl-NL, pt-BR, ru-RU, ua-UA\n* Easy to use and fast (1000 messages per second).\n* Automatic delete (no dialog showing the duplicates)\n* Prefer to keep the bigger, smaller, unread or first/last found Message.\n\nPlanned Changes:\n* Undo delete/move messages to given folder\n* Dialog with duplicate messages: Really delete messages, do not move to trash",
+        "de": "Doppelte Nachrichten im Postfach können mit diesem Add-On sehr schnell entfernt werden. Mit einem Rechtsklick auf einen Ordner und auswählen von \"Doppelte Nachrichten entfernen...\" werden auch Unterordner bereinigt.\nDurch vielfältige Konfigurationsmöglichkeiten kann entschieden werden, wann Nachrichten doppelt sind. Zum Beispiel durch vergleichen des Absender, der Nachrichten ID, dem Subject, ...\n\nFeatures\n* Durchsucht Ordner und Unterordner gleichermaßen\n* Gefundene doppelte Nachrichten können zur Kontrolle im Hauptfenster angezeigt werden\n* Die automatisch gefundenen doppelten Nachrichten können noch manuell nachbearbeitet werden.\n* Unterstütze Sprachen: en-US, de-AT, de-CH, de-DE, de-LI, de-LU, es-ES, fr-FR, it-IT, ja-JP, nl-NL, pt-BR, ru-RU, ua-UA\n* Einfache Handhabung\n* Sucht sehr schnell doppelte Nachrichten (mehr als 1000 Nachrichten pro Sekunde).\n* Automatisches löschen möglich (Dialog zum manuellen Eingriff wird nicht angezeigt)\n* Möglichkeit größere,kleinere, ungelesene, zuerst oder zuletzt gefundene Nachricht bevorzugt zu löschen.\n* Gelöschte Nachrichten werden in den Papierkorb geschoben.\n\nGeplante Änderungen:\n* Undo für den Löschvorgange\n* Doppelte Nachrichten in angegebenen Ordner verschieben\n* Doppelte Nachrichten wirklich löschen (nicht in Papierkorb schieben)"
+    },
+    "developer_comments": {
+        "en-US": "07.03.2012: Version 0.1.11\n <ul>  <li>Bugfix: Messages are shown again in the main window when left clicked\n  in the duplicate messages dialog.</li>  <li>Bugfix: Comparison of message body is working again. Now even better\n  then before. During comparison also attachements are regarde.\n  Unfortunately this option is very time consuming.</li>  <li>Bugfix: A little bit more duplicates are found now.</li>  <li>Feature: Compare recipient list. This is useful to remove duplicate\n  sent messages.</li>  <li>Feature: Added an option to show the duplicate message dilog even if\n  no duplicates were found.</li>  <li>Feature: Added an option to compare messages by date (not time).</li>  <li>Feature: Brazilian localisation: pt-BR.</li> </ul>\n06.05.2010: Version 0.1.10\n <ul>  <li>Bugfix: In Thunderbird 2.0 search failed if subfolders were present.</li> </ul>  \n04.05.2010: Version 0.1.09\n <ul>  <li>Feature: Use md5 hash so safe memory and increase speed.</li>  <li>Other: Change code to use object oriented JavaScript to prevent conflicts (interactions) with other AddOns.</li>  <li>Other: Add file chrome.manifest (installer for TB3.0+</li> </ul> \n30.03.2010: Version 0.1.08\n <ul>  <li>Remove \"-\" from file name</li>  <li>If not duplicate messages are found only a small information window is shown instead of the message selection dialog.</li>  <li>Compatible with Thunderbird 2.0+ and 3.0+</li> </ul>24.01.2010: Version 0.1.07\n   * Adopt Thunderbird 3.0 API\n   * When a process is running, it can be terminated by starting a new search\n\n29.12.2008: Version 0.1.06\n   * Version changes in installer. No code changes.\n\nVersion 0.1.05 is now running with Thunderbird 2.0.\n\nVersion 0.0.11 is now running with Thunderbird 1.5. Please note, you can only download it with \"See all previous releases of this extension.\"\n\nVersion 0.0.9 has a bugfix for RSS in prefere to delete unread messages. Also it is possible to ignore the sent-messages.\n\nVersion 0.0.8 has smaller bug fixes and restores the standard delete order (keep one message and delete all other duplicates) and if two messages are duplicates prefere to keep the bigger, smaller, unread or first/last found one.\n\nVersion 0.0.7 had a bug when searching in imap folders (\"Unkown message format: imap-message\"). This bug is fixed now.\n\nVersion 0.0.6 is now running smooth and can handle folders with up to 400.000 messages.\nVersion 0.0.5 has several bug fixes and is slightly faster than the previous version. Sorry, that it takes so long till new versions are online, but this is due to the mozilla approving process for new versions. There is a lack of tester - so, any volunteers? :-)\n\nVersion 0.0.4 is a bugfix for the german language pack. it prevented the software from deleting the duplicate messages.\n\nVersion 0.0.3 is very fast and much better, but sometimes it seems to delete the wrong selected message. It is possible that this bug is already sorted out, but i can't give a 100% guarantee.\n\nAlso, i am searching people to write a better manual. Please write to my e-mail address (in german or english) if you want to support me or if you have found a bug (then please send a complete bugreport, so that i can reproduce that bug).",
+        "de": "07.03.2012: Version 0.1.11\n<ul>  <li>Bugfix: Nachrichten werden wieder mit einem Linksklick auf ein Element\n  in der Nachrichtenliste angezeigt.</li>  <li>Bugfix: Vergleiche mit Nachrichten Body funktionieren wieder. Jetzt\n  aber richtig und besser denn je. Beim Vergleich werden auch Attachements\n  miteinander verglichen. Diese Option kostet leider sehr viel Zeit.</li>  <li>Bugfix: Es werden nun etwas mehr doppelte Nachrichten gefunden.</li>  <li>Feature: Vergleiche die Empfängerliste. Dies ist sinnvoll, um\n  doppelte gesendete Nachrichten zu löschen.</li>  <li>Feature: Options hinzugefügt, um den Nachrichtendialog auch dann\n  anzuzeigen, wenn es keine doppelten Nachrichten gibt.</li>  <li>Feature: Options hinzugefügt, um Nachrichten anhand des Datums (nicht\n  Uhrzeit) zu vergleichen).</li>  <li>Feature: Basilianisches Sprachpaket: pt-BR.</li></ul>\n\n06.05.2010: Version 0.1.10\n<ul>  <li>Bugfix: In Thunderbird 2.0 schlug die Suche fehl, wenn Unterordner existierten.</li></ul>04.05.2010: Version 0.1.09\n<ul>  <li>Feature: Nutze md5 hash. Dieser spart Speicher, so dass mehr Nachrichten, schneller miteinander verglichen werden können.</li>  <li>Other: Stelle auf objekt orientiertes JavaScript um, damit es nicht zu Kollisionen mit anderen AddOns kommt.</li>  <li>Other: Füge chrome.manifest hinzu (Installation für TB3.0+</li></ul>30.03.2010: Version 0.1.08\n<ul>  <li>Entferne \"-\" in Dateinamen.</li>  <li>Wenn keine doppelten Nachrichten gefunden werden, erscheint nur eine kleine Information, nicht das Auswahlfenster.</li> \n  <li>Kompatibel mit Thunderbird 2.0+ und 3.0+</li></ul>29.01.2010: Version 0.1.07\n<ul>  <li>Anpassungen an die Thunderbird 3.0 API.</li>  <li>Wenn schon ein Prozess läuft, dann kann dieser beim Starten eines neuen Prozesses beendet werden.</li></ul>29.12.2008: Version 0.1.06\n<ul>  <li>Weitere Versionsanpassungen im Installer. Keine Codeänderung.</li></ul>09.07.2007: Version 0.1.05\n<ul>  <li>Addon läuft jetzt auch unter Windows in Thunderbird 2.0+</li></ul>08.07.2007: Version 0.1.04\n<ul>  <li>Update auf Version 2 von Thunderbird</li></ul>31.03.2006: Version 0.1.03\n<ul>  <li>Kleine Verbesserungen</li></ul>29.01.2006: Version 0.1.02\n<ul>  <li>Bugfixes in Sprachdateien</li>  <li>Japanisches Sprachpaket: ja-JP</li></ul>08.12.2005: Version 0.1.01\n<ul>  <li>Bugfixes</li></ul>18.09.2005: Version 0.0.11\n<ul>  <li>Und wieder eine Änderung in der Thunderbird API, welche verhinderte, dass das Plugin ab Version 1.5 läuft.</li></ul>12.09.2005: Version 0.0.10\n<ul>  <li>Eine Änderung in der Thunderbird API verhinderte, dass das Plugin ab Version 1.5 läuft.</li></ul>23.08.2005: Version 0.0.9\n    * Bugfix bei: ungelesene Nachrichten bevorzugt zu löschen mit RSS.\n    * Option um gesendete E-Mails bei der Suche zu ignorieren.\n    * Holländisches Sprachpaket: nl-NL\n\n15.08.2005: Version 0.0.8\n    * Kleinere Bugfixes\n    * Standard wieder herstellen (eine Nachricht behalten, restliche Duplikate löschen).\n    * Wenn zwei Nachrichten identisch sind, dann behalte die gröÃŸere, kleinere, ungelesene oder die, welche je nach Einstellung zuerst oder zuletzt gefunden wurde.\n\n29.07.2005: Version 0.0.7\n    * Automatisches löschen (keinen Dialog mit doppelten Nachrichten anzeigen)\n    * Bug beim Anzeigen von doppelten imap Nachrichten (\"Unknown message format: image-message\") behoben.\n    * Alle Nachrichten markieren als löschen (DEL) oder behalten (KEEP). Dies ist von Vorteil, wenn man nur einzelne Nachrichten löschen oder nur einzelne Nachrichten behalten möchte.\n    * Spanisches (es-ES) und französisches (fr-FR) Sprachpaket\n\n26.07.2005: Version 0.0.6\n    * Ab sofort können Verzeichniss mit mehr als 149000 Nachrichten durchsucht werden. Dies wurde durch eine eigens implementierte Speicherverwaltung erreicht. Die Grenze liegt jetzt bei ca. 400.000 Nachrichten.\n    * Dialog friert nicht mehr ein und es erscheint nicht mehr die Nachricht \"Script Warning\", dass ein Script zu viel Rechenzeit beansprucht und nicht mehr reagiert. Dies wurde mit einem Quick-Sort Algorithmus erreicht der any-time fähig gemacht wurde.\n    * Weiteres Sprachpaket: it-IT\n\n17.07.2005: Version 0.0.5\n    * Beschleunigung der Suchfunktion\n    * Wenn viele doppelte Nachrichten gefunden werden, friert Thunderbird während dem Aufbauen des Dialoges nicht mehr ein.\n    * Nachrichten ID wurde nicht zum Vergleichen verwendet.\n    * Suchen und löschen bei IMAP nun möglich.\n\n17.07.2005: Version 0.0.4\n    * Bugfixes in den deutschen Sprachpaketen (verhinderte das Löschen)\n\n14.07.2005: Version 0.0.3\n    * Deutliche Geschwindigkeitserhöhung. Eine Suche bei 20000 Nachrichten dauerte eine ganze Stunde - jetzt nur noch 20 Sekunden.\n    * Ähnliche Nachrichten werden nun gruppiert angezeigt, so dass die zu löschende ausgewählt werden kann.\n    * Anzeige der Nachrichten im Hauptfenster durch anklicken in der Doppelte Nachrichten Ansicht\n\n10.07.2005: Version 0.0.2\n    * Anzeige von doppelten Nachrichten: Spalten verschiebar, Spaltenbreite veränderbar, Datum in lesbarem Format\n    * Weitere Sprachpakete: de-CH, de-LI, de-LU, de-CH.\n    * Papierkorb kann per Einstellung bei der Suche ignoriert werden. Dies ist die Standardeinstellung.\n    * Anleitung\n\n08.07.2005: Version 0.0.1\n    * Erste Veröffentlichung."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remove-duplicate-messages/edit",
+    "guid": "{12345678-1234-1234-1234-123456789abc}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/956-64.png?modified=1411643341",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/956-32.png?modified=1411643341",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/956-64.png?modified=1411643341"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-09-26T01:10:23Z",
+    "name": {
+        "en-US": "Remove Duplicate Messages",
+        "de": "Remove Duplicate Messages"
+    },
+    "previews": [
+        {
+            "id": 1484,
+            "caption": null,
+            "image_size": [
+                200,
+                72
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/1/1484.png?modified=1530207869",
+            "thumbnail_size": [
+                200,
+                72
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/1/1484.png?modified=1530207869"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.62713,
+        "count": 153,
+        "average": 3.634,
+        "text_count": 153
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicate-messages/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/956",
+    "slug": "remove-duplicate-messages",
+    "status": "public",
+    "summary": {
+        "en-US": "If you have duplicate messages (e.g. from merging folders or downloading messages several times) you can use this tool to find and remove them from the selected folder and its subfolder by rightclicking on a folder and choosing \"Remove duplicates...\"",
+        "de": "Doppelte Nachrichten im Postfach können mit diesem Add-On sehr schnell entfernt werden. Mit einem Rechtsklick auf einen Ordner und auswählen von \"Doppelte Nachrichten entfernen...\" werden auch Unterordner bereinigt."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "clean",
+        "clean up",
+        "dupes",
+        "duplicate messages",
+        "remove"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicate-messages/",
+    "weekly_downloads": 219
+}

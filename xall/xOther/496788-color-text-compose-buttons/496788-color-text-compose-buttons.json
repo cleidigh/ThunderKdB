@@ -1,0 +1,607 @@
+{
+    "id": 496788,
+    "authors": [
+        {
+            "id": 4935432,
+            "name": "Cassiano Augusto Luna Rosario",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/lunaqwerty/",
+            "username": "lunaqwerty",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/4/4935/4935432.png?modified=1402471497"
+        }
+    ],
+    "average_daily_users": 362,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1874993,
+        "compatibility": {
+            "thunderbird": {
+                "max": "45.0",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/color-text-compose-buttons/versions/1874993",
+        "files": [
+            {
+                "id": 448530,
+                "created": "2016-06-05T08:14:47Z",
+                "hash": "sha256:d94386ec366398a2d42c62420ebb8bc17b03bad2d906d81eca80d8c481d5940e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 1167921,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/448530/color_text_compose_buttons-4.1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/color-text-compose-buttons/versions/4.1.1",
+        "version": "4.1.1"
+    },
+    "default_locale": "pt-PT",
+    "description": {
+        "pt-PT": "<b>Addon Buttons: [Added to Compose Bar]</b>\n   - 5 Color Buttons with Menu Options (RGB Color Set, CMY Color Set and Reset to default)\n   - Highlight Text Background, Pixel Font Size DropBox, Strikethough, Sub and Superscript, Lower and UpperCase\n   - Launch External Math Editor: MathType &amp; Paste as Rendered Math $$ ... Code ... $$\n   - Characters and Symbols, Mathematics and Science, Greek Alphabet, Latin Extended, Arrows, and WebDings\n   - Insert iFrame, Table, Link, Anchor, Image and Line Break and Duplicate Compose Window\n\n<b>Addon Tools:</b>\n   - Math Rendering (Acess to Web Engine) for Plain Tex: $$ ... Code ... $$\n   - Template Variables Fields on Init Compose Window"
+    },
+    "developer_comments": {
+        "pt-PT": "<b>⧕ Usage Specifications:</b>\n- Before Upgrading from version 1.1.0 and lower, you must uninstall previous versions with RESTART!!!\n\n<b>Version History:</b>\n\n<b>Version 3.3.0 [Released 13 June 2014]</b>\n   - Added Buttons Tab in Settings Addon Options\n   - Added Compose Toolbar Buttons - Menus and Buttons Management: \n   (Allow All, Menu Colors Only, Colors Only)\n   - Added Thunderbird Default Buttons Management:\n   (Show/Hide Body Text Style Dropbox and Body Font Face Dropbox)    \n   - Added CTCB Addon Buttons Management:\n   (Show/Hide Alignment Buttons, Insert Buttons and Table Buttons)\n   - Added Right Click Mouse to Change Colos from Button Colors\n   - Some Bugs Correction\n\n<b>Version 3.2.0 [Not Released]</b>\n   - Severals Code Corrections and improvements\n   - Some Bugs Correction\n\n<b>Version 3.1.0 [Not Released]</b>\n   - Added Insert iFrame Button\n   (Simple Parser to update/edit Selected iFrame)\n   - Added Insert Mathematics and Science Symbols\n   (Greek Alphabet, Latin Extended, Arrows, Letterlike Symbols and WebDings Symbols)\n   - Added Duplicate Compose Window Button in Second Line of Compose Bar \n   (Open New Compose Window copying full content of Curent One)\n   - Severals Code Corrections and improvements\n   - Some Bugs Correction\n  \n<b>Version 3.0.0 [Not Released]</b>\n   - Added Tools Tab in Settings Addon Options\n   - Added Force Memory Clipboard to Paste as Rendered Math Equation\n   (Now any External Math Editor that retrieves Plain Tex $$ ... Code ... $$ can be used with Clipboard)\n   - Added Enable Loading Template Variables Fields on Init Compose Window\n   - Variables in Loading Template:\n   (Insert Date or Time: -][-DATE(params)-][- Where params can be: dddd, mmmm dS, yyyy, h:MM:ss TT)\n   (Insert Memory Clipboard: -][-CLIPBOARD(params)-][- Where params can be: html, Tex and array)\n   (Insert Attachments: -][-ATACH()-][- Attachments can be listed: -][-LIST()-][-)\n   - Added Paste as Rendered Math Equation Button in Second Line of Compose Bar\n   - Added third party script Date Format (c) 2007-2009 Steven Levithan\n   (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0699fbb5419e4eb4b97b96146f81561b5643e568aa6096488e899bdedc1c3dca/http%3A//stevenlevithan.com\">stevenlevithan.com</a>) \n   - Placed Launch MathType and Characters and Symbols Buttons in Second Line of Compose Bar\n   - Placed Clear Formatting in Second Line of Compose Bar\n   - Added Fast Access with Buttons to Check Spelling, Insert HTML, Insert Elements\n   (Link, Anchor, Image and Line)\n   - Added Fast Access with Buttons to Table Insert/Edit\n   (Add row below, Add row above, Add column before, Add column after, Delete current row,\n   Delete current column, Join selected cells and Split selected cell)\n   - Added Fast Access with Buttons to Text Alignment\n   (Align text along left margin, centered, right margin and justify) \n   - Better code for Misc selection (on size change buttons)    \n   - Some Bugs Correction\n\n<b>Version 2.4.0 [Not Released]</b>\n   - Added Math Renderer Engine for Plain Tex: $$ ... Code ... $$\n   - Added Paste Clipboard as Plain Tex Button\n   - Added Toggle Size Text Options from Bar Menu Options\n   (Pixel or Default Thunderbird Size Buttons)\n   - Added Toggle Color Menu Options to Bar Menu Options\n   - Added Toggle Strikethrough in Bar Menu Options\n   - Added Toggle Script Buttons in Bar Menu Options\n   - Added Toggle Case Text in Bar Menu Options\n   - Added Hide Options in Bar Menu Options\n   - Added Toggle to Default Editor in Bar Menu Options\n   - Added Math External Editor Options Management in Bar Menu Options\n   - Added Math Renderer Options Management in Bar Menu Options\n   - Added Tab in Settings Addon Options for Math Rendering:\n   (Google Chart API, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/be2abf781a88ad2ad3ccb99a42a5146c0e58f016565bbe9f15ab7dac457f3a60/http%3A//chart.apis.google.com\">http://chart.apis.google.com</a>)\n   (Sciweavers, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/dc0813a4448b3ab90832b07688778032739b1623feb51947fa3d07e38492549a/http%3A//www.sciweavers.org\">http://www.sciweavers.org</a>)\n   (Sciencesoft, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8e866505fd33e5385ce087c8d83826c60ca1e61947d3dafafe40efeca8529680/http%3A//sciencesoft.at\">http://sciencesoft.at</a>)\n   (Codecogs, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d86a89731ac4abc75072f2faa8bef5aa400f009b1791c550250d8a1f7f3ef146/http%3A//www.codecogs.com\">http://www.codecogs.com</a>)\n   (Other Custom Defined Web rendering Engine) \n   - Added Help Color Button in Settings Addon Options\n   (Color Codes Validation and Chirag Mehta third party script)\n   - Some Bugs Correction\n  \n<b>Version 2.3.0 [Released 19 May 2014]</b>\n   - Solved XPI Error Package\n   - Event dispatch solved on FireUp the Compose Window\n   (Delayed all errors on script load) \n   - Removed toUpper/Lowercase scripts and Changed it with Tag \"span\"\n   (Use of decorative text and Editor SetInline)\n   - Buttons Positions Redefined with Second Line Compose Window\n   - Added Remove Link Button\n   - Some Bugs Correction\n\n<b>Version 2.2.0 [Released 15 April 2014] (Rejected From Mozilla: XPI Error Package)</b>  \n   - Solved Duplicated Names\n   - Added Settings and Options management (Addon Options)\n   - Added Second Line to Compose Toolbar with Buttons: \n   (Undo, Redo, Copy, Paste, Paste as Text, Paste Quoted)\n   - Added listen operation for hidden toolbar on hide control from menu\n   - Some Bugs Correction\n  \n<b>Version 2.1.0 [Released 11 April 2014] (Rejected From Mozilla: Duplicate Name Files)</b> \n   - Added Settings and Options management (Addon Options)\n   (Change 5 Colors Values, Choose Path to Math Editor and About Tabs)\n   - Modified Aspects:\n   (Font Text Buttons [Bold / Italic / Under] CSS Style Overlayed:\n   To present diferent style icon with inserted buttons like strikethrough\n   For better overlook of the compose bar [No Theme override])\n   (Added StyleSheet to manifest - Overrride CSS)\n   (Added Icons and Style to Compose Bar Buttons)\n   - Color buttons with transparent background - Fixed the Buttons Colors Size without overrride CSS\n   - StopTab on Toolbar removed - Prevent interference with workflow type a subject and body start typing\n   - Add Element Observes in Toolbar Buttons - Better broadcast than js script with Compose Window\n   - Added TextSize Selector with enable state on select\n   - Added Element Observes for skin enabled/disabled\n   - Added Link to Addon Color Options from Color Menu Options\n   - Added third party script Name that Color JavaScript by Chirag Mehta \n   (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2df02003c8ddae37df2ec5a459cc1c4d8a0701458db41934bc6d324116b0cc7a/http%3A//chir.ag/projects/ntc\">http://chir.ag/projects/ntc</a>) \n   - Some Bugs Correction\n  \n<b>Version 2.0.0 [Not Released]</b> \n   - Most of the Code Fully Rewriten for better use of XUL specifications \n   (better integration with built in Thunderbird javascript functions)\n   - Removed Redondent Code (Functions already provided from Thunderbird)\n   - Significant Reduce of Lines Code\n   - Added More Suitable Explanations of Code for other Coders Viewing   \n   - Compose Bar Fully Overlayed to gain better control from \"Observes\" Behavior  \n\n<b>Version 1.1.0 [Not Released]</b> \n   - Added Bar Menu Options\n   - Added Lower and UpperCase Buttons\n   - Added Characters and Symbols Button\n   - Added About Info Button on Color Menu Options\n   - Added Last Config Color Set to Color Menu Options\n   - Added Hide Color Menu Options\n   - Implemented [Toggle and Hide] Compose Buttons\n   - Some Bugs Correction\n  \n<b>Version 1.0.0 [Released 24 March 2014]</b> \n   - Added Color Buttons Menu Options\n   (with RGB Color Set, CMY Color Set and Reset to default)\n   - Added Pixel Font Size DropBox\n   - Added Strikethough Button\n   - Added Subscript and Superscript Buttons\n   - Added Clear Link and Clear Formatting Buttons\n   - Added Button to Launch External Math Editor: MathType\n   - Some Bugs Correction\n  \n<b>Version 0.1.0 [Not Released]</b>\n   - Just 5 Color Buttons \n   (Black Color, Nutmeg Wood Finish, Alizarin Crimson, Grenadier and Boulder)"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/color-text-compose-buttons/edit",
+    "guid": "color.text.compose.buttons@yduka.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "pt-PT": "http://www.calrosario.com"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/496/496788-64.png?modified=1465190416",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/496/496788-32.png?modified=1465190416",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/496/496788-64.png?modified=1465190416"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-06-06T04:39:12Z",
+    "name": {
+        "pt-PT": "Color Text Compose Buttons"
+    },
+    "previews": [
+        {
+            "id": 141302,
+            "caption": null,
+            "image_size": [
+                600,
+                384
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/141/141302.png?modified=1530209150",
+            "thumbnail_size": [
+                313,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/141/141302.png?modified=1530209150"
+        },
+        {
+            "id": 137640,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137640.png?modified=1530209150",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137640.png?modified=1530209150"
+        },
+        {
+            "id": 137642,
+            "caption": null,
+            "image_size": [
+                700,
+                430
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137642.png?modified=1530209151",
+            "thumbnail_size": [
+                320,
+                197
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137642.png?modified=1530209151"
+        },
+        {
+            "id": 137696,
+            "caption": null,
+            "image_size": [
+                600,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137696.png?modified=1530209151",
+            "thumbnail_size": [
+                229,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137696.png?modified=1530209151"
+        },
+        {
+            "id": 137644,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137644.png?modified=1530209151",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137644.png?modified=1530209151"
+        },
+        {
+            "id": 137646,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137646.png?modified=1530209152",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137646.png?modified=1530209152"
+        },
+        {
+            "id": 137648,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137648.png?modified=1530209152",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137648.png?modified=1530209152"
+        },
+        {
+            "id": 137650,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137650.png?modified=1530209152",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137650.png?modified=1530209152"
+        },
+        {
+            "id": 137652,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137652.png?modified=1530209153",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137652.png?modified=1530209153"
+        },
+        {
+            "id": 137654,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137654.png?modified=1530209153",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137654.png?modified=1530209153"
+        },
+        {
+            "id": 137656,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137656.png?modified=1530209154",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137656.png?modified=1530209154"
+        },
+        {
+            "id": 137674,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137674.png?modified=1530209154",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137674.png?modified=1530209154"
+        },
+        {
+            "id": 133986,
+            "caption": null,
+            "image_size": [
+                700,
+                379
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/133/133986.png?modified=1530209154",
+            "thumbnail_size": [
+                320,
+                173
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/133/133986.png?modified=1530209154"
+        },
+        {
+            "id": 137662,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137662.png?modified=1530209155",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137662.png?modified=1530209155"
+        },
+        {
+            "id": 137670,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137670.png?modified=1530209155",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137670.png?modified=1530209155"
+        },
+        {
+            "id": 137672,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137672.png?modified=1530209156",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137672.png?modified=1530209156"
+        },
+        {
+            "id": 137664,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137664.png?modified=1530209156",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137664.png?modified=1530209156"
+        },
+        {
+            "id": 137666,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137666.png?modified=1530209156",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137666.png?modified=1530209156"
+        },
+        {
+            "id": 137668,
+            "caption": null,
+            "image_size": [
+                700,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137668.png?modified=1530209157",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137668.png?modified=1530209157"
+        },
+        {
+            "id": 137676,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137676.png?modified=1530209157",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137676.png?modified=1530209157"
+        },
+        {
+            "id": 137678,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137678.png?modified=1530209157",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137678.png?modified=1530209157"
+        },
+        {
+            "id": 137680,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137680.png?modified=1530209158",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137680.png?modified=1530209158"
+        },
+        {
+            "id": 137682,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137682.png?modified=1530209158",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137682.png?modified=1530209158"
+        },
+        {
+            "id": 137684,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137684.png?modified=1530209158",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137684.png?modified=1530209158"
+        },
+        {
+            "id": 137686,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137686.png?modified=1530209159",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137686.png?modified=1530209159"
+        },
+        {
+            "id": 137688,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137688.png?modified=1530209159",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137688.png?modified=1530209159"
+        },
+        {
+            "id": 137690,
+            "caption": null,
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137690.png?modified=1530209159",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137690.png?modified=1530209159"
+        },
+        {
+            "id": 137698,
+            "caption": null,
+            "image_size": [
+                600,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137698.png?modified=1530209160",
+            "thumbnail_size": [
+                229,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137698.png?modified=1530209160"
+        },
+        {
+            "id": 137700,
+            "caption": null,
+            "image_size": [
+                600,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137700.png?modified=1530209160",
+            "thumbnail_size": [
+                229,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137700.png?modified=1530209160"
+        },
+        {
+            "id": 137702,
+            "caption": null,
+            "image_size": [
+                600,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137702.png?modified=1530209161",
+            "thumbnail_size": [
+                229,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137702.png?modified=1530209161"
+        },
+        {
+            "id": 137704,
+            "caption": null,
+            "image_size": [
+                600,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137704.png?modified=1530209161",
+            "thumbnail_size": [
+                229,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137704.png?modified=1530209161"
+        },
+        {
+            "id": 137706,
+            "caption": null,
+            "image_size": [
+                600,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137706.png?modified=1530209161",
+            "thumbnail_size": [
+                229,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137706.png?modified=1530209161"
+        },
+        {
+            "id": 137708,
+            "caption": null,
+            "image_size": [
+                600,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137708.png?modified=1530209162",
+            "thumbnail_size": [
+                229,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137708.png?modified=1530209162"
+        },
+        {
+            "id": 137710,
+            "caption": null,
+            "image_size": [
+                600,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/137/137710.png?modified=1530209162",
+            "thumbnail_size": [
+                229,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/137/137710.png?modified=1530209162"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.42156,
+        "count": 23,
+        "average": 4.4783,
+        "text_count": 23
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/color-text-compose-buttons/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/496788",
+    "slug": "color-text-compose-buttons",
+    "status": "public",
+    "summary": {
+        "pt-PT": "Adds Text Color Buttons in Compose Toolbar and More: Pixel FontSize, Strikethough, Sub &amp; Superscript, Lower &amp; UpperCase. Also provide Tools: Insert iframe, Launch MathType, Maths &amp; Greek Symbols, Load Template Variables and Duplicate Compose Window."
+    },
+    "support_email": {
+        "pt-PT": "cassauglun@gmail.com"
+    },
+    "support_url": {
+        "pt-PT": "https://addons.mozilla.org/en-US/thunderbird/addon/color-text-compose-buttons/"
+    },
+    "tags": [
+        "button",
+        "color",
+        "compose",
+        "greek",
+        "html",
+        "iframe",
+        "letterlike",
+        "lowercase",
+        "math",
+        "mathtype",
+        "pixel",
+        "renderer",
+        "science",
+        "strikethrough",
+        "subscript",
+        "superscript",
+        "symbols",
+        "toolbar",
+        "uppercase",
+        "webdings"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/color-text-compose-buttons/",
+    "weekly_downloads": 54
+}

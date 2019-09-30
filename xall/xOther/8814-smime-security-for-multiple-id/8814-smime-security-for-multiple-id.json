@@ -1,0 +1,125 @@
+{
+    "id": 8814,
+    "authors": [
+        {
+            "id": 2535525,
+            "name": "Hartmut Goebel",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/hartmut-goebel/",
+            "username": "hartmut-goebel",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 54888,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.1.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smime-security-for-multiple-id/versions/54888",
+        "files": [
+            {
+                "id": 38583,
+                "created": "2008-10-01T15:45:48Z",
+                "hash": "sha256:f6d57a6c94cfc86fafbb4343d43bf0d94b5e73cfdd30b1076092a81b345a72e5",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 3072,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/38583/s_mime_security_for_multiple_identities-0.3.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Did not work well with Enigmail: Either Enigmail or this Add-On could not save its settings. Fixed by using an event listener.",
+            "de": "Hat sich mit Enigmail gebissen: entweder konnte dieses Addon oder Enigmail die Einstellungen nicht speichern. Gelöst durch Verwendung eines Event Listeners."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smime-security-for-multiple-id/versions/0.3.0",
+        "version": "0.3.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Thunderbird's GUI can only manage S/MIME (X.509) certificates for the main identity of each account. This extension add a \"S/MIME Security\" tab to the \"Identity Setting Dialog\".\nThe extension reuses the code already implemented for the \"S/MIME Security\" part of the Account Manager dialog and adds only a few lines of \"glue\" code. This ensures 100% compatibility with Thunderbird.\n\nPlease note: Some users reported, that Thunderbird does not sign the messages as expected. This is not a bug of 'S/MIME Security for Multiple Identities', but of Thunderbird. 'S/MIME Security for Multiple Identities' simply adds a configuration dialog and changes the configuration. If Thunderbird does not sign the messages, this is out out scope for this add-on.",
+        "de": "Über die GUI von Thunderbird kann man lediglich für die erste Identität jedes Kontos S/MIME (X.509) Zertifikate konfigurieren. Diese Erweiterung ergänzt den Dialog \"Identität konfigurieren\" um einen Reiter \"S/MIME Sicherheit\". Dort können die Zertifikate für die weiteren Identitäten verwaltet werden.\nDie Erweiterung verwendet hierzu den Code, der bereits für den Teil \"S/MIME Sicherheit\" in der Kontenverwaltung verwendet wird. Es kommen lediglich ein paar Zeilen \"Glue Code\" dazu. Damit ist sichergestellt, dass die Erweiterung zu 100% kompatibel ist.\n\nEinige Benutzer haben beklagt, das Thunderbird die Nachrichten für andere Identitäten nicht signiert. Die ist ein Bug in Thunderbird, den dieses Add-On nicht beheben kann. 'S/MIME Sicherheit für weitere Identitäten' ergänzt lediglich einen Dialog und ändert die Konfiguration."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smime-security-for-multiple-id/edit",
+    "guid": "thunderbird-smime-for-multiple-ids-@goebel-consult.de",
+    "has_eula": true,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.goebel-consult.de/",
+        "de": "http://www.goebel-consult.de/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-01-26T13:47:19Z",
+    "name": {
+        "en-US": "S/MIME Security for Multiple Identities",
+        "de": "S/MIME Sicherheit für weitere Identitäten"
+    },
+    "previews": [
+        {
+            "id": 25788,
+            "caption": null,
+            "image_size": [
+                454,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/25/25788.png?modified=1530208427",
+            "thumbnail_size": [
+                173,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/25/25788.png?modified=1530208427"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.34242,
+        "count": 7,
+        "average": 4.8571,
+        "text_count": 7
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smime-security-for-multiple-id/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/8814",
+    "slug": "smime-security-for-multiple-id",
+    "status": "public",
+    "summary": {
+        "en-US": "Adds S/MIME Security configuration to the multiple identities dialog.\nMeanwhile this feater has been integrated into Thunderbird 3",
+        "de": "Erweitert die Konfiguration von weiteren Identitäten um S/MIME Sicherheit.\nDieses Feature wurde inzwischen in Thunderbird 3 integriert."
+    },
+    "support_email": {
+        "en-US": "h.goebel@goebel-consult.de",
+        "de": "h.goebel@goebel-consult.de"
+    },
+    "support_url": {
+        "en-US": "http://www.goebel-consult.de/news-archiv/neues-add-on-fur-thunderbird-lost-sicherheitsproblem",
+        "de": "http://www.goebel-consult.de/news-archiv/neues-add-on-fur-thunderbird-lost-sicherheitsproblem"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smime-security-for-multiple-id/",
+    "weekly_downloads": 24
+}

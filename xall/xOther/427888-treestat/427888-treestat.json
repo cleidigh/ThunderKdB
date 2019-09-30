@@ -1,0 +1,177 @@
+{
+    "id": 427888,
+    "authors": [
+        {
+            "id": 3208269,
+            "name": "Adam Roach",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/adam-roach/",
+            "username": "adam-roach",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "web-development"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1770660,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0b1"
+            },
+            "thunderbird": {
+                "max": "45.0",
+                "min": "5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/treestat/versions/1770660",
+        "files": [
+            {
+                "id": 362632,
+                "created": "2015-10-21T15:00:46Z",
+                "hash": "sha256:2cfef1b3806f4f95496c105f2d8c4702a9f2d0b4dfef2f60185bcd15cbc74477",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 175604,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/362632/treestat-0.3-tb+fx-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 362634,
+                "created": "2015-10-21T15:00:48Z",
+                "hash": "sha256:83e9be13b4b2dac7b197eb5b47cc85c519e699427ed3ced365038fc5586b5423",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 175604,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/362634/treestat-0.3-tb+fx-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 362636,
+                "created": "2015-10-21T15:00:50Z",
+                "hash": "sha256:ade3fa0c219cfc2db2ddfab8657122ccbdfdb04e38f42369f9a4da08739d5400",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 175604,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/362636/treestat-0.3-tb+fx-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "This version updates treestat to use the newest API. See <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/312b57a7c78695af646a5a67f41e99b06faa3f68247ab78b738b899389d3b805/https%3A//bugzilla.mozilla.org/buglist.cgi%3Fquicksearch=1181153\">https://bugzilla.mozilla.org/buglist.cgi?quicksearch=1181153</a> for details."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/treestat/versions/0.3",
+        "version": "0.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on will display a series of color-coded gems in your statusbar or toolbar, each representing the status of Mozilla's various trees (red=closed, green=open, yellow=approval required). By default, it shows mozilla-central, mozilla-inbound, and try; but it can be configured to show any combination of trees you want. You can hover over each gem to see the name of the tree it represents, as well as any associated message.\n\nStarting with version 0.2, you'll need to right-click and select \"customize\" to add the gems to the location of your choice."
+    },
+    "developer_comments": {
+        "en-US": "If you have feedback, contact me as \"abr\" on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/803affd6a9b7231a1698bc69ac86181ce323097e8d6b313e8afb84201d54daa3/http%3A//irc.mozilla.org\">irc.mozilla.org</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/treestat/edit",
+    "guid": "treestat@roach.at",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/427/427888-64.png?modified=1445530826",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/427/427888-32.png?modified=1445530826",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/427/427888-64.png?modified=1445530826"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-10-22T15:30:14Z",
+    "name": {
+        "en-US": "TreeStat"
+    },
+    "previews": [
+        {
+            "id": 94296,
+            "caption": {
+                "en-US": "Gems in your status bar: mozilla-inbound is closed."
+            },
+            "image_size": [
+                280,
+                59
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/94/94296.png?modified=1530208903",
+            "thumbnail_size": [
+                280,
+                59
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/94/94296.png?modified=1530208903"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/treestat/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/427888",
+    "slug": "treestat",
+    "status": "public",
+    "summary": {
+        "en-US": "Display the open/closed status of Mozilla's trees"
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/treestat/",
+    "weekly_downloads": 75
+}

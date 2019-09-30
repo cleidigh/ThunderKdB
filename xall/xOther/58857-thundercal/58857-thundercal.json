@@ -1,0 +1,129 @@
+{
+    "id": 58857,
+    "authors": [
+        {
+            "id": 5115653,
+            "name": "Michael Grafl",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/michael-grafl/",
+            "username": "michael-grafl",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5115/5115653.png?modified=1391244993"
+        }
+    ],
+    "average_daily_users": 267,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 110848,
+        "compatibility": {
+            "thunderbird": {
+                "max": "24.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thundercal/versions/110848",
+        "files": [
+            {
+                "id": 92256,
+                "created": "2010-06-19T03:33:25Z",
+                "hash": "sha256:cd3fae5ff79adb00a8225d43fe0e01c3a9807ede1d8f58f24b4ee162d3585942",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 8192,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/92256/thundercal-1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "The ThunderCal button is now automatically added to the toolbar. \nLocalisation for German (de) added.",
+            "de": "Der ThunderCal-Button wird nun automatisch zur Nachrichtenleiste hinzugefügt. \nLokalisation für Deutsch (de) ergänzt."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thundercal/versions/1.1",
+        "version": "1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Clicking the button opens the Google Calendar in a new tab.\nYou can add it at the desired place by customizing the toolbar.",
+        "de": "Durch Klicken des Buttons wird der Google Kalender in einem neuen Tab geöffnet.\nDurch \"Anpassen...\" der Werkzeugleiste können Sie den Button an der gewünschten Stelle einfügen."
+    },
+    "developer_comments": {
+        "en-US": "I am aware that some links and features of Google Calendar do not work properly with this addon. \nFor example, the \"sign out\" link does not work. \n\nYou can sign out by opening the error console (in the menu \"Tools\" &gt; \"Error Console\"). Paste the following code into the input field and click \"Evaluate\":\n\n<code>Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow(\"mail:3pane\").document.getElementById(\"tabmail\").openTab(\"contentTab\", {contentPage: \"<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a676560baa2a127bd708010a4037375d0959eb8b732d7278ed4eb9b1f6dfbcfa/http%3A//www.google.com/calendar/logout\">http://www.google.com/calendar/logout</a>\", type: \"googlecal\"});\n</code>",
+        "de": "Einige Links und Features des Google Kalenders funktionieren mit diesem Addon nicht korrekt. \nBeispielsweise funktioniert der \"Abmelden\"-Link nicht. \n\nWorkaround: Fehlerkonsole öffnen (im Menü \"Extras\" &gt; \"Fehlerkonsole\"). Den folgenden Code in des Eingabefeld einfügen und \"Evaluieren\" klicken:\n\n<code>Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow(\"mail:3pane\").document.getElementById(\"tabmail\").openTab(\"contentTab\", {contentPage: \"<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a676560baa2a127bd708010a4037375d0959eb8b732d7278ed4eb9b1f6dfbcfa/http%3A//www.google.com/calendar/logout\">http://www.google.com/calendar/logout</a>\", type: \"googlecal\"});\n</code>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thundercal/edit",
+    "guid": "thundercal@michael.grafl",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/58/58857-64.png?modified=1309264683",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/58/58857-32.png?modified=1309264683",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/58/58857-64.png?modified=1309264683"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2010-06-23T17:43:15Z",
+    "name": {
+        "en-US": "ThunderCal",
+        "de": "ThunderCal"
+    },
+    "previews": [
+        {
+            "id": 44183,
+            "caption": {
+                "en-US": "ThunderCal"
+            },
+            "image_size": [
+                412,
+                139
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/44/44183.png?modified=1530208683",
+            "thumbnail_size": [
+                320,
+                108
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/44/44183.png?modified=1530208683"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.20909,
+        "count": 19,
+        "average": 3.3684,
+        "text_count": 19
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thundercal/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/58857",
+    "slug": "thundercal",
+    "status": "public",
+    "summary": {
+        "en-US": "ThunderCal simply gives you a toolbar button that you can use to run Google Calendar inside Thunderbird. Inspired by the ThunderWave add-on.",
+        "de": "ThunderCal fügt einen einfachen Button für die Anzeige des Google Kalenders zur Werzeugleiste von Thunderbird hinzu. Wurde vom ThunderWave-Add-on inspiriert."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "cal",
+        "calendar",
+        "calendar tab",
+        "google",
+        "google calendar",
+        "tab",
+        "thunder"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thundercal/",
+    "weekly_downloads": 40
+}

@@ -1,0 +1,125 @@
+{
+    "id": 624736,
+    "authors": [
+        {
+            "id": 19246,
+            "name": "Thomas Schmid",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/thomas-schmid/",
+            "username": "thomas-schmid",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 13,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1711354,
+        "compatibility": {
+            "thunderbird": {
+                "max": "41.*",
+                "min": "37.*"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/secondopinion/versions/1711354",
+        "files": [
+            {
+                "id": 323824,
+                "created": "2015-06-19T14:08:07Z",
+                "hash": "sha256:dda5ce8f5f3fd9aa95c289b59010440abd8d03f8cb981649967a7e714fa9711a",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 34865,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/323824/secondopinion-1.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5132,
+            "name": {
+                "en-US": "GNU Affero General Public License (AGPLv3)"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secondopinion/license/1.0"
+        },
+        "release_notes": null,
+        "reviewed": "2015-08-25T00:51:26Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secondopinion/versions/1.0",
+        "version": "1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Integrates <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/675353ea3b87bf47ebe9bed35ebe0feb3a349a26aea11b46cdf66b873c3b9929/http%3A//VirusTotal.com\">VirusTotal.com</a> into Mozilla Thunderbird\n\nImagine the following scenario. You got a strange mail but your anti virus tells you it is safe. You are unsure about it. That's where this tools starts. It offers a convenient way to upload attachments to VirusTotal. VirusTotal will run your attachment through more than 50 anti-virus engines. The result is a strong indicator if the file is safe or not.\n\nPlease keep in mind, that his add-on is NOT an anti-virus replacement and never will be for various reasons. Checking a file with so many anti-virus needs time, it takes Virus Total several minutes to complete even for small files. It's not a real-time scanner, it an on demand service. And due to the enormous amount of scan engines the chances for false positives add up. So consider the the scan result as a profound indicator and a second opinion or second wall of defence in addition to your anti-virus.\n\nAs additional bonus VirusTotal keep track about well known dangerous files and stores this information in a public database. The add-on uses this public information and checks the attachments and urls on the fly against this database. This mechanism works very similar to a Phishing or Scram detection. Well known dangerous files do not need to be scanned, you get immediately an warning if the attachment is not considered trustworthy.\n\nBy design it can only check if a file is a dangerous and not if it's safe. So no warning does not mean safe. It works vice versa and will tell you if the file is known to be harmful.\n\nThere is a 4 request per minute quota with VirusTotal. Which means at the beginning you'll see an indicator displaying you are out of quota. This will get decrease dramatically the better the local cache is trained. The only option you have is to ignore that message.\n\nPlease report bugs via the issue tracker at github ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/632044963eaf8b847f8a585c530cf30160931fe2ea015ee082c384319fc3de5d/https%3A//github.com/thsmi/SecondOpinion/issues\">https://github.com/thsmi/SecondOpinion/issues</a> ) or send an email to schmid-thomas at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0110d4f21b2b00cc1a3331e58626d9a52586f5922850a84666e75cc8c5413a9b/http%3A//gmx.net\">gmx.net</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/secondopinion/edit",
+    "guid": "secondopinion@tschmid.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/thsmi/SecondOpinion"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-08-25T00:51:25Z",
+    "name": {
+        "en-US": "SecondOpinion"
+    },
+    "previews": [
+        {
+            "id": 160270,
+            "caption": {
+                "en-US": "Warning about an dangerous attachment as well as the link to a scan report"
+            },
+            "image_size": [
+                700,
+                441
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/160/160270.png?modified=1530209243",
+            "thumbnail_size": [
+                317,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/160/160270.png?modified=1530209243"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 2.52276,
+        "count": 2,
+        "average": 3.5,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secondopinion/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/624736",
+    "slug": "secondopinion",
+    "status": "public",
+    "summary": {
+        "en-US": "This extension implements a convenient way to check and upload attachments against <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/675353ea3b87bf47ebe9bed35ebe0feb3a349a26aea11b46cdf66b873c3b9929/http%3A//VirusTotal.com\">VirusTotal.com</a>"
+    },
+    "support_email": {
+        "en-US": "schmid-thomas@gmx.net"
+    },
+    "support_url": {
+        "en-US": "https://github.com/thsmi/SecondOpinion"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secondopinion/",
+    "weekly_downloads": 25
+}

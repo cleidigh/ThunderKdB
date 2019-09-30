@@ -1,0 +1,181 @@
+{
+    "page_size": 25,
+    "page_count": 1,
+    "count": 4,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1846308,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "47.0a2",
+                    "min": "38.5.1"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eaimh/versions/1846308",
+            "files": [
+                {
+                    "id": 424025,
+                    "created": "2016-04-12T02:32:45Z",
+                    "hash": "sha256:e2ef2da34e7ebc41ce211450f78d1674a34cb90ba7ec177ba3db6e6dbd9dbd7d",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 9163,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/424025/email_addresses_in_message_headers-3.2-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "I fixed a localization issue that would result in the <code>to</code> header’s variant of of the “Me” display name for identity (i.e., sending) email addresses to be used for all email address headers (i.e., <code>from</code>, <code>reply-to</code>, <code>to</code>, <code>cc</code>, and <code>bcc</code>). The original behavior was fine for languages like English—where the keyword is the same for all headers—but doesn't work for locales like German (which uses “Mich” and “Mir” contextually)."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eaimh/versions/3.2",
+            "version": "3.2"
+        },
+        {
+            "id": 1837845,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "47.0a2",
+                    "min": "38.5.1"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eaimh/versions/1837845",
+            "files": [
+                {
+                    "id": 417018,
+                    "created": "2016-03-25T21:23:14Z",
+                    "hash": "sha256:57826815a0785d0bca4190607da40bddef2c09ceb70cbacc4ba17af8355e46a2",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 9194,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/417018/email_addresses_in_message_headers-3.1-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "<ul><li>Code that was supposed to force an instant message header update when clicking “Done” in the “Edit Contact” panel was instead throwing an error because of a typographical mistake. This bug has been fixed.</li><li>The <code>extensions.EAIMH.allow_email_address_display_name</code> preference now defaults to Boolean <code>true</code>. The new default is more consistent with the default behavior of Thunderbird.</li><li>The extension has had its logic updated to properly handle the “Me” display name used when displaying message headers where the email address is associated with an identity. (Identities are sender email address aliases listed in the  “Identities for […]” dialog of the “Account Settings” dialog.)\n\nThe default behavior of the “Me” display name (without this extension) is to only display “Me” when:\n\n<ul><li>the “Show only display name for people in my address book” checkbox in the “Display” panel of the “Options” dialog is unchecked.</li><li>the “Show only display name for people in my address book” checkbox in the “Display” panel of the “Options” dialog is checked and the “Always prefer display name over message header” checkbox of an email address’s corresponding “Edit Contact for […]” dialog is unchecked.</li><li>a contact card is created for an email address via a header value’s “Add to Address Book” menu item or (star) icon. This is an apparent bug in Thunderbird and only persists until the next header value update.</li></ul>\nI can’t think of any reason why this feature should be tied to those options. Therefore, the new logic applies the “Me” display name regardless of the above. This allows the feature to activate consistently and predictably.</li><li>The “Me” display name can be globally disabled by setting the new <code>extensions.EAIMH.identity_string_overrides_display_name</code> preference to Boolean <code>false</code>.</li><li>The extension has had its logic updated for handling the “Show only display name for people in my address book” checkbox option in the “Display” panel of the “Options” dialog and the “Always prefer display name over message header” checkbox option of an email address’s corresponding “Edit Contact for […]” dialog; by default, the extension will now always honor email address‐specific settings instead of utilizing Thunderbird’s strange behavior of treating the unchecked (i.e., disabled) “Show only display name for people in my address book” option as a global override and, otherwise, treating the (i.e., enabled) option as a global default.\n\nThunderbird defaults the “Always prefer display name over message header” option to checked (i.e., enabled), so this behavioral change means that users will need to explicitly disable it in the “Edit Contact for […]” dialog for every contact for which they would prefer the sender (i.e., message header) display name be used unless they set one of the two new preferences specified below.</li><li>Two additional, new preferences have been added: <code>extensions.EAIMH.sender_display_name_always_preferred</code> and <code>extensions.EAIMH.sender_display_name_always_used</code>.\n\nThe first preference, <code>extensions.EAIMH.sender_display_name_always_preferred</code>, when enabled while the second is disabled, causes the sender display name to be used unless it an empty string (i.e., <code>\"\"</code>) or a case‐insensitive match for the email address, in which case the contact card display name is used (if it exists).\n\nThe second preference, <code>extensions.EAIMH.sender_display_name_always_used</code>, when enabled, causes sender display names to always be used (if they exist) without ever considering contact card names. If this preference is enabled, then the <code>extensions.EAIMH.sender_display_name_always_preferred</code> preference has no effect (but will not be unset).</li></ul>"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eaimh/versions/3.1",
+            "version": "3.1"
+        },
+        {
+            "id": 1821125,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "47.0a2",
+                    "min": "38.5.1"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eaimh/versions/1821125",
+            "files": [
+                {
+                    "id": 403088,
+                    "created": "2016-02-22T11:04:20Z",
+                    "hash": "sha256:803659464c2f9aca4267443d70c494b7b1da9ca087713ad927b8744fe8933ca7",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 9034,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/403088/email_addresses_in_message_headers-2.0.1-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "This version fixes email address display in cases where a message header has multiple email addresses associated with it, as might be expected for headers like <abbr title=\"carbon copy\">CC</abbr>. Previously, only the first email address per header would be detected and modified.\n\nThis version also adds a new, default behavior that suppresses display names when they are a case‑insensitive match for their corresponding email addresses. This behavior can be disabled by toggling a new, third preference detailed on this extension’s details page."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eaimh/versions/2.0.1",
+            "version": "2.0.1"
+        },
+        {
+            "id": 1816948,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "38.6.0",
+                    "min": "38.5.1"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eaimh/versions/1816948",
+            "files": [
+                {
+                    "id": 399495,
+                    "created": "2016-02-13T22:46:15Z",
+                    "hash": "sha256:e2fe0c0d302d8eabc24a8a40374972952f271a0db4e5881199771a08688dcb2a",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 8576,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/399495/email_addresses_in_message_headers-1.1-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "This version of the extension fixes a logic error that could occur if a preference string is set to an empty string; this error would cause a string containing the null control character instead of an empty string to be output in such cases."
+            },
+            "reviewed": "2016-02-14T20:57:38Z",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eaimh/versions/1.1",
+            "version": "1.1"
+        }
+    ]
+}

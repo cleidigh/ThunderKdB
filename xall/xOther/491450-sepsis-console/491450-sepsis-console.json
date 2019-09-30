@@ -1,0 +1,144 @@
+{
+    "id": 491450,
+    "authors": [
+        {
+            "id": 5198037,
+            "name": "Colby Russell",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/crussell/",
+            "username": "crussell",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {},
+    "contributions_url": null,
+    "current_version": {
+        "id": 1550758,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "17.0"
+            },
+            "seamonkey": {
+                "max": "2.29",
+                "min": "2.14"
+            },
+            "thunderbird": {
+                "max": "32.0",
+                "min": "17.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sepsis-console/versions/1550758",
+        "files": [
+            {
+                "id": 256964,
+                "created": "2014-05-03T20:34:50Z",
+                "hash": "sha256:ddd42aeeb077fa271e509109843485e5f6b79465a16fac7c5c2c66e8beb2c129",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 75634,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/256964/sepsis_console-0.4-fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "<ul>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c2bdb95c8963ba4c4547e40b373624eaf5ad3292d75601f39708361fc8d239ea/http%3A//hg.mozilla.org/users/sevenspade_gmail.com/sepsis-console/rev/47dd547516e9\">Fix clickables in Inspector viewer</a></li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/45653e1b569c573b78bae6c849766d5f2bcd3cf51c64b732fe8602b10aa9296e/http%3A//hg.mozilla.org/users/sevenspade_gmail.com/sepsis-console/rev/e549373c97e2\">Treat non-functions with a [[Call]] correctly in consoleWriter.js.</a></li></ul>\nsepsis-console 0.3 was not made available through AMO due to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/83b7461a212b9a12a33ec80b8b7fb8f8c1e14641317eef2e99babe993205c76f/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1000545\" title=\"Bug 1000545 - Impossible to publish add-on after a rejected review without skipping next logical version number\">bug 1000545</a>.  The notes for the changes in that release are:\n\n<ul>  <li>Make sure to remove \"console-api-log-event\" observer in viewer.</li>  <li>Fix bug where UnambiguousShadow autocomplete responder could get called</li>  <li>multiple times after evaling a string literal, causing the input to blow up.</li>  <li>When objects are output in the console viewer, you can click them to set them as the viewer target and inspect them in the child panel.</li>  <li>Implement console.trace</li>  <li>First pass at implementing drag and drop.  Enabled with the pref \"sepsis.console.draganddrop.enabled\".  Default to off for now, since it still needs ironing out.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sepsis-console/versions/0.4.1-signed.1-signed",
+        "version": "0.4.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "sepsis-console is a JavaScript console for Mozilla toolkit applications, and is the first stage of the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/36cbdcbb09e59f705cbef486cc7623d528b3f53827dd834fa37f6360cc83d138/https%3A//wiki.mozilla.org/Sepsis\">sepsis project</a>.\n\nSee it in action:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/73227d78ba208452e98a175c6b9a5d50c4632a53dd4d5d97b4952b42fe705a5b/http%3A//www.youtube.com/watch%3Fv=FB2VZLm0sOQ\" title='\"Sepsis console demo\" on YouTube'>\"Sepsis console demo\" on YouTube</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cea837e5afe7fbb9a5d1a0304d1ee8ab9d6d25f0a6bae4d498d86e4900e6619f/http%3A//www.youtube.com/watch%3Fv=WOWmc-I9iU0\" title='\"Sepsis console DOMi overlay\" on YouTube'>\"Sepsis console integration with DOMi\" on YouTube</a>\n\nGet the code:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/46364526d3826e35d1993dbd2496155a8ca177bed239aa726cc124fc8182b410/https%3A//gitlab.com/crussell/sepsis-console\">https://gitlab.com/crussell/sepsis-console</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sepsis-console/edit",
+    "guid": "sepsis-console@mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://wiki.mozilla.org/Sepsis"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-05-09T14:48:40Z",
+    "name": {
+        "en-US": "sepsis-console"
+    },
+    "previews": [
+        {
+            "id": 129054,
+            "caption": {
+                "en-US": "The console can help with chrome-level debugging and provides auto-complete."
+            },
+            "image_size": [
+                544,
+                373
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/129/129054.png?modified=1530209139",
+            "thumbnail_size": [
+                292,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/129/129054.png?modified=1530209139"
+        },
+        {
+            "id": 129056,
+            "caption": {
+                "en-US": "The console can attach to execution contexts, DOMi-style."
+            },
+            "image_size": [
+                544,
+                373
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/129/129056.png?modified=1530209139",
+            "thumbnail_size": [
+                292,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/129/129056.png?modified=1530209139"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sepsis-console/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/491450",
+    "slug": "sepsis-console",
+    "status": "public",
+    "summary": {
+        "en-US": "A general-purpose JavaScript console for all Mozilla toolkit applications."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://wiki.mozilla.org/Sepsis"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sepsis-console/",
+    "weekly_downloads": 21
+}

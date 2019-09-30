@@ -1,0 +1,139 @@
+{
+    "id": 488812,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 167,
+    "categories": {
+        "firefox": [
+            "appearance"
+        ],
+        "thunderbird": [
+            "appearance"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1911664,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "17.0"
+            },
+            "thunderbird": {
+                "max": "45.*",
+                "min": "17.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/ui-text-overrider/versions/1911664",
+        "files": [
+            {
+                "id": 481673,
+                "created": "2016-08-10T01:20:38Z",
+                "hash": "sha256:7f3ae0c24dee878946196c63e422b66eea8444421e300ce76730afbdf89d25d6",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 42775,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/481673/ui_text_overrider-1.5-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Don't use FUEL"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ui-text-overrider/versions/1.5",
+        "version": "1.5"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Provides ability to override UI elements' label, tooltip text, etc.\n\nIf you define some preferences like following, this addon automatically apply new labels, tooltip texts, and so on.\n\n    user_pref(\"extensions.uitextoverrider@clear-code.com.sample\",             \"CSS selector for the element\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.sample.label\",       \"new label\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.sample.tooltiptext\", \"new tooltiptext\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.sample.accesskey\",   \"accesskey\");\n    \n    user_pref(\"extensions.uitextoverrider@clear-code.com.another\",             \"CSS selector for the element 2\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.another.label\",       \"new label2\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.another.tooltiptext\", \"new tooltiptext2\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.another.accesskey\",   \"accesskey2\");\n    // If the item is automatically inserted by another addon,\n    // then you should set this \"delayed\" flag to override labels certainly.\n    user_pref(\"extensions.uitextoverrider@clear-code.com.another.delayed\",     true);\n    \n    ...\n\nFor example, following preferences will change the label of \"Firefox\" button to \"Iceweasel\".\n\n    user_pref(\"extensions.uitextoverrider@clear-code.com.appbutton\",       \"#appmenu-button\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.appbutton.label\", \"Iceweasel\");\n\nThe value of the base key is always a CSS selector string to find the target element. You can specify any attribute name and value as child keys.\n\nNote: original attribute and values won't be restored even if the addon is disabled or uninstalled, until you restart Firefox.",
+        "ja": "UI要素のラベル、ツールチップテキストなどの文字列を変更する機能を提供します。\n\n以下のような設定を定義すると、このアドオンは自動的に新しいラベルやツールチップテキストなどを反映します。\n\n    user_pref(\"extensions.uitextoverrider@clear-code.com.sample\",             \"UI要素を特定するCSSセレクタ1\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.sample.label\",       \"新しいラベル1\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.sample.tooltiptext\", \"新しいツールチップテキスト1\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.sample.accesskey\",   \"新しいアクセスキー1\");\n    \n    user_pref(\"extensions.uitextoverrider@clear-code.com.another\",             \"UI要素を特定するCSSセレクタ2\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.another.label\",       \"新しいラベル2\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.another.tooltiptext\", \"新しいツールチップテキスト2\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.another.accesskey\",   \"新しいアクセスキー2\");\n    // そのUI要素型のアドオンによって動的に追加される物である場合、確実にUI要素を更新できるように\n    // 「delayed」フラグを設定する事をおすすめします。 \n    user_pref(\"extensions.uitextoverrider@clear-code.com.another.delayed\",     true);\n    \n    ...\n\n例えば、以下の設定は「Firefox」ボタンのラベルを「Iceweasel」に変更します。\n\n    user_pref(\"extensions.uitextoverrider@clear-code.com.appbutton\",       \"#appmenu-button\");\n    user_pref(\"extensions.uitextoverrider@clear-code.com.appbutton.label\", \"Iceweasel\");\n\n各属性値用の設定のベースとなる設定の値は、UI要素を特定するためのCSSセレクタ文字列です。\n各属性値用の設定は、その子供となる設定名で指定します。\n\n注意：このアドオンを無効化したりアンインストールしたりしても、変更したラベルはFirefoxを再起動するまでは元に戻りません。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/ui-text-overrider/edit",
+    "guid": "uitextoverrider@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/ui-text-overrider/",
+        "ja": "https://github.com/clear-code/ui-text-overrider/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-08-10T09:12:44Z",
+    "name": {
+        "en-US": "UI Text Overrider",
+        "ja": "UI Text Overrider"
+    },
+    "previews": [
+        {
+            "id": 127682,
+            "caption": {
+                "en-US": "Application button with custom label"
+            },
+            "image_size": [
+                698,
+                313
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/127/127682.png?modified=1530209126",
+            "thumbnail_size": [
+                320,
+                143
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/127/127682.png?modified=1530209126"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.79641,
+        "count": 1,
+        "average": 5,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ui-text-overrider/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/488812",
+    "slug": "ui-text-overrider",
+    "status": "public",
+    "summary": {
+        "en-US": "Provides ability to override UI elements' label, tooltip text, etc.",
+        "ja": "UI要素のラベルやツールチップテキストなどを変更できるようにします。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/ui-text-overrider/issues"
+    },
+    "tags": [
+        "corporate",
+        "customize",
+        "label"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ui-text-overrider/",
+    "weekly_downloads": 23
+}

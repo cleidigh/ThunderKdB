@@ -1,0 +1,204 @@
+{
+    "id": 6952,
+    "authors": [
+        {
+            "id": 85036,
+            "name": "Philipp Kewisch",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kewisch/",
+            "username": "kewisch",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/85/85036.png?modified=1509020086"
+        }
+    ],
+    "average_daily_users": 110,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "https://paypal.me/kewisch",
+    "current_version": {
+        "id": 1744700,
+        "compatibility": {
+            "thunderbird": {
+                "max": "45.*",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/ics-inspector/versions/1744700",
+        "files": [
+            {
+                "id": 344054,
+                "created": "2015-08-27T13:50:45Z",
+                "hash": "sha256:5301ab9efda5976fd527236785700f3497aa7f67ec7834b983a29f30722e7b05",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 112219,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/344054/ics_inspector-1.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "* Allow inspecting master item using any modifier key\n* Update to latest variables-view code\n* Add a column for the calendar type"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ics-inspector/versions/1.4",
+        "version": "1.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "The ICS Inspector is a debugging extension for <a rel=\"nofollow\" href=\"https://addons.mozilla.org/addon/lightning/\">Lightning</a> that adds various features to speed up development:\n\n<ul><li>Calendar Items\n<ul><li>Evaluate expressions</li><li>Inspect and change iCalendar data (Cmd/Ctrl-Click for master item)</li><li>Directly open alarm dialog using context menu</li><li>Revert changed occurrences of recurring series</li></ul></li><li>Calendar List\n<ul><li>Evaluate expressions and inspect iCalendar data</li><li>Reset changelog for cached calendars</li><li>Show extra columns for different calendar types</li></ul></li><li>Event Dialog\n<ul><li>View original and current iCalendar representation</li><li>Doubleclick on row to open alarm and recurrence dialogs</li></ul></li><li>Print Dialog\n<ul><li>Change start of week and days off</li></ul></li><li>Add a Debugging Submenu to the Tools Menu\n<ul><li>Quickly enable calendar.debug.log(.verbose)</li><li>Switch between ical.js and libical backend</li><li>Access to about:config</li><li>Flush preferences to disk</li></ul></li><li>Other Additions\n<ul><li>Add an event counter to the events list (unifinder)</li><li>Add F5 as a keyboard shortcut to synchronize calendars</li></ul></li></ul>\nIf you would like to contribute, please head over to the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/60e99deb69eb1dc542b515f2bae999a2daabfc6cb9e14f02eda80c6bff2fb98b/https%3A//github.com/kewisch/ics-inspector\">source repository</a> on github."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/ics-inspector/edit",
+    "guid": "{3dcf3762-4cda-4fd2-be13-13b9a10769fd}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/kewisch/ics-inspector"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/6/6952-64.png?modified=1507650952",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/6/6952-32.png?modified=1507650952",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/6/6952-64.png?modified=1507650952"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-08-27T14:28:28Z",
+    "name": {
+        "en-US": "ICS Inspector"
+    },
+    "previews": [
+        {
+            "id": 139410,
+            "caption": {
+                "en-US": "Inspecting the ICS of an event or calendar"
+            },
+            "image_size": [
+                533,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139410.png?modified=1530208363",
+            "thumbnail_size": [
+                203,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139410.png?modified=1530208363"
+        },
+        {
+            "id": 148418,
+            "caption": {
+                "en-US": "Evaluate Javascript expressions for calendars and calendar items"
+            },
+            "image_size": [
+                700,
+                497
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/148/148418.png?modified=1530208363",
+            "thumbnail_size": [
+                282,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/148/148418.png?modified=1530208363"
+        },
+        {
+            "id": 139414,
+            "caption": {
+                "en-US": "Extra debugging options in the print dialog"
+            },
+            "image_size": [
+                558,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139414.png?modified=1530208364",
+            "thumbnail_size": [
+                213,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139414.png?modified=1530208364"
+        },
+        {
+            "id": 139416,
+            "caption": {
+                "en-US": "Extra options in the view context menu"
+            },
+            "image_size": [
+                354,
+                334
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139416.png?modified=1530208364",
+            "thumbnail_size": [
+                212,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139416.png?modified=1530208364"
+        },
+        {
+            "id": 139418,
+            "caption": {
+                "en-US": "Extra columns for the calendar list"
+            },
+            "image_size": [
+                295,
+                129
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139418.png?modified=1530208364",
+            "thumbnail_size": [
+                295,
+                129
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139418.png?modified=1530208364"
+        },
+        {
+            "id": 148420,
+            "caption": {
+                "en-US": "Show original and current iCalendar data"
+            },
+            "image_size": [
+                700,
+                469
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/148/148420.png?modified=1530208365",
+            "thumbnail_size": [
+                299,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/148/148420.png?modified=1530208365"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.27186,
+        "count": 1,
+        "average": 4,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ics-inspector/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/6952",
+    "slug": "ics-inspector",
+    "status": "public",
+    "summary": {
+        "en-US": "This extension provides many debugging options related to calendar development. This includes showing the ics data for an event or calendar, evaluating javascript on an event or calendar, and some menu options for debugging."
+    },
+    "support_email": {
+        "en-US": "mozilla-extensions-ics-inspector@kewis.ch"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ics-inspector/",
+    "weekly_downloads": 33
+}

@@ -1,0 +1,189 @@
+{
+    "id": 1815,
+    "authors": [
+        {
+            "id": 408,
+            "name": "Philip Chee",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/philip-chee/",
+            "username": "philip-chee",
+            "picture_url": null
+        },
+        {
+            "id": 9225,
+            "name": "zeniko",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/zeniko/",
+            "username": "zeniko",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 50,
+    "categories": {
+        "firefox": [
+            "web-development"
+        ],
+        "seamonkey": [
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1301269,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "3.0"
+            },
+            "seamonkey": {
+                "max": "2.12a1",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "15.0a1",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/1301269",
+        "files": [
+            {
+                "id": 139488,
+                "created": "2011-12-19T06:44:07Z",
+                "hash": "sha256:c7f824a2e20362b394aa37add23a97076aad5cb7ae8f1505c07b5d51bfe228a1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 114596,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/139488/console2-0.9-fx+tb+sb+sm+fn.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 8,
+            "name": {
+                "en-US": "Custom License"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.9.1-signed.1-let-fixed.1-signed"
+        },
+        "release_notes": {
+            "en-US": "<b>What's New:</b>\n    *  [new] Message FIFO limit is now controlled by a hidden preference \"extensions.console2.max-errors\" currently 1000. (Patch by Kris Maglione).\n    * [new] Enable blocklist domains from resource:// URLs\n      [new] Enable filter for \"resource://\" URLs\n      [fix] Alias resource:/// to resource://app/ to allow these resource urls to be filtered and blocklisted.\n      (Patches by titoBouzout).\n    * [fix] Use white-space: pre-wrap for the console message descriptions to allow newlines and formatted messages (Patch by titoBouzout).\n    * [new] Add support for Komodo alphas appversion &gt;= 6.9 (Patch by titoBouzout).\n    * [fix] css problems with textonly toolbarbuttons in icon mode toolbars.\n    * [new] Show timestamps if available from nsIScriptError/nsIScriptError2."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.9.1-signed.1-let-fixed.1-signed",
+        "version": "0.9.1-signed.1-let-fixed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "zh-TW": "在 Firefox 1.5 時，錯誤主控台 (JavaScript Console) 並不只用於 JavaScript 的錯誤，也包含 CSS 的錯誤。考慮到這一點，這個擴充套件提供了依據類型來顯示錯誤的可能性。\n\nConsole² 讓你可依據類型 (Errors, Warnings, Messages)、程式語言 (JavaScript, CSS, XML)、與使用情境 (context，意指 Chrome, Content) 來篩選要顯示的錯誤訊息。甚至，它還提供一個簡單的搜尋框(就像在歷史、書籤側邊欄的搜尋框一樣)、隱藏重覆資訊的功能、側邊欄最佳化、可自訂的工具列、與更多親合力上的改善。",
+        "en-US": "As of Firefox 1.5, the JavaScript Console is used not only for JavaScript errors, but for CSS errors as well. This extension takes this into account by providing a simple possibility to display errors by type.\n\nConsole² let's you display errors filtered by type (Errors, Warnings, Messages), language (JavaScript, CSS, XML) and context (Chrome, Content). Furthermore it provides a simple search box (as seen in the History and Bookmarks sidebars), hiding of duplicates, sidebar optimizations, a customizable toolbar and some more accessibility improvements.\n\nFrom v0.5 includes the Console Filter extension previously available separately from the Console² website.\n\n* To use the Console Filter searchbox, right click on a toolbar in the Console² window and select \"Customize...\". Then drag the CF searchbox on to a Console² toolbar.\n\n* The filter syntax is basically \"Google Lite\" The messages in the console are searched for all terms entered (AND search), but must not contain any terms preceded by a minus sign (NOT search). Terms inside quotations marks must be found in that order (exact phrase).\n\nerror -expect \"declaration dropped\"\n\n* For more on the filter syntax please see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9b42b2b2283f8287ef7fa89c6c38f8a33e8330d0bc70738e59b954de4b06fb12/http%3A//console2.mozdev.org/cf/index.html\">http://console2.mozdev.org/cf/index.html</a>\n\nLatest release: Console² 0.9\nThis release version works with Firefox 3.0 to 11.0, Thunderbird 3.0 to 11.0, SeaMonkey 2.0 to 2.8, and most probably the current trunk/branch nightlies.\n\n<b>What's New</b>\n    * [new] Message FIFO limit is now controlled by a hidden preference \"extensions.console2.max-errors\" currently 1000. (Patch by Kris Maglione).\n    * [new] Enable blocklist domains from resource:// URLs\n      [new] Enable filter for \"resource://\" URLs\n      [fix] Alias resource:/// to resource://app/ to allow these resource urls to be filtered and blocklisted.\n      (Patches by titoBouzout).\n    * [fix] Use white-space: pre-wrap for the console message descriptions to allow newlines and formatted messages (Patch by titoBouzout).\n    * [new] Add support for Komodo alphas appversion &gt;= 6.9 (Patch by titoBouzout).\n    * [fix] css problems with textonly toolbarbuttons in icon mode toolbars.\n    * [new] Show timestamps if available from nsIScriptError/nsIScriptError2.",
+        "es": "A partir de Firefox 1.5, la consola Javascript es usada no sólo para mostrar los errores de código JavaScript, sino también para los errores CSS. Esta extensión tiene esto en cuenta para ofrecer una manera fácil de mostrar los errores por tipos.\n\nConsole² le permite mostrar los errores filtrados por el tipo (errores, avisos, mensajes), lenguaje (JavaScript, CSS, XML) y contexto (Chrome, Content). Además, incorpora un sencillo cuadro de búsqueda (similar al del panel lateral del historial y de los marcadores), ocultando los duplicados, optimizaciones para el panel lateral, una barra de herramientas personalizable y otras mejoras de accesibilidad."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/edit",
+    "guid": "{1280606b-2510-4fe0-97ef-9b5a22eafe80}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://console2.mozdev.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1815-64.png?modified=1324421526",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1815-32.png?modified=1324421526",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1815-64.png?modified=1324421526"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-12-20T22:51:31Z",
+    "name": {
+        "en-US": "Console²"
+    },
+    "previews": [
+        {
+            "id": 13226,
+            "caption": {
+                "en-US": "Peek preview of Console²"
+            },
+            "image_size": [
+                200,
+                150
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13226.png?modified=1530207913",
+            "thumbnail_size": [
+                200,
+                150
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13226.png?modified=1530207913"
+        },
+        {
+            "id": 13227,
+            "caption": {
+                "en-US": "A first impression of Console²"
+            },
+            "image_size": [
+                700,
+                338
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13227.png?modified=1530207914",
+            "thumbnail_size": [
+                320,
+                155
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13227.png?modified=1530207914"
+        },
+        {
+            "id": 32383,
+            "caption": {
+                "en-US": "Console² works with the Console Filter extension."
+            },
+            "image_size": [
+                660,
+                375
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/32/32383.png?modified=1530207916",
+            "thumbnail_size": [
+                320,
+                182
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/32/32383.png?modified=1530207916"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.65474,
+        "count": 47,
+        "average": 4.7447,
+        "text_count": 47
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/1815",
+    "slug": "console²",
+    "status": "public",
+    "summary": {
+        "zh-TW": "Console² (唸成 Console Squared 或 Console Two) 取代了原本的錯誤主控台 (JavaScript Console)，它可能是下個世代的錯誤主控台。",
+        "en-US": "Console² (pronounced Console Squared or Console Two) replaces the JavaScript Console with what could be the next generation Error Console. From v0.5 includes the Console Filter extension previously available separately from the Console² website.",
+        "es": "Console² (pronunciado Consola al cuadrado o consola dos) reemplaza la consola JavaScript en la que puede ser la consola de errores de la próxima generación.\n"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://forums.mozillazine.org/viewtopic.php?t=577627"
+    },
+    "tags": [
+        "console2",
+        "developer",
+        "developer tools",
+        "error",
+        "error console",
+        "tools",
+        "web console"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/",
+    "weekly_downloads": 11
+}

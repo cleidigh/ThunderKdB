@@ -1,0 +1,146 @@
+{
+    "id": 3788,
+    "authors": [
+        {
+            "id": 66077,
+            "name": "David White",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/whitedavidp/",
+            "username": "whitedavidp",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 92,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1611162,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "57.0",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbird-biff/versions/1611162",
+        "files": [
+            {
+                "id": 280520,
+                "created": "2014-10-15T14:17:11Z",
+                "hash": "sha256:7b8fa565c86b6c88a2444040e05618ec33ec053723dc1a29746548a23087c55d",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 110901,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/280520/thunderbird_biff-2.5.1-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Enabled for use with Pale Moon browser at a user's request. Also made a number of code changes to conform with Mozilla requirements."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbird-biff/versions/2.5.1.1-signed.1-signed",
+        "version": "2.5.1.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>Sorry but this addon is no longer supported in TB 60.  Addon authors have been told \"Many things have changed in the Mozilla platform code on which Thunderbird and add-ons are based.\" We have also been told \"the picture beyond Thunderbird version 60 is less certain, given the continued high rate of change in Firefox platform code.\" Under these conditions, it no longer makes sense to maintain this addon. I for one have simply stopped updating the Mozilla products. Do so at your own risk.</b>\n\nSUPPORT FOR THIS ADDON ENDS WITH VERSION 2.5.1 (which has preliminary review only due to lack of Australis support). Thanks for using it over the years!\n\nSUMMARY:\nThis add-on provides a visual indicator of new Thunderbird mail availability in supported clients (Firefox, Sunbird) and Thunderbird itself. You MUST install this add-on in BOTH Thunderbird and supported clients as there are both client AND server portions which communicate via a TCP/IP socket.\n\nPLATFORMS:\nI have personally tested version 2.1 of this add-on only under Windows 2000 and XP Pro. Several users have informed me that the 1.x and 2.x versions also work on some linux distributions (Debian, Ubuntu, etc) and some MAC OS. So this version may work on those platforms as well - please let me know what you find. I have tested this add-on using the following Thunderbird email account types: pop3, IMAP, and those employing the webmail add-on.\n\nRATIONALE:\nHaving recently switched from the Mozilla Suite to Firefox/Thunderbird, I missed some aspects of the integration between browser and email. I could not find an existing add-on to show a prominent visual indicator that new mail is ready (even if not automatically downloaded).\n\nThunderbird shows a popup message when mail is ready. But the popup may be shown and not seen. I also auto-hide my windows task bar so the tray icon is not always visible. Also, since I do not automatically download new messages, I am not always aware that new mail is waiting to be downloaded.\n\nDETAILS:\nAfter a default installation, a new icon is added on the right side of the status bar in Thunderbird and supported clients. Icon tool tips are provided. In Firefox (Sunbird does not support this), you may left-click the icon to start/show the default mail program (which I hope will be Thunderbird). Note: use of the left click feature only makes sense if both Firefox and Thunderbird are meant to be used on the same computer (see the thunderbirdbiff.hostname option below). In all applications, a right-click of the icon will display the version of this add-on.\n\nIf the client application is started prior to starting Thunderbird, this add-on will show an unplugged cable icon. When Thunderbird is running, you should see either a plain mail icon or a mail icon with a flashing green arrow (new mail). In case of error, an \"X\" icon is shown.\n\nOPTIONS:\nThe following options/preferences can be specified via this add-on's Options panel:\n\n(a) thunderbirdbiff.hostname - each client will look for a Thunderbird server on the computer with the name specified in this string option. By default the value is \"localhost\", the same machine on which the client application runs. The name/IP address of a reachable, remote computer may be specified if the client application is running on a machine other than the one which runs Thunderbird. It is a good idea to try to ping the hostname you plan to specify to be sure the computer is \"reachable\". This option is used only by client installations. If specified in Thunderbird, it is ignored.\n\n(b) thunderbirdbiff.port - all clients and the Thunderbird server MUST agree on the TCP/IP port via which communication will occur. By default this add-on uses the TCP/IP port 25501. You may change this integer option to a value greater than 1023 if you find the default port setting blocked or otherwise in use.\n\n(c) thunderbirdbiff.intervalSeconds - each client installation will poll the Thunderbird server to check for the presence of new mail at an interval specified by this integer option. 10 seconds is the default and the minimum value permitted. This option is used only by client installations. If specified in Thunderbird, it is ignored.\n\n(d) thunderbirdbiff.useAnimation - by default, this add-on uses an animated gif to yield a \"flashing arrow\" effect when new mail arrives. It is possible that animated gifs may be blocked or otherwise disabled on your computer and prevent the new mail icon from being displayed properly. By toggling the default setting of this boolean option from \"true\" to \"false\", the animated gif will be replaced with a static image.\n\n(e) thunderbirdbiff.position - by default, this add-on will place its icon on the right of the application's status bar. Toggling this string option's value from \"right\" to \"left\" will allow you to change the icon's position. Unfortunately, different add-ons contend for these highly desired locations on the status bar and there seems to be no way to warranty that your choice will be strictly respected after all add-ons have been loaded.\n\n(f) thunderbirdbiff.startupEmail - this client-side boolean option (false by default) will, if enabled, cause the add-on to attempt to automatically start the default email tool (hopefully Thunderbird) on the local computer. If the email tool is already started, it should be shown. This option only makes if \"thunderbird.hostname\" is set to point at the local system.\n\n(g) thunderbirdbiff.emailPath - this client-side string (empty by default) specifies the fully qualified path to your Thunderbird executable.\n\nNote - a restart of the application is NOT required when changing the above option settings. New option settings take effect immediately.\n\n(h) thunderbirdbiff.logToFile - by default, this option is \"false\" and no verbose logging is sent to a file as the number and size of these files can grow large rapidly. So this option should be enabled only for debugging purposes. By toggling this boolean option to \"true\", detailed logs will be created. Changes to this option require a restart of the application. The add-on's Options panel displays the directory where log files will be stored. Log file names begin with thunderbirdbiff and are suffixed with the Mozilla application name (firefox, sunbird, thunderbird). A new log file is created each time an application is started.\n\nOTHER:\nBecause this add-on makes use of TCP/IP sockets for communication, problems can arise if your firewall is not properly configured. If you have installed this add-on in Thunderbird and Thunderbird is running but your client installation shows only the unplugged cable icon, then be sure to check your firewall settings (after first confirming that the thunderbirdbiff.port and thunderbirdbiff.hostname options are properly set).\n\nSome Thunderbird settings can affect the behavior of this add-on:\n\n(a) Tools|Account Settings|Server Settings|Check for new messages every X minutes MUST be enabled. This add-on's results are triggered by the same mechanism through which the built-in Thunderbird biff is triggered. However, the built-in Thunderbird biff does not need to be enabled for this add-on to function. But if Thunderbird is not set to check for new messages on at least one account, do not expect to see much value in this add-on.\n\n(b) Only IMAP and POP3 accounts are checked for new mail arrival. RSS and Newsgroup accounts are ignored.",
+        "ko": "You MUST install this add-on in BOTH Thunderbird and supported clients as there are both client AND server portions which communicata[Addon][privacypolicy][]\""
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbird-biff/edit",
+    "guid": "{aee74dd0-6dc9-11db-9fe1-0800200c9a66}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://thunderbirdbiff.mozdev.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2014-12-17T03:07:26Z",
+    "name": {
+        "en-US": "Thunderbird Biff"
+    },
+    "previews": [
+        {
+            "id": 10184,
+            "caption": {
+                "en-US": "Icons showing new mail in both T-Bird and Firefox"
+            },
+            "image_size": [
+                96,
+                96
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/10/10184.png?modified=1530208265",
+            "thumbnail_size": [
+                96,
+                96
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/10/10184.png?modified=1530208265"
+        },
+        {
+            "id": 10183,
+            "caption": {
+                "en-US": "Icons in both T-Bird and Firefox showing no new mail"
+            },
+            "image_size": [
+                284,
+                190
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/10/10183.png?modified=1530208266",
+            "thumbnail_size": [
+                284,
+                190
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/10/10183.png?modified=1530208266"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.6493,
+        "count": 37,
+        "average": 3.7297,
+        "text_count": 37
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbird-biff/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/3788",
+    "slug": "thunderbird-biff",
+    "status": "public",
+    "summary": {
+        "en-US": "This add-on provides a visual indicator of new Thunderbird mail availability in supported clients (Firefox, Sunbird) and Thunderbird itself. Note: you MUST install this add-on in BOTH Thunderbird and supported clients as there are both client AND server portions which communicate via a TCP/IP socket.",
+        "mn": "This add-on provides a visual indicator of new Thunderbird mail availability in supported clients (Firefox, Sunbird) and Thunderbird itself. Note: you MUST install this add-on in BOTH T\"\n\n",
+        "ko": "This add-on provides a visual indicator of new Thunderbird mail availability in supported clients (Firefox, Sunbird) and Thunderbird itself.",
+        "sk": "This add-on provides a visual indi---------------21932405111979\nContent-Disposition: form-data; name=\"data[Addon][summary][]\"\n\n",
+        "eu": "This add-on provides a visual indicatorscription][]\"\n\n",
+        "ro": "This add-on provides a visual indicator of new Thunderbird mail availability in supported clients (Firefox, Sunbird) and Thunderbird itself. You MUST install this add-on in BOTH Thunde---300862245116442\nContent-Disposition: form-data; name=\"data[Addon][description][]\"\n\n",
+        "ja": "This add-on provides a visual indicator of new Thunderbird mail availability in supported clients (Firefox, Sunbird) and Thunderbird itself.",
+        "es": "This add-on provides a visual indicator of new Thunderbird mail availability in supported clients (Firefox, Sunbird) and Thunderbird itself."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://thunderbirdbiff.mozdev.org"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbird-biff/",
+    "weekly_downloads": 60
+}

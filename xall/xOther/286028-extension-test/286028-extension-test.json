@@ -1,0 +1,194 @@
+{
+    "id": 286028,
+    "authors": [
+        {
+            "id": 1300653,
+            "name": "Kris Maglione",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kmaglione/",
+            "username": "kmaglione",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1300/1300653.png?modified=1561476128"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1662932,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0"
+            },
+            "seamonkey": {
+                "max": "2.14.*",
+                "min": "2.0b1"
+            },
+            "thunderbird": {
+                "max": "39.0",
+                "min": "5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/extension-test/versions/1662932",
+        "files": [
+            {
+                "id": 300696,
+                "created": "2015-02-25T16:30:17Z",
+                "hash": "sha256:9eefc3ec58c5b5268a9b119dbce76890b851ef229aee68783319831d0d2b656f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 81813,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/300696/extension_test-2.16-tb+fn+fx+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "<ul><li>Fix crash.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/extension-test/versions/2.16.1-signed.1-let-fixed.1-signed",
+        "version": "2.16.1-signed.1-let-fixed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-ons tests for a few of the harder-to-detect criteria for AMO approval. At the moment, these include: <ul><li>Variables defined in the global window scope</li><li>DOM node IDs defined in shared namespaces</li><li>Properties added to native prototypes</li><li>New XPCOM classes and interfaces</li><li>JavaScript global augmentation categories</li><li>Dangerous uses of setInterval, setTimeout, and XMLHttpRequest in chrome code.</li><li>Remote documents loaded into chrome-privileged windows or iframes.</li><li>Extant compartments which may be leaked <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b3713547e288441a8d24d642fa92fae1f940b23939ef8703724dc1f7c9609a2e/https%3A//developer.mozilla.org/en/Zombie_Compartments%23Proactive_checking_of_add-ons\">zombie compartments</a>. Minimize memory trigger on middle click of compartments list widget and from context menu.</li><li>Sets required debugging preferences: javascript.options.showInConsole and dom.report_all_js_exceptions</li></ul> New values for these items are displayed in the status bar or Add-on Bar, as well as reported to the Error Console and the process's standard output when the browser.dom.window.dump.enabled preference is set. New values are detected based on the set that was defined when the extension was first installed. This can be reset at any time from the add-on's Preferences dialog."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/extension-test/edit",
+    "guid": "extension-test@dactyl.googlecode.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/286/286028-64.png?modified=1341937221",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/286/286028-32.png?modified=1341937221",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/286/286028-64.png?modified=1341937221"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-02-25T20:33:24Z",
+    "name": {
+        "en-US": "Extension Test"
+    },
+    "previews": [
+        {
+            "id": 54432,
+            "caption": null,
+            "image_size": [
+                363,
+                109
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/54/54432.png?modified=1530208911",
+            "thumbnail_size": [
+                320,
+                96
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/54/54432.png?modified=1530208911"
+        },
+        {
+            "id": 54431,
+            "caption": null,
+            "image_size": [
+                362,
+                99
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/54/54431.png?modified=1530208911",
+            "thumbnail_size": [
+                320,
+                88
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/54/54431.png?modified=1530208911"
+        },
+        {
+            "id": 54433,
+            "caption": null,
+            "image_size": [
+                86,
+                49
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/54/54433.png?modified=1530208912",
+            "thumbnail_size": [
+                86,
+                49
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/54/54433.png?modified=1530208912"
+        },
+        {
+            "id": 54434,
+            "caption": null,
+            "image_size": [
+                120,
+                97
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/54/54434.png?modified=1530208912",
+            "thumbnail_size": [
+                120,
+                97
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/54/54434.png?modified=1530208912"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.10247,
+        "count": 6,
+        "average": 4.6667,
+        "text_count": 6
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/extension-test/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/286028",
+    "slug": "extension-test",
+    "status": "public",
+    "summary": {
+        "en-US": "A simple add-on for extension testers, especially AMO editors and developers who plan to submit their add-ons to AMO."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/extension-test/",
+    "weekly_downloads": 23
+}

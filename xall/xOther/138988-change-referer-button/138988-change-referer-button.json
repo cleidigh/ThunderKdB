@@ -1,0 +1,242 @@
+{
+    "id": 138988,
+    "authors": [
+        {
+            "id": 5278157,
+            "name": "cK-LFC",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ck-lfc/",
+            "username": "ck-lfc",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5278/5278157.png?modified=1399029684"
+        }
+    ],
+    "average_daily_users": 6,
+    "categories": {
+        "firefox": [
+            "privacy-security"
+        ],
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1395158,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "36.0",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/change-referer-button/versions/1395158",
+        "files": [
+            {
+                "id": 176740,
+                "created": "2012-11-08T21:08:44Z",
+                "hash": "sha256:d0653ee78842486342d36095d36d33f77938e549b6e0f2fe07cbdf15bd30a53c",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 24594,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/176740/change_referer_button-0.44-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Minor fixes"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/change-referer-button/versions/0.44.1-signed.1-signed",
+        "version": "0.44.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "sv-SE": "<strong>INTRODUKTION</strong>\n\nTillägget Change Referer Button gör det möjligt för användaren att snabbt växla värdet för \"network.http.sendRefererHeader\" utan att gå till fönstret \"about:config\". För närmare information om referenssidhuvuden, gå till: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cb3917eb02a4ce9467e2868a2efe985eadc392209a6e09c15594c9c550795829/http%3A//en.wikipedia.org/wiki/HTTP_referrer\">http://en.wikipedia.org/wiki/HTTP_referrer</a> och <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e1aef7f7fa116f43dc6e0495e1b19f06a9d7825a97891eb49aa268ecea8745df/http%3A//kb.mozillazine.org/Network.http.sendRefererHeader\">http://kb.mozillazine.org/Network.http.sendRefererHeader</a>\n\n<strong>KODER</strong>\n\nVärdet 0 (röd ikon):\n\"Skicka aldrig referenssidhuvudet och ange aldrig document.referrer.\"\n\nVärdet 1 (orange ikon):\n\"Skicka referenssidhuvudet när en länk klickas och ange document.referrer för följande sida.\"\n\nVärdet 2 (grön ikon):\n\"Skicka referenssidhuvudet när en länk klickas eller en bild läses in, och ange document.referrer för följande sida. (Standard)\"\n\n<strong>INSTÄLLNINGAR</strong>\n\nFör att öppna fönstret Inställningar, gå till Verktyg-/Firefox-menyn &gt; Tillägg &gt; Change Referer Button &gt; Inställningar eller högerklicka på Change Referer Button-knappen och välj \"Inställningar\".\n- Visa ikon: Visar knappen i statusfältet/tilläggsfältet\n- Tillfällig fördröjning (ms): Värde som används tillsammans med funktionen \"Byt tillfälligt referenssida till X\", i knappens snabbmeny (*)\n\n(*) Om referenssidan är inaktiverad (kod 0) och du besöker en sida som kräver att referenssidan fungerar korrekt, klicka på \"Byt tillfälligt referenssida till 2\" för att aktivera referenssidan (kod 2) under 10 000 ms (standard). Inom denna tidsperiod kan du uppdatera din sida. När 10 000 ms har gått kommer referenssidan automatiskt att återställas till sitt initialvärde (kod 0).\n\n<strong>BLOCKERADE/BETRODDA WEBBPLATSER (\"SVARTLISTA/VITLISTA\")</strong>\n\nVar vänlig notera att jag inte kommer att införliva någon lista över blockerade/betrodda webbplatser i detta tillägg, eftersom det går utanför dess räckvidd och grundtanke. Från början skapade jag detta tillägg som ett komplement till RefControl av James Abbatiello (<a rel=\"nofollow\" href=\"https://addons.mozilla.org/sv-SE/firefox/addon/refcontrol/\">https://addons.mozilla.org/sv-SE/firefox/addon/refcontrol/</a>), som hanterar blockerade/betrodda webbplatser alldeles perfekt och som jag fortfarande använder tillsammans med Change Referer Button. Så snälla ni, skriv inga fler recensioner där ni frågar efter en funktion för blockerade/betrodda webbplatser. Tusen tack!\n\n<strong>INSTALLATION</strong>\n\nFör att installera verktygsfältsknappen (i Firefox eller Thunderbird):\n1) Högerklicka på ditt verktygsfält och välj \"Anpassa…\" (eller gå till Visa &gt; Verktygsfält &gt; Anpassa…)\n2) Lokalisera Change Referer Buttons knapp och dra och släpp den till önskat verktygsfält\n3) Klicka på \"Klar\"\n\nUpphovsrätten (Copyright ©) för svampikonen innehas av Nintendo\n\n<strong>Credit to Lakrits at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/530c754511476288357b05d59a0aa64305e0b1be17e86ec324629131ec0dd31b/http%3A//BabelZilla.org\">BabelZilla.org</a> for the sv-SE translation</strong>",
+        "fr": "<strong>INTRODUCTION</strong>\n\nLe module \"Change Referer Button\" permet à l'utilisateur de changer rapidement la valeur de \"network.http.sendRefererHeader\" sans aller dans la fenêtre \"about:config\". Pour plus de détails, consulter: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f20f14cb6b9632b21e130883de0e6b6cfa155c282f5791433365af5840723d7a/http%3A//fr.wikipedia.org/wiki/Referant\">http://fr.wikipedia.org/wiki/Referant</a> et <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e1aef7f7fa116f43dc6e0495e1b19f06a9d7825a97891eb49aa268ecea8745df/http%3A//kb.mozillazine.org/Network.http.sendRefererHeader\">http://kb.mozillazine.org/Network.http.sendRefererHeader</a> (en anglais)\n\n<strong>CODES</strong>\n\nValeur 0 (Icône rouge):\n\"N'envoie jamais l'entête Référant ou positionne document.referrer.\"\n\nValeur 1 (Icône orange):\n\"Envoie l'entête Référant lors du clic sur un lien, et positionne document.referrer pour la page suivante.\"\n\nValeur 2 (Icône verte):\n\"Envoie l'entête Référant lors du clic sur un lien ou du chargement d'une image, et positionne document.referrer pour la page suivante. (Par défaut)\"\n\n<strong>OPTIONS</strong>\n\nPour accéder à la fenêtre des Options, cliquer sur: \"Outils/Modules complémentaires/Change Referer Button/Options\" OU effectuer un clic-droit sur le bouton et cliquer sur \"Options\".\n\n - Afficher 'Change Referer Button' dans la barre d'état: <i>affiche le bouton dans la barre d'état</i>\n - Délai temporaire (ms): <i>valeur utilisée avec la fonction \"Changer le référant temporairement à X\" dans le menu contextuel du bouton (*)</i>\n\n(*): si le référant est désactivé (code 0) et vous êtes en train de consulter une page nécessitant le référant pour fonctionner correctement: cliquer sur \"Changer le référant temporairement à 2\" pour activer le référant (code 2) pendant 10000ms (par défaut). Pendant ce temps, vous pouvez recharger votre page. Après les 10000ms, le référant sera automatiquement réinitialisé à sa valeur initiale (code 0).\n\n<strong>BLACKLIST/WHITELIST</strong>\n\nVeuillez noter que je n'ajouterai pas de blacklist/whitelist à cette extension car ce serait aller au delà de son champ d'application. J'ai initialement créé cette extension pour être le complément de RefControl par James Abbatiello (<a rel=\"nofollow\" href=\"https://addons.mozilla.org/fr/firefox/addon/refcontrol/\">https://addons.mozilla.org/fr/firefox/addon/refcontrol/</a>), qui gère parfaitement les blacklist/whitelist et que je continue à utiliser côte à côte avec CRB. Donc, svp ne postez plus de critiques pour demander des blacklist/whitelist. Merci!\n\n<strong>INSTALLATION</strong>\n\nPour installer (dans Firefox ou Thunderbird):\n1) faire un clic-droit sur votre barre d'outils et cliquer sur \"Personnaliser\" (ou aller sur: Affichage/Barres d'outils/Personnaliser...)\n2) localiser le bouton \"Change Referer Button\" et effectuer un glisser-déposer (drag and drop) vers la barre d'outils\n3) cliquer sur \"Terminer\"\n\nMushroom Copyright © Nintendo",
+        "en-US": "<strong>INTRODUCTION</strong>\n\nThe \"Change Referer Button\" add-on allows the user to quickly toggle \"network.http.sendRefererHeader\" without going to the \"about:config\" window. For more details, see: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/da76e14297df2d382c942edb87a9145e4b0a33d1812714c3e27c7a330de4ce6c/http%3A//en.wikipedia.org/wiki/Referer\">http://en.wikipedia.org/wiki/Referer</a> and <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e1aef7f7fa116f43dc6e0495e1b19f06a9d7825a97891eb49aa268ecea8745df/http%3A//kb.mozillazine.org/Network.http.sendRefererHeader\">http://kb.mozillazine.org/Network.http.sendRefererHeader</a>\n\n<strong>CODES</strong>\n\nValue 0 (Red icon):\n\"Never send the Referer header or set document.referrer.\"\n\nValue 1 (Orange icon):\n\"Send the Referer header when clicking on a link, and set document.referrer for the following page.\"\n\nValue 2 (Green icon):\n\"Send the Referer header when clicking on a link or loading an image, and set document.referrer for the following page. (Default)\"\n\n<strong>OPTIONS</strong>\n\nTo access the Options window, click: \"Tools/Add-ons/Change Referer Button/Options\" or right-click the button and click \"Options\".\n - Show 'Change Referer Button' in the status bar: <i>displays the button in the status bar</i>\n - Temporary delay (ms): <i>value used with \"Change referer temporarily to X\" function in the context menu of the button (*)</i>\n\n(*): if the referer is disabled (code 0) and you are viewing a page which requires the referer to work correctly: click on \"Change referer temporarily to 2\" to enable the referer (code 2) during 10000ms (by default). During this time, you can reload your page. After the 10000ms, the referer will be automatically reset to its initial value (code 0).\n\n<strong>BLACKLIST/WHITELIST</strong>\n\nPlease note that I will not add any blacklist/whitelist to this addon simply because it will go beyond its scope. I initially created this addon to complement James Abbatiello's RefControl (<a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/firefox/addon/refcontrol/\">https://addons.mozilla.org/en-US/firefox/addon/refcontrol/</a>), which deals with blacklist/whitelist perfectly and which I continue to use side by side with CRB. So, please do not post reviews asking for blacklist/whitelist anymore. Thank you!\n\n<strong>INSTALLATION</strong>\n\nTo install (in Firefox or Thunderbird):\n1) right-click your toolbar and click \"Customize\" (or go to: View/Toolbars/Customize...)\n2) locate the \"Change Referer Button\" and drag/drop it to the toolbar\n3) click \"Done\"\n\nMushroom Copyright © Nintendo"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/change-referer-button/edit",
+    "guid": "{c71ff04d-f001-1fc1-1fc1-c71ff04df001}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "sv-SE": "https://addons.mozilla.org/en-US/firefox/addon/change-referer-button/",
+        "fr": "https://addons.mozilla.org/en-US/firefox/addon/change-referer-button/",
+        "en-US": "https://addons.mozilla.org/en-US/firefox/addon/change-referer-button/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/138/138988-64.png?modified=1351221355",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/138/138988-32.png?modified=1351221355",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/138/138988-64.png?modified=1351221355"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-11-09T02:27:11Z",
+    "name": {
+        "sv-SE": "Change Referer Button",
+        "fr": "Change Referer Button",
+        "en-US": "Change Referer Button"
+    },
+    "previews": [
+        {
+            "id": 44653,
+            "caption": {
+                "en-US": "Button in toolbar"
+            },
+            "image_size": [
+                350,
+                80
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/44/44653.png?modified=1530208796",
+            "thumbnail_size": [
+                320,
+                73
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/44/44653.png?modified=1530208796"
+        },
+        {
+            "id": 59922,
+            "caption": {
+                "en-US": "Icons"
+            },
+            "image_size": [
+                96,
+                72
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/59/59922.png?modified=1530208796",
+            "thumbnail_size": [
+                96,
+                72
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/59/59922.png?modified=1530208796"
+        },
+        {
+            "id": 45065,
+            "caption": {
+                "en-US": "Context menu"
+            },
+            "image_size": [
+                236,
+                102
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/45/45065.png?modified=1530208796",
+            "thumbnail_size": [
+                236,
+                102
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/45/45065.png?modified=1530208796"
+        },
+        {
+            "id": 59921,
+            "caption": {
+                "en-US": "Options window"
+            },
+            "image_size": [
+                552,
+                229
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/59/59921.png?modified=1530208796",
+            "thumbnail_size": [
+                320,
+                133
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/59/59921.png?modified=1530208796"
+        },
+        {
+            "id": 51437,
+            "caption": {
+                "en-US": "Button in statusbar"
+            },
+            "image_size": [
+                350,
+                80
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51437.png?modified=1530208797",
+            "thumbnail_size": [
+                320,
+                73
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51437.png?modified=1530208797"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.31862,
+        "count": 17,
+        "average": 4.5294,
+        "text_count": 17
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/change-referer-button/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/138988",
+    "slug": "change-referer-button",
+    "status": "public",
+    "summary": {
+        "sv-SE": "En knapp i verktygsfältet eller statusfältet/tilläggsfältet för att snabbt byta referenssida.",
+        "fr": "Bouton dans la barre d'outils/barre d'état pour changer la valeur du référant (\"referer\" en anglais).",
+        "en-US": "Button in the toolbar/status bar to change referer value."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://addons.mozilla.org/en-US/firefox/user/5278157/"
+    },
+    "tags": [
+        "about",
+        "button",
+        "change",
+        "privacy",
+        "référant",
+        "referenssida",
+        "referer",
+        "referrer",
+        "statusbar",
+        "switch",
+        "toggle",
+        "toolbar",
+        "vie privée"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/change-referer-button/",
+    "weekly_downloads": 42
+}

@@ -1,0 +1,235 @@
+{
+    "id": 5773,
+    "authors": [
+        {
+            "id": 223315,
+            "name": "jimmi",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jimmi/",
+            "username": "jimmi",
+            "picture_url": null
+        },
+        {
+            "id": 5250414,
+            "name": "TrVTrV",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/trvtrv/",
+            "username": "trvtrv",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/TrVTrVTrV/2",
+    "current_version": {
+        "id": 1299225,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.2a1pre",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-resize-jpeg/versions/1299225",
+        "files": [
+            {
+                "id": 139143,
+                "created": "2011-12-13T14:36:09Z",
+                "hash": "sha256:e8518c1f82ab1d300ec1dc1376133d6ff8331b8db494574ec51c8323ea6f07b3",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 223232,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/139143/auto_resize_jpeg-0.10.2-tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "* Some help dialogs have been added in order to guide user through addon configuration.\n\n* bugfix: At settings dialog startup or when resetting dialog, if one of resizing setting ('enlarge'/'reduce') was disabled and one of its related dimension setting was set to 'custom' then related textbox was not disabled."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-resize-jpeg/versions/0.10.2",
+        "version": "0.10.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Are your 32 mega pixel digicam images much too large to be sent as an email attachment and are you tired of resizing the images with external software?\n\nNow you can simply send your jpeg attachment images and you don't have to care any longer if your jpeg images are too large.\nThis add-on automatically resizes your images to configurable dimensions.\n\n-----\n\n<b>Auto Resize JPEG</b> is a Thunderbird add-on which allows to resize images directly inserted into mail body (named inline images) or images attached to email message.\n\nThe main purpose is to:\n- reduce size of image files (emails &gt; 5 Mb are generally blocked by ISPs);\n- give the image convenient dimensions for it to be visible directly in email client without using scrollbars.\n\nPlease note installation of .Net framework v2.0 or higher is required (already embedded in Vista or 7).\n\nPLEASE NOTE ALSO THERE WON'T BE ANY VERSION COMPATIBLE FOR NEWER VERSIONS OF TB ABOVE v3.2a1pre. IF YOU INTEND OR ARE USING A HIGHER TB VERSION, PLEASE CONSIDER USING <a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/158397\">Auto Resize Image</a> WHICH OFFERS MORE FEATURES AND WILL BE MAINTAINED FOR FUTURE TB RELEASES (Auto Resize JPEG is its prequel and still exists mainly for TB v2 users).\n\nFeatures are the following:\n\n* All Windows platforms are supported. Tested versions are:\n- Windows: 2000, XP sp3, Seven Pro sp1.\n\n* Inline images and attachment images are handled.\n\n* Supported image formats are: JPEG.\n\n* A toolbar button is added to composing window and allows to resize images. Its behaviour can be user-defined:\n- resizing of inline images;\nand/or\n- resizing of attachment images.\n\n* Settings dialog offers full control on how images are resized: inline and/or attachment images can be resized when:\n- sending now;\n- sending later;\n- sending in background (a feature actually in development, have a look to this page for more information);\n- saving message as draft;\n- saving message as template;\n- auto saving as draft.\nFor each mode, it's also possible to specify if undo is possible or not, and if resizing should be skipped if any image has already been resized (generally using dedicated custom button).\n\n* Resized attachment images can be displayed with a user-chosen style in attachments pane (color, italic and/or bold).\n\n* Resizing can be undone: it allows to roll back resized images to original versions. This is a real 'undo': resized images are replaced by original images.\n\n* If message is saved in mailbox (draft, template, send later, etc.) it's still possible to resize or unresize images once the message is edited again. Nb: For attachment images undoing resizing is not possible.\n\n* Images can be reduced and/or enlarged regarding user-defined maximum and minimum width and height (Nb: Dimensions ratios are not altered).\n\n* Only images which satisfy dimensions criteria (larger than maximum dimensions and smaller than minimum dimensions) are modified. Other images are kept unchanged.\n\n* Images to resize can be filtered via filename criteria: regarding a user-defined list of patterns, image files can be included or excluded; regular expressions can be enabled or disabled for pattern definition.\n\n* Resized images can be renamed using a user-defined pattern. This feature is smarter enough to avoid doublons.\nRenaming pattern can contain some meta-data like:\n- original filename;\n- file extension;\n- resized image number (= index of image file in resizing queue);\n- current date;\n- current time.\nNb: Current date &amp; time formats are defined in:\n. [TB profile folder]\\extensions\\AutoResizeJPEG@kernresonanz.de\\default\\preferences\\defaults.js\nEdit these lines:\n<i>pref(\"extensions.AutoResizeJPEG.dateFormat\", \"YMD\");\npref(\"extensions.AutoResizeJPEG.timeFormat\", \"HMS\");</i>\nIn date format Y stands for Year, M for Month, D for Day.\nIn time format H stands for Hours, M for Minutes, S for Seconds.\nWarning: Be very carefull while editing the file!!\n\n* Composer window status bar is used to display information to user. Embedded progress bar is also used during image resizing.\n\n* The add-on provides a 'debug mode' which writes information into embedded error console (see Tools &gt; Error Console).\n\n* Error and warning messages are also written into error console (regardless debug mode is enabled or not).\nIf for any kind of reason the add-on seems not to work properly, open error console and look for messages regarding add-on which could give you information about the issue (all messages are prefixed by add-on name).\nIf the issue is reproducible and you think it's a add-on bug, please enable debug mode, and proceed again, then contact us and report us relevant and maximum information regarding the issue.\n\nContact (support, report, etc.): <a rel=\"nofollow\" href=\"/\">autoresizejpeg(at)gmail(dot)com</a>."
+    },
+    "developer_comments": {
+        "en-US": "<b>Auto Resize JPEG</b> has an advanced sequel which is <a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/auto-resize-image/\">Auto Resize Image</a>, developed by the same team. Here are differences:\n- Auto Resize Image: TB v3 and upper / all platforms / JPEG, PNG, BMP and GIF formats\n- Auto Resize JPEG: TB v1.5 - v3.2a1pre / Windows only / JPEG format only\n\nFor TB3 users, please consider using AutoResizeImage rather than AutoResizeJPEG because the latter will never be compatible for TB versions &gt;= v5. AutoResizeImage provides much more features and stability."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-resize-jpeg/edit",
+    "guid": "AutoResizeJPEG@kernresonanz.de",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.kernresonanz.de"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/5/5773-64.png?modified=1513416593",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/5/5773-32.png?modified=1513416593",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/5/5773-64.png?modified=1513416593"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2011-12-22T10:26:15Z",
+    "name": {
+        "en-US": "Auto Resize JPEG"
+    },
+    "previews": [
+        {
+            "id": 63479,
+            "caption": {
+                "fr": "",
+                "en-US": "Overview"
+            },
+            "image_size": [
+                700,
+                503
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/63/63479.png?modified=1530208335",
+            "thumbnail_size": [
+                278,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/63/63479.png?modified=1530208335"
+        },
+        {
+            "id": 65977,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (1)"
+            },
+            "image_size": [
+                627,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/65/65977.png?modified=1530208335",
+            "thumbnail_size": [
+                239,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/65/65977.png?modified=1530208335"
+        },
+        {
+            "id": 65978,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (2)"
+            },
+            "image_size": [
+                627,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/65/65978.png?modified=1530208336",
+            "thumbnail_size": [
+                239,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/65/65978.png?modified=1530208336"
+        },
+        {
+            "id": 65979,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (3)"
+            },
+            "image_size": [
+                627,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/65/65979.png?modified=1530208336",
+            "thumbnail_size": [
+                239,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/65/65979.png?modified=1530208336"
+        },
+        {
+            "id": 65980,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (4)"
+            },
+            "image_size": [
+                627,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/65/65980.png?modified=1530208337",
+            "thumbnail_size": [
+                239,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/65/65980.png?modified=1530208337"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.15632,
+        "count": 35,
+        "average": 3.2286,
+        "text_count": 35
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-resize-jpeg/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/5773",
+    "slug": "auto-resize-jpeg",
+    "status": "public",
+    "summary": {
+        "en-US": "Resizer for inline and attachment images (only JPEG format).\nFor Windows only."
+    },
+    "support_email": {
+        "en-US": "autoresizejpeg@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "attachment",
+        "auto",
+        "autoresizejpeg",
+        "autoresizejpg",
+        "image",
+        "jpeg",
+        "jpg",
+        "picture",
+        "pix",
+        "quality",
+        "resize"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-resize-jpeg/",
+    "weekly_downloads": 30
+}

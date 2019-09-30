@@ -1,0 +1,212 @@
+{
+    "id": 162149,
+    "authors": [
+        {
+            "id": 5345587,
+            "name": "CECID",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/cecid/",
+            "username": "cecid",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5345/5345587.png?modified=1275522301"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 109249,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sensitive-attachment-guard/versions/109249",
+        "files": [
+            {
+                "id": 90943,
+                "created": "2010-06-02T21:46:22Z",
+                "hash": "sha256:5627022e28d168e4bd90a7c4be469953ad60b284bb3a33e3e34f3e8498861f83",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 2228224,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/90943/sensitive_attachment_guard-1.0-tb-macosx.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 90944,
+                "created": "2010-06-02T21:46:34Z",
+                "hash": "sha256:5627022e28d168e4bd90a7c4be469953ad60b284bb3a33e3e34f3e8498861f83",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 2228224,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/90944/sensitive_attachment_guard-1.0-tb-win.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 1129,
+            "name": {
+                "en-US": "Custom License"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sensitive-attachment-guard/license/1.0"
+        },
+        "release_notes": {
+            "en-US": "Initial version of Sensitive Attachment Guard\n\nTo start with the add-on, you may visit the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/536e419985cc53d69e8e471676839cdbb9e9d6ce1a6868d4534da5d3faeb7b46/http%3A//community.cecid.hku.hk/index.php/product/sag/sensitive_attachment_guard_tutorial/\">tutorial</a> or follow the steps below\n1. Install add-on\n2. Download the template file to create your document\n3. Update the sensitive content to apply <b>confidential</b> characters style\n4. Save the document and send it as normal\n5. A dialog would prompt to warn you sensitive content is sending to unknown recipient(s)"
+        },
+        "reviewed": "2011-05-03T10:38:19Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sensitive-attachment-guard/versions/1.0",
+        "version": "1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Document exchange through email attachments is a very common practice, especially in business field. However, the senders may not be aware that some of their email attachments actually contain sensitive or personal information which should not be revealed to their recipients. This creates a potential problem of confidential data leakage. \n\nOn the other hand, even the sender is aware of this it is still inconvenient and time-consuming to make a copy for each sensitive document and to remove those confidential contents in the copy before sending it. Therefore there is a demand for the email clients to handle such documents in a secure way.\n\n<strong>Our solutions</strong>\nWe provide a Thunderbird add-on called \"Sensitive Attachment Guard\" which is able to detect the existence of sensitive information in the email attachments (for Word 2007 and Excel 2007 documents only) and to notify the sender accordingly. Moreover, it provides a function for the sender to strip away the sensitive contents from the attachments which will possibly be delivered to the selected recipients.\n\nTo get started, install the add-on and download our Microsoft Office document templates\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/42dadb176f78952b92eca29a0def6cd8bee9565bca4f40ae3ed6d306cee6cdc5/http%3A//community.cecid.hku.hk/php/redirect.php%3Ffile=template.dotx\">Word Template</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d4113d9faba8feac45f5fc470a14477be4cb018e4d2e788107c36f0ba1a28874/http%3A//community.cecid.hku.hk/php/redirect.php%3Ffile=template.xltx\">Excel Template</a>"
+    },
+    "developer_comments": {
+        "en-US": "Bug report or comments could send to <a href=\"mailto:sag@cecid.hku.hk\">sag@cecid.hku.hk</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sensitive-attachment-guard/edit",
+    "guid": "idsg@cecid.hku.hk",
+    "has_eula": true,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.cecid.hku.hk/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/162/162149-64.png?modified=1310052355",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/162/162149-32.png?modified=1310052355",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/162/162149-64.png?modified=1310052355"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2011-05-03T10:38:21Z",
+    "name": {
+        "en-US": "Sensitive Attachment Guard"
+    },
+    "previews": [
+        {
+            "id": 46245,
+            "caption": {
+                "en-US": "Define your recipients from Tools > Sensitive Attachment Guard"
+            },
+            "image_size": [
+                307,
+                153
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46245.png?modified=1530208819",
+            "thumbnail_size": [
+                307,
+                153
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46245.png?modified=1530208819"
+        },
+        {
+            "id": 46240,
+            "caption": {
+                "en-US": "Your mail will be automatically handled for different type of recipients."
+            },
+            "image_size": [
+                346,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46240.png?modified=1530208819",
+            "thumbnail_size": [
+                132,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46240.png?modified=1530208819"
+        },
+        {
+            "id": 46241,
+            "caption": {
+                "en-US": "Alert for unknown recipients"
+            },
+            "image_size": [
+                449,
+                120
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46241.png?modified=1530208819",
+            "thumbnail_size": [
+                320,
+                86
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46241.png?modified=1530208819"
+        },
+        {
+            "id": 46242,
+            "caption": {
+                "en-US": "When unknown recipients detected, you will ask for the action."
+            },
+            "image_size": [
+                299,
+                171
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46242.png?modified=1530208820",
+            "thumbnail_size": [
+                299,
+                171
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46242.png?modified=1530208820"
+        },
+        {
+            "id": 46244,
+            "caption": null,
+            "image_size": [
+                536,
+                349
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46244.png?modified=1530208820",
+            "thumbnail_size": [
+                307,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46244.png?modified=1530208820"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sensitive-attachment-guard/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/162149",
+    "slug": "sensitive-attachment-guard",
+    "status": "public",
+    "summary": {
+        "en-US": "A Thunderbird add-on censor sensitive attachments (currently Microsoft Office documents) from being sent to unintended recipients."
+    },
+    "support_email": {
+        "en-US": "sag@cecid.hku.hk"
+    },
+    "support_url": {
+        "en-US": "http://community.cecid.hku.hk/"
+    },
+    "tags": [
+        "attachment",
+        "excel",
+        "java",
+        "office",
+        "privacy",
+        "security",
+        "sensitive",
+        "word"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sensitive-attachment-guard/",
+    "weekly_downloads": 46
+}

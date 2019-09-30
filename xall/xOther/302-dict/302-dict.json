@@ -1,0 +1,201 @@
+{
+    "id": 302,
+    "authors": [
+        {
+            "id": 179,
+            "name": "David Costanzo",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/david-costanzo/",
+            "username": "david-costanzo",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 27,
+    "categories": {
+        "firefox": [
+            "search-tools"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1811520,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "36.0"
+            },
+            "seamonkey": {
+                "max": "2.39.*",
+                "min": "2.16"
+            },
+            "thunderbird": {
+                "max": "38.*",
+                "min": "16.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dict/versions/1811520",
+        "files": [
+            {
+                "id": 394880,
+                "created": "2016-02-03T17:40:52Z",
+                "hash": "sha256:84388ae534015205a7c5513196af5570342a234addb402c54c8169c3f41c79ea",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 54453,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/394880/dict-0.8.5-fx+sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Fixes a problem with links in definitions not sizing correctly\nFixes compatibility problems with e10s (Electrolysis)\nFixes a problem with links in definitions that contains \" not working\nAdds support for \"restartless\""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dict/versions/0.8.5",
+        "version": "0.8.5"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Extension for looking up the definition of words in a Web page using the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/46a226ee884d3af8156b65cddbc348963d9549112bada5038de2f948001fd8c3/https%3A//tools.ietf.org/html/rfc2229\">DICT protocol</a>.  Definitions are displayed in a small, low-frills, ad-free window.  This extension also implements the dict:// URL scheme.\n\nDICT will not work through an HTTP proxy server."
+    },
+    "developer_comments": {
+        "en-US": "Dict does not work through an HTTP proxy server.\n\nDict may not work on MacOS (something to do with having a single button mouse)."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dict/edit",
+    "guid": "{cc5cc7f7-8645-49b2-862f-f6e8116dfc44}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://sourceforge.net/projects/dictextension/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-02-18T08:38:17Z",
+    "name": {
+        "en-US": "Dict"
+    },
+    "previews": [
+        {
+            "id": 489,
+            "caption": {
+                "en-US": "Looking up the definition of a word is as easy as: select, right-click, click"
+            },
+            "image_size": [
+                346,
+                220
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/0/489.png?modified=1530207875",
+            "thumbnail_size": [
+                315,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/0/489.png?modified=1530207875"
+        },
+        {
+            "id": 490,
+            "caption": {
+                "en-US": "The definition is returned in its own window, so it doesn't change the page that you're on"
+            },
+            "image_size": [
+                569,
+                475
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/0/490.png?modified=1530207876",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/0/490.png?modified=1530207876"
+        },
+        {
+            "id": 491,
+            "caption": {
+                "en-US": "Oops!  The word must be misspelled.  Chose the proper spelling from a list of close matches."
+            },
+            "image_size": [
+                460,
+                301
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/0/491.png?modified=1530207878",
+            "thumbnail_size": [
+                306,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/0/491.png?modified=1530207878"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.47363,
+        "count": 15,
+        "average": 4.7333,
+        "text_count": 15
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dict/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/302",
+    "slug": "dict",
+    "status": "public",
+    "summary": {
+        "en-US": "Looks up the definition of words on a Web page."
+    },
+    "support_email": {
+        "en-US": "david_costanzo@yahoo.com"
+    },
+    "support_url": {
+        "en-US": "http://sourceforge.net/p/dictextension/tickets/"
+    },
+    "tags": [
+        "contextual menu",
+        "definition",
+        "dictionary",
+        "english",
+        "language",
+        "linguistic",
+        "words"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dict/",
+    "weekly_downloads": 23
+}

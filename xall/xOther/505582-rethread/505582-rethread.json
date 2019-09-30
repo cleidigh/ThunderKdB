@@ -1,0 +1,130 @@
+{
+    "id": 505582,
+    "authors": [
+        {
+            "id": 343,
+            "name": "Jonathan Protzenko",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mozjonathan/",
+            "username": "mozjonathan",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/343.png?modified=1505246946"
+        }
+    ],
+    "average_daily_users": 3,
+    "categories": {
+        "thunderbird": [
+            "folders-and-filters"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1548082,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "29.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rethread/versions/1548082",
+        "files": [
+            {
+                "id": 256356,
+                "created": "2014-04-30T05:12:16Z",
+                "hash": "sha256:7a0c5e09a12fa387f1fc8cc8aeb160fb927e45de8e0976737d9b15dafa33d02b",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 41856,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/256356/rethread-0.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "First (hopefully last) version."
+        },
+        "reviewed": "2014-05-12T13:51:18Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rethread/versions/0.1",
+        "version": "0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "See <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e16830b4976a13dddcdbd6fd97b975ebd97c0ff5b6d919940164d23e167660f7/https%3A//github.com/protz/GMail-Conversation-View/wiki/What-is-threading\">https://github.com/protz/GMail-Conversation-View/wiki/What-is-threading</a> for explanations on what threading is. The addon takes all selected messages, and adds a fake (unique) entry into their <code>References:</code> header. The modified messages are injected into their respective folders, and once this is successfully done, the old messages are deleted. Thunderbird then figures out that all the messages belong to the same thread since they have a common ancestor.\n\nThere is no way to undo the operation and I don't plan any further improvements to the addon. The addon only deletes messages after the modified versions have been injected in the folders. Yet, there is still a chance the modification process may damage your message. You have been warned."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rethread/edit",
+    "guid": "rethread@xulforum.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/protz/rethread"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-05-12T13:51:17Z",
+    "name": {
+        "en-US": "Rethread"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.42636,
+        "count": 5,
+        "average": 2.8,
+        "text_count": 5
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rethread/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/505582",
+    "slug": "rethread",
+    "status": "public",
+    "summary": {
+        "en-US": "This addon adds an entry in the right-click menu which re-threads selected messages together (groups selected messages into the same thread)\". This is done by _modifying_ messages; the author of the addon declines any responsibility for data loss."
+    },
+    "support_email": {
+        "en-US": "jonathan.protzenko@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://www.xulforum.org"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rethread/",
+    "weekly_downloads": 28
+}

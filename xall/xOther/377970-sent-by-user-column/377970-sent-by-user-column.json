@@ -1,0 +1,148 @@
+{
+    "id": 377970,
+    "authors": [
+        {
+            "id": 6263054,
+            "name": "CKSZABI",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ckszabi/",
+            "username": "ckszabi",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 4,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1463090,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "22.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sent-by-user-column/versions/1463090",
+        "files": [
+            {
+                "id": 214486,
+                "created": "2013-06-18T23:33:38Z",
+                "hash": "sha256:5097fb964f954a6f6b97bc80faac44f5b0e191a43a2c0aad3c56108a85ca98e6",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 7440,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/214486/sent_by_user_column-1.1-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Fixed compatibility with v22"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sent-by-user-column/versions/1.1",
+        "version": "1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Adds a new column in message listview, that will display a text (a user name) if found in a header (by default called Sent-By-User: &lt;username&gt;). Useful when more people are using the same email account (especially IMAP type) and we want to know who sent a specific message. An automatically appended header must be configured to be sent with every message on each Thunderbird instance (containing the user name or any identification details).\nManual configuration required! You will find instructions at the Options button.\nIf you can, please provide help to eliminate manual configuration.\n\n\nYou must enter manually the following settings (into Tools / Options, Advanced tab, Config Editor button):\n mailnews.customDBHeaders sent-by-user (in lowercase)\n mail.identity.id1.headers sentby (if already exists then add it separated with a comma)\n mail.identity.id1.header.sentby Sent-By-User: [username]\nwhere Sent-By-User is the default header appended to sent messages,\n      [username] is the name of the sender to be displayed in the column along with the message. Replace identity id1 as needed.\n\nTo display the created column right-click your column headers in your inbox (or any other folder) and select \"Sent By\". Data will appear only for new sent mails, existing mails do not have the headers!"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sent-by-user-column/edit",
+    "guid": "sentbyuser@ckszabi.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/377/377970-64.png?modified=1372785624",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/377/377970-32.png?modified=1372785624",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/377/377970-64.png?modified=1372785624"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2013-07-02T16:50:33Z",
+    "name": {
+        "en-US": "Sent-By-User column"
+    },
+    "previews": [
+        {
+            "id": 72448,
+            "caption": {
+                "en-US": "User names displayed in a column"
+            },
+            "image_size": [
+                407,
+                278
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72448.png?modified=1530208960",
+            "thumbnail_size": [
+                293,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72448.png?modified=1530208960"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.79641,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sent-by-user-column/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/377970",
+    "slug": "sent-by-user-column",
+    "status": "public",
+    "summary": {
+        "en-US": "Adds a new column in message list-view, that will display the name of the user who sent the mail (read from a message header).\nManual configuration required. ONLY FOR THUNDERBIRD."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sent-by-user-column/",
+    "weekly_downloads": 21
+}

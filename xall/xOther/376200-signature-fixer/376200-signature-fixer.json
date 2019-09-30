@@ -1,0 +1,151 @@
+{
+    "id": 376200,
+    "authors": [
+        {
+            "id": 6235030,
+            "name": "DJRavine",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/DJRavine/",
+            "username": "DJRavine",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6235/6235030.png?modified=1393343169"
+        }
+    ],
+    "average_daily_users": 9,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1345741,
+        "compatibility": {
+            "thunderbird": {
+                "max": "31.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-fixer/versions/1345741",
+        "files": [
+            {
+                "id": 156283,
+                "created": "2012-06-24T22:13:52Z",
+                "hash": "sha256:2a067c07f50de34cfd3dae6ccb42eaaf45bb7630ffdc3db1decd132ca271bd6b",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 110592,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/156283/signature_fixer-0.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "v0.3 - Updated default signature code\n       - from '&lt;div class=\"sep\"&gt;-- --&lt;/div&gt;' to '&lt;div id=\"sep\"&gt;-- --&lt;/div&gt;'\n       - from '&lt;div class=\"sep\"&gt;|| ||&lt;/div&gt;' to '&lt;div id=\"sep\"&gt;|| ||&lt;/div&gt;'"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-fixer/versions/0.3",
+        "version": "0.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<i>Coded By Adan Rehtla AKA DJRavine</i>\n\nThunderbird extension to fix the annoying Signature Stacking bug on Forwards/Replys.\n<i><b>BUG LINK:</b> <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6b5f5b4a54fa6c8bf2c383b9f1973fecf8238b36b30413315675549a599cb02b/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=218346\">https://bugzilla.mozilla.org/show_bug.cgi?id=218346</a></i>\nThis extension is compatible only with Thunderbird 1.5 and above.\n\n\n<b>ABOUT</b>\n\nSignature Fixer will look for a PREFIX and SUFFIX string, above and below your signature. It will automatically remove the code found inbetween these strings. Just add the strings in the options dialog, then insert those strings into the top and bottom of your signature and it will enable the automatic removal of your signature when you change the FROM field.\n\nNOTE: On sending, Signature Fixer will automatically remove the PREFIX and SUFFIX strings from your email message. \n\n\n<b>HOW TO USE</b>\n\n<blockquote>\t1. INSTALL the 'Signature Fixer' addon and open the OPTIONS dialog.\n\t2. CHECK/UPDATE the 'Signature Prefix' and 'Signature Suffix' options.\n\t3. EDIT your signature (HTML or plain text, it doesnt matter).\n\t4. ADD the 'Signature Prefix' to the very top of your signature.\n\t5. ADD the 'Signature Suffix' to the very bottom of your signature.</blockquote>\n\n<b>NOTES</b>\n\nThis is a very easy addon to install and setup.\nOnce setup it will do everything automatically for you. \n\nI hope you find this addon useful and if you have any issues please contact me on the addon homepage.\n - Adan Rehtla AKA DJRavine\n\n\nADDON HOMEPAGE: <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/developers/addon/signature-fixer/\">https://addons.mozilla.org/en-US/developers/addon/signature-fixer/</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-fixer/edit",
+    "guid": "signaturefixer@adan.rehtla",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.nadasoft.net"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/376/376200-64.png?modified=1351306222",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/376/376200-32.png?modified=1351306222",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/376/376200-64.png?modified=1351306222"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-06-28T09:48:27Z",
+    "name": {
+        "en-US": "Signature Fixer"
+    },
+    "previews": [
+        {
+            "id": 71817,
+            "caption": {
+                "en-US": "Signature Fixer Options Dialog"
+            },
+            "image_size": [
+                434,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/71/71817.png?modified=1530208962",
+            "thumbnail_size": [
+                165,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/71/71817.png?modified=1530208962"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 1.69812,
+        "count": 4,
+        "average": 2,
+        "text_count": 4
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-fixer/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/376200",
+    "slug": "signature-fixer",
+    "status": "public",
+    "summary": {
+        "en-US": "Fixes the Signature Stacking bug for Forwards/Replies."
+    },
+    "support_email": {
+        "en-US": "DJRavine@WoWps.org"
+    },
+    "support_url": {
+        "en-US": "http://www.nadasoft.net"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-fixer/",
+    "weekly_downloads": 25
+}

@@ -1,0 +1,111 @@
+{
+    "page_size": 25,
+    "page_count": 1,
+    "count": 3,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 49966,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "2.0.0.*",
+                    "min": "1.5"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachment-reminder/versions/49966",
+            "files": [
+                {
+                    "id": 33509,
+                    "created": "2008-07-12T21:40:14Z",
+                    "hash": "sha256:80e25952ec417e16e66a6cd8cb07cb37fe6d373e052dd141685fc2e6a1c6700e",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 17408,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/33509/attachment_reminder-0.3.10-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": null,
+            "release_notes": {
+                "en-US": "Attachment Reminder Changelog\n---------------------\n\n-----\nVersion 0.3.10 (2008-07-07)\n\n*) Make attachment reminder dialog size persistent after user resize. Fixes bug <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f478f8389b220d82920df9555c960c13def235b1cdc40c63a924f0c3db63c747/http%3A//sourceforge.net/tracker/index.php%3Ffunc=detail&amp;aid=2008984&amp;group_id=206061&amp;atid=996146\">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=2008984&amp;group_id=206061&amp;atid=996146</a>\n\n-----\nVersion 0.3.9 (2008-07-01)\n\n*) Add German translation.\n*) Localize the button faces on the attachment reminder prompt.\n*) Add link to regexp help in the options dialog.\n*) Add a 'restore defaults' button to the options dialog.\n*) Fix removing quoted email in html messages. The previous code wasn't always using the correct parent (in case of nested quotations), and further wasn't using proper indexing (for more than one quote block). Fixing this bug: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/123509a30390287e63737d7625f875338708c1c61e9e8f4b827ca681ab01c9d3/http%3A//sourceforge.net/tracker/index.php%3Ffunc=detail&amp;aid=1965407&amp;group_id=206061&amp;atid=996146\">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1965407&amp;group_id=206061&amp;atid=996146</a> . Thanks to this page for a tip: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c538989cab63fd3dac3997c5433c1ef7cfe093c928794d5eca9ce00ecb7a56a5/http%3A//javascript.about.com/library/bldom09.htm\">http://javascript.about.com/library/bldom09.htm</a>\n\n-----\nVersion 0.3.8 (2008-03-28)\n\n*) Now that Attachment Reminder has been released out of the sandbox on <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a>, remove the custom updateURL so that <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a> is used for updates (default when updateURL is not specified). We might have continued just using <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f23bc649574999b493d4bfdc474e1ad77e6b5254fc274d1266ff7f7b47f84df7/http%3A//sf.net\">sf.net</a> for updates, but addons.mozilla does not allow custom updateURLs for security reasons.\n\n-----\nVersion 0.3.7 (2008-02-11)\n\n*) Add configuration option to include email subject line in the scan, with default value of \"true\" (subject scan used to be unconfigurable).\n\n-----\nVersion 0.3.6 (2008-02-03)\n\n*) Appended newline to mailbody variable prior to processing, to fix buglet where some of the default keywords (those requiring a '\\W' at the end) would fail to match if the relevant word occurs at the very end of a plain-text message (with no other characters following, and thus not matching the '\\W' bit).\n*) Add script type declarations to script inclusion directives in the XUL files for extra correctness.\n*) Remove non-existing locales from chrome.manifest. This fixes bug for this extension on non-\"en-US\" versions of T-bird, which would cause the menu item to not show up, and the extension overall to fail. (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5a75736a186c1d1e485f34926e5a8bc55246d360b161639aad59ee99b705be66/http%3A//forums.mozillazine.org/viewtopic.php%3Ft=589435\">http://forums.mozillazine.org/viewtopic.php?t=589435</a>)\n\n-----\nVersion 0.3.5 (2008-02-03)\n\n*) The reminder dialog now includes information as to which keyword triggered the reminder.\n*) Cleaned out some old comment cruft from the code.\n\n-----\nVersion 0.3.4 (2008-01-30)\n\n*) Fix bug where the default keyword list would not have any backslashes, because they would be parsed out in the XML DTD. Double-backslashed everything.\n*) The options dialog no longer has pre-set size, and is automatically sized. That should make it easier on the windows users, for whom the options dialog is not resizable when called from the Add-ons list. A user reported a problem when using large font sizes in windows. ( see this help forum thread: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/877d38ae12722b42a05c57f7ca0831e11a526a111bb514df48a6d19e635d7138/http%3A//sourceforge.net/forum/forum.php%3Fthread_id=1923637&amp;forum_id=737330\">http://sourceforge.net/forum/forum.php?thread_id=1923637&amp;forum_id=737330</a> )\n*) Broke up a long line in the options dialog for prettier dialog size.\n\n-----\nVersion 0.3.3 (2008-01-28)\n\n*) Add the updateURL attribute to install.rdf (and put in the appropriate infrastructure on the website) to enable automatic update checking for this extension.\n\n-----\nVersion 0.3.2 (2008-01-26)\n\n*) Also check for attachments when using the keyboard shortcut to send a message (overriding function SendMessageWithCheck). Thanks to this forum post for pointing out the bug: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7d5d93e2ed2592ea3a518934894a9a3610ae0a7a5335a2db2eda7ab5cbe0d906/https%3A//sourceforge.net/forum/message.php%3Fmsg_id=4743977\">https://sourceforge.net/forum/message.php?msg_id=4743977</a>\n*) Use a safer function override technique (thanks to the AttachmentRemember extension for a bit of code).\n\n-----\nVersion 0.3.1 (2008-01-23)\n\n*) Also check for attachments when doing \"Send Later\", same way as was done for \"Send Now\". Thanks goes to Todd T for the suggestion in bug report 1878150 (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/963f2255c6ce816a4b3f8e925683b534718b7c19660c011932be38c49a9f8172/http%3A//sourceforge.net/tracker/index.php%3Ffunc=detail&amp;aid=1878150&amp;group_id=206061&amp;atid=996146\">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1878150&amp;group_id=206061&amp;atid=996146</a>)\n\n-----\nVersion 0.3.0 (2008-01-21)\n\n*) Instead of hooking the \"compose-send-message\" event, we now override the \"SendMessage\" function. The previous behavior caused the reminder to pop up not only when sending, but also when saving a message, and also during autosave. Now, only actual message sending triggers the attachment scan and reminder.\n\n-----\nVersion 0.2.1 (2007-11-26)\n\n*) Set default reminder dialog item to be the OK button\n*) Change button labels to be more descriptive and useful\n*) Add \"please donate\" button\n\n-----\nVersion 0.2.0 (2007-09-26)\n\n*) Add the Attachment Reminder preferences item to the Tools menu of the main window and the compose window\n*) Localize the options window title\n*) Localize the extension description\n*) Improve informativeness of the options window text\n*) Change the minimum and maximum version numbers to comply with official requirements as per <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/pages/appversions\">https://addons.mozilla.org/en-US/thunderbird/pages/appversions</a>\n\n-----\nVersion 0.1.0 (2007-09-23)\n\nFirst release of the Attachment Reminder extension for Thunderbird. The following features are present:\n\n*) Customizable list of keywords to use for scanning.\n*) Full support for Javascript's regular expression syntax.\n*) A robust keyword list included with the default setup.\n*) Option to not include text of quoted email in the scan.\n*) Option to turn off scanning."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachment-reminder/versions/0.3.10",
+            "version": "0.3.10"
+        },
+        {
+            "id": 42432,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "2.0.0.*",
+                    "min": "1.5"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachment-reminder/versions/42432",
+            "files": [
+                {
+                    "id": 25837,
+                    "created": "2008-03-28T07:49:53Z",
+                    "hash": "sha256:ecba7f15a88d8365d29dec1f9ca4ea042b654ee81bb7f960e9631be548c01897",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 15360,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/25837/attachment_reminder-0.3.8-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": null,
+            "release_notes": {
+                "en-US": "Attachment Reminder Changelog\n---------------------\n\n-----\nVersion 0.3.8 (2008-03-28)\n\n*) Now that Attachment Reminder has been released out of the sandbox on <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a>, remove the custom updateURL so that <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a> is used for updates (default when updateURL is not specified). We might have continued just using <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f23bc649574999b493d4bfdc474e1ad77e6b5254fc274d1266ff7f7b47f84df7/http%3A//sf.net\">sf.net</a> for updates, but addons.mozilla does not allow custom updateURLs for security reasons.\n\n-----\nVersion 0.3.7 (2008-02-11)\n\n*) Add configuration option to include email subject line in the scan, with default value of \"true\" (subject scan used to be unconfigurable).\n\n-----\nVersion 0.3.6 (2008-02-03)\n\n*) Appended newline to mailbody variable prior to processing, to fix buglet where some of the default keywords (those requiring a '\\W' at the end) would fail to match if the relevant word occurs at the very end of a plain-text message (with no other characters following, and thus not matching the '\\W' bit).\n*) Add script type declarations to script inclusion directives in the XUL files for extra correctness.\n*) Remove non-existing locales from chrome.manifest. This fixes bug for this extension on non-\"en-US\" versions of T-bird, which would cause the menu item to not show up, and the extension overall to fail. (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5a75736a186c1d1e485f34926e5a8bc55246d360b161639aad59ee99b705be66/http%3A//forums.mozillazine.org/viewtopic.php%3Ft=589435\">http://forums.mozillazine.org/viewtopic.php?t=589435</a>)\n\n-----\nVersion 0.3.5 (2008-02-03)\n\n*) The reminder dialog now includes information as to which keyword triggered the reminder.\n*) Cleaned out some old comment cruft from the code.\n\n-----\nVersion 0.3.4 (2008-01-30)\n\n*) Fix bug where the default keyword list would not have any backslashes, because they would be parsed out in the XML DTD. Double-backslashed everything.\n*) The options dialog no longer has pre-set size, and is automatically sized. That should make it easier on the windows users, for whom the options dialog is not resizable when called from the Add-ons list. A user reported a problem when using large font sizes in windows. ( see this help forum thread: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/877d38ae12722b42a05c57f7ca0831e11a526a111bb514df48a6d19e635d7138/http%3A//sourceforge.net/forum/forum.php%3Fthread_id=1923637&amp;forum_id=737330\">http://sourceforge.net/forum/forum.php?thread_id=1923637&amp;forum_id=737330</a> )\n*) Broke up a long line in the options dialog for prettier dialog size.\n\n-----\nVersion 0.3.3 (2008-01-28)\n\n*) Add the updateURL attribute to install.rdf (and put in the appropriate infrastructure on the website) to enable automatic update checking for this extension.\n\n-----\nVersion 0.3.2 (2008-01-26)\n\n*) Also check for attachments when using the keyboard shortcut to send a message (overriding function SendMessageWithCheck). Thanks to this forum post for pointing out the bug: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7d5d93e2ed2592ea3a518934894a9a3610ae0a7a5335a2db2eda7ab5cbe0d906/https%3A//sourceforge.net/forum/message.php%3Fmsg_id=4743977\">https://sourceforge.net/forum/message.php?msg_id=4743977</a>\n*) Use a safer function override technique (thanks to the AttachmentRemember extension for a bit of code).\n\n-----\nVersion 0.3.1 (2008-01-23)\n\n*) Also check for attachments when doing \"Send Later\", same way as was done for \"Send Now\". Thanks goes to Todd T for the suggestion in bug report 1878150 (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/963f2255c6ce816a4b3f8e925683b534718b7c19660c011932be38c49a9f8172/http%3A//sourceforge.net/tracker/index.php%3Ffunc=detail&amp;aid=1878150&amp;group_id=206061&amp;atid=996146\">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1878150&amp;group_id=206061&amp;atid=996146</a>)\n\n-----\nVersion 0.3.0 (2008-01-21)\n\n*) Instead of hooking the \"compose-send-message\" event, we now override the \"SendMessage\" function. The previous behavior caused the reminder to pop up not only when sending, but also when saving a message, and also during autosave. Now, only actual message sending triggers the attachment scan and reminder.\n\n-----\nVersion 0.2.1 (2007-11-26)\n\n*) Set default reminder dialog item to be the OK button\n*) Change button labels to be more descriptive and useful\n*) Add \"please donate\" button\n\n-----\nVersion 0.2.0 (2007-09-26)\n\n*) Add the Attachment Reminder preferences item to the Tools menu of the main window and the compose window\n*) Localize the options window title\n*) Localize the extension description\n*) Improve informativeness of the options window text\n*) Change the minimum and maximum version numbers to comply with official requirements as per <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/pages/appversions\">https://addons.mozilla.org/en-US/thunderbird/pages/appversions</a>\n\n-----\nVersion 0.1.0 (2007-09-23)\n\nFirst release of the Attachment Reminder extension for Thunderbird. The following features are present:\n\n*) Customizable list of keywords to use for scanning.\n*) Full support for Javascript's regular expression syntax.\n*) A robust keyword list included with the default setup.\n*) Option to not include text of quoted email in the scan.\n*) Option to turn off scanning."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachment-reminder/versions/0.3.8",
+            "version": "0.3.8"
+        },
+        {
+            "id": 39704,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "2.0.0.*",
+                    "min": "1.5"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachment-reminder/versions/39704",
+            "files": [
+                {
+                    "id": 23053,
+                    "created": "2008-01-26T20:05:36Z",
+                    "hash": "sha256:e6a6dab2446eaa828eb3e1366cbc197edb66781f00899fc8a9f1e94421cf355f",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 16384,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/23053/attachment_reminder-0.3.2-tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": null,
+            "release_notes": {
+                "en-US": "Attachment Reminder Changelog\n---------------------\n\n-----\nVersion 0.3.2 (2008-01-26)\n\n*) Also check for attachments when using the keyboard shortcut to send a message (overriding function SendMessageWithCheck). Thanks to this forum post for pointing out the bug: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7d5d93e2ed2592ea3a518934894a9a3610ae0a7a5335a2db2eda7ab5cbe0d906/https%3A//sourceforge.net/forum/message.php%3Fmsg_id=4743977\">https://sourceforge.net/forum/message.php?msg_id=4743977</a>\n*) Use a safer function override technique (thanks to the AttachmentRemember extension for a bit of code).\n\n-----\nVersion 0.3.1 (2008-01-23)\n\n*) Also check for attachments when doing \"Send Later\", same way as was done for \"Send Now\". Thanks goes to Todd T for the suggestion in bug report 1878150 (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/963f2255c6ce816a4b3f8e925683b534718b7c19660c011932be38c49a9f8172/http%3A//sourceforge.net/tracker/index.php%3Ffunc=detail&amp;aid=1878150&amp;group_id=206061&amp;atid=996146\">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1878150&amp;group_id=206061&amp;atid=996146</a>)\n\n-----\nVersion 0.3.0 (2008-01-21)\n\n*) Instead of hooking the \"compose-send-message\" event, we now override the \"SendMessage\" function. The previous behavior caused the reminder to pop up not only when sending, but also when saving a message, and also during autosave. Now, only actual message sending triggers the attachment scan and reminder.\n\n-----\nVersion 0.2.1 (2007-11-26)\n\n*) Set default reminder dialog item to be the OK button\n*) Change button labels to be more descriptive and useful\n*) Add \"please donate\" button\n\n-----\nVersion 0.2.0 (2007-09-26)\n\n*) Add the Attachment Reminder preferences item to the Tools menu of the main window and the compose window\n*) Localize the options window title\n*) Localize the extension description\n*) Improve informativeness of the options window text\n*) Change the minimum and maximum version numbers to comply with official requirements as per <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/pages/appversions\">https://addons.mozilla.org/en-US/thunderbird/pages/appversions</a>\n\n-----\nVersion 0.1.0 (2007-09-23)\n\nFirst release of the Attachment Reminder extension for Thunderbird. The following features are present:\n\n*) Customizable list of keywords to use for scanning.\n*) Full support for Javascript's regular expression syntax.\n*) A robust keyword list included with the default setup.\n*) Option to not include text of quoted email in the scan.\n*) Option to turn off scanning."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachment-reminder/versions/0.3.2",
+            "version": "0.3.2"
+        }
+    ]
+}

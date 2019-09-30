@@ -1,0 +1,146 @@
+{
+    "id": 392787,
+    "authors": [
+        {
+            "id": 5668911,
+            "name": "ypeels",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ypeels/",
+            "username": "ypeels",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "firefox": [
+            "tabs"
+        ],
+        "thunderbird": [
+            "appearance"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1583592,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "31.0"
+            },
+            "thunderbird": {
+                "max": "31.*",
+                "min": "24.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/close-last-tab-with-middle-/versions/1583592",
+        "files": [
+            {
+                "id": 268438,
+                "created": "2014-07-23T11:05:49Z",
+                "hash": "sha256:64edc7bfbab5a988f3497e17f8a98fb97cbcdd8ffde87bc46cd3b2b93af4d4b9",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 27288,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/268438/close_last_tab_with_middle_click-0.1.1-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "UNNECESSARY FOR FIREFOX 31 AND UP! Middle-clicking *will* close the last tab now, even without this add-on installed. Still needed for Thunderbird."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/close-last-tab-with-middle-/versions/0.1.1.1-signed.1-signed",
+        "version": "0.1.1.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "THIS ADD-ON IS NOW UNNECESSARY FOR FIREFOX 31 AND UP!\n\nTired of middle-clicking on the last tab in Thunderbird, only to have nothing happen?\n\nThis simple add-on embraces the industry-standard middle-click behavior adopted by Internet Explorer, Chrome, and even Firefox (versions 31 and up). Middle-click on that last tab to close either the tab or the window--it's up to you!\n\nYour last Thunderbird tab will cower in fear, nevermore immune from the wrath of your middle-click!"
+    },
+    "developer_comments": {
+        "zh-CN": "As of 0.0.2:\n\nThe checkbox preference is not guaranteed to work in anything older than Firefox 12 (because the Add-on SDK is so new??).  Core functionality, however, seems to work in Firefox 7 and up - you'll just have to adjust the about:config preference by hand.\n\nThis extension merely restores the default behavior of Firefox 3.6 regarding tab-middle-click.\n\nFirefox 4-6 get no love...",
+        "en-US": "2014-07-23: Mozilla has finally seen the light and re-enabled middle-click to close the last tab in Firefox! Probably not because of the massive install base of this add-on (454 as of this writing), but because the resolution to bug 997681 (Bugzilla; see also 865826) has resulted in the re-introduction of the close button on the last tab. That, in turn, is probably due to \"peer pressure\" from Chrome (and maybe IE)! It's still not enabled for Thunderbird, though, so it looks like version 0.1.0 last month was just in time.\n-----------\nAs of 0.1.0: requires Firefox 21 or higher.\n-----------\nAs of 0.0.5: requires Firefox 13 or higher.\n-----------\nAs of 0.0.2:\nThe checkbox preference is not guaranteed to work in anything older than Firefox 12 (because the Add-on SDK is so new??).  Core functionality, however, seems to work in Firefox 8 [Firefox 7 support dropped as of 0.0.4.1] and up - you'll just have to adjust the about:config preference by hand.\n\nThis extension merely restores the default behavior of Firefox 3.6 regarding tab-middle-click.\n\nFirefox 4-7 get no love..."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/close-last-tab-with-middle-/edit",
+    "guid": "jid0-a81mUWfvwz11vbNMBHAUSUnstxR@jetpack",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/tabs-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/tabs-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/tabs-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-07-23T18:14:54Z",
+    "name": {
+        "zh-CN": "Close last tab with middle-click",
+        "en-US": "Close last tab with middle-click",
+        "zh-TW": "Close last tab with middle-click"
+    },
+    "previews": [],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.9251,
+        "count": 3,
+        "average": 5,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/close-last-tab-with-middle-/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/392787",
+    "slug": "close-last-tab-with-middle-",
+    "status": "public",
+    "summary": {
+        "zh-CN": "用中点击把最后的标签关掉。",
+        "en-US": "THIS ADD-ON IS NOW UNNECESSARY FOR FIREFOX 31 AND UP!\n\nTired of middle-clicking on the last tab in Thunderbird, only to have nothing happen? This add-on embraces the industry-standard middle-click behavior of IE, Chrome, and Firefox (3.6- and 31+).",
+        "zh-TW": "用中點擊把最後的標籤關掉。"
+    },
+    "support_email": {
+        "en-US": "ypeels+support@outlook.com"
+    },
+    "support_url": null,
+    "tags": [
+        "jetpack",
+        "restartless",
+        "tabs"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/close-last-tab-with-middle-/",
+    "weekly_downloads": 23
+}

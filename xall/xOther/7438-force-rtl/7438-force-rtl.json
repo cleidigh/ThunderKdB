@@ -1,0 +1,147 @@
+{
+    "id": 7438,
+    "authors": [
+        {
+            "id": 47878,
+            "name": "Kai Liu",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kliu0x52/",
+            "username": "kliu0x52",
+            "picture_url": null
+        },
+        {
+            "id": 143820,
+            "name": "Ehsan Akhgari",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ehsan-akhgari/",
+            "username": "ehsan-akhgari",
+            "picture_url": null
+        },
+        {
+            "id": 9800810,
+            "name": "Mike de Boer",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mikedeboer/",
+            "username": "mikedeboer",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 3,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2054723,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "38.0a2"
+            },
+            "thunderbird": {
+                "max": "52.0a1",
+                "min": "38.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/force-rtl/versions/2054723",
+        "files": [
+            {
+                "id": 606207,
+                "created": "2017-03-09T11:26:44Z",
+                "hash": "sha256:3a4f072c8dcba097d2bd8901cce7555a9c1c538705790008867488186642d3f5",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 110611,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/606207/force_rtl-2.3-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "This version fixes the functionality of this addon on Firefox 54 - <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/66c4e6dc53bb58536bc6f5930b7d418c2ab4564008a085d8470594c4b7ca2c13/https%3A//github.com/mikedeboer/ForceRTL/pull/9\">https://github.com/mikedeboer/ForceRTL/pull/9</a>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/force-rtl/versions/2.3",
+        "version": "2.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Force a LTR locale to behave as if it was a RTL locale.  This allows developers to test the appearance of their UI for RTL compatibility without having to install a RTL locale.\n\nFor Firefox 3.0 Alpha 1 and Thunderbird 3.0 Alpha 1 and later, this extension allows dynamic switching of the direction of the user interface at runtime, via the Tools menu, \"Force RTL Direction\" item.\n\nFor older versions of these applications, the user interface will be RTL as long as this extension is enabled.  Switching back to LTR requires disabling this extension and restarting the application.\n\nNote: the intl.css used by this addon comes from the he locale; the intl.css for the ar and fa locales are based on the he locale's intl.css, but they differ slightly, so just keep in mind that things may look slightly different with ar and fa.\n\nNote: As a result of bug #436635, menu layouts may not get updated when you switch modes.  To work around this problem, open a new window.\n\nGeneral information about RTL theming:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c74ed7a95b3b559763ae7d7784c4c7f7e151cfa7d19d89e10569fb4cedeaf908/http%3A//developer.mozilla.org/en/docs/Making_Sure_Your_Theme_Works_with_RTL_Locales\">http://developer.mozilla.org/en/docs/Making_Sure_Your_Theme_Works_with_RTL_Locales</a>"
+    },
+    "developer_comments": {
+        "en-US": "Known issues:\n* As a result of bug #436635, menu layouts may not be correctly updated after you switch modes.  You can work around this by opening a new window and closing the existing one."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/force-rtl/edit",
+    "guid": "{5fa014b6-c474-4c5d-8b0e-c1e73cbefbc4}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/mikedeboer/ForceRTL"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/7/7438-64.png?modified=1489065621",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/7/7438-32.png?modified=1489065621",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/7/7438-64.png?modified=1489065621"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2017-03-09T12:52:22Z",
+    "name": {
+        "en-US": "Force RTL"
+    },
+    "previews": [
+        {
+            "id": 21265,
+            "caption": {
+                "en-US": "Force RTL in action!"
+            },
+            "image_size": [
+                475,
+                330
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/21/21265.png?modified=1530208369",
+            "thumbnail_size": [
+                288,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/21/21265.png?modified=1530208369"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.46895,
+        "count": 7,
+        "average": 5,
+        "text_count": 7
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/force-rtl/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/7438",
+    "slug": "force-rtl",
+    "status": "public",
+    "summary": {
+        "en-US": "Force a LTR locale to behave as if it was a RTL locale."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "rtl"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/force-rtl/",
+    "weekly_downloads": 24
+}

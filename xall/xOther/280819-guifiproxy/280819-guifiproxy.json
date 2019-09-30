@@ -1,0 +1,264 @@
+{
+    "id": 280819,
+    "authors": [
+        {
+            "id": 5386901,
+            "name": "Tomás Velázquez",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/tom%C3%A1s-vel%C3%A1zquez/",
+            "username": "tomás-velázquez",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5386/5386901.png?modified=1347449576"
+        }
+    ],
+    "average_daily_users": 12,
+    "categories": {
+        "firefox": [
+            "privacy-security"
+        ],
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1332862,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "3.0"
+            },
+            "thunderbird": {
+                "max": "15.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/guifiproxy/versions/1332862",
+        "files": [
+            {
+                "id": 150645,
+                "created": "2012-05-06T08:28:12Z",
+                "hash": "sha256:05e803e55151953a5739e3d9d261582d1848504519b038cf27972dfee796f43b",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 69482,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/150645/guifiproxy-3.0.4-fn+fx+tb-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 150646,
+                "created": "2012-05-06T08:28:12Z",
+                "hash": "sha256:bf1229c9e82e39c068ea52e9ddc67aea4453d32631eddda708793a9be9526bb3",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 69480,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/150646/guifiproxy-3.0.4-fn+fx+tb-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 150647,
+                "created": "2012-05-06T08:28:12Z",
+                "hash": "sha256:c8c5ccb90656e0018acd5650189b7e9ed5a032bf95d1a1022ebaab97411dd014",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 69485,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/150647/guifiproxy-3.0.4-fn+fx+tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "- fix move up and down buttons with imported proxy list\n- disable automatic insertion of guifi-button\n- remove constants that can cause addon namespace incompatibility\n- remove guifi button hack active/disable\n- let statusbar proxy name to be added to another bars\n- disable automatic visibility of addon-bar\n- fix socks import",
+            "es": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/guifiproxy/versions/3.0.4.1-signed.1-signed",
+        "version": "3.0.4.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "ca": "Característiques:\n\n- Canvi de proxy amb dos clics.\n- Importació i exportació de llistes de proxys d'arxius.\n- Importació de proxys de URL.\n- Afegir, eliminar i editar els proxys manualment.\n- Autenticació automàtica de proxy (evita el popup emergent amb el nom d'usuari i contrasenya).\n- Excepció de direccions a on no utilitzar proxies.\n- Copia de seguretat de la configuració.\n\n\nVideo: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ff6a53c9371d2131f67beb71466a4f9b2a9cbb59bc5d5091128f009ebc1ba67a/http%3A//blip.tv/file/get/Eloirebes-GuifiProxy661.webm\">http://blip.tv/file/get/Eloirebes-GuifiProxy661.webm</a>\n\nAlgunos iconos de <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/dfdab61565af420726d5afbe2109a4a6dc8c39cfc95d5fb2bbe398cbe8d2dcc7/http%3A//www.visualpharm.com/must_have_icon_set/\">http://www.visualpharm.com/must_have_icon_set/</a>",
+        "en-US": "Features:\n\n- Change proxy with two clicks.\n- Import and export proxies lists using files.\n- Import proxies from URL.\n- Manually add, delete and edit proxies.\n- Automatic authentication on proxies (bypass popup with login and password).\n- Exception address where not to use proxies.\n- Configuration's backup\n\nKey bindings:\nCTRL+ALT+P: Show preferences menu\nCTRL+ALT+G: Active/Desactive use of proxy\n\nVideo:  <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ff6a53c9371d2131f67beb71466a4f9b2a9cbb59bc5d5091128f009ebc1ba67a/http%3A//blip.tv/file/get/Eloirebes-GuifiProxy661.webm\">http://blip.tv/file/get/Eloirebes-GuifiProxy661.webm</a>\n\nSome icons from <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/dfdab61565af420726d5afbe2109a4a6dc8c39cfc95d5fb2bbe398cbe8d2dcc7/http%3A//www.visualpharm.com/must_have_icon_set/\">http://www.visualpharm.com/must_have_icon_set/</a>",
+        "es": "Características:\n\n- Cambio de proxy con dos clics.\n- Importación y exportación de listas de proxy de archivos.\n- Importación de proxys de URL.\n- Añadir, eliminar y editar los proxies manualmente.\n- Autenticación automática de proxy (evita el popup emergente de nombre de usuario y contraseña).\n- Excepción de direcciones dónde no usar proxies.\n- Copia de seguridad de la configuración.\n\n\nVideo: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ff6a53c9371d2131f67beb71466a4f9b2a9cbb59bc5d5091128f009ebc1ba67a/http%3A//blip.tv/file/get/Eloirebes-GuifiProxy661.webm\">http://blip.tv/file/get/Eloirebes-GuifiProxy661.webm</a>\n\nAlgunos iconos de <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/dfdab61565af420726d5afbe2109a4a6dc8c39cfc95d5fb2bbe398cbe8d2dcc7/http%3A//www.visualpharm.com/must_have_icon_set/\">http://www.visualpharm.com/must_have_icon_set/</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/guifiproxy/edit",
+    "guid": "tomas.velazquez@guifi.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "ca": "http://guifiproxy.mozdev.org",
+        "en-US": "http://guifiproxy.mozdev.org",
+        "es": "http://guifiproxy.mozdev.org"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/280/280819-64.png?modified=1337335220",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/280/280819-32.png?modified=1337335220",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/280/280819-64.png?modified=1337335220"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2012-05-18T04:20:11Z",
+    "name": {
+        "ca": "GuifiProxy",
+        "en-US": "GuifiProxy",
+        "es": "GuifiProxy"
+    },
+    "previews": [
+        {
+            "id": 57584,
+            "caption": null,
+            "image_size": [
+                488,
+                398
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/57/57584.png?modified=1530208940",
+            "thumbnail_size": [
+                245,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/57/57584.png?modified=1530208940"
+        },
+        {
+            "id": 57585,
+            "caption": null,
+            "image_size": [
+                503,
+                478
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/57/57585.png?modified=1530208940",
+            "thumbnail_size": [
+                210,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/57/57585.png?modified=1530208940"
+        },
+        {
+            "id": 57586,
+            "caption": null,
+            "image_size": [
+                499,
+                472
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/57/57586.png?modified=1530208941",
+            "thumbnail_size": [
+                211,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/57/57586.png?modified=1530208941"
+        },
+        {
+            "id": 59395,
+            "caption": null,
+            "image_size": [
+                695,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/59/59395.png?modified=1530208941",
+            "thumbnail_size": [
+                265,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/59/59395.png?modified=1530208941"
+        },
+        {
+            "id": 53727,
+            "caption": null,
+            "image_size": [
+                700,
+                276
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/53/53727.png?modified=1530208941",
+            "thumbnail_size": [
+                320,
+                126
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/53/53727.png?modified=1530208941"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.54921,
+        "count": 20,
+        "average": 3.7,
+        "text_count": 20
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/guifiproxy/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/280819",
+    "slug": "guifiproxy",
+    "status": "public",
+    "summary": {
+        "ca": "Simple gestor de servidors intermediaris.\n- Importació i exportació de llistes de servidors intermediaris\n- Gestió de servidors intermediaris manualment\n- Autenticació automàtica de servidors intermediaris\n- Substitut de proxysel",
+        "en-US": "Simple proxy manager\n- Change proxy with two clicks\n- Import and export proxies lists\n- Manually add, delete and edit proxies\n- Automatic authentication on proxies (bypass popup with login and password)\n- Proxysel replacement",
+        "es": "Simple gestor de proxies\n- Cambio de proxy con dos clics\n- Importación y exportación de listas de proxies\n- Gestión de proxies manualmente\n- Autenticación automática de proxy (evita popup con usuario y contraseña)\n- Sustituto de proxysel"
+    },
+    "support_email": {
+        "en-US": "ten.ifiug@zeuqzalev.samot"
+    },
+    "support_url": {
+        "en-US": "http://guifi.net"
+    },
+    "tags": [
+        "anonymous",
+        "authorization",
+        "censorship",
+        "firewall",
+        "firewalls",
+        "foxyproxy",
+        "freedom",
+        "hack",
+        "hacking",
+        "http",
+        "multiproxy",
+        "privacy",
+        "private",
+        "proxies",
+        "proxy",
+        "proxy list",
+        "proxying",
+        "proxysel",
+        "security",
+        "socks"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/guifiproxy/",
+    "weekly_downloads": 675
+}

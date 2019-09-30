@@ -1,0 +1,230 @@
+{
+    "id": 326836,
+    "authors": [
+        {
+            "id": 5489124,
+            "name": "Dagger",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dagger2/",
+            "username": "dagger2",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 26,
+    "categories": {
+        "firefox": [
+            "appearance"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1735784,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0b12"
+            },
+            "seamonkey": {
+                "max": "2.36",
+                "min": "2.1"
+            },
+            "thunderbird": {
+                "max": "39.*",
+                "min": "5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/classicish-addon-manager/versions/1735784",
+        "files": [
+            {
+                "id": 337058,
+                "created": "2015-08-13T15:05:09Z",
+                "hash": "sha256:a32ed52006183612d65ed5fc38b902bd53ae74be309c547c15bbd7ca84b41ded",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 30254,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/337058/classicish_add_on_manager-0.8.5.2-sm+tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "Changelog:\n\nabout:addons opens again. (The in-content theming change still screws up the style, but at least you can get to about:addons to disable it now.)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/classicish-addon-manager/versions/0.8.5.2",
+        "version": "0.8.5.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "The new Add-ons Manager in Firefox 4 has very non-native styling on some system themes. Classicish Add-on Manager fixes this by restyling it to resemble the manager in previous versions of Firefox.\n\nChanges include:\n<ul><li>Buttons and other elements take their colors and appearance from your system's settings.</li><li>The Add-ons Manager opens in its own window.</li><li>The status line (that shows e.g. \"will be enabled after you restart Firefox\" and \"is incompatible with this version of Firefox\") is moved to the bottom of the extension entry. The incompatible warning is hidden if you have extensions.checkCompatibility set to false.</li><li>The Discover pane is hidden, since you probably don't need help discovering add-ons if you're reading this.</li><li>The \"Remove\" button is hidden, and the \"Disable\" button is hidden for window widths under 800px. You can still access these from the context menu, or the details page.</li></ul>\n<b>Note: currently very broken (the extension pane is invisible) in Fx40 due to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/1cacbf3f2568a42b5e2e50479d9d6357ddeb0604ee842f51e8259ccfe37d2866/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1132971\">bug 1132971</a>, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/666a2e230542bf075e89b6d0d23ff3da048011ec8ad065e67ede2d848c9c489d/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=989469\">bug 989469</a> and possibly the extension signing stuff. You can disable it from about:Addons or safe mode.</b>"
+    },
+    "developer_comments": {
+        "en-US": "Known problems:\n<ul><li>When open in a window, links open into a new browser window rather than an existing one, or don't open at all in Thunderbird. If this is a problem, you can work around it by opening the Add-ons Manager into a tab.</li><li>The UI for preferences is unavailable before Firefox 7 or Thunderbird 7 due to a lack of platform support. If you wish to disable AMO integration or load into a tab, you will have to set the relevant preferences (extensions.getAddons.cache.enabled and extensions.ClassicishAddonManager.loadInTab) manually.</li><li>Very little testing has occured on GNOME or Aero. None whatsoever has occured on Mac OS X or any of XP's themes.</li> <li>Download statusbars and the sort and filter buttons on the search results page have not been fixed.</li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/classicish-addon-manager/edit",
+    "guid": "classicishaddonmanager@dagger2-addons.mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-08-13T21:55:14Z",
+    "name": {
+        "en-US": "Classicish Add-on Manager"
+    },
+    "previews": [
+        {
+            "id": 60152,
+            "caption": null,
+            "image_size": [
+                698,
+                466
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/60/60152.png?modified=1530209007",
+            "thumbnail_size": [
+                300,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/60/60152.png?modified=1530209007"
+        },
+        {
+            "id": 60153,
+            "caption": {
+                "en-US": "Showing disabled and incompatible extensions."
+            },
+            "image_size": [
+                551,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/60/60153.png?modified=1530209008",
+            "thumbnail_size": [
+                210,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/60/60153.png?modified=1530209008"
+        },
+        {
+            "id": 60154,
+            "caption": {
+                "en-US": "With extensions.checkCompatibility = false. The per-extension \"is incompatible with Firefox\" warning is hidden."
+            },
+            "image_size": [
+                519,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/60/60154.png?modified=1530209008",
+            "thumbnail_size": [
+                198,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/60/60154.png?modified=1530209008"
+        },
+        {
+            "id": 60155,
+            "caption": {
+                "en-US": "An empty add-on list."
+            },
+            "image_size": [
+                698,
+                466
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/60/60155.png?modified=1530209008",
+            "thumbnail_size": [
+                300,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/60/60155.png?modified=1530209008"
+        },
+        {
+            "id": 60156,
+            "caption": null,
+            "image_size": [
+                647,
+                424
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/60/60156.png?modified=1530209009",
+            "thumbnail_size": [
+                305,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/60/60156.png?modified=1530209009"
+        },
+        {
+            "id": 60157,
+            "caption": null,
+            "image_size": [
+                666,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/60/60157.png?modified=1530209009",
+            "thumbnail_size": [
+                254,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/60/60157.png?modified=1530209009"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.15117,
+        "count": 17,
+        "average": 4.3529,
+        "text_count": 17
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/classicish-addon-manager/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/326836",
+    "slug": "classicish-addon-manager",
+    "status": "public",
+    "summary": {
+        "en-US": "A restyling of the Add-on Manager to a more native appearance."
+    },
+    "support_email": {
+        "en-US": "dagger.bugzilla+amo.cam@gmail.com"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/classicish-addon-manager/",
+    "weekly_downloads": 28
+}

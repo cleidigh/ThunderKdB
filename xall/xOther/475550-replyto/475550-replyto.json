@@ -1,0 +1,145 @@
+{
+    "id": 475550,
+    "authors": [
+        {
+            "id": 6041274,
+            "name": "The Ripper",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/the_ripper/",
+            "username": "the_ripper",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 17,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1540342,
+        "compatibility": {
+            "thunderbird": {
+                "max": "30.*",
+                "min": "3.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/replyto/versions/1540342",
+        "files": [
+            {
+                "id": 252866,
+                "created": "2014-04-05T10:55:18Z",
+                "hash": "sha256:08398448203b8da5d470af5b289aead686511cc1bbd40b7537468d90d1b05ec6",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 12587,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/252866/replyto-0.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "<strong>New in version 0.2</strong>\n<ul><li><strong>Listbox with mailadresses</strong>\nThe reply to button in the preview pane has a listbox beneath, that contains all email adresses found in the message. These can be selected for reply to mail.</li><strong>Removal of forward info</strong>\nIf the message was forwarded by Thunderbird and the forward information is recognized, it will be removed in the reply. This behaviour can be disabled in AddOn's preferences!<strong>Adressrecognition at Mouseposition</strong>\nThe recognition of email adress below mouse pointer (popup menu) is enhanced so that it is not longer necessary to select the email text. Using right mouse button upon email should be sufficient.</ul>",
+            "de": "<strong>Neu in Version 0.2</strong>\n<ul><li><strong>Listbox mit Mailadressen</strong>\nDer \"Antworten\" Button im Vorschaufenster hat nun ein Popupmenü, welches alle Emailadressen der Nachricht enthält. An diese Adressen kann geantwortet werden (alternative zum Aufruf des Popupmenüs über rechte Maustaste).</li><strong>Entfernen von Weiterleitungsinformationen</strong>\nWird replyTo auf eine über Thunderbird weitergeleitete Nachricht angewendet so werden die Weiterleitungsinformationen in der Antwort entfernt. Dieses Verhalten kann über die Einstellungen des AddOns deaktiviert werden!  <strong>Adresserkennung bei Mausposition</strong>\nDie Erkennung der Mailadresse an der Mausposition wurde erweitert sodaß es nicht länger notwendig ist die Mailadresse zu markieren. Es reicht aus, das Popupmenü direkt über der gewünschten Zieladresse aufzurufen.</ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/replyto/versions/0.2",
+        "version": "0.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Often it happens to me that I get e-mails forwarded, on which I have to reply to the originator and not to sender.\n\nThis simple AddOn adds a menuitem to the context menu of the mail (-preview) window that gives the ability to reply to a different adress, if your mouse pointer is above a mail url or if you selected an email adress in the text.",
+        "de": "Ich erhalte häufig e-mails <strong>weitergeleitet</strong>, bei denen ich an den ursprünglichen Absender antworten sollte.\n\nDieses einfache AddOn erweitert das Kontextmenü um einen Menüpunkt, der die Möglichkeit bietet an die Mail Url über der sich die Maus befindet, oder alternativ an eine markierte mailadresse zu antworten anstatt den Absender der e-mail."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/replyto/edit",
+    "guid": "replyTo@reinhold.ripper",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/475/475550-64.png?modified=1396697735",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/475/475550-32.png?modified=1396697735",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/475/475550-64.png?modified=1396697735"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-04-08T04:28:42Z",
+    "name": {
+        "en-US": "replyTo",
+        "de": "replyTo"
+    },
+    "previews": [
+        {
+            "id": 119822,
+            "caption": {
+                "en-US": "Reply to different Adress by popup menu",
+                "de": "Antworten zu anderer Adresse"
+            },
+            "image_size": [
+                589,
+                405
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/119/119822.png?modified=1530209093",
+            "thumbnail_size": [
+                291,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/119/119822.png?modified=1530209093"
+        },
+        {
+            "id": 133562,
+            "caption": {
+                "en-US": "Reply Button with replyTo adresses from message",
+                "de": "Liste von Adressen aus Nachricht"
+            },
+            "image_size": [
+                264,
+                92
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/133/133562.png?modified=1530209094",
+            "thumbnail_size": [
+                264,
+                92
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/133/133562.png?modified=1530209094"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.99208,
+        "count": 10,
+        "average": 4.4,
+        "text_count": 10
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/replyto/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/475550",
+    "slug": "replyto",
+    "status": "public",
+    "summary": {
+        "en-US": "Adds a menuitem to the Mail context Menu to Reply to a different Mailadress",
+        "de": "Fügt dem Kontextmenü einen Eintrag hinzu, mit dem eine Antwort an eine andere Adresse als die des Absenders erzugt werden kann."
+    },
+    "support_email": {
+        "en-US": "printpagestopdf@yahoo.de",
+        "de": "printpagestopdf@yahoo.de"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/replyto/",
+    "weekly_downloads": 25
+}

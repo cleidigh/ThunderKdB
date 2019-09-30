@@ -1,0 +1,205 @@
+{
+    "id": 578230,
+    "authors": [
+        {
+            "id": 6640,
+            "name": "Alexander Salas Bastidas",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ajsb85/",
+            "username": "ajsb85",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/6/6640.png?modified=1521129368"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "chat"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1648654,
+        "compatibility": {
+            "thunderbird": {
+                "max": "38.0a1",
+                "min": "15.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/p18x/versions/1648654",
+        "files": [
+            {
+                "id": 294928,
+                "created": "2015-01-25T11:24:48Z",
+                "hash": "sha256:71a53ab0c06c5ad36fc4ab3045802f65c6ca98db85f431020299a080f6d9f0c1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 152456,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/294928/p18x_protocol-1.1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2015-01-25T14:51:08Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/p18x/versions/1.1.1",
+        "version": "1.1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Send SMS direct to SMSC by the standalone mobile broadband USB-based modems of the brand ZTE with P18X Web UI.\n\nThis add-on can store SMS messages and contacts on the devices and the SIM Card.\n\nThe options include validity period of an SMS, message status reports and service center number.\n\n<b>Glossary of Add-on terms: </b>\n\n<b>Mobile broadband modem</b>\n\nA mobile broadband modem, also known as a connect card or data card, is a type of modem that allows a laptop, a personal computer or a router to receive Internet access via a mobile broadband connection instead of using telephone or cable television lines. A mobile Internet user can connect using a wireless modem to a wireless Internet Service Provider (ISP) to get Internet access. Standalone mobile broadband modems are designed to be connected directly to one computer.\n\n<b>SMS messages and contacts</b>\n\nMost SIM cards will orthogonally store a number of SMS messages and phone book contacts. The contacts are stored in simple \"name and number\" pairs: entries containing multiple phone numbers and additional phone numbers will usually not be stored on the SIM card. When a user tries to copy such entries to a SIM the handset's software will break them up into multiple entries, discarding any information that is not a phone number. The number of contacts and messages stored depends on the SIM; early models would store as few as five messages and 20 contacts while modern SIM cards can usually store over 250 contacts.\n\n<b>SMS gateway</b>\n\nAn SMS gateway allows a computer to send or receive Short Message Service (SMS) transmissions to or from a telecommunications network. Most messages are eventually routed into the mobile phone networks.\n\n<b>Direct-to-SMSC</b>\n\nA direct-to-short message service center (SMSC) gateway is a software application, or a component within a software application, that connects directly to a mobile operator's SMSC via the Internet or direct leased line connections. The Short Message Peer-to-Peer (SMPP) protocol is typically used to convey SMS between an application and the SMSC. Direct-to-SMSC gateways are used by SMS aggregators to provide SMS services to their clients and large businesses who can justify such use. They are typically employed for high volume messaging and require a contract directly with a mobile operator.\n\n<b>Validity period of an SMS</b>\n\nAn SMS message is stored temporarily in the SMS center if the recipient mobile phone is unavailable. It is possible on most mobile handset to specify an expiry period after which the SMS message will be deleted from the SMS center. Once deleted, the SMS message will no longer be available for dispatch to the recipient mobile phone (even if it becomes online). The validity period should be regarded by the handset user as a request, as the SMSC itself can be configured to ignore or otherwise handle message delivery schedules.\n\n<b>Message status reports</b>\n\nThe SMS sender needs to set a flag in the SMS message to notify the SMS center that he wants the status report about the delivery of this SMS message. This status report is sent to the SMS sender in the form of an SMS.\n\n<b>Tested on</b>\nMF823\nCarrier:\nDigitel (VE)\nWeb UI:\nP18X Web UI 5.0\n\n<i>Report more devices as issue at the link support.</i>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/p18x/edit",
+    "guid": "prpl-p18x@alexandersalas.name",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/alexsalas/instantbird-protocol-p18x"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/578/578230-64.png?modified=1422230254",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/578/578230-32.png?modified=1422230254",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/578/578230-64.png?modified=1422230254"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-01-25T14:51:10Z",
+    "name": {
+        "zh-CN": "P18X Protocol",
+        "en-US": "P18X Protocol",
+        "es": "Protocolo P18X"
+    },
+    "previews": [
+        {
+            "id": 151726,
+            "caption": null,
+            "image_size": [
+                485,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/151/151726.png?modified=1530209172",
+            "thumbnail_size": [
+                185,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/151/151726.png?modified=1530209172"
+        },
+        {
+            "id": 151728,
+            "caption": null,
+            "image_size": [
+                618,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/151/151728.png?modified=1530209172",
+            "thumbnail_size": [
+                235,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/151/151728.png?modified=1530209172"
+        },
+        {
+            "id": 151730,
+            "caption": null,
+            "image_size": [
+                486,
+                389
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/151/151730.png?modified=1530209172",
+            "thumbnail_size": [
+                250,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/151/151730.png?modified=1530209172"
+        },
+        {
+            "id": 151732,
+            "caption": null,
+            "image_size": [
+                700,
+                459
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/151/151732.png?modified=1530209173",
+            "thumbnail_size": [
+                305,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/151/151732.png?modified=1530209173"
+        },
+        {
+            "id": 151734,
+            "caption": null,
+            "image_size": [
+                525,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/151/151734.png?modified=1530209173",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/151/151734.png?modified=1530209173"
+        },
+        {
+            "id": 151736,
+            "caption": null,
+            "image_size": [
+                529,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/151/151736.png?modified=1530209174",
+            "thumbnail_size": [
+                202,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/151/151736.png?modified=1530209174"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/p18x/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/578230",
+    "slug": "p18x",
+    "status": "public",
+    "summary": {
+        "zh-CN": "直接发送SMS到SMSC通过独立的基于USB调制解调器品牌为中兴P18X Web UI的移动宽带",
+        "en-US": "Send SMS direct to SMSC by the standalone mobile broadband USB-based modems of the brand ZTE with P18X Web UI.",
+        "es": "Envía SMS directo hacia el SMSC con el MODEM USB con interfaz P18X Web UI de la marca ZTE."
+    },
+    "support_email": {
+        "en-US": "a.salas@ieee.org"
+    },
+    "support_url": {
+        "en-US": "https://github.com/alexsalas/instantbird-protocol-p18x/issues"
+    },
+    "tags": [
+        "digitel",
+        "lte",
+        "modem",
+        "p18x",
+        "prpl",
+        "sms",
+        "usb",
+        "zte"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/p18x/",
+    "weekly_downloads": 28
+}

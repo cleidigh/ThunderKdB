@@ -1,0 +1,221 @@
+{
+    "id": 265058,
+    "authors": [
+        {
+            "id": 5580713,
+            "name": "Frank Abelbeck",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/abelbeck/",
+            "username": "abelbeck",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 518,
+    "categories": {
+        "thunderbird": [
+            "contacts"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1779706,
+        "compatibility": {
+            "thunderbird": {
+                "max": "38.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thundersync/versions/1779706",
+        "files": [
+            {
+                "id": 368818,
+                "created": "2015-11-10T12:33:36Z",
+                "hash": "sha256:a681480a28b4f28c7cc0381b639e963ad1487eccfab0896df63d48b5436713b2",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 90388,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/368818/thundersync-2.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thundersync/versions/2.6",
+        "version": "2.6"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Copyright (C) 2012-2015 Frank Abelbeck &lt;frank.abelbeck@googlemail.com&gt;\n\nThunderSync is free software; you can redistribute it and/or\nmodify it under the terms of the GNU General Public License\nas published by the Free Software Foundation; either version 2\nof the License, or (at your option) any later version.\n\nThunderSync is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\n<strong>Author:</strong> Frank Abelbeck\n<strong>Supporters:</strong> Lucas Treffenstädt (testing, code contribution auto-start), Yair Lanz (feedback regarding charsets), David von Oheimb (feedback, code contribution), Laura Arjona (Spanish translation)\n\n<strong>Description:</strong> Allows to synchronise Thunderbird's addressbook with external directories/files. Right now, only vCard version 2.1 is supported as export file format.\n               \nMost information of Thunderbird's addressbook is translated into the vCard format. Untranslatable stuff is coded as\n\n<code>X-MOZILLA-PROPERTY:PropertyName;PropertyValue.</code>\n\nYes, this extension processes your contact images! That was the point of this extension! I wanted nice pictures of the people calling me. Image size is not limited, but regarding the phone synchronisation process small file sizes (1-10 kiB) are recommended.\n\n<strong>Disclaimer:</strong> I created this extension to solve a sync problem with my phone. ThunderSync is distributed in the hope that it will help other people with similar problems. This extension does access your Thunderbird addressbook, so please be cautious! I seek perfection, but I cannot verify the extension's behaviour due to the overwhelming number of possible platform configurations.\n\n<strong>Quick Start Guide #1: Post installation</strong>\n\nOpen the extension's properties dialog. On the left-hand side you will see a list of your addressbooks. To the right all preferences dedicated to the selected addressbook are shown -- divided into three sections \"General\", \"Export Format\" and \"Filter\".\n\nEach addressbook can be configured independently.\n\nTo synchronise an addressbook one has to link it to an external resource. To do this, select an addressbook on the left-hand side. Then your can choose an export format on the right side, in section \"General\". With a click on the button \"Choose...\" you can pick a file or directory.\n\nOther options and preferences should be self-explaining.\n\nSection \"Filter\" allows to select individual actions for each detail (name, e-mail address, phone number) of a contact. First you have to select one or more contact details from the list. A right-click on the selection will show a context menu from which you can choose an action. This action will be applied to all selected contact details.\n\nIf export or import of a contact lead to charset problems, section \"Export Format\" allows to force a certain charset. You might need to use these options if you intent to work with exports from third-party programs (which might not stick to the vCard specs).\n\nSince version 2.0 a small tool is available which takes care of unused images stored in the user's profile directory. It is accessible with the button at the bottom of the properties dialog.\n\nAnother novelty of version 2.0 is the toolbar button to simplify the access. If you want to use it, you have to choose menu item\n<blockquote>View -&gt; Toolbars -&gt; Customize...</blockquote>\nFind ThunderSync's symbol and drag it to one of the white surfaces (toolbars).\n\n<strong>Quick Start Guide #2: Usage</strong>\n\nIf at least one addressbook is mapped to a directory it will be possible to do a proper synchronisation. Open Thunderbird's addressbook and choose menu item\n<blockquote>Extras -&gt; Synchronise addressbook...</blockquote>\nA new dialog will pop up. Initially ThunderSync should have already compared local and remote contacts. But with a click on the \"compare\" button this can be repeated. A list of differences between your local addressbook and the external file resources will be built. If both resources are equal, a dialog will inform you about this.\n\nOtherwise a table will show the differences, with the middle column displaying the type of difference:\n<ul><li><code>!=   </code>Content on both sides differs; conflict not resolved</li><li><code>&lt;&gt;   </code>Content on both sides differs; conflict resolved</li><li><code>&lt;&lt;   </code>Copy external contact to local addressbook</li><li><code>&gt;&gt;   </code>Copy addressbook entry to external resource</li></ul>\nIf at least one '!=' is present, you will not be allowed to start a synchronisation. You have to resolve the conflict by opening the contact in question. Simply click on it, this will show all differing properties. Find any property with a '!=' and double-click on it. A double click toggles between keeping local information or using the external resource.\n\nWhen no '!=' is left in the list of differing contacts, the \"syncronise\" button will be enabled and you can trigger the synchronisation process.\n\n<strong>Changelog</strong>\n\n1.0 (2010-12-17)\n<ul><li>Initial release</li></ul>\n1.1 (2011-01-12)\n<ul><li>Preferences storage names changed to Mozilla policy</li><li>Support for various charsets (thanks to Yair Lanz for feedback)</li><li>Improvement of vCard processing</li></ul>\n1.2 (2011-02-22)\n<ul><li>Option for automatic execution at application start (thanks to Lucas Treffenstädt for code contribution)</li><li>Behaviour changed: contacts are compared when ThunderSync dialog is opened</li><li>Code revision: contact identification based on unique identifiers (UID)\n<ul><li>Now any other property can be changed</li><li>Multiple contacts with same name (e.g. John Smith) are allowed as long as they differ in at least one property</li></ul></li><li>New files will be named using the UID</li></ul>\n1.2.1 (2011-03-21)\n<ul><li>Typo in photo URL export routine fixed</li></ul>\n2.0 (2012-01-19)\n<ul><li>New comparison/synchronisation routine:\n<ul><li>Read and write operations are grouped and are executed an begin and end of a synchronisation pass</li><li>Comparison itself is done in-memory</li></ul></li><li>Improvement of vCard processing</li><li>Improvement of file handling (images and external resources)</li><li>Assignment of individual preferences to addressbooks</li><li>Introduction of a contact detail filter system</li><li>Introduction of additional export options to solve compatibility issues</li><li>Option to define the default synchronisation action at application start, at application end and during manual execution</li><li>Automatic migration of old preferences</li><li>Tool to clean the photo directory inside a user's profile</li><li>Introduction of a toolbar button</li><li>Introduction of a ThunderSync icon</li></ul>\n2.1 (2012-03-08)\n<ul><li>New maximum allowed Thunderbird version: 10.*</li><li>Type for ModDB reference fixed</li><li>Improvement of vCard phone number interpretation</li><li>Mailing lists are ignored during processing</li></ul>\n2.2 alpha (2013-06-04)\n<ul><li>fixed null pointer problem as proposed by gonter (GitHub)</li><li>integration of new messenger information like _GoogleTalk and export as corresponding X-... properties</li><li>handling of masked semi-colons corrected</li><li>correction: property names are now case-insensitive</li><li>under construction: debugging of mailing lists</li></ul>\n2.2 beta (2013-06-27)\n<ul><li>reworked sync algorithm</li></ul>\n2.2.1 beta (2013-11-04)\n<ul><li>fixed bug concerning non-existent files</li></ul>\n2.3 (2015-04-18)\n<ul><li>fixed bug concerning UTF-8 + quoted-printable/base64</li><li>added Spanish translation (thanks to Laura Arjona)</li></ul>\n2.4 (2015-10-06)\n<ul><li>fixed forced import/export preferences</li></ul>\n2.5 (2015-10-30)\n<ul><li>modified filter behaviour: properties are now also ignored even when the global action is set to export or import</li><li>modified revision handling: REV is now only updated when changes are made</li></ul>\n2.6 (2015-11-10)\n<ul><li>fixed behaviour if a vCard dir does not exist (i.e. skip addressbook)</li></ul>",
+        "de": "Copyright (C) 2012-2015 Frank Abelbeck &lt;frank.abelbeck@googlemail.com&gt;\n\nThunderSync is free software; you can redistribute it and/or\nmodify it under the terms of the GNU General Public License\nas published by the Free Software Foundation; either version 2\nof the License, or (at your option) any later version.\n\nThunderSync is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\n<strong>Autor:</strong> Frank Abelbeck\n<strong>Unterstützer:</strong> Lucas Treffenstädt (Tests, Quelltextbeiträge \"Auto-Start\"), Yair Lanz (Rückmeldung bezüglich Zeichensätzen), David von Oheimb (Rückmeldungen, Quelltextbeiträge), Laura Arjona (spanische Übersetzung)\n\n<strong>Beschreibung:</strong> Erlaubt es, Thunderbirds Adressbuch mit externen Verzeichnissen oder Dateien zu synchronisieren. Momentan wird als Exportformat nur das vCard-Format in Version 2.1 unterstützt.\n\nDie meisten Informationen aus Thunderbirds Adressbuch können erfolgreich ins vCard-Format übertragen werden. Nicht-übersetzbare Anteile werden wie folgt kodiert:\n\n<code>X-MOZILLA-PROPERTY:PropertyName;PropertyValue.</code>\n\nJa, diese Erweiterung verarbeitet Ihre Kontaktbilder! Das war auch der Hauptgrund für die Entwicklung dieser Erweiterung! Ich wollte nette Bilder der Leute, die mich anrufen. Die Bildgröße ist nicht beschränkt, aber mit Blick auf den Synchronisationsprozess empfiehlt es sich, kleinere Dateigrößen (1-10 kiB) zu verwenden.\n\n<strong>Haftungsausschluss:</strong> Ich habe diese Erweiterung erstellt, um ein Problem bei der Synchronisierung mit meinem Mobiltelefon zu lösen. ThunderSync wurde in der Hoffnung veröffentlicht, dass es anderen Leuten mit ähnlichen Problemen weiterhilft. Diese Erweiterung greift auf das Thunderbird-Adressbuch zu, also seien Sie vorsichtig! Ich strebe nach Perfektion, aber ich kann das Verhalten der Erweiterung aufgrund der überwältigenden Vielzahl von unterschiedlichen Systemkonfigurationen nicht vollständig verifizieren.\n\n<strong>Schnellstartanleitung, Teil 1: Nach der Installation</strong>\n\nÖffnen Sie den Einstellungsdialog der Erweiterung. Hier sehen sie auf der linken Seite eine Liste von Adressbüchern. Auf der rechten Seite sind die dem ausgewählten Adressbuch zugeordneten Einstellungen aufgeführt, unterteilt in die drei Abschnitte bzw. Karteireiter \"Allgemein\", \"Exportformat\" und \"Filter\".\n\nJedes Adressbuch kann unabhängig von den anderen in seinen Einstellungen verändert werden.\n\nUm ein Adressbuch abgleichen zu können, muss ihm eine externe Ressource zugeordnet werden. Wählen Sie hierzu auf der linken Seite ein Adressbuch aus. Anschließend können Sie auf der rechten Seite im Abschnitt \"Allgemein\" ein Exportformat wählen und dann mittels der Schaltfläche \"Wählen...\" eine Datei oder ein Verzeichnis auswählen.\n\nDie anderen Einstellungen sollten selbsterklärend sein.\n\nIm Abschnitt \"Filter\" lassen sie für jede Eigenschaft eines Kontaktes (Name, E-Mail-Adresse, Telefonnummer) individuelle Aktionen beim Abgleich einstellen. Wählen Sie hierfür zunächst eine oder mehrere Eigenschaften aus. Durch einen Rechtsklick auf die Auswahl gelangen Sie in ein Menü, in welchem Sie die festzulegende Aktion auswählen können. Diese wird dann auf alle ausgewählten Eigenschaften angewendet.\n\nFalls der Export oder Import zu Zeichensatzproblemen führt, kann im Abschnitt \"Exportformat\" ein bestimmter Zeichensatz erzwungen werden. Dieses kann nötig sein, wenn mit Exporten anderer Programme gearbeitet werden soll, welche sich nicht unbedingt an die vCard-Spezifikationen halten.\n\nSeit Version 2.0 ist zudem eine Hilfsroutine verfügbar, die nicht mehr länger benötigte Kontaktfotos im Photos-Verzeichnis des Benutzerprofils löscht. Sie ist aufrufbar über die entsprechende Schaltfläche am unteren Ende des Einstellungsdialogs.\n\nEbenfalls neu ins Version 2.0 ist eine Schaltfläche für die Symbolleisten, ein \"Toolbar button\", um den Aufruf von ThunderSync zu vereinfachen. Um diese Schaltfläche zu installieren, rufen Sie über Thunderbirds Menü den Anpassungsdialog auf:\n<blockquote>Ansicht -&gt; Symbolleisten -&gt; Anpassen...</blockquote>\nSuchen Sie in der Liste das ThunderSync-Symbol und ziehen Sie es in eine der nun weiß dargestellten Flächen (Toolbars).\n\n<strong>Schnellstartanleitung, Teil 2: Anwendung</strong>\n\nWenn wenigstens ein Adressbuch einer externen Ressource zugeordnet ist, kann ein Datenabgleich durchgeführt werden. Öffnen Sie hierzu das Adressbuch und wählen Sie im Menü den Eintrag\n<blockquote>Extras -&gt; Adressbuch abgleichen...</blockquote>\nDaraufhin wird ThunderSync einen Vergleich durchführen und in einem neuen Dialogfenster die Unterschiede aufführen. Der Vergleich kann durch Aktivieren der \"Vergleichen\"-Schaltfläche wiederholt werden. Sollten keine Unterschiede vorliegen, wird dieses per Meldungsfenster mitgeteilt. \n\nAnsonsten wird eine Tabelle die Unterschiede aufzeigen, wobei die mittlere Spalte die Art des Unterschiedes darstellt:\n<ul><li><code>!=   </code>Inhalt des Kontakts auf beiden Seiten verschieden; Konflikt ungelöst</li><li><code>&lt;&gt;   </code>Inhalt des Kontakts auf beiden Seiten verschieden; Konflikt gelöst</li><li><code>&lt;&lt;   </code>Externen Kontakt ins Adressbuch kopieren</li><li><code>&gt;&gt;   </code>Adressbucheintrag in externe Ressource kopieren</li></ul>\nWenn auch nur ein \"!=\" vorhanden ist, kann die eigentliche Synchronisierung nicht durchgeführt werden. Es liegt ein Konflikt zwischen lokalen und externen Daten vor, der erst noch gelöst werden muss. Betrachten Sie dazu die Eigenschaften des betreffenden Kontakts. Durch Doppelklick auf die Eingeschaft kann zwischen verschiedenen Synchronisationsaktionen geschaltet werden.\n\nErst, wenn kein \"!=\" mehr vorliegt, wird die \"Synchronisieren\"-Schaltfläche zugänglich, mit der dann die in der Tabelle aufgezeigten Aktionen ausgeführt werden.\n\n<strong>Versionshistorie</strong>\n\n1.0 (2010-12-17)\n<ul><li>Erstveröffentlichung</li></ul>\n1.1 (2011-01-12)\n<ul><li>Speicherung der Voreinstellungen mit Namen gemäß der Mozilla-Richtlinien</li><li>Unterstützung von verschiedenen Zeichensätzen (Dank an Yair Lanz für Hinweis und Rückmeldungen)</li><li>Verbesserung der vCard-Verarbeitung</li></ul>\n1.2 (2011-02-22)\n<ul><li>Möglichkeit zur automatischen Ausführung zu Programmbeginn (Dank an Lucas Treffenstädt für Quelltextbeiträge)</li><li>Geändertes Verhalten: Vergleich wird schon bei Dialogöffnung durchgeführt</li><li>Quelltextrevision: Identifizierung von Kontakten anhand von eindeutigen Kennungen (unique identifiers, UID)\n<ul><li>Jede Eigenschaft kann nun verändert werden</li><li>Verschiedene Kontakte mit dem gleichen Namen (z.B. Hans Müller) können nun verarbeitet werden, solange sie in wenigstens einer Eigenschaft verschieden sind</li></ul></li><li>Dateinamen auf Basis der UID</li></ul>\n1.2.1 (2011-03-21)\n<ul><li>Tippfehler in der Exportroutine für Foto-URLs behoben</li></ul>\n2.0 (2012-01-19)\n<ul><li>Neue Vergleichs- und Synchronisationsroutine:\n<ul><li>Lese- und Schreiboperationen externer Ressourcen sind gruppiert und werden nur zu Beginn und am Ende eines Vergleichsdurchgangs durchgeführt</li><li>Der eigentliche Vergleich wird im Speicher durchgeführt</li></ul></li><li>Verbesserung der vCard-Verarbeitung</li><li>Verbesserung der Dateibehandlung (Bilder und externe Ressourcen)</li><li>Zuordnung individueller Einstellungen zu den Adressbüchern</li><li>Einführung eines Eigenschaftsfiltersystems</li><li>Einführung von weiteren Exporteinstellungen für Kompatibilitätszwecke</li><li>Möglichkeit, die Synchronisationsaktion für Programmstart, Programmende und bei manuellem Aufruf zu definieren</li><li>Automatische Migration alter Einstellungen</li><li>Routine zur Fotoverzeichnisbereinigung</li><li>Einführung einer Symbolleistenschaltfläche</li><li>Einführung eines ThunderSync-Symbols</li></ul>\n2.1 (2012-03-08)\n<ul><li>neue maximal zulässige Thunderbird-Version: 10.*</li><li>Typo bei ModDB-Angabe berichtigt</li><li>Verbesserung der Telefonnummerninterpretation bei vCards</li><li>Mailing-Listen werden bei der Bearbeitung ignoriert</li></ul>\n2.2 alpha (2013-06-04)\n<ul><li>Null-Pointer-Problem entschärft gemäß Vorschlag gonter (GitHub)</li><li>Integration neuer Messenger-Informationen wie _GoogleTalk sowie Umsetzung in X-...-Eigenschaften</li><li>Korrektur der Handhabung von maskierten Semikolons</li><li>Korrektur: Eigenschaftsnamen unabhängig von Groß-/Kleinschreibung</li><li>Baustelle: Analyse von Mailing Lists</li></ul>\n2.2 beta (2013-06-27)\n<ul><li>überarbeiteter Sync-Algorithmus</li></ul>\n2.2.1 beta (2013-11-04)\n<ul><li>Korrektur bei der Behandlung nicht-existenter Dateien</li></ul>\n2.3 (2015-04-18)\n<ul><li>Korrektur für UTF-8 in Verbindung mit quoted-printable/base64</li><li>neue Sprachdateien \"Spanisch\" (Dank an Laura Arjona)</li></ul>\n2.4 (2015-10-06)\n<ul><li>Korrektur der Voreinstellungsroutine für erzwungenen Import/Export</li></ul>\n2.5 (2015-10-30)\n<ul><li>Geändertes Filterverhalten: Eigenschaften werden nun auch ignoriert selbst wenn global das Verhalten auf Export oder Import gesetzt ist</li><li>Geänderte Handhabung der Revisionsnummer: REV wird nun nur aktualisiert, wenn Änderungen vorgenommen wurden</li></ul>\n2.6 (2015-11-10)\n<ul><li>Korrektur des Verhaltens, wenn ein vCard-Verzeichnis nicht existiert (überspringt Adressbuch in diesem Fall)</li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thundersync/edit",
+    "guid": "thundersync@frank.abelbeck",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://abelbeck.wordpress.com/",
+        "de": "http://abelbeck.wordpress.com/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/265/265058-64.png?modified=1447159190",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/265/265058-32.png?modified=1447159190",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/265/265058-64.png?modified=1447159190"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2015-11-10T12:39:29Z",
+    "name": {
+        "en-US": "ThunderSync",
+        "de": "ThunderSync"
+    },
+    "previews": [
+        {
+            "id": 66993,
+            "caption": {
+                "en-US": "V 2.0: Preferences dialog, section \"General\".",
+                "de": "V 2.0: Einstellungsdialog, Abschnitt \"Allgemein\"."
+            },
+            "image_size": [
+                700,
+                433
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/66/66993.png?modified=1530208886",
+            "thumbnail_size": [
+                320,
+                198
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/66/66993.png?modified=1530208886"
+        },
+        {
+            "id": 66994,
+            "caption": {
+                "en-US": "V 2.0: Preferences dialog, section \"Export Format\".",
+                "de": "V 2.0: Einstellungsdialog, Abschnitt \"Exportformat\"."
+            },
+            "image_size": [
+                700,
+                433
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/66/66994.png?modified=1530208887",
+            "thumbnail_size": [
+                320,
+                198
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/66/66994.png?modified=1530208887"
+        },
+        {
+            "id": 66995,
+            "caption": {
+                "en-US": "V 2.0: Preferences dialog, section \"Filter\".",
+                "de": "V 2.0: Einstellungsdialog, Abschnitt \"Filter\"."
+            },
+            "image_size": [
+                700,
+                433
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/66/66995.png?modified=1530208887",
+            "thumbnail_size": [
+                320,
+                198
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/66/66995.png?modified=1530208887"
+        },
+        {
+            "id": 66996,
+            "caption": {
+                "en-US": "ThunderSync Version 2.0 Icon XL.",
+                "de": "Symbol von ThunderSync Version 2.0"
+            },
+            "image_size": [
+                256,
+                256
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/66/66996.png?modified=1530208888",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/66/66996.png?modified=1530208888"
+        },
+        {
+            "id": 51871,
+            "caption": {
+                "en-US": "V1.x: Main synchronisation dialog (anonymised data). You see two differing contacts (property: popularity index). Second conflict is resolved by using local data.",
+                "de": "V1.x: Main synchronisation dialog (anonymised data). You see two differing contacts (property: popularity index). Second conflict is resolved by using local data."
+            },
+            "image_size": [
+                670,
+                416
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51871.png?modified=1530208888",
+            "thumbnail_size": [
+                320,
+                199
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51871.png?modified=1530208888"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.45549,
+        "count": 18,
+        "average": 3.6111,
+        "text_count": 18
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thundersync/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/265058",
+    "slug": "thundersync",
+    "status": "public",
+    "summary": {
+        "en-US": "Allows to synchronise Thunderbird's addressbook with external directories/files. Every contact is exported/compared with an external file. Right now, only vCard version 2.1 is supported as export file format.",
+        "de": "Erlaubt den Abgleich von Thunderbirds Adressbuch mit externen Verzeichnissen/Dateien. Jeder Eintrag wird als externe Datei exportiert/verglichen. Momentan wird nur vCard Version 2.1 als Exportdateiformat unterstützt."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "addressbook",
+        "adressbuch",
+        "contacts",
+        "kontakte",
+        "synchronisation",
+        "vcard"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thundersync/",
+    "weekly_downloads": 66
+}

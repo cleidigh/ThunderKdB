@@ -1,0 +1,283 @@
+{
+    "id": 319523,
+    "authors": [
+        {
+            "id": 5625933,
+            "name": "ChrisLE",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ChrisLE/",
+            "username": "ChrisLE",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 7,
+    "categories": {
+        "firefox": [
+            "other"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1393952,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0"
+            },
+            "seamonkey": {
+                "max": "2.15.*",
+                "min": "2.1"
+            },
+            "thunderbird": {
+                "max": "19.0a1",
+                "min": "5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/multiple-addon-deactivator/versions/1393952",
+        "files": [
+            {
+                "id": 176056,
+                "created": "2012-11-05T12:09:38Z",
+                "hash": "sha256:253f1e6efbfc3b02d33c9f0e8995b593d81234d45ea73a4146949fdcc83b8e11",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 22579,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/176056/multiple_addon_deactivator-1.7-sm+tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "New state for incompatible and restartless addons.\nNew icon for restartless addons.\nNew options to check activated and deactivated restartless addons.\nHighest supported version for firefox and thunderbird is 19.0a1.\nHighest supported version for seamonkey is 2.15.*.",
+            "de": "Neuer Status für inkompatible Addons und Addons ohne Neustart.\nNeues Icon für Addons ohne Neustart.\nNeue Optionen zum auswählen von aktivierten und deaktivierten Addons ohne Neustart.\nHöchste unterstützte Version für Firefox und Thunderbird ist 19.0a1.\nHöchste unterstützte Version für SeaMonkey ist 2.15.*."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/multiple-addon-deactivator/versions/1.7.1-signed.1-signed",
+        "version": "1.7.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "ATTENTION: At this point, my addon will be not compatible with FF 22 because of a changing in an interface. Im working on it and will upload a new version as soon as I can. Sorry.\n\nWith this add-on, you can (de)activate one, many or all add-ons, at the same time. Very useful when you want to test addons or functions to see whether one or more addons make errors with webpages or with other addons.\n\nNow you dont have to click on each deactivate link. You can check each add-on, you can check ALL add-ons or you can say, I will deactivate all + restart firefox or I will activate all + restart firefox. Thats very useful and easy.\n\nIt shows activated, deactivated and incompatible add-ons (who cant activated when they are incompatible with other add-ons or with the firefox version.)\n\nYou can set one option that will M.A.D. activated when you say deactivate all add-ons. Thats great cause you can work with M.A.D. when you have deactivate all add-ons.\n\nIt works from Firefox 4.0/4.0.1. The plan to support Firefox 3.6 (Gecko version &lt; 2.0) is died. It will take to many times to implement it.\nI plan support for Thunderbird*, Songbird, Sunbird, Seamonkey* and Mobile.\n\nTested under Windows 7 (But XP should be ok), Linux (Ubuntu) and Mac OS X. When you test it under a Mobile version, please let me know it, to update the information..\n\nAvailable in german, english and now in swedish. (Tested with Quick Locale Switcher)\n\nComming features:\n - Addon groups\n - History\n - More states for incompatible and restartless addons (Have to check this whether \n   its possible or not)\n\nPlease create feature requests and bugs here:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e24a2b96ecbb74fc67ceb4d1d61f7d6cac6cd397a0b58a7ce1d80c4083bdee9b/https%3A//github.com/Chris2011/Multiple-Addon-Deactivator/issues\">https://github.com/Chris2011/Multiple-Addon-Deactivator/issues</a>\n(helpful for me, but not necessarily)",
+        "de": "ACHTUNG: Ab diesem Zeitpunkt ist mein Addon mit Firefox 22, auf Grund einer Änderung eines Interfaces, leider nicht mehr kompatibel. Ich arbeite daran und werde sobald ich kann eine neue Version veröffentlichen. Tut mir leid.\n\nMit diesem Add-on kann man 1, mehrere oder alle Add-ons zur selben Zeit aktivieren oder deaktivieren. Sehr hilfreich wenn man z.B. Add-ons oder Webseiten testen möchte, wo Fehlverhalten auftreten kann und man nun nicht genau weiß, liegt es an einem Add-on oder einfach nur eine Einstellung im Firefox.\n\nMit dem Add-on muss man nun nicht unbedingt jedes Add-on einzeln anklicken. Man kann es noch immer tun, aber selbst dies ist wesentlich einfacher zu Handhaben als mit dem reinen Add-on-manager. Das Beste aber ist, man kann ALLE addons deaktivieren oder aktivieren und danach den Browser sofort neustarten um die Änderungen zu sehen. Sehr einfach und hilfreich.\n\nEs zeigt einem aktivierte, deaktivierte und Add-ons die inkompatibel sind (solche die nicht aktiviert werden können, da sie mit anderen Add-ons inkompatibel sind oder mit der jetzigen Firefox Version.)\n\nEs gibt auch eine Option für M.A.D. sollte diese aktiviert sein wird beim Klick auf Alle deaktivieren berücksichtigt, das M.A.D. nicht mit deaktiviert wird. Somit kann man das Add-on weiterhin verwenden.\n\nEs funktioniert ab Firefox 4.0/4.0.1.\nPläne für die Zukunft sind aber Implementationen für Thunderbird*, Songbird, Sunbird, Seamonkey* und den mobilen Firefox.\n\nGetestet unter Windows 7 (Sollte aber auch unter XP ohne Probleme laufen), Linux (Ubuntu) und Mac OS X. Solltet ihr es auch mal auf einem Smartphone testen, dann lasst es mich bitte wissen, damit ich diese Plattformen hier eintragen kann.\n\nEs ist in Deutsch, Englisch und nun auch in Schwedisch verfügbar. (Am besten mal mit Quick Locale Switcher testen).\n\nGeplante Funktionen:\n - Gruppierung für Addons\n - Aktivierungs/Deaktivierungshistory\n - Mehr Statusoptionen für inkompatible Addons und Addons ohne Neustart. (Muss \n   erst noch geprüft werden ob dies möglich ist oder nicht)\n\nFeature requests und Bugs bitte hier eintragen:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e24a2b96ecbb74fc67ceb4d1d61f7d6cac6cd397a0b58a7ce1d80c4083bdee9b/https%3A//github.com/Chris2011/Multiple-Addon-Deactivator/issues\">https://github.com/Chris2011/Multiple-Addon-Deactivator/issues</a>\n(Nicht zwingend, macht die Sache aber einfacher)"
+    },
+    "developer_comments": {
+        "en-US": "Add Songbird, Sunbird and Fennec support. Priority 3\n\nKnown issues:\nIn Ubuntu the M.A.D. - window isn´t a modal - window, that means that I can navigate in the mainwindow when M.A.D. is open. Priority 2\n\nAll activated/deactivated addons will be checked when I click the option \"select only activated/deactivated\" AND when I mouse over the list. Priority 2\n\nMin-/max-width/height doesn´t work, but thats a bug of the window and not of my code. There is an entry in mozillas bugtracker. So its not possible to solve it for me.\n\nI plan the support for Fennec therefore it comes a new revised design for touch.",
+        "de": "Support für Songbird, Sunbird and Fennec einbauen. Priorität 3\n\nBekannte Fehler:\nIn Ubuntu ist das Fenster von M.A.D. kein Modalfenster, d.h. man kann im Hauptfenster weiter navigieren, während es offen ist. Priorität 2\n\nAlle aktivierten/deaktivierten addons werden erst angehakt wenn ich die Option \"Aktivierte/Deaktivierte auswählen\" auswähle UND dann über die Liste mit der Maus fahre. Priorität 2\n\nMin-/max-width/height funktioniert nicht, jedoch ist dies ein Bug vom Fenster und keines was durch meinen Code hervorgerufen wurde. Es gibt bereits einen Eintrag im Bugtracker bei Mozilla. Es ist mir also nicht möglich den Fehler zu beheben.\n\nDa ich den support for Fennec plane, wirds ein überarbeitetes Design geben, damit es Touchfähig wird."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/multiple-addon-deactivator/edit",
+    "guid": "ChrisLE@mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://addons.mozilla.org/de/firefox/user/5625933/",
+        "de": "https://addons.mozilla.org/de/firefox/user/5625933/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/319/319523-64.png?modified=1371570901",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/319/319523-32.png?modified=1371570901",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/319/319523-64.png?modified=1371570901"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2012-11-05T13:47:07Z",
+    "name": {
+        "en-US": "Multiple Addon Deactivator",
+        "de": "Multiple Addon Deactivator"
+    },
+    "previews": [
+        {
+            "id": 81730,
+            "caption": {
+                "en-US": "The UI of M.A.D.",
+                "de": "Die Benutzeroberfläche von M.A.D."
+            },
+            "image_size": [
+                510,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81730.png?modified=1530209004",
+            "thumbnail_size": [
+                194,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81730.png?modified=1530209004"
+        },
+        {
+            "id": 58773,
+            "caption": {
+                "en-US": "A customize-toolbaricon to drop your icon where ever you want.",
+                "de": "Ein Toolbaricon, damit man das Icon dort hin ziehen kann, wo man es möchte."
+            },
+            "image_size": [
+                653,
+                441
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58773.png?modified=1530209005",
+            "thumbnail_size": [
+                296,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58773.png?modified=1530209005"
+        },
+        {
+            "id": 81732,
+            "caption": {
+                "en-US": "A legend and options for M.A.D.",
+                "de": "Legende und Optionen für M.A.D."
+            },
+            "image_size": [
+                377,
+                280
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81732.png?modified=1530209005",
+            "thumbnail_size": [
+                269,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81732.png?modified=1530209005"
+        },
+        {
+            "id": 81734,
+            "caption": {
+                "en-US": "Only 3 addons were checked and after a restart will these addons de-/activated.",
+                "de": "Nur 3 Add-ons wurden angehakt und nach einem Neustart werden diese de-/aktiviert."
+            },
+            "image_size": [
+                700,
+                507
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81734.png?modified=1530209006",
+            "thumbnail_size": [
+                276,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81734.png?modified=1530209006"
+        },
+        {
+            "id": 81736,
+            "caption": {
+                "en-US": "All addons were deactivated. You should restart firefox to apply the changes.",
+                "de": "Alle Add-ons wurden deaktiviert, Sie sollten Firefox neustarten damit die Änderungen wirksam werden."
+            },
+            "image_size": [
+                510,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81736.png?modified=1530209006",
+            "thumbnail_size": [
+                194,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81736.png?modified=1530209006"
+        },
+        {
+            "id": 81742,
+            "caption": {
+                "en-US": "You can check all addons and after this you can choose the option: \"de-/activate checked add-ons.\".",
+                "de": "Sie können alle Addons auswählen und die Option: \"Markierte Add-ons de-/aktivieren.\" wählen."
+            },
+            "image_size": [
+                510,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81742.png?modified=1530209007",
+            "thumbnail_size": [
+                194,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81742.png?modified=1530209007"
+        },
+        {
+            "id": 81738,
+            "caption": {
+                "en-US": "Now you can select all de-/activated add-ons with one checkbox.",
+                "de": "Sie können nun alle de-/aktivierten Addons auswählen."
+            },
+            "image_size": [
+                510,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81738.png?modified=1530209007",
+            "thumbnail_size": [
+                194,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81738.png?modified=1530209007"
+        },
+        {
+            "id": 81740,
+            "caption": {
+                "en-US": "Now you can select all de-/activated restartless add-ons with one checkbox.",
+                "de": "Sie können nun alle de-/aktiverten Addons auswählen, die keinen Neustart erfordern."
+            },
+            "image_size": [
+                510,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81740.png?modified=1530209008",
+            "thumbnail_size": [
+                194,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81740.png?modified=1530209008"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.63358,
+        "count": 19,
+        "average": 3.7895,
+        "text_count": 19
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/multiple-addon-deactivator/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/319523",
+    "slug": "multiple-addon-deactivator",
+    "status": "public",
+    "summary": {
+        "en-US": "Multiple Addon Deactivator (M.A.D) is an addon that can (de)activate one, many or each addon at the same time",
+        "de": "Multiple Addon Deactivator (M.A.D) ist ein Addon welches 1, mehrere oder alle Addons zur selben Zeit (de)aktivieren kann."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/multiple-addon-deactivator/",
+    "weekly_downloads": 21
+}

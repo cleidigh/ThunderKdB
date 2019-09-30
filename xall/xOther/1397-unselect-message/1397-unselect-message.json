@@ -1,0 +1,101 @@
+{
+    "id": 1397,
+    "authors": [
+        {
+            "id": 7156,
+            "name": "Michael Buschbeck",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/michael-buschbeck/",
+            "username": "michael-buschbeck",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 10119,
+        "compatibility": {
+            "thunderbird": {
+                "max": "1.5.0.*",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unselect-message/versions/10119",
+        "files": [
+            {
+                "id": 6202,
+                "created": "2007-03-05T13:14:16Z",
+                "hash": "sha256:da9d929b0ef2ca45943a37507a4ed606690b6236fb410fcd51640dcaafa4b337",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 11264,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/6202/unselect_message-1.3-mz+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "[Version 1.3, uploaded 2006-01-03]\n\n* Fix for all sorts of incompatibilities with other extensions; Mozilla bug 174320 is partly responsible for that (and an admittedly poor design decision on my part).  Thanks a lot to \"ecurbh\" for contacting me and providing me with the necessary information to track this one down.\n\n* Added a nifty new \"Report a Bug\" wizard (available from the \"Options\" dialog) to encourage users to write bug reports when something's not working, and to help them doing it in a way that's useful to me."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unselect-message/versions/1.3",
+        "version": "1.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Prevents Thunderbird from selecting the next message after you've deleted or moved the previously selected ones.  Stay in control of which message you want to have selected and displayed in the preview pane; that piece of spam you're deleting really shouldn't have a say in that.\n\nIn addition, you can click into the empty space below the last message in the thread list to unselect the currently selected message and to clear the preview pane.\n\nThis extension works best with the \"Remember the last selected message\" option unchecked. If you have it checked, the last message Thunderbird remembers will indeed be the one which was selected before you unselected all of them."
+    },
+    "developer_comments": {
+        "en-US": "Please send bug reports and feature requests to my email address, michael@buschbeck.net.\n\nIf you have a problem with Unselect Message, please LEAVE YOUR EMAIL ADDRESS in the contact form to give me an opportunity to contact you.  (Don't worry, your email address won't be displayed anywhere for spammers to grab.)\n\nI'd really like this extension to work for everyone and with any set of other extensions.  I've caught the obvious bugs already, so if you're experiencing problems, they're likely in the combination with some other extension which I'm not using myself.\n\nI'm using Thunderbird 1.0.7 on Windows, and I've got the following extensions installed:\n- Enigmail 0.93.0\n- No New Window on Double Click 0.2.3\n- Quick File 0.15\n- Sync On Arrival 1.2\n- Unselect Message (obviously)\n\nIf you have any other extensions installed and Unselect Message doesn't work for you or breaks something else in Thunderbird for you, please mention them.  You can also send me an email to michael@buschbeck.net.\n\nBUGS I CANNOT REPRODUCE CANNOT BE FIXED.  Sorry. :-/  I simply can't do anything about bugs that I can't trace back to their root cause, so I need your information to make my system behave more like yours (including the buggy behavior).\n\nSubversion repository:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9eb94c31c5b4f15ab50fa45a7fded96bb767d1cacc5bf8c7255c3efc19a1a939/http%3A//home.buschbeck.net/viewcvs/Thunderbird-UnselectMessage/\">http://home.buschbeck.net/viewcvs/Thunderbird-UnselectMessage/</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unselect-message/edit",
+    "guid": "{82c6c78e-80f7-427c-8124-d54ce888dd5f}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://forums.mozillazine.org/viewtopic.php?t=337609"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2007-03-05T13:14:16Z",
+    "name": {
+        "en-US": "Unselect Message"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.57824,
+        "count": 29,
+        "average": 3.6786,
+        "text_count": 29
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unselect-message/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/1397",
+    "slug": "unselect-message",
+    "status": "public",
+    "summary": {
+        "en-US": "Prevents Thunderbird from selecting the next message after you've deleted or moved the previously selected ones.  Stay in control of which message you want to have selected and displayed in the preview pane; that piece of spam you're deleting..."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unselect-message/",
+    "weekly_downloads": 22
+}

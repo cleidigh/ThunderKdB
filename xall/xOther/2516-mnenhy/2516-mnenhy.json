@@ -1,0 +1,178 @@
+{
+    "id": 2516,
+    "authors": [
+        {
+            "id": 15722,
+            "name": "Karsten \"Mnyromyr\" Düsterloh",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/karsten-mnyromyr-d%C3%BCsterloh/",
+            "username": "karsten-mnyromyr-düsterloh",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 118,
+    "categories": {
+        "firefox": [
+            "feeds-news-blogging",
+            "social-communication"
+        ],
+        "seamonkey": [
+            "rss-news-and-blogging",
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1524828,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "3.0"
+            },
+            "seamonkey": {
+                "max": "2.26a1",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "29.0a1",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mnenhy/versions/1524828",
+        "files": [
+            {
+                "id": 245974,
+                "created": "2014-02-25T15:45:09Z",
+                "hash": "sha256:5a8b983b34d1f39dd175075de27fe71ffd68fd3a7fa541dc418d873f5c31058a",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 206662,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/245974/mnenhy-0.8.6-fx+tb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "<strong>Mnenhy v0.8.6 (2014-02-25)</strong>\n  <ul>    <li>Fixed Mnenhy bugs:\n    <ul>      <li>Fix headers with Unicode characters above \\uFFFF.</li>      <li>Adhere to nsISupportArray removal in MID search.</li>      <li>Several minor fixes for usage in TB 24.</li>      <li>Style fix for Enigmail status bar when using Mnenhy.</li>    </ul></li>  </ul>",
+            "de": "<strong>Mnenhy v0.8.6 (2014-02-25)</strong>\n  <ul>    <li>Behobene Mnenhy-Fehler:\n    <ul>      <li>Fix für Headerzeilen mit Unicodezeichen oberhalb von \\uFFFF.</li>      <li>Anpassung der MID-Suche in SM/TB an die nsISupportArray-Änderungen.</li>      <li>Diverse Anpassung an TB 24.</li>      <li>Styles für die Enigmail-Statuszeile bei aktiviertem Mnenhy.</li>    </ul></li>  </ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mnenhy/versions/0.8.6.1-signed.1-let-fixed.1-signed",
+        "version": "0.8.6.1-signed.1-let-fixed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Features\n<ul><li>Custom Headers\n      <i>[SeaMonkey, Mozilla and Thunderbird]</i>\n      Mnenhy allows to alter the set of header lines shown of an e-mail or usenet posting and\n      their respective method of display. Yeah, that makes the references clickable again!\n      <b>:-)</b>\n      Multiple lists can be defined in the Mnenhy preferences panel and then be switched\n      via the View → Headers menu.\n      This module is also responsible for showing X-Faces.</li>\n  <li>Folder Storage\n      <i>[SeaMonkey, Mozilla and Thunderbird]</i>\n      Mnenhy provides a mechanism to store the thread pane column layout and preferences dependent\n      upon the currently selected folder. For example, you can hide the junk state in the newsgroup\n      de.test, but show it in your Inbox or activate HTML for RSS feeds only.</li>\n  <li>Text Codecs\n      <i>[SeaMonkey, Mozilla, Thunderbird and Firefox]</i>\n      Mnenhy adds two new context menu items for encoding/decoding text to the mail editor,\n      the mail display, the browser, the source view and Chatzilla. Available codecs are currently\n        ROT-13, Base64, UUEncode/UUDecode, encodeURI/decodeURI and similar, Unicode/number\n        representation, Kenny-Speak, 1337-Speak, Morse, Reverse, toUpperCase,\n        toLowerCase and the evaluation of selections.</li>\n  <li>Message-ID Search\n      <i>[Mnenhy 0.8: SeaMonkey 2.x and Thunderbird 3.x]</i>\n      Since both SeaMonkey 2.x and Thunderbird 3.x support searching for message-IDs,\n      Mnenhy adds some functionality to get on par with the late \"Message ID Finder\"\n      extension.</li>\n  <li>MailNews Sidebar\n      <i>[SeaMonkey and Mozilla only]</i>\n      Mnenhy brings back the sidebar to MailNews! Of course, the panel preferences are independent\n      from those of the browser sidebar.</li>\n  <li>Junk Filter Tools\n      <i>[SeaMonkey, Mozilla and Thunderbird]</i><ul><li>Junk Filter Statistics (Tools → Junk Filter Statistics)\n            Mnenhy can compute a Junk Filter Statistics based upon your training.dat.\n            This may freeze Mozilla for some time, especially on slow machines, but you can alter\n            the threshold of ignorable words in the Mnenhy preferences panel.</li>\n        <li>Unknown Junk State Icon\n            Mnenhy resurrects the 'unknown' state icon for junk filtered mail.</li>\n      </ul></li>\n  <li>Chrome Manager\n      <i>[Mnenhy below v0.8: Mozilla, SeaMonkey below v2, Thunderbird below v1.5 and Firefox below v1.5]</i>\n      Mnenhy allows to manipulate the location and the activation and jar state of registered\n      chrome packages: packages can be moved between profile and application directory, packages\n      can be temporarily disabled or removed completely, jar files can be extracted to local\n      directories and used there. This makes it very easy to test new hacks and modifications\n      or new addons that have no uninstaller.<i>This feature is nothing for the faint-hearted: you may destroy your Mozilla\n           installation if you don't know what you're doing!\n           Please do read the documentation!</i></li>\n  <li>Registry Viewer\n      <i>[Mnenhy below v0.8: Mozilla, SeaMonkey below v2, Thunderbird below v1.5 and Firefox below v1.5]</i>\n      Mozilla and its derivates use a special database format inherited from older Netscape\n      versions, e.g. for their version registry mozver.dat or the profile registry\n      registry.dat. The Registry Viewer provides a nice, handy tree view of the contents\n      of these files.</li>\n</ul>",
+        "de": "Features\n<ul><li>Selbstdefinierte Kopfzeilen\n      <i>[SeaMonkey, Mozilla und Thunderbird]</i>\n      Mnenhy erlaubt eine alternative Auswahl der bei E-Mail und Usenet-Postings angezeigten\n      Kopfzeilen und ihrer Ausgabemethoden. Ja, die klickbaren Referenzen sind zurück!\n      <b>:-)</b>\n      Verschiedene Listen können im Mnenhy-Dialog in den Einstellungen definiert\n      und per Ansicht → Kopfzeilen aktiviert werden.\n      Ebenfalls Teil dieses Moduls ist die X-Face-Anzeige.</li>\n  <li>Ordnerabhängiger Speicher\n      <i>[SeaMonkey, Mozilla und Thunderbird]</i>\n      Mnenhy erlaubt das ordnerabhängige Speichern der Spalteneinstellungen der\n      Nachrichtenübersicht und anderer Einstellungen. So kann beispielsweise der Junk-Status\n      in der Newsgruppe de.test angezeigt, im Posteingang aber ausgeblendet werden.\n      Oder HTML allein für die Anzeige von RSS-Feeds benutzt werden.\n      Alternativ kann das Speichern auch nur kontoabhängig erfolgen.</li>\n  <li>Text-Kodierung und -Dekodierung\n      <i>[SeaMonkey, Mozilla, Thunderbird und Firefox]</i>\n      Mnenhy stellt im Nachrichten-Editor, in der Nachrichten-Ansicht, im Browser, im Quelltext und in Chatzilla\n      zwei neue Kentextmenüeinträge für die Kodierung/Dekodierung von Text zur\n      Verfügung. Zur Zeit sind folgende Codecs implementiert:\n        ROT-13, Base64, UUEncode/UUDecode, encodeURI/decodeURI und ähnliche,\n        Unicode/Zahlenrepräsentation, Kenny, 1337, Morse, Rückwärts,\n        Großschreibung, Kleinschreibung und das Berechnen markierter\n        Ausdrücke.</li>\n  <li>Message-ID-Suche\n      <i>[Mnenhy 0.8: SeaMonkey 2.x und Thunderbird 3.x]</i>\n      Sowohl SeaMonkey 2.x als auch Thunderbird 3.x erlauben mittlerweile das\n      Suchen nach Message-IDs. Mnenhy fügt eine Reihe von Funktionen hinzu,\n      die durch den Wegfall des \"Message-ID Finder\" gefehlt haben.</li>\n  <li>MailNews-Sidebar\n      <i>[nur in SeaMonkey und Mozilla]</i>\n      Mnenhy bringt die Sidebar zurück nach MailNews! Die Panel-Einstellungen sind\n      natürlich von denen des Browsers unabhängig.</li>\n  <li>Junk-Filter-Tools\n      <i>[SeaMonkey, Mozilla und Thunderbird]</i><ul><li>Junk-Filter-Statistik (Tools → Junk-Filter-Statistik)\n            Mnenhy berechnet auf Grundlage der training.dat eine Junk-Filter-Statistik.\n            Da dies, insbesonders auf langsamen Rechnern, Mozilla für einige Zeit einfrieren\n            kann, kann im Mnenhy-Einstellungsdialog ein höherer Worthäufigkeitsschwellwert\n            eingestellt werden.</li>\n        <li>'Unbekannt'-Junk-Status-Icon\n            Mnenhy stellt die Sichtbarkeit des 'Unbekannt'-Junk-Status wieder her.</li>\n      </ul></li>\n  <li>Chrome-Manager\n      <i>[Mnenhy vor v0.8: Mozilla, SeaMonkey vor v2, Thunderbird vor v1.5 und Firefox vor v1.5]</i>\n      Mit Mnenhy können Installationsort, Aktivierungszustand und Archivstatus registrierter\n      Chrome-Pakete manipuliert werden: Pakete können zwischen Profil- und Anwendungsverzeichnis\n      verschoben, temporär deaktiviert oder gar komplett deinstalliert,\n      Jar-Archive können in lokale Verzeichnisse entpackt und von dort genutzt werden.\n      Dies macht das Austesten neuer Addons ohne eigenen Deinstallierer oder das Ausprobieren\n      neuer Hacks und Modifikationen sehr einfach.<i>Dieses Feature ist nichts für Zaghafte: die Mozilla-Installation kann irreparabel\n           beschädigt werden, wenn man nicht genau weiß, was man da macht!\n           Bitte unbedingt die Dokumentation lesen!</i></li>\n  <li>Registry-Betrachter\n      <i>[Mnenhy vor v0.8: Mozilla, SeaMonkey vor v2, Thunderbird vor v1.5 und Firefox vor v1.5]</i>\n      Mozilla und seine Abkömmlinge nutzen ein spezielles Datenbankformat älterer\n      Netscape-Versionen, z.B. für ihre Versionsverwaltung mozver.dat oder ihre\n      Profilverwaltung registry.dat. Der Registry-Betrachter bietet eine praktische\n      Baumansicht dieser Daten.\n</li></ul>"
+    },
+    "developer_comments": {
+        "en-US": "For documentation and more see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/b27da5364ba614efb149d0459b032215b8073cb99cc998315ac53f380d2717ff/http%3A//mnenhy.mozdev.org/\">Mnenhy's homepage at MozDev.org</a>.\n\n<strong>Known Limitations</strong>\n<ul>    <li>Mnenhy's Custom Headers are based upon the \"display all headers\" functionality of the\n        Mozilla C++ core. Hence all headers will be shown in printing and inline attaching.\n        Please switch into \"Normal\" headers view mode temporarily.</li>    <li>You can't use the \"Normal\" headers view mode with Enigmail. Please use any custom view mode instead.</li></ul>",
+        "de": "Dokumentation und mehr gibt's auf der <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/eacab7a96168981d8595e1599ef3663da0bfcb6dc0f728af853e11b3a38009ee/http%3A//mnenhy.de/\">Mnenhy-Homepage bei MozDev.org</a>.\n\n<strong>Bekannte Einschränkungen</strong>\n<ul>    <li>Mnenhys benutzerdefinierte Kopfzeilenanzeige beruht auf der\n        \"Alle Kopfzeilen anzeigen\"-Funktionalität des Mozilla-C++-Kerns.\n        Somit werden im Druck und bei Inline-Anhängen auch alle Kopfzeilen angezeigt.\n        In diesen Fällen dann bitte kurzzeitig in den \"Normal\"-Kopfzeilenmodus wechseln.</li>    <li>Mnenhys \"Normal\"-Kopfzeilenmodus arbeitet nicht mit Enigmail zusammen. In diesem Fall\n        bitte auf einen selbstdefinierten Modus zurückgreifen.</li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mnenhy/edit",
+    "guid": "{bf591015-b599-4125-9428-3cb746ddca31}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://mnenhy.mozdev.org/",
+        "de": "http://mnenhy.de/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2516-64.png?modified=1394202026",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2516-32.png?modified=1394202026",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2516-64.png?modified=1394202026"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2014-03-07T14:14:54Z",
+    "name": {
+        "en-US": "Mnenhy",
+        "de": "Mnenhy"
+    },
+    "previews": [
+        {
+            "id": 45121,
+            "caption": {
+                "en-US": "Custom Headers with X-Face"
+            },
+            "image_size": [
+                578,
+                285
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/45/45121.png?modified=1530208163",
+            "thumbnail_size": [
+                320,
+                158
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/45/45121.png?modified=1530208163"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.61449,
+        "count": 39,
+        "average": 3.641,
+        "text_count": 39
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mnenhy/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/2516",
+    "slug": "mnenhy",
+    "status": "public",
+    "summary": {
+        "en-US": "The primary goal of the Mnenhy project is to make some enhancements to SeaMonkey MailNews/Thunderbird, since there're still plenty of comfort functions missing if compared to Netscape 4.x and other mail and news clients.",
+        "de": "Hauptziel des Mnenhy-Projektes sind Erweiterungen an Mail und Usenet in SeaMonkey/Thunderbird, da dort noch immer viele Komfort-Funktionen fehlen, die in Netscape 4.x und anderen Standard sind."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://mnenhy.mozdev.org/",
+        "de": "http://mnenhy.de/"
+    },
+    "tags": [
+        "enhancement",
+        "mailnews",
+        "mnenhy"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mnenhy/",
+    "weekly_downloads": 32
+}
