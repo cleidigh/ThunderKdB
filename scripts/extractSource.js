@@ -76,9 +76,14 @@ async function walkFolders(parentFolder) {
 			const xpiFileURL = extJson.current_version.files[0].url;
 			const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
 
-			await downloadURL(xpiFileURL, `${extDir}/xpi`);
+			// fs.ensureDirSync(`${extDir}/xpi`);
+			try {
+			await downloadURL(xpiFileURL, `${parentFolder}/${extDir}/xpi`);
 			console.debug('Downloaded filename ' + xpiFileName);
-			// fs.ensureDirSync(`${extRootDir}/xpi`);
+			} catch(e) {
+				console.debug('Download Error '+e);
+			}
+			
 
 		}
 
