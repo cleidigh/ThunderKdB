@@ -1,0 +1,176 @@
+{
+    "id": 57219,
+    "authors": [
+        {
+            "id": 9429,
+            "name": "Ryan Lee",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ryan-lee/",
+            "username": "ryan-lee",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1297,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2469015,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sortpref/versions/2469015",
+        "files": [
+            {
+                "id": 1012179,
+                "created": "2018-12-12T06:36:27Z",
+                "hash": "sha256:3ef37f610c2addf10df185d6ac1fa1a6c1aa007fb406425842d044d352ced967",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 10866,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012179/sortpref-1.1.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "Thunderbird 60 compatibility"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sortpref/versions/1.1.4",
+        "version": "1.1.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "sv-SE": "Tillhandahåller inställningar för att kontrollera i vilken ordning meddelanden initialt sorteras samt efter vilket fält.  Notera att denna data lagras i varje enskild mapp, så ändringar av kontrollvärdena påverkar endast nya mappar eller de med ett återskapat index.  Mekaniken beskrivs på <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/727a50777bcf91f4af1a13edb7dd3aa617715b5b4808290bb252551f83bcdb4e/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=86845\">https://bugzilla.mozilla.org/show_bug.cgi?id=86845</a> - detta tillägg lägger bara till en snygg yta på en annan persons kod.",
+        "fr": "Fournit des options pour contrôler dans quel ordre sont initialement triés les messages et dans quel champ. S'il vous plaît, notez que cette information se retrouve stockée dans chaque dossier, donc changer les valeurs de contrôle n'affecte que les nouveaux dossiers ou ceux ayant un index reconstruit.  Les détails sont décrits sur <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/727a50777bcf91f4af1a13edb7dd3aa617715b5b4808290bb252551f83bcdb4e/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=86845\">https://bugzilla.mozilla.org/show_bug.cgi?id=86845</a> - Cette extension ne fait qu'ajouter un peu de poudre sur le code de quelqu'un d'autre.",
+        "en-US": "Provides settings to control which order messages are sorted initially and by which field as well as whether to display in threaded mode.  Please note this data ends up stored in each folder, so changing control values only affect new folders or those with a rebuilt index.  The mechanics are described in <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/727a50777bcf91f4af1a13edb7dd3aa617715b5b4808290bb252551f83bcdb4e/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=86845\">https://bugzilla.mozilla.org/show_bug.cgi?id=86845</a> - this extension merely adds gloss to somebody else's actual code.",
+        "pt-BR": "Fornece parâmetros para controlar a ordem em que as mensagens são inicialmente organizadas, bem como os campos e o modo de encadeamento de mensagens. Uma vez que os dados são armazenados em pastas específicas, ao alterar parâmetros estes apenas afetarão as novas pastas ou as que passem pela reconstrução do cabeçalho. Os mecanismos de funcionamento estão descritos em <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/727a50777bcf91f4af1a13edb7dd3aa617715b5b4808290bb252551f83bcdb4e/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=86845\">https://bugzilla.mozilla.org/show_bug.cgi?id=86845</a>. Sortpref apenas melhora o código em uso, elaborado por terceiros.",
+        "es": "Permite configurar el orden de los mensajes y su ordenación inicial, así como el campo por el que se ordenarán, y si se muestran en modo hilo. Por favor, tenga en cuenta que esta información se almacena en cada carpeta, así que si cambia los valores de control sólo afectará a carpetas nuevas o a aquellas en las que se reconstruya el índice."
+    },
+    "developer_comments": {
+        "sv-SE": "Detta påverkar inte de delar av Thunderbird som hanterar annat än e-post.  Det finns ingen funktionsutvecklingsplan annat än att vidmakthålla kompatibiliteten allt eftersom Thunderbird fortsätter att förbättras. SortPref är inte tillgängligt för tidigare versioner av Thunderbird eftersom koduppdateringarna som tillåter det lades till under Thunderbird 3-utgivningar.",
+        "fr": "Cela n'affecte pas les parties de Thunderbird en dehors du courrier. Il n'y a pas de fonction prévue autre que le maintien de la compatibilité avec Thunderbird pendant qu'il continue de s'améliorer. SortPref n'est pas disponible pour les versions antérieures de Thunderbird car les correctifs qui lui permettent de fonctionner ont été ajoutés durant la sortie de la version 3 de Thunderbird.",
+        "en-US": "This does not affect parts of Thunderbird outside of mail.  There are no feature plans other than maintaining compatibility as Thunderbird continues to improve. SortPref is not available for earlier versions of Thunderbird as the fixes that enable it were added during Thunderbird 3 releases.",
+        "pt-BR": "Isso não afeta partes do Thunderbird fora do correio eletrônico. Pretendemos manter a compatibilidade com as frequentes atualizações do Thunderbird, no entanto, SortPref não está disponível para versões anteriores do Thunderbird e atualizações feitas antes do lançamento do Thunderbird 3.",
+        "es": "Esto no afecta a Thunderbird fuera del correo. No está prevista ninguna mejora más que mantener la compatibilidad con Thunderbird. SortPref no esta disponible para versión anteriores de Thundebird como correcciones que lo activan que fueron añadidas en versiones de Thunderbird 3."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sortpref/edit",
+    "guid": "{bfa92939-6ded-4a3f-885f-55dfcce728b8}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "sv-SE": "http://ryanlee.org/software/mozilla/thunderbird/sortpref/",
+        "en-US": "http://ryanlee.org/software/mozilla/thunderbird/sortpref/",
+        "pt-BR": "http://ryanlee.org/software/mozilla/thunderbird/sortpref/",
+        "es": "http://ryanlee.org/software/mozilla/thunderbird/sortpref/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/57/57219-64.png?modified=1475274018",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/57/57219-32.png?modified=1475274018",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/57/57219-64.png?modified=1475274018"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-12-24T09:14:16Z",
+    "name": {
+        "sv-SE": "SortPref",
+        "en-US": "SortPref",
+        "pt-BR": "SortPref",
+        "es": "SortPref"
+    },
+    "previews": [
+        {
+            "id": 72268,
+            "caption": {
+                "en-US": "Extension preferences for SortPref."
+            },
+            "image_size": [
+                380,
+                340
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72268.png?modified=1530208733",
+            "thumbnail_size": [
+                224,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72268.png?modified=1530208733"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.83223,
+        "count": 12,
+        "average": 4.1667,
+        "text_count": 12
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sortpref/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/57219",
+    "slug": "sortpref",
+    "status": "public",
+    "summary": {
+        "sv-SE": "Lägger till möjligheten att kontrollera primära standardsorteringsalternativ.",
+        "fr": "Ajoute la possibilité de contrôler les options de tri primaire par défaut.",
+        "en-US": "Adds the ability to control primary, default sorting and threading options.",
+        "pt-BR": "Acrescente a possibilidade de controle primário, padrão de organização e opções de exibição de mensagens em conversas encadeadas.",
+        "es": "Añadir la capacidad de controlar el primario, opciones predeterminadas de ordenación y presentación."
+    },
+    "support_email": {
+        "en-US": "mozilla.org@ryanlee.org"
+    },
+    "support_url": null,
+    "tags": [
+        "ascending",
+        "defaults",
+        "descending",
+        "order",
+        "preferences",
+        "sort",
+        "sorting",
+        "threading"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sortpref/",
+    "weekly_downloads": 30
+}

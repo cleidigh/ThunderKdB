@@ -1,0 +1,160 @@
+{
+    "id": 771081,
+    "authors": [
+        {
+            "id": 12753098,
+            "name": "Thomas Malcher",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/anonymous-1f157fd7e64f3c52f6276da49f0e7b30/",
+            "username": "anonymous-1f157fd7e64f3c52f6276da49f0e7b30",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1709,
+    "categories": {
+        "thunderbird": [
+            "appearance",
+            "calendar"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2469219,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "45.*"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lightningweather/versions/2469219",
+        "files": [
+            {
+                "id": 1012348,
+                "created": "2019-01-30T21:59:07Z",
+                "hash": "sha256:a5b6ff2c2d851ca6c086abc3f443e7494b1015f310f9d4623c8f6b6151053778",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 2680003,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012348/lightningweather-0.5.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "remove broken support for Yahoo Weather API and Geocoder API."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lightningweather/versions/0.5.0",
+        "version": "0.5.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "The forecast is updated every 5 hours.\n\nsupported forecast providers are:\n * <a href=\"http://openweathermap.org\" rel=\"nofollow\">openweathermap.org</a>\n * <a href=\"http://darksky.net\" rel=\"nofollow\">darksky.net</a>\n\nlightningWeather uses free developer accounts of these services. Therefore there are quite tight rate limits for the number of requests. <a href=\"http://openweathermap.org\" rel=\"nofollow\">openweathermap.org</a> allows 60 requests per minute and <a href=\"http://darksky.net\" rel=\"nofollow\">darksky.net</a> 1000 requests per day. \n\nPlease report bugs on  <a href=\"https://github.com/tmalch/lightningWeather\" rel=\"nofollow\">https://github.com/tmalch/lightningWeather</a>.\n\n\nChangelog:\nv0.5.0\n- remove broken support for Yahoo Weather API and Geocoder API. \nv0.4.0\n- add support for Thunderbird 60.*\nv0.3.2\n- fix a bug that led to a blockage by openweathermap\nv0.3.1\n- hide forecast if it is older than 24hr\n- fix bug when setting unit in preferences on Windows (hopefully)\n- workaround bug in multiday view of Lightning 5.4 (Thunderbird 52)\nv0.2.1\n- fix bug in setting preference for unit C/F\nv.2\n- add preference for unit C/F"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lightningweather/edit",
+    "guid": "lightningweather@thomas.malcher",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/tmalch/lightningWeather"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/771/771081-64.png?modified=1548885626",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/771/771081-32.png?modified=1548885626",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/771/771081-64.png?modified=1548885626"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-01-31T21:00:52Z",
+    "name": {
+        "en-US": "lightningWeather"
+    },
+    "previews": [
+        {
+            "id": 181648,
+            "caption": null,
+            "image_size": [
+                700,
+                439
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/181/181648.png?modified=1530209342",
+            "thumbnail_size": [
+                319,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/181/181648.png?modified=1530209342"
+        },
+        {
+            "id": 181658,
+            "caption": {
+                "en-US": "Select location and Weather provider in the preferences"
+            },
+            "image_size": [
+                700,
+                437
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/181/181658.png?modified=1530209343",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/181/181658.png?modified=1530209343"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.36676,
+        "count": 11,
+        "average": 3.4545,
+        "text_count": 11
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lightningweather/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/771081",
+    "slug": "lightningweather",
+    "status": "public",
+    "summary": {
+        "en-US": "LightningWeather shows the weather forecast in the background of the calendar so you can easily coordinate your activities with the weather."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lightningweather/",
+    "weekly_downloads": 208
+}

@@ -1,0 +1,157 @@
+{
+    "id": 986476,
+    "authors": [
+        {
+            "id": 14160347,
+            "name": "Sebastian Hammerl",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/sebastianha/",
+            "username": "sebastianha",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14160/14160347.png?modified=1546890878"
+        }
+    ],
+    "average_daily_users": 2215,
+    "categories": {
+        "thunderbird": [
+            "calendar",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/omoco",
+    "current_version": {
+        "id": 2469144,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sfoa/versions/2469144",
+        "files": [
+            {
+                "id": 1012283,
+                "created": "2019-01-13T10:12:38Z",
+                "hash": "sha256:9566f24490187e3a2ab5e700c10ec731a3f66f24810c4e73070137f23841c928",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 14849,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012283/show_outlook_appointments_vcal_ics-0.2.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sfoa/versions/0.2.3",
+        "version": "0.2.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "For a long time I did not even know that Outlook silently sends calendar appointments via email and how all this works. In the last year more and more colleagues and customers of my company started using Outlook for appointments and I wondered always about empty emails or emails which do not make sense at all.\n\nAt some point I discovered that there are calendar appointments attached to the emails which are just not displayed by my Thunderbird.\n\nWhen searching the Internet for a solution and following the bug report on mozilla (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=505024\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=505024</a>) there currently seems to be only one solution for this problem: Installing the Lightning extension.\n\nAs I am not using Lighting and am not willing to install a huge extension only to read these Outlook appointments I decided to create a lightweight extension with exactly one purpose. I hope I can help others with this extension and perhaps end a 10 year long debate on the bugtracker if Outlook is doing it wrong or whatever. At some point I just needed a solution which works.\n\nWhen opening a message the content is scanned for alternative parts. This btw is the reason Thunderbird does not display the calendar entry. Normally an appointment consists of three parts: text, html and calendar which are all marked as alternatives. Therefore according to RFCs only one has to be shown and Thunderbird prefers text or html.\n\nWhen found, a button \"Download ICS\" is shown (has to be added by customizing the bar first) and a large image is shown in the header bar of the message.\n\n\nPlease let me know if anything does not work for you. Create an issue on Github ( <a href=\"https://github.com/sebastianha/sfoa/issues\" rel=\"nofollow\">https://github.com/sebastianha/sfoa/issues</a> ), best with an example message where you would expect an embedded appointment."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sfoa/edit",
+    "guid": "sfoa@omoco.de",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/sebastianha/sfoa"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/986/986476-64.png?modified=9d7a43ff",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/986/986476-32.png?modified=9d7a43ff",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/986/986476-64.png?modified=9d7a43ff"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-01-16T13:31:58Z",
+    "name": {
+        "en-US": "Show Outlook Appointments (vcal / ics)"
+    },
+    "previews": [
+        {
+            "id": 205553,
+            "caption": {
+                "en-US": "Buttons to download embedded appointment as ICS",
+                "de": "Button to download ICS from email"
+            },
+            "image_size": [
+                722,
+                87
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205553.png?modified=1546879991",
+            "thumbnail_size": [
+                320,
+                39
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205553.png?modified=1546879991"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 2.20396,
+        "count": 2,
+        "average": 2.5,
+        "text_count": 2
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sfoa/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/986476",
+    "slug": "sfoa",
+    "status": "public",
+    "summary": {
+        "en-US": "An extension to show embedded Outlook calendar (vcal / ics) parts.\n\nThunderbird doesn't show calendar parts from Outlook appointment emails. This addon adds a button to download the embedded appointment as ICS to import it into another calendar."
+    },
+    "support_email": {
+        "en-US": "sfoa@omoco.de"
+    },
+    "support_url": {
+        "en-US": "https://github.com/sebastianha/sfoa/issues"
+    },
+    "tags": [
+        "appointment",
+        "calendar",
+        "ics",
+        "invitation",
+        "lighting",
+        "mail",
+        "outlook",
+        "vcal",
+        "vcalendar"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sfoa/",
+    "weekly_downloads": 0
+}

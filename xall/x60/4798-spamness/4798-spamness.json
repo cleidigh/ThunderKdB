@@ -1,0 +1,174 @@
+{
+    "id": 4798,
+    "authors": [
+        {
+            "id": 9429,
+            "name": "Ryan Lee",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ryan-lee/",
+            "username": "ryan-lee",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 386,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2469016,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/spamness/versions/2469016",
+        "files": [
+            {
+                "id": 1012180,
+                "created": "2018-12-12T07:08:33Z",
+                "hash": "sha256:307f6e5d6463b3d4cc038ddc53a6ce22e2239b3b24e7c5846e9a43764d23aeb9",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 39333,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012180/spamness-0.6.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "Thunderbird 60 compatibility"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spamness/versions/0.6.4",
+        "version": "0.6.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "sv-SE": "Spamness tillhandahåller en färg- och storleksbaserad visuell bedömningsindikator för risken att ett meddelande är skräppost, baserat på dess normaliserade SpamAssassin-klassificering. Det låter dig även sortera meddelanden efter deras klassificering. För att se bedömningar för de meddelanden du tog emot innan du installerade detta tillägg, öppna snabbmenyn för den mappen (vanligtvis högerklick), välj \"Egenskaper\" och klicka därefter på knappen \"Reparera mapp\".  Spamness letar efter resultatet för X-Spam-Status (inledande versal eller ej spelar ingen roll) i meddelandehuvuden. Formatet ser ut såhär (RegEx-format):  ^X-Spam-Status: .+ (score|hits)=-?[0-9]+.[0-9] required=-?[0-9]+.[0-9]+ ?.?$. Den viktigaste delen är fraserna \"score=\" och \"hits=\" följt av ett flyttal med en decimal, följt av ett mellanslag, samt frasen \"required=\" följt av ett flyttal med en decimal, följt av antingen ett mellanslag eller ingenting. De måste inte uppträda i någon särskild ordning, utan behöver bara finnas i huvudet på det sätt vi har beskrivit. Exempel: X-Spam-Status: hits=95.0 required=1.9 uppfyller formatet som Spamness förväntar sig.",
+        "en-US": "Spamness introduces a color- and size-based visual measurement of how spam-like an individual message is based on its normalized SpamAssassin score.  It also allows sorting of mail by score.  To view messages received prior to installing this extension, bring up a context menu on the folder (normally right-click), then go to \"Properties,\" then click on the \"Rebuild Index\" button.\n\nSpamness expects to find the X-Spam-Status (capitalization irrelevant) in a message's headers.  The format should look, in RegEx form, like ^X-Spam-Status: .+ (score|hits)=-?[0-9]+.[0-9] required=-?[0-9]+.[0-9]+ ?.?$.  The most important part is the phrase score= or hits= followed by a floating point to the tenths place, followed by a space, and the phrase required= followed by a floating point to the tenths place, followed by either a space or nothing.  They need not be in any order, they just need to be within the header as described.  For example, X-Spam-Status: hits=95.0 required=1.9 would satisfy the format Spamness expects.",
+        "pt-BR": "Spamness fornece uma escala visual colorida da importância do spam, baseada na sua pontuação SpamAssassin. Permite organizar as mensagens por sua pontuação. Para ver mensagens recebidas antes da instalação desta extensão, abra o menu de contexto (normalmente com o clique direito do mouse) sobre a pasta, vá a \"Propriedades\"  e clique no botão em \"Reconstruir Índice\". O Spamness espera encontrar o X-Spam-Status nos cabeçalhos das mensagens. O formato no arquivo RegEx deve se parecer com ^X-Spam-Status: .+ (score|hits)=-?[0-9]+.[0-9] required=-?[0-9]+.[0-9]+ ?.?$. O mais importante a ser observado é score= ou hits= seguido por um ponto separatório dos decimais, seguido por um espaço, e a frase required= seguida por um ponto separatório dos decimais, seguido por um espaço ou nada. Eles não precisam estar em qualquer ordem, eles só precisam estar dentro do cabeçalho, conforme descrito. Por exemplo, X-Spam-Status: hits=95,0 required=1,9 satisfariam o formato esperado pelo Spamness.",
+        "es": "Permite comparar mensajes según su puntuación de SpamAssassin visualmente midiéndolos por color o tamaño. También permite ordenar mensajes por puntuación. Para ver mensajes recibidos antes de instalar esta extensión, mostrar menú contextual de la carpeta (botón derecho de ratón), vaya a \"Propiedades\", y pulse en \"Reconstruir Índice\".\n\nSpamness intenta encontrar X-Spam-Status en las cabeceras del mensaje. El formato debería parecer, en formato RegEx como ^X-Spam-Status: .+ (score|hits)=-?[0-9]+.[0-9] required=-?[0-9]+.[0-9]+ ?.?$. La parte más importante en la frase score= o hits= seguido por un decimal en punto flotante, seguido por un espacio, y la frase required= seguido por un decimal en punto flotante, seguido de un espacio o de nada. No es necesario ningún orden, tan sólo que esté dentro de la cabecera como se ha descrito. Por ejemplo, X-Spam-Status: hits=95.0 required=1.9 cumple con el formato esperado por Spamness.",
+        "zh-CN": "Spamness  基于标准 SpamAssassin 得分，引入了一种以颜色和大小为基础的视觉度量，用来表示一个消息与垃圾邮件相似程度。它允许按得分排序邮件。要使用它查看安装此扩展前收到的邮件，请打开文件夹的上下文菜单(一般为点击右键)，然后打开“属性”，点击“修复文件夹”按钮。Spamness 可以接受消息头中的 X-Spam-Status(大小写无关)。格式应该类似正则表达式格式 ^X-Spam-Status: .+ (score|hits)=-?[0-9]+.[0-9] required=-?[0-9]+.[0-9]+ ?.?$。最重要的部分是短语 score= 或 hits=，紧接着一个浮点数和一个空格，和短语 required= 紧接着一个精确到十分位的浮点数后面为一个空格或者为空。它们的顺序可以随意更改，但必须按描述的格式写在消息头中。例如，X-Spam-Status: hits=95.0 required=1.9 符合 Spamness 接受的格式。"
+    },
+    "developer_comments": {
+        "sv-SE": "Spamness utvecklas fortfarande aktivt på <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/92c6faf1096c2d60393da5be544ec54d06159c3fff6cb093f15cf72c23a8a1d8/https%3A//github.com/voccs/spamness/\">GitHub</a>.  Bevaka projektet, följ filutgivningen och skicka in kodkorrigeringar.",
+        "en-US": "Spamness is still under development on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/92c6faf1096c2d60393da5be544ec54d06159c3fff6cb093f15cf72c23a8a1d8/https%3A//github.com/voccs/spamness/\">GitHub</a>.  Review the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2406d2910b5774dd3575b58c7b6f37f791b7fdc3de2f2ebabbb806913aeacd3c/https%3A//github.com/voccs/spamness/issues%3Fmilestone=1&amp;state=open\">issues list for the next release</a> - and note a number of bugs (including the unchangeable header) were fixed before the list was put together.  Coming Soon (TM).",
+        "pt-BR": "Spamness está em desenvolvimento permanente no <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/92c6faf1096c2d60393da5be544ec54d06159c3fff6cb093f15cf72c23a8a1d8/https%3A//github.com/voccs/spamness/\">GitHub</a>. Veja o projeto, informações de arquivo e envie correções.",
+        "es": "Spamness sigue en desarrollo en <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/92c6faf1096c2d60393da5be544ec54d06159c3fff6cb093f15cf72c23a8a1d8/https%3A//github.com/voccs/spamness/\">GitHub</a>.  Visita el proyecto, problemas de archivo, y envía parches.",
+        "zh-CN": "Spamness 在 <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/92c6faf1096c2d60393da5be544ec54d06159c3fff6cb093f15cf72c23a8a1d8/https%3A//github.com/voccs/spamness/\">GitHub</a> 上继续活跃开发中。请关注此项目，提出问题和提交补丁。"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/spamness/edit",
+    "guid": "{41a9ee8a-e9c6-4076-84ac-bc1b612dca68}",
+    "has_eula": true,
+    "has_privacy_policy": false,
+    "homepage": {
+        "sv-SE": "http://ryanlee.org/software/mozilla/thunderbird/spamness/",
+        "en-US": "http://ryanlee.org/software/mozilla/thunderbird/spamness/",
+        "pt-BR": "http://ryanlee.org/software/mozilla/thunderbird/spamness/",
+        "es": "http://ryanlee.org/software/mozilla/thunderbird/spamness/",
+        "zh-CN": "http://ryanlee.org/software/mozilla/thunderbird/spamness/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4798-64.png?modified=1362144024",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4798-32.png?modified=1362144024",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4798-64.png?modified=1362144024"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-12-24T13:02:59Z",
+    "name": {
+        "sv-SE": "Spamness",
+        "en-US": "Spamness",
+        "pt-BR": "Spamness",
+        "es": "Spamness",
+        "zh-CN": "Spamness"
+    },
+    "previews": [
+        {
+            "id": 13450,
+            "caption": {
+                "en-US": "Spamness adds the column on the far right.  The size and saturation of a circle reflect larger or smaller spam scores."
+            },
+            "image_size": [
+                350,
+                208
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13450.png?modified=1530208224",
+            "thumbnail_size": [
+                320,
+                190
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13450.png?modified=1530208224"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.00713,
+        "count": 21,
+        "average": 3.0476,
+        "text_count": 21
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spamness/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/4798",
+    "slug": "spamness",
+    "status": "public",
+    "summary": {
+        "sv-SE": "Tillhandahåller en färg- och storleksbaserad visuell bedömningsindikator för risken att ett meddelande är skräppost, baserat på dess normaliserade SpamAssassin-klassificering.",
+        "en-US": "Visual representation of how spam-like messages are.",
+        "pt-BR": "Fornece uma escala visual colorida da importância do spam, baseada na sua pontuação SpamAssassin.",
+        "es": "Permite comparar mensajes según su puntuación de SpamAssassin visualmente midiéndolos por color o tamaño.",
+        "zh-CN": "Spamness  基于标准 SpamAssassin 得分，提供了一种以颜色和大小为基础的视觉度量，用来表示一个消息与垃圾邮件相似程度。"
+    },
+    "support_email": {
+        "en-US": "mozilla.org@ryanlee.org"
+    },
+    "support_url": null,
+    "tags": [
+        "junk",
+        "sorting",
+        "spam",
+        "spamassassin"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spamness/",
+    "weekly_downloads": 31
+}

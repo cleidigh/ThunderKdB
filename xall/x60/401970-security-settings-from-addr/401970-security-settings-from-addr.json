@@ -1,0 +1,184 @@
+{
+    "id": 401970,
+    "authors": [
+        {
+            "id": 6583050,
+            "name": "GWu",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/GWu/",
+            "username": "GWu",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6583/6583050.png?modified=1555684209"
+        }
+    ],
+    "average_daily_users": 306,
+    "categories": {
+        "thunderbird": [
+            "contacts",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468399,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "52.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/security-settings-from-addr/versions/2468399",
+        "files": [
+            {
+                "id": 1011621,
+                "created": "2018-08-11T13:31:11Z",
+                "hash": "sha256:33a52621242fecb0bacdafb17f92806c288c960bbab54795fb051f2fd9e825f8",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 19462,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011621/security_settings_from_address_book-2.0.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "fix CardBook search"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/security-settings-from-addr/versions/2.0.1",
+        "version": "2.0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Reads S/MIME message security settings (sign/encrypt) from recipients' address book entry's field \"Custom1\":\n\nIf \"Custom1\" contains either \"sign\" or \"encrypt\" or both, the corresponding message security option is set. The setting is done when saving or sending the message.\n\nYou can also disable signing or encrypting for a contact by setting \"Custom1\" to either \"nosign\" or \"noencrypt\" or both (useful when signing or encrypting by default and you want to exclude only some contacts).\n\n<strong>Note: this add-on relies on Thunberbird's built in encryption and signing functionality. You have to set this up first before using this add-on, see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/22042cd07a96295a465372c276a1ebecbdeb9ef36390f6639dd1f2226eda1ed0/http%3A//kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a> for details.</strong>",
+        "de": "Setzt Sicherheitsoptionen (S/MIME) an Hand der Adressbucheinträge der Empfänger:\n\nWenn das Feld \"Benutzerdef. 1\" im Adressbucheintrag des Empfängers den Wert \"sign\" bzw. \"encrypt\" enthält, wird beim Speichern und Senden einer Nachricht die entsprechende Sicherheitsoption aktiviert: bei \"sign\" wird \"Nachricht unterschreiben\" und bei \"encrypt\" wird \"Nachricht verschlüsseln\" aktiviert.\n\nEs gibt auch die Möglichkeit mittels \"nosign\" bzw. \"noencrypt\" entsprechend zu Deaktivieren, was bei einer Konton-Einstellung \"Immer Verschlüsseln/Signieren\" nützlich sein kann, wenn nur einzelne Empfänger keine Signatur/Verschlüsselung erhalten sollen.\n\n<strong>Wichtiger Hinweis: dieses Add-On verwendet die Standard-Sicherheitsmechanismen in Thunderbird. Bevor Sie dieses Add-On sinnvoll nutzen können, müssen Sie diese konfigurieren, siehe dazu <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/24d3f968af40b32409924fded96910deaba2a70c988f93bfb07c8c1536219536/http%3A//www.thunderbird-mail.de/wiki/Mailverschl%25C3%25BCsselung_mit_S/MIME\">http://www.thunderbird-mail.de/wiki/Mailverschl%C3%BCsselung_mit_S/MIME</a> oder <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/22042cd07a96295a465372c276a1ebecbdeb9ef36390f6639dd1f2226eda1ed0/http%3A//kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a> (Englisch)</strong>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/security-settings-from-addr/edit",
+    "guid": "securitysettingsfromaddressbook@gwu.at",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://addons.mozilla.org/thunderbird/addon/security-settings-from-addr/",
+        "de": "https://addons.mozilla.org/thunderbird/addon/security-settings-from-addr/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/401/401970-64.png?modified=1366359625",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/401/401970-32.png?modified=1366359625",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/401/401970-64.png?modified=1366359625"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-08-13T10:18:05Z",
+    "name": {
+        "en-US": "Security Settings from Address Book",
+        "de": "Security Settings from Address Book"
+    },
+    "previews": [
+        {
+            "id": 79792,
+            "caption": {
+                "en-US": "Sample address book entry. If \"Custom1\" contains either \"sign\" or \"encrypt\" or both, the corresponding message security option is set.",
+                "de": "Beispiel für einen Eintrag im Adressbuch: steht in \"Benutzerdef. 1\" (\"Custom 1\")  \"sign\" bzw. \"encrypt\", wird die entsprechende Sicherheitsoption aktiviert."
+            },
+            "image_size": [
+                700,
+                431
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/79/79792.png?modified=1530209058",
+            "thumbnail_size": [
+                320,
+                197
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/79/79792.png?modified=1530209058"
+        },
+        {
+            "id": 79790,
+            "caption": {
+                "en-US": "Info and options screens.",
+                "de": "Informationen und Einstellungen"
+            },
+            "image_size": [
+                579,
+                451
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/79/79790.png?modified=1530209058",
+            "thumbnail_size": [
+                257,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/79/79790.png?modified=1530209058"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.55518,
+        "count": 2,
+        "average": 5,
+        "text_count": 2
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/security-settings-from-addr/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/401970",
+    "slug": "security-settings-from-addr",
+    "status": "public",
+    "summary": {
+        "en-US": "Sets message security (sign/encrypt) when sending or saving messages based on recipients' address book entry's field \"Custom1\".",
+        "de": "Einfaches Add-On, das an Hand der Adressbucheinträge der Empfänger die Sicherheitsoptionen (S/MIME) aktiviert."
+    },
+    "support_email": {
+        "en-US": "soskifub+securitysettingsfromaddressbook@gmail.com",
+        "de": "soskifub+securitysettingsfromaddressbook@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "digitale signatur",
+        "encrypt",
+        "encryption",
+        "security",
+        "sign",
+        "signature",
+        "smime",
+        "unterschreiben",
+        "unterschrift",
+        "verschlüsseln"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/security-settings-from-addr/",
+    "weekly_downloads": 42
+}

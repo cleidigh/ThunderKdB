@@ -1,0 +1,262 @@
+{
+    "id": 306600,
+    "authors": [
+        {
+            "id": 1680847,
+            "name": "speedball2001",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/speedball2001/",
+            "username": "speedball2001",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1680/1680847.png?modified=1401715415"
+        }
+    ],
+    "average_daily_users": 12365,
+    "categories": {
+        "thunderbird": [
+            "contacts"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468530,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "59.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/contact-tabs/versions/2468530",
+        "files": [
+            {
+                "id": 1011753,
+                "created": "2018-09-01T16:49:15Z",
+                "hash": "sha256:0d11df9f5c16c727998a7e7991471df2b636fc39695613cdc27b1a5cf0b5aa2e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 155920,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011753/contact_tabs-2.6.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "FIX: Contact Tabs built-in adapted to changes in TB60."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/contact-tabs/versions/2.6.4",
+        "version": "2.6.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Contact Tabs enhances Thunderbird to give you quick access to all your contacts directly from Thunderbird's main window.\n\nContact Tabs adds a search field to Thunderbird's tool bar for looking up contacts using their email addresses, names, phone numbers, organization or adresses. \n\nYou can easily modify and delete a contact as well as move it to another address book.\n\nContact Tabs's search engine now powers email address completion in Thunderbird's composer (Feature development kindly sponsored by <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ea472def57f4d34f4d0cd1ea86e19a0082d82b7f2b4cf469d84e44f9acf29119/http%3A//punkt.de\">punkt.de</a> GmbH): The completion list contains all contacts that match somewhere in the first name, lastname or email address.\n\nLIMITATIONS:\nContact Tabs works only with Thunderbird address books. LDAP directories are not supported. \n\nContact Tabs supports all fields of Thunderbird's default address book as well as those added gContactSync when viewing a contact. \n\nContact Tabs' own editor will be deactivated when gContactSync is installed.",
+        "de": "Contact Tabs erweitert Thunderbird um Funktionen für den direkten Zugriff auf Kontakte aus Thunderbirds Hauptfenster.\n\nContact Tabs fügt ein Suchfeld zu Thunderbirds Toolbar hinzu, über das Kontakte anhand ihrer Emailadressen, Namen, Telefonnummern, Unternehmenszugehörigkeit oder Anschrift gesucht werden können. Wird ein Kontakt gefunden, so öffnet Contact Tabs die Details in einem eigenen Tab.\n\nKontakte können einfach bearbeitet, gelöscht sowie in ein anderes Adressbuch verschoben werden. \n\nContact Tabs' Suchmaschine erweitert die Adressvervollständigung in Thunderbirds Emaileditor (Featureentwicklung freundlicherweise gesponsort von der <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ea472def57f4d34f4d0cd1ea86e19a0082d82b7f2b4cf469d84e44f9acf29119/http%3A//punkt.de\">punkt.de</a> GmbH): Die Vorschlagsliste enthält alle Kontakte, deren Vornamen, Nachname oder Emailadresse irgendwo die eingegebenen Zeichen enthalten.\n\nEINSCHRÄNKUNGEN:\nContact Tabs arbeitet ausschließlich mit Thunderbird-Adressbüchern; LDAP-Verzeichnisse werden nicht unterstützt. \n\nContact Tabs unterstützt alle Felder von Thunderbirds Standard-Addressbuch sowie die von gContactSync beim Anzeigen von Kontakten.\n\nContact Tabs' eigener Kontakteditor wird jedoch deaktiviert, wenn gContactSync installiert ist."
+    },
+    "developer_comments": {
+        "en-US": "I kindly ask for your comments and suggestions. You reach me through the \"E-mail your question\" link on the right side of this page.\n\nPlease do not use the reviews as a way to notify me of bugs as it does not give me a way to get back to you.",
+        "de": "Ich bin über den \"Ihre Frage per E-Mail stellen\"-Link auf der rechten Seite erreichbar."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/contact-tabs/edit",
+    "guid": "contacttabs@janek.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/306/306600-64.png?modified=1488730820",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/306/306600-32.png?modified=1488730820",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/306/306600-64.png?modified=1488730820"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-09-01T18:42:34Z",
+    "name": {
+        "en-US": "Contact Tabs",
+        "de": "Contact Tabs"
+    },
+    "previews": [
+        {
+            "id": 81560,
+            "caption": {
+                "en-US": "A contact displayed in it's own tab. Please note the search field in Thunderbird's tool bar to look up contacts without having to open the address book.",
+                "de": "Ein Kontakt in seinem eigenen Tab. Thunderbirds Toolbar enthält nun ein Suchfeld, um Kontakte zu finden ohne das Adressbuchfenster öffnen zu müssen."
+            },
+            "image_size": [
+                700,
+                509
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81560.png?modified=1530208966",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81560.png?modified=1530208966"
+        },
+        {
+            "id": 81562,
+            "caption": {
+                "en-US": "Contact Tabs lets you choose different search modes and in which address books to search.",
+                "de": "Contact Tabs  kennt verschiedene Suchmodi. Die Suche läßt sich auf einem oder mehreren Adressbüchern durchführen."
+            },
+            "image_size": [
+                700,
+                509
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81562.png?modified=1530208966",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81562.png?modified=1530208966"
+        },
+        {
+            "id": 81564,
+            "caption": {
+                "en-US": "Contact Tabs' autocomplete menu shows contact details depending on the search mode.",
+                "de": "Das Autocomplete-Menü von Contact Tab zeigt Kontaktdetails abhängig vom gewählen Suchmodus."
+            },
+            "image_size": [
+                700,
+                509
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81564.png?modified=1530208966",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81564.png?modified=1530208966"
+        },
+        {
+            "id": 81566,
+            "caption": {
+                "en-US": "Easily move a contact from one address book to another.",
+                "de": "Contact Tabs macht es einfach, einen Kontakt von einem in ein anderes Adressbuch zu verschieben."
+            },
+            "image_size": [
+                700,
+                509
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81566.png?modified=1530208967",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81566.png?modified=1530208967"
+        },
+        {
+            "id": 81568,
+            "caption": {
+                "en-US": "Contact Tabs lets you edit contact details in a tab.",
+                "de": "Mit Contact Tabs können die Kontaktdetails direkt in einem Tab bearbeitet werden."
+            },
+            "image_size": [
+                700,
+                509
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81568.png?modified=1530208967",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81568.png?modified=1530208967"
+        },
+        {
+            "id": 81570,
+            "caption": {
+                "en-US": "Add the contact search field to Thunderbird's tab strip and make it always visible.",
+                "de": "Damit das Suchfeld für die Kontakte immer sichtbar ist, kann es in Thunderbirds Tableiste verschoben werden."
+            },
+            "image_size": [
+                700,
+                509
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81570.png?modified=1530208967",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81570.png?modified=1530208967"
+        },
+        {
+            "id": 81572,
+            "caption": {
+                "en-US": "Modify Contact Tabs's settings.",
+                "de": "In den Einstellungen kann das Verhalten von Contact Tabs an die persönlichen Vorlieben angepasst werden."
+            },
+            "image_size": [
+                700,
+                509
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/81/81572.png?modified=1530208968",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/81/81572.png?modified=1530208968"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.41268,
+        "count": 55,
+        "average": 4.4364,
+        "text_count": 55
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/contact-tabs/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/306600",
+    "slug": "contact-tabs",
+    "status": "public",
+    "summary": {
+        "en-US": "Contact Tabs enhances Thunderbird to give you quick access to all your contacts directly from Thunderbird's main window: Use the powerful search field to find your contacts and open them in a new tab for viewing and editing.",
+        "de": "Contact Tabs erweitert Thunderbird um eine leistungsfähige Suche nach Kontakten direkt aus Thunderbirds Hauptfenster. Kontakte werden in einem eigenen Reiter angezeigt und bearbeitet."
+    },
+    "support_email": {
+        "en-US": "janekschwarz@users.sourceforge.net",
+        "de": "janekschwarz@users.sourceforge.net"
+    },
+    "support_url": null,
+    "tags": [
+        "address",
+        "address book",
+        "adressbuch",
+        "adresse",
+        "contacts",
+        "kontakt",
+        "search",
+        "tab"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/contact-tabs/",
+    "weekly_downloads": 284
+}

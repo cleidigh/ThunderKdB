@@ -1,0 +1,149 @@
+{
+    "id": 2874,
+    "authors": [
+        {
+            "id": 28603,
+            "name": "Christopher Eykamp",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/christopher-eykamp/",
+            "username": "christopher-eykamp",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2013,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468811,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "3.0b3"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-account/versions/2468811",
+        "files": [
+            {
+                "id": 1012036,
+                "created": "2018-11-06T21:12:01Z",
+                "hash": "sha256:2d3cbd63bd1c30de46f21e68b4794faf21a38aa2e15541fc53ab8f00fe5cf2a2",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 16491,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012036/folder_account-7.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "Updated to work with the latest version of Thunderbird.  Thanks steppicrew!\n\nFiles and source code are now available on the Folder Account GitHub repo: <a href=\"https://github.com/eykamp/Folder-Account\" rel=\"nofollow\">https://github.com/eykamp/Folder-Account</a>.  While I am no longer actively developing the extension, I will accept pull requests and release new versions as needed."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-account/versions/7.0",
+        "version": "7.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "sk": "This extension adds two very simple options.\n\nFirst, you can select which of your accounts will be used when composing, replying, or forwarding mail based on which folder is currently selected.  An example where this could be useful is when two people share a set of folders.  You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs.  Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nThe second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in.  This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nIn both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an enti name=\"data[Addon][summary][]\"",
+        "ro": "This extension adds two very simple options.\n\nFirst, you can select which of your accounts will be used when composing, replying, or forwarding mail based on which folder is currently selected.  An example where this could be useful is when two people share a set of folders.  You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs.  Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nThe second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in.  This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nIn both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an enti name=\"data[Addon][summary][]\"",
+        "en-US": "NEW: The code for this project is now available at <a href=\"https://github.com/eykamp/Folder-Account\" rel=\"nofollow\">https://github.com/eykamp/Folder-Account</a>.  While I am no longer actively maintaining the project, I will accept pull requests and will update the extension as needed.\n\nThis extension adds two very simple options.\n\nFirst, you can select which of your accounts or identities will be used when composing, replying, or forwarding mail based on which folder is currently selected.  An example where this could be useful is when two people share a set of folders.  You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs.  Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nThe second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in.  This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nIn both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an entire branch of your folder tree at one time.  \n\nNote that this version fixes all known bugs and incorporates the improvements made in the unofficial patch described in the comments.\n\nPLEASE, do not use this page for support or feature requests.  I am more than happy to help you, but I cannot respond to your comments here.  Please submit issues at the project's GitHub page: <a href=\"https://github.com/eykamp/Folder-Account\" rel=\"nofollow\">https://github.com/eykamp/Folder-Account</a>\n\nThanks, and enjoy!\n\n-- Chris Eykamp",
+        "ja": "This extension adds two very simple options.\n\nFirst, you can select which of your accounts will be used when composing, replying, or forwarding mail based on which folder is currently selected.  An example where this could be useful is when two people share a set of folders.  You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs.  Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nThe second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in.  This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nIn both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an enti name=\"data[Addon][summary][]\""
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-account/edit",
+    "guid": "{C8534C26-F59A-11DA-9804-B622A1EF5492}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/eykamp/Folder-Account"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2874-64.png?modified=da807e7c",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2874-32.png?modified=da807e7c",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2874-64.png?modified=da807e7c"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-11-11T06:04:19Z",
+    "name": {
+        "en-US": "Folder Account"
+    },
+    "previews": [
+        {
+            "id": 7301,
+            "caption": {
+                "en-US": "Specify an account under folder props"
+            },
+            "image_size": [
+                200,
+                124
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/7/7301.png?modified=1569717121",
+            "thumbnail_size": [
+                200,
+                124
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/7/7301.png?modified=1569717121"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.40544,
+        "count": 56,
+        "average": 4.4286,
+        "text_count": 56
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-account/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/2874",
+    "slug": "folder-account",
+    "status": "public",
+    "summary": {
+        "en-US": "Lets you associate user accounts and identities with specific folders.  Great for multiple users who share TB, or for managing mailing lists.",
+        "ja": "Lets you associate user accounts with specific folders.  Great for multiple users who share TB, or  for managing mailing lists."
+    },
+    "support_email": {
+        "en-US": "chris@eykamp.com"
+    },
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-account/",
+    "weekly_downloads": 35
+}

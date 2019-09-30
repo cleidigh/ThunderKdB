@@ -1,0 +1,339 @@
+{
+    "id": 740067,
+    "authors": [
+        {
+            "id": 5250414,
+            "name": "TrVTrV",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/trvtrv/",
+            "username": "trvtrv",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 849,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/TrVTrVTrV/2",
+    "current_version": {
+        "id": 2469110,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "3.0a1pre"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smtp-switch-reborn/versions/2469110",
+        "files": [
+            {
+                "id": 1012257,
+                "created": "2019-01-04T07:51:30Z",
+                "hash": "sha256:d4c6ff65b9b55f81ef1fea13afc29b9bb3f787ab9f5d90a6594e8bc95132153a",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 32973,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012257/smtp_switch_reborn-0.3.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "* bugfix: The addon was in conflict with another addon (\"mail merge\"). The drop-down list from the 'Send button' contained only items for \"mail merge\", none for SSR."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smtp-switch-reborn/versions/0.3.2",
+        "version": "0.3.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>TB v68 compatibility note:\nThere is no plan to move the addon to the TB v68 \"standards\", and here is why:\n- Mozilla itself has decided not to work on compatibility developments and leave \"that\" to the addon developers.\nI don't know how much a mozilla developer is paid, but speaking for myself the sum of the contributions i have ever received for 6 free addons during almost 10 years are a figure with 3 digits max...\n- Besides the fact Mozilla leaves us doing the \"dirty work\", they are not even able to provide detailed information about how to make the old addons compatible with their new standards.\nI mean a relevant guide, not an information note explaining that the addons should be restartless, turned into webextensions and so on, and not even giving an example.\n- That is not the first time that Mozilla is acting as if addons developers and the community was not important.\nI have had already several bad experiences in the past when my addons got broken just because Mozilla changed something which used to work without even thinking about compatibility or giving information.\n- I'm tired of all this, and as i have another real job to afford my bills, i'm not ready to make all that effort for so few consideration.\n- It already took me thousands and thousands and thousands of hours to develop my addons, working everyday on making them the more stable and practical possible. Why would i do twice something which worked pretty well?\n- All my addons are Mozilla-licensed (~ free softwares), so sources are open for all developers which would be interested to follow the new Mozilla standards.\nI think i made this work the best professional i could, so my code is well structured and full of comments. If you do so, sending me a simple \"thank-you\" email would be greatly appreciated.\n- All my addons are already compatible with TB v60. Are there so much interest to move to TB v68?\nDo you change your toaster every year just because there are new ones on the market? I don't.\n- The choice is between v68 without addons or v60 with addons. Your call.\n</b>\n\n<b>SMTP Switch Reborn</b> is a Thunderbird add-on which allows to change global default SMTP server on the fly when sending a message.\n\nWhen moving from one location to another, you have to change the SMTP server to use the one from your current location, otherwise the message cannot be sent.\nFor security reasons (spams) ISP generally forbid to use a 3td party SMTP server, and only allow their SMTP servers to be used.\n\n\nFeatures are the following:\n\n* All platforms are supported. Tested versions are:\n- Windows: XP sp3 (x86), Seven Pro sp1 (x64);\n- Linux: Mandriva 2011-2 (x86);\n- Mac: OS X 10.7 / Lion (x64).\n\n* Available languages are: french (fr-FR), english (en-US).\n\n* The main feature, which is changing SMTP server, is available in a drop-down list on the right of the native \"send message\" button.\n\n* This addon can only control SMTP servers of accounts which are set to use the global default SMTP server.\n\n* Settings dialog allow to set easily mail accounts with global default SMTP server.\n\n* The addon allows to define automatic detection rules based on IP address in order to set automatically the default SMTP server.\n\n* The add-on provides a 'debug mode' which writes information into embedded error console (see Tools &gt; Error Console) or in a dedicated debug log file.\n\n* Error and warning messages are also written into error console (regardless debug mode is enabled or not).\nIf for any kind of reason the add-on seems not to work properly, open error console and look for messages regarding add-on which could give you information about the issue (all messages are prefixed by add-on name).\nIf the issue is reproducible and you think it's an add-on bug:\n 1. Enable debug mode and enable 'Log messages in a file'.\n 2. Click on 'Export settings' to create settings file.\n 3. Proceed again (messages will be saved in debug log file').\n 4. Contact us and report us relevant and maximum information regarding the issue:\n     - screen captures of each step of the action which leads to the issue\n     - screen captures of each settings tab\n     - settings file\n     - debug log file\nNB: Incomplete issue reports will not be answered.\n\nContact (bug reports, features request, etc.): smtpswitchreborn@gmail.com.\nNB: Usage support email will not be answered."
+    },
+    "developer_comments": {
+        "en-US": "<b>SMTP Switch Reborn</b> is the sequel of <a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/smtpswitch/\">SmtpSwitch</a>.\nThe first idea is to make this addon compatible for TB versions &gt;= v22."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smtp-switch-reborn/edit",
+    "guid": "SMTPSwitchReborn@gmail.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://dev.arqendra.net"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/740/740067-64.png?modified=1569437688",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/740/740067-32.png?modified=1569437688",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/740/740067-64.png?modified=1569437688"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2019-01-06T07:31:37Z",
+    "name": {
+        "en-US": "SMTP Switch Reborn"
+    },
+    "previews": [
+        {
+            "id": 189776,
+            "caption": {
+                "fr": "",
+                "en-US": "Overview (Windows)"
+            },
+            "image_size": [
+                532,
+                347
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189776.png?modified=1530209289",
+            "thumbnail_size": [
+                307,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189776.png?modified=1530209289"
+        },
+        {
+            "id": 189808,
+            "caption": {
+                "fr": "",
+                "en-US": "Overview (Linux)"
+            },
+            "image_size": [
+                527,
+                271
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189808.png?modified=1530209289",
+            "thumbnail_size": [
+                320,
+                165
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189808.png?modified=1530209289"
+        },
+        {
+            "id": 189775,
+            "caption": {
+                "fr": "",
+                "en-US": "Overview (MacOS)"
+            },
+            "image_size": [
+                560,
+                227
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189775.png?modified=1530209289",
+            "thumbnail_size": [
+                320,
+                130
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189775.png?modified=1530209289"
+        },
+        {
+            "id": 189777,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings 1 (Windows)"
+            },
+            "image_size": [
+                652,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189777.png?modified=1530209290",
+            "thumbnail_size": [
+                248,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189777.png?modified=1530209290"
+        },
+        {
+            "id": 189809,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings 1 (Linux)"
+            },
+            "image_size": [
+                700,
+                470
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189809.png?modified=1530209290",
+            "thumbnail_size": [
+                298,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189809.png?modified=1530209290"
+        },
+        {
+            "id": 189781,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings 1 (MacOS)"
+            },
+            "image_size": [
+                700,
+                466
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189781.png?modified=1530209290",
+            "thumbnail_size": [
+                300,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189781.png?modified=1530209290"
+        },
+        {
+            "id": 189778,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings 2 (Windows)"
+            },
+            "image_size": [
+                652,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189778.png?modified=1530209291",
+            "thumbnail_size": [
+                248,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189778.png?modified=1530209291"
+        },
+        {
+            "id": 189810,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings 2 (Linux)"
+            },
+            "image_size": [
+                700,
+                470
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189810.png?modified=1530209291",
+            "thumbnail_size": [
+                298,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189810.png?modified=1530209291"
+        },
+        {
+            "id": 189783,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings 2 (MacOS)"
+            },
+            "image_size": [
+                700,
+                466
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189783.png?modified=1530209292",
+            "thumbnail_size": [
+                300,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189783.png?modified=1530209292"
+        },
+        {
+            "id": 189779,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings 3 (Windows)"
+            },
+            "image_size": [
+                652,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189779.png?modified=1530209292",
+            "thumbnail_size": [
+                248,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189779.png?modified=1530209292"
+        },
+        {
+            "id": 189811,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings 3 (Linux)"
+            },
+            "image_size": [
+                700,
+                470
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189811.png?modified=1530209292",
+            "thumbnail_size": [
+                298,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189811.png?modified=1530209292"
+        },
+        {
+            "id": 189785,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings 3 (MacOS)"
+            },
+            "image_size": [
+                700,
+                466
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/189/189785.png?modified=1530209293",
+            "thumbnail_size": [
+                300,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/189/189785.png?modified=1530209293"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.34629,
+        "count": 3,
+        "average": 3.6667,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smtp-switch-reborn/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/740067",
+    "slug": "smtp-switch-reborn",
+    "status": "public",
+    "summary": {
+        "en-US": "SMTP Chooser."
+    },
+    "support_email": {
+        "en-US": "smtpswitchreborn@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "smtp",
+        "smtpcontrol",
+        "smtpswitch"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smtp-switch-reborn/",
+    "weekly_downloads": 53
+}

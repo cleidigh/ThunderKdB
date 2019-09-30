@@ -1,0 +1,133 @@
+{
+    "id": 521266,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 307,
+    "categories": {
+        "thunderbird": [
+            "appearance"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2469043,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "45.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/set-default-columns/versions/2469043",
+        "files": [
+            {
+                "id": 1012209,
+                "created": "2018-12-19T06:43:28Z",
+                "hash": "sha256:65acf44d22cbd8d1d1fd1d0944b9cbe2e878b9c51f93b1ade31b6bf5c904cff5",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 6608,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012209/set_default_columns-1.2-tb-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 1012210,
+                "created": "2018-12-19T06:43:28Z",
+                "hash": "sha256:65acf44d22cbd8d1d1fd1d0944b9cbe2e878b9c51f93b1ade31b6bf5c904cff5",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 6608,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012210/set_default_columns-1.2-tb-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 1012211,
+                "created": "2018-12-19T06:43:28Z",
+                "hash": "sha256:65acf44d22cbd8d1d1fd1d0944b9cbe2e878b9c51f93b1ade31b6bf5c904cff5",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 6608,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012211/set_default_columns-1.2-tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Support Thunderbird 60",
+            "ja": "Thunderbird 60に対応"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/set-default-columns/versions/1.2",
+        "version": "1.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "set-default-columns\n===================\n\nProvides ability to set default visibility of columns in the thread pane.\n\nBy default, Thunderbird shows following columns for newly detected folders.\n\n * threadCol\n * attachmentCol\n * flaggedCol\n * subjectCol\n * unreadButtonColHeader\n * correspondentCol\n * senderCol\n * recipientCol\n * junkStatusCol\n * dateCol\n * locationCol\n\nHowever, even if you want that the \"Priority\" column is shown for all folders, for all users, there is no way.\nThis addon provides a preference entry to customize the list of default visible columns of all folders.\nFor example, if you want the column \"Priority\" is visible by default, then you'll put a directive into your MCD configuration file, like:\n\n    lockPref(\"extensions.set-default-columns@clear-code.com.columns\", [\n      \"priorityCol\",\n      \"threadCol\",\n      ...list of other default columns...\n      \"locationCol\"\n    ].join(\",\"));\n\nAnd, you'll rearrange default columns via `extensions.set-default-columns@clear-code.com.order`. The format of its value is same to `extensions.set-default-columns@clear-code.com.columns`.\n\nThis is mainly designed for corporate-use.",
+        "ja": "set-default-columns\n===================\n\nスレッドペインの既定のカラムを変更する機能を提供します。\n\n初期状態で、Thundebrirdは新しく認識したフォルダについて以下のカラムを表示します。\n\n * threadCol\n * attachmentCol\n * flaggedCol\n * subjectCol\n * unreadButtonColHeader\n * correspondentCol\n * senderCol\n * recipientCol\n * junkStatusCol\n * dateCol\n * locationCol\n\nしかしながら、「重要度」のようなカラムをすべてのフォルダですべてのユーザについて表示したいと思っても、それを実現する方法はありません。\nこのアドオンは、すべてのフォルダについての既定の表示カラムを定義する設定項目を提供します。\n例えば、「重要度」のカラムを初期状態で表示させたい場合は、MCD用設定ファイルに以下のようなディレクティブを書き加えます:\n\n    lockPref(\"extensions.set-default-columns@clear-code.com.columns\", [\n      \"priorityCol\",\n      \"threadCol\",\n      ...他の既定のカラムの一覧...\n      \"locationCol\"\n    ].join(\",\"));\n\nまた、同様の形式で `extensions.set-default-columns@clear-code.com.order` を設定すると、既定の並び順も変える事ができます。\n\nこのアドオンは主に企業利用を想定して開発されています。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/set-default-columns/edit",
+    "guid": "set-default-columns@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-12-24T13:19:16Z",
+    "name": {
+        "en-US": "Set Default Columns",
+        "ja": "Set Default Columns"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.98384,
+        "count": 3,
+        "average": 4,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/set-default-columns/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/521266",
+    "slug": "set-default-columns",
+    "status": "public",
+    "summary": {
+        "en-US": "Provides ability to set default visibility of columns in the thread pane.",
+        "ja": "スレッドペインの既定のカラムを変更する機能を提供します。"
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/set-default-columns/",
+    "weekly_downloads": 30
+}

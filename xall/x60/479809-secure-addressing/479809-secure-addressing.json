@@ -1,0 +1,219 @@
+{
+    "id": 479809,
+    "authors": [
+        {
+            "id": 10470256,
+            "name": "Hiroya Matsuba",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Hry_Matsuba/",
+            "username": "Hry_Matsuba",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 3414,
+    "categories": {
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468999,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/secure-addressing/versions/2468999",
+        "files": [
+            {
+                "id": 1012169,
+                "created": "2018-12-11T04:13:38Z",
+                "hash": "sha256:38b30cb9de8ef274ed0a29d960ab38956c8707c7a31052fbbbdfcab01827da4f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 63645,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012169/secure_addressing-1.9-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "Works (only) with Thunderbird 60.",
+            "ja": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secure-addressing/versions/1.9",
+        "version": "1.9"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on provides features to avoid sending emails to wrong addresses.\n\n<strong>Provided features</strong>\n[Confirmation window]\nA confirmation window appears when you try to send an e-mail. This allows you to finally check the e-mail addresses and attached files.\n<ul><li>Last sent date is displayed for each recipient.</li><li>You have to click all the check-boxes to actually send the email. There is an option to have all the addresses confirmed by default.</li></ul>\n[Recipient's affiliation look-up]\nAfter you enter the recipients e-mail address, this add-on looks up his/her name and affiliation in your local address book or LDAP directory and displays them together with the e-mail address. This will help you correctly distinguish people with similar names, especially in a large company.\n\n[Sender's affiliation look-up]\nThis add-on also looks up sender's name and affiliation and displays them in additional columns of main window (where received emails are listed). You must explicitly select these columns at the menu shown at the right most of column headers.\n\n[Safe auto completion]\nThis add-on modifies behavior of auto completion of recipient's e-mail addresses. \n<ul><li>You must explicitly enter asterisk (*) to auto complete e-mail addresses outside of your company.</li> <li>You can choose address books used for auto completion only if you enter plus(+) before the recipient's e-mail address.</li><li>You can set up maximal number of suggestions shown by auto completion. Setting this value to one (default) suppresses showing people with similar email addresses.</li><li>You must enter at least 5 characters for auto completion to work .</li></ul>\n<strong>Full features list</strong>\nEach feature can be selectively disabled.\n<ul><li>Confirmation window upon sending</li><li>“Display Name”, “Company”, “Department”, and “Company” columns at the main window</li><li>Customized auto completion</li><li>Name and other information in To and Cc fields of outgoing emails will be stripped by default</li><li>Many columns at Contacts Sidebar of the composition window</li><li>“Info” button at the header information area of each received mail, which will pick up all the email addresses in the email.</li><li>Mail filter action “remove matching string from subject”. This can be used to remove annoying strings such as \"**** SPAM ****\" and increases possibility of an entire subject being displayed.  This filter action takes input string as regular expression. USE WITH THOROUGH TESTING WITH UNIMPORTANT EMAILS. NO METHOD IS PROVIDED TO RESTORE REMOVED STRINGS.</li></ul>\n<strong>How to use</strong>\n<ol><li>Go to preference window of this add-on</li><li>Register internal domains of your company</li><li>Register address books for affiliation look up. This can be set up separately for internal and external domains. Typical usage is that you use LDAP for internal addresses and local address books for external ones.</li><li>Register address books for auto completion. These is an option ”+”, which means the address books below this mark are used only if you add ”+” when you enter the recipient's e-mail address. You may want to put LDAP directory with thousands of people below the ”+” to prevent too many suggestions.</li><li>You can choose how many suggestions will be shown at auto completion. I recommend you to set it to 1 for best safety.</li></ol>\n<strong>Tips</strong>\n<ul><li>You can register ”@” as an internal domain if you want everything to be internal address</li><li>You can also register full mail addresses as internal domains</li><li>At the confirmation window, you can triple click any of the check boxes to mark all the addresses confirmed.</li><li>How to set up LDAP address book depends on your company's LDAP structure. <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/be858e8ae4fb8c8ff5f9b9f4dbd2b14cfbafd97fb0276a0275f7604d0efcd47a/https%3A//kb.wisc.edu/helpdesk/page.php%3Fid=13509\">https://kb.wisc.edu/helpdesk/page.php?id=13509</a> may be helpful.</li></ul>",
+        "ja": "このアドオンはメール誤送信防止のため、送信前の確認画面、メール作成画面における受信者のフルネームおよび所属の表示、受信メール一覧における送信者のフルネームおよび所属の表示機能を提供します。表示名の検索にはLDAPアドレス帳が指定でき、特に同姓同名が多い大企業などで有効です。また、このアドオンは、しばしば誤送信の原因となる送信アドレスの自動補完機能の動作を変更し、明示的にアスタリスク(*)を入力した場合のみ社外アドレスを補完します。特に影響の大きい社外への誤送信防止に役立ちます。\n\n[機能一覧（個別に無効化可能）]\n- 送信確認画面\n- 受信メール一覧における「表示名」「組織」「部署」「役職」の各列\n- 安全なアドレス補完\n- 送信メールのToおよびCcからアドレス帳の登録名を取り除き、メールアドレスのみを送信\n- メール作成画面のアドレスバーの検索結果に所属などを表示\n- 受信メール中に含まれるすべてのメールアドレスについて詳細情報を表示する \"Info\" ボタンの追加\n- フィルタアクション「マッチした文字列を件名から削除」の追加\n\n[使い方]\n1. 本アドオンの設定画面を開く\n2. 社内アドレスとみなすドメインを登録する\n3. フルネームや所属の検索に利用するアドレス帳を指定する。内部アドレス用、外部アドレス用を個別に設定可能。内部アドレスの検索にはLDAPを、外部アドレスの検索にはローカルのアドレス帳を利用することを推奨。\n4. 送信時のアドレス自動補完に使用するアドレス帳を選択する。上と同様、内外それぞれに異なるアドレス帳が選択可能。内部アドレス用の選択肢には特殊な意味を持つ\"+\"が表示される。\"+\"の下に置いたアドレス帳は、宛先メールアドレスの前に\"+\"を入力した場合のみ利用される。\"+\"の下にLDAPアドレス帳を指定し、大量の候補が存在し得るLDAPは明示的に利用することを推奨。\n5. 自動補完時に表示する候補の最大数を指定する。類似のアドレスを誤選択しないため、1が最も安全である。\n\n[Tips]\n- すべてのメールアドレスには\"@\"が含まれるため、内部ドメインとして\"@\"を登録することですべてを内部アドレスとみなして使用することができます（デフォルト）\n- @の前を含む完全なメールアドレスを内部ドメインとして登録することも可能です\n- アドレス確認画面では任意のアドレスをトリプルクリックすることで全員を確認済みにできます\n- LDAPの設定は <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/be858e8ae4fb8c8ff5f9b9f4dbd2b14cfbafd97fb0276a0275f7604d0efcd47a/https%3A//kb.wisc.edu/helpdesk/page.php%3Fid=13509\">https://kb.wisc.edu/helpdesk/page.php?id=13509</a> が役立つかもしれません。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/secure-addressing/edit",
+    "guid": "secure-addressing@matsuba.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-12-11T13:50:54Z",
+    "name": {
+        "en-US": "Secure Addressing",
+        "ja": "Secure Addressing"
+    },
+    "previews": [
+        {
+            "id": 122447,
+            "caption": {
+                "en-US": "Confirmation window",
+                "ja": "Confirmation window"
+            },
+            "image_size": [
+                700,
+                275
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/122/122447.png?modified=1530209082",
+            "thumbnail_size": [
+                320,
+                126
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/122/122447.png?modified=1530209082"
+        },
+        {
+            "id": 122448,
+            "caption": {
+                "en-US": "Name and affiliation look up",
+                "ja": "Name and affiliation look up"
+            },
+            "image_size": [
+                700,
+                228
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/122/122448.png?modified=1530209083",
+            "thumbnail_size": [
+                320,
+                104
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/122/122448.png?modified=1530209083"
+        },
+        {
+            "id": 122446,
+            "caption": {
+                "en-US": "Safe auto completion",
+                "ja": "Safe auto completion"
+            },
+            "image_size": [
+                700,
+                241
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/122/122446.png?modified=1530209083",
+            "thumbnail_size": [
+                320,
+                110
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/122/122446.png?modified=1530209083"
+        },
+        {
+            "id": 124807,
+            "caption": {
+                "en-US": "Preferences"
+            },
+            "image_size": [
+                356,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/124/124807.png?modified=1530209083",
+            "thumbnail_size": [
+                136,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/124/124807.png?modified=1530209083"
+        },
+        {
+            "id": 122445,
+            "caption": {
+                "en-US": "Address book selection",
+                "ja": "Address book selection"
+            },
+            "image_size": [
+                411,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/122/122445.png?modified=1530209084",
+            "thumbnail_size": [
+                157,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/122/122445.png?modified=1530209084"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.29118,
+        "count": 30,
+        "average": 4.3333,
+        "text_count": 30
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secure-addressing/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/479809",
+    "slug": "secure-addressing",
+    "status": "public",
+    "summary": {
+        "en-US": "This add-on provides features to avoid sending emails to wrong addresses. Key features are a confirmation window of recipient's addresses upon sending, name and affiliation look up at mail composition and main windows, and safe auto completion.",
+        "ja": "誤送信防止プラグインです。送信時に送信先アドレスと添付ファイルの確認ができるダイアログを表示します。また、LDAPを含むアドレス帳を参照し、送信先アドレス入力時および受信メッセージ一覧画面に送受信相手の登録名と所属を表示します。さらに、社外への重大な誤送信を防止するため、メール送信画面のアドレス自動補完では先頭にアスタリスク(*)を入力した場合のみ社外アドレスを補完します。"
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "address",
+        "confirmation",
+        "ldap",
+        "misaddress",
+        "誤送信"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secure-addressing/",
+    "weekly_downloads": 199
+}

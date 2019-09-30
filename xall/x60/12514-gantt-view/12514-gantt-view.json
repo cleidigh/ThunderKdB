@@ -1,0 +1,207 @@
+{
+    "id": 12514,
+    "authors": [
+        {
+            "id": 35213,
+            "name": "Joe Brochu",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/joe-brochu/",
+            "username": "joe-brochu",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 3544,
+    "categories": {
+        "thunderbird": [
+            "appearance",
+            "calendar"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2459467,
+        "compatibility": {
+            "thunderbird": {
+                "max": "64.*",
+                "min": "57.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gantt-view/versions/2459467",
+        "files": [
+            {
+                "id": 1002637,
+                "created": "2018-06-30T13:31:50Z",
+                "hash": "sha256:a1d209fe90aa2d2f7b38ce1b77cfb09601d94a067b4dc6fe9133485670d3fbba",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 105633,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1002637/gantt_view-1.0.0.60-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "Compatibility update for Thunderbird 57+ (currently in beta as of 2018-06-30)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gantt-view/versions/1.0.0.60",
+        "version": "1.0.0.60"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "A Gantt Chart view for Sunbird/Lightning.  It is built from the same core components as the standard views and is generally designed to integrate seamlessly with the existing views and controls. \n\n \nFeatures:\n- Selectable visible date range up to 2 years - although longer ranges may reduce performance. \n- Intuitive Item selection, Drag/Drop, and view panning \n- Select multiple events by dragging with a left-click \n- All selected events manipulated in the same way when one is dragged \n- Pan view with Middle-click \n- View will auto-scroll when cursor is near an edge while dragging or panning.  This is configurable in the preferences. \n- When clicking on an event header (at the left side of the view), the view will automatically scroll to the start of that event. \n- Optional progress bar displays on Tasks and Events (Event progress is determined by current time) \n- Title Ordinal Override - Allows manual sorting of items using a number at the start of the title. See documentation <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/adce7838ec01718718d7d0e7abe456ff62f98d2bf8ceb67f128d5ac1ccd6bb64/http%3A//ganttview.mozdev.org/features.html%23title_ordinal_override\">here</a>.\n- Quickly create a week-long or month-long event by double-clicking the week or month header \n- Completed tasks and events shown with strikethrough \n- \"Completed\" icons on tasks in view \n- Uses prefs such as \"Hide Days Off\" and \"First Day Of Week\" from main calendar options. \n- Current Day, Week, and Month highlighted. \n- Localizable \n\nPlease see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/699643e0b99872d5bea19a7ea75320a8e0bcf1578b0f23f05d47cea00a348c43/http%3A//ganttview.mozdev.org\">http://ganttview.mozdev.org</a> for more details and bug reporting\n\nNOTE - Version 1.0.0.0b7 is available <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/gantt-view/versions/?page=1#version-1.0.0.0b7\">here.</a> \n\nThis version fixes the incorrect week numbers and introduces a japanese locale.  It is currently awaiting a full review and will appear on the main page once the review is complete."
+    },
+    "developer_comments": {
+        "en-US": "Please see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/699643e0b99872d5bea19a7ea75320a8e0bcf1578b0f23f05d47cea00a348c43/http%3A//ganttview.mozdev.org\">http://ganttview.mozdev.org</a> for more details and bug reporting"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gantt-view/edit",
+    "guid": "{1510928E-A4FA-43C2-A9AF-99E521B90BC5}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://ganttview.mozdev.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/12/12514-64.png?modified=1530364858",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/12/12514-32.png?modified=1530364858",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/12/12514-64.png?modified=1530364858"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-07-02T21:59:51Z",
+    "name": {
+        "en-US": "Gantt View"
+    },
+    "previews": [
+        {
+            "id": 33484,
+            "caption": {
+                "en-US": "Gantt View"
+            },
+            "image_size": [
+                566,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/33/33484.png?modified=1530208563",
+            "thumbnail_size": [
+                216,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/33/33484.png?modified=1530208563"
+        },
+        {
+            "id": 33485,
+            "caption": {
+                "en-US": "Gantt View Selection Box can select multiple items"
+            },
+            "image_size": [
+                398,
+                253
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/33/33485.png?modified=1530208564",
+            "thumbnail_size": [
+                315,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/33/33485.png?modified=1530208564"
+        },
+        {
+            "id": 33486,
+            "caption": {
+                "en-US": "Dragging multiple items"
+            },
+            "image_size": [
+                481,
+                451
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/33/33486.png?modified=1530208564",
+            "thumbnail_size": [
+                213,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/33/33486.png?modified=1530208564"
+        },
+        {
+            "id": 33487,
+            "caption": {
+                "en-US": "Modifying item end date by dragging"
+            },
+            "image_size": [
+                307,
+                100
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/33/33487.png?modified=1530208564",
+            "thumbnail_size": [
+                307,
+                100
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/33/33487.png?modified=1530208564"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.27315,
+        "count": 32,
+        "average": 4.3125,
+        "text_count": 32
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gantt-view/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/12514",
+    "slug": "gantt-view",
+    "status": "public",
+    "summary": {
+        "en-US": "Gantt Chart view for Sunbird/Lightning"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://ganttview.mozdev.org/"
+    },
+    "tags": [
+        "calendar",
+        "gantt",
+        "productivity",
+        "project",
+        "tasks",
+        "view"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gantt-view/",
+    "weekly_downloads": 105
+}

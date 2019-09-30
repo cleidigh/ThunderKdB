@@ -1,0 +1,244 @@
+{
+    "id": 14385,
+    "authors": [
+        {
+            "id": 1236621,
+            "name": "DW-dev",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dw-dev/",
+            "username": "dw-dev",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1236/1236621.png?modified=1442452499"
+        }
+    ],
+    "average_daily_users": 13537,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468871,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/account-colors/versions/2468871",
+        "files": [
+            {
+                "id": 1012078,
+                "created": "2018-11-16T11:27:05Z",
+                "hash": "sha256:406dfe829df480be3cb2b8cf4bd0a2af62316b6097050ac6d5206189dff786ac",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 56540,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012078/account_colors-11.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "New features, changes and fixes in Version 11.1:\n\n    • New: Improved styling of Compose Windows.\n    • New: Improved compatibility with Thunderbird 60 and dark themes.\n    • New: Many small improvements to work better with Thunderbird 60 and dark themes.\n    • New: Options to reinstate default hover and select styles in Folder and Thread Panes.\n    • New: Options to set From font style and font size in Message Pane/Tab/Window.\n    • New: Option to color From background in Message Pane/Tab/Window.\n    • New: Option to make all Header Label fonts black in Compose Pane.\n    • New: Option to color Attachment fonts in Compose Pane.\n    • New: Option to color To/Cc/Bcc fonts in Compose Pane.\n    • New: Option to make all input Field fonts black in Compose Pane.\n    • New: Option to reinstate default hover style on From menu in Compose Pane.\n\n    • Chg: Improved appearance of From popup menu in Compose Pane.\n    • Chg: Removed option to make only To/Cc/Bcc fonts black in Compose Pane.\n    • Chg: White Fields Background option is now only applied on hover or focus.\n    • Chg: More use of CSS to handle ordering dependencies when styling Compose Pane.\n    • Chg: Incompatible with versions prior to Thunderbird 31.0.\n    • Chg: Compatible with Color Folders add-on version 1.1 (TB31).\n    • Chg: Compatible with CompactHeader add-on versions 2.0.9-2.1.6 (TB31-TB60).\n    • Chg: Compatible with Show InOut add-on version 1.2.1 (TB31-TB60).\n\n    • Fix: Hover indicator did not show in Folder or Thread Panes (TB60). Fixed.\n    • Fix: Hover indicator did not show on odd rows in Folder or Thread Panes (TB31-TB52). Fixed."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/account-colors/versions/11.1",
+        "version": "11.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "-----------------------------------------------------------------------------------------------------\n<b>Version 10.1 - Font colors can now be set for individual identities.</b>\n-----------------------------------------------------------------------------------------------------\n\n<b>OVERVIEW</b>\n\n<i>Account Colors</i> allows a font color and a background color to be associated with each POP3/IMAP account or identity. The colors for an account are the same as the colors for its default identity. Colors can be defined for a maximum of 60 identities.  The colors and other settings can be changed in the <i>Account Colors Options</i> dialog.\n\n<b>USER REFERENCE</b>\n\n<b>Accessing Account Colors Options</b>\n\nThe <i>Options Dialog</i> can be accessed in two ways:\n    • either by selecting <i>Tools</i> | <i>Account Colors Options...</i> on the Thunderbird main menu.\n    • or by selecting <i>Tools</i> | <i>Add-ons</i> on the Thunderbird main menu, and then clicking the <i>Options</i> button.\n\nThe first way is recommended, since it allows the coloring/styling changes to be seen while still in the <i>Options</i> dialog.\n\n<b>Font and Background Colors</b>\n\nThe font and background colors can be set for each account or identity. These colors can be applied to:\n    • <i>Account</i> &amp; <i>Folder</i> names and <i>Account</i> &amp; <i>Folder</i> backgrounds in the folder pane.\n    • <i>Subject</i> &amp; <i>From</i> names and row backgrounds in the thread pane (message list).\n    • <i>Recipient/Date/Size/Account/Priority</i> names in the thread pane (message list).\n    • <i>Subject</i> names and message header backgrounds in message pane/tabs/windows.\n    • <i>Subject</i> &amp; <i>From</i> names and message header backgrounds in  compose windows.\n    • <i>Subject</i>, <i>From</i>, <i>To/Cc/Bcc</i> &amp; <i>Attachment</i> backgrounds in compose windows.\n\nIn the thread pane and message pane/tabs/windows, the colors applied are based either on the account in which the folder containing the message is located, or on the account in which the message was received. Applying colors based on the account in which the message was received is especially useful when using a <i>Global Inbox</i> for POP3 messages or when using <i>Local Folders</i> to store POP3 and/or IMAP messages. \n\nIn compose windows, the colors applied are based on the <i>From</i> identity. After adding a new identity, the font and background colors must be defined in <i>Options</i>.\n\nIn compose windows, the <i>Black To/Cc/Bcc</i> option prevents the red highlighting of new email addresses, and the <i>White Default Field Backgrounds</i> option makes the default field background white instead of light gray (Thunderbird 31).\n\nIt is possible to retain Thunderbird's default background colors if <i>White</i> is selected as the background color.\n\n<b>Font Styles and Sizes</b>\n\nThe font style and font size can be changed for:\n    • <i>Account</i> names in the folder pane.\n    • <i>Subject</i> names in the message list.\n    • <i>Subject</i> names in message headers in message pane/tabs/windows.\n    • <i>Subject</i> names and <i>From</i> identities in message headers in compose windows.\n\n<b>Additional Styles</b>\n\nAdditional styles can be chosen to:\n    • bold or underline accounts/folders with new mail in the folder pane.\n    • not bold folders with unread messages in the folder pane.\n    • only bold the <i>Subject</i> and/or <i>From</i> of unread messages in the thread pane.\n    • show tree lines in the folder pane.\n    • show row stripes in the thread pane.\n    • use darker select bars when unfocussed in folder pane and thread pane.\n    • increase row spacing with font size in the folder pane and thread pane.\n\n<b>Options</b>\n\nThe <i>Options</i> dialog box has a tabbed interface. The first tab defines the font and background colors for each account or identity. The subsequent tabs choose whether the font/background colors are to be applied and also choose the font styles/sizes and additional styles to be applied for the folder pane, thread pane, message pane/tabs/windows and compose windows.\n\n<b>Compatibility</b>\n\nAccount Colors is compatible with the <i>Color Folders</i> add-on (Version 1.0 or later).\n\nAccount Colors is compatible with the <i>CompactHeader</i> add-on (Version 1.4.6 or later).\n\nAccount Colors is not compatible with the <i>Show InOut</i> add-on."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/account-colors/edit",
+    "guid": "accountcolors@DW-dev",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/14/14385-64.png?modified=1542367839",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/14/14385-32.png?modified=1542367839",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/14/14385-64.png?modified=1542367839"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2018-11-16T14:06:13Z",
+    "name": {
+        "en-US": "Account Colors"
+    },
+    "previews": [
+        {
+            "id": 128896,
+            "caption": {
+                "en-US": "Coloring of accounts and folders in Folder Pane, message rows/fields in Thread Pane (Message List) and message header in Message Pane."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128896.png?modified=1530208634",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128896.png?modified=1530208634"
+        },
+        {
+            "id": 128898,
+            "caption": {
+                "en-US": "Coloring of message header in a Message Tab."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128898.png?modified=1530208635",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128898.png?modified=1530208635"
+        },
+        {
+            "id": 128900,
+            "caption": {
+                "en-US": "Coloring of message header in a separate Message Window."
+            },
+            "image_size": [
+                600,
+                450
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128900.png?modified=1530208635",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128900.png?modified=1530208635"
+        },
+        {
+            "id": 129072,
+            "caption": {
+                "en-US": "Coloring of message header in a Compose Window (fields colored)."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/129/129072.png?modified=1530208635",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/129/129072.png?modified=1530208635"
+        },
+        {
+            "id": 129074,
+            "caption": {
+                "en-US": "Coloring of message header in a Compose Window (fields not colored)."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/129/129074.png?modified=1530208636",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/129/129074.png?modified=1530208636"
+        },
+        {
+            "id": 129076,
+            "caption": {
+                "en-US": "Account Colors Options dialog showing Account/Identity Colors tab for configuring font and background colors."
+            },
+            "image_size": [
+                697,
+                434
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/129/129076.png?modified=1530208636",
+            "thumbnail_size": [
+                320,
+                199
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/129/129076.png?modified=1530208636"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.12297,
+        "count": 104,
+        "average": 4.1346,
+        "text_count": 104
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/account-colors/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/14385",
+    "slug": "account-colors",
+    "status": "public",
+    "summary": {
+        "en-US": "Associates user-defined colors with accounts and identities.  Applies these colors to accounts, identities, folders, message list, message headers and compose headers.  Users will always know which accounts/identities they are working with."
+    },
+    "support_email": {
+        "en-US": "dw-dev@gmx.com"
+    },
+    "support_url": null,
+    "tags": [
+        "account",
+        "background",
+        "colors",
+        "compose",
+        "correct",
+        "folder",
+        "font",
+        "header",
+        "identity",
+        "list",
+        "message",
+        "pane",
+        "row",
+        "size",
+        "style",
+        "subject",
+        "tab",
+        "thread",
+        "tree",
+        "window"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/account-colors/",
+    "weekly_downloads": 293
+}

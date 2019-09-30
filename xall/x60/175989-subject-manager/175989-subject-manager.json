@@ -1,0 +1,376 @@
+{
+    "id": 175989,
+    "authors": [
+        {
+            "id": 5250414,
+            "name": "TrVTrV",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/trvtrv/",
+            "username": "trvtrv",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 2121,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/TrVTrVTrV/5",
+    "current_version": {
+        "id": 2468788,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "3.0a1pre"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/subject-manager/versions/2468788",
+        "files": [
+            {
+                "id": 1012015,
+                "created": "2018-10-31T07:25:25Z",
+                "hash": "sha256:18928852e44e5be876bca75461dc8d25364b8474d1e9949149f2ffb311d85e8f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 85664,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012015/subject_manager-1.2.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "* A new feature allows to reset automatically any counter (global, independant) at periodic time: each day/week/month/year.\n\n* Format and update settings for independant counters can now be defined independantly for each counter."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subject-manager/versions/1.2.0",
+        "version": "1.2.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>TB v68 compatibility note:\nThere is no plan to move the addon to the TB v68 \"standards\", and here is why:\n- Mozilla itself has decided not to work on compatibility developments and leave \"that\" to the addon developers.\nI don't know how much a mozilla developer is paid, but speaking for myself the sum of the contributions i have ever received for 6 free addons during almost 10 years are a figure with 3 digits max...\n- Besides the fact Mozilla leaves us doing the \"dirty work\", they are not even able to provide detailed information about how to make the old addons compatible with their new standards.\nI mean a relevant guide, not an information note explaining that the addons should be restartless, turned into webextensions and so on, and not even giving an example.\n- That is not the first time that Mozilla is acting as if addons developers and the community was not important.\nI have had already several bad experiences in the past when my addons got broken just because Mozilla changed something which used to work without even thinking about compatibility or giving information.\n- I'm tired of all this, and as i have another real job to afford my bills, i'm not ready to make all that effort for so few consideration.\n- It already took me thousands and thousands and thousands of hours to develop my addons, working everyday on making them the more stable and practical possible. Why would i do twice something which worked pretty well?\n- All my addons are Mozilla-licensed (~ free softwares), so sources are open for all developers which would be interested to follow the new Mozilla standards.\nI think i made this work the best professional i could, so my code is well structured and full of comments. If you do so, sending me a simple \"thank-you\" email would be greatly appreciated.\n- All my addons are already compatible with TB v60. Are there so much interest to move to TB v68?\nDo you change your toaster every year just because there are new ones on the market? I don't.\n- The choice is between v68 without addons or v60 with addons. Your call.\n</b>\n\n<b>Subject Manager</b> is a Thunderbird add-on which allows to manage subjects of composed emails.\nThe main purpose is to store user-defined subjects and offer a convenient way to insert them into subject field.\n\nFeatures are the following:\n\n* All platforms are supported. Tested versions are:\n- Windows: XP sp3 (x86), Seven Pro sp1 (x64);\n- Linux: Mandriva 2011-2 (x86);\n- Mac: OS X 10.7 / Lion (x64).\n\n* Available languages are: french (fr-FR), english (en-US), russian (ru-RU), swedish (sv-SE).\n\n* A toolbar button is automatically added next to 'Attach' button into composer window at first run. If the button is not displayed (or has been removed), it should be available when editing and customizing toolbar.\n\n* A list of main commands and user-defined subjects is available in a 'Subjects' button near native 'Subject' field. Picking a subject from the list inserts it automatically into 'Subject' field. This list is also available in 'Subject Manager' toolbar button context menu.\n\n* Available subjects are defined freely by user. Moreover, if advanced mode is enabled, a subject can contain some meta-data like current_date, current_time, counters, etc. which are parsed automatically when subject is inserted into subject field.\n\n* A default subject can be set to be automatically inserted as soon as compose dialog is opened.\n\n* 'Subjects' button can be located at the right of native 'Subject' field or can replace native 'Subject' label. 'Subjects' button can also be enabled or disabled.\n\n* Subject textbox allows autocompletion related to subjects list (TB &gt;= v3 only). From settings dialog, autocompletion feature can be enabled/disabled, set as case-sensitive/case-insensitive.\nWARNING: Autocompletion is not compatible with spellchecking, so enabling autocompletion disables spellchecking.\n\n* Current subject of email can be added to subjects list via context menu of toolbar button.\n\n* Current subject can be cleaned from automatically-generated prefixes such as \"Re:\", \"Fwd:\", etc. via context menu of toolbar button. Prefixes to remove are defined in settings dialog.\n\n* When cleaning subject from automatic prefixes it's possible to keep only the first one. This first prefix can also be replaced by a user-defined one. 2 replacement strings can be defined: 1 for 'reply' prefix, 1 for 'transfer' prefix. \n\n* Settings dialog allows to manage subjects list: add, remove, reorganize or sort naturally subjects.\n\n* The add-on provides a 'debug mode' which writes information into embedded error console (see Tools &gt; Error Console).\n\n* Error and warning messages are also written into error console (regardless debug mode is enabled or not).\nIf for any kind of reason the add-on seems not to work properly, open error console and look for messages regarding add-on which could give you information about the issue (all messages are prefixed by add-on name).\nIf the issue is reproducible and you think it's an add-on bug:\n1. Enable debug mode and enable 'Log messages in a file'.\n2. Click on 'Export settings' to create settings file.\n3. Proceed again (messages will be saved in debug log file').\n4. Contact us and report us relevant and maximum information regarding the issue:\n- screen captures of each step of the action which leads to the issue\n- screen captures of each settings tab\n- settings file\n- debug log file\nNB: Incomplete issue reports will not be answered.\n\nContact (bug reports, features request, etc.): subjmanager@gmail.com.\nNB: Usage support email will not be answered."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/subject-manager/edit",
+    "guid": "SubjectManager@gmail.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://dev.arqendra.net"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/175/175989-64.png?modified=1569437722",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/175/175989-32.png?modified=1569437722",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/175/175989-64.png?modified=1569437722"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2018-11-01T22:20:48Z",
+    "name": {
+        "en-US": "Subject Manager"
+    },
+    "previews": [
+        {
+            "id": 63334,
+            "caption": {
+                "fr": "",
+                "en-US": "Selection of a subject from the list (Windows), above: through dedicated toolbar button, below: through dedicated 'Subjects' button"
+            },
+            "image_size": [
+                700,
+                516
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/63/63334.png?modified=1530208847",
+            "thumbnail_size": [
+                271,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/63/63334.png?modified=1530208847"
+        },
+        {
+            "id": 48016,
+            "caption": {
+                "en-US": "Selection of a subject from the list (Linux), above: through dedicated toolbar button, below: through dedicated 'Subjects' button"
+            },
+            "image_size": [
+                617,
+                423
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/48/48016.png?modified=1530208847",
+            "thumbnail_size": [
+                292,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/48/48016.png?modified=1530208847"
+        },
+        {
+            "id": 83566,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (1) (Windows)"
+            },
+            "image_size": [
+                445,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/83/83566.png?modified=1530208847",
+            "thumbnail_size": [
+                170,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/83/83566.png?modified=1530208847"
+        },
+        {
+            "id": 88424,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (1) (Linux)"
+            },
+            "image_size": [
+                515,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/88/88424.png?modified=1530208848",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/88/88424.png?modified=1530208848"
+        },
+        {
+            "id": 88904,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (1) (Mac)"
+            },
+            "image_size": [
+                514,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/88/88904.png?modified=1530208848",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/88/88904.png?modified=1530208848"
+        },
+        {
+            "id": 83568,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (2) (Windows)"
+            },
+            "image_size": [
+                445,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/83/83568.png?modified=1530208848",
+            "thumbnail_size": [
+                170,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/83/83568.png?modified=1530208848"
+        },
+        {
+            "id": 88426,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (2) (Linux)"
+            },
+            "image_size": [
+                515,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/88/88426.png?modified=1530208849",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/88/88426.png?modified=1530208849"
+        },
+        {
+            "id": 88906,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (2) (Mac)"
+            },
+            "image_size": [
+                514,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/88/88906.png?modified=1530208849",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/88/88906.png?modified=1530208849"
+        },
+        {
+            "id": 83570,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (3) (Windows)"
+            },
+            "image_size": [
+                445,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/83/83570.png?modified=1530208849",
+            "thumbnail_size": [
+                170,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/83/83570.png?modified=1530208849"
+        },
+        {
+            "id": 88428,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (3) (Linux)"
+            },
+            "image_size": [
+                515,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/88/88428.png?modified=1530208850",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/88/88428.png?modified=1530208850"
+        },
+        {
+            "id": 88908,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (3) (Mac)"
+            },
+            "image_size": [
+                514,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/88/88908.png?modified=1530208850",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/88/88908.png?modified=1530208850"
+        },
+        {
+            "id": 88422,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (4) (Windows)"
+            },
+            "image_size": [
+                445,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/88/88422.png?modified=1530208850",
+            "thumbnail_size": [
+                170,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/88/88422.png?modified=1530208850"
+        },
+        {
+            "id": 88430,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (4) (Linux)"
+            },
+            "image_size": [
+                515,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/88/88430.png?modified=1530208851",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/88/88430.png?modified=1530208851"
+        },
+        {
+            "id": 88910,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (4) (Mac)"
+            },
+            "image_size": [
+                514,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/88/88910.png?modified=1530208851",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/88/88910.png?modified=1530208851"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.72969,
+        "count": 20,
+        "average": 4.8,
+        "text_count": 20
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subject-manager/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/175989",
+    "slug": "subject-manager",
+    "status": "public",
+    "summary": {
+        "en-US": "Manages subject of composed emails."
+    },
+    "support_email": {
+        "en-US": "subjmanager@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "auto",
+        "forward",
+        "header",
+        "list",
+        "manager",
+        "reply",
+        "subject",
+        "subjectmanager",
+        "transfer"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subject-manager/",
+    "weekly_downloads": 73
+}

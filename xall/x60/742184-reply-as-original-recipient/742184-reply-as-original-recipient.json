@@ -1,0 +1,139 @@
+{
+    "id": 742184,
+    "authors": [
+        {
+            "id": 12582176,
+            "name": "Qiqitori",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Qiqitori/",
+            "username": "Qiqitori",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12582/12582176.png?modified=1475930346"
+        }
+    ],
+    "average_daily_users": 341,
+    "categories": {
+        "thunderbird": [
+            "composition",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468869,
+        "compatibility": {
+            "thunderbird": {
+                "max": "64.*",
+                "min": "17.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/reply-as-original-recipient/versions/2468869",
+        "files": [
+            {
+                "id": 1012076,
+                "created": "2018-11-16T02:15:43Z",
+                "hash": "sha256:6f573abb95d929c4a0e6e924eede668406beb6a32d4e7582859b8f5aa0164ed8",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 3934,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012076/reply_as_original_recipient-1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "This version adds an option in the config editor that allows the extension to work even if there is no plus character in the To: address. The option is at “extensions.replyasoriginalrecipient.use_plus”. The default is true, meaning that the address has to contain a plus character. (That's the only change. The default behavior is exactly the same as in the previous version. If you aren't interested in this feature, there's no need to upgrade.)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/reply-as-original-recipient/versions/1.1",
+        "version": "1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This Thunderbird extension automatically changes the From: field in replies to whatever the original sender’s email had in To:, but only if there is a + in the email and there is only one address in To:.",
+        "de": "Mit diesem Thunderbird-Addon wird bei Antworten auf angekommene Emails, die im “An:”-Feld eine Email-Adresse mit einem “+” enthalten, das “Von:”-Feld automatisch auf jene “An:”-Email-Adresse gesetzt. Allerdings funktioniert dies nur bei Emails, die nur einen “An:”-Empfänger haben.",
+        "ja": "返信の時、受信したメールの「宛先」に入っているメールアドレスを返信の送信元に設定してくれるThunderbirdアドオンを作ってみました。\n（ただし、仕様上、宛先のメールアドレスに「+」が入っていないと動作しません。メールアドレスが二つ以上入っている場合も動作しません。）"
+    },
+    "developer_comments": {
+        "en-US": "<ul><li> Doesn't do anything for replies to emails with multiple recipients.</li><li> Gets in the way when you're replying to an email from a \"Sent\" folder - if the To: address contains a + character, sets From: to the original recipient as advertised, but that's not what you want usually.</li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/reply-as-original-recipient/edit",
+    "guid": "replyasoriginalrecipient@qiqitori.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://blog.qiqitori.com/?p=194",
+        "de": "http://blog.qiqitori.com/?p=194",
+        "ja": "http://blog.qiqitori.com/?p=194"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/742/742184-64.png?modified=1485713654",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/742/742184-32.png?modified=1485713654",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/742/742184-64.png?modified=1485713654"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-11-19T22:18:40Z",
+    "name": {
+        "en-US": "Reply As Original Recipient",
+        "de": "Reply As Original Recipient",
+        "ja": "Reply As Original Recipient"
+    },
+    "previews": [
+        {
+            "id": 179500,
+            "caption": null,
+            "image_size": [
+                542,
+                364
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/179/179500.png?modified=1530209351",
+            "thumbnail_size": [
+                298,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/179/179500.png?modified=1530209351"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.25003,
+        "count": 7,
+        "average": 4.4286,
+        "text_count": 7
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/reply-as-original-recipient/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/742184",
+    "slug": "reply-as-original-recipient",
+    "status": "public",
+    "summary": {
+        "en-US": "Reply with the From: field set to the To: field from the original email.",
+        "de": "Bei Antworten die Absender-Email-Adresse automatisch auf die in der originalen Email angegebenen Empfänger-Adresse setzen.",
+        "ja": "メールに返信する時、受信したメールの宛先をそのまま送信元に設定してくれるアドオン。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://blog.qiqitori.com/?p=194",
+        "de": "http://blog.qiqitori.com/?p=194",
+        "ja": "http://blog.qiqitori.com/?p=194"
+    },
+    "tags": [
+        "from",
+        "identity",
+        "reply"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/reply-as-original-recipient/",
+    "weekly_downloads": 43
+}

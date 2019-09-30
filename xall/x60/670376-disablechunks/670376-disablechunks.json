@@ -1,0 +1,170 @@
+{
+    "id": 670376,
+    "authors": [
+        {
+            "id": 5616758,
+            "name": "thunderpec",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/thunderpec/",
+            "username": "thunderpec",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 91,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1781446,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "27.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/disablechunks/versions/1781446",
+        "files": [
+            {
+                "id": 370098,
+                "created": "2015-11-18T23:01:36Z",
+                "hash": "sha256:3e3b7fd588ce1922f3f50df800a16bbafa59600e5578719e7063aeb5d79d6c6a",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 5753,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/370098/disablechunks-1.0.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": null,
+        "reviewed": "2015-11-20T09:03:10Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disablechunks/versions/1.0.0",
+        "version": "1.0.0"
+    },
+    "default_locale": "it",
+    "description": {
+        "en-US": "This addon disable the IMAP chunking algoritm, used by Thunderbird in the dialogue with some IMAP servers, that, sometimes, \ncauses corruption both in email attachments and in signature verification for digitally signed messages.\nThe addon modifies the <b>mail.imap.min_chunk_size_threshold</b> preference value by setting it to 100000000. \nIt is a workaroud  to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0a71a04eec102f309dd1ab3b5e08b11383462dd76fa5a2d9bb85e1a0aa98fa23/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1216951\">bug 1216951</a>.\nThe addon enables the workaroud at its installation and disables it on uninstalling, by resetting the preference value at its default (98304).",
+        "it": "Questa estensione disabilita il download del contenuto dei messaggi di posta 'a pezzi' (chunk), utilizzato da Thunderbird con alcuni server di posta IMAP, \nche può corrompere sia il contenuto di allegati che la verifica della firma elettronica di messaggi firmati digitalmente, in presenza di allegati di grandi dimensioni.\nL'estensione agisce sulla preferenza <b>mail.imap.min_chunk_size_threshold</b>, settando il suo valore a 100000000, e fornendo una soluzione al <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/0a71a04eec102f309dd1ab3b5e08b11383462dd76fa5a2d9bb85e1a0aa98fa23/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1216951\">bug 1216951</a>.\nPer abilitare la soluzione è sufficiente installare questa estensione. \nPer disabilitare la soluzione e riportare la preferenza al valore di default (98304), è sufficiente disinstallare  questa estensione."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/disablechunks/edit",
+    "guid": "dchunks.thunderpec@gmail.com",
+    "has_eula": true,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/670/670376-64.png?modified=1448187998",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/670/670376-32.png?modified=1448187998",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/670/670376-64.png?modified=1448187998"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-11-20T09:03:10Z",
+    "name": {
+        "en-US": "DisableChunks",
+        "it": "DisableChunks"
+    },
+    "previews": [
+        {
+            "id": 168427,
+            "caption": {
+                "en-US": "Normal Situation",
+                "it": "Situazione Normale"
+            },
+            "image_size": [
+                700,
+                302
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168427.png?modified=1530209286",
+            "thumbnail_size": [
+                320,
+                138
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168427.png?modified=1530209286"
+        },
+        {
+            "id": 168428,
+            "caption": {
+                "en-US": "DisableChunks Installed",
+                "it": "DisableChunks installato"
+            },
+            "image_size": [
+                700,
+                259
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/168/168428.png?modified=1530209287",
+            "thumbnail_size": [
+                320,
+                118
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/168/168428.png?modified=1530209287"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disablechunks/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/670376",
+    "slug": "disablechunks",
+    "status": "public",
+    "summary": {
+        "en-US": "The addon modifies the mail.imap.min_chunk_size_threshold preference value by setting it to 100000000. \nIt is a workaroud to bug 1216951",
+        "it": "L'estensione agisce sulla preferenza mail.imap.min_chunk_size_threshold, settando il suo valore a 100000000, e fornendo una soluzione al bug 1216951"
+    },
+    "support_email": {
+        "it": "supporto@pocketpec.it"
+    },
+    "support_url": {
+        "it": "http://www.pocketpec.it"
+    },
+    "tags": [
+        "firma digitale",
+        "grandi allegati",
+        "pec",
+        "posta certificata",
+        "thunderpec"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disablechunks/",
+    "weekly_downloads": 31
+}

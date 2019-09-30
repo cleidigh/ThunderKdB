@@ -1,0 +1,164 @@
+{
+    "id": 9695,
+    "authors": [
+        {
+            "id": 494096,
+            "name": "Gary Kwong",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/gary-kwong/",
+            "username": "gary-kwong",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1159,
+    "categories": {
+        "firefox": [
+            "appearance"
+        ],
+        "seamonkey": [
+            "interface-customizations"
+        ],
+        "thunderbird": [
+            "appearance"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1906162,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "45.0a1"
+            },
+            "thunderbird": {
+                "max": "63.*",
+                "min": "45.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/viewabout/versions/1906162",
+        "files": [
+            {
+                "id": 476556,
+                "created": "2016-08-02T21:36:55Z",
+                "hash": "sha256:a5af08b57b76c97d53c7a9c17776cf86c9b51feea722462c46b5f22112e4725d",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 41506,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/476556/viewabout-2.1.2-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "## 2.1.2\n* Mark as multiprocess-compatible"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/viewabout/versions/2.1.2",
+        "version": "2.1.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "A Mozilla Firefox / Thunderbird add-on to open up available about: dialogs, including those activated by other extensions.\n\nViewAbout <strong>will not be ported to WebExtensions</strong> once Firefox 57 is released, because:\n\n* about: dialogs such as about:config, about:addons and about:debugging <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4d8bef98428e5c6afc318034f593ce55463d59821ce84f1abb29a7098a3e0f90/https%3A//developer.mozilla.org/en-US/Add-ons/WebExtensions/API/tabs/create\">are privileged and cannot be opened</a>\n* about:about is now available for Firefox\n\n<strong>Thus, the last version where ViewAbout will work is 56.</strong>\n\nStandard:\nabout:\nabout:about\nabout:accounts\nabout:addons\nabout:buildconfig\nabout:cache (and related)\nabout:checkerboard\nabout:config\nabout:crashes\nabout:credits\nabout:debugging\nabout:devtools-toolbox\nabout:downloads\nabout:healthreport\nabout:home\nabout:license (generic Toolkit license)\nabout:logo\nabout:memory\nabout:mozilla\nabout:networking\nabout:newtab\nabout:performance\nabout:permissions\nabout:plugins\nabout:preferences\nabout:privatebrowsing\nabout:profiles\nabout:rights\nabout:robots\nabout:serviceworkers\nabout:sessionrestore\nabout:support\nabout:sync-log\nabout:sync-tabs\nabout:telemetry\nabout:webrtc\nabout:welcomeback\n\nRelated to other add-ons:\nabout:downthemall\nabout:me\nabout:tabs\n\nSeemingly useless:\nabout:certerror\nabout:neterror\n\nThese windows can be closed using Ctrl (or Cmd)-w. Note that some about: menu options may not show up in applications that do not support them.\n\nViewAbout started initially from a need to view about:crashes on Thunderbird."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/viewabout/edit",
+    "guid": "viewabout@rumblingedge.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/nth10sd/viewabout"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/search-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/search-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/search-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-08-02T21:43:27Z",
+    "name": {
+        "en-US": "ViewAbout"
+    },
+    "previews": [
+        {
+            "id": 176877,
+            "caption": {
+                "en-US": "about:crashes in Thunderbird"
+            },
+            "image_size": [
+                700,
+                413
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/176/176877.png?modified=1530208439",
+            "thumbnail_size": [
+                320,
+                189
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/176/176877.png?modified=1530208439"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.68372,
+        "count": 16,
+        "average": 3.75,
+        "text_count": 16
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/viewabout/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/9695",
+    "slug": "viewabout",
+    "status": "public",
+    "summary": {
+        "en-US": "Enables access to various about: dialogs from the View menu."
+    },
+    "support_email": {
+        "en-US": "nth10sd@gmail.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/nth10sd/viewabout"
+    },
+    "tags": [
+        "jetpack",
+        "menu"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/viewabout/",
+    "weekly_downloads": 59
+}

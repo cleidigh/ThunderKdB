@@ -1,0 +1,275 @@
+{
+    "id": 478179,
+    "authors": [
+        {
+            "id": 2624362,
+            "name": "wang opera",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/wang-opera/",
+            "username": "wang-opera",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 7829,
+    "categories": {
+        "seamonkey": [
+            "downloading-and-file-management"
+        ],
+        "thunderbird": [
+            "folders-and-filters",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/operawang/4.99USD",
+    "current_version": {
+        "id": 2468532,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.58",
+                "min": "2.57"
+            },
+            "thunderbird": {
+                "max": "63.0",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/awesome-auto-archive/versions/2468532",
+        "files": [
+            {
+                "id": 1011755,
+                "created": "2018-09-02T09:22:20Z",
+                "hash": "sha256:75d03110aaacde25cc2bb511b69aa6b9dd749d4a31e6c7035e3626c91e09055b",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 89943,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011755/awesome_auto_archive-0.8-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "Works with TB 60 release and TB 63 nightly"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/awesome-auto-archive/versions/0.8",
+        "version": "0.8"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "You  can define rules like\n<ul><li>Archive messages that from someone with subject test and 60 days old within Inbox and it's sub directory</li><li>Move messages that from foo with subject bar and 60 days old within src folder and it's sub directory to local folders, keeps the folder hierarchy.</li><li>Copy messages from one virtual folder to another folder</li><li>Delete all messages from Junk folder after 7 days</li></ul>\nIf you have <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/gmailui/\" rel=\"nofollow\">Expression Search / GMailUI</a> or <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/filtaquilla/\" rel=\"nofollow\">FiltaQuilla</a> installed, you can even have regular expression search for subject(both addon) or sender(only Expression Search/GmailUI).\n\nThis addon support \"From\", \"Recipient\", \"Subject\" filters for rule, if you would like more complicated filter or folder selection, please try 'Saved Search Folder' and select the folder as \"Source Folder\".\n\nThe build-in filters lack of method to run periodically (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=864187\" rel=\"nofollow\">bug 864147</a>), and can only set based on accounts instead of folders (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=294632\" rel=\"nofollow\">bug 294632</a>).\n\nThis addon implement the auto archive(<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=536169\" rel=\"nofollow\">bug 536169</a>), and auto backup / delete (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=93094\" rel=\"nofollow\">bug 93094</a>) feature.\n\nIt's was inspired by <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/autoarchive/\" rel=\"nofollow\">autoarchive</a> but autoarchive can't deal with sub folders.\n<a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/autoarchivereloaded/\" rel=\"nofollow\">AutoarchiveReloaded</a> is much better than autoarchive but still can't define rules. So I wrote this one.\n\nPlease report bugs @ <a href=\"https://github.com/wangvisual/autoarchive/issues\" rel=\"nofollow\">https://github.com/wangvisual/autoarchive/issues</a>\n\nVersion History:\n0.8:\nWorks with TB 60 release and TB 63 nightly\n\n0.7:\nWorks with TB 56 nightly\n\n0.6:\nFixed a critical bug that cause duplicate emails for POP3 in version 0.5\nBackup rules in profile folder to avoid lost rules\nCan give detail skip reason for why messages was not moved/copied etc.\nMinor issues fixed\nDrop support for TB &lt; 24.\n\n0.5:\nAdded size &amp; tag filter, hide by default.\nUser can config how to fill the filed when generate rule from email context menu\nCheck if server can be connected before running\nShow progress and summary in activity manager\nAdded option to delete duplicate messages in source folder when moving\nCan select folder like account name or [Gmail]\nFixed an issue that 'unread mail' rule in advanced settings is not work\nFixed issue when folder name contains blanks\nSupport rules that contain non-ASCII characters\nCompatible with TB13 &amp; TB31 nightly change\n\n0.4:\nShow summary of finished rule in status bar &amp; tooltip of Archie(the purple alien)\nCan temperately disable schedule for 1 hour / 4 hours etc\nAdded 'Apply' button\nSkip busy(locked) folders\nContext menu for creating rule based on message selected\nSet the min height of the perf dialog\nThe popup time of the alert window now can be config\nCompatible with TB 17~30 and SeaMonkey 2.20~2.27\n\n0.3:\nFixed issues with Linux/MacOS\nAdd 'Recipient' to filter\nUser can config how the folder show as\nMinor bugs fixed and added other bugs too.\n\n0.2:\nDo not archive messages that already in archive folder.\nAdded dry run mode, dry run button, and dry run summary.\nAdded batch run limitations.\nFixed a bug that always include sub folders (JavaScript treat strings \"0\" as true)\nUpdate folders before call search\nUpdate folders for Archive action\nUse createSubfolder instead of createStorageIfMissing to prevent losing control issue\nAdd Watch dog\nUpdate status bar text\nOnly wait for needed idle time.\nWhen in offline mode, don't change mails on server.\nMake the preference dialog not so inscrutable by adding a header.\n\n0.1:\nInitial public release\nSupport Archive/Move/Delete/Copy actions\nSupport sub folders\nWhen Move/Copy, user can choose to keep folder structures (select scope hierarchy)\nTagged/Starred/Unread mails can have exception days before actions.\nYou can config when the addon activate, first start time / next start time etc, and can make it activate only after some time of computer idle.\nStatus bar icon(Archie) for status of the the addon."
+    },
+    "developer_comments": {
+        "en-US": "please report issues @ <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c20b24fff4bbc9385eedb8ed7f40b8cce9850549ce01086fb2f8efa88793aa49/https%3A//github.com/wangvisual/autoarchive/issues\">https://github.com/wangvisual/autoarchive/issues</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/awesome-auto-archive/edit",
+    "guid": "awsomeautoarchive@opera.wang",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/wangvisual/autoarchive"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/478/478179-64.png?modified=1535880363",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/478/478179-32.png?modified=1535880363",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/478/478179-64.png?modified=1535880363"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-09-24T11:07:30Z",
+    "name": {
+        "en-US": "Awesome Auto Archive"
+    },
+    "previews": [
+        {
+            "id": 122686,
+            "caption": {
+                "en-US": "user defined rules in version 0.2"
+            },
+            "image_size": [
+                700,
+                340
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/122/122686.png?modified=1530209135",
+            "thumbnail_size": [
+                320,
+                155
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/122/122686.png?modified=1530209135"
+        },
+        {
+            "id": 122685,
+            "caption": {
+                "en-US": "can trade tagged/stared/unread mails differently.\r\n\r\nYou can also config the addon only start to works when computer is idle.\r\n\r\nAnd batch limit can be set to prevent change too much emails at one run."
+            },
+            "image_size": [
+                413,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/122/122685.png?modified=1530209135",
+            "thumbnail_size": [
+                157,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/122/122685.png?modified=1530209135"
+        },
+        {
+            "id": 124598,
+            "caption": {
+                "en-US": "User can disable the auto schedule for a period of time, in version 0.4"
+            },
+            "image_size": [
+                420,
+                185
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/124/124598.png?modified=1530209136",
+            "thumbnail_size": [
+                320,
+                141
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/124/124598.png?modified=1530209136"
+        },
+        {
+            "id": 121881,
+            "caption": {
+                "en-US": "user defined rules in version 0.1"
+            },
+            "image_size": [
+                700,
+                316
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/121/121881.png?modified=1530209136",
+            "thumbnail_size": [
+                320,
+                144
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/121/121881.png?modified=1530209136"
+        },
+        {
+            "id": 124827,
+            "caption": {
+                "en-US": "Context menu for 'create rule based on email'"
+            },
+            "image_size": [
+                700,
+                482
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/124/124827.png?modified=1530209137",
+            "thumbnail_size": [
+                290,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/124/124827.png?modified=1530209137"
+        },
+        {
+            "id": 124826,
+            "caption": {
+                "en-US": "automatically created rule based on email, with tooltip as help"
+            },
+            "image_size": [
+                700,
+                81
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/124/124826.png?modified=1530209137",
+            "thumbnail_size": [
+                320,
+                37
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/124/124826.png?modified=1530209137"
+        },
+        {
+            "id": 128714,
+            "caption": {
+                "en-US": "show progress in activity manager"
+            },
+            "image_size": [
+                561,
+                108
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128714.png?modified=1530209137",
+            "thumbnail_size": [
+                320,
+                62
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128714.png?modified=1530209137"
+        },
+        {
+            "id": 128716,
+            "caption": {
+                "en-US": "show summary in activity manager"
+            },
+            "image_size": [
+                296,
+                122
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128716.png?modified=1530209138",
+            "thumbnail_size": [
+                296,
+                122
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128716.png?modified=1530209138"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.317,
+        "count": 37,
+        "average": 4.3514,
+        "text_count": 37
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/awesome-auto-archive/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/478179",
+    "slug": "awesome-auto-archive",
+    "status": "public",
+    "summary": {
+        "en-US": "Automatically do Archive/Copy/Delete/Move actions based on user defined rules"
+    },
+    "support_email": {
+        "en-US": "opera.wang+aaa@gmail.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/wangvisual/autoarchive/wiki/Help"
+    },
+    "tags": [
+        "archive",
+        "backup",
+        "batch",
+        "copy",
+        "sync"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/awesome-auto-archive/",
+    "weekly_downloads": 364
+}

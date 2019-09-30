@@ -1,0 +1,261 @@
+{
+    "id": 14384,
+    "authors": [
+        {
+            "id": 1236621,
+            "name": "DW-dev",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dw-dev/",
+            "username": "dw-dev",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1236/1236621.png?modified=1442452499"
+        }
+    ],
+    "average_daily_users": 13363,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468552,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "24.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/calendar-tweaks/versions/2468552",
+        "files": [
+            {
+                "id": 1011771,
+                "created": "2018-09-05T15:15:41Z",
+                "hash": "sha256:ed746662f01c3ec45e4f5d56735aff4a71634a1bed9b4591e86dd4c41c9be8f6",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 72463,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011771/calendar_tweaks-7.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-GB": "",
+            "en-US": "New features, changes and fixes in Version 7.1:\n\n    • Chg: Removed &lt;em:requires&gt; tag from install manifest (install.rdf).\n    • Chg: Improved background gradient for Today Multiweek/Month Day Header.\n    • Chg: Improved background gradient for Selected Day Multiweek/Month Day Header.\n    • Chg: Improved background gradient for Multiweek/Month Date Headers.\n    • Chg: Changed restore default colors from 'Lightning 2.*' to 'Lightning 6.2'.\n\n    • Fix: Call to getCompositeCalendar() failed during initialization. Fixed.\n    • Fix: Call to getContrastingTextColor() failed during initialization. Fixed."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/calendar-tweaks/versions/7.1",
+        "version": "7.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "-------------------------------------------------------------------------------------\n<b>Version 7.1</b>\n  • Minor improvements to styling of day and date headers.\n  • Fixes bugs that caused incorrect colors on initial startup.\n-------------------------------------------------------------------------------------\n\n<b>OVERVIEW</b>\n\nCalendar Tweaks allows a wide range of tweaks to be applied to the Thunderbird/Lightning calendar to improve its usability, most importantly:\n\n    • Applying new <i>Today</i> and <i>Selected Day</i> styles - and customizing the background and border colors.\n    • Coloring event backgrounds with the category colors.\n    • Adding icons for repeating events and exceptions.\n\nThe default colors used in the new <i>Today</i> and <i>Selected Day</i> styles are similar to those in MS Outlook.\n\nThe styles and colors can be changed in the <i>Calendar Tweaks Options</i> dialog.\n\n<b>USER REFERENCE</b>\n\n<b>Accessing Calendar Tweaks Options</b>\n\nThe <i>Options</i> dialog can be accessed in two ways:\n    • either by selecting <i>Tools</i> | <i>Calendar Tweaks Options...</i> on the Thunderbird main menu.\n    • or by selecting <i>Tools</i> | <i>Add-ons</i> on the Thunderbird main menu, and then clicking the <i>Options</i> button.\n\nThe first way is recommended, since it allows the styling/coloring changes to be seen while still in the <i>Options</i> dialog.\n\n<b>Day Styles</b>\n\nThere are three options that control the use of new day styles:\n\n<i>Use new 'Today' style (Month/Multiweek/Week Views) (Mini-Month)</i>\n    • Applies 'Today' style with customized background and border colors as defined in the <i>Day Colors</i> options tab.\n\n<i>Use new 'Selected Day' style (Month/Multiweek/Week Views) (Mini-Month)</i>\n    • Applies 'Selected Day' style with customized background and border colors as defined in the <i>Day Colors</i> options tab.\n\n<i>Show 'Today' and 'Selected Day' styles on day view (Day View)</i>\n    • Forces the colored backgrounds and borders of the 'Today' and 'Selected Day' styles to be shown in the <i>Day View</i>.\n\n<b>Miscellaneous</b>\n\nThere are three options that control the use of miscellaneous tweaks:\n\n<i>Add shaded background on box date labels (Month/Multiweek Views)</i>\n    • Makes the date labels more visible.\n\n<i>Set more distinct shading on other months (Month View)</i>\n    • Makes it easier to distinguish working days and weekend days in months other than the current month.\n\n<i>Add label for all day events row/column (Week/Day Views)</i>\n    • Makes it clearer which events are <i>All Day</i> events.\n\n<b>Event Styles</b>\n\nThere are six options that control the use of event styles:\n\n<i>Add border around selected events (All Views)</i>\n    • Makes the selected event more visible.\n\n<i>Show time and event on single line if no date (Today Pane)</i>\n    • Events in the Today Pane that do not have an explicit date will be displayed on one line instead of two lines.\n\n<i>Reduce height of events (Month/Multiweek Views) (Today Pane)</i>\n    • All event boxes will be displayed with a slightly reduced height.\n\n<i>Apply calendar event styling to event list (Today Pane)</i>\n    • Shows events in the <i>Today Pane</i> with the same shape, layout and coloring as events in the main calendar views.\n\n<i>Apply category color to event backgrounds (All Views) (Today Pane)</i>\n    • Colors the background of an event with the associated category color instead of the owning calendar color.\n\n<i>Use calendar color if no category color (All Views) (Today Pane)</i>\n    • Colors the background of an event with the owning calendar color, if the event does not have an associated category.\n\n<b>Repeating Events</b>\n\nThere are two options that control the use of repeating event icons:\n\n<i>Add icon for repeating events that are not exceptions (All Views)</i>\n    • Adds a small icon to all repeating events that have not been modified since being created.\n\n<i>Add icon for repeating events that are exceptions (All Views)</i>\n    • Adds a small icon to all repeating events that have been modified since being created (e.g. different location or time).\n\n<b>Day Colors</b>\n\nThe settings in the <i>Day Colors</i> options tab allow the background and border colors of the 'Today' and 'Selected Day' styles to be customized as follows:\n\n    • choose the background color for the <i>Header</i> (date label) associated with a <i>Day Box</i>.\n    • choose the background color for the <i>Day Box</i>.\n    • choose the border color for the <i>Header</i> and <i>Day Box</i>."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/calendar-tweaks/edit",
+    "guid": "calendartweaks@DW-dev",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/14/14384-64.png?modified=1537697068",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/14/14384-32.png?modified=1537697068",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/14/14384-64.png?modified=1537697068"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2018-09-23T00:15:13Z",
+    "name": {
+        "en-US": "Calendar Tweaks"
+    },
+    "previews": [
+        {
+            "id": 128920,
+            "caption": {
+                "en-US": "New Today and Selected Day styles in calendar view and Mini-Month pane."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128920.png?modified=1530208632",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128920.png?modified=1530208632"
+        },
+        {
+            "id": 128922,
+            "caption": {
+                "en-US": "Events colored with calendar color and marked with category color bars."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128922.png?modified=1530208632",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128922.png?modified=1530208632"
+        },
+        {
+            "id": 128924,
+            "caption": {
+                "en-US": "Events colored with category colors and marked with calendar color bars."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128924.png?modified=1530208633",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128924.png?modified=1530208633"
+        },
+        {
+            "id": 128926,
+            "caption": {
+                "en-US": "Events in Today Pane styled in same way as in calendar view."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128926.png?modified=1530208633",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128926.png?modified=1530208633"
+        },
+        {
+            "id": 128928,
+            "caption": {
+                "en-US": "Repeating events showing repeating icons and one exception icon."
+            },
+            "image_size": [
+                700,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128928.png?modified=1530208633",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128928.png?modified=1530208633"
+        },
+        {
+            "id": 128930,
+            "caption": {
+                "en-US": "Calendar Tweaks Options dialog showing General tab."
+            },
+            "image_size": [
+                463,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128930.png?modified=1530208634",
+            "thumbnail_size": [
+                176,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128930.png?modified=1530208634"
+        },
+        {
+            "id": 128932,
+            "caption": {
+                "en-US": "Calendar Tweaks Options dialog showing Day Colors tab."
+            },
+            "image_size": [
+                463,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/128/128932.png?modified=1530208634",
+            "thumbnail_size": [
+                176,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/128/128932.png?modified=1530208634"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.23056,
+        "count": 64,
+        "average": 4.25,
+        "text_count": 64
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/calendar-tweaks/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/14384",
+    "slug": "calendar-tweaks",
+    "status": "public",
+    "summary": {
+        "en-US": "Allows several tweaks to the Thunderbird/Lightning calendar user interface including new selection styles and repeating event icons. Mimics the colors and styles found in MS Outlook.\n"
+    },
+    "support_email": {
+        "en-US": "dw-dev@gmx.com"
+    },
+    "support_url": null,
+    "tags": [
+        "appointment",
+        "calendar",
+        "color",
+        "event",
+        "icon",
+        "lightning",
+        "meeting",
+        "ms outlook",
+        "outlook",
+        "recur",
+        "recurrence",
+        "recurrent",
+        "repeat",
+        "repeating",
+        "repetitive",
+        "schedule",
+        "skin",
+        "style",
+        "theme",
+        "tweak"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/calendar-tweaks/",
+    "weekly_downloads": 331
+}

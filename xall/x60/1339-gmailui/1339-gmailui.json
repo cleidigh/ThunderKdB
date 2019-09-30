@@ -1,0 +1,252 @@
+{
+    "id": 1339,
+    "authors": [
+        {
+            "id": 2624362,
+            "name": "wang opera",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/wang-opera/",
+            "username": "wang-opera",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 8565,
+    "categories": {
+        "thunderbird": [
+            "folders-and-filters"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/operawang/4.99USD",
+    "current_version": {
+        "id": 2353965,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "52.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmailui/versions/2353965",
+        "files": [
+            {
+                "id": 895332,
+                "created": "2018-03-18T13:39:14Z",
+                "hash": "sha256:b033b6a539b71dbb046852845caf338e5406d12457aee3417903a6a788b70c0a",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 106593,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/895332/expression_search_gmailui-1.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "Works with TB 60 nightly, drop support for TB older than 52\n    Fixed issue with 'only' filter"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmailui/versions/1.3",
+        "version": "1.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Expression Search / G M a i l U I is an extension to Thunderbird (versions 5+) which add powerful message searching features. Originally written by Ken Mixter.\n\nType \"from:fred to:tom attachment:yes\" to see all messages from Fred to Tom in the current view that have an attachment. Press Ctrl+Enter to have this search apply to all folders.\n\nMore search operators can be view at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9735afffdd986fd58ff08f4817cdd2b5847e0fed027a667c0953c9004b9ef1d3/https%3A//cdn.rawgit.com/wangvisual/expression-search/master/content/help.html\">here</a>.\n\nAlso support Ctrl/Shift + Right Click to search similar messages.\n\nPlease report bug @ <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/dbd370dd906ea5471565190f943a8b04dff98558129d847caf346edf40d6cb4f/https%3A//github.com/wangvisual/expression-search/issues\">GitHub</a>."
+    },
+    "developer_comments": {
+        "en-US": "You do not need a GMail account to use this extension.  It adds some GMail inspired features to your existing accounts.\n\nPlease see help document in the options dialog to learn how to properly configure Expression Search to choose \"Expression\" searching for powerful searching options.\n\nIf you are having trouble using this extension, please let me know (from home page or directly by writing to opera.wang+es@gmail.com) .\n\nFor TB2, please use old versions from the history.\n\nWhen using 'tag search', the word you type can only match one tag, If you want match multiple tags, please use 'l:(tag1 or tag2) Due to restrictions in Thunderbird's virtual search folder, the complex searching results maybe correct in your current search results, but maybe NOT in you search folder. as the search folder can only handle 'Match all' and 'Match any' types.\n\n Version 0.9:\n    Compatible with TB40 nightly and drop support for TB version less than 31\n    Attachment search is fully supported and won't crash TB any more, for offline messages only.\n    Add option to put the Expression Search field into the Tab bar\n    Add option to (not) remove the domain name for click2search\n    Add option to hide the quick search filter icons\n    Looks better on OSX and Ubuntu\n\nVersion 0.8.8:\n    Compatible with TB31 nightly and drop support for TB 5~11\n    regex search in body is fully supported and won't crash TB any more, for offline messages only.\n\nVersion 0.8.7:\n    Compatible with TB29 nightly\n    Added regex search for from/to\n    Added option to make the \"search results\" doesn't looks so big when search is not active\n    Changed hotkey from Ctrl+Left to Ctrl+Alt+Left for back to original folder after Ctrl+Enter\n\nVersion 0.8.6:\n    getCellProperties API change for TB22\n    Add options for tooltip show/hide time\n    change the flexibility of other element to make my search box bigger\n    Add \"Re: \" to subject if it's a reply email for subject regex search\n    Add 'Select All', 'Clear All' &amp; select mode when modify virtual folder's folders.\n    Fix bug: Donate through palpay directly not working because I'm in China\n\nVersion 0.8.5:\n    Added options for show or hide text labels of 'quick filter' buttons\n    Added options to seperate subject replacment for Ctrl/Shift+RightClick\n    Added options for load Saved Search folder in a new Tab\n    Added hotkey Ctrl+Left for back to original folder after Ctrl+Enter\n    Added regex search for headers\n    Added regex search for body(experimental, may crash)\n    Added newer_than/older_than support\n    Added size/larger/smaller support\n    Support NA for tag search, Star for status search\n    Added today/yesterday/day/month/year for days search\n    Added status bar icon &amp; tips\n    Added donate buttons\n    Added scrollbar for option window when needed\n    Fixed crash issue when ctrl2search on headers\n    Fixed bugs for Ctrl+Enter launch gloda search when no messages found\n    Fixed bugs for pined quick search buttons not work when switch between folders\n    Fixed bugs for transparent background help page on Mac OS\n    Fixed bugs for click2search triggers context menu on Mac OS\n    Compatible with TB5~TB23\n\nVersion 0.8.4:\n    Added tonocc/bcc/cc/only/age search\n    Added options for show verbose information\n    Added options for where to create expression search folders\n    Fixed '&lt;&gt;' in search pattern issue when use click2search\n    Fixed search issue when use click2search and address is in address book\n    Fixed hang issue when '\\t' exists in search pattern\n    Fixed minor bug that extension defined search terms show when search in address book\n    Fixed one bug that icons for quick search may missing when move search buttons to menubar or toolbar\n\nVersion 0.8.3:\n    Fixed context menu missing issue when click right button.\n\nVersion 0.8.2:\n    Work with Thunderbird 5.\n    Fixed search bar shown issue.\n    Fixed issue when search with complicated expressions. \n\nVersion 0.8:\n    Work with Thunderbird 3.3.\n    Added <b>Click2Search</b> similar to The Bat!\n    Added options to move expression search box to toolbar/menubar\n    Added options to act as normal search box\n    Added options to select 1st messages after hit enter in search box\n    Hit enter will launch gloda search if no message found\n    Hit Ctrl+B will focus on search box\n    before/after search can now search time within day\n    Added simple/<b>regex</b>/date search\n    Added filename for attachment name/type search (<b>experimental</b>)\n\nVersion 0.7:\nAdded 'status/is' search.\nAdded 'before/after' search.\nAdded Help &amp; Contact link to Options dialog.\nAdded Options dialog.\nWork with Thunderbird 3.1 .\nShift+Enter to launch gloda search. Fix 'Cc','Cu','Ci','Cr' redefine error.\nAdded 'g:' search mode for gloda search. Press 'Esc' in thread tree will clear the search criteria. \n\n* Internationalization\n * zh-CN language support now exists.  Please contact me if you would like to improve or provide new translations.\n\n----------------------\nNote: As the original author, Ken Mixter, didn't use Thunberbird anymore, I ported the addon to TB 3.1 and forked as 'Expression Search'. Later Ken Mixter kindly make me the new author, then I decided to merge the two addons together.\n\nCompare with original 0.6 version, these features are still missing:\n    Use 'Y' to archive selected mail to archive folder (Use 'A' instead)\n    Use J/K to move messages up and down, and Ctrl+J to mark a message as junk (conflict with builtin key mapping, use 'f/b' instead)\n    Key '/' focuses on the quick search bar (use Ctrl+F)"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmailui/edit",
+    "guid": "{03EF8A6E-C972-488f-92FA-98ABC2C9F8B9}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/wangvisual/expression-search"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/search-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/search-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/search-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-03-18T15:32:12Z",
+    "name": {
+        "en-US": "Expression Search / GMailUI"
+    },
+    "previews": [
+        {
+            "id": 2601,
+            "caption": {
+                "en-US": "Example search expression"
+            },
+            "image_size": [
+                397,
+                174
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/2/2601.png?modified=1530208018",
+            "thumbnail_size": [
+                320,
+                140
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/2/2601.png?modified=1530208018"
+        },
+        {
+            "id": 56271,
+            "caption": {
+                "en-US": "optionally put search box in the toolbar or menubar\r\nsearch with sender and attachment type"
+            },
+            "image_size": [
+                537,
+                303
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/56/56271.png?modified=1530208020",
+            "thumbnail_size": [
+                320,
+                181
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/56/56271.png?modified=1530208020"
+        },
+        {
+            "id": 56269,
+            "caption": {
+                "en-US": "search subject with regular expression:\r\nall emails begin with \"accept\" and end with \"Lu\", case insensitive."
+            },
+            "image_size": [
+                533,
+                172
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/56/56269.png?modified=1530208021",
+            "thumbnail_size": [
+                320,
+                103
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/56/56269.png?modified=1530208021"
+        },
+        {
+            "id": 56270,
+            "caption": {
+                "en-US": "simply click the mail subject with Ctrl or Shift pressed to find the mails with same subject."
+            },
+            "image_size": [
+                538,
+                122
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/56/56270.png?modified=1530208022",
+            "thumbnail_size": [
+                320,
+                73
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/56/56270.png?modified=1530208022"
+        },
+        {
+            "id": 56266,
+            "caption": {
+                "en-US": "find all emails between 4/3 and 4/5"
+            },
+            "image_size": [
+                700,
+                319
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/56/56266.png?modified=1530208024",
+            "thumbnail_size": [
+                320,
+                146
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/56/56266.png?modified=1530208024"
+        },
+        {
+            "id": 54915,
+            "caption": {
+                "en-US": "document link can be found in the options dialog"
+            },
+            "image_size": [
+                321,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/54/54915.png?modified=1530208025",
+            "thumbnail_size": [
+                122,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/54/54915.png?modified=1530208025"
+        },
+        {
+            "id": 97958,
+            "caption": {
+                "en-US": "options dialog"
+            },
+            "image_size": [
+                396,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/97/97958.png?modified=1530208026",
+            "thumbnail_size": [
+                151,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/97/97958.png?modified=1530208026"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.10106,
+        "count": 87,
+        "average": 4.1149,
+        "text_count": 87
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmailui/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/1339",
+    "slug": "gmailui",
+    "status": "public",
+    "summary": {
+        "en-US": "Powerful message searching through expressions. Type \"from:fred to:tom\" to see all messages from Fred to Tom in the current view. Support 'regular expressions' and 'click to search'."
+    },
+    "support_email": {
+        "en-US": "opera.wang+es@gmail.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/wangvisual/expression-search"
+    },
+    "tags": [
+        "expression",
+        "filter",
+        "quick",
+        "search",
+        "sender",
+        "subject"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmailui/",
+    "weekly_downloads": 278
+}

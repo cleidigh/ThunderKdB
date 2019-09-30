@@ -1,0 +1,229 @@
+{
+    "id": 5337,
+    "authors": [
+        {
+            "id": 184482,
+            "name": "ingomueller.net",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ingomuellernet/",
+            "username": "ingomuellernet",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/184/184482.png?modified=1502562150"
+        }
+    ],
+    "average_daily_users": 10836,
+    "categories": {
+        "thunderbird": [
+            "contacts"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468901,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.30.*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "60.*",
+                "min": "3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbirthday/versions/2468901",
+        "files": [
+            {
+                "id": 1012097,
+                "created": "2018-11-21T18:51:13Z",
+                "hash": "sha256:9356df4b7e3f26c48a938591cbb0859a6f93d5800d26768d0b9e2f15f55e0e93",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 56597,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012097/thunderbirthday-0.8.4-sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "This fixes problems with Thunderbird 60, where the following error occurred in some cases:\n\n[Exception... \"Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIPrefBranch.getIntPref]\" nsresult: \"0x8000ffff (NS_ERROR_UNEXPECTED)\" location: \"JS frame :: jar:file:///C:/Users/User/AppData/Roaming/Thunderbird/Profiles/fcqbcs51.stw/extensions/%7B4C9FE6FE-2C83-11DC-90B4-DC8456D89593%7D.xpi!/js/calThunderBirthDay.js :: MyLOG :: line 948\" data: no]\n\nFor technical details, see <a href=\"https://github.com/ingomueller-net/ThunderBirthDay/issues/9\" rel=\"nofollow\">https://github.com/ingomueller-net/ThunderBirthDay/issues/9</a>."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbirthday/versions/0.8.4",
+        "version": "0.8.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<strong>+++ Quick install: +++</strong>\n\nInstall Lightning and ThunderBirthDay, then create a new local calendar choosing ThunderBirthDay as provider.\n\n<strong>+++ Problems with Thunderbird 29+: +++</strong>\n\nThe wizard to create new calendars of Thunderbird 29 and above was broken. The new version 0.8.1 fixes this problem. Everything should work fine again!\n\n<strong>+++ Prerequisites: +++</strong>\n\nThe <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/2313\">Lightning extension</a> needs to be installed.\n\n<strong>+++ How to use: +++</strong>\n\nCreate a new calendar in Lightning by clicking File&gt;New&gt;Calendar... in the menu bar. Then choose \"On My Computer\" as location and \"Birthdays from the Thunderbird addressbook\" as type for your calendar. Also specify the address book to use as a source for birthdays. Finally choose a name for the new calendar.\n\nNow open the \"Edit Card\" dialog of an address book card, go to the \"Private\" tab and set the birthday including the year. Note that these changes don't take effect in the calendar until it gets reloaded. To do this either restart Thunderbird or right click on a calendar from the list, then choose \"Reload Remote Calendars\".\n\nAlso note that the events generated by ThunderBirthDay cannot be modified with Lightning for the moment. Maybe future versions of the extension will be bidirectional.\n\n<strong>+++ Any questions? +++</strong>\n\nIf you have any questions about how to install or use the extension, about technical details, bugs or anything else, please let me know! Suggestions for new features are also very welcome! Just send me a mail to thunderbirthday@(mydomain) replacing (mydomain) by <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/365e3c057b18e0e34122b2bdc8c7004ee93542283e6c9b3f0c096290a803a938/http%3A//ingomueller.net\">ingomueller.net</a>.\n\n<strong>+++ Localizing: +++</strong>\n\nIf you wish to add a translation for a new language or if you found a mistake in an existing one (including the one in English), I'd be really glad, if you could have a look at the translation portal <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/261862c11451d4e23501fecdfec6fd89acc619f6c4c72cc78818b61b08e4e608/http%3A//www.babelzilla.org/forum/index.php%3Fshowtopic=3436\">Babelzilla</a>. Thanks a lot!",
+        "de": "<strong>+++ Schnellinstallation: +++</strong>\n\nInstallieren Sie Lightning und ThunderBirthDay. Erstellen Sie dann einen neuen lokalen Kalender, bei dem Sie ThunderBirthDay als Typ einstellen.\n\n<strong>+++ Problems with Thunderbird 29+: +++</strong>\n\nThe wizard to create new calendars of Thunderbird 29 and above was broken. The new version 0.8.1 fixes this problem. Everything should work fine again!\n\n<strong>+++ Vorraussetzungen: +++</strong>\n\nDie <a rel=\"nofollow\" href=\"https://addons.mozilla.org/de/thunderbird/addon/lightning/\">Lightning-Extension</a> muss installiert sein.\n\n<strong>+++ Anleitung: +++</strong>\n\nErstellen Sie in Lightning einen neuen Kalender, in dem Sie in der Menüleiste auf Datei&gt;Neu&gt;Kalender... klicken. Wählen Sie dann \"Auf Meinem Computer\" als Ort und \"Geburtstage aus Thunderbird-Adressbuch\" als Typ aus. Geben Sie auch das Adressbuch an, das als Quelle für Geburtstage verwendet werden soll. Schließlich können Sie einen Namen für den neuen Kalender angeben.\n\nÖffnen Sie jetzt den Bearbeiten-Dialog einer Karte aus dem Adressbuch, wählen Sie den Reiter \"Privat\" aus und geben Sie den Geburtstag inklusive Jahr an. Die Änderungen dort werden im Kalender erst übernommen, wenn dieser neu geladen wurde. Dies erreicht man, indem man Thunderbird neu startet oder auf einen Kalender aus der Liste rechtsklickt und \"Externe Kalender neu laden\" auswählt.\n\nBeachten Sie, dass die Ereignisse, die ThunderBirthDay generiert im Moment nicht mit Lightning bearbeitet werden können. Vielleicht werden zukünftige Versionen der Extension in beide Richtungen funktionieren.\n\n<strong>+++ Fragen? +++</strong>\n\nWenn Sie Fragen jeglicher Art über Installation, Benutzung oder technische Details haben, einen Fehler gefunden haben oder Feedback abgeben wollen, melden Sie sich bitte bei mir! Vorschläge für neue Versionen sind auch sehr willkommen! Senden Sie mir einfach eine Email an thunderbirthday@(meinedomain), wobei (meinedomain) durch <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/365e3c057b18e0e34122b2bdc8c7004ee93542283e6c9b3f0c096290a803a938/http%3A//ingomueller.net\">ingomueller.net</a> ersetzt werden muss.",
+        "it": "<strong>+++ Installazione veloce +++</strong>\n\nInstallate Lightning e ThunderBirthDay, quindi create un nuovo calendario locale selezionandolo ThunderBirthDay come provider.\n\n<strong>+++ Problems with Thunderbird 29+: +++</strong>\n\nThe wizard to create new calendars of Thunderbird 29 and above was broken. The new version 0.8.1 fixes this problem. Everything should work fine again!\n\n<strong>+++ Requisiti +++</strong>\n\nÈ necessario installare semplicemnte <a rel=\"nofollow\" href=\"https://addons.mozilla.org/it/thunderbird/addon/lightning/\">Lightning</a>.\n\n<strong>+++ Utilizzo +++</strong>\n\nCreate un nuovo calendario in Lightning facendo clic sul menu File&gt;Nuovo&gt;Calendario... nella barra dei menu. Quindi selezionate come destinazione \"Sul mio computer\" e \"Compleanni dei contatti presenti nelle rubriche\" come tipo di calendario. Specificate le rubriche dalle quali estrarre i compleanni e il nome del nuovo calendario.\n\nAprite la finestra di un contatto e impostate la data di nascita tra le opzioni presenti nella scheda \"Privato\". Per poter visualizzare il compleanno sarà necessario aggiornarlo riavviando Thunderbird o facendo clic con il tasto destro del mouse su un calendario e selezionando \"Ricarica calendari remoti\".\n\nAllo stato attuale non è possibile modificare gli eventi generati da ThunderBirthDay direttamente da Lightning. Questa funzione potrebbe essere disponibile nelle prossime versioni.\n\n<strong>+++ Domande e commenti +++</strong>\n\nSe avete dubbi, domande o richieste per nuove funzioni, non esitate a contattarmi (in inglese o tedesco). Sarò lieto di esservi di aiuto per risolvere eventuali bug o problemi di installazione, e rispondere a domande sui dettagli tecnici. Inviatemi un messaggio di posta elettronica all'indirizzo thunderbirthday@(mydomain) sostituendo <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/365e3c057b18e0e34122b2bdc8c7004ee93542283e6c9b3f0c096290a803a938/http%3A//ingomueller.net\">ingomueller.net</a> a (mydomain).\n\n\n<strong>++ Traduzione +++</strong>\n\nSe volete proporre migliorie alla traduzione italiana, rivolgetevi alla comunità di <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7d6d34b3f9c64a21aa135e17582922fe12fafc69c38f2e1efd62da54bf7da3c7/http%3A//forum.mozillaitalia.org/index.php%3Fboard=26.0\">Mozilla Italia</a>, segnalando le proposte nella sezione dedicata alle estensioni.\nSe desiderate aggiungere una traduzione in un'altra lingua o migliorare la versione inglese, potrete rivolgervi al portale di traduzione <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/261862c11451d4e23501fecdfec6fd89acc619f6c4c72cc78818b61b08e4e608/http%3A//www.babelzilla.org/forum/index.php%3Fshowtopic=3436\">Babelzilla</a>. Grazie mille."
+    },
+    "developer_comments": {
+        "en-US": "PLEASE review my code! Look at the readme.txt file in the XPI to see details about the development.\n\nDeveloppers may want to increase verbosity by changing extensions.thunderbirthday.verbosity in the about:config dialog (0 means only exceptions are being reported, 5 means the error console is flooded with information).",
+        "it": "Ho bisogno di suggerimenti e commenti quindi per favore controllate e rivedete il mio codice! Nel file readme.txt all'interno del file XPI potete trovare dettagli in merito allo sviluppo dell'estensione.\n\nGli sviluppatori possono cambiare il parametro extensions.thunderbirthday.verbosity nella finestra dei parametri \"about:config\" (impostando il valore su \"0\", riporterà solo le eccezioni mentre con il valore \"5\" si riempirà di informazioni la console degli errori)."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderbirthday/edit",
+    "guid": "{4C9FE6FE-2C83-11DC-90B4-DC8456D89593}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://ingomueller.net/mozilla/thunderbirthday",
+        "de": "http://ingomueller.net/mozilla/thunderbirthday",
+        "it": "http://ingomueller.net/mozilla/thunderbirthday"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/5/5337-64.png?modified=1415412876",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/5/5337-32.png?modified=1415412876",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/5/5337-64.png?modified=1415412876"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-11-22T21:05:58Z",
+    "name": {
+        "ru": "ThunderBirthDay",
+        "fr": "ThunderBirthDay",
+        "en-US": "ThunderBirthDay",
+        "nl": "ThunderBirthDay",
+        "ca": "ThunderBirthDay",
+        "de": "ThunderBirthDay",
+        "it": "ThunderBirthDay",
+        "sk": "ThunderBirthDay",
+        "zh-CN": "ThunderBirthDay",
+        "pt-BR": "ThunderBirthDay",
+        "pl": "ThunderBirthDay",
+        "cs": "ThunderBirthDay",
+        "ja": "ThunderBirthDay",
+        "es": "ThunderBirthDay"
+    },
+    "previews": [
+        {
+            "id": 16392,
+            "caption": {
+                "en-US": "A birthday event generated by ThunderBirthDay according to a birthday set in the addressbook.",
+                "de": "Ein Geburtstagsereignis, das von ThunderBirthDay anhand eines Geburtstages aus dem Adressbuch generiert wurde."
+            },
+            "image_size": [
+                200,
+                150
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16392.png?modified=1530208338",
+            "thumbnail_size": [
+                200,
+                150
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16392.png?modified=1530208338"
+        },
+        {
+            "id": 16393,
+            "caption": {
+                "en-US": "Creating a new ThunderBirthDay calendar.",
+                "de": "Erstellen eines neuen ThunderBirthDay-Kalenders."
+            },
+            "image_size": [
+                438,
+                350
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16393.png?modified=1530208338",
+            "thumbnail_size": [
+                250,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16393.png?modified=1530208338"
+        },
+        {
+            "id": 16394,
+            "caption": {
+                "en-US": "Notice the new ThunderBirthDay calendar in the list at the left.",
+                "de": "Beachten Sie den ThunderBirthDay-Kalender in der Liste auf der linken Seite."
+            },
+            "image_size": [
+                600,
+                450
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/16/16394.png?modified=1530208338",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/16/16394.png?modified=1530208338"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.28118,
+        "count": 88,
+        "average": 4.2955,
+        "text_count": 88
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbirthday/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/5337",
+    "slug": "thunderbirthday",
+    "status": "public",
+    "summary": {
+        "ru": "Показывает дни рождения людей из адресных книг Thunderbird в виде событий в календаре Ligtning",
+        "fr": "Afficher les dates d'anniversaires des contacts du carnet d'adresses Thunderbird en tant qu'évènements. À mettre en duo avec Lightning (nécessaire).",
+        "en-US": "Display birthdays from the Thunderbird addressbooks as events in Lightning.",
+        "nl": "Geeft verjaardagen uit het Thunderbird adresboek weer in Lightning.",
+        "ca": "Mostra les dates d'aniversari des de l'agenda Thunderbird com a event per avisar.",
+        "de": "Geburtstage aus dem Thunderbird-Adressbuch in Lightning anzeigen.",
+        "it": "Visualizza in Lightning i compleanni dei contatti presenti nelle rubriche.",
+        "da": "Viser fødselsdage fra Thunderbird adressebøger som begivenheder i Lightning.",
+        "sk": "Zobrazte narodeniny zo zozanmu adries v Thunderbird ako udalosť v Lightning.",
+        "zh-CN": "显示 Thunderbird 地址簿中的生日为 Lightning 中的事件。",
+        "pt-BR": "Exibe aniversários do Catálogo de endereços do Thunderbird como eventos no Lightning.",
+        "pl": "Wyświetla dni urodzin z książek adresowych Thunderbirda jako zdarzenia w kalendarzu Lighting.",
+        "cs": "Zobrazit narozeniny z adresáře Thunderbirda jako událost v Blesku.",
+        "ja": "Thunderbird アドレス帳から Lightning にイベントとして誕生日を表示します。",
+        "es": "Mostrar cumpleaños de la libreta de direcciones de Thunderbird como eventos en Lightning."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://ingomueller.net/mozilla/thunderbirthday"
+    },
+    "tags": [
+        "address book",
+        "birthday",
+        "birthdays",
+        "contact",
+        "contacts",
+        "lightning"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderbirthday/",
+    "weekly_downloads": 78
+}

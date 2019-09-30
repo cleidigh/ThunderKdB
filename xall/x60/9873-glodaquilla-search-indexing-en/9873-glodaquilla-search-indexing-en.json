@@ -1,0 +1,163 @@
+{
+    "id": 9873,
+    "authors": [
+        {
+            "id": 3346687,
+            "name": "R Kent James",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/rkentjames/",
+            "username": "rkentjames",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/3/3346/3346687.png?modified=1398679002"
+        }
+    ],
+    "average_daily_users": 525,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2469178,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/glodaquilla-search-indexing-en/versions/2469178",
+        "files": [
+            {
+                "id": 1012306,
+                "created": "2019-01-21T23:59:25Z",
+                "hash": "sha256:e656afd6ebf7a7d8788b7d26439a53f5a394123ca002a83009047d48f74dc2e4",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 24848,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012306/glodaquilla_search_indexing_enhancements-0.3.5-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "Updated for Thunderbird 60."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/glodaquilla-search-indexing-en/versions/0.3.5",
+        "version": "0.3.5"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "GlodaQuilla allows suppression or enabling of indexing, using inherited properties. It can be done at the account level, or for a tree of related folders. Indexing is changed in the Account Manager for individual accounts, or using “Folder Properties” dialog for individual folders.\n\nIt also adds three columns to the Thunderbird message pane that are primarily useful to developers of the indexing functionality:\n\n    * OnDisk indicates whether a particular message has been downloaded to the local message store, or is stored offline in an IMAP folder or newsgroup.\n    * Gloda id is the identifier used by gloda to uniquely identify a particular message.\n    * Gloda dirty indicates messages that gloda needs to process.\n"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/glodaquilla-search-indexing-en/edit",
+    "guid": "glodaquilla@mesquilla.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://mesquilla.com/extensions/glodaquilla"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-01-24T20:22:31Z",
+    "name": {
+        "en-US": "GlodaQuilla search indexing enhancements"
+    },
+    "previews": [
+        {
+            "id": 46087,
+            "caption": {
+                "en-US": "Selectively enable or disable search indexing on folders (or accounts) - with inheritance."
+            },
+            "image_size": [
+                547,
+                455
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46087.png?modified=1530208515",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46087.png?modified=1530208515"
+        },
+        {
+            "id": 46088,
+            "caption": {
+                "en-US": "Three columns are added that can help diagnose issues in the search indexing: On Disk, Gloda Id, and Gloda Dirty. This is mostly of interest to developers."
+            },
+            "image_size": [
+                558,
+                198
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/46/46088.png?modified=1530208515",
+            "thumbnail_size": [
+                320,
+                114
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/46/46088.png?modified=1530208515"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.84069,
+        "count": 9,
+        "average": 5,
+        "text_count": 9
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/glodaquilla-search-indexing-en/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/9873",
+    "slug": "glodaquilla-search-indexing-en",
+    "status": "public",
+    "summary": {
+        "en-US": "Permits selective enabling and disabling of search indexing on folders or accounts - with inheritence. Also adds three columns to the Thunderbird message pane that are useful in debugging."
+    },
+    "support_email": {
+        "en-US": "rkent@mesquilla.com"
+    },
+    "support_url": {
+        "en-US": "http://mesquilla.com/forum/glodaquilla"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/glodaquilla-search-indexing-en/",
+    "weekly_downloads": 22
+}

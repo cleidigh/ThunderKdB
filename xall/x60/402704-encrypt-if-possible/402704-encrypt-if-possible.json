@@ -1,0 +1,161 @@
+{
+    "id": 402704,
+    "authors": [
+        {
+            "id": 6583050,
+            "name": "GWu",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/GWu/",
+            "username": "GWu",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6583/6583050.png?modified=1555684209"
+        }
+    ],
+    "average_daily_users": 1179,
+    "categories": {
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2453553,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "52.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/encrypt-if-possible/versions/2453553",
+        "files": [
+            {
+                "id": 996649,
+                "created": "2018-06-24T13:26:29Z",
+                "hash": "sha256:c2040002b3e6013697268d8032d6185b3fdb7692952302912addb946f221e847",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 18543,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/996649/encrypt_if_possible-2.0.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "fix auto sign functionality interfering with default signing"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/encrypt-if-possible/versions/2.0.3",
+        "version": "2.0.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on sets S/MIME message security option \"encrypt message\", if valid X509 certificates are found for all of the recipients and for the sender himself. If these criteria are not matched, the option is not set.\n\nYou can disable confirmation message in the extension's options.\n\nChange the default security/encryption setting in your account settings from \"Required\" to \"Never (do not use encryption)\" to let this add-on decide and encrypt only if possible.\n\nFor the list of available certificates see menu Tools -&gt; Options -&gt; Advanced -&gt; Certificates -&gt; View Certificates -&gt; People.\n\n<strong>Note: this add-on relies on Thunberbird's built in encryption functionality. You have to set it up first before using this add-on, see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/22042cd07a96295a465372c276a1ebecbdeb9ef36390f6639dd1f2226eda1ed0/http%3A//kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a> for details.</strong>",
+        "de": "Dieses Add-on aktiviert die Sicherheitsoption \"Nachricht verschlüsseln\" (S/MIME) der Nachricht, wenn für alle Empfänger und auch für den Sender der Nachricht ein gültiges X509 Zertifikat gefunden wird. Trifft dies nicht zu, wird die Option nicht angewählt bzw. auch abgewählt.\n\nDie Nachfrage kann in den Optionen deaktiviert werden.\n\nIn den Konten-Einstellungen unter S/MIME-Sicherheit sollte man bei Verschlüsselung \"Nie (keine Verschlüsselung verwenden)\" wählen, um die Aktivierung der Verschlüsselung dem Add-On zu überlassen.\n\nEine Liste der vorhandenen Zertifikate findet sich im Menü Extras -&gt; Einstellungen -&gt; Erweitert -&gt; Zertifikate -&gt; Zertifikate -&gt; Personen.\n\n<strong>Wichtiger Hinweis: dieses Add-On verwendet den Standard-Verschlüsselungsmechanismus in Thunderbird. Bevor Sie dieses Add-On sinnvoll nutzen können, müssen Sie diesen konfigurieren, siehe dazu <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/24d3f968af40b32409924fded96910deaba2a70c988f93bfb07c8c1536219536/http%3A//www.thunderbird-mail.de/wiki/Mailverschl%25C3%25BCsselung_mit_S/MIME\">http://www.thunderbird-mail.de/wiki/Mailverschl%C3%BCsselung_mit_S/MIME</a> oder <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/22042cd07a96295a465372c276a1ebecbdeb9ef36390f6639dd1f2226eda1ed0/http%3A//kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a>(Englisch)</strong>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/encrypt-if-possible/edit",
+    "guid": "encryptifpossible@gwu.at",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://addons.mozilla.org/thunderbird/addon/encrypt-if-possible/",
+        "de": "https://addons.mozilla.org/thunderbird/addon/encrypt-if-possible/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/402/402704-64.png?modified=1366359625",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/402/402704-32.png?modified=1366359625",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/402/402704-64.png?modified=1366359625"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-06-24T14:12:26Z",
+    "name": {
+        "en-US": "Encrypt if possible",
+        "de": "Encrypt if possible"
+    },
+    "previews": [
+        {
+            "id": 79932,
+            "caption": {
+                "en-US": "Info and settings screen.",
+                "de": "Info und Einstellungen"
+            },
+            "image_size": [
+                700,
+                248
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/79/79932.png?modified=1530209024",
+            "thumbnail_size": [
+                320,
+                113
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/79/79932.png?modified=1530209024"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.40521,
+        "count": 19,
+        "average": 4.4737,
+        "text_count": 19
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/encrypt-if-possible/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/402704",
+    "slug": "encrypt-if-possible",
+    "status": "public",
+    "summary": {
+        "en-US": "Sets message security option \"encrypt message\", if valid X509 certificates are found for all recipients.",
+        "de": "Setzt Sicherheitsoption \"Nachricht verschlüsseln\" (S/MIME) der Nachricht, wenn für alle Empfänger ein gültiges X509 Zertifikat gefunden wird."
+    },
+    "support_email": {
+        "en-US": "soskifub+encryptifpossible@gmail.com",
+        "de": "soskifub+encryptifpossible@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "encrypt",
+        "encryption",
+        "security",
+        "smime",
+        "verschlüsseln"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/encrypt-if-possible/",
+    "weekly_downloads": 63
+}

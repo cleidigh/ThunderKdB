@@ -1,0 +1,188 @@
+{
+    "id": 239632,
+    "authors": [
+        {
+            "id": 5477374,
+            "name": "mi-yo",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mi-yo/",
+            "username": "mi-yo",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1053,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468708,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "3.1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/subject-cleaner/versions/2468708",
+        "files": [
+            {
+                "id": 1011940,
+                "created": "2018-10-14T15:48:52Z",
+                "hash": "sha256:8600f3dd4f5e62b759c78be71dfaed1d530066f8da8b1227bf7afce3a1988520",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 12654,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011940/subject_cleaner-1.4.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subject-cleaner/versions/1.4.0",
+        "version": "1.4.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "While using the mailing list, the subject might be as follows;\n\n[ml:0001] meeting\n[ml:0002] Re: [ml:0001] meeting\n[ml:0003] Re: [ml:0002] Re: [ml:0001] meeting\n\nBy using the Subject Cleaner, subject will be as follows;\n\n[ml:0001] meeting\n[ml:0002] Re: meeting\n[ml:0003] Re: meeting\n\n&lt;&lt;Execution example&gt;&gt;\nRe: [ml:0002] Re: [ml:0001] meeting\n  + Subject Cleaner executes\nRe: meeting\n\n&lt;&lt;How to use&gt;&gt;\nAfter installing the add-on, the removal list etc. are set by \"tool &gt; add-on &gt; Subject Cleaner\".\nAfter setting the removal list, the character strings are removed from the subject when you click the subject label on the message compose window.\nYou can set to remove it automatically when you open the message compose window.\n\nTo return it based on the subject, \"Ctrl+Z\" is done in the subject column or \"Undo\" is done by right-clicking. \n\nThe following are set to the removal list for the execution example of the above-mentioned. And check regular expression.\n\\[\\w+:\\d+\\](\\s|)\n\nTo solve the continuation of \"Re:\", the following are set to the removal list. \n\\sRe:+",
+        "ja": "メーリングリストを使っていると、メールの件名が以下のようになることがあります。\n\n[ml:0001] meeting\n[ml:0002] Re: [ml:0001] meeting\n[ml:0003] Re: [ml:0002] Re: [ml:0001] meeting\n\nSubject Cleanerを使うと、以下のようにすることができます。\n\n[ml:0001] meeting\n[ml:0002] Re: meeting\n[ml:0003] Re: meeting\n\n&lt;&lt;実行例&gt;&gt;\nRe: [ml:0002] Re: [ml:0001] meeting\n  + Subject Cleaner 実行\nRe: meeting\n\n&lt;&lt;使用方法&gt;&gt;\nアドオンをインストール後、ツール＞アドオン＞Subject Cleaner　の設定で、除去リストを設定します。\n設定後、メッセージ作成画面で件名ラベルをクリックすれば、件名から文字列が除去されます。\nメッセージ作成画面表示時に自動除去するように設定することもできます。\n件名を元に戻したい場合は、件名欄で「Ctrl+Z」を行うか、右クリックで「元に戻す」を行います。\n\n上の例の場合、以下を除去リストに設定し、「正規表現」にチェックを入れます。\n\\[\\w+:\\d+\\](\\s|)\n\n\"Re:\"が続くのを解決したい場合、以下を除去リストに設定します。\n\\sRe:+"
+    },
+    "developer_comments": {
+        "en-US": "Tested on Windows, Linux",
+        "ja": "Windows, Linuxで動作確認済み"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/subject-cleaner/edit",
+    "guid": "subjectcleaner@mozilla.extensions",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/mi-yo/thunderbird-subjectcleaner"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-10-29T11:13:54Z",
+    "name": {
+        "en-US": "Subject Cleaner",
+        "ja": "Subject Cleaner"
+    },
+    "previews": [
+        {
+            "id": 49971,
+            "caption": {
+                "en-US": "execution image",
+                "ja": "実行イメージ"
+            },
+            "image_size": [
+                239,
+                180
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/49/49971.png?modified=1530208881",
+            "thumbnail_size": [
+                239,
+                180
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/49/49971.png?modified=1530208881"
+        },
+        {
+            "id": 53720,
+            "caption": {
+                "en-US": "setting window",
+                "ja": "設定画面"
+            },
+            "image_size": [
+                520,
+                385
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/53/53720.png?modified=1530208881",
+            "thumbnail_size": [
+                270,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/53/53720.png?modified=1530208881"
+        },
+        {
+            "id": 53721,
+            "caption": {
+                "en-US": "manual activation",
+                "ja": "マニュアル操作"
+            },
+            "image_size": [
+                690,
+                520
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/53/53721.png?modified=1530208881",
+            "thumbnail_size": [
+                265,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/53/53721.png?modified=1530208881"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.94889,
+        "count": 3,
+        "average": 4.3333,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subject-cleaner/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/239632",
+    "slug": "subject-cleaner",
+    "status": "public",
+    "summary": {
+        "en-US": "Remove extra strings from the subject while composing the message.",
+        "ja": "メッセージ作成時に件名から余分な文字列を除去します。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/mi-yo/thunderbird-subjectcleaner"
+    },
+    "tags": [
+        "subject"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subject-cleaner/",
+    "weekly_downloads": 28
+}

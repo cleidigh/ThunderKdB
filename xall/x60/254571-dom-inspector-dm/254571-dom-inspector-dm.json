@@ -1,0 +1,181 @@
+{
+    "id": 254571,
+    "authors": [
+        {
+            "id": 4341183,
+            "name": "Javier \"DarthMadara\"",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/darthmadara/",
+            "username": "darthmadara",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/4/4341/4341183.png?modified=1469185227"
+        }
+    ],
+    "average_daily_users": 316,
+    "categories": {
+        "firefox": [
+            "web-development"
+        ],
+        "seamonkey": [
+            "web-and-developer-tools"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468603,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.57",
+                "min": "2.1"
+            },
+            "thunderbird": {
+                "max": "60.*",
+                "min": "5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dom-inspector-dm/versions/2468603",
+        "files": [
+            {
+                "id": 1011824,
+                "created": "2018-09-19T06:52:35Z",
+                "hash": "sha256:a3f7810997f7f7ff2eefe2be4137fdaf4096e9b1ecc3aa7302a8549d1abbe116",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 369185,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011824/dom_inspector_plus_dm-2.0.17.1.5-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "- Several fixes and compatibility updates to make this work with Thunderbird 60! \n  (Also, works for Firefox Developer Edition up to 60)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dom-inspector-dm/versions/2.0.17.1.5",
+        "version": "2.0.17.1.5"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>Tips:</b>\n<li>For inspecting web content  in Multiprocess (e10s) Fx, just open it in a \"New non-e10s window\" (available at least in nightly)</li><li>If you want to use this in Fx 58 nightly, use latest RC version! (<b>with &lt;multiprocessCompatible&gt; TRUE</b>).   See Development Channel below.\n\n\nAdded in [dm version]: \n\n* <b>HORIZONTAL SCROLL Bar</b> in Dom Tree panel.\n\n* Added new <b>\"BOX MODEL Plus\" viewer</b> with better layout and more data (see screenshot!).  <ul>  <li> scrollTop, scrollLeft, ΔscrollWidth, ΔscrollHeight values only appear if there is at least one nonzero value.  \"Δ\" is \"delta\", the values are the difference of the visible Width/Height and the total scrollWidth/Height. (you can think of the \"delta\" values as the invisible part). This \"delta\" use allows the values to appear *only* when the 'invisible' part is nonzero. (they tipically appear for an object with fixed Width/Height and content inside it that had overflowed)\n  </li><li> Standard Box model stays too, with some styling (column align, etc). </li></ul>\n\n* NEW: with 2 new selectable things:  since <b>Version 2.0.16.2</b><ul><li> 1) <b>By default</b> you can use the \"E\" key for activating <b>\"Computed Style\"</b> viewer (see screenshot), so you can easily click &amp; type 'e' to switch to 'Computed Style', 'c' to show css, etc. (in English locale)\nYou can change or remove that using new string-preference (in about:config):  \n     extensions.domInspectorPlusDm.keyViewers\nAn empty value will remove this 'accessKey', or you can add accessKeys to several/ALL the viewers, eg. with a value like (JSON format):\n     {\"Computed Style\":\"Q\", \"CSS Rules\":\"R\", \"JavaScript Object\":\"O\"}\nthat should work also for other languages! (untested with non-latin characters)</li><li> 2) You can put <b>tiny borders and titlebar to inspector window</b> with the boolean-preference:\n     extensions.domInspectorPlusDm.smallMargin = true\nWorks only in certain windows systems, like win7 with aero-glass. (I remember seeing it also in Win8 and/or 10)\n(Shows partly truncated top-menu when maximized)</li></ul></li><li> This addon now works with original <b>\"Element Inspector\" version 0.0.7</b> !\nThanks a lot to the author! This James Bond version couldn't inspect less :-)\n\n\n(You can even leave original DOM-Inspector installed and disabled for watching updates).\n\nFYI: the option \"View\" -&gt; <b>\"Blink Selected Element\"</b> is working only for <b>deactivated Hardware acceleration</b> (in Firefox: Options -&gt; Advanced)</li>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dom-inspector-dm/edit",
+    "guid": "inspector-dp@mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://tiny.cc/domi"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/search-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/search-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/search-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-09-23T00:11:28Z",
+    "name": {
+        "en-US": "DOM Inspector Plus! [dm]"
+    },
+    "previews": [
+        {
+            "id": 68149,
+            "caption": {
+                "en-US": "The new Layout in \"Box Model Plus\" viewer!"
+            },
+            "image_size": [
+                439,
+                456
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/68/68149.png?modified=1530208879",
+            "thumbnail_size": [
+                193,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/68/68149.png?modified=1530208879"
+        },
+        {
+            "id": 164940,
+            "caption": {
+                "en-US": "By default you can use the \"E\" key for activating \"Computed Style\" viewer.    Also seen selectable tiny window borders & titlebar."
+            },
+            "image_size": [
+                438,
+                316
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/164/164940.png?modified=1530208879",
+            "thumbnail_size": [
+                277,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/164/164940.png?modified=1530208879"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.62253,
+        "count": 6,
+        "average": 4.1667,
+        "text_count": 5
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dom-inspector-dm/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/254571",
+    "slug": "dom-inspector-dm",
+    "status": "public",
+    "summary": {
+        "en-US": "Improved DOM Inspector! [dm version]. Box Model new layout &amp; more data, see screenshot!. Horizontal scroll for Dom-Tree, and some more.\nInspects the structure and properties of a window and its contents."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://forums.mozillazine.org/viewtopic.php?f=48&t=1874965"
+    },
+    "tags": [
+        "box model new layout",
+        "css position properties",
+        "dm version",
+        "dom inspector",
+        "horizontal scroll"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dom-inspector-dm/",
+    "weekly_downloads": 59
+}

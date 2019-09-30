@@ -1,0 +1,181 @@
+{
+    "id": 310,
+    "authors": [
+        {
+            "id": 204,
+            "name": "The BiDi UI Team",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/the-bidi-ui-team/",
+            "username": "the-bidi-ui-team",
+            "picture_url": null
+        },
+        {
+            "id": 9020,
+            "name": "Eyal Rozenberg",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/eyalroz/",
+            "username": "eyalroz",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/9/9020.png?modified=1479819670"
+        }
+    ],
+    "average_daily_users": 2279,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2419698,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/bidi-mail-ui/versions/2419698",
+        "files": [
+            {
+                "id": 962300,
+                "created": "2018-05-19T22:43:27Z",
+                "hash": "sha256:43d5da26784ac3d4cd0e91ca2e7d01dd2d6e5a95dbf1945b0b9303645afd6c82",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 79235,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/962300/bidi_mail_ui-0.9.9b3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bidi-mail-ui/versions/0.9.9b3",
+        "version": "0.9.9b3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>BiDi Mail UI</b> adds functionality both for reading and composing mail and news messages.\n\n<b>Reading</b>:\n<ul><li> Detects many cases in which Mozilla mis-decodes a message in one of the bidirectional language charsets, and chooses the proper encoding</li><li> Decodes Bidirectional language text in mixed-charset messages (UTF-8 and windows-1255/6)</li><li> Detects the intended directions of mail messages and displays them in this direction</li><li> Detects the intended directions of individual paragraphs within mail messages and lays out the message accordingly</li></ul>\n<b>Composition</b>:\n<ul><li> Allows setting the direction of the entire message</li><li> Allows setting the direction of individual paragraphs in HTML mail</li><li> Allows insertion of LRM/RLM marks, via menus or using Ctrl+Shift+L/Ctrl+Shift+R</li></ul>",
+        "he": "(מצאת באג? חסרה לך יכולה כלשהיא? נסה/י את <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/310/#install-beta\">גרסת הבטא</a>.)\n\nBiDi Mail UI מוסיף יכולות לקריאה ולכתיבת הודעות דואר אלקטרוני והודעות לקבוצות דיון.\n\nקריאה:\n- זיהוי של מקרים רבים בהם מוזילה שוגה בזיהוי הקידוד באחת מן השפות הנכתבות מימין-לשמאל, ובחירה מחודשת של קידוד נכון\n- פענוח מלל בשפות הנכתבות מימין-לשמאל בהודעות הכוללות מלל בשני קידודים שונים (UTF-8 ו-windows-1255/6)\n- זיהוי הכיוון הרצוי של תוכן בהודעות מלל פשוט והצגת המלל בכיוון המתאים\n- זיהוי הכיוון הרצוי של אלמנטים בתוך הודעות HTML והצגת ההודעות בכיווניות המתאימה לאלמנטים השונים\n\nכתיבה:\n- אפשרות קביעת כיוון להודעה כולה\n- אפשרות קביעת כיוון לפסקאות בודדות בהודעות HTML"
+    },
+    "developer_comments": {
+        "en-US": "<ul><li>Support for Farsi and Urdu could be improved. Users getting mail in these languages in which directions are not properly detected or the charset is mangled - please contact the developer and/or file a bug on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e6e945b817356c073d8090ad1c521a73408d9e427bea49672e49a0c4631df6a/http%3A//www.mozdev.org/bugs\">http://www.mozdev.org/bugs</a>.</li></ul>",
+        "ar": "Support for Farsi and Urdu could be improved. Users getting mail in these languages in which directions are not properly detected or the charset is mangled - please contact the developer and/or file a bug on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e6e945b817356c073d8090ad1c521a73408d9e427bea49672e49a0c4631df6a/http%3A//www.mozdev.org/bugs\">http://www.mozdev.org/bugs</a>.\n\nنحن دائما مهتمون بمساعدة في ال-support اللغة العربية. أكتب لنا... eyalroz@technion.ac.il"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/bidi-mail-ui/edit",
+    "guid": "{54e72d7b-ed31-4736-854f-f517358f21ee}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://bidiui.mozdev.org/mail/",
+        "he": "http://bidiui.mozdev.org/mail/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/310-64.png?modified=1510328678",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/310-32.png?modified=1510328678",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/310-64.png?modified=1510328678"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2018-05-20T16:46:33Z",
+    "name": {
+        "en-US": "BiDi Mail UI"
+    },
+    "previews": [
+        {
+            "id": 20050,
+            "caption": null,
+            "image_size": [
+                700,
+                524
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/20/20050.png?modified=1530207892",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/20/20050.png?modified=1530207892"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.17052,
+        "count": 28,
+        "average": 4.2143,
+        "text_count": 28
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bidi-mail-ui/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/310",
+    "slug": "bidi-mail-ui",
+    "status": "public",
+    "summary": {
+        "en-US": "Direction control and BiDi-related charset misdetection correction",
+        "he": "שליטה בכיווניות ותיקוני זיהוי קידוד הקשורים לשפות הכתובות מימין-לשמאל"
+    },
+    "support_email": {
+        "en-US": "eyalroz@technion.ac.il"
+    },
+    "support_url": {
+        "en-US": "http://bidiui.mozdev.org/bugs.html"
+    },
+    "tags": [
+        "arabic",
+        "bidi",
+        "byparagraph",
+        "characterset",
+        "composition",
+        "correction",
+        "direction",
+        "encoding",
+        "farsi",
+        "hebrew",
+        "misdecoding",
+        "perparagraph",
+        "reading",
+        "rtl",
+        "unicode",
+        "urdu",
+        "utf",
+        "utf8",
+        "windows1255",
+        "windows1256"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bidi-mail-ui/",
+    "weekly_downloads": 94
+}

@@ -1,0 +1,109 @@
+{
+    "id": 847125,
+    "authors": [
+        {
+            "id": 13244483,
+            "name": "Cassandra Gelvin",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Kethlak/",
+            "username": "Kethlak",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 400,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2469313,
+        "compatibility": {
+            "thunderbird": {
+                "max": "66.*",
+                "min": "52.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/stop-ignoring-reply-to/versions/2469313",
+        "files": [
+            {
+                "id": 1012431,
+                "created": "2019-02-22T00:00:02Z",
+                "hash": "sha256:fb168ae6dca63e9e5d007153426a909dc9627962012a994253963271aecf1804",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 12426,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012431/stop_ignoring_replyto-1.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Updated max compatible version."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/stop-ignoring-reply-to/versions/1.3",
+        "version": "1.3"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "With Thunderbird 52, one thing that was changed was \"When replying to a mailing list, reply will be sent to address in From header ignoring Reply-to header\". Some people, like myself, were frustrated by this change, and would prefer the previous functionality. For example, if you are subscribed to a mailing list and are used to using the keyboard shortcut to respond to the whole list, Thunderbird 52 changed it so that it only responds to whoever sent the email originally.\n\nThis add-on is very simple and has no configuration. If you enable the add-on, whenever you open a reply window and start composing a reply to only the sender of an email, it checks to see if there is a Reply-to listed in the header. If there is, it populates the \"To\" box with the address listed in Reply-to instead of the sender. That's the only thing this add-on does. That means if you respond to an email sent to a list, the default \"Reply\" will now automatically create an email to send to the whole list. If you only want to send to the original sender, you just need to change the \"To\" address."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/stop-ignoring-reply-to/edit",
+    "guid": "stopignoringreplyto@gelvins.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://cassandra.gelvins.com"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-02-22T13:48:06Z",
+    "name": {
+        "en-US": "Stop Ignoring Reply:To"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.84093,
+        "count": 9,
+        "average": 5,
+        "text_count": 9
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/stop-ignoring-reply-to/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/847125",
+    "slug": "stop-ignoring-reply-to",
+    "status": "public",
+    "summary": {
+        "en-US": "Default \"Reply\" functionality pays attention to \"Reply-To\" in original email"
+    },
+    "support_email": {
+        "en-US": "cassandra@gelvins.com"
+    },
+    "support_url": {
+        "en-US": "http://cassandra.gelvins.com"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/stop-ignoring-reply-to/",
+    "weekly_downloads": 49
+}

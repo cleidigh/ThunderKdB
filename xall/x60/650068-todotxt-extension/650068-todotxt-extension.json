@@ -1,0 +1,246 @@
+{
+    "id": 650068,
+    "authors": [
+        {
+            "id": 11859208,
+            "name": "Roy Kokkelkoren",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/rkokkelk/",
+            "username": "rkokkelk",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/11/11859/11859208.png?modified=1462693831"
+        }
+    ],
+    "average_daily_users": 678,
+    "categories": {
+        "thunderbird": [
+            "calendar"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2469919,
+        "compatibility": {
+            "thunderbird": {
+                "max": "63.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/todotxt-extension/versions/2469919",
+        "files": [
+            {
+                "id": 1012977,
+                "created": "2019-05-30T11:19:57Z",
+                "hash": "sha256:bb78ee1186a96e55786dbc5784af0fd0b3a4e94545f1aacbda28ec06abbc8ea1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 181660,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012977/todotxt-1.0.1-tb-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 1012978,
+                "created": "2019-05-30T11:19:58Z",
+                "hash": "sha256:bb78ee1186a96e55786dbc5784af0fd0b3a4e94545f1aacbda28ec06abbc8ea1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 181660,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012978/todotxt-1.0.1-tb-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 1012979,
+                "created": "2019-05-30T11:19:58Z",
+                "hash": "sha256:bb78ee1186a96e55786dbc5784af0fd0b3a4e94545f1aacbda28ec06abbc8ea1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 181660,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012979/todotxt-1.0.1-tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "Contains fix for the Preferences window not saving the changes for the\ncheckbox options."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/todotxt-extension/versions/1.0.1",
+        "version": "1.0.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "fr": "Todo.txt Extension incorpore la syntaxe de gestion des tâches opensource \"Todo.txt\" au sein de Thunderbird. Via l'extension de calendrier \"Lightning\", il est possible d'ajouter, supprimer ou modifier les tâches de votre fichier local Todo directement au sein de Thunderbird et d'afficher ces tâches sur le calendrier Lightning.\n\nTodo.txt est une syntaxe permettant de gérer ses tâches via un simple fichier texte en utilisant un ensemble de quelques règles simples et normalisées. A l'inverse de nombreuses autres applications de gestion des tâches utilisant très souvent un format spécifique et rarement exportable, votre fichier Todo peut être ouvert avec n'importe quel éditeur de texte, le rendant de facto universellement compatible avec toutes les plateformes. Il existe également une multitude d'applications facilitant les interactions avec le fichier Todo.txt et permettant de profiter de fonctionnalités de tri, d'affichages ou d'alarmes. Enfin, vous pouvez très facilement synchroniser votre fichier Todo.txt entre vos différents appareils via le service de votre choix : dropbox, owncloud, seafile, syncthing, google drive ou onedrive sont quelques exemples.\n\nLes détails de la syntaxe d'un fichier Todo.txt sont disponibles ici : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8b997d48f0e7b9159bb8ce10e6212c2574e58f9aeddfa8fa1e59c558091b6454/https%3A//github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format\">https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format</a>\nChaque ligne du fichier correspond à une tâche, à laquelle peut s'ajouter diverses informations complémentaires (date limite, projet, contexte, priorité) grâce à certaines syntaxes spécifiques. Par exemple la priorité est indiquée par une lettre entre parenthèses et le projet global dans lequel s'inscrit la tâche est indiqué par le symbole +.\nVoici un exemple de tâche crée le 20 juin 2016, prévue pour le 26 juin 2016 en vue d'un anniversaire :\n2016-06-20 Réserver Restaurant +Anniversaire due:2016-06-26\n\nTodo.txt Extension pour Thunderbird permet :\n- d'ajouter, modifier ou supprimer les tâches de votre Todo au sein même de Thunderbird\n- d'intégrer la syntaxe du fichier Todo aux fonctionnalités de Thunderbird telles que les catégories, les priorités ou les dates limites\n- d'avoir un aperçu complet et rapide de toutes vos tâches \n- de chercher et de filtrer vos tâches au sein de Thunderbird par projets, catégories, tâches accomplies ou à accomplir\n- d'indiquer les dates de début et de fin des tâches à enregistrer dans le fichier Todo.\n\nCette extension peut assigner automatiquement les propriétés d'une tâche Thunderbird à partir de la syntaxe Todo.txt. Cela signifie que lorsqu'un utilisateur entre une nouvelle tâche dans le fichier Todo.txt, elle est convertie en une tâche Thunderbird prenant en compte la date limite, les catégories et les projets. De même, une nouvelle tâche crée au sein de Thunderbird sera convertie en son équivalent Todo.txt et écrite dans votre fichier Todo.\n\nExemple : \nla tâche \"(A) Acheter Cadeau +Anniversaire +Romain @Maison\" du fichier Todo aura les propriétés suivantes au sein de Thunderbird :\n- Titre : Acheter Cadeau\n- Priorité : haute\n- Catégories : Romain et Anniversaire\n- Lieu : Maison\n- Date limite : Aucune\n\nUTILISATION :\n\nVeuillez indiquer l'emplacement des fichiers \"Todo.txt\" (tâches à accomplir) et \"Done.txt\" (tâches accomplies). Si vous n'avez pas encore de tels fichiers, créez simplement deux fichiers textes vides à l'emplacement de votre choix, puis indiquez le chemin correspondant dans les paramètres du module.\n\nATTENTION : dû à un bug au sein de Thunderbird, bug dont n'est pas responsable l'extension Todo.txt, l'extension ne prend pas en compte les emplacements utilisant des caractères spéciaux tels que é, è, ê, à, ô, î, ...\nExemple : \n\"/Mes Documents/Mon agenda/todo.txt\" est un emplacement valide\n\"Mes Documents/Mon agenda à moi/todo.txt\" est un emplacement invalide à cause du \"à\" et résultera en une incapacité de l'extension à intéragir avec le fichier Todo.\n\nPROPOSITIONS ET BUGS :\n\nLes propositions d'idées et les rapports de bug peuvent être indiqués ici :\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f848ffa7de0b16d58ad3d70b4e65aac0e182ad1f6e45088c83e3e970b12eab1d/https%3A//github.com/rkokkelk/todo.txt-ext\">https://github.com/rkokkelk/todo.txt-ext</a>\n\nREMERCIEMENTS :\n\nCette extension a pu voir le jour grâce aux projets suivants :\n- Cette extension est basée sur la librairie javascript todo-txt-js\n- Le code a également été inspirée par l'extension StormCows.",
+        "en-US": "Thunderbird extension for the Todo.txt application. This extension tries to integrate the Todo.txt application with Thunderbird. Using the Lightning extension it is now possible to add, delete or modify todo's directly within Thunderbird.\n\n- Add, delete or modify Todo's from within your Thunderbird.\n- Automatically use Thunderbirds functions from Todo.txt, such as categories, priorities, due dates etc.\n- Get a quick overview of all your tasks.\n- Search for complete and incomplete Todo's within Thunderbird using search parameters such as Contexts or Projects.\n- Use Todo.txt's syntax directly within Thunderbird.\n- Show Todo's using Thunderbird's functionality or just plain-text. \n- Specify the start and due dates of Todo's which are saved in the Todo.txt file. \n\nTodo.txt works best with a synchronization application such as Dropbox or Owncloud, in order to prevent accidental overwriting of the file it might be useful to set the refresh time of the calendar to a couple of minutes\nSyntax\n\nThe extension can automatically assign the appropriate properties to a Thunderbird task based on the Todo.txt syntax. This means that when a user enters a new Task with Todo.txt syntax it will result in a correct Thunderbird task.\n\nFor example: (A) foobar +Dev +Home @PR\n\nEntered as a new task within Thunderbird, it will automatically have the following properties:\n- High priority\n- Categories set to DEV &amp; Home\n- Title containing foobar\n- Location set to @PR\n\nOffcourse the Todo.txt file will contain the exact line as entered into Thunderbird.\n\nISSUES &amp; FEATURE REQUESTS\n\nIssues and feature requests can be reported <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2cbe4a747da406877d6c622bad9be81eb6023c7860786be8c926d9dc8ef5c8dd/https%3A//github.com/rkokkelk/todo.txt-ext/issues\">here</a>.\n\nTHANKS\n\nThis project was made possible of the following projects:\n- This extension relies heavily on the todo-txt-js JavaScript library.\n- Much of the code was inspired on the StormCows extension."
+    },
+    "developer_comments": {
+        "en-US": "Issues can be reported at: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2cbe4a747da406877d6c622bad9be81eb6023c7860786be8c926d9dc8ef5c8dd/https%3A//github.com/rkokkelk/todo.txt-ext/issues\">here</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/todotxt-extension/edit",
+    "guid": "todo.txt@xseth.nl",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "fr": "https://github.com/rkokkelk/todo.txt-ext",
+        "en-US": "https://github.com/rkokkelk/todo.txt-ext"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/650/650068-64.png?modified=1559215688",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/650/650068-32.png?modified=1559215688",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/650/650068-64.png?modified=1559215688"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-05-30T14:31:49Z",
+    "name": {
+        "fr": "Todo.txt Extension",
+        "en-US": "Todo.txt"
+    },
+    "previews": [
+        {
+            "id": 173702,
+            "caption": {
+                "en-US": "Use your Todo.txt Todo's in Thunderbird using Thunderbird's functionality such as showing priority, due dates, etc."
+            },
+            "image_size": [
+                700,
+                208
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/173/173702.png?modified=1530209283",
+            "thumbnail_size": [
+                320,
+                95
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/173/173702.png?modified=1530209283"
+        },
+        {
+            "id": 173703,
+            "caption": {
+                "en-US": "Show finished Todo's or sort based upon priority, due dates or other criteria."
+            },
+            "image_size": [
+                700,
+                221
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/173/173703.png?modified=1530209284",
+            "thumbnail_size": [
+                320,
+                101
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/173/173703.png?modified=1530209284"
+        },
+        {
+            "id": 173704,
+            "caption": {
+                "en-US": "Modify any part of your todo, including due dates, start dates, Projects, Categories and more."
+            },
+            "image_size": [
+                618,
+                320
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/173/173704.png?modified=1530209284",
+            "thumbnail_size": [
+                320,
+                166
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/173/173704.png?modified=1530209284"
+        },
+        {
+            "id": 173705,
+            "caption": {
+                "en-US": "Show your Todo.txt todo's in the Thunderbird side-bar."
+            },
+            "image_size": [
+                530,
+                285
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/173/173705.png?modified=1530209284",
+            "thumbnail_size": [
+                320,
+                172
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/173/173705.png?modified=1530209284"
+        },
+        {
+            "id": 173706,
+            "caption": {
+                "en-US": "It is also possible to not use the Thunderbird functionality and show the Todo's the same way as they are listed in the text file."
+            },
+            "image_size": [
+                530,
+                319
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/173/173706.png?modified=1530209285",
+            "thumbnail_size": [
+                320,
+                193
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/173/173706.png?modified=1530209285"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.19629,
+        "count": 9,
+        "average": 4.3333,
+        "text_count": 8
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/todotxt-extension/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/650068",
+    "slug": "todotxt-extension",
+    "status": "public",
+    "summary": {
+        "fr": "Extension Todo.txt pour Thunderbird",
+        "en-US": "Thunderbird extension for the Todo.txt application"
+    },
+    "support_email": {
+        "en-US": "rkokk@protonmail.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/rkokkelk/todo.txt-ext/issues"
+    },
+    "tags": [
+        "todo",
+        "todotxt"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/todotxt-extension/",
+    "weekly_downloads": 142
+}

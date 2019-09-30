@@ -1,0 +1,148 @@
+{
+    "id": 986288,
+    "authors": [
+        {
+            "id": 13597965,
+            "name": "Ysard",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Ysard/",
+            "username": "Ysard",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 21375,
+    "categories": {
+        "seamonkey": [
+            "interface-customizations"
+        ],
+        "thunderbird": [
+            "appearance"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2469616,
+        "compatibility": {
+            "seamonkey": {
+                "max": "*",
+                "min": "2.29"
+            },
+            "thunderbird": {
+                "max": "63.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/minimizetotray-reanimated/versions/2469616",
+        "files": [
+            {
+                "id": 1012680,
+                "created": "2019-03-30T15:10:34Z",
+                "hash": "sha256:4c68d90e47d026c548d5b70c4ce9c5aae391b4ea02ee4475b8c6a2b2f5d62e95",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 362257,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012680/minimizetotray_reanimated-1.4.11-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2019-05-17T18:03:53Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/minimizetotray-reanimated/versions/1.4.11",
+        "version": "1.4.11"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "fr": "<strong>Contexte:</strong>\n\nMinimizeToTray Reanimated est une mise à jour du Logiciel <em>MinimizeToTray revived (MinTrayR)</em> (Voir <a href=\"https://github.com/nmaier/mintrayr\" rel=\"nofollow\">le dépôt de l'ancien projet</a>), qui n'est plus maintenu depuis aout 2016, ce qui rend l'extension non utilisable sur les versions récentes de Thunderbird.\n\nEn effet, sur Thunderbird 60, les addons non marqués comme compatibles sont désactivés (certains sont réactivables sans problème en modifiant la valeur du paramètre de Thunderbird suivant : <em>extensions.strictCompatibility</em>).\n\n<strong>Problèmes fréquents</strong>\n\nSur certains systèmes (Windows, GNU/Linux et probablement MacOS), Thunderbird peut rentrer dans une boucle de réinstallation: à chaque ouverture, l'addon est réinstallé et n'apparait pas dans la liste de l'addon manager.\nCe problème n'est pas résolu car la cause n'est toujours pas identifiée.\nDans ce cas veuillez télécharger la version en cours de développement (*dev.xpi) qui corrige ce problème sur Github:\n<a href=\"https://github.com/ysard/mintrayr/releases\" rel=\"nofollow\">https://github.com/ysard/mintrayr/releases</a>\n\n<strong>Travail réalisé:</strong>\n\n<ul><li>Il s'agit d'une mise à jour globale de l'addon <strong>pour le rendre compatible autant que possible avec Thunderbird 60+</strong>.</li><li>La mise à jour a suivi [l'historique des modifications des API de Thunderbird](<a href=\"https://www.thunderbird.net/en-US/thunderbird/60.0/releasenotes/)\" rel=\"nofollow\">https://www.thunderbird.net/en-US/thunderbird/60.0/releasenotes/)</a>.</li><li>Réparation de la fonctionnalité de minimisation lors de la fermeture de Thunderbird.</li></ul>\n\n<strong>Avenir - À propos de Thunderbird:</strong>\n\n<ul><li>Thunderbird n'a pas pour le moment l'intention de supprimer le support des extensions <em>legacy</em> comme Firefox l'a fait.<a href=\"https://wiki.mozilla.org/Thunderbird/Add-ons_Guide_57\" rel=\"nofollow\">Add-ons Guide</a>.</li><li>Le support des WebExtensions n'est pas encore implémenté dans Thunderbird 60 et ne le sera pas avant Thunderbird 63, ce qui donne aux développeurs une chance supplémentaire de se préparer pour la migration.</li><li>Les extensions <em>legacy</em> seront toujours supportées dans Thunderbird 63.</li></ul>\n\n<strong>Avenir - À propos de cette extension:</strong>\n\nCette extension est appelée <em>Réanimée</em> car son avenir est assez incertain.\n\nEn effet, le code est peu documenté et difficile à maintenir pour des gens qui n'en sont pas les auteurs.\n\nL'addon fait appel à des technologies datant des débuts du projet Thunderbird, ce qui nuit à son avancée\net c'est pour cela que Mozilla fait actuellement table rase de ces technologies dans Firefox. Thunderbird suivra Firefox un jour ou l'autre dans cette démarche.\nDe plus, les extensions <em>legacy</em> font appel à des API très/trop puissantes et dangereuses pour la sécurité des utilisateurs.\n\nLa mise à jour <em>MinimizeToTray Reanimated</em> ne présente a priori pas de perte de fonctionnalités\npar rapport aux versions passées, mais il est impossible de garantir cela à moyen terme.\n\nLorsque les nouvelles API arriveront dans Thunderbird, il sera temps de réfléchir à de nouvelles applications plus en phase avec les technologies actuelles.\n\n\n<strong>Alternatives:</strong>\n\nPour les utilisateurs sous GNU/Linux, les environnements de bureau sont riches et supportent facilement les customisations. Vous trouverez ainsi l'utilitaire <em>AllTray</em> compatible avec Gnome, KDE, et Xfce (Voir cet <a href=\"https://saravananthirumuruganathan.wordpress.com/2010/04/21/alltray-minimize-any-program-into-the-system-tray/\" rel=\"nofollow\">excellent tutorial)</a>.\n\nCe logiciel permet de minimiser n'importe quelle application dans le systray en remplaçant par exemple, leurs raccourcis par ceci :\n\n    <code>/usr/bin/alltray  /usr/bin/thunderbird -s</code>\n\n\nPour les utilisateurs de Windows ou Mac:\nJe n'ai actuellement pas connaissance d'une alternative.\n\n\n<strong>Aspect technique:</strong>\n\nL'application utilise du code natif qui doit être compilé sur chaque plateforme (Linux 32/64bits, Windows 32/64bits).\nL'application générée est chargé par du code JavaScript. Mais le support de cette fonctionnalité est en passe d'être supprimé (<a href=\"https://discourse.mozilla.org/t/ctypes-possible-in-webextensions/12490\" rel=\"nofollow\">Voir CTypes in WebExtensions</a>).\n\nLes addons ne peuvent être décompressés dans le profil du logiciel et restent à l'état d'archive zip (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1444502\" rel=\"nofollow\">Voir Remove support for installing unpacked extensions</a>).\nCela engendre plusieurs problèmes dont l'impossibilité de charger l'application native sans recourir à un petit hack invisible pour l'utilisateur, mais dont le fonctionnement ne tiendra pas bien longtemps avec les mises à jour futures.\n\nL'addon nécessite toujours un redémarrage de Thunderbird après son installation, ce qui là encore le met en danger d'après les règles s'appliquant aux addons <em>legacy</em> encore tolorés.\n\nPour finir, il semble peu judicieux de réinvestir plus de temps de développement dans une application en phase finale de support.\n\n\n<strong>Support &amp; code source</strong>\n\nLe code source est public et disponible sur <a href=\"https://github.com/ysard/mintrayr/tree/dev_thunderbird_60+\" rel=\"nofollow\">GitHub</a>.\n\nToute questions, rapports de bug et participations à l'amélioration du code du logiciel (surtout) sont les bienvenus dans la section <a href=\"https://github.com/ysard/mintrayr/issues\" rel=\"nofollow\">issues du projet</a>.\n\n\n<strong>License</strong>\n\nCette extension est sous la Mozilla Public License, version 2.0.",
+        "en-US": "<strong>Context:</strong>\n\nMinimizeToTray Reanimated is an update of <em>MinimizeToTray revived (MinTrayR)</em> (Here is the old source code <a href=\"https://github.com/nmaier/mintrayr\" rel=\"nofollow\">repository</a>), which is no longer maintained since August 2016, which makes the addon unusable on recent versions of Thunderbird.\n\nIndeed, on Thunderbird 60, addons not marked as compatible are disabled (Some can be easily re-enabled by changing the value of the following Thunderbird setting: <em>extensions.strictCompatibility</em>).\n\n<strong> Frequent issues: </strong>\n\nOn some systems (Windows or GNU / Linux and maybe MacOS), Thunderbird can enter a reinstallation loop: at each opening, the addon is reinstalled and does not appear in the addon manager list.\nThis problem is not resolved because the cause is still not identified.\nIn this case please download the version under development (* dev.xpi) that corrects this problem on Github:\n<a href=\"https://github.com/ysard/mintrayr/releases\" rel=\"nofollow\">https://github.com/ysard/mintrayr/releases</a>\n\n<strong>Made work/Changes:</strong>\n\n<ul><li>This is a global update of the addon to <strong>make it as compatible as possible with Thunderbird 60+</strong>.</li><li>The update followed <a href=\"https://www.thunderbird.net/en-US/thunderbird/60.0/releasenotes/\" rel=\"nofollow\">the change notes</a> in the API of Thunderbird since the version 57.</li><li>The minimization feature when closing Thunderbird with <em>Alt+F4</em> is fixed.</li></ul>\n<strong>Future - About Thunderbird:</strong>\n\n<ul><li>Thunderbird does not currently intend to remove the support of <em>legacy</em> extensions as Firefox did.\nSee <a href=\"https://wiki.mozilla.org/Thunderbird/Add-ons_Guide_57\" rel=\"nofollow\">Add-ons Guide</a>.</li><li>Support for WebExtensions is not yet implemented in Thunderbird 60, and will not be before Thunderbird 63, which gives\nto developers an extra chance to be prepared for the migration.</li><li><em>Legacy</em> extensions will still be supported in Thunderbird 63.</li></ul>\n<strong>Future - About this extension:</strong>\n\nThis extension is named <em>Revived</em> because its future is rather uncertain.\n\nIndeed, the code is poorly documented and difficult to maintain for people who are not the authors.\n\nThe addon uses technology from the early days of the Thunderbird project, which hinders its progress, and that's why Mozilla is currently rewriting many things from scratch in Firefox. Thunderbird will follow Firefox one day or another in this process.\nThus, <em>legacy</em> extensions use APIs that are very/too powerful and dangerous for the security of\nusers.\n\nThe <em>MinimizeToTray Reanimated</em> update does not present a priori any loss of functionality compared to past versions, but it is impossible to guarantee this in the medium term.\n\nWhen the new APIs will arrive in Thunderbird, it will be time to think about new applications more in line with current technologies.\n\n<strong>Alternatives:</strong>\n\nFor GNU/Linux users, desktop environments are rich and easily support customizations. You will find the <em>AllTray</em> utility, compatible with Gnome, KDE, and Xfce (see this <a href=\"https://saravananthirumuruganathan.wordpress.com/2010/04/21/alltray-minimize-any-program-into-the-system-tray/\" rel=\"nofollow\">excellent tutorial)</a>.\n\nThis software can minimize any application in the systray by replacing for example, their shortcuts like this:\n\n<code>/usr/bin/alltray/usr/bin/thunderbird -s</code>\n\n\nFor Windows or Mac users:\nI have no idea of an alternative.\n\n\n<strong>Advanced technical aspect:</strong>\n\nThe application uses native code that must be compiled on each platform (Linux 32/64bits, Windows 32/64bits).\nThe generated application is loaded by JavaScript code. But the support for this feature is about to be removed (<a href=\"https://discourse.mozilla.org/t/ctypes-possible-in-webextensions/12490\" rel=\"nofollow\">See CTypes in WebExtensions</a>).\n\nAddons can no longer be unpacked into the profile directory and now remain in zip archive state (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1444502\" rel=\"nofollow\">See Remove support for installing unpacked extensions</a>).\nThis causes several problems including the impossibility to load the native application without using a little hack invisible to the user, but that will not last long with future updates.\n\nThe addon still requires a restart of Thunderbird after installation, which again puts it in danger according to the rules for <em>legacy</em> extensions that are still tolerated.\n\nFinally, it seems to be unwise to invest more development time in an application in a final phase of support.\n\n\n<strong>Support &amp; source code</strong>\n\nThe source code is publicly available on <a href=\"https://github.com/ysard/mintrayr\" rel=\"nofollow\">GitHub</a>.\nquestions, bug reports and source code improvements (mostly) are open on the <a href=\"https://github.com/ysard/mintrayr/issues\" rel=\"nofollow\">GitHub issues</a>.\n\n\n<strong>License</strong>\n\nThis extension is under the Mozilla Public License, version 2.0."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/minimizetotray-reanimated/edit",
+    "guid": "mintray-reanimated@ysard",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "fr": "https://github.com/ysard/mintrayr",
+        "en-US": "https://github.com/ysard/mintrayr"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/986/986288-64.png?modified=67261e01",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/986/986288-32.png?modified=67261e01",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/986/986288-64.png?modified=67261e01"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-05-17T18:03:53Z",
+    "name": {
+        "fr": "MinimizeToTray Reanimated",
+        "en-US": "MinimizeToTray Reanimated"
+    },
+    "previews": [
+        {
+            "id": 205450,
+            "caption": null,
+            "image_size": [
+                511,
+                237
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205450.png?modified=1536720638",
+            "thumbnail_size": [
+                320,
+                148
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205450.png?modified=1536720638"
+        },
+        {
+            "id": 205449,
+            "caption": null,
+            "image_size": [
+                379,
+                409
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205449.png?modified=1536720638",
+            "thumbnail_size": [
+                185,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205449.png?modified=1536720638"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.64683,
+        "count": 103,
+        "average": 4.6602,
+        "text_count": 103
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/minimizetotray-reanimated/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/986288",
+    "slug": "minimizetotray-reanimated",
+    "status": "public",
+    "summary": {
+        "fr": "MinimizeToTray Reanimated est principalement dédié à Thunderbird pour minimiser l'application dans la zone du systray.\nIl s'agit de la mise à jour de MinimizeToTray Revived qui n'est plus maintenu depuis les récentes versions de Thunderbird.",
+        "en-US": "MinimizeToTray Reanimated is an application mainly dedicated to Thunderbird to allow its minimization in the systray in one click. It is the update of MinimizeToTray Revived, which is not maintained anymore since the recent versions of Thunderbird."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "minimisation",
+        "minimiser",
+        "system tray",
+        "systray"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/minimizetotray-reanimated/",
+    "weekly_downloads": 0
+}

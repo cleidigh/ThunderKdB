@@ -1,0 +1,126 @@
+{
+    "id": 9356,
+    "authors": [
+        {
+            "id": 2830751,
+            "name": "Thomas Henlich",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/thomas-henlich/",
+            "username": "thomas-henlich",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 39,
+    "categories": {
+        "seamonkey": [
+            "privacy-and-security"
+        ],
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": "https://donate.mozilla.org/thunderbird/",
+    "current_version": {
+        "id": 1742712,
+        "compatibility": {
+            "seamonkey": {
+                "max": "2.49.*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "60.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/reloadpac/versions/1742712",
+        "files": [
+            {
+                "id": 342156,
+                "created": "2015-08-25T09:15:52Z",
+                "hash": "sha256:d4cc46613cf14f34d9f15f92c5db7bfb017a61aad4d53801d4399e559f709f76",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 1720,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/342156/reloadpac-0.0.4-sm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Code cleanup only. No new functionality.",
+            "de": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/reloadpac/versions/0.0.4",
+        "version": "0.0.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "In Thunderbird and the SeaMonkey e-mail client there is a bug which bypasses the proxy settings configured via a proxy auto-configuration (PAC) script for the very first connection  to a mail server after startup. ReloadPAC provides a workaround for this problem.\n\nSo if you use a SSH tunnel, the TOR privacy network or another SOCKS server configured via proxy auto-configuration, use this extension for your safety until the bug is fixed in Thunderbird and SeaMonkey!",
+        "de": "Thunderbird und das SeaMonkey-E-Mail-Programm haben einen Fehler, durch den die Proxy-Einstellungen aus einem Proxy-Autokonfigurations-Skript (PAC) bei der allerersten Verbindung zu einem Mailserver nach einem Programmstart umgangen werden. ReloadPAC ist eine provisorische Lösung für dieses Problem.\n\nFalls Sie also einen SSH-Tunnel, das TOR-Anonymisierungsnetzwerk oder einen anderen mittels Proxy-Autokonfiguration festgelegten SOCKS-Server nutzen, dann verwenden Sie aus Sicherheitsgründen bitte diese Erweiterung, solange das Problem in Thunderbird und SeaMonkey selbst noch nicht behoben wurde!"
+    },
+    "developer_comments": {
+        "en-US": "<ul><li>Please only install (or review) this addon if you use a proxy auto-configuration (PAC) script for connections to your mail server (configured in Connection Settings &gt; Automatic proxy configuration script). Otherwise this addon is not for you!</li><li>Please be fair and only review the addon itself. Comments about the bug which makes this addon necessary (or preferably a proper bugfix) should be directed to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8a69d01d29088f76ac747a4b96661b6bc51eb2dc5eac93c9f37655ec49c64417/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=351163\">https://bugzilla.mozilla.org/show_bug.cgi?id=351163</a>.</li></ul>",
+        "de": "<ul><li>Bitte installieren (oder bewerten) Sie diese Erweiterung nur, wenn Sie ein Proxy-Autokonfigurations-Skript (PAC) für Verbindungen zu Ihrem Mailserver verwenden (wird konfiguriert in Verbindungs-Einstellungen &gt; Automatische Proxy-Konfigurations-URL). Wenn nicht, dann ist diese Erweiterung nichts für Sie!</li><li>Bitte seien Sie fair und bewerten Sie nur die Erweiterung an sich. (Hilfreiche) Kommentare zu dem Fehler, welcher diese Erweiterung notwendig macht (noch besser: Code, der den Fehler behebt) bitte auf <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8a69d01d29088f76ac747a4b96661b6bc51eb2dc5eac93c9f37655ec49c64417/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=351163\">https://bugzilla.mozilla.org/show_bug.cgi?id=351163</a> hinterlassen.</li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/reloadpac/edit",
+    "guid": "proxy.pac.fix@thomas.henlich",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": {
+        "en-US": "https://bugzilla.mozilla.org/show_bug.cgi?id=351163",
+        "de": "https://bugzilla.mozilla.org/show_bug.cgi?id=351163"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-08-25T09:29:36Z",
+    "name": {
+        "en-US": "ReloadPAC",
+        "de": "ReloadPAC"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/reloadpac/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/9356",
+    "slug": "reloadpac",
+    "status": "public",
+    "summary": {
+        "en-US": "Workaround for Bug 351163 (Thunderbird bypasses proxy.pac for first connection).",
+        "de": "Abhilfe für Fehler 351163 (Thunderbird umgeht proxy.pac bei erster Verbindung)."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://bugzilla.mozilla.org/show_bug.cgi?id=351163"
+    },
+    "tags": [
+        "automatic proxy configuration",
+        "privacy",
+        "security"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/reloadpac/",
+    "weekly_downloads": 27
+}

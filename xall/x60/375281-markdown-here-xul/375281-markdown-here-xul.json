@@ -1,0 +1,267 @@
+{
+    "id": 375281,
+    "authors": [
+        {
+            "id": 6225309,
+            "name": "Adam Pritchard",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/adam-p/",
+            "username": "adam-p",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 3239,
+    "categories": {
+        "firefox": [
+            "social-communication"
+        ],
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2468653,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "6.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/markdown-here-xul/versions/2468653",
+        "files": [
+            {
+                "id": 1011887,
+                "created": "2018-09-30T13:15:46Z",
+                "hash": "sha256:e43b43adda5a0dfe998c517a7e8bd54284e8ef07d6cc5e6ad92f7538717c7d32",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 521244,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011887/markdown_here-2.13.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "<ul><li>Fixed [bug #524] and [bug #526]: Due to v2.13.3 fix, Markdown Here didn't work in Thunderbird with a non-English UI.<ul><li>Thanks to <a href=\"https://github.com/KSR-Yasuda\" rel=\"nofollow\">KSR-Yasuda</a>, <a href=\"https://github.com/ensleep\" rel=\"nofollow\">ensleep</a>, <a href=\"https://github.com/pmanu93\" rel=\"nofollow\">Pedro Silva</a>, <a href=\"https://github.com/stombi\" rel=\"nofollow\">Christophe Meyer</a>, <a href=\"https://github.com/littdky\" rel=\"nofollow\">littdky</a>, <a href=\"https://github.com/lashkevi\" rel=\"nofollow\">Michael Lashkevich</a>, <a href=\"https://github.com/morsedl\" rel=\"nofollow\">morsedl</a>.</li></ul></li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-xul/versions/2.13.4",
+        "version": "2.13.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "ru": "Markdown Here поможет вам написать емейл в Markdown и отрендерить его (сделать стильным!) перед отправкой.\n\nЭто отлично подходит тем, кто не любит возиться с кнопками форматирования текста во время написания емейлов. Особенно это подойдет программистам, которым приходится писать письма, содержащие программный код -- Markdown Here поддерживает подсветку синтаксиса. Не останутся в стороне и математики -- Markdown Here также поддерживает рендеринг формул TeX.\n\nАбсолютно прост в использовании:\n1. Напишите свое сообщение в окне WYSIWYG  редактора вашего емайл клиента используя формат Markdown принятый на Github.\n2. Щелкните правой кнопкой мыши в окне создания сообщения и нажмите «Переключить Markdown».\n3. Теперь ваше сообщение выглядит прекрасно! (То есть, оно было сконвертировано в HTML.)\n4. Если вам нравится результат, то просто отправьте сообщение. Если вы хотите изменить или добавить что-то, нажмите кнопку «Переключить Markdown», чтобы снова вернуться к оригиналу.\n5. Повторите эти действия, если понадобится.\n\nMarkdown Here в первую очередь ориентирован на работу с Gmail и Thunderbird, но он также очень хорошо работает с Yahoo и Hotmail. Кроме того он прекрасно работает с Google Groups,  Google Sites, веб-интерфейсом Evernote, Blogger, Wordpress и другими!\n\nSyntax highlighting note: Use fenced code blocks and specify the language name. Смотрите в качестве примера страницу проекта.\n\nPrivacy: Markdown Here accesses and modifies web content when you activate it. Теоретически, Markdown Here может получить доступ и к другому веб-контенту, но, на практике, не делает этого. It also makes no Internet requests whatsoever. Your data is modified when and where you choose, and does not leave your browser.\n\nДоступно как расширение Chrome, Firefox, Safari, Opera и Thunderbird.\n\nЭто проект с открытым кодом. Посетите страницу Markdown Here на Github для получения более полных инструкций, чтобы узнать больше информации, для сообщения об ошибках, или чтобы внести свой вклад.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "fr": "Markdown Here permet d'écrire un courriel avec Mardown et de le convertir (afin qu'il soit attrayant!) avant de l'envoyer.\n\nC'est parfait pour tous ceux qui n'aiment pas travailler avec des boutons de formatage pendant qu'ils écrivent un courriel. C'est particulièrement utile pour les programmeurs qui écrivent des courriels qui incluent du code -- la coloration syntaxique est également supportée. Et pour les mathématiciens parmi nous : Markdown Here convertira tout aussi bien les formules TeX.\n\nTout à fait simple à utiliser :\n1. Écrivez votre courriel dans l'éditeur de texte enrichi de votre client de messagerie en utilisant la version de Markdown adaptée par GitHub.\n2. Faites un clic droit dans la zone de texte du corps de votre courriel, puis cliquez sur « Basculer Markdown ».\n3. Votre courriel est maintenant attrayant! (C'est-à-dire qu'il a été converti en HTML.)\n4. Si vous aimez l'aspect de votre courriel, il ne vous reste qu'à l'envoyer. Si vous souhaitez changer ou ajouter quelque chose, cliquez à nouveau sur « Basculer Markdown » afin de retrouver votre Markdown d'origine.\n5. Répéter au besoin.\n\nMarkdown Here est principalement destiné à être utilisé avec Gmail et Thunderbird, mais il fonctionne également très bien avec Yahoo et Hotmail. De plus, il fonctionne bien avec Google Groupes et Sites, avec l'interface Web d'Evernote, Blogger, Wordpress et plus encore!\n\nRemarque concernant la coloration syntaxique : utilisez des blocs de code balisés et spécifiez le nom du langage. Regardez la page du projet pour avoir un exemple.\n\nVie privée : Markdown Here accède au contenu web et le modifie quand vous l'activez. Il peut aussi, en théorie, accéder à d'autre contenu Web, mais il ne le fait pas. Il ne fait également aucune requête Internet que ce soit. Vos données sont modifiées quand et où vous le choisissez et elles ne quittent pas votre navigateur.\n\nDisponible en tant qu'extension Chrome, Firefox, Safari, Opera et Thunderbird.\n\nC'est un projet open source. Visitez la page Github de Markdown Here pour les instructions complètes, pour plus d'information, pour les rapports de bogue ou pour contribuer à ce projet.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a> (en anglais)\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a> (en anglais)",
+        "de": "Markdown Here ermöglicht es, E-Mails in Markdown-Syntax zu schreiben und vor dem Versenden zu rendern (hübsch formatiert).\n\nDas ist großartig für jeden der nicht gerne beim Schreiben mit Formatierungs-Buttons herumhantiert. Ganz besonders praktisch ist es für Programmierer die Code in E-Mails versended wollen – sogar automatisches Syntax-Highlighting wird unterstützt. Und für die Mathematiker unter uns: Markdown Here kommt auch mit TeX zurecht.\n\nGanz einfach zu benutzen:\n1. E-Mail im gewöhnlichen Rich-Text–Editor des E-Mail–Programms schreiben, und zwar in Github-Flavour–Markdown.\n2. Rechtsklick im Schreibbereich, dann auf \"Markdown rendern\".\n3. Die E-Mail erscheint jetzt in schönem Typsatz. (Bedeutet, sie ist als HTML gerendert.)\n4. Wenn alles gut aussieht – versenden! Wenn noch etwas geändert oder hinzugefügt werden muss, nochmal auf den \"Markdown\"–Knopf klicken um zurück zum Markdown-Code zu kommen.\n5. Bei Bedarf wiederholen.\n\nMarkdown Here ist vor allem für Gmail oder Thunderbird konzipiert, aber es funktioniert auch ganz gut mit Yahoo und Hotmail. Außerdem funktioniert es großartig mit Google Groups und Sites, dem Evernote–Web-Interface, Blogger, Wordpress, und mehr!\n\nHinweis zum Syntax-Highlighting: Nutzen Sie \"fenced code blocks\" und definieren Sie die Sprache. Siehe Projektseite für ein Beispiel.\n\nDatenschutz: Markdown Here greift auf Webinhalte zurück und verändert diese, wenn Sie es aktivieren. Theoretisch könnte es auf andere Web-Inhalte zugreifen, tut dies aber nicht. Es macht auch keine Internet-Abfragen jeglicher Art. Die Nutzerinhalte werden nur auf Nutzerkommando bearbeitet und verlassen nicht der Browser.\n\nVerfügbar als Erweiterung für Chrome, Firefox, Safari, Opera, und Thunderbird.\n\nDieses Projekt ist Open-Source. Siehe die Github-Seite von Markdown Here für weitere Anleitung, Informationen, Bug-Reports, oder um zum Projekt beizutragen.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "zh-TW": "Markdown Here讓您可以使用Markdown來編寫電子郵件並在寄出前渲染它(把它變美觀!)。\n\n這對那些不喜歡在撰寫電子郵件時浪費時間在排版按鈕的人是好事。 它特別適合那些要在電子郵件中插入代碼的程式設計師們 -- 沒錯，它甚至支援語法高亮顯示。 對於我們之中的數學家們而言，Markdown Here也支援算繪TeX公式。\n\n使用起來十分簡易：\n1. 在你的電子郵件程式中用Github口味Markdown寫電子郵件。\n2. 對輸入框右鍵點擊，並點選\"Markdown 切換\"。\n3. 你的電子郵件現在看起來很漂亮！ (它已被算繪成HTML。)\n4. 如果你喜歡它的樣子，就傳送。 如果你想要更改或是新增東西，再次點選Markdown切換來拿到原本的Markdown。\n5. 需要時重複以上步驟。\n\nMarkdown Here主要針對Gmail與Thunderbird，但是也能在Yahoo與Hotmail運作正常。 除此之外，也可在Google Groups與Google Sites，Evernote的網頁界面，Blogger，Wordpress，與其他服務運作！\n\n關於Syntax highlighting：使用程式碼區塊，並指定語言名稱。 瀏覽專案頁面來觀看範例。\n\n隱私權：當你啟用時，Markdown Here會存取並更改網頁內容。 它理論上有能力存取其他網頁內容，但是不會做這件事情。 它也不會任何發送網際網路請求。 你的資料只會在你更改時更改，並且不會離開你的瀏覽器。\n\n可以從Chrome、Firefox、Safari、Opera與Thunderbird的擴充套件取得。\n\n這是開源專案。 瀏覽Markdown Here的Github網頁來獲得使用手冊、更多資訊、回報問題，或是貢獻。\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "en-US": "Markdown Here lets you write email in Markdown and render it (make it pretty!) before sending.\n\nThis is great for anyone who doesn't like fiddling around with formatting buttons while writing an email. It's especially good for programmers who write email with code in them -- it even supports syntax highlighting. And for the mathematicians among us: Markdown Here will render TeX formulae as well.\n\nTotally simple to use:\n1. Write your email in your email client's rich editor using Github-flavoured Markdown.\n2. Right-click in the compose area and then click \"Markdown Toggle\".\n3. Your email is now pretty! (That is, it's been rendered to HTML.)\n4. If you like the way it looks, just send it. If you want to change or add something, click \"Markdown Toggle\" again to get back to your original Markdown.\n5. Repeat as necessary.\n\nMarkdown Here is primarily targeted to work with Gmail and Thunderbird, but it also works pretty well with Yahoo and Hotmail. Additionally, it works great with Google Groups and Sites, Evernote's web interface, Blogger, Wordpress, and more!\n\nSyntax highlighting note: Use fenced code blocks and specify the language name. See the project page for an example.\n\nPrivacy: Markdown Here accesses and modifies web content when you activate it. It can, in theory, access other web content, but does not. It also makes no Internet requests whatsoever. Your data is modified when and where you choose, and does not leave your browser.\n\nAvailable as a Chrome, Firefox, Safari, Opera, and Thunderbird extension.\n\nThis is an open source project. Visit Markdown Here's Github page for full instructions, more information, bug reports, or to contribute.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "ko": "Markdown Here는 마크다운으로 이메일을 (예쁘게) 쓰실 수 있게 합니다\n\nThis is great for anyone who doesn't like fiddling around with formatting buttons while writing an email. It's especially good for programmers who write email with code in them -- it even supports syntax highlighting. And for the mathematicians among us: Markdown Here will render TeX formulae as well.\n\n사용하는 법이 아주 간단합니다:\n1. Write your email in your email client's rich editor using Github-flavoured Markdown.\n2. Right-click in the compose area and then click \"Markdown Toggle\".\n3. 쓰신 이메일은 이제 예뻐졌습니다! (즉 일반 문자에서 HTML로 바뀌게 되었습니다)\n4. 모습이 마음에 드신다면 그대로 보내셔도 좋습니다. 만약 바꾸거나 혹은 추가하고 싶은 것이 있으시다면 \"마크다운 토글\"을 클릭하신 다음에 다시 마크다운으로 될테고 편집하실 수 있습니다.\n5. Repeat as necessary.\n\nMarkdown Here is primarily targeted to work with Gmail and Thunderbird, but it also works pretty well with Yahoo and Hotmail. Additionally, it works great with Google Groups and Sites, Evernote's web interface, Blogger, Wordpress, and more!\n\nSyntax highlighting note: Use fenced code blocks and specify the language name. See the project page for an example.\n\nPrivacy: Markdown Here accesses and modifies web content when you activate it. It can, in theory, access other web content, but does not. It also makes no Internet requests whatsoever. Your data is modified when and where you choose, and does not leave your browser.\n\nAvailable as a Chrome, Firefox, Safari, Opera, and Thunderbird extension.\n\n이것은 오픈 소스 프로젝트 입니다. Visit Markdown Here's Github page for full instructions, more information, bug reports, or to contribute.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "it": "Markdown Here ti permette di scrivere email in Markdown e trasformarle (renderle belle!) prima di inviarle.\n\nQuesto è ottimo per chi non ama trafficare con i pulsanti di formattazione mentre scrive una email. È particolarmente valido per i programmatori che scrivono email con codice all'interno -- supporta anche l'evidenziazione della sintassi. E per i matematici tra noi: Markdown Here interpreta anche le formule TeX.\n\nMolto semplice da utilizzare:\n1. Scrivi la tua email nel ricco editor di testo del tuo client di posta usando Github-flavoured Markdown.\n2. Clicca col destro nell'area di composizione e poi clicca \"Commuta Markdown\".\n3. La tua email ora è bella! (Vale a dire, è stata trasformata in HTML)\n4. Se ti piace l'aspetto che ha, spediscila. Se vuoi cambiare o aggiungere qualcosa, clicca \"Commuta Markdown\" di nuovo per tornare al tuo originale Markdown.\n5. Ripeti se necessario.\n\nMarkdown Here è pensato principalmente per funzionare con Gmail e Thunderbird, ma funziona molto bene anche con Yahoo e Hotmail. Inoltre, funziona ottimamente con Google Groups e Sites, l'interfaccia web di Evernote, Blogger, Wordpress, e altro ancora!\n\nNota per la syntax highlighting: usare i Fenced Code Blocks specificando il nome del linguaggio utilizzato. Si veda la pagina del progetto per un esempio.\n\nPrivacy: Markdown Here ha accesso e modifica il contenuto web una volta che è stato attivato. In teoria, può accedere anche ad altri contenuti, ma non lo fa. Addirittura non esegue nessuna richiesta Internet. Il testo viene modificato solo dove e quando tu scegli di farlo, e non lascia mai il tuo browser.\n\nDisponibile come estensione per Chrome, Firefox, Safari, Opera e Thunderbird.\n\nQuesto è un progetto open source. Visita la pagina GitHub di Markdown Here per le istruzioni complete, ulteriori informazioni, segnalazioni di bug o per contribuire.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "zh-CN": "Markdown Here允许你在发送电子邮件之前用Markdown语法编辑并转换它(让它看起来漂亮极了!)。\n\n这对于那些不喜欢在撰写电邮时反复摆弄排版按钮的人无疑是好消息。 它特别适合那些要在电子邮件中插入代码的程序员们 —— 没错，它甚至支持语法高亮显示。 对于我们之中的数学家们而言，Markdown Here也支持转换TeX公式。\n\n使用起来十分简易：\n1. 在你的电子邮箱客户端的富文本编辑器中使用Github风格的Markdown。\n2. 在编辑区右击然后选择 \"Markdown Toggle\"。\n3. 你的电子邮件现在看起来非常漂亮! (它已经被检测并转换为HTML格式)\n4. 如果你很满意这样的外观就直接发送吧。 如果你想更改或者添加些什么，再次点击 \"Markdown Toggle\" 可以返回到你原始的Markdown文本。\n5. 如有必要，重复以上步骤\n\nMarkdown Here 主要目标是为 Gmail 和 Thunderbird 服务， 但它也可以在 Yahoo 和 Hotmail 正常使用。 另外， 它在 Google Group 和一些网站中也可以出色使用，比如Evernote/印象笔记的网页版，Blogger，Wordpress等！\n\n语法高亮提示：使用fenced code blocks并指定代码语言。 可以参考项目页作为例子。\n\n隐私：当你激活Markdown Here时，它会获取和修改网页内容。 理论上它可以获取其他网页内容，但它不会这么做。 它也无论如何不会发起因特网请求。 只有你主动选择的指定范围的数据才会被修改，你的数据不会离开你的浏览器。\n\n可作为Chrome，Firefox，Safari，Opera和Thunderbird的扩展程序/附加组件。\n\n这是一个开源项目。 详细指导，更多信息，bug报告以及贡献，可以访问Markdown Here的Github页面。\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "pt-BR": "Markdown Here permite que você escreva e-mail em Markdown e o renderiza (torna-o elegante!) antes de enviar.\n\nÉ perfeito para quem não gosta de ficar mexendo com botões de formatação enquanto escreve um e-mail. É especialmente adequado para programadores que escrevem e-mail que incluem código-fonte — Markdown Here suporta destaque de sintaxe. E para os matemáticos entre nós: Markdown Here também converte fórmulas em TeX.\n\nTotalmente fácil de usar:\n1. Escreva sua mensagem no campo de edição formatada do seu cliente de e-mail usando Markdown versão Github.\n2. Clique com o botão direito no campo de edição e, em seguida, selecione “Markdown Toggle”.\n3. Seu e-mail agora ficou elegante! (Ou seja, foi convertido em HTML.)\n4. Se você gostar do resultado, é só enviá-lo. Se você quiser alterá-lo ou acrescentar algo, clique novamente em “Markdown Toggle” para voltar ao Markdown original.\n5. Repita se necessário.\n\nMarkdown Here é voltado principalmente para trabalhar com Gmail e Thunderbird, mas também funciona muito bem com Yahoo e Hotmail. Além disso, ele funciona muito bem com Google Groups e Sites, a interface web do Evernote, Blogger, Wordpress e muito mais!\n\nNota sobre destaque de sintaxe: Use código de blocos delimitados e especifique o nome da linguagem. Veja um exemplo na página do projeto.\n\nPrivacidade: Markdown Here acessa e modifica o conteúdo da web quando é ativado. Ele pode, em teoria, acessar outros conteúdos da web, mas não o faz. Tampouco acessa a Internet de algum modo. Seus dados são modificados quando e onde você decide e não deixam o seu navegador.\n\nDisponível como extensões para Chrome, Firefox, Safari, Opera e Thunderbird.\n\nEste é um projeto de código fonte aberto. Visite a página Github do Markdown Here para as instruções completas, mais informações, relatórios de bugs, ou para contribuir.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "pl": "Markdown Here pozwala na pisanie e-maili w języku Markdown i przekładanie ich na tekst wyjściowy (upiększony!) przed wysłaniem.\n\nTo świetna wiadomość dla każdego kto nie lubi klikać na przyciski formatowania tekstu podczas pisania e-maili. To szczególnie przydatne dla programistów, którzy piszą e-maile zawierające fragmenty kodu źródłowego -- Markdown Here umożliwia nawet kolorowanie składni. A dla matematyków wśród nas: Markdawn Here wygeneruje również wzory zapisane w języku TeX.\n\nBanalnie proste w użyciu:\n1. Napisz e-mail w swoim kliencie poczty elektronicznej używając języka Markdown w wersji GitHub.\n2. Kliknij pole edycji tekstu prawym przyciskiem myszy i wybierz \"Przełącz Markdown\".\n3. Twój e-mail został upiększony! (To jest, przełożony na język HTML.)\n4. Jeśli rezultat jest zadowalający, po prostu wyślij wiadomość. Jeśli chcesz coś zmienić lub dodać, znów wybierz \"Przełącz Markdown\", żeby wrócić do wersji wyjściowej w języku Markdown.\n5. Powtarzaj w miarę potrzeb.\n\nMarkdown Here został stworzony głownie z myślą o serwisie Gmail i o programie Thunderbird, ale działa też całkiem nieźle z serwisami Yahoo i Hotmail. Dodatkowo, świetnie działa z Google Groups oraz Sites, z wersją internetową serwisu Evernote, z serwisami Blogger, Wordpress i nie tylko!\n\nUwaga na temat kolorowania składni: Używaj ogrodzonych bloków kodu źródłowego (ang. fenced code blocks) precyzując użyty język programowania. Zobacz przykład na stronie internetowej projektu.\n\nPrywatność: Markdown Here ma dostęp do i modyfikuje zawartość stron internetowych kiedy jest włączony. Teoretycznie, ma dostęp do zawartości innych stron internetowych, ale z tego dostępu nie korzysta. Nie wykonuje też żadnych zapytań internetowych. Twoje dane są modyfikowane tylko wtedy i tylko tam gdzie zdecydujesz i nie opuszczają twojej przeglądarki.\n\nDostępne jako rozszerzenie dla programów Chrome, Firefox, Safari, Opera oraz Thunderbird.\n\nTen projekt tworzy otwarte oprogramowanie. Odwiedź stronę GitHub projektu Markdown Here aby znaleźć pełne instrukcje, więcej informacji, żeby zgłaszać błędy, albo pomóc w rozwoju projektu.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "ja": "Markdown Here を使えば、メールを Markdown で書けるようになります。もちろん、送信前に (きれいに！) 表示できます。\n\n電子メールを書いている時に書式設計ボタンを操作するのが嫌いだっていう人。そんな人に、Markdown Hereは最高の拡張機能です。 構文のハイライト表示もできます。メールにプログラムのコードを書きたいプログラマーに最適です。 また、数学をする人には、TeXで書かれた数式を表示機能もあります。\n\n使い方はいたって簡単です:\n1. リッチエディターを使って、GitHub-flavorated Markdown 形式のメールを書きます。\n2. 右クリックメニューで「Markdown 切り替え」をクリックします。\n3. あなたの電子メールはキレイに整形されています! (つまり、HTMLとしてレンダリングされます)\n4. 見た目がよければ、送信するだけ。 もし変更、追加したかったら、もう一度「Markdown 切り替え」をクリックすると、元のMarkdownに戻すことができます。\n5. 以上の操作を必要に応じて繰り返します。\n\nMarkdown Hereは主にGmailとThunderbirdをターゲットにしていますが、YahooやHotmailでもうまく動作します。 また、Google グループやGoogle のサイト、Evernote、Blogger、Wordpress などのサービスでも動作します！\n\nコードのハイライト表示について:  「fenced block」 (```) で囲み、プログラム言語名を指定してください。 プロジェクトのページにある例もご覧ください。\n\nプライバシー: Markdown Here は、あなたが許可を与えた場合、web コンテンツにアクセスし変更します。 理論的にはその他のwebコンテンツにもアクセスできますが、行いません。 また、いかなるものであれインターネットへのリクエストも行いません。 あなたのデータはあなたが望んだ時に望んだサイトで更新されますが、あなたのブラウザにデータを残しません。\n\nChrome、Firefox、Safari、Opera、Thunderbirdの拡張機能として使用することができます。\n\nMarkdown Hereはオープンソースです。 Markdown Hereの使用方法、さらに詳しい情報、、バグの報告、開発に貢献したいときは、Githubにあるプロジェクトのページをへどうぞ。\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>",
+        "es": "Markdown Here te permite escribir correo electrónico en Markdown y renderizarlo (¡hacerlo bonito!) antes de enviar.\n\nEsto es estupendo para cualquiera al que no le gusta juguetear con los botones de formato mientras escribe un correo electrónico. Es especialmente bueno para programadores que escriben correos electrónicos con código fuente en ellos - incluso soporta el resaltado sintáctico. Y para los matemáticos: Markdown Here también renderizará las fórmulas TeX.\n\nTotalmente fácil de usar:\n1. Escribe tu correo electrónico en el editor de texto enriquecido de tu cliente de correo usando Markdown con sabor a Github.\n2. Haz clic con el botón derecho en el área de escritura y después en \"Markdown Toggle\".\n3. ¡Ahora tu correo electrónico es bonito! (Esto es, ha sido renderizado a HTML).\n4. Si te gusta cómo ha quedado, simplemente envíalo. Si quieres cambiarlo o añadir algo, haz clic en \"Markdown Toggle\" de nuevo para volver a tu Markdown original.\n5. Repetir tantas veces como sea necesario.\n\nMarkdown Here está enfocado principalmente para trabajar con Gmail y Thunderbird, pero también funciona bastante bien con Yahoo y Hotmail. Además, funciona muy bien con Google Groups y Sites, la interfaz web de Evernote, Blogger, Wordpress, ¡y muchos más!\n\nNota de resaltado de sintaxis: Usa secciones de código delimitadas y especifica el lenguaje. Consulta la página del proyecto para ver un ejemplo.\n\nPrivacidad: Markdown Here accede y modifica el contenido de internet cuando lo activas. Puede, en teoría, acceder a otros contenidos de internet, pero no lo hace. Tampoco hace ninguna petición a la internet. Tu información es modificada cuando y donde tu elijas, y no sale de tu navegador.\n\nDisponible como extensión para Chrome, Firefox, Safari, Opera y Thunderbird.\n\nÉste es un proyecto de código fuente abierto. Visita la página Github de Markdown Here para encontrar las instrucciones completas, más información, informes de errores o para contribuir.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/54c5aece97bac02053ac05f18072b84ff25570d6c9655ef647cbfa32e687a27c/http%3A//markdown-here.com\">http://markdown-here.com</a>\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/208417ab4844be8041635ed7998147736e90db77083627b8e421490d74cf3ff3/https%3A//github.com/adam-p/markdown-here\">https://github.com/adam-p/markdown-here</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/markdown-here-xul/edit",
+    "guid": "markdown-here@adam.pritchard",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "ru": "http://markdown-here.com",
+        "fr": "http://markdown-here.com",
+        "de": "http://markdown-here.com",
+        "zh-TW": "http://markdown-here.com",
+        "en-US": "http://markdown-here.com",
+        "ko": "http://markdown-here.com",
+        "it": "http://markdown-here.com",
+        "zh-CN": "http://markdown-here.com",
+        "pt-BR": "http://markdown-here.com",
+        "pl": "http://markdown-here.com",
+        "ja": "http://markdown-here.com",
+        "es": "http://markdown-here.com"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/375/375281-64.png?modified=1536716953",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/375/375281-32.png?modified=1536716953",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/375/375281-64.png?modified=1536716953"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-09-30T16:03:11Z",
+    "name": {
+        "ru": "Markdown Here",
+        "fr": "Markdown Here",
+        "de": "Markdown Here",
+        "zh-TW": "Markdown Here",
+        "en-US": "Markdown Here",
+        "zh-CN": "Markdown Here",
+        "pt-BR": "Markdown Here",
+        "es": "Markdown Here",
+        "ja": "Markdown Here",
+        "pl": "Markdown Here"
+    },
+    "previews": [
+        {
+            "id": 125554,
+            "caption": null,
+            "image_size": [
+                700,
+                438
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/125/125554.png?modified=1530208976",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/125/125554.png?modified=1530208976"
+        },
+        {
+            "id": 125556,
+            "caption": null,
+            "image_size": [
+                700,
+                438
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/125/125556.png?modified=1530208977",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/125/125556.png?modified=1530208977"
+        },
+        {
+            "id": 125552,
+            "caption": null,
+            "image_size": [
+                700,
+                438
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/125/125552.png?modified=1530208977",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/125/125552.png?modified=1530208977"
+        },
+        {
+            "id": 125544,
+            "caption": null,
+            "image_size": [
+                700,
+                438
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/125/125544.png?modified=1530208978",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/125/125544.png?modified=1530208978"
+        },
+        {
+            "id": 125546,
+            "caption": null,
+            "image_size": [
+                700,
+                438
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/125/125546.png?modified=1530208978",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/125/125546.png?modified=1530208978"
+        },
+        {
+            "id": 125548,
+            "caption": null,
+            "image_size": [
+                700,
+                438
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/125/125548.png?modified=1530208978",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/125/125548.png?modified=1530208978"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.54348,
+        "count": 38,
+        "average": 4.5789,
+        "text_count": 38
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-xul/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/375281",
+    "slug": "markdown-here-xul",
+    "status": "public",
+    "summary": {
+        "ru": "Напишите ваш емейл в Markdown и сделайте его стильным.",
+        "fr": "Écrivez votre courriel avec Markdown, puis rendez-le attrayant.",
+        "de": "E-Mail in Markdown schreiben, dann schön-rendern.",
+        "zh-TW": "用Markdown寫一封漂亮的電子郵件。",
+        "en-US": "Write your email in Markdown, then make it pretty.",
+        "zh-CN": "用Markdown写一封漂亮的电子邮件。",
+        "pt-BR": "Escreva seu email em Markdown e o torne elegante.",
+        "es": "Escribe tu correo electrónico en Markdown, y hazlo bonito.",
+        "ja": "Markdownで電子メールを美しく",
+        "pl": "Napisz e-mail w języku Markdown a następnie go upiększ."
+    },
+    "support_email": {
+        "en-US": "pritchard.adam@gmail.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/adam-p/markdown-here"
+    },
+    "tags": [
+        "code",
+        "development",
+        "email",
+        "gmail",
+        "markdown",
+        "syntax highlighting"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-xul/",
+    "weekly_downloads": 184
+}

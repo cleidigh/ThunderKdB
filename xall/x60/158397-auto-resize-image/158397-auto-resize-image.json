@@ -1,0 +1,764 @@
+{
+    "id": 158397,
+    "authors": [
+        {
+            "id": 5250414,
+            "name": "TrVTrV",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/trvtrv/",
+            "username": "trvtrv",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 15925,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/TrVTrVTrV/6",
+    "current_version": {
+        "id": 2469035,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "3.3a1pre"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-resize-image/versions/2469035",
+        "files": [
+            {
+                "id": 1012197,
+                "created": "2018-12-17T00:03:35Z",
+                "hash": "sha256:0966260cb2899fb9b97c36ce45629d868c2c7069265192f1c6cfbfd75ab7b40e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 185527,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012197/auto_resize_image-1.1.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "* An option has been added to display the interactive settings dialog vertically (default and standard layout) or horizontally (new layout).\n\n* Exif reading skills have been enhanced to extract Exif data from files which store them in uncommon ways.\n\n* Exif reading is now aborted if it lasts more than 10 seconds, thus preventing the addon to stay blocked infinitely.\n\n* Exif reading displays now some messages into error console.\n\n* Formatting skills of exif values have been enhanced:\nRational values (which could be displayed as unreduced fractions) can now be displayed as reduced fractions or as 1/D fractions.\nDecimal part of decimal values are now rounded rather than simply cut.\nInteger part of any number can now be formatted and filled with leading zeros to get the desired digits count.\n\n* Settings dialog has been enhanced so that some settings are disabled if no user values are set (e.g.: renaming is disabled if no renaming pattern is set).\n\n* bugfix: GPS and interoperability data from Exif data were not extracted anymore (bug introduced in v0.15.3)."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-resize-image/versions/1.1.0",
+        "version": "1.1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>TB v68 compatibility note:\nThere is no plan to move the addon to the TB v68 \"standards\", and here is why:\n- Mozilla itself has decided not to work on compatibility developments and leave \"that\" to the addon developers.\nI don't know how much a mozilla developer is paid, but speaking for myself the sum of the contributions i have ever received for 6 free addons during almost 10 years are a figure with 3 digits max...\n- Besides the fact Mozilla leaves us doing the \"dirty work\", they are not even able to provide detailed information about how to make the old addons compatible with their new standards.\nI mean a relevant guide, not an information note explaining that the addons should be restartless, turned into webextensions and so on, and not even giving an example.\n- That is not the first time that Mozilla is acting as if addons developers and the community was not important.\nI have had already several bad experiences in the past when my addons got broken just because Mozilla changed something which used to work without even thinking about compatibility or giving information.\n- I'm tired of all this, and as i have another real job to afford my bills, i'm not ready to make all that effort for so few consideration.\n- It already took me thousands and thousands and thousands of hours to develop my addons, working everyday on making them the more stable and practical possible. Why would i do twice something which worked pretty well?\n- All my addons are Mozilla-licensed (~ free softwares), so sources are open for all developers which would be interested to follow the new Mozilla standards.\nI think i made this work the best professional i could, so my code is well structured and full of comments. If you do so, sending me a simple \"thank-you\" email would be greatly appreciated.\n- All my addons are already compatible with TB v60. Are there so much interest to move to TB v68?\nDo you change your toaster every year just because there are new ones on the market? I don't.\n- The choice is between v68 without addons or v60 with addons. Your call.\n</b>\n\n<b>Auto Resize Image</b> is a Thunderbird add-on which allows to resize inline and attached images while composing email messages.\nThe main purpose is to:\n- reduce size of image files (emails &gt; 5 Mb are generally blocked by ISPs);\n- give the image convenient dimensions for it to be visible directly in email client without using scrollbars.\n\nFeatures are the following:\n\n* All platforms are supported. Tested versions are:\n - Windows: XP sp3 (x86), Seven Pro sp1 (x64)\n - Linux: Mandriva 2011-2 (x86)\n - Mac: OS X 10.7 / Lion (x64)\n\n* Available languages are: french (fr-FR), english (en-US), swedish (sv-SE), icelandic (is-IS), dutch (nl-NL), german (de-DE)\n\n* Inline images (directly inserted into mail body) and attachment images are handled.\n\n* Supported image formats are: JPEG, PNG, BMP and GIF. JPEG and PNG formats are natively supported whereas BMP and GIF formats are converted to PNG format.\nNb: Resized BMP and GIF image files keep original extension (.bmp or .gif), even if they are encoded using PNG format.\n\n* A toolbar button is added to composing window and allows to resize images. Its behaviour can be user-defined:\n - resizing of inline images;\nand/or\n - resizing of attachment images.\n\n* The toolbar button offers a quick settings menuitem to set main settings directly.\n\n* An interactive mode allows to set on-the-fly main settings (dimensions, jpeg quality, name) for each image when resizing.\nThis mode offers also to keep current settings as settings for all other resizings through the session or to crush default settings.\n\n* Exif data can be read from the file and the Exif orientation information can be used to get the native orientation of the image.\n\n* Settings dialog offers full control on how images are resized: inline and/or attachment images can be resized when:\n- sending now;\n- sending later;\n- sending in background (a feature actually in development, have a look to <a href=\"https://wiki.mozilla.org/Thunderbird/TestPlans/SendInBackground\" rel=\"nofollow\">this page</a> for more information);\n- saving message as draft;\n- saving message as template;\n- auto saving as draft.\nFor each mode, it's also possible to specify if undo is possible or not, and if resizing should be skipped if any image has already been resized (generally using dedicated custom button).\n\n* Resized attachment images can be displayed with a user-chosen style in attachments pane (color, italic and/or bold).\n\n* Resizing can be undone: it allows to roll back resized images to original versions. This is a real 'undo': resized images are replaced by original images.\n\n* If message is saved in mailbox (draft, template, send later, etc.) it's still possible to resize or unresize images once the message is edited again. Nb: For attachment images undoing resizing is not possible.\n\n* Images embedded into received messages which are replied to or transferred are handled as if they've just been added to the message.\n\n* Images added through a http(s) link are handled.\n\n* Images can be reduced and/or enlarged regarding user-defined maximum and minimum width and height (Nb: Dimensions ratios are not altered).\n\n* Only images which satisfy dimensions criteria (larger than maximum dimensions and smaller than minimum dimensions) are modified. Other images are kept unchanged.\n\n* Images to resize can be filtered via filename criteria: regarding a user-defined list of patterns, image files can be included or excluded; regular expressions can be enabled or disabled for pattern definition.\n\n* Images to resize can be filtered via format criteria (JPEG, PNG, BMP, GIF) based on file extension.\n\n* Resized images can be renamed using a user-defined pattern. This feature is smarter enough to avoid doublons.\nRenaming pattern can contain some meta-data like:\n- original filename;\n- file extension;\n- resized image number (= index of image file in resizing queue);\n- height;\n- width;\n- current date (format is editable);\n- current time (format is editable).\n\n* Resizing can be enabled/disabled regarding recipients of the message being composed: user can define separated white and black lists of patterns which can control if compression is skipped or not regarding if one or all email recipients match given patterns. \n\n* Images can be forced to jpeg or png format.\n\n* Composer window status bar is used to display information to user. Embedded progress bar is also used during image resizing.\n\n* Behaviour, associations and messages of settings dialog have been designed to improve accessibility for non-sighted people.\n\n* The add-on provides a 'debug mode' which writes information into embedded error console (see Tools &gt; Error Console).\n\n* Error and warning messages are also written into error console (regardless debug mode is enabled or not).\nIf for any kind of reason the add-on seems not to work properly, open error console and look for messages regarding add-on which could give you information about the issue (all messages are prefixed by add-on name).\nIf the issue is reproducible and you think it's an add-on bug:\n1. Enable debug mode and enable 'Log messages in a file'.\n2. Click on 'Export settings' to create settings file.\n3. Proceed again (messages will be saved in debug log file').\n4. Contact us and report us relevant and maximum information regarding the issue:\n- screen captures of each step of the action which leads to the issue\n- screen captures of each settings tab\n- settings file\n- debug log file\nNB: Incomplete issue reports will not be answered.\n\nContact (bug reports, features request, etc.): autoresizeimage@gmail.com.\nNB: Usage support email will not be answered."
+    },
+    "developer_comments": {
+        "en-US": "<b>Auto Resize Image</b> is the sequel of <a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/auto-resize-jpeg/\">Auto Resize JPEG</a>, developed by the same team. Here are differences:\n- Auto Resize Image: TB v3 and upper / all platforms / JPEG, PNG, BMP and GIF formats\n- Auto Resize JPEG: TB v1.5 - v3.2a1pre / Windows only / JPEG format only"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-resize-image/edit",
+    "guid": "AutoResizeImage@gmail.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://dev.arqendra.net"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/158/158397-64.png?modified=1569437597",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/158/158397-32.png?modified=1569437597",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/158/158397-64.png?modified=1569437597"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2018-12-24T13:08:35Z",
+    "name": {
+        "en-US": "Auto Resize Image"
+    },
+    "previews": [
+        {
+            "id": 107580,
+            "caption": {
+                "fr": "",
+                "en-US": "Overview (Windows)"
+            },
+            "image_size": [
+                700,
+                445
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107580.png?modified=1530208776",
+            "thumbnail_size": [
+                315,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107580.png?modified=1530208776"
+        },
+        {
+            "id": 107576,
+            "caption": {
+                "fr": "",
+                "en-US": "Overview (Linux)"
+            },
+            "image_size": [
+                700,
+                430
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107576.png?modified=1530208776",
+            "thumbnail_size": [
+                320,
+                197
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107576.png?modified=1530208776"
+        },
+        {
+            "id": 107578,
+            "caption": {
+                "fr": "",
+                "en-US": "Overview (OsX)"
+            },
+            "image_size": [
+                700,
+                516
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107578.png?modified=1530208777",
+            "thumbnail_size": [
+                271,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107578.png?modified=1530208777"
+        },
+        {
+            "id": 107586,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (1) (Windows)"
+            },
+            "image_size": [
+                464,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107586.png?modified=1530208777",
+            "thumbnail_size": [
+                177,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107586.png?modified=1530208777"
+        },
+        {
+            "id": 107582,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (1) (Linux)"
+            },
+            "image_size": [
+                515,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107582.png?modified=1530208777",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107582.png?modified=1530208777"
+        },
+        {
+            "id": 107584,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (1) (OsX)"
+            },
+            "image_size": [
+                530,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107584.png?modified=1530208778",
+            "thumbnail_size": [
+                202,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107584.png?modified=1530208778"
+        },
+        {
+            "id": 107592,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (2) (Windows)"
+            },
+            "image_size": [
+                464,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107592.png?modified=1530208778",
+            "thumbnail_size": [
+                177,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107592.png?modified=1530208778"
+        },
+        {
+            "id": 107588,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (2) (Linux)"
+            },
+            "image_size": [
+                515,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107588.png?modified=1530208778",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107588.png?modified=1530208778"
+        },
+        {
+            "id": 107590,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (2) (OsX)"
+            },
+            "image_size": [
+                530,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107590.png?modified=1530208779",
+            "thumbnail_size": [
+                202,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107590.png?modified=1530208779"
+        },
+        {
+            "id": 107598,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (3) (Windows)"
+            },
+            "image_size": [
+                464,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107598.png?modified=1530208779",
+            "thumbnail_size": [
+                177,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107598.png?modified=1530208779"
+        },
+        {
+            "id": 107594,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (3) (Linux)"
+            },
+            "image_size": [
+                515,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107594.png?modified=1530208779",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107594.png?modified=1530208779"
+        },
+        {
+            "id": 107596,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (3) (OsX)"
+            },
+            "image_size": [
+                530,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107596.png?modified=1530208780",
+            "thumbnail_size": [
+                202,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107596.png?modified=1530208780"
+        },
+        {
+            "id": 107604,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (4) (Windows)"
+            },
+            "image_size": [
+                464,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107604.png?modified=1530208780",
+            "thumbnail_size": [
+                177,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107604.png?modified=1530208780"
+        },
+        {
+            "id": 107600,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (4) (Linux)"
+            },
+            "image_size": [
+                515,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107600.png?modified=1530208780",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107600.png?modified=1530208780"
+        },
+        {
+            "id": 107602,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (4) (OsX)"
+            },
+            "image_size": [
+                530,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107602.png?modified=1530208781",
+            "thumbnail_size": [
+                202,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107602.png?modified=1530208781"
+        },
+        {
+            "id": 107610,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (5) (Windows)"
+            },
+            "image_size": [
+                464,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107610.png?modified=1530208781",
+            "thumbnail_size": [
+                177,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107610.png?modified=1530208781"
+        },
+        {
+            "id": 107606,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (5) (Linux)"
+            },
+            "image_size": [
+                515,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107606.png?modified=1530208781",
+            "thumbnail_size": [
+                196,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107606.png?modified=1530208781"
+        },
+        {
+            "id": 107608,
+            "caption": {
+                "fr": "",
+                "en-US": "Interactive settings dialog (5) (OsX)"
+            },
+            "image_size": [
+                530,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107608.png?modified=1530208782",
+            "thumbnail_size": [
+                202,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107608.png?modified=1530208782"
+        },
+        {
+            "id": 107616,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (1) (Windows)"
+            },
+            "image_size": [
+                578,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107616.png?modified=1530208782",
+            "thumbnail_size": [
+                220,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107616.png?modified=1530208782"
+        },
+        {
+            "id": 107612,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (1) (Linux)"
+            },
+            "image_size": [
+                675,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107612.png?modified=1530208782",
+            "thumbnail_size": [
+                257,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107612.png?modified=1530208782"
+        },
+        {
+            "id": 107614,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (1) (OsX)"
+            },
+            "image_size": [
+                631,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107614.png?modified=1530208783",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107614.png?modified=1530208783"
+        },
+        {
+            "id": 107622,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (2) (Windows)"
+            },
+            "image_size": [
+                578,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107622.png?modified=1530208783",
+            "thumbnail_size": [
+                220,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107622.png?modified=1530208783"
+        },
+        {
+            "id": 107618,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (2) (Linux)"
+            },
+            "image_size": [
+                675,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107618.png?modified=1530208783",
+            "thumbnail_size": [
+                257,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107618.png?modified=1530208783"
+        },
+        {
+            "id": 107620,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (2) (OsX)"
+            },
+            "image_size": [
+                631,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107620.png?modified=1530208784",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107620.png?modified=1530208784"
+        },
+        {
+            "id": 107628,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (3) (Windows)"
+            },
+            "image_size": [
+                578,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107628.png?modified=1530208784",
+            "thumbnail_size": [
+                220,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107628.png?modified=1530208784"
+        },
+        {
+            "id": 107624,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (3) (Linux)"
+            },
+            "image_size": [
+                675,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107624.png?modified=1530208784",
+            "thumbnail_size": [
+                257,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107624.png?modified=1530208784"
+        },
+        {
+            "id": 107626,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (3) (OsX)"
+            },
+            "image_size": [
+                631,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107626.png?modified=1530208785",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107626.png?modified=1530208785"
+        },
+        {
+            "id": 107634,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (4) (Windows)"
+            },
+            "image_size": [
+                578,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107634.png?modified=1530208785",
+            "thumbnail_size": [
+                220,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107634.png?modified=1530208785"
+        },
+        {
+            "id": 107630,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (4) (Linux)"
+            },
+            "image_size": [
+                675,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107630.png?modified=1530208785",
+            "thumbnail_size": [
+                257,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107630.png?modified=1530208785"
+        },
+        {
+            "id": 107632,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (4) (OsX)"
+            },
+            "image_size": [
+                631,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107632.png?modified=1530208786",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107632.png?modified=1530208786"
+        },
+        {
+            "id": 107640,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (5) (Windows)"
+            },
+            "image_size": [
+                578,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107640.png?modified=1530208786",
+            "thumbnail_size": [
+                220,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107640.png?modified=1530208786"
+        },
+        {
+            "id": 107636,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (5) (Linux)"
+            },
+            "image_size": [
+                675,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107636.png?modified=1530208786",
+            "thumbnail_size": [
+                257,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107636.png?modified=1530208786"
+        },
+        {
+            "id": 107638,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (5) (OsX)"
+            },
+            "image_size": [
+                631,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107638.png?modified=1530208787",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107638.png?modified=1530208787"
+        },
+        {
+            "id": 107646,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (6) (Windows)"
+            },
+            "image_size": [
+                578,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107646.png?modified=1530208787",
+            "thumbnail_size": [
+                220,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107646.png?modified=1530208787"
+        },
+        {
+            "id": 107642,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (6) (Linux)"
+            },
+            "image_size": [
+                675,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107642.png?modified=1530208787",
+            "thumbnail_size": [
+                257,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107642.png?modified=1530208787"
+        },
+        {
+            "id": 107644,
+            "caption": {
+                "fr": "",
+                "en-US": "Settings dialog (6) (OsX)"
+            },
+            "image_size": [
+                631,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107644.png?modified=1530208788",
+            "thumbnail_size": [
+                240,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107644.png?modified=1530208788"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.17821,
+        "count": 38,
+        "average": 4.2105,
+        "text_count": 38
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-resize-image/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/158397",
+    "slug": "auto-resize-image",
+    "status": "public",
+    "summary": {
+        "en-US": "Resizer for inline and attachment images (JPEG, PNG, BMP and GIF image formats).\nAll platforms are supported (Windows, Linux and Macintosh)."
+    },
+    "support_email": {
+        "en-US": "autoresizeimage@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://dev.arqendra.net"
+    },
+    "tags": [
+        "attached",
+        "attachment",
+        "auto",
+        "autoresizeimage",
+        "autoresizejpeg",
+        "autoresizejpg",
+        "bmp",
+        "gif",
+        "image",
+        "inline",
+        "interactive",
+        "jpeg",
+        "jpg",
+        "picture",
+        "pix",
+        "png",
+        "quality",
+        "resize"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-resize-image/",
+    "weekly_downloads": 5136
+}

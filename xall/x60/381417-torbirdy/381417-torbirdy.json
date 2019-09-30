@@ -1,0 +1,230 @@
+{
+    "id": 381417,
+    "authors": [
+        {
+            "id": 6081699,
+            "name": "Sukhbir Singh",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/sukhbir/",
+            "username": "sukhbir",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 736,
+    "categories": {
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2468674,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "52.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/torbirdy/versions/2468674",
+        "files": [
+            {
+                "id": 1011908,
+                "created": "2018-10-06T18:39:01Z",
+                "hash": "sha256:c1860d97be033c7fd802c331d2f31d4218246b8ff4db15530e31b16daf2dc41f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 442003,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011908/torbirdy-0.2.6-tb-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 1011909,
+                "created": "2018-10-06T18:39:01Z",
+                "hash": "sha256:c1860d97be033c7fd802c331d2f31d4218246b8ff4db15530e31b16daf2dc41f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 442003,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011909/torbirdy-0.2.6-tb-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 1011910,
+                "created": "2018-10-06T18:39:02Z",
+                "hash": "sha256:c1860d97be033c7fd802c331d2f31d4218246b8ff4db15530e31b16daf2dc41f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 442003,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011910/torbirdy-0.2.6-tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "* Bug 27950: Add support for Thunderbird 60.2.1\n * Use onion service address for Riseup and <a href=\"http://systemli.org\" rel=\"nofollow\">systemli.org</a> email accounts (1d06f43)\n * Remove redundant code for displaying first-run dialog (9d81a38)\n * Restrict status bar update to TorBirdy (cdfba9e)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/torbirdy/versions/0.2.6",
+        "version": "0.2.6"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Please visit the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/33f58362eed52e99f7320e7dee53923f324f8d5918267814330867e6d6eddfd1/https%3A//trac.torproject.org/projects/tor/wiki/torbirdy\">TorBirdy website</a> for more information. If you are using TorBirdy for the first time, make sure you read through it to understand what we are trying to accomplish with TorBirdy for our users. TorBirdy requires that a user has Tor installed.\n\nGPG signatures for TorBirdy releases are available at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4c6d8ef232e9bb03912a947f278e1c8569062b024aa4244ddd79bb7c1e5cc6ec/https%3A//www.torproject.org/dist/torbirdy/\">dist.torproject.org</a>.\n\nTorBirdy changes many Thunderbird settings that it enforces; the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ce60104ba730183892e16cea7b4e8cbc89dab399b034bb9b8281ef50054260ce/https%3A//trac.torproject.org/projects/tor/wiki/torbirdy%23BeforeusingTorBirdy\">Before using TorBirdy</a> section on the website explains this in detail. The preference changes are documented <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4b3b439aeb7cfbceb9c486b8d06c15b30219880c2fda8359a31718bf4800d17e/https%3A//trac.torproject.org/projects/tor/wiki/torbirdy/changes\">on the wiki</a>.\n\nTo report bugs, please use the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/846388c3089769665c815647e4db0736f7cb4798c7ab4cdd6c1c3fcf994d14e4/https%3A//trac.torproject.org/projects/tor/wiki/torbirdy/dev\">bug tracker</a> and not the reviews section.\n\nNOTE: This add-on disables the Google Safe Browsing and Microsoft Family Safety for privacy reasons. If you are interested to know why, please see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/25fd37b49ae6d9beeb7d0b7d9554ea1fd9d21c4fb69ab42efea4e34dcfc76a0a/https%3A//bugs.torproject.org/22567\">1</a>, <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c89d46c5e0c51fd4eb61cd385456e6cdfb234f6972fcca023086a9e907a1a449/https%3A//bugs.torproject.org/22318\">2</a> (Tor Project bug tracker links) for more information."
+    },
+    "developer_comments": {
+        "en-US": "This is an experimental add-on and it requires that a user has Tor installed.\n\nWe are still in beta so the usual caveats apply."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/torbirdy/edit",
+    "guid": "castironthunderbirdclub@torproject.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://trac.torproject.org/projects/tor/wiki/torbirdy"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/381/381417-64.png?modified=1542928601",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/381/381417-32.png?modified=1542928601",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/381/381417-64.png?modified=1542928601"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2018-10-27T12:00:07Z",
+    "name": {
+        "en-US": "TorBirdy"
+    },
+    "previews": [
+        {
+            "id": 202055,
+            "caption": {
+                "en-US": "TorBirdy accepts custom proxy settings and supports JonDo and Whonix."
+            },
+            "image_size": [
+                516,
+                346
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/202/202055.png?modified=1530208977",
+            "thumbnail_size": [
+                298,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/202/202055.png?modified=1530208977"
+        },
+        {
+            "id": 202056,
+            "caption": {
+                "en-US": "Per-account and global configuration of privacy settings."
+            },
+            "image_size": [
+                516,
+                346
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/202/202056.png?modified=1530208977",
+            "thumbnail_size": [
+                298,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/202/202056.png?modified=1530208977"
+        },
+        {
+            "id": 202057,
+            "caption": {
+                "en-US": "TorBirdy supports and recommends Enigmail."
+            },
+            "image_size": [
+                516,
+                346
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/202/202057.png?modified=1530208978",
+            "thumbnail_size": [
+                298,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/202/202057.png?modified=1530208978"
+        },
+        {
+            "id": 202058,
+            "caption": {
+                "en-US": "TorBirdy allows you to configure your account manually."
+            },
+            "image_size": [
+                737,
+                685
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/202/202058.png?modified=1530208979",
+            "thumbnail_size": [
+                215,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/202/202058.png?modified=1530208979"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.59619,
+        "count": 10,
+        "average": 3.7,
+        "text_count": 10
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/torbirdy/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/381417",
+    "slug": "torbirdy",
+    "status": "public",
+    "summary": {
+        "en-US": "This extension configures Thunderbird to make connections over the Tor anonymity network."
+    },
+    "support_email": {
+        "en-US": "help@rt.torproject.org"
+    },
+    "support_url": {
+        "en-US": "https://www.torproject.org/about/contact.html"
+    },
+    "tags": [
+        "anonymity",
+        "privacy",
+        "security",
+        "tor"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/torbirdy/",
+    "weekly_downloads": 261
+}

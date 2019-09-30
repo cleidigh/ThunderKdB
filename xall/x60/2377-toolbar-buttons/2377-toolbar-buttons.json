@@ -1,0 +1,194 @@
+{
+    "id": 2377,
+    "authors": [
+        {
+            "id": 11280414,
+            "name": "Button Guy",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/button_guy/",
+            "username": "button_guy",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 7317,
+    "categories": {
+        "firefox": [
+            "other"
+        ],
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1697614,
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "20.0"
+            },
+            "seamonkey": {
+                "max": "2.59",
+                "min": "2.20"
+            },
+            "thunderbird": {
+                "max": "61.*",
+                "min": "20.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toolbar-buttons/versions/1697614",
+        "files": [
+            {
+                "id": 316804,
+                "created": "2015-05-17T03:14:47Z",
+                "hash": "sha256:b34de1fdbad3bd5a43fa86794112b5b6fa24d069733d21c0d69df2bf1e8db225",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 564684,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/316804/toolbar_buttons-1.1-sm+tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "<ul>    <li>Changed over to a restartless installation method.</li>    <li>Due to nameing conflict the internal name of the Open File button was changed.  That will case it to return to Customize Toolbar window.</li>    <li>Fixed the toggle proxy button, that was not working right due to the change in the default preference. Also added a Menu.</li>    <li>Further patches for SeaMonkey.</li>    <li>Menu added to the Add-ons and Toggle Cookies Buttons.  Feedback welcome on how people like this being done to various buttons.</li>    <li>The Set Multiple Home Pages function on the Set Home Page button as fixed.</li>    <li>The translate button now supports multiple translations services.</li>    <li>The options window was updated and expanded.</li>    <li>Bookmark Manager can now open in a tab, on middle click, or based on a setting.</li>    <li>Error Console, if disabled, can now open the Browser Console or Web Console.</li>    <li>Fixed the Page Colors button for Firefox 37+</li>    <li>Improved translations by importing strings from the Firefox and Thunderbird translations.</li>    <li>The Toggle Status Bar button in back in Firefox, and if there is no Status Bar, the button now creates it.</li>    <li>Some people have complained there are too many buttons, others that there are not enough.  We have taken that to mean there is too much if what you don't want, and not enough of what you do, so we have:\n        <ul>            <li>Removed some buttons that the Custom Toolbar Button Maker indicates are very rarely used, though they can still be downloaded from there.  These buttons are: Toggle Starred, Copy Email, Threads With Unread, Ignored Threads, Unread Threads, Watched Threads with Unread, Change Home, Get Inbox, Read.</li>            <li>Added some other buttons that have shown to be much more popular including: Reload, Stop, New Tab, Print, Menu, about:about, Passwords.  We have other buttons lined up to be added in the next release.</li>        </ul>    </li>    <li>Sunbird support dropped.</li>    <li>The compatibility support has changed, so that as a minimum version 29 Firefox/Thunerbird is need.</li>    <li>Added a new translation for Slovenian, thanks to Peter Klofutar.</li>    <li>Added new buttons to the Mail Header in Thunderbird, including the Zoom in and out buttons.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toolbar-buttons/versions/1.1.1-signed.1-signed",
+        "version": "1.1.1-signed.1-signed"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "After over 10 years and 2 rewrites to keep up with changes, this extension is going to be discontinued (as a Firefox extension) as it is not longer possible to continue this as a WebExtension (needed for Firefox 57+).  Instead I will be splitting it into smaller extensions which I will upload.  I am keeping a list of which ones are <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f39aded63d386605b73ac52a7e6bed5b55744eb9a7d8f9e515772b2c9735637b/https%3A//codefisher.org/toolbar_button/webextensions/\">WebExtension enabled here</a>.  \nFor those buttons that opened different pages, you can get them from my <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e43d5d4fff4521210cd21839a0510d87d5a0f7422f2e26ef2af4dde1193d6cd3/https%3A//codefisher.org/toolbar_button/link-button/\">Link Buttons page</a> or make your own with my <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ba0dae7fdc91656d15bf2bf3226487d399920ff1290381282ae439d361c933eb/https%3A//codefisher.org/toolbar_button/link-button-maker/\">Link Button Maker</a>.\n\nAny future releases of Toolbar Buttons itself would only support Thunderbird, Palemoon or SeaMonkey.  \n\nToolbar Buttons is the single biggest button pack for Firefox or Thunderbird there is.  There are now over 100 Firefox, 50 for Thunderbird. You will find buttons that enable hidden functionality or is too many clicks away, but some of the best buttons are those unique to the extension.  For example from some of out most popular buttons, there are menu items for, Options,  Bookmark Manager, Bookmark Page, and Add-ons, but for Snap Back, Restart and about:config there is no existing user interface.\n\n    To find out more information about each of the buttons, please see our <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/d1413d058b53eeddb023d49b0ad6701438c0a7017d8915a8fd135e22315d964a/https%3A//codefisher.org/toolbar_button/button_list/\"><strong>Button List</strong></a> which has descriptions of all the buttons.\n\nOnce installed to get started using the buttons open the Customize Coolbar window by either right clicking on the toolbar and selecting <strong>Customize</strong> from the pop up menu or going <strong>View</strong> then <strong>Toolbars</strong> then <strong>Customize</strong> and from the window that opens up you can drag the buttons to your toolbar. \n\nIf you don't want so many buttons in one extension you can choose individually using the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/03eb997bed0703d3eaa8b198763f97104f98b0240f696b2d8a25391c74a7d462/https%3A//codefisher.org/toolbar_button/toolbar_button_maker/\">Toolbar Button maker</a>.  This tool also had extra features such as being able to create toolbar.  It also servers as a testing ground for new buttons, so it has a number that are not in this extension.\n\nTranslations are made by volentears, if you would like to help please vist <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c7cdc1996499d7a4f0152751e251490b3e7998b65c5b0e23805ebe75872023a0/http%3A//www.babelzilla.org/forum/index.php%3Fshowtopic=1868\">BabelZilla</a>.\n\nAll Applications\n Add-ons, Console, Customize Toolbar, DOMi, Edit Menu, Exit, Extensions, File Menu, Import, Install, Minimize, Options, Page Setup, Profile, Redo, Reload Proxy, Restart, Select All, Status Bar, Themes, Toggle menu bar, Toggle Proxy, Toolbars, Tools Menu, Undo, Update, View Menu\n\nFirefox and Thunderbird\nabout:config, Change Dictionary, Change Text Direction, Delete, Enlarge, Extensions, Find, Find Again, Find Previous, Help, Print Preview, Reduce, Reset, Save, Source, Themes, Work Offline\n\nFirefox\nAbout, about:cache, about:cache Disk, about:cache Memory, about:plugins, Animation, Bookmark All, Bookmark Manager, Bookmark Menu, Bookmark Page, Bookmark Toolbar, Bottom, Change Home, Clear Data, Clear Url, Clipboard Link, Close All, Close Other Tabs, Close Tab, Current Frame, eBay, Extensions, Favorite Page, Flash, Full Screen, Google Mail, Google, Hide Images, Hide Url, Hotmail, iframes, Link Setting, Minimum Font Size, Movies, New Message, Next Tab, Open, Page Colours, Page Fonts, Page Info, PayPal, Previous Tab, Quick Bookmark, Read Mail, Read News, Reload Skip Cache, Reload Tabs, Remove Label, Remove Labels, Rename Tab, Restart Tabbed, Save Frame, Send Link, Show Frame, Snap Back, Stop All, Tab List, Themes, Tiny Url, Toggle Cookies, Toggle embedded content, Toggle Images, Toggle Java, Toggle JavaScript, Toggle Styles, Toggle Toolbar, Toolbar Bookmark Menu, Top, Translate, Undo Close Tab, Up Directory, Web Search, Wikipedia, Yahoo Mail\n\nThunderbird\nAbout, Account Settings, Account Setup, Add Email, All Threads, Compact, Copy, Copy Email, Create Filter, Cut, Delete Attachments, Delete Junk, Detach Attachments, Edit Draft, Empty Trash, Filters, Forward as Attachment, Forward Inline, Get Inbox, HTML Mode, Ignored Threads, Mail Toolbar, Message Pane, Next Message, Paste, Plain Text Paste, Previous Message, Purge, Read, Reply to Sender Only, Return Receipt, Save Attachments, Search Addresses, Search Messages, Send &amp; Receive, Send Without Save, Skip Trash, Threads With Unread, Toggle Read, Toggle Starred, Unread Threads, Watched Threads With Unread\n\nSunbird\nAbout, Delete Events, Delete Tasks, Toggle Tasks, Tasks In View, Toggle Toolbar\n\nIf you find bugs or have a question just post on our <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/532fb352a2e649205f7fb5b9532b4cd656c816bf3e5aca19e693553b54aa2d57/https%3A//codefisher.org/forum/2/\">Forums</a> or check the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/32d194b63f550a4d200c444cb73bd49da869dbc4e4a0a1fc2dd01521cadbdd3c/https%3A//codefisher.org/toolbar_button/faq/\">FAQ</a>.\n\n        Have an idea for a new button that you would like?  We are eager to hear your ideas, just make a suggestion on our <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/532fb352a2e649205f7fb5b9532b4cd656c816bf3e5aca19e693553b54aa2d57/https%3A//codefisher.org/forum/2/\">Forums</a> (No need to register!)\nWe have been asked for buttons that open many different web pages, so we created a simple tool, the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ba0dae7fdc91656d15bf2bf3226487d399920ff1290381282ae439d361c933eb/https%3A//codefisher.org/toolbar_button/link-button-maker/\">link button maker</a>, so that you can easily create toolbar buttons to any page you wish.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cea2ab4b3c7eb385ad199eb41df37e13186c3d55a113ef877836772774da2288/https%3A//twitter.com/codefisher/\">Follow Toolbar Buttons on Twitter</a> and <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e7d3306fc501ee1b9426224b831fa92afec14f54c27e85b76a88ea3ebb612312/https%3A//codefisher.org/news/\">Read our Blog</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toolbar-buttons/edit",
+    "guid": "{03B08592-E5B4-45ff-A0BE-C1D975458688}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://codefisher.org/toolbar_button/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2377-64.png?modified=1503486549",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2377-32.png?modified=1503486549",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2377-64.png?modified=1503486549"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-05-26T12:42:55Z",
+    "name": {
+        "en-US": "Toolbar Buttons"
+    },
+    "previews": [
+        {
+            "id": 54591,
+            "caption": {
+                "en-US": "Toolbar Buttons in Firefox as it would appear with all the buttons on the toolbars."
+            },
+            "image_size": [
+                600,
+                166
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/54/54591.png?modified=1530208181",
+            "thumbnail_size": [
+                320,
+                89
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/54/54591.png?modified=1530208181"
+        },
+        {
+            "id": 54592,
+            "caption": {
+                "en-US": "Toolbar Buttons in Sunbird."
+            },
+            "image_size": [
+                600,
+                82
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/54/54592.png?modified=1530208182",
+            "thumbnail_size": [
+                320,
+                44
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/54/54592.png?modified=1530208182"
+        },
+        {
+            "id": 54593,
+            "caption": {
+                "en-US": "Toolbar Buttons in Thunderbird."
+            },
+            "image_size": [
+                600,
+                138
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/54/54593.png?modified=1530208184",
+            "thumbnail_size": [
+                320,
+                74
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/54/54593.png?modified=1530208184"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.35063,
+        "count": 370,
+        "average": 4.3541,
+        "text_count": 362
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toolbar-buttons/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/2377",
+    "slug": "toolbar-buttons",
+    "status": "public",
+    "summary": {
+        "en-US": "Adds toolbar buttons to the customize toolbar window in several programs including Firefox, Thunderbird and SeaMonkey. Some of the buttons make commonly preformed actions quicker, others add new functionality."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://codefisher.org/forum/"
+    },
+    "tags": [
+        "add-ons",
+        "button",
+        "custom",
+        "customize",
+        "toolbar"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toolbar-buttons/",
+    "weekly_downloads": 247
+}

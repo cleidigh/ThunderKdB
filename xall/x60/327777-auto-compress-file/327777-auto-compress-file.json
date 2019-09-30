@@ -1,0 +1,691 @@
+{
+    "id": 327777,
+    "authors": [
+        {
+            "id": 5250414,
+            "name": "TrVTrV",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/trvtrv/",
+            "username": "trvtrv",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 6006,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/TrVTrVTrV/5",
+    "current_version": {
+        "id": 2468524,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "3.0a1pre"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-compress-file/versions/2468524",
+        "files": [
+            {
+                "id": 1011750,
+                "created": "2018-08-31T17:45:28Z",
+                "hash": "sha256:329eec9971e27ba19f79a59bacbd6353ac188e209be8500868da10b1823235ee",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 90379,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011750/auto_compress_file-1.1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "* Settings dialog has been slightly redesigned.\n\n* The addon is now compatible with Thunderbird from v57.* to v60.*.\n\n* The addon has been upgraded so that it passes the v58/v59/v60 TB barriers."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-compress-file/versions/1.1.1",
+        "version": "1.1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>TB v68 compatibility note:\nThere is no plan to move the addon to the TB v68 \"standards\", and here is why:\n- Mozilla itself has decided not to work on compatibility developments and leave \"that\" to the addon developers.\nI don't know how much a mozilla developer is paid, but speaking for myself the sum of the contributions i have ever received for 6 free addons during almost 10 years are a figure with 3 digits max...\n- Besides the fact Mozilla leaves us doing the \"dirty work\", they are not even able to provide detailed information about how to make the old addons compatible with their new standards.\nI mean a relevant guide, not an information note explaining that the addons should be restartless, turned into webextensions and so on, and not even giving an example.\n- That is not the first time that Mozilla is acting as if addons developers and the community was not important.\nI have had already several bad experiences in the past when my addons got broken just because Mozilla changed something which used to work without even thinking about compatibility or giving information.\n- I'm tired of all this, and as i have another real job to afford my bills, i'm not ready to make all that effort for so few consideration.\n- It already took me thousands and thousands and thousands of hours to develop my addons, working everyday on making them the more stable and practical possible. Why would i do twice something which worked pretty well?\n- All my addons are Mozilla-licensed (~ free softwares), so sources are open for all developers which would be interested to follow the new Mozilla standards.\nI think i made this work the best professional i could, so my code is well structured and full of comments. If you do so, sending me a simple \"thank-you\" email would be greatly appreciated.\n- All my addons are already compatible with TB v60. Are there so much interest to move to TB v68?\nDo you change your toaster every year just because there are new ones on the market? I don't.\n- The choice is between v68 without addons or v60 with addons. Your call.\n</b>\n\n<b>Auto Compress File</b> is a Thunderbird add-on which allows to compress attachment files when sending an email.\nThe main purpose is to:\n- reduce size of message (emails &gt; 5 Mb are generally blocked by ISPs).\n- archive attachment files when sending email.\n\n\nFeatures are the following:\n\n* All platforms are supported. Tested versions are the following:\n- Windows: XP sp3 (x86), Seven Pro sp1 (x64);\n- Linux: Mandriva 2011-2 (x86);\n- Mac: OS X 10.7 / Lion (x64).\n\n* Available languages are: french (fr-FR), english (en-US), czech (cs-CZ).\n\n* Compression format is \"zip\", using native Mozilla API, thus making the addon more stable and cross-platform, and reducing size of .xpi installation file.\n\n* All or only a selection of attached files can be compressed.\n\n* Files can be compressed individually or archived in one compressed file.\nWhen archiving several files in one compressed file, it's possible to append a previous created compressed file if any exists.\n\n* A toolbar button is added to composing window and allows to compress files. Its behaviour can be user-defined:\n- compression of all attachment files;\n- compression of selected attachment files only; an option allows to choose to compress all files anyhow when no file is selected.\n\n* The user has full control on the way attachment files are compressed through all the 6 ways to \"send\" a message; \"sending\" a message can be \"send now\", \"send later\", \"send in background\", \"save as draft\", \"save as template\", or \"auto save as draft\":\n- compress files or not;\n- compress files only if no file has already been compressed (generally using dedicated custom toolbar button);\n- allow undo (uncompressing) by adding undo information.\n\n* Compression can be undone: Nb: This feature works only for current composing session (meaning that if compose window has been closed, then it's impossible to uncompress).\n\n* Two filters can control if attachment files are compressed or not:\n- a file size filter;\n- a compression benefit filter.\n\n* Files to compress can be filtered via filename criteria: regarding a user-defined list of patterns, attachment files can be included or excluded; the definition of patterns can make use of regular expressions.\n\n* Files to compress can be filtered via format criteria based on file extension: regarding a user-defined list of extensions, attachment files can be included or excluded.\n\n* Compressed attachment files can be renamed using 3 different methods:\n(a) no renaming (except for extension which becomes .zip);\n(b) a name is asked for each compression using a dialog;\n(c) name is built using a user-defined pattern.\nNb: This feature is smarter enough to avoid doublons.\n\n* Renaming pattern for modes (b) and (c) can contain some meta-data like:\n- source filename;\n- source file extension;\n- source file index (= index of file in archiving queue);\n- source files archived count;\n- current date (format is editable);\n- current time (format is editable);\n- message subject.\n\n* Extension of compressed files can be user-defined (useful to fool antivirus softwares in a business environment). Beware: changing default extension requires messages recipients know which attachments are compressed and how to uncompress them!\nNb: Extension can also be changed promptly through renaming dialog mode.\n\n* File compression can be enabled/disabled regarding email recipients through user-given white and black lists.\n\n* The feature of character replacement allows non-ASCII characters from filenames to be replaced by ASCII characters.\n\n* Composer window status bar is used to display information to user. Embedded progress bar is also used during files compression.\n\n* The add-on provides a 'debug mode' which writes information into embedded error console (see Tools &gt; Error Console).\n\n* Error and warning messages are also written into error console (regardless debug mode is enabled or not).\nIf for any kind of reason the add-on seems not to work properly, open error console and look for messages regarding add-on which could give you information about the issue (all messages are prefixed by add-on name).\nIf the issue is reproducible and you think it's an add-on bug:\n1. Enable debug mode and enable 'Log messages in a file'.\n2. Click on 'Export settings' to create settings file.\n3. Proceed again (messages will be saved in debug log file').\n4. Contact us and report us relevant and maximum information regarding the issue:\n- screen captures of each step of the action which leads to the issue\n- screen captures of each settings tab\n- settings file\n- debug log file\nNB: Incomplete issue reports will not be answered.\n\nContact (bug reports, features request, etc.): autocompressfile@gmail.com.\nNB: Usage support email will not be answered."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-compress-file/edit",
+    "guid": "AutoCompressFile@gmail.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://dev.arqendra.net"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/327/327777-64.png?modified=1569437566",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/327/327777-32.png?modified=1569437566",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/327/327777-64.png?modified=1569437566"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": false,
+    "last_updated": "2018-08-31T22:12:27Z",
+    "name": {
+        "en-US": "Auto Compress File"
+    },
+    "previews": [
+        {
+            "id": 190288,
+            "caption": null,
+            "image_size": [
+                700,
+                488
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190288.png?modified=1530208992",
+            "thumbnail_size": [
+                287,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190288.png?modified=1530208992"
+        },
+        {
+            "id": 190286,
+            "caption": null,
+            "image_size": [
+                700,
+                469
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190286.png?modified=1530208992",
+            "thumbnail_size": [
+                299,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190286.png?modified=1530208992"
+        },
+        {
+            "id": 190287,
+            "caption": null,
+            "image_size": [
+                700,
+                374
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190287.png?modified=1530208992",
+            "thumbnail_size": [
+                320,
+                171
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190287.png?modified=1530208992"
+        },
+        {
+            "id": 190291,
+            "caption": null,
+            "image_size": [
+                525,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190291.png?modified=1530208993",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190291.png?modified=1530208993"
+        },
+        {
+            "id": 190289,
+            "caption": null,
+            "image_size": [
+                639,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190289.png?modified=1530208993",
+            "thumbnail_size": [
+                243,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190289.png?modified=1530208993"
+        },
+        {
+            "id": 190290,
+            "caption": null,
+            "image_size": [
+                626,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190290.png?modified=1530208993",
+            "thumbnail_size": [
+                238,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190290.png?modified=1530208993"
+        },
+        {
+            "id": 190294,
+            "caption": null,
+            "image_size": [
+                525,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190294.png?modified=1530208994",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190294.png?modified=1530208994"
+        },
+        {
+            "id": 190292,
+            "caption": null,
+            "image_size": [
+                639,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190292.png?modified=1530208994",
+            "thumbnail_size": [
+                243,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190292.png?modified=1530208994"
+        },
+        {
+            "id": 190293,
+            "caption": null,
+            "image_size": [
+                626,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190293.png?modified=1530208994",
+            "thumbnail_size": [
+                238,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190293.png?modified=1530208994"
+        },
+        {
+            "id": 190297,
+            "caption": null,
+            "image_size": [
+                525,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190297.png?modified=1530208995",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190297.png?modified=1530208995"
+        },
+        {
+            "id": 190295,
+            "caption": null,
+            "image_size": [
+                639,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190295.png?modified=1530208995",
+            "thumbnail_size": [
+                243,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190295.png?modified=1530208995"
+        },
+        {
+            "id": 190296,
+            "caption": null,
+            "image_size": [
+                626,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190296.png?modified=1530208995",
+            "thumbnail_size": [
+                238,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190296.png?modified=1530208995"
+        },
+        {
+            "id": 190300,
+            "caption": null,
+            "image_size": [
+                525,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190300.png?modified=1530208996",
+            "thumbnail_size": [
+                200,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190300.png?modified=1530208996"
+        },
+        {
+            "id": 190298,
+            "caption": null,
+            "image_size": [
+                639,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190298.png?modified=1530208996",
+            "thumbnail_size": [
+                243,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190298.png?modified=1530208996"
+        },
+        {
+            "id": 190299,
+            "caption": null,
+            "image_size": [
+                626,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190299.png?modified=1530208997",
+            "thumbnail_size": [
+                238,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190299.png?modified=1530208997"
+        },
+        {
+            "id": 190303,
+            "caption": null,
+            "image_size": [
+                536,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190303.png?modified=1530208997",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190303.png?modified=1530208997"
+        },
+        {
+            "id": 190301,
+            "caption": null,
+            "image_size": [
+                645,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190301.png?modified=1530208997",
+            "thumbnail_size": [
+                246,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190301.png?modified=1530208997"
+        },
+        {
+            "id": 190302,
+            "caption": null,
+            "image_size": [
+                663,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190302.png?modified=1530208998",
+            "thumbnail_size": [
+                253,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190302.png?modified=1530208998"
+        },
+        {
+            "id": 190306,
+            "caption": null,
+            "image_size": [
+                536,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190306.png?modified=1530208998",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190306.png?modified=1530208998"
+        },
+        {
+            "id": 190304,
+            "caption": null,
+            "image_size": [
+                645,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190304.png?modified=1530208998",
+            "thumbnail_size": [
+                246,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190304.png?modified=1530208998"
+        },
+        {
+            "id": 190305,
+            "caption": null,
+            "image_size": [
+                663,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190305.png?modified=1530208999",
+            "thumbnail_size": [
+                253,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190305.png?modified=1530208999"
+        },
+        {
+            "id": 190309,
+            "caption": null,
+            "image_size": [
+                536,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190309.png?modified=1530208999",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190309.png?modified=1530208999"
+        },
+        {
+            "id": 190307,
+            "caption": null,
+            "image_size": [
+                645,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190307.png?modified=1530209000",
+            "thumbnail_size": [
+                246,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190307.png?modified=1530209000"
+        },
+        {
+            "id": 190308,
+            "caption": null,
+            "image_size": [
+                663,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190308.png?modified=1530209000",
+            "thumbnail_size": [
+                253,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190308.png?modified=1530209000"
+        },
+        {
+            "id": 190312,
+            "caption": null,
+            "image_size": [
+                536,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190312.png?modified=1530209000",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190312.png?modified=1530209000"
+        },
+        {
+            "id": 190310,
+            "caption": null,
+            "image_size": [
+                645,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190310.png?modified=1530209001",
+            "thumbnail_size": [
+                246,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190310.png?modified=1530209001"
+        },
+        {
+            "id": 190311,
+            "caption": null,
+            "image_size": [
+                663,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190311.png?modified=1530209001",
+            "thumbnail_size": [
+                253,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190311.png?modified=1530209001"
+        },
+        {
+            "id": 190315,
+            "caption": null,
+            "image_size": [
+                536,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190315.png?modified=1530209001",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190315.png?modified=1530209001"
+        },
+        {
+            "id": 190313,
+            "caption": null,
+            "image_size": [
+                645,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190313.png?modified=1530209002",
+            "thumbnail_size": [
+                246,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190313.png?modified=1530209002"
+        },
+        {
+            "id": 190314,
+            "caption": null,
+            "image_size": [
+                663,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190314.png?modified=1530209002",
+            "thumbnail_size": [
+                253,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190314.png?modified=1530209002"
+        },
+        {
+            "id": 190318,
+            "caption": null,
+            "image_size": [
+                536,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190318.png?modified=1530209002",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190318.png?modified=1530209002"
+        },
+        {
+            "id": 190316,
+            "caption": null,
+            "image_size": [
+                645,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190316.png?modified=1530209003",
+            "thumbnail_size": [
+                246,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190316.png?modified=1530209003"
+        },
+        {
+            "id": 190317,
+            "caption": null,
+            "image_size": [
+                663,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190317.png?modified=1530209003",
+            "thumbnail_size": [
+                253,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190317.png?modified=1530209003"
+        },
+        {
+            "id": 190321,
+            "caption": null,
+            "image_size": [
+                536,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190321.png?modified=1530209003",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190321.png?modified=1530209003"
+        },
+        {
+            "id": 190319,
+            "caption": null,
+            "image_size": [
+                645,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190319.png?modified=1530209003",
+            "thumbnail_size": [
+                246,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190319.png?modified=1530209003"
+        },
+        {
+            "id": 190320,
+            "caption": null,
+            "image_size": [
+                663,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190320.png?modified=1530209004",
+            "thumbnail_size": [
+                253,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190320.png?modified=1530209004"
+        },
+        {
+            "id": 190324,
+            "caption": null,
+            "image_size": [
+                536,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190324.png?modified=1530209004",
+            "thumbnail_size": [
+                204,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190324.png?modified=1530209004"
+        },
+        {
+            "id": 190322,
+            "caption": null,
+            "image_size": [
+                645,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190322.png?modified=1530209004",
+            "thumbnail_size": [
+                246,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190322.png?modified=1530209004"
+        },
+        {
+            "id": 190323,
+            "caption": null,
+            "image_size": [
+                663,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/190/190323.png?modified=1530209005",
+            "thumbnail_size": [
+                253,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/190/190323.png?modified=1530209005"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.53666,
+        "count": 18,
+        "average": 4.6111,
+        "text_count": 18
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-compress-file/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/327777",
+    "slug": "auto-compress-file",
+    "status": "public",
+    "summary": {
+        "en-US": "Compressor for attachment files. All platforms are supported (Windows, Linux and Macintosh)."
+    },
+    "support_email": {
+        "en-US": "autocompressfile@gmail.com"
+    },
+    "support_url": {
+        "en-US": "http://dev.arqendra.net"
+    },
+    "tags": [
+        "archive",
+        "attached",
+        "attachment",
+        "auto",
+        "autocompressfile",
+        "compress",
+        "compression",
+        "file",
+        "gz",
+        "rar",
+        "tar",
+        "tgz",
+        "zip"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-compress-file/",
+    "weekly_downloads": 208
+}
