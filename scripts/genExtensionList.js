@@ -174,9 +174,9 @@ function createExtMDTableRow(extJson) {
 	// 	return "";
 	// }
 
-	// if ( !(comp_badges.includes(cBadge_tb68) ) ) {
-	// 	return "";
-	// }
+	if ( !(comp_badges.includes(cBadge_tb68) ) ) {
+		return "";
+	}
 
 	let rank = extJson.xpilib.rank;
 	
