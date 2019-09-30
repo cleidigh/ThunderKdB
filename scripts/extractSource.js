@@ -51,6 +51,13 @@ async function downloadURL(url, destFile) {
 	// console.log('done!');
 }
 
+function unzipFile(filename, destination) {
+		// _7zCommand = ['x', `${filename}`, `-o${destination}`];
+		console.debug('Starting unzip: ' + filename);
+		fileUnzip(`${filename}`, { dir: `${destination}` });
+		console.debug('unpacked source');
+}
+
 function readExtJson(filename) {
 
 	return fs.readJSONSync(filename);
@@ -85,7 +92,10 @@ async function walkFolders(parentFolder) {
 			}
 			
 
+
 		}
+		
+		unzipFile(`${parentFolder}/${extDir}/xpi/${xpiFileName}`, `${parentFolder}/${extDir}/src`);
 
 
 	}
