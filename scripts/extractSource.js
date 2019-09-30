@@ -51,7 +51,7 @@ async function downloadURL(url, destFile) {
 	// console.log('done!');
 }
 
-function readExtJson( filename) {
+function readExtJson(filename) {
 
 	return fs.readJSONSync(filename);
 	// console.debug('Extension '+dir+' '+extJson.id);
@@ -71,20 +71,22 @@ async function walkFolders(parentFolder) {
 			// fs.removeSync(`${extDir}/xpi`);
 			console.debug('Missing: ' + `index: ${index} : ${extDir}/xpi`);
 			extJson = readExtJson(`${parentFolder}/${extDir}/${extDir}.json`);
-			console.debug('ExtensionId: '+extJson.id);
+			console.debug('ExtensionId: ' + extJson.id);
 
 			const xpiFileURL = extJson.current_version.files[0].url;
 			const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
-			
+
 			await downloadURL(xpiFileURL, `${extDir}/xpi`);
 			console.debug('Downloaded filename ' + xpiFileName);
 			// fs.ensureDirSync(`${extRootDir}/xpi`);
 
 		}
 
-		
+
 	}
 }
 
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
-walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}`, {extsJson: extsJson})
+// walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}`, { extsJson: extsJson });
+walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}`, { extsJson: extsJson });
+// walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTBOtherDir}`, { extsJson: extsJson });
