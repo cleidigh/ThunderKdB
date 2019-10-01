@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+ <!DOCTYPE dialog SYSTEM "chrome://AddSig/locale/add-signature.dtd">
+  <overlay id="sample" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+				<keyset>
+				 <key id="add-sigcursor" modifiers="control shift" key="s" oncommand="addsigcursor();"/>
+				</keyset>
+      <popup id="msgComposeContext">
+       <menuitem 
+        id="my_addsig" 
+        label="&addsig.rightmouse.label;" 
+        oncommand="addsig()"/>
+       <menuitem 
+        id="my_addsig_cursor" 
+								accesskey="s" key="add-sigcursor"
+        label="&addsig.rightmousecursor.label;" 
+        oncommand="addsigcursor()"/>
+    </popup>
+ <script type="application/x-javascript">
+ <![CDATA[
+  function addsig() {
+   var Id = null;  // the identity we are editing (may be null for a new identity)
+   Id = gMsgCompose.identity;
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+   var separator = prefs.getBoolPref("mail.identity.default.suppress_signature_separator");
+
+   var editor = GetCurrentEditor();
+   var editor_type = GetCurrentEditorType();
+      editor.beginTransaction();
+      editor.endOfDocument(); // seek to beginning
+      if( editor_type == "textmail" || editor_type == "text" ) {
+        editor.insertLineBreak();
+        if(separator==false) {
+								 editor.insertText("-- ");
+         editor.insertLineBreak();
+								}
+        editor.insertText(Id.htmlSigText);
+        editor.insertLineBreak();
+      } else {
+        if(separator==false) {
+         editor.insertHTML( "<div class=moz-signature><br>-- <br>" + Id.htmlSigText + "</div>" );
+								}else{
+         editor.insertHTML( "<div class=moz-signature><br>" + Id.htmlSigText + "</div>" );
+								}
+      }
+      editor.endTransaction();
+  }
+  function addsigcursor() {
+   var Id = null;  // the identity we are editing (may be null for a new identity)
+   Id = gMsgCompose.identity;
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+   var separator = prefs.getBoolPref("mail.identity.default.suppress_signature_separator");
+   
+   var editor = GetCurrentEditor();
+   var editor_type = GetCurrentEditorType();
+      editor.beginTransaction();
+      if( editor_type == "textmail" || editor_type == "text" ) {
+        editor.insertLineBreak();
+        if(separator==false) {
+         editor.insertText("-- ");
+         editor.insertLineBreak();
+								}
+        editor.insertText(Id.htmlSigText);
+        editor.insertLineBreak();
+      } else {
+        if(separator==false) {
+         editor.insertHTML( "<div class=moz-signature><br>-- <br>" + Id.htmlSigText + "</div>" );
+								}else{
+         editor.insertHTML( "<div class=moz-signature><br>" + Id.htmlSigText + "</div>" );
+								}
+      }
+      editor.endTransaction();
+  }
+  ]]>
+ </script>
+</overlay>

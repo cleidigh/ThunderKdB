@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+	"applications": {
+		"gecko": {
+			"id": "ml@grufo.com",
+			"strict_min_version": "68.0"
+		}
+	},
+	"name": "Add Signature",
+	"description": "Simply add your signature manually (right mouse click) to your emails (text and html)",
+	"version": "0.4.4",
+	"legacy": {
+		"type": "xul",
+		"options": {
+			"page": "chrome://myextension/content/options.xul",
+			"open_in_tab": true
+		}
+	}
+}

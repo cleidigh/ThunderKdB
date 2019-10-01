@@ -1,0 +1,1003 @@
+Return-Path: <jik@jik4.kamens.us>
+Received: from deliver ([unix socket])
+	 (authenticated user=jik bits=0)
+	 by jik4.kamens.us (Cyrus v2.3.16-Fedora-RPM-2.3.16-6.el6_2.5) with LMTPA;
+	 Sat, 05 Jul 2014 20:49:14 -0400
+X-Sieve: CMU Sieve 2.3
+Received: from dmz-mailsec-scanner-6.mit.edu (dmz-mailsec-scanner-6.mit.edu [18.7.68.35])
+	by jik4.kamens.us (8.14.4/8.14.4) with ESMTP id s660mVw5010728
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)
+	for <jik@kamens.brookline.ma.us>; Sat, 5 Jul 2014 20:48:32 -0400
+Received: from mailhub-dmz-4.mit.edu ( [18.7.62.38])
+	(using TLS with cipher AES256-SHA (256/256 bits))
+	(Client did not present a certificate)
+	by dmz-mailsec-scanner-6.mit.edu (Symantec Messaging Gateway) with SMTP id DD.F8.30080.EDC98B35; Sat,  5 Jul 2014 20:48:30 -0400 (EDT)
+Received: from dmz-mailsec-scanner-6.mit.edu (dmz-mailsec-scanner-6.mit.edu [18.7.68.35])
+	by mailhub-dmz-4.mit.edu (8.13.8/8.9.2) with ESMTP id s660mGCF003513
+	for <risks@mit.edu>; Sat, 5 Jul 2014 20:48:22 -0400
+X-AuditID: 12074423-f79bf6d000007580-73-53b89cdebf48
+Authentication-Results: symauth.service.identifier
+Received: from mx0.csl.sri.com (mx0.csl.sri.com [130.107.1.30])
+	(using TLS with cipher AES256-SHA (256/256 bits))
+	(Client did not present a certificate)
+	by dmz-mailsec-scanner-6.mit.edu (Symantec Messaging Gateway) with SMTP id 6D.F8.30080.5DC98B35; Sat,  5 Jul 2014 20:48:21 -0400 (EDT)
+Received: from chiron.csl.sri.com (chiron.csl.sri.com [130.107.15.74])
+	by mx0.csl.sri.com (8.14.3/8.14.2) with ESMTP id s660mJbg031908
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)
+	for <risks@mit.edu>; Sat, 5 Jul 2014 17:48:19 -0700 (PDT)
+	(envelope-from risko@csl.sri.com)
+Received: from chiron.csl.sri.com (localhost.localdomain [127.0.0.1])
+	by chiron.csl.sri.com (8.13.1/8.13.1) with ESMTP id s660mJWs004172
+	for <risks@mit.edu>; Sat, 5 Jul 2014 17:48:19 -0700
+Received: (from risko@localhost)
+	by chiron.csl.sri.com (8.13.1/8.13.1/Submit) id s660mIuR004157
+	for risks@mit.edu; Sat, 5 Jul 2014 17:48:18 -0700
+From: RISKS List Owner <risko@csl.sri.com>
+Sender: RISKS List Owner <risko@csl.sri.com>
+Date: Sat, 5 Jul 2014 17:48:18 PDT
+precedence: bulk
+Subject: Risks Digest 28.06
+To: risks@MIT.EDU
+Message-ID: <CMM.0.90.4.1404607698.risko@chiron.csl.sri.com>
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrAKsWRmVeSWpSXmKPExsUixG6npntvzo5ggxuX9S1uHZW3mPmnm8Vi
+	/ztBiyWH7zNavJ7Swmpx4A63xZbzx9ks7nd1MVt8u1lm8fV9rcX8GVPYHbg9rk/uYfPYOesu
+	u8fFh7cZPa5P/8XssfBhD6NHy/5rbAFsUVw2Kak5mWWpRfp2CVwZT76vYCnYco+p4tGhO0wN
+	jAumM3UxcnJICJhILDt+hBnCFpO4cG89WxcjF4eQwCwmiSlb9jCCJIQErjFKvOq2gWk48uw9
+	K4jNKGAksfvcK1aIhqVMEusaPjBDOGuZJN7+/wo16gCjxJe9rUwQo6YyStw9zAdiswloSWzp
+	Wga2QlhAR2LepCVAozg4WASUJF7c4gQJCwgISMx+1MEEUSIt8bjxFZgtIiAo8e3fH7AreAVs
+	JD6+egh2hYTAMnaJjlv/GScwCi1gZFjFKJuSW6Wbm5iZU5yarFucnJiXl1qka6aXm1mil5pS
+	uokRHBEuyjsY/xxUOsQowMGoxMPLWbwjWIg1say4MvcQoyQHk5Iob+hUoBBfUn5KZUZicUZ8
+	UWlOavEhRgkOZiUR3nszgHK8KYmVValF+TApaQ4WJXHet9ZWwUIC6YklqdmpqQWpRTBZGQ4O
+	JQleBmDkCwkWpaanVqRl5pQgpJk4OEGG8wANXzcbZHhxQWJucWY6RP4Uo6KUOO9qkIQASCKj
+	NA+uF5awXjGKA70izPsfpIoHmOzgul8BDWYCGszGtBVkcEkiQkqqgXHLCem72UnSE4StbF5J
+	TvV44NgkvCJj12rFnk3hy9d/2cvHJinHcv3MZY6j5/SzZO42LHjjdvTMoU+L5eolxb/Pv7px
+	o4VsxiulKVHLO1zc7/R1FNloXZ3YZGDB3X067pDO6hY9Idag7eZqzGGaP5h/b9WdZF4etPUR
+	g9WNyCa+A9Y2vILbVimxFGckGmoxFxUnAgAbVNQsMwMAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrEIsWRWlGSWpSXmKPExsXSlM0op3t1zo5gg0l/jCx+r5zM6sDo0XTm
+	KHMAYxSXTUpqTmZZapG+XQJXxpPvK1gKttxjqnh06A5TA+OC6UxdjJwcEgImEkeevWcFsRkF
+	jCR2n3vFChEXk7hwbz1bFyMXh5DAUiaJdQ0fmCGctUwSb/9/hcocYJT4srcVbJSQwFRGibuH
+	+UBsNgEtiS1dyxhBbGEBHYl5k5YAjeXgYBFQknhxixMkLCAgIDH7UQcTRIm0xOPGV2C2iICg
+	xP3P05lBbF4BG4mPrx6yTmDkW8DIsIpRNiW3Sjc3MTOnODVZtzg5MS8vtUjXTC83s0QvNaV0
+	EyMwQITYXZR3MP45qHSIUYCDUYmHl7N4R7AQa2JZcWXuIUZJDiYlUd7QqUAhvqT8lMqMxOKM
+	+KLSnNTiQ4wSHMxKIrz3ZgDleFMSK6tSi/JhUtIcLErivG+trYKFBNITS1KzU1MLUotgskwc
+	7IcYZTg4lCR4GYAxISRYlJqeWpGWmVOCrIYTRHCBrOEBWrNuNsia4oLE3OLMdIiiU4yKUuK8
+	q0ESAiCJjNI8uAGwqL7EKCslzMvIwMAgxAN0AdDjqPKvGMWBnhbm/Q8yhSczrwRu+iugxUxA
+	i9mYtoIsLklESEk1MC7bsC/l1RUrydOTlE921ErpCEwQdSpy9Zh+tcn+xIHfXZmb1k78lRmk
+	75QgPfHOZLNdRSEex3/dPrRl76y5e96X/+7LW/JNo6Qo0oKLpVdaUU/6OZPcpJ8zVh56YbN/
+	g03qDeHEqRr1PJs1ex+26MrwL05Nt/M+dV916e/1pU/6vhmcWNj2YokSS3FGoqEWc1FxIgAu
+	/QO/5QIAAA==
+X-Bogosity: Ham, tests=bogofilter, spamicity=0.000000, version=1.2.4, milter_id=29e9.53b89d09.fd593a4
+X-Scanned-By: MIMEDefang 2.75
+
+RISKS-LIST: Risks-Forum Digest  Saturday 5 July 2014  Volume 28 : Issue 06
+
+ACM FORUM ON RISKS TO THE PUBLIC IN COMPUTERS AND RELATED SYSTEMS (comp.risks)
+Peter G. Neumann, moderator, chmn ACM Committee on Computers and Public Policy
+
+***** See last item for further information, disclaimers, caveats, etc. *****
+This issue is archived at <http://www.risks.org> as
+  <http://catless.ncl.ac.uk/Risks/28.06.html>
+The current issue can be found at
+  <http://www.csl.sri.com/users/risko/risks.txt>
+
+  Contents:
+Train strikes car in Clifton after GPS leads driver onto tracks
+  (Kathryn Brenzel via Gene Wirchenko)
+SSH keys lying around? (PGN)
+Movie Theaters Are Banning Google Glass Because They Don't Understand It
+  (Will Oremus via Dewayne Hendricks)
+Buffer overflows in 20-year-old LZ decompression code (Don A. Bailey via
+  Henry Baker)
+Unix "*" wildcards considered harmful (Henry Baker)
+Houston Astros victim of security breach (MLB via Jim Reisert)
+T-Mobile accused of making millions with bogus charges (Anne Flaherty via
+  Monty Solomon)
+Corrupt personalization on Facebook (Christian Sandvig)
+Facebook purposely manipulated news feeds to experiment with users'
+  emotions (*The Atlantic* via Lauren Weinstein)
+Facebook Tinkers With Users' emotions in News Feed Experiment,
+  Stirring Outcry (Vindu Goel via Lauren Weinstein)
+No-IP's Formal Statement on Microsoft Takedown (Lauren Weinstein)
+Microsoft returns most domains it improperly confiscated ...
+  (Lauren Weinstein)
+Microsoft Disconnects Me, a non-MS User, From My Hardware (Kent Borg)
+Re: Hong Kong electronic voting system cyber-attacked (Jonathan Kamens,
+  Amos Shapir, Rogier Wolff)
+Re: Trouble with firefox updates (Carlos G Mendioroz, Alexander Klimov)
+Can the abuse, please: was Re: Trouble with firefox... (Steve McIntyre)
+Abridged info on RISKS (comp.risks)
+
+----------------------------------------------------------------------
+
+Date: Fri, 27 Jun 2014 16:13:57 -0700
+From: Gene Wirchenko <genew@telus.net>
+Subject: Train strikes car in Clifton after GPS leads driver onto tracks
+  (Kathryn Brenzel)
+
+Kathryn Brenzel/NJ.com, 26 Jun 2014
+http://www.nj.com/passaic-county/index.ssf/2014/06/nj_transit_train_strikes_car_in_clifton_after_gps_leads_woman_onto_tracks.html
+
+A New Jersey Transit train struck a Volvo in Clifton NJ on Wednesday after a
+woman -- misdirected by her GPS -- drove and got stuck on the tracks, agency
+officials said.
+
+  [Presumably the GPS-based navigator said Turn (L or R) ``at the next
+  intersection,'' not ``at the next set of railroad tracks.''  It is perhaps
+  surprising that this does happen, but not clear where the blame should
+  lie.  PGN]
+
+------------------------------
+
+Date: Wed, 2 Jul 2014 16:36:38 PDT
+From: "Peter G. Neumann" <neumann@csl.sri.com>
+Subject: SSH keys lying around?
+
+(A remarkably stupid flaw. Thanks to Drew Dean for noting it)
+
+Running Cisco Unified Comms: Four words you don't want to hear:
+  `Backdoor SSH root key'
+*The Register*, 2 Jul 2014
+http://www.theregister.co.uk/2014/07/02/cisco_you_cant_just_leave_your_ssh_keys_lying_around/
+
+"The vulnerability is due to the presence of a default SSH private key,
+which is stored in an insecure way on the system."
+http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140702-cucdm
+
+------------------------------
+
+Date: Mon, Jun 30, 2014 at 4:21 PM
+From: Dewayne Hendricks <dewayne@warpspeed.com>
+Subject: Movie Theaters Are Banning Google Glass Because They Don't
+  Understand It (Will Oremus)
+
+Will Oremus, *Slate*, 30 Jun 2014 (via Dave Farber)
+http://www.slate.com/blogs/future_tense/2014/06/30/google_glass_banned_from_uk_movie_theaters_out_of_misplaced_piracy_fears.html
+
+Cinemas across the United Kingdom are banning Google Glass the *Independent*
+reports, out of fear that people will use it to surreptitiously record and
+pirate movies.
+<http://www.independent.co.uk/life-style/gadgets-and-tech/news/google-glass-to-be-banned-from-all-uk-cinemas-9570686.html>,
+
+The fiat comes from the Cinema Exhibitors' Association, a trade group.
+``Customers will be requested not to wear these into cinema auditoriums,
+whether the film is playing or not,'' said Phil Clapp, the group's chief
+executive.
+
+It isn't just the Brits who are cracking down on Google's high-tech specs.
+Earlier this year a Glass-wearer was hauled out of an AMC theater and
+interrogated by FBI agents in Columbus, Ohio. He explained to the agents
+that he couldn't just take the device off, because it was attached to his
+prescription lenses. That apparently didn't stop them from detaining him for
+an hour and going through all his photos and personal data.
+<http://www.slate.com/blogs/future_tense/2014/01/22/google_glass_at_the_movies_prompts_fbi_interrogation.html>
+
+It should be apparent to anyone who has ever used Google Glass that the
+paranoia is unwarranted. The device can record video, but the quality is
+low, and the audio quality is even worse. And it can only record for 30 to
+45 minutes before the battery runs out.
+
+More importantly, as I explained last year when I called Google Glass `the
+world's worst surveillance device' there's a red light on the front of the
+device that blinks on and stays lit whenever it's recording. In a pitch-dark
+theater, surreptitiousness is pretty much out of the question.
+<http://www.slate.com/articles/technology/future_tense/2013/05/google_glass_privacy_it_s_actually_the_world_s_worst_surveillance_device.html>,
+
+In a statement about the U.K. cinema ban, Google is saying pretty much the
+same thing.  ``Broadly speaking, we think it's best to have direct and
+first-hand experience with Glass before creating policies around it,'' a
+spokesman said, semi-diplomatically.  ``The fact that Glass is worn above
+the eyes and the screen lights up whenever it's activated makes it a fairly
+lousy device for recording things secretly.''
+
+You know what does records audio and video in higher quality, doesn't have a
+bright red light on the front, and could capture an entire movie? The
+smartphones that just about everyone carries into theaters these days.
+
+Google Glass might be newer and therefore scarier to people than
+smartphones, but there's no good reason it should be treated differently in
+a movie theater. Moviegoers wearing prescription Glass should simply turn
+their face-computers off before the film starts, the same way they do with
+their pocket-computers. And for those with non-prescription Glass, this
+shouldn't even be an issue: You don't need the Cinema Exhibitors'
+Association to tell you that you'll be able to see the movie better without
+an extra screen stuck to your head.
+
+------------------------------
+
+Date: Fri, 27 Jun 2014 06:11:41 -0700
+From: Henry Baker <hbaker1@pipeline.com>
+Subject: Buffer overflows in 20-year-old LZ decompression code
+  (Don A. Bailey)
+
+FYI -- It's time to start using theorem provers on *all* code; if you can't
+convince the theorem prover re buffer overflows, you'll have to insert
+executable code to explicitly check.  HB
+
+Thursday, June 26, 2014
+Raising Lazarus - The 20 Year Old Bug that Went to Mars
+http://blog.securitymouse.com/2014/06/raising-lazarus-20-year-old-bug-that.html
+
+It's rare that you come across a bug so subtle that it can last for two
+decades.  But, that's exactly what has happened with the
+Lempel-Ziv-Oberhumer (LZO) algorithm.  Initially written in 1994, Markus
+Oberhumer designed a sophisticated and extremely efficient compression
+algorithm so elegant and well architected that it outperforms zlib and bzip
+by four or five times their decompression speed.
+
+As a result, Markus has made a successful and well deserved career out of
+optimizing code for various platforms.  I was impressed to find out that his
+LZO algorithm has gone to the planet Mars on NASA devices multiple times!
+Most recently, LZO has touched down on the red planet within the Mars
+Curiosity Rover, which just celebrated its first martian anniversary on
+Tuesday.
+
+Because of the speed and efficiency of the algorithm, LZO has made its way
+into both proprietary and open source projects world-wide.  It's has lived
+in automotive systems, airplanes, and other embedded systems for over a
+decade.  The algorithm has even made its way into projects we use on a daily
+basis, such as OpenVPN, MPlayer2, Libav, FFmpeg, the Linux kernel, Juniper
+Junos, and much, much, more.
+
+In the past few years, LZO has gained traction in file systems as well.  LZO
+can be used in the Linux kernel within btrfs, squashfs, jffs2, and ubifs.  A
+recent variant of the algorithm, LZ4, is used for compression in ZFS for
+Solaris, Illumos, and FreeBSD.
+
+LZO is even enabled in kernels for Samsung Android devices to increase
+kernel loading speed and improve the user experience, as noted in the
+Android Hacker's Handbook.
+
+With its popularity increasing, Lempel-Ziv-Oberhumer has been rewritten by
+many engineering firms for both closed and open systems.  These rewrites,
+however, have always been based on Oberhumer's core open source
+implementation.  As a result, they all inherited a subtle integer overflow.
+Even LZ4 has the same exact bug, but changed very slightly.
+
+Engineered Genetics
+
+Code reuse is a normal part of engineering, and is something we do every
+day.  But, it can be dangerous.  By reusing code that is known to work well,
+especially in highly optimized algorithms, projects can become subject to
+vulnerabilities in what is perceived as trusted code.  Auditing highly
+optimized algorithms is a fragile endeavor.  It is very easy to break these
+types of algorithms.  Therefore, reused code that is highly specialized is
+often presumed safe because of its age, its proven efficiency, and its
+fragility.
+
+This creates a sort of digital DNA, a digital genetic footprint that can be
+traced over time.  Though there are certainly many instances of proprietary
+variants of LZO and LZ4, the following six implementations are available in
+open source software
+
+    Oberhumer LZO (core/reference open source implementation)
+    Linux kernel's LZO implementation
+    Libav's LZO implementation
+    FFmpeg's LZO implementation
+    Linux kernel's LZ4 implementation
+    LZ4 core/reference implementation
+
+Despite each implementation of the algorithm being noticeably different,
+each variant is vulnerable in the exact same way.  Let's take a look at a
+version of the algorithm that is easy to read online, the Linux kernel
+implementation found here.
+
+In all variants of LZ[O4], the vulnerability occurs when processing a
+Literal Run.  This is a chunk of compressed data that isn't compressed at
+all.  Literals are uncompressed bytes that the user decided, for whatever
+reason, should not be compressed.  A Literal Run is signaled by a state
+machine in LZO, and by a Mask in LZ4.
+
+ 56                         if (likely(state == 0)) {
+ 57                                 if (unlikely(t == 0)) {
+ 58                                         while (unlikely(*ip == 0)) {
+ 59                                                 t += 255;
+ 60                                                 ip++;
+ 61                                                 NEED_IP(1);
+ 62                                         }
+ 63                                         t += 15 + *ip++;
+ 64                                 }
+ 65                                 t += 3;
+
+In the above sample, the integer overflow is evident.  The variable 't' is
+incremented by 255 every time the compression payload contains a nil byte
+(0x00) when a Literal Run is detected.  Regardless of whether the variable
+'t' is signed or unsigned, 255 will be added to it.  The only check is to
+ensure that the input buffer contains another byte.  This means that 't' can
+accumulate until it is a very large unsigned integer.  If 't' is a 32bit
+integer, it only takes approximately sixteen (16) megabytes of zeroes to
+generate a sufficiently large value for 't'.  Though 't' can overflow here,
+this is not where the attack occurs.  There is another more important
+overflow just below this chunk of code.
+
+66 copy_literal_run:
+67 #if defined(CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS)
+68                                 if (likely(HAVE_IP(t + 15) && HAVE_OP(t + 15))) {
+69                                         const unsigned char *ie = ip + t;
+70                                         unsigned char *oe = op + t;
+71                                         do {
+72                                                 COPY8(op, ip);
+73                                                 op += 8;
+74                                                 ip += 8;
+75                                                 COPY8(op, ip);
+76                                                 op += 8;
+77                                                 ip += 8;
+78                                         } while (ip < ie);
+79                                         ip = ie;
+80                                         op = oe;
+81                                 } else
+82 #endif
+
+Above, we see the "copy_literal_run" chunk of code.  This is the section of
+the LZO algorithm that uses the variable 't' as a size parameter.  On line
+68, the code ensures that the input buffer (IP) and output buffer (OP) are
+large enough to contain 't' bytes.  However, in the Linux kernel
+implementation, they pad by 15 bytes to ensure the 16 byte copy does not
+overflow either buffer.  This is where things fail.
+
+The macros HAVE_IP and HAVE_OP validate that 't' bytes are available in the
+respective buffer.  But, before the macro is called, the expression (t + 15)
+is evaluated.  If the value of 't' is large enough, this expression will
+cause an integer overflow.  The attacker can make this expression result in
+a value of zero (0) through fourteen (14) by forcing 't' to equal the values
+-15 to -1, respectively.  This means that the HAVE macros will always
+believe that enough space is available in both input and output buffers.
+
+On line 70, the pointer 'oe' will now point to before the 'op' buffer,
+potentially pointing to memory prior to the start of the output buffer.  The
+subsequent code will copy sixteen (16) bytes from the input pointer to the
+output pointer, which does nothing as these pointers should point to a
+"safe" location in memory.  However, there are two side effects here that
+the attacker must abuse: lines 78 and 80.
+
+Because 'ie' will always have an address lower in memory than 'ip', the loop
+is immediately broken after the first sixteen (16) byte copy.  This means
+that the value 't' did not cause a crash in the copy loop, making this copy
+essentially a no-op from the attacker's point of view.  Most importantly, on
+line 80 (and 79), the buffer pointer is set to the overflown pointer.  This
+means that now, the output pointer points to memory outside of the bounds of
+the output buffer.  The attacker now has the capability to corrupt memory,
+or at least cause a Denial of Service (DoS) by writing to an invalid memory
+page.
+
+The Impact of Raising Dead Code
+
+Each variant of the LZO and LZ4 implementation is vulnerable in slightly
+different ways.  The attacker must construct a malicious payload to fit each
+particular implementation.  One payload cannot be used to trigger more than
+a DoS on each implementation.  Because of the slightly different overflow
+requirements, state machine subtleties, and overflow checks that must be
+bypassed, even a worldwide DoS is not a simple task.
+
+This results in completely different threats depending on the implementation
+of the algorithm, the underlying architecture, and the memory layout of the
+target application.  Remote Code Execution (RCE) is possible on multiple
+architectures and platforms, but absolutely not all.  Denial of Service is
+possible on most implementations, but not all.  Adjacent Object Over-Write
+(OOW) is possible on many architectures.
+
+Lazarus raised from the dead
+
+Because the LZO algorithm is considered a library function, each specific
+implementation must be evaluated for risk, regardless of whether the
+algorithm used has been patched.  Why?  We are talking about code that has
+existed in the wild for two decades.  The scope of this algorithm touches
+everything from embedded microcontrollers on the Mars Rover, mainframe
+operating systems, modern day desktops, and mobile phones.  Engineers that
+have used LZO must evaluate the use case to identify whether or not the
+implementation is vulnerable, and in what format.
+
+Here is a list of impact based on each library. Implementations, or use
+cases of each library may change the threat model enough to warrant
+reclassification.  So, please have a variant audited by a skilled third
+party, such as <shameless plug>.
+
+    Oberhumer LZO
+        RCE: Impractical
+        DoS: Practical
+        OOW: Practical
+        NOTE: 64bit platforms are impractical for all attacks
+    Linux kernel LZO
+        RCE: Impractical
+        DoS: Practical
+        OOW: Practical
+        NOTE: Only i386/PowerPC are impacted at this time
+    Libav LZO
+        RCE: Practical
+        DoS: Practical
+        OOW: Practical
+        NOTE: ALL ARCHITECTURES/PLATFORMS are RCE capable
+    FFmpeg LZO
+        RCE: Practical
+        DoS: Practical
+        OOW: Practical
+        NOTE: ALL ARCHITECTURES/PLATFORMS are RCE capable
+    Linux kernel LZ4
+        RCE: Practical
+        DoS: Practical
+        OOW: Practical
+        NOTE: 64bit architectures are NOT considered practical
+    LZ4
+        RCE: Practical
+        DoS: Practical
+        OOW: Practical
+        NOTE: 64bit architectures are NOT considered practical
+
+For a bug report on each implementation, please visit the Lab Mouse
+Security's vulnerability site.
+
+How Do You Know If You're Vulnerable
+
+Projects Using LZO/LZ4
+
+The easiest way to identify whether your specific implementation is
+vulnerable is to determine the maximum chunk size that is passed to the
+decompress routine.  If buffers of sixteen (16) megabytes or more can be
+passed to the LZO or LZ4 decompress routine in one call, then exploitation
+of the integer overflow is possible.  For example, ZFS constrains buffer
+sizes to 128k.  So, even though they use a vulnerable implementation of LZ4,
+an attack is not possible without a second bug to bypass the buffer size
+constraint.
+
+The second easiest way is to identify the bit size of the count variable.
+If the count variable (for example, named 't' in the Linux kernel code shown
+above) is 64bit, it would take such a massive amount of data to trigger the
+overflow that the attack would likely be infeasible, regardless of how much
+data can be passed to the vulnerable function in one call.  This is due to
+the fact that even modern computers do not have enough RAM available to
+store the data required to implement such an attack.
+
+However, there is a specific issue with the previous check.  Validate that
+even if the count variable is 64bit in size, the value used is still 64bit
+when a length value is checked.  If the actual length value is truncated to
+32bits, the attack will still work with only sixteen (16) megabytes of data.
+
+Users
+
+All users of FFmpeg, Libav, and projects that depend on them, should
+consider themselves at risk to remote code execution.  Period.  Please
+update your software from the FFmpeg and Libav websites, or refrain from
+using these applications until your distribution has an adequate patch.
+
+It should be noted that certain Linux distributions package Mplayer2 with
+the base system by default.  MPlayer2 is vulnerable to RCE "out of the box".
+If your distribution packages MPlayer2 by default, be sure to disable the
+embedded media player plugin (gecko-mediaplayer) for your browser.
+Firefox/Iceweasel, Chromium, Opera, Konqueror, and other Linux-based
+browsers are vulnerable to RCE regardless of the platform/architecture when
+an MPlayer2 plugin is enabled.
+
+Vendor Status
+
+Lab Mouse has reached out to and worked with each vendor of the vulnerable
+algorithm.  As of today, June 26th, 2014, all LZO vendors have patches
+either available online, or will later today.  Please update as soon as
+possible to minimize the existing threat surface.
+
+In the near future, Lab Mouse will publish a more technical blog on why and
+how RCE is possible using this bug.  We consider that information to be
+imperative for both auditors and engineers, as it assists in identifying,
+classifying, and prioritizing a threat.  However, that report will be
+released once the patches have been widely distributed for a sufficient
+amount of time.
+
+For more information, please visit our contact page.  We are more than happy
+to help your team with their use case, or implementation of these
+algorithms.
+
+Summary
+
+Overall, this is how this bug release breaks down.
+
+  Vendors have patches ready or released
+  Distributions have been notified
+  Vendors of proprietary variants have been notified (where they could be found)
+  All bug reports can be found here
+  RCE is not only possible but practical on all Libav/FFmpeg based projects
+  All others are likely impractical to RCE, but still possible given a
+    sufficiently skilled attacker
+
+It is always exciting to uncover a vulnerability as subtle as this issue,
+especially one that has persisted and propagated for two decades.  But, it
+makes me pause and consider the way we look at engineering as a model.
+
+Speed and efficiency are imperatives for modern projects.  We're building
+technology that touches our lives like never before.  I know that most
+engineers strive to build not only elegant, but safe code.  But, we still
+see security as a disparate discipline from engineering.  Security and
+engineering could not be more tightly bound.  Without engineering, you can't
+provide security to users.  Without security, engineering cannot provide a
+stable and provable platform.
+
+Neil deGrasse Tyson famously claimed, God is in the gaps.  There is a
+similar issue in engineering.  The individual often sees stability where the
+individual doesn't have expertise.  Our God is the algorithm.  We "bless"
+certain pieces of code because we don't have the time or knowledge to
+evaluate it.  When we, as engineers and analysts, take that perspective, we
+are doing a disservice to the people that use our projects and services.
+
+Often the best eyes are fresh or untrained eyes.  The more we stop telling
+ourselves to step over the gaps in our code bases, the more holes we'll be
+able to fill.  All it takes is one set of eyes to find a vulnerability,
+there is no level of expertise required to look and ask questions.  Just
+look.  Maybe you'll find the next 20 year old vulnerability.
+
+Thanks
+
+I'd like to thank the following people for their great assistance patching,
+coordinating, and advising on this issue:
+
+    Greg Kroah-Hartman (Linux)
+    Linus Torvalds (Linux)
+    Kees Cook (Google)
+    Xin LI (FreeBSD)
+    Michael Niedermayer (FFmpeg)
+    Luca Barbato (Libav/Gentoo)
+    Markus Oberhumer
+    Christopher J. Dorros (NASA MSL)
+    Dan McDonald (Omniti)
+    Yves-Alexis Perez (Debian)
+    Kurt Seifried (Red Hat)
+    Willy Tarreau (Linux)
+    Solar Designer (Openwall)
+    The US-CERT team
+    The Oracle security team
+    The GE security team
+    Kelly Jackson Higgins (UBM)
+    Steve Ragan (IDG Enterprise)
+    Elinor Mills
+
+Feeling Guilty?
+
+Are you reading this post, thinking about all the administrators and
+engineers that are going to have to patch the LZO/LZ4 issue in your team's
+systems?  Take some time to tell them how you feel with our hand crafted Lab
+Mouse Security custom Sympathy Card!
+
+Hand crafted with the finest bits and bytes, our Sympathy Card shows your
+engineer what they mean to you and your team.  This is a limited run of
+cards, and will proudly display the Linux kernel LZO exploit written by Lab
+Mouse on the card.
+
+Best wishes,
+Don A. Bailey, Founder / CEO, @InfoSecMouse, Lab Mouse Security, 26 Jun 2014
+
+------------------------------
+
+Date: Sun, 29 Jun 2014 12:46:17 -0700
+From: Henry Baker <hbaker1@pipeline.com>
+Subject: Unix "*" wildcards considered harmful
+
+FYI -- With all of the GUI/scripting hacks out there, it is refreshing to
+see that old-fashioned command-line hacks can still pack a fatal punch.
+
+In this article, Leon Juranic shows how deliberately ill-chosen filenames
+can be used to do very unpleasant things.
+
+"BusyBox"-based routers, beware!
+
+"Unix Wildcards Gone Wild"
+
+http://www.defensecode.com/public/DefenseCode_Unix_WildCards_Gone_Wild.txt
+
+------------------------------
+
+Date: Mon, 30 Jun 2014 17:07:46 -0600
+From: Jim Reisert AD1C <jjreisert@alum.mit.edu>
+Subject: Houston Astros victim of security breach (MLB)
+
+Houston Astros release statement on security breach, MLB.com,  30 Jun 2014
+
+"Last month, we were made aware that proprietary information held on Astros'
+servers and in Astros' applications had been illegally obtained. Upon
+learning of the security breach, we immediately notified MLB security who,
+in turn, notified the FBI. Since that time, we have been working closely
+with MLB security and the FBI to the determine the party, or parties,
+responsible. This information was illegally obtained and published, and we
+intend to prosecute those involved to the fullest extent.
+
+"It is unfortunate and extremely disappointing that an outside source has
+illegally obtained confidential information. While it does appear that some
+of the content released was based on trade conversations, a portion of the
+material was embellished or completely fabricated."
+
+http://mlb.mlb.com/news/article/mlb/astros-release-statement-on-security-breach?ymd=20140630&content_id=82394046
+
+------------------------------
+
+Date: Wed, 2 Jul 2014 10:44:12 -0400
+From: Monty Solomon <monty@roscom.com>
+Subject: T-Mobile accused of making millions with bogus charges
+  (Anne Flaherty)
+
+Anne Flaherty  | Associated Press, 1 JUL 2014
+
+T-Mobile US knowingly made hundreds of millions of dollars off its customers
+in potentially bogus charges, federal regulators alleged Tuesday in the
+first lawsuit of its kind against a wireless provider.
+
+The lawsuit by the Federal Trade Commission, which fueled a separate federal
+investigation, demands that T-Mobile refund the money to consumers for
+subscriptions to premium text services such as $10-per-month horoscopes that
+were never authorized by the account holder. The FTC alleges that T-Mobile
+collected as much as 40 percent of the charges, even after being alerted by
+other customers that the subscriptions were scams. ...
+
+http://www.bostonglobe.com/business/2014/07/01/ftc-accuses-mobile-knowingly-billing-customers-for-hundreds-millions-bogus-charges/vlB5kH1WlGrfxO6f0LiycJ/story.html
+http://www.bostonglobe.com/business/2014/07/01/ftc-accuses-mobile-fraud-billing/NwP31CnyYhn5CTuTQuj8BL/story.html
+
+Jon Brodkin, Ars Technica, 1 Jul 2014
+US sues T-Mobile, says carrier made millions off "bogus" cramming fees
+FTC: T-Mobile buried SMS charges in 50-page bills, should pay back victims.
+
+http://arstechnica.com/tech-policy/2014/07/us-sues-t-mobile-says-carrier-made-millions-off-bogus-cramming-fees/
+
+------------------------------
+
+Date: Thu, 26 Jun 2014 20:39:59 -0400
+From: Christian Sandvig <csandvig@umich.edu>
+Subject: Corrupt personalization on Facebook
+
+Users of Facebook and other free social media and search platforms are not
+aware of the extent that personalization algorithms for ads and content
+serve the interest of the platform and are at odds with their own
+interests. This article reviews a series of examples that demonstrate that
+the Facebook news feed and its associated ads produce damaging, bizarre and
+unpleasant effects when functioning as designed. These include (1) false
+statements about your attitudes are shown to your friends, (2)
+communications from your friends and family are more likely to be shown to
+you when they contain a reference to Coke, Levi's, or Anheuser Busch
+products, (3) Facebook indicates that your friends and family who have died
+"like" current events, (4) the Facebook interface appears to be designed to
+conceal the fact that some of these things are happening -- probably because
+you would object to them -- and more.
+
+Corrupt Personalization
+http://socialmediacollective.org/2014/06/26/corrupt-personalization/
+<http://bit.ly/1jnlluM>
+
+------------------------------
+
+Date: Sat, 28 Jun 2014 17:19:52 -0700
+From: Lauren Weinstein <lauren@vortex.com>
+Subject: Facebook purposely manipulated news feeds to experiment
+  with users' emotions (*The Atlantic*)
+
+*The Atlantic* via NNSquad, Jun 2014
+http://www.theatlantic.com/technology/archive/2014/06/even-the-editor-of-facebooks-mood-study-thought-it-was-creepy/373649/
+
+  "And yet there's something new-level creepy about a recent study that
+  shows Facebook manipulated what users saw when they logged into the site
+  as a way to study how it would affect their moods."
+
+ - - -
+
+If this isn't enough to get you off of Facebook, frankly I don't know what
+is.
+
+------------------------------
+
+Date: Sun, 29 Jun 2014 18:59:01 -0700
+From: Lauren Weinstein <lauren@vortex.com>
+Subject: *NYTimes*: Facebook Tinkers With Users' emotions in News
+	Feed Experiment, Stirring Outcry (Vindu Goel)
+
+Vindu Goel, *The New York Times* 30 Jun 2014, via NNSquad
+http://www.nytimes.com/2014/06/30/technology/facebook-tinkers-with-users-emotions-in-news-feed-experiment-stirring-outcry.html?partner=rss&emc=3Drss
+
+  "Although academic protocols generally call for getting people's consent
+  before psychological research is conducted on them, Facebook didn't ask
+  for explicit permission from those it selected for the experiment. It
+  argued that its 1.28 billion monthly users gave blanket consent to the
+  company's research as a condition of using the service.  But the social
+  network's manipulation of its users' feelings without their knowledge
+  stirred up its own negative reaction. Some Facebook users and critics
+  suggested that the company had crossed an ethical boundary."
+
+ - - -
+
+I've been over the lengthy "Data Usage" section of the Facebook TOS a half
+dozen times since this story broke. I frankly don't see how any reasonable
+person could read that and believe that it gave permission for the sort of
+outside-partnered psychological manipulation experiment as in this case.
+
+------------------------------
+
+Date: Mon, 30 Jun 2014 21:46:08 -0700
+From: Lauren Weinstein <lauren@vortex.com>
+Subject: No-IP's Formal Statement on Microsoft Takedown
+
+https://www.noip.com/blog/2014/06/30/ips-formal-statement-microsoft-takedown/
+
+  We want to update all our loyal customers about the service outages that
+  many of you are experiencing today. It is not a technical issue.  This
+  morning, Microsoft served a federal court order and seized 22 of our most
+  commonly used domains because they claimed that some of the subdomains
+  have been abused by creators of malware. We were very surprised by
+  this. We have a long history of proactively working with other companies
+  when cases of alleged malicious activity have been reported to
+  us. Unfortunately, Microsoft never contacted us or asked us to block any
+  subdomains, even though we have an open line of communication with
+  Microsoft corporate executives.
+
+  We have been in contact with Microsoft today. They claim that their intent
+  is to only filter out the known bad hostnames in each seized domain, while
+  continuing to allow the good hostnames to resolve.  However, this is not
+  happening. Apparently, the Microsoft infrastructure is not able to handle
+  the billions of queries from our customers. Millions of innocent users are
+  experiencing outages to their services because of Microsoft's attempt to
+  remediate hostnames associated with a few bad actors.
+
+  Had Microsoft contacted us, we could and would have taken immediate
+  action. Microsoft now claims that it just wants to get us to clean up our
+  act, but its draconian actions have affected millions of innocent Internet
+  users.
+
+ - - -
+
+Nice work Microsoft. With friends like you, innocent customers don't
+need enemies. Maybe some infrastructure planning next time before
+you go running off to the courts to take over domains? Hmm?
+
+------------------------------
+
+Date: Wed, 2 Jul 2014 17:53:08 -0700
+From: Lauren Weinstein <lauren@vortex.com>
+Subject: Microsoft returns most domains it improperly confiscated ...
+
+Microsoft returns most domains it improperly confiscated, which cut off ser=
+vice to millions
+
+Ars Technica via NNSquad
+http://arstechnica.com/security/2014/07/order-restored-to-universe-as-microsoft-surrenders-confiscated-no-ip-domains/
+
+  "These draconian actions, however, should be taken only as a last
+  resort. Microsoft has yet to respond to No-IP allegations that no one at
+  Microsoft ever privately complained of the abuse. It that's true, it's
+  hard to conclude this episode wasn't an overreach and a gross abuse of the
+  legal process."
+
+------------------------------
+
+Date: July 1, 2014 at 8:19:31 AM EDT
+From: Kent Borg <kentborg@borg.org>
+Subject: Microsoft Disconnects Me, a non-MS User, From My Hardware
+
+Overnight I lost contact with some hardware of mine in Minnesota.
+
+Turns out Microsoft cut me off and I don't even use any Microsoft products.
+
+I don't fully understand, but it seems that if Microsoft doesn't think third
+parties are being sufficiently helpful in assisting Microsoft's battle with
+the malware that infects Microsoft products, Microsoft will mumbo-jumbo a
+judge to get you shutdown.
+
+In this case it seems my dynamic DNS service, no-ip.org, wasn't helpful
+enough to Microsoft's efforts.
+
+http://blogs.technet.com/b/microsoft_blog/archive/2014/06/30/microsoft-takes-on-global-cybercrime-epidemic-in-tenth-malware-disruption.aspx
+
+-kb, the Kent who sometimes softens to MS a little but then is reminded by
+something like this why he hates them so.
+
+------------------------------
+
+Date: Fri, 27 Jun 2014 01:13:51 -0400
+From: Jonathan Kamens <jik@kamens.us>
+Subject: Re: Hong Kong electronic voting system cyber-attacked (Lamont,
+  RISKS-28.05)
+
+> One has to wonder real a threat this might be.  Yes, it's a nice movie of
+> the week plot but it really doesn't make a lot of sense in that it
+> influences exactly one vote which would rarely be decisive.
+
+You're really not thinking big enough about the scope at which election
+fraud can, and does, take place, and can, and does, influence the outcome of
+elections.
+
+For example, in many faux democracies, this takes the form of members of the
+dominant party's goon squad visiting voters at home, one by one, and
+offering to save them the trouble of going to the polls by voting for
+them. The people confronted in this way -- in their home, by big, burly
+supporters of the party in power -- know that voting for the opposition is
+not an option, both because of the personal repercussions they would face
+for doing so, and because even if they were to give the goon squad a ballot
+for the opposition, it would magically transform into a ballot for the
+dominant party on the way to the ballot box.
+
+Allowing voting by mail or online makes this kind of intimidation that much
+easier. This kind of fraud can, and does, change the outcome of elections.
+
+On the original question of whether this is a "fatal" flaw, there are ways
+to make this kind of intimidation far less practical, e.g., by allowing
+voters to revoke and replace their votes for some period of time after they
+are registered. Whether these measures would make online voting sufficiently
+more secure to justify using it is an open question, especially given how
+many other serious issues there are with making online voting systems
+reliable and secure enough.
+
+------------------------------
+
+Date: Wed, 2 Jul 2014 17:48:48 +0300
+From: Amos Shapir <amos083@gmail.com>
+Subject: Re: Hong Kong electronic voting system cyber-attacked (Lamont,
+  RISKS-28.05)
+
+>> No way to make sure the voter isn't selling their vote (drugs, sex,
+>> alcohol, money...). . . .
+>
+> While this is certainly execrable, again, can it be done on a large enough
+> scale to dictate a result?
+
+It surely can.  Think of a factory town, where a significant number of
+voters are working for the same company.  During election time, the company
+sets up voting booths where employees can vote by Internet on company's
+workstations during working hours -- for workers' convenience, of course.
+
+In such a situation, even if workers are sure the company cannot peek who
+they are voting for, they'd surely get the message and vote for, e.g.,
+candidates who would not enforce environmental regulations to severely.
+
+------------------------------
+
+Date: Sat, 28 Jun 2014 12:15:57 +0200
+From: Rogier Wolff <wolff@bitwizard.nl>
+Subject: Re: Hong Kong electronic voting system cyber-attacked Huitema,
+  RISKS-28.05)
+
+Christian Huitema <huitema@microsoft.com>  wrote:
+> In practice, we do not observe more fraud in Washington State than
+> in other places that stuck with traditional ballots.
+
+THAT, my friend, is exactly the problem. The kinds of fraud that have
+plagued elections in the past, have had protections against them
+installed. For example: Voting officials are instructed to look out for
+people who might be coerced by others to vote in a certain way.  Or someone
+coming in multiple times in behalf of others.
+
+Those protections were put in place for a reason: they have posed a problem
+in the past.
+
+With mail or Internet voting, those kinds of fraud become difficult or
+impossible to detect and observe.
+
+So, yes, you have not observed more fraud than with traditional
+ballots.
+
+R.E.Wolff@BitWizard.nl ** http://www.BitWizard.nl/ ** +31-15-2600998 **
+Delftechpark 26 2628 XH  Delft, The Netherlands. KVK: 27239233    **
+
+------------------------------
+
+Date: Fri, 27 Jun 2014 08:10:27 -0300
+From: Carlos G Mendioroz <tron@huapi.ba.ar>
+Subject: Re: Trouble with firefox updates (Maziuk, RISKS-28.05)
+
+> a) The amount of effort required to understand (and subsequently change
+> in a meaningful and non-disruptive way) somebody else's code is 80% of
+> that of writing your own from scratch. With a codebase size of mozilla's
+> that a plain crack pipe dream.
+
+This is hard to digest. I have always found that changing something that
+was somewhat similar to what I needed was a lot easier than starting
+from scratch.
+
+And I have changed wireshark, which I guess is in the order of magnitude
+of code complexity of firefox in a couple of weeks work.
+That hardly accounts for 80% of the total. 1% may be ?
+
+Carlos G Mendioroz  <tron@huapi.ba.ar>  LW7 EQI  Argentina
+
+------------------------------
+
+Date: Wed, 2 Jul 2014 13:02:25 +0300
+From:  <alserkli@inbox.ru>
+Subject: Re: Trouble with firefox updates (Maziuk, RISKS-28.05)
+
+Dimitri Maziuk wrote:
+> a) The amount of effort required to understand (and subsequently
+> change in a meaningful and non-disruptive way) somebody else's code
+> is 80% of that of writing your own from scratch. With a codebase
+> size of mozilla's that a plain crack pipe dream.
+
+Consider a project with three authors, each contributing 1/3 of the effort:
+the above proposition is obviously false, since 1/3 < 0.8*2/3.  In large
+open source projects with hundreds of authors, the time spent on the
+smallest contribution is a tiny fraction of a percent of the total effort.
+
+To fix a bug or to implement a small feature, one does not need to
+understand all the code. Usually, a few minutes of find and grep is enough
+to find the place to edit and a little more to create the fix.  Even the
+knowledge of the used framework or the programming language is not strictly
+necessary -- just use the code around as an example.
+
+> b) Even if you can fix the code, you'll still have to build it. With
+> something size and complexity of firefox I bet it's not entirely
+> trivial even on freenix where you can fetch the "source package" and
+> all its pre-requisites. On systems without source package
+> management, with for-pay development tools, etc., it's basically not
+> worth the trouble.
+
+On Linux it may be considered not `entirely trivial' only the first time you
+do it, but for the second time you will know the appropriate mantra, such as
+configure & make or debian/rules build or rpmbuild.
+
+On Windows the build process is indeed not trivial, but the development
+tools are almost always free, for example, Firefox is built with Visual
+Studio 2010 Express.
+
+Fortunately, in many cases you do not need to do the compilation: once you
+find the place to fix, you may notice that the tweak you wanted to implement
+can be done without modification of the source code, for example, you will
+find that there is a preference that you can set from UI.
+
+------------------------------
+
+Date: Fri, 27 Jun 2014 18:44:40 +0100
+From: Steve McIntyre <steve@einval.com>
+Subject: Can the abuse, please (was Re: Trouble with firefox updates
+ (Durusau, RISKS-28.04))
+
+Dmitri Maziuk may not like or agree with earlier comments about Firefox, but
+the juvenile "Open Sores" name-calling really has no place in RISKS.
+
+------------------------------
+
+Date: Sun, 7 Oct 2012 20:20:16 -0900
+From: RISKS-request@csl.sri.com
+Subject: Abridged info on RISKS (comp.risks)
+
+ The ACM RISKS Forum is a MODERATED digest. Its Usenet manifestation is
+ comp.risks, the feed for which is donated by panix.com as of June 2011.
+=> SUBSCRIPTIONS: PLEASE read RISKS as a newsgroup (comp.risks or equivalent)
+ if possible and convenient for you.  The mailman Web interface can
+ be used directly to subscribe and unsubscribe:
+   http://lists.csl.sri.com/mailman/listinfo/risks
+ Alternatively, to subscribe or unsubscribe via e-mail to mailman
+ your FROM: address, send a message to
+   risks-request@csl.sri.com
+ containing only the one-word text subscribe or unsubscribe.  You may
+ also specify a different receiving address: subscribe address= ... .
+ You may short-circuit that process by sending directly to either
+   risks-subscribe@csl.sri.com or risks-unsubscribe@csl.sri.com
+ depending on which action is to be taken.
+
+ Subscription and unsubscription requests require that you reply to a
+ confirmation message sent to the subscribing mail address.  Instructions
+ are included in the confirmation message.  Each issue of RISKS that you
+ receive contains information on how to post, unsubscribe, etc.
+
+=> The complete INFO file (submissions, default disclaimers, archive sites,
+ copyright policy, etc.) is online.
+   <http://www.CSL.sri.com/risksinfo.html>
+ *** Contributors are assumed to have read the full info file for guidelines.
+
+=> .UK users may contact <Lindsay.Marshall@newcastle.ac.uk>.
+=> SPAM challenge-responses will not be honored.  Instead, use an alternative
+ address from which you NEVER send mail!
+=> SUBMISSIONS: to risks@CSL.sri.com with meaningful SUBJECT: line.
+ *** NOTE: Including the string `notsp' at the beginning or end of the subject
+ *** line will be very helpful in separating real contributions from spam.
+ *** This attention-string may change, so watch this space now and then.
+=> ARCHIVES: ftp://ftp.sri.com/risks for current volume
+     or ftp://ftp.sri.com/VL/risks for previous VoLume
+ http://www.risks.org takes you to Lindsay Marshall's searchable archive at
+ newcastle: http://catless.ncl.ac.uk/Risks/VL.IS.html gets you VoLume, ISsue.
+   Lindsay has also added to the Newcastle catless site a palmtop version
+   of the most recent RISKS issue and a WAP version that works for many but
+   not all telephones: http://catless.ncl.ac.uk/w/r
+ <http://the.wiretapped.net/security/info/textfiles/risks-digest/> .
+==> PGN's comprehensive historical Illustrative Risks summary of one liners:
+    <http://www.csl.sri.com/illustrative.html> for browsing,
+    <http://www.csl.sri.com/illustrative.pdf> or .ps for printing
+  is no longer maintained up-to-date except for recent election problems.
+ *** NOTE: If a cited URL fails, we do not try to update them.  Try
+  browsing on the keywords in the subject line or cited article leads.
+==> Special Offer to Join ACM for readers of the ACM RISKS Forum:
+    <http://www.acm.org/joinacm1>
+
+------------------------------
+
+End of RISKS-FORUM Digest 28.06
+************************
+
+

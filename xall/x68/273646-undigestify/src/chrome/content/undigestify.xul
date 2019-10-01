@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://undigestify/locale/undigestify.dtd">
+<overlay id="undigestify-overlay"
+	 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script src="undigestify.js"/>
+
+  <menupopup id="messageMenuPopup">
+    <menuitem id="KamensUs:menu_undigestify" label="&undigestify.label;"
+	     oncommand="UndigestifyKamensUs.Undigestify();"/>
+  </menupopup>
+
+  <menupopup id="mailContext">
+    <menuitem id="KamensUs:menu_popup_undigestify" label="&undigestify.label;"
+	     oncommand="UndigestifyKamensUs.Undigestify();"/>
+  </menupopup>
+
+</overlay>
