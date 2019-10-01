@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "logout@heilbit.de",
+      "strict_min_version": "68.0"
+    }
+  },
+  "name": "Logout",
+  "description": "This extension adds Logout to the folders context menu.",
+  "version": "2.0",
+  "legacy": {
+	"type": "xul",
+    "options": {
+      "page": "chrome://logout/content/contextmenu.xul",
+      "open_in_tab": true
+    }
+  }
+}

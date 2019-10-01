@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!-- Copyright 2007 Christian Eyrich (ch.ey@gmx.net) -->
+<!-- This code is triple licensed under MPL/GPL/LGPL. See license.txt for details. -->
+
+<overlay
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="togglereplied.js"/>
+  <script type="application/x-javascript">
+    window.addEventListener("load", toggleRepliedObj.toggleRepliedInit, false);
+  </script>
+</overlay>

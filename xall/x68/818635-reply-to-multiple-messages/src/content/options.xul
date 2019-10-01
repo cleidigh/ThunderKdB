@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+     License, v. 2.0. If a copy of the MPL was not distributed with this
+     file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+     Copyright 2017 Jonathan Kamens. -->
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<!DOCTYPE dialog SYSTEM "chrome://editor/locale/EditorButtonProperties.dtd">
+
+<dialog
+    id="rtmm-prefwindow"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="Reply to Multiple Messages Preferences"
+    buttons="accept,cancel,extra1"
+    buttonlabelextra1="&reset.value;">
+  <script src="options.js"/>
+  <prefpane>
+    <vbox>
+      <hbox tooltiptext="Hide addressees of replies in BCC field rather than putting them in To and/or CC.">
+        <checkbox
+            id="rtmm-use_bcc-checkbox"
+            label="Use BCC field."/>
+      </hbox>
+      <hbox tooltiptext="Don't put the message IDs of the messages you're replying to into the reply. This breaks message threading for recipients, but avoids the possibility of accidentally exposing the identities of recipients to other recipients. It doesn't make much sense to do this unless you also use the BCC field!">
+        <checkbox
+            id="rtmm-hide_references-checkbox"
+            label="Don't set References header in replies."/>
+      </hbox>
+      <hbox align="center"
+            tooltiptext ="Specify verbosity of logging to the Error Console.">
+        <label>Console log level:</label>
+        <menulist id="rtmm-consolelevel-menu">
+          <menupopup>
+	    <menuitem name="consolelevel" label="Fatal"  value="Fatal" />
+	    <menuitem name="consolelevel" label="Error"  value="Error" />
+	    <menuitem name="consolelevel" label="Warn"   value="Warn"  />
+	    <menuitem name="consolelevel" label="Info"   value="Info"  />
+	    <menuitem name="consolelevel" label="Config" value="Config"/>
+	    <menuitem name="consolelevel" label="Debug"  value="Debug" />
+	    <menuitem name="consolelevel" label="Trace"  value="Trace" />
+	    <menuitem name="consolelevel" label="All"    value="All"   />
+	  </menupopup>
+	</menulist>
+      </hbox>
+      <hbox align="center"
+            tooltiptext ="Specify verbosity of logging to the terminal or log file.">
+        <label>Dump log level:</label>
+        <menulist id="rtmm-dumplevel-menu">
+          <menupopup>
+	    <menuitem name="consolelevel" label="Fatal"  value="Fatal" />
+	    <menuitem name="consolelevel" label="Error"  value="Error" />
+	    <menuitem name="consolelevel" label="Warn"   value="Warn"  />
+	    <menuitem name="consolelevel" label="Info"   value="Info"  />
+	    <menuitem name="consolelevel" label="Config" value="Config"/>
+	    <menuitem name="consolelevel" label="Debug"  value="Debug" />
+	    <menuitem name="consolelevel" label="Trace"  value="Trace" />
+	    <menuitem name="consolelevel" label="All"    value="All"   />
+	  </menupopup>
+	</menulist>
+      </hbox>
+    </vbox>
+  </prefpane>
+</dialog>

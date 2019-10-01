@@ -1,0 +1,19 @@
+# Copyright (c) 2017 Jonathan Kamens.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License,
+# v. 2.0. If a copy of the MPL was not distributed with this file, You can
+# obtain one at http://mozilla.org/MPL/2.0/.
+#
+# Earlier versions of this file were "triple-licensed" under MPL 1.1 / for
+# details.GPL 2.0 / LGPL 2.1. Please see the file "license.txt" or
+# https://github.com/jikamens/ToggleReplied/blob/master/license.txt for
+# details.
+content	togglereplied	chrome/content/
+
+locale togglereplied en chrome/locale/en/
+locale togglereplied de chrome/locale/de/
+locale togglereplied it chrome/locale/it/
+locale togglereplied nl chrome/locale/nl/
+
+overlay chrome://messenger/content/messenger.xul chrome://togglereplied/content/togglerepliedOverlay.xul
+

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<overlay id="logout" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/javascript" src="chrome://logout/content/logout.js"/>
+	<menupopup id="folderPaneContext">
+		<menuitem id="logoutFromServer" label="Logout" oncommand="logout();" />
+	</menupopup>
+
+</overlay>
