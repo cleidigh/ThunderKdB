@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "description": "Google Tabs for Mozilla Thunderbird",
+  "name": "G-Hub Lite",
+  "version": "7.0.1",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "cookies",
+	"webNavigation",
+	"webRequest"
+  ],
+  "developer": {
+    "name": "Chris Schiffner",
+    "url": "https://www.schiffner.com/"
+  },
+  "applications": {
+    "gecko": {
+      "id": "thundervoice@chris.schiffner",
+      "strict_min_version": "68.0",
+	  "strict_max_version": "72.0a1"
+    }
+  },
+  "icons": {
+	"32": "chrome/content/img/icon32.png",
+    "48": "chrome/content/img/icon48.png",
+    "64": "chrome/content/img/icon64.png"
+  },
+  "browser_action": {
+      "default_icon": {
+        "16": "chrome/content/img/icon16.png",
+        "32": "chrome/content/img/icon32.png",
+		"64": "chrome/content/img/icon64.png"
+      }
+    },
+  "options_ui": {
+    "page": "chrome/content/options_lite.html",
+	"chrome_style": true
+  },
+  "background": {
+  	 "scripts": ["chrome/content/loader.js"]
+  }
+}
