@@ -1,0 +1,19 @@
+content thunderHTMLedit          chrome/content/
+resource thunderHTMLedit         chrome/
+
+skin thunderHTMLedit             classic/1.0 chrome/skin/
+skin thunderHTMLedit-platform    classic/1.0 chrome/skin/mac/   os=Darwin
+skin thunderHTMLedit-platform    classic/1.0 chrome/skin/linux/ os=Linux
+skin thunderHTMLedit-platform    classic/1.0 chrome/skin/win/   os=WINNT
+
+overlay chrome://messenger/content/messengercompose/messengercompose.xul  chrome://thunderHTMLedit/content/thunderHTMLedit-composer.xul
+
+# English must be first as default locale
+locale thunderHTMLedit en chrome/locale/en/
+
+locale thunderHTMLedit bg chrome/locale/bg/
+locale thunderHTMLedit de chrome/locale/de/
+locale thunderHTMLedit es chrome/locale/es/
+locale thunderHTMLedit fr chrome/locale/fr/
+locale thunderHTMLedit hu chrome/locale/hu/
+locale thunderHTMLedit pt chrome/locale/pt/

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Enigmail Hjälp: Redigera OpenPGP regel</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <style type="text/css">
+  /*<![CDATA[*/
+    dt  { font-weight: bold;  }
+  /*]]>*/
+  </style>
+</head>
+
+<body>
+  <h1>Enigmail Hjälp</h1>
+
+  <h3>Fastställa inställningar för att skicka krypterat</h3>
+
+  <p>I inställningar för att skicka kan du välja en allmän modell och inställningar för kryptering.</p>
+  <dl>
+<dt>Smidig kryptering</dt>
+  <dd>Med dessa inställningar, krypteras e-post utan bekräftelse när det är möjligt. 
+    <p>Denna inställning är lämplig, om du vill förbättra din integritet genom att skicka e-post krypterat istället för okrypterat om det är möjligt.     
+    <p>Effekten är som att skicka e-post som brev istället för vykort. Till skillnad från vykort, döljer brev oftast sitt innehåll under transport.     
+<p>Observera dock att som med brev kan du inte vara säker på att ingen öppnar brevet under transporten (även om vissa tekniska ansträngningar krävs för det).
+<p>En konkret risk är att du av misstag använder &quot;förfalskade nycklar&quot; du fick från någonstans eller någon som hävdar att nyckeln tillhör den person som du vill skicka e-post till. För att undvika denna risk, kan du antingen använda förtroende modellen av PGP (se nedan) eller bör du alltid kontrollera, om fingeravtryck av en publik nyckel är korrekt.</dd>
+  
+  <dt>Manuell kryptering</dt>
+  <dd>Med det här alternativet kan du ange olika inställningar för kryptering enligt dina behov. Du kan ange
+    <ul>
+   <li>om svar på krypterade/signerade e-postmeddelanden bör automatisk också vara krypterad/signerad-</li>
+   <li>om du vill använda förtroende modellen av OpenPGP för att acceptera nycklar (detta innebär att man använder en nyckel som du antingen måste signera nyckel eller har tillräckligt många andra människor du litar på som har signerat nyckeln).</li>
+   <li>om du vill skicka e-post krypterat om alla nycklar accepteras.</li>
+   <li>om och när du vill slutligen bekräfta sändning av ett mail.</li>
+  </ul>
+ </dd>
+  
+  Om det är viktigt för dig att innehåll som du skickar krypteras inte kan läsas av andra personer eller organisationer, bör du använda de manuella inställningarna. Välj åtminstone alternativet att ta emot nycklarna om du eller andra människor signerat dem. Även denna modell minskar risken för att använda förfalskade nycklar, det kräver att du aktivt signerar nycklar och förklarar ägare förtroende med hjälp av fönstret nyckelhanteraren.
+  
+</body>
+</html>

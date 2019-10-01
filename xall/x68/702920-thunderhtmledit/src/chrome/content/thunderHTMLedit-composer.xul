@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+description: <overlay> for
+  chrome://messenger/content/messengercompose/messengercompose.xul.
+-->
+
+<!DOCTYPE window [
+  <!ENTITY % messengercomposeDTD SYSTEM "chrome://messenger/locale/messengercompose/messengercompose.dtd" >
+  %messengercomposeDTD;
+  <!ENTITY % thunderHTMLeditDTD SYSTEM "chrome://thunderHTMLedit/locale/thunderHTMLedit.dtd">
+  %thunderHTMLeditDTD;
+]>
+
+<?xml-stylesheet href="chrome://thunderHTMLedit/skin/composer.css"?>
+<?xml-stylesheet href="chrome://thunderHTMLedit-platform/skin/composer.css"?>
+
+<overlay id="ThunderHTMLedit-composer-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://thunderHTMLedit/content/thunderHTMLedit.js"/>
+  <script type="application/x-javascript" src="chrome://thunderHTMLedit/content/thunderHTMLedit-composer.js"/>
+
+  <vbox id="appcontent">
+    <hbox id="thunderHTMLedit-tabbox-box" insertbefore="content-frame">
+      <hbox id="thunderHTMLedit-content-tab" collapsed="true">
+        <radiogroup onselect="if (typeof ThunderHTMLedit_ != 'undefined') ThunderHTMLedit_.SelectEditMode(this.selectedIndex, false);" flex="1" tabindex="1">
+          <radio label="&thunderHTMLedit.Composer.Tab.Edit;"/>
+          <radio label="&thunderHTMLedit.Composer.Tab.Source;"/>
+        </radiogroup>
+      </hbox>
+    </hbox>
+
+    <vbox id="thunderHTMLedit-content-source-box" flex="1" collapsed="true">
+      <iframe id="thunderHTMLedit-content-source-ace" data-preview="true" flex="1" src="chrome://thunderHTMLedit/content/html-source-editor.html" />
+    </vbox>
+  </vbox>
+
+</overlay>
