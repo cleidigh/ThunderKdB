@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Menu On Top",
+  "description": "Moves the main menu bar to the Top and adds Style.",
+  "version": "1.15",
+  "author": "Axel Grude",
+  "legacy": {
+	  "type": "bootstrap",
+    "options": {
+      "page": "chrome://menuontop/content/menuOnTop_options66.xul",
+      "open_in_tab": false
+    }
+  }	,
+  "developer": {
+	  "name": "Axel Grude",
+    "url": "http://quickfolders.org/menuOnTop.html"
+	},
+  "applications": {
+    "gecko": {
+      "id": "menuOnTop@agrude.com",
+      "strict_min_version": "60.0"
+    }
+  },
+  "icons": {
+    "64": "icon.png"
+  }
+}

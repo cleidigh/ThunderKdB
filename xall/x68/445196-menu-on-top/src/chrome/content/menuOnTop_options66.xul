@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!--  tb 59 -->
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
+<?xml-stylesheet href="menuOnTop-options.css" type="text/css"?>
+<?xml-stylesheet href="menuOnTop-options66.css" type="text/css"?>
+<?xml-stylesheet href="menuOnTop-contribute.css" type="text/css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://menuontop/locale/options.dtd" >
+
+<!-- tabsize = 2 -->
+<dialog id="MenuOnTop-preferences"
+				xmlns:html="http://www.w3.org/1999/xhtml"
+				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				buttons="accept,extra1,extra2"
+				buttonlabelextra1="&mot.btn.moreInfo;"
+				buttonlabelextra2="&mot.btn.donate;"
+				buttonaccesskeyextra1="&mot.btn.moreInfo.accessKey;"
+				minwidth="420"
+				ondialogaccept="MenuOnTop.Options.accept();"
+				ondialogextra2="MenuOnTop.Util.openURL(null,'http://quickfolders.org/menuOnTopDonate.html');"
+				ondialogextra1="MenuOnTop.Util.openURL(null,'http://quickfolders.org/menuOnTop.html');"
+				onload="MenuOnTop.Options.onLoad();"
+				onunload="MenuOnTop.Options.onUnload();"
+				title="&mot.window.title;"
+				tooltipextra1="&mot.btn.moreInfo.tooltip;"
+				tooltipextra2="&mot.btn.donate.tooltip;"
+				windowtype = "addon:MenuOnTop"
+				>
+            <!--persist="screenX, screenY"-->
+
+<script type="application/x-javascript" src="chrome://menuontop/content/menuOnTop_options.js" />
+<script type="text/javascript">
+  MenuOnTop.TopMenu._document = window.document;
+</script>
+  <prefpane id="mot-options-prefpane" label="Title" orient="vertical">
+    <preferences>
+      <preference id="NegativeMargin"  name="extensions.menuontop.negativeMargin" type="int"  instantApply="true" />
+      <preference id="TabbarMargin"  name="extensions.menuontop.tabbarMargin" type="int"  instantApply="true" />
+      <preference id="MenuMarginTop"   name="extensions.menuontop.menuMargin" type="int"  instantApply="true" />
+      <preference id="MenuMarginLeft"  name="extensions.menuontop.menuMargin.left" type="int"  instantApply="true" />
+      <preference id="toolbarMarginRight"  name="extensions.menuontop.toolbarMargin.right" type="int"  instantApply="true" />
+      <preference id="NormalIconSize"  name="extensions.menuontop.iconSize.normal" type="int"  instantApply="true" />
+      <preference id="SmallIconSize"   name="extensions.menuontop.iconSize.small" type="int"  instantApply="true" />
+      <preference id="forceSizeWithImportant"   name="extensions.menuontop.iconSize.forced" type="bool"  instantApply="true" />
+      <preference id="ForceSmallIcons" name="extensions.menuontop.iconSize.forceSmall" type="bool"  instantApply="true" />
+      <preference id="MaxHeight"       name="extensions.menuontop.maxHeight" type="int"  instantApply="true" />
+      <preference id="boolMenuBarTransparent"  name="extensions.menuontop.menubar.transparent" type="bool" instantApply="true" />
+			<preference id="boolThemeOnlyColor" name="extensions.menuontop.flavor.coloronly" type="bool" instantApply="true" />
+      <preference id="MenuBackground"  name="extensions.menuontop.menuBackground" type="string" instantApply="true" />
+      <preference id="MenuFontColor"   name="extensions.menuontop.menuFontColor" type="string" instantApply="true" />
+      <preference id="MenuBackgroundHover"   name="extensions.menuontop.menuBackground.hover" type="string" instantApply="true" />
+      <preference id="MenuFontColorHover"    name="extensions.menuontop.menuFontColor.hover" type="string" instantApply="true" />
+      <preference id="MenuBackgroundActive"  name="extensions.menuontop.menuBackground.active" type="string" instantApply="true" />
+      <preference id="MenuFontColorActive"   name="extensions.menuontop.menuFontColor.active" type="string" instantApply="true" />
+      <preference id="MenuRadius"      name="extensions.menuontop.menuRadiusValue" type="string" instantApply="true" />
+      <preference id="MenuRadiusLeft"  name="extensions.menuontop.menuRadiusLeft" type="bool" instantApply="true" />
+      <preference id="MenuRadiusRight" name="extensions.menuontop.menuRadiusRight" type="bool" instantApply="true" />
+      <preference id="MenuBorderWidth" name="extensions.menuontop.menuBorderWidth" type="string" instantApply="true" />
+      <preference id="MenuBorderColor" name="extensions.menuontop.menuBorderColor" type="string" instantApply="true" />
+      <preference id="MenuBorderStyle" name="extensions.menuontop.menuBorderStyle" type="string" instantApply="true" />
+      <preference id="boolMenuShadow"  name="extensions.menuontop.textShadow" type="bool" instantApply="true" />
+      <preference id="Debug"           name="extensions.menuontop.debug" type="bool" instantApply="true" />
+      <preference id="ShowStatusIcon"  name="extensions.menuontop.statusIcon" type="bool" instantApply="true" />
+      <preference id="CustomMenu"      name="extensions.menuontop.customMenu" type="bool"  instantApply="true" />
+      <preference id="CustomMenuTitle" name="extensions.menuontop.customMenu.title" type="string"  instantApply="true" />
+			<preference id="CustomMenuRemotePort" name="extensions.menuontop.customMenu.title.remote" type="bool" instantApply="true" />
+			<preference id="useCustomMenuIcon" name="extensions.menuontop.customMenu.icon.use" type="bool"  instantApply="true" />
+			<preference id="CustomMenuIconSize" name="extensions.menuontop.customMenu.icon.size" type="int"  instantApply="true" />
+			<preference id="CustomMenuFont"     name="extensions.menuontop.customMenu.label.specialFont" type="bool"  instantApply="true" />
+			<preference id="CustomMenuFontSize" name="extensions.menuontop.customMenu.label.size" type="int"  instantApply="true" />
+			<preference id="CustomMenuBold"     name="extensions.menuontop.customMenu.label.bold" type="bool"  instantApply="true" />
+    </preferences>
+		<hbox id="mot-header-container">
+			<vbox>
+				<spacer flex="1"/>
+				<image id="mot-options-icon" 
+				       src="chrome://menuontop/content/menuOnTop16.png" 
+							 flex="0"/>
+				<spacer flex="1"/>
+			</vbox>
+
+			<hbox id="mot-options-header" flex="1">
+				<label class="dialogheader-title" 
+							 value="Menu On Top" 
+							 flex="1" />
+			<label id = "lblVersion"
+						 value="1.0"
+						 tooltiptext="Right-click for version history"
+						 oncontextmenu="MenuOnTop.Options.showVersionHistory();" />
+			</hbox>
+		</hbox>
+	
+	<tabbox orient="vertical" flex="6" id="mot-Options-Tabbox">
+	<tabs>
+		<tab label="&mot.style;" id="mot-style" />
+		<tab label="&mot.advanced;" id="mot-advanced" />
+	</tabs>
+	<tabpanels onselect="MenuOnTop.Options.onTabSelect(this,event);">
+		<tabpanel 
+		      id="mot-Options-style"
+				  orient="vertical" 
+				  label="Style" 
+				  style="position:relative;">
+				  
+			<hbox align="center">
+				<html:fieldset orient="horizontal">
+			    <html:legend>&mot.primaryMenu;</html:legend>
+					<hbox align="center">
+						<checkbox id="tabsInTitle"
+											label="&mot.menuInTitle;"
+											tooltiptext="&mot.menuInTitle.tooltip;"
+											oncommand="MenuOnTop.Options.toggleTabsInTitle(this);" />
+						<toolbarseparator />
+						<label control="moveBar"
+									 value="&mot.dragArea;" />
+						<textbox id="moveBar"
+										 type="number"
+										 increment="50"								 
+										 preference="toolbarMarginRight"
+										 tooltiptext="&mot.dragArea.tooltip;"
+										 />
+					</hbox>
+				</html:fieldset>
+				<spacer flex="1" />
+				<html:fieldset>
+			    <html:legend>&mot.themes;</html:legend>
+					<vbox>
+						<hbox align="center">
+							<label control="styleFlavors" 
+										 value="&mot.flavors.label;" />
+							<menulist id="styleFlavors"
+												oncommand="MenuOnTop.Options.selectScheme(event, this);">
+								<menupopup>
+								<menuitem label="&mot.flavors.selectOne;"
+											value="-1" />
+											
+								<menuitem label="&mot.flavors.23;"
+											class="menuitem-iconic photon-bright"
+											value="23" />
+								<menuitem label="&mot.flavors.24;"
+											class="menuitem-iconic photon-dark"
+											value="24" />
+											
+								<menu id="full themes" label="&mot.fullthemes;">
+									<menupopup>
+										<menuitem label="&mot.flavors.0;"
+													class="menuitem-iconic australis"
+													value="0" />
+										<menuitem label="&mot.flavors.9;"
+													class="menuitem-iconic australis-redesign"
+													value="9" />
+										<menuitem label="&mot.flavors.1;"
+													class="menuitem-iconic deepdark"
+													value="1" />
+										<menuitem label="&mot.flavors.2;"
+													class="menuitem-iconic naval"
+													value="2" />
+										<menuitem label="&mot.flavors.3;"
+													class="menuitem-iconic silver"
+													value="3" />
+										<menuitem label="&mot.flavors.4;"
+													class="menuitem-iconic lantana"
+													value="4" />
+										<menuitem label="&mot.flavors.5;"
+													class="menuitem-iconic fudge"
+													value="5" />
+										<menuitem label="&mot.flavors.6;"
+													class="menuitem-iconic whiteglass"
+													value="6" /> 
+										<menuitem label="&mot.flavors.7;"
+													class="menuitem-iconic walnut"
+													value="7" />
+										<menuitem label="&mot.flavors.8;"
+													class="menuitem-iconic littlebird"
+													value="8" />
+										<menuitem label="&mot.flavors.10;"
+													class="menuitem-iconic phoenity"
+													value="10" />												
+									</menupopup>
+								</menu>
+											
+								<menuseparator />
+
+								<menuitem label="&mot.flavors.21;"
+											class="menuitem-iconic cloud"
+											value="21" />
+								<menuitem label="&mot.flavors.12;"
+											class="menuitem-iconic mountain"
+											value="12" />
+								<menuitem label="&mot.flavors.13;"
+											class="menuitem-iconic parakeet"
+											value="13" />
+								<menuitem label="&mot.flavors.20;"
+											class="menuitem-iconic may"
+											value="20" />
+								<menuitem label="&mot.flavors.14;"
+											class="menuitem-iconic lime"
+											value="14" />
+								<menuitem label="&mot.flavors.15;"
+											class="menuitem-iconic sunflower"
+											value="15" />
+								<menuitem label="&mot.flavors.16;"
+											class="menuitem-iconic tangerine"
+											value="16" />
+								<menuitem label="&mot.flavors.25;"
+											class="menuitem-iconic fire"
+											value="25" />
+								<menuitem label="&mot.flavors.17;"
+											class="menuitem-iconic robin"
+											value="17" />
+								<menuitem label="&mot.flavors.11;"
+											class="menuitem-iconic morgana"
+											value="11" />
+								<menuitem label="&mot.flavors.22;"
+											class="menuitem-iconic rose"
+											value="22" />
+								<menuitem label="&mot.flavors.18;"
+											class="menuitem-iconic oak"
+											value="18" />
+								<menuitem label="&mot.flavors.19;"
+											class="menuitem-iconic leather"
+											value="19" />
+											
+								</menupopup>
+							</menulist>
+						</hbox>
+						<checkbox preference="boolThemeOnlyColor"
+											label="&mot.changeOnlyColors;"
+											tooltip="&mot.changeOnlyColors.tooltip;"
+										/>
+					</vbox>
+				</html:fieldset>
+				
+			</hbox>
+			
+			<html:fieldset>
+			  <html:legend>&mot.colors;</html:legend>
+				<tabbox orient="vertical" flex="6" id="mot-Colors-Tabbox">
+					<tabs>
+						<tab label="&mot.colors.default;" id="mot-col-default" />
+						<tab label="&mot.colors.hover;" id="mot-col-hover" />
+						<tab label="&mot.colors.active;" id="mot-col-active" />
+					</tabs>
+					<tabpanels>
+						<tabpanel id="mot-Color-Default"
+									orient="vertical" 
+									label="&mot.colors.default;" 
+									style="position:relative;"
+									class="stylePanel">
+							<hbox align="center">
+								<label control="txtMenuFontColorDefault" value="&mot.colors.font.color;"/>
+								<html:input 
+									id="txtMenuFontColorDefault"
+									type="color"
+									value="#000000"
+									preference="MenuFontColor"
+									tooltiptext="&mot.colors.tooltip.pickColor;" />
+								<checkbox id="chkMenuShadow" 
+											preference="boolMenuShadow" 
+											label="&mot.colors.default.fontshadow;" />
+							</hbox>
+							<hbox align="center">
+								<label control="txtMenuBackgroundDefault" value="&mot.colors.background;" />
+								<textbox 
+										id="txtMenuBackgroundDefault" 
+										flex="1"
+										class="backgroundCSS"
+										preference="MenuBackground"  
+										onblur="MenuOnTop.Options.sanitizeCSS(this);"
+										tooltiptext="&mot.colors.tooltip.background;" />
+							</hbox>
+							<checkbox id="chkMenubarTransparent"
+										preference="boolMenuBarTransparent" 
+										label="&mot.colors.transparent;" />
+						</tabpanel>
+						<tabpanel id="mot-Color-Hover"
+									orient="vertical" 
+									label="&mot.colors.hover;" 
+									style="position:relative;"
+									class="stylePanel">
+							<hbox align="center">
+								<label control="txtMenuFontColorHover" value="&mot.colors.font.color;" />
+								<html:input id="txtMenuFontColorHover"
+									type="color"
+									value="#000000"
+									preference="MenuFontColorHover"
+									tooltiptext="&mot.colors.tooltip.pickColor;" />
+							</hbox>
+							<hbox align="center">
+								<label control="txtMenuBackgroundHover" value="&mot.colors.background;" />
+								<textbox 
+										id="txtMenuBackgroundHover"
+										flex="1"
+										class="backgroundCSS"
+										preference="MenuBackgroundHover"  
+										onblur="MenuOnTop.Options.sanitizeCSS(this);"
+										tooltiptext="&mot.colors.tooltip.background;" />
+							</hbox>
+						</tabpanel>
+						<tabpanel id="mot-Color-Active"
+									orient="vertical" 
+									label="&mot.colors.active;" 
+									style="position:relative;"
+									class="stylePanel">
+							<hbox align="center">
+								<label control="txtMenuFontColorActive" value="&mot.colors.font.color;" />
+								<html:input id="txtMenuFontColorActive"
+									type="color"
+									value="#000000"
+									preference="MenuFontColorActive"
+									tooltiptext="&mot.colors.tooltip.pickColor;" />
+							</hbox>
+							<hbox align="center">
+								<label control="txtMenuBackgroundActive" value="&mot.colors.background;" />
+								<textbox 
+										id="txtMenuBackgroundActive"
+										flex="1"
+										class="backgroundCSS"
+										preference="MenuBackgroundActive"  
+										onblur="MenuOnTop.Options.sanitizeCSS(this);"
+										tooltiptext="&mot.colors.tooltip.background;" />
+							</hbox>
+						</tabpanel>
+					</tabpanels>	
+				</tabbox>
+			</html:fieldset>
+			
+			<html:fieldset>
+				<html:legend>&mot.borders;</html:legend>
+				<vbox>
+					<hbox align="center">
+						<label control="txtMenuBorderColor" value="&mot.borders.color;" />
+						<html:input id="txtMenuBorderColor" 
+							type="color"
+							value="#FFFFFF"
+							preference="MenuBorderColor"  
+							tooltiptext="&mot.colors.tooltip.pickColor;" />
+						<separator flex="1" />
+						
+						<label control="borderStyles" value="&mot.borders.style;" />
+						<menulist id="borderStyles" 
+											preference="MenuBorderStyle"
+											oncommand="MenuOnTop.Options.selectBorderStyle(this.value);">
+							<menupopup>
+								<menuitem label="solid" value="solid" />
+								<menuitem label="inset" value="inset" />
+								<menuitem label="outset" value="outset" />
+								<menuitem label="groove" value="groove" />
+								<menuitem label="ridge" value="ridge" />
+								<menuitem label="dotted" value="dotted" />
+								<menuitem label="dashed" value="dashed" />
+								<menuitem label="double" value="double" />
+								<menuitem label="hidden" value="hidden" />
+							</menupopup>
+						</menulist>
+						
+						
+						
+						<separator flex="2" />
+					</hbox>
+					<hbox align="center">
+						<label control="txtMenuBorderWidth" value="&mot.borders.width;" />
+						<textbox id="txtMenuBorderWidth" 
+								 type="number" 
+								 preference="MenuBorderWidth"  
+								 tooltiptext="&mot.borders.width.tooltip;" />
+						<label value="px" />
+					</hbox>
+					<hbox align="center">
+					<label control="txtMenuRadius" value="&mot.borders.radius;" />
+					<!-- removed em and added px because of Firefox [Bug 1429625] -->
+					<textbox id="txtMenuRadius" 
+							 type="number" 
+							 preference="MenuRadius"  
+							 tooltiptext="&mot.borders.radius.tooltip;" />
+					<label value="px" />
+					<checkbox preference="MenuRadiusLeft" 
+								label="&mot.borders.radius.left;" />
+					<checkbox preference="MenuRadiusRight" 
+								label="&mot.borders.radius.right;" />
+					<spacer flex="2" />
+					</hbox>
+				</vbox>
+			</html:fieldset>
+			<hbox>
+			  <html:fieldset>
+					<html:legend>&mot.spacing;</html:legend>
+					<grid flex="1">
+						<columns>
+							<column />
+							<column />
+						</columns>
+						<rows>
+							<row align="left">
+								<label control="txtNegativeMargin" value="&mot.spacing.negativeMargin;" />
+								<textbox id="txtNegativeMargin" 
+										 type="number" 
+										 preference="NegativeMargin"  
+										 tooltiptext="&mot.spacing.negativeMargin.tooltip;" />
+								<label value="px" />
+							</row>
+							<row align="left">
+								<label control="txtTabbarMargin" value="&mot.spacing.tabbarMargin;" />
+								<textbox id="txtTabbarMargin" 
+										 type="number" 
+										 preference="TabbarMargin"  
+										 tooltiptext="&mot.spacing.tabbarMargin.tooltip;" />
+								<label value="px" />
+							</row>
+							<row align="left">
+								<label control="txtMenuMarginTop" value="&mot.spacing.topMargin;" />
+								<textbox id="txtMenuMarginTop" 
+										 type="number" 
+										 preference="MenuMarginTop"  
+										 tooltiptext="&mot.spacing.topMargin.tooltip;" />
+								<label value="px" />
+							</row>
+							<row align="left">
+								<label control="txtMenuMarginLeft" value="&mot.spacing.leftMargin;" />
+								<textbox id="txtMenuMarginLeft" 
+										 type="number" 
+										 preference="MenuMarginLeft"  
+										 tooltiptext="&mot.spacing.leftMargin.tooltip;" />
+								<label value="px" />
+							</row>
+							<row align="left">
+								<label control="txtMaxHeight" value="&mot.spacing.maxHeight;" />
+								<textbox id="txtMaxHeight" 
+										 type="number" 
+										 increment="2"
+										 min="20"
+										 preference="MaxHeight"
+										 tooltiptext="&mot.spacing.maxHeight.tooltip;" />
+								<label value="px" />
+								<spacer flex="2" />
+							</row>
+						</rows>
+					</grid>
+			  </html:fieldset>
+			  <html:fieldset>
+					<html:legend>&mot.buttons;</html:legend>
+					<vbox>
+						<grid flex="1">
+							<columns>
+								<column />
+								<column />
+							</columns>
+							<rows>
+								<row align="center">
+									<label control="txtMenuIconSmall" value="&mot.buttons.small;" />
+									<textbox id="txtMenuIconSmall" 
+											 type="number" 
+											 preference="SmallIconSize"  
+											 tooltiptext="&mot.buttons.small.tooltip;" />
+									<label value="px" />
+									<toolbarbutton 
+										class="helpIcon"
+										tooltiptext="&mot.buttons.sizes.tooltip;"
+										label=""
+										onclick="alert('this is only a tooltip text');"
+										/>
+								</row>
+								<row align="center">
+									<label control="txtMenuIconNormal" value="&mot.buttons.normal;" />
+									<textbox id="txtMenuIconNormal" 
+											 type="number" 
+											 preference="NormalIconSize"  
+											 tooltiptext="&mot.buttons.normal.tooltip;" />
+									<label value="px" />
+								</row>
+							</rows>
+						</grid>
+						<checkbox 
+							preference="forceSizeWithImportant"
+							label="&mot.buttons.important;"
+							tooltiptext="&mot.buttons.important.tooltip;"
+							/>
+						<checkbox preference="ForceSmallIcons"
+									label="&mot.buttons.forceSmall;" />
+					</vbox>
+			  </html:fieldset>
+		    </hbox>
+		</tabpanel>
+		<tabpanel id="mot-Options-advanced"
+				  orient="vertical" 
+				  label="&mot.advanced;" 
+				  style="position:relative;">
+			<html:fieldset>
+			  <vbox>
+					<html:legend tooltiptext="&mot.customMenu.tooltip;">&mot.customMenu;</html:legend>
+					<hbox align="center">
+						<checkbox preference="CustomMenu"
+									label="&mot.customMenu.label;" 
+									oncommand="MenuOnTop.Options.onCustomMenu(this);" />
+						<textbox id="txtCustomMenu"
+								 preference="CustomMenuTitle"
+								 tooltiptext="&mot.customMenu.title;"
+								 onblur="MenuOnTop.Options.updateCustomMenuLabel(this);"
+								 oninput="MenuOnTop.Options.updateCustomMenuLabel(this);"
+								 />
+						<checkbox preference="useCustomMenuIcon" 
+											label = "&mot.customMenu.avatar;"
+											oncommand="MenuOnTop.Options.onCustomIconToggle(this);" />
+						<button id = "btnSelectAvatar"
+										label = "&mot.customMenu.selectIcon;"
+										oncommand="MenuOnTop.Options.onCustomMenuIcon();" />
+						<label control="customMenuIconSize"
+									 value="&mot.customMenu.size;" />
+						<textbox id="customMenuIconSize"
+										 type="number"
+										 increment="2"
+										 min="16"
+										 preference="CustomMenuIconSize"
+										 tooltiptext="&mot.customMenu.size.tooltip;"
+										 onchange="MenuOnTop.Options.onIconSizeChange(this)"
+										 />
+						<label value="px" />
+					</hbox>
+					<hbox align="center">
+						<checkbox id="customMenuPort"
+											preference="CustomMenuRemotePort"
+											label = "&mot.customMenu.showRemotePort;" 
+											oncommand="setTimeout(MenuOnTop.Options.updateCustomMenuLabel,200);"
+											/>
+						<checkbox id="customMenuFont"
+											preference="CustomMenuFont"
+											label="&mot.customMenu.customStyle;"/>
+						<spacer />
+						<label control="txtCustomMenuSize" 
+									 value="&mot.customMenu.customStyle.fontSize;" />
+						<textbox id="txtCustomMenuSize" 
+										 type="number" 
+										 preference="CustomMenuFontSize"  
+										 tooltiptext="&mot.customMenu.customStyle.fontSize.tooltip;" />
+						<label value="pt" />				 
+						<checkbox id="chkCustomMenuBold" 
+											preference="CustomMenuBold"
+											label="&mot.customMenu.customStyle.bold;" />
+					</hbox>
+					
+					<richlistbox id="bookmarksList" 
+									 flex="1"
+									 onselect="MenuOnTop.Options.onSelectionChange(event);">
+					</richlistbox>
+					
+					<hbox>
+						<toolbar id = "motToolbar"
+										 mode="full"
+										 customizable="false" 
+										 >
+							<toolbarbutton
+									id="btnAdd"
+									class="toolbarbutton-1 chromeclass-toolbar-additional" 
+									label="&mot.bookmarks.add;"
+									oncommand = "MenuOnTop.TopMenu.update(true);" />
+							<toolbarbutton
+									id="btnUpdate"
+									class="toolbarbutton-1 chromeclass-toolbar-additional" 
+									label="&mot.bookmarks.update;"
+									oncommand = "MenuOnTop.TopMenu.update(false);" />
+							<toolbarbutton
+									id="btnRemove"
+									class="toolbarbutton-1 chromeclass-toolbar-additional" 
+									label="&mot.bookmarks.remove;"
+									oncommand = "MenuOnTop.TopMenu.remove();" />
+							<toolbarseparator />
+							<toolbarbutton
+									id="btnUp"
+									class="toolbarbutton-1 chromeclass-toolbar-additional" 
+									label="&mot.bookmarks.up;"
+									oncommand = "MenuOnTop.TopMenu.up();" />
+							<toolbarbutton
+									id="btnDown"
+									class="toolbarbutton-1 chromeclass-toolbar-additional" 
+									label="&mot.bookmarks.down;"
+									oncommand = "MenuOnTop.TopMenu.down();" />
+							<toolbarseparator />
+							<toolbarbutton 
+									id="btnLoad"
+									class="toolbarbutton-1 chromeclass-toolbar-additional" 
+									label="&mot.bookmarks.load;"
+									oncommand = "MenuOnTop.TopMenu.loadCustomMenu(true);" />
+							<toolbarbutton 
+									id="btnSave"
+									class="toolbarbutton-1 chromeclass-toolbar-additional" 
+									label="&mot.bookmarks.save;"
+									oncommand = "MenuOnTop.TopMenu.saveCustomMenu();" />
+							<toolbarbutton 
+									id="btnTest"
+									class="toolbarbutton-1 chromeclass-toolbar-additional" 
+									collapsed="true"
+									label="&mot.bookmarks.test;"
+									oncommand = "MenuOnTop.TopMenu.getFxMarks();" />
+							<spacer flex="1" />
+						</toolbar>
+					</hbox>
+					<html:fieldset orient="horizontal" >
+						<html:legend>&mot.bookmarks.group;</html:legend>
+						<grid>
+							<columns>
+								<column />
+								<column />
+							</columns>
+							<rows>
+								<row align="left" id="labelRow">
+									<label control="linkLabel" value="&mot.bookmarks.label;" />
+									<textbox id="linkLabel" 
+													 flex="1" 
+													 onblur="MenuOnTop.Options.onEdit(this);" />
+								</row>
+								<row align="left" id="linkRow">
+									<label control="linkURL" value="&mot.bookmarks.url;" />
+									<textbox id="linkURL" 
+													 flex="1" 
+													 onblur="MenuOnTop.Options.onEdit(this);" />
+								</row>
+								<row align="left" id="typeRow">
+									<label control="linkType" value="&mot.bookmarks.type;" />
+									<textbox id="linkType" flex="1" />
+								</row>
+							</rows>
+						</grid>
+						<button
+								label="&mot.bookmarks.currentPage;"
+								oncommand = "MenuOnTop.TopMenu.getFromContext();"
+								tooltiptext = "&mot.bookmarks.currentPage.tooltip;"
+								/>
+					</html:fieldset>
+				</vbox>
+			</html:fieldset>
+					
+			<spacer flex="3" />
+			<hbox>
+				<checkbox id="chkStatus" 
+						  preference="ShowStatusIcon" 
+						  label="&mot.statusIcon;"
+						  oncommand = "MenuOnTop.Options.onStatusCheck(this);"
+              tooltiptext = "&mot.statusIcon.tooltip;"/>
+				<spacer flex="1" />
+				<checkbox id="chkDebug" 
+						  preference="Debug" 
+						  label="&mot.debug;"
+							tooltiptext="&mot.debug.tooltip;"
+							oncontextmenu="MenuOnTop.Options.showAboutConfig(this, 'menuontop.debug', true);return false;"							/>
+			</hbox>
+		</tabpanel>
+	  
+	</tabpanels >
+	</tabbox>
+	  
+  </prefpane>
+	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
+	<script type="text/javascript">
+		MenuOnTop.Options.loadPreferences();
+	</script>	
+</dialog>

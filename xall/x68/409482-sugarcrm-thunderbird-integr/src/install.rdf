@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>opacustep@opacus.co.uk</em:id>
+    <em:type>2</em:type>
+    <em:name>SugarCRM Thunderbird Integration (for SugarCRM 6.2+)</em:name>
+    <em:version>1.0.5</em:version>
+    <em:iconURL>chrome://opacustep/content/images/icon.png</em:iconURL>
+    <em:creator>Jonathan Cutting, Mathew Bland, Opacus Solutions Ltd (C)2013</em:creator>
+    <em:translator>Robert Laussegger, Iscon (de-DE)</em:translator>
+    <em:translator>Jørn Skifter Andersen, Bellcom (da-DK)</em:translator>
+    <em:translator>Marco Buttafoco (it-IT)</em:translator>
+    <em:translator>Vincent Rollin, Synolia (fr-FR)</em:translator>
+    <em:translator>Cristóbal Bonillo, Seyte, S.L. (es-ES)</em:translator>
+    <em:translator>Adelino Paulo Carvalho (pt)</em:translator>
+    <em:translator>Yasushi Nakamura, Marmalade (ja)</em:translator>
+    <em:contributor></em:contributor>
+    <em:description>SugarCRM v6.2+ Integration for Thunderbird v5+.</em:description>
+    <em:aboutURL>chrome://opacustep/content/opacustep-about.xul</em:aboutURL>
+    <em:optionsURL>chrome://opacustep/content/opacustep-options.xul</em:optionsURL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
+        <em:minVersion>60.0</em:minVersion>
+        <em:maxVersion>68.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:homepageURL>http://www.opacus.co.uk/</em:homepageURL>
+  </Description>
+</RDF>

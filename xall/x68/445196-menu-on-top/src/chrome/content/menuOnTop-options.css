@@ -1,0 +1,272 @@
+
+/* Thunderbird 63+ */
+@import url("chrome://messenger/skin/");
+
+.dialogheader-title {
+  font-size: large;
+  font-weight: bold;
+  font-family: calibri, serif;
+  text-shadow: 1px 1px 2px rgba(70,70,70,0.75);
+  color: rgba(255,255,255,0.9);  
+  padding: 5px !important;
+}
+.dialogheader-title:hover {
+  color: rgba(255,255,255,1.0);  
+}
+#mot-options-icon {
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+#mot-header-container {
+	border-radius: 6px;
+	border: 1px solid rgba(80,80,80,0.5);
+	box-shadow: inset 3px 3px 4px rgba(80,80,80,0.3);
+}
+
+#lblVersion {
+	border-radius: 3px;
+  color: rgba(255,255,255,1.0);  
+	padding: 2px 5px 0px;
+}
+
+#lblVersion:hover {
+  background: transparent linear-gradient(to bottom, rgba(237,4,8,0.8) 0%,rgba(137,13,2,0.8) 45%,rgba(117,23,0,0.8) 100%);
+	color: white;
+}
+
+#mot-options-header {
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+  background: transparent linear-gradient(to bottom, #a95f4a 0%,#4f0b0b 29%,#6e272b 64%,#9e5b45 100%);
+}
+#mot-options-header:hover {
+  background: transparent linear-gradient(to bottom, #b27237 0%,#7d492e 34%,#774121 56%,#c48b56 100%);
+}
+
+#mot-options-header label {
+	transition-property: color;
+	transition-duration: 0.75s;
+}
+
+#mot-options-header:hover label {
+	color : #FFCC66;
+}
+
+#btnAdd {
+	list-style-image:  url("chrome://menuontop/content/icons/add.png");
+}
+
+#btnUpdate {
+	list-style-image:  url("chrome://menuontop/content/icons/fugue-update.png");
+}
+
+#btnRemove {
+	list-style-image:  url("chrome://menuontop/content/icons/fugue-cross.png");
+}
+
+#btnSave {
+	list-style-image:  url("chrome://menuontop/content/icons/fugue-save.png");
+}
+#btnLoad {
+	list-style-image:  url("chrome://menuontop/content/icons/fugue-load.png");
+}
+
+#btnUp {
+	list-style-image:  url("chrome://menuontop/content/icons/fugue-up.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+#btnDown {
+	list-style-image:  url("chrome://menuontop/content/icons/fugue-down.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+#btnUp[disabled="true"],
+#btnDown[disabled="true"] 
+{
+  -moz-image-region: rect(16px 16px 32px 0px) !important;
+}
+
+#lblVersion {
+  margin-top: 10px;
+}
+
+.backgroundCSS {
+  min-width: 30em;
+}
+
+#txtCustomMenu {
+  min-width: 20em;
+}
+
+textbox[type="number"] {
+  width: 3.5em;
+}
+#moveBar {
+	width: 4em;
+}
+#linkURL, #linkLabel {
+  min-width: 30em;
+	width: 100%;
+}
+#linkRow {
+	/* display: inline-flex; */
+	flex-grow: 3;
+}
+
+/* flavors */
+
+#styleFlavors menuitem > .menu-iconic-left {
+	display: block;
+}
+#styleFlavors menuitem > .menu-iconic-left image {
+	margin-bottom: -4px;
+	margin-top: 4px;
+	margin-left: 5px;
+}
+	
+#txtCustomMenu {
+	width: 15em;
+}
+
+#styleFlavors .australis {
+	list-style-image: url("chrome://menuontop/content/flavors/australis.png");
+}
+
+#styleFlavors .australis-redesign {
+	list-style-image: url("chrome://menuontop/content/flavors/australis2.png");	
+}
+
+#styleFlavors .deepdark {
+	list-style-image: url("chrome://menuontop/content/flavors/tt-deepdark.png");
+}
+
+#styleFlavors .naval {
+	list-style-image: url("chrome://menuontop/content/flavors/naval.png");
+}
+
+#styleFlavors .silver {
+	list-style-image: url("chrome://menuontop/content/flavors/silver.png");
+}
+
+#styleFlavors .lantana {
+	list-style-image: url("chrome://menuontop/content/flavors/lantana.png");
+}
+
+#styleFlavors .fudge {
+	list-style-image: url("chrome://menuontop/content/flavors/fudge.png");
+}
+
+#styleFlavors .whiteglass {
+	list-style-image: url("chrome://menuontop/content/flavors/white-glass.png");
+}
+
+#styleFlavors .walnut {
+	list-style-image: url("chrome://menuontop/content/flavors/walnut.png");
+}
+
+#styleFlavors .littlebird {
+	list-style-image: url("chrome://menuontop/content/flavors/littlebird.png");
+}
+
+#styleFlavors .phoenity {
+	list-style-image: url("chrome://menuontop/content/flavors/phoenity.png");
+}
+
+#styleFlavors .morgana {
+	list-style-image: url("chrome://menuontop/content/flavors/morgana.png");
+}
+
+#styleFlavors .mountain {
+	list-style-image: url("chrome://menuontop/content/flavors/mountain.png");
+}
+
+#styleFlavors .parakeet {
+	list-style-image: url("chrome://menuontop/content/flavors/parakeet.png");
+}
+#styleFlavors .tangerine {
+	list-style-image: url("chrome://menuontop/content/flavors/tangerine.png");
+}
+#styleFlavors .fire {
+	list-style-image: url("chrome://menuontop/content/flavors/fire.png");
+}
+
+#styleFlavors .lime {
+	list-style-image: url("chrome://menuontop/content/flavors/lime.png");
+}
+
+#styleFlavors .may {
+	list-style-image: url("chrome://menuontop/content/flavors/may.png");
+}
+
+#styleFlavors .cloud {
+	list-style-image: url("chrome://menuontop/content/flavors/cloud.png");
+}
+
+#styleFlavors .rose {
+	list-style-image: url("chrome://menuontop/content/flavors/rose.png");
+}
+
+
+#styleFlavors .sunflower {
+	list-style-image: url("chrome://menuontop/content/flavors/sunflower.png");
+}
+
+#styleFlavors .robin {
+	list-style-image: url("chrome://menuontop/content/flavors/robin.png");
+}
+
+#styleFlavors .oak {
+	list-style-image: url("chrome://menuontop/content/flavors/oak.png");
+}
+
+#styleFlavors .leather {
+	list-style-image: url("chrome://menuontop/content/flavors/mahogany.png");
+}
+ 
+#styleFlavors .photon-bright {
+	/* default photon - Thunderbird 60 */
+	list-style-image: url("chrome://menuontop/content/flavors/photon-bright.png");
+}
+
+
+#styleFlavors .photon-dark {
+	/* bright-text. dark background - Thunderbird 60 brighttext */
+	list-style-image: url("chrome://menuontop/content/flavors/photon-dark.png");
+}
+
+#bookmarksList {
+  min-height: 36px;
+  max-height: 210px;
+}
+
+
+#customMenuIconSize {
+	max-width: 10em;
+}
+
+
+.helpIcon {
+  -moz-appearance: none !important;
+  background-image: url("chrome://menuontop/content/icons/fugue-question.png");
+  background-repeat: no-repeat;
+  cursor: help;
+  margin-top: 1px;
+  width: 16px !important;
+  min-width: 18px;
+}
+/* groupbox fix Tb 64+ */
+groupbox {
+	margin-bottom: 9px;
+}
+
+groupbox label.groupbox-caption {
+	background-color: -moz-field;
+	font-weight: bold;
+	margin-top: -12px;
+  margin-left: 6px;
+  margin-bottom:	6px;
+	padding-left: 5px;
+}
+
+
+

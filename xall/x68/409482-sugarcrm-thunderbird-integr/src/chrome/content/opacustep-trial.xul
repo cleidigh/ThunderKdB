@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- /********************************************************************************* * The contents of this file are subject to the Opacus Licence, available at * http://www.opacus.co.uk/licence or available on request. * By installing or using this file, You have unconditionally agreed to the * terms and conditions of the License, and You may not use this file except in * compliance with the License.  Under the terms of the license, You shall not, * among other things: 1) sublicense, resell, rent, lease, redistribute, assign * or otherwise transfer Your rights to the Software. Use of the Software * may be subject to applicable fees and any use of the Software without first * paying applicable fees is strictly prohibited.  You do not have the right to * remove Opacus copyrights from the source code. * * The software is provided "as is", without warranty of any kind, express or * implied, including but not limited to the warranties of merchantability, * fitness for a particular purpose and noninfringement. In no event shall the * authors or copyright holders be liable for any claim, damages or other * liability, whether in an action of contract, tort or otherwise, arising from, * out of or in connection with the software or the use or other dealings in * the software. * * Portions created by Opacus are Copyright (C) 2010 Mathew Bland, Jonathan Cutting * Opacus Ltd. * All Rights Reserved. ********************************************************************************/ -->
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://opacustep/content/opacustep-css.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://opacustep/locale/options.dtd" >
+<window title="&opacus_freetrial.label;" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <groupbox flex="1" style="padding: .5em;">
+	  <caption flex='1' label="&opacus_confirm.label;" />
+	  <description id="opacus_trial_description" width='300' class='indent'>&opacus_trial_text.label;</description>
+	  <vbox id='opacus_trial_details'>
+    <label control='opacus_applicant_name' value='&opacus_applicant_name.label;' />
+    <textbox id="opacus_applicant_name" />
+    <label control='opacus_applicant_email' value='&opacus_applicant_email.label;' />
+    <textbox id="opacus_applicant_email" />
+    <spacer flex="1" />
+    </vbox>
+    <hbox style="margin: .4em 0;">
+		<spacer flex='1' />
+      <button icon='cancel' label='&trialwindow.cancel;' onclick='window.close()' />
+      <button id="opacus_confirm_trial" icon='yes' label="&trialwindow.confirm;" onclick='opener.prefsObject.trialApply(window)' />
+    </hbox>
+  </groupbox>
+</window>

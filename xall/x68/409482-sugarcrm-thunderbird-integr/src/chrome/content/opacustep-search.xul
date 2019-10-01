@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!-- /********************************************************************************* * The contents of this file are subject to the Opacus Licence, available at * http://www.opacus.co.uk/licence or available on request. * By installing or using this file, You have unconditionally agreed to the * terms and conditions of the License, and You may not use this file except in * compliance with the License.  Under the terms of the license, You shall not, * among other things: 1) sublicense, resell, rent, lease, redistribute, assign * or otherwise transfer Your rights to the Software. Use of the Software * may be subject to applicable fees and any use of the Software without first * paying applicable fees is strictly prohibited.  You do not have the right to * remove Opacus copyrights from the source code. * * The software is provided "as is", without warranty of any kind, express or * implied, including but not limited to the warranties of merchantability, * fitness for a particular purpose and noninfringement. In no event shall the * authors or copyright holders be liable for any claim, damages or other * liability, whether in an action of contract, tort or otherwise, arising from, * out of or in connection with the software or the use or other dealings in * the software. * * Portions created by Opacus are Copyright (C) 2011 Mathew Bland, Jonathan Cutting * Opacus Ltd. * All Rights Reserved. ********************************************************************************/ -->
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://opacustep/content/opacustep-css.css" type="text/css"?>
+<!DOCTYPE searchwindow SYSTEM "chrome://opacustep/locale/search.dtd" >
+<window title="&searchwindow.title;" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onclose="return opener.opacustep.searchObject.searchWindowClose()">
+  <tabbox flex="1">
+    <tabs id="opacusSearchTabs" hidden='true'>
+      <tab label="&opacus_search.label;" />
+      <tab label="&opacus_edit_email.label;" />
+      <tab id='attTab' hidden='true' label="&opacus_attachments.label;" />
+    </tabs>
+    <tabpanels flex="1">
+      <tabpanel id="searchtab" flex="1">
+        <vbox flex="1">
+          <groupbox flex="1">
+            <hbox>
+              <hbox>
+                <caption label="&opacus_search.label;" />
+                <label id="advancedToggle" style="font-size: .9em; font-style: italic; margin: 0 0 .4em 0;" class="text-link" value="&opacus_advancedSearch.label;" onclick="var asbox = document.getElementById('advancedSettings');if(asbox.hidden == true){asbox.hidden=false;this.value=opener.opacustep.strings.getString('hideAdvanced');}else{asbox.hidden=true;this.value=opener.opacustep.strings.getString('showAdvanced');}" />
+              </hbox>
+              <hbox flex='1' align='right' style='padding: 3px 5px 0 0'>
+                <image style='cursor:pointer;' onclick="opener.opacustep.link('http://www.opacus.co.uk')" width="63" height="21" src="chrome://opacustep/content/images/opacus25.png" />
+              </hbox>
+            </hbox>
+            <hbox id="advancedSettings" hidden="true" style="padding-bottom: .8em;">
+              <groupbox flex="1">
+                <grid flex='1'>
+                  <columns>
+                    <column flex="1" />
+                    <column flex="1" />
+                  </columns>
+                  <rows>
+                    <row>
+                      <checkbox label="&opacus_leadOpp.label;" id="leadopp" persist="checked" />
+                      <checkbox label="&opacus_myRelatedItemsOnly.label;" id="myrelateditemsonly" persist="checked" />
+                    </row>
+                    <row>
+                      <checkbox label="&opacus_noClosedOpps.label;" id="noClosedOpps" persist="checked" />
+                      <checkbox label="&opacus_noClosedCases.label;" id="noClosedCases" persist="checked" />
+                    </row>
+                  </rows>
+                </grid>
+              </groupbox>
+            </hbox>
+            <hbox>
+              <label control="searchField" value="&opacus_searchFor.label;" />
+            </hbox>
+            <hbox>
+              <textbox id="searchField" value="" flex="1" onkeydown="if (event.keyCode == 13) document.getElementById('searchButton').click()" />
+              <button id="searchButton" icon='find' label="&opacus_search.label;" onkeydown="if (event.keyCode == 13){this.click();}" accesskey="&opacus_search.accesskey;" onclick="if(!this.disabled==true){this.disabled=true;opener.opacustep.searchObject.performSearch();}" />
+              <button id="createButton" icon='add' type='menu' label="&opacus_create.label;">
+                <menupopup>
+                  <menuitem label='&opacus_create_contact.label;' oncommand='opener.opacustep.create("Contact","email")' />
+                  <menuitem label='&opacus_create_lead.label;' oncommand='opener.opacustep.create("Lead","email")' />
+                  <menuitem label='&opacus_create_case.label;' oncommand='opener.opacustep.create("Case","email")' />
+                  <menuitem label='&opacus_create_opportunity.label;' oncommand='opener.opacustep.create("Opportunity","email")' />
+                  <menuitem label='&opacus_create_account.label;' oncommand='opener.opacustep.create("Account","email")' />
+                  <menuitem label='&opacus_create_task.label;' oncommand='opener.opacustep.create("Task","email")' />
+		          <menuitem label='&opacus_create_bug.label;' oncommand='opener.opacustep.create("Bug","email");' />
+                </menupopup>
+              </button>
+            </hbox>
+            <hbox flex="1" height="300" width="500">
+              <groupbox flex="1" id="resultBox">
+                <caption label="&opacus_results.label;" />
+                <menupopup id="openInSugar">
+                  <menuitem label="&opacus_openInSugar.label;" oncommand="opener.opacustep.link(this.id)" />
+                </menupopup>
+                <menupopup id="quickEdit">
+                  <menuitem label="&opacus_openInSugar.label;" oncommand="opener.opacustep.link(document.getElementById('openInSugar').firstChild.id)" />
+                  <menuitem label="&opacus_quickEdit.label;" id="opacus_menuQuickEdit" oncommand="opener.opacustep.quickEdit(document.getElementById('openInSugar').firstChild.id)" />
+                </menupopup>
+                <menupopup id="accSearch">
+                  <menuitem label="&opacus_openInSugar.label;" oncommand="opener.opacustep.link(document.getElementById('openInSugar').firstChild.id)" />
+                  <menuitem label="&opacus_quickEdit.label;" id="opacus_menuQuickEdit" oncommand="opener.opacustep.quickEdit(document.getElementById('openInSugar').firstChild.id)" />
+                  <menuitem label="&opacus_accSearch.label;" id="opacus_menuAccountSearch" oncommand="opener.opacustep.searchObject.accountSearch(opener.opacustep.searchObject)" />
+                </menupopup>
+                <richlistbox id="resultList" flex="1" seltype="mutiple">
+                </richlistbox>
+              </groupbox>
+              <splitter id="opacusSearchSplitter" insertafter="resultBox" hidden="false" />
+              <groupbox>
+                <caption label="&opacus_modules.label;" flex="1" />
+                <richlistbox id="moduleList" seltype="multiple" flex="1" style="width: 150px !important;">
+                </richlistbox>
+              </groupbox>
+            </hbox>
+          </groupbox>
+        </vbox>
+      </tabpanel>
+      <tabpanel id="edittab" flex="1">
+        <vbox flex="1">
+          <label value="&opacus_subject.label;" />
+          <textbox id="opacusEditSubject" />
+          <label value="&opacus_body.label;" />
+          <editor class="opacusHtmlEditor" src="about:blank" id="opacusEditmail" editortype="html" flex="1" style="overflow:auto; background-color:white;" />
+          <textbox hidden="true" flex="1" id="opacusEditPlainmail" multiline="true" style="height:100%;width:100%;" />
+          <groupbox />
+        </vbox>
+      </tabpanel>
+      <tabpanel id="atttab" flex="1">
+        <groupbox flex="1">
+          <caption label="&opacus_doAttachments.label;" />
+          <vbox flex='1'>
+            <richlistbox id="allattachments" flex="1" seltype="mutiple">
+            </richlistbox>
+          </vbox>
+        </groupbox>
+      </tabpanel>
+    </tabpanels>
+  </tabbox>
+  <hbox style='padding: 9px 0 0 15px;'>
+    <checkbox hidden='true' id="doAttachments" label="&opacus_doAttachments.label;" checked="true" />
+    <checkbox onclick='if(opener.opacustep.mails[0].attachmentNames.length > 0){if(this.checked){document.getElementById("attTab").hidden=true;}else{document.getElementById("attTab").hidden=false;}}' hidden="true" id="forceRearchive" label="&opacus_forceReachive.label;" checked="false" />
+    <spacer flex='1' />
+  </hbox>
+  <hbox style='padding: 10px 4px;' align="right">
+      <hbox id='feedbackBox' align='center' flex='1' width='50%'>
+          <html:progress xmlns:html="http://www.w3.org/1999/xhtml" class="progressmeter-statusbar" flex='1' id="feedback" hidden='true'></html:progress>
+    </hbox>
+    <hbox id='opacusSearchButtons'>
+    <button icon='cancel' onkeydown="if (event.keyCode == 13){this.click();}" label="&opacus_cancel.label;" accesskey="&opacus_cancel.accesskey;" onclick="try{opener.opacustep.mails = '';}catch(ex){}try{opener.opacustep.searchObject.searchWindowClose();}catch(ex){window.close();}" />
+    <button icon='yes' id='archive_button' label="&opacus_archive.label;" accesskey="&opacus_archive.accesskey;" onclick="if(!this.disabled==true){this.disabled=true;opener.opacustep.archiveMails();}" />
+</hbox>
+  </hbox>
+</window>

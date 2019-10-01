@@ -1,0 +1,275 @@
+<html>
+<head>
+<link rel="shortcut icon" href="chrome://opacustep/content/images/icon.png" type="image/png" />
+<title>Opacus Help</title>
+<style type='text/css'>
+a {
+	color: #4A6414;
+}
+a:hover {
+	color: #698829;
+}
+h4.bullet {
+	margin-top: 3em;
+	background-image: url('chrome://opacustep/content/images/icon.png');
+	background-repeat: no-repeat;
+	-moz-background-size: 16px 16px;
+	background-size: 16px 16px;
+	padding-left: 22px;
+}
+div.info {
+	display: inline-block;
+	max-width: 55%;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #F08686;
+	padding:1em;
+	font-size: .8em;
+}
+p,ul {
+	font-size: .9em;
+}
+</style>
+</head>
+<body style = 'margin:0;'>
+<div style='font-family: Tahoma, Helvetica, sans-serif;display: block; height:155px;background-image: url("chrome://opacustep/content/images/header-bg.png");background-repeat: repeat-x;'>
+<a href='http://www.opacus.co.uk'><img style='border: 0;margin: 1.6em;' src='chrome://opacustep/content/images/framework_logo.png' /></a>
+</div>
+<div style='display:block; text-align: right; font-style: italic; font-size: .8em;padding: .3em;'>Follow us on
+<a href='http://twitter.com/opacussolutions'>Twitter</a></div>
+<div style='padding: 1.5em;'>
+<h2>Welcome to version 1.0.5 of the Thunderbird Professional Extension for SugarCRM 6.2+</h2>
+
+
+
+<div style='-moz-border-radius: 10px; border-radius: 10px; border: 3px solid #86AE30;background-color: #fcfcf2; padding:1.5em; margin: 1em 0 .5em 1em;font-size: .9em;float: right; width: 40%;'>
+<h3 style='border-bottom: 1px solid #555;'><img src='chrome://opacustep/content/images/icon.png' /> Opacus News</h3>
+
+
+<h4>Opacus Outlook Plugin</h4>
+<p>Version 3 of the Outlook plugin has now been released, which is a complete rewrite and adds support for Outlook 2013.</p>
+
+<p>The Opacus Outlook extension is available in Lite and Professional versions. See the <a href="http://www.opacus.co.uk/">Opacus homepage</a> for details.</p>
+
+<h4>Opacus SugarCRM Activities Sync, the perfect partner for Thunderbird and Lightning</h4>
+<p>Brings much needed CalDAV support to SugarCRM for all your mobile devices and the popular Lightning calendar in Thunderbird.</p>
+<p>See the <a href="http://www.opacus.co.uk/">Opacus homepage</a> for details about the module and instructions on how to download/install.</p>
+
+
+<p>For more information about these products please contact
+<a href="mailto:sales@opacus.co.uk">sales@opacus.co.uk</a> or visit
+<a href='http://www.opacus.co.uk/'>www.opacus.co.uk</a>.</p>
+</div>
+
+<div style="width: 80%;padding: .5em;">
+
+<h3>Help and Documentation</h3>
+
+<p style='font-style:italic;font-size:.8em;'>Access this page at any time by selecting Help > Opacus Help</p>
+
+<div class='info'>
+<p style="font-weight: bold">Important Information for Mac users</p>
+<p>The extension uses the popular Growl notification service, available <a href="http://growl.info/">here.</a> The
+extension will function silently if the service is unavailable.</p>
+</div>
+
+<h4 class='bullet'>After Installation</h4>
+<p>After installing the extension, you will need to enter your SugarCRM URL, username, password into the settings
+dialog box. Click on Tools, then Opacus SugarCRM Settings. In the URL box put your SugarCRM address, for instance:
+http://sugarserver.com/sugarcrm. Put your username and password in the respective boxes (the username is not case
+sensitive). Click on the Test Settings button to confirm your settings are correct.</p>
+
+<p>Navigate to the Licence section and enter your activation key (if you don't have one you can purchase one from the
+Opacus website). Click on Activate and your licence will be generated and inserted into the licence key box. Alternatively
+you can sign up for a free trial by pressing the 'Free Trial' button and confirming your name and email address. A free trial
+licence will be emailed to you immediately. The text under the key input box will show your licence status. If your
+licence does not show as valid, please check that your SugarCRM url and username match exactly the ones used when the licence was
+activated. If you experience any difficulties please contact <a href="mailto:support@opacus.co.uk">support@opacus.co.uk</a></p>
+
+<p><strong>Use LDAP Authentication:</strong> Choose this option if your SugarCRM server uses LDAP authentication. If no LDAP key is set in
+SugarCRM, leave the key blank for PLAIN authentication (insecure) or configure a key in SugarCRM and enter into the box that appears when
+this option is selected.</p>
+
+
+<h4 class='bullet'>Advanced Settings</h4>
+
+<p><strong>Auto archiving of inbound mail:</strong> Select this option to automatically archive all mail received in your inbox folders.
+The extension will check the From: and CC: addresses in new inbound mail, look them up in SugarCRM and if any Leads or Contacts are found the mail will be
+archived into SugarCRM and related to those objects. If any contacts are found the mail will also be related to that contact's account.
+If the option to parse the subject for case numbers is selected, and there is a case number in the Subject line of the new mail, the extension
+will additionally relate the email to that case. Tick the second checkbox to archive attachments when auto-archiving (this setting applies to 
+all auto-archiving, inbound, outbound and bulk).</p>
+
+<p><strong>Opacus New Mail Notification:</strong> You can choose here if you would like a notification when new mail arrives in
+your Inbox. This uses the libnotify library on some Linux distributions which can be more appealing than the default notification.</p>
+
+<p><strong>Parse Subject Line for Case Numbers:</strong> A further setting allows you to choose whether the subject line of the email
+is parsed for case numbers. The Case module needs to be selected in the Search window for this function to work (unless auto-archiving).</p>
+
+<p><strong>Add bcc recipients to outbound auto archive:</strong> When auto archiving (or archiving sent mail) this setting will mean that all 
+bcc recipients will be searched for inside SugarCRM and archived against if found.</p>
+
+<p><strong>Use locally stored email id:</strong> Since version 1.0.3 the archived email id is stored in Thunderbird after archiving. This
+avoids duplication in SugarCRM by only updating the email/relationships if re-archived. By default this setting is on, but unticking this setting
+will disable completely the use of this id (it will however continue to be stored in case the setting is turned back on). A per-email setting is
+available in the Search window "Force full re-archive" which allows the re-archive of a single email for instances where one would want to archive
+the original email in its entirety after previous editing, or if the email has been inadvertently deleted in SugarCRM.</p>
+
+<p><strong>Excluded addresses:</strong> Since version 1.0.4 you are able to exclude email addresses or entire domains from the auto archive 
+feature. Just add an email address (bob@example.com) or domain (example.com), one on each line, into the box in the Advanced Settings tab.</p>
+
+<h4 class='bullet'>Modules</h4>
+
+<p>The Opacus SugarCRM Thunderbird Professional Extension supports custom modules inside SugarCRM when archiving normally using the search
+window. Custom modules are not supported when auto-archiving. To add custom modules to the available modules in the search window, use the
+"Refresh Custom Modules" button to request a list of custom modules from your SugarCRM server, and select the checkbox on those modules you
+would like displayed. It is possible to add a display label to each module to suit your preference (the module label used inside SugarCRM
+is not available to the extension). <em>Please note: emails will only be archived to custom modules that have a relationship to the Activities
+group of modules inside your SugarCRM.</em></p>
+
+<h4 class='bullet'>Sync</h4>
+
+<p>The contact synchonisation creates a new Thunderbird address book called 'Opacus SugarCRM'. To add existing Thunderbird contacts to 
+SugarCRM, copy or move them into this folder after the first sync and run a second sync. When synchronising Thunderbird with your SugarCRM
+contacts, you have two options that will help control the amount of contacts retrieved from your CRM:</p>
+
+<p><strong>Only Synchronise My Contacts:</strong> If this is selected, only contacts that are <em>assigned</em> to you inside SugarCRM
+will be retrieved.</p>
+
+<p><strong>Honour 'Sync to Outlook' setting in SugarCRM</strong> If this is selected, only contacts that you have chosen to synchronise
+will be retrieved</p>
+
+<p>Please note that if both of these are selected, they are both in force and only contacts that are assigned to you <em>and</em> that
+you have chosen to sync by setting the 'Sync to Outlook' flag will be added to Thunderbird. If either of these options are deselected, the
+synchronisation time is reset inside Thunderbird to force a resynchronisation. Additionally, if they have been <em>deselected</em> previously
+and are being <em>selected</em>, no contacts will actually be removed from Thunderbird and the address book will need to be deleted as a whole
+before resyncing (it will be recreated from SugarCRM on the next sync). Please perform a synchronisation prior to making any changes
+to these settings to ensure all changes are up to date in both applications. The final option determines whether you prefer Thunderbird or 
+SugarCRM to be chosen as the winner for any conflicted records. If a record has been modified in both Thunderbird and SugarCRM since the last
+synchronisation, the record modified by the application chosen in this setting will overwrite the record created in the other.</p>
+
+<p>Synchronisation of the Organisation (Account) field is performed when Thunderbird is creating records inside SugarCRM. The sync
+will look for accounts that match the company name using a case insensitive search with a final wildcard, so for instance if an account is
+called 'ACME Ltd.' inside SugarCRM, setting 'Acme' to be the Organisation in Thunderbird will create a relationship to this account.</p>
+
+<p><strong>Delete capabilities.</strong> Please note: deleting an entire address book will <em>not</em> remove all contacts within that address book from SugarCRM.
+ However, moving all Leads into the Contacts address book, or vice versa, will have that effect. We recommend you leave the prompt at the setting to prompt
+ when deleting 5 or more records. To reset the sync completely and refresh records from SugarCRM, right click on the Address Book and delete the book. Do not
+ remove all records from within the book. Once the book has been removed, press the Sync button and the Address Book will be created afresh and populated with
+ data from SugarCRM.</p>
+
+
+
+<h4 class='bullet'>Additional Buttons</h4>
+
+<p>Three additional buttons are available for ease of use. These should all be added the first time Thunderbird is run after installation,
+but if not simply right-click on the respective
+toolbars, click Customise and drag the buttons to the toolbars. The first is for the main toolbar in Thunderbird, and the other two are for the
+compose window, to enable a manual search and archive on sending, and additionally a send and auto-archive which will automatically search
+the To: and Cc: addresses for a match and archive the mail to Leads, Contacts and their related accounts while sending.</p>
+
+<h4 class='bullet'>In use</h4>
+<p>To archive one or more emails in a folder, select them and either right-click one of the selected messages
+and choose 'Archive email(s) to SugarCRM', or click the Archive button mentioned above. The search window will
+appear with a search suggestion already in place. You can search for:</p>
+<ul>
+<li>Email addresses</li>
+<li>Case numbers</li>
+<li>First names</li>
+<li>Last names</li>
+<li>Full names (use a single space between first and last)</li>
+<li>Names of SugarCRM Objects, such as the name of an Opportunity</li>
+</ul>
+
+<p>You can use a % character as a wildcard, for instance %@mydomain.com will search for all email addresses
+at the domain mydomain.com and Nat% will find Natasha, Natalia, Nathan and so on. Additionally you can search for multiple strings by adding
+a ; character between each (for instance John Smith; test@example.com; Acme Trading).</p>
+
+<p>Either use the suggested search or input your own, then click Search. The results will be returned from the modules
+selected in the available Modules pane. Once you have found the record you would like to archive against, choose whether or not
+to archive the attachments using the checkbox at the bottom of the Search pane, and click Archive. A notification
+will inform you when the archive is complete.</p>
+
+<h4 class='bullet'>Bulk auto archiving</h4>
+
+
+<p>It is possible to select a quantity of emails inside Thunderbird and have the extension query SugarCRM for matching Leads, Contacts and Accounts
+based on each email's From/To and Cc addresses, then automatically archive these emails into SugarCRM. Simply select the emails, right click
+on one and select 'Auto-archive emails to SugarCRM'. This feature has been tested on large quantities of emails, but we would recommend archiving a maximum of
+300 emails at a time.</p>
+
+
+<a name="licenceExplained"></a>
+<h4 class='bullet'>More about licensing</h4>
+<p>The extension generates a unique key from the server url and username used when activated, which we use to generate a license.
+This key on its own is effectively a meaningless series of letters and numbers and no information can be
+extracted, but it allows us to confirm the uniqueness of your environment. It is this unique key that links the extension to the licence.</p>
+<p><strong>So how do I get a licence?</strong></p>
+<p>You can obtain a trial licence using the button in the options window under the licence tab. Just click the Free Licence button
+and confirm your details, and the extension will contact our server to request that a 10 day free trial licence is sent out to you.
+To buy one or more licences visit the <a href='http://www.opacus.co.uk/'>Opacus website</a> and purchase an activation key (at present
+these are not available on the site, please email support@opacus.co.uk for a key).
+Activation keys can be bought for more than one licence, and the activation is done within the extension by placing your activation
+key in the provided textbox and clicking on Activate.</p>
+
+<br />
+<br />
+
+
+<p>Many thanks to our volunteer translators:</p>
+<ul>
+    <li>Robert Laussegger (de-DE) <a href="http://www.iscongroup.net/">Iscon Group</a></li>
+    <li>Jørn Skifter Andersen (da-DK) <a href="http://bellcom.dk/">Bellcom</a></li>
+    <li>Marco Buttafoco (it-IT)</li>
+    <li>Vincent Rollin (fr-FR) <a href="http://www.synolia.com">Synolia</a></li>
+    <li>Cristóbal Bonillo (es-ES) <a href="http://www.seyte.com/">Seyte, S.L.</a></li>
+    <li>Adelino Paulo Carvalho (pt)</li>
+    <li>Yasushi Nakamura (ja) <a href="http://http://www.madewithmarmalade.com/">Marmalade</a></li>
+</ul>
+<p>For bug reports or to assist with localisation of this extension, please contact
+<a href="mailto:support@opacus.co.uk">support@opacus.co.uk</a></p>
+
+
+
+
+<p style='font-size:.8em;margin-top: 3em;'>Release Notes:
+
+<ul style='font-size:.8em;'>
+<li>1.0.5: Support Thunderbird 66.</li>
+<li>1.0.4: Add extra phone fields to contact sync. Update version support. Handle SugarCRM v8 attachment changes.</li>
+<li>1.0.3: Add ability to specify case macro. Update support to Thunderbird 50. Remove reliance on PHP serialize() when POSTing attachments.</li>
+<li>1.0.2: Fix condition where auto archiving can hang indefinitely.</li>
+<li>1.0.1: Update handling of custom modules</li>
+<li>1.0.0: Change order of select fields to work around issue in Sugar 7.6</li>
+<li>0.9.9: Fix bug for non-English locales where menus not present.</li>
+<li>0.9.8: Fix issue where settings test failed for https connections.</li>
+<li>0.9.7: UI tweaks. Check for message id on server before creating new mail record. Support silent activations.</li>
+<li>0.9.6: Add Japanese language strings. Added new app menu items.</li>
+<li>0.9.5: Fix notification window on Windows.</li>
+<li>0.9.4: Fix bug where create window not populated when creating object from outbound email.</li>
+<li>0.9.3: Allow search for account alone on Cases, Opportunities and Tasks. Update support to Thunderbird 15.</li>
+<li>0.9.2: Update account related search, custom module search</li>
+<li>0.9.1: Update search functions</li>
+<li>0.9.0: Initial Release</li>
+</ul>
+</p>
+<p style='font-size:.8em;margin-top: 3em;'>Known Issues:
+
+<ul style='font-size:.8em;'>
+<li>Version 7.6.0.0 introduces an issue which breaks search in the extension. The subsequent 7.6.1.0 release fixes the regression.
+<li>Account relationship using SugarCRM 6.2.0. A bug was introduced in SugarCRM version 6.2.0 (#44730) that prevented the account_name
+and account_id field from being retrieved. Sugar objects created in Thunderbird that relate to contacts would normally also relate
+to the account, but this bug means only the contact relationship is created. SugarCRM 6.2.1 patch fixes this issue.</li>
+<li>Tagging of outbound mail with an Exchange 2007 server. The Opacus extension uses a custom header to determine
+when a message has been archived to SugarCRM, but the default behaviour of Exchange 2007 is not to reveal the custom
+headers over IMAP/POP. This behaviour can be altered using the Set-TransportConfig directive to change the
+HeaderPromotionModeSetting to MayCreate, but does not affect the extension in any other way than to stop outbound
+archived mails from being tagged.</li>
+<li>Inline images. Unfortunately at present inline images are not archived. They do not appear as genuine attachments on the email object
+within Thunderbird and as such are not archived by the attachment archiving section of the code. We are investigating ways of adding them.</li>
+</ul>
+</p>
+</div>
+</div>
+</body>
+</html>

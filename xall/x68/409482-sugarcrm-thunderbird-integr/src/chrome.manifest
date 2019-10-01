@@ -1,0 +1,16 @@
+content   opacustep                 chrome/content/
+skin      opacustep   classic/1.0   chrome/skin/
+locale    opacustep   en-US         chrome/locale/en-US/
+locale    opacustep   de-DE         chrome/locale/de-DE/
+locale    opacustep   da-DK         chrome/locale/da-DK/
+locale    opacustep   it-IT         chrome/locale/it-IT/
+locale    opacustep   fr-FR         chrome/locale/fr-FR/
+locale    opacustep   es-ES         chrome/locale/es-ES/
+locale    opacustep   pt            chrome/locale/pt/
+locale    opacustep   ja            chrome/locale/ja/
+style	chrome://global/content/customizeToolbar.xul	chrome://opacustep/content/opacustep-button.css appversion<59.0a1
+style	chrome://messenger/content/customizeToolbar.xul	chrome://opacustep/content/opacustep-button.css appversion>=59.0a1
+overlay chrome://messenger/content/messenger.xul chrome://opacustep/content/opacustep-overlay.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://opacustep/content/opacustep-composeOverlay.xul
+overlay	chrome://messenger/content/addressbook/addressbook.xul chrome://opacustep/content/opacustep-abOverlay.xul
+
