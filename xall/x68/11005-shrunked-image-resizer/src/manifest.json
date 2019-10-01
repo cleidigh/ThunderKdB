@@ -1,0 +1,25 @@
+{
+	"manifest_version": 2,
+	"name": "__MSG_extensionName__",
+	"description": "__MSG_extensionDescription__",
+	"version": "4.5.3",
+	"applications": {
+		"gecko": {
+			"id": "shrunked@darktrojan.net",
+			"strict_min_version": "68.0a1"
+		}
+	},
+	"author": "Geoff Lankow",
+	"homepage_url": "https://github.com/darktrojan/shrunked",
+	"icons": {
+		"16": "content/icon16.png",
+		"32": "content/icon32.png",
+		"64": "content/icon64.png"
+	},
+	"default_locale": "en",
+	"legacy": {
+		"options": {
+			"page": "chrome://shrunked/content/config.xul"
+		}
+	}
+}

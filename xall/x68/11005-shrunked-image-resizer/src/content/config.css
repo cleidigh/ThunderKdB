@@ -1,0 +1,9 @@
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+html|input[type="number"] {
+	width: 0 !important;
+	box-shadow: none;
+}
+html|input[type="number"]::-moz-number-wrapper {
+	width: 10ch !important;
+}

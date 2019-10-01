@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://shrunked/locale/shrunked.dtd">
+<overlay id="shrunked-compose-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<menupopup id="msgComposeContext">
+		<menuseparator id="shrunked-content-context-separator" insertbefore="spellCheckSeparator" />
+		<menuitem id="shrunked-content-context-item"
+			insertbefore="spellCheckSeparator"
+			oncommand="ShrunkedCompose.onContentContextMenuCommand();" />
+	</menupopup>
+
+	<menupopup id="contentAreaContextMenu">
+		<menuseparator id="shrunked-content-context-separator" insertbefore="spell-separator" />
+		<menuitem id="shrunked-content-context-item"
+			insertbefore="spell-separator"
+			oncommand="ShrunkedCompose.onContentContextMenuCommand();" />
+	</menupopup>
+
+	<menupopup id="msgComposeAttachmentItemContext">
+		<menuitem id="shrunked-attachment-context-item"
+			insertbefore="composeAttachmentContext_renameItem"
+			oncommand="ShrunkedCompose.onAttachmentContextMenuCommand();" />
+	</menupopup>
+
+	<script src="chrome://shrunked/content/compose.js" type="application/javascript" />
+
+</overlay>

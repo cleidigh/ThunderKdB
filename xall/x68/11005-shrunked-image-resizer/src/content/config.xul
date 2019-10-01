@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet type="text/css" href="config.css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://shrunked/locale/shrunked.dtd">
+<dialog
+	id="pw_shrunked"
+	type="child"
+	title="&shrunked-config.title;"
+	orient="vertical"
+	onload="load();"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<prefpane>
+		<tabbox>
+			<tabs>
+				<tab id="t_defaults" label="&shrunked-defaults.label;" />
+				<tab id="t_advanced" label="&shrunked-advanced.label;" />
+			</tabs>
+			<tabpanels>
+				<tabpanel id="tp_defaults" orient="vertical">
+					<hbox align="center">
+						<label value="&shrunked-minsize.label;" />
+						<html:input
+							id="tb_minsize"
+							type="number"
+							step="10"
+							min="0"
+							onchange="p_minsize.value = this.value;" />
+						<label value="&shrunked-unit.kilobytes;" />
+					</hbox>
+
+					<label value="&shrunked-maxsize.label;" />
+					<radiogroup id="rg_size" class="indent" style="margin-bottom: 1em">
+						<radio
+							id="r_noresize"
+							label="&shrunked-noresize.label;"
+							oncommand="setSize();" />
+						<radio
+							id="r_small"
+							label="&shrunked-small.label;"
+							oncommand="setSize();" />
+						<radio
+							id="r_medium"
+							label="&shrunked-medium.label;"
+							oncommand="setSize();" />
+						<radio
+							id="r_large"
+							label="&shrunked-large.label;"
+							oncommand="setSize();" />
+						<hbox align="center">
+							<radio
+								id="r_custom"
+								label="&shrunked-custom.label;"
+								oncommand="setSize();" />
+							<label
+								id="l_width"
+								value="&shrunked-width.label;"
+								control="tb_width"
+								disabled="true" />
+							<html:input
+								id="tb_width"
+								type="number"
+								value="1500"
+								step="50"
+								min="100"
+								max="2500"
+								disabled="true"
+								onchange="setSize();" />
+							<label value="&shrunked-custom.pixels;" />
+							<label
+								id="l_height"
+								value="&shrunked-height.label;"
+								control="tb_height"
+								disabled="true" />
+							<html:input
+								id="tb_height"
+								type="number"
+								value="1500"
+								step="50"
+								min="100"
+								max="2500"
+								disabled="true"
+								onchange="setSize();" />
+							<label value="&shrunked-custom.pixels;" />
+						</hbox>
+					</radiogroup>
+					<label value="&shrunked-defaults.quality.label;" />
+					<hbox class="indent" align="center">
+						<label value="&shrunked-defaults.quality.smaller;" />
+						<html:input
+							id="s_quality"
+							type="range"
+							min="30"
+							max="100"
+							step="5"
+							onchange="p_quality.value = this.value;" />
+						<label value="&shrunked-defaults.quality.better;" />
+					</hbox>
+				</tabpanel>
+				<tabpanel id="tp_advanced" orient="vertical">
+					<checkbox
+						id="cb_resample"
+						label="&shrunked-advanced.resample.label;"
+						preference="extensions.shrunked.options.resample" />
+					<checkbox
+						id="cb_exif"
+						label="&shrunked-advanced.exif.label;"
+						preference="extensions.shrunked.options.exif"
+						oncommand="enableExif();" />
+					<vbox class="indent">
+						<checkbox
+							id="cb_orient"
+							label="&shrunked-advanced.orient.label;"
+							preference="extensions.shrunked.options.orientation" />
+						<checkbox
+							id="cb_gps"
+							label="&shrunked-advanced.gps.label;"
+							preference="extensions.shrunked.options.gps" />
+					</vbox>
+					<checkbox
+						id="cb_logenabled"
+						label="&shrunked-advanced.logenabled.label;"
+						preference="extensions.shrunked.log.enabled" />
+					<hbox id="b_resizeonsend" align="baseline">
+						<label value="&shrunked-advanced.resizeonsend.label;" />
+						<menulist preference="extensions.shrunked.resizeAttachmentsOnSend">
+							<menupopup>
+								<menuitem value="false" label="&shrunked-advanced.resizeonsend.false;" />
+								<menuitem value="true" label="&shrunked-advanced.resizeonsend.true;" />
+							</menupopup>
+						</menulist>
+					</hbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</prefpane>
+
+	<script src="chrome://global/content/preferencesBindings.js" type="application/javascript"/>
+	<script src="chrome://shrunked/content/config.js" type="application/javascript"></script>
+</dialog>

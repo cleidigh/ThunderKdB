@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://shrunked/content/options.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://shrunked/locale/shrunked.dtd">
+<dialog
+	id="d_options"
+	title="&shrunked-options.title;"
+	buttons="accept,cancel"
+	orient="vertical"
+	onload="load()"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<vbox>
+		<label class="header" value="&shrunked-maxsize.label;" />
+		<radiogroup id="rg_size" class="indent">
+			<radio
+				id="r_noresize"
+				label="&shrunked-noresize.label;"
+				oncommand="setSize();" />
+			<radio
+				label="&shrunked-small.label;"
+				oncommand="setSize();" />
+			<radio
+				label="&shrunked-medium.label;"
+				oncommand="setSize();" />
+			<radio
+				label="&shrunked-large.label;"
+				oncommand="setSize();" />
+			<hbox align="center">
+				<radio
+					id="r_custom"
+					label="&shrunked-custom.label;"
+					oncommand="setSize();" />
+				<label
+					id="l_width"
+					value="&shrunked-width.label;"
+					control="customvalue1"
+					disabled="true" />
+				<html:input
+					id="tb_width"
+					type="number"
+					value="1500"
+					step="50"
+					min="100"
+					max="2500"
+					disabled="true"
+					onchange="setSize();" />
+				<label value="&shrunked-custom.pixels;" />
+				<label
+					id="l_height"
+					value="&shrunked-height.label;"
+					control="customvalue2"
+					disabled="true" />
+				<html:input
+					id="tb_height"
+					type="number"
+					value="1500"
+					step="50"
+					min="100"
+					max="2500"
+					disabled="true"
+					onchange="setSize();" />
+				<label value="&shrunked-custom.pixels;" />
+			</hbox>
+		</radiogroup>
+		<label id="l_previewheader" class="header" value="&shrunked-preview.label;" />
+		<hbox id="b_previewbox" flex="1" minwidth="400">
+			<vbox id="b_previewarrows" pack="center" align="center">
+				<toolbarbutton oncommand="advancePreview(-1);" tabindex="0" tooltiptext="&shrunked-preview.previous.tooltip;" />
+				<label id="l_previewarrows" />
+				<toolbarbutton oncommand="advancePreview(1);" tabindex="0" tooltiptext="&shrunked-preview.next.tooltip;" />
+			</vbox>
+			<hbox width="110" pack="center">
+				<vbox pack="center">
+					<image id="i_previewthumb" maxwidth="110" maxheight="110" onload="imageLoad();" />
+				</vbox>
+			</hbox>
+			<vbox pack="center" flex="1">
+				<label id="l_previewfilename" class="header" crop="end" />
+				<label id="l_previeworiginalsize" crop="end" />
+				<label id="l_previeworiginalfilesize" crop="end" />
+				<label id="l_previewresized" crop="end" />
+				<label id="l_previewresizedfilesize" crop="end" />
+			</vbox>
+		</hbox>
+		<checkbox
+			id="cb_savedefault"
+			label="&shrunked-options.savedefault.label;" />
+	</vbox>
+
+	<script src="chrome://shrunked/content/options.js" type="application/javascript"></script>
+
+</dialog>

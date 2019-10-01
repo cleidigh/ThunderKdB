@@ -1,0 +1,46 @@
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+html|input[type="number"] {
+	width: 0 !important;
+	box-shadow: none;
+}
+html|input[type="number"]::-moz-number-wrapper {
+	width: 10ch !important;
+}
+
+#l_previewheader {
+	margin-top: 1em;
+}
+
+#b_previewbox {
+	height: 130px;
+	margin: 0 5px 1em;
+	padding: 10px 5px;
+	background-color: rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
+}
+
+#b_previewarrows {
+	min-width: 3em;
+}
+#b_previewarrows > toolbarbutton {
+	-moz-appearance: none;
+	border: none;
+	list-style-image: url("chrome://shrunked/content/arrow.svg");
+}
+#b_previewarrows > toolbarbutton:first-child > .toolbarbutton-icon {
+	transform: rotate(90deg);
+}
+#b_previewarrows > toolbarbutton:last-child > .toolbarbutton-icon {
+	transform: rotate(-90deg);
+}
+
+#l_previeworiginalsize,
+#l_previewresized {
+	margin-top: 0.25em;
+}
+
+#l_previeworiginalfilesize[value=""],
+#l_previewresizedfilesize[value=""] {
+	display: none;
+}
