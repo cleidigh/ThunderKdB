@@ -1,0 +1,288 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url("chat.css");
+@import url("primaryToolbar.css");
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* ::::: minimum row & menu height ::::: */
+
+treechildren::-moz-tree-row() {
+  min-height: 20px;
+}
+
+menu, menuitem, menucaption {
+  min-height: 22px
+}
+
+/* PreTab Toolbar */
+
+#phb_pretab-toolbar {
+  -moz-appearance: none;
+  padding: 0;
+  z-index: 1;
+  border: none;
+  min-width: 0px;
+}
+
+#phb_pretab-toolbar[customizing] {
+  min-width: 40px;
+  margin-inline-start: 0px;
+}
+
+#phb_pretab-toolbar .button-appmenu,
+#tabbar-toolbar .button-appmenu {
+  min-width: 0px !important;
+}
+
+#phb_pretab-toolbar toolbarbutton-1,
+#phb_pretab-toolbar .toolbarbutton-menubutton-button {
+	padding-inline-start: 4px !important;
+	padding-inline-end: 4px !important;
+}
+
+#phb_pretab-toolbar menulist,
+#phb_pretab-toolbar .toolbarbutton-1,
+#phb_pretab-toolbar .toolbarbutton-1[type="menu-button"] {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+#phb_pretab-toolbar:not([currentset="__empty"]) ~ tabs .tabmail-tab:first-child::before,
+#phb_pretab-toolbar[customizing] ~ tabs .tabmail-tab:first-child::before {
+  margin-inline-start: 0px;
+  content: '';
+  display: -moz-box;
+}
+
+#phb_pretab-toolbar:not([currentset="__empty"]) ~ tabs .tabmail-tab:not([selected="true"]):first-child:hover::before,
+#phb_pretab-toolbar[customizing] ~ tabs .tabmail-tab:not([selected="true"]):first-child:hover::before {
+  margin-inline-start: 0px;
+  margin-top: var(--tabs-top-border-width);
+  margin-bottom: var(--tab-toolbar-overlap);
+}
+
+/* Customise Toolbar */
+
+#CustomizeToolbarWindow #showTitlebar {
+  display: none;
+}
+
+/* Hide Phoenity menu items on compose window */
+
+#msgcomposeWindow #phb_drawTabsInTitlebar,
+#msgcomposeWindow #phb_drawTabsInTitlebarSeparator {
+  display: none;
+}
+
+/* Compact Headers */
+
+#expandedHeaderView.compact #expandedHeader2Rows > row:not([id="expandedsubjectRow"]) {
+  visibility: collapse;
+}
+
+#otherActionsBox #otherActionsButton {
+  display: none;
+}
+
+#CustomizeHeaderToolbar {
+  visibility: collapse;
+}
+
+#CustomizeHeaderToolbar[label] {
+  visibility: visible;
+}
+
+#phb_twistyBox {
+  float: left;
+  -moz-appearance: none;
+}
+
+#phb_twistyBox > button {
+  -moz-user-focus: ignore;
+  border: 4px solid transparent;
+  background: transparent;
+  margin: 2px 0px;
+  box-shadow: none;
+  min-width: 0px;
+  min-height: 0px;
+  padding: 0px !important;
+  -moz-appearance: none;
+  color: currentColor;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+#phb_compactTwisty1 {
+  list-style-image: url("chrome://global/skin/icons/twisty-expanded.svg");
+}
+
+#phb_compactTwisty2 {
+  list-style-image: url("chrome://global/skin/icons/twisty-collapsed.svg");
+}
+
+#phb_twistyBox > button > .button-box > .button-icon {
+  margin: 0px;
+}
+
+#phb_twistyBox > button > .button-box > .button-text {
+  display: none;
+}
+
+#expandedHeadersTopBox > #expandedBoxSpacer {
+  height: 0px;
+}
+
+#msgHeaderViewDeck > #expandedHeaderView.compact {
+  max-height: none;
+  overflow: visible;
+}
+
+#expandedHeaderView.expanded[show_header_mode="normal"] {
+  margin-bottom: -2px;
+}
+
+.emaillabel, .newsgrouplabel {
+  padding: 1px 0;
+}
+
+#expandedHeadersBox .emailStar {
+  margin-inline-start: 2px !important;
+}
+
+.headerValueBox[singleline="true"] {
+  margin-bottom: 1px;
+  padding-bottom: 1px;
+}
+
+/* AppMenu Buttons */
+
+.phb_appMenu_Buttons {
+  margin-top: -12px;
+}
+
+#phb_appMenu_RestartThunderbird {
+  list-style-image: url(chrome://devtools/skin/images/reload.svg);
+}
+
+/* Phoenity Buttons */
+
+.phoenitybutton {
+  opacity:0.85;
+}
+
+.phoenitybutton:hover {
+  opacity:1;
+}
+
+.phoenitybutton[disabled="true"] {
+  opacity:0.5;
+}
+
+#mail-toolbox > toolbar .toolbarbutton-1.phoenitybutton,
+#navigation-toolbox > toolbar .toolbarbutton-1.phoenitybutton,
+#mail-toolbox > toolbar[brighttext] .toolbarbutton-1.phoenitybutton,
+#navigation-toolbox > toolbar[brighttext] .toolbarbutton-1.phoenitybutton,
+toolbar .toolbarbutton-1.phoenitybutton,
+toolbarpaletteitem[place="palette"] .toolbarbutton-1.phoenitybutton {
+  list-style-image: url("chrome://phoenityButtons/skin/icons/phoenityButtons24.png");
+}
+
+toolbar[iconsize="small"] .phoenitybutton .toolbarbutton-icon {
+  width: 18px;
+  height: 18px;
+}
+
+#tabbar-toolbar {
+  padding-inline-end: 3px;
+}
+
+#phb_nextUnreadThread {
+  -moz-image-region: rect(0px, 264px, 24px, 240px);
+}
+
+#phb_nextUnreadGroup {
+  -moz-image-region: rect(0px, 240px, 24px, 216px);
+}
+
+#phb_killThread {
+  -moz-image-region: rect(0px, 216px, 24px, 192px);
+}
+
+#phb_viewIgnoredThreads {
+  -moz-image-region: rect(0px, 504px, 24px, 480px);
+}
+
+#phb_toggleMessagePane {
+  -moz-image-region: rect(0px, 456px, 24px, 432px);
+}
+
+#phb_toggleHTML {
+  -moz-image-region: rect(0px, 408px, 24px, 384px);
+}
+
+#phb_toggleSummary {
+  -moz-image-region: rect(0px, 480px, 24px, 456px);
+}
+
+#phb_toggleInline {
+  -moz-image-region: rect(0px, 432px, 24px, 408px);
+}
+
+#phb_configEditor {
+  -moz-image-region: rect(0px, 96px, 24px, 72px);
+}
+
+#phb_downloadManager {
+  -moz-image-region: rect(0px, 120px, 24px, 96px);
+}
+
+#phb_activityManager {
+  -moz-image-region: rect(0px, 24px, 24px, 0px);
+}
+
+#phb_addonsManager {
+  -moz-image-region: rect(0px, 48px, 24px, 24px);
+}
+
+#phb_filterManager {
+  -moz-image-region: rect(0px, 168px, 24px, 144px);
+}
+
+#phb_errorConsole {
+  -moz-image-region: rect(0px, 144px, 24px, 120px);
+}
+
+#phb_closeThunderbird {
+  -moz-image-region: rect(0px, 72px, 24px, 48px);
+}
+
+#phb_restartThunderbird {
+  -moz-image-region: rect(0px, 312px, 24px, 288px);
+}
+
+#phb_showCookies {
+  -moz-image-region: rect(0px, 384px, 24px, 360px);
+}
+
+#phb_sendLater {
+  -moz-image-region: rect(0px, 336px, 24px, 312px);
+}
+
+#phb_sendUnsent {
+  -moz-image-region: rect(0px, 360px, 24px, 336px);
+}
+
+#phb_getAllMessages {
+  -moz-image-region: rect(0px, 192px, 24px, 168px);
+}
+
+#phb_preferences {
+  -moz-image-region: rect(0px, 288px, 24px, 264px);
+}
+
+#phb_devtoolbox {
+  -moz-image-region: rect(0px, 528px, 24px, 504px);
+}

@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Phoenity Buttons",
+  "description": "Some extra toolbar buttons",
+  "version": "3.2",
+  "author": "Dillinger",
+  "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-buttons/",
+  "legacy" : {
+    "options" : {
+      "page" : "chrome://phoenityButtons/content/aboutButtons.xul",
+      "open_in_tab" : false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "buttons@dillinger",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "32": "skin/icons/phoenityButtons.png"
+  }
+}

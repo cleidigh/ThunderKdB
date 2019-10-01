@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE dialog SYSTEM "chrome://phoenityButtons/locale/phoenityButtons.dtd">
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept"
+        id="buttonsAboutDialog"
+        title="About Phoenity Buttons"
+        width="350">
+
+<groupbox>
+  <hbox>
+
+    <hbox>
+      <vbox>
+        <image src="chrome://phoenityButtons/skin/icons/phoenityButtons.png"/>
+      </vbox>
+      <spacer width="12"/>
+    </hbox>
+
+    <vbox>
+      <label value="Some extra toolbar buttons"/>
+      <spacer height="12"/>
+      <label value="Developer:"/>
+      <label value="Dillinger"/>
+      <spacer height="12"/>
+      <label value="Original Icons:"/>
+      <label value="Lim Chee Aun"/>
+      <spacer height="12"/>
+      <label value="Translators:"/>
+      <label value="Pierre Thomas (French)"/>
+      <label value="Sappa (Ukrainian)"/>
+      <label value="Dillinger (Dutch)"/>
+    </vbox>
+
+  </hbox>
+</groupbox>
+
+</dialog>

@@ -1,0 +1,72 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Toolbar icons */
+
+#chat-toobar[iconsize="small"],
+#chat-toolbar[iconsize="small"] {
+  padding: 0px 3px;
+}
+
+#chat-toobar[iconsize="large"],
+#chat-toolbar[iconsize="large"] {
+  padding: 1px 3px;
+}
+
+#chat-toobar[iconsize="small"] .toolbarbutton-1,
+#chat-toolbar[iconsize="small"] .toolbarbutton-1 {
+  padding: 0px 6px !important;
+}
+
+#chat-toobar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon,
+#chat-toolbar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon,
+#chat-toobar #statusTypeIcon.toolbarbutton-1 > .toolbarbutton-icon,
+#chat-toolbar #statusTypeIcon.toolbarbutton-1 > .toolbarbutton-icon {
+  width: 18px;
+  height: 18px;
+}
+
+#chat-toobar[iconsize="large"] .toolbarbutton-1 .toolbarbutton-icon,
+#chat-toolbar[iconsize="large"] .toolbarbutton-1 .toolbarbutton-icon {
+  width: 24px;
+  height: 24px;
+}
+
+#chat-toobar[iconsize="small"] #button-chat-appmenu .toolbarbutton-icon,
+#chat-toolbar[iconsize="small"] #button-chat-appmenu .toolbarbutton-icon {
+  padding: 1px;
+  margin: -1px;
+}
+
+#chat-toobar[iconsize="large"] #button-chat-appmenu .toolbarbutton-icon,
+#chat-toolbar[iconsize="large"] #button-chat-appmenu .toolbarbutton-icon {
+  padding: 0px;
+}
+
+#statusTypeIcon.toolbarbutton-1 > .toolbarbutton-icon {
+  padding: 1px;
+}
+
+#chat-status-selector dropmarker .dropmarker-icon {
+  opacity: .9;
+}
+
+toolbar[mode="text"] #statusTypeIcon .toolbarbutton-icon {
+  display: -moz-box;
+}
+
+#displayNameAndstatusMessageStack #statusMessage {
+  margin: 32px 0 0;
+}
+
+#displayNameAndstatusMessageStack  #statusMessage[editing] {
+  margin: 30px 0 1px -2px;
+}
+
+#displayNameAndstatusMessageStack #displayName[editing] {
+  margin-left: -2px;
+  margin-bottom: 18px;
+}

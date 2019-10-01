@@ -1,0 +1,48 @@
+#grammarchecker-error {
+  color: red !important;
+}
+span.grammarchecker-highlight {
+  border-bottom:1px dotted blue;
+  display: inline !important;
+}
+#grammarchecker-toolbar-button {
+  list-style-image: url("chrome://grammarchecker/skin/grammarcheck.png");
+}
+[iconsize="small"] #grammarchecker-toolbar-button {
+  list-style-image: url("chrome://grammarchecker/skin/grammarcheck_small.png");
+}
+#grammarchecker-toolbar-button[disabled="true"] {
+  list-style-image: url("chrome://grammarchecker/skin/grammarcheck_disabled.png");
+}
+[iconsize="small"] #grammarchecker-toolbar-button[disabled="true"] {
+  list-style-image: url("chrome://grammarchecker/skin/grammarcheck_small_disabled.png");
+}
+#grammarchecker-preview ul {
+	display: block;
+}
+#grammarchecker-preview ul ul {
+	margin-left: 2em;
+}
+#grammarchecker-preview ul ul li {
+	display: block;
+	margin-top: 0;
+}
+#grammarchecker-preview ul li {
+	display: list-item;
+	list-style-position:inside;
+}
+#grammarchecker-preview ul li b {
+	display: inline;
+	font-weight:bolder;
+}
+#grammarchecker-preview div {
+	display: block;
+}
+#grammarchecker-preview {
+	display: block;
+}
+#grammarchecker-panel {
+	overflow:auto;
+	margin-left:0.5em;
+	max-height:15em;
+}

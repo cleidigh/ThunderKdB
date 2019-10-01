@@ -1,0 +1,24 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+/* ::::: primary toolbar buttons ::::: */
+
+.toolbarbutton-1 .toolbarbutton-icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* ::::: small primary toolbar buttons ::::: */
+
+toolbar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon,
+#quick-filter-bar .toolbarbutton-1 .toolbarbutton-icon,
+#mail-toolbar-menubar2 .toolbarbutton-1 .toolbarbutton-icon,
+#header-view-toolbar .toolbarbutton-1 .toolbarbutton-icon,
+#attachment-view-toolbar .toolbarbutton-1 .toolbarbutton-icon {
+  width: 18px;
+  height: 18px;
+}

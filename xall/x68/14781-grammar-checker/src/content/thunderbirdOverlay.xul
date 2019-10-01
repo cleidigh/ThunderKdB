@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://grammarchecker/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://grammarchecker/locale/grammarchecker.dtd">
+<overlay id="grammarchecker-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="application/x-javascript" src="dom.js"/>
+  <script type="application/x-javascript" src="overlay.js"/>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="grammarchecker-strings" src="chrome://grammarchecker/locale/grammarchecker.properties"/>
+  </stringbundleset>
+
+  <commandset id="composerEditMenuItems" commandupdater="true" 
+          events="focus" 
+          oncommandupdate="goUpdateCommand('cmd_grammar')">
+	<command id="cmd_grammar" label="&grammarchecker.label;" oncommand="goDoCommand('cmd_grammar')"/>
+  </commandset>
+  <menupopup id="taskPopup">
+    <menuitem id="grammarchecker-hello" command="cmd_grammar"/>
+  </menupopup>
+  <popup id="msgComposeContext">
+    <menuitem id="context-grammarchecker" command="cmd_grammar"
+			  accesskey="&grammarcheckerContext.accesskey;"/>
+  </popup>
+  <toolbarpalette id="MsgComposeToolbarPalette">
+	<toolbarbutton id="grammarchecker-toolbar-button" command="cmd_grammar"
+				   tooltiptext="&grammarcheckerToolbar.tooltip;"
+				   class="toolbarbutton-1 chromeclass-toolbar-additional"/>
+  </toolbarpalette>
+  <vbox id="appcontent">
+	<splitter/>
+	<vbox id="grammarchecker-panel">
+	  <div id="grammarchecker-preview"/>
+	</vbox>
+  </vbox>
+</overlay>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<!DOCTYPE dialog SYSTEM "chrome://grammarchecker/locale/prefwindow.dtd">
+<dialog id="grammarcheckerPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;">
+  <vbox>
+    <label accesskey="&urlpref1.accesskey;" control="texturlpref1">&urlpref1.label;</label><textbox id="texturlpref1" preference="extensions.grammarchecker.urlpref1"/>
+    <label accesskey="&urlpref2.accesskey;" control="texturlpref2">&urlpref2.label;</label><textbox id="texturlpref2" preference="extensions.grammarchecker.urlpref2"/>
+    <label accesskey="&langpref.accesskey;" control="textlangpref">&langpref.label;</label><textbox id="textlangpref" preference="extensions.grammarchecker.langpref"/>
+    <label accesskey="&mothertongue.accesskey;" control="textmothertongue">&mothertongue.label;</label><textbox id="textmothertongue" preference="extensions.grammarchecker.mothertongue"/>
+  </vbox>
+  <script
+     src="chrome://global/content/preferencesBindings.js"
+     type="application/javascript"/>
+  <script
+     src="chrome://grammarchecker/content/preferences.js"
+     type="application/javascript"/>
+</dialog>

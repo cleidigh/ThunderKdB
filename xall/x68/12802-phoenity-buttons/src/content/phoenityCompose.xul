@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://phoenityButtons/locale/phoenityButtons.dtd" >
+
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://phoenityButtons/skin/phoenityButtons.css" type="text/css"?>
+
+<overlay id="msgcomposeWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
+
+<toolbarpalette id="MsgComposeToolbarPalette">
+  <toolbarbutton class="toolbarbutton-1 phoenitybutton"
+                 id="phb_sendLater"
+                 label="&phoenityButtons.sendLater;"
+                 tooltiptext="&phoenityButtons.tooltips.sendLater;"
+                 oncommand="goDoCommand('cmd_sendLater')"/>
+</toolbarpalette>
+
+</overlay>

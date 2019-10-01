@@ -1,0 +1,200 @@
+Changelog for Phoenity Buttons
+
+3.2
+Removed Show Title Bar items from the Customize dialogs.
+Added about Phoenity Buttons dialog.
+Improved support for large & small icons.
+
+3.1
+Fixed support for the chat-toobar typo fix in Thunderbird 69b1.
+
+3.0
+WebExtension only version for Thunderbird 68 and later.
+Removed support for versions older than Thunderbird 68.
+Removed obsolete Add-ons button now included with Thunderbird 68.
+Fixed partial loading of the extension by disabling the startup cache.
+Set minumum row, menu and menuitem heights.
+
+2.7
+Fixed javascript errors for HTML, Inline & Summary buttons.
+Added restart menu item to the new AppMenu in Thunderbird 68.
+
+2.6
+Fixed Toggle Details twisty color for Thunderbird 63 and later.
+
+2.5
+Fixed HTML, Inline & Summary buttons for Thunderbird 67 and later.
+
+2.4
+Added support for the chat-toobar typo fix in Thunderbird 69a1.
+
+2.3
+Simplified WebExtension support for Thunderbird 63 and later.
+Fixed Ukrainian locale for Thunderbird 63 and later.
+
+2.2
+Fixed French & Dutch locales for Thunderbird 63 and later.
+
+2.1
+Fixed first tab border after Pre Tabs Toolbar for Thunderbird 60.
+
+2.0
+Fixed first tab border after Pre Tabs Toolbar for Thunderbird 65.
+Removed support for versions older than Thunderbird 60.
+Added WebExtension support for Thunderbird 63 and later.
+
+0.62
+Fixed Pre Tabs Toolbar context menu.
+Added toggle layout shortcut key [V], cycles through vertical, wide and classic layouts.
+
+0.61
+Added Ukrainian locale.
+
+0.60
+Improved some button icons (HTML, Inline, Summary) to reflect the state they're in.
+
+0.59
+Fixed Pre Tabs Toolbar for Thunderbird 59.
+Fixed icon size when not using Phoenity Shredder.
+Fixed Customize Toolbar dialog for Thunderbird 59.
+Removed Check for Updates menu item.
+Fixed Draw Tabs In Titlebar context menu item.
+
+0.58
+Fixed a problem with Thunderbird 58 not reading default preferences.
+Disabled large toolbar buttons when not using Phoenity Shredder.
+Added Draw Tabs In Titlebar context menu item for Thunderbird 59 on Linux.
+Added Developer Toolbox button.
+
+0.57
+Fixed a preferences (nsIPrefBranch) problem for Thunderbird 57.
+
+0.56
+Fixed some button icons.
+Added mark group shortcut key [G], marks newsgroup or folder as read.
+Added view ignored shortcut key [I], shows/hides ignored threads.
+Fixed Check for Updates menu item (not for default & release versions).
+
+0.55
+Improved compatibility with CompactHeader:
+- Added Toggle Details shortcut key [D], switches between collapsed and expanded headers.
+- Phoenity Buttons' compact view is now disabled when CompactHeader is installed.
+- Toggle Details twisty is removed, when CompactHeader is installed.
+- Shortcut key [D] invokes CompactHeader, when CompactHeader is installed.
+Improved compatibility with Toggle Headers:
+- Toggle Headers shortcut key [H] now switches between all and normal headers.
+- Shortcut key [H] invokes Toggle Headers, when Toggle Headers is installed.
+Added tooltips to the Toggle Details twisty.
+Added Dutch locale.
+Improved compatibility with the default themes on Linux and Windows.
+
+0.54
+Added toggle headers shortcut key [H], switches between collapsed and expanded headers.
+
+0.53
+Removed obsolete other actions button.
+Added preferences button.
+
+0.52
+Added Send Unsent Messages button.
+Added Check for Updates menu item (not for the release version).
+Added French locale.
+Added Get All Messages button.
+Fixed some ID conflicts with the More actions button.
+
+0.51
+Added Send Later button.
+Tweaked Account Central.
+
+0.50
+Fixed chat toolbar customizing.
+
+0.49
+Improved support for CompactHeader.
+Improved support for Mac OSX.
+Added context menu iconsize setting for the chat toolbar.
+
+0.48
+Added context menu to the All Tabs button.
+Added Pre Tabs Toolbar.
+
+0.47
+Added Draw Tabs In Titlebar context menu item on Windows.
+Updated Show Feed Summary button for Thunderbird 17.
+Added Restart menu item to Application Menu (Thunderbird 17).
+Dropped support for Thunderbird 16 and earlier.
+
+0.46
+Fixed a bug which prevented messages loading correctly in a new window.
+Fixed non-namespaced IDs, this also fixes the multiple appearance of some
+  buttons on the Customize Toolbar dialog. Unfortunately it also means
+  you'll have to re-add any Phoenity Buttons you're using to your toolbars.
+Fixed a bug which disabled some buttons after customizing a toolbar.
+
+0.45
+Added iconsize per toolbar settings for the main toolbars.
+Improved support for Aero (tested on Wine only).
+
+0.44
+Fixed restart menu item.
+
+0.43
+Fixed a bug which killed the statusTextBox on Thunderbird 5.
+Added restart menu item.
+
+0.42
+Fixed some javascript errors.
+Added restart button.
+Fixed focus issue on the compact headers twisty.
+
+0.41
+Cleaned up some code.
+Added basic locale (en-US only).
+Made compact/extended setting persistent.
+
+0.40
+Fixed extension preference.
+Fixed homepage.
+Added cookies button.
+
+0.39
+Added twisty (compact headers button).
+Removed compact headers item from the other actions popup menu.
+All buttons are now rendered small on the menu toolbar.
+
+0.38
+Fixed incompatibilities with the CustomizeHeaderToolbar extension.
+Fixed other actions button icon size when using the default theme.
+
+0.37
+Moved the other actions button to the header toolbar.
+Added compact headers to the other actions popup menu.
+Removed the compact headers button.
+Added close thunderbird button.
+
+0.36
+Moved the compact headers button to the header toolbar.
+Incompatible with versions older than 3.0pre.
+
+0.35
+More fixes for the new header style.
+Incompatible with versions older than 3.0b4.
+
+0.34
+Fixed new header toolbar.
+
+0.33
+Reload message on switching header view.
+Moved other actions button up.
+
+0.32
+Some fixes for the new header style and gloda.
+
+0.31
+Added Show Feed Summary button.
+
+0.30
+Fixed show/hide details button when viewing messages in a new window.
+
+0.29
+First release.
