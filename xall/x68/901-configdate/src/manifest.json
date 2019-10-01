@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "0.9.5",
+  "author": "Alexander Ihrig",
+  "homepage_url": "https://www.thunderbird-mail.de/lexicon/entry/16-configdate/",
+  "applications": {
+    "gecko": {
+      "id": "{782E3D25-61FD-4997-AA8F-D3F18FA92ECC}",
+      "strict_min_version": "66.0"
+    }
+  },
+  "default_locale": "en",
+  "icons": {
+    "32": "chrome/skin/configdate_32.png",
+    "64": "chrome/skin/configdate_64.png"
+  },
+  "legacy": {
+    "options": {
+      "open_in_tab": false,
+	  "page": "chrome://configdate/content/configdatePrefs.xul"
+    }
+  }
+}

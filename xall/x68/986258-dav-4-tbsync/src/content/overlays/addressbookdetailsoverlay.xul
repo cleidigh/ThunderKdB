@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://dav4tbsync/locale/dav.dtd">
+
+<overlay 
+    id="TbSyncAbDavDetailsOverlay"
+    onbeforeinject="tbSyncDavAddressBookDetails.onBeforeInject(window)"
+    oninject="tbSyncDavAddressBookDetails.onInject(window)"
+    onremove="tbSyncDavAddressBookDetails.onRemove(window)"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+
+    <script type="application/javascript" src="chrome://dav4tbsync/content/overlays/addressbookdetailsoverlay.js" />
+
+        <vbox id="cvbEmails" class="cardViewGroup" insertafter="cvbContact">
+            <description class="CardViewHeading" id="cvhEmails">&abCard.EmailAddresses;</description>
+            <grid>
+                <columns>
+                    <column flex="0"/>
+                    <column flex="1"/>
+                </columns>
+                <rows id="cvbEmailRows">
+                </rows>
+            </grid>			
+        </vbox>
+
+        <vbox id="cvbPhoneNumbers" class="cardViewGroup" insertafter="cvbPhone">
+            <description class="CardViewHeading" id="cvhPhoneNumbers">&abCard.Phone;</description>
+            <grid>
+                <columns>
+                    <column flex="0"/>
+                    <column flex="1"/>
+                </columns>
+                <rows id="cvbPhoneRows">
+                </rows>
+            </grid>			
+        </vbox>
+
+</overlay>        

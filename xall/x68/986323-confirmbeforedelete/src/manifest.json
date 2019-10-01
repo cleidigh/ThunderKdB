@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "applications": {
+        "gecko": {
+            "id": "confirmbeforedelete@caligraf",
+            "strict_min_version": "68.0"
+        }
+    },
+    "name": "ConfirmBeforeDelete",
+    "description": "Ask a confirm before to delete some items",
+    "version": "1.1",
+    "homepage_url": "https://github.com/caligraf/ConfirmBeforeDelete/wiki",
+    "icons": {
+		"32": "skin/icon32x32.png"
+	},
+    "legacy": {
+        "type": "xul",
+        "options": {
+            "page": "chrome://confirmbeforedelete/content/CBD-options.xul",
+            "open_in_tab": false
+        }
+    }
+}

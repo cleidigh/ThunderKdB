@@ -1,0 +1,69 @@
+<?xml version="1.0"?> 
+<!--
+The contents of this file are subject to the Mozilla Public
+License Version 1.1 (the "License"); you may not use this file
+except in compliance with the License. You may obtain a copy of
+the License at http://www.mozilla.org/MPL/
+
+Software distributed under the License is distributed on an "AS
+IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+implied. See the License for the specific language governing
+rights and limitations under the License.
+
+Alternatively, the contents of this file may be used under the
+terms of the GNU General Public License Version 2 or later (the
+"GPL"), in which case the provisions of the GPL are applicable 
+instead of those above. 
+
+-->
+
+<RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+            xmlns:chrome="http://www.mozilla.org/rdf/chrome#"> 
+
+    <RDF:Seq about="urn:mozilla:package:root"> 
+        <RDF:li resource="urn:mozilla:package:confirmbeforedelete"/> 
+    </RDF:Seq> 
+
+    <RDF:Description about="urn:mozilla:package:confirmbeforedelete"
+        chrome:displayName="ConfirmBeforeDelete - 0.3.7" 
+        chrome:author="Paolo Kaosmos"
+        chrome:name="confirmbeforedelete"
+   	chrome:extension="true"
+        chrome:description="Set a confirm before delete messages"
+	chrome:settingsURL="">
+    </RDF:Description>
+
+    <RDF:Seq about="urn:mozilla:overlays">
+        <RDF:li resource="chrome://messenger/content/messenger.xul"/>
+	  <RDF:li resource="chrome://messenger/content/addressbook/addressbook.xul"/>
+	  <RDF:li resource="chrome://messenger/content/mailWindowOverlay.xul"/>
+	  <RDF:li resource="chrome://messenger/content/messageWindow.xul"/>
+	  <RDF:li resource="chrome://messenger/content/addressbook/abContactsPanel.xul"/>
+	  <RDF:li resource="chrome://messenger/content/SearchDialog.xul"/>
+   </RDF:Seq>
+
+    <RDF:Seq about="chrome://messenger/content/SearchDialog.xul">
+   	<RDF:li>chrome://confirmbeforedelete/content/searchWindowOverlay.xul</RDF:li>
+    </RDF:Seq>
+
+    <RDF:Seq about="chrome://messenger/content/messenger.xul">
+   	<RDF:li>chrome://confirmbeforedelete/content/confirmbeforedelete.xul</RDF:li>
+    </RDF:Seq>
+
+    <RDF:Seq about="chrome://messenger/content/addressbook/addressbook.xul">
+   	<RDF:li>chrome://confirmbeforedelete/content/confirmbeforedelete.xul</RDF:li>
+    </RDF:Seq>
+
+    <RDF:Seq about="chrome://messenger/content/mailWindowOverlay.xul">
+   	<RDF:li>chrome://confirmbeforedelete/content/confirmbeforedelete.xul</RDF:li>
+    </RDF:Seq>
+
+    <RDF:Seq about="chrome://messenger/content/messageWindow.xul">
+   	<RDF:li>chrome://confirmbeforedelete/content/confirmbeforedelete.xul</RDF:li>
+    </RDF:Seq>
+
+    <RDF:Seq about="chrome://messenger/content/addressbook/abContactsPanel.xul">
+   	<RDF:li>chrome://confirmbeforedelete/content/confirmbeforedelete.xul</RDF:li>
+    </RDF:Seq>
+     
+</RDF:RDF>

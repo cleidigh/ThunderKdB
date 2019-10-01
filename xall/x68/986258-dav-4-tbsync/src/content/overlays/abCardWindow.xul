@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://tbsync/skin/fix_dropdown_1534697.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://dav4tbsync/locale/dav.dtd">
+
+<overlay 
+    id="TbSyncAbDavCardWindow" 
+    onbeforeinject="tbSyncAbDavCardWindow.onBeforeInject(window)"
+    oninject="tbSyncAbDavCardWindow.onInject(window)"
+    onremove="tbSyncAbDavCardWindow.onRemove(window)"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+
+    <script type="application/javascript" src="chrome://dav4tbsync/content/overlays/abCardWindow.js" />
+
+    <hbox id="DavEmailSpacer" insertbefore="NickNameContainer" style="margin-bottom:2ex">
+        <menupopup position="start_before">
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.home;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'HOME')" image="chrome://dav4tbsync/skin/type.home16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.work;"  oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'WORK')" image="chrome://dav4tbsync/skin/type.work16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.other;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'OTHER')" image="chrome://dav4tbsync/skin/type.other16.png" />
+        </menupopup>
+        <menupopup position="start_before">
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.home;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'HOME')" image="chrome://dav4tbsync/skin/type.home16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.work;"  oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'WORK')" image="chrome://dav4tbsync/skin/type.work16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.other;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'OTHER')" image="chrome://dav4tbsync/skin/type.none16.png" />
+        </menupopup>
+        <menupopup position="start_before">
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.voice;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'VOICE')" image="chrome://dav4tbsync/skin/type.voice16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.cell;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'CELL')" image="chrome://dav4tbsync/skin/type.cell16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.fax;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'FAX')" image="chrome://dav4tbsync/skin/type.fax16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.video;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'VIDEO')" image="chrome://dav4tbsync/skin/type.video16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.pager;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'PAGER')" image="chrome://dav4tbsync/skin/type.pager16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.car;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'CAR')" image="chrome://dav4tbsync/skin/type.car16.png" />
+          <menuitem class="menuitem-iconic" label="&abCard.emailtypes.other;" oncommand="TbSync.providers.dav.ui.updateType(window.document, this.parentNode.parentNode, 'OTHER')" image="chrome://dav4tbsync/skin/type.none16.png" />
+        </menupopup>
+    </hbox>
+
+    <hbox id="DavTopSpacer" align="center" insertbefore="NameField1Container" >
+        <spacer flex="1" />
+        <hbox style="visibility:hidden" class="CardEditWidth" >
+            <button label="+" flex="0" style="width:3em; min-width:3em" />          
+        </hbox>
+        <label value="&abCard.ContactDetails;" />
+    </hbox>
+
+    <hbox id="DavPrefixNameContainer" align="center" insertbefore="NameField1Container" >
+        <spacer flex="1" />
+        <label control="X-DAV-PrefixName" value="&abCard.PrefixName;" />
+        <hbox class="CardEditWidth" >
+            <textbox id="X-DAV-PrefixName" flex="1" class="davProperty CardEditWidth" />
+        </hbox>
+    </hbox>
+
+    <hbox id="DavMiddleNameContainer" align="center" insertafter="NameField1Container" >
+        <spacer flex="1" />
+        <label control="X-DAV-MiddleName" value="&abCard.MiddleName;" />
+        <hbox class="CardEditWidth" >
+            <textbox id="X-DAV-MiddleName" flex="1" class="davProperty CardEditWidth" />
+        </hbox>
+    </hbox>
+
+    <hbox id="DavSufixNameContainer" align="center" insertafter="NameField2Container" >
+        <spacer flex="1" />
+        <label control="X-DAV-SuffixName" value="&abCard.SuffixName;" />
+        <hbox class="CardEditWidth" >
+            <textbox id="X-DAV-SuffixName" flex="1" class="davProperty CardEditWidth" />
+        </hbox>
+    </hbox>
+
+    <vbox id="DavFieldsContainer" insertafter="PhoneNumbers">
+
+      <hbox flex="1">
+        <spacer style="width:3em;" />
+        <vbox class="CardEditWidth">
+          <hbox align="center">
+            <label value="&abCard.Phone;" />
+            <spacer flex="1" />            
+            <button id="DavPhoneAdd" label="+" oncommand="TbSync.providers.dav.ui.addPhoneEntry(window.document)" flex="0" style="width:3em; min-width:3em" />          
+          </hbox>
+          <richlistbox flex="0" style="height:13ex;" id="X-DAV-PhoneNumberList" seltype="single" >            
+          </richlistbox>
+          <!--label id="X-DAV-HomePhoneMetaInfo" collapsed="true" class="davProperty" />
+          <label id="X-DAV-WorkPhoneMetaInfo" collapsed="true" class="davProperty" /-->
+        </vbox>
+      </hbox>
+      
+      <hbox flex="1" style="margin-top:1em">
+        <spacer style="width:3em;" />
+        <vbox class="CardEditWidth">
+          <hbox align="center">
+            <label value="&abCard.EmailAddresses;" />
+            <spacer flex="1" />            
+            <button id="DavEmailAdd" label="+" oncommand="TbSync.providers.dav.ui.addEmailEntry(window.document)" flex="0" style="width:3em; min-width:3em" />          
+          </hbox>
+          <richlistbox flex="0" style="height:13ex;" id="X-DAV-EmailAddressList" seltype="single" >            
+          </richlistbox>
+
+          <description>&abCard.emailtypes.description;</description>
+          <label id="X-DAV-JSON-Emails" collapsed="true" class="davProperty" />
+          <label id="X-DAV-JSON-Phones" collapsed="true" class="davProperty" />
+        </vbox>
+      </hbox>
+
+    </vbox>
+</overlay>

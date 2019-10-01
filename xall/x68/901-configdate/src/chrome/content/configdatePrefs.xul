@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+
+<!DOCTYPE dialog [
+  <!ENTITY % ConfigDatePrefsDTD SYSTEM "chrome://configdate/locale/configdate-pref.dtd">
+  %ConfigDatePrefsDTD;
+]>
+
+<dialog id="ConfigDatePrefs"
+		xmlns:html="http://www.w3.org/1999/xhtml"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		title="&configdate.pref.title;"
+		buttons="accept">
+
+  <vbox id="ConfigDatePrefs-pane">
+
+  	<tabbox>
+  		<tabs>
+  			<tab label="&configdate.pref.tab.date;"/>
+  			<tab label="&configdate.pref.tab.time;"/>
+  		</tabs>
+  		<tabpanels>
+  			<tabpanel orient="vertical">
+  				<html:fieldset>
+  			  		<html:legend style="font-weight: bold;">&configdate.pref.cap.date;</html:legend>
+  			  		<vbox>  			  			
+  			  		<separator class="thin"/>
+  			  		<label value="&configdate.pref.date.infotext;"/>
+  			  		<separator class="thin"/>
+  					<grid>
+  						<columns>
+  							<column/>
+  							<column flex="1"/>
+  						</columns>
+  						<rows>
+  							<row align="center">
+  								<label value="&configdate.pref.today;"/>
+  								<menulist id="configDateToday"
+  									        prefstring="mail.ui.display.dateformat.today"
+  									        preference="mail.ui.display.dateformat.today">
+  									<menupopup>
+  										<menuitem label="&configdate.pref.nodate;" value="0"/>
+  										<menuseparator/>
+  										<menuitem label="&configdate.pref.long;" value="1"/>
+  										<menuitem label="&configdate.pref.short;" value="2"/>
+  										<menuitem label="&configdate.pref.year;" value="3"/>
+  										<menuitem label="&configdate.pref.day;" value="4"/>
+  									</menupopup>
+  								</menulist>
+  							</row>
+  							<row align="center">
+  								<label value="&configdate.pref.thisweek;"/>
+  								<menulist id="configDateThisweek"
+  									        prefstring="mail.ui.display.dateformat.thisweek"
+  									        preference="mail.ui.display.dateformat.thisweek">
+  									<menupopup>
+  										<menuitem label="&configdate.pref.nodate;" value="0"/>
+  										<menuitem label="&configdate.pref.long;" value="1"/>
+  										<menuitem label="&configdate.pref.short;" value="2"/>
+  										<menuitem label="&configdate.pref.year;" value="3"/>
+  										<menuseparator/>
+  										<menuitem label="&configdate.pref.day;" value="4"/>
+  									</menupopup>
+  								</menulist>
+  							</row>
+  							<row align="center">
+  								<label value="&configdate.pref.default;"/>
+  								<menulist id="configDateDefault"
+  									        prefstring="mail.ui.display.dateformat.default"
+  									        preference="mail.ui.display.dateformat.default">
+  									<menupopup>
+  										<menuitem label="&configdate.pref.nodate;" value="0"/>
+  										<menuitem label="&configdate.pref.long;" value="1"/>
+  										<menuseparator/>
+  										<menuitem label="&configdate.pref.short;" value="2"/>
+  										<menuseparator/>
+  										<menuitem label="&configdate.pref.year;" value="3"/>
+  										<menuitem label="&configdate.pref.day;" value="4"/>
+  									</menupopup>
+  								</menulist>
+  							</row>
+  						</rows>
+  					</grid>
+  			  		<separator class="thin"/>
+  			  		<html:p style="color: red; font-weight: bold;">&configdate.pref.restart;</html:p>
+  			  		</vbox>
+  				</html:fieldset>
+  			</tabpanel>
+
+  			<tabpanel orient="vertical">
+  				<html:fieldset>
+  			  		<html:legend style="font-weight: bold;">&configdate.pref.cap.time;</html:legend>
+  			  		<separator class="thin"/>
+
+  				    <vbox align="left">
+  				      <vbox>
+    							<label value="&configdate.pref.time.infotext1;"/>
+    							<label value="&configdate.pref.time.infotext2;"/>
+    							<label value="&configdate.pref.time.infotext3;"/>
+  				  			<separator class="thin"/>
+    							<label value="&configdate.pref.time.infotext4;"/>
+    							<label value="&configdate.pref.time.infotext5;"/>
+    							<label value="&configdate.pref.time.infotext6;"/>
+   					  		<separator class="thin"/>
+		            	<checkbox id="configDateTime"
+		            	          label="&configdate.pref.time.boxlabel;"
+		                	      prefstring="mailnews.display.date_senders_timezone"
+		                	      checked="true"
+								  preference="mailnews.display.date_senders_timezone"/>
+  						</vbox>
+  					</vbox>
+  			  	<separator class="thin"/>
+  				</html:fieldset>
+  			</tabpanel>
+  		</tabpanels>
+  	</tabbox>
+
+  </vbox>
+
+	<script 
+		src="chrome://global/content/preferencesBindings.js" 
+		type="application/javascript"/>
+	<script 
+		src="chrome://configdate/content/preferences.js" 
+		type="application/javascript"/>          
+
+</dialog>

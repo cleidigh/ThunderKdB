@@ -1,0 +1,29 @@
+/* messenger window additional button 'Send all' */
+#GetSendButton_S_all,
+#tabbar-toolbar #GetSendButton_S_all {
+	list-style-image: url("chrome://messenger/skin/icons/send.svg");
+}
+
+#GetSendButton_messenger_menupopup_sendUnsent {
+	list-style-image: url("chrome://getsendbutton/skin/send.svg"); /* fixed black icon */
+}
+
+#GetSendButton_messenger_menupopup_SyncFlagged {
+	list-style-image: url("chrome://getsendbutton/skin/star.svg"); /* fixed black icon */
+}
+
+/* Get all / auth messages */
+#GetSendButton_messenger_menupopup_ReceiveAll,
+#GetSendButton_messenger_menupopup_ReceiveAuth {
+	list-style-image: url("chrome://getsendbutton/skin/getallmsg.svg");
+}
+
+/* Disabled status */
+#GetSendButton_S_all[disabled="true"],
+#tabbar-toolbar #GetSendButton_S_all[disabled="true"],
+#GetSendButton_messenger_menupopup_sendUnsent[disabled="true"],
+#GetSendButton_messenger_menupopup_SyncFlagged[disabled="true"],
+#GetSendButton_messenger_menupopup_ReceiveAll[disabled="true"],
+#GetSendButton_messenger_menupopup_ReceiveAuth[disabled="true"] {
+	opacity: .5;
+}

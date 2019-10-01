@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "5.6.5",
+  "author": "Alexander Ihrig",
+  "homepage_url": "https://www.thunderbird-mail.de/lexicon/entry/15-abrufen-senden-schaltfl%C3%A4che/",
+  "applications": {
+    "gecko": {
+      "id": "{6e071e83-d8d6-8ca9-6129-eb8e8144596f}",
+      "strict_min_version": "66.0"
+    }
+  },
+  "default_locale": "en",
+  "icons": {
+    "32": "chrome/skin/quantum/getallmsg_32.png",
+    "64": "chrome/skin/quantum/getallmsg_64.png"
+  },
+  "legacy": {
+    "options": {
+	  "page": "chrome://getsendbutton/content/getsendbuttonPrefs.xul"
+    }
+  }
+}

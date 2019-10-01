@@ -1,0 +1,74 @@
+menu.name=CalDAV & CardDAV
+
+defaultname.calendar=Calendar
+defaultname.contacts=Contacts
+
+syncstate.send.getfolders=Requesting folder list
+syncstate.eval.folders=Updating folder list
+
+syncstate.prepare.request.localchanges=Sending local changes
+syncstate.send.request.localchanges=Waiting for acknowledgment of local changes
+syncstate.eval.response.localchanges=Processing acknowledgment of local changes
+
+syncstate.send.request.remotechanges=Waiting for remote changes
+syncstate.eval.response.remotechanges=Processing remote changes
+
+status.networkerror=Could not connect to server.
+status.404=HTTP Error 404 (requested resource not found).
+status.403=Server rejected connection (forbidden).
+status.401=Could not authenticate, check username and password.
+status.500=Unknown Server Error (HTTP Error 500).
+status.503=Service unavailable.
+status.softerror=Non fatal error (##replace.1##)
+
+status.success.managed-by-lightning=Lightning
+status.info.restored=Due to partially missing write permissions, some actions were rejected by the server and reversed locally.
+status.malformed-xml=Could not parse XML. Check event log for details. 
+helplink.malformed-xml=https://github.com/jobisoft/DAV-4-TbSync/issues/59#issuecomment-459685281
+status.service-discovery-failed=sabre/dav service discovery failed for this server.
+status.missing-permission=Missing permission: ##replace.1##
+status.caldavservernotfound=Could not find a CalDAV server.
+status.carddavservernotfound=Could not find a CardDAV server.
+
+config.custom=CalDAV & CardDAV server configuration
+
+add.serverprofile.discovery=Automatic Configuration
+add.serverprofile.discovery.description=Most ownCloud, Nextcloud and other sabre/dav installations support the discovery service for automatic configuration.
+add.serverprofile.discovery.details1=If your server supports the discovery service, simply enter the host as the server URL. For example “cloud.myserver.com”. If that does not work, go back and select “Manual Configuration”.
+
+add.serverprofile.custom=Manual Configuration
+add.serverprofile.custom.description=Configure CalDAV and CardDAV servers separately.
+add.serverprofile.custom.details1=Your CalDAV & CardDAV service provider should provide the addresses to his servers. For SOGo it is mostly “cloud.myserver.com/SOGo/dav” for both servers, other service providers could use different servers for CalDAV and CardDAV.
+add.serverprofile.custom.details2=If you leave either address empty, the corresponding service will be disabled for this account.
+
+add.serverprofile.fruux=fruux
+add.serverprofile.fruux.description=fruux is a service that syncs contacts, calendars and tasks. It's powered by the company behind sabre/dav and is based in Germany.
+add.serverprofile.posteo=Posteo
+add.serverprofile.posteo.description=https://www.posteo.de
+
+add.serverprofile.icloud=iCloud
+add.serverprofile.icloud.description=https://www.icloud.com
+add.serverprofile.icloud.details1=The requested user name is your Apple ID. Please note, that you may not use your Apple ID password here. You MUST enable two-factor authentication (2FA) for your iCloud account and create a separate app-specific password for TbSync.
+add.serverprofile.icloud.details2=This is a security layer enforced by Apple, so that 3rd party clients do not gain access to your Apple account.
+
+add.serverprofile.yahoo=Yahoo!
+add.serverprofile.yahoo.description=https://www.yahoo.com
+add.serverprofile.gmx.net=GMX.net (Europe)
+add.serverprofile.gmx.net.description=https://www.gmx.net
+add.serverprofile.gmx.com=GMX.com (USA)
+add.serverprofile.gmx.com.description=https://www.gmx.com
+add.serverprofile.web.de=WEB.de
+add.serverprofile.web.de.description=https://www.web.de
+
+acl.readwrite=Server write permissions: ##replace.1##
+acl.readonly=Read-only server access (revert local changes)
+acl.modify=modify
+acl.add=add
+acl.delete=delete
+acl.none=none
+
+autocomplete.WORK=business
+autocomplete.HOME=private
+autocomplete.PREF=preferred
+
+status.gContactSync=There is an incompatibility with gContactSync with activated contact group synchronization. Please deactivate one of them as long as the error is not resolved.

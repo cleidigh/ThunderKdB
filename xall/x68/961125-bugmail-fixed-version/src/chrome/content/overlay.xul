@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ bugmail extension for Thunderbird
+    
+    Copyright (C) 2008-2009  Fabrice Desré
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    Initial author is Fabrice Desré - fabrice.desre@gmail.com
+-->
+<?xml-stylesheet href="chrome://bugmail/skin/bugmail.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://bugmail/locale/bugmail.dtd">
+<overlay id="bugmail-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         onunload="cleanup();">
+  <script type="application/x-javascript" src="chrome://bugmail/content/binding.js"/>
+  <script type="application/x-javascript" src="chrome://bugmail/content/overlay.js"/>
+  <script type="application/x-javascript" src="chrome://bugmail/content/bugzilla.js"/>
+  <script type="application/x-javascript" src="chrome://bugmail/content/trac.js"/>
+  <script type="application/x-javascript" src="chrome://bugmail/content/flyspray.js"/>
+  <script type="application/x-javascript" src="chrome://bugmail/content/launchpad.js"/>
+  <stringbundleset>
+    <stringbundle id="bugmail-strings" src="chrome://bugmail/locale/bugmail.strings"/>
+  </stringbundleset>
+  <vbox id="singlemessage">
+    <hbox insertafter="msgHeaderView" id="bugmail-box" align="start"
+          collapsed="true">
+      <hbox align="center" flex="1">
+        <image id="bugmail-logo"/>
+        <hbox id="bugmail-throbber" align="center">
+          <image src="chrome://global/skin/icons/loading.png"/>
+          <label value="&retrieve.label;"/>
+        </hbox>
+        <hbox id="bugmail-info"/>
+        <button collapsed="true" id="bugmail-details" label="&details.label;"
+              oncommand="launchpadEngine.toogleDetails();"/>
+        <spacer flex="1"/>
+        <button label="&update.label;" icon="refresh" oncommand="bugmail.forceUpdate()"/>
+      </hbox>
+      <iframe id="bugmail-iframe" src="chrome://bugmail/content/blank.html" collapsed="true"/>
+    </hbox>
+  </vbox>
+</overlay>
