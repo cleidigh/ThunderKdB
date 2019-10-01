@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://mail_sent_notifier/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://mail_sent_notifier/locale/mail_sent_notifier.dtd">
+<overlay id="mail_sent_notifier-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js" />
+  <menupopup id="taskPopup">
+    <menuitem id="mail_sent_notifier-preferences" label="&menuitem.title;" oncommand="mail_sent_notifier_preferences.onMenuItemCommand(event);" />
+  </menupopup>
+</overlay>

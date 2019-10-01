@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://mail_sent_notifier/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://mail_sent_notifier/locale/mail_sent_notifier.dtd">
+<overlay id="mail_sent_notifier-overlay_account" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay_account.js" />
+
+  <popup id="folderPaneContext" onpopupshowing="enhance_account_context_menu(); return fillFolderPaneContextMenu();">
+    <menuitem class="menuitem-iconic" id="folderPaneContext-mail_sent_notifier_activation"
+      type="checkbox"
+      label="&menuitem.title;"
+      accesskey="m"
+      insertbefore="folderPaneContext-properties"
+      checked="true"
+      data-myAtt="--undefined--"
+      oncommand="activate_deactivate_mail_sent_notifier_for_account(this)"/>
+    <menuseparator id="folderPaneContext-mail_sent_notifier_separator" insertbefore="folderPaneContext-properties"/>
+ </popup>
+
+</overlay>
+

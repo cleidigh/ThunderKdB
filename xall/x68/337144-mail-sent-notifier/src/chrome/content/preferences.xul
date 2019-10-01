@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://mail_sent_notifier/skin/overlay.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://mail_sent_notifier/locale/mail_sent_notifier.dtd">
+
+<prefwindow id="appPreferences" title="&prefwindow.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script src="preferences_window.js" />
+
+  <prefpane id="pane1">
+    <preferences>
+      <preference id="pref_is_active" name="extensions.mail_sent_notifier.is_active" type="bool" instantApply="true"/>
+      <preference id="pref_active_accounts" name="extensions.mail_sent_notifier.active_accounts" type="string" instantApply="true"/>
+      <preference id="pref_worker_id" name="extensions.mail_sent_notifier.worker_id" type="int" instantApply="true"/>
+      <preference id="pref_zeiterfassung_url" name="extensions.mail_sent_notifier.zeiterfassung_url" type="string" instantApply="true"/>
+    </preferences>
+    <vbox class="container">
+        <hbox align="center">
+            <label control="is_active" value="&prefwindow.is_active;"/>
+            <checkbox id="is_active" preference="pref_is_active" accesskey="&prefwindow.is_active;"/>
+        </hbox>
+        <hbox align="center">
+            <label control="zeiterfassung_url" value="&prefwindow.zeiterfassung_url;"/>
+            <textbox preference="pref_zeiterfassung_url" id="zeiterfassung_url" size="60" maxlength="255" accesskey="&prefwindow.zeiterfassung_url;"/>
+        </hbox>
+        <hbox align="center">
+            <label control="worker_id" value="&prefwindow.worker_id;"/>
+            <textbox preference="pref_worker_id" id="worker_id" size="3" maxlength="3" accesskey="&prefwindow.worker_id;"/>
+        </hbox>
+        <button label="Save" onclick="save_settings()"/>
+    </vbox>
+  </prefpane>
+
+  <script type="text/javascript">
+    fill_settings();
+  </script>
+
+</prefwindow>

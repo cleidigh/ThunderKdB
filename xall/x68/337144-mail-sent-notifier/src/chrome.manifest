@@ -1,0 +1,12 @@
+content mail_sent_notifier chrome/content/
+
+overlay chrome://messenger/content/messenger.xul chrome://mail_sent_notifier/content/statusbar_info.xul
+overlay chrome://messenger/content/messenger.xul chrome://mail_sent_notifier/content/overlay.xul
+overlay chrome://messenger/content/messenger.xul chrome://mail_sent_notifier/content/overlay_account.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://mail_sent_notifier/content/mail_sent_notifier.xul
+
+locale mail_sent_notifier en-US locale/en-US/
+locale mail_sent_notifier de-DE locale/de-DE/
+
+skin mail_sent_notifier classic/1.0 skin/
+style chrome://global/content/customizeToolbar.xul chrome://mail_sent_notifier/skin/overlay.css

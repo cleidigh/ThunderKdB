@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<!DOCTYPE dialog [
+<!ENTITY % options SYSTEM "chrome://FolderPaneSwitcher/locale/switcher.dtd">
+%options;
+<!ENTITY % viewZoomOverlayDTD SYSTEM "chrome://messenger/locale/viewZoomOverlay.dtd">
+%viewZoomOverlayDTD;
+]>
+
+<dialog
+    id="FolderPaneSwitcher-preferences"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="&options.title;"
+    buttons="accept,cancel,extra1"
+    buttonlabelextra1="&fullZoomResetCmd.label;">
+  <script src="chrome://global/content/globalOverlay.js"/>
+  <script src="chrome://global/content/editMenuOverlay.js"/>
+  <script src="utils.js"/>
+  <script src="options.js"/>
+  <prefpane id="pane1" label="&options.title;">
+    <vbox>
+      <hbox>
+	<checkbox id="FolderPaneSwitcher-arrows-checkbox"
+		  label="&options.arrows.label;"/>
+      </hbox>
+      <hbox>
+	<label>&options.delay.label;</label>
+	<html:input id="FolderPaneSwitcher-delay-textbox" type="number"/>
+      </hbox>
+<!--      <hbox tooltiptext="Time after the view switch during which you can't drop into a folder. Prevents accidental dropping into the wrong folder immediately after the view switch.">
+	<label>Drop prevention delay (milliseconds) after view switch:</label>
+	<html:input id="FolderPaneSwitcher-drop-delay-textbox" type="number"
+		 preference="FolderPaneSwitcher-drop-delay-preference"/>
+      </hbox> -->
+      <label class="header">&options.enable_disable.label;</label>
+      <grid>
+        <rows id="grid-rows">
+          <row>
+            <label class="header">&options.menu.label;</label>
+            <label class="header">&options.view_arrows.label;</label>
+            <label class="header">&options.view.label;</label>
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </prefpane>
+</dialog>

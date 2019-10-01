@@ -1,0 +1,25 @@
+{
+    "name": "__MSG_appName__",
+    "version": "3.1.0",
+    "description": "__MSG_appDesc__",
+    "author": "Jonathan Kamens",
+    "default_locale": "en-US",
+    "homepage_url": "https://addons.thunderbird.net/thunderbird/addon/folder-pane-view-switcher/",
+    "legacy": {
+        "type": "bootstrap",
+        "options": {
+            "page": "chrome://FolderPaneSwitcher/content/options.xul",
+            "open_in_tab": true
+        }
+    },
+    "applications": {
+        "gecko": {
+            "id": "FolderPaneSwitcher@kamens.us",
+            "strict_min_version": "68.0a1"
+        }
+    },
+    "icons": {
+        "48": "icon.png"
+    },
+    "manifest_version": 2
+}

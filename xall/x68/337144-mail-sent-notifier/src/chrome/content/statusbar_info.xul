@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://mail_sent_notifier/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://mail_sent_notifier/locale/mail_sent_notifier.dtd">
+<overlay id="mail_sent_notifier-statusbar-info" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ <script src="statusbar_info.js" />
+ <statusbar id="status-bar">
+  <statusbarpanel id="mail_sent_notifier_statusbar" label="&statusbar.info;" />
+ </statusbar>
+</overlay>
+
