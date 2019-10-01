@@ -1,0 +1,20 @@
+#quotaMeter {
+  border-radius: var(--toolbarbutton-border-radius);
+}
+
+#quotaLabel {
+  color: black;
+  text-shadow: none;
+}
+
+#quotaPanel #quotaMeter::-moz-progress-bar {
+  background-color: #0C0;
+}
+
+#quotaPanel[alert="warning"] #quotaMeter::-moz-progress-bar {
+  background-color: #F70;
+}
+
+#quotaPanel[alert="critical"] #quotaMeter::-moz-progress-bar {
+  background-color: #F00;
+}

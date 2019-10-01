@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Omdiriger">
+
+<!ENTITY mailredirectSettings.title "Mail Redirect innstillinger">
+
+<!ENTITY copyToSentMails.label "Legg en kopi av omadressert post i sendt-mappen?">
+<!ENTITY copyToSentMails.accesskey "L">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Hvis dette alternativet er avmerket vil omadresserte meldinger plasseres i sendt-mappen. Hvis alternativet ikke er merket kopieers ikke omadressert melding til noen mappe. \nMerk: Hvis dette alternativet er valgt og innstillingene for kontoen som brukes for omadressering er 'ikke å lagre sendte meldinger' vil ikke kopi av omadressert melding lagres heller.">
+
+<!ENTITY addToForwardAs.label "Legg til omdirigering på menyer og knapper">
+<!ENTITY addToForwardAs.accesskey "A">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Ved å legge 'Videresend' til 'Send som'-menyer og knapper, grupperer du alle handlinger for videresending til et element.\nDu kan fjerne knappene fra verktøylinjene ved å tilpasse dem, og ved å merke valget nedenfor kan du skjule de enkelte menyelementene da de ikke har noen mening lenger.">
+
+<!ENTITY hideRedirectMenuitems.label "Skjul meny for videresending fra Melding, Program og kontekstmenyer">
+<!ENTITY hideRedirectMenuitems.accesskey "H">
+<!ENTITY hideRedirectMenuitems.tooltip "Skjul de enkelte elementene i meny for videresending fra Melding, Program og kontekstmenyer.">
+
+<!ENTITY concurrentConnections.label "Antall samtidige SMTP-tilkoblinger:">
+<!ENTITY concurrentConnections.accesskey "A">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "Alternativet angir antall tilkoblinger som vil bli etablert på SMTP-serveren når du sender meldinger. Generelt, kan du øke ytelsen til sendeprosessen når du velger å omdirigere en stor mengde meldinger. \nMerk: Hvis du setter dette parameteret til null samtidige tilkoblinger ikke begrenses - vær klar over at dette kan innvirkninge på stabilitet av SMTP-serveren eller sending av noen meldinger kan mislykkes. Ved eventuelle problemer kan du angi denne verdien til en.">
+
+<!ENTITY defaultRecipientsGroup.label "Standard mottakere">
+
+<!ENTITY defaultResendTo.label "Send igjen til:">
+<!ENTITY defaultResendTo.accesskey "S">
+<!ENTITY defaultResendTo.tooltip "Kommaseparert liste over e-postadresser.">
+
+<!ENTITY defaultResendCc.label "Send igjen Cc:">
+<!ENTITY defaultResendCc.accesskey "C">
+<!ENTITY defaultResendCc.tooltip "Kommaseparert liste over e-postadresser.">
+
+<!ENTITY defaultResendBcc.label "Send blindkopi på nytt:">
+<!ENTITY defaultResendBcc.accesskey "b">
+<!ENTITY defaultResendBcc.tooltip "Kommaseparert liste over e-postadresser.">
+
+<!ENTITY defaultMode.label "Standardmodus:">
+<!ENTITY defaultMode.accesskey "m">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Velg hvordan du vil omdirigere meldinger som standard\nDenne innstillingen har bare effekt når du ikke har angitt noen standard mottakere.">
+<!ENTITY defaultModeResendTo.label "Send igjen til">
+<!ENTITY defaultModeResendCc.label "Send igjen Cc">
+<!ENTITY defaultModeResendBcc.label "Send blindkopi på nytt">
+
+<!ENTITY debug.label "Feilsøk">
+<!ENTITY debug.accesskey "F">
+<!ENTITY debug.tooltip "Slå på/av feilsøking for Mail Redirect-utvidelsen. Loggene sendes til JavaScript-konsoll.">
+
+<!ENTITY saveConsoleContent.label2 "Lagre Feilkonsollets innhold…">
+<!ENTITY saveConsoleContent.accesskey2 "e">
+<!ENTITY sendViaEmail.label "Sende via e-post">
+<!ENTITY sendViaEmail.accesskey "v">

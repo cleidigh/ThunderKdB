@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % mailredirectDTD SYSTEM "chrome://mailredirect/locale/mailredirect.dtd">
+  %mailredirectDTD;
+]>
+
+<overlay id="mailredirectMessengerOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <!-- Thunderbird >= 68 -->
+  <!-- Toolbarbuttons are moved to anonymous vbox-es during startup -->
+  <panelview id="appMenu-messageView">
+    <toolbarbutton id="appmenu_mailredirect"
+                   class="subviewbutton subviewbutton-iconic"
+                   label="&bounceCommand.label;"
+                   key="key_mailredirect"
+                   insertafter="appmenu_forwardAsMenu"
+                   observes="cmd_mailredirect" />
+  </panelview>
+
+  <panelview id="appMenu-messageForwardAsView">
+    <toolbarbutton id="appmenu_forwardAsMailredirect"
+                   class="subviewbutton subviewbutton-iconic"
+                   label="&forwardAsRedirect.label;"
+                   insertafter="appmenu_forwardAsAttachment"
+                   observes="cmd_mailredirect" />
+  </panelview>
+
+  <!-- Thunderbird < 68 -->
+  <menupopup id="appmenu_messageMenuPopup">
+    <menuitem id="appmenu_mailredirect"
+              label="&bounceCommand.label;"
+              key="key_mailredirect"
+              insertafter="appmenu_forwardAsMenu,appmenu_forwardAsAttachments"
+              observes="cmd_mailredirect" />
+  </menupopup>
+
+  <menupopup id="appmenu_forwardAsPopup">
+    <menuitem id="appmenu_forwardAsMailredirect"
+              label="&forwardAsRedirect.label;"
+              insertafter="appmenu_forwardAsAttachment"
+              observes="cmd_mailredirect" />
+  </menupopup>
+
+</overlay>

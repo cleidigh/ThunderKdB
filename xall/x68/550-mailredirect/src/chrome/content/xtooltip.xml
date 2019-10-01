@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<bindings id="popupBindings"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+
+  <binding id="xtooltip" extends="chrome://global/content/bindings/popup.xml#panel">
+    <content>
+      <xul:vbox style="max-width: 40em;" anonid="xtooltipBox"/>
+    </content>
+
+    <implementation>
+      <property name="label" onget="return this.getAttribute('xtooltiptext');">
+        <setter><![CDATA[
+          if (val === "") {
+            this.removeAttribute("label");
+          } else {
+            val = val.replace(/\\n/g, "\n");
+
+            this.setAttribute("label", val);
+
+            var xtooltipBox = document.getAnonymousElementByAttribute(this, "anonid", "xtooltipBox")
+            if (xtooltipBox !== null) {
+              while(xtooltipBox.hasChildNodes()) {
+                xtooltipBox.removeChild(xtooltipBox.firstChild);
+              }
+
+              var labelsArray = val.split("\n");
+              for (var l in labelsArray) {
+                const mailredirect_XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+                var xtooltipLabel = (typeof document.createXULElement === "function")
+                  ? document.createXULElement("label")
+                  : document.createElementNS(mailredirect_XUL_NS, "label");
+                xtooltipLabel.appendChild(document.createTextNode(labelsArray[l]))
+                xtooltipBox.appendChild(xtooltipLabel);
+              }
+            }
+          }
+          return val;
+          ]]>
+        </setter>
+      </property>
+    </implementation>
+
+    <handlers>
+      <handler event="popupshowing"><![CDATA[
+        this.height = this.getBoundingClientRect().height;
+        ]]>
+      </handler>
+      <handler event="popuphiding"><![CDATA[
+        this.height = "";
+        ]]>
+      </handler>
+
+    </handlers>
+
+  </binding>
+</bindings>

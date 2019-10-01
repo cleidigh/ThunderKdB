@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "IMAP Quota (Free Space)",
+  "description": "This addon lets you customize the IMAP quota statusbar panel",
+  "version": "2.0",
+  "author": "Mic (m@micz.it)",
+  "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/imap-quota-free-space/",
+  "legacy" : {
+    "options" : {
+      "page" : "chrome://imapquota/content/mziq-settings.xul",
+      "open_in_tab" : false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "imapquota@micz.it",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "32": "skin/mziq-icon.png",
+    "64": "skin/mziq-icon64.png"
+  }
+}

@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Преадресиране">
+
+<!ENTITY mailredirectSettings.title "Настройки на Преадресиране на писма">
+
+<!ENTITY copyToSentMails.label "Копиране на преадресираните писма в папка Изпратени?">
+<!ENTITY copyToSentMails.accesskey "К">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Ако това поле е отметнато се прави копие от препратеното писмо в папка Изпратени. Ако полето не е отметнато не се прави копие.\nЗабележка: Ако полето е отметнато, но използваната за препращане сметка има настройка „да не запазва никакви изпратени писма“, тогава пак няма да бъде направено копие.">
+
+<!ENTITY addToForwardAs.label "Добавяне на Преадресиране към менютата и бутоните на Препращане като">
+<!ENTITY addToForwardAs.accesskey "Д">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Добавяйки Преадресиране към менютата и бутоните на „Препращане като“ групирате всички действия за пренасочване да едно място.\nМоже да премахнете бутоните от лентите с инструменти като ги персонилизирате или като отметнете долната отметка. Също може да скривате отделни излишни елементи от менютата.">
+
+<!ENTITY hideRedirectMenuitems.label "Скриване на меню Преаднесиране от контекстуалните менюта">
+<!ENTITY hideRedirectMenuitems.accesskey "С">
+<!ENTITY hideRedirectMenuitems.tooltip "Скриване на отделните елементи от меню Преаднесиране от контекстуалните менюта на съобщения и приложението.">
+
+<!ENTITY concurrentConnections.label "Брой на едновременните връзки към SMTP:">
+<!ENTITY concurrentConnections.accesskey "Б">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "Тази настройка указва броя на отворените връзки към сървъра за SMTP при изпращане на писма. По този начин ще се съкрати времето за преадресиране на голям брой писма едновременно.\nЗабележка: Ако на параметъра зададете 0 (т.е. без ограничение на броя едновременно отворени връзки) имайте предвид, че това може да доведе до намаляване на стабилността на сървъра за SMTP или някои преадресирани писма да не бъдат изпратени. Ако има проблеми при преадресиране задайте стойност 1.">
+
+<!ENTITY defaultRecipientsGroup.label "Получатели по подразбиране">
+
+<!ENTITY defaultResendTo.label "Преадр.-До:">
+<!ENTITY defaultResendTo.accesskey "Д">
+<!ENTITY defaultResendTo.tooltip "Имейлите се разделят със запетая.">
+
+<!ENTITY defaultResendCc.label "Преадр.-Копие:">
+<!ENTITY defaultResendCc.accesskey "К">
+<!ENTITY defaultResendCc.tooltip "Имейлите се разделят със запетая.">
+
+<!ENTITY defaultResendBcc.label "Преадр.-Скрито:">
+<!ENTITY defaultResendBcc.accesskey "С">
+<!ENTITY defaultResendBcc.tooltip "Имейлите се разделят със запетая.">
+
+<!ENTITY defaultMode.label "Режим по подразбиране:">
+<!ENTITY defaultMode.accesskey "м">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Изберете как писмата да бъдат преадресирани по подразбиране.\nТази настройка влиза в сила, само когато няма избрани получатели по подразбиране.">
+<!ENTITY defaultModeResendTo.label "Преадр.-До">
+<!ENTITY defaultModeResendCc.label "Преадр.-Копие">
+<!ENTITY defaultModeResendBcc.label "Преадр.-Скрито">
+
+<!ENTITY debug.label "Отстраняване на дефекти">
+<!ENTITY debug.accesskey "д">
+<!ENTITY debug.tooltip "Включване/изключване на отстраняване на дефекти от разширението Mail Redirect. Дневниците с действията на разширението се пренасочват към конзолата за грешки.">
+
+<!ENTITY saveConsoleContent.label2 "Запазване на съдържанието на конзолата за грешки…">
+<!ENTITY saveConsoleContent.accesskey2 "З">
+<!ENTITY sendViaEmail.label "Изпращане по имейла">
+<!ENTITY sendViaEmail.accesskey "п">

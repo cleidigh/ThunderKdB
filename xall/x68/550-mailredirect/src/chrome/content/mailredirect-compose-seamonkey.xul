@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Style sheets -->
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://communicator/skin/communicator.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://messenger/skin/addressingWidget.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messengercompose/messengercompose.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://messenger/skin/threadPane.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/threadPaneExtras.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/threadPaneLabels.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://messenger/skin/mailWindow1.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://mailredirect/skin/mailredirect-compose.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailredirect/skin/mailredirect-subjectCol.css" type="text/css"?>
+
+<?xul-overlay href="chrome://communicator/content/utilityOverlay.xul"?>
+
+<!DOCTYPE window [
+  <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd" >
+  %brandDTD;
+  <!ENTITY % mailredirectDTD SYSTEM "chrome://mailredirect/locale/mailredirect-compose.dtd" >
+  %mailredirectDTD;
+  <!ENTITY % utilityDTD SYSTEM "chrome://communicator/locale/utilityOverlay.dtd">
+  %utilityDTD;
+  <!ENTITY % customizeToolbarDTD SYSTEM "chrome://global/locale/
+  Toolbar.dtd">
+  %customizeToolbarDTD;
+]>
+
+<window id="msgMailRedirectWindow"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        icon="msgMailRedirectWindow"
+        title="&msgMailRedirectWindow.title;"
+        onload="BounceLoad();"
+        onunload="BounceUnload();"
+        onclose="return DoCommandClose()"
+        toggletoolbar="true"
+        lightweightthemes="true"
+        lightweightthemesfooter="status-bar"
+        windowtype="mail:mailredirectWindow"
+        macanimationtype="document"
+        drawtitle="true"
+        width="600" height="350" screenX="100" screenY="100"
+        persist="screenX screenY width height sizemode">
+
+  <!-- <script type="application/javascript" src="chrome://global/content/strres.js" /> -->
+  <script type="application/javascript" src="chrome://messenger/content/commandglue.js" />
+
+  <!-- <script type="application/javascript" src="chrome://messenger/content/dateFormat.js" /> -->
+  <script type="application/javascript" src="chrome://messenger/content/accountUtils.js" />
+  <script type="application/javascript" src="chrome://messenger/content/widgetglue.js" />
+  <!-- <script type="application/javascript" src="chrome://messenger/content/mailCore.js" /> -->
+
+  <script type="application/javascript" src="chrome://mailredirect/content/mailredirect-prefs.js" />
+  <script type="application/javascript" src="chrome://mailredirect/content/mailredirect-debug.js" />
+  <script type="application/javascript" src="chrome://mailredirect/content/mailredirect-compose.js" />
+  <script type="application/javascript" src="chrome://mailredirect/content/aw.js" />
+
+  <!-- drag and drop -->
+  <script type="application/javascript" src="chrome://global/content/nsDragAndDrop.js" />
+  <script type="application/javascript" src="chrome://global/content/nsTransferable.js" />
+
+  <!-- move needed functions into a single js file -->
+  <!-- <script type="application/javascript" src="chrome://global/content/charsetOverlay.js" /> -->
+  <script type="application/javascript" src="chrome://global/content/globalOverlay.js" />
+  <script type="application/javascript" src="chrome://global/content/contentAreaUtils.js" />
+  <script type="application/javascript" src="chrome://messenger/content/mailWindowOverlay.js" />
+  <script type="application/javascript" src="chrome://communicator/content/utilityOverlay.js" />
+
+  <commandset>
+    <command id="cmd_mailredirect_now" oncommand="goDoCommand('cmd_mailredirect_now')" />
+    <command id="cmd_mailredirect_withcheck" oncommand="goDoCommand('cmd_mailredirect_withcheck')" />
+    <command id="cmd_mailredirect_close" oncommand="goDoCommand('cmd_mailredirect_close')" />
+    <command id="cmd_mailredirect_delete" oncommand="goDoCommand('cmd_mailredirect_delete')" />
+    <command id="cmd_CustomizeMailredirectToolbar" oncommand="SuiteCustomizeToolbar(this);" />
+    <!-- SeaMonkey adds Quit to the File menu, make it work -->
+    <command id="cmd_quit" oncommand="goQuitApplication();" />
+  </commandset>
+
+  <broadcasterset id="mainBroadcasterSet">
+    <broadcaster id="cmd_CustomizeMailredirectToolbar" />
+    <broadcaster id="viewAddressPicker" autoCheck="false" type="checkbox" oncommand="toggleAddressPicker();" />
+  </broadcasterset>
+
+  <keyset id="mailKeys">
+    <key id="key_escape" keycode="VK_ESCAPE" command="cmd_mailredirect_close" />
+    <key id="my_key_delete" keycode="VK_DELETE" command="cmd_mailredirect_delete" />
+
+    <!-- File Menu -->
+    <key id="key_bounce" keycode="VK_RETURN" modifiers="accel" observes="cmd_mailredirect_withcheck" />
+    <key id="key_close" key="&closeCmd.key;" modifiers="&closeCmd.modifiers;" command="cmd_mailredirect_close" />
+    <!-- SeaMonkey adds Quit to the File menu, make it work -->
+    <key id="key_quit"  key="&quitApplicationCmd.key;" command="cmd_quit" modifiers="&quitApplicationCmd.modifiers;" />
+
+    <!-- View Menu -->
+    <key id="key_addressSidebar" keycode="VK_F9" oncommand="toggleAddressPicker();" />
+
+    <!-- Tools Menu -->
+    <key id="key_mail" key="&messengerCmd.key;" modifiers="&messengerCmd.modifiers;" oncommand="toMessengerWindow();" />
+    <key id="key_addressbook" key="&addressBookCmd.key;" modifiers="&addressBookCmd.modifiers;" oncommand="toAddressBook();" />
+
+    <!-- Tab/F6 Keys -->
+    <key id="key_tab"           keycode="VK_TAB" modifiers="control"       oncommand="SwitchElementFocus(event);" />
+    <key id="key_shift_tab"     keycode="VK_TAB" modifiers="control,shift" oncommand="SwitchElementFocus(event);" />
+    <key id="key_f6"            keycode="VK_F6"                            oncommand="SwitchElementFocus(event);" />
+    <key id="key_shift_f6"      keycode="VK_F6"  modifiers="shift"         oncommand="SwitchElementFocus(event);" />
+    <key id="key_ctrl_f6"       keycode="VK_F6"  modifiers="control"       oncommand="SwitchElementFocus(event);" />
+    <key id="key_ctrl_shift_f6" keycode="VK_F6"  modifiers="control,shift" oncommand="SwitchElementFocus(event);" />
+  </keyset>
+
+  <popupset id="msgMailredirectPopupSet">
+    <menupopup id="toolbar-context-menu" />
+    <panel id="customizeToolbarSheetPopup" />
+  </popupset>
+
+  <toolbox id="bounce-toolbox"
+           class="toolbox-top"
+           mode="full"
+           defaultmode="full">
+
+    <!-- Menu -->
+    <toolbar id="mailredirect-toolbar-menubar"
+             type="menubar"
+             class="chromeclass-menubar"
+             persist="collapsed"
+             customizable="true"
+             defaultset="menubar-items"
+             mode="icons"
+             iconsize="small"
+             defaultmode="icons"
+             defaulticonsize="small"
+             toolbarname="&menubarCmd.label;"
+             accesskey="&menubarCmd.accesskey;"
+             context="toolbar-context-menu">
+
+       <toolbaritem id="menubar-items"
+                    class="menubar-items"
+                    align="center">
+        <menubar id="mail-menubar">
+          <menu id="menu_File"
+                label="&fileMenu.label;"
+                accesskey="&fileMenu.accesskey;">
+            <menupopup id="menu_FilePopup">
+              <menuitem id="menu-item-bounce-now"
+                        label="&forwardBounce.label;"
+                        accesskey="&forwardBounce.accesskey;"
+                        key="key_bounce"
+                        observes="cmd_mailredirect_now" />
+              <menuseparator id="menu_FileCloseSeparator" />
+              <menuitem id="menu_close"
+                        label="&closeCmd.label;"
+                        accesskey="&closeCmd.accesskey;"
+                        key="key_close"
+                        command="cmd_mailredirect_close" />
+            </menupopup>
+          </menu>
+
+          <menu id="menu_View"
+                label="&viewMenu.label;"
+                accesskey="&viewMenu.accesskey;">
+            <menupopup id="menu_View_Popup">
+              <menu id="menu_ToolbarsNew"
+                    label="&viewToolbarsMenuNew.label;"
+                    accesskey="&viewToolbarsMenuNew.accesskey;">
+                <menupopup id="view_toolbars_popup"
+                           onpopupshowing="onViewToolbarsPopupShowing(event);"
+                           oncommand="onViewToolbarCommand(event);">
+                  <menuitem id="menu_showTaskbar"
+                            type="checkbox"
+                            label="&showStatusbarCmd.label;"
+                            accesskey="&showStatusbarCmd.accesskey;"
+                            oncommand="goToggleToolbar('status-bar', 'menu_showTaskbar')"
+                            checked="true" />
+                </menupopup>
+              </menu>
+              <menuitem id="menu_AddressSidebar"
+                        label="&addressSidebar.label;" accesskey="&addressSidebar.accesskey;"
+                        key="key_addressSidebar" observes="viewAddressPicker" />
+            </menupopup>
+          </menu>
+
+          <menu id="tasksMenu" label="&tasksMenu.label;" accesskey="&tasksMenu.accesskey;">
+            <menupopup id="taskPopup">
+              <!-- Moving the first two items to the Window menu on the Mac -->
+              <menuitem accesskey="&messengerCmd.accesskey;" label="&messengerCmd.label;"  key="key_mail"
+                oncommand="toMessengerWindow();" id="tasksMenuMail" class="menuitem-iconic icon-mail16 menu-iconic" />
+              <menuitem label="&addressBookCmd.label;" accesskey="&addressBookCmd.accesskey;" key="key_addressbook"
+                oncommand="toAddressBook();" id="tasksMenuAddressBook"
+                class="menuitem-iconic icon-addressbook16 menu-iconic" />
+              <menuitem id="menu_preferences" label="&preferencesCmd.label;" accesskey="&preferencesCmd.accesskey;"
+                oncommand="goPreferences('mailredirect_pane')" />
+            </menupopup>
+          </menu>
+        </menubar>
+      </toolbaritem>
+    </toolbar>
+
+    <toolbarpalette id="MsgMailredirectToolbarPalette">
+      <toolbarbutton class="toolbarbutton-1"
+                     id="button-send"
+                     observes="cmd_mailredirect_now"
+                     label="&bounceButton.label;"
+                     tooltiptext="&bounceButton.tooltip;" />
+      <toolbarbutton class="toolbarbutton-1"
+                     id="button-address"
+                     label="&addressButton.label;"
+                     tooltiptext="&addressButton.tooltip;"
+                     oncommand="toAddressBook();" />
+      <toolbarbutton class="toolbarbutton-1"
+                     id="button-contacts"
+                     label="&addressSidebarButton.label;"
+                     tooltiptext="&addressSidebarButton.tooltip;"
+                     observes="viewAddressPicker" />
+      <toolbaritem id="throbber-box"
+                   class="toolbaritem-noline"
+                   removable="true"
+                   title="&throbberItem.title;"
+                   align="center"
+                   pack="center"
+                   mousethrough="always">
+        <button id="navigator-throbber"
+                oncommand="goClickThrobber('messenger.throbber.url', event)"
+                onclick="checkForMiddleClick(this, event);"
+                tooltiptext="&throbber.tooltip;" />
+      </toolbaritem>
+    </toolbarpalette>
+
+    <toolbar id="bounceToolbar"
+             class="chromeclass-toolbar"
+             persist="collapsed"
+             toolbarname="&showBounceToolbarCmd.label;"
+             accesskey="&showBounceToolbarCmd.accesskey;"
+             customizable="true"
+             defaultset="button-send,separator,button-contacts,spring,throbber-box"
+             defaultmode="full"
+             defaulticonsize="large"
+             context="toolbar-context-menu">
+    </toolbar>
+
+    <toolbarset id="customToolbars" context="toolbar-context-menu" />
+  </toolbox>
+
+  <hbox id="bounceContentBox" flex="1">
+    <vbox id="sidebar-box" persist="sidebarVisible width" hidden="true">
+      <sidebarheader id="sidebarHeader" align="center">
+        <label id="sidebar-title" value="&addressesSidebarTitle.label;" />
+        <spacer flex="1" />
+        <toolbarbutton id="sidebar-close-button"
+                       class="ab-closebutton"
+                       oncommand="sidebarCloseButtonOnCommand();" />
+      </sidebarheader>
+      <browser id="sidebar" flex="1" src="" disablehistory="true"
+               style="min-width: 150px; width: 200px; max-width: 400px;" />
+    </vbox>
+
+    <splitter id="sidebar-splitter" hidden="true" />
+
+    <vbox id="headers-parent" flex="1">
+      <toolbox id="headers-box" class="toolbox-top" mode="icons">
+        <toolbar id="MsgHeadersToolbar" persist="collapsed" flex="1"
+                 customizable="true" nowindowdrag="true"
+                 ondragover="nsDragAndDrop.dragOver(event, mailredirectDragObserver);"
+                 ondragdrop="nsDragAndDrop.drop(event, mailredirectDragObserver);"
+                 ondragexit="nsDragAndDrop.dragExit(event, mailredirectDragObserver);">
+          <hbox id="msgheaderstoolbar-box" flex="1">
+            <vbox flex="1" id="addresses-box">
+              <hbox id="top-gradient-box">
+                <hbox align="center" pack="end" style="&headersSpace.style;">
+                  <label value="&resendFromAddr.label;" accesskey="&resendFromAddr.accesskey;" control="msgIdentity" />
+                </hbox>
+                <menulist id="msgIdentity" type="description" flex="1"
+                          oncommand="LoadIdentity(false);" disableonsend="true">
+                  <menupopup id="msgIdentityPopup" />
+                </menulist>
+              </hbox>
+              <listbox id="addressingWidget" flex="1" seltype="multiple" rows="1"
+                       onclick="awClickEmptySpace(event.originalTarget, true)"
+                       disableonsend="true">
+                <listcols>
+                  <listcol id="firstcol-addressingWidget" />
+                  <listcol id="typecol-addressingWidget" style="&headersSpace.style;" />
+                  <listcol id="textcol-addressingWidget" flex="1" />
+                </listcols>
+                <listitem class="addressingWidgetItem" allowevents="true">
+                  <listcell class="aw-firstColBox" align="center" />
+                  <listcell class="addressingWidgetCell" align="stretch">
+                    <menulist id="addressCol1#1" disableonsend="true"
+                              class="aw-menulist menulist-compact" flex="1"
+                              oncommand="onAddressColCommand(this.id);">
+                      <menupopup>
+                        <menuitem value="addr_to" label="&resendToAddr.label;" />
+                        <menuitem value="addr_cc" label="&resendCcAddr.label;" />
+                        <menuitem value="addr_bcc" label="&resendBccAddr.label;" />
+                      </menupopup>
+                     </menulist>
+                   </listcell>
+                  <listcell class="addressingWidgetCell">
+                    <textbox id="addressCol2#1" class="plain textbox-addressingWidget uri-element"
+                             aria-labelledby="addressCol1#1"
+                             type="autocomplete" flex="1"
+                             newlines="replacewithcommas"
+                             autocompletesearch="mydomain addrbook ldap"
+                             autocompletesearchparam="{}"
+                             timeout="300"
+                             maxrows="4"
+                             completedefaultindex="true" forcecomplete="true"
+                             completeselectedindex="true"
+                             minresultsforpopup="2" ignoreblurwhilesearching="true"
+                             ontextentered="awRecipientTextCommand(eventParam, this)"
+                             onerrorcommand="awRecipientErrorCommand(eventParam, this)"
+                             oninput="setupAutocomplete();" disableonsend="true"
+                             onkeypress="awRecipientKeyPress(event, this)"
+                             onkeydown="awRecipientKeyDown(event, this)">
+                      <image class="person-icon" onclick="this.parentNode.select();" />
+                    </textbox>
+                  </listcell>
+                </listitem>
+              </listbox>
+            </vbox>
+          </hbox>
+        </toolbar>
+      </toolbox>
+
+      <splitter id="bounce-toolbar-sizer"
+                resizeafter="grow"
+                onmousedown="awSizerListen()"
+                oncommand="awSizerResized(this);"
+                orient="vertical" collapse="after" />
+
+      <vbox id="appcontent" flex="1">
+        <separator class="thin" />
+          <label id="bounceMailsLabel" class="plain" value="&bounceMailsLabel.label;" />
+        <separator class="thin" />
+        <tree id="threadTree"
+              treelines="true"
+              flex="2"
+              hidecolumnpicker="true"
+              seltype="multiple"
+              class="plain"
+              disableKeyNavigation="true">
+          <treecols>
+            <treecol id="subjectCol" label="&subject.label;" flex="7" ignorecolumnpicker="true" persist="width" />
+            <splitter class="tree-splitter" />
+            <treecol id="senderCol" label="&sender.label;" flex="7" ignorecolumnpicker="true" persist="width" />
+            <splitter class="tree-splitter" />
+            <treecol id="dateCol" label="&date.label;" flex="4" ignorecolumnpicker="true" persist="width"
+                     type="progressmeter" />
+          </treecols>
+          <treechildren id="topTreeChildren" flex="1" disableonsend="true"
+             ondragover="nsDragAndDrop.dragOver(event, mailredirectDragObserver);"
+             ondrop="nsDragAndDrop.drop(event, mailredirectDragObserver);"
+             ondragexit="nsDragAndDrop.dragExit(event, mailredirectDragObserver);" />
+        </tree>
+      </vbox>
+    </vbox>
+  </hbox>
+
+  <statusbar id="status-bar-pre65" class="chromeclass-status">
+    <statusbarpanel id="statusText-pre65" flex="1" />
+    <statusbarpanel id="statusbar-progresspanel-pre65" class="statusbarpanel-progress">
+      <progressmeter id="bounce-progressmeter-pre65" class="progressmeter-statusbar" mode="normal" value="0" collapsed="true" />
+    </statusbarpanel>
+  </statusbar>
+
+</window>

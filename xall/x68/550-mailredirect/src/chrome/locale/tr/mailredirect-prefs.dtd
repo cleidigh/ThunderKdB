@@ -1,0 +1,53 @@
+<!ENTITY mailredirectSettings.label2 "Yönlendir">
+
+<!ENTITY mailredirectSettings.title "E-posta-Yönlendirme Ayarları">
+
+<!ENTITY copyToSentMails.label "Gönderilenler klasöründe yönlendirilen mesajın kopyasını sakla">
+<!ENTITY copyToSentMails.accesskey "K">
+<!-- LOCALIZATION NOTE (copyToSentMails.tooltip): do not translate \n -->
+<!ENTITY copyToSentMails.tooltip "Bu seçenek seçildiğinde yönlendirilen mesajın kopyası Gönderilenler klasörüne saklanır. Seçilmezse hiç bir klasöre kopyalanmaz.\nNot: Bu seçenek seçildiğinde ve yönlendirme için kullanılan hesabınız 'gönderilen mesajları hiç saklama' biçimindeyse yönlendirilen mesajların kopyası da saklanmayacaktır.">
+
+<!ENTITY addToForwardAs.label "Yeniden Gönder menü ve tuşlarına Yönlendir ekle">
+<!ENTITY addToForwardAs.accesskey "Y">
+<!-- LOCALIZATION NOTE (addToForwardAs.tooltip): do not translate \n -->
+<!ENTITY addToForwardAs.tooltip "Yeniden Gönder menü ve tuşlarına Yönlendir eklediğinizde tüm yeniden gönderme eylemlerini tek bir yerde toplarsınız.\nTuşları özelleştirerek ve aşağıdaki seçeneği seçerek tuşları araç çubuğundan kaldırabilirsiniz; Gereksiz olacaklarından dolayı alt menü öğelerini gizleyebilirsiniz.">
+
+<!ENTITY hideRedirectMenuitems.label "Mesaj, Uygulama ve içerik menülerinde Yönlendir menü öğesini gizle">
+<!ENTITY hideRedirectMenuitems.accesskey "g">
+<!ENTITY hideRedirectMenuitems.tooltip "Mesaj, Uygulama ve içerik menülerinde Yönlendir alt menü öğelerini gizler.">
+
+<!ENTITY concurrentConnections.label "Eşzamanlı SMTP bağlantılarının sayısı:">
+<!ENTITY concurrentConnections.accesskey "E">
+<!-- LOCALIZATION NOTE (concurrentConnections.tooltip): do not translate \n -->
+<!ENTITY concurrentConnections.tooltip "The option specifies number of connections that will be established to your SMTP server while sending messages. In general, this allows you to increase performance of sending process when you choose to redirect huge amount of messages.\nNote: If you set this parameter to zero no limits of concurrent connections will apply - be awared that it could impact on stability of your SMTP server or sending of some messages could fail. In case of any problems set this value to one.">
+
+<!ENTITY defaultRecipientsGroup.label "Varsayılan Alıcılar">
+
+<!ENTITY defaultResendTo.label "YineGönder-Kime:">
+<!ENTITY defaultResendTo.accesskey "K">
+<!ENTITY defaultResendTo.tooltip "Virgülle ayrılmış e-posta adresleri.">
+
+<!ENTITY defaultResendCc.label "YineGönder-Çoklu:">
+<!ENTITY defaultResendCc.accesskey "C">
+<!ENTITY defaultResendCc.tooltip "Virgülle ayrılmış e-posta adresleri.">
+
+<!ENTITY defaultResendBcc.label "YineGönder-Gizli:">
+<!ENTITY defaultResendBcc.accesskey "G">
+<!ENTITY defaultResendBcc.tooltip "Virgülle ayrılmış e-posta adresleri.">
+
+<!ENTITY defaultMode.label "Varsayılan kip:">
+<!ENTITY defaultMode.accesskey "k">
+<!-- LOCALIZATION NOTE (defaultMode.tooltip): do not translate \n -->
+<!ENTITY defaultMode.tooltip "Choose how you want to redirect messages by default\nThis setting only has effect when you have not specified any default recipients.">
+<!ENTITY defaultModeResendTo.label "YineGönder-Kime">
+<!ENTITY defaultModeResendCc.label "YineGönder-Çoklu">
+<!ENTITY defaultModeResendBcc.label "YineGönder-Gizli">
+
+<!ENTITY debug.label "Hata Ayıkla">
+<!ENTITY debug.accesskey "H">
+<!ENTITY debug.tooltip "E-postaYönlendirme eklentisi için hata ayıklamayı aç/kapa. Hata mesajları JavaScript Ekranına yönlendirilir.">
+
+<!ENTITY saveConsoleContent.label2 "Hata Paneli içeriğini Kaydet…">
+<!ENTITY saveConsoleContent.accesskey2 "S">
+<!ENTITY sendViaEmail.label "E-posta ile gönder">
+<!ENTITY sendViaEmail.accesskey "e">

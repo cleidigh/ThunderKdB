@@ -1,0 +1,34 @@
+[
+  {
+    "namespace": "myapi",
+    "functions": [
+      {
+        "name": "myExpandRecipients",
+        "type": "function",
+        "description": "Expand lists of addresses",
+        "async": true,
+        "parameters": []
+        }, {
+        "name": "setWindowListener",
+        "type": "function",
+        "description": "Adds a listener to all opening windows",
+        "async": false,
+        "parameters": [
+          {
+            "name": "domain",
+            "type": "string",
+            "description": "The domain to be excluded"
+          }, {
+            "name": "Version",
+            "type": "string",
+            "description": "Version info that can be added to header"
+          }, {
+            "name": "titles",
+            "type": "string",
+            "description": "List of all the titles for the messagebox."
+          }
+        ]
+      }
+    ]
+  }
+]

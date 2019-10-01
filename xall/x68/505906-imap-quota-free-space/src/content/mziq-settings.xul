@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://imapquota/skin/mziq-settings.css"?>
+<!DOCTYPE dialog SYSTEM "chrome://imapquota/locale/settings.dtd">
+<dialog id="ImapQuota_Settings"
+        buttons="accept"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="&ImapQuota.SettingsTitle;"
+        onload="miczImapQuotaPref.update_show_check();">
+  <stringbundleset id="stringbundleset_settings">
+    <stringbundle id="ImapQuota-string-bundle_settings" src="chrome://imapquota/locale/settings.properties" />
+  </stringbundleset>
+  <label value="&ImapQuota.GlobalDescSettingTab;"/>
+  <separator />
+  <checkbox id="ImapQuota.Show_checkbox"
+            label="&ImapQuota.ThresholdShow0.label;" 
+            oncommand="miczImapQuotaPref.update_show_value();"/>
+  <separator />
+  <label value="&ImapQuota.HowtoDescSettingTab;"/>
+  <hbox align="center">
+    <textbox id="ImapQuota.ThresholdShow_textfield" 
+             maxlength="2" 
+             class="mziq-tbox" 
+             preference="mail.quota.mainwindow_threshold.show" 
+             oninput="miczImapQuotaPref.update_show_check();"/>
+    <label value="&ImapQuota.ThresholdShow.label;"/>
+  </hbox>
+  <hbox align="center">
+    <textbox id="ImapQuota.ThresholdWarning_textfield" 
+             maxlength="2"
+             class="mziq-tbox" 
+             preference="mail.quota.mainwindow_threshold.warning"/>
+    <label value="&ImapQuota.ThresholdWarning.label;"/>
+  </hbox>
+  <hbox align="center">
+    <textbox id="ImapQuota.ThresholdCritical_textfield" 
+             maxlength="2"
+             class="mziq-tbox"
+             preference="mail.quota.mainwindow_threshold.critical"/>
+    <label value="&ImapQuota.ThresholdCritical.label;"/>
+  </hbox>
+  <separator />
+  <button label="&ImapQuota.DefaultBtn.label;"
+          oncommand="miczImapQuotaPref.set_default_values();"
+          style="min-width:10px;"/>
+  <script type="application/x-javascript" src="chrome://global/content/preferencesBindings.js" />
+  <script type="application/x-javascript" src="chrome://imapquota/content/mziq-settings.js" />
+  <script type="application/x-javascript" src="chrome://imapquota/content/mziq-overlay.js" />
+  <script type="application/x-javascript" src="chrome://imapquota/content/mziq-prefobserver.js" /> 
+</dialog>

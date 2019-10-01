@@ -1,0 +1,30 @@
+body {
+  font-size: 15px;
+  font-weight: normal;
+  margin: 0;
+  padding: 8px;
+}
+
+input[type="button"] {
+  margin: 4px;
+  padding: 5px 14px;
+  -moz-appearance: none;
+  color: #0c0c0d;
+  border: 1px solid #d7d7db;
+  border-radius: 2px;
+  background-color: #f9f9fa;
+  font-size: 1em;
+}
+
+input[type="button"]:hover {
+  background-color: #ebebeb;
+}
+
+input[type="button"]:active {
+  background-color: #dadada;
+}
+
+input[type="button"][disabled] {
+  background-color: #f9f9fa;
+  opacity: 0.5;
+}

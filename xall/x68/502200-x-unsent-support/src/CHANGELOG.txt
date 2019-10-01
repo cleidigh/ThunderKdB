@@ -1,0 +1,27 @@
+3.0.0 [2019-06-09]
+ - now requires at least Thunderbird 68
+ - fixed incompatibility with Thunderbird 68
+
+2.0.0 [2018-05-04]
+------------------
+ - now requires at least Thunderbird 52
+ - fixed incompatibility with Thunderbird 60
+
+1.1.1 [2016-12-12]
+------------------
+ - fix error if From header does not exist
+ - fixed incompatibility with Thunderbird 52
+
+1.1.0 [2016-03-15]
+------------------
+ - use the from address to select the sending identity
+ - now also works with line endings other than CRLF
+
+1.0.1 [2014-04-23]
+------------------
+ - changed composition type from Draft to Template (can be changed by the "extensions.xUnsent_support.default.msgCompType" preference)
+ - only handle file flag if .eml file contains "X-Unsent: 1"
+
+1.0.0 [2014-04-14]
+------------------
+ - Initial release

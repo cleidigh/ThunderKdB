@@ -1,0 +1,29 @@
+[
+  {
+  "namespace": "oldPrefs",
+  "functions": [
+    {
+      "name": "getOldPrefs",
+      "type": "function",
+      "description": "Retrieve preferences from prefs.js file",
+      "async": true,
+      "parameters": [
+        {
+          "name":"thisPreference",
+          "type": "string",
+          "description": "The name of the preference to be recovered"
+
+        }, {
+          "name": "thisAddon",
+          "type": "string",
+          "description": "name of the addon"
+        }, {
+          "name": "thisType",
+          "type": "string",
+          "description": "type of preference, string, or boolean"
+        }
+        ]
+      }
+    ]
+  }
+]
