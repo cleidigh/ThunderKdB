@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      xml:lang="en" lang="en">
+
+  <head>
+     <meta charset="UTF-8"> 
+     <base target="_top"> 
+  <link rel="manifest" href="/manifest.json">
+  </head>
+
+<body>
+<style type="text/css">
+    body {
+        background-color:black;
+    }
+    #form1 {
+        background-color:black;
+    }
+    #form2 {
+        background-color:black;
+    }
+    #form3 {
+        background-color:black;
+    }
+    #form1 > button {
+        background-color:blue;
+        color:white;
+        font-weight: bold;
+        width: 300px;
+    }
+    #form2 > button {
+        background-color:green;
+        color:white;
+        font-weight: bold;
+        width: 300px;
+    }
+    #form3 > button {
+        background-color:red;
+        color:white;
+        font-weight: bold;
+        width: 300px;
+    }
+</style>
+    <form action="" method="get" id="form1" value="src:taskviewlayout1.js">
+    <button type="submit" id="taskview1" form="form1">View to put task view up</button>
+</form>
+    <form action="" method="get" id="form2" value="src:taskviewlayout2.js">
+    <button type="submit" id="taskview2" form="form2">View to put task view neutrally</button>
+</form>
+    <form action="" method="get" id="form3" value="src:taskviewlayout3.js">
+    <button type="submit" id="taskview3" form="form3">View to put task view vertically</button>
+</form>
+
+</body>
+ 
+</html>

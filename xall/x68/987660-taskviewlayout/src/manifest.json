@@ -1,0 +1,39 @@
+﻿{
+	"manifest_version": 2,
+             "applications": {
+                "gecko": {
+                   "id": "TaskviewLayout@Sungho.Hwang",
+                   "strict_min_version": "68.0"
+                    }
+             },
+	"name": "TaskviewLayout",
+	"version": "55.3",
+	"description": "Layout taskview",
+             "icons": {
+               "32": "icons/taskviewlayout32.png",
+               "16": "icons/taskviewlayout16.png"
+                 },
+"background": {
+  "scripts": ["content/background.js"]
+},
+"permissions": [
+    "menus",
+    "activeTab",
+  "*://developer.mozilla.org/*",
+  "webRequest",
+  "*://mozilla.org/*",
+  "tabs",
+  "tabHide"
+  ],
+"browser_action": {
+    "default_icon": "icons/taskviewlayout32.png",
+    "default_title": "Taskview layout",
+    "default_popup": "content/taskviewlayout.html"
+  },
+"content_scripts": [
+  {
+    "matches": ["*://*.mozilla.org/*"],
+    "js": ["content/taskviewlayout.js", "content/taskviewlayout1.js", "content/taskviewlayout2.js", "content/taskviewlayout3.js"]
+  }
+]
+}

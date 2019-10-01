@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+
+<!--
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+-->
+
+<!--
+  This is the overlay that adds a menu and some PGP buttons
+  to messenger mail reading window
+-->
+
+<!DOCTYPE window [
+<!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd" >
+%messengerDTD;
+<!ENTITY % enigmailDTD SYSTEM "chrome://autocrypt/locale/enigmail.dtd" >
+%enigmailDTD;
+]>
+
+<overlay id="enigmailMessengerOverlay"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript"  src="chrome://autocrypt/content/ui/enigmailMessengerOverlay.js"/>
+
+  <link href="chrome://autocrypt/skin/enigmail.css" rel="stylesheet" type="text/css"/>
+
+  <broadcasterset id="otherActionsButtonBroadcasters">
+    <broadcaster id="enigmailBcDisplayClass" class="headerValue"/>
+  </broadcasterset>
+
+  <!-- submenu Decrypt to Folder  -->
+  <panelmultiview id="appMenu-multiView">
+     <panelview id="appMenu-enigmailDecryptToFolderView" class="PanelUI-subView"
+                title="&enigmail.decryptToFolder.label;"
+                insertbefore="appMenu-editView">
+      <vbox class="panel-subview-body" id="appmenu_enigmailDecryptToFolderMenu">
+
+        <menu id="menu_enigmailDecryptToFolder2"
+            label="&enigmail.decryptToFolder.label;"
+            accesskey="&enigmail.decryptToFolder.accesskey;"
+            enigmailtype="enigmail"
+            oncommand="Enigmail.msg.decryptToFolder(event.target._folder)">
+
+          <menupopup id="enigmailDecryptfileHereMenu2"
+                     is="folder-menupopup"
+                     mode="filing"
+                     showFileHereLabel="true"
+                     showRecent="true"
+                     recentLabel="&enigmail.recent.label;"
+                     recentAccessKey="&enigmail.recent.accesskey;"
+                     showFavorites="true" 
+                     favoritesLabel="&contextMoveCopyMsgFavoritesMenu.label;"
+                     favoritesAccessKey="&contextMoveCopyMsgFavoritesMenu.accesskey;"
+                     hasbeenopened="false" />
+        </menu>
+      </vbox>
+    </panelview>
+  </panelmultiview>
+
+  <!-- Menu content for all apps -->
+  <menupopup id="menu_EditPopup">
+    <menuitem id="enigmail_prefs"
+          label="Autocrypt Settings"
+          accesskey="&enigmail.prefs.accesskey;"
+          oncommand="EnigmailWindows.openAutocryptSettings(window);"
+          insertbefore="menu_accountmgr"
+          class="menuitem-iconic autocryptIcon"
+        />
+  </menupopup>
+
+  <!-- menuitem in folder list context menu to decrypt message -->
+  <menupopup id="mailContext">
+    <menu
+        id="enigmailContext-decryptToFolder"
+        label="&enigmail.decryptToFolder.label;"
+        accesskey="&enigmail.decryptToFolder.accesskey;"
+        oncommand="Enigmail.msg.decryptToFolder(event.target._folder)">
+      <menupopup id="enigmailCtxDecrypt-fileHereMenu"
+                 is="folder-menupopup"
+                 mode="filing"
+                 showFileHereLabel="true"
+                 showRecent="true"
+                 recentLabel="&enigmail.recent.label;"
+                 recentAccessKey="&enigmail.recent.accesskey;"
+                 showFavorites="true" 
+                 favoritesLabel="&contextMoveCopyMsgFavoritesMenu.label;"
+                 favoritesAccessKey="&contextMoveCopyMsgFavoritesMenu.accesskey;"
+                 hasbeenopened="false" />
+    </menu>
+  </menupopup>
+
+  <!-- the default set does not include the Enigmail decryption icon anymore -->
+
+  <!-- enigmailHdrBox is defined in messengerOverlay-(tbird|sm).xul -->
+
+  <vbox id="enigmailHdrBox">
+    <hbox id="enigmailBox"
+          class="expandedEnigmailBox"
+          align="center">
+
+      <hbox class="headerNameBox" align="start" id="enigmailStatusTextBox" pack="start">
+        <label class="enigmailHeaderName" id="enigmailStatusHdr" flex="1" value="&enigmail.label;" control="enigmailStatusText" />
+      </hbox>
+
+      <hbox flex="1" pack="start" class="headerValueBox">
+        <vbox flex="1" pack="start">
+          <hbox flex="1" align="center">
+            <label flex="1" readonly="true"
+                 id="enigmailStatusText" chromedir="ltr"
+                 class="enigmailHeaderValue">...
+            </label>
+          </hbox>
+          <textbox flex="1" readonly="true"
+                 id="expandedEnigmailStatusText"
+                 class="enigmailHeaderValue"
+                 observes="enigmailStatusText"
+                 chromedir="ltr"
+                 collapsed="true" display="false" state="false"
+                 persist="display" aria-labelledby="enigmailStatusHdr"/>
+        </vbox>
+      </hbox>
+    </hbox>
+
+    <vbox id="enigmailBrokenExchangeBox"
+        flex="0" class="enigmailHeaderNameBox enigmailHeaderBoxLabelSignatureUnknown"
+        collapsed="true"
+        pack="center">
+      <hbox pack="center">
+        <vbox flex="1" pack="start">
+          <description class="enigmailHeaderValue">&enigmail.exchangeGarbage.desc;</description>
+        </vbox>
+        <vbox flex="0" pack="center">
+          <button id="enigmailFixBrokenMessageButton"
+                class="enigMsgHdrView-flat-button"
+                label="&enigmail.exchangeGarbage.fixButton.label;"
+                oncommand="Enigmail.msg.fixBuggyExchangeMail()"/>
+          <label id="enigmailFixBrokenMessageProgress" value="&enigmail.exchangeGarbage.waitMessage;" collapsed="true"/>
+        </vbox>
+      </hbox>
+    </vbox>
+  </vbox>
+
+  <hbox id="messagepanewrapper">
+    <description id="enigmailMsgDisplay"
+        insertafter="messagepane"
+        minheight="1"
+        class="enigmailMessagePane"
+        flex="1"
+        collapsed="true"/>
+  </hbox>
+
+  <hbox id="quick-filter-bar-collapsible-buttons">
+    <toolbarbutton
+      id="qfb-autocrypt-encrypted"
+      class="toolbarbutton-1"
+      type="checkbox"
+      orient="horizontal"
+      label="Encrypted"
+      tooltiptext="Show only encrypted messages"
+      />
+  </hbox>
+</overlay>
