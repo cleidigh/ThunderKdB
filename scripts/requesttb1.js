@@ -512,9 +512,10 @@ async function g1() {
 	let startTime = new Date();
 	console.debug('' + startTime);
 
-	extsJson = fs.readJSONSync(extsAllJsonFileName);
-	// await getAllExtensionDetails(1, 54);
+	// extsJson = fs.readJSONSync(extsAllJsonFileName);
+	await getAllExtensionDetails(1, 56);
 
+	return;
 	console.debug('TotalExtensions: '+extsJson.length);
 	// extsJson = extArray;
 	// try {
