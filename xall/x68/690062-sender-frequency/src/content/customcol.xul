@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<overlay id="customcol"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <tree id="threadTree">
+    <treecols id="threadCols">
+    <splitter class="tree-splitter" />
+    <treecol id="fromFreq" persist="hidden ordinal width" 
+           closemenu="none" currentView="unthreaded" flex="2"
+           label="SFreq" tooltiptext="Click to sort by Sender frequency" />
+    </treecols>
+  </tree>
+  
+  <script type="text/javascript" src="chrome://senderfreq/content/customcol.js"/> 
+</overlay>

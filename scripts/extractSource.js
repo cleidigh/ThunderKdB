@@ -147,7 +147,7 @@ async function walkFolders(parentFolder, options) {
 }
 
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
-walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}`, { extsJson: extsJson, start: 48, end: 60 });
+walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}`, { extsJson: extsJson, start: 48, end: 65 });
 // walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}`, { extsJson: extsJson });
 // walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTBOtherDir}`, { extsJson: extsJson });
 

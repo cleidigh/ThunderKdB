@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://sensitivity_header_management/locale/sensitivity_header_management.dtd">
+
+<overlay id="sensitivity-msg-composer" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="overlay.js"/>
+  
+  <toolbarpalette id="MsgComposeToolbarPalette">
+    <toolbaritem id="sensitivity-toolbaritem" align="center" pack="center">
+      <label value="&sensitivity_header_management.toolbarlabel;" control="sensitivityTB-menulist"/>
+      <menulist id="sensitivityTB-menulist"
+                oncommand="sensitivity_header_management.SensitivityMenuSelect(event.target);"
+                value="Normal"
+                tooltiptext="&sensitivity_header_management.toolbartip;">
+        <menupopup id="sensitivityTB-menupopup">
+          <!--  'Values' here will appear in the message header field as defined in the RFC (must be in English). Displayed labels are localised. -->
+          <menuitem value="Normal"
+                    label="&sensitivity_header_management.display_normal;" 
+                    id="list_sensitivity_normal" name="sensitivity"/>
+          <menuitem value="Personal"
+                    label="&sensitivity_header_management.display_personal;"
+                    id="list_sensitivity_personal" name="sensitivity"/>
+          <menuitem value="Private"
+                    label="&sensitivity_header_management.display_private;"
+                    id="list_sensitivity_private" name="sensitivity"/>
+          <menuitem value="Company-Confidential"
+                    label="&sensitivity_header_management.display_confidential;"
+                    id="list_sensitivity_confidential" name="sensitivity"/>
+        </menupopup>
+      </menulist>
+    </toolbaritem>
+  </toolbarpalette>
+
+  <menu id="optionsMenu">
+    <menupopup id="optionsMenuPopup">
+      <menu id="sensitivityMenu" insertafter="priorityMenu"
+            label="&sensitivity_header_management.toolbarlabel;"
+            accesskey="&sensitivity_header_management.Menu_accesskey;"
+            oncommand="sensitivity_header_management.SensitivityMenuSelect(event.target);">
+          <!-- previously in <menu> but no longer required: onpopupshowing="sensitivity_header_management.updateSensitivityMenu();" -->
+        <menupopup id="SensitivityMenuPopup">
+          <menuitem value="Normal" checked="true"
+                    accesskey="&sensitivity_header_management.normal_accesskey;"
+                    label="&sensitivity_header_management.display_normal;"
+                    name="sensitivity" type="radio" 
+                    id="list_sensitivity_normal"/>
+          <menuitem value="Personal"
+                    accesskey="&sensitivity_header_management.personal_accesskey;"
+                    label="&sensitivity_header_management.display_personal;" 
+                    name="sensitivity" type="radio"
+                    id="list_sensitivity_personal"/>
+          <menuitem value="Private"
+                    accesskey="&sensitivity_header_management.private_accesskey;"
+                    label="&sensitivity_header_management.display_private;"
+                    name="sensitivity" type="radio"
+                    id="list_sensitivity_private"/>
+          <menuitem value="Company-Confidential" 
+                    accesskey="&sensitivity_header_management.confidential_accesskey;"
+                    label="&sensitivity_header_management.display_confidential;"
+                    name="sensitivity" type="radio"
+                    id="list_sensitivity_confidential"/>
+        </menupopup>
+      </menu>
+    </menupopup>
+  </menu>
+  
+</overlay>

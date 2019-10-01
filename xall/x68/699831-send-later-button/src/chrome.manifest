@@ -1,0 +1,13 @@
+content  sendlaterbutton         chrome/content/
+resource sendlaterbutton         chrome/
+
+skin    sendlaterbutton classic/1.0     skin/quantum/               application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=57
+
+# English must be first as default locale
+locale  sendlaterbutton en    chrome/locale/en/
+locale  sendlaterbutton de    chrome/locale/de/
+locale  sendlaterbutton hu    chrome/locale/hu/
+
+overlay chrome://messenger/content/messengercompose/messengercompose.xul   chrome://sendlaterbutton/content/sendlaterbuttonComposeOverlay.xul
+
+style   chrome://messenger/content/customizeToolbar.xul     chrome://sendlaterbutton/skin/sendlaterbutton.css    appversion>=59.0a1

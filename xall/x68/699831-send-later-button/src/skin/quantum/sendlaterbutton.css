@@ -1,0 +1,12 @@
+/* messengercompose > 'send' button > menupopup item 'send later' */
+#SLB_compose_menupopup_sendLater {
+  list-style-image: url("chrome://sendlaterbutton/skin/send_later_button.svg");
+}
+#SLB_compose_menupopup_sendLater[disabled="true"] {
+  opacity: .5;
+}
+
+/* messengercompose > additional button 'send later' */
+#SLB_send_later_button {
+  list-style-image: url("chrome://sendlaterbutton/skin/send_later_button.svg");
+}

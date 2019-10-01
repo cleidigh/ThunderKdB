@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://sendlaterbutton/skin/sendlaterbutton.css" type="text/css"?>
+
+<!DOCTYPE window [
+	<!ENTITY % messengercomposeDTD SYSTEM "chrome://messenger/locale/messengercompose/messengercompose.dtd" >
+	%messengercomposeDTD;
+]>
+
+<overlay id="sendlaterbuttonMsgComposeOverlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<toolbarpalette id="MsgComposeToolbarPalette">
+
+<!-- This would add a menupopup to the original sendbutton - but users wish to have an extra send later button
+	<toolbarbutton id="button-send"
+			tooltip="aTooltipSet"
+			type="menu-button">
+		<menupopup id="SLB_compose_menupopup">
+			<menuitem id="SLB_compose_menupopup_sendLater" label="&sendLaterCmd.label;" tooltiptext="&sendlaterButton.tooltip;" class="menuitem-iconic">
+				<observes element="cmd_sendLater" attribute="oncommand"/>
+			</menuitem>
+		</menupopup>
+	</toolbarbutton>
+-->
+
+	<toolbarbutton id="SLB_send_later_button"
+			class="toolbarbutton-1"
+			label= "&sendLaterCmd.label;"
+			tooltip="aTooltipSet"
+			tooltiptext="&sendlaterButton.tooltip;"
+			oncommand="goDoCommand('cmd_sendLater');">
+		<observes element="button-send" attribute="disabled"/>
+	</toolbarbutton>
+
+	</toolbarpalette>
+
+	<script 
+		src="chrome://sendlaterbutton/content/firstRunAddButton.js"
+		type="application/x-javascript"  />
+
+</overlay>

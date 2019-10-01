@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "sensitivity_header_management@ff_bob.bob",
+      "strict_min_version": "68.0"
+    }
+  },
+  
+  "name": "Sensitivity Header",
+  "description": "Implement the 'Sensitivity' header for outgoing messages (described in RFC 4021 section 2.1.55).",
+  "version": "0.3",
+  "author": "ff_bob",
+  "homepage_url": "https://github.com/BobSoft3000/tb-sensitivity-header",
+  "permissions": [
+  ],
+  "icons": {
+    "64": "chrome/content/identity.png"
+  },
+
+  "legacy": {
+    "type": "xul"
+  }
+}
