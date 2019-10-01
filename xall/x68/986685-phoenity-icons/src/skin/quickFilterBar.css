@@ -1,0 +1,122 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+/* :::: Filter Tab Bar Button :::: */
+
+#qfb-show-filter-bar {
+  -moz-appearance: none !important;
+  list-style-image: url("chrome://phoenityIcons/skin/icons/mail-toolbar.png");
+  -moz-image-region: rect(0px 552px 24px 528px);
+}
+
+toolbar[iconsize="small"] #qfb-show-filter-bar {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/mail-toolbar-small.png");
+  -moz-image-region: rect(0px 368px 16px 352px);
+}
+
+/* :::: Filter Bar :::: */
+
+#quick-filter-bar-main-bar {
+  padding-inline-start: 3px;
+  margin-bottom: -2px;
+}
+
+#quick-filter-bar-expando {
+  margin-top: 0px;
+  padding-bottom: 2px;
+}
+
+#threadTree[filterActive] {
+  margin-bottom: 1px !important;
+  outline-offset: -1px;
+}
+
+#threadTree[filterActive] .tree-stack {
+  margin-bottom: -1px;
+}
+
+#threadTree[filterActive="matches"] {
+  box-shadow: 0px 0px 0px 50vmax rgba(78, 154, 6, 0.1) inset;
+}
+
+#threadTree[filterActive="nomatches"] {
+  box-shadow: 0px 0px 0px 50vmax rgba(204, 0, 0, 0.1) inset;
+}
+
+/* :::: Filter Buttons :::: */
+
+#qfb-sticky {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/pin_unpinned.png");
+}
+
+#qfb-sticky[checked] {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/pin_pinned.png");
+}
+
+#qfb-sticky .toolbarbutton-icon,
+#quick-filter-bar-collapsible-buttons toolbarbutton .toolbarbutton-icon {
+  margin-right: 0;
+}
+
+#qfb-unread {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+#qfb-starred {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  -moz-image-region: rect(0px, 32px, 16px, 16px);
+}
+
+.qfb-starred-nostar {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  -moz-image-region: rect(0px, 32px, 16px, 16px);
+  filter: url("chrome://phoenityIcons/skin/icons/extensions.svg#greyscale");
+}
+
+#qfb-inaddrbook {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  -moz-image-region: rect(0px, 48px, 16px, 32px);
+}
+
+#qfb-tags {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  -moz-image-region: rect(0px, 64px, 16px, 48px);
+}
+
+#qfb-attachment {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  -moz-image-region: rect(0px, 80px, 16px, 64px);
+}
+
+#qfb-results-label {
+  color: currentColor;
+  margin-top: 2px;
+}
+
+#quick-filter-bar[filterActive="matches"] #qfb-results-label {
+  color: #4e9a06;
+}
+
+#quick-filter-bar[filterActive="nomatches"] #qfb-results-label {
+  color: #cc0000;
+}
+
+/* :::: Tag & Text Buttons :::: */
+
+#quick-filter-bar-tab-bar .toolbarbutton-text,
+#quick-filter-bar-filter-text-bar .toolbarbutton-text {
+  margin: 4px 0 !important;
+}
+
+#quick-filter-bar-filter-text-bar .toolbarbutton-icon {
+  display: none;
+}
+
+.qfb-tag-button[inverted] {
+  text-decoration-color: red;
+}

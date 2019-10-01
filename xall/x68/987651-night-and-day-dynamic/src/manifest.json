@@ -1,0 +1,23 @@
+{
+  "description": "A theme that switches between sun and moon based on time of day.",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/dynamic-theme",
+  "manifest_version": 2,
+  "name": "Night and Day Dynamic",
+  "icons": {
+    "64": "icon.png"
+  },
+  "permissions": [
+    "alarms",
+    "theme"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "version": "1.1",
+  "applications": {
+    "gecko": {
+      "id": "night.and.day@sancus.net",
+      "strict_min_version": "60.0"
+    }
+  }
+}

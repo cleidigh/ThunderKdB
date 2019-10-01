@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Phoenity Icons",
+  "description": "Phoenity icons for Thunderbird",
+  "version": "2.3",
+  "author": "Dillinger",
+  "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/",
+  "legacy" : {
+    "options" : {
+      "page" : "chrome://phoenityIcons/content/aboutIcons.xul",
+      "open_in_tab" : false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "icons@dillinger",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "32": "skin/icons/phoenityIcons32.png",
+    "64": "skin/icons/phoenityIcons64.png"
+  }
+}

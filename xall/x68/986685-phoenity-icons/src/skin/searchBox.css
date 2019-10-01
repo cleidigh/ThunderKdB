@@ -1,0 +1,47 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+.quick-search-button-image {
+  margin: 0px;
+  list-style-image: url("chrome://phoenityIcons/skin/icons/mail-toolbar-small.png");
+  -moz-image-region: rect(0px 368px 16px 352px);
+}
+
+.quick-search-clearbutton {
+  list-style-image: url(chrome://phoenityIcons/skin/icons/Search-close.png);
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+  -moz-appearance: none;
+  padding: 0px 4px !important;
+  border: none !important;
+}
+
+.quick-search-clearbutton:hover {
+  -moz-image-region: rect(0px, 32px, 16px, 16px);
+  padding: 0px 4px !important;
+}
+
+.quick-search-clearbutton:hover:active {
+  -moz-image-region: rect(0px, 48px, 16px, 32px);
+  padding: 0px 4px !important;
+}
+
+#searchInput,
+#IMSearchInput,
+#peopleSearchInput,
+.remote-gloda-search {
+  min-height: 20px;
+}
+
+.gloda-search-icon {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/mail-toolbar-small.png");
+  -moz-image-region: rect(0px 368px 16px 352px);
+  margin: 1px 1px 0px;
+}
+
+.gloda-search-icon:-moz-locale-dir(rtl) {
+  transform: scaleX(-1);
+}

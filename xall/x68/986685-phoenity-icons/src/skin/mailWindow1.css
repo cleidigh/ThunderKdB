@@ -1,0 +1,22 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== mailWindow1.css ================================================
+  == Styles for the main Mail window in the default layout scheme.
+  ======================================================================= */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+#accountCentralBox:-moz-lwtheme {
+  border-bottom: none;
+}
+
+@media (-moz-os-version: windows-win7),
+       (-moz-os-version: windows-win8),
+       (-moz-os-version: windows-win10) {
+  #messengerWindow:not([tabsintitlebar]) > #navigation-toolbox:not(:-moz-lwtheme) {
+    background-color: transparent;
+  }
+}

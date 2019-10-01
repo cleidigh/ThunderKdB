@@ -1,0 +1,75 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+.statusIcon[status="away"],
+.statusIcon[status="unavailable"] {
+  background-image: url('chrome://phoenityIcons/skin/chat/away.png');
+}
+
+.statusIcon[status="idle"] {
+  background-image: url('chrome://phoenityIcons/skin/chat/idle.png');
+}
+
+.statusIcon[status="mobile"] {
+  background-image: url('chrome://phoenityIcons/skin/chat/mobile.png');
+}
+
+.statusIcon[status="offline"],
+.statusIcon[status="left"] {
+  background-image: url('chrome://phoenityIcons/skin/chat/offline.png');
+}
+
+.statusIcon[status="joining"] {
+  background-image: url('chrome://phoenityIcons/skin/chat/loading.png');
+  -moz-transform: scale(0.5) translate(50%, 50%);
+}
+
+.statusIcon[status="unknown"] {
+  background-image: url('chrome://phoenityIcons/skin/chat/unknown.png');
+}
+
+.statusTypeIcon[status="unknown"] {
+  list-style-image: url('chrome://phoenityIcons/skin/chat/unknown-16.png');
+}
+
+.statusTypeIcon[status="chat"] {
+  list-style-image: url('chrome://phoenityIcons/skin/chat/chat-16.png');
+}
+
+.statusTypeIcon[status="available"] {
+  list-style-image: url('chrome://phoenityIcons/skin/chat/available-16.png');
+}
+
+.statusTypeIcon[status="unavailable"],
+.statusTypeIcon[status="away"] {
+  list-style-image: url('chrome://phoenityIcons/skin/chat/away-16.png');
+}
+
+.statusTypeIcon[status="offline"],
+.statusTypeIcon[status="invisible"] {
+  list-style-image: url('chrome://phoenityIcons/skin/chat/offline-16.png');
+}
+
+.statusTypeIcon[status="idle"] {
+  list-style-image: url('chrome://phoenityIcons/skin/chat/idle-16.png');
+}
+
+.statusTypeIcon[status="mobile"] {
+  list-style-image: url('chrome://phoenityIcons/skin/chat/mobile-16.png');
+}
+
+.protoIcon[status="offline"],
+.protoIcon[status="joining"],
+.protoIcon[status="unknown"] {
+  opacity: 0.3;
+}
+
+.protoIcon[status="offline"][selected],
+.protoIcon[status="joining"][selected],
+.protoIcon[status="unknown"][selected] {
+  opacity: 0.7;
+}

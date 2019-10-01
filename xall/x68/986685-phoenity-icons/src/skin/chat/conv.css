@@ -1,0 +1,52 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+.ib-msg-txt {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  -moz-padding-start: 0px;
+}
+
+.ib-img-smile {
+  vertical-align: text-bottom;
+}
+
+*:-moz-any-link .ib-img-smile {
+  border: none;
+  border-bottom: solid 1px;
+  margin-bottom: 1px;
+}
+
+.moz-txt-underscore {
+  text-decoration: underline;
+}
+
+/* disable overflow in themes until bug 42676 is fixed in Mozilla */
+#Chat {
+  overflow: hidden !important;
+}
+
+#Chat * {
+  overflow: visible !important;
+}
+
+#Chat .pseudo {
+  text-align: left !important;
+}
+
+#Chat .button {
+  cursor: pointer;
+  min-height: 22px;
+  -moz-margin-start: -26px;
+  margin-top: -8px;
+  margin-bottom: -4px;
+  -moz-padding-start: 26px;
+}
+
+#Chat .show {
+  margin-bottom: -14px;
+}

@@ -1,0 +1,340 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+/* ::::: Folder Pane ::::: */
+
+#folderPaneHeader {
+  display: none;
+}
+
+#folderview-cycler-prev .toolbarbutton-icon {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/arrow/arrow-left.png");
+  -moz-image-region: rect(0 5px 7px 0);
+  padding: 2px 5px 2px 1px;
+  opacity: .4;
+}
+
+#folderview-cycler-prev:hover .toolbarbutton-icon {
+  opacity: .8;
+}
+
+#folderview-cycler-prev:-moz-lwtheme-brighttext .toolbarbutton-icon {
+  filter: url("chrome://phoenityIcons/skin/icons/lwtheme.svg#invert");
+}
+
+#folderview-cycler-next .toolbarbutton-icon {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/arrow/arrow-right.png");
+  -moz-image-region: rect(0 5px 7px 0);
+  padding: 2px 5px 2px 1px;
+  opacity: .4;
+}
+
+#folderview-cycler-next:hover .toolbarbutton-icon {
+  opacity: .8;
+}
+
+#folderview-cycler-next:-moz-lwtheme-brighttext .toolbarbutton-icon {
+  filter: url("chrome://phoenityIcons/skin/icons/lwtheme.svg#invert");
+}
+
+/* ..... Folders ..... */
+
+.tabmail-tab[type="folder"] .tab-icon-image,
+treechildren::-moz-tree-image(folderNameCol) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(folderNameCol, newMessages-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(16px 16px 32px 0);
+}
+
+/* ..... Newsgroup ..... */
+
+.tabmail-tab[type="folder"][ServerType="nntp"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 160px 16px 144px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, newMessages-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(16px 160px 32px 144px);
+}
+
+/* ..... Feed ..... */
+
+.tabmail-tab[type="folder"][ServerType="rss"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, serverType-rss) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 192px 16px 176px);
+  width: 16px;
+  height: 16px;
+}
+
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(16px 192px 32px 176px);
+}
+
+/* ..... Inbox ..... */
+
+.tabmail-tab[type="folder"][SpecialFolder="Inbox"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(16px 48px 32px 32px);
+}
+
+/* ..... Sent ..... */
+
+.tabmail-tab[type="folder"][SpecialFolder="Sent"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Sent) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Sent, newMessages-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(16px 96px 32px 80px);
+}
+
+/* ..... Unsent ..... */
+
+.tabmail-tab[type="folder"][SpecialFolder="Outbox"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Outbox) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+/* ..... Drafts ..... */
+
+.tabmail-tab[type="folder"][SpecialFolder="Drafts"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Drafts) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+/* ..... Templates ..... */
+
+.tabmail-tab[type="folder"][SpecialFolder="Templates"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Templates) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 112px 16px 96px);
+}
+
+/* ..... Archives ..... */
+
+.tabmail-tab[type="folder"][SpecialFolder="Archive"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Archive) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(16px 64px 32px 48px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Archive, newMessages-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(16px 80px 32px 64px);
+}
+
+/* ..... Junk ..... */
+
+.tabmail-tab[type="folder"][SpecialFolder="Junk"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Junk) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 128px 16px 112px);
+}
+
+/* ..... Trash ..... */
+
+.tabmail-tab[type="folder"][SpecialFolder="Trash"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Trash) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 144px 16px 128px) !important;
+}
+
+/* ..... Saved Search Folder ..... */
+
+.tabmail-tab[type="folder"][SpecialFolder="Virtual"] .tab-icon-image ,
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 176px 16px 160px) !important;
+}
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(16px 176px 32px 160px) !important;
+}
+
+/* ..... Account nodes ..... */
+
+.tabmail-tab[type="folder"][IsServer="true"] .tab-icon-image {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+/* ..... Secure IMAP/POP account nodes ..... */
+
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="imap"][IsSecure="true"] .tab-icon-image,
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="pop3"][IsSecure="true"] .tab-icon-image {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+/* ..... Local folders ..... */
+
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="none"] .tab-icon-image {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+/* ..... News server ..... */
+
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="nntp"] .tab-icon-image {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+/* ..... Secure news server ..... */
+
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="nntp"][IsSecure="true"] .tab-icon-image {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+/* ..... Feed server ..... */
+
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="rss"] .tab-icon-image {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+/* ..... Mail server  ..... */
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(folderNameCol, biffState-NewMail, isServer-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(16px 16px 32px 0);
+}
+
+/* ..... Secure mail server ..... */
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-pop3, isSecure-true),
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-imap, isSecure-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, biffState-NewMail, isServer-true, isSecure-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(16px 32px 32px 16px);
+}
+
+/* ..... Local folders ..... */
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-none) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-none, biffState-NewMail) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(16px 48px 32px 32px);
+}
+
+/* ..... News server ..... */
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp, newMessages-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(16px 64px 32px 48px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp, isSecure-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp, isSecure-true, newMessages-true) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(16px 80px 32px 64px);
+}
+
+/* ..... Feed server ..... */
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-rss) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-rss, biffState-NewMail) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(16px 96px 32px 80px);
+}
+
+/* ::::: All Servers ::::: */
+
+/*
+treechildren::-moz-tree-cell-text(closed, subfoldersHaveUnreadMessages-true) {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-cell-text(folderNameCol, isServer-true),
+treechildren::-moz-tree-cell-text(hasUnreadMessages-true) {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-cell-text(folderNameCol, noSelect-true) {
+  color: gray;
+  font-style: italic;
+}
+
+.tree-folder-checkbox {
+  list-style-image: none;
+}
+*/
+
+/* ::::: Folder Summary Popup ::::: */
+
+/*
+.folderSummary-message-row {
+*/
+  /* This max width ends up dictating the overall width of the popup
+     because it controls how large the preview, subject and sender text can be
+     before cropping kicks in */
+/*
+  max-width: 450px;
+}
+*/
+
+/*
+.folderSummary-subject {
+  font-weight: bold; 
+}
+
+.folderSummary-previewText {
+  color: grey; 
+}
+*/
+
+/* Make sidebar look normal. */
+
+#folderTree treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true) {
+  background-image: none;
+}

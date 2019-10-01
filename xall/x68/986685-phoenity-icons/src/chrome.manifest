@@ -1,0 +1,43 @@
+overlay chrome://messenger/content/messenger.xul                                chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/customizeToolbar.xul                         chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/msgAccountCentral.xul                        chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul        chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/addressbook/addressbook.xul                  chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/addressbook/abContactsPanel.xul              chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/folderProps.xul                              chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/AccountManager.xul                           chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-main.xul                                  chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-server.xul                                chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-server-advanced.xul                       chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-copies.xul                                chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-archiveoptions.xul                        chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-addressing.xul                            chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-junk.xul                                  chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-offline.xul                               chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger-newsblog/content/am-newsblog.xul                     chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-mdn.xul                                   chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-smime.xul                                 chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-serverwithnoidentities.xul                chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-im.xul                                    chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/am-smtp.xul                                  chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/SmtpServerEdit.xul                           chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/FilterListDialog.xul                         chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/FilterEditor.xul                             chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/virtualFolderProperties.xul                  chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/virtualFolderListEdit.xul                    chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://messenger/content/SearchDialog.xul                             chrome://phoenityIcons/content/phoenityIcons.xul
+
+style   chrome://messenger/content/msgSelectOfflineFolders.xul                  chrome://phoenityIcons/skin/msgSelectOffline.css
+
+overlay chrome://gcontactsync/content/options.xul                               chrome://phoenityIcons/content/phoenityIcons.xul
+overlay chrome://mailredirect/content/mailredirect-compose-thunderbird.xul      chrome://phoenityIcons/content/phoenityIcons.xul
+
+style chrome://cardbook/content/contactsSidebar/wdw_cardbookContactsSidebar.xul chrome://phoenityIcons/skin/addressbook/abResultsPane.css
+style chrome://quickfolders/content/options.xul                                 chrome://phoenityIcons/skin/QuickFolders/QuickFoldersOptions.css
+
+content phoenityIcons           content/
+
+skin    phoenityIcons           classic/1.0     skin/
+skin    PhoenityIcons-OS        classic/1.0     linux/          os=Linux
+skin    PhoenityIcons-OS        classic/1.0     darwin/         os=Darwin
+skin    PhoenityIcons-OS        classic/1.0     aero/           os=WINNT

@@ -1,0 +1,48 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* OS Specific styles & fixes */
+
+/* Compact Headers */
+
+#mail-toolbar-menubar2:not([mode="text"]) .toolbarbutton-icon {
+  margin: -1px !important;
+}
+
+/* Attachment Pane button */
+
+#attachmentToggle,
+#attachmentToggle[checked="true"] {
+  -moz-appearance: none;
+  -moz-user-focus: ignore;
+  border: 4px solid transparent;
+  background: transparent;
+  margin: 2px;
+  box-shadow: none;
+  min-width: 0px;
+  min-height: 0px;
+}
+
+#attachmentToggle {
+  list-style-image: url("chrome://global/skin/icons/twisty-collapsed.svg");
+}
+
+#attachmentToggle[checked="true"] {
+  list-style-image: url("chrome://global/skin/icons/twisty-expanded.svg");
+}
+
+/* Smart Reply button */
+
+#hdrSmartReplyButton > .toolbarbutton-1 {
+  border-radius: var(--toolbarbutton-border-radius);
+}
+
+.toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-button,
+.toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-dropmarker {
+  background-color: transparent !important;
+}
+
+.toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-dropmarker {
+  -moz-border-start-color: transparent;
+}

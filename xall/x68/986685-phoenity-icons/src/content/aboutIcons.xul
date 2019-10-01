@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE dialog SYSTEM "chrome://phoenityIcons/locale/phoenityIcons.dtd">
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept"
+        id="iconsAboutDialog"
+        title="About Phoenity Icons"
+        width="350">
+
+<groupbox>
+  <hbox>
+
+    <hbox>
+      <vbox>
+        <image src="chrome://phoenityIcons/skin/icons/phoenityIcons32.png"/>
+      </vbox>
+      <spacer width="12"/>
+    </hbox>
+
+    <vbox>
+      <label value="Phoenity Icons for Thunderbird"/>
+      <spacer height="12"/>
+      <label value="Developer:"/>
+      <label value="Dillinger"/>
+      <spacer height="12"/>
+      <label value="Original Icons:"/>
+      <label value="Lim Chee Aun"/>
+    </vbox>
+
+  </hbox>
+</groupbox>
+
+</dialog>

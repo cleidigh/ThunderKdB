@@ -1,0 +1,25 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* OS Specific styles & fixes */
+
+/* Toolbaritem toolbarbutton */
+
+toolbar[mode="icons"] toolbaritem .toolbarbutton-menubutton-button,
+toolbar[mode="icons"] toolbaritem .toolbarbutton-1:not([type="menu-button"]) {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+/* Dual button separators */
+
+toolbar[iconsize="large"] .toolbarbutton-menubutton-dropmarker::before {
+  height: 24px !important;
+  background-size: 1px 24px !important;
+}
+
+toolbar[iconsize="small"] .toolbarbutton-menubutton-dropmarker::before {
+  height: 16px !important;
+  background-size: 1px 16px !important;
+}

@@ -1,0 +1,19 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+*|input[type="number"]::-moz-number-spin-box {
+  -moz-appearance: spinner;
+  margin: -5px -4px -5px 4px;
+}
+
+@media (-moz-os-version: windows-win7),
+       (-moz-os-version: windows-win8),
+       (-moz-os-version: windows-win10) {
+  html|input[type="number"]::-moz-number-spin-box {
+    margin: -2px -4px -2px 4px;
+  }
+}

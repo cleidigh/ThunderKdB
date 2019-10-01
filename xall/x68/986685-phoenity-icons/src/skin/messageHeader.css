@@ -1,0 +1,41 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+/* Compact Headers */
+
+#expandedHeadersTopBox > #expandedBoxSpacer {
+  height: 0px;
+}
+
+#msgHeaderViewDeck > #expandedHeaderView.compact {
+  max-height: none;
+  overflow: visible;
+}
+
+#expandedHeaderView.expanded[show_header_mode="normal"] {
+  margin-bottom: -2px;
+}
+
+.emaillabel, .newsgrouplabel {
+  padding: 1px 0;
+}
+
+#expandedHeadersBox .emailStar {
+  margin-inline-start: 2px !important;
+}
+
+.headerValueBox[singleline="true"] {
+  margin-bottom: 1px;
+  padding-bottom: 1px;
+}
+
+/* ::::: attachment view ::::: */
+
+#attachmentIcon {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/attachment.svg");
+  margin-inline-start: 0px;
+}

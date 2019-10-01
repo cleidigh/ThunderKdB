@@ -1,0 +1,23 @@
+﻿{
+	"manifest_version": 2,
+             "applications": {
+                "gecko": {
+                   "id": "PasteMarkDownSyntax@Sungho.Hwang",
+                   "strict_min_version": "68.0"
+                    }
+             },
+	"name": "PasteMarkdownSyntax",
+	"version": "44.9",
+	"description": "This is buttons to paste Markdown syntax texts on event and task dialog descriptions.",
+             "icons": {
+               "32": "icons/newSquare32.png",
+               "16": "icons/newSquare16.png"
+                 },
+             "legacy" : {
+               "type": "xul",
+               "options" : {
+               "page" : "chrome://pastemarkdownsyntax/content/paste_arr.xul",
+               "open_in_tab": true
+               }
+             }
+}

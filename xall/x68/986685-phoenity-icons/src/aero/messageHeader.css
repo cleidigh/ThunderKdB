@@ -1,0 +1,50 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* OS Specific styles & fixes */
+
+/* Compact Headers */
+
+#messengerWindow:not([tabsintitlebar]) .titlebar-placeholder[type="caption-buttons"] {
+  display: none;
+}
+
+#expandedHeadersTopBox > #expandedHeaders {
+  vertical-align: -40%;
+}
+
+/* Attachment Pane button */
+
+#attachmentToggle,
+#attachmentToggle[checked="true"] {
+  -moz-appearance: none;
+  -moz-user-focus: ignore;
+  border: 4px solid transparent;
+  background: transparent;
+  margin: 2px;
+  box-shadow: none;
+  min-width: 0px;
+  min-height: 0px;
+}
+
+#attachmentToggle {
+  list-style-image: url("chrome://global/skin/icons/twisty-collapsed.svg");
+}
+
+#attachmentToggle[checked="true"] {
+  list-style-image: url("chrome://global/skin/icons/twisty-expanded.svg");
+}
+
+/* Smart Reply button */
+
+#hdrSmartReplyButton .toolbarbutton-menubutton-dropmarker::before {
+  opacity: 0;
+}
+
+/* Attachment Save button */
+
+#attachmentSaveAllSingle .toolbarbutton-menubutton-dropmarker::before,
+#attachmentSaveAllMultiple .toolbarbutton-menubutton-dropmarker::before {
+  opacity: 0;
+}

@@ -1,0 +1,140 @@
+﻿/* cardbook workarounds */
+
+#cardbook-toolbox > #cardbook-toolbar {
+  padding-inline-start: 3px;
+  padding-inline-end: 3px;
+}
+#cardbook-toolbox > #cardbook-toolbar > .button-appmenu {
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+#cardbookToolbarSearchBox {
+  padding-top: 7px;
+  padding-bottom: 6px;
+}
+toolbar[iconsize="small"] #cardbookToolbarSearchBox {
+  padding-top: 4px;
+  padding-bottom: 3px;
+}
+
+/* cardbook toolbar icons */
+
+toolbar[brighttext] #cardbookToolbarButton.toolbarbutton-1,
+#cardbookToolbarButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/cardbook/cardbook_24.png");
+}
+toolbar[brighttext] #cardbookTabButton.toolbarbutton-1,
+toolbar[iconsize="small"] #cardbookTabButton.toolbarbutton-1,
+.tabmail-tab[type="cardbookTab"] .tab-icon-image,
+.alltabs-item[type="cardbookTab"] .menu-iconic-icon,
+#cardbookMenuItem,
+#quick-filter-bar-collapsible-buttons > #qfb-cardbook,
+toolbar[iconsize="small"] #cardbookToolbarButton.toolbarbutton-1,
+treechildren#cardsTreeChildren::-moz-tree-image(cardIcon) {
+  list-style-image: url("chrome://phoenityicons/skin/cardbook/cardbook_16.png");
+}
+
+treechildren#cardsTreeChildren::-moz-tree-image(cardIcon, MailList) {
+  list-style-image: url("chrome://phoenityicons/skin/addressbook/icons/ablist.png");
+}
+
+toolbar[brighttext] #cardbookToolbarAddContactButton.toolbarbutton-1,
+#cardbookToolbarAddContactButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/addressbook/icons/addressbook-toolbar.png");
+  -moz-image-region: rect(0px 24px 24px 0px);
+}
+toolbar[brighttext] #cardbookToolbarAddListButton.toolbarbutton-1,
+#cardbookToolbarAddListButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/addressbook/icons/addressbook-toolbar.png");
+  -moz-image-region: rect(0px 48px 24px 24px);
+}
+toolbar[brighttext] #cardbookToolbarEditButton.toolbarbutton-1,
+#cardbookToolbarEditButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/addressbook/icons/addressbook-toolbar.png");
+  -moz-image-region: rect(0px 72px 24px 48px);
+}
+toolbar[brighttext] #cardbookToolbarRemoveButton.toolbarbutton-1,
+#cardbookToolbarRemoveButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/addressbook/icons/addressbook-toolbar.png");
+  -moz-image-region: rect(0px 144px 24px 120px);
+}
+toolbar[brighttext] #cardbookToolbarPrintButton.toolbarbutton-1,
+#cardbookToolbarPrintButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/icons/mail-toolbar.png");
+  -moz-image-region: rect(0px 216px 24px 192px);
+}
+toolbar[brighttext] #cardbookToolbarComplexSearch.toolbarbutton-1,
+#cardbookToolbarComplexSearch.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/icons/mail-toolbar.png");
+  -moz-image-region: rect(0px 552px 24px 528px);
+}
+toolbar[brighttext] #cardbookToolbarWriteButton.toolbarbutton-1,
+#cardbookToolbarWriteButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/icons/mail-toolbar.png");
+  -moz-image-region: rect(0px, 48px, 24px, 24px);
+}
+toolbar[brighttext] #cardbookToolbarChatButton.toolbarbutton-1,
+#cardbookToolbarChatButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/icons/mail-toolbar.png");
+  -moz-image-region: rect(0px, 480px, 24px, 456px);
+}
+toolbar[brighttext] #cardbookToolbarAddServerButton.toolbarbutton-1,
+#cardbookToolbarAddServerButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/cardbook/abook_new_24.png");
+}
+toolbar[brighttext] #cardbookToolbarConfigurationButton.toolbarbutton-1,
+#cardbookToolbarConfigurationButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/cardbook/abook_prefs_24.png");
+}
+toolbar[brighttext] #cardbookToolbarSyncButton.toolbarbutton-1,
+#cardbookToolbarSyncButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/cardbook/reload.png");
+}
+toolbar[brighttext] #cardbookToolbarBackButton.toolbarbutton-1,
+#cardbookToolbarBackButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/cardbook/undo.png");
+}
+toolbar[brighttext] #cardbookToolbarForwardButton.toolbarbutton-1,
+#cardbookToolbarForwardButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/cardbook/redo.png");
+}
+
+toolbar[iconsize="small"] #cardbookToolbarAddContactButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/addressbook/icons/addressbook-toolbar-small.png");
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+toolbar[iconsize="small"] #cardbookToolbarAddListButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/addressbook/icons/addressbook-toolbar-small.png");
+  -moz-image-region: rect(0px 32px 16px 16px);
+}
+toolbar[iconsize="small"] #cardbookToolbarEditButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/addressbook/icons/addressbook-toolbar-small.png");
+  -moz-image-region: rect(0px 48px 16px 32px);
+}
+toolbar[iconsize="small"] #cardbookToolbarRemoveButton.toolbarbutton-1 {
+   list-style-image: url("chrome://phoenityicons/skin/addressbook/icons/addressbook-toolbar-small.png");
+  -moz-image-region: rect(0px 96px 16px 80px);
+}
+toolbar[iconsize="small"] #cardbookToolbarPrintButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/icons/mail-toolbar-small.png");
+  -moz-image-region: rect(0px 144px 16px 128px);
+}
+toolbar[iconsize="small"] #cardbookToolbarComplexSearch.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/icons/mail-toolbar-small.png");
+  -moz-image-region: rect(0px 368px 16px 352px);
+}
+toolbar[iconsize="small"] #cardbookToolbarWriteButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/icons/mail-toolbar-small.png");
+  -moz-image-region: rect(0px 32px 16px 16px);
+}
+toolbar[iconsize="small"] #cardbookToolbarChatButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/icons/mail-toolbar-small.png");
+  -moz-image-region: rect(0px, 320px, 16px, 304px);
+}
+toolbar[iconsize="small"] #cardbookToolbarAddServerButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/cardbook/abook_new_16.png");
+}
+toolbar[iconsize="small"] #cardbookToolbarConfigurationButton.toolbarbutton-1 {
+  list-style-image: url("chrome://phoenityicons/skin/cardbook/abook_prefs_16.png");
+}

@@ -1,0 +1,38 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== messenger.css ==================================================
+  == Styles shared throughout the Messenger application.
+  ======================================================================= */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+/* ::::: online/offline icons ::::: */
+
+#offline-status[offline="true"] {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/offline.png");
+}
+
+#offline-status {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/online.png");
+}
+
+/* ::::: tabbar-toolbar button fix ::::: */
+
+#navigation-toolbox > toolbar[brighttext] {
+  --toolbarbutton-hover-background: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .25));
+  --toolbarbutton-hover-bordercolor: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .5));
+  --toolbarbutton-header-bordercolor: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .25));
+  --toolbarbutton-active-background: var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .4));
+  --toolbarbutton-active-bordercolor: var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .7));
+  --toolbarbutton-active-boxshadow: 0 0 0 1px var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .4)) inset;
+  --toolbarbutton-checkedhover-backgroundcolor: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .5));
+}
+
+/* ::::: column picker :::::  */
+
+.treecol-image .tree-columnpicker-icon {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/columnpicker.svg");
+}
