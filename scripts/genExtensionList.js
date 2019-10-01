@@ -125,7 +125,7 @@ function createExtMDTableRow(extJson) {
 
 	// const srcLink = `[Src](https://github.com\\cleidigh\\ThunderKdB\\tree\\master\\${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`
 	const srcLink = `[Src](./${extJson.id}-${extJson.slug}/src)`
-	const name_link = `[${name}](./${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
+	// const name_link = `[${name}](./${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
 
 	// https://github.com/cleidigh/ThunderKdB/tree/master/extensions-all/exts-tb68-comp/90003-localfolder/src
 	const xpiLink = `[XPI](${extGroupTB68Dir}/${extJson.id}-${extJson.slug}/xpi)`;
@@ -174,6 +174,23 @@ function createExtMDTableRow(extJson) {
 	if (mext == true) {
 		comp_badges += " " + cBadge_mx;
 	}
+
+	let targetGroupDir = "";
+
+	if (comp_badges.includes(cBadge_tb68) ) {
+		targetGroupDir = extGroupTB68Dir;
+
+	} else if (comp_badges.includes(cBadge_tb60)) {
+		targetGroupDir = extGroupTB60Dir;
+	} else {
+		targetGroupDir = extGroupTBOtherDir;
+	}
+
+	// const extRootName = `${addon_identifier}-${ext.slug}`;
+	// const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
+
+	const name_link = `[${name}](./${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
+
 
 	// vision filters
 	// if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb68)) ) {

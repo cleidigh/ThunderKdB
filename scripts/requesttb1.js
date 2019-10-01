@@ -515,7 +515,6 @@ async function g1() {
 	// extsJson = fs.readJSONSync(extsAllJsonFileName);
 	await getAllExtensionDetails(1, 56);
 
-	return;
 	console.debug('TotalExtensions: '+extsJson.length);
 	// extsJson = extArray;
 	// try {
