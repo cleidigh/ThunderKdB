@@ -16,6 +16,7 @@ const _7z = require('7zip-min');
 // Id | Name | Description | Source | XPI |
 
 const rootDir = "C:/Dev/Thunderbird/ThunderKdB";
+const repoRoot = "/ThunderKdB";
 const extGroupAllDir = 'xall';
 const extGroupTB68Dir = 'x68';
 const extGroupTB60Dir = 'x60';
@@ -190,7 +191,7 @@ function createExtMDTableRow(extJson) {
 	// const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
 
 	// const name_link = `[${name}](/${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
-	const name_link = `[${name}](${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
+	const name_link = `[${name}](/${repoRoot}/${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
 
 
 	// vision filters
