@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE progress SYSTEM "chrome://createjiraissue/locale/attachFiles.dtd">
+
+<dialog id="attachFiles" title="&panel.title;"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="onLoad();"
+	buttons="cancel"
+	buttonlabelcancel="&button.cancel.label;"
+	buttonaccesskeycancel="&button.cancel.accesskey;"
+	ondialogcancel="return abort();">
+	<stringbundleset id="createjiraissue_attachment_stringbundleset">
+		<stringbundle id="createjiraissue_attachment_strings" src=""/>
+	</stringbundleset>
+	<script type="application/javascript" src="chrome://createjiraissue/content/attachFiles.js"/>
+
+	<dialogheader title="&panel.title;" description="&panel.description;"/>
+	<vbox id="attachmentBox">
+		<hbox>
+			<spacer flex="1"/>
+			<image src="chrome://createjiraissue/skin/icon144.png" width="150px" height="150px"/>
+			<spacer flex="1"/>
+		</hbox>
+		<hbox>
+			<label control="attachmentProgress" value="&label.overall.attachment.progress;"/>
+	  		<html:progress max="100" id="attachmentProgress" mode="determined" value="0" flex="1"/>
+		</hbox>
+	</vbox>
+	<hbox class="statusbar">
+		<label class="statusbarpanel" id="attachmentStatus" label=""/>
+	</hbox>
+</dialog>

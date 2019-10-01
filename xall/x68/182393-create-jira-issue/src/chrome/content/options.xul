@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/preferences.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://communicator/skin/preferences.css"?>
+<?xml-stylesheet type="text/css" href="chrome://communicator/skin/tabpanells.css"?>
+<?xml-stylesheet href="chrome://createjiraissue/skin/options.css" type="text/css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://createjiraissue/locale/options.dtd">
+
+<dialog id="createjiraissue_settings"
+	title="&prefwindow.title;"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	style="width: 640px; height: 480px;"
+	persist="width height"
+	onload="onLoad();"
+	onbeforeaccept="savePrefs();"
+	onunload="savePrefs();"
+	buttons="accept,help"
+	dlgbuttons="accept,help">
+
+<tabbox id="settingsTabList" selectedIndex="0">
+  <tabs id="settingsTabs">
+    <tab label="&pane.settings.url.title;" image="chrome://createjiraissue/skin/security.png"/>
+    <tab label="&pane.settings.mapping.title;" image="chrome://createjiraissue/skin/advanced.png"/>
+    <tab label="&pane.settings.other.title;" image="chrome://createjiraissue/skin/general.png"/>
+    <tab label="&pane.settings.language.title;" image="chrome://createjiraissue/skin/cal-icon32.png"/>
+    <tab label="&pane.settings.reply.title;" image="chrome://createjiraissue/skin/composition.png"/>
+    <tab label="&pane.rest.create.title;" image="chrome://createjiraissue/skin/New.png"/>
+    <tab label="&pane.settings.about.title;" image="chrome://createjiraissue/skin/icon48.png"/>
+  </tabs>
+  <tabpanels>
+	<tabpanel id="paneSettingsUrl" label="&pane.settings.url.title;" image="chrome://createjiraissue/skin/security.png" onpaneload="onPaneUrlLoad(event);">
+		<grid flex="1" align="center" height="454px">
+			<columns>
+				<column flex="0"/>
+				<column flex="1"/>
+			</columns>
+			<rows>
+				<row>
+					<label class="header" accesskey="&jiraurl.accesskey;" control="jiraurl">&jiraurl.label;</label>
+					<textbox preference="extensions.createjiraissue.jiraurl" id="jiraurl"/>
+				</row>
+				<row>
+					<label class="header" accesskey="&username.accesskey;" control="username">&username.label;</label>
+					<textbox preference="extensions.createjiraissue.username" id="username"/>
+				</row>
+				<row>
+					<label class="header" accesskey="&password.accesskey;" control="password">&password.label;</label>
+					<textbox preference="extensions.createjiraissue.password" id="password" type="password"/>
+				</row>
+				<row>
+					<label class="header" accesskey="&rest.accesskey;" control="rest">&rest.label;</label>
+					<checkbox accesskey="&rest.accesskey;" id="rest" preference="extensions.createjiraissue.rest" label="&rest.description;" checked="true" disabled="true"/>
+				</row>
+				<row>
+					<label class="header" accesskey="&test.connection.accesskey;">&test.connection.label;</label>
+					<button label="&test.connection.btn;" oncommand="testConnection();" class="test-jira"/>
+				</row>
+				<row>
+					<label class="header">&serverinfo.label;</label>
+					<textbox readonly="true" emptytext="&serverinfo.version;" id="serverinfo.version"/>
+				</row>
+				<row>
+					<label class="header">&serverinfo.label;</label>
+					<textbox readonly="true" emptytext="&serverinfo.title;" id="serverinfo.title"/>
+				</row>
+				<row>
+					<label class="header">&userinfo.label;</label>
+					<textbox readonly="true" emptytext="&userinfo.name;" id="userinfo.name"/>
+				</row>
+				<row>
+					<label class="header">&userinfo.label;</label>
+					<textbox readonly="true" emptytext="&userinfo.tz;" id="userinfo.tz"/>
+				</row>
+				<row flex="1" style="overflow: visible;">
+					<label class="header">&userinfo.avatar;</label>
+					<hbox flex="1">
+						<vbox flex="1">
+							<image src="chrome://createjiraissue/skin/projectavatar.png" id="userinfo.avatar" style="min-height: 48px; max-height: 48px; min-width: 48px; max-width: 48px;"/>
+						</vbox>
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</tabpanel>
+
+	<tabpanel id="paneSettingsMapping" label="&pane.settings.mapping.title;" image="chrome://createjiraissue/skin/advanced.png" onpaneload="onPaneMappingLoad(event);">
+		<grid flex="1" align="center">
+			<columns>
+				<column flex="1"/>
+			</columns>
+			<rows>
+				<row>
+					<label class="header" accesskey="&projectmapping.accesskey;" control="projectmapping">&projectmapping.label;</label>
+				</row>
+				<row>
+					<html:textarea emptytext="&description.text;" placeholder="&description.text;" rows="8" id="projectmapping" preference="extensions.createjiraissue.projectmapping"/>
+				</row>
+			</rows>
+		</grid>
+	</tabpanel>
+
+	<tabpanel id="paneSettingsOther" label="&pane.settings.other.title;" image="chrome://createjiraissue/skin/general.png" onpaneload="onPaneOtherLoad(event);">
+		<grid flex="1" align="center">
+			<columns>
+				<column flex="1"/>
+			</columns>
+			<rows>
+				<row>
+					<label class="header">&settings.label;</label>
+				</row>
+				<row>
+					<groupbox>
+						<grid flex="1" align="center">
+							<columns>
+								<column flex="0"/>
+								<column flex="1"/>
+							</columns>
+							<rows>
+								<row>
+									<checkbox class="header" accesskey="&addheader.accesskey;" label="&addheader.label;" id="addheader" preference="extensions.createjiraissue.addheader"/>
+								</row>
+								<row>
+									<label class="header" control="sel_header" accesskey="&wizard.add.email.header.accesskey;" value="&wizard.add.email.header.option;"/>
+									<menulist id="sel_header" preference="extensions.createjiraissue.addheadertype" accesskey="&wizard.add.email.header.accesskey;">
+										<menupopup>
+											<menuitem id="sel_header_plain" label="&wizard.add.email.header.option.plain;" value="plain"/>
+											<menuitem id="sel_header_wiki" label="&wizard.add.email.header.option.wiki;" value="wiki"/>
+										</menupopup>
+									</menulist>
+								</row>
+							</rows>
+						</grid>
+					</groupbox>
+				</row>
+				<row>
+					<checkbox class="header" accesskey="&assigntome.accesskey;" label="&assigntome.label;" id="assigntome" preference="extensions.createjiraissue.assigntome"/>
+				</row>
+				<row>
+					<separator class="groove"/>
+				</row>
+				<row>
+					<vbox>
+						<label class="header" control="sel_tab" accesskey="&wizard.preferred.comment.tab.accesskey;" value="&wizard.preferred.comment.tab.label;"/>
+						<menulist id="sel_tab" preference="extensions.createjiraissue.preferredcommenttab" accesskey="&wizard.preferred.comment.tab.accesskey;">
+							<menupopup>
+								<menuitem id="sel_tab_fulltext" label="&tabbox.fulltext.label;" accesskey="&tabbox.fulltext.accesskey;" value="0"/>
+								<menuitem id="sel_tab_key" label="&tabbox.issuekey.label;" accesskey="&tabbox.issuekey.accesskey;" value="1"/>
+								<menuitem id="sel_tab_filter" label="&tabbox.filter.label;" accesskey="&tabbox.filter.accesskey;" value="2"/>
+								<menuitem id="sel_tab_jql" label="&tabbox.jql.label;" accesskey="&tabbox.jql.accesskey;" value="3"/>
+								<menuitem id="sel_tab_last" label="&tabbox.last.label;" accesskey="&tabbox.last.accesskey;" value="-1"/>
+							</menupopup>
+						</menulist>
+					</vbox>
+				</row>
+				<row>
+					<separator class="groove"/>
+				</row>
+				<row>
+					<groupbox>
+						<grid flex="1" align="center">
+							<columns>
+								<column flex="0"/>
+								<column flex="1"/>
+							</columns>
+							<rows>
+								<row>
+									<label class="header" accesskey="&tempDirDefault.accesskey;" control="tempDirDefault">&tempDirDefault.label;</label>
+									<radiogroup accesskey="&tempDirDefault.accesskey;" label="&tempDirDefault.label;" id="tempDirDefaultRadio" preference="extensions.createjiraissue.tempDirDefault" oncommand="return onTempDirDefaultSelected(event.originalTarget.value);">
+									    <radio value="true" label="&fields.col.active.yes;" accesskey="&fields.col.active.yes.accesskey;"/>
+									    <radio value="false" label="&fields.col.active.no;" accesskey="&fields.col.active.no.accesskey;"/>
+									</radiogroup>
+								</row>
+								<row>
+									<label class="header" accesskey="&tempDirAlternate.accesskey;" control="tempDirAlternate">&tempDirAlternate.label;</label>
+									<hbox flex="1">
+										<textbox preference="extensions.createjiraissue.tempDirAlternate" id="tempDirAlternate" flex="1"/>
+										<button id="chooseDirButton" tooltiptext="&choose.folder.tooltiptext;" oncommand="chooseDir();" label="..."/>
+									</hbox>
+								</row>
+								<row>
+									<checkbox class="header" accesskey="&keepTempFiles.accesskey;" label="&keepTempFiles.label;" id="keepTempFiles" preference="extensions.createjiraissue.keepTempFiles"/>
+								</row>
+							</rows>
+						</grid>
+					</groupbox>
+				</row>
+				<row>
+					<separator class="groove"/>
+				</row>
+				<row>
+					<checkbox class="header" accesskey="&addOn.Tempo.support.accesskey;" label="&addOn.Tempo.support.label;" id="addOnTempoSupportCheckBox" preference="extensions.createjiraissue.addOnTempoSupport"/>
+				</row>
+			</rows>
+		</grid>
+	</tabpanel>
+
+	<tabpanel id="paneSettingsLanguage" label="&pane.settings.language.title;" image="chrome://createjiraissue/skin/cal-icon32.png" onpaneload="onPaneLanguageLoad(event);">
+		<grid flex="1" align="center">
+			<columns>
+				<column flex="0"/>
+				<column flex="1"/>
+				<column flex="0"/>
+			</columns>
+			<rows>
+				<row>
+					<label class="header">&language.settings.label;</label>
+				</row>
+				<row>
+					<label class="header" accesskey="&language.accesskey;" control="language">&language.label;</label>
+					<html:select id="language" onselect="languageSelected();" preference="extensions.createjiraissue.language" accesskey="&language.accesskey;">
+							<html:option id="ar"  value="ar">&i18n.locale.ar;</html:option>
+							<html:option id="ar_AE"  value="ar_AE">&i18n.locale.ar_AE;</html:option>
+							<html:option id="ar_BH"  value="ar_BH">&i18n.locale.ar_BH;</html:option>
+							<html:option id="ar_DZ"  value="ar_DZ">&i18n.locale.ar_DZ;</html:option>
+							<html:option id="ar_EG"  value="ar_EG">&i18n.locale.ar_EG;</html:option>
+							<html:option id="ar_IQ"  value="ar_IQ">&i18n.locale.ar_IQ;</html:option>
+							<html:option id="ar_JO"  value="ar_JO">&i18n.locale.ar_JO;</html:option>
+							<html:option id="ar_KW"  value="ar_KW">&i18n.locale.ar_KW;</html:option>
+							<html:option id="ar_LB"  value="ar_LB">&i18n.locale.ar_LB;</html:option>
+							<html:option id="ar_LY"  value="ar_LY">&i18n.locale.ar_LY;</html:option>
+							<html:option id="ar_MA"  value="ar_MA">&i18n.locale.ar_MA;</html:option>
+							<html:option id="ar_OM"  value="ar_OM">&i18n.locale.ar_OM;</html:option>
+							<html:option id="ar_QA"  value="ar_QA">&i18n.locale.ar_QA;</html:option>
+							<html:option id="ar_SA"  value="ar_SA">&i18n.locale.ar_SA;</html:option>
+							<html:option id="ar_SD"  value="ar_SD">&i18n.locale.ar_SD;</html:option>
+							<html:option id="ar_SY"  value="ar_SY">&i18n.locale.ar_SY;</html:option>
+							<html:option id="ar_TN"  value="ar_TN">&i18n.locale.ar_TN;</html:option>
+							<html:option id="ar_YE"  value="ar_YE">&i18n.locale.ar_YE;</html:option>
+							<html:option id="be"  value="be">&i18n.locale.be;</html:option>
+							<html:option id="be_BY"  value="be_BY">&i18n.locale.be_BY;</html:option>
+							<html:option id="bg"  value="bg">&i18n.locale.bg;</html:option>
+							<html:option id="bg_BG"  value="bg_BG">&i18n.locale.bg_BG;</html:option>
+							<html:option id="ca"  value="ca">&i18n.locale.ca;</html:option>
+							<html:option id="ca_ES"  value="ca_ES">&i18n.locale.ca_ES;</html:option>
+							<html:option id="cs"  value="cs">&i18n.locale.cs;</html:option>
+							<html:option id="cs_CZ"  value="cs_CZ">&i18n.locale.cs_CZ;</html:option>
+							<html:option id="da"  value="da">&i18n.locale.da;</html:option>
+							<html:option id="da_DK"  value="da_DK">&i18n.locale.da_DK;</html:option>
+							<html:option id="de"  value="de">&i18n.locale.de;</html:option>
+							<html:option id="de_AT"  value="de_AT">&i18n.locale.de_AT;</html:option>
+							<html:option id="de_CH"  value="de_CH">&i18n.locale.de_CH;</html:option>
+							<html:option id="de_DE"  value="de_DE">&i18n.locale.de_DE;</html:option>
+							<html:option id="de_LU"  value="de_LU">&i18n.locale.de_LU;</html:option>
+							<html:option id="el"  value="el">&i18n.locale.el;</html:option>
+							<html:option id="el_CY"  value="el_CY">&i18n.locale.el_CY;</html:option>
+							<html:option id="el_GR"  value="el_GR">&i18n.locale.el_GR;</html:option>
+							<html:option id="en"  value="en">&i18n.locale.en;</html:option>
+							<html:option id="en_AU"  value="en_AU">&i18n.locale.en_AU;</html:option>
+							<html:option id="en_CA"  value="en_CA">&i18n.locale.en_CA;</html:option>
+							<html:option id="en_GB"  value="en_GB">&i18n.locale.en_GB;</html:option>
+							<html:option id="en_IE"  value="en_IE">&i18n.locale.en_IE;</html:option>
+							<html:option id="en_IN"  value="en_IN">&i18n.locale.en_IN;</html:option>
+							<html:option id="en_MT"  value="en_MT">&i18n.locale.en_MT;</html:option>
+							<html:option id="en_NZ"  value="en_NZ">&i18n.locale.en_NZ;</html:option>
+							<html:option id="en_PH"  value="en_PH">&i18n.locale.en_PH;</html:option>
+							<html:option id="en_SG"  value="en_SG">&i18n.locale.en_SG;</html:option>
+							<html:option id="en_US"  value="en_US">&i18n.locale.en_US;</html:option>
+							<html:option id="en_ZA"  value="en_ZA">&i18n.locale.en_ZA;</html:option>
+							<html:option id="es"  value="es">&i18n.locale.es;</html:option>
+							<html:option id="es_AR"  value="es_AR">&i18n.locale.es_AR;</html:option>
+							<html:option id="es_BO"  value="es_BO">&i18n.locale.es_BO;</html:option>
+							<html:option id="es_CL"  value="es_CL">&i18n.locale.es_CL;</html:option>
+							<html:option id="es_CO"  value="es_CO">&i18n.locale.es_CO;</html:option>
+							<html:option id="es_CR"  value="es_CR">&i18n.locale.es_CR;</html:option>
+							<html:option id="es_DO"  value="es_DO">&i18n.locale.es_DO;</html:option>
+							<html:option id="es_EC"  value="es_EC">&i18n.locale.es_EC;</html:option>
+							<html:option id="es_ES"  value="es_ES">&i18n.locale.es_ES;</html:option>
+							<html:option id="es_GT"  value="es_GT">&i18n.locale.es_GT;</html:option>
+							<html:option id="es_HN"  value="es_HN">&i18n.locale.es_HN;</html:option>
+							<html:option id="es_MX"  value="es_MX">&i18n.locale.es_MX;</html:option>
+							<html:option id="es_NI"  value="es_NI">&i18n.locale.es_NI;</html:option>
+							<html:option id="es_PA"  value="es_PA">&i18n.locale.es_PA;</html:option>
+							<html:option id="es_PE"  value="es_PE">&i18n.locale.es_PE;</html:option>
+							<html:option id="es_PR"  value="es_PR">&i18n.locale.es_PR;</html:option>
+							<html:option id="es_PY"  value="es_PY">&i18n.locale.es_PY;</html:option>
+							<html:option id="es_SV"  value="es_SV">&i18n.locale.es_SV;</html:option>
+							<html:option id="es_US"  value="es_US">&i18n.locale.es_US;</html:option>
+							<html:option id="es_UY"  value="es_UY">&i18n.locale.es_UY;</html:option>
+							<html:option id="es_VE"  value="es_VE">&i18n.locale.es_VE;</html:option>
+							<html:option id="et"  value="et">&i18n.locale.et;</html:option>
+							<html:option id="et_EE"  value="et_EE">&i18n.locale.et_EE;</html:option>
+							<html:option id="fi"  value="fi">&i18n.locale.fi;</html:option>
+							<html:option id="fi_FI"  value="fi_FI">&i18n.locale.fi_FI;</html:option>
+							<html:option id="fr"  value="fr">&i18n.locale.fr;</html:option>
+							<html:option id="fr_BE"  value="fr_BE">&i18n.locale.fr_BE;</html:option>
+							<html:option id="fr_CA"  value="fr_CA">&i18n.locale.fr_CA;</html:option>
+							<html:option id="fr_CH"  value="fr_CH">&i18n.locale.fr_CH;</html:option>
+							<html:option id="fr_FR"  value="fr_FR">&i18n.locale.fr_FR;</html:option>
+							<html:option id="fr_LU"  value="fr_LU">&i18n.locale.fr_LU;</html:option>
+							<html:option id="ga"  value="ga">&i18n.locale.ga;</html:option>
+							<html:option id="ga_IE"  value="ga_IE">&i18n.locale.ga_IE;</html:option>
+							<html:option id="hi_IN"  value="hi_IN">&i18n.locale.hi_IN;</html:option>
+							<html:option id="hr"  value="hr">&i18n.locale.hr;</html:option>
+							<html:option id="hr_HR"  value="hr_HR">&i18n.locale.hr_HR;</html:option>
+							<html:option id="hu"  value="hu">&i18n.locale.hu;</html:option>
+							<html:option id="hu_HU"  value="hu_HU">&i18n.locale.hu_HU;</html:option>
+							<html:option id="in"  value="in">&i18n.locale.in;</html:option>
+							<html:option id="in_ID"  value="in_ID">&i18n.locale.in_ID;</html:option>
+							<html:option id="is"  value="is">&i18n.locale.is;</html:option>
+							<html:option id="is_IS"  value="is_IS">&i18n.locale.is_IS;</html:option>
+							<html:option id="it"  value="it">&i18n.locale.it;</html:option>
+							<html:option id="it_CH"  value="it_CH">&i18n.locale.it_CH;</html:option>
+							<html:option id="it_IT"  value="it_IT">&i18n.locale.it_IT;</html:option>
+							<html:option id="iw"  value="iw">&i18n.locale.iw;</html:option>
+							<html:option id="iw_IL"  value="iw_IL">&i18n.locale.iw_IL;</html:option>
+							<html:option id="ja"  value="ja">&i18n.locale.ja;</html:option>
+							<html:option id="ja_JP"  value="ja_JP">&i18n.locale.ja_JP;</html:option>
+							<html:option id="ja_JP_JP_#u-ca-japanese"  value="ja_JP_JP_#u-ca-japanese">&i18n.locale.ja_JP_JP_u-ca-japanese;</html:option>
+							<html:option id="ko"  value="ko">&i18n.locale.ko;</html:option>
+							<html:option id="ko_KR"  value="ko_KR">&i18n.locale.ko_KR;</html:option>
+							<html:option id="lt"  value="lt">&i18n.locale.lt;</html:option>
+							<html:option id="lt_LT"  value="lt_LT">&i18n.locale.lt_LT;</html:option>
+							<html:option id="lv"  value="lv">&i18n.locale.lv;</html:option>
+							<html:option id="lv_LV"  value="lv_LV">&i18n.locale.lv_LV;</html:option>
+							<html:option id="mk"  value="mk">&i18n.locale.mk;</html:option>
+							<html:option id="mk_MK"  value="mk_MK">&i18n.locale.mk_MK;</html:option>
+							<html:option id="ms"  value="ms">&i18n.locale.ms;</html:option>
+							<html:option id="ms_MY"  value="ms_MY">&i18n.locale.ms_MY;</html:option>
+							<html:option id="mt"  value="mt">&i18n.locale.mt;</html:option>
+							<html:option id="mt_MT"  value="mt_MT">&i18n.locale.mt_MT;</html:option>
+							<html:option id="nl"  value="nl">&i18n.locale.nl;</html:option>
+							<html:option id="nl_BE"  value="nl_BE">&i18n.locale.nl_BE;</html:option>
+							<html:option id="nl_NL"  value="nl_NL">&i18n.locale.nl_NL;</html:option>
+							<html:option id="no"  value="no">&i18n.locale.no;</html:option>
+							<html:option id="no_NO"  value="no_NO">&i18n.locale.no_NO;</html:option>
+							<html:option id="no_NO_NY"  value="no_NO_NY">&i18n.locale.no_NO_NY;</html:option>
+							<html:option id="pl"  value="pl">&i18n.locale.pl;</html:option>
+							<html:option id="pl_PL"  value="pl_PL">&i18n.locale.pl_PL;</html:option>
+							<html:option id="pt"  value="pt">&i18n.locale.pt;</html:option>
+							<html:option id="pt_BR"  value="pt_BR">&i18n.locale.pt_BR;</html:option>
+							<html:option id="pt_PT"  value="pt_PT">&i18n.locale.pt_PT;</html:option>
+							<html:option id="ro"  value="ro">&i18n.locale.ro;</html:option>
+							<html:option id="ro_RO"  value="ro_RO">&i18n.locale.ro_RO;</html:option>
+							<html:option id="ru"  value="ru">&i18n.locale.ru;</html:option>
+							<html:option id="ru_RU"  value="ru_RU">&i18n.locale.ru_RU;</html:option>
+							<html:option id="sk"  value="sk">&i18n.locale.sk;</html:option>
+							<html:option id="sk_SK"  value="sk_SK">&i18n.locale.sk_SK;</html:option>
+							<html:option id="sl"  value="sl">&i18n.locale.sl;</html:option>
+							<html:option id="sl_SI"  value="sl_SI">&i18n.locale.sl_SI;</html:option>
+							<html:option id="sq"  value="sq">&i18n.locale.sq;</html:option>
+							<html:option id="sq_AL"  value="sq_AL">&i18n.locale.sq_AL;</html:option>
+							<html:option id="sr"  value="sr">&i18n.locale.sr;</html:option>
+							<html:option id="sr__#Latn"  value="sr__#Latn">&i18n.locale.sr__Latn;</html:option>
+							<html:option id="sr_BA"  value="sr_BA">&i18n.locale.sr_BA;</html:option>
+							<html:option id="sr_BA_#Latn"  value="sr_BA_#Latn">&i18n.locale.sr_BA_Latn;</html:option>
+							<html:option id="sr_CS"  value="sr_CS">&i18n.locale.sr_CS;</html:option>
+							<html:option id="sr_ME"  value="sr_ME">&i18n.locale.sr_ME;</html:option>
+							<html:option id="sr_ME_#Latn"  value="sr_ME_#Latn">&i18n.locale.sr_ME_Latn;</html:option>
+							<html:option id="sr_RS"  value="sr_RS">&i18n.locale.sr_RS;</html:option>
+							<html:option id="sr_RS_#Latn"  value="sr_RS_#Latn">&i18n.locale.sr_RS_Latn;</html:option>
+							<html:option id="sv"  value="sv">&i18n.locale.sv;</html:option>
+							<html:option id="sv_SE"  value="sv_SE">&i18n.locale.sv_SE;</html:option>
+							<html:option id="th"  value="th">&i18n.locale.th;</html:option>
+							<html:option id="th_TH"  value="th_TH">&i18n.locale.th_TH;</html:option>
+							<html:option id="th_TH_TH_#u-nu-thai"  value="th_TH_TH_#u-nu-thai">&i18n.locale.th_TH_TH_u-nu-thai;</html:option>
+							<html:option id="tr"  value="tr">&i18n.locale.tr;</html:option>
+							<html:option id="tr_TR"  value="tr_TR">&i18n.locale.tr_TR;</html:option>
+							<html:option id="uk"  value="uk">&i18n.locale.uk;</html:option>
+							<html:option id="uk_UA"  value="uk_UA">&i18n.locale.uk_UA;</html:option>
+							<html:option id="vi"  value="vi">&i18n.locale.vi;</html:option>
+							<html:option id="vi_VN"  value="vi_VN">&i18n.locale.vi_VN;</html:option>
+							<html:option id="zh"  value="zh">&i18n.locale.zh;</html:option>
+							<html:option id="zh_CN"  value="zh_CN">&i18n.locale.zh_CN;</html:option>
+							<html:option id="zh_HK"  value="zh_HK">&i18n.locale.zh_HK;</html:option>
+							<html:option id="zh_SG"  value="zh_SG">&i18n.locale.zh_SG;</html:option>
+							<html:option id="zh_TW"  value="zh_TW">&i18n.locale.zh_TW;</html:option>
+					</html:select>
+				</row>
+				<row>
+					<label class="header" accesskey="&decimalsep.accesskey;" control="decimalsep">&decimalsep.label;</label>
+					<textbox maxLength="1" preference="extensions.createjiraissue.decimalsep" id="decimalsep"/>
+				</row>
+				<!-- row>
+						<label class="header" accesskey="&months.accesskey;" control="months">&months.label;</label>
+						<textbox preference="extensions.createjiraissue.months" id="months" onkeypress="validateMonths();" onkeydown="validateMonths();" onkeyup="validateMonths();" onchange="validateMonths();" onblur="validateMonths();"/>
+						<image id="monthStatusIcon" src='chrome://createjiraissue/skin/1x1.gif' width='24' height='24'/>
+					</row>
+					<row>
+						<label/>
+						<html:p>&description.month.text1;<html:br/>
+						&description.month.text2;<html:br/>
+						&description.month.text3;<html:br/>
+						&description.month.text4;<html:br/>
+						&description.month.text5;</html:p>
+					</row -->
+			</rows>
+		</grid>
+	</tabpanel>
+
+	<tabpanel id="paneSettingsReply" label="&pane.settings.reply.title;" image="chrome://createjiraissue/skin/composition.png" onpaneload="onPaneReplyLoad(event);">
+		<vbox flex="1"><!-- no effect, why? -->
+			<description>&pane.settings.reply.description;</description>
+			<grid flex="1" align="center" height="235px">
+				<columns>
+					<column flex="0"/>
+					<column flex="1"/>
+				</columns>
+				<rows>
+					<row>
+						<label class="header" accesskey="&reply.header.create.accesskey;" control="replyHeaderCreate">&reply.header.create.label;</label>
+						<textbox accesskey="&reply.header.create.accesskey;" id="replyHeaderCreate" preference="extensions.createjiraissue.replyHeaderCreate" placeholder="&reply.header.create.description;"/>
+					</row>
+					<row>
+						<label class="header" accesskey="&reply.body.create.accesskey;" control="replyBodyCreate">&reply.body.create.label;</label>
+						<html:textarea accesskey="&reply.body.create.accesskey;" id="replyBodyCreate" preference="extensions.createjiraissue.replyBodyCreate" placeholder="&reply.body.create.description;" rows="3"/>
+					</row>
+					<row>
+						<label class="header" accesskey="&reply.header.comment.accesskey;" control="replyHeaderComment">&reply.header.comment.label;</label>
+						<textbox accesskey="&reply.header.comment.accesskey;" id="replyHeaderComment" preference="extensions.createjiraissue.replyHeaderComment" placeholder="&reply.header.comment.description;"/>
+					</row>
+					<row>
+						<label class="header" accesskey="&reply.body.comment.accesskey;" control="replyBodyComment">&reply.body.comment.label;</label>
+						<html:textarea accesskey="&reply.body.comment.accesskey;" id="replyBodyComment" preference="extensions.createjiraissue.replyBodyComment" placeholder="&reply.body.comment.description;" rows="3"/>
+					</row>
+					<row>
+						<label class="header" accesskey="&reply.cc.accesskey;" control="replyCC">&reply.cc.label;</label>
+						<textbox accesskey="&reply.cc.accesskey;" id="replyCC" preference="extensions.createjiraissue.replyCC" placeholder="&reply.cc.description;"/>
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</tabpanel>
+
+	<tabpanel id="paneSettingsSplash" label="&pane.rest.create.title;" image="chrome://createjiraissue/skin/New.png" onpaneload="onPaneSplashLoad(event);">
+		<groupbox>
+			<caption>&splash.rest.create.title;</caption>
+			<grid flex="1" align="center">
+				<columns>
+					<column flex="1"/>
+				</columns>
+				<rows>
+					<row>
+
+					</row>
+					<row>
+						<label class="header">&splash.rest.create.description;</label>
+					</row>
+					<row>
+						<separator class="groove-thin"/>
+					</row>
+					<row>
+						<hbox>
+							<image src="chrome://createjiraissue/skin/New-Red.png"/>
+							<label>&splash.rest.create.new1;</label>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<image src="chrome://createjiraissue/skin/New.png"/>
+							<label>&splash.rest.create.new2;</label>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<image src="chrome://createjiraissue/skin/New.png"/>
+							<label>&splash.rest.create.new3;</label>
+						</hbox>
+					</row>
+                    <!--
+					<row>
+						<hbox>
+							<image src="chrome://createjiraissue/skin/New.png"/>
+							<label>&splash.rest.create.new4;</label>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<image src="chrome://createjiraissue/skin/New.png"/>
+							<label>&splash.rest.create.new5;</label>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<image src="chrome://createjiraissue/skin/New.png"/>
+							<label>&splash.rest.create.new6;</label>
+						</hbox>
+					</row>
+					<row>
+						<hbox>
+							<image src="chrome://createjiraissue/skin/New.png"/>
+							<label>&splash.rest.create.new7;</label>
+						</hbox>
+					</row>
+					-->
+					<row>
+						<separator class="groove-thin"/>
+					</row>
+					<row>
+						<checkbox accesskey="&wizard.accesskey;" label="&wizard.seen.label;" id="wizard" preference="extensions.createjiraissue.wizard"/>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+	</tabpanel>
+
+	<tabpanel id="paneHelp" label="&pane.settings.about.title;" image="chrome://createjiraissue/skin/icon48.png" onpaneload="onPaneHelpLoad(event);">
+		<grid flex="1" align="center" height="557px">
+			<columns>
+				<column flex="1"/>
+			</columns>
+			<rows>
+				<row>
+					<hbox>
+						<image width="340px" height="56px" src="chrome://createjiraissue/skin/teamworkx_logo.png" onclick="openUrl('http://www.catworkx.de');"  onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'" />
+						<spacer flex="1"/>
+					</hbox>
+				</row>
+				<row>
+					<label class="header">&about.title;</label>
+				</row>
+				<row>
+					<separator class="groove-thin"/>
+				</row>
+				<row>
+					&about.text;
+				</row>
+				<row>
+					<separator class="groove-thin"/>
+				</row>
+				<row>
+					<vbox>
+						<label>&about.catworkx;</label>
+						<label value="https://www.catworkx.com"
+							style="color: blue; text-decoration: underline"
+							onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+							align="left" onclick="openUrl('https://www.catworkx.com');" />
+					</vbox>
+				</row>
+				<row>
+					<vbox>
+						<label>&about.teamworkx;</label>
+						<label value="https://www.teamworkx.com"
+							style="color: blue; text-decoration: underline"
+							onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+							align="left" onclick="openUrl('https://www.teamworkx.com');" />
+					</vbox>
+				</row>
+				<row>
+					<vbox>
+						<label>&about.mozilla;</label>
+						<label value="https://www.mozilla.org"
+							style="color: blue; text-decoration: underline"
+							onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+							align="left" onclick="openUrl('https://www.mozilla.org');" />
+					</vbox>
+				</row>
+				<row>
+					<vbox>
+						<label>&about.growl;</label>
+						<label value="http://www.growl.info"
+							style="color: blue; text-decoration: underline"
+							onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+							align="left" onclick="openUrl('http://www.growl.info');" />
+					</vbox>
+				</row>
+				<row>
+					<vbox>
+						<label>&about.atlassian;</label>
+						<label value="https://www.atlassian.com"
+							style="color: blue; text-decoration: underline"
+							onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+							align="left" onclick="openUrl('https://www.atlassian.com');" />
+					</vbox>
+				</row>
+				<row>
+					<vbox>
+						<label>&about.aha-soft;</label>
+						<label value="http://www.small-icons.com/packs/24x24-free-application-icons.htm"
+							style="color: blue; text-decoration: underline"
+							onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+							align="left" onclick="openUrl('http://www.small-icons.com/packs/24x24-free-application-icons.htm');" />
+					</vbox>
+				</row>
+				<row>
+					<vbox>
+						<label>&about.apple;</label>
+						<label value="https://www.apple.com"
+							style="color: blue; text-decoration: underline"
+							onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+							align="left" onclick="openUrl('https://www.apple.com');" />
+					</vbox>
+				</row>
+				<row>
+					<vbox>
+						<label>&about.tempo;</label>
+						<label value="http://www.tempoplugin.com"
+							style="color: blue; text-decoration: underline"
+							onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+							align="left" onclick="openUrl('http://www.tempoplugin.com');" />
+					</vbox>
+				</row>
+			</rows>
+		</grid>
+	</tabpanel>
+	  </tabpanels>
+</tabbox>
+  <script 
+     src="chrome://global/content/preferencesBindings.js" 
+     type="application/javascript"/>
+  <script 
+     src="chrome://createjiraissue/content/preferences.js" 
+     type="application/javascript"/>  
+	<script type="application/x-javascript" src="chrome://createjiraissue/content/options.js"/>
+</dialog>

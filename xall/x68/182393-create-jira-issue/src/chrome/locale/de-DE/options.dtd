@@ -1,0 +1,315 @@
+<!ENTITY prefwindow.title "Einstellungen zu Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.url.title "Verbindung">
+<!ENTITY pane.settings.url.description "zu Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.mapping.title "Zuordnung">
+<!ENTITY pane.settings.mapping.description "zu Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.other.title "Sonstiges">
+<!ENTITY pane.settings.other.description "zu Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.fields.title "Benutzerdefinierte Felder">
+<!ENTITY pane.settings.fields.description "zu Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.language.title "Sprache">
+<!ENTITY pane.settings.language.description "zu Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.about.title "Über">
+<!ENTITY pane.settings.about.description "zu Thunderbird® Integration for Jira®">
+<!ENTITY jiraurl.label "Jira®-URL:">
+<!ENTITY jiraurl.accesskey "J">
+<!ENTITY username.label "Benutzername:">
+<!ENTITY username.accesskey "B">
+<!ENTITY password.label "Passwort:">
+<!ENTITY password.accesskey "P">
+<!ENTITY rest.label "REST API nutzen:">
+<!ENTITY rest.accesskey "R">
+<!ENTITY rest.description "Die REST Option bietet die Möglichkeit einen neuen Dialog für die Erfassung vor Vorgängen zu nutzen. Die REST API existiert seit ca. Jira® 4.4. Die Verwendung des SOAP API wird nicht mehr unterstützt.">
+<!ENTITY projectmapping.label "Zuordnung EMail Absender zu Projekten (optional):">
+<!ENTITY projectmapping.accesskey "Z">
+<!ENTITY addheader.label "EMail Header automatisch anhängen">
+<!ENTITY addheader.accesskey "H">
+<!ENTITY assigntome.label "Neue Vorgänge Automatisch mir zuweisen">
+<!ENTITY assigntome.accesskey "A">
+<!ENTITY language.label "Sprache:">
+<!ENTITY language.accesskey "p">
+<!ENTITY decimalsep.label "Dezimaltrennzeichen:">
+<!ENTITY decimalsep.accesskey "D">
+<!ENTITY months.label "Liste der Monate:">
+<!ENTITY months.accesskey "M">
+<!ENTITY settings.label "Weitere Einstellungen:">
+<!ENTITY language.settings.label "Sprachspezifische Einstellungen:">
+<!ENTITY fields.label "Spezielle Einstellungen zu benutzderdefinierten Feldern">
+<!ENTITY fields.description "Hier können Sie definieren, welche benutzderdefinierten Felder angezeigt werden und wie dies geschieht.
+Sollten Sie den Wert Standard (Jira® Typ) auswählen, so wird das Plugin versuchen den eigentlichen Typ anhand der Informationen vom Jira® zu ermitteln.
+Sollten Sie Felder auf inaktiv setzen, die bei manchen Vorgängen im Jira® als Pflichtfelder markiert sind, so werden Sie den Vorgang nicht anlegen können.
+Wenn Sie die URL auf dem ersten Tab auf einen neuen Jira® Server eingestellt haben, so laden Sie bitte die Tabelle komplett neu, damit keine alten Werte in der Tabelle enthalten bleiben.">
+<!ENTITY fields.button.reload.label "Daten löschen und neu von Jira® Server laden">
+<!ENTITY fields.accesskey "B">
+<!ENTITY fields.settings.label "Benutzerdefinierte Felder">
+<!ENTITY fields.col.id "ID">
+<!ENTITY fields.col.field "Feld">
+<!ENTITY fields.col.type "Jira® Typ">
+<!ENTITY fields.col.action "Als Typ interpretieren">
+<!ENTITY fields.col.active "Aktiv?">
+<!ENTITY fields.col.active.no "Nein">
+<!ENTITY fields.col.active.yes "Ja">
+<!ENTITY fields.col.active.no.accesskey "N">
+<!ENTITY fields.col.active.yes.accesskey "J">
+<!ENTITY field.action.default "Standard (Jira® Typ)">
+<!ENTITY field.action.textbox "Textfeld">
+<!ENTITY field.action.textbox.multi "Mehrzeiliges Textfeld">
+<!ENTITY field.action.number "Nummernfeld">
+<!ENTITY field.action.date "Datumsselektor">
+<!ENTITY field.action.user "Benutzerauswahl">
+<!ENTITY field.action.group "Gruppenauswahl">
+<!ENTITY button.save.label "Speichern">
+<!ENTITY button.cancel.label "Abbrechen">
+<!ENTITY description.month.text1 "Aufgrund einer im Jira® nicht vorhandenen Schnittstelle, fehlt die Möglichkeit die Sprachspezifischen Einstellungen zu ermitteln.">
+<!ENTITY description.month.text2 "Bitte wählen Sie die entsprechende Sprache aus, geben Sie bitte das Dezimaltrennzeichen ein.">
+<!ENTITY description.month.text3 "Da Mozilla® keine Schnitstelle zur Übersetzung von Monatsnamen hat,">
+<!ENTITY description.month.text4 "geben die Liste der Monate in folgender Form an:">
+<!ENTITY description.month.text5 "Jan,Feb,Mär,Apr,...,Dez">
+<!ENTITY description.text1 "Die Zuordnung geschieht mit (Teilen) der EMail Adresse zu einem">
+<!ENTITY description.text2 "Projekt Schlüssel, um dieses Projekt im Dialog vorzubelegen.">
+<!ENTITY description.text3 "Bitte | als als Trennzeichen nutzen und nur eine Zuordnung je Zeile:">
+<!ENTITY description.text4 "Muster|Projekt-Schlüssel">
+<!ENTITY description.text5 "Beispiel:">
+<!ENTITY description.text6 "catworkx.de|CWXI">
+<!ENTITY description.text7 "">
+<!ENTITY description.text8 "">
+<!ENTITY description.text "Die Zuordnung geschieht mit (Teilen) der EMail Adresse zu einem
+Projekt Schlüssel, um dieses Projekt im Dialog vorzubelegen.
+Bitte | als als Trennzeichen nutzen und nur eine Zuordnung je Zeile:
+Muster|Projekt-Schlüssel
+Beispiel:
+catworkx.de|CWXI
+">
+<!ENTITY about.title "Thunderbird® Integration for Jira®">
+<!ENTITY about.text "Diese Erweiterung ermöglich es aus EMails heraus Vorgänge im Jira® zu erstellen oder die EMails als Kommentar anzuhängen.
+Unter Mac OS® X wird Growl® benötigt. Wenn dies fehlt, wird ein normales PopUp Fenster verwendet.">
+<!ENTITY about.catworkx "Der Name catworkx® und das catworkx® Logo sind eingetragene Warenzeichen der catworkx® GmbH.">
+<!ENTITY about.teamworkx "Der Name teamworkx® und das teamworkx® Logo sind eingetragene Warenzeichen der catworkx® GmbH.">
+<!ENTITY about.atlassian "Die Namen Atlassian® und Jira® sowie das Jira® Logo sind eingetragene Warenzeichen der Atlassian® Pty Ltd.">
+<!ENTITY about.growl "Der Name Growl® ist ein eingetragenes Warenzeichen des Growl® Team.">
+<!ENTITY about.aha-soft "Aha-Soft® ist ein eingetragenes Warenzeichen der Aha-Soft®. Die Icons unterstehen der Creative Commons Attribution-Share Alike 3.0 License.">
+<!ENTITY about.mozilla "Die Namen Mozilla®, Thunderbird® und Lightning® und die dazugehörigen Logos sind eingetragene Warenzeichen der Mozilla® Foundation.">
+<!ENTITY about.apple "Die Namen Apple® und Mac OS® sind eingetragene Warenzeichen von Apple Inc.">
+<!ENTITY about.tempo "Die Namen Tempo® und Tempo Timesheets® sind eingetragene Warenzeichen von Tempo Software.">
+<!ENTITY test.connection.label "Test:">
+<!ENTITY test.connection.btn "Verbindung testen">
+<!ENTITY test.connection.accesskey "T">
+<!ENTITY serverinfo.label "Serverinfo:">
+<!ENTITY serverinfo.version "Version">
+<!ENTITY serverinfo.title "Titel">
+<!ENTITY userinfo.label "Benutzerinfo:">
+<!ENTITY userinfo.name "Name">
+<!ENTITY userinfo.tz "Zeitzone">
+<!ENTITY userinfo.avatar "Avatar:">
+<!ENTITY i18n.locale.ar "Arabisch">
+<!ENTITY i18n.locale.ar_AE "Arabisch (Vereinigte Arabische Emirate)">
+<!ENTITY i18n.locale.ar_BH "Arabisch (Bahrain)">
+<!ENTITY i18n.locale.ar_DZ "Arabisch (Algerien)">
+<!ENTITY i18n.locale.ar_EG "Arabisch (Ägypten)">
+<!ENTITY i18n.locale.ar_IQ "Arabisch (Irak)">
+<!ENTITY i18n.locale.ar_JO "Arabisch (Jordanien)">
+<!ENTITY i18n.locale.ar_KW "Arabisch (Kuwait)">
+<!ENTITY i18n.locale.ar_LB "Arabisch (Libanon)">
+<!ENTITY i18n.locale.ar_LY "Arabisch (Libyen)">
+<!ENTITY i18n.locale.ar_MA "Arabisch (Marokko)">
+<!ENTITY i18n.locale.ar_OM "Arabisch (Oman)">
+<!ENTITY i18n.locale.ar_QA "Arabisch (Katar)">
+<!ENTITY i18n.locale.ar_SA "Arabisch (Saudi-Arabien)">
+<!ENTITY i18n.locale.ar_SD "Arabisch (Sudan)">
+<!ENTITY i18n.locale.ar_SY "Arabisch (Syrien)">
+<!ENTITY i18n.locale.ar_TN "Arabisch (Tunesien)">
+<!ENTITY i18n.locale.ar_YE "Arabisch (Jemen)">
+<!ENTITY i18n.locale.be "Belorussisch">
+<!ENTITY i18n.locale.be_BY "Belorussisch (Belarus)">
+<!ENTITY i18n.locale.bg "Bulgarisch">
+<!ENTITY i18n.locale.bg_BG "Bulgarisch (Bulgarien)">
+<!ENTITY i18n.locale.ca "Katalanisch">
+<!ENTITY i18n.locale.ca_ES "Katalanisch (Spanien)">
+<!ENTITY i18n.locale.cs "Tschechisch">
+<!ENTITY i18n.locale.cs_CZ "Tschechisch (Tschechische Republik)">
+<!ENTITY i18n.locale.da "Dänisch">
+<!ENTITY i18n.locale.da_DK "Dänisch (Dänemark)">
+<!ENTITY i18n.locale.de "Deutsch">
+<!ENTITY i18n.locale.de_AT "Deutsch (Österreich)">
+<!ENTITY i18n.locale.de_CH "Deutsch (Schweiz)">
+<!ENTITY i18n.locale.de_DE "Deutsch (Deutschland)">
+<!ENTITY i18n.locale.de_LU "Deutsch (Luxemburg)">
+<!ENTITY i18n.locale.el "Griechisch">
+<!ENTITY i18n.locale.el_CY "Griechisch (Zypern)">
+<!ENTITY i18n.locale.el_GR "Griechisch (Griechenland)">
+<!ENTITY i18n.locale.en "Englisch">
+<!ENTITY i18n.locale.en_AU "Englisch (Australien)">
+<!ENTITY i18n.locale.en_CA "Englisch (Kanada)">
+<!ENTITY i18n.locale.en_GB "Englisch (Vereinigtes Königreich)">
+<!ENTITY i18n.locale.en_IE "Englisch (Irland)">
+<!ENTITY i18n.locale.en_IN "Englisch (Indien)">
+<!ENTITY i18n.locale.en_MT "Englisch (Malta)">
+<!ENTITY i18n.locale.en_NZ "Englisch (Neuseeland)">
+<!ENTITY i18n.locale.en_PH "Englisch (Philippinen)">
+<!ENTITY i18n.locale.en_SG "Englisch (Singapur)">
+<!ENTITY i18n.locale.en_US "Englisch (Vereinigte Staaten von Amerika)">
+<!ENTITY i18n.locale.en_ZA "Englisch (Südafrika)">
+<!ENTITY i18n.locale.es "Spanisch">
+<!ENTITY i18n.locale.es_AR "Spanisch (Argentinien)">
+<!ENTITY i18n.locale.es_BO "Spanisch (Bolivien)">
+<!ENTITY i18n.locale.es_CL "Spanisch (Chile)">
+<!ENTITY i18n.locale.es_CO "Spanisch (Kolumbien)">
+<!ENTITY i18n.locale.es_CR "Spanisch (Costa Rica)">
+<!ENTITY i18n.locale.es_DO "Spanisch (Dominikanische Republik)">
+<!ENTITY i18n.locale.es_EC "Spanisch (Ecuador)">
+<!ENTITY i18n.locale.es_ES "Spanisch (Spanien)">
+<!ENTITY i18n.locale.es_GT "Spanisch (Guatemala)">
+<!ENTITY i18n.locale.es_HN "Spanisch (Honduras)">
+<!ENTITY i18n.locale.es_MX "Spanisch (Mexiko)">
+<!ENTITY i18n.locale.es_NI "Spanisch (Nicaragua)">
+<!ENTITY i18n.locale.es_PA "Spanisch (Panama)">
+<!ENTITY i18n.locale.es_PE "Spanisch (Peru)">
+<!ENTITY i18n.locale.es_PR "Spanisch (Puerto Rico)">
+<!ENTITY i18n.locale.es_PY "Spanisch (Paraguay)">
+<!ENTITY i18n.locale.es_SV "Spanisch (El Salvador)">
+<!ENTITY i18n.locale.es_US "Spanisch (Vereinigte Staaten von Amerika)">
+<!ENTITY i18n.locale.es_UY "Spanisch (Uruguay)">
+<!ENTITY i18n.locale.es_VE "Spanisch (Venezuela)">
+<!ENTITY i18n.locale.et "Estnisch">
+<!ENTITY i18n.locale.et_EE "Estnisch (Estland)">
+<!ENTITY i18n.locale.fi "Finnisch">
+<!ENTITY i18n.locale.fi_FI "Finnisch (Finnland)">
+<!ENTITY i18n.locale.fr "Französisch">
+<!ENTITY i18n.locale.fr_BE "Französisch (Belgien)">
+<!ENTITY i18n.locale.fr_CA "Französisch (Kanada)">
+<!ENTITY i18n.locale.fr_CH "Französisch (Schweiz)">
+<!ENTITY i18n.locale.fr_FR "Französisch (Frankreich)">
+<!ENTITY i18n.locale.fr_LU "Französisch (Luxemburg)">
+<!ENTITY i18n.locale.ga "Irisch">
+<!ENTITY i18n.locale.ga_IE "Irisch (Irland)">
+<!ENTITY i18n.locale.hi_IN "Hindi (Indien)">
+<!ENTITY i18n.locale.hr "Kroatisch">
+<!ENTITY i18n.locale.hr_HR "Kroatisch (Kroatien)">
+<!ENTITY i18n.locale.hu "Ungarisch">
+<!ENTITY i18n.locale.hu_HU "Ungarisch (Ungarn)">
+<!ENTITY i18n.locale.in "Indonesisch">
+<!ENTITY i18n.locale.in_ID "Indonesisch (Indonesien)">
+<!ENTITY i18n.locale.is "Isländisch">
+<!ENTITY i18n.locale.is_IS "Isländisch (Island)">
+<!ENTITY i18n.locale.it "Italienisch">
+<!ENTITY i18n.locale.it_CH "Italienisch (Schweiz)">
+<!ENTITY i18n.locale.it_IT "Italienisch (Italien)">
+<!ENTITY i18n.locale.iw "Hebräisch">
+<!ENTITY i18n.locale.iw_IL "Hebräisch (Israel)">
+<!ENTITY i18n.locale.ja "Japanisch">
+<!ENTITY i18n.locale.ja_JP "Japanisch (Japan)">
+<!ENTITY i18n.locale.ja_JP_JP_u-ca-japanese "Japanisch (Japan,JP)">
+<!ENTITY i18n.locale.ko "Koreanisch">
+<!ENTITY i18n.locale.ko_KR "Koreanisch (Südkorea)">
+<!ENTITY i18n.locale.lt "Litauisch">
+<!ENTITY i18n.locale.lt_LT "Litauisch (Litauen)">
+<!ENTITY i18n.locale.lv "Lettisch">
+<!ENTITY i18n.locale.lv_LV "Lettisch (Lettland)">
+<!ENTITY i18n.locale.mk "Mazedonisch">
+<!ENTITY i18n.locale.mk_MK "Mazedonisch (Mazedonien)">
+<!ENTITY i18n.locale.ms "Malay">
+<!ENTITY i18n.locale.ms_MY "Malay (Malaysia)">
+<!ENTITY i18n.locale.mt "Maltesisch">
+<!ENTITY i18n.locale.mt_MT "Maltesisch (Malta)">
+<!ENTITY i18n.locale.nl "Niederländisch">
+<!ENTITY i18n.locale.nl_BE "Niederländisch (Belgien)">
+<!ENTITY i18n.locale.nl_NL "Niederländisch (Niederlande)">
+<!ENTITY i18n.locale.no "Norwegisch">
+<!ENTITY i18n.locale.no_NO "Norwegisch (Norwegen)">
+<!ENTITY i18n.locale.no_NO_NY "Norwegisch (Norwegen,Nynorsk)">
+<!ENTITY i18n.locale.pl "Polnisch">
+<!ENTITY i18n.locale.pl_PL "Polnisch (Polen)">
+<!ENTITY i18n.locale.pt "Portugiesisch">
+<!ENTITY i18n.locale.pt_BR "Portugiesisch (Brasilien)">
+<!ENTITY i18n.locale.pt_PT "Portugiesisch (Portugal)">
+<!ENTITY i18n.locale.ro "Rumänisch">
+<!ENTITY i18n.locale.ro_RO "Rumänisch (Rumänien)">
+<!ENTITY i18n.locale.ru "Russisch">
+<!ENTITY i18n.locale.ru_RU "Russisch (Russland)">
+<!ENTITY i18n.locale.sk "Slowakisch">
+<!ENTITY i18n.locale.sk_SK "Slowakisch (Slowakei)">
+<!ENTITY i18n.locale.sl "Slowenisch">
+<!ENTITY i18n.locale.sl_SI "Slowenisch (Slowenien)">
+<!ENTITY i18n.locale.sq "Albanisch">
+<!ENTITY i18n.locale.sq_AL "Albanisch (Albanien)">
+<!ENTITY i18n.locale.sr "Serbisch">
+<!ENTITY i18n.locale.sr__Latn "Serbisch (Lateinisch)">
+<!ENTITY i18n.locale.sr_BA "Serbisch (Bosnien und Herzegowina)">
+<!ENTITY i18n.locale.sr_BA_Latn "Serbisch (Lateinisch,Bosnien und Herzegowina)">
+<!ENTITY i18n.locale.sr_CS "Serbisch (Serbien und Montenegro)">
+<!ENTITY i18n.locale.sr_ME "Serbisch (Montenegro)">
+<!ENTITY i18n.locale.sr_ME_Latn "Serbisch (Lateinisch,Montenegro)">
+<!ENTITY i18n.locale.sr_RS "Serbisch (Serbien)">
+<!ENTITY i18n.locale.sr_RS_Latn "Serbisch (Lateinisch,Serbien)">
+<!ENTITY i18n.locale.sv "Schwedisch">
+<!ENTITY i18n.locale.sv_SE "Schwedisch (Schweden)">
+<!ENTITY i18n.locale.th "Thai">
+<!ENTITY i18n.locale.th_TH "Thai (Thailand)">
+<!ENTITY i18n.locale.th_TH_TH_u-nu-thai "Thai (Thailand,TH)">
+<!ENTITY i18n.locale.tr "Türkisch">
+<!ENTITY i18n.locale.tr_TR "Türkisch (Türkei)">
+<!ENTITY i18n.locale.uk "Ukrainisch">
+<!ENTITY i18n.locale.uk_UA "Ukrainisch (Ukraine)">
+<!ENTITY i18n.locale.vi "Vietnamesisch">
+<!ENTITY i18n.locale.vi_VN "Vietnamesisch (Vietnam)">
+<!ENTITY i18n.locale.zh "Chinesisch">
+<!ENTITY i18n.locale.zh_CN "Chinesisch (China)">
+<!ENTITY i18n.locale.zh_HK "Chinesisch (Hongkong)">
+<!ENTITY i18n.locale.zh_SG "Chinesisch (Singapur)">
+<!ENTITY i18n.locale.zh_TW "Chinesisch (Taiwan)">
+<!ENTITY pane.rest.create.title "Neue Features">
+<!ENTITY splash.rest.create.title "Neue Features in der aktuellen Version">
+<!ENTITY splash.rest.create.description "Die folgenden neuen Features sind in dieser Version enthalten:">
+<!ENTITY splash.rest.create.new1 "Diese Version enthält einen Bugfix für den Datumspicker.">
+<!ENTITY splash.rest.create.new2 "Alle catworkx Addons sind zu Teamworkx Apps umbenannt worden.">
+<!ENTITY splash.rest.create.new3 "Eintrag in dem Menü Extras -> Add-On-Einstellungen funktioniert.">
+<!ENTITY splash.rest.create.new4 "">
+<!ENTITY splash.rest.create.new5 "">
+<!ENTITY splash.rest.create.new6 "">
+<!ENTITY splash.rest.create.new7 "">
+<!ENTITY wizard.seen.label "Diesen Dialog nicht mehr anzeigen.">
+<!ENTITY wizard.accesskey "D">
+<!ENTITY addheadertype.accesskey "F">
+<!ENTITY addheadertype.label "Format der EMail Kopfzeilen">
+<!ENTITY wizard.add.email.header.option "Format der EMail Kopfzeilen:">
+<!ENTITY wizard.add.email.header.option.plain "Unformatiert">
+<!ENTITY wizard.add.email.header.option.wiki "Wiki format (Text eingeschlossen in {noformat})">
+<!ENTITY wizard.add.email.header.accesskey "E">
+<!ENTITY wizard.preferred.comment.tab.accesskey "T">
+<!ENTITY wizard.preferred.comment.tab.label "Bevorzugter Tab für die Suche nach Vorgängen im Kommentarwizard:">
+<!ENTITY tabbox.fulltext.label "Volltext">
+<!ENTITY tabbox.issuekey.label "Vorgangsschlüssel">
+<!ENTITY tabbox.filter.label "Filterfavoriten">
+<!ENTITY tabbox.jql.label "JQL">
+<!ENTITY tabbox.last.label "Letzer gewählter Tab">
+<!ENTITY tabbox.fulltext.accesskey "V">
+<!ENTITY tabbox.issuekey.accesskey "S">
+<!ENTITY tabbox.filter.accesskey "F">
+<!ENTITY tabbox.jql.accesskey "J">
+<!ENTITY tabbox.last.accesskey "L">
+<!ENTITY pane.settings.reply.title "Antworten">
+<!ENTITY pane.settings.reply.description "Hier können Betreffzeilen, Texte un zusätzliche Empfänger (CC:) der optionalen Antwort-EMail hinterlegt werden. Die Platzhalter $key (Vorgangsschlüssel), $url (URL des Vorgangs) und $subject (Betreff der EMail) können überall eingefügt werden. Diese werden durch den Vorgangsschlüssel bzw. die URL ersetzt.">
+<!ENTITY reply.header.create.accesskey "B">
+<!ENTITY reply.header.create.label "Betreff der Antwort (Erstellen)">
+<!ENTITY reply.header.create.description "Optionaler Betreff für Antwort-EMail">
+<!ENTITY reply.body.create.accesskey "T">
+<!ENTITY reply.body.create.label "Text der Antwort (Erstellen)">
+<!ENTITY reply.body.create.description "Optionaler Text für die Antwort-EMail">
+<!ENTITY reply.header.comment.accesskey "A">
+<!ENTITY reply.header.comment.label "Betreff der Antwort (Kommentieren)">
+<!ENTITY reply.header.comment.description "Optionaler Betreff für Antwort-EMail">
+<!ENTITY reply.body.comment.accesskey "K">
+<!ENTITY reply.body.comment.label "Text der Antwort (Kommentieren)">
+<!ENTITY reply.body.comment.description "Optionaler Text für die Antwort-EMail">
+<!ENTITY reply.cc.accesskey "C">
+<!ENTITY reply.cc.label "CC: für Antwort">
+<!ENTITY reply.cc.description "Optionale Liste (Komma-getrennt) von CC Empfängern für die Antwort-EMail">
+<!ENTITY tempDirDefault.accesskey "S">
+<!ENTITY tempDirDefault.label "Standard Verzeichnis (/tmp bzw. C:\temp) nutzen?">
+<!ENTITY tempDirAlternate.accesskey "V">
+<!ENTITY tempDirAlternate.label "Alternatives Verzeichnis (anstatt /tmp bzw. C:\temp)">
+<!ENTITY keepTempFiles.accesskey "B">
+<!ENTITY keepTempFiles.label "Temporäre Dateien behalten?">
+<!ENTITY choose.folder.tooltiptext "Verzeichnis wählen">
+<!ENTITY addOn.Tempo.support.label "Support für Tempo AddOn">
+<!ENTITY addOn.Tempo.support.accesskey "P">

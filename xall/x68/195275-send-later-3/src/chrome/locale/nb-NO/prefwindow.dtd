@@ -1,0 +1,53 @@
+<!-- -*- coding: utf-8 -*- -->
+<!ENTITY prefwindow.title "Valg for Send senere">
+<!ENTITY pane1.title "Valg for Send senere">
+<!ENTITY checktimepref.label "Sjekk hvert:">
+<!ENTITY checktimepref2.label "minutt">
+<!ENTITY checktimepref.tooltip "Intervall, i minutter, mellom hver sjekk for utkast som er klare for levering. Øk denne verdien dersom dine utkast ikke alltid sendes til riktig tid eller dersom antallet ventende meldinger i statuslinja ikke reflekterer riktig antall utkast planlagt til sending.">
+<!ENTITY general.caption "Generelt">
+<!ENTITY quickoption1.caption "Hurtigtast 1">
+<!ENTITY quickoption2.caption "Hurtigtast 2">
+<!ENTITY quickoption3.caption "Hurtigtast 3">
+<!ENTITY quickoptionname.label "Etikett for knapp:">
+<!ENTITY quickoptionvalue.label "Minutter:">
+<!ENTITY showsendlatercolumn.caption "Vis kolonne for Send senere">
+<!ENTITY showsendlatercolumn.tooltip "Om du vil vise «Send senere» -spalte når du ser på utkastmapper">
+<!ENTITY showsendlaterheader.caption "Vise Send senere topptekst">
+<!ENTITY showsendlaterheader.tooltip "Når for å vise «X-Send-Later-At» -topptekst, dvs. tidspunktet da et utkast er planlagt å bli sendt, i overskriften når du ser en melding.">
+<!ENTITY showsendlaterstatus.caption "Vis Send senere statuslinjen">
+<!ENTITY showsendlaterprogress.caption "Vis bakgrunn fremgang statuslinjen">
+<!ENTITY showsendlaterunsentmessages.caption "Utløse usendte meldingslevering fra utgang">
+<!ENTITY showsendlaterunsentmessages.tooltip "Hvis du fjern dette alternativet, så Send senere vil ikke levere meldinger, men i stedet vil bare sette dem i utgangen når de er planlagt for levering. Fjern dette alternativet, for eksempel hvis du bruker noe annet forlengelsen, f.eks BlunderDelay, periodisk sende meldinger i utgangen. Merk at når dette alternativet er angitt, så når Send senere leverer en melding, vil alle meldinger i utgang leveres.">
+<!ENTITY sendlatersendbutton.caption "&quot;Send&quot; betyr &quot;Send senere&quot;">
+<!ENTITY sendlatersendbutton.tooltip "Er dette alternativet blir aktivert, fungerer kommandoen &quot;Send&quot; (knappen eller taste inn Ctrl-Enter) gjøres det samme som &quot;Send senere&quot;.">
+<!ENTITY altbinding.caption "Binde Alt-Skift-Enter i stedet for Ctrl-Skift-Enter">
+<!ENTITY markread.caption "Markere planlagt utkast som lest">
+<!ENTITY advanced.caption "Avansert">
+<!ENTITY dumplevel.caption "Se på log level:">
+<!ENTITY consolelevel.caption "Konsollen loggnivå:">
+<!ENTITY contactauthor.tooltip "Send en e-postmelding til forfatteren av Send senere.">
+<!ENTITY contactauthor.value "Kontakt forfatteren">
+<!ENTITY helplink.tooltip "Vis Send senere dokumentasjonen.">
+<!ENTITY helplink.value "Bruksanvisning">
+<!ENTITY releasenotes.value "Produktmerknader">
+<!ENTITY donatelink.value "Donere">
+<!ENTITY editorlink.value "Dynamisk funksjon editor">
+<!ENTITY enforcerestrictions.tooltip "Hvis en melding som skal leveres er utenfor sin tid eller dag restriksjoner, f.eks fordi Thunderbird ikke kjørte på sin planlagt leveringstid, deretter utsette dens levering til tid og dag begrensningene er oppfylt.">
+<!ENTITY enforcerestrictions.caption "Gjennomføre tid og dag restriksjoner på leveringstid">
+<!ENTITY blocklatemessages.tooltip "Ikke levere planlagte meldinger har blitt utsatt forbi sin planlagte tid, f.eks fordi Thunderbird ikke var kjører på den tiden.">
+<!ENTITY blocklatemessages.label1 "Ikke levere meldinger mer enn">
+<!ENTITY blocklatemessages.label2 "minutter for sent">
+<!ENTITY editorbutton "Åpne dynamisk funksjonen editor...">
+<!ENTITY editortip "Åpne et vindu for oppretting og redigering av JavaScript-funksjoner implementere kompleks planlegging logikk.">
+<!ENTITY senddelay.tooltip "With this option enabled, all messages sent with the “Send” command (either the button or typing Ctrl-Enter) are delayed by the specified number of minutes by scheduling them with Send senere.">
+<!ENTITY senddelay.label "“Send” delays messages by:">
+<!ENTITY composewindowhotkeys.tooltip "While composing a message you can type Ctrl-Alt-1, -2, or -3 to activate the first, second, or third preset button, unless you uncheck this preference, in which case these key bindings are disabled.">
+<!ENTITY composewindowhotkeys.caption "Enable compose window key bindings for presets">
+<!ENTITY loglevel.fatal "Fatal">
+<!ENTITY loglevel.error "Error">
+<!ENTITY loglevel.warn "Warn">
+<!ENTITY loglevel.info "Info">
+<!ENTITY loglevel.config "Config">
+<!ENTITY loglevel.debug "Debug">
+<!ENTITY loglevel.trace "Trace">
+<!ENTITY loglevel.all "All">

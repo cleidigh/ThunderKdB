@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://FileMail/locale/about.dtd">
+
+<dialog title="&about; FileMail" orient="vertical" autostretch="always" onload="sizeToContent()" buttons="accept" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <groupbox align="center" orient="horizontal">
+    <vbox>
+      <text value="FileMail" style="font-weight: bold; font-size: x-large;"/>
+      <text value="&version; 0.4"/>
+      <separator class="thin"/>
+      <text value="&createdBy;" style="font-weight: bold;"/>
+      <text value="Bernd Mielke"/>
+      <separator class="thin"/>
+      <text value="&direct;" style="font-weight: bold; font-size: large;"/>
+      <separator class="thin"/>
+      <description width="400">
+        &hitkey;
+      </description>
+      <separator class="thin"/>
+      <text value="&inverted;" style="font-weight: bold; font-size: large;"/>
+      <separator class="thin"/>
+      <description width="400">
+        &hitshiftkey;
+      </description>
+    </vbox>
+  </groupbox>
+</dialog>

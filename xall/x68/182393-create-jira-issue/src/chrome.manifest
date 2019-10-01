@@ -1,0 +1,17 @@
+content	createjiraissue	chrome/content/
+locale	createjiraissue	de-DE	chrome/locale/de-DE/
+locale	createjiraissue	en-US	chrome/locale/en-US/
+skin	createjiraissue	classic/1.0	chrome/skin/
+overlay chrome://messenger/content/messenger.xul chrome://createjiraissue/content/overlay_TB_SM.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<17.0a1
+overlay chrome://messenger/content/messenger.xul chrome://createjiraissue/content/overlay_TB.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=17.0a1
+overlay chrome://messenger/content/messenger.xul chrome://createjiraissue/content/overlay_TB_SM.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+component {e16866ed-1e82-44cd-92e4-f6eabfe36ad9} components/basic_autocomplete_issue.js
+contract @mozilla.org/autocomplete/search;1?name=basic-autocomplete-issue {e16866ed-1e82-44cd-92e4-f6eabfe36ad9}
+component {bad3762e-bf92-444a-a9cf-e2409ea205d6} components/rest_autocomplete_user.js
+contract @mozilla.org/autocomplete/search;1?name=rest-autocomplete-user {bad3762e-bf92-444a-a9cf-e2409ea205d6}
+component {aa823b2d-b078-4f98-9647-038490749b69} components/rest_autocomplete_group.js
+contract @mozilla.org/autocomplete/search;1?name=rest-autocomplete-group {aa823b2d-b078-4f98-9647-038490749b69}
+component {bacc1cc1-0d61-4c47-b65d-823b074280b4} components/rest_autocomplete_issue.js
+contract @mozilla.org/autocomplete/search;1?name=rest-autocomplete-issue {bacc1cc1-0d61-4c47-b65d-823b074280b4}
+component {f5e08e77-82ee-4603-8d38-26ec591aa89c} components/rest_autocomplete_project.js
+contract @mozilla.org/autocomplete/search;1?name=rest-autocomplete-project {f5e08e77-82ee-4603-8d38-26ec591aa89c}

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://createjiraissue/skin/options.css" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://createjiraissue/locale/createjiraissue.dtd">
+
+<wizard id="createWizard" title="&dialog.create.issue.title;" width="1024" height="786"
+    onload="initWizard();"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script src="restCreateDialog.js"/>
+	<menupopup id="attachmentsContextMenu">
+		<menuitem label="&context.row.rename.label;" oncommand="renameDialog();" />
+		<menuitem label="&context.row.origname.label;" oncommand="originalName();" />
+	</menupopup>
+	<!-- Page 1; choose project and issuetype -->
+	<wizardpage onpageshow="loadData();" pageid="basedata" id="wiz_page_basedata" description="&wizard.select.project.issuetype;">
+		<groupbox flex="1">
+			<caption label="&wizard.select.project.issuetype;"/>
+			<label class="header" control="jiraprojectsmenulist">&dialog.field.select.project.label;</label>
+			<menulist id="jiraprojectsmenulist" onselect="loadIssueTypes();" disabled="true">
+				<menupopup id="jiraprojectsmenupopup">
+				</menupopup>
+			</menulist>
+
+			<label class="header" control="jiraissuetypemenulist">&dialog.field.select.issuetype.label;</label>
+			<menulist id="jiraissuetypemenulist" onselect="selectionChanged();" disabled="true">
+				<menupopup id="jiraissuetypemenupopup">
+				</menupopup>
+			</menulist>
+		</groupbox>
+	</wizardpage>
+	<!-- Page 2; fill in fields -->
+	<wizardpage pageid="fielddata" id="wiz_page_fielddata" description="&wizard.fill.in.fields;">
+		<grid flex="1" align="center" id="jiraissuegrid">
+			<columns>
+				<column flex="0"/>
+				<column flex="1"/>
+			</columns>
+			<rows id="jiraissuerows">
+			</rows>
+		</grid>
+		<vbox>
+			<caption label="&dialog.table.attachments.label;" />
+			<listbox seltype="multiple" id="attachmentList" rows="10"
+				width="650" contextmenu="attachmentsContextMenu">
+				<listhead>
+					<listheader label="&dialog.row.id.label;" width="20" />
+					<listheader label="&dialog.row.name.label;" width="200" />
+					<listheader label="&dialog.row.rename.label;" width="200" />
+					<listheader label="&dialog.row.size.label;" width="100" />
+					<listheader label="&dialog.row.mime.label;" width="150" />
+				</listhead>
+				<listcols>
+					<listcol />
+					<listcol flex="1" />
+				</listcols>
+			</listbox>
+			<hbox>
+				<spacer flex="1"/>
+				<button label="&wizard.attachments.reload;" oncommand="_showAttachments();" class="reload"/>
+			</hbox>
+		</vbox>
+	</wizardpage>
+	<!-- Page 3; show status of the creation result -->
+	<wizardpage pageid="result" id="wiz_page_result" description="&wizard.results;">
+		<vbox id="createResult"/>
+	</wizardpage>
+	<!-- Statusbar at the bottom -->
+	<hbox class="statusbar">
+		<!-- spacer flex="1"/ -->
+		<html:progress max="100" id="progressstatus" mode="determined" value="0" flex="1"/>
+		<label class="statusbarpanel" id="rightstatus" label=""/>
+	</hbox>
+</wizard>

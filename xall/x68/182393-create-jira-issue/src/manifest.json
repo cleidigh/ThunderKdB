@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "default_locale": "en",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "1.0.68.1a",
+  "author": "Holger Lehmann",
+  "developer": {
+    "name": "Holger Lehmann",
+    "url": "https://www.catworkx.com"
+  },
+  "homepage_url": "http://www.catworkx.com",
+  "applications": {
+    "gecko": {
+      "id": "createjiraissue@catworkx.de",
+      "strict_min_version": "68.0"
+    }
+  },
+  "permissions": [
+	    "activeTab",
+	    "browserSettings",
+	    "clipboardRead",
+	    "contextMenus",
+	    "identity",
+	    "notifications"
+	  ],
+  "icons": {
+    "48": "chrome/skin/icon48.png",
+    "64": "chrome/skin/icon64.png"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://createjiraissue/content/options.xul",
+      "open_in_tab": true
+    }
+  }
+}

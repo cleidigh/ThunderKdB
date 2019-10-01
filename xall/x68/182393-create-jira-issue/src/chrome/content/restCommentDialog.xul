@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://createjiraissue/skin/options.css" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://createjiraissue/locale/createjiraissue.dtd">
+
+<wizard id="commentWizard" title="&dialog.create.comment.title;" width="1024" height="786"
+    onload="initWizard();"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script src="restCommentDialog.js"/>
+	<menupopup id="attachmentsContextMenu">
+		<menuitem label="&context.row.rename.label;" oncommand="renameDialog();" />
+		<menuitem label="&context.row.origname.label;" oncommand="originalName();" />
+	</menupopup>
+	<!-- Page 1; filter, query & results -->
+	<wizardpage pageid="basedata" id="wiz_page_basedata">
+		<tabbox id="searchtabbox">
+			<tabs id="searchtabs">
+				<tab label="&tabbox.fulltext.label;" accesskey="&tabbox.fulltext.accesskey;"/>
+				<tab label="&tabbox.issuekey.label;" accesskey="&tabbox.issuekey.accesskey;"/>
+				<tab label="&tabbox.filter.label;" accesskey="&tabbox.filter.accesskey;"/>
+				<tab label="&tabbox.jql.label;" accesskey="&tabbox.jql.accesskey;" image='url("chrome://createjiraissue/skin/Zoom.png");'/>
+				<tab label="&tabbox.recent.label;" accesskey="&tabbox.recent.accesskey;" onfocus="historySearch();" onclick="historySearch();"/>
+			</tabs>
+			<tabpanels flex="1" id="searchtabpanel">
+				<tabpanel>
+					<vbox flex="1">
+						<hbox>
+							<textbox id="fulltextField" flex="1" multiline="false" value="" oninput="startSearchTimer(fulltextSearch,500);"/>
+							<button class="search-jql" onclick="fulltextSearch();" label="&button.go.label;" accesskey="&button.go.accesskey;"/>
+						</hbox>
+						<spacer flex="1"/>
+					</vbox>
+				</tabpanel>
+				<tabpanel>
+					<vbox flex="1">
+						<hbox>
+							<!-- textbox id="issuekeyField" flex="1" multiline="false" value="" type="autocomplete" autocompletesearch="basic-autocomplete-issue" oninput="startSearchTimer(issuekeySearch,1000);"/ -->
+							<textbox id="issuekeyField" flex="1" multiline="false" value="" oninput="startSearchTimer(issuekeySearch,1000);"/>
+							<button class="search-jql" onclick="issuekeySearch();" label="&button.go.label;" accesskey="&button.go.accesskey;"/>
+						</hbox>
+						<spacer flex="1"/>
+					</vbox>
+				</tabpanel>
+				<tabpanel>
+					<vbox flex="1">
+						<hbox>
+							<menulist flex="1" id="jirafilterlist" onselect="searchByFilter();" disabled="true">
+								<menupopup id="jirafiltermenupopup">
+									<menuitem value="-1" label="" jql=""/>
+								</menupopup>
+							</menulist>
+						</hbox>
+						<spacer flex="1"/>
+					</vbox>
+					<vbox>
+						<button class="search-jql" onclick="searchByFilter();" accesskey="&button.go.accesskey;" label="&button.go.label;"/>
+						<button class="sync-jira" onclick="loadFilters();" accesskey="&button.reload.filters.accesskey;" label="&button.reload.filters.label;"/>
+					</vbox>
+				</tabpanel>
+				<tabpanel>
+					<hbox flex="1">
+						<textbox id="jqlField" flex="1" multiline="true" value="project = xyz and resolution is empty" oninput="startSearchTimer(jqlSearch,1000);"/>
+						<vbox>
+							<button class="search-jql" onclick="jqlSearch();" label="&button.go.label;" accesskey="&button.go.accesskey;" />
+							<spacer flex="1"/>
+						</vbox>
+					</hbox>
+				</tabpanel>
+				<tabpanel>
+					<hbox flex="1">
+						<vbox>
+							<button class="search-history" onclick="historySearch();" label="&button.go.label;" accesskey="&button.go.accesskey;"/>
+							<spacer flex="1"/>
+						</vbox>
+					</hbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<splitter
+			id="identifier"
+			state="open"
+			collapse="before"
+			resizebefore="closest"
+			resizeafter="closest"/>
+		<grid flex="1" align="center" style="overflow: auto;">
+			<columns>
+				<column flex="1"/>
+			</columns>
+			<rows>
+				<row>
+					<label class="header">&search.results.label;</label>
+				</row>
+				<row flex="1">
+					<tree id="searchresultstree" flex="1" treelines="false" seltype="single" onselect="searchTreeSelected(event.target);" ondblclick="if (document.getElementById('commentWizard').canAdvance == true) document.getElementById('commentWizard').advance(null);" editable="false">
+						<treecols>
+							<treecol id="key" label="&wizard.treecol.label.key;" primary="true" flex="0"/>
+							<splitter class="tree-splitter" ordinal="2"/>
+							<treecol id="issuetype" label="&wizard.treecol.label.type;" flex="0"/>
+							<splitter class="tree-splitter" ordinal="2"/>
+							<treecol id="summary" label="&wizard.treecol.label.summary;" flex="1"/>
+							<splitter class="tree-splitter" ordinal="2"/>
+							<treecol id="status" label="&wizard.treecol.label.status;" flex="0"/>
+						</treecols>
+						<treechildren id="searchresultstreechildren">
+							<!-- will be filled by javascript -->
+						</treechildren>
+					</tree>
+				</row>
+			</rows>
+		</grid>
+	</wizardpage>
+	<!-- Page 2; fill in fields -->
+	<wizardpage pageid="fielddata" id="wiz_page_fielddata" description="&wizard.fill.in.fields;">
+		<groupbox flex="1">
+			<caption label="&wizard.caption.fields.label;"/>
+			<grid flex="1">
+				<columns>
+					<column/>
+					<column flex="1"/>
+				</columns>
+				<rows>
+					<row flex="1">
+						<label value="&wizard.field.issue.label;"/>
+						<hbox flex="1">
+							<tree id="selectedissuetree" flex="1" treelines="false" seltype="single" editable="false">
+								<treecols>
+									<treecol id="key" label="&wizard.treecol.label.key;" primary="true" flex="0"/>
+									<splitter class="tree-splitter" ordinal="2"/>
+									<treecol id="issuetype" label="&wizard.treecol.label.type;" flex="0"/>
+									<splitter class="tree-splitter" ordinal="2"/>
+									<treecol id="summary" label="&wizard.treecol.label.summary;" flex="1"/>
+									<splitter class="tree-splitter" ordinal="2"/>
+									<treecol id="status" label="&wizard.treecol.label.status;" flex="0"/>
+								</treecols>
+								<treechildren id="selectedissuetreechildren">
+									<!-- will be filled by javascript -->
+									<treeitem>
+										<treerow>
+											<treecell id="selectedissuetree_key" label=""/>
+											<treecell id="selectedissuetree_issuetype" label=""/>
+											<treecell id="selectedissuetree_summary" label=""/>
+											<treecell id="selectedissuetree_status" label=""/>
+										</treerow>
+									</treeitem>
+								</treechildren>
+							</tree>
+						</hbox>
+					</row>
+					<splitter orient="vertical" collapse="before" resizebefore="closest">
+						<grippy/>
+					</splitter>
+					<row flex="0">
+						<label control="sel_header" accesskey="&wizard.add.email.header.accesskey;" value="&wizard.add.email.header.option;"/>
+						<menulist id="sel_header">
+							<menupopup id="sel_header_popup">
+								<menuitem label="&wizard.add.email.header.option.none;" value=""/>
+								<menuitem id="sel_header_plain" label="&wizard.add.email.header.option.plain;" value=""/>
+								<menuitem id="sel_header_wiki" label="&wizard.add.email.header.option.wiki;" value=""/>
+							</menupopup>
+						</menulist>
+					</row>
+					<splitter orient="vertical" collapse="before">
+						<grippy/>
+					</splitter>
+					<row flex="8">
+						<label control="fld_comment" accesskey="&wizard.field.comment.accesskey;" value="&wizard.field.comment.label;"/>
+						<html:textarea id="fld_comment"/>
+					</row>
+					<splitter orient="vertical" collapse="after">
+						<grippy/>
+					</splitter>
+					<row flex="0">
+						<label control="visibility" accesskey="&wizard.comment.visibility.accesskey;" value="&wizard.comment.visibility.option;"/>
+						<menulist id="sel_visibility">
+							<menupopup id="sel_visibility_popup">
+								<menuitem label="&wizard.comment.visibility.everybody;" value="" class="menuitem-iconic" style="-moz-image-region: rect(0px, 64px, 16px, 48px); list-style-image: url('chrome://createjiraissue/skin/lock_open.png');" image="chrome://createjiraissue/skin/lock_open.png"/>
+							</menupopup>
+						</menulist>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<vbox>
+			<caption label="&dialog.table.attachments.label;" />
+			<listbox seltype="multiple" id="attachmentList" rows="10"
+				width="650" contextmenu="attachmentsContextMenu">
+				<listhead>
+					<listheader label="&dialog.row.id.label;" width="20" />
+					<listheader label="&dialog.row.name.label;" width="200" />
+					<listheader label="&dialog.row.rename.label;" width="200" />
+					<listheader label="&dialog.row.size.label;" width="100" />
+					<listheader label="&dialog.row.mime.label;" width="150" />
+				</listhead>
+				<listcols>
+					<listcol />
+					<listcol flex="1" />
+				</listcols>
+			</listbox>
+			<hbox>
+				<spacer flex="1"/>
+				<button label="&wizard.attachments.reload;" oncommand="_showAttachments();" class="reload"/>
+			</hbox>
+		</vbox>
+	</wizardpage>
+	<!-- Page 3; show status of the creation result -->
+	<wizardpage pageid="result" id="wiz_page_result" description="&wizard.results;">
+		<vbox id="createResult"/>
+	</wizardpage>
+	<!-- Statusbar at the bottom -->
+	<hbox class="statusbar">
+		<!-- spacer flex="1"/ -->
+		<html:progress max="100" id="progressstatus" mode="determined" value="0" flex="1"/>
+		<label class="statusbarpanel" id="rightstatus" label=""/>
+	</hbox>
+</wizard>

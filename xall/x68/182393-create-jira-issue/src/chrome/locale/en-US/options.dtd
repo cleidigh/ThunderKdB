@@ -1,0 +1,315 @@
+<!ENTITY prefwindow.title "Thunderbird® Integration for Jira® preferences">
+<!ENTITY pane.settings.url.title "Connection">
+<!ENTITY pane.settings.url.description "regarding Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.mapping.title "Mapping">
+<!ENTITY pane.settings.mapping.description "regarding Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.other.title "Other">
+<!ENTITY pane.settings.other.description "regarding Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.fields.title "Customfields">
+<!ENTITY pane.settings.fields.description "regarding Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.language.title "Language">
+<!ENTITY pane.settings.language.description "regarding Thunderbird® Integration for Jira®">
+<!ENTITY pane.settings.about.title "About">
+<!ENTITY pane.settings.about.description "regarding Thunderbird® Integration for Jira®">
+<!ENTITY jiraurl.label "Jira®-URL:">
+<!ENTITY jiraurl.accesskey "J">
+<!ENTITY username.label "Username:">
+<!ENTITY username.accesskey "U">
+<!ENTITY password.label "Password:">
+<!ENTITY password.accesskey "P">
+<!ENTITY rest.label "Use REST API:">
+<!ENTITY rest.accesskey "R">
+<!ENTITY rest.description "The REST option offers the possibility to use the new dialog to create issues. The REST API exists since approx. Jira® 4.4. The SOAP API is not supported anymore.">
+<!ENTITY projectmapping.label "Email address to Project mapping (optional):">
+<!ENTITY projectmapping.accesskey "M">
+<!ENTITY addheader.label "Auto add header information">
+<!ENTITY addheader.accesskey "H">
+<!ENTITY assigntome.label "Auto assign to me">
+<!ENTITY assigntome.accesskey "A">
+<!ENTITY language.label "Language:">
+<!ENTITY language.accesskey "L">
+<!ENTITY decimalsep.label "Decimal separator char:">
+<!ENTITY decimalsep.accesskey "D">
+<!ENTITY months.label "List of months:">
+<!ENTITY months.accesskey "M">
+<!ENTITY settings.label "Additional settings:">
+<!ENTITY language.settings.label "Language settings:">
+<!ENTITY fields.label "Special settings for customfields">
+<!ENTITY fields.description "Here you can define if and how customfields should be displayed.
+If you choose the value default (Jira® type), the Plugin is attempting to determine the real type by evaluating the informationen retreived from the Jira® server.
+Should you deactivate fields that are used as mandatory fields for some issues you will not be able to create issues.
+If you change the URL on the first tab to connect to a new Jira® server please reload this table completely in order to refresh the data from the Jira® server and purge all old entries.">
+<!ENTITY fields.button.reload.label "Purge data an reload from Jira® server">
+<!ENTITY fields.accesskey "C">
+<!ENTITY fields.settings.label "Customfields">
+<!ENTITY fields.col.id "ID">
+<!ENTITY fields.col.field "Field">
+<!ENTITY fields.col.type "Jira® type">
+<!ENTITY fields.col.action "Handle as type">
+<!ENTITY fields.col.active "Active?">
+<!ENTITY fields.col.active.no "no">
+<!ENTITY fields.col.active.yes "yes">
+<!ENTITY fields.col.active.no.accesskey "N">
+<!ENTITY fields.col.active.yes.accesskey "Y">
+<!ENTITY field.action.default "default (Jira® type)">
+<!ENTITY field.action.textbox "textbox">
+<!ENTITY field.action.textbox.multi "textbox multiline">
+<!ENTITY field.action.number "number">
+<!ENTITY field.action.date "date picker">
+<!ENTITY field.action.user "user picker">
+<!ENTITY field.action.group "group user">
+<!ENTITY button.save.label "Save">
+<!ENTITY button.cancel.label "Cancel">
+<!ENTITY description.month.text1 "Due to a missing interface in Jira® we cannot determine the language specific settings.">
+<!ENTITY description.month.text2 "Please select the appropriate language from above, fill in the decimal seperator">
+<!ENTITY description.month.text3 "Since Mozilla® is missing an interface to localize names of months,">
+<!ENTITY description.month.text4 "fill in the list of months in the following form:">
+<!ENTITY description.month.text5 "Jan,Feb,Mar,Apr,...,Dec">
+<!ENTITY description.text1 "The project mapping maps (a part of) an email address to">
+<!ENTITY description.text2 "a project key to preselect a project in the dialog window.">
+<!ENTITY description.text3 "Use | as delimiter and only one mapping per line:">
+<!ENTITY description.text4 "pattern|Project-Key">
+<!ENTITY description.text5 "Example:">
+<!ENTITY description.text6 "catworkx.de|CWXI">
+<!ENTITY description.text7 "">
+<!ENTITY description.text8 "">
+<!ENTITY description.text "The project mapping maps (a part of) an email address to
+a project key to preselect a project in the dialog window.
+Use | as delimiter and only one mapping per line:
+pattern|Project-Key
+Example:
+catworkx.de|CWXI
+">
+<!ENTITY about.title "Thunderbird® Integration for Jira®">
+<!ENTITY about.text "This extension offers the function to create Jira® issues from emails or add emails as a comment.
+Now requires Growl® for Mac OS® X users to work. If not installed, falls back to the alert window.">
+<!ENTITY about.catworkx "The name catworkx® and the catworkx® logo are registered trademarks of catworkx® GmbH.">
+<!ENTITY about.teamworkx "The name teamworkx® and the teamworkx® logo are registered trademarks of catworkx® GmbH.">
+<!ENTITY about.atlassian "The names Atlassian® and Jira® as well as the Jira® logo are registered trademarks of Atlassian® Pty Ltd.">
+<!ENTITY about.growl "The name Growl® is registered trademark of the Growl® Team.">
+<!ENTITY about.aha-soft "Aha-Soft® is registered trademark of Aha-Soft®. The icons are available under the Creative Commons Attribution-Share Alike 3.0 License.">
+<!ENTITY about.mozilla "The names Mozilla®, Thunderbird®, and Lightning® and the according logos are registered trademarks of the Mozilla® Foundation.">
+<!ENTITY about.apple "The names Apple® and Mac OS® are registered trademarks of Apple Inc.">
+<!ENTITY about.tempo "The names Tempo® and Tempo Timesheets® are registered trademarks of Tempo Software.">
+<!ENTITY test.connection.label "Test:">
+<!ENTITY test.connection.btn "Test connection">
+<!ENTITY test.connection.accesskey "T">
+<!ENTITY serverinfo.label "Serverinfo:">
+<!ENTITY serverinfo.version "Version">
+<!ENTITY serverinfo.title "Title">
+<!ENTITY userinfo.label "Userinfo:">
+<!ENTITY userinfo.name "Name">
+<!ENTITY userinfo.tz "Timezone">
+<!ENTITY userinfo.avatar "Avatar:">
+<!ENTITY i18n.locale.ar "Arabic">
+<!ENTITY i18n.locale.ar_AE "Arabic (United Arab Emirates)">
+<!ENTITY i18n.locale.ar_BH "Arabic (Bahrain)">
+<!ENTITY i18n.locale.ar_DZ "Arabic (Algeria)">
+<!ENTITY i18n.locale.ar_EG "Arabic (Egypt)">
+<!ENTITY i18n.locale.ar_IQ "Arabic (Iraq)">
+<!ENTITY i18n.locale.ar_JO "Arabic (Jordan)">
+<!ENTITY i18n.locale.ar_KW "Arabic (Kuwait)">
+<!ENTITY i18n.locale.ar_LB "Arabic (Lebanon)">
+<!ENTITY i18n.locale.ar_LY "Arabic (Libya)">
+<!ENTITY i18n.locale.ar_MA "Arabic (Morocco)">
+<!ENTITY i18n.locale.ar_OM "Arabic (Oman)">
+<!ENTITY i18n.locale.ar_QA "Arabic (Qatar)">
+<!ENTITY i18n.locale.ar_SA "Arabic (Saudi Arabia)">
+<!ENTITY i18n.locale.ar_SD "Arabic (Sudan)">
+<!ENTITY i18n.locale.ar_SY "Arabic (Syria)">
+<!ENTITY i18n.locale.ar_TN "Arabic (Tunisia)">
+<!ENTITY i18n.locale.ar_YE "Arabic (Yemen)">
+<!ENTITY i18n.locale.be "Belarusian">
+<!ENTITY i18n.locale.be_BY "Belarusian (Belarus)">
+<!ENTITY i18n.locale.bg "Bulgarian">
+<!ENTITY i18n.locale.bg_BG "Bulgarian (Bulgaria)">
+<!ENTITY i18n.locale.ca "Catalan">
+<!ENTITY i18n.locale.ca_ES "Catalan (Spain)">
+<!ENTITY i18n.locale.cs "Czech">
+<!ENTITY i18n.locale.cs_CZ "Czech (Czech Republic)">
+<!ENTITY i18n.locale.da "Danish">
+<!ENTITY i18n.locale.da_DK "Danish (Denmark)">
+<!ENTITY i18n.locale.de "German">
+<!ENTITY i18n.locale.de_AT "German (Austria)">
+<!ENTITY i18n.locale.de_CH "German (Switzerland)">
+<!ENTITY i18n.locale.de_DE "German (Germany)">
+<!ENTITY i18n.locale.de_LU "German (Luxembourg)">
+<!ENTITY i18n.locale.el "Greek">
+<!ENTITY i18n.locale.el_CY "Greek (Cyprus)">
+<!ENTITY i18n.locale.el_GR "Greek (Greece)">
+<!ENTITY i18n.locale.en "English">
+<!ENTITY i18n.locale.en_AU "English (Australia)">
+<!ENTITY i18n.locale.en_CA "English (Canada)">
+<!ENTITY i18n.locale.en_GB "English (United Kingdom)">
+<!ENTITY i18n.locale.en_IE "English (Ireland)">
+<!ENTITY i18n.locale.en_IN "English (India)">
+<!ENTITY i18n.locale.en_MT "English (Malta)">
+<!ENTITY i18n.locale.en_NZ "English (New Zealand)">
+<!ENTITY i18n.locale.en_PH "English (Philippines)">
+<!ENTITY i18n.locale.en_SG "English (Singapore)">
+<!ENTITY i18n.locale.en_US "English (United States)">
+<!ENTITY i18n.locale.en_ZA "English (South Africa)">
+<!ENTITY i18n.locale.es "Spanish">
+<!ENTITY i18n.locale.es_AR "Spanish (Argentina)">
+<!ENTITY i18n.locale.es_BO "Spanish (Bolivia)">
+<!ENTITY i18n.locale.es_CL "Spanish (Chile)">
+<!ENTITY i18n.locale.es_CO "Spanish (Colombia)">
+<!ENTITY i18n.locale.es_CR "Spanish (Costa Rica)">
+<!ENTITY i18n.locale.es_DO "Spanish (Dominican Republic)">
+<!ENTITY i18n.locale.es_EC "Spanish (Ecuador)">
+<!ENTITY i18n.locale.es_ES "Spanish (Spain)">
+<!ENTITY i18n.locale.es_GT "Spanish (Guatemala)">
+<!ENTITY i18n.locale.es_HN "Spanish (Honduras)">
+<!ENTITY i18n.locale.es_MX "Spanish (Mexico)">
+<!ENTITY i18n.locale.es_NI "Spanish (Nicaragua)">
+<!ENTITY i18n.locale.es_PA "Spanish (Panama)">
+<!ENTITY i18n.locale.es_PE "Spanish (Peru)">
+<!ENTITY i18n.locale.es_PR "Spanish (Puerto Rico)">
+<!ENTITY i18n.locale.es_PY "Spanish (Paraguay)">
+<!ENTITY i18n.locale.es_SV "Spanish (El Salvador)">
+<!ENTITY i18n.locale.es_US "Spanish (United States)">
+<!ENTITY i18n.locale.es_UY "Spanish (Uruguay)">
+<!ENTITY i18n.locale.es_VE "Spanish (Venezuela)">
+<!ENTITY i18n.locale.et "Estonian">
+<!ENTITY i18n.locale.et_EE "Estonian (Estonia)">
+<!ENTITY i18n.locale.fi "Finnish">
+<!ENTITY i18n.locale.fi_FI "Finnish (Finland)">
+<!ENTITY i18n.locale.fr "French">
+<!ENTITY i18n.locale.fr_BE "French (Belgium)">
+<!ENTITY i18n.locale.fr_CA "French (Canada)">
+<!ENTITY i18n.locale.fr_CH "French (Switzerland)">
+<!ENTITY i18n.locale.fr_FR "French (France)">
+<!ENTITY i18n.locale.fr_LU "French (Luxembourg)">
+<!ENTITY i18n.locale.ga "Irish">
+<!ENTITY i18n.locale.ga_IE "Irish (Ireland)">
+<!ENTITY i18n.locale.hi_IN "Hindi (India)">
+<!ENTITY i18n.locale.hr "Croatian">
+<!ENTITY i18n.locale.hr_HR "Croatian (Croatia)">
+<!ENTITY i18n.locale.hu "Hungarian">
+<!ENTITY i18n.locale.hu_HU "Hungarian (Hungary)">
+<!ENTITY i18n.locale.in "Indonesian">
+<!ENTITY i18n.locale.in_ID "Indonesian (Indonesia)">
+<!ENTITY i18n.locale.is "Icelandic">
+<!ENTITY i18n.locale.is_IS "Icelandic (Iceland)">
+<!ENTITY i18n.locale.it "Italian">
+<!ENTITY i18n.locale.it_CH "Italian (Switzerland)">
+<!ENTITY i18n.locale.it_IT "Italian (Italy)">
+<!ENTITY i18n.locale.iw "Hebrew">
+<!ENTITY i18n.locale.iw_IL "Hebrew (Israel)">
+<!ENTITY i18n.locale.ja "Japanese">
+<!ENTITY i18n.locale.ja_JP "Japanese (Japan)">
+<!ENTITY i18n.locale.ja_JP_JP_u-ca-japanese "Japanese (Japan,JP)">
+<!ENTITY i18n.locale.ko "Korean">
+<!ENTITY i18n.locale.ko_KR "Korean (South Korea)">
+<!ENTITY i18n.locale.lt "Lithuanian">
+<!ENTITY i18n.locale.lt_LT "Lithuanian (Lithuania)">
+<!ENTITY i18n.locale.lv "Latvian">
+<!ENTITY i18n.locale.lv_LV "Latvian (Latvia)">
+<!ENTITY i18n.locale.mk "Macedonian">
+<!ENTITY i18n.locale.mk_MK "Macedonian (Macedonia)">
+<!ENTITY i18n.locale.ms "Malay">
+<!ENTITY i18n.locale.ms_MY "Malay (Malaysia)">
+<!ENTITY i18n.locale.mt "Maltese">
+<!ENTITY i18n.locale.mt_MT "Maltese (Malta)">
+<!ENTITY i18n.locale.nl "Dutch">
+<!ENTITY i18n.locale.nl_BE "Dutch (Belgium)">
+<!ENTITY i18n.locale.nl_NL "Dutch (Netherlands)">
+<!ENTITY i18n.locale.no "Norwegian">
+<!ENTITY i18n.locale.no_NO "Norwegian (Norway)">
+<!ENTITY i18n.locale.no_NO_NY "Norwegian (Norway,Nynorsk)">
+<!ENTITY i18n.locale.pl "Polish">
+<!ENTITY i18n.locale.pl_PL "Polish (Poland)">
+<!ENTITY i18n.locale.pt "Portuguese">
+<!ENTITY i18n.locale.pt_BR "Portuguese (Brazil)">
+<!ENTITY i18n.locale.pt_PT "Portuguese (Portugal)">
+<!ENTITY i18n.locale.ro "Romanian">
+<!ENTITY i18n.locale.ro_RO "Romanian (Romania)">
+<!ENTITY i18n.locale.ru "Russian">
+<!ENTITY i18n.locale.ru_RU "Russian (Russia)">
+<!ENTITY i18n.locale.sk "Slovak">
+<!ENTITY i18n.locale.sk_SK "Slovak (Slovakia)">
+<!ENTITY i18n.locale.sl "Slovenian">
+<!ENTITY i18n.locale.sl_SI "Slovenian (Slovenia)">
+<!ENTITY i18n.locale.sq "Albanian">
+<!ENTITY i18n.locale.sq_AL "Albanian (Albania)">
+<!ENTITY i18n.locale.sr "Serbian">
+<!ENTITY i18n.locale.sr__Latn "Serbian (Latin)">
+<!ENTITY i18n.locale.sr_BA "Serbian (Bosnia and Herzegovina)">
+<!ENTITY i18n.locale.sr_BA_Latn "Serbian (Latin,Bosnia and Herzegovina)">
+<!ENTITY i18n.locale.sr_CS "Serbian (Serbia and Montenegro)">
+<!ENTITY i18n.locale.sr_ME "Serbian (Montenegro)">
+<!ENTITY i18n.locale.sr_ME_Latn "Serbian (Latin,Montenegro)">
+<!ENTITY i18n.locale.sr_RS "Serbian (Serbia)">
+<!ENTITY i18n.locale.sr_RS_Latn "Serbian (Latin,Serbia)">
+<!ENTITY i18n.locale.sv "Swedish">
+<!ENTITY i18n.locale.sv_SE "Swedish (Sweden)">
+<!ENTITY i18n.locale.th "Thai">
+<!ENTITY i18n.locale.th_TH "Thai (Thailand)">
+<!ENTITY i18n.locale.th_TH_TH_u-nu-thai "Thai (Thailand,TH)">
+<!ENTITY i18n.locale.tr "Turkish">
+<!ENTITY i18n.locale.tr_TR "Turkish (Turkey)">
+<!ENTITY i18n.locale.uk "Ukrainian">
+<!ENTITY i18n.locale.uk_UA "Ukrainian (Ukraine)">
+<!ENTITY i18n.locale.vi "Vietnamese">
+<!ENTITY i18n.locale.vi_VN "Vietnamese (Vietnam)">
+<!ENTITY i18n.locale.zh "Chinese">
+<!ENTITY i18n.locale.zh_CN "Chinese (China)">
+<!ENTITY i18n.locale.zh_HK "Chinese (Hong Kong)">
+<!ENTITY i18n.locale.zh_SG "Chinese (Singapore)">
+<!ENTITY i18n.locale.zh_TW "Chinese (Taiwan)">
+<!ENTITY pane.rest.create.title "New features">
+<!ENTITY splash.rest.create.title "New features in the current version">
+<!ENTITY splash.rest.create.description "Available with this version are the following new features:">
+<!ENTITY splash.rest.create.new1 "This is a bugfix release for the datepicker field.">
+<!ENTITY splash.rest.create.new2 "Rebranding of all catworkx addons as Teamworkx Apps.">
+<!ENTITY splash.rest.create.new3 "The entry in the menu Extras -> Add-On Options works.">
+<!ENTITY splash.rest.create.new4 "">
+<!ENTITY splash.rest.create.new5 "">
+<!ENTITY splash.rest.create.new6 "">
+<!ENTITY splash.rest.create.new7 "">
+<!ENTITY wizard.seen.label "Do not show this dialog again.">
+<!ENTITY wizard.accesskey "D">
+<!ENTITY addheadertype.accesskey "F">
+<!ENTITY addheadertype.label "Format of the email headers">
+<!ENTITY wizard.add.email.header.option "Format of the email headers:">
+<!ENTITY wizard.add.email.header.option.plain "Unformatted">
+<!ENTITY wizard.add.email.header.option.wiki "Wiki format (body surrounded by {noformat} tags)">
+<!ENTITY wizard.add.email.header.accesskey "E">
+<!ENTITY wizard.preferred.comment.tab.accesskey "T">
+<!ENTITY wizard.preferred.comment.tab.label "Preferred tab for searching issues in comment wizard:">
+<!ENTITY tabbox.fulltext.label "Full text">
+<!ENTITY tabbox.issuekey.label "Issue key">
+<!ENTITY tabbox.filter.label "Filter favorites">
+<!ENTITY tabbox.jql.label "JQL">
+<!ENTITY tabbox.last.label "Last selected tab">
+<!ENTITY tabbox.fulltext.accesskey "T">
+<!ENTITY tabbox.issuekey.accesskey "K">
+<!ENTITY tabbox.filter.accesskey "F">
+<!ENTITY tabbox.jql.accesskey "J">
+<!ENTITY tabbox.last.accesskey "L">
+<!ENTITY pane.settings.reply.title "Reply">
+<!ENTITY pane.settings.reply.description "You can add headers and the body text as well as additional receivers (CC:) for an optional reply-email. You can insert $key (issue's key), $url (issue's URL) and $subject (subject of the email) wherever you like. Those placeholders will be replaced by the issue's key and the url respectively.">
+<!ENTITY reply.header.create.accesskey "S">
+<!ENTITY reply.header.create.label "Subject of the reply (Create)">
+<!ENTITY reply.header.create.description "Optional subject for an reply-email">
+<!ENTITY reply.body.create.accesskey "T">
+<!ENTITY reply.body.create.label "Text of the reply (Create)">
+<!ENTITY reply.body.create.description "Optional text for an reply-email">
+<!ENTITY reply.header.comment.accesskey "R">
+<!ENTITY reply.header.comment.label "Subject of the reply (Comment)">
+<!ENTITY reply.header.comment.description "Optional subject for an reply-email">
+<!ENTITY reply.body.comment.accesskey "O">
+<!ENTITY reply.body.comment.label "Text of the reply (Comment)">
+<!ENTITY reply.body.comment.description "Optional text for an reply-email">
+<!ENTITY reply.cc.accesskey "C">
+<!ENTITY reply.cc.label "CC: for the answer">
+<!ENTITY reply.cc.description "Optional list (comma-separated) of CC adresses for an reply-email">
+<!ENTITY tempDirDefault.accesskey "S">
+<!ENTITY tempDirDefault.label "Use standard directory (/tmp resp. C:\temp)?">
+<!ENTITY tempDirAlternate.accesskey "D">
+<!ENTITY tempDirAlternate.label "Alternative directory (instead of /tmp resp. C:\temp)">
+<!ENTITY keepTempFiles.accesskey "K">
+<!ENTITY keepTempFiles.label "Keep temporary files?">
+<!ENTITY choose.folder.tooltiptext "Choose folder">
+<!ENTITY addOn.Tempo.support.label "Support the Tempo AddOn">
+<!ENTITY addOn.Tempo.support.accesskey "T">

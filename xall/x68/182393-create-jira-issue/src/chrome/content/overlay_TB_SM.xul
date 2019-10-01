@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://createjiraissue/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://createjiraissue/locale/createjiraissue.dtd">
+<overlay id="createjiraissue-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js"/>
+  <stringbundleset id="createjiraissue_overlay_TB_SM_stringbundleset">
+    <stringbundle id="createjiraissue_overlay_strings" src="chrome://createjiraissue/locale/createjiraissue.properties"/>
+  </stringbundleset>
+  <!-- Thunderbird and SeaMonkey -->
+  <!-- context menu -->
+  <popup id="mailContext">
+    <menuitem id="context-createjiraissue" label="&createjiraissueContext.label;"
+              accesskey="&createjiraissueContext.accesskey;"
+              oncommand="createjiraissue.createDialog()"
+              class="menuitem-iconic" image="chrome://createjiraissue/skin/comment_issue.png"/>
+    <menuitem id="context-addcomment" label="&addCommentContext.label;"
+              accesskey="&addCommentContext.accesskey;"
+              oncommand="createjiraissue.commentDialog()"
+              class="menuitem-iconic" image="chrome://createjiraissue/skin/create_issue.png"/>
+  </popup>
+  <!-- Thunderbird and SeaMonkey -->
+  <!-- classical main menu -->
+  <menupopup id="taskPopup">
+    <menuitem id="settings-createjiraissue" label="&preferences.label;"
+  			  oncommand='window.openDialog("chrome://createjiraissue/content/options.xul", "createjiraissuePreferences", "chrome, titlebar, toolbar, dialog=yes, resizable=yes").focus();'
+  			  class="menuitem-iconic" image="chrome://createjiraissue/skin/jira_small.png"
+  			  insertbefore="menu_pageInfo,devToolsSeparator"/>
+  </menupopup>
+</overlay>
