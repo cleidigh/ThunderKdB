@@ -61,8 +61,8 @@ function genExtensionListFromFolders() {
 
 function genExtensionListFromJson(extsJson) {
 
-	let extsListFile = fs.readFileSync('extension-list-all-templ.md', 'utf8');
-	// let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
+	// let extsListFile = fs.readFileSync('extension-list-all-templ.md', 'utf8');
+	let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
 	// let extsListFile = fs.readFileSync('extension-list-tb60-templ.md', 'utf8');
 	
 	let extRows = "";
@@ -87,8 +87,8 @@ function genExtensionListFromJson(extsJson) {
 	});
 	extsListFile = extsListFile.replace('__ext-table-tb68__', extRows);
 	// console.debug(extsListFile );
-	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/extension-list-tb68.md`, extsListFile);
-	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
+	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/extension-list-tb68.md`, extsListFile);
+	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
 	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60.md`, extsListFile);
 
 	console.debug('Done');
@@ -204,9 +204,9 @@ function createExtMDTableRow(extJson) {
 	// 	return "";
 	// }
 
-	// if ( !(comp_badges.includes(cBadge_tb68) ) ) {
-	// 	return "";
-	// }
+	if ( !(comp_badges.includes(cBadge_tb68) ) ) {
+		return "";
+	}
 
 	let rank = extJson.xpilib.rank;
 	
