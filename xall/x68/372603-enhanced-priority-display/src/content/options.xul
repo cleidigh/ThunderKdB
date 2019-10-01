@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<!DOCTYPE dialog [
+<!ENTITY % prefwindowDtd SYSTEM "chrome://EnhancedPriorityDisplay/locale/prefwindow.dtd">
+%prefwindowDtd;
+<!ENTITY % viewZoomOverlayDTD SYSTEM "chrome://messenger/locale/viewZoomOverlay.dtd">
+%viewZoomOverlayDTD;
+]>
+
+<dialog
+    id="EnhancedPriorityDisplay-Preferences"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="&prefwindow.title;"
+    buttons="accept,cancel,extra1"
+    buttonlabelextra1="&fullZoomResetCmd.label;">
+  <script src="options.js"/>
+  <prefpane id="EnhancedPriorityDisplay-pane1" label="&prefwindow.title;">
+    <tabbox>
+      <tabs>
+	<tab label="&general.label;"/>
+	<tab label="&advanced.label;"/>
+	<tab label="&about.label;"/>
+      </tabs>
+      <tabpanels>
+	<tabpanel>
+	  <vbox>
+	    <checkbox id="EnhancedPriorityDisplay-iconify-checkbox"
+		      label="&iconify.label;"/>
+	    <checkbox id="EnhancedPriorityDisplay-style-high-checkbox"
+		      label="&styleHigh.label;"/>
+	    <checkbox id="EnhancedPriorityDisplay-style-low-checkbox"
+		      label="&styleLow.label;"/>
+	    <checkbox id="EnhancedPriorityDisplay-shade-high-checkbox"
+		      label="&shadeHigh.label;"/>
+	    <checkbox id="EnhancedPriorityDisplay-shade-low-checkbox"
+		      label="&shadeLow.label;"/>
+	  </vbox>
+	</tabpanel>
+	<tabpanel>
+	  <vbox>
+	    <label>&highestIcon.label;</label>
+	    <textbox id="EnhancedPriorityDisplay-highest-icon-textbox"
+		     size="50"/>
+	    <label>&highIcon.label;</label>
+	    <textbox id="EnhancedPriorityDisplay-high-icon-textbox"
+		     size="50"/>
+	    <label>&lowIcon.label;</label>
+	    <textbox id="EnhancedPriorityDisplay-low-icon-textbox"
+		     size="50"/>
+	    <label>&lowestIcon.label;</label>
+	    <textbox id="EnhancedPriorityDisplay-lowest-icon-textbox"
+		     size="50"/>
+	    <label>&dumpLevel.label;</label>
+	    <menulist id="EnhancedPriorityDisplay-dump-level-menu">
+	      <menupopup>
+		<menuitem name="dumplevel" label="Fatal"  value="Fatal" />
+		<menuitem name="dumplevel" label="Error"  value="Error" />
+		<menuitem name="dumplevel" label="Warn"   value="Warn"  />
+		<menuitem name="dumplevel" label="Info"   value="Info"  />
+		<menuitem name="dumplevel" label="Config" value="Config"/>
+		<menuitem name="dumplevel" label="Debug"  value="Debug" />
+		<menuitem name="dumplevel" label="Trace"  value="Trace" />
+		<menuitem name="dumplevel" label="All"    value="All"   />
+	      </menupopup>
+	    </menulist>
+	    <label>&consoleLevel.label;</label>
+	    <menulist id="EnhancedPriorityDisplay-console-level-menu">
+	      <menupopup>
+		<menuitem name="consolelevel" label="Fatal"  value="Fatal" />
+		<menuitem name="consolelevel" label="Error"  value="Error" />
+		<menuitem name="consolelevel" label="Warn"   value="Warn"  />
+		<menuitem name="consolelevel" label="Info"   value="Info"  />
+		<menuitem name="consolelevel" label="Config" value="Config"/>
+		<menuitem name="consolelevel" label="Debug"  value="Debug" />
+		<menuitem name="consolelevel" label="Trace"  value="Trace" />
+		<menuitem name="consolelevel" label="All"    value="All"   />
+	      </menupopup>
+	    </menulist>
+	  </vbox>
+	</tabpanel>
+	<tabpanel>
+	  <vbox>
+	    <description value="&copyright.label;"/>
+	    <description value="&license.label;"/>
+	    <description value="&support.label;"/>
+	    <hbox>
+	      <label value="&contact.label;"
+		     class="text-link" onclick="Components.classes['@mozilla.org/messengercompose;1'].getService(Components.interfaces.nsIMsgComposeService).OpenComposeWindowWithURI(null, Components.classes['@mozilla.org/network/io-service;1'].getService(Components.interfaces.nsIIOService).newURI('mailto:jik+epd@kamens.us?subject=Enhanced%20Priority%20Display', null, null));"/>
+	      <label value="&donate.label;" class="text-link"
+		     onclick="Components.classes['@mozilla.org/uriloader/external-protocol-service;1'].getService(Components.interfaces.nsIExternalProtocolService).loadURI(Components.classes['@mozilla.org/network/io-service;1'].getService(Components.interfaces.nsIIOService).newURI('https://addons.mozilla.org/thunderbird/addon/enhanced-priority-display/contribute/roadblock/?src=prefwindow', null, null));"/>
+	    </hbox>
+	  </vbox>
+	</tabpanel>
+      </tabpanels>
+    </tabbox>
+  </prefpane>
+</dialog>

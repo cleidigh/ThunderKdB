@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://messenger/skin/" type="text/css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="Before Tabs Toolbar"
+        id="BTTPrefs"
+        buttons="accept"
+        onload="onLoad();">
+
+<script src="chrome://global/content/preferencesBindings.js"/>
+<script src="chrome://btt/content/settings.js"/>
+
+<groupbox>
+  <caption label="AppButton, when on Before Tabs Toolbar"/>
+  <hbox align="center">
+    <checkbox id="blueButton"
+            label="Make the AppButton appearance blue, when on Before Tabs Toolbar"
+            preference="extensions.btt.styleButton"/>
+  </hbox>
+</groupbox>
+</dialog>

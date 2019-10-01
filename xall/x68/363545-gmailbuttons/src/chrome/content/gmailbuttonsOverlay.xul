@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://gmailbuttons/content/gmailbuttons.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://gmailbuttons/locale/gmailbuttonsOverlay.dtd">
+<overlay id="gmailbuttons-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <!-- include required scripts -->
+  <script src="gmailbuttonsOverlay.js"/>
+
+  <!-- additional toolbar for dispaying gmail labels in message header area -->
+  <rows id="expandedHeader2Rows">
+    <row id="gmailbuttons-messageId-row">
+      <label id="gmailbuttons-messageId-label" value="&gmailbuttonsMessageId.label;"
+        class="headerName" control="gmailbuttons-messageId" />
+      <mail-headerfield id="gmailbuttons-messageId" flex="1" />
+    </row>
+    <row id="gmailbuttons-threadId-row">
+      <label id="gmailbuttons-threadId-label" value="&gmailbuttonsThreadId.label;"
+        class="headerName" control="gmailbuttons-threadId" />
+      <mail-headerfield id="gmailbuttons-threadId" flex="1" />
+    </row>
+    <row id="gmailbuttons-offlineFolder-row">
+      <label id="gmailbuttons-offlineFolder-label" value="&gmailbuttonsOfflineFolder.label;"
+        class="headerName" control="gmailbuttons-offlineFolder" />
+      <mail-headerfield id="gmailbuttons-offlineFolder" flex="1" />
+    </row>
+    <row id="gmailbuttons-labels-row"  style="margin-bottom: 3px;" >
+      <label id="gmailbuttons-labels-label" value="&gmailbuttonsLabels.label;"
+        control="gmailbuttons-labels" class="headerName" />
+      <gmailbuttons-mail-headerfield-labels id="gmailbuttons-labels" flex="1" />
+    </row>
+  </rows>
+
+  <!-- additional gmail specific buttons -->
+  <toolbar id="header-view-toolbar">
+    <toolbarbutton id="gmailbuttons-spam-button" label="&gmailbuttonsSpamButton.label;"
+      tooltiptext="&gmailbuttonsSpamButton.tooltip;"
+	    class="toolbarbutton-1 msgHeaderView-button hdrJunkButton"
+	    removable="true"
+    />
+    <toolbarbutton id="gmailbuttons-trash-button" label="&gmailbuttonsTrashButton.label;"
+      tooltiptext="&gmailbuttonsTrashButton.tooltip;"
+      class="toolbarbutton-1 msgHeaderView-button"
+      style="list-style-image: url('chrome://gmailbuttons/skin/icons/gmailbuttonsTrash.png')"
+      oncommand="gmailbuttons.MoveToSpecialFolder('\\Trash', event);"
+      removable="true"
+    />
+	</toolbar>
+
+  <!--- add column for displaying offline storage location -->
+  <tree id="threadTree">
+    <treecols id="threadCols">
+    <splitter class="tree-splitter" />
+    <treecol id="gmailbuttons-offline-storage-column" persist="hidden ordinal width" 
+             currentView="unthreaded" flex="2"
+             label="Offline Storage Location" tooltiptext="Click to sort by the Offline Storage Location" />
+    </treecols>
+  </tree>
+  
+</overlay>

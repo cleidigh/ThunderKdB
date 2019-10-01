@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://btt/skin/btt.css" type="text/css"?>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script src="chrome://global/content/globalOverlay.js"/>
+<script src="chrome://btt/content/btt.js"/>
+
+<toolbar id="tabs-toolbar">
+  <toolbar id="before-tab-toolbar" toolboxid="mail-toolbox"
+           context="toolbar-context-menu"
+           insertbefore="tabcontainer,tabmail-tabs"
+           customizable="true"
+           mode="icons" defaultmode="icons" lockmode="true"
+           iconsize="small" defaulticonsize="small" lockiconsize="true"
+           defaultset="button-appmenu"/>
+</toolbar>
+
+</overlay>

@@ -1,0 +1,67 @@
+content   quickfilters                 chrome/content/
+skin      quickfilters   classic/1.0   chrome/skin/
+locale    quickfilters   en            chrome/locale/en/
+locale    quickfilters   es            chrome/locale/es/
+locale    quickfilters   es-AR         chrome/locale/es-AR/
+locale    quickfilters   de            chrome/locale/de/
+locale    quickfilters   it            chrome/locale/it/
+locale    quickfilters   fr            chrome/locale/fr/
+locale    quickfilters   ja            chrome/locale/ja/
+locale    quickfilters   nl            chrome/locale/nl/
+locale    quickfilters   sv-SE         chrome/locale/sv-SE/
+locale    quickfilters   ru            chrome/locale/ru/
+locale    quickfilters   vi            chrome/locale/vi/
+locale    quickfilters   zh-CN         chrome/locale/zh-CN/
+
+overlay chrome://messenger/content/messenger.xul     chrome://quickfilters/content/quickFilters-overlay.xul
+style   chrome://global/content/customizeToolbar.xul chrome://quickfilters/skin/quickFilters.css appversion<59.0a1
+style   chrome://messenger/content/customizeToolbar.xul chrome://quickfilters/skin/quickFilters.css appversion>=59.0a1
+style   chrome://messenger/content/FilterEditor.xul chrome://quickfilters/content/filterWidgets.css
+
+#Overlay QuickFolder's Current folder toolbar
+# Thunderbird 
+content myXUL chrome://quickfolders/content/xul12/ application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+# SeaMonkey
+content myXUL chrome://quickfolders/content/xulSM/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+# Postbox
+content myXUL chrome://quickfolders/content/xulPb/ application=postbox@postbox-inc.com
+
+# The following overlay on overly does not work in THunderbird from 68 :( :(
+overlay chrome://myXUL/content/overlayCurrentfolder.xul  chrome://quickfilters/content/qFilters-QuickFolders.xul appversion<64
+overlay chrome://messenger/content/messenger.xul  chrome://quickfilters/content/qFilters-QF-tb68.xul appversion>=64
+
+# shim-JS for platforms>11 - this section will avoid the pesky errors in THunderbird about for..in being outdated
+# while also avoid Postbox crashing us for syntax when we use for..of
+# Tb - Object.entries needs platform >= 47.0
+#tb (for..of)
+content shimQuickFilters chrome://quickfilters/content/shimEcmaOld/ application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+content shimQuickFilters chrome://quickfilters/content/shimEcma/ application={3550f703-e582-4d05-9a08-453d09bdfdc6} platformversion>=47
+#sm (for..of)
+content shimQuickFilters chrome://quickfilters/content/shimEcma/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+#postbox (for in)
+content shimQuickFilters chrome://quickfilters/content/shimEcmaOld/ application=postbox@postbox-inc.com
+content shimQuickFilters chrome://quickfilters/content/shimEcma/ application=postbox@postbox-inc.com platformversion>=26
+
+
+
+#legacy styles (for deprecated attributes)
+style   chrome://messenger/content/messenger.xul content/legacy.css application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion<12
+
+# postbox
+style   chrome://quickfilters/content/quickFilters-options.xul chrome://quickfilters/content/legacy.css application=postbox@postbox-inc.com 
+style   chrome://quickfilters/content/quickFilters-options.xul chrome://quickfilters/content/postbox.css application=postbox@postbox-inc.com 
+style   chrome://quickfilters/content/filterTemplate.xul chrome://quickfilters/content/legacy.css application=postbox@postbox-inc.com 
+style   chrome://messenger/content/messenger.xul chrome://quickfilters/content/postbox.css application=postbox@postbox-inc.com 
+style   chrome://quickfilters/content/register.xul chrome://quickfilters/content/postbox.css application=postbox@postbox-inc.com 
+
+
+
+# Message Filter List overlays - collaborates with changes from [Bug 450302] 
+overlay  chrome://messenger/content/FilterListDialog.xul   chrome://quickfilters/content/overlayFilterList.xul application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+overlay  chrome://messenger/content/FilterListDialog.xul   chrome://quickfilters/content/overlayFilterList.xul application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+overlay  chrome://messenger/content/FilterListDialog.xul   chrome://quickfilters/content/overlayFilterList.xul application=postbox@postbox-inc.com
+
+# Filter Editor overlay
+overlay  chrome://messenger/content/FilterEditor.xul  chrome://quickfilters/content/overlayFilterRules.xul
+
+# overlay	chrome://messenger/content/mailWindowOverlay.xul	chrome://quickfilters/content/quickFilters-overlay.xul

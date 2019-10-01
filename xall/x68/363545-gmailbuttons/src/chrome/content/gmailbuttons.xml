@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<bindings id="gmailbuttonsBindings"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:nc="http://home.netscape.com/NC-rdf#"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+  <!-- based on https://mxr.mozilla.org/comm-central/source/mail/base/content/mailWidgets.xml -->
+
+  <!-- Header field for showing gmail labels -->
+  <binding id="gmailbuttons-mail-headerfield-labels">
+    <content>
+     <xul:label class="headerValue" anonid="headerValue" flex="1" />
+    </content>
+
+    <implementation>
+      <property name="headerValue" onset="return this.buildLables(val);"/>
+      <method name="buildLables">
+        <parameter name="labels"/>
+        <body>
+          <![CDATA[
+            // labels contains a string with a message or an array of label names
+
+            // remove any existing tag items we've appended to the list
+            const headerValueNode =
+                document.getAnonymousElementByAttribute(this, 'anonid', 'headerValue');
+            for (let i = headerValueNode.childNodes.length - 1; i >= 0; --i)
+              headerValueNode.removeChild(headerValueNode.childNodes[i]);
+
+            // for strings, just display string in a label
+            if (typeof(labels) === "string") {
+              const label = document.createElement("label");
+              label.setAttribute('value', labels);
+              headerValueNode.appendChild(label);
+              return;
+            }
+            // check for array object
+            if (!Array.isArray(labels)) {
+              return;
+            }
+            // iterate array
+            for (let index = 0; index < labels.length; index++)
+            {
+              // for each label, create a label element and append it.
+              const labelName = labels[index];
+              if (!labelName)
+                continue;
+              prettyLabelName = labelName;
+              // strip enclosing quotes if present
+              if ((prettyLabelName.indexOf("\"") == 0) &&
+                  (prettyLabelName.lastIndexOf("\"") == (prettyLabelName.length - 1))) {
+                prettyLabelName = prettyLabelName.substring(1, prettyLabelName.length - 1);
+              }
+              // handle special folders
+              if (prettyLabelName.indexOf("\\\\") == 0) {
+                prettyLabelName = prettyLabelName.substring(1);
+                const server = gmailbuttons.GetMessageServer();
+                // TODO what do we do if user is not subscribed to special folder?
+                if (gmailbuttons.SpecialFolderMap[server.key][prettyLabelName]) {
+                  prettyLabelName = gmailbuttons.SpecialFolderMap[server.key][prettyLabelName].imapFolder.prettyName;
+                }
+              // label name has escaped characters
+              } else if (prettyLabelName.indexOf('&') >= 0) {
+                const server = gmailbuttons.GetMessageServer();
+                const folder = server.rootFolder.findSubFolder(prettyLabelName);
+                prettyLabelName = folder.prettyName;
+                while (folder.parent != server.rootFolder) {
+                  folder = folder.parent;
+                  folder.QueryInterface(Ci.nsIMsgImapMailFolder);
+                  prettyLabelName = folder.prettyName + folder.hierarchyDelimiter + prettyLabelName;
+                }
+              }
+
+              const label = document.createElement("label");
+              label.setAttribute('value', prettyLabelName);
+              label.setAttribute('class', 'gmailbuttonsLabel');
+
+              const deleteButton = document.createElement("toolbarbutton");
+              deleteButton.setAttribute('class', 'gmailbuttonsLabelDeleteButton gmailbuttonsLabel');
+              deleteButton.setAttribute('style', 'padding-left: 2px;');
+              deleteButton.setAttribute('labelName', labelName);
+              deleteButton.setAttribute('tooltiptext', gmailbuttons.strings.GetStringFromName("gmailbuttons.removeLabel"));
+              deleteButton.labelName = labelName;
+              deleteButton.setAttribute('onclick', 'gmailbuttons.RemoveLabel(this.labelName)');
+
+              const labelBox = document.createElement("hbox");
+              labelBox.setAttribute('class', 'tagvalue gmailbuttonsTagvalue');
+              labelBox.appendChild(label);
+              labelBox.appendChild(deleteButton);
+              headerValueNode.appendChild(labelBox);
+            }
+        ]]>
+        </body>
+      </method>
+    </implementation>
+  </binding>
+</bindings>

@@ -1,0 +1,128 @@
+image#logo {
+	height: 32px;
+	width: auto;
+	margin: 0 3em 0 1em;
+}
+
+#header {
+  background-image: url("chrome://quickfilters/skin/filterTemplate.png");
+  padding-left: 102px;
+  background-repeat: no-repeat;
+  background-position: 0px 4px;
+  max-width: 100%;
+  width: 100% !important;
+}
+
+#qf-title {
+  margin-top: 0px;
+}
+
+#qf-filter-templates {
+  min-width: 15em;
+	max-height: 19.2em;
+}
+
+#preview .fieldset-body {
+	background-color: white;
+	box-shadow: inset 0 0 5px rgba(50,50,50,0.5);
+	color: black;
+	overflow-x: scroll;
+	padding: 4px 6px;
+	width: 100%;
+}
+
+/* don't restrict dialog #qf-template */
+#assistantDeck, #header, .deckChild, hbox.myWizard {
+  max-width: 900px;
+}
+.paneDeckContainer { 
+  max-width: 930px;
+}
+
+#mergeSummary, #mergeInstructions {
+  width: 500px;
+  height: 2em;
+}
+
+#qf-template-prefpane {
+  min-height:280px;
+  min-width: 500px; /* fixes overly wide dialog box */
+	max-width: inherit;
+}
+
+#boxDescription {
+  min-height: 5em;
+	min-width: 520px;
+	max-width: 620px;
+}
+#templateLabel { padding-top: 0.5em; }
+#templateDescription {
+  padding: 0.5em;
+  min-height:3.8em;
+  max-width: 520px !important;
+}
+
+#qf-whatToDo {
+	margin-bottom: 3em;
+}
+
+#filterMatches {
+  min-width: 25em;
+	min-height: 7em;
+	max-height:15em; /* [Bug 26630] fixing a flex problem causeing the dialog to grow too high */
+}
+#filterDescription {
+  max-width: 400px !important;
+}
+
+.extra1 {
+	list-style-image: url("chrome://quickfilters/skin/QuickFilters_16_Simple.png");
+	-moz-image-region: rect(0, 16px, 16px, 0);
+}
+
+/* donate button (extra2) */
+.dialog-button:first-child label
+{
+	padding: 0px 2em;
+	margin: 0;
+	max-height: 1.6em; /* slimmer donate button */
+}
+
+
+button.dialog-button:first-child {
+	background: linear-gradient(to bottom, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%) !important;
+}
+
+.dialog-button:first-child
+{
+	margin: 2px 0px;
+	-moz-appearance: none;
+	border-radius: 2em;
+	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.7);
+	color: #fff;
+	font-weight: bold;
+	border: 1px solid #fff;
+	background: rgb(254,204,177);
+	transition-property: box-shadow, margin;
+	transition-duration: 0.75s, 0.2s;
+}
+
+.dialog-button:first-child:hover
+{
+	margin: 3px -1px 1px 1px;
+	box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.8);
+	background: rgb(254,222,178);
+	background: linear-gradient(to bottom, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);
+}
+
+.dialog-button:first-child:active
+{
+	margin: 4px -2px 0px 2px;
+	box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.9);
+	background: rgb(254,222,178);
+	background: linear-gradient(to bottom, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);
+}
+
+.dialog-button { margin-top: 0px; }
+
+

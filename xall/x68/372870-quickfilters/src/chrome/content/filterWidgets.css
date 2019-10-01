@@ -1,0 +1,144 @@
+
+/* shared widgets */
+#quickFiltersBtnHelp {
+  display: -moz-box;
+}
+
+#quickFiltersBtnHelp {
+	list-style-image: url("chrome://quickfilters/skin/help_24.png");
+}
+
+#quickFiltersHelpBar {
+  display: block;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.search-value-custom[searchAttribute="quickFilters@axelg.com#replyTo"] {
+  -moz-binding: url("chrome://quickfilters/content/bindings.xml#textbox");
+	/* -moz-appearance: textfield; from fx forms.css  */
+	/* background-color: #FFFF66; light yellow, for testing, add qF icon later */
+	/*-moz-binding: url("chrome://global/content/bindings/textbox.xml#textbox");*/
+}
+
+.search-value-custom[searchAttribute="quickFilters@axelg.com#replyTo"] .textbox-input {
+	background-image:  url("chrome://quickfilters/skin/qFilters-watermark.png");
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-position: right center;
+}
+
+#quickFilters-CustomTemplate {
+  background: rgb(0,0,64);
+	background-image: url("chrome://messenger/skin/preferences/background.png");
+  color: white;
+	font-weight: bold;
+	font-family: Calibri, Sans-serif;
+	font-size: 16px;
+	margin-bottom: 6px;
+  padding: 4px;
+	text-align: center;
+	text-shadow: 2px 2px 2px rgba(60,60,60,0.4);
+}
+#customLogo {
+  margin-left: 5px;
+	/* just a hack as I don't appear to be able to use img url for a chrome address? */
+	background-image:url("chrome://quickfilters/skin/proFeature24.png"); 
+	width: 54px;
+	height: 24px;
+}
+
+#quickFilters-Options-Tabbox tab .tab-icon {
+	margin-right: 5px;
+	margin-left: 3px;
+}
+
+/* SEPARATED ANIMATION RULES TO DISABLE IN PRO VERSION */
+/* menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon,  */
+/*  shorthand:
+    animation : animation-name animation-duration animation-timing-function animation-delay animation-iteration-count animation-direction
+		*/
+		
+@keyframes quickfiltersRotateY {
+  from {
+	  transform: rotateY(0deg);
+	}
+	to {
+	  transform: rotateY(359deg);
+	}
+}
+
+#quickFilters-Pro.free .tab-icon {
+  animation: quickfiltersRotateY 3s linear 0.3s infinite ;
+	height: 19px;
+	width: 30px;
+}
+
+#quickFilters-Pro.paid .tab-icon {
+	animation: none !important;
+}
+
+@keyframes quickfiltersPulse {	to {box-shadow: 0 0 0 10px rgba(150, 80, 60, 0.12);}}
+
+#quickFilters-Pro.expired .tab-icon,
+#btnLicense {
+  animation: quickfiltersPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+	box-shadow: 0 0 0 0px rgba(40, 40, 40, 0.0);
+}
+#btnLicense:hover {
+	animation: none;
+}
+
+/* ICON RULE TO OVERWRITE IN PRO VERSION */
+/* menuitem.cmd[tagName="qfRegister"],  */
+tab#quickFilters-Pro {
+	list-style-image : url('chrome://quickfilters/skin/pro.png') !important;
+}
+
+tab#quickFilters-Pro.paid {
+	list-style-image : url('chrome://quickfilters/skin/pro-paid.png') !important;
+}
+
+tab#quickFilters-Pro.expired {
+	list-style-image : url('chrome://quickfilters/skin/pro-expired.png') !important;
+}
+
+
+/*
+menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
+	margin-left: -7px;
+	margin-right: -7px;
+}
+*/
+
+tab#quickFilters-Actions {
+	list-style-image: url('chrome://quickfilters/skin/fugue-drill.png');
+}
+
+tab#quickFilters-FilterProperties {
+	list-style-image : url('chrome://quickfilters/skin/fugue-asterisk.png');
+}
+
+tab#quickFilters-Advanced {
+	list-style-image : url('chrome://quickfilters/skin/settings-advanced.png');
+}
+
+tab#quickFilters-Support {
+	list-style-image : url('chrome://quickfilters/skin/info16.png') !important;
+}
+
+/* dual state animated icons (menuitems / tabs) */
+tab#quickFilters-Support:not([selected]),
+tab#quickFilters-Advanced:not([selected])
+{
+	-moz-image-region: rect(0px, 16px, 16px, 0px) !important;
+}
+tab#quickFilters-Support[selected="true"],
+tab#quickFilters-Advanced[selected="true"]
+{
+	-moz-image-region: rect(16px, 16px, 32px, 0px) !important;
+}
+

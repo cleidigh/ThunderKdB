@@ -1,0 +1,96 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* PreTab Toolbar */
+
+#before-tab-toolbar {
+  -moz-appearance: none;
+  padding: 0;
+  z-index: 1;
+  border: none;
+  min-width: 0;
+}
+
+#before-tab-toolbar[customizing] {
+  min-width: 40px;
+  margin-inline-start: 0;
+  background: grey;
+}
+
+#messengerWindow[bttStyleButton="true"] > #navigation-toolbox >
+#tabs-toolbar > #before-tab-toolbar > #button-appmenu {
+  -moz-appearance: none;
+  border-radius: 3px;
+  border: 1px solid #444;
+  background-image: linear-gradient(#0095dd, #00539f 95%);
+  box-shadow: 0 1px 0 hsla(205,100%,72%,.2) inset,
+              0 0 2px 1px hsla(205,100%,72%,.25) inset;
+}
+
+#messengerWindow[bttStyleButton="true"] > #navigation-toolbox >
+#tabs-toolbar > #before-tab-toolbar > #button-appmenu:hover:not(:active):not([open]) {
+  background-image: radial-gradient(ellipse farthest-side at center bottom,
+                    hsla(202,100%,85%,.5) 10%, hsla(202,100%,85%,0) 70%),
+                    radial-gradient(ellipse farthest-side at center bottom,
+                    hsla(205,100%,72%,.7), hsla(205,100%,72%,0)),
+                    linear-gradient(hsl(208,98%,34%), hsl(213,87%,20%) 95%);
+  background-size: auto auto;
+  background-position: 0 0;
+  box-shadow: 0 1px 0 hsla(205,100%,72%,.15) inset,
+			  0 0 2px 1px hsla(205,100%,72%,.5) inset,
+			  0 -1px 0 hsla(205,100%,72%,.2) inset;
+}
+
+#messengerWindow[bttStyleButton="true"] > #navigation-toolbox >
+#tabs-toolbar > #before-tab-toolbar > #button-appmenu:hover:active,
+#messengerWindow[bttStyleButton="true"] > #navigation-toolbox >
+#tabs-toolbar > #before-tab-toolbar > #button-appmenu[open] {
+  background-image: linear-gradient(#0075bd, #00337f 95%);
+  box-shadow: 0 2px 3px rgba(0,0,0,.4) inset,
+              0 1px 1px rgba(0,0,0,.2) inset;
+  background-size: auto auto;
+  background-position: 0 0;
+}
+
+@media (-moz-os-version: windows-win8),
+       (-moz-os-version: windows-win10) {
+  #messengerWindow[bttStyleButton="true"] > #navigation-toolbox >
+  #tabs-toolbar > #before-tab-toolbar > #button-appmenu {
+    border-radius: 0;
+    box-shadow: none !important;
+  }
+}
+
+#messengerWindow[bttStyleButton="true"] > #navigation-toolbox >
+#tabs-toolbar > #before-tab-toolbar > #button-appmenu .toolbarbutton-icon {
+  fill: #fff;
+}
+
+#before-tab-toolbar > .button-appmenu,
+#tabbar-toolbar > .button-appmenu {
+  min-width: 0 !important;
+}
+
+#before-tab-toolbar menulist,
+#before-tab-toolbar .toolbarbutton-1,
+#before-tab-toolbar .toolbarbutton-1[type="menu-button"] {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+#before-tab-toolbar:not([currentset="__empty"]) ~ tabs .tabmail-tab:first-child::before,
+#before-tab-toolbar[customizing] ~ tabs .tabmail-tab:first-child::before {
+  margin-inline-start: 0;
+  content: '';
+  display: -moz-box;
+}
+
+#before-tab-toolbar:not([currentset="__empty"]) ~ tabs .tabmail-tab:not([selected="true"]):first-child:hover::before,
+#before-tab-toolbar[customizing] ~ tabs .tabmail-tab:not([selected="true"]):first-child:hover::before {
+  margin-inline-start: 0;
+  margin-top: var(--tabs-top-border-width);
+  margin-bottom: var(--tab-toolbar-overlap);
+}

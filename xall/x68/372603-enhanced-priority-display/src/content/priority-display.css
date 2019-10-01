@@ -1,0 +1,55 @@
+#threadTree treechildren::-moz-tree-image(enhanced-priority-display-highest) {
+}
+
+#threadTree treechildren::-moz-tree-cell-text(enhanced-priority-display-highest) {
+    font-style: italic;
+    font-size: 110%;
+}
+
+#threadTree treechildren::-moz-tree-row(enhanced-priority-display-highest) {
+    background-image: url("background-highest.png");
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+#threadTree treechildren::-moz-tree-image(enhanced-priority-display-high) {
+}
+
+#threadTree treechildren::-moz-tree-cell-text(enhanced-priority-display-high) {
+    font-style: italic;
+    font-size: 105%;
+}
+
+#threadTree treechildren::-moz-tree-row(enhanced-priority-display-high) {
+    background-image: url("background-high.png");
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+#threadTree treechildren::-moz-tree-image(enhanced-priority-display-low) {
+    opacity: 0.50;
+}
+
+#threadTree treechildren::-moz-tree-cell-text(enhanced-priority-display-low) {
+    opacity: 0.50;
+}
+
+#threadTree treechildren::-moz-tree-row(enhanced-priority-display-low) {
+    background-image: url("background-low.png");
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+#threadTree treechildren::-moz-tree-image(enhanced-priority-display-lowest) {
+    opacity: 0.25;
+}
+
+#threadTree treechildren::-moz-tree-cell-text(enhanced-priority-display-lowest) {
+    opacity: 0.25;
+}
+
+#threadTree treechildren::-moz-tree-row(enhanced-priority-display-lowest) {
+    background-image: url("background-lowest.png");
+    background-size: auto;
+    background-repeat: repeat;
+}

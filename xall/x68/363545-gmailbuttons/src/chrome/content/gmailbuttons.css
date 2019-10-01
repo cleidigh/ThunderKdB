@@ -1,0 +1,30 @@
+gmailbuttons-mail-headerfield-labels {
+  -moz-binding: url("chrome://gmailbuttons/content/gmailbuttons.xml#gmailbuttons-mail-headerfield-labels");
+  margin-bottom: -7px; 
+  margin-top: -2px; 
+}
+
+.gmailbuttonsLabel {
+  padding: 0px;
+  margin: 0px;
+}
+
+.gmailbuttonsTagvalue {
+  margin-right: 5px;
+}
+
+.gmailbuttonsLabelDeleteButton {
+  -moz-appearance: none;
+  -moz-image-region: rect(0px, 20px, 20px, 0px);
+  border: none;
+  padding: 0px;
+  list-style-image: url("chrome://gmailbuttons/skin/icons/close.png");
+}
+
+.gmailbuttonsLabelDeleteButton:hover {
+  -moz-image-region: rect(0px, 40px, 20px, 20px);
+}
+
+.gmailbuttonsLabelDeleteButton:active {
+  -moz-image-region: rect(0px, 60px, 20px, 40px);
+}

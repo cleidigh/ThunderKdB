@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<!DOCTYPE dialog SYSTEM "chrome://gmailbuttons/locale/gmailbuttonsOptions.dtd">
+
+<dialog
+  id="gmailbuttons-prefs"
+  title="&gmailbuttons.title;"
+  buttons="accept"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <vbox align="left">
+    <checkbox
+      id="gmailbuttons-showDeleteButton"
+      preference="extensions.gmailbuttons.showDeleteButton"
+      label="&gmailbuttons.showDeleteButtonPref;"/>
+    <checkbox
+      id="gmailbuttons-showGmailLabels"
+      preference="extensions.gmailbuttons.showGmailLabels"
+      label="&gmailbuttons.showGmailLabelsPref;"/>
+    <checkbox
+      id="gmailbuttons-showGmailInfo"
+      preference="extensions.gmailbuttons.showGmailInfo"
+      label="&gmailbuttons.showGmailInfoPref;"/>
+  </vbox>
+
+  <script
+     src="chrome://global/content/preferencesBindings.js"
+     type="application/javascript"/>
+  <script
+     src="chrome://gmailbuttons/content/gmailbuttonsOptions.js"
+     type="application/javascript"/>
+</dialog>

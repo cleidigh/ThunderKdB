@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Before Tabs Toolbar",
+  "description": "Adds a toolbar before the tabs.",
+  "version": "1.8.1",
+  "author": "Richard Marti",
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://btt/content/settings.xul",
+      "open_in_tab": false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "btt@paenglab.ch",
+      "strict_min_version": "67.0"
+    }
+  },
+  "icons": {
+    "32": "/skin/icon.svg"
+  }
+}

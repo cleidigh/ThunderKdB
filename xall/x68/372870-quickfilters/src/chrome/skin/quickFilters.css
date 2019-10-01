@@ -1,0 +1,261 @@
+
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive {
+	background-color: transparent;
+	padding: 0px 2px;
+	margin: 0;
+	min-height: 20px;
+	-moz-image-region: rect(32px, 16px, 48px, 0px) !important; /* make toggle color consistent */
+}
+
+/* disable filter */
+#QuickFolders-CurrentFolderTools toolbarbutton#QuickFolders-currentFolderFilterActive[mode="filter"]:hover,
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-filterActive:hover {
+	-moz-image-region: rect(32px, 16px, 48px, 0px);
+}
+
+/* large icon */
+#quickfilters-toolbar-button,
+toolbar[brighttext] #quickfilters-toolbar-button.toolbarbutton-1
+{
+  list-style-image: url("chrome://quickfilters/skin/QuickFilters_24.png");
+  -moz-image-region: rect(0px 24px 24px 0px);
+}
+#quickfilters-toolbar-button:hover
+{
+  -moz-image-region: rect(24px 24px 48px  0px);
+}
+#quickfilters-toolbar-button[checked="true"]
+{
+  -moz-image-region: rect(48px 24px 72px 0px) !important;
+}
+
+[iconsize="small"] #quickfilters-toolbar-button,
+toolbar[iconsize="small"][brighttext] #quickfilters-toolbar-button.toolbarbutton-1,
+#quickFilters-wizard,
+#quickFilters-fromMessage,
+#QuickFolders-CurrentFolderTools #QuickFolders-currentFolderFilterActive,
+#QuickFolders-Toolbar #QuickFolders-filterActive,
+menuitem.cmd[tagName="qfFilter"],
+menuitem.cmd[tagName="qfFilter"] .menu-iconic-icon
+{
+  list-style-image: url("chrome://quickfilters/skin/QuickFilters_16.png") !important;
+  -moz-image-region: rect( 0px 16px 16px 0px);
+}
+
+[iconsize="small"] #quickfilters-toolbar-button[checked="true"],
+#quickFilters-wizard[checked="true"],
+#QuickFolders-CurrentFolderTools #QuickFolders-currentFolderFilterActive[mode="filter"]
+{
+  -moz-image-region: rect(32px 16px 48px 0px) !important;
+}
+
+[iconsize="small"] #quickfilters-toolbar-button:hover,
+#quickFilters-wizard:hover,
+#quickFilters-fromMessage:hover,
+menuitem.cmd[tagName="qfFilter"]:hover .menu-iconic-icon,
+#QuickFolders-CurrentFolderTools #QuickFolders-currentFolderFilterActive:hover
+{
+  -moz-image-region: rect(16px 16px 32px 0px) !important;
+}
+
+menuitem.cmd[tagName="qfFilter"]:hover .menu-iconic-icon { 
+  list-style-image: url("chrome://quickfilters/skin/QuickFilters_16.png") !important;
+  -moz-image-region: rect(16px, 16px, 32px, 0px) !important; 
+}
+
+#quickfilters-toolbar-listbutton {
+  list-style-image: url("chrome://quickfilters/skin/filterList_24.png");
+}
+#mail-toolbox > toolbar[brighttext] #quickfilters-toolbar-listbutton.toolbarbutton-1 {
+  list-style-image: url("chrome://quickfilters/skin/filterList_24bright.png");
+}
+
+
+[iconsize="small"] #quickfilters-toolbar-listbutton,
+#quickfilters-current-listbutton,
+#mail-toolbox > toolbar[brighttext][iconsize="small"] #quickfilters-current-listbutton.toolbarbutton-1 {
+  -moz-image-region: rect( 0px 16px 16px 0px);
+  list-style-image: url("chrome://quickfilters/skin/filterList_16.png");
+}
+
+
+#quickfilters-toolbar-runbutton,
+#mail-toolbox > toolbar[brighttext] #quickfilters-toolbar-runbutton.toolbarbutton-1 {
+  list-style-image: url("chrome://quickfilters/skin/runFilters.png");
+}
+
+#quickfilters-toolbar-msg-runbutton,
+#mail-toolbox > toolbar[brighttext] #quickfilters-msg-runbutton.toolbarbutton-1 {
+  list-style-image: url("chrome://quickfilters/skin/runFilters-selected.png") !important;
+}
+
+
+
+#quickfilters-current-runbutton,
+#mail-toolbox > toolbar[brighttext] #quickfilters-current-runbutton.toolbarbutton-1 {
+  -moz-image-region: rect( 0px 16px 16px 0px);
+  list-style-image: url("chrome://quickfilters/skin/run-filters-folder-16.png");
+}
+
+#quickfilters-current-searchfilterbutton {
+  -moz-image-region: rect( 0px 16px 16px 0px);
+  list-style-image: url("chrome://quickfilters/skin/searchFilters_16.png");
+}
+
+
+[iconsize="small"] #quickfilters-toolbar-msg-runbutton,
+#mail-toolbox > toolbar[brighttext][iconsize="small"] #quickfilters-toolbar-msg-runbutton.toolbarbutton-1,
+#quickfilters-current-msg-runbutton
+{
+  -moz-image-region: rect( 0px 16px 16px 0px);
+  list-style-image: url("chrome://quickfilters/skin/run-filters-msg-16.png");
+}
+
+#quickfilters-current-runbutton:hover,
+#quickfilters-current-msg-runbutton:hover,
+[iconsize="small"] #quickfilters-toolbar-msg-runbutton:hover
+{
+ -moz-image-region: rect( 16px 16px 32px 0px);
+}
+
+#quickfilters-current-runbutton:active,
+#quickfilters-current-msg-runbutton:active,
+[iconsize="small"] #quickfilters-toolbar-msg-runbutton:active
+{
+  -moz-image-region: rect( 32px 16px 48px 0px);
+}
+
+
+#quickfilters-menu-findFilter {
+  -moz-image-region: rect( 0px 16px 16px 0px);
+  list-style-image: url("chrome://quickfilters/skin/findFilters-small.png");
+}
+
+
+[iconsize="small"] #quickfilters-toolbar-runbutton,
+#mail-toolbox > toolbar[brighttext][iconsize="small"] #quickfilters-toolbar-runbutton.toolbarbutton-1,
+#quickfilters-menu-runMenu
+{
+  -moz-image-region: rect( 0px 16px 16px 0px);
+  list-style-image: url("chrome://quickfilters/skin/run-filters-folder-16.png");
+}
+
+[iconsize="small"] #quickfilters-toolbar-runbutton:hover,
+#quickfilters-menu-findFilter:hover
+{
+  -moz-image-region: rect( 16px 16px 32px 0px);
+}
+
+[iconsize="small"] #quickfilters-toolbar-runbutton:active,
+#quickfilters-menu-findFilter:active
+{
+  -moz-image-region: rect( 32px 16px 48px 0px);
+}
+
+
+toolbar:not([iconsize="small"]) #quickfilters-toolbar-button image,
+toolbar:not([iconsize="small"]) #quickfilters-toolbar-listbutton image,
+toolbar:not([iconsize="small"]) #quickfilters-toolbar-runbutton image,
+toolbar:not([iconsize="small"]) #quickfilters-toolbar-msg-runbutton image
+{
+  width: 24px;
+  height: 24px;
+}
+
+/* buy now button */
+@keyframes quickfiltersNotificationPulse {	
+  to {box-shadow: 0 0 0 10px rgba(150, 80, 60, 0.12);} 
+}
+
+notification[value="quickfilters-proFeature"] .notification-button[accesskey] {
+	-moz-appearance: none;
+  animation: quickfiltersNotificationPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+	background-color: rgb(7, 97, 48) !important;
+	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
+	border: 1px solid white;
+	border-radius: 1px;
+	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.5);
+	color: #FFFFFF;
+	cursor: pointer !important;
+	font-weight: bold;
+	transition-property: box-shadow, margin;
+	transition-duration: 0.75s, 0.2s;
+	height: 135% !important;
+	width: 135% !important;
+	margin-right: 20px;
+}
+
+/* replace notification tag for Tb 64 and later to also match xbl-notification */
+notification[value="quickfilters-proFeature"] .notification-button[accesskey]:hover
+notificationbox *[value="quickfilters-proFeature"] .notification-button[accesskey]:hover {
+	background: -moz-linear-gradient(top, #dbe42e 0%,#a8cc16 50%,#8fba00 51%,#b6d917 100%)  !important;
+}
+
+notification[value="quickfilters-filter"] image.messageImage,
+notification[value="quickfilters-proFeature"] image.messageImage
+notificationbox *[value="quickfilters-filter"] image.messageImage,
+notificationbox *[value="quickfilters-proFeature"] image.messageImage {
+	/* filterTemplate.png */
+	min-width: 73px !important;
+	width: 73px !important;
+	min-height: 32px !important;
+	height: 32px !important;
+}
+
+notification[value="quickfilters-filter"] .messageCloseButton,
+notificationbox *[value="quickfilters-filter"] .messageCloseButton {
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 2px;
+	border-radius: 2px;
+	margin: 0 1em;
+}
+
+notificationbox *[value="quickfilters-proFeature"] .messageCloseButton {
+	/* display: none; */
+}
+
+notification[value="quickfilters-filter"] .messageCloseButton:hover,
+notification[value="quickfilters-proFeature"] .messageCloseButton:hover,
+notificationbox *[value="quickfilters-filter"] .messageCloseButton:hover,
+notificationbox *[value="quickfilters-proFeature"] .messageCloseButton:hover {
+	background-color: rgba(255, 255, 255, 1);
+}
+
+/* postbox - this description simply won't wrap! */
+notificationbox *[value="quickfilters-filter"] description.messageText,
+notificationbox *[value="quickfilters-proFeature"] description.messageText
+{
+	white-space: normal !important;
+	height: auto;
+}
+
+notification[value="quickfilters-filter"] hbox.notification-inner,
+notificationbox *[value="quickfilters-filter"] hbox.notification-inner,
+notificationbox xbl-notification[value="quickfilters-filter"] {
+	color: #fff;
+	background-color: rgb(251,28,3);
+	background-image: linear-gradient(to bottom, rgba(251,28,3,1) 0%, rgba(161,26,11,1) 42%, rgba(138,18,4,1) 51%, rgba(199,24,5,1) 100%);
+	padding-top: 0.75em;
+	padding-bottom: 0.75em;
+}
+
+#mail-notification-box,
+#pbSearchThresholdNotifcationBar {
+	height: auto;
+}
+
+/* fix some accidental truncations */
+#mail-notification-box notification[value=quickfilters-filter],
+#pbSearchThresholdNotifcationBar notification[value=quickfilters-filter] {
+	min-height: 6em;
+}
+
+#mail-notification-box notification[value=quickfilters-proFeature],
+#pbSearchThresholdNotifcationBar notification[value=quickfilters-proFeature] {
+	min-height: 44px;
+}
+
+notification[value="quickfilters-proFeature"] hbox.notification-inner {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}

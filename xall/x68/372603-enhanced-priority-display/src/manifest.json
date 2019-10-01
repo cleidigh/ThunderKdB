@@ -1,0 +1,26 @@
+{
+    "name": "__MSG_appName__",
+    "version": "2.0.4",
+    "description": "__MSG_appDesc__",
+    "author": "Jonathan Kamens",
+    "default_locale": "en-US",
+    "homepage_url": "https://addons.thunderbird.net/thunderbird/addon/enhanced-priority-display/",
+    "legacy": {
+        "options": {
+            "page": "chrome://EnhancedPriorityDisplay/content/options.xul",
+            "open_in_tab": true
+        }
+    },
+    "applications": {
+        "gecko": {
+            "id": "EnhancedPriorityDisplay@kamens.us",
+            "strict_min_version": "68.0a1"
+        }
+    },
+    "icons": {
+        "48": "icon48.png",
+        "96": "icon96.png",
+        "200": "icon.png"
+    },
+    "manifest_version": 2
+}
