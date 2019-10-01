@@ -147,10 +147,10 @@ async function walkFolders(parentFolder, options) {
 }
 
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
-// walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}`, { extsJson: extsJson, start: 0, end: 2 });
+walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}`, { extsJson: extsJson, start: 0, end: 4 });
 // walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}`, { extsJson: extsJson });
 // walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTBOtherDir}`, { extsJson: extsJson });
 
 // using the async function
 // repo_status(`${rootDir}`).then(status => console.log(status));
-repo_commit("test source commit").then(status => console.log(status));
+// repo_commit("test source commit").then(status => console.log(status));

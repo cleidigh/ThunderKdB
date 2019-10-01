@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+
+<!DOCTYPE dialog [
+  <!ENTITY % translationsDTD SYSTEM "chrome://nomessagepanesort/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<dialog
+    id="nomessagesortpane-prefs"
+    title="&prefwindow.title;"
+    buttons="accept"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <groupbox>
+    <caption label="&addon_settings.caption.label;"/>
+    <hbox>
+      <checkbox preference="extensions.nomessagepanesort.active"
+                label="&activate.menuitem;"/>
+    </hbox>
+  </groupbox>
+
+  <groupbox>
+    <caption label="&default_sort_settings.caption.label;"/>
+    <hbox align="center">
+      <label value="&sort_order.caption.label;"/>
+      <menulist preference="mailnews.default_sort_order">
+        <menupopup>
+          <menuitem label="&default_sort_order_ascending.menuitem;" value="1"/>
+          <menuitem label="&default_sort_order_descending.menuitem;" value="2"/>
+        </menupopup>
+      </menulist>
+    </hbox>
+    <hbox align="center">
+      <label value="&sort_type.caption.label;"/>
+      <menulist preference="mailnews.default_sort_type">
+        <menupopup>
+          <menuitem label="&default_sort_type_date.menuitem;" value="18"/>
+          <menuitem label="&default_sort_type_subject.menuitem;" value="19"/>
+          <menuitem label="&default_sort_type_author.menuitem;" value="20"/>
+          <menuitem label="&default_sort_type_id.menuitem;" value="21"/>
+          <menuitem label="&default_sort_type_thread.menuitem;" value="22"/>
+          <menuitem label="&default_sort_type_priority.menuitem;" value="23"/>
+          <menuitem label="&default_sort_type_status.menuitem;" value="24"/>
+          <menuitem label="&default_sort_type_size.menuitem;" value="25"/>
+          <menuitem label="&default_sort_type_flagged.menuitem;" value="26"/>
+          <menuitem label="&default_sort_type_unread.menuitem;" value="27"/>
+          <menuitem label="&default_sort_type_recipient.menuitem;" value="28"/>
+          <menuitem label="&default_sort_type_tags.menuitem;" value="30"/>
+          <menuitem label="&default_sort_type_junkstatus.menuitem;" value="31"/>
+          <menuitem label="&default_sort_type_attachments.menuitem;" value="32"/>
+        </menupopup>
+      </menulist>
+    </hbox>
+  </groupbox>
+
+  <script
+      src="chrome://global/content/preferencesBindings.js"
+      type="application/javascript"/>
+  <script
+      src="preferences.js"
+      type="application/javascript"/>
+</dialog>

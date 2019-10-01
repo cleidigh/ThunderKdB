@@ -1,0 +1,31 @@
+#XpungeSingleToolbar {
+  list-style-image: url("chrome://xpunge/skin/xpunge_single_toolbar_large.png");
+}
+
+toolbar[iconsize="small"] #XpungeSingleToolbar {
+  list-style-image: url("chrome://xpunge/skin/xpunge_single_toolbar_small.png");
+}
+
+
+#XpungeMultiToolbar {
+  list-style-image: url("chrome://xpunge/skin/xpunge_multi_toolbar_large.png");
+}
+
+toolbar[iconsize="small"] #XpungeMultiToolbar {
+  list-style-image: url("chrome://xpunge/skin/xpunge_multi_toolbar_small.png");
+}
+
+
+/* CSS for unchecked tree checkbox cells */
+treechildren::-moz-tree-checkbox
+{
+  list-style-image: url("chrome://xpunge/skin/xpunge_tree_checkbox_unchecked.gif");
+}
+
+
+/* CSS for checked tree checkbox cells */
+treechildren::-moz-tree-checkbox(checked)
+{
+  list-style-image: url("chrome://xpunge/skin/xpunge_tree_checkbox_checked.gif");
+}
+

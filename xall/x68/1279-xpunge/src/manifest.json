@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+
+  "applications": {
+    "gecko": {
+      "id": "{786abda0-fd14-d247-bf69-38b2fc18491b}",
+      "strict_min_version": "68.0"
+    }
+  },
+
+  "name": "Xpunge",
+
+  "description": "Empties the Trash and Junk folders, and compacts folders in multiple Thunderbird accounts.",
+
+  "version": "1.0.0",
+
+  "author": "Theodore Tegos",
+
+  "homepage_url": "http://www.theodoretegos.net/mozilla/tb/index.html",
+
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://xpunge/content/xpunge_options.xul",
+      "open_in_tab": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % translationsDTD SYSTEM "chrome://nomessagepanesort/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay id="nomessagepanesort"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+ <script src="nomessagepanesort.js"/>
+
+ <menupopup id="menu_viewSortPopup">
+   <menuseparator/>
+   <menuitem id="toggleNoMessagePaneSortMenuItem"
+             label="&activate.menuitem;"
+             type="checkbox"
+             oncommand="org.janek.nomessagepanesort.toggleActive()"/>
+ </menupopup>
+
+
+</overlay>

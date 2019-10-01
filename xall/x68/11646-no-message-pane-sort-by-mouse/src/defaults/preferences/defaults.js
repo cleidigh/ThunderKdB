@@ -1,0 +1,1 @@
+pref("extensions.nomessagepanesort.active", true);
