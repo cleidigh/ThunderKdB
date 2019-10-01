@@ -1,0 +1,117 @@
+@import url("../util/shared.css");
+
+html {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#deck {
+  max-width: 50em;
+  margin: 2em;
+  padding: 20px;
+  background-color: -moz-dialog;
+  border: 1px outset ThreeDShadow;
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+}
+
+h1 {
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 0
+}
+
+form {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  grid-gap: 8px;
+  gap: 8px;
+  align-items: center;
+}
+
+form > h1,
+form > div {
+  margin-top: 0;
+  grid-column: 1 / span 4;
+}
+
+form > label {
+  grid-column: 1;
+  justify-self: start;
+}
+
+h1, div, span, label {
+  -moz-user-select: none;
+}
+
+form > select,
+form > input {
+  grid-column: 2;
+}
+
+form > span {
+  grid-column: 3 / span 2;
+  opacity: 0.54;
+}
+
+label[disabled] {
+  opacity: 0.54;
+}
+
+#span_ews {
+  grid-column: 3;
+  opacity: 1;
+}
+
+#span_owa {
+  grid-column: 2;
+  opacity: 1;
+}
+
+#url {
+  grid-column: 2 / span 2;
+  opacity: 1;
+}
+
+#message {
+  grid-column: 1 / span 2;
+  opacity: 1;
+}
+
+#create {
+  grid-column: 3;
+}
+
+#cancel {
+  grid-column: 4;
+}
+
+.error {
+  color: red;
+}
+
+#success {
+  grid-column: 1;
+  grid-row: 2;
+  visibility: hidden;
+}
+
+.success > form {
+  visibility: hidden;
+}
+
+.success > #success {
+  visibility: visible;
+}

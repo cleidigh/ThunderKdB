@@ -1,0 +1,25 @@
+<!ENTITY helpWindow.title "Ayuda de Use BCC Instead">
+<!ENTITY helpText.title "Ayuda de Use BCC Instead">
+<!ENTITY helpText.summaryHeading "Resumen">
+<!ENTITY helpText.summaryText1 "¿Quién entre nosotros no ha cometido el error de enviar un mensaje a un gran número de destinatarios sin usar Bcc y revelando así las direcciones de correo a todo el mundo?">
+<!ENTITY helpText.summaryText2 "Esta sencilla extensión ofrece varias funcionalidades para prevenir que eso ocurra. Lo primero, comprueba cada correo al ser enviado para verificar si se debe tomar alguna acción correctiva para prevenir esta distracción.">
+
+
+<!ENTITY helpText.detailsHeading "DETALLES:">
+<!ENTITY helpText.sendingEmailHeading "Al enviar correos">
+<!ENTITY helpText.detailsText1 "Después de la instalación, esta extensión inspeccionará la lista de destinatarios de cada correo enviado. Antes de hacer efectivo el envío comprueba las direcciones de los destinatarios en Para y Cc. Si las hay, tomará las acciones correspondientes basándose en las opciones que hayas especificado.">
+<!ENTITY helpText.detailsText2 "Si se habilita la opción de Siempre sustituye destinatarios Para o Cc por Bcc (no lo está por defecto), cualquier destinatario en los campos Para o Cc pasará a Bcc automáticamente antes de enviar el mensaje. Esto quiere decir que nunca será enviado un correo con direcciones en Para o Cc. Los campos Para y Cc serán cambiados a Bcc cada vez.">
+<!ENTITY helpText.detailsText3 "Si no se habilita la opción Siempre sustituye destinatarios Para o Cc por Bcc, esta extensión contará el número de direcciones en los campos Para y Cc. Si ese número excede el valor establecido en el panel de opciones de esta extensión o si cualquiera de los destinatarios es una lista con direcciones en Para y Cc, esta extensión actuará para prevenir la revelación no intencionada de las direcciones. La acción tomada dependerá de cómo el usuario configure las demás opciones del panel de opciones de esta extensión. Por defecto, se presenta un aviso de precaución y, opcionalmente, sonará un aviso dando al usuario la oportunidad de reconsiderar el envío del correo. Esta opción se puede cambiar para que simplemente se prohíba enviar el correo.">
+<!ENTITY helpText.composingEmailHeading "Al componer un nuevo correo">
+<!ENTITY helpText.detailsText4 "Por defecto, Thunderbird crea siempre con las direcciones de destinatarios en Para. Con esta extensión, se puede cambiar eso desde Para a Cc o Bcc. De esa forma la ventana de composición de Thunderbird de mensajes nuevos o reenviados pondrá la dirección en el modo especificado.">
+<!ENTITY helpText.detailsText5 "Algunas veces se quiere cambiar todos las direcciones a Para, Cc o Bcc. Por defecto, Thunderbird requiere que se cambie cada dirección individualmente. Esta opción permite realizar ese cambio desde los siguiente sitios:">
+<!ENTITY helpText.optionsMenu "un item del menú en las opciones de la ventana de composición">
+<!ENTITY helpText.contextMenu "un punto del menú contextual de la ventana de composición">
+<!ENTITY helpText.toolbarButton "un botón que puedes arrastrar a la barra de la ventana">
+<!ENTITY helpText.viewingThreadPaneHeading "Revisando las cabeceras del correo en el panel de conversaciones de Thunderbird">
+<!ENTITY helpText.detailsText6 "Por defecto, cuando se envía un correo conteniendo direcciones sólo en el campo Bcc, Thunderbird añade un Para con 'destinatarios-no-revelados:;'. Este es el valor mostrado en la columna de Destinatario en las carpetas de Enviados y similares. Esta información no es particularmente informativa para el usuario final que quizá prefiera ver la lista de Bcc en su lugar.">
+<!ENTITY helpText.detailsText7 "Así que para Thunderbird versión 2 o superior, esta extensión proporciona una nueva columna en la lista de mensajes llamada 'Destinatario-Extendido' que intenta ser un reemplazo de la columna Destinatario por defecto. Una vez que se ha añadido al panel de visión para las carpetas Enviado y similares, esta columna mostrará los destinatarios: Para (excepto 'destinatarios-no-revelados:;') o Cc o Bcc.">
+<!ENTITY helpText.optionsHeading "OPCIONES:">
+<!ENTITY helpText.optionsText "Esta extensión ofrece una opción principal de configuración y dos opciones secundarias para controlar su comportamiento al enviar correos. Proporciona también dos opciones que controlan el comportamiento cuando se componen correos. La forma fácil de manipularlas es a través del panel de opciones interno. Para acceder ese panel, ir al menú Herramientas y seleccione Complementos. Aparecerá una lista de los complementos y, entre ellos, useBccInstead. Si no aparece, la instalación no ha sido satisfactoria. Si aparece, presione el botón Opciones. La mayoría de las opciones no necesitan reiniciar Thunderbird para su activación.">
+
+

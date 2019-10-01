@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="../util/utils.js"></script>
+    <script src="../util/stringbundle.js"></script>
+    <script src="../util/ui-utils.js"></script>
+    <script src="settings.js"></script>
+    <link rel="stylesheet" href="settings.css">
+  </head>
+  <body>
+    <h1 translate="mailAccountHeader"></h1>
+    <div>
+      <input id="manual" type="button" translate-attr="value=buttonNewManual">
+      <input id="automatic" type="button" translate-attr="value=buttonNewAutomatic">
+    </div>
+    <h1 translate="licenseHeader"></h1>
+    <div>
+      <span id="licenseMessage" translate="checkStatus"></span>
+      <input id="getLicenseButton" type="button" translate-attr="value=getLicense" hidden>
+      <input id="checkLicenseButton" type="button" translate-attr="value=checkLicense" hidden>
+    </div>
+    <footer>
+      <a translate="eula" href="https://www.beonex.com/owl/eula"></a> |
+      <a translate="privacyPolicy" href="https://www.beonex.com/owl/privacy"></a> |
+      <a translate="homepage" href="https://www.beonex.com/owl/"></a>
+    </footer>
+  </body>
+</html>

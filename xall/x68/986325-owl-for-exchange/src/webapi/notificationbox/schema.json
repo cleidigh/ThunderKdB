@@ -1,0 +1,133 @@
+[{
+  "namespace": "notificationbox",
+  "properties": {
+    "PRIORITY_INFO_LOW": {
+      "value": 1
+    },
+    "PRIORITY_INFO_MEDIUM": {
+      "value": 2
+    },
+    "PRIORITY_INFO_HIGH": {
+      "value": 3
+    },
+    "PRIORITY_WARNING_LOW": {
+      "value": 4
+    },
+    "PRIORITY_WARNING_MEDIUM": {
+      "value": 5
+    },
+    "PRIORITY_WARNING_HIGH": {
+      "value": 6
+    },
+    "PRIORITY_CRITICAL_LOW": {
+      "value": 7
+    },
+    "PRIORITY_CRITICAL_MEDIUM": {
+      "value": 8
+    },
+    "PRIORITY_CRITICAL_HIGH": {
+      "value": 9
+    },
+    "PRIORITY_CRITICAL_BLOCK": {
+      "value": 10
+    }
+  },
+  "functions": [{
+    "name": "addStyleSheet",
+    "type": "function",
+    "description": "Adds a style sheet with the notification",
+    "async": true,
+    "parameters": [{
+      "name": "uri",
+      "type": "string",
+      "description": "The URI of the style sheet"
+    }]
+  }, {
+    "name": "appendNotification",
+    "type": "function",
+    "description": "Create a notification",
+    "async": true,
+    "parameters": [{
+      "name": "label",
+      "type": "string",
+      "description": "The text of the notification"
+    }, {
+      "name": "value",
+      "type": "string",
+      "description": "An identifier for the notification"
+    }, {
+      "name": "image",
+      "type": "string",
+      "description": "An icon for the notification"
+    }, {
+      "name": "priority",
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "The priority of the notification"
+    }, {
+      "name": "buttons",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The label of the button"
+          },
+          "value": {
+            "type": "string",
+            "description": "An identifier of the button"
+          },
+          "accesskey": {
+            "type": "string",
+            "optional": true,
+            "description": "The access key of the button"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "optional": true,
+            "description": "Whether this is the default button"
+          }
+        }
+      }
+    }]
+  }, {
+    "name": "removeNotification",
+    "type": "function",
+    "description": "Remove a notification",
+    "async": true,
+    "parameters": [{
+      "name": "value",
+      "type": "string",
+      "description": "An identifier for the notification"
+    }, {
+      "name": "skipAnimation",
+      "type": "boolean",
+      "description": "Whether the current notification should be animated"
+    }]
+  }],
+  "events": [{
+    "name": "onButton",
+    "type": "function",
+    "description": "Called when a notification button is clicked",
+    "parameters": [{
+      "name": "notificationbox",
+      "type": "string",
+      "description": "The identifier of the notification"
+    }, {
+      "name": "button",
+      "type": "string",
+      "description": "The identifier of the button"
+    }]
+  }, {
+    "name": "onClosed",
+    "type": "function",
+    "description": "Called when a notification is closed",
+    "parameters": [{
+      "name": "notificationbox",
+      "type": "string",
+      "description": "The identifier of the notification"
+    }]
+  }]
+}]

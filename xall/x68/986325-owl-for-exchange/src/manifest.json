@@ -1,0 +1,164 @@
+{
+  "manifest_version": 2,
+  "version": "0.6.8.5",
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDescription__",
+  "developer": {
+    "name": "Beonex"
+   },
+  "applications": {
+    "gecko": {
+      "strict_min_version": "60.5",
+      "id": "owl@beonex.com"
+    }
+  },
+  "icons": {
+    "24": "ui/logo/owl-24.png",
+    "32": "ui/logo/owl-32.png",
+    "48": "ui/logo/owl-48.png",
+    "64": "ui/logo/owl-64.png",
+    "96": "ui/logo/owl-96.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "config.js",
+      "owl.js",
+      "license.js",
+      "errorLog.js",
+      "ews/ews.js",
+      "ews/emails.js",
+      "ews/contacts.js",
+      "ews/util.js",
+      "owa/owa.js",
+      "owa/auth.js",
+      "owa/emails.js",
+      "owa/contacts.js",
+      "owa/useragent.js",
+      "owa-2010/owa-2010.js",
+      "ui/util/utils.js",
+      "ui/util/stringbundle.js",
+      "ui/util/observer.js",
+      "ui/license-bar/license-bar.js"
+    ]
+  },
+  "options_ui": {
+    "page": "ui/settings/settings.html",
+    "browser_style": false
+  },
+  "permissions": [
+    "cookies",
+    "storage",
+    "tabs",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking",
+    "https://*/*"
+  ],
+  "experiment_apis": {
+    "webAddrBook": {
+      "schema": "webapi/webaddrbook/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "addressBooks"
+        ], [
+          "contacts"
+        ], [
+          "mailingLists"
+        ]],
+        "script": "webapi/webaddrbook/webaddrbook.js"
+      }
+    },
+    "webAccount": {
+      "schema": "webapi/webaccount/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "webAccount"
+        ], [
+          "incomingServer"
+        ]],
+        "script": "webapi/webaccount/webaccount.js"
+      }
+    },
+    "notificationbox": {
+      "schema": "webapi/notificationbox/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "notificationbox"
+        ]],
+        "script": "webapi/notificationbox/notificationbox.js"
+      }
+    },
+    "preferences": {
+      "schema": "webapi/preferences/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "globalPrefs"
+        ], [
+          "extPrefs"
+        ]],
+        "script": "webapi/preferences/preferences.js"
+      }
+    },
+    "external": {
+      "schema": "webapi/external/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "external"
+        ]],
+        "script": "webapi/external/external.js"
+      }
+    },
+    "request": {
+      "schema": "webapi/request/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "request"
+        ]],
+        "script": "webapi/request/request.js"
+      }
+    },
+    "userInfo": {
+      "schema": "webapi/userinfo/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "userInfo"
+        ]],
+        "script": "webapi/userinfo/userinfo.js"
+      }
+    },
+    "addonPrivate": {
+      "schema": "webapi/addonprivate/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "addonPrivate"
+        ]],
+        "script": "webapi/addonprivate/addonprivate.js"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://usebccinsteadC/skin/usebccinsteadC.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<!DOCTYPE composeWindowOverlay [
+  <!ENTITY % commonDTD SYSTEM "chrome://usebccinsteadC/locale/common.dtd">
+  %commonDTD;
+  <!ENTITY % composeWindowDTD SYSTEM "chrome://usebccinsteadC/locale/composeWindow.dtd">
+  %composeWindowDTD;
+]>
+
+<overlay id="UseBccInsteadCComposeWindwoOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript" src="chrome://usebccinsteadC/content/namespace.js"/>
+  <script type="application/x-javascript" src="chrome://usebccinsteadC/content/UseBccInsteadCUtil.js"/>
+  <script type="application/x-javascript" src="chrome://usebccinsteadC/content/composeWindowOverlay.js"/>
+
+  <!-- menupopup id="taskPopup" -->
+  <menupopup id="optionsMenuPopup">
+    <menu id="UseBccInsteadCReaddressMenu" class="menu-iconic usebccinsteadCmenu" label="&changeAllRecipients.label;">
+      <menupopup>
+        <menuitem label="&TO.label;" oncommand="UseBccInsteadC.ComposeWindowOverlay.changeAllRecipientsTo(UseBccInsteadC.UseBccInsteadCUtil.TO)"/>
+        <menuitem label="&CC.label;" oncommand="UseBccInsteadC.ComposeWindowOverlay.changeAllRecipientsTo(UseBccInsteadC.UseBccInsteadCUtil.CC)"/>
+        <menuitem label="&BCC.label;" oncommand="UseBccInsteadC.ComposeWindowOverlay.changeAllRecipientsTo(UseBccInsteadC.UseBccInsteadCUtil.BCC)"/>
+      </menupopup>
+    </menu>
+  </menupopup>
+
+  <menupopup id="msgComposeContext">
+    <menu id="UseBccInsteadCReaddressContextMenu" class="menu-iconic usebccinsteadCmenu" label="&changeAllRecipients.label;">
+      <menupopup>
+        <menuitem label="&TO.label;" oncommand="UseBccInsteadC.ComposeWindowOverlay.changeAllRecipientsTo(UseBccInsteadC.UseBccInsteadCUtil.TO)"/>
+        <menuitem label="&CC.label;" oncommand="UseBccInsteadC.ComposeWindowOverlay.changeAllRecipientsTo(UseBccInsteadC.UseBccInsteadCUtil.CC)"/>
+        <menuitem label="&BCC.label;" oncommand="UseBccInsteadC.ComposeWindowOverlay.changeAllRecipientsTo(UseBccInsteadC.UseBccInsteadCUtil.BCC)"/>
+      </menupopup>
+    </menu>
+  </menupopup>
+
+  <toolbarpalette id="MsgComposeToolbarPalette">
+    <toolbarbutton id="UseBccInsteadCComposeToolbarButton" label="&TO.label;&#x00BB;&CC.label;&#x00BB;&BCC.label;" tooltiptext="&TO.label;&#x00BB;&CC.label;&#x00BB;&BCC.label;" type="menu" class="toolbarbutton-1 chromeclass-toolbar-additional">
+      <menupopup id="UseBccInsteadCComposeToolbarButtonMenu">
+        <menuitem label="&TO.label;" oncommand="UseBccInsteadC.ComposeWindowOverlay.changeAllRecipientsTo(UseBccInsteadC.UseBccInsteadCUtil.TO)"/>
+        <menuitem label="&CC.label;" oncommand="UseBccInsteadC.ComposeWindowOverlay.changeAllRecipientsTo(UseBccInsteadC.UseBccInsteadCUtil.CC)"/>
+        <menuitem label="&BCC.label;" oncommand="UseBccInsteadC.ComposeWindowOverlay.changeAllRecipientsTo(UseBccInsteadC.UseBccInsteadCUtil.BCC)"/>
+      </menupopup>
+    </toolbarbutton>
+  </toolbarpalette>
+</overlay>

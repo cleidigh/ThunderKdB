@@ -1,0 +1,41 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+menu.usebccinsteadCmenu {
+  list-style-image: url("./images/bccToolbarSmall.png");
+}
+
+#UseBccInsteadCMainViewToolbarButton {
+  list-style-image: url("./images/bccToolbar.png");
+}
+
+toolbar[iconsize="small"] #UseBccInsteadCMainViewToolbarButton {
+  list-style-image: url("./images/bccToolbarSmall.png");
+}
+
+#UseBccInsteadCMainViewToolbarButton > dropmarker {
+  display: none;
+}
+
+#UseBccInsteadCHeaderViewToolbarButton {
+  list-style-image: url("./images/bccToolbar.png");
+}
+
+toolbar[iconsize="small"] #UseBccInsteadCMainHeaderToolbarButton {
+  list-style-image: url("./images/bccToolbarSmall.png");
+}
+
+#UseBccInsteadCHeaderViewToolbarButton > dropmarker {
+  display: none;
+}
+
+#UseBccInsteadCComposeToolbarButton {
+  list-style-image: url("./images/bccToolbar.png");
+}
+
+toolbar[iconsize="small"] #UseBccInsteadCComposeToolbarButton {
+  list-style-image: url("./images/bccToolbarSmall.png");
+}
+
+#UseBccInsteadCComposeToolbarButton > dropmarker {
+  display: none;
+}

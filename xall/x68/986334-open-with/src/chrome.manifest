@@ -1,0 +1,31 @@
+content openwith content/
+overlay chrome://messenger/content/messenger.xul chrome://openwith/content/openwith-mail.xul
+overlay chrome://messenger/content/messageWindow.xul chrome://openwith/content/openwith-mail.xul
+resource openwith modules/
+
+component {97ce549f-5ec6-460e-ad11-55a7bd190185} components/about-openwith.js
+contract @mozilla.org/network/protocol/about;1?what=openwith {97ce549f-5ec6-460e-ad11-55a7bd190185}
+
+locale openwith en-US locale/en-US/
+
+locale openwith ar    locale/ar/
+locale openwith ca    locale/ca/
+locale openwith cs    locale/cs/
+locale openwith de    locale/de/
+locale openwith el    locale/el/
+locale openwith es-ES locale/es-ES/
+locale openwith fr    locale/fr/
+locale openwith hu    locale/hu/
+locale openwith it    locale/it/
+locale openwith ja    locale/ja/
+locale openwith nl    locale/nl/
+locale openwith pl    locale/pl/
+locale openwith pt-BR locale/pt-BR/
+locale openwith pt-PT locale/pt-PT/
+locale openwith ru    locale/ru/
+locale openwith sv-SE locale/sv-SE/
+locale openwith tr    locale/tr/
+locale openwith uk    locale/uk/
+locale openwith vi    locale/vi/
+locale openwith zh-CN locale/zh-CN/
+locale openwith zh-TW locale/zh-TW/

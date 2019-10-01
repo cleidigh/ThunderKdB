@@ -1,0 +1,195 @@
+[{
+  "namespace": "globalPrefs",
+  "functions": [{
+    "name": "getBooleanValue",
+    "type": "function",
+    "description": "Gets a boolean value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to retrieve the value."
+    }],
+    "returns": {
+      "name": "result",
+      "type": "boolean"
+    }
+  }, {
+    "name": "getNumberValue",
+    "type": "function",
+    "description": "Gets an integer value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to retrieve the value."
+    }],
+    "returns": {
+      "name": "result",
+      "type": "number"
+    }
+  }, {
+    "name": "getStringValue",
+    "type": "function",
+    "description": "Gets a string value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to retrieve the value."
+    }],
+    "returns": {
+      "name": "result",
+      "type": "string"
+    }
+  }, {
+    "name": "setBooleanValue",
+    "type": "function",
+    "description": "Sets a boolean value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to store the value."
+    }, {
+      "name": "value",
+      "type": "boolean",
+      "description": "The new value of the preference."
+    }]
+  }, {
+    "name": "setNumberValue",
+    "type": "function",
+    "description": "Sets an integer value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to store the value."
+    }, {
+      "name": "value",
+      "type": "number",
+      "description": "The new value of the preference."
+    }]
+  }, {
+    "name": "setStringValue",
+    "type": "function",
+    "description": "Sets a string value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to store the value."
+    }, {
+      "name": "value",
+      "type": "string",
+      "description": "The new value of the preference."
+    }]
+  }, {
+    "name": "resetValue",
+    "type": "function",
+    "deswcription": "Resets the value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to store the value."
+    }]
+  }]
+}, {
+  "namespace": "extPrefs",
+  "functions": [{
+    "name": "getBooleanValue",
+    "type": "function",
+    "description": "Gets a boolean value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to retrieve the value."
+    }],
+    "returns": {
+      "name": "result",
+      "type": "boolean"
+    }
+  }, {
+    "name": "getNumberValue",
+    "type": "function",
+    "description": "Gets an integer value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to retrieve the value."
+    }],
+    "returns": {
+      "name": "result",
+      "type": "number"
+    }
+  }, {
+    "name": "getStringValue",
+    "type": "function",
+    "description": "Gets a string value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to retrieve the value."
+    }],
+    "returns": {
+      "name": "result",
+      "type": "string"
+    }
+  }, {
+    "name": "setBooleanValue",
+    "type": "function",
+    "description": "Sets a boolean value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to store the value."
+    }, {
+      "name": "value",
+      "type": "boolean",
+      "description": "The new value of the preference."
+    }]
+  }, {
+    "name": "setNumberValue",
+    "type": "function",
+    "description": "Sets an integer value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to store the value."
+    }, {
+      "name": "value",
+      "type": "number",
+      "description": "The new value of the preference."
+    }]
+  }, {
+    "name": "setStringValue",
+    "type": "function",
+    "description": "Sets a string value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to store the value."
+    }, {
+      "name": "value",
+      "type": "string",
+      "description": "The new value of the preference."
+    }]
+  }, {
+    "name": "resetValue",
+    "type": "function",
+    "deswcription": "Resets the value for a given preference.",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference to store the value."
+    }]
+  }]
+}]

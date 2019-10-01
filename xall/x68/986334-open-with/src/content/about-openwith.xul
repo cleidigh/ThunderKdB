@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://openwith/content/about-openwith.css" type="text/css"?>
+
+<!DOCTYPE page SYSTEM "chrome://openwith/locale/openwith.dtd">
+
+<page title="&openwith-options.title;" orient="horizontal"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<xhtml:link rel="shortcut icon" href="chrome://openwith/content/openwith16.png"/>
+
+	<hbox flex="1" pack="center">
+		<vbox id="left">
+			<hbox align="center">
+				<image src="chrome://openwith/content/openwith64.png" />
+				<label id="title" value="&openwith-options.title;" />
+			</hbox>
+			<groupbox>
+				<caption label="&openwith-display-choose.label;" />
+				<grid>
+					<rows>
+						<row align="center" id="openwith-contextmenulink-row">
+							<label value="&openwith-display-pane.contextmenulink.label;:" />
+							<menulist id="openwith-contextmenulink-group" oncommand="updatePrefs('contextmenulink', 'contextmenulink.submenu', this.selectedIndex);">
+								<menupopup>
+									<menuitem label="&openwith-display-none.label;" />
+									<menuitem label="&openwith-display-menuitems.label;" />
+									<menuitem label="&openwith-display-submenu.label;" />
+								</menupopup>
+							</menulist>
+						</row>
+					</rows>
+				</grid>
+			</groupbox>
+			<groupbox>
+				<caption label="&openwith-logging.label;" />
+				<checkbox id="logging" label="&openwith-logging.checkbox.label;"
+					oncommand="loggingObserver.enable();" />
+			</groupbox>
+			<vbox align="center">
+				<hbox align="baseline">
+					<label value="&openwith-donationsrequest;" />
+					<button label="&openwith-donate;" oncommand="OpenWithCore.openDonatePage();" />
+				</hbox>
+				<hbox align="baseline" pack="center">
+					<label class="text-link" value="&openwith-github;"
+						href="https://github.com/darktrojan/openwith" />
+				</hbox>
+			</vbox>
+		</vbox>
+		<vbox id="right">
+			<groupbox flex="1">
+				<caption label="&openwith-browserlist.label;" />
+				<richlistbox id="list" flex="1"></richlistbox>
+				<hbox pack="end">
+					<button id="openwith-manualentry-pane.add-button"
+							oncommand="addNewItem();"
+							label="&openwith-browserlist-add.label;" />
+					<button id="openwith-browserlist-restoreorder-button"
+							oncommand="restoreOrder();"
+							label="&openwith-browserlist-restoreorder.label;" />
+				</hbox>
+			</groupbox>
+		</vbox>
+	</hbox>
+
+	<menupopup id="list-context" onpopupshowing="contextShowing(this);">
+		<menuitem id="context-name" style="font-weight: bold;" />
+		<menuitem label="&openwith-context-copykeyname.label;" oncommand="copyKeyName(document.popupNode);" />
+		<menuseparator />
+		<menuitem class="noauto" label="&openwith-browserlist-editname.label;" oncommand="changeAttribute(document.popupNode, 'name');" />
+		<menuitem class="noauto" label="&openwith-browserlist-editcommand.label;" oncommand="editCommand(document.popupNode);" />
+		<menuitem class="noauto" label="&openwith-browserlist-editparams.label;" oncommand="changeAttribute(document.popupNode, 'params');" />
+		<menuitem label="&openwith-browserlist-editaccesskey.label;" oncommand="changeAttribute(document.popupNode, 'accessKey');" />
+		<menuseparator />
+		<menuitem class="nomanual" label="&openwith-browserlist-show.label;" oncommand="setHidden(document.popupNode, false);" />
+		<menuitem class="nomanual" label="&openwith-browserlist-hide.label;" oncommand="setHidden(document.popupNode, true);" />
+		<menuitem label="&openwith-browserlist-duplicate.label;" oncommand="duplicateItem(document.popupNode);" />
+		<menuitem class="noauto" label="&openwith-browserlist-remove.label;" oncommand="removeItem(document.popupNode);" />
+	</menupopup>
+
+	<script src="chrome://openwith/content/about-openwith.js" />
+
+</page>

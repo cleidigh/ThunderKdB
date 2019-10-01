@@ -1,0 +1,68 @@
+[{
+  "namespace": "request",
+  "functions": [{
+    "name": "open",
+    "type": "function",
+    "description": "Opens a dialog containing a browser",
+    "async": true,
+    "parameters": [{
+      "name": "url",
+      "type": "string",
+      "description": "The initial address to load"
+    }]
+  }, {
+    "name": "executeScript",
+    "type": "function",
+    "description": "Injects a script into the current page",
+    "async": true,
+    "parameters": [{
+      "name": "url",
+      "type": "string",
+      "description": "The address originally loaded"
+    }, {
+      "name": "code",
+      "type": "string",
+      "description": "The javascript to execute"
+    }]
+  }, {
+    "name": "close",
+    "type": "function",
+    "description": "Closes a previously opened dialog",
+    "async": true,
+    "parameters": [{
+      "name": "url",
+      "type": "string",
+      "description": "The address originally loaded"
+    }]
+  }],
+  "events": [{
+    "name": "onCompleted",
+    "type": "function",
+    "description": "A notification for browser dialog page loads",
+    "parameters": [{
+      "name": "originalURL",
+      "type": "string",
+      "description": "The address originally loaded"
+    }]
+  }, {
+    "name": "onClosed",
+    "type": "function",
+    "description": "A notification for closed browser dialogs",
+    "parameters": [{
+      "name": "originalURL",
+      "type": "string",
+      "description": "The address originally loaded"
+    }, {
+      "name": "currentURL",
+      "type": "string",
+      "description": "The address currently loaded"
+    }, {
+      "name": "browsingHistory",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The previously loaded addresses"
+    }]
+  }]
+}]

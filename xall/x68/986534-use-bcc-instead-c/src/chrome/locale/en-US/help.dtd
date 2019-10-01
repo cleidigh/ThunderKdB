@@ -1,0 +1,25 @@
+<!ENTITY helpWindow.title "Use Bcc Instead Help">
+<!ENTITY helpText.title "Use Bcc Instead Help">
+<!ENTITY helpText.summaryHeading "SUMMARY:">
+<!ENTITY helpText.summaryText1 "Who among us has not made the mistake of sending a &apos;broadcast&apos; email to a large number of recipients without using BCC; thereby revealing everyone&apos;s email addresses to all?">
+<!ENTITY helpText.summaryText2 "This simple add-on offers several functions designed to prevent this from occurring. First and foremost it does so by checking each email, upon sending, to see if any corrective action should be taken to prevent this mishap.">
+
+
+<!ENTITY helpText.detailsHeading "DETAILS:">
+<!ENTITY helpText.sendingEmailHeading "When Sending Email">
+<!ENTITY helpText.detailsText1 "After installation, this add-on will inspect the recipient list for each email sent. Before the sending occurs it looks for recipients addressed using either TO or CC. When found, it will take action based upon the user-specified options that have been set.">
+<!ENTITY helpText.detailsText2 "If the Always Substitute BCC for TO and CC option is enabled (it is not by default), any recipients addressed using TO or CC are automatically changed so that BCC is used instead before the message is actually sent. This means that no email will ever be sent with a TO or CC recipient. The TO or CC will be changed to BCC every time.">
+<!ENTITY helpText.detailsText3 "If the Always Substitute BCC for TO and CC option is not enabled, this add-on will count the number of recipients that are addressed using either TO or CC. If that count exceeds a value set by the user in this add-on&apos;s options panel or if any recipient is a mailing list addressed using TO or CC, this add-on will take action to help prevent the unintended revelation of recipient email addresses. The action that this add-on takes depends on how the user has configured an additional setting in the add-on&apos;s options panel. By default, a warning message is displayed and an optional warning sound is played giving the user a chance to reconsider the sending of the email. This option can be changed to simply prohibit the sending of the email.">
+<!ENTITY helpText.composingEmailHeading "When Composing Email">
+<!ENTITY helpText.detailsText4 "By default, Thunderbird always creates new and forwarded messages with recipients addressed using TO. With this add-on, you can optionally change this from TO to either CC or BCC. So when Thunderbird's compose window opens for new or forwarded messages, the first blank recipient will be shown as addressed using the selected method.">
+<!ENTITY helpText.detailsText5 "Sometimes you might want to change all of a message&apos;s recipients from TO to CC or BCC. By default, Thunderbird requires that you change each recipient one-by-one. This add-on optionally provides the ability to trigger this change from the following locations:">
+<!ENTITY helpText.optionsMenu "a menu item on the compose window Options menu">
+<!ENTITY helpText.contextMenu "a menu item on the compose window context menu">
+<!ENTITY helpText.toolbarButton "a button you can drag onto the compose window toolbar">
+<!ENTITY helpText.viewingThreadPaneHeading "When Viewing Email Headers in Thunderbird's Thread Pane">
+<!ENTITY helpText.detailsText6 "By default, when sending an email containing only BCC&apos;ed recipients, Thunderbird adds a TO recipient named 'undisclosed-recipients:;'. This is the value shown in the standard Recipient column of the thread pane (upper, right panel) for the Sent and similar folders. This information is not particularly informative to the end user who would likely prefer to see the BCC recipient list instead.">
+<!ENTITY helpText.detailsText7 "So for Thunderbird versions above 2.x, this addon provides a new custom column for the thread pane called 'Recipient-Extended' that is intended to be used as a replacement for the standard Recipient column. Once added to the pane view for the Sent and similar folders, this column will show the following: TO recipients (unless 'undisclosed-recipients:;') OR CC recipients OR BCC recipients.">
+<!ENTITY helpText.optionsHeading "OPTIONS:">
+<!ENTITY helpText.optionsText "This add-on offers one main and two secondary user-configured options that control its behavior when sending email. It also provides two options that control its behavior when composing email. These can most easily be manipulated via the built-in add-on options dialog. To access this dialog, go to the Tools menu and select &apos;Add-ons&apos;. You will see a list of installed add-ons and &apos;Use Bcc Instead&apos; should be in the list. If not, the installation did not succeed. If so, just press the Options button. Most of these options do not require a restart of Thunderbird to take effect.">
+
+

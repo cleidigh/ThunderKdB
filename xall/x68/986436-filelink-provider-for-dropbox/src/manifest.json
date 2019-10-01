@@ -1,0 +1,31 @@
+{
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "4",
+  "applications": {
+    "gecko": {
+      "id": "dropbox-cloudfile@darktrojan.net"
+    }
+  },
+  "icons": {
+    "16": "dropbox.svg",
+    "32": "dropbox.svg",
+    "48": "dropbox.svg"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "cloud_file": {
+    "name": "__MSG_serviceName__",
+    "settings_url": "settings.html",
+    "management_url": "management.html",
+    "service_url": "https://www.dropbox.com/"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "default_locale": "en",
+  "manifest_version": 2
+}

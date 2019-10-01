@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title></title>
+  <script src="management.js" type="application/javascript" defer=""></script>
+  <style type="text/css">
+    body {
+      font: message-box;
+      font-size: 15px;
+      font-weight: normal;
+      margin: 0;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: 1.14em;
+      line-height: 1.4em;
+    }
+    h3 {
+      font-weight: 400;
+      font-size: 1.14em;
+      line-height: 1.4em;
+    }
+    li {
+      margin: 0.5em 0;
+    }
+    a {
+      color: #0060df;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    button {
+      -moz-appearance: none;
+      min-height: 32px;
+      color: inherit !important;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      background-color: rgba(12, 12, 13, 0.1);
+      font-weight: 400;
+      padding: 0 8px;
+      text-decoration: none;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: rgba(12, 12, 13, 0.2);
+    }
+    button:hover:active {
+      background-color: rgba(12, 12, 13, 0.3);
+    }
+    input {
+      -moz-appearance: none;
+      padding: 5px 6px;
+      border: 1px solid rgba(12, 12, 13, 0.3);
+      border-radius: 2px;
+      color: inherit !important;
+      background-color: #fff !important;
+      box-shadow: none;
+    }
+    #errorMessage {
+      color: #c00;
+    }
+  </style>
+</head>
+<body>
+  <h2 data-message="serviceName"></h2>
+  <form id="notAuthed" hidden="true">
+    <h3 data-message="notAuthed_header"></h3>
+    <ol>
+      <li>
+        <a href="https://www.dropbox.com/oauth2/authorize?client_id=m3ei52tfzq1erl4&response_type=code" data-message="notAuthed_linkText"></a>
+      </li>
+      <li>
+        <span data-message="notAuthed_step2"></span>
+        <input type="text" name="oauth_token" size="40" required="true" minlength="40" style/>
+      </li>
+      <li>
+        <button id="saveButton" type="button" disabled="true" data-message="notAuthed_saveButton"></button>
+        <button id="cancelButton" type="button" hidden="true" data-message="notAuthed_cancelButton"></button>
+        <div id="errorMessage" hidden="true">
+          <p data-message="notAuthed_error"></p>
+          <p id="responseMessage" data-message="notAuthed_errorResponse"><span></span></p>
+        </div>
+      </li>
+    </ol>
+  </form>
+  <div id="authed" hidden="true">
+    <h3 data-message="authed_header"></h3>
+    <p data-message="authed_message"></p>
+    <div>
+      <button id="newTokenButton" type="button" data-message="authed_newTokenButton"></button>
+    </div>
+  </div>
+</body>
+</html>

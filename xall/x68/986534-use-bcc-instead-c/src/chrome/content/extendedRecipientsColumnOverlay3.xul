@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE extendedRecipientsColumnOverlay [
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd" >
+  %messengerDTD;
+  <!ENTITY % messengerOverlayDTD SYSTEM "chrome://usebccinsteadC/locale/messengerOverlay.dtd">
+  %messengerOverlayDTD;
+]>
+
+<overlay id="extendedRecipientsColumnOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://usebccinsteadC/content/namespace.js"/>
+  <script type="text/javascript" src="chrome://usebccinsteadC/content/UseBccInsteadCUtil.js"/>
+  <script type="text/javascript" src="chrome://usebccinsteadC/content/extendedRecipientsColumnHandler2.js"/>
+  <script type="text/javascript" src="chrome://usebccinsteadC/content/extendedRecipientsColumn.js"/>
+
+  <tree id="threadTree">
+    <treecols id="threadCols">
+    <splitter class="tree-splitter" />
+    <treecol id="colExtendedRecipients" persist="hidden ordinal width"
+           currentView="unthreaded" flex="4" hidden="true"
+           label="&recipientColumn.label;-&extendedColumnLabel.label;"
+           tooltiptext="&recipientColumn2.tooltip;-&extendedColumnLabelLowerCase.label;" />
+    </treecols>
+  </tree>
+</overlay>

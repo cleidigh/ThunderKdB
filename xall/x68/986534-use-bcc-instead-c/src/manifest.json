@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Use BCC Instead C",
+  "description": "Replace many TO and CC recipients with BCC",
+  "version": "3.5.3",
+  "author": "DaveRo",
+  "legacy": {    
+      "options" : {
+      "page" : "chrome://usebccinsteadC/content/AddonOptions.xul",
+      "open_in_tab" : false
+      }
+  },  
+  "applications": {
+    "gecko": {
+      "id": "use_bcc_instead_C@davero.addons.mozilla.org",
+      "strict_min_version": "64.0"
+    }
+  },
+  "icons": {
+  "48": "chrome/skin/classic/images/bcc.png"
+  }
+}

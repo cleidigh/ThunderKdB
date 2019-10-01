@@ -1,0 +1,25 @@
+<!ENTITY helpWindow.title "Hjälp om Use Bcc Instead">
+<!ENTITY helpText.title "Hjälp om Use Bcc Instead">
+<!ENTITY helpText.summaryHeading "SAMMANFATTNING:">
+<!ENTITY helpText.summaryText1 "Vilka ibland oss har inte gjort misstaget att skicka ett broadcast-meddelande till ett stort antal mottagare utan att använda \&quot;Dold kopia\&quot; (Bcc), vilket avslöjar alla inblandades e-postadresser för varandra?">
+<!ENTITY helpText.summaryText2 "Det här lilla tillägget försöker förhindra att så sker. Det gör det genom att kontrollera varje e-brev, när de skickas, för att se om någon åtgärd bör vidtas för att korrigera misstaget.">
+
+
+<!ENTITY helpText.detailsHeading "FUNKTION:">
+<!ENTITY helpText.sendingEmailHeading "När ett meddelande skickas">
+<!ENTITY helpText.detailsText1 "Efter installation kommer detta tillägg att granska mottagarlistan för varje meddelande som skall skickas. Innan sändningen utförs letar det efter adressater som märkts som antingen Till eller Kopia. När sådana hittas, kommer tillägget att agera utifrån de inställningar som har angivits av användaren.">
+<!ENTITY helpText.detailsText2 "Om alternativet \&quot;Ändra alltid Till- och Kopia-status till Dold kopia\&quot; är aktiverat (som standard är det inaktiverat), så kommer alla mottagare som märkts som Till eller Kopia automatiskt att märkas om till Dold kopia innan meddelandet skickas. Det betyder att inga e-brev med Till- eller Kopia-mottagare kommer att skickas. Märkningarna Till och Kopia kommer att ändras till Dold kopia varje gång.">
+<!ENTITY helpText.detailsText3 "Om alternativet \&quot;Ändra alltid Till- och Kopia-status till Dold kopia\&quot; inte är aktiverat, så kommer tillägget att räkna antalet mottagare som är angivna som antingen Till eller Kopia. Om antalet överstiger det värde som användaren har angivit i tilläggets inställningar eller om någon mottagare är en e-postlista med e-postadresser märkta som Till eller Kopia, så kommer tillägget att göra sig påmint för att hjälpa dig att inte oavsiktligen avslöja mottagarnas e-postadresser. Åtgärden som tillägget vidtar beror på hur användaren har konfigurerat ett annat alternativ i tilläggets inställningar. Som standard visas ett varningsmeddelande, som ger användaren möjlighet att avbryta sändningen av meddelandet. Detta alternativ kan ändras till att helt enkelt förbjuda att meddelandet skickas.">
+<!ENTITY helpText.composingEmailHeading "När ett meddelande skrivs">
+<!ENTITY helpText.detailsText4 "Som standard skapar alltid Thunderbird nya och vidarebefordrade meddelanden med mottagare adresserade med Till. Med detta tillägg kan du, om du vill, ändra det från Till till antingen Kopia eller Dold kopia. Så när Thunderbirds Skriv-fönster öppnar för nya eller vidarebefordrade meddelanden, kommer den första tomma mottagaren att adresseras med den metod du har valt.">
+<!ENTITY helpText.detailsText5 "Ibland kan du vilja ändra alla mottagare av ett meddelande från Till till Kopia eller Dold kopia. Som standard kräver Thunderbird att du ändrar varje mottagare en efter en. Detta tillägg ger dig möjlighet att ändra alla mottagare samtidigt, från följande platser:">
+<!ENTITY helpText.optionsMenu "ett menyobjekt i Skriv-fönstrets Inställningar-meny">
+<!ENTITY helpText.contextMenu "ett menyobjekt i Skriv-fönstrets snabbmeny">
+<!ENTITY helpText.toolbarButton "en knapp du kan dra till Skriv-fönstrets verktygsfält">
+<!ENTITY helpText.viewingThreadPaneHeading "Vid visning av meddelandehuvuden i Thunderbirds trådpanel">
+<!ENTITY helpText.detailsText6 "Vid sändning av ett meddelande som endast innehåller Dold kopia-mottagare, lägger Thunderbird som standard till en mottagare som kallas &quot;mottagare obekant:;&quot;. Det är det värde som visas i den vanliga Mottagare-kolumnen i trådpanelen (den övre, högra panelen) för mappen Skickat och liknande mappar. Denna information är inte särskilt informativ för slutanvändaren, som antagligen skulle vilja se en lista över Dold kopia-mottagarna.">
+<!ENTITY helpText.detailsText7 "Så för Thunderbird-versioner senare än 2.x kommer detta tillägg att tillhandahålla en ny anpassad kolumn för trådpanelen, kallad &quot;Mottagare-Utökad&quot;, som är menad att användas som ersättning för den vanliga Mottagare-kolumnen. När den väl har lagts till i panelvyn för mappen Skickat och liknande mappar, kommer kolumnen att visa Till-mottagare (om inte &quot;mottagare obekant:;&quot; visas) ELLER Kopia-mottagare ELLER Dold kopia-mottagare.">
+<!ENTITY helpText.optionsHeading "INSTÄLLNINGAR:">
+<!ENTITY helpText.optionsText "Detta tillägg erbjuder ett huvudalternativ och två användarkonfigurerade alternativ som kontrollerar dess beteende när meddelanden skickas. Det tillhandahåller även två alternativ som kontrollerar dess beteende när meddelanden skrivs. Alla dessa manipuleras enklast via den inbyggda inställningsdialogrutan. För att öppna denna dialogruta, gå till Verktyg-menyn och välj \&quot;Tillägg\&quot;. Leta upp \&quot;Use Bcc Instead\&quot; i listan över installerade tillägg. Klicka på knappen \&quot;Inställningar\&quot;. Dessa inställningar kräver ingen omstart av Thunderbird för att verkställas.">
+
+

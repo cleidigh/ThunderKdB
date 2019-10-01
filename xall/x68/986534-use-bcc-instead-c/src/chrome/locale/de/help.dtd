@@ -1,0 +1,25 @@
+<!ENTITY helpWindow.title "Use BCC Instead - Hilfe">
+<!ENTITY helpText.title "Use BCC Instead - Hilfe">
+<!ENTITY helpText.summaryHeading "ÜBERSICHT:">
+<!ENTITY helpText.summaryText1 "Wer hat nicht schon einmal den Fehler gemacht, eine Broadcast-Nachricht an eine große Anzahl von Empfängern ohne BCC zu senden? Dabei werden alle E-Mail-Adressen für jeden sichtbar.">
+<!ENTITY helpText.summaryText2 "Diese einfache Erweiterung bietet mehrere Funktionen, um genau das zu verhindern. Unter anderem prüft sie beim Senden jeder Nachricht die Empfänger-Liste und schreitet ein, falls nötig.">
+
+
+<!ENTITY helpText.detailsHeading "DETAILS:">
+<!ENTITY helpText.sendingEmailHeading "Beim Senden einer Nachricht">
+<!ENTITY helpText.detailsText1 "Beim Senden einer Nachricht prüft die Erweiterung die Liste der Empfänger. Sind darunter An- oder CC-Empfänger, ergreift sie vor dem eigentlichen Versenden Maßnahmen, die der Benutzer in den Einstellungen festgelegt hat.">
+<!ENTITY helpText.detailsText2 "Wenn die Einstellung &quot;Immer alle An- und CC-Empfänger in BCC-Empfänger umwandeln&quot; aktiviert ist (standardmäßig deaktiviert), werden beim Versenden jeder Nachricht alle An- und CC-Empfänger automatisch in BCC-Empfänger umgewandelt, bevor die Nachricht tatsächlich gesendet wird.">
+<!ENTITY helpText.detailsText3 "Ist die Einstellung &quot;Immer alle An- und CC-Empfänger in BCC-Empfänger umwandeln&quot; nicht aktiviert, kann der Benutzer eine Obergrenze für die Anzahl von An- und CC-Empfängern angeben. Überschreitet die Anzahl diese Grenze oder ist einer der An- oder CC-Empfänger eine Verteilerliste, wird standardmäßig eine Warnmeldung angezeigt, die dem Nutzer die Möglichkeit gibt, die Nachricht entweder sofort zu senden oder vor dem Versenden noch einmal auf Richtigkeit zu prüfen. Alternativ kann in den Einstellungen festgelegt werden, dass das Senden der Nachricht gänzlich verhindert wird. Optional kann ein Warnton abgespielt werden.">
+<!ENTITY helpText.composingEmailHeading "Beim Verfassen einer Nachricht">
+<!ENTITY helpText.detailsText4 "Standardmäßig verwendet Thunderbird für neue und weitergeleitete Nachrichten An für die Adressierung der Empfänger. In den Einstellungen dieser Erweiterung kann diese Vorgabe auf CC oder BCC umgestellt werden.">
+<!ENTITY helpText.detailsText5 "Manchmal ist es notwendig, die Adressierung jedes Empfängers einer Nachricht von An auf CC oder BCC umzustellen. Diese Erweiterung ermöglicht es, dies für alle Empfänger gleichzeitig zu erledigen. Die entsprechende Funktion muss in den Einstellungen aktiviert werden und steht dann an den folgenden Stellen zur Verfügung:">
+<!ENTITY helpText.optionsMenu "Im Optionen-Menü des Verfassen-Fensters">
+<!ENTITY helpText.contextMenu "Im Kontext-Menü des Verfassen-Fensters">
+<!ENTITY helpText.toolbarButton "Als Schaltfläche, die der Werkzeugleiste des Verfassen-Fensters hinzugefügt werden kann">
+<!ENTITY helpText.viewingThreadPaneHeading "Beim Anzeigen von E-Mail-Kopfzeilen in Thunderbirds Nachrichten-/Themenliste">
+<!ENTITY helpText.detailsText6 "Standardmäßig wird beim Senden einer E-Mail, die nur BCC-Empfänger enthält, von Thunderbird ein An-Empfänger namens &quot;Verborgene_Empfaenger: ;&quot; ergänzt. Dieser Adressat wird auch in der Spalte &quot;Empfänger&quot; der Nachrichten-/Themenliste angezeigt. In Ordnern wie &quot;Gesendet&quot; wäre es hingegen sinnvoller, hier die Liste der BCC-Empfänger anzuzeigen.">
+<!ENTITY helpText.detailsText7 "Für Thunderbird ab Version 2.x bietet diese Erweiterung eine neue benutzerdefinierte Spalte für die Nachrichten-/Themenliste namens &quot;Empfänger-Erweitert&quot; an, die als Ersatz für die Standard-Spalte &quot;Empfänger&quot; verwendet werden soll. Sie zeigt die An-Empfänger (außer &quot;Verborgene_Empfaenger: ;&quot;), CC-Empfänger und BCC-Empfänger.">
+<!ENTITY helpText.optionsHeading "EINSTELLUNGEN:">
+<!ENTITY helpText.optionsText "Die Option &quot;Aktiviere Funktion, um alle Empfänger auf An, CC oder BCC umzustellen&quot; erfordert einen Neustart von Thunderbird, bevor sie greift. Alle anderen Einstellungen werden augenblicklich übernommen.">
+
+

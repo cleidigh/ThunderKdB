@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Manual Exchange Account Setup</title>
+    <script src="../util/utils.js"></script>
+    <script src="../util/stringbundle.js"></script>
+    <script src="../util/ui-utils.js"></script>
+    <script src="manual-setup.js"></script>
+    <link rel="stylesheet" href="manual-setup.css">
+  </head>
+  <body>
+    <div id="deck">
+      <h1 translate="header"></h1>
+      <form id="form">
+        <div translate="intro"></div>
+        <label for="fullname" translate="fullname.label"></label>
+        <input id="fullname" required translate-attr="placeholder=fullname.placeholder">
+        <span translate="fullname.description"></span>
+        <label for="email" translate="email.label"></label>
+        <input id="email" type="email" required translate-attr="placeholder=email.placeholder">
+        <span translate="email.description"></span>
+        <label for="username" translate="username.label"></label>
+        <input id="username" required translate-attr="placeholder=username.placeholder">
+        <span translate="username.description"></span>
+        <label for="password" translate="password.label"></label>
+        <input id="password" type="password" required translate-attr="placeholder=password.placeholder">
+        <label translate="protocol.label"></label>
+        <span id="span_owa"><input id="protocol_owa" type="radio" name="protocol" value="owl" checked><label for="protocol_owa" translate="protocol.owa"></label></span>
+        <span id="span_ews"><input id="protocol_ews" type="radio" name="protocol" value="owl-ews"><label for="protocol_ews" translate="protocol.ews"></label></span>
+        <label id="authentication_label" for="authentication" translate="authentication.label"></label>
+        <select id="authentication">
+          <option value="3,20,10" translate="authentication.autodetect"></option>
+          <option value="3" translate="authMethod3"></option>
+          <option value="10" translate="authMethod10"></option>
+        </select>
+        <div translate="webmail.blurb"></div>
+        <label for="url" translate="webmail.label"></label>
+        <input id="url" type="url" placeholder="https://<hostname>/owa/" required>
+        <span id="message"></span>
+        <input id="create" type="button" disabled translate-attr="value=create.value">
+        <input id="cancel" type="button" translate-attr="value=cancel.value">
+      </form>
+      <h4 id="success" translate="success"></h4>
+    </div>
+    <div></div><!-- Creates 2/3 space at bottom -->
+  </body>
+</html>

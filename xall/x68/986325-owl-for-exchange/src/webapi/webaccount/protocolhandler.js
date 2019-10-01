@@ -1,0 +1,568 @@
+const kHardMargin = 800;
+
+function Channel(aURI, aLoadInfo) {
+  // We're not interested in watching the values of these attributes,
+  // so we can just expose these as properties through XPConnect.
+  // nsIChannel attributes
+  this.URI = this.originalURI = aURI.QueryInterface(Ci.nsIMsgMailNewsUrl);
+  this.owner = this.securityInfo = this.notificationCallbacks = null;
+  this.contentType = "message/rfc822";
+  this.contentCharset = "";
+  this.contentLength = -1;
+  this.contentDisposition = Ci.nsIChannel.DISPOSITION_INLINE;
+  this.contentDispositionFilename = null;
+  this.contentDispositionHeader = null;
+  this.loadInfo = aLoadInfo;
+  this.isDocument = true;
+  // nsIRequest attributes
+  this.name = aURI;
+  this._isPending = false;
+  this.status = Cr.NS_OK;
+  this.loadGroup = null;
+  this.loadFlags = Ci.nsIRequest.LOAD_NORMAL;
+  // Let's cache some properties of the URI.
+  try {
+    this.msgWindow = this.URI.msgWindow;
+  } catch (e) {
+    // if someone opens the URI directly instead of using DisplayMessage
+    this.msgWindow = null;
+  }
+  let part = this.URI.query.match(/&part=([.\d]+)/);
+  this.part = part ? part[1] : "";
+  this.folder = this.URI.folder;
+  this.hdr = this.folder.GetMessageHeader(parseInt(this.URI.query.match(/key=(\d+)/)[1]));
+}
+
+Channel.prototype = {
+  QueryInterface: QIUtils.generateQI([Ci.nsIPrivateBrowsingChannel, Ci.nsIChannel, Ci.nsIRequest]),
+  // nsIPrivateBrowsingChannel
+  /**
+   * Workaround for crash opening attachment. Unless the channel
+   * is private, nsExternalAppHandler::CreateTransfer will call
+   * nsIDownloadHistory::AddDownload which will crash because
+   * it can't serialise our URL.
+   */
+  get isChannelPrivate() {
+    return true;
+  },
+  setPrivate() {}, // no-op
+  // Can't override isPrivateModeOverridden (!)
+  // nsIChannel
+  /**
+   * Called to synchronousely retrieve the source of a message.
+   * This shouldn't be necessary, but I didn't implement the caller.
+   */
+  open: function() {
+    gContentSecManager.performSecurityCheck(this, null);
+    let listener = Cc["@mozilla.org/network/sync-stream-listener;1"].createInstance(Ci.nsISyncStreamListener);
+    if (this.loadInfo && this.loadInfo.securityMode) {
+      this.asyncOpen2(listener);
+    } else {
+      this.asyncOpen(listener, null);
+    }
+    let stream = listener.inputStream;
+    stream.available();
+    // XXX Bug 1531708 stream.available() doesn't always throw like it should
+    if (this.status != Cr.NS_OK) {
+      throw Components.Exception("", this.status);
+    }
+    return stream;
+  },
+  /// Security-checked version of open.
+  open2: function() {
+    return this.open();
+  },
+  /**
+   * This is the central function used to retrieve content of a message.
+   * It is called in a variety of cases:
+   * - Displaying a message
+   *   When the DBView wants to display a message, it asks the message service
+   *   to load the message into the nsIDocShell for the message pane. Our
+   *   message service adds "&header=display" to the URL as a hint. The
+   *   nsIDocShell then listens to our message and inserts a stream converter
+   *   to convert the message/rfc822 source to HTML for display. The converter
+   *   also handles details such as creating URIs for parts (both inline
+   *   and attachments) and preferences e.g. for simple HTML.
+   * - Printing a message
+   *   Printing a message also goes via the message service but in this case
+   *   the hint is "&header=print" which is understood by the MIME converter.
+   * - Copying a message to a different account
+   *   The target account calls our message service for the message/rfc822
+   *   source. No hint is set on the URL so that we always fetch full source.
+   * - Saving a message
+   *   Saving a message goes via the message service. Again there is no hint set
+   *   on the URL so we fetch full source which goes to the save as listener.
+   * - Viewing the source of a message
+   *   The view-source window simply loads the message URI into its nsIDocShell
+   *   which this time hooks up a view source stream converter. Again there is
+   *   no hint set on the URL so that we always fetch the full source.
+   * - Dispaying an inline image
+   *   The image library opens the channel so that it can decode the image.
+   *   The display converter has added a "&part=" suffix for the inline image.
+   *   We insert another converter that actually extracts the attachment.
+   *   This works whether or not we are fetching the full source.
+   * - Opening an attachment
+   *   In this case the nsIDocShell opens the channel as if it was loading a
+   *   message, but this time it doesn't insert its own converter. However as
+   *   above the display converter added a "&part=" suffix to the URI.
+   * - Saving an attachment
+   *   The messenger back end calls the fetch part service (a function of the
+   *   message service) which directly opens the channel. As in the case of
+   *   opening an attachment, the correct URI was generated by the display
+   *   converter so all we need to do is to extract the part as before.
+   *   (Sadly the messenger back end throws away the part number if the
+   *   message service is not a fetch part service.)
+   * - Indexing, Junk Filtering, Reply with Template
+   *   This would go through the message service but the necessary function
+   *   has not been implemented yet.
+   */
+  asyncOpen: function(aListener, aContext) {
+    if (aContext && aContext != this.URI) { // COMPAT for TB 60 (bug 1520868)
+      throw Cr.NS_ERROR_NOT_AVAILABLE;
+    } // COMPAT for TB 60
+    /* IF MINI SYNTH */
+    // We can't serve parts if we don't have an offline body.
+    if (/&part=([.\d]+)/.test(this.URI.query) && !(this.hdr.flags & Ci.nsMsgMessageFlags.Offline)) {
+      throw Cr.NS_ERROR_FAILURE;
+    }
+    /* END IF */
+    let listener = this.maybeConvertData(gContentSecManager.performSecurityCheck(this, aListener));
+    if (listener.onStartRequest.length == 2) { // COMPAT for TB 60 (bug 1525319)
+      let convertedListener = listener;
+      listener = {
+        onStartRequest: (aRequest) => convertedListener.onStartRequest(this, this.URI),
+        onStopRequest: (aRequest, aStatus) => convertedListener.onStopRequest(this, this.URI, aStatus),
+        onDataAvailable: (aRequest, aStream, aOffset, aCount) => convertedListener.onDataAvailable(this, this.URI, aStream, aOffset, aCount),
+      };
+    } // COMPAT for TB 60 (bug 1525319)
+    this.retrieveMessage(listener);
+  },
+  /// Insert a stream converter if the caller needs one.
+  maybeConvertData: function(aListener) {
+    // It turns out to be way too hard to pass aConvertData from streamMessage
+    // so instead we just check for header=filter like everyone else does.
+    if (/&part=\d|&header=filter/.test(this.URI.query)) {
+      // We provide an RFC822 message (with parts omitted if possible),
+      // but the original listener only wants a speciifc attachment.
+      // We create a MIME stream converter and make it listen to our
+      // RFC822 message in place of the original listener, which is
+      // provided with the attachment by the MIME stream converter.
+      let scs = Cc["@mozilla.org/streamConverters;1"].getService(Ci.nsIStreamConverterService);
+      return scs.asyncConvertData("message/rfc822", "*/*", aListener, this);
+    }
+    return aListener;
+  },
+  /**
+   * Gets message content, either full MIME or synthetic.
+   *
+   * @param aListener        {nsIStreamListener} The recipient of the data.
+   */
+  retrieveMessage: async function(aListener) {
+    try {
+      let msgWindow = this.msgWindow;
+      // The local mail folder doesn't want us to call onStartRequest
+      // synchronously, because that alters the message copy count.
+      // Drain the C++ event loop before accessing the listener.
+      await new Promise(resolve => Services.tm.mainThread.dispatch(resolve, Ci.nsIThread.DISPATCH_NORMAL));
+      aListener.onStartRequest(this);
+      this._isPending = true;
+      this.URI.SetUrlState(true, this.status);
+      if (this.loadGroup) {
+        this.loadGroup.addRequest(this, null);
+      }
+      if (this.fetchMsgOffline(aListener)) {
+        return;
+      }
+      // Check in case the message was deleted. If so, abort.
+      // (In this case, it has neither the msgid property nor is in the msg DB.)
+      // But do return the message, if the message is being moved by a filter.
+      // (During filtering, it's has the msgid property,  but it's not yet added to msg DB.)
+      if (!this.hdr.getStringProperty("X-GM-MSGID")) {
+        if (this.folder.msgDatabase.ContainsKey(this.hdr.messageKey)) {
+          // Not deleted, just invalid.
+          let error = new Error("Invalid message header");
+          error.name = "MissingMSGID";
+          logError(error);
+        }
+        this.cancel(Cr.NS_ERROR_NOT_AVAILABLE);
+        return;
+      }
+      let message;
+      if (/&header=display/.test(this.URI.query)) {
+        let downloadAndReload = async () => {
+          await DownloadFullMessage(this.hdr, msgWindow);
+          if (msgWindow && msgWindow.domWindow.gMessageDisplay.displayedMessage == this.hdr) {
+            this.cancel(Cr.NS_ERROR_ABORT);
+            msgWindow.domWindow.ReloadMessage();
+          }
+        };
+        noAwait(downloadAndReload(), ex => ReportException(ex, msgWindow));
+        message = await this.assembleSyntheticMIME();
+      } else if (/&header=filter/.test(this.URI.query)) {
+        message = await this.assembleSyntheticMIME();
+      } else { // print and others
+        message = await DownloadFullMessage(this.hdr, msgWindow);
+      }
+      if (this.status == Cr.NS_OK) {
+        let stream = Cc["@mozilla.org/io/string-input-stream;1"].createInstance(Ci.nsIStringInputStream);
+        stream.setData(message.mime, message.mime.length);
+        // Send the data to MIME. (We don't need to pump here because
+        // we know that MIME can read the whole length if it wants.)
+        aListener.onDataAvailable(this, stream, 0, message.mime.length);
+      }
+    } catch (ex) {
+      ReportException(ex, this.msgWindow);
+      this.status = this.status || ex.result || Cr.NS_ERROR_ABORT;
+    } finally {
+      this._isPending = false;
+      this.URI.SetUrlState(false, this.status);
+      if (this.loadGroup) {
+        this.loadGroup.removeRequest(this, null, this.status);
+      }
+      aListener.onStopRequest(this, this.status);
+    }
+  },
+  /**
+   * Retrieves the message body from the offline store.
+   *
+   * @param aListener {nsIStreamListener} The recipient of the data.
+   * @returns {Boolean} Whether the message was available offline.
+   */
+  fetchMsgOffline: function(aListener) {
+    if (this.hdr.flags & Ci.nsMsgMessageFlags.Offline) {
+      let offset = {}, size = {};
+      let stream = this.folder.getOfflineFileStream(this.hdr.messageKey, offset, size);
+      // Just send the whole message direct to MIME. We can do this because
+      // we know that this is a file stream which supports that.
+      // This also avoids having to slice the stream to pump it.
+      aListener.onDataAvailable(this, stream, 0, size.value);
+      stream.close();
+      return true;
+    }
+    return false;
+  },
+  /// Assemble a synthetic MIME envelope for this message.
+  assembleSyntheticMIME: async function() {
+    // Check whether the caller wants a specific attachment.
+    let mimeContent = "";
+    let details = await CallExtension(this.folder.server, this.part ? "GetMessageProperties" : "GetMessage", { folder: this.folder.getStringProperty("FolderId"), message: this.hdr.getStringProperty("X-GM-MSGID") }, this.msgWindow);
+    let headers = new Map();
+    if (!this.part) {
+      // We're displaying a message, so provide some basic headers.
+      if (details.subject) {
+        headers.set("Subject", [details.subject]);
+      }
+      if (details.date) {
+        headers.set("Date", [new Date(details.date / 1000)]);
+      }
+      if (details.messageId) {
+        headers.set("Message-Id", [details.messageId]);
+      }
+      if (details.ccList && details.ccList.length) {
+        headers.set("Cc", details.ccList);
+      }
+      if (details.bccList && details.bccList.length) {
+        headers.set("Bcc", details.bccList);
+      }
+      if (details.author) {
+        headers.set("From", [details.author]);
+      }
+      if (details.recipients && details.recipients.length) {
+        headers.set("To", details.recipients);
+      }
+      if (details.references) {
+        let references = details.references.match(/<.+?>/g);
+        if (references) {
+          headers.set("References", [references.join(" ")]);
+        }
+      }
+    }
+    // See if we have to wrap the message in multipart containers. We
+    // need a container for inline images and another for attachments.
+    let inlined = [];
+    let attached = [];
+    for (let attachment of details.attachments || []) {
+      if (attachment.contentId) {
+        /* IF FULL SYNTH
+        inlined.push(attachment);
+        END IF */
+      } else {
+        attached.push(attachment);
+      }
+    }
+    let attachedBoundary = "";
+    if (attached.length) {
+      let downloading = await CallExtension(this.folder.server, "GetString", { bundleName: "owl", id: "downloadingAttachment" });
+      for (let attachment of attached) {
+        attachment.name = downloading.replace("%S", attachment.name);
+        attachment.contentType = "text/x-moz-deleted";
+      }
+      // Wrap the attached parts in a mixed multitype.
+      attachedBoundary = this.generateRandomBytes();
+      // Set the content type on the current headers and flush them.
+      headers.set("Content-Type", ["multipart/mixed; boundary=\"" + attachedBoundary + "\""]);
+      mimeContent += jsmime.headeremitter.emitStructuredHeaders(headers, { hardMargin: kHardMargin }) + "\r\n";
+      mimeContent += "--" + attachedBoundary + "\r\n";
+      headers = new Map();
+    }
+    let inlinedBoundary = "";
+    if (inlined.length) {
+      // Wrap the inlined parts in a related multitype.
+      inlinedBoundary = this.generateRandomBytes();
+      // Set the content type on the current headers and flush them.
+      headers.set("Content-Type", ["multipart/related; boundary=\"" + inlinedBoundary + "\""]);
+      mimeContent += jsmime.headeremitter.emitStructuredHeaders(headers, { hardMargin: kHardMargin }) + "\r\n";
+      mimeContent += "--" + inlinedBoundary + "\r\n";
+      headers = new Map();
+    }
+    // Set the body content type on the current headers and add them.
+    headers.set("Content-Type", [details.contentType + "; charset=UTF-8"]);
+    mimeContent += jsmime.headeremitter.emitStructuredHeaders(headers, { hardMargin: kHardMargin }) + "\r\n";
+    // Add the body if needed.
+    if (!this.part) {
+      let body = details.body;
+      if (/[^\x00-\x7F]/.test(body)) {
+        // The body isn't ASCII, so we need to convert it to UTF-8.
+        let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
+        converter.charset = "UTF-8";
+        body = converter.ConvertFromUnicode(body) + converter.Finish();
+      }
+      mimeContent += body + "\r\n";
+    }
+    return {
+      mime: mimeContent + await this.generateParts(inlined, inlinedBoundary, this.part == undefined ? "" : attached.length ? "1.1." : "1.") + await this.generateParts(attached, attachedBoundary, "1.", this.part == undefined),
+    };
+  },
+  generateRandomBytes: function() {
+    let randomGenerator = Cc["@mozilla.org/security/random-generator;1"].getService(Ci.nsIRandomGenerator);
+    let randomBytes = randomGenerator.generateRandomBytes(12);
+    return randomBytes.map(byte => byte.toString(16).padStart(2, 0)).join("").toUpperCase();
+  },
+  generateParts: async function(aAttachments, aBoundary, aPrefix) {
+    let mimeContent = "";
+    if (aAttachments.length) {
+      let partNum = 2;
+      for (let attachment of aAttachments) {
+        mimeContent += await this.generatePart(attachment, aBoundary, !aPrefix || this.part == aPrefix + partNum);
+        partNum++;
+      }
+      mimeContent += "--" + aBoundary + "--\r\n";
+    }
+    return mimeContent;
+  },
+  generatePart: async function(aAttachment, aBoundary, aIncludeData) {
+    let mimeContent = "--" + aBoundary + "\r\n" +
+      "Content-Type: " + aAttachment.contentType + "; name=\"" + aAttachment.name + "\"\r\n" +
+      "Content-Description: " + aAttachment.name + "\r\n" +
+      (aAttachment.contentId ? "Content-ID: <" + aAttachment.contentId + ">\r\n" +
+                               "Content-Disposition: inline"
+                             : "Content-Disposition: attachment") +
+      "; filename=\"" + aAttachment.name + "\" size=" + aAttachment.size + "\r\n" +
+      "Content-Transfer-Encoding: base64\r\n\r\n";
+    // Fetch the attachment if needed.
+    if (aIncludeData) {
+      let content = await CallExtension(this.folder.server, "GetAttachment", { folder: this.folder.getStringProperty("FolderId"), message: this.hdr.getStringProperty("X-GM-MSGID"), attachment: aAttachment.id, }, this.msgWindow);
+      // Base64 encode the attachment, but limit the line length.
+      while (content.length > 57) {
+        mimeContent += btoa(content.slice(0, 57)) + "\r\n";
+        content = content.slice(57);
+      }
+      mimeContent += btoa(content) + "\r\n";
+    //} else if (aAttachment.contentType = "text/x-moz-deleted") {
+      //mimeContent += btoa("Please wait while your attachment downloads.") + "\r\n";
+    }
+    return mimeContent;
+  },
+  /// Security-checked version of asyncOpen.
+  /// COMPAT for TB 60 (bug 1520868)
+  asyncOpen2: function(aListener) {
+    this.asyncOpen(gContentSecManager.performSecurityCheck(this, aListener), null);
+  },
+  isPending: function() {
+    return this._isPending;
+  },
+  cancel: function(aStatus) {
+    this.status = this.status || aStatus;
+  },
+  // XXX TODO
+  suspend: function() {
+    throw Cr.NS_ERROR_NOT_AVAILABLE;
+  },
+  resume: function() {
+    throw Cr.NS_ERROR_NOT_AVAILABLE;
+  },
+};
+
+/// Properties used when creating the component factory.
+var gProtocolHandlerProperties = {
+  baseInterfaces: [
+    Ci.nsIMsgMessageFetchPartService,
+    Ci.nsIProtocolHandler,
+  ],
+  contractID: "@mozilla.org/network/protocol;1?name=",
+  classDescription: "Protocol",
+  classID: Components.ID("{61a6e518-38ef-472a-91aa-be8ee2c58f54}"),
+};
+
+if (Ci.nsIMsgProtocolHandler) {
+  gProtocolHandlerProperties.baseInterfaces.push(Ci.nsIMsgProtocolHandler);
+}
+
+function ProtocolHandler() {
+}
+
+ProtocolHandler.prototype = {
+  QueryInterface: QIUtils.generateQI(gProtocolHandlerProperties.baseInterfaces),
+  // nsIMsgMessageFetchPartService
+  fetchMimePart: function(aURI, aMessageURI, aDisplayConsumer, aMsgWindow, aUrlListener) {
+    console.log("fetchMimePart being called on the protocol handler instead of the message service, fix caller!");
+    if (aUrlListener && aURI instanceof Ci.nsIMsgMailNewsUrl) {
+      aURI.RegisterListener(aUrlListener);
+    }
+    let channel = new Channel(aURI, null);
+    channel.asyncOpen(aDisplayConsumer, null);
+    return aURI;
+  },
+  // nsIProtocolHandler
+  scheme: null, // fortunately this is unused
+  defaultPort: 443,
+  protocolFlags: Ci.nsIProtocolHandler.URI_NORELATIVE | Ci.nsIProtocolHandler.URI_FORBIDS_AUTOMATIC_DOCUMENT_REPLACEMENT | Ci.nsIProtocolHandler.URI_DANGEROUS_TO_LOAD | Ci.nsIProtocolHandler.ALLOWS_PROXY | Ci.nsIProtocolHandler.ORIGIN_IS_FULL_SPEC,
+  /**
+   * Create a new nsIURI. The new nsIURI will also be an nsIMsgMailNewsUrl
+   * and will already have its folder property populated.
+   * @param aSpec    {String} The URI
+   * @param aCharset {String} Unused
+   * @param aBaseURI {nsIURI} Unused
+   * @returns        {nsIURI}
+   */
+  newURI: function(aSpec, aCharset, aBaseURI) {
+    try {
+      let url = Cc["@mozilla.org/jacppurldelegator;1"].createInstance(Ci.nsIMsgMailNewsUrl);
+      url.QueryInterface(Ci.msgIJaUrl).setSpec(aSpec);
+      url.QueryInterface(Ci.nsIMsgMessageUrl).uri = aSpec;
+      // These two variables are not automatically initialised.
+      url.setUrlType(Ci.nsIMsgMailNewsUrl.eDisplay);
+      url.canonicalLineEnding = false;
+      // Callers expect us to set the folder before returning.
+      let server = MailServices.accounts.findServerByURI(url, false);
+      url.folder = server.getMsgFolderFromURI(null, server.serverURI + url.filePath);
+      return url;
+    } catch (ex) {
+      if (aSpec[0] == "/" || !aSpec.includes(":")) {
+        // Relative URLs throw, but occur often. Don't report.
+        // TODO fix this case?
+        logExpectedError(ex);
+      } else {
+        console.log("Exception thrown from newURI(" + aSpec + "):");
+        logError(ex);
+      }
+      throw ex;
+    }
+  },
+  /**
+   * Creates a Channel for the URI which is assumed to be an own URI.
+   * @param aURI      {aURI}        The nsIURI
+   * @param aLoadInfo {nsILoadInfo} The loadInfo for the new channel
+   * @returns         {nsIChannel}
+   */
+  newChannel: function(aURI, aLoadInfo) {
+    return new Channel(aURI, aLoadInfo);
+  },
+  /**
+   * COMPAT for TB 60 (bug 1528971)
+   */
+  newChannel2: function(aURI, aLoadInfo) {
+    return new Channel(aURI, aLoadInfo);
+  },
+  /**
+   * Are non-standard ports allowed?
+   */
+  allowPort(aPort, aScheme) {
+    return false;
+  },
+};
+
+gProtocolHandlerProperties.factory = XPCOMUtils._getFactory(ProtocolHandler);
+gModules.push(gProtocolHandlerProperties);
+
+
+
+// Map(String -> Promise)
+let gPendingDownloads = {};
+
+/**
+ * Downloads a message and stores it for offline use.
+ *
+ * @param aHdr       {nsIMsgDBHdr}  The header of the message to download
+ * @param aMsgWindow {nsIMsgWindow}
+ * @returns          {Promise}      The full MIME source of the message.
+ *
+ * The message is not stored for offline use if the header is partial or
+ * the message was already downloaded for offline use (possible race condition
+ * when mass downloading MIME bodies of small messages).
+ * If two callers attempt to download a message at the same time,
+ * only one network call will be made.
+ * The promise resolves to an object with a single string property
+ * `mime` which contains the MIME source.
+ */
+function DownloadFullMessage(aHdr, aMsgWindow)
+{
+  let key = aHdr.folder.server.serverURI + aHdr.getStringProperty("X-GM-MSGID");
+  if (!gPendingDownloads[key]) {
+    // This kicks off the download but returns a Promise of the result.
+    // Our callers then await that Promise.
+    gPendingDownloads[key] = (async () => {
+      try {
+        let message = await CallExtension(aHdr.folder.server, "GetMessageCompleteMime", { folder: aHdr.folder.getStringProperty("FolderId"), message: aHdr.getStringProperty("X-GM-MSGID") }, aMsgWindow);
+        if (aHdr.flags & Ci.nsMsgMessageFlags.Offline) {
+          return message;
+        }
+        // if (aHdr.getStringProperty("X-Partial") == "true") {
+        // TODO create full header, replace the partial header, save the content on the new header.
+        // But need to make sure that folder.js doesn't barf, because it tries to do the same. Wait for #287.
+        StoreOfflineMessage(aHdr, message.mime);
+        return message;
+      } finally {
+        delete gPendingDownloads[key];
+      }
+    })();
+  }
+  return gPendingDownloads[key];
+}
+
+/**
+ * Write the MIME source for a particular header to its offline store.
+ *
+ * @param aHdr     {nsIMsgDBHdr} The message
+ * @param aContent {String}      The MIME source
+ *
+ * Note: This function does not check whether the header is already offline.
+ */
+function StoreOfflineMessage(aHdr, aContent)
+{
+  // Check in case the message was deleted while we were downloading it.
+  if (!aHdr.getStringProperty("X-GM-MSGID")) {
+    if (aHdr.folder.msgDatabase.ContainsKey(aHdr.messageKey)) {
+      // Not deleted, just invalid.
+      let error = new Error("Invalid message header");
+      error.name = "MissingMSGID";
+      logError(error);
+    }
+    return;
+  }
+  // XXX Respect offline disk space preferences
+  let stream = aHdr.folder.getOfflineStoreOutputStream(aHdr);
+  // getOfflineFileStream expects this at the start of the message -
+  // it then adjusts for it and returns the original message.
+  let content = "From - " + new Date().toString().slice(0, 24) + "\r\nX-Mozilla-Status: 0001\r\nX-Mozilla-Status2: 00000000\r\n" + aContent;
+  stream.write(content, content.length);
+  stream.flush();
+  aHdr.folder.msgDatabase.MarkOffline(aHdr.messageKey, true, null);
+  aHdr.offlineMessageSize = content.length;
+  aHdr.folder.msgStore.finishNewMessage(stream, aHdr);
+  try {
+    // The store might have already closed the stream for us.
+    stream.close();
+  } catch (ex) {
+  }
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<!DOCTYPE prefWindowOverlay [
+  <!ENTITY % commonDTD SYSTEM "chrome://usebccinsteadC/locale/common.dtd">
+  %commonDTD;
+  <!ENTITY % prefWindowDTD SYSTEM "chrome://usebccinsteadC/locale/addonOptions.dtd">
+  %prefWindowDTD;
+]>
+
+<dialog id="UseBccInsteadC.PrefsWindow" buttons="accept,extra1"
+     title="&prefwindow.title;"
+     buttonlabelextra1="&showHelp.label;"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://usebccinsteadC/content/namespace.js"/>
+  <script type="application/x-javascript" src="chrome://usebccinsteadC/content/UseBccInsteadCUtil.js"/>
+  <script type="application/x-javascript" src="chrome://usebccinsteadC/content/AddonOptions.js"/>
+
+  <dialogheader id="settings_pane" label="&prefpane.label;">
+
+    <vbox>
+      <groupbox id="sendingOptions">
+        <caption>&sendingEmail.label;</caption>
+        <hbox align="center">
+          <label control="forceBccCheckbox" value="&forceBcc.label;"/>
+          <checkbox id="forceBccCheckbox" oncommand="UseBccInsteadC.UseBccInsteadCPrefs.setCheckboxPref('extensions.usebccinsteadC.forceBcc',checked)"/>
+        </hbox>
+        <groupbox>
+          <hbox align="center">
+            <label id="maxCountLabel" control="maxCount" value="&count.label;"/>
+            <textbox id="maxCount" size="2" maxlength="2" onchange="UseBccInsteadC.UseBccInsteadCPrefs.validateCount()"/>
+          </hbox>
+
+          <hbox align="center">
+            <label id="forceLabel" control="force" value="&force.label;"/>
+            <checkbox id="force" oncommand="UseBccInsteadC.UseBccInsteadCPrefs.setCheckboxPref('extensions.usebccinsteadC.forceNoSend',checked)"/>
+          </hbox>
+
+          <hbox align="center">
+            <label id="playLabel" control="play" value="&play.label;"/>
+            <checkbox id="play" oncommand="UseBccInsteadC.UseBccInsteadCPrefs.setCheckboxPref('extensions.usebccinsteadC.playSound',checked)"/>
+          </hbox>
+        </groupbox>
+      </groupbox>
+
+      <groupbox id="composeOptions">
+        <caption>&composingEmail.label;</caption>
+        <hbox align="center">
+          <label control="defaultNewMsgMode" value="&defaultNewMsgMode.label;"/>
+          <menulist editable="false" id="defaultNewMsgMode" oncommand="UseBccInsteadC.UseBccInsteadCPrefs.updateNewMsgMode()">
+            <menupopup>
+              <menuitem label=" - " value="-1"/>
+              <menuitem label="&TO.label;" value="0"/>
+              <menuitem label="&CC.label;" value="1"/>
+              <menuitem label="&BCC.label;" value="2"/>
+            </menupopup>
+          </menulist>
+        </hbox>
+
+        <hbox align="center">
+          <label control="enableChangeAllRecipients" value="&enableChangeAllRecipients.label;"/>
+          <checkbox id="enableChangeAllRecipients" oncommand="UseBccInsteadC.UseBccInsteadCPrefs.setCheckboxPref('extensions.usebccinsteadC.enableChangeAll',checked)"/>
+        </hbox>
+      </groupbox>
+
+      <groupbox id="otherOptions">
+        <caption>&otherOptions.label;</caption>
+        <hbox align="center">
+          <label control="addUndisclosedRecipients" value="&addUndisclosedRecipients.label;"/>
+          <checkbox id="addUndisclosedRecipients" oncommand="UseBccInsteadC.UseBccInsteadCPrefs.setCheckboxPref('mail.compose.add_undisclosed_recipients',checked)"/>
+        </hbox>
+      </groupbox>
+
+    </vbox>
+  </dialogheader>
+</dialog>

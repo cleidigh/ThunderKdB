@@ -1,0 +1,25 @@
+<!ENTITY helpWindow.title "Use Bcc Instead 帮助">
+<!ENTITY helpText.title "Use Bcc Instead 帮助">
+<!ENTITY helpText.summaryHeading "概述：">
+<!ENTITY helpText.summaryText1 "你有发送“广播”电子邮件给很多人时忘记使用密送，从而泄露了每个人的电子邮箱地址的经历吗？">
+<!ENTITY helpText.summaryText2 "这个简单的附加组件试图防止这种情况。它会在发送时检查每封电子邮件，看看它是否发送给非密送的邮件列表，或是没有使用密送的收件人数量超过用户配置的数量。如果发生这种情况，可以警告用户或是阻止发送该电子邮件。">
+
+
+<!ENTITY helpText.detailsHeading "详细信息：">
+<!ENTITY helpText.sendingEmailHeading "当发送电子邮件时">
+<!ENTITY helpText.detailsText1 "安装完毕后，本附加组件将在每封电子邮件发送前检查收件人列表。它会计算收件人的数量看看有多少没有被密送。如果该数值超过用户在本附加组件的选项面板中的设置，或是任何一个收件人是非密送的邮件列表，本附加组件将采取行动以防止收件人的电子邮箱地址被意外披露。">
+<!ENTITY helpText.detailsText2 "此动作需要用户在本附加组件的选项面板配置第二个设置。默认情况下，只是显示一个警告信息，让用户重新考虑发送这封电子邮件。此选项可以更改为完全禁止该电子邮件的发送。">
+<!ENTITY helpText.detailsText3 "如果 始终对收件人和抄送接收者用密送代替 选项未启用，本附加组件将计算目的地址中使用收件人和抄送接收者的数量。如果计数值超过在本附加组件的选项面板中设置的值，或者如果任何收件人或抄送接收者是一个邮件列表的地址，本附加组件将采取行动以帮助防止收件人的电子邮件地址被泄露。采取的行动取决于用户在本附加组件的选项面板中如何配置额外的设置。默认情况下，会向用户显示一条警告消息和可选的警告音让用户有机会重新考虑那封电子邮件的发送。这个选项可以被更改成直接禁止那封电子邮件的发送。">
+<!ENTITY helpText.composingEmailHeading "当撰写电子邮件时">
+<!ENTITY helpText.detailsText4 "默认情况下，Thunderbird 创建新的和转发消息时始终把收件人地址放在TO。有了本附加组件，您就可以选择更改此设置，从收件人位置(TO)改成抄送(CC)或者密送(BCC)。这样，当 Thunderbird 撰写窗口打开是会使用新的设置，首个收件人或者空白的地址会放在选定的位置上。">
+<!ENTITY helpText.detailsText5 "有时您可能想要更改一个消息的所有接收者，从 TO 改成 CC 或者 BCC。默认情况下，Thunderbird 需要您准个对其进行更改。本附加组件可以提供这样的更改方式，从下列位置您可以找到：">
+<!ENTITY helpText.optionsMenu "撰写窗口的选项菜单上的菜单项">
+<!ENTITY helpText.contextMenu "撰写窗口的上下文菜单上的菜单项">
+<!ENTITY helpText.toolbarButton "您可以拖拽一个按钮到撰写窗口的工具栏">
+<!ENTITY helpText.viewingThreadPaneHeading "当在 Thunderbird 的话题面板中查看电子邮件头时">
+<!ENTITY helpText.detailsText6 "默认情况下，当发送一封只包含密送接收者的电子邮件时，Thunderbird 会添加一个名为“undisclosed-recipients:;”的TO接收者。这会显示在发件箱和类似文件夹的标准的接收者栏中（右上部的面板）。这个信息并没有多大用，用户可能更想看到密送接收者的名单而不是这个。">
+<!ENTITY helpText.detailsText7 "因此在 Thunderbird 2.x 以上的版本，本附加组件在话题面板提供了一个新的定制列，它被称为“Recipients-Extended”（增强版接收者），它代替了标准的收件人列。只要添加到发件箱或者类似的文件夹，这个列就会显示：TO接收者（除非是“undisclosed-recipients:;”）或CC抄送或BCC密送接收者。">
+<!ENTITY helpText.optionsHeading "选项：">
+<!ENTITY helpText.optionsText "本附加组件提供两个供用户配置的选项控制其行为。这可以很容易的通过内置的附加组件选项对话框操作。要访问这个对话框，到工具菜单并选择“附加组件”。您将看到已安装附加组件的列表，然后在该列表中选择“Use Bcc Instead”（如果没有，表明安装没有成功）。然后只需按下选项按钮。这些选项不需要重新启动 Thunderbird 即可生效。">
+
+
