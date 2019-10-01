@@ -1,0 +1,193 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://zombiekeys/locale/options.dtd" >
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<!--  tb 59 -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css" ?>
+<!--  tb 68, for groupbox -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css" ?>
+
+<?xml-stylesheet href="chrome://zombieKeyShims/content/zombiekeys.css" type="text/css"?>
+<?xml-stylesheet href = "chrome://zombiekeys/content/zombiekeys-options.css" title = "zkOptionsStyles2" type = "text/css"?>
+
+
+<dialog 
+	id = "zk-options"
+	xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	title = "&zk.prefwindow.options;"
+	buttons = "accept,cancel"
+	onload = "ZombieKeys.Options.load();"
+>
+<!--	ondialogaccept = "ZombieKeys.Options.accept();"
+	ondialogcancel = "ZombieKeys.Options.close();" -->
+
+
+<script type = "application/javascript" src = "chrome://zombiekeys/content/zombiekeys-overlay.js" />
+<script type = "application/javascript" src = "chrome://zombiekeys/content/zombiekeys-prefs.js"/>
+<script type = "application/javascript" src = "chrome://zombiekeys/content/zombiekeys-util.js"/>
+<script type = "application/javascript" src = "chrome://zombiekeys/content/zombiekeys-options.js"/>
+
+
+  <prefpane id="zombiePrefs">
+	<preferences>
+		<preference id = "boolMapping" name = "extensions.zombiekeys.showMapping" type = "bool"/>
+		<preference id = "boolDebug" name = "extensions.zombiekeys.debug" type = "bool"/>
+		<preference id = "boolCedilla" name = "extensions.zombiekeys.subComma" type = "bool"/>
+	</preferences>
+
+	<groupbox style = "margin-top:.2em; padding: 0.3em;" id = "prefSelectLayout">
+		<caption label = "&zk.prefwindow.keyboardLayout;"/>
+		<vbox>
+			<label value = "&zk.prefwindow.keyboardLayout.instructions;" />
+			<!-- onselect appears to get triggered in Tb68 by something before the load event -->
+			<richlistbox 
+				id = "Layouts" 
+				seltype = "single" 
+				onchange = "ZombieKeys.Options.selectLayout(this.selectedItem.value, window);" >
+			  <richlistitem value = "us_int">
+					<description>&zk.prefwindow.layout.US;</description>
+				</richlistitem>
+			  <richlistitem value = "us_dvorak" label = "&zk.prefwindow.layout.US_Dvorak;">
+					<description>&zk.prefwindow.layout.US_Dvorak;</description>
+				</richlistitem>
+			  <richlistitem value = "uk" label = "&zk.prefwindow.layout.UK;">
+					<description>&zk.prefwindow.layout.UK;</description>
+				</richlistitem>
+			  <richlistitem value = "irl" label = "&zk.prefwindow.layout.IRL;">
+					<description>&zk.prefwindow.layout.IRL;</description>
+				</richlistitem>
+			  <richlistitem value = "es" label = "&zk.prefwindow.layout.ES;">
+					<description>&zk.prefwindow.layout.ES;</description>
+				</richlistitem>
+			  <richlistitem value = "fr" label = "&zk.prefwindow.layout.FR;">
+					<description>&zk.prefwindow.layout.FR;</description>
+				</richlistitem>
+			  <richlistitem value = "it" label = "&zk.prefwindow.layout.IT;">
+					<description>&zk.prefwindow.layout.IT;</description>
+				</richlistitem>
+			  <richlistitem value = "de" label = "&zk.prefwindow.layout.DE;">
+					<description>&zk.prefwindow.layout.DE;</description>
+				</richlistitem>
+			  <richlistitem value = "sv" label = "&zk.prefwindow.layout.SV;">
+					<description>&zk.prefwindow.layout.SV;</description>
+				</richlistitem>
+			  <richlistitem value = "ru" label = "&zk.prefwindow.layout.RU;">
+					<description>&zk.prefwindow.layout.RU;</description>
+				</richlistitem>
+			  <richlistitem value = "hu" label = "&zk.prefwindow.layout.HU;">
+					<description>&zk.prefwindow.layout.HU;</description>
+				</richlistitem>
+			</richlistbox>
+			<div id = "layoutImage" class = "layout-us_int" >
+			</div>
+			<hbox>
+			    <vbox>
+					<checkbox id = "checkMapping"
+						preference = "boolMapping"
+						label = "&zk.prefwindow.mapping.label;"
+						accesskey = "&zk.prefwindow.mapping.shortcut;"
+						tooltiptext = "&zk.prefwindow.mapping.tooltip;"
+						/>
+					<checkbox id = "checkCedilla"
+						preference = "boolCedilla"
+						label = "&zk.prefwindow.subComma.label;"
+						accesskey = "&zk.prefwindow.subComma.shortcut;"
+						tooltiptext = "&zk.prefwindow.subComma.tooltip;"
+						/>
+					<hbox style = "vertical-align:top;">
+						<checkbox id = "checkDebug"
+							preference = "boolDebug"
+							label = "&zk.prefwindow.Debug.label;"
+							oncontextmenu = "ZombieKeys.Util.showAboutConfig('zombiekeys.debug');return false;"
+							oncommand = "ZombieKeys.Options.setDebug(this);"
+							accesskey = "&zk.prefwindow.Debug.shortcut;"
+							tooltiptext = "&zk.prefwindow.Debug.tooltip;"
+							/>
+				    <spacer flex="1" />
+						<button id="btnCustomize"
+										collapsed="true"
+										label="&zk.prefwindow.customizeButton; &#9654;"
+										oncommand = "ZombieKeys.Options.startCustomize();"/>
+					</hbox>
+				</vbox>
+			</hbox>
+		</vbox>
+	</groupbox>
+	
+	<groupbox style = "margin-top:.2em; padding: 0.3em;" id = "prefEditLayout" collapsed="true">
+		<caption label = "&zk.prefwindow.customizeLayoutGroup;"/>
+		<label id="callForDevs"
+		       value="This is still Work in Progress! Programmers are welcome to help me with this!"/>
+		<hbox>
+		<label id="currentLayoutName">US keyboard</label>
+		</hbox>
+		<listbox id="deadKeyList" 
+				 rows="8"
+				 onselect="ZombieKeys.Options.selectDeadKey(this);">
+			<listitem value="1" label="1 - This is just example data..." />
+			<listitem value="2" label="2 - if you see this, you have to select" />
+			<listitem value="3" label="3 - a keyboard layout from the previous page" />
+		</listbox>
+		<groupbox id = "editDeadkeyPanel">
+		    <caption label = "&zk.prefwindow.editDeadKeyGroup;"/>
+			<hbox>
+				<button label="&zk.prefwindow.keyCode;" 
+						oncommand = "ZombieKeys.Options.captureKeyCode(false);"
+						tooltiptext = "&zk.prefwindow.keyCode.tooltip;"/>
+				<textbox id="txtKeyCode"
+						 style="max-width:5em; width:auto;"/>
+				<checkbox id="chkCTRL"
+					  label="&zk.prefwindow.modifier.CTRL;"/> 
+				<checkbox id="chkAlt"
+					  label="&zk.prefwindow.modifier.Alt;"/> 
+				<checkbox id="chkShift"
+					  label="&zk.prefwindow.modifier.Shift;"/>
+			</hbox>
+			<hbox class="excludeZombieKey">
+				<label value="&zk.prefwindow.Key;:"
+					   control="pushKey"
+					   class="txtLabel"/>
+				<textbox id="pushKey" 
+					     class="singleKey excludeZombieKey"/>
+				<label value="&zk.prefwindow.Alternative;:"
+					   control="otherKey"
+					   class="txtLabel"/>
+				<textbox id="otherKey"
+					     class="singleKey"
+						 tooltiptext="&zk.prefwindow.Alternative.tooltip;"/>
+				<spacer flex="1"/>
+			</hbox>
+			<hbox>
+				<label id="pressKeyInstructions" collapsed="true">&zk.prefwindow.pressKeyInstructions;</label>
+				<label id="pressKeyAgainInstructions" collapsed="true">&zk.prefwindow.pressKeyAgainInstructions;</label>
+				<spacer flex="1"/>
+				<button label="&zk.prefwindow.ResetBtn;"
+						oncommand = "ZombieKeys.Options.resetKey();"
+						tooltiptext = "&zk.prefwindow.ResetBtn.tooltip;"/>
+				<button label="&zk.prefwindow.DefineBtn;" 
+						oncommand = "ZombieKeys.Options.defineKey();"
+						tooltiptext = "&zk.prefwindow.DefineBtn.tooltip;"/>
+			</hbox>
+		</groupbox>
+		<hbox>
+		    <label value="Test Field:"/>
+			<textbox id="testPanel"
+					 tooltiptext="Try shortcuts + Zombie Keys here"
+					 flex="1"/>
+			<spacer flex="3" />
+			<button label="&#9664; &zk.prefwindow.customizeEndButton;"
+					oncommand = "ZombieKeys.Options.endCustomize();"/>
+		</hbox>
+		
+	</groupbox>
+  </prefpane>
+	
+	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
+	<script>
+	  ZombieKeys.Preferences.loadPreferences(); /* Tb 66 compatibility. Should be called _before_ DOMcontent Loaded event */
+	</script>
+	
+  
+</dialog>

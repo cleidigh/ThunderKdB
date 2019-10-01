@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<overlay id="zombiekeys-tabGroupHandler-main.xul" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="text/javascript"><![CDATA[ 
+window.addEventListener("load", 
+	function(event) {
+		// this code overrides the hardcoded shortcuts for changing tab groups from CTRL+(SHIFT)+' to ALT+...
+		// based on original code courtesy of Kent E. Soule
+		eval("if(TabView && TabView._setBrowserKeyHandlers) TabView._setBrowserKeyHandlers ="+TabView._setBrowserKeyHandlers.toString().replace('event.ctrlKey', '!event.ctrlKey').replace('!event.altKey','event.altKey'));
+	},false);
+]]></script>
+
+</overlay>

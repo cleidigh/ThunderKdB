@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "version": "68.0.1",
+  "name": "ExQuilla for Exchange",
+  "description": "Access to email and contacts using Microsoft Exchange Web Services",
+  "developer": {
+    "name": "Beonex",
+    "url": "https://www.exquilla.com"
+  },
+  "applications": {
+    "gecko": {
+      "strict_min_version": "60.5",
+      "strict_max_version": "68.*",
+      "id": "exquilla@mesquilla.com"
+    }
+  },
+  "icons": {
+    "16": "skin/letter-x-icon-16.png",
+    "48": "skin/letter-x-icon-48.png",
+    "64": "skin/letter-x-icon-64.png"
+  },
+  "default_locale": "en",
+  "options_ui": {
+    "page": "content/settings/settings.html",
+    "browser_style": false
+  },
+  "experiment_apis": {
+    "exquillaSettings": {
+      "schema": "webapi/exquilla/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "exquillaSettings"
+        ]],
+        "script": "webapi/exquilla/exquilla.js"
+      }
+    }
+  },
+  "legacy": true
+}

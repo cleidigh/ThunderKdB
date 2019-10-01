@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://zombieKeyShims/content/zombiekeys.css" type="text/css"?>
+<?xml-stylesheet href="chrome://zombiekeys/content/zombiekeys-toolbar.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+   <!ENTITY % localeDTD SYSTEM "chrome://zombiekeys/locale/menu.dtd">  %localeDTD;
+   <!ENTITY % keysDTD SYSTEM "chrome://zombiekeys/content/keys.dtd"> %keysDTD;
+]>
+
+<overlay id="zombiekeys-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/javascript" src="chrome://zombiekeys/content/zombiekeys-overlay.js"/>
+	<script type="application/javascript" src="chrome://zombiekeys/content/zombiekeys-prefs.js"/>
+	<script type="application/javascript" src="chrome://zombiekeys/content/zombiekeys-util.js"/>
+  <script type="application/javascript" src="chrome://zombiekeys/content/zombiekeys-composer.js"/>
+	
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="zombiekeys-strings" src="chrome://zombiekeys/locale/zombiekeys.properties"/>
+	</stringbundleset>
+
+	<!-- Toolbar -->
+	<toolbarpalette id="MsgComposeToolbarPalette">
+		<toolbarbutton 
+		  id="zombiekeys-toolbarbutton" 
+			class="toolbarbutton-1 AG"
+			label="ZombieKeys"
+			tooltiptext="&zk.button.tooltip;"
+			context="zombiekeys-toolbarbutton-menu"
+			onclick="ZombieKeys.showPopup(this,'zombiekeys-toolbarbutton-menu')"
+			oncontextmenu="ZombieKeys.showPopup(this,'zombiekeys-toolbarbutton-menu')"
+			>
+			<menupopup id="zombiekeys-toolbarbutton-menu" >
+				<menuitem id="zombiekeys-Summary"
+					label="&zk.menuitem.list;"
+					oncommand="ZombieKeys.showContentTab('http://zombiekeys.bolay.us/')"/>
+
+				<menuseparator />
+
+				<menuitem id="zombiekeys-deadkey-1"
+					label="&zk.menuitem.grave;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(1)" />
+
+				<menuitem id="zombiekeys-deadkey-2"
+					label="&zk.menuitem.acute;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(2)" />
+
+				<menuitem id="zombiekeys-deadkey-3"
+					label="&zk.menuitem.circumFlex;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(3)" />
+
+				<menuitem id="zombiekeys-deadkey-4"
+					label="&zk.menuitem.tilde;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(4)" />
+
+				<menuitem id="zombiekeys-deadkey-5"
+					label="&zk.menuitem.umlaut;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(5)" />
+
+				<menuitem id="zombiekeys-deadkey-6"
+					label="&zk.menuitem.ring;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(6)" />
+
+				<menuitem id="zombiekeys-deadkey-7"
+					label="&zk.menuitem.sharps_ae_oe;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(7)" />
+
+				<menuitem id="zombiekeys-deadkey-8"
+					label="&zk.menuitem.stroke;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(8)" />
+
+				<menuitem id="zombiekeys-deadkey-9"
+					label="&zk.menuitem.caron;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(9)" />
+
+				<menuitem id="zombiekeys-deadkey-10"
+					label="&zk.menuitem.cedilla;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(10)" />
+
+				<menuitem id="zombiekeys-deadkey-11"
+					label="&zk.menuitem.breve;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(11)" />
+
+				<menuitem id="zombiekeys-deadkey-12"
+					label="&zk.menuitem.ogonek;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(12)" />
+
+				<menuitem id="zombiekeys-deadkey-13"
+					label="&zk.menuitem.macron;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(13)" />
+
+				<menuitem id="zombiekeys-deadkey-14"
+					label="&zk.menuitem.overdot;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(14)" />
+
+				<menuitem id="zombiekeys-deadkey-15"
+					label="&zk.menuitem.underdot;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(15)" />
+
+				<menuitem id="zombiekeys-deadkey-16"
+					label="&zk.menuitem.doubleacute;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(16)" />
+
+				<menuitem id="zombiekeys-deadkey-17"
+					label="&zk.menuitem.circled;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(17)" />
+
+
+				<menuitem id="zombiekeys-deadkey-18"
+					label="&zk.menuitem.greek;"
+					class="zombie"
+					oncommand="ZombieKeys.awakeZombie(18)" />
+
+
+				<menuseparator />
+
+				<menuitem id="zombiekeys-alivekey-1"
+					label="&zk.menuitem.invQuestion;"
+					class="lazarus"
+					oncommand="ZombieKeys.fakeAliveKey(1)" />
+
+				<menuitem id="zombiekeys-alivekey-2"
+					label="&zk.menuitem.invExclaim;"
+					class="lazarus"
+					oncommand="ZombieKeys.fakeAliveKey(2)" />
+
+				<menuitem id="zombiekeys-alivekey-3"
+					label="&zk.menuitem.euro;"
+					class="lazarus"
+					oncommand="ZombieKeys.fakeAliveKey(3)" />
+
+				<menuseparator />
+				<menuitem id="zombiekeys-configuration"
+					label="&zk.menuitem.configuration;"
+					oncommand="ZombieKeys.viewOptions( )" />
+
+				<menuitem id="zombiekeys-howTo"
+					label="&zk.menuitem.howToUse;"
+					oncommand="ZombieKeys.showHowToUse()" />
+
+				<menuitem id="zombiekeys-Summary"
+					label="&zk.menuitem.list;"
+					oncommand="ZombieKeys.showContentTab('http://zombiekeys.bolay.us/')"/>
+
+				<menuitem id="zombiekeys-goSupport"
+					label="&zk.menuitem.goSupportPage;"
+					oncommand="ZombieKeys.gotoSupportPage()" />
+
+
+
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+	<!-- End Toolbar -->
+
+</overlay>

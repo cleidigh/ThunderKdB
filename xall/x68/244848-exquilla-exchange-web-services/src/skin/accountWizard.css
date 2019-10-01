@@ -1,0 +1,42 @@
+/* loading images */
+
+#exquillaManualURL #exquillaURLStatusImg {
+  width: 16px;
+  height: 16px;
+}
+
+#exquillaManualURL[status=loading] #exquillaURLStatusImg {
+  background: url("chrome://global/skin/icons/loading_16.png") no-repeat;
+}
+
+#exquillaManualURL[status=error] #exquillaURLStatusImg {
+  background: url("chrome://global/skin/icons/warning-16.png") no-repeat;
+}
+
+#exquillaManualURL[status=success] #exquillaURLStatusImg {
+  background: url("chrome://messenger/skin/icons/status.png") no-repeat;
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+
+#exquillaAutoURL #exquillaADStatusImg {
+  width: 16px;
+  height: 16px;
+}
+
+#exquillaAutoURL[status=loading] #exquillaADStatusImg {
+  background: url("chrome://global/skin/icons/loading_16.png") no-repeat;
+}
+
+#exquillaAutoURL[status=error] #exquillaADStatusImg {
+  background: url("chrome://global/skin/icons/warning-16.png") no-repeat;
+}
+
+#exquillaAutoURL[status=pending] #exquillaADStatusImg {
+  background: url("chrome://global/skin/icons/notloading_16.png") no-repeat;
+}
+
+#exquillaAutoURL[status=success] #exquillaADStatusImg {
+  background: url("chrome://messenger/skin/icons/status.png") no-repeat;
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+

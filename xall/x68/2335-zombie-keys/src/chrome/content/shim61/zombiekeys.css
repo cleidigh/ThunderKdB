@@ -1,0 +1,8 @@
+/* including bindings for THunderbird 68 and later where platformHTMLBindings.xml
+   is removed. see https://bugzilla.mozilla.org/show_bug.cgi?id=1419091#c57 */
+*:not(.excludeZombieKey) input {
+	/* let's exclude this and see what happens */
+  /*
+	-moz-binding: url("chrome://zombiekeys/content/inputzombie68.xml#inputzombie");
+	*/
+}

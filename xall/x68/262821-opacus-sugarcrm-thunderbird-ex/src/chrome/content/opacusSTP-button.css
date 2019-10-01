@@ -1,0 +1,38 @@
+/**********************************************************************
+ * Portions written by Opacus (C) Mathew Bland, Jonathan Cutting,
+ * Opacus Ltd.
+ * 
+ * This file is part of the Opacus SugarCRM Thunderbird Plugin.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is free software:you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with the Opacus SugarCRM Thunderbird Plugin.
+ * If not, see <http://www.gnu.org/licenses/>.
+ *********************************************************************/
+#opacusSTP-archive,
+#opacusSTP-send
+  {list-style-image: url("chrome://opacusSTP/content/images/button-1.png");}
+
+/* common style for all custom buttons */
+.custombutton                  
+  {-moz-image-region: rect( 0px 24px 24px  0px);}
+
+.custombutton:hover     
+  {-moz-image-region: rect(24px 24px 48px  0px);}
+
+[iconsize="small"] .custombutton
+  {-moz-image-region: rect( 0px 40px 16px 24px);}
+
+[iconsize="small"] .custombutton:hover
+  {-moz-image-region: rect(24px 40px 40px 24px);}

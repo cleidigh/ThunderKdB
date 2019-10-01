@@ -1,0 +1,29 @@
+{
+  "author": "Axel Grude",
+  "manifest_version": 2,
+  "name": "Zombie Keys",
+	"description": "Bring dead keys to life: accented letters made easy!",
+  "version": "2.22",
+  "developer": {
+	  "name": "Axel Grude",
+    "url": "http://zombiekeys.mozdev.org/index.html"
+	},
+  "applications": {
+    "gecko": {
+      "id": "zombiekeys@bolay.de",
+      "strict_min_version": "60.0",
+      "strict_max_version": "68.*"
+    }
+  },
+  "icons": {
+    "32": "chrome/content/zombiekeys.png",
+    "64": "chrome/content/zombiekeys64.png"
+  },
+	
+  "legacy": {
+    "options": {
+      "page": "chrome://zombiekeys/content/zombiekeys-options.xul",
+      "open_in_tab": false
+    }
+  }	
+}

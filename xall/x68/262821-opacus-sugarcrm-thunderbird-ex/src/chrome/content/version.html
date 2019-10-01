@@ -1,0 +1,189 @@
+<html>
+<head>
+<link rel="shortcut icon" href="chrome://opacusSTP/content/images/icon.png" type="image/png" />
+<title>Opacus Help</title>
+<style type='text/css'>
+body {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #4A6414;
+}
+a:hover {
+	color: #698829;
+}
+h4.bullet {
+	margin-top: 3em;
+	background-image: url('chrome://opacusSTP/content/images/icon.png');
+	background-repeat: no-repeat;
+	-moz-background-size: 16px 16px;
+	background-size: 16px 16px;
+	padding-left: 22px;
+}
+div.info {
+	display: inline-block;
+	max-width: 60%;
+	-moz-border-radius: 5px;
+	border: 1px solid #F08686;
+	padding:1em;
+	font-size: .8em;
+}
+</style>
+</head>
+<body>
+<div style='font-family: Tahoma, Helvetica, sans-serif;display: block; height:175px;background-image: url("chrome://opacusSTP/content/images/header-bg.png");background-repeat: repeat-x;'>
+<a href='http://www.opacus.co.uk'><img style='border: 0;margin: 2em;' src='chrome://opacusSTP/content/images/framework_logo.png' /></a>
+</div>
+<div style='display:block; text-align: right; font-style: italic; font-size: .8em;padding: .3em;'>Follow us on
+<a href='http://twitter.com/opacussolutions'>Twitter</a></div>
+<div style='padding: 1.5em;'>
+<h2>Welcome to version 1.6.7 of the Opacus SugarCRM Thunderbird Extension Standard</h2>
+
+
+
+<div style='border-radius: 10px; border: 3px solid #86AE30;background-color: #fcfcf2; padding:1.5em; margin: 1em 0 .5em 1em;font-size: .9em;float: right; width: 40%;'>
+<h3 style='border-bottom: 1px solid #555;'><img src='chrome://opacusSTP/content/images/icon.png' /> Opacus News</h3>
+
+<h4>Opacus SugarCRM Thunderbird Professional Edition</h4>
+<p>The Opacus Thunderbird Professional extension is now available with these great features:</p>
+<ul>
+<li>Automatically archive incoming and outbound mail</li>
+<li>Support for custom modules</li>
+<li>Contact and Lead address book synchronisation</li>
+<li>Create SugarCRM Contacts, Leads, Accounts, Opportunities, Cases, Bugs and Tasks from within Thunderbird</li>
+<li>Quick edit SugarCRM records</li>
+</ul>
+
+<p>Please visit <a href='http://www.opacus.co.uk/opacus-thunderbird-extensions'>the Thunderbird page</a> at the Opacus website for details.</p>
+
+<h4>Opacus SugarCRM Activities Sync, the perfect partner for Thunderbird and Lightning</h4>
+<p>Brings much needed CalDAV support to SugarCRM for all your mobile devices and the popular Lightning calendar in Thunderbird.</p>
+<p>Please visit <a href='http://opacus.co.uk/sugarcrm-activities-sync'>the product page</a> for details.</p>
+
+<h4>Opacus Outlook extension - for those who haven't yet seen the light!</h4>
+<p>The Opacus Outlook extension is available in Lite and Professional versions. See the <a href="http://www.opacus.co.uk/">Opacus homepage</a> for details.</p>
+
+
+<p>For more information about these products please contact
+<a href="mailto:sales@opacus.co.uk">sales@opacus.co.uk</a> or visit
+<a href='http://www.opacus.co.uk/'>www.opacus.co.uk</a>.</p>
+</div>
+
+<div style="width: 80%;padding: .5em;">
+
+<h3>Help and Documentation</h3>
+
+<p style='font-style:italic;font-size:.8em;'>Access this page at any time by selecting Help > Opacus Help</p>
+
+<h4 class='bullet'>After Installation</h4>
+<p>After installing the extension, you will need to enter your SugarCRM URL, username and password into the settings
+dialog box. Click on Tools, then Opacus SugarCRM Settings. In the URL box put your SugarCRM address, for instance:
+http://sugarserver.com/sugarcrm. Put your username and password in the respective boxes (the username is not case
+sensitive).</p>
+
+<p>You can choose here if you would like a notification when new mail arrives in your Inbox. This uses the
+libnotify library on some Linux distributions which can be more appealing than the default notification.</p>
+
+
+<div class='info'>
+<p style="font-weight: bold">Important Information for Mac users</p>
+<p>The extension uses the popular Growl notification service, available <a href="http://growl.info/">here.</a> The
+extension will function silently if the service is unavailable.</p>
+</div>
+
+<p>A further setting allows you to choose whether the subject line of the email is parsed for case numbers.
+The Case module needs to be selected in the Search window for this function to work.</p>
+
+
+<h4 class='bullet'>Additional Buttons</h4>
+
+<p>Two additional buttons are available for ease of use. The first button can be added to the Thunderbird main
+window and the second, Send and Archive, is for the compose window. If these buttons are not added automatically
+the first time you run Thunderbird after install, simply right-click on the respective
+toolbars, click Customise and drag the buttons to the toolbars.</p>
+
+<h4 class='bullet'>In use</h4>
+<p>To archive one or more emails in a folder, select them and either right-click one of the selected messages
+and choose 'Archive email(s) to SugarCRM', or click the Archive button mentioned above. The search window will
+appear with a search suggestion already in place. You can search for:</p>
+<ul>
+<li>Email addresses</li>
+<li>Case numbers</li>
+<li>First names</li>
+<li>Last names</li>
+<li>Full names (use a single space between first and last)</li>
+<li>Names of SugarCRM Objects, such as the name of an Opportunity</li>
+</ul>
+
+<p>You can use a % character as a wildcard, for instance %@mydomain.com will search for all email addresses
+at the domain mydomain.com and Nat% will find Natasha, Natalia, Nathan and so on.</p>
+
+<p>Either use the suggested search or input your own, then click Search. The results will be returned from the modules
+selected in the available Modules pane. Once you have found the record you would like to archive against, choose whether or not
+to archive the attachments using the checkbox at the bottom of the Search pane, and click Archive. A notification
+will inform you when the archive is complete.</p>
+
+<p>Many thanks to our volunteer translators:</p>
+<ul>
+    <li>Robert Laussegger (de-DE) <a href="http://www.iscongroup.net/">Iscon Group</a></li>
+    <li>Jørn Skifter Andersen (da-DK) <a href="http://bellcom.dk/">Bellcom</a></li>
+    <li>Marco Buttafoco (it-IT)</li>
+    <li>Vincent Rollin (fr-FR) <a href="http://www.synolia.com">Synolia</a></li>
+    <li>Cristóbal Bonillo (es-ES) <a href="http://www.seyte.com/">Seyte, S.L.</a></li>
+    <li>Adelino Paulo Carvalho (pt)</li>
+    <li>Yasushi Nakamura (ja) <a href="http://http://www.madewithmarmalade.com/">Marmalade</a></li>
+</ul>
+<p>For bug reports or to assist with localisation of this extension, please contact
+<a href="mailto:support@opacus.co.uk">support@opacus.co.uk</a></p>
+
+<p>Opacus community plugins and extensions are sponsored by SugarCRM's leading UK Elite Partner <a href="http://www.enable.services">Enable Technologies</a></p>
+
+<p style='font-size:.8em;margin-top: 3em;'>Release Notes:
+
+<ul style='font-size:.8em;'>
+<li>1.6.7: Support for Thunderbird 63+.</li>
+<li>1.6.6: Fix bug when archiving attachments.</li>
+<li>1.6.5: Fix broken preferences window for Thunderbird 60 support.</li>
+<li>1.6.4: Handle SugarCRM v8 email attachment changes.</li>
+<li>1.6.3: Use JSON for attachment upload.</li>
+<li>1.6.2: Support up to Thunderbird 51.</li>
+<li>1.6.1: Handle changes to the Thunderbird headers api.</li>
+<li>1.6.0: Handle search strings containing multiple apostrophes.</li>
+<li>1.5.9: Add Japanese translation. Decrypt mail prior to archive where possible.</li>
+<li>1.5.8: Handle notification issue on Windows running Thunderbird 17 and up.</li>
+<li>1.5.7: Handle error where Pro extension not found on startup.</li>
+<li>1.5.6: Fix bug with attachment names containing exclamation marks. Added Portuguese language strings.</li>
+<li>1.5.5: Fix regression in 1.5.4 causing notifications to fail.</li>
+<li>1.5.4: Update module list display in search. Support Thunderbird 9. Added Spanish and French language strings.</li>
+<li>1.5.3: Handle utf8 characters in attachment filenames. Add Italian translation.</li>
+<li>1.5.2: Change complex pref types to char prefs to avoid exception on first run when preferences not set.</li>
+<li>1.5.1: Add debugging info to Error Console, added new filter to email body parser, skip attempts to archive zero-length attachments. Add support for Thunderbird 6.0</li>
+<li>1.5.0: Add German and Danish language strings.</li>
+<li>1.4.9: Add support for LDAP, fix bug on servers with underloaded REST function, dramatically speed up attachment archiving</li>
+<li>1.4.8: Restored default accept button on options window as preferences were not being saved correctly on Windows</li>
+<li>1.4.7: Remove dependency on Growl for Mac OS X</li>
+<li>1.4.6: Fixed problem on first run after upgrade where restart was required</li>
+<li>1.4.5: Fixed bug where attachments not properly archived</li>
+<li>1.4.4: Fixed bug where inbound mails not tagged</li>
+<li>1.4.3: Support for extra European characters. Restored Re: to subject line in emails</li>
+<li>1.4.2: Handle redirects to https, allow apostrophes in search string and results</li>
+<li>1.4.1: Use Thunderbird secure password manager for SugarCRM password storage</li>
+<li>1.4: Fixed bug where search window had not authenticated properly with SugarCRM</li>
+</ul>
+</p>
+<p style='font-size:.8em;margin-top: 3em;'>Known Issues:
+
+<ul style='font-size:.8em;'>
+<li>Tagging of outbound mail with an Exchange 2007 server. The Opacus extension uses a custom header to determine
+when a message has been archived to SugarCRM, but the default behaviour of Exchange 2007 is not to reveal the custom
+headers over IMAP/POP. This behaviour can be altered using the Set-TransportConfig directive to change the
+HeaderPromotionModeSetting to MayCreate, but does not affect the extension in any other way than to stop outbound
+archived mails from being tagged.</li>
+</ul>
+</p>
+</div>
+</div>
+</body>
+</html>

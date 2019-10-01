@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**********************************************************************
+ * Portions written by Opacus (C) Mathew Bland, Jonathan Cutting,
+ * Opacus Ltd.
+ * 
+ * This file is part of the Opacus SugarCRM Thunderbird Plugin.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is free software:you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with the Opacus SugarCRM Thunderbird Plugin.
+ * If not, see <http://www.gnu.org/licenses/>.
+ *********************************************************************/
+ -->
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://opacusSTP/locale/about.dtd">
+
+<dialog title="&about; Opacus SugarCRM Thunderbird Extension Standard" orient="vertical" autostretch="always" onload="sizeToContent()" buttons="accept" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <groupbox align="center" orient="horizontal">
+    <vbox>
+      <text value="Opacus SugarCRM Thunderbird Extension Standard" style="font-weight: bold; font-size: large;"/>
+      <text value="&version; 1.6.7"/>
+      <separator class="thin"/>
+      <text value="&createdBy;" style="font-weight: bold;"/>
+      <text value="Opacus Solutions Ltd ©2009-2018"/>
+      <separator class="thin"/>
+    </vbox>
+  </groupbox>
+</dialog>

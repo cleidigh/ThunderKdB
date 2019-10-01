@@ -1,0 +1,108 @@
+#currentLayoutName {
+  background: rgb(56,56,56);
+  border: 1px solid #BBBBBB;
+  color: #DDDDDD;
+  padding: 5px;
+}
+
+#pressKeyInstructions, #pressKeyAgainInstructions {
+  background: rgb(162,0,0);
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  padding: 5px 10px;
+}
+
+.singleKey {
+  width: 2em !important;
+  max-width: 2em !important;
+  text-align: center;
+}
+
+.txtLabel {
+  padding-top: 0.45em;
+}
+
+#Layouts {
+	min-height: 5em;
+	max-height: 155px;	
+}
+
+#editDeadkeyPanel {
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.13) 0%, rgba(112,112,112,0.65) 100%);
+}
+
+#prefSelectLayout, #prefEditLayout {
+  margin-top: 1em;
+}
+#callForDevs {
+  color: rgb(120,0,0);
+	font-size: 11px;
+	font-weight: bold;
+	animation: color-change 5s infinite;
+}
+
+@keyframes color-change {
+    0% { color: rgb(120,0,30); }
+    50% { color: rgb(50,0,120); }
+    100% { color: rgb(120,0,30); }
+}
+
+
+/* moved from main css file */
+#layoutImage {
+	border: 1px solid #AAA;
+	display: block;
+	height: 133px !important;
+	padding: 10px;
+	width: 420px !important;
+	background-repeat: no-repeat;
+	text-align:center;
+}
+
+/* keyboard layouts from  en.wikipedia.org/wiki/Keyboard_layout */
+/* reusable under GNU license */
+#layoutImage.layout-irl {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_ireland.png") !important;
+}
+
+#layoutImage.layout-uk {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_united_kingdom.png") !important;
+}
+
+#layoutImage.layout-us_int {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_us_international.png") !important;
+}
+
+#layoutImage.layout-us_dvorak {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_us_dvorak.png") !important;
+}
+
+#layoutImage.layout-fr {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_france.png") !important;
+}
+
+#layoutImage.layout-it {
+	background-image: url("chrome://zombiekeys/skin/layouts/tb_it_italy.png") !important;
+}
+
+#layoutImage.layout-de {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_de_germany.png") !important;
+}
+
+#layoutImage.layout-sv {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_sv_swedish.png") !important;
+}
+
+#layoutImage.layout-ru {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_russia.png") !important;
+}
+
+#layoutImage.layout-hu {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_hungary.png") !important;
+}
+
+#layoutImage.layout-es {
+	background-image: url("chrome://zombiekeys/skin/layouts/kb_es_querty.png") !important;
+}
+
+

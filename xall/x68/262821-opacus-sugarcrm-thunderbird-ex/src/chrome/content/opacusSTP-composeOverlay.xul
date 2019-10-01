@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**********************************************************************
+ * Portions written by Opacus (C) Mathew Bland, Jonathan Cutting,
+ * Opacus Ltd.
+ * 
+ * This file is part of the Opacus SugarCRM Thunderbird Plugin.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is free software:you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with the Opacus SugarCRM Thunderbird Plugin.
+ * If not, see <http://www.gnu.org/licenses/>.
+ *********************************************************************/
+ -->
+<?xml-stylesheet type="text/css" href="chrome://opacusSTP/content/opacusSTP-button.css"?>
+<overlay id="sample" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<stringbundleset id="stringbundleset">
+<stringbundle id="opacus_strings" src="chrome://opacusSTP/locale/strings.properties"/>
+</stringbundleset>
+<script src="chrome://opacusSTP/content/opacusSTP-compose.js"/>
+<toolbarpalette id="MsgComposeToolbarPalette">
+  <toolbarbutton id="opacusSTP-send"
+  label="Send+Archive"
+  tooltiptext="Archive to SugarCRM before sending"
+  oncommand="opacusSTPsendObserver.parentWindow.opacusSTP.sendAndArchive(window);"
+  class="toolbarbutton-1 chromeclass-toolbar-additional custombutton"
+  />
+</toolbarpalette>
+</overlay>

@@ -1,0 +1,50 @@
+[{
+  "namespace": "exquillaSettings",
+  "functions": [{
+    "name": "anyExQuillaAccountConfigured",
+    "type": "function",
+    "description": "Determines whether any ExQuilla accounts exist",
+    "async": "true",
+    "parameters": []
+  }, {
+    "name": "openManualAccountCreation",
+    "type": "function",
+    "description": "Opens the ExQuilla account creation wizard",
+    "async": true,
+    "parameters": []
+  }, {
+    "name": "openPurchasePage",
+    "type": "function",
+    "description": "Opens a browser with the ExQuilla purchase page",
+    "async": true,
+    "parameters": []
+  }, {
+    "name": "addTicketFromString",
+    "type": "function",
+    "description": "Manually enters an ExQuilla ticket",
+    "async": true,
+    "parameters": [{
+      "name": "ticket",
+      "type": "string",
+      "description": "The manually entered ticket"
+    }]
+  }, {
+    "name": "checkLicense",
+    "type": "function",
+    "description": "Checks the ExQuilla licence",
+    "async": true,
+    "parameters": []
+  }, {
+    "name": "fetchTicket",
+    "type": "function",
+    "description": "Rechecks the ExQuilla licence from the licence server",
+    "async": true,
+    "parameters": []
+  }],
+  "events": [{
+    "name": "onLicenseChecked",
+    "type": "function",
+    "description": "A notification when a licence ticket is updated",
+    "parameters": []
+  }]
+}]

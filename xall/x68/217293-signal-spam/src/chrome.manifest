@@ -1,0 +1,8 @@
+content     signalspam    chrome/content/
+locale signalspam en-US chrome/locale/en-US/
+locale signalspam fr-FR chrome/locale/fr-FR/
+skin signalspam classic/1.0 chrome/skin/classic/
+style chrome://global/content/customizeToolbar.xul  chrome://signalspam/skin/sspam.css appversion<59.0a1
+style chrome://messenger/content/customizeToolbar.xul  chrome://signalspam/skin/sspam.css appversion>=59.0a1
+overlay chrome://messenger/content/messenger.xul chrome://signalspam/content/signalspam-messenger.xul
+overlay chrome://messenger/content/messageWindow.xul chrome://signalspam/content/signalspam-messageWindow.xul

@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/prefPanels.css" type="text/css"?>
+<?xml-stylesheet href="chrome://signalspam/skin/prefPanels.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://signalspam/locale/settings.dtd">
+
+<prefwindow id="signalspam-preferences"
+            instantApply="false"
+            title="&signalspam.title.label;"
+            buttons="extra1,extra2"
+            buttonlabelextra1="&signalspam.pref.okbutton;"
+            buttonlabelextra2="&signalspam.pref.cancelbutton;"
+            ondialogextra1="return validPrefs(false);"
+            ondialogextra2="return cancelPrefs(false);"
+            ondialogaccept="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return validPrefs(true);"
+            ondialogcancel="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return cancelPrefs(true);"
+            image="chrome://signalspam/skin/icon48.png"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            height="650"
+            width="900"
+            style="overflow: auto;">
+
+    <script type="application/x-javascript" src="chrome://signalspam/content/specific/signalspam/extensionConfig.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/include/verifrom_api.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/settings.js"/>
+
+    <prefpane id="signalspam-pref-pane"
+            image="chrome://signalspam/skin/icon48.png"
+            label="&signalspam-pref-pane-label;"
+            style="overflow: auto;">
+    <preferences>
+      <preference id="signalspam_pref_userid"
+                  instantApply="false"
+                  name="extensions.signalspam.userid"
+                  type="string"
+                  defaultValue=""/>
+      <preference id="signalspam_pref_password"
+                  instantApply="false"
+                  name="extensions.signalspam.password"
+                  defaultValue=""
+                  type="string"/>
+      <preference id="signalspam_pref_cgu"
+                  instantApply="false"
+                  name="extensions.signalspam.cgu"
+                  type="bool"
+                  defaultValue="false"/>
+      <preference id="signalspam_pref_oneclick"
+                  instantApply="false"
+                  name="extensions.signalspam.oneclick"
+                  type="bool"
+                  defaultValue="false"
+                  hidden="true"/>
+      <preference id="signalspam_pref_urldetect"
+                  instantApply="false"
+                  name="extensions.signalspam.urldetect"
+                  type="bool"
+                  defaultValue="true"/>
+        <preference id="signalspam_pref_movereport"
+                    instantApply="false"
+                    name="extensions.signalspam.movereport"
+                    type="bool"
+                    defaultValue="true"/>
+        <preference id="signalspam_pref_spambtonactive"
+                    instantApply="false"
+                    name="extensions.signalspam.spambtonactive"
+                    type="bool"
+                    defaultValue="true"/>
+        <preference id="signalspam_pref_userauthentified"
+                    instantApply="false"
+                    name="extensions.signalspam.userauthentified"
+                    type="bool"
+                    defaultValue="false"
+                    hidden="true"/>
+        <preference id="signalspam_pref_firsttime"
+                    instantApply="false"
+                    name="extensions.signalspam.firsttime"
+                    type="bool"
+                    defaultValue="false"
+                    hidden="true"/>
+        <preference id="signalspam_pref_lastversion"
+                    instantApply="false"
+                    name="extensions.signalspam.lastversion"
+                    type="string"
+                    defaultValue=""
+                    hidden="true"/>
+    </preferences>
+    <tooltip id="useridtooltip" orient="vertical" style="background-color: #33DD00;">
+      <label value="&signalspam.userid.tooltip;"/>
+    </tooltip>
+    <tooltip id="oneclicktooltip" orient="vertical" style="background-color: #33DD00;">
+      <label value="&signalspam.oneclick.tooltip;"/>
+    </tooltip>
+    <tooltip id="urldetecttooltip" orient="vertical" style="background-color: #33DD00;">
+      <label value="&signalspam.urldetect.tooltip;"/>
+    </tooltip>
+    <tooltip id="passwordtooltip" orient="vertical" style="background-color: #33DD00;">
+      <label value="&signalspam.password.tooltip;"/>
+    </tooltip>
+    <tooltip id="movereporttooltip" orient="vertical" style="background-color: #33DD00;">
+        <label value="&signalspam.movereport.tooltip;"/>
+    </tooltip>
+    <tooltip id="spambtonactivetooltip" orient="vertical" style="background-color: #33DD00;">
+        <label value="&signalspam.spambtonactive.tooltip;"/>
+    </tooltip>
+
+    <notificationbox>
+      <notification id="notify-invalidcredentials" type="critical" priority="10" label="&signalspam-invalidcredentials;" hidden="true"/>
+      <notification id="notify-invaliduserid" type="warning" priority="10" label="&signalspam-invaliduserid;" hidden="true"/>
+      <notification id="notify-notauthentified" type="warning" priority="10" label="&signalspam-notauthentified;" hidden="true"/>
+    </notificationbox>
+
+    <hbox align="center" pack="center">
+      <image id="logo" src='chrome://signalspam/skin/icon48.png' width='48' height='48'/>
+      <caption id="title" label="&signalspam-pref-pane-label;"/>
+    </hbox>
+    <description class="intro" width="50">
+      &signalspam-intro;
+    </description>
+    <separator class="thin"/>
+    <groupbox id="credentials" align="start">
+      <caption label="&signalspam.credentials.label;"/>
+      <grid id="grid-credentials" height="100%" width="100%">
+        <columns>
+          <column width="20%"/>
+          <column width="80%"/>
+        </columns>
+        <rows>
+          <row>
+            <label control="userid" value="&signalspam.userid.label;"/>
+            <textbox preference="signalspam_pref_userid" id="userid"
+                     placeholder="&signalspam.userid.placeholder;"
+                     tooltip="useridtooltip"
+                     size="20" maxlength="20"
+                     tabindex="1"
+                     onchange="checkUserId();"/>
+          </row>
+          <row>
+            <label control="password" value="&signalspam.password.label;"/>
+            <textbox preference="signalspam_pref_password" id="password"
+                     size="20" maxlength="128"
+                     type="password"
+                     tooltip="passwordtooltip"
+                     onchange="hideNotifications();"
+                     tabindex="2"/>
+          </row>
+          <row>
+              <label></label>
+              <hbox>
+                <description class="desc" width="400">
+                &signalspam-forgotpwd;
+                <label value="&signalspam-linkresetpwd;" class="text-link" href="https://signalants.signal-spam.fr/password/new"/>
+                </description>
+              </hbox>
+          </row>
+        </rows>
+      </grid>
+    </groupbox>
+    <separator class="thin" orient="vertical"/>
+    <groupbox id="options" align="start" height="355" width="100%">
+      <caption label="&signalspam.options.label;"/>
+        <hbox hidden="true">
+          <label control="oneclick" value="&signalspam.oneclick.label;"/>
+          <checkbox preference="signalspam_pref_oneclick" id="oneclick"
+                    tooltip="oneclicktooltip"
+                    tabindex="4"/>
+        </hbox>
+        <description class="desc" hidden="true">&signalspam.oneclick.desc;</description>
+        <separator class="thin"/>
+        <hbox>
+          <label control="urldetect" value="&signalspam.urldetect.label;"/>
+          <checkbox preference="signalspam_pref_urldetect" id="urldetect"
+                      tooltip="urldetecttooltip"
+                      tabindex="5"/>
+        </hbox>
+        <description class="desc">&signalspam.urldetect.desc;</description>
+        <separator class="thin"/>
+        <hbox>
+            <label control="movereport" value="&signalspam.movereport.label;"/>
+            <checkbox preference="signalspam_pref_movereport" id="movereport"
+                      tooltip="movereporttooltip"
+                      tabindex="6"/>
+        </hbox>
+        <description class="desc">&signalspam.movereport.desc;
+            <label value="&signalspam-thunderbirdpreferences;" id="thunderbirdpreferences" class="text-link"/>
+        </description>
+        <description class="desc" hidden="true" id="manualMarkFalse" style="color:red;">&signalspam.manualMarkFalse.desc;</description>
+        <separator class="thin"/>
+        <hbox>
+            <image src='&signalspam.junkbutton.src;' style="height:2em;"/>
+            <label control="spambtonactive" value="&signalspam.spambtonactive.label;"/>
+            <checkbox preference="signalspam_pref_spambtonactive" id="spambtonactive"
+                      tooltip="spambtonactivetooltip"
+                      tabindex="6"/>
+        </hbox>
+        <description class="desc">&signalspam.spambtonactive.desc;</description>
+    </groupbox>
+    <separator class="thin"/>
+  </prefpane>
+</prefwindow>

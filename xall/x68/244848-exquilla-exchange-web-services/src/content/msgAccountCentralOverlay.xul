@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+ ***** BEGIN LICENSE BLOCK *****
+ * This file is part of ExQuilla by Mesquilla.
+ *
+ * Copyright 2013 R. Kent James. All Rights Reserved
+ *
+ * ***** END LICENSE BLOCK *****
+ */
+-->
+<?xml-stylesheet href="chrome://exquilla/skin/msgAccountCentralOverlay.css" type="text/css"?>
+<overlay id="exquilla-macOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <!-- script type="application/javascript" src="msgAccountCentralOverlay.js"/ -->
+  <vbox id="CreateAccountsList">
+    <label value="ExQuilla"
+           id="CreateAccountExquilla"
+           class="acctCentralNewAcctText acctCentralLinkText"
+           onclick='window.openDialog("chrome://exquilla/content/ewsAccountWizard.xul", "AccountWizard", "chrome,modal,titlebar,centerscreen", {});'
+    />
+  </vbox>
+</overlay>

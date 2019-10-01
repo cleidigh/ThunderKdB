@@ -1,0 +1,59 @@
+/**********************************************************************
+ * Portions written by Opacus (C) Mathew Bland, Jonathan Cutting,
+ * Opacus Ltd.
+ * 
+ * This file is part of the Opacus SugarCRM Thunderbird Plugin.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is free software:you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with the Opacus SugarCRM Thunderbird Plugin.
+ * If not, see <http://www.gnu.org/licenses/>.
+ *********************************************************************/
+treechildren::-moz-tree-checkbox(secondary)
+{
+  /* unchecked checkbox treecells. This style MUST come before treechildren::-moz-tree-checkbox(checked) otherwise it won't take effect. */
+  list-style-image: url("chrome://messenger/skin/icons/notchecked.gif");
+}
+treechildren::-moz-tree-checkbox(secondary,checked)
+{
+  /* checked checkbox treecells. cbox-check.gif isn't available in
+     Firefox 1, 2, and 3 in Mac OS X so you should specify a URL to an image
+     in your extension or elsewhere. */
+  list-style-image: url("chrome://messenger/skin/icons/check.gif");
+}
+treechildren::-moz-tree-checkbox(disabled)
+{
+  /* disabled checkbox treecells. cbox-check.gif isn't available in
+     Firefox 1, 2, and 3 in Mac OS X, so you should specify a URL to an image
+     in your extension or elsewhere.
+  list-style-image: url("chrome://global/skin/checkbox/cbox-check-dis.gif");*/
+  list-style-image: url("moz-icon://stock/format-text-bold?size=menu");
+}
+
+.resultCell {
+  margin: 0px !important;
+  padding: 0 0 0 5px;
+  white-space: nowrap;
+}
+
+.parentCell {
+  margin: 0px !important;
+  padding: 4px 0 1px 2px;
+  white-space: nowrap;
+  font-weight: bold;
+  border-bottom: 1px solid #bbb;
+}
+#feedbackBox {
+	padding: 6px 30px 0 20px;
+}

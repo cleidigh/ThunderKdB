@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://signalspam/skin/sspam.css" type="text/css"?>
+
+
+<!DOCTYPE overlay SYSTEM "chrome://signalspam/locale/sspam.dtd" >
+
+<overlay id="signalspam"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <!--<script type="application/x-javascript" src="chrome://signalspam/content/include/localforage.nopromises.min.js"/>-->
+    <script type="application/x-javascript" src="chrome://signalspam/content/include/URLCanonicalization.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/specific/signalspam/extensionConfig.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/include/verifrom_api.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/include/socket.io.min.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/background.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam-messenger.js"/>
+
+    <commandset>
+        <command id="cmd_signalspamReport" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_signalspamPreferences" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_signalspamSelfcare" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_signalspamFalsePositive" oncommand="goDoCommand(this.id);"/>
+    </commandset>
+
+    <popup id="mailContext">
+        <menuitem id="signalspam-ctx" label="&signalspam.toolbarbutton.label;" accesskey="&signalspam.accesskey;" command="cmd_signalspamReport"/>
+        <menuseparator id="signalspam-ctx-separator"/>
+    </popup>
+
+    <statusbar id="status-bar">
+        <statusbarpanel id="signalspam-statusbar"
+                        tooltiptext="&signalspam.progression.tooltip;"
+                        hidden="true">
+            <image src='chrome://signalspam/skin/icon48.png' width='20' height='20'/>
+            <progressmeter mode="undetermined"/>
+        </statusbarpanel>
+    </statusbar>
+
+    <toolbarpalette id="MailToolbarPalette">
+        <toolbarbutton id="signalspam-button" class="toolbarbutton-1" tooltiptext="&signalspam.toolbarbutton.tooltip;" type="menu-button"
+                       label="&signalspam.toolbarbutton.shortlabel;" command="cmd_signalspamReport">
+            <menupopup>
+                <menuitem label="&signalspam.toolbarbutton.label;" command="cmd_signalspamReport" tooltiptext="&signalspam.toolbarbutton.tooltip;"/>
+                <menuitem label="&signalspam.options.label;" command="cmd_signalspamPreferences" tooltiptext="&signalspam.options.tooltip;"/>
+                <menuitem label="&signalspam.selfcare.label;" command="cmd_signalspamSelfcare" tooltiptext="&signalspam.selfcare.tooltip;"/>
+            </menupopup>
+        </toolbarbutton>
+    </toolbarpalette>
+    <toolbar id="header-view-toolbar">
+        <toolbarbutton removable="true" id="signalspam-button-hdr"
+                       class="toolbarbutton-1 msgHeaderView-button hdrReplyToSenderButton" label="&signalspam.toolbarbutton.label;"
+                       tooltiptext="&signalspam.toolbarbutton.tooltip;" command="cmd_signalspamReport"/>
+    </toolbar>
+
+    <vbox id="folderPaneBox" persist="collapsed width height">
+        <splitter id="signalspam-folderpane-splitter" collapse="after" orient="vertical" persist="state" hidden="true"/>
+
+        <vbox id="sidebar-box" sidebarVisible="true" height="300" persist="sidebarVisible height" hidden="true">
+            <browser id="sidebar" flex="1" src=""/>
+        </vbox>
+    </vbox>
+
+    <hbox id="threadPaneBox" persist="collapsed width height">
+        <splitter id="signalspam-threadpane-splitter" collapse="after" orient="horizontal" persist="state"
+                  hidden="true"/>
+        <hbox id="signalspam-sidebar-box" sidebarVisible="true" width="300" persist="sidebarVisible width"
+              hidden="true">
+            <browser id="signalspam-sidebar" flex="1" src=""/>
+        </hbox>
+    </hbox>
+
+    <vbox id="singlemessage">
+        <notificationbox id="msgNotificationBar">
+            <notification
+                    id="signalspam-alert-notification"
+                    label="&signalspam.phishingalertTitle.text;"
+                    value="remoteContent" image="chrome://signalspam/skin/icon48.png"
+                    priority="10"
+                    type="critical"
+                    hidden="true">
+                <hbox class="notification-inner" flex="1" type="critical" hidden="false">
+                    <hbox anonid="details" align="center" flex="1"
+                          oncommand="this.parentNode.parentNode._doButtonCommand(event);">
+                        <description anonid="messageText"
+                                     class="messageText"
+                                     flex="1">
+                            &signalspam.phishingalert.text;
+                        </description>
+                        <toolbarbutton id="signalspam-button-alert" class="toolbarbutton-1 signalspam-report-phishing" tooltiptext="&signalspam.toolbarbutton.tooltip;" type="menu-button"
+                                       label="&signalspam.toolbarbutton.shortlabel;" command="cmd_signalspamReport">
+                            <menupopup>
+                                <menuitem label="&signalspam.toolbarbutton.label;" command="cmd_signalspamReport" tooltiptext="&signalspam.toolbarbutton.tooltip;"/>
+                                <menuitem label="&signalspam.falsepositivebutton.label;" command="cmd_signalspamFalsePositive" tooltiptext="&signalspam.falsepositivebutton.tooltip;"/>
+                            </menupopup>
+                        </toolbarbutton>
+                    </hbox>
+                </hbox>
+            </notification>
+        </notificationbox>
+    </vbox>
+</overlay>

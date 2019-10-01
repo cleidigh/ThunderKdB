@@ -1,0 +1,89 @@
+content	zombiekeys			chrome/content/
+locale	zombiekeys	en-US	chrome/locale/en-US/
+locale	zombiekeys	de   	chrome/locale/de/
+locale	zombiekeys	es   	chrome/locale/es/
+locale	zombiekeys	sv-SE	chrome/locale/sv-SE/
+locale	zombiekeys	tr   	chrome/locale/tr/
+locale	zombiekeys	fr   	chrome/locale/fr/
+locale	zombiekeys	it   	chrome/locale/it/
+locale	zombiekeys	ru   	chrome/locale/ru/
+locale	zombiekeys	hu   	chrome/locale/hu/
+locale	zombiekeys	pt-BR   	chrome/locale/pt-BR/
+locale	zombiekeys	zh-CN   	chrome/locale/zh-CN/
+
+skin zombiekeys classic/1.0  chrome/skin/
+style   chrome://global/content/customizeToolbar.xul    chrome://zombiekeys/content/zombiekeys-toolbar.css appversion<59.0a1
+style   chrome://messenger/content/customizeToolbar.xul chrome://zombiekeys/content/zombiekeys-toolbar.css appversion>=59.0a1
+
+
+content zombieKeyShims  chrome://zombiekeys/content/shim/ platformversion<61
+content zombieKeyShims  chrome://zombiekeys/content/shim61/ platformversion>=61
+
+
+# main overlays
+overlay about:addons													chrome://zombiekeys/content/overlayTB.xul
+
+#firefox
+overlay chrome://browser/content/bookmarks/addBookmark2.xul				chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://browser/content/bookmarks/bookmarksManager.xul			chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://browser/content/bookmarks/bookmarksProperties.xul		chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://browser/content/browser.xul							chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://browser/content/browser.xul							chrome://zombiekeys/content/tabGroupSwitch.xul
+overlay chrome://browser/content/places/bookmarkProperties.xul			chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://browser/content/places/places.xul						chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://browser/content/preferences/preferences.xul			chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://browser/content/scratchpad.xul							chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://navigator/content/navigator.xul						chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://communicator/content/bookmarks/addBookmark.xul			chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://communicator/content/bookmarks/bm-props.xul			chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://communicator/content/bookmarks/bookmarksManager.xul	chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://global/content/commonDialog.xul						chrome://zombiekeys/content/overlayTB.xul
+
+# thunderbird
+overlay chrome://global/content/config.xul                              chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/AccountManager.xul					chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/AccountWizard.xul					chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/accountcreation/emailWizard.xul		chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/addressbook/abEditCardDialog.xul		chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/addressbook/abMailListDialog.xul		chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/addressbook/abNewCardDialog.xul		chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/addressbook/addressbook.xul			chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/am-identity-edit.xul					chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/am-serverwithnoidentities.xul		chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/FilterEditor.xul						chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/FilterListDialog.xul					chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/folderProps.xul						chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/inspector.xul						chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/messageWindow.xul					chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/messenger.xul						chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/newFolderDialog.xul		chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/pbValidate.xul						chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/preferences/preferences.xul			chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/renameFolderDialog.xul               chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/SearchDialog.xul						chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/SmtpServerEdit.xul					chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://messenger/content/subscribe.xul						chrome://zombiekeys/content/overlayTB.xul
+
+#composer overlay (to deal with keyboard shortcuts)
+overlay chrome://messenger/content/messengercompose/messengercompose.xul	chrome://zombiekeys/content/overlayComposerTB.xul
+
+
+# addons
+overlay chrome://calendar/content/calendar-event-dialog.xul				chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://console2/content/console2.xul							chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://editor/content/EdReplace.xul							chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://enigmail/content/enigmailKeyManager.xul                chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://enigmail/content/enigmailKeygen.xul                    chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://extensionlistdumper/content/options.xul                chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://getselectedmails/content/options.xul                   chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://inspector/content/inspector.xul						chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://inspector/content/viewers/dom/dom.xul					chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://inspector/content/viewers/dom/findDialog.xul			chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://passwordmgr/content/passwordManager.xul				chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://quickfolders/content/set-folder-category.xul			chrome://zombiekeys/content/overlayTB.xul
+overlay chrome://quickpasswords/content/changePassword.xul   			chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://savedpasswordeditor/content/pwdedit.xul				chrome://zombiekeys/content/overlayFX.xul
+overlay chrome://SmartTemplate4/content/settings.xul					chrome://zombiekeys/content/overlayTB.xul
+
+#SeaMonkey - chatZilla
+overlay chrome://chatzilla/content/chatzilla.xul						chrome://zombiekeys/content/overlayFX.xul

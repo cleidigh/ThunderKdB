@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay [
+<!ENTITY % addressBookOverlayDTD SYSTEM "chrome://exquilla/locale/addressbookOverlay.dtd" >
+%addressBookOverlayDTD;
+]>
+
+<!-- 
+/*
+ ***** BEGIN LICENSE BLOCK *****
+ * This file is part of ExQuilla by Mesquilla.
+ *
+ * Copyright 2010 R. Kent James. All Rights Reserved
+ *
+ * ***** END LICENSE BLOCK *****
+ */
+-->
+
+<overlay id="exquilla-addressbookOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="addressbookOverlay.js"/>
+
+  <commandset id='addressBook'>
+    <commandset id="exquilla-abCommandset"
+                commandupdater="true"
+                events="focus,addrbook-select"
+                oncommandupdate="exquilla.abOverlay.updateCommands()"/>
+
+    <command id='cmd_exquillaRebuild'
+             oncommand="goDoCommand('cmd_exquillaRebuild');"/>
+  </commandset>
+  <popup id="dirTreeContext">
+    <menuitem id="exquilla-rebuild"
+              label="&exquilla.rebuild.label;"
+              accesskey="&exquilla.rebuild.accesskey;" 
+              command='cmd_exquillaRebuild'/>
+  </popup>
+
+</overlay>

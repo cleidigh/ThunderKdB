@@ -1,0 +1,63 @@
+# /*
+# ***** BEGIN LICENSE BLOCK *****
+# * This file is part of ExQuilla by Mesquilla.
+# *
+# * Copyright 2016 R. Kent James
+# *
+# * All Rights Reserved
+# *
+# * ***** END LICENSE BLOCK *****
+# */
+
+component {AB68A3B5-2971-40d3-89FA-0AE1D9611224} ewsAbAutocomplete.js
+contract @mozilla.org/autocomplete/search;1?name=exquilla-ab {AB68A3B5-2971-40d3-89FA-0AE1D9611224}
+
+component {4D08B157-4381-48a8-8E9C-8833315F2B29} am-ewsServerComponent.js
+contract @mozilla.org/accountmanager/extension;1?name=exquillaserver {4D08B157-4381-48a8-8E9C-8833315F2B29}
+category mailnews-accountmanager-extensions ExquillaAccountManagerServer @mozilla.org/accountmanager/extension;1?name=exquillaserver
+
+component {A91EBE7F-DD10-428d-AE1D-988DD1F84492} calComponents.js
+contract @mozilla.org/calendar/calendar;1?type=exquilla {A91EBE7F-DD10-428d-AE1D-988DD1F84492}
+
+# == JsAccount-based components. ==
+# JS URL
+component {86D28AF0-73F0-4728-8377-A9D4836B7BC3} ewsUrlComponent.js
+contract @mesquilla.com/ewsurl;1 {86D28AF0-73F0-4728-8377-A9D4836B7BC3}
+
+# JS AB Directory
+component {62EC44B5-D647-4023-96D6-EAE7A17DCD79} ewsAbDirectoryComponent.js
+contract @mozilla.org/addressbook/directory;1?type=exquilla-directory {62EC44B5-D647-4023-96D6-EAE7A17DCD79}
+component {BDE94D3E-5A66-4027-AADA-13CE8FE762E6} ewsAbDirectoryComponent.js
+contract @mozilla.org/addressbook/directory-factory;1?name=exquilla-directory {BDE94D3E-5A66-4027-AADA-13CE8FE762E6}
+
+# JS Service implementation
+component {909A8F4E-F966-47f1-A65D-5A9C186A8790} ewsServiceComponent.js
+contract @mozilla.org/messenger/messageservice;1?type=exquilla {909A8F4E-F966-47f1-A65D-5A9C186A8790}
+contract @mozilla.org/network/protocol;1?name=exquilla {909A8F4E-F966-47f1-A65D-5A9C186A8790}
+contract @mozilla.org/network/protocol;1?name=exquilla-message {909A8F4E-F966-47f1-A65D-5A9C186A8790}
+contract @mozilla.org/messenger/messageservice;1?type=exquilla-message {909A8F4E-F966-47f1-A65D-5A9C186A8790}
+contract @mozilla.org/messenger/protocol/info;1?type=exquilla {909A8F4E-F966-47f1-A65D-5A9C186A8790}
+contract @mozilla.org/messenger/protocol/info;1?type=exquilla-message {909A8F4E-F966-47f1-A65D-5A9C186A8790}
+
+# JS Protocol implementation
+component {27554DDD-EB22-45fd-B836-F8B8F5E9D61B} ewsProtocolComponent.js
+contract @mesquilla.com/ewsprotocol;1 {27554DDD-EB22-45fd-B836-F8B8F5E9D61B}
+
+# JS IncomingServer implementation
+component {D308E8D0-7D9A-4C87-9235-0471D4C2146C} ewsIncomingServerComponent.js
+contract @mozilla.org/messenger/server;1?type=exquilla {D308E8D0-7D9A-4C87-9235-0471D4C2146C}
+
+# JS MsgFolder implementation
+component {CF5ABC99-F459-42E8-85A1-10B4D6590D33} ewsMsgFolderComponent.js
+contract @mesquilla.com/ewsmailfolder;1 {CF5ABC99-F459-42E8-85A1-10B4D6590D33}
+contract @mozilla.org/rdf/resource-factory;1?name=exquilla {CF5ABC99-F459-42E8-85A1-10B4D6590D33}
+
+# JS Compose implementation
+component {E5724CCB-9CC2-4030-88FC-37813137B8BA} ewsComposeComponent.js
+contract @mozilla.org/messengercompose/compose;1 {E5724CCB-9CC2-4030-88FC-37813137B8BA}
+# override the standard skink compose component with our own super class
+contract @mesquilla.com/ewscompose;1 {E5724CCB-9CC2-4030-88FC-37813137B8BA}
+
+# JS Send implementation
+component {DBF0D7B6-C52A-4323-8B22-E4F892B4F3EE} ewsSendComponent.js
+contract @mesquilla.com/ewssend;1 {DBF0D7B6-C52A-4323-8B22-E4F892B4F3EE}

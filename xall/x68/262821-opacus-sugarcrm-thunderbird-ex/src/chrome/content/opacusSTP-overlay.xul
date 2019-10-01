@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**********************************************************************
+ * Portions written by Opacus (C) Mathew Bland, Jonathan Cutting,
+ * Opacus Ltd.
+ * 
+ * This file is part of the Opacus SugarCRM Thunderbird Plugin.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is free software:you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * The Opacus SugarCRM Thunderbird Plugin
+ * is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with the Opacus SugarCRM Thunderbird Plugin.
+ * If not, see <http://www.gnu.org/licenses/>.
+ *********************************************************************/
+ -->
+<?xml-stylesheet type="text/css" href="chrome://opacusSTP/content/opacusSTP-button.css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://opacusSTP/locale/overlay.dtd">
+<overlay id="sample" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<stringbundleset id="stringbundleset">
+<stringbundle id="opacus_strings" src="chrome://opacusSTP/locale/strings.properties"/>
+</stringbundleset>
+<script src="chrome://opacusSTP/content/opacusSTP-REST.js"/>
+<script src="chrome://opacusSTP/content/opacusSTP-overlay.js"/>
+<script src="chrome://opacusSTP/content/opacusSTP-search.js"/>
+<script src="chrome://opacusSTP/content/opacusSTP-mail.js"/>
+<script src="chrome://opacusSTP/content/opacusSTP-attachment.js"/>
+<script src="chrome://opacusSTP/content/opacusSTP-crypt.js"/>
+<menupopup id="taskPopup">
+      <menuitem label="&opacus_context.label;" insertbefore="prefSep" oncommand="opacusSTP.showPreferences();"/>
+</menupopup>
+  <menupopup id="appmenu_taskPopup">
+    <menuitem label="&opacus_context.label;" insertbefore="prefSep" oncommand="opacusSTP.showPreferences();" />
+  </menupopup>
+<menupopup id="menu_HelpPopup">
+      <menuitem label="&opacus_help.label;" insertbefore="prefSep" oncommand="opacusSTP.showInfoTab('chrome://opacusSTP/content/version.html');"/>
+</menupopup>
+  <menupopup id="appmenu_helpMenupopup">
+    <menuitem label="&opacus_help.label;" insertbefore="prefSep" oncommand="opacusSTP.showInfoTab('chrome://opacusSTP/content/version.html');" />
+  </menupopup>
+<menupopup id="mailContext">
+      <menuitem id="mailContext-opacusSTP-archive" label="&opacus_context_archive.label;" insertafter="mailContext-sep-open2" oncommand="opacusSTP.archive();"/>
+	  <menuseparator id="opacusSeperator" insertbefore="mailContext-archive"/>
+</menupopup>
+<toolbarpalette id="MailToolbarPalette">
+  <toolbarbutton id="opacusSTP-archive"
+  label="&opacus_context_button.label;"
+  tooltiptext="&opacus_context_archive.label;"
+  oncommand="opacusSTP.archive();"
+  class="toolbarbutton-1 chromeclass-toolbar-additional custombutton"
+  />
+</toolbarpalette>
+</overlay>

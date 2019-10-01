@@ -1,0 +1,25 @@
+
+#zombiekeys-toolbarbutton,
+#compose-toolbox > toolbar[brighttext] #zombiekeys-toolbarbutton.toolbarbutton-1,
+#mail-toolbox > toolbar[brighttext] #zombiekeys-toolbarbutton.toolbarbutton-1 {
+	list-style-image: url("chrome://zombiekeys/content/zombie24.png");
+	-moz-image-region: rect(0px 24px 24px 0px);
+}
+
+toolbar:not([iconsize="small"]) #zombiekeys-toolbarbutton image
+{
+  width: 24px;
+  height: 24px;
+}
+
+[iconsize="small"] #zombiekeys-toolbarbutton,
+#compose-toolbox > toolbar[brighttext][iconsize="small"] #zombiekeys-toolbarbutton.toolbarbutton-1,
+#mail-toolbox > toolbar[brighttext][iconsize="small"] #zombiekeys-toolbarbutton.toolbarbutton-1
+{
+	list-style-image: url("chrome://zombiekeys/content/zombie16.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+
+[iconsize="small"] #zombiekeys-toolbarbutton:hover { -moz-image-region: rect(16px 16px 32px 0px); }
+[iconsize="small"] #zombiekeys-toolbarbutton:active { -moz-image-region: rect(32px 16px 48px 0px); }
+

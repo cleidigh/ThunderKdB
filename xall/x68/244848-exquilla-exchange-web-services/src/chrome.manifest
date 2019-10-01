@@ -1,0 +1,27 @@
+content  exquilla   content/
+locale   exquilla   de  locale/de/
+locale   exquilla   en-US  locale/en-US/
+locale   exquilla   es-ES  locale/es-ES/
+locale   exquilla   fr  locale/fr/
+locale   exquilla   hu  locale/hu/
+locale   exquilla   it  locale/it/
+locale   exquilla   ja  locale/ja/
+locale   exquilla   ru  locale/ru/
+manifest components/jsComponents.manifest
+overlay  about:preferences chrome://exquilla/content/AccountManagerOverlay.xul
+overlay  chrome://messenger/content/AccountManager.xul chrome://exquilla/content/AccountManagerOverlay.xul
+overlay  chrome://messenger/content/addressbook/addressbook.xul chrome://exquilla/content/addressbookOverlay.xul
+overlay  chrome://messenger/content/am-identity-edit.xul chrome://exquilla/content/am-identityOverlay.xul
+overlay  chrome://messenger/content/am-main.xul chrome://exquilla/content/am-mainOverlay.xul
+overlay  chrome://messenger/content/folderProps.xul chrome://exquilla/content/folderPropsOverlay.xul
+overlay  chrome://messenger/content/messenger.xul chrome://exquilla/content/messengerOverlay.xul
+overlay  chrome://messenger/content/messageWindow.xul chrome://exquilla/content/mwoOverlay.xul
+overlay  chrome://messenger/content/messenger.xul chrome://exquilla/content/mwoOverlay.xul
+overlay  chrome://messenger/content/messengercompose/messengercompose.xul chrome://exquilla/content/messengerComposeOverlay.xul
+overlay  chrome://messenger/content/msgAccountCentral.xul chrome://exquilla/content/msgAccountCentralOverlay.xul
+overlay  chrome://messenger/content/messageWindow.xul chrome://exquilla/content/msgHVOoverlay.xul
+overlay  chrome://messenger/content/messenger.xul chrome://exquilla/content/msgHVOoverlay.xul
+overlay  chrome://messenger/content/preferences/preferences.xul chrome://exquilla/content/preferencesOverlay.xul
+overlay  about:preferences chrome://exquilla/content/preferencesOverlay.xul
+resource exquilla   modules/
+skin     exquilla   classic/1.0   skin/

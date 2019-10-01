@@ -1,0 +1,96 @@
+#signalspam-button-alert, #signalspam-button[state="commiting"] {
+    list-style-image: url("chrome://signalspam/skin/Throbber.gif");
+}
+
+#signalspam-button[disabled="true"] {
+    list-style-image: url("chrome://signalspam/skin/btn_large_disabled.png");
+}
+
+toolbar[iconsize="small"] #signalspam-button[disabled="true"] {
+    list-style-image: url("chrome://signalspam/skin/icon20_disabled.svg");
+}
+
+toolbar[iconsize="small"] #signalspam-button {
+    list-style-image: url("chrome://signalspam/skin/icon18x16.svg");
+}
+
+#signalspam-button {
+    list-style-image: url("chrome://signalspam/skin/icon18x16.svg");
+}
+
+toolbarbutton.signalspam-toolbarbutton {
+    list-style-image: url("chrome://signalspam/skin/icon18x16.svg");
+}
+
+#signalspam-button-hdr[state="commiting"] {
+    list-style-image: url("chrome://signalspam/skin/Throbber.gif");
+}
+
+#signalspam-button-hdr[disabled="true"] {
+    list-style-image: url("chrome://signalspam/skin/icon20_disabled.svg");
+}
+
+toolbar[iconsize="small"] #signalspam-button-hdr[disabled="true"] {
+    list-style-image: url("chrome://signalspam/skin/icon20_disabled.svg");
+}
+
+toolbar[iconsize="small"] #signalspam-button-hdr {
+    list-style-image: url("chrome://signalspam/skin/icon18x16.svg");
+}
+
+#signalspam-button-hdr {
+    list-style-image: url("chrome://signalspam/skin/icon18x16.svg");
+}
+
+toolbarbutton.signalspam-button-hdr {
+    list-style-image: url("chrome://signalspam/skin/icon18x16.svg");
+}
+
+#signalspam-button-alert {
+    list-style-image: url("chrome://signalspam/skin/icon18x16_white.svg") !important;
+}
+
+
+#signalspam-button-falsepositive {
+    background-color:darkgreen;
+    color:white;
+}
+
+[SignalSpam-badmail] {
+    border: #BE0044;
+    border-width:thick;
+    border-style:solid;
+    z-index:2147483600;
+}
+
+[SignalSpam-tip] {
+    position: relative;
+    cursor: no-drop;
+    border-bottom: 2px dotted #BE0044;
+    z-index: 2147483647;
+}
+/* on génère un élément :after lors du survol :*/
+
+[SignalSpam-tip]:after {
+    content:"";
+    background-image: url('chrome://signalspam/skin/icon48.png');
+    background-size: 25px 25px;
+    width:25px;
+    height:25px;
+    position: absolute;
+    top: 0;
+    left: 105%;
+    z-index: 2147483647;
+}
+
+/* on génère un second élément en :before*/
+
+[SignalSpam-tip]:before {
+    content: "⬅︎";
+    position: absolute;
+    top: 5px;
+    left: 101%;
+    font-size: 1em;
+    color: #BE0044;
+    z-index: 2147483647;
+}
