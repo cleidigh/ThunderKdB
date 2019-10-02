@@ -134,7 +134,15 @@ async function walkFolders(parentFolder, options) {
 		}
 		if (!fs.existsSync(`${parentFolder}/${extDir}/src`)) {
 			console.debug('Missing: ' + `index: ${index} : ${extDir}/src`);
-			extJson = readExtJson(`${parentFolder}/${extDir}/${extDir}.json`);
+			
+			try {
+				extJson = readExtJson(`${parentFolder}/${extDir}/${extDir}.json`);
+				
+			} catch (error) {
+				console.debug('File err: '+error);
+				return error;
+			}
+
 			console.debug('ExtensionId: ' + extJson.id);
 
 			const xpiFileURL = extJson.current_version.files[0].url;

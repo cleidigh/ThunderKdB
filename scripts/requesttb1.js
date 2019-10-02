@@ -314,7 +314,8 @@ async function getExtensionFiles(addon_identifier) {
 
 		const extRootName = `${addon_identifier}-${ext.slug}`;
 		const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
-/* 		console.debug('CheckingFolder: ' + extRootDir);
+
+		console.debug('CheckingFolder: ' + extRootDir);
 
 
 		if (fs.existsSync(extRootDir)) {
@@ -326,13 +327,13 @@ async function getExtensionFiles(addon_identifier) {
 		writePrettyJSONFile(jfile, ext)
 		console.debug(ext.slug);
 
-*/
-		const xpiFileURL = ext.current_version.files[0].url;
-		const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
+
+		// const xpiFileURL = ext.current_version.files[0].url;
+		// const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
 		
-		await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
-		console.debug('Downloaded filename ' + xpiFileName);
-		fs.ensureDirSync(`${extRootDir}/xpi`);
+		// await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
+		// console.debug('Downloaded filename ' + xpiFileName);
+		// fs.ensureDirSync(`${extRootDir}/xpi`);
 
 		// if (fs.existsSync(`${extRootDir}/xpi`)) {
 		// 	fs.removeSync(`${extRootDir}/xpi`);
