@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<window class="dialog"
+		title="&rf.msgid.title;"
+		orient="vertical"
+		windowtype="window:msgID"
+		autostretch="always"
+		onload="reminderfox.mail.startupwMsgId()"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxMail.js" />
+
+
+	<groupbox align="center" orient="horizontal">
+		<vbox>
+			<image src="chrome://reminderfox/skin/images/foxy-small.png"
+				onclick="reminderfox.util.docRmFX();" />
+		</vbox>
+		<vbox>
+			<text id="rmFx_msg1" value="" />
+			<text id="rmFx_msg2" value="" />
+		</vbox>
+	</groupbox>
+
+	<hbox>
+		<text id="msgIDnotFound" value="&rf.msgid.description;" hidden="true" />
+		<spacer flex="1" />
+		<button id="retryMsgId" label="&rf.msgid.retry.label;"
+			oncommand="reminderfox.mail.retryMsgId();" disabled="true" />
+	</hbox>
+</window>

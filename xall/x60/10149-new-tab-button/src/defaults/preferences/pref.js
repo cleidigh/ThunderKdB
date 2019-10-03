@@ -1,0 +1,1 @@
+pref("extensions.{3AB03506-4329-483F-BA03-EA5493232260}.description", "chrome://opentab/locale/opentab_description.properties");

@@ -1,0 +1,114 @@
+/* --------- iCal Schedule --------- */
+
+#attendees
+{  list-style-image: url("chrome://reminderfox/skin/schedule/attendees28.png");
+     }
+#attendees:hover
+{   background: #FFF; 	}
+
+
+#persons   /* this is an empty field element */
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(0px,20px, 20px,0px);
+	}
+
+#schRSVP
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(20px,20px,40px,0px);
+	}
+#schRSVP:hover
+{  background: #FFF;
+	}
+
+#myRSVP
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(20px,20px,40px,0px);
+   background: #3399FF;   /* light blue */
+	}
+#myRSVP:hover
+{  background: yellow;
+	}	
+
+#OPTIONAL
+ {  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(40px,60px, 40px,40px);
+    }
+#OPTIONAL:hover
+{  background: #FFF;
+	}
+
+#NON-PARTIZIPATION
+ {  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(40px,80px, 40px,60px);
+    }
+#NON-PARTIZIPATION:hover
+{  background: #FFF;
+	}
+	
+	
+#REQUIRED-PARTICIPANT
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(20px,40px, 40px,20px);
+    }
+#REQUIRED-PARTICIPANT:hover
+{  background: #FFF;
+	}
+#OPTIONAL-PARTICIPANT
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(20px,60px, 40px,40px);
+    }
+#NON-PARTICIPANT
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(20px,80px, 40px,60px);
+    }
+#NON-PARTICIPANT:hover
+{  background: #FFF;
+	}
+	
+#NEEDS-ACTION
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(40px,20px, 60px,0px);
+    }
+#NEEDS-ACTION:hover
+{  background: #FFF;
+	}    
+#Status-ACCEPTED
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(40px,40px, 60px,20px);
+    }
+#Status-ACCEPTED:hover
+{  background: #FFF;
+	}
+#Status-TENTATIVE
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(40px,60px, 60px,40px);
+    }
+#Status-TENTATIVE:hover
+{  background: #FFF;
+	}
+#Status-DECLINED
+{  list-style-image: url("chrome://reminderfox/skin/schedule/schedulePersons_80x60x.png");
+   -moz-image-region: rect(40px,80px, 60px,60px);
+    }
+#Status-DECLINED:hover
+{  background: #FFF;
+	}
+	
+	
+/*gW  ---  iCal Schedule additions   ----               */
+
+#rf-statusMsg {
+/*   this is for Status Msg in "Add Reminder" window     */
+	font-weight: bold;
+	color: blue;
+}
+
+#rf-iCal-my-Reply-Accept {
+	font-weight: bold;
+	color: blue;
+		}
+#rf-iCal-my-Reply-Decline {
+	font-weight: bold;
+	color: red;
+}
+    

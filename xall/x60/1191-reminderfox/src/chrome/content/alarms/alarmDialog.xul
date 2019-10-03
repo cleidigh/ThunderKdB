@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/calendar/calendarWidget.xul"?>
+<?xul-overlay href="chrome://reminderfox/content/editing/eventEntryOverlay.xul"?>
+
+<?xml-stylesheet href="chrome://reminderfox-platform/skin/gtk3linux.css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-alarmDialog" title="&rf.alarm.dialog.title;" persist="screenX screenY  width height"
+		windowtype="window:reminderFoxAlarmDialog" onfocus="updateTimeUntil()"
+		onload="loadAlarm()" onunload="reminderFox_alarmClosed(true);"
+>
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/alarms/alarmDialog.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/eventEntry.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/download.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/upload.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/passwordManagerUtils.js"/>
+	<script type="application/x-javascript" src="chrome://reminderfox/content/addReminderDialog.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/datepicker/datepicker.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxMail.js" />
+
+
+	<!-- allow escape to dismiss window; but we don't want ENTER as that can be accidentally
+      input while typing something else when an alarm pops up -->
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="reminderFox_alarmClosed()" />
+	</keyset>
+
+	<!-- keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="reminderFox_alarmClosed()" />
+		<key keycode="VK_ENTER" oncommand="reminderFox_alarmChooseDone();" />
+		<key keycode="VK_RETURN" oncommand="reminderFox_alarmChooseDone();" />
+	</keyset-->
+
+	<tabbox id="tabbox" flex="1">
+		<arrowscrollbox id="arrowscrollbox" orient="horizontal">
+			<tabs id="tabList" onselect="selectAlarmTab()">
+				<tab id="tab1" label="&rf.add.tab.reminders.label;" selected="true" />
+			</tabs>
+		</arrowscrollbox>
+		<tabpanels id="tabPanelID" flex="1">
+			<tabpanel flex="1" id="alarmPanel" orient="vertical">
+
+
+				<vbox id="reminderFoxVbox" flex="1">
+					<hbox align="center">
+						<label id="descLabel" value="&rf.reminderoptions.description.label;"
+							   align="bottom" />
+
+						<textbox id="reminderDescriptionText" readonly="true"
+								 align="bottom" flex="2" />
+					</hbox>
+
+					<hbox id="notesHbox" orient="vertical" flex="100" hidden="true">
+						<textbox width="305px" flex="2" readonly="true" id="notesText"
+								 multiline="true" rows="4" hidden="true" />
+					</hbox>
+					<!--
+               <hbox align="center">
+                   <label id="reminderDateLabel" value="&rf.reminderoptions.date.label;"
+                       align="bottom" />
+                   <label id="reminderDateText" align="bottom" />
+               </hbox>
+               <hbox align="center">
+                   <label id="timeDescLabel" value="&rf.reminderoptions.time.label;" />
+                   <label id="reminderTimeText" align="bottom" />
+               </hbox>
+               -->
+			<!--		<hbox align="center" id="reminderID" uid="" tooltiptext=".."
+						onclick="copytoClipboard(this)">  -->  <!-- //XXX to display the id as tooltiptext on 'Date' XXX just for testing -->
+					<hbox align="center" id="reminderID">
+						<label id="reminderDateLabel" value="&rf.reminderoptions.date.label;"
+							   align="bottom" />
+						<label id="reminderDateText" align="bottom" />
+						<label id="reminderTimeText" align="bottom" />
+					</hbox>
+
+					<!-- show Time Until if there is one -->
+					<hbox align="center" id="timeUntilHBox" hidden="true">
+						<label id="timeUntilLabel" value="&rf.alarm.occursIn.label;" />
+						<label id="timeUntilText" align="bottom" />
+					</hbox>
+
+
+					<!-- show location if there is one -->
+					<hbox id="locationHboxX" align="center" hidden="true">
+						<label id="locationLabel" value="&rf.reminderoptions.location.label;" />
+						<label id="locationText" align="bottom" />
+					</hbox>
+
+					<!-- show URL if there is one -->
+					<hbox id="urlhbox" align="center" hidden="true">
+						<label id="urlLabel" value="&rf.reminderoptions.url.label;" />
+						<label id="urlText" align="bottom" class="text-link" href=""
+							   onclick="reminderFox_launchAlarmURL();" />
+					</hbox>
+
+					<hbox align="center" id="attributeIcons" hidden="false">
+					</hbox>
+
+					<spacer flex="3" />
+
+
+					<!-- snooze and acknowlege buttons -->
+					<hbox align="center">
+						<groupbox>
+							<vbox>
+								<hbox align="center">
+									<button id="snoozeButton" label="&rf.alarm.button.snooze;"
+											oncommand="reminderFox_snooze();" default="true"/>
+									<menulist id="reminderFox-snoozeTime" editable="true"
+											  oninput="reminderFox_snoozeTimeChanged();" oncommand="reminderFox_snoozeTimeChanged();">
+										<menupopup>
+											<menuitem label="1" />
+											<menuitem label="5" selected="true" />
+											<menuitem label="10" />
+											<menuitem label="15" />
+											<menuitem label="30" />
+											<menuitem label="60" />
+										</menupopup>
+									</menulist>
+									<menulist id="reminderFox-alertTimeUnits" oncommand="reminderFox_updateSnoozeTimeDate();">
+										<menupopup>
+											<menuitem label="&rf.reminderoptions.notify.minutes.label;" />
+											<menuitem label="&rf.reminderoptions.notify.hours.label;" />
+											<menuitem label="&rf.reminderoptions.notify.days.label;" />
+										</menupopup>
+									</menulist>
+
+
+									<!-- Calendar date and time input popup -->
+									<panel id="rmFx-moz-datepicker">
+										<vbox id="rmFx-moz-datepicker-box">
+											<box id="datepickerBox">		<!-- datepicker param will be set with JS -->
+												<datepicker id="datePickerCurrent" type='grid'
+															firstdayofweek="2" />
+											</box>
+											<hbox>							<!-- is24H will be set with JS -->
+												<spacer width="3px"/>
+												<timepicker id="timePickerCurrent" hideseconds="true"/>
+												<button label="&rf.ok;" id="okButton"
+														oncommand="rmFx_datePickerQAclose();" />
+												<spacer width="3px"/>
+											</hbox>
+										</vbox>
+									</panel>
+
+									<toolbarbutton id="datepickerAnchor"
+												   onclick="rmFx_datePickerQAopen(event, this)" tooltiptext="&rf.reminderoptions.tooltip.selectdate;" />
+
+								</hbox>
+							</vbox>
+						</groupbox>
+
+						<spacer flex="1" />
+
+						<groupbox>
+							<vbox>
+								<hbox>
+									<menulist id="reminderFox-alarm-action" oncommand="reminderFox_actionChanged();">
+										<menupopup>
+											<menuitem label="&rf.alarm.button.acknowledge;" />
+											<menuitem label="&rf.alarm.button.complete;" />
+											<menuitem label="&rf.alarm.button.delete;" />
+											<menuitem label="&rf.alarm.button.open;" />
+										</menupopup>
+									</menulist>
+									<button id="okButton" label="&rf.ok;"
+											oncommand="reminderFox_alarmDone();" />
+								</hbox>
+							</vbox>
+						</groupbox>
+					</hbox>
+					<hbox>
+						<label value="&rf.alarm.snoozeUntil.label;" disabled="true" />
+						<label id="snoozeUntilTime" align="right" disabled="true" />
+					</hbox>
+
+				</vbox>
+
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+
+	<script>
+	function copytoClipboard(xthis) {
+		var data = xthis.getAttribute("uid");
+		reminderfox.util.copytoClipboard(data);
+	}
+	</script>
+
+</window>

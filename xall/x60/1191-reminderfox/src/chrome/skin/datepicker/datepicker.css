@@ -1,0 +1,332 @@
+header/*  --- reminderfox-calendar-box  --- */
+#reminderfox-calendar-box {
+	background-color: #F8F8F8;
+	font-size: 12px;
+	margin-bottom: 6px;
+}
+
+
+#reminderfox-calendar-box-widget {
+	font-size: 1em; /*12px;*/
+		color: black;
+}
+
+
+/* ---  rmFx-MainDialog-Menubar  --- */
+
+.reminderfox-calendar-iconLabel {
+	min-width: 0px;
+	margin-right:0px !important;
+	border-right: 0px !important;
+	margin-left:0px !important;
+	border-left: 0px !important;
+}
+
+
+.reminderfox-calendar-listLabel {
+	font-weight: bold;
+	width:10em;
+
+	margin-right:0px !important;
+	border-right: 0px !important;
+	margin-left:0px !important;
+	border-left: 0px !important;
+}
+
+
+/* --- reminderfox-calendar-yearMonth-controls-box --- */
+.reminderfox-calendar-title-box {
+	border: #441B44 1px solid;  /*color: #441B44; */
+	-moz-box-align: center;
+	-moz-box-pack: center;
+	background-color:  #cfcfcf  /* #EFEFEF  /* #b0b0b0; /* #A8A8A8; /* #9F9FED;*/
+}
+
+
+.reminderfox-calendar-title{
+/*	color: #380140; */
+	font-weight: bold;
+}
+
+
+.reminderfox-calendar-button-up {
+	list-style-image:
+		url("chrome://reminderfox/skin/images/up.png");
+}
+
+
+.reminderfox-calendar-button-down {
+	list-style-image:
+		url("chrome://reminderfox/skin/images/down1.png");
+}
+
+
+#reminderfox-calendar-add-event[icon="true"] {
+	list-style-image: url("chrome://reminderfox/skin/images/menuicons16.png");
+	-moz-image-region: rect(0px,32px, 16px,16px);
+	margin-right: 0px !important;
+}
+
+#rmFx-allLists {
+	margin-left: 0px !important;
+	border-left: 0px !important;
+}
+
+
+#reminderfox-calendar-events-revert[icon="true"]  { 
+	list-style-image: url("chrome://reminderfox/skin/images/menuicons16.png");
+	-moz-image-region: rect(16px,16px, 32px,0px);
+}
+
+
+	#reminderfox-calendar-events-revert[icon="true"][modified="true"] {
+		-moz-image-region: rect(0px,16px, 16px,0px);
+}
+
+#reminderfox-calendar-events-save[icon="true"]  { 
+	list-style-image: url("chrome://reminderfox/skin/images/menuicons16.png");
+	-moz-image-region: rect(16px,48px, 32px,32px);
+}
+	#reminderfox-calendar-events-save[icon="true"][modified="true"] {
+		-moz-image-region: rect(0px,48px, 16px,32px);
+	}
+
+
+.reminderfox-calendar-button-left {
+	list-style-image:
+		url("chrome://reminderfox/skin/images/left.png");
+}
+.reminderfox-calendar-button-right {
+	list-style-image:
+		url("chrome://reminderfox/skin/images/right.png");
+}
+.reminderfox-calendar-button-up {
+	list-style-image:
+		url("chrome://reminderfox/skin/images/up.png");
+}
+.reminderfox-calendar-button-down {
+	list-style-image:
+		url("chrome://reminderfox/skin/images/down.png");
+}
+
+
+/* ---  reminderfox-calendar-week-header-box  --- */
+#reminderfox-calendar-week-header-box {
+	border-right: 1px solid #ACADAA;
+	border-bottom: 1px solid #ACADAA;
+	border-top: 1px solid #ACADAA;
+	border-left: 1px solid #ACADAA;	
+}
+
+
+.reminderfox-calendar-week-number-box-class {
+	-moz-box-align: center;
+	-moz-box-pack: center;
+	border-right: 1px solid #ACADAA;
+	cursor: pointer;
+
+	width: 1.4em;
+	background-color: #dedede;  /* #DBDBFF;*/
+}
+	.reminderfox-calendar-week-number-box-class:hover {
+	background-color: #cfcfcf;  /*#C8C8E6;*/
+	}
+
+
+.reminderfox-calendar-week-day-number {
+	margin: 1px;
+	font-size: .8em; /*9px*/;
+	/*cursor: pointer;*/
+	}
+	.reminderfox-calendar-week-day-number[sunday="true"]{
+		color: red;
+	}
+
+
+
+/*  ---  reminderfox-calendar-month-grid-box   ---  */
+
+.reminderfox-calendar-month-title, .reminderfox-calendar-month-title-cursor {
+	background-color: #dedede;
+	color: #686870;
+	font-weight: bold;
+	margin-top:3px;
+	border: 1px solid #5656B3;
+	-moz-box-align: center;
+}
+	.reminderfox-calendar-month-title-cursor:hover {
+		background-color: #cfcfcf;
+		cursor: pointer;
+	}
+.reminderfox-calendar-month-title[selected="true"] {
+	background-color: #b0b0b0;  /*#9F9FED;*/
+	border: 1px solid #441B44;   /*#7E038F;*/
+	color: #380140;
+}
+
+
+.reminderfox-calendar-month-week {
+	border-right: 1px solid #ACADAA;
+	border-bottom: 1px solid #ACADAA;
+	border-left: 1px solid #ACADAA;	
+}
+
+.reminderfox-calendar-month-day-number-class {
+	margin: 1px;
+	font-size: 1em;
+}
+	.reminderfox-calendar-month-day-number-class[selected="true"] {
+		background-color: #6699CC;
+	}
+
+	.reminderfox-calendar-month-day-number-class[notMonth="true"] {
+		color: gray;
+	}
+
+
+.reminderfox-calendar-month-day-box-class {
+	width: 2em;    
+	font-size: 1em;
+	background-color: #FFFFFF;
+	-moz-box-align: center;
+	-moz-box-pack: center;
+	border-right: 1px solid #E2E2E2;
+}
+.reminderfox-calendar-month-day-box-class2 {
+	width: 2em;    
+	font-size: 1em;
+	background-color: #FFFFFF;
+	-moz-box-align: center;
+	-moz-box-pack: center;
+}
+
+.reminderfox-calendar-month-day-box-class[rightside=true] {
+	border-right: 0px solid #E2E2E2; /* no border */
+}
+
+	
+	.reminderfox-calendar-month-day-box-class:hover[nonheader=true] {
+		background-color: #e8e8e8;  /*#C9E8F1;  #FFFF99; */
+	}
+	
+	/* --- calendar box day attributes --- */
+	.reminderfox-calendar-month-day-box-class[today] {
+		font-weight: bold;
+		background-color: #E5F3FF;
+	/*	border: 1px solid #441B44;  */
+		color: #380140;
+	}
+
+	/* show date boxes with reminders as yellow */
+	.reminderfox-calendar-month-day-box-class[reminder="true"] {
+		background-color: #FCFCC0;
+	}
+
+
+	/* Show completed reminders as light-grey  */
+	.reminderfox-calendar-month-day-box-class[completed="true"] {
+		background-color: #DBDBDB;
+	}
+
+	/* show date boxes with reminders as lightred */
+	.reminderfox-calendar-month-day-box-class[overdue="true"] {
+		background-color: #FCABB1;
+	}
+
+
+	.reminderfox-calendar-month-day-box-class[selectedReminder="true"] {
+		border-right: 1px solid #000000;
+		border-bottom: 1px solid #000000;
+		border-top: 1px solid #000000;
+		border-left: 1px solid #000000;
+	}
+
+	.reminderfox-calendar-month-day-box-class[selected="true"] {
+		border-right: 1px solid #000000;
+		border-bottom: 1px solid #000000;
+		border-top: 1px solid #000000;
+		border-left: 1px solid #000000;
+	}
+
+	/* --- calendar box day attributes BORDER ONLY--- */
+	.reminderfox-calendar-month-day-box-class[today] {
+		/*border: 1px solid #E5F3FF;*/
+	}
+
+
+
+	/* Highlight important reminders in red  */
+	.reminderfox-calendar-month-day-box-class[important="true"] {
+		color: red;
+	}
+
+
+/* --- Day Panel ttt ----    */
+.rmFx_dayPanelEvent {
+	background-color: #cfcfcf; /* #CCFFFF; 
+	background-color: #A9D4D4;  */
+	}
+	.rmFx_dayPanelEvent:hover {
+		background-color: #C9C6B7; /* #7D9E9E;   /*99FFCC;*/ 
+	}
+
+.rmFx_dayPanelDayBox { 
+	background-color: #E3E0CF /*#ABA89B; #66CC99;*/
+}
+	.rmFx_dayPanelDayBox:hover {
+		background-color: #949185;  /*#7D9E9E;   /*99FFCC;*/ 
+		cursor: pointer;
+	}
+
+.rmFx_dayPanelEventTitel:hover {
+	cursor: pointer;
+}
+
+
+
+/*  skin/toolbar-button.css  */
+#datepickerAnchor {
+	list-style-image:
+		url("chrome://reminderfox/skin/datepicker/calendar-small.gif");
+}
+	#datepickerAnchor[disabled="true"] {
+		list-style-image:
+			url("chrome://reminderfox/skin/datepicker/calendar-small-disabled.png");
+	}
+
+#datepickerEndAnchor {
+	list-style-image:
+		url("chrome://reminderfox/skin/datepicker/calendar-small.gif");
+}
+	#datepickerEndAnchor[disabled="true"] {
+		list-style-image:
+			url("chrome://reminderfox/skin/datepicker/calendar-small-disabled.png");
+}
+
+#datepickerAnchor1 {
+	list-style-image:
+		url("chrome://reminderfox/skin/datepicker/calendar-up-med.png");
+}
+
+#datepickerAnchor1 .toolbarbutton-text {
+  /* margin: 5 !important;
+  text-align: center;  
+  -moz-box-direction: reverse;*/
+}
+
+
+
+.reminderfox-calendar-about {
+	list-style-image:
+		url("chrome://reminderfox/skin/images/foxy-head-25.png");
+	max-width: 20px;
+	max-height: 20px;
+	-moz-box-align: center;
+}
+
+
+/* ----------- TEST FIELD ---------------------- */
+.reminderfox-calendar-colorpicker  {  /* http://www.colorpicker.com/  */
+	background-color: #626262;
+	background: #F7F7F7;
+}

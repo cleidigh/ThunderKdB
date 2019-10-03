@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description
+    about="urn:mozilla:install-manifest"
+
+    em:name="Archive This"
+    em:description="Moves selected messages into appropriate archive folder"
+    em:creator="Adam Roach"
+
+    em:id="archive-this@roach.at"
+    em:version="1.4.11.11"
+
+    em:iconURL="chrome://archive-this/content/icon.png" >
+
+<!--    em:homepageURL="http://example.org/homepage.html" -->
+
+    <em:type>2</em:type>
+
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description
+        em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+        em:minVersion="31.0"
+        em:maxVersion="60.*" />
+    </em:targetApplication>
+
+    <em:optionsType>3</em:optionsType>
+    <em:optionsURL>chrome://archive-this/content/tab-prefs.xul</em:optionsURL>
+
+  </Description>
+
+</RDF>

@@ -1,0 +1,827 @@
+<?xml version="1.0"?>
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox/skin/datepicker/datepicker.css"  type="text/css" ?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/rmSearchBox.css"  type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox/skin/caldav.css"  type="text/css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/calendar/calendarWidget.xul"?>
+
+<window xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+
+	windowtype="window:reminderFoxEdit" id="editRemindersWindow" title="&rf.name;"
+	onload="rmFx_mainDialogLoadX();" onunload="rmFx_mainDialogSaveAndClose(true);"
+
+	onkeypress="" onclick="" onblur="" width="800" height="500"
+
+	screenX="100" screenY="50" WIDE_width="800" WIDE_height="500"
+	WIDE_screenX="400" WIDE_screenY="10" SMALL_width="400" SMALL_height="500"
+	SMALL_screenX="600" SMALL_screenY="100" lxX="0" lxY="0" layout="1"
+	textSize="16" textSizeList="12" tab="0"
+	textFilter="0" viewsFilterEvents="0" viewsFilterLists="0"
+
+	persist="screenX screenY width height
+		tab layout textSize textSizeList
+		SMALL_width SMALL_height SMALL_screenX SMALL_screenY
+		WIDE_width WIDE_height WIDE_screenX WIDE_screenY lxX lxY
+		textFilter viewsFilterEvents viewsFilterLists">
+
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/addReminderDialog.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/datepicker/datepicker.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/calendar/calendarWidget.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/HTTP.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUserIO.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxPopupControl.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/rmFxViews.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/download.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/upload.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/networkService.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/passwordManagerUtils.js" />
+
+	<!-- **** mail/iCal APIs **** -->
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxMail.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxIcalMail.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxMsgTagging.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/addContact2Reminder.js" />
+
+	<!-- **** new calendar **** -->
+	<script type="application/x-javascript" src="chrome://reminderfox/content/calendar/calendarWidget.js" />
+
+	<!-- **** CalDAV **** -->
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVrequester.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVcalls.js" />
+
+
+	<keyset id="reminderFoxKeys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();" />
+
+		<key id="key_addMonth" keycode="VK_PAGE_UP"
+			oncommand="reminderfox.calendar.ui.selectMonth(event, -1);" />
+		<key id="key_removeMonth" keycode="VK_PAGE_DOWN"
+			oncommand="reminderfox.calendar.ui.selectMonth(event, 1);" />
+
+		<key id="key_layout" key="l" modifiers="accel"
+			oncommand="reminderfox.calendar.layout.change();" />
+		<key id="key_tabs" key="t" modifiers="accel" oncommand="rmFx_advanceTab();" />
+
+		<key id="key_today" key="."
+			oncommand="reminderfox.calendar.ui.selectDay('today');" />
+		<key id="key_sFind" key="?" modifiers="accel"
+			oncommand="reminderfox.calendar.filter.toggle();" />
+
+		<!-- use + and = key for increasing text -->
+		<key id="key_textA" key="+" modifiers="accel"
+			oncommand="reminderfox.calendar.ui.textScale('2');" />
+		<key id="key_textA1" key="=" modifiers="accel"
+			oncommand="reminderfox.calendar.ui.textScale('2');" />
+		<key id="key_text" key="#" modifiers="accel"
+			oncommand="reminderfox.calendar.ui.textScale('0');" />
+		<key id="key_text" key="0" modifiers="accel"
+			oncommand="reminderfox.calendar.ui.textScale('0');" />
+		<key id="key_texta" key="-" modifiers="accel"
+			oncommand="reminderfox.calendar.ui.textScale('-2');" />
+
+
+		<!-- use + and = key for increasing text -->
+		<key id="key_textListA1" key="=" modifiers="alt"
+			oncommand="reminderfox.calendar.ui.textListScale('2');" />
+		<key id="key_textListA" key="+" modifiers="alt"
+			oncommand="reminderfox.calendar.ui.textListScale('2');" />
+		<key id="key_textList" key="#" modifiers="alt"
+			oncommand="reminderfox.calendar.ui.textListScale('0');" />
+		<key id="key_textList" key="0" modifiers="alt"
+			oncommand="reminderfox.calendar.ui.textListScale('0');" />
+		<key id="key_textLista" key="-" modifiers="alt"
+			oncommand="reminderfox.calendar.ui.textListScale('-2');" />
+
+
+		<key id="key_reload" key="R" modifiers="accel"
+			oncommand="rmFx_mainDialogLoadReload();" />		<!-- //gWSync -->
+
+		<!-- key id="key_reload" key="U" modifiers="accel" oncommand="calDAVupdate()"/-->
+
+	</keyset>
+
+
+
+	<hbox id="rmFx-MainDialog-Menubar">
+		<spacer width="5px" />
+
+		<!-- rmFx-foxy-icon -->
+		<toolbarbutton class="image-button" id="rmFx-foxy-icon-small"
+			type="menu"
+			tooltiptext="&rf.calendar.foxy;">
+
+			<menupopup id="calendar-foxy-panel" onpopupshowing="reminderfox.overlay.activateOptionsContext(event);">
+
+				<menu id="calendar-layout-menu" label="&rf.calendar.layout.menu;"
+					oncommand="reminderfox.calendar.layout.menuSelect();">
+					<menupopup id="calendar-layout-popup">
+						<menuitem label="&rf.calendar.layout.ListCalendar;" id="rmFx_layout1"
+							oncommand="reminderfox.calendar.layout.change(1);" type="radio" />
+						<menuitem label="&rf.calendar.layout.List;" id="rmFx_layout2"
+							oncommand="reminderfox.calendar.layout.change(2);" type="radio" />
+						<menuitem label="&rf.calendar.layout.Calendar;" id="rmFx_layout0"
+							oncommand="reminderfox.calendar.layout.change(0);" type="radio" />
+					</menupopup>
+				</menu>
+
+				<menuseparator />
+				<menuitem label="&rf.add.reminders.context.find.label;" id="calendar-foxy-contextmenu-find"
+					onclick="doFind();reminderfox.calendar.ui.panelClose(); "
+					key="key_find" />
+
+				<menuitem label="&rf.main.quickalarm.label;" class="reminderfox-icon-none"
+					onclick="reminderfox.overlay.openQuickAlarmDialog()" accesskey="&rf.toolsmenu.QuickAlarm.accesskey;" />
+
+				<menu id="reminderfox-options-contextmenu-quickAlarms-list"
+					label="&rf.main.quickalarms.label;">
+					<menupopup
+						id="reminderfox-options-contextmenu-quickAlarms-list-popup"
+						onpopupshowing="reminderfox.overlay.activateQuickAlarmContextMenu(event,false);">
+					</menupopup>
+				</menu>
+
+				<menuitem label="&rf.main.showalerts.label;"
+					id="reminderfox-options-contextmenu-suspendAlerts"
+					onclick="reminderfox.overlay.toggleShowAlert();reminderfox.calendar.ui.panelClose(); " />
+
+				<menuseparator />
+
+				<!-- ************* CalDAV ************* -->
+				<menu id="calDAV_accounts_menu" label="&rf.caldav.sync.support;">
+
+					<menupopup id="calDAV_accounts_popup" onpopupshowing="rmFx_CalDAV_AccountSelect();">
+
+						<menuitem id="rmFx_editCalDAV" label="&rf.caldav.sync.setup;"
+							onclick="reminderfox.overlay.openOptionsDialog('network');" />
+
+						<menuitem label="&rf.caldav.sync.help;"
+							tooltiptext="&rf.caldav.sync.help.status;"
+							type="radio"
+							onclick="reminderfox.util.docRmFX('remote-calendar-n/');" />	<!-- $$$_locale  NEW web address for 'Remote Calendar' Help ! -->
+
+						<menuseparator id="calDAVaccountSeparator1" />
+
+						<menuitem id="rmFx_syncCalDAV" label="&rf.caldav.sync.all;"
+							onclick="rmFx_CalDAV_SyncActiveAccounts();"
+							type="radio" />
+							<!-- image="chrome://reminderfox/skin/images/icon_share_20w.png" -->
+
+						<menuseparator id="calDAVaccountSeparator2" />
+						<!-- menuitems for accounts added with rmFx_CalDAV_AccountSelect()
+							in calDAVcalls.js -->
+					</menupopup>
+				</menu>
+
+				<menuseparator />
+
+				<menuitem
+					onclick="reminderfox.overlay.openOptionsDialog();reminderfox.calendar.ui.panelClose(); "
+					label="&rf.calendar.menu.options.open;"
+					tooltiptext="&rf.calendar.menu.options.open;" />
+
+				<menu id="backupMenu" label="&rf.add.file.menu.backup.title;">
+					<menupopup id="backupMenuPopup" >
+						<menuitem id="rmFxBackup" label="&rf.options.file.backup;"
+								  onclick="rmFx_mainDialogSaveAndClose(false); reminderfox.util.exportReminders(true);"
+								   tooltiptext="&rf.options.file.backup.tooltip;"/>
+						<menuitem label="&rf.options.file.recover;"
+								  onclick="reminderfox.util.recoverICSfile();"
+								   tooltiptext="&rf.options.file.Pick;"/>
+					</menupopup>
+				</menu>
+
+				<menuseparator />
+
+				<menuitem label="Reminderfox NEWS" id="reminderfox-news-open"
+					onclick="reminderfox.go4news.callNews();" />
+
+				<menuitem label="&rf.main.help.label;"
+					onclick="reminderfox.util.launchHelp();reminderfox.calendar.ui.panelClose(); "
+					tooltiptext="&rf.calendar.menu.options.docu;" />
+
+				<menuitem label="Reminderfox Forum / Support / Feedback"
+					oncommand="reminderfox.util.docRmFX('forum');"
+				tooltiptext="See and share user discussions, get answers and recommendations to your questions."/>
+
+				<menuitem label="&rf.main.about.label;" id="calendar-foxy-contextmenu-gotoAbout"
+					onclick="reminderfox.overlay.openAboutReminderFoxDialog();reminderfox.calendar.ui.panelClose(); " />
+
+			</menupopup>
+		</toolbarbutton>
+
+
+		<spacer width="5px" />
+
+		<button id="reminderfox-calendar-add-event" class="reminderfox-calendar-iconLabel"
+			label="&rf.categories.list.button.add;" icon="false" oncommand="reminderOrTodoAdd();"
+			onmouseover="reminderfox.calendar.ui.panelClose()" tooltiptext="&rf.calendar.add.event2list;" />
+
+		<button id="rmFx-allLists" tabListIndex="0"
+			onmouseenter="reminderfox.calendar.ui.panelTabOpen(this, event, 'mouse');"
+			onclick="reminderfox.calendar.ui.panelTabOpen(this, event, 'click');">
+
+			<text id="rmFx-tabName" value="&rf.add.tab.reminders.label;"
+				class="reminderfox-calendar-listLabel" crop="end" flex="1" />
+
+			<spacer width="5" />
+			<image src="chrome://reminderfox/skin/images/search-arrow1.png" />
+
+		</button>
+
+		<panel id="rmFx-tabList" onmouseleave="reminderfox.calendar.ui.panelClose();">
+			<label id="Xreminder" class="rmFx_panelItem" value="&rf.add.tab.reminders.label;"
+				onclick="reminderfox.calendar.ui.tabListChange(0, this);" tabListNo='0' />
+			<label id="Xtodo" class="rmFx_panelItem" value="&rf.add.tab.todos.label;"
+				onclick="reminderfox.calendar.ui.tabListChange(1, this);" tabListNo='1' />
+
+
+			<!-- 'userLists' .. will be build with /addReminderDialog.js rmFx_mainDialogLoad() -->
+			<menuseparator />
+
+			<label id="rmFx_editLists" class="rmFx_panelItem"
+				value="&rf.calendar.menu.options.userlists;" onclick="reminderfox.overlay.openOptionsDialog('todoLists');" />
+		</panel>
+
+		<spacer width="5px" />
+
+		<hbox id="reminderfox-calendar-buttons" flex="1"
+			onmouseover="reminderfox.calendar.ui.panelClose()">  <!-- with List buttons -->
+
+			<spacer width="3px" />
+
+			<!-- HBOX for Filter and View handling with LIST -->
+			<toolbarbutton id="rmFx-search-spyglass" class="rmFx-search-spyglass"
+				onclick="reminderfox.calendar.filter.toggle();" status="closed"
+				tooltiptext="&rf.calendar.menu.toggleSearchFilter;" />
+
+			<hbox id="rmFx-SearchAndFilter-Wide" flex="1">
+				<!--hbox id="rmFx-SearchTextAndFilter-Box" / -->
+			</hbox>
+
+
+			<spacer flex="1" />
+
+			<toolbarbutton id="datepickerAnchor1" label=""
+				onclick="reminderfox.datePicker.datePickerOpen(event, this, false, 'popup')"
+				ondblclick="if (event.button == 0) reminderfox.datePicker.datePickerGoto('today');"
+				tooltiptext="&rf.calendar.menu.gotodate;" />
+<!--
+			<spacer width="1px" />
+-->
+			<button id="reminderfox-calendar-events-revert" class="reminderfox-calendar-iconLabel"
+				label="&rf.add.addReminder.revertbutton.label;" icon="false"
+				oncommand="reminderfox_RevertNewNchanged();" disabled="true"
+				modified="false" tooltiptext="&rf.calendar.menu.revertnewandchanges;" />
+
+			<button id="reminderfox-calendar-events-save" class="reminderfox-calendar-iconLabel"
+				label="&rf.calendar.menu.save;" icon="false"
+				oncommand="rmFx_mainDialogSaveAndClose(false);" disabled="true"
+				modified="false" tooltiptext="&rf.calendar.menu.savenewandchanges;" />
+
+		</hbox>  <!-- with List buttons -->
+
+		<spacer width="5px" />
+
+	</hbox> <!-- "rmFx-MainDialog-Menubar" -->
+
+	<hbox id="rmFx-SearchAndFilter-Small">
+		<!--hbox id="rmFx-SearchTextAndFilter-Box" / -->
+	</hbox>
+
+
+	<hbox id="rmFx-MainDialog-List-Calendar" flex="1"
+		onmouseleave="reminderfox.calendar.ui.panelLeave(this)">
+
+		<tabbox id="reminderfox-list-box" flex="1" hidden="true">
+
+			<tabpanels id="tabPanelID" flex="1">
+
+				<!-- Reminders -->
+				<tabpanel flex="1" id="reminderPanel">
+					<hbox id="treeparent" flex="1">
+						<keyset>  <!-- keyboard shortcuts for find -->
+							<key id="key_find" key="&rf.add.find.accesskey;" oncommand="doFind();"
+								modifiers="accel" />
+							<key id="key_find_next" key="&rf.add.findagain.accesskey;"
+								oncommand="doFindNext();" modifiers="accel" />
+							<key id="key_hide" key="&rf.add.hideAll.accesskey;"
+								oncommand="doHideAll();" modifiers="accel" />
+							<key id="key_show" key="&rf.add.showAll.accesskey;"
+								oncommand="doShowAll();" modifiers="accel" />
+							<key id="key_hideCompletedItems" key="&rf.add.hideCompletedItems.accesskey;"
+								oncommand="toggleHideCompletedItems();" modifiers="accel" />
+
+							<key id="key_viewMail" key="&rf.add.viewMail.accesskey;"
+								modifiers="accel" oncommand="reminderfox.mail.doShowMailShortcut();" />
+							<key id="key_add" key="a" oncommand="reminderOrTodoAdd()"
+								modifiers="accel" />
+							<key id="key_rmFx_advanceTab" key="t" oncommand="advanceTab();"
+								modifiers="accel" />
+							<key id="key_quickSearchFocus" key="&rf.add.quicksearch.accesskey;"
+								modifiers="accel" oncommand="reminderfox.calendar.filter.toggle();" />  <!-- textSearchFocus -->
+						</keyset>
+
+						<tree id="reminderTree" flex="1" enableColumnDrag="true"
+							onkeypress="processKeyPressedOnReminderTree(event);"
+							oncontextmenu="rmFx_checkLoaded(); activateContextReminder(event);"
+							context="treechildren-contextmenu" onselect="reminderSelected (event);">
+							<popupset>
+								<tooltip id="reminderTree-tooltip" orient="vertical"
+									style="background-color: #33DD00;" onpopupshowing="return reminderTreeTooltip(event);">
+									<vbox id="reminderTree-tooltip-box" />
+								</tooltip>
+							</popupset>
+
+							<treecols>
+								<treecol id="dateColLabel" label="&rf.add.reminders.column.date.label;"
+									flex="8" ignoreincolumnpicker="true" persist="width ordinal"
+									onclick="sortcolumn(this);" class="sortDirectionIndicator"
+									sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="descColLabel"
+									label="&rf.add.reminders.column.description.label;" flex="30"
+									ignoreincolumnpicker="true" persist="width ordinal" onclick="sortcolumn(this);"
+									class="sortDirectionIndicator" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="timeColLabel" hidden="true"
+									label="&rf.add.reminders.column.time.label;" flex="0"
+									persist="hidden width ordinal" onclick="sortcolumn(this);"
+									class="sortDirectionIndicator" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="dateCompleted" hidden="true"
+									label="&rf.add.reminders.column.datecompleted.label;" flex="0"
+									persist="hidden width ordinal" onclick="sortcolumn(this);"
+									class="sortDirectionIndicator" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="repeatColLabel" hidden="true"
+									label="&rf.add.reminders.column.repeat.label;" flex="0"
+									persist="hidden width ordinal" onclick="sortcolumn(this);"
+									class="sortDirectionIndicator" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="completeColLabel" hidden="true"
+									label="&rf.add.reminders.column.complete.label;" tooltiptext="&rf.add.reminders.column.complete.label;"
+									src="chrome://global/skin/checkbox/cbox-check.gif" class="treecol-image"
+									flex="0" persist="hidden width ordinal" cycler="true" align="center"
+									onclick="sortcolumn(this);" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="remindUntilCompletedColLabel" hidden="true"
+									label="&rf.add.reminders.column.remindUntilCompleted.label;"
+									tooltiptext="&rf.add.reminders.column.remindUntilCompleted.label;"
+									src="chrome://reminderfox/skin/images/ribbon-red-small.png"
+									class="treecol-image" flex="0" persist="hidden width ordinal"
+									cycler="true" align="center" onclick="sortcolumn(this);"
+									sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="notesColLabel" hidden="true"
+									label="&rf.add.reminders.column.notes.label;" tooltiptext="&rf.add.reminders.column.notes.label;"
+									flex="0" src="chrome://reminderfox/skin/images/notes.png"
+									class="treecol-image" persist="hidden width ordinal" cycler="true"
+									align="center" onclick="sortcolumn(this);" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="alarmColLabel" hidden="true"
+									label="&rf.add.reminders.column.alarm.label;" tooltiptext="&rf.add.reminders.column.alarm.label;"
+									src="chrome://reminderfox/skin/images/alarmbell.png" class="treecol-image"
+									flex="0" persist="hidden width ordinal" cycler="true" align="center"
+									onclick="sortcolumn(this);" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+
+								<treecol id="catColLabel" hidden="true"
+									label="&rf.options.categories.label;" tooltiptext="&rf.options.categories.label;"
+									flex="0" persist="hidden width ordinal" onclick="sortcolumn(this);"
+									sortDirection="natural" />
+								<splitter class="tree-splitter" />
+
+								<treecol id="endDateColLabel" hidden="true"
+									label="&rf.moreoptions.list.reminder.more.endDate.label;"
+									tooltiptext="&rf.moreoptions.list.reminder.more.endDate.label;"
+									flex="0" persist="hidden width ordinal" onclick="sortcolumn(this);"
+									class="sortDirectionIndicator" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+
+								<treecol id="mailColLabel" hidden="true"
+									label="&rf.add.reminders.column.mail.label;" tooltiptext="&rf.add.reminders.column.mail.label;"
+									src="chrome://reminderfox/skin/images/mail.png" class="treecol-image"
+									flex="0" persist="hidden width ordinal" cycler="true" align="center"
+									onclick="sortcolumn(this);" sortDirection="natural" />
+
+								<!-- //calDAV column -->
+								<splitter class="tree-splitter" />
+								<treecol id="calDAVcolLabel" hidden="true"
+									label="&rf.caldav.remoteCalendar;" tooltiptext="&rf.caldav.remoteCalendar;/CalDAV"
+									class="treecol-image rmFx-calDAV-share"
+									flex="0" persist="hidden width ordinal" align="center"
+									onclick="sortcolumn(this);" sortDirection="natural" />
+
+							</treecols>
+							<treechildren id="treechildren"
+								onclick="reminderFox_toggleReminderColumns(event);" ondblclick="if (event.button == 0) reminderOrTodoEdit()"
+								tooltip="reminderTree-tooltip">
+							</treechildren>
+						</tree>
+
+						<menupopup id="treechildren-contextmenu">
+							<menuitem id="reminderfox-calendar-addReminder" label="&rf.add.addReminder.addbutton.label;"
+								oncommand="reminderOrTodoAdd()" />
+
+							<menuseparator />
+
+							<menuitem id="treechildren-contextmenu-edit" label="&rf.add.reminders.context.edit.label;"
+								oncommand="reminderOrTodoEdit()" />
+							<menuitem id="treechildren-contextmenu-copyReminder"
+								label="&rf.add.reminders.context.copy.label;" oncommand="copyReminderOrTodo()" />
+							<menuitem id="treechildren-contextmenu-delete" label="&rf.add.reminders.context.delete.label;"
+								oncommand="userDeleteReminder()" />
+							<menu id="treechildren-contextmenu-moveReminderToList"
+								label="&rf.add.reminders.context.moveToList.label;">
+								<menupopup id="treechildren-contextmenu-moveReminderToList-popup">
+								</menupopup>
+							</menu>
+							<menuseparator />
+
+							<!-- calDAV menu for individual sync a calendar-->
+							<menu id="treechildren-contextmenu-calDAV" label="&rf.caldav.calendar.syncto;">
+								<menupopup id="treechildren-contextmenu-calDAV-popup"
+									onpopupshowing="reminderFox_onListCalDAV(this);">
+								</menupopup>
+							</menu>
+
+							<menuseparator id="treechildren-contextmenu-calDAV-separator" />
+
+							<menuitem id="treechildren-contextmenu-important"
+								label="&rf.add.reminders.context.important.label;" type="checkbox"
+								autocheck="false" oncommand="toggleImportantFlag()" />
+							<menuitem id="treechildren-contextmenu-markAsComplete"
+								label="&rf.add.reminders.context.complete.label;" type="checkbox"
+								autocheck="false" oncommand="toggleMarkAsComplete()" />
+							<menuitem id="treechildren-contextmenu-remindUntilComplete"
+								label="&rf.add.reminders.context.remindUntilCompleted.label;"
+								type="checkbox" autocheck="false" oncommand="toggleRemindUntilCompleted()" />
+							<menuseparator />
+							<menuitem id="treechildren-contextmenu-find" label="&rf.add.reminders.context.find.label;"
+								oncommand="doFind()" key="key_find" />
+							<menuitem id="treechildren-contextmenu-find"
+								label="&rf.add.reminders.context.hideRepeatingReminders.label;"
+								oncommand="doHideAll()" key="key_hide" />
+							<menuitem id="treechildren-contextmenu-find"
+								label="&rf.add.reminders.context.showAllReminders.label;"
+								oncommand="doShowAll()" key="key_show" />
+							<menuitem id="treechildren-contextmenu-hideCompleted"
+								label="&rf.add.reminders.context.hidecompleteditems.label;" key="key_hideCompletedItems"
+								type="checkbox" autocheck="false" oncommand="toggleHideCompletedItems()" />
+
+							<menu id="exportXML" label="&rf.add.reminders.context.print.label;"
+								tooltiptext="&rf.add.reminders.context.print.ttt;">
+								<menupopup id="exportXML-popup" onpopupshowing="reminderfox_PrintMenuSetup(this);">
+
+
+									<menuitem id="agendaXML" class="printXMLsystem" label="&rf.add.reminders.context.print.agenda.label;"
+										value="Agenda.xsl" oncommand="reminderfox_xmlPrint(this, 'XPI');" />
+									<menuseparator class="printXMLsystem" />
+
+									<menuitem id="agendaXML1" class="printXMLsystem"
+										label="&rf.add.reminders.context.print.all;" value="Events(All).xsl"
+										oncommand="reminderfox_xmlPrint(this, 'XPI');" />
+									<menuitem id="agendaXML2" class="printXMLsystem"
+										label="&rf.add.reminders.context.print.selected;" value="Events(Selected).xsl"
+										oncommand="reminderfox_xmlPrint(this, 'XPI');" />
+
+									<menuseparator class="printXMLsystem" />
+									<menuitem id="agendaXML3" class="printXMLsystem"
+										label="&rf.add.reminders.context.print.installation;" value="Installation_Details.xsl"
+										oncommand="reminderfox_xmlPrint(this, 'XPI');" />
+
+									<menuitem label="&rf.main.help.label;" class="printXMLsystem"
+										onclick="reminderfox.util.launchHelp('rf.printingUser');reminderfox.calendar.ui.panelClose(); "
+										tooltiptext="&rf.add.reminders.context.print.docu;" />
+									<menuseparator class="printXMLsystem" />
+
+								</menupopup>
+							</menu>
+
+
+							<menuitem id="thisIsAnTestItem" label="Calling a test function"
+								hidden="true" oncommand="reminderfox_test(this);" />
+
+
+							<menuitem id="treechildren-contextmenu-showMail" label="&rf.add.reminders.context.viewMail.label;"
+								oncommand="reminderfox.mail.doShowMail();" key="key_viewMail" />
+
+							<!-- gW mail Reminders -->
+							<menuseparator />
+
+							<menuitem id="treechildren-contextmenu-sendReminder"
+								label="&rf.add.reminders.context.exportSendReminders.label;"
+								oncommand="reminderfox.iCal.exportOrSend(event)" />
+
+							<menuitem id="treechildren-contextmenu-reminder-openABcard"
+								label="&rf.main.contextmenu.openAB;" oncommand="reminderfox.abCard.openABcard(event)"
+								hidden="true" />
+						</menupopup>
+					</hbox> <!-- // id="treeparent" -->
+				</tabpanel>  <!-- Reminders -->
+
+
+				<!-- TODOs -->
+				<tabpanel flex="1" id="todosPanel">
+					<hbox id="todo_treeparent" flex="1">
+						<keyset>	<!-- keyboard shortcuts for moving todo's up/down -->
+							<key id="key_moveTodoUp" keycode="VK_UP" oncommand="moveTodoUp();"
+								modifiers="alt" />
+							<key id="key_moveTodoDown" keycode="VK_DOWN" oncommand="moveTodoDown();"
+								modifiers="alt" />
+						</keyset>
+						<popupset>	<!-- todoTree-tooltip -->
+							<tooltip id="todoTree-tooltip" orient="vertical"
+								style="background-color: #33DD00;" onpopupshowing="return todoTreeTooltip(event);">
+								<vbox id="todoTree-tooltip-box">
+								</vbox>
+							</tooltip>
+						</popupset>
+
+						<tree id="todoTree" flex="1" enableColumnDrag="true"
+							onkeypress="processKeyPressedOnTodoTree(event);" context="todo-treechildren-contextmenu"
+							oncontextmenu="rmFx_checkLoaded(); activateContextTodo(event);"
+							onselect="todoSelected(event)">
+							<treecols>
+								<treecol id="todoDateColLabel" label="&rf.add.reminders.column.date.label;"
+									flex="3" hidden="true" persist="hidden width ordinal" onclick="sortcolumn(this);"
+									class="sortDirectionIndicator" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoDescColLabel" label="&rf.add.todos.column.description.label;"
+									flex="30" ignoreincolumnpicker="true" persist="width ordinal"
+									onclick="sortcolumn(this);" class="sortDirectionIndicator"
+									sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoTimeColLabel" hidden="true"
+									label="&rf.add.reminders.column.time.label;" flex="0"
+									persist="hidden width ordinal" onclick="sortcolumn(this);"
+									class="sortDirectionIndicator" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoDateCompleted" hidden="true"
+									label="&rf.add.reminders.column.datecompleted.label;" flex="0"
+									persist="hidden width ordinal" onclick="sortcolumn(this);"
+									class="sortDirectionIndicator" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoCompleteColLabel" hidden="false"
+									label="&rf.add.reminders.column.complete.label;" tooltiptext="&rf.add.reminders.column.complete.label;"
+									class="treecol-image" src="chrome://global/skin/checkbox/cbox-check.gif"
+									flex="0" persist="hidden width ordinal" cycler="true" align="center"
+									onclick="sortcolumn(this);" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoShowInTooltip" hidden="true"
+									label="&rf.add.todos.column.showTooltip.label;" tooltiptext="&rf.add.todos.column.showTooltip.label;"
+									class="treecol-image" flex="0"
+									src="chrome://reminderfox/skin/images/tooltip.png" persist="hidden width ordinal"
+									cycler="true" align="center" onclick="sortcolumn(this);"
+									sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoNotesColLabel" hidden="true" class="treecol-image"
+									tooltiptext="&rf.add.reminders.column.notes.label;" label="&rf.add.reminders.column.notes.label;"
+									src="chrome://reminderfox/skin/images/notes.png" flex="0"
+									persist="hidden width ordinal" cycler="true" align="center"
+									onclick="sortcolumn(this);" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoAlarmColLabel" hidden="true"
+									label="&rf.add.reminders.column.alarm.label;" tooltiptext="&rf.add.reminders.column.alarm.label;"
+									src="chrome://reminderfox/skin/images/alarmbell.png" class="treecol-image"
+									flex="0" persist="hidden width ordinal" cycler="true" align="center"
+									onclick="sortcolumn(this);" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoCatColLabel" hidden="true"
+									label="&rf.options.categories.label;" tooltiptext="&rf.options.categories.label;"
+									flex="0" persist="hidden width ordinal" onclick="sortcolumn(this);"
+									sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoEndDateColLabel" hidden="true"
+									label="&rf.moreoptions.list.reminder.more.endDate.label;"
+									tooltiptext="&rf.moreoptions.list.reminder.more.endDate.label;"
+									flex="0" persist="hidden width ordinal" onclick="sortcolumn(this);"
+									class="sortDirectionIndicator" sortDirection="natural" />
+								<splitter class="tree-splitter" />
+								<treecol id="todoMailColLabel" hidden="true"
+									label="&rf.add.reminders.column.mail.label;" tooltiptext="&rf.add.reminders.column.mail.label;"
+									class="treecol-image" src="chrome://reminderfox/skin/images/mail.png"
+									flex="0" persist="hidden width ordinal" cycler="true" align="center"
+									onclick="sortcolumn(this);" sortDirection="natural" />
+
+								<!-- //calDAV column -->
+								<splitter class="tree-splitter" />
+								<treecol id="calDAVcolLabel" hidden="true"
+									label="&rf.caldav.remoteCalendar;" tooltiptext="&rf.caldav.remoteCalendar;/CalDAV"
+									class="treecol-image rmFx-calDAV-share"
+									flex="0" persist="hidden width ordinal" align="center"
+									onclick="sortcolumn(this);" sortDirection="natural" />
+
+
+							</treecols>
+
+							<treechildren id="todo_treechildren"
+								onclick=" reminderFox_toggleTodoColumns(event);" ondblclick="if (event.button == 0) reminderOrTodoEdit()"
+								tooltip="todoTree-tooltip">
+							</treechildren>
+						</tree>
+
+						<menupopup id="todo-treechildren-contextmenu">
+							<menuitem id="reminderfox-calendar-addTodo" label="&rf.add.todosr.addbutton.label;"
+								oncommand="reminderOrTodoAdd()" />
+
+							<menuseparator />
+							<menuitem id="treechildren-contextmenu-edit2" label="&rf.add.todos.context.edit.label;"
+								oncommand="reminderOrTodoEdit()" />
+							<menuitem id="treechildren-contextmenu-copyTodo" label="&rf.add.todos.context.copy.label;"
+								oncommand="copyReminderOrTodo()" />
+							<menuitem id="treechildren-contextmenu-delete2" label="&rf.add.todos.context.delete.label;"
+								oncommand="userDeleteReminder(this)" />
+							<menu id="treechildren-contextmenu-moveToList" label="&rf.add.reminders.context.moveToList.label;">
+								<menupopup id="treechildren-contextmenu-moveToList-popup">
+								</menupopup>
+							</menu>
+
+							<menuitem id="treechildren-contextmenu-important2"
+								label="&rf.add.todos.context.important.label;" oncommand="toggleImportantFlagTodo()"
+								type="checkbox" autocheck="false" />
+							<menuitem id="treechildren-contextmenu-markAsComplete2"
+								label="&rf.add.reminders.context.complete.label;" type="checkbox"
+								autocheck="false" oncommand="toggleMarkAsCompleteTodo()" />
+							<menuitem id="treechildren-contextmenu-showInTooltip"
+								label="&rf.add.todos.context.showInTooltip.label;" type="checkbox"
+								autocheck="false" oncommand="toggleShowInTooltipTodo()" />
+							<menuseparator />
+							<menuitem id="treechildren-contextmenu-moveUp" label="&rf.add.todos.context.moveTodoUp.label;"
+								oncommand="moveTodoUp()" key="key_moveTodoUp" />
+							<menuitem id="treechildren-contextmenu-moveDown" label="&rf.add.todos.context.moveTodoDown.label;"
+								oncommand="moveTodoDown()" key="key_moveTodoDown" />
+							<menuseparator />
+							<menuitem id="treechildren-contextmenu-find2" label="&rf.add.reminders.context.find.label;"
+								oncommand="doFind()" key="key_find" />
+							<menuitem id="treechildren-contextmenu-hideCompleted2"
+								label="&rf.add.reminders.context.hidecompleteditems.label;" key="key_hideCompletedItems"
+								type="checkbox" autocheck="false" oncommand="toggleHideCompletedItems()" />
+
+							<menu id="exportXML-todo" label="&rf.add.reminders.context.print.label;"
+								tooltiptext="&rf.add.reminders.context.print.ttt;">
+								<menupopup id="exportXML-todo-popup" onpopupshowing="reminderfox_PrintMenuSetup(this);">
+									<menuitem id="agendaXML" class="printXMLsystem" label="&rf.add.reminders.context.print.agenda.label;"
+										value="Agenda.xsl" oncommand="reminderfox_xmlPrint(this, 'XPI');" />
+									<menuseparator class="printXMLsystem" />
+
+									<menuitem id="agendaXML1" class="printXMLsystem"
+										label="&rf.add.reminders.context.print.all;" value="Events(All).xsl" oncommand="reminderfox_xmlPrint(this, 'XPI');" />
+									<menuitem id="agendaXML2" class="printXMLsystem"
+										label="&rf.add.reminders.context.print.selected;" value="Events(Selected).xsl"
+										oncommand="reminderfox_xmlPrint(this, 'XPI');" />
+
+									<menuseparator class="printXMLsystem" />
+
+									<menuitem label="&rf.main.help.label;" class="printXMLsystem"
+										onclick="reminderfox.util.launchHelp('rf.printingUser');reminderfox.calendar.ui.panelClose(); "
+										tooltiptext="&rf.add.reminders.context.print.docu;" />
+									<menuseparator class="printXMLsystem" />
+
+								</menupopup>
+							</menu>
+
+							<menuitem id="treechildren-contextmenu-showMail2" label="&rf.add.reminders.context.viewMail.label;"
+								oncommand="reminderfox.mail.doShowMailTodo();" key="key_viewMail" />
+
+							<menuseparator />
+
+							<menuitem id="treechildren-contextmenu-sendTodos"
+								label="&rf.add.reminders.context.exportSendTodos.label;"
+								oncommand="reminderfox.iCal.exportOrSend(event)" />
+
+							<menuitem id="treechildren-contextmenu-todo-openABcard"
+								label="&rf.main.contextmenu.openAB;" oncommand="reminderfox.abCard.openABcard(event)"
+								hidden="true" />
+						</menupopup>
+					</hbox>
+				</tabpanel>  <!-- TODOs -->
+
+			</tabpanels>		<!--id="tabPanelID" -->
+		</tabbox>
+
+		<spacer width="4px" />
+
+		<vbox id="reminderfox-calendar-box" flex="1" /> <!-- calendar widget - brought in from overlay -->
+
+		<box id="panel-Anchor"></box>
+
+		<spacer width="4px" />
+
+	</hbox> <!-- rmFx-MainDialog-List-Calendar -->
+
+	<hbox id="bottomButtonBox" hidden="true">
+		<spacer width="4px" />
+
+		<!-- rf.add.addReminder.addbutton.label rf.add.todosr.addbutton.label -->
+		<button id="reminderfox-calendar-add" label="&rf.reminderoptions.addEvent;"
+			icon="false" oncommand="reminderOrTodoAdd();" onmouseover="reminderfox.calendar.ui.panelClose()"
+			tooltiptext="&rf.calendar.add.event2list;" />
+
+		<spring flex="1" />
+
+		<button id="reminderfox-calendar-events-donebutton2" label="&rf.add.addReminder.donebutton.label;"
+			oncommand="close();" />
+		<spacer width="4px" />
+	</hbox>
+
+
+	<!-- date selector popup -->
+	<panel id="rmFx-moz-datepicker">
+		<vbox id="rmFx-moz-datepicker-box" class="rmFx-panel-Box">
+			<spacer height="4px" />
+			<hbox>
+				<spacer width="4px" />
+				<button label="&rf.calendar.picker.today;" id="todayButton"
+					default="false" class="reminderfox-calendar-iconLabel"
+					oncommand="reminderfox.datePicker.datePickerGoto('today');" />
+
+				<spacer flex="1" />
+				<button label="&rf.ok;" id="okButton" default="true"
+					class="reminderfox-calendar-iconLabel" oncommand="reminderfox.datePicker.datePickerGoto();" />
+				<spacer width="4px" />
+			</hbox>
+
+			<box id="datepickerBox">  <!-- datepicker will be rebuild with JS -->
+				<datepicker id="datePickerCurrent" type='popup'
+					firstdayofweek="2" />
+			</box>
+		</vbox>
+	</panel>
+
+
+	<!-- PANEL for Status information -->
+	<panel id="rmFx_status-panel">
+		<description id="rmFx_status-panel-text" value="status--test" />
+	</panel>
+
+	<!-- PANEL for Progressmeter -->
+	<panel id="rmFx_progress-panel" noautohide="true">
+		<hbox>
+			<label id="rmFx_progressmeterLabel" value="Sync" />
+			<progressmeter id="rmFx_progressmeter" mode="undetermined"
+				hidden="false" />
+		</hbox>
+	</panel>
+
+
+	<box item0="&rf.options.list.reminder.filters.moreViews.label;"
+
+		item1="&rf.options.list.reminder.filters.allreminders.label;" item2="&rf.options.list.reminder.filters.selectedmonth.label;"
+		item3="&rf.options.list.reminder.filters.selectedweek.label;" item4="&rf.options.list.reminder.filters.selecteddaylabel;"
+		item5="&rf.options.list.reminder.filters.nextweek.label;" item6="&rf.options.list.reminder.filters.nexttwoweeks.label;"
+		item7="&rf.options.list.reminder.filters.upcomingReminders.label;"
+
+		item8="&rf.options.list.reminder.filters.alltodos.label;" item9="&rf.options.list.reminder.filters.selectedmonth.label;"
+		item10="&rf.options.list.reminder.filters.selectedweek.label;" item11="&rf.options.list.reminder.filters.selecteddaylabel;"
+		item12="&rf.options.list.reminder.filters.nextweek.label;" item13="&rf.options.list.reminder.filters.nexttwoweeks.label;"
+		item14="&rf.options.list.reminder.filters.upcomingTodos.label;" id="rmFx-filters-labels"
+		hidden="true" />
+
+
+	<script type="application/x-javascript">
+	function rmFx_mainDialogLoadX() {
+
+		var updateWindow = reminderfox.util.getWindow("window:rmFxCaldavUpdate");
+		if (updateWindow != null) {
+			updateWindow.close()
+		}
+
+		var textFilter = document.documentElement.attributes["textFilter"].value
+	//	reminderfox.util.Logger('ALERT', " textFiltering on XUL start" + textFilter )
+		reminderfox.search.textSearchType = textFilter
+
+		var viewsFilterEvents = +document.documentElement.attributes["viewsFilterEvents"].value
+		var viewsFilterLists  = +document.documentElement.attributes["viewsFilterLists"].value
+	//	reminderfox.util.Logger('ALERT', " viewsFilters on XUL start   Events|Lists : " + viewsFilterEvents + "|" + viewsFilterLists)
+		reminderfox.search.viewsFilterEvents = viewsFilterEvents
+		reminderfox.search.viewsFilterLists  = viewsFilterLists
+
+		reminderfox.go4news.setButton();
+
+		rmFx_mainDialogLoad();
+	}
+
+	</script>
+</window>

@@ -70,12 +70,42 @@ async function downloadURL(url, destFile) {
 	// console.log('done!');
 }
 
+
+
 function unzipFile(filename, destination) {
 	// _7zCommand = ['x', `${filename}`, `-o${destination}`];
 	console.debug('Starting unzip: ' + filename);
 	fileUnzip(`${filename}`, { dir: `${destination}` });
 	console.debug('unpacked source');
 }
+
+function getExtJson(extsJson, id) {
+	console.debug('GetJ: '+extsJson.length);
+	for (let index = 0; index < extsJson.length; index++) {
+		const ext = extsJson[index];
+		if (ext === null) {
+			console.debug('no extension');
+			break;
+		}
+		// console.debug('\n\n' + JSON.stringify(ext));
+		if (ext.id === Number(id)) {
+			console.debug('extension '+index+ '  '+ ext.id+'  '+ext.slug);
+
+			return ext;
+		}
+	}
+	return null;
+}
+
+async function writePrettyJSONFile(f, json) {
+	try {
+		return await fs.outputFile(f, JSON.stringify(json, null, 4));
+	} catch (err) {
+		console.error(err);
+		throw err;
+	}
+}
+
 
 function readExtJson(filename) {
 
@@ -107,6 +137,7 @@ async function walkFolders(parentFolder, options) {
 
 	let start = (typeof options.start === 'number') ? options.start : 0;
 	let end = (typeof options.end === 'number') ? options.end : dirs.length;
+	let extJson = {};
 
 	for (let index = start; index < end; index++) {
 		const extDir = dirs[index];
@@ -140,7 +171,11 @@ async function walkFolders(parentFolder, options) {
 				
 			} catch (error) {
 				console.debug('File err: '+error);
-				return error;
+				extJson = getExtJson(options.extsJson, extDir.split('-')[0]);
+				let jfile = `${parentFolder}/${extDir}/${extDir}.json`;
+				writePrettyJSONFile(jfile, extJson)
+				console.debug(extJson.slug);
+
 			}
 
 			console.debug('ExtensionId: ' + extJson.id);

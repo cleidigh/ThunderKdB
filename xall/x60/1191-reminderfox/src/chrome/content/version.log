@@ -1,0 +1,441 @@
+
+Reminderfox [2.1.6.6] <'20190116_1616'>
+  as of: Wed 16 Jan 2019 16:16 +0000 (CET)
+reminderfox_2.1.6.6_20190116_1616.xpi
+
+
+
+
+2018-11-09
+   PreVersion for compatibility with TB60
+
+
+2018-10-07
+   Replace listbox --> richlistbox
+      options.xul
+
+
+
+2018-10-07
+   Source Code structure changed to support easy development with Atom
+   Generate XPI with makeXPI.py
+
+
+2018-05-08
+  New
+    -- Reminderfox Remote Calendar feature now uses the color set by the
+       remote calendar system (eg. fruux or GCal)
+    -- Inactive set remote calendars now show it's events/todos with
+       a white instead of a black icon on the Main List
+
+
+2018-04-30
+  Fixes
+  -- random alarms
+  -- fix some problems with timezone
+  -- date strings without time was not parsed correctly
+  -- the missing time dimension on Options and Add dialog
+  -- on Options the exporting failed
+  -- tab:Options --> Import  Importing one Todo now opens Add dialog
+
+  Changed
+  -- Logging using .error, this give whole stack behind arrow icon
+  -- Logging date/time: locale format and >serial number of Date<
+
+
+2018-03-11
+  Options tab:Reminderfox Dialog
+    -- selector for existing categories added
+
+
+2018-03-05
+  Updating 2.1.6.1
+  -- fixed 'null' category with standard categories
+  -- default remote calendar was not set with first selecting
+  -- Alarm dialog missed some elements
+
+2018-02-22
+  Release version general:
+  -- update prefs system
+  -- OSswitching - prefs using json format
+  -- Statusbar handling has been changed by Mozilla (partially removed),
+     so Reminderfox starting with vers.2.1.6 has removed the Statusbar usage.
+     Instead use SmartFoxy (see Options --> tab:Access)
+  For Thunderbird:
+  -- SendPlus icon changed
+  -- Reminders for Addressbook contact switchable between US/EU format
+     (see Options --> tab:Access)
+
+
+2018-02-07
+  release version (update for some log strings)
+
+2018-02-05
+  update for mozilla 58/60
+
+2017-12-09
+  -- changed to check if set/getStringPref works,
+     if not use old {get,set}ComplexValue
+	 (compatible TB52.5 .. TB58.0b1/20171124151037
+
+2017-12-03
+  update for mozilla57 and 58
+  -- fp.show (has been removed), use fp.open (async)
+  -- {get,set}ComplexValue use of nsISupportsString
+  versions:
+  57:  https://github.com/neandr/reminderfox/releases/tag/2.1.6(57)
+  58:  https://github.com/neandr/reminderfox/releases/tag/2.1.6(58)
+
+2017-11-21
+  toLocaleFormat  removed in rmFxUtils.js
+  update install.rdf
+
+2017-11-13   Version 2.1.6
+  CalDAV/Remote Calendar with Google Calendar should be back again!
+
+2017-06-25  Version 2.1.5.6:
+  Set multiprocessCompatible flag to true; verified working on multiprocess FF.
+
+2016-12-22 Version [2.1.5.5.4]
+   WIP for fixing SPDY/GCal sync
+
+2016-09-01_18   Version wip 2.1.5.5.4
+   Fixed: Send++
+   Fixed: QuickAlarm Default value (12:05)
+   Fixed: Alarm Sound selection failed on Options
+   Fixed: Timeselector on Alarm and Quick Alarm dialogs failed.
+   Improve: Alarm/Quick Alarm title changed on user request
+
+2016-05-26_14   Version wip 2.1.5.5.3
+   Fixed: Timeselector on Alarm and Quick Alarm dialogs failed.
+
+2016-05-17_01   Version wip 2.1.5.5.3
+   Edit/Open of events with Calendar day popup failed.
+   GCal2 changed to allow business accounts
+
+
+2016-05-06_14   Version wip 2.1.5.5.3
+   Known Problem:
+   -- Timeselector on Alarm and Quick Alarm dialogs fail. Use has to enter
+      time values numerically to the dialog
+
+
+2016-05-04_24   Version wip 2.1.5.5.3
+   Due to removal of 'unpack' in install.rdf
+   -- /defaults directory moved to chrome/content/defaults.
+      At startup /defaults dir is extracted to ../Profile/{profile.default}/reminderfox
+      to support calDAV colors and Agenda/Printing
+   -- About Reminderfox changed for no-release-version checking
+   -- build_eANT.xml changed!
+   Logging - minor changes to make use of console.info/.log/.error etc
+
+
+2016-04-21_21    Version wip 2.1.5.5.2
+   Alert/Alarm:  On Options selecting a sound file will play it for testing
+   About Reminderfox Dialog updated for unpack setup
+
+
+2016-04-18_00    Version wip 2.1.5.5.2
+   XPI generated without unpack for installation
+
+   Alert Notification Slider
+   -- on Options Notification selection to place on screen Top/bottom,left/right
+   -- red button closes without fading
+   -- separate sound file selection, preset for wav,ogg
+
+
+2016-04-01_00    Version wip 2.1.5.5
+==============================================
+   Alert Slider modification
+   -- content/reminderfox/alert  replaced with ../newAlert
+   --> Alert fades in/out (fct is similar to TB new mail notification)
+   --> can be closed with red X on slider
+
+      Known Problem:
+      Playing sound for the Alert Slider isn't working with all OS:
+      -- WIN7   OK  (WIN8/10 not tested)
+      -- OSX    Works with default (system beep), not with .wav/.ogg files
+      -- Linux  Don't work with default (system beep), not with .wav files,
+                but OK with .ogg files
+
+   About and Foxy menu changed for Google Forum link
+
+   Calculating reminder description for any variables (eg: <1978>)
+      was wrong with show more than 1 year on the 'Main List'
+      Thanks to Jens-Uwe
+
+   Disable storing ICS data with no events/todos during sync
+   Subscribe failed due to missing lib link
+   D&D failed with FX/SM Nightly builds;
+      fixed with removing drag elements from <statusbar/> at overlay.
+
+   CalDAV Sync
+   -- changed for DST
+   -- UTC preference setting was not respected for sending ICS data to remote
+      Thanks to  M.P.Ragavendra
+
+
+
+2015-12-30  __ version 2.1.5.4
+   Updated after alarm log error (Tommut 22.12.2015)
+
+      Please note:  Add-ons in FX >41 need to be signed by Mozilla AMO!
+      For testing FX development version is required.
+
+2015-12-20  __ version 2.1.5.4 (rel)
+   SPDY logging updated
+
+2015-12-18  __ version 2.1.5.4 (rel)
+
+wip 2015-11-30  __ version 2.1.5.3 (wip)
+   QAlarm updated for logs
+
+wip 2015-11-16  __ version 2.1.5.3 (wip)
+   Alarm / Quickalarm not always displayed correctly
+   Reminder for mail missed subject
+
+wip 2015-11-11  __ version 2.1.5.3 (wip)
+   GCal re-adding a previous removed calendar failed
+   GCal auth method v1 disabled on XUL dialog
+   Some AMO related changes (settimeout)
+
+wip 2015-11-08  __ version 2.1.5.3 (wip)
+   Alarm dialog resized after adding icons
+
+wip 2015-10-13  __ version 2.1.5.3 (wip)
+
+   Updating reminders in windows and update CalDAV calendars
+   -- prefs "extensions.reminderFox.intervalTimer" defines the interval for
+      the update; default is 30 min (1800000)
+
+
+wip  2015-10-08 __ version 2.1.5.3 (wip)
+
+   Networking updated
+   -- downloading failed with different features because nsIStreamLoader.number
+      changed (../networkService.js)
+   -- http requesting updated
+
+   Reminderfox News  (disabled)
+   -- Testing a "Reminderfox News" feature which is shown on Main Dialog
+      (For details see: rmFxUtils.js  and search for //go4news)
+
+   Open/Todo
+   -- change strings for localization!
+
+wip 2015-06-04 __ version 2.1.5.2 (wip)
+   CalDAV Error 412
+   -- Precaution warning with reminder changed on remote but not updated locally,
+      a local change send to remote would mismatch the etag/ctag
+      "Remote Calendar Sync" extended handling
+   Note: Testing with GCal showed a GCal/Alarm handling doesn't change the CTag/ETag,
+         consequently a RmFX update/change of such an event would not produce 412
+
+   CalDAV Error 409
+   -- ???
+
+   correction of ICS/DAV File location handling after profile move
+   -- new FX/TB install could only use old profile after resetting the RmFX
+      store location prefs
+
+
+wip 2015-03-02 __ version 2.1.5.2 (wip)
+   CalDAV
+   -- with GCal error 401 just the token was updated, not the pending reminder
+
+
+wip 2015-02-23 __ version 2.1.5.2 (wip)
+   CalDAV
+   -- update accounts on all XUL windows with write to .dav
+
+   UTC-foremt
+   -- DTSTART/DTEND changed to Z-time format with storing/syncing to be compatible
+      with systems like fruux (values are converted for 'local' time for UI and
+      internal RmFX use)
+
+
+wip 2015-02-14 __ version 2.1.5.2 (wip)
+   Auto sync at FX/TB startup and also with open RmFX MainDialog
+   Offline mode (Foxy symbol changes, status line in MainDialog)
+
+   CalDAV
+   -- Alarm dialog functions with CalDAV didn't worked correctly
+   -- Renew reminders of a selected account
+      (Foxy menu on Main Dialog --> 'Sync Remote Calendars' --> Select account with Cntrl)
+
+   Alarm dialog
+      alarmed reminders are shown with icon/account id
+
+
+-----------------
+wip  2015-01-25 __ version 2.1.5.2 (wip)
+   Sent++ supporting IMAP Sent folder
+
+
+wip  2015-01-25 __ version 2.1.5.2 (wip)
+   Sent++ supporting IMAP Sent folder
+
+
+2014-12-29
+Externalized more strings.
+
+2014-12-22
+
+Fixed - was showing two alert sliders on startup
+Fixed - was not reading in alert/todo lastack on startup so alarms were not being fired (as they explicitly were
+ignored if missing last ack)
+
+2014-11-26
+Added new external preference per user request to control the delay in opening up multiple alarm dialogs if
+user preference is set to use multiple windows instead of a single tabbed dialog:
+   reminderfox.overlay.getAlarmDelay
+
+
+
+update  2014-04-15 ____version 2.1.5 (release)
+   calDAV updates/housekeeping
+
+update  2014-04-13 ____version 2.1.5 (test)
+   CalDAV Sync failed on FX/TB start with new event for first calendar
+      At start removing an event failed
+   Provision to better trace for data loss at startup
+
+
+Updates 2014-02-13 ___ version 2.1.4.2 (release)
+   CalDAV Sync requesting for a calendar which throws an error (not available,
+      wrong PW, etc) now opens a XUL dialog with error detail, it has buttons to
+      go for Options tab:Sync or just skip that calendar without a fix.
+
+Updates 2014-02-12 ___ version 2.1.4.2 (release)
+   Foxy Icon now has option to show status text as used with Foxy Bow
+      (experimental)
+
+   Gcal Sync wasn't handling the CTag correctly
+
+Updates 2014-02-10 ___ version 2.1.4.2 (release)
+   CalDAV now checks for status on remote calendar vs local (CTag) and only
+      updates if required        Thank to Peter Wills's request
+
+   Thunderbird's ability to autocomplete address entry from invitation attendees
+      was brocken for TB29/30.
+
+   SeaMonkey now works with Foxy Icon and Foxy Bow
+
+
+
+Updates 2014-02-08 ___ version 2.1.4.1 (release)
+   Editing a Todo/Task on a user list did not set the top menu selector for the
+      user list but always to "Todo's"
+
+Updates 2014-02-06 ___ version 2.1.4.1 (release)
+   Deleting current instance of a recurring reminder now position in the Main List
+      to a reminder with date of or near to deleted instance
+
+   Context menu item for Add/Subscribe was not switchable with FX
+
+   Status-/AddonBar to run ONLY the very first time after an install
+      (in reminderfox.core.loadDefaultPreferences),
+      as  we don't want to override user's addon-bar visibility state once
+      they set it  (this was a complaint of several vocal users)
+
+Updates 2014-02-04 ___ version 2.1.4 (release) __
+   Foxy Icon with Badge now  can be placed to any bar.
+      Also Options --> FX/TB can be used to disable/enable. After an enable after
+      previous disable the Foxy Icon will be placed on the same bar, same position
+      as before.
+   Bow Icon / Today's reminder text can be placed on bars with selection on
+      Options --> FX/TB or disabled
+
+   Fixes
+      -- Add/subscribe on web pages without a link failed
+      --
+   Known Issue
+      -- FX 29 will not automatically start Reminderfox, need to open the list
+
+Updates 2014-02-02 ___ version 2.1.4 (release) __
+   FoxyBadge on MainMenu and Bow on statusbar didn't followed
+      the Options --> FX/TB settings
+      (also some others similar)
+   NOTE:  Firefox 26 will work with Bow on statusbar.
+          Newer FX version (eg. FX29) will NOT support the Addon-Bar, so this
+          current version of Reminderfox can not show the Bow!
+
+Updates 2014-01-26 ___ version 2.1.4 (release) __
+
+   CalDAV/Remote Calendar
+   -- Google Calendar with OAuth2 supported (since Sept.16th 2013 required)
+   -- Configure for Remote Calendar with some improvements/fixes
+        (Last account could not be deleted; usernames for remote calendars
+        are read from login manager if possible)
+   -- Account color also shown on overview tab
+   -- Remote calendars are updated at startup (first window only)
+   -- New 'Remote' Calendar support: http://radicale.org/
+         (will be delayed to version 2.1.4 next due to technical issues)
+
+   CalDAV/Remote Calendar -- Tasks
+      RFC 5545 based implementation to support compliant Remote Calendar like
+      -- fruux
+      -- ownCloud (tested with 6.0.0a (stable)
+      -- Radicale with localhost (see docu)
+      Google Calendar API for Tasks don't follow RFC 5545 but uses JSON data exchange
+
+   Other
+   -- Foxy on main menu bar (SmartFoxy) / Bow and text on statusbar:
+      + Foxy is enabled with Options or TB/FX 'Customize' dialog
+      + Foxy can hold badge for numbers of todays/upcoming events
+      + Reminderfox Box and todays events text on status/add-on bar enabled with
+        first install;
+      + Foxy with badge displayed on all windows
+      + see also on Options --> Firefox/Thunderbird tab
+
+   -- Revised [Add/Subscribe] dialog for importing iCal/ICS data from different source
+        with Drag&Drop or context menu on data source (FX,TB, Filemanager)
+
+   -- Spyglass filters search selections for Text and Views persist between close/open of main dialog
+
+   -- Calendar only display expandes the focused day to use the whole dialog space
+   -- Calendar shows 'today' with blue border; days with 'open' events are yellow;
+        'completed' events are gray but will not overwrite 'open' status;
+        days with 'overdue' events are light-red and overwrite 'open' and 'completed'
+
+   -- Send++ now tags the original message to be forwarded/replied with 'Followup' (green)
+   -- Send/Invite supports searching TB Addressbook with autocomplete
+
+   -- Print/View - Reminder with URL/Locations attributes are now active links
+
+   -- Options pages with new structure
+      + Backup Reminders - Options --> General offers 'Backup' of current
+         reminders with date/time stamping
+      + Category tab removed from Options pages, can be accessed directly with menu button
+      + Help links will open a web page and reuse a previous opened tab.
+      + With TB the web page is opened within TB on a new tab, a previous opened
+        tab will be reused also
+
+
+   Fixes
+   -- Reminder entry for next year didn't have right year in Add dialog
+   -- Web-Mail message was not opened with mail icon on main dialog
+   -- Edit an entry on Todo's/User List after filtering was not possible
+   -- Send++ was not working after some Gecko release changes; 'associated' repaired
+   -- Send++ with Thunderbird and having the send-folder on IMAP wasn't adding
+        the mail icon to be used to open the reminder. Now using 'Open associated reminder'
+        will add the mail icon to the reminder/event.
+   -- Events with recurrence had wrong TTT on calendar
+
+   -- Main Dialog List and Calendar didn't show same event status with some
+        Add/Edit actions
+   -- Close 'About' dialog with [esc] or [Close], same with 'Update Check' dialog
+   -- Alarm updated
+
+   -- Views Editing
+        Deleting criteria fixed
+
+
+   Build with ANT changed (files: install.rdf, build.properties, build_eANT.xml)
+
+   more Fixes
+   -- CalDAV rework to separate onError calls
+   -- Update dialog was not handled correctly if already opened
+   -- Move events between lists could produce defective reminders, not in sync
+        with remote; failed also with adding remote calendar to existing event
+   -- Add dialog change for OSX layout

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/catBox.css"  type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="reminderFox-manage-categories">
+
+	<vbox id="reminderFoxCategoryVbox">
+		<label id="mainHeader" value="&rf.categories.currentCatHeader.default;"
+			width="60px" />
+		<hbox flex="1">
+			<richlistbox id="mainCatBox" onclick="reminderfox.category.mainCategoryListFocus(this)"
+				flex="3" seltype="single" style="overflow: auto;" rows="8">
+			</richlistbox>
+			<vbox flex="1">
+				<separator class="thin" />
+				<button id="sCatAdd" label="&rf.categories.list.button.add;"
+					tooltiptext="&rf.categories.tooltip.sCatAdd;"
+					onclick="reminderfox.category.go4Category(this);" />
+				<button id="sCatEdit" label="&rf.categories.list.button.edit;"
+					tooltiptext="&rf.categories.tooltip.sCatEdit;"
+					onclick="reminderfox.category.go4Category(this);"
+					disabled="true" />
+				<button id="sCatDelete" label="&rf.categories.list.button.delete;"
+					tooltiptext="&rf.categories.tooltip.sCatDelete;"
+					onclick="reminderfox.category.selectedCatItemDelete(this);"
+					disabled="true" />
+				<hbox>
+					<button id="reminderFox_cats_moveUp"
+						label="&rf.options.list.reminder.lists.button.moveup.label;"
+						oncommand="reminderfox.util.listItemMoveUp('mainCatBox');" disabled="true" flex="1" />
+					<button id="reminderFox_cats_moveDown"
+						label="&rf.options.list.reminder.lists.button.movedown.label;"
+						oncommand="reminderfox.util.listItemMoveDown('mainCatBox');" disabled="true" flex="1" />
+				</hbox>
+
+				<hbox>
+					<button id="reminderFox_cats_sortUp"
+						label="&rf.options.list.reminder.lists.button.sortup.label;"
+						oncommand="reminderfox.category.catSort('up')" flex="1" />
+					<button id="reminderFox_cats_sortDown"
+						label="&rf.options.list.reminder.lists.button.sortdown.label;"
+						oncommand="reminderfox.category.catSort('down');" flex="1" />
+				</hbox>
+
+				<button id="sCatShowAll" label="&rf.categories.list.button.viewall;"
+					onclick="reminderfox.category.showAllCurrentCategories(this);" />  <!--   Show 'View other categories...' dialog -->
+			</vbox>
+		</hbox>
+
+	</vbox>
+
+</overlay>

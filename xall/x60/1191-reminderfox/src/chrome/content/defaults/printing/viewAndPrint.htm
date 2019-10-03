@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 // Transitional//EN">
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+		<script>
+			function loadXMLDoc(dname) {
+				xhttp=new XMLHttpRequest();
+				xhttp.open("GET",dname,false);
+				xhttp.send("");
+				return xhttp.responseXML;
+			}
+			function displayResult() {
+				xml=loadXMLDoc("current.xml");
+				xsl=loadXMLDoc("current.xsl");
+
+				xsltProcessor=new XSLTProcessor();
+				xsltProcessor.importStylesheet(xsl);
+				resultDocument=xsltProcessor.transformToFragment(xml,document);
+
+				// resultDocument.childNodes[0].innerHTML  change \n   to <br>
+				resultDocument.childNodes[0].innerHTML=resultDocument.childNodes[0].innerHTML.replace(/\n/g,'<br>');
+				document.getElementById("viewThis").appendChild(resultDocument);
+			}
+		</script>
+	</head>
+	<body onload="displayResult()">
+		<div id="viewThis" />
+	</body>
+</html>

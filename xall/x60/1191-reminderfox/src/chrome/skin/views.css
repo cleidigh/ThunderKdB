@@ -1,0 +1,45 @@
+/* ----  VIEWS -------- 2008-10-14    .... */
+
+.rmViewBox{   /* this is the whole box (XUL parent) */
+  	background: #DBDBDB;
+  	margin: 2px;
+  	border: 1px #9999FF solid;
+}
+
+
+.textButton {
+   font-weight: bold;
+	font-family: monospace;
+	font-size: 1.2em;
+	text-align: center;
+   min-width: 1px;
+}
+.textButton[type="add"] {
+   color: green;
+}
+.textButton[type="remove"] {
+   color: red;
+}
+.textButton[disabled="true"] {
+   color: gray;
+}
+
+
+
+#view_List{
+    border-right: 2px #DBDBDB solid !important;
+}
+
+
+.url {
+	cursor: pointer;
+	/* color: #3A69A6; */
+}
+
+
+.criteria_DateBox {
+}
+    .criteria_DateBox:hover {
+	    cursor: pointer;
+	    background: #FFEFBF;
+	}

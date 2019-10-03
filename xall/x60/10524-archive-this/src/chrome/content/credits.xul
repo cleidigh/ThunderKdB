@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE window [
+  <!ENTITY % commonDTD SYSTEM "chrome://archive-this/locale/common.dtd">
+  %commonDTD;
+  <!ENTITY % prefsDTD SYSTEM "chrome://archive-this/locale/prefs.dtd">
+  %prefsDTD;
+]>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<dialog
+    id="archive-this-credits"
+    title="&prefs_credits;"
+    orient="vertical"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    buttons="accept"
+    buttonlabelaccept="&ok;"
+    ondialogaccept="return true;"
+    >
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="archive-this-string-bundle" src="chrome://archive-this/locale/archive-this.properties"/>
+  </stringbundleset>
+  <vbox flex="1" style="overflow:auto">
+    <label value="Chinese (Traditional) / 正體中文 (繁體): Akong Wu (吳汝剛)"/>
+    <label value="Dutch / Nederlands: Bas Gosselink"/>
+    <label value="French / Français: Christophe Mège"/>
+    <label value="German / Deutsch: Sven Buijssen"/>
+    <label value="Japanese / 日本語: Ichiro Kaneko (一郎金子)"/>
+    <label value="Polish / Polski: Krzysztof Kozłowski &amp; Mateusz Jasiak"/>
+    <label value="Russian / Русский: Andrei Latyshau (Андрей Латышев) &amp; Anton Burkun (Антон Буркун)"/>
+    <label value="Spanish / Español: Juan Moreno Oto"/>
+    <label value="Swedish / Svenska: Mikael Hiort af Ornäs"/>
+    <label value=""/>
+    <label value="&#169; 2009-2014 Adam Roach"/>
+  </vbox>
+</dialog>

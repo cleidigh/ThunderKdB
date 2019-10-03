@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/editing/eventEntryOverlay.xul"?>
+
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<window class="dialog" 	orient="vertical" windowtype="window:importHandling"
+		onload="thisLoad()"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		title="Reminderfox iCal/ICS Import">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUserIO.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/categories.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/datepicker/datepicker.js" />
+
+
+	<vbox >
+		<groupbox align="top" orient="horizontal" height="150px">
+			<hbox >
+				<vbox height="120px" width="350px"> <!--  width to trim description -->
+
+					<label id="eventTitle" class="reminderFox_Bold" value="&rf.import.linkTitle;"/>
+					<description id="downloadName"  style="font-family:mono" ></description>
+					<description id="downloadTime"  style="font-family:mono" ></description>
+
+
+					<vbox id="importedReminders"  hidden="true" vertical-align="top">
+						<label id="text0" class="reminderFox_Bold" value="&rf.import.reminders.link;" />
+						<grid vertical-align="top" >
+							<columns>
+								<column width="100px"/>
+								<column width="50px" />
+								<column width="50px" />
+								<column width="50px" />
+								<column width="50px" />
+							</columns>
+
+							<rows>
+								<row id="import0" vertical-align="top" >
+									<label value="   "/>
+									<label id="foundText" value="&rf.import.reminders.found;"/>
+									<label id="importedText" value="&rf.import.reminders.imported;"/>
+									<label id="existedText" value="&rf.import.reminders.existed;"/>
+								</row>
+								<row id="import0Events" vertical-align="top" >
+									<label value="&rf.general.events;"/>
+									<label id="foundEvents" value=" - "/>
+									<label id="importedEvents" value=" - "/>
+									<label id="existedEvents" value=" - "/>
+								</row>
+
+								<row id="import0Todos" vertical-align="top" >
+									<label value="&rf.general.todos;"/>
+									<label id="foundTodos" value=" - "/>
+									<label id="importedTodos" value=" - "/>
+									<label id="existedTodos" value=" - "/>
+								</row>
+							</rows>
+						</grid>
+					</vbox>
+				</vbox>
+				<spacer flex="1" />
+
+				<label align="center" class="reminderfox-moreLabel"
+					onclick="reminderfox.util.docRmFX('importingicalics');"
+					value="&rf.main.help.label; ..." tooltiptext="Import iCal/ICS" />	<!-- //$$$_locale -->
+			</hbox>
+		</groupbox>
+
+		<spacer height="12px"/>
+
+		<hbox>
+			<label id="howto" class="reminderFox_Bold"
+				value="&rf.import.howtohandle;"/>
+			<spacer flex="1"/>
+				<label align="center" class="reminderfox-moreLabel"
+					onclick="reminderfox.util.docRmFX('addsubscribe');"
+					value="&rf.main.help.label; ..." tooltiptext="&rf.import.documentation;" />
+			<spacer width="10px"/>
+		</hbox>
+		<grid vertical-align="top" height="270px">
+			<columns>
+				<column width="350px"/>
+				<column width="50px" />
+			</columns>
+
+			<rows>
+				<row id="addRow1" vertical-align="top" height="100px" hidden="false">
+					<vbox>
+						<description id="msgAdd1" class="reminderFox_Bold">&rf.import.add;</description>
+						<description id="msgAdd2" class="rmFx_descBox">&rf.import.reminders.importing;</description>
+					</vbox>
+					<vbox>
+						<spacer height="20px"/>
+						<button id="key_Add" label="&rf.import.add;" oncommand="go(this.id);" icon="false" />
+					</vbox>
+				</row>
+
+				<row id="addRow2" vertical-align="top" height="110px" hidden="true">
+					<vbox>
+						<description id="msgAdd3" class="reminderFox_Bold">&rf.import.add;</description>
+						<description id="msgAdd4" class="rmFx_descBox">&rf.import.import.added;</description>
+						<label id="addStatus" value="&rf.import.import.finished;" hidden="true" class="reminderFox_Bold"/>
+					</vbox>
+					<!--spacer flex="1"/-->
+					<vbox align="center">
+						<spacer height="20px"/>
+						<label id="dup"  align="center"
+							value="&rf.import.duplicates;"/>
+
+						<radiogroup id="duplicateGroup" >
+							<radio value="" id="duplicateIgnore" selected="true"
+								label="&rf.import.ignore;" />
+							<radio id="duplicateNewer"
+								label="&rf.import.newer;" />
+						</radiogroup>
+					</vbox>
+				</row>
+
+				<row id="newRow" vertical-align="top" height="110px" hidden="false">
+					<vbox>
+						<description id="msgNew1" class="reminderFox_Bold">&rf.import.newCalendar;</description>
+						<description id="msgNew2" class="rmFx_descBox">&rf.import.import.ics;</description>
+						<description id="msgNew3" class="rmFx_descBox reminderfox_TextNote">&rf.import.import.calendar;</description>
+
+						<vbox id="newFileBox" disabled="true">
+						<description id="msgNew4" class="rmFx_descBox">&rf.import.newCalendar.path;</description>
+						<hbox align="center" flex="1" >
+							<spacer width="20px"/>
+							<textbox id="newFilePath" flex="1" value=".../file.ics"
+								tooltiptext="&rf.import.filePath;">
+							</textbox>
+						</hbox>
+						</vbox>
+					</vbox>
+					<vbox>
+						<spacer height="20px"/>
+						<button id="key_New" label="&rf.import.new;" oncommand="go(this.id);" icon="false" />
+					</vbox>
+
+				</row>
+
+
+				<row id="subscribeRow" vertical-align="top" height="110px" hidden="false" >
+					<vbox>
+						<description id="msgSubscribe1" class="reminderFox_Bold">&rf.import.subscribe;</description>
+						<description id="msgSubscribe2" class="rmFx_descBox">&rf.import.subscription.info;</description>
+						<vbox id="subscribeBox" class="rmFx_descBox" hidden="true" >
+							<label  id="msgSubscribe3" value="&rf.import.subscription.list;"/>
+							<textbox id="listInput" flex="1" />
+						</vbox>
+						<label id="subscribeError"  hidden="true" class="reminderFox_BoldError"
+							value=".."/>
+					</vbox>
+					<vbox>
+						<spacer height="20px"/>
+						<button id="key_Subscribe" oncommand="go(this.id);"
+							label="&rf.import.subscribe;" />
+					</vbox>
+				</row>
+
+				<row id="categoryRow1" vertical-align="top"  hidden="true">
+					<vbox>
+						<description id="msgCategory1" class="reminderFox_Bold">&rf.import.category.setting;</description>
+						<description id="msgCategory2" class="rmFx_descBox">&rf.import.category.info;</description>
+					</vbox>
+					<vbox>
+						<button id="key_Category" oncommand="go(this);"
+							label="&rf.import.categories;"/>
+					</vbox>
+				</row>
+
+				<row id="categoryRow2" vertical-align="top" hidden="true">
+					<hbox id="catHbox1" align="center" flex="1">
+						<spacer width="20px"/>
+						<textbox id="inputRmCategories" flex="1" value="" disabled="true"
+							tooltiptext="&rf.categories.tooltip.inputRmCategories;">
+						</textbox>
+					</hbox>
+
+					<hbox>
+						<toolbarbutton id="catChange" type="menu" disabled="true"
+							tooltiptext="&rf.categories.tooltip.catChange;" onmousedown="reminderfox.category.Setup(this);">
+							<menupopup id="categories-menupopup" popupalign="topleft"
+								popupanchor="bottomleft">
+								<!-- value=1 indicates "User" defined cat-items -->
+								<menuitem value="2" label="" oncommand="reminderfox.category.Set(this);" />
+								<menuseparator />
+								<!-- value=2 indicates "Main" defined cat-items -->
+								<menuitem value="1" label="" oncommand="reminderfox.category.Set(this);" />
+								<menuseparator />
+								<menuitem value="3" label="&rf.categories.manageCat.label;"
+									oncommand="reminderfox.category.manageCategory(this);" />
+							</menupopup>
+						</toolbarbutton>
+
+					</hbox>
+				</row>
+
+			</rows>
+		</grid>
+	</vbox>
+
+	<spacer flex="1"/>
+	<!-- -. -. -. -. -. -. -. -. -. -. -. -->
+	<vbox height="45px" vertical-align="top">
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2" align="center" />
+			<hbox>
+				<spacer flex="1" />
+				<button id="key_goBack" />
+				<button id="key_goNext" />
+			</hbox>
+	</vbox>
+
+	<script type="application/x-javascript"><![CDATA[
+
+	var details;
+	var downloadedReminders;
+	var downloadedTodos;
+	var noSubscribe = false
+
+
+	/**
+	 *   Setup the dialog
+	 */
+	function thisLoad () {
+	// -----------------------------------------
+		downloadedReminders     = window.arguments[0].reminders;
+		downloadedTodos         = window.arguments[0].todos;
+		details                 = window.arguments[0].details;
+
+		noSubscribe = ((details.noSubscribe != null) && (details.noSubscribe == true))
+
+		startConfigure()
+	//	sizeToContent();
+	};
+
+
+	function startConfigure (){
+	// -----------------------------------------
+		setKey ('key_goBack', reminderfox.string("rf.import.Close"), "window.close()")
+		setKey ('key_goNext')
+
+		document.getElementById('importedReminders').setAttribute('style','background:none;')
+
+		document.getElementById('howto').hidden         = false
+		document.getElementById('addStatus').hidden    =  true
+
+		setKey ('key_New', reminderfox.string("rf.import.new"), "go(this.id)")
+		document.getElementById('newRow').hidden       = false
+		document.getElementById('newRow').setAttribute('height',"100px")
+
+		document.getElementById('subscribeBox').hidden  = true
+
+		document.getElementById('categoryRow1').hidden  = true
+		document.getElementById('categoryRow2').hidden  = true
+
+
+		document.getElementById('foundEvents').value     =  0
+		document.getElementById('importedEvents').value  =  0
+		document.getElementById('existedEvents').value   =  0
+
+		if (downloadedReminders.length > 1) {		// Event handling
+			document.getElementById('foundEvents').value = downloadedReminders.length
+			document.getElementById('importedReminders').hidden   = false
+		}
+
+		document.getElementById('foundTodos').value      =  0
+		document.getElementById('importedTodos').value   =  0
+		document.getElementById('existedTodos').value    =  0
+
+		var nTodos = 0;
+		for(var list in downloadedTodos ) {
+			var cList = downloadedTodos[list];
+			nTodos = nTodos + cList.length
+		}
+		if (nTodos > 0) {
+			document.getElementById('foundTodos').value = nTodos
+			document.getElementById('importedReminders').hidden   = false
+		}
+
+
+		if (details != null) {
+			document.getElementById('downloadName').textContent = details.summary
+			if (('timeStamp' in details) && (details.timeStamp > 1))
+				document.getElementById('downloadTime').textContent =  (new Date(details.timeStamp))
+		}
+
+		document.getElementById('addRow1').hidden       = false
+		document.getElementById('addRow2').hidden       = true
+
+		document.getElementById('key_New').label        = reminderfox.string("rf.import.new")
+		document.getElementById('newRow').hidden        = false
+		document.getElementById('newFileBox').hidden    = true
+
+		var newFilePath0 = details.url
+		var newlength = newFilePath0.lastIndexOf('/')
+		var newFileName = newFilePath0.substring(newlength)
+
+		var oldFilePath0 = reminderfox.core.getICSfile().path;
+		var oldlength = oldFilePath0.lastIndexOf('/')
+
+		var newFilePath = oldFilePath0.substring(0, oldlength)
+			+ ((newFileName.substring(0,1) == '/') ? newFileName : ('/' + newFileName))
+		document.getElementById('newFilePath').value    = newFilePath
+
+		if(nTodos > 0) noSubscribe = true  // Subscription allowed only without Todos
+			document.getElementById('key_Subscribe').hidden = noSubscribe
+			document.getElementById('subscribeRow').hidden  = noSubscribe
+			document.getElementById('subscribeError').hidden= !noSubscribe
+
+	}
+
+	function go(xThis){
+	// -----------------------------------------
+		document.getElementById('howto').hidden            = true
+
+		if ((xThis.id !=null) && (xThis.id == 'key_Category')) {
+			var catStatus = document.getElementById('inputRmCategories').disabled
+			document.getElementById('inputRmCategories').disabled = !catStatus
+			document.getElementById('catChange').disabled = !catStatus
+		}
+
+
+		if (xThis == 'key_Add') {
+			document.getElementById('addRow1').hidden       = true
+			document.getElementById('addRow2').hidden       = false
+
+			document.getElementById('newRow').hidden       = true
+
+			document.getElementById('subscribeRow').hidden  = true
+
+			document.getElementById('categoryRow1').hidden  = false
+			document.getElementById('categoryRow2').hidden  = false
+
+			setKey ('key_goBack', reminderfox.string("rf.import.Back"), "startConfigure(this)")
+			setKey ('key_goNext', reminderfox.string("rf.import.Add"),  "goAdd(this)")
+		}
+
+		if (xThis == 'key_New') {
+
+			document.getElementById('addRow1').hidden       = true
+			document.getElementById('addRow2').hidden       = true
+
+			setKey('key_New', reminderfox.string("rf.import.Confirm"), "go('new_Confirm')");
+
+			document.getElementById('newRow').setAttribute('height',"150px")
+			document.getElementById('newRow').hidden        = false
+			document.getElementById('newFileBox').hidden    = false
+
+			document.getElementById('subscribeRow').hidden  = true
+
+			document.getElementById('categoryRow1').hidden  = false
+			document.getElementById('categoryRow2').hidden  = false
+
+			setKey ('key_goBack', reminderfox.string("rf.import.Back"), "startConfigure( this)")
+	//		sizeToContent();
+		}
+
+
+		if (xThis == 'new_Confirm') {
+			setKey ('key_New', '')
+
+			var topWindow = reminderfox.util.getWindow("window:reminderFoxEdit");
+			if (topWindow) {
+				topWindow.close()
+			}
+			setKey ('key_goBack', reminderfox.string("rf.import.Back"), "startConfigure(this)")
+			setKey ('key_goNext', reminderfox.string("rf.import.new"),  "go('new_Calendar')")
+		}
+
+		if (xThis == 'new_Calendar') {
+			setKey ('key_goNext')
+	//		alert ("make new calendar");
+
+			reminderfox.core.reminderFoxEvents  = downloadedReminders;
+			reminderfox.core.reminderFoxTodosArray  = downloadedTodos;
+			reminderfox.core.importRemindersUpdateAll(false,null);
+
+			document.getElementById('importedEvents').value = document.getElementById('foundEvents').value;
+			document.getElementById('importedTodos').value = document.getElementById('foundTodos').value;
+			document.getElementById('importedReminders').setAttribute('style','background:rgb(242,250,230);')   // #FFEFBF;
+
+		}
+
+
+		if (xThis == 'key_Subscribe') {
+
+			// this part is processed after "Subscribe" was selected for mode
+			if (document.getElementById('subscribeBox').hidden == false) {
+				document.getElementById('subscribeError').hidden = true;
+
+				var newListName = document.getElementById("listInput").value
+
+				// Check newListName
+				//   - "ToDo's" or "Reminders" or containing following chars:  ':'  ','
+				var errorMsg = "";
+				if (newListName.search(/(:|\,|^ToDo's|^Reminders)/g) != -1)
+					errorMsg = reminderfox.string("rf.import.listName1")
+
+				if (newListName.search(/(^ToDo's|^Reminders)/g) != -1)
+					errorMsg = reminderfox.string("rf.import.listName2")
+
+				if (newListName == "")
+					errorMsg = reminderfox.string("rf.import.listName3")
+
+				if (errorMsg != "") {
+					document.getElementById('subscribeError').value  = errorMsg
+					document.getElementById('subscribeError').hidden = false
+					goNextKey ()
+					return
+				}
+
+				var added = false;
+
+				var todoLists = reminderfox.core.getPreferenceValue(reminderfox.consts.TODO_LISTS, "");
+
+				if ((todoLists + ",").search(newListName + ",") != -1){
+					document.getElementById('subscribeError').value  = reminderfox.string("rf.import.listName3")
+					document.getElementById('subscribeError').hidden = false
+					goNextKey ()
+					return;
+				}
+
+				if (todoLists != null && todoLists.length > 0) {
+					todoLists = todoLists + "," + newListName;
+				}
+				else {
+					todoLists = newListName;
+				}
+				reminderfox.core.setPreferenceValue(reminderfox.consts.TODO_LISTS, todoLists);
+
+				// add subscription
+				var subscriptions = reminderfox.core.getSubscriptions();
+				if (details.url != null) {
+					subscriptions[newListName] = details.url
+					reminderfox.core.writeSubscriptions(subscriptions);
+					added = true;
+				}
+				reminderfox._prefs.savePrefFile(null);
+
+				document.getElementById('subscribeError').hidden = false
+				if (added) {
+					document.getElementById('subscribeError').setAttribute('class', 'reminderFox_BoldNormal')
+					document.getElementById('subscribeError').value  = reminderfox.string("rf.import.subscribed")
+
+				}
+				else {
+					document.getElementById('subscribeError').value  = reminderfox.string("rf.import.subscribedNot")
+					document.getElementById('subscribeError').setAttribute('class', 'reminderFox_BoldError')
+				}
+
+				goNextKey ()
+				return
+			}
+
+			// this part is executed with first [Subscribe] selection
+			document.getElementById('addRow1').hidden       = true
+			document.getElementById('addRow2').hidden       = true
+
+			document.getElementById('newRow').hidden       = true
+
+			document.getElementById('categoryRow1').hidden  = true
+			document.getElementById('categoryRow2').hidden  = true
+
+			document.getElementById('key_Subscribe').hidden = true
+			document.getElementById('subscribeRow').hidden  = false
+			document.getElementById('subscribeBox').hidden  = false
+
+			//XXX TODO   make listInput from details.summary or .url; ev. have a textbox/menu selector
+
+			var linkName = (details.summary != null) ? details.summary : details.url
+			linkName = linkName.replace('.ics','').replace('.ICS','').replace('.','_')
+			var lastPart = linkName.lastIndexOf('/')
+			linkName = (lastPart == -1) ? linkName : linkName.substring(lastPart +1)
+
+			document.getElementById("listInput").value      = linkName //details.summary
+
+			setKey ('key_goBack', reminderfox.string("rf.import.Back"),      "startConfigure(this)")
+			setKey ('key_goNext', reminderfox.string("rf.import.Subscribe"), "go('key_Subscribe');")
+		}
+
+			function goNextKey () {
+				setKey ('key_goBack', reminderfox.string("rf.import.Back"),   "startConfigure(this)")
+				setKey ('key_goNext', reminderfox.string("rf.import.Close"),  "window.close();")
+	//			sizeToContent();
+			}
+	}
+
+	function setKey (thisKey, label, command) {
+	// -----------------------------------------
+		document.getElementById(thisKey).label = label||''
+		if ((!command) || (command == '')){
+			document.getElementById(thisKey).removeAttribute('oncommand')
+			document.getElementById(thisKey).disabled = true
+		} else {
+			document.getElementById(thisKey).setAttribute('oncommand', command)
+			document.getElementById(thisKey).disabled = false
+		}
+	}
+
+
+
+	function goAdd(xThis){
+	// -----------------------------------------
+	// var msg = ("ADD:  open Add/Edit dialog with imported reminder");
+
+		setKey ('key_goNext', '')
+
+		var newerEvents = !document.getElementById('duplicateNewer').selected
+
+//reminderfox.util.Logger('Alert', "import newer events: " + newerEvents + " downloaded reminders: " + downloadedReminders.length);
+
+		var category = document.getElementById('inputRmCategories').value
+		var imported = reminderfox.userIO.importReminderWithCategories (downloadedReminders, downloadedTodos, category, newerEvents);
+
+		document.getElementById('importedEvents').value  =  imported.events.importNo
+		document.getElementById('importedTodos').value   =  imported.todos.importNo
+		document.getElementById('existedEvents').value   =  imported.events.existNo
+		document.getElementById('existedTodos').value    =  imported.todos.existNo
+
+		document.getElementById('addStatus').hidden      =  false
+		document.getElementById('addStatus').value       = reminderfox.string("rf.import.finished")
+		document.getElementById('addStatus').setAttribute('class', 'reminderFox_BoldNormal')
+
+		document.getElementById('importedReminders').setAttribute('style','background:rgb(242,250,230);')   // #FFEFBF;
+	}
+]]></script>
+
+</window>

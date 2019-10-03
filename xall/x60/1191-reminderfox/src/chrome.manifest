@@ -1,0 +1,58 @@
+content reminderfox chrome/content/
+
+overlay chrome://browser/content/browser.xul chrome://reminderfox/content/reminderFoxOverlay.xul
+overlay chrome://navigator/content/navigator.xul chrome://reminderfox/content/reminderFoxOverlay.xul
+
+#   overlay chrome://messenger/content/mailWindowOverlay.xul chrome://reminderfox/content/reminderFoxOverlay.xul
+overlay chrome://messenger/content/messenger.xul chrome://reminderfox/content/reminderFoxOverlay.xul
+
+overlay chrome://messenger/content/addressbook/addressbook.xul chrome://reminderfox/content/reminderFoxOverlay.xul
+#overlay chrome://calendar/content/calendar.xul chrome://reminderfox/content/reminderFoxOverlay.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://reminderfox/content/reminderFoxOverlay.xul
+
+
+# CommandLineHandler to enable FX using messengers (TB/PB) for mail features
+component {a52fd100-4b89-11dd-ae16-0800200c9a66} components/rmFx_cmdLineHandler4TB.js
+contract @reminderfox/rmFx_clh;1 {a52fd100-4b89-11dd-ae16-0800200c9a66}
+category command-line-handler m-reminderfox @reminderfox/rmFx_clh;1
+
+#style   chrome://global/content/customizeToolbar.xul chrome://reminderfox/skin/toolbar.css
+style chrome://global/content/customizeToolbar.xul chrome://reminderfox/skin/toolbar.css    appversion<59.0a1
+style chrome://messenger/content/customizeToolbar.xul chrome://reminderfox/skin/toolbar.css    appversion>=59.0a1
+
+
+skin reminderfox classic/1.0 chrome/skin/
+skin reminderfox-platform classic/1.0 chrome/skin/platform/unix/ os=Linux
+
+
+locale reminderfox en-US chrome/locale/en-US/
+locale reminderfox ar chrome/locale/ar/
+locale reminderfox be-BY chrome/locale/be-BY/
+locale reminderfox ca-AD chrome/locale/ca-AD/
+locale reminderfox cs-CZ chrome/locale/cs-CZ/
+locale reminderfox da chrome/locale/da/
+locale reminderfox de chrome/locale/de/
+locale reminderfox es-ES chrome/locale/es-ES/
+locale reminderfox et-EE chrome/locale/et-EE/
+locale reminderfox fi chrome/locale/fi/
+locale reminderfox fr chrome/locale/fr/
+locale reminderfox fy-NL chrome/locale/fy-NL/
+locale reminderfox gl-ES chrome/locale/gl-ES/
+locale reminderfox he-IL chrome/locale/he-IL/
+locale reminderfox hu-HU chrome/locale/hu-HU/
+locale reminderfox it chrome/locale/it/
+locale reminderfox ja-JP chrome/locale/ja-JP/
+locale reminderfox ko-KR chrome/locale/ko-KR/
+locale reminderfox mn-MN chrome/locale/mn-MN/
+locale reminderfox nl chrome/locale/nl/
+locale reminderfox pl chrome/locale/pl/
+locale reminderfox pt-BR chrome/locale/pt-BR/
+locale reminderfox pt-PT chrome/locale/pt-PT/
+locale reminderfox ro-RO chrome/locale/ro-RO/
+locale reminderfox ru-RU chrome/locale/ru-RU/
+locale reminderfox sv-SE chrome/locale/sv-SE/
+locale reminderfox sk-SK chrome/locale/sk-SK/
+locale reminderfox tr chrome/locale/tr/
+locale reminderfox uk-UA chrome/locale/uk-UA/
+locale reminderfox zh-CN chrome/locale/zh-CN/
+locale reminderfox zh-TW chrome/locale/zh-TW/

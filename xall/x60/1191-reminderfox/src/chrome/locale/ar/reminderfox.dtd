@@ -1,0 +1,739 @@
+<!-- ReminderFox -->
+<!ENTITY rf.name "ReminderFox">
+<!ENTITY rf.version "#البناء#">
+<!-- Main Statusbar Overlay  -->
+<!ENTITY rf.general.event "Event">
+<!ENTITY rf.general.todo "Todo">
+<!ENTITY rf.general.reminder "Reminder">
+<!ENTITY rf.general.events "Events">
+<!ENTITY rf.general.todos "Todos">
+<!ENTITY rf.general.reminders "Reminders">
+<!ENTITY rf.ok "موافق">
+<!ENTITY rf.cancel "إلغاء">
+<!ENTITY rf.apply "تطبيق">
+<!ENTITY rf.Add "Add">
+<!ENTITY rf.Close "Close">
+<!ENTITY rf.Paste "Paste">
+<!ENTITY rf.label.Copy "Copy">
+<!ENTITY rf.Browse "Browse">
+<!ENTITY rf.timeDateSelect "Select time and date">
+<!ENTITY rf.button.browse "إستعراض...">
+<!ENTITY rf.documentation.previous "Previous Documentation Page">
+<!ENTITY rf.mainmenubar "Main Menubar">
+<!ENTITY rf.statusbar "Status-/Addon-Bar">
+<!-- Categories -->
+<!ENTITY rf.main.tooltip.todaysreminders.label "تذكرات اليوم">
+<!ENTITY rf.main.tooltip.upcomingreminders.label "التذكرات القادمة">
+<!ENTITY rf.main.tooltip.todos.label "&rf.add.tab.todos.label;">
+<!ENTITY rf.main.options.label "خيارات...">
+<!ENTITY rf.main.homepage.label "زيارة صفحة البداية">
+<!ENTITY rf.main.about.label "About &rf.name;">
+<!ENTITY rf.main.viewReminders.label "عرض التذكرات...">
+<!ENTITY rf.main.addReminder.label "إضافة تذكرة...">
+<!ENTITY rf.main.quickalarm.label "إنذار سريع...">
+<!ENTITY rf.main.quickalarms.label "تنبيهات سريعة">
+<!ENTITY rf.main.showalerts.label "إرجاء التنبيهات و الإنذارات">
+<!ENTITY rf.main.help.label "مساعدة">
+<!ENTITY rf.main.help.tooltip "Customize the Main Dialog">
+<!ENTITY rf.main.tip.label "Tip">
+<!ENTITY rf.main.addreminderforweb.label "&rf.main.addReminder.label;">
+<!ENTITY rf.main.contextmenu.subscribe.label "إشترك مع ReminderFox...">
+<!ENTITY rf.main.contextmenu.addremindercontact.label "&rf.main.addReminder.label;">
+<!ENTITY rf.main.contextmenu.copycontactmail.label "انسخ عناوين البريد">
+<!ENTITY rf.main.icons.openReminderfox.label "&rf.name;">
+<!ENTITY rf.main.icons.openReminderfox.tooltip.label "افتح ReminderFox">
+<!ENTITY rf.main.icons.addreminder.label "&rf.add.reminders.context.add.label;">
+<!ENTITY rf.main.icons.addreminder.tooltip.label "أضف تذكرات إلى ReminderFox">
+<!ENTITY rf.main.icons.showCalendar.label "اعرض التقويم">
+<!ENTITY rf.main.icons.showCalendar.tooltip.label "اعرض تقويم ReminderFox">
+<!ENTITY rf.main.importFromEmail.label "إستيراد تذكرات من iCal...">
+<!ENTITY rf.main.contextmenu.openAB "Open Addressbook Card">
+<!-- Add Reminders dialog  -->
+<!ENTITY rf.categories.inputRmCategories.label "الفئات:">
+<!ENTITY rf.categories.tooltip.inputRmCategories "الفئات (مفصولة بالفاصلة)">
+<!ENTITY rf.categories.tooltip.catChange "إختر الفئات من القائمة">
+<!ENTITY rf.categories.manageCat.label "إدارة الفئات">
+<!ENTITY rf.categories.currentCatHeader.default "الفئات الإفتراضية">
+<!ENTITY rf.categories.currentCatHeader.other "غير ذلك">
+<!ENTITY rf.categories.tooltip.sCatDelete "حذف الفئة المحددة">
+<!ENTITY rf.categories.tooltip.sCatEdit "تحرير الفئة المحددة">
+<!ENTITY rf.categories.tooltip.sCatAdd "إضافة فئة جديدة">
+<!ENTITY rf.categories.tooltip.rmCatOK "حفظ الفئات">
+<!ENTITY rf.categories.thisCat.Name "الإسم">
+<!ENTITY rf.options.categories.label "الفئات">
+<!ENTITY rf.options.categories.description1 "الفئات الإفتراضية هي قائمة من الفئات الإفتراضية المتكرر إستخدامها التي يمكن ربطها بتذكراتك.">
+<!ENTITY rf.options.categories.importID "خصص فئة خاصة لإستخدامها مع كل التذكرات و الواجبات المستوردة">
+<!ENTITY rf.categories.list.button.add "إضافة">
+<!ENTITY rf.categories.list.button.edit "حرر">
+<!ENTITY rf.categories.list.button.delete "إحذف">
+<!ENTITY rf.categories.list.button.viewall "اعرض الفئات الاخرى...">
+<!ENTITY rf.categories.list.button.moveToDefault "إنقل إلى القائمة الإفتراضية">
+<!ENTITY rf.categories.tooltip.moveToDefault "إنقل الفئة المحددة إلى القائمة الإفتراضية">
+<!ENTITY rf.options.tags.label "المعرفات">
+<!ENTITY rf.options.categories.description2 "هذه القائمة تعرض أية فئات غير إفتراضية اخرى بعض الأحداث مرتبطة بها.">
+<!ENTITY rf.options.categories.description3 "يمكنك نقل المعرفات الحالية إلى قائمةالفئات الإفتراضية.">
+<!ENTITY rf.categories.options.default.category.label "الفئات:">
+<!-- about dialog -->
+<!ENTITY rf.add.tab.reminders.label "التذكرات">
+<!ENTITY rf.add.tab.todos.label "الواجبات">
+<!ENTITY rf.add.find.accesskey "f">
+<!ENTITY rf.add.hideCompletedItems.accesskey "c">
+<!ENTITY rf.add.findagain.accesskey "g">
+<!ENTITY rf.add.showAll.accesskey "s">
+<!ENTITY rf.add.hideAll.accesskey "h">
+<!ENTITY rf.add.viewAsHtml.accesskey "v">
+<!ENTITY rf.add.viewMail.accesskey "&gt;">
+<!ENTITY rf.add.quicksearch.accesskey "q">
+<!-- New Reminder Options dialog -->
+<!ENTITY rf.toolsmenu.Reminderfox.accesskey "R">
+<!ENTITY rf.toolsmenu.OpenReminderfox.accesskey "R">
+<!ENTITY rf.toolsmenu.AddReminder.accesskey "A">
+<!ENTITY rf.toolsmenu.QuickAlarm.accesskey "Q">
+<!ENTITY rf.toolsmenu.Options.accesskey "O">
+<!ENTITY rf.toolsmenu.Help.accesskey "H">
+<!ENTITY rf.add.reminders.column.date.label "التاريخ">
+<!ENTITY rf.add.reminders.column.description.label "الوصف">
+<!ENTITY rf.add.reminders.column.time.label "الوقت">
+<!ENTITY rf.add.reminders.column.datecompleted.label "البيانات إكتملت">
+<!ENTITY rf.add.reminders.column.repeat.label "التكرار">
+<!ENTITY rf.add.reminders.column.complete.label "مكتمل">
+<!ENTITY rf.add.reminders.column.remindUntilCompleted.label "ذكّر يومياً حتى تتم">
+<!ENTITY rf.add.reminders.column.notes.label "الملاحظات">
+<!ENTITY rf.add.reminders.column.mail.label "البريد">
+<!ENTITY rf.add.reminders.column.alarm.label "التنبيه">
+<!ENTITY rf.add.sidebar.hideFoxy.label "Hide Foxy">
+<!ENTITY rf.add.sidebar.showFoxy.label "Show Foxy">
+<!ENTITY rf.add.sidebar.showSidebar.label "Show sidebar">
+<!ENTITY rf.add.sidebar.hideSidebar.label "Hide sidebar">
+<!ENTITY rf.add.sidebar.filterReminders.label "Filter reminders...">
+<!ENTITY rf.add.reminders.column.categories.label "الفئات">
+<!ENTITY rf.add.event.add.label "Add Event">
+<!ENTITY rf.add.event.edit.label "Edit Event">
+<!ENTITY rf.add.event.copy.label "Copy Event">
+<!ENTITY rf.add.event.delete.label "Delete Event">
+<!ENTITY rf.add.reminders.context.add.label "إضافة تذكرة">
+<!ENTITY rf.add.reminders.context.edit.label "تحرير تذكرة">
+<!ENTITY rf.add.reminders.context.copy.label "Copy Reminder">
+<!ENTITY rf.add.reminders.context.delete.label "حذف تذكرة">
+<!ENTITY rf.add.reminders.context.moveToList.label "نقل إلى القائمة">
+<!ENTITY rf.add.reminders.context.important.label "هامّة">
+<!ENTITY rf.add.reminders.context.complete.label "&rf.add.reminders.column.complete.label;">
+<!ENTITY rf.add.reminders.context.remindUntilCompleted.label "ذكّر يوميا حتى تتم">
+<!ENTITY rf.add.reminders.context.find.label "إبحث...">
+<!ENTITY rf.add.reminders.context.gotoToday.label "Go to Today">
+<!ENTITY rf.add.reminders.context.hideRepeatingReminders.label "إخفاء كل التذكرات المكررة">
+<!ENTITY rf.add.reminders.context.showAllReminders.label "إظهار كل التذكرات">
+<!ENTITY rf.add.reminders.context.hidecompleteditems.label "إخفاء العناصر المكتملة">
+<!ENTITY rf.add.reminders.context.print.label "Print / View">
+<!ENTITY rf.add.reminders.context.print.ttt "Select template for 'Print / View'">
+<!ENTITY rf.add.reminders.context.print.agenda.label "Agenda">
+<!ENTITY rf.add.reminders.context.print.all "All Events">
+<!ENTITY rf.add.reminders.context.print.selected "Selected Events">
+<!ENTITY rf.add.reminders.context.print.installation "Installation Details">
+<!ENTITY rf.add.reminders.context.print.docu "Open Documentation page">
+<!ENTITY rf.add.reminders.context.viewMail.label "عرض البريد">
+<!ENTITY rf.add.reminders.context.sendReminders.label "أرسل تذكرة...">
+<!ENTITY rf.add.reminders.context.sendTodos.label "Send todo's ...">
+<!ENTITY rf.add.reminders.context.exportSendReminders.label "Export / Send reminder ...">
+<!ENTITY rf.add.reminders.context.exportSendTodos.label "Export / Send todo's ...">
+<!ENTITY rf.reminderoptions.addEvent "Add Event">
+<!ENTITY rf.add.addReminder.addbutton.label "&rf.add.reminders.context.add.label;">
+<!ENTITY rf.add.addReminder.revertbutton.label "تراجع">
+<!ENTITY rf.add.addReminder.donebutton.label "موافق">
+<!ENTITY rf.add.addReminder.downloadbutton.label "تحميل">
+<!ENTITY rf.add.addReminder.uploadbutton.label "رفع">
+<!ENTITY rf.add.todosr.downloadbutton.label "&rf.add.addReminder.downloadbutton.label;">
+<!ENTITY rf.add.todosr.uploadbutton.label "&rf.add.addReminder.uploadbutton.label;">
+<!ENTITY rf.add.todosr.addbutton.label "إضافة واجب">
+<!ENTITY rf.add.todos.column.description.label "&rf.add.reminders.column.description.label;">
+<!ENTITY rf.add.todos.column.showTooltip.label "عرض في قائمة التنبيهات">
+<!ENTITY rf.add.todos.context.edit.label "تحرير الواجب">
+<!ENTITY rf.add.todos.context.delete.label "حذف الواجب">
+<!ENTITY rf.add.todos.context.copy.label "Copy ToDo">
+<!ENTITY rf.add.todos.context.important.label "&rf.add.reminders.context.important.label;">
+<!ENTITY rf.add.todos.context.showInTooltip.label "عرض في قائمة التنبيهات">
+<!ENTITY rf.add.todos.context.moveTodoUp.label "نقل الواجب للأعلى">
+<!ENTITY rf.add.todos.context.moveTodoDown.label "نقل الواجب للأسفل">
+<!ENTITY rf.add.addTodo.description.label "&rf.reminderoptions.description.label;">
+<!ENTITY rf.add.addTodo.addbutton.label "إضافة">
+<!ENTITY rf.add.addTodo.options.label "خيارات:">
+<!ENTITY rf.add.addTodo.showInTooltip.label "عرض في قائمة التنبيهات">
+<!ENTITY rf.add.addTodo.important.label "&rf.add.reminders.context.important.label;">
+<!ENTITY rf.add.file.menu.backup.title "Back up and restore">
+<!-- Alarm dialog -->
+<!ENTITY rf.about.homepage.label "صفحة البداية:">
+<!ENTITY rf.about.about.label "&rf.main.about.label;">
+<!ENTITY rf.about.createdby.label "إنشاء:">
+<!ENTITY rf.about.developers.label "المطورون:">
+<!ENTITY rf.about.contributor.label "Contributor:">
+<!ENTITY rf.about.version.label "الإصدار:">
+<!ENTITY rf.about.support.label "الأخبار والدعم">
+<!ENTITY rf.about.close.label "إغلاق">
+<!ENTITY rf.about.updatecheck.label "Update Check">
+<!ENTITY rf.about.updatecheck.tooltip "Check current installation status.">
+<!-- Quick Alarm dialog -->
+<!ENTITY rf.rmfxupdatexpi.drag.link.to.addon.manager.tooltip "Drag this link to the 'Add-ons Manager' window. Allow downloading. On tab:'Extensions' scroll to Reminderfox and use 'Restart now' or 'Undo'.">
+<!ENTITY rf.rmfxupdatexpi.local.version.value "Local Version">
+<!ENTITY rf.rmfxupdatexpi.current.version.value "Current Version">
+<!ENTITY rf.rmfxupdatexpi.update.reminderfox.value "Update Reminderfox">
+<!ENTITY rf.msgid.title "ReminderFox: يفتح الرسالة المطلوبة">
+<!ENTITY rf.msgid.retry.label "اعد">
+<!ENTITY rf.msgid.description "فشل ThunderBird بتحميل الرسالة . الرجاء الاعادة.">
+<!-- Options dialog -->
+<!ENTITY rf.reminderoptions.addEvent.window.title "إضافة حدث">
+<!ENTITY rf.reminderoptions.date.label "التاريخ:">
+<!ENTITY rf.reminderoptions.date.start.label "البداية:">
+<!ENTITY rf.reminderoptions.date.end.label "النهاية:">
+<!ENTITY rf.reminderoptions.time.label "الوقت:">
+<!ENTITY rf.reminderoptions.time.allday.label "كل اليوم">
+<!ENTITY rf.reminderoptions.description.label "الوصف:">
+<!ENTITY rf.reminderoptions.repeat.label "التكرار:">
+<!ENTITY rf.reminderoptions.repeat.yearly.label "سنوي">
+<!ENTITY rf.reminderoptions.repeat.yearlyday.label "سنوي باليوم">
+<!ENTITY rf.reminderoptions.repeat.monthlydate.label "شهري">
+<!ENTITY rf.reminderoptions.repeat.monthlyday.label "شهري باليوم">
+<!ENTITY rf.reminderoptions.repeat.weekly.label "اسبوعي">
+<!ENTITY rf.reminderoptions.repeat.weeklyalternating.label "Biweekly">
+<!ENTITY rf.reminderoptions.repeat.daily.label "يومي">
+<!ENTITY rf.reminderoptions.repeat.cusomt.label "مخصص...">
+<!ENTITY rf.reminderoptions.repeat.custom.title.label "تكرار خاص">
+<!ENTITY rf.reminderoptions.repeat.every.label "كل">
+<!ENTITY rf.reminderoptions.repeat.forever.label "كرر للأبد">
+<!ENTITY rf.reminderoptions.repeat.until.label "كرر حتى">
+<!ENTITY rf.reminderoptions.repeat.years.label "السنوات">
+<!ENTITY rf.reminderoptions.repeat.months.label "الأشهر">
+<!ENTITY rf.reminderoptions.repeat.weeks.label "الأسابيع">
+<!ENTITY rf.reminderoptions.repeat.days.label "الأيام">
+<!ENTITY rf.reminderoptions.repeat.count.label "Repeat count">
+<!ENTITY rf.reminderoptions.notify.label "عرض تنبيه منبثق">
+<!ENTITY rf.reminderoptions.notify.minutes.label "دقائق">
+<!ENTITY rf.reminderoptions.notify.hours.label "ساعات">
+<!ENTITY rf.reminderoptions.notify.days.label "أيام">
+<!ENTITY rf.reminderoptions.notify.before.label "قبل وقوع الحدث.">
+<!ENTITY rf.reminderoptions.options.important.label "&rf.add.reminders.context.important.label;">
+<!ENTITY rf.reminderoptions.options.remindUntilCompleted.label "&rf.add.reminders.context.remindUntilCompleted.label;">
+<!ENTITY rf.reminderoptions.location.label "الموقع">
+<!ENTITY rf.reminderoptions.location.header "المكان">
+<!ENTITY rf.reminderoptions.url.label "URL:">
+<!ENTITY rf.reminderoptions.search.anywhere.header "Anywhere">
+<!ENTITY rf.reminderoptions.location.launch.tooltip "عرض خريطة الموقع">
+<!ENTITY rf.reminderoptions.url.launch.tooltip "الذهاب للموقع">
+<!ENTITY rf.reminderoptions.button.more "المزيد &gt;&gt;">
+<!ENTITY rf.reminderoptions.tooltip.selectdate "حدد تاريخا">
+<!-- dump - note: also put the comma-separated tooltip on this dialog ... -->
+<!ENTITY rf.alarm.dialog.title "&rf.name; Alarm">
+<!ENTITY rf.alarm.button.snooze "اغف">
+<!ENTITY rf.alarm.button.acknowledge "عُلم">
+<!ENTITY rf.alarm.button.complete "علّم كمكتمل">
+<!ENTITY rf.alarm.button.delete "حذف">
+<!ENTITY rf.alarm.button.open "إفتح الحدث...">
+<!ENTITY rf.alarm.snooze.minutes.label "دقائق">
+<!ENTITY rf.alarm.occursIn.label "يحدث في:">
+<!ENTITY rf.alarm.snoozeUntil.label "اغف حتى:">
+<!-- lists -->
+<!ENTITY rf.suspendalarms.dialog.title "Suspend alerts and alarms">
+<!ENTITY rf.suspendalarms.dialog.label "Alerts and alarms will be suspended until resumed.">
+<!ENTITY rf.suspendalarms.resume.label "Automatically resume alerts and alarms in:">
+<!ENTITY rf.suspendalarms.resume.time.info "Resume at:">
+<!-- network -->
+<!ENTITY rf.quickalarm.dialog.title "تنبيه سريع">
+<!ENTITY rf.quickalarm.notify.label "&rf.reminderoptions.notify.label;">
+<!ENTITY rf.quickalarm.notify.fromnow "من الآن">
+<!ENTITY rf.quickalarm.alarmAt.label "نبه عند:">
+<!-- Upload dialog -->
+<!ENTITY rf.options.title.label "&rf.name; Options">
+<!ENTITY rf.options.tab.General "General">
+<!ENTITY rf.options.tab.Access "Access">
+<!ENTITY rf.options.tab.Dialog "Main Dialog">
+<!ENTITY rf.options.tab.reminderEdit "Reminder Dialog">
+<!ENTITY rf.options.tab.notifications "Notifications">
+<!ENTITY rf.options.tab.Sync "Sync">
+<!ENTITY rf.options.tab.alarms "Alarms">
+<!ENTITY rf.options.todoLists "Lists">
+<!ENTITY rf.options.addlist.label "إضافة قائمة خاصة">
+<!ENTITY rf.options.addlist.subscription.description "يمكنك الإشتراك بتقويم بتخصيص عنوان URL للتقويم. التقويم سيعرض في قوائمك الخاصة تحت الاسم المخصص أعلاه.">
+<!ENTITY rf.options.addlist.subscription.url.label "عنوان الإشتراك URL">
+<!ENTITY rf.options.addlist.subscription.label "الإشتراك">
+<!ENTITY rf.options.labels.title "اللصيقات">
+<!ENTITY rf.options.display.label "عرض التفضيلات">
+<!ENTITY rf.options.display.todaystatus.label "عرض تذكرات اليوم في شريط الحالة.">
+<!ENTITY rf.options.display.limiStatusLength.label "Limit status text length to:">
+<!ENTITY rf.options.display.limiStatusCharacters.label "characters">
+<!ENTITY rf.options.display.remindersInTooltip.label "عرض التذكرات في نافذة التنبيهات.">
+<!ENTITY rf.options.display.todosInTooltip.label "عرض الواجبات في قاشمة التنبيهات.">
+<!ENTITY rf.options.display.showForNext.label "عرض الأحداث للأيام">
+<!ENTITY rf.options.display.showForNextUpcomingDays.label "الايام القادمة.">
+<!ENTITY rf.options.upcomingreminders.label "لصيقة التذكرات القادمة:">
+<!ENTITY rf.options.todaysreminders.label "محتوى تذكرات اليوم:">
+<!ENTITY rf.options.upcomingreminders.label.customize "تخصيص">
+<!ENTITY rf.options.todaysreminders.label.customize "&rf.options.upcomingreminders.label.customize;">
+<!ENTITY rf.options.display.editOnClick.label "عند الضغط على رمز شريط الحالة, حرر:">
+<!ENTITY rf.options.display.openOnClick.label "On click of status icon, open:">
+<!ENTITY rf.options.display.editOnClickReminders.label "&rf.add.tab.reminders.label;">
+<!ENTITY rf.options.display.editOnClickTodos.label "&rf.add.tab.todos.label;">
+<!ENTITY rf.options.display.openPrevious.label "previous Tab">
+<!ENTITY rf.options.display.enableContextMenus.label "مكن قائمة السياق لاضافة احداث للصفحات الوب و البريد الالكتروني">
+<!ENTITY rf.options.display.placement.label "موضع العرض:">
+<!ENTITY rf.options.display.placement.toolbar.label "شريط الأدوات:">
+<!ENTITY rf.options.display.placement.last.label "دائماً الأخير">
+<!ENTITY rf.options.display.placement.specificPosition.label "موضع مخصص">
+<!ENTITY rf.printing.agenda "Agenda">
+<!ENTITY rf.printing.agenda.info "An Agenda can be printed from context menu on the ReminderFox List using 'Print/View', to get it automatically use:">
+<!ENTITY rf.printing.agenda.openatstart "Show Agenda at start of the application.">
+<!ENTITY rf.options.display.listsetup.label "List and Calendar Setup">
+<!ENTITY rf.options.display.singlemenu.label "Use only single button bar">
+<!ENTITY rf.options.display.singlemenu.infoTTT "All buttons will appear on a single top menu bar; the OK button will not be displayed">
+<!ENTITY rf.options.display.nummonthdisplayed "Number of Calendar months displayed">
+<!ENTITY rf.options.display.nummonth.help "Select  1 or greater. Typical value is 3. A too great number of months degrades the performance!">
+<!ENTITY rf.options.display.menu.open "Open Reminders/Todos Menu on mouse hover">
+<!ENTITY rf.options.alert.label "إعرض المنبه المنزلق">
+<!ENTITY rf.options.alert.display.label "العرض:">
+<!ENTITY rf.options.alert.display.todaysandupcoming.label "إعرض تذكرات اليوم و التذكرات القادمة">
+<!ENTITY rf.options.alert.display.todays.label "إعرض تذكرات اليوم فقط">
+<!ENTITY rf.options.alert.display.upcoming.label "إعرض التذكرات القادمة فقط">
+<!ENTITY rf.options.alert.showevery.label "إعرض الإنذار كل">
+<!ENTITY rf.options.alert.showeveryminutes.label "دقائق.">
+<!ENTITY rf.options.alert.maxheight.label "Maximum alert slider height:">
+<!ENTITY rf.options.alert.maxheightpixels.label "pixels">
+<!ENTITY rf.options.alert.keepopen.label "Keep alert slide open">
+<!ENTITY rf.options.alert.keepopen.for.label "for">
+<!ENTITY rf.options.alert.keepopen.seconds.label "seconds">
+<!ENTITY rf.options.alert.keepopen.untilclicked.label "until clicked">
+<!ENTITY rf.options.alarms.label "Alarms">
+<!ENTITY rf.options.alarms.show.label "Show multiple alarms using">
+<!ENTITY rf.options.alarms.show.tabs.label "separate tabs in a single window">
+<!ENTITY rf.options.alarms.show.windows.label "a separate window for each alarm">
+<!ENTITY rf.options.sound.label "الأصوات">
+<!ENTITY rf.options.alarm.playsound.label "شفل صوتاً للتنبيه المنبثق">
+<!ENTITY rf.options.alarm.resoundInterval.label "اعد اطلاق صوت التنبيه كل">
+<!ENTITY rf.options.alarm.resoundInterval.minutes.label "&rf.options.alert.showeveryminutes.label;">
+<!ENTITY rf.options.alert.playsound.label "شغل صوتاً للتنبيه المنزلق">
+<!ENTITY rf.options.alarm.sound.default.label "الإفتراضي">
+<!ENTITY rf.options.alarm.sound.custom.label "ملف .wav مخصص">
+<!ENTITY rf.options.list.calendar.label "التقويم">
+<!ENTITY rf.options.list.calendar.size.label "حجم التقويم">
+<!ENTITY rf.options.list.calendar.size.small.label "صغير">
+<!ENTITY rf.options.list.calendar.size.medium.label "متوسط">
+<!ENTITY rf.options.list.calendar.size.large.label "كبير">
+<!ENTITY rf.options.list.startingday.label "يوم بداية الاسبوع">
+<!ENTITY rf.options.list.calendar.showWeekNumber.label "اعرض ارقام الاسبوع">
+<!ENTITY rf.options.list.calendar.showWeekNumber.none "None">
+<!ENTITY rf.options.list.calendar.showWeekNumber.default "افتراضي">
+<!ENTITY rf.options.list.calendar.showWeekNumber.iso8601 "آيزو 8601">
+<!ENTITY rf.options.list.dateandtime.label "التاريخ و الوقت">
+<!ENTITY rf.options.list.dateappearance.label "مظهر التاريخ:">
+<!ENTITY rf.options.list.timeoptions.label "هيئة الوقت:">
+<!ENTITY rf.options.list.24hour.label "إستعمل توقيت 24 ساعة">
+<!ENTITY rf.options.list.highlighttodaysRemindres.label "إضاءة تذكرات اليوم في القائمة">
+<!ENTITY rf.options.list.repeating.label "التذكرات المكررة">
+<!ENTITY rf.options.list.repeating.show.label "عرض">
+<!ENTITY rf.options.list.repeating.all.label "الكل">
+<!ENTITY rf.options.list.repeating.last.label "الأخيرة">
+<!ENTITY rf.options.list.repeating.next.label "القادمة">
+<!ENTITY rf.options.list.repeating.previous.label "أحداث سابقة.">
+<!ENTITY rf.options.list.repeating.upcoming.label "أحداث قادمة.">
+<!ENTITY rf.options.list.reminder.defaults.label "الإفتراضيات">
+<!ENTITY rf.options.list.reminder.defaults.description.label "الخيارات الإفتراضية للتذكرات والواجبات الجديدة">
+<!ENTITY rf.options.list.reminder.defaults.completed.hide.label "أخف العناصر المكتملة إفتراضياً">
+<!ENTITY rf.options.list.reminder.defaults.list.defaults.label "إفتراضيات القائمة">
+<!ENTITY rf.options.list.reminder.defaults.filters.label "المرشحات الإفتراضية">
+<!ENTITY rf.options.list.reminder.defaults.more.label "عناصر &apos;المزيد&apos; الإفتراضية:">
+<!ENTITY rf.options.list.reminder.defaults.alarm.label "Default alarm options">
+<!ENTITY rf.options.list.reminder.defaults.alarm.action.label "Default action">
+<!ENTITY rf.options.list.reminder.defaults.filters.lastSelectedView.label "Last selected View">
+<!ENTITY rf.options.list.reminder.defaults.allevents "All Events">
+<!ENTITY rf.options.list.reminder.defaults.allupcomingevents "All upcoming Events">
+<!ENTITY rf.options.list.reminder.defaults.textSize "Default Text Size">
+<!ENTITY rf.options.list.reminder.defaults.textSize.value "Size in px">
+<!ENTITY rf.options.list.reminder.defaults.textSizeTTT "This sets the standard text size. To control the 'Calendar' text size on the main dialog use [Cntrl] [+] to increase and [Cntrl] [-] to decrease.   [Cntrl] [#] resets to the standard text size.  To control the 'List' text size use [Alt] button instead.">
+<!ENTITY rf.moreoptions.list.reminder.more.header.label "عناصر المزيد الإفتراضية">
+<!ENTITY rf.moreoptions.list.reminder.more.description.label "عرض العناصر التي تريد إظهارها خلف زر مزيد&gt;&gt; إفتراضيا في نافذة إضافة/إزالة تذكرة. العناصر المسجلة هنا لن تعرض إفتراضيا حتى تضغط زر مزيد&gt;&gt; لعرضهم. عندها سيظهرون بالترتيب الموجود هنا. بيّن المتغييرات مفصولة بالفاصلة.">
+<!ENTITY rf.moreoptions.list.reminder.more.location.label "&rf.reminderoptions.location.header;">
+<!ENTITY rf.moreoptions.list.reminder.more.URL.label "الموقع">
+<!ENTITY rf.moreoptions.list.reminder.more.category.label "الصنف">
+<!ENTITY rf.moreoptions.list.reminder.more.repeat.label "التكرار">
+<!ENTITY rf.moreoptions.list.reminder.more.alarm.label "التنبيه">
+<!ENTITY rf.moreoptions.list.reminder.more.priority.label "الأولوية">
+<!ENTITY rf.moreoptions.list.reminder.more.important.label "مهم">
+<!ENTITY rf.moreoptions.list.reminder.more.remindUntilComplete.label "ذكرني حتى تتم">
+<!ENTITY rf.moreoptions.list.reminder.more.showInTooltip.label "إعرض في المنبثقة">
+<!ENTITY rf.moreoptions.list.reminder.more.endDate.label "تاريخ الإنتهاء">
+<!ENTITY rf.options.customize "تخصيص">
+<!ENTITY rf.options.list.reminder.filters.allreminders.label "كل التذكرات">
+<!ENTITY rf.options.list.reminder.filters.alltodos.label "كل الواجبات">
+<!ENTITY rf.options.list.reminder.filters.selectedmonth.label "الشهر المحدد">
+<!ENTITY rf.options.list.reminder.filters.selectedweek.label "الاسبوع المحدد">
+<!ENTITY rf.options.list.reminder.filters.selecteddaylabel "اليوم المحدد">
+<!ENTITY rf.options.list.reminder.filters.nextweek.label "الاسبوع القادم">
+<!ENTITY rf.options.list.reminder.filters.nexttwoweeks.label "الاسبوعين القادمين">
+<!ENTITY rf.options.list.reminder.filters.upcomingReminders.label "All Upcoming Reminders">
+<!ENTITY rf.options.list.reminder.filters.upcomingTodos.label "All Upcoming ToDo's">
+<!ENTITY rf.options.list.reminder.filters.moreViews.label "More Views...">
+<!ENTITY rf.options.file.location.label "موقع ملف ReminderFox">
+<!ENTITY rf.options.file.location.usedefault.label "إستعمل الإفتراضي">
+<!ENTITY rf.options.file.events.label "ReminderFox Event File">
+<!ENTITY rf.options.file.note.label "Note">
+<!ENTITY rf.options.file.note.unsaved "There are unsaved events!">
+<!ENTITY rf.options.file.note.saveit "Please save events before using this functions.">
+<!ENTITY rf.options.file.note.retry "[Save] and retry with 'Cntrl' 'r'">
+<!ENTITY rf.options.importexport.description.label "إستيراد أو تصدير التذكرات و الواجبات.">
+<!ENTITY rf.options.importexport.import.label "إستيراد">
+<!ENTITY rf.options.importexport.export.label "تصدير">
+<!ENTITY rf.options.importexportpreferences.label "إستيراد و تصدير التفضيلات">
+<!ENTITY rf.options.importexport.category.label "بإختيارك يمكنك إعداد فئات إضافية لكل حدث إستوردته على حدة. قد يساعد هذا في التصفية و التصنيف. مثلاً عند إستيراد قائمة من العطل, يمكنك  وسم كل حدث من الأحداث بـ&apos;عطلة&apos;  ثم ببساطة يمكنك ترشيح تلك الفئة لإظهار قائمة من العطل.">
+<!-- Download dialog -->
+<!ENTITY rf.options.list.reminder.lists.label "القوائم">
+<!ENTITY rf.options.list.reminder.lists.manage.label "إدارة القوائم">
+<!ENTITY rf.options.list.reminder.lists.button.add.label "&rf.add.addTodo.addbutton.label;">
+<!ENTITY rf.options.list.reminder.lists.button.remove.label "إزالة">
+<!ENTITY rf.options.list.reminder.lists.button.moveup.label "النقل للأعلى">
+<!ENTITY rf.options.list.reminder.lists.button.movedown.label "النقل للإسفل">
+<!ENTITY rf.options.list.reminder.lists.button.sortup.label "Sort Up">
+<!ENTITY rf.options.list.reminder.lists.button.sortdown.label "Sort Down">
+<!ENTITY rf.options.lists.description "بالإضافة إلى التذكرات و الواجبات, يمكنك إضافة قوائم تعرض كألسنة منفصلة. قد تعمل قائمة مثل: الأفلام (لإصدارات الأفلام القادمة), الألبومات (لإصدارات الموسيقى القادمة), البقالة (لمراقبةالأشياء التي تريدها), أو أي شيء آخر يمكن إستعمال القائمة له. يمكنك أيضاً الإشتراك بتقويم بعيد عند إضافة قائمة جديدة.">
+<!ENTITY rf.options.lists.nameError "Name='ToDo's' or 'Reminders' and ',' or ':' are not allowed here!">
+<!ENTITY rf.options.lists.addedit "Add/Edit User Lists">
+<!-- Upcoming Reminders Label Options dialog -->
+<!ENTITY rf.options.synchronization.description.label "عنوان المزامنة">
+<!ENTITY rf.options.synchronization.address.description "أدخل عنوان FTP أو WebDAV لملف ReminderFox البعيد.">
+<!ENTITY rf.options.synchronization.address.example.description "مثال: ftp://www.mydomain.com/reminders.ics">
+<!ENTITY rf.options.synchronization.ftp.label "ftp">
+<!ENTITY rf.options.synchronization.http.label "http">
+<!ENTITY rf.options.synchronization.https.label "https">
+<!ENTITY rf.options.synchronization.delimiter.label "://">
+<!ENTITY rf.options.synchronization.username.label "إسم المستخدم:">
+<!ENTITY rf.options.synchronization.password.label "كلمة المرور:">
+<!ENTITY rf.options.synchronization.import "الإستيراد من الشبكة">
+<!ENTITY rf.options.synchronization.export "التصدير إلى الشبكة">
+<!ENTITY rf.options.synchronization.label "المزامنة">
+<!ENTITY rf.options.synchronization.auto.label "مزامنة التذكرات مع الشبكة تلقائياً">
+<!ENTITY rf.options.synchronization.auto.description "حدد هذا الخيار إذا أردت إبقاء التذكرات المحلية و البعيدة متزامنة تلقائياً.">
+<!-- Calendar -->
+<!ENTITY rf.upload.tile.label "الرفع">
+<!-- Time names -->
+<!ENTITY rf.download.tile.label "التحميل">
+<!-- Month Names -->
+<!ENTITY rf.upcoming.label.options.title.label "خيارات محتوى التذكرة">
+<!ENTITY rf.upcoming.label.options.label "المحتوى">
+<!ENTITY rf.upcoming.label.reminder.description "وصف التذكرة">
+<!ENTITY rf.upcoming.label.long.day "أيام الإسبوع غير مختصرة (الإثنين, الثلاثاء, إلخ.)">
+<!ENTITY rf.upcoming.label.short.day "أيام الاسبوع مختصرة(Mon, Tues, Wed, إلخ.)">
+<!ENTITY rf.upcoming.label.long.month "شهر من العام غير مختصر (كانون الأول, شباط, آذار, إلخ.)">
+<!ENTITY rf.upcoming.label.short.month "شهر من العام مختصر (Jan, Feb, Mar, إلخ.)">
+<!ENTITY rf.upcoming.label.num.month "نسخة ترتيبية من الشهر في السنة">
+<!ENTITY rf.upcoming.label.date "يوم من الشهر">
+<!ENTITY rf.upcoming.label.long.year "العام غير مختصر (2005, 2006, 2007, إلخ.)">
+<!ENTITY rf.upcoming.label.short.year "العام مختصر (05, 06, 07, إلخ.)">
+<!ENTITY rf.upcoming.label.timeuntil "الزمن حتى حدوث الحدث (أيام, ساعات, دقائق)">
+<!ENTITY rf.upcoming.label.time "وقت التذكرة. إذا كانت التذكرة لحدث كامل اليوم, لاتعرض شيئاً">
+<!ENTITY rf.upcoming.label.days.until "عدد الأيام المتبقية حتى التذكرة">
+<!ENTITY rf.upcoming.label.column.variable "المتفييرات">
+<!ENTITY rf.upcoming.label.column.description "الوصف">
+<!-- Day short names -->
+<!ENTITY calendar.week.number.label "اسبوع">
+<!ENTITY calendar.year.previous "Previous Year">
+<!ENTITY calendar.year.next "Next Year">
+<!ENTITY calendar.month.previous "Previous Month">
+<!ENTITY calendar.month.next "Next Month">
+<!-- iCal Schedule  -->
+<!ENTITY time.0 "12:00 ص">
+<!ENTITY time.1 "1:00 ص">
+<!ENTITY time.2 "2:00 ص">
+<!ENTITY time.3 "3:00 ص">
+<!ENTITY time.4 "4:00 ص">
+<!ENTITY time.5 "5:00 ص">
+<!ENTITY time.6 "6:00 ص">
+<!ENTITY time.7 "7:00 ص">
+<!ENTITY time.8 "8:00 ص">
+<!ENTITY time.9 "9:00 ص">
+<!ENTITY time.10 "10:00 ص">
+<!ENTITY time.11 "11:00 ص">
+<!ENTITY time.12 "12:00 م">
+<!ENTITY time.13 "1:00 م">
+<!ENTITY time.14 "2:00 م">
+<!ENTITY time.15 "3:00 م">
+<!ENTITY time.16 "4:00 م">
+<!ENTITY time.17 "5:00 م">
+<!ENTITY time.18 "6:00 م">
+<!ENTITY time.19 "7:00 م">
+<!ENTITY time.20 "8:00 م">
+<!ENTITY time.21 "9:00 م">
+<!ENTITY time.22 "10:00 م">
+<!ENTITY time.23 "11:00 م">
+<!-- Invitation, MAIL and ADDRESSBOOK -->
+<!ENTITY month.1 "كانون الأول">
+<!ENTITY month.2 "شباط">
+<!ENTITY month.3 "آذار">
+<!ENTITY month.4 "نيسان">
+<!ENTITY month.5 "أيار">
+<!ENTITY month.6 "حزيران">
+<!ENTITY month.7 "تموز">
+<!ENTITY month.8 "آب">
+<!ENTITY month.9 "أيلول">
+<!ENTITY month.10 "تشرين الأول">
+<!ENTITY month.11 "تشرين الثاني">
+<!ENTITY month.12 "كانون الأول">
+<!ENTITY month.1.MMM "JAN">
+<!ENTITY month.2.MMM "FEB">
+<!ENTITY month.3.MMM "MAR">
+<!ENTITY month.4.MMM "APR">
+<!ENTITY month.5.MMM "MAY">
+<!ENTITY month.6.MMM "JUN">
+<!ENTITY month.7.MMM "JUL">
+<!ENTITY month.8.MMM "AUG">
+<!ENTITY month.9.MMM "SEP">
+<!ENTITY month.10.MMM "OCT">
+<!ENTITY month.11.MMM "NOV">
+<!ENTITY month.12.MMM "DEC">
+<!-- Views -->
+<!ENTITY day.1.DDD "SUN">
+<!ENTITY day.2.DDD "MON">
+<!ENTITY day.3.DDD "TUE">
+<!ENTITY day.4.DDD "WED">
+<!ENTITY day.5.DDD "THU">
+<!ENTITY day.6.DDD "FRI">
+<!ENTITY day.7.DDD "ٍٍٍٍSAT">
+<!ENTITY day.1.name "الأحد">
+<!ENTITY day.2.name "الإثنين">
+<!ENTITY day.3.name "الثلاثاء">
+<!ENTITY day.4.name "الأربعاء">
+<!ENTITY day.5.name "الخميس">
+<!ENTITY day.6.name "الجمعة">
+<!ENTITY day.7.name "السبت">
+<!-- Views -->
+<!ENTITY rf.schedule.scheduleinfo "المجدول">
+<!ENTITY rf.schedule.showall.attendees "إعرض كل الحضور">
+<!ENTITY rf.schedule.organizer "المنظم">
+<!ENTITY rf.schedule.thisisme "مشاركتي">
+<!ENTITY rf.schedule.attendees "الحضور">
+<!ENTITY rf.schedule.invitation.accept "قبول">
+<!ENTITY rf.schedule.invitation.decline "رفض">
+<!-- Views -->
+<!ENTITY mail.addreminder "إضافة مجدولة...">
+<!ENTITY mail.send.withreminder "إرسال">
+<!ENTITY mail.send.withreminder.tooltip "إرسال الرسالة وإضافة حدث ReminderFox">
+<!ENTITY mail.reminder4mail.open "فتح حدث ReminderFox المرتبط">
+<!ENTITY mail.send.reminder.invitation.check "أرسل التذكرة كدعوة/مجدولة عبر البريد">
+<!ENTITY mail.send.reminder.invitation.organizer "المنظم">
+<!ENTITY mail.send.reminder.invitation.attendees "الحضور">
+<!ENTITY mail.send.reminder.invitation.title "أرسل دعوة الأحداث المحددة">
+<!ENTITY mail.sendexport.reminder.invitation.title "Send / Export">
+<!ENTITY mail.sendexport.reminder.send "Send / Invite">
+<!ENTITY mail.sendexport.reminder.sender "Sender">
+<!ENTITY mail.sendexport.reminder.export "Export">
+<!ENTITY mail.sendexport.reminder.exportto "Export to file">
+<!ENTITY mail.sendexport.reminder.export.file "Select export file">
+<!ENTITY mail.send.reminder.invitation.aBook "إفتح دفتر العناوين وحدد أشخاصاً لدعوتهم">
+<!ENTITY mail.send.reminder.invitation.mail "تطبيق البريد ليستخدم لإرسال الدعوات/الأحداث و إستعمال دفتر العناوين">
+<!ENTITY mail.send.reminder.invitation.comment "التعليق لإرساله مع الدعوات/المجدول">
+<!ENTITY mail.send.reminder.invitation.browse "إستعراض لموقع تطبيق البريد">
+<!ENTITY mail.send.reminder.invitation.reload "حدد تطبيق البريد. إستعمل زر إستعراض لإعداد موقع جديد.">
+<!ENTITY mail.send.reminder.invitation.attendees.tooltip "الحضور (قائمة مفصولة بالفاصلة من العناوين البريدية)">
+<!ENTITY mail.ical.selectReplyAttendee.description "مرسل [الرد] ليس من الحضور لهذه المجدولة. إذا كان الرد ينتمي لأحد الحضور في القائمة, الرجاء حدد واضغط [موافق] وإلا فاضغط [إلغاء].">
+<!ENTITY mail.ical.Invit "Invite">
+<!ENTITY mail.ical.invitation.attendees "Add an attendant from Addressbook">
+<!ENTITY mail.ical.invitation.attendees.paste "Use [Paste] to add a valid E-Mail address from clipboard to 'moreAttendee'.">
+<!ENTITY mail.send.withreminder.selection0 "البريد المحدد">
+<!ENTITY mail.send.withreminder.selection1 "قائمة ReminderFox">
+<!ENTITY mail.send.withreminder.selection2 "البريد المحدد له هذه الصلات بالتذكرات:">
+<!ENTITY mail.send.withreminder.selection3 "حدد أحدى التذكرات وإضفط">
+<!ENTITY mail.send.withreminder.replyAttendee "Schedule/Invitation - Selection of Attendee">
+<!ENTITY mail.send.reminder.reference.title "Reminder Reference List">
+<!-- CalDAV -->
+<!ENTITY rf.views.title "ReminderFox - محرر &apos;عرض&apos;">
+<!ENTITY rf.views.label "حرر &apos;عروض&apos;">
+<!ENTITY rf.views.view.header "&apos;العروض&apos;">
+<!ENTITY rf.views.ttt.addView "أضف عرضا جديدا">
+<!ENTITY rf.views.ttt.removeView "أزل &apos;العرض&apos; النحدد">
+<!ENTITY rf.views.criteria.header "&apos;المعيار للعرض&apos; المحدد">
+<!ENTITY rf.views.ttt.addCriteria "أضف معيارا جديدا">
+<!ENTITY rf.views.ttt.removeCriteria "أزل &apos;المعيار&apos; المحدد">
+<!ENTITY rf.views.ttt.sortCriteria "Sort View/Criteria">
+<!ENTITY rf.views.ttt.confirm "أكد المعيار">
+<!ENTITY rf.views.ttt.saveclose "احفظ ثم أغلق المحرر.">
+<!ENTITY rf.views.ttt.editor "محرر &apos;العرض&apos;.">
+<!ENTITY rf.views.ttt.noviews "صفر &apos;العروض&apos;">
+<!ENTITY rf.views.learn.link.text "Learn about using Views...">
+<!ENTITY rf.views.infoHow1 "... حول &apos;عرض&apos; و &apos;معيار&apos;">
+<!ENTITY rf.views.infoHow2 "كيف ادخل &apos;معيارا&apos;؟">
+<!ENTITY rf.view.add.label "اسم &apos;العرض&apos;">
+<!ENTITY rf.views.viewName "أدخل اسما:">
+<!ENTITY rf.view.noview "لا &apos;عرض&apos;">
+<!ENTITY rf.views.datespan.begin "Date Span Begin">
+<!ENTITY rf.views.datespan.end "Date Span End">
+<!ENTITY rf.views.datespan.past "past">
+<!ENTITY rf.views.datespan.future "future">
+<!ENTITY rf.views.datespan.days "Day(s)">
+<!ENTITY rf.views.datespan.weeks "Week(s)">
+<!ENTITY rf.views.datespan.months "Month(s)">
+<!ENTITY rf.views.datespan.years "Year(s)">
+<!ENTITY rf.calendar.year.previous "Previous Year">
+<!ENTITY rf.calendar.year.next "Next Year">
+<!ENTITY rf.add2Textbox.info1 "DoubleClick on a listbox row to add that item into the textbox at the cursor position">
+<!ENTITY rf.add2Textbox.info2 "... كيف احرر صندوق النص">
+<!ENTITY rf.reminderImportwCategory "Reminder Import and Category setting">
+<!ENTITY rf.import.unsaved "You have unsaved reminders.  Please save your reminder list and import again.">
+<!ENTITY rf.import.items "The Reminder data to be imported has:">
+<!ENTITY rf.import.categories.select "Select Category for imported Reminder(s)">
+<!ENTITY rf.import.categories.gonone "none">
+<!ENTITY rf.import.categories "Categories">
+<!ENTITY rf.calendar.foxy "Calendar-Foxy-Menu">
+<!ENTITY rf.calendar.menu.layout.change "Change List/Calendar layout">
+<!ENTITY rf.calendar.menu.options.open "Open Options Dialog...">
+<!ENTITY rf.calendar.menu.options.userlists "Add/Edit User Lists...">
+<!ENTITY rf.calendar.menu.options.docu "ReminderFox Documentation (online)">
+<!ENTITY rf.calendar.menu.options.newcal "New Calendar Documentation (online)">
+<!ENTITY rf.calendar.menu.toggleSearchFilter "Toggle Search and Filter/View">
+<!ENTITY rf.calendar.menu.gotodate "Goto Date">
+<!ENTITY rf.calendar.menu.revertnewandchanges "Revert all new events and changes">
+<!ENTITY rf.calendar.menu.savenewandchanges "Save all new events and changes">
+<!ENTITY rf.calendar.menu.save "Save">
+<!ENTITY rf.calendar.picker.today "Today">
+<!ENTITY rf.calendar.add.event2list "Add event to the selected list">
+<!ENTITY rf.calendar.layout.menu "Select List/Calendar layout ...">
+<!ENTITY rf.calendar.layout.ListCalendar "List and Calendar">
+<!ENTITY rf.calendar.layout.List "List">
+<!ENTITY rf.calendar.layout.Calendar "Calendar">
+<!--ENTITY rf.caldav.gcal.privat "Google Calendar Private (Events)"-->
+<!ENTITY rf.caldav.remoteCalendar "Remote Calendar">
+<!ENTITY rf.caldav.dialog.title "&rf.caldav.remoteCalendar; Account Handling">
+<!ENTITY rf.caldav.documentation.i "See '&rf.caldav.remoteCalendar;' Use and Setup in Documentation">
+<!ENTITY rf.caldav.serverselection "Select &rf.caldav.remoteCalendar;/Event Server from list">
+<!ENTITY rf.caldav.selectserver "Select &rf.caldav.remoteCalendar;">
+<!--ENTITY rf.caldav.gcal.group "Google Calendar Group (Events)"-->
+<!ENTITY rf.caldavupdate.next.calendars.label "Next Calendars">
+<!ENTITY rf.caldavupdate.configure.calendar.label "Configure Calendar">
+<!ENTITY rf.caldavupdate.skip.this.calendar.tooltip "Skip this Calendar; proceed synchronizing with other calendars.">
+<!ENTITY rf.caldavupdate.open.options.sync.tooltip "Open 'Options/Sync' to update the Calendar setting.">
+<!--ENTITY rf.caldav.oc.default "Default Calendar"-->
+<!--ENTITY rf.caldav.oc.additional "Additional Calendar"-->
+<!--ENTITY rf.caldav.valid.account "Replace with valid Remote Calendar account ID - see also (I)"-->
+<!--ENTITY rf.caldav.account.letter "'Calendar_ID' letter; by default the first character from 'Calendar Account Name' or from 'Calendar_ID' box with user entry."-->
+<!--ENTITY rf.caldav.delete.this.account "Delete this account"-->
+<!ENTITY rf.caldav.valid.calendar "Replace with valid Remote Calendar ID -- see also (I)">
+<!--ENTITY rf.caldav.sync.docu "See the documentation about"-->
+<!ENTITY rf.caldav.account.userletter "'Calendar_ID' box; enter an user defined 'Calendar_ID' letter">
+<!ENTITY rf.caldav.account.name "'Remote Calendar Account Name'  first letter will be used for 'Calendar_ID' per default.">
+<!ENTITY rf.caldav.pw "Show/Hide password">
+<!ENTITY rf.caldav.check.account "Check Account">
+<!ENTITY rf.caldav.delete.account "Enable to delete this account">
+<!--ENTITY rf.caldav.enable.account "Enable Account"-->
+<!ENTITY rf.caldav.sync.support "Sync &rf.caldav.remoteCalendar;/CalDAV">
+<!ENTITY rf.caldav.sync.setup "Sync Setup/Edit">
+<!ENTITY rf.caldav.sync.help "Sync first Help">
+<!ENTITY rf.caldav.sync.help.status "Read details how to setup Reminderfox with Remote Calendars.">
+<!ENTITY rf.caldav.sync.all "Sync All 'Active' &rf.caldav.remoteCalendar; Accounts">
+<!--ENTITY rf.caldav.use.setup "See 'Configure Remote Calendar' in Documentation"-->
+<!ENTITY rf.caldav.sync.about "About Sync">
+<!ENTITY rf.caldav.remote.server "Remote Servers (FTP/HTTP)">
+<!ENTITY rf.caldav.calendars "Remote Calendars">
+<!ENTITY rf.caldav.remindertype "Reminder Type">
+<!ENTITY rf.caldav.name "Name">
+<!ENTITY rf.caldav.username "User Name">
+<!ENTITY rf.caldav.password "Password">
+<!ENTITY rf.caldav.definition.title "&rf.caldav.remoteCalendar; Account Definition">
+<!ENTITY rf.caldav.desc1 "Reminderfox offers two methods to work with sync services:">
+<!ENTITY rf.caldav.desc2 "All Reminderfox events and ToDos are stored on the server as a single file.">
+<!ENTITY rf.caldav.desc3 "Each single event/ToDo is stored separately; this allows services/devices to access the calendar details individually.">
+<!ENTITY rf.caldav.desc4 "Some calendars services that have been tested with Reminderfox and are offered in the account definition dialog:">
+<!ENTITY rf.caldav.desc5 "See also the documentation for more details and how to configure.">
+<!ENTITY rf.caldav.desc6 "Open Remote Calendars (CalDAV Service) documentation">
+<!ENTITY rf.caldav.desc7 "Important Note">
+<!ENTITY rf.caldav.desc8 "Enabling any &rf.caldav.remoteCalendar; will disable the 'Remote Server' and its settings.">
+<!-- CalDAVv2 -->
+<!ENTITY rf.caldav.nodefault "None (use Local Calendar)">
+<!ENTITY rf.caldav.select.default.account "Default Remote Calendar when adding events">
+<!ENTITY rf.caldav.change.default.account "Select Default Remote Calendar">
+<!ENTITY rf.caldav.select.account "Select a CalDAV Account">
+<!-- ...... ImportHandling ..... -->
+<!ENTITY rf.caldav.add.calendar "Add new Calendar">
+<!ENTITY rf.calDav.davFile "Reminderfox data is stored in ICS file, the Remote Calendar details in an extra file (with extension .ics.dav).">
+<!ENTITY rf.caldav.color.reset "Reset account color">
+<!ENTITY rf.caldav.color.preset "Change Calendar Color preset">
+<!ENTITY rf.caldav.calendar.default "Default remote calendar when adding events">
+<!ENTITY rf.caldav.calendar.setup "Setup/Edit Calendar details">
+<!ENTITY rf.caldav.calendar.activate "Activating a '&rf.caldav.remoteCalendar;' will automatically send new or edited reminders to the remote system and synchronize local with remote reminders. See details in documentation.">
+<!ENTITY rf.caldav.calendar.syncto "Sync to &rf.caldav.remoteCalendar;">
+<!--   ....... Options ............. -->
+<!ENTITY rf.help.docupages "Open documentation for detailed help pages.">
+<!ENTITY rf.caldav.google.request "Enter the Google account name and use [Request]. It opens a Google page to get a login token. Copy it and proceed here with [Paste].">
+<!ENTITY rf.caldav.account.example "See also examples:">
+<!ENTITY rf.caldav.google.request.requires "Google Authorisation Request -- Requires [Accept]">
+<!ENTITY rf.caldav.google.auth.token "Google Authorisation Token -- How to copy">
+<!ENTITY rf.caldav.select.calendar "Selected Calendar">
+<!ENTITY rf.caldav.calndr.name "Calendar Name">
+<!ENTITY rf.caldav.login.correct "Correct Login and ID required to add account.">
+<!ENTITY rf.caldav.account.color "Color">
+<!ENTITY rf.caldav.account.color.ttt "Set Color which is used for this account on the main dialog list.">
+<!ENTITY rf.caldav.options.docu "See Documentation for Remote Calendar setup">
+<!-- ...... ImportHandling ..... -->
+<!ENTITY rf.importing.title "Add/Subscribe with Reminderfox">
+<!ENTITY rf.import.linkTitle "Title/Link">
+<!ENTITY rf.import.reminders.link "Reminders with link:">
+<!ENTITY rf.import.reminders.found "found">
+<!ENTITY rf.import.reminders.imported "imported">
+<!ENTITY rf.import.reminders.existed "existed">
+<!ENTITY rf.import.documentation "See documentation Import/Subscription of reminders">
+<!ENTITY rf.import.howtohandle "How to handle the Import ?">
+<!ENTITY rf.import.add "Add">
+<!ENTITY rf.import.reminders.importing "With importing Reminders it can be added to the Reminderfox List.">
+<!ENTITY rf.import.import.added "Imported Events and ToDos will be added to Reminderfox. Duplicates can be ignored or only newer will be imported.">
+<!ENTITY rf.import.import.finished "Import finished">
+<!ENTITY rf.import.duplicates "Duplicates">
+<!ENTITY rf.import.ignore "Ignore">
+<!ENTITY rf.import.newer "Newer">
+<!ENTITY rf.import.newCalendar "New Calendar">
+<!ENTITY rf.import.newCalendar.path "New Calendar path">
+<!ENTITY rf.import.filePath "Change File path for the new Calendar if required.">
+<!ENTITY rf.import.new "New">
+<!ENTITY rf.import.subscribe "Subscribe">
+<!ENTITY rf.import.subscription.info "Build a Reminderfox User List linked to external event data. Changes on the external page will be shown on Reminderfox list.">
+<!ENTITY rf.import.subscription.list "Enter Subscription List name">
+<!ENTITY rf.import.category.setting "Category Setting">
+<!ENTITY rf.import.category.info "To all imported events and todos a selectable 'Category' attribute can added.">
+<!ENTITY rf.import.import.ics "With iCal/ICS importing a new Calendar is build.">
+<!ENTITY rf.import.import.calendar "The existing Calendar will be closed and saved.">
+<!--   ....... Options ............. -->
+<!ENTITY rf.options.reminderfox "Reminderfox Data">
+<!ENTITY rf.options.dataLocations "Open documentation for Data Location and Import/Export reminders and 'Restore from Reminderfox backup'">
+<!ENTITY rf.options.browseICS "Browse for reminder (ICS) data file">
+<!ENTITY rf.options.importExport "Import/Export">
+<!ENTITY rf.options.openFileDialog "Open dialog to import/export reminder data and preferences">
+<!ENTITY rf.options.file.recover "Restore from Reminderfox backup file">
+<!ENTITY rf.options.file.Pick "Pick a .bak file and to [RESTORE] from a previous backup">
+<!ENTITY rf.options.calendarDefaults "Calendar Defaults">
+<!ENTITY rf.options.documentation.Base "Open documentation for base calendar settings.">
+<!ENTITY rf.options.file.backup "Backup reminders with date/time stamp">
+<!ENTITY rf.options.file.backup.tooltip "Save reminder data to backup location">
+<!ENTITY rf.options.alarms "Alarm Presets">
+<!ENTITY rf.options.alarm.dialogs "Alarm Dialogs">
+<!ENTITY rf.options.date.format "Date format">
+<!ENTITY rf.options.date.edit "Edit Date format">
+<!ENTITY rf.options.layout.Defaults "Layout Defaults">
+<!ENTITY rf.options.layout.help "See Reminder/Todo/Lists tab documentation">
+<!ENTITY rf.options.system.menu "Open Reminderfox with use of Main Menu and  Add-on Bar on the application (FX/TB) window">
+<!ENTITY rf.options.smartFoxy.display.label "Display Foxy Toolbar Icon">
+<!ENTITY rf.options.smartFoxy "Show Foxy badge shows number of reminders.">
+<!ENTITY rf.options.smartFoxy.none "No, hide it">
+<!ENTITY rf.options.smartFoxy.todays "only today's">
+<!ENTITY rf.options.smartFoxy.todaysUpcoming "today's and upcoming (default)">
+<!ENTITY rf.options.smartFoxy.todaytext "Display text of today's reminders">
+<!ENTITY rf.options.smartFoxy.badge "Foxy has a badge showing the number of todays/upcoming reminders. The badge is red with important today's reminders.">
+<!ENTITY rf.options.bow.description "Select on which toolbar to display">
+<!ENTITY rf.options.bow "Display 'Bow' and text on statusbar">
+<!ENTITY rf.options.bow.text "Limit text to">
+<!ENTITY rf.options.bow.position.label "Set position where to display on bar">
+<!ENTITY rf.options.bars "Enable Add-on Bar / StatusBar with showing 'Bow' status icon and Today's reminders.">
+<!ENTITY rf.options.printing "Printing">
+<!ENTITY rf.options.printing.agenda "Documentation for 'Printing' the Reminders and ToDo's and how to get a 'Daily Agenda'.">
+<!ENTITY rf.options.webMail "Reminders for WEB page and eMail">
+<!ENTITY rf.options.webMail.help "Use Reminderfox with WEB page details and E-Mail messages.  Reminderfox works with Thunderbird.">
+<!ENTITY rf.options.main "Main Dialog Preselections">
+<!ENTITY rf.options.main.ttt "Customize the Main Dialog">
+<!ENTITY rf.options.main.dialog.Preselections "Initial Selected List">
+<!ENTITY rf.options.addEdit "Add/Edit Dialog Presets">
+<!ENTITY rf.options.more "Edit the 'More &gt;&gt;' appearence">
+<!ENTITY rf.options.ttt "Foxy Tooltip">
+<!ENTITY rf.options.editTodays "Edit the 'Todays' labels">
+<!ENTITY rf.options.editUpcoming "Edit the 'Upcoming' labels">
+<!ENTITY rf.options.alertSlider "Foxy Alert Slider">

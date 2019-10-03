@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/catBox.css"  type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-editAdd-categories" persist="screenX screenY" onload="goCategoryLoad()"
+		title="&rf.options.categories.label;">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/categories.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/reminderOptionsDialog.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();" />
+		<key keycode="VK_ENTER" oncommand="doOK();" />
+		<key keycode="VK_RETURN" oncommand="doOK();" />
+	</keyset>
+
+
+	<vbox id="reminderFoxVbox1">
+
+		<!-- add/Edit Category item - - - - - - - - - - -->
+		<hbox align="center">
+			<label id="thisCat.Name" value="&rf.categories.thisCat.Name;" />
+			<textbox id="categoryInput" width="180px" />
+		</hbox>
+
+		<text />
+		<text />
+
+		<!-- -. -. -. -. -. -. -. -. -. -. -. -->
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+			align="center" />
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+			align="center" />
+
+		<hbox id="alertButtonGroup">
+
+			<spacer class="reminderFox-btnspacer" flex="1" />
+
+			<button id="rmCatOK" label="&rf.ok;"
+				oncommand="doOK();" />
+			<spacer width="5px" />
+
+			<button id="rmCatCancel" label="&rf.cancel;" oncommand="window.close();" />
+		</hbox>
+	</vbox>
+
+	<script type="application/x-javascript"><![CDATA[
+
+		function doOK()  {
+			var newCat = document.getElementById("categoryInput").value;
+	//		alert ("this is the new/edit:" + newCat);
+
+			window.arguments[0].currentItem = newCat;
+			window.close();
+		}
+
+	]]></script>
+
+</window>

@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/catBox.css"  type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox/skin/platform/gtk3linux.css"?>
+
+
+<?xul-overlay href="chrome://reminderfox/content/editing/eventEntryOverlay.xul"?>
+<?xul-overlay href="chrome://reminderfox/content/calendar/calendarWidget.xul"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+	<!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-reminderOptionsDialog" persist="screenX screenY"
+		title="&rf.reminderoptions.addEvent.window.title;" windowtype="window:reminderFoxReminderOptionsDialog"
+		onload="loadEventOptions()">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/addReminderDialog.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/reminderOptionsDialog.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/datepicker/datepicker.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/calendar/calendarWidget.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxMail.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/categories.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/reminderEventDialog.js" />
+
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();" />
+		<key keycode="VK_ENTER" oncommand="reminderFox_AddEditDialog_Enter();" />
+		<key keycode="VK_RETURN"
+			oncommand="reminderFox_AddEditDialog_Enter();" />
+		<!-- //gW add a date/time string to the 'Notes' field at cursor position -->
+		<key keycode="VK_F8" oncommand="rmFx_notesAddDateNtime();" />
+	</keyset>
+
+	<vbox id="reminderFoxVbox" flex="1">
+
+		<!-- description entry overlay -->
+		<vbox id="descriptionEntry" />
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+			align="center" />
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+			align="center" />
+
+		<!-- this grid aligns the all-day checkbox with the time entries -->
+		<grid>
+			<popupset>
+				<tooltip id="datetooltip" orient="vertical"
+					style="background-color: #33DD00;" onpopupshowing="return dateToolTip(this);" />
+				<tooltip id="datetooltipEnd" orient="vertical"
+					style="background-color: #33DD00;" onpopupshowing="return dateToolTip(this, true);" />
+			</popupset>
+			<rows>
+				<row align="center">
+					<hbox>
+						<label id="reminderDateLabel" value="&rf.reminderoptions.date.label;"
+							align="bottom" tooltip="datetooltip" />
+						<checkbox id="todoDateCheckbox" label="&rf.reminderoptions.date.label;"
+							oncommand="reminderFox_handleTodoDate();" tooltip="datetooltip" />
+					</hbox>
+					<hbox>
+						<label id="reminderDateDesc" disabled="true" align="bottom"
+							tooltip="datetooltip" />
+						<spacer />
+					</hbox>
+					<hbox id="allDayCheckbox" align="center" />
+					<spacer width="30px" />
+				</row>
+				<row align="center">
+					<hbox>
+						<spacer width="10px" />
+						<label id="reminderEntryLabel" value="&rf.reminderoptions.date.start.label;"
+							align="bottom" tooltip="datetooltip" />  <!-- reminders only -->
+					</hbox>
+					<!-- date entry overlay -->
+					<hbox id="dateEntryHBox" />
+					<hbox id="timeEntry" align="center" />
+					<spacer width="30px" />
+				</row>
+				<row align="center">
+					<hbox>
+						<spacer width="10px" />
+						<label id="dateEndLabel" value="&rf.reminderoptions.date.end.label;"
+							align="bottom" tooltip="datetooltipEnd" />
+					</hbox>
+					<!-- end date entry overlay -->
+					<hbox id="endDateEntryHBox" />
+					<hbox id="endTimeEntry" align="center" />
+					<spacer width="30px" />
+				</row>
+			</rows>
+		</grid>
+
+		<!-- repeat overlay -->
+		<hbox id="repeatHboxOverlay" flex="3" align="center" />
+
+		<!-- alert entry overlay -->
+		<hbox id="alertEntry" align="center" />
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+			align="center" />
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+			align="center" />
+
+		<!-- Categories overlay -->
+		<hbox id="catHbox" align="center" />
+
+		<hbox>
+			<checkbox id="important" label="&rf.reminderoptions.options.important.label;" />
+			<checkbox id="showInTooltip" label="&rf.add.addTodo.showInTooltip.label;" />
+			<checkbox id="remindUntilComplete"
+				label="&rf.reminderoptions.options.remindUntilCompleted.label;" />  <!-- reminders only -->
+		</hbox>
+
+		<!-- location overlay -->
+		<hbox align="center" id="locationHbox" />
+
+		<!-- url overlay -->
+		<hbox align="center" id="urlHbox" />
+
+		<!-- More >> overlay -->
+		<vbox id="moreOptionsVbox" hidden="true" />
+
+		<!--footer buttons overlay -->
+		<vbox id="footerVbox" />
+	</vbox>
+</window>

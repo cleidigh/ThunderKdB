@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<window class="dialog" title="&rf.about.about.label;" orient="vertical"
+	windowtype="window:about" autostretch="always" onload="reminderfox.about()"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/HTTP.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();" />
+	</keyset>
+
+	<!-- Original template by Jed Brown -->
+
+	<groupbox align="center" orient="horizontal">
+		<vbox>
+			<text id="rmFx_Name" value="&rf.name;"
+				style="font-weight: bold; font-size: x-large;" />
+
+			<hbox>
+				<text id="rmFx_Version" value="&rf.about.version.label;" />
+				<spacer width="10px" />
+			</hbox>
+
+			<separator class="thin" />
+
+			<text value="&rf.about.homepage.label;" style="font-weight: bold;" />
+			<text value="http://www.reminderfox.org/" class="url"
+				onclick="reminderfox.util.docRmFX(); window.close();" />
+			<separator class="thin" />
+
+			<text value="&rf.about.createdby.label;" style="font-weight: bold;" />
+			<text value="Daniel Lee" class="url"
+				onclick="reminderfox.util.docRmFX(); window.close();" />
+			<separator class="thin" />
+
+			<text value="&rf.about.developers.label;" style="font-weight: bold;" />
+			<text value="Tom Mutdosch" class="url"
+				onclick="reminderfox.core.Send2List('tommut@gmail.com'); window.close();" />
+			<separator class="thin" />
+
+			<text value="&rf.about.contributor.label;" style="font-weight: bold;" />
+			<text value="Guenter Wahl" class="url"
+				onclick="reminderfox.core.Send2List('gneandr@web.de'); window.close();" />
+			<separator class="thin" />
+
+			<text value="&rf.about.support.label;" style="font-weight: bold;" />
+			<text value="reminderfox@mozdev.org" class="url" id="supportPage"
+				onclick="reminderfox.core.Send2List(null); window.close();" />
+
+			<separator class="thin" />
+
+			<text value="Reminderfox Forum / Support / Feedback" style="font-weight: bold;"
+				class="url" id="forumPage"
+				onclick="reminderfox.util.docRmFX('forum'); window.close();" />
+			<text value="See and share user discussions,"/>
+			<text value="get answers and recommendations to your questions."/>
+
+			<separator class="thin" />
+		</vbox>
+		<spring flex="1" />
+		<image src="chrome://reminderfox/skin/images/foxy-small.png"
+			onclick="reminderfox.util.docRmFX();"
+			tooltiptext="" id="logoText" />
+	</groupbox>
+
+	<hbox>
+		<spacer flex="1" />
+		<button label="&rf.about.close.label;" oncommand="window.close();" />
+	</hbox>
+
+</window>

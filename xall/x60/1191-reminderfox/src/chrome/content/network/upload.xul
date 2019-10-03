@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css" type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+	<!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderfox-upload"
+		title="&rf.upload.tile.label;"
+		orient="vertical"
+		onload="reminderfox.network.upload.reminderFox_upload_Startup()">
+
+	<script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript"	src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/networkService.js"/>
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/passwordManagerUtils.js"/>
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/upload.js"/>
+
+
+	<textbox id="status" width="240" class="noframe" readonly="true" />
+	<hbox>
+		<spacer flex="1"/>
+		<button id="reminderFox_upload_button" label="&rf.cancel;" oncommand="reminderfox.network.upload.reminderFox_cancelUpload();"/>
+	</hbox>
+</window>

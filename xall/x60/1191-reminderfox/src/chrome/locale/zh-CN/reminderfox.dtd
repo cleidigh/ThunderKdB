@@ -1,0 +1,739 @@
+<!-- ReminderFox -->
+<!ENTITY rf.name "ReminderFox">
+<!ENTITY rf.version "#版本#">
+<!-- General strings -->
+<!ENTITY rf.general.event "事件">
+<!ENTITY rf.general.todo "待办事项">
+<!ENTITY rf.general.reminder "提醒">
+<!ENTITY rf.general.events "事件">
+<!ENTITY rf.general.todos "待办事项">
+<!ENTITY rf.general.reminders "提醒">
+<!ENTITY rf.ok "确定">
+<!ENTITY rf.cancel "取消">
+<!ENTITY rf.apply "应用">
+<!ENTITY rf.Add "添加">
+<!ENTITY rf.Close "关闭">
+<!ENTITY rf.Paste "粘贴">
+<!ENTITY rf.label.Copy "复制">
+<!ENTITY rf.Browse "浏览">
+<!ENTITY rf.timeDateSelect "选择时间和日期">
+<!ENTITY rf.button.browse "浏览...">
+<!ENTITY rf.documentation.previous "前一文档页面">
+<!ENTITY rf.mainmenubar "主菜单栏">
+<!ENTITY rf.statusbar "状态/附加组件栏">
+<!-- Main Statusbar Overlay  -->
+<!ENTITY rf.main.tooltip.todaysreminders.label "今天的提醒">
+<!ENTITY rf.main.tooltip.upcomingreminders.label "即将到来的提醒">
+<!ENTITY rf.main.tooltip.todos.label "&rf.add.tab.todos.label;">
+<!ENTITY rf.main.options.label "选项">
+<!ENTITY rf.main.homepage.label "查看主页">
+<!ENTITY rf.main.about.label "关于 &rf.name;">
+<!ENTITY rf.main.viewReminders.label "查看提醒...">
+<!ENTITY rf.main.addReminder.label "添加提醒...">
+<!ENTITY rf.main.quickalarm.label "快捷闹钟...">
+<!ENTITY rf.main.quickalarms.label "快捷闹钟">
+<!ENTITY rf.main.showalerts.label "推迟警告和闹钟...">
+<!ENTITY rf.main.help.label "帮助">
+<!ENTITY rf.main.help.tooltip "Customize the Main Dialog">
+<!ENTITY rf.main.tip.label "Tip">
+<!ENTITY rf.main.addreminderforweb.label "&rf.main.addReminder.label;">
+<!ENTITY rf.main.contextmenu.subscribe.label "用 ReminderFox 订阅...">
+<!ENTITY rf.main.contextmenu.addremindercontact.label "&rf.main.addReminder.label;">
+<!ENTITY rf.main.contextmenu.copycontactmail.label "复制电子邮件地址">
+<!ENTITY rf.main.icons.openReminderfox.label "&rf.name;">
+<!ENTITY rf.main.icons.openReminderfox.tooltip.label "打开 ReminderFox">
+<!ENTITY rf.main.icons.addreminder.label "&rf.add.reminders.context.add.label;">
+<!ENTITY rf.main.icons.addreminder.tooltip.label "为 ReminderFox 添加提醒">
+<!ENTITY rf.main.icons.showCalendar.label "显示日历">
+<!ENTITY rf.main.icons.showCalendar.tooltip.label "显示 ReminderFox 日历">
+<!ENTITY rf.main.importFromEmail.label "从 iCal 导入提醒...">
+<!ENTITY rf.main.contextmenu.openAB "打开通讯录卡">
+<!-- Categories -->
+<!ENTITY rf.categories.inputRmCategories.label "分类：">
+<!ENTITY rf.categories.tooltip.inputRmCategories "分类(以逗号分隔的列表)">
+<!ENTITY rf.categories.tooltip.catChange "从列表中选择分类">
+<!ENTITY rf.categories.manageCat.label "管理分类">
+<!ENTITY rf.categories.currentCatHeader.default "默认分类">
+<!ENTITY rf.categories.currentCatHeader.other "其它">
+<!ENTITY rf.categories.tooltip.sCatDelete "删除选中的分类">
+<!ENTITY rf.categories.tooltip.sCatEdit "编辑选中的分类">
+<!ENTITY rf.categories.tooltip.sCatAdd "添加新分类">
+<!ENTITY rf.categories.tooltip.rmCatOK "保存分类">
+<!ENTITY rf.categories.thisCat.Name "名称">
+<!ENTITY rf.options.categories.label "分类">
+<!ENTITY rf.options.categories.description1 "默认分类是一个常用分类的列表，可以被附加到提醒上。">
+<!ENTITY rf.options.categories.importID "为所有导入的提醒和待办事项选择一个分类">
+<!ENTITY rf.categories.list.button.add "添加">
+<!ENTITY rf.categories.list.button.edit "编辑">
+<!ENTITY rf.categories.list.button.delete "删除">
+<!ENTITY rf.categories.list.button.viewall "查看其它分类...">
+<!ENTITY rf.categories.list.button.moveToDefault "移动到默认列表">
+<!ENTITY rf.categories.tooltip.moveToDefault "将选中的分类移动到默认列表">
+<!ENTITY rf.options.tags.label "标签">
+<!ENTITY rf.options.categories.description2 "此列表显示被用作当前某些事件标签的所有非默认的分类。">
+<!ENTITY rf.options.categories.description3 "你可以将任何已有的标签移动到默认分类列表。">
+<!ENTITY rf.categories.options.default.category.label "分类：">
+<!-- Add Reminders dialog  -->
+<!ENTITY rf.add.tab.reminders.label "提醒">
+<!ENTITY rf.add.tab.todos.label "待办事项">
+<!ENTITY rf.add.find.accesskey "f">
+<!ENTITY rf.add.hideCompletedItems.accesskey "c">
+<!ENTITY rf.add.findagain.accesskey "g">
+<!ENTITY rf.add.showAll.accesskey "s">
+<!ENTITY rf.add.hideAll.accesskey "h">
+<!ENTITY rf.add.viewAsHtml.accesskey "v">
+<!ENTITY rf.add.viewMail.accesskey "m">
+<!ENTITY rf.add.quicksearch.accesskey "q">
+<!-- tools menu access keys -->
+<!ENTITY rf.toolsmenu.Reminderfox.accesskey "R">
+<!ENTITY rf.toolsmenu.OpenReminderfox.accesskey "R">
+<!ENTITY rf.toolsmenu.AddReminder.accesskey "A">
+<!ENTITY rf.toolsmenu.QuickAlarm.accesskey "Q">
+<!ENTITY rf.toolsmenu.Options.accesskey "O">
+<!ENTITY rf.toolsmenu.Help.accesskey "H">
+<!ENTITY rf.add.reminders.column.date.label "日期">
+<!ENTITY rf.add.reminders.column.description.label "描述">
+<!ENTITY rf.add.reminders.column.time.label "时间">
+<!ENTITY rf.add.reminders.column.datecompleted.label "完成日期">
+<!ENTITY rf.add.reminders.column.repeat.label "重复">
+<!ENTITY rf.add.reminders.column.complete.label "完成">
+<!ENTITY rf.add.reminders.column.remindUntilCompleted.label "每天提醒直到完成">
+<!ENTITY rf.add.reminders.column.notes.label "注释">
+<!ENTITY rf.add.reminders.column.mail.label "邮件">
+<!ENTITY rf.add.reminders.column.alarm.label "闹钟">
+<!ENTITY rf.add.sidebar.hideFoxy.label "隐藏 Foxy">
+<!ENTITY rf.add.sidebar.showFoxy.label "显示 Foxy">
+<!ENTITY rf.add.sidebar.showSidebar.label "显示侧边栏">
+<!ENTITY rf.add.sidebar.hideSidebar.label "隐藏侧边栏">
+<!ENTITY rf.add.sidebar.filterReminders.label "过滤提醒...">
+<!ENTITY rf.add.reminders.column.categories.label "分类">
+<!ENTITY rf.add.event.add.label "添加事件">
+<!ENTITY rf.add.event.edit.label "编辑事件">
+<!ENTITY rf.add.event.copy.label "复制事件">
+<!ENTITY rf.add.event.delete.label "删除事件">
+<!ENTITY rf.add.reminders.context.add.label "添加提醒">
+<!ENTITY rf.add.reminders.context.edit.label "编辑提醒">
+<!ENTITY rf.add.reminders.context.copy.label "复制提醒">
+<!ENTITY rf.add.reminders.context.delete.label "删除提醒">
+<!ENTITY rf.add.reminders.context.moveToList.label "移动到列表">
+<!ENTITY rf.add.reminders.context.important.label "重要">
+<!ENTITY rf.add.reminders.context.complete.label "&rf.add.reminders.column.complete.label;">
+<!ENTITY rf.add.reminders.context.remindUntilCompleted.label "每天提醒直到完成">
+<!ENTITY rf.add.reminders.context.find.label "查找...">
+<!ENTITY rf.add.reminders.context.gotoToday.label "转到今天">
+<!ENTITY rf.add.reminders.context.hideRepeatingReminders.label "隐藏全部重复提醒">
+<!ENTITY rf.add.reminders.context.showAllReminders.label "显示全部提醒">
+<!ENTITY rf.add.reminders.context.hidecompleteditems.label "隐藏已完成的项目">
+<!ENTITY rf.add.reminders.context.print.label "打印/查看">
+<!ENTITY rf.add.reminders.context.print.ttt "为打印/查看选择模板">
+<!ENTITY rf.add.reminders.context.print.agenda.label "Agenda">
+<!ENTITY rf.add.reminders.context.print.all "所有事件">
+<!ENTITY rf.add.reminders.context.print.selected "选中的事件">
+<!ENTITY rf.add.reminders.context.print.installation "安装详情">
+<!ENTITY rf.add.reminders.context.print.docu "打开文档页面">
+<!ENTITY rf.add.reminders.context.viewMail.label "查看邮件">
+<!ENTITY rf.add.reminders.context.sendReminders.label "发送提醒...">
+<!ENTITY rf.add.reminders.context.sendTodos.label "发送待办事项...">
+<!ENTITY rf.add.reminders.context.exportSendReminders.label "导出/发送提醒...">
+<!ENTITY rf.add.reminders.context.exportSendTodos.label "导出/发送待办事项...">
+<!ENTITY rf.reminderoptions.addEvent "添加事件">
+<!ENTITY rf.add.addReminder.addbutton.label "&rf.add.reminders.context.add.label;">
+<!ENTITY rf.add.addReminder.revertbutton.label "撤销">
+<!ENTITY rf.add.addReminder.donebutton.label "确定">
+<!ENTITY rf.add.addReminder.downloadbutton.label "下载">
+<!ENTITY rf.add.addReminder.uploadbutton.label "上传">
+<!ENTITY rf.add.todosr.downloadbutton.label "&rf.add.addReminder.downloadbutton.label;">
+<!ENTITY rf.add.todosr.uploadbutton.label "&rf.add.addReminder.uploadbutton.label;">
+<!ENTITY rf.add.todosr.addbutton.label "添加待办事项">
+<!ENTITY rf.add.todos.column.description.label "&rf.add.reminders.column.description.label;">
+<!ENTITY rf.add.todos.column.showTooltip.label "在提示信息中显示">
+<!ENTITY rf.add.todos.context.edit.label "编辑待办事项">
+<!ENTITY rf.add.todos.context.delete.label "删除待办事项">
+<!ENTITY rf.add.todos.context.copy.label "复制待办事项">
+<!ENTITY rf.add.todos.context.important.label "&rf.add.reminders.context.important.label;">
+<!ENTITY rf.add.todos.context.showInTooltip.label "在提示信息中显示">
+<!ENTITY rf.add.todos.context.moveTodoUp.label "上移待办事项">
+<!ENTITY rf.add.todos.context.moveTodoDown.label "下移待办事项">
+<!ENTITY rf.add.addTodo.description.label "&rf.reminderoptions.description.label;">
+<!ENTITY rf.add.addTodo.addbutton.label "添加">
+<!ENTITY rf.add.addTodo.options.label "选项：">
+<!ENTITY rf.add.addTodo.showInTooltip.label "在提示信息中显示">
+<!ENTITY rf.add.addTodo.important.label "&rf.add.reminders.context.important.label;">
+<!ENTITY rf.add.file.menu.backup.title "Back up and restore">
+<!-- about dialog -->
+<!ENTITY rf.about.homepage.label "主页：">
+<!ENTITY rf.about.about.label "&rf.main.about.label;">
+<!ENTITY rf.about.createdby.label "创建者：">
+<!ENTITY rf.about.developers.label "首席开发者：">
+<!ENTITY rf.about.contributor.label "贡献者：">
+<!ENTITY rf.about.version.label "版本：">
+<!ENTITY rf.about.support.label "请求支持或者发送反馈到：">
+<!ENTITY rf.about.close.label "关闭">
+<!ENTITY rf.about.updatecheck.label "Update Check">
+<!ENTITY rf.about.updatecheck.tooltip "Check current installation status.">
+<!-- New Reminder Options dialog -->
+<!ENTITY rf.rmfxupdatexpi.drag.link.to.addon.manager.tooltip "Drag this link to the 'Add-ons Manager' window. Allow downloading. On tab:'Extensions' scroll to Reminderfox and use 'Restart now' or 'Undo'.">
+<!ENTITY rf.rmfxupdatexpi.local.version.value "Local Version">
+<!ENTITY rf.rmfxupdatexpi.current.version.value "Current Version">
+<!ENTITY rf.rmfxupdatexpi.update.reminderfox.value "Update Reminderfox">
+<!ENTITY rf.msgid.title "ReminderFox：正在打开请求的信息">
+<!ENTITY rf.msgid.retry.label "重试">
+<!ENTITY rf.msgid.description "ThunderBird 载入此消息失败，请重试。">
+<!-- Alarm dialog -->
+<!ENTITY rf.reminderoptions.addEvent.window.title "添加事件">
+<!ENTITY rf.reminderoptions.date.label "日期：">
+<!ENTITY rf.reminderoptions.date.start.label "开始：">
+<!ENTITY rf.reminderoptions.date.end.label "结束：">
+<!ENTITY rf.reminderoptions.time.label "时间：">
+<!ENTITY rf.reminderoptions.time.allday.label "全天">
+<!ENTITY rf.reminderoptions.description.label "描述：">
+<!ENTITY rf.reminderoptions.repeat.label "重复：">
+<!ENTITY rf.reminderoptions.repeat.yearly.label "每年">
+<!ENTITY rf.reminderoptions.repeat.yearlyday.label "每年(按星期日期)">
+<!ENTITY rf.reminderoptions.repeat.monthlydate.label "每月">
+<!ENTITY rf.reminderoptions.repeat.monthlyday.label "每月(按星期日期)">
+<!ENTITY rf.reminderoptions.repeat.weekly.label "每周">
+<!ENTITY rf.reminderoptions.repeat.weeklyalternating.label "每两周">
+<!ENTITY rf.reminderoptions.repeat.daily.label "每天">
+<!ENTITY rf.reminderoptions.repeat.cusomt.label "点击此处获取更多重复选项...">
+<!ENTITY rf.reminderoptions.repeat.custom.title.label "自定义重复">
+<!ENTITY rf.reminderoptions.repeat.every.label "每">
+<!ENTITY rf.reminderoptions.repeat.forever.label "一直重复">
+<!ENTITY rf.reminderoptions.repeat.until.label "重复到">
+<!ENTITY rf.reminderoptions.repeat.years.label "年">
+<!ENTITY rf.reminderoptions.repeat.months.label "月">
+<!ENTITY rf.reminderoptions.repeat.weeks.label "星期">
+<!ENTITY rf.reminderoptions.repeat.days.label "天">
+<!ENTITY rf.reminderoptions.repeat.count.label "重复次数">
+<!ENTITY rf.reminderoptions.notify.label "显示弹出闹钟在">
+<!ENTITY rf.reminderoptions.notify.minutes.label "分钟">
+<!ENTITY rf.reminderoptions.notify.hours.label "小时">
+<!ENTITY rf.reminderoptions.notify.days.label "天">
+<!ENTITY rf.reminderoptions.notify.before.label "后。">
+<!ENTITY rf.reminderoptions.options.important.label "&rf.add.reminders.context.important.label;">
+<!ENTITY rf.reminderoptions.options.remindUntilCompleted.label "&rf.add.reminders.context.remindUntilCompleted.label;">
+<!ENTITY rf.reminderoptions.location.label "位置：">
+<!ENTITY rf.reminderoptions.location.header "位置">
+<!ENTITY rf.reminderoptions.url.label "URL：">
+<!ENTITY rf.reminderoptions.search.anywhere.header "任何位置">
+<!ENTITY rf.reminderoptions.location.launch.tooltip "显示此位置的地图">
+<!ENTITY rf.reminderoptions.url.launch.tooltip "打开 URL">
+<!ENTITY rf.reminderoptions.button.more "更多 &gt;&gt;">
+<!ENTITY rf.reminderoptions.tooltip.selectdate "选择日期">
+<!-- Suspend Alerts and Alarms dialog -->
+<!ENTITY rf.alarm.dialog.title "&rf.name; 闹钟">
+<!ENTITY rf.alarm.button.snooze "推迟">
+<!ENTITY rf.alarm.button.acknowledge "确认">
+<!ENTITY rf.alarm.button.complete "标记为已完成">
+<!ENTITY rf.alarm.button.delete "删除">
+<!ENTITY rf.alarm.button.open "打开事件...">
+<!ENTITY rf.alarm.snooze.minutes.label "分钟">
+<!ENTITY rf.alarm.occursIn.label "出现在：">
+<!ENTITY rf.alarm.snoozeUntil.label "推迟到：">
+<!-- Quick Alarm dialog -->
+<!ENTITY rf.suspendalarms.dialog.title "挂起警告和闹钟">
+<!ENTITY rf.suspendalarms.dialog.label "警告和闹钟将被挂起直到恢复。">
+<!ENTITY rf.suspendalarms.resume.label "在此时间后自动恢复警告和闹钟：">
+<!ENTITY rf.suspendalarms.resume.time.info "恢复时间：">
+<!-- Options dialog -->
+<!ENTITY rf.quickalarm.dialog.title "快捷闹钟">
+<!ENTITY rf.quickalarm.notify.label "&rf.reminderoptions.notify.label;">
+<!ENTITY rf.quickalarm.notify.fromnow "后">
+<!ENTITY rf.quickalarm.alarmAt.label "闹钟时间：">
+<!-- lists -->
+<!ENTITY rf.options.title.label "&rf.name; 选项">
+<!ENTITY rf.options.tab.General "常规">
+<!ENTITY rf.options.tab.Access "Access">
+<!ENTITY rf.options.tab.Dialog "主对话">
+<!ENTITY rf.options.tab.reminderEdit "Reminder 对话">
+<!ENTITY rf.options.tab.notifications "通知">
+<!ENTITY rf.options.tab.Sync "Sync">
+<!ENTITY rf.options.tab.alarms "闹钟">
+<!ENTITY rf.options.todoLists "列表">
+<!ENTITY rf.options.addlist.label "添加自定义列表">
+<!ENTITY rf.options.addlist.subscription.description "你可以订阅到一个你指定的 URL 的日历。此日历将在你上面自定义的列表下显示。">
+<!ENTITY rf.options.addlist.subscription.url.label "订阅 URL">
+<!ENTITY rf.options.addlist.subscription.label "订阅">
+<!ENTITY rf.options.labels.title "标签">
+<!ENTITY rf.options.display.label "显示首选项">
+<!ENTITY rf.options.display.todaystatus.label "在状态栏显示今天的提醒。">
+<!ENTITY rf.options.display.limiStatusLength.label "限制状态栏最大文本长度为：">
+<!ENTITY rf.options.display.limiStatusCharacters.label "字">
+<!ENTITY rf.options.display.remindersInTooltip.label "在提示信息中显示提醒。">
+<!ENTITY rf.options.display.todosInTooltip.label "在提示信息中显示待办事项。">
+<!ENTITY rf.options.display.showForNext.label "显示接下来">
+<!ENTITY rf.options.display.showForNextUpcomingDays.label "内发生的事件。">
+<!ENTITY rf.options.upcomingreminders.label "即将到来的提醒标签：">
+<!ENTITY rf.options.todaysreminders.label "今天的提醒标签：">
+<!ENTITY rf.options.upcomingreminders.label.customize "自定义">
+<!ENTITY rf.options.todaysreminders.label.customize "&rf.options.upcomingreminders.label.customize;">
+<!ENTITY rf.options.display.editOnClick.label "单击状态栏图标编辑：">
+<!ENTITY rf.options.display.openOnClick.label "单击状态栏图标打开：">
+<!ENTITY rf.options.display.editOnClickReminders.label "&rf.add.tab.reminders.label;">
+<!ENTITY rf.options.display.editOnClickTodos.label "&rf.add.tab.todos.label;">
+<!ENTITY rf.options.display.openPrevious.label "上一个标签">
+<!ENTITY rf.options.display.enableContextMenus.label "启用上下文菜单为网页和电子邮件添加事件">
+<!ENTITY rf.options.display.placement.label "显示位置：">
+<!ENTITY rf.options.display.placement.toolbar.label "工具栏：">
+<!ENTITY rf.options.display.placement.last.label "总在最后">
+<!ENTITY rf.options.display.placement.specificPosition.label "指定位置">
+<!ENTITY rf.printing.agenda "日程">
+<!ENTITY rf.printing.agenda.info "日程可以通过点击 ReminderFox 列表上下文菜单的'打印/查看'来显示，如果需要自动显示请选择：">
+<!ENTITY rf.printing.agenda.openatstart "启动应用程序时显示日程。">
+<!ENTITY rf.options.display.listsetup.label "列表和日历设置">
+<!ENTITY rf.options.display.singlemenu.label "仅使用单按钮栏">
+<!ENTITY rf.options.display.singlemenu.infoTTT "所有按钮将出现在一个菜单栏上；不显示确定按钮">
+<!ENTITY rf.options.display.nummonthdisplayed "日历中显示的月份数">
+<!ENTITY rf.options.display.nummonth.help "请选择 1 以上的数字。推荐值为 3。月份数太大将会降低性能！">
+<!ENTITY rf.options.display.menu.open "鼠标悬停时打开提醒/待办事项菜单">
+<!ENTITY rf.options.alert.label "显示滑动警告">
+<!ENTITY rf.options.alert.display.label "显示：">
+<!ENTITY rf.options.alert.display.todaysandupcoming.label "显示今天和即将到来的提醒">
+<!ENTITY rf.options.alert.display.todays.label "仅显示今天的提醒">
+<!ENTITY rf.options.alert.display.upcoming.label "仅显示即将到来的提醒">
+<!ENTITY rf.options.alert.showevery.label "显示警告每隔">
+<!ENTITY rf.options.alert.showeveryminutes.label "分钟">
+<!ENTITY rf.options.alert.maxheight.label "最大滑动警告高度：">
+<!ENTITY rf.options.alert.maxheightpixels.label "像素">
+<!ENTITY rf.options.alert.keepopen.label "保持滑动警告打开">
+<!ENTITY rf.options.alert.keepopen.for.label "持续">
+<!ENTITY rf.options.alert.keepopen.seconds.label "秒">
+<!ENTITY rf.options.alert.keepopen.untilclicked.label "直到被点击">
+<!ENTITY rf.options.alarms.label "闹钟">
+<!ENTITY rf.options.alarms.show.label "显示使用的多个闹钟">
+<!ENTITY rf.options.alarms.show.tabs.label "在一个独立窗口中使用多个标签">
+<!ENTITY rf.options.alarms.show.windows.label "为每个闹钟打开一个独立窗口">
+<!ENTITY rf.options.sound.label "声音">
+<!ENTITY rf.options.alarm.playsound.label "弹出闹钟同时播放声音">
+<!ENTITY rf.options.alarm.resoundInterval.label "重复警告弹出声音每隔">
+<!ENTITY rf.options.alarm.resoundInterval.minutes.label "&rf.options.alert.showeveryminutes.label;">
+<!ENTITY rf.options.alert.playsound.label "滑出警告同时播放声音">
+<!ENTITY rf.options.alarm.sound.default.label "默认">
+<!ENTITY rf.options.alarm.sound.custom.label "自定义 .wav 文件">
+<!ENTITY rf.options.list.calendar.label "日历">
+<!ENTITY rf.options.list.calendar.size.label "日历尺寸">
+<!ENTITY rf.options.list.calendar.size.small.label "小">
+<!ENTITY rf.options.list.calendar.size.medium.label "中">
+<!ENTITY rf.options.list.calendar.size.large.label "大">
+<!ENTITY rf.options.list.startingday.label "每周的开始：">
+<!ENTITY rf.options.list.calendar.showWeekNumber.label "显示周序号">
+<!ENTITY rf.options.list.calendar.showWeekNumber.none "None">
+<!ENTITY rf.options.list.calendar.showWeekNumber.default "默认">
+<!ENTITY rf.options.list.calendar.showWeekNumber.iso8601 "ISO 8601">
+<!ENTITY rf.options.list.dateandtime.label "日期和时间">
+<!ENTITY rf.options.list.dateappearance.label "日期格式：">
+<!ENTITY rf.options.list.timeoptions.label "时间样式：">
+<!ENTITY rf.options.list.24hour.label "使用 24 小时制时间">
+<!ENTITY rf.options.list.highlighttodaysRemindres.label "在列表中高亮显示今天的提示">
+<!ENTITY rf.options.list.repeating.label "重复提醒">
+<!ENTITY rf.options.list.repeating.show.label "显示">
+<!ENTITY rf.options.list.repeating.all.label "全部">
+<!ENTITY rf.options.list.repeating.last.label "之前">
+<!ENTITY rf.options.list.repeating.next.label "接下来">
+<!ENTITY rf.options.list.repeating.previous.label "次发生">
+<!ENTITY rf.options.list.repeating.upcoming.label "次发生">
+<!ENTITY rf.options.list.reminder.defaults.label "默认">
+<!ENTITY rf.options.list.reminder.defaults.description.label "新提醒和待办事项的默认选项">
+<!ENTITY rf.options.list.reminder.defaults.completed.hide.label "默认隐藏已完成的项目">
+<!ENTITY rf.options.list.reminder.defaults.list.defaults.label "列表默认设置">
+<!ENTITY rf.options.list.reminder.defaults.filters.label "默认过滤器">
+<!ENTITY rf.options.list.reminder.defaults.more.label "默认'更多'项目：">
+<!ENTITY rf.options.list.reminder.defaults.alarm.label "默认闹钟选项">
+<!ENTITY rf.options.list.reminder.defaults.alarm.action.label "默认行为">
+<!ENTITY rf.options.list.reminder.defaults.filters.lastSelectedView.label "上次选择的视图">
+<!ENTITY rf.options.list.reminder.defaults.allevents "所有事件">
+<!ENTITY rf.options.list.reminder.defaults.allupcomingevents "所有即将到来的事件">
+<!ENTITY rf.options.list.reminder.defaults.textSize "默认文本大小">
+<!ENTITY rf.options.list.reminder.defaults.textSize.value "大小(单位像素)">
+<!ENTITY rf.options.list.reminder.defaults.textSizeTTT "此数值为默认文本大小。要控制主对话框中的'日历'的文本大小，请使用 [Cntrl] [+] 放大，[Cntrl] [-] 缩小，[Cntrl] [#] 重置文本大小为默认。请使用 [Alt] 键控制'列表'中的文本大小。">
+<!ENTITY rf.moreoptions.list.reminder.more.header.label "默认更多项目">
+<!ENTITY rf.moreoptions.list.reminder.more.description.label "列出你希望在添加/编辑提醒窗口的更多&gt;&gt;按钮中默认显示的项目。除非你点击按钮，否则这些项目将不会显示。它们会按照这里列表的顺序出现。请用英文逗号分隔设置的值。">
+<!ENTITY rf.moreoptions.list.reminder.more.location.label "&rf.reminderoptions.location.header;">
+<!ENTITY rf.moreoptions.list.reminder.more.URL.label "URL">
+<!ENTITY rf.moreoptions.list.reminder.more.category.label "分类">
+<!ENTITY rf.moreoptions.list.reminder.more.repeat.label "重复">
+<!ENTITY rf.moreoptions.list.reminder.more.alarm.label "闹钟">
+<!ENTITY rf.moreoptions.list.reminder.more.priority.label "优先">
+<!ENTITY rf.moreoptions.list.reminder.more.important.label "重要">
+<!ENTITY rf.moreoptions.list.reminder.more.remindUntilComplete.label "提醒直到完成">
+<!ENTITY rf.moreoptions.list.reminder.more.showInTooltip.label "在提示信息中显示">
+<!ENTITY rf.moreoptions.list.reminder.more.endDate.label "结束日期">
+<!ENTITY rf.options.customize "自定义">
+<!ENTITY rf.options.list.reminder.filters.allreminders.label "选择的年">
+<!ENTITY rf.options.list.reminder.filters.alltodos.label "所有待办事项">
+<!ENTITY rf.options.list.reminder.filters.selectedmonth.label "选择的月">
+<!ENTITY rf.options.list.reminder.filters.selectedweek.label "选择的星期">
+<!ENTITY rf.options.list.reminder.filters.selecteddaylabel "选择的天">
+<!ENTITY rf.options.list.reminder.filters.nextweek.label "下周">
+<!ENTITY rf.options.list.reminder.filters.nexttwoweeks.label "两周后">
+<!ENTITY rf.options.list.reminder.filters.upcomingReminders.label "所有即将到来的提醒">
+<!ENTITY rf.options.list.reminder.filters.upcomingTodos.label "所有即将到来的待办事项">
+<!ENTITY rf.options.list.reminder.filters.moreViews.label "更多视图...">
+<!ENTITY rf.options.file.location.label "本地 ReminderFox 文件位置">
+<!ENTITY rf.options.file.location.usedefault.label "使用默认">
+<!ENTITY rf.options.file.events.label "ReminderFox 事件文件">
+<!ENTITY rf.options.file.note.label "注意">
+<!ENTITY rf.options.file.note.unsaved "有未保存的事件！">
+<!ENTITY rf.options.file.note.saveit "请在使用此功能前保存事件。">
+<!ENTITY rf.options.file.note.retry "请点击[保存]并使用'Cntrl' + 'r'重试">
+<!ENTITY rf.options.importexport.description.label "导入或导出提醒和待办事项">
+<!ENTITY rf.options.importexport.import.label "导入">
+<!ENTITY rf.options.importexport.export.label "导出">
+<!ENTITY rf.options.importexportpreferences.label "导入和导出首选项">
+<!ENTITY rf.options.importexport.category.label "你可以选择为你导入的每个事件设置附加的分类。这有助于过滤和排序。例如，导入节日列表时，你可以为每个事件加一个'节日'的标签并快速过滤词分类得到节日的列表。">
+<!-- network -->
+<!ENTITY rf.options.list.reminder.lists.label "列表">
+<!ENTITY rf.options.list.reminder.lists.manage.label "管理列表">
+<!ENTITY rf.options.list.reminder.lists.button.add.label "&rf.add.addTodo.addbutton.label;">
+<!ENTITY rf.options.list.reminder.lists.button.remove.label "移除">
+<!ENTITY rf.options.list.reminder.lists.button.moveup.label "上移">
+<!ENTITY rf.options.list.reminder.lists.button.movedown.label "下移">
+<!ENTITY rf.options.list.reminder.lists.button.sortup.label "升序排列">
+<!ENTITY rf.options.list.reminder.lists.button.sortdown.label "降序排列">
+<!ENTITY rf.options.lists.description "你可以为提醒和待办事项添加附加的列表，它将被显示为一个独立的标签。你可以创建一个列表比如：电影(提醒将要上映的电影)、专辑(提醒将要发行的音乐),、生活用品(追踪你需要的物品) 或者任何其它可以作为列表的东西。你也可以在添加新列表时订阅到一个远程日历">
+<!ENTITY rf.options.lists.nameError "名称不能为 'ToDo's' 或者 'Reminders' 也不能包含 ',' 或 ':' ">
+<!ENTITY rf.options.lists.addedit "添加/编辑用户列表">
+<!-- Upload dialog -->
+<!ENTITY rf.options.synchronization.description.label "同步地址">
+<!ENTITY rf.options.synchronization.address.description "输入一个远程 reminderFox 文件的 FTP 或 WebDAV 地址。">
+<!ENTITY rf.options.synchronization.address.example.description "例如: ftp://www.mydomain.com/reminders.ics">
+<!ENTITY rf.options.synchronization.ftp.label "ftp">
+<!ENTITY rf.options.synchronization.http.label "http">
+<!ENTITY rf.options.synchronization.https.label "https">
+<!ENTITY rf.options.synchronization.delimiter.label "://">
+<!ENTITY rf.options.synchronization.username.label "用户名：">
+<!ENTITY rf.options.synchronization.password.label "密码：">
+<!ENTITY rf.options.synchronization.import "从网络导入">
+<!ENTITY rf.options.synchronization.export "导出到网络">
+<!ENTITY rf.options.synchronization.label "同步">
+<!ENTITY rf.options.synchronization.auto.label "自动与网络同步提醒。">
+<!ENTITY rf.options.synchronization.auto.description "选择该选项将自动保持本地的提醒和网络上的提醒同步。">
+<!-- Download dialog -->
+<!ENTITY rf.upload.tile.label "上传">
+<!-- Upcoming Reminders Label Options dialog -->
+<!ENTITY rf.download.tile.label "下载">
+<!-- Calendar -->
+<!ENTITY rf.upcoming.label.options.title.label "提醒标签选项">
+<!ENTITY rf.upcoming.label.options.label "标签">
+<!ENTITY rf.upcoming.label.reminder.description "提醒的描述">
+<!ENTITY rf.upcoming.label.long.day "星期序数(星期一、星期二等)">
+<!ENTITY rf.upcoming.label.short.day "周序数(周一、周二等)">
+<!ENTITY rf.upcoming.label.long.month "月序数(1 月、2 月等)">
+<!ENTITY rf.upcoming.label.short.month "月序数(一月、二月等)">
+<!ENTITY rf.upcoming.label.num.month "数字月序数">
+<!ENTITY rf.upcoming.label.date "月份中的日期">
+<!ENTITY rf.upcoming.label.long.year "完整年份(2005, 2006, 2007等)">
+<!ENTITY rf.upcoming.label.short.year "缩写年份(05, 06, 07等)">
+<!ENTITY rf.upcoming.label.timeuntil "距离事件发生的时间 (天、小时、分钟)">
+<!ENTITY rf.upcoming.label.time "提醒时间，如果提醒为全天事件则不显示">
+<!ENTITY rf.upcoming.label.days.until "距离提醒的天数">
+<!ENTITY rf.upcoming.label.column.variable "变量">
+<!ENTITY rf.upcoming.label.column.description "描述">
+<!-- Time names -->
+<!ENTITY calendar.week.number.label "WK">
+<!ENTITY calendar.year.previous "前一年">
+<!ENTITY calendar.year.next "下一年">
+<!ENTITY calendar.month.previous "前一个月">
+<!ENTITY calendar.month.next "下一个月">
+<!-- Month Names -->
+<!ENTITY time.0 "上午 12:00">
+<!ENTITY time.1 "上午 1:00">
+<!ENTITY time.2 "上午 2:00 ">
+<!ENTITY time.3 "上午 3:00">
+<!ENTITY time.4 "上午 4:00">
+<!ENTITY time.5 "上午 5:00">
+<!ENTITY time.6 "上午 6:00">
+<!ENTITY time.7 "上午 7:00">
+<!ENTITY time.8 "上午 8:00">
+<!ENTITY time.9 "上午 9:00">
+<!ENTITY time.10 "上午 10:00">
+<!ENTITY time.11 "上午 11:00">
+<!ENTITY time.12 "下午 12:00">
+<!ENTITY time.13 "下午 1:00">
+<!ENTITY time.14 "下午 2:00">
+<!ENTITY time.15 "下午 3:00">
+<!ENTITY time.16 "下午 4:00">
+<!ENTITY time.17 "下午 5:00">
+<!ENTITY time.18 "下午 6:00">
+<!ENTITY time.19 "下午 7:00">
+<!ENTITY time.20 "下午 8:00">
+<!ENTITY time.21 "下午 9:00">
+<!ENTITY time.22 "下午 10:00">
+<!ENTITY time.23 "下午 11:00">
+<!-- Day short names -->
+<!ENTITY month.1 "1 月">
+<!ENTITY month.2 "2 月">
+<!ENTITY month.3 "3 月">
+<!ENTITY month.4 "4 月">
+<!ENTITY month.5 "5 月">
+<!ENTITY month.6 "6 月">
+<!ENTITY month.7 "7 月">
+<!ENTITY month.8 "8 月">
+<!ENTITY month.9 "9 月">
+<!ENTITY month.10 "10 月">
+<!ENTITY month.11 "11 月">
+<!ENTITY month.12 "12 月">
+<!ENTITY month.1.MMM "一月">
+<!ENTITY month.2.MMM "二月">
+<!ENTITY month.3.MMM "三月">
+<!ENTITY month.4.MMM "四月">
+<!ENTITY month.5.MMM "五月">
+<!ENTITY month.6.MMM "六月">
+<!ENTITY month.7.MMM "七月">
+<!ENTITY month.8.MMM "八月">
+<!ENTITY month.9.MMM "九月">
+<!ENTITY month.10.MMM "十月">
+<!ENTITY month.11.MMM "十一月">
+<!ENTITY month.12.MMM "十二月">
+<!-- iCal Schedule  -->
+<!ENTITY day.1.DDD "周日">
+<!ENTITY day.2.DDD "周一">
+<!ENTITY day.3.DDD "周二">
+<!ENTITY day.4.DDD "周三">
+<!ENTITY day.5.DDD "周四">
+<!ENTITY day.6.DDD "周五">
+<!ENTITY day.7.DDD "周六">
+<!ENTITY day.1.name "星期日">
+<!ENTITY day.2.name "星期一">
+<!ENTITY day.3.name "星期二">
+<!ENTITY day.4.name "星期三">
+<!ENTITY day.5.name "星期四">
+<!ENTITY day.6.name "星期五">
+<!ENTITY day.7.name "星期六">
+<!-- Invitation, MAIL and ADDRESSBOOK -->
+<!ENTITY rf.schedule.scheduleinfo "日程安排">
+<!ENTITY rf.schedule.showall.attendees "显示所有参加者">
+<!ENTITY rf.schedule.organizer "组织者">
+<!ENTITY rf.schedule.thisisme "我的参与情况">
+<!ENTITY rf.schedule.attendees "参加者">
+<!ENTITY rf.schedule.invitation.accept "接受">
+<!ENTITY rf.schedule.invitation.decline "拒绝">
+<!-- Views -->
+<!ENTITY mail.addreminder "添加一个提醒...">
+<!ENTITY mail.send.withreminder "发送">
+<!ENTITY mail.send.withreminder.tooltip "发送消息并添加 ReminderFox 事件">
+<!ENTITY mail.reminder4mail.open "打开关联的 ReminderFox 事件">
+<!ENTITY mail.send.reminder.invitation.check "将提醒作为邀请/日程安排通过邮件发送">
+<!ENTITY mail.send.reminder.invitation.organizer "组织者">
+<!ENTITY mail.send.reminder.invitation.attendees "参加者">
+<!ENTITY mail.send.reminder.invitation.title "发送选中的事件/邀请">
+<!ENTITY mail.sendexport.reminder.invitation.title "发送/导出">
+<!ENTITY mail.sendexport.reminder.send "发送/邀请">
+<!ENTITY mail.sendexport.reminder.sender "发送者">
+<!ENTITY mail.sendexport.reminder.export "导出">
+<!ENTITY mail.sendexport.reminder.exportto "导出到文件">
+<!ENTITY mail.sendexport.reminder.export.file "选择导出文件">
+<!ENTITY mail.send.reminder.invitation.aBook "打开通讯录选择要邀请的人">
+<!ENTITY mail.send.reminder.invitation.mail "发送邀请/事件及打开通讯录使用的邮件应用程序：">
+<!ENTITY mail.send.reminder.invitation.comment "与邀请/日程安排一起发送的评论">
+<!ENTITY mail.send.reminder.invitation.browse "浏览并选择邮件应用程序位置">
+<!ENTITY mail.send.reminder.invitation.reload "已选择邮件应用程序。使用浏览按钮设置新位置。">
+<!ENTITY mail.send.reminder.invitation.attendees.tooltip "参加者(用英文逗号分隔的电子邮件地址)">
+<!ENTITY mail.ical.selectReplyAttendee.description "[回复]的发送者不是此日程的参加者。如果此[回复]来自列出的参加者，请选择并点击[确定]，否则点击[取消]。">
+<!ENTITY mail.ical.Invit "邀请">
+<!ENTITY mail.ical.invitation.attendees "从通讯录中添加一个参加者">
+<!ENTITY mail.ical.invitation.attendees.paste "使用[粘贴]从剪贴板中添加一个有效的电子邮件地址到“更多参加者”。">
+<!ENTITY mail.send.withreminder.selection0 "选中的邮件">
+<!ENTITY mail.send.withreminder.selection1 "ReminderFox 列表">
+<!ENTITY mail.send.withreminder.selection2 "选中的邮件与提醒的引用关系：">
+<!ENTITY mail.send.withreminder.selection3 "选择一个提醒并点击">
+<!ENTITY mail.send.withreminder.replyAttendee "日程安排/邀请 - 选择参加者">
+<!ENTITY mail.send.reminder.reference.title "提醒引用列表">
+<!-- CalDAV -->
+<!ENTITY rf.views.title "ReminderFox - 视图编辑器">
+<!ENTITY rf.views.label "编辑视图">
+<!ENTITY rf.views.view.header "视图">
+<!ENTITY rf.views.ttt.addView "添加新视图">
+<!ENTITY rf.views.ttt.removeView "移除选择的视图">
+<!ENTITY rf.views.criteria.header "选择视图的条件">
+<!ENTITY rf.views.ttt.addCriteria "添加一个新条件">
+<!ENTITY rf.views.ttt.removeCriteria "移除选中的“条件”">
+<!ENTITY rf.views.ttt.sortCriteria "排列视图/条件">
+<!ENTITY rf.views.ttt.confirm "确认条件">
+<!ENTITY rf.views.ttt.saveclose "保存并关闭编辑器。">
+<!ENTITY rf.views.ttt.editor "管理视图...">
+<!ENTITY rf.views.ttt.noviews "重置视图。">
+<!ENTITY rf.views.learn.link.text "学习使用视图...">
+<!ENTITY rf.views.infoHow1 "...关于视图和'条件'">
+<!ENTITY rf.views.infoHow2 "怎样输入一个'条件'">
+<!ENTITY rf.view.add.label "视图名称">
+<!ENTITY rf.views.viewName "输入名称：">
+<!ENTITY rf.view.noview "无视图">
+<!ENTITY rf.views.datespan.begin "时间范围开始">
+<!ENTITY rf.views.datespan.end "时间范围结束">
+<!ENTITY rf.views.datespan.past "过去">
+<!ENTITY rf.views.datespan.future "将来">
+<!ENTITY rf.views.datespan.days "天">
+<!ENTITY rf.views.datespan.weeks "星期">
+<!ENTITY rf.views.datespan.months "月">
+<!ENTITY rf.views.datespan.years "年">
+<!ENTITY rf.calendar.year.previous "前一年">
+<!ENTITY rf.calendar.year.next "后一年">
+<!ENTITY rf.add2Textbox.info1 "双击列表框中的行添加其到文本框光标所在位置">
+<!ENTITY rf.add2Textbox.info2 "...怎样编辑文本框">
+<!ENTITY rf.reminderImportwCategory "提醒导入和分类设置">
+<!ENTITY rf.import.unsaved "你取消了保存提醒。请保存你的提醒列表并再次导入。">
+<!ENTITY rf.import.items "要导入的提醒数据有：">
+<!ENTITY rf.import.categories.select "为导入的提醒选择分类">
+<!ENTITY rf.import.categories.gonone "无">
+<!ENTITY rf.import.categories "分类">
+<!ENTITY rf.calendar.foxy "火狐日历菜单">
+<!ENTITY rf.calendar.menu.layout.change "更改列表/日历布局">
+<!ENTITY rf.calendar.menu.options.open "打开选项对话...">
+<!ENTITY rf.calendar.menu.options.userlists "添加/编辑用户列表...">
+<!ENTITY rf.calendar.menu.options.docu "ReminderFox 文档(在线)">
+<!ENTITY rf.calendar.menu.options.newcal "新日历文档(在线)">
+<!ENTITY rf.calendar.menu.toggleSearchFilter "切换搜索和过滤/视图">
+<!ENTITY rf.calendar.menu.gotodate "转到日期">
+<!ENTITY rf.calendar.menu.revertnewandchanges "还原所有事件和更改">
+<!ENTITY rf.calendar.menu.savenewandchanges "保存所有新事件和更改">
+<!ENTITY rf.calendar.menu.save "保存">
+<!ENTITY rf.calendar.picker.today "今天">
+<!ENTITY rf.calendar.add.event2list "将事件添加到选中的列表">
+<!ENTITY rf.calendar.layout.menu "选择列表/日历布局...">
+<!ENTITY rf.calendar.layout.ListCalendar "列表和日历">
+<!ENTITY rf.calendar.layout.List "列表">
+<!ENTITY rf.calendar.layout.Calendar "日历">
+<!--ENTITY rf.caldav.gcal.privat "Google 私人日历(事件)"-->
+<!ENTITY rf.caldav.remoteCalendar "远程日历">
+<!ENTITY rf.caldav.dialog.title "&rf.caldav.remoteCalendar; 账户控制">
+<!ENTITY rf.caldav.documentation.i "在文档中查看“&rf.caldav.remoteCalendar;”的使用和设置方法">
+<!ENTITY rf.caldav.serverselection "从列表中选择&rf.caldav.remoteCalendar;/事件服务器">
+<!ENTITY rf.caldav.selectserver "选择&rf.caldav.remoteCalendar;">
+<!--ENTITY rf.caldav.gcal.group "Google 群组日历(事件)"-->
+<!ENTITY rf.caldavupdate.next.calendars.label "Next Calendars">
+<!ENTITY rf.caldavupdate.configure.calendar.label "Configure Calendar">
+<!ENTITY rf.caldavupdate.skip.this.calendar.tooltip "Skip this Calendar; proceed synchronizing with other calendars.">
+<!ENTITY rf.caldavupdate.open.options.sync.tooltip "Open 'Options/Sync' to update the Calendar setting.">
+<!--ENTITY rf.caldav.oc.default "默认日历"-->
+<!--ENTITY rf.caldav.oc.additional "其他日历"-->
+<!--ENTITY rf.caldav.valid.account "使用有效的远程日历账户 ID 替换 - 参见(I)"-->
+<!--ENTITY rf.caldav.account.letter "“Calendar_ID” 字母；默认“日历账户名称”或用户条目的“Calendar_ID”框中首字母。"-->
+<!--ENTITY rf.caldav.delete.this.account "删除此账户"-->
+<!ENTITY rf.caldav.valid.calendar "使用有效的远程日历 ID 替换 - 参见(I)">
+<!--ENTITY rf.caldav.sync.docu "查看相关文档"-->
+<!ENTITY rf.caldav.account.userletter "“Calendar_ID”框；输入一个用户自定义的“Calendar_ID”字母">
+<!ENTITY rf.caldav.account.name "“远程日历账户名称”首字母默认将被用作“Calendar_ID”。">
+<!ENTITY rf.caldav.pw "显示/隐藏密码">
+<!ENTITY rf.caldav.check.account "检察账户">
+<!ENTITY rf.caldav.delete.account "启用以删除此账户">
+<!--ENTITY rf.caldav.enable.account "Enable Account"-->
+<!ENTITY rf.caldav.sync.support "同步&rf.caldav.remoteCalendar;/CalDAV">
+<!ENTITY rf.caldav.sync.setup "同步设置/编辑">
+<!ENTITY rf.caldav.sync.help "同步帮助">
+<!ENTITY rf.caldav.sync.help.status "阅读怎样设置带有远程日历的 Reminderfox 详情。">
+<!ENTITY rf.caldav.sync.all "同步所有“活动的”&rf.caldav.remoteCalendar;账户">
+<!--ENTITY rf.caldav.use.setup "在文档中查看“配置远程日历”"-->
+<!ENTITY rf.caldav.sync.about "关于同步">
+<!ENTITY rf.caldav.remote.server "远程服务器(FTP/HTTP)">
+<!ENTITY rf.caldav.calendars "远程日历">
+<!ENTITY rf.caldav.remindertype "提醒类型">
+<!ENTITY rf.caldav.name "名称">
+<!ENTITY rf.caldav.username "用户名">
+<!ENTITY rf.caldav.password "密码">
+<!ENTITY rf.caldav.definition.title "&rf.caldav.remoteCalendar;账户定义">
+<!ENTITY rf.caldav.desc1 "Reminderfox 提供了两种同步服务的工作方式：">
+<!ENTITY rf.caldav.desc2 "所有 Reminderfox 事件/待办事项作为一个单独文件保存在服务器上">
+<!ENTITY rf.caldav.desc3 "每个事件/待办事项单独保存；这允许服务/设备独立地访问日历详情。">
+<!ENTITY rf.caldav.desc4 "部分日历服务对 Reminderfox 进行测试并且在账户定义对话中提供：">
+<!ENTITY rf.caldav.desc5 "参见文档查看更多详情和如何配置。">
+<!ENTITY rf.caldav.desc6 "打开远程日历(CalDAV 服务)文档">
+<!ENTITY rf.caldav.desc7 "重要提示">
+<!ENTITY rf.caldav.desc8 "启用任何&rf.caldav.remoteCalendar;将会禁用“远程服务器”及其设置。">
+<!-- CalDAVv2 -->
+<!ENTITY rf.caldav.nodefault "无(使用本地日历)">
+<!ENTITY rf.caldav.select.default.account "添加事件时使用默认远程日历">
+<!ENTITY rf.caldav.change.default.account "选择默认远程日历">
+<!ENTITY rf.caldav.select.account "选择一个 CalDAV 账户">
+<!-- ...... ImportHandling ..... -->
+<!ENTITY rf.caldav.add.calendar "添加新日历">
+<!ENTITY rf.calDav.davFile "Reminderfox 数据保存在 ICS 文件中，远程日历详情保存在附带的文件中(扩展名为.ics.dav)。">
+<!ENTITY rf.caldav.color.reset "重置账户颜色">
+<!ENTITY rf.caldav.color.preset "更改账户颜色预设">
+<!ENTITY rf.caldav.calendar.default "添加事件时的默认远程账户">
+<!ENTITY rf.caldav.calendar.setup "设置/编辑日历详情">
+<!ENTITY rf.caldav.calendar.activate "激活“&rf.caldav.remoteCalendar;”将自动发送新建或编辑过的提醒到远程系统并同步本地与远程提醒。请在文档中查看详情。">
+<!ENTITY rf.caldav.calendar.syncto "同步到&rf.caldav.remoteCalendar;">
+<!--   ....... Options ............. -->
+<!ENTITY rf.help.docupages "打开文档详细帮助页面。">
+<!ENTITY rf.caldav.google.request "输入 Google 账户名并使用[请求]。会打开一个 Google 页面来获取登录 token。复制 token 并在此使用[粘贴]继续。">
+<!ENTITY rf.caldav.account.example "参看例子：">
+<!ENTITY rf.caldav.google.request.requires "Google 授权请求 -- 需要[接受]">
+<!ENTITY rf.caldav.google.auth.token "Google 授权 Token -- 如何复制">
+<!ENTITY rf.caldav.select.calendar "选择日历">
+<!ENTITY rf.caldav.calndr.name "日历名称">
+<!ENTITY rf.caldav.login.correct "输入正确的登录账号和 ID 来添加账户。">
+<!ENTITY rf.caldav.account.color "颜色">
+<!ENTITY rf.caldav.account.color.ttt "设置在主对话列表中此账户所使用的颜色。">
+<!ENTITY rf.caldav.options.docu "查看文档查看如何设置远程日历">
+<!-- ...... ImportHandling ..... -->
+<!ENTITY rf.importing.title "使用 Reminderfox 添加/订阅">
+<!ENTITY rf.import.linkTitle "标题/链接">
+<!ENTITY rf.import.reminders.link "提醒链接为：">
+<!ENTITY rf.import.reminders.found "已找到">
+<!ENTITY rf.import.reminders.imported "已导入">
+<!ENTITY rf.import.reminders.existed "已存在">
+<!ENTITY rf.import.documentation "查看文档查看如何导入/订阅提醒">
+<!ENTITY rf.import.howtohandle "怎样进行导入？">
+<!ENTITY rf.import.add "添加">
+<!ENTITY rf.import.reminders.importing "进行提醒导入后，提醒将被添加到 Reminderfox 列表中。">
+<!ENTITY rf.import.import.added "导入的事件和待办事项将被添加到 Reminderfox。重复项目将被忽略或者只导入较新的项目。">
+<!ENTITY rf.import.import.finished "导入完成">
+<!ENTITY rf.import.duplicates "重复">
+<!ENTITY rf.import.ignore "忽略">
+<!ENTITY rf.import.newer "更新">
+<!ENTITY rf.import.newCalendar "新日历">
+<!ENTITY rf.import.newCalendar.path "新日历路径">
+<!ENTITY rf.import.filePath "如果需要，更改新日历的文件路径。">
+<!ENTITY rf.import.new "新建">
+<!ENTITY rf.import.subscribe "订阅">
+<!ENTITY rf.import.subscription.info "建立一个链接到外部事件数据的 Reminderfox 用户列表。外部页面的更改将显示在 Reminderfox 列表中。">
+<!ENTITY rf.import.subscription.list "输入订阅列表名">
+<!ENTITY rf.import.category.setting "分类设置">
+<!ENTITY rf.import.category.info "所有导入的事件和待办事项都可以天剑一个“分类”属性。">
+<!ENTITY rf.import.import.ics "使用 iCal/ICS 导入新日历将重建日历。">
+<!ENTITY rf.import.import.calendar "已存在的日历将被关闭并保存。">
+<!--   ....... Options ............. -->
+<!ENTITY rf.options.reminderfox "Reminderfox 数据">
+<!ENTITY rf.options.dataLocations "打开文档查看数据位置、导入/导出提醒和“从 Reminderfox 备份还原”">
+<!ENTITY rf.options.browseICS "浏览提醒(ICS)数据文件">
+<!ENTITY rf.options.importExport "导入/导出提醒">
+<!ENTITY rf.options.openFileDialog "打开文档查看导入/导出提醒数据和首选项">
+<!ENTITY rf.options.file.recover "从 Reminderfox 备份文件还原">
+<!ENTITY rf.options.file.Pick "选择一个 .bak 文件，从之前的备份[还原]">
+<!ENTITY rf.options.calendarDefaults "日历默认值">
+<!ENTITY rf.options.documentation.Base "打开文档查看基本日历设置。">
+<!ENTITY rf.options.file.backup "备份带日期/时间戳的提醒">
+<!ENTITY rf.options.file.backup.tooltip "Save reminder data to backup location">
+<!ENTITY rf.options.alarms "闹钟预设">
+<!ENTITY rf.options.alarm.dialogs "闹钟对话">
+<!ENTITY rf.options.date.format "数据格式">
+<!ENTITY rf.options.date.edit "编辑数据格式">
+<!ENTITY rf.options.layout.Defaults "外观默认值">
+<!ENTITY rf.options.layout.help "查看提醒/待办事项/列表标签文档">
+<!ENTITY rf.options.system.menu "使用主菜单或者应用(Firefox/Thunderbird)窗口中的附加组件栏打开 Reminderfox">
+<!ENTITY rf.options.smartFoxy.display.label "Display Foxy Toolbar Icon">
+<!ENTITY rf.options.smartFoxy "显示 Foxy 上的提醒个数">
+<!ENTITY rf.options.smartFoxy.none "不显示，隐藏">
+<!ENTITY rf.options.smartFoxy.todays "仅显示今天的">
+<!ENTITY rf.options.smartFoxy.todaysUpcoming "显示今天和即将发生的(默认)">
+<!ENTITY rf.options.smartFoxy.todaytext "Display text of today's reminders">
+<!ENTITY rf.options.smartFoxy.badge "Foxy 上可以显示今天/即将发生的提醒个数。今天有重要提醒时显示为红色。">
+<!ENTITY rf.options.bow.description "Select on which toolbar to display">
+<!ENTITY rf.options.bow "在状态栏上显示“弓形”图标和文本">
+<!ENTITY rf.options.bow.text "限制文本长度为">
+<!ENTITY rf.options.bow.position.label "Set position where to display on bar">
+<!ENTITY rf.options.bars "附加组件栏/状态栏显示“弓形”图标和今天的提醒。">
+<!ENTITY rf.options.printing "打印">
+<!ENTITY rf.options.printing.agenda "关于“打印”提醒和待办事项和如何获取“每日日程”的文档。">
+<!ENTITY rf.options.webMail "网页和电子邮件的提醒">
+<!ENTITY rf.options.webMail.help "为网页和电子邮件消息使用 Reminderfox。Reminderfox 可以在 Thunderbird 下工作。">
+<!ENTITY rf.options.main "主对话预设">
+<!ENTITY rf.options.main.ttt "定制主对话">
+<!ENTITY rf.options.main.dialog.Preselections "初始选中的列表">
+<!ENTITY rf.options.addEdit "添加/编辑对话预设">
+<!ENTITY rf.options.more "编辑“更多&gt;&gt;”首选项">
+<!ENTITY rf.options.ttt "Foxy 工具提示">
+<!ENTITY rf.options.editTodays "编辑“今天”标签">
+<!ENTITY rf.options.editUpcoming "编辑“即将发生”标签">
+<!ENTITY rf.options.alertSlider "Foxy 警告滑块">

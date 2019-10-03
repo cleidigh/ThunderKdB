@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<!-- //gW  height changed 330 to 430 ??? maybe with scrolling ?? -->
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-defaultMoreOptions"
+		persist="screenX screenY"
+		windowtype="window:defaultMoreOptions"
+		title="&rf.moreoptions.list.reminder.more.header.label;"
+		maxwidth="550px" minheight="200px"
+		onload="reminderFox_loadDefaultMoreWindow();"  >
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/options/reminderFoxOptions.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();"/>
+	</keyset>
+
+	<vbox id="reminderFoxVbox" flex="1">
+		<description>&rf.moreoptions.list.reminder.more.description.label;</description>
+		<hbox align="center">
+			<label id="upcomingLabelOptionsDescLabel" value="&rf.moreoptions.list.reminder.more.header.label;" />
+			<textbox width="300px" flex="1" id="defaultMoreText"  />
+		</hbox>
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3" align="center"/>
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2" align="center"/>
+
+		<hbox>
+			<separator class="thin"/>
+			<tree  id="rf-tree-vars" rows="11" flex="1">
+				<treecols id="rf-tree-columns">
+					<treecol id="rf-col-variable" label="&rf.upcoming.label.column.variable;" primary="true"  ignoreincolumnpicker="true" persist="hidden width ordinal" flex="2"/>
+					<splitter class="tree-splitter"/>
+					<treecol id="rf-col-description" label="&rf.upcoming.label.column.description;"  ignoreincolumnpicker="true" persist="hidden width ordinal" flex="4"/>
+				</treecols>
+				<treechildren id="rf-upcoming-label-tree-items" ondblclick="reminderfox.core.add2Textbox(this, 'defaultMoreText', ',');" >
+					<treeitem>
+						<treerow>
+							<treecell label="location"/>
+							<treecell label="&rf.moreoptions.list.reminder.more.location.label;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="url"/>
+							<treecell label="&rf.moreoptions.list.reminder.more.URL.label;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="category"/>
+							<treecell label="&rf.moreoptions.list.reminder.more.category.label;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="repeat"/>
+							<treecell label="&rf.moreoptions.list.reminder.more.repeat.label;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="alarm"/>
+							<treecell label="&rf.moreoptions.list.reminder.more.alarm.label;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="important"/>
+							<treecell label="&rf.moreoptions.list.reminder.more.important.label;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="remindUntilComplete"/>
+							<treecell label="&rf.moreoptions.list.reminder.more.remindUntilComplete.label;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="showInTooltip"/>
+							<treecell label="&rf.moreoptions.list.reminder.more.showInTooltip.label;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="endDate"/>
+							<treecell label="&rf.moreoptions.list.reminder.more.endDate.label;"/>
+						</treerow>
+					</treeitem>
+				</treechildren>
+			</tree>
+		</hbox>
+
+		<hbox align="center">
+			<spacer width="10px"/>
+			<vbox>
+				<image class="infoButton"
+				tooltiptext="&rf.add2Textbox.info1;" />
+			</vbox>
+
+			<spacer class="reminderFox-btnspacer" flex="1"/>
+			<button label="&rf.ok;" default="true"  oncommand="reminderFox_saveDefaultMoreLabel();"/>
+			<button label="&rf.cancel;"  oncommand="window.close();"/>
+		</hbox>
+   </vbox>
+
+</window>

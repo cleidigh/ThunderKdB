@@ -1,0 +1,587 @@
+<?xml version="1.0"?>   <!-- optionsCalDAVoverlay.xul -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!--?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"? -->
+<?xml-stylesheet href="chrome://reminderfox/skin/toolbar.css"  type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window 
+[
+	<!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="reminderFox-manage-caldav">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVrequester.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVcalls.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/HTTP.js" />
+
+	<vbox id="reminderFoxNetworkTab">
+
+		<tabbox id="content-tabs" flex="2">
+			<tabs>
+				<tab id="panel1" label="&rf.caldav.sync.about;" linkedpanel="infoPanel" />
+				<tab id="panel2" label="&rf.caldav.calendars;" linkedpanel="calDAV_calendars" />
+				<tab id="panel3" label="&rf.caldav.remote.server;" linkedpanel="reminderFoxVbox4" />
+			</tabs>
+
+			<tabpanels flex="2">
+
+				<vbox width="300px" id="infoPanel">
+					<description>&rf.caldav.desc1;
+					</description>
+					<spacer height="10px" />
+
+					<label value="&rf.caldav.calendars;" style="font-weight: bold; " />
+					<description>&rf.caldav.desc3;
+					</description>
+
+					<description>&rf.caldav.desc4;
+					</description>
+					<vbox id="testedCalDAVservers" />	<!--build by: rmFx_CalDAV_testedServer (urlList, "testedCalDAVservers") -->
+
+					<hbox>
+						<description width="400px">&rf.caldav.desc5;</description>
+						<spacer flex="1"/>
+						<label align="center" class="reminderfox-moreLabel" bold="true"
+							tooltiptext="&rf.caldav.desc6;"
+							onclick="reminderfox.util.docRmFX('remote-calendar-n/');" 
+							value="&rf.main.help.label; ..." />
+					</hbox>
+
+					<spacer height="10px" />
+
+					<label id="rServer" value="&rf.caldav.remote.server;" style="font-weight: bold; "
+						value1="&rf.caldav.remote.server;" />
+					<description>&rf.caldav.desc2;
+					</description>
+
+					<spacer height="10px" />
+
+					<label value="&rf.caldav.desc7;" style="font-weight: bold; " />
+					<description>&rf.caldav.desc8;
+					</description>
+
+					<spacer height="10px" />
+
+				</vbox>
+
+				<!-- this is the standard code for the tab 'Remote' -->
+				<vbox id="reminderFoxVbox4" flex="1">
+					<groupbox id="reminderFox-synchronization">
+						<caption label="&rf.options.synchronization.description.label;" />
+						<label value="&rf.options.synchronization.address.description;" />
+						<label value="&rf.options.synchronization.address.example.description;" />
+
+						<hbox align="center">
+							<menulist id="reminderFox-proto">
+								<menupopup>
+									<menuitem label="&rf.options.synchronization.ftp.label;"
+										value="0" />
+									<menuitem label="&rf.options.synchronization.http.label;"
+										value="1" />
+									<menuitem label="&rf.options.synchronization.https.label;"
+										value="2" />
+								</menupopup>
+							</menulist>
+							<label id="reminderFox-delimiter" value="&rf.options.synchronization.delimiter.label;" />
+							<textbox id="reminderFox-text-address" flex="1" onchange="reminderFox_ValidateSynchronization()"/>
+						</hbox>
+
+						<hbox align="center">
+							<label id="reminderFox-username" value="&rf.options.synchronization.username.label;" />
+							<spacer width="10px" />
+							<textbox id="reminderFox-text-username" />
+
+							<label id="reminderFox-password" value="&rf.options.synchronization.password.label;" />
+							<spacer width="10px" />
+							<textbox id="reminderFox-text-password" type="password" />
+						</hbox>
+						<hbox>
+							<button id="reminderFox_network_import_settings" label="&rf.options.synchronization.import;"
+								flex="1" oncommand="downloadReminders()" />
+							<button id="reminderFox_network_export_settings" label="&rf.options.synchronization.export;"
+								flex="1" oncommand="uploadReminders()" />
+						</hbox>
+					</groupbox>
+					<groupbox id="reminderFox-network-sync-group" style="width: 300px;">
+						<caption>
+							<label id="reminderFox-sync-group-label" value="&rf.options.synchronization.label;" />
+						</caption>
+						<checkbox id="reminderFox-network-sync" label="&rf.options.synchronization.auto.label;" />
+						<description id="reminderFox-network-auto-desc">&rf.options.synchronization.auto.description;
+						</description>
+					</groupbox>
+				</vbox>
+
+
+
+				<vbox id="calDAV_calendars"> <!-- CalDAV Calendars -->
+
+					<vbox id="rmFx-CalDAV-addNew">
+						<vbox>
+							<hbox align="center">
+								<spacer width="10px" />
+								<vbox>
+									<button label="&rf.categories.list.button.add;" onclick="rmFx_calDAV_calendarAdd()"
+										tooltiptext="&rf.caldav.add.calendar;" />
+								</vbox>
+
+								<spacer flex="1" />
+								<label align="center" class="reminderfox-moreLabel" bold="true"
+									onclick="reminderfox.util.docRmFX('remote-calendar-n/#configure');" 
+									value="&rf.main.help.label; ..." tooltiptext="&rf.caldav.options.docu;"/>
+							</hbox>
+						</vbox>
+
+						<vbox>
+							<hbox align="center">
+								<label value="&rf.caldav.select.default.account;" />
+
+								<menulist id="rmFx_CalDAV_syncDefaultAccount"
+									tooltiptext="&rf.caldav.change.default.account;">
+									<menupopup id="rmFx_CalDAV_syncDefaultSelected"
+										onpopupshowing="rmFx_CalDAV_accountDefault_Selecting(this)">
+										<menuitem id="defaultIsReminders" label="&rf.caldav.nodefault;"
+											tooltiptext="&rf.caldav.select.account;" selected="true" />
+										<menuitem label="0" value="0" tooltiptext="" />
+										<menuitem label="1" value="1" tooltiptext="" />
+									</menupopup>
+								</menulist>
+							</hbox>
+						</vbox>
+
+					</vbox>
+
+				</vbox>
+
+			</tabpanels>
+
+		</tabbox>
+
+
+		<!-- PANEL for picture -->
+		<panel id="rmFx_pic_panel"
+			onmouseleave="document.getElementById('rmFx_pic_panel').hidePopup();">
+
+			<label id="rmFx_picture_label"/>
+			<hbox>
+				<image id="rmFx_picture_src"/>
+			</hbox>
+		</panel>
+
+	</vbox>
+
+
+	<script type="application/x-javascript"><![CDATA[
+
+		var calDAVaccounts;
+
+		/**
+		 * En-/disable a calendar for CalDAV
+		 */
+		function rmFx_calDAV_Toggle(xthis) {
+		//-------------------------------------------
+			var calendars = document.getElementById("calDAV_calendars");
+
+			var elem = xthis.parentElement.parentElement;
+
+			elem.querySelector("#calDAV_ID").attributes['status'].value = !xthis.checked;
+			elem.querySelector(".calDAV_Name").attributes['status'].value = !xthis.checked;
+			elem.querySelector(".calDAV_Url").attributes['status'].value = !xthis.checked;
+
+			// if the account is disabled, we need to recheck for the 'default' account
+			// so here we reset to 'Reminders'
+			if (xthis.checked) {
+				document.getElementById("rmFx_CalDAV_syncDefaultAccount").selectedIndex=0;
+			}
+
+
+			// [ Apply ] button has to be activated so changes will be stored to prefs
+			document.getElementById("reminderFox-apply").disabled = true;
+		}
+
+		/**
+		 * Add a new calendar with calling the Edit dialog
+		 * On return check calendarID, '%%' means the CANCEL was pressed
+		 */
+		function rmFx_calDAV_calendarAdd() {
+		//-------------------------------------------
+			if (reminderfox.core.checkModified()) return;
+
+			var callOptions = {
+				Active: true,
+				Typ:    'VEVENT',
+				ID:     '?',
+
+				Name:   "{" + "Calendar Name" + "}",
+				Color:  "",
+
+				Url:    "",
+				Login:  "",
+				isNew:  true,
+				accounts :      this.calDAVaccounts
+			};
+			window.openDialog("chrome://reminderfox/content/caldav/calDAVedit.xul", 
+				"reminderFox-editServer", "chrome,resizable,modal", callOptions);
+
+			if (!((callOptions.ID == "%%") || (callOptions.ID == "?"))) 
+				rmFx_calDAV_AddAccount (this.calDAVaccounts, callOptions.ID, callOptions);
+
+			// check if only one remote calendar, if yes, acitvate it as the default 
+			// for adding new events
+			rmFx_CalDAV_accountDefault_Selecting("");
+		}
+
+		/**
+		 *  Open the CalDAV Setup/Edit dialog
+		 *  @param {object} xthis: account definition passed with edit or null 
+		 *  @param {object} newCalendar: if no first param a new calendar is defined
+		 */
+		function rmFx_calDAV_Configure(xthis) {
+		//-------------------------------------------
+			var style;
+
+			var elem = xthis.parentNode;
+
+			var oldID = elem.querySelector("#calDAV_ID").value;
+			var callOptions = {
+				Active: elem.querySelector(".calDAV_Active").checked,
+				ID:     elem.querySelector("#calDAV_ID").value,
+
+				Name:   elem.querySelector(".calDAV_Name").value,
+				Color:  elem.querySelector(".calDAV_Name").getAttribute('color'),
+				calendarColor:  elem.querySelector("#calDAV_COLOR").getAttribute('calendarColor'),
+
+				Url:    elem.querySelector(".calDAV_Url").value,
+				Typ:    elem.querySelector(".calDAV_Url").getAttribute('typ'),
+				Login:  elem.querySelector(".calDAV_Login").value,
+
+				accounts :      this.calDAVaccounts
+			};
+
+			window.openDialog("chrome://reminderfox/content/caldav/calDAVedit.xul", 
+				"reminderFox-editServer", "chrome,resizable,modal", callOptions);
+
+			// check if 'Cancel'  was selected
+			if (callOptions.ID == "%%") return;
+
+			if (callOptions.ID != oldID) {
+				reminderfox.calDAV.accounts = reminderfox.util.removeObjectFromObject(reminderfox.calDAV.accounts, oldID);
+			}
+
+			elem.querySelector("#calDAV_ID").value = callOptions.ID;
+
+			elem.querySelector(".calDAV_Active").checked = callOptions.Active;
+
+			var aColor = (callOptions.calendarColor);
+			elem.querySelector("#calDAV_COLOR").setAttribute("style", 
+				"background-color:" + aColor + ";border: green 1px solid;");
+			elem.querySelector("#calDAV_COLOR").setAttribute('tooltiptext', 
+				"Account Color: " + aColor + " (Based on remote calendar)");
+			elem.querySelector("#calDAV_COLOR").setAttribute('calendarColor', aColor);
+
+			elem.querySelector(".calDAV_Name").value = callOptions.Name;
+			elem.querySelector(".calDAV_Name").setAttribute('tooltiptext', callOptions.Url);
+
+			elem.querySelector(".calDAV_Url").value	= callOptions.Url;
+			elem.querySelector(".calDAV_Url").setAttribute('typ',callOptions.Typ);
+			elem.querySelector(".calDAV_Login").value	= callOptions.Login;
+
+			// [ Apply ] button has to be activated so changes will be stored to prefs
+			document.getElementById("reminderFox-apply").disabled = false;
+		}
+
+
+		/**
+		 *  Delete a selected account entry from dialog and also delete the
+		 *  account details (url, name, pw) from pw manager
+		 */
+		function rmFx_calDAV_Remove(xthis) {
+		//-------------------------------------------
+			var elem = xthis.previousSibling.previousSibling;
+			var calendarName = elem.querySelector(".calDAV_Name").value;
+			var calendarID   = elem.querySelector(".calDAV_ID").value;
+
+			// check if unsaved events --> ask user to save them before hand 
+			if (reminderfox.core.checkModified()) return;
+
+			var msg = reminderfox.string("rf.calDav.edit.remove.msg");
+			var title = reminderfox.string("rf.calDav.edit.remove") + " [" + calendarID + "] " + calendarName;
+			var button0 = reminderfox.string("rf.calDav.edit.remove.yes");
+			var button1 = reminderfox.string("rf.button.cancel");
+			var buttonPressed = reminderfox.util.PromptUser(msg, title, button0, button1, 16777216 /*BUTTON_POS_1_DEFAULT*/);
+			if (buttonPressed == 1) return;	// Cancel pressed
+
+
+			reminderFox_deleteAccount({
+				ljURL :    elem.querySelector(".calDAV_Url").value,
+				username : elem.querySelector(".calDAV_Login").value
+			});
+
+			var calendars = document.getElementById("calDAV_calendars");
+			var n = calendars.childElementCount -1;
+			if (n >1) {
+				for (var i=0; i < n; i++) {
+					if (calendars.children[i].children[0].children[0].children[2].value == calendarName) {
+						calendars.children[i].hidden = true;
+						calendars.children[i].setAttribute('toDelete','true');
+						break;
+					}
+				}
+
+			} else {
+				// there is only one entry, delete that one
+				calendars.children[0].hidden = true;
+				calendars.children[0].setAttribute('toDelete','true');
+			}
+
+			// if the account is the 'default', we need to recheck for the 'default' account
+			// so here we reset to 'Reminders'
+			if (document.getElementById("rmFx_CalDAV_syncDefaultAccount").label == calendarName) {
+				document.getElementById("rmFx_CalDAV_syncDefaultAccount").selectedIndex=0;
+			}
+
+			// [ Apply ] button has to be activated so changes will be stored to prefs
+
+			//document.getElementById("reminderFox-apply").disabled = false;
+			// ** DISABLED  Because we change the events and can't revert that!
+			rmFx_CalDAV_removeCalDAVentries(calendarID, calDAVaccounts);
+
+		}
+
+
+		/**
+		 * Add calendar templates to the dialog,
+		 * called from Options tab:Sync  (_calDAVaccounts has details for all accounts)
+		 */
+		function rmFx_calDAV_AddNew(_calDAVaccounts) {
+		//-------------------------------------------
+			calDAVaccounts = _calDAVaccounts;
+			reminderfox.colorMap.setup();
+
+			var calDAV = [];
+			calDAV.active = false;
+			calDAV.count = 0;
+			for (var account in _calDAVaccounts) {
+				rmFx_calDAV_AddAccount(_calDAVaccounts, account);
+				if (_calDAVaccounts[account].Active === true) calDAV.active = true;
+				calDAV.count ++;
+			}
+			return calDAV;
+		}
+
+		function rmFx_calDAV_AddAccount (accounts, accountID, newAccount) {
+		//-------------------------------------------
+		var nextAccount, style, tboxName, button;
+
+		if (newAccount) {nextAccount = newAccount;}
+		else { 
+			nextAccount = accounts[accountID];
+		}
+
+		reminderfox.util.Logger('calDAV', "  [rmFx_calDAV_AddAccount]   "
+		 + "  accountID: " + accountID + "   " + nextAccount.calendarColor);
+
+		// Insert newCalendar into the DOM before entryPoint
+		var calendars = document.getElementById("calDAV_calendars");
+		var entryPoint = document.getElementById("rmFx-CalDAV-addNew");
+
+		var newCalendar = document.createElement("vbox");
+		calendars.insertBefore(newCalendar, entryPoint);
+
+		var hbox = document.createElement("hbox");
+		newCalendar.appendChild(hbox);
+				hbox.setAttribute("flex",  "1");
+
+			var hbox1 = document.createElement("hbox");
+			hbox.appendChild(hbox1);
+
+				var hbox2 = document.createElement("hbox");
+				hbox1.appendChild(hbox2);
+					hbox2.setAttribute("align",  "center");
+					hbox2.setAttribute("width", "55px");
+
+					var checkbox = document.createElement("checkbox");
+						checkbox.setAttribute("class", "calDAV_Active rmFx-calDAV-text");
+						checkbox.setAttribute("checked", nextAccount.Active);
+						checkbox.setAttribute("tooltiptext", reminderfox.string("rf.caldav.account.enable"));
+						checkbox.setAttribute("onclick", "rmFx_calDAV_Toggle(this);");
+
+						checkbox.setAttribute("typ", nextAccount.Typ);
+						checkbox.setAttribute("label", "");
+
+					hbox2.appendChild(checkbox);
+
+
+				var stack = document.createElement("stack");
+				hbox2.appendChild(stack);
+					stack.setAttribute("tooltiptext", reminderfox.string("rf.calDav.Account") + " ID");
+
+				var bbox = document.createElement("hbox");
+				stack.appendChild(bbox);
+
+					var calDAVbadge = document.createElement("image");
+					bbox.appendChild(calDAVbadge);
+						calDAVbadge.setAttribute("class", "rmFx-calDAV-share24");
+		
+					var calDAVlabel = document.createElement("label");
+					stack.appendChild(calDAVlabel);
+						calDAVlabel.setAttribute("id", 'calDAV_ID');
+						calDAVlabel.setAttribute("class", "rmFx-calDAV-text calDAV_ID");
+						calDAVlabel.setAttribute("value", accountID);
+						calDAVlabel.setAttribute("status",  nextAccount.Active);
+
+					var newBox = document.createElement("hbox");
+						newBox.setAttribute("id", "calDAV_COLOR");
+						newBox.setAttribute("class", "rmFx-calDAV-color-selector");
+						newBox.setAttribute("label", "  ");
+
+						var aColor = (nextAccount.calendarColor);
+						newBox.setAttribute("style", "background-color:" + aColor + ";border: green 1px solid;");
+						newBox.setAttribute('tooltiptext', 
+							"Account Color: " + aColor + " (Based on remote calendar)");
+						newBox.setAttribute("calendarColor", aColor);
+
+						hbox1.appendChild(newBox);
+
+
+				tboxName = document.createElement("textbox");
+				hbox1.appendChild(tboxName);
+					tboxName.setAttribute("id", "calDAV_Name");
+					tboxName.setAttribute("disabled", "true");
+
+					tboxName.setAttribute("width", "200px");
+					tboxName.setAttribute("status",  nextAccount.Active);
+					tboxName.setAttribute("class", "rmFx-calDAV-text calDAV_Name");
+					tboxName.setAttribute("value", nextAccount.Name);
+					tboxName.setAttribute("color", nextAccount.Color);
+					tboxName.setAttribute("tooltiptext", nextAccount.Url);
+
+					// for VTODO  change color and style  //§§§ other setting on XUL ??
+					if (nextAccount.Typ == "VTODO") {
+						tboxName.setAttribute("style", "font-style:italic;");
+					}
+
+				var tboxUrl = document.createElement("textbox");
+				hbox1.appendChild(tboxUrl);
+					tboxUrl.setAttribute("id", "calDAV_Url");
+					tboxUrl.setAttribute("hidden", "true");
+					tboxUrl.setAttribute("disabled", "true");
+
+					tboxUrl.setAttribute("status",  nextAccount.Active);
+					tboxUrl.setAttribute("class", "rmFx-calDAV-text calDAV_Url");
+					tboxUrl.setAttribute("value", nextAccount.Url);
+					tboxUrl.setAttribute("typ", nextAccount.Typ);
+
+				// set the .Login to have it for 'edit', but hide here !!
+				tboxName = document.createElement("textbox");
+				hbox1.appendChild(tboxName);
+					tboxName.setAttribute("id", "calDAV_Login");
+					tboxName.setAttribute("hidden", "true");
+					tboxName.setAttribute("disabled", "true");
+
+					tboxName.setAttribute("status",  nextAccount.Active);
+					tboxName.setAttribute("class", "rmFx-calDAV-text calDAV_Login");
+					tboxName.setAttribute("value", nextAccount.Login);
+
+			button = document.createElement("button");
+			hbox.appendChild(button);
+				button.setAttribute("id", "rmFx-calDAV-key");
+				button.setAttribute("label", reminderfox.string("rf.calDav.Configure") + "...");
+				button.setAttribute("onclick", "rmFx_calDAV_Configure(this)");
+				button.setAttribute("tooltiptext",  reminderfox.string("rf.calDav.Configure.ttt"));
+
+			var accountHasEvents = false;
+			for (var name in nextAccount) {
+				switch (name) {
+					case 'ID': 
+					case 'Typ': 
+					case 'Active': 
+					case 'Name':
+					case 'Url': 
+					case 'Login': 
+					case 'CTag': 
+					case 'Color':
+					case 'calendarColor': break;
+
+					default: {
+						accountHasEvents = true;
+					}
+				}
+			}
+
+			button = document.createElement("button");
+			hbox.appendChild(button);
+				button.setAttribute("id", "calDAV_Remove");
+				button.setAttribute("label", reminderfox.string("rf.calDav.account.Remove"));
+				button.setAttribute("onclick", "rmFx_calDAV_Remove(this)");
+
+				button.setAttribute("tooltiptext", reminderfox.string("rf.calDav.account.Remove.ttt"));
+
+
+			document.getElementById("reminderFox-apply").removeAttribute("disabled");
+
+			return newCalendar;
+		}
+
+
+		/**
+		 *   Select 'Reminders' or one of the sync accounts to be the "defaultSyncAccount"
+		 */
+		function rmFx_CalDAV_accountDefault_Selecting(defaultSyncAccount) {
+		//-------------------------------------------
+			var dAccounts = document.getElementById('rmFx_CalDAV_syncDefaultSelected');
+			while (dAccounts.hasChildNodes()) {
+				if (dAccounts.lastChild.id != "defaultIsReminders") dAccounts.removeChild(dAccounts.lastChild);
+				if (dAccounts.lastChild.id == "defaultIsReminders") break;
+			}
+
+			// use the actual XUL list to see which account is 'Active'
+			// don't use 'hidden' accounts, they have setAttribute('toDelete', true)!
+
+			var accounts = document.getElementById("calDAV_calendars");
+			var nAccounts = accounts.childElementCount -1;
+			var n0 = 0; var m =0;
+			for (var n=0; n < nAccounts; n++) {
+
+				var next = accounts.children[n];
+				if ((next.querySelector(".calDAV_Active").checked === true) && (!next.attributes.toDelete)){
+					m++;
+					var menuItem = document.createElement("menuitem");
+						menuItem.setAttribute("label", next.querySelector(".calDAV_Name").value);
+						if ((next.querySelector(".calDAV_Name").value == defaultSyncAccount)){
+							n0 = m;
+						}
+					dAccounts.appendChild(menuItem);
+				}
+			}
+
+			document.getElementById("rmFx_CalDAV_syncDefaultAccount").selectedIndex = n0;
+			if ((nAccounts == 1) && (n0 === 0)) document.getElementById("rmFx_CalDAV_syncDefaultAccount").selectedIndex = 1;
+		}
+
+		/**
+		 * build a list of supported CalDAV server on Options -> tab:Sync
+		 *  @param {array} list of supported calDAV servers
+		 *  @param {object} xul to place the list to
+		 */
+		function rmFx_CalDAV_testedServer (urlList, serverBox) {
+
+			var box = document.getElementById(serverBox);
+			for (var n =0; n < urlList.length; n++) {
+				var urlLink = document.createElement("description");
+				urlLink.setAttribute("id", "urlLink");
+				urlLink.setAttribute("style","text-decoration: underline; color: blue; cursor: pointer;");
+				urlLink.addEventListener("click", function() {reminderfox.util.openURL(this.value);},false);
+				urlLink.setAttribute("value", urlList[n]);
+				urlLink.setAttribute("crop", "end");
+				urlLink.setAttribute("flex", "1");
+				box.appendChild(urlLink);
+			}
+		}
+
+	]]></script>
+
+</overlay>

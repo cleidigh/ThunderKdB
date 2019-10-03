@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox-platform/skin/gtk3linux.css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-suspendAlertsDialog"
+		persist="screenX screenY"
+		onfocus="reminderFox_snoozeTimeChanged()"
+		onload="loadAlarmOptions()"
+		title="&rf.suspendalarms.dialog.title;">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/alarms/suspendAlerts.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/datepicker/datepicker.js"/>
+	<script type="application/x-javascript" src="chrome://reminderfox/content/addReminderDialog.js"/>
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="reminderFox_closeAlarm();"/>
+		<key keycode="VK_ENTER" oncommand="setAlarm();"/>
+		<key keycode="VK_RETURN" oncommand="setAlarm();"/>
+	</keyset>
+
+	<vbox id="reminderFoxVbox" flex="1">
+		<label id="alarmDescLabel" control="newAlarmText" value="&rf.suspendalarms.dialog.label;" />
+
+
+		<hbox id="alertEntry" align="center" >
+			<checkbox id="reminderFox-alert" label="&rf.suspendalarms.resume.label;" tabindex="3" checked="true" autocheck="false" oncommand="reminderFox_alertChanged()"  />
+			<menulist id="reminderFox-alertTime" tabindex="1" editable="true" oninput="reminderFox_snoozeTimeChanged();"  oncommand="reminderFox_snoozeTimeChanged();">
+				<menupopup>
+					<menuitem label="1" />
+					<menuitem label="5"  />
+					<menuitem label="15" />
+					<menuitem label="30" />
+					<menuitem label="60" />
+					<menuitem label="90" selected="true" />
+				</menupopup>
+			</menulist>
+			<menulist id="reminderFox-alertTimeUnits" tabindex="2" oncommand="reminderFox_updateSnoozeTimeDate()" >
+				<menupopup>
+					<menuitem label="&rf.reminderoptions.notify.minutes.label;" />
+					<menuitem label="&rf.reminderoptions.notify.hours.label;" />
+					<menuitem label="&rf.reminderoptions.notify.days.label;" />
+				</menupopup>
+			</menulist>
+
+		</hbox>
+
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3" align="center"/>
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2" align="center"/>
+
+
+		<vbox id="alertButtonGroup">
+			<hbox align="center" >
+				<spacer class="reminderFox-btnspacer" flex="1"/>
+				<button label="&rf.ok;" default="true"  oncommand="setAlarm()"   />
+				<button label="&rf.cancel;"  oncommand="window.close();"  />
+			</hbox>
+			<hbox>
+				<label value="&rf.suspendalarms.resume.time.info;" disabled="true"/>
+				<label id="alarmAtTime"  align="right" disabled="true" />
+			</hbox>
+		</vbox>
+   </vbox>
+
+</window>

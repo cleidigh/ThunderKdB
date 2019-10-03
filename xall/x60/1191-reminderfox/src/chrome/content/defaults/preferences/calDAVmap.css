@@ -1,0 +1,22 @@
+/*-- tree color selectors --*/
+treechildren::-moz-tree-row(caldav0) {background-color:#F4C8FA !important;} /* HSL(292,20,98) */
+treechildren::-moz-tree-row(caldav0, selected) {background-color:#635266 !important;}
+treechildren::-moz-tree-row(caldav1) {background-color:#EAC8FA !important;} /* HSL(280,20,98) */
+treechildren::-moz-tree-row(caldav1, selected) {background-color:#605266 !important;}
+treechildren::-moz-tree-row(caldav2) {background-color:#C8EAFA !important;} /* HSL(199,20,98) */
+treechildren::-moz-tree-row(caldav2, selected) {background-color:#526066 !important;}
+treechildren::-moz-tree-row(caldav3) {background-color:#C8FAE6 !important;} /* HSL(156,20,98) */
+treechildren::-moz-tree-row(caldav3, selected) {background-color:#52665C !important;}
+treechildren::-moz-tree-row(caldav4) {background-color:#EEFAC8 !important;} /* HSL(74,20,98) */
+treechildren::-moz-tree-row(caldav4, selected) {background-color:#606652 !important;}
+treechildren::-moz-tree-row(caldav5) {background-color:#FAD0C8 !important;} /* HSL(9,20,98) */
+treechildren::-moz-tree-row(caldav5, selected) {background-color:#665452 !important;}
+
+#rmFx-calDAV-color-selector-hue {
+width:256px; height: 20px;
+background-image: -moz-linear-gradient(left center,#FAC8C8 1%,#FAC8E3 8%,#FAC8FA 16%,#E3C8FA 24%,#C8C8FA 32%,#C8E3FA 40%,#C8FAFA 48%,#C8FAE3 56%,#C8FAC8 64%,#E3FAC8 72%,#FAFAC8 80%,#FAE3C8 88%,#FAC8C8 99%);
+}
+
+/* http://indeziner.com/design/css/how-to-create-a-color-spectrum-with-css3-gradients/ */
+/* http://www.colorpicker.com */
+colorpicker {color: #626262;}

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<window class="dialog" title="&rf.caldav.dialog.title;"
+		orient="vertical" windowtype="window:calDAVhandling" width="450px" height="400px"
+		onload="thisLoad()"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+
+	<groupbox align="center" orient="horizontal">
+		<hbox>
+			<vbox>
+				<description id="text1" width="330px;" class="reminderFox_Bold"></description>
+				<description id="newFile" width="330px" style="font-family:mono;font-style:italic" ></description>
+				<spacer height="16px"/>
+				<description id="text2" width="330px;" class="reminderFox_Bold"></description>
+			</vbox>
+			<spacer width="10px" />
+
+			<hbox>
+				<label align="center" class="reminderfox-moreLabel" bold="true"
+					onclick="reminderfox.util.docRmFX('reminderfoxcaldav-support/');"
+					value="&rf.main.help.label; .."  tooltiptext="&rf.calDav.davFile;"/>
+			</hbox>
+
+		</hbox>
+	</groupbox>
+	<spacer height="40px" />
+
+	<grid align="center" width="450px">
+		<columns>
+			<column width="300px" />
+			<column flex="1" />
+			<column width="100px" />
+		</columns>
+
+		<rows>
+
+			<row align="center" height="100px" style="border-bottom:1px; border-bottom-color:blue">
+				<vbox>
+				<description id="msg01" class="rmFx_descBox"></description>
+				<description id="msg02" class="rmFx_descBox"></description>
+				</vbox>
+				<spacer />
+				<button id="key0" label="" oncommand="go(this);" />
+			</row>
+			<row height="20px"/>
+			<row align="center" height="100px">
+				<vbox>
+				<description id="msg11" class="rmFx_descBox"></description>
+				<description id="msg12" class="rmFx_descBox"></description>
+				</vbox>
+				<spacer />
+				<button id="key1" label="" oncommand="go(this);" />
+			</row>
+		</rows>
+
+	</grid>
+
+
+	<script type="application/x-javascript"><![CDATA[
+	/**
+	 *   Setup the dialog
+	 */
+	function thisLoad() {
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+				var rmFx_icsFileLocationNew = window.arguments[0].newFile;
+				var rmFx_icsFileLocationOld = window.arguments[0].oldFile;
+
+				document.getElementById('text1').textContent = window.arguments[0].text1;
+				document.getElementById('newFile').textContent = window.arguments[0].newFile;
+				document.getElementById('text2').textContent = window.arguments[0].text2;
+
+				document.getElementById('msg01').textContent = window.arguments[0].msg01;
+				document.getElementById('msg02').textContent = window.arguments[0].msg02;
+				document.getElementById('msg11').textContent = window.arguments[0].msg11;
+				document.getElementById('msg12').textContent = window.arguments[0].msg12;
+
+				document.getElementById('key0').label = window.arguments[0].key0;
+				document.getElementById('key1').label = window.arguments[0].key1;
+	};
+
+	function go (xThis){
+		window.arguments[0].whichKey = xThis.id;
+		window.close();
+	}
+
+]]></script>
+
+</window>

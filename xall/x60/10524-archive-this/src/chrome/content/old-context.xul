@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://archive-this/locale/context.dtd">
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<overlay
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="archive-this-string-bundle" src="chrome://archive-this/locale/archive-this.properties"/>
+  </stringbundleset>
+
+  <script type="application/x-javascript" 
+          src="chrome://archive-this/content/context.js"/>
+
+<popup id="threadPaneContext">
+  <menu id="archive-this-context-menu"
+        insertafter="threadPaneContext-sep-reply"
+        label="&context_menu_name;"
+        >
+    <menupopup>
+      <menuitem label="&context_run_filters.label;" id="archive-this-run-filters"
+                oncommand="ArchiveThis['filter'](false)" />
+      <menuitem label="&context_create_filter_from_message.label;" id="archive-this-create-filter"
+                oncommand="ArchiveThis['createFilterFromMessage']()" />
+
+      <menuseparator id="archive-this-preset-sep"/>
+
+      <menuitem label="Move to [preset 1]" id="archive-this-move-preset-1"
+         oncommand="ArchiveThis['folder'](1)" />
+      <menuitem label="Move to [preset 2]" id="archive-this-move-preset-2"
+         oncommand="ArchiveThis['folder'](2)" />
+      <menuitem label="Move to [preset 3]" id="archive-this-move-preset-3"
+         oncommand="ArchiveThis['folder'](3)" />
+      <menuitem label="Move to [preset 4]" id="archive-this-move-preset-4"
+         oncommand="ArchiveThis['folder'](4)" />
+      <menuitem label="Move to [preset 5]" id="archive-this-move-preset-5"
+         oncommand="ArchiveThis['folder'](5)" />
+      <menuitem label="Move to [preset 6]" id="archive-this-move-preset-6"
+         oncommand="ArchiveThis['folder'](6)" />
+      <menuitem label="Move to [preset 7]" id="archive-this-move-preset-7"
+         oncommand="ArchiveThis['folder'](7)" />
+      <menuitem label="Move to [preset 8]" id="archive-this-move-preset-8"
+         oncommand="ArchiveThis['folder'](8)" />
+      <menuitem label="Move to [preset 9]" id="archive-this-move-preset-9"
+         oncommand="ArchiveThis['folder'](9)" />
+
+      <menuseparator id="archive-this-go-move-copy-sep"/>
+
+      <menuitem label="&context_move_to_folder.label;" id="archive-this-move-to"
+         oncommand="ArchiveThis['moveToFolder']()" />
+      <menuitem label="&context_copy_to_folder.label;" id="archive-this-copy-to"
+         oncommand="ArchiveThis['copyToFolder']()" />
+      <menuitem label="&context_go_to_folder.label;" id="archive-this-go-to"
+         oncommand="ArchiveThis['goToFolder']()" />
+
+      <menuseparator id="archive-this-prefs-sep"/>
+
+      <menuitem label="&context_open_preferences.label;" id="archive-this-open-prefs"
+         oncommand="ArchiveThis['openPrefs']()" />
+
+
+    </menupopup>
+  </menu>
+</popup>
+
+<!--
+        insertafter="mailContext-sep-reply"
+        insertafter="threadPaneContext-mark"
+-->
+
+</overlay>

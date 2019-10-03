@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/catBox.css"  type="text/css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/categories/manageCategoriesOverlay.xul"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-manage-categories" persist="screenX screenY" onload="reminderfox.category.readDefault();"
+		title="&rf.categories.manageCat.label;">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/categories.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/reminderOptionsDialog.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();" />
+		<key keycode="VK_ENTER" oncommand="reminderfox.category.saveGroupsAndClose();" />
+		<key keycode="VK_RETURN" oncommand="reminderfox.category.saveGroupsAndClose();" />
+	</keyset>
+
+	<groupbox flex="1" style="width: 420px;">
+		<caption label="&rf.options.categories.label;" />
+		<description>&rf.options.categories.description1;
+		</description>
+		<spacer height="10px" />
+
+		<vbox id="reminderFoxCategoryVbox" />  <!-- brought in from overlay manageCategoriesOverlay.xul -->
+	</groupbox>
+
+	<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+		align="center" />
+	<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+		align="center" />
+
+	<hbox id="alertButtonGroup">
+		<spacer class="reminderFox-btnspacer" flex="1" />
+		<button id="rmCatOK" label="&rf.ok;" tooltiptext="&rf.categories.tooltip.rmCatOK;"
+			oncommand="reminderfox.category.saveGroupsAndClose();" />
+		<spacer width="5px" />
+
+		<button id="rmCatCancel" label="&rf.cancel;" oncommand="window.close();" />
+	</hbox>
+</window>
