@@ -183,10 +183,16 @@ async function requestATN_URL(addon_id, query_type, options) {
 	}
 }
 
-function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir) {
+function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite) {
 	const extRootName = `${addon_identifier}-${extJson.slug}`;
 	const extSummaryFileName = `${rootDir}/${extGroupAllDir}/${extGroupDir}/${extRootName}/${extRootName}-summary.md`;
 
+	if (fs.existsSync(extSummaryFileName) && !overwrite) {
+		console.debug('MarkDown Exists ');
+		return 0;
+	}
+
+	console.debug('Generate...');
 	let extSummaryFile = fs.readFileSync('extension-summary-templ.md', 'utf8');
 
 	const default_locale = extJson.default_locale;
@@ -362,7 +368,8 @@ async function getExtensionFiles(addon_identifier) {
 		// await writePrettyJSONFile(jfile, ext_versions);
 
 		console.debug('generate markDown	');
-		genExtensionSummaryMD(addon_identifier, ext, targetGroupDir);
+		let overwrite = false;
+		genExtensionSummaryMD(addon_identifier, ext, targetGroupDir, overwrite);
 
 		console.debug('Finished: ' + addon_identifier);
 

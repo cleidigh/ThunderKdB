@@ -6,12 +6,15 @@
   const Ci = Components.interfaces;
   const Cu = Components.utils;
 
-  Cu.import("resource://tbsortfolders/logging.jsm");
-  let tblog = tbsortfolders.Logging.getLogger("tbsortfolders.folderpane");
+  Cu.import("resource://gre/modules/Log.jsm");
+  let tblog = Log.repository.getLogger("tbsortfolders.folderPane");
+  tblog.level = Log.Level.Debug;
+  tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
+  tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
   Cu.import("resource://gre/modules/Services.jsm");
   Cu.import("resource://tbsortfolders/sort.jsm");
-  Cu.import("resource:///modules/MailUtils.js");
+  Cu.import("resource:///modules/MailUtils.jsm");
 
   tblog.debug("Init");
 
@@ -22,20 +25,20 @@
   var tbsf_prefs_functions;
   const mail_accountmanager_prefs = Services.prefs.getBranch("mail.accountmanager.");
 
-  var tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
-  var tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
-  tblog.debug("TB Accounts: "+tb_accounts);
-  tblog.debug("TB Default account: "+tb_default_account);
+//   var tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
+//   var tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
+//   tblog.debug("TB Accounts: "+tb_accounts);
+//   tblog.debug("TB Default account: "+tb_default_account);
 
-  let tbsf_accounts = null;
-  let tbsf_default_account = null;
-  try {
-    tbsf_accounts = tbsf_prefs.getStringPref("accounts");
-    tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
-    tblog.debug("TBSF Accounts: "+tbsf_accounts);
-    tblog.debug("TBSF Default account: "+tbsf_default_account);
-  } catch (x) {
-  }
+//   let tbsf_accounts = null;
+//   let tbsf_default_account = null;
+//   try {
+//     tbsf_accounts = tbsf_prefs.getStringPref("accounts");
+//     tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
+//     tblog.debug("TBSF Accounts: "+tbsf_accounts);
+//     tblog.debug("TBSF Default account: "+tbsf_default_account);
+//   } catch (x) {
+//   }
 
   tblog.debug("Add observer");
 
@@ -53,18 +56,12 @@
 //    }
 
     let current_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
-    let tbsf_default_account = null;
-    try {
-      tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
-    } catch (x) {
-    }
+    let tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
 //    tblog.debug("Current Default account: "+current_default_account);
 //    tblog.debug("Stored Default account: "+tbsf_default_account);
 
-    if (current_default_account !== tbsf_default_account && tbsf_default_account !== null) {
-      mail_accountmanager_prefs.setStringPref("defaultaccount",tbsf_default_account);
-//      tblog.debug("Default account restored");
-    }
+    if (tbsf_default_account && current_default_account !== tbsf_default_account)
+      mail_accountmanager_prefs.setStringPref("defaultaccount", tbsf_default_account);
 
 /*
     let current_tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
@@ -168,7 +165,7 @@
     if (firstRun && inRestoreTab) {
       let startup_folder = tbsf_prefs.getStringPref("startup_folder");
       if (startup_folder != "") {
-        let folder = MailUtils.getFolderForURI(startup_folder);
+        let folder = MailUtils.getExistingFolder(startup_folder);
         if (folder)
           oldSelectFolder.call(this, folder, true);
         else
@@ -181,4 +178,8 @@
       oldSelectFolder.call(this, x, y);
     }
   };
+  
+  /* Refresh pane */
+  mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+
 })()

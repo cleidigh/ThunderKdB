@@ -6,7 +6,8 @@
 <!DOCTYPE window SYSTEM "chrome://tbsortfolders/locale/ui.dtd">
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         title="&general.title;" onload="on_load();">
-  <script type="application/javascript" src="ui.js" />
+  <script src="chrome://messenger/content/customElements.js"/>
+  <script type="application/javascript" src="chrome://tbsortfolders/content/ui.js" />
 
   <description style="font-weight: bold; color: #c00; display: none;" id="err_no_accounts">
     &accountsort.noaccountsetupyet;
@@ -25,13 +26,17 @@
         </description>
         <hbox flex="1">
           <vbox flex="1">
-            <listbox id="accounts_list" onclick="on_accounts_list_click();" flex="1">
-            </listbox>
-            <listbox rows="1" disabled="true">
-              <listitem label="&accountsort.localfolders;" />
-            </listbox>
-            <listbox flex="1" id="news_accounts_list" style="display: none;" onclick="on_news_accounts_list_click();">
-            </listbox>
+            <richlistbox id="accounts_list" onclick="on_accounts_list_click();" flex="1">
+            </richlistbox>
+            <richlistbox rows="1" disabled="true">
+              <richlistitem>
+                <description>
+                  &accountsort.localfolders;
+                </description>
+              </richlistitem>
+            </richlistbox>
+            <richlistbox flex="1" id="news_accounts_list" style="display: none;" onclick="on_news_accounts_list_click();">
+            </richlistbox>
           </vbox>
           <vbox>
             <groupbox>
@@ -155,8 +160,10 @@
                 <menuitem value="1" label="&extra.usecustom;" />
               </menupopup>
             </menulist>
-            <menulist id="startupFolder" label="&extra.nofolder;" oncommand="on_pick_folder(event);" flex="1">
+            <menulist id="startupFolder"
+              label="&extra.nofolder;" oncommand="on_pick_folder(event);" flex="1">
               <menupopup id="startupFolderPopup" type="folder"
+                         is="folder-menupopup"
                          showFileHereLabel="true"
                          fileHereLabel="&extra.usethisfolder;"/>
             </menulist>

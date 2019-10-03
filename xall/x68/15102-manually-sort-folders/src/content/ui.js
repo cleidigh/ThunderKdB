@@ -2,14 +2,19 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
+// Logging using the latest from https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Log.jsm
+// Assuming this is 68+ only.
+Cu.import("resource://gre/modules/Log.jsm");
+let tblog = Log.repository.getLogger("tbsortfolders.ui");
+tblog.level = Log.Level.Debug;
+tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
+tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
+
 Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://tbsortfolders/logging.jsm");
 Cu.import("resource://tbsortfolders/sort.jsm");
-Cu.import("resource:///modules/MailUtils.js");
+Cu.import("resource:///modules/MailUtils.jsm");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
 
-let tblog = tbsortfolders.Logging.getLogger("tbsortfolders.ui");
-                 
 var g_accounts = Object();
 const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
 var tbsf_data = {};
@@ -234,67 +239,72 @@ function walk_folder(folder,treechildren,depth) {
 
 
 function on_load() {
-  tblog.debug("on_load");
-  let json = tbsf_prefs.getStringPref("tbsf_data");
   try {
-    tbsf_data = JSON.parse(json);
+    tblog.debug("on_load");
+    let json = tbsf_prefs.getStringPref("tbsf_data");
+    try {
+      tbsf_data = JSON.parse(json);
+    } catch (e) {
+    }
+
+    let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
+    let name;
+    let accounts_menu = document.getElementById("accounts_menu");
+    let accounts = [];
+    for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount)) {
+      accounts.push(x);
+    }
+    tblog.debug("Total accounts: "+accounts.length);
+    if (!accounts.length) {
+      document.querySelector("tabbox").style.display = "none";
+      document.getElementById("err_no_accounts").style.display = "";
+      return;
+    }
+    for (let account of accounts) {
+      //    tblog.debug("Account keys: "+Object.keys(account));
+      //fill the menulist with the right elements
+      if (!account.incomingServer)
+        continue;
+      tblog.debug("Account: "+account.incomingServer.rootFolder.prettyName);
+      name = account.incomingServer.rootFolder.prettyName;
+      let it = document.createElement("menuitem");
+      it.setAttribute("label", name);
+      accounts_menu.appendChild(it);
+
+      //register the account for future use, create the right data structure in
+      //the data
+      g_accounts[name] = account;
+      if (!tbsf_data[name]) tbsf_data[name] = Array();
+    }
+    document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
+
+
+    tblog.debug("Accounts: "+account_manager.accounts.length);
+    //  tblog.debug("Account Manager keys: "+Object.keys(account_manager));
+    // try {
+    //   let tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
+    //   let tbsf_accounts = tbsf_prefs.getStringPref("accounts");
+
+    //   tblog.debug("TB Accounts: "+tb_accounts);
+    //   tblog.debug("TBSF Accounts: "+tbsf_accounts);
+
+    //   let tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
+    //   let tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
+
+    //   tblog.debug("TB Default account: "+tb_default_account);
+    //   tblog.debug("TBSF Default account: "+tbsf_default_account);
+    // } catch (x) {
+    // }
+
+
+    on_account_changed();
+
+    accounts_on_load();
+    extra_on_load();
   } catch (e) {
+    tblog.debug(e);
+    throw e;
   }
-
-  let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
-  let name;
-  let accounts_menu = document.getElementById("accounts_menu");
-  let accounts = [];
-  for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount)) {
-    accounts.push(x);
-  }
-  tblog.debug("Total accounts: "+accounts.length);
-  if (!accounts.length) {
-    document.querySelector("tabbox").style.display = "none";
-    document.getElementById("err_no_accounts").style.display = "";
-    return;
-  }
-  for (let account of accounts) {
-//    tblog.debug("Account keys: "+Object.keys(account));
-    //fill the menulist with the right elements
-    if (!account.incomingServer)
-      continue;
-    tblog.debug("Account: "+account.incomingServer.rootFolder.prettyName);
-    name = account.incomingServer.rootFolder.prettyName;
-    let it = document.createElement("menuitem");
-    it.setAttribute("label", name);
-    accounts_menu.appendChild(it);
-
-    //register the account for future use, create the right data structure in
-    //the data
-    g_accounts[name] = account;
-    if (!tbsf_data[name]) tbsf_data[name] = Array();
-  }
-  document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
-
-  
-  tblog.debug("Accounts: "+account_manager.accounts.length);
-//  tblog.debug("Account Manager keys: "+Object.keys(account_manager));
-  try {
-    let tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
-    let tbsf_accounts = tbsf_prefs.getStringPref("accounts");
-
-    tblog.debug("TB Accounts: "+tb_accounts);
-    tblog.debug("TBSF Accounts: "+tbsf_accounts);
-
-    let tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
-    let tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
-
-    tblog.debug("TB Default account: "+tb_default_account);
-    tblog.debug("TBSF Default account: "+tbsf_default_account);
-  } catch (x) {
-  }
-
-
-  on_account_changed();
-
-  accounts_on_load();
-  extra_on_load();
 }
 
 function renumber(treeItem, start) {
@@ -441,8 +451,11 @@ function accounts_on_load() {
   let news_accounts = [];
   let other_accounts = [];
   let add_li = function (list, [account, server, type, name]) {
-    let li = document.createElement("listitem");
-    li.setAttribute("label", name);
+    let li = document.createElement("richlistitem");
+    let desc = document.createElement("description");
+    let txt = document.createTextNode(name); 
+    desc.appendChild(txt);
+    li.appendChild(desc);
     li.value = account;
     list.appendChild(li);
   };
@@ -519,7 +532,7 @@ function update_accounts_prefs() {
   }
 
   mail_accountmanager_prefs.setStringPref("accounts",new_pref);
-  tbsf_prefs.setStringPref("accounts",new_pref);
+  //tbsf_prefs.setStringPref("accounts",new_pref);
   tblog.debug("Sorted accounts: "+new_pref);
   
   let default_account = document.getElementById("default_account").parentNode.value;
@@ -613,7 +626,7 @@ function extra_on_load() {
   let picker = document.getElementById("startupFolder");
   let folder;
   if (startup_folder)
-    folder = MailUtils.getFolderForURI(startup_folder);
+    folder = MailUtils.getExistingFolder(startup_folder);
   if (folder) {
     picker.folder = folder;
     picker.setAttribute("label", folder.prettyName);
