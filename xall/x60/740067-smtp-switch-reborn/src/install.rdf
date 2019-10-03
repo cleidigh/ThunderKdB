@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	 xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+<Description about="urn:mozilla:install-manifest">
+
+	<em:id>SMTPSwitchReborn@gmail.com</em:id>
+	<em:name>SMTP Switch Reborn</em:name>
+	<em:version>0.3.2</em:version>
+	<em:type>2</em:type>
+	<em:description>SMTP Chooser</em:description>
+	<em:creator>SMTP Switch Reborn Developing Team</em:creator>
+
+	<!-- optional items -->
+	<em:developer>TrV</em:developer>
+	<em:developer>RATM (for the prequel Smtp Switch)</em:developer>
+	<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/smtp-switch-reborn/</em:homepageURL>
+	<em:optionsURL>chrome://SMTPSwitchReborn/content/options.xul</em:optionsURL>
+	<em:iconURL>chrome://SMTPSwitchReborn/skin/icon.png</em:iconURL>
+
+	<!-- Thunderbird -->
+	<em:targetApplication>
+		<Description>
+			<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+			<em:minVersion>3.0a1pre</em:minVersion>
+			<em:maxVersion>60.*</em:maxVersion>
+		</Description>
+	</em:targetApplication>
+
+</Description>
+
+</RDF>

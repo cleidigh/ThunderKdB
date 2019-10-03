@@ -1,0 +1,58 @@
+/* legacy rules - supported since Gecko 16.0 
+   -moz-linear-gradient was replaced with linear-gradient 
+   -moz-transition-property will be transition-property
+   -moz-transition-duration will be transition-duration
+   NOTE: VALIDATORS PLEASE IGNORE THESE ARE LEGACY RULES WHICH ARE CONDITIONAL OF PLATFORMVERSION!
+         FOR DETAIL, PLEASE REFER chrome.manifest !
+*/
+#qp-options-header {
+	background: rgb(208,228,247);
+	background: -moz-linear-gradient(top, rgba(33,61,101,1) 0%, rgba(49,126,177,1) 8%, rgba(26,48,86,1) 40%, rgba(31,55,91,1) 83%, rgba(26,38,70,1) 100%);
+}
+
+#qp-version-field:hover {
+	background: rgb(230,240,163); /* backwards compat */
+	background: -moz-linear-gradient(top, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
+}
+
+#L0.text-link:focus, #L1.text-link:focus  {
+	background: rgb(191,210,85);
+	background: -moz-linear-gradient(top, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 50%, rgba(114,170,0,1) 51%, rgba(158,203,45,1) 100%);
+}
+
+label#L0:hover, label#L1:hover {
+	background: rgb(230,240,163); /* backwards compat */
+	background: -moz-linear-gradient(top, rgba(230,240,163,1) 0%, rgba(210,230,56,1) 50%, rgba(195,216,37,1) 51%, rgba(219,240,67,1) 100%);
+}
+
+#qp-Site
+{
+	background: rgb(191,210,85);
+	background: -moz-linear-gradient(top, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 50%, rgba(114,170,0,1) 51%, rgba(158,203,45,1) 100%);
+}
+
+#qp-User
+{
+	background: rgb(254,204,177);
+	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
+}
+button.dialog-button[dlgtype=extra2] {
+	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%) !important;
+}
+
+.dialog-button[dlgtype=extra2]:hover
+{
+	background: rgb(254,222,178);
+	background: -moz-linear-gradient(top, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);
+}
+.dialog-button[dlgtype=extra2]:active
+{
+	background: rgb(254,222,178);
+	background: -moz-linear-gradient(top, rgba(254,222,178,1) 0%, rgba(241,162,51,1) 50%, rgba(235,140,7,1) 51%, rgba(251,186,95,1) 100%);
+}
+
+.dialog-button[dlgtype=extra2]
+{
+	-moz-transition-property: box-shadow, margin;
+	-moz-transition-duration: 0.75s, 0.2s;
+}

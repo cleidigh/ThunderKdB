@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>support@zoiper.com</em:id>
+    <em:version>1.06</em:version>
+    <em:type>2</em:type> <!-- type = extension -->
+
+    <!-- Target Application this extension can install into,
+         with minimum and maximum supported versions. -->
+    <em:targetApplication>
+      <Description>
+      <!--  Thunderbird -->
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>24.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      <!--  end Thunderbird -->
+      </Description>
+    </em:targetApplication>
+
+    <!-- Front End MetaData -->
+    <em:name>Zoiper Communicator</em:name>
+    <em:description>It allows you to make calls via Zoiper Communicator from Mozilla Thunderbird.</em:description>
+    <em:creator>2010 (C) Zoiper.com</em:creator>
+    <em:homepageURL>http://www.zoiper.com/</em:homepageURL>
+    <em:optionsURL>chrome://zoiper/content/settingsDialog.xul</em:optionsURL>
+    <em:iconURL>chrome://zoiper/content/zoiper.png</em:iconURL>
+  </Description>
+</RDF>

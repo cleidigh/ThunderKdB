@@ -1,0 +1,9 @@
+pref("extensions.SMTPSwitchReborn@gmail.com.description", "chrome://SMTPSwitchReborn/locale/SMTPSwitchReborn.properties");
+pref("extensions.SMTPSwitchReborn.newVersion", 0);
+pref("extensions.SMTPSwitchReborn.autoDetectionAtStart", false);
+pref("extensions.SMTPSwitchReborn.autoDetectionAtCompose", false);
+pref("extensions.SMTPSwitchReborn.detectionRules", "");
+pref("extensions.SMTPSwitchReborn.displayServerAddresses", false);
+pref("extensions.SMTPSwitchReborn.debugMode", false);
+pref("extensions.SMTPSwitchReborn.debugModeToFile", false);
+pref("extensions.SMTPSwitchReborn.debugFileName", "");

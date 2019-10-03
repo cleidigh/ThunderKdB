@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!--
+/************************************
+ ************************************
+ ***                              ***
+ ***  2010 (C) Zoiper.com         ***
+ ***                              ***
+ ************************************
+ ************************************/
+-->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<dialog buttons="accept, cancel"
+        id="zoiper-select-dialog"
+        ondialogaccept="return OnAcceptSelection();"
+        onload="OnLoadSelectDialog();"
+        title="Select a phone"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://zoiper/content/zoiper.js"/>
+
+    <vbox flex="1">
+        <listbox id="phones-listbox"></listbox>
+    </vbox>
+</dialog>

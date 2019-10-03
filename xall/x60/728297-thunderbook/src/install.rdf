@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- Copyright 2016-2019 Julien L. <julienl81@hotmail.com>
+
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>thunderbook@julien1001.devel</em:id>
+    <em:name>Thunderbook</em:name>
+    <em:description>Export messages (including RSS items) as e-books.</em:description>
+    <em:version>0.9</em:version>
+    <em:type>2</em:type> <!-- 2 = Extensions -->
+    <em:creator>Julien L.</em:creator>
+    <em:translator>Julien L. (en)</em:translator>
+    <em:translator>Julien L. (fr)</em:translator>
+    <em:translator>Óvári (hu)</em:translator>
+
+    <!-- Target application: Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- French localization -->
+    <em:localized>
+      <Description>
+        <em:locale>fr</em:locale>
+        <em:name>Thunderbook</em:name>
+        <em:description>Exporter des messages (articles RSS inclus) en un livre électronique (e-book).</em:description>
+      </Description>
+    </em:localized>
+
+    <!-- Hungarian localization -->
+    <em:localized>
+      <Description>
+        <em:locale>hu</em:locale>
+        <em:name>Thunder könyv (Thunderbook)</em:name>
+        <em:description>Üzenetek exportálása (beleértve az RSS-elemeket is) e-könyvekként.</em:description>
+      </Description>
+    </em:localized>
+  </Description>
+</RDF>

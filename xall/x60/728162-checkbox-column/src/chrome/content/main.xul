@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://checkbox/skin/style.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://checkbox/locale/checkbox.dtd" >
+<overlay id="checkbox-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <tree id="threadTree">
+    <treecols id="threadCols">
+      <treecol id="selectCol" class="treecol-image selectColumnHeader" width="48" 
+        persist="hidden ordinal" fixed="true" cycler="true"
+        currentView="unthreaded" position="1" ordinal="1"
+        label="&selectCol.label;" tooltiptext="&selectCol.tooltiptext;" />
+      <splitter class="tree-splitter" />
+    </treecols>
+  </tree>
+  <script type="application/javascript" src="chrome://checkbox/content/overlay.js"/>
+</overlay>

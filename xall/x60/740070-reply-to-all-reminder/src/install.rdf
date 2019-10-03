@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>replytoallreminder@qiqitori.com</em:id>
+    <em:localized>
+      <Description>
+        <em:locale>de-DE</em:locale>
+        <em:name>Reply To All Reminder</em:name>
+        <em:description>Fragt, ob man wirklich nur einer Person zurückschreiben möchte, wenn bei einer Email mit mehreren Empfängern anstatt "Allen antworten" nur das reguläre "Antworten" gedrückt wurde.</em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>ja-JP</em:locale>
+        <em:name>Reply To All Reminder</em:name>
+        <em:description>CCや複数の受取人が入っているメールに対して、「全てに返信」ではなく通常返信を押した場合、確認メッセージを表示します。</em:description>
+      </Description>
+    </em:localized>
+    <em:name>Reply To All Reminder</em:name>
+    <em:description>Asks for confirmation when "Reply" instead of "Reply to All" is pressed on an email with multiple recipients.</em:description>
+    <em:version>1.0</em:version>
+    <em:creator>Qiqitori</em:creator>
+    <em:homepageURL>http://blog.qiqitori.com/?p=165</em:homepageURL>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>1.5</em:minVersion>
+        <em:maxVersion>51.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+   
+  </Description>      
+</RDF>
