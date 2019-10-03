@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
+
+<prefwindow id="EnhancedDateFormatterPrefs"
+            title="Enhanced Date Formatter Preferences"
+            onload="EnhancedDateFormatter.onPrefWindowLoad()"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            >
+  
+  <prefpane id="EnhancedDateFormatterPrefs-pane">
+
+  <script type="application/javascript" src="chrome://enhanceddateformatter/content/enhancedDateFormatter.js"/>
+  <script type="application/javascript" src="chrome://enhanceddateformatter/content/preferences.js"/>
+
+    
+    <preferences>
+      <preference id="extensions.enhancedDateFormatter.useCustomFormatsForDateColumn"
+                  name="extensions.enhancedDateFormatter.useCustomFormatsForDateColumn"
+                  type="bool"/>
+      <preference id="extensions.enhancedDateFormatter.useCustomFormatsForReceivedColumn"
+                  name="extensions.enhancedDateFormatter.useCustomFormatsForReceivedColumn"
+                  type="bool"/>
+      <preference id="extensions.enhancedDateFormatter.useCustomFormatsForMessagePane"
+                  name="extensions.enhancedDateFormatter.useCustomFormatsForMessagePane"
+                  type="bool"/>
+      <preference id="extensions.enhancedDateFormatter.defaultDateFormat"
+                  name="extensions.enhancedDateFormatter.defaultDateFormat"
+                  type="string"/>
+      <preference id="extensions.enhancedDateFormatter.useCustomFormatForToday"
+                  name="extensions.enhancedDateFormatter.useCustomFormatForToday"
+                  type="bool"/>
+      <preference id="extensions.enhancedDateFormatter.todayDateFormat"
+                  name="extensions.enhancedDateFormatter.todayDateFormat"
+                  type="string"/>
+      <preference id="extensions.enhancedDateFormatter.useCustomFormatForYesterday"
+                  name="extensions.enhancedDateFormatter.useCustomFormatForYesterday"
+                  type="bool"/>
+      <preference id="extensions.enhancedDateFormatter.yesterdayDateFormat"
+                  name="extensions.enhancedDateFormatter.yesterdayDateFormat"
+                  type="string"/>
+      <preference id="extensions.enhancedDateFormatter.useCustomFormatForLastWeek"
+                  name="extensions.enhancedDateFormatter.useCustomFormatForLastWeek"
+                  type="bool"/>
+      <preference id="extensions.enhancedDateFormatter.lastWeekDateFormat"
+                  name="extensions.enhancedDateFormatter.lastWeekDateFormat"
+                  type="string"/>
+    </preferences>
+
+    <hbox>
+      <groupbox flex="1">
+        <caption label="Use custom date formats for" />
+        <hbox>
+          <checkbox id="checkbox_useCustomFormatsForDateColumn"
+                    label="Date column"
+                    preference="extensions.enhancedDateFormatter.useCustomFormatsForDateColumn"
+                    oncommand="EnhancedDateFormatter.adjustDisabledStates()"/>
+          <checkbox id="checkbox_useCustomFormatsForReceivedColumn"
+                    label="Received column"
+                    preference="extensions.enhancedDateFormatter.useCustomFormatsForReceivedColumn"
+                    oncommand="EnhancedDateFormatter.adjustDisabledStates()"/>
+          <checkbox id="checkbox_useCustomFormatsForMessagePane"
+                    label="Message pane"
+                    preference="extensions.enhancedDateFormatter.useCustomFormatsForMessagePane"
+                    oncommand="EnhancedDateFormatter.adjustDisabledStates()"/>
+        </hbox>
+
+        <description style="font-weight: bold">Note: To view your changes, you may need to restart Thunderbird.</description>
+        
+        <hbox align="center">
+          <vbox>
+            <label id="label_defaultDateFormat" control="textbox_defaultDateFormat">
+              Default date format:
+            </label>
+            <description id="description_defaultDateFormat">
+              (For any date not covered by one of the conditions below)
+            </description>
+          </vbox>
+          <textbox id="textbox_defaultDateFormat" preference="extensions.enhancedDateFormatter.defaultDateFormat"/>
+        </hbox>
+
+        <groupbox id="groupbox_useCustomFormatForToday">
+          <caption label="Messages with today's date" />
+          <checkbox id="checkbox_useCustomFormatForToday"
+                    label="Use a custom format for messages with today's date"
+                    preference="extensions.enhancedDateFormatter.useCustomFormatForToday"
+                    oncommand="EnhancedDateFormatter.adjustDisabledStates()"/>
+          <hbox align="center">
+            <label id="label_todayDateFormat" control="textbox_todayDateFormat" value="Date format:" />
+            <textbox id="textbox_todayDateFormat" preference="extensions.enhancedDateFormatter.todayDateFormat"/>
+          </hbox>
+        </groupbox>
+        
+        <groupbox>
+          <caption label="Messages with yesterday's date" />
+          <checkbox id="checkbox_useCustomFormatForYesterday"
+                    label="Use a custom format for messages with yesterday's date"
+                    preference="extensions.enhancedDateFormatter.useCustomFormatForYesterday"
+                    oncommand="EnhancedDateFormatter.adjustDisabledStates()"/>
+          <hbox align="center">
+            <label id="label_yesterdayDateFormat" control="textbox_yesterdayDateFormat" value="Date format:" />
+            <textbox id="textbox_yesterdayDateFormat" preference="extensions.enhancedDateFormatter.yesterdayDateFormat"/>
+          </hbox>
+        </groupbox>
+
+        <groupbox>
+          <caption label="Messages with a date in the last seven days" />
+          <checkbox id="checkbox_useCustomFormatForLastWeek"
+                    label="Use a custom format for messages with lastWeek's date"
+                    preference="extensions.enhancedDateFormatter.useCustomFormatForLastWeek"
+                    oncommand="EnhancedDateFormatter.adjustDisabledStates()"/>
+          <hbox align="center">
+            <label id="label_lastWeekDateFormat" control="textbox_lastWeekDateFormat" value="Date format:" />
+            <textbox id="textbox_lastWeekDateFormat" preference="extensions.enhancedDateFormatter.lastWeekDateFormat"/>
+          </hbox>
+        </groupbox>
+
+      </groupbox>
+
+      <separator class="groove" orient="vertical" />
+      
+
+      <groupbox flex="1">
+        <caption label="Guide to custom format fields" />
+
+			   <listbox id="theList" rows="20" width="400">
+				   <listhead>
+					   <listheader label="Symbol"/>
+					   <listheader label="Description" />
+				   </listhead>
+				   <listcols>
+					   <listcol/>
+					   <listcol flex="1"/>
+				   </listcols>
+				<listitem>
+				  <listcell label="Day"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%a"/>
+				  <listcell label="abbreviated weekday name."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%A"/>
+				  <listcell label="full weekday name."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%d"/>
+				  <listcell label="day of the month [01,31]."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%e"/>
+				  <listcell label="day of the month [1,31]; "/>
+				</listitem>
+				<listitem>
+				  <listcell label="%j"/>
+				  <listcell label="day of the year [001,366]."/>
+				</listitem>
+
+				<listitem>
+				  <listcell label=""/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="Month"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%b"/>
+				  <listcell label="abbreviated month name."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%B"/>
+				  <listcell label="full month name."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%m"/>
+				  <listcell label="month [01,12]."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%n"/>
+				  <listcell label="month [1,12]."/>
+				</listitem>
+
+				<listitem>
+				  <listcell label=""/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="Year"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%y"/>
+				  <listcell label="year without century [00,99]."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%Y"/>
+				  <listcell label="full year [0000,9999]."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%C"/>
+				  <listcell label="century number [00,99]."/>
+				</listitem>
+
+				<listitem>
+				  <listcell label=""/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="Week"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%u"/>
+				  <listcell label="weekday [1,7], with 1 representing Monday."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%V"/>
+				  <listcell label="week number of the year (Monday as the first day of the week) [01,53]. "/>
+				</listitem>
+				<listitem>
+				  <listcell label="%w"/>
+				  <listcell label="weekday [0,6], with 0 representing Sunday."/>
+				</listitem>
+
+				<listitem>
+				  <listcell label=""/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="Hour"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%H"/>
+				  <listcell label="hour (24-hour clock) [00,23]."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%k"/>
+				  <listcell label="hour (24-hour clock) [0,23]."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%I"/>
+				  <listcell label="hour (12-hour clock) [01,12]."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%l"/>
+				  <listcell label="hour (12-hour clock) [1,12]."/>
+				</listitem>
+
+				<listitem>
+				  <listcell label=""/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="Minute"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%M"/>
+				  <listcell label="minute [00,59]."/>
+				</listitem>
+
+				<listitem>
+				  <listcell label=""/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="Second"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%S"/>
+				  <listcell label="second [00,59]."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%s"/>
+				  <listcell label="number of seconds since 1970-01-01 00:00:00 +0000 (UTC)."/>
+				</listitem>
+
+        
+				<listitem>
+				  <listcell label=""/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="AM/PM"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%p"/>
+				  <listcell label="AM or PM"/>
+				</listitem>
+				<listitem>
+				  <listcell label="%P"/>
+				  <listcell label="am or pm"/>
+				</listitem>
+
+				<listitem>
+				  <listcell label=""/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="Timezone"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%Z"/>
+				  <listcell label="timezone name."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%z"/>
+				  <listcell label="+hhmm or -hhmm numeric timezone."/>
+				</listitem>
+
+				<listitem>
+				  <listcell label=""/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="Combinations"/>
+				  <listcell label=""/>
+				</listitem>
+				<listitem>
+				  <listcell label="%c"/>
+				  <listcell label="date and time in UTC."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%F"/>
+				  <listcell label="equivalent to %Y-%m-%d."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%x"/>
+				  <listcell label="date."/>
+				</listitem>
+				<listitem>
+				  <listcell label="%X"/>
+				  <listcell label="time."/>
+				</listitem>
+			   </listbox>
+
+      </groupbox>
+      
+      
+    </hbox>
+  </prefpane>
+  
+</prefwindow>

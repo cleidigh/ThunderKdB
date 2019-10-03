@@ -1,0 +1,9 @@
+content     glodaquilla  content/
+resource    glodaquilla  content/
+overlay     chrome://messenger/content/messenger.xul      chrome://glodaquilla/content/glodaquillaOverlay.xul
+overlay     chrome://messenger/content/folderProps.xul    chrome://glodaquilla/content/folderPropsOverlay.xul
+skin        glodaquilla classic   skin/
+locale      glodaquilla en-US     locale/en-US/
+component   {deb0918a-0652-4a5b-9f48-a6e713cf1803} components/inheritPane-service.js
+contract    @mozilla.org/accountmanager/extension;1?name=inheritPane {deb0918a-0652-4a5b-9f48-a6e713cf1803}
+category    mailnews-accountmanager-extensions mesquilla-extension-inherit-pane @mozilla.org/accountmanager/extension;1?name=inheritPane

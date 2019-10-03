@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+/*
+ ***** BEGIN LICENSE BLOCK *****
+ * This file is part of the application GlodaQuilla by Mesquilla.
+ *
+ * This application is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this application.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is Mesquilla code.
+ *
+ * The Initial Developer of the Original Code is
+ * Kent James <rkent@mesquilla.com>
+ * Portions created by the Initial Developer are Copyright (C) 2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *
+ * ***** END LICENSE BLOCK *****
+ */
+ -->
+<!DOCTYPE overlay SYSTEM 'chrome://glodaquilla/locale/glodaquilla.dtd'>
+<overlay id='glodaquillaOverlay'
+  xmlns='http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul'>
+  <script type='application/javascript' src='chrome://glodaquilla/content/glodaquillaOverlay.js'/>
+  <!-- add custom columns to thread tree -->
+  <tree id="threadTree">
+    <treecols id="threadCols">
+      <splitter class="tree-splitter" />
+      <treecol id="colOffline" persist="hidden ordinal"
+             tooltiptext="&colOffline.tooltiptext;"
+             label="onDisk" fixed="true"
+             class="treecol-image" src="chrome://glodaquilla/skin/good.png" />
+      <splitter class="tree-splitter" />
+      <treecol id="colGlodaId" persist="hidden ordinal width"
+             tooltiptext="&colGlodaId.tooltiptext;"
+             label="gloda id"
+             class="treecol-image" src="chrome://glodaquilla/skin/number.png"/>
+      <splitter class="tree-splitter" />
+      <treecol id="colGlodaDirty" persist="hidden ordinal width"
+             tooltiptext="&colGlodaDirty.tooltiptext;"
+             label="gloda dirty"
+             class="treecol-image" src="chrome://glodaquilla/skin/questions.png"/>
+    </treecols>
+  </tree>
+<!-- -->
+</overlay>

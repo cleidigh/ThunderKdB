@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="opposite.css" type="text/css"?>
+
+<overlay id="messengerWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<toolbarpalette id="MailToolbarPalette">
+<toolbarbutton id="opposite" class="toolbarbutton-1 chromeclass-toolbar-additonal" label=" Today subpane" type="menu-button">
+<menupopup>
+<menuitem onclick="
+var todayBox = window.document.getElementById('mini-day-box');
+var todayContent = window.document.getElementById('calendarContent');
+todayContent.allowEvents = true;
+var todaySidebar = window.document.getElementById('ltnSidebar');
+todaySidebar.allowEvents = true;
+var todayClone1 = todayBox.cloneNode(1);
+todaySidebar.appendChild(todayClone1);
+var todayMBox = window.document.getElementById('messengerBox');
+todayMBox.allowEvents = true;
+var todayFBox = window.document.getElementById('folderPaneBox');
+todayFBox.allowEvents = true;
+var todayClone2 = todayBox.cloneNode(2);
+todayFBox.appendChild(todayClone2);
+todayClone1.style.setProperty('border', 'solid', 'important'); 
+todayClone1.style.setProperty('border-width', '1px', 'important'); 
+todayClone1.style.setProperty('border-color', 'red', 'important');
+todayClone2.style.setProperty('border', 'solid', 'important'); 
+todayClone2.style.setProperty('border-width', '1px', 'important'); 
+todayClone2.style.setProperty('border-color', 'red', 'important');" 
+label="append today subpane to opposite side"/>
+
+<menuitem onclick="
+var todayBox = window.document.getElementById('mini-day-box');
+var todaySidebar = window.document.getElementById('ltnSidebar');
+var todayFBox = window.document.getElementById('folderPaneBox');
+var todayClone1 = todayBox.cloneNode(1);
+var todayClone2 = todayBox.cloneNode(2);
+todaySidebar.removeChild(todaySidebar.lastChild);
+todayFBox.removeChild(todayFBox.lastChild);"
+label="remove today subpane on opposite side"/>
+</menupopup>
+</toolbarbutton>
+</toolbarpalette>
+</overlay>
