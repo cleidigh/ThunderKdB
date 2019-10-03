@@ -1,0 +1,8 @@
+content   SavedSearchThemAll                 chrome/content/
+skin      SavedSearchThemAll   classic/1.0   chrome/skin/
+locale    SavedSearchThemAll   en-US         chrome/locale/en-US/
+locale    SavedSearchThemAll   it            chrome/locale/it/
+
+style chrome://global/content/customizeToolbar.xul chrome://SavedSearchThemAll/content/ssta-button.css appversion<=58.0b3
+style chrome://messenger/content/customizeToolbar.xul chrome://SavedSearchThemAll/content/ssta-button.css appversion>=59.0a1
+overlay chrome://messenger/content/messenger.xul chrome://SavedSearchThemAll/content/ssta-overlay.xul

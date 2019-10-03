@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+ <Description about="urn:mozilla:install-manifest">
+
+  <em:id>{1B0ADFEC-846C-401D-BA54-7842CBD485D4}</em:id>
+  <em:name>Check and Send</em:name>
+  <em:version>1.0.20b1</em:version>
+  <em:description>Confirm before sending mail.</em:description>
+  <em:creator>H.Ogi</em:creator>
+  <em:optionsURL>chrome://chksend/content/settings.xul</em:optionsURL>
+	<em:iconURL></em:iconURL>
+	<em:homepageURL>http://hogi.sakura.ne.jp/en/</em:homepageURL>
+  <em:contributor>MatrixIsAllOver (it-IT translator)</em:contributor>
+  <em:contributor>jojaba (fr-FR translator)</em:contributor>
+  <em:contributor>markh (nl-NL translator)</em:contributor>
+  <em:contributor>wladow (sk-SK translator)</em:contributor>
+  <em:contributor>erglo (de-DE translator)</em:contributor>
+  <em:contributor>raryelcsouza (pt-BR translator)</em:contributor>
+  <em:contributor>Pinsky (ru-RU translator)</em:contributor>
+  <em:contributor>chuzo and Proyecto Nave (es-ES translator)</em:contributor>
+	<em:contributor>viktor.kleiner (cs translator)</em:contributor>
+  <em:targetApplication>
+   <Description>
+    <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+    <em:minVersion>60.0</em:minVersion>
+    <em:maxVersion>60.*</em:maxVersion>
+   </Description>
+  </em:targetApplication>
+ </Description>
+</RDF>

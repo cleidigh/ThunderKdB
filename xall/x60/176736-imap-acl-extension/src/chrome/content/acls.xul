@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM 'chrome://imapaclext/locale/acls.dtd'>
+<dialog id="user_list_dialog"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="&extensions.ImapAclExt.sharingStatus;"
+    buttons="accept"
+    onload="ImapAclExt.Aclist.init();">
+	<stringbundleset id='stringbundleset'>
+		<stringbundle id='acls-bundle' src='chrome://imapaclext/locale/acls.properties'/>
+	</stringbundleset>
+	
+<!--	<script type="application/x-javascript" src="chrome://imapaclext/content/debug.js" /> //-->
+	<script type="application/x-javascript" src="chrome://imapaclext/content/aclUtils.js" />
+	<script type="application/x-javascript" src="chrome://imapaclext/content/acls.js" />
+    	<!--
+	<p><label id="accLabel" value="&extensions.ImapAclExt.account;:"/><spacer width="25px"/><label id="accountname_label" value='' style="v-align:right"/></p>
+	//-->
+	<label id="foldername_label" value=''/>
+	<hbox>
+		<vbox flex="1">
+			<listbox id="user_list" onclick="ImapAclExt.Aclist.click(event)" flex="1">
+				<listhead>
+					<listheader label="&extensions.ImapAclExt.user;"/>
+					<listheader label="&extensions.ImapAclExt.rights;"/>
+				</listhead>
+
+				<listcols>
+					<listcol minwidth="180" flex="1"/>
+					<listcol minwidth="100" flex="1"/>
+				</listcols>
+			</listbox>
+			<label id="status_label" value='' style="background-color:grey; color:black;width:100%;"/>
+		</vbox>
+		<vbox flex="1">
+			<button id="chgBtn" tooltiptext="&extensions.ImapAclExt.cRights;" oncommand="ImapAclExt.Aclist.change()" label="&extensions.ImapAclExt.change;"/>
+			<button id="delBtn" tooltiptext="&extensions.ImapAclExt.dUser;" oncommand="ImapAclExt.Aclist.del()" label="&extensions.ImapAclExt.delete;"/>
+			<checkbox id="recursion" label="&extensions.ImapAclExt.recursion;" checked="false" />
+			<button id="newBtn" tooltiptext="&extensions.ImapAclExt.nUser;" oncommand="ImapAclExt.Aclist.cnew()" label="&extensions.ImapAclExt.new;"/>
+			<button id="overviewBtn" tooltiptext="&extensions.ImapAclExt.overview;" oncommand="ImapAclExt.Aclist.onOverviewButtonCommand()" label="&extensions.ImapAclExt.overview;"/>
+		</vbox>
+    </hbox>
+</dialog>

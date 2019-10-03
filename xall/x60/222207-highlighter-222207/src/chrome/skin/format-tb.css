@@ -1,0 +1,28 @@
+#FormatToolbar
+{
+}
+
+#FormatToolbar > spacer
+{
+    display:none !important;
+}
+
+#highlighter-toolbar-button
+{
+  list-style-image: url("chrome://highlighter/skin/toolbar/button-mini.png") !important;
+}
+
+#highlighter-toolbar-button[disabled]
+{
+  opacity: .4;
+  list-style-image: url("chrome://highlighter/skin/toolbar/button-disabled.png") !important;
+}
+
+#highlighter-entry-yellow { list-style-image: url("chrome://highlighter/skin/menu/dot-yellow.png") !important; }
+#highlighter-entry-cyan   { list-style-image: url("chrome://highlighter/skin/menu/dot-cyan.png")   !important; }
+#highlighter-entry-green  { list-style-image: url("chrome://highlighter/skin/menu/dot-green.png")  !important; }
+#highlighter-entry-red    { list-style-image: url("chrome://highlighter/skin/menu/dot-red.png")    !important; }
+#highlighter-entry-pink   { list-style-image: url("chrome://highlighter/skin/menu/dot-pink.png")   !important; }
+#highlighter-entry-lgrey  { list-style-image: url("chrome://highlighter/skin/menu/dot-lgray.png")  !important; }
+#highlighter-entry-dgrey  { list-style-image: url("chrome://highlighter/skin/menu/dot-dgray.png")  !important; }
+#highlighter-entry-clear  { list-style-image: url("chrome://highlighter/skin/menu/fmt-clear.png")  !important; } 

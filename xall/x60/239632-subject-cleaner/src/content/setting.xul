@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://subjectcleaner/content/setting.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://subjectcleaner/locale/subjectcleaner.dtd">
+
+<dialog id="setting" title="&setting.title;"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    buttons="accept,cancel"
+    onload="SubjectCleanerSetting.startup()"
+    ondialogaccept="return SubjectCleanerSetting.doOK();"
+    ondialogcancel="return SubjectCleanerSetting.doCancel();">
+
+  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+  <script type="application/x-javascript" src="chrome://subjectcleaner/content/prefutil.js"/>
+  <script type="application/x-javascript" src="chrome://subjectcleaner/content/clean.js"/>
+  <script type="application/x-javascript" src="chrome://subjectcleaner/content/setting.js"/>
+
+  <tabbox id="myTabList" selectedIndex="0">
+    <tabs>
+      <tab label="&setting.tab.setting;"/>
+      <tab label="&setting.tab.test;"/>
+    </tabs>
+    <tabpanels>
+      <tabpanel>
+        <vbox>
+          <hbox>
+            <listbox id="removalList" width="500" height="146" onselect="SubjectCleanerSetting.setSelectedItem(this.selectedItem);">
+              <listhead>
+                <listheader label="&setting.removallist.removalstring;"/>
+                <listheader label="&setting.removallist.casesensitive;"/>
+                <listheader label="&setting.removallist.regexp;"/>
+                <listheader/>
+              </listhead>
+              <listcols>
+                <listcol flex="1"/>
+                <listcol/>
+                <listcol/>
+                <listcol/>
+              </listcols>
+            </listbox>
+            <vbox>
+              <button id="add" label="&setting.removallist.button.add;"/>
+              <button id="edit" label="&setting.removallist.button.edit;"/>
+              <button id="delete" label="&setting.removallist.button.delete;"/>
+            </vbox>
+          </hbox>
+          <checkbox id="autoRemove" label="&setting.checkbox.autoremove;"/>
+          <checkbox id="autoFocus" label="&setting.checkbox.autofocus;"/>
+          <hbox align="right">
+            <button id="default" label="&setting.default;"/>
+          </hbox>
+        </vbox>
+      </tabpanel>
+      <tabpanel>
+        <vbox>
+          <label value="&setting.test.label;"/>
+          <hbox>
+            <textbox id="testBox" width="350"/>
+            <button id="test" label="&setting.test.button.execute;"/>
+          </hbox>
+        </vbox>
+      </tabpanel>
+    </tabpanels>
+  </tabbox>
+
+</dialog>

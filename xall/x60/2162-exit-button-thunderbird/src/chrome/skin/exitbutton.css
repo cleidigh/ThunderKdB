@@ -1,0 +1,25 @@
+/* Exit Button extension */
+/* default theme support */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#ExitButton {
+	list-style-image: url("chrome://exitbutton/skin/exit.png");
+}
+
+#ExitButton:hover {
+	list-style-image: url("chrome://exitbutton/skin/exit.png");
+}
+
+toolbar[iconsize="small"] #ExitButton {
+	list-style-image: url("chrome://exitbutton/skin/exit-small.png");
+}
+
+toolbar[iconsize="small"] #ExitButton:hover {
+	list-style-image: url("chrome://exitbutton/skin/exit-small.png");
+}
+
+#menu_FileQuitItem {
+	-moz-binding: url("chrome://global/content/bindings/menu.xml#menuitem-iconic");
+	list-style-image: url("chrome://exitbutton/skin/exit-small.png");
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://SavedSearchThemAll/locale/settings.dtd">
+<prefwindow id="SavedSearchThemAll_Settings"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  title="&SavedSearchThemAll.SettingsTitle;" onload="miczSavedSearchThemAllPref.onLoad();">
+  <prefpane id="SavedSearchThemAll_PrefPane">
+    <preferences>
+      <preference id="SavedSearchThemAll.AllFromLocalFolders"
+        name="extensions.SavedSearchThemAll.AllFromLocalFolders"
+        type="bool" />
+      <preference id="SavedSearchThemAll.ConsiderOnlySubfolders"
+        name="extensions.SavedSearchThemAll.ConsiderOnlySubfolders"
+        type="bool" onchange="miczSavedSearchThemAllPref.AllFromLocalFolders_reset();" />
+    </preferences>
+    <label control="symbol" value="&SavedSearchThemAll.GlobalDesc1;"/>
+    <label control="symbol" value="&SavedSearchThemAll.GlobalDesc2;"/>
+    <label control="symbol" value=" "/>
+    <checkbox id="SavedSearchThemAll.AllFromLocalFolders_checkbox" label="&AllFromLocalFolders.label;"
+      preference="SavedSearchThemAll.AllFromLocalFolders" />
+    <label id="SavedSearchThemAll.AllFromLocalFolders_desc" value="&AllFromLocalFolders.description;"/>
+    <label control="symbol" value=" "/>
+    <checkbox id="SavedSearchThemAll.ConsiderOnlySubfolders_checkbox" label="&ConsiderOnlySubfolders.label;"
+      preference="SavedSearchThemAll.ConsiderOnlySubfolders" />
+    <label control="symbol" value="&ConsiderOnlySubfolders.description1;"/>
+    <label control="symbol" value="&ConsiderOnlySubfolders.description2;"/>
+  </prefpane>
+  <script type="application/x-javascript" src="chrome://SavedSearchThemAll/content/ssta-settings.js" />
+</prefwindow>

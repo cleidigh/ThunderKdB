@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>imap-acl@sirphreak.com</em:id>
+    <em:type>2</em:type>
+    <em:unpack>false</em:unpack>
+    <em:name>Imap-ACL-Extension</em:name>
+    <em:version>0.2.8</em:version>
+    <em:creator>Daniel Stoye</em:creator>
+    <em:contributor></em:contributor>
+    <em:description>Extension to manage ACLs on Imap Servers</em:description>
+    <em:aboutURL>chrome://imapaclext/content/about.xul</em:aboutURL>
+    <em:optionsURL>chrome://imapaclext/content/options.xul</em:optionsURL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
+        <em:minVersion>57.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

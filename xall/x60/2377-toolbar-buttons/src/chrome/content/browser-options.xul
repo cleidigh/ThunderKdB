@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay
+[
+  <!ENTITY % brand SYSTEM "chrome://global/locale/brand.dtd"> %brand;
+  <!ENTITY % tbutton SYSTEM "chrome://toolbar-buttons/locale/options.dtd"> %tbutton;
+]>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<prefwindow id="tbutton-options"  
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	persist="screenX screenY" title="&options.window.title;" >
+				<prefpane id="prefpane-toggle-prox-label" image="chrome://toolbar-buttons/skin/option/world-network.png" label="&toggle.prox.label;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+					<caption label="&toggle.prox.label;" />
+					<preferences>
+						<preference id="extension.tbutton.toggle.proxy" name="extension.tbutton.toggle.proxy"
+							type="int"/>
+					</preferences>
+					<description>&toggle.proxy.description;</description>
+					<radiogroup preference="extension.tbutton.toggle.proxy">
+						<radio value="0" label="&toggle.proxy.direct;"/>
+						<radio value="1" label="&toggle.proxy.manual;"/>
+						<radio value="2" label="&toggle.proxy.auto.configuration;"/>
+						<radio value="4" label="&toggle.proxy.auto.detect;"/>
+						<radio value="5" label="&toggle.proxy.system;"/>
+					</radiogroup>
+				</groupbox></vbox></prefpane>
+			<prefpane id="prefpane-readmail-path-caption" image="chrome://toolbar-buttons/skin/option/email.png" label="&readmail.path.caption;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+					<caption label="&readmail.path.caption;" />
+					<preferences>
+						<preference id="extension.tbutton.readmail.path" name="extension.tbutton.readmail.path" type="unichar"/>
+					</preferences>
+					<box>
+						<label value="&readmail.path.desc;"/>
+					</box>
+					<box>
+						<textbox id="readmailpath" preference="extension.tbutton.readmail.path" flex="1"/>
+						<button label="&read.select.button;" style="float:right" oncommand="toolbar_buttons.getFile('readmailpath');"/>
+					</box>
+				</groupbox>
+				<groupbox>
+					<caption label="&readnews.path.caption;" />
+					<preferences>
+						<preference id="extension.tbutton.readnews.path" name="extension.tbutton.readnews.path" type="unichar"/>
+					</preferences>
+					<box>
+						<label value="&readnews.path.desc;"/>
+					</box>
+					<box>
+						<textbox id="readnewspath" preference="extension.tbutton.readnews.path" flex="1"/>
+						<button label="&read.select.button;" style="float:right" oncommand="toolbar_buttons.getFile('readnewspath');"/>
+					</box>
+				</groupbox></vbox></prefpane>
+			<prefpane id="prefpane-confirm-caption" image="chrome://toolbar-buttons/skin/option/application-error.png" label="&confirm.caption;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+					<caption label="&restart.label;" />
+					<preferences>
+						<preference id="extension.tbutton.restart" name="extension.tbutton.restart" type="bool"/>
+					</preferences>
+					<checkbox preference="extension.tbutton.restart" label="&restart.checkbox;"/>
+				</groupbox>
+				<groupbox>
+					<caption label="&tb-clear-cache.label;" />
+					<preferences>
+						<preference id="extension.tbutton.clear.cache.check" name="extension.tbutton.clear.cache.check" type="bool"/>
+					</preferences>
+					<checkbox preference="extension.tbutton.clear.cache.check" label="&clear.cache.checkbox;"/>
+				</groupbox>
+				<groupbox>
+					<caption label="&tb-delete-cookies.label;" />
+					<preferences>
+						<preference id="extension.tbutton.delete.cookies.check" name="extension.tbutton.delete.cookies.check" type="bool"/>
+					</preferences>
+					<checkbox preference="extension.tbutton.delete.cookies.check" label="&delete.cookies.checkbox;"/>
+				</groupbox></vbox></prefpane>
+			<prefpane id="prefpane-settings-label" image="chrome://toolbar-buttons/skin/option/cog.png" label="&settings.label;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+					<caption label="&toggle.label;" />
+					<preferences>
+						<preference id="extension.tbutton.do.reload" name="extension.tbutton.do.reload"
+							type="bool"/>
+					</preferences>
+					<checkbox preference="extension.tbutton.do.reload" label="&toggle.checkbox;"/>
+				</groupbox>
+				<groupbox>
+					<caption label="&open-new-tab.label;" />
+					<preferences>
+						<preference id="extension.tbutton.always.new.tab" name="extension.tbutton.always.new.tab"
+							type="bool"/>
+					</preferences>
+					<radiogroup preference="extension.tbutton.always.new.tab">
+						<radio value="true" label="&open-new-tab.new;"/>
+						<radio value="false" label="&open-new-tab.current;"/>
+					</radiogroup>
+				</groupbox></vbox></prefpane>
+			<prefpane id="prefpane-tb-all-menus-tooltip" image="chrome://toolbar-buttons/skin/option/menu-edit.png" label="&tb-all-menus.tooltip;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;">
+				<groupbox>
+					<caption label="&tb-all-menus.tooltip;" />
+					<description>&tb-all-menus.option.description;</description>
+					<preferences>
+						<preference id="extension.tbutton.all-menus.icons" name="extension.tbutton.all-menus.icons"
+							type="bool"/>
+						<preference id="extension.tbutton.all-menus.settings" name="extension.tbutton.all-menus.settings"
+							type="bool"/>
+					</preferences>
+					<checkbox preference="extension.tbutton.all-menus.icons" label="&tb-all-menus.option.icons;"/>
+					<checkbox preference="extension.tbutton.all-menus.settings" label="&tb-all-menus.option.settings;"/>
+					<tabbox>
+						<tabs id="all-menus-tabs" />
+						<tabpanels id="all-menus-panels" />
+					</tabbox>
+				</groupbox>
+				</vbox></prefpane>
+			<prefpane id="prefpane-links-caption" image="chrome://toolbar-buttons/skin/option/link.png" label="&links.caption;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+					<caption label="&favorite-page.label;" />
+					<preferences>
+						<preference id="extension.tbutton.url.favorite" name="extension.tbutton.url.favorite"
+							type="unichar"/>
+					</preferences>
+					<description>&favorite-page.description;</description>
+					<textbox preference="extension.tbutton.url.favorite"/>
+				</groupbox></vbox></prefpane>
+			<prefpane id="prefpane-translate-label" image="chrome://toolbar-buttons/skin/option/pencil.png" label="&translate.label;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+					<preferences>
+						<preference id="extension.tbutton.translate.lang" name="extension.tbutton.translate.lang"
+							type="unichar"/>
+						<preference id="extension.tbutton.translate.popup" name="extension.tbutton.translate.popup"
+							type="unichar"/>
+						<preference id="extension.tbutton.translate.service" name="extension.tbutton.translate.service"
+							type="unichar"/>
+					</preferences>
+					<description>&translate.description;</description>
+					<menulist id="translate-languages-menu" disabled="true" preference="extension.tbutton.translate.lang">
+						<menupopup id="translate-languages-popup">
+							<menuitem label="&translate.loading;" id="translate-loading" />
+						</menupopup>
+					</menulist>
+					<menulist id="translate-languages-promt" disabled="true" hidden="true" preference="extension.tbutton.translate.promt">
+						<menupopup id="translate-promt-popup">
+							<menuitem label="&translate.loading;" id="translate-promt-loading" />
+						</menupopup>
+					</menulist>
+					<description>&translate.service.description;</description>
+					<radiogroup preference="extension.tbutton.translate.service">
+						<radio value="google" oncommand="toolbar_buttons.showOtherTranslate();" label="&translate.service.google;"/>
+						<radio value="promt" oncommand="toolbar_buttons.showPromtTranslate();" label="&translate.service.promt;"/>
+						<!--<radio value="bing" oncommand="toolbar_buttons.showOtherTranslate();" label="&translate.service.bing;"/>-->
+					</radiogroup>
+				</groupbox>
+				</vbox></prefpane>
+	<script type="application/x-javascript" src="chrome://toolbar-buttons/content/loader.js"/>
+<script type="application/x-javascript" src="chrome://toolbar-buttons/content/button.js"/>
+<script type="application/x-javascript" src="chrome://toolbar-buttons/content/option.js"/>
+
+</prefwindow>

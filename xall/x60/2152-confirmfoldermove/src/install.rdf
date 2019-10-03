@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>{c267db80-8a57-11da-a8d5-000a95be0946}</em:id>
+    <em:name>ConfirmFolderMove</em:name>
+    <em:version>1.2.0</em:version>
+    <em:type>2</em:type> <!-- type=extension -->
+    
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>60.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    
+    <!-- Front End Integration Hooks (used by Extension Manager)-->
+    <em:description>Introduces a preference that allows users to be prompted before moving folders.</em:description>
+    <em:creator>Ryan Lee (ryan@ryanlee.org)</em:creator>
+    <em:contributor>Manuel Rüger (https://github.com/mrueg)</em:contributor>
+    <em:translator>Marcelo Ghelman (ghelman.net)</em:translator>
+    <em:translator>Edvard Borovskij</em:translator>
+    <em:translator>Carlos Simão</em:translator>
+    <em:translator>ДакСРБИЈА</em:translator>
+    <em:translator>Luana Di Muzio - BabelZilla</em:translator>
+    <em:translator>Володимир Савчук Volodymyr Savchuk</em:translator>
+    <em:translator>yfdyh000 (yfdyh000@gmail.com)</em:translator>
+    <em:translator>Mikael Hiort af Ornäs</em:translator>
+    <em:iconURL>chrome://confirmfmv/skin/icon32x32.png</em:iconURL>
+    <em:homepageURL>http://ryanlee.org/software/mozilla/thunderbird/confirmfmv/</em:homepageURL>
+    <em:optionsURL>chrome://confirmfmv/content/options.xul</em:optionsURL>
+  </Description>
+</RDF>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+ * Version: GPL 3.0
+ *
+ * The contents of this file are subject to the GNU General Public License Version
+ * 3.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.gnu.org/licenses/gpl.txt
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Initial Developer of the Original Code is Mitar <mitar@tnode.com>
+ * https://addons.mozilla.org/es-ES/thunderbird/addon/3448
+ * Portions created by the Initial Developer are Copyright (C) 2006-2009
+ * the Initial Developer. All Rights Reserved.
+ *
+ * ***** END LICENSE BLOCK ***** -->
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>andre.rodier-highlighter@gmailcom</em:id>
+    <em:type>2</em:type>
+    <em:name>Highlighter</em:name>
+    <em:version>0.7.0</em:version>
+    <em:creator>André Rodier</em:creator>
+    <em:contributor></em:contributor>
+    <em:description>Quickly highlight some text in the thunderbird compose windows.</em:description>
+    <em:aboutURL>chrome://highlighter/content/about.xul</em:aboutURL>
+    <em:iconURL>chrome://highlighter/skin/icon.png</em:iconURL>
+    <em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/222207/</em:homepageURL>
+
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
+        <em:minVersion>3.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Seamonkey -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+        <em:minVersion>2.0a3</em:minVersion>
+        <em:maxVersion>2.1a2</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Postbox 2.0 -->
+    <em:targetApplication>
+      <!-- Postbox -->
+      <Description>
+        <em:id>postbox@postbox-inc.com</em:id>
+        <em:minVersion>2.0</em:minVersion>
+        <em:maxVersion>2.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+  </Description>
+</RDF>

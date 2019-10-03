@@ -1,0 +1,31 @@
+[signalspam-tip] {
+    position: relative;
+    cursor: no-drop;
+    border-bottom: 2px dotted #BE0044;
+    z-index: 2147483647;
+}
+/* on génère un élément :after lors du survol :*/
+
+[signalspam-tip]:after {
+    content:"";
+    background-image: url('chrome://signalspam/skin/icon48.png');
+    background-size: 25px 25px;
+    width:25px;
+    height:25px;
+    position: absolute;
+    top: 0;
+    left: 105%;
+    z-index: 2147483647;
+}
+
+/* on génère un second élément en :before*/
+
+[signalspam-tip]:before {
+    content: "⬅︎";
+    position: absolute;
+    top: 5px;
+    left: 101%;
+    font-size: 1em;
+    color: #BE0044;
+    z-index: 2147483647;
+}

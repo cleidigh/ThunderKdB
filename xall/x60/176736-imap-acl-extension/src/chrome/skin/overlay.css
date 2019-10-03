@@ -1,0 +1,49 @@
+@import url(chrome://global/skin/);
+
+#button-iae { 
+	list-style-image: url('chrome://imapaclext/skin/toolbar-button_24_t.png');
+	-moz-image-region: rect(0px 24px 24px 0px);  
+}
+
+#button-iae:hover {
+	-moz-image-region: rect(24px 24px 48px 0px);
+}
+
+#button-iae[disabled='true'] { 
+	-moz-image-region: rect(48px 24px 72px 0px);
+}
+
+toolbar[iconsize='small'] #button-iae {
+	list-style-image: url('chrome://imapaclext/skin/toolbar-button_16_t.png');
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+toolbar[iconsize='small'] #button-iae:hover {
+	-moz-image-region: rect(16px 16px 32px 0px);
+}
+toolbar[iconsize='small'] #button-iae[disabled='true'] {
+	-moz-image-region: rect(32px 16px 48px 0px);
+}
+
+#button-iae-list { 
+	list-style-image: url('chrome://imapaclext/skin/toolbar-button_24_t_list.png');
+	-moz-image-region: rect(0px 24px 24px 0px);  
+}
+
+#button-iae-list:hover {
+	-moz-image-region: rect(24px 24px 48px 0px);
+}
+
+#button-iae-list[disabled='true'] { 
+	-moz-image-region: rect(48px 24px 72px 0px);
+}
+
+toolbar[iconsize='small'] #button-iae-list {
+	list-style-image: url('chrome://imapaclext/skin/toolbar-button_16_t_list.png');
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+toolbar[iconsize='small'] #button-iae-list:hover {
+	-moz-image-region: rect(16px 16px 32px 0px);
+}
+toolbar[iconsize='small'] #button-iae-list[disabled='true'] {
+	-moz-image-region: rect(32px 16px 48px 0px);
+}

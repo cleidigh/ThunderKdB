@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<?xml-stylesheet href='chrome://imapaclext/skin/overlay.css' type='text/css'?>
+
+<!DOCTYPE overlay SYSTEM 'chrome://imapaclext/locale/overlay.dtd'>
+
+<overlay id='iaeOverlay'
+	xmlns='http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul'>
+<!--	<script type="application/x-javascript" src="chrome://imapaclext/content/debug.js" />!-->
+	<script type='application/x-javascript' src='chrome://imapaclext/content/overlay.js'/>
+	
+	<!--menupopup id="taskPopup">
+	<menuitem id="iae-menupopup" hidden="false" label="&iaeToolbar.label;"
+	    oncommand="ImapAclExt.onToolbarButtonCommand('tbButtonClicked');"/>
+	</menupopup>
+	<menupopup id="taskPopup">
+	    <menuitem id="iae-overview-menu" hidden="false" label="&iaeToolbar.overviewLabel;"
+	    oncommand="ImapAclExt.onToolbarOverviewButtonCommand('tbButtonClicked');"/>
+	</menupopup -->
+	
+	<menupopup id="menu_EditPopup">
+	    <menu id="iae-menu_Edit" label="&iaeToolbar.label;" insertbefore="menu_favoriteFolder">
+		<menupopup id="iae-menupopup">
+		    <menuitem id="iae-menu" hidden="false" label="&iaeToolbar.label;"
+			oncommand="ImapAclExt.onToolbarButtonCommand('tbButtonClicked');"/>
+		    <menuitem id="iae-overview-menu" hidden="false" label="&iaeToolbar.overviewLabel;"
+			oncommand="ImapAclExt.onToolbarOverviewButtonCommand('tbButtonClicked');"/>
+		</menupopup>
+	    </menu>
+	</menupopup>
+	
+	<!-- Toolbar Button -->
+	<toolbox id='mail-toolbox'>
+	    <toolbarpalette id='MailToolbarPalette'>
+		<toolbarbutton
+		    id='button-iae'
+		    class='toolbarbutton-1 chromeclass-toolbar-additional'
+		    label='&iaeToolbar.label;'
+		    tooltiptext='&iaeToolbar.label;'
+		    oncommand="ImapAclExt.onToolbarButtonCommand('tbButtonClicked');">
+		</toolbarbutton>
+		<toolbarbutton
+		    id='button-iae-list'
+		    class='toolbarbutton-1 chromeclass-toolbar-additional'
+		    label='&iaeToolbar.labelList;'
+		    tooltiptext='&iaeToolbar.labelList;'
+		    oncommand="ImapAclExt.onToolbarOverviewButtonCommand('tbButtonClicked');">
+		</toolbarbutton>
+	    </toolbarpalette>
+	</toolbox>
+	
+	<stringbundleset id='stringbundleset'>
+	    <stringbundle id='ImapAclExt-string-bundle' src='chrome://imapaclext/locale/overlay.properties'/>
+	</stringbundleset>
+
+</overlay>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay
+[
+  <!ENTITY % brand SYSTEM "chrome://global/locale/brand.dtd"> %brand;
+  <!ENTITY % tbutton SYSTEM "chrome://toolbar-buttons/locale/options.dtd"> %tbutton;
+]>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<prefwindow id="tbutton-options"  
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	persist="screenX screenY" title="&options.window.title;" >
+				<prefpane id="prefpane-toggle-prox-label" image="chrome://toolbar-buttons/skin/option/world-network.png" label="&toggle.prox.label;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+					<caption label="&toggle.prox.label;" />
+					<preferences>
+						<preference id="extension.tbutton.toggle.proxy" name="extension.tbutton.toggle.proxy"
+							type="int"/>
+					</preferences>
+					<description>&toggle.proxy.description;</description>
+					<radiogroup preference="extension.tbutton.toggle.proxy">
+						<radio value="0" label="&toggle.proxy.direct;"/>
+						<radio value="1" label="&toggle.proxy.manual;"/>
+						<radio value="2" label="&toggle.proxy.auto.configuration;"/>
+						<radio value="4" label="&toggle.proxy.auto.detect;"/>
+						<radio value="5" label="&toggle.proxy.system;"/>
+					</radiogroup>
+				</groupbox></vbox></prefpane>
+			<prefpane id="prefpane-tb-all-menus-tooltip" image="chrome://toolbar-buttons/skin/option/menu-edit.png" label="&tb-all-menus.tooltip;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;">
+				<groupbox>
+					<caption label="&tb-all-menus.tooltip;" />
+					<description>&tb-all-menus.option.description;</description>
+					<preferences>
+						<preference id="extension.tbutton.all-menus.icons" name="extension.tbutton.all-menus.icons"
+							type="bool"/>
+						<preference id="extension.tbutton.all-menus.settings" name="extension.tbutton.all-menus.settings"
+							type="bool"/>
+					</preferences>
+					<checkbox preference="extension.tbutton.all-menus.icons" label="&tb-all-menus.option.icons;"/>
+					<checkbox preference="extension.tbutton.all-menus.settings" label="&tb-all-menus.option.settings;"/>
+					<tabbox>
+						<tabs id="all-menus-tabs" />
+						<tabpanels id="all-menus-panels" />
+					</tabbox>
+				</groupbox>
+				</vbox></prefpane>
+			<prefpane id="prefpane-confirm-caption" image="chrome://toolbar-buttons/skin/option/application-error.png" label="&confirm.caption;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+					<caption label="&restart.label;" />
+					<preferences>
+						<preference id="extension.tbutton.restart" name="extension.tbutton.restart" type="bool"/>
+					</preferences>
+					<checkbox preference="extension.tbutton.restart" label="&restart.checkbox;"/>
+				</groupbox></vbox></prefpane>
+			<prefpane id="prefpane-settings-label" image="chrome://toolbar-buttons/skin/option/cog.png" label="&settings.label;" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+					<caption label="&previous-next.label;" />
+					<preferences>
+						<preference id="extension.tbutton.next" name="extension.tbutton.next"
+							type="bool"/>
+					</preferences>
+					<checkbox preference="extension.tbutton.next" label="&previous-next.checkbox;"/>
+				</groupbox></vbox></prefpane>
+	<script type="application/x-javascript" src="chrome://toolbar-buttons/content/loader.js"/>
+<script type="application/x-javascript" src="chrome://toolbar-buttons/content/button.js"/>
+<script type="application/x-javascript" src="chrome://toolbar-buttons/content/option.js"/>
+
+</prefwindow>

@@ -1,0 +1,11 @@
+content   Highlighter                 chrome/content/
+skin      Highlighter   classic/1.0   chrome/skin/
+locale    Highlighter   de-DE         chrome/locale/de-DE/
+locale    Highlighter   en-GB         chrome/locale/en-GB/
+locale    Highlighter   en-US         chrome/locale/en-US/
+locale    Highlighter   fr-FR         chrome/locale/fr-FR/
+locale    Highlighter   sv-SE         chrome/locale/sv-SE/
+
+# Overlay and styles for the formatting toolbar
+style      chrome://messenger/content/messengercompose/messengercompose.xul    chrome://highlighter/skin/format-tb.css
+overlay    chrome://messenger/content/messengercompose/messengercompose.xul    chrome://highlighter/content/format-tb.xul

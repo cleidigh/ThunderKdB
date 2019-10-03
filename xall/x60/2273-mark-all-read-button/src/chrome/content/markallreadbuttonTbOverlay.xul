@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://markallreadbutton/skin/markallreadbutton.css" type="text/css"?>
+
+<overlay id="markallreadbuttonOverlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<toolbarpalette id="MailToolbarPalette">
+		<toolbarbutton
+			class="toolbarbutton-1"
+			id="MarkAllReadButton"
+			label="Mark All Read"
+			tooltiptext="Mark all emails as read"
+			oncommand="goDoCommand('cmd_markAllRead'); event.preventBubble();" />
+		<toolbarbutton
+			class="toolbarbutton-1"
+			id="MarkThreadReadButton"
+			label="Mark Thread Read"
+			tooltiptext="Mark all emails in thread as read"
+			oncommand="goDoCommand('cmd_markThreadAsRead'); event.preventBubble();" />
+		<toolbarbutton
+			class="toolbarbutton-1"
+			id="NextThreadUnreadButton"
+			label="Next Unread Thread"
+			tooltiptext="Goto next unread thread"
+			oncommand="goDoCommand('cmd_nextUnreadThread'); event.preventBubble();" />
+
+	</toolbarpalette>
+
+</overlay>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM 'chrome://imapaclext/locale/acls.dtd'>
+<dialog id="aclOverview_dialog"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="&extensions.ImapAclExt.overview;"
+    buttons="accept"
+    ondialogaccept="return ImapAclExt.AclOverview.accept();"
+    ondialogcancel="return ImapAclExt.AclOverview.cancel();"
+    onload="ImapAclExt.AclOverview.init();">
+<!--	<script type="application/x-javascript" src="chrome://imapaclext/content/debug.js" />!-->
+	<script type="application/x-javascript" src="chrome://imapaclext/content/aclUtils.js" />
+	<script type="application/x-javascript" src="chrome://imapaclext/content/aclOverview.js" />
+    	<stringbundleset id='stringbundleset'>
+		<stringbundle id='acloverview-bundle' src='chrome://imapaclext/locale/acls.properties'/>
+	</stringbundleset>
+	<hbox>
+		<vbox flex="1">
+			<listbox id="folder_list" onclick="ImapAclExt.AclOverview.click(event)" flex="1">
+				<listhead>
+					<listheader label="&extensions.ImapAclExt.account;"/>
+					<listheader label="&extensions.ImapAclExt.folder;"/>
+					<listheader label="&extensions.ImapAclExt.user;"/>
+					<listheader label="&extensions.ImapAclExt.rights;"/>
+				</listhead>
+
+				<listcols>
+					<listcol minwidth="180" flex="1"/>
+					<listcol minwidth="200" flex="1"/>
+					<listcol minwidth="180" flex="1"/>
+					<listcol minwidth="100" flex="1"/>
+				</listcols>
+			</listbox>
+
+			<label id="status_label" value='' style="background-color:grey; color:black;width:50%;"/>
+			<progressmeter id="folderProgress" mode="determined" value="0"/>
+		</vbox>
+		<vbox flex="1">
+			<button id="chgBtn" tooltiptext="&extensions.ImapAclExt.cRights;" oncommand="ImapAclExt.AclOverview.change()" label="&extensions.ImapAclExt.change;"/>
+			<button id="delBtn" tooltiptext="&extensions.ImapAclExt.dUser;" oncommand="ImapAclExt.AclOverview.del()" label="&extensions.ImapAclExt.delete;"/>
+			<checkbox id="recursion" label="&extensions.ImapAclExt.recursion;" checked="false" />
+			<!--<button id="newBtn" tooltiptext="&extensions.ImapAclExt.nUser;" oncommand="ImapAclExt.AclOverview.cnew()" label="&extensions.ImapAclExt.new;"/>!-->
+		</vbox>
+    </hbox>
+</dialog>

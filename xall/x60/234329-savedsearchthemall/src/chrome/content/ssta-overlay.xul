@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<?xml-stylesheet type="text/css" href="chrome://SavedSearchThemAll/content/ssta-button.css"?>
+
+<!DOCTYPE overlay SYSTEM
+  "chrome://savedsearchthemall/locale/overlay.dtd">
+
+<overlay id="SavedSearchThemAll-browser-overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript"
+    src="chrome://SavedSearchThemAll/content/ssta-overlay.js" />
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="SavedSearchThemAll-string-bundle"
+      src="chrome://SavedSearchThemAll/locale/overlay.properties" />
+  </stringbundleset>
+
+  <!-- Thunderbird mail -->
+<toolbarpalette id="MailToolbarPalette">
+  <toolbarbutton id="ssta-button"/>
+  </toolbarpalette>
+
+<!-- button details -->
+<toolbarpalette id="MailToolbarPalette">
+	<toolbarbutton id="ssta-button"
+	  label="&SavedSearchThemAll.button.label;"
+	  tooltiptext="&SavedSearchThemAll.action.label;"
+	  oncommand="miczSavedSearchThemAll.onMenuItemCommand(event);"
+	  class="toolbarbutton-1"/>
+</toolbarpalette>
+
+ <menupopup id="taskPopup">
+      <menuitem id="SavedSearchThemAll-action-menu-item"
+          label="&SavedSearchThemAll.action.label;"
+          class="menuitem-iconic"
+		  image="chrome://SavedSearchThemAll/skin/savedsearchthemall-icon-small.png"
+          accesskey="&SavedSearchThemAll.actionItem.accesskey;"
+          oncommand="miczSavedSearchThemAll.onMenuItemCommand(event);"
+          insertafter="javascriptConsole,devToolsSeparator"/>
+</menupopup>
+
+ <menupopup id="appmenu_taskPopup">
+      <menuitem id="SavedSearchThemAll-action-appmenu-item"
+          label="&SavedSearchThemAll.action.label;"
+          class="menuitem-iconic"
+		  image="chrome://SavedSearchThemAll/skin/savedsearchthemall-icon-small.png"
+          accesskey="&SavedSearchThemAll.actionItem.accesskey;"
+          oncommand="miczSavedSearchThemAll.onMenuItemCommand(event);"
+          insertafter="appmenu_javascriptConsole,appmenu_devToolsSeparator"/>
+</menupopup>
+</overlay>

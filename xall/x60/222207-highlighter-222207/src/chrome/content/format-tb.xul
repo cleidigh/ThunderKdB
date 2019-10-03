@@ -1,0 +1,30 @@
+<?xml-stylesheet href="chrome://highlighter/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://highlighter/locale/highlighter.dtd">
+<!-- display menu list with list of languages -->
+<overlay id="highlighter-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js" />
+  <toolbar id="FormatToolbar">
+    <toolbarseparator id="separator-highlighter"/>
+    <toolbarbutton class="" type="menu-button"
+      id="highlighter-toolbar-button"
+      observes="cmd_renderedHTMLEnabler"
+      oncommand="highlighter.Highlight()"
+      tooltiptext="&highlighter.mainTooltip;"
+      persist="curColor"
+    >
+    <menupopup>
+      <menuitem label="&highlighter.labelYellow;"      id="highlighter-entry-yellow" class="menuitem-iconic" oncommand="highlighter.SetCurColor('yellow')" />
+      <menuitem label="&highlighter.labelCyan;"        id="highlighter-entry-cyan"   class="menuitem-iconic" oncommand="highlighter.SetCurColor('cyan')" />
+      <menuitem label="&highlighter.labelGreen;"       id="highlighter-entry-green"  class="menuitem-iconic" oncommand="highlighter.SetCurColor('green')" />
+      <menuitem label="&highlighter.labelRed;"         id="highlighter-entry-red"    class="menuitem-iconic" oncommand="highlighter.SetCurColor('red')" />
+      <menuitem label="&highlighter.labelPink;"        id="highlighter-entry-pink"   class="menuitem-iconic" oncommand="highlighter.SetCurColor('pink')" />
+      <menuseparator />
+      <menuitem label="&highlighter.labelLightGrey;"   id="highlighter-entry-lgrey"  class="menuitem-iconic" oncommand="highlighter.SetCurColor('lgrey')" />
+      <menuitem label="&highlighter.labelDarkGrey;"    id="highlighter-entry-dgrey"  class="menuitem-iconic" oncommand="highlighter.SetCurColor('dgrey')" />
+      <menuseparator />
+      <menuitem label="&highlighter.labelClear;"       id="highlighter-entry-clear"  class="menuitem-iconic" oncommand="highlighter.ClearFormat()"
+        tooltiptext="&highlighter.clearTooltip;" />
+    </menupopup>
+    </toolbarbutton>
+  </toolbar>
+</overlay>

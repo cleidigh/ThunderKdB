@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>{03B08592-E5B4-45ff-A0BE-C1D975458688}</em:id>
+		<em:name>Toolbar Buttons</em:name>
+		<em:version>1.1.1-signed.1-signed</em:version>
+		<em:description>Adds toolbar buttons to the customize toolbar window in several programs including Firefox, Thunderbird and SeaMonkey.  Some of the buttons make commonly preformed actions quicker, others add new functionality.</em:description>
+		<em:creator>Michael Buckley</em:creator>
+		<em:iconURL>chrome://toolbar-buttons/skin/icon.png</em:iconURL>
+		<em:homepageURL>https://codefisher.org/toolbar_button/</em:homepageURL>
+		<em:type>2</em:type>
+		
+		<em:optionsURL>chrome://toolbar-buttons/content/options.xul</em:optionsURL>
+
+		<!--SeaMonkey-->
+		<em:targetApplication>
+			<Description>
+				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+				<em:minVersion>2.20</em:minVersion>
+				<em:maxVersion>2.38</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+		<!--Thunderbird-->
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>20.0</em:minVersion>
+				<em:maxVersion>41.0</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+		<!--Postbox-->
+		<em:targetApplication>
+			<Description>
+				<em:id>postbox@postbox-inc.com</em:id>
+				<em:minVersion>1.0.0</em:minVersion>
+				<em:maxVersion>3.0.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+		<!--Firefox-->
+		<em:targetApplication>
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>20.0</em:minVersion>
+				<em:maxVersion>41.0</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+		<!--Pale Moon-->
+		<em:targetApplication>
+			<Description>
+				<em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
+				<em:minVersion>20.0</em:minVersion>
+				<em:maxVersion>25.*</em:maxVersion>
+			</Description>
+		</em:targetApplication><em:bootstrap>true</em:bootstrap>
+
+		<em:translator>Thanks to the Babelzilla team!</em:translator>
+		<em:translator>Dryopteris, Fux, Team erweiterungen.de - German [de]</em:translator>
+		<em:translator>ZuGro - Spanish (Argentina) [es-AR]</em:translator>
+		<em:translator>PAGF_LINUX, ZuGro - Spanish (Spain) [es-ES]</em:translator>
+		<em:translator>Sonickydon - Greek [el]</em:translator>
+		<em:translator>Jiipee, lexitec - Finnish [fi]</em:translator>
+		<em:translator>jojaba - French [fr]</em:translator>
+		<em:translator>l0stintranslation, Luana Di Muzio (MatrixIsAllOver) - Italian [it]</em:translator>
+		<em:translator>용오l름 (wtspout) - Korean [ko-KR]</em:translator>
+		<em:translator>markh - Dutch [nl]</em:translator>
+		<em:translator>manieKMP - Polish [pl]</em:translator>
+		<em:translator>Alberto Eidh, Humberto Sartini (humbertosartini) - Portuguese (Brazilian) [pt-BR]</em:translator>
+		<em:translator>Cătălin ZAMFIRESCU (x10firefox) - Romanian [ro]</em:translator>
+		<em:translator>MRO Team - Russian [ru-RU]</em:translator>
+		<em:translator>Gianny111 - Slovak [sk-SK]</em:translator>
+		<em:translator>Mikael Hiort af Ornäs (Lakrits) - Swedish [sv-SE]</em:translator>
+		<em:translator>smyrna - Turkish [tr]</em:translator>
+		<em:translator>aiseeker, fiag - Chinese (Simplified) [zh-CN]</em:translator>
+		<em:translator>J. J. Wang (ez2ask) - Chinese (Traditional) [zh-TW]</em:translator>
+		<em:translator>Peter Klofutar - Slovenian [sl-SI]</em:translator>
+
+		<em:contributor>az who has contributed code, ideas and testing</em:contributor>
+		<em:contributor>Dennis Kadioglu (denk) for the popup blocker button</em:contributor>
+	</Description>
+</RDF>

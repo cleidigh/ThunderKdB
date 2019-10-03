@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM 'chrome://imapaclext/locale/changeAcl.dtd'>
+<dialog id="acl_dialog"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    buttons="accept,cancel"
+    ondialogaccept="return ImapAclExt.ChangeAcl.change();"
+    ondialogcancel="return ImapAclExt.ChangeAcl.cancel();"
+    onload="ImapAclExt.ChangeAcl.init();">
+<!--	<script type="application/x-javascript" src="chrome://imapaclext/content/debug.js" />!-->
+	<script type="application/x-javascript" src="chrome://imapaclext/content/aclUtils.js" />
+	<script type="application/x-javascript" src="chrome://imapaclext/content/changeAcl.js" />
+
+	<stringbundleset id='changeAclset'>
+		<stringbundle id='changeAcl-bundle' src='chrome://imapaclext/locale/changeAcl.properties'/>
+	</stringbundleset>	
+	
+	<vbox flex="1">
+		<hbox>
+			<label id="username_label" value='&extensions.ImapAclExt.user;'/>
+			<textbox id="username_box" value=""/>
+		</hbox>
+
+		<checkbox id="lacl" label="l: &extensions.ImapAclExt.lright;" checked="false" />
+		<checkbox id="racl" label="r: &extensions.ImapAclExt.rright;" checked="false" />
+		<checkbox id="sacl" label="s: &extensions.ImapAclExt.sright;" checked="false" />
+		<checkbox id="wacl" label="w: &extensions.ImapAclExt.wright;" checked="false" />
+		<checkbox id="iacl" label="i: &extensions.ImapAclExt.iright;" checked="false" />
+		<checkbox id="pacl" label="p: &extensions.ImapAclExt.pright;" checked="false" />
+		<checkbox id="kacl" label="k: &extensions.ImapAclExt.kright;" checked="false" 
+			oncommand="ImapAclExt.ChangeAcl.toggleDependency(this)"/>
+		<checkbox id="xacl" label="x: &extensions.ImapAclExt.xright;" checked="false" 
+			 oncommand="ImapAclExt.ChangeAcl.toggleDependency(this)"/>
+		<checkbox id="tacl" label="t: &extensions.ImapAclExt.tright;" checked="false" 
+			 oncommand="ImapAclExt.ChangeAcl.toggleDependency(this)"/>
+		<checkbox id="eacl" label="e: &extensions.ImapAclExt.eright;" checked="false" 
+			 oncommand="ImapAclExt.ChangeAcl.toggleDependency(this)"/>
+		<checkbox id="aacl" label="a: &extensions.ImapAclExt.aright;" checked="false" />
+		<checkbox id="cacl" label="c: &extensions.ImapAclExt.cright;" checked="false" 
+			 oncommand="ImapAclExt.ChangeAcl.toggleDependency(this)"/>
+		<checkbox id="dacl" label="d: &extensions.ImapAclExt.dright;" checked="false" 
+			 oncommand="ImapAclExt.ChangeAcl.toggleDependency(this)"/>
+		<checkbox id="readAcl" label="&extensions.ImapAclExt.readRight;" checked="false" />
+		<checkbox id="insertAcl" label="&extensions.ImapAclExt.insertRight;" checked="false" />
+		<checkbox id="deleteAacl" label="&extensions.ImapAclExt.deleteRight;" checked="false" />
+
+		<checkbox id="recursion" label="&extensions.ImapAclExt.recursion;" checked="false" />
+
+	</vbox>	
+</dialog>

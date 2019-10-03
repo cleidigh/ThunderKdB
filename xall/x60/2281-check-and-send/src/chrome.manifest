@@ -1,0 +1,17 @@
+content chksend jar:chrome/chksend.jar!/content/chksend/
+overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://chksend/content/chksend.xul
+
+locale chksend cs jar:chrome/chksend.jar!/locale/cs/chksend/
+locale chksend de jar:chrome/chksend.jar!/locale/de/chksend/
+locale chksend en-US jar:chrome/chksend.jar!/locale/en-US/chksend/
+locale chksend es-ES jar:chrome/chksend.jar!/locale/es-ES/chksend/
+locale chksend fr jar:chrome/chksend.jar!/locale/fr/chksend/
+locale chksend it-IT jar:chrome/chksend.jar!/locale/it-IT/chksend/
+locale chksend ja-JP jar:chrome/chksend.jar!/locale/ja-JP/chksend/
+locale chksend nl jar:chrome/chksend.jar!/locale/nl/chksend/
+locale chksend pt-BR jar:chrome/chksend.jar!/locale/pt-BR/chksend/
+locale chksend ru jar:chrome/chksend.jar!/locale/ru/chksend/
+locale chksend sk-SK jar:chrome/chksend.jar!/locale/sk-SK/chksend/
+
+skin	chksend	classic/1.0	jar:chrome/chksend.jar!/skin/classic/chksend/
+style chrome://messenger/content/messengercompose/messengercompose.xul chrome://chksend/skin/chksend.css

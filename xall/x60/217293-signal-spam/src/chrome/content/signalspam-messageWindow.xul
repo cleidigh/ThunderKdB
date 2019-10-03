@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://signalspam/skin/sspam.css" type="text/css"?>
+
+
+<!DOCTYPE overlay SYSTEM "chrome://signalspam/locale/sspam.dtd" >
+
+<overlay id="signalspam"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://signalspam/content/specific/signalspam/extensionConfig.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/include/verifrom_api.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam-messageWindow.js"/>
+
+    <commandset>
+        <command id="cmd_signalspamReport" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_signalspamPreferences" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_signalspamSelfcare" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_signalspamFalsePositive" oncommand="goDoCommand(this.id);"/>
+    </commandset>
+
+    <statusbar id="status-bar">
+        <statusbarpanel id="signalspam-statusbar"
+                        tooltiptext="&signalspam.progression.tooltip;"
+                        hidden="true">
+            <image src='chrome://signalspam/skin/icon48.png' width='20' height='20'/>
+            <progressmeter mode="undetermined"/>
+        </statusbarpanel>
+    </statusbar>
+
+
+    <toolbar id="header-view-toolbar">
+        <toolbarbutton removable="true" id="signalspam-button-hdr"
+                       class="toolbarbutton-1 msgHeaderView-button hdrReplyToSenderButton" label="&signalspam.toolbarbutton.label;"
+                       tooltiptext="&signalspam.toolbarbutton.tooltip;" command="cmd_signalspamReport"/>
+    </toolbar>
+
+    <vbox id="messagepanebox">
+        <notificationbox id="msgNotificationBar">
+            <notification
+                    id="signalspam-alert-notification"
+                    label="&signalspam.phishingalertTitle.text;"
+                    value="remoteContent" image="chrome://signalspam/skin/icon48.png"
+                    priority="10"
+                    type="critical"
+                    hidden="true">
+                <hbox class="notification-inner" flex="1" type="critical" hidden="false">
+                    <hbox anonid="details" align="center" flex="1"
+                          oncommand="this.parentNode.parentNode._doButtonCommand(event);">
+                        <description anonid="messageText"
+                                     class="messageText"
+                                     flex="1">
+                            &signalspam.phishingalert.text;
+                        </description>
+                        <toolbarbutton id="signalspam-button-alert" class="toolbarbutton-1 signalspam-report-phishing" tooltiptext="&signalspam.toolbarbutton.tooltip;" type="menu-button"
+                                       label="&signalspam.toolbarbutton.shortlabel;" command="cmd_signalspamReport">
+                            <menupopup>
+                                <menuitem label="&signalspam.toolbarbutton.label;" command="cmd_signalspamReport" tooltiptext="&signalspam.toolbarbutton.tooltip;"/>
+                                <menuitem label="&signalspam.falsepositivebutton.label;" command="cmd_signalspamFalsePositive" tooltiptext="&signalspam.falsepositivebutton.tooltip;"/>
+                            </menupopup>
+                        </toolbarbutton>
+                    </hbox>
+                </hbox>
+            </notification>
+        </notificationbox>
+    </vbox>
+</overlay>
