@@ -173,6 +173,7 @@ async function requestATN_URL(addon_id, query_type, options) {
 		}
 		catch (err) {
 			console.debug('Error ' + extRequestOptions.url + '  ' + err);
+			return response;
 			if (reqCnt < 3) {
 				console.debug('Continue');
 				continue;
@@ -476,7 +477,7 @@ async function getAllExtensionDetails(pageStart, pageEnd) {
 
 	// console.debug('Await All'); 
 	let ap2 = Promise.all(ap);
-	// console.debug('All Promises ' + ap.length + " " + ap);
+	console.debug('All Promises ' + ap.length + " " + extsJson.length);
 
 	return ap2;
 }
@@ -523,9 +524,12 @@ async function g1() {
 	let startTime = new Date();
 	console.debug('' + startTime);
 
-	extsJson = fs.readJSONSync(extsAllJsonFileName);
-	// await getAllExtensionDetails(1, 56);
+	// extsJson = fs.readJSONSync(extsAllJsonFileName);
+	await getAllExtensionDetails(1, 54);
 
+	writePrettyJSONFile(extsAllJsonFileName, extsJson);
+	console.debug('right file');
+	return;
 	console.debug('TotalExtensions: '+extsJson.length);
 	// extsJson = extArray;
 	// try {
@@ -538,7 +542,7 @@ async function g1() {
 
 	let ap = Promise.all(p);
 	// } catch (error) {
-	// 	console.debug('outside error ' + error);
+	// 	console.debug('outside  error ' + error);
 	// }
 
 	console.debug('after get all ' + extsJson.length);
