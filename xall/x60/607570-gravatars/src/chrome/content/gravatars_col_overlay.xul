@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<overlay id="sample"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <tree id="threadTree">
+    <treecols id="threadCols">
+    <splitter class="tree-splitter" />
+    <treecol id="colGravatar" persist="hidden ordinal width"
+           currentView="unthreaded" flex="1"
+           label="From (+ Gravatar)" tooltiptext="Sort by author" />
+    </treecols>
+  </tree>
+
+  <!-- include our javascript file -->
+  <script type="text/javascript" src="chrome://gravatars/content/gravatars.js"/>
+</overlay>

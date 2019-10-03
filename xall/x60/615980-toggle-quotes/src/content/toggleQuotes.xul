@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://toggleQuotes/skin/toggleQuotes.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://toggleQuotes/locale/toggleQuotes.dtd">
+
+<overlay id="Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script src="chrome://global/content/globalOverlay.js"/>
+<script src="chrome://toggleQuotes/content/toggleQuotes.js"/>
+
+<toolbarpalette id="MailToolbarPalette">
+  <toolbarbutton
+    id="toggleQuotes"
+    class="toolbarbutton-1 phoenitybutton"
+    observes="button_forward"
+    label="&QuoteCollapse.label;"
+    tooltiptext="&QuoteCollapse.tooltip;"
+    onload="checkPhoenityShredder()"
+    oncommand="toggleQuotes()"/>
+</toolbarpalette>
+
+<keyset>
+  <key id="key_toggle_quotes"
+    key="Q"
+    oncommand="toggleQuotes()"/>
+</keyset>
+
+</overlay>

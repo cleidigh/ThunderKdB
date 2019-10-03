@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+
+<!DOCTYPE window SYSTEM 'chrome://todotxt/locale/preferences.dtd'>
+
+<window xmlns='http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul'
+			title='&todotxt; &preferences;'
+			id='todotxt-preferences'
+			persist='screenX screenY'>
+
+  <script type='application/x-javascript' src='chrome://todotxt/content/preferences.js'/>
+ 
+  <prefpane id='todotxt-pane' label='&todotxt; &preferences;' orient='vertical'>
+    <preferences>
+      <preference id="todotxt-pref-todo-path" name="extensions.todotxt.todo-txt" type="string" />
+      <preference id="todotxt-pref-done-path" name="extensions.todotxt.done-txt" type="string" />
+      <preference id="pref-thunderbird" name="extensions.todotxt.thunderbird" type="bool" />
+      <preference id="pref-creation" name="extensions.todotxt.creation" type="bool" />
+      <preference id="pref-showFullTitle" name="extensions.todotxt.showFullTitle" type="bool" />
+    </preferences>
+
+    <groupbox>
+      <caption label='&todotxt.todofile;' />
+      <hbox align="center">
+        <textbox id="todotxt-todo-path" preference="todotxt-pref-todo-path"
+                     readonly="true" size="30"/>
+        <button id="todotxt-browse-todo-path"
+            label="&browse;"
+            oncommand="todotxt.ns.Preferences.selectStoragePath('todotxt-todo-path')"/>
+      </hbox>
+    </groupbox>
+
+    <groupbox>
+      <caption label='&todotxt.donefile;' />
+      <hbox align="center">
+        <textbox id="todotxt-done-path" preference="todotxt-pref-done-path"
+                     readonly="true" size="30"/>
+        <button id="todotxt-browse-done-path"
+            label="&browse;"
+            oncommand="todotxt.ns.Preferences.selectStoragePath('todotxt-done-path')"/>
+      </hbox>
+    </groupbox>
+
+    <groupbox>
+      <caption label='&behavior;' />
+      <checkbox label='&todotxt.thunderbird;' id='thunderbird' preference='pref-thunderbird' 
+        oncommand="todotxt.ns.Preferences.selectBool('thunderbird')" />
+      <checkbox label='&todotxt.creation;' id='creation' preference='pref-creation'
+        oncommand="todotxt.ns.Preferences.selectBool('creation')" />
+      <checkbox label='&todotxt.showFullTitle;' id='showFullTitle' preference='pref-showFullTitle'
+        oncommand="todotxt.ns.Preferences.selectBool('showFullTitle')" />
+    </groupbox>
+
+  </prefpane>
+</window> 

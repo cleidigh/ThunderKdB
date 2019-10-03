@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://dontrestoretabs/locale/dontrestoretabs.dtd">
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/x-javascript" src="chrome://dontrestoretabs/content/dontrestoretabs.js" />
+
+<menupopup id="menu_View_Popup">
+	<menuitem type="checkbox" id="DontRestoreTabsMenuItem" label="&DontRestoreTabsLabel;" oncommand="DontRestoreTabsToggle(event.target)"  />
+</menupopup>
+
+</overlay>
+

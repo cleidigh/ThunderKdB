@@ -1,0 +1,9 @@
+overlay	chrome://messenger/content/messenger.xul	chrome://toggleQuotes/content/toggleQuotes.xul
+
+style	chrome://global/content/customizeToolbar.xul	chrome://toggleQuotes/skin/toggleQuotes.css	appversion<59a1
+style	chrome://messenger/content/customizeToolbar.xul	chrome://toggleQuotes/skin/toggleQuotes.css	appversion>=59a1
+
+content	toggleQuotes	content/
+locale	toggleQuotes	en-US	locale/en-US/
+
+skin	toggleQuotes	classic/1.0	skin/

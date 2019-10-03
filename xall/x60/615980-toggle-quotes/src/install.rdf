@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+
+    <em:id>quotes@dillinger</em:id>
+    <em:name>Toggle Quotes</em:name>
+    <em:version>0.9</em:version>
+    <em:type>2</em:type>
+    <em:description>A toolbar button and a shortcut key for the QuoteCollapse extension.</em:description>
+    <em:creator>Dillinger</em:creator>
+    <em:contributor>Michael J Gruber</em:contributor>
+    <em:contributor>Lim Chee Aun</em:contributor>
+    <em:homepageURL>https://addons.mozilla.org/en-US/thunderbird/addon/toggle-quotes/</em:homepageURL>
+    <em:iconURL>chrome://toggleQuotes/skin/toggleQuotes.png</em:iconURL>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>60.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+  </Description>
+
+</RDF>

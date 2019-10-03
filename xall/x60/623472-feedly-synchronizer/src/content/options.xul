@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://FeedlySync/locale/options.dtd">
+
+<prefwindow id="FeedlySyncPrefs" title="&title.label;"
+	onload="onLoadAccounts()" ondialogaccept="onDialogAccept()" onunload="onUnload()"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/javascript" src="chrome://FeedlySync/content/options.js" />
+
+	<prefpane id="pane_main" index="main" label="&main.tab;">
+		<preferences>
+			<preference id="SynchDirection" name="extensions.FeedlySync.synch.direction"
+				type="int" />
+			<preference id="SynchAccount" name="extensions.FeedlySync.synch.account"
+				type="string" />
+			<preference id="LogActive" name="extensions.FeedlySync.log.active"
+				type="bool" />
+			<preference id="LogOutput" name="extensions.FeedlySync.log.toFile"
+				type="bool" />
+			<preference id="SynchTimeout" name="extensions.FeedlySync.synch.timeout"
+				type="int" />
+		</preferences>
+		<groupbox flex="1">
+			<caption label="&syncGroup.label;" />
+			<hbox>
+				<hbox width="180">
+					<label value="&syncAccountGroup.label;" />
+				</hbox>
+				<hbox flex="1">
+					<menulist id="accountList" flex="1">
+						<menupopup id="accountPopup">
+						</menupopup>
+					</menulist>
+					<button id="createButton" label="&syncAccountCreate.label;"
+						oncommand="onNewAccount()" />
+				</hbox>
+			</hbox>
+			<hbox>
+				<hbox width="180">
+					<label value="&syncModeGroup.label;" />
+				</hbox>
+				<hbox flex="1">
+					<menulist preference="SynchDirection">
+						<menupopup>
+							<menuitem label="&syncModeSync.label;" value="0" />
+							<menuitem label="&syncModeDown.label;" value="1" />
+							<menuitem label="&syncModeUp.label;" value="2" />
+						</menupopup>
+					</menulist>
+				</hbox>
+			</hbox>
+			<hbox>
+				<hbox width="180">
+					<label value="&syncTimeout.label;" />
+				</hbox>
+				<hbox flex="1">
+					<textbox preference="SynchTimeout" width="80" value="5"
+						min="1" max="10000000" maxlength="8" type="number" />
+				</hbox>
+			</hbox>
+		</groupbox>
+		<groupbox>
+			<caption label="&logGroup.label;" />
+			<checkbox preference="LogActive" id="logActive" label="&logActive.label;"
+				accesskey="&logActive.accesskey;" />
+			<checkbox preference="LogOutput" id="logOutput" label="&logOutput.label;"
+				accesskey="&logOutput.accesskey;" />
+		</groupbox>
+	</prefpane>
+</prefwindow>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="mzcr-settings.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://ltngcolrem/locale/settings.dtd">
+<prefwindow id="LightningColorReminders_Settings"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  title="&LightningColorReminders.SettingsTitle;"
+  onload="miczLightningColorRemindersPref.onLoad();">
+  <prefpane id="LightningColorReminders_PrefPane">
+    <preferences>
+      <preference id="LightningColorReminders.Thickness"
+        name="extensions.LightningColorReminders.Thickness"
+        type="int"/>
+      <preference id="LightningColorReminders.Position"
+        name="extensions.LightningColorReminders.Position"
+        type="string"/>
+    </preferences>
+    <tabbox id="cr_tabbox">
+      <tabs>
+        <tab label="&LightningColorReminders.TabSettings.label;"/>
+        <tab label="&LightningColorReminders.TabInfo.label;"/>
+      </tabs>
+      <tabpanels>
+        <tabpanel id="crtab" orient="vertical">
+          <label control="symbol" value="&LightningColorReminders.GlobalDescSettingTab;"/>
+          <label control="symbol" value=" "/>
+            <hbox align="center">
+			 <menulist  id="LightningColorReminders.Thickness_input" preference="LightningColorReminders.Thickness" >
+			  <menupopup>
+				<menuitem label="1" value="1" />
+				<menuitem label="2" value="2" />
+				<menuitem label="3" value="3" />
+				<menuitem label="4" value="4" />
+				<menuitem label="5" value="5" />
+				<menuitem label="6" value="6" />
+				<menuitem label="7" value="7" />
+				<menuitem label="8" value="8" />
+				<menuitem label="9" value="9" />
+				<menuitem label="10" value="10" />
+			  </menupopup>
+			</menulist>
+           <label control="symbol" value="&LightningColorReminders.Thickness.label;"/>
+          </hbox>
+          <label control="symbol" value=" "/>
+          <hbox align="center">
+			 <menulist  id="LightningColorReminders.Position_input" preference="LightningColorReminders.Position" >
+			  <menupopup>
+				<menuitem label="&LightningColorReminders.Position.top;" value="top" />
+				<menuitem label="&LightningColorReminders.Position.bottom;" value="bottom" />
+				<menuitem label="&LightningColorReminders.Position.right;" value="right" />
+				<menuitem label="&LightningColorReminders.Position.left;" value="left" />
+			  </menupopup>
+			</menulist>
+           <label control="symbol" value="&LightningColorReminders.Position.label;"/>
+          </hbox>
+          <label control="symbol" value=" "/>
+          <label control="symbol" value="&LightningColorReminders.UpdateWarn;"/>
+        </tabpanel>
+        <tabpanel id="crtab_info" orient="vertical">
+	  <description class="mzcr-desc-big">&LightningColorReminders.InfoMainDesc;</description>
+          <label control="symbol" value=" "/>
+	  <label value="&LightningColorReminders.DonateLink;" class="text-link mzcr-donate" href="http://micz.it/thunderdbird-addon-lightning-color-reminders/donate/"/>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+  </prefpane>
+  <script type="application/x-javascript" src="chrome://ltngcolrem/content/mzcr-settings.js" />
+</prefwindow>

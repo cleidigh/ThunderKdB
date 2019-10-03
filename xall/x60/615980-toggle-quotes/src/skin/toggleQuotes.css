@@ -1,0 +1,30 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#mail-toolbox > toolbar #toggleQuotes,
+#navigation-toolbox > toolbar #toggleQuotes,
+#mail-toolbox > toolbar[brighttext] #toggleQuotes,
+#navigation-toolbox > toolbar[brighttext] #toggleQuotes,
+toolbarpaletteitem[place="palette"] #toggleQuotes {
+  list-style-image: url("chrome://toggleQuotes/skin/toggleQuotes24.png");
+  opacity:0.85;
+}
+
+toolbar[iconsize="small"] #toggleQuotes .toolbarbutton-icon {
+  height: 16px;
+  width: 16px;
+}
+
+toolbar[shredder="false"] #toggleQuotes .toolbarbutton-icon {
+  width: 18px;
+  height: 18px;
+}
+
+#toggleQuotes:hover,
+#mail-bar3:-moz-lwtheme-brighttext #toggleQuotes:hover {
+  opacity:1;
+}
+
+#toggleQuotes[disabled="true"],
+#mail-bar3:-moz-lwtheme-brighttext #toggleQuotes[disabled="true"] {
+  opacity:0.5;
+}

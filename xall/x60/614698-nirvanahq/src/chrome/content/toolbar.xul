@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nirvanahq SYSTEM "chrome://nirvanahq/locale/overlay.dtd">
+<?xml-stylesheet href="chrome://nirvanahq/skin/overlay.css" type="text/css"?>
+
+<overlay id="nirvanahqOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+   <script type="application/x-javascript" src="chrome://nirvanahq/content/overlay.js"/>
+
+   <toolbarpalette id="MailToolbarPalette">
+      <toolbarbutton id="nirvanahq-toolbar-button"
+         class="toolbarbutton-1"
+      	label="&nirvanahqToolbarButton.label;"
+      	tooltiptext="&nirvanahqToolbarButton.tooltip;"
+      	oncommand="nirvanahq.onToolbarButtonCommand();"/>
+   </toolbarpalette>
+</overlay>
