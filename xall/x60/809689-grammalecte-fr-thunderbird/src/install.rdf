@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>French-GC-TB@grammalecte.net</em:id>
+    <em:name>Grammalecte [fr]</em:name>
+    <em:type>2</em:type>
+    <em:version>0.6.5</em:version>
+    <em:creator>Olivier R.</em:creator>
+    <em:description>Correcteur grammatical pour le français.</em:description>
+    <em:homepageURL>http://grammalecte.net</em:homepageURL>
+    <!--<em:optionsURL>chrome://grammarchecker/content/options.xul</em:optionsURL>-->
+    <em:unpack>true</em:unpack>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- thunderbird -->
+        <em:minVersion>59.0</em:minVersion>
+        <em:maxVersion>61.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

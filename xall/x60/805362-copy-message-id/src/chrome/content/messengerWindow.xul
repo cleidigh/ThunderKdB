@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<overlay id="messengerWindow"
+xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ <script type="application/javascript" src="chrome://copy-message-id/content/button.js"/>
+  <toolbarpalette id="header-view-toolbar">
+   <toolbarbutton id="copy-message-id-button"/>
+  </toolbarpalette>
+
+  <toolbarbutton id="copy-message-id-button"
+    label="Copy Message ID"
+    tooltiptext="Copy the Message ID to the clipboard"
+    type="button"
+    oncommand="CopyMessageID[1]()"
+    class="toolbarbutton-1 msgHeaderView-button copy-message-id-button"
+    />
+</overlay>

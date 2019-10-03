@@ -1,0 +1,11 @@
+#content     warnattachment    chrome/content/
+content warnattachment   jar:chrome/warnattachment.jar!/content/
+
+overlay chrome://messenger/content/msgHdrViewOverlay.xul    chrome://warnattachment/content/warnattachment.xul
+
+#locale  warnattachment   en-US   chrome/locale/en-US/
+#locale  warnattachment   de-DE   chrome/locale/de-DE/
+
+locale  warnattachment   en-US   jar:chrome/warnattachment.jar!/locale/en-US/
+locale  warnattachment   de-DE   jar:chrome/warnattachment.jar!/locale/de-DE/
+locale  warnattachment   fr-FR   jar:chrome/warnattachment.jar!/locale/fr-FR/

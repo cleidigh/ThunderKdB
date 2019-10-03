@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>lightningweather@thomas.malcher</em:id>
+    <em:name>lightningWeather</em:name>
+    <em:version>0.5.0</em:version>
+    <em:creator>Thomas Malcher</em:creator>
+    <em:contributor>Jonathan Protzenko (thunderbird-stdlib)</em:contributor>
+    <em:contributor>Simone Griesmayr (icon)</em:contributor>
+    <em:description>LightningWeather shows the weather forecast in the background of the calendar so you can easily coordinate your activities with the weather.</em:description>
+    <em:homepageURL>https://github.com/tmalch/lightningWeather</em:homepageURL>
+    <em:optionsURL>chrome://lightningweather/content/preferencesWindow.xul</em:optionsURL>
+    <em:iconURL>chrome://lightningweather/skin/icon.png</em:iconURL>
+    <em:icon64URL>chrome://lightningweather/skin/icon.png</em:icon64URL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>45.*</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+   <em:requires><!-- Lightning -->
+			<Description>
+				<em:id>{e2fda1a4-762b-4020-b5ad-a41df1933103}</em:id>
+				<em:minVersion>1.0b2</em:minVersion>
+				<em:maxVersion>6.2.2.*</em:maxVersion>
+			</Description>
+		</em:requires>
+  </Description>      
+</RDF>

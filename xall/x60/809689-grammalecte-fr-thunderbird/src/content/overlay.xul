@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://grammarchecker/content/overlay.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://grammarchecker/locale/overlay.dtd">
+
+<overlay id="grammarchecker-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="application/javascript" src="resource://grammalecte/text.js"/>
+  <script type="application/javascript" src="resource://grammalecte/fr/textformatter.js"/>
+  <script type="application/javascript" src="overlay.js"/>
+  <script type="application/javascript" src="file_handler.js"/>
+  <script type="application/javascript" src="spellchecker.js"/>
+  <script type="application/javascript" src="editor.js"/>
+
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="grammarchecker-strings" src="chrome://grammarchecker/locale/grammarchecker.properties"/>
+  </stringbundleset>
+
+  <commandset id="composerEditMenuItems" commandupdater="true"
+              events="focus"
+              oncommandupdate="goUpdateCommand('cmd_grammar')">
+    <command id="cmd_grammar" label="&grammarchecker.button.label;" oncommand="goDoCommand('cmd_grammar')"/>
+  </commandset>
+
+  <menupopup id="taskPopup">
+    <!-- menu tools -->
+    <menuitem id="grammarchecker-hello" command="cmd_grammar"/>
+  </menupopup>
+
+  <popup id="msgComposeContext">
+    <!-- contextual menu -->
+    <menuitem id="context-grammarchecker" command="cmd_grammar"
+        accesskey="&grammarchecker.accesskey;"/>
+  </popup>
+
+  <toolbarpalette id="MsgComposeToolbarPalette">
+    <!-- toolbar palette -->
+    <toolbarbutton id="grammarchecker-toolbar-button" command="cmd_grammar"
+                   tooltiptext="&grammarchecker.tooltip;"
+                   class="toolbarbutton-1 chromeclass-toolbar-additional" />
+
+    <toolbarbutton id="grammalecte-menu" type="menu-button" label="Grammalecte" class="toolbarbutton-1" tooltip="&grammarchecker.tooltip;" oncommand="">
+      <menupopup id="gl-toolbar-popup">
+        <menuitem id="gl-item-conj" class="menuitem-iconic" label="&grammalectemenu.textformatter;" oncommand="oTextFormatter.onOpenPanel(event);"/>
+        <menuitem id="gl-item-conj" class="menuitem-iconic" label="&grammalectemenu.conjugueur;" oncommand="oGrammarChecker.onOpenConjugueur(event);"/>
+        <menuseparator/>
+        <menuitem id="gl-item-analyze" class="menuitem-iconic" label="&grammalectemenu.start;" oncommand="oGrammarChecker.onParseText(event);"/>
+        <menuitem id="gl-item-options" class="menuitem-iconic" label="&grammalectemenu.gc_options;" onclick="oGrammarChecker.onOpenGCOptions(event);"/>
+        <menuitem id="gl-item-options" class="menuitem-iconic" label="&grammalectemenu.spell_options;" onclick="oGrammarChecker.onOpenSpellOptions(event);"/>
+        <menuitem id="gl-item-options" class="menuitem-iconic" label="&grammalectemenu.other_options;" onclick="oGrammarChecker.onOpenOptions(event);"/>
+        <menuitem id="gl-item-options" class="menuitem-iconic" label="&grammalectemenu.lexicon_editor;" onclick="oGrammarChecker.onOpenLexiconEditor(event);"/>
+        <menuseparator/>
+        <menuitem id="gl-item-about" class="menuitem-iconic" label="&grammalectemenu.about;" oncommand="oGrammarChecker.onAbout(event);"/>
+      </menupopup>
+    </toolbarbutton>
+  </toolbarpalette>
+
+
+  <vbox id="appcontent">
+
+    <!--
+
+      TEXT FORMATTER PANEL
+
+    -->
+    <splitter id="textformatter-splitter" state="collapsed" collapse="after"><grippy /></splitter>
+
+    <vbox id="textformatter-panel">
+
+      <dialogheader id="textformatter-title" title="&textformatter;" description="&automated_replacements;" width="800"/>
+
+      <hbox id="tf-columns">
+        <vbox class="column" width="400">
+          <!-- Supernumerary spaces -->
+          <groupbox>
+            <caption><checkbox id="o_group_ssp" class="option optiongroup" data-default="true" label="&tf_ssp;" /></caption>
+            <vbox id="group_ssp" class="groupblock">
+              <hbox class="blockopt underline">
+                <checkbox id="o_start_of_paragraph" class="option" data-default="true" label="&tf_start_of_paragraph;" />
+                <spacer flex="1" />
+                <label id="res_o_start_of_paragraph" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_end_of_paragraph" class="option" data-default="true" label="&tf_end_of_paragraph;" />
+                <spacer flex="1" />
+                <label id="res_o_end_of_paragraph" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_between_words" class="option" data-default="true" label="&tf_between_words;" />
+                <spacer flex="1" />
+                <label id="res_o_between_words" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_before_punctuation" class="option" data-default="true" label="&tf_before_punctuation;" />
+                <spacer flex="1" />
+                <label id="res_o_before_punctuation" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_within_parenthesis" class="option" data-default="true" label="&tf_within_parenthesis;" />
+                <spacer flex="1" />
+                <label id="res_o_within_parenthesis" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_within_square_brackets" class="option" data-default="true" label="&tf_within_square_brackets;" />
+                <spacer flex="1" />
+                <label id="res_o_within_square_brackets" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_within_quotation_marks" class="option" data-default="true" label="&tf_within_quotation_marks;" />
+                <spacer flex="1" />
+                <label id="res_o_within_quotation_marks" class="result" />
+              </hbox>
+            </vbox>
+          </groupbox>
+
+          <!-- Missing spaces -->
+          <groupbox>
+            <caption><checkbox id="o_group_space" class="option optiongroup" data-default="true" label="&tf_space;" /></caption>
+            <vbox id="group_space" class="groupblock">
+              <hbox class="blockopt underline">
+                <checkbox id="o_add_space_after_punctuation" class="option" data-default="true" label="&tf_add_space_after_punctuation;" />
+                <spacer flex="1" />
+                <label id="res_o_add_space_after_punctuation" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_add_space_around_hyphens" class="option" data-default="true" label="&tf_add_space_around_hyphens;" />
+                <spacer flex="1" />
+                <label id="res_o_add_space_around_hyphens" class="result" />
+              </hbox>
+            </vbox>
+          </groupbox>
+
+          <!-- Non breaking spaces -->
+          <groupbox>
+            <caption><checkbox id="o_group_nbsp" class="option optiongroup" data-default="true" label="&tf_nbsp;" /></caption>
+            <vbox id="group_nbsp" class="groupblock">
+              <hbox class="blockopt underline">
+                <checkbox id="o_nbsp_before_punctuation" class="option" data-default="true" label="&tf_nbsp_before_punctuation;" />
+                <!--<div class="secondoption">
+                  <checkbox id="o_nnbsp_before_punctuation" class="option" />
+                  <label="o_nnbsp_before_punctuation" class="opt_lbl smallw">fines<span>sauf avec “:”</span></label>
+                </div>-->
+                <spacer flex="1" />
+                <label id="res_o_nbsp_before_punctuation" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_nbsp_within_quotation_marks" class="option" data-default="true" label="&tf_nbsp_within_quotation_marks;" />
+                <!--<div class="secondoption">
+                  <checkbox id="o_nnbsp_within_quotation_marks" class="option" />
+                  <label="o_nnbsp_within_quotation_marks" class="opt_lbl smallw">fines</label>
+                </div>-->
+                <spacer flex="1" />
+                <label id="res_o_nbsp_within_quotation_marks" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                  <checkbox id="o_nbsp_before_symbol" class="option" data-default="true" label="&tf_nbsp_before_symbol;" />
+                  <spacer flex="1" />
+                  <label id="res_o_nbsp_before_symbol" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_nbsp_within_numbers" class="option" data-default="true" label="&tf_nbsp_within_numbers;" />
+                <!--<div class="secondoption">
+                  <checkbox id="o_nnbsp_within_numbers" class="option" />
+                  <label="o_nnbsp_within_numbers" class="opt_lbl smallw">fines</label>
+                </div>-->
+                <spacer flex="1" />
+                <label id="res_o_nbsp_within_numbers" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_nbsp_before_units" class="option" data-default="true" label="&tf_nbsp_before_units;" />
+                <spacer flex="1" />
+                <label id="res_o_nbsp_before_units" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_nbsp_titles" class="option" data-default="true" label="&tf_nbsp_titles;" />
+                <spacer flex="1" />
+                <label id="res_o_nbsp_titles" class="result" />
+              </hbox>
+            </vbox>
+          </groupbox>
+
+          <!-- Deletions -->
+          <groupbox>
+            <caption><checkbox id="o_group_delete" class="option optiongroup" data-default="true" label="&tf_delete;" /></caption>
+            <vbox id="group_delete" class="groupblock">
+              <hbox class="blockopt underline">
+                <checkbox id="o_erase_non_breaking_hyphens" class="option" data-default="true" label="&tf_erase_non_breaking_hyphens;" />
+                <spacer flex="1" />
+                <label id="res_o_erase_non_breaking_hyphens" class="result" />
+              </hbox>
+            </vbox>
+          </groupbox>
+        </vbox>
+
+        <vbox class="column" width="400">
+          <!-- Typographical signs -->
+          <groupbox>
+            <caption><checkbox id="o_group_typo" class="option optiongroup" data-default="true" label="&tf_typo;" /></caption>
+            <vbox id="group_typo" class="groupblock">
+              <hbox class="blockopt underline">
+                <checkbox id="o_ts_apostrophe" class="option" data-default="true" label="&tf_ts_apostrophe;" />
+                <spacer flex="1" />
+                <label id="res_o_ts_apostrophe" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_ts_ellipsis" class="option" data-default="true" label="&tf_ts_ellipsis;" />
+                <spacer flex="1" />
+                <label id="res_o_ts_ellipsis" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_ts_dash_middle" class="option" data-default="true" label="&tf_ts_dash_middle;" />
+                <spacer flex="1" />
+                <label id="res_o_ts_dash_middle" class="result" />
+              </hbox>
+              <hbox class="blockopt">
+                <spacer flex="1" />
+                <radiogroup orient="horizontal">
+                  <radio id="o_ts_m_dash_middle" class="option" data-default="false" label="&tf_emdash;" />
+                  <radio id="o_ts_n_dash_middle" class="option" data-default="true" label="&tf_endash;" selected="true" />
+                </radiogroup>
+                <spacer flex="3" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_ts_dash_start" class="option" data-default="true" label="&tf_ts_dash_start;" />
+                <spacer flex="1" />
+                <label id="res_o_ts_dash_start" class="result" />
+              </hbox>
+              <hbox class="blockopt">
+                <spacer flex="1" />
+                <radiogroup orient="horizontal">
+                  <radio id="o_ts_m_dash_start" class="option"  data-default="true" label="&tf_emdash;" selected="true" />
+                  <radio id="o_ts_n_dash_start" class="option" data-default="false" label="&tf_endash;" />
+                </radiogroup>
+                <spacer flex="3" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_ts_quotation_marks" class="option" data-default="true" label="&tf_ts_quotation_marks;" />
+                <spacer flex="1" />
+                <label id="res_o_ts_quotation_marks" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_ts_units" class="option" data-default="true" label="&tf_ts_units;" />
+                <spacer flex="1" />
+                <label id="res_o_ts_units" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_ts_spell" class="option" data-default="true" label="&tf_ts_spell;" />
+                <spacer flex="1" />
+                <label id="res_o_ts_spell" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_ts_ligature" class="option" data-default="false" label="&tf_ts_ligature;" />
+                <input type="radio" id="o_ts_ligature_do" name="liga" class="option" data-default="false" label="&tf_ts_ligature_do;" />
+                <input type="radio" id="o_ts_ligature_undo" name="liga" class="option" data-default="true" label="&tf_ts_ligature_undo;" />
+                <spacer flex="1" />
+                <label id="res_o_ts_ligature" class="result" />
+              </hbox>
+              <hbox class="blockopt">
+                <spacer flex="1" />
+                <checkbox id="o_ts_ligature_ff" class="option" data-default="true" label="ff" />
+                <checkbox id="o_ts_ligature_fi" class="option" data-default="true" label="fi" />
+                <checkbox id="o_ts_ligature_ffi" class="option" data-default="true" label="ffi" />
+                <checkbox id="o_ts_ligature_fl" class="option" data-default="true" label="fl" />
+                <checkbox id="o_ts_ligature_ffl" class="option" data-default="true" label="ffl" />
+                <checkbox id="o_ts_ligature_ft" class="option" data-default="true" label="ft" />
+                <checkbox id="o_ts_ligature_st" class="option" data-default="false" label="st" />
+                <spacer flex="2" />
+              </hbox>
+            </vbox>
+          </groupbox>
+
+          <!-- Misc -->
+          <groupbox>
+            <caption><checkbox id="o_group_misc" class="option optiongroup" data-default="true" label="&tf_misc;" /></caption>
+            <vbox id="group_misc" class="groupblock">
+              <hbox class="blockopt underline">
+                <checkbox id="o_ordinals_no_exponant" class="option" data-default="true" label="&tf_ordinals_no_exponant;" />
+                <checkbox id="o_ordinals_exponant" class="option" data-default="true" label="&tf_ordinals_exponant;" />
+                <spacer flex="1" />
+                <label id="res_o_ordinals_no_exponant" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_etc" class="option" data-default="true" label="&tf_etc;" />
+                <spacer flex="1" />
+                <label id="res_o_etc" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_missing_hyphens" class="option" data-default="true" label="&tf_missing_hyphens;" />
+                <spacer flex="1" />
+                <label id="res_o_missing_hyphens" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_ma_word" class="option" data-default="true" label="&tf_ma_word;" />
+                <spacer flex="1" />
+                <label id="res_o_ma_word" class="result" />
+              </hbox>
+              <hbox class="blockopt">
+                <spacer flex="1" />
+                <checkbox id="o_ma_1letter_lowercase" class="option" label="&tf_ma_1letter_lowercase;" />
+                <checkbox id="o_ma_1letter_uppercase" class="option" label="&tf_ma_1letter_uppercase;" />
+                <spacer flex="3" />
+              </hbox>
+            </vbox>
+          </groupbox>
+
+          <!-- Restructuration -->
+          <!--<groupbox>
+            <caption><checkbox id="o_group_struct" class="option optiongroup" data-default="false" label="&tf_struct;" /></caption>
+            <vbox id="group_struct" class="groupblock">
+              <hbox class="blockopt underline">
+                <checkbox id="o_remove_hyphens_at_end_of_paragraphs" class="option" data-default="false" label="&tf_remove_hyphens_at_end_of_paragraphs;" />
+                <spacer flex="1" />
+                <label id="res_o_remove_hyphens_at_end_of_paragraphs" class="result" />
+              </hbox>
+              <hbox class="blockopt underline">
+                <checkbox id="o_merge_contiguous_paragraphs" class="option" data-default="false" label="&tf_merge_contiguous_paragraphs;" />
+                <spacer flex="1" />
+                <label id="res_o_merge_contiguous_paragraphs" class="result" />
+              </hbox>
+            </vbox>
+          </groupbox>-->
+
+          <description id="textformatter-infomsg">&tf_infomsg;</description>
+        </vbox>
+      </hbox>
+
+      <hbox id="textformatter-commands">
+        <button id="reset" label="&tf.button.default;" oncommand="oTextFormatter.onReset(event);" />
+        <progressmeter id="progressbar" mode="determined" width="470" />
+        <label id="time_res" width="50"></label>
+        <button id="apply" label="&tf.button.apply;" oncommand="oTextFormatter.onApply(event);" />
+        <button id="close" label="&tf.button.close;" oncommand="oTextFormatter.onClosePanel(event);" />
+      </hbox>
+
+    </vbox>
+
+
+    <!--
+
+      GRAMMAR CHECKING PANEL
+
+    -->
+    <splitter id="grammarchecker-splitter" state="collapsed" collapse="after"><grippy /></splitter>
+
+    <vbox id="grammarchecker-panel">
+      <dialogheader id="grammalecte-title" title="Grammalecte" description="&detected_mistakes;"/>
+      <div id="grammalecte-errors"/>
+      <hbox id="grammalecte-infobox">
+        <label id="grammalecte-info" />
+        <spacer flex="1" />
+        <label id="closebutton" value="Fermer" onclick="oGrammarChecker.onClosePanel(event);" />
+      </hbox>
+    </vbox>
+
+  </vbox>
+
+</overlay>

@@ -1,0 +1,26 @@
+/* CSS */
+
+.section {
+	font-size: 16px;
+	font-weight: bold;
+	color: hsl(210, 50%, 50%);
+}
+
+/*
+    TB Next: fix dialogheaders
+*/
+dialogheader {
+  -moz-binding: url("chrome://messenger/content/generalBindings.xml#dialogheader");
+  margin: 0 5px 5px;
+  border: 1px solid ThreeDDarkShadow;
+  padding: 5px 8px;
+  background-color: Highlight;
+  color: HighlightText;
+}
+
+.dialogheader-title {
+  margin: 0 !important;
+  font-size: larger;
+  font-weight: bold;
+}
+

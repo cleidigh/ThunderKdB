@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://grammarchecker/content/about.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://grammarchecker/locale/about.dtd">
+
+<dialog
+  id="grammalecte-about-window"
+  title="&windowtitle;"
+  orient="vertical"
+  buttons="accept"
+  width="300"
+  onload="document.getElementById('grammalecte-about-window').centerWindowOnScreen();"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <!-- Other elements go here -->
+  <description  style="text-align: center;">
+    <image src="chrome://grammarchecker/skin/logo120_text.png" />
+  </description>
+  <label class="descr">&description1;</label>
+  <label class="descr">&description2;</label>
+  <label class="stdlabel" value="&version; 0.6.5" />
+  <label class="stdlabel" value="&license; GPL 3" />
+  <label id="website" value="Site web" onclick="openInTabURL('http://grammalecte.net/?from=grammalecte-tb');" />
+
+  <separator class="groove" orient="horizontal" style="margin: 10px;"/>
+
+  <label class="stdlabel" value="&thanks;" />
+  <image src="chrome://grammarchecker/skin/LaMouette_small.png" style="cursor: pointer;"
+    onclick="openInTabURL('http://lamouette.org/?from=grammalecte-tb');" />
+  <label class="stdlabel" value="&amp;" />
+  <image src="chrome://grammarchecker/skin/Algoo_logo.png" style="cursor: pointer;"
+    onclick="openInTabURL('https://www.algoo.fr/?from=grammalecte-tb');" />
+  <label id="contrib" value="&contrib;"
+    onclick="openInTabURL('https://www.dicollecte.org/#thanks');" />
+
+  <script type="application/javascript" src="about.js"/>
+</dialog>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://lightningweather/skin/style.css" type="text/css"?>
+
+
+<dialog id="ligthningweather-prefs"
+        title="ligthningweather Options"
+        buttons="accept,cancel"
+        ondialogaccept="return lightningweather_prefs.apply();"
+        onload="lightningweather_prefs.onLoad();"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <preferences>
+        <preference id="query" name="extensions.lightningweather.location_query" type="string"/>
+        <preference id="provider" name="extensions.lightningweather.provider" type="string"/>
+        <preference id="units" name="extensions.lightningweather.units" type="string"/>
+    </preferences>
+
+    <prefpane id="main_settings" label="Settings">
+        <vbox>
+            <hbox align="center">
+                <label class="preflabel" control="location_list" value="Location:" />
+                <menulist editable="true" sizetopopup="none" style="width: 300px" id="location_list"
+                          oninput="lightningweather_prefs.locationQueryChanged(event);"
+                          onclick="lightningweather_prefs.onclick(event)"
+                          onselect="lightningweather_prefs.locationSelected(event)" >
+                    <menupopup ignorekeys="true">
+                    </menupopup>
+                </menulist>
+            </hbox>
+            <hbox align="center">
+                <label class="preflabel" control="provider_list" value="Provider:"/>
+                <menulist id="provider_list" oncommand="lightningweather_prefs.providerSelected(event)">
+                    <menupopup>
+                    </menupopup>
+                </menulist>
+            </hbox>
+            <hbox align="center">
+                <label class="preflabel" control="unit_control" value="Unit:"/>
+                <menulist id="unit_control">
+                    <menupopup>
+                        <menuitem value="C" label="Celsius"/>
+                        <menuitem value="F" label="Fahrenheit"/>
+                    </menupopup>
+                </menulist>
+            </hbox>
+            <separator class="groove"/>
+            <description id="copyright_info" style="height: 50px;"></description>
+            <tooltip id="error_msg_container" style="background-color: #33DD00;">
+            </tooltip>
+        </vbox>
+    </prefpane>
+    <script type="application/x-javascript" src="chrome://lightningweather/content/preferences.js"/>
+</dialog>

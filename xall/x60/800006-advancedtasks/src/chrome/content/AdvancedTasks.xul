@@ -1,0 +1,20 @@
+<?xml-stylesheet type="text/css"  href="chrome://AdvancedTasks/skin/AdvancedTasks.css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://AdvancedTasks/locale/AdvancedTasks.dtd"> 
+
+<overlay id="AdvancedTasks"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="text/javascript" src="chrome://AdvancedTasks/content/lib/hightlight/highlight.pack.js"/>
+   <script type="text/javascript" src="chrome://AdvancedTasks/content/lib/marked.js"/> 
+   <script type="text/javascript" src="chrome://AdvancedTasks/content/lib/to-markdown.js"/> 
+   <script type="text/javascript" src="chrome://AdvancedTasks/content/AdvancedTasks.js"/> 
+
+    <vbox id="calendar-task-details-container">
+     <textbox id="advancedTaskDescription-container" flex="1" insertbefore="calendar-task-details-description">
+        <iframe id="advancedTaskDescription"  multiline="true" disablehistory="true" flex="1" sandbox="allow-same-origin,allow-scripts" src="chrome://AdvancedTasks/content/at_iframe.html">
+	</iframe>
+	</textbox>
+	</vbox>
+
+</overlay>

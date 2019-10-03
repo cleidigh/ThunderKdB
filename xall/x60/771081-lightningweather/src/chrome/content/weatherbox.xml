@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+
+<!DOCTYPE bindings SYSTEM "chrome://global/locale/global.dtd" >
+
+<bindings id="lightningweather-calendar-views-bindings"
+          xmlns="http://www.mozilla.org/xbl"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+          xmlns:xbl="http://www.mozilla.org/xbl">
+
+    <binding id="calendar-month-day-box_with_weatherbox" extends="chrome://calendar/content/calendar-month-view.xml#calendar-month-day-box">
+        <content orient="vertical">
+            <xul:hbox anonid="monthday-labels" style="overflow: hidden;">
+                <xul:label anonid="week-label"
+                           flex="1"
+                           crop="end"
+                           hidden="true"
+                           mousethrough="always"
+                           class="calendar-month-day-box-week-label calendar-month-day-box-date-label"
+                           xbl:inherits="relation,selected"/>
+                <xul:label anonid="day-label"
+                           flex="1"
+                           mousethrough="always"
+                           class="calendar-month-day-box-date-label"
+                           xbl:inherits="relation,selected,value"/>
+            </xul:hbox>
+            <xul:stack flex="1">
+                <xul:box anonid="weatherbox" flex="1">
+                </xul:box>
+                <xul:vbox anonid="day-items" class="calendar-month-day-box-items-box" flex="1">
+                    <children/>
+                </xul:vbox>
+            </xul:stack>
+        </content>
+    </binding>
+</bindings>

@@ -1,0 +1,19 @@
+<?xml-stylesheet type="text/css"  href="chrome://AddressBookTab/skin/addressbookasTab.css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://AddressBookTab/locale/AddressBookTab.dtd"> 
+
+<overlay id="AddressBookTabB"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+   <script type="text/javascript" src="chrome://AddressBookTab/content/AddressBookTab.js"/> 
+
+   <toolbarpalette id="MailToolbarPalette">
+      <toolbarbutton class="toolbarbutton-1"
+         id="AddressBookTab-button"
+         label="&addressbooktab.label;"
+         tooltiptext="&addressbooktab.tooltip;"
+         oncommand="document.getElementById('tabmail').openTab('addressBookTab', {contentPage: 'chrome://messenger/content/addressbook/addressbook.xul',onLoad: function(){}})"
+      />
+   </toolbarpalette>
+
+</overlay>

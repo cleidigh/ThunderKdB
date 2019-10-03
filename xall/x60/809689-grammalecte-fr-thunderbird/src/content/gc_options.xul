@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://grammarchecker/content/gc_options.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://grammarchecker/locale/gc_options.dtd">
+
+<dialog
+  id="grammalecte-gcoptions-window"
+  title="&window.title;"
+  orient="vertical"
+  buttons="accept, cancel, extra1"
+  ondialogaccept="oOptControl.save();"
+  ondialogcancel="return;"
+  buttonlabelextra1="&defaultbutton.label;"
+  ondialogextra1="oOptControl.reset();"
+  defaultButton="accept"
+  width="400"
+  onload="document.getElementById('grammalecte-gcoptions-window').centerWindowOnScreen();"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <!-- Other elements go here -->
+  
+  <dialogheader id="grammalecte-title" title="&dialogheader.label;" description="" />
+
+  <tabbox id="tabs_options" selectedIndex="0">
+    <tabs>
+    <tab label="&option.label.basic;"/>
+    <tab label="&option.label.gramm;"/>
+    <tab label="&option.label.verbs;"/>
+    <tab label="&option.label.style;"/>
+    <tab label="&option.label.misc;"/>
+    <tab label="&option.label.debug;"/>
+
+    </tabs>
+    <tabpanels>
+    <tabpanel orient="vertical">
+      <label class="section" value="&option.label.basic;" />
+      <checkbox id="option_typo" class="option" label="&option.label.typo;" />
+      <checkbox id="option_apos" class="option" label="&option.label.apos;" />
+      <checkbox id="option_esp" class="option" label="&option.label.esp;" />
+      <checkbox id="option_tab" class="option" label="&option.label.tab;" />
+      <checkbox id="option_nbsp" class="option" label="&option.label.nbsp;" />
+      <checkbox id="option_unit" class="option" label="&option.label.unit;" />
+      <checkbox id="option_tu" class="option" label="&option.label.tu;" />
+      <checkbox id="option_maj" class="option" label="&option.label.maj;" />
+      <checkbox id="option_num" class="option" label="&option.label.num;" />
+      <checkbox id="option_virg" class="option" label="&option.label.virg;" />
+      <checkbox id="option_nf" class="option" label="&option.label.nf;" />
+      <checkbox id="option_chim" class="option" label="&option.label.chim;" />
+      <checkbox id="option_ocr" class="option" label="&option.label.ocr;" />
+      <checkbox id="option_mapos" class="option" label="&option.label.mapos;" />
+      <checkbox id="option_liga" class="option" label="&option.label.liga;" />
+    </tabpanel>
+    <tabpanel orient="vertical">
+      <label class="section" value="&option.label.gramm;" />
+      <checkbox id="option_conf" class="option" label="&option.label.conf;" />
+      <checkbox id="option_sgpl" class="option" label="&option.label.sgpl;" />
+      <checkbox id="option_gn" class="option" label="&option.label.gn;" />
+    </tabpanel>
+    <tabpanel orient="vertical">
+      <label class="section" value="&option.label.verbs;" />
+      <checkbox id="option_infi" class="option" label="&option.label.infi;" />
+      <checkbox id="option_conj" class="option" label="&option.label.conj;" />
+      <checkbox id="option_ppas" class="option" label="&option.label.ppas;" />
+      <checkbox id="option_imp" class="option" label="&option.label.imp;" />
+      <checkbox id="option_inte" class="option" label="&option.label.inte;" />
+      <checkbox id="option_vmode" class="option" label="&option.label.vmode;" />
+    </tabpanel>
+    <tabpanel orient="vertical">
+      <label class="section" value="&option.label.style;" />
+      <checkbox id="option_bs" class="option" label="&option.label.bs;" />
+      <checkbox id="option_pleo" class="option" label="&option.label.pleo;" />
+      <checkbox id="option_redon1" class="option" label="&option.label.redon1;" />
+      <checkbox id="option_redon2" class="option" label="&option.label.redon2;" />
+      <checkbox id="option_neg" class="option" label="&option.label.neg;" />
+    </tabpanel>
+    <tabpanel orient="vertical">
+      <label class="section" value="&option.label.misc;" />
+      <checkbox id="option_date" class="option" label="&option.label.date;" />
+      <checkbox id="option_mc" class="option" label="&option.label.mc;" />
+    </tabpanel>
+    <tabpanel orient="vertical">
+      <label class="section" value="&option.label.debug;" />
+      <checkbox id="option_idrule" class="option" label="&option.label.idrule;" />
+    </tabpanel>
+
+    </tabpanels>
+  </tabbox>
+
+  <script type="application/javascript" src="gc_options.js" />
+
+</dialog>

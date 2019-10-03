@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>warnattachment@jdede.de</em:id>
+    <em:name>WarnAttachment</em:name>
+    <em:version>0.11</em:version>
+    <em:creator>Jens Dede</em:creator>
+    <em:homepageURL>https://github.com/jdede/WarnAttachment</em:homepageURL>
+    <em:optionsURL>chrome://warnattachment/content/options.xul</em:optionsURL>
+    <em:optionsType>3</em:optionsType>
+    <em:type>2</em:type>
+    <em:description>WarnAttachment shows an additional dialog to confirm opening of potentially dangerous attachments. Some attachments like executables etc. are completely blocked. This reduces the risk of malware especially for inexperienced users.</em:description>
+    <em:localized>
+        <Description>
+            <em:locale>de-DE</em:locale>
+            <em:name>WarnAttachment</em:name>
+            <em:description>WarnAttachment zeigt einen zusätzlichen Dialog an, um das Öffnen potentiell gefährlicher Anhänge zu bestätigen. Einige Anhänge wie z.B. .exe-Dateien werden komplett geblockt. Dies reduziert das Malware-Risiko besonders für unerfahrene Benutzer.</em:description>
+        </Description>
+    </em:localized>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>9.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

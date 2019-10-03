@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window id="onebyoneforward-form"
+        title="One-by-One Forward"
+        orient="horizontal"
+        onunload="window.opener.OneByOneForward.removeWindow(window);"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <vbox flex="1" style="padding: 10px;">
+    <hbox align="baseline">
+      <label control="onebyoneforward-to" value="To:" style="width: 30px;" />
+      <textbox id="onebyoneforward-to" class="onebyoneforward-disablable" flex="1" />
+    </hbox>
+    <spacer style="height: 10px;" />
+    <hbox align="baseline">
+      <label control="onebyoneforward-cc" value="Cc:" style="width: 30px;" />
+      <textbox id="onebyoneforward-cc" class="onebyoneforward-disablable" flex="1" />
+    </hbox>
+    <spacer style="height: 10px;" />
+    <hbox align="baseline">
+      <label control="onebyoneforward-bcc" value="Bcc:" style="width: 30px;" />
+      <textbox id="onebyoneforward-bcc" class="onebyoneforward-disablable" flex="1" />
+    </hbox>
+    <spacer style="height: 10px;" />
+    <hbox align="baseline">
+      <label control="onebyoneforward-attach" value="Attachments:" />
+      <radiogroup id="onebyoneforward-attach" class="onebyoneforward-disablable" orient="horizontal">
+        <radio label="None" value="" accesskey="N" />
+        <radio label="Original" value="original" accesskey="O" selected="true" />
+        <radio label="EML" value="eml" accesskey="E" />
+        <radio label="Both" value="both" accesskey="B" />
+      </radiogroup>
+      <spacer flex="1" />
+    </hbox>
+    <spacer style="height: 10px;" />
+    <spacer flex="1" />
+    <button id="onebyoneforward-submit" class="onebyoneforward-disablable" label="Send" oncommand="window.opener.OneByOneForward.sendSelected(window);" />
+    <spacer style="height: 10px;" />
+    <textbox id="onebyoneforward-log" readonly="true" value="Ready." />
+  </vbox>
+</window>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://grammarchecker/content/spell_options.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://grammarchecker/locale/spell_options.dtd">
+
+<dialog
+  id="grammalecte-spelloptions-window"
+  title="&window.title;"
+  orient="vertical"
+  buttons="accept,cancel"
+  ondialogaccept="oDialogControl.setDictionaries();"
+  ondialogcancel="return;"
+  width="400"
+  height="480"
+  onload="oDialogControl.load();"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <!-- Other elements go here -->
+
+  <dialogheader id="grammalecte-title" title="&dialogheader.label;" description=""/>
+
+  <hbox>
+    <!--
+    <groupbox with="380">
+      <caption id="grouptitle" label="&grouptitle_hunspell;" />
+      <description id="warning">&warning_hunspell;</description>
+
+      <checkbox id="fr-FR-modern" class="option" label="&option.modern.label;" />
+      <description class="dicdescr">&option.modern.descr;</description>
+      <checkbox id="fr-FR-classic" class="option" label="&option.classic.label;" />
+      <description class="dicdescr">&option.classic.descr;</description>
+      <checkbox id="fr-FR-reform" class="option" label="&option.reform.label;" />
+      <description class="dicdescr">&option.reform.descr;</description>
+      <checkbox id="fr-FR-classic-reform" class="option" label="&option.allvar.label;" />
+      <description class="dicdescr">&option.allvar.descr;</description>
+    </groupbox>
+    -->
+
+    <groupbox with="380">
+      <caption id="grouptitle" label="&grouptitle_graphspell;" />
+      <description id="warning">&warning_graphspell;</description>
+
+      <checkbox id="main_dic" class="option" label="&option.main_dic.label;" disabled="true" checked="true" />
+      <description class="dicdescr">&option.main_dic.descr;</description>
+
+      <checkbox id="extended_dic" class="option disabled" label="&option.extended_dic.label;" disabled="true" />
+      <description class="dicdescr disabled">&option.extended_dic.descr;</description>
+
+      <checkbox id="community_dic" class="option disabled" label="&option.community_dic.label;" disabled="true" />
+      <description class="dicdescr disabled">&option.community_dic.descr;</description>
+
+      <checkbox id="personal_dic" class="option" label="&option.personal_dic.label;" />
+      <description class="dicdescr">&option.personal_dic.descr;</description>
+    </groupbox>
+  </hbox>
+
+  <script type="application/javascript" src="spell_options.js"/>
+  <script type="application/javascript" src="spellchecker.js"/>
+
+</dialog>

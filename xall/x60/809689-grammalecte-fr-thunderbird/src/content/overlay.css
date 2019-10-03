@@ -1,0 +1,208 @@
+#grammarchecker-toolbar-button {
+    list-style-image: url("chrome://grammarchecker/skin/grammarcheck.png");
+}
+[iconsize="small"] #grammarchecker-toolbar-button {
+    list-style-image: url("chrome://grammarchecker/skin/grammarcheck_small.png");
+}
+#grammarchecker-toolbar-button[disabled="true"] {
+    list-style-image: url("chrome://grammarchecker/skin/grammarcheck_disabled.png");
+}
+[iconsize="small"] #grammarchecker-toolbar-button[disabled="true"] {
+    list-style-image: url("chrome://grammarchecker/skin/grammarcheck_small_disabled.png");
+}
+
+#grammalecte-menu {
+    list-style-image: url("chrome://grammarchecker/skin/grammarcheck.png");
+}
+menuitem#gl-item-analyze {
+    list-style-image: url('chrome://grammarchecker/skin/grammarcheck.png');
+}
+
+#textformatter-panel {
+    overflow: auto;
+    height: 500px;
+    max-height: 650px;
+}
+#textformatter-title {
+    margin-top: 10px;
+}
+#textformatter-commands {
+    margin: 10px 0;
+}
+#textformatter-infomsg {
+    padding: 5px;
+    font-size: 10px;
+}
+.optiongroup {
+    color: hsl(210, 50%, 40%);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+#grammarchecker-panel {
+    overflow: auto;
+    margin-left: 0.5em;
+    height: 400px;
+    max-height: 600px;
+}
+
+#grammalecte-title {
+    margin-top: 10px;
+}
+
+#grammalecte-infobox {
+    display: block;
+    margin: 20px 10px 5px 10px;
+    padding: 10px;
+    background-color: hsl(210, 20%, 40%);
+    border-radius: 3px;
+    color: hsl(210, 50%, 96%);
+    font-weight: bold;
+}
+#grammalecte-info {
+    padding: 1px 5px;
+}
+#closebutton {
+    padding: 1px 5px;
+    background-color: hsl(0, 50%, 50%);
+    color: hsl(0, 10%, 96%);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#grammalecte-errors div {
+    display: block;
+    /*display: list-item;
+    list-style-position: inside;*/
+    margin-top: 10px;
+}
+#grammalecte-errors p {
+    display: block;
+    margin-left: 10px;
+}
+#grammalecte-errors p.paragraph {
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+#grammalecte-errors p.message {
+    margin-left: 20px;
+}
+#grammalecte-errors p.moreinfo {
+    margin-left: 40px;
+}
+#grammalecte-errors p.suggestions {
+    margin-left: 40px;
+    color: hsl(120, 5%, 33%);
+}
+#grammalecte-errors span.suggestions_button {
+    padding: 1px 6px;
+    background-color: hsl(120, 40%, 60%);
+    color: hsl(120, 10%, 96%);
+    border-radius: 2px;
+    cursor: pointer;
+}
+#grammalecte-errors {
+    display: block;
+}
+
+a {
+    font-weight: bold;
+    color: hsl(30, 50%, 50%);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.error {
+    /* default color */
+    background-color: hsl(210, 50%, 50%);
+    color: hsl(210, 10%, 96%);
+    font-weight: bold;
+    border-radius: 3px;
+    /*border-bottom: 2px solid hsl(210, 50%, 50%);*/
+}
+.errornum {
+    color: hsl(210, 10%, 30%);
+    font-weight: bold;
+}
+.sugg {
+    padding: 1px 6px;
+    background-color: hsl(120, 50%, 30%);
+    color: hsl(210, 10%, 90%);
+    border-radius: 2px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.debug_info {
+    color: hsl(0, 50%, 50%);
+    font-style: italic;
+}
+
+
+/* elems */
+.spell {
+    background-color: hsl(0, 50%, 50%);
+    color: hsl(0, 0%, 96%);
+    border-radius: 3px;
+}
+
+/* elems */
+.typo, .esp, .nbsp, .eif, .maj, .virg, .tu, .num, .unit, .nf, .liga, .mapos, .chim {
+    background-color: hsl(30, 70%, 50%);
+    color: hsl(30, 10%, 96%);
+    border-radius: 3px;
+}
+
+/* elems */
+.apos {
+    background-color: hsl(40, 90%, 50%);
+    color: hsl(40, 10%, 96%);
+    border-radius: 3px;
+}
+
+/* elems */
+.gn, .sgpl {
+    background-color: hsl(210, 50%, 50%);
+    color: hsl(210, 10%, 96%);
+    border-radius: 3px;
+}
+
+/* elems */
+.conj, .infi, .imp, .inte, .ppas, .vmode  {
+    background-color: hsl(300, 30%, 40%);
+    color: hsl(300, 10%, 96%);
+    border-radius: 3px;
+}
+
+/* elems */
+.conf, .ocr {
+    background-color: hsl(270, 40%, 30%);
+    color: hsl(270, 10%, 96%);
+    border-radius: 3px;
+}
+
+/* elems */
+.bs, .pleo, .neg, .redon1, .redon2, .mc, .date, .notype {
+    background-color: hsl(180, 50%, 40%);
+    color: hsl(180, 10%, 96%);
+    border-radius: 3px;
+}
+
+
+/*
+    TB Next: fix dialogheaders
+*/
+dialogheader {
+  -moz-binding: url("chrome://messenger/content/generalBindings.xml#dialogheader");
+  margin: 0 5px 5px;
+  border: 1px solid ThreeDDarkShadow;
+  padding: 5px 8px;
+  background-color: Highlight;
+  color: HighlightText;
+}
+
+.dialogheader-title {
+  margin: 0 !important;
+  font-size: larger;
+  font-weight: bold;
+}

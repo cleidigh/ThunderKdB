@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>copy-message-id@j.kahn</em:id>
+    <em:name>Copy Message ID</em:name>
+    <em:description>Adds a button to the message view toolbar to copy the message ID to the clipboard</em:description>
+    <em:version>1.0.1</em:version>
+    <em:creator>Joshua Kahn</em:creator>
+
+    <em:type>2</em:type>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>31.*</em:minVersion>
+        <em:maxVersion>52.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+  </Description>
+</RDF>

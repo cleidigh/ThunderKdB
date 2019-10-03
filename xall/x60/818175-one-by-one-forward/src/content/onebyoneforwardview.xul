@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<overlay id="onebyoneforward-view" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://onebyoneforward/content/onebyoneforward.js"/>
+  <menupopup id="mailContext">
+    <menuitem id="onebyoneforward-mail-context"
+              label="One-by-One Forward"
+              accesskey="o"
+              oncommand="window.OneByOneForward.launch();"/>
+  </menupopup>
+</overlay>
