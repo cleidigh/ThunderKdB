@@ -13,8 +13,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/584002-auto-zoomer/src)  
-Current XPI: [XPI](x68/584002-auto-zoomer/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/584002-auto-zoomer/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/584002-auto-zoomer/xpi)  
 
 
 

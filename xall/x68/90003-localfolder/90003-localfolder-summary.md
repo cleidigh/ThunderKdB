@@ -15,8 +15,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/90003-localfolder/src)  
-Current XPI: [XPI](x68/90003-localfolder/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/90003-localfolder/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/90003-localfolder/xpi)  
 
 
 

@@ -14,8 +14,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/3254-quickfolders-tabbed-folders/src)  
-Current XPI: [XPI](x68/3254-quickfolders-tabbed-folders/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/3254-quickfolders-tabbed-folders/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/3254-quickfolders-tabbed-folders/xpi)  
 
 
 

@@ -13,8 +13,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/642320-sensitivity-header/src)  
-Current XPI: [XPI](x68/642320-sensitivity-header/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/642320-sensitivity-header/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/642320-sensitivity-header/xpi)  
 
 
 

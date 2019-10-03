@@ -14,8 +14,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/986372-bordercolors-d/src)  
-Current XPI: [XPI](x68/986372-bordercolors-d/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/986372-bordercolors-d/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/986372-bordercolors-d/xpi)  
 
 
 

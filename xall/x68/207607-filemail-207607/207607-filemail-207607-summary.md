@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/207607-filemail-207607/src)  
-Current XPI: [XPI](x68/207607-filemail-207607/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/207607-filemail-207607/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/207607-filemail-207607/xpi)  
 
 
 

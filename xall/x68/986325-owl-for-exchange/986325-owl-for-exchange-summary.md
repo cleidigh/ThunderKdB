@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/986325-owl-for-exchange/src)  
-Current XPI: [XPI](x68/986325-owl-for-exchange/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/986325-owl-for-exchange/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/986325-owl-for-exchange/xpi)  
 
 
 

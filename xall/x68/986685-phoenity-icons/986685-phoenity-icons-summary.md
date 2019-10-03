@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/986685-phoenity-icons/src)  
-Current XPI: [XPI](x68/986685-phoenity-icons/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/986685-phoenity-icons/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/986685-phoenity-icons/xpi)  
 
 
 

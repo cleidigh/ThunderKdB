@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/367989-rise-of-the-tools/src)  
-Current XPI: [XPI](x68/367989-rise-of-the-tools/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/367989-rise-of-the-tools/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/367989-rise-of-the-tools/xpi)  
 
 
 

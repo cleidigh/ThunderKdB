@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/961125-bugmail-fixed-version/src)  
-Current XPI: [XPI](x68/961125-bugmail-fixed-version/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/961125-bugmail-fixed-version/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/961125-bugmail-fixed-version/xpi)  
 
 
 

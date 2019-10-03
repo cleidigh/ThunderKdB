@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/438634-dkim-verifier/src)  
-Current XPI: [XPI](x68/438634-dkim-verifier/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/438634-dkim-verifier/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/438634-dkim-verifier/xpi)  
 
 
 

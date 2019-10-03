@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/477467-autoarchivereloaded/src)  
-Current XPI: [XPI](x68/477467-autoarchivereloaded/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/477467-autoarchivereloaded/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/477467-autoarchivereloaded/xpi)  
 
 
 

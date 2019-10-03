@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/546538-single-domain/src)  
-Current XPI: [XPI](x68/546538-single-domain/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/546538-single-domain/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/546538-single-domain/xpi)  
 
 
 

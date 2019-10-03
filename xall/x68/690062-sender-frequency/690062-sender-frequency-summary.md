@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/690062-sender-frequency/src)  
-Current XPI: [XPI](x68/690062-sender-frequency/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/690062-sender-frequency/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/690062-sender-frequency/xpi)  
 
 
 

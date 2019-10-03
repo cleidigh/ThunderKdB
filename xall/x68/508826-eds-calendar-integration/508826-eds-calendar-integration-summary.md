@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/508826-eds-calendar-integration/src)  
-Current XPI: [XPI](x68/508826-eds-calendar-integration/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/508826-eds-calendar-integration/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/508826-eds-calendar-integration/xpi)  
 
 
 

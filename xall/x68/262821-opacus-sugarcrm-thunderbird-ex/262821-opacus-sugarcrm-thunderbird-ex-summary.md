@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/262821-opacus-sugarcrm-thunderbird-ex/src)  
-Current XPI: [XPI](x68/262821-opacus-sugarcrm-thunderbird-ex/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/262821-opacus-sugarcrm-thunderbird-ex/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/262821-opacus-sugarcrm-thunderbird-ex/xpi)  
 
 
 

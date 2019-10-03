@@ -14,8 +14,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/372870-quickfilters/src)  
-Current XPI: [XPI](x68/372870-quickfilters/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/372870-quickfilters/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/372870-quickfilters/xpi)  
 
 
 

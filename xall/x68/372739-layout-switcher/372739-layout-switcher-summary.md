@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/372739-layout-switcher/src)  
-Current XPI: [XPI](x68/372739-layout-switcher/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/372739-layout-switcher/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/372739-layout-switcher/xpi)  
 
 
 

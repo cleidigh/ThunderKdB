@@ -14,8 +14,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/409482-sugarcrm-thunderbird-integr/src)  
-Current XPI: [XPI](x68/409482-sugarcrm-thunderbird-integr/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/409482-sugarcrm-thunderbird-integr/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/409482-sugarcrm-thunderbird-integr/xpi)  
 
 
 

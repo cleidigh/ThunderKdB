@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/708783-emojiaddin/src)  
-Current XPI: [XPI](x68/708783-emojiaddin/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/708783-emojiaddin/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/708783-emojiaddin/xpi)  
 
 
 

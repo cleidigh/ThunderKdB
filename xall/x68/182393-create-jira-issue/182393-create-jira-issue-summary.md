@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/182393-create-jira-issue/src)  
-Current XPI: [XPI](x68/182393-create-jira-issue/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/182393-create-jira-issue/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/182393-create-jira-issue/xpi)  
 
 
 

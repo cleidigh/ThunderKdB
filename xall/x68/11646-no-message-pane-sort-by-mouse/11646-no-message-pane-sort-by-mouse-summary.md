@@ -14,8 +14,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/11646-no-message-pane-sort-by-mouse/src)  
-Current XPI: [XPI](x68/11646-no-message-pane-sort-by-mouse/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/11646-no-message-pane-sort-by-mouse/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/11646-no-message-pane-sort-by-mouse/xpi)  
 
 
 

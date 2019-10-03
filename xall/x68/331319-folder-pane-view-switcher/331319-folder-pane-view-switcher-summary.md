@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/331319-folder-pane-view-switcher/src)  
-Current XPI: [XPI](x68/331319-folder-pane-view-switcher/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/331319-folder-pane-view-switcher/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/331319-folder-pane-view-switcher/xpi)  
 
 
 

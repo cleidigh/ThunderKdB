@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/161924-show-address-only/src)  
-Current XPI: [XPI](x68/161924-show-address-only/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/161924-show-address-only/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/161924-show-address-only/xpi)  
 
 
 

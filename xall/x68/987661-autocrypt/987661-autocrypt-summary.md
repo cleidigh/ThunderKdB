@@ -16,8 +16,8 @@ Max: 69.0
 
 # Files
 
-Source Tree: [Src](x68/987661-autocrypt/src)  
-Current XPI: [XPI](x68/987661-autocrypt/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/987661-autocrypt/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/987661-autocrypt/xpi)  
 
 
 

@@ -1,4 +1,4 @@
-# ![Extension icon](https://addons.thunderbird.net/user-media/addon_icons/54/54035-64.png?modified=1568543451) Thunderbird Conversations : Extension Summary
+# ![Extension icon](https://addons.thunderbird.net/user-media/addon_icons/54/54035-64.png?modified=1569831708) Thunderbird Conversations : Extension Summary
 
 Name: Thunderbird Conversations  
 Id: 54035  
@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/54035-gmail-conversation-view/src)  
-Current XPI: [XPI](x68/54035-gmail-conversation-view/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/54035-gmail-conversation-view/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/54035-gmail-conversation-view/xpi)  
 
 
 

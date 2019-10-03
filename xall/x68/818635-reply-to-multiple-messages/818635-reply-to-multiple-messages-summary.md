@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/818635-reply-to-multiple-messages/src)  
-Current XPI: [XPI](x68/818635-reply-to-multiple-messages/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/818635-reply-to-multiple-messages/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/818635-reply-to-multiple-messages/xpi)  
 
 
 

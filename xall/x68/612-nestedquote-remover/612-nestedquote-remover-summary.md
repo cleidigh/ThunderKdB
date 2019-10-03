@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/612-nestedquote-remover/src)  
-Current XPI: [XPI](x68/612-nestedquote-remover/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/612-nestedquote-remover/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/612-nestedquote-remover/xpi)  
 
 
 

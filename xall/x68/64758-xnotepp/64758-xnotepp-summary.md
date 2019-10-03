@@ -13,8 +13,8 @@ Max: 68.*
 
 # Files
 
-Source Tree: [Src](x68/64758-xnotepp/src)  
-Current XPI: [XPI](x68/64758-xnotepp/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/64758-xnotepp/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/64758-xnotepp/xpi)  
 
 
 

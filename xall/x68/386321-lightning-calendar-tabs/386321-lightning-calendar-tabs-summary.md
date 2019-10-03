@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/386321-lightning-calendar-tabs/src)  
-Current XPI: [XPI](x68/386321-lightning-calendar-tabs/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/386321-lightning-calendar-tabs/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/386321-lightning-calendar-tabs/xpi)  
 
 
 

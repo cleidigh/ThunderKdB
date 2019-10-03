@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/91129-lightningbutton/src)  
-Current XPI: [XPI](x68/91129-lightningbutton/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/91129-lightningbutton/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/91129-lightningbutton/xpi)  
 
 
 

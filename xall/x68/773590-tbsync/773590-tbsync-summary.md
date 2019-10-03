@@ -12,8 +12,8 @@ Max: 69.*
 
 # Files
 
-Source Tree: [Src](x68/773590-tbsync/src)  
-Current XPI: [XPI](x68/773590-tbsync/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/773590-tbsync/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/773590-tbsync/xpi)  
 
 
 

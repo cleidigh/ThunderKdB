@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/1898-folderflags/src)  
-Current XPI: [XPI](x68/1898-folderflags/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/1898-folderflags/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/1898-folderflags/xpi)  
 
 
 

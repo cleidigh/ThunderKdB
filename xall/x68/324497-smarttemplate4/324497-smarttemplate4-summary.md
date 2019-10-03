@@ -12,8 +12,8 @@ Max: 69.0
 
 # Files
 
-Source Tree: [Src](x68/324497-smarttemplate4/src)  
-Current XPI: [XPI](x68/324497-smarttemplate4/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/324497-smarttemplate4/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/324497-smarttemplate4/xpi)  
 
 
 

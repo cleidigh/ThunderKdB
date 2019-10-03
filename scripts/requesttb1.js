@@ -325,9 +325,10 @@ async function getExtensionFiles(addon_identifier) {
 		// 	console.debug('Removing: ' + `${extRootDir}`);
 		// }
 		// console.debug('  Done');
-		let jfile = `${extRootDir}/${extRootName}.json`
-		writePrettyJSONFile(jfile, ext)
-		console.debug(ext.slug);
+		
+		// let jfile = `${extRootDir}/${extRootName}.json`
+		// writePrettyJSONFile(jfile, ext)
+		// console.debug(ext.slug);
 
 
 		// const xpiFileURL = ext.current_version.files[0].url;
@@ -354,11 +355,11 @@ async function getExtensionFiles(addon_identifier) {
 		// fileUnzip(`${extRootDir}/xpi/${xpiFileName}`, { dir: `${extRootDir}/src` });
 		// console.debug('unpacked source');
 
-		let ext_versions = await requestATN_URL(addon_identifier, 'versions');
-		console.debug('downloaded versions');
+		// let ext_versions = await requestATN_URL(addon_identifier, 'versions');
+		// console.debug('downloaded versions');
 
-		jfile = `${extRootDir}/${extRootName}-versions.json`;
-		await writePrettyJSONFile(jfile, ext_versions);
+		// jfile = `${extRootDir}/${extRootName}-versions.json`;
+		// await writePrettyJSONFile(jfile, ext_versions);
 
 		console.debug('generate markDown	');
 		genExtensionSummaryMD(addon_identifier, ext, targetGroupDir);

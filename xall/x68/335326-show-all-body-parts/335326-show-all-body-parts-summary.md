@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/335326-show-all-body-parts/src)  
-Current XPI: [XPI](x68/335326-show-all-body-parts/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/335326-show-all-body-parts/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/335326-show-all-body-parts/xpi)  
 
 
 

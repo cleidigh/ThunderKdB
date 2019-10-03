@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/348798-evernote-tab/src)  
-Current XPI: [XPI](x68/348798-evernote-tab/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/348798-evernote-tab/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/348798-evernote-tab/xpi)  
 
 
 

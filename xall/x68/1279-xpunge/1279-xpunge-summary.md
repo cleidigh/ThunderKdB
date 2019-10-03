@@ -12,8 +12,8 @@ Max: 68.*
 
 # Files
 
-Source Tree: [Src](x68/1279-xpunge/src)  
-Current XPI: [XPI](x68/1279-xpunge/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/1279-xpunge/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/1279-xpunge/xpi)  
 
 
 

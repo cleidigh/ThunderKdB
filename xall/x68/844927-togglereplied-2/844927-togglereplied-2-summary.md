@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/844927-togglereplied-2/src)  
-Current XPI: [XPI](x68/844927-togglereplied-2/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/844927-togglereplied-2/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/844927-togglereplied-2/xpi)  
 
 
 

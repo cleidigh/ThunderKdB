@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/14896-message-archive-options/src)  
-Current XPI: [XPI](x68/14896-message-archive-options/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/14896-message-archive-options/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/14896-message-archive-options/xpi)  
 
 
 
