@@ -1,0 +1,470 @@
+<!-- ***** BEGIN LICENSE BLOCK *****
+  -
+  - Version: GPL 3.0
+  -
+  - ZNotes
+  - Copyright (C) 2012 Alexander Kapitman
+  -
+  - This program is free software: you can redistribute it and/or modify
+  - it under the terms of the GNU General Public License as published by
+  - the Free Software Foundation, either version 3 of the License, or
+  - (at your option) any later version.
+  -
+  - This program is distributed in the hope that it will be useful,
+  - but WITHOUT ANY WARRANTY; without even the implied warranty of
+  - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  - GNU General Public License for more details.
+  -
+  - You should have received a copy of the GNU General Public License
+  - along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -
+  - The Original Code is ZNotes.
+  -
+  - Initial Developer(s):
+  -   Alexander Kapitman <akman.ru@gmail.com>
+  -
+  - Portions created by the Initial Developer are Copyright (C) 2012
+  - the Initial Developer. All Rights Reserved.
+  -
+  - Contributor(s):
+  -
+  - ***** END LICENSE BLOCK ***** -->
+
+<!-- main -->
+
+<!ENTITY znotes_showmainmenubar_label "Панель меню">
+<!ENTITY znotes_showmainmenubar_tooltip "Показать панель меню">
+<!ENTITY znotes_showmainmenubar_accesskey "м">
+<!ENTITY znotes_showmainmenubar_key "">
+<!ENTITY znotes_showmainmenubar_key_modifiers "">
+<!ENTITY znotes_showmainmenubar_keycode "">
+
+<!ENTITY znotes_showmaintoolbar_label "Панель инструментов">
+<!ENTITY znotes_showmaintoolbar_tooltip "Показать панель инструментов">
+<!ENTITY znotes_showmaintoolbar_accesskey "и">
+<!ENTITY znotes_showmaintoolbar_key "">
+<!ENTITY znotes_showmaintoolbar_key_modifiers "">
+<!ENTITY znotes_showmaintoolbar_keycode "">
+
+<!ENTITY znotes_customizemaintoolbar_label "Настроить">
+<!ENTITY znotes_customizemaintoolbar_tooltip "Настроить панель инструментов">
+<!ENTITY znotes_customizemaintoolbar_accesskey "Н">
+<!ENTITY znotes_customizemaintoolbar_key "">
+<!ENTITY znotes_customizemaintoolbar_key_modifiers "">
+<!ENTITY znotes_customizemaintoolbar_keycode "">
+
+<!ENTITY znotes_openoptionsdialog_label "Параметры">
+<!ENTITY znotes_openoptionsdialog_tooltip "Открыть диалог изменения параметров">
+<!ENTITY znotes_openoptionsdialog_accesskey "П">
+<!ENTITY znotes_openoptionsdialog_key "">
+<!ENTITY znotes_openoptionsdialog_key_modifiers "">
+<!ENTITY znotes_openoptionsdialog_keycode "">
+
+<!ENTITY znotes_debugger_label "Отладка">
+<!ENTITY znotes_debugger_tooltip "Запустить отладчик">
+<!ENTITY znotes_debugger_accesskey "о">
+<!ENTITY znotes_debugger_key "D">
+<!ENTITY znotes_debugger_key_modifiers "accel,alt">
+<!ENTITY znotes_debugger_keycode "">
+
+<!ENTITY znotes_testsuite_label "Тесты">
+<!ENTITY znotes_testsuite_tooltip "Открыть набор тестов">
+<!ENTITY znotes_testsuite_accesskey "т">
+<!ENTITY znotes_testsuite_key "Т">
+<!ENTITY znotes_testsuite_key_modifiers "accel,alt">
+<!ENTITY znotes_testsuite_keycode "">
+
+<!ENTITY znotes_console_label "Консоль">
+<!ENTITY znotes_console_tooltip "Открыть консоль ошибок">
+<!ENTITY znotes_console_accesskey "К">
+<!ENTITY znotes_console_key "">
+<!ENTITY znotes_console_key_modifiers "">
+<!ENTITY znotes_console_keycode "">
+
+<!ENTITY znotes_inspector_label "Инспектор">
+<!ENTITY znotes_inspector_tooltip "Запустить инспектор">
+<!ENTITY znotes_inspector_accesskey "и">
+<!ENTITY znotes_inspector_key "">
+<!ENTITY znotes_inspector_key_modifiers "">
+<!ENTITY znotes_inspector_keycode "">
+
+<!ENTITY znotes_addons_label "Дополнения">
+<!ENTITY znotes_addons_tooltip "Управление дополнениями">
+<!ENTITY znotes_addons_accesskey "Д">
+<!ENTITY znotes_addons_key "">
+<!ENTITY znotes_addons_key_modifiers "">
+<!ENTITY znotes_addons_keycode "">
+
+<!ENTITY znotes_update_label "Обновить">
+<!ENTITY znotes_update_tooltip "Проверить обновления">
+<!ENTITY znotes_update_accesskey "О">
+<!ENTITY znotes_update_key "">
+<!ENTITY znotes_update_key_modifiers "">
+<!ENTITY znotes_update_keycode "">
+
+<!ENTITY znotes_openhelp_label "Справка">
+<!ENTITY znotes_openhelp_tooltip "Открыть справку">
+<!ENTITY znotes_openhelp_accesskey "С">
+<!ENTITY znotes_openhelp_key "">
+<!ENTITY znotes_openhelp_key_modifiers "">
+<!ENTITY znotes_openhelp_keycode "">
+
+<!ENTITY znotes_openabout_label "О программе">
+<!ENTITY znotes_openabout_tooltip "О программе">
+<!ENTITY znotes_openabout_accesskey "м">
+<!ENTITY znotes_openabout_key "">
+<!ENTITY znotes_openabout_key_modifiers "">
+<!ENTITY znotes_openabout_keycode "">
+
+<!ENTITY znotes_openbook_label "Открыть блокнот">
+<!ENTITY znotes_openbook_tooltip "Открыть блокнот">
+<!ENTITY znotes_openbook_accesskey "">
+<!ENTITY znotes_openbook_key "">
+<!ENTITY znotes_openbook_key_modifiers "">
+<!ENTITY znotes_openbook_keycode "">
+
+<!ENTITY znotes_closebook_label "Закрыть блокнот">
+<!ENTITY znotes_closebook_tooltip "Закрыть блокнот">
+<!ENTITY znotes_closebook_accesskey "">
+<!ENTITY znotes_closebook_key "">
+<!ENTITY znotes_closebook_key_modifiers "">
+<!ENTITY znotes_closebook_keycode "">
+
+<!ENTITY znotes_appendbook_label "Добавить блокнот">
+<!ENTITY znotes_appendbook_tooltip "Добавить блокнот">
+<!ENTITY znotes_appendbook_accesskey "">
+<!ENTITY znotes_appendbook_key "">
+<!ENTITY znotes_appendbook_key_modifiers "">
+<!ENTITY znotes_appendbook_keycode "">
+
+<!ENTITY znotes_deletebook_label "Удалить блокнот">
+<!ENTITY znotes_deletebook_tooltip "Удалить блокнот">
+<!ENTITY znotes_deletebook_accesskey "">
+<!ENTITY znotes_deletebook_key "">
+<!ENTITY znotes_deletebook_key_modifiers "">
+<!ENTITY znotes_deletebook_keycode "">
+
+<!ENTITY znotes_deletebookdata_label "Удалить блокнот и данные">
+<!ENTITY znotes_deletebookdata_tooltip "Удалить блокнот со всеми содержащимися в нём данными">
+<!ENTITY znotes_deletebookdata_accesskey "">
+<!ENTITY znotes_deletebookdata_key "">
+<!ENTITY znotes_deletebookdata_key_modifiers "">
+<!ENTITY znotes_deletebookdata_keycode "">
+
+<!ENTITY znotes_editbook_label "Изменить блокнот">
+<!ENTITY znotes_editbook_tooltip "Изменить блокнот">
+<!ENTITY znotes_editbook_accesskey "">
+<!ENTITY znotes_editbook_key "">
+<!ENTITY znotes_editbook_key_modifiers "">
+<!ENTITY znotes_editbook_keycode "">
+
+<!ENTITY znotes_renamebook_label "Переименовать блокнот">
+<!ENTITY znotes_renamebook_tooltip "Переименовать блокнот">
+<!ENTITY znotes_renamebook_accesskey "">
+<!ENTITY znotes_renamebook_key "">
+<!ENTITY znotes_renamebook_key_modifiers "">
+<!ENTITY znotes_renamebook_keycode "">
+
+<!ENTITY znotes_refreshbooktree_label "Освежить блокноты">
+<!ENTITY znotes_refreshbooktree_tooltip "Освежить дерево блокнотов">
+<!ENTITY znotes_refreshbooktree_accesskey "">
+<!ENTITY znotes_refreshbooktree_key "">
+<!ENTITY znotes_refreshbooktree_key_modifiers "">
+<!ENTITY znotes_refreshbooktree_keycode "">
+
+<!ENTITY znotes_refreshfoldertree_label "Освежить категории">
+<!ENTITY znotes_refreshfoldertree_tooltip "Освежить дерево категорий">
+<!ENTITY znotes_refreshfoldertree_accesskey "">
+<!ENTITY znotes_refreshfoldertree_key "">
+<!ENTITY znotes_refreshfoldertree_key_modifiers "">
+<!ENTITY znotes_refreshfoldertree_keycode "">
+
+<!ENTITY znotes_newcategory_label "Новая категория">
+<!ENTITY znotes_newcategory_tooltip "Новая категория">
+<!ENTITY znotes_newcategory_accesskey "">
+<!ENTITY znotes_newcategory_key "">
+<!ENTITY znotes_newcategory_key_modifiers "">
+<!ENTITY znotes_newcategory_keycode "">
+
+<!ENTITY znotes_deletecategory_label "Удалить категорию">
+<!ENTITY znotes_deletecategory_tooltip "Удалить категорию">
+<!ENTITY znotes_deletecategory_accesskey "">
+<!ENTITY znotes_deletecategory_key "">
+<!ENTITY znotes_deletecategory_key_modifiers "">
+<!ENTITY znotes_deletecategory_keycode "">
+
+<!ENTITY znotes_clearbin_label "Очистить корзину">
+<!ENTITY znotes_clearbin_tooltip "Очистить корзину">
+<!ENTITY znotes_clearbin_accesskey "">
+<!ENTITY znotes_clearbin_key "">
+<!ENTITY znotes_clearbin_key_modifiers "">
+<!ENTITY znotes_clearbin_keycode "">
+
+<!ENTITY znotes_renamecategory_label "Переименовать категорию">
+<!ENTITY znotes_renamecategory_tooltip "Переименовать категорию">
+<!ENTITY znotes_renamecategory_accesskey "">
+<!ENTITY znotes_renamecategory_key "">
+<!ENTITY znotes_renamecategory_key_modifiers "">
+<!ENTITY znotes_renamecategory_keycode "">
+
+<!ENTITY znotes_refreshtagtree_label "Освежить теги">
+<!ENTITY znotes_refreshtagtree_tooltip "Освежить дерево тегов">
+<!ENTITY znotes_refreshtagtree_accesskey "">
+<!ENTITY znotes_refreshtagtree_key "">
+<!ENTITY znotes_refreshtagtree_key_modifiers "">
+<!ENTITY znotes_refreshtagtree_keycode "">
+
+<!ENTITY znotes_newtag_label "Новый тег">
+<!ENTITY znotes_newtag_tooltip "Новый тег">
+<!ENTITY znotes_newtag_accesskey "">
+<!ENTITY znotes_newtag_key "">
+<!ENTITY znotes_newtag_key_modifiers "">
+<!ENTITY znotes_newtag_keycode "">
+
+<!ENTITY znotes_deletetag_label "Удалить тег">
+<!ENTITY znotes_deletetag_tooltip "Удалить тег">
+<!ENTITY znotes_deletetag_accesskey "">
+<!ENTITY znotes_deletetag_key_modifiers "">
+<!ENTITY znotes_deletetag_key "">
+<!ENTITY znotes_deletetag_keycode "">
+
+<!ENTITY znotes_renametag_label "Переименовать тег">
+<!ENTITY znotes_renametag_tooltip "Переименовать тег">
+<!ENTITY znotes_renametag_accesskey "">
+<!ENTITY znotes_renametag_key "">
+<!ENTITY znotes_renametag_key_modifiers "">
+<!ENTITY znotes_renametag_keycode "">
+
+<!ENTITY znotes_colortag_label "Цвет тега">
+<!ENTITY znotes_colortag_tooltip "Задать цвет тега">
+<!ENTITY znotes_colortag_accesskey "">
+<!ENTITY znotes_colortag_key "">
+<!ENTITY znotes_colortag_key_modifiers "">
+<!ENTITY znotes_colortag_keycode "">
+
+<!ENTITY znotes_newnote_label "Новая заметка">
+<!ENTITY znotes_newnote_tooltip "Новая заметка">
+<!ENTITY znotes_newnote_accesskey "Н">
+<!ENTITY znotes_newnote_key "Z">
+<!ENTITY znotes_newnote_key_modifiers "accel,alt">
+<!ENTITY znotes_newnote_keycode "">
+
+<!ENTITY znotes_importnote_label "Веб клиппер">
+<!ENTITY znotes_importnote_tooltip "Веб клиппер">
+<!ENTITY znotes_importnote_accesskey "">
+<!ENTITY znotes_importnote_key "">
+<!ENTITY znotes_importnote_key_modifiers "">
+<!ENTITY znotes_importnote_keycode "">
+
+<!ENTITY znotes_deletenote_label "Удалить заметку">
+<!ENTITY znotes_deletenote_tooltip "Удалить заметку">
+<!ENTITY znotes_deletenote_accesskey "">
+<!ENTITY znotes_deletenote_key "">
+<!ENTITY znotes_deletenote_key_modifiers "">
+<!ENTITY znotes_deletenote_keycode "">
+
+<!ENTITY znotes_renamenote_label "Переименовать заметку">
+<!ENTITY znotes_renamenote_tooltip "Переименовать заметку">
+<!ENTITY znotes_renamenote_accesskey "">
+<!ENTITY znotes_renamenote_key "">
+<!ENTITY znotes_renamenote_key_modifiers "">
+<!ENTITY znotes_renamenote_keycode "">
+
+<!ENTITY znotes_processnote_label "Обработать заметку">
+<!ENTITY znotes_processnote_tooltip "Открыть заметку во внешней программе">
+<!ENTITY znotes_processnote_accesskey "">
+<!ENTITY znotes_processnote_key "">
+<!ENTITY znotes_processnote_key_modifiers "">
+<!ENTITY znotes_processnote_keycode "">
+
+<!ENTITY znotes_updatenote_label "Обновить заметку">
+<!ENTITY znotes_updatenote_tooltip "Обновить заметку">
+<!ENTITY znotes_updatenote_accesskey "">
+<!ENTITY znotes_updatenote_key "">
+<!ENTITY znotes_updatenote_key_modifiers "">
+<!ENTITY znotes_updatenote_keycode "">
+
+<!ENTITY znotes_refreshnotetree_label "Освежить заметки">
+<!ENTITY znotes_refreshnotetree_tooltip "Освежить дерево заметок">
+<!ENTITY znotes_refreshnotetree_accesskey "">
+<!ENTITY znotes_refreshnotetree_key "">
+<!ENTITY znotes_refreshnotetree_key_modifiers "">
+<!ENTITY znotes_refreshnotetree_keycode "">
+
+<!ENTITY znotes_showfilterbar_label "Быстрый фильтр">
+<!ENTITY znotes_showfilterbar_tooltip "Включить/выключить панель быстрого фильтра">
+<!ENTITY znotes_showfilterbar_accesskey "">
+<!ENTITY znotes_showfilterbar_key "">
+<!ENTITY znotes_showfilterbar_key_modifiers "">
+<!ENTITY znotes_showfilterbar_keycode "">
+
+<!ENTITY znotes_showappmenu_label "Меню приложения">
+<!ENTITY znotes_showappmenu_tooltip "Показать меню приложения">
+<!ENTITY znotes_showappmenu_accesskey "">
+<!ENTITY znotes_showappmenu_key "">
+<!ENTITY znotes_showappmenu_key_modifiers "">
+<!ENTITY znotes_showappmenu_keycode "">
+
+<!ENTITY znotes_pagesetup_label "Параметры страницы">
+<!ENTITY znotes_pagesetup_tooltip "Параметры страницы">
+<!ENTITY znotes_pagesetup_accesskey "">
+<!ENTITY znotes_pagesetup_key "">
+<!ENTITY znotes_pagesetup_key_modifiers "">
+<!ENTITY znotes_pagesetup_keycode "">
+
+<!ENTITY znotes_exit_label "Выход">
+<!ENTITY znotes_exit_tooltip "Выход">
+<!ENTITY znotes_exit_accesskey "В">
+<!ENTITY znotes_exit_key "Q">
+<!ENTITY znotes_exit_key_modifiers "accel">
+<!ENTITY znotes_exit_keycode "">
+
+<!-- edit @see common-edit.dtd -->
+
+<!-- body -->
+
+<!ENTITY znotes_bodydeletenote_label "Удалить заметку">
+<!ENTITY znotes_bodydeletenote_tooltip "Удалить заметку">
+<!ENTITY znotes_bodydeletenote_accesskey "">
+<!ENTITY znotes_bodydeletenote_key "">
+<!ENTITY znotes_bodydeletenote_key_modifiers "">
+<!ENTITY znotes_bodydeletenote_keycode "">
+
+<!ENTITY znotes_bodyrenamenote_label "Переименовать заметку">
+<!ENTITY znotes_bodyrenamenote_tooltip "Переименовать заметку">
+<!ENTITY znotes_bodyrenamenote_accesskey "">
+<!ENTITY znotes_bodyrenamenote_key "">
+<!ENTITY znotes_bodyrenamenote_key_modifiers "">
+<!ENTITY znotes_bodyrenamenote_keycode "">
+
+<!ENTITY znotes_bodycustomizetoolbar_label "Настроить">
+<!ENTITY znotes_bodycustomizetoolbar_tooltip "Настроить панель инструментов">
+<!ENTITY znotes_bodycustomizetoolbar_accesskey "Н">
+<!ENTITY znotes_bodycustomizetoolbar_key "">
+<!ENTITY znotes_bodycustomizetoolbar_key_modifiers "">
+<!ENTITY znotes_bodycustomizetoolbar_keycode "">
+
+<!ENTITY znotes_bodytagsmenu_label "Теги">
+<!ENTITY znotes_bodytagsmenu_tooltip "Теги">
+<!ENTITY znotes_bodytagsmenu_accesskey "Т">
+<!ENTITY znotes_bodytagsmenu_key "T">
+<!ENTITY znotes_bodytagsmenu_key_modifiers "accel">
+<!ENTITY znotes_bodytagsmenu_keycode "">
+
+<!ENTITY znotes_bodytypesmenu_label "Тип">
+<!ENTITY znotes_bodytypesmenu_tooltip "Тип">
+<!ENTITY znotes_bodytypesmenu_accesskey "и">
+<!ENTITY znotes_bodytypesmenu_key "">
+<!ENTITY znotes_bodytypesmenu_key_modifiers "">
+<!ENTITY znotes_bodytypesmenu_keycode "">
+
+<!ENTITY znotes_bodyaddonspanel_label "Дополнения">
+<!ENTITY znotes_bodyaddonspanel_tooltip "Показать/скрыть панель дополнений">
+<!ENTITY znotes_bodyaddonspanel_accesskey "Д">
+<!ENTITY znotes_bodyaddonspanel_key "">
+<!ENTITY znotes_bodyaddonspanel_key_modifiers "">
+<!ENTITY znotes_bodyaddonspanel_keycode "">
+
+<!-- attachments -->
+
+<!ENTITY znotes_attachmentsaddcontact_label "Присоединить контакт">
+<!ENTITY znotes_attachmentsaddcontact_tooltip "Присоединить контакт">
+<!ENTITY znotes_attachmentsaddcontact_accesskey "К">
+<!ENTITY znotes_attachmentsaddcontact_key "">
+<!ENTITY znotes_attachmentsaddcontact_key_modifiers "">
+<!ENTITY znotes_attachmentsaddcontact_keycode "">
+
+<!ENTITY znotes_attachmentsaddfile_label "Присоединить файл">
+<!ENTITY znotes_attachmentsaddfile_tooltip "Присоединить файл">
+<!ENTITY znotes_attachmentsaddfile_accesskey "Ф">
+<!ENTITY znotes_attachmentsaddfile_key "">
+<!ENTITY znotes_attachmentsaddfile_key_modifiers "">
+<!ENTITY znotes_attachmentsaddfile_keycode "">
+
+<!ENTITY znotes_attachmentsopen_label "Открыть">
+<!ENTITY znotes_attachmentsopen_tooltip "Открыть вложение">
+<!ENTITY znotes_attachmentsopen_accesskey "О">
+<!ENTITY znotes_attachmentsopen_key "">
+<!ENTITY znotes_attachmentsopen_key_modifiers "">
+<!ENTITY znotes_attachmentsopen_keycode "">
+
+<!ENTITY znotes_attachmentsopenwith_label "Открыть с помощью">
+<!ENTITY znotes_attachmentsopenwith_tooltip "Открыть с помощью">
+<!ENTITY znotes_attachmentsopenwith_accesskey "П">
+<!ENTITY znotes_attachmentsopenwith_key "">
+<!ENTITY znotes_attachmentsopenwith_key_modifiers "">
+<!ENTITY znotes_attachmentsopenwith_keycode "">
+
+<!ENTITY znotes_attachmentssave_label "Сохранить">
+<!ENTITY znotes_attachmentssave_tooltip "Сохранить вложение как">
+<!ENTITY znotes_attachmentssave_accesskey "С">
+<!ENTITY znotes_attachmentssave_key "">
+<!ENTITY znotes_attachmentssave_key_modifiers "">
+<!ENTITY znotes_attachmentssave_keycode "">
+
+<!ENTITY znotes_attachmentsdelete_label "Удалить">
+<!ENTITY znotes_attachmentsdelete_tooltip "Удалить вложение">
+<!ENTITY znotes_attachmentsdelete_accesskey "У">
+<!ENTITY znotes_attachmentsdelete_key "">
+<!ENTITY znotes_attachmentsdelete_key_modifiers "">
+<!ENTITY znotes_attachmentsdelete_keycode "">
+
+<!-- content -->
+
+<!ENTITY znotes_contentaddfile_label "Добавить файл">
+<!ENTITY znotes_contentaddfile_tooltip "Добавить файл">
+<!ENTITY znotes_contentaddfile_accesskey "Д">
+<!ENTITY znotes_contentaddfile_key "">
+<!ENTITY znotes_contentaddfile_key_modifiers "">
+<!ENTITY znotes_contentaddfile_keycode "">
+
+<!ENTITY znotes_contentopen_label "Открыть">
+<!ENTITY znotes_contentopen_tooltip "Открыть файл">
+<!ENTITY znotes_contentopen_accesskey "О">
+<!ENTITY znotes_contentopen_key "">
+<!ENTITY znotes_contentopen_key_modifiers "">
+<!ENTITY znotes_contentopen_keycode "">
+
+<!ENTITY znotes_contentopenwith_label "Открыть с помощью">
+<!ENTITY znotes_contentopenwith_tooltip "Открыть файл с помощью">
+<!ENTITY znotes_contentopenwith_accesskey "П">
+<!ENTITY znotes_contentopenwith_key "">
+<!ENTITY znotes_contentopenwith_key_modifiers "">
+<!ENTITY znotes_contentopenwith_keycode "">
+
+<!ENTITY znotes_contentsave_label "Сохранить">
+<!ENTITY znotes_contentsave_tooltip "Сохранить файл как">
+<!ENTITY znotes_contentsave_accesskey "С">
+<!ENTITY znotes_contentsave_key "">
+<!ENTITY znotes_contentsave_key_modifiers "">
+<!ENTITY znotes_contentsave_keycode "">
+
+<!ENTITY znotes_contentdelete_label "Удалить">
+<!ENTITY znotes_contentdelete_tooltip "Удалить файл">
+<!ENTITY znotes_contentdelete_accesskey "У">
+<!ENTITY znotes_contentdelete_key "">
+<!ENTITY znotes_contentdelete_key_modifiers "">
+<!ENTITY znotes_contentdelete_keycode "">
+
+<!-- editor -->
+
+<!ENTITY znotes_editoredit_label "Редактировать">
+<!ENTITY znotes_editoredit_tooltip "Редактировать">
+<!ENTITY znotes_editoredit_accesskey "Р">
+<!ENTITY znotes_editoredit_key "">
+<!ENTITY znotes_editoredit_key_modifiers "">
+<!ENTITY znotes_editoredit_keycode "">
+
+<!ENTITY znotes_editorsave_label "Сохранить">
+<!ENTITY znotes_editorsave_tooltip "Сохранить">
+<!ENTITY znotes_editorsave_accesskey "С">
+<!ENTITY znotes_editorsave_key "S">
+<!ENTITY znotes_editorsave_key_modifiers "accel">
+<!ENTITY znotes_editorsave_keycode "">
+
+<!ENTITY znotes_editorprint_label "Печать">
+<!ENTITY znotes_editorprint_tooltip "Печать">
+<!ENTITY znotes_editorprint_accesskey "П">
+<!ENTITY znotes_editorprint_key "P">
+<!ENTITY znotes_editorprint_key_modifiers "accel">
+<!ENTITY znotes_editorprint_keycode "">

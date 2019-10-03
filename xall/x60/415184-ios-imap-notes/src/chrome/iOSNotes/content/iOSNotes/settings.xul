@@ -1,0 +1,67 @@
+<?xml version="1.0"?> 
+
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/prefPanels.css" type="text/css"?>
+<?xml-stylesheet href="chrome://communicator/skin/pref/pref.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://iOSNotes/locale/iOSNotes.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&prefTitle;"
+	id="iOSNotesSettings"
+	onload="onLoad()"
+        ondialogaccept="savePrefs();">
+
+<script type="application/x-javascript">
+<![CDATA[
+  var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+		.getService(Components.interfaces.nsIPrefBranch);
+	   
+  function savePrefs() {
+	prefs.setBoolPref("extensions.iOSNotes.putOriginalInTrash",document.getElementById("delOrig").checked);
+	prefs.setBoolPref("extensions.iOSNotes.keep_Date", document.getElementById("keepDate").checked);	
+	if (document.getElementById("shortcutBox").value.length > 0)
+		prefs.setCharPref("extensions.iOSNotes.editNote_shortcut", document.getElementById("shortcutBox").value);
+	else
+		prefs.deleteBranch("extensions.iOSNotes.editNote_shortcut");
+	prefs.setIntPref("extensions.iOSNotes.editNote_maxchars", document.getElementById("maxNoteChars").value);	
+  }
+    
+  function onLoad() {
+	document.getElementById("delOrig").checked = prefs.getBoolPref("extensions.iOSNotes.putOriginalInTrash");
+	document.getElementById("keepDate").checked = prefs.getBoolPref("extensions.iOSNotes.keep_Date");
+	try {		
+		document.getElementById("shortcutBox").value = prefs.getCharPref("extensions.iOSNotes.editNote_shortcut");
+	}
+	catch(e) {}
+	document.getElementById("maxNoteChars").value = prefs.getIntPref("extensions.iOSNotes.editNote_maxchars");
+
+   }
+]]>
+</script>
+<groupbox>
+	<caption label="&misc;" />
+	<hbox align="center">
+		<checkbox id="delOrig" label="&trashOption;"/>
+	</hbox>
+	<hbox align="center">
+		<checkbox id="keepDate" label="&keepDate;"/>
+	</hbox>
+	<hbox align="center">
+		<label value="&maxchars;" />
+		<textbox id="maxNoteChars" size="8" />
+	</hbox>
+	<label value="&nolimit;" />
+</groupbox>
+
+<groupbox>
+	<caption label="&shortcuts;" />
+	<hbox align="center">
+		<label value="&shortCutFS; CTRL +"/>
+		<textbox id="shortcutBox" size="1" maxlength="1" />
+	</hbox>
+	<label value="&shortCutWarn;" />
+</groupbox>
+
+<spacer height="10px" /> 
+</dialog>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?> 
+
+<!DOCTYPE overlay SYSTEM "chrome://join-ng/locale/join-ng.dtd">
+
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="initJoinNGPanel();"
+	buttons="accept, cancel"
+	ondialogaccept="updateJoinNGPrefs();"
+	title="&JoinNGOptionTitle;">
+
+	<script type="application/x-javascript">
+		<![CDATA[
+			function initJoinNGPanel()
+			{
+				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+				var branch = prefs.getBranch("extensions.join-ng.");
+				document.getElementById("JoinNGFolder").value = branch.getComplexValue("folder", Components.interfaces.nsIPrefLocalizedString).data;
+			}
+
+			function updateJoinNGPrefs()
+			{
+				var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+				var branch = prefs.getBranch("extensions.join-ng.");
+				var pls = Components.classes["@mozilla.org/pref-localizedstring;1"].createInstance(Components.interfaces.nsIPrefLocalizedString);
+				pls.data = document.getElementById("JoinNGFolder").value;
+				branch.setComplexValue("folder", Components.interfaces.nsIPrefLocalizedString, pls);
+			}
+		]]>
+	</script>
+
+	<groupbox>
+		<label control="JoinNGFolder" value="&JoinNGFolderLabel;"/>
+		<textbox id="JoinNGFolder"/>
+		<spacer height="6"/>
+	</groupbox>
+</dialog>

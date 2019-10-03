@@ -1,0 +1,316 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ *
+ * Version: GPL 3.0
+ *
+ * ZNotes
+ * Copyright (C) 2012 Alexander Kapitman
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * The Original Code is ZNotes.
+ *
+ * Initial Developer(s):
+ *   Alexander Kapitman <akman.ru@gmail.com>
+ *
+ * Portions created by the Initial Developer are Copyright (C) 2012
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+.body {
+  background-color: #aab5c2;
+}
+.pageContainer {
+  background-color: #fff;
+  background-image: url( background.png );
+  width: 960px;
+  margin: 0 auto 0 auto;
+  text-align: left;
+}
+/***********************************/
+.pageHeader {
+  clear: both;
+  overflow: hidden;
+  border-bottom: 1px solid #8a0846;
+}
+.headerLogoContainer {
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: left;
+  width: 714px;
+}
+.headerLogo {
+  border: none;
+}
+.homeAnchor {
+  text-decoration: none;
+}
+.headerTextContainer {
+  font-family: serif;
+  vertical-align: top;
+  display: inline-block;
+  margin-bottom: 20px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  text-decoration: none;
+}
+.headerText {
+  font-size: 48px;
+  font-weight: bold;
+  color: black;
+}
+.headerLanguageContainer {
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 30px;
+  margin-right: 26px;
+  margin-bottom: 20px;
+}
+.languageMenuCaption {
+  display: block;
+  vertical-align: top;
+}
+.languageMenu {
+  margin-top: 2px;
+  width: 200px;
+}
+/***********************************/
+.pageBody {
+  clear: both;
+  margin: 20px;
+}
+.summarySection, .mainSection, .donationsSection {
+  overflow: hidden;
+  clear: both;
+}
+.summaryTitle {
+  font-weight: bold;
+  font-size: 20px;
+  color: #7ac5f6;
+}
+.summaryBody {
+  padding-top: 10px;
+  float: left;
+  vertical-align: bottom;
+  display: inline-block;
+  width: 690px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.summaryButtons {
+  padding-right: 4px;
+}
+.downloadContainer {
+  float: right;
+  vertical-align: top;
+  display: inline-block;
+  background-color: #7ac5f6;
+  padding-top: 4px;
+  margin-right: 4px;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 28px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.donateContainer {
+  float: right;
+  vertical-align: top;
+  display: inline-block;
+  background-color: #7ac5f6;
+  padding-top: 4px;
+  margin-right: 4px;
+  width: 200px;
+  height: 28px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.downloadContainer:hover, .donateContainer:hover {
+  background-color: #2ac5f6;
+}
+.downloadAnchor, .donateAnchor,
+.downloadAnchor:hover, .donateAnchor:hover {
+  text-decoration: none;
+  color: white;
+}
+.shareSection {
+  margin-top: 10px;
+  vertical-align: top;
+  display: inline-block;
+}
+.share {
+  display: inline-block;
+  vertical-align: middle;
+}
+.share-handle {
+  float: left;
+  height: 32px;
+  cursor: pointer;
+  text-align: left;
+  padding: 3px 1px 3px 0px;
+  text-decoration: none;
+}
+.share-icon {
+  float: left;
+  display: inline;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+  vertical-align: top;
+  padding: 0px;
+}
+.share-icon-facebook {
+  background: url( facebook.png );
+}
+.share-icon-twitter {
+  background: url( twitter.png );
+}
+.share-icon-googleplus {
+  background: url( googleplus.png );
+}
+.featuresSection {
+  float: left;
+  vertical-align: top;
+  display: inline-block;
+  width: 690px;
+}
+.featuresHeader {
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #7ac5f6;
+}
+.featureTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+.featureDescription {
+  font-size: 14px;
+  padding: 10px;
+}
+.buttonsSection {
+  vertical-align: top;
+  float: right;
+  display: inline-block;
+  padding-bottom: 20px;
+  padding-right: 4px;
+}
+.screenshotsContainer {
+  border: 2px solid white;
+  margin-bottom: 20px;
+}
+.screenshotsContainer:hover {
+  border: 2px solid #2ac5f6;
+}
+.screenshotsAnchor {
+  display: block;
+  width: 200px;
+  height: 155px;
+}
+.screenshotsImage {
+  border: none;
+  width: 200px;
+}
+.button {
+  margin-bottom: 20px;
+  width: 200px;
+}
+.buttonContainer {
+  vertical-align: top;
+  display: inline-block;
+  background-color: #7ac5f6;
+  padding-top: 4px;
+  width: 200px;
+  height: 28px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+.buttonContainer:hover {
+  background-color: #2ac5f6;
+}
+
+.newsDate {
+  border-bottom: 2px solid #7ac5f6;
+  color: #7ac5f6;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
+}
+.newsTitle {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.newsDescription {
+  border: 1px dashed #7ac5f6;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.donationsDescription {
+  font-weight: bold;
+  font-size: 14px;
+}
+.donationsImage {
+  padding-top: 10px;
+  vertical-align: top;
+  display: inline-block;
+  width: 62px;
+  height: 31px;
+  border: none;
+}
+
+.counterImage {
+  padding-top: 10px;
+  vertical-align: top;
+  display: inline-block;
+  float: right;
+}
+
+/***********************************/
+.pageFooter {
+  clear: both;
+  border-top: 1px solid #8a0846;
+}
+.termsSection {
+  padding-left: 20px;
+  display: inline-block;
+  vertical-align: top;
+  float: left;
+  font-size: 12px;
+  padding-top: 4px;
+}
+.privacySection {
+  padding-right: 20px;
+  display: inline-block;
+  vertical-align: top;
+  float: right;
+  font-size: 12px;
+  padding-top: 4px;
+}
+.copyrightSection {
+  text-align: center;
+  font-size: 12px;
+  padding: 4px;
+}

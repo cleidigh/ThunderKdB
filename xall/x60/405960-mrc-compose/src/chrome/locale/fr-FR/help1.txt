@@ -1,0 +1,29 @@
+<h4 style="border:1px solid #00f; color:red">Mode FR</h4>
+<ul>
+    <li>"1" : La liste contient 1 partie :
+        <ul>
+            <li>'contains' : contacts &amp; groupes dont les champs contiennent X</li>
+        </ul>
+        Avec le "mode" "1", il est pr&eacute;f&eacute;rable de mettre "Nb line max in each part" &agrave; 15-30.
+    </li>
+    <li>"2" : La liste contient 3 parties :
+        <ul>
+            <li>'begin' :    contacts dont les champs commencent par X</li>
+            <li>'contains' : contacts dont les champs contiennent X (except&eacute; ceux de la partie 1)</li>
+            <li>'list' :     groupes dont les champs contiennent X</li>
+        </ul>
+        Avec le "mode" "2", il est pr&eacute;f&eacute;rable de mettre "Nb line max in each part" &agrave; 5-10.<br/>
+    </li>
+    <li>"3" : La liste contient 1 partie pour chaque carnet d'adresses :
+        <ul>
+            <li>contacts &amp; groupes dont les champs contiennent X</li>
+        </ul>
+        Avec le "mode" "3", il est pr&eacute;f&eacute;rable de mettre "Nb line max in each part" &agrave; 5-10.<br/>
+    </li>
+</ul>
+Les champs de recherche sont :
+<ul>
+<li>'PrimaryEmail', 'FirstName', 'LastName', 'NickName' pour les contacts,</li>
+<li>'LastName' pour les groupes.</li>
+</ul>
+Pour les machines lentes, il est pr&eacute;f&eacute;rable de choisir le mode "1".

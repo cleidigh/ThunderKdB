@@ -1,0 +1,273 @@
+<!-- ***** BEGIN LICENSE BLOCK *****
+  -
+  - Version: GPL 3.0
+  -
+  - ZNotes
+  - Copyright (C) 2012 Alexander Kapitman
+  -
+  - This program is free software: you can redistribute it and/or modify
+  - it under the terms of the GNU General Public License as published by
+  - the Free Software Foundation, either version 3 of the License, or
+  - (at your option) any later version.
+  -
+  - This program is distributed in the hope that it will be useful,
+  - but WITHOUT ANY WARRANTY; without even the implied warranty of
+  - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  - GNU General Public License for more details.
+  -
+  - You should have received a copy of the GNU General Public License
+  - along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -
+  - The Original Code is ZNotes.
+  -
+  - Initial Developer(s):
+  -   Alexander Kapitman <akman.ru@gmail.com>
+  -
+  - Portions created by the Initial Developer are Copyright (C) 2012
+  - the Initial Developer. All Rights Reserved.
+  -
+  - Contributor(s):
+  -   Paweł Krafczyk <pkrafczyk@gmail.com>
+
+  -
+  - ***** END LICENSE BLOCK ***** -->
+
+<!ENTITY editorTabDesign " Wygląd ">
+<!ENTITY designToolBar1 "Wygląd">
+<!ENTITY designToolBar2 "Wygląd">
+
+<!ENTITY editorTabSource " Źródło ">
+<!ENTITY sourceToolBar1 "Źródło">
+<!ENTITY sourceToolBar2 "Źródło">
+
+<!ENTITY fontNameMenuList "Nazwa czcionki">
+<!ENTITY fontSizeTextBox "Rozmiar czcionki">
+<!ENTITY formatBlockMenuList "Typ formatowania">
+
+<!ENTITY znotes_close_label "Zamknij">
+<!ENTITY znotes_close_tooltip "Zamknij">
+<!ENTITY znotes_close_accesskey "z">
+<!ENTITY znotes_close_key "">
+<!ENTITY znotes_close_key_modifiers "">
+<!ENTITY znotes_close_keycode "">
+
+<!ENTITY znotes_bold_label "Pogrubiony">
+<!ENTITY znotes_bold_tooltip "Pogrubiony">
+<!ENTITY znotes_bold_accesskey "B">
+<!ENTITY znotes_bold_key "">
+<!ENTITY znotes_bold_key_modifiers "">
+<!ENTITY znotes_bold_keycode "">
+
+<!ENTITY znotes_italic_label "Pochylony">
+<!ENTITY znotes_italic_tooltip "Pochylony">
+<!ENTITY znotes_italic_accesskey "I">
+<!ENTITY znotes_italic_key "">
+<!ENTITY znotes_italic_key_modifiers "">
+<!ENTITY znotes_italic_keycode "">
+
+<!ENTITY znotes_underline_label "Podkreślony">
+<!ENTITY znotes_underline_tooltip "Podkreślony">
+<!ENTITY znotes_underline_accesskey "">
+<!ENTITY znotes_underline_key "">
+<!ENTITY znotes_underline_key_modifiers "">
+<!ENTITY znotes_underline_keycode "">
+
+<!ENTITY znotes_strikethrough_label "Przekreślony">
+<!ENTITY znotes_strikethrough_tooltip "Przekreślony">
+<!ENTITY znotes_strikethrough_accesskey "">
+<!ENTITY znotes_strikethrough_key "">
+<!ENTITY znotes_strikethrough_key_modifiers "">
+<!ENTITY znotes_strikethrough_keycode "">
+
+<!ENTITY znotes_subscript_label "Indeks dolny">
+<!ENTITY znotes_subscript_tooltip "Indeks dolny">
+<!ENTITY znotes_subscript_accesskey "">
+<!ENTITY znotes_subscript_key "">
+<!ENTITY znotes_subscript_key_modifiers "">
+<!ENTITY znotes_subscript_keycode "">
+
+<!ENTITY znotes_superscript_label "Vehnij indeksu">
+<!ENTITY znotes_superscript_tooltip "Vehnij indeksu">
+<!ENTITY znotes_superscript_accesskey "">
+<!ENTITY znotes_superscript_key "">
+<!ENTITY znotes_superscript_key_modifiers "">
+<!ENTITY znotes_superscript_keycode "">
+
+<!ENTITY znotes_indent_label "Wcięcie">
+<!ENTITY znotes_indent_tooltip "Wcięcie">
+<!ENTITY znotes_indent_accesskey "">
+<!ENTITY znotes_indent_key "">
+<!ENTITY znotes_indent_key_modifiers "">
+<!ENTITY znotes_indent_keycode "">
+
+<!ENTITY znotes_outdent_label "Usuń wcięcie">
+<!ENTITY znotes_outdent_tooltip "Usuń wcięcie">
+<!ENTITY znotes_outdent_accesskey "">
+<!ENTITY znotes_outdent_key "">
+<!ENTITY znotes_outdent_key_modifiers "">
+<!ENTITY znotes_outdent_keycode "">
+
+<!ENTITY znotes_link_label "Wstaw link">
+<!ENTITY znotes_link_tooltip "Wstaw link">
+<!ENTITY znotes_link_accesskey "">
+<!ENTITY znotes_link_key "">
+<!ENTITY znotes_link_key_modifiers "">
+<!ENTITY znotes_link_keycode "">
+
+<!ENTITY znotes_unlink_label "Usuń link">
+<!ENTITY znotes_unlink_tooltip "Usuń link">
+<!ENTITY znotes_unlink_accesskey "">
+<!ENTITY znotes_unlink_key "">
+<!ENTITY znotes_unlink_key_modifiers "">
+<!ENTITY znotes_unlink_keycode "">
+
+<!ENTITY znotes_removeformat_label "Usuń formatowanie">
+<!ENTITY znotes_removeformat_tooltip "Usuń formatowanie">
+<!ENTITY znotes_removeformat_accesskey "">
+<!ENTITY znotes_removeformat_key "">
+<!ENTITY znotes_removeformat_key_modifiers "">
+<!ENTITY znotes_removeformat_keycode "">
+
+<!ENTITY znotes_insertorderedlist_label "Wstaw listę numerowaną">
+<!ENTITY znotes_insertorderedlist_tooltip "Wstaw listę numerowaną">
+<!ENTITY znotes_insertorderedlist_accesskey "">
+<!ENTITY znotes_insertorderedlist_key "">
+<!ENTITY znotes_insertorderedlist_key_modifiers "">
+<!ENTITY znotes_insertorderedlist_keycode "">
+
+<!ENTITY znotes_insertunorderedlist_label "Wstaw listę nienumerowaną">
+<!ENTITY znotes_insertunorderedlist_tooltip "Wstaw listę nienumerowaną">
+<!ENTITY znotes_insertunorderedlist_accesskey "">
+<!ENTITY znotes_insertunorderedlist_key "">
+<!ENTITY znotes_insertunorderedlist_key_modifiers "">
+<!ENTITY znotes_insertunorderedlist_keycode "">
+
+<!ENTITY znotes_insertparagraph_label "Wstaw paragraf">
+<!ENTITY znotes_insertparagraph_tooltip "Wstaw paragraf">
+<!ENTITY znotes_insertparagraph_accesskey "">
+<!ENTITY znotes_insertparagraph_key "">
+<!ENTITY znotes_insertparagraph_key_modifiers "">
+<!ENTITY znotes_insertparagraph_keycode "">
+
+<!ENTITY znotes_insertimage_label "Wstaw obraz">
+<!ENTITY znotes_insertimage_tooltip "Wstaw obraz">
+<!ENTITY znotes_insertimage_accesskey "">
+<!ENTITY znotes_insertimage_key "">
+<!ENTITY znotes_insertimage_key_modifiers "">
+<!ENTITY znotes_insertimage_keycode "">
+
+<!ENTITY znotes_inserttable_label "Wstaw tabelę">
+<!ENTITY znotes_inserttable_tooltip "Wstaw tabelę">
+<!ENTITY znotes_inserttable_accesskey "">
+<!ENTITY znotes_inserttable_key "">
+<!ENTITY znotes_inserttable_key_modifiers "">
+<!ENTITY znotes_inserttable_keycode "">
+
+<!ENTITY znotes_inserthorizontalrule_label "Wstaw poziomą linię">
+<!ENTITY znotes_inserthorizontalrule_tooltip "Wstaw poziomą linię">
+<!ENTITY znotes_inserthorizontalrule_accesskey "">
+<!ENTITY znotes_inserthorizontalrule_key "">
+<!ENTITY znotes_inserthorizontalrule_key_modifiers "">
+<!ENTITY znotes_inserthorizontalrule_keycode "">
+
+<!ENTITY znotes_forecolor_label "Kolor czcionki">
+<!ENTITY znotes_forecolor_tooltip "Kolor czcionki">
+<!ENTITY znotes_forecolor_accesskey "r">
+<!ENTITY znotes_forecolor_key "">
+<!ENTITY znotes_forecolor_key_modifiers "">
+<!ENTITY znotes_forecolor_keycode "">
+
+<!ENTITY znotes_forecolordelete_label "Usuń kolor czcionki">
+<!ENTITY znotes_forecolordelete_tooltip "Usuń kolor czcionki">
+<!ENTITY znotes_forecolordelete_accesskey "">
+<!ENTITY znotes_forecolordelete_key "">
+<!ENTITY znotes_forecolordelete_key_modifiers "">
+<!ENTITY znotes_forecolordelete_keycode "">
+
+<!ENTITY znotes_backcolor_label "Kolor tła">
+<!ENTITY znotes_backcolor_tooltip "Kolor tła">
+<!ENTITY znotes_backcolor_accesskey "k">
+<!ENTITY znotes_backcolor_key "">
+<!ENTITY znotes_backcolor_key_modifiers "">
+<!ENTITY znotes_backcolor_keycode "">
+
+<!ENTITY znotes_backcolordelete_label "Usuń kolor tła">
+<!ENTITY znotes_backcolordelete_tooltip "Usuń kolor tła">
+<!ENTITY znotes_backcolordelete_accesskey "">
+<!ENTITY znotes_backcolordelete_key "">
+<!ENTITY znotes_backcolordelete_key_modifiers "">
+<!ENTITY znotes_backcolordelete_keycode "">
+
+<!ENTITY znotes_justifycenter_label "Wyrównaj do środka">
+<!ENTITY znotes_justifycenter_tooltip "Wyrównaj do środka">
+<!ENTITY znotes_justifycenter_accesskey "c">
+<!ENTITY znotes_justifycenter_key "">
+<!ENTITY znotes_justifycenter_key_modifiers "">
+<!ENTITY znotes_justifycenter_keycode "">
+
+<!ENTITY znotes_justifyleft_label "Wyrównaj do lewej">
+<!ENTITY znotes_justifyleft_tooltip "Wyrównaj do lewej">
+<!ENTITY znotes_justifyleft_accesskey "l">
+<!ENTITY znotes_justifyleft_key "">
+<!ENTITY znotes_justifyleft_key_modifiers "">
+<!ENTITY znotes_justifyleft_keycode "">
+
+<!ENTITY znotes_justifyright_label "Wyrównaj do prawej">
+<!ENTITY znotes_justifyright_tooltip "Wyrównaj do prawej">
+<!ENTITY znotes_justifyright_accesskey "r">
+<!ENTITY znotes_justifyright_key "">
+<!ENTITY znotes_justifyright_key_modifiers "">
+<!ENTITY znotes_justifyright_keycode "">
+
+<!ENTITY znotes_justifyfull_label "Wyrównaj do prawej i lewej">
+<!ENTITY znotes_justifyfull_tooltip "Wyrównaj do prawej i lewej">
+<!ENTITY znotes_justifyfull_accesskey "f">
+<!ENTITY znotes_justifyfull_key "">
+<!ENTITY znotes_justifyfull_key_modifiers "">
+<!ENTITY znotes_justifyfull_keycode "">
+
+<!ENTITY znotes_sourcebeautify_label "Upiększ">
+<!ENTITY znotes_sourcebeautify_tooltip "Upiększ kod źródłowy">
+<!ENTITY znotes_sourcebeautify_accesskey "U">
+<!ENTITY znotes_sourcebeautify_key "">
+<!ENTITY znotes_sourcebeautify_key_modifiers "">
+<!ENTITY znotes_sourcebeautify_keycode "">
+
+<!ENTITY znotes_editorcustomizetoolbar_label "Dostosuj">
+<!ENTITY znotes_editorcustomizetoolbar_tooltip "Dostosuj narzędzi">
+<!ENTITY znotes_editorcustomizetoolbar_accesskey "D">
+<!ENTITY znotes_editorcustomizetoolbar_key "">
+<!ENTITY znotes_editorcustomizetoolbar_key_modifiers "">
+<!ENTITY znotes_editorcustomizetoolbar_keycode "">
+
+<!ENTITY znotes_editordebug_label "Odpluskwić">
+<!ENTITY znotes_editordebug_tooltip "Odpluskwić">
+<!ENTITY znotes_editordebug_accesskey "">
+<!ENTITY znotes_editordebug_key "">
+<!ENTITY znotes_editordebug_key_modifiers "">
+<!ENTITY znotes_editordebug_keycode "">
+
+<!ENTITY znotes_toggletagsmode_label "Pasek tagi">
+<!ENTITY znotes_toggletagsmode_tooltip "Pasek tagi">
+<!ENTITY znotes_toggletagsmode_accesskey "">
+<!ENTITY znotes_toggletagsmode_key "">
+<!ENTITY znotes_toggletagsmode_key_modifiers "">
+<!ENTITY znotes_toggletagsmode_keycode "">
+
+<!ENTITY znotes_importresources_label "Import resources">
+<!ENTITY znotes_importresources_tooltip "Import external resources">
+<!ENTITY znotes_importresources_accesskey "">
+<!ENTITY znotes_importresources_key "">
+<!ENTITY znotes_importresources_key_modifiers "">
+<!ENTITY znotes_importresources_keycode "">
+
+<!-- OPTIONS -->
+
+<!ENTITY docCaption.xhtml.label "Document">
+<!ENTITY author.xhtml.label "Author:">
+<!ENTITY author.xhtml.placeholder "Enter author name here ...">
+
+<!ENTITY mainCaption.xhtml.label "Główny">
+<!ENTITY isSpellcheckEnabled.xhtml.label "Włącz sprawdź pisownię domyślnie">
+<!ENTITY isTagsModeActive.xhtml.label "Pasek tagi domyślnie">
+<!ENTITY keysCaption.xhtml.label "Skróty klawiaturowe">

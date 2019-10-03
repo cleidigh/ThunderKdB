@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+
+<?xml-stylesheet href="chrome://tinyJsd/skin/tinyJsd.css" type="text/css"?>
+
+<?xul-overlay href="chrome://global/content/globalOverlay.xul"?>
+<?xul-overlay href="chrome://communicator/content/utilityOverlay.xul"?>
+
+
+<!DOCTYPE window [
+<!ENTITY % brandDTD SYSTEM "chrome://global/locale/brand.dtd" >
+%brandDTD;
+<!ENTITY % tinyJsdDTD SYSTEM "chrome://tinyJsd/locale/tinyjsd.dtd" >
+%tinyJsdDTD;
+]>
+
+<dialog id="breakpoint_properties"
+        title="&tinyJsdBreakpoint.mainWindow.title;"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="onLoad();"
+        ondialogaccept="return onAccept();"
+        >
+
+
+  <script type="application/x-javascript" src="chrome://tinyJsd/content/ui/breakpoint-details.js"/>
+
+  <vbox orient="vertical">
+    <grid>
+      <columns>
+        <column/>
+        <column flex="1"/>
+      </columns>
+
+      <rows autostretch="never">
+        <row>
+          <hbox align="center">
+            <label control="filename"
+                value="&tinyJsdBreakpoint.mainWindow.filename;"/>
+          </hbox>
+          <textbox id="filename"
+                size="25"
+                placeholder="&tinyJsdBreakpoint.mainWindow.fnplaceholder;"
+                onblur="validateAcceptCriteria()"/>
+        </row>
+        <row>
+          <hbox align="center">
+            <label control="linenum"
+                value="&tinyJsdBreakpoint.mainWindow.linenum;"/>
+          </hbox>
+          <hbox>
+            <textbox id="linenum" type="number" min="1" size="5"/>
+          </hbox>
+        </row>
+      </rows>
+    </grid>
+
+  <checkbox id="conditional"
+    label="&tinyJsdBreakpoint.mainWindow.condCheckbox;"
+    checked="false"
+    oncommand="enableCond()"/>
+
+  <groupbox>
+    <caption label="&tinyJsdBreakpoint.mainWindow.condGroup;"/>
+    <vbox>
+      <hbox align="center">
+        <label value="function" control="funcname"/>
+        <textbox id="funcname" size="20"
+                 value="__conditionalBreakpoint__" disabled="true"/>
+        <label value="(callCount, stackDepth) {"
+              control="funcbody"/>
+      </hbox>
+    </vbox>
+    <hbox>
+      <spacer width="20px"/>
+      <textbox id="funcbody" multiline="true" value="return true;" rows="13" size="50" flex="1"
+               onblur="validateAcceptCriteria()"
+               disabled="true"/>
+    </hbox>
+    <label value="}"/>
+    <hbox align="center" id="funcvalidate" hidden="true">
+      <image class="alert-icon" height="20px" width="20px"/>
+      <vbox>
+        <label value="" id="errormsg"/>
+      </vbox>
+    </hbox>
+  </groupbox>
+  </vbox>
+</dialog>

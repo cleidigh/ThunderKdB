@@ -1,0 +1,458 @@
+<?xml version="1.0"?>
+<!--
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+<?xml-stylesheet href="chrome://tinyJsd/skin/tinyJsd.css" type="text/css"?>
+
+<?xul-overlay href="chrome://global/content/globalOverlay.xul"?>
+<?xul-overlay href="chrome://communicator/content/utilityOverlay.xul"?>
+
+<!DOCTYPE window SYSTEM "chrome://tinyJsd/locale/tinyjsd.dtd">
+
+
+<window id="tinyJsd_mainWindow"
+        title="&TinyJsd.debuggerWindow.title;"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="TinyJsd.onload();"
+        onunload="TinyJsd.onunload()"
+        height="450"
+        width="700"
+        flex="1"
+        windowtype="tinyJsd:mainWindow"
+        persist="screenX screenY width height">
+
+
+  <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="application/x-javascript" src="chrome://tinyJsd/content/ui/tinyjsd-main.js"/>
+  <script type="application/x-javascript" src="chrome://tinyJsd/content/ui/tinyjsd-watchlist.js"/>
+
+  <broadcasterset>
+    <broadcaster id="bcEnableSteps" disabled="false"/>
+    <broadcaster id="bcSourceVisible" disabled="true"/>
+  </broadcasterset>
+
+
+  <commandset id="tasksCommands"/>
+
+  <command id="cmd_close" oncommand="window.close()"/>
+  <command id="cmd_quit"/>
+  <command id="cmd_jsdContinue" oncommand="TinyJsd.debugCont()" observes="bcEnableSteps"/>
+  <command id="cmd_jsdStepOver" oncommand="TinyJsd.debugStepOver()" observes="bcEnableSteps"/>
+  <command id="cmd_jsdStepInto" oncommand="TinyJsd.debugStepInto()" observes="bcEnableSteps"/>
+  <command id="cmd_jsdStepOut"  oncommand="TinyJsd.debugStepOut()" observes="bcEnableSteps"/>
+
+  <command id="cmd_zoomOut"    oncommand="TinyJsd.zoomOut()" observes="bcSourceVisible"/>
+  <command id="cmd_zoomIn"     oncommand="TinyJsd.zoomIn()" observes="bcSourceVisible"/>
+  <command id="cmd_zoomReset"  oncommand="TinyJsd.zoomReset()" observes="bcSourceVisible"/>
+
+  <command id="cmd_findString"  oncommand="TinyJsd.findString()" observes="bcSourceVisible"/>
+  <command id="cmd_findAgain"  oncommand="TinyJsd.findAgain()" observes="bcSourceVisible"/>
+
+  <keyset id="winKeys">
+    <key id="key_close"/>
+    <key id="key_quit"/>
+    <key id="key_jsdContinue"
+         keycode="VK_F5"
+         command="cmd_jsdContinue"/>
+    <key id="key_jsdStepOver"
+         keycode="VK_F6"
+         command="cmd_jsdStepOver"/>
+    <key id="key_jsdStepInto"
+         keycode="VK_F7"
+         command="cmd_jsdStepInto"/>
+    <key id="key_jsdStepOut"
+         keycode="VK_F8"
+         command="cmd_jsdStepOut"/>
+
+    <keyset id="jsdZoomKeys">
+      <key id="key_zoomOut" key="-" command="cmd_zoomOut" modifiers="accel"/>
+      <key key="" command="cmd_zoomOut" modifiers="accel"/>
+      <key id="key_zoomIn" key="+" command="cmd_zoomIn" modifiers="accel"/>
+      <key id="key_zoomReset" key="0" command="cmd_zoomReset" modifiers="accel"/>
+      <key key="" command="cmd_zoomReset" modifiers="accel"/>
+    </keyset>
+
+    <keyset id="editKeys">
+      <key id="key_findString" key="F" command="cmd_findString" modifiers="accel"/>
+      <key id="key_findAgain" key="G" command="cmd_findAgain" modifiers="accel"/>
+    </keyset>
+  </keyset>
+
+
+
+  <popupset id="mainPopupSet">
+    <menupopup id="tinyJsd-context-menu" position="at_pointer">
+      <menuitem label="&TinyJsd.Copy;"
+                command="cmd_copy"/>
+      <menuitem label="&TinyJsd.SelectAll;"
+                command="cmd_selectAll"/>
+      <menuseparator/>
+      <menuitem label="&TinyJsd.NewTab;"
+                oncommand="openUILinkIn(document.getElementById('sidebar').getAttribute('src'),'tab');"/>
+    </menupopup>
+
+    <popupset>
+      <menupopup id="scripts_contextMenu">
+        <menuitem label="&TinyJsd.ctx_menuFile.openFile;"
+          oncommand="TinyJsd.scriptsOpenFile()"/>
+      </menupopup>
+
+      <menupopup id="bp_contextMenu"
+              onpopupshowing="TinyJsd.displayCtxMenuBp()">
+        <menuitem id="bp_ctx_modifyBreakpoint"
+                  label="&TinyJsd.menuBreakpoint.props.label;"
+                  oncommand="TinyJsd.editBreakpointDlg()"/>
+        <menuitem label="&TinyJsd.ctx_menuBp.deleteBreakpoint;"
+          oncommand="TinyJsd.deleteSelectedBreakpoints()"/>
+      </menupopup>
+
+      <menupopup id="wl_contextMenu"
+          onpopupshowing="TinyJsd.displayCtxMenuWl()">
+        <menuitem id="wl_ctx_addWatchlist"
+          label="&TinyJsd.ctx_menuWl.addWatchlist;"
+          oncommand="TinyJsd.addWatchlist()"/>
+        <menuitem id="wl_ctx_deleteWatchlist"
+          label="&TinyJsd.ctx_menuWl.deleteWatchlist;"
+          oncommand="TinyJsd.deleteSelectedWatchList()"/>
+      </menupopup>
+
+      <menupopup id="stack_contextMenu">
+        <menuitem label="&TinyJsd.ctx_menuStack.setContext;"
+          oncommand="TinyJsd.stackSetContext()"/>
+      </menupopup>
+
+      <menupopup id="sourcecode_contextMenu"
+              onpopupshowing="TinyJsd.displayCtxMenuSrc()">
+        <menuitem label="&TinyJsd.ctx_menuSource.addWlItem;"
+          id="src_ctx_addWl"
+          oncommand="TinyJsd.watchlistFromSelection()"/>
+      </menupopup>
+
+      <menupopup id="scratchpad_contextMenu"
+              onpopupshowing="TinyJsd.displayCtxMenuScp()">
+        <menuitem label="Test"
+          oncommand="alert('Hello')"/>
+      </menupopup>
+    </popupset>
+
+  </popupset>
+
+  <toolbox id="main-toolbox">
+
+    <menubar id="main-menubar" grippyhidden="true">
+      <menu label="&TinyJsd.menuFile.label;"
+            id="menu_File"
+            accesskey="&TinyJsd.menuFile.accesskey;">
+        <menupopup>
+          <!-- add Close and Exit menu items -->
+          <menuitem id="menu_close"/>
+        </menupopup>
+      </menu>
+
+
+      <menu label="&TinyJsd.menuEdit.label;"
+            accesskey="&TinyJsd.menuDebug.accesskey;">
+        <menupopup id="menu_Edit"
+          onpopupshowing="TinyJsd.displayMenuDebug()">
+          <menuitem id="editFind"
+                    label="&TinyJsd.menuEdit.find.label;"
+                    accesskey="&TinyJsd.menuEdit.find.accesskey;"
+                    key="key_findString"
+                    command="cmd_findString"/>
+          <menuitem id="editFindAgain"
+                    label="&TinyJsd.menuEdit.findAgain.label;"
+                    accesskey="&TinyJsd.menuEdit.findAgain.accesskey;"
+                    key="key_findAgain"
+                    command="cmd_findAgain"/>
+        </menupopup>
+      </menu>
+
+      <menu label="&TinyJsd.menuDebug.label;"
+            accesskey="&TinyJsd.menuDebug.accesskey;">
+        <menupopup id="menu_debug"
+          onpopupshowing="TinyJsd.displayMenuDebug()">
+          <menuitem id="menu_jsdContinue"
+                    label="&TinyJsd.menuDebug.cont.label;"
+                    accesskey="&TinyJsd.menuDebug.cont.accesskey;"
+                    key="key_jsdContinue"
+                    command="cmd_jsdContinue"/>
+          <menuitem id="menu_jsdStepInto"
+                    label="&TinyJsd.menuDebug.stepInto.label;"
+                    accesskey="&TinyJsd.menuDebug.stepInto.accesskey;"
+                    key="key_jsdStepInto"
+                    command="cmd_jsdStepInto"/>
+          <menuitem id="menu_jsdStepOver"
+                    label="&TinyJsd.menuDebug.stepOver.label;"
+                    accesskey="&TinyJsd.menuDebug.stepOver.accesskey;"
+                    key="key_jsdStepOver"
+                    command="cmd_jsdStepOver"/>
+          <menuitem id="menu_jsdStepOut"
+                    label="&TinyJsd.menuDebug.stepOut.label;"
+                    accesskey="&TinyJsd.menuDebug.stepOut.accesskey;"
+                    key="key_jsdStepOut"
+                    command="cmd_jsdStepOut"/>
+          <menuseparator/>
+          <menuitem id="menu_noExceptions"
+                    label="&TinyJsd.menuDebug.noExceptions.label;"
+                    accesskey="&TinyJsd.menuDebug.noExceptions.accesskey;"
+                    checked="false"
+                    oncommand="TinyJsd.disableExceptions()"/>
+          <menuitem id="menu_traceExceptions"
+                    label="&TinyJsd.menuDebug.traceExceptions.label;"
+                    accesskey="&TinyJsd.menuDebug.traceExceptions.accesskey;"
+                    checked="false"
+                    oncommand="TinyJsd.enableTraceExceptions()"/>
+          <menuitem id="menu_stopOnExceptions"
+                    label="&TinyJsd.menuDebug.stopExceptions.label;"
+                    accesskey="&TinyJsd.menuDebug.stopExceptions.accesskey;"
+                    checked="false"
+                    oncommand="TinyJsd.enableStopExceptions()"/>
+          <menuseparator/>
+          <menuitem id="menu_noErrors"
+                    label="&TinyJsd.menuDebug.noErrors.label;"
+                    accesskey="&TinyJsd.menuDebug.noErrors.accesskey;"
+                    checked="false"
+                    oncommand="TinyJsd.disableErrors()"/>
+          <menuitem id="menu_traceErrors"
+                    label="&TinyJsd.menuDebug.traceErrors.label;"
+                    accesskey="&TinyJsd.menuDebug.traceErrors.accesskey;"
+                    checked="false"
+                    oncommand="TinyJsd.enableTraceErrors()"/>
+          <menuitem id="menu_stopOnErrors"
+                    label="&TinyJsd.menuDebug.stopErrors.label;"
+                    accesskey="&TinyJsd.menuDebug.stopErrors.accesskey;"
+                    checked="false"
+                    oncommand="TinyJsd.enableStopErrors()"/>
+          <menuseparator/>
+          <menuitem id="menu_stopOnDebuggerKeyword"
+                    accesskey="&TinyJsd.menuDebug.stopDebuggerKeyword.accesskey;"
+                    label="&TinyJsd.menuDebug.stopDebuggerKeyword.label;"
+                    checked="false"
+                    oncommand="TinyJsd.enableStopDebugger()"/>
+          <!-- menuseparator/>
+          <menuitem id="menu_test"
+                    label="Test"
+                    oncommand="TinyJsd.testFunc()"/ -->
+        </menupopup>
+      </menu>
+
+      <menu label="&TinyJsd.menuView.label;">
+        <menupopup id="menu_view">
+          <menuitem id="menu_zoomOut"
+                    label="&TinyJsd.menuView.zoomOut.label;"
+                    accesskey="&TinyJsd.menuView.zoomOut.accesskey;"
+                    key="key_zoomOut"
+                    command="cmd_zoomOut"/>
+          <menuitem id="menu_zoomIn"
+                    label="&TinyJsd.menuView.zoomIn.label;"
+                    accesskey="&TinyJsd.menuView.zoomIn.accesskey;"
+                    key="key_zoomIn"
+                    command="cmd_zoomIn"/>
+          <menuseparator/>
+          <menuitem id="menu_zoomReset"
+                    label="&TinyJsd.menuView.zoomReset.label;"
+                    accesskey="&TinyJsd.menuView.zoomReset.accesskey;"
+                    key="key_zoomReset"
+                    command="cmd_zoomReset"/>
+        </menupopup>
+      </menu>
+
+      <menu label="&TinyJsd.menuBreakpoint.label;"
+            accesskey="&TinyJsd.menuBreakpoint.accesskey;"
+          onpopupshowing="TinyJsd.displayMenuBreakpoints()">
+        <menupopup id="menu_breakpoint">
+          <menuitem id="menu_addBreakpoint"
+                    label="&TinyJsd.menuBreakpoint.add.label;"
+                    accesskey="&TinyJsd.menuBreakpoint.add.accesskey;"
+                    oncommand="TinyJsd.newBreakpointDlg()"/>
+          <menuitem id="menu_modifyBreakpoint"
+                    label="&TinyJsd.menuBreakpoint.props.label;"
+                    accesskey="&TinyJsd.menuBreakpoint.props.accesskey;"
+                    oncommand="TinyJsd.editBreakpointDlg()"/>
+          <menuitem id="menu_delBreakpoint"
+                    label="&TinyJsd.menuBreakpoint.delete.label;"
+                    accesskey="&TinyJsd.menuBreakpoint.delete.accesskey;"
+                    oncommand="TinyJsd.deleteSelectedBreakpoints()"/>
+          <menuitem id="menu_delAllBreakpoints"
+                    label="&TinyJsd.menuBreakpoint.deleteAll.label;"
+                    accesskey="&TinyJsd.menuBreakpoint.deleteAll.accesskey;"
+                    oncommand="TinyJsd.deleteAllBreakpoints()"/>
+        </menupopup>
+      </menu>
+
+      <menu label="&TinyJsd.menuWatchlist.label;"
+            accesskey="&TinyJsd.menuWatchlist.accesskey;"
+          onpopupshowing="TinyJsd.displayMenuWatchlist()">
+        <menupopup id="menu_watchlist">
+          <menuitem id="menu_addWatchItem"
+                    label="&TinyJsd.menuWatchlist.add.label;"
+                    accesskey="&TinyJsd.menuWatchlist.add.accesskey;"
+                    oncommand="TinyJsd.addWatchlist()"/>
+          <menuitem id="menu_delWatchItem"
+                    label="&TinyJsd.menuWatchlist.delete.label;"
+                    accesskey="&TinyJsd.menuWatchlist.delete.accesskey;"
+                    oncommand="TinyJsd.deleteSelectedWatchList()"/>
+          <menuitem id="menu_delAllWatches"
+                    label="&TinyJsd.menuWatchlist.deleteAll.label;"
+                    accesskey="&TinyJsd.menuWatchlist.deleteAll.accesskey;"
+                    oncommand="TinyJsd.deleteAllWatchList()"/>
+        </menupopup>
+      </menu>
+    </menubar>
+
+
+    <toolbar id="tinyjsd-toolbar"
+             toolbarname="Javascript_Command"
+             currentset="button-debug-continue"
+             mode="full" iconsize="large" context="toolbar-context-menu">
+
+        <toolbarbutton id="button-debug-continue" disabled="true"
+                  observes="bcEnableSteps"
+                  label="&TinyJsd.cont;"
+                  oncommand="TinyJsd.debugCont();"/>
+
+        <toolbarbutton id="button-debug-step-into" disabled="true"
+                  observes="bcEnableSteps"
+                  label="&TinyJsd.stepInto;"
+                  oncommand="TinyJsd.debugStepInto();"/>
+
+        <toolbarbutton id="button-debug-step-over" disabled="true"
+                  observes="bcEnableSteps"
+                  label="&TinyJsd.stepOver;"
+                  oncommand="TinyJsd.debugStepOver();"/>
+
+        <toolbarbutton id="button-debug-step-out" disabled="true"
+                  observes="bcEnableSteps"
+                  label="&TinyJsd.stepOut;"
+                  oncommand="TinyJsd.debugStepOut();"/>
+
+    </toolbar>
+  </toolbox>
+
+  <hbox flex="1">
+    <vbox width="150" minwidth="20" flex="1" id="left_panel" persist="width">
+      <!-- left panel -->
+      <vbox height="80" minheight="50" flex="1" id="scripts_box" persist="height">
+        <label value="&TinyJsd.scripts.title;"/>
+        <vbox flex="0">
+          <hbox flex="1" align="center">
+            <label value="&TinyJsd.scripts.search;"/>
+            <textbox id="script-filter"
+                multiline="false"
+                type="search"
+                flex="1"
+                value=""
+                timeout="500"
+                oncommand="TinyJsd.refreshScriptsList(false);"/>
+          </hbox>
+        </vbox>
+        <listbox id="tinyjsd-scripts"
+             seltype="single"
+             suppressonselect="true"
+             context="scripts_contextMenu"
+             mingeight="30"
+             ondblclick="TinyJsd.scriptsHandleDblClick(event)"
+             flex="1"/>
+      </vbox>
+      <splitter/>
+      <vbox height="80" minheight="50" flex="1" id="bp_box" persist="height">
+        <label value="&TinyJsd.breakpoints.title;"/>
+        <listbox id="tinyjsd-breakpoints"
+             seltype="multiple"
+             suppressonselect="true"
+             persist="height"
+             context="bp_contextMenu"
+             ondblclick="TinyJsd.bpHandleDblClick(event)"
+             flex="1"/>
+      </vbox>
+      <splitter/>
+      <vbox height="80" minheight="50" id="wl_box" flex="1" persist="height">
+        <label value="&TinyJsd.watchList.title;"/>
+        <tree id="tinyjsd-watchlist" flex="1"
+          hidecolumnpicker="true"
+          ondblclick="TinyJsd.wlHandleDblClick(event)">
+
+          <treecols>
+            <treecol id="wl_variable_col" flex="1"
+                label="&TinyJsd.watchList.variable;"
+                primary="true"/>
+            <splitter class="tree-splitter"/>
+            <treecol id="wl_value_col" style="width:90px"
+                     label="&TinyJsd.watchList.value;"
+                     persist="width"/>
+          </treecols>
+
+          <treechildren id="watchlist_children"
+                        context="wl_contextMenu"/>
+        </tree>
+      </vbox>
+      <splitter/>
+      <vbox height="80" minheight="50" flex="1">
+        <label value="&TinyJsd.stack.title;"/>
+        <listbox id="tinyjsd-stack"
+             seltype="single"
+             suppressonselect="true"
+             context="stack_contextMenu"
+             ondblclick="TinyJsd.stackHandleDblClick(event)"
+             flex="1"/>
+      </vbox>
+    </vbox>
+
+    <splitter/>
+
+    <!-- right panel -->
+    <vbox width="350" minwidth="20" flex="1" id="right_panel" persist="width">
+      <label value="&TinyJsd.sourcecode.title;"/>
+      <vbox height="200" minheight="50" flex="1">
+        <tabbox flex="1" style="margin:1px" id="scriptBox" persist="height" selectedIndex="1">
+          <tabs id="scriptTabs">
+          </tabs>
+
+          <tabpanels id="scriptPanel" flex="1"/>
+        </tabbox>
+      </vbox>
+      <splitter/>
+      <vbox height="150" minheight="50" flex="1" id="scratchpad_box" persist="height">
+        <label value="&TinyJsd.scratchpad.title;"/>
+        <textbox id="tinyjsd-textbox-eval"
+            value=""
+            placeholder="&TinyJsd.scratchpad.placeholder;"
+            onkeypress="TinyJsd.tab(event)"
+            nocontext="scratchpad_contextMenu"
+            multiline="true" flex="1"/>
+        <hbox>
+          <button id="run-jsunit"
+                  label="&TinyJsd.jsunit.button.label;"
+                  accesskey="&TinyJsd.jsunit.button.accesskey;"
+                  oncommand="TinyJsd.runJsUnit()"
+                  hidden="true"/>
+          <button label="&TinyJsd.exec.button.label;"
+                  accesskey="&TinyJsd.exec.button.accesskey;"
+                  oncommand="TinyJsd.evaluate()"/>
+          <button label="&TinyJsd.clearResults.button;" oncommand="TinyJsd.clearResults()"/>
+          <checkbox label="Evaluate in Debugger Scope"
+                  id="tinyjsd-evaluate-in-debugger"
+                  checked="false"
+                  collapsed="true"/>
+        </hbox>
+      </vbox>
+      <splitter id="tinyjsd-splitter"/>
+      <vbox height="150" minheight="50" flex="1" persist="height" id="results_box">
+        <label value="&TinyJsd.results.title;"/>
+        <textbox id="tinyjsd-textbox-result" readonly="true"
+              multiline="true" flex="1" value=""/>
+        <label value="&TinyJsd.command.title;" collapsed="true"/>
+        <textbox id="tinyjsd-command"
+              collapsed="true"
+              placeholder="&TinyJsd.command.placeholder;"
+              newlinesNew="replacewithspaces"
+              onkeypress="TinyJsd.debuggerCommand(event)"
+              multiline="false" flex="0" value=""/>
+      </vbox>
+    </vbox>
+  </hbox>
+
+</window>

@@ -1,0 +1,87 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url(chrome://global/skin/);
+
+/*
+ * we have to explicitly import this css, because we're overriding the binding
+ * of the supremely awful <tab> tag.
+ */
+@import url(chrome://global/skin/tabbox.css);
+
+
+#button-debug-continue {
+  list-style-image: url("chrome://tinyjsd/skin/play.png");
+}
+
+#button-debug-continue[disabled="true"],
+#button-debug-continue[disabled="true"]:hover,
+#button-debug-continue[disabled="true"]:active
+{
+  list-style-image: url("chrome://tinyjsd/skin/play-disabled.png");
+}
+
+#button-debug-step-into {
+  list-style-image: url("chrome://tinyjsd/skin/step-into.png");
+}
+
+#button-debug-step-into[disabled="true"],
+#button-debug-step-into[disabled="true"]:hover,
+#button-debug-step-into[disabled="true"]:active
+{
+  list-style-image: url("chrome://tinyjsd/skin/step-into-disabled.png");
+}
+
+#button-debug-step-over {
+  list-style-image: url("chrome://tinyjsd/skin/jumpover.png");
+}
+
+#button-debug-step-over[disabled="true"],
+#button-debug-step-over[disabled="true"]:hover,
+#button-debug-step-over[disabled="true"]:active
+{
+  list-style-image: url("chrome://tinyjsd/skin/jumpover-disabled.png");
+}
+
+#button-debug-step-out {
+  list-style-image: url("chrome://tinyjsd/skin/step-out.png");
+}
+
+#button-debug-step-out[disabled="true"],
+#button-debug-step-out[disabled="true"]:hover,
+#button-debug-step-out[disabled="true"]:active
+{
+  list-style-image: url("chrome://tinyjsd/skin/step-out-disabled.png");
+}
+
+tabbox {
+  -moz-binding: none;
+}
+
+tabpanels {
+    background: none;
+    padding: 2px;
+}
+
+
+tab {
+    -moz-binding: none;
+    padding-right: 5px;
+}
+
+.tab-close-button {
+    list-style-image: url("chrome://tinyjsd/skin/close-button.png");
+    margin: 1px;
+    margin-top: 2px;
+}
+
+.tab-close-button:hover {
+    border: 1px silver outset;
+    margin: 0px;
+    margin-top: 1px;
+}
+
+treechildren::-moz-tree-cell-text(tinyjsdWlInternal) {
+  font-style: italic;
+}

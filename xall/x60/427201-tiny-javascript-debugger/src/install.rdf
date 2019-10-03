@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+
+    <em:id>tinyjsdebugger@enigmail.net</em:id>
+    <em:name>Tiny JavaScript Debugger</em:name>
+    <em:version>1.2.1</em:version>
+    <em:description>A lightweight JavaScript Debugger.</em:description>
+    <em:creator>Patrick Brunschwig</em:creator>
+    <em:homepageURL>https://sourceforge.net/u/pbrunschwig/tinyjsd/</em:homepageURL>
+    <em:bootstrap>true</em:bootstrap>
+    <em:type>2</em:type> <!-- type=extension -->
+    <em:hasEmbeddedWebExtension>true</em:hasEmbeddedWebExtension>
+    <em:unpack>false</em:unpack>
+
+    <em:targetApplication>
+      <!-- Thunderbird -->
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>24.0</em:minVersion>
+        <em:maxVersion>61.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:targetApplication>
+      <!-- SeaMonkey -->
+      <Description>
+        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+        <em:minVersion>2.21</em:minVersion>
+        <em:maxVersion>*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:targetApplication>
+      <!-- Toolkit -->
+      <Description>
+        <em:id>toolkit@mozilla.org</em:id>
+        <em:minVersion>24.0</em:minVersion>
+        <em:maxVersion>61.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+  </Description>
+</RDF>

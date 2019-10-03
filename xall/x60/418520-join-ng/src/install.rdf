@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<Description about="urn:mozilla:install-manifest">
+		
+		<em:id>join-ng@paulius.zaleckas</em:id>
+		<em:name>Join-NG</em:name>
+		<em:version>0.8.4</em:version>
+		<em:type>2</em:type>
+		<em:description>Restore message/partial messages.</em:description>
+		<em:creator>Paulius Zaleckas</em:creator>
+		<em:developer>Munekazu SHINKAI (original "join")</em:developer>
+		<em:translator>Eugenijus Januškevičius (lt)</em:translator>
+		<em:homepageURL>https://github.com/pauliuszaleckas/join-ng</em:homepageURL>
+		<em:optionsURL>chrome://join-ng/content/joinOptions.xul</em:optionsURL>
+
+		<!-- Thunderbird -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>13.0</em:minVersion>
+				<em:maxVersion>65.0</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+		<!-- SeaMonkey -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+				<em:minVersion>2.10</em:minVersion>
+				<em:maxVersion>*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+		
+	</Description>
+
+</RDF>

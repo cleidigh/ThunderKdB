@@ -1,0 +1,1 @@
+&"c:\Program Files\7-Zip\7z" a ..\filter_button.xpi *

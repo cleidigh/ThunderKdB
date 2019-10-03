@@ -1,0 +1,102 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.preformatted {
+    white-space: pre-wrap;
+    font: 12px courier-new,console,monospace;
+}
+
+.higlightedSourceLine {
+  background-color: yellow;
+  color: black;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+source-listing {
+    display: block;
+    width: 100%;
+    font: 12px courier-new,console,monospace;
+}
+
+line {
+    width: 100%;
+    white-space: pre;
+    display: block;
+}
+
+line[highlighted] {
+    background: #EEEEEE;
+}
+
+line[highlighted] > num {
+    border-right: 2px #919bd6 solid;
+    background: #d5d5e0;
+}
+
+line[stoppedAt] {
+    background: #ecef34;
+}
+
+line[stoppedAt] > num {
+    font-weight: bold;
+    border-right: 2px orange solid;
+    background: #ecef34;
+}
+
+margin {
+    -moz-user-select: none;
+    font-weight: bold;
+    background: #CCCCCC;
+    padding-bottom: 0.5em;
+    white-space: pre;
+    cursor: pointer;
+}
+
+margin[x="t"] {
+    color: #444444;
+}
+
+margin[x="t"]:hover {
+    color: slategrey;
+}
+
+margin[f="t"] {
+    background: orange;
+    color: white;
+}
+
+margin[b="t"] {
+    background: red;
+    color: white;
+}
+
+num {
+    -moz-user-select: none;
+    padding-bottom: 0.5em;
+    padding-right: 5px;
+    margin-right: 10px;
+    border-left: 1px grey solid;
+    border-right: 2px #CCCCCC solid;
+    background: #EEEEEE;
+}
+
+k {
+    font-weight: bold;
+}
+
+c {
+    color: steelblue;
+}
+
+t {
+    color: darkgreen;
+}
+
+r {
+    color: purple;
+}

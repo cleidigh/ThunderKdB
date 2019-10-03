@@ -1,0 +1,280 @@
+
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is MRC Compose
+ *
+ * The Initial Developer of the Original Code is
+ * Michel Renon (renon@mrc-consultant.net)
+ * Portions created by the Initial Developer are Copyright (C) 2012
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+/* ===== messengercompose.css ===========================================
+  == Styles for the main Messenger Compose window.
+  ======================================================================= */
+
+
+
+/*
+ *
+ * specific for MRC AUTOCOMPLETE
+ *
+ * Some css values are copied from http://getbootstrap.com/examples/theme/
+ *
+ */
+
+#msgAutocompletePanel {
+    height:10px;
+
+
+    /* TEST TB23 * /
+    background-color: #f80;
+    border: 3px solid #fcc;
+    box-shadow: 6px 6px 12px #888;
+    */
+}
+
+#msgAutocompletePanelDiv {
+    padding: 5px;
+    background-color: #ffffff;
+    display:block; 
+    min-width:100px;
+
+    /* necessary for TB > 24 because there is no more shadow for panels :
+     * we need to give a visual clue where are the panel's limits.
+     */
+    border: 1px solid #bbb;
+}
+
+#img_wait {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    list-style-image: url("chrome://mrc_compose/skin/bigrotation2.gif");
+    /* border: 0px solid #f00; */
+}
+
+#labelTypeMore {
+    color: #888;
+    font-style: italic;
+}
+
+#msgAutocompletePanelDiv .container {
+    display: block;
+    margin : 0;
+    padding: 0;
+}
+
+#msgAutocompletePanelDiv .item {
+    padding: 1px;
+}
+
+#msgAutocompletePanelDiv .item:hover {
+    padding: 0;
+    border: 1px solid rgb(59,88,151); /* #7777ff */
+}
+
+#msgAutocompletePanelDiv .select {
+    padding: 0;
+    border: 1px solid rgb(59,88,151); /* #7777ff */
+    background-color: rgb(59,88,151); /* #ccccff; */
+    color: white;
+}
+
+#msgAutocompletePanelDiv .sep {
+    width: 100%;
+    min-height: 5px;
+    height: 5px;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 4px;
+}
+
+#msgAutocompletePanelDiv .info {
+    text-align: right;
+    color: #888;
+    font-style: italic;
+}
+
+#msgAutocompletePanelDiv .title {
+    text-align: center;
+    color: #888;
+    font-weight:bold;
+    font-style: italic;
+}
+
+#msgAutocompletePanelDiv .email {
+    font-style:italic;
+}
+
+#msgAutocompletePanelDiv .nbingroup {
+    font-style:italic;
+    color: #888;
+}
+
+#msgAutocompletePanelDiv .popularity {
+    font-style:italic;
+    color: #888;
+}
+
+
+#msgAutocompletePanelDiv .hiddenname {
+    color: #fff;
+}
+#msgAutocompletePanelDiv .select .hiddenname {
+    color: #fff;
+}
+
+
+
+#msgAutocompletePanelDiv .alert-error {
+    /* from bootstrap theme */
+    background-color: #f2dede;
+    border: 1px solid #eed3d7;
+    border-radius: 4px;
+    color: #b94a48;
+    padding: 3px 5px 3px 5px;
+}
+
+#msgAutocompletePanelDiv .alert-error p {
+    margin : 0;
+    padding : 0;
+}
+
+#msgAutocompletePanelDiv .alert-warning {
+    /* from bootstrap theme */
+    background-color: #fcf8e3;
+    border: 1px solid #f5e79e;
+    border-radius: 4px;
+    color: #8a6d3b;
+    padding: 3px 5px 3px 5px;
+}
+
+#msgAutocompletePanelDiv .alert-warning p {
+    margin : 0;
+    padding : 0;
+}
+
+#msgAutocompletePanelDiv .alert-info {
+    /* from bootstrap theme */
+    background-color: #d9edf7;
+    border: 1px solid #d1cfea; /* #9acfe */
+    border-radius: 4px;
+    color: #31708f;
+    padding: 3px 5px 3px 5px;
+}
+
+#msgAutocompletePanelDiv .alert-info p {
+    margin : 0;
+    padding : 0;
+}
+
+
+/*
+.alert {
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+    border-radius: 4px;
+    color: #c09853;
+    margin-bottom: 18px;
+    padding: 8px 35px 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+*/
+
+
+#mrc-compose-options-button {
+    height: 28px;
+	/* width: 28px; */
+	-moz-context-properties: fill;
+	fill: currentColor;
+    list-style-image: url("chrome://mrc_compose/content/icon_options.svg");
+}
+
+#MsgHeadersToolbar {
+    min-height: 0px; /* this undoes the min-height in toolbar.css */
+    /* but it needs some js code to be fully active : mrcComposeLoaded() */
+}
+
+
+.notificationRecipient {
+
+  /* copy from 'notification.css' */
+
+  color: rgba(0,0,0,0.95);
+  background: url("chrome://global/skin/notification/warning-bar-background.png") #ffc703 repeat-x top left;
+  border-top: 1px solid #ffe970;
+  border-bottom: 1px solid #bf8a01;
+
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+
+  font-weight: bold;
+}
+
+
+
+
+
+#helptip {
+    display:block;
+    min-width:100px;
+    min-height:20px;
+    margin:0;
+    padding:0;
+    /*
+    height:100px;
+    border: 1px solid red;
+    */
+}
+#helptip h4 {
+    margin: 0;
+    padding: 0;
+    height:20px;
+    border: 1px solid blue;
+}
+#helptip p {
+    margin: 0;
+    padding: 0;
+    height:20px;
+    border: 1px solid blue;
+}
+
+/*
+#helptip ul {
+    margin: 0;
+    padding: 0;
+    border: 1px solid yellow;
+}
+
+#helptip li {
+    margin: 0;
+    padding: 0;
+    border: 1px solid white;
+}
+*/
+

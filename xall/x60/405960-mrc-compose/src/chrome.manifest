@@ -1,0 +1,10 @@
+content     mrc_compose    chrome/content/
+
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://mrc_compose/content/mrc_compose.xul
+overlay chrome://messenger/content/preferences/compose.xul chrome://mrc_compose/content/mrc_preferences_compose.xul
+
+locale  mrc_compose en-US   chrome/locale/en-US/
+locale  mrc_compose fr-FR   chrome/locale/fr-FR/
+locale  mrc_compose es-ES   chrome/locale/es-ES/
+
+skin    mrc_compose         classic/1.0             chrome/skin/

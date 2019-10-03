@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+  -
+  - Version: GPL 3.0
+  -
+  - ZNotes
+  - Copyright (C) 2012 Alexander Kapitman
+  -
+  - This program is free software: you can redistribute it and/or modify
+  - it under the terms of the GNU General Public License as published by
+  - the Free Software Foundation, either version 3 of the License, or
+  - (at your option) any later version.
+  -
+  - This program is distributed in the hope that it will be useful,
+  - but WITHOUT ANY WARRANTY; without even the implied warranty of
+  - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  - GNU General Public License for more details.
+  -
+  - You should have received a copy of the GNU General Public License
+  - along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -
+  - The Original Code is ZNotes.
+  -
+  - Initial Developer(s):
+  -   Alexander Kapitman <akman.ru@gmail.com>
+  -
+  - Portions created by the Initial Developer are Copyright (C) 2012
+  - the Initial Developer. All Rights Reserved.
+  -
+  - Contributor(s):
+  -
+  - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet type="text/css"
+  href="chrome://znotes/skin/documents/xhtml/editor.css" ?>
+
+<!DOCTYPE overlay SYSTEM "chrome://znotes/locale/documents/xhtml/editor.dtd">
+
+<overlay id="xhtml"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="znotes_editor_stringbundleset">
+    <stringbundle id="znotes_editor_stringbundle"
+      src="chrome://znotes/locale/documents/xhtml/editor.properties" />
+  </stringbundleset>
+
+  <commandset id="znotes_editor_commandset">
+    <!-- common -->
+    <command id="znotes_editorcustomizetoolbar_command" disabled="true"
+      label="&znotes_editorcustomizetoolbar_label;"
+      title="&znotes_editorcustomizetoolbar_label;"
+      tooltiptext="&znotes_editorcustomizetoolbar_tooltip;"
+      accesskey="&znotes_editorcustomizetoolbar_accesskey;"
+      key="znotes_editorcustomizetoolbar_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_editorcustomizetoolbar_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_close_command" disabled="true"
+      title="&znotes_close_label;"
+      tooltiptext="&znotes_close_tooltip;"
+      accesskey="&znotes_close_accesskey;"
+      key="znotes_close_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_close_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_importresources_command" disabled="true"
+      label="&znotes_importresources_label;"
+      title="&znotes_importresources_label;"
+      tooltiptext="&znotes_importresources_tooltip;"
+      accesskey="&znotes_importresources_accesskey;"
+      key="znotes_importresources_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_importresources_command', event.explicitOriginalTarget );"/>
+    <!-- design -->
+    <command id="znotes_bold_command" disabled="true"
+      label="&znotes_bold_label;"
+      title="&znotes_bold_label;"
+      tooltiptext="&znotes_bold_tooltip;"
+      accesskey="&znotes_bold_accesskey;"
+      key="znotes_bold_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_bold_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_italic_command" disabled="true"
+      label="&znotes_italic_label;"
+      title="&znotes_italic_label;"
+      tooltiptext="&znotes_italic_tooltip;"
+      accesskey="&znotes_italic_accesskey;"
+      key="znotes_italic_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_italic_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_underline_command" disabled="true"
+      label="&znotes_underline_label;"
+      title="&znotes_underline_label;"
+      tooltiptext="&znotes_underline_tooltip;"
+      accesskey="&znotes_underline_accesskey;"
+      key="znotes_underline_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_underline_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_forecolor_command" disabled="true"
+      label="&znotes_forecolor_label;"
+      title="&znotes_forecolor_label;"
+      tooltiptext="&znotes_forecolor_tooltip;"
+      accesskey="&znotes_forecolor_accesskey;"
+      key="znotes_forecolor_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_forecolor_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_forecolordelete_command" disabled="true"
+      label="&znotes_forecolordelete_label;"
+      title="&znotes_forecolordelete_label;"
+      tooltiptext="&znotes_forecolordelete_tooltip;"
+      accesskey="&znotes_forecolordelete_accesskey;"
+      key="znotes_forecolordelete_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_forecolordelete_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_backcolor_command" disabled="true"
+      label="&znotes_backcolor_label;"
+      title="&znotes_backcolor_label;"
+      tooltiptext="&znotes_backcolor_tooltip;"
+      accesskey="&znotes_backcolor_accesskey;"
+      key="znotes_backcolor_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_backcolor_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_backcolordelete_command" disabled="true"
+      label="&znotes_backcolordelete_label;"
+      title="&znotes_backcolordelete_label;"
+      tooltiptext="&znotes_backcolordelete_tooltip;"
+      accesskey="&znotes_backcolordelete_accesskey;"
+      key="znotes_backcolordelete_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_backcolordelete_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_justifycenter_command" disabled="true"
+      label="&znotes_justifycenter_label;"
+      title="&znotes_justifycenter_label;"
+      tooltiptext="&znotes_justifycenter_tooltip;"
+      accesskey="&znotes_justifycenter_accesskey;"
+      key="znotes_justifycenter_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_justifycenter_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_justifyleft_command" disabled="true"
+      label="&znotes_justifyleft_label;"
+      title="&znotes_justifyleft_label;"
+      tooltiptext="&znotes_justifyleft_tooltip;"
+      accesskey="&znotes_justifyleft_accesskey;"
+      key="znotes_justifyleft_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_justifyleft_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_justifyright_command" disabled="true"
+      label="&znotes_justifyright_label;"
+      title="&znotes_justifyright_label;"
+      tooltiptext="&znotes_justifyright_tooltip;"
+      accesskey="&znotes_justifyright_accesskey;"
+      key="znotes_justifyright_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_justifyright_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_justifyfull_command" disabled="true"
+      label="&znotes_justifyfull_label;"
+      title="&znotes_justifyfull_label;"
+      tooltiptext="&znotes_justifyfull_tooltip;"
+      accesskey="&znotes_justifyfull_accesskey;"
+      key="znotes_justifyfull_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_justifyfull_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_strikethrough_command" disabled="true"
+      label="&znotes_strikethrough_label;"
+      title="&znotes_strikethrough_label;"
+      tooltiptext="&znotes_strikethrough_tooltip;"
+      accesskey="&znotes_strikethrough_accesskey;"
+      key="znotes_strikethrough_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_strikethrough_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_subscript_command" disabled="true"
+      label="&znotes_subscript_label;"
+      title="&znotes_subscript_label;"
+      tooltiptext="&znotes_subscript_tooltip;"
+      accesskey="&znotes_subscript_accesskey;"
+      key="znotes_subscript_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_subscript_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_superscript_command" disabled="true"
+      label="&znotes_superscript_label;"
+      title="&znotes_superscript_label;"
+      tooltiptext="&znotes_superscript_tooltip;"
+      accesskey="&znotes_superscript_accesskey;"
+      key="znotes_superscript_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_superscript_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_indent_command" disabled="true"
+      label="&znotes_indent_label;"
+      title="&znotes_indent_label;"
+      tooltiptext="&znotes_indent_tooltip;"
+      accesskey="&znotes_indent_accesskey;"
+      key="znotes_indent_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_indent_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_outdent_command" disabled="true"
+      label="&znotes_outdent_label;"
+      title="&znotes_outdent_label;"
+      tooltiptext="&znotes_outdent_tooltip;"
+      accesskey="&znotes_outdent_accesskey;"
+      key="znotes_outdent_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_outdent_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_link_command" disabled="true"
+      label="&znotes_link_label;"
+      title="&znotes_link_label;"
+      tooltiptext="&znotes_link_tooltip;"
+      accesskey="&znotes_link_accesskey;"
+      key="znotes_link_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_link_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_unlink_command" disabled="true"
+      label="&znotes_unlink_label;"
+      title="&znotes_unlink_label;"
+      tooltiptext="&znotes_unlink_tooltip;"
+      accesskey="&znotes_unlink_accesskey;"
+      key="znotes_unlink_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_unlink_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_removeformat_command" disabled="true"
+      label="&znotes_removeformat_label;"
+      title="&znotes_removeformat_label;"
+      tooltiptext="&znotes_removeformat_tooltip;"
+      accesskey="&znotes_removeformat_accesskey;"
+      key="znotes_removeformat_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_removeformat_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_insertorderedlist_command" disabled="true"
+      label="&znotes_insertorderedlist_label;"
+      title="&znotes_insertorderedlist_label;"
+      tooltiptext="&znotes_insertorderedlist_tooltip;"
+      accesskey="&znotes_insertorderedlist_accesskey;"
+      key="znotes_insertorderedlist_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_insertorderedlist_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_insertunorderedlist_command" disabled="true"
+      label="&znotes_insertunorderedlist_label;"
+      title="&znotes_insertunorderedlist_label;"
+      tooltiptext="&znotes_insertunorderedlist_tooltip;"
+      accesskey="&znotes_insertunorderedlist_accesskey;"
+      key="znotes_insertunorderedlist_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_insertunorderedlist_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_inserthorizontalrule_command" disabled="true"
+      label="&znotes_inserthorizontalrule_label;"
+      title="&znotes_inserthorizontalrule_label;"
+      tooltiptext="&znotes_inserthorizontalrule_tooltip;"
+      accesskey="&znotes_inserthorizontalrule_accesskey;"
+      key="znotes_inserthorizontalrule_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_inserthorizontalrule_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_inserttable_command" disabled="true"
+      label="&znotes_inserttable_label;"
+      title="&znotes_inserttable_label;"
+      tooltiptext="&znotes_inserttable_tooltip;"
+      accesskey="&znotes_inserttable_accesskey;"
+      key="znotes_inserttable_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_inserttable_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_insertimage_command" disabled="true"
+      label="&znotes_insertimage_label;"
+      title="&znotes_insertimage_label;"
+      tooltiptext="&znotes_insertimage_tooltip;"
+      accesskey="&znotes_insertimage_accesskey;"
+      key="znotes_insertimage_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_insertimage_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_insertparagraph_command" disabled="true"
+      label="&znotes_insertparagraph_label;"
+      title="&znotes_insertparagraph_label;"
+      tooltiptext="&znotes_insertparagraph_tooltip;"
+      accesskey="&znotes_insertparagraph_accesskey;"
+      key="znotes_insertparagraph_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_insertparagraph_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_toggletagsmode_command" disabled="true"
+      label="&znotes_toggletagsmode_label;"
+      title="&znotes_toggletagsmode_label;"
+      tooltiptext="&znotes_toggletagsmode_tooltip;"
+      accesskey="&znotes_toggletagsmode_accesskey;"
+      key="znotes_toggletagsmode_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_toggletagsmode_command', event.explicitOriginalTarget );"/>
+    <command id="znotes_editordebug_command" disabled="true" hidden="true"
+      label="&znotes_editordebug_label;"
+      title="&znotes_editordebug_label;"
+      tooltiptext="&znotes_editordebug_tooltip;"
+      accesskey="&znotes_editordebug_accesskey;"
+      key="znotes_editordebug_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_editordebug_command', event.explicitOriginalTarget );"/>
+    <!-- source -->
+    <command id="znotes_sourcebeautify_command" disabled="true"
+      label="&znotes_sourcebeautify_label;"
+      title="&znotes_sourcebeautify_label;"
+      tooltiptext="&znotes_sourcebeautify_tooltip;"
+      accesskey="&znotes_sourcebeautify_accesskey;"
+      key="znotes_sourcebeautify_key"
+      oncommand="ru.akman.znotes.Common.goDoCommand( 'znotes_sourcebeautify_command', event.explicitOriginalTarget );"/>
+  </commandset>
+
+  <keyset id="znotes_editor_keyset">
+    <key id="znotes_close_key" command="znotes_close_command"
+      key="&znotes_close_key;" modifiers="&znotes_close_key_modifiers;"
+      keycode="&znotes_close_keycode;"/>
+    <key id="znotes_importresources_key" command="znotes_importresources_command"
+      key="&znotes_importresources_key;" modifiers="&znotes_importresources_key_modifiers;"
+      keycode="&znotes_importresources_keycode;"/>
+    <key id="znotes_bold_key" command="znotes_bold_command"
+      key="&znotes_bold_key;" modifiers="&znotes_bold_key_modifiers;"
+      keycode="&znotes_bold_keycode;"/>
+    <key id="znotes_italic_key" command="znotes_italic_command"
+      key="&znotes_italic_key;" modifiers="&znotes_italic_key_modifiers;"
+      keycode="&znotes_italic_keycode;"/>
+    <key id="znotes_underline_key" command="znotes_underline_command"
+      key="&znotes_underline_key;" modifiers="&znotes_underline_key_modifiers;"
+      keycode="&znotes_underline_keycode;"/>
+    <key id="znotes_forecolor_key" command="znotes_forecolor_command"
+      key="&znotes_forecolor_key;" modifiers="&znotes_forecolor_key_modifiers;"
+      keycode="&znotes_forecolor_keycode;"/>
+    <key id="znotes_forecolordelete_key" command="znotes_forecolordelete_command"
+      key="&znotes_forecolordelete_key;" modifiers="&znotes_forecolordelete_key_modifiers;"
+      keycode="&znotes_forecolordelete_keycode;"/>
+    <key id="znotes_backcolor_key" command="znotes_backcolor_command"
+      key="&znotes_backcolor_key;" modifiers="&znotes_backcolor_key_modifiers;"
+      keycode="&znotes_backcolor_keycode;"/>
+    <key id="znotes_backcolordelete_key" command="znotes_backcolordelete_command"
+      key="&znotes_backcolordelete_key;" modifiers="&znotes_backcolordelete_key_modifiers;"
+      keycode="&znotes_backcolordelete_keycode;"/>
+    <key id="znotes_justifycenter_key" command="znotes_justifycenter_command"
+      key="&znotes_justifycenter_key;" modifiers="&znotes_justifycenter_key_modifiers;"
+      keycode="&znotes_justifycenter_keycode;"/>
+    <key id="znotes_justifyleft_key" command="znotes_justifyleft_command"
+      key="&znotes_justifyleft_key;" modifiers="&znotes_justifyleft_key_modifiers;"
+      keycode="&znotes_justifyleft_keycode;"/>
+    <key id="znotes_justifyright_key" command="znotes_justifyright_command"
+      key="&znotes_justifyright_key;" modifiers="&znotes_justifyright_key_modifiers;"
+      keycode="&znotes_justifyright_keycode;"/>
+    <key id="znotes_justifyfull_key" command="znotes_justifyfull_command"
+      key="&znotes_justifyfull_key;" modifiers="&znotes_justifyfull_key_modifiers;"
+      keycode="&znotes_justifyfull_keycode;"/>
+    <key id="znotes_strikethrough_key" command="znotes_strikethrough_command"
+      key="&znotes_strikethrough_key;" modifiers="&znotes_strikethrough_key_modifiers;"
+      keycode="&znotes_strikethrough_keycode;"/>
+    <key id="znotes_subscript_key" command="znotes_subscript_command"
+      key="&znotes_subscript_key;" modifiers="&znotes_subscript_key_modifiers;"
+      keycode="&znotes_subscript_keycode;"/>
+    <key id="znotes_superscript_key" command="znotes_superscript_command"
+      key="&znotes_superscript_key;" modifiers="&znotes_superscript_key_modifiers;"
+      keycode="&znotes_superscript_keycode;"/>
+    <key id="znotes_indent_key" command="znotes_indent_command"
+      key="&znotes_indent_key;" modifiers="&znotes_indent_key_modifiers;"
+      keycode="&znotes_indent_keycode;"/>
+    <key id="znotes_outdent_key" command="znotes_outdent_command"
+      key="&znotes_outdent_key;" modifiers="&znotes_outdent_key_modifiers;"
+      keycode="&znotes_outdent_keycode;"/>
+    <key id="znotes_link_key" command="znotes_link_command"
+      key="&znotes_link_key;" modifiers="&znotes_link_key_modifiers;"
+      keycode="&znotes_link_keycode;"/>
+    <key id="znotes_unlink_key" command="znotes_unlink_command"
+      key="&znotes_unlink_key;" modifiers="&znotes_unlink_key_modifiers;"
+      keycode="&znotes_unlink_keycode;"/>
+    <key id="znotes_removeformat_key" command="znotes_removeformat_command"
+      key="&znotes_removeformat_key;" modifiers="&znotes_removeformat_key_modifiers;"
+      keycode="&znotes_removeformat_keycode;"/>
+    <key id="znotes_insertorderedlist_key" command="znotes_insertorderedlist_command"
+      key="&znotes_insertorderedlist_key;" modifiers="&znotes_insertorderedlist_key_modifiers;"
+      keycode="&znotes_insertorderedlist_keycode;"/>
+    <key id="znotes_insertunorderedlist_key" command="znotes_insertunorderedlist_command"
+      key="&znotes_insertunorderedlist_key;" modifiers="&znotes_insertunorderedlist_key_modifiers;"
+      keycode="&znotes_insertunorderedlist_keycode;"/>
+    <key id="znotes_inserthorizontalrule_key" command="znotes_inserthorizontalrule_command"
+      key="&znotes_inserthorizontalrule_key;" modifiers="&znotes_inserthorizontalrule_key_modifiers;"
+      keycode="&znotes_inserthorizontalrule_keycode;"/>
+    <key id="znotes_inserttable_key" command="znotes_inserttable_command"
+      key="&znotes_inserttable_key;" modifiers="&znotes_inserttable_key_modifiers;"
+      keycode="&znotes_inserttable_keycode;"/>
+    <key id="znotes_insertimage_key" command="znotes_insertimage_command"
+      key="&znotes_insertimage_key;" modifiers="&znotes_insertimage_key_modifiers;"
+      keycode="&znotes_insertimage_keycode;"/>
+    <key id="znotes_insertparagraph_key" command="znotes_insertparagraph_command"
+      key="&znotes_insertparagraph_key;" modifiers="&znotes_insertparagraph_key_modifiers;"
+      keycode="&znotes_insertparagraph_keycode;"/>
+    <key id="znotes_editorcustomizetoolbar_key" command="znotes_editorcustomizetoolbar_command"
+      key="&znotes_editorcustomizetoolbar_key;" modifiers="&znotes_editorcustomizetoolbar_key_modifiers;"
+      keycode="&znotes_editorcustomizetoolbar_keycode;"/>
+    <key id="znotes_toggletagsmode_key" command="znotes_toggletagsmode_command"
+      key="&znotes_toggletagsmode_key;" modifiers="&znotes_toggletagsmode_key_modifiers;"
+      keycode="&znotes_toggletagsmode_keycode;"/>
+    <key id="znotes_editordebug_key" command="znotes_editordebug_command"
+      key="&znotes_editordebug_key;" modifiers="&znotes_editordebug_key_modifiers;"
+      keycode="&znotes_editordebug_keycode;"/>
+    <key id="znotes_sourcebeautify_key" command="znotes_sourcebeautify_command"
+      key="&znotes_sourcebeautify_key;" modifiers="&znotes_sourcebeautify_key_modifiers;"
+      keycode="&znotes_sourcebeautify_keycode;"/>
+  </keyset>
+
+  <popupset id="znotes_editor_popupset">
+    <!-- toolbox context -->
+    <menupopup id="znotes_editortoolbar_menupopup">
+      <menuitem id="znotes_editorcustomizetoolbar_menuitem"
+        class="menuitem-iconic znotes_editorcustomizetoolbar_class"
+        command="znotes_editorcustomizetoolbar_command"
+        key="znotes_editorcustomizetoolbar_key" />
+    </menupopup>
+  </popupset>
+
+  <toolbar id="znotes_editor_toolbar">
+    <toolbarbutton id="znotes_importresources_button"
+      class="menuitem-iconic toolbarbutton-1 znotes_importresources_class"
+      key="znotes_importresources_key"
+      command="znotes_importresources_command" />
+  </toolbar>
+  
+  <vbox id="editorView">
+    <tabbox id="editorTabBox" flex="1">
+      <hbox id="editorTabsHeader">
+        <tabs id="editorTabs" hidden="true" pack="end">
+          <tab id="editorTabDesign" label="&editorTabDesign;" selected="true"/>
+          <tab id="editorTabSource" label="&editorTabSource;"/>
+        </tabs>
+        <spacer id="editorTabsSpacer" flex="1" />
+        <toolbarbutton id="znotes_close_button"
+          iconsize="small"
+          class="menuitem-iconic znotes_close_class"
+          key="znotes_close_key"
+          command="znotes_close_command"
+          hidden="true" pack="end" />
+      </hbox>
+      <tabpanels id="editorPanels" flex="1">
+        <tabpanel id="designPanel" flex="1">
+          <vbox id="designBox" flex="1">
+            <browser id="designEditor"
+              type="content-primary"
+              src="chrome://znotes_documents/content/xhtml/design.xhtml"
+              disablehistory="true"
+              context="znotes_edit_menupopup"
+              flex="1" />
+            <toolbox id="designToolBox" collapsed="true"
+              mode="icons" defaultmode="icons"
+              labelalign="bottom" defaultlabelalign="bottom">
+              <toolbarpalette id="designToolBarPalette">
+                <menulist id="fontNameMenuList"
+                  disableautoselect="false"
+                  tooltiptext="&fontNameMenuList;">
+                  <menupopup id="fontNameMenuPopup"/>
+                </menulist>
+                <textbox id="fontSizeTextBox"
+                  type="number" min="1" size="3"
+                  tooltiptext="&fontSizeTextBox;" />
+                <menulist id="formatBlockMenuList"
+                  disableautoselect="false"
+                  tooltiptext="&formatBlockMenuList;">
+                  <menupopup id="formatBlockMenuPopup"/>
+                </menulist>
+                <toolbarbutton id="znotes_bold_button"
+                  type="checkbox" autocheck="false"
+                  class="menuitem-iconic toolbarbutton-1 znotes_bold_class"
+                  key="znotes_bold_key"
+                  command="znotes_bold_command" />
+                <toolbarbutton id="znotes_italic_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_italic_class"
+                  key="znotes_italic_key"
+                  command="znotes_italic_command" />
+                <toolbarbutton id="znotes_underline_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_underline_class"
+                  key="znotes_underline_key"
+                  command="znotes_underline_command" />
+                <toolbarbutton id="znotes_strikethrough_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_strikethrough_class"
+                  key="znotes_strikethrough_key"
+                  command="znotes_strikethrough_command" />
+                <toolbarbutton id="znotes_forecolor_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_forecolor_class"
+                  key="znotes_forecolor_key"
+                  command="znotes_forecolor_command" />
+                <toolbarbutton id="znotes_forecolordelete_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_forecolordelete_class"
+                  key="znotes_forecolordelete_key"
+                  command="znotes_forecolordelete_command" />
+                <toolbarbutton id="znotes_backcolor_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_backcolor_class"
+                  key="znotes_backcolor_key"
+                  command="znotes_backcolor_command" />
+                <toolbarbutton id="znotes_backcolordelete_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_backcolordelete_class"
+                  key="znotes_backcolordelete_key"
+                  command="znotes_backcolordelete_command" />
+                <toolbarbutton id="znotes_justifycenter_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_justifycenter_class"
+                  key="znotes_justifycenter_key"
+                  command="znotes_justifycenter_command" />
+                <toolbarbutton id="znotes_justifyleft_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_justifyleft_class"
+                  key="znotes_justifyleft_key"
+                  command="znotes_justifyleft_command" />
+                <toolbarbutton id="znotes_justifyright_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_justifyright_class"
+                  key="znotes_justifyright_key"
+                  command="znotes_justifyright_command" />
+                <toolbarbutton id="znotes_justifyfull_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_justifyfull_class"
+                  key="znotes_justifyfull_key"
+                  command="znotes_justifyfull_command" />
+                <toolbarbutton id="znotes_subscript_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_subscript_class"
+                  key="znotes_subscript_key"
+                  command="znotes_subscript_command" />
+                <toolbarbutton id="znotes_superscript_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_superscript_class"
+                  key="znotes_superscript_key"
+                  command="znotes_superscript_command" />
+                <toolbarbutton id="znotes_indent_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_indent_class"
+                  key="znotes_indent_key"
+                  command="znotes_indent_command" />
+                <toolbarbutton id="znotes_outdent_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_outdent_class"
+                  key="znotes_outdent_key"
+                  command="znotes_outdent_command" />
+                <toolbarbutton id="znotes_link_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_link_class"
+                  key="znotes_link_key"
+                  command="znotes_link_command" />
+                <toolbarbutton id="znotes_unlink_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_unlink_class"
+                  key="znotes_unlink_key"
+                  command="znotes_unlink_command" />
+                <toolbarbutton id="znotes_removeformat_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_removeformat_class"
+                  key="znotes_removeformat_key"
+                  command="znotes_removeformat_command" />
+                <toolbarbutton id="znotes_insertorderedlist_button"
+                  type="checkbox" autocheck="false"
+                  class="menuitem-iconic toolbarbutton-1 znotes_insertorderedlist_class"
+                  key="znotes_insertorderedlist_key"
+                  command="znotes_insertorderedlist_command" />
+                <toolbarbutton id="znotes_insertunorderedlist_button"
+                  type="checkbox" autocheck="false"
+                  class="menuitem-iconic toolbarbutton-1 znotes_insertunorderedlist_class"
+                  key="znotes_insertunorderedlist_key"
+                  command="znotes_insertunorderedlist_command" />
+                <toolbarbutton id="znotes_inserthorizontalrule_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_inserthorizontalrule_class"
+                  key="znotes_inserthorizontalrule_key"
+                  command="znotes_inserthorizontalrule_command" />
+                <toolbarbutton id="znotes_inserttable_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_inserttable_class"
+                  key="znotes_inserttable_key"
+                  command="znotes_inserttable_command" />
+                <toolbarbutton id="znotes_insertimage_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_insertimage_class"
+                  key="znotes_insertimage_key"
+                  command="znotes_insertimage_command" />
+                <toolbarbutton id="znotes_insertparagraph_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_insertparagraph_class"
+                  key="znotes_insertparagraph_key"
+                  command="znotes_insertparagraph_command" />
+                <toolbarbutton id="znotes_editordebug_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_editordebug_class"
+                  key="znotes_editordebug_key"
+                  command="znotes_editordebug_command" />
+                <!-- edit -->
+                <toolbarbutton id="znotes_edit_copy_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_copy_class"
+                  command="znotes_copy_command"/>
+                <toolbarbutton id="znotes_edit_cut_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_cut_class"
+                  command="znotes_cut_command"/>
+                <toolbarbutton id="znotes_edit_paste_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_paste_class"
+                  command="znotes_paste_command"/>
+                <toolbarbutton id="znotes_edit_delete_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_delete_class"
+                  command="znotes_delete_command"/>
+                <toolbarbutton id="znotes_edit_undo_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_undo_class"
+                  command="znotes_undo_command"/>
+                <toolbarbutton id="znotes_edit_redo_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_redo_class"
+                  command="znotes_redo_command"/>
+                <toolbarbutton id="znotes_edit_selectall_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_selectall_class"
+                  command="znotes_selectall_command"/>
+                <!-- spell -->
+                <toolbarbutton id="znotes_spellcheckenabled_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_spellcheckenabled_class"
+                  command="znotes_spellcheckenabled_command" />
+                <!-- tags -->
+                <toolbarbutton id="znotes_toggletagsmode_button"
+                  type="checkbox"
+                  class="menuitem-iconic toolbarbutton-1 znotes_toggletagsmode_class"
+                  command="znotes_toggletagsmode_command" />
+              </toolbarpalette>
+              <toolbar id="designToolBar1" class="inline-toolbar"
+                toolbarname="&designToolBar1;" fullscreentoolbar="true"
+                mode="icons" iconsize="small" customizable="true"
+                context="znotes_editortoolbar_menupopup"
+                defaultset="fontNameMenuList,fontSizeTextBox,separator,znotes_bold_button,znotes_italic_button,znotes_underline_button,znotes_strikethrough_button,separator,znotes_forecolor_button,znotes_forecolordelete_button,znotes_backcolor_button,znotes_backcolordelete_button,separator,znotes_justifycenter_button,znotes_justifyleft_button,znotes_justifyright_button,znotes_justifyfull_button,separator,znotes_subscript_button,znotes_superscript_button,spacer,znotes_edit_undo_button,znotes_edit_redo_button,separator,znotes_edit_cut_button,znotes_edit_copy_button,znotes_edit_paste_button,znotes_edit_delete_button,separator,znotes_edit_selectall_button,spring" />
+              <toolbar id="designToolBar2" class="inline-toolbar"
+                toolbarname="&designToolBar2;" fullscreentoolbar="true"
+                mode="icons" iconsize="small" customizable="true"
+                context="znotes_editortoolbar_menupopup"
+                defaultset="formatBlockMenuList,separator,znotes_insertparagraph_button,separator,znotes_indent_button,znotes_outdent_button,separator,znotes_link_button,znotes_unlink_button,separator,znotes_insertorderedlist_button,znotes_insertunorderedlist_button,separator,znotes_inserthorizontalrule_button,znotes_inserttable_button,znotes_insertimage_button,separator,znotes_removeformat_button,spacer,znotes_spellcheckenabled_button,znotes_toggletagsmode_button,spring,znotes_editordebug_button" />
+              <toolbarset id="designToolBarSet"
+                context="znotes_editortoolbar_menupopup" />
+            </toolbox>
+          </vbox>
+        </tabpanel>
+        <tabpanel id="sourcePanel" flex="1">
+          <vbox id="sourceBox" flex="1">
+            <iframe id="sourceEditor"
+              src="chrome://znotes_documents/content/xhtml/source.xhtml"
+              type="content-primary"
+              disablehistory="true"
+              context="znotes_edit_menupopup"
+              flex="1" />
+            <toolbox id="sourceToolBox" collapsed="true"
+              mode="icons" defaultmode="icons"
+              labelalign="bottom" defaultlabelalign="bottom">
+              <toolbarpalette id="sourceToolBarPalette">
+                <toolbarbutton id="znotes_sourcebeautify_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_sourcebeautify_class"
+                  key="znotes_sourcebeautify_key"
+                  command="znotes_sourcebeautify_command" />
+                <!-- edit -->
+                <toolbarbutton id="znotes_edit_copy_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_copy_class"
+                  command="znotes_copy_command"/>
+                <toolbarbutton id="znotes_edit_cut_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_cut_class"
+                  command="znotes_cut_command"/>
+                <toolbarbutton id="znotes_edit_paste_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_paste_class"
+                  command="znotes_paste_command"/>
+                <toolbarbutton id="znotes_edit_delete_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_delete_class"
+                  command="znotes_delete_command"/>
+                <toolbarbutton id="znotes_edit_undo_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_undo_class"
+                  command="znotes_undo_command"/>
+                <toolbarbutton id="znotes_edit_redo_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_redo_class"
+                  command="znotes_redo_command"/>
+                <toolbarbutton id="znotes_edit_selectall_button"
+                  class="menuitem-iconic toolbarbutton-1 znotes_selectall_class"
+                  command="znotes_selectall_command"/>
+              </toolbarpalette>
+              <toolbar id="sourceToolBar1" class="inline-toolbar"
+                toolbarname="&sourceToolBar1;" fullscreentoolbar="true"
+                mode="icons" iconsize="small" customizable="true"
+                context="znotes_editortoolbar_menupopup"
+                defaultset="znotes_sourcebeautify_button,spacer,znotes_edit_undo_button,znotes_edit_redo_button,separator,znotes_edit_cut_button,znotes_edit_copy_button,znotes_edit_paste_button,znotes_edit_delete_button,separator,znotes_edit_selectall_button,spring" />
+              <toolbar id="sourceToolBar2" class="inline-toolbar"
+                toolbarname="&sourceToolBar2;" fullscreentoolbar="true"
+                mode="icons" iconsize="small" customizable="true"
+                context="znotes_editortoolbar_menupopup"
+                defaultset="spring" />
+              <toolbarset id="sourceToolBarSet"
+                context="znotes_editortoolbar_menupopup" />
+            </toolbox>
+          </vbox>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+    <iframe id="sourcePrintFrame"
+      src="chrome://znotes_documents/content/xhtml/source.printing.xhtml"
+      type="content-primary"
+      disablehistory="true"
+      collapsed="true" />
+  </vbox>
+
+  <vbox id="optionsView">
+    <!-- document -->
+    <groupbox id="docGroupBox:xhtml">
+      <caption id="docCaption:xhtml" label="&docCaption.xhtml.label;" />
+        <hbox id="authorHBox:xhtml" align="center">
+          <label value="&author.xhtml.label;" control="author:xhtml" />
+          <textbox id="author:xhtml" placeholder="&author.xhtml.placeholder;"
+            flex="1" />
+        </hbox>
+    </groupbox>
+    <!-- editor -->
+    <groupbox id="mainGroupBox:xhtml">
+      <caption id="mainCaption:xhtml" label="&mainCaption.xhtml.label;" />
+      <vbox id="mainVBox:xhtml" align="start">
+        <checkbox id="isSpellcheckEnabled:xhtml"
+          label="&isSpellcheckEnabled.xhtml.label;" />
+        <checkbox id="isTagsModeActive:xhtml"
+          label="&isTagsModeActive.xhtml.label;" />
+      </vbox>
+    </groupbox>
+    <groupbox id="keysGroupBox:xhtml" flex="1">
+      <caption id="keysCaption:xhtml" label="&keysCaption.xhtml.label;" />
+      <richlistbox id="keysListBox:xhtml" class="key_list"
+        seltype="single" flex="1"/>
+    </groupbox>
+  </vbox>
+
+</overlay>

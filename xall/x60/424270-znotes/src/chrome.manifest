@@ -1,0 +1,57 @@
+# ***** BEGIN LICENSE BLOCK *****
+#
+# Version: GPL 3.0
+#
+# ZNotes
+# Copyright (C) 2012 Alexander Kapitman
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# The Original Code is ZNotes.
+#
+# Initial Developer(s):
+#   Alexander Kapitman <akman.ru@gmail.com>
+#
+# Portions created by the Initial Developer are Copyright (C) 2012
+# the Initial Developer. All Rights Reserved.
+#
+# Contributor(s):
+#
+# ***** END LICENSE BLOCK *****
+
+content   znotes            jar:chrome/znotes.jar!/content/
+content   znotes_drivers    modules/drivers/
+content   znotes_documents  modules/documents/
+content   znotes_welcome    welcome/
+content   znotes_changes    changes/
+resource  znotes            modules/
+skin      platform          classic/1.0 jar:chrome/znotes.jar!/skin/platform/winnt/classic/ os=WINNT osversion<6
+skin      platform          classic/1.0 jar:chrome/znotes.jar!/skin/platform/linux/classic/ os!=WINNT
+skin      platform          classic/1.0 jar:chrome/znotes.jar!/skin/platform/winnt/aero/    os=WINNT osversion>=6
+skin      znotes            classic/1.0 jar:chrome/znotes.jar!/skin/winnt/classic/ os=WINNT
+#skin      znotes            classic/1.0 jar:chrome/znotes.jar!/skin/winnt/aero/ os=WINNT osversion>=6
+skin      znotes            classic/1.0 jar:chrome/znotes.jar!/skin/linux/classic/ os!=WINNT
+skin      znotes_images     classic/1.0 jar:chrome/znotes.jar!/skin/images/classic/
+skin      znotes_sounds     classic/1.0 jar:chrome/znotes.jar!/skin/sounds/classic/
+skin      znotes_common     classic/1.0 jar:chrome/znotes.jar!/skin/common/classic/
+overlay   chrome://messenger/content/messenger.xul chrome://znotes/content/overlay-tb.xul
+overlay   chrome://messenger/content/msgAccountCentral.xul chrome://znotes/content/msgAccountCentral.xul
+overlay   chrome://znotes/content/browser.xul chrome://znotes/content/clipper.xul
+style     chrome://global/content/customizeToolbar.xul chrome://znotes/skin/overlay-tb.css
+style     chrome://global/content/customizeToolbar.xul chrome://znotes/skin/common-tb.css
+style     chrome://global/content/customizeToolbar.xul chrome://znotes/skin/common.css
+style     chrome://global/content/customizeToolbar.xul chrome://znotes/skin/clipper.css
+style     chrome://global/content/customizeToolbar.xul chrome://znotes/skin/documents/text/editor.css
+style     chrome://global/content/customizeToolbar.xul chrome://znotes/skin/documents/xhtml/editor.css
+manifest  locale/localized.manifest

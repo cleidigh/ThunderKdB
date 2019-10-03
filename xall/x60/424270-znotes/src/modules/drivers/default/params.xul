@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+  -
+  - Version: GPL 3.0
+  -
+  - ZNotes
+  - Copyright (C) 2012 Alexander Kapitman
+  -
+  - This program is free software: you can redistribute it and/or modify
+  - it under the terms of the GNU General Public License as published by
+  - the Free Software Foundation, either version 3 of the License, or
+  - (at your option) any later version.
+  -
+  - This program is distributed in the hope that it will be useful,
+  - but WITHOUT ANY WARRANTY; without even the implied warranty of
+  - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  - GNU General Public License for more details.
+  -
+  - You should have received a copy of the GNU General Public License
+  - along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -
+  - The Original Code is ZNotes.
+  -
+  - Initial Developer(s):
+  -   Alexander Kapitman <akman.ru@gmail.com>
+  -
+  - Portions created by the Initial Developer are Copyright (C) 2012
+  - the Initial Developer. All Rights Reserved.
+  -
+  - Contributor(s):
+  -
+  - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet type="text/css"
+  href="chrome://znotes/skin/drivers/default/params.css" ?>
+
+<!DOCTYPE overlay SYSTEM "chrome://znotes/locale/drivers/default/params.dtd">
+
+<overlay id="default"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="bookStringBundleset">
+    <stringbundle id="paramsStringbundle"
+      src="chrome://znotes/locale/drivers/default/params.properties" />
+  </stringbundleset>
+
+  <vbox id="paramsView">
+    <label id="label_encoding" value="&encoding.label;"
+      control="textbox_encoding" />
+    <hbox id="hbox_encoding" align="center">
+      <textbox id="textbox_encoding" placeholder="&encoding.placeholder;"
+        flex="1" />
+    </hbox>
+    <label id="label_path" value="&path.label;"
+      control="textbox_path" />
+    <hbox id="hbox_path" align="center">
+      <textbox id="textbox_path" class="textboxPath"
+        placeholder="&path.placeholder;" flex="1" />
+      <button id="button_path" class="buttonPath"
+        tooltiptext="&path.tooltiptext;" />
+    </hbox>
+    <label id="label_extensions" value="&extensions.label;"
+      control="listbox_extensions" />
+    <tree id="extensionsTree" flex="1" hidecolumnpicker="true"
+      keepcurrentinview="true" seltype="single" minheight="95">
+      <treecols id="extensionsTreeCols">
+        <treecol id="extensionsTreeType" label="&extensions.type.header;"
+          crop="center" persist="width ordinal hidden" flex="2" />
+        <splitter class="tree-splitter" />
+        <treecol id="extensionsTreeValue" label="&extensions.value.header;"
+          crop="center" persist="width ordinal hidden" flex="5" />
+      </treecols>
+      <treechildren id="extensionsTreeChildren"/>
+    </tree>
+  </vbox>
+
+</overlay>

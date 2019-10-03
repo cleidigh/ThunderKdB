@@ -1,0 +1,29 @@
+﻿<h4>Mode</h4>
+<ul>
+    <li>"1" : the list contains 1 part :
+        <ul>
+            <li>'contains' : contacts &amp; lists whose fields contains X</li>
+        </ul>
+        With "mode" "1", it's better to set "Nb line max in each part" to 15-30.
+    </li>
+    <li>"2" : the list contains 3 parts :
+        <ul>
+            <li>'begin' :    contacts whose fields begin with X</li>
+            <li>'contains' : contacts whose fields contains X (except those in part 1)</li>
+            <li>'list' :     groups whose fields contains X</li>
+        </ul>
+        With mode "2", it's better to set "Nb line max in each part" to 5-10.<br/>
+    </li>
+    <li>"3" : the list contains 1 part for each AddressBook :
+        <ul>
+            <li>contacts &amp; lists whose fields contains X</li>
+        </ul>
+        With mode "3", it's better to set "Nb line max in each part" to 5-10.<br/>
+    </li>
+</ul>
+Searched fields are :
+<ul>
+<li>'PrimaryEmail', 'FirstName', 'LastName', 'NickName' for contacts</li>
+<li>fields is 'LastName' for list</li>
+</ul>
+On slow machines, it's better to choose "1".
