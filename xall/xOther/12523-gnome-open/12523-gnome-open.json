@@ -1,0 +1,226 @@
+{
+    "id": 12523,
+    "authors": [
+        {
+            "id": 3416547,
+            "name": "J. Arnds",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jelkoarnds/",
+            "username": "jelkoarnds",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/3/3416/3416547.png?modified=1343225753"
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 93848,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.1.*",
+                "min": "3.0a1pre"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gnome-open/versions/93848",
+        "files": [
+            {
+                "id": 78174,
+                "created": "2010-01-31T05:33:11Z",
+                "hash": "sha256:5668d389400daa0eb5094e5ebe2cc9fedb21439633e7ead9acf0c4ae9a2df050",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": null,
+                "size": 27648,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/78174/gnome_open-0.9.3.0-tb-bsd.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 78175,
+                "created": "2010-01-31T05:33:11Z",
+                "hash": "sha256:5668d389400daa0eb5094e5ebe2cc9fedb21439633e7ead9acf0c4ae9a2df050",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 27648,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/78175/gnome_open-0.9.3.0-tb-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 78176,
+                "created": "2010-01-31T05:33:11Z",
+                "hash": "sha256:5668d389400daa0eb5094e5ebe2cc9fedb21439633e7ead9acf0c4ae9a2df050",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": null,
+                "size": 27648,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/78176/gnome_open-0.9.3.0-tb-solaris.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 13,
+            "name": {
+                "el": "GNU General Public License, έκδοση 2.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 2.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 2.0",
+                "it": "Licenza GNU General Public License, versione 2.0",
+                "cs": "GNU General Public License, verze 2.0",
+                "eu": "GNU General Public License, 2.0 bertsioa",
+                "id": "GNU General Public License, versi 2.0",
+                "es": "Licencia pública GNU, versión 2.0",
+                "ru": "GNU General Public License, версия 2.0",
+                "nl": "GNU General Public License, versie 2.0",
+                "pl": "GNU General Public Licence, wersja 2.0",
+                "de": "GNU General Public License, Version 2.0",
+                "en-US": "GNU General Public License, version 2.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۲٫۰",
+                "ja": "GNU General Public License バージョン 2.0",
+                "pt-PT": "GNU General Public License, versão 2.0",
+                "zh-TW": "GNU General Public License，版本 2.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 2.0",
+                "ga-IE": "GNU General Public License, leagan 2.0",
+                "sk": "GNU General Public License, verzia 2.0",
+                "zh-CN": "GNU 通用公共授权，版本 2.0",
+                "uk": "GNU General Public License, версія 2.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+        },
+        "release_notes": {
+            "en-US": "Only for Thunderbird 3.0.* - 3.1.*"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gnome-open/versions/0.9.3.0",
+        "version": "0.9.3.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This addon provides an easy possibility for every GNOME user to open mail attachments with the default application.\n\"Gnome Open\" just redirects every attachment to GNOME/Nautilus and opens it via \"gnome-open\". To change the program being used just open your nautilus properties panel and set the app under \"open with\".\n\nHave fun!\n\nFor Thunderbird 1.5 - 2.0.*:  <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addons/versions/12523#version-0.9.1.5\">Gnome Open Version 0.9.1.5</a>"
+    },
+    "developer_comments": {
+        "en-US": "Thanks to RobertJ for supporting me with some code from \"MIME edit\".\n\nHey world,\nafter restarting my work on OpenX (formerly known as Gnome Open) today I came to a central question.\nIs OpenX still needed in Thunderbird/Firefox 3. I installed the latest version today and everything (filetype association) seemed fine.\nSo please report your experiences especially with the new version of Thunderbird. Is the \"problem\" now fixed out of the box? Is Thunderbird your files correctly/like nautilus? Are there some features future versions of OpenX should include?\nContact me via Launchpad (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/329c455f68dfafb35dbc50084217fa79271e0d506beed9d96ea8529ece54c336/http%3A//launchpad.net/openx%29\">http://launchpad.net/openx)</a>, on our blog (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/120fec6b880373428a919107b2f03133c27b291f9972662f58109cf47a71caad/http%3A//opencoding.wordpress.com/gnomeopen/\">http://opencoding.wordpress.com/gnomeopen/</a>) or on the Mozilla Thunderbird Addon page (<a rel=\"nofollow\" href=\"http://addons.mozilla.org/en-US/thunderbird/addon/12523/)\">http://addons.mozilla.org/en-US/thunderbird/addon/12523/)</a>.\n\nThanks for your help,\n\nwebstyler"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gnome-open/edit",
+    "guid": "gnomeopen@opencoding.wordpress.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://opencoding.wordpress.com/gnomeopen"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/12/12523-64.png?modified=1296206429",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/12/12523-32.png?modified=1296206429",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/12/12523-64.png?modified=1296206429"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2011-01-28T09:03:40Z",
+    "name": {
+        "en-US": "Gnome Open"
+    },
+    "previews": [
+        {
+            "id": 33502,
+            "caption": null,
+            "image_size": [
+                460,
+                369
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/33/33502.png?modified=1530208572",
+            "thumbnail_size": [
+                249,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/33/33502.png?modified=1530208572"
+        },
+        {
+            "id": 33503,
+            "caption": {
+                "en-US": "with Gnome Open"
+            },
+            "image_size": [
+                358,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/33/33503.png?modified=1530208572",
+            "thumbnail_size": [
+                136,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/33/33503.png?modified=1530208572"
+        },
+        {
+            "id": 33504,
+            "caption": {
+                "en-US": "without Gnome Open"
+            },
+            "image_size": [
+                358,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/33/33504.png?modified=1530208573",
+            "thumbnail_size": [
+                136,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/33/33504.png?modified=1530208573"
+        },
+        {
+            "id": 33505,
+            "caption": {
+                "en-US": "GNOME \"open with\" dialog"
+            },
+            "image_size": [
+                285,
+                326
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/33/33505.png?modified=1530208573",
+            "thumbnail_size": [
+                175,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/33/33505.png?modified=1530208573"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.59796,
+        "count": 17,
+        "average": 4.8235,
+        "text_count": 17
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gnome-open/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/12523",
+    "slug": "gnome-open",
+    "status": "public",
+    "summary": {
+        "en-US": "Open your mail attachments directly with your default gnome application.\nONLY for GNOME USERS!\n\nIs Gnome Open still needed? Please read \"Developer Comments\" below."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "attachment",
+        "file",
+        "gnome",
+        "gnomeopen",
+        "integration",
+        "linux",
+        "nautilus",
+        "ubuntu"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gnome-open/",
+    "weekly_downloads": 66
+}
