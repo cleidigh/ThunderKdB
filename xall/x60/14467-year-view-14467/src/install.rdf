@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:install-manifest">
+        <em:id>yearview@kirgroup.com</em:id>
+        <em:type>2</em:type>
+        <em:name>Year View</em:name>
+        <em:version>0.6.2</em:version>
+        <em:creator>Fabio Comuni</em:creator>
+        <em:translator>Eric Brosselin</em:translator>
+        <em:translator>Jens Maurer</em:translator>
+        <em:translator>Jose Baeza Noci</em:translator>
+        <em:translator>Mikael Hiort af Ornäs</em:translator>
+        <em:translator>Krzysztof Klimczak</em:translator>
+        <em:translator>DakSrbija</em:translator>
+        <em:translator>Joergen</em:translator>
+        <em:translator>gutierrez</em:translator>
+        <em:translator>Georgi D. Sotirov</em:translator>
+        <em:description>Year view for calendar</em:description>
+        <em:homepageURL>https://kirgroup.com/~yearview</em:homepageURL>
+        <em:iconURL>chrome://calendaryearview/skin/icon-32.png</em:iconURL>
+        <em:targetApplication>
+          <RDF:Description>
+            <!-- thunderbird-->
+            <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+            <em:minVersion>60.0</em:minVersion>
+            <em:maxVersion>60.*</em:maxVersion>
+          </RDF:Description>
+        </em:targetApplication>
+        <em:targetApplication> 
+          <RDF:Description>
+            <!-- seamonkey -->
+            <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+            <em:minVersion>2.57</em:minVersion>
+            <em:maxVersion>2.57.*</em:maxVersion>
+          </RDF:Description>
+        </em:targetApplication> -->
+        <em:localized>
+          <RDF:Description>
+            <em:locale>it-IT</em:locale>
+            <em:name>Year View</em:name>
+            <em:description>Vista annuale per il calendario</em:description>
+          </RDF:Description>
+        </em:localized>
+        <em:localized>
+            <RDF:Description>
+                <em:locale>es-ES</em:locale>
+                <em:name>Year View</em:name>
+                <em:description>Vista anual para el calendario</em:description>
+            </RDF:Description>
+        </em:localized>
+        <em:localized>
+            <RDF:Description>
+                <em:locale>fr-FR</em:locale>
+                <em:name>Year View</em:name>
+                <em:description>Vue annuelle pour le calendrier</em:description>
+            </RDF:Description>
+        </em:localized>
+        <em:localized>
+            <RDF:Description>
+                <em:locale>de-DE</em:locale>
+                <em:name>Year View</em:name>
+                <em:description>Erweitert den Kalender um eine Jahresansicht</em:description>
+            </RDF:Description>
+        </em:localized>
+        <em:localized>
+            <RDF:Description>
+                <em:locale>sv-SE</em:locale>
+                <em:name>Year View</em:name>
+                <em:description>Lägger till en årsvy för din kalender</em:description>
+            </RDF:Description>
+        </em:localized>
+        <em:localized>
+            <RDF:Description>
+                <em:locale>pl</em:locale>
+                <em:name>Year View</em:name>
+                <em:description>Widok roczny dla kalendarza</em:description>
+            </RDF:Description>
+        </em:localized>
+       <em:localized>
+            <RDF:Description>
+                <em:locale>pt-BR</em:locale>
+                <em:name>Year View</em:name>
+                <em:description>Visualizador de ano para calendário</em:description>
+            </RDF:Description>
+        </em:localized>
+       <em:localized>
+            <RDF:Description>
+                <em:locale>da</em:locale>
+                <em:name>Year View</em:name>
+                <em:description>Udvider kalenderen med en årsoversigt</em:description>
+            </RDF:Description>
+        </em:localized>
+        <em:localized>
+          <Description>
+            <em:locale>tr</em:locale>
+            <em:name>Yıl Görünümü</em:name>
+            <em:description>Takvimin Yıl Görünümü</em:description>
+            <em:creator>Fabio Comuni</em:creator>
+            <em:homepageURL>https://github.com/fabrixxm/Year-View</em:homepageURL>
+            <em:translator>Sinan Kaan Yerli</em:translator>
+          </Description>
+        </em:localized>
+       <em:localized>
+            <RDF:Description>
+                <em:locale>bg</em:locale>
+                <em:name>Годишен изглед</em:name>
+                <em:description>Годишен изглед за календар</em:description>
+            </RDF:Description>
+        </em:localized>
+  </RDF:Description>
+</RDF:RDF>

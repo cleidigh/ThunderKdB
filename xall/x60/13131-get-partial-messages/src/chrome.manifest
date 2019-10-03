@@ -1,0 +1,10 @@
+content getpartialmessages 				jar:chrome/getpartialmessages.jar!/content/
+locale	getpartialmessages	en-US		jar:chrome/getpartialmessages.jar!/locale/en-US/
+locale	getpartialmessages	de-DE		jar:chrome/getpartialmessages.jar!/locale/de-DE/
+skin	getpartialmessages	classic/1.0	jar:chrome/getpartialmessages.jar!/skin/
+
+overlay	chrome://messenger/content/messenger.xul							chrome://getpartialmessages/content/getpartialmessages.xul
+overlay chrome://messenger/content/mailWindowOverlay.xul      chrome://getpartialmessages/content/overlayForKey.xul
+
+style	chrome://global/content/customizeToolbar.xul						chrome://getpartialmessages/skin/getpartialmessages.css
+style	chrome://navigator/content/navigator.xul							chrome://getpartialmessages/skin/getpartialmessages.css

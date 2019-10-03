@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:extension:file:"
+                   em:package="content/"
+                   em:locale="locale/en-US" />
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="CloseTabOnEsc@david-winter.at"
+                   em:name="Close tab on ESC"
+                   em:version="0.0.8"
+                   em:creator="David Winter"
+                   em:description="Closes a Mozilla Thunderbird tab when pressing the ESC key">
+    <em:targetApplication RDF:resource="rdf:#$YqAuI2"/>
+    <em:optionsURL>chrome://closetabonesc/content/options.xul</em:optionsURL>
+  </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$YqAuI2"
+                   em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+                   em:minVersion="3.0"
+                   em:maxVersion="60.*" />
+</RDF:RDF>

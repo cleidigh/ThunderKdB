@@ -1,0 +1,28 @@
+#/************************************************************************/
+#/*                                                                      */
+#/*      Account Colors  -  Thunderbird Extension  -  Chrome Manifest    */
+#/*                                                                      */
+#/*      Manifest for chrome packages                                    */
+#/*                                                                      */
+#/*      Copyright (C) 2008-2012  by  DW-dev                             */
+#/*                                                                      */
+#/*      Last Edit  -  24 Jul 2012                                       */
+#/*                                                                      */
+#/************************************************************************/
+
+content accountcolors chrome/content/
+skin accountcolors classic/1.0 chrome/skin/
+overlay chrome://messenger/content/messenger.xul chrome://accountcolors/content/accountcolors-3panewindow-overlay.xul
+overlay chrome://messenger/content/messageWindow.xul chrome://accountcolors/content/accountcolors-messagewindow-overlay.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://accountcolors/content/accountcolors-composewindow-overlay.xul
+
+locale accountcolors de chrome/locale/de/
+locale accountcolors en-US chrome/locale/en-US/
+locale accountcolors es-ES chrome/locale/es-ES/
+locale accountcolors fi chrome/locale/fi/
+locale accountcolors fi-FI chrome/locale/fi-FI/
+locale accountcolors fr chrome/locale/fr/
+locale accountcolors it chrome/locale/it/
+locale accountcolors pt-BR chrome/locale/pt-BR/
+locale accountcolors sv-SE chrome/locale/sv-SE/
+locale accountcolors zh-CN chrome/locale/zh-CN/

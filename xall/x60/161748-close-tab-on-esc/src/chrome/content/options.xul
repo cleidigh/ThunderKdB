@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+ 
+<prefwindow id="closetabonesc-prefs"
+     title="Close Tab on Esc Options"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ 
+<prefpane id="closetabonesc-pane" label="Settings">
+  <preferences>
+    <preference id="pref_gotofirsttab" name="extensions.CloseTabOnEsc@david-winter.at.gotofirsttab" type="bool"/>
+	<preference id="pref_onlymessagetabs" name="extensions.CloseTabOnEsc@david-winter.at.onlymessagetabs" type="bool"/>
+	<preference id="pref_closetabsonexit" name="extensions.CloseTabOnEsc@david-winter.at.closetabsonexit" type="bool"/>
+  </preferences>
+ 
+  <vbox align="left">
+    <hbox>
+      <checkbox preference="pref_gotofirsttab" id="gotofirsttab" />
+	  <label control="gotofirsttab" value="Go back to first tab after close"/>
+	</hbox>
+    
+	<hbox>
+	  <checkbox preference="pref_onlymessagetabs" id="onlymessagetabs" />
+	  <label control="onlymessagetabs" value="Only apply to message tabs"/>
+	</hbox>
+    
+	<hbox>
+	  <checkbox preference="pref_closetabsonexit" id="closetabsonexit" />
+	  <label control="closetabsonexit" value="Close message tabs when closing Thunderbird"/>
+	</hbox>
+  </vbox>
+</prefpane>
+ 
+</prefwindow>

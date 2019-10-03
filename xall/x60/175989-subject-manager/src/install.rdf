@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	 xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+<Description about="urn:mozilla:install-manifest">
+
+	<em:id>SubjectManager@gmail.com</em:id>
+	<em:name>Subject Manager</em:name>
+	<em:version>1.2.0</em:version>
+	<em:type>2</em:type>
+	<em:description>Manages subject for email</em:description>
+	<em:creator>Subject Manager Developing Team</em:creator>
+
+	<!-- optional items -->
+	<em:developer>TrV</em:developer>
+	<em:contributor>Fly (concept, beta testing)</em:contributor>
+	<em:contributor>Vinser (beta testing, features upgrade)</em:contributor>
+	<em:translator>Vinser (ru-RU)</em:translator>
+	<em:translator>Mikael Hiort af Ornäs (sv-SE)</em:translator>
+	<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/subject-manager/</em:homepageURL>
+	<em:optionsURL>chrome://SubjectManager/content/options.xul</em:optionsURL>
+	<em:iconURL>chrome://SubjectManager/skin/icon.png</em:iconURL>
+
+	<!-- Thunderbird -->
+	<em:targetApplication>
+		<Description>
+			<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+			<em:minVersion>3.0a1pre</em:minVersion>
+			<em:maxVersion>60.*</em:maxVersion>
+		</Description>
+	</em:targetApplication>
+
+</Description>
+
+</RDF>

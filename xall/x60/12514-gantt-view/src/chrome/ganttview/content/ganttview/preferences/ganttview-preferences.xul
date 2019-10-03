@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is Mozilla Calendar Preferences
+   -
+   - The Initial Developer of the Original Code is
+   - Mike Potter
+   - Portions created by the Initial Developer are Copyright (C) 2002
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Mike Potter <mikep@oeone.com>
+   -   ArentJan Banck <ajbanck@planet.nl>
+   -   Eric Belhaire <belhaire@ief.u-psud.fr>
+   -   Matthew Willis <mattwillis@gmail.com>
+   -   Cedric Corazza <cedric.corazza@wanadoo.fr>
+   -   Stefan Sitter <ssitter@googlemail.com>
+   -
+   - GanttView code  is based on various versions of Sunbird/Lighning views 
+   - from  0.2 to present. Please contact me  if I have omitted or mistakenly
+   - included a contributor.  
+   -	Joe Brochu <ganttview@gmail.com>
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<!--<?xml-stylesheet href="chrome://mozapps/content/preferences/preferences.css"?>-->
+<!--?xml-stylesheet href="chrome://ganttview/skin/preferences/ganttview-preferences.css"?-->
+
+<!DOCTYPE prefwindow [
+  <!ENTITY % GanttView.prefsDTD SYSTEM "chrome://ganttview/locale/preferences/ganttview-preferences.dtd">
+  <!ENTITY % globalDTD SYSTEM "chrome://calendar/locale/global.dtd">
+  %GanttView.prefsDTD;
+  %globalDTD;
+]>
+
+
+<prefwindow id="GanttView-Preferences"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+						title="&GanttView.prefpanetitle;"
+						windowtype="GanttView:Preferences"
+            >
+  <!--windowtype="Ganttview:Preferences"-->
+  <prefpane id="GanttView-DateRangeGroupbox" label="&GanttView.pref.daterange.caption;"
+            orient="vertical" flex="1">
+    <preferences>
+      <preference id="GanttView-weeks.inview"
+                  name="extensions.GanttView.weeks.inview"
+                  type="int"/>
+      <preference id="GanttView-previousweeks.inview"
+                  name="extensions.GanttView.previousweeks.inview"
+                  type="int" />
+    </preferences>
+    <hbox align="center" >
+      <label value="&GanttView.pref.numberofweeks.label;"
+             accesskey="&GanttView.pref.numberofweeks.accesskey;"
+             control="GanttView-TotalWeeks"
+             wrap="true"/>
+      <menulist id="GanttView-TotalWeeks"
+                preference="GanttView-weeks.inview">
+        <menupopup>
+          <menuitem label="&GanttView.pref.numberofweeks.5;" value="5"/>
+          <menuitem label="&GanttView.pref.numberofweeks.13;" value="13"/>
+          <menuitem label="&GanttView.pref.numberofweeks.26;" value="26"/>
+          <menuitem label="&GanttView.pref.numberofweeks.39;" value="39"/>
+          <menuitem label="&GanttView.pref.numberofweeks.52;" value="52"/>
+          <menuitem label="&GanttView.pref.numberofweeks.78;" value="78"/>
+          <menuitem label="&GanttView.pref.numberofweeks.104;" value="104"/>
+        </menupopup>
+      </menulist>
+    </hbox>
+    <hbox align="start">
+      <description flex="1"  wrap="true">
+        &GanttView.pref.numberofweeksnote.description;
+      </description>
+    </hbox>
+    <hbox align="center" id="GanttView-PreviousWeeksBox">
+      <label value="&GanttView.pref.numberofpreviousweeks.label;"
+             accesskey="&GanttView.pref.numberofpreviousweeks.accesskey;"
+             control="GanttView-PreviousWeeks"/>
+      <menulist id="GanttView-PreviousWeeks"
+                preference="GanttView-previousweeks.inview">
+        <menupopup>
+          <menuitem label="&GanttView.pref.numberofweeks.0;" value="0"/>
+          <menuitem label="&GanttView.pref.numberofweeks.1;" value="1"/>
+          <menuitem label="&GanttView.pref.numberofweeks.2;" value="2"/>
+        </menupopup>
+      </menulist>
+    </hbox>
+  </prefpane>
+  
+  <prefpane id="GanttView-autoscrolltabpanel" orient="vertical"  flex="1" label="&GanttView.pref.autoscroll.caption;">
+    <preferences>
+      <preference id="GanttView-autoscroll.threshold"
+                  name="extensions.GanttView.autoscroll.threshold"
+                  type="int"/>
+      <preference id="GanttView-autoscroll.speed"
+                  name="extensions.GanttView.autoscroll.speed"
+                  type="int"/>
+    </preferences>
+    <hbox align="start" >
+      <description flex="1"   wrap="true" indent="true">
+        &GanttView.pref.autoscroll.description;
+      </description>
+    </hbox>
+    <hbox align="center">
+      <label value="&GanttView.pref.autoscrollspeed.label;"
+             accesskey="&GanttView.pref.autoscrollspeed.accesskey;"
+             control="GanttView-autoscrollspeed"/>
+      <menulist id="GanttView-autoscrollspeed"
+                preference="GanttView-autoscroll.speed">
+        <menupopup>
+          <menuitem label="&GanttView.pref.autoscrollspeed.1;" value="25"/>
+          <menuitem label="&GanttView.pref.autoscrollspeed.2;" value="50"/>
+          <menuitem label="&GanttView.pref.autoscrollspeed.3;" value="75"/>
+          <menuitem label="&GanttView.pref.autoscrollspeed.4;" value="100"/>
+          <menuitem label="&GanttView.pref.autoscrollspeed.5;" value="150"/>
+          <menuitem label="&GanttView.pref.autoscrollspeed.6;" value="200"/>
+          <menuitem label="&GanttView.pref.autoscrollspeed.7;" value="300"/>
+        </menupopup>
+      </menulist>
+    </hbox>
+    <hbox  align="center">
+      <label value="&GanttView.pref.autoscrollthreshold.label;"
+         accesskey="&GanttView.pref.autoscrollthreshold.accesskey;"
+         control="GanttView-autoscrollthreshold"/>
+      <menulist id="GanttView-autoscrollthreshold"
+                preference="GanttView-autoscroll.threshold">
+        <menupopup>
+          <menuitem label="&GanttView.pref.autoscrollthreshold.0;" value="0"/>
+          <menuitem label="&GanttView.pref.autoscrollthreshold.1;" value="2"/>
+          <menuitem label="&GanttView.pref.autoscrollthreshold.2;" value="5"/>
+          <menuitem label="&GanttView.pref.autoscrollthreshold.3;" value="10"/>
+          <menuitem label="&GanttView.pref.autoscrollthreshold.4;" value="15"/>
+          <menuitem label="&GanttView.pref.autoscrollthreshold.5;" value="20"/>
+          <menuitem label="&GanttView.pref.autoscrollthreshold.6;" value="25"/>
+        </menupopup>
+      </menulist>
+    </hbox>
+  </prefpane>
+  <prefpane id="GanttView-misctabpanel" orient="vertical"  flex="1" label="&GanttView.pref.misc.caption;">
+    <preferences>
+      <preference id="GanttView-items.showprogressbars"
+                  name="extensions.GanttView.items.showprogressbars"
+                  type="bool"/>
+      <preference id="GanttView-items.groupbycalendar"
+                  name="extensions.GanttView.items.groupbycalendar"
+                  type="bool"/>
+      <preference id="GanttView-items.titleordinaloverride"
+                  name="extensions.GanttView.items.titleordinaloverride"
+                  type="bool"/>
+      <preference id="GanttView-selection.partial"
+                  name="extensions.GanttView.selection.partial"
+                  type="bool"/>
+    </preferences>
+    <hbox align="center" id="GanttView-showprogressbarsBox">
+      <checkbox id="GanttView-showprogressbars"
+                class="dayOffCheckbox"
+                label="&GanttView.pref.showprogressbars.label;"
+                accesskey="&GanttView.pref.showprogressbars.accesskey;"
+                preference="GanttView-items.showprogressbars"/>
+    </hbox>
+    <hbox align="center" id="GanttView-groupbycalendarbox">
+      <checkbox id="GanttView-groupbycalendar"
+                class="dayOffCheckbox"
+                label="&GanttView.pref.groupbycalendar.label;"
+                accesskey="&GanttView.pref.groupbycalendar.accesskey;"
+                preference="GanttView-items.groupbycalendar"/>
+    </hbox>
+    <hbox align="start" >
+      <description flex="1"   wrap="true">
+        &GanttView.pref.titleordinaloverride.description;
+      </description>
+    </hbox>
+    <hbox align="center" id="GanttView-titleordinaloverridebox">
+      <checkbox id="GanttView-titleordinaloverride"
+                class="dayOffCheckbox"
+                label="&GanttView.pref.titleordinaloverride.label;"
+                accesskey="&GanttView.pref.titleordinaloverride.accesskey;"
+                preference="GanttView-items.titleordinaloverride"/>
+    </hbox>
+    <groupbox id="GanttView-PartialSelectionGroupbox" >
+      <caption label="&GanttView.pref.partialselection.caption;"/>
+      <radiogroup preference="GanttView-selection.partial">
+        <radio id="GanttView-partialselection"
+                  label="&GanttView.pref.partialselection.label;"
+                  accesskey="&GanttView.pref.partialselection.accesskey;"
+                  value="true"
+		                          />
+        <radio id="GanttView-enclosedselection"
+                  label="&GanttView.pref.enclosedselection.label;"
+                  accesskey="&GanttView.pref.enclosedselection.accesskey;"
+                  value="false"
+		                          />
+      </radiogroup>
+    </groupbox>
+  </prefpane>
+  <script type="application/javascript" src="resource://ganttview/ganttview.jsm"/>
+  <script type="application/javascript"
+          src="chrome://ganttview/content/preferences/ganttview-preferences.js"/>
+  <!--<script type="application/javascript">
+    <![CDATA[
+        window.addEventListener("DOMContentLoaded", function (event) {
+            // Initialize size
+            document.documentElement.style.maxWidth = ((screen.availWidth || screen.width) - 100) + "px";
+            document.documentElement.style.maxHeight = ((screen.availHeight || screen.height) - 100) + "px";
+            
+            sizeToContent();
+            var vbox = document.getElementById('tabbox');
+            vbox.height = vbox.boxObject.height;
+            vbox.width = vbox.boxObject.width;
+            sizeToContent();
+        
+        }, false);
+        
+        ]]>
+  </script>-->
+
+</prefwindow>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<RDF	xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+<Description about="urn:mozilla:install-manifest">
+
+	<em:id>AutoResizeImage@gmail.com</em:id>
+	<em:name>Auto Resize Image</em:name>
+	<em:version>1.1.0</em:version>
+	<em:type>2</em:type>
+	<em:description>Image resizer (JPEG, PNG, BMP, GIF)</em:description>
+	<em:creator>Auto Resize Image Developing Team</em:creator>
+
+	<!-- optional items -->
+	<em:developer>TrV</em:developer>
+	<em:developer>Alexander Schmitt (creator of Auto Resize JPEG)</em:developer>
+	<em:contributor>Rosaroter Panther (beta testing, advices, support)</em:contributor>
+	<em:contributor>John S. (beta testing, support)</em:contributor>
+	<em:translator>Mikael Hiort af Ornäs (sv-SE)</em:translator>
+	<em:translator>Sveinn í Felli (is-IS)</em:translator>
+	<em:translator>Arnold Groot (nl-NL)</em:translator>
+	<em:translator>Rosaroter Panther &#38; just4fun73de (de-DE)</em:translator>
+	<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/auto-resize-image/</em:homepageURL>
+	<em:optionsURL>chrome://AutoResizeImage/content/options.xul</em:optionsURL>
+	<em:iconURL>chrome://AutoResizeImage/skin/icon.png</em:iconURL>
+
+	<!-- Thunderbird -->
+	<em:targetApplication>
+		<Description>
+			<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+			<em:minVersion>3.3a1pre</em:minVersion>
+			<em:maxVersion>60.*</em:maxVersion>
+		</Description>
+	</em:targetApplication>
+
+</Description>
+
+</RDF>

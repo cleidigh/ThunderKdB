@@ -1,0 +1,31 @@
+content maxmsgpane jar:chrome/maxmsgpane.jar!/content/maxmsgpane/
+
+overlay	chrome://messenger/content/messenger.xul	chrome://maxmsgpane/content/maxmsgpane.xul
+overlay	chrome://messenger/content/msgHdrViewOverlay.xul chrome://maxmsgpane/content/maxmsgpane_hdr.xul
+
+locale maxmsgpane da jar:chrome/maxmsgpane.jar!/locale/da/maxmsgpane/
+locale maxmsgpane de jar:chrome/maxmsgpane.jar!/locale/de/maxmsgpane/
+locale maxmsgpane en-US jar:chrome/maxmsgpane.jar!/locale/en-US/maxmsgpane/
+locale maxmsgpane es-ES jar:chrome/maxmsgpane.jar!/locale/es-ES/maxmsgpane/
+locale maxmsgpane fr jar:chrome/maxmsgpane.jar!/locale/fr/maxmsgpane/
+locale maxmsgpane hu-HU jar:chrome/maxmsgpane.jar!/locale/hu-HU/maxmsgpane/
+locale maxmsgpane it jar:chrome/maxmsgpane.jar!/locale/it/maxmsgpane/
+locale maxmsgpane ja-JP jar:chrome/maxmsgpane.jar!/locale/ja-JP/maxmsgpane/
+locale maxmsgpane nb-NO jar:chrome/maxmsgpane.jar!/locale/nb-NO/maxmsgpane/
+locale maxmsgpane nl jar:chrome/maxmsgpane.jar!/locale/nl/maxmsgpane/
+locale maxmsgpane pl jar:chrome/maxmsgpane.jar!/locale/pl/maxmsgpane/
+locale maxmsgpane pt-BR jar:chrome/maxmsgpane.jar!/locale/pt-BR/maxmsgpane/
+locale maxmsgpane ru-RU jar:chrome/maxmsgpane.jar!/locale/ru-RU/maxmsgpane/
+locale maxmsgpane sk-SK jar:chrome/maxmsgpane.jar!/locale/sk-SK/maxmsgpane/
+locale maxmsgpane sv-SE jar:chrome/maxmsgpane.jar!/locale/sv-SE/maxmsgpane/
+locale maxmsgpane tr-TR jar:chrome/maxmsgpane.jar!/locale/tr-TR/maxmsgpane/
+locale maxmsgpane uk-UA jar:chrome/maxmsgpane.jar!/locale/uk-UA/maxmsgpane/
+locale maxmsgpane zh-CN jar:chrome/maxmsgpane.jar!/locale/zh-CN/maxmsgpane/
+locale maxmsgpane zh-TW jar:chrome/maxmsgpane.jar!/locale/zh-TW/maxmsgpane/
+
+skin	maxmsgpane	classic/1.0	jar:chrome/maxmsgpane.jar!/skin/classic/maxmsgpane/
+
+style chrome://messenger/content/customizeToolbar.xul chrome://maxmsgpane/skin/maxmsgpane.css
+style chrome://messenger/content/messenger.xul chrome://maxmsgpane/skin/maxmsgpane.css
+style chrome://messenger/content/msgHdrViewOverlay.xul chrome://maxmsgpane/skin/maxmsgpane.css
+

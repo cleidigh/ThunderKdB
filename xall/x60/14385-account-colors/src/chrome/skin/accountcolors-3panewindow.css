@@ -1,0 +1,212 @@
+/************************************************************************/
+/*                                                                      */
+/*      Account Colors  -  Thunderbird Extension  -  3Pane Window       */
+/*                                                                      */
+/*      CSS for 3Pane Window overlay                                    */
+/*                                                                      */
+/*      Copyright (C) 2008-2018  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  16 Nov 2018                                       */
+/*                                                                      */
+/************************************************************************/
+
+/************************************************************************/
+/*                                                                      */
+/* Notes on CSS Specificity:                                            */
+/*                                                                      */
+/*  - The specificity of a CSS rule is not affected by the number of    */
+/*    properties (in round brackets) after the treechildren element.    */
+/*                                                                      */
+/*  - If two or more rules have equal specificity, then the last rule   */
+/*    defined takes priority, irrespective of the number of properties. */
+/*                                                                      */
+/************************************************************************/
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - Account Name Font Styles */
+
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-normal)     { font-style: normal; font-weight:normal; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-italic)     { font-style: italic; font-weight:normal; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-bold)       { font-style: normal; font-weight:bold; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-bolditalic) { font-style: italic; font-weight:bold; }
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - Account Name Font Sizes */
+
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-10) { font-size: 10px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-11) { font-size: 11px; margin-top: -1px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-12) { font-size: 12px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-13) { font-size: 13px; margin-top: -1px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-14) { font-size: 14px; margin-top: -2px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-15) { font-size: 15px; margin-top: -3px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-16) { font-size: 16px; margin-top: -4px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-17) { font-size: 17px; margin-top: -5px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-18) { font-size: 18px; margin-top: -7px; }
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - Account Name Font Sizes (with increase row spacing) */
+
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-10-is) { font-size: 10px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-11-is) { font-size: 11px; margin-top: -1px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-12-is) { font-size: 12px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-13-is) { font-size: 13px; margin-top: -1px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-14-is) { font-size: 14px; margin-top: -2px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-15-is) { font-size: 15px; margin-top: -3px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-16-is) { font-size: 16px; margin-top: -3px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-17-is) { font-size: 17px; margin-top: -4px; }
+#folderTree treechildren::-moz-tree-cell-text(ac-fs-18-is) { font-size: 18px; margin-top: -4px; }
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - No Bold on Unread Messages in Folders */
+
+#folderTree treechildren::-moz-tree-cell-text(ac-noboldunread,hasUnreadMessages-true) { font-weight: normal; }
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - Bold on New Mail in Accounts/Inboxes */
+
+#folderTree[ac-boldnewmail] treechildren::-moz-tree-cell-text(folderNameCol,biffState-NewMail,isServer-true) { font-weight: bold; }
+#folderTree[ac-boldnewmail] treechildren::-moz-tree-cell-text(folderNameCol,newMessages-true) { font-weight: bold; }
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - Underline on New Mail in Accounts/Inboxes */
+
+#folderTree[ac-undernewmail] treechildren::-moz-tree-cell-text(folderNameCol,biffState-NewMail,isServer-true) { text-decoration: underline; }
+#folderTree[ac-undernewmail] treechildren::-moz-tree-cell-text(folderNameCol,newMessages-true) { text-decoration: underline; }
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - Show Tree Lines */
+
+#folderTree treechildren::-moz-tree-line(ac-showlines) { visibility: visible; }
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - Darker Select Bar */
+
+#folderTree treechildren::-moz-tree-row(ac-darkerbar,selected,not-focused) { background-color: #D0D0D0; }
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - Increase Row Spacing */
+
+#folderTree[ac-is="10"] treechildren::-moz-tree-row { height: 18px; }
+#folderTree[ac-is="11"] treechildren::-moz-tree-row { height: 18px; }
+#folderTree[ac-is="12"] treechildren::-moz-tree-row { height: 18px; }
+#folderTree[ac-is="13"] treechildren::-moz-tree-row { height: 18px; }
+#folderTree[ac-is="14"] treechildren::-moz-tree-row { height: 18px; }
+#folderTree[ac-is="15"] treechildren::-moz-tree-row { height: 20px; }
+#folderTree[ac-is="16"] treechildren::-moz-tree-row { height: 22px; }
+#folderTree[ac-is="17"] treechildren::-moz-tree-row { height: 22px; }
+#folderTree[ac-is="18"] treechildren::-moz-tree-row { height: 24px; }
+
+/**********************************************************************************************************************/
+
+/* Folder Pane - Reinstate default hover and select styles */
+
+#folderTree[ac-hoverselect] treechildren::-moz-tree-row(selected) { background-color: #CDE8FF; outline: 1px solid #7BC3FF; outline-offset: -1px; }
+#folderTree[ac-hoverselect] treechildren::-moz-tree-cell-text(selected) { color: black; }
+
+#folderTree[ac-hoverselect] treechildren::-moz-tree-row(hover,not-selected) { background-color: #E5F3FF; outline: 1px solid #C1E3FF; outline-offset: -1px; }
+#folderTree[ac-hoverselect] treechildren::-moz-tree-cell-text(hover,not-selected) { color: black; }
+
+/**********************************************************************************************************************/
+
+/* Thread Pane - Subject & From Font Styles */
+
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-normal)     { font-style: normal; font-weight: normal; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-italic)     { font-style: italic; font-weight: normal; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-bold)       { font-style: normal; font-weight: bold; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-bolditalic) { font-style: italic; font-weight: bold; }
+
+/**********************************************************************************************************************/
+
+/* Thread Pane - Subject & From Font Sizes */
+
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-10) { font-size: 10px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-11) { font-size: 11px; margin-top: -1px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-12) { font-size: 12px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-13) { font-size: 13px; margin-top: -1px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-14) { font-size: 14px; margin-top: -2px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-15) { font-size: 15px; margin-top: -3px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-16) { font-size: 16px; margin-top: -4px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-17) { font-size: 17px; margin-top: -5px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-18) { font-size: 18px; margin-top: -7px; }
+
+/**********************************************************************************************************************/
+
+/* Thread Pane - Subject & From Font Sizes (with increase row spacing) */
+
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-10-is) { font-size: 10px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-11-is) { font-size: 11px; margin-top: -1px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-12-is) { font-size: 12px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-13-is) { font-size: 13px; margin-top: -1px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-14-is) { font-size: 14px; margin-top: -2px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-15-is) { font-size: 15px; margin-top: -3px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-16-is) { font-size: 16px; margin-top: -3px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-17-is) { font-size: 17px; margin-top: -4px; }
+#threadTree treechildren::-moz-tree-cell-text(ac-fs-18-is) { font-size: 18px; margin-top: -4px; }
+
+/**********************************************************************************************************************/
+
+/* Thread Pane - Bold Subject and/or Bold From */
+
+/* reinstate bold on subject and/or from for unread messages (as per normal Thunderbird), after applying Font Style to subject and/or from */
+
+#threadTree treechildren::-moz-tree-cell-text(subjectCol,unread) { font-weight: bold; }
+#threadTree treechildren::-moz-tree-cell-text(senderCol,unread) { font-weight: bold; }
+
+/* apply bold on subject and/or from for unread messages, and apply normal weight to all other fields */
+
+#threadTree[ac-boldsubjectfrom] treechildren::-moz-tree-cell-text(unread) { font-weight: normal; }
+#threadTree[ac-boldsubjectfrom] treechildren::-moz-tree-cell-text(ac-boldsubject,unread) { font-weight: bold; }
+#threadTree[ac-boldsubjectfrom] treechildren::-moz-tree-cell-text(ac-boldfrom,unread) { font-weight: bold; }
+
+/* re-apply bold or bold italic Font Style on subject and/or from, after applying normal weight to all other fields */
+
+#threadTree[ac-boldsubjectfrom] treechildren::-moz-tree-cell-text(ac-fs-bold,unread) { font-weight: bold; }
+#threadTree[ac-boldsubjectfrom] treechildren::-moz-tree-cell-text(ac-fs-bolditalic,unread) { font-weight: bold; }
+
+/**********************************************************************************************************************/
+
+/* Thread Pane - Show Row Stripes */
+
+#threadTree treechildren::-moz-tree-row(odd,not-selected,not-hover) { background-image: none; }
+#threadTree treechildren::-moz-tree-row(ac-showstripes,odd,not-selected,not-hover) { background-image: url("chrome://messenger/skin/icons/row.png") !important; background-repeat: repeat-x; background-position: bottom; }
+
+/**********************************************************************************************************************/
+
+/* Thread Pane - Darker Select Bar */
+
+#threadTree treechildren::-moz-tree-row(ac-darkerbar,selected,not-focused) { background-color: #D0D0D0;  background-image: none; }
+
+/**********************************************************************************************************************/
+
+/* Thread Pane - Increase Row Spacing */
+
+#threadTree[ac-is="10"] treechildren::-moz-tree-row { height: 18px; }
+#threadTree[ac-is="11"] treechildren::-moz-tree-row { height: 18px; }
+#threadTree[ac-is="12"] treechildren::-moz-tree-row { height: 18px; }
+#threadTree[ac-is="13"] treechildren::-moz-tree-row { height: 18px; }
+#threadTree[ac-is="14"] treechildren::-moz-tree-row { height: 18px; }
+#threadTree[ac-is="15"] treechildren::-moz-tree-row { height: 20px; }
+#threadTree[ac-is="16"] treechildren::-moz-tree-row { height: 22px; }
+#threadTree[ac-is="17"] treechildren::-moz-tree-row { height: 22px; }
+#threadTree[ac-is="18"] treechildren::-moz-tree-row { height: 24px; }
+
+/**********************************************************************************************************************/
+
+/* Thread Pane - Reinstate default hover and select styles */
+
+#threadTree[ac-hoverselect] treechildren::-moz-tree-row(selected) { background-color: #CDE8FF; outline: 1px solid #7BC3FF; outline-offset: -1px; }
+#threadTree[ac-hoverselect] treechildren::-moz-tree-cell-text(selected) { color: black; }
+
+#threadTree[ac-hoverselect] treechildren::-moz-tree-row(hover,not-selected) { background-color: #E5F3FF; outline: 1px solid #C1E3FF;  outline-offset: -1px; }
+#threadTree[ac-hoverselect] treechildren::-moz-tree-cell-text(hover,not-selected) { color: black; }
+
+/**********************************************************************************************************************/

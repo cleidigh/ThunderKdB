@@ -1,0 +1,3256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   - ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is calendar views.
+   -
+   - The Initial Developer of the Original Code is
+   -   Oracle Corporation
+   - Portions created by the Initial Developer are Copyright (C) 2005
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Vladimir Vukicevic <vladimir.vukicevic@oracle.com>
+   -   Thomas Benisch <thomas.benisch@sun.com>
+   -   Dan Mosedale <dan.mosedale@oracle.com>
+   -   Michael Buettner <michael.buettner@sun.com>
+   -   Philipp Kewisch <mozilla@kewis.ch>
+   -   Markus Adrario <MarkusAdrario@web.de>
+   -   Berend Cornelius <berend.cornelius@sun.com>
+   -
+   - GanttView code is based on various versions of Sunbird/Lighning views 
+   - from  0.2 to present. Please contact me if I have omitted or mistakenly
+   - included a contributor.  
+   -	Joe Brochu <ganttview@gmail.com>
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the GPL or the LGPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK *****
+-->
+
+<!-- Note that this file depends on helper functions in calUtils.js-->
+
+<!-- DTD File with all strings specific to the calendar -->
+<!DOCTYPE overlay 
+ [
+  <!ENTITY % dtd1 SYSTEM "chrome://calendar/locale/global.dtd">
+  %dtd1;
+  <!ENTITY % dtd2 SYSTEM "chrome://calendar/locale/calendar.dtd">
+  %dtd2;
+  <!ENTITY % GanttView.mainDTD SYSTEM "chrome://ganttview/locale/ganttview.dtd">
+  %GanttView.mainDTD;
+]>
+
+<bindings id="GanttView-bindings"
+ xmlns="http://www.mozilla.org/xbl"
+ xmlns:html="http://www.w3.org/1999/xhtml"
+ xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+ xmlns:xbl="http://www.mozilla.org/xbl">
+  <binding id="GanttView-view" extends="chrome://calendar/content/calendar-base-view.xml#calendar-base-view">
+    <content>
+      <xul:box flex="1">
+        <!-- must set flex=1 -->
+        <xul:stack anonid="GanttView-content-stack" flex="1" class="GanttView-overflow-hidden" overflowhidden="xy">
+          <xul:hbox anonid="GanttView-content-box" flex="1">
+            <!-- must set flex=1 for v scrollbar-->
+
+            <xul:vbox anonid="GanttView-item-titles-holder" >
+              <xul:hbox>
+                <xul:spacer  class="GanttView-day-header-class" topborder="true" flex="1"/>
+                <xul:vbox anonid="GanttView-item-title-spacer-left" >
+                  <xul:vbox class="GanttView-day-header-class" topborder="true" align="end" >
+                    <xul:label class="GanttView-header-date-label-text" value="&GanttView.header.label.month;" />
+                  </xul:vbox>
+                  <xul:vbox class="GanttView-day-header-class" align="end">
+                    <xul:label class="GanttView-header-date-label-text" value="&GanttView.header.label.week;"/>
+                  </xul:vbox>
+                  <xul:vbox class="GanttView-day-header-class" align="end">
+                    <xul:label class="GanttView-header-date-label-text" value="&GanttView.header.label.day;"/>
+                    <xul:label class="GanttView-header-date-label-text" value="&GanttView.header.label.date;"/>
+                  </xul:vbox>
+                </xul:vbox>
+              </xul:hbox>
+              <xul:scrollbox anonid="GanttView-item-headers-scrollbox" id="GanttView-item-headers-scrollbox" orient="vertical" flex="1" class="GanttView-overflow-hidden" overflowhidden="y">
+                <!--must set flex="1" -->
+                <xul:vbox anonid="GanttView-item-headers-box" id="GanttView-item-headers-box"  flex="1"/>
+                <xul:spacer flex="1"/>
+                <xul:vbox anonid="GanttView-item-headers-scrollbar-spacer" class="GanttView-spacer" topborder="true">
+                  <xul:scrollbar anonid="GanttView-item-headers-scrollbar" orient="horizontal" style="opacity:0;"/>
+                </xul:vbox>
+              </xul:scrollbox>
+            </xul:vbox>
+
+            <!-- /xul:hbox -->
+
+
+            <xul:splitter anonid="GanttView-item-title-splitter" collapse="before" resizebefore="closest" resizeafter="closest">
+              <xul:grippy state="open"/>
+            </xul:splitter>
+
+            <!-- Days-Items Pane-->
+            <xul:vbox anonid="GanttView-days-items-box" flex="1">
+              <!-- must set flex=1 -->
+              <xul:hbox>
+                <xul:scrollbox anonid="GanttView-day-header-box" class="GanttView-overflow-hidden" flex="1">
+                  <!-- must set flex=1 -->
+                  <!-- left="0" top="0"  class="GanttView-pancursor"-->
+                  <xul:vbox>
+                    <xul:hbox anonid="GanttView-month-headers-box">
+                    </xul:hbox>
+                    <xul:hbox anonid="GanttView-week-headers-box">
+                    </xul:hbox>
+                    <xul:vbox>
+                      <xul:grid anonid="GanttView-day-header-grid">
+                        <xul:columns anonid="GanttView-day-header-columns" equalsize="always">
+                          <children includes="GanttView-day-header-column"/>
+                        </xul:columns>
+                        <xul:rows anonid="GanttView-day-header-rows" equalsize="always">
+                          <xul:row anonid="GanttView-header-row-day-name"/>
+                          <xul:row anonid="GanttView-header-row-date"/>
+                        </xul:rows>
+                      </xul:grid>
+                      <xul:spacer flex="1"/>
+                    </xul:vbox>
+                  </xul:vbox>
+                  <xul:hbox anonid="GanttView-day-headers-scrollbar-spacer" class="GanttView-spacer" topborder="true">
+                    <xul:scrollbar anonid="GanttView-day-headers-scrollbar" orient="vertical" style="opacity:0;"/>
+                  </xul:hbox>
+                </xul:scrollbox>
+
+
+              </xul:hbox>
+
+              <!-- Main Grid -->
+              <xul:scrollbox anonid="GanttView-items-grid-scrollbox" id="GanttView-items-grid-scrollbox" class="GanttView-overflow-scroll" flex="1" orient="vertical">
+                <xul:stack anonid="GanttView-items-stack">
+                  <xul:grid anonid="GanttView-items-grid" top="0">
+                    <xul:columns anonid="GanttView-day-columns" equalsize="always">
+                    </xul:columns>
+                    <xul:rows anonid="GanttView-item-rows">
+                    </xul:rows>
+                  </xul:grid>
+                </xul:stack>
+
+              </xul:scrollbox>
+
+            </xul:vbox>
+
+          </xul:hbox>
+        </xul:stack>
+      </xul:box>
+    </content>
+    <implementation implements="calICalendarView">
+      <!-- constructor -->
+      <constructor>
+        <![CDATA[
+          ChromeUtils.import("resource://gre/modules/Services.jsm");
+          ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+          ChromeUtils.import("resource://gre/modules/Preferences.jsm");
+          ChromeUtils.import("resource:///modules/gloda/log4moz.js");
+          
+            // add a preference observer to monitor changes
+            
+             Services.prefs.addObserver("extensions.GanttView.", this.mPrefObserver);
+            
+            //let ganttViewpb2 = Components.classes["@mozilla.org/preferences-service;1"].
+            
+            //getService(Components.interfaces.nsIPrefBranch);
+
+            //ganttViewpb2.addObserver("extensions.GanttView.", this.mPrefObserver, false);
+
+            // Set the preference for the default start of the week
+            this.weekStartOffset = Preferences.get("calendar.week.start", 0);	
+            this.daysInView =  Preferences.get("extensions.GanttView.weeks.inview", 10)*7;
+            this.previousDaysInView = Preferences.get("extensions.GanttView.previousweeks.inview", 0)*7;
+            this.autoscrollspeed = Preferences.get("extensions.GanttView.autoscroll.speed", 20);
+            this.autoscrollthreshold = Preferences.get("extensions.GanttView.autoscroll.threshold", 0)/100;
+            this.partialSelection = Preferences.get("extensions.GanttView.selection.partial", true);
+            this.showProgressBars = Preferences.get("extensions.GanttView.items.showprogressbars", true);
+            this.groupByCalendar = Preferences.get("extensions.GanttView.items.groupbycalendar", false);
+            this.weeksInView = Preferences.get("extensions.GanttView.weeks.inview", 5);
+            this.titleOrdinalOverride = Preferences.get("extensions.GanttView.items.titleordinaloverride", false);
+            
+            this.updateDaysOffPrefs();
+            
+            var stringBundle=document.getElementById("GanttView-bundle");
+
+            let button = document.getElementById("GanttView-showprogressbars-button")
+            button.setAttribute("showprogressbars", this.showProgressBars);
+            
+            var tooltip = stringBundle.getString("showprogressbars_" + this.showProgressBars);
+            button.setAttribute("tooltiptext", tooltip);
+
+            button = document.getElementById("GanttView-groupbycalendar-button")
+            button.setAttribute("groupbycalendar", this.groupByCalendar);
+            tooltip = stringBundle.getString("groupbycalendar_" + this.groupByCalendar);
+            button.setAttribute("tooltiptext", tooltip);
+
+            button = document.getElementById("GanttView-titleordinaloverride-button")
+            button.setAttribute("titleordinaloverride", this.titleOrdinalOverride);
+            tooltip = stringBundle.getString("titleordinaloverride_" + this.titleOrdinalOverride);
+            button.setAttribute("tooltiptext", tooltip);
+            
+            this.mTimezone = cal.dtz.defaultTimezone;
+
+            this.mDayColumns = document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-day-columns')
+            this.mItemRows = document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-item-rows');						
+            this.mItemsStack = document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-items-stack');
+            this.mItemHeadersScrollbox = document.getAnonymousElementByAttribute(this, 'anonid','GanttView-item-headers-scrollbox');	
+            //this.mItemHeadersInterface = this.mItemHeadersScrollbox.boxObject.QueryInterface(Components.interfaces.nsIScrollBoxObject);	
+            this.mItemHeadersInterface = this.mItemHeadersScrollbox.boxObject;				
+            this.mGridScrollBox = getAnonymousElementByAttribute(this, "anonid","GanttView-items-grid-scrollbox").boxObject;
+            //this.mGridScrollBox.boxObject = this.mGridScrollBox.boxObject; // .QueryInterface(Components.interfaces.nsIScrollBoxObject);
+            this.mDayHeaders = document.getAnonymousElementByAttribute(this, "anonid","GanttView-day-header-box");	
+            //this.mDayHeadersInterface = this.mDayHeaders.boxObject.QueryInterface(Components.interfaces.nsIScrollBoxObject);
+            this.mDayHeadersInterface = this.mDayHeaders.boxObject;
+               
+            this.mLog = Log4Moz.getConfiguredLogger("calBaseView");
+               
+            var ganttView = this;
+            document.calendarView = this;
+
+            //this function definition doesn't work in ganttview.jsm, must be assigned after CVC instance is created
+            
+            calendarViewController.modifyOccurrenceProperty = function modifyOccurrenceProperty(aOccurrence, aProperty, aValue) {
+      
+                var oldInstance = aOccurrence; 
+                //this.finalizePendingModification(aOccurrence);
+
+                var instance = oldInstance.clone();
+
+                instance.setProperty(aProperty, aValue);
+
+                //doTransaction no likey modifying dates
+                doTransaction('modify', instance, instance.calendar, oldInstance, null);
+
+                // If the item contains attendees then they need to be notified
+                //if (instance.hasProperty("X-MOZ-SEND-INVITATIONS") &&
+                //   (instance.getProperty("X-MOZ-SEND-INVITATIONS") == "TRUE")) {
+                //   sendItipInvitation(instance);
+                //}                  
+              
+            }
+            
+            ]]>
+      </constructor>
+
+      <destructor>
+        <![CDATA[
+				//store item headers width for persistance
+				var ehSpacer = document.getAnonymousElementByAttribute(this, "anonid","GanttView-item-titles-holder")
+				var ehWidth = ehSpacer.boxObject.width
+				var ehwBroadcaster = document.getElementById("GanttView-item-headers-width-broadcaster");
+				ehwBroadcaster.setAttribute("width", ehWidth);
+
+        if (this.mCalendar)
+            this.mCalendar.removeObserver(this.mObserver);
+        //let ganttViewpb2 = Components.classes["@mozilla.org/preferences-service;1"].
+        //          getService(Components.interfaces.nsIPrefBranch);
+        //ganttViewpb2.removeObserver("extensions.GanttView.", this.mPrefObserver);
+         
+         Services.prefs.removeObserver("extensions.GanttView.", this.mPrefObserver);
+      ]]>
+      </destructor>
+
+
+      <method name="handlePreference">
+        <parameter name="aSubject"/>
+        <parameter name="aTopic"/>
+        <parameter name="aPreference"/>
+        <body>
+          <![CDATA[
+            aSubject.QueryInterface(Components.interfaces.nsIPrefBranch);
+            var button;
+            var tooltip;
+            var strBundle=document.getElementById("GanttView-bundle");
+            
+            switch (aPreference) {
+							case "calendar.week.d0sundaysoff":
+							case "calendar.week.d1mondaysoff":
+							case "calendar.week.d2tuesdaysoff":
+							case "calendar.week.d3wednesdaysoff":
+							case "calendar.week.d4thursdaysoff":
+							case "calendar.week.d5fridaysoff":
+							case "calendar.week.d6saturdaysoff":
+									this.updateDaysOffPrefs();
+                  this.refreshView();
+									break;
+
+							case "calendar.week.start":
+									this.weekStartOffset = Preferences.get("calendar.week.start", 0);	
+                  this.refreshView();
+									break;
+									
+				      case "extensions.GanttView.weeks.inview":
+								this.daysInView =  Preferences.get("extensions.GanttView.weeks.inview", 10)*7;
+								this.weeksInView =  Preferences.get("extensions.GanttView.weeks.inview", 10);								
+                this.refreshView();
+				        break;
+								
+							case "extensions.GanttView.previousweeks.inview":
+								this.previousDaysInView = Preferences.get("extensions.GanttView.previousweeks.inview", 0)*7;
+                this.refreshView();            
+            
+								break;
+
+							case "extensions.GanttView.selection.partial":
+								this.partialSelection = Preferences.get("extensions.GanttView.selection.partial", true);
+                
+				        return;
+								break;
+								
+							case "extensions.GanttView.items.showprogressbars":
+                
+								this.showProgressBars = Preferences.get("extensions.GanttView.items.showprogressbars", true);
+                
+                button = document.getElementById("GanttView-showprogressbars-button")
+                
+                tooltip = strBundle.getString("showprogressbars_" + this.showProgressBars);
+                
+                button.setAttribute("tooltiptext", tooltip);
+                
+                button.setAttribute("showprogressbars", this.showProgressBars);
+				         
+                // Readjust itemBox top attributes           
+                this.sortItemBoxes();
+                return;
+								break;
+							
+              case "extensions.GanttView.items.groupbycalendar":
+                this.groupByCalendar = Preferences.get("extensions.GanttView.items.groupbycalendar", false);
+                
+                button = document.getElementById("GanttView-groupbycalendar-button")
+                button.setAttribute("groupbycalendar", this.groupByCalendar);
+
+                tooltip = strBundle.getString("groupbycalendar_" + this.groupByCalendar);
+                
+                button.setAttribute("tooltiptext", tooltip);
+                this.sortItemBoxes();
+                return;
+								break;
+
+              case "extensions.GanttView.items.titleordinaloverride":
+                this.titleOrdinalOverride = Preferences.get("extensions.GanttView.items.titleordinaloverride", false);
+ 
+                button = document.getElementById("GanttView-titleordinaloverride-button")
+                button.setAttribute("titleordinaloverride", this.titleOrdinalOverride);
+
+                tooltip = strBundle.getString("titleordinaloverride_" + this.titleOrdinalOverride);
+                
+                button.setAttribute("tooltiptext", tooltip);
+                
+                this.sortItemBoxes();
+                return;
+								break;                
+
+                
+							case "extensions.GanttView.autoscroll.speed":
+								this.autoscrollspeed = Preferences.get("extensions.GanttView.autoscroll.speed", 20);
+				        return;
+								break;
+								
+							case "extensions.GanttView.autoscroll.threshold":
+								this.autoscrollthreshold = Preferences.get("extensions.GanttView.autoscroll.threshold", 0)/100;
+								return;
+								break;
+								
+							case "calendar.timezone.local":
+								 this.timezone = cal.dtz.defaultTimezone;
+								 break;
+							
+              default:
+                    this.handleCommonPreference(aSubject, aTopic, aPreference);
+                    //break;
+            }
+            
+            return;
+        ]]>
+        </body>
+      </method>
+
+      <method name="updateDaysOffPrefs">
+        <body>
+          <![CDATA[
+					
+							const weekPrefix = "calendar.week.";
+							const prefNames = ["d0sundaysoff", "d1mondaysoff", "d2tuesdaysoff",
+																 "d3wednesdaysoff", "d4thursdaysoff",
+																 "d5fridaysoff", "d6saturdaysoff"];
+							const defaults = ["true", "false", "false", "false",
+																"false", "false", "true"];
+							var daysOff = new Array();
+							for (var i in prefNames) {
+									if (Preferences.get(weekPrefix+prefNames[i], defaults[i])) {
+											daysOff.push(Number(i));
+											
+									}
+							}
+							
+							this.daysOffArray = daysOff;
+							
+					]]>
+        </body>
+      </method>
+
+      <!--method name="toggleProgressBars">
+        <body>
+        <![CDATA[
+          var currentState=this.showProgressBars;
+          cal.setPref("extensions.GanttView.items.showprogressbars", !currentState);
+          
+      
+        ]]>
+        </body>
+      </method>
+      
+      <method name="toggleGroupByCalendar">
+        <body>
+        <![CDATA[
+          var currentState=this.groupByCalendar;
+          cal.setPref("extensions.GanttView.items.groupByCalendar", !currentState);
+          
+      
+        ]]>
+        </body>
+      </method -->
+
+      <field name="mWeeksInView"></field>
+
+      <property name="observerID">
+        <getter>
+          <![CDATA[
+						return "GanttView-observer";
+				]]>
+        </getter>
+      </property>
+
+      <method name="onResize">
+        <parameter name="aRealSelf"/>
+        <body>
+          <![CDATA[
+        ]]>
+        </body>
+      </method>
+      <!-- fields -->
+
+      <field name="mPixelsPerDay">null</field>
+      <field name="mItemRowHeight">null</field>
+      <field name="mItemCount">0</field>
+      <field name="mSuspendRefresh">false</field>
+      <!-- mDateList will always be sorted before being set -->
+      <field name="mDateList">null</field>
+      <!-- array of { date: calIDatetime, column: colbox, header: hdrbox }  -->
+      <field name="mDateColumns">[]</field>
+      <field name="mSelectedByBoxItemBoxes">[]</field>
+      <field name="mCurrentWeekNumber">null</field>
+
+
+      <!-- preference related fields should be included here to avoid 
+			     inheriting default values -->
+      <field name="mDaysInView">null</field>
+      <field name="mPreviousDaysInView">null</field>
+      <field name="mWeekStartOffset">null</field>
+      <field name="mautoscrollspeed">null</field>
+      <field name="mautoscrollthreshold">null</field>
+      <field name="mTasksInView"></field>
+      <field name="mShowCompleted"></field>
+      <field name="mHideCompletedTasks"></field>
+      <field name="mDisplayDaysOff"></field>
+      <field name="mDaysOffArray">[]</field>
+      <field name="mShowProgressBars"></field>
+
+      <!-- Shortcuts to view elements -->
+      <field name="mDayColumns">null</field>
+      <field name="mItemRows">null</field>
+      <field name="mItemsStack">null</field>
+      <field name="mContentStack">null</field>
+      <field name="mGridScrollBox">null</field>
+      <field name="mGridScrollBoxInterface">null</field>
+      <field name="mItemHeadersScrollbox">null</field>
+      <field name="mItemHeadersInterface">null</field>
+      <field name="mDayHeaders">null</field>
+      <field name="mDayHeadersInterface">null</field>
+
+      <property name="currentWeekNumber"
+       onget="return this.mCurrentWeekNumber;"
+       onset="return (this.mCurrentWeekNumber = val);"/>
+
+      <property name="daysInView"
+       onget="return this.mDaysInView;"
+       onset="return (this.mDaysInView = val);"/>
+
+      <property name="previousDaysInView"
+       onget="return this.mPreviousDaysInView;"
+       onset="return (this.mPreviousDaysInView = val);"/>
+
+      <property name="displayDaysOff"
+       onget="return this.mDisplayDaysOff;"
+       onset="return (this.mDisplayDaysOff = val);"/>
+
+
+      <property name="autoscrollspeed"
+       onget="return this.mautoscrollspeed;"
+       onset="return (this.mautoscrollspeed = val);"/>
+
+      <property name="autoscrollthreshold"
+       onget="return this.mautoscrollthreshold;"
+       onset="return (this.mautoscrollthreshold = val);"/>
+
+      <property name="gridScrollBox"
+       onget="return (this.mGridScrollBox.boxObject || document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-items-grid-scrollbox')).boxObject;"
+             />
+      <!-- document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-items-grid-scrollbox');"/ -->
+
+      <property name="panning">
+        <getter>
+          <![CDATA[
+                 return this.mInMouseDownPanning;
+                 ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+                    this.mInMouseDownPanning = val;
+                    var gridScrollBoxElem = document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-items-grid-scrollbox');
+                    return (val ? gridScrollBoxElem.setAttribute('panning',true) : gridScrollBoxElem.removeAttribute('panning'));
+                    ]]>
+        </setter>
+      </property>
+
+      <!--property name="gridScrollBoxInterface"
+            onget="this.gridScrollBox.QueryInterface(Components.interfaces.nsIScrollBoxObject);"/ -->
+
+      <property name="itemHeaders"
+       onget="return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-item-headers-box');"/>
+
+      <property name="itemRows"
+       onget="return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-item-rows');"/>
+
+      <property name="itemsStack"
+       onget="return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-items-stack');"/>
+
+      <property name="contentStack"
+       onget="return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-content-stack');"/>
+
+      <field name="mOperationListener">
+        <![CDATA[
+      ({
+          calView: this,
+
+      onOperationComplete:
+          function onOperationComplete(aCalendar, aStatus, aOperationType,
+                                       aId, aDetail) {
+
+              // Fire event
+              this.calView.fireEvent('viewloaded', aOperationType);
+              
+              // signal that the current operation finished.
+              this.calView.mRefreshPending = null;
+
+              // immediately start the next job on the queue.
+              this.calView.popRefreshQueue();
+              
+				//measure scrollbar width for mouse events
+				//this.calView.measureScrollbars();
+        
+        var itemHeadersScrollbar = document.getAnonymousElementByAttribute(this.calView, "anonid", "GanttView-item-headers-scrollbar");
+        var dayHeadersScrollbar = document.getAnonymousElementByAttribute(this.calView, "anonid", "GanttView-day-headers-scrollbar");
+ 
+        if (this.calView.gridScrollBox.height > this.calView.itemHeaders.boxObject.height) {
+          dayHeadersScrollbar.setAttribute("hidden", "true");
+        } else {
+          dayHeadersScrollbar.removeAttribute("hidden");
+        }
+        
+				this.calView.mHScrollbarHeight = itemHeadersScrollbar.boxObject.height;
+				this.calView.mVScrollbarWidth = dayHeadersScrollbar.boxObject.width;
+        
+        this.calView.sortItemBoxes();
+			},
+			
+			onGetResult: 
+          function onGetResult(aCalendar, aStatus, aItemType, aDetail,
+                               aCount, aItems) {
+
+              if (!Components.isSuccessCode(aStatus)){
+                  return;
+              }
+              
+              //avoid sorting after every new item
+              this.calView.suspendSortItemBoxes=true
+              
+              let items = aItems.filter(function(x) !cal.item.isToDo(x) ||
+                                (x.entryDate || x.dueDate));
+                                
+              for (let item of items) {
+                  this.calView.doAddItem(item);
+              }
+              
+              this.calView.suspendSortItemBoxes=false;
+          }
+      })
+      ]]>
+      </field>
+
+      <field name="mObserver">
+        <![CDATA[
+            // the calIObserver, calICompositeObserver, and calIAlarmServiceObserver
+            ({
+                //QueryInterface: function QueryInterface(aIID) {
+                //    return cal.doQueryInterface(this, null, aIID,
+                //                        [Components.interfaces.calIObserver,
+                //                         Components.interfaces.calIAlarmServiceObserver,
+                //                         Components.interfaces.calICompositeObserver,
+                //                         Components.interfaces.nsISupports]);
+                //},
+                
+                QueryInterface: XPCOMUtils.generateQI([
+                    Components.interfaces.calIObserver,
+                    Components.interfaces.calIAlarmServiceObserver,
+                    Components.interfaces.calICompositeObserver,
+                    Components.interfaces.nsISupports
+                ]),
+
+                calView: this,
+
+                onStartBatch: function onStartBatch() {
+                    this.calView.mBatchCount++;
+                },
+                onEndBatch: function onEndBatch() {
+                    this.calView.mBatchCount--;
+                    if (this.calView.mBatchCount == 0) {
+                        this.calView.refresh();
+                    }
+                },
+
+                onLoad: function onLoad() {
+                    this.calView.refresh();
+                },
+
+                onAddItem: function onAddItem(aItem) {
+                    if (this.calView.mBatchCount) {
+                        return;
+                    }
+
+                    if (cal.item.isToDo(aItem)) {
+                        if (!aItem.entryDate && !aItem.dueDate) {
+                            return;
+                        }
+                        if(!this.calView.mTasksInView){
+                            return;
+                        }
+                        if (aItem.isCompleted && !this.calView.mShowCompleted) {
+                            return;
+                        }
+                    }
+
+                    let occs = aItem.getOccurrencesBetween(this.calView.startDate,
+                                                           this.calView.queryEndDate,
+                                                           {});
+                    for (let occ of occs) {
+                        this.calView.doAddItem(occ);
+                    }
+                    return;
+                },
+
+                onModifyItem: function onModifyItem(aNewItem, aOldItem) {
+
+                    if (this.calView.mBatchCount) {
+                        return;
+                    }
+
+                    if (cal.item.isToDo(aNewItem) && cal.item.isToDo(aOldItem) &&
+                        !this.calView.mTasksInView) {
+                        return;
+                    }
+                    let occs;
+
+                    if (!cal.item.isToDo(aOldItem) ||
+                        (aOldItem.entryDate || aOldItem.dueDate)) {
+                        occs = aOldItem.getOccurrencesBetween(this.calView.startDate,
+                                                              this.calView.queryEndDate,
+                                                              {});
+                        for (let occ of occs) {
+                            this.calView.doDeleteItem(occ);
+                        }
+                    }
+                    if (cal.item.isToDo(aNewItem)) {
+                        if (!aNewItem.entryDate && !aNewItem.dueDate || !this.calView.mTasksInView) {
+                            return;
+                        }
+                        if (aNewItem.isCompleted && !this.calView.mShowCompleted) {
+                            return;
+                        }
+                    }
+
+                    occs = aNewItem.getOccurrencesBetween(this.calView.startDate,
+                                                          this.calView.queryEndDate,
+                                                          {});
+                    for (let occ of occs) {
+                        
+                        //assign new occ to other items pending modification
+                        // otherwise modifying multiple occurrences of a recurring item
+                        // will fail the transaction due to "generation too old"
+                        for (let itemForMod of this.calView.mItemsForModification) {
+
+                            if (itemForMod.itemHashId == occ.hashId) {
+                              itemForMod.itemOcc = occ;
+                              itemForMod.title = occ.title;
+                            }
+                         }
+                             
+                        this.calView.doAddItem(occ);
+                        
+                    }
+                },
+
+                onDeleteItem: function onDeleteItem(aItem) {
+                    if (this.calView.mBatchCount) {
+                        return;
+                    }
+
+                    if (cal.item.isToDo(aItem)) {
+                        if (!this.calView.mTasksInView) {
+                            return;
+                        }
+                        if (!aItem.entryDate && !aItem.dueDate) {
+                            return;
+                        }
+                        if (aItem.isCompleted && !this.calView.mShowCompleted) {
+                            return;
+                        }
+                    }
+
+                    let occs = aItem.getOccurrencesBetween(this.calView.startDate,
+                                                           this.calView.queryEndDate,
+                                                           {});
+                    for (let occ of occs) {
+                        this.calView.doDeleteItem(occ);
+                    }
+                },
+
+                onError: function onError(aCalendar, aErrNo, aMessage) { },
+
+                onPropertyChanged: function(aCalendar, aName, aValue, aOldValue) {
+                    switch (aName) {
+                        case "suppressAlarms":
+                            if (!Preferences.get("calendar.alarms.indicator.show", true) ||
+                                aCalendar.getProperty("capabilities.alarms.popup.supported") === false ) {
+                                break;
+                            }
+                            // else fall through
+                        case "readOnly":
+                        case "disabled":
+                            // XXXvv we can be smarter about how we handle this stuff
+                            this.calView.refresh();
+                            break;
+                    }
+                },
+
+                onPropertyDeleting: function(aCalendar, aName) {
+                    // Values are not important here yet.
+                    this.onPropertyChanged(aCalendar, aName, null, null);
+                },
+
+                //
+                // calIAlarmServiceObserver stuff
+                //
+                onAlarm: function onAlarm(aAlarmItem) {
+                    this.calView.flashAlarm(aAlarmItem, false);
+                },
+
+                onRemoveAlarmsByItem: function onRemoveAlarmsByItem(aItem) {
+                    // Stop the flashing for the item.
+                    this.calView.flashAlarm(aItem, true);
+                },
+
+                onRemoveAlarmsByCalendar: function onRemoveAlarmsByCalendar(aCalendar) {
+                    // Stop the flashing for all items of this calendar
+                    for (let item of this.calView.mFlashingEvents) {
+                        if (item.calendar.id == aCalendar.id) {
+                            this.calView.flashAlarm(item, true);
+                        }
+                    }
+                },
+
+                onAlarmsLoaded: function _onAlarmsLoaded(aCalendar) {},
+
+                //
+                // calICompositeObserver stuff
+                // XXXvv we can be smarter about how we handle this stuff
+                //
+                onCalendarAdded: function onCalendarAdded(aCalendar) {
+                    if (!aCalendar.getProperty("disabled")) {
+                        this.calView.addItemsFromCalendar(aCalendar);
+                    }
+                },
+
+                onCalendarRemoved: function onCalendarRemoved(aCalendar) {
+                    if (!aCalendar.getProperty("disabled")) {
+                        this.calView.deleteItemsFromCalendar(aCalendar);
+                    }
+                },
+
+                onDefaultCalendarChanged:
+                function onDefaultCalendarChanged(aNewDefaultCalendar) {
+                    // don't care, for now
+                }
+            })
+          ]]>
+      </field>
+
+
+      <field name="mItems">[]</field>
+      <field name="mEvents">[]</field>
+      <field name="mItemBoxes">[]</field>
+
+
+      <property name="controller"
+       onget="return this.mController;"
+       onset="return (this.mController = val);"/>
+
+
+      <property name="showProgressBars">
+        <getter>
+          <![CDATA[
+          return this.mShowProgressBars;
+        ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+					this.mShowProgressBars = val;
+					for (var itemBox of this.mItemBoxes){
+						itemBox.showProgressBar = val
+					}
+          return val;
+        ]]>
+        </setter>
+      </property>
+
+      <field name="mDateRangeChanged">[]</field>
+
+      <property name="startDate">
+        <getter>
+          <![CDATA[
+          if (this.mStartDate) return this.mStartDate;
+          else if (this.mDateList && this.mDateList.length > 0) return this.mDateList[0];
+          else return null;
+        ]]>
+        </getter>
+      </property>
+
+      <property name="endDate">
+        <getter>
+          <![CDATA[
+          // NOTE - for comparison against items use queryEndDate
+          var endDate;
+          
+          if (this.mEndDate) {
+            endDate = this.mEndDate.clone();
+            
+          } else if (this.mDateList && this.mDateList.length > 0) {
+            endDate = this.mDateList[this.mDateList.length-1].clone();
+          
+          } else {
+            return null;
+          }
+          
+          return endDate;
+        
+        ]]>
+        </getter>
+      </property>
+
+      <method name="moveView">
+        <parameter name="aNumber"/>
+        <body>
+          <![CDATA[
+                    if (!aNumber) {
+                        var date = new Date();
+                        this.goToDay(date);
+                        this.selectedDay = date;
+                    } else {
+                        var d1 = this.startDate.clone();
+                        var savedSelectedDay = (this.selectedDay==null) ? d1.clone() : this.selectedDay.clone();
+                        
+                        // aNumber only corresponds to the number of weeks to move
+                        // make sure to compensate for previous weeks in view too
+
+                        d1.day += 7 * aNumber + this.previousDaysInView;
+                        
+                        this.goToDay(d1);
+                        
+                        savedSelectedDay.day += 7 * aNumber + this.previousDaysInView;
+                        this.selectedDay = savedSelectedDay;
+                    }
+                ]]>
+        </body>
+      </method>
+
+
+      <method name="goToDay">
+        <parameter name="aDate"/>
+        <body>
+          <![CDATA[
+                    
+                    this.displayDaysOff = !this.mWorkdaysOnly;
+                    
+                    this.itemsStack.removeAttribute("style");
+                            
+                    if (!aDate) {aDate = this.startDate};
+                    aDate = aDate.getInTimezone(this.timezone);
+                    
+                    this.showDate(aDate);
+
+                    this.itemsStack.setAttribute("style", "max-width:" + this.itemsStack.boxObject.width + "px;" +
+                                                          " max-height:" + this.itemsStack.boxObject.height + "px;");
+                ]]>
+        </body>
+      </method>
+
+      <method name="showDate">
+        <parameter name="aDate"/>
+        <body>
+          <![CDATA[
+				
+		//this check is necessary if selected date is not in the current view (e.g. if days off are hidden)					
+		  if (!aDate) {aDate = this.startDate};
+					
+          var targetDate = aDate.getInTimezone(this.mTimezone);
+          targetDate.isDate = true;
+
+				var startDate = targetDate.clone()
+				var endDate = targetDate.clone()
+				
+        	startDate = startDate.startOfWeek
+					startDate.day += this.weekStartOffset - this.mPreviousDaysInView
+        
+				if (startDate.weekday < this.weekStartOffset) {
+					startDate.day +=  - 7
+				}
+
+				endDate = endDate.startOfWeek;
+				endDate.day += this.weekStartOffset + this.daysInView - this.mPreviousDaysInView - 1;
+				//find visible enddate				
+				
+				this.setDateRange(startDate, endDate);
+				this.selectedDay = targetDate;	
+				
+        ]]>
+        </body>
+      </method>
+
+      <method name="setDateRange">
+        <parameter name="aStartDate"/>
+        <parameter name="aEndDate"/>
+        <body>
+          <![CDATA[
+
+        this.rangeStartDate = aStartDate;
+        this.rangeEndDate = aEndDate;
+      
+				this.mTimezone = cal.dtz.defaultTimezone
+				if (!aStartDate || !aEndDate) 
+					return;
+					
+          // this function needs to be smarter, and needs to compare
+          // the current date range and add/remove, instead of just
+          // replacing.
+
+          // normalize dates to display timezone
+					
+          var startDate = aStartDate.getInTimezone(this.mTimezone);
+          startDate.isDate = true;
+          var endDate = aEndDate.getInTimezone(this.mTimezone);
+          endDate.isDate = true;
+          // make sure unnormalized version not used below
+          //aStartDate = aEndDate = null;
+		
+          //clear view items array, will be repopulated with visible items.
+          this.mItems = []
+          this.mItemBoxes = []
+					GanttView.removeExtraKids(this.itemsStack,2);	
+					GanttView.removeExtraKids(this.itemHeaders,0);
+					GanttView.removeExtraKids(this.itemRows,0);
+		
+          if (this.displayDaysOff) {
+          
+            var selectedItems = this.getSelectedItems({});
+            this.setSelectedItems(0, [], true); // suppress event, will restore
+          
+            startDate.makeImmutable();
+            endDate.makeImmutable();
+
+					
+            if (this.mStartDate && this.mEndDate &&
+                      this.mStartDate.compare(startDate) == 0 &&
+                      this.mEndDate.compare(endDate) == 0) {
+                      // Do not change anything if the date range already matches.
+                      // XXX In general it should be possible to return here, but
+                      // lightning doesn't like it when first initializing the view.
+                      // It also prevents some preference changed from updating the view.
+                      //return;
+            }
+						
+            this.mDateList = null;
+            this.mStartDate = startDate;
+            this.mEndDate = endDate;
+            
+						this.refresh();
+                        
+          } else { 
+          // workdays only - 
+              if (this.mDateList &&
+	              this.mDateList[0].compare(startDate) == 0 &&
+	              this.mDateList[this.mDateList.length-1].compare(endDate) == 0) {
+	              // Do not change anything if the date range already matches.
+	              // XXX In general it should be possible to return here, but
+	              // lightning doesn't like it when first initializing the view.	              
+								//return;
+	          }
+						
+            var dateList = new Array();
+            for (var d = startDate.clone(); d.compare(endDate) <= 0;) {
+						
+              if (this.mDaysOffArray.indexOf(d.weekday) == -1) {
+								
+                var workday = d.clone();
+                workday.makeImmutable();
+                dateList.push(workday);
+								
+              }
+              d.day += 1;
+            }
+            this.setDateList(dateList.length, dateList);
+						
+		  }
+      
+		 // Update the navigation bar.
+          
+          cal.navigationBar.setDateRange(aStartDate, aEndDate);	
+						
+        ]]>
+        </body>
+      </method>
+
+      <method name="setDateList">
+        <parameter name="aCount"/>
+        <parameter name="aDates"/>
+        <body>
+          <![CDATA[
+          // tell old date columns to forget old selected occurrences.
+          //var selectedItems = this.getSelectedItems({});
+          this.setSelectedItems(0, [], true); // suppress event, will restore
+          
+          this.mStartDate = null;
+          this.mEndDate = null;
+					
+          if (aCount == 0) {
+              this.mDateList = null;
+          } else {
+              aDates.sort (function(a, b) { return a.compare(b); });
+              this.mDateList = aDates.map(
+                  function dateMapper(d) {
+                      if (d.isDate && !d.isMutable)
+                          return d;
+
+                      var newDate = d.clone();
+                      newDate.isDate = true;
+                      newDate.makeImmutable();
+                      return newDate;
+                  }
+              );
+          }
+					this.refresh();
+          
+          // restore selected item occurrences in view with new date columns.
+          //this.setSelectedItems(selectedItems.length, selectedItems, true);          
+        ]]>
+        </body>
+      </method>
+
+      <method name="getDateList">
+        <parameter name="aCount"/>
+        <body>
+          <![CDATA[
+           var dates = [];
+           if (this.mStartDate && this.mEndDate) {
+               var d = this.mStartDate.clone();
+               while (d.compare(this.mEndDate) <= 0) {
+                   dates.push(d.clone());
+                   d.day += 1;
+//                   d.normalize();
+               }
+           } else if (this.mDateList) {
+               for (var d of this.mDateList)
+                   dates.push(d.clone());
+           }
+
+           aCount.value = dates.length;
+           return dates;
+        ]]>
+        </body>
+      </method>
+
+      <property name="selectedDay">
+        <getter>
+          <![CDATA[
+          //if (this.numVisibleDates == 1)
+          //  return this.mDateColumns[0].date;
+
+          if (!this.mSelectedDayCol) {
+						return null;
+          }  else {
+						return this.mSelectedDayCol.date;
+					}
+        ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+          // ignore if just 1 visible, it's always selected,
+          // but we don't indicate it
+          if (this.numVisibleDates == 1) {
+            //this.fireEvent("dayselect", val);
+            return val;
+          }
+
+          if (this.mSelectedDayCol) {
+            this.mSelectedDayCol.column.selected = false;
+            this.mSelectedDayCol.header.removeAttribute("selected");
+          }
+
+          if (val) {
+            this.mSelectedDayCol = this.findColumnForDate(val);
+						//while (!this.mSelectedDayCol) {
+							
+						//}
+            if (this.mSelectedDayCol) {
+              this.mSelectedDayCol.column.selected = true;
+              this.mSelectedDayCol.header.setAttribute("selected", "true");
+            } else {
+
+							val = this.startDate || this.mDateList[0];
+							this.mSelectedDayCol = this.findColumnForDate(val);
+							
+              return val;
+            }
+          }
+          this.fireEvent("dayselect", val);
+          return val;
+        ]]>
+        </setter>
+      </property>
+
+
+      <method name="flashAlarm">
+        <parameter name="aAlarmItem"/>
+        <parameter name="aStop"/>
+        <body>
+          <![CDATA[
+                var showIndicator = Preferences.get("calendar.alarms.indicator.show", true);
+                var totaltime = Preferences.get("calendar.alarms.indicator.totaltime", 3600);
+
+                if (!aStop && (!showIndicator || totaltime < 1)) {
+                  // No need to animate if the indicator should not be shown.
+                  return;
+                }
+
+                // Make sure the flashing attribute is set or reset on all visible
+                // boxes.
+                let itemBox = this.findItemBoxForItem(aAlarmItem);
+                
+                if (!itemBox) {
+                  return;
+                }
+                
+                if (aStop) {
+                  itemBox.removeAttribute("flashing");
+                } else {
+                  itemBox.setAttribute("flashing", "true");
+                }
+
+                if (!aStop) {
+                  // Set up a timer to stop the flashing after the total time.
+                  var calView = this;
+                  this.mFlashingEvents[aAlarmItem.hashId] = aAlarmItem;
+                  setTimeout(function() { calView.flashAlarm(aAlarmItem, true) }, totaltime);
+                } else {
+                  // We are done flashing, prevent newly created event boxes from flashing.
+                  delete this.mFlashingEvents[aAlarmItem.hashId];
+                }
+              ]]>
+        </body>
+      </method>
+
+      <method name="findItemBoxForItem">
+        <parameter name="aItem"/>
+        <body>
+          <![CDATA[
+GanttView.dump(aItem.title);
+					for (var itemBox of this.mItemBoxes) {
+GanttView.dump(itemBox.itemTitle + " ? " + aItem.title)
+            if (itemBox.occurrence.hasSameIds(aItem)) {
+              
+							return itemBox;
+            }
+					}
+					return null;
+				]]>
+        </body>
+      </method>
+
+      <method name="getSelectedItems">
+        <parameter name="aCount"/>
+        <body>
+          <![CDATA[
+          aCount.value = this.mSelectedItems.length;
+          return this.mSelectedItems;
+        ]]>
+        </body>
+      </method>
+
+      <method name="setSelectedItems">
+        <parameter name="aCount"/>
+        <parameter name="aItems"/>
+        <parameter name="aSuppressEvent"/>
+        <body>
+          <![CDATA[
+				
+				
+          if (this.mSelectedItems[0]) {
+              for (var oldItem of this.mSelectedItems) {
+								var oldItemBox = this.findItemBoxForItem(oldItem);
+								if (oldItemBox)
+									oldItemBox.selected = false;
+              }
+          }
+					         
+					this.mSelectedItems = aItems || [];
+          for (var item of this.mSelectedItems) {
+							var itemBox = this.findItemBoxForItem(item);
+							if (itemBox) {
+								itemBox.selected = true;
+              } else {
+								this.mSelectedItems.splice(this.mSelectedItems.indexOf(item),1);
+							}
+          }
+					
+					if (this.mSelectedItems.length==0)
+						return this.mSelectedItems;
+						
+          if (!aSuppressEvent) {
+             this.fireEvent("itemselect", this.mSelectedItems);
+          }
+					
+					return this.mSelectedItems;
+        ]]>
+        </body>
+      </method>
+
+      <method name="centerSelectedItems">
+        <body>
+        </body>
+      </method>
+
+      <method name="addSelectedItem">
+        <parameter name="aItem"/>
+        <parameter name="aItemBox"/>
+        <parameter name="aSuppressEvent"/>
+        <body>
+          <![CDATA[
+				
+					if (!aItemBox) {
+					  aItemBox = this.findItemBoxForItem(aItem);
+					} else if (!aItem) {
+						aItem = aItemBox.occurrence;
+					}
+					
+					if (aItemBox && !aItemBox.selected) {
+							aItemBox.selected = true;
+							this.mSelectedItems.push(aItem);
+						}
+								
+						
+						if (!aSuppressEvent) {
+	             //this.fireEvent("itemselect", this.mSelectedItems);
+					}        											
+					//}
+					
+					return this.mSelectedItems;
+          
+				]]>
+        </body>
+      </method>
+
+
+      <method name="removeSelectedItem">
+        <parameter name="aItem"/>
+        <parameter name="aItemBox"/>
+        <parameter name="aSuppressEvent"/>
+        <body>
+          <![CDATA[
+				
+					if (!aItemBox) {
+					  aItemBox = this.findItemBoxForItem(aItem);
+					} else if (!aItem) {
+						aItem = aItemBox.occurrence;
+					}
+					
+					if (aItemBox && aItemBox.selected) {
+
+							aItemBox.selected = false;
+							
+						}
+						
+						this.mSelectedItems.splice(this.mSelectedItems.indexOf(aItem),1);
+							
+						
+						if (!aSuppressEvent) {
+	             //this.fireEvent("itemselect", this.mSelectedItems);
+	          }        											
+					//}
+					
+					return this.mSelectedItems;
+          
+				]]>
+        </body>
+      </method>
+
+      <property name="activeInPlaceEdit">
+        <getter>
+          <![CDATA[
+          return this.mInPlaceEditActive;
+        ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+          this.mInPlaceEditActive = val;
+          return val;
+        ]]>
+        </setter>
+      </property>
+
+      <!-- private -->
+
+      <property name="numVisibleDates" readonly="true">
+        <getter>
+          <![CDATA[
+          if (this.mDateList)
+            return this.mDateList.length;
+
+          var count = 0;
+
+          var d = this.startDate.clone();
+          while (d.compare(this.endDate) <= 0) {
+            count++;
+            d.day += 1;
+//            d.normalize();
+          }
+
+          return count;
+        ]]>
+        </getter>
+      </property>
+
+      <method name="setAttribute">
+        <parameter name="aAttr"/>
+        <parameter name="aVal"/>
+        <body>
+          <![CDATA[
+          var needsreorient = false;
+          var needsrelayout = false;
+          if (aAttr == "orient") {
+              if (this.getAttribute("orient") != aVal)
+                  needsreorient = true;
+          }
+
+          if (aAttr == "context" || aAttr == "item-context")
+              needsrelayout = true;
+
+          // this should be done using lookupMethod(), see bug 286629
+          var ret = XULElement.prototype.setAttribute.call (this, aAttr, aVal);
+
+          if (needsrelayout && !needsreorient)
+              this.relayout();
+
+          if (needsreorient)
+              this.reorient();
+
+          return ret;
+        ]]>
+        </body>
+      </method>
+
+      <method name="reorient">
+        <body>
+          <![CDATA[
+        // N/A for this view, but function must be present
+        ]]>
+        </body>
+      </method>
+
+      <field name="suspendSortItemBoxes">null</field>
+      <field name="groupByCalendar">null</field>
+      <field name="titleOrdinalOverride">null</field>
+
+      <method name="sortItemBoxes">
+        <parameter name="sortDirection"/>
+
+        <body>
+          <![CDATA[	
+        if (!this.suspendSortItemBoxes) {
+
+          this.mItemBoxes.sort(GanttView.compareItemBoxStart);
+          
+          if (this.titleOrdinalOverride) {
+              this.mItemBoxes.sort(GanttView.compareItemBoxTitleOrdinal);
+          }
+          
+          if (this.groupByCalendar) {
+              this.mItemBoxes.sort(GanttView.compareItemBoxCalendar);
+          }
+          
+          for (let itemBox of this.mItemBoxes) {
+            itemBox.ordinal = this.mItemBoxes.indexOf(itemBox);
+          }
+          
+          // set top values after the whole array has already been assigned ordinals
+          //   must be a separate loop to avoid race condition
+          
+          for (let itemBox of this.mItemBoxes) {
+            var itemTop = itemBox.itemRow.boxObject.screenY - this.mItemRows.boxObject.screenY;
+            itemBox.setAttribute("top", itemTop);
+          }
+				} else {
+          // sortItemBoxes suspended
+        }
+
+        ]]>
+        </body>
+      </method>
+
+
+      <method name="positionItemBox">
+        <parameter name="aItemBox"/>
+        <parameter name="aNewStartDate"/>
+        <parameter name="aNewEndDate"/>
+        <body>
+          <![CDATA[	//Set box dimensions and position
+
+					//Find valid start and end columns - use new dates if they exist
+					var actualStartDate =  !aNewStartDate ? 
+						aItemBox.itemStartDate.getInTimezone(this.mTimezone).clone() : 
+							aNewStartDate.getInTimezone(this.mTimezone).clone(); 
+					
+					var actualEndDate = !aNewEndDate ? 
+						aItemBox.itemEndDate.getInTimezone(this.mTimezone).clone() :
+							aNewEndDate.getInTimezone(this.mTimezone).clone();
+					var visibleStartDate = actualStartDate.clone();
+					var visibleEndDate = actualEndDate.clone();
+
+          if ((this.queryEndDate.subtractDate(visibleStartDate).isNegative) || 
+              (visibleEndDate.subtractDate(this.startDate).isNegative)) {
+            //item is no longer in view (after changing date range), so delete it
+//GanttView.dump(aItemBox.itemTitle + "\n" + visibleStartDate + "\n" + this.endDate);            
+            this.doDeleteItem(aItemBox.occurrence, true);
+            return;
+          }
+					
+					var startDayColumn = document.getAnonymousElementByAttribute(this, "coldate", cal.getDateFormatter().formatDateShort(visibleStartDate))
+					var endDayColumn = document.getAnonymousElementByAttribute(this, "coldate", cal.getDateFormatter().formatDateShort(visibleEndDate))
+					
+//GanttView.dump(aItemBox.itemTitle + "\n" + startDayColumn);
+
+          
+					var startDayModified = false
+					var endDayModified = false
+					
+					//find the closest start and end date columns in the current view
+					if(!startDayColumn || !endDayColumn)  {
+          
+						while (!startDayColumn) {
+							visibleStartDate.day++
+							
+              if ((visibleEndDate.subtractDate(visibleStartDate).isNegative) || (visibleStartDate == visibleEndDate)) {
+								visibleStartDate = visibleEndDate
+								if (this.endDate == visibleStartDate) {
+									visibleStartDate = this.endDate;
+								}	
+							}
+							
+							startDayColumn = document.getAnonymousElementByAttribute(this, "coldate", cal.getDateFormatter().formatDateShort(visibleStartDate))
+							startDayModified = true
+						}
+            
+						while (!endDayColumn) {
+							visibleEndDate.day--
+							
+							if ((visibleEndDate.subtractDate(visibleStartDate).isNegative) || (visibleStartDate == visibleEndDate) ) {
+								visibleEndDate=visibleStartDate
+							}
+							
+							endDayColumn = document.getAnonymousElementByAttribute(this, "coldate", cal.getDateFormatter().formatDateShort(visibleEndDate))
+							endDayModified = true
+						}
+					}
+					
+					var itemBoxLeft
+					var itemBoxWidth
+					
+					if (startDayColumn) {
+						itemBoxLeft = startDayColumn.boxObject.x - this.mDayColumns.boxObject.x
+					}
+					if (endDayColumn) {
+						itemBoxWidth = (endDayColumn.boxObject.x + endDayColumn.boxObject.width - this.mDayColumns.boxObject.x) - itemBoxLeft
+					}
+					
+					aItemBox.itemBoxLeft=itemBoxLeft;					
+					
+					if (this.queryEndDate.subtractDate(actualEndDate).isNegative && endDayModified) {
+						aItemBox.endTruncated = true;
+						aItemBox.itemBoxWidth = itemBoxWidth
+						if ((actualStartDate.subtractDate(this.startDate)).isNegative && startDayModified) {
+							aItemBox.startTruncated = true;					
+						}
+					} else {
+						if ((actualStartDate.subtractDate(this.startDate)).isNegative && startDayModified) {
+							aItemBox.startTruncated = true;
+							aItemBox.itemBoxWidth = itemBoxWidth
+						} else {
+							itemBoxWidth = (this.workdaysCount(actualStartDate,actualEndDate))*this.mPixelsPerDay
+							aItemBox.itemBoxWidth  = itemBoxWidth
+							
+						//correct for Mouse offset from new itemBoxLeft 
+						// by setting mousedown position at current position
+						aItemBox.mouseDownGridX = this.mMouseScreenX - this.mDayColumns.boxObject.screenX					
+						aItemBox.endTruncated = false;
+						}
+					}
+					
+					var itemBoxStartColIndex = Math.round(itemBoxLeft/this.mPixelsPerDay)
+					var itemBoxEndColIndex = Math.round(itemBoxLeft/this.mPixelsPerDay + itemBoxWidth/this.mPixelsPerDay);
+					aItemBox.itemBoxStartColIndex = itemBoxStartColIndex;
+					aItemBox.itemBoxEndColIndex = itemBoxEndColIndex;
+
+					return aItemBox;
+        ]]>
+        </body>
+      </method>
+
+      <field name="mVScrollbarWidth">null</field>
+      <field name="mHScrollbarHeight">null</field>
+      <field name="mRelayOutCalled">false</field>
+      <field name="mFirstVisibleWeekDay">null</field>
+
+      <property name="firstVisibleWeekDay"
+       onget="return this.mFirstVisibleWeekDay;"
+       onset="return (this.mFirstVisibleWeekDay = val);"/>
+
+      <field name="mLastVisibleWeekDay">null</field>
+
+      <property name="lastVisibleWeekDay"
+       onget="return this.mLastVisibleWeekDay;"
+       onset="return (this.mLastVisibleWeekDay = val);"/>
+
+      <method name="relayout">
+        <body>
+          <![CDATA[
+					this.style.cursor = "wait"
+					
+          var computedDateList;
+          if (this.mDateList) {
+						computedDateList = this.mDateList;
+          } else if (this.mStartDate && this.mEndDate) {
+						computedDateList = new Array();
+
+						var theDate = this.startDate.clone();
+
+						while (theDate.compare(this.endDate) <= 0) {
+								computedDateList.push(theDate.clone().getInTimezone(this.mTimezone));
+								theDate.day += 1;
+						}
+          }
+
+          if (!computedDateList || computedDateList.length == 0) {
+              return;
+					}		
+          
+        
+					var weekHeaderHolder = document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-week-headers-box');
+					var monthHeaderHolder = document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-month-headers-box');
+          var dayHeaderHolder = document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-day-header-columns');			
+          var dayColumnHolder = document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-day-columns');
+					
+					GanttView.removeExtraKids(dayColumnHolder, computedDateList.length);
+					GanttView.removeExtraKids(dayHeaderHolder, computedDateList.length);
+					GanttView.removeExtraKids(weekHeaderHolder,0);
+          GanttView.removeExtraKids(monthHeaderHolder,0);
+          
+          var calView = this;
+          this.mDateColumns = [];
+
+          // get today's date
+          var today = this.today();
+          var counter = 0;
+          var dayColumnHolderkids = dayColumnHolder.childNodes||null;
+          var dayHeaderHolderkids = dayHeaderHolder.childNodes;  //column headers
+
+          var currentWeek = 0.0;
+          var weekHeaderBox;
+          var weekHeaderBoxKids = weekHeaderHolder.childNodes;
+          var weekDaysCounter = 0;
+          var weekBoxCounter = 0;
+          
+          var currentMonth = 0.0;
+          var monthHeaderBox;
+          var monthHeaderBoxKids = monthHeaderHolder.childNodes;
+          var monthDaysCounter = 0;
+          var monthBoxCounter = 0;
+          
+          this.currentWeekNumber = GanttView.weekNumber(today, this.weekStartOffset);
+
+          var self = this;
+          function fvwdMatchesDayOff(dayOffNum) { return dayOffNum == self.firstVisibleWeekDay; }
+          function lvwdMatchesDayOff(dayOffNum) { return dayOffNum == self.lastVisibleWeekDay; }
+          
+          function setUpDayBox(aDayBox) {
+                aDayBox.setAttribute("context", calView.getAttribute("context"));
+                aDayBox.setAttribute("item-context", calView.getAttribute("item-context") || calView.getAttribute("context"));
+                aDayBox.calendarView = calView;
+                aDayBox.date = d;						
+                //remove existing width settings 
+                aDayBox.removeAttribute("style");
+                
+                // shade alternating months - current month never shaded
+                
+                var testmonth = d.month
+                if (new Date().getMonth() % 2 == 0)
+                  testmonth++;
+                  
+                if (testmonth % 2 == 0) {
+                    aDayBox.setAttribute("othermonth", "true");
+                } else {
+                    aDayBox.removeAttribute("othermonth");
+                }
+          } 
+                              
+                                                                                          
+          //get first and last day of week from preferences, but still adjust for presence in current view
+          this.firstVisibleWeekDay = this.weekStartOffset;
+          if (!this.displayDaysOff){
+            this.mDaysOffArray.sort();							
+            while (this.mDaysOffArray.some(fvwdMatchesDayOff)) {
+              this.firstVisibleWeekDay = (this.firstVisibleWeekDay + 1) % 7;
+            }
+          }
+          
+          this.lastVisibleWeekDay = (this.weekStartOffset + 6) % 7;
+          
+          if (!this.displayDaysOff){
+            this.mDaysOffArray.sort();							
+            while (this.mDaysOffArray.some(lvwdMatchesDayOff)) {
+              this.lastVisibleWeekDay = (this.lastVisibleWeekDay + 6) % 7;
+            }
+          }	
+          
+          // Remove existing width settings
+          document.getAnonymousElementByAttribute(this, "anonid", "GanttView-day-header-grid").removeAttribute("style");      
+          document.getAnonymousElementByAttribute(this, "anonid", "GanttView-items-grid").removeAttribute("style");
+          this.itemsStack.removeAttribute("style");
+          
+          for (var d of computedDateList) {
+            var dayColumn;
+            var dayHeaderBox;
+            
+            if (counter < dayColumnHolderkids.length) {
+                dayColumn = dayColumnHolderkids[counter];
+
+            } else {
+                dayColumn = createXULElement("GanttView-day-column");
+                dayColumnHolder.appendChild(dayColumn);
+            }
+
+            if (counter < dayHeaderHolderkids.length-1) {   // child 0 is "children" node
+                dayHeaderBox = dayHeaderHolderkids[counter+1];
+
+            } else {                
+                dayHeaderBox = createXULElement("GanttView-day-header-column");
+                dayHeaderHolder.appendChild(dayHeaderBox);
+            }
+            
+            dayColumn.setAttribute("id", "GanttView-day-column-" + counter  );
+            dayColumn.setAttribute("coldate", cal.getDateFormatter().formatDateShort( d.getInTimezone(this.mTimezone)));
+            
+            dayColumn.setAttribute("flex", "1");
+            
+            dayHeaderBox.setAttribute("id", "GanttView-day-header-column-" + counter);
+            dayHeaderBox.setAttribute("flex","1");
+            
+            setUpDayBox(dayColumn);
+            setUpDayBox(dayHeaderBox);
+            
+            if (d.weekday == this.firstVisibleWeekDay){  
+              
+              if (weekBoxCounter < weekHeaderBoxKids.length){
+                weekHeaderBox = weekHeaderBoxKids[weekBoxCounter];
+                
+              } else {
+                weekHeaderBox = createXULElement("GanttView-week-header-box");
+                weekHeaderHolder.appendChild(weekHeaderBox);				
+              }
+              weekBoxCounter++
+              currentWeek = (d.year+weekHeaderBox.weekNumber/100)						
+              weekHeaderBox.setAttribute("id", "GanttView-week-box-" + weekBoxCounter  );
+              
+              
+              setUpDayBox(weekHeaderBox)				
+              weekDaysCounter=0
+              
+            }	
+            
+            weekDaysCounter++
+            if (weekBoxCounter>0){
+              weekHeaderBox = document.getElementById("GanttView-week-box-" + weekBoxCounter );
+            
+              weekHeaderBox.visibleDaysCount = weekDaysCounter;
+            }
+            
+            
+            if (currentMonth < (d.year + d.month/100)) {	
+              
+              currentMonth =(d.year + d.month/100)		
+              
+              if (monthBoxCounter < monthHeaderBoxKids.length){
+                //reuse existing box
+                monthHeaderBox = monthHeaderBoxKids[monthBoxCounter];
+
+              } else {
+                monthHeaderBox = createXULElement("GanttView-month-header-box");
+                monthHeaderHolder.appendChild(monthHeaderBox);												
+              }
+              monthBoxCounter++
+              monthHeaderBox.setAttribute("id", "GanttView-month-box-" + monthBoxCounter  );
+              
+              setUpDayBox(monthHeaderBox)														
+              monthDaysCounter=0
+              
+            }
+            monthDaysCounter++
+            if (monthBoxCounter>0){
+              monthHeaderBox = document.getElementById("GanttView-month-box-" + monthBoxCounter )
+              monthHeaderBox.visibleDaysCount = monthDaysCounter;
+            }
+            
+            // We don't want to actually mess with our original dates, plus
+            // they're likely to be immutable.
+            var d2 = d.clone();
+            d2.isDate = true;
+            d2.makeImmutable();
+            this.mDateColumns.push ( { date: d2, column: dayColumn, header: dayHeaderBox } );
+            
+            
+            counter++;
+          }
+          
+          var visibleDaysCount = computedDateList.length;
+          this.mPixelsPerDay = Math.ceil(dayHeaderHolder.boxObject.width / visibleDaysCount);
+          
+          for (var whb of weekHeaderBoxKids) {
+            if (whb) {
+                if (whb.visibleDaysCount) {
+                    whb.boxWidth = (this.mPixelsPerDay) * whb.visibleDaysCount;
+                }
+            }
+          }
+          
+          for (var mhb of monthHeaderBoxKids) {
+            if (mhb) {
+                if (mhb.visibleDaysCount) {
+                    mhb.boxWidth = (this.mPixelsPerDay) * mhb.visibleDaysCount;
+                }
+            }
+          }
+          
+          for (var dayCol of dayColumnHolder.childNodes) {
+            if (dayCol) {
+              dayCol.boxWidth = this.mPixelsPerDay;
+            }
+          }        
+          
+          var dayHeadersWidth = visibleDaysCount * this.mPixelsPerDay;
+          
+          document.getAnonymousElementByAttribute(this, "anonid", "GanttView-day-header-grid").setAttribute("style", "min-width:" + dayHeadersWidth + "px; max-width:" + dayHeadersWidth + "px;");        
+          document.getAnonymousElementByAttribute(this, "anonid", "GanttView-items-grid").setAttribute("style", "min-width:" + dayHeadersWidth + "px; max-width:" + dayHeadersWidth + "px;");
+          this.itemsStack.setAttribute("style", "min-width:" + dayHeadersWidth + "px; max-width:" + dayHeadersWidth + "px;");
+          
+          this.style.cursor = "default"       
+        ]]>
+        </body>
+      </method>
+
+      <method name="workdaysCount">
+        <parameter name="aStartDate"/>
+        <parameter name="aEndDate"/>
+        <body>
+          <![CDATA[	
+										
+					var duration = aEndDate.subtractDate(aStartDate)
+					var durationInDays = duration.weeks*7 + duration.days + 1 //Add extra day to fill rightmost box
+					
+					if (this.displayDaysOff || this.mDaysOffArray.length<1)
+						return durationInDays;
+										
+					var workdaysDuration = duration.clone();
+					workdaysDuration.days = 0
+					workdaysDuration.weeks = 0
+					
+                                        function matchesDayOff(dayOffNum) { return dayOffNum == d.weekday; }
+                                        
+					for (var d = aStartDate.clone(); (duration.isNegative) === aEndDate.clone().subtractDate(d).isNegative; (duration.isNegative) ? d.day-- : d.day++ ) {
+						
+						if (!this.mDaysOffArray.some(matchesDayOff)) {
+
+								workdaysDuration.days++;
+						}
+					}
+
+					durationInDays = workdaysDuration.weeks*7 + workdaysDuration.days
+					return durationInDays;
+        ]]>
+        </body>
+      </method>
+
+      <method name="findColumnForDate">
+        <parameter name="aDate"/>
+        <body>
+          <![CDATA[
+          for (var col of this.mDateColumns) 
+          {
+              if (col.date == aDate)
+                  return col;
+          }
+          return null;
+        ]]>
+        </body>
+      </method>
+
+
+      <method name="findColumnsForItem">
+        <parameter name="aItem"/>
+        <body>
+          <![CDATA[						
+          if (!this.mDateColumns)
+						return;
+						
+					var columns = new Array();
+			
+          var tz = this.mDateColumns[0].date.timezone;
+
+          // Note that these may be dates or datetimes
+          var startDate = aItem.startDate || aItem.entryDate;
+					var endDate = aItem.endDate || aItem.dueDate;
+          
+          switch (true) {
+          
+          case (cal.item.isToDo(aItem) && !startDate && endDate):
+            startDate=endDate.clone;
+            break;
+            
+          case (cal.item.isToDo(aItem) && startDate && !endDate):
+            endDate=startDate.clone;
+            break;
+            
+          default:
+            return null;
+          
+          }
+          
+          var targetDate = startDate.getInTimezone(tz);
+          
+					var finishDate = endDate.getInTimezone(tz);
+
+          if (!targetDate.isDate) {
+            // Set the time to 00:00 so that we get all the boxes
+            targetDate.hour = 0;
+            targetDate.minute = 0;
+            targetDate.second = 0;
+          }
+
+          if (targetDate.compare(finishDate) == 0) {
+              // Zero length items are silly, but we have to handle them
+              var col = this.findColumnForDate(targetDate);
+              if (col) {
+                  columns.push(col);
+              }
+          }
+
+          while (targetDate.compare(finishDate) == -1) {
+            var col = this.findColumnForDate(targetDate);
+
+            // This might not exist if the item spans the view start or end
+            if (col) {
+                columns.push(col);
+            }
+            targetDate.day += 1;
+//            targetDate.normalize();
+          }
+
+          return columns;
+        ]]>
+        </body>
+      </method>
+
+      <!-- for the given client-coord-system point, return
+            - the GanttView-day-column that contains it.  If
+            - no column contains it, return null.
+            -->
+      <method name="findColumnForClientPoint">
+        <parameter name="aClientX"/>
+        <parameter name="aClientY"/>
+        <body>
+          <![CDATA[
+          for (var col of this.mDateColumns) {
+              var bo = col.column.boxObject;
+              if ((aClientX >= bo.screenX) && (aClientX < (bo.screenX + bo.width)) &&
+                  (aClientY >= bo.screenY) && (aClientY < (bo.screenY + bo.height)))
+              {
+                  return col;
+              }
+          }
+          return null;
+        ]]>
+        </body>
+      </method>
+
+      <method name="createChunk">
+        <parameter name="aOccurrence"/>
+        <body>
+          <![CDATA[
+
+           var mins = this.getStartEndMinutesForOccurrence(aOccurrence);
+
+           var chunk = {
+               startMinute: mins.start,
+               endMinute: mins.end,
+               event: aOccurrence
+           };
+           return chunk;
+        ]]>
+        </body>
+      </method>
+
+      <method name="addEvent">
+        <parameter name="aOccurrence"/>
+        <body>
+          <![CDATA[
+
+           this.internalDeleteEvent(aOccurrence);
+
+           var chunk = this.createChunk(aOccurrence);
+           this.mEvents.push(chunk);
+           if (this.mEventMapTimeout) {
+               clearTimeout(this.mEventMapTimeout);
+           }
+        ]]>
+        </body>
+      </method>
+
+      <field name="addItemCount">0</field>
+      <field name="mItemStartCols">[]</field>
+      <field name="mItemEndCols">[]</field>
+      <field name="mItemEndCols">[]</field>
+
+      <method name="doAddItem">
+        <parameter name="item"/>
+        <body>
+          <![CDATA[
+
+					var statusText = document.getElementById("statusText")
+					statusText.label = "Refreshing View... " + item.title
+					
+					if ((item.status == "COMPLETED") && (!this.showCompleted))
+						return;
+						
+					var itemLoopBreak = false;
+         
+         var itemBox = createXULElement("GanttView-item-box");
+					var itemHeaderBox = createXULElement("GanttView-item-header-box");
+					var itemRow = createXULElement("row");
+				
+         
+         var oldItemBox = this.findItemBoxForItem(item);
+         
+         
+         if (oldItemBox) {
+              itemBox = oldItemBox
+              itemHeaderBox = itemBox.itemHeader
+              itemRow = itemBox.itemRow
+
+              
+         } else {
+            
+					//set initial stack position to prevent flexing
+					itemBox.setAttribute("top", 0)
+					
+					this.itemsStack.appendChild(itemBox);	
+					this.itemHeaders.appendChild(itemHeaderBox);
+					this.itemRows.appendChild(itemRow);
+					
+          this.mItemCount++
+        }
+					itemBox.setAttribute("id", "GanttView-item-box-" + this.mItemCount );
+					itemHeaderBox.setAttribute("id", "GanttView-item-header-box-" + this.mItemCount );
+					itemRow.setAttribute("id", "GanttView-item-row-" + this.mItemCount );
+          
+					itemBox.itemHeader = itemHeaderBox;	
+					itemHeaderBox.itemBox = itemBox;
+					
+					itemBox.setAttribute("class", "GanttView-item-box");
+					itemHeaderBox.setAttribute("class", "GanttView-item-header-box");
+					itemRow.setAttribute("class", "GanttView-row-class" );		
+					
+					itemBox.itemRow = itemRow;
+					itemHeaderBox.itemRow = itemRow;
+					
+					itemBox.calendarView = this;
+					itemHeaderBox.calendarView = this;
+					
+					var ctxt = this.getAttribute("item-context") || this.getAttribute("context");
+					itemBox.setAttribute("context", ctxt);
+					itemHeaderBox.setAttribute("context", ctxt);
+					
+					//this also sets "per calendar" classes
+					itemBox.occurrence = item;
+					
+					itemHeaderBox.setAttribute("flex", 1);
+					
+          this.positionItemBox(itemBox);
+          
+          var oldItemFound = null;
+          
+          for (var i=0; i<this.mItems.length; i++) {
+            if (this.mItems[i].hashId == item.hashId) {
+              this.mItems[i] = item;
+              oldItemFound = true;
+            } 
+          }
+          if (!oldItemFound) {
+            this.mItems.push(item);
+          }
+
+          if (this.mItems.indexOf(itemBox.occurrence)==-1) {
+            this.mItems.push(item);
+          }
+          
+          if (this.mItemBoxes.indexOf(itemBox)==-1) {
+          
+            this.mItemBoxes.push(itemBox);
+          }
+          
+          this.sortItemBoxes();
+          
+          //statusText.label = "";
+          
+			]]>
+        </body>
+      </method>
+
+
+      <method name="doDeleteItem">
+        <parameter name="item"/>
+        <parameter name="aSuppressEvent"/>
+        <body>
+          <![CDATA[
+
+					
+          var aItemBox = this.findItemBoxForItem(item);
+
+          if (aItemBox) {
+                       
+            this.itemHeaders.removeChild(aItemBox.itemHeader)
+            this.itemRows.removeChild(aItemBox.itemRow)
+            this.itemsStack.removeChild(aItemBox);
+            
+            this.mItemBoxes.splice(this.mItemBoxes.indexOf(aItemBox),1);
+            this.mItems.splice(this.mItems.indexOf(item),1);
+          }
+          
+
+				// See whether the item we are deleting was selected.  If it was, then
+				// fire the appropriate event so our watchers can update
+          if ( this.mSelectedItems.indexOf(item) >= 0 ) {
+            this.mSelectedItems.splice(this.mSelectedItems.indexOf(item), 1);
+            if (aSuppressEvent) {
+              return;
+            } else {
+              this.fireEvent("itemselect", this.mSelectedItems);
+            }
+          }
+          
+          this.sortItemBoxes();
+          
+        ]]>
+        </body>
+      </method>
+
+      <method name="deleteItemsFromCalendar">
+        <parameter name="aCalendar"/>
+        <body>
+          <![CDATA[
+                    var deleteQueue = [];
+                    
+            for (let itemBox of this.mItemBoxes) {
+                if (itemBox.occurrence.calendar.id == aCalendar.id) {
+                  
+                  deleteQueue.push(itemBox.occurrence);
+                }
+            }
+            
+            this.suspendSortItemBoxes = true;
+            for (let item of deleteQueue) {
+              this.doDeleteItem(item, true);
+            }
+            
+            this.suspendSortItemBoxes = false;
+            this.sortItemBoxes();
+                    ]]>
+        </body>
+      </method>
+      <method name="setPixelsPerMin">
+        <parameter name="pixPerMin"/>
+        <body>
+          <![CDATA[
+          this.mPixPerMin = pixPerMin;
+
+          for (var col of this.mDateColumns) {
+              col.column.pixelsPerMinute = pixPerMin;
+          }
+        ]]>
+        </body>
+      </method>
+
+      <method name="getFirstVisibleMinute">
+        <body>
+          <![CDATA[
+          var minute = 0;
+          return minute;
+        ]]>
+        </body>
+      </method>
+
+      <method name="scrollToMinute">
+        <parameter name="aMinute"/>
+        <body>
+          <![CDATA[
+        ]]>
+        </body>
+      </method>
+
+      <field name="mInMouseDown">false</field>
+      <field name="mMouseDownHScroll">
+        0
+      </field>
+      <field name="mMouseDownVScroll">
+        0
+      </field>
+      <field name="mHScroll">
+        0
+      </field>
+      <field name="mVScroll">
+        0
+      </field>
+      <field name="mItemBoxBeingDragged">null</field>
+      <field name="mMouseDownCol">null</field>
+      <field name="mMouseOverCol">null</field>
+      <field name="mTargetCol">null</field>
+      <field name="mMouseDownX">
+        0
+      </field>
+      <field name="mMouseDownY">
+        0
+      </field>
+      <field name="mMousedx">
+        0
+      </field>
+      <field name="mMousedy">
+        0
+      </field>
+      <field name="mSelectionBox">
+        0
+      </field>
+      <field name="mPartialSelection">null</field>
+
+
+      <property name="partialSelection"
+       onget="return this.mPartialSelection;"
+       onset="return (this.mPartialSelection = val);"/>
+
+      <method name="createSelectionBox">
+        <parameter name="startX"/>
+        <parameter name="startY"/>
+        <body>
+          <![CDATA[
+					if (!startX && !(startX===0))
+						startX=this.mMouseDownX - this.itemsStack.boxObject.screenX //- this.mHScroll
+					if (!startY && !(startY===0))
+						startY=this.mMouseDownY - this.itemsStack.boxObject.screenY //- this.mVScroll
+					
+					this.mSelectionBox = createXULElement("GanttView-selection-box")
+					this.itemsStack.appendChild(this.mSelectionBox);
+					this.mSelectionBox.mouseDownGridX = startX;
+					this.mSelectionBox.mouseDownGridY = startY;
+					this.mSelectionBox.currentGridX = startX;
+					this.mSelectionBox.currentGridY = startY;
+					return this.mSelectionBox;
+					]]>
+        </body>
+      </method>
+
+      <method name="modifySelectionBox">
+        <parameter name="currentX"/>
+        <parameter name="currentY"/>
+        <body>
+          <![CDATA[			
+					if (!this.mSelectionBox) {
+						return null;
+					}
+					
+					var selectionBoxX = this.mMouseScreenX - this.mDayColumns.boxObject.screenX
+					var selectionBoxY = this.mMouseScreenY - this.mDayColumns.boxObject.screenY
+					var rightLimit = this.mDayColumns.boxObject.width
+					var bottomLimit = this.mDayColumns.boxObject.height
+					
+          selectionBoxX = (selectionBoxX<=0) ? 0 : selectionBoxX;
+					this.mSelectionBox.currentGridX = (selectionBoxX>rightLimit) ? rightLimit : selectionBoxX;
+					selectionBoxY = (selectionBoxY<=0) ? 0 : selectionBoxY;
+					this.mSelectionBox.currentGridY = (selectionBoxY>bottomLimit) ? bottomLimit :selectionBoxY;
+					
+					var selectionBoxLeft = (this.mSelectionBox.left)/1;
+					var selectionBoxRight = (this.mSelectionBox.left/1 + this.mSelectionBox.boxObject.width/1)
+					var selectionBoxTop = (this.mSelectionBox.top)/1
+					var selectionBoxBottom = (this.mSelectionBox.top/1 + this.mSelectionBox.boxObject.height/1)							
+							
+					if (selectionBoxLeft<0) selectionBoxLeft = 0
+					if (this.partialSelection) {
+						for (var itemBox of this.mItemBoxes){
+							var itemBoxLeft = (itemBox.left)/1
+							var itemBoxRight = (itemBox.left/1 + itemBox.boxObject.width/1)
+							var itemBoxTop = (itemBox.top)/1						
+							var itemBoxBottom = (itemBox.top/1 + itemBox.boxObject.height/1)
+
+							//compare edges of itembox against selection range, and edges of selectionbox against itembox
+							if (
+									(((itemBoxTop >= selectionBoxTop && itemBoxTop <= selectionBoxBottom) ||
+									(itemBoxBottom >= selectionBoxTop && itemBoxBottom <= selectionBoxBottom)) &&
+									((itemBoxLeft >= selectionBoxLeft && itemBoxLeft <= selectionBoxRight) ||
+									(itemBoxRight >= selectionBoxLeft && itemBoxRight <= selectionBoxRight)))	||		
+										
+									(((selectionBoxTop >= itemBoxTop && selectionBoxTop <= itemBoxBottom) ||
+									(selectionBoxBottom >= itemBoxTop && selectionBoxBottom <= itemBoxBottom)) &&
+									((selectionBoxLeft >= itemBoxLeft && selectionBoxLeft <= itemBoxRight) ||
+									(selectionBoxRight >= itemBoxLeft && selectionBoxRight <= itemBoxRight))) ||
+									
+									((selectionBoxTop <= itemBoxTop && selectionBoxBottom >= itemBoxBottom) &&
+									((selectionBoxLeft >= itemBoxLeft && selectionBoxLeft <= itemBoxRight) ||
+									(selectionBoxRight >= itemBoxLeft && selectionBoxRight <= itemBoxRight))) ||
+									
+									((selectionBoxLeft <= itemBoxLeft && selectionBoxRight >= itemBoxRight) &&
+									((selectionBoxTop >= itemBoxTop && selectionBoxTop <= itemBoxBottom) ||
+									(selectionBoxBottom >= itemBoxTop && selectionBoxBottom <= itemBoxBottom)))											
+									
+								 ) 
+							{
+
+										if (!itemBox.selectedByBox) {
+											itemBox.selectedByBox = true;
+											this.mSelectedByBoxItemBoxes.push(itemBox);
+										}
+										
+							} else {
+								if (itemBox.selectedByBox) {
+									itemBox.selectedByBox = false
+
+									this.mSelectedByBoxItemBoxes.splice(this.mSelectedByBoxItemBoxes.indexOf(itemBox),1);	
+								}
+							}
+						}
+					} else {
+						for (var itemBox of this.mItemBoxes){
+							var itemBoxLeft = (itemBox.left)/1
+							var itemBoxRight = (itemBox.left/1 + itemBox.boxObject.width/1)
+							var itemBoxTop = (itemBox.top)/1						
+							var itemBoxBottom = (itemBox.top/1 + itemBox.boxObject.height/1)
+							
+							if ((itemBoxTop >= selectionBoxTop && itemBoxTop <= selectionBoxBottom &&
+									itemBoxBottom >= selectionBoxTop && itemBoxBottom <= selectionBoxBottom) &&
+									(itemBoxLeft >= selectionBoxLeft && itemBoxLeft <= selectionBoxRight &&
+									 itemBoxRight >= selectionBoxLeft && itemBoxRight <= selectionBoxRight)) {
+										
+								if (!itemBox.selectedByBox)	{										
+									itemBox.selectedByBox = true;
+									this.mSelectedByBoxItemBoxes.push(itemBox);
+									}
+							} else {
+								if (itemBox.selectedByBox) {
+									itemBox.selectedByBox = false
+									this.mSelectedByBoxItemBoxes.splice(this.mSelectedByBoxItemBoxes.indexOf(itemBox),1);	
+								}
+							}
+						}					
+					}
+					
+					return this.mSelectionBox
+				]]>
+        </body>
+      </method>
+
+      <method name="removeSelectionBox">
+        <body>
+          <![CDATA[			
+					if (!this.mSelectionBox) {
+						return null;
+					}
+
+						if (this.mSelectedByBoxItemBoxes.length>0) {
+						
+							var newSelectedItems = [];
+							
+							for (var selectedByBoxItemBox of this.mSelectedByBoxItemBoxes) {
+								
+								if (selectedByBoxItemBox.selected && selectedByBoxItemBox.selectedByBox) {
+										this.removeSelectedItem(selectedByBoxItemBox.occurrence);
+								} else {
+										newSelectedItems.push(selectedByBoxItemBox.occurrence)
+								}
+							}
+							this.mSelectedByBoxItemBoxes = [];
+							newSelectedItems = newSelectedItems.concat(this.mSelectedItems);
+							this.setSelectedItems(newSelectedItems.length, newSelectedItems);
+						}
+					this.itemsStack.removeChild(this.mSelectionBox);
+					this.mSelectionBox = null
+					return this.mSelectionBox;
+				]]>
+        </body>
+      </method>
+
+      <field name="mScrollTimer">null</field>
+      <field name="mMouseScreenX">null</field>
+      <field name="mMouseScreenY">null</field>
+      <field name="mMouseDownButton">null</field>
+      <field name="mInMouseDownSelectionBox">null</field>
+      <field name="mInMouseDownPanning">null</field>
+      <field name="mMaxScrollX">null</field>
+      <field name="mMaxScrollY">null</field>
+      <field name="mSuppressScrollEvent">false</field>
+
+      <method name="autoScroll">
+        <parameter name="dx"/>
+        <parameter name="dy"/>
+        <parameter name="timeout"/>
+        <body>
+          <![CDATA[			
+					
+					if ((this.mHScroll == 0 && dx<0) || (this.mHScroll >= this.mDayColumns.boxObject.width-this.gridScrollBox.width && dx>0)) {
+						clearTimeout(this.mScrollTimer);
+					} else {
+						var self = this;
+						this.mScrollTimer = setTimeout(function() {self.autoScroll(dx, dy, timeout)}, timeout);
+					}
+					
+					this.gridScrollBox.scrollBy(dx, dy);	
+					var gsbx = {};
+					var gsby = {};					
+					this.gridScrollBox.getPosition(gsbx, gsby);			
+					
+					if (dx!=0)
+						this.mHScroll=gsbx.value;
+					if (dy!=0)
+						this.mVScroll=gsby.value;	
+					
+					if (this.mItemBoxBeingDragged) {
+						this.dragItemBox();
+					} else if (this.mSelectionBox) {
+						this.modifySelectionBox();
+					} else {
+						if (dx!=0)
+							this.mMouseDownX = this.mMouseScreenX;
+						if (dy!=0)
+							this.mMouseDownY = this.mMouseScreenY;
+					}
+					
+				]]>
+        </body>
+      </method>
+
+      <method name="scrollTo">
+        <parameter name="x"/>
+        <parameter name="y"/>
+        <parameter name="storePosition"/>
+        <body>
+          <![CDATA[
+					var gsbx = {};
+					var gsby = {};
+			
+					if ((x || x===0) && (y || y===0)) {
+						x=x
+						y=y
+						
+						this.gridScrollBox.scrollTo(x, y);
+						
+					} else if ((x || x===0) && !(y || y===0)) {
+						this.gridScrollBox.getPosition(gsbx, gsby);	
+						y=gsby.value
+
+						this.gridScrollBox.scrollTo(x, y);
+					
+					} else if ((y || y===0) && !(x || x===0)) {
+						this.gridScrollBox.getPosition(gsbx, gsby);	
+						x=gsbx.value
+						
+						this.gridScrollBox.scrollTo(x, y);
+					}
+					
+					this.gridScrollBox.getPosition(gsbx, gsby);	
+					x=gsbx.value
+					y=gsby.value
+					
+					
+
+					this.mItemHeadersInterface.scrollTo(0,y);
+					this.mDayHeadersInterface.scrollTo(x,0);				
+					
+					if (storePosition) {
+						this.mHScroll=x;
+						this.mVScroll=y;					
+					}
+					
+        ]]>
+        </body>
+      </method>
+
+      <property name="itemBoxBeingDragged">
+        <getter>
+          <![CDATA[
+           return this.mItemBoxBeingDragged;
+        ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+            this.mItemBoxBeingDragged = val;
+						
+            return val;
+        ]]>
+        </setter>
+      </property>
+
+      <field name="mDraggedOverColumns">[]</field>
+
+      <method name="dragItemBox">
+        <body>
+          <![CDATA[							
+						//drag itemBox - determines new dates based on box location, not date calculations
+						//  unless truncated at start or end.
+						//  this makes it more intuitive with hidden days off, etc, and is probably faster.
+						//  iterates through all selected items for multiple dragging
+						
+						var grabbedElement = this.mItemBoxBeingDragged.grabbedElement;
+						var newDraggedOverCols = false
+						this.mDraggedOverColumns = [];
+						
+						for (var item of this.mSelectedItems) {
+							var itemBox = this.findItemBoxForItem(item);
+							if (itemBox) {
+							
+								var newTargetCol = null 
+								var	newStartDate = itemBox.itemStartDate.clone();
+								var	newEndDate = itemBox.itemEndDate.clone();
+								var boxLeft = itemBox.itemBoxLeft
+								var boxWidth = itemBox.itemBoxWidth
+								var gridWidth = this.mDayColumns.boxObject.width
+								
+								var dx = this.mMouseScreenX - this.mDayColumns.boxObject.screenX - itemBox.mouseDownGridX;
+								var dy = (this.mMouseScreenY-this.mMouseDownY) + (this.mVScroll-this.mMouseDownVScroll);
+									
+								this.mMouseOverCol = this.findColumnForClientPoint(this.mMouseScreenX, itemBox.boxObject.screenY)||this.mMouseOverCol
+
+								if (grabbedElement=="start") {
+								
+									newTargetCol = this.findColumnForClientPoint(itemBox.boxObject.screenX + this.mPixelsPerDay/2, itemBox.boxObject.screenY)
+
+									boxLeft = (itemBox.itemBoxLeft + dx>0)?itemBox.itemBoxLeft + dx :0 
+									
+									if (boxLeft == 0){
+										boxWidth = itemBox.itemBoxRight
+									} else {
+										boxWidth = (itemBox.itemBoxWidth - dx > this.mPixelsPerDay) ? itemBox.itemBoxWidth - dx : this.mPixelsPerDay
+									}
+									
+									boxLeft = (boxLeft > gridWidth - this.mPixelsPerDay)?gridWidth - this.mPixelsPerDay:boxLeft
+									boxLeft = (boxLeft > itemBox.itemBoxRight - this.mPixelsPerDay)?itemBox.itemBoxRight - this.mPixelsPerDay:boxLeft
+									
+									itemBox.setAttribute("left", boxLeft)
+									itemBox.setAttribute("width", boxWidth)
+									
+								} else if (grabbedElement=="end") {
+								
+									newTargetCol = this.findColumnForClientPoint(itemBox.boxObject.screenX + itemBox.boxObject.width - this.mPixelsPerDay/2, itemBox.boxObject.screenY)
+									boxWidth = (itemBox.itemBoxWidth + dx > this.mPixelsPerDay)?itemBox.itemBoxWidth + dx : this.mPixelsPerDay
+									boxWidth = (itemBox.itemBoxRight + dx > gridWidth) ? gridWidth - itemBox.itemBoxLeft : boxWidth
+									itemBox.setAttribute("width", boxWidth)
+									
+								} else { //dragging whole itembox 
+
+									if (itemBox.startTruncated && itemBox.endTruncated) {
+									
+										newTargetCol = this.findColumnForClientPoint(this.mMouseScreenX, itemBox.boxObject.screenY)
+										var dDate = newTargetCol.date.subtractDate(this.mMouseDownCol.date)
+										newStartDate.addDuration(dDate);
+										newEndDate.addDuration(dDate);
+										
+										if (!newStartDate.subtractDate(this.startDate).isNegative || newEndDate.subtractDate(this.queryEndDate).isNegative){
+											this.positionItemBox(itemBox,newStartDate,newEndDate)	
+										} 
+											
+									} else if (itemBox.startTruncated) {
+											
+											boxWidth = (itemBox.itemBoxRight + dx>this.mPixelsPerDay)?itemBox.itemBoxRight + dx : this.mPixelsPerDay
+											
+											if (boxWidth > gridWidth ) { //item end is after view end
+												boxWidth = gridWidth
+												itemBox.endTruncated = true;
+											}
+											
+											itemBox.setAttribute("width", boxWidth)	
+											
+											//newTargetCol = this.findColumnForClientPoint(itemBox.boxObject.screenX + itemBox.boxObject.width, itemBox.boxObject.screenY)
+											
+											var testWidth = (this.workdaysCount(itemBox.itemStartDate,itemBox.itemEndDate))*this.mPixelsPerDay
+											
+											boxLeft = itemBox.boxObject.width-testWidth
+
+											if (boxLeft>=0){
+													itemBox.itemBoxWidth = testWidth
+													itemBox.itemBoxLeft = boxLeft
+													//correct for Mouse offset from new itemBoxLeft 
+													// by setting mousedown position at current position
+													itemBox.mouseDownGridX = this.mMouseScreenX - this.mDayColumns.boxObject.screenX		
+													itemBox.startTruncated = false
+											}
+										
+									} else if (itemBox.endTruncated) {
+										boxLeft = itemBox.itemBoxLeft + dx;
+										boxLeft = (boxLeft > gridWidth - this.mPixelsPerDay)?gridWidth - this.mPixelsPerDay:boxLeft
+										boxWidth = (gridWidth - itemBox.itemBoxLeft - dx>this.mPixelsPerDay)?gridWidth - itemBox.itemBoxLeft - dx: this.mPixelsPerDay
+										
+										if (boxLeft < 0) { //item start is before view start
+											boxLeft = 0;
+											itemBox.startTruncated = true;
+										}
+										
+										itemBox.setAttribute("left", boxLeft)
+										itemBox.setAttribute("width", boxWidth)
+	
+										//newTargetCol = this.findColumnForClientPoint(itemBox.boxObject.screenX, itemBox.boxObject.screenY)
+										
+											
+										var testWidth = this.workdaysCount(itemBox.itemStartDate,itemBox.itemEndDate)*this.mPixelsPerDay
+
+										if (itemBox.left*1 + testWidth*1 <= gridWidth){
+												itemBox.itemBoxLeft =  boxLeft
+												itemBox.itemBoxWidth =  testWidth
+												//correct for Mouse offset from new itemBoxLeft 
+												// by setting mousedown position at current position
+												itemBox.mouseDownGridX = this.mMouseScreenX - this.mDayColumns.boxObject.screenX													
+												itemBox.endTruncated = false
+										}											
+									
+									} else {  //Dragging whole untruncated box
+									
+										newTargetCol = this.findColumnForClientPoint(itemBox.boxObject.screenX + this.mPixelsPerDay/2, itemBox.boxObject.screenY)
+										
+										boxLeft = itemBox.itemBoxLeft + dx;
+										boxLeft = (boxLeft > gridWidth - this.mPixelsPerDay) ? gridWidth - this.mPixelsPerDay : boxLeft	
+										boxWidth = itemBox.itemBoxWidth
+										
+										if (boxLeft < 0) { //item start is before view start
+											boxLeft = 0;
+											itemBox.startTruncated = true;
+											
+										} else if (boxLeft + itemBox.itemBoxWidth > gridWidth ) { //item end is after view end
+											boxWidth = gridWidth - boxLeft
+											itemBox.endTruncated = true;
+											
+										}
+										itemBox.setAttribute("left", boxLeft)
+										itemBox.setAttribute("width", boxWidth)
+									}
+									
+								}
+								
+								//Highlight Target Columns
+								var itemBoxStartColIndex = Math.round(itemBox.left/this.mPixelsPerDay)
+								var itemBoxEndColIndex = Math.round(itemBox.left/this.mPixelsPerDay + itemBox.boxObject.width/this.mPixelsPerDay);
+								
+								if ((itemBox.itemBoxStartColIndex != itemBoxStartColIndex) || (itemBox.itemBoxEndColIndex != itemBoxEndColIndex)) {
+									
+									itemBox.itemBoxStartColIndex = itemBoxStartColIndex
+									itemBox.itemBoxEndColIndex = itemBoxEndColIndex
+									
+                  
+                  
+									// this.sortItemBoxes() is too slow here, and dates aren't updated in real time.  Compare against each other itembox instead except when grouped
+                    
+                    //this.sortItemBoxes();
+                    
+                    if (!this.titleOrdinalOverride || isNaN(parseFloat(itemBox.itemTitle))) {
+                                          
+                      var itemBoxOrd = itemBox.ordinal;
+                      var itemBoxNewOrd = itemBoxOrd;
+                      var itemBoxCal = itemBox.itemCalendar;
+                      
+                      for (var otherItemBox of this.mItemBoxes) {
+                        
+                        if (!this.titleOrdinalOverride || isNaN(parseFloat(otherItemBox.itemTitle))) {
+                          var otherItemBoxOrd = otherItemBox.ordinal;
+                          var otherItemBoxCal = otherItemBox.itemCalendar;
+
+                          if (!this.groupByCalendar || itemBoxCal==otherItemBoxCal) {                      
+                            if ((itemBoxStartColIndex < otherItemBox.itemBoxStartColIndex) && (otherItemBoxOrd < itemBoxOrd)) {
+
+                                if (otherItemBoxOrd < itemBoxNewOrd) {
+                                  itemBoxNewOrd = otherItemBoxOrd;
+                                }
+                                otherItemBox.ordinal++;
+                              
+                            } else if ((itemBoxStartColIndex > otherItemBox.itemBoxStartColIndex) && (otherItemBoxOrd > itemBoxOrd)) {
+                              if (otherItemBoxOrd > itemBoxNewOrd) {
+                                itemBoxNewOrd = otherItemBoxOrd;
+                              }
+                              otherItemBox.ordinal--;		
+                              
+                            } else if (itemBoxStartColIndex == otherItemBox.itemBoxStartColIndex) {
+                              //sort by end columns
+                              if ((itemBoxEndColIndex <= otherItemBox.itemBoxEndColIndex) && (otherItemBoxOrd < itemBoxOrd)) {
+                                if (otherItemBoxOrd < itemBoxNewOrd) {
+                                  itemBoxNewOrd = otherItemBoxOrd;
+                                }
+                                otherItemBox.ordinal++;
+                                
+                              } else if ((itemBoxEndColIndex > otherItemBox.itemBoxEndColIndex) && (otherItemBoxOrd > itemBoxOrd)) {
+                                if (otherItemBoxOrd > itemBoxNewOrd) {
+                                  itemBoxNewOrd = otherItemBoxOrd;
+                                }
+                                otherItemBox.ordinal--;		
+                                
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                    
+                    
+                    // set top values after the whole array has already been assigned ordinals - must be a separate loop
+                    if (itemBoxOrd != itemBoxNewOrd) {
+                      itemBox.ordinal = itemBoxNewOrd;
+                      for (itemBox of this.mItemBoxes) {
+                        var itemTop = itemBox.itemRow.boxObject.screenY - this.mItemRows.boxObject.screenY;
+                        itemBox.setAttribute("top", itemTop);
+                      }
+                    }
+                
+                
+									for (var i=itemBoxStartColIndex; i<itemBoxEndColIndex; i++) {
+										this.mDraggedOverColumns[i] = true; 
+									}
+									
+									newDraggedOverCols = true
+									
+								}
+							}
+						}
+						
+						if (newDraggedOverCols) {
+							for (var col of this.mDateColumns) {
+								if (this.mDraggedOverColumns[this.mDateColumns.indexOf(col)]) {			
+									col.column.setAttribute("draggedover", "true");
+									col.header.setAttribute("draggedover", "true");								
+								} else {
+									col.column.setAttribute("draggedover", "false");
+									col.header.setAttribute("draggedover", "false");								
+								}
+							}
+							
+						}
+        ]]>
+        </body>
+      </method>
+
+      <field name="mItemsForModification">[]</field>
+
+      <method name="dropItem">
+        <body>
+          <![CDATA[
+
+					var grabbedElement = this.mItemBoxBeingDragged.grabbedElement;
+					
+					this.mSuspendRefresh = true;
+					
+					var unifinderTree = document.getElementById("unifinder-search-results-tree")
+					unifinderTree.removeEventListener("select", unifinderSelect, true)
+					
+					var selectedItems = this.getSelectedItems({});
+					
+          //Store details for item modification in a new object to avoid
+          // problems when old items are deleted during modification
+          // then iterate to apply the modification on multiple items
+          
+          var calView=this;
+          
+          function ItemModDetails(item)
+          {
+
+						var itemBox = calView.findItemBoxForItem(item);
+            
+						if (!itemBox)
+							return;
+							
+						var boxLeft = itemBox.itemBoxLeft;
+						var boxWidth = itemBox.itemBoxWidth;
+
+						this.itemOcc = itemBox.occurrence;
+            this.itemHashId = this.itemOcc.hashId;
+            this.title = this.itemOcc.title;
+            
+            
+            this.setItemOcc = function setItemOcc(occ) {
+              this.itemOcc = occ;
+              this.itemHashId = occ.hashId;
+              this.title = occ.title;
+            }
+ 
+            this.getHashId = function getHashId() {
+              return this.itemHashId;
+            }
+            
+            
+						this.oldStartDate = itemBox.itemStartDate.clone();
+						this.oldEndDate = itemBox.itemEndDate.clone();			
+						this.newStartDate = this.oldStartDate.clone();
+						this.newEndDate = this.oldEndDate.clone();
+						
+						if (itemBox.startTruncated && itemBox.endTruncated) {
+							var newTargetCol = calView.findColumnForClientPoint(calView.mMouseScreenX, itemBox.boxObject.screenY)
+							var dDate = newTargetCol.date.subtractDate(calView.mMouseDownCol.date)
+							this.newStartDate.addDuration(dDate);
+							this.newEndDate.addDuration(dDate);
+						} else {
+							if (itemBox.startTruncated ) {
+								var newTargetCol = calView.findColumnForClientPoint(itemBox.boxObject.screenX + itemBox.boxObject.width - calView.mPixelsPerDay/2, itemBox.boxObject.screenY)
+								var dDate = newTargetCol.date.subtractDate(this.newEndDate)
+								this.newStartDate.addDuration(dDate);
+							} else {
+								var newStartCol = calView.findColumnForClientPoint(itemBox.boxObject.screenX + calView.mPixelsPerDay/2, itemBox.boxObject.screenY) 
+								this.newStartDate = newStartCol.column.date.clone()
+								
+							} 
+							
+							if (itemBox.endTruncated ) {
+								var newTargetCol = calView.findColumnForClientPoint(itemBox.boxObject.screenX + calView.mPixelsPerDay/2, itemBox.boxObject.screenY)
+								this.newEndDate = this.oldEndDate.clone();  
+                //in case this.newEndDate has changed above
+								
+                //check for all-day item							
+								var dDate = newTargetCol.date.subtractDate(this.oldStartDate)					
+								this.newEndDate.addDuration(dDate);
+							} else {
+								var newEndCol = calView.findColumnForClientPoint(itemBox.boxObject.screenX + itemBox.boxObject.width - calView.mPixelsPerDay/2, itemBox.boxObject.screenY)
+								this.newEndDate = newEndCol.column.date.clone()
+							}
+						} 
+						//check for all-day item
+						if (this.oldStartDate.isDate) {
+							this.newEndDate.day++;
+						} else {
+							//preserve start and end times
+							this.newStartDate.isDate = false
+							this.newStartDate.hour = this.oldStartDate.hour
+							this.newStartDate.minute = this.oldStartDate.minute
+							this.newStartDate.second = this.oldStartDate.second
+							this.newEndDate.isDate = false
+							this.newEndDate.hour = this.oldEndDate.hour
+							this.newEndDate.minute = this.oldEndDate.minute
+							this.newEndDate.second = this.oldEndDate.second
+              
+              //reclaim lost day if end time is midnight
+              if ((!itemBox.startTruncated) && (this.newEndDate.hour + this.newEndDate.minute + this.newEndDate.second == 0)) {
+                this.newEndDate.day++;
+              }
+						}
+            
+            this.applyModification = function applyModification()
+            { 
+              // Workaround since modifyOccurrence won't assign a 
+              // new start/end date unless the item already has one
+              this.itemOcc = this.itemOcc.clone();
+              if (cal.item.isEvent(this.itemOcc)) {
+                  if (this.oldStartDate && !this.itemOcc.startDate) {
+                      this.itemOcc.startDate = this.oldStartDate;
+                  }
+                  if (this.oldEndDate && !this.itemOcc.endDate) {
+                      this.itemOcc.endDate = this.oldEndDate;
+                  }
+              } else {
+                  if (this.oldStartDate && !this.itemOcc.entryDate) {
+                      this.itemOcc.entryDate = this.oldStartDate;
+                  }
+                  if (this.oldEndDate && !this.itemOcc.dueDate) {
+                      this.itemOcc.dueDate = this.oldEndDate;
+                  }
+              }
+              
+              switch (grabbedElement) {
+              
+              case "start":
+                this.itemOcc
+                calView.controller.modifyOccurrence(this.itemOcc, this.newStartDate, this.oldEndDate);
+                break;
+              
+              case "end":
+                calView.controller.modifyOccurrence(this.itemOcc, this.oldStartDate, this.newEndDate);
+                break;
+              
+              default:
+                calView.controller.modifyOccurrence(this.itemOcc, this.newStartDate, this.newEndDate);
+              }
+            }	
+          }
+          
+          this.mItemsForModification = [];
+          var itemIndex = -1;
+          
+          for (var item of selectedItems) {
+            itemIndex++;
+            this.mItemsForModification[itemIndex] = new ItemModDetails(item);
+          }
+          
+          this.suspendSortItemBoxes = true;
+          
+          
+          for (var item of this.mItemsForModification) {
+            
+            item.applyModification();
+            
+          }
+          					
+					for (var col of this.mDateColumns) {
+						
+							col.column.removeAttribute("draggedover");
+							col.header.removeAttribute("draggedover");
+					}
+					
+					this.mItemBoxBeingDragged = null
+					this.mInMouseDown = false;
+					this.mMouseOverCol = null
+					this.mMouseDownCol = null
+					this.mTargetCol = null
+					
+          this.suspendSortItemBoxes = false;
+					this.sortItemBoxes();
+					
+				]]>
+        </body>
+      </method>
+
+
+      <method name="onEventSweepMouseMove">
+        <parameter name="event"/>
+        <body>
+          <![CDATA[
+				var calView = document.calendarView || this;
+        if (!calView.mInMouseDown)
+            return;
+						
+				var mousedx = event.screenX-calView.mMouseDownX
+				var mousedy = event.screenY-calView.mMouseDownY
+				var scrolldx = calView.mHScroll-calView.mMouseDownHScroll 
+				var scrolldy = calView.mVScroll-calView.mMouseDownVScroll
+				
+				var dx = 0
+				var dy = 0
+				
+        // more than a 3 pixel move?
+        if ((mousedx*mousedx + mousedy*mousedy) > 9) {
+					var ddx = 0//mousedx-calView.mMousedx
+					var ddy = 0//mousedy-calView.mMousedy
+					calView.mMousedx = mousedx;
+	        calView.mMousedy = mousedy;
+					calView.mMouseScreenX = event.screenX;
+					calView.mMouseScreenY = event.screenY;
+					
+					
+					if (calView.mMouseDownButton==0 && !calView.mInMouseDownSelectionBox && !calView.mItemBoxBeingDragged) {
+						calView.mInMouseDownSelectionBox = true
+						calView.createSelectionBox();
+					}
+					
+					var hThreshold = calView.autoscrollthreshold * calView.gridScrollBox.width
+					var vThreshold = calView.autoscrollthreshold * calView.gridScrollBox.height
+					var pastLeftThreshold = calView.gridScrollBox.screenX + hThreshold - event.screenX
+					var pastRightThreshold = event.screenX - (calView.gridScrollBox.screenX + calView.gridScrollBox.width - hThreshold)
+					var pastTopThreshold = calView.gridScrollBox.screenY + vThreshold - event.screenY
+					var pastBottomThreshold = event.screenY - (calView.gridScrollBox.screenY + calView.gridScrollBox.height - vThreshold)
+					var scrollX = null //must start at null, not 0
+					var scrollY = null //must start at null, not 0
+					
+					clearTimeout(calView.mScrollTimer);	
+					if ((ddx<=0) && (pastLeftThreshold>=0)) {
+						dx = pastLeftThreshold/(hThreshold)*calView.autoscrollspeed;
+						
+					} else if ((ddx>=0) && (pastRightThreshold>=0)) {
+						dx = -pastRightThreshold/(hThreshold)*calView.autoscrollspeed;
+					} else {
+						scrollX = calView.mHScroll - event.screenX + calView.mMouseDownX
+						
+					}
+					
+					if ((ddy<=0) && (pastTopThreshold>=0)) {
+						dy = pastTopThreshold/(vThreshold)*calView.autoscrollspeed;
+					} else if ((ddy>=0) && (pastBottomThreshold>=0)) {
+						dy = -pastBottomThreshold/(vThreshold)*calView.autoscrollspeed;
+					} else {
+						scrollY = calView.mMouseDownVScroll + scrolldy - mousedy
+						
+					}
+					
+					if(calView.mItemBoxBeingDragged){
+						if (dx!=0 || dy !=0 ){
+							dx = -dx
+							dy = -dy
+							calView.autoScroll(dx, dy, 33);	
+						}	else {
+							calView.dragItemBox();	
+						}
+						
+					}	else if (calView.mInMouseDownSelectionBox){
+						if (dx!=0 || dy !=0 ){
+							dx = -dx
+							dy = -dy
+							calView.autoScroll(dx, dy, 33);	
+						}	else {					
+							calView.modifySelectionBox();
+						}
+					} else if (calView.mInMouseDownPanning) {
+							
+							calView.scrollTo(scrollX, scrollY, false);	
+							if (dx!=0 || dy !=0 )
+								calView.autoScroll(dx, dy, 33);
+					}
+	        
+        }
+				]]>
+        </body>
+      </method>
+      <method name="onEventSweepMouseUp">
+        <parameter name="event"/>
+        <body>
+          <![CDATA[			
+
+        if (this.mEditing)
+            return;				
+				
+				// avoid using "this" since this function is called from an event
+				//  listener on the window
+				
+				var calView = document.calendarView || this;
+				
+				GanttView.removeEventSweepListeners();
+				
+				calView.mInMouseDown = false;
+				clearTimeout(calView.mScrollTimer);	
+				var dx = (event.screenX - calView.mMouseDownX);
+				var dy = (event.screenY - calView.mMouseDownY);
+				
+				calView.mMouseDownButton = null;
+				calView.mInMouseDownSelectionBox = false;
+				//calView.mInMouseDownPanning = false;
+				//calView.gridScrollBox.removeAttribute("panning");
+                                calView.panning=false;
+				calView.mInMouseDownCtrlKey = false;
+				calView.removeSelectionBox();
+				
+				if(!calView.mItemBoxBeingDragged) {
+						
+						calView.mMouseDownCol=null
+
+				
+				} else {
+					if (dx*dx + dy*dy >= 9) {
+						calView.mMouseOverCol = calView.findColumnForClientPoint(event.screenX, calView.mItemBoxBeingDragged.boxObject.screenY) || calView.mMouseOverCol
+						//drop itemBox
+						calView.dropItem()
+						calView.mMouseOverCol = null;
+					}
+				}
+			]]>
+        </body>
+      </method>
+
+    </implementation>
+
+    <handlers>
+
+      <handler event="mousedown">
+        <![CDATA[
+
+				// avoid using "this" since this function is called from an event
+				//  listener on the window
+				
+				var calView = document.calendarView || this;
+                                
+				GanttView.removeEventSweepListeners();
+                                
+				if (event.button == 2) {
+					return;
+				} else {
+					calView.mMouseDownButton = event.button
+				}
+
+        event.stopPropagation();
+				
+				//filter out mousedown on scrollbars and item headers splitter
+				
+        var gridScrollBox = calView.gridScrollBox;
+                                
+        //if (!gridScrollBox) 
+        //    alert("No gridScrollBox");
+                                
+				if ((event.screenX>=gridScrollBox.screenX + gridScrollBox.width - calView.mVScrollbarWidth) ||
+						(event.screenY>=gridScrollBox.screenY + gridScrollBox.height - calView.mHScrollbarHeight) ||
+						(event.screenY<=gridScrollBox.screenY) || 
+						(event.screenX<=gridScrollBox.screenX))
+						return;
+						
+        calView.mMouseDownX = event.screenX;
+        calView.mMouseDownY = event.screenY;
+				calView.mMouseDownCol=calView.findColumnForClientPoint(event.screenX, event.screenY)
+				
+				if(!calView.mMouseDownCol ) {
+					calView.mInMouseDown = false;
+					return;
+				}
+				
+				if (event.ctrlKey){
+					calView.mInMouseDownCtrlKey = true
+				}
+				
+				switch (calView.mMouseDownButton) 
+				{ case 0:
+					if (calView.itemBoxBeingDragged){
+							for (var item of calView.mSelectedItems) {
+							   
+								var itemBox = calView.findItemBoxForItem(item);
+								if (itemBox) {
+									if (itemBox.editing) {
+										calView.itemBoxBeingDragged = null;
+										return;
+									}
+									
+									itemBox.mouseDownGridX = calView.mMouseDownX - calView.mDayColumns.boxObject.screenX
+								}
+							}
+					} else {
+						if (!calView.mInMouseDownCtrlKey) {
+							calView.setSelectedItems(0,[]);
+						}
+					}
+					break;
+					
+					case 1:
+					//calView.mInMouseDownPanning = true;
+					calView.panning=true;
+					
+					break;
+				}
+				
+
+					var gsbx = {};
+					var gsby = {};
+                                        
+          //var gridScrollBoxInterface = gridScrollBox.QueryInterface(Components.interfaces.nsIScrollBoxObject);
+                                        
+					gridScrollBox.getPosition(gsbx, gsby);						
+					calView.mHScroll=gsbx.value;
+					calView.mVScroll=gsby.value;
+					calView.mMouseDownHScroll=gsbx.value;
+					calView.mMouseDownVScroll=gsby.value;		
+					
+					calView.mInMouseDown = true
+				
+					//add event sweep move listener to window
+					document.calendarView = calView;
+					//var calView = document.calendarView
+          
+					window.addEventListener("mousemove", calView.onEventSweepMouseMove, false);
+					window.addEventListener("mouseup", calView.onEventSweepMouseUp, false);
+				
+      ]]>
+      </handler>
+
+      <handler event="mouseover">
+        <![CDATA[
+                
+                        // avoid using "this" since this function is called from an event
+                        //  listener on the window
+
+                        //var calView = document.calendarView
+                                			
+			if (this.calendarView && this.calendarView.controller) {
+						event.stopPropagation();
+						onMouseOverItem(event);
+        }
+      ]]>
+      </handler>
+
+      <handler event="click" button="0" phase="bubbling">
+        <![CDATA[
+                
+                		// avoid using "this" since calView function is called from an event
+				//  listener on the window
+				
+				var calView = document.calendarView || this;
+                
+        //deselect all items
+				this.setSelectedItems(0,[]);
+				
+				GanttView.removeEventSweepListeners();
+				
+				var clickedDay = calView.findColumnForClientPoint(event.screenX, calView.mDayColumns.boxObject.screenY)
+				if (clickedDay)
+					calView.selectedDay = clickedDay.date
+      ]]>
+      </handler>
+
+      <handler event="dblclick" button="0">
+        <![CDATA[
+                
+        // avoid using "this" since this function is called from an event
+				//  listener on the window
+				
+				var calView = document.calendarView || this;
+                                
+				event.stopPropagation();
+				
+				GanttView.removeEventSweepListeners();
+				
+				var clickedDay = this.findColumnForClientPoint(event.screenX, this.mDayColumns.boxObject.screenY)
+				if (clickedDay) {
+					this.selectedDay = clickedDay.date	
+					createEventWithDialog(null, clickedDay.date, null);
+				}
+      ]]>
+      </handler>
+      
+      <handler event="keypress">
+        <![CDATA[
+
+				// avoid using "this" since this function is called from an event
+				//  listener on the window
+				
+				var calView = document.calendarView || this;
+
+        const kKE = Components.interfaces.nsIDOMKeyEvent;
+        //if (event.keyCode == kKE.DOM_VK_BACK_SPACE ||
+        //    event.keyCode == kKE.DOM_VK_DELETE)
+        if (event.key=="Delete" || event.key=="Backspace")
+        {   
+            event.stopPropagation();
+            if (!calView.activeInPlaceEdit && calView.mSelectedItems.length && calView.controller) {
+                    
+                    calView.suspendSortItemBoxes = true;
+                    
+                    deleteSelectedEvents();
+                    
+                    calView.suspendSortItemBoxes = false;
+                    calView.sortItemBoxes();
+                   
+            }
+        }
+        
+        
+				
+      ]]>
+      </handler>
+
+      <handler event="scroll">
+        <![CDATA[
+							
+							this.scrollTo()
+							
+			]]>
+      </handler>
+
+      <handler event="DOMMouseScroll" phase="capturing">
+        <![CDATA[
+			//prevent scrolling selected timeframe (this triggers a "gotoday" somewhere
+			//"scroll" event is fired without any active code here if mouse 
+			// is over gridScrollbox
+			
+				event.stopPropagation();
+
+			]]>
+      </handler>
+      <handler event="wheel"  phase="capturing">
+        <![CDATA[
+          //const pixelThreshold = 150;
+          //if (event.shiftKey && Preferences.get("calendar.view.mousescroll", true)) {
+          //    if (event.deltaMode == event.DOM_DELTA_LINE) {
+          //        if (event.deltaY != 0) {
+          //            deltaView = event.deltaY < 0 ? -1 : 1;
+          //        }
+          //    } else if (event.deltaMode == event.DOM_DELTA_PIXEL) {
+          //        this.mPixelScrollDelta += event.deltaY;
+          //        if (this.mPixelScrollDelta > pixelThreshold) {
+          //            deltaView = 1;
+          //            this.mPixelScrollDelta = 0;
+          //        } else if (this.mPixelScrollDelta < -pixelThreshold) {
+          //            deltaView = -1;
+          //            this.mPixelScrollDelta = 0;
+          //        }
+          //    }
+
+          //    if (deltaView != 0) {
+          //        this.moveView(deltaView);
+          //    }
+          //}
+
+          // Prevent default scroll handling
+          //event.preventDefault();
+      ]]>
+      </handler>
+    </handlers>
+  </binding>
+
+
+</bindings>

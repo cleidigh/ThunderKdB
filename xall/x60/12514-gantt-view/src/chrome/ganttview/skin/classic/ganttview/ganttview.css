@@ -1,0 +1,658 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is Calendar view code.
+ *
+ * The Initial Developer of the Original Code is
+ *  Oracle Corporation
+ * Portions created by the Initial Developer are Copyright (C) 2005
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Vladimir Vukicevic <vladimir@pobox.com>
+ *   Joey Minta <jminta@gmail.com>
+ *   Michiel van Leeuwen <mvl@exedo.nl>
+ *   Philipp Kewisch <mozilla@kewis.ch>
+ *   Markus Adrario <MarkusAdrario@web.de>
+ *   Simon Paquet <bugzilla@babylonsounds.com>
+ *   Berend Cornelius <berend.cornelius@sun.com>
+ *   Christian Jansen <christian.jansen@sun.com>
+ *
+ * GanttView code  is based on various versions of Sunbird/Lighning views 
+ * from  0.2 to present. Please contact me  if I have omitted or mistakenly
+ * included a contributor.  
+ *	Joe Brochu <ganttview@gmail.com>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+ 
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/*--------------------------------------------------------------------
+ *   G A N T T     V I E W
+ *-------------------------------------------------------------------*/
+GanttView-day-column{ 
+  -moz-binding: url(chrome://ganttview/content/calendar-gantt-view-day-column.xml#GanttView-day-column);
+  }
+
+GanttView-day-header-column{ 
+  -moz-binding: url(chrome://ganttview/content/calendar-gantt-view-day-header-column.xml#GanttView-day-header-column);
+}
+
+GanttView-week-header-box{ 
+  -moz-binding: url(chrome://ganttview/content/calendar-gantt-view-week-header-box.xml#GanttView-week-header-box);
+}
+
+GanttView-month-header-box {
+    -moz-binding: url(chrome://ganttview/content/calendar-gantt-view-month-header-box.xml#GanttView-month-header-box);
+}
+
+GanttView-category-box {
+    -moz-binding: url(chrome://ganttview/content/calendar-gantt-view-category-box.xml#GanttView-category-box);
+}
+
+GanttView-item-gripbar {
+    -moz-binding: url(chrome://ganttview/content/calendar-gantt-view-item-gripbar.xml#GanttView-item-gripbar);
+}
+
+GanttView-item-box {
+    -moz-binding: url(chrome://ganttview/content/calendar-gantt-view-item-box.xml#GanttView-item-box);
+}
+
+GanttView-item-header-box {
+    -moz-binding: url(chrome://ganttview/content/calendar-gantt-view-item-header-box.xml#GanttView-item-header-box);
+}
+
+GanttView-selection-box {
+    -moz-binding: url(chrome://ganttview/content/calendar-gantt-view-selection-box.xml#GanttView-selection-box);
+}
+ 
+calendar-GanttView-view{ 
+  -moz-binding: url(chrome://ganttview/content/calendar-gantt-view.xml#GanttView-view);
+  -moz-user-focus: normal;
+}
+ 
+/*--------------------------------------------------------------------
+ *   gantt view button
+ *-------------------------------------------------------------------*/
+
+ .toolbarbutton-gantt {
+    -moz-box-orient: vertical;
+    min-width: 0px;
+    list-style-image: url("chrome://ganttview/skin/gantt-toolbar-large.png");
+   padding-top: 5px;
+   padding-bottom: 6px;
+   -moz-padding-start: 4px;
+   -moz-padding-end: 5px;		
+}
+
+toolbar[mode="full"]  .toolbarbutton-gantt  {
+    min-width: 55px;
+}
+
+/*--------------------------------------------------------------------
+ *   Primary toolbar buttons - small
+ *-------------------------------------------------------------------*/
+
+ /*
+toolbar[iconsize="small"] .toolbarbutton-gantt {
+    -moz-box-orient: vertical;
+    min-width: 0px;
+    list-style-image: url("chrome://ganttview/skin/toolbar-small.png");
+}
+ 
+#GanttView-button {
+    -moz-image-region: rect(0px 24px 24px 0px);
+}
+#GanttView-button:hover {
+    -moz-image-region: rect(24px 24px 48px 0px);
+}
+#GanttView-button:hover:active,
+#GanttView-button[checked="true"],
+#GanttView-button[checked="true"]:hover {
+    -moz-image-region: rect(72px 24px 96px 0px);
+    border-color: ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow;
+    color: ButtonText;
+}
+*/
+
+/*--------------------------------------------------------------------
+ *   gantt view button - small
+ *-------------------------------------------------------------------*/
+ .toolbarbutton-ganttprefs {
+    -moz-box-orient: horizontal;
+    min-width: 0px;
+    list-style-image: url("chrome://ganttview/skin/gantt-prefs-toolbar.png");
+   padding-top: 5px;
+   padding-bottom: 6px;
+   -moz-padding-start: 4px;
+   -moz-padding-end: 5px;		
+}
+
+#GanttView-showprogressbars-button[showprogressbars="true"] {
+    -moz-image-region: rect(0px 40px 24px 16px);
+}
+#GanttView-showprogressbars-button {
+    -moz-image-region: rect(24px 40px 48px 16px);
+}
+
+#GanttView-groupbycalendar-button[groupbycalendar="true"] {
+    -moz-image-region: rect(48px 40px 72px 16px);
+}
+
+#GanttView-groupbycalendar-button {
+    -moz-image-region: rect(72px 40px 96px 16px);
+}
+
+#GanttView-titleordinaloverride-button[titleordinaloverride="true"] {
+    -moz-image-region: rect(96px 40px 120px 16px);
+}
+
+#GanttView-titleordinaloverride-button {
+    -moz-image-region: rect(120px 40px 144px 16px);
+} 
+ 
+toolbar[iconsize="small"] #GanttView-showprogressbars-button[showprogressbars="true"] {
+    -moz-image-region: rect(0px 16px 16px 0px);
+}
+toolbar[iconsize="small"] #GanttView-showprogressbars-button {
+    -moz-image-region: rect(16px 16px 32px 0px);
+}
+
+toolbar[iconsize="small"] #GanttView-groupbycalendar-button[groupbycalendar="true"] {
+    -moz-image-region: rect(48px 16px 64px 0px);
+}
+
+toolbar[iconsize="small"] #GanttView-groupbycalendar-button {
+    -moz-image-region: rect(64px 16px 80px 0px);
+}
+
+toolbar[iconsize="small"] #GanttView-titleordinaloverride-button[titleordinaloverride="true"] {
+    -moz-image-region: rect(96px 16px 112px 0px);
+}
+
+toolbar[iconsize="small"] #GanttView-titleordinaloverride-button {
+    -moz-image-region: rect(112px 16px 128px 0px);
+}
+
+
+
+ .GanttView-day-class,
+ .GanttView-day-header-class
+ {
+
+  background-color           : #ffffff; 
+  border-bottom         : 1px solid #D2D2D2;
+	border-right: 1px solid #D2D2D2;
+
+ }
+ 
+ .GanttView-day-class[overflow="hidden"],
+ .GanttView-day-header-class[overflow="hidden"]{ 
+ 	overflow: hidden;
+ }
+ 
+  .GanttView-spacer[topborder="true"],
+  .GanttView-day-class[topborder="true"],
+  .GanttView-day-header-class[topborder="true"]
+{
+    border-top         : 1px solid #D2D2D2;
+}
+
+ .GanttView-spacer[leftborder="true"],
+ .GanttView-day-class[leftborder="true"],
+ .GanttView-day-header-class[leftborder="true"]
+{
+       border-left           : 1px solid #D2D2D2;
+}
+ 
+ .GanttView-spacer[endborder="true"],
+ .GanttView-day-class[endborder="true"],
+ .GanttView-day-header-class[endborder="true"]
+{
+       border-right           : 1px solid #909090;
+}
+
+  .GanttView-day-class[othermonth="true"]
+{
+  background-color: #F3F3F3;
+}   
+  .GanttView-day-header-class[othermonth="true"]
+{
+  background-color: #E8E8E8;
+}
+ .GanttView-day-class[day-off="true"]
+{
+  background-color: #F7FFE3;
+} 
+ .GanttView-day-header-class[day-off="true"]
+{
+  background-color: #EAF7CA;
+}
+ .GanttView-day-class[othermonth="true"][day-off="true"]
+{
+  background-color: #E8E8E8;
+}
+ .GanttView-day-header-class[othermonth="true"][day-off="true"]
+{
+  background-color: #DDDDDD;
+}
+
+ .GanttView-day-class[relation="today"]
+{
+  background-color: #E1F0FD;
+    border: 1px solid #7FB9EE !important;
+    border-bottom: 1px solid #7FB9EE !important;
+    margin-top: -1px !important;
+    margin-left: -1px !important;
+}
+
+ .GanttView-day-header-class[relation="today"]
+{
+  background-color: #D2E3F3;
+    border: 1px solid #7FB9EE !important;
+    margin-top: -1px !important;
+    margin-left: -1px !important;
+}
+
+ .GanttView-day-class[relation="today"][topborder="true"],
+ .GanttView-day-header-class[relation="today"][topborder="true"]
+{
+    margin-top: 0px !important;
+}
+
+ .GanttView-day-class[relation="today"][leftborder="true"],
+ .GanttView-day-header-class[relation="today"][leftborder="true"]
+{
+    margin-left: 0px !important;
+}
+
+
+ .GanttView-day-class[selected="true"]
+{
+  background-color: #FFFCD8 !important;
+}
+
+ .GanttView-day-header-class[selected="true"]
+{
+  background-color: #F2EDB2 !important;
+}
+
+ .GanttView-day-class[draggedover="true"],
+ .GanttView-day-header-class[draggedover="true"]
+{
+/*       border-left           : 1px solid #3F7D91;
+    border-right            : 2px solid #3F7D91; */
+	background-color         : #FFCC99 !important;
+}
+
+ .GanttView-day-class[draggedover="true"][day-off="true"],
+ .GanttView-day-header-class[draggedover="true"][day-off="true"]
+{
+/*       border-left           : 1px solid #3F7D91;
+    border-right            : 2px solid #3F7D91; */
+	background-color         : #F0BD8A !important;
+}
+
+ .GanttView-day-class[panning="true"],
+ .GanttView-day-header-class[panning="true"]
+{
+  cursor: -moz-grabbing;
+}
+
+.GanttView-header-date-text
+{
+   font-size               : 1em;
+   color                   : #000000;
+}
+
+.GanttView-header-date,
+.GanttView-header-date-label-text
+{
+
+   font-size               : 1em;
+   color                   : #000000;
+   text-align              : center;	
+	
+}
+
+.GanttView-header-date[relation="today"],
+.GanttView-header-date-label-text[relation="today"],
+.GanttView-header-date-text[relation="today"]
+{
+   font-weight             : bold;
+}
+
+
+
+
+.GanttView-splitter {
+  -moz-appearance: none !important;
+  width: 2px;
+  min-width: 2px;  
+}
+
+
+GanttView-category-box:not([categories]) {
+  display: none;
+}
+
+.calendar-item-image {
+    list-style-image: url(chrome://calendar/skin/day-box-item-image.png);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    max-height: 15px;
+    -moz-margin-end: 2px;
+    display: none;
+}
+
+.calendar-item-image[itemType="todo"] {
+    -moz-image-region: rect(0px 11px 11px 0px);
+    display: -moz-box;
+}
+
+.calendar-item-image[itemType="todo"][progress="completed"] {
+    -moz-image-region: rect(0px 22px 11px 11px);
+}
+
+.alarm-icons-box {
+        padding-top: 2px;
+        
+}
+
+/*--------------------------------------------------------------------
+ * Class for text of items
+ *-------------------------------------------------------------------*/
+ .GanttView-item-box
+ {
+	min-height	: 1.8em; /* 26px; */
+	max-height	: 1.8em; /* 26px; */
+	padding-bottom : 0px;
+	padding-right : 1px;
+ }
+
+ 
+  .GanttView-row-class,
+	.GanttView-item-header-box
+ {
+ 	min-height	: 1.9em; /* 26px; */
+	max-height	:  1.9em; /* 26px; */
+	padding-bottom : 0px;
+	border-bottom         : 1px solid #D2D2D2;
+ }
+
+  .GanttView-item-box[showprogressbar="true"]
+ {
+	min-height	: 2.3em; /* 26px; */
+	max-height	: 2.3em; /* 26px; */
+	padding-bottom : 0px;
+	padding-right : 1px;
+ }
+
+ 
+  .GanttView-row-class[showprogressbar="true"],
+	.GanttView-item-header-box[showprogressbar="true"]
+ {
+ 	min-height	: 2.4em; /* 26px; */
+	max-height	:  2.4em; /* 26px; */
+	padding-bottom : 0px;
+	border-bottom         : 1px solid #D2D2D2;
+ }
+ 
+  
+ .GanttView-item-box[selected="true"],
+ .GanttView-item-header-box[selected="true"]
+ {
+	cursor: pointer;
+ }
+ 
+  .GanttView-row-class[selected="true"][selectedByBox="false"]
+ {
+	 background-color: #ffdb67;
+	 opacity:0.25; 
+	  border-bottom         : 1px solid #4B4B4B;	 
+}
+ 
+.calendar-event-name-textbox {
+  padding-left:2px !important;
+}
+
+.item-progress-box{
+  visibility : hidden;
+  max-height : 0px;
+  padding	: 0px;
+	margin : 0px;
+  border : 1px solid #aaaaaa !important;
+}
+
+.item-progress-box[showprogressbar="true"] {
+  visibility : visible;
+  min-height	: 0.5em;
+	max-height	: 0.5em; 
+
+}
+
+
+
+GanttView-item-box progressmeter,
+GanttView-item-header-box progressmeter  {
+  -moz-appearance: none !important;
+  border-style: none;
+
+	padding	: 0px;
+	margin : 0px;
+	min-width	: 0px;
+	background-color: transparent !important;
+
+}
+
+.GanttView-progressmeter-gradient{
+  list-style-image: url("chrome://calendar/skin/gradient-overlay.png");
+}
+
+
+
+GanttView-item-box progressmeter .progress-bar,
+GanttView-item-header-box progressmeter .progress-bar {
+  -moz-appearance: none !important;
+  /*color: #1dd435 !important;
+  background-image: -moz-linear-gradient(top, #eoeoeo, #1dd435);*/
+  background-color: #1dd435 !important;
+  
+
+  border-right: 1px solid #aaaaaa !important;
+
+}
+
+/*GanttView-item-box[selected="true"] .item-progress-box,
+GanttView-item-header-box[selected="true"] .item-progress-box,
+GanttView-item-box[selected="true"] progressmeter,
+GanttView-item-header-box[selected="true"] progressmeter
+{
+  visibility : hidden;
+  max-height : 0px;	
+  min-height : 0px;
+}
+*/
+
+GanttView-item-box checkbox,
+GanttView-item-header-box checkbox {
+	padding	: 0px;
+	margin : 0px;
+	min-width	: 0px;
+	background-color: transparent !important;
+} 
+
+
+ .calendar-event-box-container {
+  padding: 0;
+  margin: 1px;
+  overflow: visible;
+}
+ 
+GanttView-item-header-box .GanttView-item-name-box {
+	min-width: 60px;
+   overflow-x             : hidden;
+   overflow-y             : hidden;
+}
+
+GanttView-item-header-box .GanttView-item-date-box {
+	/*max-width: 60px;
+	min-width: 60px; 
+	visibility: visible; */
+}
+
+GanttView-item-header-box .GanttView-item-date-box {
+	visibility: visible;
+}
+
+GanttView-item-header-box .calendar-event-details-core,
+GanttView-item-box .calendar-event-details-core {
+	padding	: 0;
+	margin : 0px;
+	min-width	: 0px;
+ }
+
+GanttView-item-header-box[status="IN-PROCESS"] .calendar-event-details-core,
+GanttView-item-box[status="IN-PROCESS"] .calendar-event-details-core {
+	font-weight: bold;
+ }
+
+GanttView-item-header-box[status="NEEDS-ACTION"] .calendar-event-details-core,
+GanttView-item-box[status="NEEDS-ACTION"] .calendar-event-details-core {
+	font-style: italic;
+	font-weight: bold;
+ }
+ 
+GanttView-item-header-box[status="COMPLETED"] .calendar-event-details-core,
+GanttView-item-box[status="COMPLETED"] .calendar-event-details-core,
+GanttView-item-header-box[status="CANCELLED"] .calendar-event-details-core,
+GanttView-item-box[status="CANCELLED"] .calendar-event-details-core {
+	text-decoration: line-through; 
+ }
+
+GanttView-item-header-box[selected="true"][selectedByBox="true"] .calendar-event-box-gradient,
+GanttView-item-header-box[selected="true"][selectedByBox="false"] .calendar-event-box-gradient, 
+GanttView-item-header-box[selectedByBox="true"][selected="false"] .calendar-event-box-gradient {
+  list-style-image: url("chrome://ganttview/skin/gantt-selected-gradient-overlay.png");
+/* border-top: 3px solid #ffdb67;
+border-bottom: 3px solid #ffdb67;
+border-left: 2px solid #ffdb67;
+border-right: 2px solid #ffdb67;  */
+}
+ 
+GanttView-item-box[selected="true"][selectedByBox="true"] .calendar-event-box-gradient,
+GanttView-item-box[selected="true"][selectedByBox="false"] .calendar-event-box-gradient, 
+GanttView-item-box[selectedByBox="true"][selected="false"] .calendar-event-box-gradient {
+  list-style-image: url("chrome://ganttview/skin/gantt-selected-gradient-overlay.png");
+/* border-top: 3px solid #ffdb67;
+border-bottom: 3px solid #ffdb67;
+border-left: 2px solid #ffdb67;
+border-right: 2px solid #ffdb67;  */
+}
+
+GanttView-item-box .calendar-item-box-grippy-start,
+GanttView-item-box .calendar-item-box-grippy-end {
+visibility: hidden;
+/*  	min-width: 5px; */
+ }
+
+GanttView-item-box:hover .calendar-item-box-grippy-start,
+GanttView-item-box:hover .calendar-item-box-grippy-end {
+  list-style-image: none;
+  cursor: auto;
+}
+
+GanttView-item-box[selected="true"] .calendar-item-box-grippy-start {
+  list-style-image: url("chrome://calendar-common/skin/event-grippy-left.png");
+    cursor: col-resize;
+    color: #000000 !important;
+    padding: 0px;
+  background-color: #ffdb67 !important;
+	
+}
+
+GanttView-item-box[selected="true"] .calendar-item-box-grippy-end {
+  list-style-image: url("chrome://calendar-common/skin/event-grippy-left.png");
+	cursor: col-resize;
+	color: #000000 !important;
+        padding: 0px;
+  background-color: #ffdb67 !important;
+}
+
+GanttView-item-box[selected="true"]:hover .calendar-item-box-grippy-start {
+	visibility: visible;
+}
+
+GanttView-item-box[selected="true"]:hover .calendar-item-box-grippy-end {
+	visibility: visible;
+}
+
+GanttView-item-box[starttruncated="true"] .calendar-item-box-grippy-start,
+GanttView-item-box[starttruncated="true"]:hover .calendar-item-box-grippy-start,
+GanttView-item-box[endtruncated="true"] .calendar-item-box-grippy-end,
+GanttView-item-box[endtruncated="true"]:hover .calendar-item-box-grippy-end {
+  list-style-image: none;
+  cursor: auto;
+	visibility: hidden;
+}
+
+
+
+
+.GanttView-overflow-scroll{
+	overflow-x:auto;
+	overflow-y:auto;
+	padding:0px;
+}
+
+ .GanttView-overflow-scroll[panning="true"]
+{
+  cursor: -moz-grabbing;
+}
+
+.GanttView-overflow-hidden{
+	padding:0px;
+}
+
+.GanttView-overflow-hidden[overflowhidden="x"]{
+   overflow-x             : hidden;
+}
+.GanttView-overflow-hidden[overflowhidden="y"]{
+   overflow-y             : hidden;
+}
+
+.GanttView-overflow-hidden[overflowhidden="xy"]{
+   overflow-x             : hidden;
+   overflow-y             : hidden;
+}
+
+GanttView-selection-box .selection-box{
+	background-color: #ffdb67;
+	opacity:	0.1;
+}
+
+GanttView-selection-box .selection-border{
+	border:  2px solid #ffdb67 !important;
+}

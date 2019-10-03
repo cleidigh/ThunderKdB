@@ -1,0 +1,10 @@
+content getselectedmails jar:chrome/GetSelectedMails.jar!/content/
+overlay chrome://messenger/content/messenger.xul chrome://GetSelectedMails/content/overlay.xul
+
+locale getselectedmails en-US jar:chrome/GetSelectedMails.jar!/locale/en-US/
+locale getselectedmails fr-FR jar:chrome/GetSelectedMails.jar!/locale/fr-FR/
+locale getselectedmails sv-SE jar:chrome/GetSelectedMails.jar!/locale/sv-SE/
+skin getselectedmails classic/1.0 jar:chrome/GetSelectedMails.jar!/skin/classic/
+
+style chrome://global/content/customizeToolbar.xul chrome://GetSelectedMails/skin/GetSelectedMails.css appversion<59.0a1
+style chrome://messenger/content/customizeToolbar.xul chrome://GetSelectedMails/skin/GetSelectedMails.css appversion>=59.0a1

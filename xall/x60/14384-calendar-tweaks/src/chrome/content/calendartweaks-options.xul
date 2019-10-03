@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+ 
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Calendar Tweaks  -  Thunderbird Extension  -  Options           */
+/*                                                                      */
+/*      XUL for Options dialog                                          */
+/*                                                                      */
+/*      Copyright (C) 2008-2014  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  10 Aug 2014                                       */
+/*                                                                      */
+/************************************************************************/
+-->    
+ 
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<?xml-stylesheet href="chrome://calendartweaks/skin/calendartweaks-options.css" type="text/css"?>
+<?xml-stylesheet href="chrome://calendartweaks/skin/calendartweaks-colorpicker-bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://calendartweaks/skin/calendartweaks-scale-bindings.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://calendartweaks/locale/calendartweaks.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id="calendartweaks-options" title="&calendartweaks.optionstitle;"
+        buttons="accept,cancel,extra1" persist="screenX screenY"
+        onload="calendarTweaksOptions.initPrefs();" ondialogaccept="calendarTweaksOptions.savePrefs();"
+        buttonlabelextra1="&calendartweaks.applyprefs;" ondialogextra1="calendarTweaksOptions.savePrefs();"  
+        windowtype="calendartweaks-options">
+    
+    <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+    <script type="application/x-javascript" src="chrome://calendartweaks/content/calendartweaks-options.js"/>
+    
+    <tabbox>
+        
+        <tabs>
+            <tab label="  &calendartweaks.general;  "/>
+            <tab label="  &calendartweaks.events;  "/>
+            <tab label="  &calendartweaks.daycolors;  "/>
+        </tabs>
+        
+        <tabpanels flex="0">
+            
+            <tabpanel orient="vertical">
+                
+                <groupbox>
+                    
+                    <caption label="&calendartweaks.daystyles;"/>
+                    
+                    <vbox>
+                        <checkbox id="calendartweaks-newtoday" label="&calendartweaks.newtoday;"/>
+                        <checkbox id="calendartweaks-newselday" label="&calendartweaks.newselday;"/>
+                        <checkbox id="calendartweaks-showondayview" label="&calendartweaks.showondayview;"/>
+                    </vbox>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <caption label="&calendartweaks.miscellaneous;"/>
+                    
+                    <vbox>
+                        <checkbox id="calendartweaks-datelabelbkgd" label="&calendartweaks.datelabelbkgd;"/>
+                        <checkbox id="calendartweaks-distinctother" label="&calendartweaks.distinctother;"/>
+                        <checkbox id="calendartweaks-alldaylabel" label="&calendartweaks.alldaylabel;"/>
+                    </vbox>
+                    
+                </groupbox>
+                
+            </tabpanel>
+            
+            <tabpanel orient="vertical">
+                
+                <groupbox>
+                    
+                    <caption label="&calendartweaks.eventstyles;"/>
+                    
+                    <vbox>
+                        <checkbox id="calendartweaks-eventborder" label="&calendartweaks.eventborder;"/>
+                        <checkbox id="calendartweaks-eventsingleline" label="&calendartweaks.eventsingleline;"/>
+                        <checkbox id="calendartweaks-eventreduceheight" label="&calendartweaks.eventreduceheight;"/>
+                        <checkbox id="calendartweaks-eventtodaypane" label="&calendartweaks.eventtodaypane;"/>
+                        <checkbox id="calendartweaks-eventbkgdcolor" label="&calendartweaks.eventbkgdcolor;" oncommand="calendarTweaksOptions.setEventBkgdNocatState();"/>
+                        <checkbox id="calendartweaks-eventbkgdnocat" label="&calendartweaks.eventbkgdnocat;" style="margin-left:24px;"/>
+                    </vbox>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <caption label="&calendartweaks.repeating;"/>
+                    
+                    <vbox>
+                        <checkbox id="calendartweaks-repeatnormal" label="&calendartweaks.repeatnormal;"/>
+                        <checkbox id="calendartweaks-repeatexcept" label="&calendartweaks.repeatexcept;"/>
+                    </vbox>
+                    
+                </groupbox>
+                
+            </tabpanel>
+            
+            <tabpanel orient="vertical">
+                
+                <hbox>
+                    <checkbox id="calendartweaks-focusable-nonbutton"/>  <!-- on selecting tab keeps OK button as default button instead of todayheadercolor button -->
+                </hbox>
+
+                <groupbox>
+                    
+                    <caption label="&calendartweaks.todaycolors;"/>
+                    
+                    <hbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.headercolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-todayheadercolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.dayboxcolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-todaydayboxcolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.bordercolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-todaybordercolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                    </hbox>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <caption label="&calendartweaks.selecteddaycolors;"/>
+                    
+                    <hbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.headercolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-seldayheadercolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.dayboxcolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-seldaydayboxcolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.bordercolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-seldaybordercolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                    </hbox>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <caption label="&calendartweaks.bordersettings;"/>
+                    
+                    <checkbox id="calendartweaks-borderallviews" label="&calendartweaks.borderallviews;"/>
+                    <checkbox id="calendartweaks-borderminimonth" label="&calendartweaks.borderminimonth;"/>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <caption label="&calendartweaks.restoredefaults;"/>
+                    
+                    <hbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.caltweaksdefaults;"/>
+                            <hbox pack="center">
+                                <button label="&calendartweaks.restore;" oncommand="calendarTweaksOptions.restoreDefaultColors(1);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.lightningdefaults;"/>
+                            <hbox pack="center">
+                                <button label="&calendartweaks.restore;" oncommand="calendarTweaksOptions.restoreDefaultColors(2);"/>
+                            </hbox>
+                        </vbox>
+                    </hbox>
+                    
+                </groupbox>
+                
+            </tabpanel>
+            
+        </tabpanels>
+        
+    </tabbox>
+    
+    <panel id="calendartweaks-picker-panel">
+        <hbox id="calendartweaks-picker-header">
+            <label id="calendartweaks-picker-headertitle" value="&calendartweaks.picker.headertitle;" flex="1" style="margin-top: 4px;"/>
+            <label id="calendartweaks-picker-dayboxtitle" value="&calendartweaks.picker.dayboxtitle;" flex="1" style="margin-top: 4px;"/>
+            <label id="calendartweaks-picker-bordertitle" value="&calendartweaks.picker.bordertitle;" flex="1" style="margin-top: 4px;"/>
+            <toolbarbutton class="tabs-closebutton" flex="0" oncommand="calendarTweaksOptions.pickerClose();"/>
+        </hbox>
+        <hbox style="margin-top: 5px; margin-bottom: 2px;">
+            <colorpicker id="calendartweaks-picker-normalpalette" type="button" onchange="calendarTweaksOptions.pickerPaletteChange()" style="width: 40px; margin: 0px 6px; padding: 2px;"/>
+            <calendartweaks-colorpicker id="calendartweaks-picker-dayboxpalette" type="button" onchange="calendarTweaksOptions.pickerPaletteChange()" style="width: 40px; margin: 0px 6px; padding: 2px;"/>
+            <vbox id="calendartweaks-picker-sampleborder" flex="1" style="min-width: 110px; margin: 1px 4px 1px 4px; border: 1px solid #D2D2D2;">
+                <hbox id="calendartweaks-picker-sampleheader" style="height: 8px; border-bottom: 1px solid #D2D2D2;"/>
+                <hbox id="calendartweaks-picker-sampledaybox" style="height: 13px;"/>
+            </vbox>
+            <textbox id="calendartweaks-picker-hexstr" oninput="calendarTweaksOptions.pickerHexStrChange()" style="width: 55px; margin: 1px 6px 1px 7px; padding-left: 0px; text-align: right;"/>
+        </hbox>
+        <separator id="calendartweaks-picker-separator" class="groove" style="margin: 3px 0px; opacity: 0.3;"/>
+        <grid>
+            <rows>
+                <row/>
+                <row/>
+                <row/>
+            </rows>
+            <columns>
+                <column>
+                    <label value="&calendartweaks.picker.red;" style="margin-top: 5px;"/>
+                    <label value="&calendartweaks.picker.green;" style="margin-top: 5px;"/>
+                    <label value="&calendartweaks.picker.blue;" style="margin-top: 5px;"/>
+                </column>
+                <column flex="1">
+                    <calendartweaks-scale id="calendartweaks-picker-scale-r" min="0" max="255" movetoclick="true" onchange="calendarTweaksOptions.pickerRGBScaleChange()"/>
+                    <calendartweaks-scale id="calendartweaks-picker-scale-g" min="0" max="255" movetoclick="true" onchange="calendarTweaksOptions.pickerRGBScaleChange()"/>
+                    <calendartweaks-scale id="calendartweaks-picker-scale-b" min="0" max="255" movetoclick="true" onchange="calendarTweaksOptions.pickerRGBScaleChange()"/>
+                </column>
+                <column>
+                    <textbox id="calendartweaks-picker-value-r" type="number" min="0" max="255" onchange="calendarTweaksOptions.pickerRGBValueChange()" 
+                             oninput="calendarTweaksOptions.pickerRGBValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                    <textbox id="calendartweaks-picker-value-g" type="number" min="0" max="255" onchange="calendarTweaksOptions.pickerRGBValueChange()"
+                             oninput="calendarTweaksOptions.pickerRGBValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                    <textbox id="calendartweaks-picker-value-b" type="number" min="0" max="255" onchange="calendarTweaksOptions.pickerRGBValueChange()"
+                             oninput="calendarTweaksOptions.pickerRGBValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                </column>
+            </columns>
+        </grid>
+        <separator class="groove" style="margin: 3px 0px; opacity: 0.3;"/>
+        <grid>
+            <rows>
+                <row/>
+                <row/>
+                <row/>
+            </rows>
+            <columns>
+                <column>
+                    <label value="&calendartweaks.picker.hue;" style="margin-top: 5px;"/>
+                    <label value="&calendartweaks.picker.saturation;" style="margin-top: 5px;"/>
+                    <label value="&calendartweaks.picker.value;" style="margin-top: 5px;"/>
+                </column>
+                <column flex="1">
+                    <calendartweaks-scale id="calendartweaks-picker-scale-h" min="0" max="360" movetoclick="true" onchange="calendarTweaksOptions.pickerHSVScaleChange()"/>
+                    <calendartweaks-scale id="calendartweaks-picker-scale-s" min="0" max="100" movetoclick="true" onchange="calendarTweaksOptions.pickerHSVScaleChange()"/>
+                    <calendartweaks-scale id="calendartweaks-picker-scale-v" min="0" max="100" movetoclick="true" onchange="calendarTweaksOptions.pickerHSVScaleChange()"/>
+                </column>
+                <column>
+                    <textbox id="calendartweaks-picker-value-h" type="number" min="0" max="360" onchange="calendarTweaksOptions.pickerHSVValueChange()"
+                             oninput="calendarTweaksOptions.pickerHSVValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                    <textbox id="calendartweaks-picker-value-s" type="number" min="0" max="100" onchange="calendarTweaksOptions.pickerHSVValueChange()"
+                             oninput="calendarTweaksOptions.pickerHSVValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                    <textbox id="calendartweaks-picker-value-v" type="number" min="0" max="100" onchange="calendarTweaksOptions.pickerHSVValueChange()"
+                             oninput="calendarTweaksOptions.pickerHSVValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                </column>
+            </columns>
+        </grid>
+        <separator class="groove" style="margin: 3px 0px; opacity: 0.3;"/>
+        <vbox id="calendartweaks-picker-checkbox">
+            <hbox pack="center">
+                <checkbox id="calendartweaks-picker-autodaybox" label="&calendartweaks.picker.autodaybox;" oncommand="calendarTweaksOptions.pickerAutoDayBoxChange()" style="margin-top: 0px; margin-bottom: 1px;"/>
+            </hbox>
+            <separator class="groove" style="opacity: 0.3; margin-bottom: 5px;"/>
+        </vbox>
+        <hbox pack="center" style="margin-top: 4px; margin-bottom: 8px;">
+            <button id="calendartweaks-picker-okay" label="&calendartweaks.picker.okay;" default="true" oncommand="calendarTweaksOptions.pickerOkay();"/>
+            <button id="calendartweaks-picker-cancel" label="&calendartweaks.picker.cancel;" oncommand="calendarTweaksOptions.pickerClose();"/>
+        </hbox>
+    </panel>
+    
+</dialog>

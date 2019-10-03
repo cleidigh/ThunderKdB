@@ -1,0 +1,16 @@
+skin ganttview classic/1.0 chrome/ganttview/skin/classic/ganttview/
+
+content ganttview chrome/ganttview/content/ganttview/ contentaccessible=yes
+
+locale ganttview en-US chrome/ganttview/locale/en-US/ganttview/
+locale ganttview sv-SE chrome/ganttview/locale/sv-SE/ganttview/
+locale ganttview ja-JP chrome/ganttview/locale/ja-JP/ganttview/
+locale ganttview fr	   chrome/ganttview/locale/fr/ganttview/
+locale ganttview cs	   chrome/ganttview/locale/cs/ganttview/
+
+overlay chrome://messenger/content/messenger.xul chrome://ganttview/content/ganttview-lightning.xul
+
+style chrome://messenger/content/customizeToolbarOverlay.xul chrome://ganttview/skin/ganttview.css
+style chrome://global/content/customizeToolbar.xul chrome://ganttview/skin/ganttview.css
+
+resource ganttview modules/

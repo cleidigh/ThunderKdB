@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<Description about="urn:mozilla:install-manifest">
+
+ 
+		<em:id>{1510928E-A4FA-43C2-A9AF-99E521B90BC5}</em:id>
+		<em:name>Gantt View</em:name>
+		<em:version>1.0.0.60</em:version>
+		<em:description>Gantt Chart view for Mozilla Calendar</em:description>
+		<em:iconURL>chrome://ganttview/skin/gantt-icon.png</em:iconURL>
+		<em:optionsURL>chrome://ganttview/content/preferences/ganttview-preferences.xul</em:optionsURL>
+    <em:optionsType>3</em:optionsType>
+		<em:homepageURL>http://ganttview.mozdev.org/</em:homepageURL>
+		<em:creator>Joe Brochu</em:creator>
+		<!-- I've listed every name I could find on  the various Sunbird/Lightning source files that I 
+			have referenced or adapted code from.  Please contact me  if  any  names are missing
+			or if a name should be removed -->
+		<em:contributor>Vladimir Vukicevic</em:contributor>	
+		<em:contributor>Dan Mosedale</em:contributor>	
+		<em:contributor>Michael Buettner</em:contributor>	
+		<em:contributor>Philipp Kewisch</em:contributor>	
+		<em:contributor>Markus Adrario</em:contributor>		
+   	<em:contributor>Mike Potter</em:contributor>
+   	<em:contributor>Colin Phillips</em:contributor>
+   	<em:contributor>Chris Charabaruk</em:contributor>
+   	<em:contributor>Karl Guertin</em:contributor> 
+   	<em:contributor>Dan Parent</em:contributor> 
+   	<em:contributor>ArentJan Banck</em:contributor> 
+   	<em:contributor>Eric Belhaire</em:contributor>
+   	<em:contributor>Stefan Sitter</em:contributor>
+   	<em:contributor>Philipp Kewisch</em:contributor>
+   	<em:contributor>Simon Paquet</em:contributor>		
+		<em:contributor>Garth Smedley</em:contributor>	
+		<em:contributor>Mark Swaffer</em:contributor>
+		<em:contributor>Christopher Cook</em:contributor>
+		<em:contributor>Kevin Gerich</em:contributor>
+		<em:contributor>Matthew Willis</em:contributor>
+		<em:contributor>Martin Schroeder</em:contributor>
+		<em:contributor>Berend Cornelius</em:contributor>
+		<em:contributor>Robin Edrenius</em:contributor>
+		<em:contributor>Joey Minta</em:contributor>
+		<em:contributor>Stuart Parmenter</em:contributor>
+		<em:contributor>Jeff Walden</em:contributor>
+		<em:contributor>Scott MacGregor</em:contributor>
+		<em:contributor>Daniel Boelzle</em:contributor>
+		<em:contributor>Please contact me if any changes to the contributor list are needed.</em:contributor>
+
+    <em:unpack>true</em:unpack>
+    
+    <em:translator>Mikael Hiort af Ornäs</em:translator>
+		<em:translator>Yuuichi Suzuki</em:translator>
+    
+	<em:localized>
+		<Description>
+			<em:locale>sv-SE</em:locale>
+			<em:name>Gantt View</em:name>
+			<em:creator>Joe Brochu</em:creator>
+			<em:description>En Gantt-diagramvy för Sunbird och Lightning</em:description>
+			<em:translator>Mikael Hiort af Ornäs</em:translator>
+		</Description>
+	</em:localized>
+  
+		<em:type>2</em:type> <!-- type=extension --> 
+   
+    <em:targetApplication>
+      <Description>
+        <!-- thunderbird -->
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>57.0</em:minVersion>
+        <em:maxVersion>60.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    
+    <!-- target: Mozilla Sunbird no longer supported -->
+    <!-- em:targetApplication>
+        <Description>
+                <em:id>{718e30fb-e89b-41dd-9da7-e25a45638b28}</em:id>
+                <em:minVersion>1.0b1</em:minVersion>
+                <em:maxVersion>1.0b1</em:maxVersion>
+        </Description>
+    </em:targetApplication -->
+       
+	</Description>
+
+</RDF>

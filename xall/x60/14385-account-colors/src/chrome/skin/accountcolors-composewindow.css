@@ -1,0 +1,221 @@
+/************************************************************************/
+/*                                                                      */
+/*      Account Colors  -  Thunderbird Extension  -  Compose Window     */
+/*                                                                      */
+/*      CSS for Compose Window overlay                                  */
+/*                                                                      */
+/*      Copyright (C) 2008-2018  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  16 Nov 2018                                       */
+/*                                                                      */
+/************************************************************************/
+
+/* Improve appearance of From menu */
+
+window[accountcolors-tbversion="31.0"] #msgIdentity menuitem,
+window[accountcolors-tbversion="38.0"] #msgIdentity menuitem,
+window[accountcolors-tbversion="60.0"] #msgIdentity menuitem
+{
+    font-weight: normal !important;
+}
+
+window[accountcolors-tbversion="31.0"] #msgIdentity menuseparator,
+window[accountcolors-tbversion="38.0"] #msgIdentity menuseparator,
+window[accountcolors-tbversion="60.0"] #msgIdentity menuseparator
+{
+    margin: 0px 0px !important;
+    border-top-color: rgba(128,128,128,0.5) !important;
+}
+
+/* Black field fonts */
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #msgSubject,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #msgSubject,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #msgSubject
+{ 
+    color: black;
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #msgIdentity,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #msgIdentity,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #msgIdentity
+{ 
+    color: black;
+    fill: black;  /* down-arrow - TT Deep Dark theme */
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #msgIdentity .menulist-label.menulist-description,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #msgIdentity .menulist-label.menulist-description,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #msgIdentity .menulist-label.menulist-description
+{ 
+    color: black;
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #msgIdentity menuitem,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #msgIdentity menuitem,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #msgIdentity menuitem
+{ 
+    color: black;
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #msgIdentity menuitem .menu-iconic-text.menu-description,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #msgIdentity menuitem .menu-iconic-text.menu-description,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #msgIdentity menuitem .menu-iconic-text.menu-description
+{ 
+    color: black;
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #msgIdentity menuitem:last-child,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #msgIdentity menuitem:last-child,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #msgIdentity menuitem:last-child
+{ 
+    background-color: white;  /* only for 'Customize From Address...' menu item */
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #msgIdentity,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #msgIdentity,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #msgIdentity
+{ 
+    fill: black;  /* down-arrow - TT Deep Dark theme */
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #msgIdentity .menulist-dropmarker,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #msgIdentity .menulist-dropmarker,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #msgIdentity .menulist-dropmarker
+{ 
+    fill: black;  /* down-arrow - Thunderbird built-in themes */
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #addressingWidget textbox,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #addressingWidget textbox,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #addressingWidget textbox
+{
+    color: black;
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #attachmentBucket attachmentitem,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #attachmentBucket attachmentitem,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #attachmentBucket attachmentitem
+{
+    color: black;
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackfieldfont] #attachmentBucket .attachmentcell-size,
+window[accountcolors-tbversion="38.0"][ac-blackfieldfont] #attachmentBucket .attachmentcell-size,
+window[accountcolors-tbversion="60.0"][ac-blackfieldfont] #attachmentBucket .attachmentcell-size
+{
+    color: black;
+}
+
+/* To/Cc/Bcc font color */
+
+window[accountcolors-tbversion="31.0"][ac-colortofont] #addressingWidget textbox,
+window[accountcolors-tbversion="38.0"][ac-colortofont] #addressingWidget textbox,
+window[accountcolors-tbversion="60.0"][ac-colortofont] #addressingWidget textbox
+{
+    color: var(--ac-colortofont);
+}
+
+/* To/Cc/Bcc background color */
+
+window[accountcolors-tbversion="31.0"][ac-colortobkgd] #addressingWidget textbox,
+window[accountcolors-tbversion="38.0"][ac-colortobkgd] #addressingWidget textbox,
+window[accountcolors-tbversion="60.0"][ac-colortobkgd] #addressingWidget textbox
+{
+    background-color: var(--ac-colortobkgd);
+}
+
+/* Attachment font color */
+
+window[accountcolors-tbversion="31.0"][ac-coloratmfont] #attachmentBucket attachmentitem,
+window[accountcolors-tbversion="38.0"][ac-coloratmfont] #attachmentBucket attachmentitem,
+window[accountcolors-tbversion="60.0"][ac-coloratmfont] #attachmentBucket attachmentitem
+{
+    color: var(--ac-coloratmfont);
+}
+
+window[accountcolors-tbversion="31.0"][ac-coloratmfont] #attachmentBucket .attachmentcell-size,
+window[accountcolors-tbversion="38.0"][ac-coloratmfont] #attachmentBucket .attachmentcell-size,
+window[accountcolors-tbversion="60.0"][ac-coloratmfont] #attachmentBucket .attachmentcell-size
+{
+    color: var(--ac-coloratmfont);
+}
+
+/* Black header labels */
+
+window[accountcolors-tbversion="31.0"][ac-blackhdrlabels] #addressingWidget menulist,
+window[accountcolors-tbversion="38.0"][ac-blackhdrlabels] #addressingWidget menulist,
+window[accountcolors-tbversion="60.0"][ac-blackhdrlabels] #addressingWidget menulist
+{
+    color: black;
+}
+
+window[accountcolors-tbversion="31.0"][ac-blackhdrlabels] #addressingWidget image,
+window[accountcolors-tbversion="38.0"][ac-blackhdrlabels] #addressingWidget image,
+window[accountcolors-tbversion="60.0"][ac-blackhdrlabels] #addressingWidget image
+{
+    color: black;
+}
+
+/* White field backgrounds on hover or focus */
+
+window[accountcolors-tbversion="31.0"][ac-whitefieldbkgd] #msgSubject:hover,
+window[accountcolors-tbversion="38.0"][ac-whitefieldbkgd] #msgSubject:hover,
+window[accountcolors-tbversion="60.0"][ac-whitefieldbkgd] #msgSubject:hover
+{ 
+    background-color: white !important;
+}
+
+window[accountcolors-tbversion="31.0"][ac-whitefieldbkgd] #msgSubject[focused="true"],
+window[accountcolors-tbversion="38.0"][ac-whitefieldbkgd] #msgSubject[focused="true"],
+window[accountcolors-tbversion="60.0"][ac-whitefieldbkgd] #msgSubject[focused="true"]
+{
+    background-color: white !important;
+}
+
+window[accountcolors-tbversion="31.0"][ac-whitefieldbkgd] #msgIdentity:hover,
+window[accountcolors-tbversion="38.0"][ac-whitefieldbkgd] #msgIdentity:hover,
+window[accountcolors-tbversion="60.0"][ac-whitefieldbkgd] #msgIdentity:hover
+{ 
+    background-color: white !important;
+}
+
+window[accountcolors-tbversion="31.0"][ac-whitefieldbkgd] #msgIdentity[focused="true"],
+window[accountcolors-tbversion="38.0"][ac-whitefieldbkgd] #msgIdentity[focused="true"],
+window[accountcolors-tbversion="60.0"][ac-whitefieldbkgd] #msgIdentity[focused="true"]
+{
+    background-color: white !important;
+}
+
+window[accountcolors-tbversion="31.0"][ac-whitefieldbkgd] #addressingWidget textbox:hover,
+window[accountcolors-tbversion="38.0"][ac-whitefieldbkgd] #addressingWidget textbox:hover,
+window[accountcolors-tbversion="60.0"][ac-whitefieldbkgd] #addressingWidget textbox:hover
+{
+    background-color: white !important;
+}
+
+window[accountcolors-tbversion="31.0"][ac-whitefieldbkgd] #addressingWidget textbox[focused="true"],
+window[accountcolors-tbversion="38.0"][ac-whitefieldbkgd] #addressingWidget textbox[focused="true"],
+window[accountcolors-tbversion="60.0"][ac-whitefieldbkgd] #addressingWidget textbox[focused="true"]
+{
+    background-color: white !important;
+}
+
+window[accountcolors-tbversion="31.0"][ac-whitefieldbkgd] #attachmentBucket:hover,
+window[accountcolors-tbversion="38.0"][ac-whitefieldbkgd] #attachmentBucket:hover,
+window[accountcolors-tbversion="60.0"][ac-whitefieldbkgd] #attachmentBucket:hover
+{
+    background-color: white !important;
+}
+
+/* Reinstate default hover style on From menu */
+
+window[accountcolors-tbversion="31.0"][ac-hoverfrom] #msgIdentity menuitem[_moz-menuactive],
+window[accountcolors-tbversion="38.0"][ac-hoverfrom] #msgIdentity menuitem[_moz-menuactive],
+window[accountcolors-tbversion="60.0"][ac-hoverfrom] #msgIdentity menuitem[_moz-menuactive]
+{
+    background-color: #CDE8FF !important;
+    outline: 1px solid #7BC3FF;
+    outline-offset: -1px;
+    color: black !important;
+}

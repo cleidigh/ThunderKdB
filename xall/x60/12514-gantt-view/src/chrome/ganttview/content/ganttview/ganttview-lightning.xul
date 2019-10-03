@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is OEone Calendar Code, released October 31st, 2001.
+   -
+   - The Initial Developer of the Original Code is
+   - OEone Corporation.
+   - Portions created by the Initial Developer are Copyright (C) 2001
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s): Garth Smedley <garths@oeone.com> 
+   -                 Mike Potter <mikep@oeone.com>
+   -                 Colin Phillips <colinp@oeone.com>
+   -                 Chris Charabaruk <coldacid@djfly.org>
+   -                 Karl Guertin <grayrest@grayrest.com> 
+   -                 Dan Parent <danp@oeone.com> 
+   -                 ArentJan Banck <ajbanck@planet.nl> 
+   -                 Eric Belhaire <belhaire@ief.u-psud.fr>
+   -                 Stefan Sitter <ssitter@googlemail.com>
+   -                 Philipp Kewisch <mozilla@kewis.ch>
+   -                 Simon Paquet <bugzilla@babylonsounds.com>
+   -
+   - GanttView code  is based on various versions of Sunbird/Lighning views 
+   - from  0.2 to present. Please contact me  if I have omitted or mistakenly
+   - included a contributor.  
+   -	Joe Brochu <ganttview@gmail.com>
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+	 
+<?xml-stylesheet href="chrome://ganttview/skin/ganttview.css"
+          type="text/css"?>
+<?xml-stylesheet href="chrome://calendar/content/datetimepickers/datetimepickers.css" ?>
+					
+<?xml-stylesheet href="chrome://calendar/skin/calendar-views.css" type="text/css"?>
+<?xml-stylesheet href="chrome://calendar/skin/widgets/calendar-widgets.css" type="text/css"?>
+<?xml-stylesheet href="chrome://calendar/content/widgets/calendar-widget-bindings.css" type="text/css"?>
+
+<!-- DTD File with all strings specific to the calendar -->
+<!DOCTYPE overlay 
+[
+  <!ENTITY % calglobalDTD SYSTEM "chrome://calendar/locale/global.dtd" > %calglobalDTD;
+  <!ENTITY % calendarDTD SYSTEM "chrome://calendar/locale/calendar.dtd" > %calendarDTD;
+  <!ENTITY % lightningDTD SYSTEM "chrome://lightning/locale/lightning.dtd"> %lightningDTD;
+  <!ENTITY % toolbarDTD SYSTEM "chrome://lightning/locale/lightning-toolbar.dtd" > %toolbarDTD;
+  <!ENTITY % GanttViewmainDTD SYSTEM "chrome://ganttview/locale/ganttview.dtd"> %GanttViewmainDTD;
+  <!ENTITY % GanttViewprefsDTD SYSTEM "chrome://ganttview/locale/preferences/ganttview-preferences.dtd"> %GanttViewprefsDTD;
+]>
+
+
+<!-- The Window	-->
+
+<overlay id="GanttView-view-overlay"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  
+  <stringbundleset id="stringbundleset">
+		<stringbundle id="GanttView-bundle" src="chrome://ganttview/locale/ganttview.properties" insertafter="bundle_multimessages"/>
+	</stringbundleset>
+
+	<script type="application/javascript" src="chrome://global/content/strres.js"/>
+	<script type="application/javascript" src="chrome://global/content/nsDragAndDrop.js"/>
+	<script type="application/javascript" src="chrome://global/content/nsTransferable.js"/>
+	<script type="application/javascript" src="chrome://calendar/content/calendar-views.js"/>
+  <script type="application/javascript" src="chrome://calendar/calendar-js/calDateTime.js"/>
+  <script type="application/javascript" src="resource://calendar/modules/utils/calDateTimeUtils.jsm"/>
+	<script type="application/javascript" src="resource://ganttview/ganttview.jsm"/>
+
+  	<script type="application/javascript">
+    //set values using DTD
+		GanttView.arrayOfDayNames = new Array();
+
+		GanttView.arrayOfDayNames[0] = "&GanttView.day.0.D;";
+		GanttView.arrayOfDayNames[1] = "&GanttView.day.1.D;";
+		GanttView.arrayOfDayNames[2] = "&GanttView.day.2.D;";
+		GanttView.arrayOfDayNames[3] = "&GanttView.day.3.D;";
+		GanttView.arrayOfDayNames[4] = "&GanttView.day.4.D;";
+		GanttView.arrayOfDayNames[5] = "&GanttView.day.5.D;";
+		GanttView.arrayOfDayNames[6] = "&GanttView.day.6.D;";
+
+		GanttView.arrayOfMonthNames = new Array();
+
+		GanttView.arrayOfMonthNames[0] = "&GanttView.month.1.MMMM;";
+		GanttView.arrayOfMonthNames[1] = "&GanttView.month.2.MMMM;";
+		GanttView.arrayOfMonthNames[2] = "&GanttView.month.3.MMMM;";
+		GanttView.arrayOfMonthNames[3] = "&GanttView.month.4.MMMM;";
+		GanttView.arrayOfMonthNames[4] = "&GanttView.month.5.MMMM;";
+		GanttView.arrayOfMonthNames[5] = "&GanttView.month.6.MMMM;";
+		GanttView.arrayOfMonthNames[6] = "&GanttView.month.7.MMMM;";
+		GanttView.arrayOfMonthNames[7] = "&GanttView.month.8.MMMM;";
+		GanttView.arrayOfMonthNames[8] = "&GanttView.month.9.MMMM;";
+		GanttView.arrayOfMonthNames[9] = "&GanttView.month.10.MMMM;";
+		GanttView.arrayOfMonthNames[10] = "&GanttView.month.11.MMMM;";
+		GanttView.arrayOfMonthNames[11] = "&GanttView.month.12.MMMM;";
+
+	</script>
+  
+	<!-- these broadcasters are required for persisting attributes of elements within XBL --> 
+	<broadcasterset id="calendar_broadcasters">
+		<broadcaster id="GanttView-item-headers-width-broadcaster" persist="width"/>	
+	</broadcasterset>
+
+	<commandset id="calendar_commands">
+    <!-- id must be "calendar_GanttView-view_command" for compatibility with switchToView()
+          in calendar-views.js -->
+		<command id="calendar_GanttView-view_command" oncommand="GanttView.switchCalendarView('GanttView',true);" disabled="false" insertafter="calendar_month-view_command"/>	
+		<command id="GanttView-view_preferences_command" oncommand="GanttView.openPreferences();"/>		
+		<command id="GanttView-showprogressbars_command" oncommand="GanttView.togglePref('extensions.GanttView.items.showprogressbars');"/>
+		<command id="GanttView-groupbycalendar_command" oncommand="GanttView.togglePref('extensions.GanttView.items.groupbycalendar');"/>
+		<command id="GanttView-titleordinaloverride_command" oncommand="GanttView.togglePref('extensions.GanttView.items.titleordinaloverride');"/>
+	</commandset>
+  
+  <toolbarpalette id="CalendarToolbarPalette">
+		<toolbarbutton class="toolbarbutton-ganttprefs"
+                   id="GanttView-showprogressbars-button"
+                   label="&GanttView.pref.toggleprogressbars.label;"
+                   tooltiptext="&GanttView.pref.showprogressbars.tooltip.true;"
+                   observes="GanttView-showprogressbars_command"
+					insertafter="calendar-unifinder-button"/>
+		<toolbarbutton class="toolbarbutton-ganttprefs"
+                   id="GanttView-groupbycalendar-button"
+                   label="&GanttView.pref.togglegroupbycalendar.label;"
+                   tooltiptext="&GanttView.pref.groupbycalendar.tooltip.true;"
+                   observes="GanttView-groupbycalendar_command"
+					insertafter="calendar-unifinder-button"/>			
+		<toolbarbutton class="toolbarbutton-ganttprefs"
+                   id="GanttView-titleordinaloverride-button"
+                   label="&GanttView.pref.toggletitleordinaloverride.label;"
+                   tooltiptext="&GanttView.pref.titleordinaloverride.tooltip.true;"
+                   observes="GanttView-titleordinaloverride_command"
+					insertafter="calendar-unifinder-button"/>	          		          
+  </toolbarpalette>
+  
+  
+  
+	<keyset id="calendar-keys">
+		<key id="GanttView-view-key"  key="&GanttView.view.key;"
+		observes="calendar_GanttView-view_command"
+		modifiers="alt" />
+	</keyset>
+
+	<popup id="context-menu">
+		<menuitem label="&GanttView.context.label;"
+            accesskey="&GanttView.context.accesskey;"
+            observes="calendar_GanttView-view_command" insertbefore="only-workday-checkbox-2"/>
+	</popup>
+	
+	<menupopup id="ltnCalendarMenuPopup">
+		<menuitem id="GanttView-ltnChangeViewGantt"
+				  label="&GanttView.toolbar.gantt.label;"
+				  accesskey="&GanttView.toolbar.gantt.accesskey;"
+				  type="radio"
+				  name="calendarMenuViews"
+				  key="GanttView-view-key"
+				  observes="calendar_GanttView-view_command"
+				  insertafter="ltnChangeViewMonth"
+				  />
+	</menupopup>
+
+	<menupopup id="appmenu_ltnCalendarMenuPopup">
+		<menuitem id="appmenu_GanttView-ltnChangeViewGantt"
+				  label="&GanttView.toolbar.gantt.label;"
+				  accesskey="&GanttView.toolbar.gantt.accesskey;"
+				  type="radio"
+				  name="calendarMenuViews"
+				  key="GanttView-view-key"
+				  observes="calendar_GanttView-view_command"
+				  insertafter="appmenu_ltnChangeViewMonth"
+				  />
+	</menupopup>
+	
+	<menupopup id="taskPopup">
+		 <menuitem id="GanttView-menu_ganttviewpreferences"
+						 label="&GanttView.options.label;"
+             accesskey="&GanttView.options.accesskey;"
+						 command="GanttView-view_preferences_command"
+						 insertafter="menu_preferences"/>
+	</menupopup>	
+  
+  <menupopup id="appmenu_customizeMenu">
+		 <menuitem id="appmenu_GanttView-menu_ganttviewpreferences"
+						 label="&GanttView.options.label;"
+             accesskey="&GanttView.options.accesskey;"
+						 command="GanttView-view_preferences_command"
+						 insertafter="appmenu_accountmgr"/>    
+  </menupopup>
+  
+  <menuitem id="calendar-go-menu-previous"     
+          label-GanttView="&lightning.toolbar.week.label;"
+          accesskey-GanttView="&lightning.toolbar.week.accesskey;"/>  
+  
+  <menuitem id="calendar-go-menu-next"
+              label-GanttView="&lightning.toolbar.week.label;"
+              accesskey-GanttView="&lightning.toolbar.week.accesskey;"/>
+              
+  <menuitem id="appmenu_calendar-go-menu-previous"     
+          label-GanttView="&lightning.toolbar.week.label;"/>
+          
+  <menuitem id="appmenu_calendar-go-menu-next"
+              label-GanttView="&lightning.toolbar.week.label;"/>
+  
+  <toolbarbutton id="previous-view-button"
+    tooltiptext-GanttView="&calendar.navigation.prevweek.tooltip;"/>
+  
+  <toolbarbutton id="next-view-button"
+    tooltiptext-GanttView="&calendar.navigation.nextweek.tooltip;"/>  
+  <!-- Calendar Gantt Chart View -->  
+  
+	<tabs id="view-tabs">
+      <!-- calview attribute of this item must be "GanttView" for compatibility with 
+          switchToView() function in calendar-views.js -->
+		<tab id="GanttView-view-button"
+          label="&GanttView.button.label;"
+          tooltiptext="&GanttView.button.tooltip;"
+          calview="GanttView"
+          observes="calendar_GanttView-view_command"
+          insertafter="calendar-month-view-button"/>
+	</tabs>
+
+	<deck id="view-deck">	
+    <!-- id of this item must be "GanttView-view" for compatibility with 
+          switchToView() function in calendar-views.js -->
+		<calendar-GanttView-view id="GanttView-view"
+									insertafter="month-view"
+									class="GanttView-overflow-hidden"
+									flex="1"
+									context="calendar-view-context-menu"
+									item-context="calendar-item-context-menu"/>
+	</deck>
+</overlay>

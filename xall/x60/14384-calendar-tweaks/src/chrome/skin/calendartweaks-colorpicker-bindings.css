@@ -1,0 +1,34 @@
+/************************************************************************/
+/*                                                                      */
+/*      Calendar Tweaks  -  Thunderbird Extension  -  Color Picker      */
+/*                                                                      */
+/*      CSS for modified Color Picker bindings                          */
+/*                                                                      */
+/*      Copyright (C) 2018  by  DW-dev                                  */
+/*                                                                      */
+/*      Last Edit  -  23 Aug 2018                                       */
+/*                                                                      */
+/************************************************************************/
+
+/* Derived from chrome://global/content/xul.css */
+
+dialog[accountcolors-tbversion="24.0"] calendartweaks-colorpicker,
+dialog[accountcolors-tbversion="31.0"] calendartweaks-colorpicker,
+dialog[accountcolors-tbversion="38.0"] calendartweaks-colorpicker,
+dialog[accountcolors-tbversion="60.0"] calendartweaks-colorpicker
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-colorpicker-bindings.xml#calendartweaks-colorpicker");
+}
+
+dialog[accountcolors-tbversion="24.0"] calendartweaks-colorpicker[type="button"],
+dialog[accountcolors-tbversion="31.0"] calendartweaks-colorpicker[type="button"],
+dialog[accountcolors-tbversion="38.0"] calendartweaks-colorpicker[type="button"],
+dialog[accountcolors-tbversion="60.0"] calendartweaks-colorpicker[type="button"]
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-colorpicker-bindings.xml#calendartweaks-colorpicker-button");
+}
+
+calendartweaks-colorpicker[type="button"]
+{
+    -moz-user-focus: normal;
+}

@@ -1,0 +1,30 @@
+locale  calendaryearview en-US  chrome/locale/en-US/
+locale  calendaryearview da     chrome/locale/da/
+locale  calendaryearview de-DE  chrome/locale/de-DE/
+locale  calendaryearview sv-SE  chrome/locale/sv-SE/
+locale  calendaryearview fr     chrome/locale/fr/
+locale  calendaryearview it     chrome/locale/it/
+locale  calendaryearview nl     chrome/locale/nl/
+locale  calendaryearview es     chrome/locale/es/
+locale  calendaryearview pl     chrome/locale/pl/
+locale  calendaryearview pt-BR  chrome/locale/pt-BR/
+locale  calendaryearview sr     chrome/locale/sr/
+locale  calendaryearview si-LK  chrome/locale/si-LK/
+locale  calendaryearview uk-UA  chrome/locale/uk-UA/
+locale  calendaryearview zh-CN  chrome/locale/zh-CN/
+locale  calendaryearview tr     chrome/locale/tr/
+locale  calendaryearview bg     chrome/locale/bg/
+
+content calendaryearview chrome/content/
+skin    calendaryearview classic/1.0    chrome/skin/classic/
+
+overlay	chrome://calendar/content/calendar-views.xul    chrome://calendaryearview/content/calendaryearview-overlay.xul
+overlay chrome://calendar/content/calendar-common-sets.xul chrome://calendaryearview/content/calendaryearview-common-sets.xul
+
+overlay	chrome://lightning/content/messenger-overlay-sidebar.xul   chrome://calendaryearview/content/calendaryearview-overlay-sidebar.xul
+
+overlay chrome://calendar/content/calendar-properties-dialog.xul   chrome://calendaryearview/content/calendar-properties-dialog-overlay.xul
+
+resource calendaryearview .
+
+manifest components/components.manifest

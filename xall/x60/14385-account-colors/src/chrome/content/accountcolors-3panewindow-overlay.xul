@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Account Colors  -  Thunderbird Extension  -  3Pane Window       */
+/*                                                                      */
+/*      XUL for 3Pane Window overlay                                    */
+/*                                                                      */
+/*      Copyright (C) 2008-2015  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  21 Feb 2015                                       */
+/*                                                                      */
+/************************************************************************/
+-->  
+
+<?xml-stylesheet href="chrome://accountcolors/skin/accountcolors-3panewindow-generated.css" type="text/css"?>
+<?xml-stylesheet href="chrome://accountcolors/skin/accountcolors-3panewindow.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://accountcolors/locale/accountcolors.dtd">
+
+<overlay id="accountcolors-3panewindow-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    
+    <script src="chrome://accountcolors/content/accountcolors-3panewindow.js" type="application/x-javascript"/>
+    <script src="chrome://accountcolors/content/accountcolors-utilities.js" type="application/x-javascript"/>
+    
+    <toolbar id="mail-toolbar-menubar2">
+        <toolbaritem id="menubar-items">
+            <menubar id="mail-menubar">
+                <menu id="tasksMenu">
+                    <menupopup id="taskPopup">
+                        <menuitem id="accountcolors-toolsmenu-options" label="&accountcolors.options;" accesskey="&accountcolors.options.ak;"
+                                  oncommand="accountColors3Pane.cmdOptions();" insertbefore="menu_preferences"/>
+                    </menupopup>
+                </menu>
+            </menubar>
+        </toolbaritem>
+    </toolbar>
+    
+    <window id="messengerWindow">
+<!--
+        <statusbar id="status-bar">
+            <statusbarpanel id="accountcolors-debug-info" class="statusbarpanel-iconic-text" width="400px;"/>
+        </statusbar>
+-->
+    </window>
+    
+</overlay>

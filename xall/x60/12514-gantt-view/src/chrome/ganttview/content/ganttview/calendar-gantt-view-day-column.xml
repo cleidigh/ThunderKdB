@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   - ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is calendar views.
+   -
+   - The Initial Developer of the Original Code is
+   -   Oracle Corporation
+   - Portions created by the Initial Developer are Copyright (C) 2005
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Vladimir Vukicevic <vladimir.vukicevic@oracle.com>
+   -   Thomas Benisch <thomas.benisch@sun.com>
+   -   Dan Mosedale <dan.mosedale@oracle.com>
+   -   Michael Buettner <michael.buettner@sun.com>
+   -   Philipp Kewisch <mozilla@kewis.ch>
+   -   Markus Adrario <MarkusAdrario@web.de>
+   -   Berend Cornelius <berend.cornelius@sun.com>
+   -
+   - GanttView code is based on various versions of Sunbird/Lighning views 
+   - from  0.2 to present. Please contact me if I have omitted or mistakenly
+   - included a contributor.  
+   -	Joe Brochu <ganttview@gmail.com>
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the GPL or the LGPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK *****
+-->
+
+<!-- Note that this file depends on helper functions in calUtils.js-->
+
+<!-- DTD File with all strings specific to the calendar -->
+<!DOCTYPE overlay 
+ [
+	<!ENTITY % dtd1 SYSTEM "chrome://calendar/locale/global.dtd">
+		%dtd1;
+	<!ENTITY % dtd2 SYSTEM "chrome://calendar/locale/calendar.dtd">
+		%dtd2;
+	<!ENTITY % GanttView.mainDTD SYSTEM "chrome://ganttview/locale/ganttview.dtd">
+		%GanttView.mainDTD;
+ ]>
+
+<bindings id="GanttView-bindings"
+ xmlns="http://www.mozilla.org/xbl"
+ xmlns:html="http://www.w3.org/1999/xhtml"
+ xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+ xmlns:xbl="http://www.mozilla.org/xbl">
+    
+    <binding id="GanttView-day-column">
+        <content>
+            <xul:column xbl:inherits="selected,day-off,today,othermonth,firstcolumn,draggedover,topborder,leftborder,endborder,panning,fixwidth,relation" anonid="GanttView-col" class="GanttView-day-class" flex="1" >
+                <xul:stack anonid="GanttView-boxstack" flex="1"> <!-- style="min-width: 1px; min-height: 1px" -->
+                    <xul:box anonid="GanttView-bgbox" flex="1"/> <!-- style="min-width: 1px; min-height: 1px" -->
+                    <xul:box anonid="GanttView-topbox" flex="1" equalsize="always"/> <!-- style="min-width: 1px; min-height: 1px" -->
+                    <xul:box anonid="GanttView-fgbox" xbl:inherits="context" flex="1" class="fgdragcontainer"> <!-- style="min-width: 1px; min-height: 1px" -->
+                        <xul:box anonid="GanttView-fgdragspacer" style="display: inherit">
+                            <xul:spacer flex="1"/>
+                            <xul:label anonid="GanttView-fgdragbox-startlabel" class="fgdragbox-label"/>
+                        </xul:box>
+                        <xul:box anonid="GanttView-fgdragbox" class="fgdragbox"/>
+                        <xul:label anonid="GanttView-fgdragbox-endlabel" class="fgdragbox-label"/>
+                    </xul:box>
+                </xul:stack>
+            </xul:column>
+        </content>
+        
+        <implementation>
+            <constructor>
+                <![CDATA[
+
+      ]]>
+            </constructor>
+            
+            <!-- fields -->
+            <!-- need to set mPixPerMin dynamically -->
+            <field name="mPixPerMin">0.001</field>
+            <field name="mStartMin">0*60</field>
+            <field name="mEndMin">24*60</field>
+            <field name="mEvents">new Array()</field>
+            <field name="mVisibleDaysCount">1</field>
+            <field name="mTimezone"></field>
+            <!-- properties -->
+            
+            <property name="selected">
+                <getter>
+                    <![CDATA[
+          if (this.getAttribute("selected") == "true")
+            return true;
+          return false;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+          if (val)
+            this.setAttribute("selected", "true");
+          else
+            this.removeAttribute("selected");
+          return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <property name="date">
+                <getter>
+                    <![CDATA[
+          return this.mDate;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+          this.mDate = val;
+          if (this.mTimezone) {
+            if (!(val.timezone===this.mTimezone)) {
+                this.mTimezone = val.timezone;
+            }
+          } else {
+            this.mTimezone = val.timezone;
+          }
+					
+					this.setDayAttributes(val);
+					
+          return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <property name="calendarView"
+             onget="return this.mCalendarView;"
+             onset="return (this.mCalendarView = val);"/>
+            
+            <property name="events"
+             onget="return this.mEvents;"
+             onset="return (this.mEvents = val);"/>
+
+            <property name="visibleDaysCount"
+             onget="return this.mVisibleDaysCount;"
+             onset="return (this.mVisibleDaysCount = val);"/>
+             
+            <method name="setDayAttributes">
+                <parameter name="aDate"/>
+                <body>
+                    <![CDATA[
+				
+						this.setAttribute("context", this.calendarView.getAttribute("context"));
+		        this.setAttribute("item-context", this.calendarView.getAttribute("item-context") || this.calendarView.getAttribute("context"));
+
+						// shade alternating months - current month never shaded
+						var testmonth = aDate.month
+						if (new Date().getMonth % 2 == 0)
+							testmonth++;
+							
+						if (testmonth % 2 == 0) {
+								this.setAttribute("othermonth", "true");
+						} else {
+								this.removeAttribute("othermonth");
+						}
+						
+						//highlight days off
+						function matchesDayOff(dayOffNum) { return (dayOffNum == aDate.weekday); }
+						
+						if (this.calendarView.daysOffArray.some(matchesDayOff)) {
+								
+								this.setAttribute("day-off", "true");
+						} else {
+								this.removeAttribute("day-off");
+						}
+						
+						// highlight today
+
+						//if (aDate.compare(this.calendarView.today()) == 0) {
+						//		this.setAttribute("today", "true");
+						//} else {
+						//		this.removeAttribute("today");
+						//}
+						
+            // Set up date relations
+            switch (aDate.compare(this.calendarView.today())) {
+                case -1:
+                    this.setAttribute("relation", "past");
+                    break;
+                case 0:
+                    this.setAttribute("relation", "today");
+                    break;
+                case 1:
+                    this.setAttribute("relation", "future");
+                    break;
+            }
+            
+            // mark first column for left border
+            if (aDate.compare(this.calendarView.startDate)==0) {
+							this.setAttribute("leftborder", "true");
+						} else {
+							this.removeAttribute("leftborder");
+						}		
+            
+						// mark last column of each week for end border
+						if (aDate.weekday==this.calendarView.lastVisibleWeekDay) {
+							this.setAttribute("endborder", "true");
+						} else {
+							this.removeAttribute("endborder");
+						}		
+			  ]]>
+                </body>
+            </method>
+            
+            <property name="boxWidth">
+                <getter>
+                    <![CDATA[
+          return this.boxObject.width;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+					this.setAttribute("style","min-width: " + val + "px; " + "max-width: " + val + "px;");					
+          return val;
+        ]]>
+                </setter>
+            </property>
+                        
+        </implementation>
+        
+        <handlers>
+            
+        </handlers>
+    </binding>
+</bindings>

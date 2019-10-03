@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   - ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is calendar views.
+   -
+   - The Initial Developer of the Original Code is
+   -   Oracle Corporation
+   - Portions created by the Initial Developer are Copyright (C) 2005
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Vladimir Vukicevic <vladimir.vukicevic@oracle.com>
+   -   Thomas Benisch <thomas.benisch@sun.com>
+   -   Dan Mosedale <dan.mosedale@oracle.com>
+   -   Michael Buettner <michael.buettner@sun.com>
+   -   Philipp Kewisch <mozilla@kewis.ch>
+   -   Markus Adrario <MarkusAdrario@web.de>
+   -   Berend Cornelius <berend.cornelius@sun.com>
+   -
+   - GanttView code is based on various versions of Sunbird/Lighning views 
+   - from  0.2 to present. Please contact me if I have omitted or mistakenly
+   - included a contributor.  
+   -	Joe Brochu <ganttview@gmail.com>
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the GPL or the LGPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK *****
+-->
+
+<!-- Note that this file depends on helper functions in calUtils.js-->
+
+<!-- DTD File with all strings specific to the calendar -->
+<!DOCTYPE overlay 
+ [
+  <!ENTITY % dtd1 SYSTEM "chrome://calendar/locale/global.dtd">
+  %dtd1;
+  <!ENTITY % dtd2 SYSTEM "chrome://calendar/locale/calendar.dtd">
+  %dtd2;
+  <!ENTITY % GanttView.mainDTD SYSTEM "chrome://ganttview/locale/ganttview.dtd">
+  %GanttView.mainDTD;
+]>
+
+<bindings id="GanttView-bindings"
+ xmlns="http://www.mozilla.org/xbl"
+ xmlns:html="http://www.w3.org/1999/xhtml"
+ xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+ xmlns:xbl="http://www.mozilla.org/xbl">
+
+  <binding id="GanttView-week-header-box" extends="chrome://ganttview/content/calendar-gantt-view-day-header-column.xml#GanttView-day-header-column">
+    <content>
+      <xul:vbox xbl:inherits="selected,today,othermonth,firstcolumn,draggedover,topborder,leftborder,endborder,panning,relation" anonid="GanttView-weekheader" class="GanttView-day-header-class" endborder="true" align="start" overflow="hidden" flex="1">
+        <xul:label anonid="GanttView-weekLabel" class="GanttView-header-date" xbl:inherits="selected,day-off,today,othermonth,relation"/>
+      </xul:vbox>
+    </content>
+
+    <implementation>
+      <constructor>
+        <![CDATA[
+      ]]>
+      </constructor>
+
+      <field name="mWeekNumber">null</field>
+
+      <property name="date">
+        <getter>
+          <![CDATA[
+          return this.mDate;
+        ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+          this.mDate = val;
+
+					this.mWeekNumber = GanttView.weekNumber(val, this.calendarView.weekStartOffset)
+					
+					var weekLabel = document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-weekLabel');
+				  weekLabel.setAttribute("value", ]]>"&GanttView.header.label.week;"<![CDATA[ + " " + this.mWeekNumber);
+					
+          var yearWeekNum = val.year + this.mWeekNumber/100;
+          var currentYearWeekNum = this.calendarView.today().year + this.calendarView.currentWeekNumber/100;
+          
+          var yearWeekNumDiff = yearWeekNum - currentYearWeekNum;
+          
+          if (yearWeekNumDiff<0) {
+              this.setAttribute("relation", "past");
+          } else if (yearWeekNumDiff==0) {
+              this.setAttribute("relation", "today");
+          } else {
+              this.setAttribute("relation", "future");
+          }          
+          
+          /*
+					if ((yearWeekNum  == this.calendarView.currentWeekNumber) && (val.year == this.calendarView.today().year)) {
+						this.setAttribute("relation","today");
+					} else if (val.year <= this.calendarView.today().year) {
+          
+          ((this.mWeekNumber <= this.calendarView.currentWeekNumber) && (val.year <= this.calendarView.today().year)) {
+            this.setAttribute("relation","past");
+					}
+					*/
+          // mark first column for left border
+          
+          if (this.mDate.compare(this.calendarView.startDate)==0) {
+            this.setAttribute("leftborder", "true");
+          } else {
+            this.removeAttribute("leftborder");
+          }		
+            
+          return this.mDate;
+        ]]>
+        </setter>
+      </property>
+
+      <property name="weekNumber">
+        <getter>
+          <![CDATA[
+          return this.mWeekNumber;
+        ]]>
+        </getter>
+      </property>
+
+    </implementation>
+
+    <handlers>
+      <handler event="dblclick" button="0" phase="capturing">
+        <![CDATA[
+
+			event.stopPropagation();
+				if (this.calendarView.controller) {
+					this.calendarView.selectedDay = this.date
+				
+				var startDate = this.date.clone()
+				var endDate = this.date.clone()
+				endDate.day += 6
+				createEventWithDialog(null, startDate, endDate);
+        }	
+      ]]>
+      </handler>
+    </handlers>
+  </binding>
+
+</bindings>

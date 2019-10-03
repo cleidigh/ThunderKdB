@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Calendar Tweaks  -  Thunderbird Extension  -  Install Manifest  */
+/*                                                                      */
+/*      XML (RDF) for installation                                      */
+/*                                                                      */
+/*      Copyright (C) 2008-2018  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  05 Sep 2018                                       */
+/*                                                                      */
+/************************************************************************/
+-->
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+    <Description about="urn:mozilla:install-manifest">
+
+        <em:id>calendartweaks@DW-dev</em:id>
+        <em:type>2</em:type>
+        <em:version>7.1</em:version>
+        <em:name>Calendar Tweaks</em:name>
+        <em:description>Allows several tweaks to the Thunderbird/Lightning calendar user interface including new selection styles and repeating event icons. </em:description>
+        <em:creator>DW-dev</em:creator>
+        <em:optionsURL>chrome://calendartweaks/content/calendartweaks-options.xul</em:optionsURL>
+        <em:iconURL>chrome://calendartweaks/skin/calendartweaks-icon.png</em:iconURL>
+        <em:homepageURL>https://addons.mozilla.org/thunderbird/addon/calendar-tweaks/</em:homepageURL>
+
+        <em:targetApplication> <!-- Thunderbird -->
+            <Description>
+                <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+                <em:minVersion>24.0</em:minVersion>
+                <em:maxVersion>60.*</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+
+    </Description> 
+
+</RDF>

@@ -1,0 +1,1 @@
+pref("extensions.{6C3323F8-7328-11DE-B11C-551356D89593}.description", "chrome://getpartialmessages/locale/getpartialmessages.properties");

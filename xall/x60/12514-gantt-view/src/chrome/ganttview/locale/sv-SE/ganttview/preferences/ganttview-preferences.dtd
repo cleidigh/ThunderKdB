@@ -1,0 +1,83 @@
+
+<!ENTITY GanttView.prefpanetitle "Ganttvy">
+
+<!ENTITY GanttView.pref.daterange.caption  "Synligt datumintervall" >
+<!ENTITY GanttView.pref.numberofweeks.label "Antal veckor som visas:">
+<!ENTITY GanttView.pref.numberofweeksnote.description "(Obs: Större intervaller kan minska prestandan)">
+<!ENTITY GanttView.pref.numberofweeks.accesskey "v">
+<!ENTITY GanttView.pref.numberofweeks.5 "5 veckor">
+<!ENTITY GanttView.pref.numberofweeks.10 "10 veckor">
+<!ENTITY GanttView.pref.numberofweeks.13 "3 månader">
+<!ENTITY GanttView.pref.numberofweeks.20 "20 veckor">
+<!ENTITY GanttView.pref.numberofweeks.26 "6 månader">
+<!ENTITY GanttView.pref.numberofweeks.30 "30 veckor">
+<!ENTITY GanttView.pref.numberofweeks.39 "9 månader">
+<!ENTITY GanttView.pref.numberofweeks.40 "40 veckor">
+<!ENTITY GanttView.pref.numberofweeks.52 "1 år">
+<!ENTITY GanttView.pref.numberofweeks.78 "18 månader">
+<!ENTITY GanttView.pref.numberofweeks.104 "2 år">
+
+<!ENTITY GanttView.pref.numberofpreviousweeks.label "Antal föregående veckor som visas:" >
+<!ENTITY GanttView.pref.numberofpreviousweeks.accesskey "f" >
+<!ENTITY GanttView.pref.numberofweeks.0 "0">
+<!ENTITY GanttView.pref.numberofweeks.1 "1">
+<!ENTITY GanttView.pref.numberofweeks.2 "2">
+
+<!ENTITY GanttView.pref.daysoffhidden.label "Dölj lediga dagar" >
+<!ENTITY GanttView.pref.daysoffhidden.accesskey "l" >
+
+<!ENTITY GanttView.pref.misc.caption "Övrigt">
+<!ENTITY GanttView.pref.tasksinview.label "Visa uppgifter i Ganttvyn">
+<!ENTITY GanttView.pref.tasksinview.accesskey "u">
+<!ENTITY GanttView.pref.hidecompletedtasks.label "Dölj slutförda uppgifter">
+<!ENTITY GanttView.pref.hidecompletedtasks.accesskey "s">
+
+<!ENTITY GanttView.pref.showprogressbars.label "Visa förloppsindikatorer för objekt">
+<!ENTITY GanttView.pref.showprogressbars.accesskey "ö">
+<!ENTITY GanttView.pref.toggleprogressbars.label "Förloppsindikatorer">
+<!ENTITY GanttView.pref.showprogressbars.tooltip.false "Visa förloppsindikatorer på objekt">
+<!ENTITY GanttView.pref.showprogressbars.tooltip.true "Dölj förloppsindikatorer på objekt">
+
+
+<!ENTITY GanttView.pref.groupbycalendar.label "Gruppera objekt efter kalender">
+<!ENTITY GanttView.pref.groupbycalendar.accesskey "G">
+<!ENTITY GanttView.pref.togglegroupbycalendar.label "Gruppera efter kalender">
+<!ENTITY GanttView.pref.groupbycalendar.tooltip.false "Gruppera objekt efter kalender">
+<!ENTITY GanttView.pref.groupbycalendar.tooltip.true "Dela upp grupperade objekt">
+
+<!ENTITY GanttView.pref.titleordinaloverride.label "Sortering efter ordningstal i titel">
+<!ENTITY GanttView.pref.titleordinaloverride.accesskey "o">
+<!ENTITY GanttView.pref.titleordinaloverride.description "Tillåt sortering av objekt efter numrering som anges först i objekttiteln (t.ex. 1, 2, 3; 1a, 1b, 2a; 1-1, 1-2-1, 1-2-2).  Objekt utan numrering kommer att ordnas efter startdatum.">
+
+<!ENTITY GanttView.pref.partialselection.caption "Beteende för markering av objekt">
+<!ENTITY GanttView.pref.partialselection.label "Delvis inneslutande">
+<!ENTITY GanttView.pref.partialselection.accesskey "D">
+<!ENTITY GanttView.pref.enclosedselection.label "Helt inneslutande">
+<!ENTITY GanttView.pref.enclosedselection.accesskey "e">
+
+<!ENTITY GanttView.pref.autoscroll.description "Vid panorering eller dragning, för muspekaren till kanten av rutnätet för att automatiskt rulla vyn.  Rullningshastigheten är proportionell mot pekarens avstånd till tröskeln." >
+<!ENTITY GanttView.pref.autoscroll.caption "Automatisk rullning">
+<!ENTITY GanttView.pref.autoscrollspeed.label "Högsta hastighet:" >
+<!ENTITY GanttView.pref.autoscrollspeed.accesskey "h" >
+<!ENTITY GanttView.pref.autoscrollspeed.min.label "Långsam" >
+<!ENTITY GanttView.pref.autoscrollspeed.max.label "Snabb" >
+<!ENTITY GanttView.pref.autoscrollspeed.1 "Mycket långsam" >
+<!ENTITY GanttView.pref.autoscrollspeed.2 "Långsam" >
+<!ENTITY GanttView.pref.autoscrollspeed.3 "Ganska långsam" >
+<!ENTITY GanttView.pref.autoscrollspeed.4 "Medelsnabb" >
+<!ENTITY GanttView.pref.autoscrollspeed.5 "Ganska snabb" >
+<!ENTITY GanttView.pref.autoscrollspeed.6 "Snabb" >
+<!ENTITY GanttView.pref.autoscrollspeed.7 "Mycket snabb" >
+
+<!ENTITY GanttView.pref.autoscrollthreshold.label "Tröskelbredd (&#37; av rutnätets bredd/höjd):" >
+<!ENTITY GanttView.pref.autoscrollthreshold.accesskey "T" >
+<!ENTITY GanttView.pref.autoscrollthreshold.min.label "Av" >
+<!ENTITY GanttView.pref.autoscrollthreshold.max.label "25" >
+<!ENTITY GanttView.pref.autoscrollthreshold.0 "Av" >
+<!ENTITY GanttView.pref.autoscrollthreshold.1 "2" >
+<!ENTITY GanttView.pref.autoscrollthreshold.2 "5" >
+<!ENTITY GanttView.pref.autoscrollthreshold.3 "10" >
+<!ENTITY GanttView.pref.autoscrollthreshold.4 "15" >
+<!ENTITY GanttView.pref.autoscrollthreshold.5 "20" >
+<!ENTITY GanttView.pref.autoscrollthreshold.6 "25" >
+

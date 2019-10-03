@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Account Colors  -  Thunderbird Extension  -  Scale              */
+/*                                                                      */
+/*      XML (XBL) for modified Scale bindings                           */
+/*                                                                      */
+/*      Copyright (C) 2012  by  DW-dev                                  */
+/*                                                                      */
+/*      Last Edit  -  16 Jun 2012                                       */
+/*                                                                      */
+/************************************************************************/
+-->
+
+<!-- Modified from chrome://global/content/bindings/scale.xml -->
+
+<bindings id="accountcolors-scaleBindings"
+   xmlns="http://www.mozilla.org/xbl"
+   xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   xmlns:xbl="http://www.mozilla.org/xbl">
+  
+  <binding id="accountcolors-scale" extends="chrome://global/content/bindings/scale.xml#scale">
+    
+    <implementation implements="nsIDOMEventListener">
+      
+      <method name="valueChanged">
+        <parameter name="which"/>
+        <parameter name="newValue"/>
+        <parameter name="userChanged"/>
+        <body>
+        <![CDATA[
+          switch (which) {
+            case "curpos":
+              this.setAttribute("value", newValue);
+
+              // only fire the change event when userChanged
+              // or _userChanged is true
+              if (userChanged || _userChanged)
+              {
+                var changeEvent = document.createEvent("Events");
+                changeEvent.initEvent("change", true, true);
+                this.dispatchEvent(changeEvent);
+              }
+              break;
+
+            case "minpos":
+              this.setAttribute("min", newValue);
+              break;
+
+            case "maxpos":
+              this.setAttribute("max", newValue);
+              break;
+          }
+        ]]>
+        </body>
+      </method>
+      
+    </implementation>    
+    
+  </binding>
+  
+</bindings>

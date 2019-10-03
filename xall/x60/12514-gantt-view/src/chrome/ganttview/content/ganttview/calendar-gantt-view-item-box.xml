@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   - ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is calendar views.
+   -
+   - The Initial Developer of the Original Code is
+   -   Oracle Corporation
+   - Portions created by the Initial Developer are Copyright (C) 2005
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Vladimir Vukicevic <vladimir.vukicevic@oracle.com>
+   -   Thomas Benisch <thomas.benisch@sun.com>
+   -   Dan Mosedale <dan.mosedale@oracle.com>
+   -   Michael Buettner <michael.buettner@sun.com>
+   -   Philipp Kewisch <mozilla@kewis.ch>
+   -   Markus Adrario <MarkusAdrario@web.de>
+   -   Berend Cornelius <berend.cornelius@sun.com>
+   -
+   - GanttView code is based on various versions of Sunbird/Lighning views 
+   - from  0.2 to present. Please contact me if I have omitted or mistakenly
+   - included a contributor.  
+   -	Joe Brochu <ganttview@gmail.com>
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the GPL or the LGPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK *****
+-->
+
+<!-- Note that this file depends on helper functions in calUtils.js-->
+
+<!-- DTD File with all strings specific to the calendar -->
+<!DOCTYPE overlay 
+ [
+	<!ENTITY % dtd1 SYSTEM "chrome://calendar/locale/global.dtd">
+		%dtd1;
+	<!ENTITY % dtd2 SYSTEM "chrome://calendar/locale/calendar.dtd">
+		%dtd2;
+	<!ENTITY % GanttView.mainDTD SYSTEM "chrome://ganttview/locale/ganttview.dtd">
+		%GanttView.mainDTD;
+ ]>
+
+<bindings id="GanttView-bindings"
+ xmlns="http://www.mozilla.org/xbl"
+ xmlns:html="http://www.w3.org/1999/xhtml"
+ xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+ xmlns:xbl="http://www.mozilla.org/xbl">
+
+    <binding id="GanttView-item-box" extends="chrome://calendar/content/calendar-view-core.xml#calendar-editable-item">
+        <content tooltip="itemTooltip" orient="vertical">
+					
+            <xul:box xbl:inherits="orient,width,height,context" flex="1" >
+                <xul:box anonid="GanttView-event-container"
+                 class="calendar-color-box"
+                 xbl:inherits="orient,readonly,flashing,alarm,allday,priority,progress,status,calendar,categories,item-calendar,calendar-uri,calendar-id"
+                 flex="1">
+                    <xul:box class="calendar-event-selection" orient="horizontal" flex="1">
+                        <xul:stack anonid="GanttView-eventbox"
+                         align="stretch"
+                         class="calendar-event-box-container"
+                         flex="1"
+                         xbl:inherits="context,parentorient=orient,readonly,flashing,alarm,allday,priority,progress,status,calendar,categories">
+                            <xul:image flex="1" class="calendar-event-box-gradient" ordinal="0"/>
+                            <xul:vbox class="calendar-event-details" anonid="GanttView-calendar-event-details" ordinal="1">
+                                <xul:hbox flex="1">
+                                  <xul:hbox class="GanttView-overflow-hidden"  overflowhidden="x" >
+                                      <xul:image anonid="GanttView-item-icon"
+                                             class="calendar-item-image"
+                                             xbl:inherits="progress,allday,itemType"/>
+                                      <xul:hbox anonid="GanttView-event-name-box" class="GanttView-item-name-box" align="start"  flex="1">
+                                          <xul:description anonid="GanttView-event-name" class="calendar-event-details-core" flex="1"/>
+                                      </xul:hbox>
+                                  </xul:hbox>
+                                  <xul:hbox flex="1" pack="end">
+                                      <xul:hbox align="start">
+                                          <xul:image anonid="GanttView-alarm-image"
+                                           class="alarm-image"
+                                           xbl:inherits="flashing"
+                                           hidden="true"/>
+                                      </xul:hbox>
+                                      <xul:stack mousethrough="always">
+                                        <xul:GanttView-category-box anonid="GanttView-category-box" xbl:inherits="categories" pack="end"/>
+                                        <!-- anonid must be "alarm-icons-box" for compatibility with setCSSClasses -->
+                                        <xul:hbox anonid="alarm-icons-box"
+                                        class="alarm-icons-box"
+                                        pack="end"
+                                        align="top"
+                                        xbl:inherits="flashing"/>
+                                      </xul:stack>
+                                  </xul:hbox>
+                                </xul:hbox>
+                                <xul:hbox class="item-progress-box" flex="1" xbl:inherits="showprogressbar">
+                                    <xul:stack flex="1">
+                                        <xul:progressmeter anonid="GanttView-item-progress" mode="determined" value="0" flex="1"  xbl:inherits="context"/>
+                                    
+                                        <xul:image flex="1" class="GanttView-progressmeter-gradient"/>
+                                    </xul:stack>
+                                </xul:hbox>
+                                
+                            </xul:vbox>
+                            
+                            <xul:hbox xbl:inherits="selected" flex="1" style="overflow-x:hidden;" ordinal="2" >
+                                <!-- set style to force this box on top of stack -->
+                                <xul:GanttView-item-gripbar anonid="GanttView-gripbar1"
+                                 class="calendar-item-box-grippy-start"
+                                 whichside="start"/>
+                                <xul:spacer flex="1"/>
+                                <xul:GanttView-item-gripbar anonid="GanttView-gripbar2"
+                                 class="calendar-item-box-grippy-end"
+                                 whichside="end"/>
+                            </xul:hbox>
+                            <xul:textbox anonid="GanttView-event-name-textbox"
+                                             class="plain calendar-event-name-textbox"
+                                             hidden="true"
+                                             wrap="true"
+                                            flex="1"
+                                            ordinal="3"/>
+                            <!-- Do not insert anything here, otherwise the item boxes will
+                            not be resizable using the gripbars. If you want to insert
+                            additional elements, do so above the box with the gripbars. -->
+                        </xul:stack>
+                    </xul:box>
+                </xul:box>
+            </xul:box>
+																		
+        </content>
+        
+        <implementation>
+            <constructor>
+                <![CDATA[
+				
+
+         this.orient = this.getAttribute("orient");
+				
+				 this.setAttribute("selected", "false")
+				 this.setAttribute("selectedByBox", "false")
+				 
+				 // override events from calendar-editable-item - use addEventListener instead
+         this.eventNameTextbox.onkeypress = null;
+         this.eventNameTextbox.onclick = null;
+         this.eventNameTextbox.ondblclick = null;
+         this.eventNameTextbox.onmousedown = null;
+         this.eventNameTextbox.onmouseup = null;				 
+				 
+         var self = this;
+            this.eventNameTextbox.onblur = function onBlur() { self.stopEditing(true); };
+				
+         function stopPropagationIfEditing(event) {
+           if (self.mEditing) {
+             event.stopPropagation();
+           }
+         }
+				 
+         // while editing, single click positions cursor, so don't propagate.
+         this.eventNameTextbox.addEventListener("click", stopPropagationIfEditing, true)
+         
+         // while editing, double click selects words, so don't propagate.
+         this.eventNameTextbox.addEventListener("dblclick", stopPropagationIfEditing, true)
+         
+         // while editing, don't propagate mousedown/up (selects calEvent).
+         this.eventNameTextbox.addEventListener("mousedown", stopPropagationIfEditing, true)
+				 this.eventNameTextbox.addEventListener("mouseup", stopPropagationIfEditing, true)
+				 
+				 const kKE = Components.interfaces.nsIDOMKeyEvent;
+         
+				 function onEditingKeyPress(event) {
+             // save on enter
+             if (event.keyCode == 13)
+                 self.stopEditing(true);
+             // abort on escape
+             else if (event.keyCode == 27)
+                 self.stopEditing(false);
+						 //Prevent accidental delete (backspace or delete key)
+						 else if (event.keyCode == kKE.DOM_VK_BACK_SPACE ||
+            event.keyCode == kKE.DOM_VK_DELETE)
+							event.stopPropagation();
+							return;
+         };
+				 
+				 this.eventNameTextbox.addEventListener("keypress", onEditingKeyPress, true)
+				 
+      ]]>
+            </constructor>
+            
+            <!-- fields -->
+            
+				<field name="mItemRow">null</field>
+				<field name="mItemHeader">null</field>
+                                <field name="mItemBoxWidth">null</field>
+				<field name="mItemBoxLeft">null</field>
+				<field name="mGrabbedElement">null</field>
+				<field name="mStartTruncated">null</field>
+				<field name="mEndTruncated">null</field>
+				<field name="mMouseDownGridX">null</field>
+				<field name="mSelectedByBox">false</field>
+				<field name="mEditing">false</field>
+				<field name="mOrdinal">null</field>
+				<field name="mStartColIndex">null</field>
+				<field name="mEndColIndex">null</field>
+
+      <property name="eventNameLabel" readonly="true"
+        onget="return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-event-name');"/>
+      <property name="eventNameTextbox" readonly="true"
+        onget="return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-event-name-textbox');"/>
+        
+				<property name="editing"
+             onget="return this.mEditing;"
+             onset="return (this.mEditing = val);"/>
+						
+            <property name="selected">
+                <getter>
+                    <![CDATA[
+					return this.mSelected;	
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+          if (val && !this.mSelected) {
+              this.mSelected = true;
+              this.setAttribute("selected", "true");
+							this.itemRow.setAttribute("selected", "true");
+							if (!this.itemHeader.selected)
+								this.itemHeader.selected = true;	
+							this.selectedByBox = false;
+          } else if (!val) {
+              this.mSelected = false;
+              this.setAttribute("selected", "false");
+							this.itemRow.setAttribute("selected", "false");
+							if (this.itemHeader.selected)
+								this.itemHeader.selected = false;	
+							this.selectedByBox = false;
+          }
+
+          return val;
+        ]]>
+                </setter>
+            </property>
+            
+      
+      <method name="startEditing">
+        <body><![CDATA[
+          this.editingTimer = null;
+          this.mOriginalTextLabel = this.mOccurrence.title;
+
+          this.eventNameLabel.setAttribute("hidden", "true");
+
+          this.mEditing = true;
+          this.calendarView.activeInPlaceEdit=true;
+
+          this.eventNameTextbox.value = this.mOriginalTextLabel;
+          this.eventNameTextbox.removeAttribute("hidden");
+          this.eventNameTextbox.select();
+        ]]></body>
+      </method>      
+      <method name="stopEditing">
+        <parameter name="saveChanges"/>
+        <body><![CDATA[
+          if (!this.mEditing)
+            return;
+
+          this.mEditing = false;
+          this.calendarView.activeInPlaceEdit=false;
+          
+          if (saveChanges && (this.eventNameTextbox.value != this.mOriginalTextLabel)) {
+              this.calendarView.controller.modifyOccurrence(this.mOccurrence, 
+                                                            null, null,
+                                                            this.eventNameTextbox.value);
+
+              // Note that as soon as we do the modifyItem, this element ceases to exist,
+              // so don't bother trying to modify anything further here! ('this' exists,
+              // because it's being kept alive, but our child content etc. is all gone)
+              return;
+          }
+
+          this.eventNameTextbox.setAttribute("hidden", "true");
+          this.eventNameLabel.removeAttribute("hidden");
+          return;
+        ]]></body>
+      </method>
+            
+            <property name="selectedByBox">
+                <getter>
+                    <![CDATA[
+					return this.mSelectedByBox;	
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+          if (val && !this.mSelectedByBox) {
+              this.mSelectedByBox = true;
+              this.setAttribute("selectedByBox", "true");
+							this.itemRow.setAttribute("selectedByBox", "true");
+							if (!this.itemHeader.selectedByBox)
+								this.itemHeader.selectedByBox = true;						
+          } else if (!val) {
+              this.mSelectedByBox = false;
+              this.setAttribute("selectedByBox", "false");
+							this.itemRow.setAttribute("selectedByBox", "false");
+							if (this.itemHeader.selectedByBox)
+								this.itemHeader.selectedByBox = false;	
+          }
+
+          return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <property name="occurrence">
+                <getter>
+                    <![CDATA[
+          return this.mOccurrence;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+										
+          this.mOccurrence = val;
+					this.itemHeader.occurrence = val;
+          this.setEditableLabel();
+          this.setCSSClasses();
+					this.setTaskAttributes();
+					this.showProgressBar = this.calendarView.showProgressBars;
+					return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <method name="setTaskAttributes">
+                <body>
+                    <![CDATA[
+
+				if (cal.item.isToDo(this.mOccurrence)) {				
+						
+            if (this.mOccurrence.status) {
+            
+                this.setAttribute("status", this.mOccurrence.status);
+                  
+                if (this.progressBar) {
+
+                      if (this.mOccurrence.status=="COMPLETED") {
+                        this.progressBar.value = 100;
+                      } else {
+                        this.progressBar.value = this.mOccurrence.percentComplete;
+                      }
+                      
+                } else {
+                  this.removeAttribute("status");     
+                }
+						}
+//						switch (this.mOccurrence.status ) {
+//						case "NEEDS-ACTION":
+//						case "IN-PROCESS":
+//						case "CANCELLED":
+//							//this.completedCheckbox.setAttribute("checked", "false")
+//							break;
+//
+//							case "COMPLETED":
+//							//this.completedCheckbox.setAttribute("checked", "true")
+//							break;
+//							
+//						case null:
+//  					default:
+//							//this.completedCheckbox.setAttribute("checked", "false")
+//							this.removeAttribute("status");
+//							//break;
+//          }
+				} else if (this.itemStartDate) {
+					// for events, dynamically set percent completed 
+					//	based on elapsed time.
+					
+					let itemDuration = this.itemEndDate.subtractDate(this.itemStartDate);
+
+          let now = cal.dtz.jsDateToDateTime(new Date());
+					let elapsedDuration = now.subtractDate(this.itemStartDate);
+					
+					var percentComplete = 100*(elapsedDuration.inSeconds)/(itemDuration.inSeconds);
+					
+          //if (elapsedDuration.isNegative){
+					//	percentComplete = -percentComplete;
+          //}
+          
+					if (percentComplete > 100) {
+						percentComplete = 100;
+						this.setAttribute("status", "COMPLETED");
+					} else if (percentComplete > 0 && percentComplete < 100) {
+						this.setAttribute("status", "IN-PROCESS");
+					} else {
+						if (percentComplete < 0) {
+							percentComplete = 0;
+						}
+						this.removeAttribute("status");
+					}
+					
+					if (this.progressBar) {	
+            this.progressBar.value = percentComplete;
+          }
+				}
+        ]]>
+                </body>
+            </method>
+            
+            <property name="itemTitle">
+                <getter>
+                    <![CDATA[
+           return this.mOccurrence.title;
+        ]]>
+                </getter>
+            </property>
+
+            <property name="itemCalendar">
+                <getter>
+                    <![CDATA[
+           return this.mOccurrence.calendar;
+        ]]>
+                </getter>
+            </property>
+            
+            
+            <property name="itemHeader">
+                <getter>
+                    <![CDATA[
+           return this.mItemHeader;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+           this.mItemHeader = val;
+           return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <property name="itemRow"
+             onget="return this.mItemRow;"
+             onset="return (this.mItemRow = val);"/>
+            
+            <property name="itemBoxLeft">
+                <getter>
+                    <![CDATA[
+           return this.mItemBoxLeft;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+           this.mItemBoxLeft = val;
+					 this.setAttribute("left",val)
+           return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <property name="itemBoxWidth">
+                <getter>
+                    <![CDATA[
+           return this.mItemBoxWidth;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+           this.mItemBoxWidth = val;
+					 this.setAttribute("width",val)
+           return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <property name="itemBoxRight">
+                <getter>
+                    <![CDATA[
+           return this.mItemBoxWidth + this.mItemBoxLeft;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+           this.mItemBoxWidth = val - this.mItemBoxLeft;
+					 this.setAttribute("width", this.mItemBoxWidth)
+           return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <property name="grabbedElement"
+             onget="return this.mGrabbedElement;"
+             onset="return (this.mGrabbedElement = val);"/>
+            
+            <property name="startTruncated">
+                <getter>
+                    <![CDATA[
+           return this.mStartTruncated;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+          this.mStartTruncated = val;
+					if (this.mStartTruncated){
+						this.setAttribute("starttruncated",val);
+					} else {
+						this.removeAttribute("starttruncated");
+					}
+           return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <property name="endTruncated">
+                <getter>
+                    <![CDATA[
+           return this.mEndTruncated;
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+          this.mEndTruncated = val;
+					if (this.mEndTruncated){
+						this.setAttribute("endtruncated",val);
+					} else {
+						this.removeAttribute("endtruncated");
+					}
+           return val;
+        ]]>
+                </setter>
+            </property>
+            
+						<property name="itemBoxStartColIndex"
+             onget="return this.mStartColIndex;"
+             onset="return (this.mStartColIndex = val);"/>	
+						
+ 						<property name="itemBoxEndColIndex"
+             onget="return this.mEndColIndex;"
+             onset="return (this.mEndColIndex = val);"/>	
+						 
+						
+            <property name="mouseDownGridX"
+             onget="return this.mMouseDownGridX;"
+             onset="return (this.mMouseDownGridX = val);"/>
+            
+            <property name="progressBar">
+                <getter>
+                    <![CDATA[
+           return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-item-progress');
+        ]]>
+                </getter>
+            </property>
+            
+            <property name="completedCheckbox">
+                <getter>
+                    <![CDATA[
+           return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-item-icon');
+        ]]>
+                </getter>
+            </property>
+            
+            <property name="showProgressBar">
+                <getter>
+                    <![CDATA[
+					return !this.progressBar.getAttribute("hidden");	
+        ]]>
+                </getter>
+                <setter>
+                    <![CDATA[
+              this.progressBar.setAttribute("hidden", !val);
+              this.setAttribute("showprogressbar", val);
+              this.itemRow.setAttribute("showprogressbar", val);
+              
+							if (this.itemHeader){
+
+							this.itemHeader.showProgressBar = val;
+							}
+              
+          return val;
+        ]]>
+                </setter>
+            </property>
+            
+            <property name="itemStartDate">
+                <getter>
+                    <![CDATA[
+                    //if start date doesn't exist, use end date
+                    
+           var startDate = (this.occurrence.startDate || this.occurrence.entryDate);
+           
+           if (!startDate) {
+              startDate = (this.occurrence.endDate || this.occurrence.dueDate);
+           }
+           
+           return startDate.clone();
+        
+        ]]>
+                </getter>
+            </property>
+            
+            <property name="itemEndDate">
+                <getter>
+                    <![CDATA[
+                    
+           var endDate = (this.occurrence.endDate || this.occurrence.dueDate);
+           if (endDate) {
+             //correct endDate for all-day items
+             if (this.itemStartDate.isDate) { 
+                endDate=endDate.clone();
+                endDate.day--;
+                if (endDate.subtractDate(this.itemStartDate).isNegative) {
+                  endDate = this.itemStartDate.clone();
+                  endDate.hour = 23;
+                  endDate.minute = 59;
+                }
+             }
+           } else {
+            //if end date doesn't exist, use start date
+            endDate=(this.occurrence.startDate || this.occurrence.entryDate);
+           }
+					return endDate.clone();	
+        ]]>
+                </getter>
+            </property>
+						
+            <property name="ordinal">
+                <setter>
+                                    <![CDATA[
+                    this.mOrdinal = val
+
+                    this.itemHeader.setAttribute("ordinal",val)
+                    this.itemRow.setAttribute("ordinal",val)
+
+                    // set top attribute in separate loop after setting all new ordinals - use the following  code in the calendarView
+                    //    var itemTop = itemBox.itemRow.boxObject.screenY - this.itemRows.boxObject.screenY
+                    //    itemBox.setAttribute("top", itemTop);
+
+                            ]]>
+                </setter>
+                <getter>
+                    <![CDATA[
+
+                            return this.mOrdinal;
+
+                    ]]>
+                    </getter>
+            </property>
+            
+        </implementation>
+        
+        <handlers>
+            <handler event="click" button="0" phase="capturing">
+                <![CDATA[
+								event.stopPropagation();
+
+			if (this.mEditing) {
+            return;
+        }
+							
+        // If the left button was used and the item is already selected start
+        // the 'single click edit' timeout. Otherwise select the item too.
+        // Also, check if the calendar is readOnly or we are offline.
+				
+        if (this.selected) {
+					
+            if (GanttView.isPointOverElement(this.eventNameLabel, event.screenX, event.screenY)) {
+                    var self = this;
+                    this.editingTimer = setTimeout(function alldayTimeout() { self.startEditing(); }, 350);
+
+            } else if (GanttView.isPointOverElement(this.completedCheckbox, event.screenX, event.screenY)) {
+
+                    switch (this.mOccurrence.status) {
+                            case "COMPLETED":
+                                    this.calendarView.controller.modifyOccurrenceProperty( this.mOccurrence, "status", "IN-PROCESS" )
+
+                                    break;
+                            default:
+                                    this.calendarView.controller.modifyOccurrenceProperty( this.mOccurrence, "status", "COMPLETED" )
+                    }
+
+            } else {
+                    if (this.editingTimer) {
+                                    clearTimeout(this.editingTimer);
+                    }						
+            }
+        } else {
+          this.select(event); 
+        }
+				
+
+      ]]>
+            </handler>
+            
+            <handler event="dblclick" button="0" phase="capturing">
+                <![CDATA[
+								if (this.mEditing || this.calendarView.mItemBoxBeingDragged)
+									return;
+									
+        event.stopPropagation();
+								
+        // stop 'single click edit' timeout (if started)
+        if (this.editingTimer) {
+            clearTimeout(this.editingTimer);
+            this.editingTimer = null;
+        }
+
+        if (this.calendarView.controller) {
+            var item = (event.ctrlKey) ? this.mOccurrence.parentItem : this.mOccurrence;
+            this.calendarView.controller.modifyOccurrence(item);
+        }
+      ]]>
+            </handler>
+            
+            <handler event="draggesture" phase="capturing">
+                <![CDATA[
+					event.stopPropagation();
+	            return;
+
+			]]>
+            </handler>
+
+          <handler event="dragstart" phase="capturing">
+            <![CDATA[
+					event.stopPropagation();
+	            return;
+
+			]]>
+          </handler>        
+            <handler event="mousedown" button="0">
+                <![CDATA[
+					if (this.mEditing){
+						return;
+					}
+					
+					if (this.selected) {
+						this.grabbedElement = event.whichside
+						this.mCalendarView.itemBoxBeingDragged = this
+					}
+      ]]>
+            </handler>
+            
+            <handler event="mousemove">
+                <![CDATA[
+	        if (this.mEditing){
+						event.stopPropagation();
+						return;
+					}		
+      ]]>
+            </handler>
+            
+            <handler event="mouseover">
+                <![CDATA[
+        if (this.calendarView && this.calendarView.controller) {
+        
+            event.stopPropagation();
+            onMouseOverItem(event);
+        }
+      ]]>
+            </handler>
+        </handlers>
+    </binding>
+    
+</bindings>

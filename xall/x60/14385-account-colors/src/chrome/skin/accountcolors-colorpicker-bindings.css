@@ -1,0 +1,32 @@
+/************************************************************************/
+/*                                                                      */
+/*      Account Colors  -  Thunderbird Extension  -  Color Picker       */
+/*                                                                      */
+/*      CSS for modified Color Picker bindings                          */
+/*                                                                      */
+/*      Copyright (C) 2008-2018  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  16 Nov 2018                                       */
+/*                                                                      */
+/************************************************************************/
+
+/* Derived from chrome://global/content/xul.css */
+
+dialog[accountcolors-tbversion="31.0"] accountcolors-colorpicker,
+dialog[accountcolors-tbversion="38.0"] accountcolors-colorpicker,
+dialog[accountcolors-tbversion="60.0"] accountcolors-colorpicker
+{
+    -moz-binding: url("chrome://accountcolors/content/accountcolors-colorpicker-bindings.xml#accountcolors-colorpicker");
+}
+
+dialog[accountcolors-tbversion="31.0"] accountcolors-colorpicker[type="button"],
+dialog[accountcolors-tbversion="38.0"] accountcolors-colorpicker[type="button"],
+dialog[accountcolors-tbversion="60.0"] accountcolors-colorpicker[type="button"]
+{
+    -moz-binding: url("chrome://accountcolors/content/accountcolors-colorpicker-bindings.xml#accountcolors-colorpicker-button");
+}
+
+accountcolors-colorpicker[type="button"]
+{
+    -moz-user-focus: normal;
+}

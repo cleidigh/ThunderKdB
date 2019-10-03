@@ -1,0 +1,16 @@
+content autoresizeimage jar:chrome/AutoResizeImage.jar!/content/
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://AutoResizeImage/content/composer_overlay.xul
+overlay chrome://messenger/content/messenger.xul chrome://AutoResizeImage/content/overlay.xul
+
+locale autoresizeimage en-US jar:chrome/AutoResizeImage.jar!/locale/en-US/
+locale autoresizeimage fr-FR jar:chrome/AutoResizeImage.jar!/locale/fr-FR/
+locale autoresizeimage de-DE jar:chrome/AutoResizeImage.jar!/locale/de-DE/
+locale autoresizeimage sv-SE jar:chrome/AutoResizeImage.jar!/locale/sv-SE/
+locale autoresizeimage is-IS jar:chrome/AutoResizeImage.jar!/locale/is-IS/
+locale autoresizeimage nl-NL jar:chrome/AutoResizeImage.jar!/locale/nl-NL/
+skin autoresizeimage classic/1.0 jar:chrome/AutoResizeImage.jar!/skin/classic/
+
+style chrome://messenger/content/messengercompose/messengercompose.xul chrome://AutoResizeImage/skin/AutoResizeImage.css
+
+style chrome://global/content/customizeToolbar.xul chrome://AutoResizeImage/skin/AutoResizeImage.css appversion<59.0a1
+style chrome://messenger/content/customizeToolbar.xul chrome://AutoResizeImage/skin/AutoResizeImage.css appversion>=59.0a1

@@ -1,0 +1,372 @@
+<?xml version="1.0"?>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Account Colors  -  Thunderbird Extension  -  Options            */
+/*                                                                      */
+/*      XUL for Options dialog                                          */
+/*                                                                      */
+/*      Copyright (C) 2008-2018  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  16 Nov 2018                                       */
+/*                                                                      */
+/************************************************************************/
+-->   
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<?xml-stylesheet href="chrome://accountcolors/skin/accountcolors-options.css" type="text/css"?>
+<?xml-stylesheet href="chrome://accountcolors/skin/accountcolors-colorpicker-bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://accountcolors/skin/accountcolors-scale-bindings.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://accountcolors/locale/accountcolors.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id="accountcolors-options" title="&accountcolors.optionstitle;"
+        buttons="accept,cancel,extra1" persist="screenX screenY"
+        onload="accountColorsOptions.initPrefs();" ondialogaccept="accountColorsOptions.savePrefs();"
+        buttonlabelextra1="&accountcolors.applyprefs;" ondialogextra1="accountColorsOptions.savePrefs();"  
+        windowtype="accountcolors-options">
+    
+    <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+    <script type="application/x-javascript" src="chrome://accountcolors/content/accountcolors-options.js"/>
+    <script type="application/x-javascript" src="chrome://accountcolors/content/accountcolors-utilities.js"/>
+    
+    <tabbox>
+        
+        <tabs>
+            <tab label="&accountcolors.accountcolors;"/>
+            <tab label="&accountcolors.folderpane;"/>
+            <tab label="&accountcolors.threadpane;"/>
+            <tab label="&accountcolors.messagepane;"/>
+            <tab label="&accountcolors.composewindow;"/>
+        </tabs>
+        
+        <tabpanels flex="0">
+            
+            <tabpanel id="accountcolors-account-panel" orient="vertical">
+                
+                <vbox style="height: 20px; padding-top: 2px; border: 1px solid #C0C0C0; border-bottom: none;">
+                
+                    <hbox style="margin: 0px 4px;">
+                        <label value="&accountcolors.account.account;" style="width: 200px; margin: 0px 4px; text-align: center;"/>
+                        <label value="&accountcolors.account.identity;" style="width: 300px; margin: 0px 4px; text-align: center;"/>
+                        <label value="&accountcolors.account.font;" style="width: 40px; margin: 0px 3px; text-align: center;"/>
+                        <label value="&accountcolors.account.bkgd;" style="width: 40px; margin: 0px 3px; text-align: center;"/>
+                        <checkbox style="width: 20px; margin: 0px; padding: 0px; opacity: 0.0;"/>  <!-- keeps OK button as default button instead of fontpicker0 button -->
+                    </hbox>
+                    
+                </vbox>
+                
+                <vbox id="accountcolors-accountidbox-container" style="height: 278px; padding: 3px 0px; border: 1px solid #C0C0C0; overflow-y: auto;">
+                    
+                    <hbox id="accountcolors-accountidbox" class="accountcolors-accountidbox" hidden="true">
+                        <label id="accountcolors-accountname" class="accountcolors-accountname" crop="end"/>
+                        <label id="accountcolors-identityname" class="accountcolors-identityname" crop="end"/>
+                        <button id="accountcolors-fontpicker" class="accountcolors-picker" oncommand="accountColorsOptions.pickerOpen(this);"/>
+                        <button id="accountcolors-bkgdpicker" class="accountcolors-picker" oncommand="accountColorsOptions.pickerOpen(this);"/>
+                    </hbox>
+                    
+                </vbox>
+                
+            </tabpanel>
+            
+            <tabpanel id="accountcolors-folder-panel" orient="vertical">
+                
+                <hbox>
+                    <checkbox id="accountcolors-folder-setfontstyle" label="&accountcolors.folder.setfontstyle;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px;"/>
+                    <menulist id="accountcolors-folder-fontstyle"/>
+                    <checkbox id="accountcolors-folder-setfontsize" label="&accountcolors.folder.setfontsize;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px; margin-left: 40px;"/>
+                    <menulist id="accountcolors-folder-fontsize"/>
+                </hbox>
+                
+                <separator class="groove" style="margin: 6px 0px 5px;"/>
+                
+                <hbox>
+                    <checkbox id="accountcolors-folder-colorfont" label="&accountcolors.folder.colorfont;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-folder-colorbkgd" label="&accountcolors.folder.colorbkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-folder-colorfldfont" label="&accountcolors.folder.colorfldfont;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-folder-colorfldbkgd" label="&accountcolors.folder.colorfldbkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-folder-defaultbkgd" label="&accountcolors.folder.defaultbkgd;"/>
+                </hbox>
+                
+                <separator class="groove" style="margin: 6px 0px 5px;"/>
+                
+                <hbox>
+                    <checkbox id="accountcolors-folder-boldnewmail" label="&accountcolors.folder.boldnewmail;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-folder-undernewmail" label="&accountcolors.folder.undernewmail;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-folder-noboldunread" label="&accountcolors.folder.noboldunread;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-folder-showlines" label="&accountcolors.folder.showlines;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-folder-darkerbar" label="&accountcolors.folder.darkerbar;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-folder-incspacing" label="&accountcolors.folder.incspacing;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-folder-hoverselect" label="&accountcolors.folder.hoverselect;"/>
+                </hbox>
+                
+            </tabpanel>
+            
+            <tabpanel id="accountcolors-thread-panel" orient="vertical">
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-setfontstyle" label="&accountcolors.thread.setfontstyle;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px;"/>
+                    <menulist id="accountcolors-thread-fontstyle"/>
+                    <checkbox id="accountcolors-thread-setfontsize" label="&accountcolors.thread.setfontsize;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px; margin-left: 40px;"/>
+                    <menulist id="accountcolors-thread-fontsize"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-setfromstyle" label="&accountcolors.thread.setfromstyle;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px;"/>
+                    <menulist id="accountcolors-thread-fromstyle"/>
+                    <checkbox id="accountcolors-thread-setfromsize" label="&accountcolors.thread.setfromsize;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px; margin-left: 40px;"/>
+                    <menulist id="accountcolors-thread-fromsize"/>
+                </hbox>
+                
+                <separator class="groove" style="margin: 6px 0px 5px;"/>
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-colorfont" label="&accountcolors.thread.colorfont;" style="width : 269px;"/>
+                    <checkbox id="accountcolors-thread-colorbkgd" label="&accountcolors.thread.colorbkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-colorfrom" label="&accountcolors.thread.colorfrom;" style="width : 269px;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-colorother" label="&accountcolors.thread.colorother;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-hdraccount" label="&accountcolors.thread.hdraccount;"/>
+                </hbox>
+                
+                <separator class="groove" style="margin: 6px 0px 5px;"/>
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-boldsubject" label="&accountcolors.thread.boldsubject;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-thread-boldfrom" label="&accountcolors.thread.boldfrom;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-showstripes" label="&accountcolors.thread.showstripes;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-thread-darkerbar" label="&accountcolors.thread.darkerbar;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-incspacing" label="&accountcolors.thread.incspacing;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-thread-hoverselect" label="&accountcolors.thread.hoverselect;"/>
+                </hbox>
+                
+            </tabpanel>
+            
+            <tabpanel id="accountcolors-message-panel" orient="vertical">
+                
+                <hbox>
+                    <checkbox id="accountcolors-message-setfontstyle" label="&accountcolors.message.setfontstyle;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px;"/>
+                    <menulist id="accountcolors-message-fontstyle"/>
+                    <checkbox id="accountcolors-message-setfontsize" label="&accountcolors.message.setfontsize;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px; margin-left: 40px;"/>
+                    <menulist id="accountcolors-message-fontsize"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-message-setfromstyle" label="&accountcolors.message.setfromstyle;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px;"/>
+                    <menulist id="accountcolors-message-fromstyle"/>
+                    <checkbox id="accountcolors-message-setfromsize" label="&accountcolors.message.setfromsize;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px; margin-left: 40px;"/>
+                    <menulist id="accountcolors-message-fromsize"/>
+                </hbox>
+                
+                <separator class="groove" style="margin: 6px 0px 5px;"/>
+                
+                <hbox>
+                    <checkbox id="accountcolors-message-colorfont" label="&accountcolors.message.colorfont;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-message-colorbkgd" label="&accountcolors.message.colorbkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-message-colorfrom" label="&accountcolors.message.colorfrom;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-message-defaultbkgd" label="&accountcolors.message.defaultbkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-message-hdraccount" label="&accountcolors.message.hdraccount;"/>
+                </hbox>
+                
+                <separator class="groove" style="margin: 6px 0px 5px;"/>
+                
+            </tabpanel>
+            
+            <tabpanel id="accountcolors-compose-panel" orient="vertical">
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-setfontstyle" label="&accountcolors.compose.setfontstyle;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px;"/>
+                    <menulist id="accountcolors-compose-fontstyle"/>
+                    <checkbox id="accountcolors-compose-setfontsize" label="&accountcolors.compose.setfontsize;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px; margin-left: 40px;"/>
+                    <menulist id="accountcolors-compose-fontsize"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-setidfontstyle" label="&accountcolors.compose.setidfontstyle;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px;"/>
+                    <menulist id="accountcolors-compose-idfontstyle"/>
+                    <checkbox id="accountcolors-compose-setidfontsize" label="&accountcolors.compose.setidfontsize;" oncommand="accountColorsOptions.setMenuState(this.id);" style="width: 140px; margin-left: 40px;"/>
+                    <menulist id="accountcolors-compose-idfontsize"/>
+                </hbox>
+                
+                <separator class="groove" style="margin: 6px 0px 5px;"/>
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-colorfont" label="&accountcolors.compose.colorfont;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-compose-colorbkgd" label="&accountcolors.compose.colorbkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-colorfromfont" label="&accountcolors.compose.colorfromfont;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-compose-colorfrombkgd" label="&accountcolors.compose.colorfrombkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-colortofont" label="&accountcolors.compose.colortofont;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-compose-colortobkgd" label="&accountcolors.compose.colortobkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-coloratmfont" label="&accountcolors.compose.coloratmfont;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-compose-coloratmbkgd" label="&accountcolors.compose.coloratmbkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-blackhdrlabels" label="&accountcolors.compose.blackhdrlabels;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-compose-colorhdrbkgd" label="&accountcolors.compose.colorhdrbkgd;" style="width: 269px;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-blackfieldfont" label="&accountcolors.compose.blackfieldfont;" style="width: 269px;"/>
+                    <checkbox id="accountcolors-compose-whitefieldbkgd" label="&accountcolors.compose.whitefieldbkgd;"/>
+                </hbox>
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-defaultbkgd" label="&accountcolors.compose.defaultbkgd;"/>
+                </hbox>
+                
+                <separator class="groove" style="margin: 6px 0px 5px;"/>
+                
+                <hbox>
+                    <checkbox id="accountcolors-compose-hoverfrom" label="&accountcolors.compose.hoverfrom;"/>
+                </hbox>
+                
+            </tabpanel>
+            
+        </tabpanels>  
+        
+    </tabbox>
+    
+    <panel id="accountcolors-picker-panel">
+        <hbox id="accountcolors-picker-header">
+            <label id="accountcolors-picker-fonttitle" value="&accountcolors.picker.fonttitle;" flex="1" style="margin-top: 4px;"/>
+            <label id="accountcolors-picker-bkgdtitle" value="&accountcolors.picker.bkgdtitle;" flex="1" style="margin-top: 4px;"/>
+            <toolbarbutton class="tabs-closebutton" flex="0" oncommand="accountColorsOptions.pickerClose();"/>
+        </hbox>
+        <hbox style="margin-top: 5px; margin-bottom: 2px;">
+            <colorpicker id="accountcolors-picker-fontpalette" type="button" onchange="accountColorsOptions.pickerPaletteChange()" style="width: 40px; margin: 0px 6px; padding: 2px;"/>
+            <accountcolors-colorpicker id="accountcolors-picker-bkgdpalette" type="button" onchange="accountColorsOptions.pickerPaletteChange()" style="width: 40px; margin: 0px 6px; padding: 2px;"/>
+            <label id="accountcolors-picker-sample" flex="1" value="&accountcolors.picker.sample;" style="min-width: 110px; margin: 1px 4px; padding: 2px 3px; border: 1px solid #707070; text-align: center;"/>
+            <textbox id="accountcolors-picker-hexstr" oninput="accountColorsOptions.pickerHexStrChange()" style="width: 55px; margin: 1px 6px 1px 7px; padding-left: 0px; text-align: right;"/>
+        </hbox>
+        <separator id="accountcolors-picker-separator-1" class="groove" style="margin: 3px 0px; opacity: 0.3;"/>
+        <grid>
+            <rows>
+                <row/>
+                <row/>
+                <row/>
+            </rows>
+            <columns>
+                <column>
+                    <label value="&accountcolors.picker.red;" style="margin-top: 5px;"/>
+                    <label value="&accountcolors.picker.green;" style="margin-top: 5px;"/>
+                    <label value="&accountcolors.picker.blue;" style="margin-top: 5px;"/>
+                </column>
+                <column flex="1">
+                    <accountcolors-scale id="accountcolors-picker-scale-r" min="0" max="255" movetoclick="true" onchange="accountColorsOptions.pickerRGBScaleChange()"/>
+                    <accountcolors-scale id="accountcolors-picker-scale-g" min="0" max="255" movetoclick="true" onchange="accountColorsOptions.pickerRGBScaleChange()"/>
+                    <accountcolors-scale id="accountcolors-picker-scale-b" min="0" max="255" movetoclick="true" onchange="accountColorsOptions.pickerRGBScaleChange()"/>
+                </column>
+                <column>
+                    <textbox id="accountcolors-picker-value-r" type="number" min="0" max="255" onchange="accountColorsOptions.pickerRGBValueChange()" 
+                             oninput="accountColorsOptions.pickerRGBValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                    <textbox id="accountcolors-picker-value-g" type="number" min="0" max="255" onchange="accountColorsOptions.pickerRGBValueChange()"
+                             oninput="accountColorsOptions.pickerRGBValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                    <textbox id="accountcolors-picker-value-b" type="number" min="0" max="255" onchange="accountColorsOptions.pickerRGBValueChange()"
+                             oninput="accountColorsOptions.pickerRGBValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                </column>
+            </columns>
+        </grid>
+        <separator class="groove" style="margin: 3px 0px; opacity: 0.3;"/>
+        <grid>
+            <rows>
+                <row/>
+                <row/>
+                <row/>
+            </rows>
+            <columns>
+                <column>
+                    <label value="&accountcolors.picker.hue;" style="margin-top: 5px;"/>
+                    <label value="&accountcolors.picker.saturation;" style="margin-top: 5px;"/>
+                    <label value="&accountcolors.picker.value;" style="margin-top: 5px;"/>
+                </column>
+                <column flex="1">
+                    <accountcolors-scale id="accountcolors-picker-scale-h" min="0" max="360" movetoclick="true" onchange="accountColorsOptions.pickerHSVScaleChange()"/>
+                    <accountcolors-scale id="accountcolors-picker-scale-s" min="0" max="100" movetoclick="true" onchange="accountColorsOptions.pickerHSVScaleChange()"/>
+                    <accountcolors-scale id="accountcolors-picker-scale-v" min="0" max="100" movetoclick="true" onchange="accountColorsOptions.pickerHSVScaleChange()"/>
+                </column>
+                <column>
+                    <textbox id="accountcolors-picker-value-h" type="number" min="0" max="360" onchange="accountColorsOptions.pickerHSVValueChange()"
+                             oninput="accountColorsOptions.pickerHSVValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                    <textbox id="accountcolors-picker-value-s" type="number" min="0" max="100" onchange="accountColorsOptions.pickerHSVValueChange()"
+                             oninput="accountColorsOptions.pickerHSVValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                    <textbox id="accountcolors-picker-value-v" type="number" min="0" max="100" onchange="accountColorsOptions.pickerHSVValueChange()"
+                             oninput="accountColorsOptions.pickerHSVValueChange()" style="width: 40px; margin-left: 5px; margin-right: 6px;"/>
+                </column>
+            </columns>
+        </grid>
+        <separator id="accountcolors-picker-separator-2" class="groove" style="margin: 3px 0px; opacity: 0.3;"/>
+        <hbox pack="center" style="margin-left: -3px;">
+            <vbox>
+                <hbox id="accountcolors-picker-autobkgd-box">
+                    <checkbox id="accountcolors-picker-autobkgd" label="&accountcolors.picker.autobkgd;" oncommand="accountColorsOptions.pickerAutoBkgdChange()" style="margin-top: 0px;"/>
+                </hbox>
+                <hbox id="accountcolors-picker-applyall-box">
+                    <checkbox id="accountcolors-picker-applyall" label="&accountcolors.picker.applyall;" oncommand="accountColorsOptions.pickerApplyAllChange()" style="margin-top: 0px; margin-bottom: 1px;"/>
+                </hbox>
+            </vbox>
+        </hbox>
+        <separator class="groove" style="margin: 3px 0px; opacity: 0.3;"/>
+        <hbox pack="center" style="margin-top: 4px; margin-bottom: 8px; margin-left: -3px;">
+            <button id="accountcolors-picker-okay" label="&accountcolors.picker.okay;" default="true" oncommand="accountColorsOptions.pickerOkay();"/>
+            <button id="accountcolors-picker-cancel" label="&accountcolors.picker.cancel;" oncommand="accountColorsOptions.pickerClose();"/>
+        </hbox>
+    </panel>
+    
+</dialog>

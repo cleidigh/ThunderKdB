@@ -1,0 +1,17 @@
+pref("extensions.GetSelectedMails@gmail.com.description", "chrome://GetSelectedMails/locale/GetSelectedMails.properties");
+pref("extensions.GetSelectedMails.profilesSettings", "");
+pref("extensions.GetSelectedMails.defaultProfile", 0);
+pref("extensions.GetSelectedMails.mainButtonEnabled", true);
+pref("extensions.GetSelectedMails.autoDetectionAtStart", false);
+pref("extensions.GetSelectedMails.autoDetectionAtGetMails", false);
+pref("extensions.GetSelectedMails.autoDetectionAtIntervals", false);
+pref("extensions.GetSelectedMails.intervals", 5);
+pref("extensions.GetSelectedMails.detectionRules", "");
+pref("extensions.GetSelectedMails.delayEnabled", false);
+pref("extensions.GetSelectedMails.delay", 2);
+pref("extensions.GetSelectedMails.delayOnlyDeferredAccounts", true);
+pref("extensions.GetSelectedMails.nativeGetMailButtonOptionsEnabled", true);
+pref("extensions.GetSelectedMails.debugMode", false);
+pref("extensions.GetSelectedMails.profilesListChanged", true);
+pref("extensions.GetSelectedMails.debugModeToFile", false);
+pref("extensions.GetSelectedMails.debugFileName", "");

@@ -1,0 +1,84 @@
+/************************************************************************/
+/*                                                                      */
+/*      Calendar Tweaks  -  Thunderbird Extension  -  Options           */
+/*                                                                      */
+/*      CSS for Options dialog                                          */
+/*                                                                      */
+/*      Copyright (C) 2018  by  DW-dev                                  */
+/*                                                                      */
+/*      Last Edit  -  23 Aug 2018                                       */
+/*                                                                      */
+/************************************************************************/
+
+#calendartweaks-focusable-nonbutton,#calendartweaks-focusable-nonbutton *
+{
+    -moz-appearance: none;
+    min-width: 0px;
+    min-height: 0px;
+    width: 0px;
+    height: 0px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+}
+
+.calendartweaks-picker
+{
+    min-width: 40px;
+    width: 40px;
+    margin: 0px 3px;
+    padding: 2px;
+}
+
+.calendartweaks-picker > hbox 
+{
+    border: 1px solid black;
+}
+
+#calendartweaks-picker-header { background: -moz-linear-gradient(left,#BFCDDB,#D6E3F1); margin: 3px; }
+
+dialog[accountcolors-tbversion="24.0"] calendartweaks-scale,
+dialog[accountcolors-tbversion="31.0"] calendartweaks-scale,
+dialog[accountcolors-tbversion="38.0"] calendartweaks-scale,
+dialog[accountcolors-tbversion="60.0"] calendartweaks-scale
+{
+    background-size: 87% 40%;
+    background-position: 48% 50%;
+    background-repeat: no-repeat;
+}
+
+dialog[accountcolors-tbversion="24.0"] .tabs-closebutton,
+dialog[accountcolors-tbversion="31.0"] .tabs-closebutton,
+dialog[accountcolors-tbversion="38.0"] .tabs-closebutton,
+dialog[accountcolors-tbversion="60.0"] .tabs-closebutton
+{
+    -moz-appearance: none;
+    list-style-image: url("chrome://global/skin/icons/close.png");
+    -moz-image-region: rect(0, 16px, 16px, 0);
+    padding: 4px 2px;
+    margin: 0px;
+    border: none;
+}
+
+.tabs-closebutton > .toolbarbutton-icon
+{
+    -moz-margin-end: 0px !important;
+    -moz-padding-end: 2px !important;
+    -moz-padding-start: 2px !important;
+}
+
+dialog[accountcolors-tbversion="24.0"] .tabs-closebutton:hover,
+dialog[accountcolors-tbversion="31.0"] .tabs-closebutton:hover,
+dialog[accountcolors-tbversion="38.0"] .tabs-closebutton:hover,
+dialog[accountcolors-tbversion="60.0"] .tabs-closebutton:hover
+{
+    -moz-image-region: rect(0, 32px, 16px, 16px);
+}
+
+dialog[accountcolors-tbversion="24.0"] .tabs-closebutton:hover:active,
+dialog[accountcolors-tbversion="31.0"] .tabs-closebutton:hover:active,
+dialog[accountcolors-tbversion="38.0"] .tabs-closebutton:hover:active,
+dialog[accountcolors-tbversion="60.0"] .tabs-closebutton:hover:active
+{
+    -moz-image-region: rect(0, 48px, 16px, 32px);
+}

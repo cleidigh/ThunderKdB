@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>popmaillistrecipients@funke.de</em:id>
+    <em:name>PopMailListRecipients</em:name>
+    <em:version>0.3.2</em:version>
+    <em:creator>Sven Giermann</em:creator>
+    <em:contributor>Leopoldo Saggin aka Topoldo (it-IT)</em:contributor>
+    <em:description>Expands address book lists to recipients addresses</em:description>
+    <em:iconURL>chrome://popmaillistrecipients/skin/icon.png</em:iconURL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- thunderbird -->
+        <em:minVersion>24.0</em:minVersion>
+        <em:maxVersion>50.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

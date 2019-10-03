@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   - ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is calendar views.
+   -
+   - The Initial Developer of the Original Code is
+   -   Oracle Corporation
+   - Portions created by the Initial Developer are Copyright (C) 2005
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -   Vladimir Vukicevic <vladimir.vukicevic@oracle.com>
+   -   Thomas Benisch <thomas.benisch@sun.com>
+   -   Dan Mosedale <dan.mosedale@oracle.com>
+   -   Michael Buettner <michael.buettner@sun.com>
+   -   Philipp Kewisch <mozilla@kewis.ch>
+   -   Markus Adrario <MarkusAdrario@web.de>
+   -   Berend Cornelius <berend.cornelius@sun.com>
+   -
+   - GanttView code is based on various versions of Sunbird/Lighning views 
+   - from  0.2 to present. Please contact me if I have omitted or mistakenly
+   - included a contributor.  
+   -	Joe Brochu <ganttview@gmail.com>
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the GPL or the LGPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK *****
+-->
+
+<!-- Note that this file depends on helper functions in calUtils.js-->
+
+<!-- DTD File with all strings specific to the calendar -->
+<!DOCTYPE overlay 
+ [
+  <!ENTITY % dtd1 SYSTEM "chrome://calendar/locale/global.dtd">
+  %dtd1;
+  <!ENTITY % dtd2 SYSTEM "chrome://calendar/locale/calendar.dtd">
+  %dtd2;
+  <!ENTITY % GanttView.mainDTD SYSTEM "chrome://ganttview/locale/ganttview.dtd">
+  %GanttView.mainDTD;
+]>
+
+<bindings id="GanttView-bindings"
+ xmlns="http://www.mozilla.org/xbl"
+ xmlns:html="http://www.w3.org/1999/xhtml"
+ xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+ xmlns:xbl="http://www.mozilla.org/xbl">
+
+  <binding id="GanttView-item-header-box" extends="chrome://ganttview/content/calendar-gantt-view-item-box.xml#GanttView-item-box">
+    <content tooltip="itemTooltip">
+      <xul:box xbl:inherits="orient,width,height,ordinal" flex="1">
+        <xul:box anonid="GanttView-event-container"
+         class="calendar-color-box"
+         xbl:inherits="orient,readonly,flashing,alarm,allday,priority,progress,status,calendar,categories,item-calendar,calendar-uri,calendar-id"
+         flex="1">
+          <xul:box class="calendar-event-selection" orient="horizontal" flex="1">
+            <xul:stack anonid="GanttView-eventbox"
+             align="stretch"
+             class="calendar-event-box-container"
+             flex="1"
+             xbl:inherits="context,parentorient=orient,readonly,flashing,alarm,allday,priority,progress,status,calendar,categories">
+              <xul:image flex="1" class="calendar-event-box-gradient"/>
+              <xul:vbox class="calendar-event-details" anonid="GanttView-calendar-event-details">
+                <xul:hbox flex="1">
+                  <xul:hbox flex="1" class="GanttView-overflow-hidden" overflowhidden="x">
+                    <xul:image anonid="GanttView-item-icon"
+                       class="calendar-item-image"
+                       xbl:inherits="progress,allday,itemType"/>
+                    <xul:stack anonid="GanttView-event-name-stack" flex="1">
+                      <xul:vbox anonid="GanttView-event-name-box" class="GanttView-item-name-box" align="start" flex="1" top="0">
+                        <xul:description anonid="GanttView-event-name" class="calendar-event-details-core" flex="1"/>
+                      </xul:vbox>
+                      <xul:textbox anonid="GanttView-event-name-textbox"
+                       class="plain calendar-event-details-core calendar-event-name-textbox"
+                       hidden="true"
+                       style="background: transparent !important;"
+                       wrap="true"
+                       flex="1"/>
+                    </xul:stack>
+                    <xul:spacer/>
+                    <xul:vbox anonid="GanttView-event-start-date-box" class="GanttView-item-date-box" align="end">
+                      <xul:description anonid="GanttView-event-start-date" class="calendar-event-details-core"/>
+                    </xul:vbox>
+                    <xul:vbox anonid="GanttView-event-end-date-box" class="GanttView-item-date-box" align="end">
+                      <xul:description anonid="GanttView-event-end-date" class="calendar-event-details-core"/>
+                    </xul:vbox>
+                    <xul:stack mousethrough="always">
+                      <xul:GanttView-category-box anonid="GanttView-category-box" xbl:inherits="categories" pack="end"/>
+                      <!-- anonid must be "alarm-icons-box" for compatibility with setCSSClasses -->
+                      <xul:hbox anonid="alarm-icons-box"
+                        class="alarm-icons-box"
+                        pack="end"
+                        align="top"
+                        xbl:inherits="flashing"/>
+                    </xul:stack>
+                  </xul:hbox>
+
+                </xul:hbox>
+                <xul:hbox class="item-progress-box" flex="1" xbl:inherits="showprogressbar">
+                  <xul:stack flex="1">
+                    <xul:progressmeter anonid="GanttView-item-progress" mode="determined" value="0" flex="1"  xbl:inherits="context"/>
+
+                    <xul:image flex="1" class="GanttView-progressmeter-gradient"/>
+                  </xul:stack>
+                </xul:hbox>
+              </xul:vbox>
+
+              <xul:box xbl:inherits="orient" flex="1" style="overflow-x:hidden;">
+                <!-- set style to force this box on top of stack -->
+                <xul:spacer flex="1"/>
+              </xul:box>
+            </xul:stack>
+
+          </xul:box>
+        </xul:box>
+      </xul:box>
+
+    </content>
+
+    <implementation>
+      <!-- fields -->
+      <field name="mItemBox">null</field>
+
+      <property name="eventStartDateLabel" readonly="true"
+       onget="return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-event-start-date');"/>
+      <property name="eventEndDateLabel" readonly="true"
+       onget="return document.getAnonymousElementByAttribute(this, 'anonid', 'GanttView-event-end-date');"/>
+
+      <property name="selected">
+        <getter>
+          <![CDATA[
+					return this.mSelected;	
+        ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+          if (val && !this.mSelected) {
+              this.mSelected = true;
+              this.setAttribute("selected", "true");
+							this.itemRow.setAttribute("selected", "true");
+							if (!this.itemBox.selected)
+								this.itemBox.selected = true;	
+							this.selectedByBox=false;
+          } else if (!val && this.mSelected) {
+              this.mSelected = false;
+              this.removeAttribute("selected");
+							this.itemRow.removeAttribute("selected");
+							if (this.itemBox.selected)
+								this.itemBox.selected = false;
+							this.selectedByBox=false;
+          }
+          return val;
+        ]]>
+        </setter>
+      </property>
+
+      <property name="selectedByBox">
+        <getter>
+          <![CDATA[
+					return this.mSelectedByBox;	
+        ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+          if (val && !this.mSelectedByBox) {
+              this.mSelectedByBox = true;
+              this.setAttribute("selectedByBox", "true");
+							this.itemRow.setAttribute("selectedByBox", "true");
+							if (!this.itemBox.selectedByBox)
+								this.itemBox.selectedByBox = true				
+          } else if (!val && this.mSelectedByBox) {
+              this.mSelectedByBox = false;
+              this.setAttribute("selectedByBox", "false");
+							this.itemRow.setAttribute("selectedByBox", "false");
+							if (this.itemBox.selectedByBox)
+								this.itemBox.selectedByBox = false	
+          }
+
+          return val;
+        ]]>
+        </setter>
+      </property>
+      <property name="occurrence">
+        <getter>
+          <![CDATA[
+          return this.mOccurrence;
+        ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+          this.mOccurrence = val;                                                             			
+          this.setEditableLabel();
+					this.startDateText = this.itemStartDate;
+					this.endDateText = this.itemEndDate;
+          this.setCSSClasses();
+					this.setTaskAttributes();
+					
+					var dur = this.itemEndDate.subtractDate(this.itemStartDate);
+					var durInDays = dur.weeks*7 + dur.days;
+					if (durInDays == 0) {
+					
+						this.eventEndDateLabel.setAttribute("hidden","true")
+					
+					} else {
+						this.eventEndDateLabel.removeAttribute("hidden")
+					}
+          return val;
+        ]]>
+        </setter>
+      </property>
+
+      <property name="startDateText">
+        <getter>
+          <![CDATA[
+					return this.eventStartDateLabel.value;
+				]]>
+        </getter>
+        <setter>
+          <![CDATA[
+					if (val.year == this.calendarView.today().year) {
+						this.eventStartDateLabel.value = cal.getDateFormatter().formatDateWithoutYear(val.getInTimezone(cal.dtz.defaultTimezone));
+					} else {
+						this.eventStartDateLabel.value = cal.getDateFormatter().formatDate(val.getInTimezone(cal.dtz.defaultTimezone));
+					}
+					return this.eventStartDateLabel.value;
+				]]>
+        </setter>
+      </property>
+
+      <property name="endDateText">
+        <getter>
+          <![CDATA[
+					return this.eventEndDateLabel.value;
+				]]>
+        </getter>
+        <setter>
+          <![CDATA[
+					if (val.year == this.calendarView.today().year) {
+							this.eventEndDateLabel.value = " - " + cal.getDateFormatter().formatDateWithoutYear(val.getInTimezone(cal.dtz.defaultTimezone));
+					} else {
+							this.eventEndDateLabel.value = " - " + cal.getDateFormatter().formatDate(val.getInTimezone(cal.dtz.defaultTimezone));
+					}
+					
+					return this.eventEndDateLabel.value;
+				]]>
+        </setter>
+      </property>
+
+      <property name="itemBox">
+        <getter>
+          <![CDATA[
+           return this.mItemBox;
+        ]]>
+        </getter>
+        <setter>
+          <![CDATA[
+           this.mItemBox = val;
+           return val;
+        ]]>
+        </setter>
+      </property>
+
+      <method name="startEditingStartDate">
+        <body>
+          <![CDATA[
+				//development on hold
+          this.editingTimer = null;
+          //this.mOriginalTextLabel = this.mOccurrence.title;
+					var ebStack = document.getAnonymousElementByAttribute(this.calView, "anonid", "eventbox")
+          this.eventStartDateLabel.setAttribute("hidden", "true");
+				
+          this.mEditing = true;
+					//use this.eventNameTextbox to use this.stopEditing()
+					//var eventStartDatepicker = createXULElement("datepicker");
+          //eventStartDatepicker.year = (this.mOccurrence.startDate || this.mOccurrence.entryDate).year;
+					//eventStartDatepicker.month = (this.mOccurrence.startDate || this.mOccurrence.entryDate).month;
+					//eventStartDatepicker.date = (this.mOccurrence.startDate || this.mOccurrence.entryDate).date;
+					//ebStack.appendChild(eventStartDatepicker);
+          //eventStartDatepicker.setAttribute("left", this.eventStartDateLabel.boxObject.screenX-this.boxObject.screenX)
+					eventStartDatepicker.setAttribute("class", "plain calendar-event-details-core")
+					
+          if (this.calendarView)
+              this.calendarView.activeInPlaceEdit = true;
+          eventStartDatepicker.focus();
+          eventStartDatepicker.select();
+        ]]>
+        </body>
+      </method>
+
+    </implementation>
+
+    <handlers>
+      <handler event="click" button="0" phase="capturing">
+        <![CDATA[
+			if (this.mEditing) {
+						event.stopPropagation();
+            return;
+        }
+				this.calendarView.scrollTo(this.itemBox.left, null)
+				
+				// this could be used to allow inline editing of dates 
+				// by popping up a date selector
+				// but for now let GanttView-item-box handle it
+				// because event.stopPropagation() isn't preventing this for some reason.
+				
+      ]]>
+      </handler>
+
+      <handler event="draggesture" phase="capturing">
+        <![CDATA[
+				//reimplement handler from calendar-editable-item to allow usual
+				// drag-drop when dragging header
+				if (!this.selected) {
+					return null
+				}
+				event.stopPropagation();
+				
+        var dragService = Components.classes["@mozilla.org/widget/dragservice;1"].
+                          getService(Components.interfaces.nsIDragService);
+        var transfer = Components.classes["@mozilla.org/widget/transferable;1"].
+                       createInstance(Components.interfaces.nsITransferable);
+        transfer.addDataFlavor("text/calendar");
+
+        var item = this.mOccurrence;
+        if (item.calendar.readOnly)
+            return;
+        if (!item.startDate || !item.startDate.isDate)
+            return;
+        if (!this.selected)
+            this.select(event);
+
+        var flavourProvider = {
+            QueryInterface: function(aIID) {
+                return doQueryInterface(this, null, aIID,  [Components.interfaces.nsIFlavorDataProvider]);
+            },
+            item: item,
+
+            getFlavorData: function(aInTransferable, aInFlavor, aOutData, aOutDataLen) {
+                if ((aInFlavor == "application/vnd.x-moz-cal-event") ||
+                    (aInFlavor == "application/vnd.x-moz-cal-task")) {
+                    aOutData.value = this.item;
+                    aOutDataLen.value = 1;
+                } else {
+                    ASSERT(false, "error:"+aInFlavor);
+                }
+            }
+        };
+
+        if (cal.item.isEvent(item)) {
+          transfer.addDataFlavor("application/vnd.x-moz-cal-event");
+          transfer.setTransferData("application/vnd.x-moz-cal-event", flavourProvider, 0);
+        } else if (cal.item.isToDo(item)) {
+          transfer.addDataFlavor("application/vnd.x-moz-cal-task");
+          transfer.setTransferData("application/vnd.x-moz-cal-task", flavourProvider, 0);
+        }
+
+        // Also set some normal data-types, in case we drag into another app
+        var serializer = Components.classes["@mozilla.org/calendar/ics-serializer;1"].
+                                    createInstance(Components.interfaces.calIIcsSerializer);
+        serializer.addItems([item], 1);
+
+        var supportsString = Components.classes["@mozilla.org/supports-string;1"].
+                             createInstance(Components.interfaces.nsISupportsString);
+        supportsString.data = serializer.serializeToString();
+        transfer.setTransferData("text/calendar", supportsString, supportsString.data.length*2);
+        transfer.setTransferData("text/unicode", supportsString, supportsString.data.length*2);
+
+        var action = dragService.DRAGDROP_ACTION_MOVE;
+        var supArray = Components.classes["@mozilla.org/supports-array;1"].
+                       createInstance(Components.interfaces.nsISupportsArray);
+        supArray.AppendElement(transfer);
+
+        dragService.invokeDragSession(this, supArray, null, action);
+      ]]>
+      </handler>
+
+    </handlers>
+  </binding>
+</bindings>

@@ -1,0 +1,129 @@
+/************************************************************************/
+/*                                                                      */
+/*      Calendar Tweaks  -  Thunderbird Extension  -  Calendar Views    */
+/*                                                                      */
+/*      CSS for modified Calendar Views bindings                        */
+/*                                                                      */
+/*      Copyright (C) 2008-2018  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  23 Aug 2018                                       */
+/*                                                                      */
+/************************************************************************/
+
+/* Derived from chrome://calendar/content/calendar-view-bindings.css */
+
+/* Add icon for repeating events (Week/Day Views) */
+/* Apply category color to event backgrounds (Week/Day Views) */
+
+window[calendartweaks-tbversion="24.0"] calendar-editable-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-24.0.xml#calendar-editable-item-repeating-category") !important;
+}
+window[calendartweaks-tbversion="31.0"] calendar-editable-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-31.0.xml#calendar-editable-item-repeating-category") !important;
+}
+window[calendartweaks-tbversion="38.0"] calendar-editable-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-38.0.xml#calendar-editable-item-repeating-category") !important;
+}
+window[calendartweaks-tbversion="60.0"] calendar-editable-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-60.0.xml#calendar-editable-item-repeating-category") !important;
+}
+
+window[calendartweaks-tbversion="24.0"] calendar-event-box
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-24.0.xml#calendar-event-box-repeating-category") !important;
+}
+window[calendartweaks-tbversion="31.0"] calendar-event-box
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-31.0.xml#calendar-event-box-repeating-category") !important;
+}
+window[calendartweaks-tbversion="38.0"] calendar-event-box
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-38.0.xml#calendar-event-box-repeating-category") !important;
+}
+window[calendartweaks-tbversion="60.0"] calendar-event-box
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-60.0.xml#calendar-event-box-repeating-category") !important;
+}
+
+/* Add icon for repeating events (Month/Multiweek Views) */
+/* Apply category color to event backgrounds (Month/Multiweek Views) */
+
+window[calendartweaks-tbversion="24.0"] calendar-month-day-box-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-24.0.xml#calendar-month-day-box-item-repeating-category") !important;
+}
+window[calendartweaks-tbversion="31.0"] calendar-month-day-box-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-31.0.xml#calendar-month-day-box-item-repeating-category") !important;
+}
+window[calendartweaks-tbversion="38.0"] calendar-month-day-box-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-38.0.xml#calendar-month-day-box-item-repeating-category") !important;
+}
+window[calendartweaks-tbversion="60.0"] calendar-month-day-box-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-60.0.xml#calendar-month-day-box-item-repeating-category") !important;
+}
+
+/* Apply category color to event backgrounds (Today Pane) */
+/* Apply calendar event styling to event list (Today Pane) */
+
+window[calendartweaks-tbversion="24.0"] agenda-richlist-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-24.0.xml#agenda-richlist-item-category") !important;
+}
+window[calendartweaks-tbversion="31.0"] agenda-richlist-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-31.0.xml#agenda-richlist-item-category") !important;
+}
+window[calendartweaks-tbversion="38.0"] agenda-richlist-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-38.0.xml#agenda-richlist-item-category") !important;
+}
+window[calendartweaks-tbversion="60.0"] agenda-richlist-item
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-60.0.xml#agenda-richlist-item-category") !important;
+}
+
+/* Add label for all day events row/column (Week View) */
+
+window[calendartweaks-tbversion="24.0"] calendar-week-view
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-24.0.xml#calendar-week-view-alldaylabel") !important;
+}
+window[calendartweaks-tbversion="31.0"] calendar-week-view
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-31.0.xml#calendar-week-view-alldaylabel") !important;
+}
+window[calendartweaks-tbversion="38.0"] calendar-week-view
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-38.0.xml#calendar-week-view-alldaylabel") !important;
+}
+window[calendartweaks-tbversion="60.0"] calendar-week-view
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-60.0.xml#calendar-week-view-alldaylabel") !important;
+}
+
+/* Add label for all day events row/column (Day View) */
+/* Show 'Today' and 'Selected Day' styles on day view (Day View) */
+
+window[calendartweaks-tbversion="24.0"] calendar-day-view
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-24.0.xml#calendar-day-view-alldaylabel-showondayview") !important;
+}
+window[calendartweaks-tbversion="31.0"] calendar-day-view
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-31.0.xml#calendar-day-view-alldaylabel-showondayview") !important;
+}
+window[calendartweaks-tbversion="38.0"] calendar-day-view
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-38.0.xml#calendar-day-view-alldaylabel-showondayview") !important;
+}
+window[calendartweaks-tbversion="60.0"] calendar-day-view
+{
+    -moz-binding: url("chrome://calendartweaks/content/calendartweaks-calendar-views-bindings-60.0.xml#calendar-day-view-alldaylabel-showondayview") !important;
+}

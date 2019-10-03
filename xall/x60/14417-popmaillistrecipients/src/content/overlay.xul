@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://popmaillistrecipients/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://popmaillistrecipients/locale/popmaillistrecipients.dtd">
+<overlay id="popmaillistrecipients-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js"/>
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="popmaillistrecipients-strings" src="chrome://popmaillistrecipients/locale/popmaillistrecipients.properties"/>
+  </stringbundleset>
+
+  <menupopup id="taskPopup">
+    <menuitem id="menu-popmaillistrecipients" label="&popmaillistrecipients.label;" 
+              oncommand="popmaillistrecipients.expandRecipients(event);"/>
+  </menupopup>
+
+  <popup id="msgComposeContext">
+    <menuseparator/>
+    <menuitem id="context-popmaillistrecipients" label="&popmaillistrecipientsContext.label;"
+              accesskey="&popmaillistrecipientsContext.accesskey;"
+              oncommand="popmaillistrecipients.expandRecipients(event)"/>
+  </popup>
+
+  <toolbarpalette id="MsgComposeToolbarPalette">
+    <toolbarbutton id="popmaillistrecipients-toolbar-button"
+      label="&popmaillistrecipientsToolbar.label;"
+      tooltiptext="&popmaillistrecipientsToolbar.tooltip;"
+      oncommand="popmaillistrecipients.onToolbarButtonCommand()"
+      class="toolbarbutton-1 chromeclass-toolbar-additional"/>
+  </toolbarpalette>
+</overlay>

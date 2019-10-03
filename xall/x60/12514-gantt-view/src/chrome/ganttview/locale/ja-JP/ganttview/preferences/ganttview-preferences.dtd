@@ -1,0 +1,83 @@
+
+<!ENTITY GanttView.prefpanetitle "Gantt View">
+
+<!ENTITY GanttView.pref.daterange.caption  "多週表示" >
+<!ENTITY GanttView.pref.numberofweeks.label "起動時に表示する週の総数:">
+<!ENTITY GanttView.pref.numberofweeksnote.description "(注意: 範囲が大きい場合、性能が低下する場合があります)">
+<!ENTITY GanttView.pref.numberofweeks.accesskey "w">
+<!ENTITY GanttView.pref.numberofweeks.5 "5 週間">
+<!ENTITY GanttView.pref.numberofweeks.10 "10 週間">
+<!ENTITY GanttView.pref.numberofweeks.13 "3 ヶ月">
+<!ENTITY GanttView.pref.numberofweeks.20 "20 週間">
+<!ENTITY GanttView.pref.numberofweeks.26 "6 ヶ月">
+<!ENTITY GanttView.pref.numberofweeks.30 "30 週間">
+<!ENTITY GanttView.pref.numberofweeks.39 "9 ヶ月">
+<!ENTITY GanttView.pref.numberofweeks.40 "40 週間">
+<!ENTITY GanttView.pref.numberofweeks.52 "12 ヶ月">
+<!ENTITY GanttView.pref.numberofweeks.78 "18 ヶ月">
+<!ENTITY GanttView.pref.numberofweeks.104 "24 ヶ月">
+
+<!ENTITY GanttView.pref.numberofpreviousweeks.label "前に表示する週の数:" >
+<!ENTITY GanttView.pref.numberofpreviousweeks.accesskey "v" >
+<!ENTITY GanttView.pref.numberofweeks.0 "0">
+<!ENTITY GanttView.pref.numberofweeks.1 "1">
+<!ENTITY GanttView.pref.numberofweeks.2 "2">
+
+<!ENTITY GanttView.pref.daysoffhidden.label "休日を表示しない" >
+<!ENTITY GanttView.pref.daysoffhidden.accesskey "H" >
+
+<!ENTITY GanttView.pref.misc.caption "一般">
+<!ENTITY GanttView.pref.tasksinview.label "タスクをガントビューに表示する">
+<!ENTITY GanttView.pref.tasksinview.accesskey "k">
+<!ENTITY GanttView.pref.hidecompletedtasks.label "完了したタスクを表示しない">
+<!ENTITY GanttView.pref.hidecompletedtasks.accesskey "c">
+
+<!ENTITY GanttView.pref.showprogressbars.label "項目内に進捗バーを表示する">
+<!ENTITY GanttView.pref.showprogressbars.accesskey "b">
+<!ENTITY GanttView.pref.toggleprogressbars.label "進捗バー">
+<!ENTITY GanttView.pref.showprogressbars.tooltip.false "進捗バーを項目内に表示します">
+<!ENTITY GanttView.pref.showprogressbars.tooltip.true "進捗バーを項目内に表示しません">
+
+
+<!ENTITY GanttView.pref.groupbycalendar.label "項目をカレンダーごとにグループ化">
+<!ENTITY GanttView.pref.groupbycalendar.accesskey "G">
+<!ENTITY GanttView.pref.togglegroupbycalendar.label "カレンダーのグループ化">
+<!ENTITY GanttView.pref.groupbycalendar.tooltip.false "項目をカレンダーごとにグループ化">
+<!ENTITY GanttView.pref.groupbycalendar.tooltip.true "項目をグループ化しない">
+
+<!ENTITY GanttView.pref.titleordinaloverride.label "件名の優先順序">
+<!ENTITY GanttView.pref.titleordinaloverride.accesskey "O">
+<!ENTITY GanttView.pref.titleordinaloverride.description "件名の先頭の数字を使用した順序を有効にします.  数字がない項目は開始日時順になります. (例： 1, 2, 3; 1a, 1b, 2a; 1-1, 1-2-1, 1-2-2)">
+
+<!ENTITY GanttView.pref.partialselection.caption "項目の選択方法">
+<!ENTITY GanttView.pref.partialselection.label "範囲に含む">
+<!ENTITY GanttView.pref.partialselection.accesskey "P">
+<!ENTITY GanttView.pref.enclosedselection.label "範囲に完全に含む">
+<!ENTITY GanttView.pref.enclosedselection.accesskey "F">
+
+<!ENTITY GanttView.pref.autoscroll.description "ビューをパンしたり項目をドラッグした際にマウスをグリッドの端まで動かすと、ビューが自動でスクロールします。 スクロール速度はマウスの移動距離に比例します。" >
+<!ENTITY GanttView.pref.autoscroll.caption "スクロール">
+<!ENTITY GanttView.pref.autoscrollspeed.label "速さ:" >
+<!ENTITY GanttView.pref.autoscrollspeed.accesskey "S" >
+<!ENTITY GanttView.pref.autoscrollspeed.min.label "遅い" >
+<!ENTITY GanttView.pref.autoscrollspeed.max.label "速い" >
+<!ENTITY GanttView.pref.autoscrollspeed.1 "とても遅い" >
+<!ENTITY GanttView.pref.autoscrollspeed.2 "遅い" >
+<!ENTITY GanttView.pref.autoscrollspeed.3 "少し遅い" >
+<!ENTITY GanttView.pref.autoscrollspeed.4 "普通" >
+<!ENTITY GanttView.pref.autoscrollspeed.5 "少し速い" >
+<!ENTITY GanttView.pref.autoscrollspeed.6 "速い" >
+<!ENTITY GanttView.pref.autoscrollspeed.7 "とても速い" >
+
+<!ENTITY GanttView.pref.autoscrollthreshold.label "スクロール幅 (グリッドの幅/高さに対しての&#37;):" >
+<!ENTITY GanttView.pref.autoscrollthreshold.accesskey "T" >
+<!ENTITY GanttView.pref.autoscrollthreshold.min.label "オフ" >
+<!ENTITY GanttView.pref.autoscrollthreshold.max.label "25" >
+<!ENTITY GanttView.pref.autoscrollthreshold.0 "オフ" >
+<!ENTITY GanttView.pref.autoscrollthreshold.1 "2" >
+<!ENTITY GanttView.pref.autoscrollthreshold.2 "5" >
+<!ENTITY GanttView.pref.autoscrollthreshold.3 "10" >
+<!ENTITY GanttView.pref.autoscrollthreshold.4 "15" >
+<!ENTITY GanttView.pref.autoscrollthreshold.5 "20" >
+<!ENTITY GanttView.pref.autoscrollthreshold.6 "25" >
+
