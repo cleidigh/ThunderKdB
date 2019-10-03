@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>report-spam@renater.fr</em:id>
+		<em:version>1.05</em:version>
+		<em:type>2</em:type>
+		
+		<!-- About the plugin -->
+		<em:name>Report Spam</em:name>
+		<em:description>Report spam, phishing and false positives</em:description>
+		<em:creator>Hervé Lascaux</em:creator>
+		<em:developer>Etienne Méléard</em:developer>
+		
+		<!-- Preference window -->
+		<em:optionsURL>chrome://reportspam/content/option.xul</em:optionsURL>
+		
+		<!-- Plugin icon -->
+		<em:iconURL>chrome://reportspam/skin/icon.png</em:iconURL>
+		
+		<!-- Target Application this extension can install into, 
+		with minimum and maximum supported versions. -->
+		<!-- This part is for seamonkey, but it does not seems to be compatible ... -->
+		<!--<em:targetApplication>
+			<Description>
+				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+				<em:minVersion>2.0.*</em:minVersion>
+				<em:maxVersion>2.3.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>-->
+		<em:targetApplication>
+			<Description>
+				<!--Thunderbird-->
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>60.0</em:minVersion>
+				<em:maxVersion>60.*</em:maxVersion>
+			</Description>  
+		</em:targetApplication>
+	</Description>
+</RDF>

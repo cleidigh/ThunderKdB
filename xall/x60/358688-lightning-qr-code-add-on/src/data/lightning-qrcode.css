@@ -1,0 +1,27 @@
+@-moz-document url-prefix("chrome://messenger/content/messenger.xul") {
+
+hbox#lightning-qrcode-message-hbox {
+    width:200px;
+    height:200px;
+    background-color:#EEEEEE;
+}
+
+label#lightning-qrcode-info-label {
+    color:#555555;
+    font-weight:bold;
+}
+
+label#lightning-qrcode-error-label, label#lightning-qrcode-too-much-data-label {
+    text-align:center;
+    color:#FF0000;
+    font-weight:bold;
+    width:200px;
+}
+
+image#lightning-qrcode-image {
+    border-color:transparent;
+    border-style:solid;
+    border-width:1px;
+}
+
+}

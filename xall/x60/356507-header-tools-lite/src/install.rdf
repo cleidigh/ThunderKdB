@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+ <Description about="urn:mozilla:install-manifest">
+	<em:id>headerToolsLite@kaosmos.nnp</em:id>
+	<em:version>0.6.2</em:version>
+	<em:creator>Paolo Kaosmos</em:creator>
+	<em:optionsURL>chrome://hdrtoolslite/content/settings.xul</em:optionsURL>
+	<em:name>Header Tools Lite</em:name>
+ 
+	<em:targetApplication>
+		<Description>
+			<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+			<em:minVersion>14.0</em:minVersion>
+			<em:maxVersion>59.*</em:maxVersion>
+		</Description>
+	</em:targetApplication>
+
+	  <!-- SeaMonkey -->
+		 <em:targetApplication>
+			<Description>
+				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+				<em:minVersion>2.0</em:minVersion>
+				<em:maxVersion>2.50</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+	<em:localized>
+		<Description>
+			<em:locale>en-US</em:locale>
+			<em:name>Header Tools Lite</em:name>
+			<em:description>Allows to modify the header and the source of messages.</em:description>
+		</Description>
+	</em:localized>
+
+	<em:localized>
+		<Description>
+			<em:locale>it</em:locale>
+			<em:name>Header Tools Lite</em:name>
+			<em:description>Permette di modificare le intestazioni o il sorgente dei messaggi.</em:description>
+		</Description>
+	</em:localized>
+
+	<em:localized>
+		<Description>
+			<em:locale>ja</em:locale>
+			<em:name>Header Tools Lite</em:name>
+			<em:description>メッセージのヘッダとソースを編集可能にします</em:description>
+		</Description>
+	</em:localized>
+
+</Description>
+</RDF>

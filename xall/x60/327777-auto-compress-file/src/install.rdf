@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<RDF	xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+<Description about="urn:mozilla:install-manifest">
+
+	<em:id>AutoCompressFile@gmail.com</em:id>
+	<em:name>Auto Compress File</em:name>
+	<em:version>1.1.1</em:version>
+	<em:type>2</em:type>
+	<em:description>File compressor</em:description>
+	<em:creator>Auto Compress File Developing Team</em:creator>
+
+	<!-- optional items -->
+	<em:developer>TrV</em:developer>
+	<em:contributor>Rosaroter Panther (advices and beta testing)</em:contributor>
+	<em:translator>Zdenek Crhonek (cs-CZ)</em:translator>
+	<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/auto-compress-file/</em:homepageURL>
+	<em:optionsURL>chrome://AutoCompressFile/content/options.xul</em:optionsURL>
+	<em:iconURL>chrome://AutoCompressFile/skin/icon.png</em:iconURL>
+
+	<!-- Thunderbird -->
+	<em:targetApplication>
+		<Description>
+			<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+			<em:minVersion>3.0a1pre</em:minVersion>
+			<em:maxVersion>60.*</em:maxVersion>
+		</Description>
+	</em:targetApplication>
+
+</Description>
+
+</RDF>

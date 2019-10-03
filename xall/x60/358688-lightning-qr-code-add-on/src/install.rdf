@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	 xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+	<em:id>lightning-qrcode@harald.judt</em:id>
+	<em:name>Lightning QR Code Add-on</em:name>
+	<em:description>Integrate QR codes for calendar events into tooltips for easy transfer to mobile devices.</em:description>
+	<em:version>1.2.6</em:version>
+	<em:creator>Harald Judt</em:creator>
+	<em:type>2</em:type>
+	<em:homepageURL>https://addons.mozilla.org/lightning-qr-code-add-on</em:homepageURL>
+	<em:translator>Harald Judt (de-DE)</em:translator>
+	<em:bootstrap>true</em:bootstrap>
+    <em:hasEmbeddedWebExtension>true</em:hasEmbeddedWebExtension>
+	<em:localized>
+	  <Description>
+		<em:locale>de-DE</em:locale>
+		<em:name>QR-Code Add-on für Lightning</em:name>
+		<em:description>Integriert QR-Codes für Termine in die Tooltips und ermöglicht so die einfache Übertragung auf mobile Geräte.</em:description>
+	  </Description>
+	</em:localized>
+
+	<!-- Thunderbird -->
+	<em:targetApplication>
+	  <Description>
+		<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+		<em:minVersion>60.0</em:minVersion>
+		<em:maxVersion>60.*</em:maxVersion>
+	  </Description>
+	</em:targetApplication>
+  </Description>
+
+</RDF>

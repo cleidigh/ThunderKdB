@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://hdrtoolslite/locale/hdrtools.dtd">
+
+<overlay id="headerToolsLightMain" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/x-javascript" src="chrome://hdrtoolslite/content/hdrtools.js"/>
+
+  <script type="application/x-javascript">
+ <![CDATA[
+	window.addEventListener("load", function() {HeaderToolsLiteObj.init()}, false);
+  ]]>
+  </script>
+
+<keyset id="mailKeys">
+	<keyset id="headerToolsLightkeyset"/>
+</keyset>
+
+<commandset id="mailCommands">
+	<command id="headerToolsLightedit" observes="button_mark"  oncommand="HeaderToolsLiteObj.edit();" />
+	<command id="headerToolsLighteditFS" observes="button_mark"  oncommand="HeaderToolsLiteObj.editFS();" />
+</commandset>
+
+<menupopup id="messageMenuPopup">
+	<menuseparator />
+	<menu label="&extName;" accesskey="&aKey1;">
+		 <observes element="button_mark" attribute="disabled" />
+		<menupopup>
+		<menuitem id="headerToolsLightModify1"
+			label="&changeDetails;" command="headerToolsLightedit" accesskey="&aKey2;">
+	    </menuitem>
+		<menuitem id="headerToolsLightModify2"
+			label="&fullSource;" command="headerToolsLighteditFS" accesskey="&aKey3;">
+	    </menuitem>
+	    </menupopup>
+	</menu>
+	<menuseparator />
+</menupopup>
+
+<menupopup id="mailContext">
+	<menuseparator />
+	<menu label="&extName;" accesskey="&aKey1;">
+		 <observes element="button_mark" attribute="disabled" />
+		<menupopup>
+		<menuitem id="headerToolsLightModify3"
+			label="&changeDetails;" command="headerToolsLightedit" accesskey="&aKey2;">
+	    </menuitem>
+		<menuitem id="headerToolsLightModify4"
+			label="&fullSource;" command="headerToolsLighteditFS" accesskey="&aKey3;">
+	    </menuitem>
+	    </menupopup>
+	</menu>
+	<menuseparator />
+</menupopup>
+
+</overlay>

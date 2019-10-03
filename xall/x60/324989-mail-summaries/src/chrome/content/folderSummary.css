@@ -1,0 +1,246 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url("chrome://messenger/content/sharedsummary.css");
+
+/* shared CSS for the cross-platform aspects of the folder summary page */
+
+body {
+  background-color: -moz-Field; /*#fff*/
+  color: -moz-FieldText;
+  font: message-box;
+}
+
+/* The heading area */
+
+#heading_wrapper {
+  display: flex;
+  position: sticky;
+  top: 0;
+  align-items: center;
+  background-image: linear-gradient(rgba(242,242,240,0),    /*#94b6db*/
+                                    rgba(242,242,240,.25)); /*#78a3d1*/
+  background-color: Highlight;
+  color: HighlightText; /*white*/
+  z-index: 2;
+}
+
+#heading {
+  flex-grow: 1;
+  margin: 0;
+  padding: 1ex;
+  font-size: large;
+  font-weight: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#folderName {
+  white-space: nowrap;
+}
+
+#messageCount {
+  white-space: nowrap;
+  -moz-margin-start: 1em;
+  font-size: small;
+}
+
+#spark_wrapper {
+  flex-shrink: 0;
+}
+
+#spark {
+  margin: 0.75ex 1ex 0.25ex;
+}
+
+/* The main content area */
+
+#content {
+  margin: 0px;
+  font-size: small;
+}
+
+#content .widget {
+  padding: calc(16px + 0.5em);
+  border: 1px solid transparent;
+}
+
+#content .widget h2 {
+  color: -moz-nativehyperlinktext; /*#2F61A1*/
+  margin: 0 0 1ex;
+  font-size: medium;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  padding-bottom: 0.4em;
+}
+
+.cropped {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: -moz-min-content;
+  max-width: -moz-available;
+}
+
+.left_right {
+  display: flex;
+}
+
+.lr_wide {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.lr_narrow {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.message_count {
+  opacity: 0.65;
+}
+
+/* The multi-row content area, classic-style */
+
+#content:not(.vertical) {
+  display: flex;
+}
+
+#content:not(.vertical) > section {
+  flex: 1;
+  overflow: hidden;
+}
+
+#content:not(.vertical) > section:first-child {
+  flex: 2;
+  overflow: hidden;
+}
+
+#content:not(.vertical) > section:first-child {
+  display: flex;
+}
+
+#content:not(.vertical) > section:first-child > * {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* The multi-row content area, vertical-style */
+
+#content.vertical {
+  display: block;
+}
+
+#content.vertical > section {
+  display: flex;
+}
+
+#content.vertical > section > * {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Recent messages */
+
+.message_author,
+.message_recipient {
+  opacity: 0.65;
+}
+
+.message_subject:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.unread .message_subject {
+  font-weight: bold;
+}
+
+.star {
+  float: left;
+}
+
+body[dir="rtl"] .star {
+  float: right;
+}
+
+/* Top Correspondents */
+
+.correspondent_name:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.correspondent_email {
+  opacity: 0.65;
+}
+
+/* Top Threads */
+
+.thread_subject:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Tag Dots */
+
+.tag_dots {
+  overflow: hidden;
+}
+
+/* Overflow note */
+
+#overflow {
+  text-align: center;
+  opacity: 0.65;
+}
+
+.centered {
+  position: fixed;
+  width: 100%;
+  top: 2em;
+  bottom: 0;
+  height: 1em; /* TODO: hack! */
+  margin: auto;
+  text-align: center;
+}
+
+/* Folder alert */
+
+.alert {
+  border-radius: 10px;
+  box-shadow: 0 0 1em rgba(125,125,105,.2);
+
+  font-size: medium;
+  text-align: center;
+  opacity: 0.65;
+
+  background-color: rgba(125,125,105,.1);
+  padding: 2.5em;
+}
+
+/* Loading throbber */
+
+#loading_box {
+  padding: 1em;
+  color: ButtonText;
+  background-color: ButtonFace;
+  border: 1px solid ThreeDShadow;
+  border-radius: 3px;
+}
+
+#spinner {
+  -moz-margin-end: 1ex;
+  vertical-align: middle;
+}

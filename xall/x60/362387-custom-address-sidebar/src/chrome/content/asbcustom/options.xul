@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE dialog [
+	<!ENTITY
+		% abResultsPaneDTD
+		SYSTEM "chrome://messenger/locale/addressbook/abResultsPane.dtd" >
+	%abResultsPaneDTD;
+	<!ENTITY
+		% asbcustomOptionDTD
+		SYSTEM "chrome://asbcustom/locale/options.dtd" >
+	%asbcustomOptionDTD;
+]>
+
+<?xml-stylesheet
+	href="chrome://communicator/skin/"
+	type="text/css"?>
+<?xml-stylesheet
+	href="chrome://messenger/skin/prefPanels.css"
+	type="text/css"?>
+
+<dialog
+	id="asbcustom_dialog"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	style="max-width: 60em;"
+	onload="com.github.shimamu.asbcustom.options.init();"
+	buttons="accept,cancel"
+	ondialogaccept="com.github.shimamu.asbcustom.prefs.savePrefs();"
+	persist="screenX screenY"
+	title="&asbcustom.title.label;">
+
+	<stringbundleset
+		id="stringbundleset">
+		<stringbundle
+			id="bundle_tssettings"
+			src="chrome://asbcustom/content/asbcustom_options.properties"/>
+	</stringbundleset>
+
+	<script
+		type="application/x-javascript"
+		src="chrome://global/content/nsUserSettings.js"/>
+	<script
+		type="application/x-javascript"
+		src="chrome://asbcustom/content/namespace.js"/>
+	<script
+		type="application/x-javascript"
+		src="chrome://asbcustom/content/customPrefs.js"/>
+	<script
+		type="application/x-javascript"
+		src="chrome://asbcustom/content/prefs.js"/>
+	<script
+		type="application/x-javascript"
+		src="chrome://asbcustom/content/options.js"/>
+
+	<tabbox
+		id="csTabList">
+		<tabs>
+			<tab
+				label="&asbcustom.searchTab.label;"/>
+		</tabs>
+		<tabpanels>
+			<tabpanel
+				id="csSearchTab"
+				orient="vertical">
+				<groupbox
+					align="start">
+					<caption
+						label="&asbcustom.searchCaption.label;"/>
+					<label
+						value="&asbcustom.search.label;"/>
+					<hbox
+						class="indent">
+						<vbox>
+							<checkbox
+								id="searchGeneratedName"
+								label="&GeneratedName.label;"
+								prefstring="asbcustom.search_generated_name"
+								prefdefval="true"/>
+							<checkbox
+								id="searchPrimaryEmail"
+								label="&PrimaryEmail.label;"
+								prefstring="asbcustom.search_primary_email"
+								prefdefval="true"/>
+							<checkbox
+								id="search_AimScreenName"
+								label="&ChatName.label;"
+								prefstring="asbcustom.search__aim_screen_name"
+								prefdefval="true"/>
+							<checkbox
+								id="searchCompany"
+								label="&Company.label;"
+								prefstring="asbcustom.search_company"
+								prefdefval="true"/>
+							<checkbox
+								id="searchNickName"
+								label="&NickName.label;"
+								prefstring="asbcustom.search_nick_name"
+								prefdefval="true"/>
+							<checkbox
+								id="searchSecondEmail"
+								label="&SecondEmail.label;"
+								prefstring="asbcustom.search_second_email"
+								prefdefval="true"/>
+							<checkbox
+								id="searchDepartment"
+								label="&Department.label;"
+								prefstring="asbcustom.search_department"
+								prefdefval="true"/>
+							<checkbox
+								id="searchJobTitle"
+								label="&JobTitle.label;"
+								prefstring="asbcustom.search_job_title"
+								prefdefval="true"/>
+							<checkbox
+								id="searchCellularNumber"
+								label="&CellularNumber.label;"
+								prefstring="asbcustom.search_cellular_number"
+								prefdefval="true"/>
+							<checkbox
+								id="searchPagerNumber"
+								label="&PagerNumber.label;"
+								prefstring="asbcustom.search_pager_number"
+								prefdefval="true"/>
+							<checkbox
+								id="searchFaxNumber"
+								label="&FaxNumber.label;"
+								prefstring="asbcustom.search_fax_number"
+								prefdefval="true"/>
+							<checkbox
+								id="searchHomePhone"
+								label="&HomePhone.label;"
+								prefstring="asbcustom.search_home_phone"
+								prefdefval="true"/>
+							<checkbox
+								id="searchWorkPhone"
+								label="&WorkPhone.label;"
+								prefstring="asbcustom.search_work_phone"
+								prefdefval="true"/>
+						</vbox>
+					</hbox>
+					<separator
+						class="thin"/>
+				</groupbox>
+
+				<!--
+		<groupbox align="start">
+		  <caption label="&asbcustom.ldap.label;"/>
+
+		  <hbox align="center">
+			<checkbox id="autoPopulate" label="&asbcustom.autoPopulate.label;"
+					  prefstring="asbcustom.auto_populate" prefdefval="true"
+					  accesskey="&asbcustom.autoPopulate.accesskey;"
+					  oncommand="enableAutoSearchQuery(this.checked);"/>
+		  </hbox>
+
+		  <hbox align="center" class="indent">
+			<label value="&asbcustom.autoSearch1.label;"/>
+			<textbox id="autoSearchQuery" size="4"
+					prefstring="asbcustom.auto_search_query" prefdefval="*"
+					onfocus="this.select();" onclick="this.select();"/>
+			<label value="&asbcustom.autoSearch2.label;"/>
+		  </hbox>
+
+		  <separator class="thin"/>
+		</groupbox>
+		-->
+
+				<groupbox
+					align="start">
+					<caption
+						label="&asbcustom.searchWord.label;"/>
+					<hbox
+						id="search_word_boxs"
+						align="left"
+						class="indent">
+						<!-- generate child node by automatic -->
+					</hbox>
+					<separator
+						class="thin"/>
+				</groupbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+</dialog>

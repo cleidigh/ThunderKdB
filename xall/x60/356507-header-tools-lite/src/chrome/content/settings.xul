@@ -1,0 +1,85 @@
+<?xml version="1.0"?> 
+
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/prefPanels.css" type="text/css"?>
+<?xml-stylesheet href="chrome://communicator/skin/pref/pref.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://hdrtoolslite/locale/hdrtools.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&prefTitle;"
+	id="HTLsettings"
+	onload="onLoad()"
+        ondialogaccept="savePrefs();">
+
+<script type="application/x-javascript">
+<![CDATA[
+  var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+		.getService(Components.interfaces.nsIPrefBranch);
+	   
+  function savePrefs() {
+	prefs.setBoolPref("extensions.hdrtoolslite.putOriginalInTrash",document.getElementById("delOrig").checked);
+	prefs.setBoolPref("extensions.hdrtoolslite.use_imap_fix", document.getElementById("imapFix").checked);
+	prefs.setBoolPref("extensions.hdrtoolslite.add_htl_header", document.getElementById("addHTLheader").checked);
+	if (document.getElementById("shortcutBox1").value.length > 0)
+		prefs.setCharPref("extensions.hdrtoolslite.edit_shortcut", document.getElementById("shortcutBox1").value);
+	else
+		prefs.deleteBranch("extensions.hdrtoolslite.edit_shortcut");
+	if (document.getElementById("shortcutBox2").value.length > 0)
+		prefs.setCharPref("extensions.hdrtoolslite.editFS_shortcut", document.getElementById("shortcutBox2").value);
+	else
+		prefs.deleteBranch("extensions.hdrtoolslite.editFS_shortcut");
+	var maxChars =  document.getElementById("maxFSchars").value;
+	if (maxChars == -1 || maxChars > 50)
+		prefs.setIntPref("extensions.hdrtoolslite.fullsource_maxchars", maxChars);		
+	else
+		prefs.setIntPref("extensions.hdrtoolslite.fullsource_maxchars", 50);		
+  }
+    
+  function onLoad() {
+	document.getElementById("delOrig").checked = prefs.getBoolPref("extensions.hdrtoolslite.putOriginalInTrash");
+	document.getElementById("imapFix").checked = prefs.getBoolPref("extensions.hdrtoolslite.use_imap_fix");
+	document.getElementById("addHTLheader").checked = prefs.getBoolPref("extensions.hdrtoolslite.add_htl_header");
+	try {
+		document.getElementById("shortcutBox1").value = prefs.getCharPref("extensions.hdrtoolslite.edit_shortcut");
+		document.getElementById("shortcutBox2").value = prefs.getCharPref("extensions.hdrtoolslite.editFS_shortcut");
+	}
+	catch(e) {}
+	document.getElementById("maxFSchars").value = prefs.getIntPref("extensions.hdrtoolslite.fullsource_maxchars");
+
+   }
+]]>
+</script>
+<groupbox>
+	<caption label="&misc;" />
+	<hbox align="center">
+		<checkbox id="delOrig" label="&trashOption;"/>
+	</hbox>
+	<hbox align="center">
+		<checkbox id="imapFix" label="&imapFix;"/>
+	</hbox>
+	<hbox align="center">
+		<checkbox id="addHTLheader" label="&addHTLheader;"/>
+	</hbox>
+	<hbox align="center">
+		<label value="&maxchars;" />
+		<textbox id="maxFSchars" size="8" />
+	</hbox>
+	<label value="&nolimit;" />
+</groupbox>
+
+<groupbox>
+	<caption label="&shortcuts;" />
+	<hbox align="center">
+		<label value="&shortCut; CTRL +"/>
+		<textbox id="shortcutBox1" size="1" maxlength="1" />
+	</hbox>
+	<hbox align="center">
+		<label value="&shortCutFS; CTRL +"/>
+		<textbox id="shortcutBox2" size="1" maxlength="1" />
+	</hbox>
+	<label value="&shortCutWarn;" />
+</groupbox>
+
+<spacer height="10px" /> 
+</dialog>

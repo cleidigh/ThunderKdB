@@ -1,0 +1,47 @@
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<!-- DTD File with all strings specific to the file -->
+<!DOCTYPE overlay SYSTEM "chrome://purgeevents/locale/dialoge.dtd">
+
+<dialog id="purgeeventsOptions"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&purgenow.title;"
+	buttons="accept"
+	onload="setTimeout(function(){ initDialogGlobal(); },0);">
+	
+<stringbundleset id="stringbundleset-purge">
+   <stringbundle id="string-bundle-purge" src="chrome://purgeevents/locale/purge.properties"/>
+</stringbundleset>
+    <script type="application/javascript" src="chrome://calendar/content/calendar-ui-utils.js"/>
+	<script type="application/x-javascript" src="chrome://purgeevents/content/purgeeventsSettings.js" />
+	
+
+	<vbox id="dialog-box">
+		<groupbox>
+			<caption label="&setting.choosecal;"/>
+			
+			<listbox id="calendar-list" rows="3" flex="1" seltype="single" onselect="updateElements();">
+				<listcols>
+					<listcol/>
+					<listcol flex="1"/>
+				</listcols>
+			</listbox>
+			
+			<label value="&setting.ignoreBefore;"/>
+			
+			<textbox id="inputNumber" type="number" min="0" max="370"/>
+
+			<menulist id="inputUnit">
+			  <menupopup>
+				<menuitem label="&setting.days;" value="0"/>
+				<menuitem label="&setting.weeks;" value="1"/>
+				<menuitem label="&setting.months;" value="2"/>
+				<menuitem label="&setting.years;" value="3"/>
+			  </menupopup>
+			</menulist>
+			
+			<button label="&purgenow.setdefault;" id="action" onclick="applySettings();"/>
+			<button label="&purgenow.cleanup;" id="action" onclick="purgeNow();"/>
+		</groupbox>
+	</vbox>      
+</dialog>

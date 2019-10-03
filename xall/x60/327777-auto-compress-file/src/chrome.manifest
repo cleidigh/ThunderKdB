@@ -1,0 +1,13 @@
+content autocompressfile jar:chrome/AutoCompressFile.jar!/content/
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://AutoCompressFile/content/composer_overlay.xul
+overlay chrome://messenger/content/messenger.xul chrome://AutoCompressFile/content/overlay.xul
+
+locale autocompressfile en-US jar:chrome/AutoCompressFile.jar!/locale/en-US/
+locale autocompressfile fr-FR jar:chrome/AutoCompressFile.jar!/locale/fr-FR/
+locale autocompressfile cs-CZ jar:chrome/AutoCompressFile.jar!/locale/cs-CZ/
+skin autocompressfile classic/1.0 jar:chrome/AutoCompressFile.jar!/skin/classic/
+
+style chrome://messenger/content/messengercompose/messengercompose.xul chrome://AutoCompressFile/skin/AutoCompressFile.css
+
+style chrome://global/content/customizeToolbar.xul chrome://AutoCompressFile/skin/AutoCompressFile.css appversion<59.0a1
+style chrome://messenger/content/customizeToolbar.xul chrome://AutoCompressFile/skin/AutoCompressFile.css appversion>=59.0a1

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+                      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+  [
+  <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd">
+  %brandDTD;
+  <!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd">
+  %globalDTD;
+  <!ENTITY % startDTD SYSTEM "chrome://mailsummaries/locale/emptyAccountSummary.dtd">
+  %startDTD;
+  ]
+>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" media="screen" type="text/css"
+          href="chrome://mailsummaries/content/emptyAccountSummary.css"/>
+    <title>&window.title;</title>
+
+    <script type="application/javascript"
+            src="chrome://mailsummaries/content/emptyAccountSummary.js"/>
+  </head>
+
+  <body dir="&locale.dir;">
+    <div id="outer_box">
+      <div id="noAccountImage"/>
+      <div class="inner_box">
+        <h1>&noAccountFound.label;</h1>
+        <p>&noAccountFound.descr;</p>
+        <ul>
+          <li>&newInstall.descr;</li>
+          <li>&existingInstall.descr;</li>
+        </ul>
+        <button id="create_account">&createAccount.label;</button>
+        <button id="show_troubleshooting">&showTroubleshooting.label;</button>
+      </div>
+    </div>
+  </body>
+</html>

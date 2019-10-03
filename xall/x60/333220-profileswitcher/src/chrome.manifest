@@ -1,0 +1,31 @@
+content	profilelauncher	chrome/content/profilelauncher/
+
+overlay	chrome://browser/content/browser.xul	chrome://profilelauncher/content/profilelauncher.xul appversion<3.9
+overlay	chrome://browser/content/browser.xul	chrome://profilelauncher/content/profilelauncher-FF4.xul appversion>3.9
+overlay	chrome://messenger/content/messenger.xul	chrome://profilelauncher/content/profilelauncher.xul appversion<3.9
+overlay	chrome://messenger/content/messenger.xul	chrome://profilelauncher/content/profilelauncher-FF4.xul appversion>3.9
+overlay	chrome://messenger/content/addressbook/addressbook.xul	chrome://profilelauncher/content/ABoverlay.xul
+
+style 	chrome://global/content/customizeToolbar.xul 	chrome://profilelauncher/content/profilelauncher.css
+style	chrome://messenger/content/messenger.xul	chrome://profilelauncher/content/profilelauncher.css
+style	chrome://browser/content/browser.xul	chrome://profilelauncher/content/profilelauncher.css
+
+locale	profilelauncher	en-US	chrome/locale/en-US/profilelauncher/
+locale	profilelauncher	de   chrome/locale/de/profilelauncher/
+locale	profilelauncher	fr	chrome/locale/fr/profilelauncher/
+locale	profilelauncher	hu-HU   chrome/locale/hu-HU/profilelauncher/
+locale	profilelauncher	it	chrome/locale/it/profilelauncher/
+locale	profilelauncher	ko-KR	chrome/locale/ko-KR/profilelauncher/
+locale	profilelauncher	nl  chrome/locale/nl/profilelauncher/
+locale	profilelauncher	pl   chrome/locale/pl/profilelauncher/
+locale	profilelauncher	pt-BR   chrome/locale/pt-BR/profilelauncher/
+locale	profilelauncher	ro	chrome/locale/ro/profilelauncher/
+locale	profilelauncher	sl-SI	chrome/locale/sl-SI/profilelauncher/
+locale	profilelauncher	sr	chrome/locale/sr/profilelauncher/
+locale	profilelauncher	sv-SE   chrome/locale/sv-SE/profilelauncher/
+locale	profilelauncher	zh-CN   chrome/locale/zh-CN/profilelauncher/
+locale	profilelauncher	zh-TW   chrome/locale/zh-TW/profilelauncher/
+
+
+
+

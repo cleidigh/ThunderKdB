@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>mailsummaries@mozillamessaging.com</em:id>
+    <em:type>2</em:type>
+    <em:bootstrap>true</em:bootstrap>
+    <em:name>Mail Summaries</em:name>
+    <em:version>4.0</em:version>
+    <em:creator>Jim Porter</em:creator>
+    <em:contributor></em:contributor>
+    <em:description>Adds a summary of mail accounts and folders to replace the account central pane and the empty folder preview</em:description>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
+        <em:minVersion>60.*</em:minVersion>
+        <em:maxVersion>62.0a1</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Mail Summaries</em:name>
+        <em:description>Grafische Zusammenfassung der E-Mail-Konten und Ordner</em:description>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>fr</em:locale>
+        <em:name>Mail Summaries</em:name>
+        <em:description>Informations et statistiques des comptes de messagerie et des dossiers</em:description>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>ro</em:locale>
+        <em:name>Mail Summaries</em:name>
+        <em:description>Adaugă un sumar al conturilor de e-mail și al dosarelor în locul panoului principal al contului</em:description>
+      </Description>
+    </em:localized>
+  </Description>
+</RDF>

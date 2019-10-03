@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<bindings
+	id="searchInputHelperBindings"
+	xmlns="http://www.mozilla.org/xbl"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:xbl="http://www.mozilla.org/xbl">
+	
+	<binding
+		id="asbcustom_input_helper">
+		<resources>
+			<stylesheet
+				src="chrome://asbcustom/skin/input_helper.css"/>
+		</resources>
+		<content
+			popup="_child">
+			<children/>
+			<xul:stack
+				flex="1">
+				<xul:hbox
+					align="center">
+					<xul:image
+						class="asbcustom-input-helper-button-image"
+						xbl:inherits="src"/>
+				</xul:hbox>
+				<xul:hbox
+					align="center">
+					<xul:image
+						class="asbcustom-input-helper-button-dropmarker"/>
+				</xul:hbox>
+			</xul:stack>
+		</content>  
+	</binding>
+</bindings>

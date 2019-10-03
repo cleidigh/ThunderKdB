@@ -1,0 +1,66 @@
+<?xml version="1.0"?> 
+<!DOCTYPE overlay SYSTEM "chrome://hdrtoolslite/locale/hdrtools.dtd">
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/prefPanels.css" type="text/css"?>
+<?xml-stylesheet href="chrome://hdrtoolslite/content/hdrtools.css" type="text/css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="HeaderToolsLiteObj.initDialog();" 
+	title="&extName; - &changeDetails;"
+        ondialogaccept="return HeaderToolsLiteObj.exitDialog(false)"
+	ondialogcancel="HeaderToolsLiteObj.exitDialog(true)"
+	orient="vertical"
+	flex="1"
+	id="HTLdialog1new"
+	persist="screenX screenY width height">
+
+<script type="application/x-javascript" src="chrome://hdrtoolslite/content/hdrtools.js"/>
+
+<vbox style="overflow: auto; min-width:480px;" flex="1">
+	<grid>
+	<columns>
+		<column />
+		<column flex="1" />
+	</columns>
+	<rows>
+	<row align="center">
+		<label value="&subject;" class="tright" /><textbox id="subBox" flex="1" />
+	</row>
+	<row align="center">
+		<label value="&date;"  class="tright" />
+		<hbox>
+		<menulist id="date3">
+  			<menupopup>
+			<menuitem label="" selected="true"  />
+   			<menuitem label="Mon" />
+			<menuitem label="Tue" />
+			<menuitem label="Wed" />
+			<menuitem label="Thu" />
+			<menuitem label="Fri" />
+			<menuitem label="Sat" />
+			<menuitem label="Sun" />
+			</menupopup>
+		</menulist>
+		<textbox id="dateBox"  flex="1"/>
+		</hbox>
+	</row>
+	<row align="center">
+		<label value="&author;"  class="tright" /><textbox id="authBox"  flex="1"/>
+	</row>
+	<row align="center">
+		<label value="&recipients;"  class="tright" /><textbox id="recBox"  flex="1"/>
+	</row>
+	<row align="center">
+		<label value="&replyto;"  class="tright"  /><textbox id="replytoBox"  flex="1"/>
+	</row>
+	<row align="center">
+		<label value="&mid;"  class="tright"  /><textbox id="midBox"  flex="1"/>
+	</row>
+	<row align="center">
+		<label value="&refs;"  class="tright"  /><textbox id="refBox"  flex="1"/>
+	</row>
+	</rows>
+	</grid>
+</vbox>
+</dialog>
+

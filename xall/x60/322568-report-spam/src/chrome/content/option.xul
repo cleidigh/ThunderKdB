@@ -1,0 +1,200 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://reportspam/locale/reportspam.dtd">
+
+<prefwindow id="reportspamOptions" title="Options Report Spam"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="reportspam.initPreferences();">
+	
+	<script type="application/x-javascript" src="chrome://reportspam/content/reportspam.js"/>
+	
+	<prefpane id="pref-pane1">
+		<!-- ReportSpam preferences -->
+		<preferences>
+			<preference id="reportspam_showInToolbar" name="extensions.reportspam.showInToolbar" type="bool"/>
+			<preference id="reportspam_showInMenu" name="extensions.reportspam.showInMenu" type="bool"/>
+			
+			<preference id="reportspam_phishing_enabled" name="extensions.reportspam.phishing.enabled" type="bool"/>
+			
+			<preference id="reportspam_spamDetector" name="extensions.reportspam.spamDetector" type="string"/>
+			
+			<preference id="reportspam_spam_tagAsJunk" name="extensions.reportspam.spam.tagAsJunk" type="bool"/>
+			<preference id="reportspam_spam_moveToTrash" name="extensions.reportspam.spam.moveToTrash" type="bool"/>
+			<preference id="reportspam_spam_moveToFolder" name="extensions.reportspam.spam.moveToFolder" type="bool"/>
+			<preference id="reportspam_spam_reportMode" name="extensions.reportspam.spam.reportMode" type="string"/>
+			<preference id="reportspam_spam_reportAddress" name="extensions.reportspam.spam.reportAddress" type="string"/>
+			<preference id="reportspam_spam_reportURL" name="extensions.reportspam.spam.reportURL" type="string"/>
+				
+			<preference id="reportspam_ham_reportMode" name="extensions.reportspam.ham.reportMode" type="string"/>
+			<preference id="reportspam_ham_reportAddress" name="extensions.reportspam.ham.reportAddress" type="string"/>
+			<preference id="reportspam_ham_reportURL" name="extensions.reportspam.ham.reportURL" type="string"/>
+				
+			<preference id="reportspam_phishing_tagAsJunk" name="extensions.reportspam.phishing.tagAsJunk" type="bool"/>
+			<preference id="reportspam_phishing_moveToTrash" name="extensions.reportspam.phishing.moveToTrash" type="bool"/>
+			<preference id="reportspam_phishing_moveToFolder" name="extensions.reportspam.phishing.moveToFolder" type="bool"/>
+			<preference id="reportspam_phishing_reportMode" name="extensions.reportspam.phishing.reportMode" type="string"/>
+			<preference id="reportspam_phishing_reportAddress" name="extensions.reportspam.phishing.reportAddress" type="string"/>
+			<preference id="reportspam_phishing_reportURL" name="extensions.reportspam.phishing.reportURL" type="string"/>
+		</preferences>
+		<vbox>
+			<tabbox>
+				<tabs>
+					<tab label="&reportspam.option.general.tab;"/>
+					<tab label="&reportspam.option.spam.tab;" oncommand="reportspam.initReportMode('spam');"/>
+					<tab label="&reportspam.option.ham.tab;" oncommand="reportspam.initReportMode('ham');"/>
+					<tab label="&reportspam.option.phishing.tab;" oncommand="reportspam.initReportMode('phishing');" id="reportspam_phishing_tab"/>
+				</tabs>
+
+				<tabpanels>
+					<!-- General options -->
+					<tabpanel>
+						<vbox flex="1">
+							<label value="&reportspam.option.general.show;"/>
+							<checkbox preference="reportspam_showInToolbar" label="&reportspam.option.general.showintoolbar;"/>
+							<checkbox preference="reportspam_showInMenu" label="&reportspam.option.general.showinmenu;"/>
+
+							<separator />
+
+							<description width="30em">&reportspam.option.spamdetector.disclamer;</description>
+
+							<separator />
+
+							<label value="&reportspam.option.spamdetector.detector;"/>
+							<textbox id="reportspam_spamDetector" preference="reportspam_spamDetector" />
+
+							<separator/>
+
+							<checkbox preference="reportspam_phishing_enabled" label="&reportspam.option.general.enablephishing;" oncommand="reportspam.updatePhishingMode(this);"/>
+						</vbox>
+					</tabpanel>
+
+					<!-- Options for reporting spams -->
+					<tabpanel>
+						<vbox flex="1" id="reportspam_spam">
+							<description width="30em">&reportspam.option.spam.disclamer;</description>
+
+							<separator />
+
+							<label value="&reportspam.option.reportMode;" />
+							<radiogroup preference="reportspam_spam_reportMode">
+								<radio label="&reportspam.option.reportModeMail;" value="mail" oncommand="reportspam.switchReportMode(this);"/>
+								<radio label="&reportspam.option.reportModeHttp;" value ="http" oncommand="reportspam.switchReportMode(this);"/>
+							</radiogroup>
+
+							<!-- Mail reporting options -->
+							<vbox flex="1" id="reportspam_spam_reportMode_mail">
+								<label value="&reportspam.option.reportAddress;"/>
+								<textbox preference="reportspam_spam_reportAddress" />
+							</vbox>
+
+							<!-- HTTP reporting options -->
+							<vbox flex="1" id="reportspam_spam_reportMode_http" hidden="true">
+								<label value="&reportspam.option.reportURL;" />
+								<textbox preference="reportspam_spam_reportURL" />
+							</vbox>
+
+							<separator />
+
+							<label value="&reportspam.option.action;" />
+							<checkbox preference="reportspam_spam_tagAsJunk" label="&reportspam.option.tagAsJunk;" />
+							<checkbox preference="reportspam_spam_moveToTrash" label="&reportspam.option.moveToTrash;" />
+							<hbox>
+								<vbox>
+									<checkbox preference="reportspam_spam_moveToFolder" oncommand="reportspam.updateMoveToFolder('spam', null, this);" label="&reportspam.option.moveToFolder;" />
+								</vbox>
+								<vbox>
+									 <menulist id="reportspam_spam_moveToFolderTarget" oncommand="reportspam.onMoveToFolderTargetSelect('spam', event);">
+										<menupopup id="reportspam_spam_moveToFolderTarget_popup"
+											type="folder"
+											style="-moz-binding: url('chrome://messenger/content/folderWidgets.xml#folder-menupopup');"
+											showFileHereLabel="false"
+										/>
+									</menulist>
+								</vbox>
+							</hbox>
+						</vbox>
+					</tabpanel>
+
+					<!-- Options for reporting hams -->
+					<tabpanel>
+						<vbox flex="1" id="reportspam_ham">
+							<description width="30em">&reportspam.option.ham.disclamer;</description>
+
+							<separator />
+
+							<label value="&reportspam.option.reportMode;" />
+							<radiogroup preference="reportspam_ham_reportMode">
+								<radio label="&reportspam.option.reportModeMail;" value="mail" oncommand="reportspam.switchReportMode(this);"/>
+								<radio label="&reportspam.option.reportModeHttp;" value ="http" oncommand="reportspam.switchReportMode(this);"/>
+							</radiogroup>
+
+							<!-- Mail reporting options -->
+							<vbox flex="1" id="reportspam_ham_reportMode_mail">
+								<label value="&reportspam.option.reportAddress;"/>
+								<textbox preference="reportspam_ham_reportAddress" />
+							</vbox>
+
+							<!-- HTTP reporting options -->
+							<vbox flex="1" id="reportspam_ham_reportMode_http" hidden="true">
+								<label value="&reportspam.option.reportURL;" />
+								<textbox preference="reportspam_ham_reportURL" />
+							</vbox>
+						</vbox>
+					</tabpanel>
+
+					<!-- Options for reporting phishings -->
+					<tabpanel>
+						<vbox flex="1" id="reportspam_phishing">
+							<description width="30em">&reportspam.option.phishing.disclamer;</description>
+
+							<separator />
+
+							<label value="&reportspam.option.reportMode;" />
+							<radiogroup preference="reportspam_phishing_reportMode">
+								<radio label="&reportspam.option.reportModeMail;" value="mail" oncommand="reportspam.switchReportMode(this);"/>
+								<radio label="&reportspam.option.reportModeHttp;" value ="http" oncommand="reportspam.switchReportMode(this);"/>
+							</radiogroup>
+
+							<!-- Mail reporting options -->
+							<vbox flex="1" id="reportspam_phishing_reportMode_mail">
+								<label value="&reportspam.option.reportAddress;"/>
+								<textbox preference="reportspam_phishing_reportAddress" />
+							</vbox>
+
+							<!-- HTTP reporting options -->
+							<vbox flex="1" id="reportspam_phishing_reportMode_http" hidden="true">
+								<label value="&reportspam.option.reportURL;" />
+								<textbox preference="reportspam_phishing_reportURL" />
+							</vbox>
+
+							<separator />
+
+							<label value="&reportspam.option.action;" />
+							<checkbox preference="reportspam_phishing_tagAsJunk" label="&reportspam.option.tagAsJunk;" />
+							<checkbox preference="reportspam_phishing_moveToTrash" label="&reportspam.option.moveToTrash;" />
+							<hbox>
+								<vbox>
+									<checkbox preference="reportspam_phishing_moveToFolder" oncommand="reportspam.updateMoveToFolder('phishing', null, this);" label="&reportspam.option.moveToFolder;" />
+								</vbox>
+								<vbox>
+									<menulist id="reportspam_phishing_moveToFolderTarget" oncommand="reportspam.onMoveToFolderTargetSelect('phishing', event);">
+										<menupopup id="reportspam_phishing_moveToFolderTarget_popup"
+											type="folder"
+											style="-moz-binding: url('chrome://messenger/content/folderWidgets.xml#folder-menupopup');"
+											showFileHereLabel="false"
+										/>
+									</menulist>
+								</vbox>
+							</hbox>
+						</vbox>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+			<hbox>
+				<button label="&reportspam.option.apply;" dlgtype="accept" onclick="reportspam.savePrefs();"/>
+				<button label="&reportspam.option.cancel;" dlgtype="cancel" onclick=" window.close();"/>
+			</hbox>
+		</vbox>
+	</prefpane>
+</prefwindow>

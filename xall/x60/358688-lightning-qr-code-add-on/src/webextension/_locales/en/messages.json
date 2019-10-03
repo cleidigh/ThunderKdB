@@ -1,0 +1,74 @@
+{
+  "appearance-section": {
+    "message": "Appearance"
+  },
+  "padding-label": {
+    "message": "QR code padding:"
+  },
+  "padding-description": {
+    "message": "Set the amount of whitespace (in pixel) around the generated image. Increasing this might be needed for some barcode scanners to be able to recognize the QR code."
+  },
+  "techinfo-label": {
+    "message": "Show technical details"
+  },
+  "techinfo-description": {
+    "message": "Display QR code version, number of modules, length of encoded data and total capacity of the QR code version."
+  },
+
+
+  "clipboard-section": {
+    "message": "Copy to clipboard"
+  },
+  "copydelay-label": {
+    "message": "Copy delay:"
+  },
+  "copydelay-description": {
+    "message": "If the tooltip is kept open for this duration (in seconds), copy the QR code image to the clipboard. Defaults to 0 (deactivated)."
+  },
+  "copycolor-label": {
+    "message": "Color for copy confirmation:"
+  },
+  "copycolor-description": {
+    "message": "To confirm that the image has been copied to the clipboard, the previously transparent border of the image will be changed to the color selected here."
+  },
+
+
+  "data-section": {
+    "message": "Data used for encoding"
+  },
+  "usedesc-label": {
+    "message": "Use event description"
+  },
+  "usedesc-description": {
+    "message": "Uncheck if you do not want to include the event description for QR code generation."
+  },
+  "useorganizer-label": {
+    "message": "Use organizer mail address"
+  },
+  "useorganizer-description": {
+    "message": "Extract and encode the mail address of the event organizer."
+  },
+  "useattendees-label": {
+    "message": "Use attendee mail addresses"
+  },
+  "useattendees-description": {
+    "message": "Extract and encode the mail addresses of the attendees."
+  },
+  "usealarms-label": {
+    "message": "Use alarms/reminders"
+  },
+  "usealarms-description": {
+    "message": "Encode the most important attributes of alarms/reminders. Audio and mail reminders will be transformed into display reminders, removing attachments and attendees. At the moment, no QR scanners are known which can process this kind of data. On the contrary, enabling this option might cause trouble."
+  },
+
+
+  "debugging-section": {
+    "message": "Debugging"
+  },
+  "logging-label": {
+    "message": "Logging"
+  },
+  "logging-description": {
+    "message": "Log information about QR code creation in error console."
+  }
+}

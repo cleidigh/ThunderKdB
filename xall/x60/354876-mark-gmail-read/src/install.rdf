@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
+				<em:minVersion>5.0</em:minVersion>
+				<em:maxVersion>60.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+		<em:id>mark-gmail-read@alexcabal.com</em:id>
+		<em:type>2</em:type>
+		<em:name>Mark GMail Read</em:name>
+		<em:bootstrap>true</em:bootstrap>
+		<em:version>1.03</em:version>
+		<em:description>Automatically marks all messages in the [Gmail] folder and all subfolders as read. If your GMail uses localized (translated) Gmail folder names, you set them in Thunderbird preferences: extensions.mark_gmail_read.folder_names.(all_mail|important|starred).</em:description>
+		<em:creator>Alex Cabal</em:creator>
+		<em:developer>Alex Cabal</em:developer>
+		<em:developer>Martin Pecka</em:developer>
+		<em:homepageURL>https://alexcabal.com</em:homepageURL>
+	</Description>
+</RDF>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://mattsch-toggle-headers/locale/toggle-headers.dtd">
+
+<overlay id="toggle-headers-view" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/javascript" src="chrome://mattsch-toggle-headers/content/toggle-headers.js"/>
+    
+    <stringbundleset id="stringbundleset">
+		<stringbundle id="toggle-headers-view-strings" src="chrome://mattsch-toggle-headers/locale/toggle-headers.properties" />
+	</stringbundleset>
+    
+    <keyset>
+        <key id="toggleHeadersViewKey" key="&toggleHeadersView.key;" oncommand="com_mattsch_toggleHeaders.toggleHeadersView();"/>
+    </keyset>
+    
+    <menupopup id="menu_View_Popup">
+        <menuitem id="toggle-headers-view-item" oncommand="com_mattsch_toggleHeaders.toggleHeadersView();" label="&toggleHeadersView.label;" accesskey="&toggleHeadersView.accesskey;" key="toggleHeadersViewKey" insertafter="viewheadersmenu" />
+    </menupopup>
+</overlay>

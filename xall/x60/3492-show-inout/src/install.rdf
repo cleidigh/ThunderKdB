@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+     xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>showInOut@ggbs.de</em:id>
+    <em:version>1.2.2</em:version>
+    <em:type>2</em:type>
+    <em:optionsURL>chrome://showinout/content/options.xul</em:optionsURL>
+    <em:iconURL>chrome://showinout/skin/inout-col.png</em:iconURL>
+    
+    
+
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>5.0</em:minVersion>
+        <em:maxVersion>64.*</em:maxVersion><!--TB-->
+      </Description>
+    </em:targetApplication>
+    <!--  SeaMonkey -->
+		<em:targetApplication>
+		  <Description>
+		    <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+		    <em:minVersion>2.1</em:minVersion>
+		    <em:maxVersion>2.61.*</em:maxVersion><!--SM-->
+		  </Description>
+		</em:targetApplication>
+
+    <em:name>Show InOut</em:name>
+    <em:creator>Günter Gersdorf</em:creator>
+    <em:description>Adds columns to ThreadPane indicating if a mail is incoming or outgoing</em:description>
+    <em:homepageURL>https://www.ggbs.de/extensions/ShowInOut.html</em:homepageURL>
+    <em:releaseNotesURI>https://www.ggbs.de/extensions/ShowInOut.html</em:releaseNotesURI>
+
+    <em:contributor>Thanks to all translators!</em:contributor>
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Show InOut</em:name>
+        <em:creator>Günter Gersdorf</em:creator>
+        <em:description>Fügt neue Spalten in der Liste der Mails hinzu, die anzeigt ob es sich um eine ein- oder ausgehende Mail handelt und entsprechend den Absender oder Empfänger der Mail</em:description>
+        <em:homepageURL>https://www.ggbs.de/extensions/ShowInOut.html</em:homepageURL>
+        <em:translators>Danke an alle Übersetzer!</em:translators>
+      </Description>
+    </em:localized>
+  </Description>
+</RDF>

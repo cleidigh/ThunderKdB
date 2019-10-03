@@ -1,0 +1,14 @@
+{
+  "name": "Lightning QR Code Add-on",
+  "version": "1.2.6",
+  "manifest_version": 2,
+  "permissions": ["storage"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "default_locale": "en",
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true
+  }
+}

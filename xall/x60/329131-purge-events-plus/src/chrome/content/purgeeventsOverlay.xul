@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://purgeevents/locale/global.dtd">
+
+<overlay id="purgeeventsOverlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<script type="application/x-javascript" src="chrome://purgeevents/content/purgeeventsPurge.js" />
+
+
+
+<!-- Lightning calendar context popup -->
+	<popup id="list-calendars-context-menu">
+		<menuseparator id="purgeevents-separator"/>
+		<menuitem id="purgeevents-purge"
+			label="&globale.purgeEvents;"
+			oncommand="openPurgeNowDia();"/>
+	</popup>
+
+</overlay>
+

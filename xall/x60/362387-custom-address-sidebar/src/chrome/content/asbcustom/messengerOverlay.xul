@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet
+	href="chrome://messenger/skin/messengercompose/messengercompose.css"
+	type="text/css"?>
+<?xml-stylesheet
+	href="chrome://messenger/skin/addressbook/abContactsPanel.css"
+	type="text/css"?>
+<?xml-stylesheet
+	href="chrome://asbcustom/skin/style.css"
+	type="text/css"?>
+
+<!DOCTYPE window [
+	<!ENTITY
+		% abResultsPaneDTD
+		SYSTEM
+		"chrome://messenger/locale/addressbook/abResultsPane.dtd" >
+	%abResultsPaneDTD;
+	<!ENTITY
+		% abMainWindowDTD
+		SYSTEM
+		"chrome://messenger/locale/addressbook/abMainWindow.dtd" >
+	%abMainWindowDTD;
+	<!ENTITY
+		% abContactsPanelDTD
+		SYSTEM
+		"chrome://messenger/locale/addressbook/abContactsPanel.dtd" >
+	%abContactsPanelDTD;
+	<!ENTITY
+		% asbcustomOptionsDTD
+		SYSTEM
+		"chrome://asbcustom/locale/options.dtd" >
+	%asbcustomOptionsDTD;
+]>
+
+<overlay
+	id="contactsSidebar"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:nc="http://home.netscape.com/NC-rdf#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+	<vbox
+		id="folderPaneBox"
+		persist="collapsed width height">
+
+		<script
+			type="application/x-javascript"
+			src="chrome://global/content/nsUserSettings.js"/>
+		<script
+			type="application/javascript"
+			src="abCommon.js"/>
+		<script
+			type="application/javascript"
+			src="chrome://messenger/content/addressbook/abContactsPanel.js"/>
+		<script
+			type="application/x-javascript"
+			src="abResultsPane.js"/>
+		<script
+			type="application/x-javascript"
+			src="chrome://global/content/globalOverlay.js"/>
+		<script
+			type="application/x-javascript"
+			src="namespace.js"/>
+		<script
+			type="application/x-javascript"
+			src="customPrefs.js"/>
+		<script
+			type="application/x-javascript"
+			src="search.js"/>
+		<script
+			type="application/x-javascript"
+			src="messengerOverlay.js"/>
+		<script
+			type="application/x-javascript"
+			src="input_helper.js"/>
+		<script
+			type="application/x-javascript">
+			addEventListener("load", AbPanelLoad, false);
+			addEventListener("load", com.github.shimamu.asbcustom.search.init, false);
+			addEventListener("load", com.github.shimamu.asbcustom.messengerOverlay.init, false);
+		</script>
+		
+		<keyset
+			id="mailKeys">
+			<!-- View Toggle Keys (F4) -->
+			<key
+				id="key_toggleCustomAddressSidebar"
+				keycode="VK_F4"
+				observes="viewCustomAddressSidebar"/>
+
+			<key
+				id="key_properties"
+				modifiers="alt"
+				keycode="VK_RETURN"/>
+		</keyset>
+		
+		<commandset
+			id="CommandUpdate_Contact"
+			commandupdater="true"
+			events="focus,addrbook-select">
+			<command
+				id="cmd_properties"
+				oncommand="goDoCommand('cmd_properties');"/>
+			<command
+				id="cmd_write"
+				oncommand="AbNewMessage();"/>
+			<!--
+				set delete command directly in menuitem properties. 
+				Because it's label is automaticaly setted as 'delete message' if set command.
+			-->
+		</commandset>
+		
+		<broadcasterset
+			id="mailBroadcasters">
+			<broadcaster
+				id="viewCustomAddressSidebar"
+				autoCheck="false"
+				type="checkbox"
+				oncommand="com.github.shimamu.asbcustom.messengerOverlay.toggleSidebar()"/>
+		</broadcasterset>
+		
+		<stringbundleset
+			id="stringbundleset">
+			<stringbundle
+				id="bundle_addressBook"
+				src="chrome://messenger/locale/addressbook/addressBook.properties"/>
+			<stringbundle
+				id="bundle_contactsPanel"
+				src="chrome://contactssidebar/locale/contactsPanel.properties"/>
+		</stringbundleset>
+
+		<splitter
+			id="sidebar-title"
+			persist="hidden"/>
+
+		<vbox
+			id="asbcustomPane"
+			flex="0"
+			sidebarVisible="true"
+			height="200"
+			persist="sidebarVisible height hidden">
+
+			<sidebarheader
+				id="asbcustomAddressPain">
+				<label
+					id="pain-title"
+					value="&asbcustom.addressbookpain.label;"/>
+				<spacer
+					flex="1"/>
+				<toolbarbutton
+					class="ab-closebutton"
+					oncommand="com.github.shimamu.asbcustom.messengerOverlay.toggleSidebar();"/>
+			</sidebarheader>
+
+			<separator
+				class="thin"/>
+
+			<label
+				value="&asbcustom.addressbook.label;"/>
+
+			<hbox
+				id="panel-bar"
+				class="toolbar"
+				align="center">
+				<menulist
+					id="addressbookList" 
+					oncommand="com.github.shimamu.asbcustom.search.onAddressBookListChange();"
+					flex="1"
+					persist="value">
+					<menupopup
+						id="addressbookList-menupopup"
+						class="addrbooksPopup"/>
+				</menulist>
+			</hbox>
+
+			<separator
+				class="thin"/>
+
+			<label
+				value="&asbcustom.searchInput.label;"/>
+
+			<textbox
+				id="peopleSearchInput"
+				type="search"
+				class="searchBox"
+				oninput="com.github.shimamu.asbcustom.search.onSearchTermChange();"
+				oncommand="com.github.shimamu.asbcustom.search.onSearchTermChange();"
+				emptytext="&asbcustom.searchInputEmpty.label;">
+				<button
+					id="asbcustom-input-helper-button"
+					popup="_child"
+					type="menu"
+					style="-moz-binding: url('chrome://asbcustom/content/input_helper.xml#asbcustom_input_helper');">
+					<menupopup
+						onpopupshowing="com.github.shimamu.asbcustom.input_helper.loadMenu(this);"/>
+				</button>
+			</textbox>
+
+			<separator
+				class="thin"/>
+
+			<menupopup
+				id="cardProperties">
+				<menuitem
+					id="writeToItem"
+					label="&newmsgButton.label;"
+					accesskey="&newmsgButton.accesskey;"
+					command="cmd_write"/>
+				<menuseparator/>
+				<menuitem
+					id="deleteItem"
+					label="&deleteAddrBookCard.label;"
+					key="key_delete"
+					oncommand="goDoCommand('cmd_delete');"/>
+				<menuseparator/>
+				<menuitem
+					label="&editContactContext.label;"
+					key="key_properties"
+					command="cmd_properties"/>
+			</menupopup>
+
+			<tree
+				id="abResultsTree"
+				flex="1"
+				context="cardProperties"
+				class="plain"
+				sortCol="GeneratedName"
+				persist="sortCol"
+				onclick="com.github.shimamu.asbcustom.messengerOverlay.asbContactsListOnClick(event);"
+				ondblclick="AbNewMessage();"
+				onselect="this.view.selectionChanged(); document.commandDispatcher.updateCommands('addrbook-select');"
+				onkeypress="com.github.shimamu.asbcustom.messengerOverlay.contactsListOnKeyPress(event);">
+				<treecols>
+					<treecol
+						id="GeneratedName"
+						class="sortDirectionIndicator" 
+						persist="hidden ordinal width sortDirection" 
+						flex="1"
+						label="&GeneratedName.label;"
+						primary="true"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="PrimaryEmail"
+						class="sortDirectionIndicator" 
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&PrimaryEmail.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="_AimScreenName"
+						class="sortDirectionIndicator"
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&ChatName.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="Company"
+						class="sortDirectionIndicator" 
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&Company.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="NickName"
+						class="sortDirectionIndicator"
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&NickName.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="SecondEmail"
+						class="sortDirectionIndicator" 
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&SecondEmail.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="Department"
+						class="sortDirectionIndicator" 
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&Department.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="JobTitle"
+						class="sortDirectionIndicator"
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&JobTitle.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="CellularNumber"
+						class="sortDirectionIndicator" 
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&CellularNumber.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="PagerNumber"
+						class="sortDirectionIndicator"
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&PagerNumber.label;"/>
+					<splitter class="tree-splitter"/>
+					<treecol
+						id="FaxNumber"
+						class="sortDirectionIndicator"
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&FaxNumber.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="HomePhone"
+						class="sortDirectionIndicator" 
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&HomePhone.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<treecol
+						id="WorkPhone"
+						class="sortDirectionIndicator" 
+						persist="hidden ordinal width sortDirection"
+						hidden="true"
+						flex="1"
+						label="&WorkPhone.label;"/>
+					<splitter
+						class="tree-splitter"/>
+					<!-- Dummy -->
+					<treecol
+						id="addrbook"
+						persist="hidden ordinal width sortDirection"
+						flex="1"
+						hidden="true"
+						label="&Addrbook.label;"/>
+				</treecols>
+				<treechildren>
+				</treechildren>
+			</tree>
+		</vbox>
+
+	</vbox>
+
+	<!-- for menu bar -->
+	<menupopup
+		id="view_layout_popup">
+		<menuitem
+			id="menu_showAddressPane"
+			type="checkbox"
+			label="&asbcustom.addressbookpain.label;"
+			oncommand="com.github.shimamu.asbcustom.messengerOverlay.toggleSidebar();"
+			key="key_toggleCustomAddressSidebar"
+			persist="checked"
+			checked="true"/>
+	</menupopup>
+</overlay>

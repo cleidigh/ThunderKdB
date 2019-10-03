@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE page [
+	<!ENTITY
+		% abResultsPaneDTD
+		SYSTEM "chrome://messenger/locale/addressbook/abResultsPane.dtd" >
+	%abResultsPaneDTD;
+	<!ENTITY
+		% asbcustomOptionDTD
+		SYSTEM "chrome://asbcustom/locale/options.dtd" >
+	%asbcustomOptionDTD;
+]>
+
+<overlay
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script
+		type="application/x-javascript">
+		var gLocalString = {
+			GeneratedName  : "&GeneratedName.label;",
+			PrimaryEmail   : "&PrimaryEmail.label;",
+			_AimScreenName : "&ChatName.label;",
+			Company        : "&Company.label;",
+			NickName       : "&NickName.label;",
+			SecondEmail    : "&SecondEmail.label;",
+			Department     : "&Department.label;",
+			JobTitle       : "&JobTitle.label;",
+			CellularNumber : "&CellularNumber.label;",
+			PagerNumber    : "&PagerNumber.label;",
+			FaxNumber      : "&FaxNumber.label;",
+			HomePhone      : "&HomePhone.label;",
+			WorkPhone      : "&WorkPhone.label;"
+		};
+	</script>
+	<script
+		type="application/x-javascript"
+		src="chrome://global/content/nsUserSettings.js"/>
+	<script
+		type="application/x-javascript"
+		src="namespace.js"/>
+	<script
+		type="application/x-javascript"
+		src="customPrefs.js"/>
+	<script
+		type="application/x-javascript"
+		src="search.js"/>
+	<script
+		type="application/x-javascript"
+		src="abContactsPanelOverlay.js"/>
+	<script
+		type="application/x-javascript"
+		src="input_helper.js"/>
+	<script
+		type="application/x-javascript">
+		addEventListener("load", com.github.shimamu.asbcustom.search.init, false);
+	</script>
+		
+	<menulist
+		id="addressbookList"
+		oncommand="com.github.shimamu.asbcustom.search.onAddressBookListChange();"/>
+
+	<textbox
+		id="peopleSearchInput"
+		oncommand="com.github.shimamu.asbcustom.search.onSearchTermChange();"
+		emptytext="&asbcustom.searchInputEmpty.label;">
+		<button
+			id="asbcustom-input-helper-button"
+			popup="_child"
+			type="menu"
+			style="-moz-binding: url('chrome://asbcustom/content/input_helper.xml#asbcustom_input_helper');">
+			<menupopup
+				onpopupshowing="com.github.shimamu.asbcustom.input_helper.loadMenu(this);"/>
+		</button>
+	</textbox>
+</overlay>

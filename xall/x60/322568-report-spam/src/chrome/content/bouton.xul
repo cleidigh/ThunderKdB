@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://reportspam/skin/bouton.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://reportspam/locale/reportspam.dtd">
+
+<overlay id="reportspam_overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://reportspam/content/reportspam.js"/>
+	
+	<commandset>
+		<command id="reportspam_cmd_spam" oncommand="reportspam.report('spam');"/>
+		<command id="reportspam_cmd_phishing" oncommand="reportspam.report('phishing');"/>
+		<command id="reportspam_cmd_ham" oncommand="reportspam.report('ham');"/>
+	</commandset>
+
+	<!--Create the header-view-toolbar's button -->
+	<toolbarpalette id="header-view-toolbar-palette">
+		<toolbarbutton id="reportspam_button_spamham"
+			class="toolbarbutton-1 msgHeaderView-button"
+			command="reportspam_cmd_spam" />
+		<toolbarbutton id="reportspam_button_phishing"
+			class="toolbarbutton-1 msgHeaderView-button"
+			command="reportspam_cmd_phishing" />
+	</toolbarpalette>
+
+	<!--Create the contextual tools -->
+	<popup id="mailContext">
+		<menuitem id="reportspam_menu_spamham" command="reportspam_cmd_spam"/>
+		<menuitem id="reportspam_menu_phishing" command="reportspam_cmd_phishing"/>
+		<menuseparator id="reportspam_separator"/>
+	</popup>
+</overlay>
