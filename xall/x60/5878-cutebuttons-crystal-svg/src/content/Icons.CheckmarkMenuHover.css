@@ -1,0 +1,32 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Adds checkmark icons to menuitems (hover) */
+
+/*uncheckedmark*/
+#appMenuViewHistorySidebar:hover,
+#BMB_bookmarksPopup>#BMB_viewBookmarksSidebar:hover,
+#BMB_bookmarksToolbarPopup>#BMB_viewBookmarksToolbar:hover,
+.subviewbutton[type="checkbox"]:not(toolbarbutton):hover,
+menuitem[type="checkbox"]:hover,
+menuitem[checked="false"]:not([type="radio"]):hover
+{-moz-image-region:rect(160px 48px 176px 32px)!important;list-style-image:url("mosaic.hover.png")!important}
+
+/*uncheckedmark disabled*/
+.subviewbutton[disabled="true"][type="checkbox"]:not(toolbarbutton):hover,
+menuitem[disabled="true"][type="checkbox"]:hover,
+menuitem[disabled="true"][checked="false"]:not([type="radio"]):hover
+{-moz-image-region:rect(336px 96px 352px 80px)!important;list-style-image:url("mosaic.hover.png")!important}
+
+/*checkmark*/
+#appMenuViewHistorySidebar[checked="true"]:hover,
+#BMB_bookmarksPopup>#BMB_viewBookmarksSidebar[checked="true"]:hover,
+#BMB_bookmarksToolbarPopup>#BMB_viewBookmarksToolbar[checked="true"]:hover,
+.subviewbutton[type="checkbox"][checked="true"]:not(toolbarbutton):hover,
+menuitem[type="checkbox"][checked="true"]:not(.unified-nav-current):hover,
+menuitem[checked="true"]:not([type="radio"]):not(.unified-nav-current):not([fsetype]):hover
+{-moz-image-region:rect(176px 160px 192px 144px)!important;list-style-image:url("mosaic.hover.png")!important}
+
+/*checkmark disabled*/
+.subviewbutton[disabled="true"][type="checkbox"][checked="true"]:not(toolbarbutton):hover,
+menuitem[disabled="true"][type="checkbox"][checked="true"]:not(.unified-nav-current):hover,
+menuitem[disabled="true"][checked="true"]:not([type="radio"]):not(.unified-nav-current):not([fsetype]):hover
+{-moz-image-region:rect(368px 16px 384px 0)!important;list-style-image:url("mosaic.hover.png")!important}

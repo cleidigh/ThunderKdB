@@ -1,0 +1,17 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* toolbar button icons for CuteButtons*/
+
+#cutebuttons-toolbar-button,
+toolbar[iconsize="large"]>#wrapper-cutebuttons-toolbar-button>#cutebuttons-toolbar-button,
+toolbar[iconsize="large"]>#cutebuttons-toolbar-button
+{list-style-image:url("chrome://cutebuttons/content/cutebuttons32.png")!important}
+
+#cutebuttons-toolbar-button[cui-areatype="toolbar"],
+toolbar[iconsize="small"]>#wrapper-cutebuttons-toolbar-button>#cutebuttons-toolbar-button,
+toolbar[iconsize="small"]>#cutebuttons-toolbar-button
+{list-style-image:url("chrome://cutebuttons/content/cutebuttons16.png")!important}
+
+/*old GUI*/
+#wrapper-cutebuttons-toolbar-button>#cutebuttons-toolbar-button>.toolbarbutton-icon,
+toolbar[iconsize="large"]>#cutebuttons-toolbar-button>.toolbarbutton-icon
+{max-height:29px!important}

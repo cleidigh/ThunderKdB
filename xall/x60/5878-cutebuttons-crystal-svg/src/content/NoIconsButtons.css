@@ -1,0 +1,9 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Removes all icons from buttons */
+
+.dialog-button:not([icon])>.button-box>.button-icon,
+button:not([type="radio"]):not(.mini-button):not(.searchbar-engine-one-off-item)>.button-box>.button-icon{display:none!important}
+/*
+button.mini-button>.button-box>.button-icon,
+button[type="radio"]>.button-icon{display:-moz-box!important}
+*/

@@ -1,0 +1,77 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Adds checkmark icons to buttons */
+
+/*fixing up list style checkmarks*/
+listitem[type="checkbox"]>listcell>.listcell-check
+{background:transparent!important;border:none!important;-moz-appearance:none!important}
+
+/*remove block background from checkmarks*/
+checkbox:not(treenode-checkbox):not([preference="sf-leftsidestar"])>.checkbox-check,
+checkbox:not(treenode-checkbox):not([preference="sf-leftsidestar"])>.checkbox-spacer-box,
+checkbox:not(treenode-checkbox):not([preference="sf-leftsidestar"])>.checkbox-spacer-box>.checkbox-check
+{background:none transparent!important;border:none!important;-moz-appearance:none!important}
+
+/*fix for Hide Caption Titlebar Plus Lite*/
+checkbox[checked="true"]:not([disabled="true"])>image.checkbox-check
+{box-shadow:none!important}
+/*fix for custom checkboxes*/
+checkbox>.checkbox-label-box>.checkbox-icon,
+/*fix for Gmail Watcher radio*/
+#gmailwatcherOptions-groupSound>hbox>radio>.radio-check-box1,
+/*hides config icon in gmail manager options*/
+#gm-prefs-general-hide-tools-menu>.checkbox-label-box>.checkbox-icon
+{display:none!important}
+
+/*fancy new tree icons blocking mine*/
+#engineList>treechildren:-moz-tree-image,#blocklistsTree>treechildren:-moz-tree-image{width:0!important}
+/*unhide images for findbar buttons*/
+findbar>.findbar-container>.findbar-button>.toolbarbutton-icon{display:-moz-box!important}
+
+/*uncheckedmark*/
+treechildren:-moz-tree-checkbox,
+toolbarbutton.findbar-button[type="checkbox"]:not([checked="true"]),
+listitem[type="checkbox"]:not([checked="true"])>listcell>.listcell-check,
+checkbox:not([checked="true"]):not([preference="sf-leftsidestar"])>.checkbox-spacer-box>.checkbox-check,
+checkbox:not([checked="true"]):not([preference="sf-leftsidestar"])>.checkbox-spacer-box,
+checkbox:not([preference="sf-leftsidestar"])>.checkbox-spacer-box>.checkbox-check,
+checkbox:not([preference="sf-leftsidestar"])>.checkbox-check
+{-moz-image-region:rect(160px 48px 176px 32px)!important;list-style-image:url("mosaic.png")!important}
+
+/*uncheckedmark disabled*/
+toolbarbutton.findbar-button[disabled="true"][type="checkbox"]:not([checked="true"]),
+listitem[type="checkbox"][disabled="true"]:not([checked="true"])>listcell>.listcell-check,
+checkbox[disabled="true"]:not([checked="true"]):not([preference="sf-leftsidestar"])>.checkbox-spacer-box>.checkbox-check,
+checkbox[disabled="true"]:not([checked="true"]):not([preference="sf-leftsidestar"])>.checkbox-spacer-box,
+checkbox[disabled="true"]:not([preference="sf-leftsidestar"])>.checkbox-spacer-box>.checkbox-check,
+checkbox[disabled="true"]:not([preference="sf-leftsidestar"])>.checkbox-check
+{-moz-image-region:rect(336px 96px 352px 80px)!important;list-style-image:url("mosaic.png")!important}
+
+/*checkmark*/
+treechildren:-moz-tree-checkbox(checked),
+toolbarbutton.findbar-button[type="checkbox"][checked="true"],
+listitem[type="checkbox"][checked="true"]>listcell>.listcell-check,
+checkbox[checked="true"]:not([preference="sf-leftsidestar"])>.checkbox-spacer-box>.checkbox-check,
+checkbox[checked="true"]:not([preference="sf-leftsidestar"])>.checkbox-check
+{-moz-image-region:rect(176px 160px 192px 144px)!important;list-style-image:url("mosaic.png")!important}
+
+/*checkmark disabled*/
+toolbarbutton.findbar-button[disabled="true"][type="checkbox"][checked="true"],
+listitem[disabled="true"][type="checkbox"][checked="true"]>listcell>.listcell-check,
+checkbox[disabled="true"][checked="true"]:not([preference="sf-leftsidestar"])>.checkbox-spacer-box>.checkbox-check,
+checkbox[disabled="true"][checked="true"]:not([preference="sf-leftsidestar"])>.checkbox-check
+{-moz-image-region:rect(368px 16px 384px 0)!important;list-style-image:url("mosaic.png")!important}
+
+/*Tree icons*/
+@-moz-document url-prefix(chrome://menuedit){
+    treechildren:-moz-tree-image(visible)
+    {-moz-image-region:rect(176px 160px 192px 144px)!important;list-style-image:url("mosaic.png")!important}
+    treechildren:-moz-tree-image(hidden)
+    {-moz-image-region:rect(160px 48px 176px 32px)!important;list-style-image:url("mosaic.png")!important}
+    }
+
+/*resize options icons*/
+@-moz-document url-prefix("about:preferences"){
+    .checkbox-check,input[type="checkbox"]{width:16px!important;height:16px!important}
+    /*fix for Classic Theme Restorer alt appearance checkmarks*/
+    checkbox>.checkbox-label-box>.checkbox-label{margin-inline-start:0!important;margin-left:2px!important}
+    }

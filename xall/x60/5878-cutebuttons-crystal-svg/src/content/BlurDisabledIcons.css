@@ -1,0 +1,5 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Applies blur to disabled menuitems */
+
+menuitem[disabled="true"]>label{text-shadow:#000 0 0 3px!important}
+menuitem[disabled="true"]:hover>label{text-shadow:#000 0 0 2px!important}

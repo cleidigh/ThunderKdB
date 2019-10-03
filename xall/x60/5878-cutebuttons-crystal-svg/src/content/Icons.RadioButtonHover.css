@@ -1,0 +1,37 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Adds radio icons to buttons (hover) */
+
+/*radio checked*/
+#organizerScopeBar>toolbarbutton[id^="scopeBar"][type="radio"][checked="true"]:hover,
+radio:hover>.radio-spacer-box>.radio-check-box1[selected="true"]>.radio-check-box2>.radio-check,
+radio:hover>.radio-check[selected="true"],
+radio:hover>.radio-check-box1[selected="true"]>.radio-check-box2
+{-moz-image-region:rect(336px 128px 352px 112px)!important;list-style-image:url("mosaic.hover.png")!important}
+
+/*radio checked disabled*/
+radio[disabled="true"]:hover>.radio-spacer-box>.radio-check-box1[selected="true"]>.radio-check-box2>.radio-check,
+radio[disabled="true"]:hover>.radio-check[selected="true"],
+radio[disabled="true"]:hover>.radio-check-box1[selected="true"]>.radio-check-box2
+{-moz-image-region:rect(336px 112px 352px 96px)!important;list-style-image:url("mosaic.hover.png")!important}
+
+/*radio unchecked*/
+#organizerScopeBar>toolbarbutton[id^="scopeBar"][type="radio"]:hover,
+radio:hover>.radio-spacer-box>.radio-check-box1>.radio-check-box2>.radio-check,
+radio:hover>.radio-check,
+radio:hover>.radio-check-box1>.radio-check-box2
+{-moz-image-region:rect(304px 64px 320px 48px)!important;list-style-image:url("mosaic.hover.png")!important}
+
+/*radio unchecked disabled*/
+radio[disabled="true"]:hover>.radio-spacer-box>.radio-check-box1>.radio-check-box2>.radio-check,
+radio[disabled="true"]:hover>.radio-check,
+radio[disabled="true"]:hover>.radio-check-box1>.radio-check-box2
+{-moz-image-region:rect(336px 144px 352px 128px)!important;list-style-image:url("mosaic.hover.png")!important}
+
+/*Tree icons*/
+@-moz-document url-prefix(chrome://inspector){
+    treechildren:-moz-tree-twisty(hover)
+    {-moz-image-region:rect(336px 128px 352px 112px)!important;list-style-image:url("mosaic.hover.png")!important}
+    treechildren:-moz-tree-twisty(open,hover)
+    {-moz-image-region:rect(304px 64px 320px 48px)!important}
+    /*#trDOMTree */
+}

@@ -1,0 +1,11 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Menu fixes for Firefox under OSX */
+
+/*removed :not([checked]) for menuitems, not sure why firefox for OSX has checked=false for half the menuitems*/
+menuitem[id]:not([type="checkbox"]):not(.searchbar-engine-menuitem),
+menuitem[label]:not([type="checkbox"]):not(.searchbar-engine-menuitem)
+{-moz-binding:url("chrome://global/content/bindings/menu.xml#menuitem-iconic")!important}
+
+menuitem[id]:not([type="checkbox"]):not(.searchbar-engine-menuitem)>.menu-iconic-left>image,
+menuitem[label]:not([type="checkbox"]):not(.searchbar-engine-menuitem)>.menu-iconic-left>image
+{-moz-appearance:menuimage!important}

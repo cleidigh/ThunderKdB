@@ -1,0 +1,7 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/*Ugly workaround for a long standing bug?
+If you apply a rule with a list-style-image to certain elements, and change the -moz-appearance.
+it will stay there even if you set list-style-image to "none"
+this is used to toggle -moz-appearance for the image
+*/
+.listcell-check,.checkbox-check{-moz-appearance:none!important}

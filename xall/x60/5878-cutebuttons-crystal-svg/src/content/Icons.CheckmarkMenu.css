@@ -1,0 +1,63 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Adds checkmark icons to menuitems */
+
+/*so we can use custom checkmark icons*/
+/*mmsearch_freesearch=Websearchpro*/
+menuitem[id][checked]:not([fsetype]),
+menuitem[id][type="checkbox"],
+menuitem[label][checked]:not([fsetype]),
+menuitem[label][type="checkbox"]
+{-moz-binding:url("chrome://global/content/bindings/menu.xml#menuitem-iconic")!important}
+
+menuitem[type="checkbox"]>.menu-iconic-left>.menu-iconic-icon,
+menuitem[checked]:not([type="radio"])>.menu-iconic-left>.menu-iconic-icon
+{display:-moz-box!important}
+
+/*hide checkmark icon for PanelUI items*/
+.subviewbutton[type="checkbox"]:not(toolbarbutton){background:none!important}
+/*unhide checkmark icon for PanelUI*/
+menuitem[checked="true"].subviewbutton>.menu-iconic-left{visibility:visible!important}
+
+menuitem[type="checkbox"]>.menu-iconic-left,
+menuitem[checked="true"]:not([fsetype])>.menu-iconic-left,
+menuitem[type="checkbox"]>.menu-iconic-left,
+menuitem[type="checkbox"],
+menuitem[checked]:not([type="radio"]):not([fsetype])>.menu-iconic-left,
+menuitem[checked]:not([type="radio"]):not([fsetype])
+{-moz-appearance:menuitem!important}
+
+menuitem[type="checkbox"]>.menu-iconic-left>.menu-iconic-icon,
+menuitem[checked]:not([type="radio"]):not([fsetype])>.menu-iconic-left>.menu-iconic-icon
+{display:-moz-box!important}
+
+/*uncheckedmark*/
+/*override the PanelUI items added in icons, if not added in icons then looks off if no checkmarks*/
+#appMenuViewHistorySidebar,
+#BMB_bookmarksPopup>#BMB_viewBookmarksSidebar,
+#BMB_bookmarksToolbarPopup>#BMB_viewBookmarksToolbar,
+
+.subviewbutton[type="checkbox"]:not(toolbarbutton),
+menuitem[type="checkbox"],
+menuitem[checked="false"]:not([type="radio"])
+{-moz-image-region:rect(160px 48px 176px 32px)!important;list-style-image:url("mosaic.png")!important}
+
+/*uncheckedmark disabled*/
+.subviewbutton[disabled="true"][type="checkbox"]:not(toolbarbutton),
+menuitem[disabled="true"][type="checkbox"],
+menuitem[disabled="true"][checked="false"]:not([type="radio"])
+{-moz-image-region:rect(336px 96px 352px 80px)!important;list-style-image:url("mosaic.png")!important}
+
+/*checkmark*/
+#appMenuViewHistorySidebar[checked="true"],
+#BMB_bookmarksPopup>#BMB_viewBookmarksSidebar[checked="true"],
+#BMB_bookmarksToolbarPopup>#BMB_viewBookmarksToolbar[checked="true"],
+.subviewbutton[type="checkbox"][checked="true"]:not(toolbarbutton),
+menuitem[type="checkbox"][checked="true"]:not(.unified-nav-current),
+menuitem[checked="true"]:not([type="radio"]):not(.unified-nav-current):not([fsetype])
+{-moz-image-region:rect(176px 160px 192px 144px)!important;list-style-image:url("mosaic.png")!important}
+
+/*checkmark disabled*/
+.subviewbutton[disabled="true"][type="checkbox"][checked="true"]:not(toolbarbutton),
+menuitem[disabled="true"][type="checkbox"][checked="true"]:not(.unified-nav-current),
+menuitem[disabled="true"][checked="true"]:not([type="radio"]):not(.unified-nav-current):not([fsetype])
+{-moz-image-region:rect(368px 16px 384px 0)!important;list-style-image:url("mosaic.png")!important}

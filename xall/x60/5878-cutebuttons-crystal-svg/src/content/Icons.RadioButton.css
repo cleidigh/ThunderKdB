@@ -1,0 +1,68 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Adds radio icons to buttons */
+
+/*so we can use custom radio icons*/
+radio>.radio-check,
+radio>.radio-spacer-box,
+radio>.radio-spacer-box>.radio-check-box1,
+radio>.radio-spacer-box>.radio-check-box1>.radio-check-box2,
+radio>.radio-check-box1>.radio-check-box2,radio>.radio-check-box1
+{width:16px!important;height:16px!important;border:none!important;-moz-appearance:none!important}
+
+radio>.radio-spacer-box>.radio-check-box1>.radio-check-box2,
+radio>.radio-check-box1>.radio-check-box2
+{padding:0!important}
+
+radio>.radio-spacer-box,
+radio>.radio-spacer-box>.radio-check-box1,
+radio>.radio-spacer-box>.radio-check-box1>.radio-check-box2,
+radio>.radio-check-box1
+{background:none transparent!important}
+
+radio>.radio-spacer-box>.radio-check-box1>.radio-check-box2>.radio-check,
+radio>.radio-check
+{border:none!important}
+
+/*fix for Hide Caption Titlebar Plus Lite*/
+radio[selected="true"]:not([disabled="true"])>.radio-check-box1
+{box-shadow:none!important}
+
+
+
+/*radio checked*/
+#organizerScopeBar>toolbarbutton[id^="scopeBar"][type="radio"][checked="true"],
+radio>.radio-spacer-box>.radio-check-box1[selected="true"]>.radio-check-box2>.radio-check,
+radio>.radio-check[selected="true"],
+radio>.radio-check-box1[selected="true"]>.radio-check-box2
+{-moz-image-region:rect(336px 128px 352px 112px)!important;list-style-image:url("mosaic.png")!important}
+
+/*radio checked disabled*/
+radio[disabled="true"]>.radio-spacer-box>.radio-check-box1[selected="true"]>.radio-check-box2>.radio-check,
+radio[disabled="true"]>.radio-check[selected="true"],
+radio[disabled="true"]>.radio-check-box1[selected="true"]>.radio-check-box2
+{-moz-image-region:rect(336px 112px 352px 96px)!important;list-style-image:url("mosaic.png")!important}
+
+/*radio unchecked*/
+#organizerScopeBar>toolbarbutton[id^="scopeBar"][type="radio"],
+radio>.radio-spacer-box>.radio-check-box1>.radio-check-box2>.radio-check,
+radio>.radio-check,
+radio>.radio-check-box1>.radio-check-box2
+{-moz-image-region:rect(304px 64px 320px 48px)!important;list-style-image:url("mosaic.png")!important}
+
+/*radio unchecked disabled*/
+radio[disabled="true"]>.radio-spacer-box>.radio-check-box1>.radio-check-box2>.radio-check,
+radio[disabled="true"]>.radio-check,
+radio[disabled="true"]>.radio-check-box1>.radio-check-box2
+{-moz-image-region:rect(336px 144px 352px 128px)!important;list-style-image:url("mosaic.png")!important}
+
+/*Tree icons*/
+@-moz-document url-prefix(chrome://inspector){
+    /*so it doesn't cut off the icons for tree twistys*/
+    treechildren:-moz-tree-twisty{width:auto!important;height:auto!important}
+
+    treechildren:-moz-tree-twisty
+    {-moz-image-region:rect(336px 128px 352px 112px)!important;list-style-image:url("mosaic.png")!important}
+    treechildren:-moz-tree-twisty(open)
+    {-moz-image-region:rect(304px 64px 320px 48px)!important}
+    /*#trDOMTree */
+}

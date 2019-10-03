@@ -1,0 +1,8 @@
+#togglefolderview {
+	list-style-image: url("chrome://toggle-folder-view/skin/24/button.png");
+	-moz-image-region: rect( 0px 24px 24px 0px);
+}
+toolbar[iconsize='small'] #togglefolderview {
+	list-style-image: url("chrome://toggle-folder-view/skin/16/button.png");
+	-moz-image-region: rect( 0px 16px 16px 0px);
+}

@@ -1,0 +1,9 @@
+content toggle-folder-view chrome/content/
+skin toggle-folder-view classic/1.0 chrome/skin/
+
+style	chrome://global/content/customizeToolbar.xul	chrome://toggle-folder-view/skin/button.css
+style chrome://messenger/content/customizeToolbar.xul chrome://toggle-folder-view/skin/button.css
+
+overlay chrome://messenger/content/messenger.xul chrome://toggle-folder-view/content/toggle-folder-view.xul
+
+locale toggle-folder-view en-US chrome/locale/en-US/

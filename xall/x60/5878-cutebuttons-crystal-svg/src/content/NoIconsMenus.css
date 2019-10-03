@@ -1,0 +1,15 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Removes all icons from menus */
+
+menu[disabled="true"]:not(.menu-iconic)>.menu-right>.menu-iconic-icon,
+menu:not(.menu-iconic)>.menu-iconic-left>.menu-iconic-icon,
+/*
+so we can show the nav menuitems in #contentAreaContextMenu
+:not([aria-label])
+so we don't hide radio/checkbox icons
+:not([type="radio"]):not([type="checkbox"])
+so we don't hide items that have icons from elsewhere
+:not(.menuitem-iconic)
+*/
+menuitem:not(.menuitem-iconic):not([aria-label]):not([type="radio"]):not([type="checkbox"])>.menu-iconic-left>.menu-iconic-icon
+{display:none!important}

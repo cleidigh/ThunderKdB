@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://deletetrashbutton/skin/deletetrashbutton.css" type="text/css"?>
+
+<overlay id="deletetrashbuttonsOverlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<toolbarpalette id="MailToolbarPalette">
+		<toolbarbutton
+			class="toolbarbutton-1"
+			id="DeleteTrashButton"
+			label="Empty Deleted Folder"
+			tooltiptext="Empty Deleted Folder"
+			oncommand="goDoCommand('cmd_emptyTrash'); goDoCommand('cmd_compactFolder');" />
+	</toolbarpalette>
+
+</overlay>

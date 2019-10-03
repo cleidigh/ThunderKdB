@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+    <!--
+      We should have used this UUID instead of an email address. D'oh.
+      <em:id>{d97a09f5-29ff-458c-89f8-b8ce97d9553e}</em:id>
+    -->
+    <em:id>ladar@lavabit.com</em:id>
+    <em:version>2.0.1</em:version>
+		<em:type>2</em:type>
+    <em:bootstrap>false</em:bootstrap>
+
+		<em:targetApplication>
+			<Description>
+				<!--
+					Thunderbird
+				-->
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<!--
+					I hope!
+				-->
+				<em:minVersion>29.0</em:minVersion>
+				<em:maxVersion>60.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+		<em:name>Toggle Folder View</em:name>
+		<!--
+			Remember: when updating the version number below, we need to also update the version string in content/about.xul.
+		-->
+		<em:description>Toggle between "All" and "Favorite" in the folder pane.</em:description>
+		<em:creator>Ladar Levison</em:creator>
+		<em:developer>Ladar Levison</em:developer>
+		<em:homepageURL>https://lavabit.com</em:homepageURL>
+
+    <!-- Front End Integration Hooks (used by Extension Manager)-->
+    <em:aboutURL>chrome://toggle-folder-view/content/about.xul</em:aboutURL>
+		<em:iconURL>chrome://toggle-folder-view/skin/32/button.png</em:iconURL>
+		<em:icon64URL>chrome://toggle-folder-view/skin/64/button.png</em:icon64URL>
+	</Description>
+</RDF>

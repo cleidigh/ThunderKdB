@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:type>2</em:type>
+    <em:id>kkmalek@gmail.com</em:id>
+    <em:name>Folder Filters Button</em:name>
+    <em:version>1.4</em:version>
+    <em:creator>Chris Malek</em:creator>
+    <em:description>Toolbar button to execute Run Filters on Folders from Tools menu</em:description>
+    <em:aboutURL>chrome://filtersbutton/content/about.xul</em:aboutURL>
+    <em:iconURL>chrome://filtersbutton/content/filtersbutton.png</em:iconURL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- thunderbird -->
+        <em:minVersion>1.5</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

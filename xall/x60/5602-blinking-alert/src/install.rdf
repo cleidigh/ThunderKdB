@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>{06f79612-34ef-4f4b-beab-0902b61fcc4b}</em:id>
+    <em:version>1.2.0</em:version>
+    <em:type>2</em:type>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- thunderbird -->
+        <em:minVersion>24.*</em:minVersion>
+        <em:maxVersion>31.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:name>Blinking Alert</em:name>
+    <em:description>Adds extra features to the new-mail alert</em:description>
+    <em:creator>Iwasa Kazmi</em:creator>
+    <em:homepageURL>http://sites.google.com/site/icantlivewithoutit/</em:homepageURL>
+    <em:optionsURL>chrome://blinkingalert/content/options.xul</em:optionsURL>
+  </Description>
+</RDF>

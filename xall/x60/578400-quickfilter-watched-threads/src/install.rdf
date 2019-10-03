@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+
+    <em:id>qfb-watched@tmatz.github.io</em:id>
+    <em:version>1.2.1</em:version>
+    <em:type>2</em:type>
+    <em:bootstrap>true</em:bootstrap>
+
+    <em:targetApplication>
+      <Description>
+        <!-- Thunderbird -->
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>10.0</em:minVersion>
+        <em:maxVersion>64.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:name>QuickFilter Watched Threads</em:name>
+    <em:description>Adds a filter to show only watched threads</em:description>
+    <em:creator>Takashi Matsuda</em:creator>
+    <em:homepageURL>https://github.com/tmatz/thunderbird-qfb-watched-addon</em:homepageURL>
+
+    <em:localized>
+      <Description>
+        <em:locale>ja</em:locale>
+        <em:name>QuickFilter Watched Threads</em:name>
+        <em:description>注目スレッドを表示するフィルタを追加します</em:description>
+      </Description>
+    </em:localized>
+
+  </Description>
+</RDF>

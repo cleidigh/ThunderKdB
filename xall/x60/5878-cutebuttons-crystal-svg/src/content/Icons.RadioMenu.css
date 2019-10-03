@@ -1,0 +1,25 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+/* Adds radio icons to menus */
+
+/*so we can use custom radio icons*/
+menuitem[type="radio"]:not([oncommand^="QLSOverlay."])>.menu-iconic-left,
+menuitem[type="radio"]:not([oncommand^="QLSOverlay."])
+{-moz-appearance:menuitem!important}
+menuitem[type="radio"]:not([oncommand^="QLSOverlay."])>.menu-iconic-left>.menu-iconic-icon
+{display:-moz-box!important}
+
+/*radio checked*/
+menuitem[type="radio"][checked="true"]:not([oncommand^="QLSOverlay."]):not(.unified-nav-current)
+{-moz-image-region:rect(336px 128px 352px 112px)!important;list-style-image:url("mosaic.png")!important}
+
+/*radio checked disabled*/
+menuitem[disabled="true"][type="radio"][checked="true"]:not([oncommand^="QLSOverlay."]):not(.unified-nav-current)
+{-moz-image-region:rect(336px 112px 352px 96px)!important;list-style-image:url("mosaic.png")!important}
+
+/*radio unchecked*/
+menuitem[type="radio"]:not([checked="true"]):not([oncommand^="QLSOverlay."]):not(.unified-nav-current)
+{-moz-image-region:rect(304px 64px 320px 48px)!important;list-style-image:url("mosaic.png")!important}
+
+/*radio unchecked disabled*/
+menuitem[disabled="true"][type="radio"]:not([checked="true"]):not([oncommand^="QLSOverlay."]):not(.unified-nav-current)
+{-moz-image-region:rect(336px 144px 352px 128px)!important;list-style-image:url("mosaic.png")!important}

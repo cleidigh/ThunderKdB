@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="mzrlb-settings.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://ltngremleftbtn/locale/settings.dtd">
+<prefwindow id="LightningReminderLeftButtons_Settings"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  title="&LightningReminderLeftButtons.SettingsTitle;"
+  onload="miczLightningReminderLeftButtonsPref.onLoad();">
+  <prefpane id="LightningReminderLeftButtons_PrefPane">
+    <preferences>
+      <preference id="LightningReminderLeftButtons.SwapButtons"
+        name="extensions.LightningReminderLeftButtons.SwapButtons"
+        type="bool"/>
+    </preferences>
+    <tabbox id="rlb_tabbox">
+      <tabs>
+        <tab label="&LightningReminderLeftButtons.TabSettings.label;"/>
+        <tab label="&LightningReminderLeftButtons.TabInfo.label;"/>
+      </tabs>
+      <tabpanels>
+        <tabpanel id="iqtab" orient="vertical">
+          <label control="symbol" value="&LightningReminderLeftButtons.GlobalDescSettingTab;"/>
+          <label control="symbol" value=" "/>
+          <checkbox id="LightningReminderLeftButtons.SwapButtons_checkbox" label="&LightningReminderLeftButtons.SwapButtons.label;"
+            preference="LightningReminderLeftButtons.SwapButtons" />
+          <label control="symbol" value=" "/>
+        </tabpanel>
+        <tabpanel id="rlbtab_info" orient="vertical">
+	  <description class="mzrlb-desc-big">&LightningReminderLeftButtons.InfoMainDesc;</description>
+          <label control="symbol" value=" "/>
+	  <label value="&LightningReminderLeftButtons.DonateLink;" class="text-link mzrlb-donate" href="http://micz.it/thunderdbird-addon-lightning-reminder-left-buttons/donate/"/>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+  </prefpane>
+  <script type="application/x-javascript" src="chrome://ltngremleftbtn/content/mzrlb-settings.js" />
+</prefwindow>

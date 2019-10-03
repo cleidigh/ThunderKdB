@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>ltngremleftbtn@micz.it</em:id>
+    <em:type>2</em:type>
+    <em:version>2.0.1</em:version>
+    <em:name>Lightning Reminder Left Buttons</em:name>
+    <em:description>Tired to mistakenly press that "Dismiss All" button? Move the Lightning Reminder "Snooze all for" and "Dismiss All" buttons to the left!</em:description>
+    <em:iconURL>chrome://ltngremleftbtn/skin/mzrlb-icon.png</em:iconURL>
+    <em:icon64URL>chrome://ltngremleftbtn/skin/mzrlb-icon64.png</em:icon64URL>
+    <em:creator>Mic (m@micz.it)</em:creator>
+    <em:contributor></em:contributor>
+    <em:optionsURL>chrome://ltngremleftbtn/content/mzrlb-settings.xul</em:optionsURL>
+    <em:localized>
+      <Description>
+        <em:locale>it</em:locale>
+        <em:name>Lightning Reminder Left Buttons</em:name>
+        <em:description>Stanco di premere per errore il pulsante "Elimina tutti"? Sposta a sinistra i pulsanti "Silenza tutti per" ed "Elimina tutti" degli avvisi di Lightning!</em:description>
+        <em:creator>Mic (m@micz.it)</em:creator>
+        <em:contributor></em:contributor>
+        <em:translator>Mic (m@micz.it)</em:translator>
+      </Description>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Lightning Reminder Left Buttons</em:name>
+        <em:description>Sind Sie es leid, ständig aus Versehen den "Alle schließen"-Button zu drücken? Verschieben Sie die Lightning Reminder "Alle verschieben nach" und "Alle schließen"-Buttons nach links!</em:description>
+        <em:creator>Mic (m@micz.it)</em:creator>
+        <em:contributor></em:contributor>
+        <em:translator>Mauri</em:translator>
+      </Description>
+      <Description>
+        <em:locale>zh-CN</em:locale>
+        <em:name>Lightning Reminder Left Buttons</em:name>
+        <em:description>厌倦了经常误碰“全部解除”按钮？移动 Lightining 提醒的“暂缓”和“全部解除”按钮到左边吧！</em:description>
+        <em:creator>Mic (m@micz.it)</em:creator>
+        <em:contributor></em:contributor>
+        <em:translator>yfdyh000</em:translator>
+      </Description>
+      <Description>
+        <em:locale>fr</em:locale>
+        <em:name>Lightning Reminder Left Buttons</em:name>
+        <em:description>Fatigué de cliquer par erreur sur le bouton "Tout désactiver" ? Déplacez les boutons "Report de toutes les alarmes" et "Tout désactiver" de Lightning reminder !</em:description>
+        <em:creator>Mic (m@micz.it)</em:creator>
+        <em:contributor></em:contributor>
+        <em:translator>tojazmin</em:translator>
+      </Description>
+    </em:localized>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
+        <em:minVersion>21.0</em:minVersion>
+        <em:maxVersion>34.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>
