@@ -1,0 +1,10 @@
+content caldav-search content/
+
+skin caldav-search classic/1.0 skin/
+
+locale caldav-search  en locale/en_US/
+locale caldav-search  fr locale/fr_FR/
+locale caldav-search  de locale/de_DE/
+
+
+overlay chrome://calendar/content/calendar-calendars-list.xul chrome://caldav-search/content/caldav-search-menuitem.xul

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<overlay id="castironthunderbirdclub-emailwizard-overlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/javascript" src="chrome://castironthunderbirdclub/content/emailwizard.js" />
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="torbirdy-strings-emailwizard" src="chrome://castironthunderbirdclub/locale/torbirdy.properties"/>
+  </stringbundleset>
+
+  <button id="next_button"
+      oncommand="org.torbirdy.emailwizard.adjustAutoWizard();" />
+
+  <vbox id="mastervbox" flex="1">
+    <groupbox id="torbirdy-protocol-box" class="indent" insertafter="initialSettings">
+
+      <hbox align="center" pack="start">
+        <label value="Protocol:"
+               class="autoconfigLabel"
+               accesskey="o"
+               control="protocol" />
+
+        <menulist id="torbirdy-protocol">
+          <menupopup>
+            <menuitem label="POP3"
+                      value="pop3" />
+            <menuitem label="IMAP"
+                      value="imap" />
+          </menupopup>
+        </menulist>
+
+      </hbox>
+    </groupbox>
+  </vbox>
+
+</overlay>

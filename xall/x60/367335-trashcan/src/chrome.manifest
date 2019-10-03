@@ -1,0 +1,12 @@
+content trashcan chrome/content/
+
+locale trashcan en-US chrome/locales/en-US/
+locale trashcan de chrome/locales/de/
+
+overlay chrome://lightning/content/messenger-overlay-sidebar.xul chrome://trashcan/content/trashcan-overlay.xul
+overlay chrome://calendar/content/calendar-properties-dialog.xul chrome://trashcan/content/trashcan-properties-overlay.xul
+
+component {ac6ad220-90c7-4bbb-bbf6-07580789c7cb} components/garbageMan.js
+contract @mozilla.kewis.ch/garbage-man;1 {ac6ad220-90c7-4bbb-bbf6-07580789c7cb}
+category profile-after-change garbageMan @mozilla.kewis.ch/garbage-man;1
+interfaces components/trashcan.xpt

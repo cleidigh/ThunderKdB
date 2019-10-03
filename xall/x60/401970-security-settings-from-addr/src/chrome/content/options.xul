@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet type="text/css" href="chrome://communicator/skin/"?>
+
+ <!DOCTYPE window SYSTEM "chrome://securitysettingsfromaddressbook/locale/options.dtd">
+
+<prefwindow id="securitysettingsfromaddressbook_options"
+            title="Security Settings from Address Book - Options"
+            windowtype="ext:options"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <prefpane id="saveoptions" label="Backups">
+    <preferences>
+      <preference id="extensions.securitysettingsfromaddressbook.adressbook_field" name="extensions.securitysettingsfromaddressbook.adressbook_field" type="string"/>
+      <preference id="extensions.securitysettingsfromaddressbook.warn_missing" name="extensions.securitysettingsfromaddressbook.warn_missing" type="bool"/>
+    </preferences>
+    <textbox  label="&options_adressbook_field.label;" preference="extensions.securitysettingsfromaddressbook.adressbook_field"/>
+    <checkbox label="&options_warn_missing.label;" preference="extensions.securitysettingsfromaddressbook.warn_missing"/>
+  <!--
+    <setting pref="extensions.securitysettingsfromaddressbook.debug" type="bool" title="print debug messages to console" />
+    <setting pref="extensions.securitysettingsfromaddressbook.enabled" type="bool" title="enable plugin (without restart)" />
+  -->
+  </prefpane>
+</prefwindow>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>securitysettingsfromaddressbook@gwu.at</em:id>
+    <em:name>Security Settings from Address Book</em:name>
+    <em:version>2.0.1</em:version>
+    <em:type>2</em:type>
+    <em:creator>GWu</em:creator>
+    <em:homepageURL>https://addons.mozilla.org/thunderbird/addon/security-settings-from-addr/</em:homepageURL>
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Security Settings from Address Book</em:name>
+        <em:description>Einfaches Add-On, das an Hand der Adressbucheinträge der Empfänger die Sicherheitsoptionen (S/MIME) aktiviert.</em:description>
+        <em:homepageURL>https://addons.mozilla.org/thunderbird/addon/security-settings-from-addr/</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:description>A simple add-on to activate message security (sign/encrypt) when sending or saving messages based on recipients' address book entry's field "Custom1".</em:description>
+
+    <em:optionsURL>chrome://securitysettingsfromaddressbook/content/options.xul</em:optionsURL>
+    
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+   
+  </Description>      
+</RDF>

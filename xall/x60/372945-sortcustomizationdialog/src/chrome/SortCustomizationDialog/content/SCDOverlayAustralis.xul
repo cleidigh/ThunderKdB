@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://SortCustomizationDialog/skin/SortCustomizationDialog.css"?>
+
+<!DOCTYPE window [
+  <!ENTITY % SortCustomizationDialogDTD SYSTEM "chrome://SortCustomizationDialog/locale/scd.dtd">
+  %SortCustomizationDialogDTD;
+]>
+
+<overlay id="SCD_Startup" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://SortCustomizationDialog/content/SCDOverlayAustralis.js"/>
+
+  <hbox id="customization-footer">
+    <spacer flex="1"/>
+    <hbox id="SCD_searchbox" flex="1" align="center" class="customizationmode-button">
+    <label value="&SCDSearch.label;" accesskey="&SCDSearch.key;" control="SCD_TextboxFilter"/>
+    <textbox id="SCD_TextboxFilter" flex="1" type="search" timeout="500"
+             oncommand="org_mozdev_SortCustomizationDialog.Overlay.filterDialog();"/>
+    <label value ="&SCDSearch.sort.label;"
+           accesskey="&SCDSearch.sort.key;"
+           control="SCD_buttonsort"/>
+    <menulist id="SCD_buttonsort"
+              class="customizationmode-button"
+              oncommand="org_mozdev_SortCustomizationDialog.Overlay.updateSort();"
+              value="name" persist="value">
+      <menupopup>
+        <menuitem label="&SCDSearch.off.label;"
+                  value="off"/>
+        <menuitem label="&SCDSearch.name.label;"
+                  value="name"/>
+        <menuitem label="&SCDSearch.addon.label;"
+                  value="addon"/>
+      </menupopup>
+    </menulist>
+    </hbox>
+  </hbox>
+
+</overlay>

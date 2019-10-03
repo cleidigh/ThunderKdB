@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://attachtools/locale/attachtools.dtd">
+<overlay id="attachExtraToolsMainOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/x-javascript" src="chrome://attachtools/content/attachtools.js" />
+<script type="application/x-javascript">
+<![CDATA[
+window.addEventListener("load", function() {
+	if (Array.isArray) 
+		document.getElementById("attachExtraToolsCopy3").collapsed = true;
+	}, false);
+]]>
+</script>
+
+<popup id="attachmentItemContext">
+	<menuitem id="attachExtraToolsCopy" label="&copyAttach;" oncommand="attachExtraToolsObject.copyAttachments(event,false)" />
+</popup>
+
+<popup id="attachmentSaveAllMultipleMenu">
+	<menuitem id="attachExtraToolsCopyAll" label="&copyAllAttach;" oncommand="attachExtraToolsObject.copyAttachments(event,true)" />
+</popup>
+
+<menupopup id="attachmentSaveAllSingleMenu">
+	<menuitem id="attachExtraToolsCopy2" label="&copyAttach;" oncommand="attachExtraToolsObject.copyAttachments(event,false)" />
+</menupopup>
+
+<popup id="attachmentListContext">
+	<menuitem id="attachExtraToolsCopy3" label="&copyAttach;" oncommand="attachExtraToolsObject.copyAttachments(event,false)">
+		<observes element="context-openAttachment" attribute="hidden" />
+	</menuitem>
+
+	<menuitem id="attachExtraToolsCopyAll2" label="&copyAllAttach;" oncommand="attachExtraToolsObject.copyAttachments(event,true)">
+		<observes element="context-saveAllAttachments" attribute="hidden" />
+	</menuitem>
+</popup>
+
+</overlay>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://copyfolder/locale/copyfolder-dialog.dtd">
+
+<dialog
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="copyfolder-summary"
+	title="&dialog_copyfolder_complete.title;"
+	buttons="accept"
+	buttonlabelaccept="&dialog_button_accept.label;"
+	ondialogaccept="close();"
+	onload="onLoad();">
+	
+	<script><![CDATA[
+	function onLoad() {	  
+		if('arguments' in window && window.arguments.length > 0) {
+			document.getElementById('status').innerHTML = window.arguments[0].status;
+			document.getElementById('summary').innerHTML = window.arguments[0].summary;
+		}
+	}
+	]]></script>
+	
+	<vbox><label><html:div id="status" style="font-size: 26px;"></html:div></label></vbox>
+	<vbox><label><html:div id="summary" style="margin-top: 10px;"></html:div></label></vbox>
+
+</dialog>

@@ -1,0 +1,16 @@
+content ldap-groups content/
+
+locale ldap-groups en locale/en_US/
+locale ldap-groups fr locale/fr_FR/
+locale ldap-groups cn locale/en_US/
+locale ldap-groups es locale/en_US/
+locale ldap-groups de locale/en_US/
+locale ldap-groups it locale/en_US/
+
+skin ldap-groups classic/1.0 skin/
+
+overlay chrome://messenger/content/addressbook/addressbook.xul chrome://ldap-groups/content/addressbookOverlay.xul
+
+
+# Gecko 2+
+manifest components/components.manifest

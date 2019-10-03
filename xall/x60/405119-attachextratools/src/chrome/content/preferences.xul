@@ -1,0 +1,135 @@
+<?xml version="1.0"?> 
+<!DOCTYPE overlay SYSTEM "chrome://attachtools/locale/attachtools.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="initPanel();"
+        buttons="accept, cancel"
+        ondialogaccept="savePrefs();"
+        title="&prefWindowTitle;">
+
+  <script type="application/x-javascript">
+ <![CDATA[
+	var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+
+	function setComplexPref(prefname,value) {
+		if (prefs.setStringPref) {
+			prefs.setStringPref(prefname,value);
+		}
+		else {
+			var str = Components.classes["@mozilla.org/supports-string;1"]
+				.createInstance(Components.interfaces.nsISupportsString);
+			str.data = value;
+			prefs.setComplexValue(prefname, Components.interfaces.nsISupportsString, str);
+		}		
+	}
+
+ 	function initPanel()  {
+		document.getElementById("addOriginalName").checked = prefs.getBoolPref("extensions.attachextratools.eml.use_original_name");
+		document.getElementById("resetCopyList").checked = prefs.getBoolPref("extensions.attachextratools.reset_copy_list");
+		document.getElementById("realSize").checked = prefs.getBoolPref("extensions.attachextratools.realsize_show");
+		document.getElementById("selectFolder").checked = prefs.getBoolPref("extensions.attachextratools.select_send_folder");
+		if (prefs.getStringPref)	
+			var dirs = prefs.getStringPref("extensions.attachextratools.fav_directories");
+		else
+			var dirs = prefs.getComplexValue("extensions.attachextratools.fav_directories",Components.interfaces.nsISupportsString).data;
+		if (dirs.length > 0) {
+			var dirArray = dirs.split(" ");
+			for (var i=0;i<dirArray.length;i++) {
+				if (i == 5)
+					break;
+				document.getElementById("favDir"+i.toString()).value = decodeURIComponent(dirArray[i]);
+			}
+		}
+		if (window.arguments && window.arguments[0]) {
+			document.getElementById("addOriginalName").hidden = "true";
+			document.getElementById("resetCopyList").hidden = "true";
+			document.getElementById("caption1").hidden = "true";
+		}
+	}
+    
+	function savePrefs()  {
+		prefs.setBoolPref("extensions.attachextratools.eml.use_original_name", document.getElementById("addOriginalName").checked);
+		prefs.setBoolPref("extensions.attachextratools.realsize_show", document.getElementById("realSize").checked);
+		prefs.setBoolPref("extensions.attachextratools.select_send_folder", document.getElementById("selectFolder").checked);
+		var reset = document.getElementById("resetCopyList").checked;
+		prefs.setBoolPref("extensions.attachextratools.reset_copy_list", reset);
+		if (reset)
+			prefs.setCharPref("extensions.attachextratools.url_attachment","");
+		var dirs = "";
+		for (var i=0;i<5;i++) {
+			var value = document.getElementById("favDir"+i.toString()).value;
+			if (value.length == 0 || ! value.match(/\w/))
+				continue;
+			if (dirs.length == 0)
+				dirs = encodeURIComponent(value);
+			else
+				dirs = dirs + " " + encodeURIComponent(value);
+		}
+		setComplexPref("extensions.attachextratools.fav_directories", dirs);
+	}
+
+	function pickFile(el) {
+		var nsIFilePicker = Components.interfaces.nsIFilePicker;
+		var fp = Components.classes["@mozilla.org/filepicker;1"]
+		.createInstance(nsIFilePicker);
+		fp.init(window, "", nsIFilePicker.modeGetFolder);
+		if (fp.open) {
+			fp.open(function (rv) {
+				if (rv==nsIFilePicker.returnOK) {
+					var box = el.previousSibling;
+					box.value = fp.file.path;				
+				}
+			});			
+		}
+		else {					
+			var res = fp.show();
+		 	if (res == nsIFilePicker.returnOK) {
+				var box = el.previousSibling;
+				box.value = fp.file.path;
+			}
+		}
+	}
+  ]]>
+  </script>
+
+<groupbox>
+	<caption label="&misc;" id="caption1" />   
+	<hbox align="center">
+		<checkbox id="addOriginalName" label="&addOriginalName.label;" /> 
+	</hbox>
+	<hbox align="center">
+		<checkbox id="resetCopyList" label="&resetCopyList.label;" /> 
+	</hbox>
+	<hbox align="center">
+		<checkbox id="realSize" label="&realSize.label;" /> 
+	</hbox>
+	<hbox align="center">
+		<checkbox id="selectFolder" label="&selectFolder.label;" /> 
+	</hbox>
+</groupbox>
+
+<groupbox>
+	<caption label="&favDirs;" />   
+	<hbox align="center">
+		<textbox id="favDir0" value="" size="70" />
+		<button label="&browse;" oncommand="pickFile(this)" />
+	</hbox>
+	<hbox align="center">
+		<textbox id="favDir1" value="" size="70" />
+		<button label="&browse;" oncommand="pickFile(this)" />
+	</hbox>
+	<hbox align="center">
+		<textbox id="favDir2" value="" size="70" />
+		<button label="&browse;" oncommand="pickFile(this)" />
+	</hbox>
+	<hbox align="center">
+		<textbox id="favDir3" value="" size="70" />
+		<button label="&browse;" oncommand="pickFile(this)" />
+	</hbox>
+	<hbox align="center">
+		<textbox id="favDir4" value="" size="70" />
+		<button label="&browse;" oncommand="pickFile(this)" />
+	</hbox>
+</groupbox>
+</dialog>

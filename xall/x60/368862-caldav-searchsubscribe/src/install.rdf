@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+	<em:id>caldav-search@nomail</em:id>
+	<em:name>CALDAV - Search/Subscribe</em:name>
+	<em:type>2</em:type>
+    <em:version>0.4.1</em:version>
+	<em:unpack>true</em:unpack>
+    <em:iconURL>chrome://calendar/skin/cal-icon32.png</em:iconURL>
+	<em:creator>diesmo (partoche@yahoo.com)</em:creator>
+	<em:developer>diesmo</em:developer>
+	<em:contributor>Ulle Mehner (ulle@o2online.de)</em:contributor>
+	<em:homepageURL>http://xul.addons.free.fr/caldav-search/</em:homepageURL>
+	<em:description><![CDATA[Add CalDAV search & subscribe feature to Lightning]]></em:description>
+	
+	<em:targetApplication>
+      <Description>
+        <!-- Thunderbird -->
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>60.0</em:minVersion>
+        <em:maxVersion>61.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+	
+	<em:localized>
+      <Description>
+		<em:locale>en</em:locale>
+		<em:creator>diesmo (partoche@yahoo.com)</em:creator>
+		<em:developer>diesmo</em:developer>
+		<em:homepageURL>http://xul.addons.free.fr/caldav-search/</em:homepageURL>
+        <em:name>CALDAV - Search/Subscribe</em:name>
+        <em:description><![CDATA[Add CalDAV search & subscribe feature to Lightning]]></em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>fr</em:locale>
+		<em:creator>diesmo (partoche@yahoo.com)</em:creator>
+		<em:developer>diesmo</em:developer>
+		<em:homepageURL>http://xul.addons.free.fr/caldav-search/</em:homepageURL>
+        <em:name>CALDAV - Recherche/Abonnement</em:name>
+        <em:description><![CDATA[Permet de rechercher et de s'abonner aux agendas pour un serveur CalDAV.]]></em:description>
+      </Description>
+    </em:localized>
+  </Description>
+</RDF>

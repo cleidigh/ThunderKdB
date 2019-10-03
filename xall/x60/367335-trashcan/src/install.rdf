@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this file,
+   - You can obtain one at http://mozilla.org/MPL/2.0/.
+   - Portions Copyright (C) Philipp Kewisch, 2012 -->
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+
+    <em:id>trashcan@mozilla.kewis.ch</em:id>
+    <em:version>1.1</em:version>
+    <em:type>2</em:type>
+
+    <!-- Target Application this extension can install into,
+         with minimum and maximum supported versions. -->
+    <em:targetApplication>
+      <Description>
+        <!-- Thunderbird -->
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>3.1</em:minVersion>
+        <em:maxVersion>13.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Mülleimer</em:name>
+        <em:description>Stellt für Lightning einen Mülleimer zur Verfügung</em:description>
+      </Description>
+    </em:localized>
+
+    <!-- Front End MetaData -->
+    <em:name>Trashcan</em:name>
+    <em:description>Provides a Trashcan for Lightning</em:description>
+    <em:creator>Philipp Kewisch</em:creator>
+    <em:homepageURL>http://mozilla.kewis.ch/</em:homepageURL>
+    <em:iconURL>chrome://trashcan/content/trashcan.png</em:iconURL>
+  </Description>
+</RDF>

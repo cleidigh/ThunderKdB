@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet type="text/css" href="chrome://communicator/skin/"?>
+
+<!DOCTYPE window SYSTEM "chrome://encryptifpossible/locale/options.dtd">
+
+<prefwindow id="encryptifpossible_options"
+            title="Encrypt if possible - Options"
+            windowtype="ext:options"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <prefpane id="saveoptions" label="Backups">
+    <preferences>
+      <preference id="extensions.encryptifpossible.auto_encrypt_ask" name="extensions.encryptifpossible.auto_encrypt_ask" type="bool"/>
+      <preference id="extensions.encryptifpossible.auto_sign" name="extensions.encryptifpossible.auto_sign" type="bool"/>
+      <preference id="extensions.encryptifpossible.warn_no_encrypt" name="extensions.encryptifpossible.warn_no_encrypt" type="int"/>
+    </preferences>
+    <checkbox label="&auto_encrypt_ask.label;" preference="extensions.encryptifpossible.auto_encrypt_ask"/>
+    <checkbox label="&auto_sign_ask.label;" preference="extensions.encryptifpossible.auto_sign"/>
+    <radiogroup label="&warn_no_encrypt.label;" preference="extensions.encryptifpossible.warn_no_encrypt">
+      <radio value="0" label="&warn_no_encrypt_none.label;"/>
+      <radio value="1" label="&warn_no_encrypt_mixed.label;"/>
+      <radio value="2" label="&warn_no_encrypt_all.label;"/>
+    </radiogroup>
+  </prefpane>
+</prefwindow>
+

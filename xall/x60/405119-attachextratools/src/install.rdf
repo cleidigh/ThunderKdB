@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<Description about="urn:mozilla:install-manifest">
+		<em:type>2</em:type>
+		<em:id>attachextratools@kaosmos.nnp</em:id>
+		<em:homepageURL>https://freeshell.de/~kaosmos/index-en.html</em:homepageURL>
+		<em:creator>Paolo Kaosmos</em:creator>
+		<em:optionsURL>chrome://attachtools/content/preferences.xul</em:optionsURL>
+		<em:name>AttachExtraTools</em:name>
+		<em:version>1.9.0</em:version>
+		<em:localized>
+			<Description>
+				<em:locale>en-US</em:locale>
+				 <em:name>AttachExtraTools</em:name>
+				<em:description>Adds some tools to attach files</em:description>
+			</Description>
+		</em:localized>
+		<em:localized>
+			<Description>
+				<em:locale>it-IT</em:locale>
+				<em:name>AttachExtraTools</em:name>
+				<em:description>Aggiunge alcune opzioni in più per allegare file</em:description>
+			</Description>
+			<Description>
+				<em:translator>Bigpapa</em:translator>
+				<em:locale>fr-FR</em:locale>
+				<em:name>AttachExtraTools</em:name>
+				<em:description>Fourni des options supplémentaires pour ajouter des pièces jointes facilement. Ce peut être des messages sélectionnés dans le panneau des messages, des pièces jointes à d'autres messages, des fichiers et dossiers par copier/coller depuis le système de fichiers, à partir de 5 dossiers favoris ou en effectuant au préalable leur compression au format ZIP.</em:description>
+			</Description>
+		</em:localized>
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>14.0</em:minVersion>
+				<em:maxVersion>60.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+	</Description>
+
+</RDF>

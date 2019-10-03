@@ -1,0 +1,24 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet href="chrome://ldap-groups/skin/style.css" type="text/css"?>
+
+<!DOCTYPE overlay
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://ldap-groups/locale/ldap-groups.dtd" >  %dtd1;
+]>  
+
+<overlay id="lgmAddressbookOverlay"  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script type="text/javascript" src="chrome://ldap-groups/content/utils.js" />
+	<script type="text/javascript" src="chrome://ldap-groups/content/addressbookOverlay.js" />
+    <script type="text/javascript" src="chrome://ldap-groups/content/options.js"></script>
+		<vbox id="CardViewInnerBox" collapsed="true">
+		<hbox id="cvbGroupMembers" insertafter="cvbAddresses,CardTitle" flex="1" collapsed="false">
+		<vbox>
+			<hbox class="bubble">
+			<description value="&ldap-groups.overlay.description;" />
+			<button  label="&ldap-groups.members-dialog.button;" oncommand="OpenMembersDialog()" />
+			</hbox>
+		</vbox>
+		</hbox>
+		</vbox>
+</overlay>

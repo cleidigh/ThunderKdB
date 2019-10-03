@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://attachtools/locale/attachtools.dtd">
+<overlay id="attachExtraToolsComposeOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		 
+<script type="application/x-javascript" src="chrome://attachtools/content/attachtools.js" />
+<script type="application/x-javascript" src="chrome://attachtools/content/deleteOnSend.js" />
+
+<keyset id="tasksKeys">
+	<key id="key_pasteAttach" key="*" oncommand="attachExtraToolsObject.attachFile(event)" modifiers="accel" />
+</keyset>
+
+<vbox id="attachments-box">
+	<checkbox label="&delAttach;" id="AETdeleteOnSend" />
+</vbox>
+
+<toolbarbutton id="button-attach">
+	<menupopup id="button-attachPopup">
+		<menuseparator />
+		<menu label="&attachFav;" accesskey="&key0;">
+			<menupopup  id="attachExtraToolsPopup1" onpopupshowing="attachExtraToolsObject.fillPopup(this);">
+				<menuseparator id="attachExtraToolsPopup1sep" class="nodelete" />
+				<menuitem label="&openList;" oncommand="attachExtraToolsObject.openList(event)" class="nodelete" />
+			</menupopup>
+		</menu>
+		<menuseparator />
+		<menuitem label="&selMessages;"  oncommand="attachExtraToolsObject.attachMessages(event)" accesskey="&key1;" />
+		<menuitem label="&pasteFile;" oncommand="attachExtraToolsObject.attachFile(event)" accesskey="&key2;" acceltext="CTRL+*"/>
+		<menuitem label="&pasteAttach;" oncommand="attachExtraToolsObject.attachAttachments(event)" accesskey="&key5;" />
+		<menuseparator />
+		<menuitem label="&zipAttachment;" oncommand="attachExtraToolsObject.addZipFiles(event)" accesskey="&key3;"/>
+		<menuitem label="&zipDirectory;" oncommand="attachExtraToolsObject.addZipDir(event)" accesskey="&key4;" />
+		<menuseparator />
+		<menuitem id="AETmaxSize" label="&AETmaxSizeLabel;" oncommand="attachExtraToolsObject.maxSize(event)" accesskey="&key6;" />
+	</menupopup>
+</toolbarbutton>
+
+<popup id="msgComposeAttachmentContext">
+	<menuseparator />
+		<menu label="&addAttachFav;" accesskey="&key0;">
+			<menupopup  id="attachExtraToolsPopup2" onpopupshowing="attachExtraToolsObject.fillPopup(this);"  onpopuphidden="attachExtraToolsObject.removeNoElement();"> 
+				<menuseparator id="attachExtraToolsPopup2sep" class="nodelete" />
+				<menuitem label="&openList;" oncommand="attachExtraToolsObject.openList(event)" class="nodelete" />
+			</menupopup>
+		</menu>
+	<menuseparator />
+	<menuitem label="&addSelMessages;"  oncommand="attachExtraToolsObject.attachMessages(event)" accesskey="&key1;" />
+	<menuitem label="&addPasteFile;" oncommand="attachExtraToolsObject.attachFile(event)" accesskey="&key2;" />
+	<menuitem label="&addPasteAttach;" oncommand="attachExtraToolsObject.attachAttachments(event)" accesskey="&key5;" />
+	<menuseparator />
+	<menuitem label="&addZipAttachment;" oncommand="attachExtraToolsObject.addZipFiles(event)" accesskey="&key3;" />
+	<menuitem label="&addZipDirectory;" oncommand="attachExtraToolsObject.addZipDir(event)" accesskey="&key4;" />
+</popup>
+
+<menupopup id="menu_AttachPopup">
+	<menuseparator />
+		<menu label="&attachFav;" accesskey="&key0;">
+			<menupopup  id="attachExtraToolsPopup3" onpopupshowing="attachExtraToolsObject.fillPopup(this);">
+				<menuseparator id="attachExtraToolsPopup3sep" class="nodelete" />
+				<menuitem label="&openList;" oncommand="attachExtraToolsObject.openList(event)" class="nodelete" />
+			</menupopup>
+		</menu>
+	<menuseparator />
+	<menuitem label="&selMessages;"  oncommand="attachExtraToolsObject.attachMessages(event)" accesskey="&key1;" />
+	<menuitem label="&pasteFile;" oncommand="attachExtraToolsObject.attachFile(event)" accesskey="&key2;" />
+	<menuitem label="&pasteAttach;" oncommand="attachExtraToolsObject.attachAttchments(event)" accesskey="&key5;" />
+	<menuseparator />
+	<menuitem label="&zipAttachment;" oncommand="attachExtraToolsObject.addZipFiles(event)" accesskey="&key3;" />
+	<menuitem label="&zipDirectory;" oncommand="attachExtraToolsObject.addZipDir(event)" accesskey="&key4;" />	
+</menupopup>
+
+<menupopup id="msgComposeAttachmentListContext">
+	<menuseparator />
+		<menu label="&addAttachFav;" accesskey="&key0;">
+			<menupopup  id="attachExtraToolsPopup4" onpopupshowing="attachExtraToolsObject.fillPopup(this);">
+				<menuseparator id="attachExtraToolsPopup4sep" class="nodelete" />
+				<menuitem label="&openList;" oncommand="attachExtraToolsObject.openList(event)" class="nodelete" />
+			</menupopup>
+		</menu>
+	<menuseparator />
+	<menuitem label="&addSelMessages;"  oncommand="attachExtraToolsObject.attachMessages(event)" accesskey="&key1;" />
+	<menuitem label="&addPasteFile;" oncommand="attachExtraToolsObject.attachFile(event)" accesskey="&key2;" />
+	<menuitem label="&addPasteAttach;" oncommand="attachExtraToolsObject.attachAttachments(event)" accesskey="&key5;" />
+	<menuseparator />
+	<menuitem label="&addZipAttachment;" oncommand="attachExtraToolsObject.addZipFiles(event)" accesskey="&key3;" />
+	<menuitem label="&addZipDirectory;" oncommand="attachExtraToolsObject.addZipDir(event)" accesskey="&key4;" />
+</menupopup>
+
+<menupopup id="msgComposeAttachmentItemContext">
+	<menuseparator />
+	<menuitem label="&moveUp;" oncommand="attachExtraToolsObject.move(1)" />
+	<menuitem label="&moveDown;" oncommand="attachExtraToolsObject.move(-1)" />
+</menupopup>
+</overlay>
+

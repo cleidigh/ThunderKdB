@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>encryptifpossible@gwu.at</em:id>
+    <em:name>Encrypt if possible</em:name>
+    <em:version>2.0.3</em:version>
+    <em:type>2</em:type>
+    <em:creator>GWu</em:creator>
+    <em:homepageURL>https://addons.mozilla.org/thunderbird/addon/encrypt-if-possible/</em:homepageURL>
+
+    
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Encrypt if possible</em:name>
+        <em:description>Setzt Sicherheitsoption "Nachricht verschlüsseln" (S/MIME), wenn für Empfänger ein X509 Zertifikat gefunden wird.</em:description>
+        <em:homepageURL>https://addons.mozilla.org/thunderbird/addon/encrypt-if-possible/</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:description>Sets message security option "encrypt message", if valid X509 certificates are found for recipients.</em:description>
+
+    <em:optionsURL>chrome://encryptifpossible/content/options.xul</em:optionsURL>
+    
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+   
+  </Description>      
+</RDF>

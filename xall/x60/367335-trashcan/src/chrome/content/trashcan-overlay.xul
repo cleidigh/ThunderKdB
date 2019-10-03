@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this file,
+   - You can obtain one at http://mozilla.org/MPL/2.0/.
+   - Portions Copyright (C) Philipp Kewisch, 2012 -->
+
+<!DOCTYPE overlay SYSTEM "chrome://trashcan/locale/trashcan.dtd">
+
+<overlay id="trashcan-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://trashcan/content/trashcan-overlay.js"/>
+
+  <menupopup id="calendar-item-context-menu">
+    <menuitem id="trashcan-restore-item-menuitem"
+              label="&trashcan.restoreItem;"
+              insertafter="calendar-item-context-menu-delete-menuitem"
+              oncommand="trashcanExtension.restoreItems(currentView().getSelectedItems({}))"/>
+  </menupopup>
+  <menupopup id="taskitem-context-menu">
+    <menuitem id="trashcan-restore-task-menuitem"
+              label="&trashcan.restoreItem;"
+              insertafter="task-context-menu-delete"
+              oncommand="trashcanExtension.restoreItems(getSelectedTasks(event))"/>
+  </menupopup>
+  <menupopup id="agenda-menupopup">
+    <menuitem id="trashcan-restore-agenda-menuitem"
+              insertbefore="calendar-today-pane-menu-attendance-menu"
+              label="&trashcan.restoreItem;"
+              oncommand="trashcanExtension.restoreItems(agendaListbox.getSelectedItems({}))"/>
+  </menupopup>
+  <menupopup id="list-calendars-context-menu">
+    <menuitem id="trashcan-empty-trash"
+              label="&trashcan.emptyTrash;"
+              insertafter="list-calendars-context-delete"
+              oncommand="trashcanExtension.emptyTrash()"
+              hidden="true"/>
+  </menupopup>
+   
+</overlay>

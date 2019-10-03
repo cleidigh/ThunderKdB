@@ -1,0 +1,41 @@
+#members-tree  treechildren::-moz-tree-image(user) 
+{
+  list-style-image: url("chrome://ldap-groups/skin/icons/user.png");
+  margin-right: 5px;
+}
+#members-tree  treechildren::-moz-tree-image(external) 
+{
+  list-style-image: url("chrome://ldap-groups/skin/icons/user.png");
+  margin-right: 5px;
+}
+#members-tree  treechildren::-moz-tree-image(group) 
+{
+  list-style-image: url("chrome://ldap-groups/skin/icons/group.png");
+  margin-right: 5px;
+}
+
+.bubble {
+  background:#eee url("chrome://ldap-groups/skin/icons/group.png") no-repeat 10px 20px;
+  color:#555555;
+  font-weight:bold;
+  margin:0px;
+  margin-left:80px;
+  margin-bottom:80px;
+  /*width:496px;*/
+  width: 80%;
+  height:60px;
+  padding-top:15px;
+  text-indent:30px;
+  display:block;
+  border:solid 1px;
+  border-radius: 1em;
+}
+
+.status-icon {
+  list-style-image: url("chrome://global/skin/icons/notloading_16.png");
+}
+
+.status-icon[busy="true"] {
+  list-style-image: url("chrome://global/skin/icons/loading_16.png");
+}
+

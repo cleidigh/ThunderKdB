@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://hyperactive/skin/progress.css" type="text/css"?>
+
+<dialog
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  onload="hyperactiveProgressDialog.onLoad()"
+  ondialogaccept="hyperactiveProgressDialog.onSend()"
+  ondialogcancel="hyperactiveProgressDialog.onCancel()"
+  >
+
+  <script type="application/javascript" src="progressDialog.js" />
+
+  <hbox id="outerBox">
+    <image id="progressIcon" />
+    <vbox id="mainBox">
+      <vbox id="progressPanel">
+        <label id="titleLabel" />
+        <progressmeter mode="undetermined" />
+        <progressmeter id="progressBar" mode="determined" value="0" />
+      </vbox>
+    </vbox>
+  </hbox>
+</dialog>

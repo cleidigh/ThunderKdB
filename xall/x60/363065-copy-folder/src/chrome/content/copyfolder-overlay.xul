@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://copyfolder/locale/copyfolder-overlay.dtd">
+
+<overlay id="copyfolder-overlay"
+	xmlns:nc="http://home.netscape.com/NC-rdf#"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<window id="messengerWindow">
+		<script type="application/javascript" src="chrome://copyfolder/content/copyfolder.js"/>
+
+		<menupopup id="folderPaneContext">
+			<menu id="folderPaneContext-copyfolder"
+				label="&menu_copy_to.label;"
+				accesskey="c"
+				insertafter="folderPaneContext-sep2"
+				sortResource="http://home.netscape.com/NC-rdf#FolderTreeName"
+				sortDirection="ascending"
+				datasources="rdf:null">
+				<menupopup id="menu_copyPopup">
+					<menu label="&menu_recent_folders.label;"
+						accesskey="r"
+						sortResource="http://home.netscape.com/NC-rdf#FolderTreeName"
+						sortDirection="ascending"
+						datasources="rdf:mailnewsrecentfolders"
+						ref="mailnewsrecentfolders:/">
+						<menupopup/>
+						<template>
+							<rule nc:CanFileMessages="true">
+								<menupopup id="menu_copyRecentPopup">
+									<menuitem uri="..." class="folderMenuItem menuitem-iconic"
+										label="rdf:http://home.netscape.com/NC-rdf#FolderTreeSimpleName"
+										oncommand="com.crunchmod.copyfolder.copyDialog(event.target)"
+										SpecialFolder="rdf:http://home.netscape.com/NC-rdf#SpecialFolder"
+										BiffState="rdf:http://home.netscape.com/NC-rdf#BiffState"
+										IsServer="rdf:http://home.netscape.com/NC-rdf#IsServer"
+										IsSecure="rdf:http://home.netscape.com/NC-rdf#IsSecure"
+										ServerType="rdf:http://home.netscape.com/NC-rdf#ServerType"/>
+								</menupopup>
+							</rule>
+						</template>
+					</menu>
+					<menuseparator/>
+				</menupopup>
+				
+				<template>
+					<rule nc:CanFileMessages="true" iscontainer="true" isempty="false">
+						<menupopup id="menu_copyFolderMenuPopup3">
+							<menu uri="..."  class="folderMenuItem menu-iconic" label="rdf:http://home.netscape.com/NC-rdf#Name"
+								SpecialFolder="rdf:http://home.netscape.com/NC-rdf#SpecialFolder"
+								BiffState="rdf:http://home.netscape.com/NC-rdf#BiffState"
+								IsServer="rdf:http://home.netscape.com/NC-rdf#IsServer"
+								IsSecure="rdf:http://home.netscape.com/NC-rdf#IsSecure"
+								ServerType="rdf:http://home.netscape.com/NC-rdf#ServerType">
+								<menupopup>
+									<menuitem label="&menu_copy_here.label;"
+										accesskey="h"
+										oncommand="com.crunchmod.copyfolder.copyDialog(event.target.parentNode.parentNode)"/>
+									<menuseparator/>
+								</menupopup>
+							</menu>
+						</menupopup>
+					</rule>
+					<rule nc:CanFileMessagesOnServer="false">
+						<!-- don't show servers (nntp & any others) which does not allow message filing -->
+						<!-- File, Move & Copy menus -->
+					</rule>
+					<rule nc:CanFileMessages="false" iscontainer="true" isempty="false">
+						<!-- note, there is no "file here" -->
+						<menupopup id="menu_copyFolderMenuPopup4">
+							<menu uri="..."  class="folderMenuItem menu-iconic" label="rdf:http://home.netscape.com/NC-rdf#Name"
+								SpecialFolder="rdf:http://home.netscape.com/NC-rdf#SpecialFolder"
+								BiffState="rdf:http://home.netscape.com/NC-rdf#BiffState"
+								IsServer="rdf:http://home.netscape.com/NC-rdf#IsServer"
+								IsSecure="rdf:http://home.netscape.com/NC-rdf#IsSecure"
+								ServerType="rdf:http://home.netscape.com/NC-rdf#ServerType">
+								<menupopup>
+									<menuitem label="&menu_copy_here.label;"
+										accesskey="h"
+										oncommand="com.crunchmod.copyfolder.copyDialog(event.target.parentNode.parentNode)"/>
+									<menuseparator/>
+								</menupopup>
+							</menu>
+						</menupopup>
+					</rule>
+					<rule nc:CanFileMessages="true">
+						<menupopup>
+							<menuitem uri="..." class="folderMenuItem menuitem-iconic" label="rdf:http://home.netscape.com/NC-rdf#Name"
+								oncommand="com.crunchmod.copyfolder.copyDialog(event.target)"
+								SpecialFolder="rdf:http://home.netscape.com/NC-rdf#SpecialFolder"
+								BiffState="rdf:http://home.netscape.com/NC-rdf#BiffState"
+								IsServer="rdf:http://home.netscape.com/NC-rdf#IsServer"
+								IsSecure="rdf:http://home.netscape.com/NC-rdf#IsSecure"
+								ServerType="rdf:http://home.netscape.com/NC-rdf#ServerType"/>
+						</menupopup>
+					</rule>
+				</template>
+			</menu>
+		</menupopup>
+		
+		<statusbar id="status-bar">
+			<hbox id="statusTextBox">
+				<statusbarpanel id="copyfolder-status"
+					label=""
+					collapsed="true"
+					insertafter="statusText" />
+			</hbox>
+		</statusbar>
+
+	</window>
+
+</overlay>

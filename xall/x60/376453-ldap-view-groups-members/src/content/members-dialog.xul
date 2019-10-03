@@ -1,0 +1,80 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://ldap-groups/skin/style.css" type="text/css"?>
+
+<!DOCTYPE dialog
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://ldap-groups/locale/ldap-groups.dtd" >  %dtd1;
+]>  
+
+<dialog id="testtt" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		persist="screenX screenY width height"  onunload="LDAPGroupsMemberDialog.onUnload()" onload="LDAPGroupsMemberDialog.onLoad()"
+		title="&ldap-groups.members-dialog.title;"  buttons="accept" width="600px" height="500px">
+	<script type="text/javascript" src="chrome://messenger/content/addressbook/abCommon.js"></script>
+	<script type="text/javascript" src="chrome://ldap-groups/content/helpers/ldap-connection.js"></script>
+	<script type="text/javascript" src="chrome://ldap-groups/content/helpers/ldap-message-listener.js"></script>
+	<script type="text/javascript" src="chrome://ldap-groups/content/utils.js"></script>
+	<script type="text/javascript" src="chrome://ldap-groups/content/options.js"></script>
+	<script type="text/javascript" src="chrome://ldap-groups/content/members-dialog.js"></script>
+<grid flex="1">
+  <columns>
+    <column flex="1"/>
+	<column/>
+  </columns>
+  <rows> 
+	<row colspan="2">
+	  <hbox flex="1" height="20px">
+	    <label value="&ldap-groups.members-dialog.header;" /><label id="groupDnLabel" crop="end" flex="1"/>
+	  </hbox>
+	</row>
+	<row flex="1">
+		<!-- Members' tree-->
+		<tree flex="1" id="members-tree" editable="false" enableColumnDrag="true" onselect="LDAPGroupsMemberDialog.onMemberSelection()">
+		<treecols>
+			<treecol id="member" anonid="member" flex="1" editable="true" 
+					 width="auto" persist="width ordinal" 
+					 primary="true" ignorecolumnpicker="true" ordinal="1"
+					 onclick="LDAPGroupsMemberDialog.sort(this)" class="sortDirectionIndicator"/>
+			<splitter class="tree-splitter" anonid="splitter" persist="ordinal" />			
+		</treecols>
+		<treechildren>
+			<treeitem><treerow></treerow></treeitem>
+		</treechildren>
+		</tree>
+		<!-- Actions -->
+		<vbox>
+		  <button  id='viewMembersButton' label="&ldap-groups.members-dialog.button;" oncommand="LDAPGroupsMemberDialog.OnViewMembers()"/>
+		  <hbox flex="1">
+				<label value="&ldap-groups.members-dialog.membersCount;" /><label id="memberCount" crop="end" flex="1"/>
+		  </hbox>
+		</vbox>
+	</row>
+  </rows>
+</grid>
+<!-- Status Deck -->
+    <deck id="status-deck" selectedIndex="0">
+      <hbox>
+		<image class="status-icon"/>
+	  </hbox>
+      <hbox>
+        <image class="status-icon" busy="true"/>
+        <label value="&ldap-groups.members-dialog.status.connecting;" crop="end"/>
+      </hbox>
+	  <hbox>
+        <image class="status-icon" busy="true"/>
+        <label value="&ldap-groups.members-dialog.status.bindFailed;" crop="end"/>
+      </hbox>
+	  <hbox>
+        <image class="status-icon" busy="true"/>
+        <label value="&ldap-groups.members-dialog.status.resolvingMembers;" crop="end"/>
+		<label id="staticMembersStatus" value="" crop="end"/>
+      </hbox>
+	  <hbox>
+        <image class="status-icon"/>
+        <label value="&ldap-groups.members-dialog.status.error;" crop="end"/>
+		<label id="errorCode" value="" crop="end"/>
+      </hbox>
+    </deck>
+    <separator class="groove"/>
+</dialog>

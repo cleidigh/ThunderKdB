@@ -1,0 +1,26 @@
+content   SortCustomizationDialog                 chrome/SortCustomizationDialog/content/
+
+skin      SortCustomizationDialog     global      chrome/SortCustomizationDialog/skin/global/
+skin      SortCustomizationDialog-os  classic/1.0 chrome/SortCustomizationDialog/skin/common/
+skin      SortCustomizationDialog-os  classic/1.0 chrome/SortCustomizationDialog/skin/gnome/   os=Linux
+skin      SortCustomizationDialog-os  classic/1.0 chrome/SortCustomizationDialog/skin/windows/ os=WINNT
+skin      SortCustomizationDialog-os  classic/1.0 chrome/SortCustomizationDialog/skin/mac/     os=Darwin
+
+locale    SortCustomizationDialog     en-US   chrome/SortCustomizationDialog/locale/en-US/
+locale    SortCustomizationDialog     de-DE   chrome/SortCustomizationDialog/locale/de-DE/
+
+overlay chrome://messenger/content/customizeToolbar.xul                  chrome://SortCustomizationDialog/content/SCDOverlay.xul
+
+# Thunderbird/Seamonkey
+overlay chrome://messenger/content/messageWindow.xul                     chrome://SortCustomizationDialog/content/SCDStartup.xul
+overlay chrome://messenger/content/messenger.xul                         chrome://SortCustomizationDialog/content/SCDStartup.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://SortCustomizationDialog/content/SCDStartup.xul
+overlay chrome://messenger/content/addressbook/addressbook.xul           chrome://SortCustomizationDialog/content/SCDStartup.xul
+overlay chrome://editor/content/editor.xul                               chrome://SortCustomizationDialog/content/SCDStartup.xul
+
+# Seamonkey
+overlay  chrome://navigator/content/navigator.xul                        chrome://SortCustomizationDialog/content/SCDStartup.xul
+
+# Calendar/Sunbird
+overlay chrome://sunbird/content/calendar.xul                            chrome://SortCustomizationDialog/content/SCDStartup.xul
+overlay chrome://calendar/content/calendar.xul                           chrome://SortCustomizationDialog/content/SCDStartup.xul

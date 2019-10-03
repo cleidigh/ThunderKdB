@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://castironthunderbirdclub/locale/torbirdy.dtd">
+
+<dialog id="castironthunderbirdclub-preferences-dialog"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        title="&torbirdy.prefs.title;"
+        persist="screenX screenY width height"
+        buttons="accept,cancel,extra2"
+        buttonlabelaccept="&torbirdy.prefs.save.button;"
+        buttonaccesskeyaccept="&torbirdy.prefs.save.key;"
+        buttonlabelcancel="&torbirdy.prefs.cancel.button;"
+        buttonlabelextra2="&torbirdy.prefs.extra2.button;"
+        buttonaccesskeyextra2="&torbirdy.prefs.extra2.key;"
+        
+        ondialogextra2="return org.torbirdy.prefs.restoreDefaults();"
+        ondialogaccept="return org.torbirdy.prefs.onAccept();"
+        onload="return org.torbirdy.prefs.onLoad();">
+        
+  <script type="application/javascript"
+       src="chrome://castironthunderbirdclub/content/preferences.js"></script>
+
+  <tabbox>
+
+    <tabs>
+      <tab label="&torbirdy.prefs.proxy.label;"/>
+      <tab label="&torbirdy.prefs.privacy.label;"/>
+      <tab label="&torbirdy.prefs.enigmail.label;"/>
+    </tabs>
+
+    <tabpanels>
+
+      <!-- Proxy Settings -->
+      <tabpanel>
+        <vbox flex="1">
+
+          <radiogroup id="torbirdy-proxy-settings" oncommand="org.torbirdy.prefs.checkSetting();">
+            <radio accesskey="&torbirdy.prefs.recommended.key;" id="torbirdy-default-settings" label="&torbirdy.prefs.recommended.text;" selected="true"/>
+            <radio accesskey="&torbirdy.prefs.anonservice.key;" id="torbirdy-anon-settings" label="&torbirdy.prefs.anonservice.text;"/>
+
+            <grid class="indent" flex="1">
+              <columns>
+                <column/>
+              </columns>
+              <rows>
+                <row align="center">
+                  <hbox align="center">
+                    <menulist disabled="true" id="torbirdy-anonservice">
+                      <menupopup>
+                        <menuitem label="JonDo"/>
+                        <menuitem label="Whonix"/>
+                      </menupopup>
+                    </menulist>
+                  </hbox>
+                </row>
+              </rows>
+            </grid>
+
+            <radio accesskey="&torbirdy.prefs.customsettings.key;" id="torbirdy-custom-settings" label="&torbirdy.prefs.customsettings.text;"/>
+            <grid class="indent" flex="1">
+              <columns>
+                <column/>
+                <column flex="1"/>
+              </columns>
+              <rows>
+                <row align="center">
+                  <hbox align="center">
+                    <label accesskey="&torbirdy.prefs.socks_host.key;" control="torbirdy-socks-host" value="&torbirdy.prefs.socks_host.label;"/>
+                    <textbox disabled="true" flex="1" id="torbirdy-socks-host"/>
+                    <label accesskey="&torbirdy.prefs.socks_port.key;" control="torbirdy-socks-port" value="&torbirdy.prefs.socks_port.label;"/>
+                    <textbox disabled="true" id="torbirdy-socks-port" max="65535" min="0" size="5" type="number" value="0"/>
+                  </hbox>
+                </row>
+              </rows>
+            </grid>
+
+            <radio accesskey="&torbirdy.prefs.torification.key;" id="torbirdy-torification" label="&torbirdy.prefs.torification.label;" style="color:red"/>
+
+          </radiogroup>
+
+        <separator orient="horizontal"/>
+
+        <hbox align="right">
+          <button label="&torbirdy.prefs.testproxy.button;" accesskey="&torbirdy.prefs.testproxy.key;" oncommand="org.torbirdy.prefs.testSettings();" />
+        </hbox>
+
+        </vbox>
+      </tabpanel>
+
+      <!-- Privacy Settings -->
+      <tabpanel>
+        <vbox>
+
+          <groupbox>
+            <caption label="&torbirdy.prefs.global;"/>
+            <vbox>
+              <checkbox accesskey="&torbirdy.prefs.imap.key;" id="torbirdy-idle" label="&torbirdy.prefs.imap.label;"/>
+              <checkbox accesskey="&torbirdy.prefs.startup_folder.key;" id="torbirdy-startup-folder" label="&torbirdy.prefs.startup_folder.label;"/>
+              <checkbox accesskey="&torbirdy.prefs.emailwizard.key;" id="torbirdy-email-wizard" label="&torbirdy.prefs.emailwizard.label;"/>
+              <checkbox accesskey="&torbirdy.prefs.automatic.key;" id="torbirdy-email-automatic" label="&torbirdy.prefs.automatic.label;" oncommand="org.torbirdy.prefs.fetchAllMessages();"/>
+            </vbox>
+          </groupbox>
+
+          <separator class="groove-thin" orient="horizontal"/>
+
+
+          <groupbox>
+            <caption label="&torbirdy.prefs.account_specific;"/>
+            <grid>
+              <columns>
+                <column flex="1"/>
+                <column flex="2"/>
+              </columns>
+              <rows>
+                <row align="center">
+                  <hbox align="center">
+                    <label accesskey="&torbirdy.prefs.select_account.key;" control="torbirdy-mail-accounts" value="&torbirdy.prefs.select_account.label;"/>
+                    <menulist id="torbirdy-mail-accounts" oncommand="org.torbirdy.prefs.selectMailAccount();">
+                      <menupopup></menupopup>
+                    </menulist>
+                  </hbox>
+                </row>
+              </rows>
+            </grid>
+          </groupbox>
+
+        </vbox>
+      </tabpanel>
+
+      <!-- Enigmail Settings -->
+      <tabpanel>
+        <vbox>
+
+          <vbox>
+            <checkbox accesskey="&torbirdy.prefs.confirmemail.key;" id="torbirdy-confirm-email" label="&torbirdy.prefs.confirmemail.label;"/>
+            <checkbox accesskey="&torbirdy.prefs.enigmail_throwkeyid.key;" id="torbirdy-enigmail-throwkeyid" label="&torbirdy.prefs.enigmail_throwkeyid.label;"/>
+            <checkbox accesskey="&torbirdy.prefs.enigmail_protected.key;" id="torbirdy-enigmail-protected" label="&torbirdy.prefs.enigmail_protected.label;"/>
+            <separator class="thin" orient="horizontal"/>
+            <vbox>
+              <label accesskey="&torbirdy.prefs.enigmail.keyserver.key;" control="torbirdy-enigmail-keyserver" value="&torbirdy.prefs.enigmail.keyserver.label;"/>
+              <textbox id="torbirdy-enigmail-keyserver" />
+            </vbox>
+          </vbox>
+
+        </vbox>
+      </tabpanel>
+
+      <!-- Security Settings -->
+
+    </tabpanels>
+
+  </tabbox>
+   
+</dialog>

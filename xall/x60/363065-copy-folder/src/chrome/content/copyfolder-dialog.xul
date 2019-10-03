@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://copyfolder/locale/copyfolder-dialog.dtd">
+
+<dialog
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="copyfolder-dialog"
+	title="&dialog_copyfolder.title;"
+	buttons="accept,cancel"
+	buttonlabelcancel="&dialog_button_cancel.label;"
+	buttonlabelaccept="&dialog_button_accept.label;"
+	ondialogaccept="window.arguments[0].ok = true; close();"
+	ondialogcancel="close();"
+	onload="onLoad();">
+	
+	<script><![CDATA[
+	function onLoad() {
+		if("arguments" in window && window.arguments.length > 0) {
+			var args = window.arguments[0];
+			var srcFolderInfo = document.getElementById("srcFolderInfo");
+			var destFolderInfo = document.getElementById("destFolderInfo");
+
+			srcFolderInfo.value = args.srcFolderInfo;
+			destFolderInfo.value = args.destFolderInfo;
+			if(window.arguments[0].newMessages == 0) {
+				document.documentElement.getButton("accept").style.visibility = 'hidden';
+				document.documentElement.getButton("cancel").label = 'Ok';
+			} else {
+				document.documentElement.getButton("accept").style.visibility = 'visible';
+				document.documentElement.getButton("cancel").label = 'Cancel';
+			}
+			document.getElementById("copyfolder-dialog").setAttribute("title", args.title + " - Copy Folder");
+			document.getElementById("warning").innerHTML = args.warning;
+			document.getElementById("question").innerHTML = args.question;
+		}
+	}
+	]]></script>
+	
+	<html:div id="warning" style="max-width:450px;"></html:div>
+			
+	<groupbox>
+		<hbox>
+			<label id="srcFolderLabel" value="&dialog_source_folder.label;" /> <label id="srcFolderInfo" />
+		</hbox>
+		<hbox>
+			<label id="destFolderLabel" value="&dialog_destination_folder.label;" /> <label id="destFolderInfo" />
+		</hbox>
+	</groupbox>
+	
+	<html:div id="question" style="max-width:450px;"></html:div>
+		
+</dialog>
