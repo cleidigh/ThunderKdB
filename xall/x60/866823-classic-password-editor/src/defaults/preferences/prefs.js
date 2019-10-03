@@ -1,0 +1,10 @@
+pref("extensions.classicpasswordeditor.display_menuitem", true);
+pref("extensions.classicpasswordeditor.rename_menuitem_to", "");
+pref("extensions.classicpasswordeditor.confirm_ctxmenu_delete", true);
+pref("extensions.classicpasswordeditor.openspkey", "");
+pref("extensions.classicpasswordeditor.openspkeycode", 0);
+pref("extensions.classicpasswordeditor.openspkeymodifiers", "");
+pref("extensions.classicpasswordeditor.preselect_current_site", false);
+pref("extensions.classicpasswordeditor.always_show_passwords", false);
+pref("extensions.classicpasswordeditor.force_prompt_for_masterPassword", true);
+pref("extensions.classicpasswordeditor.showpassword", 0);

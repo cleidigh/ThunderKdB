@@ -1,0 +1,84 @@
+# Functional content
+## Modules
+resource	classicpasswordeditor	content/
+
+## Chrome
+content	classicpasswordeditor		content/
+
+# Language-specific content
+#locale	classicpasswordeditor	bg	locale/bg/
+#locale	classicpasswordeditor	de	locale/de/
+#locale	classicpasswordeditor	dsb	locale/dsb/
+#locale	classicpasswordeditor	el	locale/el/
+locale	classicpasswordeditor	en-US	locale/en-US/
+#locale	classicpasswordeditor	eo	locale/eo/
+#locale	classicpasswordeditor	es-ES	locale/es-ES/
+#locale	classicpasswordeditor	fi	locale/fi/
+#locale	classicpasswordeditor	fr	locale/fr/
+#locale	classicpasswordeditor	hsb	locale/hsb/
+#locale	classicpasswordeditor	hu	locale/hu/
+#locale	classicpasswordeditor	id-ID	locale/id-ID/
+#locale	classicpasswordeditor	it	locale/it/
+#locale	classicpasswordeditor	ja	locale/ja/
+#locale	classicpasswordeditor	nl	locale/nl/
+#locale	classicpasswordeditor	pl	locale/pl/
+#locale	classicpasswordeditor	pt-BR	locale/pt-BR/
+#locale	classicpasswordeditor	pt-PT	locale/pt-PT/
+#locale	classicpasswordeditor	ru	locale/ru/
+#locale	classicpasswordeditor	sl-SI	locale/sl-SI/
+#locale	classicpasswordeditor	sr	locale/sr/
+#locale	classicpasswordeditor	sv-SE	locale/sv-SE/
+#locale	classicpasswordeditor	tr	locale/tr/
+#locale	classicpasswordeditor	uk	locale/uk/
+#locale	classicpasswordeditor	vi	locale/vi/
+#locale	classicpasswordeditor	zh-CN	locale/zh-CN/
+#locale	classicpasswordeditor	zh-TW	locale/zh-TW/
+
+# Appearance
+skin	classicpasswordeditor	default	skin/
+
+# What goes where
+## Firefox browser windows
+overlay chrome://browser/content/browser.xul chrome://classicpasswordeditor/content/browserMenubarOverlay.xul
+overlay chrome://browser/content/browser.xul chrome://classicpasswordeditor/content/toolbarOverlay.xul
+overlay chrome://browser/content/browser.xul chrome://classicpasswordeditor/content/contextmenuOverlay.xul
+overlay chrome://browser/content/browser.xul chrome://classicpasswordeditor/content/firstrunOverlay.xul
+
+## SeaMonkey browser windows
+overlay chrome://navigator/content/navigatorOverlay.xul chrome://classicpasswordeditor/content/mailMenubarOverlay.xul
+overlay chrome://navigator/content/navigator.xul chrome://classicpasswordeditor/content/toolbarOverlay.xul
+overlay chrome://navigator/content/navigator.xul chrome://classicpasswordeditor/content/contextmenuOverlay.xul
+overlay chrome://navigator/content/navigator.xul chrome://classicpasswordeditor/content/firstrunOverlay.xul
+
+## Mail windows
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://classicpasswordeditor/content/mailMenubarOverlay.xul
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://classicpasswordeditor/content/toolbarOverlay.xul
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://classicpasswordeditor/content/firstrunOverlay.xul
+overlay chrome://messenger/content/addressbook/addressbook.xul chrome://classicpasswordeditor/content/mailMenubarOverlay.xul
+overlay chrome://messenger/content/addressbook/addressbook.xul chrome://classicpasswordeditor/content/toolbarOverlay.xul
+overlay chrome://messenger/content/addressbook/addressbook.xul chrome://classicpasswordeditor/content/firstrunOverlay.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://classicpasswordeditor/content/mailMenubarOverlay.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://classicpasswordeditor/content/toolbarOverlay.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://classicpasswordeditor/content/firstrunOverlay.xul
+
+## Password Manager
+overlay chrome://passwordmgr/content/passwordManager.xul chrome://classicpasswordeditor/content/pwdmgrOverlay.xul
+overlay chrome://communicator/content/passwordManager.xul chrome://classicpasswordeditor/content/pwdmgrOverlay.xul
+overlay chrome://communicator/content/dataman/dataman.xul chrome://classicpasswordeditor/content/pwdmgrOverlay-sm.xul
+overlay about:data chrome://classicpasswordeditor/content/pwdmgrOverlay-sm.xul
+
+# Additional styles
+## Toolbar button
+style chrome://browser/content/browser.xul chrome://classicpasswordeditor/skin/overlay.css
+style chrome://navigator/content/navigator.xul chrome://classicpasswordeditor/skin/overlay-sm.css
+style chrome://navigator/content/navigatorOverlay.xul chrome://classicpasswordeditor/skin/overlay-sm.css
+style chrome://global/content/customizeToolbar.xul chrome://classicpasswordeditor/skin/overlay.css
+style chrome://global/content/customizeToolbar.xul chrome://classicpasswordeditor/skin/overlay-sm.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style chrome://messenger/content/messenger.xul chrome://classicpasswordeditor/skin/overlay.css
+style chrome://messenger/content/messenger.xul chrome://classicpasswordeditor/skin/overlay-sm.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style chrome://messenger/content/messageWindow.xul chrome://classicpasswordeditor/skin/overlay.css
+style chrome://messenger/content/messageWindow.xul chrome://classicpasswordeditor/skin/overlay-sm.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style chrome://messenger/content/addressbook/addressbook.xul chrome://classicpasswordeditor/skin/overlay.css
+style chrome://messenger/content/addressbook/addressbook.xul chrome://classicpasswordeditor/skin/overlay-sm.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style chrome://messenger/content/messengercompose/messengercompose.xul chrome://classicpasswordeditor/skin/overlay.css
+style chrome://messenger/content/messengercompose/messengercompose.xul chrome://classicpasswordeditor/skin/overlay-sm.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}

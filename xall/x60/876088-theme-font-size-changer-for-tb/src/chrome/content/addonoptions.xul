@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://themefontsizechangertb/locale/addonoptions.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<dialog id="themefontsizechangertb"
+title="Theme Font &amp; Size Changer Add-on Preferences"
+xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+xmlns:html="http://www.w3.org/1999/xhtml"
+onload="load()"
+windowtype="themefontsizechangertbaddonoptions"
+persist="screenX screenY"
+width="400"
+buttons="none">
+<script type="application/javascript" src="addonoptions.js"/>
+	<tabbox>
+		<tabs>
+			<tab label="&themefontsizechangertbaddonoptions.Preferences;"/>
+		</tabs>
+		<tabpanels>
+			<tabpanel id="preferencestab">
+				<vbox>
+					<checkbox hidden="true" label="&themefontsizechangertbaddonoptions.HideSBIcon;" id="hidesbicon" persist="checked" />
+					<checkbox label="&themefontsizechangertbaddonoptions.HideToolsMenu;" id="hidetoolsmenu" persist="checked" />
+					<checkbox label="&themefontsizechangertbaddonoptions.HideAppMenu;" id="hideappmenu" persist="checked" />
+					<checkbox label="&themefontsizechangertbaddonoptions.AbbreviateToolbar;" id="abbreviatetoolbarbuttontext" persist="checked" />
+				</vbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+</dialog>

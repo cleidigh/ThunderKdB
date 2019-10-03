@@ -1,0 +1,34 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://themefontsizechangertb/locale/themefontsizechangertb.dtd">
+<?xml-stylesheet href="chrome://themefontsizechangertb/skin/themefontsizechangertb.css" type="text/css"?>
+<overlay id="themefontsizechangertb-overlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<script type="application/x-javascript" src="chrome://themefontsizechangertb/content/themefontsizechangertb.js"/>
+	<script type="application/x-javascript" src="chrome://themefontsizechangertb/content/overlay.js"/>
+
+	<keyset>
+		<key id="themefontsizechangertb-action-key" modifiers="shift alt" key="t" oncommand="ThemeFontSizeChanger.handleStatusClick(event);" />
+	</keyset>
+
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbarbutton id="themefontsizechangertb-toolbarbutton" label="Theme Font &amp; Size Changer" tooltiptext="&themefontsizechangertb.ThemeFontSizeChanger;" type="button" oncommand="ThemeFontSizeChanger.handleStatusClick(event);" class="toolbarbutton-1">
+		</toolbarbutton>
+	</toolbarpalette>
+
+	<!--<statusbar id="status-bar">
+		<statusbarpanel id="themefontsizechangertb-statusbar" onclick="ThemeFontSizeChanger.handleStatusClick(event);" src="chrome://themefontsizechangertb/skin/statusbaricon.png" tooltiptext="&themefontsizechangertb.ThemeFontSizeChanger;"  class="statusbarpanel-menu-iconic" style="cursor:pointer;"/>
+	</statusbar>-->
+
+	<menupopup id="menu_ToolsPopup" onpopupshowing="ThemeFontSizeChanger.hideToolsMenu();">
+		<menuitem id="themefontsizechangertb-tools-menuitem" label="&themefontsizechangertb.ThemeFontSizeChanger;" insertafter="devToolsSeparator" class="menuitem-iconic" accesskey="t" oncommand="ThemeFontSizeChanger.handleStatusClick(event);"/>
+	
+	</menupopup>
+
+	<menupopup id="appmenuSecondaryPane" onpopupshowing="ThemeFontSizeChanger.hideAppMenu();">
+		<menuitem id="themefontsizechangertb-appmenu-menuitem" label="&themefontsizechangertb.ThemeFontSizeChanger;"
+		 class="menuitem-iconic" accesskey="t" insertafter="appmenu_addons" oncommand="ThemeFontSizeChanger.handleStatusClick(event);"/>
+		
+	</menupopup>	
+		
+</overlay>

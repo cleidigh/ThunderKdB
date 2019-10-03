@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   - Portions Copyright (C) Philipp Kewisch, 2017 -->
+
+<!DOCTYPE overlay SYSTEM "chrome://send-to-things/locale/things.dtd">
+
+<?xml-stylesheet type="text/css" href="chrome://send-to-things/skin/things.css"?>
+
+<overlay id="things-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/javascript"><![CDATA[
+    function SendMsgToThings(event) {
+      let title = gMessageDisplay.displayedMessage.mime2DecodedSubject;
+
+      MsgHdrToMimeMessage(gMessageDisplay.displayedMessage, null, (hdr, msg) => {
+        let plaintext = msg.coerceBodyToPlaintext(gMessageDisplay.displayedMessage.folder);
+        fetch(`things:add?title=${encodeURIComponent(title)}&notes=${encodeURIComponent(plaintext)}`)
+      }, true, { saneBodySize: true, partsOnDemand: true, examineEncryptedParts: true });
+    }
+  ]]></script>
+
+  <toolbarpalette id="header-view-toolbar-palette">
+    <toolbarbutton id="hdrThingsButton"
+                   label="&hdrThings.label;"
+                   tooltiptext="&hdrThings.tooltip;"
+                   class="toolbarbutton-1 msgHeaderView-button hdrThingsButton"
+                   oncommand="SendMsgToThings(event); RestoreFocusAfterHdrButton();"/>
+  </toolbarpalette>
+</overlay>

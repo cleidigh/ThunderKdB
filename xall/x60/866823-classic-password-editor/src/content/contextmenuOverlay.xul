@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Classic Password Editor, extension for Gecko applications
+    Copyright (C) 2017  Daniel Dawson <danielcdawson@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE overlay SYSTEM
+          "chrome://classicpasswordeditor/locale/browserOverlay.dtd">
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="contextmenuOverlay.js"/>
+
+  <menupopup id="contentAreaContextMenu">
+    <menuseparator id="classicpasswordeditor-ctxmenuseparator"
+                   insertbefore="inspect-separator"/>
+    <menuitem id="classicpasswordeditor-savelogininfo"
+              insertbefore="inspect-separator"
+              label="&ctx_savelogininfo.label;"
+              accesskey="&ctx_savelogininfo.accesskey;"
+              tooltiptext="&ctx_savelogininfo.tooltip;"
+              oncommand="ClassicPasswordEditor.saveLoginInfo(window);"/>
+    <menuitem id="classicpasswordeditor-editlogininfo"
+              insertbefore="inspect-separator"
+              label="&ctx_editlogininfo.label;"
+              accesskey="&ctx_editlogininfo.accesskey;"
+              tooltiptext="&ctx_editlogininfo.tooltip;"
+              oncommand="ClassicPasswordEditor.editLoginInfo(window);"/>
+    <menuitem id="classicpasswordeditor-deletelogininfo"
+              insertbefore="inspect-separator"
+              label="&ctx_deletelogininfo.label;"
+              accesskey="&ctx_deletelogininfo.accesskey;"
+              tooltiptext="&ctx_deletelogininfo.tooltip;"
+              oncommand="ClassicPasswordEditor.deleteLoginInfo(window);"/>
+  </menupopup>
+
+  <popupset id="mainPopupSet">
+    <menupopup id="classicpasswordeditor-disambig-popup"/>
+  </popupset>
+</overlay>

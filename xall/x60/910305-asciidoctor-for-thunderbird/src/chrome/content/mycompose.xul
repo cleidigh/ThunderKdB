@@ -1,0 +1,11 @@
+<?xml version="1.0"?>  
+<?xml-stylesheet type="text/css" href="chrome://asciidoctor_tb/content/button.css"?>
+<overlay id="sample"   
+xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">  
+ <script type="application/javascript" src="chrome://asciidoctor_tb/content/myCompose.js"/>
+<script type="application/javascript" src="chrome://asciidoctor_tb/content/asciidoctor.js"/>
+<script type="application/javascript" src="chrome://asciidoctor_tb/content/highlight/highlight.min.js"/>
+<toolbar class="chromeclass-toolbar" id="FormatToolbar"> 
+<toolbarbutton xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="asciime" class="asciibutton" tooltiptext="Process the body's mail with Asciidoctor (Alt+p)" insertbefore="smileButtonMenu" accesskey="P"  oncommand="buildAscii()" type="checkbox" disabled="false" />
+ </toolbar>  
+</overlay> 

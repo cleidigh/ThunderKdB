@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://themefontsizechangertb/locale/options.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<dialog
+	title="Theme Font &amp; Size Changer"
+	id="themefontsizechangertboptionsdialog"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	windowtype="themefontsizechangertb"
+	buttons="none"	
+	persist="screenX screenY"
+	style="margin:0 200px;"
+	>
+	<script type="application/javascript" src="themefontsizechangertb.js"/>
+	<script type="application/javascript" src="options.js"/>
+	<stringbundleset>
+	
+		<stringbundle id="themefontsizechangertboptions-strings" src="chrome://themefontsizechangertb/locale/options.properties"/>
+			
+	</stringbundleset>
+	
+		<vbox id="themefontsizechangertb-statusbar-panel" assignedelement="" style="overflow-y:auto !important;" flex="1" autostrecth="true">
+		<vbox>
+			<groupbox>
+				<caption label="&themefontsizechangertboptions.Zoom;" />
+				<textbox id="tfsc-zoom" type="number" increment="0.05" min="1.00" max="2.75" decimalplaces="2" 
+				oncommand="try{ThemeFontSizeChanger.changeZoomLevel(event.target.value);}catch(e){alert(e)};"/>
+				<tabpanels id="mac-zoom-warning" style="margin-top:5px !important;margin-bottom:5px !important;margin-left:5px !important;margin-right:5px !important;padding:10px 0 !important;">
+					<tabpanel style="width:auto;max-width:none;text-align:center;" orient="vertical">
+						<description>Mac OS X users: Use this feature with caution please!</description>
+						<description onclick="window.opener.gBrowser.selectedTab = window.opener.gBrowser.addTab('http://barisderin.com/?p=2775');" class="text-link" style="border:none !important;text-decoration:underline !important;" href="http://barisderin.com" tooltiptext="Click to find more information">Find more information</description>				
+					</tabpanel>
+				</tabpanels>				
+			</groupbox>
+			<groupbox>
+				<caption label="&themefontsizechangertboptions.Font;" />
+				<menulist id="tfsc-fonts" oncommand="try{ThemeFontSizeChanger.changeFontSize(event.target.value);}catch(e){alert(e)};"/>
+			</groupbox>
+			<groupbox>
+				<caption label="&themefontsizechangertboptions.Size;" />
+				<hbox>
+					<radiogroup  flex="1" id="tfsc-size" oncommand="try{ThemeFontSizeChanger.changeFontSize(event.target.value);}catch(e){alert(e)};">
+						<hbox flex="1">
+							<radio value="-moz-use-system-font" label="&themefontsizechangertboptions.SizeDefault;" />
+							<hbox flex="1">
+								<radio label="&themefontsizechangertboptions.SizeCustom;" id="tfsc-size-customsize" class="tfsc-volume-radio" value="customsize" />
+								<textbox type="number" id="tfsc-size-customsize-textbox" maxlength="3" flex="1" decimalplaces="1" increment="0.5" min="6" max="100" oncommand="try{ThemeFontSizeChanger.changeCustomSize(event);}catch(e){alert(e)};" />
+								<button label="&themefontsizechangertboptions.Apply;" oncommand="try{ThemeFontSizeChanger.changeCustomSize(event);}catch(e){alert(e)};" />								
+							</hbox>
+						</hbox>
+					</radiogroup>
+				</hbox>
+				<!--<menulist id="tfsc-size">
+					<menupopup id="themefontsizechangertb-statusbarpanel-menu" oncommand="try{ThemeFontSizeChanger.changeFontSize(event.target.value);}catch(e){alert(e)};">
+						<menuitem value="-moz-use-system-font" label="&themefontsizechangertboptions.SizeDefault;"/>
+						<menuseparator />
+						<menuitem value="6" label="6"/>
+						<menuitem value="9" label="9"/>
+						<menuitem value="10" label="10"/>
+						<menuitem value="11" label="11"/>
+						<menuitem value="12" label="12"/>
+						<menuitem value="13" label="13"/>
+						<menuitem value="14" label="14"/>
+						<menuitem value="15" label="15"/>
+						<menuitem value="16" label="16"/>
+						<menuitem value="17" label="17"/>
+						<menuitem value="18" label="18"/>
+						<menuitem value="20" label="20"/>
+						<menuitem value="22" label="22"/>
+						<menuitem value="24" label="24"/>
+						<menuitem value="26" label="26"/>
+						<menuitem value="28" label="28"/>
+						<menuitem value="30" label="30"/>
+						<menuitem value="32" label="32"/>
+						<menuitem value="34" label="34"/>
+						<menuitem value="36" label="36"/>
+						<menuitem value="40" label="40"/>			
+						<menuitem value="80" label="80"/>					
+					</menupopup>
+				</menulist>-->
+			</groupbox>
+			<groupbox>
+				<caption label="&themefontsizechangertboptions.Style;" />
+				<menulist id="tfsc-style">
+					<menupopup id="themefontsizechangertb-fontstyle-menu" oncommand="try{ThemeFontSizeChanger.changeFontSize(event.target.value);}catch(e){alert(e)};">
+						<menuitem value="-moz-use-system-font" label="&themefontsizechangertboptions.StyleDefault;"/>
+						<menuseparator />
+						<menuitem value="italic" label="&themefontsizechangertboptions.Italic;"/>			
+					</menupopup>
+				</menulist>
+			</groupbox>			
+			<groupbox>
+				<caption label="&themefontsizechangertboptions.Weight;" />
+				<menulist id="tfsc-weight">
+					<menupopup id="themefontsizechangertb-fontweight-menu" oncommand="try{ThemeFontSizeChanger.changeFontSize(event.target.value);}catch(e){alert(e)};">
+						<menuitem value="-moz-use-system-font" label="&themefontsizechangertboptions.WeightDefault;"/>
+						<menuseparator />
+						<menuitem value="bold" label="&themefontsizechangertboptions.Bold;"/>			
+					</menupopup>
+				</menulist>
+			</groupbox>	
+			<groupbox>
+				<caption label="&themefontsizechangertboptions.Color;" />
+					<!--<box id="tfsc-color" onclick="ThemeFontSizeChanger.showPicker();" value="-moz-use-system-font" style="background:-moz-linear-gradient(left, red, orange, yellow, green, blue); height:16px; margin-bottom:6px;"><box style="color:transparent;">Color</box></box>-->	
+				<!--<menulist id="tfsc-color">
+					<menupopup id="themefontsizechangertb-fontcolor-menu" oncommand="if(event.target!=document.getElementById('themefontsizechangertb-fontcolor-colorpicker-menuitem'))try{ThemeFontSizeChanger.changeFontSize(event.target.value);}catch(e){alert(e)};">
+						<menuitem value="-moz-use-system-font" label="&themefontsizechangertboptions.ColorDefault;"/>
+						<menuseparator />
+						<menuitem value="#000000" label="#000000" id="themefontsizechangertb-fontcolor-custom-menuitem"/>
+						<menuseparator />
+						<menuitem label="&themefontsizechangertboptions.OpenColorPicker;" tooltiptext="&themefontsizechangertboptions.OpenColorPicker;" id="themefontsizechangertb-fontcolor-colorpicker-menuitem" oncommand="ThemeFontSizeChanger.showPicker(event)" elementvalue="fontcolor" value="colorpicker" />			
+					</menupopup>
+				</menulist>-->
+				<hbox>
+					<radiogroup  flex="1" id="tfsc-color" oncommand="try{ThemeFontSizeChanger.changeFontSize(event.target.value);}catch(e){alert(e)};">
+						<hbox flex="1">
+							<radio value="-moz-use-system-font" label="&themefontsizechangertboptions.ColorDefault;" />
+							<hbox flex="1">
+								<radio label="&themefontsizechangertboptions.ColorPicker;" id="tfsc-color-customcolor" class="tfsc-volume-radio" value="customcolor" />
+									<vbox flex="1" pack="center">
+										<html:input type="color" id="tfsc-color-customcolor-colorpicker" onchange="try{ThemeFontSizeChanger.changeCustomFontColor(event);}catch(e){alert(e)};"/>
+									</vbox>
+							</hbox>
+						</hbox>
+					</radiogroup>
+				</hbox>				
+			</groupbox>
+			<groupbox id="tfsc-backgroundcolor-groupbox">
+				<caption label="&themefontsizechangertboptions.BackgroundColor;" />
+					<!--<box id="tfsc-backgroundcolor" onclick="ThemeFontSizeChanger.showPicker();" value="-moz-use-system-font" style="background:-moz-linear-gradient(left, red, orange, yellow, green, blue); height:16px; margin-bottom:6px;"><box style="color:transparent;">&themefontsizechangertboptions.BackgroundColor;</box></box>-->	
+				<!--<menulist id="tfsc-backgroundcolor">
+					<menupopup id="themefontsizechangertb-backgroundcolor-menu" oncommand="if(event.target!=document.getElementById('themefontsizechangertb-backgroundcolor-colorpicker-menuitem'))try{ThemeFontSizeChanger.changeTheme(event.target.value);}catch(e){alert(e)};">
+						<menuitem value="-moz-use-system-font" label="&themefontsizechangertboptions.BackgroundColorDefault;"/>
+						<menuseparator />
+						<menuitem value="#FFFFFF" label="#FFFFFF" id="themefontsizechangertb-backgroundcolor-custom-menuitem"/>
+						<menuseparator />
+						<menuitem label="&themefontsizechangertboptions.OpenColorPicker;" tooltiptext="&themefontsizechangertboptions.OpenColorPicker;" id="themefontsizechangertb-backgroundcolor-colorpicker-menuitem" oncommand="ThemeFontSizeChanger.showPicker(event)" elementvalue="backgroundcolor" value="colorpicker" />			
+					</menupopup>
+				</menulist>-->
+				<hbox>
+					<radiogroup  flex="1" id="tfsc-backgroundcolor" oncommand="try{ThemeFontSizeChanger.changeTheme(event.target.value);}catch(e){alert(e)};">
+						<hbox flex="1">
+							<radio value="-moz-use-system-font" label="&themefontsizechangertboptions.BackgroundColorDefault;" />
+							<hbox flex="1">
+								<radio label="&themefontsizechangertboptions.ColorPicker;" id="tfsc-backgroundcolor-custombackgroundcolor" class="tfsc-volume-radio" value="custombackgroundcolor" />
+									<vbox flex="1" pack="center">
+										<html:input type="color" id="tfsc-backgroundcolor-custombackgroundcolor-colorpicker" onchange="try{ThemeFontSizeChanger.changeCustomBackgroundColor(event);}catch(e){alert(e)};"/>
+									</vbox>
+							</hbox>
+						</hbox>
+					</radiogroup>
+				</hbox>
+			</groupbox>
+			<groupbox id="tfsc-threadpanebackgroundcolor-groupbox">
+				<caption label="&themefontsizechangertboptions.ThreadPaneBackgroundColor;" />
+					<!--<box id="tfsc-threadpanebackgroundcolor" onclick="ThemeFontSizeChanger.showPicker();" value="-moz-use-system-font" style="background:-moz-linear-gradient(left, red, orange, yellow, green, blue); height:16px; margin-bottom:6px;"><box style="color:transparent;">&themefontsizechangertboptions.ThreadPaneBackgroundColor;</box></box>-->	
+				<!--<menulist id="tfsc-threadpanebackgroundcolor">
+					<menupopup id="themefontsizechangertb-threadpanebackgroundcolor-menu" oncommand="if(event.target!=document.getElementById('themefontsizechangertb-threadpanebackgroundcolor-colorpicker-menuitem'))try{ThemeFontSizeChanger.changeFontSize(event.target.value);}catch(e){alert(e)};">
+						<menuitem value="-moz-use-system-font" label="&themefontsizechangertboptions.BackgroundColorDefault;"/>
+						<menuseparator />
+						<menuitem value="#FFFFFF" label="#FFFFFF" id="themefontsizechangertb-threadpanebackgroundcolor-custom-menuitem"/>
+						<menuseparator />
+						<menuitem label="&themefontsizechangertboptions.OpenColorPicker;" tooltiptext="&themefontsizechangertboptions.OpenColorPicker;" id="themefontsizechangertb-threadpanebackgroundcolor-colorpicker-menuitem" oncommand="ThemeFontSizeChanger.showPicker(event)" elementvalue="threadpanebackgroundcolor" value="colorpicker" />			
+					</menupopup>
+				</menulist>-->
+				<hbox>
+					<radiogroup  flex="1" id="tfsc-threadpanebackgroundcolor" oncommand="try{ThemeFontSizeChanger.changeTheme(event.target.value);}catch(e){alert(e)};">
+						<hbox flex="1">
+							<radio value="-moz-use-system-font" label="&themefontsizechangertboptions.ThreadPaneBackgroundColorDefault;" />
+							<hbox flex="1">
+								<radio label="&themefontsizechangertboptions.ColorPicker;" id="tfsc-threadpanebackgroundcolor-customthreadpanebackgroundcolor" class="tfsc-volume-radio" value="customthreadpanebackgroundcolor" />
+									<vbox flex="1" pack="center">
+										<html:input type="color" id="tfsc-threadpanebackgroundcolor-customthreadpanebackgroundcolor-colorpicker" onchange="try{ThemeFontSizeChanger.changeThreadCustomBackgroundColor(event);}catch(e){alert(e)};"/>
+									</vbox>
+							</hbox>
+						</hbox>
+					</radiogroup>
+				</hbox>				
+			</groupbox>			
+			<groupbox id="tfsc-contextmenuenabled-groupbox">
+				<caption label="&themefontsizechangertboptions.ContextMenu;" />
+				<checkbox label="&themefontsizechangertboptions.EnableSupportForContextMenus;" oncommand="try{ThemeFontSizeChanger.changeFontSize(event.target.checked);}catch(e){alert(e)};" id="tfsc-contextmenuenabled" pref="contextmenuenabled"/>
+			</groupbox>				
+		<!--
+			<hbox pack="center" align="center" id="navhboxwrapper">
+			
+				<button id="savesetintervalbutton" class="navbutton" label="&themefontsizechangertboptions.Save;" oncommand="window.close();"/>
+				
+				<button id="cancelsetintervalbutton" class="navbutton" label="&themefontsizechangertboptions.Cancel;" oncommand="window.close();"/>
+			
+			</hbox>
+		-->
+		</vbox>
+		</vbox>	
+	
+</dialog>

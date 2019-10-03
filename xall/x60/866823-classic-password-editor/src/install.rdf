@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF:RDF xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/2004/em-rdf#">
+  <RDF:Description about="urn:mozilla:install-manifest">
+    <id>classicpasswordeditor@daniel.dawson</id>
+    <type>2</type>
+    <multiprocessCompatible>true</multiprocessCompatible>
+    <name>Classic Password Editor</name>
+    <version>1.1.2</version>
+    <description>Adds the ability to create and edit entries in the password manager.</description>
+    <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+    <iconURL>chrome://classicpasswordeditor/skin/logo.svg</iconURL>
+    <optionsURL>chrome://classicpasswordeditor/content/options.xhtml</optionsURL>
+    <optionsType>3</optionsType>
+    <homepageURL>https://addons.thunderbird.net/addon/classic-password-editor/</homepageURL>
+
+    <targetApplication>
+      <RDF:Description>
+        <id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</id> <!-- Pale Moon -->
+        <minVersion>27.0.0a1</minVersion>
+        <maxVersion>28.*</maxVersion>
+      </RDF:Description>
+    </targetApplication>
+
+    <targetApplication>
+      <RDF:Description>
+        <id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</id> <!-- Waterfox -->
+        <minVersion>52.0</minVersion>
+        <maxVersion>56.*</maxVersion>
+      </RDF:Description>
+    </targetApplication>
+
+<!--
+    <targetApplication>
+      <RDF:Description>
+        <id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</id> <!- - SeaMonkey - ->
+        <minVersion>2.39</minVersion>
+        <maxVersion>2.49.*</maxVersion>
+      </RDF:Description>
+    </targetApplication>
+-->
+
+    <targetApplication>
+      <RDF:Description>
+        <id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</id> <!-- Thunderbird -->
+        <minVersion>52.0a1</minVersion>
+        <maxVersion>60.*</maxVersion>
+      </RDF:Description>
+    </targetApplication>
+
+    <!--
+    <localized>
+      <RDF:Description>
+        <locale>bg</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>ExaFlop</translator>
+        <translator>arris</translator>
+        <translator>pl99</translator>
+        <description>Добавя възможност за създаване и редактиране на пароли в менажерът за пароли на браузъра.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>de</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>/usr/bin/tux</translator>
+        <description>Stellt eine Möglichkeit zur Verfügung, gespeicherte Passwörter im Passwortmanager zu ändern und neue hinzuzufügen.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>dsb</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>milupo</translator>
+        <description>Staja móžnosć k dispoziciji, zapiski w zastojniku gronidłow napóraś a wobźěłaś.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>el</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Γιώργος Μαλαμάς "Grg68"</translator>
+        <description>Προσθέτει τη δυνατότητα να δημιουργήσετε και να επεξεργαστείτε καταχωρίσεις κωδικών πρόσβασης στο διαχειριστή κωδικών πρόσβασης.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>eo</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>milupo</translator>
+        <description>Disponigas eblecon krei kaj redakti enskribojn en la pasvorta administrilo.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>es-ES</locale>
+        <name>Classic password editor (Editor de contraseñas)</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Ricardo A. Rivas &lt;rivica@gmail.com&gt;</translator>
+        <description>Agrega la capacidad de crear y editar el contenido del administrador de contraseñas.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>fi</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Jiipee</translator>
+        <description>Lisää mahdollisuuden luoda ja muokata kirjautumistietoja salasanojen hallinnassa.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>fr</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Goofy</translator>
+	<translator>BlackJack</translator>
+        <description>Ajoute la possibilité de créer et éditer des entrées dans le gestionnaire des identifiants.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>hsb</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>milupo</translator>
+        <description>Staja móžnosć k dispoziciji, zapiski w zrjadowaku hesłow wutworić a wobdźěłać.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>hu</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>MIKES KASZMÁN István "Cashman"</translator>
+        <description>Jelszavak szerkesztése a jelszókezelőben.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>id-ID</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>XCen</translator>
+        <description>Menambahkan kemampuan untuk membuat dan menyunting entri kata sandi di pengatur kata sandi.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>it</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Leopoldo Saggin "topoldo"</translator>
+        <description>Aggiunge la possibilità di creare e modificare la registrazione degli accessi gestiti dal Password Manager.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>ja</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Masahiko Imanaka "mar"</translator>
+        <description>パスワードマネージャにパスワードエントリを作成、編集する機能を追加します。</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>nl</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>markh</translator>
+        <description>Voegt de mogelijkheid om wachtwoorden te maken en te bewerken toe aan de wachtwoordbeheerder.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>pl</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Marcin Borowczyk "MarcinB"</translator>
+        <description>Dodaje możliwość tworzenia i edytowania wpisów haseł w menadżerze haseł.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>pt-BR</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Edgard Dias Magalhaes "edgard.magalhaes"</translator>
+        <translator>Marco Aurélio Krause "ouesten"</translator>
+        <description>Acrescenta a capacidade de criar e editar entradas de senhas no gerenciador de senhas.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>pt-PT</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Carlos Simão "lloco"</translator>
+        <description>Adiciona a habilidade de criar ou editar as senhas no gestor de senhas.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>ru</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Пирятинский Виталий "PiVV"</translator>
+        <description>Добавляет возможность создания и редактирования паролей в менеджере паролей.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>sl-SI</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Peter Klofutar "Klofutar"</translator>
+        <description>Adds the ability to create and edit entries in the password manager.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>sr</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Charmed94</translator>
+        <translator>ДакСРБИЈА</translator>
+        <translator>Rancher</translator>
+        <description>Додаје могућност прављења и мењања лозинки у управљачу лозинкама.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>sv-SE</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Mikael Hiort af Ornäs "Lakrits"</translator>
+        <description>Lägger till funktioner för att skapa och redigera lösenordsposter i lösenordshanteraren.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>tr</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Anil Kilic - www.guncem.net "ua_anil"</translator>
+        <translator>nikneyim</translator>
+        <translator>omrakin</translator>
+        <description>Şifre yöneticisindeki şifrelere yaratma ve değiştirme yetenekleri ekler.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>uk</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>zint</translator>
+        <description>Adds the ability to create and edit entries in the password manager.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>vi</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Nguyễn Hoàng Long at timelinelive.blogspot.com "longnh"</translator>
+        <description>Thêm tính năng tạo và thay đổi các mật khẩu trong cửa sổ quản lý mật khẩu.</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>zh-CN</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Loviny</translator>
+        <translator>yfdyh000 &lt;yfdyh000@gmail.com&gt;</translator>
+        <translator>arris</translator>
+        <translator>Wang.H.K "whknnn"</translator>
+        <description>在「已保存密码」管理中增加新建与编辑密码的功能。</description>
+      </RDF:Description>
+    </localized>
+    <localized>
+      <RDF:Description>
+        <locale>zh-TW</locale>
+        <name>Classic Password Editor</name>
+        <creator>Daniel Dawson &lt;danielcdawson@gmail.com&gt;</creator>
+        <translator>Velociraptor</translator>
+        <description>在密碼管理員中加入新增與編輯密碼的功能。</description>
+      </RDF:Description>
+    </localized>
+    -->
+  </RDF:Description>
+</RDF:RDF>

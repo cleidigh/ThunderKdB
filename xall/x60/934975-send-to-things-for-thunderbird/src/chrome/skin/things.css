@@ -1,0 +1,31 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ * Portions Copyright (C) Philipp Kewisch, 2017 */
+
+.hdrThingsButton {
+  list-style-image: url(chrome://send-to-things/skin/things24.png) !important;
+}
+
+toolbar[iconsize="small"] .hdrThingsButton {
+  list-style-image: url(chrome://send-to-things/skin/things16.png) !important;
+}
+
+@media (min-resolution: 2dppx) {
+  .hdrThingsButton {
+    list-style-image: url(chrome://send-to-things/skin/things24@2x.png) !important;
+  }
+  .hdrThingsButton image {
+    height: 24px;
+    width: 24px;
+  }
+
+  toolbar[iconsize="small"] .hdrThingsButton {
+    list-style-image: url(chrome://send-to-things/skin/things16@2x.png) !important;
+  }
+
+  toolbar[iconsize="small"] .hdrThingsButton image {
+    height: 16px;
+    width: 16px;
+  }
+}

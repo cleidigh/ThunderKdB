@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="rulerbar@piro.sakura.ne.jp"
+                   em:name="Ruler Bar"
+                   em:version="0.5.2019041801"
+                   em:description="Shows a ruler in the mail composition window."
+                   em:creator="YUKI &quot;Piro&quot; Hiroshi"
+                   em:optionsURL="chrome://rulerbar/content/config.xul"
+                   em:iconURL="chrome://rulerbar/content/icon.png"
+                   em:homepageURL="http://piro.sakura.ne.jp/xul/rulerbar/"
+                   em:type="2">
+
+
+    <!--em:updateKey></em:updateKey-->
+
+
+    <em:localized>
+      <RDF:Description em:locale="en-US"
+                       em:name="Ruler Bar"
+                       em:description="Shows a ruler in the mail composition window."
+                       em:homepageURL="http://piro.sakura.ne.jp/xul/_rulerbar.html.en"
+                       em:creator="YUKI &quot;Piro&quot; Hiroshi"/>
+    </em:localized>
+    <em:localized>
+      <RDF:Description em:locale="ja"
+                       em:name="ルーラーバー (Ruler Bar)"
+                       em:description="メール作成ウィンドウにルーラーを表示します。"
+                       em:homepageURL="http://piro.sakura.ne.jp/xul/_rulerbar.html"
+                       em:creator="YUKI &quot;Piro&quot; Hiroshi"/>
+    </em:localized>
+
+
+    <em:targetApplication>
+      <!-- Thunderbird -->
+	  <RDF:Description em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+	                   em:minVersion="60.0"
+	                   em:maxVersion="60.*" />
+	</em:targetApplication>
+  </RDF:Description>
+</RDF:RDF>

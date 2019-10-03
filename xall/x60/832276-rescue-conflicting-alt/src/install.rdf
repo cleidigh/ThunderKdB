@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="rescue-conflicting-alternatives@clear-code.com"
+                   em:name="Rescue Conflicting Alternatives"
+                   em:version="0.2"
+                   em:type="2"
+                   em:description="Converts a mail with conflicting alternative bodes to regular multipart mail."
+                   em:creator="ClearCode Inc."
+                   em:homepageURL="http://www.clear-code.com/">
+
+    <!--em:updateURL></em:updateURL-->
+    <!--em:updateKey></em:updateKey-->
+
+    <em:localized>
+      <RDF:Description em:locale="en-US"
+                       em:name="Rescue Conflicting Alternatives"
+                       em:description="Converts a mail with conflicting alternative bodes to regular multipart mail."
+                       em:creator="ClearCode Inc."
+                       em:homepageURL="http://www.clear-code.com/">
+        <em:contributor>Paolo "Kaosmos": original author of "Header Tools Lite", codes to read/write messages</em:contributor>
+      </RDF:Description>
+    </em:localized>
+
+    <em:localized>
+      <RDF:Description em:locale="ja"
+                       em:name="Rescue Conflicting Alternatives"
+                       em:description="競合する複数の代替コンテンツを持つメールを、通常のマルチパート形式に変換します。"
+                       em:creator="ClearCode Inc."
+                       em:homepageURL="http://www.clear-code.com/">
+        <em:contributor>Paolo "Kaosmos": original author of "Header Tools Lite", codes to read/write messages</em:contributor>
+      </RDF:Description>
+    </em:localized>
+
+    <em:targetApplication>
+      <!-- Thunderbird -->
+      <RDF:Description em:id="{3550f703-e582-4d05-9a08-453d09bdfdc6}"
+                        em:minVersion="60.0"
+                        em:maxVersion="60.*" />
+        </em:targetApplication>
+  </RDF:Description>
+</RDF:RDF>

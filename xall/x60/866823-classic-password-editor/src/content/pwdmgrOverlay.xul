@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Classic Password Editor, extension for Gecko applications
+    Copyright (C) 2017  Daniel Dawson <danielcdawson@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE overlay SYSTEM
+          "chrome://classicpasswordeditor/locale/pwdmgrOverlay.dtd">
+<?xml-stylesheet href="chrome://classicpasswordeditor/skin/pwdmgrOverlay.css"
+                 type="text/css"?>
+
+<overlay id="classicpasswordeditorOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <stringbundleset>
+    <stringbundle id="classicpwdedit-gen-stringbundle"
+                  src="chrome://classicpasswordeditor/locale/cpe.properties"/>
+    <stringbundle id="classicpwdedit-overlay-stringbundle"
+      src="chrome://classicpasswordeditor/locale/pwdmgrOverlay.properties"/>
+  </stringbundleset>
+
+  <script type="text/javascript" src="pwdmgrOverlay.js"/>
+
+  <commandset>
+    <command id="edit_signon"
+             label="&editentry.label;" accesskey="&editentry.accesskey;"
+             oncommand="cpEditor.editSignon();" disabled="true"/>
+    <command id="clone_signon"
+             label="&cloneentry.label;" accesskey="&cloneentry.accesskey;"
+             oncommand="cpEditor.cloneSignon();" disabled="true"/>
+    <command id="new_signon"
+             label="&newentry.label;" accesskey="&newentry.accesskey;"
+             oncommand="cpEditor.newSignon();"/>
+    <command id="visit_site"
+             label="&visitsite.label;" accesskey="&visitsite.accesskey;"
+             oncommand="cpEditor.visitSite();" disabled="true"/>
+  </commandset>
+
+  <keyset>
+    <key id="key_editSignon" key="&editentry.accesskey;"
+         modifiers="access" command="edit_signon" disabled="true"/>
+    <key id="key_cloneSignon" key="&cloneentry.accesskey;"
+         modifiers="access" command="clone_signon" disabled="true"/>
+    <key id="key_newSignon" key="&newentry.accesskey;"
+         modifiers="access" command="new_signon"/>
+  </keyset>
+
+  <window id="SignonViewerDialog">
+    <popupset id="signonsTreeContextSet">
+      <menupopup id="signonsTreeContextMenu">
+        <menuitem id="menu_editSignon" command="edit_signon"/>
+        <menuitem id="menu_cloneSignon" command="clone_signon"/>
+        <menuitem id="menu_visitSite" command="visit_site"/>
+      </menupopup>
+    </popupset>
+  </window>
+
+  <tree id="signonsTree" context="signonsTreeContextMenu"/>
+
+  <hbox id="SignonViewerButtons">
+    <button id="cpeMenuBtn" type="menu-button" command="new_signon" icon="add"
+            insertafter="removeAllSignons">
+      <menupopup id="cpeMenuBtnPopup">
+        <menuitem id="cpeMenuBtn_editSignon" label="&editentry.label;"
+                  accesskey="&editentry.accesskey;" disabled="true"
+                  oncommand="cpEditor.menuBtnSel(event, this);"/>
+        <menuitem id="cpeMenuBtn_cloneSignon" label="&cloneentry.label;"
+                  accesskey="&cloneentry.accesskey;" disabled="true"
+                  oncommand="cpEditor.menuBtnSel(event, this);"/>
+        <menuitem id="cpeMenuBtn_newSignon" label="&newentry.label;"
+                  accesskey="&newentry.accesskey;"
+                  oncommand="cpEditor.menuBtnSel(event, this);"/>
+      </menupopup>
+    </button>
+  </hbox>
+</overlay>

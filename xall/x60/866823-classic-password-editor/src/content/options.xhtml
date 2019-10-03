@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Classic Password Editor, extension for Gecko applications
+    Copyright (C) 2018  Daniel Dawson <danielcdawson@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://classicpasswordeditor/skin/options.css"?>
+
+<!DOCTYPE html SYSTEM "chrome://classicpasswordeditor/locale/prefwindow.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>&prefwindow.title;</title>
+    <link rel="icon" href="chrome://classicpasswordeditor/skin/logo.svg"/>
+    <script type="text/javascript" src="options.js"/>
+  </head>
+  <body>
+    <h1>&prefwindow.title;</h1>
+    <fieldset>
+      <legend>&opensp_group.caption;</legend>
+      <div class="row">
+        <input type="checkbox" id="displayMenuitem-cb"
+               title="&displayMenuitem.tooltip;" pref="display_menuitem"
+               onclick="toggle_displayMenuitem();"/>
+        <label for="displayMenuitem-cb">&displayMenuitem.label;</label>
+      </div>
+      <div class="row indent">
+        <label for="renameMenuitemTo-text" id="renameMenuitemTo-label">
+          &renameMenuitemTo.label;</label>
+        <input type="text" id="renameMenuitemTo-text"
+               title="&renameMenuitemTo.tooltip;" pref="rename_menuitem_to"/>
+      </div>
+      <div class="row">
+        <label for="openspShortcutModifiers-text"
+          title="&opensp_shortcut.tooltip;">&opensp_shortcut.label;</label>
+        <input type="text" id="openspShortcutModifiers-text"
+               title="&opensp_shortcut_modifiers.tooltip;"
+               pref="openspkeymodifiers"/>
+        <input type="text" id="openspShortcutKey-text"
+               title="&opensp_shortcut_key.tooltip;" pref="openspkey"/>
+        <button type="button" id="opensp_shortcut_capture-btn"
+          onclick="start_key_capture();" title="&captureshortcut.tooltip;">
+          &captureshortcut.label;</button>
+        <button type="button" id="opensp_keypressrecv" tabindex="-1"/>
+      </div>
+      <div class="row">
+        <label id="captureMode-label">&entershortcut.label;</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>&webpages.caption;</legend>
+      <div class="row">
+        <input type="checkbox" id="promptforctxmenudelete-cb"
+               pref="confirm_ctxmenu_delete"/>
+        <label for="promptforctxmenudelete-cb">
+          &promptforctxmenudelete.label;</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>&modstosavedpasswords.caption;</legend>
+      <div class="row">
+        <input type="checkbox" id="preselectCurrentSite-cb"
+               title="&preselectCurrentSite.tooltip;"
+               pref="preselect_current_site"/>
+        <label for="preselectCurrentSite-cb">
+          &preselectCurrentSite.label;</label>
+      </div>
+      <div class="row">
+        <input type="checkbox" id="alwaysShowPasswords-cb"
+               title="&alwaysShowPasswords.tooltip;"
+               pref="always_show_passwords"
+               onclick="toggle_alwaysShowPasswords();"/>
+        <label for="alwaysShowPasswords-cb">&alwaysShowPasswords.label;</label>
+      </div>
+      <div class="row indent">
+        <input type="checkbox" id="alwaysPromptForMasterPassword-cb"
+               title="&alwaysPromptForMasterPassword.tooltip;"
+               pref="force_prompt_for_masterPassword"/>
+        <label for="alwaysPromptForMasterPassword-cb"
+               id="alwaysPromptForMasterPassword-label">
+          &alwaysPromptForMasterPassword.label;</label>
+      </div>
+    </fieldset>
+    <fieldset id="passwordfield-fs">
+      <legend>&passwordfield_caption.label;</legend>
+      <div class="row">
+        <input type="radio" id="passwordfield_alwayshide-rb"
+               name="passwordfield-rg" value="0" pref="showpassword"/>
+        <label for="passwordfield_alwayshide-rb"
+               id="passwordfield_alwayshide-label">
+          &passwordfield_alwayshide.label;</label>
+      </div>
+      <div class="row">
+        <input type="radio" id="passwordfield_alwaysshow-rb"
+               name="passwordfield-rg" value="1" pref="showpassword"/>
+        <label for="passwordfield_alwaysshow-rb"
+               id="passwordfield_alwaysshow-label">
+          &passwordfield_alwaysshow.label;</label>
+      </div>
+      <div class="row">
+        <input type="radio" id="passwordfield_rememberlast-rb"
+               name="passwordfield-rg" value="2" pref="showpassword"
+               title="&passwordfield_rememberlast.tooltip;"/>
+        <label for="passwordfield_rememberlast-rb"
+               id="passwordfield_rememberlast-label">
+          &passwordfield_rememberlast.label;</label>
+      </div>
+      <div class="row">
+        <input type="radio" id="passwordfield_followspwin-rb"
+               name="passwordfield-rg" value="3" pref="showpassword"
+               title="&passwordfield_followspwin.tooltip;"/>
+        <label for="passwordfield_followspwin-rb"
+               id="passwordfield_followspwin-label">
+          &passwordfield_followspwin.label;</label>
+      </div>
+    </fieldset>
+    <div id="msgbar">&#xa0;</div>
+  </body>
+</html>
