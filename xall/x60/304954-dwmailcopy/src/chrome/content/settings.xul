@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://dwmailcopy/locale/dwmailcopy.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    id="dwmailcopysetting"
+    title="&dwmailcopy-set.titlebar;"
+    ondialogaccept="return dwSetting.onOK();"
+    ondialogcancel="return dwSetting.onCancel();"
+    onload="dwSetting.onLoad();"
+    buttons="accept,cancel" >
+
+    <script type="application/x-javascript"
+        src="chrome://global/content/nsUserSettings.js"/>
+
+    <script type="application/x-javascript"
+        src="chrome://dwmailcopy/content/pref.js" />
+
+    <script type="application/x-javascript"
+        src="chrome://dwmailcopy/content/settings.js" />
+
+	<label value="&dwmailcopy-set.title;"/>
+
+	<spacer flex="1"/>
+	<checkbox   id="dwmailcopy_sender"
+	            label="&dwmailcopy-set.sender;"
+	            preftype="bool" 
+	            prefattribute="checked" prefstring="sendercopy" />
+	<checkbox   id="dwmailcopy_subject"
+	            label="&dwmailcopy-set.subject;"
+	            preftype="bool" 
+	            prefattribute="checked" prefstring="subjectcopy"/>
+	<checkbox   id="dwmailcopy_to"
+	            label="&dwmailcopy-set.to;"
+	            preftype="bool" 
+	            prefattribute="checked" prefstring="tocopy"/>
+	<checkbox   id="dwmailcopy_cc"
+	            label="&dwmailcopy-set.cc;"
+	            preftype="bool" 
+	            prefattribute="checked" prefstring="cccopy"/>
+	<checkbox   id="dwmailcopy_bcc"
+	            label="&dwmailcopy-set.bcc;"
+	            preftype="bool" 
+	            prefattribute="checked" prefstring="bcccopy"/>
+	<checkbox   id="dwmailcopy_replyto"
+	            label="&dwmailcopy-set.replyto;"
+	            preftype="bool" 
+	            prefattribute="checked" prefstring="replytocopy"/>
+	<checkbox   id="dwmailcopy_message"
+	            label="&dwmailcopy-set.message;"
+	            preftype="bool" 
+	            prefattribute="checked" prefstring="messagecopy"/>
+	<spacer flex="1"/>
+	<checkbox   id="dwmailcopy_reverse"
+	            label="&dwmailcopy-set.reverse;"
+	            preftype="bool" 
+	            prefattribute="checked" prefstring="reverse"/>
+	<vbox>
+		<button dlgtype="accept"/>
+		<button dlgtype="cancel"/>
+	</vbox>
+
+</dialog>

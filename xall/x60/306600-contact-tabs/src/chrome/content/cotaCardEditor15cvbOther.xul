@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % abMainWindowDTD SYSTEM "chrome://messenger/locale/addressbook/abMainWindow.dtd">
+  %abMainWindowDTD;
+  <!ENTITY % abCardOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abCard.dtd">
+  %abCardOverlayDTD;
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         id="cvbOtherXul"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <vbox id="cvbOther" class="cardViewGroup">
+    <description class="CardViewHeading" id="cvhOther">&other.heading;</description>
+
+    <grid>
+      <columns>
+        <column minwidth="120" />
+        <column flex="1" />
+      </columns>
+      <rows>
+        <row align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="Custom1" value="&Custom1.label;" />
+          </hbox>
+          <textbox id="Custom1" flex="1" />
+        </row>
+
+        <row align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="Custom2" value="&Custom2.label;" />
+          </hbox>
+          <textbox id="Custom2" flex="1" />
+        </row>
+
+        <row align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="Custom3" value="&Custom3.label;" />
+          </hbox>
+          <textbox id="Custom3" flex="1" />
+        </row>
+
+        <row align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="Custom4" value="&Custom4.label;" />
+          </hbox>
+          <textbox id="Custom4" flex="1" />
+        </row>
+
+        <row class="CardEditWidth">
+          <hbox pack="end">
+            <label control="Notes" value="&Notes.label;" />
+          </hbox>
+          <textbox id="Notes" multiline="true" wrap="virtual" flex="1" />
+        </row>
+      </rows>
+    </grid>
+  </vbox>
+</overlay>

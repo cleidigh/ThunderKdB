@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/locale/intl.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/mailWindow1.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/toolbar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/primaryToolbar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/addressbook/addressbook.css" type="text/css"?>
+<?xml-stylesheet href="chrome://contacttabs/skin/contacttabs.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % abMainWindowDTD SYSTEM "chrome://messenger/locale/addressbook/abMainWindow.dtd">
+  %abMainWindowDTD;
+  <!ENTITY % abCardOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abCard.dtd">
+  %abCardOverlayDTD;
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay xmlns:html="http://www.w3.org/1999/xhtml" id="abContent"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://messenger/content/addressbook/abCommon.js" />
+  <script type="application/x-javascript" src="chrome://messenger/content/addressbook/abCard.js" />
+  <script src="cotaCardEditor.js" />
+
+  <stringbundleset>
+    <stringbundle id="bundle_addressBook" src="chrome://messenger/locale/addressbook/addressBook.properties" />
+    <stringbundle id="bundle_messenger" src="chrome://messenger/locale/messenger.properties" />
+    <stringbundle id="bundle_brand" src="chrome://branding/locale/brand.properties" />
+    <stringbundle id="cota-strings" src="chrome://contacttabs/locale/contacttabs.properties" />
+  </stringbundleset>
+
+  <window  id="CardViewBox" flex="1">
+    <vbox id="CardEditorBox" flex="1">
+      <toolbox id="cota-cardeditor-toolbox"
+               class="mail-toolbox"
+               mode="full"
+               defaultmode="full"
+               labelalign="end"
+               defaultlabelalign="end">
+        <toolbar id="cota-cardeditor-toolbar"
+                 class="inline-toolbar chromeclass-toolbar"
+                 fullscreentoolbar="true"
+                 mode="full"
+                 customizable="false">
+          <description id="CardTitle" />
+          <toolbarspring/>
+          <label value="&cota.cardview.abooklist.label;"
+                 id="cota-abooklist-label"
+                 control="cota-abookslist" />
+          <menulist id="cota-abookslist"
+                    tooltiptext="&cota.cardview.move-contact-menulist.tooltip;">
+            <menupopup id="cota-abookslist-popup">
+              <!-- populated at runtime -->
+            </menupopup>
+          </menulist>
+          <toolbarbutton id="cota-button-savecard"
+                         class="toolbarbutton-1"
+                         label="&cota.cardeditor.save-button.label;"
+                         tooltiptext="&cota.cardeditor.save-button.tooltiptext;"
+                         oncommand="contacttabs.CardEditor.saveCard()" />
+          <toolbarbutton id="cota-button-canceledit"
+                         class="toolbarbutton-1"
+                         label="&cota.cardeditor.cancel-button.label;"
+                         tooltiptext="&cota.cardeditor.cancel-button.tooltiptext;"
+                         oncommand="contacttabs.CardEditor.cancelEdit()" />
+        </toolbar>
+      </toolbox>
+      <hbox id="CardContentEditor" flex="1">
+        <vbox id="cvbPhoto" class="cardViewGroup">
+          <description style="min-width: 10ch; max-width: 10ch; text-align: center;">
+            <html:img id="photo" onclick="contacttabs.CardEditor.openPhotoEditor()"
+                      style="max-width: 10ch; max-height: 10ch;" />
+          </description>
+          <filefield id="PhotoFile" style="display: none" />
+          <textbox id="PhotoURI" style="display: none" />
+          <radiogroup id="PhotoType" style="display: none" />
+        </vbox>
+
+        <vbox flex="1">
+          <vbox id="cvbContact" class="cardViewGroup">
+            <description class="CardViewHeading" id="cvhContact">&contact.heading;</description>
+            <hbox id="NameField1Container" align="center" class="CardEditWidth">
+              <label class="field-desc" control="&NameField1.id;" value="&NameField1.label;" />
+              <textbox id="&NameField1.id;" flex="1" oninput="contacttabs.CardEditor.generateDisplayName()" />
+            </hbox>
+            <hbox id="NameField2Container" align="center" class="CardEditWidth">
+              <label class="field-desc" control="&NameField2.id;" value="&NameField2.label;" />
+              <textbox id="&NameField2.id;" flex="1" oninput="contacttabs.CardEditor.generateDisplayName()" />
+            </hbox>
+            <hbox id="DisplayNameContainer" class="CardEditWidth">
+              <label class="field-desc" control="DisplayName" value="&DisplayName.label;" />
+              <textbox id="DisplayName" flex="1" oninput="contacttabs.CardEditor.displayNameChanged()" />
+            </hbox>
+            <checkbox id="preferDisplayName" label="&preferDisplayName.label;" />
+            <hbox id="NickNameContainer" align="center" class="CardEditWidth">
+              <label class="field-desc" control="NickName" value="&NickName.label;" />
+              <textbox id="NickName" flex="1" />
+            </hbox>
+            <hbox id="PrimaryEmailContainer" align="center" class="CardEditWidth">
+              <label class="field-desc" control="PrimaryEmail" value="&PrimaryEmail.label;" />
+              <textbox id="PrimaryEmail" flex="1" class="uri-element" />
+            </hbox>
+            <hbox id="SecondaryEmailContainer" align="center" class="CardEditWidth">
+              <label class="field-desc" control="SecondEmail" value="&SecondEmail.label;" />
+              <textbox id="SecondEmail" flex="1" class="uri-element" />
+            </hbox>
+            <hbox id="ScreenNameContainer" align="center" class="CardEditWidth">
+              <label class="field-desc" control="ScreenName" value="&ScreenName.label;" />
+              <textbox id="ScreenName" flex="1" />
+            </hbox>
+            <hbox id="birthdayField" align="center" class="CardEditWidth">
+              <label class="field-desc" control="Birthday" value="&Birthday.label;" />
+              <hbox align="center">
+                <!-- NOTE: This datepicker is modified. See abCardOverlay.js for details-->
+                <datepicker id="Birthday" type="popup" />
+                <label value="&In.label;" />
+                <textbox id="BirthYear" maxlength="4" placeholder="&Year.placeholder;" class="YearWidth" />
+                <label control="Age" value="&Or.value;" />
+                <textbox id="Age" maxlength="4" placeholder="&Age.placeholder;" class="YearWidth" />
+                <label value="&YearsOld.label;" />
+              </hbox>
+            </hbox>
+            <hbox align="center" class="CardEditWidth">
+               <label control="PreferMailFormatPopup" value="&PreferMailFormat.label;" />
+              <menulist id="PreferMailFormatPopup">
+                <menupopup>
+                  <!-- 0,1,2 come from nsIAbPreferMailFormat in nsIAbCard.idl -->
+                  <menuitem value="0" label="&Unknown.label;" />
+                  <menuitem value="1" label="&PlainText.label;" />
+                  <menuitem value="2" label="&HTML.label;" />
+                </menupopup>
+              </menulist>
+            </hbox>
+          </vbox>
+
+          <vbox id="cvbHome" class="cardViewGroup">
+            <description class="CardViewHeading" id="cvhHome">&home.heading;</description>
+            <hbox align="center"  class="CardEditWidth">
+              <label class="field-desc" control="HomeAddress" value="&HomeAddress.label;" />
+              <textbox id="HomeAddress" flex="1" />
+            </hbox>
+            <hbox align="center"  class="CardEditWidth">
+              <label class="field-desc" control="HomeAddress2" value="&HomeAddress2.label;" />
+              <textbox id="HomeAddress2" flex="1" />
+            </hbox>
+            <hbox id="HomeCityContainer" align="center" class="CardEditWidth">
+              <label class="field-desc" control="HomeCity" value="&HomeCity.label;" />
+              <textbox id="HomeCity" flex="1" />
+            </hbox>
+            <hbox align="center" class="CardEditWidth">
+              <label class="field-desc" control="HomeState" value="&HomeState.label;" />
+              <hbox align="center" flex="1">
+                <textbox id="HomeState" class="StateWidth" />
+                <spacer width="5" />
+                <label control="HomeZipCode" value="&HomeZipCode.label;" />
+                <textbox id="HomeZipCode" class="ZipWidth" />
+              </hbox>
+            </hbox>
+            <hbox align="center" class="CardEditWidth">
+              <label class="field-desc" control="HomeCountry" value="&HomeCountry.label;" />
+              <textbox id="HomeCountry" flex="1" />
+            </hbox>
+            <hbox id="WebPage2Container" align="center" class="CardEditWidth">
+              <label class="field-desc" control="WebPage2" value="&HomeWebPage.label;" />
+              <textbox id="WebPage2" flex="1" class="uri-element" />
+            </hbox>
+          </vbox>
+
+          <vbox id="cvbOther" class="cardViewGroup">
+            <description class="CardViewHeading" id="cvhOther">&other.heading;</description>
+            <vbox id="customFields">
+              <hbox align="center" class="CardEditWidth">
+                <label class="field-desc" control="Custom1" value="&Custom1.label;" />
+                <textbox id="Custom1" flex="1" />
+              </hbox>
+              <hbox align="center" class="CardEditWidth">
+                <label class="field-desc" control="Custom2" value="&Custom2.label;" />
+                <textbox id="Custom2" flex="1" />
+              </hbox>
+              <hbox align="center" class="CardEditWidth">
+                <label class="field-desc" control="Custom3" value="&Custom3.label;" />
+                <textbox id="Custom3" flex="1" />
+              </hbox>
+              <hbox align="center" class="CardEditWidth">
+                <label class="field-desc" control="Custom4" value="&Custom4.label;" />
+                <textbox id="Custom4" flex="1" />
+              </hbox>
+            </vbox>
+            <hbox class="CardEditWidth">
+              <label class="field-desc" control="Notes" value="&Notes.label;" />
+              <textbox id="Notes" multiline="true" wrap="virtual" flex="1" />
+            </hbox>
+          </vbox>
+        </vbox>
+
+        <spacer width="20" />
+
+        <vbox flex="1">
+          <vbox id="cvbPhone" class="cardViewGroup">
+            <description class="CardViewHeading" id="cvhPhone">&phone.heading;</description>
+            <hbox id="WorkPhoneContainer" align="center">
+              <label class="field-desc" control="WorkPhone" value="&WorkPhone.label;" />
+              <textbox id="WorkPhone" flex="1" />
+            </hbox>
+            <hbox id="HomePhoneContainer" align="center">
+              <label class="field-desc" control="HomePhone" value="&HomePhone.label;" />
+              <textbox id="HomePhone" flex="1" />
+            </hbox>
+            <hbox id="FaxNumberContainer" align="center">
+              <label class="field-desc" control="FaxNumber" value="&FaxNumber.label;" />
+              <textbox id="FaxNumber" flex="1" />
+            </hbox>
+            <hbox id="CellularNumberContainer" align="center">
+              <label class="field-desc" control="CellularNumber" value="&CellularNumber.label;" />
+              <textbox id="CellularNumber" flex="1" />
+            </hbox>
+            <hbox id="PagerNumberContainer" align="center">
+              <label class="field-desc" control="PagerNumber" value="&PagerNumber.label;" />
+              <textbox id="PagerNumber" flex="1" />
+            </hbox>
+          </vbox>
+
+          <vbox id="cvbWork" class="cardViewGroup">
+            <description class="CardViewHeading" id="cvhWork">&work.heading;</description>
+            <hbox id="JobTitleDepartmentContainer" align="center">
+              <label class="field-desc" control="JobTitle" value="&JobTitle.label;" />
+              <textbox id="JobTitle" flex="1" />
+            </hbox>
+            <hbox align="center">
+              <label class="field-desc" control="Department" value="&Department.label;" />
+              <textbox id="Department" flex="1" />
+            </hbox>
+            <hbox id="CompanyContainer" align="center">
+              <label class="field-desc" control="Company" value="&Company.label;" />
+              <textbox id="Company" flex="1" />
+            </hbox>
+            <hbox id="WorkAddressContainer" align="center">
+              <label class="field-desc" control="WorkAddress" value="&WorkAddress.label;" />
+              <textbox id="WorkAddress" flex="1" />
+            </hbox>
+            <hbox id="WorkAddress2Container" align="center">
+              <label class="field-desc" control="WorkAddress2" value="&WorkAddress2.label;" />
+              <textbox id="WorkAddress2" flex="1" />
+            </hbox>
+            <hbox id="WorkCityContainer" align="center">
+              <label class="field-desc" control="WorkCity" value="&WorkCity.label;" />
+              <textbox id="WorkCity" flex="1" />
+            </hbox>
+            <hbox align="center" class="CardEditWidth">
+              <label class="field-desc" control="WorkState" value="&WorkState.label;" />
+              <hbox align="center" flex="1">
+                <textbox id="WorkState" class="StateWidth" />
+                <spacer width="5" />
+                <label control="WorkZipCode" value="&WorkZipCode.label;" />
+                <textbox id="WorkZipCode" class="ZipWidth" />
+              </hbox>
+            </hbox>
+            <hbox id="WorkCountryContainer" align="center">
+              <label class="field-desc" control="WorkCountry" value="&WorkCountry.label;" />
+              <textbox id="WorkCountry" flex="1" />
+            </hbox>
+            <hbox id="WebPage1Container" align="center">
+              <label class="field-desc" control="WebPage1" value="&WorkWebPage.label;" />
+              <textbox id="WebPage1" flex="1" class="uri-element" />
+            </hbox>
+          </vbox>
+        </vbox>
+      </hbox>
+    </vbox>
+  </window>
+</overlay>

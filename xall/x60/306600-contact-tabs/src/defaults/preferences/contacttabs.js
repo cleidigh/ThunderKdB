@@ -1,0 +1,14 @@
+pref("extensions.org.janek.cota.firstrun", true);
+pref("extensions.org.janek.cota.numberOfResults", 50);
+pref("extensions.org.janek.cota.cotaCardEditor", true);
+pref("extensions.org.janek.cota.cotaCardEditorOne", 600);
+pref("extensions.org.janek.cota.cotaCardEditorFirst", 400);
+pref("extensions.org.janek.cota.cotaCardEditorSecond", 400);
+pref("extensions.org.janek.cota.cotaCardEditorLayout", "twoCols");
+pref("extensions.org.janek.cota.useMultiTabMode", true);
+pref("extensions.org.janek.cota.useClickableEmails", true);
+pref("extensions.org.janek.cota.showAddressBookName", true);
+pref("extensions.org.janek.cota.enableSendToPrimaryEmail", true);
+pref("extensions.org.janek.cota.searchMode", "[\"cota-search-for-emails\"]");
+pref("extensions.org.janek.cota.enableAutocompleteInComposer", true);
+pref("extensions.org.janek.cota.showCardPropertiesInCardView", false);

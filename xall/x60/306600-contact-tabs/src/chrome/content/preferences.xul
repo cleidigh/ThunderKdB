@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://contacttabs/skin/preferences.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://contacttabs/locale/translations.dtd">
+
+<prefwindow id="cota-prefs"
+            title="&pref.prefpane.label;"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <prefpane id="cota-prefs-pane"
+            label="&pref.prefpane.label;">
+    <preferences id="cota-prefs-preferences">
+      <preference id="cota-useCotaCardEditor"
+                  name="extensions.org.janek.cota.cotaCardEditor"
+                  type="bool"/>
+      <preference id="cota-useCotaCardEditorLayout"
+                  name="extensions.org.janek.cota.cotaCardEditorLayout"
+                  type="unichar"/>
+      <preference id="cota-useCotaCardEditorLayoutOne"
+                  name="extensions.org.janek.cota.cotaCardEditorOne"
+                  type="int"/>
+      <preference id="cota-useCotaCardEditorLayoutFirst"
+                  name="extensions.org.janek.cota.cotaCardEditorFirst"
+                  type="int"/>
+      <preference id="cota-useCotaCardEditorLayoutSecond"
+                  name="extensions.org.janek.cota.cotaCardEditorSecond"
+                  type="int"/>
+      <preference id="cota-useMultiTabMode"
+                  name="extensions.org.janek.cota.useMultiTabMode"
+                  type="bool"/>
+      <preference id="cota-useClickableEmails"
+                  name="extensions.org.janek.cota.useClickableEmails"
+                  type="bool"/>
+      <preference id="cota-showAddressBookName"
+                  name="extensions.org.janek.cota.showAddressBookName"
+                  type="bool"/>
+      <preference id="cota-enableAutocompleteInComposer"
+                  name="extensions.org.janek.cota.enableAutocompleteInComposer"
+                  type="bool"/>
+    </preferences>
+
+    <checkbox id="cota-useCotaCardEditorCheckbox"
+              preference="cota-useCotaCardEditor"
+              label="&pref.useCotaCardEditor.label;"
+              oncommand="contacttabs.Preferences.disableColumnsSets()" />
+    <groupbox id="useCotaCardEditorLayoutBox">
+      <caption id="cota-cotaCardEditorLayoutLabel"
+               label="&pref.useCotaCardEditorLayout.label;" />
+      <radiogroup id="cota-EditorLayoutRadioGroup"
+                  class="indent"
+                  preference="cota-useCotaCardEditorLayout">
+        <radio id="cota-EditorLayoutOneCol"
+               label="&pref.useCotaCardEditorLayout.oneCol.label;"
+               value="oneCol"
+               oncommand="contacttabs.Preferences.columnsSets()" />
+        <hbox id="cota-EditorLayoutOneBox" class="indent" align="center">
+          <label id="cota-EditorLayoutOneLabel" value="&pref.useCotaCardEditorLayout.oneColWidth;" />
+          <textbox id="cota-EditorLayoutOneWidth"
+                   type="number"
+                   preference="cota-useCotaCardEditorLayoutOne"
+                   control="cota-EditorLayoutOneCol"
+                   min="400" max="800" increment="10" width="50" />
+          <label id="cota-EditorLayoutOneSuffix" value="&pref.useCotaCardEditorLayout.colWidth.suffix;" />
+        </hbox>
+        <radio id="cota-EditorLayoutTwoCol"
+               label="&pref.useCotaCardEditorLayout.twoCols.label;"
+               value="twoCols"
+               oncommand="contacttabs.Preferences.columnsSets()" />
+        <vbox id="cota-EditorLayoutTwoBox" class="indent">
+          <grid>
+            <columns>
+              <column />
+              <column />
+            </columns>
+            <rows>
+              <row id="cota-EditorLayoutFirstBox" align="center">
+                <label id="cota-EditorLayoutFirstLabel" value="&pref.useCotaCardEditorLayout.firstColWidth;" />
+                <textbox id="cota-EditorLayoutFirstWidth"
+                         type="number"
+                         preference="cota-useCotaCardEditorLayoutFirst"
+                         control="cota-EditorLayoutTwoCol"
+                         min="400" max="800" increment="10" width="50" />
+                <label id="cota-EditorLayoutFirstSuffix" value="&pref.useCotaCardEditorLayout.colWidth.suffix;" />
+              </row>
+              <row id="cota-EditorLayoutSecondBox" align="center">
+                <label id="cota-EditorLayoutSecondLabel" value="&pref.useCotaCardEditorLayout.secondColWidth;" />
+                <textbox id="cota-EditorLayoutSecondWidth"
+                         type="number"
+                         preference="cota-useCotaCardEditorLayoutSecond"
+                          min="400" max="800" increment="10" width="50" />
+                <label id="cota-EditorLayoutSecondSuffix" value="&pref.useCotaCardEditorLayout.colWidth.suffix;" />
+              </row>
+            </rows>
+          </grid>
+        </vbox>
+      </radiogroup>
+    </groupbox>
+
+    <checkbox preference="cota-useMultiTabMode"
+              label="&pref.useMultiTabMode.label;"/>
+
+    <checkbox preference="cota-useClickableEmails"
+              label="&pref.useClickableEmails.label;"/>
+
+    <checkbox preference="cota-showAddressBookName"
+              label="&pref.showAddressBookName.label;"/>
+    <checkbox preference="cota-enableAutocompleteInComposer"
+              label="&pref.enableAutocompleteInComposer.label;"/>
+    <separator height="15"/>
+  </prefpane>
+
+  <script src="cotaPreferences.js"/>
+
+</prefwindow>

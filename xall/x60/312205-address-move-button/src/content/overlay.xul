@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://address_move_button/content/address_move_button.css" type="text/css"?>
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript" src="action.js"/>
+  <textbox id="addressCol2#1">
+    <image class="upbutton" onclick="moveUp(this.parentNode);"/>
+    <image class="downbutton" onclick="moveDown(this.parentNode);"/>
+  </textbox>
+</overlay>

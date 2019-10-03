@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://fid/skin/options.css" type="text/css"?>
+
+<!DOCTYPE window [
+  <!ENTITY % dtd1 SYSTEM "chrome://fid/locale/branding.dtd"> %dtd1;
+  <!ENTITY % dtd2 SYSTEM "chrome://fid/locale/options.dtd"> %dtd2;
+  <!ENTITY % dtd3 SYSTEM "chrome://global/locale/dialogOverlay.dtd"> %dtd3;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="&options.title;" id="id-window" persist="screenX screenY width height sizemode"
+>
+
+<script type="application/javascript" src="chrome://fid/content/rules.js"/>
+<script type="application/javascript" src="chrome://fid/content/options.js"/>
+
+<tabbox id="id-tabs" flex="1" onselect="fidOptions.doTabs();">
+    <tabs>
+        <tab label="&options.rules;"/>
+        <tab label="&options.other;"/>
+    </tabs>
+    <tabpanels flex="1" id="id-panels">
+        <tabpanel>
+            <grid flex="1">
+                <columns>
+                    <column/>
+                    <column flex="1"/>
+                </columns>
+                <rows>
+                    <description width="200">&options.description;</description>
+
+                    <spacer class="button-gap"/>
+
+                    <row flex="1">
+                        <listbox flex="1" id="id-rules" onselect="fidOptions.doSelect();"/>
+
+                        <grid flex="1">
+                            <columns>
+                                <column/>
+                                <column flex="1"/>
+                            </columns>
+                            <rows>
+                                <row align="center">
+                                    <label value="&options.rule;"/>
+                                    <textbox id="id-rule" oninput="fidOptions.doUpdateCaption();"/>
+                                </row>
+                                <row flex="1">
+                                    <label value="&options.scope;"/>
+                                    <textbox multiline="true" id="id-scope" rows="7"/>
+                                </row>
+                                <row>
+                                    <spacer/>
+                                    <checkbox id="id-regex" label="&options.regex;"/>
+                                </row>
+                                <row align="center">
+                                    <label value="&options.identity;"/>
+                                    <menulist id="id-identity"/>
+                                </row>
+                                <row>
+                                    <spacer/>
+                                    <checkbox id="id-skip-cc" label="&options.skip.cc;"/>
+                                </row>
+                                <row>
+                                    <spacer/>
+                                    <checkbox id="id-skip-bcc" label="&options.skip.bcc;"/>
+                                </row>
+                                <row>
+                                    <spacer/>
+                                    <checkbox id="id-warn" label="&options.warning;"/>
+                                </row>
+                            </rows>
+                        </grid>
+                    </row>
+                 </rows>
+            </grid>
+        </tabpanel>
+
+        <tabpanel>
+            <vbox flex="1" pack="start">
+                <groupbox>
+                    <caption label="&options.other.inspections;"/>
+                    <checkbox id="id-checkcc" label="&options.check.cc;"/>
+                    <checkbox id="id-checkdraft" label="&options.check.draft;"/>
+                </groupbox>
+
+                <groupbox>
+                    <caption label="&options.other.advanced;"/>
+                    <checkbox id="id-showregexp" label="&options.show.regexp;"
+                        oncommand="fidOptions.showRegExp();"/>
+                    <label class="text-link indent" value="&options.show.regexp.description;"
+                        onclick="fidOptions.openURL('&options.show.regexp.link;');"/>
+                </groupbox>
+            </vbox>
+        </tabpanel>
+    </tabpanels>
+</tabbox>
+
+<spacer class="button-gap"/>
+
+<hbox>
+    <hbox id="id-manage" align="start">
+        <button id="id-add" class="tool" tooltiptext="&options.add;"
+            oncommand="fidOptions.doAdd();"/>
+        <button id="id-remove" class="tool" tooltiptext="&options.remove;"
+            oncommand="fidOptions.doRemove();"/>
+        <button id="id-up" class="tool" tooltiptext="&options.up;"
+            oncommand="fidOptions.doUp();"/>
+        <button id="id-down" class="tool" tooltiptext="&options.down;"
+            oncommand="fidOptions.doDown();"/>
+    </hbox>
+
+    <spacer flex="1"/>
+
+    <button label="&okButton.label;" oncommand="fidOptions.doAccept();"/>
+    <button label="&cancelButton.label;" oncommand="window.close();"/>
+</hbox>
+
+</window>

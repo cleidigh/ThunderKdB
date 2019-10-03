@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % abMainWindowDTD SYSTEM "chrome://messenger/locale/addressbook/abMainWindow.dtd">
+  %abMainWindowDTD;
+  <!ENTITY % abCardOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abCard.dtd">
+  %abCardOverlayDTD;
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         id="cvpPhoneXul"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <vbox id="cvpPhone" class="cardViewGroup">
+    <description class="CardViewHeading" id="cvhPhone">&phone.heading;</description>
+
+    <grid>
+      <columns>
+        <column minwidth="120" />
+        <column flex="1" />
+      </columns>
+      <rows>
+        <row id="WorkPhoneContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="WorkPhone" value="&WorkPhone.label;" />
+          </hbox>
+          <textbox id="WorkPhone" flex="1" />
+        </row>
+
+        <row id="HomePhoneContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="HomePhone" value="&HomePhone.label;" />
+          </hbox>
+          <textbox id="HomePhone" flex="1" />
+        </row>
+
+        <row id="FaxNumberContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="FaxNumber" value="&FaxNumber.label;" />
+          </hbox>
+          <textbox id="FaxNumber" flex="1" />
+        </row>
+
+        <row id="CellularNumberContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="CellularNumber" value="&CellularNumber.label;" />
+          </hbox>
+          <textbox id="CellularNumber" flex="1" />
+        </row>
+
+        <row id="PagerNumberContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="PagerNumber" value="&PagerNumber.label;" />
+          </hbox>
+          <textbox id="PagerNumber" flex="1" />
+        </row>
+      </rows>
+    </grid>
+  </vbox>
+</overlay>

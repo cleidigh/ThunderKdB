@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://contacttabs/skin/contacttabs.css" type="text/css"?>
+
+
+<!DOCTYPE overlay [
+  <!ENTITY % abMainWindowDTD SYSTEM "chrome://messenger/locale/addressbook/abMainWindow.dtd" >
+  %abMainWindowDTD;
+
+  <!ENTITY % brandDTD SYSTEM "chrome://global/locale/brand.dtd" >
+  %brandDTD;
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd" >
+  %messengerDTD;
+  <!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd"> %globalDTD;
+
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay id="contacttabs"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <script type="application/javascript" src="chrome://messenger/content/addressbook/abCardView.js"/>
+  <script src="cotaCardViewType.js" />
+  <script src="cotaSearchFieldTabMonitor.js" />
+  <script src="contacttabs.js" />
+
+  <stringbundleset>
+    <stringbundle id="cota-strings" src="chrome://contacttabs/locale/contacttabs.properties" />
+  </stringbundleset>
+
+  <keyset>
+    <key id="cota-search-focus-key"
+         modifiers="&cota.searchfocus.modifiers;"
+         key="&cota.searchfocus.key;"
+         oncommand="contacttabs.Main.onCotaShortcut();" />
+  </keyset>
+
+  <vbox hidden="true" collapse="true">
+    <vbox id="cota-tab" collapsed="true">
+      <browser flex="1"
+               disablesecurity="true"
+               disablehistory="true"
+               autocompletepopup="PopupAutoComplete"
+               type="content-primary"
+               clickthrough="never" />
+    </vbox>
+
+    <vbox id="cota-create-contact-prototype">
+      <description class="cota-result-details"
+                   value="&cota.searchinput.textbox.create.new.contact;" />
+    </vbox>
+
+    <vbox  id="cota-name-and-organisation-prototype">
+      <hbox>
+        <description cotaCardProperty="CotaName"
+                     class="cota-result-name"/>
+        <description cotaCardProperty="AbookName"
+                     class="cota-result-abookname"/>
+      </hbox>
+      <description cotaCardProperty="Company"
+                   class="cota-result-company" />
+    </vbox>
+
+    <vbox  id="cota-email-prototype">
+      <description cotaCardProperty="PrimaryEmail"
+                   class="cota-result-details" />
+      <description cotaCardProperty="SecondEmail"
+                   class="cota-result-details" />
+      <description cotaCardProperty="ThirdEmail"
+                   class="cota-result-details" />
+      <description cotaCardProperty="FourthEmail"
+                   class="cota-result-details" />
+    </vbox>
+
+    <vbox id="cota-phones-prototype">
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="HomePhoneType"
+                     value="&cota.searchinput.resultlistitem.homephone.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="HomePhone"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="WorkPhoneType"
+                     value="&cota.searchinput.resultlistitem.workphone.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="WorkPhone"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CellularNumberType"
+                     value="&cota.searchinput.resultlistitem.cellphone.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="CellularNumber"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="FaxNumberType"
+                     value="&cota.searchinput.resultlistitem.faxnumber.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="FaxNumber"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="PagerNumberType"
+                     value="&cota.searchinput.resultlistitem.pager.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="PagerNumber"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="HomeFaxNumberType"
+                     value="&cota.searchinput.resultlistitem.homefax.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="HomeFaxNumber"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="OtherNumberType"
+                     value="&cota.searchinput.resultlistitem.other.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="OtherNumber"
+                     class="cota-result-details" />
+      </hbox>
+
+    </vbox>
+
+    <box id="cota-home-address-prototype" class="cota-result-address">
+      <description cotaCardProperty="CotaAlwaysVisible"
+                   value="&cota.searchinput.resultlistitem.homeaddress.prefix;"
+                   class="cota-result-address-desc" />
+      <vbox class="cota-home-address">
+        <description cotaCardProperty="HomeAddress"
+                     class="cota-result-details" />
+        <description cotaCardProperty="HomeAddress2"
+                     class="cota-result-details" />
+        <description cotaCardProperty="HomeCity,HomeState,HomeZipCode"
+                     class="cota-result-details" />
+        <description cotaCardProperty="HomeCountry"
+                     class="cota-result-details" />
+        </vbox>
+    </box>
+
+    <box id="cota-work-address-prototype" class="cota-result-address">
+      <description cotaCardProperty="CotaAlwaysVisible"
+                   value="&cota.searchinput.resultlistitem.workaddress.prefix;"
+                   class="cota-result-address-desc" />
+      <vbox class="cota-work-address">
+        <description cotaCardProperty="WorkAddress"
+                     class="cota-result-details" />
+        <description cotaCardProperty="WorkAddress2"
+                     class="cota-result-details" />
+        <description cotaCardProperty="WorkCity,WorkState,WorkZipCode"
+                     class="cota-result-details" />
+        <description cotaCardProperty="WorkCountry"
+                     class="cota-result-details" />
+      </vbox>
+    </box>
+
+    <vbox id="cota-chat-prototype">
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CotaAlwaysVisible"
+                     value="&cota.searchinput.resultlistitem.gtalk.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="_GoogleTalk"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CotaAlwaysVisible"
+                     value="&cota.searchinput.resultlistitem.aim.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="_AimScreenName"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CotaAlwaysVisible"
+                     value="&cota.searchinput.resultlistitem.yahoo.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="_Yahoo"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CotaAlwaysVisible"
+                     value="&cota.searchinput.resultlistitem.skype.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="_Skype"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CotaAlwaysVisible"
+                     value="&cota.searchinput.resultlistitem.qq.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="_QQ"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CotaAlwaysVisible"
+                     value="&cota.searchinput.resultlistitem.msn.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="_MSN"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CotaAlwaysVisible"
+                     value="&cota.searchinput.resultlistitem.icq.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="_ICQ"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CotaAlwaysVisible"
+                     value="&cota.searchinput.resultlistitem.xmpp.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="_JabberId"
+                     class="cota-result-details" />
+      </hbox>
+      <hbox class="cota-result-phone">
+        <description cotaCardProperty="CotaAlwaysVisible"
+                     value="&cota.searchinput.resultlistitem.irc.prefix;"
+                     class="cota-result-phone-desc" />
+        <description cotaCardProperty="_IRC"
+                     class="cota-result-details" />
+      </hbox>
+    </vbox>
+
+    <vbox id="cota-notes-and-userfields-prototype">
+      <description cotaCardProperty="Custom1"
+                   class="cota-result-details" />
+      <description cotaCardProperty="Custom2"
+                   class="cota-result-details" />
+      <description cotaCardProperty="Custom3"
+                   class="cota-result-details" />
+      <description cotaCardProperty="Custom4"
+                   class="cota-result-details" />
+      <description cotaCardProperty="Notes"
+                   class="cota-result-details" />
+    </vbox>
+  </vbox>
+
+  <toolbarpalette id="MailToolbarPalette">
+    <!-- addressbook search widget; provides global address book searching. -->
+    <toolbaritem id="cota-search" insertafter="button-stop"
+                 title="&cota.searchinput.toolbaritem.title;"
+                 align="center"
+                 flex="1"
+                 class="chromeclass-toolbar-additional">
+
+        <textbox id="cotaSearchInput"
+                 chromedir="&locale.dir;"
+                 flex="1"
+                 type="autocomplete"
+                 ontextentered="contacttabs.Main.onEnterInSearchBar(eventParam, domEvent)"
+                 searchbutton="true"
+                 maxrows="20"
+                 emptytext="&cota.searchinput.textbox.placeholder;"
+                 placeholder="&cota.searchinput.textbox.placeholder;"
+                 oninput="contacttabs.Main.onInput()"
+                 class="remote-gloda-search">
+          <panel id="cota-search-results-panel"
+                 noautofocus="true"
+                 type="autocomplete-richlistbox">
+            <box id="cota-results-list-container">
+              <richlistbox id="cota-results-list"
+                           class="autocomplete-richlistbox"
+                           flex="1"> </richlistbox>
+            </box>
+          </panel>
+
+          <toolbarbutton id="cota-searchbutton"
+                         type="menu"
+                         tooltiptext="&cota.searchinput.toolbaritem.tooltip;">
+            <menupopup id="cota-searchbutton-popup"
+                       popupalign="topleft"
+                       popupanchor="bottomleft">
+              <menuitem disabled="true"
+                        label="&cota.searchoptions.search-for.label;" />
+              <menuseparator/>
+              <menuitem label="&cota.searchoptions.emails-and-names.label;"
+                        id="cota-search-for-emails"
+                        type="checkbox"
+                        closemenu="none"
+                        oncommand="contacttabs.Main.onSearchModeChanged()" />
+              <menuitem label="&cota.searchoptions.addresses.label;"
+                        id="cota-search-for-addresses"
+                        type="checkbox"
+                        closemenu="none"
+                        oncommand="contacttabs.Main.onSearchModeChanged()" />
+              <menuitem label="&cota.searchoptions.phone-and-fax-numbers.label;"
+                        id="cota-search-for-phone"
+                        type="checkbox"
+                        closemenu="none"
+                        oncommand="contacttabs.Main.onSearchModeChanged()" />
+              <menuitem label="&cota.searchoptions.chat-fields.label;"
+                        id="cota-search-for-chat"
+                        type="checkbox"
+                        closemenu="none"
+                        oncommand="contacttabs.Main.onSearchModeChanged()" />
+              <menuitem label="&cota.searchoptions.notes-and-custom-fields.label;"
+                        id="cota-search-for-notes"
+                        type="checkbox"
+                        closemenu="none"
+                        oncommand="contacttabs.Main.onSearchModeChanged()" />
+              <menuseparator/>
+              <menuitem disabled="true"
+                        label="&cota.searchoptions.search-in.label;" />
+              <menuseparator/>
+            </menupopup>
+          </toolbarbutton>
+          <spacer width="5px" />
+          <hbox>
+               <image class="gloda-search-icon"
+                      onclick="contacttabs.Main.onEnterInSearchBar()" />
+            </hbox>
+        </textbox>
+    </toolbaritem>
+  </toolbarpalette>
+</overlay>

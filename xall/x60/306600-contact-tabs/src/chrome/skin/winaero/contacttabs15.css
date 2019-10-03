@@ -1,0 +1,144 @@
+@import url("chrome://messenger/skin/primaryToolbar.css");
+
+#CardContent * {
+    font-size: 12px;
+}
+
+#CardContent {
+    overflow: auto;
+}
+
+#cotaSearchInput {
+  -moz-binding: url("chrome://contacttabs/content/autocomplete.xml#autocomplete") !important;
+}
+
+#cota-results-list richlistitem .cota-result-name {
+    font-weight: bold;
+}
+
+#cota-results-list richlistitem .cota-result-details,
+#cota-results-list richlistitem .cota-result-company {
+    padding: 0px;
+    padding-left: .5em;
+    font-style: italic;
+    opacity: .7;
+}
+
+#cota-results-list richlistitem .cota-result-company {
+    font-weight: bold;
+    opacity: .6;
+}
+
+#cota-results-list richlistitem .cota-result-address .cota-result-details,
+#cota-results-list richlistitem .cota-result-phone .cota-result-details {
+    padding-left: 0em;
+}
+
+#cota-results-list richlistitem .cota-result-address-desc,
+#cota-results-list richlistitem .cota-result-phone-desc {
+    padding-right: 0px;
+    margin-right: 0px;
+    padding-left: .5em;
+    width: 1.1em;
+    opacity: .7;
+}
+
+#cota-searchbutton {
+    -moz-appearance: none;
+  list-style-image: url("chrome://contacttabs/skin/aero_toolbar.png") !important;
+    -moz-image-region: rect(18px, 16px, 30px, 0px) !important;
+    min-width: 0;
+    background-color: transparent;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#cota-searchbutton:hover {
+    -moz-appearance: none;
+  list-style-image: url("chrome://contacttabs/skin/aero_toolbar.png") !important;
+    -moz-image-region: rect(18px, 32px, 30px, 16px) !important;
+    min-width: 0;
+    background-color: transparent;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#CardTitle {
+  border: 0px;
+  margin-left: 6px;
+}
+
+#cota-cardview-toolbar {
+    -moz-box-align: center;
+}
+
+#cota-button-copycard {
+  list-style-image: url("chrome://contacttabs/skin/aero_toolbar.png");
+  -moz-image-region: rect( 1px 17px 17px 1px );
+}
+
+#cota-button-editcard {
+  list-style-image: url("chrome://contacttabs/skin/aero_toolbar.png");
+  -moz-image-region: rect( 1px 35px 17px 19px );
+}
+
+#cota-button-deletecard {
+  list-style-image: url("chrome://contacttabs/skin/aero_toolbar.png");
+  -moz-image-region: rect( 1px 54px 17px 37px );
+}
+
+#cota-button-preferences {
+  list-style-image: url("chrome://contacttabs/skin/aero_toolbar.png");
+  -moz-image-region: rect( 1px 71px 17px 55px );
+}
+
+#cota-button-savecard {
+  list-style-image: url("chrome://contacttabs/skin/aero_toolbar.png");
+  -moz-image-region: rect( 1px 89px 17px 73px )
+}
+
+#cota-button-canceledit {
+  list-style-image: url("chrome://contacttabs/skin/aero_toolbar.png");
+  -moz-image-region: rect( 1px 107px 17px 91px );
+}
+
+#cota-abooklist-label {
+  padding-top: 0px !important;
+}
+
+/* CardViewText is now selectable, with the text cursor */
+.CardViewText {
+  cursor: text;
+  -moz-user-select: text;
+  -moz-user-focus: normal;
+}
+
+/* CardViewLink (such as email links) are also selectable */
+.CardViewLink {
+  -moz-user-select: text;
+  -moz-user-focus: normal;
+}
+
+#photo {
+    cursor:pointer;
+}
+
+.humanMsgVisible, .humanMsgHidden {
+    border: solid 2px #AAA;
+    box-shadow: none;
+    font-size: 20px;
+    text-align: center;
+    opacity: 0.9
+}
+
+.humanMsgHidden {
+    -moz-transition-property: opacity;
+    -moz-transition-duration: 1s;
+    -moz-transition-timing-function: ease-out;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    opacity: 0;
+}

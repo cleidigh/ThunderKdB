@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   - Portions Copyright (C) Philipp Kewisch, 2012 -->
+
+<!DOCTYPE overlay SYSTEM "chrome://fp-unread/locale/fp-unread.dtd">
+
+<overlay id="fp-unread-extension-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://fp-unread/content/fp-unread.js"/>
+  
+  <menupopup id="menu_FolderViewsPopup">
+    <menuitem id="menu_AdvancedUnread"
+              value="unread_hierarchy"
+              label="&fp-unread.advancedUnreadFolders.label;"
+              accesskey="&fp-unread.advancedUnreadFolders.accesskey;"
+              type="radio"
+              name="viewmessages"
+              oncommand="gFolderTreeView.mode = this.value;">
+    </menuitem>
+  </menupopup>
+</overlay>

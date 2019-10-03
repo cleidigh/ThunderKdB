@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<!DOCTYPE dialog [
+  <!ENTITY % abCardOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abCard.dtd" >
+  %abCardOverlayDTD;
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        id="cotaPhotoEditor"
+        title="&Photo.tab;"
+        persist="screenX screenY"
+        screenX="50"
+        screenY="50"
+        minwidth="500"
+        onload="contacttabs.PhotoEditor.photoEditorLoaded()"
+        ondialogaccept="contacttabs.PhotoEditor.photoEditorClosedOK()"
+        ondialogcancel="contacttabs.PhotoEditor.photoEditorClosedCancel()">
+
+  <script type="application/x-javascript"
+          src="chrome://messenger/content/addressbook/abCommon.js"/>
+  <script type="application/x-javascript"
+          src="chrome://messenger/content/addressbook/abCard.js"/>
+  <script src="cotaPhotoEditor.js"/>
+
+  <stringbundleset>
+    <stringbundle id="bundle_addressBook" src="chrome://messenger/locale/addressbook/addressBook.properties"/>
+  </stringbundleset>
+
+
+  <hbox id="abPhotoTab" align="center">
+    <description style="min-width: 25ch; max-width: 25ch; text-align: center">
+      <html:img id="photo" style="max-width: 25ch; max-height: 25ch;"/>
+    </description>
+    <groupbox flex="1">
+      <caption label="&PhotoDesc.label;"/>
+      <radiogroup id="PhotoType" onselect="onSwitchPhotoType();">
+        <vbox id="GenericPhotoContainer">
+          <radio id="GenericPhotoType" value="generic" label="&GenericPhoto.label;"
+                 accesskey="&GenericPhoto.accesskey;"/>
+          <menulist id="GenericPhotoList" class="indent" flex="1"
+                    oncommand="onSwitchPhotoType('generic');">
+            <menupopup>
+              <menuitem label="&DefaultPhoto.label;" selected="true"
+                        value="chrome://messenger/skin/addressbook/icons/contact-generic.png"
+                        image="chrome://messenger/skin/addressbook/icons/contact-generic-tiny.png"/>
+            </menupopup>
+          </menulist>
+        </vbox>
+
+        <vbox id="FilePhotoContainer">
+          <radio id="FilePhotoType" value="file" label="&PhotoFile.label;"
+                 accesskey="&PhotoFile.accesskey;"/>
+          <hbox class="indent">
+            <filefield id="PhotoFile" maxlength="255" flex="1"/>
+            <button oncommand="browsePhoto();" id="BrowsePhoto"
+                    label="&BrowsePhoto.label;"
+                    accesskey="&BrowsePhoto.accesskey;"/>
+          </hbox>
+        </vbox>
+
+        <vbox id="WebPhotoContainer">
+          <radio id="WebPhotoType" value="web" label="&PhotoURL.label;"
+                 accesskey="&PhotoURL.accesskey;"/>
+          <hbox class="indent">
+            <textbox id="PhotoURI" maxlength="255" flex="1"
+                     placeholder="&PhotoURL.placeholder;"/>
+            <button oncommand="onSwitchPhotoType('web');" id="UpdatePhoto"
+                    label="&UpdatePhoto.label;"
+                    accesskey="&UpdatePhoto.accesskey;"/>
+          </hbox>
+        </vbox>
+      </radiogroup>
+    </groupbox>
+  </hbox>
+</dialog>

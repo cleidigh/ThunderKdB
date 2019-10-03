@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xul-overlay href="chrome://contacttabs/content/cotaCardEditor15toolbox.xul"?>
+
+<?xul-overlay href="chrome://contacttabs/content/cotaCardEditor15cvbContact.xul"?>
+<?xul-overlay href="chrome://contacttabs/content/cotaCardEditor15cvbHome.xul"?>
+<?xul-overlay href="chrome://contacttabs/content/cotaCardEditor15cvbPhoto.xul"?>
+<?xul-overlay href="chrome://contacttabs/content/cotaCardEditor15cvbOther.xul"?>
+<?xul-overlay href="chrome://contacttabs/content/cotaCardEditor15cvbPhone.xul"?>
+<?xul-overlay href="chrome://contacttabs/content/cotaCardEditor15cvbWork.xul"?>
+<?xul-overlay href="chrome://contacttabs/content/cotaCardEditor15cvbChat.xul"?>
+
+<?xml-stylesheet href="chrome://messenger/skin/mailWindow1.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/primaryToolbar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/addressbook/addressbook.css" type="text/css"?>
+<?xml-stylesheet href="chrome://contacttabs/skin/contacttabs15.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % abMainWindowDTD SYSTEM "chrome://messenger/locale/addressbook/abMainWindow.dtd">
+  %abMainWindowDTD;
+  <!ENTITY % abCardOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abCard.dtd">
+  %abCardOverlayDTD;
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         id="abContent"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://messenger/content/addressbook/abCommon.js" />
+  <script type="application/x-javascript" src="chrome://messenger/content/addressbook/abCard.js" />
+  <script src="cotaCardEditor.js" />
+
+  <stringbundleset>
+    <stringbundle id="bundle_addressBook" src="chrome://messenger/locale/addressbook/addressBook.properties" />
+    <stringbundle id="bundle_messenger" src="chrome://messenger/locale/messenger.properties" />
+    <stringbundle id="bundle_brand" src="chrome://branding/locale/brand.properties" />
+    <stringbundle id="cota-strings" src="chrome://contacttabs/locale/contacttabs.properties" />
+  </stringbundleset>
+
+  <window flex="1">
+    <vbox id="CardViewBox" flex="1">
+      <toolbox id="cota-cardview-toolbox"
+               class="mail-toolbox"
+               mode="full"
+               defaultmode="full"
+               labelalign="end"
+               defaultlabelalign="end" />
+      <hbox id="CardContent" flex="1">
+        <spacer flex="1" />
+        <vbox id="cvbPhoto" class="cardViewGroup" />
+        <vbox id="cvbFirstColumn" maxwidth="" flex="1">
+          <vbox id="cvbContact" class="cardViewGroup" />
+          <vbox id="cvbHome" class="cardViewGroup" />
+          <vbox id="cvbOther" class="cardViewGroup" />
+        </vbox>
+        <spacer width="20" />
+        <vbox id="cvbSecondColumn" maxwidth="" flex="1">
+          <vbox id="cvpPhone" class="cardViewGroup" />
+          <vbox id="cvpWork" class="cardViewGroup" />
+          <vbox id="cvbChat" class="cardViewGroup" />
+        </vbox>
+        <spacer flex="1" />
+      </hbox>
+    </vbox>
+  </window>
+</overlay>

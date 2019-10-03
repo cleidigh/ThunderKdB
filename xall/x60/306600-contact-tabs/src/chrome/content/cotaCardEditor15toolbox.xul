@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://contacttabs/skin/contacttabs15.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % abMainWindowDTD SYSTEM "chrome://messenger/locale/addressbook/abMainWindow.dtd">
+  %abMainWindowDTD;
+  <!ENTITY % abCardOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abCard.dtd">
+  %abCardOverlayDTD;
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         id="cvbContactXul"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <toolbox id="cota-cardview-toolbox"
+           class="mail-toolbox"
+           mode="full"
+           defaultmode="full"
+           labelalign="end"
+           defaultlabelalign="end">
+    <toolbar id="cota-cardview-toolbar"
+             class="inline-toolbar chromeclass-toolbar"
+             fullscreentoolbar="true"
+             mode="full"
+             customizable="false">
+      <description id="CardTitle" />
+      <toolbarspring/>
+      <label value="&cota.cardview.abooklist.label;"
+             id="cota-abooklist-label"
+             control="cota-abookslist" />
+      <menulist id="cota-abookslist"
+                tooltiptext="&cota.cardview.move-contact-menulist.tooltip;">
+        <menupopup id="cota-abookslist-popup">
+          <!-- populated at runtime -->
+        </menupopup>
+      </menulist>
+      <toolbarbutton id="cota-button-savecard"
+                     class="toolbarbutton-1"
+                     label="&cota.cardeditor.save-button.label;"
+                     tooltiptext="&cota.cardeditor.save-button.tooltiptext;"
+                     oncommand="contacttabs.CardEditor.saveCard()" />
+      <toolbarbutton id="cota-button-canceledit"
+                     class="toolbarbutton-1"
+                     label="&cota.cardeditor.cancel-button.label;"
+                     tooltiptext="&cota.cardeditor.cancel-button.tooltiptext;"
+                     oncommand="contacttabs.CardEditor.cancelEdit()" />
+    </toolbar>
+  </toolbox>
+</overlay>

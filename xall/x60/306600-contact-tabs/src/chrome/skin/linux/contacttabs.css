@@ -1,0 +1,181 @@
+@import url("chrome://messenger/skin/primaryToolbar.css");
+
+#CardContentView *, #CardContentEditor * {
+    font-family: -moz-dialog;
+    font-size: 12px;
+}
+
+#CardContentView , #CardContentEditor {
+    overflow: auto;
+}
+
+#cotaSearchInput {
+  -moz-binding: url("chrome://contacttabs/content/autocomplete.xml#autocomplete") !important;
+}
+
+#cota-results-list {
+  -moz-binding: url("chrome://contacttabs/content/cotasearch.xml#resultpanel") !important;
+}
+
+#cota-results-list richlistitem {
+    -moz-binding: url("chrome://contacttabs/content/cotasearch.xml#resultitem") !important;
+}
+
+#cota-results-list richlistitem .cota-result-name {
+    font-weight: bold;
+    margin-right:0px;
+}
+
+#cota-results-list richlistitem .cota-result-abookname {
+    font-weight: normal;
+    padding: 0px;
+    font-style: italic;
+    opacity: .7;
+    margin-left:5px;
+}
+
+#cota-results-list richlistitem .cota-result-details,
+#cota-results-list richlistitem .cota-result-company {
+    padding: 0px;
+    padding-left: .5em;
+    font-style: italic;
+    opacity: .7;
+}
+
+#cota-results-list richlistitem .cota-result-company {
+    font-weight: bold;
+    opacity: .6;
+}
+
+#cota-results-list richlistitem .cota-result-details .emailLink {
+    color: -moz-nativehyperlinktext;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#cota-results-list richlistitem:hover .cota-result-details .emailLink,
+#cota-results-list richlistitem[selected="true"] .cota-result-details .emailLink {
+    color: HighlightText;
+}
+
+#cota-results-list richlistitem .cota-result-address .cota-result-details,
+#cota-results-list richlistitem .cota-result-phone .cota-result-details {
+    padding-left: 0em;
+}
+
+#cota-results-list richlistitem .cota-result-address-desc,
+#cota-results-list richlistitem .cota-result-phone-desc {
+    padding-right: 0px;
+    margin-right: 0px;
+    padding-left: .5em;
+    width: 1.1em;
+    opacity: .7;
+}
+
+#cota-searchbutton {
+    -moz-appearance: none;
+  list-style-image: url("chrome://contacttabs/skin/linux_toolbar.png") !important;
+    -moz-image-region: rect(24px, 16px, 36px, 0px) !important;
+    min-width: 0;
+    height: 22px;
+    background-color: transparent;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#cota-searchbutton:hover {
+    -moz-appearance: none;
+  list-style-image: url("chrome://contacttabs/skin/linux_toolbar.png") !important;
+    -moz-image-region: rect(24px, 32px, 36px, 16px) !important;
+    min-width: 0;
+    height: 22px;
+    background-color: transparent;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#CardTitle {
+  border: 0px;
+  margin-left: 6px;
+}
+
+#cota-cardview-toolbar, #cota-cardeditor-toolbar {
+    -moz-box-align: center;
+}
+
+#cota-button-editcard {
+  list-style-image: url("chrome://contacttabs/skin/linux_toolbar.png");
+  -moz-image-region: rect( 0px 48px 24px 24px );
+}
+
+#cota-button-deletecard {
+  list-style-image: url("chrome://contacttabs/skin/linux_toolbar.png");
+  -moz-image-region: rect(0px 120px 24px 96px);
+}
+
+#cota-button-preferences {
+  list-style-image: url("chrome://contacttabs/skin/linux_toolbar.png");
+  -moz-image-region: rect(0px 144px 24px 120px);
+}
+
+#cota-button-savecard {
+  list-style-image: url("chrome://contacttabs/skin/linux_toolbar.png");
+  -moz-image-region: rect(0px 72px 24px 48px);
+}
+
+#cota-button-canceledit {
+  list-style-image: url("chrome://contacttabs/skin/linux_toolbar.png");
+  -moz-image-region: rect(0px 96px 24px 72px);
+}
+
+#cota-abooklist-label {
+  padding-top: 6px !important;
+  font-size: 0.9em;
+}
+
+/* CardViewText is now selectable, with the text cursor */
+.CardViewText {
+  cursor: text;
+  -moz-user-select: text;
+  -moz-user-focus: normal;
+}
+
+/* CardViewLink (such as email links) are also selectable */
+.CardViewLink {
+  -moz-user-select: text;
+  -moz-user-focus: normal;
+}
+
+#photo {
+    cursor:pointer;
+}
+
+/**
+  These classes define various styles for the contact card editor.
+  If the widths specified here don't suit the localized editor, they
+  can be overwritten in locale/<culture>/contacttabs-localized.css.
+ */
+label.field-desc {
+    width: 14ch;
+}
+
+.CardEditWidth {
+  width: 29ch;
+}
+
+.YearWidth {
+  width: 5ch;
+}
+
+.stateZipSpacer {
+  width: 1ch;
+}
+
+.StateWidth {
+  width: 17ch;
+}
+.ZipWidth {
+  width: 7ch;
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % abMainWindowDTD SYSTEM "chrome://messenger/locale/addressbook/abMainWindow.dtd" >
+  %abMainWindowDTD;
+  <!ENTITY % abCardOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abCard.dtd" >
+  %abCardOverlayDTD;
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         id="cvbPhototXul"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <vbox id="cvbPhoto" class="cardViewGroup">
+    <description style="min-width: 10ch; max-width: 10ch; text-align: center;">
+      <html:img id="photo"
+                onclick="contacttabs.CardEditor.openPhotoEditor()"
+                style="max-width: 10ch; max-height: 10ch;"/>
+    </description>
+    <filefield id="PhotoFile" style="display: none"/>
+    <textbox id="PhotoURI" style="display: none"/>
+    <radiogroup id="PhotoType" style="display: none"/>
+  </vbox>
+</overlay>

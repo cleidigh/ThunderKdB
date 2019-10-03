@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<bindings xmlns="http://www.mozilla.org/xbl"
+         xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <binding id="result-container"
+           extends="xul:box">
+    <implementation>
+      <method name="onPopupClick">
+        <parameter name="aEvent"/>
+        <body><![CDATA[
+        ]]></body>
+      </method>
+    </implementation>
+  </binding>
+
+  <binding id="resultpanel"
+           extends="chrome://global/content/bindings/autocomplete.xml#autocomplete-richlistbox">
+    <resources>
+      <stylesheet src="chrome://global/skin/autocomplete.css"/>
+    </resources>
+  </binding>
+
+  <binding id="resultitem"
+           extends="chrome://global/content/bindings/richlistbox.xml#richlistitem">
+    <resources>
+      <stylesheet src="chrome://global/skin/autocomplete.css"/>
+    </resources>
+  </binding>
+</bindings>

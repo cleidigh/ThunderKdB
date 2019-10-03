@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "thunderlink",
+  "description": "Clickable, durable links to specific email messages!",
+  "version": "1.2.9",
+  "author": "Mike Hardy and Christopher Zwirello",
+  "homepage_url": "https://github.com/mikehardy/thunderlink",
+  "legacy": {
+    "options": {
+      "page": "chrome://thunderlink/content/preferences.xul",
+      "open_in_tab": false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "thunderlink@mozilla.org",
+      "strict_min_version": "42.0"
+    }
+  }}

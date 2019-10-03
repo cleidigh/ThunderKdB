@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   - Portions Copyright (C) Philipp Kewisch, 2012 -->
+
+<?xml-stylesheet href="chrome://global/skin/"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://fp-unread/locale/fp-unread.dtd">
+
+<prefwindow xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            id="fp-unread-prefs-window"
+            windowtype="extensions:fp-unread:options"
+            title="&fp-unread.options.title;">
+  <preferences>
+    <preference id="extensions.fp-unread.alwaysshow.inbox"
+                name="extensions.fp-unread.alwaysshow.inbox"
+                type="bool"/>
+    <preference id="extensions.fp-unread.alwaysshow.drafts"
+                name="extensions.fp-unread.alwaysshow.drafts"
+                type="bool"/>
+    <preference id="extensions.fp-unread.alwaysshow.templates"
+                name="extensions.fp-unread.alwaysshow.templates"
+                type="bool"/>
+    <preference id="extensions.fp-unread.alwaysshow.sent"
+                name="extensions.fp-unread.alwaysshow.sent"
+                type="bool"/>
+    <preference id="extensions.fp-unread.alwaysshow.trash"
+                name="extensions.fp-unread.alwaysshow.trash"
+                type="bool"/>
+    <preference id="extensions.fp-unread.alwaysshow.favorite"
+                name="extensions.fp-unread.alwaysshow.favorite"
+                type="bool"/>
+    <preference id="extensions.fp-unread.alwaysshow.displayed"
+                name="extensions.fp-unread.alwaysshow.displayed"
+                type="bool"/>
+    <preference id="extensions.fp-unread.forceExpand"
+                name="extensions.fp-unread.forceExpand"
+                type="bool"/>
+  </preferences>
+  <prefpane id="fp-unread-prefpane">
+    <groupbox id="fp-unread-groupbox">
+      <caption label="&fp-unread.alwaysshow.label;"/>
+      <checkbox id="fp-unread-inbox-checkbox"
+                preference="extensions.fp-unread.alwaysshow.inbox"
+                label="&fp-unread.alwaysshow.inbox.label;"/>
+      <checkbox id="fp-unread-drafts-checkbox"
+                preference="extensions.fp-unread.alwaysshow.drafts"
+                label="&fp-unread.alwaysshow.drafts.label;"/>
+      <checkbox id="fp-unread-templates-checkbox"
+                preference="extensions.fp-unread.alwaysshow.templates"
+                label="&fp-unread.alwaysshow.templates.label;"/>
+      <checkbox id="fp-unread-sent-checkbox"
+                preference="extensions.fp-unread.alwaysshow.sent"
+                label="&fp-unread.alwaysshow.sent.label;"/>
+      <checkbox id="fp-unread-trash-checkbox"
+                preference="extensions.fp-unread.alwaysshow.trash"
+                label="&fp-unread.alwaysshow.trash.label;"/>
+      <checkbox id="fp-unread-favorite-checkbox"
+                preference="extensions.fp-unread.alwaysshow.favorite"
+                label="&fp-unread.alwaysshow.favorite.label;"/>
+      <checkbox id="fp-unread-displayed-checkbox"
+                preference="extensions.fp-unread.alwaysshow.displayed"
+                label="&fp-unread.alwaysshow.displayed.label;"/>
+    </groupbox>
+
+    <checkbox id="fp-unread-alwaysexpand"
+              preference="extensions.fp-unread.forceExpand"
+              label="&fp-unread.forceExpand.label;"/>
+  </prefpane>
+</prefwindow>

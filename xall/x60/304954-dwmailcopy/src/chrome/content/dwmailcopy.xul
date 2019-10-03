@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://dwmailcopy/content/dwmailcopy.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://dwmailcopy/locale/dwmailcopy.dtd">
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+
+    <script type="application/x-javascript"
+        src="chrome://dwmailcopy/content/pref.js" />
+
+    <script type="application/x-javascript"
+        src="chrome://dwmailcopy/content/dwmailcopy.js" />
+
+    <toolbarpalette id="MsgComposeToolbarPalette">
+	<toolbarbutton class="toolbarbutton-1"
+		id="dwmailcopy-btn"
+		label="&dwmailcopy-btn.label;"
+		tooltiptext="&dwmailcopy-btn.tooltiptext;"
+		oncommand="dwmailcopy.module.godwmailcopy();"/>
+    </toolbarpalette>
+</overlay>
+

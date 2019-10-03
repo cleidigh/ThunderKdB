@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % abMainWindowDTD SYSTEM "chrome://messenger/locale/addressbook/abMainWindow.dtd">
+  %abMainWindowDTD;
+  <!ENTITY % abCardOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abCard.dtd">
+  %abCardOverlayDTD;
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         id="cvbChatXul"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <vbox id="cvbChat" class="cardViewGroup">
+    <description class="CardViewHeading" id="cvhChat">&chat.heading;</description>
+
+    <grid>
+      <columns>
+        <column minwidth="120" />
+        <column flex="1" />
+      </columns>
+      <rows>
+        <row id="GtalkContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="Gtalk" value="&Gtalk.label;" />
+          </hbox>
+          <textbox id="Gtalk" flex="1" />
+        </row>
+
+        <row id="AIMContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="AIM" value="&AIM.label;" />
+          </hbox>
+          <textbox id="AIM" flex="1" />
+        </row>
+
+        <row id="YahooContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="Yahoo" value="&Yahoo.label;" />
+          </hbox>
+          <textbox id="Yahoo" flex="1" />
+        </row>
+
+        <row id="SkypeContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="Skype" value="&Skype.label;" />
+          </hbox>
+          <textbox id="Skype" flex="1" />
+        </row>
+
+        <row id="QQContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="QQ" value="&QQ.label;" />
+          </hbox>
+          <textbox id="QQ" flex="1" />
+        </row>
+
+        <row id="MSNContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="MSN" value="&MSN.label;" />
+          </hbox>
+          <textbox id="MSN" flex="1" />
+        </row>
+
+        <row id="ICQContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="ICQ" value="&ICQ.label;" />
+          </hbox>
+          <textbox id="ICQ" flex="1" />
+        </row>
+
+        <row id="XMPPContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="XMPP" value="&XMPP.label;" />
+          </hbox>
+          <textbox id="XMPP" flex="1" />
+        </row>
+      </rows>
+    </grid>
+  </vbox>
+</overlay>

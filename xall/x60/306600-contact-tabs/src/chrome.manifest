@@ -1,0 +1,29 @@
+content     contacttabs    chrome/content/
+overlay     chrome://messenger/content/messenger.xul chrome://contacttabs/content/contacttabs.xul
+
+skin        contacttabs classic/1.0 chrome/skin/win/ os=WINNT
+skin        contacttabs classic/1.0 chrome/skin/winaero/ os=WINNT osversion>=6
+skin        contacttabs classic/1.0 chrome/skin/mac/   os=Darwin
+skin        contacttabs classic/1.0 chrome/skin/linux/   os=Linux
+
+style       chrome://global/content/customizeToolbar.xul  chrome://contacttabs/skin/contacttabs.css
+style       chrome://messenger/content/messenger.xul  chrome://contacttabs/skin/higlightEmailLinks.css appversion<16.0
+overlay     chrome://messenger/content/messengercompose/messengercompose.xul	chrome://contacttabs/content/cotaMessengerCompose.xul
+
+component {cdce3c75-c926-452a-bfa8-ffb8cdf9e593} components/cotaAddrbookAutocompleteSearch.js
+contract @mozilla.org/autocomplete/search;1?name=cotaaddrbook {cdce3c75-c926-452a-bfa8-ffb8cdf9e593}
+
+locale contacttabs ca chrome/locale/ca/
+locale contacttabs de chrome/locale/de/
+locale contacttabs en-US chrome/locale/en-US/
+locale contacttabs es-ES chrome/locale/es-ES/
+locale contacttabs fr chrome/locale/fr/
+locale contacttabs gl-ES chrome/locale/gl-ES/
+locale contacttabs it chrome/locale/it/
+locale contacttabs ja chrome/locale/ja/
+locale contacttabs nl chrome/locale/nl/
+locale contacttabs pl chrome/locale/pl/
+locale contacttabs sr chrome/locale/sr/
+locale contacttabs sv-SE chrome/locale/sv-SE/
+locale contacttabs tr chrome/locale/tr/
+locale contacttabs zh-CN chrome/locale/zh-CN/

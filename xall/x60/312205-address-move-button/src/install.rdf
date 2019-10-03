@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>address_move_button@d.hatena.ne.jp</em:id>
+    <em:type>2</em:type>
+    <em:name>Address Move Button</em:name>
+    <em:version>0.3</em:version>
+    <em:description>Allow you to add a Address Move Button to mail compose window.</em:description>
+    <em:creator>shimamu</em:creator>
+    <em:homepageURL>https://github.com/shimamu/</em:homepageURL>
+    <em:iconURL>chrome://address_move_button/content/icon.png</em:iconURL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>3.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>
+

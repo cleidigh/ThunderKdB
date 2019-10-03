@@ -1,0 +1,33 @@
+
+.plain textbox-addressingWidget {
+  -moz-appearance: none; 
+}
+
+
+.upbutton {
+  list-style-image: url("chrome://address_move_button/content/up-button.png");
+  -moz-image-region: rect(0 16px 16px 0);
+  -moz-appearance: none;
+  border: none !important;
+  padding: 2px;
+  right: 50px;
+  left: 100px;
+}
+
+.downbutton {
+  list-style-image: url("chrome://address_move_button/content/down-button.png");
+  -moz-image-region: rect(0 16px 16px 0);
+  -moz-appearance: none;
+  border: none !important;
+  padding: 2px;
+  right: 50px;
+  left: 100px;
+}
+
+.upbutton:hover, .downbutton:hover {
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+.upbutton:hover:active, .downbutton:hover:active {
+  -moz-image-region: rect(0 48px 16px 32px);
+}

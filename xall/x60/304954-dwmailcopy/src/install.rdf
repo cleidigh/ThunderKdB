@@ -1,0 +1,109 @@
+﻿<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>{B39E5958-4825-4069-8907-A2495805B825}</em:id>
+    <em:type>2</em:type>
+    <em:version>0.0.10</em:version>
+    <em:iconURL>chrome://dwmailcopy/content/dwmailcopy.png</em:iconURL>
+    <em:localized>
+      <Description>
+        <em:locale>en-US</em:locale>
+        <em:creator>DangerousWOO</em:creator>
+        <em:contributor></em:contributor>
+        <em:name>dwMailCopy</em:name>
+        <em:description>This is application doing copy for dividing e-mail. This application is converting "(2/5)" to the string "(1/5)".</em:description>
+        <em:homepageURL>https://homebase.server-on.net/home/</em:homepageURL>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>ar</em:locale>
+        <em:creator>DangerousWOO</em:creator>
+        <em:contributor></em:contributor>
+        <em:name>dwMailCopy</em:name>
+        <em:description>??? ?? ??????? ?????? ?????? ???? ??????? ??????????. ??? ??????? ?? ????? "(2 / 5)" ??? ??????? "(1 / 5)".</em:description>
+        <em:homepageURL>https://homebase.server-on.net/home/</em:homepageURL>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:creator>DangerousWOO</em:creator>
+        <em:contributor></em:contributor>
+        <em:name>dwMailCopy</em:name>
+        <em:description>Dies ist die Anwendung zu tun Kopie zur Aufteilung E-Mail. Diese Anwendung ist converting "(2/5)" die Zeichenfolge "(1/5)".</em:description>
+        <em:homepageURL>https://homebase.server-on.net/home/</em:homepageURL>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>es-AR</em:locale>
+        <em:creator>DangerousWOO</em:creator>
+        <em:contributor></em:contributor>
+        <em:name>dwMailCopy</em:name>
+        <em:description>Se trata de la aplicacion haciendo copia de division de correo electronico. Esta aplicacion es la conversion "(2/5)" a la cadena "(1/5)".</em:description>
+        <em:homepageURL>https://homebase.server-on.net/home/</em:homepageURL>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>pt-BR</em:locale>
+        <em:creator>DangerousWOO</em:creator>
+        <em:contributor></em:contributor>
+        <em:name>dwMailCopy</em:name>
+        <em:description>Esta e a aplicacao fazendo copia para dividir e-mail. Esta aplicacao e converter "(2/5)" para a string "(1/5)".</em:description>
+        <em:homepageURL>https://homebase.server-on.net/home/</em:homepageURL>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>zh-CN</em:locale>
+        <em:creator>DangerousWOO</em:creator>
+        <em:contributor></em:contributor>
+        <em:name>dwMailCopy</em:name>
+        <em:description>?是?用程序除以?子?件的副本。此?用程序??“（2/5）”字符串“（1/5）”。</em:description>
+        <em:homepageURL>https://homebase.server-on.net/home/</em:homepageURL>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>ja-JP</em:locale>
+        <em:creator>DangerousWOO</em:creator>
+        <em:contributor></em:contributor>
+        <em:name>dwMailCopy</em:name>
+        <em:description>分割メールの作成を補助するアドオンです。編集中の主文メールをコピーし、件名に含まれるキーワードの(1/5)を(2/5)というように変換します。</em:description>
+        <em:homepageURL>https://homebase.server-on.net/home/</em:homepageURL>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>ru-RU</em:locale>
+        <em:creator>DangerousWOO</em:creator>
+        <em:contributor></em:contributor>
+        <em:name>dwMailCopy</em:name>
+        <em:description>Это приложение делает копию для разделения электронной почте. Это приложение превращает "(2 / 5)" в строку "(1 / 5)".</em:description>
+        <em:homepageURL>https://homebase.server-on.net/home/</em:homepageURL>
+      </Description>
+    </em:localized>
+    <em:creator>DangerousWOO</em:creator>
+    <em:contributor></em:contributor>
+    <em:name>dwMailCopy</em:name>
+    <em:description>This is application doing copy for dividing e-mail. This application is converting "(2/5)" to the string "(1/5)." in E-mail subject. Also, "{1/5}" or "[1/5]" is to be converted as well.</em:description>
+    <em:homepageURL>https://homebase.server-on.net/home/</em:homepageURL>
+
+    <!-- thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>1.5</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:optionsURL>chrome://dwmailcopy/content/settings.xul</em:optionsURL>
+
+  </Description>
+</RDF>

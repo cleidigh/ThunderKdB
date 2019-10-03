@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % abMainWindowDTD SYSTEM "chrome://messenger/locale/addressbook/abMainWindow.dtd">
+  %abMainWindowDTD;
+  <!ENTITY % abCardOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abCard.dtd">
+  %abCardOverlayDTD;
+  <!ENTITY % translationsDTD SYSTEM "chrome://contacttabs/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<overlay xmlns:html="http://www.w3.org/1999/xhtml"
+         id="cvbContactXul"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <vbox id="cvbContact" class="cardViewGroup">
+    <description class="CardViewHeading" id="cvhContact">&contact.heading;</description>
+
+    <grid>
+      <columns>
+        <column minwidth="120" />
+        <column flex="1" />
+      </columns>
+      <rows>
+        <row id="NameField1Container" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="&NameField1.id;" value="&NameField1.label;" />
+          </hbox>
+          <textbox id="&NameField1.id;" flex="1" oninput="contacttabs.CardEditor.generateDisplayName()" />
+        </row>
+
+        <row id="NameField2Container" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="&NameField2.id;" value="&NameField2.label;" />
+          </hbox>
+          <textbox id="&NameField2.id;" flex="1" oninput="contacttabs.CardEditor.generateDisplayName()" />
+        </row>
+
+        <row id="DisplayNameContainer" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="DisplayName" value="&DisplayName.label;" />
+          </hbox>
+          <textbox id="DisplayName" flex="1" oninput="contacttabs.CardEditor.displayNameChanged()" />
+        </row>
+
+        <row id="NickNameContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="NickName" value="&NickName.label;" />
+          </hbox>
+          <textbox id="NickName" flex="1" />
+        </row>
+
+        <row id="PrimaryEmailContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="PrimaryEmail" value="&PrimaryEmail.label;" />
+          </hbox>
+          <textbox id="PrimaryEmail" flex="1" class="uri-element" />
+        </row>
+
+        <row id="SecondaryEmailContainer" align="center" class="CardEditWidth">
+          <hbox pack="end">
+            <label control="SecondEmail" value="&SecondEmail.label;" />
+          </hbox>
+          <textbox id="SecondEmail" flex="1" class="uri-element" />
+        </row>
+      </rows>
+    </grid>
+
+    <checkbox id="preferDisplayName" label="&preferDisplayName.label;" />
+
+    <hbox align="center" class="CardEditWidth">
+      <label control="PreferMailFormatPopup" value="&PreferMailFormat.label;" />
+      <menulist id="PreferMailFormatPopup">
+        <menupopup>
+          <!-- 0,1,2 come from nsIAbPreferMailFormat in nsIAbCard.idl -->
+          <menuitem value="0" label="&Unknown.label;" />
+          <menuitem value="1" label="&PlainText.label;" />
+          <menuitem value="2" label="&HTML.label;" />
+        </menupopup>
+      </menulist>
+    </hbox>
+  </vbox>
+</overlay>
