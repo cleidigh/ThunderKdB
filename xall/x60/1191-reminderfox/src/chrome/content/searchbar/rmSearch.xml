@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE bindings 
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+
+<bindings id="SearchBindings"
+xmlns="http://www.mozilla.org/xbl"
+xmlns:html="http://www.w3.org/1999/xhtml"
+xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+xmlns:xbl="http://www.mozilla.org/xbl">
+
+
+	<binding id="searchbar" extends="chrome://global/content/bindings/textbox.xml#textbox">
+		<resources>
+			<stylesheet src="chrome://reminderfox/skin/rmSearchBox.css"/>
+		</resources>
+		<content>
+			<children/>
+			<xul:hbox id="rmFx-searchText-field" class="rmFx-searchText-field" flex="1">
+
+				<xul:toolbarbutton id="rmFx-searchText-menuItems" type="menu" xbl:inherits="">
+					<xul:menupopup id="rmFx-search-popup">
+						<xul:menuitem  value="0" label="&rf.add.reminders.column.description.label;"
+							type="radio" onclick="reminderfox.search.textSearchMenuChange(this)" />
+						<xul:menuitem value="1" label="&rf.add.reminders.column.categories.label;"
+							type="radio" onclick="reminderfox.search.textSearchMenuChange(this)" />
+						<xul:menuitem value="2" label="&rf.add.reminders.column.notes.label;"
+							type="radio" onclick="reminderfox.search.textSearchMenuChange(this)" />
+						<xul:menuitem value="3" label="&rf.reminderoptions.location.header;"
+							type="radio" onclick="reminderfox.search.textSearchMenuChange(this)" />
+						<xul:menuitem value="4" label="&rf.reminderoptions.search.anywhere.header;"
+							type="radio" onclick="reminderfox.search.textSearchMenuChange(this)" />
+					</xul:menupopup>
+				</xul:toolbarbutton>
+
+
+
+				<html:input class="textbox-input" flex="1" anonid="input"
+				allowevents="true"
+				xbl:inherits="onfocus,onblur,value,type,maxlength,disabled,size,readonly,tabindex,accesskey"/>
+
+
+				<xul:toolbarbutton id="rmFx-textSearch-clearbutton" xbl:inherits=""
+				disabled="true" class="rmFx-textSearch-clearbutton"
+				onclick="reminderfox.search.textSearchBoxClear();"/>
+			</xul:hbox>
+		</content>
+		<implementation>
+			<constructor>
+				<![CDATA[    // initialize the quick search mode based
+				]]>
+			</constructor>
+			<property name="clearButtonShown"
+			onget="return document.getElementById('rmFx-textSearch-clearbutton')
+			.getAttribute('clearButtonShown') == 'true';"
+			onset="document.getElementById('rmFx-textSearch-clearbutton')
+			.setAttribute('clearButtonShown', val); return val;"
+			/>
+		</implementation>
+		<handlers>
+			<handler event="input">
+				<![CDATA[
+				if (this.value) reminderfox.search.textSearchOnInput(this);
+				]]>
+			</handler>
+		</handlers>
+	</binding>
+</bindings>

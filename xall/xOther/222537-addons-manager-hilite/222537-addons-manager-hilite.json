@@ -1,0 +1,218 @@
+{
+    "id": 222537,
+    "authors": [
+        {
+            "id": 748493,
+            "name": "custom.firefox.lady",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/customfirefoxlady/",
+            "username": "customfirefoxlady",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 22,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ],
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "firefox": [
+            "other"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1900499,
+        "compatibility": {
+            "thunderbird": {
+                "max": "55.*",
+                "min": "31.0"
+            },
+            "seamonkey": {
+                "max": "2.49.*",
+                "min": "2.13"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "16.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1900499",
+        "files": [
+            {
+                "id": 471742,
+                "created": "2016-07-22T02:20:12Z",
+                "hash": "sha256:c10d982d30a1845478769d9ac10d0d6b3275b28655746dbc34c7d6518bd58494",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 22780,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/471742/addons_manager_hilite-3.0-fx+sm+tb-linux.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 471743,
+                "created": "2016-07-22T02:20:12Z",
+                "hash": "sha256:79a6e0e04e671cbab0625d370716a3931a5691b181fbbe70e3f385a2240f29ce",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 22780,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/471743/addons_manager_hilite-3.0-fx+sm+tb-mac.xpi?src=",
+                "permissions": []
+            },
+            {
+                "id": 471744,
+                "created": "2016-07-22T02:20:12Z",
+                "hash": "sha256:1cb9cc26b0ffa118ed5b5c99c46c195943ab75731f81da7b74c628bafc2bab95",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 22773,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/471744/addons_manager_hilite-3.0-fx+sm+tb-windows.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "* Fixed error in install.rdf which prevented multi-process compatible flag from being recognized\n* Compatibility fix for Firefox48+\n* Saved selections for hilite now stored in pref rather than in localstore.rdf \n* Saved selections now stored as name/value pairs \n* Fix various shutdown code issues (memory leak after add-on disabled until fx restart)\n* Fixed appearance of hover highlight on Firefox 40+\n* Minor cosmetic fix to Options panel (Correct size of Input field for entering 'Listbox Size') \n* Remove apparently no longer necessary delays\n* Add sorting buttons to Add-ons Manager page (except for categories known to supply own sort buttons)\n* Drop Alphabetical &amp; Updated sort prefs (use sorting buttons instead)\n* Attempt to auto-detect categories\n* Add UI for (previously hidden) option showing the version number in the optional autocomplete Add-on List (no longer requires restart)\n* Add option to group 'by state' when sorting by 'Last Updated'\n* Fixed: Autocomplete listbox should not include inaccessible (hidden) add-ons e.g. Firefox Hello\n* Move autocomplete code for optional Add-on listbox into a module and only load it if option enabled and delay its load until Add-ons Manager is first opened \n* Better compatibility with current Thunderbird versions; drop support for Thunderbird versions prior to 31\n* Drop support for UIextra hidden pref (broken since version 2.1 anyway)\n* Drop support for Add-ons Manager Dialog Returns extension (which is broken on current Firefox versions anyway)\n* Added el locale (thanks to George Malamas)\n* Refactor options handling code\n\nNote: Due to change in method of storing the saved hilite, a one time reset of your saved hilite data will occur when updating from a version prior to 3.0."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/3.0",
+        "version": "3.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Automatically restores the hilite when changing between add-on categories (extensions, themes, plugins, services, userstyles added by Stylish), upon re-opening the Add-ons Manager, and after restarting Firefox.  Optional autocomplete-enabled list box provides quick access to any extension. Version 3.0 includes sorting buttons to sort add-ons by name, last updated, or state (enabled, disabled).\n\nThis is a workaround for the inability of the new Add-ons Manager in Firefox 4.0+ to remember the last selected item and re-hilite it (see Bug <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/761350f43b8cb5ab636f10500d6ea13aafa00304eb93769201c7dad1d2d86a8b/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=586956\">586956</a>). For behavior suggested by Bug 586956 (remember hilite only until Add-ons Manager is closed or Firefox restarted), deselect the option 'Always Restore Hilite'."
+    },
+    "developer_comments": {
+        "en-US": "General Notes:\nKeyboard Shortcut to open the Add-ons Manager is Ctrl+Shift+A. \n\nPlease use the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c6c93c9cb3849a13e2f5e94c29dca1f2e72fa166adbef330b04cbb5206756eaf/http%3A//forums.mozillazine.org/viewtopic.php%3Ff=48&amp;t=1982363\">Support Website</a> or my <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7f724239731633a6c967d4eaa8c5004be9ed7b5cdbe87b61087a3eceee4c9118/http%3A//www.shadetreeapiary.com/extension/Forms/aomhilite_contactform.htm\"> Contact Form</a> for comments / bug reports / feature requests."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/edit",
+    "guid": "addonsmgrhilte@cfl",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/222/222537-64.png?modified=1524096302",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/222/222537-32.png?modified=1524096302",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/222/222537-64.png?modified=1524096302"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2016-07-23T00:12:01Z",
+    "name": {
+        "en-US": "Addons Manager Hilite"
+    },
+    "previews": [
+        {
+            "id": 67102,
+            "caption": {
+                "en-US": "Addons Manager Hilite remembers and re-hilites your previous selection. No more need to keep manually scrolling back to it! (Turn the added dropdown listbox on/off  via 'Options', as desired.)"
+            },
+            "image_size": [
+                700,
+                322
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67102.png?modified=1530208842",
+            "thumbnail_size": [
+                320,
+                147
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67102.png?modified=1530208842"
+        },
+        {
+            "id": 107898,
+            "caption": {
+                "en-US": "Options for version 2.0"
+            },
+            "image_size": [
+                339,
+                341
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/107/107898.png?modified=1530208843",
+            "thumbnail_size": [
+                199,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/107/107898.png?modified=1530208843"
+        },
+        {
+            "id": 67103,
+            "caption": {
+                "en-US": "Click the dropdown arrow to quickly select an extension. Or start typing part of the extension's name; it's an autocomplete-enabled listbox."
+            },
+            "image_size": [
+                212,
+                50
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67103.png?modified=1530208843",
+            "thumbnail_size": [
+                212,
+                50
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67103.png?modified=1530208843"
+        },
+        {
+            "id": 67104,
+            "caption": {
+                "en-US": "The optional listbox after clicking the dropdown arrow."
+            },
+            "image_size": [
+                180,
+                310
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67104.png?modified=1530208843",
+            "thumbnail_size": [
+                116,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67104.png?modified=1530208843"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.66097,
+        "count": 19,
+        "average": 4.8947,
+        "text_count": 18
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/222537",
+    "slug": "addons-manager-hilite",
+    "status": "public",
+    "summary": {
+        "en-US": "Remembers last selected (hilited) extension/theme/plugin/userstyle in Add-ons Manager. Version 3.0 also includes sorting buttons. Turn off/on the add-on selection list box and/or fine tune behavior via its Options."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "http://forums.mozillazine.org/viewtopic.php?t=1982363"
+    },
+    "tags": [
+        "addons",
+        "extension",
+        "extension manager",
+        "highlight",
+        "restartless"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/",
+    "weekly_downloads": 104
+}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="chrome://archive-this/content/button.css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<!DOCTYPE overlay >
+<overlay
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="archive-this-string-bundle" src="chrome://archive-this/locale/archive-this.properties"/>
+  </stringbundleset>
+
+
+<!--  id="archive-this-overlay"-->
+<script type="application/x-javascript"
+  src="chrome://archive-this/content/rule.js"/>
+
+<script type="application/x-javascript"
+  src="chrome://archive-this/content/keyutils.js"/>
+
+<script type="application/x-javascript"
+  src="chrome://archive-this/content/main.js"/>
+
+<!-- Thunderbird mail -->
+<!-- Button Disabled: it's a lot of work to make this work correctly everywhere.
+<toolbarpalette id="MailToolbarPalette">
+  <toolbarbutton id="archive-this-button-1"/>
+</toolbarpalette>
+-->
+
+<!-- button details -->
+<toolbarbutton id="archive-this-button-1"
+  tooltiptext="Archive the currently selected message(s)"
+  oncommand="ArchiveThis['filter'](true)"
+  class="toolbarbutton-1 chromeclass-toolbar-additional archive-this"
+  >
+  <stack>
+    <image/>
+    <image class="badge" src="chrome://archive-this/contents/gear.png" />
+  </stack>
+  <label value="Archive"/>
+</toolbarbutton>
+
+<!-- keystroke details -->
+<window id="messengerWindow">
+  <keyset id="archive-this-keys">
+<!-- These are set programmatically; see ArchiveThis.bindKeys() in main.js
+
+    <key id="archive-this-key-0" modifiers="control" key="0" 
+         oncommand="ArchiveThis['filter'](true)" />
+    <key id="archive-this-key-1" modifiers="control" key="1" 
+         oncommand="ArchiveThis['folder'](1)" />
+    <key id="archive-this-key-2" modifiers="control" key="2" 
+         oncommand="ArchiveThis['folder'](2)" />
+    <key id="archive-this-key-3" modifiers="control" key="3" 
+         oncommand="ArchiveThis['folder'](3)" />
+    <key id="archive-this-key-4" modifiers="control" key="4" 
+         oncommand="ArchiveThis['folder'](4)" />
+    <key id="archive-this-key-5" modifiers="control" key="5" 
+         oncommand="ArchiveThis['folder'](5)" />
+    <key id="archive-this-key-6" modifiers="control" key="6" 
+         oncommand="ArchiveThis['folder'](6)" />
+    <key id="archive-this-key-7" modifiers="control" key="7" 
+         oncommand="ArchiveThis['folder'](7)" />
+    <key id="archive-this-key-8" modifiers="control" key="8" 
+         oncommand="ArchiveThis['folder'](8)" />
+    <key id="archive-this-key-9" modifiers="control" key="9" 
+         oncommand="ArchiveThis['folder'](9)" />
+    <key id="archive-this-move" modifiers="shift" key="S" 
+         oncommand="ArchiveThis['moveToFolder']()" />
+    <key id="archive-this-move" modifiers="shift" key="G" 
+         oncommand="ArchiveThis['goToFolder']()" />
+    <key id="archive-this-move" modifiers="shift" key="X" 
+         oncommand="ArchiveThis['copyToFolder']()" />
+-->
+  </keyset>
+
+  <keyset id="archive-this-disabled-keys" />
+
+  <script>
+    window.addEventListener('load',function(){ArchiveThis.init();},false);
+  </script>
+</window>
+
+</overlay>

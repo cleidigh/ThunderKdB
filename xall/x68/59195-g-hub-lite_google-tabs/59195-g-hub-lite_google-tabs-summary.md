@@ -12,8 +12,8 @@ Max: 72.0a1
 
 # Files
 
-Source Tree: [Src](x68/59195-g-hub-lite_google-tabs/src)  
-Current XPI: [XPI](x68/59195-g-hub-lite_google-tabs/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/59195-g-hub-lite_google-tabs/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/59195-g-hub-lite_google-tabs/xpi)  
 
 
 

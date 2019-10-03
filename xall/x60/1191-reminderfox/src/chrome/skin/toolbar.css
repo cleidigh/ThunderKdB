@@ -1,0 +1,158 @@
+/* -------- toolbar.css ----------------- */
+
+
+toolbarbutton.reminderfox-sendPlus {
+	list-style-image: url("chrome://messenger/skin/icons/send.svg");
+}
+
+
+	#reminderfox-personsMailCopy {
+			list-style-image: url("chrome://reminderfox/skin/schedule/personsCopy_24.png");
+	}
+	toolbar[iconsize="small"] #reminderfox-personsMailCopy {
+			list-style-image: url("chrome://reminderfox/skin/schedule/personsCopy_16.png");
+	}
+
+
+#reminderFox_showCalendar {
+	list-style-image: url("chrome://reminderfox/skin/datepicker/calendar-up.png");
+}
+toolbar[iconsize="small"] #reminderFox_showCalendar {
+	list-style-image: url("chrome://reminderfox/skin/datepicker/calendar-small.gif");
+}
+
+#reminderFox_addReminderButton {
+	list-style-image: url("chrome://reminderfox/skin/images/upcomingReminderBow.png");
+	vertical-align: bottom;
+}
+toolbar[iconsize="small"] #reminderFox_addReminderButton {
+	list-style-image: url("chrome://reminderfox/skin/images/ribbon-blue-small.png");
+}
+
+
+#smartfoxy_image {
+list-style-image: url("chrome://reminderfox/skin/images/foxy-head-16.png");
+}
+
+
+/*  smartFoxy  */
+#reminderfox_smartFoxyBadge[bowtext=false] {
+    position:absolute;
+    margin-top: -2px;           /*   << change to position the height, but could influence the whole menu bar!  */
+    margin-left: -2px;         /*   << change value to overlap/or not  */
+    margin-bottom: 5px;
+    padding:1px 4px 1px 4px;
+	font-weight:bold;
+    font-size:0.75em;
+    background-color:#FCFFBA;   /*   << could use a background image as well  */
+    border-radius:50px;
+    box-shadow:2px 1px 2px gray;
+}
+#reminderfox_smartFoxyBadge[bowtext=true] {
+    position:absolute;
+    margin-top: 2px;           /*   << change to position the height, but could influence the whole menu bar!  */
+    margin-left: 2px;         /*   << change value to overlap/or not  */
+    padding:1px 2px 0px 2px;
+    font-size:1em;
+}
+
+
+#reminderfox_smartFoxyBadge[important=true]{
+    font-weight:bold;         /*  need to have bold or it's hard to read */
+    color: white;
+    background-color: #FF4545;
+}
+
+#reminderfox_smartFoxyBadge[importantText=true]{
+    color: red;
+}
+
+
+#reminderFox_openButton {
+	list-style-image: url("chrome://reminderfox/skin/images/foxy-head-25.png");
+}
+
+
+toolbar[iconsize="small"]  #reminderFox_openButton {
+	list-style-image: url("chrome://reminderfox/skin/images/foxy-head-16.png");
+}
+
+
+/* Added for Australis support - larger icon for sidebar */
+/*
+#reminderFox_openButton[cui-areatype="menu-panel"],
+toolbarpaletteitem[place="palette"] > #reminderFox_openButton {
+  list-style-image: url("chrome://reminderfox/skin/images/foxy-head-25.png");
+}
+*/
+
+
+#reminderFox_quickAlarmButton {
+	list-style-image: url("chrome://reminderfox/skin/images/alarmbell.png");
+}
+toolbar[iconsize="small"] #reminderFox_quickAlarmButton {
+	list-style-image: url("chrome://reminderfox/skin/images/alarmbell.png");
+}
+
+
+/* ribbon */
+
+#smartfoxy_image_bow {
+list-style-image: url("chrome://reminderfox/skin/images/bow.png");
+}
+
+
+#reminderFox_openButton_bow {
+	list-style-image: url("chrome://reminderfox/skin/images/bow.png");
+}
+
+toolbar[iconsize="small"]  #reminderFox_openButton_bow {
+	list-style-image: url("chrome://reminderfox/skin/images/bow.png");
+}
+
+/* change the ribbon bow icon based on status */
+#smartfoxy_image_bow[status="currentReminder"] {
+	list-style-image: url("chrome://reminderfox/skin/images/bow.png");
+}
+
+#smartfoxy_image_bow[status="upcomingReminder"] {
+	list-style-image: url("chrome://reminderfox/skin/images/upcomingReminderBow.png");
+}
+
+#smartfoxy_image_bow[status="noReminders"] {
+	list-style-image: url("chrome://reminderfox/skin/images/noReminderBow.png");
+}
+
+/*  smartFoxy  bow icon */
+#reminderfox_smartFoxyBadge_bow[bowtext=false] {
+    position:absolute;
+    margin-top: -2px;           /*   << change to position the height, but could influence the whole menu bar!  */
+    margin-left: -5px;         /*   << change value to overlap/or not  */
+    margin-bottom: 5px;
+    padding:1px 4px 1px 4px;
+    font-weight:bold;
+    font-size:0.75em;
+
+    background-color:#FCFFBA;   /*   << could use a background image as well  */
+    border-radius:50px;
+    box-shadow:2px 1px 2px gray;
+}
+
+#reminderfox_smartFoxyBadge_bow[bowtext=true] {
+    position:absolute;
+    margin-top: 2px;           /*   << change to position the height, but could influence the whole menu bar!  */
+    margin-left: 2px;         /*   << change value to overlap/or not  */
+    padding:1px 2px 0px 2px;
+    font-size:1em;
+}
+
+
+#reminderfox_smartFoxyBadge_bow[important=true]{
+    font-weight:bold;         /*  need to have bold or it's hard to read */
+    color: white;
+    background-color: #FF4545;
+}
+
+#reminderfox_smartFoxyBadge_bow[importantText=true]{
+    color: red;
+}

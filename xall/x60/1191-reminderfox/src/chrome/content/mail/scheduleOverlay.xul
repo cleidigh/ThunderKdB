@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+
+<!-- CSS Files -->
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/catBox.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/schedule.css"  type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+<overlay
+	id="schedule-overlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/schedule.js" />
+	<script type="application/x-javascript"  src="chrome://reminderfox/content/mail/rmFxIcalMail.js" />
+
+	<vbox id="moreOptionsInvitationBox"  		hidden="true">
+
+			<!--    display 'schedule info' -->
+			<hbox >
+				<spacer width="5px" />
+				<text value="&rf.schedule.scheduleinfo;" />
+				<text id="scheduleInfos1" value="as of + sequence" />
+			</hbox>
+			<hbox id="scheduleInfos2Box" hidden="true">
+				<spacer width="20px" />
+				<text id="scheduleInfos2" value="DTSTART and DTEND" />
+			</hbox>
+
+			<spacer height="10px" />
+
+			<hbox id="OrganizerAndMe" >
+				<vbox>
+					<hbox id="scheduleOrganizer">
+						<spacer width="20px" />
+						<text value="&rf.schedule.organizer;" width="120px"/>
+
+						<spacer width="65px" />
+						<text  id="organzierName" value="organizer@web.xyt" flex="1" />
+						<spacer  width="5px"/>
+					</hbox>
+
+					<hbox id="scheduleMe"    		hidden="true">
+						<spacer width="20px" />
+						<text id="scheduleMeText" value="&rf.schedule.thisisme;" width="120px"/>
+
+						<vbox id="schMeBox" />
+						<spacer  width="25px"/>
+					</hbox >
+					<!--gW to be used .... with iCal/Schedule  -->
+					<!-- label id="statusMsg"  value="statusMsg" hidden="true"/ -->
+					<hbox>
+							<spacer width="20px" />
+							<button id="rf-iCal-my-Reply-Accept"  label="&rf.schedule.invitation.accept;"  oncommand="reminderfox.iSchedule.rsvp('ACCEPTED');"  hidden="true" />
+							<button id="rf-iCal-my-Reply-Decline" label="&rf.schedule.invitation.decline;" oncommand="reminderfox.iSchedule.rsvp('DECLINED');" hidden="true" />
+					</hbox>
+
+				</vbox>
+
+				<vbox id="schMoreAttendees" 	hidden="true">
+		        	<toolbarbutton id="attendees"
+		        		tooltiptext="&rf.schedule.showall.attendees;"
+						onmouseover="this.style.cursor='pointer';"
+		                onclick="reminderfox.iSchedule.showAttendees();"
+		                label="+ xx "  />
+		        </vbox>
+			</hbox>
+
+			<hbox height="10px" />
+
+		    <hbox id="schAttendeesBox0" 	hidden="true">
+		        <spacer width="20px" />
+		        <vbox >
+					<text value="&rf.schedule.attendees;" width="120px"/>
+		        </vbox>
+
+		        <vbox  id="schAttendeesBox" 	hidden="false">
+					<!-- ........ hbox for each attendee ...... -->
+		        <spacer  width="25px" />
+		        </vbox>
+		    </hbox>
+
+		</vbox>
+
+</overlay>

@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+<!--   Note:   this XUL dialog is HIDDEN;
+       With sync failing of any remote calendar the XUL dialog is unhidden
+       and shows the error for the calendar. Handles to open Options tab:sync
+       to configure, or to ignore and proceed with next calendar
+       -->
+
+<window xmlns:html="http://www.w3.org/1999/xhtml"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		windowtype="window:rmFxCaldavUpdate" orient="vertical"
+		onload="calDAVupdate()"
+		autostretch="always"
+		title="Reminderfox Remote Calendar -- Auto Sync">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/passwordManagerUtils.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVrequester.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVcalls.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/HTTP.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+
+
+	<hbox id="rmFxCaldavUpdate" hidden="true">
+		<spacer width="15px"/>
+		<vbox>
+
+			<hbox>
+				<label id="errorStatus" width="250px" class="reminderFox_BoldError"/>
+			</hbox>
+			<description id="account" width="250px" class="reminderfox_TextNote">
+			</description>
+			<description id="url" width="250px" class="reminderfox_TextNote">
+			</description>
+
+			<spacer height="10px"/>
+
+			<hbox id="reminderFox_go4NextSync" >
+				<button id="reminderFox_go4NextSyncX"
+					class="reminderfox-iconLabel"
+					oncommand="go4NextSync(true);"
+					label="&rf.caldavupdate.next.calendars.label;" tooltiptext="&rf.caldavupdate.skip.this.calendar.tooltip;"/>
+
+				<spacer flex="1"/>
+			</hbox>
+
+			<vbox id="reminderFox_calDAV412" hidden="true">
+
+					<description  class="reminderfox_TextNote">Remote reminder may have changed.
+					</description>
+
+					<hbox>
+						<button id="reminderFox_calDAV412local"
+							class="reminderfox-iconLabel"
+							oncommand="go412handling(true);"
+							label="Use Local" tooltiptext="Ignore remote reminder!"/>
+
+						<button id="reminderFox_calDAV412remote"
+							class="reminderfox-iconLabel"
+							oncommand="go412handling(false);"
+							label="Use Remote" tooltiptext="Download remote reminder!"/>
+					</hbox>
+			</vbox>
+			<spacer flex="1"/>
+
+			<hbox id="reminderFox_go4OptionSync">
+				<button id="reminderFox_go4OptionSyncX"
+					class="reminderfox-iconLabel"
+					oncommand="go4OptionSync(true);"
+					label="&rf.caldavupdate.configure.calendar.label;" tooltiptext="&rf.caldavupdate.open.options.sync.tooltip;"/>
+			</hbox>
+		</vbox>
+	</hbox>
+
+	<spacer height="10px"/>
+
+	<script type="application/x-javascript"><![CDATA[
+
+		var currentCall, rHeaders;
+
+		function calDAVupdate () {
+			var updateWindow = reminderfox.util.getWindow("window:rmFxCaldavUpdate");
+			updateWindow.screenX= 10;
+			updateWindow.screenY= (738 /*this.screen.height*/ - 150);
+
+			document.getElementById('errorStatus').value       = window.arguments[0].sMsg;
+			document.getElementById('account').value           = window.arguments[0].aMsg;
+			document.getElementById('url').value               = window.arguments[0].uMsg;
+			document.getElementById('rmFxCaldavUpdate').hidden = false;
+
+			rHeaders= window.arguments[0].rHeaders
+			currentCall = window.arguments[0].call
+			if (window.arguments[0].status == "412") {
+				document.getElementById('reminderFox_go4NextSync').hidden = true;
+				document.getElementById('reminderFox_go4OptionSync').hidden = true;
+				document.getElementById('reminderFox_calDAV412').hidden = false;
+
+				// if Etag isn't returned (as with GCal) hide button
+				if (rHeaders.Etag == null) {
+					document.getElementById('reminderFox_calDAV412local').hidden = true;
+				}
+			}
+		}
+
+		function go4OptionSync() {
+			reminderfox.overlay.openOptionsDialog('network');
+		// here we can close the XUL
+			window.close();
+		}
+
+		function go4NextSync() {
+			rmFx_CalDAV_SyncActiveAccountsNext(false);
+		}
+
+		// handle err 412 Precaution
+		function go412handling(mode) {
+
+			document.getElementById('reminderFox_go4NextSync').setAttribute('disabled', 'true');
+			document.getElementById('reminderFox_calDAV412local').setAttribute('disabled', 'true');
+			document.getElementById('reminderFox_calDAV412remote').setAttribute('disabled', 'true');
+
+			var id = currentCall.account.ID
+			if (mode == false) {
+				// update the account with remote reminders
+				rmFx_CalDAV_SyncAccount (id, true)
+
+			} else {
+				// ignore remote and send new local
+				var accounts = reminderfox.calDAV.getAccounts()
+				accounts[id][currentCall.ics].status = -2
+				accounts[id][currentCall.ics].etag = '"'+reminderfox.util.trim(rHeaders.Etag).replace(/\"/g,'')+'"'
+				reminderfox.calDAV.accountsWrite(accounts);
+
+				reminderfox.core.updateMainDialog (currentCall.reminder[0])
+			}
+
+		}
+
+
+	]]></script>
+
+</window>

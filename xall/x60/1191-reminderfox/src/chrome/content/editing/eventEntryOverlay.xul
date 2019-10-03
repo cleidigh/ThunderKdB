@@ -1,0 +1,588 @@
+<?xml version="1.0"?>
+
+<!-- CSS Files -->
+
+<!--  gWCalDAV: next entry required to show the icon on the menuitem! -->
+<!--?xml-stylesheet href="chrome://global/content/xul.css" type="text/css"?-->
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/menulist.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/catBox.css"  type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox-platform/skin/gtk3linux.css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/mail/scheduleOverlay.xul"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+
+<overlay id="event-overlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/eventEntry.js" />
+
+	<!-- description entry overlay -->
+	<vbox id="descriptionEntry" flex="1">
+		<grid align="center" flex="0">
+			<columns>
+				<column width="100px" />
+				<column flex="6" />
+				<column flex="1" />
+			</columns>
+
+			<rows>
+
+				<row align="center">
+					<label value="&rf.calendar.layout.Calendar;" />
+
+					<hbox>
+						<menulist id="reminderListChooser" oncommand="reminderFox_ListChooserChanged()"
+							tabindex="1" flex="1">
+							<menupopup id="reminderAllLists">
+								<menuitem id="reminderLocal" label="&rf.add.tab.reminders.label;" />
+								<menuseparator id="" />
+								<menuitem label="&rf.add.tab.todos.label;" id="ToDo's" />
+								<!-- dynamically populated with other user lists -->
+							</menupopup>
+						</menulist>
+					</hbox>
+					<hbox></hbox>
+				</row>
+
+				<row align="center">
+					<label id="descLabel" value="&rf.reminderoptions.description.label;"
+						align="center" />
+
+						<textbox id="newReminderText" tabindex="1" />
+
+					<hbox>
+						<toolbarbutton id="displayMail" style="display: none;"
+							type="checkbox" oncommand="showMailIcon();" />
+						<toolbarbutton id="notesToggle" type="checkbox"
+							oncommand="reminderFox_toggleNotes();" tabindex="2" autoCheck="false" />
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+
+		<vbox orient="vertical" flex="2">
+			<textbox width="305px" flex="1" id="notesText" multiline="true"
+				rows="4" />
+		</vbox>
+	</vbox>
+
+
+	<!-- date entry overlay -->
+	<hbox id="dateEntryHBox" flex="0">
+		<menulist id="monthlist" oncommand="optionsDateChanged(true)">
+			<menupopup>
+				<menuitem label="&month.1;" value="1" />
+				<menuitem label="&month.2;" value="2" />
+				<menuitem label="&month.3;" value="3" />
+				<menuitem label="&month.4;" value="4" />
+				<menuitem label="&month.5;" value="5" />
+				<menuitem label="&month.6;" value="6" />
+				<menuitem label="&month.7;" value="7" />
+				<menuitem label="&month.8;" value="8" />
+				<menuitem label="&month.9;" value="9" />
+				<menuitem label="&month.10;" value="10" />
+				<menuitem label="&month.11;" value="11" />
+				<menuitem label="&month.12;" value="12" />
+			</menupopup>
+		</menulist>
+
+		<menulist id="daylist" oncommand="optionsDateChanged(false)"
+			editable="true" onchange="reminderFox_timeChanged();" class="rmFxMenulist">
+			<menupopup>
+				<menuitem label="1" />
+				<menuitem label="2" />
+				<menuitem label="3" />
+				<menuitem label="4" />
+				<menuitem label="5" />
+				<menuitem label="6" />
+				<menuitem label="7" />
+				<menuitem label="8" />
+				<menuitem label="9" />
+				<menuitem label="10" />
+				<menuitem label="11" />
+				<menuitem label="12" />
+				<menuitem label="13" />
+				<menuitem label="14" />
+				<menuitem label="15" />
+				<menuitem label="16" />
+				<menuitem label="17" />
+				<menuitem label="18" />
+				<menuitem label="19" />
+				<menuitem label="20" />
+				<menuitem label="21" />
+				<menuitem label="22" />
+				<menuitem label="23" />
+				<menuitem label="24" />
+				<menuitem label="25" />
+				<menuitem label="26" />
+				<menuitem label="27" />
+				<menuitem label="28" />
+				<menuitem label="29" />
+				<menuitem label="30" />
+				<menuitem label="31" />
+			</menupopup>
+		</menulist>
+
+		<menulist id="yearlist" oncommand="optionsDateChanged(true)"
+			editable="true" onchange="reminderFox_timeChanged();">
+			<menupopup>
+				<menuitem label="2005" />
+				<menuitem label="2006" />
+				<menuitem label="2007" />
+				<menuitem label="2008" />
+				<menuitem label="2009" />
+			</menupopup>
+		</menulist>
+
+
+		<!-- Calendar date-input and calendar popup button -->
+		<panel id="rmFx-moz-datepicker">
+			<vbox id="rmFx-moz-datepicker-box">
+				<box id="datepickerBox">
+					<datepicker id="datePickerCurrent" type='grid'
+						firstdayofweek="2" />
+				</box>
+				<hbox>
+					<!--timepicker id="timePickerCurrent" hideseconds="true"/ -->
+					<spacer width="6px" />
+					<button label="&rf.calendar.picker.today;" id="todayButton" default="false"
+						class="reminderfox-calendar-iconLabel" oncommand="rmFx_datePickerOK('today');" />
+					<spacer flex="1" />
+					<button label="&rf.ok;" id="okButton" default="true"
+						oncommand="rmFx_datePickerOK();" />
+					<spacer width="3px" />
+				</hbox>
+			</vbox>
+		</panel>
+
+
+		<toolbarbutton id="datepickerAnchor"
+			onclick="reminderfox_datePickerOpen(event, this, false)" tooltiptext="&rf.reminderoptions.tooltip.selectdate;" />
+	</hbox>
+
+
+	<!-- time entry overlay -->
+	<hbox id="timeEntry" flex="0">
+		<menulist id="reminderFox-timeList" editable="true"
+			onchange="reminderFox_timeChanged();">
+			<menupopup id="timepopup" onpopupshowing="">
+				<menu id="time1menu" label="&time.0;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.1;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.2;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.3;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.4;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.5;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.6;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.7;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.8;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.9;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.10;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.11;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.12;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.13;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.14;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.15;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.16;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.17;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.18;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.19;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.20;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.21;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.22;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.23;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+			</menupopup>
+		</menulist>
+	</hbox>
+
+	<hbox id="allDayCheckbox" flex="0">
+		<checkbox id="reminderFox-all-day" label="&rf.reminderoptions.time.allday.label;"
+			autocheck="false" oncommand="reminderFox_allDayChanged()" />
+	</hbox>
+
+
+	<!-- endDate -->
+	<hbox id="endDateEntryHBox" flex="0">
+		<menulist id="endmonthlist" oncommand="optionsDateChanged(true, true)">
+			<menupopup>
+				<menuitem label="&month.1;" value="1" />
+				<menuitem label="&month.2;" value="2" />
+				<menuitem label="&month.3;" value="3" />
+				<menuitem label="&month.4;" value="4" />
+				<menuitem label="&month.5;" value="5" />
+				<menuitem label="&month.6;" value="6" />
+				<menuitem label="&month.7;" value="7" />
+				<menuitem label="&month.8;" value="8" />
+				<menuitem label="&month.9;" value="9" />
+				<menuitem label="&month.10;" value="10" />
+				<menuitem label="&month.11;" value="11" />
+				<menuitem label="&month.12;" value="12" />
+			</menupopup>
+		</menulist>
+
+		<menulist id="enddaylist" oncommand="optionsDateChanged(false, true)"
+			editable="true" onchange="reminderFox_timeChanged(true);">
+			<menupopup>
+				<menuitem label="1" />
+				<menuitem label="2" />
+				<menuitem label="3" />
+				<menuitem label="4" />
+				<menuitem label="5" />
+				<menuitem label="6" />
+				<menuitem label="7" />
+				<menuitem label="8" />
+				<menuitem label="9" />
+				<menuitem label="10" />
+				<menuitem label="11" />
+				<menuitem label="12" />
+				<menuitem label="13" />
+				<menuitem label="14" />
+				<menuitem label="15" />
+				<menuitem label="16" />
+				<menuitem label="17" />
+				<menuitem label="18" />
+				<menuitem label="19" />
+				<menuitem label="20" />
+				<menuitem label="21" />
+				<menuitem label="22" />
+				<menuitem label="23" />
+				<menuitem label="24" />
+				<menuitem label="25" />
+				<menuitem label="26" />
+				<menuitem label="27" />
+				<menuitem label="28" />
+				<menuitem label="29" />
+				<menuitem label="30" />
+				<menuitem label="31" />
+			</menupopup>
+		</menulist>
+
+		<menulist id="endyearlist" oncommand="optionsDateChanged(true, true)"
+			editable="true" onchange="reminderFox_timeChanged(true);">
+			<menupopup>
+				<menuitem label="2005" />
+				<menuitem label="2006" />
+				<menuitem label="2007" />
+				<menuitem label="2008" />
+				<menuitem label="2009" />
+			</menupopup>
+		</menulist>
+
+		<toolbarbutton id="datepickerEndAnchor"
+			onclick="reminderfox_datePickerOpen(event, this, true)" tooltiptext="&rf.reminderoptions.tooltip.selectdate;" />
+	</hbox>
+
+	<!-- end time entry overlay -->
+	<hbox id="endTimeEntry" flex="0">
+		<menulist id="reminderFox-endTimeList" editable="true"
+			onchange="reminderFox_timeChanged(true);">
+			<menupopup id="timepopup">
+				<menu id="time1menu" label="&time.0;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.1;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.2;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.3;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.4;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.5;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.6;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.7;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.8;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.9;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.10;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.11;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.12;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.13;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.14;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.15;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.16;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.17;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.18;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.19;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.20;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.21;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.22;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+				<menu id="time1menu" label="&time.23;" onclick="reminderFox_timeClicked(this);"
+					sizetopopup="always">
+					<menupopup id="timedetails" onpopupshowing="onTimePopupOpen(this)" />
+				</menu>
+			</menupopup>
+		</menulist>
+	</hbox>
+
+	<menulist id="reminderFox-repeatList" flex="3">
+		<menupopup>
+			<menuitem label="&rf.reminderoptions.repeat.yearly.label;" />
+			<menuitem label="&rf.reminderoptions.repeat.yearlyday.label;" />
+			<menuitem label="&rf.reminderoptions.repeat.monthlydate.label;" />
+			<menuitem label="&rf.reminderoptions.repeat.monthlyday.label;" />
+			<menuitem label="&rf.reminderoptions.repeat.weekly.label;" />
+			<menuitem label="&rf.reminderoptions.repeat.weeklyalternating.label;" />
+			<menuitem label="&rf.reminderoptions.repeat.daily.label;" />
+			<menuseparator id="repeat-sep" />
+			<menuitem id="repeat-custom" style="font-style:italic; font-weight:bold;"
+				label="&rf.reminderoptions.repeat.cusomt.label;" oncommand="addCustomRepeat();" />
+		</menupopup>
+	</menulist>
+
+
+	<!-- repeat overlay -->
+	<hbox id="repeatHboxOverlay" flex="0">
+		<checkbox id="reminderFox-repeat" label="&rf.reminderoptions.repeat.label;"
+			autocheck="false" oncommand="reminderFox_repeatChanged()" />
+		<menulist id="reminderFox-repeatList" flex="3" />
+		<spacer width="30px" />
+	</hbox>
+
+	<!-- alert entry overlay -->
+	<hbox id="alertEntry" align="center" flex="0">
+		<checkbox id="reminderFox-alert" label="&rf.reminderoptions.notify.label;"
+			autocheck="false" oncommand="reminderFox_alertChanged()" />
+		<menulist id="reminderFox-alertTime" editable="true">
+			<menupopup>
+				<menuitem label="0" />
+				<menuitem label="1" />
+				<menuitem label="5" selected="true" />
+				<menuitem label="10" />
+				<menuitem label="15" />
+				<menuitem label="30" />
+				<menuitem label="60" />
+			</menupopup>
+		</menulist>
+		<menulist id="reminderFox-alertTimeUnits">
+			<menupopup>
+				<menuitem label="&rf.reminderoptions.notify.minutes.label;" />
+				<menuitem label="&rf.reminderoptions.notify.hours.label;" />
+				<menuitem label="&rf.reminderoptions.notify.days.label;" />
+			</menupopup>
+		</menulist>
+		<label id="reminderFox-alertInfo" value="&rf.reminderoptions.notify.before.label;" />
+	</hbox>
+
+	<!-- category entry overlay -->
+	<hbox align="center" id="catHbox" flex="0">
+		<label id="catLabel" value="&rf.categories.inputRmCategories.label;"
+			align="center" />
+
+		<textbox id="inputRmCategories" flex="1" value=""
+			tooltiptext="&rf.categories.tooltip.inputRmCategories;">
+		</textbox>
+
+		<toolbarbutton id="catChange" type="menu"
+			tooltiptext="&rf.categories.tooltip.catChange;" onmousedown="reminderfox.category.Setup(this);">
+			<menupopup id="categories-menupopup" popupalign="topleft"
+				popupanchor="bottomleft">
+				<!-- value=1 indicates "User" defined cat-items -->
+				<menuitem value="2" label="" oncommand="reminderfox.category.Set(this);" />
+				<menuseparator />
+				<!-- value=2 indicates "Main" defined cat-items -->
+				<menuitem value="1" label="" oncommand="reminderfox.category.Set(this);" />
+				<menuseparator />
+				<menuitem value="3" label="&rf.categories.manageCat.label;"
+					oncommand="reminderfox.category.manageCategory(this);" />
+			</menupopup>
+		</toolbarbutton>
+		<spacer width="3px" />
+	</hbox>
+
+	<hbox align="center" id="locationHbox" flex="0">
+		<label value="&rf.reminderoptions.location.label;" />
+		<textbox id="location" flex="3" value="" />
+		<toolbarbutton id="launchLocationButton" oncommand="reminderFox_launchLocation();"
+			tooltiptext="&rf.reminderoptions.location.launch.tooltip;" />
+		<spacer width="3px" />
+	</hbox>
+
+	<hbox align="center" id="urlHbox">
+		<label value="&rf.reminderoptions.url.label;" />
+		<textbox id="url" flex="3" value="" />
+		<toolbarbutton id="launchUrlButton" oncommand="reminderFox_launchURL();"
+			tooltiptext="&rf.reminderoptions.url.launch.tooltip;" />
+		<spacer width="3px" />
+	</hbox>
+
+	<!-- MORE options overlay -->
+	<vbox id="moreOptionsVbox" hidden="true">
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+			align="center" />
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+			align="center" />
+
+		<!-- .......... gW (invitation) options ............... -->
+		<vbox id="moreOptionsInvitationBox" hidden="true">
+			<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+				align="center" />
+			<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+				align="center" />
+		</vbox>
+	</vbox>
+
+	<!-- footer buttons overlay -->
+	<vbox id="footerVbox" flex="0">
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+			align="center" />
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+			align="center" />
+
+		<hbox>
+			<button id="moreReminderItems" label='&rf.reminderoptions.button.more;'
+				oncommand="showMoreOptionsPane()" />
+			<spacer class="reminderFox-btnspacer" flex="1" />
+			<button id="rf-event-okay" label="&rf.ok;" default="true"
+				oncommand="reminderFox_AddEditDialog_Enter()" />
+			<button id="rf-event-cancel" label="&rf.cancel;" oncommand="window.close();" />
+		</hbox>
+	</vbox>
+
+</overlay>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<bindings id="going4MailIcons" xmlns="http://www.mozilla.org/xbl"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+
+	<binding id="changeSendPlusIcon">
+		<content>
+			<xul:toolbarbutton />
+		</content>
+
+		<implementation>
+			<constructor>			
+				var Class = 'toolbarbutton-1 chromeclass-toolbar-additional ';
+				var msgnr = "";
+				try {
+					// PB | SM | TB2 | TB3
+					msgnr =	reminderfox.msgnr.whichMessenger();
+				} catch (ex) {}
+				
+				switch (msgnr) {
+					case "TB3":
+						Class = Class + 'reminderfox-sendPlusTB3' 
+						break;
+						
+					default:
+						Class = Class + 'reminderfox-sendPlusTBird' 
+						break;		
+				}
+				document.getElementById('reminderfox-sendPlus').setAttribute("class", Class);	
+    		</constructor>
+		</implementation>
+	</binding>
+
+</bindings>

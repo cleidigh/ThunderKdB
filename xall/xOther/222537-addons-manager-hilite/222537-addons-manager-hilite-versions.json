@@ -1,0 +1,818 @@
+{
+    "page_size": 25,
+    "page_count": 1,
+    "count": 12,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1900499,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "55.*",
+                    "min": "31.0"
+                },
+                "seamonkey": {
+                    "max": "2.49.*",
+                    "min": "2.13"
+                },
+                "firefox": {
+                    "max": "56.*",
+                    "min": "16.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1900499",
+            "files": [
+                {
+                    "id": 471742,
+                    "created": "2016-07-22T02:20:12Z",
+                    "hash": "sha256:c10d982d30a1845478769d9ac10d0d6b3275b28655746dbc34c7d6518bd58494",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "linux",
+                    "size": 22780,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/471742/addons_manager_hilite-3.0-fx+sm+tb-linux.xpi?src=",
+                    "permissions": []
+                },
+                {
+                    "id": 471743,
+                    "created": "2016-07-22T02:20:12Z",
+                    "hash": "sha256:79a6e0e04e671cbab0625d370716a3931a5691b181fbbe70e3f385a2240f29ce",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "mac",
+                    "size": 22780,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/471743/addons_manager_hilite-3.0-fx+sm+tb-mac.xpi?src=",
+                    "permissions": []
+                },
+                {
+                    "id": 471744,
+                    "created": "2016-07-22T02:20:12Z",
+                    "hash": "sha256:1cb9cc26b0ffa118ed5b5c99c46c195943ab75731f81da7b74c628bafc2bab95",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "windows",
+                    "size": 22773,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/471744/addons_manager_hilite-3.0-fx+sm+tb-windows.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "* Fixed error in install.rdf which prevented multi-process compatible flag from being recognized\n* Compatibility fix for Firefox48+\n* Saved selections for hilite now stored in pref rather than in localstore.rdf \n* Saved selections now stored as name/value pairs \n* Fix various shutdown code issues (memory leak after add-on disabled until fx restart)\n* Fixed appearance of hover highlight on Firefox 40+\n* Minor cosmetic fix to Options panel (Correct size of Input field for entering 'Listbox Size') \n* Remove apparently no longer necessary delays\n* Add sorting buttons to Add-ons Manager page (except for categories known to supply own sort buttons)\n* Drop Alphabetical &amp; Updated sort prefs (use sorting buttons instead)\n* Attempt to auto-detect categories\n* Add UI for (previously hidden) option showing the version number in the optional autocomplete Add-on List (no longer requires restart)\n* Add option to group 'by state' when sorting by 'Last Updated'\n* Fixed: Autocomplete listbox should not include inaccessible (hidden) add-ons e.g. Firefox Hello\n* Move autocomplete code for optional Add-on listbox into a module and only load it if option enabled and delay its load until Add-ons Manager is first opened \n* Better compatibility with current Thunderbird versions; drop support for Thunderbird versions prior to 31\n* Drop support for UIextra hidden pref (broken since version 2.1 anyway)\n* Drop support for Add-ons Manager Dialog Returns extension (which is broken on current Firefox versions anyway)\n* Added el locale (thanks to George Malamas)\n* Refactor options handling code\n\nNote: Due to change in method of storing the saved hilite, a one time reset of your saved hilite data will occur when updating from a version prior to 3.0."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/3.0",
+            "version": "3.0"
+        },
+        {
+            "id": 1632978,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "47.*",
+                    "min": "16.0"
+                },
+                "seamonkey": {
+                    "max": "2.32",
+                    "min": "2.13"
+                },
+                "firefox": {
+                    "max": "47.*",
+                    "min": "16.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1632978",
+            "files": [
+                {
+                    "id": 289092,
+                    "created": "2014-12-18T17:05:12Z",
+                    "hash": "sha256:219a8f15e3cd725be1091f782eada6bcf7ee82feb203faba0746298f9ba4ccb7",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 16544,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/289092/addons_manager_hilite-2.1.2-fx+tb+sm.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "* Declare Process Separation (aka e10s) compatibility in install.rdf\n* Fixed: Removal of saved hilite data when uninstalling this add-on fails (includes Compatibility fix for uninstalling on Firefox 34+)"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/2.1.2.1-signed",
+            "version": "2.1.2.1-signed"
+        },
+        {
+            "id": 1557984,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "31.*",
+                    "min": "16.0"
+                },
+                "seamonkey": {
+                    "max": "2.28",
+                    "min": "2.13"
+                },
+                "firefox": {
+                    "max": "33.*",
+                    "min": "16.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1557984",
+            "files": [
+                {
+                    "id": 259028,
+                    "created": "2014-05-15T18:41:54Z",
+                    "hash": "sha256:15b6c39b11f479cd9eb23ca408dc0d794ca4015f6db797d2c2e4402ca12e0b63",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 16444,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/259028/addons_manager_hilite-2.1.1-sm+fx+tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "* Compatibility fix for Firefox (Gecko) 31: \n  'Select Add-on' autocomplete listbox broken due to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e50624a930fec000c72f17b93542246733a43d49ee75aa865719d2d2633ce7d5/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1005083\">Bug 1005083</a>"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/2.1.1.1-signed",
+            "version": "2.1.1.1-signed"
+        },
+        {
+            "id": 1510292,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "28.0a2",
+                    "min": "16.0"
+                },
+                "seamonkey": {
+                    "max": "2.25",
+                    "min": "2.13"
+                },
+                "firefox": {
+                    "max": "29.*",
+                    "min": "16.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1510292",
+            "files": [
+                {
+                    "id": 238735,
+                    "created": "2014-01-05T20:00:34Z",
+                    "hash": "sha256:7f9378ae0964216df751759c6b174ec7562bd3945aa260e9dba61ac6676aa570",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 16380,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/238735/addons_manager_hilite-2.1-sm+fx+tb.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "* Fixed: Hilite not always properly restored when switching between categories\n* Fixed: Hilite/sorting not correctly initialized when 'Show Select Add-on list' option is disabled and 'Always Restore Hilite' option is enabled\n* Fixed: Sorting Option not always properly applied upon loading of Add-ons Manager (Add delay to insure list of add-ons has finished loading) \n* Fixed: Detailed description text in Add-ons Manager (of this add-on only) appears in unnecessarily narrow column.\n* Fixed: Clicking dropdown arrow of Autocomplete Listbox not opening dropdown in Thunderbird and Seamonkey\n* Fixed: Issue with Services category\n* Readjust spacing of items in 'Select Add-on' listbox (altered by Bug 855998 getting fixed in Firefox 25) \n* Added support for Greasemonkey Userscripts \n* Added: Support for Dictionaries/Language Packs, Scriptish userscripts, and Custom Buttons (patch by Zoolcar9)\n\nKnown issues:\n* Adding items such as userscripts, 'Custom Buttons' buttons, etc. may not immediately add them to the Autocomplete Listbox. They will appear next time the Add-on Manager is opened (or press F5 to refresh).\n* Enabling the (off by default) sorting option may cause some delay as the items resort"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/2.1.1-signed",
+            "version": "2.1.1-signed"
+        },
+        {
+            "id": 1475212,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "24.*",
+                    "min": "16.0"
+                },
+                "seamonkey": {
+                    "max": "2.21",
+                    "min": "2.13"
+                },
+                "firefox": {
+                    "max": "26.*",
+                    "min": "16.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1475212",
+            "files": [
+                {
+                    "id": 221200,
+                    "created": "2013-07-14T19:02:09Z",
+                    "hash": "sha256:7ed6e1d0b3136c1d6cf8c82b01f37e73f7577364fd2c6977a8d46dda538b694b",
+                    "is_restart_required": false,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 15442,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/221200/addons_manager_hilite-2.0-tb+fx+sm.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 3338,
+                "name": {
+                    "en-US": "Mozilla Public License, version 2.0"
+                },
+                "text": {
+                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+                },
+                "url": "http://www.mozilla.org/MPL/2.0/"
+            },
+            "release_notes": {
+                "en-US": "* No longer requires restart to install/uninstall. (If you have a prior version installed and enabled, a restart will be required to uninstall that previous version.)\n* Support the new 'Services' category (Firefox/Thunderbird/Gecko 22+)\n* Fixed: Newly installed restartless Add-ons should be immediately added to optional 'Show Add-ons' listbox\n* Compatibile with Add-ons Manager Dialog Returns \n* 'Show Add-ons' listbox now defaults to enabled (can be changed via 'Options')\n* Improvements to appearance/useability of Options section. ('Autocomplete Listbox Size' should be disabled when 'Show Add-ons' listbox is unselected. 'Instant-apply' changes; remove 'Apply' button. 'Sort Alphabetically Only' takes effect immediately rather than next time Add-ons Manager is opened. Fixed 2px jump of page when 'Show Select Add-on List' is enabled/disabled.)\n* Added: (about:config) option extensions.addonsmgrhilte@cfl.showVersion when set to true will show add-on's version number in dropdown listbox (takes effect next time Add-ons Manager is opened - or press F5 to refresh)\n* Added: (about:config) option extensions.addonsmgrhilte@cfl.updatedSort when set to true will sort by last updated instead of alphabetical\n* [OSX] Drop prefix on -moz-linear-gradient as done in Bug 771975\n* Drop support for Firefox/Thunderbird (Gecko) versions prior to 16"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/2.0.1-signed",
+            "version": "2.0.1-signed"
+        },
+        {
+            "id": 1428110,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "19.*",
+                    "min": "7.0"
+                },
+                "seamonkey": {
+                    "max": "2.15a1",
+                    "min": "2.4"
+                },
+                "firefox": {
+                    "max": "23.*",
+                    "min": "7.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1428110",
+            "files": [
+                {
+                    "id": 196098,
+                    "created": "2013-03-04T03:38:09Z",
+                    "hash": "sha256:e8eb2d34babc223e832a1aeec6aa17b14e8fc942493cbdec9a3e066b0d306f2b",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 15016,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/196098/addons_manager_hilite-1.1.1-tb+sm+fx.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 5,
+                "name": {
+                    "el": "Mozilla Public License, έκδοση 1.1",
+                    "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                    "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                    "it": "Licenza Mozilla Public License, versione 1.1",
+                    "cs": "Mozilla Public License, verze 1.1",
+                    "eu": "Mozilla Public License, 1.1 bertsioa",
+                    "id": "Mozilla Public License, versi 1.1",
+                    "es": "Licencia pública Mozilla, versión 1.1",
+                    "ru": "Mozilla Public License, версия 1.1",
+                    "nl": "Mozilla Public License, versie 1.1",
+                    "en-US": "Mozilla Public License Version 1.1",
+                    "pl": "Mozilla Public License, wersja 1.1",
+                    "fr": "Mozilla Public License Version 1.1",
+                    "bg": "Mozilla Публичен лиценз, версия 1.1",
+                    "de": "Mozilla Public License Version 1.1",
+                    "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                    "pt-BR": "Licença personalizada",
+                    "ja": "Mozilla Public License バージョン 1.1",
+                    "pt-PT": "Mozilla Public License, versão 1.1",
+                    "sr": "Мозилина јава лиценца, верзија 1.1",
+                    "sq": "Leje Publike Mozilla, version 1.1",
+                    "ko": "GPL/LGPL/MPL",
+                    "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                    "sk": "Mozilla Public License, verzia 1.1",
+                    "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                    "zh-TW": "Mozilla Public License，版本 1.1"
+                },
+                "text": {
+                    "pt-BR": "- You are allowed to use this Firefox Extension in unmodified form free of charge.\n- You may not modify it, re-distribute it or create derivative works containing this Extension or parts of it.\n- You are not allowed to use any parts of the Source code of this extension in other works.\n- This product is provided as-is without any warranties.",
+                    "en-US": "Copyright Buffer",
+                    "de": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License\n\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License (\"Public License\"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\n    Adapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\n    Copyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\n    Effective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\n    Exceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\n    Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\n    Licensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\n    Licensor means the individual(s) or entity(ies) granting rights under this Public License.\n    NonCommercial means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this Public License, the exchange of the Licensed Material for other material subject to Copyright and Similar Rights by digital file-sharing or similar means is NonCommercial provided there is no payment of monetary compensation in connection with the exchange.\n    Share means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\n    Sui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\n    You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\nSection 2 – Scope.\n\n    License grant.\n        Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\n            reproduce and Share the Licensed Material, in whole or in part, for NonCommercial purposes only; and\n            produce and reproduce, but not Share, Adapted Material for NonCommercial purposes only.\n        Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\n        Term. The term of this Public License is specified in Section 6(a).\n        Media and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\n        Downstream recipients.\n            Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\n            No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\n        No endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\n    Other rights.\n        Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\n        Patent and trademark rights are not licensed under this Public License.\n        To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties, including when the Licensed Material is used other than for NonCommercial purposes.\n\nSection 3 – License Conditions.\n\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\n    Attribution.\n\n        If You Share the Licensed Material, You must:\n            retain the following if it is supplied by the Licensor with the Licensed Material:\n                identification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\n                a copyright notice;\n                a notice that refers to this Public License;\n                a notice that refers to the disclaimer of warranties;\n                a URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n            indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\n            indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\n        For the avoidance of doubt, You do not have permission under this Public License to Share Adapted Material.\n        You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\n        If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nSection 4 – Sui Generis Database Rights.\n\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\n    for the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database for NonCommercial purposes only and provided You do not Share Adapted Material;\n    if You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material; and\n    You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\n    Unless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\n    To the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\n\n    The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\nSection 6 – Term and Termination.\n\n    This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\n\n    Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n        automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\n        upon express reinstatement by the Licensor.\n    For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\n    For the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\n    Sections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\nSection 7 – Other Terms and Conditions.\n\n    The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\n    Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\nSection 8 – Interpretation.\n\n    For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\n    To the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\n    No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\n    Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.",
+                    "ko": "이 확장은 3중 라이센스(GPL/LGPL/MPL)로 배포됩니다.\n- GPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/50f8213a635c55938b7d1800bca643361d3bf829794eec93a1147307a4cd596f/http%3A//www.gnu.org/licenses/gpl-3.0.html\">http://www.gnu.org/licenses/gpl-3.0.html</a>\n- LGPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bda48979b4b7627c8af5d5cbe582e398a67786520fd8db4c2d25d11b31bd1e55/http%3A//www.gnu.org/licenses/lgpl-3.0.html\">http://www.gnu.org/licenses/lgpl-3.0.html</a>\n- MPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f3c3e05134c74e7b840c6791fff96b27c89f15a62369e43a0fda8ffdbf9afd6e/https%3A//www.mozilla.org/en-US/MPL/2.0/\">https://www.mozilla.org/en-US/MPL/2.0/</a>",
+                    "fr": "Free for non-commercial personal use. Copyright of all graphics elemets designed for  this theme belongs to the author. Before any modifications and/or distribution of this work, please contact it and read the license file included inside the theme package."
+                },
+                "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+            },
+            "release_notes": {
+                "en-US": "* Adds default preference missing in version 1.1 (caused loss of much of the extension's functionality for <i>some users</i> - depending on whether user had modified this extension's options)"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/1.1.1.1-signed",
+            "version": "1.1.1.1-signed"
+        },
+        {
+            "id": 1381066,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "18.0a1",
+                    "min": "7.0"
+                },
+                "seamonkey": {
+                    "max": "2.15a1",
+                    "min": "2.4"
+                },
+                "firefox": {
+                    "max": "19.*",
+                    "min": "7.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1381066",
+            "files": [
+                {
+                    "id": 169694,
+                    "created": "2012-09-27T20:12:00Z",
+                    "hash": "sha256:bdede02d72d20d3357973c1932c91670cf5d3c7f281b4379283b8034115174d3",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 14997,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/169694/addons_manager_hilite-1.1-tb+fx+sm.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 5,
+                "name": {
+                    "el": "Mozilla Public License, έκδοση 1.1",
+                    "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                    "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                    "it": "Licenza Mozilla Public License, versione 1.1",
+                    "cs": "Mozilla Public License, verze 1.1",
+                    "eu": "Mozilla Public License, 1.1 bertsioa",
+                    "id": "Mozilla Public License, versi 1.1",
+                    "es": "Licencia pública Mozilla, versión 1.1",
+                    "ru": "Mozilla Public License, версия 1.1",
+                    "nl": "Mozilla Public License, versie 1.1",
+                    "en-US": "Mozilla Public License Version 1.1",
+                    "pl": "Mozilla Public License, wersja 1.1",
+                    "fr": "Mozilla Public License Version 1.1",
+                    "bg": "Mozilla Публичен лиценз, версия 1.1",
+                    "de": "Mozilla Public License Version 1.1",
+                    "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                    "pt-BR": "Licença personalizada",
+                    "ja": "Mozilla Public License バージョン 1.1",
+                    "pt-PT": "Mozilla Public License, versão 1.1",
+                    "sr": "Мозилина јава лиценца, верзија 1.1",
+                    "sq": "Leje Publike Mozilla, version 1.1",
+                    "ko": "GPL/LGPL/MPL",
+                    "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                    "sk": "Mozilla Public License, verzia 1.1",
+                    "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                    "zh-TW": "Mozilla Public License，版本 1.1"
+                },
+                "text": {
+                    "pt-BR": "- You are allowed to use this Firefox Extension in unmodified form free of charge.\n- You may not modify it, re-distribute it or create derivative works containing this Extension or parts of it.\n- You are not allowed to use any parts of the Source code of this extension in other works.\n- This product is provided as-is without any warranties.",
+                    "en-US": "Copyright Buffer",
+                    "de": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License\n\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License (\"Public License\"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\n    Adapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\n    Copyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\n    Effective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\n    Exceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\n    Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\n    Licensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\n    Licensor means the individual(s) or entity(ies) granting rights under this Public License.\n    NonCommercial means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this Public License, the exchange of the Licensed Material for other material subject to Copyright and Similar Rights by digital file-sharing or similar means is NonCommercial provided there is no payment of monetary compensation in connection with the exchange.\n    Share means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\n    Sui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\n    You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\nSection 2 – Scope.\n\n    License grant.\n        Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\n            reproduce and Share the Licensed Material, in whole or in part, for NonCommercial purposes only; and\n            produce and reproduce, but not Share, Adapted Material for NonCommercial purposes only.\n        Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\n        Term. The term of this Public License is specified in Section 6(a).\n        Media and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\n        Downstream recipients.\n            Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\n            No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\n        No endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\n    Other rights.\n        Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\n        Patent and trademark rights are not licensed under this Public License.\n        To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties, including when the Licensed Material is used other than for NonCommercial purposes.\n\nSection 3 – License Conditions.\n\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\n    Attribution.\n\n        If You Share the Licensed Material, You must:\n            retain the following if it is supplied by the Licensor with the Licensed Material:\n                identification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\n                a copyright notice;\n                a notice that refers to this Public License;\n                a notice that refers to the disclaimer of warranties;\n                a URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n            indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\n            indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\n        For the avoidance of doubt, You do not have permission under this Public License to Share Adapted Material.\n        You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\n        If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nSection 4 – Sui Generis Database Rights.\n\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\n    for the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database for NonCommercial purposes only and provided You do not Share Adapted Material;\n    if You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material; and\n    You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\n    Unless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\n    To the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\n\n    The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\nSection 6 – Term and Termination.\n\n    This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\n\n    Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n        automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\n        upon express reinstatement by the Licensor.\n    For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\n    For the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\n    Sections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\nSection 7 – Other Terms and Conditions.\n\n    The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\n    Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\nSection 8 – Interpretation.\n\n    For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\n    To the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\n    No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\n    Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.",
+                    "ko": "이 확장은 3중 라이센스(GPL/LGPL/MPL)로 배포됩니다.\n- GPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/50f8213a635c55938b7d1800bca643361d3bf829794eec93a1147307a4cd596f/http%3A//www.gnu.org/licenses/gpl-3.0.html\">http://www.gnu.org/licenses/gpl-3.0.html</a>\n- LGPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bda48979b4b7627c8af5d5cbe582e398a67786520fd8db4c2d25d11b31bd1e55/http%3A//www.gnu.org/licenses/lgpl-3.0.html\">http://www.gnu.org/licenses/lgpl-3.0.html</a>\n- MPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f3c3e05134c74e7b840c6791fff96b27c89f15a62369e43a0fda8ffdbf9afd6e/https%3A//www.mozilla.org/en-US/MPL/2.0/\">https://www.mozilla.org/en-US/MPL/2.0/</a>",
+                    "fr": "Free for non-commercial personal use. Copyright of all graphics elemets designed for  this theme belongs to the author. Before any modifications and/or distribution of this work, please contact it and read the license file included inside the theme package."
+                },
+                "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+            },
+            "release_notes": {
+                "en-US": "* Improved Firefox 15 compatibility (issue with keyboard usage of add-on selection listbox)\n* Enable add-on selection by usage of 'down arrow' while typing into autocompleting add-on listbox \n* Enhancement (Win/OSX): Make styling of optional add-on selection listbox more similar to that of the Search Box.\n* Fixed: If number of installed extensions (or userstyles, etc.) are less than 35 and the window is not very tall, some items may not fit into list and the only way to access them is to resize the window. Unless you're using a very tiny window, this issue should no longer occur. Note that this fix may result in somewhat less add-ons appearing in list before scrollbar appears. If you always use a sufficiently tall window and thus avoid encountering this bug, you may restore the old behavior by setting extensions.addonsmgrhilte@cfl.extraRows to true in about:config (takes effect next time you open Add-ons Manager) \n* 'Sort Alphabetically Only' option now takes effect immediately rather than next time Add-ons Manager is opened.\n* Minor cosmetic fix to Options panel (Input field for entering 'Listbox Size' made smaller)"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/1.1.1-signed",
+            "version": "1.1.1-signed"
+        },
+        {
+            "id": 1310560,
+            "channel": "listed",
+            "compatibility": {
+                "thunderbird": {
+                    "max": "14.*",
+                    "min": "7.0"
+                },
+                "seamonkey": {
+                    "max": "2.11.*",
+                    "min": "2.4"
+                },
+                "firefox": {
+                    "max": "14.*",
+                    "min": "7.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1310560",
+            "files": [
+                {
+                    "id": 142635,
+                    "created": "2012-01-27T17:29:40Z",
+                    "hash": "sha256:27b9805a2c99a987db4bc4dc8cb4abedcad82e26d2ae541c9b29b4b92c3eb349",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 12288,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/142635/addons_manager_hilite-1.0-sm+tb+fx.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 5,
+                "name": {
+                    "el": "Mozilla Public License, έκδοση 1.1",
+                    "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                    "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                    "it": "Licenza Mozilla Public License, versione 1.1",
+                    "cs": "Mozilla Public License, verze 1.1",
+                    "eu": "Mozilla Public License, 1.1 bertsioa",
+                    "id": "Mozilla Public License, versi 1.1",
+                    "es": "Licencia pública Mozilla, versión 1.1",
+                    "ru": "Mozilla Public License, версия 1.1",
+                    "nl": "Mozilla Public License, versie 1.1",
+                    "en-US": "Mozilla Public License Version 1.1",
+                    "pl": "Mozilla Public License, wersja 1.1",
+                    "fr": "Mozilla Public License Version 1.1",
+                    "bg": "Mozilla Публичен лиценз, версия 1.1",
+                    "de": "Mozilla Public License Version 1.1",
+                    "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                    "pt-BR": "Licença personalizada",
+                    "ja": "Mozilla Public License バージョン 1.1",
+                    "pt-PT": "Mozilla Public License, versão 1.1",
+                    "sr": "Мозилина јава лиценца, верзија 1.1",
+                    "sq": "Leje Publike Mozilla, version 1.1",
+                    "ko": "GPL/LGPL/MPL",
+                    "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                    "sk": "Mozilla Public License, verzia 1.1",
+                    "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                    "zh-TW": "Mozilla Public License，版本 1.1"
+                },
+                "text": {
+                    "pt-BR": "- You are allowed to use this Firefox Extension in unmodified form free of charge.\n- You may not modify it, re-distribute it or create derivative works containing this Extension or parts of it.\n- You are not allowed to use any parts of the Source code of this extension in other works.\n- This product is provided as-is without any warranties.",
+                    "en-US": "Copyright Buffer",
+                    "de": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License\n\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License (\"Public License\"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\n    Adapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\n    Copyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\n    Effective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\n    Exceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\n    Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\n    Licensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\n    Licensor means the individual(s) or entity(ies) granting rights under this Public License.\n    NonCommercial means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this Public License, the exchange of the Licensed Material for other material subject to Copyright and Similar Rights by digital file-sharing or similar means is NonCommercial provided there is no payment of monetary compensation in connection with the exchange.\n    Share means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\n    Sui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\n    You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\nSection 2 – Scope.\n\n    License grant.\n        Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\n            reproduce and Share the Licensed Material, in whole or in part, for NonCommercial purposes only; and\n            produce and reproduce, but not Share, Adapted Material for NonCommercial purposes only.\n        Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\n        Term. The term of this Public License is specified in Section 6(a).\n        Media and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\n        Downstream recipients.\n            Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\n            No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\n        No endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\n    Other rights.\n        Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\n        Patent and trademark rights are not licensed under this Public License.\n        To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties, including when the Licensed Material is used other than for NonCommercial purposes.\n\nSection 3 – License Conditions.\n\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\n    Attribution.\n\n        If You Share the Licensed Material, You must:\n            retain the following if it is supplied by the Licensor with the Licensed Material:\n                identification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\n                a copyright notice;\n                a notice that refers to this Public License;\n                a notice that refers to the disclaimer of warranties;\n                a URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n            indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\n            indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\n        For the avoidance of doubt, You do not have permission under this Public License to Share Adapted Material.\n        You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\n        If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nSection 4 – Sui Generis Database Rights.\n\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\n    for the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database for NonCommercial purposes only and provided You do not Share Adapted Material;\n    if You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material; and\n    You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\n    Unless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\n    To the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\n\n    The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\nSection 6 – Term and Termination.\n\n    This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\n\n    Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n        automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\n        upon express reinstatement by the Licensor.\n    For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\n    For the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\n    Sections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\nSection 7 – Other Terms and Conditions.\n\n    The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\n    Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\nSection 8 – Interpretation.\n\n    For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\n    To the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\n    No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\n    Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.",
+                    "ko": "이 확장은 3중 라이센스(GPL/LGPL/MPL)로 배포됩니다.\n- GPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/50f8213a635c55938b7d1800bca643361d3bf829794eec93a1147307a4cd596f/http%3A//www.gnu.org/licenses/gpl-3.0.html\">http://www.gnu.org/licenses/gpl-3.0.html</a>\n- LGPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bda48979b4b7627c8af5d5cbe582e398a67786520fd8db4c2d25d11b31bd1e55/http%3A//www.gnu.org/licenses/lgpl-3.0.html\">http://www.gnu.org/licenses/lgpl-3.0.html</a>\n- MPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f3c3e05134c74e7b840c6791fff96b27c89f15a62369e43a0fda8ffdbf9afd6e/https%3A//www.mozilla.org/en-US/MPL/2.0/\">https://www.mozilla.org/en-US/MPL/2.0/</a>",
+                    "fr": "Free for non-commercial personal use. Copyright of all graphics elemets designed for  this theme belongs to the author. Before any modifications and/or distribution of this work, please contact it and read the license file included inside the theme package."
+                },
+                "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+            },
+            "release_notes": {
+                "en-US": "* Added support for Appearance (themes) and Plugins pane\n* Added support for 'User Styles' pane added by Stylish extension\n* Added support for Thunderbird and SeaMonkey\n* Replaced the hilite button with Options - choose desired behavior and it happens automatically\n* Added option to choose whether to use/display the add-on list dropdown (defaults to off)\n* 'Add-on list' dropdown now displays your selection in detailed view if you are currently in detailed view (otherwise hilites selected item in list and scrolls to it)\n* 'Add-on list' dropdown now features autocomplete of typed text entry\n(Items in dropdown get filtered to those which match entered text; click on item in list at any time or press &lt;enter&gt; once list displays only one entry.)\n* Added option to set autocomplete listbox size (Cropped add-on names get shown in tooltip; Increase size if too many get cropped.)\n* Added fix for Bug 616440 (aids scrolling in detailed view and prevents that bug from triggering issues in Addons Manager Hilite)\n* Alphabetical-only sort now a (visible rather than hidden) option\n* Fixed 'cat is null' error (caused issues when Add-ons Manager was reopened via session restore)\n* Added hidden (about:config) option: extensions.addonsmgrhilte@cfl.UIextra\n - When set to true provides access to the last previously saved hilite in each category (e.g. extensions) by adding it to the top of the autocomplete dropdown list in the format &lt;add-on name=\"\"&gt;. This option only has an effect if 'Always Restore Hilite' is OFF and the autocomplete listbox is ON. Takes effect next time the Add-ons Manager is opened.\n* Define event handlers using addEventListener instead of setAttribute (AMO validator recommendation)\n* Added locale folder (to enable possible future translations)\n* Added custom icon\n* Drop support for Firefox versions prior to 7 (due to use of inline options)\n* Switch license to MPL 2.0\n\nKnown issue: When installing/uinstalling a restartless add-on, the optional listbox is not automatically updated. Closing/re-opening Add-ons Manager (or press F5 to refresh it) will update the list. \n\nNote: 'Alphabetical sort' option has no effect on 'User Styles' (Stylish). This is intentional, since Stylish supplies sorting buttons."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/1.0.1-signed",
+            "version": "1.0.1-signed"
+        },
+        {
+            "id": 1259579,
+            "channel": "listed",
+            "compatibility": {
+                "firefox": {
+                    "max": "11.*",
+                    "min": "4.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1259579",
+            "files": [
+                {
+                    "id": 126961,
+                    "created": "2011-07-22T04:36:42Z",
+                    "hash": "sha256:5b77ee780421d4c3e3bdcde4086925178623632cdb37299fb8770d1b192b9841",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 7168,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/126961/addons_manager_hilite-0.8.3-fx.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 5,
+                "name": {
+                    "el": "Mozilla Public License, έκδοση 1.1",
+                    "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                    "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                    "it": "Licenza Mozilla Public License, versione 1.1",
+                    "cs": "Mozilla Public License, verze 1.1",
+                    "eu": "Mozilla Public License, 1.1 bertsioa",
+                    "id": "Mozilla Public License, versi 1.1",
+                    "es": "Licencia pública Mozilla, versión 1.1",
+                    "ru": "Mozilla Public License, версия 1.1",
+                    "nl": "Mozilla Public License, versie 1.1",
+                    "en-US": "Mozilla Public License Version 1.1",
+                    "pl": "Mozilla Public License, wersja 1.1",
+                    "fr": "Mozilla Public License Version 1.1",
+                    "bg": "Mozilla Публичен лиценз, версия 1.1",
+                    "de": "Mozilla Public License Version 1.1",
+                    "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                    "pt-BR": "Licença personalizada",
+                    "ja": "Mozilla Public License バージョン 1.1",
+                    "pt-PT": "Mozilla Public License, versão 1.1",
+                    "sr": "Мозилина јава лиценца, верзија 1.1",
+                    "sq": "Leje Publike Mozilla, version 1.1",
+                    "ko": "GPL/LGPL/MPL",
+                    "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                    "sk": "Mozilla Public License, verzia 1.1",
+                    "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                    "zh-TW": "Mozilla Public License，版本 1.1"
+                },
+                "text": {
+                    "pt-BR": "- You are allowed to use this Firefox Extension in unmodified form free of charge.\n- You may not modify it, re-distribute it or create derivative works containing this Extension or parts of it.\n- You are not allowed to use any parts of the Source code of this extension in other works.\n- This product is provided as-is without any warranties.",
+                    "en-US": "Copyright Buffer",
+                    "de": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License\n\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License (\"Public License\"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\n    Adapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\n    Copyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\n    Effective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\n    Exceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\n    Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\n    Licensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\n    Licensor means the individual(s) or entity(ies) granting rights under this Public License.\n    NonCommercial means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this Public License, the exchange of the Licensed Material for other material subject to Copyright and Similar Rights by digital file-sharing or similar means is NonCommercial provided there is no payment of monetary compensation in connection with the exchange.\n    Share means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\n    Sui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\n    You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\nSection 2 – Scope.\n\n    License grant.\n        Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\n            reproduce and Share the Licensed Material, in whole or in part, for NonCommercial purposes only; and\n            produce and reproduce, but not Share, Adapted Material for NonCommercial purposes only.\n        Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\n        Term. The term of this Public License is specified in Section 6(a).\n        Media and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\n        Downstream recipients.\n            Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\n            No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\n        No endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\n    Other rights.\n        Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\n        Patent and trademark rights are not licensed under this Public License.\n        To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties, including when the Licensed Material is used other than for NonCommercial purposes.\n\nSection 3 – License Conditions.\n\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\n    Attribution.\n\n        If You Share the Licensed Material, You must:\n            retain the following if it is supplied by the Licensor with the Licensed Material:\n                identification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\n                a copyright notice;\n                a notice that refers to this Public License;\n                a notice that refers to the disclaimer of warranties;\n                a URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n            indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\n            indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\n        For the avoidance of doubt, You do not have permission under this Public License to Share Adapted Material.\n        You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\n        If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nSection 4 – Sui Generis Database Rights.\n\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\n    for the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database for NonCommercial purposes only and provided You do not Share Adapted Material;\n    if You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material; and\n    You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\n    Unless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\n    To the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\n\n    The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\nSection 6 – Term and Termination.\n\n    This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\n\n    Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n        automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\n        upon express reinstatement by the Licensor.\n    For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\n    For the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\n    Sections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\nSection 7 – Other Terms and Conditions.\n\n    The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\n    Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\nSection 8 – Interpretation.\n\n    For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\n    To the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\n    No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\n    Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.",
+                    "ko": "이 확장은 3중 라이센스(GPL/LGPL/MPL)로 배포됩니다.\n- GPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/50f8213a635c55938b7d1800bca643361d3bf829794eec93a1147307a4cd596f/http%3A//www.gnu.org/licenses/gpl-3.0.html\">http://www.gnu.org/licenses/gpl-3.0.html</a>\n- LGPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bda48979b4b7627c8af5d5cbe582e398a67786520fd8db4c2d25d11b31bd1e55/http%3A//www.gnu.org/licenses/lgpl-3.0.html\">http://www.gnu.org/licenses/lgpl-3.0.html</a>\n- MPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f3c3e05134c74e7b840c6791fff96b27c89f15a62369e43a0fda8ffdbf9afd6e/https%3A//www.mozilla.org/en-US/MPL/2.0/\">https://www.mozilla.org/en-US/MPL/2.0/</a>",
+                    "fr": "Free for non-commercial personal use. Copyright of all graphics elemets designed for  this theme belongs to the author. Before any modifications and/or distribution of this work, please contact it and read the license file included inside the theme package."
+                },
+                "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+            },
+            "release_notes": {
+                "en-US": "Added compatibility fix for Firefox 6+ (Fixes issue that occurs when using Back/Forward Navigation in Add-ons Manager)"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/0.8.3.1-signed",
+            "version": "0.8.3.1-signed"
+        },
+        {
+            "id": 1247217,
+            "channel": "listed",
+            "compatibility": {
+                "firefox": {
+                    "max": "5.*",
+                    "min": "4.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/1247217",
+            "files": [
+                {
+                    "id": 122755,
+                    "created": "2011-06-10T05:30:13Z",
+                    "hash": "sha256:ed5470e737c23eab0838f5653a8e9cfea5df21adedf2a828847c6ac8def8615f",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 7168,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/122755/addons_manager_hilite-0.8.2-fx.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 5,
+                "name": {
+                    "el": "Mozilla Public License, έκδοση 1.1",
+                    "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                    "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                    "it": "Licenza Mozilla Public License, versione 1.1",
+                    "cs": "Mozilla Public License, verze 1.1",
+                    "eu": "Mozilla Public License, 1.1 bertsioa",
+                    "id": "Mozilla Public License, versi 1.1",
+                    "es": "Licencia pública Mozilla, versión 1.1",
+                    "ru": "Mozilla Public License, версия 1.1",
+                    "nl": "Mozilla Public License, versie 1.1",
+                    "en-US": "Mozilla Public License Version 1.1",
+                    "pl": "Mozilla Public License, wersja 1.1",
+                    "fr": "Mozilla Public License Version 1.1",
+                    "bg": "Mozilla Публичен лиценз, версия 1.1",
+                    "de": "Mozilla Public License Version 1.1",
+                    "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                    "pt-BR": "Licença personalizada",
+                    "ja": "Mozilla Public License バージョン 1.1",
+                    "pt-PT": "Mozilla Public License, versão 1.1",
+                    "sr": "Мозилина јава лиценца, верзија 1.1",
+                    "sq": "Leje Publike Mozilla, version 1.1",
+                    "ko": "GPL/LGPL/MPL",
+                    "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                    "sk": "Mozilla Public License, verzia 1.1",
+                    "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                    "zh-TW": "Mozilla Public License，版本 1.1"
+                },
+                "text": {
+                    "pt-BR": "- You are allowed to use this Firefox Extension in unmodified form free of charge.\n- You may not modify it, re-distribute it or create derivative works containing this Extension or parts of it.\n- You are not allowed to use any parts of the Source code of this extension in other works.\n- This product is provided as-is without any warranties.",
+                    "en-US": "Copyright Buffer",
+                    "de": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License\n\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License (\"Public License\"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\n    Adapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\n    Copyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\n    Effective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\n    Exceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\n    Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\n    Licensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\n    Licensor means the individual(s) or entity(ies) granting rights under this Public License.\n    NonCommercial means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this Public License, the exchange of the Licensed Material for other material subject to Copyright and Similar Rights by digital file-sharing or similar means is NonCommercial provided there is no payment of monetary compensation in connection with the exchange.\n    Share means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\n    Sui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\n    You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\nSection 2 – Scope.\n\n    License grant.\n        Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\n            reproduce and Share the Licensed Material, in whole or in part, for NonCommercial purposes only; and\n            produce and reproduce, but not Share, Adapted Material for NonCommercial purposes only.\n        Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\n        Term. The term of this Public License is specified in Section 6(a).\n        Media and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\n        Downstream recipients.\n            Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\n            No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\n        No endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\n    Other rights.\n        Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\n        Patent and trademark rights are not licensed under this Public License.\n        To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties, including when the Licensed Material is used other than for NonCommercial purposes.\n\nSection 3 – License Conditions.\n\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\n    Attribution.\n\n        If You Share the Licensed Material, You must:\n            retain the following if it is supplied by the Licensor with the Licensed Material:\n                identification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\n                a copyright notice;\n                a notice that refers to this Public License;\n                a notice that refers to the disclaimer of warranties;\n                a URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n            indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\n            indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\n        For the avoidance of doubt, You do not have permission under this Public License to Share Adapted Material.\n        You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\n        If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nSection 4 – Sui Generis Database Rights.\n\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\n    for the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database for NonCommercial purposes only and provided You do not Share Adapted Material;\n    if You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material; and\n    You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\n    Unless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\n    To the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\n\n    The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\nSection 6 – Term and Termination.\n\n    This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\n\n    Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n        automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\n        upon express reinstatement by the Licensor.\n    For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\n    For the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\n    Sections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\nSection 7 – Other Terms and Conditions.\n\n    The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\n    Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\nSection 8 – Interpretation.\n\n    For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\n    To the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\n    No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\n    Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.",
+                    "ko": "이 확장은 3중 라이센스(GPL/LGPL/MPL)로 배포됩니다.\n- GPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/50f8213a635c55938b7d1800bca643361d3bf829794eec93a1147307a4cd596f/http%3A//www.gnu.org/licenses/gpl-3.0.html\">http://www.gnu.org/licenses/gpl-3.0.html</a>\n- LGPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bda48979b4b7627c8af5d5cbe582e398a67786520fd8db4c2d25d11b31bd1e55/http%3A//www.gnu.org/licenses/lgpl-3.0.html\">http://www.gnu.org/licenses/lgpl-3.0.html</a>\n- MPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f3c3e05134c74e7b840c6791fff96b27c89f15a62369e43a0fda8ffdbf9afd6e/https%3A//www.mozilla.org/en-US/MPL/2.0/\">https://www.mozilla.org/en-US/MPL/2.0/</a>",
+                    "fr": "Free for non-commercial personal use. Copyright of all graphics elemets designed for  this theme belongs to the author. Before any modifications and/or distribution of this work, please contact it and read the license file included inside the theme package."
+                },
+                "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+            },
+            "release_notes": {
+                "en-US": "Compatibility fixes for Firefox 6\n(Please update to 0.8.3 for full Firefox 6 compatibility)"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/0.8.2.1-signed",
+            "version": "0.8.2.1-signed"
+        },
+        {
+            "id": 655748,
+            "channel": "listed",
+            "compatibility": {
+                "firefox": {
+                    "max": "5.*",
+                    "min": "4.0"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/655748",
+            "files": [
+                {
+                    "id": 114853,
+                    "created": "2011-03-21T18:32:36Z",
+                    "hash": "sha256:99d04f99a3b6ae13e5c7f4b8cdc69a4cd74ba1d60f8a593f342d5ab63a5a54c8",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 7168,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/114853/addons_manager_hilite-0.8.0-fx.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 5,
+                "name": {
+                    "el": "Mozilla Public License, έκδοση 1.1",
+                    "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                    "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                    "it": "Licenza Mozilla Public License, versione 1.1",
+                    "cs": "Mozilla Public License, verze 1.1",
+                    "eu": "Mozilla Public License, 1.1 bertsioa",
+                    "id": "Mozilla Public License, versi 1.1",
+                    "es": "Licencia pública Mozilla, versión 1.1",
+                    "ru": "Mozilla Public License, версия 1.1",
+                    "nl": "Mozilla Public License, versie 1.1",
+                    "en-US": "Mozilla Public License Version 1.1",
+                    "pl": "Mozilla Public License, wersja 1.1",
+                    "fr": "Mozilla Public License Version 1.1",
+                    "bg": "Mozilla Публичен лиценз, версия 1.1",
+                    "de": "Mozilla Public License Version 1.1",
+                    "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                    "pt-BR": "Licença personalizada",
+                    "ja": "Mozilla Public License バージョン 1.1",
+                    "pt-PT": "Mozilla Public License, versão 1.1",
+                    "sr": "Мозилина јава лиценца, верзија 1.1",
+                    "sq": "Leje Publike Mozilla, version 1.1",
+                    "ko": "GPL/LGPL/MPL",
+                    "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                    "sk": "Mozilla Public License, verzia 1.1",
+                    "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                    "zh-TW": "Mozilla Public License，版本 1.1"
+                },
+                "text": {
+                    "pt-BR": "- You are allowed to use this Firefox Extension in unmodified form free of charge.\n- You may not modify it, re-distribute it or create derivative works containing this Extension or parts of it.\n- You are not allowed to use any parts of the Source code of this extension in other works.\n- This product is provided as-is without any warranties.",
+                    "en-US": "Copyright Buffer",
+                    "de": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License\n\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License (\"Public License\"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\n    Adapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\n    Copyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\n    Effective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\n    Exceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\n    Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\n    Licensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\n    Licensor means the individual(s) or entity(ies) granting rights under this Public License.\n    NonCommercial means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this Public License, the exchange of the Licensed Material for other material subject to Copyright and Similar Rights by digital file-sharing or similar means is NonCommercial provided there is no payment of monetary compensation in connection with the exchange.\n    Share means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\n    Sui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\n    You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\nSection 2 – Scope.\n\n    License grant.\n        Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\n            reproduce and Share the Licensed Material, in whole or in part, for NonCommercial purposes only; and\n            produce and reproduce, but not Share, Adapted Material for NonCommercial purposes only.\n        Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\n        Term. The term of this Public License is specified in Section 6(a).\n        Media and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\n        Downstream recipients.\n            Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\n            No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\n        No endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\n    Other rights.\n        Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\n        Patent and trademark rights are not licensed under this Public License.\n        To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties, including when the Licensed Material is used other than for NonCommercial purposes.\n\nSection 3 – License Conditions.\n\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\n    Attribution.\n\n        If You Share the Licensed Material, You must:\n            retain the following if it is supplied by the Licensor with the Licensed Material:\n                identification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\n                a copyright notice;\n                a notice that refers to this Public License;\n                a notice that refers to the disclaimer of warranties;\n                a URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n            indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\n            indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\n        For the avoidance of doubt, You do not have permission under this Public License to Share Adapted Material.\n        You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\n        If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nSection 4 – Sui Generis Database Rights.\n\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\n    for the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database for NonCommercial purposes only and provided You do not Share Adapted Material;\n    if You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material; and\n    You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\n    Unless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\n    To the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\n\n    The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\nSection 6 – Term and Termination.\n\n    This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\n\n    Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n        automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\n        upon express reinstatement by the Licensor.\n    For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\n    For the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\n    Sections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\nSection 7 – Other Terms and Conditions.\n\n    The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\n    Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\nSection 8 – Interpretation.\n\n    For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\n    To the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\n    No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\n    Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.",
+                    "ko": "이 확장은 3중 라이센스(GPL/LGPL/MPL)로 배포됩니다.\n- GPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/50f8213a635c55938b7d1800bca643361d3bf829794eec93a1147307a4cd596f/http%3A//www.gnu.org/licenses/gpl-3.0.html\">http://www.gnu.org/licenses/gpl-3.0.html</a>\n- LGPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bda48979b4b7627c8af5d5cbe582e398a67786520fd8db4c2d25d11b31bd1e55/http%3A//www.gnu.org/licenses/lgpl-3.0.html\">http://www.gnu.org/licenses/lgpl-3.0.html</a>\n- MPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f3c3e05134c74e7b840c6791fff96b27c89f15a62369e43a0fda8ffdbf9afd6e/https%3A//www.mozilla.org/en-US/MPL/2.0/\">https://www.mozilla.org/en-US/MPL/2.0/</a>",
+                    "fr": "Free for non-commercial personal use. Copyright of all graphics elemets designed for  this theme belongs to the author. Before any modifications and/or distribution of this work, please contact it and read the license file included inside the theme package."
+                },
+                "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+            },
+            "release_notes": {
+                "en-US": "* Fix intermittent issue of hilite button getting sized incorrectly\n* Added hidden option for alphabetical sort of extension list rather than the new by-state (enabled/disabled) sort order. (To enable that option create a boolean pref (in about:config) extensions.addonsmgrhilte@cfl.alphaSort and set it to true.)"
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/0.8.0.1-signed",
+            "version": "0.8.0.1-signed"
+        },
+        {
+            "id": 125376,
+            "channel": "listed",
+            "compatibility": {
+                "firefox": {
+                    "max": "4.0.*",
+                    "min": "4.0b7"
+                }
+            },
+            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addons-manager-hilite/versions/125376",
+            "files": [
+                {
+                    "id": 107537,
+                    "created": "2011-01-07T16:41:57Z",
+                    "hash": "sha256:9557645051a17755b29645fc400e612526fca60f1f4f934599387f2411922d94",
+                    "is_restart_required": true,
+                    "is_webextension": false,
+                    "is_mozilla_signed_extension": false,
+                    "platform": "all",
+                    "size": 7168,
+                    "status": "public",
+                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/107537/addons_manager_hilite-0.7.1-fx.xpi?src=",
+                    "permissions": []
+                }
+            ],
+            "is_strict_compatibility_enabled": true,
+            "license": {
+                "id": 5,
+                "name": {
+                    "el": "Mozilla Public License, έκδοση 1.1",
+                    "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                    "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                    "it": "Licenza Mozilla Public License, versione 1.1",
+                    "cs": "Mozilla Public License, verze 1.1",
+                    "eu": "Mozilla Public License, 1.1 bertsioa",
+                    "id": "Mozilla Public License, versi 1.1",
+                    "es": "Licencia pública Mozilla, versión 1.1",
+                    "ru": "Mozilla Public License, версия 1.1",
+                    "nl": "Mozilla Public License, versie 1.1",
+                    "en-US": "Mozilla Public License Version 1.1",
+                    "pl": "Mozilla Public License, wersja 1.1",
+                    "fr": "Mozilla Public License Version 1.1",
+                    "bg": "Mozilla Публичен лиценз, версия 1.1",
+                    "de": "Mozilla Public License Version 1.1",
+                    "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                    "pt-BR": "Licença personalizada",
+                    "ja": "Mozilla Public License バージョン 1.1",
+                    "pt-PT": "Mozilla Public License, versão 1.1",
+                    "sr": "Мозилина јава лиценца, верзија 1.1",
+                    "sq": "Leje Publike Mozilla, version 1.1",
+                    "ko": "GPL/LGPL/MPL",
+                    "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                    "sk": "Mozilla Public License, verzia 1.1",
+                    "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                    "zh-TW": "Mozilla Public License，版本 1.1"
+                },
+                "text": {
+                    "pt-BR": "- You are allowed to use this Firefox Extension in unmodified form free of charge.\n- You may not modify it, re-distribute it or create derivative works containing this Extension or parts of it.\n- You are not allowed to use any parts of the Source code of this extension in other works.\n- This product is provided as-is without any warranties.",
+                    "en-US": "Copyright Buffer",
+                    "de": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License\n\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License (\"Public License\"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\n    Adapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\n    Copyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\n    Effective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\n    Exceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\n    Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\n    Licensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\n    Licensor means the individual(s) or entity(ies) granting rights under this Public License.\n    NonCommercial means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this Public License, the exchange of the Licensed Material for other material subject to Copyright and Similar Rights by digital file-sharing or similar means is NonCommercial provided there is no payment of monetary compensation in connection with the exchange.\n    Share means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\n    Sui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\n    You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\nSection 2 – Scope.\n\n    License grant.\n        Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\n            reproduce and Share the Licensed Material, in whole or in part, for NonCommercial purposes only; and\n            produce and reproduce, but not Share, Adapted Material for NonCommercial purposes only.\n        Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\n        Term. The term of this Public License is specified in Section 6(a).\n        Media and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\n        Downstream recipients.\n            Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\n            No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\n        No endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\n    Other rights.\n        Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\n        Patent and trademark rights are not licensed under this Public License.\n        To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties, including when the Licensed Material is used other than for NonCommercial purposes.\n\nSection 3 – License Conditions.\n\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\n    Attribution.\n\n        If You Share the Licensed Material, You must:\n            retain the following if it is supplied by the Licensor with the Licensed Material:\n                identification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\n                a copyright notice;\n                a notice that refers to this Public License;\n                a notice that refers to the disclaimer of warranties;\n                a URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n            indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\n            indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\n        For the avoidance of doubt, You do not have permission under this Public License to Share Adapted Material.\n        You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\n        If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nSection 4 – Sui Generis Database Rights.\n\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\n    for the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database for NonCommercial purposes only and provided You do not Share Adapted Material;\n    if You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material; and\n    You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\n    Unless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\n    To the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\n\n    The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\nSection 6 – Term and Termination.\n\n    This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\n\n    Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n        automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\n        upon express reinstatement by the Licensor.\n    For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\n    For the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\n    Sections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\nSection 7 – Other Terms and Conditions.\n\n    The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\n    Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\nSection 8 – Interpretation.\n\n    For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\n    To the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\n    No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\n    Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.",
+                    "ko": "이 확장은 3중 라이센스(GPL/LGPL/MPL)로 배포됩니다.\n- GPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/50f8213a635c55938b7d1800bca643361d3bf829794eec93a1147307a4cd596f/http%3A//www.gnu.org/licenses/gpl-3.0.html\">http://www.gnu.org/licenses/gpl-3.0.html</a>\n- LGPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bda48979b4b7627c8af5d5cbe582e398a67786520fd8db4c2d25d11b31bd1e55/http%3A//www.gnu.org/licenses/lgpl-3.0.html\">http://www.gnu.org/licenses/lgpl-3.0.html</a>\n- MPL : <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f3c3e05134c74e7b840c6791fff96b27c89f15a62369e43a0fda8ffdbf9afd6e/https%3A//www.mozilla.org/en-US/MPL/2.0/\">https://www.mozilla.org/en-US/MPL/2.0/</a>",
+                    "fr": "Free for non-commercial personal use. Copyright of all graphics elemets designed for  this theme belongs to the author. Before any modifications and/or distribution of this work, please contact it and read the license file included inside the theme package."
+                },
+                "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+            },
+            "release_notes": {
+                "en-US": "* Fixed: Some elements on the Add-ons Manager page shift up/down 2 pixels when switching between panels."
+            },
+            "reviewed": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addons-manager-hilite/versions/0.7.1.1-signed",
+            "version": "0.7.1.1-signed"
+        }
+    ]
+}

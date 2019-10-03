@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/toolbar.css" type="text/css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/calendar/calendarWidget.xul"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+	<!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+<overlay id="reminderFoxOverlay"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<!-- On ALL .XUL  stringbundle/stringbundleset replaced with
+				Services.strings.createBundle(..)
+				see reminderfox.string= function(bString)  in reminderFoxCore.js  -->
+	<!--  <stringbundleset id="stringbundleset">
+		<stringbundle id="reminderFox-bundle" src="chrome://reminderfox/locale/reminderfox.properties"/>
+		<stringbundle id="reminderfox_addressBook" src="chrome://messenger/locale/addressbook/addressBook.properties"/>
+	-->
+
+	<!-- core APIs -->
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/datepicker/datepicker.js"/>
+	<script type="application/x-javascript" src="chrome://reminderfox/content/calendar/calendarWidget.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUserIO.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxPopupControl.js"/>
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVrequester.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVcalls.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/HTTP.js" />
+
+<!--   ***************************    XXX this is conflicting with FX/TB Printing!   XXX
+		compare 0827_0137  vs 0829_0115   -->
+	<script type="application/x-javascript"		src="chrome://reminderfox/content/network/passwordManagerUtils.js" />
+<!--****************************** -->
+
+
+	<script type="application/x-javascript">
+		window.addEventListener("load", reminderfox.overlay.start, false);
+	</script>
+
+	<window id="main-window">
+		<popupset id="mainPopupSet"/>
+	</window>
+
+
+	<!-- Firefox Tools Menu -->
+	<menupopup id="menu_ToolsPopup">
+		<menu id="reminderFox-tools-menu" label="&rf.name;"
+				accesskey="&rf.toolsmenu.Reminderfox.accesskey;" class="menu-iconic reminderfox-icon"
+				insertafter="devToolsSeparator">
+			<menupopup>
+				<menuitem label="&rf.main.icons.openReminderfox.label;" class="reminderfox-icon-none"
+						oncommand="reminderfox.overlay.openMainDialog(true, 'reminders')"
+						accesskey="&rf.toolsmenu.OpenReminderfox.accesskey;" />
+				<menuitem label="&rf.main.addReminder.label;" class="reminderfox-icon-none"
+						oncommand="reminderfox.overlay.quickAddReminder()"
+						accesskey="&rf.toolsmenu.AddReminder.accesskey;" />
+				<menuitem label="&rf.main.quickalarm.label;" class="reminderfox-icon-none"
+						oncommand="reminderfox.overlay.openQuickAlarmDialog()"
+						accesskey="&rf.toolsmenu.QuickAlarm.accesskey;" />
+				<menuitem label="&rf.main.options.label;" class="reminderfox-icon-none"
+						oncommand="reminderfox.overlay.openOptionsDialog()"
+						accesskey="&rf.toolsmenu.Options.accesskey;" />
+				<menuitem label="&rf.main.help.label;" class="reminderfox-icon-none"
+						oncommand="reminderfox.util.launchHelp();"
+						accesskey="&rf.toolsmenu.Help.accesskey;" />
+				<!-- For debugging  -->
+				<menuitem label="Debug"  hidden="true" oncommand="reminderfox.overlay.runDebug();"/>
+		<!--
+				<menuitem label="Process Alarms"  oncommand="reminderfox.overlay.processRecentReminders();"/>
+		-->
+			</menupopup>
+		</menu>
+	</menupopup>
+
+
+	<popupset id="mainPopupSet">
+		<tooltip id="reminderFox_tip" noautohide="true" orient="horizontal"
+			onpopupshowing="reminderfox.core.initiliazeTooltip()">
+			<hbox>
+				<hbox id="reminderfox-foxpaw">
+					<image src="chrome://reminderfox/skin/images/foxy-small.png" class="small-fox-icon" />
+					<spacer id="reminderfox-entry-spacer.i" width="6px" />
+				</hbox>
+				<vbox id="reminderfox-tooltipChildrenReminders">
+					<description value="&rf.main.tooltip.todaysreminders.label;" id="reminderfox-todayRemindersDescription" style="font-weight:bold"/>
+					<vbox id="reminderfox-todaysRemindersBox">
+					</vbox>
+					<spacer id="reminderfox-reminderSpacer" height="4px"/>
+					<description value="&rf.main.tooltip.upcomingreminders.label;" id="reminderfox-upcomingRemindersDescription" style="font-weight:bold"/>
+					<vbox id="reminderfox-upcomingRemindersBox">
+					</vbox>
+				</vbox>
+				<spacer id="reminderfox-entry-spacer.todos" width="10px"/>
+				<vbox id="reminderfox-todosTooltip">
+					<vbox id="reminderfox-tooltipChildren">
+						<description id="reminderfox-todoDescription" value="&rf.main.tooltip.todos.label;" style="font-weight:bold"/>
+						<vbox id="reminderfox-todosBox">
+						</vbox>
+						<spacer id="reminderfox-reminderSpacer" height="4px"/>
+					</vbox>
+				</vbox>
+			</hbox>
+		</tooltip>
+
+		<tooltip id="reminderFox_quick_alarms_tip" noautohide="true" orient="horizontal" onpopupshowing="reminderfox.overlay.quickAlarmTooltip()" >
+			<hbox>
+				<vbox id="reminderfox-tooltipQuickAlarms">
+					<description value="&rf.main.quickalarms.label;" id="reminderfox-quickAlarms" style="font-weight:bold"/>
+					<vbox id="reminderfox-quickAlarmTooltipBox">
+					</vbox>
+				</vbox>
+			</hbox>
+		</tooltip>
+
+		<menupopup id="reminderfox-quickalarm-contextmenu">
+			<menuitem id="reminderfox-options-contextmenu-quickAlarm" label="&rf.main.quickalarm.label;" oncommand="reminderfox.overlay.openQuickAlarmDialog();"/>
+			<menu id="reminderfox-options-contextmenu-quickAlarms-list-toolbar" label="&rf.main.quickalarms.label;">
+				<menupopup id="reminderfox-options-contextmenu-quickAlarms-list-toolbar-popup">
+				</menupopup>
+			</menu>
+		</menupopup>
+
+		<menupopup id="reminderfox-options-contextmenu">
+			<menuitem id="reminderfox-options-contextmenu-editreminder" label="&rf.main.viewReminders.label;" oncommand="reminderfox.overlay.openMainDialog();"/>
+			<menuitem id="reminderfox-options-contextmenu-editreminder" label="&rf.main.addReminder.label;" oncommand="reminderfox.overlay.quickAddReminder();"/>
+			<menuitem id="reminderfox-options-contextmenu-quickAlarm" label="&rf.main.quickalarm.label;" oncommand="reminderfox.overlay.openQuickAlarmDialog();"/>
+			<menu id="reminderfox-options-contextmenu-quickAlarms-list" label="&rf.main.quickalarms.label;">
+				<menupopup id="reminderfox-options-contextmenu-quickAlarms-list-popup">
+				</menupopup>
+			</menu>
+			<menuitem id="reminderfox-options-contextmenu-suspendAlerts" label="&rf.main.showalerts.label;" oncommand="reminderfox.overlay.toggleShowAlert();"/>
+			<menuseparator/>
+			<menuitem label="&rf.main.options.label;" oncommand="reminderfox.overlay.openOptionsDialog();" />
+			<menuitem label="&rf.main.homepage.label;"  oncommand="reminderfox.util.docRmFX();" />
+			<menuitem label="&rf.main.help.label;"  oncommand="reminderfox.util.launchHelp();" />
+
+			<menuitem label="Reminderfox Forum / Support / Feedback"
+				oncommand="reminderfox.util.docRmFX('forum');"
+			tooltiptext="See and share user discussions, get answers and recommendations to your questions."/>
+
+			<menuitem id="reminderfox-options-contextmenu-editreminder" label="&rf.main.about.label;" oncommand="reminderfox.overlay.openAboutReminderFoxDialog();"/>
+		</menupopup>
+
+		<panel onpopupshowing="reminderfox.overlay.showCalendar(event);"
+			id="reminderfox-calendar-popup" class="rmFx-panel-Box">
+			<vbox id="reminderfox-calendar-box" flex="1"/>
+		</panel>
+	</popupset>
+
+
+	<popup id="contentAreaContextMenu">  <!-- context-sep-open" -->
+		<menuitem label="&rf.importing.title;" insertbefore="context-sep-selectall"
+				id="reminderfox_addReminder"  oncommand="reminderfox.userIO.addReminder4WebPage(this);"/>
+		<menuitem label="&rf.main.contextmenu.subscribe.label;" class="menuitem-iconic" insertafter="context-stop"
+				id="reminderfox_subscribeReminder" oncommand="reminderfox.userIO.addReminder4WebPage(this);"/>
+	</popup>
+
+	<!-- Firefox  ******  DISABLED ***** - - >
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbarbutton id="reminderFox_openButton"/>
+		<toolbarbutton id="reminderFox_addReminderButton"/>
+		<toolbarbutton id="reminderFox_showCalendar"/>
+		<toolbarbutton id="reminderFox_quickAlarmButton"/>
+		<toolbarbutton id="reminderFox_openButton_bow"/>
+	</toolbarpalette>
+	******************   -->
+
+
+	<!-- *************** smartFoxy -->
+	<toolbarbutton id="reminderFox_openButton"  label="&rf.name;"	tooltip="reminderFox_tip"
+		oncommand="reminderfox.overlay.openMainDialog(true, 'reminders')"
+		context="reminderfox-options-contextmenu"
+		oncontextmenu="reminderfox.overlay.activateOptionsContext(event);"
+		ondragenter="event.stopPropagation(); event.preventDefault();"
+		ondragover="event.stopPropagation(); event.preventDefault();"
+		ondrop="event.stopPropagation(); event.preventDefault();">
+			<hbox>
+				<image id="smartfoxy_image" />
+			</hbox>
+			<label id="reminderfox_smartFoxyBadge"  hidden="true" value="" important="false"/>
+	</toolbarbutton>
+
+<!-- reminderfox.util.JS.dispatch('userIO', event);"  //gW ####   dispatch  -->
+
+
+	<!-- smartFoxy status ribbon   ******  DISABLED ***** - - >
+	<toolbarbutton id="reminderFox_openButton_bow" label="&rf.name;" tooltip="reminderFox_tip"
+		oncommand="reminderfox.overlay.openMainDialog(true, 'reminders')"
+		context="reminderfox-options-contextmenu"
+		oncontextmenu="reminderfox.overlay.activateOptionsContext(event);"
+		ondragenter="event.stopPropagation(); event.preventDefault();"
+		ondragover="event.stopPropagation(); event.preventDefault();"
+		ondrop="event.stopPropagation(); event.preventDefault();">
+			<hbox>
+				<image id="smartfoxy_image_bow" />
+			</hbox>
+		<label id="reminderfox_smartFoxyBadge_bow"  hidden="true" value="" important="false"/>
+	</toolbarbutton>
+	******************   -->
+
+<!-- **************** Thunderbird / Seamonkey   ************** -->
+
+	<window id="messengerWindow">
+		<popupset id="mainPopupSet"/>
+	</window>
+
+	<window id="calendar-window">
+		<popupset id="mainPopupSet"/>
+	</window>
+
+	<window id="addressbookWindow">
+		<popupset id="mainPopupSet"/>
+	</window>
+
+
+	<!--  Tools file menu -->
+	<menupopup id="taskPopup">
+		<menu id="reminderFox-tools-menu" label="&rf.name;"
+				class="menu-iconic reminderfox-icon menuitem-iconic"
+				insertafter="devToolsSeparator">
+			<menupopup>
+				<menuitem label="&rf.main.icons.openReminderfox.label;"
+						oncommand="reminderfox.overlay.openMainDialog(true, 'reminders')"
+						accesskey="&rf.toolsmenu.OpenReminderfox.accesskey;" />
+				<menuitem label="&rf.main.addReminder.label;"
+						oncommand="reminderfox.overlay.quickAddReminder()"
+						accesskey="&rf.toolsmenu.AddReminder.accesskey;" />
+				<menuitem label="&rf.main.quickalarm.label;"
+						oncommand="reminderfox.overlay.openQuickAlarmDialog()"
+						accesskey="&rf.toolsmenu.QuickAlarm.accesskey;" />
+				<menuitem label="&rf.main.options.label;"
+						oncommand="reminderfox.overlay.openOptionsDialog()"
+						accesskey="&rf.toolsmenu.Options.accesskey;" />
+						<menuitem label="&rf.main.help.label;"
+								oncommand="reminderfox.util.launchHelp();"
+								accesskey="&rf.toolsmenu.Help.accesskey;" />
+
+				<!--   TESTING -->
+				<menuitem label="**testing**"
+						oncommand="reminderfox.util.testing();"/>
+			</menupopup>
+		</menu>
+	</menupopup>
+
+
+	<!-- ***  Popup Menus will be build and/or activated based on content *** -->
+	<!-- ***  (iCal text, attachment ics file, contact  etc )             *** -->
+	<popup id="mailContext">
+		<menuitem  class="menuitem-iconic mailRm_Add"
+				id="reminderfox-mail-AddReminder"
+				oncommand="reminderfox.userIO.addReminder4Email(this);"
+				label="&rf.importing.title;" />
+
+		<menuitem label="&rf.main.importFromEmail.label;" class="menuitem-iconic mailRm_ICS" disabled="true"
+				id="reminderfox-mail-ICS_Msg"
+				oncommand="reminderfox.iCal.addReminder4Message(this);"/>
+
+		<menuitem label="&mail.reminder4mail.open;" class="menuitem-iconic mailRm_Open" disabled="true"
+				id="reminderfox-mail-Open_Msg" oncommand="reminderfox.sendPlus.openMail();"/>
+	</popup>
+
+
+	<popup id="attachmentListContext">
+		<menuseparator   id="reminderfox-mail-sep2" />
+		<menuitem label="&rf.main.importFromEmail.label;" class="menuitem-iconic mailRm_ICS" disabled="true"
+				id="reminderfox-mail-ICS_List" oncommand="reminderfox.userIO.addReminder4Email(this); "/>
+	</popup>
+
+
+	<popup id="attachmentItemContext">
+		<menuseparator   id="reminderfox-mail-sep2" />
+		<menuitem label="&rf.main.importFromEmail.label;" class="menuitem-iconic mailRm_ICS" disabled="true"
+				id="reminderfox-mail-ICS_Item" oncommand="reminderfox.userIO.addReminder4Email(this);"/>
+	</popup>
+
+
+	<!--   add Reminder for Contact -->
+	<popup id="abResultsTreeContext">
+		<menuseparator  id="reminderfox-mail-sep3" />
+		<menuitem label="&rf.main.contextmenu.addremindercontact.label;"
+				id="reminderfox-mail-addContact"  oncommand="reminderfox.util.JS.dispatch('addReminder4Contact','Reminder');" />
+		<menuitem label="&rf.main.contextmenu.copycontactmail.label;"
+				id="reminderfox-mail-copyContact"  oncommand="reminderfox.util.JS.dispatch('addReminder4Contact','Copy');" />
+	</popup>
+
+
+	<!--  ***  Toolbarbuttons for Thunderbird/Seamonkey  *** -->
+	<toolbarbutton id="reminderFox_addReminderButton" label="&rf.main.icons.addreminder.label;"
+		tooltiptext="&rf.main.icons.addreminder.tooltip.label;"
+		class="toolbarbutton-1 chromeclass-toolbar-additional"
+		oncommand="reminderfox.overlay.quickAddReminder()"/>
+
+	<toolbarbutton id="reminderFox_showCalendar" label="&rf.main.icons.showCalendar.label;"
+		tooltiptext="&rf.main.icons.showCalendar.tooltip.label;"
+		class="toolbarbutton-1 chromeclass-toolbar-additional"
+		onclick="reminderfox.overlay.showCalendarWidget(event, this);"/>
+
+	<toolbarbutton id="reminderFox_quickAlarmButton" label="&rf.main.quickalarm.label;"
+		tooltip="reminderFox_quick_alarms_tip"
+		context="reminderfox-quickalarm-contextmenu"
+		oncontextmenu="reminderfox.overlay.activateQuickAlarmContextMenu(event, true);"
+		class="toolbarbutton-1 chromeclass-toolbar-additional"
+		onclick="if (event.button == 0) reminderfox.overlay.openQuickAlarmDialog();"/>
+
+	<toolbarbutton id="reminderfox-sendPlus"  label="&mail.send.withreminder; ++"
+		tooltiptext="&mail.send.withreminder.tooltip;"
+		class="toolbarbutton-1 chromeclass-toolbar-additional reminderfox-sendPlus"
+		oncommand="reminderfox.util.JS.dispatch('msgSendwReminder','');"/>
+
+	<toolbarbutton id="reminderfox-personsMailCopy"
+			tooltiptext="&rf.main.contextmenu.copycontactmail.label;"
+			class="toolbarbutton-1 chromeclass-toolbar-additional;"
+			oncommand="reminderfox.util.JS.dispatch('addReminder4Contact','Copy');"
+			label="&rf.label.Copy;"/>
+
+	<!-- ***  Toolbarpalettes for Thunderbird/Seamonkey  *** -->
+	<toolbarpalette id="MailToolbarPalette">
+		<toolbarbutton id="reminderFox_openButton"/>
+		<toolbarbutton id="reminderFox_addReminderButton"/>
+		<toolbarbutton id="reminderFox_showCalendar"/>
+		<toolbarbutton id="reminderFox_quickAlarmButton"/>
+	<!--	<toolbarbutton id="reminderFox_openButton_bow"/>  -->
+	</toolbarpalette>
+
+	<toolbarpalette id="MsgComposeToolbarPalette">
+	 	<toolbarbutton id="reminderFox_openButton"/>
+		<toolbarbutton id="reminderFox_addReminderButton"/>
+		<toolbarbutton id="reminderFox_showCalendar"/>
+		<toolbarbutton id="reminderFox_quickAlarmButton"/>
+		<toolbarbutton id="reminderfox-sendPlus" />
+		<!--   <toolbarbutton id="reminderFox_openButton_bow"/> -->
+	</toolbarpalette>
+
+	<toolbarpalette id="AddressBookToolbarPalette">
+		<toolbarbutton id="reminderfox-personsMailCopy" />
+	</toolbarpalette>
+
+
+	<!-- popup on calendar day with day-header and all day events -->
+	<panel id="reminderfox-calendar-dayPanel" flex="0" width="400px"
+			onmouseleave= "reminderfox.calendar.ui.panelLeave(this)">
+		<description id="reminderfox-calendar-dayPanelItems" value="Really!"
+			style="color: red;" />
+	</panel>
+
+
+	<!-- PANEL for Status information -->
+	<panel id="rmFx_status-panel">
+		<description id="rmFx_status-panel-text" value="status--test" />
+	</panel>
+
+</overlay>

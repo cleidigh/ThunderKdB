@@ -1,0 +1,565 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#rmFx-MainDialog-List-Calendar {
+		font-size: 14px;
+}
+
+.url {
+	cursor: pointer;
+	color: #3A69A6;
+}
+.urlBold {
+	cursor: pointer;
+	color: #3A69A6;
+	font-weight: bold;
+}
+
+
+/* status bar icon changes color depending on reminder status */
+	statusbarpanel#reminderFox-statusLabel[status="currentReminder"] {
+	list-style-image: url("chrome://reminderfox/skin/images/bow.png");
+}
+
+statusbarpanel#reminderFox-statusLabel[status="upcomingReminder"] {
+	list-style-image: url("chrome://reminderfox/skin/images/upcomingReminderBow.png");
+}
+
+statusbarpanel#reminderFox-statusLabel[status="noReminders"] {
+	list-style-image: url("chrome://reminderfox/skin/images/noReminderBow.png");
+}
+
+/* mark Important status for reminders in Add Dialog */
+	treechildren::-moz-tree-cell-text(important) {
+	color: red !important;
+}
+
+/* mark Important status for reminders in Add Dialog */
+	treechildren::-moz-tree-cell-text(today) {
+	font-weight: bold;
+}
+
+/* mark completed status for reminders in Add Dialog */
+treechildren::-moz-tree-cell-text(completeText) {
+	text-decoration: line-through;
+}
+
+/* mark completed status for reminders in Add Dialog */
+treechildren::-moz-tree-cell-text(imporantCompleteText) {
+	text-decoration: line-through;
+	color: red !important;
+}
+
+
+treechildren::-moz-tree-cell-text(todayCompleteText) {
+	text-decoration: line-through;
+	font-weight: bold;
+}
+
+/* mark completed status for reminders in Add Dialog */
+treechildren::-moz-tree-cell-text(imporantToday) {
+	color: red !important;
+	font-weight: bold;
+}
+
+treechildren::-moz-tree-cell-text(imporantCompleteTextToday) {
+	text-decoration: line-through;
+	color: red !important;
+	font-weight: bold;
+}
+
+
+#timedetails
+{
+	margin					: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px !important;
+}
+
+#time1menu
+{
+	margin					: 0px 0px 0px 0px;
+	padding: 0px 1px 0px 0px !important;
+}
+
+#reminderFox_tip, #reminderTree-tooltip, #todoTree-tooltip
+{
+	max-width: 810px
+}
+
+#notesToggle {
+	list-style-image: url("chrome://reminderfox/skin/images/notes.png");
+}
+
+#displayCalDAV {
+	list-style-image: url("chrome://reminderfox/skin/images/icon_share_16.png");
+}
+
+#displayMail {
+	list-style-image: url("chrome://reminderfox/skin/images/mail.png");
+}
+.displayMail {
+	list-style-image: url("chrome://reminderfox/skin/images/mail.png");
+	cursor: pointer;
+}
+
+.displayCategory {
+	list-style-image: url("chrome://reminderfox/skin/images/category.png");
+}
+.displayNotes {
+	list-style-image: url("chrome://reminderfox/skin/images/notes.png");
+}
+.displayAlarm {
+	list-style-image: url("chrome://reminderfox/skin/images/alarmbell.png");
+}
+.displayRecurrence {
+	list-style-image: url("chrome://reminderfox/skin/images/repeat.png");
+}
+.displayShowInTooltip {
+	list-style-image: url("chrome://reminderfox/skin/images/tooltip.png");
+}
+
+
+#reminderFox-network-status
+{
+	margin					: 0px 0px 0px 5px;
+	padding					: 0px;
+}
+#reminderFox-network-status-todo
+{
+	margin					: 0px 0px 0px 5px;
+	padding					: 0px;
+}
+
+
+#launchUrlButton, #launchLocationButton {
+	list-style-image: url("chrome://reminderfox/skin/images/url.png");
+}
+
+treechildren:-moz-tree-cell(notes) {
+	background: url("chrome://reminderfox/skin/images/notes.png") no-repeat;
+}
+
+treechildren:-moz-tree-cell(remindUntilCompleted) {
+	background: url("chrome://reminderfox/skin/images/cbox-check.gif") no-repeat;
+}
+
+treechildren:-moz-tree-cell(complete) {
+	background: url("chrome://reminderfox/skin/images/cbox-check.gif") no-repeat;
+}
+
+treechildren:-moz-tree-cell(showIntTooltip) {
+	background: url("chrome://reminderfox/skin/images/cbox-check.gif") no-repeat;
+}
+
+treechildren::-moz-tree-checkbox(checked) {
+	/* css for checked cells */
+	list-style-image: url("chrome://global/skin/checkbox/cbox-check.gif");
+}
+
+
+/* alternate colors in reminder tree...
+treechildren::-moz-tree-row(selected) { background-color: #FFFFAA; }
+treechildren::-moz-tree-row(odd) { background-color: #EEEEEE; }
+treechildren::-moz-tree-row(odd, selected) { background-color: #FFFFAA; }
+treechildren::-moz-tree-cell-text(selected) { color: #000000; }
+treechildren::-moz-tree-cell-text(odd, selected) { color: #000000; }
+
+treechildren::-moz-tree-row(caldavX) {background-color:#F4C8FA !important;}
+treechildren::-moz-tree-row(caldavX, selected) {background-color:#635266 !important;}
+----*/
+/*		  color: var(--my-var, black); /* Red if --my-var is not defined */
+
+
+
+
+/*  For calDAV tree colors
+ *   see calDAVmap.css  -- this is generated in rmFxUtils.js */
+
+.rmFx-calDAV-color-selector {
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-right:1px;
+	width:25px;
+}
+
+#rmFx_colorpicker_panel {
+	background-color:#DEDDD7;
+}
+
+
+#rmFx-calDAV-color-selector-box {
+	border: 2px;
+	border-color:#DEDDD7;
+	border-style:solid;
+	background-color:#DEDDD7;
+}
+
+
+.reminderFox-footer {
+	border-top: 2px groove ThreeDFace;
+	padding: 10px;
+}
+
+.reminderFox-footer3 {
+	padding: 3px;
+}
+.reminderFox-footer2 {
+	border-top: 2px groove ThreeDFace;
+	padding: 3px;
+}
+
+
+/* HTML view settings  */
+
+#main h4{
+	margin:  20px 20px 5px 20px;
+	padding: 3px 62px;
+	font-size: 1.6em;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+	color: #FFBF01;
+	background: #FFF url(images/Paw-background.png) no-repeat left center;
+	border: 2px solid #FFBF01;
+}
+
+#main {
+	position: relative;
+	background: #FFEFBF;
+	margin: 0 20px 0 10px;
+	padding: 3px 10px;
+	border-right: 3px solid #93ACC6;
+	border-bottom: 3px solid #93ACC6;
+	z-index: 50;
+}
+
+
+/*  send msg with Reminder  */
+
+/* add icon to popup menus for Firebird/browser*/
+#reminderfox_addReminder, #reminderfox_subscribeReminder, .remindUntilCompleted2, #reminderfox_foxyMenu
+{list-style-image: url("chrome://reminderfox/skin/images/ribbon-red-small.png");}
+
+.remindUntilCompleted1
+{list-style-image: url("chrome://reminderfox/skin/images/ribbon-blue-small.png");}
+
+
+/* add icon to popup menus for TB with image-region */
+.mailRm_Add {
+	list-style-image: url("chrome://reminderfox/skin/images/mailPopUp.png");
+    -moz-image-region: rect(0px,16px, 16px,0px);
+}
+
+.mailRm_Open {
+	list-style-image: url("chrome://reminderfox/skin/images/mailPopUp.png");
+  -moz-image-region: rect(16px,16px, 32px,0px);
+}
+.mailRm_Open[disabled] {
+	list-style-image: url("chrome://reminderfox/skin/images/mailPopUp.png");
+  -moz-image-region: rect(16px,32px, 32px,16px);
+}
+
+.mailRm_ICS  {
+  list-style-image: url("chrome://reminderfox/skin/images/mailPopUp.png");
+  -moz-image-region: rect(48px,16px, 64px,0px);
+}
+.mailRm_ICS[disabled] {
+  list-style-image: url("chrome://reminderfox/skin/images/mailPopUp.png");
+   -moz-image-region: rect(48px,32px, 64px,16px);
+}
+
+
+
+.infoButton:hover {
+  list-style-image: url("chrome://reminderfox/skin/images/info.png");
+   -moz-image-region: rect(0px,16px, 16px,0px);
+	max-height: 16px;
+}
+.infoButton {
+  list-style-image: url("chrome://reminderfox/skin/images/info.png");
+   -moz-image-region: rect(0px,32px, 16px,16px);
+   	max-height: 16px;
+}
+
+
+.reminderFox_Bold {
+    font-weight: bold;
+}
+.reminderFox_BoldNormal {
+    font-weight: bold;
+    color: black;
+}
+.reminderFox_BoldError {
+    font-weight: bold;
+    color: red;
+}
+.reminderFox_BoldBlue {
+    font-weight: bold;
+    color: blue;
+}
+
+.reminderfox_TextNormal {
+    color: black;
+}
+.reminderfox_TextDisabled {
+    color: gray !important;
+}
+.reminderfox_TextNote {
+    color: rgb(0,102,51) !important;
+}
+
+.small-fox-icon {
+    max-width:59px;
+	max-height:56px
+}
+
+
+#revertbutton {
+  /* list-style-image: url("chrome://reminderfox/skin/images/revert.png");
+   -moz-image-region: rect(0px,24px,24px,0px); */
+	}
+	#revertbutton[modified="true"] {
+	  /* list-style-image: url("chrome://reminderfox/skin/images/revert.png");
+	   -moz-image-region: rect(24px,24px,48px,0px); */
+		color: red;
+		font-weight: bold;
+	}
+
+
+.image-button {
+    margin-top          : 2px;
+    margin-bottom       : 2px;
+    margin-left         : 2px;
+    margin-right        : 2px;
+}
+
+    .image-button[id="mailAppButton"] {
+        list-style-image    : url("chrome://reminderfox/skin/images/mail.png");
+        height              : 10px  !important;
+        width               : 16px  !important;
+    }
+
+    .image-button[id="personButton"] {
+        list-style-image    : url("chrome://reminderfox/skin/schedule/personsCopy_20.png");
+        height              : 18px  !important;
+        width               : 18px  !important;
+    }
+
+    .image-button[id="rmFx-foxy-icon-small"] {
+        list-style-image    : url("chrome://reminderfox/skin/images/foxy-head-20.png");
+    }
+
+
+   #rmFx-foxy-icon-small {
+		list-style-image    : url("chrome://reminderfox/skin/images/foxy-head-20.png");
+    }
+
+    #rmFx-foxy-icon-small[mode="offline"] {
+	list-style-image    : url("chrome://reminderfox/skin/images/foxy-head-20-grey.png");
+    }
+
+    .reminderfox-icon {
+      list-style-image: url("chrome://reminderfox/skin/images/foxy-head-16.png");
+    }
+
+
+.rmFxMenulist {
+	max-width: none;
+}
+
+#tabPanelID {
+	padding: 2px;
+}
+
+
+#rmFx_status-panel {
+	background-color: white;
+	margin : 0px 0px 0px 0px;
+	margin-right: 6px;
+}
+
+#rmFx_status-panel-text {
+	border-color: white;
+	margin : 0px 0px 0px 0px;
+	color: blue;
+	background-color: white;
+	font-size: 12px;
+}
+
+
+.rmFx_panelItem:hover {
+	color:  white; /*rgb(193,125,17);*/ /*sky blue 2*/;
+	background-color: #266BFF;
+}
+
+#rmFx-moz-datepicker-box, .rmFx-panel-Box {
+	background:  #ABA89B; /* #D6E3B6;  #E3E3E3;*/
+
+	border-width:1px !important;
+	border-color: #C4C1B1 !important;
+}
+
+/* -------- CalDAV -----------------*/
+
+.rmFx-calDAV-share {
+	list-style-image: url("chrome://reminderfox/skin/images/icon_share_16.png");
+}
+.rmFx-calDAV-share24 {
+	list-style-image: url("chrome://reminderfox/skin/images/icon_share_24.png");
+}
+.rmFx-calDAV-badge {
+	list-style-image: url("chrome://reminderfox/skin/images/icon_share_24.png");
+
+	min-width:0px !important;
+	margin : 0px 0px 0px 0px !important;
+	padding: 0px 0px 0px 0px !important;
+	height: 28px !important;
+	width : 30px  !important;
+}
+
+
+.rmFx-calDAV-labelID {  /* used with badge (calendarWidget) */
+	margin-left: -20px;
+	margin-right: 14px;
+	margin-top: 3px;
+	font-weight: normal;
+	color: black;
+	}
+	.rmFx-calDAV-labelID[status=true] {
+		font-weight: bold;
+}
+
+
+.rmFx-calDAV-text { /* used with Options/Sync */
+		margin-top: 3px;
+		margin-left: 4px;
+		color: black;
+		font-weight: normal;
+	}
+	.rmFx-calDAV-text[checked=true] {
+		font-weight: bold;
+	}
+	.rmFx-calDAV-text[status=true] {
+		font-weight: bold;
+}
+
+/*----- used to shows icon on menu -----------*/
+menu.menu-iconic > .menu-iconic-left,
+menuitem.menuitem-iconic > .menu-iconic-left {
+   display: -moz-box;
+}
+
+
+/* ---  rmFx-MainDialog-Menubar  --- */
+
+.reminderfox-calendar-iconLabel {
+	min-width: 0px;
+	margin-right:0px !important;
+	border-right: 0px !important;
+	margin-left:0px !important;
+	border-left: 0px !important;
+}
+
+
+.reminderfox-calendar-listLabel {
+	font-weight: bold;
+	width:10em;
+
+	margin-right:0px !important;
+	border-right: 0px !important;
+	margin-left:0px !important;
+	border-left: 0px !important;
+}
+
+
+/*---- used for testcalDAV ----------- */
+.rmFx-filter-icon {
+	list-style-image: url("chrome://reminderfox/skin/images/glyphicons_320_filter20w.png");
+	cursor: pointer;
+}
+.rmFx-filter-icon:hover{
+	list-style-image: url("chrome://reminderfox/skin/images/glyphicons_320_filter20.png");
+	cursor: pointer;
+}
+.rmFx-remove-icon {
+	list-style-image: url("chrome://reminderfox/skin/images/glyphicons_197_remove20w.png");
+	cursor: pointer;
+}
+.rmFx-remove-icon:hover{
+	list-style-image: url("chrome://reminderfox/skin/images/glyphicons_197_remove20.png");
+	cursor: pointer;
+}
+.rmFx-import-icon {
+	list-style-image: url("chrome://reminderfox/skin/images/glyphicons_358_file_import20w.png");
+	cursor: pointer;
+}.rmFx-import-icon:hover{
+	list-style-image: url("chrome://reminderfox/skin/images/glyphicons_358_file_import20.png");
+	cursor: pointer;
+}
+.rmFx-export-icon {
+	list-style-image: url("chrome://reminderfox/skin/images/glyphicons_359_file_export20w.png");
+	cursor: pointer;
+}.rmFx-export-icon:hover{
+	list-style-image: url("chrome://reminderfox/skin/images/glyphicons_359_file_export20.png");
+	cursor: pointer;
+}   /* ---- used for testcalDAV -----------*/
+
+
+.rmFx_pic {
+	cursor: pointer;
+}
+
+
+.rmFx_colorChange {   /*  this shows the button colorpicker.com and outline enabled */
+  list-style-image: url("chrome://reminderfox/skin/images/colorpicker.png");
+}
+/* -- the editButton is moved some px to the left to be connected to it's mainElement  -- */
+.reminderfox-editButton {
+	min-width: 0px;
+	margin-right:0px !important;
+	border-right: 0px !important;
+	margin-left:-3px !important;
+	border-left: 0px !important;
+}
+
+.reminderfox-moreLabel {
+	min-width: 0px;
+	margin-right:0px !important;
+	border-right: 0px !important;
+	margin-left:0px !important;
+	border-left: 0px !important;
+	font-weight:normal;
+	cursor: pointer;
+	color: #3A69A6;
+}
+.reminderfox-moreLabel[bold=true] {
+		font-weight: bold;
+}
+.reminderfox-moreLabel[nopointer=true] {
+		cursor: default;
+}
+
+.reminderfoxTextboxDisabled {
+	color: rgb(60,60,60);
+}
+
+.rmFx_descBox {
+	margin-top:5px !important;
+	margin-left:20px !important;
+}
+
+
+/*------------------------------
+
+
+.bookButton:hover {
+  list-style-image: url("chrome://reminderfox/skin/images/book_open.png");
+   -moz-image-region: rect(0px,18px, 18px,0px);
+	max-height: 16px;
+}
+.bookButton {
+  list-style-image: url("chrome://reminderfox/skin/images/book_open.png");
+   -moz-image-region: rect(0px,36px, 18px,18px);
+   	max-height: 16px;
+}
+
+----------------*/

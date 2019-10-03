@@ -1,0 +1,1105 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/catBox.css"  type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox-platform/skin/gtk3linux.css"?>
+
+<!--    <?xul-overlay href="chrome://reminderfox/content/categories/manageCategoriesOverlay.xul"?>
+disabled because not used with current XUL -->
+<?xul-overlay href="chrome://reminderfox/content/caldav/optionsCalDAVoverlay.xul"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-options" windowtype="window:reminderFoxOptions"
+		persist="screenX, screenY" screenX="10" screenY="10"
+		onload="reminderFox_loadOptions()" oncommand="reminderFox_updateButtons(event);"
+		oninput="reminderFox_updateButtons(event);" title="&rf.options.title.label;">
+
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUserIO.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/passwordManagerUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/options/reminderFoxOptions.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/categories.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVcalls.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/gcal_oauth.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();" />
+		<key keycode="VK_ENTER" oncommand="reminderFox_saveOptionsAndClose();" />
+		<key keycode="VK_RETURN" oncommand="reminderFox_saveOptionsAndClose();" />
+
+		<key id="editPref" key="p" modifiers="accel"
+			oncommand="rmFXprefsService.prefsEdit('edit');" />
+		<key id="prefsPanelClose" key="q" modifiers="accel"
+			oncommand="rmFXprefsService.prefsPanelClose();" />
+	</keyset>
+
+	<grid>
+		<columns>
+			<column style="padding: 2px 15px;" />
+			<column style="padding: 6px;" flex="1" />
+		</columns>
+		<rows>
+			<row align="center">
+				<!-- 146 x 69 151x50 -->
+				<image src="chrome://reminderfox/skin/images/foxy-head.png"
+					onmouseover="this.style.cursor='pointer';"
+					onclick="reminderfox.util.docRmFX();" />
+				<vbox>
+					<text value=" http://www.reminderfox.org/" style="font-weight: bold"
+						class="url" onmouseover="this.style.cursor='pointer';"
+						onclick="reminderfox.util.docRmFX();" />
+				</vbox>
+			</row>
+		</rows>
+	</grid>
+
+	<tabbox id="tabbox" flex="1" >
+		<tabs>
+			<tab id="general" label="&rf.options.tab.General;" selected="true"   docu="#general"/>
+			<tab id="application" label="&rf.options.tab.Access;"  docu="#system"/>	<!-- host system set with JS -->
+			<tab id="dialog" label="&rf.options.tab.Dialog;"  docu="#dialog"/>
+			<tab id="presets" label="&rf.options.tab.reminderEdit;"  docu="#addEdit"/>
+			<tab id="notifications" label="&rf.options.tab.notifications;" docu="#notifications"/>
+			<tab id="alarms" label="&rf.options.tab.alarms;" docu="#alarms"/>
+			<tab id="todoLists" label="&rf.options.todoLists;" docu="#lists"/>
+			<tab id="network" label="&rf.options.tab.Sync;"  docu="#sync"/>
+			<tab id="prefsTab" label="Prefs"  docu="#prefs" hidden="true"/>
+		</tabs>
+
+		<tabpanels id="optionsTabs" flex="1">
+
+			<tabpanel flex="1" id="generalPanel" orient="vertical">		<!--was: general -->
+
+				<groupbox>
+					<caption id="reminderFox-storeFileGroup" flex="1">
+						<hbox align="center" flex="1">
+							<label value="&rf.options.reminderfox;" />
+							<spacer flex="1" />
+							<label align="center" class="reminderfox-moreLabel"  bold="true"
+								onclick="reminderfox.util.docRmFX('optionsdialog/#general' );"
+								value="&rf.main.help.label; ..." tooltiptext="&rf.options.dataLocations;" />
+						</hbox>
+					</caption>
+
+					<hbox align="center">
+						<checkbox id="reminderFox-use-default-file-location" width="146px"
+							label="&rf.options.file.location.usedefault.label;" autocheck="false"
+							oncommand="reminderFox_icsFileLocationChanged()" />
+
+						<textbox id="reminderFox-file-location" disabled="true" width="280px"
+							class="reminderfoxTextboxDisabled" />
+						<button id="reminderFox_file_location_browse"
+							label="&rf.Browse;.." icon="false" class="reminderfox-editButton"
+							onclick="reminderfox.util.browseICSfile();"
+							tooltiptext="&rf.options.browseICS;"/>
+
+						<spacer />
+						<button id="reminderFox_fileExImport"  icon="false"
+							oncommand="openpanel_ImportExport(this);"
+							label="&rf.options.importExport;"  tooltiptext="&rf.options.openFileDialog;" />
+					</hbox>
+
+					<hbox>
+						<spacer width="180px"/>
+						<text id="reminderFox_backup_reminders"
+							disabled="false"  class="url" onmouseover="this.style.cursor='pointer';"
+							onclick="reminderfox.util.exportReminders(true);"
+							value="&rf.options.file.backup;"  tooltiptext="&rf.options.file.backup.tooltip;"/>
+					</hbox>
+
+					<hbox>
+						<spacer width="180px"/>
+						<text id="recover_reminder"
+							disabled="false"  class="url" onmouseover="this.style.cursor='pointer';"
+							onclick="reminderfox.util.recoverICSfile();"
+
+							value="&rf.options.file.recover;"  tooltiptext="&rf.options.file.Pick;"/>
+					</hbox>
+
+				</groupbox>
+
+				<spacer height="15px" />
+
+				<groupbox>
+					<caption id="CalendarDefaults" flex="1">
+						<hbox align="center" flex="1">
+							<label value="&rf.options.calendarDefaults;" />
+							<spacer flex="1" />
+							<label align="center" class="reminderfox-moreLabel"  bold="true"
+								onclick="reminderfox.util.docRmFX('optionsdialog/#defaultsCalendar');"
+								value="&rf.main.help.label; ..." tooltiptext="&rf.options.documentation.Base;" />
+						</hbox>
+					</caption>
+
+					<grid>
+						<columns>
+							<column width="150px" />
+							<column width="280px" />
+							<spacer width="10px" />
+							<column width="150px" />
+							<column flex="1" />
+						</columns>
+
+						<rows>
+							<row align="center">
+								<description>&rf.options.date.format;</description>
+								<hbox>
+									<textbox id="dayAppearanceLabel" disabled="true" width="220px"
+										class="reminderfoxTextboxDisabled" />
+									<button id="reminderFox_customize_list_date_label"
+										label="&rf.options.customize;" icon="false" class="reminderfox-editButton"
+										onclick="reminderFox_openCustomizeReminderListDateWindow();"
+										tooltiptext="&rf.options.date.edit;" />
+								</hbox>
+
+								<checkbox id="reminderFox-use24Hour" label="&rf.options.list.24hour.label;" />
+							</row>
+
+							<row align="center">
+									<description id="reminderFoxDisplay">&rf.options.list.startingday.label;
+									</description>
+									<hbox align="center">
+										<menulist id="reminderFox-startDay">
+											<menupopup id="reminderFox-startDayPopup" flex="1">
+												<menuitem label="&day.1.name;" value="0" />
+												<menuitem label="&day.2.name;" value="1" />
+												<menuitem label="&day.3.name;" value="2" />
+												<menuitem label="&day.4.name;" value="3" />
+												<menuitem label="&day.5.name;" value="4" />
+												<menuitem label="&day.6.name;" value="5" />
+												<menuitem label="&day.7.name;" value="6" />
+											</menupopup>
+										</menulist>
+									</hbox>
+							</row>
+
+							<row align="center">
+								<description>&rf.options.list.calendar.showWeekNumber.label;</description>
+								<hbox align="center">
+									<menulist id="reminderFox-weekNumberList">
+										<menupopup>
+											<menuitem label="&rf.options.list.calendar.showWeekNumber.none;" selected="true" />
+											<menuitem label="&rf.options.list.calendar.showWeekNumber.default;" />
+											<menuitem label="&rf.options.list.calendar.showWeekNumber.iso8601;" />
+										</menupopup>
+									</menulist>
+								</hbox>
+							</row>
+
+							<row align="center">
+								<description>&rf.options.display.nummonthdisplayed;</description>
+								<hbox>
+									<textbox id="reminderFox-default-month" size='3'
+										maxlength='3' value='3' flex="0" />
+								</hbox>
+							</row>
+
+						</rows>
+					</grid>
+				</groupbox>
+
+
+			</tabpanel>
+
+			<tabpanel flex="1" id="applicationPanel" orient="vertical">			<!--was : mainList -->
+
+				<groupbox id="Foxy-on-bar">
+
+					<caption flex="1">
+						<hbox align="center" flex="1">
+							<label id="applicationBar" value="Firefox Add-on Bar / Thunderbird Status Bar" />  <!-- host system set with JS -->
+							<spacer flex="1" />
+							<label align="center" class="reminderfox-moreLabel" bold="true"
+								onclick="reminderfox.util.docRmFX('optionsDialog/#system');"
+								value="&rf.main.help.label; ..."  tooltiptext="&rf.options.system.menu;" />
+						</hbox>
+					</caption>
+
+					<grid flex="1">
+						<columns>
+							<column width="280px"/>
+							<column flex="1"/>
+						</columns>
+
+						<rows>
+							<row align="center" valign="bottom">
+								<vbox>
+									<checkbox id="reminderFox-smartfoxy-control" oncommand="reminderFox_smartFoxyChanged()"
+										label="&rf.options.smartFoxy.display.label;" />
+									<description class="rmFx_descBox">&rf.options.smartFoxy;</description>
+								</vbox>
+
+								<hbox>
+									<menulist id="reminderFox-smartfoxy-menu" oncommand="smartFoxyMenuSet()">
+										<menupopup>
+											<menuitem label="&rf.options.smartFoxy.none;" value="0" />
+											<menuitem label="&rf.options.smartFoxy.todays;" value="1" />
+											<menuitem label="&rf.options.smartFoxy.todaysUpcoming;" value="2" />
+											<menuitem label="&rf.options.smartFoxy.todaytext;" value="3" />
+										</menupopup>
+									</menulist>
+								</hbox>
+								<label align="center" class="reminderfox-moreLabel" bold="true" nopointer="true"
+									value="&rf.main.tip.label;"  tooltiptext="&rf.options.smartFoxy.badge;"/>
+							</row>
+
+							<row align="center" valign="center">
+								<hbox align="center" >
+									<description class="rmFx_descBox" style="">Today's reminders text length</description>
+								</hbox>
+								<hbox align="center">
+									<label class="valid-label" value="Limit text to"/>
+									<textbox id="reminderFox-status-length"
+										editable="true" size="2" maxlength="4" value="20" />
+									<label class="valid-label" value="characters"/>
+								</hbox>
+							</row>
+						</rows>
+
+					</grid>
+				</groupbox>
+
+				<spacer height="15px" />
+
+				<groupbox>
+					<caption  flex="1">
+						<hbox align="center" flex="1">
+							<label value="&rf.options.webMail;" />
+
+							<spacer flex="1" />
+							<label align="center" class="reminderfox-moreLabel"  bold="true"
+								onclick="reminderfox.util.docRmFX('documentation-email-messages/');"
+								value="&rf.main.help.label; ..." tooltiptext="&rf.options.webMail.help;" />
+						</hbox>
+					</caption>
+
+					<hbox align="center">
+						<checkbox id="reminderFox-enableContextMenu"
+							label="&rf.options.display.enableContextMenus.label;" />
+					</hbox>
+
+					<hbox align="center" id="reminderFox-abCardFormat-box">
+						<radiogroup id="reminderFox-abCardFormat">
+							<hbox align="center">
+								<label value="Select Format for Adressbook reminder"
+									class="valid-label" />
+								<radio group="abFormatUS" label="US/other"
+									value="-1" />
+								<radio group="abFormatEU" label="EU"
+									value="1" />
+							</hbox>
+						</radiogroup>
+					</hbox>
+
+				</groupbox>
+
+				<spacer height="15px" />
+
+				<groupbox width="300px;">
+
+					<caption  flex="1">
+						<hbox align="center" flex="1">
+							<label value="&rf.printing.agenda; / &rf.options.printing;" />
+							<spacer flex="1" />
+							<label align="center" class="reminderfox-moreLabel"  bold="true"
+								onclick="reminderfox.util.docRmFX('printing-agenda-preview/');"
+								value="&rf.main.help.label; ..." tooltiptext="&rf.options.printing.agenda;" />
+						</hbox>
+					</caption>
+
+					<grid>
+						<columns>
+							<column flex="3" />
+							<column flex="5" />
+						</columns>
+
+						<rows>
+							<row align="center">
+								<description>&rf.printing.agenda.info;
+								</description>
+								<spacer/>
+							</row>
+
+							<row>
+								<hbox align="center">
+									<checkbox id="reminderFox-agendaOnStart" label="&rf.printing.agenda.openatstart;" />
+								</hbox>
+								<spacer/>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+
+			</tabpanel>
+
+			<tabpanel flex="1" id="dialogPanel" orient="vertical">		<!--was: remindersDefault -->
+
+				<groupbox>
+
+					<caption  flex="1">
+						<hbox align="center" flex="1">
+							<label value="&rf.options.main;" />
+
+							<spacer flex="1" />
+							<label align="center" class="reminderfox-moreLabel" bold="true"
+								onclick="reminderfox.util.docRmFX('optionsdialog/#dialog');"
+								value="&rf.main.help.label; ..." tooltiptext="&rf.main.help.tooltip;" />
+						</hbox>
+					</caption>
+
+					<hbox align="center">
+						<label width="280px" value="&rf.options.main.dialog.Preselections;" />
+						<menulist id="reminderFox-default-doubleclick" >
+							<menupopup>
+								<menuitem label="&rf.options.display.editOnClickReminders.label;"
+									value="0" />
+								<menuitem label="&rf.options.display.editOnClickTodos.label;"
+									value="1" />
+								<menuitem label="&rf.options.display.openPrevious.label;"
+									value="2" />
+							</menupopup>
+						</menulist>
+						<spacer flex="1"/>
+					</hbox>
+
+					<spacer height="5px" />
+
+					<hbox align="center">
+						<checkbox id="reminderFox-hideCompleted"
+							label="&rf.options.list.reminder.defaults.completed.hide.label;" />
+					</hbox>
+
+					<hbox align="center">
+						<checkbox id="reminderFox-highlightToday"
+							label="&rf.options.list.highlighttodaysRemindres.label;" />
+					</hbox>
+
+					<hbox align="center">
+						<description width="280px">&rf.options.list.reminder.defaults.filters.label;</description>
+						<menulist id="rmFx-filters-events">
+							<menupopup>
+								<menuitem label="&rf.options.list.reminder.defaults.allevents;" />
+								<menuitem
+									label="&rf.options.list.reminder.filters.selectedmonth.label;" />
+								<menuitem
+									label="&rf.options.list.reminder.filters.selectedweek.label;" />
+								<menuitem label="&rf.options.list.reminder.filters.selecteddaylabel;" />
+								<menuitem label="&rf.options.list.reminder.filters.nextweek.label;" />
+								<menuitem
+									label="&rf.options.list.reminder.filters.nexttwoweeks.label;" />
+								<menuitem
+									label="&rf.options.list.reminder.defaults.allupcomingevents;" />
+								<menuseparator />
+								<menuitem
+									label="&rf.options.list.reminder.defaults.filters.lastSelectedView.label;" />
+							</menupopup>
+						</menulist>
+					</hbox>
+					<hbox>
+						<description width="280px"></description>
+						<menulist id="rmFx-filters-lists">
+							<menupopup>
+								<menuitem label="&rf.options.list.reminder.filters.alltodos.label;" />
+								<menuitem
+									label="&rf.options.list.reminder.filters.selectedmonth.label;" />
+								<menuitem
+									label="&rf.options.list.reminder.filters.selectedweek.label;" />
+								<menuitem label="&rf.options.list.reminder.filters.selecteddaylabel;" />
+								<menuitem label="&rf.options.list.reminder.filters.nextweek.label;" />
+								<menuitem
+									label="&rf.options.list.reminder.filters.nexttwoweeks.label;" />
+								<menuitem
+									label="&rf.options.list.reminder.filters.upcomingTodos.label;" />
+								<menuseparator />
+								<menuitem
+									label="&rf.options.list.reminder.defaults.filters.lastSelectedView.label;" />
+							</menupopup>
+						</menulist>
+
+					</hbox>
+				</groupbox>
+
+				<spacer height="15px" />
+
+				<groupbox>
+					<caption label="&rf.options.list.repeating.label;" />
+
+					<grid>
+						<columns>
+							<column minwidth="20px" />
+							<column flex="1" />
+							<column flex="5" />
+						</columns>
+
+						<rows>
+							<row align="center">
+								<spacer />
+								<radiogroup id="reminderFox-group-repeat-upcoming"
+									onselect="reminderFox_repeatUpcomingChanged()">
+									<hbox align="center">
+										<label value="&rf.options.list.repeating.show.label;"
+											class="valid-label" />
+										<radio group="repeatUpcoming" label="&rf.options.list.repeating.all.label;"
+											value="-1" />
+										<radio group="repeatUpcoming" label="&rf.options.list.repeating.next.label;"
+											value="1" />
+									</hbox>
+								</radiogroup>
+								<hbox align="center">
+									<textbox id="reminderFox-text-repeat-upcoming" size="1"
+										maxlength="3" />
+									<label value="&rf.options.list.repeating.upcoming.label;"
+										class="valid-label" />
+								</hbox>
+							</row>
+
+							<row align="center">
+								<spacer />
+								<radiogroup id="reminderFox-group-repeat-previous"
+									onselect="reminderFox_repeatPreviousChanged()">
+									<hbox align="center">
+										<label value="&rf.options.list.repeating.show.label;"
+											class="valid-label" />
+										<radio group="repeatPrevious" label="&rf.options.list.repeating.all.label;"
+											value="-1" />
+										<radio group="repeatPrevious" label="&rf.options.list.repeating.last.label;"
+											value="0" />
+									</hbox>
+								</radiogroup>
+								<hbox align="center">
+									<textbox id="reminderFox-text-repeat-previous" size="1"
+										maxlength="3" />
+									<label value="&rf.options.list.repeating.previous.label;"
+										class="valid-label" />
+								</hbox>
+							</row>
+
+						</rows>
+					</grid>
+				</groupbox>
+
+				<spacer height="15px" />
+
+				<groupbox>
+					<caption id="layoutDefaults" flex="1">
+						<hbox align="center" flex="1">
+							<label value="&rf.options.layout.Defaults;" />
+							<spacer flex="1" />
+						</hbox>
+					</caption>
+
+					<grid>
+						<columns>
+							<column width="400px" />
+							<column flex="1" />
+						</columns>
+
+
+						<rows>
+							<row align="center">
+
+								<hbox align="center">
+									<description width="140px">&rf.options.list.reminder.defaults.textSize;</description>
+									<textbox id="reminderFox-defaultTextsize-value" size='2'
+										maxlength='3' value='12' />
+									<label value='px' />
+								</hbox>
+
+								<label align="center" class="reminderfox-moreLabel"  bold="true"
+									tooltiptext="&rf.options.list.reminder.defaults.textSizeTTT;"
+									value="&rf.main.help.label; ..."  onclick="reminderfox.util.docRmFX('optionsdialog/#textSize');" />
+
+							</row>
+
+							<row align="center">
+								<hbox align="center">
+									<checkbox id="reminderFox-disableLegacy" label="&rf.options.display.singlemenu.label;" />
+									<spacer width="5px" />
+								</hbox>
+
+								<label align="center" class="reminderfox-moreLabel"  bold="true"
+									onclick="reminderfox.util.docRmFX('new-functions/#mainmenu')"
+									value="&rf.main.help.label; ..."  tooltiptext="&rf.options.display.singlemenu.infoTTT;"/>
+							</row>
+
+							<row align="center">
+								<hbox align="center">
+									<checkbox id="reminderFox-panelTabHover" label="&rf.options.display.menu.open;" />
+									<spacer flex="1" />
+								</hbox>
+								<label align="center" class="reminderfox-moreLabel" bold="true"
+									onclick="reminderfox.util.docRmFX('new-functions/#RemindersTodosList')"
+									value="&rf.main.help.label; ..."  tooltiptext="&rf.options.layout.help;"/>
+							</row>
+						</rows>
+
+					</grid>
+				</groupbox>
+
+
+			</tabpanel>
+
+			<tabpanel flex="1" id="addEditPanel" orient="vertical">		<!--was: remindersDefault -->
+				<groupbox>
+					<caption label="&rf.options.addEdit;" />
+
+					<hbox align="center">
+						<checkbox id="reminderFox-all-day" label="&rf.reminderoptions.time.allday.label;"
+							autocheck="false" tabindex="6" />
+					</hbox>
+
+					<hbox align="center">
+						<checkbox id="reminderFox-repeat" label="&rf.reminderoptions.repeat.label;"
+							autocheck="false" oncommand="reminderFox_repeatChanged()"
+							tabindex="10"  width="200px"/>
+						<menulist id="reminderFox-repeatList" tabindex="11"  width="330px">
+							<menupopup>
+								<menuitem label="&rf.reminderoptions.repeat.yearly.label;" />
+								<menuitem label="&rf.reminderoptions.repeat.yearlyday.label;" />
+								<menuitem label="&rf.reminderoptions.repeat.monthlydate.label;" />
+								<menuitem label="&rf.reminderoptions.repeat.monthlyday.label;" />
+								<menuitem label="&rf.reminderoptions.repeat.weekly.label;" />
+								<menuitem label="&rf.reminderoptions.repeat.weeklyalternating.label;" />
+								<menuitem label="&rf.reminderoptions.repeat.daily.label;" />
+							</menupopup>
+						</menulist>
+					</hbox>
+
+					<hbox align="center">
+						<checkbox id="reminderFox-alert" label="&rf.reminderoptions.notify.label;"
+							autocheck="false" oncommand="reminderFox_alertNotificationChanged()"
+							tabindex="12"  width="200px"/>
+						<menulist id="reminderFox-alertTime" editable="true" tabindex="13">
+							<menupopup>
+								<menuitem label="0" />
+								<menuitem label="1" />
+								<menuitem label="5" selected="true" />
+								<menuitem label="10" />
+								<menuitem label="15" />
+								<menuitem label="30" />
+								<menuitem label="60" />
+							</menupopup>
+						</menulist>
+						<menulist id="reminderFox-alertTimeUnits" tabindex="14">
+							<menupopup>
+								<menuitem label="&rf.reminderoptions.notify.minutes.label;" />
+								<menuitem label="&rf.reminderoptions.notify.hours.label;" />
+								<menuitem label="&rf.reminderoptions.notify.days.label;" />
+							</menupopup>
+						</menulist>
+						<label id="reminderFox-alertInfo" value="&rf.reminderoptions.notify.before.label;" />
+					</hbox>
+
+					<hbox>
+						<checkbox id="remindUntilComplete"
+							label="&rf.reminderoptions.options.remindUntilCompleted.label;"
+							tabindex="16"  width="200px"/>
+					</hbox>
+					<hbox>
+						<checkbox id="reminderFox-showInTooltip" label="&rf.add.addTodo.showInTooltip.label;"
+							autocheck="false" />
+					</hbox>
+
+					<hbox align="center">
+						<checkbox id="reminderFox-cat"
+							label="&rf.categories.options.default.category.label;" autocheck="false"
+							oncommand="rmFXtoggleGroup(rmFXelementIsTrue('reminderFox-cat'), 'inputRmCategories,catChange');" tabindex="12"  width="200px"/>
+						<textbox id="inputRmCategories" value="" disabled="true"  width="330px"/>
+
+						<toolbarbutton id="catChange" type="menu"
+							tooltiptext="&rf.categories.tooltip.catChange;" onmousedown="reminderfox.category.Setup(this);">
+							<menupopup id="categories-menupopup" popupalign="topleft"
+								popupanchor="bottomleft">
+								<!-- value=1 indicates "User" defined cat-items -->
+								<menuitem value="2" label="" oncommand="reminderfox.category.Set(this);" />
+								<menuseparator />
+								<!-- value=2 indicates "Main" defined cat-items -->
+								<menuitem value="1" label="" oncommand="reminderfox.category.Set(this);" />
+								<menuseparator />
+								<menuitem value="3" label="&rf.categories.manageCat.label;"
+									oncommand="reminderfox.category.manageCategory(this);" />
+							</menupopup>
+						</toolbarbutton>
+
+
+					</hbox>
+
+					<hbox align="center">
+						<description  width="198px">
+							&rf.options.list.reminder.defaults.more.label;
+						</description>
+
+						<textbox id="defaultMoreLabel" disabled="true" size="25" width="330px"
+							class="reminderfoxTextboxDisabled" />
+						<button id="reminderFox_customize_defaultMoreLabel"
+							label="&rf.options.customize;" icon="false" class="reminderfox-editButton"
+							onclick="reminderFox_openCustomizeDefaultMoreWindow();"
+							tooltiptext="&rf.options.more;"/>
+
+					</hbox>
+				</groupbox>
+			</tabpanel>
+
+
+			<tabpanel flex="1" id="notificationsPanel" orient="vertical">		<!-- "notification" -->
+				<groupbox>
+					<caption label="&rf.options.ttt;" />
+
+					<hbox align="center">
+						<checkbox id="reminderFox-showRemindersTooltip"
+							label="&rf.options.display.remindersInTooltip.label;" />
+					</hbox>
+
+					<hbox align="center">
+						<checkbox id="reminderFox-showTodosTooltip" label="&rf.options.display.todosInTooltip.label;" />
+					</hbox>
+
+					<hbox align="center">
+						<label value="&rf.options.display.showForNext.label;" width="280px"/>
+						<textbox id="remindersUpcomingDays" maxlength="3" size="2" />
+						<label value="&rf.options.display.showForNextUpcomingDays.label;" />
+					</hbox>
+
+					<hbox align="center">
+						<label value="&rf.options.todaysreminders.label;" width="280px"/>
+
+						<textbox id="todaysLabelOptions" disabled="true" width="300px"
+							class="reminderfoxTextboxDisabled" />
+						<button id="reminderFox_file_location_browse"
+							label="&rf.options.customize;" icon="false" class="reminderfox-editButton"
+							onclick="reminderFox_openCustomizeTodayLabelWindow();"
+							tooltiptext="&rf.options.editTodays;" width="80px"  />
+					</hbox>
+
+					<hbox align="center">
+						<label value="&rf.options.upcomingreminders.label;" width="280px"/>
+
+						<textbox id="upcomingLabelOptions" disabled="true" width="300px"
+							class="reminderfoxTextboxDisabled" />
+						<button id="reminderFox_file_location_browse"
+							label="&rf.options.customize;" icon="false" class="reminderfox-editButton"
+							onclick="reminderFox_openCustomizeUpcomingLabelWindow();"
+							tooltiptext="&rf.options.editUpcoming;" width="80px" />
+					</hbox>
+				</groupbox>
+
+				<spacer height="12px" />
+
+				<groupbox id="reminderFox-slider">
+					<caption>
+						<checkbox id="reminderFox-showAlert" autocheck="false"
+							oncommand="reminderFox_alertChanged()" label="Foxy Alert Notification" />
+					</caption>
+
+					<hbox align="center">
+						<label value="Display reminders:" id="reminderFoxDisplay" width="280px" />
+						<menulist id="reminderFox-alertList" width="300px"
+							sizetopopup="pref" value="0" label="Show today's and upcoming reminders">
+							<menupopup id="reminderFox-alertPopup">
+								<menuitem label="Show today's and upcoming reminders"
+									value="0" selected="true" />
+								<menuitem label="Show only today's reminders" value="1" />
+								<menuitem label="Show only upcoming reminders" value="2" />
+							</menupopup>
+						</menulist>
+					</hbox>
+
+					<hbox>
+						<vbox >
+							<hbox align="center">
+								<label id="reminderFox-showAlert1" value="Show Alert Notification every"/>
+								<textbox id="reminderFox-alertTimeout" maxlength="4" size="2"
+									value="1" disabled="true" />
+								<label id="reminderFox-showAlert2" value="min" style="margin-left:-3px"/>
+							</hbox>
+							<hbox align="center" width="280px">
+								<radiogroup id="reminderFox-group-alert-remain-open"
+									onselect="reminderFox_alertTimeOpenChanged()" value="1" >
+									<row align="center">
+										<label value="Keep Alert Notification open" class="valid-label" />
+									</row>
+
+									<row style="margin-left:12px">
+										<radio id="reminderFox-group-alert-for"
+										group="reminderFox-group-alert-remain-open"
+										label="for" value="0"/>
+										<hbox align="center">
+											<textbox id="reminderFox-text-alert-open-text" size="1"
+												maxlength="3" value="10" />
+											<label value="sec" class="valid-label" style="margin-left:-3px"/>
+										</hbox>
+										<radio id="reminderFox-group-alert-until"
+											group="reminderFox-group-alert-remain-open"
+											label="until clicked" value="1" focused="false" selected="true" />
+									</row>
+								</radiogroup>
+							</hbox>
+						</vbox>
+
+						<vbox style="margin-top: 8px;">
+							<vbox  style="margin-left: 10px;">
+								<label id="reminderFox-alertPosition" value="Position of Alert Notification on screen" />
+								<radiogroup id="reminderFox-alertPosition-group" >
+									<hbox>
+										<label id="reminderFox-alertPosition-top" value="Top" width="80" style="margin-left: 20px;" />
+										<radio id="reminderFox-alertPosition-top1" group="reminderFox-alertPosition-group" label="left"
+											width="80" />
+										<radio id="reminderFox-alertPosition-top2" group="reminderFox-alertPosition-group" label="right"/>
+									</hbox>
+
+									<hbox>
+										<label id="reminderFox-alertPosition-bottom" value="Bottom" width="80" style="margin-left: 20px;" />
+										<radio id="reminderFox-alertPosition-bottom1" group="reminderFox-alertPosition-group" label="left"
+											width="80"  />
+										<radio id="reminderFox-alertPosition-bottom2" group="reminderFox-alertPosition-group" label="right" />
+									</hbox>
+								</radiogroup>
+
+
+							<hbox align="center">
+								<label id="reminderFox-showAlertHeight" value="Maximum Alert Notification height:" />
+								<textbox id="reminderFox-alertHeight" maxlength="4" size="4" value="180"/>
+								<label id="reminderFox-showAlertHeight2" value="pixels" />
+							</hbox>
+							</vbox>
+						</vbox>
+					</hbox>
+
+					<hbox align="center">
+							<checkbox id="reminderFox-alertSound" label="Play sound for Alert Notifications"
+								autocheck="false" oncommand="reminderFox_alertSoundChanged()"
+								checked="false" disabled="true" width="280px"/>
+
+							<hbox width="310px">
+								<checkbox id="reminderFox-alertSound-Type" label="Custom Sound" flex="2"
+									oncommand="reminderFox_alertSoundType()"/>
+								<textbox flex="4" id="reminderFox-alertSoundType-File" />
+							</hbox>
+
+							<button id="reminderFox-alertSoundType-browse" class="reminderfox-editButton"
+								label="..." width="80px" oncommand="reminderFox_pickSoundFile('alert');" />
+					</hbox>
+				</groupbox>
+			</tabpanel>
+
+			<tabpanel flex="1" id="alarmsPanel" orient="vertical">		<!-- alarms -->
+				<groupbox id="reminderFox-alarmGroup">
+					<caption label="&rf.options.alarm.dialogs;" />
+
+					<hbox align="center">
+						<description width="150px">&rf.options.alarms.show.label;</description>
+						<menulist id="reminderFox-showInTabs"  width="280px">
+							<menupopup id="reminderFox-alertPopup" >
+								<menuitem label="&rf.options.alarms.show.tabs.label;"
+									value="0" />
+								<menuitem label="&rf.options.alarms.show.windows.label;"
+									value="1" />
+							</menupopup>
+						</menulist>
+					</hbox>
+
+				</groupbox>
+
+				<spacer height="15px" />
+
+				<groupbox>
+					<caption label="&rf.options.alarms;" />
+
+					<hbox align="center">
+						<description width="150px">&rf.alarm.button.snooze;</description>
+						<menulist id="reminderFox-snoozeTime" editable="true">
+							<menupopup>
+								<menuitem label="1" />
+								<menuitem label="5" />
+								<menuitem label="10" />
+								<menuitem label="15" />
+								<menuitem label="30" />
+								<menuitem label="60" />
+							</menupopup>
+						</menulist>
+						<menulist id="reminderFox-snoozealertTimeUnits">
+							<menupopup>
+								<menuitem label="&rf.reminderoptions.notify.minutes.label;" />
+								<menuitem label="&rf.reminderoptions.notify.hours.label;" />
+								<menuitem label="&rf.reminderoptions.notify.days.label;" />
+							</menupopup>
+						</menulist>
+					</hbox>
+
+					<hbox>
+						<description width="150px">&rf.options.list.reminder.defaults.alarm.action.label;</description>
+						<menulist id="reminderFox-alarm-action">
+							<menupopup>
+								<menuitem label="&rf.alarm.button.acknowledge;" />
+								<menuitem label="&rf.alarm.button.complete;" />
+								<menuitem label="&rf.alarm.button.delete;" />
+								<menuitem label="&rf.alarm.button.open;" />
+							</menupopup>
+						</menulist>
+
+					</hbox>
+				</groupbox>
+
+				<spacer height="15px" />
+
+				<groupbox id="reminderFox-alarmSoundGroup">
+					<caption label="Alarm Sound" />             <!--"&rf.options.sound.label;" -->
+					<vbox>
+						<checkbox id="reminderFox-alarmSound" label="&rf.options.alarm.playsound.label;"
+							autocheck="false" oncommand="reminderFox_alarmSoundChanged()" />
+
+						<hbox align="center" style="margin-left: 20px;">
+							<checkbox id="reminderFox-alarmSoundInterval" label="&rf.options.alarm.resoundInterval.label;"
+								autocheck="false" oncommand="reminderFox_alarmSoundInterval_Change()" />
+							<menulist id="reminderFox-alarmSoundInterval-Time"
+								editable="true" tabindex="13">
+								<menupopup>
+									<menuitem label="1" />
+									<menuitem label="5" selected="true" />
+									<menuitem label="10" />
+									<menuitem label="15" />
+									<menuitem label="30" />
+									<menuitem label="60" />
+								</menupopup>
+							</menulist>
+							<label id="reminderFox-alarmInterval-Label"
+								value="&rf.options.alarm.resoundInterval.minutes.label;" />
+						</hbox>
+
+
+						<hbox align="center"  style="margin-left: 20px;">
+								<hbox width="310px">
+									<checkbox id="reminderFox-alarmSoundType" label="Custom Sound" width="150px"
+										oncommand="reminderFox_alarmSoundType()"/>
+									<textbox id="reminderFox-alarmSoundType-File" />
+								</hbox>
+
+								<button id="reminderFox-alarmSoundType-browse" class="reminderfox-editButton"
+									label="Browse ..." width="80px" oncommand="reminderFox_pickSoundFile('alarm');" />
+						</hbox>
+
+					</vbox>
+				</groupbox>
+
+			</tabpanel>
+
+			<tabpanel flex="1" id="todoListsPanel" orient="vertical">			<!-- todoLists -->
+				<groupbox flex="1" style="width: 400px;">
+					<caption label="&rf.options.list.reminder.lists.manage.label;" />
+
+					<description>&rf.options.lists.description;
+					</description>
+
+					<spacer height="15px" />
+
+					<hbox flex="1">
+						<richlistbox id="reminderFox_todoLists_listbox" style="overflow: auto;"
+							width="220" height="75" flex="3" seltype="single">
+						</richlistbox>
+
+						<vbox flex="1">
+							<button id="reminderFox_todosLists_addbtn"
+								label="&rf.options.list.reminder.lists.button.add.label;"
+								oncommand="reminderFox_addOrEditListItem(0);" />
+							<button id="reminderFox_todosLists_editbtn" label="&rf.categories.list.button.edit;"
+								oncommand="reminderFox_addOrEditListItem(1);" />
+							<button id="reminderFox_todosLists_rmvbtn"
+								label="&rf.options.list.reminder.lists.button.remove.label;"
+								oncommand="reminderFox_todoListsRemove();" />
+							<button id="reminderFox_todosLists_moveUp"
+								label="&rf.options.list.reminder.lists.button.moveup.label;"
+								oncommand="reminderfox.util.listItemMoveUp('reminderFox_todoLists_listbox');" />
+							<button id="reminderFox_todosLists_moveDown"
+								label="&rf.options.list.reminder.lists.button.movedown.label;"
+								oncommand="reminderfox.util.listItemMoveDown('reminderFox_todoLists_listbox');" />
+						</vbox>
+					</hbox>
+				</groupbox>
+			</tabpanel>
+
+			<tabpanel flex="1" id="networkPanel" orient="vertical">		<!-- network -->
+				<!-- replaced by overlay version see optionsCalDAVoverlay.xul -->
+				<vbox id="reminderFoxNetworkTab" flex="1" />
+			</tabpanel>
+
+
+			<!-- prefs panel -->
+			<!--  see comment in reminderFoxOptions.js  .....................  -->
+			<tabpanel flex="1" id="prefsPanel" orient="vertical"  hidden="true">
+				<groupbox flex="1" style="width: 400px;">
+					<caption label="Reminderfox Preferences">
+						<button id="prefsLoad" label="Load Preferences"
+							flex="3"
+							oncommand="rmFXprefsService.init(true);" />
+						<textbox id="rmFXprefsService.length" width="50px" margin-left="10px" value="0"/>
+
+						<hbox id="rmFxPrefVbox" >
+							<textbox id="rmFXprefsService.filter" width="220px" margin-left="20px" value=""/>
+							<button id="rmFXprefsService.filter.go"
+								label="Filter"
+								oncommand="rmFXprefsService.setFilter();" />
+						</hbox>
+
+						<button id="prefsExport" label="Export Preferences"
+							flex="3"
+							oncommand="rmFXprefsService.exportTable();" />
+					</caption>
+
+					<spacer height="10px" />
+
+					<tree id="prefTree" flex="1"
+						persist="sortDirection sortResource"
+						onselect="rmFXprefsService.treeOp(this)"
+						context="prefs-contextmenu"
+						sortDirection="ascending"
+						sortResource="description">
+						<treecols>
+							<treecol id="prefName" label="Preference"
+								flex="5"
+								persist="width ordinal hidden"
+								onclick="rmFXprefsService.sort(this)"
+								class="sortDirectionIndicator"
+								sortDirection="ascending"/>
+							<splitter class="tree-splitter"/>
+							<treecol id="prefType" label="Type"
+								flex="1"
+								persist="width ordinal hidden"
+								onclick="rmFXprefsService.sort(this)"
+								class="sortDirectionIndicator"/>
+							<splitter class="tree-splitter"/>
+							<treecol id="prefValue" label="Value"
+								flex="5"
+								persist="width ordinal hidden"
+								onclick="rmFXprefsService.sort(this)"
+								class="sortDirectionIndicator"/>
+							<splitter class="tree-splitter"/>
+							<treecol id="prefUserValue" label="Status"
+								flex="5"
+								persist="width ordinal hidden"
+								onclick="rmFXprefsService.sort(this)"
+								class="sortDirectionIndicator"/>
+						</treecols>
+						<treechildren id="tree-children"/>
+					</tree>
+
+				</groupbox>
+			</tabpanel>
+			<!--  see comment in reminderFoxOptions.js  .................... -->
+			<!-- prefs -->
+
+		</tabpanels>
+
+	</tabbox>
+
+	<menupopup id="prefs-contextmenu">
+		<menuitem id="prefs-copy" label="Copy Preference Item"
+			oncommand="rmFXprefsService.treeRow('all')" />
+
+		<menuseparator />
+		<menuitem id="prefs-copy" label="Copy Preference Name"
+			oncommand="rmFXprefsService.treeRow('name')" />
+		<menuitem id="prefs-copy" label="Copy Preference Value"
+			oncommand="rmFXprefsService.treeRow('value')" />
+	</menupopup>
+
+
+	<vbox id="reminderFox-options-footer">
+
+		<hbox id="reminderFox-status" align="center" hidden="true">
+			<description id="reminderFox-status-text" class="reminderFox_BoldError" >
+			</description>
+		</hbox>
+
+		<hbox class="reminderFox-footer" align="center">
+			<button label="&rf.main.help.label; ..." oncommand="reminderfox.util.docRmFX('optionsdialog')" />
+			<spacer class="reminderFox-btnspacer" flex="1" />
+			<button label="&rf.ok;" default="true"
+				oncommand="reminderFox_saveOptionsAndClose()" />
+			<button label="&rf.cancel;" oncommand="window.close();" />
+			<button label="&rf.apply;" id="reminderFox-apply" disabled="true"
+				oncommand="reminderFox_saveOptions();" />
+		</hbox>
+	</vbox>
+
+
+
+	<!-- ************************ Import / Export ICS data and prefs ********************** -->
+	<panel id="importExportPanel" onmouseleave="this.hidePopup(); this.hidden=true"
+		hidden="true">
+
+		<groupbox orient="horizontal" align="center">
+			<caption id="reminderFox-storeFileOps" label="&rf.options.importexport.description.label;" />
+			<vbox>
+				<hbox>
+					<button id="reminderFox_import_reminders" label="&rf.options.importexport.import.label;"
+						flex="1" oncommand="reminderfox.util.importICSreminders();" />
+					<button id="reminderFox_export_reminders" label="&rf.options.importexport.export.label;"
+						flex="1" oncommand="reminderfox.util.exportReminders();" />
+				</hbox>
+			</vbox>
+		</groupbox>
+
+		<spacer height="30px" />
+
+		<groupbox orient="horizontal" align="center">
+			<caption label="&rf.options.importexportpreferences.label;" />
+
+			<button id="reminderFox_import_settings" label="&rf.options.importexport.import.label;"
+				flex="1" oncommand="reminderFox_importPrefs();" />
+			<button id="reminderFox_export_settings" label="&rf.options.importexport.export.label;"
+				flex="1" oncommand="reminderFox_exportPrefs();" />
+		</groupbox>
+
+		<script type="application/x-javascript">
+
+			function openpanel_ImportExport(anchor){
+			var panel
+			= document.getElementById("importExportPanel");
+			panel.removeAttribute('hidden');
+			panel.openPopup(anchor, 'bottomleft topright', -1, -1);
+			}
+		</script>
+	</panel>
+
+
+
+	<panel id="editPrefsPanel" hidden="true">
+
+		<groupbox orient="horizontal">
+			<caption id="prefsEditLabel" label="Edit Preference item" />
+			<vbox>
+				<vbox>
+					<hbox id="prefsEditBool" hidden="true">
+						<button id="prefsBoolToggle" label="Toggle" oncommand="rmFXprefsService.editBool(this);" />
+					</hbox>
+
+					<hbox id="prefsEditString" hidden="true">
+						<textbox id="prefsEditStringBox" value=""></textbox>
+					</hbox>
+				</vbox>
+
+				<vbox class="reminderFox-footer">
+					<hbox>
+						<button label="&rf.cancel;" oncommand="rmFXprefsService.panelClose();" />
+						<button label="&rf.apply;" id="reminderFox-apply"
+							oncommand="rmFXprefsService.editApply();" />
+					</hbox>
+				</vbox>
+			</vbox>
+		</groupbox>
+	</panel>
+
+</window>

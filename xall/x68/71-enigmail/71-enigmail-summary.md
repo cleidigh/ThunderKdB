@@ -12,8 +12,8 @@ Max: 68.*
 
 # Files
 
-Source Tree: [Src](x68/71-enigmail/src)  
-Current XPI: [XPI](x68/71-enigmail/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/71-enigmail/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/71-enigmail/xpi)  
 
 
 

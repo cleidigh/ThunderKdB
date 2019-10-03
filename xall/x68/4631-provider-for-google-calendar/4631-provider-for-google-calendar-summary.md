@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/4631-provider-for-google-calendar/src)  
-Current XPI: [XPI](x68/4631-provider-for-google-calendar/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/4631-provider-for-google-calendar/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/4631-provider-for-google-calendar/xpi)  
 
 
 

@@ -1,0 +1,75 @@
+/*  rmSearchBox.css    part of Search&Filter in ReminderFox Main Dialog*/
+
+#rmFx-SearchTextAndFilter-Box {   /* this is the whole box (XUL parent) */
+	margin: 0px !important;
+}
+
+#rmFx-searchText-box {
+	-moz-binding: url("chrome://reminderfox/content/searchbar/rmSearch.xml#searchbar");
+	width: 150px !important;
+}
+
+.rmFx-searchText-field {
+	margin: 1px !important;
+	-moz-appearance: textfield;
+}
+
+
+/* override margins that some themes may use; otherwise quick search text can appear partially hidden */
+.rmFx-searchText-field .textbox-input {
+	margin: 2px !important;
+	padding: 0px !important;
+	background: white !important;
+}
+#rmFx-searchText-menuItems {
+	min-width: 0;
+}
+
+#rmFx-searchText-menuItems > .toolbarbutton-text {
+	display: none;
+}
+
+#rmFx-searchText {
+	padding-top: 1px;
+}
+
+#rmFx-filters-box {
+	width: 120px !important;
+	margin: 0px !important;
+}
+
+
+.rmFx-search-spyglass {
+	margin: 1px;
+	min-width: 0px;
+	list-style-image: url("chrome://reminderfox/skin/images/Search-bar.png");
+}
+	.rmFx-search-spyglass[search="true"] {
+		margin: 1px;
+		min-width: 0px;
+		list-style-image: url("chrome://reminderfox/skin/images/spyglass-blue1.png");
+	}
+
+.rmFx-textSearch-clearbutton > .toolbarbutton-icon {
+	-moz-margin-end: 0px; /* override toolkit's default value */
+}
+
+.rmFx-textSearch-clearbutton {
+	list-style-image: url("chrome://reminderfox/skin/images/quick-search-clear.png");
+	-moz-image-region: rect(0px, 48px, 16px, 32px);
+	-moz-appearance: none;
+	padding: 2px !important;
+	border: none !important;
+}
+
+	.rmFx-textSearch-clearbutton[clearButtonShown="true"] {
+		-moz-image-region: rect(0px,32px, 16px,16px);
+	}
+
+	.rmFx-textSearch-clearbutton[clearButtonShown="true"]:hover {
+		-moz-image-region: rect(0px,16px, 16px,0px);
+	}
+
+#colortester {
+	background: #9999FF
+}

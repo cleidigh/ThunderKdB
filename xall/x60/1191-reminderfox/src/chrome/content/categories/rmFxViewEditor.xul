@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/views.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/editing/eventEntryOverlay.xul"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		title="&rf.views.title;" id="rmFxView-Editor" persist="screenX screenY"
+		onload="reminderfox.view.ManageLoad();" onclose="reminderfox.view.vSaveAndClose('X');"
+		windowtype="window:reminderfox.view.ManageDialog">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/addReminderDialog.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderfox.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/rmFxViews.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/categories.js" />
+
+
+	<keyset id="reminderFoxKeys">
+		<key keycode="VK_ESCAPE" oncommand="reminderfox.view.vSaveAndClose('X')" />
+	</keyset>
+
+	<vbox id="rmFxViewBox" flex="1">
+
+		<groupbox flex="1">
+			<!-- 'textContent' is used for 'infoText' -->
+<!--
+			<caption>
+				<label value="   &rf.views.label;" />
+			</caption>
+-->
+			<vbox>
+				<hbox>
+					<vbox flex="1">
+						<hbox flex="1">
+							<label class="reminderFox_BoldNormal" value="&rf.views.view.header;" align="center" />
+							<spacer flex="1" />
+
+							<button id="view_Add" label="&rf.categories.list.button.add;"
+								oncommand="reminderfox.view.ViewAdd()" tooltiptext="&rf.views.ttt.addView;" />
+							<button id="view_Remove"
+								label="&rf.options.list.reminder.lists.button.remove.label;"
+								oncommand="reminderfox.view.ViewRemove()" tooltiptext="&rf.views.ttt.removeView;" />
+						</hbox>
+
+						<hbox flex="1">
+							<richlistbox id="view_List" tabindex="1"
+								onclick="reminderfox.view.ViewFocus('view')" flex="1" seltype="single"
+								style="overflow: auto;" rows="8">
+							</richlistbox>
+						</hbox>
+					</vbox>
+
+					<vbox flex="3">
+						<hbox>
+							<label class="reminderFox_BoldNormal" value="&rf.views.criteria.header;" align="center" />
+							<spacer flex="1" />
+							<button id="criteria_Add" label="&rf.categories.list.button.add;"
+								oncommand="reminderfox.view.CriteriaAdd('+');" tooltiptext="&rf.views.ttt.addCriteria;" />
+							<button id="criteria_Remove"
+								label="&rf.options.list.reminder.lists.button.remove.label;"
+								oncommand="reminderfox.view.CriteriaRemove('-')" tooltiptext="&rf.views.ttt.removeCriteria;" />
+						</hbox>
+
+
+						<richlistbox id="criteria_List" tabindex="2"
+							onclick="reminderfox.view.CriteriaToEdit(this);" flex="1" seltype="single"
+							style="overflow: auto;" rows="8">
+						</richlistbox>
+					</vbox>
+				</hbox>
+
+				<vbox id="view_New" hidden="true">
+					<hbox flex="1">
+						<label class="reminderFox_BoldNormal" value="Add a View"/>
+						<textbox id="viewAddNewBox" value=""/>
+
+						<spacer flex="1" />
+						<button id="view_New_add" label="Add"
+							oncommand="reminderfox.view.viewAddNew(this);" tooltiptext="Add a new View" />
+						<button id="view_New_Cancel"
+							label="Cancel"
+							oncommand="reminderfox.view.viewAddNew(this);" />
+					</hbox>
+				</vbox>
+
+				<vbox id="criteria_Edit" hidden="true">
+					<hbox align="center">
+
+						<hbox flex="1">
+							<menulist id="criteria_Typs" tabindex="3"
+								oncommand="reminderfox.view.CriteriaTypChanged(event)">
+								<menupopup id="criteria_Labels">  <!-- will be rebuild with js -->
+									<menuitem label=" -- " />
+									<menuitem label="summary" />
+									<menuitem label="label" />
+									<menuitem label="notes" />
+									<menuitem label="location" />
+									<menuitem label="date" />
+								</menupopup>
+							</menulist>
+
+							<vbox id="criteria_Vbox" flex="1">
+								<!-- for 'string' criteria -->
+								<textbox id="criteria_Box" value="" tabindex="4" hidden="true" />
+
+								<!-- for 'DATE' criteria -->
+								<hbox id="criteria_Date" hidden="true" flex="1">
+									<!-- value preset needs format {num}{D|M|Y} -->
+									<textbox class="criteria_DateBox" id="dateBoxBegin"
+										value="-2D" flex="1"
+										onmouseover="reminderfox.view.CriteriaDatePanel(this, '&rf.views.datespan.begin;')"
+										readonly="true">
+									</textbox>
+
+									<textbox class="criteria_DateBox" id="dateBoxEnd"
+										value="2D" flex="1"
+										onmouseover="reminderfox.view.CriteriaDatePanel(this, '&rf.views.datespan.end;')"
+										readonly="true">
+									</textbox>
+								</hbox>
+
+								<panel id="criteria_DateEditPanel" />
+
+								<!-- Categories overlay -->
+								<hbox id="catHbox" hidden="true" flex="1" />
+
+							</vbox>
+
+							<button id="criteria_Mode" label="" tabindex="6"
+								oncommand="reminderfox.view.CriteriaEditEnter();" tooltiptext="&rf.views.ttt.confirm;" />
+						</hbox>
+					</hbox>
+
+				</vbox>
+			</vbox>
+		</groupbox>
+		<spacer height="5px" />
+
+	</vbox>     <!-- ^^^ id="rmFxViewBox" -->
+
+	<box id="panel-Anchor"></box>
+
+	<hbox>
+		<spacer flex="100" />
+		<label id="optionslabel" align="center" class="small-margin, text-link"
+			value="&rf.views.learn.link.text;"
+			onclick="reminderfox.util.docRmFX('documentation-user-guide-main-reminderfox-window/#r5' );"
+			crop="end" />
+	</hbox>
+	<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+		align="center" />
+	<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+		align="center" />
+
+
+
+	<hbox id="alertButtonGroup">
+
+		<spacer class="reminderFox-btnspacer" flex="1" />
+
+		<button id="OK" oncommand="reminderfox.view.vSaveAndClose('OK');"
+			label="&rf.ok;" tooltiptext="&rf.views.ttt.saveclose;" />
+
+		<spacer width="5px" />
+
+		<button id="Cancel" oncommand="reminderfox.view.vSaveAndClose('CANCEL');"
+			label="&rf.cancel;" />
+	</hbox>
+
+
+	<!-- ************************ Date Edit ********************** -->
+	<panel id="criteria_DateEdit" onpopuphiding="reminderfox.view.CriteriaDatePanelClose(event)"
+		onmouseleave="reminderfox.view.CriteriaDatePanelClose(event)"
+		hidden="true">                                        <!-- unhide for TB3/FX3 -->
+
+		<description class="reminderFox_Bold" value=""
+			id="criteria_DateEdit_Titel" timeType="" />
+		<radiogroup id="dateGroup">
+			<hbox>
+				<radio id="datePast" label="&rf.views.datespan.past;"
+					selected="false" />
+				<radio id="dateFuture" label="&rf.views.datespan.future;"
+					selected="true" />
+			</hbox>
+		</radiogroup>
+
+		<separator class="rmFxSeparator" />
+
+		<grid flex="1">
+			<rows>
+				<row flex="1" />
+				<row flex="1" />
+			</rows>
+			<columns>
+				<column>
+					<vbox>
+						<textbox id="dateValue" width="55px" type="number"
+							hidespinbuttons="true" />
+					</vbox>
+				</column>
+				<column>
+					<radiogroup id="spanPeriod">
+						<vbox>
+							<radio id="day" label="&rf.views.datespan.days;" selected="true" />
+							<radio id="week" label="&rf.views.datespan.weeks;"
+								selected="false" />
+							<radio id="month" label="&rf.views.datespan.months;"
+								selected="false" />
+							<radio id="year" label="&rf.views.datespan.years;"
+								selected="false" />
+						</vbox>
+					</radiogroup>
+				</column>
+			</columns>
+		</grid>
+
+	</panel>
+
+
+	<!-- status information panel -->
+	<panel id="rmFx_status-panel" >
+		<description id="rmFx_status-panel-text" value="status - - test"/>
+	</panel>
+
+
+</window>

@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE window [
+  <!ENTITY % commonDTD SYSTEM "chrome://archive-this/locale/common.dtd">
+  %commonDTD;
+  <!ENTITY % filterDTD SYSTEM "chrome://archive-this/locale/filter.dtd">
+  %filterDTD;
+]>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<?xml-stylesheet href="chrome://messenger/skin/searchDialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderPane.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+
+<dialog
+    id="archive-this-filter"
+    title="&filter_title;"
+    orient="vertical"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    buttons="accept,cancel"
+    buttonlabelaccept="&ok;"
+    buttonlabelcancel="&cancel;"
+    onload="ArchiveThisFilter.onLoad();"
+    ondialogaccept="return ArchiveThisFilter.onAccept();"
+    >
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="archive-this-string-bundle" src="chrome://archive-this/locale/archive-this.properties"/>
+  </stringbundleset>
+
+  <script type="application/x-javascript" 
+          src="chrome://global/content/strres.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/mailCommands.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/commandglue.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/widgetglue.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/virtualFolderProperties.js"/>
+
+  <script type="application/x-javascript" 
+          src="chrome://archive-this/content/filter.js"/>
+
+<grid>
+  <columns>
+    <column />
+    <column flex="1"/>
+  </columns>
+  <rows>
+    <row>
+      <vbox pack="center" align="end"><label align="end" value="&filter_if;"/></vbox>
+      <hbox>
+        <menulist id="archive-this-header-name" 
+          oncommand="ArchiveThisFilter.headerNameChanged();">
+          <menupopup>
+            <menuitem label="To or Cc"/>
+            <menuitem label="To"/>
+            <menuitem label="From"/>
+            <menuitem label="Cc"/>
+            <menuitem label="Subject"/>
+            <menuitem label="Message-ID"/>
+            <menuitem label="Reply-To"/>
+            <menuitem label="Sender"/>
+            <menuitem label="List-Id"/>
+            <menuitem label="MailingList"/>
+            <menuitem label="Mailing-List"/>
+            <menuitem label="X-ML-Name"/>
+            <menuitem label="X-List"/>
+            <menuitem label="X-List-Name"/>
+            <menuitem label="X-MailingList"/>
+            <menuitem label="X-ReviewGroup"/>
+            <menuitem label="Resent-From"/>
+            <menuitem label="Resent-To"/>
+            <menuitem label="Return-Path"/>
+            <menuitem label="Received"/>
+            <menuitem label="To/From"/>
+            <menuitem label="To/Cc/From/Bcc"/>
+          </menupopup>
+        </menulist>
+      
+        <menulist id="archive-this-comparitor">
+           <menupopup>
+            <menuitem label="&filter_is;" name="comp" value="0"/>
+            <menuitem label="&filter_contains;" name="comp" value="1"/>
+            <menuitem label="&filter_begins_with;" name="comp" value="2"/>
+          </menupopup>
+        </menulist>
+      
+        <textbox id="archive-this-header-value" flex="1"/>
+      </hbox>
+    </row>
+    <row>
+      <vbox pack="center"><label value="&filter_move_to_folder;"/></vbox>
+        <menulist id="filterFolder" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisFilter.onFolderPicked(event.target,'filterFolder')"/>
+        </menulist>
+    </row>
+  </rows>
+</grid>
+
+</dialog>

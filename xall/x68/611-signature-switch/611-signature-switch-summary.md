@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/611-signature-switch/src)  
-Current XPI: [XPI](x68/611-signature-switch/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/611-signature-switch/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/611-signature-switch/xpi)  
 
 
 

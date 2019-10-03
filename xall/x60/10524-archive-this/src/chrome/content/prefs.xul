@@ -1,0 +1,527 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/searchDialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderPane.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<!DOCTYPE window [
+  <!ENTITY % commonDTD SYSTEM "chrome://archive-this/locale/common.dtd">
+  %commonDTD;
+  <!ENTITY % prefsDTD SYSTEM "chrome://archive-this/locale/prefs.dtd">
+  %prefsDTD;
+]>
+
+<dialog
+    id="archive-this-prefs"
+    title="&prefs_title;"
+    orient="vertical"
+    buttons="accept,cancel"
+    buttonlabelaccept="&save;"
+    buttonlabelcancel="&cancel;"
+    ondialogaccept="ArchiveThisPrefs.onAccept();"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    onload="ArchiveThisPrefs.onLoad();"
+    >
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="archive-this-string-bundle" src="chrome://archive-this/locale/archive-this.properties"/>
+    <stringbundle id="platformKeys" src="chrome://global-platform/locale/platformKeys.properties"/>
+  </stringbundleset>
+
+  <script type="application/x-javascript" 
+          src="chrome://global/content/strres.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/mailCommands.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/commandglue.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/widgetglue.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/virtualFolderProperties.js"/>
+
+  <script type="application/x-javascript" 
+          src="chrome://archive-this/content/keyutils.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://archive-this/content/prefs.js"/>
+
+<!-- see http://www.koders.com/javascript/fid6D19E27705D8D1DF5FD5257C24F25B8B04C20F5B.aspx -->
+
+<tabbox>
+  <tabs>
+    <tab label="&prefs_filters;"/>
+    <tab label="&prefs_presets;"/>
+    <tab label="&prefs_keys;"/>
+    <tab label="&prefs_schedule;" disabled="true" hidden="true"/>
+    <tab label="&prefs_advanced;"/>
+  </tabs>
+  <tabpanels>
+  <tabpanel id="archive-this-filter-tab">
+    <hbox flex="1">
+      <vbox flex="1">
+        <listbox id="archive-this-filter-list" flex="1"
+                onselect="ArchiveThisPrefs['selectionChanged']();"/>
+      </vbox>
+      <vbox>
+        <button id="archive-this-add-button" label="&prefs_add;" 
+                oncommand="ArchiveThisPrefs['openNewFilter']();"/>
+
+        <button id="archive-this-edit-button" label="&prefs_edit;" disabled="true"
+                oncommand="ArchiveThisPrefs['openEditFilter']();"/>
+
+        <button id="archive-this-copy-button" label="&prefs_clone;" disabled="true"
+                oncommand="ArchiveThisPrefs['copyCurrentRule']();"/>
+
+        <button id="archive-this-remove-button" label="&prefs_remove;" disabled="true"
+                oncommand="ArchiveThisPrefs['deleteCurrentRule']();"/>
+
+        <spacer flex="1"/>
+
+        <button id="archive-this-up-button" label="&prefs_move_up;" disabled="true"
+                oncommand="ArchiveThisPrefs['moveRuleUp']();"/>
+
+        <button id="archive-this-down-button" label="&prefs_move_down;" disabled="true"
+                oncommand="ArchiveThisPrefs['moveRuleDown']();"/>
+      </vbox>
+    </hbox>
+  </tabpanel>
+  <tabpanel id="archive-this-preset-tab">
+    <grid pack="center" align="center" flex="1">
+      <columns>
+        <column/>
+        <column flex="20"/>
+        <column width="16"/>
+      </columns>
+      <rows>
+        <row>
+          <vbox pack="center"><label id="archive-this-preset-label-1" value="Ctrl-1"/></vbox>
+          <menulist id="archive-this-folder-1" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisPrefs.onFolderPicked(event.target,'archive-this-folder-1');"/>
+          </menulist>
+          <toolbarbutton image="x.png" maxwidth="16"
+             oncommand="ArchiveThisPrefs.onFolderPicked(null,'archive-this-folder-1');"/>
+        </row>
+        <row>
+          <vbox pack="center"><label id="archive-this-preset-label-2" value="Ctrl-2"/></vbox>
+          <menulist id="archive-this-folder-2" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisPrefs.onFolderPicked(event.target,'archive-this-folder-2');"/>
+          </menulist>
+          <toolbarbutton image="x.png" maxwidth="16"
+             oncommand="ArchiveThisPrefs.onFolderPicked(null,'archive-this-folder-2');"/>
+        </row>
+        <row>
+          <vbox pack="center"><label id="archive-this-preset-label-3" value="Ctrl-3"/></vbox>
+          <menulist id="archive-this-folder-3" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisPrefs.onFolderPicked(event.target,'archive-this-folder-3');"/>
+          </menulist>
+          <toolbarbutton image="x.png" maxwidth="16"
+             oncommand="ArchiveThisPrefs.onFolderPicked(null,'archive-this-folder-3');"/>
+        </row>
+        <row>
+          <vbox pack="center"><label id="archive-this-preset-label-4" value="Ctrl-4"/></vbox>
+          <menulist id="archive-this-folder-4" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisPrefs.onFolderPicked(event.target,'archive-this-folder-4');"/>
+          </menulist>
+          <toolbarbutton image="x.png" maxwidth="16"
+             oncommand="ArchiveThisPrefs.onFolderPicked(null,'archive-this-folder-4');"/>
+        </row>
+        <row>
+          <vbox pack="center"><label id="archive-this-preset-label-5" value="Ctrl-5"/></vbox>
+          <menulist id="archive-this-folder-5" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisPrefs.onFolderPicked(event.target,'archive-this-folder-5');"/>
+          </menulist>
+          <toolbarbutton image="x.png" maxwidth="16"
+             oncommand="ArchiveThisPrefs.onFolderPicked(null,'archive-this-folder-5');"/>
+        </row>
+        <row>
+          <vbox pack="center"><label id="archive-this-preset-label-6" value="Ctrl-6"/></vbox>
+          <menulist id="archive-this-folder-6" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisPrefs.onFolderPicked(event.target,'archive-this-folder-6');"/>
+          </menulist>
+          <toolbarbutton image="x.png" maxwidth="16"
+             oncommand="ArchiveThisPrefs.onFolderPicked(null,'archive-this-folder-6');"/>
+        </row>
+        <row>
+          <vbox pack="center"><label id="archive-this-preset-label-7" value="Ctrl-7"/></vbox>
+          <menulist id="archive-this-folder-7" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisPrefs.onFolderPicked(event.target,'archive-this-folder-7');"/>
+          </menulist>
+          <toolbarbutton image="x.png" maxwidth="16"
+             oncommand="ArchiveThisPrefs.onFolderPicked(null,'archive-this-folder-7');"/>
+        </row>
+        <row>
+          <vbox pack="center"><label id="archive-this-preset-label-8" value="Ctrl-8"/></vbox>
+          <menulist id="archive-this-folder-8" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisPrefs.onFolderPicked(event.target,'archive-this-folder-8');"/>
+          </menulist>
+          <toolbarbutton image="x.png" maxwidth="16"
+             oncommand="ArchiveThisPrefs.onFolderPicked(null,'archive-this-folder-8');"/>
+        </row>
+        <row>
+          <vbox pack="center"><label id="archive-this-preset-label-9" value="Ctrl-9"/></vbox>
+          <menulist id="archive-this-folder-9" displayformat="verbose">
+          <menupopup class="menulist-menupopup"
+                     type="folder" mode="search"
+                     showAccountsFileHere="true"
+                     showFileHereLabel="true"
+                     oncommand="ArchiveThisPrefs.onFolderPicked(event.target,'archive-this-folder-9');"/>
+          </menulist>
+          <toolbarbutton image="x.png" maxwidth="16"
+             oncommand="ArchiveThisPrefs.onFolderPicked(null,'archive-this-folder-9');"/>
+        </row>
+      </rows>
+    </grid>
+  </tabpanel>
+  <tabpanel id="archive-this-key-tab">
+    <hbox pack="center" align="center" flex="1">
+    <grid pack="center" align="center">
+      <columns>
+        <column flex="1"/>
+        <column flex="1"/>
+        <column flex="1"/>
+        <column flex="1"/>
+      </columns>
+      <rows>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-0" value="&prefs_run_filters;" /></vbox>
+          <menulist id="archive-this-preset-modifier-0"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,0)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-preset-key-0"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,1)">
+            <menupopup/> </menulist>
+          <box id="archive-this-preset-key-0-info"/>
+        </row>
+
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-move-label" value="&prefs_move_message;" /></vbox>
+          <menulist id="archive-this-move-modifier"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,20)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-move-key"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,21)">
+            <menupopup/> </menulist>
+          <box id="archive-this-move-key-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-copy-label" value="&prefs_copy_message;" /></vbox>
+          <menulist id="archive-this-copy-modifier"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,22)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-copy-key"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,23)">
+            <menupopup/> </menulist>
+          <box id="archive-this-copy-key-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-goto-label" value="&prefs_go_to_folder;" /></vbox>
+          <menulist id="archive-this-goto-modifier"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,24)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-goto-key"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,25)">
+            <menupopup/> </menulist>
+          <box id="archive-this-goto-key-info"/>
+        </row>
+
+        <separator class="groove"/>
+
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-1" value="&prefs_preset; 1" /></vbox>
+          <menulist id="archive-this-preset-modifier-1"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,2)">
+            <menupopup/> </menulist> 
+          <menulist id="archive-this-preset-key-1"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,3)">
+            <menupopup/> </menulist> 
+          <box id="archive-this-preset-key-1-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-2" value="&prefs_preset; 2" /></vbox>
+          <menulist id="archive-this-preset-modifier-2"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,4)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-preset-key-2"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,5)">
+            <menupopup/> </menulist>
+          <box id="archive-this-preset-key-2-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-3" value="&prefs_preset; 3" /></vbox>
+          <menulist id="archive-this-preset-modifier-3"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,6)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-preset-key-3"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,7)">
+            <menupopup/> </menulist>
+          <box id="archive-this-preset-key-3-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-4" value="&prefs_preset; 4" /></vbox>
+          <menulist id="archive-this-preset-modifier-4"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,8)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-preset-key-4"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,9)">
+            <menupopup/> </menulist>
+          <box id="archive-this-preset-key-4-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-5" value="&prefs_preset; 5" /></vbox>
+          <menulist id="archive-this-preset-modifier-5"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,10)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-preset-key-5"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,11)">
+            <menupopup/> </menulist>
+          <box id="archive-this-preset-key-5-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-6" value="&prefs_preset; 6" /></vbox>
+          <menulist id="archive-this-preset-modifier-6"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,12)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-preset-key-6"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,13)">
+            <menupopup/> </menulist>
+          <box id="archive-this-preset-key-6-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-7" value="&prefs_preset; 7" /></vbox>
+          <menulist id="archive-this-preset-modifier-7"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,14)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-preset-key-7"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,15)">
+            <menupopup/> </menulist>
+          <box id="archive-this-preset-key-7-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-8" value="&prefs_preset; 8" /></vbox>
+          <menulist id="archive-this-preset-modifier-8"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,16)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-preset-key-8"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,17)">
+            <menupopup/> </menulist>
+          <box id="archive-this-preset-key-8-info"/>
+        </row>
+        <row>
+          <vbox pack="center">
+          <label id="archive-this-preset-label-9" value="&prefs_preset; 9" /></vbox>
+          <menulist id="archive-this-preset-modifier-9"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,18)">
+            <menupopup/> </menulist>
+          <menulist id="archive-this-preset-key-9"
+                    oncommand="ArchiveThisPrefs.onKeyChange(event.target,19)">
+            <menupopup/> </menulist>
+          <box id="archive-this-preset-key-9-info"/>
+        </row>
+      </rows>
+    </grid>
+    </hbox>
+  </tabpanel>
+  <tabpanel id="archive-this-schedule-tab">
+    <grid pack="center" align="center" flex="1">
+      <columns>
+        <column/>
+        <column width="32"/>
+        <column/>
+      </columns>
+      <rows>
+        <row>
+          <label value="Automatically filter every"/>
+          <textbox id="archive-this-auto-filter-days"/>
+          <label value="days"/>
+        </row>
+      </rows>
+    </grid>
+  </tabpanel>
+  <tabpanel id="archive-this-advanced-tab">
+  <vbox>
+    <!-- Checkboxes -->
+    <groupbox>
+      <checkbox id="archive-this-override-keys" label="&prefs_override_keys;" checked="false"
+                oncommand="ArchiveThisPrefs['setOverrideKeysValue']()"
+                hidden="true"/>
+      <checkbox id="archive-this-debug" label="&prefs_enable_debug_logging;" checked="false"
+                oncommand="ArchiveThisPrefs['setDebugValue']()"/>
+    </groupbox>
+    <!-- /Checkboxes -->
+
+    <spacer flex="1"/>
+
+    <!-- Buttons -->
+    <groupbox>
+    <grid pack="center" align="center" flex="1">
+      <columns>
+        <column/>
+        <column/>
+      </columns>
+      <rows>
+
+        <row>
+          <vbox align="start">
+            <button id="archive-this-translate-button" label="&prefs_translate;" 
+                    oncommand="ArchiveThisPrefs['submitTranslation']();"/>
+          </vbox>
+          <vbox align="start" pack="center">
+            <label>&prefs_translate_desc;</label>
+            <menulist id="archive-this-translate-language" >
+              <menupopup>
+                <menuitem label='Other' name='lang' value='xx'/>
+                <menuitem label='Afrikaans / Afrikaans' name='lang' value='af'/>
+                <menuitem label='Albanian / Shqip' name='lang' value='sq'/>
+                <menuitem label='Arabic / عربي' name='lang' value='ar'/>
+                <menuitem label='Assamese / অসমীয়া' name='lang' value='as'/>
+                <menuitem label='Basque / Euskara' name='lang' value='eu'/>
+                <menuitem label='Belarusian / Беларуская' name='lang' value='be'/>
+                <menuitem label='Bengali (Bangladesh) / বাংলা (বাংলাদেশ)' name='lang' value='bn-BD'/>
+                <menuitem label='Bengali (India) / বাংলা (ভারত)' name='lang' value='bn-IN'/>
+                <menuitem label='Bulgarian / Български' name='lang' value='bg'/>
+                <menuitem label='Catalan / català' name='lang' value='ca'/>
+                <menuitem label='Chinese (Simplified) / 中文 (简体)' name='lang' value='zh-CN'/>
+                <menuitem label='Chinese (Traditional) / 正體中文 (繁體)' name='lang' value='zh-TW'/>
+                <menuitem label='Croatian / Hrvatski' name='lang' value='hr'/>
+                <menuitem label='Czech / Čeština' name='lang' value='cs'/>
+                <menuitem label='Danish / Dansk' name='lang' value='da'/>
+                <menuitem label='Dutch / Nederlands' name='lang' value='nl'/>
+                <menuitem label='English (British) / English (British)' name='lang' value='en-GB'/>
+                <menuitem label='Esperanto / Esperanto' name='lang' value='eo'/>
+                <menuitem label='Estonian / Eesti keel' name='lang' value='et'/>
+                <menuitem label='Finnish / suomi' name='lang' value='fi'/>
+                <menuitem label='French / Français' name='lang' value='fr'/>
+                <menuitem label='Frisian / Frysk' name='lang' value='fy-NL'/>
+                <menuitem label='Galician / Galego' name='lang' value='gl'/>
+                <menuitem label='Georgian / ქართული' name='lang' value='ka'/>
+                <menuitem label='German / Deutsch' name='lang' value='de'/>
+                <menuitem label='Greek / Ελληνικά' name='lang' value='el'/>
+                <menuitem label='Gujarati / ગુજરાતી' name='lang' value='gu-IN'/>
+                <menuitem label='Hebrew / עברית' name='lang' value='he'/>
+                <menuitem label='Hindi (India) / हिन्दी (भारत)' name='lang' value='hi-IN'/>
+                <menuitem label='Hungarian / Magyar' name='lang' value='hu'/>
+                <menuitem label='Icelandic / íslenska' name='lang' value='is'/>
+                <menuitem label='Indonesian / Bahasa Indonesia' name='lang' value='id'/>
+                <menuitem label='Irish (Ireland) / Gaeilge (Éire)' name='lang' value='ga-IE'/>
+                <menuitem label='Italian / Italiano' name='lang' value='it'/>
+                <menuitem label='Japanese / 日本語' name='lang' value='ja'/>
+                <menuitem label='Kannada / ಕನ್ನಡ' name='lang' value='kn'/>
+                <menuitem label='Kazakh / Қазақ' name='lang' value='kk'/>
+                <menuitem label='Korean / 한국어' name='lang' value='ko'/>
+                <menuitem label='Kurdish / Kurdî' name='lang' value='ku'/>
+                <menuitem label='Latvian / Latviešu' name='lang' value='lv'/>
+                <menuitem label='Lithuanian / lietuvių kalba' name='lang' value='lt'/>
+                <menuitem label='Macedonian / Македонски' name='lang' value='mk'/>
+                <menuitem label='Malayalam / മലയാളം' name='lang' value='ml'/>
+                <menuitem label='Marathi / मराठी' name='lang' value='mr'/>
+                <menuitem label='Norwegian (Bokmål) / Norsk bokmål' name='lang' value='nb-NO'/>
+                <menuitem label='Norwegian (Nynorsk) / Norsk nynorsk' name='lang' value='nn-NO'/>
+                <menuitem label='Occitan (Lengadocian) / occitan (lengadocian)' name='lang' value='oc'/>
+                <menuitem label='Oriya / ଓଡ଼ିଆ' name='lang' value='or'/>
+                <menuitem label='Persian / فارسی' name='lang' value='fa'/>
+                <menuitem label='Polish / Polski' name='lang' value='pl'/>
+                <menuitem label='Portuguese (Brazilian) / Português (do Brasil)' name='lang' value='pt-BR'/>
+                <menuitem label='Portuguese (Portugal) / Português (Europeu)' name='lang' value='pt-PT'/>
+                <menuitem label='Punjabi / ਪੰਜਾਬੀ' name='lang' value='pa-IN'/>
+                <menuitem label='Romanian / română' name='lang' value='ro'/>
+                <menuitem label='Romansh / rumantsch' name='lang' value='rm'/>
+                <menuitem label='Russian / Русский' name='lang' value='ru'/>
+                <menuitem label='Serbian / Српски' name='lang' value='sr'/>
+                <menuitem label='Sinhala / සිංහල' name='lang' value='si'/>
+                <menuitem label='Slovak / slovenčina' name='lang' value='sk'/>
+                <menuitem label='Slovenian / slovensko' name='lang' value='sl'/>
+                <menuitem label='Spanish (Argentina) / Español (de Argentina)' name='lang' value='es-AR'/>
+                <menuitem label='Spanish (Chile) / Español (de Chile)' name='lang' value='es-CL'/>
+                <menuitem label='Spanish (Mexico) / Español (de México)' name='lang' value='es-MX'/>
+                <menuitem label='Spanish (Spain) / Español (de España)' name='lang' value='es-ES'/>
+                <menuitem label='Swedish / Svenska' name='lang' value='sv-SE'/>
+                <menuitem label='Tamil / தமிழ்' name='lang' value='ta'/>
+                <menuitem label='Tamil (Sri Lanka) / தமிழ் (இலங்கை)' name='lang' value='ta-LK'/>
+                <menuitem label='Telugu / తెలుగు' name='lang' value='te'/>
+                <menuitem label='Thai / ไทย' name='lang' value='th'/>
+                <menuitem label='Turkish / Türkçe' name='lang' value='tr'/>
+                <menuitem label='Ukrainian / Українська' name='lang' value='uk'/>
+                <menuitem label='Vietnamese / Tiếng Việt' name='lang' value='vi'/>
+                <menuitem label='Welsh / Cymraeg' name='lang' value='cy'/>
+              </menupopup>
+            </menulist>
+          </vbox>
+        </row>
+
+        <row>
+          <hbox pack="start">
+            <button id="archive-this-bug-button" label="&prefs_file_bug_report;" 
+                    oncommand="ArchiveThisPrefs['fileBugReport']();"/>
+          </hbox>
+          <hbox pack="start" align="center">
+            <label>&prefs_bug_report_desc;</label>
+          </hbox>
+        </row>
+        <row>
+          <hbox pack="start">
+            <button label="&prefs_credits;"
+                    oncommand="window.openDialog('chrome://archive-this/content/credits.xul','move-copy','chrome,modal')"/>
+          </hbox>
+          <hbox pack="start" align="center">
+            <label>&prefs_credits;</label>
+          </hbox>
+        </row>
+      </rows>
+    </grid>
+    </groupbox>
+    <!-- /Buttons -->
+
+  </vbox>
+  </tabpanel>
+  </tabpanels>
+</tabbox>
+
+<script>
+ArchiveThisPrefs.setAppleCommand('&#8984;');
+</script>
+
+</dialog>

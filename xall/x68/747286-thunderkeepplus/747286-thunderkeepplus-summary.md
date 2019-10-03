@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/747286-thunderkeepplus/src)  
-Current XPI: [XPI](x68/747286-thunderkeepplus/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/747286-thunderkeepplus/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/747286-thunderkeepplus/xpi)  
 
 
 

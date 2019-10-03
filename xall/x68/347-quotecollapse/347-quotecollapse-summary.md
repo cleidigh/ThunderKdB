@@ -14,8 +14,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/347-quotecollapse/src)  
-Current XPI: [XPI](x68/347-quotecollapse/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/347-quotecollapse/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/347-quotecollapse/xpi)  
 
 
 

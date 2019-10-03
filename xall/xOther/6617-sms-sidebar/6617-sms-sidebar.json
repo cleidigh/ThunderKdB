@@ -1,0 +1,197 @@
+{
+    "id": 6617,
+    "authors": [
+        {
+            "id": 390763,
+            "name": "Marc Diethelm",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/marc-diethelm/",
+            "username": "marc-diethelm",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "firefox": [
+            "social-communication"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 45490,
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0a2pre",
+                "min": "2.0"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sms-sidebar/versions/45490",
+        "files": [
+            {
+                "id": 28942,
+                "created": "2008-05-22T15:55:49Z",
+                "hash": "sha256:29bb2091fcc6bc62f02fbe7e6c59bee823bbf95965f1a21fb1863f77602c81ff",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 73728,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/28942/sms_sidebar-0.9b2-fx+tb+sb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "- Compatible with Firefox 3.2a1pre\n- Compatible with Thunderbird 3.0a2pre\n- Tons of layout improvements (especially Mac and Linux)\n- Bugfixes\n- Better OS-specific styling code\n\nsee full change log at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5cb3c6a584f86bd94b4a99c373c5abc38aa3151543b9880cdad3f3d5106bad0a/http%3A//sms.chic-happens.ch/install.php\">http://sms.chic-happens.ch/install.php</a>",
+            "de": "- Kompatibel mit Firefox 3.0.*\n- Viele Layout-Verbesserungen (besonders Mac und Linux)\n- Fehler behoben\n- Besserer OS-spezifischer Styling-Code\n\nsee full change log at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5cb3c6a584f86bd94b4a99c373c5abc38aa3151543b9880cdad3f3d5106bad0a/http%3A//sms.chic-happens.ch/install.php\">http://sms.chic-happens.ch/install.php</a>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sms-sidebar/versions/0.9b2",
+        "version": "0.9b2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This addon allows you to send SMS over a internet gateway. It provides advanced SMS features that are not available on cellphones or other services and a smart interface to optimize your experience.\nI have choosen the very reliable <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e0c5344b677f36ac1c1a5d18eeaa0619a27673baa6ea65d6a5d9e668e19bd9a3/http%3A//Aspsms.com\">Aspsms.com</a> in Switzerland as gateway to the mobile world. They're cheap and give away free start credits. Why pay you ask? Well, have a look at the... \n\n    Features\n\n    * long sms, updateable sms\n    * flash sms (immediately on display, not saved in phone)\n    * asian and oriental sms (\"UCS-2\")\n    * delivery report for each recipient (eg. \"delivered\" or \"phone memory full\"...)\n    * send message to multiple recipients (up to 1000)\n    * smart, dynamic interface in a resizeable sidebar with tabs\n    * sender: alphanumerical or your own mobile number\n    * contact and message lists\n    * store, update, search, sort and delete contacts\n    * store and delete messages\n    * set time allowed for delivery\n    * free starter credits\n    * test mode: full simulation before you invest in credits\n    * displays your sms credits\n    * displays gateway connection status\n    * displays remaining free characters left in message\n    * max lengths: 160 chars (70 chars in UCS-2)\n    * long sms: 153 chars per segment (65 in UCS-2)\n    * all private data (numbers, messages) are stored locally, not on a server\n    * can delete all contacts or messages at once\n    * can internationalize numbers automatically\n    * integrated manual\n\nTo get more info please check out my site:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/4ebae103d7e65b45ec88afb4145d384bbe5f0f8032a01843020be63c18bfa359/http%3A//smssidebar.org/\">http://smssidebar.org/</a>\n\n*** At the moment there are almost no carriers for the USA for SMS Sidebar! I'm working on that. Pretty soon sending SMS to all major networks in the USA should be available. ***\n\nPlease after some testing, consider writing something about your experience with SMS Sidebar in the forum (see Support). I spent A LOT of time developing this, with your help I can make it even better.",
+        "de": "Diese Erweiterung erlaubt es SMS via einen Internet-Gateway zu senden. Sie bietet fortgeschrittene SMS Features welche bei Handys oder anderen Diensten nicht erhältlich sind und eine intelligente, unaufdringliche Benutzerführung.\nIch habe die sehr zuverlässige <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/e0c5344b677f36ac1c1a5d18eeaa0619a27673baa6ea65d6a5d9e668e19bd9a3/http%3A//Aspsms.com\">Aspsms.com</a> in der Schweiz als Gateway zur Mobile-Welt ausgesucht. Die sind günstig und vergeben gratis Startcredits. Warum etwas zahlen? Nun, schau dir mal die Features an... \n\n    Features\n\n    * lange sms, aktualisierbare sms\n    * flash sms (sofort auf dem display, nicht im handy gespeichert)\n    * asiatische und orientalische sms (\"UCS-2\")\n    * sende-report für jeden empfänger (zb. \"ausgeliefert\" oder \"handy speicher voll\"...)\n    * an mehrere empfänger senden (bis zu 1000)\n    * dynamische oberfläche in einer vergrösserbaren sidebar mit tabs\n    * sender: alphanumerisch oder eigene handy nummer\n    * kontakt- und nachrichten-liste\n    * kontakte speichern, ändern, suchen, sortieren und löschen\n    * nachrichten speichern und löschen\n    * max. auslieferdauer ist wählbar\n    * gratis startcredits\n    * test modus: alles ohne registrieren testbar\n    * zeigt deine sms credits an\n    * zeigt gateway-verbindungsstatus an\n    * zeigt die anzahl der verbleibenden zeichen an\n    * max. länge: 160 zeichen (70 zeichen in UCS-2)\n    * lange sms: 153 zeichen pro segment (65 in UCS-2)\n    * alle privaten daten (nummern, nachrichten) lokal gespeichert, nicht auf einem webserver\n    * kann alle kontakte oder nachrichten gleichzeitig löschen\n    * kann nummern automatisch internationalisieren\n    * integrierte anleitung\n\nFür mehr Infos besuchst du am besten meine Site:\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ce3eec9c1193e8eb661c870b8067a3ca84780b1cd8f45dca75dbc532c64a7137/http%3A//smssidebar.org/%3Flang=de\">http://smssidebar.org/?lang=de</a>\n\nEs wäre toll wenn du nach ein bisschen Testen etwas über deine Erfahrungen mit SMS Sidebar schreiben würdest im Forum (siehe Hilfe). Es hat mich VIEL Zeit gekostet es zu entwickeln, mit deiner Hilfe kann ich es noch verbessern."
+    },
+    "developer_comments": {
+        "en-US": "It's good, it's hot! Let's make it better."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sms-sidebar/edit",
+    "guid": "sms_sidebar@chic-happens.ch",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": {
+        "en-US": "http://smssidebar.org/",
+        "de": "http://smssidebar.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/6/6617-64.png?modified=1281024913",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/6/6617-32.png?modified=1281024913",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/6/6617-64.png?modified=1281024913"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2008-06-26T10:34:26Z",
+    "name": {
+        "en-US": "SMS Sidebar",
+        "de": "SMS Sidebar"
+    },
+    "previews": [
+        {
+            "id": 18816,
+            "caption": {
+                "en-US": "SMS Tab"
+            },
+            "image_size": [
+                134,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/18/18816.png?modified=1530208323",
+            "thumbnail_size": [
+                51,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/18/18816.png?modified=1530208323"
+        },
+        {
+            "id": 18822,
+            "caption": {
+                "en-US": "SMS Tab (+advanced)"
+            },
+            "image_size": [
+                134,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/18/18822.png?modified=1530208323",
+            "thumbnail_size": [
+                51,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/18/18822.png?modified=1530208323"
+        },
+        {
+            "id": 18823,
+            "caption": {
+                "en-US": "Contacts Tab"
+            },
+            "image_size": [
+                154,
+                491
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/18/18823.png?modified=1530208324",
+            "thumbnail_size": [
+                63,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/18/18823.png?modified=1530208324"
+        },
+        {
+            "id": 18824,
+            "caption": {
+                "en-US": "Messages Tab"
+            },
+            "image_size": [
+                134,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/18/18824.png?modified=1530208324",
+            "thumbnail_size": [
+                51,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/18/18824.png?modified=1530208324"
+        },
+        {
+            "id": 18825,
+            "caption": {
+                "en-US": "Options Tab"
+            },
+            "image_size": [
+                134,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/18/18825.png?modified=1530208324",
+            "thumbnail_size": [
+                51,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/18/18825.png?modified=1530208324"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 2.02894,
+        "count": 17,
+        "average": 2.1176,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sms-sidebar/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/6617",
+    "slug": "sms-sidebar",
+    "status": "public",
+    "summary": {
+        "en-US": "If you work in front of a computer and send a lot of SMS text messages this is for you. Finally you can send SMS from the privacy of your Mozilla application. The focus of this addon is on efficiency, ease of use and easy access to advanced SMS features. Looks good &amp; is Open Source!\n\n* updateable SMS, long SMS\n* asian / oriental sms\n* streamlined design\n* snazzy sidebar\n* active development",
+        "de": "Wenn du vor'm Computer sitzt und viele SMS sendest ist das hier was für dich. Endlich kannst du SMS aus der Privatsphäre deiner Mozilla Applikation senden. Der Schwerpunkt dieses Addons ist bei Effizienz, Einfacheit und simplem Zugang zu fortgeschrittenen SMS Features. Schaut gut aus &amp; ist Open Source!\n\n* updatebare SMS, lange SMS\n* Sende-Report\n* schnittiges Design\n* bequeme Sidebar\n* aktive Weiterentwicklung"
+    },
+    "support_email": {
+        "en-US": "marc@smssidebar.org",
+        "de": "marc@smssidebar.org"
+    },
+    "support_url": {
+        "en-US": "http://smssidebar.org/forum/",
+        "de": "http://smssidebar.org/forum/"
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sms-sidebar/",
+    "weekly_downloads": 45
+}

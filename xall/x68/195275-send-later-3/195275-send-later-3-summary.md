@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/195275-send-later-3/src)  
-Current XPI: [XPI](x68/195275-send-later-3/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/195275-send-later-3/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/195275-send-later-3/xpi)  
 
 
 

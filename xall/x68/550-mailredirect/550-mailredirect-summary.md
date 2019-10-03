@@ -12,8 +12,8 @@ Max: 70.0a1
 
 # Files
 
-Source Tree: [Src](x68/550-mailredirect/src)  
-Current XPI: [XPI](x68/550-mailredirect/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/550-mailredirect/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/550-mailredirect/xpi)  
 
 
 

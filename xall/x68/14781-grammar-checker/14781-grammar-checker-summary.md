@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/14781-grammar-checker/src)  
-Current XPI: [XPI](x68/14781-grammar-checker/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/14781-grammar-checker/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/14781-grammar-checker/xpi)  
 
 
 

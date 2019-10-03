@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/catBox.css"  type="text/css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/calendar/calendarWidget.xul"?>
+<?xul-overlay href="chrome://reminderfox/content/editing/eventEntryOverlay.xul"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-editAdd-categories"
+		persist="screenX screenY"
+		title="&rf.reminderoptions.repeat.custom.title.label;"
+		onload="loadRepeat();">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/categories.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/reminderOptionsDialog.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/repeatDialog.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/datepicker/datepicker.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();" />
+		<key keycode="VK_ENTER" oncommand="reminderFox_saveRepeat();" />
+		<key keycode="VK_RETURN" oncommand="reminderFox_saveRepeat();" />
+	</keyset>
+
+
+	<vbox id="reminderFoxVbox1">
+		<!-- brought in from overlay -->
+		<hbox>
+			<menulist id="reminderFox-repeatList" oncommand="repeatChanged();" />
+			<spacer flex="1" />
+		</hbox>
+
+		<deck id="repeatdeck">
+			<vbox>
+				<hbox align="center">
+					<label value="&rf.reminderoptions.repeat.every.label;" />
+					<textbox id="yearsText" size="3" value="1" />
+					<label value="&rf.reminderoptions.repeat.years.label;" />
+					<spacer flex="1" />
+				</hbox>
+				<spacer flex="1" />
+			</vbox>
+			<vbox>
+				<hbox align="center">
+					<label value="&rf.reminderoptions.repeat.every.label;" />
+					<textbox id="monthsText" size="3"  value="1"/>
+					<label value="&rf.reminderoptions.repeat.months.label;" />
+				</hbox>
+			</vbox>
+			<vbox>
+				<hbox align="center">
+					<label value="&rf.reminderoptions.repeat.every.label;" />
+					<textbox id="weeksText" size="3"  value="1" />
+					<label value="&rf.reminderoptions.repeat.weeks.label;" />
+				</hbox>
+				<vbox>
+					<hbox>
+						<checkbox id="weekly-mon" label="&day.2.name;" value="2" />
+						<checkbox id="weekly-tue" label="&day.3.name;" value="3" />
+						<checkbox id="weekly-wed" label="&day.4.name;" value="4" />
+						<checkbox id="weekly-thu" label="&day.5.name;" value="5" />
+					</hbox>
+					<hbox>
+						<checkbox id="weekly-fri" label="&day.6.name;" value="6" />
+						<checkbox id="weekly-sat" label="&day.7.name;" value="7" />
+						<checkbox id="weekly-sun" label="&day.1.name;" value="1" />
+					</hbox>
+				</vbox>
+			</vbox>
+			<vbox>
+				<hbox align="center">
+					<label value="&rf.reminderoptions.repeat.every.label;" />
+					<textbox id="daysText"  size="3"  value="1" />
+					<label value="&rf.reminderoptions.repeat.days.label;" />
+					<spacer flex="1" />
+				</hbox>
+				<spacer flex="1" />
+			</vbox>
+
+		</deck>
+	</vbox>
+
+	<vbox>
+		<radiogroup id="repeatLength" oncommand="updateRepeatLength()">
+			<radio label="&rf.reminderoptions.repeat.forever.label;" value="forever" selected="true" />
+			<hbox>
+				<radio label="&rf.reminderoptions.repeat.until.label;" value="until" />
+				<!-- brought in from overlay -->
+				<hbox id="dateEntryHBox" disabled="true" />
+			</hbox>
+			<hbox>
+				<radio label="&rf.reminderoptions.repeat.count.label;" />
+				<textbox id="rrule-count" size="3" value="1" disabled="true" onblur="reminderfox_checkCount(this);"/>
+			</hbox>
+		</radiogroup>
+	</vbox>
+
+<!-- footer buttons overlay -->
+	<vbox id="footer">
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3" align="center"/>
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2" align="center"/>
+
+		<hbox>
+			<spacer class="reminderFox-btnspacer" flex="1"/>
+			<button id="rf-repeat-okay" label="&rf.ok;" default="true"  oncommand="reminderFox_saveRepeat();"  />
+			<button id="rf-repeat-cancel" label="&rf.cancel;"  oncommand="window.close();"  />
+		</hbox>
+	</vbox>
+</window>

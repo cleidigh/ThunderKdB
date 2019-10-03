@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/catBox.css" type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+	<!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-editAdd-categories"
+		persist="screenX screenY"
+		onload="loadCustomList()"
+		title="&rf.options.addlist.label;">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/categories.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/reminderOptionsDialog.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();"/>
+		<key keycode="VK_ENTER" oncommand="doOK();"/>
+		<key keycode="VK_RETURN" oncommand="doOK();"/>
+	</keyset>
+
+
+	<vbox id="reminderFoxVbox1">
+		<!-- add/Edit Category item - - - - - - - - - - -->
+		<hbox align="center">
+			<label value="&rf.categories.thisCat.Name;" />
+			<textbox id="listInput" flex="1" />
+		</hbox>
+				<!-- Name='ToDo's' or 'Reminders' and ',' or ':' are not allowed here! -->
+		<description id="reminderFox_todoListNameError"
+			class="reminderFox_BoldError"
+			hidden="true">&rf.options.lists.nameError;</description>
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3" align="center"/>
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2" align="center"/>
+
+		<groupbox flex="1" style="width: 420px;">
+			<caption>
+				<checkbox id="subscriptionCheckbox" label="&rf.options.addlist.subscription.label;" oncommand="checkSubscription()"/>
+			</caption>
+
+			<description id = "subscriptionDesc">&rf.options.addlist.subscription.description;</description>
+			<spacer height="10px"/>
+			<hbox>
+				<label id="subscriptionVal" value="&rf.options.addlist.subscription.url.label;:" />
+				<textbox id="subscriptionURL" value="" disabled="true" width="300px" />
+			</hbox>
+		</groupbox>
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3" align="center"/>
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2" align="center"/>
+
+		<hbox id="alertButtonGroup">
+			<button id="rmCatOK" label="&rf.ok;"
+				oncommand="doOK();" />
+			<spacer width="5px" />
+
+			<button id="rmCatCancel" label="&rf.cancel;"
+				oncommand="window.close();" />
+		</hbox>
+	</vbox>
+
+	<script type="application/x-javascript">
+		<![CDATA[
+		function loadCustomList() {
+			var addEvent = window.arguments[0].addEvent;
+			var cItem 	= window.arguments[0].currentItem;
+			var subscription = window.arguments[0].subscription;
+
+			var listBoxInput = document.getElementById('listInput');
+			if (addEvent == 1) {
+				listBoxInput.value = cItem;
+				if ( subscription != null && subscription.length > 0 ) {
+					document.getElementById("subscriptionURL").value = subscription;
+					document.getElementById("subscriptionCheckbox").setAttribute( "checked", "true" )
+				}
+			}
+
+			checkSubscription();
+			listBoxInput.focus();
+		}
+
+		function checkSubscription() {
+			if ( document.getElementById("subscriptionCheckbox").getAttribute( "checked" ) == true ||
+				document.getElementById("subscriptionCheckbox").getAttribute( "checked" ) == "true" ) {
+
+				document.getElementById("subscriptionVal").removeAttribute( "disabled" );
+				document.getElementById("subscriptionURL").removeAttribute( "disabled" );
+				document.getElementById("subscriptionDesc").removeAttribute( "disabled" );
+			}
+			else {
+				document.getElementById("subscriptionVal").setAttribute( "disabled", true );
+				document.getElementById("subscriptionURL").setAttribute( "disabled", true );
+				document.getElementById("subscriptionDesc").setAttribute( "disabled", true );
+
+			}
+		}
+
+		function doOK() {
+			var newListName = document.getElementById("listInput").value;
+
+				// newListName == 'not valid' if
+				// - "ToDo's" or "Reminders"
+				// or containing following chars: ':' ','
+			if (newListName.search(/(:|\,|^ToDo's|^Reminders)/g) != -1) {
+				document.getElementById("reminderFox_todoListNameError")
+					.setAttribute("hidden","false");
+				sizeToContent();
+				return;
+			}
+			if (document.getElementById("subscriptionCheckbox").getAttribute( "checked" ) == true ||
+					document.getElementById("subscriptionCheckbox").getAttribute( "checked" ) == "true" ) {
+				window.arguments[0].subscription = document.getElementById("subscriptionURL").value;
+			}
+			else {
+				window.arguments[0].subscription = null;
+			}
+			window.arguments[0].currentItem = document.getElementById("listInput").value;
+			window.arguments[0].added = true;
+			window.close();
+		}
+		]]>
+	</script>
+
+</window>

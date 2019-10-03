@@ -12,8 +12,8 @@ Max: 68.*
 
 # Files
 
-Source Tree: [Src](x68/2313-lightning/src)  
-Current XPI: [XPI](x68/2313-lightning/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/2313-lightning/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/2313-lightning/xpi)  
 
 
 

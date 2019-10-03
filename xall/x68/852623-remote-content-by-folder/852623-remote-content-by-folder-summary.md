@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/852623-remote-content-by-folder/src)  
-Current XPI: [XPI](x68/852623-remote-content-by-folder/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/852623-remote-content-by-folder/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/852623-remote-content-by-folder/xpi)  
 
 
 

@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-upcomingLabelOptions"
+		persist="screenX screenY"
+		windowtype="window:upcomingLabelOptions"
+		title="&rf.upcoming.label.options.title.label;"
+		minwidth="550px" minheight="200px"
+		onload="reminderFox_loadCustomizeUpcomingLabelWindow();"    >
+
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/options/reminderFoxOptions.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();"/>
+	</keyset>
+
+	<vbox id="reminderFoxVbox" flex="1">
+		<hbox align="center">
+			<label id="upcomingLabelOptionsDescLabel" value="&rf.upcoming.label.options.label;" />
+			<textbox width="300px" flex="1" id="upcomingLabelText"  />
+		</hbox>
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3" align="center"/>
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2" align="center"/>
+
+		<hbox>
+			<separator class="thin"/>
+			<tree  id="rf-tree-vars" rows="11" flex="1">
+				<treecols id="rf-tree-columns">
+					<treecol id="rf-col-variable" label="&rf.upcoming.label.column.variable;" primary="true"  ignoreincolumnpicker="true" persist="hidden width ordinal" flex="2"/>
+					<splitter class="tree-splitter"/>
+					<treecol id="rf-col-description" label="&rf.upcoming.label.column.description;"  ignoreincolumnpicker="true" persist="hidden width ordinal" flex="4"/>
+				</treecols>
+				<treechildren id="rf-upcoming-label-tree-items"  ondblclick="reminderfox.core.add2Textbox(this, 'upcomingLabelText', ' ');" >
+					<treeitem>
+						<treerow>
+							<treecell label="[reminderDesc]"/>
+							<treecell label="&rf.upcoming.label.reminder.description;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[longDay]"/>
+							<treecell label="&rf.upcoming.label.long.day;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[shortDay]"/>
+							<treecell label="&rf.upcoming.label.short.day;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[longMonth]"/>
+							<treecell label="&rf.upcoming.label.long.month;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[shortMonth]"/>
+							<treecell label="&rf.upcoming.label.short.month;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[numMonth]"/>
+							<treecell label="&rf.upcoming.label.num.month;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[numMonth2]"/>
+							<treecell label="&rf.upcoming.label.num.month;  (2digit)"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[date]"/>
+							<treecell label="&rf.upcoming.label.date;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[date2]"/>
+							<treecell label="&rf.upcoming.label.date;  (2digit)"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[longYear]"/>
+							<treecell label="&rf.upcoming.label.long.year;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[shortYear]"/>
+							<treecell label="&rf.upcoming.label.short.year;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[time]"/>
+							<treecell label="&rf.upcoming.label.time;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[timeUntil]"/>
+							<treecell label="&rf.upcoming.label.timeuntil;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[category]"/>
+							<treecell label="&rf.options.categories.label;"/>
+						</treerow>
+					</treeitem>
+					<treeitem>
+						<treerow>
+							<treecell label="[location]"/>
+							<treecell label="&rf.reminderoptions.location.header;"/>
+						</treerow>
+					</treeitem>
+				</treechildren>
+			</tree>
+		</hbox>
+		<hbox align="center">
+			<spacer width="10px"/>
+			<vbox>
+				<image class="infoButton"
+					tooltiptext="&rf.add2Textbox.info1;"/>
+			</vbox>
+
+			<spacer class="reminderFox-btnspacer" flex="1"/>
+			<button label="&rf.ok;" default="true"  oncommand="reminderFox_saveCustomizeUpcomingLabel();"/>
+			<button label="&rf.cancel;"  oncommand="window.close();"/>
+		</hbox>
+   </vbox>
+
+</window>

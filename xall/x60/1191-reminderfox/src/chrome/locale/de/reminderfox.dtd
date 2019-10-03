@@ -1,0 +1,880 @@
+<!-- ReminderFox -->
+<!ENTITY rf.name            "ReminderFox">
+<!ENTITY rf.version         "#BUILD#">
+
+<!-- General strings -->
+<!ENTITY rf.general.event        "Termin">
+<!ENTITY rf.general.todo         "Aufgabe">
+<!--ENTITY rf.general.reminder     "Erinnerung"-->
+<!ENTITY rf.general.events       "Termine">
+<!ENTITY rf.general.todos        "Aufgaben">
+<!--ENTITY rf.general.reminders    "Erinnerungen"-->
+
+<!ENTITY rf.ok            "OK">
+<!ENTITY rf.cancel        "Abbrechen">
+<!ENTITY rf.apply         "Übernehmen">
+
+<!ENTITY rf.Add           "Hinzufügen">
+<!ENTITY rf.Close         "Schließen">
+<!ENTITY rf.Paste         "Einfügen">
+<!ENTITY rf.label.Copy    "Kopieren">
+<!ENTITY rf.Browse        "Suchen">
+
+<!ENTITY rf.timeDateSelect  "Zeit und Datum wählen">
+<!--ENTITY rf.button.browse "Durchsuchen..."-->
+
+<!ENTITY rf.documentation.previous "Vorherige Dokumentationsseite">
+
+<!ENTITY rf.mainmenubar   "Hauptmenü Leiste">
+<!ENTITY rf.statusbar     "Status/Add-on Leiste">
+
+<!-- Main Statusbar Overlay  -->
+<!ENTITY rf.main.tooltip.todaysreminders.label "Heutige Termine">
+<!ENTITY rf.main.tooltip.upcomingreminders.label "Kommende Termine">
+<!ENTITY rf.main.tooltip.todos.label "&rf.add.tab.todos.label;">
+<!ENTITY rf.main.options.label "Einstellungen...">
+<!ENTITY rf.main.homepage.label "Homepage besuchen">
+<!ENTITY rf.main.about.label "Über &rf.name;...">
+<!ENTITY rf.main.viewReminders.label "Termine ansehen...">
+<!ENTITY rf.main.addReminder.label "Termin hinzufügen...">
+<!ENTITY rf.main.quickalarm.label "Sofort-Alarm ...">
+<!ENTITY rf.main.quickalarms.label "Sofort Alarme">
+<!ENTITY rf.main.showalerts.label "Benachrichtigungen ein/aus">
+<!ENTITY rf.main.help.label "Hilfe">
+<!ENTITY rf.main.help.tooltip          "Hauptdialog anpassen">
+<!ENTITY rf.main.tip.label          "Tipp">
+<!ENTITY rf.main.addreminderforweb.label "Termin hinzufügen...">
+<!ENTITY rf.main.contextmenu.subscribe.label "Abonnement mit ReminderFox ...">
+<!ENTITY rf.main.contextmenu.addremindercontact.label "&rf.main.addReminder.label;">
+<!ENTITY rf.main.contextmenu.copycontactmail.label "kopiere Mail Adresse(n)">
+<!ENTITY rf.main.icons.openReminderfox.label "&rf.name;">
+<!ENTITY rf.main.icons.openReminderfox.tooltip.label "ReminderFox öffnen">
+<!ENTITY rf.main.icons.addreminder.label "&rf.add.reminders.context.add.label;">
+<!ENTITY rf.main.icons.addreminder.tooltip.label "Erinnerungen zur ReminderFox-Liste hinzufügen">
+<!ENTITY rf.main.icons.showCalendar.label "Kalender anzeigen">
+<!ENTITY rf.main.icons.showCalendar.tooltip.label "ReminderFox-Kalender anzeigen">
+<!ENTITY rf.main.importFromEmail.label "'iCal/ICS' Termine/Einladungen importieren...">
+<!ENTITY rf.main.contextmenu.openAB "Öffne Adressbuch Karte">
+
+
+<!-- Categories -->
+<!ENTITY rf.categories.inputRmCategories.label "Kategorien">
+<!ENTITY rf.categories.tooltip.inputRmCategories "Kategorien (omma getrennte Liste)">
+<!ENTITY rf.categories.tooltip.catChange "Kategorien aus der Liste auswählen">
+<!ENTITY rf.categories.manageCat.label "Kategorien verwalten">
+
+<!ENTITY rf.categories.currentCatHeader.default "Standard-Kategorien">
+<!--ENTITY rf.categories.currentCatHeader.other "Andere"-->
+
+<!ENTITY rf.categories.tooltip.sCatDelete "Ausgewählte Kategorie löschen">
+<!ENTITY rf.categories.tooltip.sCatEdit "Ausgewählte Kategorie bearbeiten">
+<!ENTITY rf.categories.tooltip.sCatAdd "Neue Kategorie hinzufügen">
+
+<!ENTITY rf.categories.tooltip.rmCatOK "Kategorien speichern">
+<!ENTITY rf.categories.thisCat.Name "Name">
+
+<!ENTITY rf.options.categories.label "Kategorien">
+
+<!ENTITY rf.options.categories.description1 "Die Liste der &rf.categories.currentCatHeader.default; zeigt eine Auswahl häufig verwendeter Kategorien.">
+
+<!--ENTITY rf.options.categories.importID "Diese Kategorie soll für alle importierten Termine und Aufgaben verwendet werden"-->
+
+<!ENTITY rf.categories.list.button.add "Hinzufügen">
+<!ENTITY rf.categories.list.button.edit "Bearbeiten">
+<!ENTITY rf.categories.list.button.delete "Löschen">
+<!ENTITY rf.categories.list.button.viewall "Andere Kategorien...">
+
+
+<!ENTITY rf.categories.list.button.moveToDefault "Verschieben">
+<!ENTITY rf.categories.tooltip.moveToDefault "Gewählte Kategorie in die Standardliste verschieben">
+
+<!ENTITY rf.options.tags.label "Kategorien">
+<!ENTITY rf.options.categories.description2 "Diese Liste zeigt alle Nicht-Standard-Kategorien, die derzeit für einige Termine verwendet werden.">
+<!ENTITY rf.options.categories.description3 "Jede dieser Kategorien kann in die Liste der Standard-Kategorien verschoben werden.">
+
+<!ENTITY rf.categories.options.default.category.label "Kategorie">
+
+
+<!-- Add Reminders dialog  -->
+<!ENTITY rf.add.tab.reminders.label "Termine">
+<!ENTITY rf.add.tab.todos.label "Aufgaben">
+<!ENTITY rf.add.find.accesskey "f">
+<!ENTITY rf.add.hideCompletedItems.accesskey "c">
+<!ENTITY rf.add.findagain.accesskey "g">
+<!ENTITY rf.add.showAll.accesskey "a">
+<!ENTITY rf.add.hideAll.accesskey "w">
+<!--ENTITY rf.add.viewAsHtml.accesskey "h"-->
+<!ENTITY rf.add.viewMail.accesskey "&gt;">
+<!ENTITY rf.add.quicksearch.accesskey "q">
+
+
+<!-- tools menu access keys -->
+<!ENTITY rf.toolsmenu.Reminderfox.accesskey "R">
+<!ENTITY rf.toolsmenu.OpenReminderfox.accesskey "R">
+<!ENTITY rf.toolsmenu.AddReminder.accesskey "A">
+<!ENTITY rf.toolsmenu.QuickAlarm.accesskey "Q">
+<!ENTITY rf.toolsmenu.Options.accesskey "O">
+<!ENTITY rf.toolsmenu.Help.accesskey "H">
+
+<!ENTITY rf.add.reminders.column.date.label "Datum">
+<!ENTITY rf.add.reminders.column.description.label "Beschreibung">
+<!ENTITY rf.add.reminders.column.time.label "Zeit">
+<!ENTITY rf.add.reminders.column.datecompleted.label "Beendet am">
+<!ENTITY rf.add.reminders.column.repeat.label "Wiederholung">
+<!ENTITY rf.add.reminders.column.complete.label "Beendet">
+<!ENTITY rf.add.reminders.column.remindUntilCompleted.label "Erinnern bis beendet">
+<!ENTITY rf.add.reminders.column.notes.label "Notiz">
+<!ENTITY rf.add.reminders.column.mail.label "E-Mail">
+<!ENTITY rf.add.reminders.column.alarm.label "Benachrichtigung">
+
+<!ENTITY rf.add.sidebar.hideFoxy.label "Foxy verbergen">
+<!ENTITY rf.add.sidebar.showFoxy.label "Foxy zeigen">
+<!--ENTITY rf.add.sidebar.showSidebar.label "Seitenleiste zeigen"-->
+<!--ENTITY rf.add.sidebar.hideSidebar.label "Seitenleiste verbergen"-->
+<!--ENTITY rf.add.sidebar.filterReminders.label "Ereignisse filtern..."-->
+
+<!ENTITY rf.add.reminders.column.categories.label "Kategorien">
+
+<!--ENTITY rf.add.event.add.label        "Ereignis hinzufügen"-->
+<!ENTITY rf.add.event.edit.label        "Ereignis bearbeiten">
+<!ENTITY rf.add.event.copy.label        "Ereignis kopieren">
+<!ENTITY rf.add.event.delete.label        "Ereignis löschen">
+
+<!ENTITY rf.add.reminders.context.add.label "Termin hinzufügen">
+<!ENTITY rf.add.reminders.context.edit.label "Termin bearbeiten">
+<!ENTITY rf.add.reminders.context.copy.label "Termin kopieren">
+<!ENTITY rf.add.reminders.context.delete.label "Termin löschen">
+<!ENTITY rf.add.reminders.context.moveToList.label "In eine Liste verschieben">
+<!ENTITY rf.add.reminders.context.important.label "Wichtig">
+<!ENTITY rf.add.reminders.context.complete.label "&rf.add.reminders.column.complete.label;">
+<!ENTITY rf.add.reminders.context.remindUntilCompleted.label "Täglich erinnern bis zur Beendigung">
+
+
+<!ENTITY rf.add.reminders.context.find.label "Suchen...">
+<!--ENTITY rf.add.reminders.context.gotoToday.label "Zeige heutigen Tag an"-->
+<!ENTITY rf.add.reminders.context.hideRepeatingReminders.label "Terminfolge ausblenden">
+<!ENTITY rf.add.reminders.context.showAllReminders.label "Terminfolge einblenden">
+<!ENTITY rf.add.reminders.context.hidecompleteditems.label "Verberge erledigte Einträge">
+<!ENTITY rf.add.reminders.context.print.label "Drucken / Vorschau">
+<!ENTITY rf.add.reminders.context.print.ttt   "Vorlage wählen für 'Drucken / Vorschau'">
+<!ENTITY rf.add.reminders.context.print.agenda.label          "Agenda">
+<!ENTITY rf.add.reminders.context.print.all "Alle Ereignisse">
+<!ENTITY rf.add.reminders.context.print.selected "Ausgewählte Ereignisse">
+<!ENTITY rf.add.reminders.context.print.installation "Installation Details">
+<!ENTITY rf.add.reminders.context.print.docu "Dokumentation Seite 'Drucken' öffnen">
+
+<!ENTITY rf.add.reminders.context.viewMail.label "Nachricht anzeigen">
+
+<!--ENTITY rf.add.reminders.context.sendReminders.label "Termin(e) senden..."-->
+<!--ENTITY rf.add.reminders.context.sendTodos.label "Aufgabe(n) senden ..."-->
+<!ENTITY rf.add.reminders.context.exportSendReminders.label "Einladen / Senden / Exportieren ...">
+<!ENTITY rf.add.reminders.context.exportSendTodos.label "Einladen / Senden / Exportieren ...">
+
+<!ENTITY rf.reminderoptions.addEvent          "Hinzufügen">
+
+<!ENTITY rf.add.addReminder.addbutton.label "&rf.add.reminders.context.add.label;">
+<!ENTITY rf.add.addReminder.revertbutton.label "Verwerfen">
+<!ENTITY rf.add.addReminder.donebutton.label "Fertig">
+
+<!--ENTITY rf.add.addReminder.downloadbutton.label "Herunterladen"-->
+<!--ENTITY rf.add.addReminder.uploadbutton.label "Hochladen"-->
+<!--ENTITY rf.add.todosr.downloadbutton.label "&rf.add.addReminder.downloadbutton.label;"-->
+<!--ENTITY rf.add.todosr.uploadbutton.label "&rf.add.addReminder.uploadbutton.label;"-->
+
+
+<!ENTITY rf.add.todosr.addbutton.label "Aufgabe hinzufügen">
+<!ENTITY rf.add.todos.column.description.label "&rf.add.reminders.column.description.label;">
+<!ENTITY rf.add.todos.column.showTooltip.label "Im Tooltip">
+
+<!ENTITY rf.add.todos.context.edit.label "Aufgabe bearbeiten">
+<!ENTITY rf.add.todos.context.delete.label "Aufgabe löschen">
+<!ENTITY rf.add.todos.context.copy.label "Kopiere Aufgabe">
+<!ENTITY rf.add.todos.context.important.label "&rf.add.reminders.context.important.label;">
+<!ENTITY rf.add.todos.context.showInTooltip.label "Im Tooltip anzeigen">
+<!ENTITY rf.add.todos.context.moveTodoUp.label "Aufgabe nach oben verschieben">
+<!ENTITY rf.add.todos.context.moveTodoDown.label "Aufgabe nach unten verschieben">
+
+<!ENTITY rf.add.addTodo.description.label "&rf.reminderoptions.description.label;">
+<!ENTITY rf.add.addTodo.addbutton.label "Hinzufügen">
+<!--ENTITY rf.add.addTodo.options.label "Einstellungen"-->
+<!ENTITY rf.add.addTodo.showInTooltip.label "Im Tooltip anzeigen">
+<!--ENTITY rf.add.addTodo.important.label "&rf.add.reminders.context.important.label;"-->
+
+<!ENTITY rf.add.file.menu.backup.title "Sicherung und Wiederherstellung">
+
+
+<!-- about dialog -->
+<!ENTITY rf.about.homepage.label "Homepage">
+<!ENTITY rf.about.about.label "&rf.main.about.label;">
+<!ENTITY rf.about.createdby.label "Erstellt von">
+<!ENTITY rf.about.developers.label "Entwickler">
+<!ENTITY rf.about.contributor.label "Mitwirkender">
+<!ENTITY rf.about.version.label "Version">
+<!ENTITY rf.about.support.label "Hilfe/Unterstützung">
+<!ENTITY rf.about.close.label "Schließen">
+<!ENTITY rf.about.updatecheck.label "Aktualisierungsprüfung">
+<!ENTITY rf.about.updatecheck.tooltip "Den aktuellen Installationsstatus prüfen.">
+
+<!-- rmFxUpdateXPI -->
+<!ENTITY rf.rmfxupdatexpi.drag.link.to.addon.manager.tooltip "Ziehen Sie diesen Link in das Fenster des 'Add-on Managers'. Erlauben Sie das Herunterladen. Scrollen Sie auf dem Reiter 'Erweiterungen' zu Reminderfox und verwenden Sie 'Jetzt neu starten' oder 'Rückgängig'.">
+<!ENTITY rf.rmfxupdatexpi.local.version.value "Lokale Version">
+<!ENTITY rf.rmfxupdatexpi.current.version.value "Aktuelle Version">
+<!ENTITY rf.rmfxupdatexpi.update.reminderfox.value "ReminderFox aktualisieren">
+
+<!ENTITY rf.msgid.title "ReminderFox: Gewählte E-Mail wird geöffnet">
+<!ENTITY rf.msgid.retry.label "Erneut versuchen">
+<!ENTITY rf.msgid.description "Die gewählte E-Mail konnte nicht geöffnet werden! Bitte erneut versuchen">
+
+
+<!-- New Reminder Options dialog -->
+<!ENTITY rf.reminderoptions.addEvent.window.title "Termin hinzufügen">
+<!ENTITY rf.reminderoptions.date.label "Datum">
+<!ENTITY rf.reminderoptions.date.start.label "Beginn">
+<!ENTITY rf.reminderoptions.date.end.label "Ende">
+<!ENTITY rf.reminderoptions.time.label "Zeit">
+<!ENTITY rf.reminderoptions.time.allday.label "Ganztägig">
+<!ENTITY rf.reminderoptions.description.label "Beschreibung">
+<!ENTITY rf.reminderoptions.repeat.label "Wiederholen">
+<!ENTITY rf.reminderoptions.repeat.yearly.label "jährlich">
+<!ENTITY rf.reminderoptions.repeat.yearlyday.label "jährlich nach Tag">
+<!ENTITY rf.reminderoptions.repeat.monthlydate.label "monatlich">
+<!ENTITY rf.reminderoptions.repeat.monthlyday.label "monatlich nach Tag">
+<!ENTITY rf.reminderoptions.repeat.weekly.label "wöchentlich">
+<!ENTITY rf.reminderoptions.repeat.weeklyalternating.label "2-wöchig">
+<!ENTITY rf.reminderoptions.repeat.daily.label "täglich">
+<!ENTITY rf.reminderoptions.repeat.cusomt.label "Weitere...">
+
+<!ENTITY rf.reminderoptions.repeat.custom.title.label "Benutzerdefiniertes Wiederholungsintervall">
+<!ENTITY rf.reminderoptions.repeat.every.label "Alle">
+<!ENTITY rf.reminderoptions.repeat.forever.label "Kein Enddatum">
+<!ENTITY rf.reminderoptions.repeat.until.label "Endet am">
+<!ENTITY rf.reminderoptions.repeat.years.label "Jahr(e)">
+<!ENTITY rf.reminderoptions.repeat.months.label "Monat(e)">
+<!ENTITY rf.reminderoptions.repeat.weeks.label "Woche(n) am">
+<!ENTITY rf.reminderoptions.repeat.days.label "Tag(e)">
+<!ENTITY rf.reminderoptions.repeat.count.label "Anzahl der Wiederholungen">
+
+<!ENTITY rf.reminderoptions.notify.label "Benachrichtigungsfenster anzeigen in">
+<!ENTITY rf.reminderoptions.notify.minutes.label "Minuten">
+<!ENTITY rf.reminderoptions.notify.hours.label "Stunden">
+<!ENTITY rf.reminderoptions.notify.days.label "Tage">
+<!ENTITY rf.reminderoptions.notify.before.label "vor dem Termin anzeigen.">
+<!ENTITY rf.reminderoptions.options.important.label "&rf.add.reminders.context.important.label;">
+<!ENTITY rf.reminderoptions.options.remindUntilCompleted.label "&rf.add.reminders.context.remindUntilCompleted.label;">
+
+<!ENTITY rf.reminderoptions.location.label "Ort">
+<!ENTITY rf.reminderoptions.location.header "Ort">
+<!ENTITY rf.reminderoptions.url.label "URL">
+<!ENTITY rf.reminderoptions.search.anywhere.header "Überall">
+<!ENTITY rf.reminderoptions.location.launch.tooltip "Ort auf Karte zeigen">
+<!ENTITY rf.reminderoptions.url.launch.tooltip "URL aufrufen">
+<!ENTITY rf.reminderoptions.button.more "Mehr >>">
+<!ENTITY rf.reminderoptions.tooltip.selectdate "Datum auswählen">
+
+<!-- Alarm dialog -->
+<!ENTITY rf.alarm.dialog.title "&rf.name;-Alarm">
+<!ENTITY rf.alarm.button.snooze "Später erinnern">
+<!ENTITY rf.alarm.button.acknowledge "Bestätigen">
+<!ENTITY rf.alarm.button.complete "Als erledigt markieren">
+<!ENTITY rf.alarm.button.delete "Löschen">
+<!ENTITY rf.alarm.button.open "Öffnen...">
+<!--ENTITY rf.alarm.snooze.minutes.label "Minuten"-->
+<!ENTITY rf.alarm.occursIn.label "Erfolgt in">
+<!ENTITY rf.alarm.snoozeUntil.label "Verzögert bis">
+
+<!-- Suspend Alerts and Alarms dialog -->
+<!ENTITY rf.suspendalarms.dialog.title   "Alarme und Hinweise aussetzen">
+<!ENTITY rf.suspendalarms.dialog.label  "Alarme und Hinweise werden ausgesetzt.">   
+<!ENTITY rf.suspendalarms.resume.label  "Alarme und Hinweise wieder aktivieren in">  
+<!ENTITY rf.suspendalarms.resume.time.info  "Wieder aktivieren um">  
+
+
+<!-- Quick Alarm dialog -->
+<!ENTITY rf.quickalarm.dialog.title "Sofort-Alarm">
+<!ENTITY rf.quickalarm.notify.label "&rf.reminderoptions.notify.label;">
+<!ENTITY rf.quickalarm.notify.fromnow "ab jetzt">
+<!ENTITY rf.quickalarm.alarmAt.label      "Alarm um">
+
+
+<!-- Options dialog -->
+
+<!ENTITY rf.options.title.label "&rf.name;-Einstellungen">
+<!ENTITY rf.options.tab.General "Generelles">
+<!ENTITY rf.options.tab.Access "Zugriff">
+<!ENTITY rf.options.tab.Dialog "Hauptdialog">
+<!ENTITY rf.options.tab.reminderEdit "Erinnerungen">
+<!ENTITY rf.options.tab.notifications "Benachrichtigungen">
+<!ENTITY rf.options.tab.Sync "Sync">
+<!ENTITY rf.options.tab.alarms "Alarme">
+<!ENTITY rf.options.todoLists "Listen">
+
+<!ENTITY rf.options.addlist.label "Eigene Liste hinzufügen">
+<!ENTITY rf.options.addlist.subscription.description "Sie können einen Kalender abonnieren durch Angeben seiner URL. Dieser Kalender wird bei den Aufgabenlisten unter dem hier angegebenen Namen angezeigt.">
+<!ENTITY rf.options.addlist.subscription.url.label "URL des Abonnements">
+<!ENTITY rf.options.addlist.subscription.label "Abonnement">
+
+<!--ENTITY rf.options.labels.title "Darstellung"-->
+
+<!--ENTITY rf.options.display.label "Anzeigeeinstellungen"-->
+<!ENTITY rf.options.display.todaystatus.label "Heutige Termine in der Statusleiste anzeigen.">
+<!ENTITY rf.options.display.limiStatusLength.label "Statustext Länge begrenzen auf">
+<!ENTITY rf.options.display.limiStatusCharacters.label "Zeichen">
+<!ENTITY rf.options.display.remindersInTooltip.label "Termine im Tooltip anzeigen.">
+<!ENTITY rf.options.display.todosInTooltip.label "Aufgaben im Tooltip anzeigen.">
+<!ENTITY rf.options.display.showForNext.label "Termine für die nächsten">
+<!ENTITY rf.options.display.showForNextUpcomingDays.label "Tage anzeigen.">
+<!ENTITY rf.options.upcomingreminders.label "Format für kommende Termine">
+<!ENTITY rf.options.todaysreminders.label "Format für heutige Termine">
+<!--ENTITY rf.options.upcomingreminders.label.customize "Anpassen..."-->
+<!--ENTITY rf.options.todaysreminders.label.customize "&rf.options.upcomingreminders.label.customize;"-->
+<!--ENTITY rf.options.display.editOnClick.label "Bei Klick auf das Statusleisten-Symbol bearbeiten"-->
+<!--ENTITY rf.options.display.openOnClick.label "Bei Klick auf das Statusleisten-Symbol öffnen"-->
+<!ENTITY rf.options.display.editOnClickReminders.label "&rf.add.tab.reminders.label;">
+<!ENTITY rf.options.display.editOnClickTodos.label "&rf.add.tab.todos.label;">
+<!ENTITY rf.options.display.openPrevious.label "Vorherigen Tab">
+<!ENTITY rf.options.display.enableContextMenus.label "Kontextmenüs für das Hinzufügen von Ereignissen auf Webseiten und von E-Mails einschalten">
+<!ENTITY rf.options.display.placement.label "Platzierung der Anzeige">
+<!ENTITY rf.options.display.placement.toolbar.label "Leiste">
+<!ENTITY rf.options.display.placement.last.label "Immer zuletzt">
+<!ENTITY rf.options.display.placement.specificPosition.label "Genaue Position">
+
+<!ENTITY rf.printing.agenda "Agenda">
+<!ENTITY rf.printing.agenda.info "Eine Agenda kann über den Menüpunkt 'Drucken/Vorschau' des Kontextmenüs auf der ReminderFox Liste erstellt werden. Beim Start der Anwendung ist dies ebenso möglich">
+<!ENTITY rf.printing.agenda.openatstart "Agenda beim Start der Anwendung anzeigen">
+
+<!--ENTITY rf.options.display.listsetup.label  "Listen und Kalender Einstellungen"-->
+<!ENTITY rf.options.display.singlemenu.label  "Nur eine Tastenleiste verwenden">  
+<!ENTITY rf.options.display.singlemenu.infoTTT  "Alle Schaltflächen befinden sich auf einer Menüleiste oberhalb der Liste; die OK Taste wird nicht gezeigt">
+<!ENTITY rf.options.display.nummonthdisplayed  "Anzahl der angezeigten Kalendermonate">
+<!--ENTITY rf.options.display.nummonth.help "Auswahl: 1 oder größer, typisch 3. Die Anzeige von vielen Monaten schränkt die Arbeitsgeschindigkeit ein!"-->
+<!ENTITY rf.options.display.menu.open "Termine/Aufgaben Menü öffnen mit Mausbewegung">
+
+<!--ENTITY rf.options.alert.label "Benachrichtigungsanzeige einblenden"-->
+<!ENTITY rf.options.alert.display.label "Anzeigen">
+<!ENTITY rf.options.alert.display.todaysandupcoming.label "Heutige und kommende Termine">
+<!ENTITY rf.options.alert.display.todays.label "Nur heutige Termine">
+<!ENTITY rf.options.alert.display.upcoming.label "Nur kommende Termine">
+<!ENTITY rf.options.alert.showevery.label "Benachrichtigungsanzeige alle">
+<!ENTITY rf.options.alert.showeveryminutes.label "Minuten">
+<!ENTITY rf.options.alert.maxheight.label "Maximale Höhe der Benachrichtigungsanzeige">
+<!ENTITY rf.options.alert.maxheightpixels.label "Pixel">
+<!ENTITY rf.options.alert.keepopen.label "Benachrichtigung offen halten">
+<!ENTITY rf.options.alert.keepopen.for.label "für">
+<!ENTITY rf.options.alert.keepopen.seconds.label "Sekunden">
+<!ENTITY rf.options.alert.keepopen.untilclicked.label "bis zur Bestätigung">
+
+<!--ENTITY rf.options.alarms.label "Alarme"-->
+<!ENTITY rf.options.alarms.show.label "Anzeige mehrerer Benachrichtigungen mit">
+<!ENTITY rf.options.alarms.show.tabs.label "separaten Tabs in einem Fenster">
+<!ENTITY rf.options.alarms.show.windows.label "separatem Fenster für jeden Alarm">
+
+<!ENTITY rf.options.sound.label "Akustische Hinweise">
+<!ENTITY rf.options.alarm.playsound.label "Klang beim Erscheinen des Alarmfensters abspielen">
+<!ENTITY rf.options.alarm.resoundInterval.label "Intervall der Alarmwiederholung">
+<!ENTITY rf.options.alarm.resoundInterval.minutes.label "&rf.options.alert.showeveryminutes.label;">
+<!ENTITY rf.options.alert.playsound.label "Klang beim Einblenden der Benachrichtungsanzeige abspielen">
+<!ENTITY rf.options.alarm.sound.default.label "Standard">
+<!ENTITY rf.options.alarm.sound.custom.label "Eigene Audiodatei (*.wav)">
+
+
+<!--ENTITY rf.options.list.calendar.label "Kalender"-->
+<!--ENTITY rf.options.list.calendar.size.label "Kalendergröße"-->
+<!--ENTITY rf.options.list.calendar.size.small.label "Klein"-->
+<!--ENTITY rf.options.list.calendar.size.medium.label "Mittel"-->
+<!--ENTITY rf.options.list.calendar.size.large.label "Groß"-->
+<!ENTITY rf.options.list.startingday.label "Erster Tag der Woche">
+<!ENTITY rf.options.list.calendar.showWeekNumber.label "Wochennummerierung">
+<!ENTITY rf.options.list.calendar.showWeekNumber.none       "Keine">
+<!ENTITY rf.options.list.calendar.showWeekNumber.default "Grundeinstellung">
+<!ENTITY rf.options.list.calendar.showWeekNumber.iso8601 "ISO 8601">
+<!--ENTITY rf.options.list.dateandtime.label "Datum und Zeit"-->
+<!--ENTITY rf.options.list.dateappearance.label "Datumsformat"-->
+<!--ENTITY rf.options.list.timeoptions.label "Zeitanzeige"-->
+<!ENTITY rf.options.list.24hour.label "24-Stunden-Format benutzen">
+<!ENTITY rf.options.list.highlighttodaysRemindres.label "Heutige Termine in Liste hervorheben">
+<!ENTITY rf.options.list.repeating.label "Termine mit Wiederholung">
+<!ENTITY rf.options.list.repeating.show.label "Zeige">
+<!ENTITY rf.options.list.repeating.all.label "alle">
+<!ENTITY rf.options.list.repeating.last.label "die letzten">
+<!ENTITY rf.options.list.repeating.next.label "die nächsten">
+<!ENTITY rf.options.list.repeating.previous.label "vorherigen Ereignisse">
+<!ENTITY rf.options.list.repeating.upcoming.label "kommenden Ereignisse">
+
+<!ENTITY rf.options.list.reminder.defaults.label "Terminstandards">
+<!ENTITY rf.options.list.reminder.defaults.description.label "Voreinstellungen für neue Termine">
+<!ENTITY rf.options.list.reminder.defaults.completed.hide.label "Erledigte Ereignisse ausblenden">
+<!ENTITY rf.options.list.reminder.defaults.list.defaults.label "Voreinstellungen für Listen">
+<!ENTITY rf.options.list.reminder.defaults.filters.label "Filtervoreinstellung">
+<!ENTITY rf.options.list.reminder.defaults.more.label "Voreinstellung 'Mehr >>' Elemente">
+<!ENTITY rf.options.list.reminder.defaults.alarm.label "Voreinstellung Alarm Werte">
+<!ENTITY rf.options.list.reminder.defaults.alarm.action.label "Voreinstellung">
+<!ENTITY rf.options.list.reminder.defaults.filters.lastSelectedView.label "Letzte genutzte Ansicht">
+<!ENTITY rf.options.list.reminder.defaults.allevents "Alle Ereignisse">
+<!ENTITY rf.options.list.reminder.defaults.allupcomingevents "Alle kommenden Ereignisse">
+
+<!ENTITY rf.options.list.reminder.defaults.textSize "Standard Text Größe">
+<!ENTITY rf.options.list.reminder.defaults.textSize.value "Größe in Punkten (px)">
+<!ENTITY rf.options.list.reminder.defaults.textSizeTTT "Dies setzt die Standard Textgröße. Mit den Tasten [Strg] [+] bzw. [Strg][-] kann für den 'Kalender' die Textgröße angepasst werden. [Strg] [#] setzt auf die Standard Textgröße zurück. Zur Änderung der Textgröße der 'Liste' [Alt] benutzen.">
+
+<!ENTITY rf.moreoptions.list.reminder.more.header.label "Voreinstellung 'Mehr >>' Elemente">
+
+<!ENTITY rf.moreoptions.list.reminder.more.description.label "Aufführen aller Bereiche, die im Fenster 'Termin bearbeiten' erst mit der Schaltfäche [Mehr >>] sichtbar gemacht werden sollen. Die hier aufgeführten Elemente werden in der Grundeinstellung nicht angezeigt, sondern erst nach Betätigung der Schaltfäche.  Sie werden in der hier aufgeführten Reihenfolge angezeigt.  Die Variablen sind mit Komma zu trennen.">
+<!ENTITY rf.moreoptions.list.reminder.more.location.label "&rf.reminderoptions.location.header;">
+<!ENTITY rf.moreoptions.list.reminder.more.URL.label "URL">
+<!ENTITY rf.moreoptions.list.reminder.more.category.label "Kategorie">
+<!ENTITY rf.moreoptions.list.reminder.more.repeat.label "Wiederholung">
+<!ENTITY rf.moreoptions.list.reminder.more.alarm.label "Alarm">
+<!ENTITY rf.moreoptions.list.reminder.more.priority.label "Priorität">
+<!ENTITY rf.moreoptions.list.reminder.more.important.label "Wichtig">
+<!ENTITY rf.moreoptions.list.reminder.more.remindUntilComplete.label "Erinnern bis beendet">
+<!ENTITY rf.moreoptions.list.reminder.more.showInTooltip.label "Im Tooltip anzeigen">
+<!ENTITY rf.moreoptions.list.reminder.more.endDate.label "End-Datum">
+<!ENTITY rf.options.customize "Anpassen">
+
+<!ENTITY rf.options.list.reminder.filters.allreminders.label "Alle Termine">
+<!ENTITY rf.options.list.reminder.filters.alltodos.label "Alle Aufgaben">
+<!ENTITY rf.options.list.reminder.filters.selectedmonth.label "Gewählter Monat">
+<!ENTITY rf.options.list.reminder.filters.selectedweek.label "Gewählte Woche">
+<!ENTITY rf.options.list.reminder.filters.selecteddaylabel "Gewählter Tag">
+<!ENTITY rf.options.list.reminder.filters.nextweek.label "Nächste Woche">
+<!ENTITY rf.options.list.reminder.filters.nexttwoweeks.label "Nächste zwei Wochen">
+<!ENTITY rf.options.list.reminder.filters.upcomingReminders.label "Alle kommenden Termine">
+<!ENTITY rf.options.list.reminder.filters.upcomingTodos.label "Alle kommenden Aufgaben">
+<!ENTITY rf.options.list.reminder.filters.moreViews.label "Weitere Ansichten ...">
+
+
+<!ENTITY rf.options.file.location.label "Speicherort für die ReminderFox-Datei">
+<!ENTITY rf.options.file.location.usedefault.label "Standard verwenden">
+
+<!ENTITY rf.options.file.events.label     "ReminderFox Datei der Ereignisse">
+<!ENTITY rf.options.file.note.label       "Hinweis">
+<!ENTITY rf.options.file.note.unsaved     "Es gibt ungespeicherte Ereignisse!">
+<!ENTITY rf.options.file.note.saveit      "Bitte vor dem Aufrufen dieser Funktionen Ereignisse speichern.">
+<!ENTITY rf.options.file.note.retry       "[Speichern] und mit 'Strg' 'r' wiederholen.">
+
+<!ENTITY rf.options.importexport.description.label "Termine und Aufgaben importieren/exportieren">
+<!ENTITY rf.options.importexport.import.label "Importieren...">
+<!ENTITY rf.options.importexport.export.label "Exportieren...">
+<!ENTITY rf.options.importexportpreferences.label "Einstellungen importieren/exportieren">
+<!ENTITY rf.options.importexport.category.label "Zusätzlich können Kategorien für jedes importierte Ereignis bestimmt werden. Hierdurch wird das Filtern und Suchen vereinfacht. Z.B.: beim Importieren von Feiertagen kann jedem eingelesenen Ereignis &apos;Feiertag&apos; zugeordnet werden, um schnell nach dieser Kategorie zu filtern und die Feiertage anzuzeigen.">
+
+<!-- lists -->
+<!ENTITY rf.options.list.reminder.lists.label "Listen">
+<!ENTITY rf.options.list.reminder.lists.manage.label "Listen verwalten">
+<!ENTITY rf.options.list.reminder.lists.button.add.label "&rf.add.addTodo.addbutton.label;">
+<!ENTITY rf.options.list.reminder.lists.button.remove.label "Entfernen">
+<!ENTITY rf.options.list.reminder.lists.button.moveup.label "Nach oben">
+<!ENTITY rf.options.list.reminder.lists.button.movedown.label "Nach unten">
+<!ENTITY rf.options.list.reminder.lists.button.sortup.label "Sortieren ^">
+<!ENTITY rf.options.list.reminder.lists.button.sortdown.label "Sortieren v">
+
+<!ENTITY rf.options.lists.description "Zusätzlich zu den Terminen und Aufgaben können weitere Listen hinzugefügt werden, die dann einen separaten Tab im Bearbeitungsdialog erhalten. So können z.B. Listen angelegt werden für Filme (Neuerscheinungen Kino/DVD), Alben (neue Musikveröffentlichungen), Einkaufslisten (Übersicht über benötigte Waren) oder für alles andere, was sich sinnvoll in einer Liste erfassen lässt.">
+<!ENTITY rf.options.lists.nameError "'ToDo's' oder 'Reminders' als Listenname und ',' oder ':' sind hier nicht erlaubt!">
+<!ENTITY rf.options.lists.addedit  "Benutzerlisten hinzufügen/bearbeiten">
+
+<!-- network -->
+<!ENTITY rf.options.synchronization.description.label "Synchronisations-Adresse">
+<!ENTITY rf.options.synchronization.address.description "Geben Sie eine FTP- oder WebDAV-Adresse für die ReminderFox-Datei im Netzwerk an.">
+<!ENTITY rf.options.synchronization.address.example.description "Beispiel: ftp://www.meinedomain.de/erinnerungen.ics">
+
+<!ENTITY rf.options.synchronization.ftp.label "ftp">
+<!ENTITY rf.options.synchronization.http.label "http">
+<!ENTITY rf.options.synchronization.https.label "https">
+<!ENTITY rf.options.synchronization.delimiter.label "://">
+<!ENTITY rf.options.synchronization.username.label "Benutzername">
+<!ENTITY rf.options.synchronization.password.label "Passwort">
+<!ENTITY rf.options.synchronization.import "Aus Netzwerk-Datei importieren">
+<!ENTITY rf.options.synchronization.export "In Netzwerk-Datei exportieren">
+<!ENTITY rf.options.synchronization.label "Automatische Synchronisation">
+<!ENTITY rf.options.synchronization.auto.label "Automatisch mit Netzwerk-Datei synchronisieren">
+<!ENTITY rf.options.synchronization.auto.description "Aktivieren Sie diese Option, um lokale und Netzwerk-Einträge automatisch zu synchronisieren.">
+
+
+
+<!-- Upload dialog -->
+<!ENTITY rf.upload.tile.label "Hochladen">
+
+<!-- Download dialog -->
+<!ENTITY rf.download.tile.label "Herunterladen">
+
+<!-- Upcoming Reminders Label Options dialog -->
+<!ENTITY rf.upcoming.label.options.title.label "Format für die Terminanzeige">
+<!ENTITY rf.upcoming.label.options.label "Beschriftungsformat">
+<!ENTITY rf.upcoming.label.reminder.description "Beschreibung des Termins">
+<!ENTITY rf.upcoming.label.long.day "Wochentag (&day.2.name;, &day.3.name; usw.)">
+<!ENTITY rf.upcoming.label.short.day "Wochentag in Kurzform (&day.2.DDD;, &day.3.DDD;, &day.4.DDD; usw.)">
+<!ENTITY rf.upcoming.label.long.month "Monat (&month.1;, &month.2;, &month.3; usw.)">
+<!ENTITY rf.upcoming.label.short.month "Monat in Kurzform (&month.1.MMM;, &month.2.MMM;, &month.3.MMM; usw.)">
+<!ENTITY rf.upcoming.label.num.month "Monat als Zahl">
+<!ENTITY rf.upcoming.label.date "Tag des Monats als Zahl">
+<!ENTITY rf.upcoming.label.long.year "Jahr (2006, 2007, 2008 usw.)">
+<!ENTITY rf.upcoming.label.short.year "Jahr in Kurzform (06, 07, 08 usw.)">
+<!ENTITY rf.upcoming.label.timeuntil "Zeit bis das Ereignis eintritt (Tage, Stunden, Minuten)">
+<!ENTITY rf.upcoming.label.time "Zeitpunkt des Termins. Keine Anzeige bei ganztägigen Terminen">
+<!ENTITY rf.upcoming.label.days.until "Anzahl der Tage bis zum Termin">
+<!ENTITY rf.upcoming.label.column.variable "Variable">
+<!ENTITY rf.upcoming.label.column.description "Beschreibung">
+
+<!-- Calendar -->
+
+<!ENTITY calendar.week.number.label "Wo">
+
+<!ENTITY calendar.year.previous "Vorheriges Jahr">
+<!ENTITY calendar.year.next "Nächstes Jahr">
+<!ENTITY calendar.month.previous "Vorheriger Monat">
+<!ENTITY calendar.month.next "Nächster Monat">
+
+<!-- Time names -->
+<!ENTITY time.0 "00:00">
+<!ENTITY time.1 "01:00">
+<!ENTITY time.2 "02:00">
+<!ENTITY time.3 "03:00">
+<!ENTITY time.4 "04:00">
+<!ENTITY time.5 "05:00">
+<!ENTITY time.6 "06:00">
+<!ENTITY time.7 "07:00">
+<!ENTITY time.8 "08:00">
+<!ENTITY time.9 "09:00">
+<!ENTITY time.10 "10:00">
+<!ENTITY time.11 "11:00">
+<!ENTITY time.12 "12:00">
+<!ENTITY time.13 "13:00">
+<!ENTITY time.14 "14:00">
+<!ENTITY time.15 "15:00">
+<!ENTITY time.16 "16:00">
+<!ENTITY time.17 "17:00">
+<!ENTITY time.18 "18:00">
+<!ENTITY time.19 "19:00">
+<!ENTITY time.20 "20:00">
+<!ENTITY time.21 "21:00">
+<!ENTITY time.22 "22:00">
+<!ENTITY time.23 "23:00">
+
+<!-- Month Names -->
+<!ENTITY month.1 "Januar">
+<!ENTITY month.2 "Februar">
+<!ENTITY month.3 "März">
+<!ENTITY month.4 "April">
+<!ENTITY month.5 "Mai">
+<!ENTITY month.6 "Juni">
+<!ENTITY month.7 "Juli">
+<!ENTITY month.8 "August">
+<!ENTITY month.9 "September">
+<!ENTITY month.10 "Oktober">
+<!ENTITY month.11 "November">
+<!ENTITY month.12 "Dezember">
+
+<!ENTITY month.1.MMM "JAN">
+<!ENTITY month.2.MMM "FEB">
+<!ENTITY month.3.MMM "MÄR">
+<!ENTITY month.4.MMM "APR">
+<!ENTITY month.5.MMM "MAI">
+<!ENTITY month.6.MMM "JUN">
+<!ENTITY month.7.MMM "JUL">
+<!ENTITY month.8.MMM "AUG">
+<!ENTITY month.9.MMM "SEP">
+<!ENTITY month.10.MMM "OKT">
+<!ENTITY month.11.MMM "NOV">
+<!ENTITY month.12.MMM "DEZ">
+
+<!-- Day short names -->
+<!ENTITY day.1.DDD "SO">
+<!ENTITY day.2.DDD "MO">
+<!ENTITY day.3.DDD "DI">
+<!ENTITY day.4.DDD "MI">
+<!ENTITY day.5.DDD "DO">
+<!ENTITY day.6.DDD "FR">
+<!ENTITY day.7.DDD "SA">
+
+<!ENTITY day.1.name "Sonntag">
+<!ENTITY day.2.name "Montag">
+<!ENTITY day.3.name "Dienstag">
+<!ENTITY day.4.name "Mittwoch">
+<!ENTITY day.5.name "Donnerstag">
+<!ENTITY day.6.name "Freitag">
+<!ENTITY day.7.name "Samstag">
+
+
+<!-- iCal Schedule  -->
+<!ENTITY rf.schedule.scheduleinfo "Termin">
+<!ENTITY rf.schedule.showall.attendees "Alle Teilnehmer anzeigen">
+<!ENTITY rf.schedule.organizer "Einladender">
+<!ENTITY rf.schedule.thisisme "Meine Teilnahme">
+<!ENTITY rf.schedule.attendees "Teilnehmer">
+<!ENTITY rf.schedule.invitation.accept "Akzeptieren">
+<!ENTITY rf.schedule.invitation.decline "Ablehnen">
+
+<!-- Invitation, MAIL and ADDRESSBOOK -->
+<!ENTITY mail.addreminder "Reminderfox-Erinnerung hinzufügen...">
+<!ENTITY mail.send.withreminder "Senden">
+<!ENTITY mail.send.withreminder.tooltip "Nachricht senden und Reminderfox-Erinnerung hinzufügen">
+<!ENTITY mail.reminder4mail.open "Öffne die zugehörige ReminderFox-Erinnerung">
+
+<!ENTITY mail.send.reminder.invitation.check "Termin als 'iCal/ICS' Einladung/Terminplan mit E-Mail senden.">
+<!ENTITY mail.send.reminder.invitation.organizer "Einladender">
+<!ENTITY mail.send.reminder.invitation.attendees "Teilnehmer">
+
+<!ENTITY mail.send.reminder.invitation.title "Termin(e) senden">
+<!ENTITY mail.sendexport.reminder.invitation.title "Exportieren / Senden / Einladen">
+
+<!ENTITY mail.sendexport.reminder.send "Senden / Einladen">
+<!ENTITY mail.sendexport.reminder.sender "Absender">
+<!ENTITY mail.sendexport.reminder.export "Exportieren">
+<!ENTITY mail.sendexport.reminder.exportto "Exportieren in Datei">
+<!ENTITY mail.sendexport.reminder.export.file "Export Datei wählen">
+
+<!ENTITY mail.send.reminder.invitation.aBook "'Adressbuch' öffnen Teilnehmer für die Einladung wählen">
+<!ENTITY mail.send.reminder.invitation.mail "Diese 'E-Mail-Anwendung' wird für das Senden von Einladungen/Terminplänen und für das Adressbuch genutzt">
+<!ENTITY mail.send.reminder.invitation.comment "Kommentar für  Einladung/Terminplan">
+
+<!ENTITY mail.send.reminder.invitation.browse "'E-Mail-Anwendung' suchen">
+<!ENTITY mail.send.reminder.invitation.reload "Gewählte 'E-Mail-Anwendung', erneute Auswahl über das E-Mail-Symbol">
+
+<!ENTITY mail.send.reminder.invitation.attendees.tooltip "Teilnehmer (Komma-getrennte Liste der E-Mail-Adressen)">
+<!ENTITY mail.ical.selectReplyAttendee.description "Der Absender ist kein eingeladener Teilnehmer des Treffens. Wenn die Antwort-E-Mail zu einem der Teilnehmern gehört, bitte diesen auswählen und [Bestätigen] oder [Abbrechen] wählen!">
+<!ENTITY mail.ical.Invit "Einladen">
+<!ENTITY mail.ical.invitation.attendees "Teilnehmer vom Adressbuch hinzufügen">
+<!ENTITY mail.ical.invitation.attendees.paste "Mit [Einfügen] wird eine gültige E-Mail Adresse dem Feld 'moreAttendee' hinzugefügt.">
+
+<!ENTITY mail.send.withreminder.selection0 "Ausgewählte E-Mail">
+<!ENTITY mail.send.withreminder.selection1 "ReminderFox-Liste">
+<!ENTITY mail.send.withreminder.selection2 "Die ausgewählte E-Mail hat die folgenden Referenzen zu Erinnerungen">
+<!ENTITY mail.send.withreminder.selection3 "Eine Erinnerung auswählen und bestätigen">
+
+<!ENTITY mail.send.withreminder.replyAttendee "Einladung - Auswahl der Teilnehmer">
+<!ENTITY mail.send.reminder.reference.title "Referenzliste der Ereignisse">
+
+
+<!-- Views -->
+<!ENTITY rf.views.title "ReminderFox - 'Ansichten' Editor">
+
+<!ENTITY rf.views.label "'Ansichten' bearbeiten">
+<!ENTITY rf.views.view.header "'Ansichten'">
+<!ENTITY rf.views.ttt.addView "Eine neue 'Ansicht' hinzufügen">
+<!ENTITY rf.views.ttt.removeView "Eine 'Ansicht' entfernen">
+<!ENTITY rf.views.criteria.header "'Kriterien' für 'Ansichten'">
+<!ENTITY rf.views.ttt.addCriteria "Eine neues 'Kriterium' hinzufügen">
+<!ENTITY rf.views.ttt.removeCriteria "Gewähltes 'Kriterium' entfernen">
+<!ENTITY rf.views.ttt.sortCriteria "Ansicht/Kriterien sortieren">
+
+<!ENTITY rf.views.ttt.confirm "'Kriterium' bestätigen">
+<!ENTITY rf.views.ttt.saveclose "Speichern und Editor schließen.">
+<!ENTITY rf.views.ttt.editor "'Ansichten' Editor.">
+<!ENTITY rf.views.ttt.noviews "Keine 'Ansicht'.">
+<!ENTITY rf.views.learn.link.text "Hinweise zur Verwendung von Ansichten...">
+
+
+<!ENTITY rf.views.infoHow1 "... über 'Ansicht' und 'Kriterien'">
+<!ENTITY rf.views.infoHow2 "Wie wird ein 'Kriterium' eingegeben?">
+
+<!ENTITY rf.view.add.label "'Ansichten' Bezeichnung">
+<!ENTITY rf.views.viewName "Eingabe">
+<!ENTITY rf.view.noview "Keine 'Ansicht'">
+
+<!ENTITY rf.views.datespan.begin "Zeitspanne Anfang">
+<!ENTITY rf.views.datespan.end "Zeitspanne Ende">
+<!ENTITY rf.views.datespan.past "past">
+<!ENTITY rf.views.datespan.future "future">
+<!ENTITY rf.views.datespan.days "Tag(e)">
+<!ENTITY rf.views.datespan.weeks "Woche(n)">
+<!ENTITY rf.views.datespan.months "Monat(e)">
+<!ENTITY rf.views.datespan.years "Jahr(e)">
+
+<!ENTITY rf.calendar.year.previous "Vorheriges Jahr">
+<!ENTITY rf.calendar.year.next "Nächstes Jahr">
+
+<!ENTITY rf.add2Textbox.info1 "Ein Doppel-Klick auf eine Zeile in der Liste übernimmt ihren Wert an die Cursorposition in dem Textfeld">
+<!ENTITY rf.add2Textbox.info2 " ...wie das Textfeld bearbeitet werden kann">
+
+<!ENTITY rf.reminderImportwCategory "Erinnerungen importieren und Kategorien setzen">
+<!ENTITY rf.import.unsaved "Es bestehen ungesicherte Termine/Aufgaben. Nach deren Sicherung den Import wiederholen.">
+<!ENTITY rf.import.items "Die zu importierenden Ereignisse haben">
+<!ENTITY rf.import.categories.select "Kategorie(n) für die zu importiereden Ereignisse auswählen">
+<!ENTITY rf.import.categories.gonone "keine">
+<!ENTITY rf.import.categories "Kategorien">
+
+<!ENTITY rf.calendar.foxy "Foxy-Menü">
+<!ENTITY rf.calendar.menu.layout.change "Liste/Kalender Layout ändern">
+<!ENTITY rf.calendar.menu.options.open "Einstellungen öffnen...">
+<!ENTITY rf.calendar.menu.options.userlists "Benutzerlisten Hinzufügen/Ändern...">
+
+<!ENTITY rf.calendar.menu.options.docu "Öffnen der ReminderFox Dokumentation (online)">
+<!ENTITY rf.calendar.menu.options.newcal "Dokumentation zum neuen Kalender (online)">
+
+<!ENTITY rf.calendar.menu.toggleSearchFilter "Suchen und Filter/Ansichten umschalten">
+<!ENTITY rf.calendar.menu.gotodate "Gehe zum Datum">
+<!ENTITY rf.calendar.menu.revertnewandchanges "Alle neuen und geänderten Ereignisse rückgängig machen">
+<!ENTITY rf.calendar.menu.savenewandchanges "Alle neuen und geänderten Ereignisse speichern">
+<!ENTITY rf.calendar.menu.save "Speichern">
+
+<!ENTITY rf.calendar.picker.today "Heute">
+
+<!ENTITY rf.calendar.add.event2list "Ereignis zur gewählten Liste hinzufügen">
+
+<!ENTITY rf.calendar.layout.menu "Wähle Liste/Kalender Darstellung ...">
+<!ENTITY rf.calendar.layout.ListCalendar "Liste und Kalender">
+<!ENTITY rf.calendar.layout.List "Liste">
+<!ENTITY rf.calendar.layout.Calendar "Kalender">
+
+
+<!-- CalDAV -->
+<!ENTITY rf.caldav.remoteCalendar "Externer Kalender">
+<!ENTITY rf.caldav.dialog.title "&rf.caldav.remoteCalendar; Konto Bearbeitung">
+<!ENTITY rf.caldav.documentation.i "Siehe Dokumentation für das Aufsetzen eines Kontos">
+<!ENTITY rf.caldav.serverselection "Wähle einen Kalender Server aus der Liste">
+<!ENTITY rf.caldav.selectserver "Wähle Kalender Server">
+
+<!-- calDAVupdate -->
+<!ENTITY rf.caldavupdate.next.calendars.label "Nächste Kalender">
+<!ENTITY rf.caldavupdate.configure.calendar.label "Kalender konfigurieren">
+<!ENTITY rf.caldavupdate.skip.this.calendar.tooltip "Diesen Kalender überspringen, nach anderen suchen.">
+<!ENTITY rf.caldavupdate.open.options.sync.tooltip "'Einstellungen/Sync' öffnen, um Kalendereinstellung zu korrigieren.">
+<!--ENTITY rf.caldav.gcal.privat "Google Kalender Privat (Termine)"-->
+<!--ENTITY rf.caldav.gcal.group "Google Kalender Gruppen (Termine)"-->
+<!--ENTITY rf.caldav.oc.default "Standard Kalender"-->
+<!--ENTITY rf.caldav.oc.additional "Zusätzlicher Kalender"-->
+<!--ENTITY rf.caldav.valid.account "Ersetze mit gültiger Konto ID - siehe auch (I)"-->
+<!ENTITY rf.caldav.valid.calendar "Ersetze mit gültiger Kalender ID - siehe auch (I)">
+<!--ENTITY rf.caldav.account.letter "'Kalendar ID' Buchstabe; als Standard wird der erste Buchstabe des Kalender Konto Namen oder die Benutzer Eingabe genommen."-->
+<!ENTITY rf.caldav.account.userletter "'Kalendar ID' Box; Benutzereingabe eines Kalendar ID Buchstaben">
+<!ENTITY rf.caldav.account.name "'Kalender Konto Name'  Der erste Buchstabe wird standardgemäß für den 'Kalender ID' genommen.">
+<!ENTITY rf.caldav.pw "Zeige/verberge das Password">
+<!ENTITY rf.caldav.check.account "Konto prüfen">
+<!ENTITY rf.caldav.delete.account "Aktivieren um dieses Konto zu löschen">
+<!--ENTITY rf.caldav.delete.this.account "Dieses Konto löschen"-->
+
+<!ENTITY rf.caldav.sync.support "Sync Kalender Server (CalDAV)">
+<!ENTITY rf.caldav.sync.setup  "Sync Einstellungen">
+<!ENTITY rf.caldav.sync.help "Sync Hilfe/Dokumentation">
+<!ENTITY rf.caldav.sync.help.status "Details wie Reminderfox für externe Kalender/CalDAV eingestellt wird.">
+<!ENTITY rf.caldav.sync.all "Sync mit allen 'aktiven' Kalender Servern">
+<!--ENTITY rf.caldav.sync.docu "Siehe Dokumentation über"-->
+
+<!ENTITY rf.caldav.sync.about "Über Sync mit Externen Kalendern">
+<!ENTITY rf.caldav.remote.server "Externe Server (FTP/HTTP)">
+<!ENTITY rf.caldav.calendars "Externe Kalender">
+<!ENTITY rf.caldav.remindertype "Erinnerungstyp">
+<!ENTITY rf.caldav.name "Name">
+<!ENTITY rf.caldav.username "Benutzername">
+<!ENTITY rf.caldav.password "Password">
+
+<!ENTITY rf.caldav.definition.title  "Externe Kalender - Konto Definition">
+<!ENTITY rf.caldav.desc1 "Reminderfox bietet zwei Methoden um mit Synchronisation Diensten zu arbeiten">
+<!ENTITY rf.caldav.desc2 "Alle Reminderfox Termine/Aufgaben sind auf dem Server als eine Kopie/Datei gespeichert.">
+<!ENTITY rf.caldav.desc3 "Jeder einzelene Termin/Aufgabe ist separat gespeichert. Dies erlaubt andere Dienste/Geräte auf die Kalenderdetails individuell zu zugreifen.">
+<!ENTITY rf.caldav.desc4 "Einige dieser Kalenderdienste sind mit Reminderfox getestet. Bei der Konto Definition werden hierfür Vorgaben angezeigt">
+<!ENTITY rf.caldav.desc5 "Siehe auch die Dokumentation für ausführlichere Hinweise zur Konfiguration.">
+<!ENTITY rf.caldav.desc6 "Öffne die Dokumentation für Externe Kalender Dienste (CalDAV Service)">
+<!ENTITY rf.caldav.desc7 "Wichtiger Hinweis">
+<!ENTITY rf.caldav.desc8 "Aktivieren eines Externen Kalender Dienstes in Reminderfox wird die 'Externen Server (FTP/HTTP)' deaktivieren.">
+
+<!--ENTITY rf.caldav.enable.account "Aktiviere Konto"-->
+<!ENTITY rf.caldav.nodefault "Benutze lokalen Kalender">
+<!ENTITY rf.caldav.select.default.account "Als Externen Standard Kalender benutzen">
+<!ENTITY rf.caldav.select.account "Externes Kalender Konto als Vorgabe für neue Termine">
+<!ENTITY rf.caldav.change.default.account "Auswahl des Externen Standard Kalenders">
+<!--ENTITY rf.caldav.use.setup "Siehe 'Configure Remote Calendar' in der Dokumentation"-->
+<!ENTITY rf.caldav.add.calendar "Neuen Kalender hinzufügen">
+<!ENTITY rf.calDav.davFile "Reminderfox Ereignisse sind gespeichert in ICS Dateien, die Details für Externe Kalender in einer separaten Datei (mit Endung '.ics.dav').">
+
+
+<!ENTITY rf.caldav.color.reset "Kontofarbe zurücksetzen">
+<!ENTITY rf.caldav.color.preset "Ändern der Kontofarbenvoreinstellung">
+
+<!ENTITY rf.caldav.calendar.default "Voreinstellung für Externes Konto wenn neue Termine angelegt werden.">
+<!ENTITY rf.caldav.calendar.setup "Einstellung/Bearbeitung der Kalender Details">
+
+<!ENTITY rf.caldav.calendar.activate "Mit einem aktivierten '&rf.caldav.remoteCalendar;' werden neue oder geänderte Erinnerungen automatisch zu dem externen System gesandt und die Kalender werden abgeglichen.">
+<!ENTITY rf.caldav.calendar.syncto "Synchronisieren zum &rf.caldav.remoteCalendar;">
+
+<!-- CalDAV2 -->
+<!ENTITY rf.help.docupages "Öffne Dokumentnation für ausführliche Hilfe.">
+<!ENTITY rf.caldav.google.request "Google Konto Namen eingeben oder mit Menü wählen; weiter mit [Anfrage]. Dies kann eine Google Seite öffnen die einen Login Token anfordert. Diesen kopieren und dann hier weiter mit [Einfügen].">
+<!ENTITY rf.caldav.account.example "Siehe auch Beispiele:">
+<!ENTITY rf.caldav.google.request.requires "Google Authorisierungsanfrage -- Erfordert [Akzeptieren]">
+<!ENTITY rf.caldav.google.auth.token "Google Authorisierungstoken -- Hinweis zum Kopieren">
+<!ENTITY rf.caldav.select.calendar "Gewählter Kalender">
+<!ENTITY rf.caldav.calndr.name "Kalender Name">
+<!ENTITY rf.caldav.login.correct "Korrektes Login und ID erforderlich um Konto hinzu zufügen.">
+<!ENTITY rf.caldav.account.color "Farbe">
+<!ENTITY rf.caldav.account.color.ttt "Farbe wählen mit der dieses Konto in der Liste des Haupt Dialoges gezeigt wird.">
+<!ENTITY rf.caldav.options.docu "Siehe Dokumentation für Konfiguration Externer Kalender">
+
+
+<!-- ...... ImportHandling ..... -->
+<!ENTITY rf.importing.title "Erinnern/Abonnieren mit Reminderfox">
+<!ENTITY rf.import.linkTitle "Titel/Link">
+<!ENTITY rf.import.reminders.link "Erinnerungen mit Link:">
+<!ENTITY rf.import.reminders.found "gefunden">
+<!ENTITY rf.import.reminders.imported "importiert">
+<!ENTITY rf.import.reminders.existed "vorhanden">
+<!ENTITY rf.import.documentation "Siehe Dokumentation Import/Abonnement von Erinnerungen">
+<!ENTITY rf.import.howtohandle "Wie soll der Import erfolgen?">
+<!ENTITY rf.import.add "Hinzufügen">
+<!ENTITY rf.import.reminders.importing "Importieren fügt importierte Erinnerungen zu den bestehenden hinzu.">
+<!ENTITY rf.import.import.added "Importierte Ereignisse und Aufgaben werden zu Reminderfox hinzugefügt. Dupletten können ignoriert werden oder nur importiert werden wenn sie neueren Datums sind.">
+<!ENTITY rf.import.import.finished "Import beendet">
+<!ENTITY rf.import.duplicates "Dupletten">
+<!ENTITY rf.import.ignore "Ignoriere">
+<!ENTITY rf.import.newer "Neuer">
+<!ENTITY rf.import.newCalendar "Neuer Kalender">
+<!ENTITY rf.import.newCalendar.path "Pfad für neuen Kalender">
+<!ENTITY rf.import.filePath "Ändern des Pfades für neuen Kalender falls erforderlich.">
+<!ENTITY rf.import.new "Neu">
+<!ENTITY rf.import.subscribe "Abonnieren">
+<!ENTITY rf.import.subscription.info "Beim Abonnement wird eine Reminderfox Liste mit Verbindung zu externen Daten angelegt (z.B. Seiten mit Feiertagen oder Sportereignissen). Änderungen bei der Datenquelle werden direkt in der Reminderfox List angezeigt.">
+<!ENTITY rf.import.subscription.list "Eingabe des Namen für das Abonnement">
+<!ENTITY rf.import.categories "Kategorien">
+<!ENTITY rf.import.category.setting "Kategorie Einstellung">
+<!ENTITY rf.import.category.info "Beim Importieren kann für alle Termine und Aufgaben eine Kategorie hinzugefügt werden.">
+<!ENTITY rf.import.import.ics "Mittels iCal/ICS Import wird ein neuer Kalender angelegt.">
+<!ENTITY rf.import.import.calendar "Der existierende Kalender wird geschlossen und gespeichert.">
+
+<!--   ....... Options ............. -->
+<!ENTITY rf.options.reminderfox "Reminderfox Daten">
+<!ENTITY rf.options.dataLocations "Öffne Dokumentation für Speicherort, Import/Export Erinnerungen und Reminderfox aus Datensicherung wiederherstellen.">
+<!ENTITY rf.options.browseICS "Suche Datei (ICS) für Erinnerungen">
+<!ENTITY rf.options.importExport "Import/Export">
+<!ENTITY rf.options.openFileDialog "Öffne Dialog zum Import/Export der Erinnerungen und Systemeinstellungen(Preferences)">
+<!ENTITY rf.options.file.recover "Reminderfox aus einer Datensicherung wiederherstellen">
+<!ENTITY rf.options.file.Pick "Eine .bak Datei suchen und anwenden zur Wiederherstellung einer vorherigen Sicherung.">
+<!ENTITY rf.options.calendarDefaults "Kalender Grundeinstellung">
+<!ENTITY rf.options.documentation.Base "Dokumentation zu den Grundeinstellungen für Kalender.">
+<!ENTITY rf.options.file.backup "Erinnerungen mit Datum/Zeitstempel sichern">
+<!ENTITY rf.options.file.backup.tooltip "Termindaten am Sicherungsort speichern">
+<!ENTITY rf.options.alarms "Alarm Einstellungen">
+<!ENTITY rf.options.alarm.dialogs "Alarm Dialog">
+<!ENTITY rf.options.date.format "Datumsformat">
+<!ENTITY rf.options.date.edit "Datumsformat einstellen">
+<!ENTITY rf.options.layout.Defaults "Layout Einstellungen">
+<!ENTITY rf.options.layout.help "Zur Dokumentation  Termine/Aufgaben/Listen">
+<!ENTITY rf.options.system.menu "Reminderfox öffnen mit dem Hauptmenü und der Statussymbol-Leiste der FX/TB Anwendungsfenster">
+<!ENTITY rf.options.smartFoxy.display.label "Foxy-Symbol anzeigen">
+<!ENTITY rf.options.smartFoxy "Foxy Badge zeigt Anzahl der heutigen und kommenden Termine an.">
+<!ENTITY rf.options.smartFoxy.none "Nein, verbergen">
+<!ENTITY rf.options.smartFoxy.todays "heutige">
+<!ENTITY rf.options.smartFoxy.todaysUpcoming "heutige und kommende (Grundeinstellung)">
+<!ENTITY rf.options.smartFoxy.todaytext "Text der heutigen Termine anzeigen">
+<!ENTITY rf.options.smartFoxy.badge "Foxy hat ein Badge das die Anzahl der heutigen/kommenden Termine anzeigt. Das Badge ist rot wenn wichtige Termine anstehen.">
+<!ENTITY rf.options.bow "Reminderfox 'Schleife' und Text auf der Statussymbol-Leiste anzeigen">
+<!ENTITY rf.options.bow.description "Symbolleiste für die Anzeige auswählen">
+<!ENTITY rf.options.bow.text "Begrenze Text auf">
+<!ENTITY rf.options.bow.position.label "Anzeigeposition auf Symbolleiste einstellen">
+
+
+<!ENTITY rf.options.bars "Add-on Leiste / Statusleiste einschalten um das 'Schleifen' Status Icon und heutige Termine anzuzeigen.">
+<!ENTITY rf.options.printing "Drucken">
+<!ENTITY rf.options.printing.agenda "Dokumentation zum 'Drucken' der Termine/Aufgaben und Beschreibung zu 'Tägliche Agenda'.">
+<!ENTITY rf.options.webMail "Erinnerungen für WEB Seiten und E-Mails">
+<!ENTITY rf.options.webMail.help "Benutzungsdetails von Reminderfox für WEB Seiten und E-Mail.  Reminderfox arbeitet auch mit Thunderbird.">
+
+<!ENTITY rf.options.main "Hauptdialog Einstellungen">
+<!ENTITY rf.options.main.ttt "Anpassen des Hauptdialoges">
+<!ENTITY rf.options.main.dialog.Preselections "Anzeige beim Öffnen">
+<!ENTITY rf.options.addEdit "Voreinstellungen für neuen Termin/Aufgabe">
+<!ENTITY rf.options.more "Ändern des Bereiches 'Mehr >>'">
+
+<!ENTITY rf.options.ttt "Foxy Tooltip">
+<!ENTITY rf.options.editTodays "Ändern der Datums/Zeit Titel für heutige Termine">
+<!ENTITY rf.options.editUpcoming "Ändern der Datums/Zeit Titel für kommende Termine">
+<!ENTITY rf.options.alertSlider "Foxy Hinweisfenster">

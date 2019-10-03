@@ -1,0 +1,121 @@
+{
+    "id": 592642,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 180,
+    "categories": {
+        "thunderbird": [
+            "appearance",
+            "contacts"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 1702052,
+        "compatibility": {
+            "thunderbird": {
+                "max": "38.*",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/customizable-ldap-addressbook-/versions/1702052",
+        "files": [
+            {
+                "id": 319030,
+                "created": "2015-05-28T23:57:28Z",
+                "hash": "sha256:c247460aa9e8f1e6f01d61e4f9239642b67fe0c206b8c78fb4ab706f74f62645",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 61369,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/319030/customizable_ldap_addressbook_auto_complete-1.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "* Ignore internal errors by default.\n* Do autocomplete search with multiple LDAP addressbooks more safely. (without reusing of queries)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/customizable-ldap-addressbook-/versions/1.2",
+        "version": "1.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This addon provides three features:\n\n 1. This provides (restores) customizability of auto complete items for LDAP addressbook items.\n    The customizability is removed by the commit <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/eb1bd845cb0fd02312c94f91cc05894b4a3a3d6e48c7cafb49dd845457cd64af/http%3A//hg.mozilla.org/releases/comm-esr31/rev/0ba38b41f77f\">http://hg.mozilla.org/releases/comm-esr31/rev/0ba38b41f77f</a> between Thunderbird 24 and 31, by [the bug 452232 – Move LDAP autocomplete over to toolkit interfaces](<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/45c89c9882fa6c52a8da4dabed21414280543eedbe505d8d922c0f72ff1a0faf/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=452232%29\">https://bugzilla.mozilla.org/show_bug.cgi?id=452232)</a>.\n 2. This provides parallel search with multiple LDAP addressbooks.\n    (Inspired from [the Multi LDAP addon](<a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/multi-ldap/)\">https://addons.mozilla.org/thunderbird/addon/multi-ldap/)</a>)\n 3. Photo preview for autocomplete items and addressbook sidebar items.\n\n## How to show extra information into autocomplete items?\n\nYou can use following extra preferences to customize the format of the autocomplete items.\n\n * `ldap_2.servers.*.autoComplete.nameFormat`: the format of the name part. `[cn]` by default.\n * `ldap_2.servers.*.autoComplete.addressFormat`: the format of the address part. `{mail}` by default.\n * `ldap_2.servers.*.autoComplete.commentFormat`: the format of the comment part. `[o]` by default.\n\nAutocomplete items will be shown as: `name &lt;address&gt; | comment`.\n\nNote, you have to set `mail.autoComplete.commentColumn` to `2` to see the comment part as a separate column.\nOtherwise it will stay hidden.\n\n## How to use multiple LDAP address books parallelly?\n\nSet `extensions.customizable-ldap-autocomplete@clear-code.com.directoryServers` to `*` (means \"use all LDAP servers\") or a comma-separated list of LDAP server keys like `ldap_2.servers.foo,ldap_2.servers.bar,ldap_2.servers.baz`.\n\n## How to show photo preview?\n\nIf the addressbook card for the selected autocomplete item (or the addressbook sidebar item) has its owne photo, it is shown as a popup near the item automatically.\n\nFor LDAP addressbooks, photo stored in `thumbnailPhoto` attribute is used when another addon [LDAP Contact Photo](<a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/ldap-contact-photo/\">https://addons.mozilla.org/thunderbird/addon/ldap-contact-photo/</a>) is installed together.&lt;/address&gt;"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/customizable-ldap-addressbook-/edit",
+    "guid": "customizable-ldap-autocomplete@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/search-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/search-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/search-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2015-08-22T14:53:57Z",
+    "name": {
+        "en-US": "Customizable LDAP AddressBook Auto Complete"
+    },
+    "previews": [
+        {
+            "id": 154578,
+            "caption": {
+                "en-US": "Customized autocomplete results for recipients"
+            },
+            "image_size": [
+                700,
+                477
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154578.png?modified=1530209241",
+            "thumbnail_size": [
+                294,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154578.png?modified=1530209241"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.55518,
+        "count": 2,
+        "average": 5,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/customizable-ldap-addressbook-/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/592642",
+    "slug": "customizable-ldap-addressbook-",
+    "status": "public",
+    "summary": {
+        "en-US": "Provides (restores) customizability of auto complete items for LDAP addressbook items, and more features."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/customizable-ldap-addressbook-/",
+    "weekly_downloads": 26
+}

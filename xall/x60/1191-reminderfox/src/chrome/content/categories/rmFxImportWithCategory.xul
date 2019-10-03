@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/editing/eventEntryOverlay.xul"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="rmFx_ReminderImportwCategory" windowtype="window:ItemDialog"
+		onload="onLoad();" persist="screenX screenY" title="&rf.reminderImportwCategory;">
+
+	<!-- ** dispatch ** script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxIcalrmFxMail.js" -->
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/rmFxImportWithCategory.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/categories/categories.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="importwCategoryClose('CANCEL'); window.close();" />
+		<key keycode="VK_ENTER" oncommand="importwCategoryClose('OK'); window.close();" />
+		<key keycode="VK_RETURN" oncommand="importwCategoryClose('OK'); window.close();" />
+	</keyset>
+
+	<vbox id="categoryCheckBox">
+		<groupbox width="500px" flex="1" id="rmFx_reminderInfo">
+			<caption label="&rf.import.items;" />
+			<div>
+				<spacer flex="3" />
+				<text id="noEvents" value="x Events" />
+				<spacer flex="1" />
+				<text id="noTodos" value="y Todos" />
+				<spacer flex="3" />
+			</div>
+		</groupbox>
+
+		<groupbox width="500px" flex="1" id="rmFx_categoryCheckBox">
+			<caption label="&rf.import.categories.select;" />
+			<spacer width="10" />
+			<radiogroup id="catGroup" oncommand="catMode();">
+				<grid flex="1">
+					<columns>
+						<column flex="1" />
+						<column flex="2" />
+					</columns>
+
+					<rows>
+						<row>
+							<dev>
+								<radio value="" id="catNone" label="&rf.import.categories.gonone;"
+									selected="true" />
+							</dev>
+							<text />
+						</row>
+
+						<row>
+							<dev>
+								<radio value="catHbox" label="&rf.import.categories;" />
+							</dev>
+							<hbox id="catHbox" disabled="false" flex="1" />
+						</row>
+
+					</rows>
+				</grid>
+			</radiogroup>
+		</groupbox>
+	</vbox>
+
+	<!-- -. -. -. -. -. -. -. -. -. -. -. -->
+
+	<hbox id="reminderFox-options-footer" class="reminderFox-footer"
+		align="center" >
+
+			<spacer flex="1" />
+			<button id="rmFxOK" label="&rf.ok;" tooltiptext="go"
+				oncommand="onClose('OK'); window.close();" />
+			<spacer width="5px" />
+			<button id="rmFxCancel" label="&rf.cancel;"
+				oncommand="onClose('CANCEL'); window.close();" />
+	</hbox>
+
+
+<script type="application/x-javascript"><![CDATA[
+
+// === xx ===================
+function onLoad () {
+
+   //  parameters { mode: 'CANCEL', numEvents: numEvents, numTodos: numTodos };
+
+   document.getElementById("noEvents").setAttribute("value", window.arguments[0].numEvents
+      + " " + reminderfox.string("rf.html.heading.reminders"));
+   document.getElementById("noTodos").setAttribute("value", window.arguments[0].numTodos
+      + " " + reminderfox.string("rf.html.heading.todos"));
+
+   // get default
+   var importCat = window.arguments[0].categories;
+   document.getElementById("inputRmCategories").setAttribute("value", importCat);
+
+
+}
+
+/**
+ *   called to pass/save selection
+ */
+ function onClose (mode) {
+
+   window.arguments[0].mode = mode;
+   if (mode == 'CANCEL') {
+      return;
+   }
+   // read and pass selected textbox entry
+   var catId = document.getElementById("catGroup").selectedItem.value;
+   var catDef = document.getElementById('inputRmCategories').value;
+
+   if (catId == 'catHbox') {
+      window.arguments[0].categories = catDef;
+   } else {
+      window.arguments[0].categories = "";
+   }
+}
+
+/**
+ *   called with radio group selection change
+ */
+function catMode () {
+   var catId = document.getElementById("catGroup").selectedItem.value;
+
+   document.getElementById("inputRmCategories").setAttribute("disabled", "true");
+   document.getElementById("catChange").setAttribute("disabled", "true");
+
+   if (catId == "catHbox") {
+      document.getElementById("inputRmCategories").removeAttribute("disabled");
+      document.getElementById("catChange").removeAttribute("disabled");
+   }
+}
+
+]]></script>
+
+</window>

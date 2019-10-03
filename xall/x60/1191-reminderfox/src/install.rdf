@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<Description about="urn:mozilla:install-manifest">
+		<em:name>ReminderFox</em:name>
+		<em:version>2.1.6.6</em:version>
+		<em:id>{ada4b710-8346-4b82-8199-5de2b400a6ae}</em:id>
+		<em:description>Displays and manages reminders and ToDos.</em:description>
+		<em:creator>Tom Mutdosch and Daniel Lee</em:creator>
+		<em:contributor>Guenter Wahl</em:contributor>
+		<em:iconURL>chrome://reminderfox/skin/images/foxy-head.png</em:iconURL>
+		<em:aboutURL>chrome://reminderfox/content/about.xul</em:aboutURL>
+		<em:type>2</em:type>
+		<em:multiprocessCompatible>true</em:multiprocessCompatible>
+		<em:homepageURL>http://www.reminderfox.org</em:homepageURL>
+		<em:optionsURL>chrome://reminderfox/content/options/options.xul</em:optionsURL>
+
+		<!-- Firefox -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>3.0</em:minVersion>
+				<em:maxVersion>56.0</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+		<!-- SeaMonkey -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+				<em:minVersion>2.0</em:minVersion>
+				<em:maxVersion>2.60</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+
+		<!-- Thunderbird  -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>5.0</em:minVersion>
+				<em:maxVersion>60.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+    </Description>
+</RDF>
