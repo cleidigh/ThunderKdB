@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/attachmentList.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://secure-addressing/locale/confirm-address-win.dtd">
+
+<dialog id="confirmaddress" title="Check Addresses"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept,cancel" width="600"
+	onload="startup();" 
+	ondialogaccept="return onOK();"
+        ondialogcancel="return onCancel();">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="secure-addressing-sb-caw" 
+                  src="chrome://secure-addressing/locale/confirm-address-win.properties"/>
+  </stringbundleset>
+
+  <script type="application/x-javascript" src="chrome://secure-addressing/content/confirm-address-win.js"/>
+  <script type="application/x-javascript" src="chrome://secure-addressing/content/openfile.js"/>
+  
+  <listbox id="addrlist" rows="6">
+    <listhead>
+      <listheader label="" />
+      <listheader label="&header_type;" />
+      <listheader label="&header_email;"/>
+      <listheader label="&header_name;" />
+      <listheader label="&header_lastsent;" />
+    </listhead>
+                                        
+    <listcols>
+      <listcol width="30"/>
+      <listcol width="40"/>
+      <listcol id="colemail" flex="1" />
+      <listcol id="colname" flex="1" />
+      <listcol id="collast" flex="1"/>
+    </listcols>
+
+    <listitem>
+      <listcell label=""><checkbox /></listcell>
+      <listcell label="" />
+      <listcell label="" />
+      <listcell label="" />
+      <listcell label="" />
+    </listitem>
+
+  </listbox>
+
+  <hbox>
+      <checkbox id="acheck" oncommand="check_all_done();"/>
+      <button id="openall" oncommand="openAll();" label="&open_all;"/>
+  </hbox>
+
+</dialog>

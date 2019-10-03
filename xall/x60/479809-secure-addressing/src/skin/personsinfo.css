@@ -1,0 +1,14 @@
+/*
+.personsinfo {
+  list-style-image: url("chrome://secure-addressing/skin/list.svg");
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+*/
+
+#personsinfo {
+    list-style-image: url("chrome://secure-addressing/skin/info24.png");
+}
+
+toolbar[iconsize="small"] #personsinfo {
+    list-style-image: url("chrome://secure-addressing/skin/info16.png");
+}

@@ -1,0 +1,15 @@
+content secure-addressing chrome/content/
+skin secure-addressing classic/1.0 skin/
+style chrome://secure-addressing/content/personsinfo.xul chrome://secure-addressing/skin/personsinfo.css
+locale secure-addressing en-US chrome/locale/en-US/
+locale secure-addressing ja-JP chrome/locale/ja-JP/
+component {480d8220-6b99-11e3-981f-0800200c9a66} components/autocomplete.js
+contract @mozilla.org/autocomplete/search;1?name=basic-autocomplete {480d8220-6b99-11e3-981f-0800200c9a66}
+overlay chrome://messenger/content/messengercompose/messengercompose.xul	chrome://secure-addressing/content/confirm-address.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul	chrome://secure-addressing/content/strip-address.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul	chrome://secure-addressing/content/address-box.xul
+overlay chrome://messenger/content/messenger.xul	chrome://secure-addressing/content/personsinfo.xul
+overlay chrome://messenger/content/messenger.xul	chrome://secure-addressing/content/additionalcols.xul
+overlay chrome://messenger/content/messenger.xul	chrome://secure-addressing/content/filter.xul
+overlay chrome://messenger/content/FilterEditor.xul	chrome://secure-addressing/content/filterEditor.xul
+overlay chrome://messenger/content/addressbook/abContactsPanel.xul chrome://secure-addressing/content/asbcustom.xul

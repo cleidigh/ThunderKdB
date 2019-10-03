@@ -1,0 +1,47 @@
+<!ENTITY confirm.dialog.title "确认收信方的邮箱地址">
+<!ENTITY confirm.dialog.message "请确认收信方的邮箱地址。">
+<!ENTITY confirm.dialog.yourdomain.label "向已登录域名发送的邮件">
+<!ENTITY confirm.dialog.otherdomain.label "向外部域名发送的邮件">
+<!ENTITY confirm.dialog.body.label "Body">
+<!ENTITY confirm.dialog.fileName.label "附件">
+<!ENTITY confirm.dialog.check.label "确认！">
+<!ENTITY setting.dialog.title "confirm-mail 设定">
+<!ENTITY setting.dialog.enableConfirmation.caption "Confirm Recipients before Sending:">
+<!ENTITY setting.dialog.enableConfirmation.always.label "Always">
+<!ENTITY setting.dialog.enableConfirmation.onModified.label "Only when recipients are modified">
+<!ENTITY setting.dialog.enableConfirmation.never.label "Never">
+<!ENTITY setting.dialog.tab.recipients "Recipients">
+<!ENTITY setting.dialog.tab.attachments "Attachments">
+<!ENTITY setting.dialog.tab.misc "Misc.">
+<!ENTITY setting.dialog.message "请登录作为组织内使用的邮箱地址的域名。">
+<!ENTITY setting.dialog.list.label "域名">
+<!ENTITY setting.dialog.button.add.label "追加">
+<!ENTITY setting.dialog.button.edit.label "编辑">
+<!ENTITY setting.dialog.button.remove.label "删除">
+<!ENTITY setting.dialog.checkbox.notdisplay "向已登录域名邮件送信时不会显示确认画面">
+<!ENTITY setting.dialog.label.minRecipientsCount.before "Skip confirmation if there are/is only">
+<!ENTITY setting.dialog.label.minRecipientsCount.after "or fewer recipient(s) (*0 means &quot;always confirm&quot;)">
+<!ENTITY setting.dialog.exceptionalDomains.label    "组织外的邮箱地址的例外">
+<!ENTITY setting.dialog.exceptionalDomains.highlight  "Highlight recipients of these domains always">
+<!--ENTITY setting.dialog.exceptionalDomains.confirm  "收信方含这些域名时会再次警告"-->
+<!ENTITY setting.dialog.exceptionalDomains.attachment "Confirm me again for attachments if there is any recipient with one of these domains">
+<!--ENTITY setting.dialog.exceptionalDomains.attachment "只有存在附件的情况才会再次进行警告"-->
+<!ENTITY setting.dialog.exceptionalSuffixes.label   "组织外邮件的附件的例外">
+<!ENTITY setting.dialog.exceptionalSuffixes.confirm "添加了含有这些扩展名的附件时会进行再次警告">
+<!ENTITY setting.dialog.checkbox.countdown "点击[送信]按钮后开始倒计时(1-3000秒)--&gt;">
+<!ENTITY setting.dialog.label.countdown "秒">
+<!ENTITY setting.dialog.checkbox.countdown.allowSkip "Allow to skip countdown to send the mail immediately">
+<!ENTITY setting.dialog.checkbox.allowCheckAll.yourDomains  "All to control checkboxes under the &quot;&confirm.dialog.yourdomain.label;&quot; section">
+<!ENTITY setting.dialog.checkbox.allowCheckAll.otherDomains "All to control checkboxes under the &quot;&confirm.dialog.otherdomain.label;&quot; section">
+<!ENTITY setting.dialog.checkbox.allowCheckAll.fileNames    "All to control checkboxes under the &quot;&confirm.dialog.fileName.label;&quot; section">
+<!ENTITY setting.dialog.checkbox.requireCheckBody "Require to check the message body">
+<!ENTITY setting.dialog.checkbox.requireReinputAttachmentNames "Require to input file names of attachments, if there is any other domain recipient">
+<!ENTITY setting.dialog.checkbox.highlightUnmatchedDomains "Highlight other domains and addesses">
+<!ENTITY setting.dialog.checkbox.largeFontSizeForAddresses "Show addresses with larget font size">
+<!ENTITY setting.dialog.checkbox.alwaysLargeDialog "Open confirmation dialog with large size always">
+<!ENTITY setting.sub-dialog.title "输入域名">
+<!ENTITY setting.sub-dialog.message "请输入域名(例：example.com)">
+<!ENTITY countdown.dialog.title "倒计时">
+<!ENTITY countdown.dialog.msg1 "">
+<!ENTITY countdown.dialog.msg2 "秒后送信。">
+<!ENTITY countdown.dialog.skip "送信">

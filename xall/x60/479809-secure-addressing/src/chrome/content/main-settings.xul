@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://messenger/content/messenger.css"?>
+<?xml-stylesheet href="chrome://messenger/content/preferences/handlers.css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/applications.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept,cancel"
+        buttonlabelcancel="Cancel" buttonlabelaccept="OK"
+        onload="startup();"
+        ondialogaccept="return doOK();" ondialogcancel="return doCancel();">
+
+  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+  <script type="application/x-javascript" src="chrome://secure-addressing/content/main-settings.js"/>
+  
+  <tabbox>
+    <tabs>
+      <tab label="General"/>
+      <tab label="Confirmation"/>
+      <tab label="Auto Completion"/>
+      <tab label="Address Cleanup"/>
+    </tabs>
+
+    <tabpanels>
+
+      <tabpanel id="general" orient="vertical">
+        <groupbox>
+          <caption label="Internal Domains"/>
+          <listbox id="domain-list" rows="4" onselect="selectList(this.selectedItem);">
+            <listcols>
+              <listcol flex="1"/>
+            </listcols>
+            <listitem><listcell label=""/></listitem>
+          </listbox>
+          <hbox>
+            <textbox id="domainToAdd"/>
+            <button id="addBtn" label="Add" flex="1"/>
+            <button id="removeBtn" label="Remove" flex="1"/>
+          </hbox>
+        </groupbox>
+        <groupbox>
+          <caption label="Name and affiliation lookup"/>
+          <label value="Select address books to look up"/>
+          <hbox>
+            <button label="For internal address" 
+                    oncommand="showSelection('ab_internal', 'For display (internal)');"/>
+            <button label="For external address"
+                    oncommand="showSelection('ab_external', 'For display (external)');"/>
+            </hbox>
+        </groupbox>
+      </tabpanel>
+  
+      <tabpanel id="confirmation" orient="vertical">
+        <groupbox>
+          <caption label="Confirmation window"/>
+          <checkbox id="cbconfirm" label="Display confirmation window before sending e-mails"
+                    oncommand="cbConfirmOnClick();"/>
+          <groupbox>
+            <checkbox class="confirmwin" 
+                      id="cbnowin" label="Do not display it for e-mails only to internal domains"/>
+            <label class="confirmwin" style="margin-top:5pt;" value="Default checkbox status"/>
+            <radiogroup id="defchecked" style="margin-left: 10pt;">
+               <radio class="confirmwin" label="Always unchecked" value="none"/>
+               <radio class="confirmwin" label="Checked when sending or replying to internal addresses" value="internal"/>
+               <radio class="confirmwin" label="Checked when replying" value="reply"/>
+               <radio class="confirmwin" label="Checked when replying to internal addresses" value="replyinternal"/>
+               <radio class="confirmwin" label="Always checked" value="all"/>
+            </radiogroup>
+          </groupbox>
+        </groupbox>
+      </tabpanel>
+
+      <tabpanel id="autocomp" orient="vertical">
+        <groupbox>
+          <caption label="Auto completion"/>
+          <checkbox id="cbcsauto" label="Customized auto completion (restart may be required)"
+                    oncommand="csautoOnClick();" />
+          <label class="csauto" value="- Select address books used for auto completion"/>
+          <hbox style="margin-left: 10px;">
+            <button class="csauto" label="For internal address"
+	            oncommand="showSelection('ab_internal_ac', 'For autocomplete (internal)');"/>
+            <button class="csauto" label="For external address"
+	            oncommand="showSelection('ab_external_ac', 'For autocomplete (external)');"/>
+          </hbox>
+          <hbox>
+            <label class="csauto" value="- Do not show suggestions if more than"
+                   style="padding-top:5px;"/>
+            <textbox class="csauto" id="acmax" value="1" maxwidth="25" style="text-align: right;" />
+            <label class="csauto" value="person(s) found" style="padding-top:5px;"/>
+          </hbox>
+          <label class="csauto" value="- Address book fields to look at"/>
+          <groupbox style="margin-left: 10px;">
+            <hbox>
+              <checkbox class="abfield" checked="true" label="Primary Email" id="abfPrimaryEmail" disabled="true"/>
+              <checkbox class="abfield csauto" label="Display Name" id="abfDisplayName"/>
+            </hbox>
+            <hbox>
+              <checkbox class="abfield csauto" label="Organization" id="abfCompany"/>
+              <checkbox class="abfield csauto" label="Department" id="abfDepartment"/>
+              <checkbox class="abfield csauto" label="Job Title" id="abfJobTitle"/>
+            </hbox>
+          </groupbox>
+        </groupbox>
+      </tabpanel>
+
+      <tabpanel id="cleanup" orient="vertical">
+        <groupbox>
+          <caption label="Address cleanup of outgoing mails"/>
+          <checkbox id="cbstrip" label="Strip everything other than e-mail addresses in To and Cc fields"
+                    oncommand="stripOnClick();" />
+          <groupbox flex="1">
+            <checkbox disabled="true" id="cbcollect" 
+                      oncommand="collectOnClick();" label="Allow this plugin to collect outgoing address" />
+            <label id="lbcollect" value="(Otherwise, addresses will be stored without people's names)"/>
+            <hbox>
+              <label id="ablabel" value="Address Book" style="padding-top:5px;"/>
+              <menulist disabled="true" id="collectab"/>
+            </hbox>
+          </groupbox>
+        </groupbox>
+      </tabpanel>
+
+    </tabpanels>
+  </tabbox>
+
+</dialog>

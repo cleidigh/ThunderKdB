@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE page [
+<!ENTITY % abResultsPaneOverlayDTD SYSTEM "chrome://messenger/locale/addressbook/abResultsPaneOverlay.dtd" >
+%abResultsPaneOverlayDTD;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript">
+    var gLocalString = {
+    GeneratedName  : "&GeneratedName.label;",
+    PrimaryEmail   : "&PrimaryEmail.label;",
+    _AimScreenName : "&ChatName.label;",
+    Company        : "&Company.label;",
+    NickName       : "&NickName.label;",
+    SecondEmail    : "&SecondEmail.label;",
+    Department     : "&Department.label;",
+    JobTitle       : "&JobTitle.label;",
+    CellularNumber : "&CellularNumber.label;",
+    PagerNumber    : "&PagerNumber.label;",
+    FaxNumber      : "&FaxNumber.label;",
+    HomePhone      : "&HomePhone.label;",
+    WorkPhone      : "&WorkPhone.label;"
+    };
+  </script>
+  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+  <script type="application/x-javascript" src="namespace.js"/>
+  <script type="application/x-javascript" src="asbcustom.js"/>
+  
+  <tree id="abResultsTree" onclick="SecureAddressing.customContactsBar.contactsListOnClick2(event);">
+  </tree>
+  <textbox id="peopleSearchInput" oncommand="SecureAddressing.customContactsBar.onEnterInSearchBar2()" />
+  <button id="toButton" oncommand="SecureAddressing.customContactsBar.addSelectedAddresses2('addr_to')" />
+  <button id="ccButton" oncommand="SecureAddressing.customContactsBar.addSelectedAddresses2('addr_cc')" />
+  <button id="bccButton" oncommand="SecureAddressing.customContactsBar.addSelectedAddresses2('addr_bcc')" />
+  
+</overlay>

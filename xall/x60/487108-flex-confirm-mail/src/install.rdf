@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>flexible-confirm-mail@clear-code.com</em:id>
+    <em:type>2</em:type>
+    <em:name>Flex Confirm Mail</em:name>
+    <em:version>1.16.0</em:version>
+    <em:creator>ClearCode Inc.</em:creator>
+    <em:contributor>tanabec (original author)</em:contributor>
+    <em:description>Confirm mailaddress and attachments based on flexible rules.</em:description>
+    <em:optionsURL>chrome://confirm-mail/content/setting.xul</em:optionsURL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

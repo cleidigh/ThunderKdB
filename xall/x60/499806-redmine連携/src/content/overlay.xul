@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://redthunderminebird/locale/application.dtd">
+
+<overlay xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="text/javascript" src="chrome://redthunderminebird/content/overlay.js" />
+
+	<popup id="mailContext">
+		<menuitem label="&contextmenu-webui.label;" id="ticket_webui" oncommand="onWebUI();" />
+		<menuitem label="&contextmenu-refer.label;" id="ticket_refer" oncommand="onRefer();" />
+		<menuitem label="&contextmenu-create.label;" id="ticket_create" oncommand="onCreate();" />
+		<menuitem label="&contextmenu-update.label;" id="ticket_update" oncommand="onUpdate();" />
+		<menuitem label="&contextmenu-open.label;" id="ticket_open" oncommand="onOpen();" />
+	</popup>
+
+</overlay>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://redthunderminebird/locale/application.dtd">
+
+<window onload="onLoad();" title="&dialog-refer.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="text/javascript" src="chrome://global/content/contentAreaUtils.js" />
+	<script type="text/javascript" src="chrome://redthunderminebird/content/refer.js" />
+
+	<grid>
+		<columns>
+			<column flex="1" />
+			<column flex="8" />
+		</columns>
+
+		<rows>
+			<row>
+				<vbox>
+					<hbox align="center">
+						<label value="&dialog-refer.issue-label;" />
+						<textbox id="id" class="ticket_data" style="width:5em;text-align:right;" />
+						<button label="&dialog-refer.more-label;" oncommand="onMore();" />
+					</hbox>
+					<listbox id="ids" onselect="onTicket();" ondblclick="onOpen();" style="min-width:480px;" />
+					<textbox id="description" multiline="true" rows="10" disabled="true" />
+				</vbox>
+			</row>
+		</rows>
+	</grid>
+
+	<hbox>
+		<spacer flex="1" />
+		<button label="&dialog.ok-label;" oncommand="onRefer();" />
+		<button label="&dialog.ng-label;" oncommand="close();" />
+
+	</hbox>
+</window>

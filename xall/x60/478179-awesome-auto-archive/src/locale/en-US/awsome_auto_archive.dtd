@@ -1,0 +1,90 @@
+<!ENTITY about.about "About">
+<!ENTITY about.author "Author:">
+<!ENTITY about.help "Help">
+<!ENTITY about.homepage "Home Page:">
+<!ENTITY about.contributors.label "Contributors:">
+
+<!ENTITY awsome_auto_archive.perf.title "Awesome Auto Archive Options">
+<!ENTITY awsome_auto_archive.perf.apply "Apply">
+<!ENTITY awsome_auto_archive.perf.general "General Settings">
+<!ENTITY awsome_auto_archive.perf.advanced "Advanced Settings">
+<!ENTITY awsome_auto_archive.perf.rules "Rules">
+<!ENTITY awsome_auto_archive.perf.new "New">
+<!ENTITY awsome_auto_archive.perf.remove "Remove">
+<!ENTITY awsome_auto_archive.perf.revert "Revert All">
+<!ENTITY awsome_auto_archive.perf.revert.tooltip "Revert all rules the same as when the option dialog open">
+<!ENTITY awsome_auto_archive.perf.load "Load">
+<!ENTITY awsome_auto_archive.perf.up "Up">
+<!ENTITY awsome_auto_archive.perf.down "Down">
+<!ENTITY awsome_auto_archive.perf.action "">
+
+<!ENTITY awsome_auto_archive.perf.folder.show_folder_as "Show folder as:">
+<!ENTITY awsome_auto_archive.perf.folder.name "Folder Name">
+<!ENTITY awsome_auto_archive.perf.folder.account_with_name "[Account] Folder Name">
+<!ENTITY awsome_auto_archive.perf.folder.full_name "Full Folder Name">
+
+<!ENTITY awsome_auto_archive.perf.donate "Donate">
+<!ENTITY awsome_auto_archive.perf.debug "Debug">
+<!ENTITY awsome_auto_archive.perf.verbose "Show verbose information in error console">
+<!ENTITY awsome_auto_archive.perf.update_statusbartext "Show information in status bar">
+<!ENTITY awsome_auto_archive.perf.dry_run "Dry run">
+
+<!ENTITY awsome_auto_archive.perf.show_filter_column.from "From">
+<!ENTITY awsome_auto_archive.perf.show_filter_column.recipient "Recipient">
+<!ENTITY awsome_auto_archive.perf.show_filter_column.subject "Subject">
+<!ENTITY awsome_auto_archive.perf.show_filter_column.size "Size">
+<!ENTITY awsome_auto_archive.perf.show_filter_column.tags "Tags">
+<!ENTITY awsome_auto_archive.perf.show_filter_column.age "Age">
+
+<!ENTITY awsome_auto_archive.perf.enable_special "When doing Archive/Delete/Move, Including">
+<!ENTITY awsome_auto_archive.perf.enable_tag "Tagged mails">
+<!ENTITY awsome_auto_archive.perf.enable_flag "Stared mails">
+<!ENTITY awsome_auto_archive.perf.enable_unread "UnRead mails">
+<!ENTITY awsome_auto_archive.perf.old_than "that older than">
+<!ENTITY awsome_auto_archive.perf.days "days">
+<!ENTITY awsome_auto_archive.perf.special_tooltip "This is the global exceptions except for 'Copy', Type of grey will NOT be included in any action. If enabled, The email in this type still need to be old enough. This settings will be ignored if the rule itself has the same kind of criteria">
+
+<!ENTITY awsome_auto_archive.perf.misc "Miscellaneous">
+<!ENTITY awsome_auto_archive.perf.disable_alert_animation "Disable TB's popup alert animation effect,">
+<!ENTITY awsome_auto_archive.perf.popup_show_time "Popup show time">
+<!ENTITY awsome_auto_archive.perf.popup_show_time_tooltip "When animation is disabled, the show time will be 4 seconds. User can change the time when enable alert animation. set to 0 to disable popup from this addon">
+<!ENTITY awsome_auto_archive.perf.generate_rule_before "For generated rule, use">
+<!ENTITY awsome_auto_archive.perf.generate_rule_after "as input">
+<!ENTITY awsome_auto_archive.perf.generate_rule.display_or_id "Display Name or mail@">
+<!ENTITY awsome_auto_archive.perf.generate_rule.id "mail@">
+<!ENTITY awsome_auto_archive.perf.generate_rule.email "mail@domain.com">
+<!ENTITY awsome_auto_archive.perf.generate_rule_tooltip "This is control how 'From'/'Recipient' get filled when you click the context menu. If choose 'Display Name or mail@', then 'Display Name' will be used if it can be found in the full email adderss, else mail@ is used.">
+
+<!ENTITY awsome_auto_archive.perf.delete_duplicate_in_src.pre "When doing 'move' and the same email already exists in destination folder, ">
+<!ENTITY awsome_auto_archive.perf.delete_duplicate_in_src.keep "Keep">
+<!ENTITY awsome_auto_archive.perf.delete_duplicate_in_src.delete "Delete">
+<!ENTITY awsome_auto_archive.perf.delete_duplicate_in_src.post " email in source folder.">
+<!ENTITY awsome_auto_archive.perf.ignore_spam_folders " When Archive/Copy/Move emails, Ignore special folders like Trash/Junk/Queue/Drafts/Templates.">
+
+<!ENTITY awsome_auto_archive.perf.active_time "Time Settings">
+<!ENTITY awsome_auto_archive.perf.startup_delay "First run after">
+<!ENTITY awsome_auto_archive.perf.idle_delay "Wait for computer becomes idle for">
+<!ENTITY awsome_auto_archive.perf.start_next_delay "Start next run after">
+<!ENTITY awsome_auto_archive.perf.rule_timeout "Timeout for one rule in">
+<!ENTITY awsome_auto_archive.perf.seconds "seconds">
+<!ENTITY awsome_auto_archive.perf.startup_delay_tooltip "Archie will sleep for this long till wakeup">
+<!ENTITY awsome_auto_archive.perf.idle_delay_tooltip "After wakeup, Archie will wait computer to be idle for this time before start to work">
+<!ENTITY awsome_auto_archive.perf.start_next_delay_tooltip "After finishing one run, Archie will sleep this long till wakeup. Except batch run limit is exceeded">
+<!ENTITY awsome_auto_archive.perf.rule_timeout_tooltip "If run for one rule is stuck or hang, Archie will abort after this long">
+
+<!ENTITY awsome_auto_archive.perf.batch_run_limitation "Batch limitations for one run">
+<!ENTITY awsome_auto_archive.perf.messages_number_limit "Total number of messages">
+<!ENTITY awsome_auto_archive.perf.messages_number_limit_hint "(0 means no limit)">
+<!ENTITY awsome_auto_archive.perf.messages_size_limit "Total size of messages">
+<!ENTITY awsome_auto_archive.perf.messages_size_limit_hint "Mega Bytes (0 means no limit)">
+<!ENTITY awsome_auto_archive.perf.start_exceed_delay "Start next run after">
+<!ENTITY awsome_auto_archive.perf.start_exceed_delay_hint "seconds if exceed the limitations">
+
+<!ENTITY awsome_auto_archive.perf.system_config "System Configuration">
+<!ENTITY awsome_auto_archive.perf.accountSettings "Account Settings">
+<!ENTITY awsome_auto_archive.perf.identities "Identities">
+
+<!ENTITY awsome_auto_archive.info.title "Dry Run Summary">
+<!ENTITY awsome_auto_archive.info.info "These changes would be applied in real run:">
+
+

@@ -1,0 +1,103 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@-moz-document regexp("chrome://(awsomeautoarchive|global|messenger)/content/.*") {
+  /* awsome_auto_archive-prefs -> .paneDeckContainer -> deck -> awsome_auto_archive-perfpane -> .content-box -> awsome_auto_archive-tabbox */
+  #awsome_auto_archive-prefs {
+    min-width: 600px;
+    min-height: 500px;
+  }
+
+  #awsome_auto_archive-prefs .paneDeckContainer {
+    overflow: auto;
+  }
+
+  #awsome_auto_archive-rules {
+    min-height: 200px;
+  }
+  
+  #awsome_auto_archive-rules-header {
+    background-image: linear-gradient(to bottom right, grey, rgba(0,255,0,0));
+    margin: 4px 2px 2px 2px;
+  }
+  
+  #awsome_auto_archive-rules-header,
+  #awsome_auto_archive-rules-header > label,
+  #awsome_auto_archive-rules >.awsome_auto_archive-rule,
+  #awsome_auto_archive-perfpane .awsome_auto_archive-center-rows  row,
+  #awsome_auto_archive-perfpane .awsome_auto_archive-center-rows  hbox {
+    /*box-align: center;*/
+    -moz-box-align: center;
+  }
+  
+  #awsome_auto_archive-rules >.awsome_auto_archive-rule[awsome_auto_archive-focused=true] {
+    background-image: linear-gradient(to bottom right, grey, rgba(0,0,255,0));
+  }
+  
+  #awsome_auto_archive-rules >.awsome_auto_archive-rule textbox[focused=true] {
+  }
+
+  #awsome_auto_archive-rules >.awsome_auto_archive-rule menulist.folderMenuItem {
+    width: 120px;
+  }
+  #awsome_auto_archive-rules >.awsome_auto_archive-rule menulist.folderMenuItem[folderStyle="1"]{
+    width: 200px;
+  }
+  #awsome_auto_archive-rules >.awsome_auto_archive-rule menulist.folderMenuItem[folderStyle="2"] {
+    width: 240px;
+  }
+  
+  #awsome_auto_archive-perfpane textbox[readonly="true"],
+  #awsome_auto_archive-perfpane .awsome_auto_archive-disable  *,
+  #awsome_auto_archive-perfpane .awsome_auto_archive-enable-checked  checkbox:not([checked]),
+  #awsome_auto_archive-perfpane .awsome_auto_archive-enable-checked  checkbox:not([checked]) + hbox,
+  #awsome_auto_archive-perfpane .awsome_auto_archive-enable-checked  checkbox:not([checked]) + hbox textbox,
+  #awsome_auto_archive-perfpane checkbox.awsome_auto_archive-disable-checked[checked] + hbox,
+  #awsome_auto_archive-perfpane checkbox.awsome_auto_archive-disable-checked[checked] + hbox textbox {
+    color: grey !important;
+  }
+  
+  #awsome_auto_archive-perfpane  .awsome_auto_archive-delete-rule {
+    color: red !important;
+  }
+  
+  #awsome_auto_archive-IDs {
+    max-width: 1000px; /* prevent perf win too large */
+  }
+  
+  #awsome_auto_archive-perfpane  menulist.awsome_auto_archive-folderError  {
+    color: red !important;
+    list-style-image: url("chrome://messenger/skin/icons/cancel.png");
+  }
+  
+  #awsome_auto_archive-infolist {
+    min-width: 800px;
+    min-height: 600px;
+  }
+  
+  #awsome_auto_archive-infolist listcol {
+    max-width: 1000px;
+  }
+  
+  #alertTextLabel.alertText.awsome_auto_archive-popup-clickable[clickable="true"] {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  
+  #alertTextLabel.alertText.awsome_auto_archive-popup-clickable[clickable="true"]:hover {
+    color: -moz-nativehyperlinktext !important;
+    text-decoration: underline !important;
+  }
+  
+  #autoArchive-statusbar-icon.awsome_auto_archive-hibernate {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+  }
+  
+  .folderMenuItem[NoSelect="true"] {
+    color: grey !important;
+    font-style: italic !important;
+  }
+  
+  #awsome_auto_archive-perfDialogTooltip {
+    max-width: none !important;
+  }
+
+}

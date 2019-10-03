@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://redthunderminebird/locale/application.dtd">
+
+<window onload="onLoad();" title="&dialog-create.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="text/javascript" src="chrome://redthunderminebird/content/create.js" />
+
+	<grid style="width:640px;">
+		<columns>
+			<column flex="1" />
+			<column flex="8" />
+		</columns>
+
+		<rows>
+			<row align="center">
+				<label value="&dialog-create.project-label;" />
+				<menulist id="project_id" class="ticket_data" oncommand="onProject();">
+					<menupopup>
+					</menupopup>
+				</menulist>
+			</row>
+			<row align="center">
+				<label value="&dialog-create.tracker-label;" />
+				<menulist id="tracker_id" class="ticket_data">
+					<menupopup>
+					</menupopup>
+				</menulist>
+			</row>
+			<row align="center">
+				<label value="&dialog-create.subject-label;" />
+				<textbox id="subject" class="ticket_data" />
+			</row>
+			<row align="center">
+				<label value="&dialog-create.description-label;" />
+				<textbox id="description" multiline="true" rows="10" class="ticket_data" />
+			</row>
+			<row align="center">
+				<label value="&dialog-update.status-label;" />
+				<menulist id="status_id" class="ticket_data">
+					<menupopup>
+					</menupopup>
+				</menulist>
+			</row>
+			<row align="center">
+				<label value="&dialog-create.assigned-label;" />
+				<menulist id="assigned_to_id" class="ticket_data">
+					<menupopup>
+					</menupopup>
+				</menulist>
+			</row>
+			<row align="center">
+				<label value="&dialog-create.watcher-label;" />
+				<grid>
+					<columns>
+						<column flex="4" />
+						<column flex="4" />
+						<column flex="4" />
+					</columns>
+
+					<rows id="watcher_users">
+					</rows>
+				</grid>
+			</row>
+			<row align="center">
+				<label value="&dialog-create.version-label;" />
+				<menulist id="fixed_version_id" class="ticket_data">
+					<menupopup>
+					</menupopup>
+				</menulist>
+			</row>
+			<row align="center">
+				<label value="&dialog-create.period-label;" />
+				<box align="center">
+					<checkbox id="start_date_enable" label="&dialog-create.start-label;" oncommand="onPeriod(this, 'start_date');" />
+					<textbox id="start_date" class="ticket_data" disabled="true" style="width:10em;" />
+					<checkbox id="due_date_enable" label="&dialog-create.due-label;" oncommand="onPeriod(this, 'due_date');" />
+					<textbox id="due_date" class="ticket_data" disabled="true" style="width:10em;" />
+				</box>
+			</row>
+			<row align="center">
+				<label value="&dialog-create.file-label;" />
+				<grid>
+					<columns>
+						<column flex="8" />
+						<column flex="4" />
+					</columns>
+
+					<rows id="ticket_files">
+					</rows>
+				</grid>
+			</row>
+			<row align="center">
+				<label value="&dialog-create.other-label;" />
+				<box>
+					<checkbox id="is_private" class="ticket_data" label="&dialog-create.private-label;" value="true" />
+				</box>
+			</row>
+		</rows>
+	</grid>
+
+	<hbox>
+		<spacer flex="1" />
+		<button label="&dialog.ok-label;" oncommand="onCreate();" />
+		<button label="&dialog.ng-label;" oncommand="close();" />
+
+	</hbox>
+</window>

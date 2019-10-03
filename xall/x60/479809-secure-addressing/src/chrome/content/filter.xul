@@ -1,0 +1,12 @@
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<overlay id="filter-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="stringbundleset">
+      <stringbundle id="secure-addressing-sb-filter" 
+                        src="chrome://secure-addressing/locale/filter.properties"/>
+  </stringbundleset>
+
+  <script type="application/javascript" src="namespace.js"/>
+  <script type="application/javascript" src="filter.js"/>
+
+</overlay>

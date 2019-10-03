@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://confirm-mail/locale/confirm-mail.dtd">
+
+<!--
+-  "The contents of this file are subject to the Mozilla Public Licenske
+-  Version 1.1 (the "License"); you may not use this file except in
+-  compliance with the License. You may obtain a copy of the License at
+-  http://www.mozilla.org/MPL/
+-  
+-  Software distributed under the License is distributed on an "AS IS"
+-  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+-  License for the specific language governing rights and limitations
+-  under the License.
+-  
+-  The Original Code is confirm-address.
+-  
+-  The Initial Developers of the Original Code are kentaro.matsumae and Meatian.
+-  Portions created by Initial Developers are 
+-  Copyright (C) 2007-2011 the Initial Developer.All Rights Reserved.
+-  
+-  Contributor(s): tanabec
+-->
+<dialog id="setting" title="&setting.dialog.title;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttons="accept,cancel"
+	onload="startup()"
+	ondialogaccept="return doOK();"
+	ondialogcancel="return doCancel();">
+
+<script type="application/x-javascript" src="chrome://confirm-mail/content/constants.js"/>
+<script type="application/x-javascript" src="chrome://confirm-mail/content/setting.js"/>
+
+<tabbox flex="1">
+	<tabs flex="1">
+		<tab label="&setting.dialog.tab.recipients;"/>
+		<tab label="&setting.dialog.tab.attachments;"/>
+		<tab label="&setting.dialog.tab.misc;"/>
+	</tabs>
+	<tabpanels flex="1">
+		<vbox flex="1">
+			<vbox>
+				<label value="&setting.dialog.enableConfirmation.caption;"/>
+				<radiogroup id="enable-confirmation" orient="vertical" style="margin-left: 1em">
+					<radio label="&setting.dialog.enableConfirmation.always.label;" value="1"/>
+					<radio label="&setting.dialog.enableConfirmation.onModified.label;" value="2"/>
+					<radio label="&setting.dialog.enableConfirmation.never.label;" value="0"/>
+				</radiogroup>
+			</vbox>
+			<label value="&setting.dialog.message;"/>
+			<listbox id="group-list" rows="6" onselect="selectList(this.selectedItem);"
+				style="width:500px">
+				<listhead>
+					<listheader label="&setting.dialog.list.label;"/>
+				</listhead>
+				<listcols>
+					<listcol flex="1"/>
+			  	</listcols>
+			</listbox>
+			<hbox>
+				<button id="add" label="&setting.dialog.button.add.label;" flex="1"/>
+				<button id="edit" label="&setting.dialog.button.edit.label;" flex="1"/>
+				<button id="remove" label="&setting.dialog.button.remove.label;" flex="1"/>
+			</hbox>
+			<groupbox orient="vertical">
+				<caption label="&setting.dialog.exceptionalDomains.label;" control="exceptional-domains"/>
+				<checkbox id="exceptional-domains-highlight" label="&setting.dialog.exceptionalDomains.highlight;"/>
+				<checkbox id="exceptional-domains-attachment" label="&setting.dialog.exceptionalDomains.attachment;"/>
+				<textbox id="exceptional-domains" multiline="true" rows="4"/>
+			</groupbox>
+			<separator/>
+			<checkbox id="not-display" label="&setting.dialog.checkbox.notdisplay;"/>
+			<hbox align="center">
+				<label value="&setting.dialog.label.minRecipientsCount.before;" control="min-recipients-count"/>
+				<textbox id="min-recipients-count" style="width:10ch" type="number"/>
+				<label value="&setting.dialog.label.minRecipientsCount.after;" control="min-recipients-count"/>
+			</hbox>
+		</vbox>
+		<vbox flex="1">
+			<groupbox orient="vertical">
+				<caption label="&setting.dialog.exceptionalSuffixes.label;" control="exceptional-suffixes"/>
+				<checkbox id="exceptional-suffixes-confirm" label="&setting.dialog.exceptionalSuffixes.confirm;"/>
+				<textbox id="exceptional-suffixes" multiline="true" rows="4"/>
+			</groupbox>
+			<checkbox id="requireReinputAttachmentNames" label="&setting.dialog.checkbox.requireReinputAttachmentNames;"/>
+		</vbox>
+		<vbox flex="1">
+			<hbox align="center">
+				<checkbox id="countdown" label="&setting.dialog.checkbox.countdown;"/>
+				<textbox id="countdown-time" maxwidth="50"/>
+				<label value="&setting.dialog.label.countdown;" control="countdown-time"/>
+			</hbox>
+			<checkbox id="countdownAllowSkip" label="&setting.dialog.checkbox.countdown.allowSkip;"/>
+			<separator/>
+			<checkbox id="allowCheckAll.yourDomains" label="&setting.dialog.checkbox.allowCheckAll.yourDomains;"/>
+			<checkbox id="allowCheckAll.otherDomains" label="&setting.dialog.checkbox.allowCheckAll.otherDomains;"/>
+			<checkbox id="allowCheckAll.fileNames" label="&setting.dialog.checkbox.allowCheckAll.fileNames;"/>
+			<checkbox id="requireCheckBody" label="&setting.dialog.checkbox.requireCheckBody;"/>
+			<checkbox id="highlightUnmatchedDomains" label="&setting.dialog.checkbox.highlightUnmatchedDomains;"/>
+			<checkbox id="largeFontSizeForAddresses" label="&setting.dialog.checkbox.largeFontSizeForAddresses;"/>
+			<checkbox id="alwaysLargeDialog" label="&setting.dialog.checkbox.alwaysLargeDialog;"/>
+		</vbox>
+	</tabpanels>
+</tabbox>
+
+</dialog>

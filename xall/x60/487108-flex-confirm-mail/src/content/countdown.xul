@@ -1,0 +1,46 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://confirm-mail/skin/css/countdown.css"?>
+<!DOCTYPE window SYSTEM "chrome://confirm-mail/locale/confirm-mail.dtd">
+
+<!--
+-  "The contents of this file are subject to the Mozilla Public Licenske
+-  Version 1.1 (the "License"); you may not use this file except in
+-  compliance with the License. You may obtain a copy of the License at
+-  http://www.mozilla.org/MPL/
+-  
+-  Software distributed under the License is distributed on an "AS IS"
+-  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+-  License for the specific language governing rights and limitations
+-  under the License.
+-  
+-  The Original Code is confirm-address.
+-  
+-  The Initial Developers of the Original Code are kentaro.matsumae and Meatian.
+-  Portions created by Initial Developers are 
+-  Copyright (C) 2007-2011 the Initial Developer.All Rights Reserved.
+-  
+-  Contributor(s): tanabec
+-->
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="CountDown.onLoad();"
+        onunload="CountDown.onUnload();"
+        ondialogaccept="if (CountDown.allowSkip) CountDown.complete(); else window.close();"
+        buttons="accept,cancel"
+        width="300" height="130"
+        title="&countdown.dialog.title;">
+        
+	<script type="application/x-javascript" src="countdown.js"/>
+	
+	<hbox flex="1">
+		<label value="&countdown.dialog.msg1;" style="font-size:20px; padding-top:5px; padding-bottom:5px;"/>
+		<label id="counter" value="" style="font-size:30px;"/>
+		<label value="&countdown.dialog.msg2;" style="font-size:20px; padding-top:5px; padding-bottom:5px;"/>
+	</hbox>
+	
+	<hbox>
+		<spacer flex="1"/>
+		<button label="skip" id="ok" dlgtype="accept"/>
+		<button dlgtype="cancel" />
+	</hbox>
+</dialog>

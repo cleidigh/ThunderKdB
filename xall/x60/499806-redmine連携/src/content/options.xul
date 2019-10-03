@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://redthunderminebird/locale/application.dtd">
+
+<window onload="onLoad();" title="&options.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="text/javascript" src="chrome://redthunderminebird/content/options.js" />
+
+	<button label="&options.basic-label;" oncommand="onRedmine();" style="width:80px;" />
+
+	<separator class="groove" />
+
+	<vbox id="advance_option">
+		<label class="header" value="&options.defaults-label;" />
+		<grid>
+			<columns>
+				<column flex="1" />
+				<column flex="8" />
+			</columns>
+
+			<rows>
+				<row align="center">
+					<label value="&options.tracker-label;" />
+					<menulist id="redthunderminebird-default_tracker">
+						<menupopup>
+						</menupopup>
+					</menulist>
+				</row>
+				<row align="center">
+					<label value="&options.duelength-label;" />
+					<box>
+						<textbox id="redthunderminebird-default_due" type="number" style="width:4em;text-align:right;" />
+					</box>
+				</row>
+				<row>
+					<label value="&options.subject-label;" />
+					<box>
+						<textbox id="redthunderminebird-default_subject" style="" />
+					</box>
+				</row>
+				<row>
+					<label value="&options.description-label;" />
+					<box>
+						<checkbox id="redthunderminebird-default_description" label="&options.description-markdown-label;" />
+					</box>
+				</row>
+				<row>
+					<label value="&options.upload-attachments-label;" />
+					<box>
+						<checkbox id="redthunderminebird-default_upload_attachments" label="&options.upload-attachments-checkbox-label;" />
+					</box>
+				</row>
+			</rows>
+		</grid>
+
+		<separator class="groove" />
+
+		<label class="header" value="&options.folder-mapping-label;" />
+		<grid>
+			<columns>
+				<column flex="1" />
+				<column flex="8" />
+			</columns>
+
+			<rows id="directory_rows" style="overflow:auto;max-height:460px;">
+			</rows>
+		</grid>
+
+	</vbox>
+
+	<hbox>
+		<button label="&dialog.reset-label;" oncommand="onReset();" />
+		<spacer flex="1" />
+		<button label="&dialog.ok-label;" oncommand="onCommit();" />
+		<button label="&dialog.ng-label;" oncommand="close();" />
+	</hbox>
+
+</window>

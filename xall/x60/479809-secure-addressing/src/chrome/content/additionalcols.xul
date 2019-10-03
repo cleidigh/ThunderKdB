@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://secure-addressing/locale/additionalcols.dtd">
+
+<overlay id="additionalcols-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <tree id="threadTree">
+    <treecols id="threadCols">
+      <splitter class="tree-splitter" />
+      <treecol id="displayname" persist="width" flex="4"
+               label="&header_displayname;" />
+      <splitter class="tree-splitter" />
+      <treecol id="company" persist="width" flex="4"
+               label="&header_company;" />
+      <splitter class="tree-splitter" />
+      <treecol id="department" persist="width" flex="4"
+               label="&header_department;" />
+      <splitter class="tree-splitter" />
+      <treecol id="title" persist="width" flex="4"
+               label="&header_title;" />
+    </treecols>
+  </tree>
+
+  <script src="namespace.js" />
+  <script src="additionalcols.js" />
+
+</overlay>
+

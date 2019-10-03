@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href='chrome://secure-addressing/skin/personsinfo.css' type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://secure-addressing/locale/personsinfo.dtd">
+
+<overlay id="personinfo-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <toolbarpalette id="header-view-toolbar-palette">
+    <toolbarbutton id="personsinfo" label="&label_info;"
+		   oncommand="SecureAddressing.personsInfo.showAllPersonsInfo(event);RestoreFocusAfterHdrButton();"
+                   class="toolbarbutton-1 msgHeaderView-button personsinfo" />
+  </toolbarpalette>
+
+  <script src="namespace.js" />
+  <script src="personsinfo.js" />
+
+</overlay>
+

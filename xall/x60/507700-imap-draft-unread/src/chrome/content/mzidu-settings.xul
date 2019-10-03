@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="mzidu-settings.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://imapdraftunread/locale/settings.dtd">
+<prefwindow id="ImapDraftUnread_Settings"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  title="&ImapDraftUnread.SettingsTitle;"
+  onload="miczImapDraftUnreadPref.onLoad();">
+  <stringbundleset id="stringbundleset_settings">
+    <stringbundle id="ImapDraftUnread-string-bundle_settings" src="chrome://imapdraftunread/locale/settings.properties" />
+  </stringbundleset>
+  <script type="application/x-javascript" src="chrome://imapdraftunread/content/mzidu-osutils.js" />
+  <script type="application/x-javascript" src="chrome://imapdraftunread/content/mzidu-settings.js" />
+  <prefpane id="ImapDraftUnread_PrefPane">
+    <preferences>
+      <preference id="ImapDraftUnread.makeRead"
+        name="extensions.miczImapDraftUnread.makeRead"
+        type="bool" onchange="miczImapDraftUnreadPref.clearNew_reset();" />
+      <preference id="ImapDraftUnread.clearNew"
+        name="extensions.miczImapDraftUnread.clearNew"
+        type="bool" onchange="miczImapDraftUnreadPref.makeRead_reset();" />
+    </preferences>
+    <tabbox id="ImapDraftUnread_tabbox" style="min-height:11.5em;">
+      <tabs>
+        <tab label="&ImapDraftUnread.TabSettings.label;"/>
+        <tab label="&ImapDraftUnread.TabInfo.label;"/>
+      </tabs>
+      <tabpanels>
+        <tabpanel id="idutab" orient="vertical">
+    	  <description id="ImapDraftUnread.GlobalDescSettingTab_label" style="word-wrap:normal;max-width:500px;" flex="12">&ImapDraftUnread.GlobalDescSettingTab;</description>
+          <spacer style="height: 10px"/>
+          <checkbox id="ImapDraftUnread.makeRead_checkbox" label="&ImapDraftUnread.makeRead.label;"
+            preference="ImapDraftUnread.makeRead" />
+          <spacer style="height: 10px"/>
+          <checkbox id="ImapDraftUnread.clearNew_checkbox" label="&ImapDraftUnread.clearNew.label;"
+            preference="ImapDraftUnread.clearNew" />
+          <spacer style="height: 10px"/>
+        </tabpanel>
+        <tabpanel id="idutab_info" orient="vertical">
+          <description style="word-wrap:normal;max-width:500px;">&ImapDraftUnread.InfoMainDesc;</description>
+          <spacer style="height: 10px"/>
+          <label value="&ImapDraftUnread.DonateLink;" class="text-link mzidu-donate" href="http://micz.it/thunderdbird-addon-imap-draft-unread/donate/"/>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+  </prefpane>
+</prefwindow>

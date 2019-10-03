@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://redthunderminebird/locale/application.dtd">
+
+<window onload="onLoad();" title="&options-basic.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="text/javascript" src="chrome://redthunderminebird/content/input.js" />
+
+	<vbox style="min-width:420px">
+		<label value="&options-basic.redmine-url-label;" />
+		<textbox id="redthunderminebird-redmine" />
+
+		<label value="&options-basic.redmine-key-label;" />
+		<textbox id="redthunderminebird-apikey" />
+
+		<label value="&options-basic.account-label;" />
+		<menulist id="redthunderminebird-account">
+			<menupopup>
+			</menupopup>
+		</menulist>
+
+		<label value="&options-basic.visible-project-label;" />
+		<textbox id="redthunderminebird-target_project" />
+
+		<label value="&options-basic.invisible-project-label;" />
+		<textbox id="redthunderminebird-filter_project" />
+
+		<label value="&options-basic.visible-folder-label;" />
+		<textbox id="redthunderminebird-filter_directory" />
+
+	</vbox>
+
+	<hbox>
+		<spacer flex="1" />
+		<button label="&dialog.ok-label;" oncommand="onCommit();" />
+		<button label="&dialog.ng-label;" oncommand="onCancel();" />
+	</hbox>
+
+</window>
