@@ -1,0 +1,38 @@
+<?xml version="1.0"?>  
+<?xml-stylesheet href="chrome://s3menuwizard/skin/s3menuwizard.css" type="text/css"?>
+<!DOCTYPE window [
+<!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd" >
+%brandDTD;
+<!ENTITY % s3menuwizardDTD SYSTEM "chrome://s3menuwizard/locale/s3menuwizard.dtd" >
+%s3menuwizardDTD;
+]>
+<overlay id="s3menuwizard" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/s3menuwizard.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/history.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/hotkeys.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/utils.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/header.js"/>
+	
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="s3menuwizard_bundle" src="chrome://s3menuwizard/locale/s3menuwizard.properties"/>
+	</stringbundleset>
+
+	<stack><keyset id="s3menuwizard_keyset"/></stack>
+	<keyset>
+		<key id="s3menuwizard_openOptions_key" key="m" modifiers="alt,shift" oncommand="s3menuwizard.open_options_window();"/>
+	</keyset>
+
+	<stack>
+	<label hidden="true" id="s3menuwizard_brandShortName" value="&brandShortName;"/>
+	<label hidden="true" id="s3menuwizard_tabsToolbar" value="&tab_context_menu.label;"/>
+	<label hidden="true" id="s3menuwizard_mainContextMenu" value="&main_context_menu.label;"/>
+	<label hidden="true" id="s3menuwizard_toolbarContextMenu" value="&toolbar_context_menu.label;"/>
+	<label hidden="true" id="s3menuwizard_new_folder_name" value="&new_menu_folder.label;"/>
+	<label hidden="true" id="s3menuwizard_new_item_name" value="&new_menu_item.label;"/>
+	<label hidden="true" id="s3menuwizard_button_show_label" value="&button_show.label;"/>
+	<label hidden="true" id="s3menuwizard_button_hide_label" value="&button_hide.label;"/>
+	<label hidden="true" id="s3menuwizard_button_config_label" value="&button_config_this_menu.label;"/>
+	</stack>
+
+</overlay>

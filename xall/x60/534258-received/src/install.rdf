@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>received@alexander.moisseev</em:id>
+    <em:name>Received</em:name>
+    <em:version>0.2.3</em:version>
+    <em:type>2</em:type>
+    <em:unpack>false</em:unpack>
+    <em:optionsURL>chrome://received/content/options.xul</em:optionsURL>
+    <em:optionsType>3</em:optionsType>
+    
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>7.0</em:minVersion>
+        <em:maxVersion>61.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    
+    <em:description>Displays the "Received" header parsed with a regular expression.</em:description>
+    <em:creator>Alexander Moisseev (moiseev@mezonplus.ru)</em:creator>
+  </Description>
+</RDF>

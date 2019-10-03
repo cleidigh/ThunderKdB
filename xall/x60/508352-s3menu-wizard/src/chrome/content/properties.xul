@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://s3menuwizard/locale/s3menuwizard.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://s3menuwizard/skin/s3menuwizard.css" type="text/css"?>
+
+<dialog title="&properties.label;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	minheight="490" minwidth="450" 
+	buttons="accept,cancel,extra1" 
+	onload="s3menuwizard.dialog_init();" 
+	onresize="s3menuwizard.onresize();" 
+	defaultButton="none"
+	buttonlabelextra1="&apply.label;"
+	ondialogextra1="s3menuwizard.accept();"
+	ondialogaccept="s3menuwizard.accept();">
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/properties.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/history.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/hotkeys.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/utils.js"/>
+
+	<groupbox flex="1" style="overflow: auto;">
+	<vbox flex="1">
+		<grid flex="1" id="s3menuwizard_main_pane">
+			<columns><column/><column flex="1"/></columns>
+			<rows>
+			<row align="center"><hbox><spacer flex="1"/><label value="&properties.title.label;" /></hbox><hbox><textbox oninput="s3menuwizard.label_input(this);" id="s3menuwizard_label" flex="1" value=""/><toolbarbutton id="s3menuwizard_label_button_reset" class="s3menuwizard_button_reset" oncommand="s3menuwizard.label_reset();"/></hbox></row>
+			<row align="center"><hbox><spacer flex="1"/><label value="&properties.accesskey.label;" /></hbox><hbox><textbox oninput="s3menuwizard.accesskey_input(this);" onclick="this.select();" maxlength="1" size="1" id="s3menuwizard_accesskey" multiline="false" rows="1" value=""/><spacer flex="1"/><toolbarbutton id="s3menuwizard_accesskey_button_reset" class="s3menuwizard_button_reset" oncommand="s3menuwizard.accesskey_reset();"/></hbox></row>
+			<row align="center"><hbox><spacer flex="1"/><label value="&properties.id.label;" /></hbox><textbox id="s3menuwizard_menu_id" readonly="true" flex="1" value=""/></row>
+			<row align="center"><hbox><spacer flex="1"/><label value="&properties.show.label;" /></hbox><hbox><checkbox oncommand="s3menuwizard.setActivationApplyButton(true);" id="s3menuwizard_show"/><spacer flex="1"/></hbox></row>
+			<row align="top">
+				<hbox><spacer flex="1"/><label value="&properties.hotkey.label;" /></hbox>
+				<vbox id="s3menuwizard_template_hotkeys">
+					<hbox align="center">
+						<checkbox id="s3menuwizard_template_hotkeys_checkbox" oncommand="s3menuwizard.hotkeys_disable_click(this.parentNode.parentNode);"/>
+						<textbox id="s3menuwizard_template_hotkeys_textbox" flex="1" onclick="this.select();" onkeypress="s3menuwizard.hotkeys_input(event, this.parentNode.parentNode);"/>
+						<toolbarbutton id="s3menuwizard_template_hotkeys_reset" class="s3menuwizard_button_reset" oncommand="s3menuwizard.hotkeys_reset(this.parentNode.parentNode);"/>
+					</hbox>
+					<vbox id="s3menuwizard_template_hotkeys_hbox_not_unique" style="color: red;" hidden="true">
+						<label value="&hotkeys_notunique.label;"/>
+						<label id="s3menuwizard_template_hotkeys_label_not_unique" />
+					</vbox>
+				</vbox>
+			</row>
+			<row align="top">
+				<hbox><spacer flex="1"/><label id="s3menuwizard_style_label" value="&properties.style.label;" /></hbox>
+				<textbox onclick="s3menuwizard.textbox_exchange(this.id);" oninput="s3menuwizard.style_input(this);" id="s3menuwizard_style" multiline="true" flex="1" rows="3" value=""/>
+			</row>
+			<row align="top">
+				<hbox><spacer flex="1"/><label value="&properties.command.label;" /></hbox>
+				<vbox flex="1">
+					<groupbox flex="1"><caption><label id="s3menuwizard_oncommand_label" value="onCommand"/></caption><textbox onclick="s3menuwizard.textbox_exchange(this.id);" oninput="s3menuwizard.command_input(this);" id="s3menuwizard_oncommand" multiline="true" rows="2" flex="1" value=""/></groupbox>
+					<groupbox flex="1"><caption><label id="s3menuwizard_onclick_label" value="onClick"/></caption><textbox onclick="s3menuwizard.textbox_exchange(this.id);" oninput="s3menuwizard.command_input(this);" id="s3menuwizard_onclick" multiline="true" flex="1" rows="2" value=""/></groupbox>
+					<groupbox flex="1"><caption><label id="s3menuwizard_onpopupshowing_label" value="onPopupShowing"/></caption><textbox onclick="s3menuwizard.textbox_exchange(this.id);" oninput="s3menuwizard.command_input(this);" id="s3menuwizard_onpopupshowing" multiline="true" flex="1" rows="2" value=""/></groupbox>
+					<groupbox flex="1"><caption><label id="s3menuwizard_onpopuphiding_label" value="onPopupHiding"/></caption><textbox onclick="s3menuwizard.textbox_exchange(this.id);" oninput="s3menuwizard.command_input(this);" id="s3menuwizard_onpopuphiding" multiline="true" flex="1" rows="2" value=""/></groupbox>
+				</vbox>
+			</row>
+			</rows>
+		</grid>
+		<vbox id="s3menuwizard_edit_pane" hidden="true" flex="1">
+			<hbox>
+				<label id="s3menuwizard_edit_title" />
+				<spacer flex="1"/>
+				<toolbarbutton id="s3menuwizard_edit_close" oncommand="s3menuwizard.textbox_exchange(this.tmp_id, true);"/>
+			</hbox>
+			<textbox flex="1" multiline="true" id="s3menuwizard_edit_textbox" oninput="s3menuwizard.command_input(this);"/>
+		</vbox>
+	</vbox>
+	</groupbox>
+</dialog>

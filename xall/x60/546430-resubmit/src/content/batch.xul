@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window
+  id = "resubmit-batch"
+  title = "Resubmit - Sending Progress"
+  orient = "vertical"
+  width = "480"
+  xmlns = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript" src="chrome://resubmit/content/debug.js"/>
+  <script type = "application/x-javascript"  src = "chrome://resubmit/content/batch.js"/>
+  <groupbox>
+    <caption label="Progress"/>
+    <grid>
+      <columns>
+        <column/>
+        <column flex="1"/>
+      </columns>
+      <rows>
+        <row>
+          <label value="Current"/>
+          <progressmeter id="resubmit-batch-progress" mode="determined"/>
+        </row>
+        <row>
+          <label value="Total"/>
+          <progressmeter id="resubmit-batch-totalProgress" mode="determined"/>
+        </row>
+        <row>
+          <statusbarpanel id="resubmit-batch-statusTitle" label="Status"/>
+          <statusbarpanel id="resubmit-batch-status" flex="1"/>
+        </row>
+      </rows>
+    </grid>
+  </groupbox>
+  <hbox>
+    <spacer flex="1"/>
+    <button id = "resubmit-batch-cancel"
+            dlgtype = "cancel"
+            label = "Cancel"
+            oncommand="window.onCancel();"/>
+    <button id = "resubmit-batch-close"
+            dlgtype = "accept"
+            label = "Done"
+            disabled="true"
+            oncommand="window.close();"/>
+  </hbox>
+</window>

@@ -1,0 +1,265 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://s3menuwizard/skin/s3menuwizard.css" type="text/css"?>
+<?xul-overlay href="chrome://s3menuwizard/content/settings_stack.xul"?>
+<!DOCTYPE window [
+	<!ENTITY % s3menuwizardDTD SYSTEM "chrome://s3menuwizard/locale/s3menuwizard.dtd" >
+	%s3menuwizardDTD;
+	<!ENTITY % advertisementDTD SYSTEM "chrome://s3menuwizard/locale/advertisement.dtd" >
+	%advertisementDTD;
+]>
+
+
+<window id="s3menuwizard_prefs" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+	xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+	title="&title.label;" onload="s3menuwizard.init();">
+
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/settings.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/history.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/hotkeys.js"/>
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/utils.js"/>
+
+	<stack id="s3menuwizard_template_menu" hidden="true"/>
+	<stack id="s3menuwizard_template_menuseparator" hidden="true"/>
+
+	<prefpane id="s3menuwizard_prefpane">
+		<preferences>
+	    		<preference id="pref_show_button_show_all" name="extensions.s3menuwizard.show_button_show_all" type="bool" />
+	    		<preference id="pref_show_button_config_menu" name="extensions.s3menuwizard.show_button_config_menu" type="bool" />
+	    		<preference id="pref_highlight_hidden_menu" name="extensions.s3menuwizard.highlight_hidden_menu" type="bool" />
+	    		<preference id="pref_highlight_hidden_menu_color" name="extensions.s3menuwizard.highlight_hidden_menu_color" type="string" />
+	    		<preference id="pref_show_hidden_menu_by_combination" name="extensions.s3menuwizard.show_hidden_menu_by_combination" type="bool" />
+	    		<preference id="pref_integration_with_s3gt" name="extensions.s3menuwizard.integration_with_s3gt" type="bool" />
+	    		<preference id="pref_hide_shortcuts_all" name="extensions.s3menuwizard.hide_shortcuts_all" type="bool" />
+	    		<preference id="pref_hide_menuicons_all" name="extensions.s3menuwizard.hide_menuicons_all" type="bool" />
+	    		<preference id="pref_hide_empty_menu" name="extensions.s3menuwizard.hide_empty_menu" type="bool" />
+	    		<preference id="pref_set_id_for_menu" name="extensions.s3menuwizard.set_id_for_menu" type="bool" />
+			<preference id="pref_advertisement" name="extensions.s3menuwizard.advertisement" type="string" />
+		</preferences>
+	</prefpane>
+
+	<keyset>
+		<key id="s3menuwizard_key_search" key="F" modifiers="accel" oncommand="event.stopPropagation();"/>
+	</keyset>
+
+	<xhtml:link id="s3menuwizard_shortcut_icon" rel="shortcut icon" href="chrome://s3menuwizard/skin/s3mw_logo_16.png"/>
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="s3menuwizard_bundle" src="chrome://s3menuwizard/locale/s3menuwizard.properties"/>
+	</stringbundleset>
+
+	<groupbox id="s3menuwizard_titlebox">
+		<hbox flex="1">
+			<label id="s3menuwizard_title" value="&title.label;"/>
+			<spacer flex="1"/>
+			<toolbarbutton id="s3menuwizard_button_split" tooltiptext="&split_screen.label;" oncommand="s3menuwizard.panel_show('split');"/>
+			<toolbarbutton id="s3menuwizard_button_add" tooltiptext="&add_new_items.label;" oncommand="s3menuwizard.panel_show('add');"/>
+			<toolbarbutton id="s3menuwizard_button_reset_all" tooltiptext="&reset_items.label;" oncommand="s3menuwizard.panel_show('reset_all');"/>
+			<toolbarbutton id="s3menuwizard_button_hotkeys" tooltiptext="&hotkeys.label;" oncommand="s3menuwizard.panel_show('hotkeys');"/>
+			<toolbarbutton id="s3menuwizard_button_settings" tooltiptext="&settings.label;" oncommand="s3menuwizard.panel_show('settings');"/>
+			<toolbarbutton id="s3menuwizard_button_help" tooltiptext="&help.label;" oncommand="s3menuwizard.go_help_site();"/>
+		</hbox>
+	</groupbox>
+
+	<hbox flex="1">
+	<groupbox flex="1" id="s3menuwizard_groupbox" ondragover="s3menuwizard.wheel(event);" minwidth="400">
+		<hbox style="padding: 15px;" id="s3menuwizard_image_wait"><image id="s3menuwizard_image_wait_img" width="32" height="32"/><spacer flex="1"/></hbox>
+		<hbox flex="1">
+			<scrollbox id="s3menuwizard_scrollbox" flex="1" style="overflow: auto;"><vbox id="s3menuwizard_main"/></scrollbox>
+			<splitter id="s3menuwizard_panel_splitter" state="open" collapse="none" resizeafter="farthest" hidden="true"/>
+			<groupbox id="s3menuwizard_panel_reset_all" hidden="true" persist="width">
+				<caption label="&reset_items.label;" class="caption"/>
+				<vbox flex="1">
+					<hbox>
+						<menulist id="s3menuwizard_panel_reset_menu" flex="1" oncommand="s3menuwizard.reset_prefs_custom_select();">
+							<menupopup>
+							<menuitem label="&reset_items.rename.label;" value="rename"/>
+							<menuitem label="&reset_items.hidden.label;" value="hidden"/>
+							<menuitem label="&reset_items.move.label;" value="move"/>
+							<menuitem label="&reset_items.hotkeys.label;" value="hotkeys"/>
+							<menuitem label="&reset_items.style.label;" value="style"/>
+							<menuitem label="&reset_items.command.label;" value="command"/>
+							</menupopup>
+						</menulist>
+						<toolbarbutton id="s3menuwizard_reset_custom" tooltiptext="&reset_items.all.label;" oncommand="s3menuwizard.reset_prefs_custom();"/>
+					</hbox>
+					<hbox>
+						<spacer flex="1"/>
+						<label id="s3menuwizard_reset_empty_rename_list" hidden="true" value="&list_empty.label;"/>
+						<label id="s3menuwizard_reset_empty_hidden_list" hidden="true" value="&list_empty.label;"/>
+						<label id="s3menuwizard_reset_empty_move_list" hidden="true" value="&list_empty.label;"/>
+						<label id="s3menuwizard_reset_empty_hotkeys_list" hidden="true" value="&list_empty.label;"/>
+						<label id="s3menuwizard_reset_empty_style_list" hidden="true" value="&list_empty.label;"/>
+						<label id="s3menuwizard_reset_empty_command_list" hidden="true" value="&list_empty.label;"/>
+						<spacer flex="1"/>
+					</hbox>
+					<scrollbox flex="1" style="overflow: auto;">
+					<!--    ......................    -->
+					<grid flex="1" id="s3menuwizard_reset_grid_rename_list" hidden="true">
+						<columns>
+							<column width="20"/><column flex="1"/><column flex="1"/>
+						</columns>
+						<rows id="s3menuwizard_reset_rename_list"/>
+					</grid>
+					<!--    ......................    -->
+					<grid flex="1" id="s3menuwizard_reset_grid_hidden_list" hidden="true">
+						<columns>
+							<column width="20"/><column flex="1"/><column flex="1"/>
+						</columns>
+						<rows id="s3menuwizard_reset_hidden_list"/>
+					</grid>
+					<!--    ......................    -->
+					<grid flex="1" id="s3menuwizard_reset_grid_move_list" hidden="true">
+						<columns>
+							<column width="20"/><column/><column flex="1"/><column/>
+						</columns>
+						<rows id="s3menuwizard_reset_move_list"/>
+					</grid>
+					<!--    ......................    -->
+					<grid flex="1" id="s3menuwizard_reset_grid_hotkeys_list" hidden="true">
+						<columns>
+							<column width="20"/><column flex="1"/><column flex="1"/>
+						</columns>
+						<rows id="s3menuwizard_reset_hotkeys_list"/>
+					</grid>
+					<!--    ......................    -->
+					<grid flex="1" id="s3menuwizard_reset_grid_style_list" hidden="true">
+						<columns>
+							<column width="20"/><column flex="1"/><column flex="1"/>
+						</columns>
+						<rows id="s3menuwizard_reset_style_list"/>
+					</grid>
+					<!--    ......................    -->
+					<grid flex="1" id="s3menuwizard_reset_grid_command_list" hidden="true">
+						<columns>
+							<column width="20"/><column flex="1"/><column flex="1"/>
+						</columns>
+						<rows id="s3menuwizard_reset_command_list"/>
+					</grid>
+					<!--    ......................    -->
+					</scrollbox>
+				</vbox>
+			</groupbox>
+			<groupbox id="s3menuwizard_panel_add" hidden="true">
+				<caption label="&add_new_items.label;" class="caption"/>
+				<vbox>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_folder_0" value="&new_menu_folder.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_folder_1" value="&new_menu_folder.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_folder_2" value="&new_menu_folder.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_folder_3" value="&new_menu_folder.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_folder_4" value="&new_menu_folder.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_folder_5" value="&new_menu_folder.label;"/>
+					<separator flex="1"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_separator" value="&new_menu_separator.label;"/>
+					<separator flex="1"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_item_0" value="&new_menu_item.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_item_1" value="&new_menu_item.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_item_2" value="&new_menu_item.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_item_3" value="&new_menu_item.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_item_4" value="&new_menu_item.label;"/>
+					<label ondragstart="s3menuwizard.elem_drag_start(event);" id="s3menuwizard_new_menu_item_5" value="&new_menu_item.label;"/>
+					<separator flex="1"/>
+					<hbox><spacer flex="1"/><image src="chrome://s3menuwizard/skin/s3mw_drag_and_drop.png"/><spacer flex="1"/></hbox>
+				</vbox>
+			</groupbox>
+			<groupbox id="s3menuwizard_panel_settings" hidden="true">
+				<caption label="&settings.label;" class="caption"/>
+				<vbox>
+					<!-- import / export / reset -->
+					<separator class="groove" orient="horizontal" flex="1"/>
+					<hbox>
+						<button id="s3menuwizard_settings_save" flex="1" label="&settings.save.label;" oncommand="s3menuwizard.settings_save();"/>
+						<button id="s3menuwizard_settings_load" flex="1" label="&settings.load.label;" oncommand="s3menuwizard.settings_load();"/>
+						<button id="s3menuwizard_settings_reset" flex="1" label="&settings.reset_default.label;" oncommand="s3menuwizard.settings_reset();"/>
+					</hbox>
+					<separator class="groove" orient="horizontal" flex="1"/>
+
+					<!-- buttons -->
+					<checkbox preference="pref_show_button_show_all" label="&settings.show_button_show_all.label;" oncommand="s3menuwizard.preference_set_check('show_button_show_all', this)" id="s3menuwizard_show_button_show_all"/>
+					<checkbox preference="pref_show_button_config_menu" label="&settings.show_button_config_menu.label;" oncommand="s3menuwizard.preference_set_check('show_button_config_menu', this)" id="s3menuwizard_show_button_config_menu"/>
+					<checkbox preference="pref_show_hidden_menu_by_combination" label="&settings.show_hidden_menu_by_combination.label;" oncommand="s3menuwizard.preference_set_check('show_hidden_menu_by_combination', this)" id="s3menuwizard_show_hidden_menu_by_combination"/>
+					<hbox><spacer width="22"/><label style="font-size: 0.8em" value="&settings.show_hidden_menu_by_combination_hint.label;"/></hbox>
+
+					<!-- color -->
+					<hbox><separator class="groove" orient="horizontal" flex="1"/></hbox>
+					<hbox flex="1">
+						<checkbox preference="pref_highlight_hidden_menu" label="&settings.highlight_hidden_menu.label;" oncommand="s3menuwizard.preference_set_check('highlight_hidden_menu', this); s3menuwizard.preference_check_highlight();" id="s3menuwizard_highlight_hidden_menu"/>
+						<spacer flex="1"/>
+						<hbox pack="end"><colorpicker type="button" preference="pref_highlight_hidden_menu_color" onchange="s3menuwizard.preference_set_string('highlight_hidden_menu_color', this.color); this.blur();" id="s3menuwizard_highlight_hidden_menu_color"/></hbox>	
+					</hbox>
+					<hbox><separator class="groove" orient="horizontal" flex="1"/></hbox>
+
+					<!--  others -->
+					<checkbox preference="pref_hide_shortcuts_all" label="&settings.hide_shortcuts_all.label;" oncommand="s3menuwizard.preference_set_check('hide_shortcuts_all', this)" id="s3menuwizard_hide_shortcuts_all"/>
+					<checkbox preference="pref_hide_menuicons_all" label="&settings.hide_menuicons_all.label;" oncommand="s3menuwizard.preference_set_check('hide_menuicons_all', this)" id="s3menuwizard_hide_menuicons_all"/>
+					<checkbox preference="pref_hide_empty_menu" label="&settings.hide_empty_menu.label;" oncommand="s3menuwizard.preference_set_check('hide_empty_menu', this)" id="s3menuwizard_hide_empty_menu"/>
+
+					<checkbox preference="pref_set_id_for_menu" label="&settings.set_id_for_menu.label;" oncommand="s3menuwizard.preference_set_check('set_id_for_menu', this)" id="s3menuwizard_set_id_for_menu"/>
+					<hbox><spacer width="22"/><label style="font-size: 0.8em" value="&settings.set_id_for_menu_hint.label;"/></hbox>
+
+					<hbox><separator class="groove" orient="horizontal" flex="1"/></hbox>
+
+					<!-- s3gt -->
+					<hbox>
+						<checkbox preference="pref_integration_with_s3gt" label="&settings.integration_with_s3gt.label;" oncommand="s3menuwizard.preference_set_check('integration_with_s3gt', this)" id="s3menuwizard_integration_with_s3gt"/>
+						<spacer flex="1"/>
+						<toolbarbutton id="s3menuwizard_translate_clean_cache" label="0" tooltiptext="&clean_cache.label;" oncommand="s3menuwizard.translate_clean_cache();"/>
+					</hbox>
+					<hbox><spacer width="22"/><label style="font-size: 0.8em" value="&settings.experiment_translate.label;"/></hbox>
+					<vbox id="s3menuwizard_s3gt_not_installed">
+						<hbox><spacer width="22"/><label value="&settings.s3gt_not_installed.label;" class="text-link" href="https://addons.mozilla.org/addon/s3google-translator/" style="color: red;"/></hbox>
+						<hbox><spacer width="22"/><label value="https://addons.mozilla.org/addon/s3google-translator/" class="text-link" href="https://addons.mozilla.org/addon/s3google-translator/"/></hbox>
+					</vbox>
+					<hbox><separator class="groove" orient="horizontal" flex="1"/></hbox>
+
+					<!-- advertisement -->
+					<vbox id="adv_box">
+						<label id="adv_is_enabled" style="border: none;" value="&adv_is_enabled.label;"/>
+						<label id="adv_is_disabled" value="&adv_is_disabled.label;"/>
+						<button label="&adv_change_status.label;" oncommand="s3menuwizard.advertisement();"/>
+					</vbox>
+				</vbox>
+			</groupbox>
+			<groupbox id="s3menuwizard_panel_hotkeys" hidden="true" persist="width">
+				<caption>
+					<checkbox id="s3menuwizard_hotkeys_all_checkbox" style="padding-left: 0px;" oncommand="s3menuwizard.hotkeys_all_checkbox();" label="&hotkeys.label;" class="caption"/>
+				</caption>
+				<stack id="s3menuwizard_template_hotkeys_stack" hidden="true">
+				<grid><rows>
+				<row id="s3menuwizard_template_hotkeys" align="top">
+					<checkbox id="s3menuwizard_template_hotkeys_checkbox" oncommand="s3menuwizard.hotkeys_disable_click(this.parentNode);"/>
+					<label id="s3menuwizard_template_hotkeys_label" flex="1" crop="end" minwidth="70"/>
+					<vbox>
+						<hbox>
+							<label id="s3menuwizard_template_hotkeys_label_id" flex="1" crop="end"/>
+							<textbox id="s3menuwizard_template_hotkeys_textbox" width="200" onclick="this.select();" onkeypress="s3menuwizard.hotkeys_input(event, this.parentNode.parentNode.parentNode);">
+								<toolbarbutton id="s3menuwizard_template_hotkeys_cancel" hidden="true" oncommand="s3menuwizard.hotkeys_cancel(this.parentNode.parentNode.parentNode.parentNode);"/>
+								<toolbarbutton id="s3menuwizard_template_hotkeys_apply" hidden="true" oncommand="s3menuwizard.hotkeys_apply(this.parentNode.parentNode.parentNode.parentNode);"/>
+							</textbox>
+							<toolbarbutton id="s3menuwizard_template_hotkeys_reset" class="s3menuwizard_button_reset" oncommand="s3menuwizard.hotkeys_reset(this.parentNode.parentNode.parentNode);"/>
+						</hbox>
+						<hbox id="s3menuwizard_template_hotkeys_hbox_not_unique" style="color: red;" hidden="true">
+							<spacer flex="1"/>
+							<vbox align="right" flex="1">
+								<label flex="1" crop="end" id="s3menuwizard_template_hotkeys_title_not_unique" value="&hotkeys_notunique.label;"/>
+								<label flex="1" crop="end" id="s3menuwizard_template_hotkeys_label_not_unique" />
+							</vbox>
+						</hbox>
+					</vbox>
+				</row>
+				</rows></grid>
+				</stack>
+
+				<grid flex="1" style="overflow: auto; min-width: 400px;">
+					<columns>
+						<column/><column flex="1" crop="end" minwidth="70"/><column flex="1" minwidth="200"/>
+					</columns>
+					<rows id="s3menuwizard_hotkeys_list"/>
+				</grid>
+			</groupbox>
+		</hbox>
+	</groupbox>
+	<splitter id="s3menuwizard_panel_split_splitter" state="open" collapse="none" resizeafter="farthest" hidden="true"/>
+	<iframe src="chrome://s3menuwizard/content/settings_iframe.xul" flex="1" minwidth="400" id="s3menuwizard_panel_split"  hidden="true"/>
+	</hbox>
+</window>

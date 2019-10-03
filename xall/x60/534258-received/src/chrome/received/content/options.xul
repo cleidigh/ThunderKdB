@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+
+<prefwindow id="receivedOptions" title="Received options" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <prefpane>
+        <preferences>
+            <preference id="pref_regexp" name="extensions.received.regexp" title="Regular expression with capturing parentheses" type="string" />
+        </preferences>
+        <hbox>
+            <groupbox>
+                <label control="regexp" value="Regular expression with capturing parentheses:" />
+                <textbox id="regexp" size="140" preference="pref_regexp" />
+
+                <vbox style="height: 280px; overflow: auto">
+                    <groupbox>
+                        <caption label="Examples" />
+                        <description style="white-space: pre">
+(.*)
+
+             Displays all "Received" headers.
+
+
+^from (.+?) by mx\.example\.com
+
+            Displays the host where the email has come from.
+            The regular expression should match the first "Received" header added by the recipient's smtp server.
+                        </description>
+                    </groupbox>
+                </vbox>
+            </groupbox>
+            <vbox flex="1" />
+        </hbox>
+    </prefpane>
+</prefwindow>

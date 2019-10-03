@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+ - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ -
+ - The contents of this file are subject to the Mozilla Public License Version
+ - 1.1 (the "License"); you may not use this file except in compliance with
+ - the License. You may obtain a copy of the License at
+ - http://www.mozilla.org/MPL/
+ -
+ - Software distributed under the License is distributed on an "AS IS" basis,
+ - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ - for the specific language governing rights and limitations under the
+ - License.
+ -
+ - The Original Code is Thunderbirthday Provider code.
+ -
+ - The Initial Developer of the Original Code is
+ -  Ingo Mueller (thunderbirthday at ingomueller dot net)
+ - Portions created by the Initial Developer are Copyright (C) 2007
+ - the Initial Developer. All Rights Reserved.
+ -
+ - Contributor(s):
+ -
+ - Alternatively, the contents of this file may be used under the terms of
+ - either the GNU General Public License Version 2 or later (the "GPL"), or
+ - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ - in which case the provisions of the GPL or the LGPL are applicable instead
+ - of those above. If you wish to allow use of your version of this file only
+ - under the terms of either the GPL or the LGPL, and not to allow others to
+ - use your version of this file under the terms of the MPL, indicate your
+ - decision by deleting the provisions above and replace them with the notice
+ - and other provisions required by the GPL or the LGPL. If you do not delete
+ - the provisions above, a recipient may use your version of this file under
+ - the terms of any one of the MPL, the GPL or the LGPL.
+ -
+ - ***** END LICENSE BLOCK ***** -->
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+    
+    <Description about="urn:mozilla:install-manifest">
+        <em:id>{4C9FE6FE-2C83-11DC-90B4-DC8456D89593}</em:id>
+        <em:version>0.8.4</em:version>
+        <em:type>2</em:type>
+        
+        <em:name>ThunderBirthDay</em:name>
+        <em:description>Display birthdays from the thunderbird addressbooks as events in lightning.</em:description>
+        <em:creator>Ingo Müller</em:creator>
+        <em:homepageURL>http://ingomueller.net/mozilla/thunderbirthday</em:homepageURL>
+        
+        <em:contributor>www.icondrawer.com (icon)</em:contributor>
+        <em:iconURL>chrome://thunderbirthday/content/icon.png</em:iconURL>
+
+        <em:contributor>Klemens Schölhorn</em:contributor>
+        
+        <em:translator>agnetao (sv-SE)</em:translator>
+        <em:translator>Ahmed (ar)</em:translator>
+        <em:translator>Alexander LAW (ru-RU)</em:translator>
+        <em:translator>Alf (nl-NL)</em:translator>
+        <em:translator>AlleyKat (da-DK)</em:translator>
+        <em:translator>chichot (cs-CZ)</em:translator>
+        <em:translator>colonelgrant (hu-HU)</em:translator>
+        <em:translator>drry (ja-JP)</em:translator>
+        <em:translator>el_libre (ca-AD)</em:translator>
+        <em:translator>fernph (pt-BR)</em:translator>
+        <em:translator>fiag (zh-CN)</em:translator>
+        <em:translator>Holco (sk-SK)</em:translator>
+        <em:translator>Jiipee (fi)</em:translator>
+        <em:translator>lloco (pt-PT)</em:translator>
+        <em:translator>muhengi (tr-TR)</em:translator>
+        <em:translator>myahoo (and others) (fr-FR)</em:translator>
+        <em:translator>no_room (es-AR)</em:translator>
+        <em:translator>Pedro (it-IT)</em:translator>
+        <em:translator>RigoNet (es-ES)</em:translator>
+        <em:translator>Sappa (uk-UA)</em:translator>
+        <em:translator>teo (pl-PL)</em:translator>
+        <em:translator>velociraptor (zh-TW)</em:translator>
+        
+        <em:targetApplication>
+            <Description>
+                <!-- Thunderbird -->
+                <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+                <em:minVersion>3.0</em:minVersion>
+                <em:maxVersion>60.*</em:maxVersion>
+            </Description>
+            <Description>
+                <!-- SeaMonkey -->
+                <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+                <em:minVersion>2.0</em:minVersion>
+                <em:maxVersion>2.30.*</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+    </Description>
+</RDF>

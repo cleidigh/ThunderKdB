@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay [
+	<!ENTITY % s3menuwizardDTD SYSTEM "chrome://s3menuwizard/locale/s3menuwizard.dtd" >
+	%s3menuwizardDTD;
+	<!ENTITY % advertisementDTD SYSTEM "chrome://s3menuwizard/locale/advertisement.dtd" >
+	%advertisementDTD;
+]>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://s3menuwizard/skin/advertisement.css" type="text/css"?>
+
+<dialog title="&title.label; : &adv_title.label;" id="s3menuwizard_advertisement" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+	buttons="accept" 
+	width="600"
+	onload="s3menuwizard.dialog_init();" 
+	ondialogaccept="s3menuwizard.ondialogaccept();"
+	ondialogcancel="s3menuwizard.ondialogcancel();">
+
+	<script type="application/x-javascript" src="chrome://s3menuwizard/content/advertisement.js"/>
+	<box>
+	<spacer flex="1"/>
+	<vbox class="adv_vbox" id="adv_vbox">
+		<hbox flex="1">
+			<description class="header" value="&title.label; : &adv_title.label;"/>
+			<spacer flex="1"/>
+			<label class="text-link privacy_policy" href="https://addons.mozilla.org/addon/s3menu-wizard/privacy/" value="&adv_privacy_policy.label;"/>
+		</hbox>
+		<hbox class="adv_space"/>
+		<description>&adv_desc_1.label;</description>
+		<hbox class="adv_space"/>
+		<description>&adv_desc_2.label;</description>
+		<hbox class="adv_space"/>
+		<description>&adv_desc_3.label;</description>
+		<hbox class="adv_space"/>
+		<description>&adv_desc_4.label;</description>
+		<hbox class="adv_space"/>
+		<description>&adv_desc_5.label;</description>
+		<hbox class="adv_space"/><hbox class="adv_space"/>
+		<hbox>
+			<button oncommand="s3menuwizard.advertisement_off();" class="adv_cancel" label="&adv_cancel.label;"/>
+			<spacer flex="1"/>
+			<button dlgtype="accept" class="adv_accept" label="&adv_accept.label;"/>
+		</hbox>
+	</vbox>
+	<spacer flex="1"/>
+	</box>
+</dialog>

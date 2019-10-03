@@ -1,0 +1,36 @@
+vbox.adv_vbox {
+	font-size: 15px;
+	max-width: 600px;
+}
+hbox.adv_space {
+	padding-top: 15px;
+}
+button.adv_cancel {
+	-moz-appearance: none;
+	border: none;
+	color: #95150F;
+	text-decoration: underline;
+	cursor: pointer;
+}
+button.adv_cancel:hover {
+	color: #FD0000;
+}
+button.adv_accept {
+	-moz-appearance: none; 
+	color: #205E17; 
+	background: linear-gradient(to bottom, rgba(122, 244, 96, 0.2),rgba(122, 244, 96, 0.2), rgba(95, 224, 84, 0.6), rgba(122, 244, 96, 0.2));
+	border: 1px #43C431 solid;
+	border-radius: 5px;
+	cursor: pointer; 
+}
+button.adv_accept:hover {
+	background: linear-gradient(to bottom, rgba(122, 244, 96, 0.4),rgba(122, 244, 96, 0.4), rgba(95, 224, 84, 0.8), rgba(122, 244, 96, 0.4));
+	border: 1px #00FF00 solid;
+}
+button.adv_accept:hover:active {
+	background: linear-gradient(to top, rgba(122, 244, 96, 0.4),rgba(122, 244, 96, 0.4), rgba(95, 224, 84, 0.8), rgba(122, 244, 96, 0.4));
+	border: 1px #00FF00 solid;
+}
+.privacy_policy {
+	font-size: 0.9em;
+}

@@ -1,0 +1,25 @@
+pref("extensions.s3menu@wizard.description", "chrome://s3menuwizard/locale/s3menuwizard.properties");
+pref("extensions.s3menuwizard.current_version", '0');
+pref("extensions.s3menuwizard.not_open_contribute_page", false);
+pref("extensions.s3menuwizard.show_page_timer", 0);
+pref("extensions.s3menuwizard.advertisement", "wait"); // wait, check, on, off
+pref("extensions.s3menuwizard.show_button_show_all", true);
+pref("extensions.s3menuwizard.show_button_config_menu", true);
+pref("extensions.s3menuwizard.highlight_hidden_menu", true);
+pref("extensions.s3menuwizard.highlight_hidden_menu_color", "#CC0000");
+pref("extensions.s3menuwizard.show_hidden_menu_by_combination", true);
+pref("extensions.s3menuwizard.integration_with_s3gt", false);
+pref("extensions.s3menuwizard.last_panel_open", '');
+pref("extensions.s3menuwizard.hiding_shadow_timer", 10);
+pref("extensions.s3menuwizard.size_window_properties_width", 450);
+pref("extensions.s3menuwizard.size_window_properties_height", 490);
+pref("extensions.s3menuwizard.tweak_shadow_enable", false);
+pref("extensions.s3menuwizard.present_CustomizationsAdblockPlus", false);
+pref("extensions.s3menuwizard.hide_shortcuts_all", false);
+pref("extensions.s3menuwizard.hide_menuicons_all", false);
+pref("extensions.s3menuwizard.hide_empty_menu", false);
+pref("extensions.s3menuwizard.set_id_for_menu", false);
+pref("extensions.s3menuwizard.init_start_timer", 2);
+pref("extensions.s3menuwizard.hide_unnecessary_separators", true);
+pref("extensions.s3menuwizard.hide_unnecessary_separators_bookmark", true);
+pref("extensions.s3menuwizard.focus_to_options", true);

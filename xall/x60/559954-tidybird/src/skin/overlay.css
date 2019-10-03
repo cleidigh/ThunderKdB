@@ -1,0 +1,61 @@
+/*
+	Tidybird extension for Mozilla Thunderbird - Organize email into folders
+	quickly and easily.
+	
+    Copyright (C) 2018 George Anastassakis (ganast@ganast.com)
+	
+	This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#tidybirdButton, [place="palette"] > #tidybirdButton {
+  list-style-image: url("chrome://tidybird/skin/icon.png")
+}
+
+#tidybirdSplitter {
+  min-height: 2px;
+  min-width: 2px;
+}
+
+#tidybirdPane {
+  padding: 6px;
+  margin: 0;
+  overflow: auto;
+}
+
+.tidybird-folder-move-button {
+  padding: 0;
+  margin: 3px 0;
+  height: 32px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: left;
+}
+
+.tidybird-folder-move-button-label-1 {
+  -moz-appearance: none;
+  padding: 0;
+  margin: 3px 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+.tidybird-folder-move-button-label-2 {
+  -moz-appearance: none;
+  padding: 0;
+  margin: 3px 0;
+  font-weight: normal;
+  text-align: right;
+  font-size: 0.8em;
+  line-height: 1.6em;
+ }

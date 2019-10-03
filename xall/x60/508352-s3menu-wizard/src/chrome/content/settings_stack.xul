@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://s3menuwizard/skin/s3menuwizard.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://s3menuwizard/locale/s3menuwizard.dtd">
+
+<overlay id="s3menuwizard" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<stack id="s3menuwizard_template_menu" hidden="true">
+		<hbox align="top" class="s3menuwizard_template_hbox" name="s3menuwizard_template_main_hbox">
+			<vbox id="s3menuwizard_template_hbox_vbox">
+				<hbox align="center">
+					<label id="s3menuwizard_template_label_check" class="monospace"/>
+					<box id="s3menuwizard_template_box_checkbox"><checkbox  id="s3menuwizard_template_checkbox" oncommand="s3menuwizard.disable_menu_item(this);"/></box>
+					<toolbarbutton id="s3menuwizard_template_edit_button" oncommand="s3menuwizard.edit_properties(this);"/>
+					<image id="s3menuwizard_template_image_label"/>
+					<label id="s3menuwizard_template_label" 
+						ondragstart="s3menuwizard.elem_drag_start(event);"  
+						ondragover="s3menuwizard.elem_drag_over(event);" 
+						ondragleave="s3menuwizard.elem_drag_leave( event);" 
+						ondrop="s3menuwizard.elem_drag_end(event);"/>
+					<toolbarbutton id="s3menuwizard_template_trash" hidden="true" oncommand="s3menuwizard.menu_item_in_trash(this);"/>
+				</hbox>
+				<vbox id="s3menuwizard_template_vbox_child_list">
+					<hbox align="top" class="s3menuwizard_template_hbox" name="s3menuwizard_template_main_hbox" is_empty_label="true">
+						<label id="s3menuwizard_template_label_check"/>
+						<label id="s3menuwizard_template_label" 
+							ondragover="s3menuwizard.elem_drag_over(event);" 
+							ondragleave="s3menuwizard.elem_drag_leave( event);" 
+							ondrop="s3menuwizard.elem_drag_end(event);"
+							value="&menu_folder_empty.label;"/>
+					</hbox>
+				</vbox>
+			</vbox>
+		</hbox>
+	</stack>
+	<stack id="s3menuwizard_template_menuseparator" hidden="true">
+		<hbox align="center" class="s3menuwizard_template_hbox" name="s3menuwizard_template_main_hbox">
+			<vbox id="s3menuwizard_template_hbox_vbox" flex="1"><hbox align="center" flex="1">
+				<label id="s3menuwizard_template_label_check" class="monospace s3menuwizard_template_label_check"/>
+				<box id="s3menuwizard_template_box_checkbox"><checkbox id="s3menuwizard_template_checkbox" oncommand="s3menuwizard.disable_menu_item(this);"/></box>
+				<spacer width="26"/>
+				<hbox id="s3menuwizard_template_label"
+					flex="1" align="center"
+					ondragstart="s3menuwizard.elem_drag_start(event);"  
+					ondragover="s3menuwizard.elem_drag_over(event);" 
+					ondragleave="s3menuwizard.elem_drag_leave( event);" 
+					ondrop="s3menuwizard.elem_drag_end(event);">
+					<label id="s3menuwizard_template_menuseparator_label_start" value=" "/>
+					<label id="s3menuwizard_template_menuseparator_label"/>
+					<label id="s3menuwizard_template_menuseparator_label_end" value=" " flex="1"/>
+					<toolbarbutton id="s3menuwizard_template_trash" hidden="true" oncommand="s3menuwizard.menu_item_in_trash(this);"/>
+				</hbox>
+			</hbox></vbox>
+		</hbox>
+	</stack>
+
+	<!--    ......................    -->
+	<stack hidden="true">
+		<grid>
+			<rows>
+				<!--    ......................    -->
+				<row id="s3menuwizard_template_reset_rename_title" align="center">
+					<label/><label value="&reset_items.original_name.label;"/><label value="&reset_items.custom_name.label;"/>
+				</row>
+				<row id="s3menuwizard_template_reset_rename_separator" align="center">
+					<separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/>
+				</row>
+				<row id="s3menuwizard_template_reset_rename_item" align="center">
+					<toolbarbutton id="s3menuwizard_reset_single" oncommand="s3menuwizard.reset_prefs_single(this, 'rename');" tooltiptext="&reset_items.single.label;"/>
+					<label  id="s3menuwizard_template_reset_item_original_name"/>
+					<label id="s3menuwizard_template_reset_item_custom_name"/>
+				</row>
+				<!--    ......................    -->
+				<row id="s3menuwizard_template_reset_hidden_title" align="center">
+					<label/><label value="&reset_items.original_name.label;"/><label value="&reset_items.custom_name.label;"/>
+				</row>
+				<row id="s3menuwizard_template_reset_hidden_separator" align="center">
+					<separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/>
+				</row>
+				<row id="s3menuwizard_template_reset_hidden_item" align="center">
+					<toolbarbutton id="s3menuwizard_reset_single_hidden" oncommand="s3menuwizard.reset_prefs_single(this, 'hidden');" tooltiptext="&reset_items.single.label;"/>
+					<label  id="s3menuwizard_template_reset_item_original_name"/>
+					<label id="s3menuwizard_template_reset_item_custom_name"/>
+				</row>
+				<!--    ......................    -->
+				<row id="s3menuwizard_template_reset_move_title" align="center">
+					<label/><label value="&reset_items.action.label;"/><label value="&reset_items.original_name.label;"/><label/>
+				</row>
+				<row id="s3menuwizard_template_reset_move_separator" align="center">
+					<separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/>
+				</row>
+				<row id="s3menuwizard_template_reset_move_item" align="center">
+					<toolbarbutton id="s3menuwizard_reset_single" oncommand="s3menuwizard.reset_prefs_single(this, 'move');" tooltiptext="&reset_items.single.label;"/>
+					<label  id="s3menuwizard_template_reset_item_action"/>
+					<label  id="s3menuwizard_template_reset_item_original_name"/>
+					<label  id="s3menuwizard_template_reset_item_node_name"/>
+				</row>
+				<!--    ......................    -->
+				<row id="s3menuwizard_template_reset_hotkeys_title" align="center">
+					<label/><label/><label value="ID"/><label value="&reset_items.original_name.label;"/>
+				</row>
+				<row id="s3menuwizard_template_reset_hotkeys_separator" align="center">
+					<separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/>
+				</row>
+				<row id="s3menuwizard_template_reset_hotkeys_item" align="center">
+					<toolbarbutton id="s3menuwizard_reset_single" oncommand="s3menuwizard.reset_prefs_single(this, 'hotkeys');" tooltiptext="&reset_items.single.label;"/>
+					<label id="s3menuwizard_template_reset_item_key"/>
+					<label  id="s3menuwizard_template_reset_item_id"/>
+					<label  id="s3menuwizard_template_reset_item_original_name"/>
+				</row>
+				<!--    ......................    -->
+				<row id="s3menuwizard_template_reset_style_title" align="center">
+					<label/><label value="ID"/><label value="&reset_items.original_name.label;"/>
+				</row>
+				<row id="s3menuwizard_template_reset_style_separator" align="center">
+					<separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/>
+				</row>
+				<row id="s3menuwizard_template_reset_style_item" align="center">
+					<toolbarbutton id="s3menuwizard_reset_single" oncommand="s3menuwizard.reset_prefs_single(this, 'style');" tooltiptext="&reset_items.single.label;"/>
+					<label  id="s3menuwizard_template_reset_item_id"/>
+					<label  id="s3menuwizard_template_reset_item_original_name"/>
+				</row>
+				<!--    ......................    -->
+				<row id="s3menuwizard_template_reset_command_title" align="center">
+					<label/><label value="ID"/><label value="&reset_items.original_name.label;"/>
+				</row>
+				<row id="s3menuwizard_template_reset_command_separator" align="center">
+					<separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/><separator id="s3menuwizard_separator" class="groove"/>
+				</row>
+				<row id="s3menuwizard_template_reset_command_item" align="center">
+					<toolbarbutton id="s3menuwizard_reset_single" oncommand="s3menuwizard.reset_prefs_single(this, 'command');" tooltiptext="&reset_items.single.label;"/>
+					<label  id="s3menuwizard_template_reset_item_id"/>
+					<label  id="s3menuwizard_template_reset_item_original_name"/>
+				</row>
+			</rows>
+		</grid>
+	</stack>
+
+</overlay>

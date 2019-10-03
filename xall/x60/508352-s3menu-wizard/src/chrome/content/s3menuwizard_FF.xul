@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://s3menuwizard/skin/s3menuwizard.css" type="text/css"?>
+<!DOCTYPE window [
+<!ENTITY % browserDTD SYSTEM "chrome://browser/locale/browser.dtd" >
+%browserDTD;
+<!ENTITY % s3menuwizardDTD SYSTEM "chrome://s3menuwizard/locale/s3menuwizard.dtd" >
+%s3menuwizardDTD;
+]>
+
+<overlay id="s3menuwizard" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<!-- Context Menu -->
+	<popup id="contentAreaContextMenu">
+		<menuitem id="s3menuwizard_openOptions_contextmenu" key="s3menuwizard_openOptions_key" label="&title.label;" class="menuitem-iconic" oncommand="s3menuwizard.open_options_window();"/>
+	</popup>
+
+	<stack>
+		<label hidden="true" id="s3menuwizard_menubarCmd" value="&menubarCmd.label;"/>
+		<label hidden="true" id="s3menuwizard_bookmarksToolbar" value="&personalbarCmd.label;"/>
+	</stack>
+
+	<!-- Firefox tools menu -->
+	<menupopup id="menu_ToolsPopup">
+		<menuitem id="s3menuwizard_openOptions_toolsmenu" key="s3menuwizard_openOptions_key" class="menuitem-iconic" label="&title.label;" oncommand="s3menuwizard.open_options_window();"/>
+	</menupopup>
+</overlay>
