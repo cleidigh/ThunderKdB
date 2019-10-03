@@ -1,0 +1,87 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url("chrome://inspector/skin");
+
+/* ::::: statistics ::::: */
+
+.nonzero {
+  font-weight: bold;
+}
+
+groupbox:not(#boxBorder) textbox {
+  text-align: right;
+}
+
+row {
+  -moz-box-align: baseline;
+}
+
+groupbox#boxBorder column.value-column {
+  -moz-box-flex: 1;
+}
+
+#enclosingBox {
+  overflow: auto;
+}
+
+column:not(.value-column) {
+  min-width: 15ch;
+}
+groupbox:not(#boxBorder) column.value-column {
+  min-width: 9ch;
+}
+
+textbox:before {
+  text-align: center;
+  font-weight: normal;
+  font-size: 1.0em;
+  width: 3ch;
+  max-width: 3ch !important;
+  margin-right: -1em;
+  
+  display: block;
+  
+  /*
+  outline: 1px solid orange;
+  */
+}
+groupbox#boxBorder textbox:before {
+  margin-right: 1em;
+}
+row:first-child textbox:before {
+  content: "\21E7";
+}
+row:first-child + row textbox:before {
+  content: "\21E8";
+}
+row:first-child + row + row textbox:before {
+  content: "\21E9";
+}
+row:first-child + row + row + row textbox:before {
+  content: "\21E6";
+}
+/* 21D0 double , 21E6 thick, 2190 simple */
+
+#dimensionWidthValue:before {
+  content: "\21d4";
+}
+#dimensionHeightValue:before {
+  content: "\21d5";
+}
+
+#positionXValue:before {
+  content: "\21E6";
+}
+#positionYValue:before {
+  content: "\21E7";
+}
+#positionScreenXValue:before {
+  content: "\21E6";
+}
+#positionScreenYValue:before {
+  content: "\21E7";
+}
+
+

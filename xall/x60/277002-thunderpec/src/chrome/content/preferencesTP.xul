@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://mozapps/content/preferences/preferences.css"?>
+<?xml-stylesheet href="skin/thunderpec.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+
+<window
+    id="tpecPreferenceWindow"
+    title="&preferences.title;"
+    class="tpecMyClass"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    width="500"
+    height="450"
+    onload="tpec_org.xtc.tp.preferences.init();">
+
+    <stringbundleset id="tpecSBS">
+      <stringbundle id="tpecStringBundle" src="chrome://thunderpec/locale/thunderpec.properties"/>
+    </stringbundleset>
+
+    <script type="application/x-javascript" src="chrome://thunderpec/content/prefTP.js" />
+    <script type="application/x-javascript" src="chrome://thunderpec/content/preferencesTP.js" />
+
+
+    <vbox flex="1" style="overflow:auto">
+      <grid>
+        <columns>
+          <column flex="1"/>
+        </columns>
+        <rows>
+          <row>
+            <groupbox>
+              <caption label="&receipt.menu;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="receipt_pref" value="&preferences.receipt;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecReceiptMenu" orient="horizontal">
+                    <radio id="tpecComplete" label="&receipt.menu.complete;" oncommand="tpec_org.xtc.tp.preferences.setReceiptType('completa');" type="radio" name="receiptGroup"/>
+                    <radio id="tpecBrief" label="&receipt.menu.brief;" oncommand="tpec_org.xtc.tp.preferences.setReceiptType('breve');" type="radio" name="receiptGroup"/>
+                    <radio id="tpecSynth" label="&receipt.menu.synthetic;" oncommand="tpec_org.xtc.tp.preferences.setReceiptType('sintetica');" type="radio" name="receiptGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+          <row>
+            <groupbox>
+              <caption label="&depreceipt.menu;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="receipt_pref" value="&preferences.depreceipt;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecDepReceiptMenu" orient="horizontal">
+                    <radio id="tpecDepComplete" label="&receipt.menu.complete;" oncommand="tpec_org.xtc.tp.preferences.setDepReceiptType('completa');" type="radio" name="receiptGroup"/>
+                    <radio id="tpecDepBrief" label="&receipt.menu.brief;" oncommand="tpec_org.xtc.tp.preferences.setDepReceiptType('breve');" type="radio" name="receiptGroup"/>
+                    <radio id="tpecDepSynth" label="&receipt.menu.synthetic;" oncommand="tpec_org.xtc.tp.preferences.setDepReceiptType('sintetica');" type="radio" name="receiptGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+          <row>
+            <groupbox>
+              <caption label="&p7m.menu;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="p7m_pref" value="&preferences.p7m;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecP7MMenu" orient="horizontal">
+                    <radio id="tpecP7MOn" label="&p7m.menu.on;" oncommand="tpec_org.xtc.tp.preferences.setP7MStatus('on');" type="radio" name="p7mGroup"/>
+                    <radio id="tpecP7MOff" label="&p7m.menu.off;" oncommand="tpec_org.xtc.tp.preferences.setP7MStatus('off');" type="radio" name="p7mGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+          <row>
+            <groupbox>
+              <caption label="&search.title;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="status_pref_01" value="&preferences.status.eml;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecEMLMenu" orient="horizontal">
+                    <radio id="tpecEMLYes" label="&preferences.yes;" oncommand="tpec_org.xtc.tp.preferences.setEML('on');" type="radio" name="emlGroup"/>
+                    <radio id="tpecEMLNo" label="&preferences.no;" oncommand="tpec_org.xtc.tp.preferences.setEML('off');" type="radio" name="emlGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+                <label id="status_pref_02" value="&preferences.status.zname;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecZNameMenu" orient="horizontal">
+                    <radio id="tpecZNameSubject" label="&preferences.status.zname.subject;" oncommand="tpec_org.xtc.tp.preferences.setZName('subject');" type="radio" name="znameGroup"/>
+                    <radio id="tpecZNameTimestamp" label="&preferences.status.zname.timestamp;" oncommand="tpec_org.xtc.tp.preferences.setZName('timestamp');" type="radio" name="znameGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+                <label id="status_pref_03" value="&preferences.status.cos;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecCOSMenu" orient="horizontal">
+                    <radio id="tpecCOSYes" label="&preferences.yes;" oncommand="tpec_org.xtc.tp.preferences.setCOS('on');" type="radio" name="cosGroup"/>
+                    <radio id="tpecCOSNo" label="&preferences.no;" oncommand="tpec_org.xtc.tp.preferences.setCOS('off');" type="radio" name="cosGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+          <row>
+            <groupbox>
+              <caption label="&preferences.debug;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="status_pref_01" value="&preferences.debug.desc;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecDebugMenu" orient="horizontal">
+                    <radio id="tpecDebugYes" label="&preferences.yes;" oncommand="tpec_org.xtc.tp.preferences.setDebug('on');" type="radio" name="debugGroup"/>
+                    <radio id="tpecDebugNo" label="&preferences.no;" oncommand="tpec_org.xtc.tp.preferences.setDebug('off');" type="radio" name="debugGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+          <row>
+            <groupbox>
+              <caption label="&preferences.peccol;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="status_pref_01" value="&preferences.peccol.desc;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecPecColMenu" orient="horizontal">
+                    <radio id="tpecPecColYes" label="&preferences.yes;" oncommand="tpec_org.xtc.tp.preferences.setPecCol('on');" type="radio" name="peccolGroup"/>
+                    <radio id="tpecPecColNo" label="&preferences.no;" oncommand="tpec_org.xtc.tp.preferences.setPecCol('off');" type="radio" name="peccolGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+          <row>
+            <groupbox>
+              <caption label="&preferences.autoarchive;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="aa_pref_01" value="&preferences.autoarchive;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecAutoArchiveMenu" orient="horizontal">
+                    <radio id="tpecAutoArchiveYes" label="&preferences.yes;" oncommand="tpec_org.xtc.tp.preferences.setAutoArchive('on');" type="radio" name="peccolGroup"/>
+                    <radio id="tpecAutoArchiveNo" label="&preferences.no;" oncommand="tpec_org.xtc.tp.preferences.setAutoArchive('off');" type="radio" name="peccolGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+                <label id="aa_pref_02" value="&preferences.autoarchive.dir;"/>
+               <hbox>
+                  <spacer flex="1"/>
+                  <textbox id="tpecArchiveDir"/>
+                  <button label='&preferences.autoarchive.change;' oncommand="tpec_org.xtc.tp.preferences.aafolder();"/>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+          <row>
+            <groupbox>
+              <caption label="&preferences.defaultpec;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="aa_pref_02" value="&preferences.defaultpec;"/>
+               <hbox>
+                  <spacer flex="1"/>
+                  <textbox id="tpecDefaultPec"/>
+                  <button label='&preferences.defaultpec.change;' oncommand="tpec_org.xtc.tp.preferences.defaultpec();"/>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+          <row>
+            <groupbox>
+              <caption label="&preferences.showsendbutton;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="status_pref_01" value="&preferences.showsendbutton.desc;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecShowSendButtonMenu" orient="horizontal">
+                    <radio id="tpecShowSendButtonYes" label="&preferences.yes;" oncommand="tpec_org.xtc.tp.preferences.setShowDefaultButton('on');" type="radio" name="ShowDefaultButtonGroup"/>
+                    <radio id="tpecShowSendButtonNo" label="&preferences.no;" oncommand="tpec_org.xtc.tp.preferences.setShowDefaultButton('off');" type="radio" name="ShowDefaultButtonGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+          <row>
+            <groupbox>
+              <caption label="&preferences.sharedata;" style="font-weight: bold;"/>
+              <vbox>
+                <label id="status_pref_01" value="&preferences.sharedata.desc;"/>
+                <hbox>
+                  <spacer flex="1"/>
+                  <radiogroup id="tpecShareDataButtonMenu" orient="horizontal">
+                    <radio id="tpecShareDataButtonYes" label="&preferences.yes;" oncommand="tpec_org.xtc.tp.preferences.setShareDataButton('on');" type="radio" name="ShowShareDataGroup"/>
+                    <radio id="tpecShareDataButtonNo" label="&preferences.no;" oncommand="tpec_org.xtc.tp.preferences.setShareDataButton('off');" type="radio" name="ShowShareDataGroup"/>
+                  </radiogroup>
+                  <spacer flex="1"/>
+                </hbox>
+              </vbox>
+            </groupbox>
+          </row>
+         </rows>
+      </grid>
+
+      <hbox>
+        <spacer flex="1"/>
+        <button label='&about.button.ok;' oncommand="tpec_org.xtc.tp.preferences.ok();"/>
+      </hbox>
+    </vbox>
+
+</window>

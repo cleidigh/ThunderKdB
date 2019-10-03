@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<?xml-stylesheet href="skin/selectTP.css" type="text/css"?> 
+<?xml-stylesheet href="skin/thunderpec.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+
+<window
+    id="tpecSelectWindow"
+    title="&help.title;"
+    class="tpecMyClass"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    width="700"
+    height="500"
+    onload="tpec_org.xtc.tp.help.init();">
+
+    <script type="application/x-javascript" src="chrome://thunderpec/content/helpTP.js" />
+
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <menulist id="tpecHelpML" oncommand="tpec_org.xtc.tp.help.changepage();">
+        <menupopup>
+          <menuitem label="Introduzione" value="help/intro.html" selected="true" />
+          <menuitem label="Menu ThunderPEC" value="help/menu_t.html" />
+          <menuitem label="Menu Messaggio" value="help/menu_m.html" />
+          <menuitem label="Menu Contestuale" value="help/context.html" />
+          <menuitem label="Indirizzo PEC predefinito e pulsante Scrivi PEC" value="help/scrivipec.html" />
+          <menuitem label="Colonna PEC" value="help/colonnapec.html" />
+          <menuitem label="Toolbar" value="help/toolbar.html" />
+          <menuitem label="Composizione di un nuovo messaggio" value="help/compose.html" />
+          <menuitem label="Stato del messaggio" value="help/status.html" />
+          <menuitem label="Filtri rapidi" value="help/filtri.html" />
+          <menuitem label="Archivia notifiche" value="help/archivia.html" />
+          <menuitem label="Archiviazione Automatica" value="help/archiviazionea.html" />
+          <menuitem label="Integrazione con SLPCT" value="help/slpct.html" />
+          <menuitem label="Cerca PA" value="help/spcdata.html" />
+        </menupopup>
+      </menulist>
+      <iframe type="content" src="help/help.html" flex="1" id="tpecHelpViewer" name="helpTable" height="380"/>
+      <hbox>
+        <spacer flex="1"/>
+        <button label='&help.button.ok;' oncommand="tpec_org.xtc.tp.help.ok();"/>
+      </hbox>
+    </vbox>
+
+</window>

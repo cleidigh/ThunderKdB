@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<?xml-stylesheet href="skin/selectTP.css" type="text/css"?> 
+<?xml-stylesheet href="skin/thunderpec.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+
+<window
+    id="tpecSelectWindow"
+    title="&cert.title;"
+    class="tpecMyClass"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    width="600"
+    height="500"
+    onload="tpec_org.xtc.tp.cert.init();">
+
+    <script type="application/x-javascript" src="chrome://thunderpec/content/certTP.js" />
+
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <iframe type="content" src="" flex="1" id="tpecCertViewer" name="certTable" height="400"/>
+      <hbox>
+        <spacer flex="1"/>
+        <button label='&cert.button.print;' oncommand="tpec_org.xtc.tp.cert.print();"/>
+        <button label='&cert.button.ok;' oncommand="tpec_org.xtc.tp.cert.ok();"/>
+      </hbox>
+    </vbox>
+
+</window>

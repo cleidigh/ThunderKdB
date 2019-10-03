@@ -1,0 +1,10 @@
+content   srsbdnr                 chrome/content/
+skin      srsbdnr   classic/1.0   chrome/skin/
+locale    srsbdnr   en-US         chrome/locale/en-US/
+
+override chrome://messenger/content/glodaFacetView.xhtml chrome://srsbdnr/content/srsbdnrOverrideOlder.xhtml appversion<3.1.5
+override chrome://messenger/content/glodaFacetView.xhtml chrome://srsbdnr/content/srsbdnrOverride33a4pre.xhtml appversion>=3.1.5
+override chrome://messenger/content/glodaFacetView.xhtml chrome://srsbdnr/content/srsbdnrOverride5.xhtml appversion>=5.0
+override chrome://messenger/content/glodaFacetView.xhtml chrome://srsbdnr/content/srsbdnrOverride17.xhtml appversion>=17.0
+override chrome://messenger/content/glodaFacetView.xhtml chrome://srsbdnr/content/srsbdnrOverride38.xhtml appversion>=38.0
+override chrome://messenger/content/glodaFacetView.xhtml chrome://srsbdnr/content/srsbdnrOverride602.xhtml appversion>=60.0

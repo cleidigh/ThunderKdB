@@ -1,0 +1,63 @@
+* {
+  font-family: sans-serif;
+}
+
+window {
+  background: white;
+}
+
+caption {
+  background: white;
+  font-size: 14px;
+  color: #0000ff;
+}
+
+radio[selected="true"]{
+  font-weight: bold;
+  color: #cc0000;
+}
+
+checkbox[checked="true"]{
+  font-weight: bold;
+  color: #cc0000;
+}
+
+button {
+  -moz-appearance: none;
+  background: #3498db;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  border: 1px solid threedshadow;
+  -moz-padding-start: 5px;
+  -moz-padding-end: 5px;
+
+}
+
+button:hover {
+  -moz-appearance: none;
+  background: #3cb0fd;
+  text-decoration: none;
+  color : #ff0000;
+}
+
+menulist {
+  -moz-appearance: none;
+  background: #3498db;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  border: 1px solid threedshadow;
+  padding: 10px
+  -moz-padding-start: 5px;
+  -moz-padding-end: 5px;
+  min-height: 24px;
+}

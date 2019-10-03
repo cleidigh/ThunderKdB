@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>masterpasswordtimeoutplus@vano</em:id>
+		<em:version>1.30.8.1</em:version>
+		<em:type>2</em:type>
+		<em:unpack>true</em:unpack>
+		<em:name>Master Password+</em:name>
+		<em:description>Various enhancements for built-in "Master Password" feature</em:description>
+		<em:creator>V@no</em:creator>
+		<em:bootstrap>false</em:bootstrap>
+		<em:homepageURL>https://addons.thunderbird.net/addon/master-password</em:homepageURL>
+		<em:optionsURL>chrome://mapaplus/content/masterpasswordplusOptions.xul</em:optionsURL>
+		<em:iconURL>chrome://mapaplus/skin/images/masterpasswordplus.png</em:iconURL>
+		<em:aboutURL>chrome://mapaplus/content/masterpasswordplusAbout.xul</em:aboutURL>
+		<em:translator>Fang5566 (zh-CN)</em:translator>
+		<em:translator>Julián Andrés Osorio López (es-ES)</em:translator>
+		<em:translator>SN (de-DE)</em:translator>
+		<em:translator>Artem Polivanchuk (uk-UA)</em:translator>
+		<em:multiprocessCompatible>true</em:multiprocessCompatible>
+
+		<!-- Firefox -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>4.0</em:minVersion>
+				<em:maxVersion>56.*</em:maxVersion><!--changing to 57 deletes the addon without any notification. Mozilla, are you out of your fucking mind?!-->
+			</Description>
+		</em:targetApplication>
+
+		<!-- Thunderbird -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>5.0</em:minVersion>
+				<em:maxVersion>62.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+		<!-- Postbox -->
+		<em:targetApplication>
+				<Description>
+						<em:id>postbox@postbox-inc.com</em:id>
+						<em:minVersion>3.0</em:minVersion>
+						<em:maxVersion>5.*</em:maxVersion>
+				</Description>
+		</em:targetApplication>
+
+		<!-- PaleMoon -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
+				<em:minVersion>15.0</em:minVersion>
+				<em:maxVersion>27.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+		<em:localized>
+			 <Description>
+					<em:locale>zh-CN</em:locale>
+					<em:name>Master Password+</em:name>
+					<em:description>以多种方式增强内建的"主密码"功能</em:description>
+					<em:creator>V@no</em:creator>
+			 </Description>
+		</em:localized>
+	</Description>
+</RDF>

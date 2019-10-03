@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://mapaplus/locale/masterpasswordplusOptions.dtd">
+
+<overlay id="masterPasswordPlusChangempOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<prefwindow id="changemp"
+							buttonlabelextra1="&mapaPlus.options.unlock;"
+							ondialogextra1="mapaPlus.protectUnlock()"
+							style="min-height: 50em; max-width: 60em;"
+	>
+		<prefpane id="masterPasswordPlusOptions" style="overflow:auto;min-height: 40em" flex="1"/>
+		<script type="application/javascript" src="chrome://mapaplus/content/masterpasswordplusCommon.js"/>
+		<script type="application/javascript" src="chrome://mapaplus/content/changemp.js"/>
+	</prefwindow>
+</overlay>

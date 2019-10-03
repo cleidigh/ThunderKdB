@@ -1,0 +1,36 @@
+content		mapaplus							chrome/content/
+locale		mapaplus	en-US				chrome/locale/en-US/
+locale		mapaplus	ru-RU				chrome/locale/ru-RU/
+locale		mapaplus	zh-CN				chrome/locale/zh-CN/
+locale		mapaplus	es-ES				chrome/locale/es-ES/
+locale		mapaplus	de-DE				chrome/locale/de-DE/
+locale		mapaplus	uk-UA				chrome/locale/uk-UA/
+skin			mapaplus	classic/1.0	chrome/skin/
+resource	mapaplus							chrome/modules/
+component	{3F6CF5B4-39AE-11E3-9DB0-5FED6188709B}	components/masterPasswordPlusComponents.js
+contract	@mpp/masterpasswordplus;1	{3F6CF5B4-39AE-11E3-9DB0-5FED6188709B}
+category	profile-after-change	MasterPasswordPlus	@mpp/masterpasswordplus;1
+
+style	chrome://global/content/customizeToolbar.xul												chrome://mapaplus/skin/masterpasswordplus.css
+style	chrome://browser/content/browser.xul																chrome://mapaplus/skin/masterpasswordplus.css
+style	chrome://messenger/content/messenger.xul														chrome://mapaplus/skin/masterpasswordplus.css
+style	chrome://mapaplus/content/masterpasswordplusOptionsOverlay.xul			chrome://global/skin/menu.css
+
+overlay	chrome://browser/content/browser.xul															chrome://mapaplus/content/masterpasswordplusOverlay.xul
+overlay	chrome://passwordmgr/content/passwordManager.xul									chrome://mapaplus/content/passwordManagerOverlay.xul
+overlay	chrome://global/content/commonDialog.xul													chrome://mapaplus/content/commonDialogOverlay.xul
+#overlay	chrome://mozapps/content/preferences/changemp.xul									chrome://mapaplus/content/changempOverlay.xul
+#overlay	chrome://pippki/content/changepassword.xul												chrome://mapaplus/content/changepasswordOverlay.xul
+#overlay	chrome://mozapps/content/preferences/removemp.xul									chrome://mapaplus/content/removempOverlay.xul
+overlay	chrome://messenger/content/messenger.xul													chrome://mapaplus/content/masterpasswordplusOverlay.xul
+overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://mapaplus/content/masterpasswordplusOverlay.xul
+overlay	chrome://messenger/content/addressbook/addressbook.xul						chrome://mapaplus/content/masterpasswordplusOverlay.xul
+overlay	chrome://messenger/content/messageWindow.xul											chrome://mapaplus/content/masterpasswordplusOverlay.xul
+
+overlay	chrome://mapaplus/content/masterpasswordplusOverlay.xul						chrome://mapaplus/content/masterpasswordplusLockOverlay.xul
+overlay	chrome://mapaplus/content/masterpasswordplusOptions.xul						chrome://mapaplus/content/masterpasswordplusOptionsOverlay.xul
+overlay	chrome://mapaplus/content/changempOverlay.xul											chrome://mapaplus/content/masterpasswordplusOptionsOverlay.xul
+overlay	chrome://mapaplus/content/changepasswordOverlay.xul								chrome://mapaplus/content/masterpasswordplusOptionsOverlay.xul
+overlay	chrome://mapaplus/content/optionsRestore.xul											chrome://mapaplus/content/masterpasswordplusOverlay.xul
+
+overlay	chrome://sessionmanager/content/session_prompt.xul								chrome://mapaplus/content/masterpasswordplusForcePromptOverlay.xul

@@ -1,0 +1,393 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<?xml-stylesheet href="skin/accountTP.css" type="text/css"?> 
+<?xml-stylesheet href="skin/thunderpec.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+
+<wizard
+    id="tpecAccountWizard"
+    class="tpecMyClass"
+    title="&account.title;"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    onload="tpec_org.xtc.tp.account.init();">
+  <script type="application/x-javascript" src="chrome://thunderpec/content/prefTP.js" />
+  <script type="application/x-javascript" src="chrome://thunderpec/content/providerTP.js" />
+  <script type="application/x-javascript" src="chrome://thunderpec/content/accountTP.js"/>
+
+  <script type="application/javascript" src="chrome://messenger/content/accountcreation/accountConfig.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/accountcreation/util.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/accountcreation/sanitizeDatatypes.js"/>  
+  <script type="application/javascript" src="chrome://messenger/content/accountcreation/createInBackend.js"/>
+
+  <wizardpage 
+    pageid="start" 
+    next="choose"
+    >
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.start.description;</description>
+      <spacer class="vspacer"/>
+      <description>&account.start.footer;</description>
+      <spacer flex="10"/>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.choose.title;" 
+    pageid="choose"
+    next="realname"
+    onpageshow="tpec_org.xtc.tp.account.chooseShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.chooseNext();" 
+    >
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.choose.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+          <column flex="2"/>
+          <column flex="3"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.choose.title;" />
+            <menulist id="tpecAccountList" >
+              <menupopup id="tpecChooseMenu">
+              </menupopup>
+            </menulist>
+            <label class="redlabel" id="tpecChoose01" value="&account.choose.error01;" />
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.name.title;" 
+    pageid="name"
+    next="realname"
+    onpageshow="tpec_org.xtc.tp.account.nameShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.nameNext();" 
+    >
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.name.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+          <column flex="2"/>
+          <column flex="3"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.name.title;" />
+            <textbox id="tpecAccountName"/>
+            <label class="redlabel" id="tpecName01" value="&account.name.error01;" />
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.realname.title;" 
+    pageid="realname"
+    next="email"
+    onpageshow="tpec_org.xtc.tp.account.realnameShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.realnameNext();" 
+    >
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.realname.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+          <column flex="2"/>
+          <column flex="3"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.realname.title;" />
+            <textbox id="tpecRealName"/>
+            <label class="redlabel" id="tpecRealName01" value="&account.realname.error01;" />
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.email.title;" 
+    pageid="email"
+    next="type"
+    onpageshow="tpec_org.xtc.tp.account.emailShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.emailNext();" 
+    >
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.email.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+          <column flex="2"/>
+          <column flex="3"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.email.title;" />
+            <textbox id="tpecAccountEmail"/>
+            <label class="redlabel" id="tpecEmail01" value="&account.email.error01;" />
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.type.title;" 
+    pageid="type"
+    next="incoming"
+    onpageshow="tpec_org.xtc.tp.account.typeShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.typeNext();" 
+    >
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.type.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+          <column flex="2"/>
+          <column flex="3"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.type.title;" />
+            <spacer class="hspacer"/>
+            <menulist id="tpecAccountType" width="150">
+              <menupopup>
+                <menuitem label="IMAP"/>
+                <menuitem label="POP3"/>
+              </menupopup>
+            </menulist>
+            <label class="redlabel" id="tpecType01" value="&account.type.error01;" />
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.inserver.title;" 
+    pageid="incoming"
+    next="incredential"
+    onpageshow="tpec_org.xtc.tp.account.inserverShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.inserverNext();" 
+    >
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.inserver.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+          <column flex="2"/>
+          <column flex="3"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.inserver.title;" />
+            <textbox id="tpecIncomingServer"/>
+            <label class="redlabel" id="tpecIncoming01" value="&account.inserver.error01;" />
+          </row>
+          <row>
+            <label class="bluelabel" value="&account.inport.title;" />
+            <textbox id="tpecIncomingPort"/>
+            <label class="redlabel" id="tpecIncoming02" value="&account.inserver.error02;" />
+          </row>
+          <row>
+            <label class="bluelabel" value="&account.inssl.title;" />
+            <checkbox id="tpecIncomingSSL"/>
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.inuser.title;" 
+    pageid="incredential"
+    next="outgoing"
+    onpageshow="tpec_org.xtc.tp.account.inuserShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.inuserNext();" 
+    >
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.inuser.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+          <column flex="2"/>
+          <column flex="3"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.inuser.user;" />
+            <textbox id="tpecIncomingUser"/>
+            <label class="redlabel" id="tpecInuser01" value="&account.inuser.error01;" />
+          </row>
+          <row>
+            <label class="bluelabel" value="&account.inuser.pwd;" />
+            <textbox id="tpecIncomingPwd" type="password"/>
+            <label class="redlabel" id="tpecInuser02" value="&account.inuser.error02;" />
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.outserver.title;" 
+    pageid="outgoing"
+    next="outcredential"
+    onpageshow="tpec_org.xtc.tp.account.outserverShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.outserverNext();" 
+    >
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.outserver.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+          <column flex="2"/>
+          <column flex="3"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.outserver.title;" />
+            <textbox id="tpecOutgoingServer"/>
+            <label class="redlabel" id="tpecOutgoing01" value="&account.outserver.error01;" />
+          </row>
+          <row>
+            <label class="bluelabel" value="&account.outport.title;" />
+            <textbox id="tpecOutgoingPort"/>
+            <label class="redlabel" id="tpecOutgoing02" value="&account.outserver.error02;" />
+          </row>
+          <row>
+            <label class="bluelabel" value="&account.outssl.title;" />
+            <checkbox id="tpecOutgoing02"/>
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.outuser.title;" 
+    pageid="outcredential"
+    next="last"
+    onpageshow="tpec_org.xtc.tp.account.outuserShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.outuserNext();" 
+    >
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.outuser.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+          <column flex="2"/>
+          <column flex="3"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.outuser.user;" />
+            <textbox id="tpecOutgoingUser"/>
+            <label class="redlabel" id="tpecOutuser01" value="&account.outuser.error01;" />
+          </row>
+          <row>
+            <label class="bluelabel" value="&account.outuser.pwd;" />
+            <textbox id="tpecOutgoingPwd" type="password"/>
+            <label class="redlabel" id="tpecOutuser02" value="&account.outuser.error01;" />
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+
+  <wizardpage 
+    label ="&account.last.title;" 
+    pageid="last"
+    next=""
+    onpageshow="tpec_org.xtc.tp.account.lastShow();"
+    onpageadvanced="tpec_org.xtc.tp.account.lastNext();" 
+    >
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <description>&account.last.description;</description>
+      <spacer class="vspacer"/>
+      <grid>
+        <columns>
+          <column flex="1"/>
+        </columns>
+        <rows>
+          <row>
+            <label class="bluelabel" value="&account.last.title;" />
+          </row>
+        </rows>
+      </grid>
+    </vbox>
+  </wizardpage>
+  
+</wizard>

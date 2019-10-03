@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>spcdata</title></head>
+<body>
+<h1>Cerca PA</h1>Da alcuni mesi, &egrave; disponibile il portale degli Open Data SPC (<a href="http://spcdata.digitpa.gov.it/index.html" target="_blank">spcdata.digitpa.gov.it</a>) che contiene i dati dell'Indice della Pubblica Amministrazione, (solo i 
+soggetti definiti ai sensi dell'art.2 comma 2 del <a href="http://www.digitpa.gov.it/fruibilita-del-dato" target="_blank">CAD</a>). Questi dati sono 
+stati linkati ad altri dataset pubblici. <br>
+<br>
+Tra le informazioni disponibili, come evidenziato dalla pagina dei <a href="http://spcdata.digitpa.gov.it/servizi.html" target="_blank">servizi</a>, sono presenti gli indirizzi PEC degli uffici della PA. <br>
+<br>
+La versione 1.3 di ThunderPEC introduce la funzionalit&agrave; <span style="font-weight: bold;">Cerca PA</span>
+che permette la ricerca di un particolare indirizzo PEC direttamente da
+Thunderbird e costituisce il primo livello integrazione di ThunderPEC
+con questa base dati semantica.<br>
+<br>
+La funzionalit&agrave; &egrave; disponibile sia nella finestra principale di
+ThunderPEC che nella finestra di composizione di un nuovo messaggio PEC<br>
+<table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; text-align: center;"><img src="img/spcdata.01.png" alt="spcdata.01.png"></td>
+      <td style="vertical-align: top; text-align: center;"><img src="img/spcdata.02.png" alt="spcdata.02.png"></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center; font-weight: bold;"><small><small>Finestra principale di Thunderbird<br>
+      </small></small></td>
+      <td style="vertical-align: top; text-align: center; font-weight: bold;"><small><small>Composizione di un nuovo messaggio<br>
+      </small></small></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+Utilizzando il sottomenu <span style="font-weight: bold;">Cerca PA</span>, ThunderPEC presenta una finestra di ricerca<br>
+<div style="text-align: center;"><img src="img/spcdata.08.png" alt="spcdata.08.png"><br>
+</div>
+Inseriti i termini di ricerca e premuto il tasto <span style="font-weight: bold;">Cerca</span>
+(o direttamente il tasto Invio), ThunderPEC provvede ad interrogare la
+base dati, attraverso l'interfaccia SPARQL disponibile all'indirizzo <a href="http://spcdata.digitpa.gov.it:8899/sparql" target="_blank">http://spcdata.digitpa.gov.it:8899/sparql</a>.<br>
+<br>
+<span style="font-weight: bold; color: red;">IMPORTANTE: in caso di presenza di proxy/firewall, verificare la connettivit&agrave; verso l'indirizzo indicato</span><br>
+<br>
+ThunderPEC provvede all'elaborazione dei termini della ricerca,
+introducendo automaticamente dei caratteri jolly (wildcard) al posto
+degli spazi che separano le parole (ad esempio, scrivendo "comune
+torino", ThunderPEC effettuer&agrave; la ricerca di "comune*torino", restituendo "comune di torino" tra i risultati)<br>
+<br>
+Come evidenziato dalla figura, la finestra presenta il pulsante <span style="font-weight: bold;">Invia A:</span>
+per la composizione di un nuovo messaggio di posta elettronica
+certificata verso l'indirizzo PEC selezionato. Nel caso in cui, la
+finestra di ricerca fosse stata aperta dalla composizione di un nuovo
+messaggio, al posto del pulante <span style="font-weight: bold;">Invia A:</span> sono presenti i tasti <span style="font-weight: bold;">A:</span> e <span style="font-weight: bold;">CC:</span> per inserire l'indirizzo PEC selezionato nel relativo indirizzo di destinazione.<br>
+<br>
+<div style="text-align: center;"><img src="img/spcdata.05.png" alt="spcdata.05.png"><br>
+</div>
+<br>
+L'indirizzo selezionato &egrave; evidenziato da una diversa colorazione.
+Inoltre, nella parte inferiore della finestra, &egrave; presente una riga di
+stato che informa l'utente sul numero totale di corrispondenze trovate.
+Ogni singola ricerca &egrave; limitata a 50 risultati; se la ricerca
+restituisce un numero superiore di risulati (come nell'esempio
+sottoriportato), &egrave; possibile pasare al set successivo (o precedente)
+attraverso il pulsante <span style="font-weight: bold;">Successivi</span> (<span style="font-weight: bold;">Precedenti</span>)<br>
+<br>
+<div style="text-align: center;"><img src="img/spcdata.06.png" alt="spcdata.06.png"><br>
+</div>
+<br>
+Premendo il pulsante <span style="font-weight: bold;">A:</span>/<span style="font-weight: bold;">CC:</span>/<span style="font-weight: bold;">Invia A:</span>,
+l'indirizzo selezionato &egrave; inserito all'interno del nuovo messaggio PEC
+(nell'esempio riportato, l'indirizzo PEC del Azienda Sanitaria Locale
+TO1 &egrave; stato inserito come destinatario principale del nuovo messaggio)<br>
+<br>
+<div style="text-align: center;"><img src="img/spcdata.07.png" alt="spcdata.07.png"><br>
+</div>
+<br>
+</body></html>

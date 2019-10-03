@@ -1,0 +1,82 @@
+#include "nsISupports.idl"
+
+interface nsISimpleEnumerator;
+interface nsIMutableArray;
+interface nsIAbDirectory;
+interface nsIAddrDatabase;
+interface nsIFile;
+interface nsIMsgWindow;
+
+[scriptable, uuid(82057672-19A9-47E3-BB7f-0F08A28CE014)]
+interface de_ggbs_AddressbooksSync : nsISupports
+{
+  /* global values */
+  attribute string    version;
+  attribute boolean   NT; // new Technology
+
+  attribute long      count;
+  attribute long      appstarttime;
+  attribute string    state;
+  attribute boolean   exiting;
+  attribute nsIMsgWindow lastWindow;
+  attribute boolean   usesPopup;
+  attribute boolean   forceUpload;
+  attribute boolean   forceDownload;
+  attribute wstring   statusText;
+  attribute boolean   pendingupload;
+
+  /* preferences */
+  attribute boolean   checkLastModTime;
+  attribute string    synctype;
+  attribute boolean   autoupload;
+  attribute boolean   autodownload;
+  attribute boolean   hidepopups;
+  attribute boolean   hideallpopups;
+  attribute boolean   noupload;
+  attribute boolean   separateupdown;
+  attribute boolean   timeddownload;
+  attribute boolean   timedupload;
+  attribute long      loadtimer;
+  attribute string    downloadpolicy;
+  attribute string    syncpolicy;
+  attribute string    protocol;
+  attribute string    host;
+  attribute wstring   user;
+  attribute wstring   path;
+  attribute boolean   usepost;
+  attribute wstring   localpath;
+  attribute long      delayautodownload;
+  attribute wstring   imapfolder;
+  attribute boolean   imapusedraft;
+  attribute long      delayabcreate;
+  attribute boolean   noexternalappset;
+  attribute boolean   dodebug;
+
+  boolean             forceUploadOf(in string aBook, in boolean aSet);
+  boolean             forcedUploadOf(in string aBook);
+
+  boolean             doTest();
+  void                debug(in wstring text);
+  void                dump(in wstring text, in boolean always);
+  nsISimpleEnumerator allBooks();
+  nsIMutableArray     syncedAddressbooks(in string direction, in string singleBook);
+  nsIAbDirectory      getAddressBook(in string name);
+  nsIAbDirectory      createAddressBook(in string name, in string fileName);
+  boolean             deleteAddressBook(in nsIAbDirectory dir);
+   nsIAddrDatabase     getDB(in nsIAbDirectory dir);
+//   void                removeListeners(in nsIAbDirectory dir, in nsIAddrDatabase db);
+  string              clearAddressBook(in nsIAbDirectory dir);
+  string              fillAddressBook(in nsIAbDirectory dir, in nsIFile file);
+  boolean             LDIFAddressBook(in nsIAbDirectory dir, in nsIFile file);
+  wstring             externalFilename(in nsIAbDirectory dir);
+  wstring             setExternalFilename(in nsIAbDirectory dir, in wstring externalFilename);
+  void                addListener();
+  void                removeListener();
+  nsIFile             getDir(in string special);
+  string              readMabData(in nsIFile nsIMabFile, in string addLastMod);
+  nsIFile             writeMabData(in nsIFile nsIMabFile, in string abData);
+  void                showPopup(in string direction, in string singlebook, in string type,
+                                  in boolean force);
+  boolean             finalize();
+  
+};

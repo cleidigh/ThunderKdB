@@ -1,0 +1,92 @@
+#tpecToolbar {
+  -moz-appearance: none;
+  padding: 0;
+  border-bottom-width: 0;
+  float:right;
+}
+
+
+#tpecToolbar[iconsize="small"] .tpecForwardButton {
+  list-style-image: url("chrome://thunderpec/content/img/fwd.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecToolbar[iconsize="small"] .tpecReplyButton {
+  list-style-image: url("chrome://thunderpec/content/img/reply.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecToolbar[iconsize="small"] .tpecReplyAllButton {
+  list-style-image: url("chrome://thunderpec/content/img/replyall.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecToolbar[iconsize="small"] .tpecPrintButton {
+  list-style-image: url("chrome://thunderpec/content/img/print.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecToolbar[iconsize="small"] .tpecReceiptButton {
+  list-style-image: url("chrome://thunderpec/content/img/xml.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecToolbar[iconsize="small"] .tpecEnvelopeButton {
+  list-style-image: url("chrome://thunderpec/content/img/receipt.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecToolbar[iconsize="small"] .tpecSearchButton {
+  list-style-image: url("chrome://thunderpec/content/img/search.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecToolbar[iconsize="small"] .tpecEsitoButton {
+  list-style-image: url("chrome://thunderpec/content/img/pct_e.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecToolbar[iconsize="small"] .tpecFatturaButton {
+  list-style-image: url("chrome://thunderpec/content/img/bill.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecCompose[iconsize="small"] .tpecCmpReceiptButton {
+  list-style-image: url("chrome://thunderpec/content/img/cmp.receipt.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecCompose[iconsize="small"] .tpecCmpSpcdatatButton {
+  list-style-image: url("chrome://thunderpec/content/img/cmp.spcdata.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecCompose[iconsize="small"] .tpecCmpShaButton {
+  list-style-image: url("chrome://thunderpec/content/img/cmp.sha256.png");
+  -moz-box-orient: horizontal;
+}
+
+#tpecCompose[iconsize="small"] .tpecAutoArchButton {
+  list-style-image: url("chrome://thunderpec/content/img/zip.png");
+  -moz-box-orient: horizontal;
+}
+
+#button-newpec {
+  list-style-image: url("chrome://thunderpec/content/img/newpec.png")  !important;
+}
+
+.menuIcon {
+  list-style-image: url("chrome://thunderpec/content/img/menuicon.png");
+}
+
+
+treechildren::-moz-tree-cell-text(pecRed) {
+  font-weight: bold;
+  color: #cc0000;
+  text-align: center;
+}
+
+treechildren::-moz-tree-cell-text(pecGreen) {
+  font-weight: bold;
+  color: #00cc00;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://mapaplus/skin/masterpasswordplusOptions.css" type="text/css"?>
+
+<!DOCTYPE window [
+	<!ENTITY % optionsDTD SYSTEM "chrome://mapaplus/locale/masterpasswordplusOptions.dtd"> %optionsDTD;
+]>
+
+
+<dialog	id="mapaPlusWindowOptionsRestore"
+				title="&optionsRestore.title;"
+				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				onunload="mapaPlus.unload()"
+				ondialogaccept="mapaPlus.action(1)"
+				ondialogcancel="mapaPlus.action(0)"
+				buttons="accept,cancel"
+				buttonlabelaccept="&optionsRestore.restore;"
+				persist="screenX screenY width height"
+				flex="1"
+>
+	<vbox id="main" flex="1" style="overflow: auto;">
+		<tree id="tree" flex="1" editable="true" hidecolumnpicker="true">
+			<treecols>
+				<treecol id="sel" type="checkbox" editable="true" ignoreincolumnpicker="true" fixed="true"/>
+				<splitter	class="tree-splitter" resizeafter="grow"/>
+				<treecol id="name" primary="true" label="&optionsRestore.setting;" persist="width"/>
+				<splitter	class="tree-splitter" resizeafter="grow"/>
+				<treecol id="value" label="&optionsRestore.value;" editable="true" persist="width"/>
+				<splitter	class="tree-splitter" resizeafter="grow"/>
+			</treecols>
+			<treechildren/>
+		</tree>
+	</vbox>
+	<box hidden="true">
+		<box id="masterPasswordPlusLock"/>
+		<keyset id="mapaPlus_keyset"/>
+	</box>
+	<script type="application/javascript" src="optionsRestore.js"/>
+	
+</dialog>

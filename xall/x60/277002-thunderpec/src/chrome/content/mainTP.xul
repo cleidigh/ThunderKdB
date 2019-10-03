@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messageHeader.css" type="text/css"?>
+<?xml-stylesheet href="skin/mainTP.css" type="text/css"?> 
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+<overlay id="tp-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="tpecStringBundle" src="chrome://thunderpec/locale/thunderpec.properties"/>
+  </stringbundleset>
+
+  <script type="application/x-javascript" src="chrome://thunderpec/content/prefTP.js" />
+  <script type="application/x-javascript" src="chrome://thunderpec/content/utilityTPAsync.js" />
+  <script type="application/x-javascript" src="chrome://thunderpec/content/utilityTP.js" />
+  <script type="application/x-javascript" src="chrome://thunderpec/content/baltimoreTP.js" />
+  <script type="application/x-javascript" src="chrome://thunderpec/content/listenerTP.js" />
+  <script type="application/x-javascript" src="chrome://thunderpec/content/columnTP.js" />
+  <script type="application/x-javascript" src="chrome://thunderpec/content/mainTP.js" />
+
+  <script>window.addEventListener("load", tpec_org.xtc.tp.init, false);</script>  
+  <script>window.addEventListener("unload", tpec_org.xtc.tp.end, false);</script>  
+
+  <menubar id="mail-menubar">
+    <menu id="tpec-menu" label="&tpmenu;" insertbefore="helpMenu">
+      <menupopup id="tpec-popup" onpopupshown="tpec_org.xtc.tp.tpecMenu();">
+            <menu id="tpecAdd" label="&tpmenu.content.account;">
+              <menupopup id="tpecAddSubMenu">
+                <menuitem label="&tpmenu.content.account.add;" oncommand="tpec_org.xtc.tp.addAccount();"/>
+                <menuitem label="&tpmenu.content.account.select;" oncommand="tpec_org.xtc.tp.selectAccount('none');"/>
+              </menupopup>
+            </menu>
+            <!--
+            <menu id="tpecReceipt" label="&receipt.menu;">
+              <menupopup id="tpecReceiptMenu" onpopupshowing="tpec_org.xtc.tp.receiptMenu();">
+                <menuitem id="tpecComplete" label="&receipt.menu.complete;" oncommand="tpec_org.xtc.tp.setReceiptType('completa');" type="radio" name="receiptGroup"/>
+                <menuitem id="tpecBrief" label="&receipt.menu.brief;" oncommand="tpec_org.xtc.tp.setReceiptType('breve');" type="radio" name="receiptGroup"/>
+                <menuitem id="tpecSynth" label="&receipt.menu.synthetic;" oncommand="tpec_org.xtc.tp.setReceiptType('sintetica');" type="radio" name="receiptGroup"/>
+              </menupopup>
+            </menu>
+            <menu id="tpecP7M" label="&p7m.menu;">
+              <menupopup id="tpecP7MMenu" onpopupshowing="tpec_org.xtc.tp.p7mMenu();">
+                <menuitem id="tpecP7MOn" label="&p7m.menu.on;" oncommand="tpec_org.xtc.tp.setP7MStatus('on');" type="radio" name="p7mGroup"/>
+                <menuitem id="tpecP7MOff" label="&p7m.menu.off;" oncommand="tpec_org.xtc.tp.setP7MStatus('off');" type="radio" name="p7mGroup"/>
+              </menupopup>
+            </menu>
+            -->
+            <menuitem id="tpecSearchPA" label="&search.pa;" oncommand="tpec_org.xtc.tp.searchPA();"/>
+            <menu id="tpecPPEC" label="&ppec.menu;">
+              <menupopup id="tpecPPESubMenu">
+                <menuitem id="tpecPPECQR" label="&ppec.menu.qr;" oncommand="tpec_org.xtc.tp.ppecQR('none');" />
+              </menupopup>
+            </menu>
+            <menuitem id="tpecPreferences" label="&preferences.menu;" oncommand="tpec_org.xtc.tp.preferences();"/>
+            <menuitem id="tpecShareFollow" label="&share.follow.menu;" oncommand="tpec_org.xtc.tp.share();"/>
+            <menuitem id="tpecHelp" label="&help.title;" oncommand="tpec_org.xtc.tp.help();"/>
+            <menuitem id="tpecSupport" label="&support.title;" oncommand="tpec_org.xtc.tp.support();"/>
+            <menuitem id="tpecLog" label="&support.log;" oncommand="tpec_org.xtc.tp.supportlog();"/>
+            <menuitem id="tpecAbout" label="&about.title;" oncommand="tpec_org.xtc.tp.about();"/>
+      </menupopup>
+    </menu>
+  </menubar>
+
+  <vbox id="appmenuSecondaryPane">
+    <menu id="tpec-menu-vb" label="&tpmenu;" insertbefore="appmenu_help">
+      <menupopup id="tpec-popup-vb" onpopupshown="tpec_org.xtc.tp.tpecMenu();">
+            <menu id="tpecAdd-vb" label="&tpmenu.content.account;">
+              <menupopup id="tpecAddSubMenu-vb">
+                <menuitem label="&tpmenu.content.account.add;" oncommand="tpec_org.xtc.tp.addAccount();"/>
+                <menuitem label="&tpmenu.content.account.select;" oncommand="tpec_org.xtc.tp.selectAccount('none');"/>
+              </menupopup>
+            </menu>
+            <!--
+            <menu id="tpecReceipt-vb" label="&receipt.menu;">
+              <menupopup id="tpecReceiptMenu-vb" onpopupshowing="tpec_org.xtc.tp.receiptMenuVb();">
+                <menuitem id="tpecComplete-vb" label="&receipt.menu.complete;" oncommand="tpec_org.xtc.tp.setReceiptType('completa');" type="radio" name="receiptGroup"/>
+                <menuitem id="tpecBrief-vb" label="&receipt.menu.brief;" oncommand="tpec_org.xtc.tp.setReceiptType('breve');" type="radio" name="receiptGroup"/>
+                <menuitem id="tpecSynth-vb" label="&receipt.menu.synthetic;" oncommand="tpec_org.xtc.tp.setReceiptType('sintetica');" type="radio" name="receiptGroup"/>
+              </menupopup>
+            </menu>
+            <menu id="tpecP7M-vb" label="&p7m.menu;">
+              <menupopup id="tpecP7MMenu-vb" onpopupshowing="tpec_org.xtc.tp.p7mMenuVb();">
+                <menuitem id="tpecP7MOn-vb" label="&p7m.menu.on;" oncommand="tpec_org.xtc.tp.setP7MStatus('on');" type="radio" name="p7mGroup"/>
+                <menuitem id="tpecP7MOff-vb" label="&p7m.menu.off;" oncommand="tpec_org.xtc.tp.setP7MStatus('off');" type="radio" name="p7mGroup"/>
+              </menupopup>
+            </menu>
+            -->
+            <menuitem id="tpecSearchPA-vb" label="&search.pa;" oncommand="tpec_org.xtc.tp.searchPA();"/>
+            <menu id="tpecPPEC-vb" label="&ppec.menu;">
+              <menupopup id="tpecPPESubMenu-vb">
+                <menuitem id="tpecPPECQR-vb" label="&ppec.menu.qr;" oncommand="tpec_org.xtc.tp.ppecQR('none');" />
+              </menupopup>
+            </menu>
+            <menuitem id="tpecPreferences-vb" label="&preferences.menu;" oncommand="tpec_org.xtc.tp.preferences();"/>
+            <menuitem id="tpecShareFollow-vb" label="&share.follow.menu;" oncommand="tpec_org.xtc.tp.share();"/>
+            <menuitem id="tpecHelp-vb" label="&help.title;" oncommand="tpec_org.xtc.tp.help();"/>
+            <menuitem id="tpecSupport-vb" label="&support.title;" oncommand="tpec_org.xtc.tp.support();"/>
+            <menuitem id="tpecLog-vb" label="&support.log;" oncommand="tpec_org.xtc.tp.supportlog();"/>
+            <menuitem id="tpecAbout-vb" label="&about.title;" oncommand="tpec_org.xtc.tp.about();"/>
+      </menupopup>
+    </menu>
+  </vbox>
+
+  <menupopup id="messageMenuPopup" onpopupshown="tpec_org.xtc.tp.mainMenu();">  
+    <menu id="tpecMenu" class="menu-iconic menuIcon" label="&tpmenu;">
+      <menupopup id="tpecMenuSub">
+        <menuitem label="&context.forward;" id="tpecMenuFwd" oncommand="tpec_org.xtc.tp.handleMsg(event,'forward');"/>
+        <menuitem label="&context.reply;" id="tpecMenuReply" oncommand="tpec_org.xtc.tp.handleMsg(event,'reply');"/>
+        <menuitem label="&context.replyall;" id="tpecMenuReplyAll" oncommand="tpec_org.xtc.tp.handleMsg(event,'replyall');"/>
+        <menuitem label="&context.printpreview;" id="tpecMenuPrinPreview" oncommand="tpec_org.xtc.tp.handlePrint(event,'printpreview');"/>
+        <menuitem label="&context.print;" id="tpecMenuPrint" oncommand="tpec_org.xtc.tp.handlePrint(event,'print');"/>
+        <menuitem label="&context.archive;" id="tpecMenuArchive" oncommand="tpec_org.xtc.tp.handleArchive();"/>
+        <menuitem label="&context.extract;" id="tpecMenuExtract" oncommand="tpec_org.xtc.tp.extract();"/>
+      </menupopup>
+    </menu>
+  </menupopup>
+  
+  <popup id="mailContext" onpopupshown="tpec_org.xtc.tp.contextMenu();"> 
+    <menu id="tpecContext" class="menu-iconic menuIcon" label="&tpmenu;">
+      <menupopup id="tpecContextSub">
+        <!-- TODO: aggiungere search -->
+        <menuitem label="&context.forward;" id="tpecContextFwd" oncommand="tpec_org.xtc.tp.handleMsg(event,'forward');"/>
+        <menuitem label="&context.reply;" id="tpecContextReply" oncommand="tpec_org.xtc.tp.handleMsg(event,'reply');"/>
+        <menuitem label="&context.replyall;" id="tpecContextReplyAll" oncommand="tpec_org.xtc.tp.handleMsg(event,'replyall');"/>
+        <menuitem label="&context.printpreview;" id="tpecContextPrinPreview" oncommand="tpec_org.xtc.tp.handlePrint(event,'printpreview');"/>
+        <menuitem label="&context.print;" id="tpecContextPrint" oncommand="tpec_org.xtc.tp.handlePrint(event,'print');"/>
+        <menuitem label="&context.archive;" id="tpecMenuArchive" oncommand="tpec_org.xtc.tp.handleArchive();"/>
+        <menuitem label="&context.extract;" id="tpecMenuExtract" oncommand="tpec_org.xtc.tp.extract();"/>
+      </menupopup>
+    </menu>
+  </popup>
+  
+  <vbox id="expandedHeadersBox" flex="1">
+    <toolbox id="tpecToolbox"
+        defaulticonsize="small"
+        iconsize="small" 
+        minwidth="50px"
+        defaultlabelalign="end"
+        defaultmode="full"
+        style="float: right;">
+      <toolbar id="tpecToolbar"
+          align="start"
+          customizable="true"
+          mode="full" 
+          iconsize="small" 
+          defaulticonsize="small" 
+          defaultmode="full">
+          <toolbarbutton id="tpecFatturaButton" 
+              label="&toolbar.fattura;" 
+              oncommand="tpec_org.xtc.tp.fatturaButton();" 
+              class="tpecFatturaButton"/>
+          <toolbarbutton id="tpecEsitoButton" 
+              label="&toolbar.esito;" 
+              oncommand="tpec_org.xtc.tp.esitoButton();" 
+              class="tpecEsitoButton"/>
+          <toolbarbutton id="tpecSearchButton" 
+              label="&toolbar.search;" 
+              oncommand="tpec_org.xtc.tp.searchButton();" 
+              class="tpecSearchButton"/>
+          <toolbarbutton id="tpecReceiptButton" 
+              label="&toolbar.receipt;" 
+              oncommand="tpec_org.xtc.tp.receiptButton();" 
+              class="tpecReceiptButton"/>
+          <toolbarbutton id="tpecEnvelopeButton" 
+              label="&toolbar.envelope;" 
+              oncommand="tpec_org.xtc.tp.envelopeButton();" 
+              class="tpecEnvelopeButton"/>
+          <toolbarbutton id="tpecForwardButton" 
+              label="&toolbar.forward;" 
+              oncommand="tpec_org.xtc.tp.handleButton('forward');" 
+              class="tpecForwardButton"/>
+          <toolbarbutton id="tpecReplyButton" 
+              label="&toolbar.reply;" 
+              oncommand="tpec_org.xtc.tp.handleButton('reply');" 
+              class="tpecReplyButton"/>
+          <toolbarbutton id="tpecReplyAllButton" 
+              label="&toolbar.replyall;" 
+              oncommand="tpec_org.xtc.tp.handleButton('replyall');" 
+              class="tpecReplyAllButton"/>
+          <toolbarbutton id="tpecPrintButton" 
+              label="&toolbar.print;" 
+              oncommand="tpec_org.xtc.tp.handlePrintButton('printpreview');" 
+              class="tpecPrintButton"/>
+      </toolbar>
+    </toolbox>
+  </vbox>
+  
+  <popup id="folderPaneContext"> 
+	   <menuseparator id="folderTPECMenu" />
+    <menu id="tpecFolder" class="menu-iconic menuIcon" label="&tpmenu;">
+      <menupopup id="tpecFolderSub" onpopupshowing="tpec_org.xtc.tp.folderMenu();">
+        <menuitem label="&tpec.folder.select;" id="tpecFolderSelect" oncommand="tpec_org.xtc.tp.selectAccount('folder');" type="checkbox"/>
+        <menuitem label="&tpec.folder.default;" id="tpecFolderDefault" oncommand="tpec_org.xtc.tp.defaultAccount('folder');" type="checkbox"/>
+        <menuitem label="&tpec.folder.transfer;" id="tpecFolderQR" oncommand="tpec_org.xtc.tp.ppecQR('folder');"/>
+        <menuitem label="&tpec.folder.rebuild;" id="tpecFolderRB" oncommand="tpec_org.xtc.tp.rebuildDB('folder');"/>
+      </menupopup>
+    </menu>
+  </popup>
+
+  <tree id="threadTree">
+    <treecols id="threadCols">
+    <splitter class="tree-splitter" />
+    <treecol id="pecColumn" persist="hidden ordinal width" currentView="unthreaded" flex="2" width="35" label="PEC" ordinal="999"/>
+    </treecols>
+  </tree>
+
+  <menupopup  id="emailAddressPopup"> 
+	   <menuseparator id="EATPECMenu" />
+    <menu id="tpecEA" class="menu-iconic menuIcon" label="&tpmenu;">
+      <menupopup id="tpecEASub" onpopupshowing="tpec_org.xtc.tp.emailMenu(document.popupNode);">
+        <menuitem label="&tpec.email.select;" id="tpecEASelect" oncommand="tpec_org.xtc.tp.selectEmail(document.popupNode);" type="radio"/>
+      </menupopup>
+    </menu>
+  </menupopup>
+
+  <toolbar id="mail-bar3">
+    <toolbarbutton id="button-newpec"
+      crop="none"
+      label="&toolbar.writepec;"
+      oncommand="tpec_org.xtc.tp.writepec();"
+      />  
+  </toolbar>
+  
+</overlay>

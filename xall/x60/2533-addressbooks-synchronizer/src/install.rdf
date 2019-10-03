@@ -1,0 +1,48 @@
+﻿<?xml version="1.0"?>
+<RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+     xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>addressbookssync@ggbs.de</em:id>
+    <em:version>1.2.2</em:version>
+    <em:type>2</em:type>
+
+    <em:optionsURL>chrome://addressbookssync/content/options.xul</em:optionsURL>
+    <em:iconURL>chrome://addressbookssync/skin/icon.png</em:iconURL>
+    
+    
+
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>5.0</em:minVersion>
+        <em:maxVersion>62.*</em:maxVersion><!--TB-->
+      </Description>
+    </em:targetApplication>
+    <!--  SeaMonkey -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+        <em:minVersion>2.1</em:minVersion>
+        <em:maxVersion>2.59.*</em:maxVersion><!--SM-->
+      </Description>
+    </em:targetApplication>
+
+    <em:name>Addressbooks Synchronizer</em:name>
+    <em:creator>Günter Gersdorf</em:creator>
+    <em:description>Synchronize addressbooks with files stored locally, in IMAP folders or via FTP/WebDAV</em:description>
+    <em:homepageURL>https://www.ggbs.de/extensions/AddressbooksSynchronizer.html</em:homepageURL>
+    <em:contributor>Thanks to all translators!</em:contributor>
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:creator>Günter Gersdorf</em:creator>
+        <em:name>Addressbooks Synchronizer</em:name>
+        <em:description>Synchronisiert Adressbücher mit Dateien, die lokal, in IMAP Ordner oder auf einem Server (FTP/HTTP/HTTPS) liegen</em:description>
+		    <em:homepageURL>https://www.ggbs.de/extensions/AddressbooksSynchronizer.html</em:homepageURL>
+		    <em:contributor>Danke an alle Übersetzer!</em:contributor>
+      </Description>
+    </em:localized>
+  </Description>
+</RDF>

@@ -1,0 +1,24 @@
+content ResetRec jar:chrome/ResetRec.jar!/content/
+### Contextual menu on attachment
+overlay  chrome://messenger/content/messengercompose/messengercompose.xul chrome://ResetRec/content/ResetRec_Overlay.xul
+
+locale ResetRec en-US jar:chrome/ResetRec.jar!/locale/en-US/
+locale ResetRec he-IL jar:chrome/ResetRec.jar!/locale/he-IL/
+locale ResetRec de-DE jar:chrome/ResetRec.jar!/locale/de-DE/
+locale ResetRec fr-FR jar:chrome/ResetRec.jar!/locale/fr-FR/
+locale ResetRec it-IT jar:chrome/ResetRec.jar!/locale/it-IT/
+locale ResetRec ja-JP jar:chrome/ResetRec.jar!/locale/ja-JP/
+locale ResetRec pt-BR jar:chrome/ResetRec.jar!/locale/pt-BR/
+locale ResetRec tr-TR jar:chrome/ResetRec.jar!/locale/tr-TR/
+locale ResetRec zh-CN jar:chrome/ResetRec.jar!/locale/zh-CN/
+locale ResetRec zh-TW jar:chrome/ResetRec.jar!/locale/zh-TW/
+
+
+
+skin ResetRec classic/1.0 jar:chrome/ResetRec.jar!/skin/classic/
+
+# style for compose windows toolbar
+style chrome://messenger/content/messengercompose/messengercompose.xul chrome://ResetRec/skin/ResetRec.css
+
+# and also for customize toolbar window
+style chrome://messenger/content/customizeToolbar.xul chrome://ResetRec/skin/ResetRec.css

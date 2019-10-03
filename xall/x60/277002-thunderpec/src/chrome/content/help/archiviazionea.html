@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>composizione</title>
+
+<style type="text/css"></style>
+<link rel="stylesheet" href="css/help.css" type="text/css">
+</head>
+<body>
+<h1>Archiviazione Automatica</h1>
+<p>La funzionalit&agrave; di archiviazione di ThunderPEC,
+collegata alla finestra <strong><em>Stato del messaggio</em></strong>,
+permette di creare un archivio ZIP contenente un messaggio di posta
+certificata e tutte le relative ricevute e/o messaggi collegati (ad
+esempio, nel caso di un deposito PCT, l&rsquo;archivio ZIP contiene
+il messaggio inviato, le notifiche PEC di ACCETTAZIONE e CONSEGNA e le
+due ricevute PCT di ESITO CONTROLLI ed ACCETTAZIONE).
+L&rsquo;operazione di archiviazione &egrave; <em>manuale</em>
+in quanto dobbiamo verificare la completezza delle informazioni
+attraverso la finestra <strong><em>Stato del messaggio</em></strong>
+per poi procedere alla creazione dell&rsquo;archivio consistente e
+completo attraverso il pulsante <strong><em>Archivia</em></strong>
+della finestra.</p>
+<p>Da questa versione, alla modalit&agrave; descritta, si
+affianca la procedura di <strong>archiviazione automatica</strong>
+in cui possiamo decidere di procedere all&rsquo;archiviazione
+gi&agrave; in fase di invio del messaggio PEC. Una volta attivata
+la funzionalit&agrave;, ThunderPEC provveder&agrave; ad
+inserire nell&rsquo;archivio ZIP i messaggi di posta certificata
+collegati automaticamente al loro arrivo. Ad esempio, nel caso di un
+deposito PCT</p>
+<ol>
+<li>All&rsquo;atto dell&rsquo;invio del messaggio di
+DEPOSITO, attiviamo il flag di archiviazione automatica (come descritto
+nel seguito); ThunderPEC crea un archivio ZIP contenente il solo
+messaggio inviato</li>
+<li>Alla ricezione della notifica PEC di ACCETTAZIONE,
+ThunderPEC la inserisce nel archivio</li>
+<li>Alla ricezione della notifica PEC di CONSEGNA, ThunderPEC
+la aggiunge all&rsquo;archivio</li>
+<li>Alla ricezione della ricevuta di ESITO CONTROLLI,
+ThunderPEC la aggiunge automaticamente all&rsquo;archivio creato</li>
+<li>Alla ricezione della ricevuta di ACCETTAZIONE, ThunderPEC
+la aggiunge automaticamente all&rsquo;archivio creato</li>
+</ol>
+<p>L&rsquo;intervallo di tempo tra un passo ed il successivo,
+che pu&ograve; essere anche di diversi giorni, &egrave;
+ininfluente .</p>
+<p>Il processo descritto &egrave; valido anche per un flusso
+di messaggi relativo alla FatturaPA o per un messaggio PEC normale (in
+pratica, per tutte le tipologie di messaggi gestite
+all&rsquo;interno della finestra <strong>Stato del messaggio</strong>).</p>
+<p>Le preferenze associate alla funzionalit&agrave; di <strong><em>Archiviazione
+automatica</em></strong> sono disponibili
+all&rsquo;interno della finestra delle <strong><em>Impostazioni</em></strong>
+di ThunderPEC in cui possiamo decidere se la funzionalit&agrave;
+&egrave; sempre attiva e la cartella in cui ThunderPEC
+inserir&agrave; gli archivi ZIP</p>
+<p><img src="img/170/170pre5/170.5.01.png" alt="archibviazione automatica"></p>
+<p>Il pulsante per <strong><em>Archiviazione
+automatica</em></strong> &egrave; presente nella
+finestra di composizione di un nuovo messaggio, all&rsquo;interno
+della toolbar personalizzata di ThunderPEC. La figura evidenzia lo
+stato del pulsante se l&rsquo;archiviazione automatica non
+&egrave; attiva</p>
+<p><img src="img/170/170pre5/170.5.02.png" alt="170.5.02"></p>
+<p>La figura seguente mostra lo stato del pulsante quando
+l&rsquo;archiviazione automatica &egrave; attiva</p>
+<p><img src="img/170/170pre5/170.5.03.png" alt="archibviazione automatica"></p>
+<p>Nel caso in cui abbiamo dimenticato di definire la cartella
+per l&rsquo;archiviazione automatica, premendo il relativo
+pulsante, per l&rsquo;attivazione della funzionalit&agrave; sul
+messaggio che si sta per inviare, ThunderPEC chiede di indicare la
+cartella di destinazione degli archivi</p>
+<p><img src="img/170/170pre5/170.5.04.png" alt="archibviazione automatica"></p>
+<p>A questo punto, ThunderPEC crea l&rsquo;archivio ZIP che
+inserisce nella cartella che abbiamo indicato</p>
+<p><img src="img/170/170pre5/170.5.05.png" alt="archibviazione automatica"></p>
+<p>All&rsquo;interno dell&rsquo;archivio, verranno
+inseriti i messaggi di posta certificata associati</p>
+<p><img src="img/170/170pre5/170.5.06.png"></p>
+<p><img src="img/170/170pre5/170.5.07.png" alt="170.5.07"></p>
+<p>Il contenuto dell&rsquo;archivio ZIP &egrave; legato
+al flag presente nella finestra delle <strong><em>Impostazioni</em></strong>
+e relativo alla funzione <strong><em>Stato del messaggio</em></strong>.</p>
+<p><img src="img/170/170pre5/170.5.08.png" alt="archibviazione automatica"></p>
+<p>Se abbiamo selezionato di archiviare i soli messaggi PEC,
+l&rsquo;archivio ZIP conterr&agrave; i soli messaggi in formato
+EML; altrimenti, l&rsquo;archivio conterr&agrave; anche il
+certificato di Baltimore (da cui sono originati i certificati digitali
+dei gestori PEC) e la cartella script per la <a href="https://thunderpec.wordpress.com/2014/09/27/versione-1-6-0-gestione-certificati-scaduti-timestamp-e-archiviazione-estesa/" target="_blank">gestione dei certificati scaduti</a>
+(le figure seguenti mostrano il contenuto dell&rsquo;archivio ZIP
+all&rsquo;invio del messaggio e dopo la ricezione delle notifiche
+PEC)</p>
+<p><img src="img/170/170pre5/170.5.09.png" alt="170.5.09"></p>
+<p><img class="aligncenter size-full wp-image-570" src="img/170/170pre5/170.5.10.png" alt="170.5.10"></p>
+<br>
+<br>
+</body></html>

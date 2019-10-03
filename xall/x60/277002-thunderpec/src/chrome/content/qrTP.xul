@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<?xml-stylesheet href="skin/selectTP.css" type="text/css"?> 
+<?xml-stylesheet href="skin/thunderpec.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+
+<window
+    id="ppecQRWindow"
+    title="&ppecqr.title;"
+    class="tpecMyClass"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    height="500"
+    width="500"
+    onload="tpec_org.xtc.tp.ppecqr.init();">
+
+    <stringbundleset id="tpecSBS">
+      <stringbundle id="tpecStringBundle" src="chrome://thunderpec/locale/thunderpec.properties"/>
+    </stringbundleset>
+
+    <script type="application/x-javascript" src="chrome://thunderpec/content/extlib/jsqr-0.2-min.js"/>
+    <script type="application/x-javascript" src="chrome://thunderpec/content/prefTP.js" />
+    <script type="application/x-javascript" src="chrome://thunderpec/content/qrTP.js"/>
+
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      
+      <spacer flex="1"/>
+      <label class="titlerow">&ppecqr.description;</label>
+      <spacer flex="1"/>
+      <hbox>
+        <spacer flex="1"/>
+         <menulist id="tpecAccountList">
+            <menupopup id="tpecAccountListPopup"></menupopup>
+         </menulist>        
+        <spacer flex="1"/>
+      </hbox>
+      
+      <spacer flex="1"/>
+      <spacer flex="1"/>
+      <label class="titlerow">&ppecqr.incoming;</label>
+      <spacer flex="1"/>
+      <hbox>
+        <spacer flex="1"/>
+        <textbox type="password" id="tpecIncomingPwd"/>
+        <spacer flex="1"/>
+      </hbox>
+
+<!--
+      <hbox>
+        <spacer flex="1"/>
+        <label class="titlerow">&ppecqr.same;</label>
+        <checkbox label="" checked="true" id="tpecSamePwd" onchange="tpec_org.xtc.tp.ppecqr.changeSame();"/>
+        <spacer flex="1"/>
+      </hbox>
+
+
+      <spacer flex="1"/>
+      <spacer flex="1"/>
+      <label class="titlerow">&ppecqr.outgoing;</label>
+      <spacer flex="1"/>
+      <hbox>
+        <spacer flex="1"/>
+        <textbox type="password" id="tpecOutgoingPwd"/>
+        <spacer flex="1"/>
+      </hbox>
+-->
+
+
+      <spacer flex="1"/>
+      
+      <hbox>
+        <spacer flex="1"/>
+        <button label='&ppecqr.button.ok;' oncommand="tpec_org.xtc.tp.ppecqr.ok();"/>
+        <button label='&ppecqr.button.cancel;' oncommand="tpec_org.xtc.tp.ppecqr.cancel();"/>
+        <spacer flex="1"/>
+      </hbox>
+      
+      <spacer flex="1"/>
+      
+      <hbox>
+        <spacer flex="1"/>
+        <html:canvas id="tpecPPECQRCanvas" height="300"/>
+        <spacer flex="1"/>
+      </hbox>        
+    </vbox>
+
+</window>

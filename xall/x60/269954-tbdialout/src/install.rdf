@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>tbdialout@oak-wood.co.uk</em:id>
+    <em:localized>
+      <Description>
+        <em:locale>en</em:locale>
+        <em:name>TBDialOut</em:name>
+        <em:description>Place phone calls directly from Thunderbird's address book</em:description>
+      </Description>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>TBDialOut</em:name>
+        <em:description>Telefonieren direkt aus dem Thunderbird Adressbuch</em:description>
+        <em:translator>Rainer Piper</em:translator>
+      </Description>
+      <Description>
+        <em:locale>es</em:locale>
+        <em:name>TBDialOut</em:name>
+        <em:description>Efectuar llamadas directamente desde la lista de contactos de Thunderbird</em:description>
+        <em:translator>Eduardo de Mier</em:translator>
+      </Description>
+      <Description>
+        <em:locale>zh-CN</em:locale>
+        <em:name>TBDialOut</em:name>
+        <em:description>直接从 Thunderbird 的通讯录拨打电话。</em:description>
+        <em:translator>yfdyh000 (yfdyh000@gmail.com)</em:translator>
+      </Description>
+      <Description>
+        <em:locale>nl</em:locale>
+        <em:name>TBDialOut</em:name>
+        <em:description>Voer rechtstreeks vanuit het adresboek in Thunderbird telefoongesprekken</em:description>
+        <em:translator>markh van BabelZilla.org</em:translator>
+      </Description>
+      <Description>
+        <em:locale>fr</em:locale>
+        <em:name>TBDialOut</em:name>
+        <em:description>Permet de placer des appels à partir du carnet d'adresses de Thunderbird</em:description>
+        <em:translator>Olivier H. Beauchesne http://olihb.com</em:translator>
+      </Description>
+      <Description>
+        <em:locale>sv</em:locale>
+        <em:name>TBDialOut</em:name>
+        <em:description>Ring telefonsamtal direkt från Thunderbirds adressbok</em:description>
+        <em:translator>Mikael Hiort af Ornäs</em:translator>
+      </Description>
+      <Description>
+        <em:locale>it</em:locale>
+        <em:name>TBDialOut</em:name>
+        <em:description>Permette di effettuare chiamate direttamente dalla rubrica di Thunderbird</em:description>
+        <em:translator>Luana Di Muzio - BabelZilla</em:translator>
+      </Description>
+      <Description>
+        <em:locale>ru</em:locale>
+        <em:name>TBDialOut</em:name>
+        <em:description>Звонки напрямую из Thunderbird</em:description>
+        <em:translator>Evgeny Sementsov</em:translator>
+      </Description>
+    </em:localized>
+
+
+    <em:name>TBDialOut</em:name>
+    <em:description>Place phone calls directly from Thunderbird's address book</em:description>
+
+    <em:version>1.7.3</em:version>
+    <em:creator>Chris Hastie</em:creator>
+    <em:developer>MSelector</em:developer>
+    <em:translator>Rainer Piper</em:translator>
+    <em:translator>Eduardo de Mier</em:translator>
+    <em:translator>yfdyh000 (yfdyh000@gmail.com)</em:translator>
+    <em:translator>markh van BabelZilla.org</em:translator>
+    <em:translator>Olivier H. Beauchesne http://olihb.com</em:translator>
+    <em:translator>Mikael Hiort af Ornäs</em:translator>
+    <em:translator>Luana Di Muzio - BabelZilla</em:translator>
+    <em:translator>Evgeny Sementsov</em:translator>
+    <em:homepageURL>http://www.oak-wood.co.uk/tbdialout</em:homepageURL>
+    <em:type>2</em:type>
+    <!-- <em:updateURL>https://secure.raggedstaff.net/tbdialout/update.rdf</em:updateURL> -->
+    <em:optionsURL>chrome://tbdialout/content/options.xul</em:optionsURL>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- thunderbird -->
+        <em:minVersion>3.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

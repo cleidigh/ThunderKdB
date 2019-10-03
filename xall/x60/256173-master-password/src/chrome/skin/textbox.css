@@ -1,0 +1,59 @@
+.textbox-input-box,
+.textbox-input-box *
+{
+	cursor: text !important;
+}
+.textbox-button-box,
+.textbox-button-box *
+{
+	cursor: default !important;
+}
+
+.textbox-button-box
+{
+	width: 1em;
+	min-height: 1em;
+}
+
+.textbox-button
+{
+	min-width: 14px;
+	min-height: 14px;
+	max-width: 14px;
+	max-height: 14px;
+	list-style-image: url("images/icons.png");
+	-moz-image-region: rect(0, 106px, 14px, 92px);
+}
+.textbox-button[disabled="true"],
+.textbox-input:invalid ~ .textbox-button-box > .textbox-button
+{
+	-moz-image-region: rect(0, 78px, 14px, 64px);
+}
+
+.textbox-button:-moz-locale-dir(rtl)
+{
+	transform: scaleX(-1);
+}
+
+.textbox-input:valid ~ .textbox-button-box > .textbox-button:hover:not([disabled="true"]),
+.textbox-input:valid ~ .textbox-button-box:hover > .textbox-button:not([disabled="true"])
+{
+	-moz-image-region: rect(0, 92px, 14px, 78px);
+}
+
+.textbox-input
+{
+	font-size: 0.7em !important;
+}
+
+.textbox-input[disabled="true"]
+{
+	cursor: default !important;
+}
+
+:invalid,
+:-moz-submit-invalid,
+:-moz-ui-invalid
+{
+	box-shadow: none;
+}

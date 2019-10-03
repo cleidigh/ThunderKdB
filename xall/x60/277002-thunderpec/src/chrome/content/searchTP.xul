@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<?xml-stylesheet href="skin/selectTP.css" type="text/css"?> 
+<?xml-stylesheet href="skin/thunderpec.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+
+<window
+    id="tpecSelectWindow"
+    title="&search.title;"
+    class="tpecMyClass"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    width="800"
+    height="600"
+    onload="tpec_org.xtc.tp.search.init();">
+
+    <stringbundleset id="tpecSBS">
+      <stringbundle id="tpecStringBundle" src="chrome://thunderpec/locale/thunderpec.properties"/>
+    </stringbundleset>
+
+    <script type="application/x-javascript" src="chrome://thunderpec/content/utilityTPAsync.js" />
+    <script type="application/x-javascript" src="chrome://thunderpec/content/utilityTP.js" />
+    <script type="application/x-javascript" src="chrome://thunderpec/content/prefTP.js" />
+    <script type="application/x-javascript" src="chrome://thunderpec/content/baltimoreTP.js" />
+    <script type="application/x-javascript" src="chrome://thunderpec/content/searchTP.js" />
+
+
+    <vbox flex="1">
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <iframe type="content" src="search/index.html" flex="1" id="tpecSearchViewer" name="tpecSearchTable" height="400"/>
+      <vbox>
+        <spacer flex="1"/>
+        <hbox>
+          <vbox>
+            <button id="tpecPlusButton" label='A+' class="small-button" oncommand="tpec_org.xtc.tp.search.charUp();"/>
+            <button id="tpecMinusButton" label='A-' class="small-button" oncommand="tpec_org.xtc.tp.search.charDown();"/>
+          </vbox>
+          <spacer flex="1"/>
+          <vbox>
+            <hbox>
+              <spacer flex="1"/>
+              <button id="tpecArchiveButton" label='&search.button.archive;' oncommand="tpec_org.xtc.tp.search.archive();"/>
+              <spacer flex="1"/>
+            </hbox>
+            <checkbox id="tpecArchiveExtended" label="&search.checkbox.archive;" checked="false"/>
+          </vbox>
+          <spacer flex="1"/>
+          <vbox>
+            <button id="tpecReadButton" label='&search.button.read;' oncommand="tpec_org.xtc.tp.search.markread();"/>
+            <button id="tpecLegendButton" label='&search.button.legend;' oncommand="tpec_org.xtc.tp.search.legend();"/>
+          </vbox>
+          <vbox>
+            <button id="tpecPintAllButton" label='&search.button.printall;' oncommand="tpec_org.xtc.tp.search.printall();"/>
+            <button id="tpecPrintButton" label='&search.button.print;' oncommand="tpec_org.xtc.tp.search.print();"/>
+          </vbox>
+          <vbox>
+            <spacer flex="1"/>
+            <button id="tpecOkButton" label='&search.button.ok;' oncommand="tpec_org.xtc.tp.search.ok();"/>
+            <spacer flex="1"/>
+          </vbox>
+        </hbox>
+      </vbox>
+    </vbox>
+
+</window>

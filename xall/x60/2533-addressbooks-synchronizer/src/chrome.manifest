@@ -1,0 +1,31 @@
+content addressbookssync jar:chrome/AddressbooksSync.jar!/content/
+locale addressbookssync en jar:chrome/AddressbooksSync.jar!/locale/en/
+locale addressbookssync de jar:chrome/AddressbooksSync.jar!/locale/de/
+locale addressbookssync fr jar:chrome/AddressbooksSync.jar!/locale/fr/
+locale addressbookssync ja jar:chrome/AddressbooksSync.jar!/locale/ja/
+locale addressbookssync cs jar:chrome/AddressbooksSync.jar!/locale/cs/
+locale addressbookssync it jar:chrome/AddressbooksSync.jar!/locale/it/
+locale addressbookssync nl jar:chrome/AddressbooksSync.jar!/locale/nl/
+locale addressbookssync pt-PT jar:chrome/AddressbooksSync.jar!/locale/pt-PT/
+locale addressbookssync ru jar:chrome/AddressbooksSync.jar!/locale/ru/
+locale addressbookssync uk jar:chrome/AddressbooksSync.jar!/locale/uk/
+locale addressbookssync bg jar:chrome/AddressbooksSync.jar!/locale/bg/
+locale addressbookssync tr jar:chrome/AddressbooksSync.jar!/locale/tr/
+locale addressbookssync sk jar:chrome/AddressbooksSync.jar!/locale/sk/
+locale addressbookssync es jar:chrome/AddressbooksSync.jar!/locale/es/
+locale addressbookssync pt-BR jar:chrome/AddressbooksSync.jar!/locale/pt-BR/
+locale addressbookssync ko jar:chrome/AddressbooksSync.jar!/locale/ko/
+locale addressbookssync zh-CN jar:chrome/AddressbooksSync.jar!/locale/zh-CN/
+locale addressbookssync lt jar:chrome/AddressbooksSync.jar!/locale/lt/
+locale addressbookssync nb jar:chrome/AddressbooksSync.jar!/locale/nb/
+locale addressbookssync sv jar:chrome/AddressbooksSync.jar!/locale/sv/
+
+overlay chrome://messenger/content/messenger.xul chrome://addressbookssync/content/addressbookssync.xul
+overlay chrome://messenger/content/addressbook/addressbook.xul  chrome://addressbookssync/content/addressbook.xul
+skin  addressbookssync classic/1.0 jar:chrome/AddressbooksSync.jar!/skin/
+style chrome://global/content/customizeToolbar.xul chrome://addressbookssync/skin/addressbookssync.css
+
+interfaces components/AddressbooksSync.xpt
+component {82057672-19A9-47E3-BB7f-0F08A28CE014} components/AddressbooksSync.js
+contract @ggbs.de/addressbooksSync;1 {82057672-19A9-47E3-BB7f-0F08A28CE014}
+category profile-after-change nsIAddressbooksSync.css @ggbs.de/addressbooksSync;1

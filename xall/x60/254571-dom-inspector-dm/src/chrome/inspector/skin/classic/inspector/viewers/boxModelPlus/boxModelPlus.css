@@ -1,0 +1,344 @@
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is mozilla.org code.
+ *
+ * The Initial Developer of the Original Code is
+ * Netscape Communications Corporation.
+ * Portions created by the Initial Developer are Copyright (C) 2001
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *   Joe Hewitt <hewitt@netscape.com> (original author)
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+@import url("chrome://inspector/skin");
+
+
+/*   *** boxModelPlus ***   */
+
+hbox.valueBox {
+  -moz-box-pack:   end;
+}
+
+label.value,  /* for Position & dim mainly right? */
+textbox.value {
+  min-width: 1ch;
+  padding-right: 1px;
+}
+
+
+/* label:after DOESN'T WORK ! */
+label.value           + hbox {
+  min-width : 2ch;
+  min-height: 0.5em; /* useful only for showing-all-of-it-for-debug? */
+}
+label[hasUnit="true"]  + hbox:before {
+  content: "px";
+  cursor: default;
+  display: block;
+  
+  margin-left: -2px;
+  
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+label[hasUnit="true"].nonzero  + hbox:before,
+label.nonzero,
+textbox.nonzero {
+  font-weight: bold;
+  color: #0000B0;
+}
+label.value {
+  font-size: 1.0em;
+}
+
+/*
+label.value {
+	background-color: rgba(0, 254, 0, 0.4);
+}
+*/
+
+
+
+/* for ALL!: 'px', Titles , etc!  TODO ahora son 5 col */
+/*
+row > hbox.leftMost,
+row > hbox.left1, 
+row > hbox.right1,
+row > hbox.rightMost,
+row > hbox.valueBox,
+*/
+row > *,
+row {
+  -moz-box-align:   baseline;  /* here is Vertical*/
+}
+
+label, 
+textbox {
+  text-align: right;
+  margin: 1px 2px 2px 3px;
+}
+
+
+/*  columns  --------------------------------------------------------  */
+
+/*
+row.middle  .leftMost,
+row.middle  .rightMost,
+
+row.upper   .left1,
+row.lower   .left1,
+row.upper   .right1,
+row.lower   .right1 {
+  outline: 1px solid green;
+}
+column.first,
+column.last {
+  outline: 1px solid gray;
+}
+column.left1,
+column.right1{
+  outline: 1px solid orange;
+}
+column.center  {
+  outline: 1px solid yellow;
+  background-color: rgba(255, 255, 0, 0.6);
+}
+row.middle  .right1:after {
+  outline: 1px solid black;
+}
+hbox.valueBox {
+  outline: 1px solid blue;
+}
+*/
+
+
+column.first,
+column.last {
+  /* min-width: 14em; */
+  -moz-box-flex: 1;
+}
+
+
+/*  col: leftMost  ---------------  */
+row.middle  .leftMost {
+  margin-right:  4.5ch; /* sync with col.left1 m-left */
+}
+
+/*  col: left1	---------------  */ 
+column.left1 {
+  min-width  :  7.5ch;  /* same as col.center -> for values to grow. */
+  margin-left: -4.5ch;
+}
+row.upper   .left1,
+row.lower   .left1 {
+  margin-right:  5.0ch; /* sync with col.center m-left */
+  
+  margin-left: -35ch; /* titles 'fly left' */
+
+  text-align: right; /* needed ?? */
+  -moz-box-pack: end;
+}
+
+column.center  {
+	
+  /* TEST de alineacion bueno!! */
+  min-width  :  8.5ch;
+  margin-left: -5.0ch; /* a partir de los (min-w)ch ya empieza a empujar todo tb...*/
+}
+
+column.right1 {
+	
+  min-width  :  7.7ch;
+  margin-left: -2.5ch;
+}
+row.upper   .right1,
+row.lower   .right1 {
+  margin-left :  2.5ch; /* sync with above m-left*(-1) */
+  padding-left: 1ch;  /*  extra padding  */
+  
+  margin-right: -35ch; /* titles 'fly rigth' */
+}
+row.middle  .right1:after {
+  content: "";
+  display: block;
+
+  margin: 0px; padding: 0px;
+  -moz-box-flex: 1;
+
+  max-width: 1.5ch;
+}
+
+column.rightMost {
+}
+
+
+/*
+groupbox:-moz-any(#boxMargin, #boxBorder, #boxPadding)  label.title
+
+:-moz-any(
+.title_row.dimTitles  + row
+         ) <---- definitivamente NO funciona el ..any con selectores con + (o nada compuesto supongo)!!
+  outline: 1px solid orange;
+*/
+
+.title_row.dimTitles  + row   label.title,
+.title_row.dimTitles  + row  + row   label.title,
+.title_row.dimTitles  + row  + row  + row   label.title
+{
+  opacity:0.6;
+  
+  /* color: red !important; */
+}
+row:-moz-any(.upper, .middle, .lower)  label.title{
+  margin-right: 0.5ch;
+  font-size: 92%;
+}
+row.middle.border      label.title{
+   margin-right: 2.5ch;
+}
+
+/* titles at right.... */
+row.middle  .rightMost    label.title,  
+row.upper   .right1    label.title,
+row.lower   .right1    label.title {
+  margin-left:  0.5ch; /* almost nothing bc of new 'flex'-tiny-thing  inside valuebox  */
+  text-align: left;
+}
+row.middle  .rightMost    label.title {
+  margin-left:  2.0ch; /* a little more than above  */
+}
+row.middle.border  .rightMost    label.title {
+   margin-left: 2.5ch;
+}
+
+
+/* TODO: check this old code */
+hbox.groupbox-title {
+  /* -moz-box-pack:  center !important; <- prevails pack="start" */
+  overflow: hidden;
+}
+
+
+/*
+groupbox#boxPosition hbox.center {
+  margin-left: 5px;
+  margin-bottom: 1px;
+}
+*/
+/* -- needed for visible SQUARE --
+row.middle {
+  -moz-box-align: center;
+}
+*/
+hbox.outerBoxCenter {
+  -moz-box-pack:  center;
+  -moz-box-align: center;
+}
+/*  DISABLED SQUARE (with new smaller&dimmer 'px' the 'center of sight' tends to be the center of the 4 numbers alone )
+label.center,
+hbox.center
+{
+  border: 1px solid black;
+  opacity:0.3;
+  
+  width:  9px !important;
+  height: 9px !important;
+  max-width:  9px !important;
+  max-height: 9px !important;
+  -moz-border-radius: 2px
+}
+*/
+
+#enclosingBox {
+  -moz-box-flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+row.upper.boxDimension {
+  margin-top: 1.2em;
+}
+
+grid {
+  margin: -1px -42ch 0px -39ch;
+}
+
+
+/*  "other" GROUP !!!! ---------------------------------------------- */
+
+#boxOtherContent  row > *:first-child + * {
+	text-align: left;
+}
+
+
+
+/*  New titles using 'row' groupboxes!  ----------------------------- */
+.title_row {
+	
+	/*
+	max-height   :  120px;
+	margin-bottom: -104px;
+	*/
+
+	margin: 2px  42ch  -3px  39ch;
+	
+	overflow: hidden;
+}
+.title_row  > groupbox{
+	-moz-box-flex: 1;
+	/* margin: 0px; */
+	
+	min-height   :  40px;
+	margin-bottom: -20px;
+}
+
+#boxPosition  {
+}
+#boxPosition  > groupbox {
+}
+/*
+#bottomLine	{
+	border: 1px solid green;
+}
+#bottomLine	  > groupbox {
+	border: 1px solid orange;
+	-moz-appearance: none;
+}
+*/
+#bottomLine	{
+	max-height:      none;
+	margin-top   : -712px;
+	margin-bottom:    0px;
+}
+#bottomLine	  > groupbox {
+	min-height:     720px;
+	margin-top   :    0px;
+	margin-bottom:    0px;	
+}
+

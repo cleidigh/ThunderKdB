@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>archivia.html</title></head>
+<body>
+<h1>Archivia notifiche</h1>
+Il&nbsp;Decreto del Ministero dell&rsquo;Economia e delle
+Finanze 26 aprile 2012 definisce le &ldquo;<em>Regole
+tecniche per l&rsquo;utilizzo, nell&rsquo;ambito del processo
+tributario, della Posta Elettronica Certificata (PEC), per le
+comunicazioni di cui all&rsquo;articolo 16, comma 1-bis, del
+decreto legislativo n. 546 del 31 dicembre 1992</em>&ldquo;.<br>
+Nell'ambito del presente decreto, i messaggi di notifica (soprattutto
+la
+ricevuta di accettazione) forniscono prova dell'avvenuta spedizione di
+un messaggio di posta elettronica certificata.<br>
+<br>
+Per
+dare la possibilit&agrave; di effettuare un backup delle notifiche
+PEC,
+la versione 1.3 di ThunderPEC introduce la funzionalit&agrave; di
+archiviazione delle notifiche di un messaggio PEC con la creazione di
+un file ZIP contenente copia del messaggio inviato (se presente) e di
+tutte le
+notifiche ad esso associato. <br><br>Tale funzionalit&agrave; si estende anche alle ricevute di un deposito PCT ed alle comunicazioni relative ad un flusso FatturaPA<br><br>
+La funzione Archivia &egrave; disponibile nella finestra <a href="status.html">Stato del messaggio</a> (come
+indicato nella figura seguente).<br>
+<br>
+<div style="text-align: center;">&nbsp;<img src="img/archive.01.png" alt="archive.01.png"><br>
+</div>
+<br>
+Scelta la cartella di destinazione, ThunderPEC provvede a creare il
+file ZIP, salvando il contenuto delle email secondo il formato standard
+EML. <br>
+<br>
+<div style="text-align: center;"><img src="img/archive.02.png" alt="archive.02.png"><br><small><span style="font-weight: bold; font-style: italic;">Contenuto del file ZIP </span></small><br>
+<img src="img/170/afpa-03.png" alt="afpa-03.png"><br><small><span style="font-weight: bold; font-style: italic;">Contenuto file ZIP per FatturaPA</span></small><br>
+</div><br>Come evidenziato dalla figura, in aggiunta ai messaggi di posta
+elettronica certificata, il file ZIP generato contiene anche il report
+in HTML, generato dalla funzionalit&agrave; Stato del messaggio.<br>
+<br>
+La
+versione 1.6.0 di ThunderPEC estende le funzionalit&agrave; di
+archiviazione
+delle notifiche alla gestione dei certificati scaduti. Selezionando un
+vecchio messaggio di posta certificata, pu&ograve; essere
+visualizzata
+l'indicazione di certificato non valido.<br>
+<br>
+<div style="text-align: center;"><img src="img/archive20/archive20_01.png" alt="archive20_01.png"><br>
+</div>
+<br>
+<div style="text-align: center;"><img src="img/archive20/archive20_02.png" alt="archive20_02.png"><br>
+</div>
+<br>
+Esaminando i dettagli del certificato associato alla firma digitale
+del messaggio PEC, &egrave; possibile visualizzare il periodo di
+validit&agrave; del
+certificato utilizzato dal gestore PEC: poich&egrave; la firma
+digitale non
+contiene l'indicazione temporale relativa all'operazione di firma e,
+conseguentemente, l'operazione di verifica utilizza la data del PC come
+riferimento temporale, le operazioni di verifica della firma,
+effettuate al di fuori del periodo di validit&agrave; del
+certificato (ad
+esempio, oggi 16.09.2014), riporteranno che il certificato non
+&egrave; valido.<br>
+<br>
+<div style="text-align: center;"><img src="img/archive20/archive20_03.png" alt="archive20_03.png"><br>
+</div>
+<br>
+Utilizzando
+una nuova funzionlit&agrave; offerta dalla versione 1.0.1i di
+OpenSSL, &egrave;
+possibile verificare la firma del messaggio di posta elettronica
+certificata (S/MIME in generale) indicando una specifica data e non la
+data del PC su cui si esegue l'operazione. La data utilizzata
+&egrave; quella
+presente all'interno della ricevuta XML associata ad un messaggio o
+notifica PEC, relativa all'emissione della ricevuta da parte del
+gestore PEC (La ricevuta XML viene inserita nella busta di trasporto e
+firmata digitalmente da parte del gestore PEC).<br>
+<br>
+<br>
+<div style="text-align: center;"><img src="img/archive20/archive20_11.png" alt="archive20_11.png"><br>
+</div>
+<br>
+Dalla versione 1.6.0, ThunderPEC aggiunge automaticamente nel file ZIP
+generato dall'operazione di archiviazione:<br>
+<div style="margin-left: 40px;">il file baltimore.pem
+contenente il certificato digitale di Baltimore
+CyberTrust, emittente del certificato, come root certification
+authority, verso Digit PA&nbsp; per il sistema PEC <br>
+</div>
+<br>
+<div style="text-align: center;"><img src="img/archive20/archive20_04.png" alt="archive20_04.png"><br>
+</div>
+<br>
+<div style="margin-left: 40px;">la directory script
+contenente i file batch per windows/unix/macos per
+la verifica della firma digitale (ad ogni messaggio salvato
+&egrave; associato
+un numero progressivo utilizzato nel corrispondente script)<br>
+</div>
+<br>
+<div style="text-align: center;"><img src="img/archive20/archive20_08.png" alt="archive20_08.png"><br>
+</div>
+<div style="text-align: center;"><img src="img/archive20/archive20_09.png" alt="archive20_09.png"><br>
+</div>
+<br>
+Requisito
+per l'utilizzo diretto degli script &egrave; la presenza di OpenSSL
+versione
+1.0.1i o superiore nel <span style="font-weight: bold; font-style: italic;">PATH</span>.
+Per i sistemi unix e macos, per
+soddisfare i requisiti di sicurezza delle estensioni per Mozilla
+Thunderbird, i file batch (.sh) sono generati come semplici file di
+testo. E' necessario eseguire il comando<span style="font-weight: bold; font-style: italic;"> chmod +x</span>
+per renderli
+eseguibili.<br>
+<br>
+Utilizzando lo specifico script associato al messaggio/notifica PEC
+archiviata, &egrave; possibile verificare la firma <br>
+<br>
+<div style="text-align: center;"><img src="img/archive20/archive20_10.png" alt="archive20_10.png"><br>
+</div>
+<br>Dalla finestra <span style="font-weight: bold;">Stato del Messaggio</span>, &egrave; possibile selezionare se inserire i file di script all'interno del file ZIP, utilizzando il flag <span style="font-weight: bold;">Aggiungi script per verifica firma digitale</span><br>
+<div style="text-align: center;"><img src="img/pct/pct.zip.02.png" alt="pct.zip.02.png"><br></div>
+<br>Nella
+visualizzazione in formato semplificato della ricevuta XML,
+&egrave; stato
+inserito il campo Timestamp che rappresenta la data della ricevuta
+secondo il formato Unix timestamp e utilizzato all'interno del file
+batch.<br>
+<div style="text-align: center;"><img src="img/archive20/archive20_07.png" alt="archive20_07.png"><br>
+</div>
+<br>
+L'operazione di archiviazione &egrave; presente anche nel menu
+contestuale e all'interno del menu Messaggio di Thunderbird, per cui
+&egrave;
+possibile selezionare uno o pi&ugrave; messaggi/notifiche per
+archiviarle in
+un file ZIP, nella modalit&agrave; precedentemente descritta. <br>
+<div style="text-align: center;"><img src="img/archive20/archive20_05.png" alt="archive20_05.png"><br>
+</div>
+<div style="text-align: center;"><img src="img/archive20/archive20_06.png" alt="archive20_06.png"><br>
+</div><br>
+</body></html>

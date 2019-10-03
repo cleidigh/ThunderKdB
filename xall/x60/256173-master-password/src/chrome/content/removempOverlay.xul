@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<overlay id="masterPasswordPlusRemovempOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<dialog id="removemp">
+		<script type="application/javascript">
+			document.getElementById("removemp").setAttribute("ondialogaccept", "return gRemovePasswordDialog.removePassword();");
+			gRemovePasswordDialog._validateInput = gRemovePasswordDialog.validateInput;
+			gRemovePasswordDialog._removePassword = gRemovePasswordDialog.removePassword;
+			gRemovePasswordDialog.validateInput = function ()
+			{
+				this._okButton.disabled = !this._password.value;
+			};
+			gRemovePasswordDialog.removePassword = function()
+			{
+				gRemovePasswordDialog._removePassword();
+				return !this._token.needsLogin();
+			}
+		</script>
+	</dialog>
+</overlay>

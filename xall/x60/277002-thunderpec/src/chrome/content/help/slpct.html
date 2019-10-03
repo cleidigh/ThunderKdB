@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>composizione</title>
+
+<style type="text/css"></style>
+<link rel="stylesheet" href="css/help.css" type="text/css">
+</head>
+<body>
+<h1>Integrazione con SLPCT</h1>
+<p>ThunderPEC ora intercetta le richieste di invio DEPOSITO
+provenienti da SLPCT (in generale, dall&rsquo;esterno) ed effettua
+in automatico una serie di operazioni:</p>
+<ol>
+<li>Se esiste l&rsquo;indirizzo PEC predefinito, utilizza
+questo come <strong>mittente</strong> del messaggio</li>
+<li>Setta la richiesta di notifica PEC a <strong>completa</strong></li>
+<li>Setta la finestra di composizione a <strong>solo
+testo</strong></li>
+<li>Verifica la presenza di un <strong>allegato .enc</strong></li>
+</ol>
+<p>La figura mostra la finestra di composizione, relativa ad un
+DEPOSITO, in cui si pu&ograve; notare l&rsquo;assenza della
+barra di formattazione del testo</p>
+<p><img src="img/170/170pre5/170.5.19.png" alt="170.5.19"></p>
+<p>Nel caso in cui sia assente <strong>l&rsquo;allegato
+.enc</strong>, ThunderPEC lo segnala dando la
+possibilit&agrave; di allegarlo</p>
+<p><img src="img/170/170pre5/170.5.20.png" alt="170.5.20"></p>
+</body></html>

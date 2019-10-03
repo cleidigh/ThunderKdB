@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<?xml-stylesheet href="skin/selectTP.css" type="text/css"?> 
+<?xml-stylesheet href="skin/thunderpec.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+
+<window
+    id="tpecSelectWindow"
+    title="&about.title;"
+    class="tpecMyClass"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    width="500"
+    height="150"
+    >
+
+    <script type="application/x-javascript" src="chrome://thunderpec/content/prefTP.js" />
+    <script type="application/x-javascript" src="chrome://thunderpec/content/aboutTP.js" />
+    <script>window.addEventListener("load", tpec_org.xtc.tp.about.init, false);</script>  
+
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <hbox>
+        <label style="font-weight: bold;">&about.appname.label;: </label>
+        <label>&about.appname.value;</label>
+      </hbox>
+      <hbox>
+        <label style="font-weight: bold;">&about.version.label;: </label>
+        <label id="tpecVersion"></label>
+      </hbox>
+      <hbox>
+        <label style="font-weight: bold;">&about.support.label;: </label>
+        <label>&about.support.value;</label>
+      </hbox>
+       <hbox>
+        <spacer flex="1"/>
+        <button label='&about.button.ok;' oncommand="tpec_org.xtc.tp.about.ok();"/>
+      </hbox>
+    </vbox>
+
+</window>

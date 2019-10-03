@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<?xml-stylesheet href="skin/selectTP.css" type="text/css"?> 
+<?xml-stylesheet href="skin/thunderpec.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+
+<window
+    id="tpecSelectWindow"
+    title="&select.title;"
+    class="tpecMyClass"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    onload="tpec_org.xtc.tp.select.init();">
+
+    <script type="application/x-javascript" src="chrome://thunderpec/content/prefTP.js" />
+    <script type="application/x-javascript" src="chrome://thunderpec/content/selectTP.js"/>
+
+
+    <vbox>
+      <hbox>
+        <spacer flex="1"/>
+        <image src='img/tpec.01.png'  width='48' height='20'/>
+      </hbox>
+      <spacer flex="1"/>
+      <label class="titlerow">&select.description;</label>
+      <spacer flex="1"/>
+      <hbox>
+        <spacer flex="1"/>
+        <vbox id="tpecAccountList" style="overflow: auto;" maxheight="400" flex="1">
+        </vbox>
+        <spacer flex="1"/>
+      </hbox>
+      <spacer flex="1"/>
+      <hbox>
+        <spacer flex="1"/>
+        <button label='&select.button.cancel;' oncommand="tpec_org.xtc.tp.select.cancel();"/>
+        <button label='&select.button.ok;' oncommand="tpec_org.xtc.tp.select.ok();"/>
+      </hbox>
+    </vbox>
+
+</window>

@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messageHeader.css" type="text/css"?>
+<?xml-stylesheet href="skin/mainTP.css" type="text/css"?> 
+<?xml-stylesheet href="skin/composeTP.css" type="text/css"?> 
+<!DOCTYPE window SYSTEM "chrome://thunderpec/locale/thunderpec.dtd">
+<overlay id="tp-overlay-compose" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="tpecSBSCompose">
+    <stringbundle id="tpecStringBundle" src="chrome://thunderpec/locale/thunderpec.properties"/>
+  </stringbundleset>
+
+  <script type="application/x-javascript" src="chrome://thunderpec/content/prefTP.js" />
+  <script type="application/x-javascript" src="chrome://thunderpec/content/composeTP.js" />
+
+  <script>window.addEventListener("compose-from-changed", tpec_org.xtc.tp.compose.sender, true);</script>  
+  <script>window.addEventListener("compose-send-message", tpec_org.xtc.tp.compose.send, true);</script>  
+  <script>window.addEventListener("compose-window-reopen", tpec_org.xtc.tp.compose.init, true);</script>  
+  <!--<script>window.addEventListener("compose-window-unload", tpec_org.xtc.tp.compose.unload, true);</script>-->  
+  <script>window.addEventListener("load", tpec_org.xtc.tp.compose.init, false);</script>  
+
+
+  <!--
+  <menubar id="mail-menubar">
+    <menu id="tpecMenu" label="&tpmenu;" insertbefore="helpMenu">
+      <menupopup id="tpecReceiptPopup" onpopupshowing="tpec_org.xtc.tp.compose.receiptMenuShow();">
+            <menu id="tpecReceipt" label="&receipt.menu;">
+              <menupopup id="tpecReceiptMenu" onpopupshowing="tpec_org.xtc.tp.compose.receiptMenu();">
+                <menuitem id="tpecComplete" label="&receipt.menu.complete;" oncommand="tpec_org.xtc.tp.compose.setReceiptType('completa');" type="radio" name="receiptGroup"/>
+                <menuitem id="tpecBrief" label="&receipt.menu.brief;" oncommand="tpec_org.xtc.tp.compose.setReceiptType('breve');" type="radio" name="receiptGroup"/>
+                <menuitem id="tpecSynth" label="&receipt.menu.synthetic;" oncommand="tpec_org.xtc.tp.compose.setReceiptType('sintetica');" type="radio" name="receiptGroup"/>
+              </menupopup>
+            </menu>
+            <menuitem id="tpecSearchPA" label="&search.pa;" oncommand="tpec_org.xtc.tp.compose.searchPA();"/>
+      </menupopup>
+    </menu>
+  </menubar>
+  -->
+
+  <toolbox id="compose-toolbox">
+    <toolbar id="tpecCompose"
+        insertafter="customToolbars"
+        align="start"
+        customizable="true"
+        mode="full" 
+        iconsize="small" 
+        defaulticonsize="small" 
+        defaultmode="full"
+        class="toolbar-primary chromeclass-toolbar">
+        <toolbarbutton id="tpecReceipt" 
+            label="&receipt.menu;"
+            type="menu"  
+            class="tpecCmpReceiptButton">
+            <menupopup id="tpecReceiptMenu" onpopupshowing="tpec_org.xtc.tp.compose.receiptMenu();">
+              <menuitem id="tpecComplete" label="&receipt.menu.complete;" oncommand="tpec_org.xtc.tp.compose.setReceiptType('completa');" type="radio" name="receiptGroup"/>
+              <menuitem id="tpecBrief" label="&receipt.menu.brief;" oncommand="tpec_org.xtc.tp.compose.setReceiptType('breve');" type="radio" name="receiptGroup"/>
+              <menuitem id="tpecSynth" label="&receipt.menu.synthetic;" oncommand="tpec_org.xtc.tp.compose.setReceiptType('sintetica');" type="radio" name="receiptGroup"/>
+            </menupopup>
+        </toolbarbutton>
+        <toolbarseparator />    
+        <toolbarbutton id="tpecSearchPA" 
+            label="&search.pa;" 
+            oncommand="tpec_org.xtc.tp.compose.searchPA();" 
+            class="tpecCmpSpcdatatButton"/>
+        <toolbarseparator />    
+        <toolbarbutton id="tpecSHA" 
+            label="SHA256" 
+            oncommand="tpec_org.xtc.tp.compose.allSHA('start');" 
+            class="tpecCmpShaButton"/>
+        <toolbarbutton id="tpecZIP" 
+            label="&preferences.autoarchive;" 
+            type="checkbox"
+            oncommand="tpec_org.xtc.tp.compose.autoarchive();" 
+            class="tpecAutoArchButton"/>
+    </toolbar>
+  </toolbox>
+  
+  <hbox>
+    <notificationbox insertafter="attachmentNotificationBox"
+                     id="tpecNotification"
+                     flex="1"
+                     notificationside="bottom"
+                     />
+  </hbox>
+  <!--
+  <menupopup id="msgComposeAttachmentItemContext">
+      <menuseparator id="tpecSeparatorItem"/>
+      <menuitem id="tpecSHA256Item" label="SHA256" oncommand="tpec_org.xtc.tp.compose.attachSHA();"/>
+  </menupopup>
+
+   <menupopup id="msgComposeAttachmentContext">
+      <menuseparator id="tpecSeparator"/>
+      <menuitem id="tpecSHA256" label="SHA256" oncommand="tpec_org.xtc.tp.compose.attachSHA();"/>
+  </menupopup>
+  -->
+</overlay>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>srsbdnr-@ntispam-caseyconnor.org</em:id>
+    <em:type>2</em:type>
+    <em:name>Search Results Sort By Date Not Relevance</em:name>
+    <em:version>1.17</em:version>
+    <em:creator>Casey Connor</em:creator>
+    <em:contributor></em:contributor>
+    <em:description>Makes search results sort by "date" instead of "relevance" by default.</em:description>
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
+        <em:minVersion>3.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

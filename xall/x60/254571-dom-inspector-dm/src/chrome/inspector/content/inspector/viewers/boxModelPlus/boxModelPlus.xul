@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE page [
+  <!ENTITY % dtd1 SYSTEM "chrome://inspector/locale/inspector.dtd"> %dtd1;
+  <!ENTITY % dtd2 SYSTEM "chrome://inspector/locale/viewers/boxModel.dtd"> %dtd2;
+]>
+
+<?xml-stylesheet href="chrome://inspector/skin/viewers/boxModelPlus/boxModelPlus.css"?>
+<?xul-overlay href="chrome://global/content/globalOverlay.xul"?>
+
+<page id="winBoxModel"
+      orient="vertical"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+  <script type="application/javascript" src="boxModelPlus.js"/>
+  <script type="application/javascript" src="chrome://inspector/content/utils.js"/>
+  <script type="application/javascript" src="chrome://inspector/content/jsutil/xpcom/XPCU.js"/>
+  <script type="application/javascript" src="chrome://inspector/content/jsutil/events/ObserverManager.js"/>  
+
+  <vbox id="enclosingBox">
+    <vbox>
+
+		<!-- 
+      <groupbox id="boxPosition">
+        <caption><label>xxxxxxxxxx</label></caption>
+		-->
+		
+        <grid flex="1">
+          <columns>
+            <column class="leftMost   first" />
+            <column class="left1"   />
+            <column class="center"/>
+            <column class="right1"  />
+            <column class="rightMost  last" />
+          </columns>
+          <rows>
+		  
+		  
+			<hbox id="boxPosition" class="title_row   withUnits">
+			  <groupbox >
+				<caption><label>&boxPosition.label; &amp; &boxDimension.label;</label></caption>
+			  </groupbox>
+			</hbox>
+		  
+            <row class="upper" >
+              <hbox class="leftMost"/>
+              <hbox class="left1">
+                <label id="positionYLabel"       value="&yCoord.label;"     class="title"/>
+			  </hbox>
+              <hbox class="valueBox">
+                <label id="positionYValue"/>
+                <hbox/>
+			  </hbox>
+              <label />
+              <hbox class="rightMost"/>
+            </row>
+            <row class="middle">
+             <hbox class="leftMost" pack="end">
+              <label id="positionXLabel"       value="&xCoord.label;"      class="title"/>
+             </hbox>
+              <hbox class="valueBox">
+				<label id="positionXValue"/>
+				<hbox/>
+			  </hbox>
+             <hbox class="outerBoxCenter" >
+              <hbox class="center" />
+             </hbox>
+              <hbox class="right1  valueBox">
+				<label id="dimensionWidthValue"/>
+				<hbox/>
+			  </hbox>
+             <hbox class="rightMost">
+              <label id="dimensionWidthLabel"  value="&dimensionWidth.label;"  class="title"/>
+             </hbox>
+            </row>
+            <row class="lower" >
+              <hbox class="leftMost"/>
+              <hbox class="left1">
+
+			  </hbox>
+              <hbox class="valueBox">
+                <label id="dimensionHeightValue"/>
+                <hbox/>
+			  </hbox>
+              <hbox class="right1">
+                <label id="dimensionHeightLabel" value="&dimensionHeight.label;" class="title"/>
+			  </hbox>
+              <hbox class="rightMost"/>
+            </row>
+
+            <!-- Ex-Dimension group -->
+
+            <row class="upper boxDimension" >
+              <hbox class="leftMost"/>
+              <hbox class="left1">
+                <label id="positionScreenYLabel" value="&screenYCoord.label;" class="title"/>
+			  </hbox>
+              <hbox class="valueBox">
+                <label id="positionScreenYValue"/>
+                <hbox/>
+			  </hbox>
+              <label />
+              <hbox class="rightMost"/>
+            </row>
+            <row class="middle">
+             <hbox class="leftMost" pack="end">
+              <label id="positionScreenXLabel" value="&screenXCoord.label;" class="title"/>
+             </hbox>
+              <hbox class="valueBox">
+				<label id="positionScreenXValue"/>
+				<hbox/>
+			  </hbox>
+             <hbox class="outerBoxCenter" >
+              <hbox class="center" />
+             </hbox>
+              <hbox class="right1  valueBox">
+			  
+			  </hbox>
+             <hbox class="rightMost">
+			 
+             </hbox>
+            </row>
+            <!--
+            <row>
+              <label id="dimensionContentWidthLabel"  value="content width"  class="title"/>
+              <label id="dimensionContentWidthValue"/>
+            </row>
+            <row>
+              <label id="dimensionContentHeightLabel" value="content height" class="title"/>
+              <label id="dimensionContentHeightValue"/>
+            </row>
+            -->
+
+			<hbox id="boxMargin" class="title_row   withUnits  dimTitles">
+			  <groupbox >
+				<caption><label>&boxMargin.label;</label></caption>
+			  </groupbox>
+			</hbox>
+	  
+            <row class="upper" >
+              <hbox class="leftMost"/>
+              <hbox class="left1">
+                <label id="marginTopLabel"    value="margin-top" class="title"/>
+			  </hbox>
+              <hbox class="valueBox">
+                <label id="marginTopValue"/>
+                <hbox/>
+              </hbox>
+              <label />
+              <hbox class="rightMost"/>
+            </row>
+            <row class="middle">
+             <hbox class="leftMost" pack="end">
+              <label id="marginLeftLabel"   value="margin-left" class="title"/>
+             </hbox>
+              <hbox class="valueBox">
+				<label id="marginLeftValue"/>
+				<hbox/>
+			  </hbox>
+             <hbox class="outerBoxCenter" >
+              <hbox class="center" />
+             </hbox>
+              <hbox class="right1  valueBox">
+				<label id="marginRightValue"/>
+				<hbox/>
+			  </hbox>
+             <hbox class="rightMost">
+              <label id="marginRightLabel"  value="margin-right" class="title"/>
+             </hbox>
+            </row>
+            <row class="lower" >
+              <hbox class="leftMost"/>
+              <hbox class="left1">
+                <label id="marginBottomLabel" value="margin-bottom" class="title"/>
+			  </hbox>
+              <hbox class="valueBox">
+                <label id="marginBottomValue"/>
+                <hbox/>
+              </hbox>
+              <label />
+              <hbox class="rightMost"/>
+            </row>
+	  
+
+			<hbox id="boxBorder" class="title_row  withUnits  dimTitles">
+			  <groupbox >
+				<caption><label>&boxBorder.label;</label></caption>
+			  </groupbox>
+			</hbox>
+		
+		    <row class="upper  border" >
+              <hbox class="leftMost"/>
+              <hbox class="left1">
+                <label id="borderTopLabel"    value="border-top" class="title"/>
+			  </hbox>
+              <hbox class="valueBox">
+                <label id="borderTopValue"/>
+                <hbox/>
+              </hbox>
+             <hbox class="right1">
+              <label id="borderTop_1Value"/>
+              <label id="borderTop_2Value"/>
+             </hbox>
+              <hbox class="rightMost"/>
+            </row>
+            <row class="middle  border">
+             <hbox class="leftMost" pack="end">
+              <label id="borderLeftLabel"   value="border-left" class="title"/>
+              <label id="borderLeft_2Value"/>
+              <label id="borderLeft_1Value"/>
+             </hbox>
+              <hbox class="valueBox">
+				<label id="borderLeftValue"/>
+				<hbox/>
+			  </hbox>
+             <hbox class="outerBoxCenter" >
+              <hbox class="center" />
+             </hbox>
+              <hbox class="right1  valueBox">
+				<label id="borderRightValue"/>
+				<hbox/>
+			  </hbox>
+             <hbox class="rightMost">
+              <label id="borderRight_1Value"/>
+              <label id="borderRight_2Value"/>
+              <label id="borderRightLabel"  value="border-right" class="title"/>
+             </hbox>
+            </row>
+            <row class="lower  border" >
+              <hbox class="leftMost"/>
+              <hbox class="left1">
+                <label id="borderBottomLabel" value="border-bottom" class="title"/>
+			  </hbox>
+             <hbox class="valueBox">
+                <label id="borderBottomValue"/>
+                <hbox/>
+             </hbox>
+             <hbox class="right1">
+              <label id="borderBottom_1Value"/>
+              <label id="borderBottom_2Value"/>
+             </hbox>
+              <hbox class="rightMost"/>
+            </row>
+
+			
+      <!-- groupbox id="boxPadding" class="withUnits" 
+              <label>&boxPadding.label;</label>
+	  
+            <row id="boxPadding_row" class="title_row" >
+			  <separator />
+			  <separator />
+			  <separator />
+            </row>
+	  -->
+			<hbox id="boxPadding" class="title_row  withUnits  dimTitles">
+			  <groupbox >
+				<caption><label>&boxPadding.label;</label></caption>
+			  </groupbox>
+			</hbox>
+		
+		
+            <row class="upper" >
+              <hbox class="leftMost"/>
+              <hbox class="left1">
+                <label id="paddingTopLabel"    value="padding-top" class="title"/>
+			  </hbox>
+              <hbox class="valueBox">
+                <label id="paddingTopValue"/>
+                <hbox/>
+              </hbox>
+              <label />
+              <hbox class="rightMost"/>
+            </row>
+            <row class="middle">
+             <hbox class="leftMost" pack="end">
+              <label id="paddingLeftLabel"   value="padding-left" class="title"/>
+             </hbox>
+              <hbox class="valueBox">
+				<label id="paddingLeftValue"/>
+				<hbox/>
+			  </hbox>
+             <hbox class="outerBoxCenter" >
+              <hbox class="center" />
+             </hbox>
+              <hbox class="right1  valueBox">
+				<label id="paddingRightValue"/>
+				<hbox/>
+			  </hbox>
+             <hbox class="rightMost">
+              <label id="paddingRightLabel"  value="padding-right" class="title"/>
+             </hbox>
+            </row>
+            <row class="lower" >
+              <hbox class="leftMost"/>
+              <hbox class="left1">
+                <label id="paddingBottomLabel" value="padding-bottom" class="title"/>
+			  </hbox>
+              <hbox class="valueBox">
+                <label id="paddingBottomValue"/>
+                <hbox/>
+              </hbox>
+              <label />
+              <hbox class="rightMost"/>
+            </row>
+
+			
+			<hbox id="boxOther" class="title_row">
+			  <groupbox >
+				<caption><label>Other</label></caption> <!-- TODO: put text in DTD -->
+			  </groupbox>
+			</hbox>
+		  
+            <hbox id="boxOtherContent"  class="otherRow" pack="center">
+				<grid flex="0">
+				  <columns>
+					<column class="other_leftMost"  />
+					<column class="other_center"  />
+					<column class="other_rightMost" />
+				  </columns>
+				  <rows>
+					<row>
+						<label id="otherMozappearLabel"   value="." class="title"/>
+						<label id="otherMozappearValue" />
+						<label style="width: 15ch;" />
+					</row>
+					<row>
+						<label id="otherDisplayLabel"     value="." class="title"/>
+						<label id="otherDisplayValue" />
+						<label />
+					</row>
+					<row>
+						<label id="otherVisibilityLabel"  value="." class="title"/>
+						<label id="otherVisibilityValue" />
+						<label />
+					</row>
+					<row>
+						<label id="otherPositionLabel"    value="." class="title"/>
+						<label id="otherPositionValue" />
+						<label />
+					</row>
+				  </rows>
+				</grid>
+            </hbox>
+
+			
+			<hbox id="bottomLine" class="title_row  bottomLine_cls">
+			  <groupbox >
+				<caption></caption>
+			  </groupbox>
+			</hbox>
+			
+          </rows>
+        </grid>
+	  
+    </vbox>
+  </vbox>
+
+</page>

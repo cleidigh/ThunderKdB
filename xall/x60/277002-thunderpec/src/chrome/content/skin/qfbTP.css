@@ -1,0 +1,38 @@
+@import url("chrome://messenger/content/quickFilterBar.css");
+@import url("chrome://messenger/skin/quickFilterBar.css");
+
+#tpec-qfb-messages {
+  list-style-image: url("chrome://thunderpec/content/img/qfboff_m.png") !important;
+}
+
+#tpec-qfb-messages[disabled="true"] {
+  list-style-image: url("chrome://thunderpec/content/img/qfboff_m.png") !important;
+  }
+
+#tpec-qfb-messages[checked="true"] {
+  list-style-image: url("chrome://thunderpec/content/img/qfbon_m.png") !important;
+}
+
+#tpec-qfb-notifications {
+  list-style-image: url("chrome://thunderpec/content/img/qfboff_n.png") !important;
+}
+
+#tpec-qfb-notifications[disabled="true"] {
+  list-style-image: url("chrome://thunderpec/content/img/qfboff_n.png") !important;
+}
+
+#tpec-qfb-notifications[checked="true"] {
+  list-style-image: url("chrome://thunderpec/content/img/qfbon_n.png") !important;
+}
+
+#tpec-qfb-53 {
+  list-style-image: url("chrome://thunderpec/content/img/qfboff_53.png") !important;
+}
+
+#tpec-qfb-53[disabled="true"] {
+  list-style-image: url("chrome://thunderpec/content/img/qfboff_53.png") !important;
+}
+
+#tpec-qfb-53[checked="true"] {
+  list-style-image: url("chrome://thunderpec/content/img/qfbon_53.png") !important;
+}
