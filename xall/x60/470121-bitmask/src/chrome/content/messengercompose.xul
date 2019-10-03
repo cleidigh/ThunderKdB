@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<overlay id="bitmaskComposeOverlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/javascript" src="chrome://bitmask/content/bitmask.js" />
+  <script type="application/javascript" src="chrome://bitmask/content/messengercompose.js" />
+
+  <textbox id="addressCol2#1" oninput="checkToField.splitInput(event);" />
+
+</overlay>

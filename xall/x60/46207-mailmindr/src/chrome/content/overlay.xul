@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://mailmindr/skin/overlay.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailmindr/skin/mailmindrList.css" type="text/css"?>
+
+<!DOCTYPE overlay PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" [
+  <!ENTITY % mailmindrDTD SYSTEM "chrome://mailmindr/locale/mailmindr.overlay.dtd">
+  %mailmindrDTD;
+  <!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd">
+  %globalDTD;
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd">
+  %messengerDTD;
+  <!ENTITY % msgViewPickerDTD SYSTEM "chrome://messenger/locale/msgViewPickerOverlay.dtd" >
+  %msgViewPickerDTD;
+  <!ENTITY % contentAreaCommandsDTD SYSTEM "chrome://communicator/locale/contentAreaCommands.dtd">
+  %contentAreaCommandsDTD;
+  <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd">
+  %brandDTD;
+  <!ENTITY % findBarDTD SYSTEM "chrome://global/locale/findbar.dtd">
+  %findBarDTD;
+]>
+
+<!-- <?xul-overlay href="chrome://mailmindr/content/mailmindr.toolbar.xul" ?> -->
+
+<overlay id="mailmindrOverlay"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		 
+	<script type="application/x-javascript" src="chrome://mailmindr/content/mailmindrListView.js" />
+    <script type="application/x-javascript" src="chrome://mailmindr/content/overlay.js" /> 
+	
+    <commandset>
+        <command
+            id="mailmindrCmdPreferences"
+            oncommand="mailmindrOverlay.base.doCmdPreferences();"/>
+		<command
+			id="mailmindrCmdToggleMindr"
+			oncommand="mailmindrOverlay.base.onToggleMindr();"/>
+        <command 
+            id="mailmindrCmdToggleMindrFromMailHeader"
+            oncommand="mailmindrOverlay.base.onToggleMindrFromMailHeader();"/>
+    </commandset>
+
+
+	
+	<!-- show outlook header -->
+	<vbox id="singlemessage">
+		<hbox 
+            id="mailmindrShowXMsg"
+			style="padding: 0.5em;"
+			hidden="true"
+			insertafter="msgHeaderView">
+			<label
+				id="mailmindrXMsgLabel"
+				value=""
+				/>
+		</hbox>
+	</vbox>
+
+	
+	
+	<!-- 
+	   folderPaneBox the folder tree on the left seems to be the right place
+	   for a list with unaswered mails / pending replies
+	  -->
+
+	<!-- <vbox id="threadContentArea"> -->
+    <vbox id="folderPaneBox">
+		<splitter
+			id="mailmindrRepliesSplitter"
+            insertafter="folderTree"
+			/>
+		
+		<vbox
+			id="mailmindrReplies"
+			persist="height">
+			<tree 
+				id="mailmindrPendingList" 
+				flex="1" 
+				enableColumnDrag="false"
+				editable="false">
+				<treecols>
+					<treecol ignoreincolumnpicker="true" hidden="true" />
+					<treecol id="mailmindrPendingListColSubject" persist="hidden ordinal width" align="left" flex="2" label="&mailmindr.overlay.pendingmindrs.col.subject;" onclick="mailmindrOverlay.base.sortPendingList(this);" />
+					<treecol id="mailmindrPendingListColFrom" persist="hidden ordinal width" align="left" flex="1" label="&mailmindr.overlay.pendingmindrs.col.from;" onclick="mailmindrOverlay.base.sortPendingList(this);" />
+					<treecol id="mailmindrPendingListColRemainingTime" persist="hidden ordinal width" align="right" flex="1" label="&mailmindr.overlay.pendingmindrs.col.reltime;" onclick="mailmindrOverlay.base.sortPendingList(this);" />
+				</treecols>
+				<treechildren id="mailmindrPendingListTreeChildren"  class="mailmindrMindrList"/>
+			</tree>
+
+            <toolbar>
+                <toolbarspring />
+                <toolbarbutton label="&mailmindr.overlay.pendingmindrs.edit.button.label;"  id="mailmindrPendingMindrEditButton" disabled="false" />
+                <toolbarbutton label="&mailmindr.overlay.pendingmindrs.view.button.label;"  id="mailmindrPendingMindrViewButton" disabled="true" />
+                <toolbarbutton label="&mailmindr.overlay.pendingmindrs.delete.button.label;"  id="mailmindrPendingMindrDeleteButton" disabled="true" />
+                <toolbarspring /> 
+            </toolbar>
+
+		</vbox>
+	</vbox>
+
+
+    <!--
+    Override Tag Toggles to be able to set the listener for the tags
+    -->
+    <keyset id="mailKeys">
+        <key key="&tagCmd1.key;" id="key_tag1" oncommand="mailmindrOverlay.base.onToggleMessageTagKey(1);"/>
+        <key key="&tagCmd2.key;" id="key_tag2" oncommand="mailmindrOverlay.base.onToggleMessageTagKey(2);"/>
+        <key key="&tagCmd3.key;" id="key_tag3" oncommand="mailmindrOverlay.base.onToggleMessageTagKey(3);"/>
+        <key key="&tagCmd4.key;" id="key_tag4" oncommand="mailmindrOverlay.base.onToggleMessageTagKey(4);"/>
+        <key key="&tagCmd5.key;" id="key_tag5" oncommand="mailmindrOverlay.base.onToggleMessageTagKey(5);"/>
+        <key key="&tagCmd6.key;" id="key_tag6" oncommand="mailmindrOverlay.base.onToggleMessageTagKey(6);"/>
+        <key key="&tagCmd7.key;" id="key_tag7" oncommand="mailmindrOverlay.base.onToggleMessageTagKey(7);"/>
+        <key key="&tagCmd8.key;" id="key_tag8" oncommand="mailmindrOverlay.base.onToggleMessageTagKey(8);"/>
+        <key key="&tagCmd9.key;" id="key_tag9" oncommand="mailmindrOverlay.base.onToggleMessageTagKey(9);"/>
+        <key 
+            key="W" 
+            modifiers="shift accel"
+            command="mailmindrCmdToggleMindr" />
+    </keyset>
+
+
+    <menupopup id="mailContext">
+        <menuitem 
+            id="mailmindrContextMenuSetMindr"
+            label="&mailmindr.overlay.contextmenu.setMindr;"
+            command="mailmindrCmdToggleMindr"
+            insertafter="mailContext-sep-reply"
+            class="menu-iconic-wide"
+            />
+    </menupopup>
+
+    <menupopup id="appmenu_customizeMenu">
+        <menuitem 
+            id="mailmindrAppMenuMailmindrPreferences"
+            insertafter="appmenu_accountmgr"
+            label="&mailmindr.overlay.appmenu.preferences;"
+            command="mailmindrCmdPreferences"
+            />
+    </menupopup>
+
+    <menupopup id="appmenu_messageMenuPopup">
+        <menuitem 
+            id="mailmindrMessageAppMenuSetMindr"
+            insertafter="appmenu_messageMenuAfterMarkSeparator"
+            label="&mailmindr.overlay.contextmenu.setMindr;"
+            command="mailmindrCmdToggleMindr"
+            />
+    </menupopup>
+
+    <menupopup id="messageMenuPopup">
+        <menuitem 
+            id="mailmindrMessageMenuSetMindr"
+            insertafter="messageMenuAfterMarkSeparator"
+            label="&mailmindr.overlay.contextmenu.setMindr;"
+            command="mailmindrCmdToggleMindr"
+            />
+    </menupopup>
+<!--
+    <menupopup id="folderPaneContext">
+        <menuitem 
+            id="mailmindrAppMenuMailmindrPreferences"
+            insertafter="folderPaneContext-settings"
+            label="&mailmindr.overlay.appmenu.preferences;"
+            command="mailmindrCmdPreferences"
+            />
+    </menupopup>
+-->
+</overlay>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://mailmindr/skin/preferences.css" type="text/css"?>
+
+<!DOCTYPE prefwindow [
+    <!ENTITY % overlayDTD SYSTEM "chrome://mailmindr/locale/preferences/prefpane.overlay.dtd">
+    %overlayDTD;
+	<!ENTITY % mailmindrDTD SYSTEM "chrome://mailmindr/locale/mailmindr.dtd" >
+	%mailmindrDTD;
+    <!ENTITY % commonDTD SYSTEM "chrome://mailmindr/locale/preferences/prefpane.common.dtd">
+    %commonDTD;
+    <!ENTITY % inboxzeroDTD SYSTEM "chrome://mailmindr/locale/preferences/prefpane.inboxzero.dtd">
+    %inboxzeroDTD;
+    <!ENTITY % actionsDTD SYSTEM "chrome://mailmindr/locale/preferences/prefpane.actions.dtd">
+    %actionsDTD;
+    <!ENTITY % timespanDTD SYSTEM "chrome://mailmindr/locale/preferences/prefpane.timespan.dtd">
+    %timespanDTD;
+]>
+
+<prefwindow
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+	id="mailmindrOptions"
+    type="child"
+    onload="mailmindrPreferencesDialog.onLoad();"
+    ondialogaccept="return mailmindrPreferencesDialog.onAccept();"
+	style="width: 52em; min-height: 38.5em; max-height: 47em;"
+    >
+
+    <prefpane
+        label="&mailmindr.prefpane.dialog.title;"
+        id="mailmindrPrefPaneCommon">
+
+        <stringbundleset>
+            <!-- <stringbundle id="mailmindr_settings" src="chrome://mailmindr/locale/mailmindr.properties"/> -->
+            <stringbundle id="bundle_messenger" src="chrome://messenger/locale/messenger.properties"/>
+        </stringbundleset>
+
+        <tabbox>
+            <tabs>
+                <tab label="&mailmindr.overlay.prefpane.tab.common.title;" />
+
+                <tab label="&mailmindr.overlay.prefpane.tab.inboxzero.title;" />
+             
+                <tab label="&mailmindr.overlay.prefpane.tab.actions.title;" disabled="true" hidden="true" />
+            
+                <tab label="&mailmindr.overlay.prefpane.tab.timespans.title;" />
+            </tabs>
+            <tabpanels>
+                <tabpanel
+                    id="mailmindrCommonPreferencePanel"
+                    orient="vertical">
+                    <groupbox>
+                        <caption label="&mailmindr.prefpane.common.group.title;" />
+                        
+                        <grid>
+                            <columns>
+                                <column flex="1"/>
+                                <column flex="2"/>
+                            </columns>
+                            
+                            <rows>
+                                <row align="center">
+                                    <label value="&mailmindr.prefpane.common.showTimespansSelect;" />
+                                    <menulist id="mailmindrShowTimespans" 
+                                        data-preference="pref-mailmindrShowTimespans">
+                                        <menupopup>
+                                            <menuitem value="0" label="&mailmindr.prefpane.common.timespanSystemOnly;"/>
+                                            <menuitem value="1" label="&mailmindr.prefpane.common.timespanUserOnly;"/>
+                                            <menuitem value="2" label="&mailmindr.prefpane.common.timespanSystemAndUser;"/>
+                                        </menupopup>
+                                    </menulist>
+                                </row>
+                                
+                                <row align="center">
+                                    <label value="&mailmindr.prefpane.common.targetFolderIncoming;" />
+                                    <menulist id="mailmindrTargetFolderIncoming" data-preference="pref-mailmindrTargetFolderIncoming">
+                                        <menupopup>
+                                            <menuitem value="" label="&mailmindr.prefpane.common.chooseItem;" />
+                                        </menupopup>
+                                    </menulist>
+                                </row>
+                                
+                                <row align="center">
+                                    <label value="&mailmindr.prefpane.common.targetFolderSent;" />
+                                    <menulist id="mailmindrTargetFolderSent" data-preference="pref-mailmindrTargetFolderSent">
+                                        <menupopup>
+                                            <menuitem value="" label="&mailmindr.prefpane.common.chooseItem;" />
+                                        </menupopup>
+                                    </menulist>
+    
+                                </row>
+
+                                <row align="center">
+                                    <label value="&mailmindr.prefpane.common.uiShowPendingList;" />
+                                    <menulist id="mailmindrUIShowPendingList" data-preference="pref-mailmindrUIShowPendingList">
+                                        <menupopup>
+                                            <menuitem value="0" label="&mailmindr.prefpane.common.uiShowPendingList.option.0;" />
+                                            <menuitem value="1" label="&mailmindr.prefpane.common.uiShowPendingList.option.1;" />
+                                        </menupopup>
+                                    </menulist>
+                                </row>
+
+                                <row align="center">
+                                    <label value="&mailmindr.prefpane.common.defaultTimespan;" />
+                                    <menulist 
+                                        id="mailmindrDefaultTimespanSelector"
+                                        data-preference="pref-mailmindrDefaultTimespan"
+                                        >
+                                        <menupopup>
+                                        </menupopup>
+                                    </menulist>        
+                                </row>
+
+                                <row align="center">
+                                    <label value="&mailmindr.prefpane.common.ontag.action.label;" />
+                                    <menulist 
+                                        id="mailmindrDefaultActionSelector"
+                                        data-preference="pref-mailmindrDefaultAction"
+                                        >
+                                        <menupopup>
+                                            <menuitem 
+                                                value=""
+                                                label="&mailmindr.prefpane.common.onaction-select;" />
+                                        </menupopup>
+                                    </menulist>
+                                </row>
+
+                            <!--
+                                <row align="center">
+                                    <label value="&mailmindr.prefpane.common.alertTicksBefore;" />
+                                    <hbox align="center">
+                                        <textbox  
+                                            id="mailmindralertTicksBefore"
+                                            data-preference="pref-mailmindrAlertTicksBefore"
+                                            type="number"
+                                            max="200"
+                                            min="0"
+                                            size="2"
+                                            />
+                                        <label value="&mailmindr.prefpane.common.alertTicksUnitMinutes;" />
+                                    </hbox>        
+                                </row>
+                            -->
+
+                                <row align="center">
+                                    <label value="&mailmindr.prefpane.common.firstdayofweek;" />
+                                    <menulist id="mailmindrFirstDayOfWeek" data-preference="pref-mailmindrFirstDayOfWeek">
+                                        <menupopup>
+                                            <menuitem value="0" label="&mailmindr.prefpane.common.day.0;" />
+                                            <menuitem value="1" label="&mailmindr.prefpane.common.day.1;" />
+                                            <menuitem value="2" label="&mailmindr.prefpane.common.day.2;" />
+                                            <menuitem value="3" label="&mailmindr.prefpane.common.day.3;" />
+                                            <menuitem value="4" label="&mailmindr.prefpane.common.day.4;" />
+                                            <menuitem value="5" label="&mailmindr.prefpane.common.day.5;" />
+                                            <menuitem value="6" label="&mailmindr.prefpane.common.day.6;" />
+                                        </menupopup>
+                                    </menulist>
+                                </row>
+
+                                <checkbox 
+                                    label="&mailmindr.prefpane.common.showAlertDialog;"
+                                    data-preference="pref-mailmindrShowAlertDialog" />
+
+                                <checkbox 
+                                    label="&mailmindr.prefpane.common.loggingEnabled.title;" 
+                                    data-preference="pref-mailmindrLoggingEnabled" />
+
+                            </rows>
+            
+                        
+                        </grid>
+                    </groupbox>
+                    
+                    <groupbox>
+                        <caption>
+                            <checkbox 
+                                id="mailmindrSetMindrOnTag" 
+                                label="&mailmindr.prefpane.common.ontag.title;" 
+                                data-preference="pref-mailmindrSetMindrOnTag" />
+                        </caption>
+                        
+                        <grid>
+                            <columns>
+                                <column flex="1"/>
+                                <column flex="2"/>
+                            </columns>
+                            <rows>
+                                <row align="center">
+            
+                                    <label value="&mailmindr.prefpane.common.ontag.tag.label;" />
+                                    <menulist id="mailmindrOnTagSelector" 
+                                        data-preference="pref-mailmindrSetMindrOnTagSelectedTag">
+                                        <menupopup>
+                                            <menuitem value="" label="&mailmindr.prefpane.common.tag.select;"/>
+                                        </menupopup>
+                                    </menulist>
+                
+                                </row>
+                                <row align="center">
+                                    <label value="&mailmindr.prefpane.common.ontag.timespan.label;" />
+                                    <menulist 
+                                        id="mailmindrOnTagTimespanSelector"
+                                        data-preference="pref-mailmindrSetMindrOnTagSelectedTimespan"
+                                        >
+                                        <menupopup>
+                                            <menuitem value="" label="&mailmindr.prefpane.common.timespan.dialog;"/>
+                                        </menupopup>
+                                    </menulist>                
+                                </row>
+                                
+                                <!-- <row align="center" hidden="true">
+                                    <label value="&mailmindr.prefpane.common.ontag.action.label;" />
+                                    <menulist 
+                                        id="mailmindr_onTag_actionSelector"
+                                        >
+                                        <menupopup>
+                                            <menuitem value="" label="&mailmindr.prefpane.common.actions.dialog;"/>
+                                        </menupopup>
+                                    </menulist>                
+                                </row> -->
+                            </rows>
+                        </grid>
+            
+                    </groupbox>
+
+                    <description style="font-style: italic;" value="&mailmindr.prefpane.common.note.restartneeded;" />
+
+                </tabpanel>
+
+
+                <tabpanel
+                    oriennt="vertical">
+                    <groubox flex="1">
+                        <vbox flex="1">
+                        
+                            <description style="width: 47em;">
+                                &mailmindr.prefpane.inboxzero.description.text;
+                            </description>
+
+                            <groupbox style="max-height: 21em;" >
+                                <caption label="&mailmindr.prefpane.common.inboxZeroLaterFolder;"/>
+                            
+                                <vbox id="mailmindrMultipleInboxes" flex="1" style="overflow: auto;">
+
+                                    <grid>
+                                        <columns>
+                                            <column flex="1"/>
+                                            <column flex="2"/>
+                                        </columns>
+                                        <rows id="mailmindrInboxZeroMappingList">
+                                            <row class="mailmindr-locked">
+                                                <label value="Global:" />
+                                                <menulist 
+                                                    id="mailmindrInboxZeroLaterFolder"
+                                                    data-hash="mailmindr:global"
+                                                    data-preference="pref-mailmindrInboxZeroLaterFolder">
+                                                    <menupopup>
+                                                        <menuitem value="" label="&mailmindr.prefpane.inboxzero.selectfolder.label;" />
+                                                    </menupopup>
+                                                </menulist>
+                                            </row>
+                                        </rows>
+                                    </grid>
+                                </vbox>
+
+                            </groupbox>
+                        </vbox>
+                    </groubox>
+                </tabpanel>
+
+
+                <tabpanel
+                    orient="vertical">
+                    <groupbox flex="1">
+                        <caption label="&mailmindr.prefpane.actions.list.available;" />
+                        <tree id="mailmindrPrefPaneActionList" flex="1" editable="true">         
+                            <treecols>         
+                                <treecol id="treeColActive" label="&mailmindr.prefpane.actions.list.col-action-active;" type="checkbox" editable="true" flex="1"/>
+                                <treecol id="treeColTitle" label="&mailmindr.prefpane.actions.list.col-action-name;" primary="true" flex="2"/>         
+                                <treecol id="treeColMinutes" label="&mailmindr.prefpane.actions.list.col-action-desc;" flex="2"/>
+                            </treecols>         
+                        
+                            <treechildren id="mmrActionList">         
+                                <treeitem container="true" open="true" editable="false">         
+                                    <treerow>
+                                        <treecol flex="2" hidden="true" ignoreincolumnpicker="true" />
+                                        <treecell value="true" editable="true"/>
+                                        <treecell label="item label"/>
+                                        <treecell label="item label"/>
+                                    </treerow>         
+                                </treeitem>         
+                            </treechildren>         
+                        </tree>
+                        <hbox>
+                            <vbox class="mailmindr-label-bold">
+                                <label value="&mailmindr.prefpane.actions.label-action-name;" />
+                                <label value="&mailmindr.prefpane.actions.label-action-desc;" />
+                            </vbox>
+                            <vbox>
+                                <label value="mailmindr.prefpane.actions.action-name;" />
+                                <description value="mailmindr.prefpane.actions.action-desc;" />
+                            </vbox>
+                        </hbox>
+                        <hbox>
+                            <button onclick="mailmindrPrefPaneActions.editAction()" label="&mailmindr.prefpane.actions.button.addAction;" />
+                            <button onclick="doNothing()" label="&mailmindr.prefpane.actions.button.disableAction;" />
+                            <button onclick="doSomething()" label="&mailmindr.prefpane.actions.button.deleteAction;" />
+                        </hbox>
+                    </groupbox>
+                </tabpanel>
+                
+                
+                
+                
+                
+                <tabpanel
+                    orient="vertical">
+                    <groupbox flex="1">
+                        <caption label="&mailmindr.prefpane.timespan.groupbox.title;" />
+ 
+                        <listbox id="mailmindrTimespanList">
+                            <listitem label="placeholder" value="0" />
+                        </listbox>
+                        <hbox align="right">
+                            <button onclick="mailmindrPrefPaneTimespan.addTimespan()" label="&mailmindr.prefpane.timespan.button.create;" />
+                            <button onclick="mailmindrPrefPaneTimespan.editTimespan()" label="&mailmindr.prefpane.timespan.button.edit;" />
+                            <button onclick="mailmindrPrefPaneTimespan.deleteTimespan()" label="&mailmindr.prefpane.timespan.button.delete;" />
+                        </hbox>
+                    </groupbox>
+                </tabpanel>
+
+
+            </tabpanels>
+        </tabbox>
+
+    </prefpane>
+
+    <script type="application/javascript" src="chrome://messenger/content/folderPane.js"/>
+    <!-- <script type="application/javascript" src="chrome://messenger/content/overlay.js"/> -->
+
+    <script type="application/javascript" src="chrome://mailmindr/content/controls/actionPicker.js" />
+    <script type="application/javascript" src="chrome://mailmindr/content/preferences/prefpane.common.js"/>
+    <script type="application/javascript" src="chrome://mailmindr/content/preferences/prefpane.inboxzero.js"/>
+    <script type="application/javascript" src="chrome://mailmindr/content/preferences/prefpane.timespan.js"/>
+    <script type="application/javascript" src="chrome://mailmindr/content/preferences/preferences.js"/>
+
+    <!-- <script type="application/javascript" src="chrome://messenger/content/mailWindow.js"/> -->
+    <!-- <script type="application/javascript" src="chrome://messenger/content/folderDisplay.js"/> -->
+    <!-- <script type="application/javascript" src="chrome://messenger/content/messageDisplay.js"/> -->
+    <!-- <script type="application/javascript" src="chrome://messenger/content/threadPane.js"/> -->
+    <!-- <script type="application/javascript" src="chrome://messenger/content/msgMail3PaneWindow.js"/> -->
+    <!-- <script type="application/javascript" src="chrome://global/content/globalOverlay.js"/> -->
+    <!-- <script type="application/javascript" src="chrome://messenger/content/mailCommands.js"/> -->
+    <script type="application/javascript" src="chrome://messenger/content/mailWindowOverlay.js"/>
+    <!-- <script type="application/javascript" src="chrome://messenger/content/SearchDialog.js"/> -->
+</prefwindow>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://bitmask/skin/accountWizard.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://bitmask/locale/bitmaskMessengerOverlay.dtd">
+
+<overlay id="bitmaskMessengerOverlay" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript"
+          src="chrome://bitmask/content/accountWizard/launchAccountWizard.js"/>
+  <script type="application/javascript"
+          src="chrome://bitmask/content/bitmask.js"/>
+  <script type="application/javascript"
+          src="chrome://bitmask/content/accountWizard/bitmaskMessengerOverlay.js"/>
+
+  <notificationbox id="msgNotificationBar" collapsed="true">
+    <hbox id="bitmaskHeader" class="bitmaskNotificationBar">
+      <description id="bitmaskDescription" />
+    </hbox>
+  </notificationbox>
+
+  <statusbar id="status-bar">
+    <statusbarpanel id="bitmaskStatusBarPanel" class="statusbarpanel-iconic-text" />
+  </statusbar>
+
+  <menupopup id="menu_NewPopup">
+    <menuitem id="newBitmaskAccountMenuItem"
+              label="&newBitmaskAccountCmd.label;"
+              accesskey="&newBitmaskAccountCmd.accesskey;"
+              oncommand="launchAccountWizard();"
+              insertbefore="newPopupMenuSeparator" />
+  </menupopup>
+</overlay>

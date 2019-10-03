@@ -1,0 +1,5 @@
+const mailmindrState = {
+    mindrs = [],
+
+    get 
+}

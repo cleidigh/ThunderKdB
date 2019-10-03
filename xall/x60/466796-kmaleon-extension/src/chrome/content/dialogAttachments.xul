@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<?xml-stylesheet type="text/css" href="chrome://kmaleonext/skin/attachdialog.css" ?>
+
+<dialog
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="myDialogId"
+	title="My Dialog"
+	persist="screenX screenY width height"
+	windowtype="myDialogWindowType">
+
+	<script type="application/javascript" src="chrome://kmaleonext/content/saveattachments.js"/><!-- A reference to your JavaScript file -->
+	
+	<vbox id ="attachlist">
+		<button id="Adjunto1"> <checkbox label="Enable Java" checked="false"/></button>
+		<button id="Adjunto2"><checkbox label="Enable Java" checked="false"/></button>
+		<button id="Adjunto3"><checkbox label="Enable Java" checked="false"/></button>
+	</vbox>
+  
+  
+</dialog>
+
+<!-- 
+https://developer.mozilla.org/en-US/docs/XUL/listbox
+Se puede hacer el boton que clicando salga una lista hacia abajo y se pueda clicar en el adjunto: https://developer.mozilla.org/en-US/docs/XUL/XUL_controls?redirectlocale=en-US&redirectslug=XUL_controls 
+- Se puede hacer un menulist en una nueva ventana y darle a guardar
+- Se pueden añdir botones en grid
+
+
+
+
+
+ondialogaccept="return onOK();" onload="onLoad();" -->
+

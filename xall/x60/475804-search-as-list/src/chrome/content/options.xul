@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://search-as-list/locale/prefwindow.dtd">
+<prefwindow id="search-as-listPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;"  buttons="accept,extra1,cancel" ondialogaccept="onUnload(event.target);" buttonlabelextra1="&applyButton.label;" ondialogextra1="onUnload(event.target);">
+<script type="application/javascript" src="chrome://search-as-list/content/options.js"/><!-- A reference to your JavaScript file -->
+  <prefpane id="pane1" label="&pane1.title;">
+    <preferences>
+      <preference id="listTab" name="extensions.search-as-list.listTab" type="bool"/>
+	  <preference id="origTab" name="extensions.search-as-list.origTab" type="bool"/>
+	  <preference id="shortList" name="extensions.search-as-list.shortList" type="bool"/>
+	  <preference id="numShort" name="extensions.search-as-list.numShort" type="int"/>
+    </preferences>
+    <checkbox id="listTabprefs" label="&listTab.label;" preference="listTab"/>
+	<checkbox id="origTabprefs" label="&origTab.label;" preference="origTab"/>
+	<hbox style="-moz-box-align:baseline;">
+		<checkbox id="shortListprefs" label="&shortList.label;" preference="shortList"/>
+		<textbox id="numShortprefs"  preference="numShort"/>
+		<label id="numShortlable" value="&numShort.label;"/>
+	</hbox>
+  </prefpane>
+  <prefpane id="pane2" label="&pane2.title;" onpaneload="onLoad(event.target)">
+	<preferences>
+	  <preference id="expandThread" name="extensions.search-as-list.expandThread" type="bool"/>
+	  <preference id="toggleThread" name="extensions.search-as-list.toggleThread" type="bool"/>
+	  <preference id="colShow" name="extensions.search-as-list.colShow" type="string"/>
+	  <preference id="colClick" name="extensions.search-as-list.colClick" type="string"/>
+	</preferences>
+	<box id="mainbox" orient="horizontal">
+	  <groupbox id="gbshow" style="height:300px;overflow-y:scroll;">
+	    <caption label="&gbshow.title;"/>
+	  </groupbox>
+	  <groupbox id="gbclick" style="height:300px;">
+	    <caption label="&gbclick.title;"/>
+		<label id="togglelabel" value="&gbclick.toggle;" hidden="true"/>
+		<checkbox id="toggleThreadprefs" label="&gbclick.toggleThread;" preference="toggleThread" onclick="document.getElementById('expandThread').disabled = ! this.checked;"/>
+		<label id="expandlabel" value="&gbclick.expand;" hidden="true"/>
+		<checkbox id="expandThreadprefs" label="&gbclick.expandThread;" preference="expandThread"/>
+		<description value="&gbclick.firstsort;"> </description>
+		<hbox>
+			<menulist id="sortfirstml">
+				<menupopup id="sortfirstmp">
+					<menuitem label=""/>
+				</menupopup>
+			</menulist>
+			<radiogroup id="firstsortdir">
+				<radio id="firstascend" label="&gbclick.ascend;"/>
+				<radio id="firstdescend" label="&gbclick.descend;"/>
+			</radiogroup>
+		</hbox>
+		<description value="&gbclick.secondsort;"> </description>
+		<hbox>
+			<menulist id="sortsecondml">
+				<menupopup id="sortsecondmp">
+					<menuitem label=""/>
+				</menupopup>
+			</menulist>
+			<radiogroup id="secondsortdir">
+				<radio id="secondascend" label="&gbclick.ascend;"/>
+				<radio id="seconddescend" label="&gbclick.descend;"/>
+			</radiogroup>
+		</hbox>
+		<description value="&gbclick.thirdsort;"> </description>
+		<hbox>
+			<menulist id="sortthirdml">
+				<menupopup id="sortthirdmp">
+					<menuitem label=""/>
+				</menupopup>
+			</menulist>
+			<radiogroup id="thirdsortdir">
+				<radio id="thirdascend" label="&gbclick.ascend;"/>
+				<radio id="thirddescend" label="&gbclick.descend;"/>
+			</radiogroup>
+		</hbox>
+	  </groupbox>
+	</box>
+  </prefpane>
+</prefwindow>

@@ -1,0 +1,151 @@
+/*
+we enable on both xul and xhtml
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+*/
+
+/*
+http://www.w3.org/TR/css3-conditional/
+*/
+@-moz-document regexp("chrome://(messenger|ldapinfo|conversations)/content/.*") {
+
+  #ldapinfo-statusbar-icon {
+    list-style-image: url("chrome://ldapInfo/skin/icon.png");
+  }
+  
+  #ldapinfo-tooltip {
+    margin: 0px;
+    padding: 0px;
+    border: 0px none !important;
+  }
+  
+  #ldapinfo-tooltip > grid {
+  }
+  
+  .ldapInfoPopupDetailColumn {
+    max-width: 800px !important;
+  }
+  
+  #ldapinfo-tooltip-rows > row:nth-child(odd) {
+    background-color: #ffffe1 !important;
+  }
+  
+  #ldapinfo-tooltip-rows > row:nth-child(even) {
+    background-color: #ffffc0 !important;
+  }
+  
+  #displayLDAPPhoto[orient="horizontal"] {
+    flex: 1 1;
+    -moz-box-flex: 1;
+    overflow: auto;
+    min-width: 300px;
+    display: block;
+  }
+  
+  #expandedHeaderView > #displayLDAPPhoto[orient="horizontal"] { /* when put left side for msg display window */
+    flex: 0 1;
+    min-width: 100px;
+    max-width: 600px;
+    -moz-box-flex: 0;
+  }
+  
+  #msgheaderstoolbar-box > #displayLDAPPhoto { /* when put left in compose window */
+    flex: 0 0;
+    min-width: 128px;
+    max-width: 128px;
+    width: 128px;
+    -moz-box-flex: 0;
+    overflow: hidden;
+  }
+  
+  /* https://bugzilla.mozilla.org/show_bug.cgi?id=702508, support since TB28 */
+  /*@supports (flex-wrap: wrap) {
+    #displayLDAPPhoto[orient="horizontal"] {
+      display: flex;
+      flex-flow: row wrap;
+      align-content: flex-end;
+      justify-content: flex-start;
+    }
+  }*/
+  
+  image.ldapInfoLoadingQueue, img.ldapInfoLoadingQueue, image.ldapInfoLoadingQueueOther, img.ldapInfoLoadingQueueOther {
+    border: 1px dotted blue;
+  }
+
+  image.ldapInfoLoading, img.ldapInfoLoading, image.ldapInfoLoadingOther, img.ldapInfoLoadingOther {
+    border: 1px dashed red;
+    animation: ldapInfoAnimation 0.2s infinite alternate;
+  }
+
+  @keyframes ldapInfoAnimation {
+    from {
+      border-color: red;
+    }
+    to {
+      border-color: green;
+    }
+  }
+
+  image.ldapInfoMoreInfo {
+    border-width: 2px;
+    border-color: green;
+    border-bottom-style: dashed;
+  }
+  
+  image.ldapInfoMoreInfo[MultiSrc="true"] {
+    border-width: 2px;
+    border-color: red;
+    border-bottom-style: dashed;
+  }
+
+  #displayLDAPPhoto .ldapInfoInnerBox {
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  #displayLDAPPhoto .ldapInfoInnerBoxWithMargin {
+    margin: 4px 4px 0 4px !important;
+  }
+
+  #displayLDAPPhoto div {
+    display: none;
+  }
+
+  #displayLDAPPhoto div.ldapInfoMoreInfo {
+  	width: 8px;
+	height: 8px;
+	display: block;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+    background: url(chrome://ldapInfo/skin/plus.png) no-repeat;
+    transform: rotate(45deg);
+  }
+  
+  #displayLDAPPhoto div.ldapInfoMoreInfo[MultiSrc="true"] {
+    transform: rotate(0deg);
+  }
+
+  #ldapinfoshow-perfpane {
+    overflow: auto;
+    min-width: 600px;
+  }
+  
+  #ldapinfoshow-perfpane textbox[readonly="true"] {
+    color: grey !important;
+  }
+  
+  #ldapinfoshow-perfpane checkbox.ldapinfoshow-enable-checked:not([checked]) + hbox,
+  #ldapinfoshow-perfpane checkbox.ldapinfoshow-enable-checked:not([checked]) + hbox textbox {
+    color: grey !important;
+  }
+  
+  #ldapinfoshow-perfpane .ldapinfoshow-center-rows  row{
+    box-align: center;
+    -moz-box-align: center;
+  }
+
+  #ldapinfoshow-select-icon-size  *{
+    max-height: 64px;
+  }
+
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<!DOCTYPE prefwindow [
+    <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd">
+    %brandDTD;
+    <!ENTITY % preferencesDTD SYSTEM "chrome://messenger/locale/preferences/preferences.dtd">
+    %preferencesDTD;
+    <!ENTITY % timespanDTD SYSTEM "chrome://mailmindr/locale/dialogs/timespanEditor.dtd">
+    %timespanDTD;
+    <!ENTITY % mailmindrDTD SYSTEM "chrome://mailmindr/locale/mailmindr.dtd">  
+    %mailmindrDTD;
+]>
+<!-- onload="mailmindr.dialogs.timeSpanEditor.onLoad();" -->
+<prefwindow
+    id="mailmindrTimespanEditor"
+    type="child"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    dlgbuttons="accept,cancel"
+    title="&mailmindr.dlg.timespan.title;"
+    style="width: 35em !important; max-width: 35em !important;"
+    
+    ondialogaccept="mailmindr.dialogs.timeSpanEditor.onDialogAccept();"
+    >
+<prefpane id="tseditor">
+    
+
+    <!-- <stringbundleset id="mailmindrTimespaneditorBundle">  
+        <stringbundle src="chrome://mailmindr/locale/dialogs/timespanEditor.properties" id="mailmindrTimespaneditorStrings" />   
+    </stringbundleset>           -->
+
+    <groupbox>
+        <caption label="&mailmindr.dlg.timespan.caption.name;" />
+        <vbox>
+            <vbox>
+                <label value="&mailmindr.dlg.timespan.label.name;" />
+                <textbox id="mailmindrTimespanName" value=""/>
+                <checkbox id="mailmindrAutoRename" label="Auto-Rename" />
+            </vbox>
+            <vbox>
+                <label>
+                    &mailmindr.dlg.timespan.text;
+                </label>
+                <menulist id="mailmindrTimespanTypePicker">
+                    <menupopup>
+                        <menuitem value="fix" label="&mailmindr.dlg.timespan.option.fixed;"/>
+                        <menuitem value="relative" label="&mailmindr.dlg.timespan.option.relative;"/>
+                    </menupopup>
+                </menulist>
+            </vbox>
+            <vbox>
+                <hbox id="mailmindrTimespanType-fix" hidden="false" class="mailmindr-js-timespanTypePanel">
+                    <vbox>
+                        <label value="&mailmindr.dlg.fixed.label.days;" />
+                        <hbox>
+                            <textbox id="mailmindrTimespanDaysFixed" type="number" />
+                        </hbox>
+                    </vbox>
+                    <vbox>
+                        <label for="mailmindrFixedTimePicker" value="&mailmindr.dlg.fixed.label.time;"/>
+                        <timepicker
+                            id="mailmindrFixedTimePicker"
+                            hideseconds="true"
+                            increment="5"
+                            />
+                    </vbox>
+                </hbox>
+                <hbox id="mailmindrTimespanType-relative" hidden="true" class="mailmindr-js-timespanTypePanel">
+                    <vbox>
+                        <label value="&mailmindr.days;" />
+                        <hbox>
+                            <textbox id="mailmindrTimespanDays" type="number" style="width: 7em;" />
+                        </hbox>
+                    </vbox>
+                    <vbox>
+                        <label value="&mailmindr.hours;" />
+                        <hbox>
+                            <textbox id="mailmindrTimespanHours" type="number" max="23" style="width: 7em;" />
+                        </hbox>
+                    </vbox>
+                    <vbox>
+                        <label value="&mailmindr.minutes;" />
+                        <hbox>
+                            <textbox id="mailmindrTimespanMinutes" type="number" max="59" style="width: 7em;" />
+                        </hbox>
+                    </vbox>
+                </hbox>
+            </vbox>
+        </vbox>
+    </groupbox>
+  </prefpane>
+
+    <separator />
+        <script
+        type="application/javascript" 
+        src="chrome://mailmindr/content/dialogs/timespaneditor.js">
+    </script>
+</prefwindow>

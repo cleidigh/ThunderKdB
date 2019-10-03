@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<overlay id="p7m-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://p7mon/content/p7mon.js" />
+
+  <script>window.addEventListener("load", org.xtc.p7mon.init, false);</script>  
+  
+  <menubar id="mail-menubar">
+    <menu id="p7mon-menu" label="P7M On">
+      <menupopup id="P7MMenu" onpopupshowing="org.xtc.p7mon.p7mMenu();">
+        <menuitem id="P7M_On" label="P7M On" oncommand="org.xtc.p7mon.setP7MStatus(true);" type="radio" name="p7mGroup"/>
+        <menuitem id="P7M_Off" label="P7M Off" oncommand="org.xtc.p7mon.setP7MStatus(false);" type="radio" name="p7mGroup"/>
+      </menupopup>
+    </menu>
+  </menubar>
+  
+</overlay>

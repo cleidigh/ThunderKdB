@@ -1,0 +1,192 @@
+﻿<?xml version="1.0"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/accountCreation.css"
+                                              type="text/css"?>
+<?xml-stylesheet href="chrome://bitmask/skin/accountWizard.css"
+                                              type="text/css"?>
+
+<!DOCTYPE window [
+  <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd">
+  %brandDTD;
+  <!ENTITY % acDTD SYSTEM "chrome://messenger/locale/accountCreation.dtd">
+  %acDTD;
+  <!ENTITY % awDTD SYSTEM "chrome://bitmask/locale/accountWizard.dtd">
+  %awDTD;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id="autoconfigWizard"
+        windowtype="mail:autoconfig"
+        title="&autoconfigWizard2.title;"
+        onload="gBitmaskAccountWizard.onLoad();"
+        onkeypress="gBitmaskAccountWizard.onKeyDown(event)"
+        onclose="gBitmaskAccountWizard.onWizardShutdown();"
+        onunload="gBitmaskAccountWizard.onWizardShutdown();"
+        >
+
+  <stringbundleset>
+    <stringbundle id="bundle_brand"
+          src="chrome://branding/locale/brand.properties"/>
+    <stringbundle id="accountCreationStrings"
+          src="chrome://messenger/locale/accountCreation.properties"/>
+    <stringbundle id="accountWizardStrings"
+          src="chrome://bitmask/locale/accountWizard.properties"/>
+  </stringbundleset>
+  <script type="application/javascript"
+          src="chrome://bitmask/content/serverConfig.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/util.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/accountConfig.js"/>
+  <script type="application/javascript"
+          src="chrome://bitmask/content/accountWizard/accountWizard.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/sanitizeDatatypes.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountcreation/verifyConfig.js"/>
+  <script type="application/javascript"
+          src="chrome://bitmask/content/accountWizard/createInBackend.js"/>
+  <script type="application/javascript"
+          src="chrome://messenger/content/accountUtils.js" />
+
+  <keyset id="mailKeys">
+    <key keycode="VK_ESCAPE" oncommand="window.close();"/>
+  </keyset>
+
+  <tooltip id="optional-password">
+    <description>&password.text;</description>
+  </tooltip>
+
+  <spacer id="fullwidth"/>
+
+  <vbox id="mastervbox" class="mastervbox" flex="1">
+    <description
+      id="BitmaskAccountWizardTitle"
+      class="bitmaskAccountWizardTitle">&bitmask.accountWizard.title;</description>
+    <spacer flex="1" />
+    <grid id="initialSettings">
+      <columns>
+        <column/>
+        <column/>
+        <column/>
+      </columns>
+      <rows>
+        <row align="center">
+          <label accesskey="&name.accesskey;"
+                 class="autoconfigLabel"
+                 value="&name.label;"
+                 control="realname"/>
+          <textbox id="realname"
+                   class="padded"
+                   placeholder="&name.placeholder;"
+                   oninput="gBitmaskAccountWizard.onInputRealname();"
+                   onblur="gBitmaskAccountWizard.onBlurRealname();"/>
+          <hbox>
+            <description id="nametext" class="initialDesc">&name.text;</description>
+            <image id="nameerroricon"
+                   hidden="true"
+                   class="warningicon"/>
+            <description id="nameerror" class="errordescription" hidden="true"/>
+          </hbox>
+        </row>
+        <row align="center">
+          <label accesskey="&email.accesskey;"
+                 class="autoconfigLabel"
+                 value="&email.label;"
+                 control="email"/>
+          <textbox id="email"
+                   class="padded uri-element"
+                   placeholder="&email2.placeholder;"
+                   oninput="gBitmaskAccountWizard.onInputEmail();"
+                   onblur="gBitmaskAccountWizard.onBlurEmail();"/>
+          <hbox>
+            <image id="emailerroricon"
+                   hidden="true"
+                   class="warningicon"/>
+            <description id="emailerror" class="errordescription" hidden="true"/>
+          </hbox>
+        </row>
+      </rows>
+    </grid>
+    <spacer flex="1" />
+
+     <hbox id="status_area" flex="1">
+      <vbox id="status_img_before" pack="start"/>
+      <description id="status_msg" style="white-space: pre-wrap;">&#160;</description>
+              <!-- Include 160 = nbsp, to make the element occupy the
+                   full height, for at least one line. With a normal space,
+                   it does not have sufficient height. -->
+      <vbox id="status_img_after" pack="start"/>
+    </hbox>
+
+    <groupbox id="result_area" hidden="true">
+      <radiogroup id="result_imappop" orient="horizontal">
+        <radio id="result_select_imap" label="&imapLong.label;" value="1"
+               oncommand="gBitmaskAccountWizard.onResultIMAPOrPOP3();"/>
+        <radio id="result_select_pop3" label="&pop3Long.label;" value="2"
+               oncommand="gBitmaskAccountWizard.onResultIMAPOrPOP3();"/>
+      </radiogroup>
+      <grid>
+        <columns>
+          <column/>
+          <column flex="1"/>
+        </columns>
+        <rows>
+          <row align="center">
+            <label class="textbox-label" value="&incoming.label;"
+                   control="result-incoming"/>
+            <textbox id="result-incoming" disabled="true" flex="1"/>
+          </row>
+          <row align="center">
+            <label class="textbox-label" value="&outgoing.label;"
+                   control="result-outgoing"/>
+            <textbox id="result-outgoing" disabled="true" flex="1"/>
+          </row>
+          <row align="center">
+            <label class="textbox-label" value="&username.label;"
+                   control="result-username"/>
+            <textbox id="result-username" disabled="true" flex="1"/>
+          </row>
+        </rows>
+      </grid>
+    </groupbox>
+
+    <spacer flex="1" />
+    <hbox id="buttons_area">
+      <spacer flex="1"/>
+      <hbox id="right_buttons_area" align="center" pack="end">
+        <button id="stop_button"
+                label="&stop.label;"
+                accesskey="&stop.accesskey;"
+                hidden="true"
+                oncommand="gBitmaskAccountWizard.onStop();"/>
+        <button id="cancel_button"
+                label="&cancel.label;"
+                accesskey="&cancel.accesskey;"
+                oncommand="gBitmaskAccountWizard.onCancel();"/>
+        <button id="half-manual-test_button"
+                label="&half-manual-test.label;"
+                accesskey="&half-manual-test.accesskey;"
+                hidden="true"
+                oncommand="gBitmaskAccountWizard.onHalfManualTest();"/>
+        <button id="next_button"
+                label="&continue.label;"
+                accesskey="&continue.accesskey;"
+                hidden="false"
+                oncommand="gBitmaskAccountWizard.onNext();"/>
+        <button id="create_button"
+                label="&doneAccount.label;"
+                accesskey="&doneAccount.accesskey;"
+                class="important-button"
+                hidden="true"
+                oncommand="gBitmaskAccountWizard.onCreate();"/>
+      </hbox>
+    </hbox>
+  </vbox>
+
+
+</window>

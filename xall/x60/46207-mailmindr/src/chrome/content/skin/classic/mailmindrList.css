@@ -1,0 +1,16 @@
+.mailmindrMindrList::-moz-tree-cell-text(reply-available) 
+{
+    color: green !important;
+    text-decoration: line-through !important;
+}
+
+.mailmindrMindrList::-moz-tree-cell-text(reply-available, selected, focus),
+.mailmindrMindrList::-moz-tree-cell-text(overdue, selected) 
+{
+    color: HighlightText !important;
+}
+
+.mailmindrMindrList::-moz-tree-cell-text(overdue) 
+{
+    color: graytext !important;
+}

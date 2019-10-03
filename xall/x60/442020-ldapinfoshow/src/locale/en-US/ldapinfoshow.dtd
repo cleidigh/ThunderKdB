@@ -1,0 +1,82 @@
+<!ENTITY about.about "About">
+<!ENTITY about.author "Author:">
+<!ENTITY about.help "Help">
+<!ENTITY about.homepage "Home Page:">
+<!ENTITY about.contributors.label "Contributors:">
+
+<!ENTITY ldapinfoshow.perf.title "Awesome ldapInfoShow Options">
+<!ENTITY ldapinfoshow.perf.general "General Settings">
+<!ENTITY ldapinfoshow.perf.LDAP "LDAP Settings">
+<!ENTITY ldapinfoshow.perf.advanced "Advanced Settings">
+<!ENTITY ldapinfoshow.perf.enableForServers "Enable On">
+<!ENTITY ldapinfoshow.perf.loadFromOther "Load Avatar From">
+<!ENTITY ldapinfoshow.perf.localDirTooltip "user@domain.[png/gif/jpg/ico], or without user for domain wildcard photos, should be lowercase.">
+<!ENTITY ldapinfoshow.perf.loadFromLocalDir "Directory">
+<!ENTITY ldapinfoshow.perf.browse "Browse">
+<!ENTITY ldapinfoshow.perf.domainWildCard "Support domain wildcard">
+<!ENTITY ldapinfoshow.perf.loadFromAddressBook "Address Book">
+<!ENTITY ldapinfoshow.perf.loadFromLDAP "LDAP">
+<!ENTITY ldapinfoshow.perf.loadFromIntranet "Intranet">
+<!ENTITY ldapinfoshow.perf.intranetTooltip "Can load avatar from Intranet like Sharepoint, support parameters for both basic attributes including [address|mailid|mailDomain|mailCompany] and ldap attributes">
+<!ENTITY ldapinfoshow.perf.socialNetworks "Social Networks">
+<!ENTITY ldapinfoshow.perf.loadFromFacebook "Facebook">
+<!ENTITY ldapinfoshow.perf.FacebookToken "Token">
+<!ENTITY ldapinfoshow.perf.FacebookTokenExpire1 "expires after">
+<!ENTITY ldapinfoshow.perf.FacebookTokenExpireTooltip "double click to logout">
+<!ENTITY ldapinfoshow.perf.FacebookTokenExpire2 "">
+<!ENTITY ldapinfoshow.perf.loadFromLinkedIn "LinkedIn">
+<!ENTITY ldapinfoshow.perf.LinkedInUser "User">
+<!ENTITY ldapinfoshow.perf.LinkedInToken "Token">
+<!ENTITY ldapinfoshow.perf.LinkedInLogout "Logout">
+<!ENTITY ldapinfoshow.perf.loadFromFlickr "Flickr (Slow)">
+<!ENTITY ldapinfoshow.perf.loadFromGoogle "Google">
+<!ENTITY ldapinfoshow.perf.loadFromGravatar "www.gravatar.com">
+<!ENTITY ldapinfoshow.perf.ignoreLDAPServer "use LDAP server no matter what domain is">
+<!ENTITY ldapinfoshow.perf.attributes "Query these LDAP attributes, empty to query all:">
+<!ENTITY ldapinfoshow.perf.filterTemplate "filter template, you can use 'email', 'uid' and 'domain' as parameter:">
+<!ENTITY ldapinfoshow.perf.photoURL "Use this template as image source when query success but no avatar return, you can use LDAP attribute as parameter:">
+<!ENTITY ldapinfoshow.perf.click2dial "Click 2 Dial template:">
+
+<!ENTITY ldapinfoshow.perf.timeout "Timeout Settings">
+<!ENTITY ldapinfoshow.perf.idleTimeout "Idle connection">
+<!ENTITY ldapinfoshow.perf.initTimeout "First connection">
+<!ENTITY ldapinfoshow.perf.cacheTimeout "Cached connection">
+
+<!ENTITY ldapinfoshow.perf.numberLimit "Number Limitation">
+<!ENTITY ldapinfoshow.perf.numberLimitSingle "Pictures for Single mail mode">
+<!ENTITY ldapinfoshow.perf.numberLimitMulti "Pictures for Multiple mail mode">
+<!ENTITY ldapinfoshow.perf.numberLimitLDAPBatch "LDAP batch query">
+
+<!ENTITY ldapinfoshow.perf.donate "Donate">
+
+<!ENTITY ldapinfoshow.perf.position "Avatar position">
+<!ENTITY ldapinfoshow.perf.show_display_pics_pre "When display email, show avatars at">
+<!ENTITY ldapinfoshow.perf.show_display_pics_middle "side for single mail, and show avatars at">
+<!ENTITY ldapinfoshow.perf.show_display_pics_after "side for multiple emails">
+<!ENTITY ldapinfoshow.perf.show_compose_pics_pre "When compose email, show avatar at">
+<!ENTITY ldapinfoshow.perf.show_compose_pics_after "side">
+<!ENTITY ldapinfoshow.perf.show_pics_right "right">
+<!ENTITY ldapinfoshow.perf.show_pics_left "left">
+<!ENTITY ldapinfoshow.perf.load_at_tc_header "When Thunderbird Conversations enabled, show avatars in header">
+
+<!ENTITY ldapinfoshow.perf.message_display_size_divide_pre "If images numbers less than">
+<!ENTITY ldapinfoshow.perf.limit_message_display_few_pre ", set max height to">
+<!ENTITY ldapinfoshow.perf.limit_message_display_few_post ", else set max height to">
+<!ENTITY ldapinfoshow.perf.image_height_limit_post "px.">
+<!ENTITY ldapinfoshow.perf.image_height_limit_compose_pre "When compose email, set max height to">
+<!ENTITY ldapinfoshow.perf.image_height_limit_popup_pre "For popup tooltip, set max height to">
+<!ENTITY ldapinfoshow.perf.image_height_limit_tc_header_pre "When show avatars in Thunderbird Conversations header, set max height to">
+<!ENTITY ldapinfoshow.perf.service_priority "Avatar Priority:">
+<!ENTITY ldapinfoshow.perf.service_priority_tooltip "Names at left has higher priority, separated by '>'">
+
+<!ENTITY ldapinfoshow.perf.debug "Debug">
+<!ENTITY ldapinfoshow.perf.verbose "Show verbose information in error console">
+<!ENTITY ldapinfoshow.perf.clearCache "Clear all cache">
+
+<!ENTITY ldapinfoshow.perf.display "Display">
+<!ENTITY ldapinfoshow.perf.select_default_icon_pre "Use">
+<!ENTITY ldapinfoshow.perf.select_default_icon_post "icon when no avatar found.">
+<!ENTITY ldapinfoshow.perf.small_icon "small">
+<!ENTITY ldapinfoshow.perf.large_icon "large">
+<!ENTITY ldapinfoshow.perf.add_margin_to_image "Add margins to image">
+<!ENTITY ldapinfoshow.perf.only_check_author "Only check the author's email address for incoming emails, ignore To/Cc/Bcc">

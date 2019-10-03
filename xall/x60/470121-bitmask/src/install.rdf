@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+Bitmask XUL extension
+Copyright © 2013 The LEAP Encryption Access Project
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>bitmask-thunderbird@leap.se</em:id>
+    <em:name>Bitmask Thunderbird Extension</em:name>
+    <em:version>0.0.9</em:version>
+    <em:type>2</em:type>
+    <em:description>Automatic configuration for Bitmask Encrypted Mail accounts.</em:description>
+    <em:creator>LEAP developers</em:creator>
+    <em:contributor>Andre Jucovsky Bianchi</em:contributor>
+    <em:homepageURL>https://github.com/leapcode/thunderbird_extension/</em:homepageURL>
+    <em:iconURL>chrome://bitmask/content/logo-small.png</em:iconURL>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>60.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:localized>
+      <Description>
+	<em:locale>en-US</em:locale>
+        <em:name>Bitmask</em:name>
+        <em:description>Configure Bitmask Encrypted Mail accounts.</em:description>
+        <em:creator>The LEAP Encryption Access Project</em:creator>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+	<em:locale>es-ES</em:locale>
+        <em:name>Bitmask</em:name>
+        <em:description>Configura cuentas Bitmask de Correo Cifrado.</em:description>
+        <em:creator>El projecto LEAP, Encryption Access Project</em:creator>
+      </Description>
+    </em:localized>
+  </Description>
+</RDF>

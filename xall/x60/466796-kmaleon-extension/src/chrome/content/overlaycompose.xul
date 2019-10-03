@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<overlay id="sample2" 
+xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ <script type="application/javascript" src="chrome://kmaleonext/content/overlaycompose.js"/><!-- A reference to your JavaScript file -->
+ <toolbarpalette id="MsgComposeToolbarPalette">
+	<toolbarbutton id="button-send" onclick="guardar.autoasunto();"></toolbarbutton>
+ </toolbarpalette>
+ 
+</overlay>
