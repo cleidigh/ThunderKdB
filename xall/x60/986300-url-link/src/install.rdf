@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+    <Description about="urn:mozilla:install-manifest">
+
+        <em:id>{139a120b-c2ea-41d2-bf70-542d9f063dfd}</em:id>
+        <em:name>URL Link</em:name>
+        <em:version>2.05</em:version>
+        <em:type>2</em:type>
+        <em:description>Allow navigation to broken/unlinked URLs</em:description>
+        <em:creator>Neil Bird</em:creator>
+        <em:contributor>[ contact: mozilla@fnxweb.com ]</em:contributor>
+        <em:contributor>sikander/babelzilla.org - Bulgarian</em:contributor>
+        <em:contributor>Olivier Grange-Labat - French</em:contributor>
+        <em:contributor>MatrixIsAllOver/babelzilla.org - Italian</em:contributor>
+        <em:contributor>Martin Hoppen - German</em:contributor>
+        <em:contributor>Szarka Peter - Hungarian</em:contributor>
+        <em:contributor>markh/babelzilla.org - Dutch</em:contributor>
+        <em:contributor>kennith/babelzilla.org - Chinese (Traditional)</em:contributor>
+        <em:contributor>Krcko/babelzilla.org - Croatian</em:contributor>
+        <em:contributor>Santiago26/babelzilla.org - Russian</em:contributor>
+        <em:contributor>mikeshk/babelzilla.org - Czech</em:contributor>
+        <em:contributor>chuzo/babelzilla.org - Spanish (Spain)</em:contributor>
+        <em:contributor>humbertosartini/babelzilla.org - Portuguese (Brazilian)</em:contributor>
+        <em:contributor>MozUA/babelzilla.org - Ukranian</em:contributor>
+        <em:contributor>Kim Ludvigsen, AlleyKat/babelzilla.org - Danish</em:contributor>
+        <em:contributor>Wizard/babelzilla.org - Polish</em:contributor>
+        <em:contributor>Risse/babelzilla.org - Finnish</em:contributor>
+        <em:contributor>Branislav Rozbora/babelzilla.org - Slovak</em:contributor>
+        <em:contributor>kustodian/babelzilla.org - Serbian (Yugoslavia)</em:contributor>
+        <em:contributor>Kippis/babelzilla.org - Japanese</em:contributor>
+        <em:contributor>wtspout/babelzilla.org - Korean</em:contributor>
+        <em:contributor>gezmen/babelzilla.org - Turkish</em:contributor>
+        <em:contributor>catalan/babelzilla.org - Catalan</em:contributor>
+        <em:contributor>cest713/babelzilla.org - Chinese (Simplified)</em:contributor>
+        <em:contributor>Lakrits/babelzilla.org - Swedish</em:contributor>
+        <em:contributor>mostafa1990/babelzilla.org - Persian</em:contributor>
+        <em:contributor>lloco/babelzilla.org - Portuguese (Portugal)</em:contributor>
+        <em:homepageURL>https://addons.mozilla.org/en-GB/firefox/addon/url-link/</em:homepageURL>
+        <em:iconURL>chrome://urllink/content/urllink.png</em:iconURL>
+        <em:optionsURL>chrome://urllink/content/urllinkPrefs.xul</em:optionsURL>
+        <!-- em:aboutURL>chrome://urllink/content/about.xul</em:aboutURL -->
+        <!-- <em:updateURL>http://www.fnxweb.com/software/mozilla-update.rdf</em:updateURL> -->
+
+        <!-- Firefox -->
+        <!-- <em:targetApplication> -->
+        <!--     <Description> -->
+        <!--         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> -->
+        <!--         <em:minVersion>3.0</em:minVersion> -->
+        <!--         <em:maxVersion>50.*</em:maxVersion> -->
+        <!--     </Description> -->
+        <!-- </em:targetApplication> -->
+
+        <!-- Thunderbird -->
+        <em:targetApplication>
+            <Description>
+                <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+                <em:minVersion>60.0</em:minVersion>
+                <em:maxVersion>60.*</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+
+        <!-- Seamonkey -->
+        <!-- <em:targetApplication> -->
+        <!--     <Description> -->
+        <!--         <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id> -->
+        <!--         <em:minVersion>1.5a</em:minVersion> -->
+        <!--         <em:maxVersion>1.5a</em:maxVersion> -->
+        <!--     </Description> -->
+        <!-- </em:targetApplication> -->
+
+        <!-- Mozilla Suite -->
+        <!-- <em:targetApplication> -->
+        <!--     <Description> -->
+        <!--         <em:id>{86c18b42-e466-45a9-ae7a-9b95ba6f5640}</em:id> -->
+        <!--         <em:minVersion>1.4</em:minVersion> -->
+        <!--         <em:maxVersion>1.7.7.*</em:maxVersion> -->
+        <!--     </Description> -->
+        <!-- </em:targetApplication> -->
+
+    </Description>
+
+</RDF>

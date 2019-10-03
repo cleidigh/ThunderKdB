@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+<!ENTITY % browserDTD     SYSTEM "chrome://browser/locale/browser.dtd">	%browserDTD;
+<!ENTITY % brandDTD       SYSTEM "chrome://branding/locale/brand.dtd">	%brandDTD;
+<!ENTITY % hctpBaseDTD    SYSTEM "h_base.dtd"        > 					%hctpBaseDTD;
+<!ENTITY % optionDTD      SYSTEM "../locale/option.dtd">  				%optionDTD;
+<!ENTITY % optionFtbDTD   SYSTEM "../locale/option_float_tbars.dtd">  	%optionFtbDTD;
+]>
+
+<overlay id="paneContent_overlay"
+		 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		 xmlns:html="http://www.w3.org/1999/xhtml" 
+		 >
+<prefpane id="paneTabs" label="&tab.float.toolbars;" orient="vertical" flex="1" context="" helpTopicXXX="opt_tbars" >
+<preferences>
+	<!-- 	bool,int,string,wstring,unichar 
+			'preference' will modify -> checkbox, colorpicker, radiogroup, textbox, listitem, listbox, and menulist. 
+	-->
+	
+	<preference id="tBoxHide_opc.transition"           	name="extensions.hide_caption.plus.tBoxHide_opc.transition"       type="string" instantApply="true" />
+	<preference id="tBoxHide_opc.scrollCtrl_float"     	name="extensions.hide_caption.plus.tBoxHide_opc.scrollCtrl_float" type="string" instantApply="true" />
+
+
+	<preference id="floatbars.transition"              	name="extensions.hide_caption.plus.floatbars.transition"     	type="string" instantApply="true" />
+	<preference id="floatbars.hotspot.style"         	name="extensions.hide_caption.plus.floatbars.hotspot.style"   	type="string" instantApply="true" />
+	<preference id="floatbars.style_bars"            	name="extensions.hide_caption.plus.floatbars.style_bars"     	type="string" instantApply="true" />
+
+	
+	<preference id="z_adv.sys_DynamicBars_enable_s"		name="extensions.hide_caption.plus.z_adv.sys_DynamicBars_enable_str" type="string" instantApply="true"  onchange="" />
+	<preference id="z_adv.sys_FloatBars_enable_s"		name="extensions.hide_caption.plus.z_adv.sys_FloatBars_enable_str"   type="string" instantApply="true"  onchange="" />
+	<preference id="tBoxHide.enable"              		name="extensions.hide_caption.plus.tBoxHide.enable"     		     type="bool"   instantApply="true"  onchange="" />
+	
+</preferences>
+
+<box   orient="horizontal" flex="1"   id="main_opt_float_tbars"  >
+ <box  orient="vertical"   flex="1"   align="start"  class="hOptions_column" >
+
+
+<vbox  flex="1"  align="stretch"  class=""  >
+  <hbox><hbox class="isBetaFeature"  >
+        <label class="hc_caption"  tooltiptext="&tt__isBetaFeature;" >   &hc_isBetaFeature; </label>
+  </hbox></hbox>
+ <hbox  align="start" >
+  <hbox  flex="1"  class="baseline"   style="margin: 0px 0px 10px;"  align="baseline" pack="start" >
+	<label  flex="1" tooltip="_child" >&label.R.class; &label_dynBars_main;<tooltip>
+		<label>&dynBars_main_tt; &#10; &dynBars_main_tt_n1; &#10;<pg/>&Restart_needed;   &hc_isBetaFeature;</label>
+	</tooltip></label> 
+	<vbox align="start" >
+	<menulist id="mlist__z_adv_sys_DynamicBars_enable_s"  preference="z_adv.sys_DynamicBars_enable_s"  sizetopopup="none"  class="hc_compact"  
+			 style="min-width: 22ch; min-height: 1.65em;" >
+		<menupopup> <!-- menuitem-iconic-noaccel  !!!  tooltiptext=""  -->
+		  <menuitem class="menuitem-iconic-noaccel" label="&w.Disabled;"   description="   &label.R;"	value="none"    	/>
+		  <menuitem class="menuitem-iconic-noaccel" label="&w.Enabled;"    description="   &label.R;"	value="dynBars  default"  hc_flags="bold"   	/>
+		</menupopup> 
+	</menulist>
+	<label  id="id__dynBars_extraTxt_forFloatbars"  flex="1" >&dynBars_extraTxt_forFloatbars;</label>
+	</vbox>
+	<spacer  flex="100" />
+  </hbox>
+ </hbox>
+
+ <vbox  flex="1"  align="stretch"  class="enableOn__hcp_sys_DynamicBars_enable">
+
+  <groupbox flex="1"  align="stretch"  class="" >  
+   <caption   align="center"  ><label class="" >&dy_options_dynBars;</label></caption>
+
+  	<label  flex="1"  class="default_label  not_preLine  baseline  tt_onlyme  "  tooltip="_child" align="baseline"  style="margin-bottom: 0.9em;" >
+		<checkbox id="checkbox_activate_dyn_bars" class="" preference="tBoxHide.enable" label="&activate_dynbars;" /><tooltip>
+		<label>&dynBars_activate_tt;</label></tooltip></label>
+
+   <groupbox  flex="1" >  <caption>
+ 		<label   >&dy_Appear_dis_Trans;</label></caption> 
+	<menulist id="id__tBoxHide_opc_transition"  preference="tBoxHide_opc.transition"  >
+		<menupopup>
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_None_fastest;" 					value="none"    />
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_Vertical_offset;" 				value="fast1"    hc_flags="defau" />
+		<!-- opacity affects 'busy-tab'!
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_Voffset_transp;"					value="vo_trnsp" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_Slower_transition;" 				value="vo_trnsp  slow"    />
+		-->
+		</menupopup> 
+	</menulist>
+   </groupbox>
+
+   <groupbox  flex="1" >  <caption>
+ 		<label  >&dy_scrollCtrl_title;</label></caption> 
+		<!--  tooltip="_child"   <tooltip>
+			<label>&dy_scrollCtrl_title_tt;</label></tooltip>
+		-->
+	<menulist id="id__tBoxHide_opc_scrollCtrl_float"  preference="tBoxHide_opc.scrollCtrl_float"  >
+		<menupopup>
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_scrollCtrl_yes;"			value="yes"         tooltip="dy_scrollCtrl_yes_tt" />
+			<tooltip id="dy_scrollCtrl_yes_tt"><label>&dy_scrollCtrl_yes_tt;</label></tooltip>
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_scrollCtrl_no;" 			value="no"    hc_flags="defau"  tooltip="dy_scrollCtrl_no_tt" />
+			<tooltip id="dy_scrollCtrl_no_tt"><label>&dy_scrollCtrl_no_tt;</label></tooltip>
+		</menupopup> 
+	</menulist>
+   </groupbox>
+
+   <groupbox  flex="1" >  <caption  class="future_option">
+ 		<label  tooltip="_child" >&dy_showTab_title;<tooltip>
+			<label>&dy_showTab_tt;&b_Future_option;</label></tooltip></label></caption> 
+	<menulist id="id__tBoxHide_opc_dy_showTab_float"  disabled="true"  >
+		<menupopup>
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_showTab_busy;" 	value="busytab  tabInv"    hc_flags="defau"  tooltip="dy_showTab_busy_tt" />
+			<tooltip id="dy_showTab_busy_tt"><label>&dy_showTab_busy_tt;&line__more_choices;</label></tooltip>
+		</menupopup> 
+	</menulist>
+   </groupbox>
+
+  </groupbox>
+
+  <spacer  flex="100" />
+
+ <hbox>
+   <button oncommand="HCPlusLib.openUILink_inMostRecentWindow( null,'chrome://hidecaptionplus/content/help/dynbars_en_fwd.html')" label="&Help_dynbars;  &p_in_construction;" />
+ </hbox>
+ 
+ </vbox>
+
+</vbox>
+
+	
+ </box>
+ <toolbarseparator flex="0"  class="showOn_sys_floatbars_ALLOWED"  />
+ <box  orient="vertical"   flex="1"  align="start"  class="hOptions_column"  >
+
+<vbox  flex="1"  class="showOn_sys_floatbars_ALLOWED" style="display: none;">
+
+  <hbox><hbox class="isBetaFeature"  >
+        <label class="hc_caption"  tooltiptext="&tt__isBetaFeature;" >   &hc_isBetaFeature; </label>
+  </hbox></hbox>
+ <hbox   >
+  <hbox  flex="1"  class="baseline"   style="margin: 0px 0px 10px;">
+	<label  flex="1" tooltip="floatBars_main_tt" >
+		&label.R.class; &label_floatBars_main;</label> 
+    <tooltip id="floatBars_main_tt"><label>&floatBars_main_tt; &#10;<pg/>&Restart_needed;   &hc_isBetaFeature;</label></tooltip>
+	<menulist id="mlist__z_adv_sys_FloatBars_enable_s"  preference="z_adv.sys_FloatBars_enable_s"  sizetopopup="none"  class="hc_compact"  style="min-width: 22ch; min-height: 1.65em;" 
+	  oncommand="HideCaption_opt.main_floatbars__oncommand(this, 'txt__ft_msg_activate', 'txt__ft_msg_deactivate');" 
+	     onload="HideCaption_opt.main_floatbars__oncommand(this);" 
+	  >
+		<menupopup> <!-- menuitem-iconic-noaccel  !!!  tooltiptext="" -->
+		  <menuitem class="menuitem-iconic-noaccel" label="&w.Disabled;"   description="   &label.R;"	value="none"    	      	tooltip="ttp__ft_msg_deactivate" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&w.Enabled;"    description="   &label.R;"	value="floatBars  default"	tooltip="ttp__ft_msg_activate"   hc_flags="bold"   	/>
+		</menupopup> 
+	</menulist>
+	<popupset>
+	  	<tooltip   id="ttp__ft_msg_activate" >
+			<label id="txt__ft_msg_activate"   >&txt__ft_msg_activate;</label>
+		</tooltip>
+	  	<tooltip   id="ttp__ft_msg_deactivate" >
+			<label id="txt__ft_msg_deactivate" >&txt__ft_msg_deactivate;</label>
+		</tooltip>
+	</popupset>
+	<spacer  flex="100" />
+  </hbox>
+ </hbox>
+
+
+<vbox  flex="1"  align="stretch"  class="enableOn__hcp_sys_floatbars_enable"  >
+ <groupbox align="stretch" flex="1"   > 
+<!--   se prende con '... sys_floatbars_enable'  -->
+	<caption   align="center" >
+		<label>&ft_options_title;</label></caption>
+
+
+ <groupbox  flex="1"  style="margin-top: 1em;" >  <caption>
+ 		<label   >&dy_Appear_dis_Trans;</label></caption> 
+	<menulist id="id__floatbars_transition"  preference="floatbars.transition"  >
+		<menupopup>
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_None_fastest;" 			value="none"    />
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_Vertical_offset;" 		value="fast1"    hc_flags="defau" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_Voffset_transp;"			value="vo_trnsp" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&dy_Slower_transition;" 		value="vo_trnsp  slow"    />
+		</menupopup> 
+	</menulist>
+ </groupbox>
+
+ <groupbox  flex="1" >  <caption>
+ 		<label  tooltip="_child" >&ft_hotspot_title;<tooltip>
+			<label>&ft_hotspot_title_tt;</label></tooltip></label></caption> 
+	<menulist id="id__floatbars_hotspot.style"  preference="floatbars.hotspot.style"  >
+		<menupopup> <!-- menuitem-iconic-noaccel  !!!  tooltiptext=""  -->
+		  <menuitem class="menuitem-iconic-noaccel" label="&ft_hotspot_none;"		value="none"    />
+		  <menuitem class="menuitem-iconic-noaccel" label="&ft_hotspot_shadow;" 	value="default"   hc_flags="defau" />
+		</menupopup> 
+	</menulist>
+ </groupbox>
+
+ <groupbox  flex="1" >  <caption>
+ 		<label  >&ft_style_bars;<tooltip> <!-- tooltip="_child" -->
+			<label>xxxxx</label></tooltip></label></caption> 
+	<menulist id="id__floatbars_style_bars"  preference="floatbars.style_bars"  >
+		<menupopup> <!-- menuitem-iconic-noaccel  !!!  tooltiptext=""  -->
+		  <menuitem class="menuitem-iconic-noaccel" label="&ft_stylebars_none;"		value="none"    />
+		  <menuitem class="menuitem-iconic-noaccel" label="&ft_stylebars_shadow;" 	value="shadow  disabled"  tooltiptext="&ft_stylebars_shadow_tt;" hc_flags="defau" />
+		</menupopup> 
+	</menulist>
+ </groupbox>
+
+ </groupbox>
+
+ <spacer  flex="100" />
+
+ <hbox>
+	<button oncommand="HCPlusLib.openUILink_inMostRecentWindow( null,'chrome://hidecaptionplus/content/help/floatbars_en_fwd.html')"  label="&Help_dynbars;  &p_in_construction;" />
+ </hbox>
+
+</vbox>
+
+</vbox>
+
+ <!--
+ activation delay is ONLY for mouse-hover!
+
+	<preference id="home.sss"              name="extensions.hide_caption.plus.adv_XXX.css_text"     type="string" instantApply="true" />
+	
+ <groupbox align="center"> <caption  label=" Tests... " align="center" />
+
+  <textbox  multiline="true" cols="80"  rows="10" style="padding: 0.5ch;" />
+
+ </groupbox>
+ -->
+
+ </box>
+</box>
+
+<spacer flex="100" />
+
+</prefpane>
+</overlay>

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="icon" 
+      type="image/vnd.microsoft.icon" 
+      href="chrome://HideCaptionPlus/skin/hcp_icon16.png">
+
+<title>Hide Caption Titlebar Plus</title>
+<script type="text/javascript">
+// open_win('chrome://HideCaptionPlus/content/options.xul?_1');
+function open_win(_url)
+{
+window.open(_url,"_blank","toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=yes, width=590, height=590");
+}
+var optionDialog= null;
+function openOptionDialog(e){
+		if( optionDialog ){
+			optionDialog.close();
+		}
+		optionDialog=openDialog('chrome://HideCaptionPlus/content/options.xul?_1', '_OptionsDlg', 'chrome,titlebar,toolbar,scrollbars=yes,resizable=yes,centerscreen,dialog=no');
+}
+</script>
+
+<style>
+body, th, td {
+ font: normal 13px Arial,Helvetica,sans-serif,Verdana;
+}
+body{
+	padding-left: 3em; 
+	background-color: #F6F6F6;
+}
+.smallinfo{
+	font-size: 85%;
+}
+</style>
+
+</head>
+
+<body>
+
+<p><strong><font size="4"><img border="1" src="chrome://hidecaptionplus/skin/hcp_icon.png" />&nbsp;&nbsp; Hide Caption Titlebar Plus</font> &nbsp; &nbsp; <font size="2">
+	[ <a href="https://github.com/Javier-DarthPalpatine/firefox-hide-caption-titlebar-plus/issues?q=is:open+sort:updated-desc">Сайт поддержки</a> ]&nbsp;&nbsp; 
+	[ <a href="https://tiny.cc/hidec/">Страница</a> ]&nbsp;&nbsp; 
+</font><br></strong></p>
+<blockquote>
+<p><strong><em>&quot;Максимизируйте полезное пространство экрана, используя скрытие заголовка окна Firefox&quot;</em> <br></strong></p></blockquote>
+
+<p style="padding-top:1.0em;"><strong>ПРОЧТИ:<br></strong></p>
+<p><strong>&nbsp;&nbsp; Пожалуйста, взгляните в начале на диалог параметров. Там есть описание основных функций.</strong></p>
+
+<p><strong>Важно</strong>:<br></p>
+<p>&nbsp;&nbsp; <strong>Отчеты об ошибках/проблемах</strong> весьма приветствуются на <strong>сайте поддержки</strong>. Пожалуйста, не размещайте их на сайте дополнений Mozilla.<br></p><p><strong></strong></p>
+
+<p><strong>Краткие примечания:</strong></p>
+<ul><li><strong></strong>(Информация обновлена для Firefox 4+)<font color="#000080"><strong> <br>
+	Перетаскивание</strong> окна:&nbsp; теперь работает с AeroSnap/unSnap в Win.Vista/7. (возможно, но не обязательно, с небольшими косяками)</font>:<br>
+	Вы можете <strong><em>перемещать </em></strong>'не максимизированное' окно за настраваемый заголовок или использовать элементы <em>&quot;панелей инструментов&quot;</em>:<br> 
+	&quot;Заголовок страницы&quot;, &quot;Тянуть окно&quot;, &quot;Интервал&quot; или &quot;Растягивающийся интервал&quot; (заполнители панелей).<br> 
+	Обратите внимание, &quot;Тянуть окно&quot; отображается только в НЕ максимизированном окне со СКРЫТЫМ заголовком. <em>(т.е. по необходимости)</em>.</li></ul>
+<ul><li><b>Темы / скины:</b> Работает и выглядит хорошо с <b>ChromiFox</b> основной темой, с ChromiFox Extreme и Cfx Extreme CARBON. Также с <b>Strata40</b> (+StrataBuddy) темой.<br />
+- (<b>Совет:</b> Попробуйте поиграть с де/активацией пользовательского заголовка для каждой темы. Где то выглядит лучше с новой опцией маленького заголовка, где то без заголовка).<br />
+- Также хорошо смотрится с <b>легкими темами</b>. Можете посмотреть скрины на сайте.<br />
+- Для Chromifox, Strata40 и др. тем: Существуют дополнительные <b><em>скины кнопок</em> Мин,Макс,Закрыть</b>, помимо обычных.<br>
+- С помощью <em>&quot;ПКМ по панели » Изменить&quot;</em>, кнопки Мин,Макс,Закрыть можно поместить на любую панель. А в настроеках скрыть стандартные кнопки управления окном.<br>
+</li>
+     </ul>
+<ul><li><b>Меню</b> с доступом к настройкам дополнения доступно в 'Домашней' кнопке Firefox, меню инструментов, Мин,Макс,Закрыть кнопках по ПКМ,<br> 
+	элементе управления &quot;Тянуть окно&quot; и т.д.<br></li></ul>
+	
+<strong>Что появится в следующей версии:</strong> <br>
+<ul>
+<li>... обычно наиболее запрашиваемые функции/твики перечисляются на addons.mozilla или странице поддержки.<br></li>
+</ul>
+
+<br />
+<div>
+	<hr width="80%"/>
+</div>
+<br>
+<!-- 
+[Firefox 3.x только] Рекомендуемый дополнительный аддон для получения лучшего вида в Firefox: <strong>&quot;<a href="https://tiny.cc/hidec/">Tabs on top</a>&quot; </strong><br>
+ -->
+
+<p class="smallinfo"><a href="chrome://hidecaptionplus/content/system_info.html">Страница системной-информации. (понадобится  при запросе поддержки)</a></p>
+
+<!-- 
+<p></p>
+<br>
+<em>Этот Readme отразит все будущие изменения в этом аддоне. Можете добавить его в закладки <a href="chrome://HideCaptionPlus/locale/readme.html">the local copy</a>&nbsp; (vXXX)</em>
+ -->
+
+</body>
+</html>
+

@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+<!ENTITY % brandDTD       SYSTEM "chrome://branding/locale/brand.dtd">	%brandDTD;
+<!ENTITY % hctpBaseDTD    SYSTEM "h_base.dtd"        > %hctpBaseDTD;
+<!ENTITY % optionDTD      SYSTEM "../locale/option.dtd"   > %optionDTD;
+<!ENTITY % optOne1DTD     SYSTEM "dtd__opt_look1.dtd"     > %optOne1DTD;
+]>
+
+
+<overlay id="paneApplications_overlay"
+		 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		 xmlns:html="http://www.w3.org/1999/xhtml" 
+		 >
+
+<prefpane id="paneApplications" label="&tab.look.feel;" orient="vertical" flex="1" context="" helpTopicXXX="opt_look" >
+    <!-- 
+			 <script type="application/x-javascript" src="chrome://browser/content/preferences/main.js"/>
+    Example: <stringbundle id="bundlePreferences" src="chrome://browser/locale/preferences/preferences.properties"/>
+	-->
+
+<preferences>
+	<!-- bool,int,string,wstring,unichar,file
+	<preference id="xxxxxxxxxxxxxxx" name="" type="bool"   instantApply="true" />
+	-->
+	<preference id="use_caption_mode"     name="extensions.hide_caption.plus.use_caption"  					   type="string" instantApply="true" onchange="
+			HideCaption_opt.opt_setAsDomAttribute(this);
+			" />
+			
+	<!--    //TODO need to activate float menu with ANY of 2 options: this one and fx4-titlebar!
+            mydisable(         'show_custom_caption' , this.value == 'smartall' || this.value == 'always' );
+	-->
+	<preference id="show_fx4_titlebar"    name="extensions.hide_caption.plus.fx4_titlebar"                     type="string" instantApply="true" onchange="
+			HideCaption_opt.onChange_fx4_titlebar(this);
+			" />
+	
+	<!--    //TODO need to activate float menu with ANY of 2 options: fx4TB OR custom home active!?
+            mydisable_setValue('home.enabled'         , this.value == 'ti_enabled', this.value == 'ti_enabled'? true : null);
+	-->
+	
+	<preference id="forbid_fxaustr_syscaption" name="extensions.hide_caption.plus.sys.forbid_fxaustr_syscaption" type="bool"  instantApply="true" onchange="
+            mydisable(         'tabs_drawInTitlebar'  , this.value &amp;&amp; !this.disabled);
+			" />
+	<!-- PREFERENCE:  INVERTED="TRUE"   checkbox-value is INVERTED below!!  !!!  -->
+	<preference id="tabs_drawInTitlebar" 	name="browser.tabs.drawInTitlebar"              inverted="true"   	type="bool"   instantApply="true" onchange="
+			HideCaption_opt.refresh_tab_marginTop_delta_all();
+			" />
+
+	<preference id="show_custom_caption" 	name="extensions.hide_caption.plus.show_custom_caption"            	type="string" instantApply="true" />
+	<preference id="show_custom_bdresizers_visible"	
+	                                        name="extensions.hide_caption.plus.show_custom_bdresizers_visible"  type="bool"   instantApply="true" />
+	<preference id="show_custom_bdresizers"	name="extensions.hide_caption.plus.show_custom_bdresizers"         	type="bool"   instantApply="true" onchange="
+            mydisable(         'show_custom_bdresizers_visible'     , !this.value || this.disabled == true);
+            mydisable(         'show_custom_border_color'           , !this.value || this.disabled == true);
+			" />
+	<preference id="show_custom_border_color"	
+	                                         name="extensions.hide_caption.plus.show_custom_border_color"        type="string" instantApply="true" />
+
+
+	<preference id="adv_sysborder"       	 name="extensions.hide_caption.plus.adv.sysborder"	  		  		 type="string" instantApply="true" onchange="
+			HideCaption_opt.opt_setAsDomAttribute(this);
+			" />
+
+	<preference id="adv.sysbut_winappear"    name="extensions.hide_caption.plus.adv.sysbut_winappear"	  		  type="string" instantApply="true" onchange="
+			HideCaption_opt.onChange_mmc_location();
+			mydisable(         'adv.winbkg_color_enablelist' ,  this.value == '' || this.disabled );
+			HideCaption_opt.opt_setAsDomAttribute(this);
+			" />
+
+	<preference id="adv.winbkg_color_enablelist" name="extensions.hide_caption.plus.adv.winbkg_color_enablelist"  type="string" instantApply="true" onchange="
+			mydisable(         'adv.winbkg_color'            ,  this.value == '' || this.disabled );
+			" />
+	<preference id="adv.winbkg_color"        name="extensions.hide_caption.plus.adv.winbkg_color"    	  		  type="string" instantApply="true" onchange="
+			" />
+			
+			
+	<preference id="mmc_buttons_skin"       name="extensions.hide_caption.plus.adv.minmaxclose_buttons_skin"      type="string" instantApply="true" />
+	
+	<preference id="mmc_buttons_location"   name="extensions.hide_caption.plus.adv.minmaxclose_buttons_location"  type="string" instantApply="true" onchange="
+			HideCaption_opt.onChange_mmc_location(); " />
+	<preference id="mmc_buttons_loc_nomax"  name="extensions.hide_caption.plus.adv.minmaxclose_buttons_loc_nomax" type="string" instantApply="true" onchange="
+			HideCaption_opt.onChange_mmc_location(); " />
+			
+	<preference id="mmc_buttons_canfloat"   name="extensions.hide_caption.plus.adv.minmaxclose_buttons_canfloat"  type="bool"   instantApply="true" onchange="
+            mydisable(         'mmc_fl_activeMillis'     , !this.value || this.disabled == true);
+            mydisable(         'mmc_fl_inactiveMillis'   , !this.value || this.disabled == true);
+			" />
+
+	<preference id="mmc_fl_activeMillis"    name="extensions.hide_caption.plus.adv.minmaxclose_floating_activeMillis"   type="int" instantApply="true" onchange="" />
+	<preference id="mmc_fl_inactiveMillis"  name="extensions.hide_caption.plus.adv.minmaxclose_floating_inactiveMillis" type="int" instantApply="true" onchange="" />
+
+	<preference id="close_button_action"    	 name="extensions.hide_caption.plus.action.close_button_action"         type="string" instantApply="true" />
+	<preference id="close_button_act2_secondary" name="extensions.hide_caption.plus.action.close_button_act2_secondary" type="string" instantApply="true" />
+	<preference id="close_button_act3_middle" 	 name="extensions.hide_caption.plus.action.close_button_act3_middle" 	type="string" instantApply="true" />
+	<preference id="close_button_act_wheel"    	 name="extensions.hide_caption.plus.action.close_button_act_wheel"  	type="string" instantApply="true" />
+	<preference id="close_button_act_wheelLeft"  name="extensions.hide_caption.plus.action.close_button_act_wheelLeft"  type="string" instantApply="true" />
+	<preference id="close_button_act_wheelRight" name="extensions.hide_caption.plus.action.close_button_act_wheelRight" type="string" instantApply="true" />
+	<preference id="close_button_act1_primary_dblclk"	name="extensions.hide_caption.plus.action.close_button_act1_primary_dblclk"  	type="string" instantApply="true" />
+	<preference id="close_button_act2_secondary_dblclk" name="extensions.hide_caption.plus.action.close_button_act2_secondary_dblclk"	type="string" instantApply="true" />
+	<preference id="close_button_act3_middle_dblclk" 	name="extensions.hide_caption.plus.action.close_button_act3_middle_dblclk"		type="string" instantApply="true" />
+
+	<preference id="fxbut_act1_primary"    		 name="extensions.hide_caption.plus.action.fxbut_act1_primary"          type="string" instantApply="true" />
+	<preference id="fxbut_act2_secondary" 		 name="extensions.hide_caption.plus.action.fxbut_act2_secondary"  		type="string" instantApply="true" />
+	<preference id="fxbut_act3_middle" 			 name="extensions.hide_caption.plus.action.fxbut_act3_middle"	  		type="string" instantApply="true" />
+	<preference id="fxbut_act_wheel"    	 	 name="extensions.hide_caption.plus.action.fxbut_act_wheel"  	 		type="string" instantApply="true" />
+	<preference id="fxbut_act_wheelLeft"    	 name="extensions.hide_caption.plus.action.fxbut_act_wheelLeft"  	 	type="string" instantApply="true" />
+	<preference id="fxbut_act_wheelRight"    	 name="extensions.hide_caption.plus.action.fxbut_act_wheelRight"  	 	type="string" instantApply="true" />
+	<preference id="fxbut_act1_primary_dblclk"	 name="extensions.hide_caption.plus.action.fxbut_act1_primary_dblclk"  	type="string" instantApply="true" />
+	<preference id="fxbut_act2_secondary_dblclk" name="extensions.hide_caption.plus.action.fxbut_act2_secondary_dblclk"	type="string" instantApply="true" />
+	<preference id="fxbut_act3_middle_dblclk" 	 name="extensions.hide_caption.plus.action.fxbut_act3_middle_dblclk"	type="string" instantApply="true" />
+
+	<preference id="action.tooltips" 	 		 name="extensions.hide_caption.plus.action.tooltips" 					type="string" instantApply="true" />
+
+	<preference id="action.key_ctrl_w" 	 		 name="extensions.hide_caption.plus.action.key_ctrl_w" 					type="string" instantApply="true" />
+
+	<preference id="closeWithHist.mainAction" 	 name="extensions.hide_caption.plus.closeWithHist.mainAction" 			type="string" instantApply="true" />
+	<preference id="closeWithHist.lineScan" 	 name="extensions.hide_caption.plus.closeWithHist.lineScan" 			type="string" instantApply="true" />
+	
+
+	<preference id="closebut_mouseClick"    	 name="extensions.hide_caption.plus.action.closebut_mouseClick"  	 	type="bool"   instantApply="true"  onchange="
+			HideCaption_opt.opt_setAsDomAttribute(this);
+			" />
+
+	<preference id="home.button_appear"          name="extensions.hide_caption.plus.home.button_appear"     			type="string" instantApply="true"  onchange="
+			HideCaption_opt.opt_setAsDomAttribute(this);
+			" />
+		
+</preferences>
+
+
+	<!--  <image src="chrome://hidecaptionplus/skin/opt/fx_home_opt.png" class="caption-icon" />
+			<html:span class="extrainfo"> the one with orange button ... </html:span>
+
+	<label class="hideOn_fx4tbar_hidden" >
+		&caption.show.fx4.titlebar;
+	</label>
+	<label class="hideOn_fx4tbar_shown" >
+		Show Firefox 4+ main-menu button  
+	</label>
+	 -->
+
+<!-- 
+  <radiogroup id="show_fx4_titlebar_id"  preference="show_fx4_titlebar"   orient="horizontal" class="options_radio_vert">
+    <radio id="ti_enabled"     	value="ti_enabled"     label="&w.Enabled;"	  tooltip="tt_ti_enabled" />
+		<tooltip id="tt_ti_enabled" class="" >
+			<label class="hideOn_fx4tbar_shown"  >Always present </label>
+		</tooltip>
+    <radio id="ti_unmaximized"	value="ti_unmaximized" label="&radio.in.unmaximized.windows;" />
+    <radio id="ti_never"     	value="ti_never"       label="&w.Disabled;"   tooltip="tt_ti_never" class="" /> 
+
+		<tooltip id="tt_ti_never" >
+			<label class="" > default option </label>
+			<label class="hideOn_windows" >* Recommended option in Linux/MacOS </label>
+		</tooltip>
+  </radiogroup>
+ -->
+  <!--( When 'Place Tabs in Titlebar' is disabled, it's also checked-off for ..... TODO !! --> 
+
+
+<box   orient="horizontal" flex="1" >
+ <box  orient="vertical"   flex="1"  class="hOptions_column" >
+
+ 
+	<groupbox style="padding-top: 0px;"  class="" >  <caption align="center" > <!--  image="chrome://hidecaptionplus/skin/icon16.png"  -->
+	  <label control="show_customcaption_id" tooltiptext="&tt.show.custom.caption.titlebar;"  class="noFlex" >&caption.show.custom.caption.titlebar;</label>
+	  <menulist id="show_customcaption_id" preference="show_custom_caption" orient="horizontal"  sizetopopup="none"  class="options_radio_vert  hc_compact">
+		<menupopup>
+		  <menuitem class="menuitem-iconic-noaccel"  value="cc_unmaximized"    	label="&radio.in.unmaximized.windows;"	/>
+		  <menuitem class="menuitem-iconic-noaccel"  value="cc_small"    		label="&radio.small.caption;"	/>
+		  <menuitem class="menuitem-iconic-noaccel"  value="cc_never"    		label="&radio.cc_never;"		/>
+		</menupopup>
+	  </menulist>
+	 			</caption>
+	</groupbox>
+	
+	<hbox>
+	 <groupbox class="showOn_windows" style="margin-top: 0px;"  flex="1" >
+	 
+	   <!--        "showOn_windows" !!    tooltiptext="New: tested only in Windows"  -->
+	   
+	      <label  control="id1_adv_sysborder"  class="default_label  hcp_title  nowrap"  tooltiptext="&tt_System_borders_c;" >&System_borders_c;</label>
+		 	
+		  <menulist    id="id1_adv_sysborder"    preference="adv_sysborder"   class="hc_compact"  sizetopopup="none"   style="min-width: 22.7ch;">
+			<menupopup>
+			  <menuitem class="menuitem-iconic-noaccel" label="&Yes_full_width;"			value="-1 r" />
+			  <menuitem class="menuitem-iconic-noaccel" label="&Yes-_smaller; (-1px)" 		value="1 r" />
+			  <menuitem class="menuitem-iconic-noaccel" label="&Yes-_smaller; (-2px)" 		value="2 r" 	tooltiptext="&tt_Yes_smaller_2;" />
+			  <menuitem class="menuitem-iconic-noaccel" label="&Yes-_smaller; (-3px)" 		value="3 r" />
+			  <menuitem class="menuitem-iconic-noaccel" label="&Yes-_smaller; (-4px)" 		value="4 r" 
+			  													 />
+			  <menuitem class="menuitem-iconic-noaccel" label="&Yes-_smaller; (-5px)" 		value="5 r" />
+			  <menuitem class="menuitem-iconic-noaccel" label="&Yes-_smaller; (-6px)" 		value="6 r" />
+			  <menuitem class="menuitem-iconic-noaccel" label="&Yes-_smaller; (-7px)" 		value="7 real" 	tooltiptext="&tt_Yes_smaller_7;" />
+			  <menuitem class="menuitem-iconic-noaccel" label="&Yes-_smaller;*(-7px)" 		value="7 r" 	tooltiptext="&tt_Yes_smaller_7_notReal;" />
+		<!--  <menuitem class="menuitem-iconic-noaccel" label="&Yes-_smaller; (-8px)" 		value="8 r" />  
+		--> 
+			  <menuitem class="menuitem-iconic-noaccel" label="&w.Disabled;"				value="0 reserved"  tooltip="tt_disabled_sysborder"	/>
+			  			<!--  value: reserved 2nd word for future enh.  -->
+			    <tooltip id="tt_disabled_sysborder"><label>&tt_sysBorders_disabled;</label></tooltip>
+			</menupopup> 
+		  </menulist>
+
+		  <box  flex="20" />
+	 </groupbox>
+	    
+	 <groupbox style="margin-top: 0px;  -moz-padding-start: 1px; "  orient="horizontal"  flex="4"  align="baseline"  >
+	   <vbox flex="1">
+		   <checkbox id="dummyid_custborders" preference="show_custom_bdresizers"         label="&custom_bord_cornr_rz;" flex="1" style="-moz-margin-end: -0.8ch;" 
+		    	tooltiptext="&tt_custom_bord_cornr_rz;" />
+		   <checkbox id="dummyid_custborder2" preference="show_custom_bdresizers_visible" label="&Make_corners_visible;" flex="1" style="margin-left:2em;" />
+	   </vbox>
+
+       <vbox  class="disableOn_sysborder"  align="center" >
+	    <label    control="id_picker_border_Color"  class="default_label  hcp_title   title_small   title_multiline_center_XXX " 
+	    												tooltiptext="&tt_Border_color;" >&Border_color;</label>
+		<colorpickplus id="id_picker_border_Color"  preference="show_custom_border_color" />
+       </vbox>
+	   
+	   <hbox flex="2" />
+ 	 </groupbox>
+	</hbox>
+
+
+ <groupbox  orient="vertical"  align="start"  class="" style="margin-top: 1px; margin-bottom: 1px;" >
+   	<caption>
+	  <label  control="dummy_winappear"  class="default_label  hcp_title  baseline"  tooltip="tt_hidebuts" >&enable_customizable_buts; 
+		<html:span class="extrainfo">&disable_win_system_buts;</html:span></label>
+  	  <tooltip id="tt_hidebuts" class="tooltip_big" ><label class="" style="line-height: 1.2em;" >&tt_enable_customizable_buts;</label></tooltip>
+   	</caption>
+
+	<menulist id="dummy_winappear"  preference="adv.sysbut_winappear"  >
+		<menupopup> <!-- menuitem-iconic-noaccel  !!! -->
+		  <menuitem class="menuitem-iconic-noaccel" label="&item_0_none;" 			                	value="" />
+		<!-- 
+		  <menuitem class="menuitem-iconic-noaccel" label="[1] Using a Glass-like window background "   value="window_lite  bkg_dblue"	
+			    tooltiptext="(Previous version default value)" />
+		 -->
+		  <menuitem class="menuitem-iconic-noaccel" label="&item_11_Using_Glasslike_win_bkg_recom;"		value="window  bkg_dblue"	  		hc_flags="" 
+			    tooltip="tt_main_glass_like" />
+			<tooltip id="tt_main_glass_like"><label>&tt_11_Using_Glasslike_win_bkg_recom;</label></tooltip>
+		  <menuitem class="menuitem-iconic-noaccel" label="&item_12_Using_solid_win_bkg_recom;"  		value="window  bkg_dblue  bkg_solid"	hc_flags="recom" 
+			    tooltip="tt_main_solid" />
+			<tooltip id="tt_main_solid"><label>&tt_12_Using_solid_win_bkg_recom;</label></tooltip>
+		  <menuitem class="menuitem-iconic-noaccel" label="&item_2_Same_appearance_compat;"    			value="none    bkg_dblue"  
+				tooltiptext="&tt_2_Same_appearance_compat;" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&item_3_Another_compat_test;" 	          	value="browsertabbar  bkg_dblue  bkg_extra" 
+				tooltiptext="&tt_3_Another_compat_test;" />                              <!-- bkg_extra ~== winbkg_color :) -->
+		</menupopup> 
+	</menulist>
+
+    <groupbox  id="group_winbkg_color" orient="horizontal" align="center" flex="0" > <!-- CUIDADO con el flex=1 pq joroba mal en LINUX! -->
+      <caption>
+        <label    control="id_picker_Win_bkg_Color" class="default_label  hcp_title   title_small   title_multiline_center_-XXXXX"   flex="1"
+	    			tooltiptext="&tt_Custom_Win_bkg_color;">&Custom_Win_bkg_color;</label>
+      </caption>
+
+	  <colorpickplus id="id_picker_Win_bkg_Color"  preference="adv.winbkg_color"  hide_opacity="true" />
+   	
+	  <menulist id="id-winbkg_color_enablelist"   class="menulist_small"  preference="adv.winbkg_color_enablelist"  >
+		<menupopup>
+		  <menuitem class="menuitem-iconic-noaccel" label="&w.No;" 			    value=""	  	/>
+		  <menuitem class="menuitem-iconic-noaccel" label="&active_no_persona;" value="not_in_lwtheme"    hc_flags="defau"	    />
+		  <menuitem class="menuitem-iconic-noaccel" label="&active_always;"	   	value="always"  tooltiptext="&active_always_tt;" />
+		</menupopup> 
+	  </menulist>
+    </groupbox>
+	
+ </groupbox>
+
+ 	
+ </box>
+ <toolbarseparator  flex="0" />
+ <box  orient="vertical"   flex="1"  class="hOptions_column" >
+
+ <groupbox  align="start" >   
+    <caption align="center"  flex="1"
+	  		tooltiptext="&label.about.hidden.and.customize;" >
+	  <image src="chrome://hidecaptionplus/skin/opt/winControls_options.png" class="caption-icon" />
+	  <label  flex="1" > &caption.min.max.close.buttons.location;
+	  	<html:span class="extrainfo">&caption.min.max.close.buttons.loc.extrainfo;</html:span></label>
+	</caption>
+ 
+<grid class="hc_grid">
+ <columns>
+  <column flex="1" />
+  <column flex="1" />
+  <column flex="1" />
+ </columns>
+ <rows>
+  <row>
+  	<label  class="default_label hcp_title" control="dummy_location" >&In_Maximized_window;</label>
+	<box>
+ 	  <menulist id="dummy_location"   preference="mmc_buttons_location" label=""  class=""  >
+		<menupopup> <!-- dz_images_autosize="true"   menuitem-iconic-noaccel  !!! -->
+		  <menuitem class="menuitem-iconic-noaccel"  	     label="&w.Enabled;"      		value="bloc_topright"   />
+		  <menuitem class="menuitem-iconic-noaccel"  	     label="&radio.bloc.micro;" 	value="bloc_micro"   />
+		  <menuitem class="menuitem-iconic-noaccel"  	     label="&w.Disabled;"     		value="bloc_hidden"   />
+		</menupopup> 
+	  </menulist>
+	</box>
+  </row>
+  
+  <row>
+	<label  class="default_label hcp_title" control="dummy_loc_nomax" >&In_Un_Maximized_window;</label>
+	<box>
+ 	  <menulist id="dummy_loc_nomax"   preference="mmc_buttons_loc_nomax" label=""  class=""  >
+		<menupopup> <!-- dz_images_autosize="true"   menuitem-iconic-noaccel  !!! -->
+		  <menuitem class="menuitem-iconic-noaccel"  	     label="&w.Enabled;"      		value="bloc_topright"   />
+		  <menuitem class="menuitem-iconic-noaccel"  	     label="&radio.bloc.micro;" 	value="bloc_micro"   />
+		  <menuitem class="menuitem-iconic-noaccel"  	     label="&w.Disabled;"     		value="bloc_hidden"   />
+		</menupopup> 
+	  </menulist>
+	</box>
+  </row>
+  
+  <row>
+   	<label class="default_label hcp_title" control="dummy_mmc_skin" >&title_Skin;  <i class="fnormal">&forUpdatedSections;</i></label>
+		<!--  tooltip="_child"  <tooltip><label>  tt_Skin  </label></tooltip>  -->
+	<menulist id="dummy_mmc_skin"   preference="mmc_buttons_skin"  class="hc_compact"  sizetopopup="none"  style="min-width: 48ch;" >
+		<menupopup> <!-- dz_images_autosize="true"   menuitem-iconic-noaccel  !!! -->
+		  <menuitem label="&radio.w10like;" 		                     	value="w10like  theme" 		class="menuitem-iconic-noaccel"  hc_flags="defau" />
+		  <menuitem label="&radio.w10like.light;"	                     	value="w10like  light" 		class="menuitem-iconic-noaccel"  tooltiptext="&tt.w10like.light;" />
+		  <menuitem label="&radio.w10like.high;"		                   	value="w10like_high  highc"	class="menuitem-iconic-noaccel"  tooltiptext="&tt.w10like.high;"  />
+		  <menuitem label="&radio.classic.skin;"                         	value="bs_classic"   		class="menuitem-iconic-noaccel" />
+		  <menuitem label="&radio.new.aero;"                            	value="bs_new"      		class="menuitem-iconic-noaccel" />
+		  <menuitem label="&radio.automatic.current.theme.skin.fixed;"	 	value="bs_auto_nomax2" 		class="menuitem-iconic-noaccel" />
+		  <menuitem label="&radio.automatic.current.theme.skin;"		 	value="bs_auto_nomax" 		class="menuitem-iconic-noaccel" />
+		  <menucaption  label="&mmc.custom.mTitle;"  class="mtitle  tt_info  tt_onlyme" />
+		  <menuitem label="&mmc.custom;  (custom1.css)"	       	value="custom1  customMmc  ver1"  class="menuitem-iconic-noaccel"  tooltip="tt_custom_mmc" />
+		  <menuitem label="&mmc.custom;  (custom2.css)"	       	value="custom2  customMmc  ver1"  class="menuitem-iconic-noaccel"   />
+		  <menuitem label="&mmc.custom;  (custom3.css)"	       	value="custom3  customMmc  ver1"  class="menuitem-iconic-noaccel"   />
+		  <menuitem label="&mmc.custom;  (custom4.css)"	       	value="custom4  customMmc  ver1"  class="menuitem-iconic-noaccel"   />
+		</menupopup> 
+	</menulist>
+  </row>
+ </rows>
+</grid>
+
+	<checkbox id="maxbuttons_canfloat" preference="mmc_buttons_canfloat" label="&checkbox_maxbuttons_canfloat;" flex="1" />
+	<hbox flex="1" align="center" style="padding-left: 3ch;" >
+		 <label  control="s_floating_activeMillis"   class="firstline_ind_wrap  default_label">&hover_activ_delay_time;  <html:span class="extrainfo">&p_milliseconds;</html:span> </label>
+		 <textbox id="s_floating_activeMillis"   type="number" value="0"   size="4" max="2000" min="0" preference="mmc_fl_activeMillis" />
+		
+		 <label  control="s_floating_inactiveMillis" class="firstline_ind_wrap  default_label">&deactivation_delay_time; <html:span class="extrainfo">&p_milliseconds;</html:span> </label>
+		 <textbox id="s_floating_inactiveMillis" type="number" value="100" size="4" max="2000" min="0" preference="mmc_fl_inactiveMillis" />
+	</hbox>	  
+ 	
+  </groupbox>
+ 
+  <vbox  flex="50" />
+ </box>
+</box>
+
+
+<hbox  id="box_outer_actions"  >
+<vbox>
+
+<groupbox >
+
+ <hbox style="padding-left: 0.5ch;  padding-right: 0ch;" >
+
+<grid class="actions_list">
+<columns>
+ <column /> <column class="but_actions"  style="margin-right: 4px;" /> <column class="but_actions" /> 
+</columns>
+<rows>
+ <row  align="baseline"  class="title" >
+	<label style="margin-left: 0.45ch;" >&Define_Action_for;</label>
+	<hbox  id="titleBox_closeBut"  align="center" class="tt_info tt_onlyme  obscureOn__sysbut_winappear_none" style="margin-left: 0.5ch;" >
+	 		<image  class="caption-icon"  src="chrome://hidecaptionplus/skin/opt/close_opt.png" />
+	 		<label  class="showOn__sysbut_winappear_none"  tooltip="_child" >&action_closebut_title;<tooltip  class="pre_line"  style="max-width: 50em;" >
+	 				<label style="" >&tt__closebut_tit_NOcustom;</label></tooltip></label>
+	 		<label  class="hideOn__sysbut_winappear_none"                   >&action_closebut_tit_custom; </label>
+	</hbox>
+	<hbox  id="titleBox_fxBut"     align="center" tooltip="tt__fxbut_title" popup="panel_fxbut" context="panel_fxbut" class="tt_info  tt_onlyme  hover_outline"  style="margin-left: 0.5ch;" >
+	 		<!--  <image  class="caption-icon"  src="chrome://hidecaptionplus/skin/opt/xx__FX_opt.png" />  
+	 		-->
+	 		<button  type="menu" label="F" class="hctp-appmenu-button-cls  noPointerEvents" hcp_appbutton_style="fx_home_micro.png"  />
+	 		<label  style="margin-right: -0.2ch !important;" class="pre_line  tinysubtitle" >&action_fxbut_title;</label>
+	</hbox>
+ </row>
+ 
+ <hbox  pack="center" >
+ 		<panel id="panel_act_more_opt"  class="tooltip_big  hc_smaller" type="arrow" flip="slide" position="leftcenter topright"  orient="vertical" >
+ 		  <vbox style="margin: 5px; font-weight: normal; ">
+		  	<checkbox id="check_closebut_mouseClick"  preference="closebut_mouseClick"  flex="1" 
+			    hc_need_restart="true"  label="&check__closebut_mouseClick;"	tooltip="tt__closebut_mouseClick"  hc_flags="recom_false" 
+				class="pre_wrap"  style="" /> <!-- &#010; -->
+			<tooltip id="tt__closebut_mouseClick" class="pre_line"  ><label>&tt__closebut_mouseClick;</label></tooltip>
+
+			<box height="2" />
+
+			<box flex="1" orient="vertical"  class="hc_item" >
+			  <label class="default_label  hc_caption" >&ctrl_w_title;</label>		
+		 	  <menulist id="mlist__action.key_ctrl_w"   preference="action.key_ctrl_w"  class=""  >
+				<menupopup>
+				  <menuitem class="menuitem-iconic-noaccel" 	label="&Fx_default_closeTab;" 		value=""   		hc_flags="defau" />
+				  <menuitem class="menuitem-iconic-noaccel" 	label="&item_closeWithHistory;"  	value="closeWithHistory  only"   tooltip="tt_closeWithHistory"  />
+				</menupopup>
+		 	  </menulist>
+			</box>
+			
+			<box flex="1" orient="vertical"  class="hc_item" >
+			  <box class="isBetaFeature" tooltiptext="&tt__isBetaFeature;" >
+			  	<label class="hc_caption" >&hc_isBetaFeature;</label>
+			  </box>
+			  
+			  <label class="default_label  hc_caption" >&clHist_title;</label>		
+		 	  <menulist id="mlist__closeWithHist.mainAction"   preference="closeWithHist.mainAction"  class=""  >
+				<menupopup>
+				  <menuitem class="menuitem-iconic-noaccel" 	label="&clHist_popup;"      	value="popup"   	hc_flags="defau" />
+				  <menuitem class="menuitem-iconic-noaccel"  	label="&clHist_pop_back;"      	value="popup goBack"           	tooltip="tt_Hist_pop_back"	/>
+				  	<tooltip  class="pre_line" id="tt_Hist_pop_back" ><label>&tt_Hist_pop_back;</label></tooltip>
+				  <menuitem class="menuitem-iconic-noaccel"  	label="&clHist_pop_back_fw;"    value="popup goBack goForward" 	tooltiptext="&tt_Hist_pop_back_fw;" />
+				  <menuseparator />
+				  <menuitem class="menuitem-iconic-noaccel"  	label="&clHist_back_fw;"     value="NOpopup  goBack goForward" 	tooltiptext="&tt_Hist_pop_back_fw;" />
+		  <!--
+				  'go Back/Fw only, no popup! ... uses SAME TOOLTIP !' 
+				  
+				  Tb ACTUALIZAR el main text de clWIthHistory ??
+		   -->
+				</menupopup>
+		 	  </menulist>
+			</box>
+			
+			<box flex="1" orient="vertical"  class="hc_item" >
+			  <box class="isBetaFeature" tooltiptext="&tt__isBetaFeature;" >
+			  	<label class="hc_caption" >&hc_isBetaFeature;</label>
+			  </box>
+			  
+			  <label class="default_label  hc_caption" >&line_title;</label>		
+		 	  <menulist id="mlist__closeWithHist.lineScan"   preference="closeWithHist.lineScan"  >
+				<menupopup>
+				  <menuitem class="menuitem-iconic-noaccel"  	label="&line_none;"      			value="" 	/>
+				  <menuitem class="menuitem-iconic-noaccel" 	label="&line_clWHonly;"   			value="hcLine  only"   	   hc_flags="defau" />
+				  <menuitem class="menuitem-iconic-noaccel"  	label="&line_always;   &label.R;"	value="hcLine  scanFull"  tooltip="tt_line_always"/>
+				  	<tooltip id="tt_line_always"><label>&tt_ln_always; &#10; &tt_ln_always_2; &#10;<pg0/>&Restart_needed;</label></tooltip>
+				</menupopup>
+		 	  </menulist>
+			</box>
+ 		  </vbox>
+		</panel>
+ </hbox>
+ 
+ <row  class="close_but_action" >
+  <label class="default_label  mouse_but_txt  title_small" tooltiptext="&tt_row_action_Primary;" >&label_row_action_Primary;</label>
+  <menulist id="mlist__close_button_action_id"   preference="close_button_action"  class="but_action"  sizetopopup="none" 
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	recom="closetab,closeWithHistory"  defau="closewin" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+
+  <menulist id="mlist__fxbut_act1_primary"   preference="fxbut_act1_primary"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	defau="mainPanelUI" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+ </row>
+
+ <row  class="close_but_action" >
+  <label class="default_label  mouse_but_txt  title_small" >&label_row_action_Secondary;</label>
+  <menulist id="mlist_id__close_button_act2_secondary"   preference="close_button_act2_secondary"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	defau="hc_context"  recom="ShowAllTabs,undoCloseTab" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+  
+  <menulist id="mlist__fxbut_act2_secondary"   preference="fxbut_act2_secondary"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	defau="hc_context" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+ </row>
+
+ <row  class="close_but_action" >
+  <label class="default_label  mouse_but_txt  title_small" >&label_row_action_Middle;</label>
+  <menulist id="mlist_id__close_button_act3_middle"   preference="close_button_act3_middle"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+  
+  <menulist id="mlist__fxbut_act3_middle"   preference="fxbut_act3_middle"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+ </row>
+
+
+ <row  class="close_but_action" >
+  <label class="default_label  mouse_but_txt  title_small" tooltiptext="&tt_row_action_wheel;" >&label_row_action_wheel;</label>
+  <menulist id="mlist_id__close_button_act_wheel"   preference="close_button_act_wheel"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	recom="Page_UpDown" >
+  	<menupopup>
+	  &menuitem_group_actions__wheel;
+      <menuseparator />
+      <menuitem  	value="none"	   			label="&item_noaction;"  hc_flags='dim' />
+  	</menupopup>
+  </menulist>
+
+  <menulist id="mlist__fxbut_act_wheel"   preference="fxbut_act_wheel"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	recom="Page_UpDown" >
+  	<menupopup>
+	  &menuitem_group_actions__wheel;
+      <menuseparator />
+      <menuitem  	value="none"	   			label="&item_noaction;"  hc_flags='dim' />
+  	</menupopup>
+  </menulist>
+ </row>
+
+
+ <row  class="close_but_action" >
+  <label class="default_label  mouse_but_txt  title_small" tooltiptext="&tt_row_action_wheelLeft;" >&label_row_action_wheelLeft;</label>
+  <menulist id="mlist_id__close_button_act_wheelLeft"   preference="close_button_act_wheelLeft"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	recom="advSelTab" >
+  	<menupopup>
+      &menuitem_group_actions; 
+      <menuitem  	value="advSelTab"   		label="&item_advSelTab;"			tooltip="tt_advSelTab" />
+  	</menupopup>
+  </menulist>
+
+  <menulist id="mlist__fxbut_act_wheelLeft"   			preference="fxbut_act_wheelLeft"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	recom="advSelTab" >
+  	<menupopup>
+      &menuitem_group_actions; 
+      <menuitem  	value="advSelTab"   		label="&item_advSelTab;"			tooltip="tt_advSelTab" />
+  	</menupopup>
+  </menulist>
+ </row>
+
+ <row  class="close_but_action" >
+  <label class="default_label  mouse_but_txt  title_small" tooltiptext="&tt_row_action_wheelRight;" >&label_row_action_wheelRight;</label>
+  <menulist id="mlist_id__close_button_act_wheelRight"   preference="close_button_act_wheelRight"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	recom="advSelTab" >
+  	<menupopup>
+      &menuitem_group_actions; 
+      <menuitem  	value="advSelTab"   		label="&item_advSelTab;"			tooltip="tt_advSelTab" />
+  	</menupopup>
+  </menulist>
+
+  <menulist id="mlist__fxbut_act_wheelRight"   			preference="fxbut_act_wheelRight"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	recom="advSelTab" >
+  	<menupopup>
+      &menuitem_group_actions; 
+      <menuitem  	value="advSelTab"   		label="&item_advSelTab;"			tooltip="tt_advSelTab" />
+  	</menupopup>
+  </menulist>
+ </row>
+
+
+ <row  class="close_but_action  line_before" >
+  <label class="default_label  mouse_but_txt  title_small  tt_onlyme" tooltip="_child" >&label_row_action_Primary_dblclk;<tooltip><label>&tt_row_action_Primary_dblclk;</label></tooltip></label>
+  
+  <menulist id="mlist_id__close_button_act1_primary_dblclk"   preference="close_button_act1_primary_dblclk"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+  
+  <menulist id="mlist__fxbut_act1_primary_dblclk"   preference="fxbut_act1_primary_dblclk"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" 
+  	defau="quitApplication" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+  
+ </row>
+
+ <row  class="close_but_action" >
+  <label class="default_label  mouse_but_txt  title_small  tt_onlyme" tooltip="_child" >&label_row_action_Secondary_dblclk;<tooltip><label>&tt_row_action_Primary_dblclk;</label></tooltip></label>
+
+  <menulist id="mlist_id__close_button_act2_secondary_dblclk"   preference="close_button_act2_secondary_dblclk"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+  
+  <menulist id="mlist__fxbut_act2_secondary_dblclk"   preference="fxbut_act2_secondary_dblclk"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+ </row>
+
+ <row  class="close_but_action" >
+  <label class="default_label  mouse_but_txt  title_small  tt_onlyme" tooltip="_child" >&label_row_action_Middle_dblclk;<tooltip><label>&tt_row_action_Primary_dblclk;</label></tooltip></label>
+
+  <menulist id="mlist_id__close_button_act3_middle_dblclk"   preference="close_button_act3_middle_dblclk"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+  
+  <menulist id="mlist__fxbut_act3_middle_dblclk"   preference="fxbut_act3_middle_dblclk"  class="but_action"  sizetopopup="none"
+  	setsAudioButs="true"  oncommand="HideCaption_opt.onCommand_Menulist_withAudio(this);"  onselect="HideCaption_opt.onCommand_Menulist_withAudio(this);" >
+  	<menupopup>
+      &menuitem_group_actions; 
+  	</menupopup>
+  </menulist>
+ </row>
+ 
+</rows>
+</grid>
+
+ </hbox>
+
+</groupbox>
+
+<groupbox class=" hideOn_fx4tbar_hidden " >  
+  	<caption   align="center" ><label class="" >&System_TitleBar__title;</label></caption>
+
+  	<label class="default_label  not_preLine  baseline  tt_onlyme  "  style="margin: 0px 3px;"  tooltip="tt_forbid_systitle"  > 
+		<checkbox id="checkbox_forbid_fxaustr_syscaption" class="" preference="forbid_fxaustr_syscaption" label="&check__Sys_TitleBar_always_hid;" /> 
+		<html:span class="extrainfo"> &Fx_default_unchecked; </html:span>   
+	</label>
+  	<tooltip id="tt_forbid_systitle" ><label>&tt__Sys_TitleBar_always_hid;</label></tooltip>
+  
+  	<label class="default_label  not_preLine  baseline  tt_onlyme  "  tooltip="tt_tabs_drInTitle"  > 
+		<!-- PREFERENCE:  INVERTED="TRUE"   checkbox-value is INVERTED  !!!  -->
+		<checkbox id="checkbox_drawInTitlebar"  preference="tabs_drawInTitlebar" label="&check__Fxopt_Sys_TitlBr_always_prsnt;" class="childPref" hc_flags="recom_false" /> 
+		<html:span class="extrainfo"> &recommended_unchecked; </html:span>   
+	</label>
+  	<tooltip id="tt_tabs_drInTitle" ><label>&tt__Fxopt_Sys_TitlBr_always_prsnt;</label></tooltip> 
+  	<!-- (was 'Place Tabs in Titlebar' *INVERTED VALUE* ) -->
+</groupbox>
+
+</vbox>
+<groupbox class="audio_buts"  align="stretch" >
+
+	<hbox align="baseline" style="margin-bottom: 4px;" >
+		<button   id="id_act_more_options"  class="  tt_info  tt_onlyme  style_shadow_1_std"  align="center"  style="margin: 0px 3px;" 
+			popup="panel_act_more_opt"  >
+			<label  class="hc-button-text" style="margin: 1px 1px !important;" >&More_options_e;  <b style="font-size:90%;">&forUpdatedSections;</b></label>
+		</button>
+	</hbox>
+
+  <button   id="but_Sound_tic_1"    class="small  tt_info  tt_onlyme"  align="center"
+  	label="&butt_butSound_tic_1;"  
+	oncommand="HideCaption_opt.Audio_openPopup(this, HideCaption_opt.get_HCPlusLib().Audio_Sound_tic1 );" ></button>
+  <button   id="but_Sound_info1"    class="small  tt_info  tt_onlyme"  align="center"  
+  	label="&butt_butSound_info1;"  
+	oncommand="HideCaption_opt.Audio_openPopup(this, HideCaption_opt.get_HCPlusLib().Audio_Sound_info1);" ></button>
+  <button   id="but_Sound_action1"    class="small  tt_info  tt_onlyme"  align="center"  
+  	label="&butt_butSound_action1;" tooltip="tt_butSound_action1" 
+    oncommand="HideCaption_opt.Audio_openPopup(this, HideCaption_opt.get_HCPlusLib().Audio_Sound_action1);" >
+    <tooltip  class="pre_line"  id="tt_butSound_action1"><label>&tt_butSound_action1;</label></tooltip> </button>
+  <button   id="but_Sound_wheel1"     class="small  tt_info  tt_onlyme"  align="center"  
+  	label="&butt_butSound_wheel1;"  tooltip="tt_butSound_wheel1"
+	oncommand="HideCaption_opt.Audio_openPopup(this, HideCaption_opt.get_HCPlusLib().Audio_wheel1);" >
+    <tooltip  class="pre_line"  id="tt_butSound_wheel1"><label>&tt_butSound_wheel1;</label></tooltip> </button>
+
+  <separator class="groove"  style="margin: 2px 4px 1px;" />
+  
+  <button   id="but_Sound_notFound"   class="small  tt_info  tt_onlyme"  align="center"  
+  	label="&butt_butSound_notFound;"  tooltip="tt_butSound_notFound"
+	oncommand="HideCaption_opt.Audio_openPopup(this, HideCaption_opt.get_HCPlusLib().Audio_Sound_notFound);" >
+    <tooltip  class="pre_line"  id="tt_butSound_notFound"><label>&tt_butSound_notFound; &#10; &only_volumen;</label></tooltip> </button>
+
+  <box class="baseline" style="margin-top: 3px;" >
+	  <label    id="title_ttip_actions"  tooltip="_child"  class=""  >&actt_title;<tooltip><label>&tt_title;</label></tooltip></label>
+	  <menulist id="mlist_ttip_actions"  preference="action.tooltips"  sizetopopup="none"  class="hc_compact"  
+	  		style="" >
+		<menupopup>
+		  <menuitem class="menuitem-iconic-noaccel"  value="always"    			label="&actt_always;"	  	/>
+		  <menuitem class="menuitem-iconic-noaccel"  value="blockFirst  std"    label="&actt_blockFirst;"   hc_flags="recom"   tooltiptext="&tt_blockFirst;" />
+		  <menuitem class="menuitem-iconic-noaccel"  value="never"    			label="&actt_never;"   		/>
+		</menupopup>
+	  </menulist>
+  </box>
+
+  <hbox style="margin-top: 0.7em;">
+    <button label="&label_but_recom_1;"           	tooltip="_child"  class="small  tt_info  tt_onlyme" 
+    		oncommand="HideCaption_opt.storePrefs_Recom1(this);" >
+		<tooltip  class="pre_line" ><label>&tt_but_recom_1;</label></tooltip> </button>
+	<spacer flex="1" />
+    <button label="&label_butPref_default;"			tooltip="_child"  class="small  tt_info  tt_onlyme" 
+    		oncommand="HideCaption_opt.storePrefs_default(this);" >
+		<tooltip  class="pre_line" ><label>&tt_butPref_default;</label></tooltip> </button>
+  </hbox>
+  <button label="&label_but_recom_annoyances;"  	tooltip="_child"  class="small  tt_info  tt_onlyme" 
+    		oncommand="HideCaption_opt.storePrefs_Recom2_annoyances(this);" >
+		<tooltip  class="pre_line" ><label>&tt_but_recom_annoyances;</label></tooltip> </button>
+  <hbox style="">
+    <button label="&label_but_recom_2_1;"  	                  class="small  tt_info  tt_onlyme" 
+    		oncommand="HideCaption_opt.storePrefs_Recom2_1(this);" >
+		</button>
+  </hbox>
+
+</groupbox>
+
+<popupset id='actions_tooltip_group' align='start' orient='vertical' >
+	<tooltip id="tt__fxbut_title"  class="tooltip_big"     onpopupshowing="return document.getElementById('panel_fxbut').getAttribute('panelopen') != 'true';" >
+		<label>&tt__fxbut_title;</label></tooltip>
+	<panel   id="panel_fxbut"      class="tooltip_big  hc_smaller" type="arrow" flip="slide" position="rightcenter bottomleft" >
+		<label>&tt__fxbut_title;</label></panel>
+
+	&actions_tooltip_group; <!-- ALL TOOLTIPS! --> 
+</popupset>
+
+</hbox>
+
+<vbox  flex="50" />
+
+</prefpane>
+
+<!--  
+   NOTES:
+   FYI:  here is some "ALT 255" characters (hard -no-wrapping- space), Ie. in "customizable buttons" text.
+-->
+
+</overlay>

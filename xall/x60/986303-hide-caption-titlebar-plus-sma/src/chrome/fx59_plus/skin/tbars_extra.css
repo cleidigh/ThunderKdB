@@ -1,0 +1,370 @@
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+
+.hctp-floatbar:not([customizing="true"]) {
+	position: fixed;  z-index: 15;
+	top: -1100px;
+	left: 0px;
+}
+/* --------- INACTIVE (hidden!!) ----------- */
+.hctp-floatbar[inactive="true"] {
+	top: -1100px !important; /*  overrides dynamic value  */
+}
+.hctp-floatbar:not([customizing="true"])[inactive="true"] {
+	/* visual feedback for any possible issue here - not visible in lwtheme */
+	/*
+	background-color: red; 
+	padding-bottom  : 30px; can enter a loop... 
+	*/
+	
+	border-bottom-style: none;
+}
+
+#main-window[dz_floatbars_transition ~= "fast1"]     .hctp-floatbar:not([customizing="true"])[inactive="true"] {
+	margin-top: -3px;
+	-moz-transition: margin-top  20ms ease-out, top 0ms ease-out 35ms;
+}
+#main-window[dz_floatbars_transition ~= "vo_trnsp"]  .hctp-floatbar:not([customizing="true"])[inactive="true"] {
+	/* with transition (smooth delay) !! */
+	margin-top: -4px;
+	opacity: 0.3;
+	box-shadow: none;
+
+	-moz-transition: margin-top  30ms ease-out, opacity 130ms ease-out, box-shadow  60ms ease-out, top 0ms ease-out 110ms;
+}
+#main-window[dz_floatbars_transition ~= "slow"]      .hctp-floatbar:not([customizing="true"])[inactive="true"] {
+	margin-top: -6px;
+	-moz-transition: margin-top  80ms ease-out, opacity 200ms ease-out, box-shadow 120ms ease-out, top 0ms ease-out 190ms;
+}
+
+
+.hctp-floatbar {
+
+	background-color: -moz-dialog; 
+	
+	/* fixed element accesories */
+	border-top   : 0px; /* 1px solid transparent; */
+	border-bottom: 0px solid gray;
+	border-bottom-left-radius : 6px;
+	border-bottom-right-radius: 6px;
+	
+	
+	background-clip: padding-box;
+
+	/* padding: 0px 0.3em; */
+	/* min-height: 12px; */
+	
+	width: -moz-available;  /* if left pos isn't 0, do NOT go beyond right end of Fx window! :-) */
+
+	opacity: 1;
+	
+	/* white-space: nowrap; <- tested with floating "PersonalToolbar" */
+	
+	box-shadow: 0pt 8px 8px -1px  rgba(0,0,0,0.55);
+}
+#main-window[dz_floatbars_transition ~= "fast1"]     .hctp-floatbar {
+	-moz-transition: margin-top  25ms ease-out  5ms;
+}
+#main-window[dz_floatbars_transition ~= "vo_trnsp"]  .hctp-floatbar {
+	-moz-transition: margin-top  35ms ease-out  5ms, opacity 130ms ease-out, box-shadow  60ms ease-out;
+}
+#main-window[dz_floatbars_transition ~= "slow"]      .hctp-floatbar {
+	-moz-transition: margin-top  80ms ease-out  5ms, opacity 230ms ease-out, box-shadow 120ms ease-out;
+}
+
+
+.hctp-floatbar:-moz-lwtheme{
+	-moz-appearance    : none;
+	
+	border-top-color   : transparent; 
+	
+	background-repeat  : no-repeat; /* repeat-y */ 
+	background-position: top right;
+	
+	/* these rules: 'left:0' + 'bkg-origin' + width: 100% -> assures correct x-position of bkg-image for max & UNmax modes! */
+	left               : 0px         !important; /* override dynamic style attr. */
+	background-origin  : border-box            ; /* (the origin of a background-image -not color right?-).*/
+}
+/* NEW variables, since Fx5x??? */
+.hctp-floatbar:-moz-lwtheme{
+	background-color: var(--lwt-accent-color, rgba(245,245,245,.99 )); /* NOT important */
+	background-image: var(--lwt-header-image, none);
+}
+.hctp-floatbar:-moz-lwtheme-brighttext {
+	background-color: var(--lwt-accent-color, rgba(  0,  0,  0,.99 )); /* NOT important */
+} 
+
+/* customizing & lwtheme */
+.hctp-floatbar[customizing="true"]:-moz-lwtheme {
+	/** background-color: transparent !important;  override dynamic style attrs. **/
+	background-image: none        !important;
+}
+/* customizing */
+.hctp-floatbar[customizing="true"] {
+	margin: 2px 1px;
+	margin-top   : 3px;
+	margin-bottom: 2px;
+	
+	box-shadow: 0pt 1px 2px 3px rgba(0, 0, 0, 0.55);
+}
+
+/* UNmaximized - NOT-lwtheme */
+window:not([hc-MaxFull="true"])                                .hctp-floatbar:not(:-moz-lwtheme)  {
+	border-left : 1px solid transparent;
+	border-right: 1px solid transparent;
+}
+/* UNmaximized - 'hidden-caption/border' */
+window:not([hc-MaxFull="true"])[hctp_hidden_sysborder="true"]  .hctp-floatbar:not([customizing="true"]){ /* :not(:-moz-lwtheme) */
+	border-left : 4px solid transparent;
+	border-right: 4px solid transparent;
+	/* ... considering -> background-clip: padding-box;+ transparent left/r borders ... */
+}
+
+#hctp-toolparent   toolbox{  /* considera el NUEVO 'middle' VBOX q meti entre estos 2 */
+	border-top    : 0px;
+	border-bottom-left-radius : 6px;
+	border-bottom-right-radius: 6px;
+	/* padding-bottom: 3px;  not good for themes like walnut2 */
+	
+	width: 100%;
+	
+	/* -moz-appearance: none;  CLASSIC only?? */
+
+}
+#hctp-toolparent   #hctp-float-bottombox {
+
+	position: absolute;
+	
+	width: 100%;
+	height       :  14px;
+	margin-bottom: -14px; /* used when customizing */
+	background   : transparent;
+	
+	/* outline: 1px solid red; */
+}
+
+
+/* ----- For FULL FLOATING BARS!!!, without standard toolbox ----- */
+#hctp_floatbars_upper_hover {
+	position: fixed;
+	top : -100px;
+	left: 0px;
+	z-index: 10; /* just behind Floatbars */ 	
+	
+	height: 1px;
+	width : 100%;
+	background-color: rgba(0, 0, 0, 0.1); /* transparent doesn't work over FLASH objects (like TV emissions, etc) */
+
+}
+
+/* HIDE in fs VIDEOS */
+:root[inDOMFullscreen="true"]   #hctp_floatbars_upper_hover {
+	z-index: -5 !important;
+}
+/* For fs VIDEOS, also hide floatbars completely */
+:root[inDOMFullscreen="true"]   .hctp-floatbar:not([customizing="true"]) {
+	z-index: -5 !important;
+}
+
+
+#hctp-toolbox   #TabsToolbar[tabsontop="true"] { /* ----- For FULL FLOATING BARS... ----- */
+	margin-top: -3px;
+}
+
+
+
+
+/* ----- Try to replicate the Tabs-on-top feature ----- */
+#hctp-toolbox > toolbar:not(#toolbar-menubar):not(#TabsToolbar):not(#nav-bar) {
+  -moz-box-ordinal-group: 50;
+}
+#hctp-toolbox > toolbar#nav-bar { /* nav-bar above others.... */
+  -moz-box-ordinal-group: 45;
+}
+
+
+
+
+
+menuitem.hc_maindisabled:not([default]) {
+	opacity: 0.7;
+}
+
+menuseparator.hc_tbarsMenuSeparator {
+	border-top:    1px solid ThreeDShadow    !important; /* copy from Firefox classic theme itself */
+  	border-bottom: 1px solid ThreeDHighlight !important;
+	
+	margin-top   : 1px;
+	margin-bottom: 0px;
+	padding: 0px !important;
+	-moz-appearance: none !important;
+}
+
+/**** --- fixed already in style_main  --- (FIX for *EMPTY* Menubar - FIREFOX 5&6) ----- 
+toolbar[type="menubar"][autohide="true"][customizing="true"] {
+  overflow: visible;
+}
+ ****/
+
+
+/* ----- CUSTOMIZATION of Menu !! ----- */
+#hcp-box-main-menu {
+	background-color: rgba(255,255,255,0.6);
+	border-radius: 4px;
+}
+toolbarpaletteitem[place="palette"]  #hcp-box-main-menu {
+	outline: 1px solid rgba(0, 0, 0, 0.2);
+	outline-offset: -1px;
+	-moz-outline-radius: 3px;
+	
+	max-height: 2.5em;
+	font-size: 90%;
+}
+toolbarpaletteitem[place="palette"]  #hcp-box-main-menu  label {
+	max-width: 13em;
+	-moz-box-flex: 1;
+	margin-left :  0px;
+	margin-right: -1em;
+}
+
+
+/* */                .show_insidePanelUI {	display: none;      }
+#PanelUI-contents    .show_insidePanelUI {	display: -moz-box;	}
+#PanelUI-contents    .hide_insidePanelUI {	display: none;		}
+
+
+
+
+
+/* ----- CUSTOMIZATION of Menu !! ----- */
+#main-window:not(:-moz-any([customize-entering],[customize-entered]))                               toolbar                         #hcp-main-menu-tbaritem ,
+#main-window:-moz-any(     [customize-entering],[customize-entered])[hctp_hcMenuInToolbar="true"]   toolbar                         #menubar-items          ,
+#main-window:-moz-any(     [customize-entering],[customize-entered])                                toolbar:not(#toolbar-menubar)   #menubar-items          ,
+#main-window:-moz-any(     [customize-entering],[customize-entered])                                toolbar                         #menubar-items[removable="true"] { 
+	visibility: collapse;
+}
+  
+toolbarpaletteitem#wrapper-hcp-main-menu-tbaritem  +  toolbarpaletteitem#wrapper-menubar-items {
+	visibility: collapse;
+}
+
+
+#main-window[dz_home_mainmenu_floating="true"]   #nav-bar  #hcp-main-menu-tbaritem {
+	color: red !important;
+	background-color: rgba(255, 255, 0, 0.3) !important;
+	/* The ACTIVE-TAB  appears above float-menu if mainmenu is in nav-bar !!!!bc of: tab vs navbar z-index	*/
+}
+:-moz-any(#PanelUI-popup,#PanelUI-contents)                #hcp-main-menu-tbaritem {
+	color: red !important;
+	background-color: rgba(255, 255, 0, 0.3) !important;
+}
+
+
+
+/* --- */
+:root[dz_floatbars_style_bars="shadow  disabled"]  
+  :-moz-any(#hcp-viewToolbarsMenu-mpopup,
+			#appmenu_customizeMenu,
+			#viewToolbarsMenu,
+			#toolbar-context-menu,
+			#customization-toolbar-menu	)
+					menuitem[type="checkbox"][toolbarId]:not([checked="true"])   { /* excludes 'Tabs on Top' -- .menu-iconic-text */
+	box-shadow     : 0pt 0pt 80px rgba(0, 0, 0, 0.11) inset;
+}
+
+/* ----- Toolbar Selection nice effects! ----- */
+:root[dz_floatbars_style_bars="shadow  disabled"]  toolbox > toolbar[toolbarname]:-moz-any(:not([collapsed="true"]):not([type="menubar"]),
+                                        :not([autohide ="true"])[type="menubar"]) {
+	-moz-transition: box-shadow 500ms ease-out;
+}
+:root[dz_floatbars_style_bars="shadow  disabled"]  toolbox > toolbar[toolbarname]:-moz-any([collapsed="true"],
+                                        [autohide ="true"][inactive="true"][type="menubar"]) {
+	-moz-appearance: none;
+	box-shadow     : 0 0 10px rgba(0,0,0,0.7) inset;
+}
+:root[dz_floatbars_style_bars="shadow  disabled"]  toolbox > toolbar[toolbarname]:-moz-any([collapsed="true"],
+                                        [autohide ="true"][inactive="true"][type="menubar"]):not(#addon-bar) {
+	-moz-transition: box-shadow 150ms ease-out, visibility 0ms ease-out 100ms;
+}
+:root[dz_floatbars_style_bars="shadow  disabled"][customizing="true"]   toolbox > toolbar[toolbarname]:-moz-any([collapsed="true"],
+                                                                           [autohide ="true"][type="menubar"][inactive="true"]) { /* toolbox ... not including #addon-bar */
+	box-shadow     : 0 0 30px rgba(0,0,0,0.5) inset;
+	
+	visibility: visible !important;
+	overflow  : visible !important;
+	min-height: 20px    !important; /* this doesnt get applied to menubar .. Its commented now in level_ag.css !!  */
+	max-height: 60px    !important;
+}
+
+
+
+/* --------------------  sys_floatbars_enable (used [hcp_sys_foatbars_elem="true"] instead! ) ------------------------ */
+/****
+#main-window:not([hcp_sys_floatbars_enable="true"])   .showOn_sys_floatbars_enable {
+	display: none;
+}
+****/
+
+
+
+/* already works with new dynamic stylesheet higher priority in 'stack' (AUTHOR_SHEET?)  */
+/* #navigator-toolbox > toolbar:not(:-moz-lwtheme) <-- nop, bc interferes with custom-themes like walnut2 */
+#hctp-toolbox      > toolbar:not(:-moz-lwtheme) {
+  -moz-appearance: none;
+  border-style: none;
+  background-color: -moz-Dialog;
+}
+@media all and (-moz-windows-default-theme) {
+	
+  @media (-moz-os-version: windows-vista),
+         (-moz-os-version: windows-win7 ),
+         (-moz-os-version: windows-win8 ) {
+	#hctp-toolbox      > toolbar:not(:-moz-lwtheme) {
+      background-color: hsl(210,75%,92%);
+    }
+  }
+}
+
+
+#main-window:not([hctp_isFx57plus="true"]):-moz-any([customize-entering],[customize-entered])  #hctp-toolparent {
+  margin-left:  2em;
+  margin-right: 2em;
+}
+
+
+/**  inDOMFullscreen  **/
+#main-window[inFullscreen][inDOMFullscreen]  #hctp-toolparent {
+  visibility: collapse;
+}
+
+
+menupopup  menuitem#toggle_TabsToolbar {
+	pointer-events: none !important;
+	cursor: not-allowed  !important; /* not working due to prev rule that forbids even hover detection */
+}
+
+/* space indicating navBar position! */
+menupopup  menuitem#toggle_toolbar-menubar + #toggle_PersonalToolbar ,
+menupopup  menuitem#toggle_TabsToolbar     + #toggle_PersonalToolbar {
+	margin-top: 5px !important;
+}
+
+menupopup  menuitem#toggle_PersonalToolbar + #toggle_hctp_MenuAndTitle_Toolbar {
+	margin-top: 2px !important;
+}
+
+
+/**  INCREIBLE!!: En Fx 60 TENGO q poner este width aca para que acepte!!, no acepta lo puesto en el attr "style".  
+     (solo podia hacer andar si tocaba a mano el elem.style.setProperty(..) o via el Dom-Inpector!.
+      Y HASTA RECIEN anduvo pq se lo tocaba en el .js en el ajuste de custom-color! )
+**/
+#hctp-toolsubparent_box {
+	width: 100% !important;
+}
+
+
+}  /**  @-moz-document  url(...)  **/
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+
+<link rel="icon" 
+      type="image/vnd.microsoft.icon" 
+      href="chrome://HideCaptionPlus/skin/hcp_icon16.png">
+
+<TITLE> You've been updated to a new version of 'Hide Caption Titlebar Plus' addon! </TITLE>
+
+<SCRIPT>
+
+function my_onLoad(){
+	var notice_name= "";
+    // duplicate this for other notes... 
+    notice_name= "futuro_mensaje";
+    if( (""+window.location).indexOf(notice_name) >= 0 ){
+    	var elem= document.getElementById(notice_name);
+    	if( elem ){
+    		elem.removeAttribute("style");
+    		//alert("-> "+notice_name);
+    	}
+    }
+    
+}      
+      
+</SCRIPT>
+
+<style type="text/css">
+<!--
+BODY
+{
+ padding-left : 3%; 
+ padding-right: 5%; 
+ background-color: #F2F2F2;
+}
+-->
+body, th, td {
+ font: normal 15px Arial,Helvetica,sans-serif,Verdana;
+}
+pre{
+ font: normal 14px Arial,sans-serif;
+}
+HR{
+ margin-bottom: 1.4em;
+}
+
+
+.news_title {
+ margin-bottom: 0.5em;
+}
+
+a.news_link {
+ /* margin-left: 2em; */
+ font-weight: bold;
+}
+
+.pre_txt {
+	white-space: pre-line;
+}
+.outstanding {
+	border: 2px solid blue;
+	border-radius: 10px;
+	padding: 2px 15px 30px 35px;
+	width: 80%;
+	margin-bottom: 2em;
+}
+.foot_notes {
+	font-size: 85%;
+}
+</style>
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+</HEAD>
+
+<body onload="my_onLoad();"  style="">
+
+<h3 style="color: #000033;"><img border="1" src="chrome://hidecaptionplus/skin/hcp_icon.png" />&nbsp;&nbsp;  
+		You've been updated to a new version of 'Hide Caption Titlebar Plus' addon! </h3>
+
+<hr />
+
+<div class="pre_txt  outstanding">
+<h3> * OUTSTANDING NEWS * </h3>
+<ul>
+ <li> <b> Multiple Configurable Actions for both screen-corner buttons: Firefox & Close buttons!</b>
+  See homepage for details and screenshots. 
+
+ <li> This addon is <b>RESTARTLESS</b>. It can be un / installed, updated, enabled / disabled on the fly.  
+ <div class="foot_notes">
+      If any issue appears, please drop a notice in the <b>Support Site</b> (link in <a href="https://tiny.cc/hidec/">Home Page</a>). Thank you!  
+ </div>
+</ul>
+</div>
+
+<p> You can check all new features &amp; fixes added in the <a href="https://tiny.cc/hidec/">Home Page</a>, Options Dialog or <a href="readme.html">Readme Page</a></p>
+
+<!--
+<h4> Latest changes / Release Notes: 
+       <a href="https://tiny.cc/hidec/versions/">online here</a>
+</h4>
+-->
+
+
+<!--
+
+<div id="futuro_mensaje" style="display:none;" >
+ <ul style="color: maroon;  font-weight: bold;  border: 2px solid maroon; margin: 2.5em; border-radius: 3px;  max-width: 65em;" >
+  <li style="margin: 1em;">
+	<h3>Important Notice:</h3>
+		
+  </li>
+ </ul>
+</div>
+
+ 
+Main new features are:
+
+-->
+<p style="margin-top: 3em;"> </p>
+
+<a  class="news_link"  href="https://addons.mozilla.org/firefox/addon/hide_titlebar_plus_tb/">
+  		Thunderbird version is available!</a> (Windows only)
+
+
+
+   
+
+<pre style="margin-left: 2em; margin-top: 1em; line-height: 1.5em; white-space: pre-wrap;" > 
+<!-- 
+News: 
+   - Mar-2014: FYI, to advanced users: I'm cooking a new exciting feature that I'll start to upload 1st in the &quot;Development Channel&quot; (I'm especting that to be soon, can be in a month), if you want to switch to try it.   
+     (In that Channel, You'll start receiving updates immediately as I upload them. And I'm publishing there already all updates as RC versions, with same quality as public ones, so you won't miss any version).    
+     That will serve to try the new feature, especially the styling.  It is already very mature, I'm enjoying it several months ago :-) 
+ -->  
+</pre>
+
+</body>
+</html>

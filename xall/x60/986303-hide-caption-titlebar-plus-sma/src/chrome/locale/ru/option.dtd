@@ -1,0 +1,778 @@
+
+<!--  ___***** Translators Notes: *****___
+   ***  1) New!: Now *All* texts and tooltips have css style: "pre-line". So {html:br} isn't needed for line breaks, (but can be used for convenience.)
+   ***  2) Please note that some tooltips-texts *can't* have line-breaks or any tag (the texts in a "tooltiptext" attribute)
+   ***  3) And there is also several 'hard spaces' characters (alt+255), like this:' ', to prevent some ugly wrapping and to make more space between texts.  
+   ***  (I use NOTEPAD++ free editor)  *** -->
+
+<!ENTITY dialog.hide.caption.titlebar.plus "Настройки Hide Caption Titlebar Plus">
+<!ENTITY dialog.apply "Применить">
+	
+<!ENTITY tab.main              	"Главные">
+<!ENTITY tab.look.feel         	"Поведение">
+<!ENTITY tab.advanced.settings 	"Расширенные">
+<!ENTITY tab.other.settings    	"Остальные">
+<!ENTITY tab.float.toolbars    	"Плавающие панели">
+
+
+<!--  __________*** Section:   LOOK AND FEEL ***__________  -->
+
+<!ENTITY caption.show.custom.caption.titlebar   "Показать HCTP заголовок:">
+<!ENTITY      tt.show.custom.caption.titlebar 		"Включает название текущей страницы.     Действует, когда скрыт системный заголовок.">
+<!ENTITY radio.in.unmaximized.windows           "В не развернутом окне">
+<!ENTITY radio.small.caption                    "Малый  (в не развернутом окне)">
+<!ENTITY radio.cc_never                         "Никогда">
+
+<!ENTITY w.default  		"по умолчанию">
+<!ENTITY w.Enabled  		"Включен">
+<!ENTITY w.Disabled			"Выключен" >
+<!ENTITY w.No				"Нет" >
+
+
+<!ENTITY    System_borders_c "Системные края:" >
+<!ENTITY tt_System_borders_c	"Отключить или установить ширину левой, правой и нижней границы не развернутого окна.  (работает только для ПК с Aero-Glass)" >
+<!ENTITY Yes_full_width		 "Да  (полная ширина)" >
+<!ENTITY    Yes-_smaller	 "Да, мелкие" >
+<!ENTITY tt_Yes_smaller_2			"Firefox 12+ по умолчанию" >
+<!ENTITY tt_Yes_smaller_7			"Параметр по умолчанию. Рекомендован для Aero-Glass. Почти полностью скрывает границы (в Glass), как функция 'Отключен', но без ее недостатков. (Можно изменить границы с 'Активировать HCTP границы ...' )" >
+<!ENTITY tt_Yes_smaller_7_notReal	"Похож на предыдущий вариант но границы шире  (только для Glass и с включенным '&enable_customizable_buts;')" >
+<!ENTITY tt_sysBorders_disabled	"<pg /> Рекомендуется для Aero-Basic ПК. Это позволяет легким темам заполнить весь фон окна.  (Устаревший параметр по умолчанию).
+			<pg /> ПК с Glass: если '&enable_customizable_buts;' активен, не развернутые окна могут потерять округлые углы и тень окна, в некоторых случаях." >
+
+<!ENTITY    custom_bord_cornr_rz	"Активировать HCTP границы и угловые элементы" >
+<!ENTITY tt_custom_bord_cornr_rz		"Может использоваться для расширения границы, если системная граница мала" >
+<!ENTITY Make_corners_visible		"Показать углы." >
+
+<!ENTITY    Border_color			"Цвет <html:br /> границы" >
+<!ENTITY tt_Border_color				"Цвет виден когда системные границы отключены" >
+
+<!--    tt_Skin 			"Custom skins capability will be added too." -->
+<!ENTITY title_Skin 						"Скин:">
+<!ENTITY radio.classic.skin  						"Классический" >
+<!ENTITY radio.new.aero      						"Стиль Aero"   >
+<!ENTITY radio.automatic.current.theme.skin.fixed   "Авто. Скин текущей темы (фикс. позиция)" >
+<!ENTITY radio.automatic.current.theme.skin         "Авто. Скин текущей темы (устар. позиция)" >
+<!ENTITY radio.w10like         						"Новый: стиль FF для Win 10" >
+<!ENTITY radio.w10like.light   						"Новый: стиль FF для Win 10  (светлый)" >
+<!ENTITY    tt.w10like.light      						"Когда легкая тема активна, значки кнопок будут выглядеть как 'regular' стиль Win 10" >
+<!ENTITY radio.w10like.high   						"Новый: стиль FF для Win 10  (контраст)" >
+<!ENTITY    tt.w10like.high       						"Когда легкая тема активна, значки кнопок будут выглядеть как 'regular' стиль Win 10" >
+
+<!ENTITY mmc.custom.mTitle							"Custom options">
+<!ENTITY mmc.custom       							"Custom option">
+<!ENTITY tt_custom_mmc__begin    						"Advanced options: custom file/s to be placed in: ">
+<!ENTITY or_custom2_css_and_so_on						"   (or custom2.css and so on)">
+
+
+<!--    CUSTOM styles css files   -->
+<!ENTITY can_be_anyname_files				  "   ([custom] can be just any name, and you can add several files)">
+
+
+<!ENTITY caption.min.max.close.buttons.location 		"HCTP кнопки Мин, Макс, Закрыть   (в правом верхнем углу):">
+<!ENTITY caption.min.max.close.buttons.loc.extrainfo 	"(доступно также через 'ПКМ по панели » Изменить')">
+<!ENTITY label.about.hidden.and.customize  					"Настройки FF:   'Панель инструментов » Изменить', эти же кнопки можно поместить на любую панель (даже вкладок)" >
+
+<!ENTITY In_Maximized_window 		"В развернутом окне:">
+<!ENTITY In_Un_Maximized_window 	"В не развернутом окне:">
+<!ENTITY radio.bloc.micro     				"Микро-кнопка Закрыть" >
+
+<!ENTITY checkbox_maxbuttons_canfloat     	"Микро-кнопка Закрыть: при наведении появляются плавающие кнопки или главное меню" >
+
+
+<!--  ___*** (These appears at dialog bottom line) ***___  -->
+
+<!ENTITY button.see.more.in.readme.file "Смотри больше в ПРОЧТИ">
+<!ENTITY button.ctrl.click.opens.in.new.tab "Ctrl+клик открывает в новой вкладке">
+<!ENTITY DEPRECATED_label.1 "[1]">
+<!ENTITY label.options.changes.reflects.on.the.fly.in.fir21  " Большинство изменений можно увидеть на лету." >
+<!ENTITY label.prefix.options.with  "Настройки отмеченные знаком">
+<!ENTITY label.R "[R]">
+<!ENTITY label.R.class "<z class='needRst'>[R]</z>">
+<!ENTITY label.other.options.saved.instantly.too.but.restart "требуют перезапуска Firefox, для применения изменений.">
+<!ENTITY Restart_needed "[R] Требуется перезапуск.">
+ 
+ 
+
+<!ENTITY enable_customizable_buts 	"Включить HCTP кнопки Мин,Макс,Закрыть">
+<!ENTITY disable_win_system_buts	"(отключение кнопок системного заголовка)">
+<!ENTITY tt_enable_customizable_buts 	" <pg0/>• Эта настройка, <b>позволяет повторно использовать (Мин,Макс,Закрыть)</b>. 
+	<pg /> 
+	<pg /> Эти изменения внешнего вида видны только в <b>не развернутом</b> Firefox в Windows 7:  
+	<pg /> ⋅ Это отключает фон окна для GLASS (полупрозрачности), если он активен, но включает эмулятор фона. т.е. убивает прозрачность.  
+	<pg /> ⋅ Если 'Системные края' параметр 'Отключен', <html:b>не развернутое </html:b> окно может потерять округлые углы и тень, в некоторых случаях.  
+	<pg /> ⋅ Не влияет на внешний вид в полноэкранном режиме.  
+	<pg /> 
+	<html:hr />
+	Это включает в себя решение проблем в Firefox 12 и выше. 
+	  (Начиная с Firefox12+ проблема не исправлена. Инфо на странице Аддона Firefox Bug 730219.  Эта проблема FF вынуждает кнопки системного заголовка (Мин,Макс,Закрыть) всегда быть на виду при Aero-Glass) 
+">
+<!ENTITY item_0_none							"Нет (FF по умолчанию)">
+<!ENTITY item_11_Using_Glasslike_win_bkg_recom	"[1.1] Использовать стеклянный фон (рекомендуется)">
+<!ENTITY   tt_11_Using_Glasslike_win_bkg_recom		"<pg /> Рекомендуемый вариант. Поддержка легких тем.
+			<pg /> Стеклянный фон. Только на ПК с включенным Glass. (чтобы увидеть фон,  '&Custom_Win_bkg_color;' должен быть активен)
+			<pg /> Используйте [2] и [3] только при проблемах. (возможна неверная позиция восстановленного окна, актуально для Firefox до версии 20). ">
+<!ENTITY item_12_Using_solid_win_bkg_recom		"[1.2] Сплошной цвет фона (рекомендуется)">
+<!ENTITY   tt_12_Using_solid_win_bkg_recom			"<pg /> Рекомендуемый вариант. Поддерживает легкие темы.">
+<!ENTITY item_2_Same_appearance_compat			"  [2] Тот же внешний вид. (Только для теста совместимости)">
+<!ENTITY   tt_2_Same_appearance_compat				"Используйте только при проблемах с положением окна FF и/или области контента с курсором.    (Использует альтернативный метод)">
+<!ENTITY item_3_Another_compat_test				"  [3] Другой вариант теста совместимости">
+<!ENTITY   tt_3_Another_compat_test					"Скрывает легкую тему, если есть.">
+
+
+
+<!ENTITY Custom_Win_bkg_color		"Свой цвет фона окна" >
+<!ENTITY tt_Custom_Win_bkg_color		"Включает опц. стеклянный фон.    Цвет по умолчанию:  #92ACCE (светло-синий)" >
+<!ENTITY active_no_persona			"Активно, когда нет легкой темы. (по умолчанию)" >
+<!ENTITY active_always				"Активно всегда.  (Скрывает легкую тему, если есть)" >
+<!ENTITY active_always_tt				"Can be useful also for active Dynamic/Floating Toolbars with newer Firefox's (Compact) Light &amp; Dark themes" >
+
+
+<!ENTITY hover_activ_delay_time		"активация при наведении<html:br /> с задержкой" >
+<!ENTITY deactivation_delay_time	"деактивация<html:br /> с задержкой" >
+<!ENTITY p_milliseconds				"(милисекунд)" >
+
+
+
+<!--  __________*** Configurable Actions! ***__________  -->
+  
+<!ENTITY Define_Action_for			"Действие для:">
+ 
+<!ENTITY action_fxbut_title 		"Кнопка Firefox HCTP
+			<z class='tiny'>Нажмите для информации</z>">
+<!ENTITY    tt__fxbut_title 			"<pg0/> <b>Новое:   Настройка действий для кнопок:  Firefox и Закрыть. </b> 
+			<pg />(расположение в углах окна доступно через 'ПКМ по панели » Изменить') 
+			<pg />
+			<pg2/> Множество новых функций, включая правую, среднюю кнопки, колесо, двойное нажатие и <b>shift, ctrl, alt клавиши</b>! 
+			<pg /> (См. подсказки для доп./противоположных действий по Shift)
+			<pg /> <z class='is_recom'>Зеленые варианты - рекомендуемые,</z> а <z class='is_defau'>синие - по умолчанию.</z>
+			<pg /> Используйте кнопки пресетов (Рекомендуемые 1 и 2, по умолчанию)
+			<pg /> <b>Звуки: </b>
+			<pg /> Выбрав пресеты, вы можете указать свой собственный звук для каждого действия.
+			<pg /> Звук 'недопустимо' может воспроизводиться для определенных действий,если установлен в настройке действия.  Для таких событий, как: 
+			<pg /> <pg /> Для <i>[&item_undoCloseTab;]</i>: нет вкладок для восстановления.
+			<pg /> <pg /> Для <i>[&item_closeNewerWindow;]</i>: нет окон <i>(кроме текущего)</i> для закрытия.
+			<pg /> Можно отключить все звуки выбрав ('Нет'), звук 'недопустимо' тоже будет отключен.
+">
+
+<!ENTITY action_closebut_tit_custom	"Моя кнопка закрытия">
+
+<!ENTITY action_closebut_title 		"Кнопка закрытия   <einfo>(см. посказку)</einfo>">
+<!ENTITY    tt__closebut_tit_NOcustom	"Внимание, рекомендованная настройка <i>'&enable_customizable_buts;'</i> <b>не активна</b>.  Так, в <i>некоторых</i> ОС (напр., Win7 с 'Glass') эти действия нельзя использовать с оригинальной кнопкой закрытия окна.  (Эту настройку можно добавить, но она будет иметь определенные ограничения) ">
+
+<!-- Can be used in txts related to 'Page History' popup menu   -->
+<!ENTITY nav_history				"История" >
+
+<!ENTITY More_options_e				"Больше настроек ..." >
+
+<!ENTITY check__closebut_mouseClick	"Нажмите и отпустите кнопку мыши, чтобы выполнить действие.">
+<!ENTITY    tt__closebut_mouseClick 	"• Если флажок снят (по умолчанию и рекомендуемо), простое нажатие для действия.
+											     <z class='needRst'>[R]</z> Требуется перезапуск FF для изменения.">
+
+<!ENTITY ctrl_w_title				"Действие для  <b> CTRL+W </b>  : ">
+<!ENTITY Fx_default_closeTab		"FF по умолчанию  (Закрыть текущую вкладку)" >
+
+<!ENTITY clHist_title 				"Действие для   <b>&item_closeWithHistory;</b>:   <i>(когда включены кнопки Назад или Вперед)</i> ">
+<!ENTITY clHist_popup 				"Открыть меню истории  (по умолчанию)">
+<!ENTITY clHist_pop_back 			"Открыть меню истории  &amp;  Назад на одну страницу">
+<!ENTITY tt_Hist_pop_back 				"Закрывать вкладки можно через Alt+щелчок, если всплывающее окно или что-то еще мешается после перехода.
+
+										<html:hr /> (Ожидание глюка:   Внимание. Иногда, текущие записи в меню истории не обновляются корректно)" >
+<!ENTITY clHist_pop_back_fw 		"Открыть меню истории  &amp;  Назад/Вперед на одну страницу">
+<!ENTITY tt_Hist_pop_back_fw 			"Переход на одну страницу вперед по Ctrl+щелчок   (и обратно одним щелчком)">
+<!--  using SAME TOOLTIP (tt_Hist_pop_back_fw)  -->
+<!ENTITY clHist_back_fw      		"Just go Back/Forward one page  (no popup)">
+
+
+<!ENTITY line_title 		"Доп. визуальный эффект для Назад/Вперед">
+<!ENTITY line_none 			"Нет">
+<!ENTITY line_clWHonly		"Верт. красная линия при переходе Назад/Вперед с настройкой выше.">
+<!ENTITY Future_Option_b	"[Скоро]   ">
+<!ENTITY line_always		"Движущаяся линия всегда показывает движение Назад/Вперед.">
+<!ENTITY tt_ln_always 			"при использовании кнопок Назад/Вперед браузера и контекстного меню, горячих клавиш и т.д.">
+<!ENTITY tt_ln_always_2			"<pg0/>Звук 'недопустимо' при достижении последней стр. Назад/Вперед   (если <b>“&butt_butSound_action1;”</b> включен). ">
+
+
+<!ENTITY mButShort_primary 			"ЛКМ:">
+<!ENTITY mButShort_second 			"ПКМ:">
+<!ENTITY mButShort_middle 			"СКМ:">
+<!ENTITY mButShort_primary_dblclk 	"Двойной ЛКМ:">
+<!ENTITY mButShort_second_dblclk 	"Двойной ПКМ:">
+<!ENTITY mButShort_middle_dblclk 	"Mid.  dblClick:">
+<!ENTITY mButShort_wheel 			"Колесо:">
+<!ENTITY mButShort_wheelLeft 		"Колесо влево:">
+<!ENTITY mButShort_wheelRight 		"Колесо вправо:">
+
+
+<!ENTITY label_row_action_Primary 			"ЛКМ <html:br /> левая кнопка:">
+<!ENTITY    tt_row_action_Primary 				"Т.е. ЛКМ для правшей.">
+<!ENTITY label_row_action_Secondary 		"ПКМ <html:br /> правая кнопка:">
+<!ENTITY label_row_action_Middle 			"СКМ <html:br /> нажатие :">
+<!ENTITY label_row_action_Primary_dblclk   	"ЛКМ <html:br /> <b>(двойное нажатие)</b> :">
+<!ENTITY    tt_row_action_Primary_dblclk 		"Обратите внимание, что <b><i>действие одним кликом</i></b> отключится тоже.  Т.е. вы должны позаботиться, чтобы установить здесь не конфликтующие действия. Обычно простые действия, такие как открытие главного или контекстного меню, не вызывают проблем.">
+<!ENTITY label_row_action_Secondary_dblclk  "ПКМ<html:br /> <b>(двойноt нажатие)</b> :">
+<!ENTITY    tt_row_action_Secondary_dblclk 		"&tt_row_action_Primary_dblclk;">
+<!ENTITY label_row_action_Middle_dblclk     "Mouse Middle<html:br /> <b>(double click)</b> :">
+
+
+<!ENTITY label_row_action_wheel 			"<html:br /> СКМ Прокрутка :">
+<!ENTITY    tt_row_action_wheel 				"Прокруткаа при наведении указателя на кнопку">
+<!ENTITY label_row_action_wheelLeft 		"Колесо <html:br /> наклон  <b>влево</b> :">
+<!ENTITY    tt_row_action_wheelLeft 			"Наклоните колесо влево, когда курсор мыши находится над кнопкой  (если у вашей мыши есть эта опция)">
+<!ENTITY label_row_action_wheelRight 		"Колесо <html:br /> наклон <b>вправо</b> :">
+<!ENTITY    tt_row_action_wheelRight 			"Наклоните колесо вправо, когда курсор мыши находится над кнопкой  (если у вашей мыши есть эта опция)">
+
+
+<!ENTITY mtit_typical_primary 		"Типичное действие ЛКМ:">
+<!ENTITY mtit_typical_secondary 	"Типичное действие ПКМ:">
+<!ENTITY mtit_typical_annoyances 	"Удалить неприятности!">
+<!ENTITY mtit_typical_other 		"Другие действия:">
+<!ENTITY mtit_typical_wheel 		"Типичные действия для колеса:">
+
+
+<!ENTITY Shift_Key 				"<pg0/>С <b>Shift:</b> ">
+<!ENTITY Ctrl_Key 				"<pg0/>С <b>Ctrl:</b> ">
+<!ENTITY Alt_Key 				"<pg0/>С <b>Alt:</b> ">
+
+<!ENTITY item_closewin 			"Закрыть окно FF">
+<!ENTITY item_closewin_fxdefau	"Закрыть окно FF (по умолчанию)">
+<!ENTITY   tt_closewin 				"[&Shift_Key; &item_quitApplication;]">
+<!ENTITY item_minimize 			"Свернуть окно FF">
+<!ENTITY item_closetab 			"Закрыть текущую вкладку">
+<!ENTITY item_closetab_recomen	"Закрыть текущую вкладку (рекомендуется)">
+<!ENTITY   tt_closetab 			    "Рекомендуемый параметр для ЛКМ (быстрое закрытие вкладок), полезно если кнопка Закрыть в угла экрана в полноэкранном режиме (т.е. без панели задач).   
+									[&Shift_Key; &item_undoCloseTab;] ">
+<!ENTITY item_closeWithHistory 	"Закрыть вкладку, если нет &quot;&nav_history;&quot;">
+<!ENTITY item_closeWithHis_reco	"&item_closeWithHistory; (рекомендуется)">
+<!ENTITY   tt_closeWithHistory  	"<pg0/><b> Закрывать вкладку, не пропуская ее историю: </b> 
+	    	<pg />
+	    	<pg2/> Если кнопка браузера <b>Назад</b> (стрелка влево) включена (т.е. у нее есть история), нажатие кнопки  <i>target (1)</i> открывает <b>'&nav_history;' всплывающее меню</b> (2)  (с опциональным <b>звуковым</b> сигналом) 
+	    	<pg /> Это позволит проверить историю вкладки перед ее закрытием.   Вы можете просто нажать кнопку <i>target</i>, чтобы закрыть вкладку. 
+	    	Полезно при попытке закрыть много открытых вкладок, не пропустив ничего важного.
+	    	<pg /> Еще можно установить ярлык <b>CTRL+W</b> для этого действия.   См. кнопку <b>'Больше настроек'</b>.
+	    	<pg /> <i>(1) Целевая кнопка - это та, которая указана (например, Закрыть или Firefox)</i>
+	    	<pg /> <i>(2) Всплывающее меню как в кнопках Назад и Вперед'.</i>
+			
+	    	Действие по нажатию колеса <b>мыши</b> с модификатором:
+	    	<pg /> [&Ctrl_Key; открывает всплывающее меню, если ативны кнопки Назад или Вперед] 
+	    	<pg /> [&Alt_Key; сразу закрывает вкладку (никогда не открывает меню)] 
+	    	<pg2/> [&Shift_Key; &item_undoCloseTab;]" > 
+
+<!ENTITY item_ShowAllTabs 		"Показать все вкладки" >
+<!ENTITY   tt_ShowAllTabs 		"<pg /> Список вкладок в всплывающем меню.  (Ctrl+Shift+Tab)  
+	<html:hr /><pg /> Внимание: это не работает, если  <b>Меню> Просмотр > Показать все вкладки</b>  отсутствует.  Такое может быть, если кнопка 'Список всех вкладок' скрыта. (например, с помощью Tab Mix Plus)" >
+
+<!ENTITY item_undoCloseTab 		"Восстановить последнюю закрытую вкладку">
+<!ENTITY item_undoCloseTab_reco	"Восстановить последнюю закрытую вкладку (рекомендуется)">
+<!ENTITY   tt_undoCloseTab 			"Восстановить последнюю закрытую вкладку.  (Ctrl+Shift+T). ">
+
+<!ENTITY item_zapFrames 		"'Zap' iframes плагины">
+<!ENTITY   tt_zapFrames 			"Удаляет их из страницы.   
+									[&Shift_Key; &item_zapImages;]   
+									<einfo>('Zap плагины' на  https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_zapImages 		"'Zap' изображения">
+<!ENTITY   tt_zapImages 			"Заменяет изображения на странице альт. текстом (image title).   
+									[&Shift_Key; &item_zapFrames;]   
+									<einfo>(Оригинал на  https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_superStop 		"Остановка анимации изображения">
+<!ENTITY   tt_superStop 			"Остановка анимации изображения (и фоновых запросов). 
+		<pg /> Соответствует поведению кнопки Esc до Firefox 20.   Работает как аддон 'SuperStop' (попробуйте, если 'SuperStop' у вас не работает)
+		[&Shift_Key; &item_BrowserReload;]">
+<!ENTITY item_BrowserReload 	"Обновить страницу">
+<!ENTITY   tt_BrowserReload 		"Обновить страницу (F5)
+		[&Shift_Key; Обновить минуя кэш]">
+
+<!ENTITY item_closeNewerWindow 	"Закрыть последнее открытое окно">
+<!ENTITY   tt_closeNewerWindow 		"Полезно для страниц которые открывают новые окна FF без запроса. Безопасно - это закрывает только окна открытые из активного окна.    
+									[&Shift_Key; &item_undoCloseWindow;]">
+<!ENTITY item_undoCloseWindow 	"Восстановить последнее закрытое окно">
+
+<!ENTITY item_PageUp   			"Страница вверх">
+<!ENTITY item_PageDown 			"Страница вниз">
+<!ENTITY item_Page_UpDown 		"Страница верх/вниз">
+<!ENTITY   tt_PageKeys   			"Page-Up, Page-Down:   работают как эквиваленты сочетаний.                    
+									(Веб-контент попадет в фокус и активный элемент внутри него будет реагировать на команду)  
+									[&Ctrl_Key; прокрутка вверх/вниз (как Home/End)] 
+									[&Alt_Key; прокрутка влево/вправо (т.е. <i><b>Горизонтально !</b></i>) ] 
+									[&Shift_Key; &item_Line_UpDown;] ">
+<!ENTITY item_Line_UpDown 		"Строка верх/вниз">
+<!ENTITY   tt_LineKeys   			"Строка верх/вниз:         работают как эквиваленты сочетаний (стрелки верх/вниз). 
+									(Веб-контент попадет в фокус и активный элемент внутри него будет реагировать на команду)  
+									[&Ctrl_Key; прокрутка вверх/вниз (как Home/End)] 
+									[&Alt_Key; прокрутка влево/вправо (т.е. <i><b>Горизонтально !</b></i>) ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+<!ENTITY item_ZoomEnlarge   	"Зум +">
+<!ENTITY item_ZoomReduce   		"Зум -">
+<!ENTITY item_Zoom_EnlRed		"Зум +/-">
+<!ENTITY   tt_ZoomKeys 				"Зум + (Ctrl + '+')  /  Зум - (Ctrl + '-')
+									[&Alt_Key;  Сброс зума ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY item_hc_context   		"HCT+ контекстное меню">
+<!ENTITY item_hc_context_defau	"HCT+ контекстное меню (по умолчанию)">
+<!ENTITY   tt_hc_context   			"[&Shift_Key; &item_mainPanelUI;] ">
+<!ENTITY item_mainPanelUI 		"Открыть FF Главное меню">
+<!ENTITY item_mainPanelUI_defau	"Открыть FF Главное меню (по умолчанию)">
+<!ENTITY   tt_mainPanelUI 			"[&Shift_Key; &item_hc_context;] ">
+
+<!ENTITY item_quitApplication	"Выход из Firefox (все окна)">
+<!ENTITY   tt_quitApplication		"[&Shift_Key; &item_closewin;] ">
+<!ENTITY item_FullScreen		"Во весь экран">
+<!ENTITY   tt_FullScreen			"[&Shift_Key; &item_Maximize;] ">
+<!ENTITY item_Maximize			"Развернуть / восстановить окно">
+<!ENTITY   tt_Maximize				"[&Shift_Key; &item_FullScreen;] ">
+
+<!ENTITY item_NewTab			"Открыть новую вкладку" >
+<!ENTITY   tt_NewTab 			"Открыть новую вкладку.  (Ctrl + T)" >
+
+<!ENTITY devPixelsPerPx_label_2	"Change the size of text and other items" >
+<!ENTITY tt_toggleCssDevPx			"<pg /> Toggles between  <b>&devppp_default;</b>  &amp;  <b>&devppp_125;</b>
+	<html:hr />&devPixelsPerPx_tt;" >
+
+<!ENTITY item_DynBars_toggle	"&dynBars_name;!, toggle activation" >
+<!ENTITY   tt_DynBars_toggle		"<pg1/>&dynBars_name;: 
+	<pg3/>Default shortcut key:  <b>Ctrl + Q</b>
+	<pg3/>See Help Page in '&tab.float.toolbars;' panel." >
+
+<!ENTITY item_noaction 			"Нет">
+
+<!ENTITY item_advSelTab 		"Выбор Пред/След вкладки">
+<!ENTITY   tt_advSelTab 			"Выбор Пред/След вкладки. (Ctrl + PgUp/PgDown)
+									<pg0/>Доп. действия прокрутки:
+									[&Ctrl_Key; в верх/низ страницы (напр., по Home/End)] 
+									[&Alt_Key; в лево/право страницы (напр. <i><b>Гориз. прокрутка !</b></i>) ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+									
+<!ENTITY item_goBack 			"Назад на одну страницу">
+<!ENTITY item_goForward 		"Вперед на одну страницу">
+<!ENTITY   tt_goBackFw_key 			"Назад / вперед на одну страницу:   как кнопки браузера назад / вперед.
+									[&Ctrl_Key; в обратную сторону (вперед / назад)]
+									[&Shift_Key; &item_mainPanelUI;]">
+<!ENTITY item_go_BackForw 		"Назад / вперед на одну страницу">
+<!ENTITY   tt_go_BackForw 			"Назад / вперед на одну страницу:   как кнопки браузера назад / вперед.
+									<pg0/>Доп. действия прокрутки:
+									[&Ctrl_Key; в верх/низ страницы (напр., по Home/End)] 
+									[&Alt_Key; в лево/право страницы (напр. <i><b>Гориз. прокрутка !</b></i>) ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY butt_butSound_tic_1 	"Звук закрытия вкладки">
+<!ENTITY butt_butSound_info1 	"Звук появления '&nav_history;' меню">
+<!ENTITY butt_butSound_action1 	"Звук общих действий">
+<!ENTITY   tt_butSound_action1 		"Включая действия:
+		• <b>&item_zapFrames;</b>   и 
+		• <b>&item_closeNewerWindow;</b>.  
+		Звук в т.ч., когда открыто новое фоновое окно (? незапрашиваемое) (т.е., вероятно спам и кандидат на закрытие)">
+<!ENTITY butt_butSound_wheel1 	"Звук для колеса мыши">
+<!ENTITY   tt_butSound_wheel1 		"Включая действия:
+									• <b>&item_advSelTab;</b> ">
+<!ENTITY butt_butSound_notFound	"Звук   'недопустимо'">
+<!ENTITY   tt_butSound_notFound	"<pg/>Звук, когда определенное действие не допускается.
+<pg/>Играется только в случае, если настроен.   
+Доп. инфо в <b>HCTP 'Домашняя' кнопка Firefox</b> и  <b>Больше настроек > &line_title;</b>.">
+
+<!ENTITY only_volumen 	"<pg/>(Доступно только изменение громкости)">
+
+
+<!ENTITY snd_none     			"Нет">
+<!ENTITY Custom_Sound 			"Свой звук">
+<!--  This goes before the sound names. It's value in english is ' ' (a single space), bc babelzilla fails with empty value.  -->
+<!ENTITY sound_0 				" ">
+<!--  This goes AFTER the sound names.  Before them goes [sound_0] -->
+<!ENTITY sound 					"звук">
+<!ENTITY tt_Ths_snds_incl_in_Fx		"Эти звуки включены в Firefox">
+<!ENTITY tt_Ths_snds_incl_in_hctp 	"Эти звуки включены в этот аддон.">
+
+<!ENTITY Tick_snd_f_Web_shrt 	" Отметьте звук из Интернета (сокр.)">
+<!ENTITY tt_Tick_snd_f_Web_shrt		"Оригиналы бесплатно на (CC Attribution)  http://soundbible.com/2044-Tick.html  ">
+
+<!ENTITY tt_old_snd__begin 			"Эти 5 звуков не включены в Firefox с версии 45, но вы можете их использовать 
+			путем загрузки 'hctp_soundpack_1' (включает 2 доп. приятных звуков) со страницы HCTP и копирования этих файлов в локальное хранилище: ">
+<!ENTITY tt_old_snd__cont1 			"       (та же папка, что и для пользовательских звуков)">
+
+<!ENTITY tt_custom_sound__begin 	"Доп. параметры: свои звуки, их нужно поместить в: ">
+<!ENTITY User_Home_Directory 	  	"...\Users\...\">
+<!ENTITY or_custom2_mp3_and_so_on 	"   (custom2.mp3 и т.д.   wav и ogg тоже должны работать (без пробелов))">
+
+<!ENTITY Volume_c				  "Громкость:">
+
+
+
+<!ENTITY label_butPref_default 		"Действия по умолчанию">
+<!ENTITY    tt_butPref_default 			"Установить все по умолчанию. Без звуков.">
+<!ENTITY label_but_recom_1			"Рекомендуемые действия #1">
+<!ENTITY    tt_but_recom_1 				"Установить рекомендуемые. Со звуками !">
+<!ENTITY label_but_recom_annoyances "Рекомендуемые действия #2, если #1 глючит">
+<!ENTITY    tt_but_recom_annoyances 	"Установить рекомендуемый пресет #2: Убирает глюки, использования кнопки FF!. Со звуками. Действия по умолчанию - [&item_mainPanelUI;] и [&item_hc_context;] на среднюю кнопку.">
+<!ENTITY label_but_recom_2_1  		"Recommended #2.1">
+
+
+<!ENTITY actt_title			"Подсказки:">
+<!ENTITY   tt_title				"Подсказки с инфо о доступных действиях ко всем настраиваемым кнопкам.">
+<!ENTITY actt_always		"Всегда">
+<!ENTITY actt_blockFirst	"При 'повторном наведении'  [R]">
+<!ENTITY   tt_blockFirst		"Подсказки не появляются в обычном режиме.   Но вы можете повторно навести курсор на кнопку, чтобы увидеть их.   [R] Включение опции требует перезагрузки Firefox.">
+<!ENTITY actt_never			"Никогда">
+
+
+
+<!ENTITY System_TitleBar__title					"Системный заголовок:">
+<!ENTITY check__Sys_TitleBar_always_hid 		"Системный заголовок всегда скрыт">
+<!ENTITY    tt__Sys_TitleBar_always_hid 			"<pg />Если флажок не установлен (по умолчанию), системный заголовок виден если: 
+			<pg2 /> • включен режим групп вкладок (Ctrl+Shift+E)   <i>(убрано в Firefox 45+!)</i>
+			<pg2 /> • окно предпросмотра печати  
+			<pg2 /> • панель вкладок скрыта (во всплывающих окнах и при некоторых аддонах работающих с вкладками)  
+			<pg2 /> • параметр ниже установлен в 'всегда'. 
+			<pg2 />Вы можете скрыть его для всех случаев (для экономии места или для красоты).
+			<pg />(К сведению: модифицированный системный заголовк, небольшой и показывающий значок Firefox.   Позволяет избежать возможных скачков, при переключении групп вкладок или предпросмотре печати) ">
+
+<!ENTITY check__Fxopt_Sys_TitlBr_always_prsnt 	"Firefox: системный заголовок (почти) всегда присутствует">
+<!ENTITY    tt__Fxopt_Sys_TitlBr_always_prsnt 		"<pg /> Такой же вариант, как 'HCTP Заголовок' в 'ПКМ по панели » Изменить'.
+  													Если отмечено, то заголовок всегда присутствует, кроме полноэкранного режима (F11) ">
+
+
+
+<!ENTITY Fx_default_unchecked 		"(FF по умолчанию: не отмечен)">
+<!ENTITY recommended_unchecked 		"(рекомендуемый: не отмечен)">
+
+
+
+<!ENTITY tt_custom_image__begin 		"Доп. параметры: свои изображения, их нужно поместить в: ">
+<!ENTITY or_but_custom2_png_and_so_on	"   (but_custom2.PNG и т.д.   GIF или JPG тоже должны работать (без пробелов))" >
+
+
+<!--  *** Color Picker popup *** -->
+<!ENTITY Opacity					"Непрозрачность" >
+<!ENTITY Color_Hue					"Оттенок цвета" >
+<!ENTITY tt_Color_Hue					"Колесом можно получить точный оттенок цвета,   напр., за 16 тактов, можно перейти с красного на фиолетовый и т.д." >
+<!ENTITY tt_txtbox_col_pick 	"TAB после внесения изменений, чтобы увидеть эффект.   Допустимые значения: " >
+<!ENTITY tt_Sys_col_pick_noWo	"Палитра цветов не работает, если панель параметров открыта в фрейме (окне)" >
+
+
+<!--  __________*** Section:   LOOK AND FEEL 2 ***__________  -->
+
+
+<!ENTITY   Options_Fx_Home_App_but 	" HCTP 'Домашняя' кнопка Firefox : " >
+
+<!ENTITY   check__hcp_home_enabled 	 "Включить HCTP кнопку Firefox в верхнем-левом углу (*)" >
+<!ENTITY   check__hcp_home_enabled_2 "(доступно также через 'ПКМ по панели » Изменить')" >
+<!ENTITY      tt__hcp_home_enabled 		"Используйте 'ПКМ по любой панели » Изменить', идентичная кнопка может быть помещена на любую панель" >
+
+<!ENTITY Button_Style_Color		"Стиль/Цвет" >
+<!ENTITY Fx_default_orng		"FF по умолчанию (оранжевый)" >
+<!ENTITY Blue					"Синий" >
+<!ENTITY Green					"Зеленый" >
+<!ENTITY Transp_with_Personas	"Прозрачный с легкими темами" >
+<!ENTITY Transparent			"Прозрачный" >
+
+
+<!ENTITY Icon_Size_for_Maximized_win		"Иконка/Размер для 
+											Развернутого окна." >
+<!ENTITY Icon_Size_for_UnMaximized_win		"Иконка/Размер для 
+											Не развернутого окна." >
+<!ENTITY   ctn_dropmarker 	"Стрелка" >
+<!ENTITY   tt_ctn_dropmarker    "Внимание, не все размеры кнопок допускают стрелку" >
+<!ENTITY   dm_auto 			"Firefox по умолчанию" >
+<!ENTITY   dm_auto_invtd 	"FF по умолчанию, инверсия" >
+<!ENTITY   dm_icon1 		"Большая стрелка" >
+<!ENTITY   dm_icon1_invtd	"Большая стрелка, инверсия" >
+<!ENTITY   dm_none	 		"Нет" >
+<!ENTITY   dm_old_default 	"HCTP старая по умолчанию *" >
+<!ENTITY   tt_old_default 		"* Устаревшие настройки.  (которые давно не отображаются Windows) " >
+
+<!ENTITY   ctn_fx_text 	   "Текст кнопки" >
+<!ENTITY   tt_ctn_fx_text		"${BrandName}   значение по умолчанию (с указанием 'Firefox' или 'Имя мода FF' для больших кнопок и 1-ой буквы для маленьких)" >
+
+<!ENTITY   ctn_fx_image    "Иконка кнопки" >
+<!ENTITY   fx_im_icon17 		"Firefox иконка" >
+<!ENTITY   fx_im_icon17_invtd	"Firefox иконка, инверсия" >
+<!ENTITY   fx_im_icon18 		"Firefox иконка 2" >
+<!ENTITY   fx_im_icon18_invtd	"Firefox иконка 2, инверсия" >
+<!ENTITY   fx_im_icon_classic	"Firefox Classic иконка" >
+<!ENTITY   fx_im_icon_browser	"Browser default Icon">
+<!ENTITY   fx_hc_icon 			"HCTP иконка" >
+<!ENTITY   custom_image 		"Своя иконка" >
+
+<!ENTITY    Fx_Main_menu_but 		"Показать кнопку главного меню FF(панель):">
+<!ENTITY tt_Fx_Main_menu_but			"(по умолчанию стоит в правом краю панели навигации).     Если вы используете 'Свою кнопку FF', то эту кнопку можно скрыть. " >
+<!ENTITY    FxMenu_always_fxdefault	"Всегда  (по умолчанию)" >
+<!ENTITY    FxMenu_notif_badge		"Только при уведомлениях" >
+<!ENTITY tt_FxMenu_notif_badge			"Показывать кнопку, только когда у нее есть значок уведомления" >
+<!ENTITY    FxMenu_never			"Никогда  (не рекомендуется)" >
+
+
+<!ENTITY   check__floatMenu 		"Плавающее главное меню:   меню покидает панель меню и 'выплывает' рядом/из новой 'HCTP Домашней кнопки FF', с автосткрытием.  Активируется наведением курсора (*) или по ALT и F10." >
+<!ENTITY      tt__floatMenu 			"Убедитесь, что скрыли пустую теперь панель меню (сняв флажок в меню панелей), чтобы не занимала место." >
+<!ENTITY   check__floatM_pageTitle 	"Заголовок страницы рядом с плавающим меню" >
+
+<!ENTITY floatM_adv_options			"Плавающее главное меню:  доп. настройки:" >
+
+<!ENTITY floatM_style_title			"Шрифта и фона <b>цвет/стиль</b>" >
+<!ENTITY floatM_style_default		"Новый стиль  (по умолчанию с 09.2016)" >
+<!ENTITY floatM_style_captionColor	"Попытатся использовать шрифт и фон системного заголовка окна" >
+<!ENTITY floatM_style_captionC_tt		"За исключением легких тем" >
+<!ENTITY floatM_style_oldColor		"Старый стиль, шрифта и фона" >
+
+
+<!ENTITY Custom_style_files			"Custom style (.css) files:" >
+<!ENTITY Custom_style_files__tt			"Custom .css files for styling browser's own UI  (like the deprecated capability of Stylish). 
+	Use a comma-separated list for adding filenames   (assumed .css extension if not given)" >
+<!ENTITY files_located_homedir		"Files located at User Home Directory" >
+<!ENTITY Custom_style_files__failed		"File/s not loaded: " >
+
+<!ENTITY Apply_changes				"Apply changes" >
+
+
+
+<!ENTITY FULL_SCREEN_mode_options	" Настройки полноэкранного режима: " >
+
+<!ENTITY check_fullscrButs_autohide "Автоскрытие также 'фиксирует' кнопки Firefox и HCTP кнопки Мин,Макс,Закрыть при автоматическом скрытии панелей инструментов в полноэкранном режиме.   (по умолчания: да)" >
+<!ENTITY    tt_fullscrButs_autohide 	"<pg />Включая полноэкранное видео.   Если флажок снят, кнопки отображаются полупрозрачными.
+   				Чтобы не терять возможность действий в полноэкр. режмие, не ставьте этот флажок 
+   				(и настройте кнопки маленькими и прозрачными для минимального вмешательства в контент).
+   				<pg />('Фиксированные' кнопки это те, что закреплены в углах окон.  
+   				Зато, кнопки FF и Мин,Макс,Закрыть если они в панелях вкладок/инструментов ('ПКМ по панели » Изменить') всегда скрываются вместе с панелями)">
+<!ENTITY Autohide_in_FullScr_Videos	"Автоскрытие при полноэкранном видео.   (рекомендуемое: да)" >
+<!ENTITY Small_FScr_warn			"Уменьшение сообщения 'FF в полноэкранном режиме'  (например, для видео).   (Firefox по умолчанию: нет)" >
+
+<!ENTITY label__fullscr_tr_duration "Длительность черного перехода в полноэкранное видео:">
+<!ENTITY    tt__fullscr_tr_duration "Рекомендуется 'Нет' если этот переход вас раздражает.   (Настройка действует с FF42+)">
+<!ENTITY When_entering		"При <html:br /> входе: " >
+<!ENTITY When_leaving		"При <html:br /> выходе: " >
+<!ENTITY None_p_fastest		"Нет (быстро)" >
+<!ENTITY Fast				"Быстрый переход" >
+<!ENTITY Fx_Default_p_slow	"FF по умолчанию (медленно)" >
+				
+
+<!--  New Feature: “Special VERTICAL MAXIMIZE”  -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle     "“<i>Улучшенная</i> Вертикальная развертка”:   <html:einfo>Вкладки <i>реально</i> сверху, даже в <b>не развернутом</b> окне!</html:einfo>">
+<!ENTITY   VERTICAL_MAXIMIZE_subTitle   "<b>Нажмите, для справки перед использованием!</b>   Новая <b>тестовая</b> возможность!, <b>дорабатывается</b>.">
+<!ENTITY   vertMax_switch_title     "Включить <b>Вертикальную развертку: </b>">
+<!ENTITY   vertMax_no     "Нет">
+<!ENTITY   vertMax_yes    "Да">
+
+<!ENTITY    vmBehave_TITLE     "Поведение:">
+<!ENTITY tt_vmBehave_TITLE     "Параметры выделенные жирным, могут быть особенно полезны.">
+
+<!ENTITY    vmBehave_default     	"По умолчанию.  (Привязка окна к верхнему и нижнему краю)">
+<!ENTITY    vmBehave_right         	"   Привязка еще и к правому краю">
+<!ENTITY tt_vmBehave_right      		"Сделать кнопку Закрыть в углу экрана!, как в развернутом режиме">
+<!ENTITY    vmBehave_left     		"   Привязка еще и к левому краю">
+
+<!ENTITY    vmBehave_noSize     	"Привязка только к верхнему краю">
+<!ENTITY    vmBehave_top_right   	"   Привязка к верхнему и правому краю">
+<!ENTITY    vmBehave_top_left   	"   Привязка к верхнему и левому краю">
+
+<!ENTITY    vmBehave_bottom     	"Привязка только к нижнему краю">
+<!ENTITY    vmBehave_bottom_right   "   Привязка к нижнему и правому краю">
+<!ENTITY    vmBehave_bottom_left   	"   Привязка к нужнему и левому краю">
+
+<!ENTITY    vmBehave_leftRight_top 	"Привязка к левому, правому и верхнему краю">
+<!ENTITY    vmBehave_leftRight_bot 	"Привязка к левому, правому и нижнему краю">
+<!ENTITY    vmBehave_leftRight     	"Привязка к левому и правому краю">
+
+
+<!-- FYI: Tags like 'einfo', 'b' and 'i' CAN'T be nested or spaces are lost!!, SOLVED here using 'html:b' -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt              "<html:b>“<i>Улучшенная</i> Вертикальная развертка”:</html:b>   работает даже в <b>не развернутом</b> окне.
+	<pg0/><pg/>Также можно активировать в <i>'Меню HCTP'</i>  (вызывается ПКМ по Развернуть, Свернуть и др.областям).   Кнопка Развернуть показывает рамку, когда функция активна.
+	<pg/>Доступна когда активна настройка: <b>'&enable_customizable_buts;'</b>.
+	<pg2/><b>Прочтите</b> “VERTICAL MAXIMIZE” секцию @ домашней страницы для уточнения деталей! ">
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__LINUX       "<b>Примечание для LINUX:</b> предварительный тест!, Linux Mint, Cinnamon (не старше 2/3 лет).
+	Внимание: 'Авто-привязка' окна к верхнему краю может мешать. 
+	Проблема с мульти мониторными системами: FF всегда привязывается к одному монитору.
+	(Некоторые тексты приведены только для Windows.) " >
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__SUBNOTES 	"<pg/><b>Внимание:</b> Окно Firefox может <i>'дергаться'</i> при перемещении или изменении размера.  
+	После захвата и отпускания границ окна, для изменения размера или при перетаскивании, окно FF может <b>немного (10 px) дергаться</b>. Это ожидаемо и не мешает навигации.   Этого можно избежать, перетаскивая окно с помощью заголовка страницы в <i>Плавающем меню</i>! (активируется по ALT, если включено)
+	<pg/>Перетаскивание: когда <i>Авто-привязка окна</i> включена, перетаскивание границы окна к верхнему краю экрана полностью развернет окно.   Чтобы избежать этого, вы можете двигать край чуть вниз, прежде чем отпустить кнопку мыши, или использовать функцию 'Вертикальной развертки' (WIN+SHIFT+<b>￪</b>) 
+	<pg/>Тестировалось в основном на Windows. " >
+
+
+
+
+<!ENTITY Drag_Window_capab_opt			" Параметры перетаскивания окна: " >
+<!ENTITY    Drag_win_via_tabbar_defno	"Перетаскивание окна за фон панели вкладок (по умолчанию: нет)" >
+<!ENTITY tt_Drag_win_via_tabbar_defno		"Это уже включено в FF при некоторых сочетаниях панелей. (например, в Windows с Aero-Glass).   Это -может- заставить стрелки прокрутки быть всегда видимыми.   К сожалению, может не работать с другими аддонами, например, Tree Style Tab в вертикальном режиме." >
+<!ENTITY and_un_maxim_with_dblclk		"(и свернуть/развернуть окно по двойному ЛКМ)" >
+
+
+<!ENTITY    Enable_Ctrls_Widgets_Drag_Win 	"Включить элементы панелей для перетаскивания " >
+<!ENTITY tt_Enable_Ctrls_Widgets_Drag_Win		"Включая опции для большей совместимости с другими аддонами, например, с 'Вертикальными панелями'." >
+
+<!ENTITY All__prevver_2_8_default			"Все   (как в HCTP версии [2.8.*] по умолчанию)" >
+<!ENTITY All_excpt_othrAddn_SpsWidgts_def	"Все, кроме элементов других аддонов   (по умолчанию)" >
+<!ENTITY tt_no_foreign_spaces					"Рекомендуется для большей совместимости с другими аддонами, например, с <b>автоскрытием</b> вертикальной панели   (не работает для спец элементов перетаскивания) 
+				<html:hr />
+				ПС: Если автоскрытие 'вертикальной панели' по-прежнему не работает, используйте 'Не перетаскивать за разделители'.
+				(Такое может произойти, если на вертикальной панели расположить дроп разделитель HCTP.  Это те, которые с префиксом [h], когда находятся в 'ПКМ по панели » Изменить') 
+				" >
+<!ENTITY    No_drag_for_Spaces_Widgets		"Не перетаскивать за разделители" >
+<!ENTITY tt_No_drag_for_Spaces_Widgets			"Позже, будут добавлены настройки, которые исключат также и другие разделители, типа 'Заголовка страницы' и т.д." >
+
+
+<!ENTITY Easy_of_use__scr_corner__Fitts_law	" (*) Кнопка находится в <b>углу экрана</b> в развернутом режиме.
+		(Приммечание: см. в википедии 'Edge' &amp; 'Corner') " >
+
+		
+		
+<!--  __________*** Section:   ADVANCED SETTINGS ***__________  -->
+
+
+<!ENTITY hidTit__Dont_use		"Не использовать" >
+<!ENTITY hidTit__use			"Использовать" >
+
+<!--  __________*** FOR LINUX/OSX ONLY ***__________  -->
+<!ENTITY   title__alternat_hide_titbar_feature__default_Use		"  альт. скрытие-заголовка (по умолчанию: использовать)" >
+<!ENTITY comment__alternat_hide_titbar_feature					"Успешно скрывает строку заголовка в Linux / Gnome (напр. Ubuntu), период тестирования. 
+		Примерно эквивалентен отключению 'Window-decorations' в настройках Window-Manager (напр., 'Compiz-Config' в Ubuntu) 
+		<einfo>     (использует внутренний атрибут 'hidechrome') </einfo> " >
+
+
+<!--  ______*** Small-Tabs and Small-Toolbars MOVED TO LOOK_AND_FEEL_2 ***______  -->
+
+<!ENTITY Styling_options_to_max_spc			"Стилизация: <einfo>(для максимизации контента)</einfo> " >
+
+<!ENTITY    Smaller_Tabs_and_Tab_Bar		"Мелкие вкладки и панель вкладок" >
+<!ENTITY tt_Smaller_Tabs_and_Tab_Bar			" <pg /> Работает с <b>'Tab Mix Plus' многострочным</b> режимом! (требуется <b>рестарт FF</b> для применения) 
+			<pg /> Возможно вам придется подстроить (1px или около того) значение 'Своя позиция кромки верхнего края', чтобы вкладки снова достигли верхнего края экрана. Или вкл/выкл максимизацию для авто-расчета 
+			<pg /> Этот стиль тестировался только с темой Windows по умолчанию (и немного в Linux). Использовать <b>осторожно</b> с нестандартными темами или <b>другими дополнениями изменяющими вкладки</b>.
+			" >
+<!ENTITY No__default			"Нет (по умолчанию)" >
+<!ENTITY Small_australis		"Малые вкладки, для Australis тем" >
+<!ENTITY Small_near_Classic		"Мелкие, типа классические вкладки" >
+<!ENTITY Small_almost_Classic	"Мелкие, как классические вкладки  (New)" >
+<!ENTITY Small_Classic_0     	"Smaller, Classic Tabs! (New 2)">
+
+<!ENTITY likeClassic_mediumH	"Как классические, средние" >
+<!ENTITY likeClassic_fullH		"Как классические, большие" >
+
+<!ENTITY DEPREC_australis		"[Устаревшие]    Australis тема" >
+<!ENTITY DEPREC_almst_Clsc		"[Устаревшие]    типа классические"  >
+<!ENTITY tt_smTabs_deprecated 		"<pg /> Старые [Устаревшие] настройки оставлены только для теста <b>*и будут удалены позже*</b>. 
+		<pg /> Если этот параметр нужен и все выглядит хорошо в вашей среде, оставьте коммент на сайте поддержки (ссылка   tiny.cc/hidec).">
+
+
+<!ENTITY    Smaller_Toolbars_and_buttons	"Мелкие кнопки и панели" >
+<!ENTITY tt_Smaller_Toolbars_and_buttons		"   Внимание, этот стиль тестировался только с темой Windows по умолчанию. С другими темами соблюдайте осторожность." >
+<!ENTITY Small				"Малые" >
+<!ENTITY A_bit_smaller		"Меньшие" >
+<!ENTITY Smaller_buttons	"Мелкие кнопки" >
+<!ENTITY tt_smallBars_oldOption	"Эти параметры могут быть полезны в старых версиях FF (например, ESR 52), когда <i>'размер текста и других элементов'</i> (dpi) > 100&percent;" >
+<!ENTITY Option_compat_only	"(Только для теста)" >
+<!ENTITY tt_smallBars_old_deprecated 	"<pg /> Эта настройка оставлена только для теста <b>*и будет удалена позже*</b>. 
+		<pg /> Если этот параметр нужен и 'Маленькие панели' выглядят хорошо в вашей среде, оставьте коммент на сайте поддержки (ссылка   tiny.cc/hidec).  
+		<pg /> Такое возможно в сочетании с устаревшими аддонами, написанными ранее FF 40 (css).">
+
+
+<!ENTITY Top_edge_margn_pos_sets 		" Настройки позиции кромки верхнего края: " >
+<!ENTITY    Cust_Top_edge_margn_f_tbar	"Своя позиция кромки верхнего края панелей: (отрицательные значения доступны (в пикселях))" >
+<!ENTITY tt_Cust_Top_edge_margn_f_tbar		"Отключено, когда включены 'Заголовок Firefox 4+' и 'Вкладки в заголовке'. (авто-расчет) " >
+<!ENTITY In_Maximized__window			"В развернутом окне:" >
+<!ENTITY tt_top_marg_max					"Не действует в полноэкранном режиме   
+			  	(но для развернутого окна можно установить  -1  или  -2  , чтобы 'Вкладки в заголовке' касались верхнего края экрана)." >
+<!ENTITY In_Un_Maximized__window		"В не развернутом окне:" >
+
+
+<!ENTITY Top_margn_style_main_win		"Стиль верхней границы основного окна <html:br/> (root container). " >
+<!ENTITY tt_Top_margn_style_main_win		"Может помочь с совместимостью с др. аддонами/темами, влияющими на верхнюю границу окна." >
+<!ENTITY Untouched__default				"Обычно (по умолчанию)" >
+<!ENTITY    Enforce_zero_top_mrgin		"Принудительно нулевая верхняя граница" >
+<!ENTITY tt_Enforce_zero_top_mrgin			"например, в развернутом Firefox, удаляет небольшую дополнительную область в верхней кромке для некоторых тем (как Noia4)." >
+
+
+<!ENTITY  old_topEdge_titlebar_msg 		"Удален устаревший параметр: 'Top Edge area styling'. Нажмите, чтобы убрать это сообщение." >
+
+
+<!ENTITY    Translation_Notes 	"Примечания к переводу">
+<!ENTITY tt_HCTP_BOTTOM_NOTES   "HCTP теперь имеет полную возможность локализации! (Может быть переведен на любой язык!).  See homepage > Translators tips!" >
+
+
+<!--  *** This DOESN'T NEED to be translated!!! *** Developer only option!! ***  -->		
+<!ENTITY Devel__Print_debug			"[Разраб/Тестер]  Печать инфо отладки из консоли ошибок (по умолчанию: нет)" >
+<!ENTITY Devel__Print_debug_audio	"Для <b>Обратной связи</b> при выводе сообщений содержащих 'error' или 'warn'." >
+
+
+<!--  __________*** OTHER SETTINGS ***__________  -->
+
+<!ENTITY Fx_internal_options 		" Внутренние параметры Firefox: " >
+
+<!ENTITY Search_Bar 				"Строка поиска: " >
+<!ENTITY    SearchBar_new_UI		"[* Возможность отключить это была удалена в Firefox 43! *]     Включить новый интерфейс поиска из Firefox 34+ (с помощью значков)  " >
+<!ENTITY tt_SearchBar_new_UI		"Снимите флажок, чтобы вернуть список поисков с именами сайтов и возможность сохранять выбор.   Требуется перезагрузка. Не работает, если противоположное назначено в другом аддоне, например CTR." >
+
+<!ENTITY Search_in_new_tab		"Новый поиск, запускаемый из панели поиска, открывается в новой вкладке.   (т.е., текущий контент не перезаписывается)" >
+
+<!ENTITY    Other_intOpts 	"Остальное:">
+
+<!ENTITY    Tab_switch_MRU		"Переключение вкладок:  Установка MRU (последние используемые) для переключения вкладок по 'Ctrl+Tab'!   (т.е., вы будете переходить на предыдущую использованную вкладку, а не на предыдущую/следующую по счету) " >
+<!ENTITY tt_Tab_switch_MRU		"Кроме того, при удержании 'Ctrl+Tab' появляется список миниатюр предпросмотра, аналогичный списку предпросмотра Windows   'Alt+Tab'  . (если открыто более двух вкладок) " >
+
+<!ENTITY devPixelsPerPx_label 	"<pg1 /> Изменить размер текста и других элементов Firefox:" >
+<!ENTITY devPixelsPerPx_tt 		"<pg  /> Этот параметр аналогичен диалоговому окну предпочтений Windows, но только для Firefox.
+			<pg /> Полезно, если требуется другой размер шрифта, чем по умолчанию. Напр., когда 2 и более разноразмерных монитора. " >
+<!--  <pg />(Using Firefox hidden preference: 'layout.css.devPixelsPerPx')  -->
+<!ENTITY devppp_default	"По умолчанию" >
+<!ENTITY devppp_100 	"100&percent; - Мелкий" >
+<!-- Shouldn't need any translation -->
+<!ENTITY devppp_120     "120&percent;">
+<!ENTITY devppp_125 	"125&percent; - Средний" >
+<!ENTITY devppp_150 	"150&percent; - Большой" >
+<!ENTITY devppp_9x 		" 94&percent; - Эксперимент" >
+
+
+<!ENTITY HCTPs_extra_options 		" HCTP доп.настройки: " >
+<!ENTITY Wider_Bookmark_panel		"Панель закладок шире (Ctrl+D):   легче редактировать длинные имена закладок. " >
+
+<!ENTITY    Stop_image_animations	"Остановка анимации изображений (и фоновых запросов) по SHIFT+ESC. " >
+<!ENTITY tt_Stop_image_animations		"Это соответствует поведению кнопки Esc в версиях до Firefox 20.   Работает как аддон 'SuperStop' (попробуйте, если 'SuperStop' перестал у вас работать)" >
+
+
+
+<!--  __________*** Dynamic Toolbars  section ***__________  -->
+<!ENTITY dynBars_name     			"Dynamic Toolbars">
+
+
+
+<!ENTITY button.Advanced     	"Расширенные">
+
+<!ENTITY hc_rcOnly 			"Новая настройка, только для RC: " >
+
+<!ENTITY  hc_isBetaFeature 	"BETA функции: " >
+<!ENTITY tt__isBetaFeature 	"BETA функции:  могут иметь незначительные визуальные ошибки " >
+
+<!ENTITY forUpdatedSections	"(обновлено!)">
+
+<!ENTITY bOld		"[старое]" >
+<!ENTITY NEWe		"НОВОЕ!" >
+<!ENTITY SOONe		"СКОРО!" >
+
+
+<!ENTITY Are_you_sure     	"Вы уверены?">
+
+<!ENTITY See_homepage_for_ex	"See homepage for example/s.">
+
+<!ENTITY optionForFx57plus     	"Option for  &brandShortName; 57 and later">
+
+
+<!ENTITY tt_DEPRECATED_IMMINENT     	"Этот устаревший вариант скоро будет удален!   Если он вам еще нужен, оставьте коммент на сайте поддержки, возможно мы найдем подходящую замену. Спасибо!">
+
+
+<!ENTITY Msg__New_Feature_RC_versions  "В RC версиях есть новые функции!:   см. Раздел 'Канал разработки' @ домашней страницы " >
+
+
+<!-- ** MULTI LANGUAGE DIALOG ** -->
+<!ENTITY   MultiLanguage_but     	"Другие языки!">
+<!ENTITY   MULTI_LANGUAGE_DIALOG   	"Возможности многоязычности:">
+<!ENTITY   multi_lang_subtitle 		"Этот диалог настроек можно открыть на нескольких языках <b>одновременно</b>:">
+<!ENTITY   multi_lang_subtitle_tt 		"<pg /> Например, для просмотра недоделанного (и, возможно, еще не включенного по умолчанию) перевода.  
+			<pg /> Кроме того, ценно для переводчиков." >
+
+
+<!-- ** Please fill this entry (eg. with 'Done') only when finishing the translation/improvements, in order to avoid showing '100percent' 
+     (eg. the spanish one has still many entries MACHINE-translated only)   **   You can check translation status text in opt_lang.dtd.    
+     THANKS A LOT! -->
+<!ENTITY   Translation_endOfJob_entry    "Done! (ru)">
+

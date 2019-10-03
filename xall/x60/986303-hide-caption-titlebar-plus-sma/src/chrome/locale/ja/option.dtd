@@ -1,0 +1,775 @@
+
+<!--  ___***** Translators Notes: *****___
+   ***  1) New!: Now *All* texts and tooltips have css style: "pre-line". So {html:br} isn't needed for line breaks, (but can be used for convenience.)
+   ***  2) Please note that some tooltips-texts *can't* have line-breaks or any tag (the texts in a "tooltiptext" attribute)
+   ***  3) And there is also several 'hard spaces' characters (alt+255), like this:' ', to prevent some ugly wrapping and to make more space between texts.  
+   ***  (I use NOTEPAD++ free editor)  *** -->
+
+<!ENTITY dialog.hide.caption.titlebar.plus "Hide Caption Titlebar Plus 設定">
+<!ENTITY dialog.apply "適用">
+	
+<!ENTITY tab.main              	"メイン">
+<!ENTITY tab.look.feel         	"見た目">
+<!ENTITY tab.advanced.settings 	"高度な設定">
+<!ENTITY tab.other.settings    	"その他の設定">
+<!ENTITY tab.float.toolbars    	"浮遊ツールバー">
+
+
+<!--  __________*** Section:   LOOK AND FEEL ***__________  -->
+
+<!ENTITY caption.show.custom.caption.titlebar   "改変ツールバーを表示:">
+<!ENTITY      tt.show.custom.caption.titlebar 		"現在のページタイトルを入れる。OS側のタイトルバーが非表示の時のみ。">
+<!ENTITY radio.in.unmaximized.windows           "最大化したウインドウで">
+<!ENTITY radio.small.caption                    "小 (最大化していないウインドウで)">
+<!ENTITY radio.cc_never                         "しない">
+
+<!ENTITY w.default  		"標準">
+<!ENTITY w.Enabled  		"有効">
+<!ENTITY w.Disabled			"無効" >
+<!ENTITY w.No				"いいえ" >
+
+
+<!ENTITY    System_borders_c "OSの枠線:" >
+<!ENTITY tt_System_borders_c	"最大化していないウインドウでの左右と下の枠線幅を設定、または無効にします (綺麗なピクセル調整はデスクトップがエアログラス表示のときのみ)。" >
+<!ENTITY Yes_full_width		 "はい (幅いっぱい)" >
+<!ENTITY    Yes-_smaller	 "はい (小さめ)" >
+<!ENTITY tt_Yes_smaller_2			"Firefox 12以降の標準" >
+<!ENTITY tt_Yes_smaller_7			"標準オプション。デスクトップがエアログラスなら推奨です。ほぼ完全にこういった枠線 (エアログラスでの) を「無効」オプションと同様に、しかもその不便さもなく隠します。 (枠のサイズ変更範囲を「カスタム枠を有効化」で拡げられます。)" >
+<!ENTITY tt_Yes_smaller_7_notReal	"前の項目と似ていますが、境界に空白ができます (エアログラス表示で &quot;&enable_customizable_buts;&quot; が有効のときのみ)。" >
+<!ENTITY tt_sysBorders_disabled	"<pg /> エアロベーシックのデスクトップにはおすすめです。 これによりペルソナテーマがウインドウ背景を完全に覆います (旧来の標準)。
+      <pg /> ガラス風表示のデスクトップに関して: '&enable_customizable_buts;' が無効だと, 最大化していないウインドウでは丸角やウインドウ影がなくなる場合があります。" >
+
+<!ENTITY    custom_bord_cornr_rz	"自分で決めた枠と角のサイズ変更範囲を有効にする" >
+<!ENTITY tt_custom_bord_cornr_rz		"OSの枠線が極端に細い場合に枠のサイズ変更部分を拡げるのにも使えます。" >
+<!ENTITY Make_corners_visible		"角が見えるようにする。" >
+
+<!ENTITY    Border_color			"枠の<html:br />色" >
+<!ENTITY tt_Border_color				"色はOS側の枠線が無効の場合に見えます" >
+
+<!--    tt_Skin 			"Custom skins capability will be added too." -->
+<!ENTITY title_Skin 						"スキン:">
+<!ENTITY radio.classic.skin  						"従来の見た目" >
+<!ENTITY radio.new.aero      						"エアロスタイル"   >
+<!ENTITY radio.automatic.current.theme.skin.fixed   "自動。現在のテーマのスキン (位置固定)" >
+<!ENTITY radio.automatic.current.theme.skin         "自動。現在のテーマのスキン (旧来の位置)" >
+<!ENTITY radio.w10like         						"新: Windows 10 用 Firefox 様式" >
+<!ENTITY radio.w10like.light   						"新: Windows 10 用 Firefox 様式 (軽量)" >
+<!ENTITY    tt.w10like.light      						"ペルソナテーマが有効だと、ボタンのアイコンは「普通の」Windows 10風に見えます。" >
+<!ENTITY radio.w10like.high   						"新: Windows 10 用 Firefox 様式 (高コントラスト)" >
+<!ENTITY    tt.w10like.high       						"ペルソナテーマが有効だと、ボタンのアイコンは「普通の」Windows 10風に見えます。" >
+
+<!ENTITY mmc.custom.mTitle							"任意オプション">
+<!ENTITY mmc.custom       							"任意オプション">
+<!ENTITY tt_custom_mmc__begin    						"追加設定: 設置する任意のファイル:">
+<!ENTITY or_custom2_css_and_so_on						"(もしくは custom2.css など)">
+
+
+<!--    CUSTOM styles css files   -->
+<!ENTITY can_be_anyname_files				  "   ([custom] can be just any name, and you can add several files)">
+
+
+<!ENTITY caption.min.max.close.buttons.location 		"最大・最小・閉じるボタン (右上の) を自分で決める">
+<!ENTITY caption.min.max.close.buttons.loc.extrainfo 	" (UI改変をしても可能)">
+<!ENTITY label.about.hidden.and.customize  					"UI 改変:   'ツールバー → カスタマイズ' で、同様のボタンがタブバーやその他ツールバーに配置できます。" >
+
+<!ENTITY In_Maximized_window 		"最大化したウインドウで:">
+<!ENTITY In_Un_Maximized_window 	"最大化していないウインドウで:">
+<!ENTITY radio.bloc.micro     				"極小の閉じるボタン" >
+
+<!ENTITY checkbox_maxbuttons_canfloat     	"極小の閉じるボタン: マウスを載せるかメインメニューが出ているときに浮遊ボタンが現れます。" >
+
+
+<!--  ___*** (These appears at dialog bottom line) ***___  -->
+
+<!ENTITY button.see.more.in.readme.file "READMEファイルをご覧ください。">
+<!ENTITY button.ctrl.click.opens.in.new.tab "Ctrl+クリックで新規タブを開く">
+<!ENTITY DEPRECATED_label.1 "[1]">
+<!ENTITY label.options.changes.reflects.on.the.fly.in.fir21  "変更点の大半はその場で適用されます。" >
+<!ENTITY label.prefix.options.with  "オプション: ">
+<!ENTITY label.R "[再]">
+<!ENTITY label.R.class "<z class='needRst'>[再]</z>">
+<!ENTITY label.other.options.saved.instantly.too.but.restart "変更の適用にはFirefoxの再起動が必要です。">
+<!ENTITY Restart_needed "[再]は要再起動">
+ 
+ 
+
+<!ENTITY enable_customizable_buts 	"改変可能ボタンを出す (最小化、最大化、閉じる)">
+<!ENTITY disable_win_system_buts	" (ウィンドウのOS側のボタンを無効にします)">
+<!ENTITY tt_enable_customizable_buts 	"<pg0/>• このオプションにより<b>改変可能ボタン (最小化・最大化・閉じる)</b>がまた使えるようになります。
+  <pg />
+  <pg /> Windows 7 の<b>最大化していない</b> Firefoxに限り、以下のような見た目の変化が現れます:
+  <pg />・ これが有効だと、Firefoxウィンドウの (半透明の) 磨りガラス背景を無効化します (代わりに別なガラスを模した背景を有効化します)。
+  <pg />・ もし「枠線」オプションが「無効」の場合、<html:b>最大化していない</html:b>ウィンドウでは角が丸くなくなり、ウィンドウの影も消える場合もあります。
+  <pg />・ 全画面表示では見た目に全く影響を及ぼしません。
+  <pg />
+  <html:hr />
+  Firefox12以降での問題への応急処置を含んでいます。
+    (Firefox12以降でのもともとの問題は修正待ちです。詳細はアドオンのホームページまたはFirefoxのバグ 730219番へ。この問題は強制的にOS側のボタン (最小化・最大化・閉じる) が、デスクトップがエアロ表示だと常に有効化されるというものです。)
+">
+<!ENTITY item_0_none							"いいえ (Firefoxの標準値)">
+<!ENTITY item_11_Using_Glasslike_win_bkg_recom	"[1.1] 背景をガラスにする (推奨)">
+<!ENTITY   tt_11_Using_Glasslike_win_bkg_recom		"<pg /> 推奨オプション。ペルソナにも対応しています。
+      <pg /> ガラス背景。OS側でガラス表示を有効化の場合のみ (背景が見えるようにするには、'&Custom_Win_bkg_color;'を有効にする必要があります)。
+      <pg /> [2]と[3]は問題がある場合にのみ試してください (最大化から戻したウィンドウが、他の何らかのアドオンにより不自然な位置にあるのが関連しているかもしれません。Firefox 20以前で報告されています)。">
+<!ENTITY item_12_Using_solid_win_bkg_recom		"[1.2] ウィンドウ背景を単色にする (推奨)">
+<!ENTITY   tt_12_Using_solid_win_bkg_recom			"<pg /> 推奨オプション。ペルソナにも対応しています。">
+<!ENTITY item_2_Same_appearance_compat			"[2] 同じ見た目 (互換性のテスト用)">
+<!ENTITY   tt_2_Same_appearance_compat				"Firefoxのウィンドウが不自然な位置にあるとか、マウスカーソルがあると内容や背景の並びがおかしくなるとかの問題がある場合にのみ使用してください (裏で別の方法を使います)。">
+<!ENTITY item_3_Another_compat_test				"[3] 別の互換性テスト用オプション">
+<!ENTITY   tt_3_Another_compat_test					"ペルソナテーマがあれば、隠す。">
+
+
+
+<!ENTITY Custom_Win_bkg_color		"任意のウィンドウ背景色" >
+<!ENTITY tt_Custom_Win_bkg_color		"追加のガラス背景色。標準は #92ACCE (水色)。" >
+<!ENTITY active_no_persona			"ペルソナテーマが一つも無い場合に有効 (標準値)" >
+<!ENTITY active_always				"常に有効 (ペルソナテーマがあれば隠す)" >
+<!ENTITY active_always_tt				"Can be useful also for active Dynamic/Floating Toolbars with newer Firefox's (Compact) Light &amp; Dark themes" >
+
+
+<!ENTITY hover_activ_delay_time		"マウスが載って<html:br />アクティブ化するまでの遅延時間" >
+<!ENTITY deactivation_delay_time	"非アクティブ化<html:br />するまでの遅延時間" >
+<!ENTITY p_milliseconds				" (ミリ秒)" >
+
+
+
+<!--  __________*** Configurable Actions! ***__________  -->
+  
+<!ENTITY Define_Action_for			"動作を定義する">
+ 
+<!ENTITY action_fxbut_title 		"任意の Firefox ボタン
+   <z class='tiny'>詳細はこちら</z>">
+<!ENTITY    tt__fxbut_title 			"<pg0/> <b>新: 改変可能な動作:  Firefoxボタン・閉じるボタン</b>
+      <pg /> (画面・アプリの角にあり、UIカスタマイズでも出て来るもの)
+      <pg />
+      <pg2/> 新機能がたくさん追加され、右ボタン、中ボタン、ホイール、ダブルクリック、<b>Shift, Ctrl, Alt キー</b>が使えます!
+      <pg /> (Shiftキーによる補完・反転動作のツールチップ参照)
+      <pg /> <z class='is_recom'>緑色のものは推奨オプション</z>です。<z class='is_defau'>青色のものは標準</z>です。
+      <pg />下にあるプリセットボタンを押してみてください (1は推奨、2は標準)
+      <pg /> <b>音:</b>
+      <pg />プリセットのお試しが終わったら、任意の動作に対して好きな音声を割り当ててみてください。
+      <pg />「不許可」の音声を鳴らすこともできます (適切な音声がその動作に振られていれば)。鳴るきっかけとしては、
+      <pg /> <pg /><i>[&item_undoCloseTab;]</i>で、もとに戻せるタブがない場合。
+      <pg /> <pg /><i>[&item_closeNewerWindow;]</i>で、<i> (アクティブウィンドウ以降に開いたウィンドウで)</i>閉じられるウィンドウがない場合。
+      <pg />すべての音声を切る ('None'を割り当てる) ことでエラー音が一切鳴らなくするようにもできます。
+">
+
+<!ENTITY action_closebut_tit_custom	"任意の閉じるボタン">
+
+<!ENTITY action_closebut_title 		"閉じるボタン <einfo> (ツールチップ参照)</einfo>">
+<!ENTITY    tt__closebut_tit_NOcustom	"推奨オプションの<i>'&enable_customizable_buts;'</i>は<b>有効でない</b>ことに注意してください。なので<i>いくつかの</i> Windows 環境 (例えばガラス表示の Windows 7) では、この動作はWindows本来の閉じるボタンと一緒には使えません (追加できはしますが、一定の制限が掛かります)。">
+
+<!-- Can be used in txts related to 'Page History' popup menu   -->
+<!ENTITY nav_history				"ページ履歴" >
+
+<!ENTITY More_options_e				"その他オプション" >
+
+<!ENTITY check__closebut_mouseClick	"マウスボタンをクリックする (押して離す) と、所定の動作をする">
+<!ENTITY    tt__closebut_mouseClick 	"・印をつけないと (標準で推奨の設定)、マウスをクリックするだけで発動します。
+          <z class='needRst'>[再]</z>変更した場合はFirefoxを再起動してください。">
+
+<!ENTITY ctrl_w_title				"<b> CTRL+W </b>のショートカットキーへの動作:">
+<!ENTITY Fx_default_closeTab		"Firefox標準 (現在のタブを閉じる)" >
+
+<!ENTITY clHist_title 				"<b>&item_closeWithHistory;</b>: <i> (戻るボタンや進むボタンが有効のとき)</i>">
+<!ENTITY clHist_popup 				"履歴のポップアップメニューを開く (標準値)">
+<!ENTITY clHist_pop_back 			"履歴のポップアップメニューを開き、ページを一つ戻る">
+<!ENTITY tt_Hist_pop_back 				"タブを閉じる際に Alt+クリックを使えます。例えば、戻ろうとしてアラートやポップアップその他目障りなものが出てきた場合に。
+
+                    <html:hr /> (Pending visual glitch: 履歴ポップアップ内のアクティブ項目が正しく更新されないことがあります)" >
+<!ENTITY clHist_pop_back_fw 		"履歴のポップアップメニューを開き、ページを一つ進む・戻る">
+<!ENTITY tt_Hist_pop_back_fw 			"Ctrl+クリックで1ページ進みます (通常クリックで戻ります)。">
+<!--  using SAME TOOLTIP (tt_Hist_pop_back_fw)  -->
+<!ENTITY clHist_back_fw      		"Just go Back/Forward one page  (no popup)">
+
+
+<!ENTITY line_title 		"進む・戻るときに追加の視覚効果が出る">
+<!ENTITY line_none 			"無し">
+<!ENTITY line_clWHonly		"上記の設定により、進む・戻るときには赤い縦線が出ます。">
+<!ENTITY Future_Option_b	"[将来的オプション]">
+<!ENTITY line_always		"進む・戻るときには常に動く線が出る。">
+<!ENTITY tt_ln_always 			"例えばブラウザーの進む・戻るボタンや、マウスの進む・戻るボタン (通常マウス側) や、ショートカットキーを使ったとき。">
+<!ENTITY tt_ln_always_2			"<pg0/>また、それ以上戻れない・進めないときに、「不許可」の音が鳴ります (<b>“&butt_butSound_action1;”</b>が有効ならば)。">
+
+
+<!ENTITY mButShort_primary 			"第1ボタン:">
+<!ENTITY mButShort_second 			"第2ボタン:">
+<!ENTITY mButShort_middle 			"中ボタン:">
+<!ENTITY mButShort_primary_dblclk 	"第1ボタンダブルクリック:">
+<!ENTITY mButShort_second_dblclk 	"第2ボタンダブルクリック:">
+<!ENTITY mButShort_middle_dblclk 	"中ダブルクリック">
+<!ENTITY mButShort_wheel 			"ホイール:">
+<!ENTITY mButShort_wheelLeft 		"ホイール左:">
+<!ENTITY mButShort_wheelRight 		"右チルト:">
+
+
+<!ENTITY label_row_action_Primary 			"マウスの第1ボタン:">
+<!ENTITY    tt_row_action_Primary 				"つまり右利き用マウスの左ボタン">
+<!ENTITY label_row_action_Secondary 		"マウスの第2ボタン:">
+<!ENTITY label_row_action_Middle 			"マウスの中 (ホイール) ボタン:">
+<!ENTITY label_row_action_Primary_dblclk   	"マウスの第1ボタン<b> (ダブルクリック)</b>:">
+<!ENTITY    tt_row_action_Primary_dblclk 		"<b><i>単独クリック</i></b>も発動されることに注意してください。ここでは他と競合しないよう単独クリックを設定してください。一般に、単純な動作、たとえばポップアップを開く (メインメニューやコンテキストメニュー) などは問題ありません。">
+<!ENTITY label_row_action_Secondary_dblclk  "マウスの第2ボタン<b> (ダブルクリック)</b>:">
+<!ENTITY    tt_row_action_Secondary_dblclk 		"&tt_row_action_Primary_dblclk;">
+<!ENTITY label_row_action_Middle_dblclk     "マウスの中ボタン<html:br /><b>(ダブルクリック)</b>">
+
+
+<!ENTITY label_row_action_wheel 			"マウスのホイール:">
+<!ENTITY    tt_row_action_wheel 				"ボタン上にマウスカーソルがある場合にホイールを回す">
+<!ENTITY label_row_action_wheelLeft 		"マウスのホイールを<b>左に傾ける</b>:">
+<!ENTITY    tt_row_action_wheelLeft 			"ボタン上にマウスカーソルがある場合にホイールを左に傾ける (横スクロールができるマウス用)">
+<!ENTITY label_row_action_wheelRight 		"マウスのホイールを<b>右に傾ける</b>:">
+<!ENTITY    tt_row_action_wheelRight 			"ボタン上にマウスカーソルがある場合にホイールを右に傾ける (横スクロールができるマウス用)">
+
+
+<!ENTITY mtit_typical_primary 		"マウスの第1ボタンの一般的動作:">
+<!ENTITY mtit_typical_secondary 	"マウスの第2ボタンの一般的動作:">
+<!ENTITY mtit_typical_annoyances 	"目障りなものを除去する!">
+<!ENTITY mtit_typical_other 		"その他の動作:">
+<!ENTITY mtit_typical_wheel 		"マウスホイールの一般的動作:">
+
+
+<!ENTITY Shift_Key 				"<pg0/><b>Shiftキー</b>と">
+<!ENTITY Ctrl_Key 				"<pg0/><b>Ctrlキー</b>と">
+<!ENTITY Alt_Key 				"<pg0/><b>Altキー</b>と">
+
+<!ENTITY item_closewin 			"Firefoxウィンドウを閉じる">
+<!ENTITY item_closewin_fxdefau	"Firefoxウィンドウを閉じる (標準)">
+<!ENTITY   tt_closewin 				"[&Shift_Key; &item_quitApplication;]">
+<!ENTITY item_minimize 			"Firefoxウィンドウを最小化する">
+<!ENTITY item_closetab 			"現在のタブを閉じる">
+<!ENTITY item_closetab_recomen	"現在のタブを閉じる (推奨)">
+<!ENTITY   tt_closetab 			    "マウスの第1ボタンの推奨オプション (即座にタブを閉じるなど)。最大化状態で閉じるボタンが画面角にあるときに (言い換えればOSのタスクバーがその場所にない場合に)。
+                    [&Shift_Key; &item_undoCloseTab;] ">
+<!ENTITY item_closeWithHistory 	"後ろに&quot;&nav_history;&quot;がない場合にタブを閉じる">
+<!ENTITY item_closeWithHis_reco	"&item_closeWithHistory; (推奨)">
+<!ENTITY   tt_closeWithHistory  	"<pg0/><b>以前に訪れたページを失わずにタブを閉じる</b>
+        <pg />
+        <pg2/>ブラウザーの<b>戻る</b> (左矢印) ボタンが有効 (すなわちいくつかページを移動してきたということ) であれば、<i>ターゲット</i>ボタン (1) をクリックすると<b>'&nav_history;' ポップアップメニュー</b> (2)  (場合によっては<b>音声</b>アラート付きで) が開きます。
+        <pg />これにより、タブを閉じる前にそれまでに訪れたページがないか調べます。タブを閉じるにはもう一度<i>ターゲット</i>ボタンをクリックしてください。
+        多く開いたタブを閉じるときに、失うものを最小限にすることができます。
+        <pg /><b>CTRL+W</b>のショートカットキーもこれに充てることができます。'<b>More Options</b>' ボタンを参照。
+        <pg /> <i> (1) ターゲットボタンとは設定されたもの (例えば 閉じるボタンやFirefoxボタン)</i>
+        <pg /> <i> (2) 進む・戻るボタンを押したときのメニューと同じものです。</i>
+
+        <b>マウス</b>の中クリックやホイール回転を修飾キー付きで操作すると:
+        <pg /> [&Ctrl_Key; 進む・戻るボタンのいずれかが有効ならポップアップメニューを出します。]
+        <pg /> [&Alt_Key; 無条件にタブを閉じます (ポップアップメニューを出しません)。]
+        <pg2/> [&Shift_Key; &item_undoCloseTab;]" > 
+
+<!ENTITY item_ShowAllTabs 		"全てのタブを表示する" >
+<!ENTITY   tt_ShowAllTabs 		"<pg />全てのタブをポップアップメニューに表示する (Ctrl + Shift + Tab)
+    <html:hr /><pg />註: <b>メニューバー → 表示 → 「全てのタブを表示する」</b>の設定が無い場合、動作しません。「全てのタブを一覧にする」ボタンが隠されている場合に起こり得ます (&quot;Tab Mix Plus&quot;などの影響で)。" >
+
+<!ENTITY item_undoCloseTab 		"最後に閉じたタブを元に戻す">
+<!ENTITY item_undoCloseTab_reco	"最後に閉じたタブを元に戻す (推奨)">
+<!ENTITY   tt_undoCloseTab 			"最後に閉じたタブを元に戻す (Ctrl+Shift+T)">
+
+<!ENTITY item_zapFrames 		"iframeやプラグインを一掃する">
+<!ENTITY   tt_zapFrames 			"それらをページ上から消し去ります。
+          [&Shift_Key; &item_zapImages;]
+          <einfo> ('Zap plugins' は https://www.squarefree.com/bookmarklets/zap.html より)</einfo>">
+<!ENTITY item_zapImages 		"画像を一掃する">
+<!ENTITY   tt_zapImages 			"ページ上の画像をその代替テキスト (画像タイトル) で置き換えます
+          [&Shift_Key; &item_zapFrames;]
+          <einfo> (発案は https://www.squarefree.com/bookmarklets/zap.html)</einfo>">
+<!ENTITY item_superStop 		"画像のアニメーションを止める">
+<!ENTITY   tt_superStop 			"画像のアニメーション (と裏での読み込み) を止めます。
+    <pg />バージョン20以前のFirefoxでEscキーを押したときの動作と同じです。'SuperStop' というアドオンと同様です (お使いの環境で 'SuperStop' が動かない場合にどうぞ)。
+    [&Shift_Key; &item_BrowserReload;]">
+<!ENTITY item_BrowserReload 	"ページを再読み込み">
+<!ENTITY   tt_BrowserReload 		"ページの再読み込み (F5)
+    [&Shift_Key; キャッシュを無視して再読み込み]">
+
+<!ENTITY item_closeNewerWindow 	"最後に開いたFirefoxウィンドウを閉じる">
+<!ENTITY   tt_closeNewerWindow 		"確認無しで新しいウィンドウを開いてくるページに有用です。現在の (最前面の) ウィンドウよりあとに開かれたウィンドウのみを閉じるので安全です。
+
+          [&Shift_Key; &item_undoCloseWindow;]">
+<!ENTITY item_undoCloseWindow 	"最後に閉じたウィンドウを復元する">
+
+<!ENTITY item_PageUp   			"1ページ上">
+<!ENTITY item_PageDown 			"1ページ下">
+<!ENTITY item_Page_UpDown 		"1ページ上/下">
+<!ENTITY   tt_PageKeys   			"1ページ上・1ページ下: キーボードのPage Up, Page Downと同様の動作。
+          (表示内容にフォーカスが当たり、その中のアクティブな要素が指示に反応します。)
+          [&Ctrl_Key; ページの上端/下端へ移動 (Home/Endキーのように)]
+          [&Alt_Key; ページを左/右に移動 (すなわち<i><b>横スクロール</b></i>) ]
+          [&Shift_Key; &item_Line_UpDown;]">
+<!ENTITY item_Line_UpDown 		"1行上/下">
+<!ENTITY   tt_LineKeys   			"1行上/下: キーボードの上矢印や下矢印キーと同様の動作。
+          (表示内容にフォーカスが当たり、その中のアクティブな要素が指示に反応します。)
+          [&Ctrl_Key; ページの上端/下端へ移動 (Home/Endキーのように)]
+          [&Alt_Key; ページを左/右に移動 (すなわち<i><b>横スクロール</b></i>) ]
+          [&Shift_Key; &item_Page_UpDown;]">
+
+<!ENTITY item_ZoomEnlarge   	"拡大">
+<!ENTITY item_ZoomReduce   		"縮小">
+<!ENTITY item_Zoom_EnlRed		"拡縮">
+<!ENTITY   tt_ZoomKeys 				"拡大 (Ctrl + '+')  /  縮小 (Ctrl + '-')
+          [&Alt_Key;  拡大率をリセット ]
+          [&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY item_hc_context   		"HCTPのコンテキストメニュー">
+<!ENTITY item_hc_context_defau	"HCTPのコンテキストメニュー (標準)">
+<!ENTITY   tt_hc_context   			"[&Shift_Key; &item_mainPanelUI;]">
+<!ENTITY item_mainPanelUI 		"Firefoxのメインメニューを開く">
+<!ENTITY item_mainPanelUI_defau	"Firefoxのメインメニューを開く (標準)">
+<!ENTITY   tt_mainPanelUI 			"[&Shift_Key; &item_hc_context;]">
+
+<!ENTITY item_quitApplication	"Firefox (の全ウィンドウ) をすべて終了">
+<!ENTITY   tt_quitApplication		"[&Shift_Key; &item_closewin;]">
+<!ENTITY item_FullScreen		"全画面表示">
+<!ENTITY   tt_FullScreen			"[&Shift_Key; &item_Maximize;]">
+<!ENTITY item_Maximize			"ウィンドウ最大化/復元">
+<!ENTITY   tt_Maximize				"[&Shift_Key; &item_FullScreen;]">
+
+<!ENTITY item_NewTab			"新しいタブを開く" >
+<!ENTITY   tt_NewTab 			"新しいタブを開く (Ctrl+T)" >
+
+<!ENTITY devPixelsPerPx_label_2	"文字などの大きさの変更" >
+<!ENTITY tt_toggleCssDevPx			"<pg /><b>&devppp_default;</b> &amp; <b>&devppp_125;</b> とで切り替えます。
+<html:hr />&devPixelsPerPx_tt;" >
+
+<!ENTITY item_DynBars_toggle	"&dynBars_name;! 有効状態の切り替え" >
+<!ENTITY   tt_DynBars_toggle		"<pg1/>&dynBars_name;:
+<pg3/>標準ショートカットキー:  <b>Ctrl + Q</b>
+<pg3/>ヘルプページの「&tab.float.toolbars;」項も参照。" >
+
+<!ENTITY item_noaction 			"無し">
+
+<!ENTITY item_advSelTab 		"前後のタブに移る">
+<!ENTITY   tt_advSelTab 			"前後のタブに移る (Ctrl + Page Up / Page Down)
+          <pg0/>Extra 'scroll' actions:
+          [&Ctrl_Key; ページの上端/下端へ移動 (Home/Endキーのように)]
+          [&Alt_Key; ページを左/右に移動 (すなわち<i><b>横スクロール</b></i>) ]
+          [&Shift_Key; &item_Page_UpDown;]">
+
+									
+<!ENTITY item_goBack 			"1ページ戻る">
+<!ENTITY item_goForward 		"1ページ進む">
+<!ENTITY   tt_goBackFw_key 			"1ページ進む・戻る: ブラウザーの進む・戻るボタンと同様
+        [&Ctrl_Key; 逆方向へ (戻る・進む)]
+        [&Shift_Key; &item_mainPanelUI;]">
+<!ENTITY item_go_BackForw 		"1ページ進む・戻る">
+<!ENTITY   tt_go_BackForw 			"1ページ進む・戻る: ブラウザーの進む・戻るボタンと同様
+        <pg0/>追加の「スクロール」動作:
+        [&Ctrl_Key; ページの上下端 (Home/End キーと同様)]
+        [&Alt_Key; ページを左右に移動 (つまり<i><b>横スクロール!</b></i>) ]
+        [&Shift_Key; &item_Page_UpDown;]">
+
+
+<!ENTITY butt_butSound_tic_1 	"タブを閉じる音">
+<!ENTITY butt_butSound_info1 	"'&nav_history;'メニューが出たときの音">
+<!ENTITY butt_butSound_action1 	"動作一般の音">
+<!ENTITY   tt_butSound_action1 		"含まれる動作:
+    • <b>&item_zapFrames;</b>
+    • <b>&item_closeNewerWindow;</b>
+    新しいウィンドウが (望んでいないのに) 開いて即座に裏に回ったときにも音が鳴ります (すなわち恐らくスパムで、削除しても問題ありません)。">
+<!ENTITY butt_butSound_wheel1 	"ホイール操作の音">
+<!ENTITY   tt_butSound_wheel1 		"含まれる動作:
+          • <b>&item_advSelTab;</b> ">
+<!ENTITY butt_butSound_notFound	"「不許可」の音">
+<!ENTITY   tt_butSound_notFound	"<pg/>許可されない動作をしたときに音が鳴ります。
+    <pg/>それらの動作に適切な音声が設定されている場合にのみ鳴ります。
+    詳しくは<b>カスタムFirefoxボタン</b>タイトルと<b>追加オプション → &line_title;</b>.">
+
+<!ENTITY only_volumen 	"<pg/> (現状は音量の変更のみ可能です)">
+
+
+<!ENTITY snd_none     			"無し">
+<!ENTITY Custom_Sound 			"任意の音">
+<!--  This goes before the sound names. It's value in english is ' ' (a single space), bc babelzilla fails with empty value.  -->
+<!ENTITY sound_0 				" ">
+<!--  This goes AFTER the sound names.  Before them goes [sound_0] -->
+<!ENTITY sound 					"音">
+<!ENTITY tt_Ths_snds_incl_in_Fx		"これらはFirefoxに収載されています。">
+<!ENTITY tt_Ths_snds_incl_in_hctp 	"これらはこのアドオンに収載されています。">
+
+<!ENTITY Tick_snd_f_Web_shrt 	"Web上の短い音 (短縮版)">
+<!ENTITY tt_Tick_snd_f_Web_shrt		"http://soundbible.com/2044-Tick.html のフリー音源 (クリエイティブ・コモンズ) を使っています。">
+
+<!ENTITY tt_old_snd__begin 			"これら5種類の音声はFirefox45以降には収載されていませんが、HCTPホームページからダウンロードすれば使用可能です。
+      'hctp_soundpack_1' (追加のいい感じの音声を2つ収録しています) を保存し音声ファイルをPC内のここに置いてください:">
+<!ENTITY tt_old_snd__cont1 			"      (カスタム音声ファイルと同じフォルダー)">
+
+<!ENTITY tt_custom_sound__begin 	"拡張設定: カスタム音声ファイルの場所:">
+<!ENTITY User_Home_Directory 	  	"ユーザーのホームディレクトリ">
+<!ENTITY or_custom2_mp3_and_so_on 	" (custom2.mp3 など。wavファイルやoggファイルは名前を変えても問題ありません。)">
+
+<!ENTITY Volume_c				  "ボリューム:">
+
+
+
+<!ENTITY label_butPref_default 		"標準の動作">
+<!ENTITY    tt_butPref_default 			"全て標準の動作を設定する。音声無し。">
+<!ENTITY label_but_recom_1			"推奨動作">
+<!ENTITY    tt_but_recom_1 				"推奨動作プリセットに設定する。音あり!">
+<!ENTITY label_but_recom_annoyances "2番目に推奨。邪魔ものを除去したいときに。">
+<!ENTITY    tt_but_recom_annoyances 	"推奨動作プリセット2に設定する。Firefoxボタンで邪魔を排除。音あり。[&item_mainPanelUI;] や [&item_hc_context;] などの標準動作は中ボタンになります。">
+<!ENTITY label_but_recom_2_1  		"2.1番目に推奨">
+
+
+<!ENTITY actt_title			"ツールチップ表示">
+<!ENTITY   tt_title				"各設定項目についてそれぞれの選択肢や設定内容の情報をツールチップで表示します。">
+<!ENTITY actt_always		"常に">
+<!ENTITY actt_blockFirst	"マウスが「再び載ったら」 [再]">
+<!ENTITY   tt_blockFirst		"ツールチップは通常の操作では現れません。マウスをボタンから離して載せると出てきます。[再]印の設定は選択後に再起動が必要です。">
+<!ENTITY actt_never			"しない">
+
+
+
+<!ENTITY System_TitleBar__title					"タイトルバー:">
+<!ENTITY check__Sys_TitleBar_always_hid 		"タイトルバー常時非表示">
+<!ENTITY    tt__Sys_TitleBar_always_hid 			"<pg />このオプションを使用しない (標準) とき、OS側のタイトルバーは以下のような場合に表示されます。
+      <pg2 /> • タブグループ表示 (Ctrl+Shift+E) <i> (Firefox 45以降では削除)</i>
+      <pg2 /> • 印刷プレビュー
+      <pg2 /> • タブツールバーが隠されているとき (例えばポップアップウィンドウやタブ系アドオンを使っていると起こり得ます)
+      <pg2 /> • 以降のオプションにおいて常に表示するように設定している
+      <pg2 />つまり、これにチェックを入れておくことで常に隠しておくことができます (あらゆる場面で画面内の空間を有効利用できます)。
+      <pg /> (註、OS側のこのタイトルバーは、追加のFirefoxアイコンのある小さなカスタムタイトルバーに見えるよう改変されました。タブグループや印刷プレビューの表示に (から) 切り替えたときのチラつきを抑えることができます。) ">
+
+<!ENTITY check__Fxopt_Sys_TitlBr_always_prsnt 	"Firefox設定: タイトルバー (ほぼ) 常時表示">
+<!ENTITY    tt__Fxopt_Sys_TitlBr_always_prsnt 		"<pg />カスタマイズパネルにある 'タイトルバー' ボタンと同様の設定。
+          チェックを入れると、全画面表示 (F11) を除いてはタイトルバーが常時表示になります。">
+
+
+
+<!ENTITY Fx_default_unchecked 		" (Firefox標準: チェック無し)">
+<!ENTITY recommended_unchecked 		" (推奨: チェック無し)">
+
+
+
+<!ENTITY tt_custom_image__begin 		"拡張設定: カスタム画像ファイルがある場所">
+<!ENTITY or_but_custom2_png_and_so_on	" (または but_custom2.png など。gifやjpgファイルは名前を変えても問題ありません。)" >
+
+
+<!--  *** Color Picker popup *** -->
+<!ENTITY Opacity					"不透明度" >
+<!ENTITY Color_Hue					"色相" >
+<!ENTITY tt_Color_Hue					"マウスホイールで精確な色相の値を取得できます。例えばホイール16回回すと赤から紫へ変わるなど。" >
+<!ENTITY tt_txtbox_col_pick 	"手動で変更した場合、反映するにはTabキーを押してください。有効な値は:" >
+<!ENTITY tt_Sys_col_pick_noWo	"OSのカラーピッカーは、ブラウザー (のフレーム) 内で設定パネルが開かれている場合にうまく動きません。" >
+
+
+<!--  __________*** Section:   LOOK AND FEEL 2 ***__________  -->
+
+
+<!ENTITY   Options_Fx_Home_App_but 	"Firefoxの 'Home' アプリケーションボタンの設定:" >
+
+<!ENTITY   check__hcp_home_enabled 	 "左上隅にカスタムFirefoxボタンを出す (*)" >
+<!ENTITY   check__hcp_home_enabled_2 " (UI 改変からでも可能)" >
+<!ENTITY      tt__hcp_home_enabled 		"UI 改変:   'ツールバー → カスタマイズ' で、同様のボタンがタブバーやその他ツールバーに配置できます。" >
+
+<!ENTITY Button_Style_Color		"見た目/色" >
+<!ENTITY Fx_default_orng		"Firefox標準 (オレンジ)" >
+<!ENTITY Blue					"青" >
+<!ENTITY Green					"緑" >
+<!ENTITY Transp_with_Personas	"ペルソナに合わせて透過" >
+<!ENTITY Transparent			"透過" >
+
+
+<!ENTITY Icon_Size_for_Maximized_win		"アイコンの大きさ
+          最大化ウィンドウ" >
+<!ENTITY Icon_Size_for_UnMaximized_win		"アイコンの大きさ
+          非最大化ウィンドウ" >
+<!ENTITY   ctn_dropmarker 	"矢印記号" >
+<!ENTITY   tt_ctn_dropmarker    "ボタンの大きさによっては矢印記号は表示されません。" >
+<!ENTITY   dm_auto 			"Firefox標準" >
+<!ENTITY   dm_auto_invtd 	"Firefox標準、反転" >
+<!ENTITY   dm_icon1 		"大きめ矢印" >
+<!ENTITY   dm_icon1_invtd	"大きめ矢印、反転" >
+<!ENTITY   dm_none	 		"無し" >
+<!ENTITY   dm_old_default 	"HCTPの標準 *" >
+<!ENTITY   tt_old_default 		"* 古い設定 (しばらく前からWindowsでは何も現れません)。" >
+
+<!ENTITY   ctn_fx_text 	   "ボタンの文字" >
+<!ENTITY   tt_ctn_fx_text		"${BrandName}  が標準値です (大ボタンでは 'Firefox'/BrandName で、小ボタンでは頭文字)" >
+
+<!ENTITY   ctn_fx_image    "ボタンの画像" >
+<!ENTITY   fx_im_icon17 		"Firefoxアイコン" >
+<!ENTITY   fx_im_icon17_invtd	"Firefoxアイコン、反転" >
+<!ENTITY   fx_im_icon18 		"Firefoxアイコン2" >
+<!ENTITY   fx_im_icon18_invtd	"Firefoxアイコン2、反転" >
+<!ENTITY   fx_im_icon_classic	"Firefoxアイコン 旧版" >
+<!ENTITY   fx_im_icon_browser	"Browser default Icon">
+<!ENTITY   fx_hc_icon 			"HCTPのアイコン" >
+<!ENTITY   custom_image 		"任意の画像" >
+
+<!ENTITY    Fx_Main_menu_but 		"Firefoxのメインメニューボタンを表示する:">
+<!ENTITY tt_Fx_Main_menu_but			" (標準ではナビゲーションツールバーの末尾に置かれます)。「任意のFirefoxホームボタン」を使用しているのであれば、このボタンを隠して空間を確保することができます。" >
+<!ENTITY    FxMenu_always_fxdefault	"常に (Firefoxの標準値)" >
+<!ENTITY    FxMenu_notif_badge		"通知とともにだけ" >
+<!ENTITY tt_FxMenu_notif_badge			"通知・警告アイコンがある場合にだけボタンを出す (Firefox Syncに問題があるなど)" >
+<!ENTITY    FxMenu_never			"なし (非推奨)" >
+
+
+<!ENTITY   check__floatMenu 		"浮遊メインメニュー: メニューがメニューバーから離れて、新しい「Firefox ホームの場所」に自動で隠れつつ「浮遊」します。起動の方法は、Firefoxボタン上にマウスカーソルを置くこと (*)、Altキーを押すこと、F10キーを押すことです。" >
+<!ENTITY      tt__floatMenu 			"現在空っぽのメニューバーを隠しておく (右クリックメニューを出しチェックを外す) と、さらに広く空間を確保することができます。" >
+<!ENTITY   check__floatM_pageTitle 	"ページのタイトルを浮遊メニューの隣へ" >
+
+<!ENTITY floatM_adv_options			"浮遊メインメニューの拡張設定:" >
+
+<!ENTITY floatM_style_title			"フォントと背景の<b>色・外観</b>" >
+<!ENTITY floatM_style_default		"新式 (2016年9月以降の標準値)" >
+<!ENTITY floatM_style_captionColor	"OS側のウィンドウ内の文字や背景色に従う" >
+<!ENTITY floatM_style_captionC_tt		"ペルソナテーマを除く" >
+<!ENTITY floatM_style_oldColor		"旧式のフォントと背景色" >
+
+
+<!ENTITY Custom_style_files			"Custom style (.css) files:" >
+<!ENTITY Custom_style_files__tt			"Custom .css files for styling browser's own UI  (like the deprecated capability of Stylish). 
+	Use a comma-separated list for adding filenames   (assumed .css extension if not given)" >
+<!ENTITY files_located_homedir		"Files located at User Home Directory" >
+<!ENTITY Custom_style_files__failed		"File/s not loaded: " >
+
+<!ENTITY Apply_changes				"Apply changes" >
+
+
+
+<!ENTITY FULL_SCREEN_mode_options	"全画面表示設定" >
+
+<!ENTITY check_fullscrButs_autohide "全画面表示でツールバーを自動で隠す場合に、「浮遊でない」Firefoxボタンやカスタム小・大・閉ボタンも自動で隠す (標準は「はい」)" >
+<!ENTITY    tt_fullscrButs_autohide 	"<pg />全画面表示の動画でもする。チェックを入れない場合各ボタンは半透明になります。
+        全画面表示でも操作性を失わないよう、チェックを入れなくてもかまいませんし、
+        さらに本文に差し障らないようにしたければ極小で高透明度にすると良いでしょう。
+        <pg />「浮遊でないボタン」とは、ウィンドウの角にあるものを指します。
+        言い換えれば、タブバーや各ツールバーにあるほうの、Firefoxボタンと小大閉ボタン (UI カスタムでつけた) は常にツールバーとともに隠れます。">
+<!ENTITY Autohide_in_FullScr_Videos	"全画面動画では自動で隠す (「はい」を推奨)" >
+<!ENTITY Small_FScr_warn			"「～～は現在全画面表示です」 (動画視聴中など) をもっと小さく邪魔にならないようにする (Firefox標準値は「いいえ」)" >
+
+<!ENTITY label__fullscr_tr_duration "全画面表示の動画が暗転する時間">
+<!ENTITY    tt__fullscr_tr_duration "暗転が鬱陶しいと感じる場合は「なし」に設定することをおすすめします (Firefox42以降で有効)。">
+<!ENTITY When_entering		"入るとき" >
+<!ENTITY When_leaving		"出るとき" >
+<!ENTITY None_p_fastest		"なし (最速)" >
+<!ENTITY Fast				"高速に遷移" >
+<!ENTITY Fx_Default_p_slow	"Firefox標準値 (ゆっくり)" >
+				
+
+<!--  New Feature: “Special VERTICAL MAXIMIZE”  -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle     "“<i>良い</i>縦方向最大化”: <html:einfo>タブが<b>最大化していない</b>ウィンドウでも<i>まさに</i>最上部に置かれます!</html:einfo>">
+<!ENTITY   VERTICAL_MAXIMIZE_subTitle   "<b>使用前にこちらをご一読願います</b>。<b>試験的な</b>新機能です。動作はしますが<b>試作段階です</b>。">
+<!ENTITY   vertMax_switch_title     "<b>縦方向最大化</b>を有効にする">
+<!ENTITY   vertMax_no     "しない">
+<!ENTITY   vertMax_yes    "する">
+
+<!ENTITY    vmBehave_TITLE     "挙動">
+<!ENTITY tt_vmBehave_TITLE     "太字の文字は特に有用なオプションです。">
+
+<!ENTITY    vmBehave_default     	"標準値 (Firefoxウィンドウは画面の上下端にくっつく)">
+<!ENTITY    vmBehave_right         	"画面の右端にもくっつく">
+<!ENTITY tt_vmBehave_right      		"閉じるボタンを画面角に留める。最大化状態と同じ。">
+<!ENTITY    vmBehave_left     		"画面の左端にもくっつく">
+
+<!ENTITY    vmBehave_noSize     	"画面の上端のみにくっつく (ウィンドウ高は自由)">
+<!ENTITY    vmBehave_top_right   	"上端と右端にくっつく">
+<!ENTITY    vmBehave_top_left   	"上端と左端にくっつく">
+
+<!ENTITY    vmBehave_bottom     	"画面の下端のみにくっつく (ウィンドウ高は自由)">
+<!ENTITY    vmBehave_bottom_right   "下端と右端にくっつく">
+<!ENTITY    vmBehave_bottom_left   	"下端と左端にくっつく">
+
+<!ENTITY    vmBehave_leftRight_top 	"左右端と上端にくっつく (ウィンドウ高は自由)">
+<!ENTITY    vmBehave_leftRight_bot 	"左右端と下端にくっつく">
+<!ENTITY    vmBehave_leftRight     	"左右端にくっつく (横方向最大化)">
+
+
+<!-- FYI: Tags like 'einfo', 'b' and 'i' CAN'T be nested or spaces are lost!!, SOLVED here using 'html:b' -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt              "<html:b>“縦方向最大化”が<i>うまく</i>動くのは、最大化していないFirefoxウィンドウです。</html:b>
+   <pg0/><pg/><i>「HCTP のコンテキストメニュー」</i> (最大化・最小化ボタンやその他の場所を第2ボタンでクリックすることで呼び出せます) からも有効化できます。これが有効のとき、最大化ボタンは小さく縁取りが付きます。
+    <pg/><b>'&enable_customizable_buts;'</b>が有効のときのみ有効
+    <pg2/>最新情報については、ホームページの “VERTICAL MAXIMIZE” の節も<b>読んでおいてください</b>。">
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__LINUX       "<b>Linux ユーザーへ</b> Linux Mint でかつ Cinnamon (2,3年前の) でしか暫定的にテストしていません。
+    画面上端での、ウィンドウの&quot;自動スナップ&quot; が干渉することもあることに留意してください。
+    マルチモニター環境で問題があります: Firefoxは一つのモニターにしかくっつきません。
+    (以下の文言はWindows向けです) " >
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__SUBNOTES 	"<pg/><b>注意</b> Firefoxウィンドウは移動やサイズ変更後に、ちょっとした<i>'発作'</i>を起こすことがあります。
+    サイズ変更のためにウィンドウ枠を、あるいはドラッグのためにウィンドウのどこかを掴んで放すと、Firefoxウィンドウは10ピクセル程度上下に動く<b>軽い位置ずれ</b>が起こり得ます。これは誤作動ではなく、閲覧を妨げるようなものではありません。これを回避するには、<i>浮遊メニュー</i>のタイトル領域をドラッグすると良いです (Altキーで引き出せます)。
+    <pg/>ドラッグ: <i>Windowsのエアロスナップ</i>機能が有効のとき、上端から掴んでウィンドウを移動すると最大化してしまいます。回避するには、マウスボタンを放す前に下にさげる、あるいは「縦方向エアロスナップ」を有効にしておいてください (Win+Shift+<b>￪</b> キー)。
+    <pg/>ほぼWindowsで検証しています。" >
+
+
+
+
+<!ENTITY Drag_Window_capab_opt			"ウィンドウをドラッグできる設定" >
+<!ENTITY    Drag_win_via_tabbar_defno	"背景のタブバーを使ってドラッグする (標準値は「いいえ」)" >
+<!ENTITY tt_Drag_win_via_tabbar_defno		"ツールバーの組み合わせによっては既に使用可能なことがあります (エアロが有効なWindows環境など)。スクロールの矢印が常にタブバーに置かれること「も」あります。" >
+<!ENTITY and_un_maxim_with_dblclk		" (ダブルクリックで最大化とその解除)" >
+
+
+<!ENTITY    Enable_Ctrls_Widgets_Drag_Win 	"ドラッグウィンドウでコントロールやウィジェットを有効にする" >
+<!ENTITY tt_Enable_Ctrls_Widgets_Drag_Win		"&quot;Vertical Toolbar&quot; など他のアドオンとの互換性のための設定です。" >
+
+<!ENTITY All__prevver_2_8_default			"全て (HCTPの過去バージョン (2.8系) の標準値)" >
+<!ENTITY All_excpt_othrAddn_SpsWidgts_def	"全て、ただし他アドオンの空白ウィジェットを除く (標準値)" >
+<!ENTITY tt_no_foreign_spaces					"&quot;Vertical Toolbar&quot; など他のアドオンにある「<b>自動で隠す</b>」機能との互換性のため推奨する設定。ウィンドウのドラッグ部分に空白ウィジェットが含まれているとうまく動きません。
+        <html:hr />
+        余談ですが、 &quot;Vertical Toolbar&quot; の自動隠しが動かない場合、「空白ではドラッグしない」設定にしてみてください。
+        (ユーザーカスタマイズ後に、Vertical Toolbar がHCTPの空白ウィジェットを含んでしまったときに起こり得ます。これらは追加ツールパレットにある、見出しの先頭に[h]が付いているものです。) " >
+<!ENTITY    No_drag_for_Spaces_Widgets		"空白ウィジェットではドラッグしない" >
+<!ENTITY tt_No_drag_for_Spaces_Widgets			"今後、&quot;WebPage-Title&quot;などの他のウィジェットを除外するオプションを追加する予定です。" >
+
+
+<!ENTITY Easy_of_use__scr_corner__Fitts_law	" (*) 使い勝手が向上します。最大化状態では通常、<b>画面角</b>にボタン類が置かれることが多いからです (「フィッツの法則」というものです) 。" >
+
+		
+		
+<!--  __________*** Section:   ADVANCED SETTINGS ***__________  -->
+
+
+<!ENTITY hidTit__Dont_use		"不使用" >
+<!ENTITY hidTit__use			"使用" >
+
+<!--  __________*** FOR LINUX/OSX ONLY ***__________  -->
+<!ENTITY   title__alternat_hide_titbar_feature__default_Use		"タイトルバーを隠すのに別の方法を使う (標準値は「はい」)" >
+<!ENTITY comment__alternat_hide_titbar_feature					"LinuxのGnome環境 (Ubuntuなど) でタイトルバーを隠せるようにしますが、この環境でしかテストしていません。
+    ウィンドウマネージャー (UbuntuであればCompiz-Configとか) の設定で「ウィンドウの装飾」を無効化するのとだいたい同じです。" >
+
+
+<!--  ______*** Small-Tabs and Small-Toolbars MOVED TO LOOK_AND_FEEL_2 ***______  -->
+
+<!ENTITY Styling_options_to_max_spc			"外観の設定: <einfo> (本文領域を最大化する)</einfo> " >
+
+<!ENTITY    Smaller_Tabs_and_Tab_Bar		"タブとタブバーを小さめに" >
+<!ENTITY tt_Smaller_Tabs_and_Tab_Bar			"<pg /><b>'Tab Mix Plus</b>複数段設定と互換性があります! (複数段の高さの調節に<b>Firefoxの再起動</b>が必要です)
+      <pg />画面の上端に接するタブに対しては任意の「上端の遊び」を (1ピクセル程度) 再設定する必要があるかもしれません。その設定が無効になっている場合は、一度最大化して復元すると良いでしょう。自動で再計算されます。
+      <pg />この外観はWindowsの標準テーマでしか (Linuxでも多少) テストされていないことをご了承ください。よって、改造テーマや<b>タブ周りを弄るアドオン</b>を入れている方は<b>注意</b>をお願いします。" >
+<!ENTITY No__default			"いいえ (標準値)" >
+<!ENTITY Small_australis		"小さめタブ (Australisテーマ向け)" >
+<!ENTITY Small_near_Classic		"小さめ (従来のタブっぽく)" >
+<!ENTITY Small_almost_Classic	"小さめ (ほぼ従来のタブ) (新)" >
+<!ENTITY Small_Classic_0     	"Smaller, Classic Tabs! (New 2)">
+
+<!ENTITY likeClassic_mediumH	"従来のタブと同様で、中くらいの高さ" >
+<!ENTITY likeClassic_fullH		"従来のタブと同様で、最大の高さ" >
+
+<!ENTITY DEPREC_australis		"[用済み] Australis テーマ" >
+<!ENTITY DEPREC_almst_Clsc		"[用済み] 従来のタブっぽく"  >
+<!ENTITY tt_smTabs_deprecated 		"<pg />古い[用済み]オプションは互換性のテストのためだけにあり、<b>近いうちに削除します</b>。
+    <pg />あなたの環境下では見た目を整えるのにこのオプションがどうしても要るというのであれば、サポートサイトにご意見をお願いします (URLは https://tiny.cc/hidec )。">
+
+
+<!ENTITY    Smaller_Toolbars_and_buttons	"小さめツールバーとボタン" >
+<!ENTITY tt_Smaller_Toolbars_and_buttons		"この外観はWindowsの標準テーマでのみテストされていることをご了承ください。カスタムテーマを使う際にご考慮ください。" >
+<!ENTITY Small				"小" >
+<!ENTITY A_bit_smaller		"もう少し小さめ" >
+<!ENTITY Smaller_buttons	"小さめボタン" >
+<!ENTITY tt_smallBars_oldOption	"このオプションは古いものですが、Firefoxの旧版(ESR52など)、かつ「文字とその他の項目の大きさ(dpi)」 > 100&percent; な環境では有意義でしょう。" >
+<!ENTITY Option_compat_only	" (互換性テスト用)" >
+<!ENTITY tt_smallBars_old_deprecated 	"<pg />このオプションは互換性のテストのためだけにあり、<b>近いうちに削除します</b>。
+    <pg />あなたの環境下では小ツールバーをつくるのにこのオプションがどうしても要るというのであれば、サポートサイトにご意見をお願いします (URLは https://tiny.cc/hidec )。
+    Firefox40のスタイルコード (CSS) に沿わない旧式のアドオンとの組み合わせで起こり得ます。">
+
+
+<!ENTITY Top_edge_margn_pos_sets 		"上端の遊びの設定" >
+<!ENTITY    Cust_Top_edge_margn_f_tbar	"ツールバーに対する上端の遊び幅 (ピクセル単位、負の値で内容が上方向へ): " >
+<!ENTITY tt_Cust_Top_edge_margn_f_tbar		"&quot;Firefox 4+ Titlebar&quot; や &quot;Place Tabs In Titlebar&quot; が有効のときに無効になります (自動計算が使われます)。" >
+<!ENTITY In_Maximized__window			"最大化したウィンドウで" >
+<!ENTITY tt_top_marg_max					"全画面表示では不正値
+    (最大化したFirefoxではこれを -1 や -2 にすることで上端のタブが画面の上端に接するようになります)" >
+<!ENTITY In_Un_Maximized__window		"最大化していないウィンドウで" >
+
+
+<!ENTITY Top_margn_style_main_win		"メインウィンドウ (大元の部分) の<html:br/>上端遊び幅" >
+<!ENTITY tt_Top_margn_style_main_win		"Firefoxの内容の上端部分に影響のある他アドオンやテーマとの互換性に寄与します。" >
+<!ENTITY Untouched__default				"触れさせない (標準値)" >
+<!ENTITY    Enforce_zero_top_mrgin		"上端遊び幅をゼロに強制する" >
+<!ENTITY tt_Enforce_zero_top_mrgin			"例えば最大化したFirefoxでは、Noia4などのテーマでは上端び多少の空間ができることがあり、これを修正ないし取り除きます。" >
+
+
+<!ENTITY  old_topEdge_titlebar_msg 		"削除済み旧版オプションの「上端部の外観」。ここをクリックすると文言を取払います。" >
+
+
+<!ENTITY    Translation_Notes 	"翻訳に関して">
+<!ENTITY tt_HCTP_BOTTOM_NOTES   "HCTPはどの箇所も多言語対応しています (どの言語にも翻訳できます)。詳しくはホームページのTranslation Tipをどうぞ。" >
+
+
+<!--  *** This DOESN'T NEED to be translated!!! *** Developer only option!! ***  -->		
+<!ENTITY Devel__Print_debug			"[開発者/テスター] エラーコンソールにデバッグ情報を印字する (標準値は「いいえ」)" >
+<!ENTITY Devel__Print_debug_audio	"&quot;Error&quot; や &quot;Warn&quot; の出力があるとき<b>音声フィードバック</b>を鳴らす。" >
+
+
+<!--  __________*** OTHER SETTINGS ***__________  -->
+
+<!ENTITY Fx_internal_options 		"Firefoxの内部設定" >
+
+<!ENTITY Search_Bar 				"検索バー:" >
+<!ENTITY    SearchBar_new_UI		"【このオプションを無効化できるのはFirefox43以前のみです】 Firefox34で追加された新しい検索バーのUI (アイコンのある) を有効にする。" >
+<!ENTITY tt_SearchBar_new_UI		"チェックを外すと、検索バーで検索サイトの名前の一覧が出るように、またその選択が維持されるように復元します。要再起動。" >
+
+<!ENTITY Search_in_new_tab		"検索バーからの検索は新しいタブで開きます (従って現在の作業内容は失われません)。" >
+
+<!ENTITY    Other_intOpts 	"その他">
+
+<!ENTITY    Tab_switch_MRU		"タブ切り替え: &quot;Ctrl+Tab&quot; でのタブ切り替えにMRU (Most Recently Used; 最近使ったもの) を割り当てます! 最後に見ていたタブに簡単に移動できます。" >
+<!ENTITY tt_Tab_switch_MRU		"さらに、&quot;Ctrl+Tab&quot;を長押しすると、Windowsで言うところの &quot;Alt+Tab&quot; に似たサムネイルプレビューの一覧になります (2つ以上タブがある場合)。" >
+
+<!ENTITY devPixelsPerPx_label 	"<pg1/>Firefox内の文字や各項目の大きさを変える" >
+<!ENTITY devPixelsPerPx_tt 		"<pg  />この設定はWindowsの画面の設定にあるものと同じですが、Firefoxだけに効果を持ちます。
+      <pg /> OS側とは異なるフォントサイズを設定したいときにどうぞ。多画面環境など。" >
+<!--  <pg />(Using Firefox hidden preference: 'layout.css.devPixelsPerPx')  -->
+<!ENTITY devppp_default	"システム標準値" >
+<!ENTITY devppp_100 	"100％ ― 小さめ" >
+<!-- Shouldn't need any translation -->
+<!ENTITY devppp_120     "120&percent;">
+<!ENTITY devppp_125 	"125％ ― 普通" >
+<!ENTITY devppp_150 	"150％ ― 大きめ" >
+<!ENTITY devppp_9x 		"94％ ― 試験的" >
+
+
+<!ENTITY HCTPs_extra_options 		"HCTPの拡張設定:" >
+<!ENTITY Wider_Bookmark_panel		"広めブックマークパネル (Ctrl+D): ブックマークの長い名前がよく見えるように" >
+
+<!ENTITY    Stop_image_animations	"Shift+Esc のショートカットキーで画像のアニメーションを止める (裏での読み込みも)" >
+<!ENTITY tt_Stop_image_animations		"この挙動はバージョン20以前のFirefoxでのEscキーと同じです。&quot;SuperStop&quot; アドオンのように動作します。お手元では &quot;SuperStop&quot; がうまく動かない場合にお試しください。" >
+
+
+
+<!--  __________*** Dynamic Toolbars  section ***__________  -->
+<!ENTITY dynBars_name     			"動的ツールバー">
+
+
+
+<!ENTITY button.Advanced     	"拡張設定">
+
+<!ENTITY hc_rcOnly 			"新しいオプション。リリース候補版でのみ最初に現れます。" >
+
+<!ENTITY  hc_isBetaFeature 	"ベータ版機能" >
+<!ENTITY tt__isBetaFeature 	"ベータ版機能には見た目に軽微なひずみがあるかもしれません。" >
+
+<!ENTITY forUpdatedSections	" (改訂!)">
+
+<!ENTITY bOld		"[旧]" >
+<!ENTITY NEWe		"新!" >
+<!ENTITY SOONe		"近日" >
+
+
+<!ENTITY Are_you_sure     	"よろしいですか？">
+
+<!ENTITY See_homepage_for_ex	"設定例はホームページ参照">
+
+<!ENTITY optionForFx57plus     	"Option for  &brandShortName; 57 and later">
+
+
+<!ENTITY tt_DEPRECATED_IMMINENT     	"このオプションは用済みであり近いうちに削除します。必要であれば、サポートサイトに連絡をください。よろしくお願いします。">
+
+
+<!ENTITY Msg__New_Feature_RC_versions  "リリース候補版に新機能があります! 詳細はホームページの &quot;Development Channel&quot; 部で。" >
+
+
+<!-- ** MULTI LANGUAGE DIALOG ** -->
+<!ENTITY   MultiLanguage_but     	"多言語対応。">
+<!ENTITY   MULTI_LANGUAGE_DIALOG   	"多言語対応">
+<!ENTITY   multi_lang_subtitle 		"この設定ダイアログを以下の言語で開くことができます。<b>同時に開く</b>ことも可能です。">
+<!ENTITY   multi_lang_subtitle_tt 		"<pg />未完の翻訳言語 (初めから有効になっていないもの) との間で切り替えるのに有用。
+      <pg />翻訳する人にもおすすめ" >
+
+
+<!-- ** Please fill this entry (eg. with 'Done') only when finishing the translation/improvements, in order to avoid showing '100percent' 
+     (eg. the spanish one has still many entries MACHINE-translated only)   **   You can check translation status text in opt_lang.dtd.    
+     THANKS A LOT! -->
+<!ENTITY   Translation_endOfJob_entry    "Done! (完了!) (ja-JP)">
+

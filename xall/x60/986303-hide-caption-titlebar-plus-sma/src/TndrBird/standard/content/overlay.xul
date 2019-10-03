@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin"                              type="text/css"?>
+<?xml-stylesheet href="chrome://HideCaptionTb/skin/appmenu_button.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://HideCaptionTb/content/components/HomeToolbarHandler_style.css"  type="text/css"?>
+
+<!-- from overlay_new.xul -->
+<?xml-stylesheet href="chrome://HideCaptionTb/skin/style_new.css"      type="text/css"?>
+
+
+<!DOCTYPE window [
+<!ENTITY % brandDTD       SYSTEM "chrome://branding/locale/brand.dtd"        >	%brandDTD;
+<!ENTITY % optionsDTD     SYSTEM "chrome://HideCaptionTb/locale/option.dtd">  %optionsDTD;
+]>
+
+<overlay 	id="HideCaptionTb-overlay" 
+			xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+			xmlns:html="http://www.w3.org/1999/xhtml" >
+		<!-- 
+<script src="chrome://HideCaptionTb/content/DevelGlobal_Madara_Lib.js"></script>
+		-->
+
+<!-- NOW THESE loaded as BOOTSTRAPPED!!
+<script src="chrome://HideCaptionTb/content/HCPlusLib.js"></script>
+<script src="chrome://HideCaptionTb/content/HideCaption.js"></script>
+<script src="chrome://HideCaptionTb/content/components/HomeToolbarHandler.js"></script>
+-->
+
+<!--  chromemargin="0,4,4,4" aca jodia en linux en Firefox tipo ver 20 vd?  -->
+<window id="messengerWindow"   onclose="return (HideCaption? HideCaption.onCloseWindow(): true);" > <!--  dz_home_enabled="true"  -->
+	
+	<hbox id="hcp-root-box"   class=""   insertbefore="titlebar"  > <!--  setContentPosition_doXXX  -->
+	
+		<!-- APPMENU-BUTTON ('Home') -->
+		<hbox id="hctp-appmenu-button-cont-fixed" 
+			class="setContentPosition   hc-hideon-fx4titlebar-all-platform" 
+			context="hcp-menu-windowcontrols" 
+			>
+		  <hbox id="hctp-appmenu-button-container-subparent" >
+		   <hbox id="hctp-appmenu-button-container" >
+			<button id="hctp-appmenu-button"
+				type="menu"
+				label="&brandShortName;"
+				style="-moz-user-focus: ignore;"
+	              
+				onmousedown="HCPlusLib.openAppmenuPopup(event, this, false);" 
+				context="hcp-menu-windowcontrols" 
+				
+				class="hctp-appmenu-button-cls"
+				/>  <!--  hcp_appbutton_style="fx_home_small.png"  -->
+				
+			<button id="hctp-appmenu-button-nomax"
+				type="menu"
+				label="&brandShortName;"
+				style="-moz-user-focus: ignore;"
+	              
+				onmousedown="HCPlusLib.openAppmenuPopup(event, this, false);" 
+				context="hcp-menu-windowcontrols" 
+				
+				class="hctp-appmenu-button-cls"
+				/>
+		   </hbox>
+		  </hbox>
+		</hbox>
+		
+		<panel  id="hctp-fallback-menu">
+		  <hbox flex="1">
+			<description flex="1">   Main Application Menu not found. <html:br /> This happens when the 'AppMenu' button have been just removed by the User (Ie. using:  View > Toolbars > Customize).  <html:br /> To have the Menu again, You can restart Thunderbird or 'Customize' again to place such button back in a toolbar.
+			</description>
+		  </hbox>
+		</panel>
+
+	</hbox>
+	
+</window>
+
+<!--  insertbefore="dummy_last"  -->
+<toolbar id="tabs-toolbar" >
+	<hbox 	class="hctp-titlebar-placeholder"  type="hctp-appmenu-button"  ordinal="0" > 
+		<hbox      id="hctp-appmenu-button-placeholder" 
+                class="hctp-appmenu-button-placeholder"         width="25" />
+		<hbox 	   id="hctp-appmenu-button-placeholder-nomax"
+                class="hctp-appmenu-button-placeholder-nomax"	width="0"  />
+	</hbox>
+</toolbar>
+
+
+<!-- add in App's (legacy) MAIN MENU   ../skin/hcp_icon.png -->
+<menupopup id="taskPopup" >
+    <menuseparator insertafter="menu_preferences"       id="menu_addon_hctp_separator" />
+	<menuitem      insertafter="menu_addon_hctp_separator"  image="chrome://HideCaptionTb/skin/hcp_icon16.png" class="menuitem-iconic" 
+		label="&menuitem.hide.caption.t.plus.options;" key="o" accesskey="P"
+		oncommand="HCPlusLib.openOptionDialog(event);" context="hcp-menu-windowcontrols" />
+</menupopup>
+
+<!-- add in Main APP-MENU's  Tb-button -->
+<menupopup id="appmenu_taskPopup" >
+    <menuseparator insertafter="appmenu_sanitizeHistory"       id="appmenu_addon_hctp_separator" />
+	<menuitem      insertafter="appmenu_addon_hctp_separator"  image="chrome://HideCaptionTb/skin/hcp_icon16.png" class="menuitem-iconic" 
+		label="&menuitem.hide.caption.t.plus.options;" key="o" accesskey="P"
+		oncommand="HCPlusLib.openOptionDialog(event);" context="hcp-menu-windowcontrols" />
+</menupopup>
+
+</overlay>

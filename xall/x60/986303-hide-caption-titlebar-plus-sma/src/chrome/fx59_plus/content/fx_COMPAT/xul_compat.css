@@ -1,0 +1,87 @@
+
+
+
+/** Extracted from Firefox 58,  global.css **/
+
+prefwindow {
+  -moz-appearance: window;
+  background-color: -moz-Dialog;
+  color: -moz-DialogText;
+  font: message-box;
+}
+
+
+
+/** Extracted from Firefox 58,  xul.css **/
+
+
+/********** preferences ********/
+
+
+prefwindow,
+prefwindow:root /* override :root from above */ {
+  -moz-binding: url("preferences.xml#prefwindow");
+  -moz-box-orient: vertical;
+}
+
+prefpane {
+  -moz-binding: url("preferences.xml#prefpane");
+  -moz-box-orient: vertical;
+}
+
+prefwindow > .paneDeckContainer {
+  overflow: hidden;
+}
+
+prefpane > .content-box {
+  overflow: hidden;
+}
+
+prefwindow[type="child"] > .paneDeckContainer {
+  overflow: -moz-hidden-unscrollable;
+}
+
+prefwindow[type="child"] > prefpane > .content-box {
+  -moz-box-flex: 1;
+  overflow: -moz-hidden-unscrollable;
+}
+
+preferences {
+  -moz-binding: url("preferences.xml#preferences");
+  visibility: collapse;
+}
+
+preference {
+  -moz-binding: url("preferences.xml#preference");
+  visibility: collapse;
+}
+
+radio[pane] {
+  -moz-binding: url("preferences.xml#panebutton") !important;
+  -moz-box-orient: vertical;
+  -moz-box-align: center;
+}
+
+prefwindow[chromehidden~="toolbar"] .chromeclass-toolbar {
+  display: none;
+}
+
+
+/**  HCTP's SPECIAL section for Fx 59+ !!  **/
+
+/**  [dz_z_sys_intFlags~="test59"]  **/
+prefwindow[hctp_isFx61orLater="true"]#hcp_options_window    radiogroup.paneSelector:before {
+	content: "HCTP copy for Firefox 61+ \Ais in BETA state !";
+	font-size: 112%;
+	font-weight: bold;
+	margin: 2px 10px 0px 2px !important;
+	
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	padding: 4px 3px 4px 6px;
+	box-shadow: 0 0 6px orange;
+
+	display: -moz-box;
+		
+	white-space: pre;
+}

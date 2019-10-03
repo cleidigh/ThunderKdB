@@ -1,0 +1,779 @@
+
+<!--  ___***** Translators Notes: *****___
+   ***  1) New!: Now *All* texts and tooltips have css style: "pre-line". So {html:br} isn't needed for line breaks, (but can be used for convenience.)
+   ***  2) Please note that some tooltips-texts *can't* have line-breaks or any tag (the texts in a "tooltiptext" attribute)
+   ***  3) And there is also several 'hard spaces' characters (alt+255), like this:' ', to prevent some ugly wrapping and to make more space between texts.  
+   ***  (I use NOTEPAD++ free editor)  *** -->
+
+<!ENTITY dialog.hide.caption.titlebar.plus "Hide Caption Titlebar Plus 选项">
+<!ENTITY dialog.apply "应用">
+	
+<!ENTITY tab.main              	"主要">
+<!ENTITY tab.look.feel         	"外观和体验">
+<!ENTITY tab.advanced.settings 	"高级设置">
+<!ENTITY tab.other.settings    	"其他设置">
+<!ENTITY tab.float.toolbars    	"浮动工具栏">
+
+
+<!--  __________*** Section:   LOOK AND FEEL ***__________  -->
+
+<!ENTITY caption.show.custom.caption.titlebar   "显示自定义标题/标题栏：">
+<!ENTITY      tt.show.custom.caption.titlebar 		"包括当前网页标题。在系统标题栏隐藏时有效。">
+<!ENTITY radio.in.unmaximized.windows           "在非最大化窗口中">
+<!ENTITY radio.small.caption                    "较小，就像经典标签页（新）">
+<!ENTITY radio.cc_never                         "从不">
+
+<!ENTITY w.default  		"默认">
+<!ENTITY w.Enabled  		"启用">
+<!ENTITY w.Disabled			"禁用" >
+<!ENTITY w.No				"否" >
+
+
+<!ENTITY    System_borders_c "系统边框：" >
+<!ENTITY tt_System_borders_c	"禁用，或者设置非最大化 Firefox 窗口的在左侧、右侧和底边的系统边框宽度。（精细宽度调整仅在 Aero 玻璃风格的桌面上有效）。" >
+<!ENTITY Yes_full_width		 "是（完整宽度）" >
+<!ENTITY    Yes-_smaller	 "是，较小" >
+<!ENTITY tt_Yes_smaller_2			"Firefox 12+ 默认" >
+<!ENTITY tt_Yes_smaller_7			"默认选项。推荐用于 Aero 玻璃风格的桌面。它几乎完全隐藏边框（在玻璃风格下），类似“禁用”选项，但没有其缺点。（你可以用“激活自定义边框”延长在边框的大小调整区域。）" >
+<!ENTITY tt_Yes_smaller_7_notReal	"同上一个选项，额外空间在边框（仅在玻璃风格并已启用“&enable_customizable_buts;”的桌面有效）" >
+<!ENTITY tt_sysBorders_disabled	"<pg /> 推荐 Aero-基本的桌面使用。这允许 Personas 主题完全采用窗口背景。（旧版默认选项）。
+			<pg /> 玻璃桌面：如果“&enable_customizable_buts;”已启用，非最大化的窗口在一些情况下可能丢失圆角和窗口阴影。" >
+
+<!ENTITY    custom_bord_cornr_rz	"激活自定义边框和角落的大小调整器" >
+<!ENTITY tt_custom_bord_cornr_rz		"可以用于延展在边框的大小调整区域，如果系统边框太小" >
+<!ENTITY Make_corners_visible		"使角落可见。" >
+
+<!ENTITY    Border_color			"边框颜色" >
+<!ENTITY tt_Border_color				"颜色在系统边框被禁用时可见" >
+
+<!--    tt_Skin 			"Custom skins capability will be added too." -->
+<!ENTITY title_Skin 						"皮肤：">
+<!ENTITY radio.classic.skin  						"经典皮肤" >
+<!ENTITY radio.new.aero      						"Aero 风格"   >
+<!ENTITY radio.automatic.current.theme.skin.fixed   "自动。当前主题的皮肤（固定位置）" >
+<!ENTITY radio.automatic.current.theme.skin         "自动。当前主题的皮肤（经典位置）" >
+<!ENTITY radio.w10like         						"新的：适用于 Win 10 的 Firefox 风格" >
+<!ENTITY radio.w10like.light   						"新的：适用于 Win 10（亮）的 Firefox 风格" >
+<!ENTITY    tt.w10like.light      						"在 Persona 主题激活时，按钮的图标将与 Win 10 常规类似" >
+<!ENTITY radio.w10like.high   						"新的：适用于 Win 10（高对比度）的 Firefox 风格" >
+<!ENTITY    tt.w10like.high       						"在 Persona 主题已激活时，按钮的图标像是 Win 10 的常规风格" >
+
+<!ENTITY mmc.custom.mTitle							"Custom options">
+<!ENTITY mmc.custom       							"Custom option">
+<!ENTITY tt_custom_mmc__begin    						"Advanced options: custom file/s to be placed in: ">
+<!ENTITY or_custom2_css_and_so_on						"   (or custom2.css and so on)">
+
+
+<!--    CUSTOM styles css files   -->
+<!ENTITY can_be_anyname_files				  "   ([custom] can be just any name, and you can add several files)">
+
+
+<!ENTITY caption.min.max.close.buttons.location 		"自定义最小化、最大化和关闭按钮（右上角）：">
+<!ENTITY caption.min.max.close.buttons.loc.extrainfo 	"（“定制”中还有此控件）">
+<!ENTITY label.about.hidden.and.customize  					"界面定制：使用 工具栏 - 定制，同一按钮可以放在标签页栏或任何工具栏" >
+
+<!ENTITY In_Maximized_window 		"在最大化窗口中：">
+<!ENTITY In_Un_Maximized_window 	"在非最大化窗口中：">
+<!ENTITY radio.bloc.micro     				"微型关闭按钮" >
+
+<!ENTITY checkbox_maxbuttons_canfloat     	"微型关闭按钮：浮动的按钮，在悬停或主菜单显示时出现" >
+
+
+<!--  ___*** (These appears at dialog bottom line) ***___  -->
+
+<!ENTITY button.see.more.in.readme.file "更多见自述文件（README）">
+<!ENTITY button.ctrl.click.opens.in.new.tab "Ctrl+单击在新标签页中打开">
+<!ENTITY DEPRECATED_label.1 "[1]">
+<!ENTITY label.options.changes.reflects.on.the.fly.in.fir21  "大多数选项更改即时可见。" >
+<!ENTITY label.prefix.options.with  "选项">
+<!ENTITY label.R "[R]">
+<!ENTITY label.R.class "<z class='needRst'>[R]</z>">
+<!ENTITY label.other.options.saved.instantly.too.but.restart "需要重启 Firefox 才能看到更改。">
+<!ENTITY Restart_needed "[R]estart needed.">
+ 
+ 
+
+<!ENTITY enable_customizable_buts 	"启用可定制按钮（最大化/最小化/关闭）">
+<!ENTITY disable_win_system_buts	"（禁用系统提供的窗口管理按钮）">
+<!ENTITY tt_enable_customizable_buts 	" <pg0/>• 使用此选项，再次使用<b>可定制的按钮（最小化/最大化/关闭）</b>。
+	<pg /> 
+	<pg /> 它几乎只在<b>非最大化的</b> Windows 7 上的 Firefox 中有外观变化：
+	<pg /> ⋅ 这禁用 Fx 窗口背景的玻璃（半透明）效果（但启用一个可选的玻璃风格模拟）。
+	<pg /> ⋅ 如果系统边框已改为禁用，<html:b>非最大化</html:b>的窗口在一些情况下可能丢失圆角和窗口阴影。
+	<pg /> ⋅ 不影响全屏模式下的任何外观。
+	<pg /> 
+	<html:hr />
+	这包括一个对 Firefox 12 及以上版本的变通方法。
+	&nbsp;（原 Firefox12+ 的问题仍待修复。详见附加组件首页和 Firefox Bug 730219。此 Firefox 问题使系统按钮（最小化/最大化/关闭）在 Aero 玻璃风格的桌面上始终活跃）
+">
+<!ENTITY item_0_none							"否（Firefox 默认）">
+<!ENTITY item_11_Using_Glasslike_win_bkg_recom	"[1.1] 使用玻璃风格窗口背景（推荐）">
+<!ENTITY   tt_11_Using_Glasslike_win_bkg_recom		"<pg /> 推荐选项。支持 Personas 主题。
+			<pg /> 类玻璃风格。仅在启用玻璃风格的系统上（“&Custom_Win_bkg_color;”必须被激活）
+			<pg /> 仅在您发现问题时尝试 [2] 和 [3]。（主要是恢复的窗口定位不良，搭配其他某些附加组件时，在 Firefox 20 之前有一些报告）。 ">
+<!ENTITY item_12_Using_solid_win_bkg_recom		"[1.2] 使用纯色窗口背景（推荐）">
+<!ENTITY   tt_12_Using_solid_win_bkg_recom			"<pg /> 推荐选项。支持 Personas 主题。">
+<!ENTITY item_2_Same_appearance_compat			"[2] 相同外观。（仅供兼容性测试）">
+<!ENTITY   tt_2_Same_appearance_compat				"仅在您发现 Firefox 窗口位置错误、内容未对齐等异常时尝试此项。（使用另一种方法）">
+<!ENTITY item_3_Another_compat_test				"[3] 第二个兼容性测试选项">
+<!ENTITY   tt_3_Another_compat_test					"如果存在，隐藏 Persona 主题。">
+
+
+
+<!ENTITY Custom_Win_bkg_color		"自定义窗口背景色" >
+<!ENTITY tt_Custom_Win_bkg_color		"包括可选的玻璃风格背景。默认颜色：#92ACCE（亮蓝色）" >
+<!ENTITY active_no_persona			"Persona 主题存在时激活。（默认）" >
+<!ENTITY active_always				"始终激活。（隐藏存在的 Persona 主题）" >
+<!ENTITY active_always_tt				"Can be useful also for active Dynamic/Floating Toolbars with newer Firefox's (Compact) Light &amp; Dark themes" >
+
+
+<!ENTITY hover_activ_delay_time		"悬停特定时间<html:br />后激活" >
+<!ENTITY deactivation_delay_time	"离开特定时间<html:br />后取消激活" >
+<!ENTITY p_milliseconds				"（毫秒）" >
+
+
+
+<!--  __________*** Configurable Actions! ***__________  -->
+  
+<!ENTITY Define_Action_for			"定义操作：">
+ 
+<!ENTITY action_fxbut_title 		"自定义 Firefox 按钮
+
+			<z class='tiny'>点击查看信息</z>">
+<!ENTITY    tt__fxbut_title 			"<pg0/> <b>新：可配置操作：Firefox 和关闭按钮。</b> 
+			<pg />（位于屏幕/应用程序的角落。也可使用“定制”界面调整）
+			<pg />
+			<pg2/> 新添加了很多功能，包括鼠标辅助按钮、中键、滚轮、双击，以及 <b>Shift、Ctrl、Alt 键</b>等！
+			<pg /> （参见操作提示了解 Shift 键的互补或反向作用）
+			<pg /> <z class='is_recom'>绿色选项为推荐</z>，<z class='is_defau'>蓝色选项为默认。</z>
+			<pg /> 请尝试下面的预置按钮（推荐 1、2 及默认）
+			<pg /> <b>声效：</b>
+			<pg /> 在尝试预置配置后，您可以进一步测试和为操作选择自行提供的声效。
+			<pg /> 某些操作时还会播放一个“未找到”声效（仅在该动作配置有一个有效声效时）。该声效在比如：
+			<pg /> <pg /> <i>[&item_undoCloseTab;]</i>：没有更多已关闭的标签页来恢复。
+			<pg /> <pg /> <i>[&item_closeNewerWindow;]</i>：没有更多窗口来关闭<i>（在活跃窗口之后打开的）</i>。
+			<pg /> 您可以设置关闭所有声音（“无”）以不听到任何未找到声效。
+">
+
+<!ENTITY action_closebut_tit_custom	"自定义关闭按钮">
+
+<!ENTITY action_closebut_title 		"关闭按钮   <einfo>（见工具提示）</einfo>">
+<!ENTITY    tt__closebut_tit_NOcustom	"请注意，推荐的选项 <i>'&enable_customizable_buts;'</i> <b>未激活</b>。因此在<i>某些</i> Windows 系统（例如玻璃风格的 Win7）中，这些操作不能配合 Windows 本身的关闭按钮使用。（此功能可以添加，但将具有一些局限性）">
+
+<!-- Can be used in txts related to 'Page History' popup menu   -->
+<!ENTITY nav_history				"页面历史" >
+
+<!ENTITY More_options_e				"更多选项..." >
+
+<!ENTITY check__closebut_mouseClick	"单击鼠标按钮后执行指定操作">
+<!ENTITY    tt__closebut_mouseClick 	"<bull />如果未选中（默认和推荐值），按下鼠标按钮就会执行。
+
+											     <z class='needRst'>[R]</z> 需要重启 Firefox 才会应用更改。">
+
+<!ENTITY ctrl_w_title				"<b> CTRL+W </b> 快捷键的操作：">
+<!ENTITY Fx_default_closeTab		"火狐默认（关闭当前标签页）" >
+
+<!ENTITY clHist_title 				"<b>&item_closeWithHistory;</b> 的操作：（后退和前进按钮启用时）">
+<!ENTITY clHist_popup 				"打开历史记录弹出菜单（默认）">
+<!ENTITY clHist_pop_back 			"打开历史记录弹出菜单和后退一页">
+<!ENTITY tt_Hist_pop_back 				"您可以使用 Alt+单击 关闭标签页，如果对话框、弹窗或其他烦人的东西在后退后出现。
+
+
+
+
+										<html:hr />（未解决小问题：历史菜单中的活跃项有时不会正确刷新）" >
+<!ENTITY clHist_pop_back_fw 		"打开历史记录弹出菜单和后退/前进一页">
+<!ENTITY tt_Hist_pop_back_fw 			"使用 Ctrl+单击 前进一页">
+<!--  using SAME TOOLTIP (tt_Hist_pop_back_fw)  -->
+<!ENTITY clHist_back_fw      		"Just go Back/Forward one page  (no popup)">
+
+
+<!ENTITY line_title 		"后退/前进时的额外视觉效果">
+<!ENTITY line_none 			"无">
+<!ENTITY line_clWHonly		"上述后退/前进时垂直红线移动">
+<!ENTITY Future_Option_b	"[未来选项]  ">
+<!ENTITY line_always		"后退/前进时始终垂直红线移动">
+<!ENTITY tt_ln_always 			"例如：使用浏览器的后退/前进按钮，鼠标的后退/前进按钮（通常在侧面），键盘快捷键。">
+<!ENTITY tt_ln_always_2			"<pg0/>Also, It plays a 'not-allowed' sound when It can't go further back/fw   (if <b>“&butt_butSound_action1;”</b> is enabled). ">
+
+
+<!ENTITY mButShort_primary 			"主：">
+<!ENTITY mButShort_second 			"次：">
+<!ENTITY mButShort_middle 			"中：">
+<!ENTITY mButShort_primary_dblclk 	"主键双击：">
+<!ENTITY mButShort_second_dblclk 	"次键双击：">
+<!ENTITY mButShort_middle_dblclk 	"Mid.  dblClick:">
+<!ENTITY mButShort_wheel 			"滚轮：">
+<!ENTITY mButShort_wheelLeft 		"滚轮向左：">
+<!ENTITY mButShort_wheelRight 		"滚轮向右：">
+
+
+<!ENTITY label_row_action_Primary 			"鼠标 <html:br /> 主按钮：">
+<!ENTITY    tt_row_action_Primary 				"即右手布局下的鼠标左键。">
+<!ENTITY label_row_action_Secondary 		"鼠标 <html:br /> 次按钮：">
+<!ENTITY label_row_action_Middle 			"鼠标 <html:br /> 中（滚轮）按钮：">
+<!ENTITY label_row_action_Primary_dblclk   	"鼠标 <html:br /> 主<b>（双击）</b>：">
+<!ENTITY    tt_row_action_Primary_dblclk 		"请注意，<b><i>单击操作</i></b>也将触发两次。所以，您应考虑在这里设置一个与单击操作不冲突的设置。一般来说，打开主菜单或右键菜单等简单操作是可以的。">
+<!ENTITY label_row_action_Secondary_dblclk  "鼠标 <html:br /> 次<b>（双击）</b>：">
+<!ENTITY    tt_row_action_Secondary_dblclk 		"&tt_row_action_Primary_dblclk;">
+<!ENTITY label_row_action_Middle_dblclk     "Mouse Middle<html:br /> <b>(double click)</b> :">
+
+
+<!ENTITY label_row_action_wheel 			"鼠标<html:br />滚轮：">
+<!ENTITY    tt_row_action_wheel 				"鼠标指针在按钮上时滚动滚轮">
+<!ENTITY label_row_action_wheelLeft 		"鼠标<html:br /> 滚轮向左  <b>倾斜</b> :">
+<!ENTITY    tt_row_action_wheelLeft 			"鼠标指针在按钮上时滚轮向左倾斜（通常只有水平滚动鼠标可使用此功能）">
+<!ENTITY label_row_action_wheelRight 		"鼠标<html:br /> 滚轮向右  <b>倾斜</b> :">
+<!ENTITY    tt_row_action_wheelRight 			"鼠标指针在按钮上时滚轮向右倾斜（通常只有水平滚动鼠标可使用此功能）">
+
+
+<!ENTITY mtit_typical_primary 		"典型鼠标主键动作：">
+<!ENTITY mtit_typical_secondary 	"典型鼠标次键动作：">
+<!ENTITY mtit_typical_annoyances 	"去除烦恼！">
+<!ENTITY mtit_typical_other 		"其他操作：">
+<!ENTITY mtit_typical_wheel 		"典型鼠标滚轮动作：">
+
+
+<!ENTITY Shift_Key 				"<pg0/>伴随 <b>Shift 键:</b> ">
+<!ENTITY Ctrl_Key 				"<pg0/>伴随 <b>Ctrl 键:</b> ">
+<!ENTITY Alt_Key 				"<pg0/>伴随 <b>Alt 键:</b> ">
+
+<!ENTITY item_closewin 			"关闭火狐窗口">
+<!ENTITY item_closewin_fxdefau	"关闭火狐窗口（默认）">
+<!ENTITY   tt_closewin 				"[&Shift_Key; &item_quitApplication;]">
+<!ENTITY item_minimize 			"最小化火狐窗口">
+<!ENTITY item_closetab 			"关闭当前标签页">
+<!ENTITY item_closetab_recomen	"关闭当前标签页（推荐）">
+<!ENTITY   tt_closetab 			    "推荐使用（用于鼠标主按钮），例如快速关闭标签页，尤其是如果关闭按钮在最大化模式下位于屏幕的右上角（即取代系统的任务栏时）。   
+									[&Shift_Key; &item_undoCloseTab;] ">
+<!ENTITY item_closeWithHistory 	"关闭标签页，如果没有页面历史">
+<!ENTITY item_closeWithHis_reco	"关闭标签页，如果没有页面历史（推荐）">
+<!ENTITY   tt_closeWithHistory  	"<pg0/><b> 关闭标签页，并避免丢失以前浏览的页面：</b> 
+	    	<pg />
+	    	<pg2/> 如果浏览器的<b>后退</b>按钮（向左箭头）被启用（也就是您已经浏览了一些页面），单击<i>目标 (1)</i>按钮打开<b>“&nav_history;”菜单</b> (2)（带有可选的<b>声音</b>提示）
+	    	<pg /> 这将在关闭标签页前检查以前浏览过的页面。您只需再次点击<i>目标</i>按钮来关闭该标签页、
+	    	这在尝试关闭大量标签页时比较有用，避免意外丢失重要信息。
+	    	<pg /> <b>CTRL+W</b> 热键可以被设置为这样做。参见<b>“更多选项”</b>按钮。
+	    	<pg /> <i>(1) 目标按钮的配置（例如“关闭”或“Firefox 按钮”）</i>
+	    	<pg /> <i>(2) 后退和前进的弹出菜单相同</i>
+			
+	    	一次附有修饰键的<b>鼠标</b>单击/滚轮操作会：
+	    	<pg /> [&Ctrl_Key; 打开弹出菜单，如果后退或前进按钮已启用] 
+	    	<pg /> [&Alt_Key; 无条件关闭标签页（从不打开弹出菜单）] 
+	    	<pg2/> [&Shift_Key; &item_undoCloseTab;]" > 
+
+<!ENTITY item_ShowAllTabs 		"Show All Tabs" >
+<!ENTITY   tt_ShowAllTabs 		"<pg /> List All Tabs in a popup menu.  (Ctrl + Shift + Tab)  
+   	<pg/> [&Shift_Key; &item_undoCloseTab;]
+	<html:hr /><pg /> Please note: this won't work if  <b>Menubar > View > 'Show All Tabs'</b>  option is missing.  This can happen when 'List All Tabs' button is hidden. (It can be done by eg. Tab Mix Plus addon)" >
+
+<!ENTITY item_undoCloseTab 		"恢复上一个被关闭的标签页">
+<!ENTITY item_undoCloseTab_reco	"恢复上一个被关闭的标签页（推荐）">
+<!ENTITY   tt_undoCloseTab 			"恢复上一个被关闭的标签页。  (Ctrl + Shift + T)。">
+
+<!ENTITY item_zapFrames 		"消除框架和插件">
+<!ENTITY   tt_zapFrames 			"从网页上移除它们。   
+									[&Shift_Key; &item_zapImages;]   
+									<einfo>('Zap plugins' 来自  https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_zapImages 		"消除图像">
+<!ENTITY   tt_zapImages 			"将网页上的图像替换为它们的替代文本（即alt属性，亦可称图像标题）。
+									[&Shift_Key; &item_zapFrames;]   
+									<einfo>(创意来自  https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_superStop 		"停止图像动画">
+<!ENTITY   tt_superStop 			"停止图像动画（和后台请求）。
+		<pg /> 这与 Firefox 早期版本（v20 及以前）中的 Esc 按钮效果相同。类似“SuperStop”扩展，如果“SuperStop”在您的环境中不能用，不妨试试这个。
+		[&Shift_Key; &item_BrowserReload;]">
+<!ENTITY item_BrowserReload 	"重新载入网页">
+<!ENTITY   tt_BrowserReload 		"重新载入网页 (F5)
+		[&Shift_Key; 跳过缓存的重新载入]">
+
+<!ENTITY item_closeNewerWindow 	"关闭上一个被打开的火狐窗口">
+<!ENTITY   tt_closeNewerWindow 		"在网页持续、未经询问打开火狐床时有用。这很安全，只会关闭活动的前景窗口打开的窗口。    
+									[&Shift_Key; &item_undoCloseWindow;]">
+<!ENTITY item_undoCloseWindow 	"恢复上一个被关闭的窗口">
+
+<!ENTITY item_PageUp   			"上一页">
+<!ENTITY item_PageDown 			"下一页">
+<!ENTITY item_Page_UpDown 		"上一页/下一页">
+<!ENTITY   tt_PageKeys   			"上一页/下一页。与键盘操作类似。                    （网页内容将被聚焦，里面活跃/被聚焦的元素将被采取相应命令）  
+									[&Ctrl_Key; 移动到页面的顶部/底部（类似 Home/End 按键）] 
+									[&Alt_Key; 向左/向右移动页面（即<i><b>水平滚动！</b></i>） ] 
+									[&Shift_Key; &item_Line_UpDown;] ">
+<!ENTITY item_Line_UpDown 		"上一行/下一行">
+<!ENTITY   tt_LineKeys   			"上一行/下一行:         与键盘操作类似。（上方向键/下方向键）。（网页内容将被聚焦，里面活跃/被聚焦的元素将被采取相应命令）  
+									[&Ctrl_Key; 移动到页面的顶部/底部（类似 Home/End 按键）] 
+									[&Alt_Key; 向左/向右移动页面（即<i><b>水平滚动！</b></i>）] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+<!ENTITY item_ZoomEnlarge   	"放大">
+<!ENTITY item_ZoomReduce   		"缩小">
+<!ENTITY item_Zoom_EnlRed		"放大/缩小">
+<!ENTITY   tt_ZoomKeys 				"缩小 (Ctrl + +) &nbsp; / &nbsp; 放大 (Ctrl + -)
+									[&Alt_Key;  重置缩放 ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY item_hc_context   		"HCTP 右键菜单">
+<!ENTITY item_hc_context_defau	"HCTP 右键菜单（默认）">
+<!ENTITY   tt_hc_context   			"[&Shift_Key; &item_mainPanelUI;] ">
+<!ENTITY item_mainPanelUI 		"打开火狐主菜单">
+<!ENTITY item_mainPanelUI_defau	"打开火狐主菜单（默认）">
+<!ENTITY   tt_mainPanelUI 			"[&Shift_Key; &item_hc_context;] ">
+
+<!ENTITY item_quitApplication	"退出 Firefox 应用（所有窗口）">
+<!ENTITY   tt_quitApplication		"[&Shift_Key; &item_closewin;] ">
+<!ENTITY item_FullScreen		"全屏">
+<!ENTITY   tt_FullScreen			"[&Shift_Key; &item_Maximize;] ">
+<!ENTITY item_Maximize			"最大化 / 恢复窗口">
+<!ENTITY   tt_Maximize				"[&Shift_Key; &item_FullScreen;] ">
+
+<!ENTITY item_NewTab			"Open a New Tab" >
+<!ENTITY   tt_NewTab 			"Open a New Tab.  (Ctrl + T)" >
+
+<!ENTITY devPixelsPerPx_label_2	"Change the size of text and other items" >
+<!ENTITY tt_toggleCssDevPx			"<pg /> Toggles between  <b>&devppp_default;</b>  &amp;  <b>&devppp_125;</b>
+	<html:hr />&devPixelsPerPx_tt;" >
+
+<!ENTITY item_DynBars_toggle	"&dynBars_name;!, toggle activation" >
+<!ENTITY   tt_DynBars_toggle		"<pg1/>&dynBars_name;: 
+	<pg3/>Default shortcut key:  <b>Ctrl + Q</b>
+	<pg3/>See Help Page in '&tab.float.toolbars;' panel." >
+
+<!ENTITY item_noaction 			"无">
+
+<!ENTITY item_advSelTab 		"选择上一个/下一个标签页">
+<!ENTITY   tt_advSelTab 			"选择上一个/下一个标签页。（Ctrl + PgUp/PgDown）
+									<pg0/>额外的“滚动”操作：
+									[&Ctrl_Key; 移动到页面顶部/底部（犹如 Home/End 键）] 
+									[&Alt_Key; 移动到页面左端/右端（即 <i><b>水平滚动</b></i>）] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+									
+<!ENTITY item_goBack 			"后退一页">
+<!ENTITY item_goForward 		"前进一页">
+<!ENTITY   tt_goBackFw_key 			"后退/前进一页：与浏览器的后退/前进按钮相同。
+									[&Ctrl_Key; 反向操作 （后退变前进，前进变后退）]
+									[&Shift_Key; &item_mainPanelUI;]">
+<!ENTITY item_go_BackForw 		"后退/前进一页">
+<!ENTITY   tt_go_BackForw 			"后退/前进一页：与浏览器的后退/前进按钮相同。
+									<pg0/>额外的“滚动”操作：
+									[&Ctrl_Key; 移动到页面顶部/底部（犹如 Home/End 键）] 
+									[&Alt_Key; 移动到页面左端/右端（即 <i><b>水平滚动</b></i>）] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY butt_butSound_tic_1 	"关闭标签页的声效">
+<!ENTITY butt_butSound_info1 	"页面历史出现的声效">
+<!ENTITY butt_butSound_action1 	"常规操作的声效">
+<!ENTITY   tt_butSound_action1 		"操作包括：
+		• <b>&item_zapFrames;</b> &nbsp; 和 
+		• <b>&item_closeNewerWindow;</b>。  
+		在有新的、未经请求的窗口后台打开时也会播放声效，它们可能是广告窗口，可能需要关闭。">
+<!ENTITY butt_butSound_wheel1 	"滚轮操作的声效">
+<!ENTITY   tt_butSound_wheel1 		"操作包括：
+									• <b>&item_advSelTab;</b> ">
+<!ENTITY butt_butSound_notFound	"“Not-allowed”  Sound">
+<!ENTITY   tt_butSound_notFound	"<pg/>Sound played when a certain action isn't allowed.
+	<pg/>Played only if such action has a valid sound configured.   
+	More info in <b>Custom Firefox button</b> title  &amp;  <b>More options > &line_title;</b>.">
+
+<!ENTITY only_volumen 	"<pg/>(Only volume changes allowed for now)">
+
+
+<!ENTITY snd_none     			"无">
+<!ENTITY Custom_Sound 			"自定义声效">
+<!--  This goes before the sound names. It's value in english is ' ' (a single space), bc babelzilla fails with empty value.  -->
+<!ENTITY sound_0 				" ">
+<!--  This goes AFTER the sound names.  Before them goes [sound_0] -->
+<!ENTITY sound 					"声效">
+<!ENTITY tt_Ths_snds_incl_in_Fx		"这些声效在 Firefox 中">
+<!ENTITY tt_Ths_snds_incl_in_hctp 	"这些声效在本附加组件中。">
+
+<!ENTITY Tick_snd_f_Web_shrt 	" 这些声效来自 Web（短链接）">
+<!ENTITY tt_Tick_snd_f_Web_shrt		"这些声效属于自由（署名），出处为 http://soundbible.com/2044-Tick.html  ">
+
+<!ENTITY tt_old_snd__begin 			"这五个声效在 Firefox 45 及更高版本中已不存在，但您仍可从 HCTP 的首页下载 'hctp_soundpack_1'（还包括2个附加的自定义声效）并复制声效文件到您的本地存储目录：">
+<!ENTITY tt_old_snd__cont1 			"       (同一文件夹/目录用于自定义声效文件)">
+
+<!ENTITY tt_custom_sound__begin 	"高级选项：自定义声效应放在：">
+<!ENTITY User_Home_Directory 	  	"用户 Home 目录">
+<!ENTITY or_custom2_mp3_and_so_on 	" &nbsp; (或 custom2.mp3 等等。重命名的 wav 或 ogg 文件应该也能正常使用)">
+
+<!ENTITY Volume_c				  "音量：">
+
+
+
+<!ENTITY label_butPref_default 		"默认操作。">
+<!ENTITY    tt_butPref_default 			"设置所有默认操作。无声效。">
+<!ENTITY label_but_recom_1			"推荐操作">
+<!ENTITY    tt_but_recom_1 				"设为预设的推荐操作。具有声效！">
+<!ENTITY label_but_recom_annoyances "设为推荐操作 #2。不会烦人">
+<!ENTITY    tt_but_recom_annoyances 	"设为推荐操作 #2：避免使用火狐按钮时烦人！具有声效。[&item_mainPanelUI;] 和 [&item_hc_context;] 等默认操作转至鼠标中键。">
+<!ENTITY label_but_recom_2_1  		"Recommended #2.1">
+
+
+<!ENTITY actt_title			"显示工具提示：">
+<!ENTITY   tt_title				"在各配置按钮的工具提示（悬停信息）中显示可用操作相关信息。">
+<!ENTITY actt_always		"始终">
+<!ENTITY actt_blockFirst	"鼠标“重新进入”时 [R]">
+<!ENTITY   tt_blockFirst		"正常情况下工具提示不会出现。但您可以将鼠标移出再移入按钮，您将看到工具提示。[R] 此选项需要重启 Firefox 才能使变更生效。">
+<!ENTITY actt_never			"从不">
+
+
+
+<!ENTITY System_TitleBar__title					"系统标题栏：">
+<!ENTITY check__Sys_TitleBar_always_hid 		"系统标题栏始终隐藏">
+<!ENTITY    tt__Sys_TitleBar_always_hid 			"<pg />此选项未选中（默认情况）时，系统的标题栏在下列情况下正常显示：
+			<pg2 /> • 在“标签页组”视图 (Ctrl+Shift+E) <i>（Firefox 45 起已移除！)</i>
+			<pg2 /> • 打印预览
+			<pg2 /> • 标签页工具栏隐藏时（例如某些弹出窗口）
+			<pg2 /> • 如果下面的选项允许它出现（始终）。
+			<pg2 />所以，您可以选中此项以始终隐藏它（即所有情况下尽力节省空间）。
+			<pg />（供参考：系统的标题栏被修改为类似自定义标题栏，显示一个额外的 Firefox 图标。这避免闪烁，尤其是切换到/出“标签页组”或“打印预览”时）">
+
+<!ENTITY check__Fxopt_Sys_TitlBr_always_prsnt 	"Firefox 选项：系统标题栏（几乎）始终存在">
+<!ENTITY    tt__Fxopt_Sys_TitlBr_always_prsnt 		"<pg /> 同样按钮也作为新的“标题栏”按钮在“定制”面板中可用。
+  													在选中状态，标题栏始终存在，除非在全屏模式下 (F11) ">
+
+
+
+<!ENTITY Fx_default_unchecked 		"（火狐默认：不选中）">
+<!ENTITY recommended_unchecked 		"（推荐：不选中）">
+
+
+
+<!ENTITY tt_custom_image__begin 		"高级选项：自定义图像应放置在：">
+<!ENTITY or_but_custom2_png_and_so_on	" &nbsp;（或者 but_custom2.png 等待。重命名的 gif 或 jpg 文件应该也能用）" >
+
+
+<!--  *** Color Picker popup *** -->
+<!ENTITY Opacity					"不透明度" >
+<!ENTITY Color_Hue					"色调" >
+<!ENTITY tt_Color_Hue					"您可以使用鼠标滚轮获得额外的色调值，例如滚动16次，您可以从红色浏览到紫色。" >
+<!ENTITY tt_txtbox_col_pick 	"手动更改后按 TAB 键使其生效。有效值为：" >
+<!ENTITY tt_Sys_col_pick_noWo	"如果选项面板已在浏览器内打开，系统颜色选择器不工作" >
+
+
+<!--  __________*** Section:   LOOK AND FEEL 2 ***__________  -->
+
+
+<!ENTITY   Options_Fx_Home_App_but 	"Firefox 应用程序主按钮（例如“火狐橙”）：" >
+
+<!ENTITY   check__hcp_home_enabled 	 "启用左上角的自定义 Firefox 按钮 (*)" >
+<!ENTITY   check__hcp_home_enabled_2 "（“定制”中还有此控件）" >
+<!ENTITY      tt__hcp_home_enabled 		"界面定制：使用“工具栏 » 定制”，同样的按钮可以放在标签页栏或任何工具栏。" >
+
+<!ENTITY Button_Style_Color		"样式/颜色" >
+<!ENTITY Fx_default_orng		"火狐默认（火狐橙）" >
+<!ENTITY Blue					"蓝色" >
+<!ENTITY Green					"绿色" >
+<!ENTITY Transp_with_Personas	"Personas 皮肤 - 透明" >
+<!ENTITY Transparent			"透明" >
+
+
+<!ENTITY Icon_Size_for_Maximized_win		"最大化窗口的图标/尺寸。" >
+<!ENTITY Icon_Size_for_UnMaximized_win		"非最大化窗口的图标/尺寸。" >
+<!ENTITY   ctn_dropmarker 	"箭头标记" >
+<!ENTITY   tt_ctn_dropmarker    "请注意，只有部分按钮尺寸有此箭头标记" >
+<!ENTITY   dm_auto 			"Firefox 默认" >
+<!ENTITY   dm_auto_invtd 	"Firefox 默认，反转" >
+<!ENTITY   dm_icon1 		"大箭头" >
+<!ENTITY   dm_icon1_invtd	"大箭头，反转" >
+<!ENTITY   dm_none	 		"无" >
+<!ENTITY   dm_old_default 	"HCTP 旧默认值 *" >
+<!ENTITY   tt_old_default 		"* 经典设置。（自很久以前，Windows 系统中什么也不显示）" >
+
+<!ENTITY   ctn_fx_text 	   "按钮文本" >
+<!ENTITY   tt_ctn_fx_text		"${BrandName} 是默认值，它会显示为往常一样（长按钮显示 'Firefox'/BrandName，小按钮则只显示首个字母）" >
+
+<!ENTITY   ctn_fx_image    "按钮图像" >
+<!ENTITY   fx_im_icon17 		"Firefox 图标" >
+<!ENTITY   fx_im_icon17_invtd	"Firefox 图标，反转" >
+<!ENTITY   fx_im_icon18 		"Firefox 图标 2" >
+<!ENTITY   fx_im_icon18_invtd	"Firefox 图标 2，反转" >
+<!ENTITY   fx_im_icon_classic	"Firefox 经典按钮" >
+<!ENTITY   fx_im_icon_browser	"Browser default Icon">
+<!ENTITY   fx_hc_icon 			"HCTP 的图标" >
+<!ENTITY   custom_image 		"自定义图像" >
+
+<!ENTITY    Fx_Main_menu_but 		"显示 Firefox 的主菜单（面板）按钮：">
+<!ENTITY tt_Fx_Main_menu_but			"（默认位于导航工具栏的右侧末端）。如果您在使用“自定义火狐按钮”，您可以隐藏此按钮获得额外空间。" >
+<!ENTITY    FxMenu_always_fxdefault	"始终（Firefox 默认）" >
+<!ENTITY    FxMenu_notif_badge		"仅当有通知" >
+<!ENTITY tt_FxMenu_notif_badge			"仅在它有通知/警告图标（例如 Firefox 同步遇到问题）时显示按钮" >
+<!ENTITY    FxMenu_never			"从不（不推荐）" >
+
+
+<!ENTITY   check__floatMenu 		"浮动主菜单：菜单离开菜单栏，在鼠标悬停在火狐主按钮 (*) 时或者按下 ALT 或 F10 键后浮动显示。" >
+<!ENTITY      tt__floatMenu 			"请确保隐藏非空的菜单栏（从右键菜单中取消勾选）以获得更多屏幕空间。" >
+<!ENTITY   check__floatM_pageTitle 	"网页标题，除了浮动菜单" >
+
+<!ENTITY floatM_adv_options			"浮动主菜单：高级选项：" >
+
+<!ENTITY floatM_style_title			"字体和背景 <b>颜色/样式</b>" >
+<!ENTITY floatM_style_default		"新样式（2016年9月起默认）" >
+<!ENTITY floatM_style_captionColor	"尝试遵循系统的窗口标题字体和背景色" >
+<!ENTITY floatM_style_captionC_tt		"排除 Persona 主题" >
+<!ENTITY floatM_style_oldColor		"旧样式，字体和背景色" >
+
+
+<!ENTITY Custom_style_files			"Custom style (.css) files:" >
+<!ENTITY Custom_style_files__tt			"Custom .css files for styling browser's own UI  (like the deprecated capability of Stylish). 
+	Use a comma-separated list for adding filenames   (assumed .css extension if not given)" >
+<!ENTITY files_located_homedir		"Files located at User Home Directory" >
+<!ENTITY Custom_style_files__failed		"File/s not loaded: " >
+
+<!ENTITY Apply_changes				"Apply changes" >
+
+
+
+<!ENTITY FULL_SCREEN_mode_options	"全屏模式选项：" >
+
+<!ENTITY check_fullscrButs_autohide "即便全屏模式下自动隐藏工具栏，Firefox 按钮和定制的最小化、最大化和关闭按钮也“固定”显示。（默认：是）" >
+<!ENTITY    tt_fullscrButs_autohide 	"<pg />包括全屏视频中。在取消选中状态，按钮将呈现为半透明。
+   				为了在全屏模式下不失去此能力，您可以保持此项未选中 
+   				（并且配置此按钮为小尺寸和基于透明，最小化对内容的干扰）。
+   				<pg />（“固定”按钮意味着这些固定在窗口的角落。
+   				您还可以将火狐橙及最小化/最大化/关闭按钮放在标签页栏/工具栏（通过“定制”），并随着工具栏始终隐藏）">
+<!ENTITY Autohide_in_FullScr_Videos	"全屏视频时自动隐藏（推荐：是）" >
+<!ENTITY Small_FScr_warn			"更小（更不明显）的“[网站] 已进入全屏显示”消息（例如视频）。（Fx&nbsp;默认：否）。" >
+
+<!ENTITY label__fullscr_tr_duration "全屏视频黑屏过渡时间：">
+<!ENTITY    tt__fullscr_tr_duration "推荐“无”，如果您反感黑色过渡。（设置在 Fx42 及以上版本有效）">
+<!ENTITY When_entering		"在进入 <html:br /> 时持续：" >
+<!ENTITY When_leaving		"在退出 <html:br /> 时持续：" >
+<!ENTITY None_p_fastest		"无（最快）" >
+<!ENTITY Fast				"快" >
+<!ENTITY Fx_Default_p_slow	"火狐默认（慢）" >
+				
+
+<!--  New Feature: “Special VERTICAL MAXIMIZE”  -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle     "垂直最大化功能：<html:einfo>标签页在<b>非最大化</b>模式下也位于顶端！</html:einfo>">
+<!ENTITY   VERTICAL_MAXIMIZE_subTitle   "<b>请在使用前点击这里查阅帮助！</b>新的<b>实验性</b>功能！<b>原型版</b>。">
+<!ENTITY   vertMax_switch_title     "激活<b>垂直最大化</b>：">
+<!ENTITY   vertMax_no     "否">
+<!ENTITY   vertMax_yes    "是">
+
+<!ENTITY    vmBehave_TITLE     "行为：">
+<!ENTITY tt_vmBehave_TITLE     "选项中的粗体文本更有价值。">
+
+<!ENTITY    vmBehave_default     	"默认（火狐窗口粘到桌面顶边和底边）">
+<!ENTITY    vmBehave_right         	"也粘到桌面右边">
+<!ENTITY tt_vmBehave_right      		"使关闭按钮留在桌面角落！就像最大化一样">
+<!ENTITY    vmBehave_left     		"也粘到桌面左边">
+
+<!ENTITY    vmBehave_noSize     	"只粘到桌面顶边（自由窗口高度）">
+<!ENTITY    vmBehave_top_right   	" &nbsp; 它贴合到右边和上边">
+<!ENTITY    vmBehave_top_left   	" &nbsp; 它贴合到左边和上边">
+
+<!ENTITY    vmBehave_bottom     	"仅贴合到桌面底边（窗口高度可调）">
+<!ENTITY    vmBehave_bottom_right   " &nbsp; 它贴合到右边和下边">
+<!ENTITY    vmBehave_bottom_left   	" &nbsp; 它贴合到左边和下边">
+
+<!ENTITY    vmBehave_leftRight_top 	"它贴合到左边、右边和上边（窗口高度可调）">
+<!ENTITY    vmBehave_leftRight_bot 	"它贴合到左边、右边和下边">
+<!ENTITY    vmBehave_leftRight     	"它贴合到左边和右边（“水平最大化”）">
+
+
+<!-- FYI: Tags like 'einfo', 'b' and 'i' CAN'T be nested or spaces are lost!!, SOLVED here using 'html:b' -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt              "<html:b>“垂直最大化功能”：</html:b>在<b>非最大化</b>的火狐窗口有效。
+	<pg0/><pg/>也可在 <i>HCTP 的右键菜单</i> 中激活（在最大化、最小化按钮及其他部分上点击两次）。最大化按钮在此生效时会显示亮边框。
+	<pg/>仅当 <b>'&enable_customizable_buts;'</b> 激活时有效。
+	<pg2/><b>请同时阅读</b>首页上的“VERTICAL MAXIMIZE”部分，了解更新细节！">
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__LINUX       "<b>LINUX 用户注意：</b>仅经过初步测试！Linux Mint、Cinnamon（两三年前）。
+	请注意，窗口-自动贴合桌面顶边功能可能会产生干扰。
+	多监视器下存在问题：火狐始终贴合到同一个监视器。
+	（下面的文字仅适用 Windows。）" >
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__SUBNOTES 	"<pg/><b>请注意：</b>火狐窗口可能在移动/调整大小后出现一点轻微的 <i>抖动</i>。
+	在按住后松开窗口边框以调整大小或者拖动到其他区域后，火狐窗口可能<b>快速上下移动10像素左右</b>。这是一个预期的反应，不会在浏览期间对界面产生其他干扰。使用 <i>浮动菜单</i> 的网页标题区域来拖放可以避免它。（例如用 Alt 键激活它）
+	<pg/>拖动：在 <i>窗口自动贴合</i> 激活时，如果您尝试抓住上边缘以拖动窗口，它将最大化。要避免此问题，您可以在松开鼠标按钮前向下移动，或者激活“垂直自动贴合”（使用 Win+Shift+上方向键）。
+	<pg/>已在微软 Windows 上进行测试。" >
+
+
+
+
+<!ENTITY Drag_Window_capab_opt			"拖动窗口选项：" >
+<!ENTITY    Drag_win_via_tabbar_defno	"使用标签页栏的空白处拖动（默认：否）" >
+<!ENTITY tt_Drag_win_via_tabbar_defno		"这已经在 Firefox 的一些工具栏组合中启用。（例如在使用 Areo 玻璃风格的 Windows 桌面上）。这可能使滚动箭头始终出现在标签页栏" >
+<!ENTITY and_un_maxim_with_dblclk		"（&amp; 双击切换最大化状态）" >
+
+
+<!ENTITY    Enable_Ctrls_Widgets_Drag_Win 	"启用控件/小工具拖动窗口" >
+<!ENTITY tt_Enable_Ctrls_Widgets_Drag_Win		"包括兼容性选项，例如“Vertical Toolbar”的自动隐藏选项。" >
+
+<!ENTITY All__prevver_2_8_default			"所有（版本 [2.8.*] 以前的默认设置）" >
+<!ENTITY All_excpt_othrAddn_SpsWidgts_def	"所有，除了其他附加组件的空白小工具（默认）" >
+<!ENTITY tt_no_foreign_spaces					"配合其他有“垂直工具栏”<b>自动隐藏</b>选项的扩展的兼容选项（如果有一个有拖动窗口能力的空白小工具，这也不能生效）
+				<html:hr />
+				备注：如果“垂直工具栏”的自动隐藏仍然无效，您可以使用“空白不使用拖动”选项。
+				（这可能发生，如果在用户定制后，垂直工具栏包含 HCTP 的空白工具。They're the ones shown with [h] prefix in the Label when inside the '其他工具调色板'） 
+				" >
+<!ENTITY    No_drag_for_Spaces_Widgets		"不使用空白小工具拖动" >
+<!ENTITY tt_No_drag_for_Spaces_Widgets			"在以后，它将添加排除其他小部件（例如“网页-标题”等）的选项" >
+
+
+<!ENTITY Easy_of_use__scr_corner__Fitts_law	" (*) 增加便捷性，因为该按钮/控件在最大化模式下通常在<b>屏幕一角</b>。
+		（重点是区分“边缘”与“一角”）" >
+
+		
+		
+<!--  __________*** Section:   ADVANCED SETTINGS ***__________  -->
+
+
+<!ENTITY hidTit__Dont_use		"不使用" >
+<!ENTITY hidTit__use			"使用" >
+
+<!--  __________*** FOR LINUX/OSX ONLY ***__________  -->
+<!ENTITY   title__alternat_hide_titbar_feature__default_Use		"  替代隐藏标题栏特性（默认：使用）" >
+<!ENTITY comment__alternat_hide_titbar_feature					"在 Linux / Gnome（例如 Ubuntu）下成功隐藏标题栏，仅在上述环境中测试过。
+		大致相当于“窗口管理器中”的“Window-decorations”（例如 Ubuntu 中的 'Compiz-Config'） 
+		<einfo> &nbsp; &nbsp;（使用内部的 'hidechrome' 属性）</einfo> " >
+
+
+<!--  ______*** Small-Tabs and Small-Toolbars MOVED TO LOOK_AND_FEEL_2 ***______  -->
+
+<!ENTITY Styling_options_to_max_spc			"风格选项：<einfo>（最大化利用内容空间）</einfo> " >
+
+<!ENTITY    Smaller_Tabs_and_Tab_Bar		"较小标签页和标签页栏" >
+<!ENTITY tt_Smaller_Tabs_and_Tab_Bar			" <pg /> 可配合 <b>Tab Mix Plus 的多行功能</b> 使用！（需要<b>重启火狐</b>以校正新的多行高度）
+			<pg /> 也许需要稍稍调整（1px左右）“自定义顶边边距位置”使标签页对准屏幕顶边。或者取消最大化再最大化一次，如果相关选项已禁用（使用自动计算）
+			<pg /> 请注意，此样式仅经过 Windows 默认主题的测试（以及 Linux 下的一些测试），因此用它搭配自定义主题和/或<b>其他修改标签页的附加组件</b>时<b>应该小心</b>。
+			" >
+<!ENTITY No__default			"无（默认）" >
+<!ENTITY Small_australis		"小标签页，适用于火狐的 Australis 主题" >
+<!ENTITY Small_near_Classic		"较小，接近经典标签页" >
+<!ENTITY Small_almost_Classic	"较小，接近经典标签页（新）" >
+<!ENTITY Small_Classic_0     	"Smaller, Classic Tabs! (New 2)">
+
+<!ENTITY likeClassic_mediumH	"就像经典标签页，中等高度" >
+<!ENTITY likeClassic_fullH		"就像经典标签页，完全高度" >
+
+<!ENTITY DEPREC_australis		"[已弃用] Australis 主题" >
+<!ENTITY DEPREC_almst_Clsc		"[已弃用] 接近经典"  >
+<!ENTITY tt_smTabs_deprecated 		"<pg /> 这些 [已弃用] 选项的保留仅供兼容性测试，<b>*并且将在未来移除*</b>。
+		<pg /> 如果此选项能让您的环境中看起来更好，请务必通知到支持网站（链接至 tiny.cc/hidec）。">
+
+
+<!ENTITY    Smaller_Toolbars_and_buttons	"较小的工具栏和按钮" >
+<!ENTITY tt_Smaller_Toolbars_and_buttons		"请注意，此样式仅在 Windows 默认主题中经过测试。使用自定义主题时，推荐谨慎使用。" >
+<!ENTITY Small				"小" >
+<!ENTITY A_bit_smaller		"再小一点" >
+<!ENTITY Smaller_buttons	"较小按钮" >
+<!ENTITY tt_smallBars_oldOption	"These old options may be useful in old Fx versions (eg. Fx ESR 52) when <i>'size of text and other items'</i> (dpi) > 100&percent;" >
+<!ENTITY Option_compat_only	"（仅用于兼容性测试的选项）" >
+<!ENTITY tt_smallBars_old_deprecated 	"<pg /> 此选项仅供兼容性测试，<b>*并且将在未来移除*</b>。
+		<pg /> 如果在您的环境中，必须配合此选项才能使“较小工具栏”生效，请通知给支持网站（链接在 &nbsp; tiny.cc/hidec 中）。
+		<pg /> 它可以与过时的扩展组合。它尚未适配新的 Fx40 的样式代码。">
+
+
+<!ENTITY Top_edge_margn_pos_sets 		"顶边边缘位置设置：" >
+<!ENTITY    Cust_Top_edge_margn_f_tbar	"自定义工具栏区的顶边余量：（像素为单位，负值为向上移动内容）" >
+<!ENTITY tt_Cust_Top_edge_margn_f_tbar		"在“Firefox 4+ 标题栏”和“在标签页栏放置标签页”启用时禁用。（自动决定）" >
+<!ENTITY In_Maximized__window			"在最大化窗口中：" >
+<!ENTITY tt_top_marg_max					"在全屏模式下无效 
+			  	（例如：在最大化的 Firefox 中，您可以设置它为 &nbsp;-1 或 &nbsp;-2 使顶部标签页接触到屏幕顶边。）" >
+<!ENTITY In_Un_Maximized__window		"在非最大化窗口中：" >
+
+
+<!ENTITY Top_margn_style_main_win		"main-window 的 Top-margin 样式 <html:br/>（根容器）。" >
+<!ENTITY tt_Top_margn_style_main_win		"可以帮助解决与某些附加组件/主题的兼容性，它们影响 Firefox 内容的顶边区域" >
+<!ENTITY Untouched__default				"非接触（默认）" >
+<!ENTITY    Enforce_zero_top_mrgin		"强制执行零 top-margin" >
+<!ENTITY tt_Enforce_zero_top_mrgin			"例如，在最大化的火狐中，它修复/移除一点像是 Noia4 等主题在顶边的额外区域。" >
+
+
+<!ENTITY  old_topEdge_titlebar_msg 		"旧选项已移除：“顶边区域样式”。点击移除此条消息。" >
+
+
+<!ENTITY    Translation_Notes 	"翻译说明">
+<!ENTITY tt_HCTP_BOTTOM_NOTES   "HCTP 现在已完全可翻译！请参见主页。" >
+
+
+<!--  *** This DOESN'T NEED to be translated!!! *** Developer only option!! ***  -->		
+<!ENTITY Devel__Print_debug			"[Developer/Tester]  Print debug info in the error-console (default: no)" >
+<!ENTITY Devel__Print_debug_audio	"With <b>Audio feedback</b> when outputting a msg with 'error' or 'warn' strings." >
+
+
+<!--  __________*** OTHER SETTINGS ***__________  -->
+
+<!ENTITY Fx_internal_options 		"Firefox 的内部选项：" >
+
+<!ENTITY Search_Bar 				"搜索栏：" >
+<!ENTITY    SearchBar_new_UI		"[* 此项从 Firefox 43 起不能禁用！ *] &nbsp; &nbsp; 启用从 Firefox 34 开始采用的新搜索栏（图标一键搜索）" >
+<!ENTITY tt_SearchBar_new_UI		"取消选中将恢复为旧的下拉框式搜索栏，显示有网站名称、使用方便。需要重启浏览器" >
+
+<!ENTITY Search_in_new_tab		"已从搜索栏启动了一次新搜索，将在新标签页中打开。（因此，当前内容永远不会被覆盖）" >
+
+<!ENTITY    Other_intOpts 	"其他：">
+
+<!ENTITY    Tab_switch_MRU		"标签页切换：设置“Ctrl+Tab”的标签页切换行为为 MRU（最近列表）！这意味着你可以方便地切换到最后看到的那些标签页。" >
+<!ENTITY tt_Tab_switch_MRU		"另外，长按 'Ctrl+Tab' 将显示缩略图预览，类似 Windows 7 中 'Alt+Tab' 的预览列表。（在有至少2个标签页已打开时）" >
+
+<!ENTITY devPixelsPerPx_label 	"<pg1 /> Change the size of text and other items in Firefox:" >
+<!ENTITY devPixelsPerPx_tt 		"<pg  /> This setting is the same as the one in MS Windows' screen preference dialog, but only for Firefox.
+			<pg /> Useful where a different font size from System's default is desired.   Eg. when using 2 or more monitors of different size. " >
+<!--  <pg />(Using Firefox hidden preference: 'layout.css.devPixelsPerPx')  -->
+<!ENTITY devppp_default	"System default size" >
+<!ENTITY devppp_100 	"100&percent; - Smaller" >
+<!-- Shouldn't need any translation -->
+<!ENTITY devppp_120     "120&percent;">
+<!ENTITY devppp_125 	"125&percent; - Medium" >
+<!ENTITY devppp_150 	"150&percent; - Larger" >
+<!ENTITY devppp_9x 		" 94&percent; - Experimental Setting" >
+
+
+<!ENTITY HCTPs_extra_options 		"HCTP 额外选项：" >
+<!ENTITY Wider_Bookmark_panel		"更宽书签面板 (Ctrl+D)：便于创建/编辑更长的描述性名称。" >
+
+<!ENTITY    Stop_image_animations	"使用 SHIFT+ESC 快捷键停止图像动画（和后台请求）。" >
+<!ENTITY tt_Stop_image_animations		"此机制是 Firefox 截至 20 版本的 Esc 键行为。类似“SuperStop”扩展（如果“SuperStop”在您的环境中不能用，试试它吧）" >
+
+
+
+<!--  __________*** Dynamic Toolbars  section ***__________  -->
+<!ENTITY dynBars_name     			"Dynamic Toolbars">
+
+
+
+<!ENTITY button.Advanced     	"高级">
+
+<!ENTITY hc_rcOnly 			"新选项，仅出现在 RC 的第一个版本：" >
+
+<!ENTITY  hc_isBetaFeature 	"BETA feature: " >
+<!ENTITY tt__isBetaFeature 	"BETA feature:  may still have a minor visual glitch " >
+
+<!ENTITY forUpdatedSections	"(updated!)">
+
+<!ENTITY bOld		"[Old]  " >
+<!ENTITY NEWe		"NEW!" >
+<!ENTITY SOONe		"SOON!" >
+
+
+<!ENTITY Are_you_sure     	"您确定吗？">
+
+<!ENTITY See_homepage_for_ex	"See homepage for example/s.">
+
+<!ENTITY optionForFx57plus     	"Option for  &brandShortName; 57 and later">
+
+
+<!ENTITY tt_DEPRECATED_IMMINENT     	"这个已弃用的选项即将被移除！如果您需要它，请务必在支持网站上留言，以便我们找到合适的替代品。谢谢！">
+
+
+<!ENTITY Msg__New_Feature_RC_versions  "这是 RC（发布候选）版中的新功能：见“首页”中的“开发通道”部分" >
+
+
+<!-- ** MULTI LANGUAGE DIALOG ** -->
+<!ENTITY   MultiLanguage_but     	"多语言！">
+<!ENTITY   MULTI_LANGUAGE_DIALOG   	"切换多语言界面：">
+<!ENTITY   multi_lang_subtitle 		"您可以以下列语言打开本选项对话框。您甚至还可以<b>同时</b>打开多个本对话框：">
+<!ENTITY   multi_lang_subtitle_tt 		"<pg /> 可以切换到本附加组件的其他语言（locale），便于参照，或者离开或切换到未完成的翻译。
+			<pg />非常感谢众位翻译者。" >
+
+
+<!-- ** Please fill this entry (eg. with 'Done') only when finishing the translation/improvements, in order to avoid showing '100percent' 
+     (eg. the spanish one has still many entries MACHINE-translated only)   **   You can check translation status text in opt_lang.dtd.    
+     THANKS A LOT! -->
+<!ENTITY   Translation_endOfJob_entry    "Done, need review. (zh-CN)">
+

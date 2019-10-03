@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="icon" 
+      type="image/vnd.microsoft.icon" 
+      href="chrome://HideCaptionPlus/skin/hcp_icon16.png">
+
+<title>Hide Caption Titlebar Plus</title>
+<script type="text/javascript">
+// open_win('chrome://HideCaptionPlus/content/options.xul?_1');
+function open_win(_url)
+{
+window.open(_url,"_blank","toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=yes, width=590, height=590");
+}
+var optionDialog= null;
+function openOptionDialog(e){
+		if( optionDialog ){
+			optionDialog.close();
+		}
+		optionDialog=openDialog('chrome://HideCaptionPlus/content/options.xul?_1', '_OptionsDlg', 'chrome,titlebar,toolbar,scrollbars=yes, resizable=yes, centerscreen');
+}
+/** NO ANDA en /locale/ urls!   <a href="javascript:void(0);" onclick="openOptionDialog();">  **/
+</script>
+
+<style>
+body, th, td {
+ font: normal 13px Arial,Helvetica,sans-serif,Verdana;
+}
+body{
+	padding-left: 3em; 
+	background-color: #F6F6F6;
+}
+.smallinfo{
+	font-size: 85%;
+}
+</style>
+
+</head>
+
+<body>
+
+<p><strong><font size="4"><img border="1" src="chrome://hidecaptionplus/skin/hcp_icon.png" />&nbsp;&nbsp; Hide Caption Titlebar Plus</font> &nbsp; &nbsp; <font size="2">
+	[ <a href="https://github.com/Javier-DarthPalpatine/firefox-hide-caption-titlebar-plus/issues?q=is:open+sort:updated-desc">Sitio de soporte</a> ]&nbsp;&nbsp; 
+	[ <a href="https://tiny.cc/hidec/">Página principal</a> ]&nbsp;&nbsp; 
+	</font><br></strong></p>
+<blockquote>
+<p><strong><em>&quot;Maximiza el espacio de su contenido en pantalla controlando la presencia de la Barra de título (caption) en la ventana de Firefox&quot;</em> <br></strong></p></blockquote>
+
+<p style="padding-top:1.0em;"><strong>LÉAME:<br></strong></p>
+<p><strong>&nbsp;&nbsp; Por favor, ¡eche primero un vistazo al cuadro de diálogo de Opciones! Hay descripciones de las principales características.</strong></p>
+
+<p><strong>Importante</strong>:<br></p>
+<p>&nbsp;&nbsp; Los <strong>informes de Fallos/Problemas</strong> son muy bienvenidos en el <strong>sitio de Soporte</strong>. Por favor, no los publique en el sitio de Complementos de Mozilla.<br></p><p><strong></strong></p>
+
+<p><strong>Notas breves:</strong></p>
+<ul><li><strong></strong>(Información actualizada para Firefox 4+)<font color="#000080"><strong> <br>
+	Arrastrar/Mover</strong> ventana:&nbsp; ahora con AeroSnap/unSnap (auto-ajuste/desligado de ventanas a bordes de pantalla) en Win.Vista/7. (algunos controles todavía tienen algún desligado (UnSnap) no deseado</font>:<br>
+	Puede <strong><em>arrastrar </em></strong>la ventana 'no-maximizada' usando la barra de título personalizada (caption), y también puede usar los siguientes elementos en la ventana <em>&quot;Personalizar barra de herramientas&quot;</em>: Los objetos &quot;Título-de-página-web&quot;, los controles &quot;Mover ventana&quot;, el &quot;Espacio&quot; o el &quot;Espacio flexible&quot; (rellenan fácilmente los espacios vacíos de las barras de herramientas).<br> 
+	Por favor, observe que estos controles &quot;Mover ventana&quot; sólo se muestran en FF cuando NO está maximizado y la barra de título estándar está oculta <em>(cuando realmente son necesarios)</em>.</li></ul>
+<ul><li><b>Temas / Apariencias:</b> Funciona y tiene buen aspecto con el tema básico <b>ChromiFox</b>, con ChromiFox Extreme y Cfx Extreme CARBON. También con el tema <b>Strata40</b> (+StrataBuddy).<br />
+- (<b>Sugerencia:</b> Pruebe a jugar con el activado/desactivado de la 'Barra de título personalizada' con cada tema, con Cfx-basic creo que tiene mejor aspecto con la nueva opción 'Pequeña (en ventanas no maximizadas)'. Otros temas van bien sin la 'Barra de título personalizada'.<br />
+- También tiene muy buen aspecto con los <b>Temas-Personas</b> de Mozilla (vea las capturas en la página principal).<br />
+- Para Chromifox, Strata40 y otros temas: Hay una opción extra para las <b><em>apariencias</em> de los botones Min,Max,Cerrar</b> en concordancia con las apariencias de los botones del propio tema.<br>
+- Mediante el panel <em>&quot;Personalizar barra de herramientas&quot;</em>, los botones Min,Max,Cerrar se pueden situar en cualquier barra de herramientas (además, en el cuadro de diálogo de Opciones puede ocultar los botones ubicados en la esquina superior derecha).<br>
+</li>
+     </ul>
+<ul><li>Hay un <b>Menú Contextual</b> (clic secundario) accesible desde el botón principal de Firefox, los botones de sistema (Min,Max,Cerrar) y el control &quot;Mover Ventana&quot;, para abrir el cuadro de diálogo de Opciones, etc.<br></li></ul>
+	
+<strong>Cosas que se incorporarán en la siguiente versión:</strong> <br>
+<ul>
+<li>... habitualmente las características/ajustes más solicitados son aceptados y listados en la página principal o la página de soporte.<br></li>
+</ul>
+
+<br />
+<div>
+	<hr width="80%"/>
+</div>
+<br>
+
+<p class="smallinfo"><a href="chrome://hidecaptionplus/content/system_info.html">Página de información del sistema (información útil para solicitar soporte).</a></p>
+
+<!-- 
+<p></p>
+<br>
+<em>Este Leáme reflejará todos los cambios futuros en este complemento. Puede añadir un marcador a la <a href="chrome://HideCaptionPlus/locale/readme.html">la copia local</a>&nbsp; (vXXX)</em>
+ -->
+
+</body>
+</html>
+

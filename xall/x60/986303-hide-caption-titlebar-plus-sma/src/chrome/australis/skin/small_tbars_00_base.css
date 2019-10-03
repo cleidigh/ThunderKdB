@@ -1,0 +1,213 @@
+
+/* --------- Small Nav-bar & toolbarbuttons !! ----------- */
+
+/* beware of affecting floating hctp-'home'-toolbar! */
+
+
+/**
+	From: https://blog.mozilla.org/addons/2014/03/06/australis-for-add-on-developers-2/
+	For  nsIStyleSheetService.loadAndRegisterSheet(..) use @-moz-document below:
+	(bc this loads the stylesheet for all documents, so it's prudent to limit the styles to the document we want in the CSS file:)
+	@-moz-document url("chrome://browser/content/browser.xul") {
+		//...
+	}
+**/
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+
+toolbar:not(#TabsToolbar)  {
+  /** desde fx 50?  afecta forward-button y el 'show your boorkamrks'  por ej. **/
+  --toolbarbutton-inner-padding         : 1px !important;    
+  --toolbarbutton-vertical-inner-padding: 1px !important;
+
+  --toolbarbutton-vertical-outer-padding: 0px !important;
+  
+  --hctp-toolbarbutton-horiz-inner-padding: 0px !important;
+  --hctp-toolbarbutton-horiz-outer-padding: 0px !important;
+  
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+
+@media not all and (min-resolution: 1.1dppx) {
+	toolbar:not(#TabsToolbar)  {
+		--hctp-butimage-width: auto !important;
+	}
+}
+
+@media             ( min-resolution : 1.1dppx) {
+	toolbar:not(#TabsToolbar)  {
+		--hctp-butimage-width: auto !important; /* auto va bien dsd Fx55 o tal vez antes ya */
+	}
+}
+
+
+toolbar:not(#TabsToolbar)   .customization-target > .toolbaritem-combined-buttons ,
+toolbar:not(#TabsToolbar)                         > .toolbaritem-combined-buttons ,
+toolbar:not(#TabsToolbar)   .customization-target > toolbarbutton ,
+toolbar:not(#TabsToolbar)                         > toolbarbutton ,
+toolbar:not(#TabsToolbar) > toolbaritem           > toolbarbutton { /* eg. PanelUI button */
+	padding: 0px 0px !important;
+	
+	margin-top   : -1px !important;
+	margin-bottom: -1px !important;
+}
+/** #nav-bar .toolbarbutton-1:not([type=menu-button]), **/
+#nav-bar     .toolbarbutton-1 > .toolbarbutton-menubutton-button,
+#nav-bar     .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker {
+  padding-left : 0px !important;
+  padding-right: 0px !important;
+}
+
+
+/** NOT(#nav-bar) -- 'outer' padding HORIZONTAL! **/
+toolbar:not(#TabsToolbar):not(#nav-bar)  .customization-target > .toolbaritem-combined-buttons ,
+toolbar:not(#TabsToolbar):not(#nav-bar)                        > .toolbaritem-combined-buttons ,
+toolbar:not(#TabsToolbar):not(#nav-bar)  .customization-target > toolbarbutton:not([type="menu-button"]) ,
+toolbar:not(#TabsToolbar):not(#nav-bar)                        > toolbarbutton:not([type="menu-button"]) {
+  padding-left  : var(--hctp-toolbarbutton-horiz-outer-padding) !important;
+  padding-right : var(--hctp-toolbarbutton-horiz-outer-padding) !important;
+}
+
+
+/*  With #nav-bar: Using #(id) instead of ".customization-target"  to have more chances of overriding other css like the one in stylish button */
+toolbar:not(#TabsToolbar)  .findbar-button > .toolbarbutton-text,
+#nav-bar   .toolbaritem-combined-buttons > .toolbarbutton-1 > .toolbarbutton-icon, /* including edit and zoom controls */
+#nav-bar                                 > .toolbarbutton-1 > .toolbarbutton-icon,
+#nav-bar   #nav-bar-customization-target > .toolbarbutton-1 > .toolbarbutton-icon,
+#nav-bar                                 > .toolbarbutton-1 > .toolbarbutton-text,
+#nav-bar   #nav-bar-customization-target > .toolbarbutton-1 > .toolbarbutton-text,
+#nav-bar                                   .toolbarbutton-1 > .toolbarbutton-badge-container,
+#nav-bar                                   .toolbarbutton-1 > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+#nav-bar                                   .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon
+{
+  padding-top   : var(--toolbarbutton-vertical-inner-padding); 
+  padding-bottom: var(--toolbarbutton-vertical-inner-padding); 
+  padding-left  : var(--hctp-toolbarbutton-horiz-inner-padding) !important;
+  padding-right : var(--hctp-toolbarbutton-horiz-inner-padding) !important;
+}
+/**
+,window:not([chromehidden~="toolbar"]) #urlbar-wrapper > .toolbarbutton-1:-moz-any([disabled],:not([open]):not([disabled]):not(:active)) > .toolbarbutton-icon 
+**/
+
+#nav-bar                          .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon {
+  padding-top   : calc(var(--toolbarbutton-vertical-inner-padding) + 5px);
+  padding-bottom: calc(var(--toolbarbutton-vertical-inner-padding) + 4px);
+}
+
+
+#nav-bar .toolbarbutton-1 > .toolbarbutton-multiline-text {
+  padding: var(--toolbarbutton-vertical-inner-padding) 6px !important;
+}
+
+
+
+/**
+#nav-bar .toolbarbutton-1:not(:-moz-any(XXXXXXX)) > .toolbarbutton-icon,
+#nav-bar .toolbarbutton-1:not(:-moz-any(XXXXXXX)) > .toolbarbutton-badge-container,
+#nav-bar .toolbarbutton-1:not(:-moz-any(XXXXXXX)) > .toolbarbutton-menubutton-button > .toolbarbutton-icon {
+  padding: calc(var(--toolbarbutton-vertical-inner-padding) + 1px) 7px;
+}
+**/
+
+
+#nav-bar  .toolbaritem-combined-buttons > toolbarbutton > .toolbarbutton-icon, /* including edit and zoom controls */
+#nav-bar                          toolbarbutton[cui-areatype="toolbar"] > :-moz-any(#zoom-out-button, #zoom-reset-button, #zoom-in-button, #cut-button, #copy-button, #paste-button) > .toolbarbutton-icon,
+#nav-bar                        > toolbarbutton > .toolbarbutton-icon,
+#nav-bar  .customization-target > toolbarbutton > .toolbarbutton-icon,
+#nav-bar                        > toolbarbutton > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+#nav-bar  .customization-target > toolbarbutton > .toolbarbutton-menubutton-button > .toolbarbutton-icon,
+#nav-bar                          #bookmarks-menu-button[cui-areatype="toolbar"] > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon    {
+  width: var(--hctp-butimage-width) !important;
+}
+#nav-bar                          #bookmarks-menu-button[cui-areatype="toolbar"] > .toolbarbutton-menubutton-button     > .toolbarbutton-icon {
+  width: var(--hctp-butimage-width) !important;
+}
+
+
+/* NOT(#nav-bar) -- extra element with 'inner' padding! - (NOT important) */
+toolbar:not(#TabsToolbar):not(#nav-bar)  .toolbarbutton-menubutton-dropmarker { 
+	padding: 1px var(--hctp-toolbarbutton-horiz-inner-padding);
+}
+
+
+
+#back-button {
+  padding-top   : 0px !important;
+  padding-bottom: 0px !important;
+  -moz-padding-start: 3px !important;
+}
+#back-button > .toolbarbutton-icon {
+  padding       : 3px !important;
+  width: var(--hctp-butimage-width) !important;
+  
+  margin-top   : -4.1px !important;
+  margin-bottom: -4.1px !important; /* extra decimal for dppi > 1.1 */
+  -moz-margin-end: -1px;
+}
+
+
+#forward-button  {
+  --toolbarbutton-vertical-inner-padding: 0px !important;
+  --toolbarbutton-vertical-outer-padding: 0px !important;
+  
+}
+@media (-moz-os-version: windows-win7),
+       (-moz-os-version: windows-win8),
+       (-moz-os-version: windows-win10) {
+ #forward-button  {
+  margin-top   : -0.03px; /* solo top anda mejor en win8/10 en dpi>1.25 */
+ }
+}
+
+
+#identity-box {
+  padding-top   : 0px !important;
+  padding-bottom: 0px !important;
+}
+
+
+.searchbar-engine-button,
+.search-go-container {
+  padding-top   : 0px !important;
+  padding-bottom: 0px !important;
+}
+
+/** since Fx34 **/
+.searchbar-search-button-container {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+/** since Fx35 **/
+.searchbar-search-button {
+	margin-top   :  -1px !important;
+	margin-bottom:  -1px !important;
+}
+
+
+
+/**  Special cases in browser.css  **/
+
+#personal-bookmarks {
+  min-height: 16px !important;
+}
+#nav-bar #zoom-reset-button > .toolbarbutton-text {
+  min-height: 16px !important;
+}
+@media (-moz-os-version: windows-win10) {
+  #urlbar,
+  .searchbar-textbox {
+    font-size: 1.06em !important;
+    min-height: 16px  !important;
+	
+	padding-top   : 0px !important;
+	padding-bottom: 0px !important;
+  }
+}
+
+
+}  /*** moz-document url(...) ***/
+

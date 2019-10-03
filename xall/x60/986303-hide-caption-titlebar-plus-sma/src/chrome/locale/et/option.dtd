@@ -1,0 +1,778 @@
+
+<!--  ___***** Translators Notes: *****___
+   ***  1) New!: Now *All* texts and tooltips have css style: "pre-line". So {html:br} isn't needed for line breaks, (but can be used for convenience.)
+   ***  2) Please note that some tooltips-texts *can't* have line-breaks or any tag (the texts in a "tooltiptext" attribute)
+   ***  3) And there is also several 'hard spaces' characters (alt+255), like this:' ', to prevent some ugly wrapping and to make more space between texts.  
+   ***  (I use NOTEPAD++ free editor)  *** -->
+
+<!ENTITY dialog.hide.caption.titlebar.plus "Hide Caption Titlebar Plus - Sätted">
+<!ENTITY dialog.apply "Rakenda">
+	
+<!ENTITY tab.main              	"Peamised">
+<!ENTITY tab.look.feel         	"Välimus">
+<!ENTITY tab.advanced.settings 	"Täpsemad sätted">
+<!ENTITY tab.other.settings    	"Muud sätted">
+<!ENTITY tab.float.toolbars    	"Ujuvad tööriistaribad">
+
+
+<!--  __________*** Section:   LOOK AND FEEL ***__________  -->
+
+<!ENTITY caption.show.custom.caption.titlebar   "Näita kohandatud tiitliriba:">
+<!ENTITY      tt.show.custom.caption.titlebar 		"Hõlmab praeguse veebilehe pealkirja.  &nbsp;  Toimib, kui süsteemi tiitliriba on peidetud.">
+<!ENTITY radio.in.unmaximized.windows           "Maksimeerimata akendes">
+<!ENTITY radio.small.caption                    "Väike (maksimeerimata akendes)">
+<!ENTITY radio.cc_never                         "Mitte kunagi">
+
+<!ENTITY w.default  		"vaikesäte">
+<!ENTITY w.Enabled  		"Lubatud">
+<!ENTITY w.Disabled			"Keelatud" >
+<!ENTITY w.No				"Ei" >
+
+
+<!ENTITY    System_borders_c "Süsteemi aknapiirid:" >
+<!ENTITY tt_System_borders_c	"Keela või määra maksimeerimata Fx akna süsteemipoolsete vasaku, parema ja alumise piiri laius.  (Täpsem pikslite kohandamine on võimalik ainult Aero-Glass töölaudade puhul)" >
+<!ENTITY Yes_full_width		 "Jah (täislaius)" >
+<!ENTITY    Yes-_smaller	 "Jah, väiksem" >
+<!ENTITY tt_Yes_smaller_2			"Firefox 12+ vaikesäte" >
+<!ENTITY tt_Yes_smaller_7			"Vaikimisi säte. Soovitatav Aero-Glass töölaudade puhul. See peidab need piirjooned (Glassis) peaaegu täielikult, nagu valik 'Keelatud', aga ilma selle puudusteta. (Piiri suurusemuutja ala saab laiendada sättega 'Aktiveeri kohandatud piirid ...' )" >
+<!ENTITY tt_Yes_smaller_7_notReal	"Sama mis eelmine valik, aga piiridel on lisaruumi  (ainult Glass-töölaudadel ja kui säte  '&enable_customizable_buts;'  on aktiivne)" >
+<!ENTITY tt_sysBorders_disabled	"<pg /> Soovitatav säte Aero-Basic töölaudade jaoks. See võimaldab Personas-teemadel akna tausta täielikult enda alla võtta.  (Pärand-vaikesäte).
+			<pg /> Glass-töölaud: kui '&enable_customizable_buts;' on aktiivne, võivad maksimeerimata aknad mõnel juhul kaotada ümarad nurgad ja akna varju." >
+
+<!ENTITY    custom_bord_cornr_rz	"Aktiveeri kohandatud piirid ja akna suurusemuutjad" >
+<!ENTITY tt_custom_bord_cornr_rz		"Võib kasutada ka aknapiiri suurusemuutja laiendamiseks, kui süsteemi aknapiir on liiga kitsas" >
+<!ENTITY Make_corners_visible		"Tee nurgad nähtavaks." >
+
+<!ENTITY    Border_color			"Piiride <html:br /> värv" >
+<!ENTITY tt_Border_color				"Värv on nähtav, kui süsteemipoolsed piirid on keelatud" >
+
+<!--    tt_Skin 			"Custom skins capability will be added too." -->
+<!ENTITY title_Skin 						"Välimus:">
+<!ENTITY radio.classic.skin  						"Klassikaline välimus" >
+<!ENTITY radio.new.aero      						"Aero stiil"   >
+<!ENTITY radio.automatic.current.theme.skin.fixed   "Automaatne. Praeguse välimuse kujundus (kindel asukoht)" >
+<!ENTITY radio.automatic.current.theme.skin         "Automaatne. Praeguse välimuse kujundus (pärand-asukoht)" >
+<!ENTITY radio.w10like         						"Uus: Firefoxi stiil Win 10-le" >
+<!ENTITY radio.w10like.light   						"Uus: Firefoxi stiil Win 10-le  (hele)" >
+<!ENTITY    tt.w10like.light      						"Kui Persona-teema on aktiivne, näevad nupu ikoonid välja nagu 'tavalises' Win 10 stiilis" >
+<!ENTITY radio.w10like.high   						"Uus: Firefoxi stiil Win 10-le  (kõrge kontrast)" >
+<!ENTITY    tt.w10like.high       						"Kui Persona-teema on aktiivne, näevad nupu ikoonid välja nagu 'tavalises' Win 10 stiilis" >
+
+<!ENTITY mmc.custom.mTitle							"Kohandatud sätted">
+<!ENTITY mmc.custom       							"Kohandatud säte">
+<!ENTITY tt_custom_mmc__begin    						"Täpsemad sätted: kohandatud fail(id), mis panna kohta: ">
+<!ENTITY or_custom2_css_and_so_on						" &nbsp; (või custom2.css ja nii edasi)">
+
+
+<!--    CUSTOM styles css files   -->
+<!ENTITY can_be_anyname_files				  " &nbsp; ([kohandatud] võib olla mistahes nimega, ja lisada saab mitu faili)">
+
+
+<!ENTITY caption.min.max.close.buttons.location 		"Kohandatud Min/Max/Sulge nupud (ülemises paremas nurgas):">
+<!ENTITY caption.min.max.close.buttons.loc.extrainfo 	"(saadaval ka Firefoxi kohandamise aknas)">
+<!ENTITY label.about.hidden.and.customize  					"Firefoxi kohandamine:   akent 'Tööriistaribad » Kohanda' kasutades saab kaartide ribale või mis tahes tööriistaribale asetada identsed nupud" >
+
+<!ENTITY In_Maximized_window 		"Maksimeeritud aknas:">
+<!ENTITY In_Un_Maximized_window 	"Maksimeerimata aknas:">
+<!ENTITY radio.bloc.micro     				"Mikro sulgemisnupp" >
+
+<!ENTITY checkbox_maxbuttons_canfloat     	"Mikro sulgemisnupp: ujuvad nupud ilmuvad, kui sellele hiirega minna või peamenüü on aktiivne" >
+
+
+<!--  ___*** (These appears at dialog bottom line) ***___  -->
+
+<!ENTITY button.see.more.in.readme.file "Loe lisa abifailist README">
+<!ENTITY button.ctrl.click.opens.in.new.tab "Ctrl+klõps avab uuel kaardil">
+<!ENTITY DEPRECATED_label.1 "[1]">
+<!ENTITY label.options.changes.reflects.on.the.fly.in.fir21  " Enamus sätete muudatusi on näha koheselt." >
+<!ENTITY label.prefix.options.with  "Märgiga">
+<!ENTITY label.R "[T]">
+<!ENTITY label.R.class "<z class='needRst'>[T]</z>">
+<!ENTITY label.other.options.saved.instantly.too.but.restart "sätete jõustumiseks on vaja Fx taaskäivitada.">
+<!ENTITY Restart_needed "[T]aaskäivitamine vajalik.">
+ 
+ 
+
+<!ENTITY enable_customizable_buts 	"Luba kohandatavad nupud (Min,Max,Sulge)">
+<!ENTITY disable_win_system_buts	"(keelates akna süsteemipealdise nupud)">
+<!ENTITY tt_enable_customizable_buts 	" <pg0/>• Selle sättega on <b>kohandatavad nupud (Min,Max,Sulge)</b> jälle kasutatavad. 
+	<pg /> 
+	<pg /> Sel on need välimuse muudatused, mis on nähtavad peaegu ainult <b>maksimeerimata</b> Firefoxil Windows 7-l:  
+	<pg /> ⋅ See keelab Fx aknatausta GLASS (läbipaistvuse) efekti, kui on aktiivne (kuid lubab valikulise glassi-sarnase tausta).  
+	<pg /> ⋅ Kui säte 'Süsteemi aknapiirid' on 'Keelatud', siis võib <html:b>maksimeerimata</html:b> aken mõnel juhul kaotada ümarad nurgad ja akna varju.  
+	<pg /> ⋅ Ei mõjuta mingil määral välimust täisekraani režiimis olles.  
+	<pg /> 
+	<html:hr />
+	See sisaldab vastukaalu probleemile Firefoxis 12+. 
+	&nbsp; (Esialgne Firefox12+ probleem on endiselt parandamise ootel. Üksikasjad selle kohta on lisa kodulehel ja Firefoxi vigade saidil probleem nr. 730219. &nbsp;See Fx-i probleem sunnib süsteemi tiitliriba nupud (Min,Max,Sulge) Aero-Glass töölaudadel olema alati aktiivsed) 
+">
+<!ENTITY item_0_none							"Ei (Fx. vaikesäte)">
+<!ENTITY item_11_Using_Glasslike_win_bkg_recom	"[1.1] Kasutades Glassi-sarnast aknatausta  (Soovitatav)">
+<!ENTITY   tt_11_Using_Glasslike_win_bkg_recom		"<pg /> Soovitatav valik.  Toetab Persona-teemasid.
+			<pg /> Glassi-sarnane taust ainult süsteemides, kus  Glass lubatud on. (tausta nägemiseks peab '&Custom_Win_bkg_color;' olema aktiveeritud)
+			<pg /> Proovi [2] &amp; [3] ainult juhul, kui leiad mõne probleemi. (võibolla taastatud akna vale asukoht mõnd muud lisa kasutades, teavitatud umbes Firefox 20 ajal). ">
+<!ENTITY item_12_Using_solid_win_bkg_recom		"[1.2] Kasutades lausvärviga aknatausta  (Soovitatav)">
+<!ENTITY   tt_12_Using_solid_win_bkg_recom			"<pg /> Soovitatav säte.  Toetab Personas-teemasid.">
+<!ENTITY item_2_Same_appearance_compat			"  [2] Sama väljanägemine. (Ainult ühilduvuse kontrollimiseks)">
+<!ENTITY   tt_2_Same_appearance_compat				"Proovi seda ainult juhul, kui avastad vea seoses Firefoxi akna positsioneerimisega ja/või joondamata sisu ja taustaalaga.    (Kasutab kapotikaane all alternatiivset meetodit)">
+<!ENTITY item_3_Another_compat_test				"  [3] Veel üks ühilduvuse kontrollimise valik">
+<!ENTITY   tt_3_Another_compat_test					"Peidab Personas-teema, kui on.">
+
+
+
+<!ENTITY Custom_Win_bkg_color		"Akna kohandatud taustavärv" >
+<!ENTITY tt_Custom_Win_bkg_color		"Sisaldab valikulist Glassi-sarnast tausta.    Vaikimisi värv:  #92ACCE (helesinine)" >
+<!ENTITY active_no_persona			"Aktiivne, kui ühtki Persona-teemat pole.  (vaikesäte)" >
+<!ENTITY active_always				"Alati aktiivne.  (Peidab Persona-teema, kui on)" >
+<!ENTITY active_always_tt				"Võib olla kasulik ka aktiivseteDünaamiliste/Ujuvate tööriistaribade jaoks uuemate Firefoxi (kompaktsete) heledate &amp; tumedate teemadega" >
+
+
+<!ENTITY hover_activ_delay_time		"Peale minnes aktiveerimise <html:br />viivitus" >
+<!ENTITY deactivation_delay_time	"deaktiveerimise <html:br />viivitus" >
+<!ENTITY p_milliseconds				"(millisekundites)" >
+
+
+
+<!--  __________*** Configurable Actions! ***__________  -->
+  
+<!ENTITY Define_Action_for			"Määra toiming:">
+ 
+<!ENTITY action_fxbut_title 		"Kohandatud Firefoxi nupp
+			<z class='tiny'>Lisateabe saamiseks klõpsa siin</z>">
+<!ENTITY    tt__fxbut_title 			"<pg0/> <b>Uus: &nbsp; Seadistatavad toimingud:  Firefoxi menüünupule ja sulgemisnupule. </b> 
+			<pg />(asuvad ekraani/rakenduse nurkades ja saadaval ka Firefoxi kohandamise aknas) 
+			<pg />
+			<pg2/> Palju uusi lisatud võimalusi, nagu näiteks hiire esmane, teisene, keskmine nupp, rullik, topeltklõpsamine ja <b>muutmisklahvid shift, ctrl, alt</b>! 
+			<pg /> (Shift-klahvi lisa-/vastandtoimingute nägemiseks vaata toimingute kohtspikreid)
+			<pg /> <z class='is_recom'>Rohelised valikud on soovitatavad</z> ja <z class='is_defau'>sinised on vaikesätted.</z>
+			<pg /> Palun proovi allolevaid eelseadistuste nuppe (Soovitatavad 1 &amp; 2, Vaikimisi)
+			<pg /> <b>Helid: </b>
+			<pg /> Pärast eelseadistuste proovimist võid katsetada ja valida igale soovitud toimingule oma heli.
+			<pg /> Teatud toimingute puhul saab esitada ka 'Not-allowed' ('pole-lubatud') heli (kuid ainult juhul, kui sel toimingul on vastav heli seadistatud).  Seda esitatakse selliste sündmuste korral nagu: 
+			<pg /> <pg /> <i>[&item_undoCloseTab;]</i>: pole enam suletud kaarte, mida taastada.
+			<pg /> <pg /> <i>[&item_closeNewerWindow;]</i>: pole enam aknaid <i>(avatud pärast aktiivset akent)</i>, mida sulgeda.
+			<pg /> Kui sa ei taha kuulda ka ühtki ei-leitud heli, võid kõik helid välja lülitada ('Puudub').
+">
+
+<!ENTITY action_closebut_tit_custom	"Kohandatud sulgemisnupp">
+
+<!ENTITY action_closebut_title 		"Sulgemisnupp   <einfo>(vaata kohtspikrit)</einfo>">
+<!ENTITY    tt__closebut_tit_NOcustom	"Palun pane tähele, et soovitatav säte <i>'&enable_customizable_buts;'</i> <b>pole aktiivne</b>.  Seega ei saa <i>mõnel</i> Windowsi süsteemil (nt. Win7 välimusega 'Glass') neid sätteid kasutada koos Windowsi enda sulgemisnupuga.  (Seda võimalust saab lisada, kuid sel on teatud piirangud) ">
+
+<!-- Can be used in txts related to 'Page History' popup menu   -->
+<!ENTITY nav_history				"Lehtede ajalugu" >
+
+<!ENTITY More_options_e				"Veel sätteid..." >
+
+<!ENTITY check__closebut_mouseClick	"Klõpsa (vajuta ja lase lahti) hiirenuppu soovitud toimingu teostamiseks">
+<!ENTITY    tt__closebut_mouseClick 	"• Kui märgistamata (vaikimisi ja soovitatav väärtus), siis piisab ainult hiirenupu vajutamisest.
+											 &nbsp; &nbsp; <z class='needRst'>[T]</z> Pärast muutmist on vaja Firefox taaskäivitada.">
+
+<!ENTITY ctrl_w_title				"<b> CTRL+W </b>  vajutamisel teostatav toiming: ">
+<!ENTITY Fx_default_closeTab		"FX vaikesäte  (Sulge praegune kaart)" >
+
+<!ENTITY clHist_title 				"Toiming valiku &nbsp; <b>&item_closeWithHistory;</b> jaoks: &nbsp; <i>(kui Tagasi- või Edasi-nupud on lubatud)</i> ">
+<!ENTITY clHist_popup 				"Ava ajaloo hüpikmenüü  (vaikesäte)">
+<!ENTITY clHist_pop_back 			"Ava ajaloo hüpikmenüü  &amp;  mine lehe võrra tagasi">
+<!ENTITY tt_Hist_pop_back 				"Sa võid kaardi sulgeda Alt+klõpsamisega, kui pärast tagasi minemist avaneb näiteks teavitus, hüpikaken või muu ebameeldivus.
+
+										<html:hr /> (Võimalik visuaalne viga: &nbsp; Palun pane tähele, et ajaloo hüpikmenüü aktiivne kirje ei saa mõnikord õigesti värskendatud)" >
+<!ENTITY clHist_pop_back_fw 		"Aja ajaloo hüpikmenüü  &amp;  mine lehe võrra Tagasi/Edasi">
+<!ENTITY tt_Hist_pop_back_fw 			"Ctrl+klõps viib lehe võrra edasi &nbsp; (ja ainult klõpsuga tagasi)">
+<!--  using SAME TOOLTIP (tt_Hist_pop_back_fw)  -->
+<!ENTITY clHist_back_fw      		"Just go Back/Forward one page  (no popup)">
+
+
+<!ENTITY line_title 		"Visuaalne lisaefekt Tagasi/Edasi minemisel">
+<!ENTITY line_none 			"Puudub">
+<!ENTITY line_clWHonly		"Vertikaalne punane liikuv joon, kui ülalolevat sätet kasutades tagasi/edasi minna.">
+<!ENTITY Future_Option_b	"[Tulevane säte]   ">
+<!ENTITY line_always		"Tagasi/Edasi minnes on liikuvat joont alati näha.">
+<!ENTITY tt_ln_always 			"nt. kasutades brauseri tagasi-/edasi-nuppe, hiire tagasi-/edasi-nuppe (tavaliselt hiire küljel), klahvikombinatsioonid.">
+<!ENTITY tt_ln_always_2			"<pg0/>Samuti esitab 'pole-lubatud' heli, kui ei saa rohkem tagasi/edasi minna &nbsp; (kui <b>“&butt_butSound_action1;”</b> on lubatud). ">
+
+
+<!ENTITY mButShort_primary 			"Esmane:">
+<!ENTITY mButShort_second 			"Teisene:">
+<!ENTITY mButShort_middle 			"Keskmine:">
+<!ENTITY mButShort_primary_dblclk 	"Esm. topeltklõps:">
+<!ENTITY mButShort_second_dblclk 	"Teisene topeltklõps:">
+<!ENTITY mButShort_middle_dblclk 	"Keskm.  tpltKlps:">
+<!ENTITY mButShort_wheel 			"Rullik:">
+<!ENTITY mButShort_wheelLeft 		"Rullik vasakule:">
+<!ENTITY mButShort_wheelRight 		"Rullik paremale:">
+
+
+<!ENTITY label_row_action_Primary 			"Hiire <html:br /> esmane nupp :">
+<!ENTITY    tt_row_action_Primary 				"Nt. Paremakäeliste hiirte puhul vasak nupp.">
+<!ENTITY label_row_action_Secondary 		"Hiire <html:br /> teisene nupp :">
+<!ENTITY label_row_action_Middle 			"Hiire keskmine <html:br /> nupp (rullik) :">
+<!ENTITY label_row_action_Primary_dblclk   	"Hiire esmane<html:br /> <b>(topeltklõps)</b> :">
+<!ENTITY    tt_row_action_Primary_dblclk 		"Palun võta teadmiseks, et käivitatakse ka <b><i>ühekordse klõpsu toiming</i></b>.  Seega peaksid siin määrama mitte-vastukäiva ühekordse klõpsu toimingu. Tavaliselt sobib lihtne toiming nagu menüüde avamine (nt. peamine või kontekstimenüü).">
+<!ENTITY label_row_action_Secondary_dblclk  "Hiire teisene<html:br /> <b>(topeltklõps)</b> :">
+<!ENTITY    tt_row_action_Secondary_dblclk 		"&tt_row_action_Primary_dblclk;">
+<!ENTITY label_row_action_Middle_dblclk     "Hiire keskmine nupp<html:br /> <b>(topeltklõps)</b> :">
+
+
+<!ENTITY label_row_action_wheel 			"Hiire<html:br /> rullik :">
+<!ENTITY    tt_row_action_wheel 				"Rullikuga kerimine, kui hiirekursor on nupu peal">
+<!ENTITY label_row_action_wheelLeft 		"Hiire rulliku<html:br /> <b>kallutamine</b> vasakule :">
+<!ENTITY    tt_row_action_wheelLeft 			"Kalluta rullikut vasakule, kui hiirekursor on nupu peal (rulliku kallutamise võimalusega hiirte puhul, tavaliselt horisontaalse kerimise jaoks)">
+<!ENTITY label_row_action_wheelRight 		"Hiire rulliku<html:br /> <b>kallutamine</b> vasakule :">
+<!ENTITY    tt_row_action_wheelRight 			"Kalluta rullikut paremale, kui hiirekursor on nupu peal (rulliku kallutamise võimalusega hiirte puhul, tavaliselt horisontaalse kerimise jaoks)">
+
+
+<!ENTITY mtit_typical_primary 		"Tüüpilised hiire esmase nupu toimingud:">
+<!ENTITY mtit_typical_secondary 	"Tüüpilised hiire teisese nupu toimingud:">
+<!ENTITY mtit_typical_annoyances 	"Ebameeldivuste eemaldamine!">
+<!ENTITY mtit_typical_other 		"Muud toimingud:">
+<!ENTITY mtit_typical_wheel 		"Tüüpilised hiire rulliku toimingud:">
+
+
+<!ENTITY Shift_Key 				"<pg0/>Koos <b>Shift-klahviga:</b> ">
+<!ENTITY Ctrl_Key 				"<pg0/>Koos <b>Ctrl-klahviga:</b> ">
+<!ENTITY Alt_Key 				"<pg0/>Koos <b>Alt-klahviga:</b> ">
+
+<!ENTITY item_closewin 			"Sulge Fx aken">
+<!ENTITY item_closewin_fxdefau	"Sulge Fx aken (FX vaikesäte)">
+<!ENTITY   tt_closewin 				"[&Shift_Key; &item_quitApplication;]">
+<!ENTITY item_minimize 			"Maksimeeri FX aken">
+<!ENTITY item_closetab 			"Sulge praegune kaart">
+<!ENTITY item_closetab_recomen	"Sulge praegune kaart (soovitatav)">
+<!ENTITY   tt_closetab 			    "Soovitatav valik esmase hiirenupu jaoks (nt. kiireks kaartide sulgemiseks), eriti kui sulgemisnupp ulatub maksimeeritud aknas ekraani nurgani. (Ehk kui süsteemi tegumiriba ei võta seda kohta enda alla).   
+									[&Shift_Key; &item_undoCloseTab;] ">
+<!ENTITY item_closeWithHistory 	"Sulge kaart, kui &quot;tagasiminemise &nav_history; pole&quot;">
+<!ENTITY item_closeWithHis_reco	"&item_closeWithHistory; (soovitatav)">
+<!ENTITY   tt_closeWithHistory  	"<pg0/><b> Sulge kaart ilma eelnevalt külastatud lehte kahe silma vahele jätmata: </b> 
+	    	<pg />
+	    	<pg2/> Kui brauseri nupp <b>Tagasi</b> (nool vasakule) on lubatud (ehk kui sa juba oled mõnda lehte külastanud), siis klõps <i>sihtnupul (1)</i> avab <b>hüpikmenüü '&nav_history;'</b> (2) &nbsp;(valikuliselt koos <b>heliteavitusega</b>) 
+	    	<pg /> See võimaldab enne kaardi sulgemist neid eelnevalt külastatud lehti kontrollida. &nbsp; Kaardi sulgemiseks võid lihtsalt <i>sihtnuppu</i> uuesti klõpsata. 
+	    	Eriti kasulik mitme kaardi sulgemiseks ilma midagi kahe silma vahele jätmata.
+	    	<pg /> Ka klahvikombinatsiooni <b>CTRL+W</b> saab seda tegema panna. &nbsp; Vaata nuppu <b>'Veel sätteid'</b>.
+	    	<pg /> <i>(1) Sihtnupp on nupp, mida hetkel seadistatakse (nt. sulgemise või Firefoxi menüünupp)</i>
+	    	<pg /> <i>(2) Sama hüpikmenüü, mis nuppudel tagasi/edasi.</i>
+			
+	    	<b>Hiire</b> nupu/rulliku tegevus koos muutmisklahviga teeb:
+	    	<pg /> [&Ctrl_Key; Avab hüpikmenüü, kui kas Tagasi või Edasi nupp on lubatud] 
+	    	<pg /> [&Alt_Key; ilmtingimata sulgeb kaardi (ei näita hüpikmenüüd kunagi)] 
+	    	<pg2/> [&Shift_Key; &item_undoCloseTab;]" > 
+
+<!ENTITY item_ShowAllTabs 		"Näita kõiki kaarte" >
+<!ENTITY   tt_ShowAllTabs 		"<pg /> Näita kõikide kaartide nimekirja hüpikmenüüd.  (Ctrl + Shift + Tab)  
+	<html:hr /><pg /> Palun pane tähele: see ei tööta, kui  <b>Menüüriba > Vaade > 'Näita kõiki kaarte'</b>  valik on puudu.  See võib juhtuda, kui nupp 'Näita kõikide kaartide nimekirja' on peidetud. (Seda saab teha näiteks laiendusega Tab Mix Plus)" >
+
+<!ENTITY item_undoCloseTab 		"Taasta viimati suletud kaart">
+<!ENTITY item_undoCloseTab_reco	"Taasta viimati suletud kaart (soovitatav)">
+<!ENTITY   tt_undoCloseTab 			"Taasta viimati suletud kaart.  (Ctrl + Shift + T). ">
+
+<!ENTITY item_zapFrames 		"'Zap' ('hävita') paanid ja pluginad">
+<!ENTITY   tt_zapFrames 			"Eemaldab need veebilehelt.   
+									[&Shift_Key; &item_zapImages;]   
+									<einfo>('Zap plugins' on võetud lehelt https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_zapImages 		"'Zap' ('hävita') pildid">
+<!ENTITY   tt_zapImages 			"Asendab veebilehel olevad pildid nende alternatiivse tekstiga (pildi tiitliga).   
+									[&Shift_Key; &item_zapFrames;]   
+									<einfo>(Esialgne idee lehel  https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_superStop 		"Peata piltide animatsioonid">
+<!ENTITY   tt_superStop 			"Peata piltide animatsioonid (ja taotlused taustal). 
+		<pg /> See on sama käitumine, mida tegi Esc-klahv vanematel Firefoxi versioonidel kui 20.   Töötab nagu lisa 'SuperStop' (proovi seda sätet, kui 'SuperStop' sinu süsteemis enam ei tööta)
+		[&Shift_Key; &item_BrowserReload;]">
+<!ENTITY item_BrowserReload 	"Laadi veebileht uuesti">
+<!ENTITY   tt_BrowserReload 		"Laadi veebileht uuesti (F5)
+		[&Shift_Key; Laadi uuesti ilma vahemälust lugemata]">
+
+<!ENTITY item_closeNewerWindow 	"Sulge viimati avatud Fx. aken">
+<!ENTITY   tt_closeNewerWindow 		"Kasulik lehtedel, mis ilma luba küsimata muudkui avavad uusi Fx aknaid. See sulgeb turvaliselt ainult selle akna, mis avati pärast aktiivset (esiplaanil olevat) akent.    
+									[&Shift_Key; &item_undoCloseWindow;]">
+<!ENTITY item_undoCloseWindow 	"Taasta viimati suletud aken">
+
+<!ENTITY item_PageUp   			"Lehe võrra üles">
+<!ENTITY item_PageDown 			"Lehe võrra alla">
+<!ENTITY item_Page_UpDown 		"Lehe võrra üles/alla">
+<!ENTITY   tt_PageKeys   			"Page-Up, Page-Down:   töötab nagu klaviatuuril olevad vasted.                    
+									(Veebisisu pannakse fookusesse ja selles olev aktiivne/fookuses element reageerib käsule)  
+									[&Ctrl_Key; mine lehe algusse/lõppu (nagu klahvid Home/End)] 
+									[&Alt_Key; mine lehel vasakule/paremale (ehk <i><b>horisontaalne kerimine!</b></i>) ] 
+									[&Shift_Key; &item_Line_UpDown;] ">
+<!ENTITY item_Line_UpDown 		"Rea võrra üles/alla">
+<!ENTITY   tt_LineKeys   			"Rea võrra üles/alla:         töötab nagu klaviatuuril olevad vasted (klahvid ülesnool ja allanool). 
+									(Veebisisu pannakse fookusesse ja selles olev aktiivne/fookuses element reageerib käsule)  
+									[&Ctrl_Key; mine lehe algusse/lõppu (nagu klahvid Home/End)] 
+									[&Alt_Key; liiguta lehte vasakule/paremale (ehk <i><b>horisontaalne kerimine!</b></i>) ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+<!ENTITY item_ZoomEnlarge   	"Suurenda">
+<!ENTITY item_ZoomReduce   		"Vähenda">
+<!ENTITY item_Zoom_EnlRed		"Suurenda/Vähenda">
+<!ENTITY   tt_ZoomKeys 				"Suurenda (Ctrl + '+')  /  Vähenda (Ctrl + '-')
+									[&Alt_Key;  Lähtesta suurendus] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY item_hc_context   		"Hctp kontekstimenüü">
+<!ENTITY item_hc_context_defau	"Hctp kontekstimenüü (vaikesäte)">
+<!ENTITY   tt_hc_context   			"[&Shift_Key; &item_mainPanelUI;] ">
+<!ENTITY item_mainPanelUI 		"Ava Fx peamine menüü">
+<!ENTITY item_mainPanelUI_defau	"Ava Fx peamine menüü (vaikesäte)">
+<!ENTITY   tt_mainPanelUI 			"[&Shift_Key; &item_hc_context;] ">
+
+<!ENTITY item_quitApplication	"Välju Firefoxist (sulge kõik aknad)">
+<!ENTITY   tt_quitApplication		"[&Shift_Key; &item_closewin;] ">
+<!ENTITY item_FullScreen		"Täisekraan">
+<!ENTITY   tt_FullScreen			"[&Shift_Key; &item_Maximize;] ">
+<!ENTITY item_Maximize			"Maksimeeri / Taasta aken">
+<!ENTITY   tt_Maximize				"[&Shift_Key; &item_FullScreen;] ">
+
+<!ENTITY item_NewTab			"Ava uus kaart" >
+<!ENTITY   tt_NewTab 			"Ava uus kaart.  (Ctrl + T)" >
+
+<!ENTITY devPixelsPerPx_label_2	"Muuda kirja ja muude elementide suurust" >
+<!ENTITY tt_toggleCssDevPx			"<pg /> Lülitub sätete &nbsp;<b>&devppp_default;</b> &nbsp;&amp;&nbsp; <b>&devppp_125;</b> vahel
+	<html:hr />&devPixelsPerPx_tt;" >
+
+<!ENTITY item_DynBars_toggle	"&dynBars_name;!, lülita" >
+<!ENTITY   tt_DynBars_toggle		"<pg1/>&dynBars_name;: 
+	<pg3/>Vaikimisi otsetee:&nbsp; <b>Ctrl + Q</b>
+	<pg3/>Vaata abilehte paneelil '&tab.float.toolbars;'." >
+
+<!ENTITY item_noaction 			"Puudub">
+
+<!ENTITY item_advSelTab 		"Vali Eelmine/Järgmine kaart">
+<!ENTITY   tt_advSelTab 			"Vali eelmine/järgmine kaart. (Ctrl + PgUp/PgDown)
+									<pg0/>Kerimise lisatoimingud:
+									[&Ctrl_Key; mine lehe algusse/lõppu (nagu klahvid Home/End)] 
+									[&Alt_Key; mine lehel vasakule/paremale (ehk <i><b>horisontaalne kerimine!</b></i>) ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+									
+<!ENTITY item_goBack 			"Mine lehe võrra tagasi">
+<!ENTITY item_goForward 		"Mine lehe võrra edasi">
+<!ENTITY   tt_goBackFw_key 			"Mine lehe võrra tagasi / edasi:   sama mis brauseri tagasi-/edasi-nupud.
+									[&Ctrl_Key; mine vastupidises suunas (edasi / tagasi)]
+									[&Shift_Key; &item_mainPanelUI;]">
+<!ENTITY item_go_BackForw 		"Mine lehe võrra tagasi/edasi">
+<!ENTITY   tt_go_BackForw 			"Mine lehe võrra tagasi / edasi:   sama mis brauseri nupud tagasi / edasi.
+									<pg0/>Kerimise lisatoimingud:
+									[&Ctrl_Key; liigu lehe algusse/lõppu (nagu klahvid Home/End)] 
+									[&Alt_Key; liigu lehel vasakule/paremale (st. <i><b>horisontaalne kerimine!</b></i>) ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY butt_butSound_tic_1 	"Heli kaardi sulgemisel">
+<!ENTITY butt_butSound_info1 	"Heli '&nav_history;'-menüü ilmumisel">
+<!ENTITY butt_butSound_action1 	"Heli üldise toimingu korral">
+<!ENTITY   tt_butSound_action1 		"Toimingute seas on:
+		• <b>&item_zapFrames;</b>   ja 
+		• <b>&item_closeNewerWindow;</b>.  
+		Heli esitatakse ka siis, kui vastavatud (tõenäoliselt soovimatu) aken läheb kiiresti aktiivse akna taha (nt. on see arvatavasti reklaam ja tuleks ehk eemaldada)">
+<!ENTITY butt_butSound_wheel1 	"Heli rulliku toimingu korral">
+<!ENTITY   tt_butSound_wheel1 		"Toimingute seas on:
+									• <b>&item_advSelTab;</b> ">
+<!ENTITY butt_butSound_notFound	"“Pole-lubatud”  heli">
+<!ENTITY   tt_butSound_notFound	"<pg/>Heli, mis esitatakse, kui mingi tegevus pole lubatud.
+	<pg/>Esitatakse ainult juhul, kui sellisel tegevusel on sobiv heli seadistatud. &nbsp; 
+	Rohkem teavet sektsiooni <b>Kohandatud Firefoxi nupp</b> pealkirjas &nbsp;&amp;&nbsp; <b>Veel sätteid > &line_title;</b>.">
+
+<!ENTITY only_volumen 	"<pg/>(Hetkel lubatud ainult helitugevuse muutmised)">
+
+
+<!ENTITY snd_none     			"Puudub">
+<!ENTITY Custom_Sound 			"Kohandatud heli">
+<!--  This goes before the sound names. It's value in english is ' ' (a single space), bc babelzilla fails with empty value.  -->
+<!ENTITY sound_0 				"Heli ">
+<!--  This goes AFTER the sound names.  Before them goes [sound_0] -->
+<!ENTITY sound 					" ">
+<!ENTITY tt_Ths_snds_incl_in_Fx		"Need helid on Firefoxiga kaasas">
+<!ENTITY tt_Ths_snds_incl_in_hctp 	"Need helid on selle lisaga kaasas.">
+
+<!ENTITY Tick_snd_f_Web_shrt 	" Tiksumise heli veebist (lühendatud)">
+<!ENTITY tt_Tick_snd_f_Web_shrt		"Tasuta (CC Attribution) originaalheli aadressil  http://soundbible.com/2044-Tick.html  ">
+
+<!ENTITY tt_old_snd__begin 			"Need 5 heli pole enam alates versioonist 45 Firefoxiga kaasas, kuid neid saab endiselt kasutada, 
+			laadides HCTP kodulehelt alla 'hctp_soundpack_1' (sisaldab 2 kena lisaheli) ja kopeerides helifailid oma kohalikule kõvakettale kausta: ">
+<!ENTITY tt_old_snd__cont1 			"       (sama kaust, mida kasutatakse ka kohandatud helide jaoks)">
+
+<!ENTITY tt_custom_sound__begin 	"Täpsemad sätted: kohandatud helid tuleb paigutada kausta: ">
+<!ENTITY User_Home_Directory 	  	"Kasutaja kodukaust">
+<!ENTITY or_custom2_mp3_and_so_on 	"   (või custom2.mp3 ja nii edasi.   Töötama peaks ka ümbernimetatud wav- või ogg-fail)">
+
+<!ENTITY Volume_c				  "Helitugevus:">
+
+
+
+<!ENTITY label_butPref_default 		"Vaikimisi toimingud">
+<!ENTITY    tt_butPref_default 			"Määra kõik toimingud vaikimisi sätetele. Ilma helideta.">
+<!ENTITY label_but_recom_1			"Soovitatavad toimingud">
+<!ENTITY    tt_but_recom_1 				"Määra toimingud soovitatavatele sätetele. Koos helidega!">
+<!ENTITY label_but_recom_annoyances "Soovitatav #2, ebameeldivuste eemaldamiseks">
+<!ENTITY    tt_but_recom_annoyances 	"Määra soovitatavatele valikutele #2: Eemalda ebameeldivused Fx nuppu kasutades! Koos helidega. Vaikimisi toimingud nagu [&item_mainPanelUI;] ja [&item_hc_context;] lähevad keskmisele (kolmandale) nupule.">
+<!ENTITY label_but_recom_2_1  		"Soovitatud #2.1">
+
+
+<!ENTITY actt_title			"Näita kohtspikreid:">
+<!ENTITY   tt_title				"Näita igal seadistataval nupul kohtspikrit infoga saadaolevate toimingute kohta.">
+<!ENTITY actt_always		"Alati">
+<!ENTITY actt_blockFirst	"Hiirega 'uuesti sisenedes'  [T]">
+<!ENTITY   tt_blockFirst		"Kohtspikrit ei näidata tavapäraselt.   Kuid sa võid selle nägemiseks liigutada hiirekursori nupult ära ja peale tagasi.   [T] Selle sätte jõustumiseks on vaja Firefox taaskäivitada.">
+<!ENTITY actt_never			"Mitte kunagi">
+
+
+
+<!ENTITY System_TitleBar__title					"Süsteemi tiitliriba:">
+<!ENTITY check__Sys_TitleBar_always_hid 		"Süsteemi tiitliriba alati peidetud">
+<!ENTITY    tt__Sys_TitleBar_always_hid 			"<pg />Kui see säte on märgistamata (vaikeäte), ilmub see süsteemi tiitliriba tavaliselt nendel juhtudel: 
+			<pg2 /> • Kaardigruppide vaates (Ctrl+Shift+E) &nbsp; <i>(eemaldatud Firefoxi versioonis 45+!)</i>
+			<pg2 /> • Printimise eelvaade  
+			<pg2 /> • kui kaartide riba on peidetud (juhtub näiteks hüpikakendes või mõnd kaarte mõjutava lisa kasutades)  
+			<pg2 /> • kui allolev säte lubab sel nähtaval olla&nbsp;(alati). 
+			<pg2 />Seega võid selle sätte märgistada, kui tahad seda alati peita (ehk igal juhul ülimaks ekraaniruumi kokkuhoiuks).
+			<pg />(Teadmiseks: Seda süsteemi tiitliriba muudeti, et see oleks sarnane väikese kohandatud tiitliribaga, näidates Firefoxi lisaikooni. &nbsp; See hoiab ära vilkumise, eriti lülitudes kaardigruppide  või printimise eelvaate kuvale/kuvalt) ">
+
+<!ENTITY check__Fxopt_Sys_TitlBr_always_prsnt 	"Firefoxi säte: Süsteemi tiitliriba (peaaegu) alati nähtaval">
+<!ENTITY    tt__Fxopt_Sys_TitlBr_always_prsnt 		"<pg /> Sama säte, mis kohandamise paneelil saadaval olev uus tiitliriba nupp.
+  													Kui märgistatud, on tiitliriba alati näha, väljaarvatud täisekraani režiimis (F11) ">
+
+
+
+<!ENTITY Fx_default_unchecked 		"(Fx vaikesäte: märgistamata)">
+<!ENTITY recommended_unchecked 		"(soovitatav: märgistamata)">
+
+
+
+<!ENTITY tt_custom_image__begin 		"Täpsemad sätted: kohandatud pildid tuleb paigutada kausta: ">
+<!ENTITY or_but_custom2_png_and_so_on	" &nbsp; (või but_custom2.png ja nii edasi. &nbsp; Töötama peaks ka ümbernimetatud gif- või jpg-fail)" >
+
+
+<!--  *** Color Picker popup *** -->
+<!ENTITY Opacity					"Läbipaistmatus" >
+<!ENTITY Color_Hue					"Värvitoon" >
+<!ENTITY tt_Color_Hue					"Hiire rullikuga saad valida täpseid värvitooni väärtusi,   nt. 16 rulliku kerimisnõksuga saab minna punasest lillaks ja nii edasi." >
+<!ENTITY tt_txtbox_col_pick 	"Pärast käsitsi tehtud muudatusi vajuta nende jõustumiseks klahvi TAB.   Kehtivad väärtused võivad olla nt: " >
+<!ENTITY tt_Sys_col_pick_noWo	"Süsteemi värvivalija ei tööta, kui sätete paneel on avatud brauseri sees (paanil)" >
+
+
+<!--  __________*** Section:   LOOK AND FEEL 2 ***__________  -->
+
+
+<!ENTITY   Options_Fx_Home_App_but 	" Firefoxi rakenduse menüünupu sätted: " >
+
+<!ENTITY   check__hcp_home_enabled 	 "Luba ülemises vasakus nurgas kohandatud Firefoxi nupp (*)" >
+<!ENTITY   check__hcp_home_enabled_2 "(saadaval ka kohandamise aknas)" >
+<!ENTITY      tt__hcp_home_enabled 		"Firefoxi kohandamine: &nbsp; akent 'Tööriistaribad » Kohanda' kasutades saab kaartide ribale või mis tahes tööriistaribale asetada identse nupu" >
+
+<!ENTITY Button_Style_Color		"Stiil/Värv" >
+<!ENTITY Fx_default_orng		"FX vaikesäte (oranž)" >
+<!ENTITY Blue					"Sinine" >
+<!ENTITY Green					"Roheline" >
+<!ENTITY Transp_with_Personas	"Läbipaistev Persona-välimustega" >
+<!ENTITY Transparent			"Läbipaistev" >
+
+
+<!ENTITY Icon_Size_for_Maximized_win		"Ikoon/Suurus 
+											maksimeeritud aknas." >
+<!ENTITY Icon_Size_for_UnMaximized_win		"Ikoon/Suurus 
+											maksimeerimata aknas." >
+<!ENTITY   ctn_dropmarker 	"Menüü avamise noolemärk" >
+<!ENTITY   tt_ctn_dropmarker    "Palun pane tähele, et see noolemärk on ainult mõnel nupusuurusel" >
+<!ENTITY   dm_auto 			"Firefoxi vaikesäte" >
+<!ENTITY   dm_auto_invtd 	"Firefoxi vaikesäte, pöördvärv" >
+<!ENTITY   dm_icon1 		"Suurem nool" >
+<!ENTITY   dm_icon1_invtd	"Suurem nool, pöördvärv" >
+<!ENTITY   dm_none	 		"Pole" >
+<!ENTITY   dm_old_default 	"HCTP vana vaikesäte *" >
+<!ENTITY   tt_old_default 		"* Pärandsäte.  (mis ei näitanud Windowsi süsteemides juba ammu midagi) " >
+
+<!ENTITY   ctn_fx_text 	   "Nupu tekst" >
+<!ENTITY   tt_ctn_fx_text		"${BrandName}   on vaikimisi väärtus, mis käitub nagu alati (näidates suurtel nuppudel 'Firefox'/BrändiNimi ja väikestel nuppudel esimest tähte)" >
+
+<!ENTITY   ctn_fx_image    "Nupu pilt" >
+<!ENTITY   fx_im_icon17 		"Firefoxi ikoon" >
+<!ENTITY   fx_im_icon17_invtd	"Firefoxi ikoon, pöördvärv" >
+<!ENTITY   fx_im_icon18 		"Firefoxi ikoon 2" >
+<!ENTITY   fx_im_icon18_invtd	"Firefoxi ikoon 2, pöördvärv" >
+<!ENTITY   fx_im_icon_classic	"Firefoxi klassikaline ikoon" >
+<!ENTITY   fx_im_icon_browser	"Veebilehitseja vaikimisi ikoon">
+<!ENTITY   fx_hc_icon 			"HCTP ikoon" >
+<!ENTITY   custom_image 		"Kohandatud pilt" >
+
+<!ENTITY    Fx_Main_menu_but 		"Näita Firefoxi peamenüü (paneeli) nuppu:">
+<!ENTITY tt_Fx_Main_menu_but			"(vaikimisi paikneb see asukohariba lõpus). &nbsp; &nbsp; Kui kasutad kohandatud Firefoxi menüünuppu, võid lisaruumi saamiseks selle nupu peita. " >
+<!ENTITY    FxMenu_always_fxdefault	"Alati (Fx vaikesäte)" >
+<!ENTITY    FxMenu_notif_badge		"Ainult teavituste puhul" >
+<!ENTITY tt_FxMenu_notif_badge			"Näita nuppu ainult siis, kui sellel on teavitus-/hoiatusikoon (nt. Firefoxi sünkroonimise viga)" >
+<!ENTITY    FxMenu_never			"Mitte kunagi (mittesoovitatav)" >
+
+
+<!ENTITY   check__floatMenu 		"Ujuv peamenüü: &nbsp; menüü lahkub menüüribalt ja 'ujub' uue Fx menüünupu kõrval, end automaatselt peites.&nbsp; Aktiveeritakse hiirekursoriga Fx menüünupule minnes või vajutades klahve ALT või F10." >
+<!ENTITY      tt__floatMenu 			"Veelgi rohkem ekraaniruumi saamiseks peida kindlasti ka nüüdsest tühi menüüriba (eemaldades selle kontekstimenüüs selle eest märgistuse)." >
+<!ENTITY   check__floatM_pageTitle 	"Veebilehe pealkiri ujuva menüü kõrval" >
+
+<!ENTITY floatM_adv_options			"Ujuv peamenüü:  täpsemad sätted:" >
+
+<!ENTITY floatM_style_title			"Fondi ja tausta <b>värv/stiil</b>" >
+<!ENTITY floatM_style_default		"Uus stiil (vaikesäte alates sept 2016)" >
+<!ENTITY floatM_style_captionColor	"Proovi järgida süsteemi (OS-i) akna tiitli fonti ja taustavärvi" >
+<!ENTITY floatM_style_captionC_tt		"Välja arvatud Persona-teemade puhul" >
+<!ENTITY floatM_style_oldColor		"Vana stiil, font ja taustavärv" >
+
+
+<!ENTITY Custom_style_files			"Kohandatud laadi (.css) failid:" >
+<!ENTITY Custom_style_files__tt			"Kohandatud .css-failid brauseri enda kasutajaliidese kujundamiseks &nbsp;(nagu aegunud Stylishi võimekus). 
+	Failinimede lisamiseks kasuta komaga eraldatud loendit &nbsp; (laiend .css eeldatakse, kui seda ei lisata)" >
+<!ENTITY files_located_homedir		"Failid kasutaja kodukaustas" >
+<!ENTITY Custom_style_files__failed		"Laadimata fail(id): " >
+
+<!ENTITY Apply_changes				"Rakenda muudatused" >
+
+
+
+<!ENTITY FULL_SCREEN_mode_options	" TÄISEKRAANI režiimi sätted: " >
+
+<!ENTITY check_fullscrButs_autohide "Tööriistaribade täisekraanirežiimil automaatselt peitmisel peida automaatselt ka 'kindla asukohaga' Firefoxi menüünupp ja kohandatud nupud Min,Max,Sulge. &nbsp; (vaikesäte: jah)" >
+<!ENTITY    tt_fullscrButs_autohide 	"<pg />Kaasaarvatud täisekraanirežiimis videotes. &nbsp; Kui märgistamata, on nupud näha pool-läbipaistvana.
+   				Kui sa ei taha täisekraanirežiimis olles toimingute võimalust kaotada, võid selle märgistamata jätta 
+   				(ja seadistada nupud tillukeseks ja peaaegu läbipaistvaks, et need sisu väga vähe häiriks).
+   				<pg />('Kindla asukohaga' nupp tähendab ainult neid, mis on akna nurkades.  
+   				Teisalt, kohandamise paneeli kaudu kaartide ribale ja/või tööriistaribale paigutatud Fx ja Min,Max,Sulge-nupud peidetakse koos oma tööriistaribaga alati)">
+<!ENTITY Autohide_in_FullScr_Videos	"Automaatselt peida need täisekraani videotes.   (soovitatav: jah)" >
+<!ENTITY Small_FScr_warn			"Väiksem (palju vähem pealetükkivam) teade &quot;[Sait] on nüüd täisekraanirežiimis&quot;  (nt. videotel).   (Fx vaikesäte: ei)" >
+
+<!ENTITY label__fullscr_tr_duration "Täisekraani režiimi video mustalt ülemineku kestvus:">
+<!ENTITY    tt__fullscr_tr_duration "Soovitatav on 'Puudub', kui see üleminek sind häirib. &nbsp; (Säte töötab alates Fx42+)">
+<!ENTITY When_entering		"Sisenedes: " >
+<!ENTITY When_leaving		"Väljudes: " >
+<!ENTITY None_p_fastest		"Puudub (kiireim)" >
+<!ENTITY Fast				"Kiire üleminek" >
+<!ENTITY Fx_Default_p_slow	"Fx. vaikesäte (aeglane)" >
+				
+
+<!--  New Feature: “Special VERTICAL MAXIMIZE”  -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle     "“<i>Hea</i> VERTIKAALNE MAKSIMEERIMINE”:   <html:einfo>Kaardid <i>tõesti</i> kõige pealmised ka <b>maksimeerimata</b> aknas!</html:einfo>">
+<!ENTITY   VERTICAL_MAXIMIZE_subTitle   "<b>Enne kasutamist lisateabe lugemiseks klõpsa siin!</b>.   Uus <b>katsejärgus</b> võimalus!, <b>töötav</b> prototüüp.">
+<!ENTITY   vertMax_switch_title     "Aktiveeri <b>Vertikaalne maksimeerimine: </b>">
+<!ENTITY   vertMax_no     "Ei">
+<!ENTITY   vertMax_yes    "Jah">
+
+<!ENTITY    vmBehave_TITLE     "Käitumine:">
+<!ENTITY tt_vmBehave_TITLE     "Paksus kirjas valikud võivad olla eriti kasulikud.">
+
+<!ENTITY    vmBehave_default     	"Vaikesäte.  (Fx aken haakub töölaua ülemise ja alumise servaga)">
+<!ENTITY    vmBehave_right         	" &nbsp; See haakub ka töölaua parema servaga">
+<!ENTITY tt_vmBehave_right      		"Pannes sulgemisnupu püsima töölaua nurgas, nagu maksimeeritud režiimis">
+<!ENTITY    vmBehave_left     		" &nbsp; See haakub ka töölaua vasaku servaga">
+
+<!ENTITY    vmBehave_noSize     	"See haakub ainult töölaua ülemise servaga  (vaba akna kõrgus)">
+<!ENTITY    vmBehave_top_right   	" &nbsp; See haakub ülemise ja parema servaga">
+<!ENTITY    vmBehave_top_left   	" &nbsp; See haakub ülemise ja vasaku servaga">
+
+<!ENTITY    vmBehave_bottom     	"See haakub ainult töölaua alumise servaga  (vaba akna kõrgus)">
+<!ENTITY    vmBehave_bottom_right   " &nbsp; See haakub alumise ja parema servaga">
+<!ENTITY    vmBehave_bottom_left   	" &nbsp; See haakub alumise ja vasaku servaga">
+
+<!ENTITY    vmBehave_leftRight_top 	"See haakub vasaku, parema ja ülemise servaga  (vaba akna kõrgus)">
+<!ENTITY    vmBehave_leftRight_bot 	"See haakub vasaku, parema ja alumise servaga">
+<!ENTITY    vmBehave_leftRight     	"See haakub vasaku ja parema servaga  (“Horisontaalne maksimeerimine”)">
+
+
+<!-- FYI: Tags like 'einfo', 'b' and 'i' CAN'T be nested or spaces are lost!!, SOLVED here using 'html:b' -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt              "<html:b>“<i>Hea</i> VERTIKAALNE MAKSIMEERIMINE”:</html:b> &nbsp; töötab <b>maksimeerimata</b> Fx-i akendes.
+	<pg0/><pg/>Saab aktiveerida ka <i>'HCTP kontekstimenüü'</i> kaudu (ligipääsetav maksimeerimise, minimeerimise nuppudel ja mujal teisese hiirenupuga klõpsates). &nbsp; Kui see on aktiivne, näidatakse maksimeerimise nupu ümber piirjooni.
+	<pg/>Kehtib ainult kui: <b>'&enable_customizable_buts;'</b> on aktiivne.
+	<pg2/>Ajakohaste üksikasjade saamiseks <b>loe palun ka</b> kodulehel sektsiooni “VERTICAL MAXIMIZE”! ">
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__LINUX       "<b>LINUX märkmed:</b> teostatud ainult esmane kontroll!, Linux Mint, Cinnamon (2/3 aasta vanune).
+	Palun pane tähele, et akna automaathaakumine töölaua ülemise äärega võib vahele segada. 
+	Leitud viga mitme monitori kasutamisel: Fx haakub alati sama monitoriga.
+	(Mõni allolev tekst käib ainult Windowsi kohta.) " >
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__SUBNOTES 	"<pg/><b>PALUN PANE TÄHELE:</b> Fx aken võib pärast liigutamist/suuruse muutmist teha väikse kahjutu <i>'hüppe'</i>.  
+	Pärast suuruse muutmiseks akna piirjoontest kinni võtmist ja lahti laskmist või muudest aladest lohistades, võib Fx aken teha <b>väikse (10 px) kiire alla-üles liikumise</b>. Seda on oodata ja veebi lehitsedes ei sega see midagi. &nbsp; Seda saab vältida, kasutades lohistamiseks <i>Ujuva menüü</i> veebilehe pealkirja ala! (aktiveeritud nt. klahviga ALT)
+	<pg/>Lohistamine: kui <i>Windowsi Aero-haakumine</i> on lubatud, siis akna ülemist äärt lohistades see maksimeeritakse. &nbsp; Seda saab vältida, kui enne hiire nupust lahtilaskmist allapoole liikuda, või kui 'Vertikaalne Aero-haakumine' on aktiivne (klahvidega WIN+SHIFT+<b>￪</b>) 
+	<pg/>Testitud peamiselt MS-Windowsis. " >
+
+
+
+
+<!ENTITY Drag_Window_capab_opt			" Akna lohistamise võimaluse sätted: " >
+<!ENTITY    Drag_win_via_tabbar_defno	"Lohista akent kaartide riba tausta kasutades (vaikesäte: ei)" >
+<!ENTITY tt_Drag_win_via_tabbar_defno		"See juba on Firefoxis mõne tööriistaribakombinatsiooni korral lubatud. (nt. Windows koos Aero-Glass töölauaga). &nbsp; See -võib- põhjustada kerimisribade alati kaartide ribal näha olemise" >
+<!ENTITY and_un_maxim_with_dblclk		"(&amp; maksimeeri/taasta aken sel topeltklõpsates)" >
+
+
+<!ENTITY    Enable_Ctrls_Widgets_Drag_Win 	"Luba akna lohistamise juhtelemendid/vidinad " >
+<!ENTITY tt_Enable_Ctrls_Widgets_Drag_Win		"Säte lisatud ühilduvuse parandamiseks muude lisade nagu 'Vertical Toolbars' automaatse peitmise valikuga." >
+
+<!ENTITY All__prevver_2_8_default			"Kõik   (HCTP eelmiste versioonide [2.8.*] vaikesäte)" >
+<!ENTITY All_excpt_othrAddn_SpsWidgts_def	"Kõik peale teiste lisade tühimiku elemendid   (vaikesäte)" >
+<!ENTITY tt_no_foreign_spaces					"Soovitatav valik parema ühilduvuse saamiseks teiste lisade nagu 'Vertical Toolbars' <b>automaatse peitmise</b> valikuga &nbsp; (see ei tööta korralikult, kui kuskil tööriistaribal on akna lohistamise võimekusega tühimiku element) 
+				<html:hr />
+				PS: Kui 'Vertical Toolbars'i automaatne peitmine endiselt ei tööta, võid kasutada valikut 'Tühimike jaoks lohistamist pole'.
+				(See võib juhtuda, kui Vertical Toolbar sisaldab pärast kasutajapoolset kohandamist HCTP tühimiku elementi.  Need on need, mille nime ees on Firefoxi kohandamise aknas eesliide [h]) 
+				" >
+<!ENTITY    No_drag_for_Spaces_Widgets		"Tühimike jaoks lohistamist pole" >
+<!ENTITY tt_No_drag_for_Spaces_Widgets			"Hiljem lisatakse sätted, mis välistavad ka muud elemendid nagu veebilehe pealkiri jms." >
+
+
+<!ENTITY Easy_of_use__scr_corner__Fitts_law	" (*) Suurenenud kasutusmugavus, sest see nupp/juhtelement on maksimeeritud aknas tavaliselt <b>ekraani nurgas</b>.
+		(Fittsi seadus: vaata vastaval Vikipeedia lehel nurkade ja äärte kohta käivat teksti) " >
+
+		
+		
+<!--  __________*** Section:   ADVANCED SETTINGS ***__________  -->
+
+
+<!ENTITY hidTit__Dont_use		"Ära kasuta" >
+<!ENTITY hidTit__use			"Kasuta" >
+
+<!--  __________*** FOR LINUX/OSX ONLY ***__________  -->
+<!ENTITY   title__alternat_hide_titbar_feature__default_Use		"  alternatiivne tiitliriba peitmise võimalus (vaikesäte: Kasuta)" >
+<!ENTITY comment__alternat_hide_titbar_feature					"Edukalt peidab tiitliriba Linuxis / Gnome'is (nt. Ubuntu), testitud ainult selles süsteemis. 
+		Umbkaudu samaväärne, mis aknahalduri sätetes aknadekoratsioonide keelamine (ehk Ubuntus 'Compiz-Config') 
+		<einfo> &nbsp; &nbsp; (kasutab sisemist atribuuti 'hidechrome') </einfo> " >
+
+
+<!--  ______*** Small-Tabs and Small-Toolbars MOVED TO LOOK_AND_FEEL_2 ***______  -->
+
+<!ENTITY Styling_options_to_max_spc			"Väljanägemise sätted: <einfo>(sisu ruumi maksimeerimiseks)</einfo> " >
+
+<!ENTITY    Smaller_Tabs_and_Tab_Bar		"Väiksemad kaardid &amp; kaartide riba" >
+<!ENTITY tt_Smaller_Tabs_and_Tab_Bar			" <pg /> Töötab ka koos <b>'Tab Mix Plus'i mitmerealise kaartide riba</b> võimalusega! (mitmerealise kaartide riba uue kõrguse kohandamiseks on vaja <b>Fx taaskäivitada</b>) 
+			<pg /> Võibolla on sul vaja pisut kohandada (umbes 1piksli võrra või nii) sätte 'Ülemise ääre kohandatud äärise suurus ...' väärtust, et kaardid uuesti ekraani ülemist äärt puudutaks. Või taasta aken ja maksimeeri see uuesti, kui selline säte on keelatud (kasutatakse automaatset arvutamist) 
+			<pg /> Palun võta teadmiseks, et seda stiili on testitud ainult Windowsi vaikimisi välimusega (ja pisut ka Linuxis), seega tasub olla <b>ettevaatlik</b>, kui kasutad seda koos kohandatud välimustega ja/või <b>teiste kaartide väljanägemist muutva lisadega</b>.
+			" >
+<!ENTITY No__default			"Ei (vaikesäte)" >
+<!ENTITY Small_australis		"Väiksed kaardid, Fx-i Australis välimuse jaoks" >
+<!ENTITY Small_near_Classic		"Väiksemad, ligilähedane klassikalistele kaartidele" >
+<!ENTITY Small_almost_Classic	"Väiksemad, peaaegu nagu klassikalised kaardid  (Uus)" >
+<!ENTITY Small_Classic_0     	"Väiksemad, Klassikalised kaardid! (Uus 2)">
+
+<!ENTITY likeClassic_mediumH	"Nagu klassikalised kaardid, keskmine kõrgus" >
+<!ENTITY likeClassic_fullH		"Nagu klassikalised kaardid, täielik kõrgus" >
+
+<!ENTITY DEPREC_australis		"[Iganenud]    Australis välimus" >
+<!ENTITY DEPREC_almst_Clsc		"[Iganenud]    peaaegu klassikaline"  >
+<!ENTITY tt_smTabs_deprecated 		"<pg /> See vana [Iganenud] säte on alles jäetud ainult ühilduvuse kontrollimiseks <b>*ja eemaldatakse hiljem*</b>. 
+		<pg /> Kui see säte on sinu süsteemis asjade parandamiseks ja ilustamiseks vajalik, palun jäta teade meie kasutajatoe saidil (link lehel  tiny.cc/hidec).">
+
+
+<!ENTITY    Smaller_Toolbars_and_buttons	"Väiksemad tööriistaribad ja nupud" >
+<!ENTITY tt_Smaller_Toolbars_and_buttons		"   Palun pane tähele, et seda stiili on testitud ainult Windowsi vaikimisi teemaga. Selle kasutamisel kohandatud välimustega on soovitatav olla ettevaatlik." >
+<!ENTITY Small				"Väiksemad" >
+<!ENTITY A_bit_smaller		"Pisut väiksemad" >
+<!ENTITY Smaller_buttons	"Väiksemad nupud" >
+<!ENTITY tt_smallBars_oldOption	"Need vanad sätted võivad olla kasulikud vanemates Fx versioonides (nt. Fx ESR 52), kui <i>'teksti ja muude elementide suurus'</i> (dpi) > 100&percent;" >
+<!ENTITY Option_compat_only	"(Valik ainult ühilduvuse kontrollimiseks)" >
+<!ENTITY tt_smallBars_old_deprecated 	"<pg /> See säte on ainult ühilduvuse kontrollimiseks <b>*ja eemaldatakse hiljem*</b>. 
+		<pg /> Kui see säte on väikeste tööriistaribade sinu süsteemis töötamiseks vajalik, palun jäta teade meie kasutajatoe saidil (link lehel   tiny.cc/hidec).  
+		<pg /> See võib juhtuda vananenud lisade tõttu, mida pole uue Fx40 laadi (css) koodiga vastavusse viidud.">
+
+
+<!ENTITY Top_edge_margn_pos_sets 		" Ülemise äärise sätted: " >
+<!ENTITY    Cust_Top_edge_margn_f_tbar	"Ülemise ääre kohandatud äärise suurus tööriistaribade ala jaoks:  (pikslites, negatiivne väärtus liigutab sisu ülespoole)" >
+<!ENTITY tt_Cust_Top_edge_margn_f_tbar		"Keelatud, kui 'Firefox 4+ tiitliriba' ja 'Aseta kaardid tiitliribale' on lubatud. (kasutatakse automaatset arvutamist) " >
+<!ENTITY In_Maximized__window			"Maksimeeritud aknas:" >
+<!ENTITY tt_top_marg_max					"Ei kehti täisekraani režiimis   
+			  	(nt. maksimeeritud Firefoxi aknas võid selle väärtuseks panna  -1  või  -2  , et pealmised kaardid puudutaks ekraani ülemist äärt.)" >
+<!ENTITY In_Un_Maximized__window		"Maksimeerimata aknas:" >
+
+
+<!ENTITY Top_margn_style_main_win		"Peamise akna ülemise äärise stiil <html:br/> (juur-konteiner). " >
+<!ENTITY tt_Top_margn_style_main_win		"Võib parandada ühilduvust teiste lisade/teemadega, mis mõjutavad Firefoxi sisu ülemist ääreala" >
+<!ENTITY Untouched__default				"Puutumata (vaikesäte)" >
+<!ENTITY    Enforce_zero_top_mrgin		"Jõusta null-suurusega ülemist äärist" >
+<!ENTITY tt_Enforce_zero_top_mrgin			"nt. maksimeerimata Fx. aknas parandab/eemaldab see väikse lisaala ülemises ääres välimustes nagu Noia4." >
+
+
+<!ENTITY  old_topEdge_titlebar_msg 		"Eemaldatud pärandsäte: 'Ülemise ääre välimus'. Selle teate eemaldamiseks klõpsa." >
+
+
+<!ENTITY    Translation_Notes 	"Tõlke märkmed">
+<!ENTITY tt_HCTP_BOTTOM_NOTES   "HCTP-l on nüüd täielik tõlkimise võimalus! (saab tõlkida igasse keelde!).  Vaata koduleht > Translators tips!" >
+
+
+<!--  *** This DOESN'T NEED to be translated!!! *** Developer only option!! ***  -->		
+<!ENTITY Devel__Print_debug			"[Developer/Tester]  Print debug info in the error-console (default: no)" >
+<!ENTITY Devel__Print_debug_audio	"With <b>Audio feedback</b> when outputting a msg with 'error' or 'warn' strings." >
+
+
+<!--  __________*** OTHER SETTINGS ***__________  -->
+
+<!ENTITY Fx_internal_options 		" Firefoxi sisemised sätted: " >
+
+<!ENTITY Search_Bar 				"Otsinguriba: " >
+<!ENTITY    SearchBar_new_UI		"[* Valik selle keelamiseks eemaldati Firefox 43-s! *] &nbsp; &nbsp; Luba uus otsinguriba välimus Firefoxi versioonist 34+ (ikooniväljade kasutamine)  " >
+<!ENTITY tt_SearchBar_new_UI		"Eemalda märgistus, et taastada otsinguriba rippmenüü saidinimede loendiga ja võimalusega kergesti valik meelde jätta.   Vajalik on Fx-i taaskäivitamine" >
+
+<!ENTITY Search_in_new_tab		"Otsingutibalt käivitatud uue otsingu tulemused avatakse uuel kaardil.   (Seega praeguse kaardi sisu ei kirjutata kunagi üle)" >
+
+<!ENTITY    Other_intOpts 	"Muu:">
+
+<!ENTITY    Tab_switch_MRU		"Kaartide vahetamine:  'Ctrl+Tab' liigub kaartide vahel viimati kasutamise järjekorras! &nbsp; (tähendab, et saad kergesti lülituda viimati nähtud kaardile/kaartidele) " >
+<!ENTITY tt_Tab_switch_MRU		"Samuti pakub see klahvikombinatsiooni 'Ctrl+Tab' pikal vajutamisel eelvaate pisipilte, mis sarnaneb Windowsi  'Alt+Tab'  vajutades kuvatava eelvaate loendiga. (kui avatud on rohkem kui 2 kaarti) " >
+
+<!ENTITY devPixelsPerPx_label 	"<pg1 /> Muuda Firefoxis teksti ja muude elementide suurust:" >
+<!ENTITY devPixelsPerPx_tt 		"<pg  /> See säte on sama mis MS Windowsi ekraanisätete dialoogis, kuid ainult Firefoxi jaoks.
+			<pg /> Kasulik, kui on vaja süsteemi vaikesättest erinevat kirjasuurust. &nbsp; Nt. kui kasutuses on 2 või enam eri suurusega monitori. " >
+<!--  <pg />(Using Firefox hidden preference: 'layout.css.devPixelsPerPx')  -->
+<!ENTITY devppp_default	"Süsteemi vaikimisi suurus" >
+<!ENTITY devppp_100 	"100&percent; - Väiksem" >
+<!-- Shouldn't need any translation -->
+<!ENTITY devppp_120     "120&percent;">
+<!ENTITY devppp_125 	"125&percent; - Keskmine" >
+<!ENTITY devppp_150 	"150&percent; - Suur" >
+<!ENTITY devppp_9x 		" 94&percent; - Katsejärgus säte" >
+
+
+<!ENTITY HCTPs_extra_options 		" HCTP lisasätted: " >
+<!ENTITY Wider_Bookmark_panel		"Laiem järjehoidja paneel (Ctrl+D):   et kergemini luua/muuta sinu järjehoidjate pikki kirjeldavaid nimesid. " >
+
+<!ENTITY    Stop_image_animations	"Peata piltide animatsioonid (ja taustal taotlused) klahvikombinatsiooniga SHIFT+ESC." >
+<!ENTITY tt_Stop_image_animations		"See on sama käitumine, mida tegi Esc-klahv vanematel Firefoxi versioonidel kui 20. &nbsp; Töötab nagu lisa 'SuperStop' (proovi seda sätet, kui 'SuperStop' sinu süsteemis enam ei tööta)" >
+
+
+
+<!--  __________*** Dynamic Toolbars  section ***__________  -->
+<!ENTITY dynBars_name     			"Dünaamilised tööriistaribad">
+
+
+
+<!ENTITY button.Advanced     	"Täpsemalt">
+
+<!ENTITY hc_rcOnly 			"Uus säte, esmakordselt saadaval eelversioonis RC: " >
+
+<!ENTITY  hc_isBetaFeature 	"BEETA-funktsioon: " >
+<!ENTITY tt__isBetaFeature 	"BEETA-funktsioon:&nbsp; võib veel sisaldada mõnd pisiviga " >
+
+<!ENTITY forUpdatedSections	"(uuendatud!)">
+
+<!ENTITY bOld		"[Vana]  " >
+<!ENTITY NEWe		"UUS!" >
+<!ENTITY SOONe		"VARSTI!" >
+
+
+<!ENTITY Are_you_sure     	"Kas oled kindel?">
+
+<!ENTITY See_homepage_for_ex	"Näidis(t)e nägemiseks vaata kodulehte.">
+
+<!ENTITY optionForFx57plus     	"Säte&nbsp; &brandShortName; 57&nbsp;ja hiljema jaoks">
+
+
+<!ENTITY tt_DEPRECATED_IMMINENT     	"See iganenud säte eemaldatakse varsti!   Kui sul seda endiselt vaja on, palun jäta teade kasutajatoe saidile, et me saaks otsida sobivat asendust. Täname!">
+
+
+<!ENTITY Msg__New_Feature_RC_versions  "RC-versioonides on uusi võimalusi!: &nbsp; vaata kodulehel sektsiooni 'Development Channel' " >
+
+
+<!-- ** MULTI LANGUAGE DIALOG ** -->
+<!ENTITY   MultiLanguage_but     	"MITMEKEELNE!">
+<!ENTITY   MULTI_LANGUAGE_DIALOG   	"MITMEKEELNE ligipääs:">
+<!ENTITY   multi_lang_subtitle 		"Sa saad selle sätete dialoogi avada järgmistes keeltes, mugavuste huvides isegi <b>samaaegselt</b>:">
+<!ENTITY   multi_lang_subtitle_tt 		"<pg /> Võib olla kasulik nt. lülitumiseks poolikule/poolikult (ja tõenäoliselt vaikimisi-veel-lubamata) laienduse keelele/keelelt.  
+			<pg /> Samuti väga väärtuslik tõlkijatele." >
+
+
+<!-- ** Please fill this entry (eg. with 'Done') only when finishing the translation/improvements, in order to avoid showing '100percent' 
+     (eg. the spanish one has still many entries MACHINE-translated only)   **   You can check translation status text in opt_lang.dtd.    
+     THANKS A LOT! -->
+<!ENTITY   Translation_endOfJob_entry    "Done! (et)">
+

@@ -1,0 +1,202 @@
+
+/* --------- Small Nav-bar & toolbarbuttons !! ----------- */
+
+/* beware of affecting floating hctp-'home'-toolbar! */
+
+
+/**
+	From: https://blog.mozilla.org/addons/2014/03/06/australis-for-add-on-developers-2/
+	For  nsIStyleSheetService.loadAndRegisterSheet(..) use @-moz-document below:
+	(bc this loads the stylesheet for all documents, so it's prudent to limit the styles to the document we want in the CSS file:)
+	@-moz-document url("chrome://browser/content/browser.xul") {
+		//...
+	}
+**/
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+	
+
+toolbox > toolbar:not(#TabsToolbar) {
+	/**
+	margin-top   :   0px !important;
+	margin-bottom:   0px !important;
+	**/
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+/*
+toolbox > toolbar#nav-bar {
+	padding-top   : 1px !important;
+}
+*/
+
+toolbox > toolbar:not(#TabsToolbar)                             toolbarbutton ,
+toolbox > toolbar:not(#TabsToolbar)                             toolbarbutton  >  dropmarker {
+	margin-top   :  0px !important;
+	margin-bottom:  0px !important;
+    
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+toolbox > toolbar:not(#TabsToolbar)                          >  toolbarbutton ,
+toolbox > toolbar:not(#TabsToolbar)   .customization-target  >  toolbarbutton {
+	margin-top   : -1px !important;
+	margin-bottom: -1px !important;
+}
+/*  linux  */
+:root[hcp_platformPlus="linux"]  toolbox > toolbar:not(#TabsToolbar)                          >  toolbarbutton ,
+:root[hcp_platformPlus="linux"]  toolbox > toolbar:not(#TabsToolbar)   .customization-target  >  toolbarbutton {
+	margin-top   : -3px !important;
+	margin-bottom: -3px !important;
+}
+
+
+/* from  aero/../browser.css   (#nav-bar) */
+toolbar:not(#TabsToolbar)                        > .toolbarbutton-1 > *:-moz-any( .toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-container ),
+toolbar:not(#TabsToolbar)  .customization-target > .toolbarbutton-1 > *:-moz-any( .toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-container ),
+toolbar:not(#TabsToolbar)                        > .toolbarbutton-1 > .toolbarbutton-menubutton-button > .toolbarbutton-icon ,
+toolbar:not(#TabsToolbar)  .customization-target > .toolbarbutton-1 > .toolbarbutton-menubutton-button > .toolbarbutton-icon {
+  padding-top   : 1px !important;
+  padding-bottom: 1px !important;
+}
+toolbar:not(#TabsToolbar)                        > .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon ,
+toolbar:not(#TabsToolbar)  .customization-target > .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon {
+  padding-top   : 6px !important;
+  padding-bottom: 5px !important;
+}
+window:not([chromehidden~="toolbar"]) #urlbar-wrapper > .toolbarbutton-1:-moz-any([disabled],:not([open]):not([disabled]):not(:active)) > .toolbarbutton-icon {
+  padding-top   : 0px !important;
+  padding-bottom: 0px !important;
+}
+#bookmarks-menu-button[cui-areatype="toolbar"]:not(.bookmark-item):not([overflowedItem=true]) > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon {
+  padding-top:    1px !important;
+  padding-bottom: 1px !important;
+}
+
+/*
+....
+toolbox > toolbar:not(#TabsToolbar)     toolbarbutton                 > image,
+toolbox > toolbar:not(#TabsToolbar)     toolbarbutton  >  dropmarker  > image{
+}
+*/
+
+/* image of most? addons buttons are 2px shorter */
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton:not(.chromeclass-toolbar-additional) > image  {
+	padding-top   :  2px !important;
+	padding-bottom:  2px !important;
+}
+
+
+/* HORIZONTAL space */
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton                   ,
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton  >  toolbarbutton ,
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton  >  dropmarker    {
+	padding-left  :  0px !important;
+	padding-right :  0px !important;
+}
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton                   {
+	padding-left  :  0px !important; /* always 0 for this 'zone' to not activate the child dropmarker */
+	padding-right :  1px !important;
+}
+
+/* #downloads-button adds a stack when clicked */
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton                   > image,
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton                   > .toolbarbutton-icon,
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton  >  toolbarbutton > image,
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton  >  dropmarker    > image {
+	padding-left  :  4px !important;
+	padding-right :  4px !important;
+}
+/* END HORIZONTAL space */
+
+
+toolbox > toolbar#nav-bar  > :not(#nav-bar-customization-target)      toolbarbutton {
+	margin-top   :  -2px !important;
+	margin-bottom:  -2px !important;
+}
+toolbox > toolbar#nav-bar  >      #nav-bar-customization-target {
+	margin-top   :   0px !important;
+	margin-bottom:   0px !important;
+}
+
+
+/* kinda repeated rule to make sure to override the rule in browser.css */
+#nav-bar .toolbarbutton-1:not([type=menu-button]),
+#nav-bar .toolbarbutton-1 > .toolbarbutton-menubutton-button,
+#nav-bar .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker {
+  padding-top:    0px !important;
+  padding-bottom: 0px !important;
+}
+
+
+#back-button     {
+	-moz-padding-start: 2px !important;
+	/* deleted to hopefully support RTL? ..  padding-left      : 2px !important; */
+    
+    -moz-margin-end: -1px;
+}
+#back-button     .toolbarbutton-icon {
+	padding       :  2px !important;
+}
+
+
+/** BEGIN  Fx28-  section that works & somewhat reviewed  **/
+
+/* things that have top&bottom borders! */
+#forward-button  .toolbarbutton-icon,
+#urlbar,
+#searchbar  .searchbar-textbox {
+	margin-top   :  1px !important;  /* 1px to see urlbar top-border!.  Bottom 1px also to kinda central-align */
+	margin-bottom:  1px !important;
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+#urlbar  #identity-box ,
+#urlbar  #notification-popup-box {
+	margin-top   :  0px !important;
+	margin-bottom:  0px !important;
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+.urlbar-icon {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+.searchbar-engine-button,
+.search-go-container {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+/** END  Fx28-  section  **/
+
+/** since Fx34 **/
+.searchbar-search-button-container {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+/** since Fx35 **/
+.searchbar-search-button {
+	margin-top   :  -1px !important;
+	margin-bottom:  -1px !important;
+}
+
+/* BEGIN for Linux */
+/* urlbar here is for windows@125% (dpi?) */
+#urlbar            ,
+.searchbar-textbox {
+  min-height: 20px !important;
+}
+.searchbar-engine-button > .button-box {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+/* END   for Linux */
+
+}  /*** moz-document url(...) ***/
+

@@ -1,0 +1,124 @@
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+
+/*  I'm the old, HIDE new buttons  */
+.hc_mmc_holder  .hNew_mmcbuttons {
+	display: none !important;
+}
+
+
+
+#hcp-rightbar-fixed{
+	margin-top: -3px;
+}
+@media all and (-moz-windows-compositor) { /* Windows GLASSED DESKTOP */
+  #main-window:not([hctp_vertical_maxim_act__TOP="true"]):not([hc-MaxFull="true"])    /* works in cc_never too */
+     #hcp-rightbar-fixed {
+	margin-top: -2px;
+  }
+}
+
+
+/* no capta directo! pq tiene el tema especial para drag, pero al menos sale como un 'hint' para drag-windows, en el hover de los botones */
+#main-window:not([hc-MaxFull="true"])   #hcp-rightbar-fixed:hover {
+	background-color: rgba(0, 0, 0, 0.10);
+	border-radius: 4px;
+}
+
+
+/* -- control buttons  -- */
+/*  Aero-BASIC!  (not glass)    */
+@media not all and (-moz-windows-compositor) {
+#main-window:not([hctp_vertical_maxim_act__TOP="true"]):not([hc-MaxFull="true"])   
+  #hctp-controls-top-fixed {
+ 	margin-top: 1px;
+ }
+}
+
+
+#hcp-menu-winctrls-titlebar   #hctp-controls-in-menu   toolbarbutton{
+	padding-top: 0px !important;
+}
+
+
+
+/* --- BEGIN specific Buttons section ------------------------------------------------------------------------------------------ */
+
+/* extra settings for 'fixed' mmc buttons */
+#main-window[dz_adv_minmaxclose_buttons_skin="bs_auto_nomax2"] #hctp-controls-top-fixed {
+	padding-top: 3px;
+}
+#main-window[dz_adv_minmaxclose_buttons_skin="bs_auto_nomax2"] #hcp-controls-paletteitem {
+	-moz-box-align: start;
+}
+
+
+
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    .hc-mmcbuttons-cls  {
+  list-style-image: url("chrome://HideCaptionPlus/skin/windowControls-aero.png") !important;
+  padding: 0px !important;
+  padding-top: 2px !important;
+  
+  margin : 0px !important;
+  border : 0px !important;
+  -moz-appearance: none !important;
+}
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    .hc-mmcbuttons-cls  >  image.toolbarbutton-icon {
+  margin : 0px !important;
+}
+
+
+
+#main-window[dz_adv_minmaxclose_buttons_skin="bs_classic"]   .hc-mmcbuttons-cls  {
+  list-style-image: url("chrome://HideCaptionPlus/skin/windowControls.png") !important;
+  padding-top: 0px !important;
+  -moz-appearance: toolbarbutton !important;
+}
+#main-window[dz_adv_minmaxclose_buttons_skin="bs_classic"]:not([hc-MaxFull="true"])   #restore-button {
+  list-style-image: url("chrome://HideCaptionPlus/skin/maxControlNew.png" ) !important;
+}
+
+/* only MIN and MAX buttons here!*/
+#main-window[dz_adv_minmaxclose_buttons_skin="bs_classic"]   #minimize-button,
+#main-window[dz_adv_minmaxclose_buttons_skin="bs_classic"]   #restore-button {
+
+  margin-top  :  0px !important; /* m-top dont work here for values ie. -5px */
+  margin-left : -3px !important;
+  margin-right:  2px !important;
+}
+
+#main-window[dz_adv_minmaxclose_buttons_skin="bs_classic"]   #hcp-controls-paletteitem   .hc-mmcbuttons-cls {
+    margin-top   : -4px !important;
+    margin-bottom: -4px !important;
+}
+
+
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    #minimize-button {               -moz-image-region: rect( 0  , 16px, 16px, 0)    !important;  }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    #minimize-button:hover {         -moz-image-region: rect(16px, 16px, 32px, 0)    !important;  }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    #minimize-button:hover:active {  -moz-image-region: rect(32px, 16px, 48px, 0)    !important;  }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    #restore-button{                 -moz-image-region: rect( 0  , 32px, 16px, 16px) !important;  }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    #restore-button:hover {          -moz-image-region: rect(16px, 32px, 32px, 16px) !important;  }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    #restore-button:hover:active {   -moz-image-region: rect(32px, 32px, 48px, 16px) !important;  }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    #close-button{                   -moz-image-region: rect( 0  , 48px, 16px, 32px) !important;  
+                                                                                                border-style:    none  !important;                           }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    #close-button:hover {            -moz-image-region: rect(16px, 48px, 32px, 32px) !important;  }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]    #close-button:hover:active {     -moz-image-region: rect(32px, 48px, 48px, 32px) !important;  }
+
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]:not([hc-MaxFull="true"])  #restore-button {				-moz-image-region: rect( 0  , 65px, 16px, 49px) !important;  }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]:not([hc-MaxFull="true"])  #restore-button:hover {		-moz-image-region: rect(16px, 65px, 32px, 49px) !important;  }
+#main-window[dz_adv_minmaxclose_buttons_skin_forced="true"]:not([hc-MaxFull="true"])  #restore-button:hover:active {-moz-image-region: rect(32px, 65px, 48px, 49px) !important;  }
+
+
+/**   hctp_vertical_maxim_active   **/
+:root[hctp_vertical_maxim_active="true"]   .hc-res-button-cls {
+	/** box-shadow: 0px 0px 2px rgba(0, 0, 255, 0.9) inset !important; **/
+	outline: 1px solid rgba(100, 100, 200, 0.95) !important;
+	outline-offset: -1px !important;
+}
+
+
+}  /**  @-moz-document  url(...)  **/
+

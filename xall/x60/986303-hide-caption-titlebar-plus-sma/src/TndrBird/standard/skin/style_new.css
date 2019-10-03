@@ -1,0 +1,63 @@
+
+/*   STYLE_NEW.CSS  for TBird 17+  (including 31+)   */
+
+@media (-moz-windows-default-theme) {
+ #messengerWindow[tabsintitlebar]                        > #navigation-toolbox{  /*  [sizemode="maximized"]  */
+    /* margin-top:  -2px !important; */
+ }
+ #messengerWindow[tabsintitlebar][sizemode="fullscreen"] > #navigation-toolbox{
+    margin-top:  -2px !important;
+ }
+}
+
+/* Windows **NON** GLASSED DESKTOP */
+@media not all and (-moz-windows-compositor) { 
+
+ #messengerWindow {
+ }
+ #messengerWindow[tabsintitlebar]                        > #navigation-toolbox{  /*  [sizemode="maximized"]  */
+    margin-top: -1px !important;
+ }
+ #messengerWindow[tabsintitlebar][sizemode="fullscreen"] > #navigation-toolbox{
+    margin-top: -2px !important;
+ }
+
+ #messengerWindow                           #tabs-toolbar {
+    -moz-box-ordinal-group: 0; /* TABS ON TOP ! */
+ }
+ #messengerWindow:not([sizemode="normal"])  #tabs-toolbar {
+    margin-top: 0 !important;
+ }
+ 
+}
+
+
+#messengerWindow[tabsintitlebar][sizemode="fullscreen"]   #tabs-toolbar {
+    margin-top: 0 !important;
+}
+
+/**
+#messengerWindow[xxxx="xxxx"]               #tabs-toolbar {
+  --tabHeight: 22px;
+  --tabCurveWidth        :  8px;
+  --tabCurveWidthNegative: -8px;
+  --tabCurveHalfWidth        :  4px;
+  --tabCurveHalfWidthNegative: -4px;
+}
+**/
+
+
+/* Windows GLASSED DESKTOP */
+@media all and (-moz-windows-compositor) { 
+
+}
+
+
+#messengerWindow[sizemode="fullscreen"]  #tabs-toolbar  *[class="titlebar-placeholder"][type="caption-buttons"]  {
+    visibility: collapse;
+}
+#messengerWindow[sizemode="fullscreen"]    #titlebar-buttonbox {
+    width: 0px;
+    overflow-x: hidden;
+}
+

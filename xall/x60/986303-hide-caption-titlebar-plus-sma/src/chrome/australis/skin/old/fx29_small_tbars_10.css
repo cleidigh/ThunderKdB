@@ -1,0 +1,142 @@
+
+/* --------- Small Nav-bar & toolbarbuttons !! ----------- */
+
+/* beware of affecting floating hctp-'home'-toolbar! */
+
+
+/**
+	From: https://blog.mozilla.org/addons/2014/03/06/australis-for-add-on-developers-2/
+	For  nsIStyleSheetService.loadAndRegisterSheet(..) use @-moz-document below:
+	(bc this loads the stylesheet for all documents, so it's prudent to limit the styles to the document we want in the CSS file:)
+	@-moz-document url("chrome://browser/content/browser.xul") {
+		//...
+	}
+**/
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+
+toolbox > toolbar:not(#TabsToolbar) {
+	/**
+	margin-top   :  0px !important;
+	margin-bottom:  0px !important;
+	**/
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+/*
+toolbox > toolbar#nav-bar {
+	padding-top   : 1px !important;
+}
+*/
+
+
+toolbox > toolbar:not(#TabsToolbar)                             toolbarbutton ,
+toolbox > toolbar:not(#TabsToolbar)                             toolbarbutton  >  dropmarker {
+	margin-top   :  0px !important;
+	margin-bottom:  0px !important;
+    
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+toolbox > toolbar:not(#TabsToolbar)                          >  toolbarbutton ,
+toolbox > toolbar:not(#TabsToolbar)   .customization-target  >  toolbarbutton {
+	margin-top   : -1px !important;
+	margin-bottom: -1px !important;
+}
+
+/* HORIZONTAL space */
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton                   ,
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton  >  toolbarbutton ,
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton  >  dropmarker    {
+	padding-left  :  0px !important;
+	padding-right :  0px !important;
+}
+toolbox > toolbar:not(#TabsToolbar)  #nav-bar-customization-target  >  toolbarbutton                   {
+	padding-left  :  0px !important; /* always 0 for this 'zone' to not activate the child dropmarker */
+	padding-right :  2px !important;
+}
+/* END HORIZONTAL space */
+
+
+toolbox > toolbar#nav-bar  > :not(#nav-bar-customization-target)      toolbarbutton {
+	margin-top   : -2px !important;
+	margin-bottom: -2px !important;
+}
+toolbox > toolbar#nav-bar  >      #nav-bar-customization-target {
+	margin-top   :  0px !important;
+	margin-bottom:  0px !important;
+}
+
+
+#nav-bar .toolbarbutton-1:not([type=menu-button]),
+#nav-bar .toolbarbutton-1 > .toolbarbutton-menubutton-button,
+#nav-bar .toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+#back-button     .toolbarbutton-icon {
+	padding       :  3px !important;
+}
+
+
+/** BEGIN  Fx28-  section that works & somewhat reviewed  **/
+
+/* things that have top&bottom borders! */
+#forward-button  .toolbarbutton-icon,
+#urlbar,
+#searchbar  .searchbar-textbox {
+	margin-top   :  1px !important;  /* 1px to see urlbar top-border!.  Bottom 1px also to kinda central-align */
+	margin-bottom:  1px !important;
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+#urlbar  #identity-box ,
+#urlbar  #notification-popup-box {
+	margin-top   :  0px !important;
+	margin-bottom:  0px !important;
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+.urlbar-icon {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+
+.searchbar-engine-button,
+.search-go-container {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+/** END  Fx28-  section  **/
+
+/** since Fx34 **/
+.searchbar-search-button-container {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+/** since Fx35 **/
+.searchbar-search-button {
+	margin-top   :  -1px !important;
+	margin-bottom:  -1px !important;
+}
+
+/* BEGIN for Linux */
+/* urlbar here is for windows@125% (dpi?) */
+#urlbar            ,
+.searchbar-textbox {
+  min-height: 20px !important;
+}
+.searchbar-engine-button > .button-box {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+}
+/* END   for Linux */
+
+}  /*** moz-document url(...) ***/
+

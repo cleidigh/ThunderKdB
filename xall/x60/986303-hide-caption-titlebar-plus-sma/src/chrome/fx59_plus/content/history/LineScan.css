@@ -1,0 +1,44 @@
+/* ------------------------------------------------------------------- */
+
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document url(chrome://browser/content/browser.xul){
+
+#hctp_scan_box {
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	
+	width: 0px;
+	border-left : 2px solid red  ;
+	border-right: 1px solid white;
+	
+	left : 0px;
+	right: 0px;
+	
+	z-index: -10;
+	visibility: collapse;
+}
+#hctp_scan_box[doScan="back"] {
+	z-index: 2;
+	visibility: visible;
+	
+	transition: left  390ms  ease-in  30ms;
+	left : 101%;
+	right: auto;
+	/**
+	...: margin-left 60ms ease
+	margin-left: 10px;
+	**/
+}
+#hctp_scan_box[doScan="forw"] {
+	z-index: 2;
+	visibility: visible;
+	
+	transition: right  390ms  ease-in  30ms;
+	left : auto;
+	right: 101%;
+}
+
+} /*  moz-document  */
+

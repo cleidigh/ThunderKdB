@@ -1,0 +1,42 @@
+
+/** Currently NOT USED in Australis **/
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+	
+
+*[customtheme_tbar_appearance="default"] {
+	background-image: url("chrome://global/skin/hout.png");	
+}
+*[customtheme_tbar_appearance="important"] {
+	background-image: url("chrome://global/skin/hout.png")       !important;	
+}
+*[customtheme_bkg_appearance="default"] {
+	background-image: url("chrome://global/skin/hout-hover.png");
+}
+*[customtheme_bkg_appearance="important"] {
+	background-image: url("chrome://global/skin/hout-hover.png") !important;
+}
+
+
+/* little fixes */
+#main-window:not([dz_adv_minmaxclose_buttons_skin_forced="true"])    #hctp-controls-top-fixed{
+	margin-right: -2px !important;
+}
+#hctp_system_buttonbox { /* this can be done also by setting: Aero-Glass themes - Hide inactive standard System-buttons = "Don't Hide" */
+	box-shadow: none !important;
+}
+
+#main-window {
+	background-image: url("chrome://global/skin/hout-hover.png") !important;
+}
+
+
+#main-window[hcp_fx4_titlebar_visible="true"]  #tab-view-deck   #tab-view {
+	margin-top: 18px;	
+}
+
+
+}  /**  @-moz-document  url(...)  **/
+

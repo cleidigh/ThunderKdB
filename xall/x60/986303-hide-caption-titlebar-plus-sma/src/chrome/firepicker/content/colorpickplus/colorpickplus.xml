@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<!DOCTYPE bindings>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<bindings id="colorpickerplusBindings"
+   xmlns="http://www.mozilla.org/xbl"
+   xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   xmlns:xbl="http://www.mozilla.org/xbl">
+
+  <binding id="colorpickplus-button" display="xul:menu"
+           extends="chrome://global/content/bindings/general.xml#basecontrol">
+    <resources>
+      <stylesheet src="../../skin/colorpickplus/colorpickplus.css"/>
+    </resources>
+    
+    <content>
+    
+      <xul:hbox   class="colorpickplus-button-colorbox-parent" anonid="colorbox_parent" flex="1" >
+        <xul:hbox class="colorpickplus-button-colorbox"        anonid="colorbox"        flex="1"        xbl:inherits="disabled" >
+        </xul:hbox>
+      </xul:hbox>
+      
+          <!--  
+	      <xul:textbox    class="colorpickplus-button-textbox"         anonid="textbox"         type="string"   xbl:inherits="preference"  />  
+          
+          /*
+          this.mTextBox.value= val;
+          setTimeout(function(){
+	        //_self.mTextBox._fireChange();
+    	    var evt = document.createEvent("Events");
+			evt.initEvent("change", true, true);
+			_self.mTextBox.dispatchEvent(evt);
+		  }, 0 );
+          */
+            -->
+      
+    </content>
+    
+    <implementation implements="nsIAccessibleProvider">
+      <property name="accessibleType" readonly="true">
+        <getter>
+          <![CDATA[
+            return Components.interfaces.nsIAccessibleProvider.XULColorPicker;
+          ]]>
+        </getter>
+      </property>
+    
+      <property name="open"      onget="return this.getAttribute('open') == 'true'"
+                                 onset="this.showPopup();"/>
+      <property name="color">
+        <getter><![CDATA[
+          return this.getAttribute("color");
+          //return this.mTextBox.value; //inputField
+        ]]></getter>
+        <setter><![CDATA[
+          var _self= this;
+          this.mColorBox.style.backgroundColor = val;
+
+		  //FIRE CHANGE!
+          setTimeout(function(){
+	        //_self._fireChange();
+    	    var evt = document.createEvent("Events");
+			evt.initEvent("change", true, true);
+			_self.dispatchEvent(evt);  //TODO; ONLY if value really changes!!! hehe (pretty unneeded bc of how colorpicker works, right?)
+		  }, 0 );
+
+		  /*
+          setTimeout(function(){
+            //elf._myPrefElem.value               = val; <---- muy lento pq hace updateElements()!
+            //_self._myPrefElem.valueFromPreferences= val;
+		  }, 0 );
+          */
+          
+          this.setAttribute("color", val);
+          this.setAttribute("value", val);
+          this.value= val;                   //making sure preferences system takes this.
+          this.setAttribute("tooltiptext", val);
+          return val;
+        ]]></setter>
+      </property>
+      
+      <constructor><![CDATA[
+        this.initialize();
+      ]]></constructor>
+
+      <method name="initialize">
+        <body><![CDATA[
+          /*
+          //if( !this.localName ){
+          //     this.localName= "colorpickplus_XXX";
+          //}
+          */
+
+          this._myPrefElem= document.getElementById(this.getAttribute("preference"));
+        
+          //this.setAttribute("color", this._myPrefElem.valueFromPreferences ); //SYNC with "color" getter! (uses this attr.)!
+        
+          this.mColorBox   = document.getAnonymousElementByAttribute(this, "anonid", "colorbox");
+          //this.mTextBox  = document.getAnonymousElementByAttribute(this, "anonid", "textbox" );
+          
+          this.mColorBox.style.backgroundColor = this.color;
+        
+          //var popup = document.getAnonymousElementByAttribute(this, "anonid", "colorpopup")
+          //popup._colorPicker = this;
+          
+          //this.mPicker = document.getAnonymousElementByAttribute(this, "anonid", "colorpicker")
+
+		  var _self= this;          
+          setTimeout(function(){
+		    pickerModule.registerElem( _self );
+		  }, 50 );
+
+		  //put OBSERVER and READ initial value  //TODO:  usar un setValue() que NO setee la pref o dispare CHANGE de nuevo!	          
+		  this._myPrefElem.addEventListener('change', function(){
+		  	_self.color= this.value; //this == elem-with-listener
+		  }, false);
+          setTimeout(function(){                     // TODO: check this quick hack for setting initial value
+	  	    _self.color= _self._myPrefElem.value;
+		  }, 50 );
+          
+        ]]></body>
+      </method>
+      
+	  <!--
+      <method name="_fireEvent">
+        <parameter name="aTarget"/>
+        <parameter name="aEventName"/>
+        <body>
+        <![CDATA[      
+          try {
+            var event = document.createEvent("Events");
+            event.initEvent(aEventName, true, true);
+            var cancel = !aTarget.dispatchEvent(event);
+            if (aTarget.hasAttribute("on" + aEventName)) {
+              var fn = new Function ("event", aTarget.getAttribute("on" + aEventName));
+              var rv = fn.call(aTarget, event);
+              if (rv == false)
+                cancel = true;
+            }
+            return !cancel;  
+          }
+          catch (e) { 
+            dump(e);
+          }
+          return false;
+        ]]>
+        </body>
+      </method>
+
+      <method name="showPopup">
+        <body><![CDATA[
+          this.mPicker.parentNode.openPopup(this, "after_start", 0, 0, false, false);
+        ]]></body>
+      </method>
+      
+      <method name="hidePopup">
+        <body><![CDATA[
+          this.mPicker.parentNode.hidePopup();
+        ]]></body>
+      </method>
+
+      <method name="onPopupShowing">
+        <body><![CDATA[
+          if ("resetHover" in this.mPicker)
+            this.mPicker.resetHover();
+          document.addEventListener("keydown", this.mPicker, true);
+          this.mPicker.mIsPopup = true;
+          // Initialize to current button's color
+          this.mPicker.initColor(this.color);
+        ]]></body>
+      </method>
+      
+      <method name="onPopupHiding">
+        <body><![CDATA[
+          // Removes the key listener
+          document.removeEventListener("keydown", this.mPicker, true);
+          this.mPicker.mIsPopup = false;
+        ]]></body>
+      </method>
+
+      <method name="pickerChange">
+        <body><![CDATA[
+          this.color = this.mPicker.color;
+          setTimeout(function(aPopup) { aPopup.hidePopup() }, 1, this.mPicker.parentNode);
+          
+          this._fireEvent(this, "change");
+        ]]></body>
+      </method>
+	  -->
+	  
+    </implementation>
+
+    <handlers>
+	<!--
+      <handler event="keydown"><![CDATA[
+        // open popup if key is space/up/left/right/down and popup is closed
+        if ( (event.keyCode == 32 || (event.keyCode > 36 && event.keyCode < 41)) && !this.open)
+          this.showPopup();
+        else if ( (event.keyCode == 27) && this.open)
+          this.hidePopup();
+      ]]></handler>
+	 -->
+	  
+    </handlers>
+	
+  </binding>
+
+
+</bindings>
+

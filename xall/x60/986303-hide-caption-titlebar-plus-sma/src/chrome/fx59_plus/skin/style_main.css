@@ -1,0 +1,700 @@
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@namespace html url(http://www.w3.org/1999/xhtml);
+
+
+/*** NOT -moz-document (Fx61a+) url(chrome://browser/content/browser.xul) ***/
+	
+/* moved to skin */
+
+
+/**  for [hctp_vertical_maxim_active="true"] ,  can be overriden in .js **/
+#main-window {
+  --hcGap_vertMaxim: 10px;
+}
+
+/*  general global vars!  */
+#main-window {
+  --hctp_sysborder_sub: 0px;
+}
+
+
+/**  .vertical_maxim_cls :   NOT for mac 
+      KEEP IN SYNC with options.CSS!!  **/
+:root:not([hcp_platformPlus="windows"]):not([hcp_platformPlus="linux"])   .vertical_maxim_cls {	display: none !important;	}
+
+
+
+.hc-resizer[dir="left"] 		{ cursor: w-resize;  box-shadow: -1px 0px 0px 1px; }
+.hc-resizer[dir="right"] 		{ cursor: e-resize;  box-shadow:  1px 0px 0px 1px; }
+.hc-resizer[dir="top"] 			{ cursor: n-resize; }
+.hc-resizer[dir="bottom"] 		{ cursor: s-resize; }
+.hc-resizer[dir="topleft"] 		{ cursor: nw-resize; }
+.hc-resizer[dir="topright"] 	{ cursor: ne-resize; }
+.hc-resizer[dir="bottomleft"] 	{ cursor: sw-resize; }
+.hc-resizer[dir="bottomright"] 	{ cursor: se-resize; -moz-appearance:none; }
+
+
+/* override new css from firefox (aero/global/resizer.css) */
+resizer.hc-resizer[dir="left"],
+resizer.hc-resizer[dir="bottomleft"],
+resizer.hc-resizer[dir="bottomstart"] {
+  -moz-transform: scaleX(1);
+}
+
+
+.hc-resizer { 
+/*	background: #999999; */
+  -moz-appearance: none; /* For firefox 4 beta 5*/
+}
+
+
+/* css from  mmc_buttons_skin  moved to own css file! */
+
+
+.hc-draghbox {
+	width: 25px;
+	/* list-style-image: url("chrome://HideCaptionPlus/skin/Drag.gif");   */
+	background-image: url("chrome://HideCaptionPlus/skin/Drag.gif");  
+	background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#main-window[hc-MaxFull="true"]  .hc-resizer,
+#main-window[hc-MaxFull="true"]  .statusbar-resizerpanel,
+#main-window[hc-MaxFull="true"]  .hc-hideon-fullorcaption {  
+	display: none!important;
+}
+
+/* .hc-hideon-RESTOREDcaption  .... */
+#main-window[hcp_hiddencaption="false"]  #navigator-toolbox:not([inFullscreen="true"])  .hc-hideon-restoredcaption,
+#main-window[hcp_hiddencaption="false"]  .hc-resizer,
+#main-window[hcp_hiddencaption="false"]  .hc-hideon-fullorcaption {
+	display: none !important;
+}
+/* Now with FULLSCREEN flag!- class should be called: *** .hc-hideon-standardcaption *** !! */
+#main-window:not([hcp_hiddencaption="true"]):not([hcp_inFullscreen="true"])  .hc-hideon-restoredcaption {
+	display: none !important;
+}
+
+
+.toolbarbutton-1.hc-dragbutton {
+	list-style-image: url("chrome://HideCaptionPlus/skin/Drag.gif");
+}
+.toolbarbutton-1.hc-dragbutton > image{
+	/*
+	min-width:  16px;
+	min-height: 16px; */
+}
+toolbar[iconsize="small"]  .toolbarbutton-1.hc-dragbutton{
+	list-style-image: url("chrome://HideCaptionPlus/skin/Drag.gif");
+}
+
+
+#main-window[customizing="true"]  toolbarpaletteitem   .toolbarbutton-1.hc-dragbutton {  /*  ENABLE BUTTONs when CUSTOMIZING */
+	display: -moz-box !important;
+}
+/**
+#customization-palette   toolbarpaletteitem[place="palette"]   .toolbarbutton-1.hc-dragbutton {
+	min-height: 32px;
+	min-width:  32px;
+	background:  center  url("chrome://HideCaptionPlus/skin/Drag_32.png")  no-repeat;
+}
+**/
+
+/** #customization-palette   ---  **/   
+toolbarpaletteitem[place="palette"]    .toolbarbutton-1.hc-dragbutton ,
+#PanelUI-contents                      .toolbarbutton-1.hc-dragbutton {
+	display: -moz-box !important;
+	-moz-binding: url("chrome://global/content/bindings/toolbarbutton.xml#toolbarbutton");
+	list-style-image: url("chrome://HideCaptionPlus/skin/Drag_32.png");
+	color: -moz-dialogtext !important;
+}
+#PanelUI-contents                      .toolbarbutton-1.hc-dragbutton  > .toolbarbutton-icon {
+	opacity: 1 !important;  /* override DISABLED attr */
+}
+#PanelUI-contents                      .toolbarbutton-1.hc-dragbutton  > .toolbarbutton-multiline-text {
+	-moz-hyphens: manual !important; /* Fx34 'borra' el attr [auto-hyphens] */
+}
+
+/* --------- CUSTOM CAPTION ------------ */
+
+
+#hcp-title-box   image.fxaustr_syscaption_only {
+	-moz-padding-end  : 0.7em;
+	-moz-padding-start:   2px;
+}
+
+#hcp-title-box{
+	-moz-box-align: center;
+	margin-top   : -4px;
+	margin-left  :  1px;
+	position: relative;  /* Fx46 beta: esto hace q quede 'encima' del main-deck q le 'tapaba' para el *DRAG*! y tb para el shift+second-click del Domi  */
+}
+/* menos margin-top p/ maximizado! */
+:root:not([sizemode="normal"])   #hcp-title-box{
+	margin-top   : -2px;
+	margin-bottom: -2px;
+}
+
+/* FONT COLOR -- for eg. Windows-classic OS theme  --  from BROWSER.CSS */
+@media not all and (-moz-windows-compositor),
+       not all and (-moz-windows-default-theme) {
+  /*  WITHOUT [tabsintitlebar] for my modified-system-titlebar  for eg. print-preview  */
+  #main-window:not([inFullscreen])  #hcp-title-box:not(:-moz-lwtheme) {
+    color: CaptionText;
+  }
+  #main-window:not([inFullscreen])  #hcp-title-box:not(:-moz-lwtheme):-moz-window-inactive {
+    color: InactiveCaptionText;
+  }
+}
+	
+#hcp-title-box   label{
+	font-weight: bold;
+	text-align: left;
+	
+	-moz-box-align: center;
+	vertical-align: baseline;
+	
+	background: transparent;
+	
+	/* padding-left: .5em; */
+	padding-top :  1px;
+}
+#hcp-title-box  .hcp_favicon_cls {
+	margin-top: 1px;
+}
+
+
+#hcp-caption-box {
+	height:         27px;  overflow: hidden;  
+	margin-bottom: -27px;
+
+	border    : 0px none ;
+	border-top: 2px solid transparent;
+
+	margin-top   :  0px;   /* margin-bottom from 3 to 0, & adjusted padding & height - fix for using a visible background (desirable for ie. walnut) .. */
+	
+	/* border-radius: 1.3px 1.3px 0 0;  -- beware of 'white' bkg of appearance=browsertabbar and lwthemes !... */
+
+	padding: 0px;
+	padding-bottom: 3px;
+	padding-left  : 8px;
+	padding-right : 7px; /* Close and other buttons */
+	
+}
+/**
+@media (-moz-windows-compositor) { /* Windows GLASSED DESKTOP *
+  #main-window[sizemode="normal"]:not([hctp_vertical_maxim_act__TOP="true"]) 	#hctp_special_bkg { /* includes 'real'-glassed without bkg *
+    border-top: 2px solid transparent !important;
+  }
+  #main-window[sizemode="normal"][dz_calc_winbkg_color="true"]    			#hctp_special_bkg,
+  #main-window[sizemode="normal"]                                 			#hctp_special_bkg:-moz-lwtheme {
+	-moz-border-top-colors: rgb(37, 44, 51) rgba(255,255,255,.6) !important; /* mimic glass top border -copied from Fx.  ONLY for lwtheme or HCTP's bkg on! *
+  }
+  
+  /* This is done right above!.  From aero/.../browser.css --> Artificially draw window borders that are covered by lwtheme, see bug 591930. *
+  #main-window[sizemode="normal"] > #hctp_special_bkg > #hctp_special_bkg-panel:-moz-lwtheme {
+	border-top: 0px none !important;
+	-moz-border-top-colors: transparent !important;
+  }
+}
+**/
+
+#hcp-caption-box:-moz-lwtheme {
+  -moz-appearance: none;
+}
+
+/**  dz_fxaustr_cmargin = australis original SYSTEM_CAPTION was enabled! --  then EMULATE it with custom-caption-small! **/
+#main-window[dz_fxaustr_syscaption="true"]   #hcp-caption-box,
+#hcp-caption-box[dz_show_custom_caption="cc_small"]{
+	height       :  18px;  overflow: hidden;
+	margin-bottom: -18px;
+}
+#main-window:not([dz_fxaustr_syscaption="true"])  #hcp-caption-box[dz_show_custom_caption="cc_never"]{
+	height:  0px;  overflow: hidden;
+
+	padding:0px; border:0px; margin:0px;
+}
+
+/*  override .hc-hideon-fullorcaption , only fox MAX, NOT for fullscr */
+#main-window[dz_fxaustr_syscaption="true"][sizemode="maximized"]   #hcp-caption-box { 
+	display: -moz-box !important;
+	border-top: 0px none !important; /* TODO: sacar nomas vd? */
+}
+
+/* --- #hctp_topsub_unmax/max counterparts! --- */
+:root                                                                 	#hctp_topsub_unmax {	height:  25px; /* 27 - 2 */				}
+#hcp-caption-box[dz_show_custom_caption="cc_never"] ~ #hctp_toparea  	#hctp_topsub_unmax {	height:   0px;							}
+#hcp-caption-box[dz_show_custom_caption="cc_small"] ~ #hctp_toparea  	#hctp_topsub_unmax ,
+:root[dz_fxaustr_syscaption="true"]                                   	#hctp_topsub_unmax {	height:  16px !important; /* 18 - 2 */	}
+:root[dz_fxaustr_syscaption="true"]                                   	#hctp_topsub_max   {	height:  18px !important;				}
+
+/* for firefox icon */
+#main-window:not([dz_fxaustr_syscaption="true"])  .fxaustr_syscaption_only{
+	display: none;
+}
+
+
+/* --------- ROOT BOX  +  Min, Max, Close buttons FIXED at corner!! ------------ */
+
+#hcp-root-box {
+	height: 0px;  overflow: hidden;
+	padding:0px; border:0px; margin:0px;
+}
+#hcp-rightbar-fixed{
+	position: fixed; 	z-index: 20;
+	top: 0px;	right: 0px;
+
+	padding:0px; border:0px; margin:0px;
+	background:  transparent;
+}
+
+@media all and (-moz-windows-compositor) { /* Windows GLASSED DESKTOP */
+  /* connected with this rule like 30 lines above:  #hcp-caption-box    
+	-moz-border-top-colors: rgb(37, 44, 51) rgba(255,255,255,.6);
+  */
+}
+
+#main-window:not([hc-MaxFull="true"])    
+  #hcp-rightbar-fixed {
+	right: 4px; 
+}
+/**  el 'top' se setea aparte y como regla general  (en todos los casos vd?)  **/ 
+
+
+/* -- control buttons  -- */
+#hctp-controls-top-fixed {
+	padding:0px; border:0px; margin:0px;
+	background:  transparent;
+}
+
+
+/* special for mous_over! */
+  #hcp-rightbar-fixed                            
+  	#hctp-controls-top-micro2{
+	display: none;
+}
+#main-window:-moz-any(	[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"],
+          			  	[dz_adv_minmaxclose_buttons_loc_nomax="bloc_micro"]:not([hc-MaxFull="true"]) )
+  #hcp-rightbar-fixed[specialFixedPos="true"]    
+  	#hctp-controls-top-micro2{
+  	display: -moz-box;
+  	visibility: hidden; /* to take close-button's space in un-maximized window  */
+}
+#main-window:-moz-any(	[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"],
+          			  	[dz_adv_minmaxclose_buttons_loc_nomax="bloc_micro"]:not([hc-MaxFull="true"]) )
+  #hcp-rightbar-fixed[specialFixedPos="true"]    
+  	#hctp-controls-top-fixed {
+	position: fixed; 	z-index: 21;
+	top: auto !important;	
+	right: 0px;
+	
+	/* margin-top: -3px;  se anula con el top:auto q es bien 'universal' para todas las situaciones */
+	
+	/* margin-left: -200px;  needed with 'position: absolute' but DOESN'T WORK (yet?) */
+	/* display: -moz-box !important; <- used with OLD companion #hc-controls-top-micro */
+}
+#main-window:not([hc-MaxFull="true"])    
+  #hcp-rightbar-fixed[specialFixedPos="true"]    #hctp-controls-top-fixed  {
+	right: 3px;
+}
+
+#main-window:-moz-any(	[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"],
+          			  	[dz_adv_minmaxclose_buttons_loc_nomax="bloc_micro"]:not([hc-MaxFull="true"]) )
+	          			  	#hcp-rightbar-fixed:not([specialFixedPos="true"])
+    		      			  	#hctp-controls-top-fixed  
+    		      			  		toolbarbutton:not(.hc-close-button-cls):not(.hNew_close_button)
+{
+	visibility: collapse;
+}
+/* Same rule as above, for maximized */
+#main-window[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"]   #hcp-rightbar-fixed {
+	width   : 5px    ! important;
+	overflow: hidden ! important;
+}
+#main-window[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"]   #hcp-rightbar-fixed   #hctp-controls-top-fixed {
+	-moz-margin-start: 1px !important;  /* espacio q sirve para un posible box-shadow blanco, imitando al Fxbut  */
+}
+
+#main-window[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"]
+	          			  	#hcp-rightbar-fixed[specialFixedPos="true"] {
+	opacity: 1 !important;
+}
+
+/*  bloc_hidden  */
+#main-window:-moz-any(	[dz_adv_minmaxclose_buttons_location ="bloc_hidden"][hc-MaxFull="true"],
+          			  	[dz_adv_minmaxclose_buttons_loc_nomax="bloc_hidden"]:not([hc-MaxFull="true"]) )
+	          			  	#hcp-rightbar-fixed
+    		      			  	#hctp-controls-top-fixed {
+	display: none;
+}
+
+
+
+/* ------------ .custom_bdResizers, --------------- ... usar :-moz-any() aqui -al FINAL del selector- era MUY lento vd?  */
+#main-window:not([dz_show_custom_bdresizers="true"])   #hcp-caption-box   .hcp-topdownbox-cls,   
+#main-window:not([dz_show_custom_bdresizers="true"])   #hcp-caption-box   .hcp-sidebox-cls,
+#main-window:not([dz_show_custom_bdresizers="true"])   #hcp-caption-box   .hcp-box-corner {
+	display: none;
+}
+
+
+/* --------- resizers ------------ */
+
+.hcp-icon-resizer{
+	width: 8px; height:8px;
+	padding:0px; border:0px; margin:0px;
+	
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto;
+	/* background-color: green; */
+}
+.hcp-icon-resizer[dir="topleft"]{
+	background-image: url("chrome://HideCaptionPlus/skin/resizer-nw.png");  
+	background-position: left  top;
+}
+.hcp-icon-resizer[dir="topright"]{
+	background-image: url("chrome://HideCaptionPlus/skin/resizer-ne.png");  
+	background-position: right top;
+}
+.hcp-icon-resizer[dir="bottomleft"]{
+	background-image: url("chrome://HideCaptionPlus/skin/resizer-sw.png");  
+	background-position: left  bottom;
+}
+.hcp-icon-resizer[dir="bottomright"]{
+	background-image: url("chrome://HideCaptionPlus/skin/resizer-se.png");  
+	background-position: right bottom;
+}
+
+/* ---- FIXED BORDERS ----- */
+.hcp-sidebox-cls, 
+.hcp-topdownbox-cls{
+	z-index: 25;
+
+	padding:0px; border:0px; margin:0px;
+	background:  transparent;
+}
+.hcp-sidebox-cls{
+	position: fixed; 	top: 0px;
+	-moz-box-orient: vertical;
+	
+	width : 4px;	height: 100%;
+}
+.hcp-sidebox-cls > resizer { /* NASA Night theme touched this */
+	min-width: 4px !important;
+	max-width: 4px !important;
+	    width: 4px !important;
+}
+.hcp-topdownbox-cls{
+	position: fixed; 	left: 0px;
+	-moz-box-orient: horizontal;
+	
+	width : 100%;	height: 4px; 
+}
+.hcp-topdownbox-cls > resizer {
+	min-height: 4px !important;
+	max-height: 4px !important;
+	    height: 4px !important;
+}
+.hcp-resizer-middle{ /* internal RESIZERs */
+	position: absolute;   /* pos ABSOLUTE ! */
+	
+	width :100%;	height:100%;
+	padding:0px; border:0px; margin:0px;
+
+	/* background-color: cyan; */
+	background-image: none;
+}
+
+#hcp-top-box   	{ position: fixed;	top: 0px;			}
+#hcp-left-box  	{ position: fixed;	left: 0px;			}
+#hcp-right-box 	{ position: fixed;	right: 0px;			}
+#hcp-bottom-box	{ position: fixed;	bottom: 0px;		}
+
+#hcp-top-box    	> resizer 	{ border : 1px solid #999999;	border-bottom: 0px none; border-top-left-radius    : 5px; border-top-right-radius  : 5px; }
+#hcp-left-box    	> resizer 	{ border : 1px solid #999999;	border-right : 0px none; border-top-left-radius    : 5px; border-bottom-left-radius: 5px; }
+#hcp-right-box  	> resizer 	{ border : 1px solid #999999;   border-left  : 0px none; border-bottom-right-radius: 5px; border-top-right-radius  : 5px; }
+#hcp-bottom-box 	> resizer 	{ border : 1px solid #999999;   border-top   : 0px none; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; }
+
+/* check chromemargin top! */
+#main-window[chromemargin^="1,"]   #hcp-top-box  > resizer 	{ border-top: 0px none; }
+
+#hcp-top-box    	> resizer,
+#hcp-left-box    	> resizer,
+#hcp-right-box  	> resizer,
+#hcp-bottom-box 	> resizer {
+	border-color: rgba(0,0,0,0.4);  /*   NEW semi-transparent color!  */
+	color       : rgba(0,0,0,0.4);  /* box-shadow */
+}
+
+
+
+#main-window:not([dz_show_custom_bdresizers_visible="true"])   #hcp-caption-box   .hcp-topdownbox-cls  resizer,   
+#main-window:not([dz_show_custom_bdresizers_visible="true"])   #hcp-caption-box   .hcp-sidebox-cls     resizer,
+#main-window:not([dz_show_custom_bdresizers_visible="true"])   #hcp-caption-box   .hcp-box-corner      resizer {
+	border-color: transparent; /* overriden by new color setting */
+	color       : transparent; /* box-shadow */
+	background: none;
+}
+
+/* check windows & linux */
+#main-window:not([hctp_hidden_sysborder="true"])[hcp_platformPlus="windows"]   #hcp-caption-box   .hcp-topdownbox-cls  resizer,   
+#main-window:not([hctp_hidden_sysborder="true"])[hcp_platformPlus="windows"]   #hcp-caption-box   .hcp-sidebox-cls     resizer {
+	border-color: transparent !important; /* NOT overriden by new color setting */
+	color       : transparent !important; /* box-shadow */
+}
+
+
+
+/* ------ CORNERS ------ */
+
+.hcp-resizer-corner{
+}
+
+.hcp-box-corner{
+	position: fixed; /* redundant , to make things clearer here */
+
+	z-index: 27;
+	padding:0px; border:0px; margin:0px;
+}
+.hcp-box-corner  resizer{
+	position: absolute;
+
+	/*  setted in .hcp-icon-resizer
+	width: 11px; height:11px;
+	padding:0px; border:0px; margin:0px;
+	*/
+}
+#hcp-box-topleft     	{ 	position: fixed;	top    : 0px;	left   : 0px;    }
+#hcp-box-topright   	{	position: fixed;	top    : 0px;	right  : 0px;    }
+#hcp-box-bottomleft  	{	position: fixed;	bottom : 0px;	left   : 0px;    }
+#hcp-box-bottomright	{	position: fixed;	bottom : 0px;	right  : 0px;    }
+
+
+/* ---- MENUS - POPUP  ---- */
+/* It uses a particular 'class'filter here!  */
+menuitem.hcp-menu-iconic  						> .menu-iconic-left > .menu-iconic-icon {
+	display:inline;
+}
+menuitem.hcp-menu-iconic:not([checked="true"])  	> .menu-iconic-left > .menu-iconic-icon {
+	opacity: 0.3;
+}
+
+/*  -- web title  [resizable] --     */
+#hcp-web-title-item1  splitter{
+	/* border: 1px dotted gray; */
+	outline  : 1px dotted gray;
+	outline-offset: -1px;
+	
+	opacity: 0.3;
+	
+	min-height: 1em ! important; 
+	height: 1.7em ! important; 
+	min-width: 5px;
+	
+	margin: -4px 1px; 
+	margin-right: 3px;
+}
+#hcp-web-title-item1:hover  splitter{
+	opacity: 1;
+}
+#hcp-web-title-label1 {
+	min-width: 40px;
+}
+
+/* in pallete ! */
+toolbarpaletteitem[place="palette"]   toolbaritem#hcp-web-title-item1 {
+	width: 9.8em;
+}
+#customization-palette > toolbarpaletteitem[id^="wrapper-hcp-mmc-buttons-item"] > label ,
+#customization-palette > toolbarpaletteitem[id^="wrapper-hcp-web-title-item"] > label {
+	margin-right: -2ch; 
+}
+
+/* #hcp-web-title-label1 , etc */
+/* RARE BUG catched for specific page!!! (issue #261), fixed by max-width/height!
+*/
+.hcp_web_title_cls{
+	font-weight: bold;
+	background-color: transparent; 
+	margin-right: 0px;
+}
+.hcp_web_title_cls ,
+.hcp_web_title_cls_basic {
+    max-height:   2em !important;
+    max-width : 180em !important;
+}
+
+#main-window:-moz-any([customize-entering],[customize-entered])  toolbaritem.hcp_title {
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 3px;
+	margin: 1px 2px;
+}
+toolbarpaletteitem[place="palette"]  toolbaritem.hcp_title {
+	outline: 1px solid rgba(0, 0, 0, 0.2);
+	outline-offset: -2px;
+	-moz-outline-radius: 3px;
+	
+	max-height: 2.5em;
+	max-width: 13em;
+}
+
+
+image.hcp_favicon_cls {
+	width : 16px;
+	height: 16px;
+	min-width : 16px; /* needed for resizable-title */
+	min-height: 16px;
+	-moz-margin-start: 2px;
+}
+
+
+/* background-color: green; 
+
+  hbox#hcp-home-box
+*/
+
+/* --------------------- deprecating  HOME TOOLBAR (#hcp-home-toolbar) ------------------------------- */
+
+
+
+
+
+/* for my context menu FIREFOX button   -- TODO: esto dps poner con el css FINAL del MAIN button tb!! */
+#main-window   button.plain {
+	min-width: 2em;
+}
+#main-window   button.plain  .button-box {
+  border : 0;
+  padding: 0;
+}
+
+
+
+
+/* --------- Firefox Home BUTTON ----------- */
+/*
+.hctp-fx-homebutton{
+	list-style-image: url("chrome://HideCaptionPlus/skin/bt/fx_home_small.png");
+}
+#main-window:not([hc-MaxFull="true"]) 	.hctp-fx-homebutton{
+	list-style-image: url("chrome://HideCaptionPlus/skin/bt/fx_home_med.png");
+}
+*/
+
+
+
+/* My context menu Title */
+.hcp-menu-titlebar          , 
+#hcp-menu-winctrls-titlebar {
+	background-color: rgba(0,0,0,0.1);
+	border-top: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 0 0 3px 3px;
+	 
+	padding-bottom: 1px;
+	margin-bottom : 3px;
+}
+#hcp-menu-winctrls-titlebar   #hctp-appmenu-button-incontextpopup {
+	margin-left: -1px;
+}
+#hcp-menu-winctrls-titlebar   #hctp-appmenu-button-incontextpopup  > .button-box {
+	margin-top : -1px;
+}
+
+
+/* Fx original fullscreen buttons  */
+#main-window   #window-controls {
+	display:none!important;	
+}
+
+
+
+/*   HCT+_extra_options_pack !!   */
+#main-window[dz_extra_bookmark_panel_extrawidth="true"]    	#editBookmarkPanelContent {
+  min-width: 55em !important;
+}
+
+
+/* plus.home.fullscrWar_Msg_small */
+#hcp-root-box[dz_home_fullscrWar_Msg_small="true"]  ~       #full-screen-warning-message {  /*  OLD_CODE_RIGHT_??  */
+	transform: scale(0.5) translateY(-10px);
+	/**  opacity: 0.7;  **/
+	
+	background: rgba(0, 0, 0, 0.3);
+	color: white;
+	text-shadow: 0px 0px 0.8em black, 0px 0px 0.5em black, 0px 1px 1px black, 0px 0px 5px black;
+}
+/*  New from Fx43(aprox)  */
+#hcp-root-box[dz_home_fullscrWar_Msg_small="true"]  ~  html|*#fullscreen-warning {
+	/*  opacity: 0.8;  */
+	background: rgba(0, 0, 0, 0.3);
+	color: #fafafa;
+	text-shadow: 0px 0px 0.8em black, 0px 0px 0.5em black, 0px 1px 1px black, 0px 0px 5px black;
+	
+	padding: 10px 10px;
+	border-color: rgba(250, 250, 250, 0.4);
+	font-size: 17px;
+}
+#hcp-root-box[dz_home_fullscrWar_Msg_small="true"]  ~  html|*#fullscreen-warning   html|*#fullscreen-domain-text, 
+#hcp-root-box[dz_home_fullscrWar_Msg_small="true"]  ~  html|*#fullscreen-warning   html|*#fullscreen-generic-text {
+	font-size: 17px;
+}
+#hcp-root-box[dz_home_fullscrWar_Msg_small="true"]  ~  html|*#fullscreen-warning   html|*#fullscreen-exit-button {
+	opacity: 0.8;
+	padding: 2px 4px;
+	font-size: 12px;
+}
+
+/* TOOLTIP owners!! */
+:-moz-any([tooltiptext],[tooltip]).tt_hc {	
+	cursor: help !important;	
+}
+tooltip.hc ,
+tooltip.hc > label {
+	white-space: pre-line;
+}
+
+
+#main-window   :-moz-any(.tooltip_like,tooltip)  ul {
+	display: block;
+	list-style-type: disc;
+	list-style-image: none !important; /* needed for Pale Moon! */
+	padding-inline-start: 20px;
+	margin: 5px;
+	
+	white-space: normal;
+}
+#main-window   :-moz-any(.tooltip_like,tooltip)  li {
+	display: list-item;
+	margin-bottom: 0.3em;
+	text-align: match-parent;
+	
+	white-space: pre-line;
+}
+#main-window   :-moz-any(.tooltip_like,tooltip)  sq::before {
+	content: "◼"; 
+	display: -moz-inline-box;
+}
+#main-window   sq[t*="r"]::before {
+	color: red;
+}
+
+/* always have it for use! */
+#main-window   #alltabs-popup {
+	visibility: visible !important;
+}
+
+
+/* CustomizeToolbars doesn't work in fs */
+:root[inFullscreen="true"]  menupopup  menuitem#menu_customizeToolbars,
+:root[inFullscreen="true"]  menupopup  menuitem#hcp-menu_customizeToolbars,
+:root[inFullscreen="true"]  menupopup  menuitem[observes="cmd_CustomizeToolbars"] {
+	visibility: collapse;
+}
+
+
+  /**  NOT -moz-document  url(...)  **/
+

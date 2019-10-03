@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<overlay id="sample"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://dict_search/content/search.js"/>
+
+    <popup id="mailContext">
+        <menuitem
+            id="my_option"
+            label="Translate with dict.leo.org"
+            oncommand="apiraino.dict_search.BrowserOpenLink(event)"
+            insertbefore=""/>
+    </popup>
+
+</overlay>

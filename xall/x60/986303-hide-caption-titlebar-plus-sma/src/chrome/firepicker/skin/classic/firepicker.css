@@ -1,0 +1,25 @@
+
+
+
+colorpickplus {
+    -moz-binding: url("chrome://hidecaptionplus_fp/content/colorpickplus/colorpickplus.xml");
+}
+
+#hctp-fp-panel_bottombox {
+	padding: 6px 10px 6px;
+}
+
+textbox#hctp-fp-panel_css_color {
+}
+
+#hctp-fp-panel_colorpicker {
+	padding: 2px;
+}
+#hctp-fp-panel_colorpicker > .colorpicker-button-colorbox {
+	border: 1px solid rgba(0,0,0,0.5);
+	border-radius: 1.5px;
+}
+
+panel[hide_opacity="true"]   #opacity_label {
+	visibility: hidden;	
+}

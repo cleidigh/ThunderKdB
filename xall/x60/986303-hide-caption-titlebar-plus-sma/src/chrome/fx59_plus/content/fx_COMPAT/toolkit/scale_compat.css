@@ -1,0 +1,34 @@
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+/** permite el multilanguage + options_in.xul, etc ... **/
+@-moz-document  url-prefix(chrome://hidecaptionplus)  {
+
+
+/** Extracted from Firefox 60,  xul.css **/
+
+scale {
+  -moz-window-dragging: no-drag;
+}
+
+
+/** Extracted from Firefox 60,  minimal-xul.css **/
+
+
+.scale-thumb {
+  -moz-binding: url(scale.xml#scalethumb);
+}
+scale {
+  -moz-user-select: none;
+}
+scale {
+  -moz-binding: url(scale.xml#scale);
+}
+.scale-slider {
+  -moz-binding: url(scale.xml#scaleslider);
+  -moz-user-focus: normal;
+}
+
+}
+

@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Initial Developer of the Original Code is Neil Bird
+   - Portions created by the Initial Developer are Copyright (C) 2006
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<!--DOCTYPE overlay SYSTEM "chrome://urllink/locale/urllink.dtd"-->
+<!DOCTYPE window [
+<!ENTITY % urllinkDTD SYSTEM "chrome://urllink/locale/urllink.dtd" >
+%urllinkDTD;
+]>
+
+<overlay id="urllinkBrowserOverlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://urllink/content/urllinkCommon.js"/>
+    <script type="application/x-javascript" src="chrome://urllink/content/urllinkBrowserOverlay.js"/>
+
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="urllink-strings" src="chrome://urllink/locale/urllink.properties"/>
+    </stringbundleset>
+
+    <!-- For keyconfig extension -->
+    <commandset id="mainCommandSet">
+        <command id="cmd_urllinkopen" label="URL Link open" oncommand="fnxweb.urllink.BrowserOpenLink(event,0,'','')"/>
+        <command id="cmd_urllinkopentab" label="URL Link open in tab" oncommand="fnxweb.urllink.BrowserOpenLink(event,1,'','')"/>
+    </commandset>
+    <commandset id="tasksCommands">
+        <command id="cmd_urllinkopen" label="URL Link open" oncommand="fnxweb.urllink.BrowserOpenLink(event,0,'','')"/>
+        <command id="cmd_urllinkopentab" label="URL Link Open in tab" oncommand="fnxweb.urllink.BrowserOpenLink(event,1,'','')"/>
+    </commandset>
+
+    <!-- ctrl-] / alt-ctrl-] -->
+    <keyset>
+        <key id="urllinkBrowserOpenKey" modifiers="control" key="]" command="cmd_urllinkopen"/>
+        <key id="urllinkBrowserTabOpenKey" modifiers="alt control" key="]" command="cmd_urllinkopentab"/>
+    </keyset>
+
+
+    <popup id="contentAreaContextMenu">
+        <!-- <menuseparator id="urllink-browser-sep-0" insertbefore="context-openlink"/> -->
+
+        <!-- top version -->
+        <menuitem id="urllink-browser-open-tab-top"
+            label="&popup-urllink-open-tab.label;"
+            accesskey="&popup-urllink-open-tab.shortcut;"
+            oncommand="fnxweb.urllink.BrowserOpenLink(event,1,'','')"
+            insertbefore="context-openlink"/>
+        <menuitem id="urllink-browser-open-link-top"
+            label="&popup-urllink-open-link.label;"
+            accesskey="&popup-urllink-open-link.shortcut;"
+            oncommand="fnxweb.urllink.BrowserOpenLink(event,0,'','')"
+            insertbefore="context-openlink"/>
+
+        <menu id="urllink-browser-open-tab-as-top"
+            label="&popup-urllink-open-tab-as.label;"
+            accesskey="&popup-urllink-open-tab-as.shortcut;"
+            insertbefore="context-openlink">
+            <menupopup id="urllink-browser-open-tab-as-popup-top">
+                <menuitem
+                    label="&popup-urllink-open-as-is.label;"
+                    accesskey="&popup-urllink-open-as-is.shortcut;"
+                    oncommand="fnxweb.urllink.BrowserOpenLink(event,1,'*')"/>
+                <menuseparator/>
+            </menupopup>
+        </menu>
+
+        <menu id="urllink-browser-open-link-as-top"
+            label="&popup-urllink-open-link-as.label;"
+            accesskey="&popup-urllink-open-link-as.shortcut;"
+            insertbefore="context-openlink">
+            <menupopup id="urllink-browser-open-link-as-popup-top">
+                <menuitem
+                    label="&popup-urllink-open-as-is.label;"
+                    accesskey="&popup-urllink-open-as-is.shortcut;"
+                    oncommand="fnxweb.urllink.BrowserOpenLink(event,0,'*')"/>
+                <menuseparator/>
+            </menupopup>
+        </menu>
+
+        <menuseparator id="urllink-browser-sep-1-top" insertafter="context-openlink"/>
+
+        <!-- bottom version -->
+        <menuseparator id="urllink-browser-sep-0-bottom"/>
+
+        <menuitem id="urllink-browser-open-tab-bottom"
+            label="&popup-urllink-open-tab.label;"
+            accesskey="&popup-urllink-open-tab.shortcut;"
+            oncommand="fnxweb.urllink.BrowserOpenLink(event,1,'','')"/>
+        <menuitem id="urllink-browser-open-link-bottom"
+            label="&popup-urllink-open-link.label;"
+            accesskey="&popup-urllink-open-link.shortcut;"
+            oncommand="fnxweb.urllink.BrowserOpenLink(event,0,'','')"/>
+
+        <menu id="urllink-browser-open-tab-as-bottom"
+            label="&popup-urllink-open-tab-as.label;"
+            accesskey="&popup-urllink-open-tab-as.shortcut;">
+            <menupopup id="urllink-browser-open-tab-as-popup-bottom">
+                <menuitem
+                    label="&popup-urllink-open-as-is.label;"
+                    accesskey="&popup-urllink-open-as-is.shortcut;"
+                    oncommand="fnxweb.urllink.BrowserOpenLink(event,1,'*')"/>
+                <menuseparator/>
+            </menupopup>
+        </menu>
+
+        <menu id="urllink-browser-open-link-as-bottom"
+            label="&popup-urllink-open-link-as.label;"
+            accesskey="&popup-urllink-open-link-as.shortcut;">
+            <menupopup id="urllink-browser-open-link-as-popup-bottom">
+                <menuitem
+                    label="&popup-urllink-open-as-is.label;"
+                    accesskey="&popup-urllink-open-as-is.shortcut;"
+                    oncommand="fnxweb.urllink.BrowserOpenLink(event,0,'*')"/>
+                <menuseparator/>
+            </menupopup>
+        </menu>
+
+        <!-- <menuseparator id="urllink-browser-sep-1-bottom" insertafter="context-openlink"/> -->
+    </popup>
+
+</overlay>
+

@@ -1,0 +1,189 @@
+
+/* --------- MMC buttons SKIN !! ----------- */
+
+@import  "base_new.css";
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+
+/* little shadows/lines  for Floating-tbox!(DYNBARS!) */
+#hcp-root-box[hctp_tbox_float="true"]	#hctp-controls-top-fixed {	border-bottom-left-radius: 1px;
+																	box-shadow:  0px  0px 0px 1px rgba(0, 0, 0, 0.15);												}
+#hcp-root-box[hctp_tbox_float="true"]	.hNew_res_button, 
+#hcp-root-box[hctp_tbox_float="true"]	.hNew_close_button {		box-shadow: -1px  0px 0px     rgba(0, 0, 0, 0.15), 1px -1px 0px rgba(255, 255, 255, 0.2) inset;	}
+#hcp-root-box[hctp_tbox_float="true"]	.hNew_min_button   {		box-shadow:                                        1px -1px 0px rgba(255, 255, 255, 0.2) inset;	}
+
+
+		#main-window[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"]
+		          			  	#hcp-rightbar-fixed:not([specialFixedPos="true"])
+	    		      			  	#hctp-controls-top-fixed {
+		
+			background-image: linear-gradient(to right,  rgba(0,0,0,0.55) 0px,  rgba(0,0,0,0.55) 1px, transparent 2px),
+			                  linear-gradient(to top  ,  rgba(0,0,0,0.55) 0px,  rgba(0,0,0,0.55) 1px, transparent 2px);
+			box-shadow: 0px 0px 0px 1px rgba(255,255,255,0.50);
+			border-bottom-left-radius: 3.5px;
+		}
+		
+		#main-window:-moz-any(	[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"],
+								[dz_adv_minmaxclose_buttons_loc_nomax="bloc_micro"]:not([hc-MaxFull="true"]) )
+       			  	#hcp-rightbar-fixed[specialFixedPos="true"]
+	      			  	#hctp-controls-top-fixed {
+			background-color: rgba(0,0,0,0.10);
+			box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8), 1px -1px 1px rgba(255, 255, 255, 0.5) inset;
+			border-bottom-left-radius: 1px;
+		}
+		#main-window:-moz-any(	[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"],
+								[dz_adv_minmaxclose_buttons_loc_nomax="bloc_micro"]:not([hc-MaxFull="true"]) )
+       			  	#hcp-rightbar-fixed[specialFixedPos="true"]
+	    		      	:-moz-any( .hNew_res_button, .hNew_close_button) {  /* divisorias para estos 2 botones */
+			box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.2), 1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+		}
+		#main-window:-moz-any(	[dz_adv_minmaxclose_buttons_location ="bloc_micro"][hc-MaxFull="true"],
+								[dz_adv_minmaxclose_buttons_loc_nomax="bloc_micro"]:not([hc-MaxFull="true"]) )
+       			  	#hcp-rightbar-fixed[specialFixedPos="true"]
+	      			  	.hNew_min_button {  /* nada para este boton */
+			box-shadow: none;
+		}
+		
+	
+		/* from Firefox's  browser.css  --------------  */
+
+        /* #titlebar-buttonbox, */
+        .hNew_mmcbuttons {
+          -moz-appearance: none !important;
+        }
+
+        #main-window   .hNew_mmcbuttons {
+          border: none !important;
+          margin: 0 !important;
+          padding: 4px 9px !important;
+          border-radius: 0px !important;
+        }
+        #main-window:not([sizemode="normal"])   .hNew_mmcbuttons {
+          padding-top   : 4px !important;
+          padding-bottom: 4px !important;
+        }
+
+
+        .hNew_mmcbuttons > .toolbarbutton-icon {
+          width : 12px;
+          height: 12px;
+        }
+		#main-window:not([dz_adv_minmaxclose_buttons_skin~="theme"])  
+		   .hNew_mmcbuttons:not(:hover) > .toolbarbutton-icon ,
+		#main-window[dz_adv_minmaxclose_buttons_skin~="light"]
+		   :-moz-any(.hNew_min_button, .hNew_res_button) > .toolbarbutton-icon {
+		  filter: drop-shadow( -1px -1px 0px rgba(255, 255, 255, 0.49)); /* aplicado al SVG!!!, resalta BIEN en fondo negro */
+        }
+
+        .hNew_min_button {
+          list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#minimize);
+        }
+
+        .hNew_res_button {
+          list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#maximize);
+        }
+
+        #main-window:not([sizemode="normal"])  .hNew_res_button {
+          list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#restore);
+        }
+
+        .hNew_close_button {
+          list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#close);
+        }
+        .hNew_close_button:hover {
+          list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#close-white);
+        }
+
+		#main-window[dz_adv_minmaxclose_buttons_skin~="theme"]  .hNew_min_button ,
+        .hNew_min_button:-moz-lwtheme {
+          list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#minimize-themes);
+        }
+		#main-window[dz_adv_minmaxclose_buttons_skin~="theme"]  .hNew_res_button ,
+        .hNew_res_button:-moz-lwtheme {
+          list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#maximize-themes);
+        }
+		#main-window:not([sizemode="normal"])[dz_adv_minmaxclose_buttons_skin~="theme"]  .hNew_res_button ,
+        #main-window:not([sizemode="normal"])  .hNew_res_button:-moz-lwtheme {
+          list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#restore-themes);
+        }
+		#main-window[dz_adv_minmaxclose_buttons_skin~="theme"]  .hNew_close_button ,
+        .hNew_close_button:-moz-lwtheme {
+          list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#close-themes);
+        }
+
+
+        /* the 12px image renders a 10px icon, and the 10px upscaled gets rounded to 12.5, which
+         * rounds up to 13px, which makes the icon one pixel too big on 1.25dppx. Fix: */
+        @media (min-resolution: 1.20dppx) and (max-resolution: 1.45dppx) {
+          .hNew_mmcbuttons > .toolbarbutton-icon {
+            width : 11.5px;
+            height: 11.5px;
+          }
+        }
+
+        /* 175% dpi should result in the same device pixel sizes as 150% dpi. */
+        @media (min-resolution: 1.70dppx) and (max-resolution: 1.95dppx) {
+          .hNew_mmcbuttons {
+            padding-left : 8.1px;
+            padding-right: 8.1px;
+          }
+
+          .hNew_mmcbuttons > .toolbarbutton-icon {
+            width : 10.8px;
+            height: 10.8px;
+          }
+        }
+
+        /* 225% dpi should result in the same device pixel sizes as 200% dpi. */
+        @media (min-resolution: 2.20dppx) and (max-resolution: 2.45dppx) {
+          .hNew_mmcbuttons {
+            padding-left : 9.3333px;
+            padding-right: 9.3333px;
+          }
+
+          .hNew_mmcbuttons > .toolbarbutton-icon {
+            width : 10.8px;
+            height: 10.8px;
+          }
+        }
+
+        /* 275% dpi should result in the same device pixel sizes as 250% dpi. */
+        @media (min-resolution: 2.70dppx) and (max-resolution: 2.95dppx) {
+          /* NB: todo: this should also change padding on the buttons
+           * themselves, but without a device to test this on, it's
+           * impossible to know by how much. */
+          .hNew_mmcbuttons > .toolbarbutton-icon {
+            width : 10.8px;
+            height: 10.8px;
+          }
+        }
+
+        /** @media (-moz-windows-default-theme) **/
+          .hNew_mmcbuttons:hover {
+            background-color: hsla(0, 0%, 0%, .12);
+          }
+
+          .hNew_mmcbuttons:hover:active {
+            background-color: hsla(0, 0%, 0%, .22);
+          }
+
+          .hNew_mmcbuttons:not(:hover) > .toolbarbutton-icon:-moz-window-inactive {
+            opacity: 0.7;
+          }
+
+          .hNew_close_button:hover {
+            background-color: hsl(355, 86%, 49%);
+          }
+
+          .hNew_close_button:hover:active {
+            background-color: hsl(355, 82%, 69%);
+          }
+        /** END: (-moz-windows-default-theme)  **/
+
+
+}  /*** moz-document url(...) ***/
+

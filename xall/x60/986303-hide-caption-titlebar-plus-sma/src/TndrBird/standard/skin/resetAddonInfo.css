@@ -1,0 +1,23 @@
+
+
+@namespace         url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document url-prefix(chrome://mozapps/content/extensions/extensions.xul),
+               url-prefix(about:addons) {
+
+.addon.addon-view[value="hidecaptionplus-dp@dummy.addons.mozilla.org"] {
+	/*  This can be used in enable/disable buttons to update info: 
+		target._initWithAddon(target.mAddon);
+
+		first attempt:
+		-moz-binding: url(chrome://global/content/bindings/richlistbox.xml#richlistitem) !important;
+		min-height: 4.25em !important;  ---  3.25em  with slim addons manager
+
+	margin-right: 3px !important;
+	*/
+	
+	-moz-binding: url("chrome://mozapps/content/extensions/extensions.xml?a=1#addon-generic") !important;
+}
+
+}
+

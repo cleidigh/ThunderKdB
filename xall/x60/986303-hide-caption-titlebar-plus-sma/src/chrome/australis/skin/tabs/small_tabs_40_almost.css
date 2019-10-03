@@ -1,0 +1,22 @@
+/* --------- Small Tabs - almost classic tabs !! ----------- */
+
+/* --------- from  browser/...skin/**AERO**  ----------- */
+
+@import  "small_tabs_base_new.css";
+
+@import  "small_tabs_extraSmall_1.css";
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url("chrome://browser/content/browser.xul") {
+
+:root {
+  --tab-min-height: 21px !important;
+  --tabside-width    : 2px !important;
+  --tabside-width_med: 1px !important;
+}
+
+
+}  /*** moz-document url(...) ***/
+

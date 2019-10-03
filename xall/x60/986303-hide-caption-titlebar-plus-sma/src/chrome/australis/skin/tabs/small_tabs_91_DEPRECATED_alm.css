@@ -1,0 +1,330 @@
+/* --------- Small Tabs 2 !! ----------- */
+
+
+/* --------- from  browser/...skin/**AERO**  ----------- */
+
+@-moz-document url("chrome://browser/content/browser.xul") {
+
+
+#main-window:not([customizing])  #TabsToolbar {
+  height: 21px !important;
+}
+
+#main-window:not([customizing])  #TabsToolbar:not(:-moz-lwtheme) {
+  background-image: linear-gradient(to top, hsla(209,67%,12%,0.35) 1px, rgba(0,0,0,.05) 1px, transparent 50%) !important;
+}
+
+:root {
+  --tab-min-height: 18px;
+
+  --hctp_navbar_topMargin_extra: -1px !important; /* for DynBars */
+}
+
+
+#tabbrowser-tabs {
+  min-height: 18px !important;
+  /* conflict w/ other addons!  max-height: 21px ;   linux */
+}
+
+
+.tabbrowser-tab {
+  max-height: 21px !important;   /* only to make sure - more compatibility with other themes */
+}
+
+.tabbrowser-tabs[tabmix_australis]:not([multibar])   .tabbrowser-tab[selected=true] {
+}
+.tabbrowser-tabs[tabmix_australis]:not([multibar])   .tabbrowser-tab[selected=true]   .tab-stack {
+	
+	margin-bottom:  1px !important;
+	 
+	/*
+	margin-top:    -1px !important; 
+	padding-top:    1px !important;
+	*/ 
+}
+
+
+/* The selected tab should appear above adjacent tabs, .tabs-newtab-button and the highlight of #nav-bar */
+/**
+.tabbrowser-tab[selected=true] {
+  position: relative;
+  z-index: 2;
+}
+**/
+
+/* HCTP: 1px extra at bottom to blend with nav-bar */
+/** seems to improve nothing ...
+.tabbrowser-tabs:not([multibar])  .tabbrowser-tab[selected=true] {
+  min-height:    21px !important;
+  margin-bottom: -1px !important;
+}
+**/
+
+
+/**
+.tabbrowser-tab,
+.tabs-newtab-button {
+  -moz-appearance: none;
+  background-color: transparent;
+  border-radius: 0;
+  border-width: 0;
+  margin: 0;
+  padding: 0;
+}
+**/
+
+
+.tab-background-middle {
+
+  border-left:  3px solid transparent !important;
+  border-right: 3px solid transparent !important;
+  margin:   0  -3px !important;
+}
+
+/* aero/ .. browser.css setted this for restored-win + menubar-hidden */
+.tab-background-middle:not([selected=true]) {
+  clip-path: none !important;
+}
+
+.tab-content {
+  -moz-padding-start: 5px !important;
+  -moz-padding-end  : 4px !important;
+}
+
+/**
+.tab-throbber,
+.tab-icon-image,
+.tab-close-button {
+  margin-top: 1px;
+}
+
+.tab-throbber,
+.tab-icon-image {
+  height: 16px;
+  width: 16px;
+}
+**/
+
+
+/* HCTP touch */
+.tab-icon-image {
+  margin-top: 0px !important;
+}
+
+
+/**
+.tab-throbber:not([pinned]),
+.tab-icon-image:not([pinned]) {
+  -moz-margin-end: 6px;
+}
+
+.tab-label {
+  -moz-margin-end:   0;
+  -moz-margin-start: 0;
+}
+
+.tab-close-button {
+  -moz-margin-start: 4px;
+  -moz-margin-end:  -2px;
+  padding: 0;
+}
+**/
+
+.tab-background,
+.tabs-newtab-button {
+  /* overlap the tab curves */
+  -moz-margin-end:   -1px !important;
+  -moz-margin-start: -1px !important;
+  
+  max-height: 20px !important; /* only to make sure - more compatibility with other themes (tabmix-plus custom bkgs, etc) */
+}
+
+.tabbrowser-arrowscrollbox > .arrowscrollbox-scrollbox {
+  -moz-padding-end:   2px !important;
+  -moz-padding-start: 2px !important;
+
+  min-height: var(--tab-min-height);  /* workaround for great issue [3.33px height!] when tmp get confused with floating tboxhide? */
+}
+
+
+
+/** this is to override TAB MIX PLUS , for hovered non-selected tabs 
+ **/
+.tab-background-start::after,
+.tab-background-start::before,
+.tab-background-start,
+.tab-background-end,
+.tab-background-end::after,
+.tab-background-end::before {
+  	min-height: 20px !important;
+  	width:  4px !important;
+}  
+#tabbrowser-tabs:not(:-moz-lwtheme)   .tab-background-start::after,
+#tabbrowser-tabs:not(:-moz-lwtheme)   .tab-background-start::before,
+#tabbrowser-tabs:not(:-moz-lwtheme)   .tab-background-start,
+#tabbrowser-tabs:not(:-moz-lwtheme)   .tab-background-end,
+#tabbrowser-tabs:not(:-moz-lwtheme)   .tab-background-end::after,
+#tabbrowser-tabs:not(:-moz-lwtheme)   .tab-background-end::before {
+  	background-position:                 -1px                  -1px   !important;	
+	background-size:     calc(100% + 2px) calc(100% + 1px)  !important;
+}
+.tab-background-middle {
+  	min-height: 20px !important;
+}  
+.tab-background-middle:not(:-moz-lwtheme) {
+  	background-position:                 -1px                  -1px   !important;	
+	background-size:     calc(100% + 2px) calc(100% + 1px)  !important;
+}
+
+#tabbrowser-tabs[tabmix_australis="true"]:not(:-moz-lwtheme)   .tab-background-start::after ,
+#tabbrowser-tabs[tabmix_australis="true"]:not(:-moz-lwtheme)   .tab-background-start::before,
+#tabbrowser-tabs[tabmix_australis="true"]:not(:-moz-lwtheme)   .tab-background-start        ,
+#tabbrowser-tabs[tabmix_australis="true"]:not(:-moz-lwtheme)   .tab-background-end        ,
+#tabbrowser-tabs[tabmix_australis="true"]:not(:-moz-lwtheme)   .tab-background-end::after ,
+#tabbrowser-tabs[tabmix_australis="true"]:not(:-moz-lwtheme)   .tab-background-end::before,
+#tabbrowser-tabs[tabmix_australis="true"]:not(:-moz-lwtheme)   .tab-background-middle {
+  	background-position:                 -2px                  -1px   !important;	
+	background-size:     calc(100% + 4px) calc(100% + 2px)  !important;
+}
+
+
+.tabbrowser-tab:not([selected=true]):not(:hover)  .tab-background-start,
+.tabbrowser-tab:not([selected=true]):not(:hover)  .tab-background-end   {
+
+  -moz-margin-start: -2px !important;
+}
+
+
+/** this is to override TAB MIX PLUS (copied from it), for hovered non-selected tabs
+**/ 
+.tabbrowser-tab[tabmix_tabStyle*="bg"]                                   .tab-background-middle {
+  border-radius: 2px 2px 0 0 !important;
+}
+.tabbrowser-tab[tabmix_tabStyle*="bg"]:not([selected=true]):not(:hover)  .tab-background-middle {
+	/**
+  border: 2px solid transparent;
+  border-bottom: none;
+  -moz-margin-start: -1px;
+  -moz-margin-end: -1px;
+  	**/
+  border-radius: 6px 6px 0 0 !important;
+  border-top: 1px solid transparent !important;
+}
+
+#tabbrowser-tabs[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"]:not(:hover) > .tab-stack > .tab-background > .tab-background-middle,
+#tabbrowser-tabs[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"]:not(:hover)   > .tab-stack > .tab-background > .tab-background-middle,
+#tabbrowser-tabs[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState]):not(:hover)      > .tab-stack > .tab-background > .tab-background-middle { 
+  border-top-left-radius:  7px;
+  border-top-right-radius: 7px;
+}
+
+
+
+/* Selected tab */
+
+/*
+ Tab background pseudo-elements which are positioned above .tab-background-start/end:
+   - ::before - provides the fill of the tab curve and is clipped to the tab shape. This is where
+                pointer events go for the curve.
+   - ::after  - provides the border/stroke of the tab curve and is overlayed above ::before.  Pointer
+                events go through to ::before to get the proper shape.
+ */
+
+
+/* Para TMP vd? */
+.tab-background-start::after,
+.tab-background-end::after {
+  /* position ::after on top of its parent */
+  -moz-margin-start: -4px !important;
+}
+
+
+.tab-background-middle[selected=true] {
+  /**
+  background-*: ---
+  // The padding-top combined with background-clip: content-box (the bottom-most) ensure the
+  //   background-color doesn't extend above the top border. 
+  **/
+  padding-top: 1px !important;
+  /* margin-top:  0px !important;
+  */
+}
+
+/* End selected tab */
+
+
+/* new tab button border and gradient on hover:   2016-feb: don't filter this by lwtheme like the other background-xx  */
+.tabbrowser-tab:hover   .tab-background:not([selected=true]),
+.tabs-newtab-button:hover {
+  background-position: left bottom, 4px bottom, right bottom !important;
+  background-size: 4px 100%, calc(100% - (2 * 4px)) 100%, 4px 100% !important;
+  /**
+  background-*: ---
+  **/
+}
+
+#tabbrowser-tabs[tabmix_australis="true"]  .tabbrowser-tab:hover   .tab-background-middle:not([selected=true]) {
+  /* HCTP touch  //TODO ver de mover esto a padding o border */ 
+  margin-top: -1px !important;
+}
+
+
+
+/* fix for hoverd tab that is before or after selected tab */
+#tabbrowser-tabs:not([movingtab])[tabmix_australis="true"] > .tabbrowser-tab:not([selected="true"])[tabmix_tabStyle*="bg"][afterselected-visible]:hover         > .tab-stack > .tab-background > .tab-background-start,
+#tabbrowser-tabs:not([movingtab])[tabmix_australis="true"] > .tabbrowser-tab:not([selected="true"])[tabmix_tabStyle*="bg"][afterselected-visible]:hover         > .tab-stack > .tab-background > .tab-background-start::before,
+#tabbrowser-tabs:not([movingtab])[tabmix_australis="true"] > .tabbrowser-tab:not([selected="true"])[tabmix_tabStyle*="bg"][tabmix-beforeselected-visible]:hover > .tab-stack > .tab-background > .tab-background-end,
+#tabbrowser-tabs:not([movingtab])[tabmix_australis="true"] > .tabbrowser-tab:not([selected="true"])[tabmix_tabStyle*="bg"][tabmix-beforeselected-visible]:hover > .tab-stack > .tab-background > .tab-background-end::before {
+  width: 3px !important;
+}
+
+
+/* :::: progress bar on tabs :::: */
+.tabbrowser-tabs[tabmix_australis]:not([treestyletab-mode="vertical"]) > .tabbrowser-tab  .tab-progress {
+  margin-top: 1px !important;
+}
+
+
+/* buttons and Tab scrollbox arrows */
+.tabbrowser-arrowscrollbox > .scrollbutton-up   ,
+.tabbrowser-arrowscrollbox > .scrollbutton-down ,
+#TabsToolbar  >  toolbarbutton {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+	margin-top   : 0px !important;
+	margin-bottom: 0px !important;
+}
+
+.tabs-newtab-button {
+  width: 30px;
+}
+
+#TabsToolbar > .private-browsing-indicator {
+	background-position: center -7px;
+}
+
+
+@media (-moz-windows-compositor) {
+  @media (-moz-os-version: windows-win8),
+         (-moz-os-version: windows-win10) {
+	#titlebar-buttonbox {
+		margin-top: -1px;
+	}
+	@media             ( min-resolution : 1.1dppx) {
+	  #titlebar-buttonbox {
+		margin-top: -2px;
+	  }
+	}
+  }
+}
+
+
+
+/* chrome://hidecaptionplus_fx/content/readme_en-US.html */
+#TabsToolbar  #tabbrowser-tabs[positionpinnedtabs] >  tab.tabbrowser-tab[pinned][label="Hide Caption Titlebar Plus"]:FIRST-CHILD {
+  outline: 2px dashed orange !important;
+}
+
+
+}  /*** moz-document url(...) ***/
+

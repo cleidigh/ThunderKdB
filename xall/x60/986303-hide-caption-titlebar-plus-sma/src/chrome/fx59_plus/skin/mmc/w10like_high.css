@@ -1,0 +1,59 @@
+
+/* --------- MMC buttons SKIN !! ----------- */
+
+/*** @import  "base_new.css"; ***/
+
+@import  "w10like.css";
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+
+        /** BEGIN - @media not all and (-moz-windows-default-theme) **/
+          /** 
+          .hNew_mmcbuttons {
+            background-color: -moz-field;
+          }
+          **/
+          .hNew_mmcbuttons:hover {
+            background-color: Highlight;
+          }
+          .hNew_mmcbuttons:hover:active {
+            background-color: Highlight;
+			box-shadow: 0 0 2px black inset !important;
+          }
+
+          .hNew_min_button:not(:-moz-lwtheme) {
+            list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#minimize-highcontrast);
+          }
+          .hNew_min_button:not(:-moz-lwtheme):hover {
+            list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#minimize-highcontrast-hover);
+          }
+
+          .hNew_res_button:not(:-moz-lwtheme) {
+            list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#maximize-highcontrast);
+          }
+          .hNew_res_button:not(:-moz-lwtheme):hover {
+            list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#maximize-highcontrast-hover);
+          }
+
+          #main-window:not([sizemode="normal"])  .hNew_res_button:not(:-moz-lwtheme) {
+            list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#restore-highcontrast);
+          }
+          #main-window:not([sizemode="normal"])  .hNew_res_button:not(:-moz-lwtheme):hover {
+            list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#restore-highcontrast-hover);
+          }
+
+          .hNew_close_button:not(:-moz-lwtheme) {
+            list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#close-highcontrast);
+          }
+          .hNew_close_button:not(:-moz-lwtheme):hover {
+            list-style-image: url(chrome://hidecaptionplus/skin/caption-buttons.svg#close-highcontrast-hover);
+          }
+        /** END **/
+
+
+}  /*** moz-document url(...) ***/
+

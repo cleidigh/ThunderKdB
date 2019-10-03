@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="white.css" title="whiteStyle" type="text/css" ?>
+
+<overlay id="messengerWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<toolbarpalette id="MailToolbarPalette">
+<toolbarbutton type="checkbox" id="custom-button-2" onclick="if (checked) {
+window.document.enableStyleSheetsForSet('whiteStyle');
+window.document.activeElement.enableStyleSheetsForSet('whiteStyle');
+} else {
+window.document.enableStyleSheetsForSet('');
+window.document.activeElement.enableStyleSheetsForSet('');
+}" label="Switch white">
+</toolbarbutton>
+</toolbarpalette>
+</overlay>

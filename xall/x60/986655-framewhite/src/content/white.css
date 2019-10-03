@@ -1,0 +1,258 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/*Base Color*/
+window {
+color: #000000 !important; background-color: #FFFFFF !important;
+}
+
+#headers-box,
+#navigation-toolbox {
+border-color: ThreeDShadow !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+
+findbar,
+.mail-toolbox,
+.contentTabToolbox,
+#msgHeaderView {
+border-color: ThreeDShadow !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+
+/* Let the message headers use the theme colors */
+.headerValue {
+border-color: ThreeDShadow !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+
+/* Style the editContactPanel textfields */
+.editContactTextbox {
+border-color: ThreeDShadow !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+.editContactTextbox:not([readonly="true"]):not([focused="true"]) {
+border-color: ThreeDShadow !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+/*Html, Body, Container*/
+html, body, #container {
+border-color: ThreeDShadow !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+
+/* Today Pane */
+.today-subpane {
+border-color: ThreeDShadow !important; !important; color: #000000 !important; background-color: #FFFFFF !important;
+} 
+.miniday-nav-buttons> .toolbarbutton-icon {
+filter: contrast(100%) brightness(200%);
+} 
+#agenda-panel {
+border-color: ThreeDShadow !important; background-color: #FFFFFF !important; color: #000000 !important;
+} 
+#today-pane-panel > *{
+border-color: ThreeDShadow !important; background-color: #FFFFFF !important; color: #000000 !important;
+} 
+#todaypane-new-event-button {
+filter: contrast(100%) brightness(200%) !important;
+} 
+
+/*Toolbar, Toolbox, Menubar, tabs*/
+.toolbar, toolbox, menubar> * {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+tab {
+border-color: ThreeDShadow !important; color: #000000 !important; background-color: #FFFFFF !important;
+} 
+
+.tab-background {
+border-top: solid !important; border-top-width: 1px !important; border-color: ThreeDShadow !important; background-color: #FFFFFF !important;
+} 
+.tab-text {
+color:red !important;
+}
+tab[calview] {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.tab-text:not([selected=true]) {
+color: blue !important;
+} 
+.tab-background:not([selected=true]) {
+border-top: solid !important; border-color: #FFFFFF !important; background-color: #FFFFFF !important; border-bottom: solid !important; border-bottom-width: 1px !important; border-bottom-color: ThreeDShadow !important;
+} 
+
+tabpanels {
+border-color: ThreeDShadow !important; color: #000000 !important; background-color: #FFFFFF !important;
+} 
+
+/*Statusbar*/
+status-bar {
+background-color: #FFFFFF !important; color: #000000 !important; border-color: ThreeDShadow !important; border-top: solid !important; border-top-width: 1px !important; border-top-color: ThreeDShadow !importannt;
+} 
+statusbarpanel {
+background-color: #FFFFFF !important; color: #000000 !important; border-color: ThreeDShadow !important; border-top: solid !important; border-top-width: 1px !important; border-top-color: ThreeDShadow !importannt;
+} 
+
+/*Calendar*/
+#quick-filter-bar {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+#calendar-add-task-button {
+filter: contrast(100%) brightness(200%) !important;
+} 
+#task-addition-box {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.view-header {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.today-navigation-button {
+color: #000000 !important;
+} 
+.view-navigation-button {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.navigation-bottombox {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.navigation-inner-box {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.navigation-spacer-box {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+#unifinder-searchBox {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.close-icon{
+background-color: #FFFFFF !important; color: red !important;
+} 
+.close-icon:not([selected=true]) {
+background-color: #FFFFFF !important; color: #000000 !important;
+}  
+#MsgHeadersToolbar {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.aw-menulist {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.main-header-area {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.headerName {
+color: #000000 !important;
+} 
+.headerValue {
+color: #000000 !important;
+} 
+.findbar-container {
+border-color: ThreeDShadow !important; background-color: #FFFFFF !important; color: #000000 !important;
+} 
+#attachmentBar {
+background-color: #FFFFFF !important; color: #000000 !important;
+} 
+.task-details-name {
+color: #000000 !important;
+} 
+#calendar-task-details-grid > rows > .item-date-row > .headline {
+color: #000000 !important;
+} 
+.task-details-value {
+color: #000000 !important;
+} 
+#calendar-task-details-grid > rows > .item-date-row {
+filter: saturate(0) hue-rotate(90deg) brightness(500%);
+} 
+#navigation-toolbox, menu {
+background-color: #FFFFFF !important;
+} 
+
+/*Toolbarbutton*/
+toolbarbutton[type="checkbox"]:not([selected=true]) {
+filter: saturate(0) hue-rotate(90deg) brightness(500%);
+}
+toolbarbutton[type="checkbox"] {
+filter: saturate(0) hue-rotate(90deg) brightness(500%);
+}
+
+/*Menupopup*/
+menupopup > * {
+border-width: 1px; border-color: ThreeDShadow; color: #FFFFFF; background-color: #696969;
+}
+
+/*Messenger Box*/
+#messengerBox {border-style: solid; border-width: 1px; border-color: #FFFFFF; color: #FFFFFF; background-color: #696969;
+}
+
+/*Dialog boxes*/
+dialog > * {
+margin: 0px !important; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+#daypicker-weekday {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+#daypicker-monthday {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+#recurrence-preview  {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+#attendees-list {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+#selection-bar {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+
+#scroll-container {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+
+#freebusy-day {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+#freebusy-timebar {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+#freebusy-row {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+
+#freebusy-grid {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+#timezone-page {
+-moz-binding: none;
+margin: 0px; padding 0px; color: #000000; background-color: #FFFFFF;
+}
+
+/*Resizer, Resizer panel*/
+#resizer {
+margin: 0px !important; padding 0px !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+#resizerpanel {
+margin: 0px !important; padding 0px !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+
+/*Windows*/
+-moz-win-borderless-glass > * {
+margin: 0px !important; padding 0px !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+-moz-win-browsertabbar-toolbox > * {
+margin: 0px !important; padding 0px !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+-moz-win-communications-toolbox > * {
+margin: 0px !important; padding 0px !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+-moz-win-glass > * {
+margin: 0px !important; padding 0px !important; color: #000000 !important; background-color: #FFFFFF !important;
+}
+-moz-win-media-toolbox > * {
+margin: 0px !important; padding 0px !important; color: #000000 !important; background-color: #FFFFFF !important;
+}

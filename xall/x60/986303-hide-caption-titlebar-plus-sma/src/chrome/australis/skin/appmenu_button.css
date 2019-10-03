@@ -1,0 +1,408 @@
+
+/* ---------------------  hcp-APP MENU BUTTON ------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+/** Look for correct [moz-document] here bc this is used also in options.xul **/
+
+
+#hctp-appmenu-button-cont-fixed{
+	position: fixed; left: 0px; top: 0px; z-index: 20; /* position in (0,0) for app-menu STAYING in SAME screen monitor! */
+	
+	min-height: 5px;
+	min-width : 3px;
+	
+	padding-right: 1px; /* transparent gap 'to the' tabs */
+}
+/**   NO pongo esto pq mejor permito q usen cualquier tamanho de boton!   Solo limito el padding y listo!
+  max-width: 900px;  // var(--HideCaption_MAX_CALC_WIDTH)
+  overflow-x: hidden;
+**/
+:root:not([hc-MaxFull="true"]) 	 #hctp-appmenu-button-cont-fixed{
+	left: 4px;
+}
+:root:not([hc-MaxFull="true"])[chromemargin^="1,"] 	 #hctp-appmenu-button-cont-fixed{
+	margin-top: -1px;
+}
+
+
+
+#hctp-appmenu-button-cont-fixed:-moz-lwtheme{
+	/* opacity: 0.95; */
+}
+
+:root[dz_z_sys_intFlags~="fxBut_oldDisable"]          #hctp-appmenu-button-cont-fixed:not([dz_home_enabled="true"]) {
+	/* visibility: collapse;  queda box.width = 3px en position:fixed ! */
+	display: none;
+}
+:root:not([dz_z_sys_intFlags~="fxBut_oldDisable"])    #hctp-appmenu-button-cont-fixed:not([dz_home_enabled="true"]) {
+	max-width: 0px !important;
+	min-width: 0px !important;
+	width    : 0px !important;
+	margin : 0px !important;
+	padding: 0px !important;
+	border : 0px none  !important;
+	left: 0px !important;
+	overflow: hidden !important;
+	z-index: -5 !important;
+	visibility: collapse !important;  /* 2017: pongo demas p/ asegurar, pq vi q no afecta al screenX y eso! */
+}
+
+/* aplicable solo si NO existe "fxBut_oldDisable" */
+:root[dz_z_sys_intFlags~="fxBut_wid1"]                #hctp-appmenu-button-cont-fixed:not([dz_home_enabled="true"]) {
+	max-width: 1px !important;
+	min-width: 1px !important;
+	width    : 1px !important;
+}
+
+
+
+/* ::::: app menu button :::::   chrome://browser/skin/browser.css (aero) 129 - Fx10  -------------------- */
+
+
+.hctp-appmenu-button-cls {
+  -moz-appearance: none !important;
+  background-clip: padding-box;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid;
+  border-top: none;
+  color: white;
+  text-shadow: 0 0 1px rgba(0,0,0,.7),
+               0 1px 1.5px rgba(0,0,0,.5);
+  font-weight: bold;
+  padding: 0 1.5em 0 !important;
+  margin: 0 0 2px !important;
+  
+  -moz-user-focus: ignore; /* ALWAYS NO focus for these buttons right? */
+}
+
+/* Linux! */
+:root[hcp_platformPlus="linux"]  .hctp-appmenu-button-cls {
+	font-size: 98%;
+}
+
+
+@media all and (-moz-windows-classic) {
+  .hctp-appmenu-button-cls {
+    margin-bottom: 1px;
+  }
+}
+
+
+
+.hctp-appmenu-button-cls {
+  background-image: -moz-linear-gradient(rgb(247,182,82), rgb(215,98,10) 95%);
+  border-color: rgba(83,42,6,.9);
+  box-shadow: 0 1px 0   rgba(255,255,255,.25) inset,
+              0 0 0 1px rgba(255,255,255,.25) inset;
+}
+:root:not([privatebrowsingmode=temporary])[dz_home_button_appear="blue"]    .hctp-appmenu-button-cls {
+  background-image: -moz-linear-gradient(rgb(82, 126, 255), rgb(28, 64, 171) 95%);
+  border-color: rgba(6, 36, 84,.9);
+}
+:root:not([privatebrowsingmode=temporary])[dz_home_button_appear="green"]   .hctp-appmenu-button-cls {
+  background-image: -moz-linear-gradient(hsl(84, 91%, 45%), hsl(94, 91%, 30%) 95%);
+  border-color: hsla(93, 89%, 12%, 0.9);
+}
+
+.hctp-appmenu-button-cls:hover:not(:active):not([open]) {
+  background-image: -moz-radial-gradient(center bottom, farthest-side, rgba(252,240,89,.5) 10%, rgba(252,240,89,0) 70%),
+                    -moz-radial-gradient(center bottom, farthest-side, rgb(236,133,0), rgba(255,229,172,0)),
+                    -moz-linear-gradient(rgb(246,170,69), rgb(209,74,0) 95%);
+  border-color: rgba(83,42,6,.9);
+  box-shadow: 0 1px 0     rgba(255,255,255,.1) inset,
+              0 0 2px 1px rgba(250,234,169,.7) inset,
+              0 -1px 0    rgba(250,234,169,.5) inset;
+}
+:root:not([privatebrowsingmode=temporary])[dz_home_button_appear="blue"]     .hctp-appmenu-button-cls:hover:not(:active):not([open]) {
+  background-image: -moz-radial-gradient(center bottom, farthest-side, rgba(173, 245, 255, 0.56) 10%, rgba(90, 233, 252, 0.01) 70%),
+                    -moz-radial-gradient(center bottom, farthest-side, #3F52DE                      , rgba(171, 220, 255, 0.01)),
+                    -moz-linear-gradient(#4A7CF8, #0E31CB 95%);
+  border-color: rgba(6, 36, 84,.9);
+  box-shadow: 0  1px 0       rgba(255,255,255,.1) inset, 
+              0  0   2px 1px rgba(169,224,249,.7) inset, 
+			  0 -1px 0       rgba(169,224,249,.5) inset;
+}
+:root:not([privatebrowsingmode=temporary])[dz_home_button_appear="green"]    .hctp-appmenu-button-cls:hover:not(:active):not([open]) {
+  background-image: -moz-radial-gradient(center bottom, farthest-side, hsla(64, 94%, 57%, 0.5) 10%, hsla(64, 94%, 57%, 0) 70%), 
+                    -moz-radial-gradient(center bottom, farthest-side, hsl(86, 100%, 42%), hsla(79, 100%, 70%, 0)), 
+                    -moz-linear-gradient(hsl(86, 92%, 47%), hsl(99, 95%, 34%) 95%);
+  border-color: hsla(93, 89%, 12%, 0.9);
+  box-shadow: 0 1px 0     hsla( 0,  0%, 100%, 0.1) inset,
+              0 0 2px 1px hsla(72, 87%,  67%, 0.7) inset,
+              0 -1px 0    hsla(72, 87%,  67%, 0.5) inset;
+}
+
+.hctp-appmenu-button-cls:-moz-any( :hover:active, [open] ) {
+  background-image: -moz-linear-gradient(rgb(246,170,69), rgb(209,74,0) 95%);
+  box-shadow: 0 2px 3px rgba(0,0,0,.4) inset,
+              0 1px 1px rgba(0,0,0,.2) inset;
+
+  border-radius: 0;
+}
+:root:not([privatebrowsingmode=temporary])[dz_home_button_appear="blue"]    .hctp-appmenu-button-cls:-moz-any( :hover:active, [open] ) {
+  background-image: -moz-linear-gradient(#4A7CF8, #0E31CB 95%);
+}
+:root:not([privatebrowsingmode=temporary])[dz_home_button_appear="green"]   .hctp-appmenu-button-cls:-moz-any( :hover:active, [open] ) {
+  background-image: linear-gradient(hsl(86, 92%, 47%), hsl(99, 100%, 31%) 95%);
+}
+
+:root[privatebrowsingmode=temporary] .hctp-appmenu-button-cls {
+  background-image: -moz-linear-gradient(rgb(153,38,211), rgb(105,19,163) 95%);
+  border-color: rgba(43,8,65,.9);
+}
+
+:root[privatebrowsingmode=temporary] .hctp-appmenu-button-cls:hover:not(:active):not([open]) {
+  background-image: -moz-radial-gradient(center bottom, farthest-side, rgba(240,193,255,.5) 10%, rgba(240,193,255,0) 70%),
+                    -moz-radial-gradient(center bottom, farthest-side, rgb(192,81,247), rgba(236,172,255,0)),
+                    -moz-linear-gradient(rgb(144,20,207), rgb(95,0,158) 95%);
+  border-color: rgba(43,8,65,.9);
+  box-shadow: 0 1px 0 rgba(255,255,255,.1) inset,
+              0 0 2px 1px rgba(240,193,255,.7) inset,
+              0 -1px 0 rgba(240,193,255,.5) inset;
+}
+
+:root[privatebrowsingmode=temporary] .hctp-appmenu-button-cls:-moz-any( :hover:active, [open] ) {
+  background-image: -moz-linear-gradient(rgb(144,20,207), rgb(95,0,158) 95%);
+}
+
+.hctp-appmenu-button-cls > .button-box {
+  border-style: none;
+  padding: 0;
+  
+  min-height: 16px; /* tratar q no quede muy chico, (como en win-xp?) */
+  
+  /* other dark themes (like NASA Night) was touching this... */ 
+  background-color: transparent;  
+  background-image: none;
+}
+
+
+/* extra pad q NO encontre por dnd le coloca al original <- toma el alto del titlebar ('onda stretch')  */
+.hctp-appmenu-button-cls > .button-box  > .box-inherit {
+  margin-top   :  1px; 
+}
+:root:not([hctp_vertical_maxim_act__TOP="true"])[sizemode="normal"]  .hctp-appmenu-button-cls > .button-box  > .box-inherit {
+  margin-bottom: 1px;
+}
+
+
+/*  [hc_dropm=""] con este valor default NO SALE NADA (url viejo y malo!) */
+.hctp-appmenu-button-cls[hc_dropm=""]     > .button-box > .button-menu-dropmarker {
+  list-style-image: url(chrome://browser/skin/appmenu-dropmarker.png);
+  -moz-image-region: auto; /* FXChrome leaved it with width 19 */
+}
+.hctp-appmenu-button-cls[hc_dropm~="std"]  > .button-box > .button-menu-dropmarker {
+  list-style-image: url(chrome://browser/skin/toolbarbutton-dropdown-arrow.png);
+  -moz-image-region: auto;
+}
+.hctp-appmenu-button-cls[hc_dropm~="inverted"]  > .button-box > .button-menu-dropmarker   image {
+	filter: invert(1);
+}
+.hctp-appmenu-button-cls[hc_dropm="none"] > .button-box > .button-menu-dropmarker {
+  list-style-image: none !important;
+  -moz-appearance:  none !important; /* needed in linux */
+  background-image: none !important;
+}
+.hctp-appmenu-button-cls > .button-box > .button-menu-dropmarker {
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  -moz-margin-start: .5em;
+}
+
+/* It's too small without HARDW ACCEL in Win 7 */
+.hctp-appmenu-button-cls > .button-box    label.button-text {
+    min-height: 17px;
+    padding-top: 1px;
+}
+
+
+/* HCTP:  only one of them  -----------------------------------------------  */
+:root:not([hc-MaxFull="true"])  	#hctp-appmenu-button           ,
+:root:not([hc-MaxFull="true"])  	.hctp-appmenu-button-cls.max   ,
+:root[hc-MaxFull="true"]            #hctp-appmenu-button-nomax     ,
+:root[hc-MaxFull="true"]            .hctp-appmenu-button-cls.nomax {
+	visibility: collapse;
+}
+
+/*  HCTP *custom* button width  section -----------------  [hcp_appbutton_style="pref10"]  --------------------------  */
+
+.hctp-appmenu-button-cls:not([hcp_appbutton_style="fx_home.png"]) {
+	min-width: 0px !important;
+}
+
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home.png"] {
+  	margin-right: 1px !important;
+}
+/* */
+
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_med0.png"] {
+  	padding-left: 9px !important;  padding-right: 9px !important;
+}
+
+
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_med.png"] {
+  	padding-left: 4px !important;  padding-right: 0px !important;  margin-right: 1px !important;
+}
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_med.png"] > .button-box > .button-menu-dropmarker {
+	margin-left: 3px !important;   margin-right: 3px !important;   
+}
+
+
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_small0.png"] {
+  	padding-left: 8px !important;  padding-right: 7px !important;
+}
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_small0.png"] > .button-box > .button-menu-dropmarker {
+	margin-left: 4px !important;   /*  NO margin-right needed, so main paddings can be equal! */
+}
+
+
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_small.png"] {
+  	padding-left: 3px !important;  padding-right: 0px !important;
+}
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_small.png"] > .button-box > .button-menu-dropmarker {
+	margin-left: 2px !important;   margin-right: 2px !important;   
+}
+
+
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_smaller.png"] {
+  	padding-left: 3px !important;  padding-right: 1px !important;
+}
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_smaller.png"] > .button-box > .button-menu-dropmarker {
+	margin-left: 0px !important;   margin-right: 0px !important;	height: 6px !important;
+}
+
+
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_micro.png"] {
+  	padding-left: 3px !important;  padding-right: 3px !important;
+}
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_micro.png"] > .button-box > .button-menu-dropmarker {
+	visibility: collapse !important;
+}
+
+
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_micro2.png"] {
+ 	padding-left: 1px !important;  padding-right: 1px !important;  margin-right: 0px !important; margin-left: -1px !important; 
+}
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_micro2.png"] > .button-box > .button-menu-dropmarker {
+	visibility: collapse !important;
+}
+
+
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_micro3.png"] {
+  	padding-left: 0px !important;  padding-right: 0px !important;  margin-right: 0px !important; margin-left: -1px !important;  border-left: 0px !important; 
+}
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_micro3.png"] > .button-box > .button-menu-dropmarker {
+	visibility: collapse !important;
+}
+.hctp-appmenu-button-cls[hcp_appbutton_style="fx_home_micro3.png"] > .button-box    label.button-text {
+	margin-right: -1px !important;
+}
+
+
+
+
+
+
+
+
+/*  390 -------------------------------------------  */ 
+@media all and (-moz-windows-classic) {
+  :root:not([hctp_vertical_maxim_act__TOP="true"])[sizemode="normal"]   #hctp-appmenu-button-container {
+    margin-top: 4px;
+  }
+}
+
+
+/* 2857  --------------------------------------------------  */
+@media not all and (-moz-windows-classic) {
+  :root:not([hctp_vertical_maxim_act__TOP="true"])[sizemode="normal"]   #hctp-appmenu-button-container {
+    margin-top: 1px;
+  }
+
+  .hctp-appmenu-button-cls {
+    border-width: 2px;
+    -moz-border-left-colors:   rgba(255,255,255,.5) rgba(83,42,6,.9);
+    -moz-border-bottom-colors: rgba(255,255,255,.5) rgba(83,42,6,.9);
+    -moz-border-right-colors:  rgba(255,255,255,.5) rgba(83,42,6,.9);
+    margin-bottom: 1px; /* compensate white outer border */
+    box-shadow: 0 1px 0 rgba(255,255,255,.25) inset,
+                0 0 2px 1px rgba(255,255,255,.25) inset;
+  }
+  :root:not([privatebrowsingmode=temporary])[dz_home_button_appear="blue"]       .hctp-appmenu-button-cls {
+    -moz-border-left-colors:   rgba(255,255,255,.5) rgba(6,36,84,.9);
+    -moz-border-bottom-colors: rgba(255,255,255,.5) rgba(6,36,84,.9);
+    -moz-border-right-colors:  rgba(255,255,255,.5) rgba(6,36,84,.9);
+  }
+  :root:not([privatebrowsingmode=temporary])[dz_home_button_appear="green"]      .hctp-appmenu-button-cls {
+    -moz-border-left-colors:   hsla(0, 0%, 100%, 0.5) hsla(93, 89%, 12%, 0.9);
+    -moz-border-bottom-colors: hsla(0, 0%, 100%, 0.5) hsla(93, 89%, 12%, 0.9);
+    -moz-border-right-colors:  hsla(0, 0%, 100%, 0.5) hsla(93, 89%, 12%, 0.9);
+  }
+
+  :root[privatebrowsingmode=temporary] .hctp-appmenu-button-cls {
+    -moz-border-left-colors: rgba(255,255,255,.5) rgba(43,8,65,.9);
+    -moz-border-bottom-colors: rgba(255,255,255,.5) rgba(43,8,65,.9);
+    -moz-border-right-colors: rgba(255,255,255,.5) rgba(43,8,65,.9);
+  }
+}
+
+
+/*  2928  ------------------------------------------------  */
+@media all and (-moz-windows-compositor) {
+	
+  :root:not([hctp_vertical_maxim_act__TOP="true"])[sizemode="normal"]   #hctp-appmenu-button-container:-moz-lwtheme {
+     /* margin-top: -1px; anulo esto, pq el original agrega el famoso border-top en el #titlebar-content  para emular el border-top de los system-buttons  */
+  }
+  .hctp-appmenu-button-cls {
+    margin-bottom: -1px; /* compensate white outer border */
+  }
+}
+
+
+
+:root:not([privatebrowsingmode=temporary])[dz_home_button_appear="transparent"]      :-moz-any(.hctp-appmenu-button-cls,#appmenu-button):not(:hover):not(:active):not([open])               , 
+:root:not([privatebrowsingmode=temporary])[dz_home_button_appear="lwtheme_transp"]   :-moz-any(.hctp-appmenu-button-cls,#appmenu-button):not(:hover):not(:active):not([open]):-moz-lwtheme  { 
+  background-color: transparent !important;
+  background-image: none !important;
+  text-shadow: 0 0   1px   rgba(0, 0, 0, 0.9), 
+               0 1px 1.5px rgba(0, 0, 0, 0.8) !important;
+}
+:root:not([privatebrowsingmode=temporary])[dz_home_button_appear="lwtheme_transp"]   :-moz-any(.hctp-appmenu-button-cls,#appmenu-button):not(:hover):not(:active):not([open]):-moz-lwtheme-darktext  { 
+  box-shadow:  0 1px 0     rgba(0, 0, 0, .2) inset,
+               0 0   0 1px rgba(0, 0, 0, .2) inset !important;
+}
+
+
+.noPointerEvents {
+	pointer-events: none;
+}
+
+
+
+toolbaritem#hctp_fx_app_button_item  {
+	-moz-box-align: start ! important;
+}
+
+toolbaritem#hctp_fx_app_button_item   .hctp-appmenu-button-cls:not([hcp_appbutton_style^="fx_home_micro"])  { /* NOT any 'micro' */
+  	margin-right: 0px !important;
+}
+toolbaritem#hctp_fx_app_button_item   .hctp-appmenu-button-cls {
+  	margin-bottom: -1px !important;   /* It didn't fit in small-bar*/
+}
+
+
+.hctp-appmenu-button-cls[image]:not([image=""])       > .button-box   image.button-icon {
+	-moz-image-region: auto;
+
+	max-height: 150px;
+	max-width : 150px;
+}
+.hctp-appmenu-button-cls[hc_image~="inverted"] > .button-box   image.button-icon {
+	filter: invert(1);
+}
+
+

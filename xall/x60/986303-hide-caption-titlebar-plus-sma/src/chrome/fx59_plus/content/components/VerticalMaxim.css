@@ -1,0 +1,136 @@
+
+/* ----- VERTICAL MAXIMIZE -------------------------------------------------------------- */
+
+/*** THIS CSS FILE WILL BE INCLUDED ON-THE-FLY! :-)  
+***/
+
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document url(chrome://browser/content/browser.xul){
+
+
+:root {
+	--hctp_sysborder_vertMax: calc( var(--hctp_sysborder_sub) + 1px );
+}
+/**  Windows 7  (use 3rd part) **/
+@media (-moz-os-version: windows-win7) {
+  :root {
+	--hctp_sysborder_vertMax: calc( var(--hctp_sysborder_sub) / 3 + 1px );
+  }
+}
+/* ----- LINUX ----- */
+:root[hcp_platformPlus="linux"]   {
+	--hctp_sysborder_vertMax: 0px;
+}
+
+
+/* fix issue win 10!: system resize border was STILL reachable! */
+#main-window[sizemode="normal"][hctp_vertical_maxim_active="true"][dz_vert_max_behavior ~= "left"]   {
+	padding-left  : var( --hctp_sysborder_vertMax ) !important;
+}
+#main-window[sizemode="normal"][hctp_vertical_maxim_active="true"][dz_vert_max_behavior ~= "right"]  {
+	padding-right : var( --hctp_sysborder_vertMax ) !important;
+}
+#main-window[sizemode="normal"][hctp_vertical_maxim_active="true"][dz_vert_max_behavior ~= "bottom"] {
+	padding-bottom: var( --hctp_sysborder_vertMax ) !important;
+}
+
+
+
+
+/* avoid ugly flicker + extra calcSpace(hcp-caption-box)  when coming from maximized!! */
+#main-window:not([dz_fxaustr_syscaption="true"])   #hcp-root-box[hctp_vertical_maxim__ENABLED="true"][dz_vert_max_behavior ~= "top"]  ~  #hcp-caption-box {
+	height:  0px !important;  
+	margin:  0px !important;
+
+	overflow: hidden;
+	padding:0px; border:0px; 
+}
+
+
+/** entiendo q esto nunca hara falta aca (pq esto solo afecta a sizemode=normal vd??) -> #main-window[hctp_vertical_maxim_active="true"]  **/   
+#hcp-root-box[dz_vert_max_behavior ~= "top"]    ~ #hcp-caption-box  *:-moz-any(.hcp-topdownbox-cls, .hcp-box-corner).top    {	display: none !important; }
+#hcp-root-box[dz_vert_max_behavior ~= "bottom"] ~ #hcp-caption-box  *:-moz-any(.hcp-topdownbox-cls, .hcp-box-corner).bottom {	display: none !important; }
+#hcp-root-box[dz_vert_max_behavior ~= "left"]   ~ #hcp-caption-box  *:-moz-any(.hcp-sidebox-cls,    .hcp-box-corner).left   {	display: none !important; }
+#hcp-root-box[dz_vert_max_behavior ~= "right"]  ~ #hcp-caption-box  *:-moz-any(.hcp-sidebox-cls,    .hcp-box-corner).right  {	display: none !important; }
+
+
+
+
+/*  from same code that puts 1px width to #browser-border-start/end  */
+#main-window[sizemode="normal"][hctp_vertical_maxim_active="true"]   #hcp-root-box[dz_vert_max_behavior ~= "bottom"]  ~  #browser-bottombox {
+	border-bottom-style: none !important;
+}
+
+
+:root {
+	--hctp_gapInnerLeft : 0px;
+	--hctp_gapInnerRight: 0px;
+}
+/** ---  LINUX - [[anulado!]] -- probablemente redundante pq ya esta el nuevo calculo dinamico 'perfecto' de esto, pero lo dejo igual por ahora 
+:root[hcp_platformPlus="linux"]   {
+	--hctp_gapInnerLeft : 0px !important;
+	--hctp_gapInnerRight: 0px !important;
+}
+**/
+
+#main-window[sizemode="normal"][hctp_vertical_maxim_active="true"]       #hcp-root-box[dz_vert_max_behavior ~= "left"]   
+  #hctp-appmenu-button-cont-fixed {
+	left : var(--hctp_gapInnerLeft ) !important;
+	 
+	/* overrides:  hctp_show_newCustBorders  */
+	padding-left :  0px !important; 
+	margin-left  :  0px !important; 
+	border-left  :  0px none !important;
+}
+#main-window[sizemode="normal"][hctp_vertical_maxim_active="true"]       #hcp-root-box[dz_vert_max_behavior ~= "right"]
+  #hcp-rightbar-fixed {
+	right: var(--hctp_gapInnerRight) !important; 
+
+	/* overrides:  hctp_show_newCustBorders  */
+	padding-right:  0px !important;
+	margin-right :  0px !important;
+	border-right :  0px none !important;
+}
+
+
+#main-window[tabsintitlebar][sizemode=normal] #toolbar-menubar[autohide="true"][inactive] + #TabsToolbar .tab-background-middle:not([visuallyselected=true]) {
+  clip-path: none;
+}
+
+
+#main-window[sizemode="normal"][hctp_vertical_maxim_act__TOP="true"]    #navigator-toolbox > #toolbar-menubar {
+    margin-top: 0px !important;
+}
+
+
+/***  for testing
+#hcp-caption-box  *:-moz-any(.hcp-topdownbox-cls,  .hcp-sidebox-cls,  .hcp-box-corner) {
+	background: red !important;
+}
+***/
+
+
+/** poner ESTO para LWTHEMES!!  -  In PaleMoon 27.5.1 this fails, but with "right  calc(var())" it fails worse, returning "right CENTER"  **/ 
+/** v4.0.2, al final apago pq ya estaba overriden en fx56 (y tiene q estar igual en fx52, etc) y asi anda bien con los 2 float bars!
+#main-window[sizemode="normal"][hctp_vertical_maxim_active="true"]:-moz-lwtheme  {
+	background-position-y: calc( var(--hcGap_vertMaxim) + 0px );
+}
+**/
+
+/* For tabs 'physically' at bottom - PaleMoon */
+#main-window[sizemode="normal"][hctp_vertical_maxim_act__TOP="true"]   #PersonalToolbar + #TabsToolbar[tabsontop=true] {
+  margin-top: 0px !important;
+}
+
+/* Fx57+ */
+#main-window[sizemode="normal"][hctp_vertical_maxim_act__TOP="true"]  #navigator-toolbox  #TabsToolbar {
+  padding-top: 0px      !important;
+}
+#main-window[sizemode="normal"][hctp_vertical_maxim_act__TOP="true"]  #navigator-toolbox  #TabsToolbar  #tabbrowser-tabs {
+  border-top : 0px none !important;  /* override compacttheme.css , seen on Fx56 */
+}
+
+
+} /*  moz-document  */
+

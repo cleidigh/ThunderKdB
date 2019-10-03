@@ -1,0 +1,780 @@
+
+<!--  ___***** Translators Notes: *****___
+   ***  1) New!: Now *All* texts and tooltips have css style: "pre-line". So {html:br} isn't needed for line breaks, (but can be used for convenience.)
+   ***  2) Please note that some tooltips-texts *can't* have line-breaks or any tag (the texts in a "tooltiptext" attribute)
+   ***  3) And there is also several 'hard spaces' characters (alt+255), like this:' ', to prevent some ugly wrapping and to make more space between texts.  
+   ***  (I use NOTEPAD++ free editor)  *** -->
+
+<!ENTITY dialog.hide.caption.titlebar.plus "Opciones de Hide Caption Titlebar Plus ⁴">
+<!ENTITY dialog.apply "Aplicar">
+	
+<!ENTITY tab.main              	"Principal">
+<!ENTITY tab.look.feel         	"Apariencia">
+<!ENTITY tab.advanced.settings 	"Avanzadas">
+<!ENTITY tab.other.settings    	"Otras">
+<!ENTITY tab.float.toolbars    	"Barras flotantes">
+
+
+<!--  __________*** Section:   LOOK AND FEEL ***__________  -->
+
+<!ENTITY caption.show.custom.caption.titlebar   "Mostrar barra de título personalizada:">
+<!ENTITY      tt.show.custom.caption.titlebar 		"Incluye el título de la página web actual. 
+Operativo cuando se oculta la barra de título del sistema.">
+<!ENTITY radio.in.unmaximized.windows           "En ventana no maximizada">
+<!ENTITY radio.small.caption                    "Pequeña (en ventana no maximizada)">
+<!ENTITY radio.cc_never                         "Nunca">
+
+<!ENTITY w.default  		"predeterminado">
+<!ENTITY w.Enabled  		"Habilitado">
+<!ENTITY w.Disabled			"Deshabilitado" >
+<!ENTITY w.No				"No" >
+
+
+<!ENTITY    System_borders_c "Bordes del sistema:" >
+<!ENTITY tt_System_borders_c	"Deshabilita o establece el ancho de los bordes del sistema en ventanas no maximizadas de Fx.  (Los ajustes finos por píxel sólo son válidos en escritorios 'Aero-Glass')" >
+<!ENTITY Yes_full_width		 "Sí (ancho completo)" >
+<!ENTITY    Yes-_smaller	 "Sí, más pequeños" >
+<!ENTITY tt_Yes_smaller_2			"Valor predeterminado de Firefox 12+" >
+<!ENTITY tt_Yes_smaller_7			"Opción por defecto. Recomendada para escritorios Aero-Glass. Oculta casi completamente estos bordes (en Glass), como la opción 'Deshabilitada', pero sin sus desventajas. (Puede extender el área de redimensionado del borde con 'Activar bordes personalizados...')" >
+<!ENTITY tt_Yes_smaller_7_notReal	"Igual que la opción anterior, con espacio extra en los bordes (sólo en escritorios Aero-Glass y con  '&enable_customizable_buts;'  activo)" >
+<!ENTITY tt_sysBorders_disabled	"Opción recomendada para escritorios 'Aero-Basic'. 
+Esto permite que los temas-personas puedan tomar completamente el fondo de la ventana.  (antigua opción predeterminada) 
+<pg0/>En escritorios 'Glass', si la opción '&enable_customizable_buts;' está activa, en algunos casos las ventanas no-maximizadas pueden perder las esquinas redondeadas y la sombra de la ventana." >
+
+<!ENTITY    custom_bord_cornr_rz	"Bordes personalizados y esquinas de redimensionado" >
+<!ENTITY tt_custom_bord_cornr_rz		"Se puede utilizar también para ampliar la zona activa de redimensionado de los bordes si los 'Bordes del sistema' son demasiado pequeños" >
+<!ENTITY Make_corners_visible		"Hacer visibles las esquinas" >
+
+<!ENTITY    Border_color			"Color de los bordes" >
+<!ENTITY tt_Border_color				"El color es visible cuando se deshabilitan los bordes del sistema" >
+
+<!--    tt_Skin 			"Custom skins capability will be added too." -->
+<!ENTITY title_Skin 						"Apariencia:">
+<!ENTITY radio.classic.skin  						"Apariencia clásica" >
+<!ENTITY radio.new.aero      						"Estilo 'Aero'"   >
+<!ENTITY radio.automatic.current.theme.skin.fixed   "Auto - Apariencia del tema actual (posición ajustada)" >
+<!ENTITY radio.automatic.current.theme.skin         "Auto - Apariencia del tema actual (posición antigua)" >
+<!ENTITY radio.w10like         						"[Nuevo] Estilo de Firefox para Windows 10" >
+<!ENTITY radio.w10like.light   						"[Nuevo] Estilo de Firefox para Windows 10 (claro)" >
+<!ENTITY    tt.w10like.light      						"Cuando se active un tema-persona, los botones tendrán la apariencia del estilo 'regular' de Windows 10" >
+<!ENTITY radio.w10like.high   						"[Nuevo] Estilo de Firefox para Win 10 (alto contraste)" >
+<!ENTITY    tt.w10like.high       						"Cuando se active un tema-persona, los botones tendrán la apariencia del estilo 'regular' de Windows 10" >
+
+<!ENTITY mmc.custom.mTitle							"Opciones personalizadas">
+<!ENTITY mmc.custom       							"Opción personalizada">
+<!ENTITY tt_custom_mmc__begin    						"Opciones avanzadas: Los ficheros personalizados se situarán en ">
+<!ENTITY or_custom2_css_and_so_on						"   (o custom2.css y así sucesivamente)">
+
+
+<!--    CUSTOM styles css files   -->
+<!ENTITY can_be_anyname_files				  "([personalizados] pueden tener cualquier nombre, y puede añadir varios ficheros)">
+
+
+<!ENTITY caption.min.max.close.buttons.location 		"Botones Min,Max,Cerrar personalizados—esquina superior derecha">
+<!ENTITY caption.min.max.close.buttons.loc.extrainfo 	"(disponibles también en la personalización de la interfaz de usuario)">
+<!ENTITY label.about.hidden.and.customize  					"Puede acceder a la personalización de la interfaz de usuario mediante el menú 'Ver » Barras de herramientas » Personalizar' (o equivalente), y desde allí puede colocar botones idénticos a estos en la barra de pestañas o cualquier barra de herramientas" >
+
+<!ENTITY In_Maximized_window 		"En ventana maximizada:">
+<!ENTITY In_Un_Maximized_window 	"En ventana no maximizada:">
+<!ENTITY radio.bloc.micro     				"Micro-botón Cerrar" >
+
+<!ENTITY checkbox_maxbuttons_canfloat     	"Micro-botón Cerrar: Con botones flotantes que aparecen al pasar el puntero del ratón o activarse el menú principal" >
+
+
+<!--  ___*** (These appears at dialog bottom line) ***___  -->
+
+<!ENTITY button.see.more.in.readme.file "Ver más en el archivo Léame">
+<!ENTITY button.ctrl.click.opens.in.new.tab "Ctrl+Clic se abre en una nueva pestaña">
+<!ENTITY DEPRECATED_label.1 "[1]">
+<!ENTITY label.options.changes.reflects.on.the.fly.in.fir21  " La mayoría de los cambios se verán al instante." >
+<!ENTITY label.prefix.options.with  "Las opciones con">
+<!ENTITY label.R "[R]">
+<!ENTITY label.R.class "<z class='needRst'>[R]</z>">
+<!ENTITY label.other.options.saved.instantly.too.but.restart " precisan reinicio para ver los cambios.">
+<!ENTITY Restart_needed "Requiere [R]einiciar">
+ 
+ 
+
+<!ENTITY enable_customizable_buts 	"Habilitar botones personalizables (Min,Max,Cerrar)">
+<!ENTITY disable_win_system_buts	"(deshabilitando los botones de la barra-de-título-del-sistema)">
+<!ENTITY tt_enable_customizable_buts 	"Con esta opción, los <b>botones personalizables (Min,Max,Cerrar)</b> se pueden utilizar de nuevo.  
+<pg0/>Conlleva los siguientes cambios de aspecto, que son visibles casi exclusivamente en ventanas <b>no maximizadas</b> de Firefox en Windows 7:  
+<pg /> • Si estaba activo, deshabilita el efecto 'Glass' (traslúcido) del fondo de la ventana de Fx (pero permite un fondo -opcional- que emule este efecto).  
+<pg2/> • Si los 'Bordes del sistema' están deshabilitados, en algunos casos, las ventanas <b>no maximizadas</b> pueden perder las esquinas redondeadas y la sombra de la ventana.
+<pg2/> • No afecta al aspecto en modo pantalla completa.<html:hr /><pg0/>Además incluye un arreglo para un problema aparecido en Firefox 12 y siguientes. 
+(El problema original de Fx 12+ aún está pendiente. Más detalles en la página del complemento, y el bug de Firefox 730219. Este problema fuerza los botones (Min,Max,Cerrar) de la barra de título del sistema a estar siempre activos en escritorios Aero-Glass).
+">
+<!ENTITY item_0_none							"No  (predeterminado de Fx)">
+<!ENTITY item_11_Using_Glasslike_win_bkg_recom	"[1.1] Con un fondo de ventana tipo Glass (recomendado)">
+<!ENTITY   tt_11_Using_Glasslike_win_bkg_recom		"Opción recomendada.  Funciona con temas-personas.
+<pg0/>El fondo tipo Glass (traslúcido), sólo se ve en escritorios con el efecto Glass habilitado (para ver el fondo se debe activar '&Custom_Win_bkg_color;').
+<pg0/>Pruebe con [2] y [3] sólo si encuentra algún problema (tal vez un mal posicionamiento de la ventana al salir del maximizado si se usan ciertos complementos, un problema del que se informó antes de, o entorno a Fx 20).">
+<!ENTITY item_12_Using_solid_win_bkg_recom		"[1.2] Con un fondo de ventana de color sólido (recomendado)">
+<!ENTITY   tt_12_Using_solid_win_bkg_recom			"Opción recomendada.  Funciona con temas-personas.">
+<!ENTITY item_2_Same_appearance_compat			"[2] Mismo aspecto (sólo para pruebas de compatibilidad)">
+<!ENTITY   tt_2_Same_appearance_compat				"Pruebe esto sólo si encuentra un problema de mal posicionamiento de la ventana de Firefox, y/o si no está alineada el área de contenido y fondo con el cursor del ratón.    (Utiliza un método alternativo)">
+<!ENTITY item_3_Another_compat_test				"[3] Otra opción de prueba de compatibilidad">
+<!ENTITY   tt_3_Another_compat_test					"Oculta el tema-persona, si estaba aplicado">
+
+
+
+<!ENTITY Custom_Win_bkg_color		"Color de fondo de ventana personalizado" >
+<!ENTITY tt_Custom_Win_bkg_color		"Incluye un fondo tipo Glass (traslúcido) opcional.    Valor de color predeterminado:  #92ACCE (azul claro)" >
+<!ENTITY active_no_persona			"Activo cuando no hay tema-persona aplicado (predeterminado)" >
+<!ENTITY active_always				"Activo siempre (oculta el tema-persona si estaba aplicado)" >
+<!ENTITY active_always_tt				"También puede ser útil para barras de herramientas dinámicas/flotantes activas con los temas de Firefox más recientes (Compactos) Claro y Oscuro." >
+
+
+<!ENTITY hover_activ_delay_time		"retardo de la activación<html:br /> al pasar el ratón" >
+<!ENTITY deactivation_delay_time	"retardo de la<html:br /> desactivación" >
+<!ENTITY p_milliseconds				"(ms)" >
+
+
+
+<!--  __________*** Configurable Actions! ***__________  -->
+  
+<!ENTITY Define_Action_for			"Acciones para:">
+ 
+<!ENTITY action_fxbut_title 		"Botón principal de Firefox
+<z class='tiny'>Clic para ver más información</z>">
+<!ENTITY    tt__fxbut_title 			"<b>[Nuevo] Acciones personalizables para los botones Firefox y Cerrar</b>
+(botones de esquinas de la aplicación, también disponibles en la personalización de la interfaz de usuario) 
+<pg0/>¡Con muchas características nuevas añadidas, incluyendo el uso de botones secundario o medio, la rueda, o el doble clic del ratón, y las teclas <b>Mayús, Ctrl, Alt</b>! (vea las sugerencias de cada acción para sus complementarias/opuestas mediante combinación de teclas)
+<pg0/><z class='is_recom'>Las opciones de color verde son las recomendadas</z> y <z class='is_defau'>las azules son las predeterminadas.</z>
+<pg0/><b>Preajustes de acciones:</b> Pruébelos en los botones del recuadro de la derecha (Recomendadas y Predeterminadas)
+<pg0/><b>Ajustes de sonidos:</b> Tras probar los preajustes de acciones, en el recuadro de la derecha adicionalmente puede probar sus propios sonidos para las acciones que desee. Para determinadas acciones, se puede escuchar también un sonido de tipo 'No-encontrado' (pero sólo si esas acciones tienen un sonido válido establecido). Se escuchará en eventos como:
+<pg3/> • <i>[&item_undoCloseTab;]</i> : Si no hay más pestañas cerradas que restaurar.    
+<pg2/> • <i>[&item_closeNewerWindow;]</i> : Si no hay más ventanas (abiertas tras la ventana activa) que cerrar.   
+<pg0/>Puede apagar todos los sonidos (con 'Ninguno') para dejar de escuchar también el sonido 'No-encontrado'.">
+
+<!ENTITY action_closebut_tit_custom	"Botón Cerrar personalizado">
+
+<!ENTITY action_closebut_title 		"Botón Cerrar <einfo>(ver sugerencia)</einfo>">
+<!ENTITY    tt__closebut_tit_NOcustom	"Observe que la opción recomendada <i>'&enable_customizable_buts;'</i> <b>no está activa</b>. Así que, en <i>algunos</i> sistemas Windows (p.e. Win7 con apariencia 'Glass'), estas acciones no se puede utilizar con el botón cerrar del propio Windows (se puede agregar esa capacidad, pero tendría ciertas limitaciones). ">
+
+<!-- Can be used in txts related to 'Page History' popup menu   -->
+<!ENTITY nav_history				"historial de pestaña" >
+
+<!ENTITY More_options_e				"Más opciones..." >
+
+<!ENTITY check__closebut_mouseClick	"Requerir clic (pulsar y soltar) del botón del ratón para realizar la acción deseada">
+<!ENTITY    tt__closebut_mouseClick 	"Si no está marcada (valor predeterminado y recomendado), realizará la acción simplemente pulsando el botón del ratón. 
+<pg /> <z class='needRst'>[R]</z>: Precisa reiniciar Firefox si se cambia.">
+
+<!ENTITY ctrl_w_title				"Acción para el atajo <b>Ctrl+W</b>: ">
+<!ENTITY Fx_default_closeTab		"Cerrar la pestaña actual (predeterminado de Fx)" >
+
+<!ENTITY clHist_title 				"Acción para '<b>&item_closeWithHistory;</b>':
+<i>(cuando los botones de página Anterior/Siguiente están disponibles)</i> ">
+<!ENTITY clHist_popup 				"Abrir menú de historial de pestaña  (predeterminado)">
+<!ENTITY clHist_pop_back 			"Abrir menú de historial de pestaña e ir atrás una página">
+<!ENTITY tt_Hist_pop_back 				"Puede usar Alt+Clic para cerrar la pestaña si, por ejemplo, aparece alguna alerta, mensaje emergente u otra molestia, tras ir a la página anterior.
+
+<html:hr />(Deficiencia pendiente: Observe que la entrada-activa en el menú de 'historial de pestaña' a veces no se actualiza correctamente)" >
+<!ENTITY clHist_pop_back_fw 		"Abrir menú de historial de pestaña e ir atrás/adelante una página">
+<!ENTITY tt_Hist_pop_back_fw 			"Va una página hacia adelante al usar  Ctrl+Clic">
+<!--  using SAME TOOLTIP (tt_Hist_pop_back_fw)  -->
+<!ENTITY clHist_back_fw      		"Just go Back/Forward one page  (no popup)">
+
+
+<!ENTITY line_title 		"Efecto visual extra al ir a la página Anterior/Siguiente">
+<!ENTITY line_none 			"Ninguno">
+<!ENTITY line_clWHonly		"Línea roja vertical en movimiento al ir a la página Anterior/Siguiente usando la opción anterior">
+<!ENTITY Future_Option_b	"[Opción futura]  ">
+<!ENTITY line_always		"Mostrar siempre una línea en movimiento al ir a la página Anterior/Siguiente">
+<!ENTITY tt_ln_always 			"Por ejemplo, al usar los botones Anterior/Siguiente del navegador, o los botones Atrás/Adelante al costado del ratón (si los tiene), o teclas equivalentes">
+<!ENTITY tt_ln_always_2			"<pg0/>Además reproduce un sonido para 'no-permitido' cuando no puede ir más allá atrás/adelante   (si <b>“&butt_butSound_action1;”</b> está habilitado).">
+
+
+<!ENTITY mButShort_primary 			"Primario:">
+<!ENTITY mButShort_second 			"Secundario:">
+<!ENTITY mButShort_middle 			"Medio:">
+<!ENTITY mButShort_primary_dblclk 	"dblClic Prim:">
+<!ENTITY mButShort_second_dblclk 	"dblClic Sec:">
+<!ENTITY mButShort_middle_dblclk 	"dblClic Med:">
+<!ENTITY mButShort_wheel 			"Rueda:">
+<!ENTITY mButShort_wheelLeft 		"Rueda a izq:">
+<!ENTITY mButShort_wheelRight 		"Rueda a der:">
+
+
+<!ENTITY label_row_action_Primary 			"Botón primario <html:br /> del ratón:">
+<!ENTITY    tt_row_action_Primary 				"El botón izquierdo en un ratón configurado para diestros, y viceversa.">
+<!ENTITY label_row_action_Secondary 		"Botón secundario <html:br /> del ratón:">
+<!ENTITY label_row_action_Middle 			"Botón medio <html:br /> (rueda como botón):">
+<!ENTITY label_row_action_Primary_dblclk   	"Botón primario <html:br /> <b>(doble clic)</b>:">
+<!ENTITY    tt_row_action_Primary_dblclk 		"Observe que la <b>acción para clic único</b> también saltará. Por tanto, aquí debería seleccionar una acción para clic único no conflictiva. Sirven habitualmente acciones simples como la apertura de menús emergentes (ej. menú principal o contextual).">
+<!ENTITY label_row_action_Secondary_dblclk  "Botón secundario <html:br /> <b>(doble clic)</b>:">
+<!ENTITY    tt_row_action_Secondary_dblclk 		"&tt_row_action_Primary_dblclk;">
+<!ENTITY label_row_action_Middle_dblclk     "Clic medio<html:br /> <b>(doble clic)</b> :">
+
+
+<!ENTITY label_row_action_wheel 			"Rueda <html:br /> del ratón:">
+<!ENTITY    tt_row_action_wheel 				"Giro de la rueda cuando el puntero del ratón está sobre el botón">
+<!ENTITY label_row_action_wheelLeft 		"<b>Ladeado</b> a la izquierda<html:br /> de la rueda:">
+<!ENTITY    tt_row_action_wheelLeft 			"Ladeado de rueda hacia la izquierda cuando el puntero del ratón está sobre el botón (en ratones con esta característica, usado típicamente para desplazamiento horizontal)">
+<!ENTITY label_row_action_wheelRight 		"<b>Ladeado</b> a la derecha<html:br /> de la rueda:">
+<!ENTITY    tt_row_action_wheelRight 			"Ladeado de la rueda hacia la derecha cuando el puntero del ratón está sobre el botón (en ratones con esta característica, usado típicamente para desplazamiento horizontal)">
+
+
+<!ENTITY mtit_typical_primary 		"Acciones típicas de botón primario del ratón:">
+<!ENTITY mtit_typical_secondary 	"Acciones típicas de botón secundario del ratón:">
+<!ENTITY mtit_typical_annoyances 	"¡Eliminación de molestias!">
+<!ENTITY mtit_typical_other 		"Otras acciones:">
+<!ENTITY mtit_typical_wheel 		"Acciones típicas de rueda del ratón:">
+
+
+<!ENTITY Shift_Key 				"Con <b>Mayús</b>:  ">
+<!ENTITY Ctrl_Key 				"Con <b>Ctrl</b>:  ">
+<!ENTITY Alt_Key 				"Con <b>Alt</b>: ">
+
+<!ENTITY item_closewin 			"Cerrar ventana de Fx">
+<!ENTITY item_closewin_fxdefau	"Cerrar ventana de Fx  (predeterminado de Fx)">
+<!ENTITY   tt_closewin 				"[&Shift_Key; &item_quitApplication;]">
+<!ENTITY item_minimize 			"Minimizar ventana de Fx">
+<!ENTITY item_closetab 			"Cerrar pestaña actual/visible">
+<!ENTITY item_closetab_recomen	"Cerrar pestaña actual/visible (recomendado)">
+<!ENTITY   tt_closetab 			    "Opción recomendada para el botón primario del ratón, por ejemplo, para cerrar pestañas rápidamente.   Especialmente si en modo maximizado el botón Cerrar alcanza la esquina de la pantalla (si nada ocupa esa posición, como podría por ejemplo la barra de tareas del sistema). 
+
+<pg /> [&Shift_Key; &item_undoCloseTab;] ">
+<!ENTITY item_closeWithHistory 	"Cerrar pestaña si no hay '&nav_history;' detrás">
+<!ENTITY item_closeWithHis_reco	"&item_closeWithHistory; (recomendado) ">
+<!ENTITY   tt_closeWithHistory  	"<b>Cierra la pestaña sin perder ninguna página explorada previamente:</b> 
+<pg0/>Si el botón <b>Anterior</b> (flecha izquierda) del navegador está disponible (ya recorrió algunas páginas en esa pestaña), hacer clic <i>(1)</i> sobre el botón del navegador <i>en cuestión (2)</i>  abre el <b>menú de '&nav_history;'</b> <i>(3)</i>  (con alerta de <b>sonido</b> opcional).
+<pg0/>Esto permite comprobar las páginas visitadas previamente, antes de cerrar la pestaña. Algo especialmente útil cuando se trata de cerrar muchas pestañas abiertas sin perder nada.
+Y para cerrarla tan sólo haga clic de nuevo en el botón <i>en cuestión</i>.
+<pg0/>El atajo <b>Ctrl+W</b> también se puede configurar para que haga esto mismo. Vea el botón <b>'Más opciones'</b>. 
+<pg/><i>(1) Con el botón del ratón y del tipo elegido</i>
+<pg2/><i>(2) El botón del navegador (botón Cerrar o principal de  Firefox) para el que se configura la acción</i>
+<pg2/><i>(3) El mismo que el menú emergente contextual de los botones Anterior y Siguiente</i>         
+
+El uso de clic/rueda del ratón, acompañado de una tecla modificadora respectivamente realiza:
+<pg /> [&Ctrl_Key; Abrir menú de historial de pestaña si están disponibles los botones Anterior o Siguiente] 
+<pg /> [&Alt_Key; Cerrar pestaña incondicionalmente (no abre el menú de historial de pestaña)] 
+<pg /> [&Shift_Key; &item_undoCloseTab;]" > 
+
+<!ENTITY item_ShowAllTabs 		"Mostrar todas las pestañas" >
+<!ENTITY   tt_ShowAllTabs 		"Lista todas las pestañas en un menú emergente.  (Ctrl+Mayús+Tab)  
+<pg/> [&Shift_Key; &item_undoCloseTab;]<pg0 /><html:hr />
+<pg0/> Por favor, observe que esto no funcionará si está ausente la opción <b>Ver > Mostrar todas las pestañas</b>. Esto puede ocurrir cuando el botón 'Mostrar todas las pestañas' está oculto (p.e. mediante el uso del complemento Tab Mix Plus)." >
+
+<!ENTITY item_undoCloseTab 		"Restaurar la última pestaña cerrada">
+<!ENTITY item_undoCloseTab_reco	"Restaurar la última pestaña cerrada  (recomendado)">
+<!ENTITY   tt_undoCloseTab 			"Restaura la última pestaña cerrada (Ctrl+Máyus+T) ">
+
+<!ENTITY item_zapFrames 		"'Zap' (fulminar) iframes y plugins">
+<!ENTITY   tt_zapFrames 			"Fulmina los marcos y plugins incrustados de la página web
+<pg2/> [&Shift_Key; &item_zapImages;]
+<einfo>('Zap plugins' original de https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_zapImages 		"'Zap' (fulminar) imágenes">
+<!ENTITY   tt_zapImages 			"Reemplaza las imágenes en la página web con su texto alternativo (título de la imagen). 
+<pg2/> [&Shift_Key; &item_zapFrames;] 
+<einfo>(Idea original de https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_superStop 		"Detener imágenes animadas">
+<!ENTITY   tt_superStop 			"Detiene las imágenes animadas (y las peticiones en segundo plano).
+Esto coincide con el comportamiento de la tecla Esc en versiones de Firefox anteriores a la 20. Funciona como el complemento 'SuperStop' (puede probar con esto si 'SuperStop' dejó de funcionar en su entorno).
+<pg3/> [&Shift_Key; &item_BrowserReload;]
+">
+<!ENTITY item_BrowserReload 	"Recargar página Web">
+<!ENTITY   tt_BrowserReload 		"Recargar la página (F5) 
+<pg2/> [&Shift_Key; Recargar omitiendo la caché (Ctrl+F5)]">
+
+<!ENTITY item_closeNewerWindow 	"Cerrar la ventana de Fx abierta más recientemente">
+<!ENTITY   tt_closeNewerWindow 		"Útil en algunas páginas que abren nuevas ventanas de Fx no solicitadas. Por seguridad, esto sólo cierra una ventana abierta después de la ventana activa (visible).
+<pg3/> [&Shift_Key; &item_undoCloseWindow;] ">
+<!ENTITY item_undoCloseWindow 	"Restaurar la última ventana cerrada">
+
+<!ENTITY item_PageUp   			"Retroceder página">
+<!ENTITY item_PageDown 			"Avanzar página">
+<!ENTITY item_Page_UpDown 		"Retroceder/Avanzar página">
+<!ENTITY   tt_PageKeys   			"Funciona como las teclas equivalentes (RePág, AvPág).    
+(El contenido de la página web recibirá el foco, y el elemento que se active dentro responderá a la orden)
+<pg /> [&Ctrl_Key; Ir hacia los extremos superior e inferior de la página (como las teclas Inicio/Fin)]           
+<pg /> [&Alt_Key; Mover la página a izquierda/derecha <i><b>(¡¡desplazamiento Horizontal!!)</b></i>]
+<pg /> [&Shift_Key; &item_Line_UpDown;]">
+<!ENTITY item_Line_UpDown 		"Línea arriba/abajo">
+<!ENTITY   tt_LineKeys   			"Funciona como las teclas equivalentes (flechas arriba/abajo). 
+(El contenido de la página web recibirá el foco, y el elemento que se active dentro responderá a la orden)
+<pg /> [&Ctrl_Key; Ir hacia los extremos superior e inferior de la página (como las teclas Inicio/Fin)]           
+<pg /> [&Alt_Key; Mover la página a izquierda/derecha <i><b>(¡¡desplazamiento Horizontal!!)</b></i>]
+<pg /> [&Shift_Key; &item_Page_UpDown;] ">
+
+<!ENTITY item_ZoomEnlarge   	"Aumentar zoom">
+<!ENTITY item_ZoomReduce   		"Reducir zoom">
+<!ENTITY item_Zoom_EnlRed		"Aumentar/Reducir zoom">
+<!ENTITY   tt_ZoomKeys 				"Aumentar/Reducir zoom (Ctrl + '+')/(Ctrl + '-') 
+<pg3/> [&Alt_Key;  Restablecer zoom] 
+<pg /> [&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY item_hc_context   		"Abrir menú contextual de HCTP">
+<!ENTITY item_hc_context_defau	"Menú contextual de HCTP  (predeterminado)">
+<!ENTITY   tt_hc_context   			"[&Shift_Key; &item_mainPanelUI;] ">
+<!ENTITY item_mainPanelUI 		"Abrir menú principal de Fx">
+<!ENTITY item_mainPanelUI_defau	"Abrir menú principal de Fx  (predeterminado)">
+<!ENTITY   tt_mainPanelUI 			"[&Shift_Key; &item_hc_context;] ">
+
+<!ENTITY item_quitApplication	"Salir de Firefox (todas las ventanas)">
+<!ENTITY   tt_quitApplication		"[&Shift_Key; &item_closewin;] ">
+<!ENTITY item_FullScreen		"Pantalla completa">
+<!ENTITY   tt_FullScreen			"[&Shift_Key; &item_Maximize;] ">
+<!ENTITY item_Maximize			"Maximizar / Restaurar ventana">
+<!ENTITY   tt_Maximize				"[&Shift_Key; &item_FullScreen;] ">
+
+<!ENTITY item_NewTab			"Abrir una nueva pestaña" >
+<!ENTITY   tt_NewTab 			"Abre una nueva pestaña. (Ctrl + T)" >
+
+<!ENTITY devPixelsPerPx_label_2	"Cambiar el tamaño del texto y otros elementos" >
+<!ENTITY tt_toggleCssDevPx			"Alterna entre  <b>&devppp_default;</b>  y  <b>&devppp_125;</b>
+<html:hr />&devPixelsPerPx_tt;" >
+
+<!ENTITY item_DynBars_toggle	"¡&dynBars_name;!, accionar activación" >
+<!ENTITY   tt_DynBars_toggle		"&dynBars_name;: 
+<pg0/>Tecla de atajo predeterminada: <b>Ctrl+Q</b>
+<pg0/>Vea la página de Ayuda en el panel '&tab.float.toolbars;'." >
+
+<!ENTITY item_noaction 			"Ninguna">
+
+<!ENTITY item_advSelTab 		"Seleccionar pestaña anterior/siguiente">
+<!ENTITY   tt_advSelTab 			"Selecciona la pestaña anterior/siguiente (Ctrl + RePág/AvPág)
+<pg3/> Acciones de desplazamiento disponibles:
+<pg /> [&Ctrl_Key; Ir hacia los extremos superior e inferior de la página (como las teclas Inicio/Fin)]           
+<pg /> [&Alt_Key; Mover la página a izquierda/derecha <i><b>(¡¡desplazamiento Horizontal!!)</b></i>]
+<pg /> [&Shift_Key; &item_Page_UpDown;] ">
+
+									
+<!ENTITY item_goBack 			"Ir atrás una página">
+<!ENTITY item_goForward 		"Ir adelante una página">
+<!ENTITY   tt_goBackFw_key 			"Ir atrás/adelante una página:   igual a los botones Anterior y Siguiente del navegador.
+									[&Ctrl_Key; Ir en el sentido opuesto   (adelante/atrás)]
+									[&Shift_Key; &item_mainPanelUI;]">
+<!ENTITY item_go_BackForw 		"Ir atrás/adelante una página">
+<!ENTITY   tt_go_BackForw 			"Va atrás/adelante una página: Igual que los botones Anterior y Siguiente del navegador.
+<pg0/><pg /> Acciones de desplazamiento disponibles:
+<pg /> [&Ctrl_Key; Ir hacia los extremos superior e inferior de la página (como las teclas Inicio/Fin)]           
+<pg /> [&Alt_Key; Mover la página a izquierda/derecha <i><b>(¡¡desplazamiento Horizontal!!)</b></i>]
+<pg /> [&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY butt_butSound_tic_1 	"Sonido para el cierre de pestaña">
+<!ENTITY butt_butSound_info1 	"Sonido al aparecer el menú de '&nav_history;'">
+<!ENTITY butt_butSound_action1 	"Sonido para algunas acciones">
+<!ENTITY   tt_butSound_action1 		"Incluye las acciones: 
+<pg0/><pg /> • <b>&item_zapFrames;</b> y 
+<pg /> • <b>&item_closeNewerWindow;</b>.            
+Este sonido también se oye al abrirse una nueva ventana que rápidamente se disimula detrás de la ventana activa (probable spam no solicitado y candidata a cierre)">
+<!ENTITY butt_butSound_wheel1 	"Sonido para acción de la rueda">
+<!ENTITY   tt_butSound_wheel1 		"La acción incluye: 
+<pg0/><pg /> • <b>&item_advSelTab;</b> ">
+<!ENTITY butt_butSound_notFound	"Sonido  &quot;No-permitido”">
+<!ENTITY   tt_butSound_notFound	"Sonido reproducido cuando una acción concreta no está permitida.
+<pg0/>Sólo se reproduce si tal acción tiene configurado un sonido válido.   
+<pg0/>Más información en el epígrafe <b>Botón principal de Firefox</b>   y  <b>Más opciones > &line_title;</b>.">
+
+<!ENTITY only_volumen 	"(Por ahora sólo se permiten cambios de volumen)">
+
+
+<!ENTITY snd_none     			"Ninguno">
+<!ENTITY Custom_Sound 			"Sonido personalizado">
+<!--  This goes before the sound names. It's value in english is ' ' (a single space), bc babelzilla fails with empty value.  -->
+<!ENTITY sound_0 				"Sonido ">
+<!--  This goes AFTER the sound names.  Before them goes [sound_0] -->
+<!ENTITY sound 					" ">
+<!ENTITY tt_Ths_snds_incl_in_Fx		"Estos sonidos están incluidos en Firefox">
+<!ENTITY tt_Ths_snds_incl_in_hctp 	"Estos sonidos se incluyen en este complemento.">
+
+<!ENTITY Tick_snd_f_Web_shrt 	"Sonido 'Tick' (acortado)">
+<!ENTITY tt_Tick_snd_f_Web_shrt		"Original libre (CC atribution) en http://soundbible.com/2044-Tick.html  ">
+
+<!ENTITY tt_old_snd__begin 			"Estos 5 sonidos ya no están incluidos en Firefox desde la versión 45, pero todavía puede utilizarlos descargando 'hctp_soundpack_1' (que incluye 2 sonidos personalizados extra) desde la página principal de HCTP y copiando los archivos de sonido a su computadora en: ">
+<!ENTITY tt_old_snd__cont1 			"
+(mismo directorio/carpeta utilizado/a por los archivos de sonido personalizados)">
+
+<!ENTITY tt_custom_sound__begin 	"Opciones avanzadas - sonidos personalizados que se deben ubicar en:">
+<!ENTITY User_Home_Directory 	  	"Directorio/carpeta del usuario">
+<!ENTITY or_custom2_mp3_and_so_on 	"
+(o custom2.mp3 y sucesivos, también debe funcionar un wav u ogg renombrado)">
+
+<!ENTITY Volume_c				  "Volumen:">
+
+
+
+<!ENTITY label_butPref_default 		"Acciones predeterminadas">
+<!ENTITY    tt_butPref_default 			"Establece todas las acciones predeterminadas. Sin sonidos.">
+<!ENTITY label_but_recom_1			"Acciones recomendadas">
+<!ENTITY    tt_but_recom_1 				"Establece el preajuste de acciones recomendadas. ¡Con sonidos!">
+<!ENTITY label_but_recom_annoyances "Recomendadas 2 - Supresión de molestias">
+<!ENTITY    tt_but_recom_annoyances 	"Establece el preajuste 2 de acciones recomendadas. Con sonidos. 
+¡Utilize el botón principal de Fx para eliminar molestias!
+Acciones predeterminadas como '&item_mainPanelUI;' o '&item_hc_context;' van al botón medio (rueda) del ratón.">
+<!ENTITY label_but_recom_2_1  		"Recomendadas #2.1">
+
+
+<!ENTITY actt_title			"Mostrar descripciones:">
+<!ENTITY   tt_title				"Mostrar descripciones emergentes, con información sobre las acciones disponibles en cada botón personalizable.">
+<!ENTITY actt_always		"Siempre">
+<!ENTITY actt_blockFirst	"Al pasar el ratón de nuevo  [R]">
+<!ENTITY   tt_blockFirst		"Estas descripciones no aparecen en el uso regular.   Para verlas, puede mover el puntero del ratón fuera del botón y enseguida pasarlo de nuevo por encima del mismo.   [R] Esta opción precisa un reinicio de Fx si se selecciona.">
+<!ENTITY actt_never			"Nunca">
+
+
+
+<!ENTITY System_TitleBar__title					"Barra de título del sistema:">
+<!ENTITY check__Sys_TitleBar_always_hid 		"Barra de título del sistema siempre oculta">
+<!ENTITY    tt__Sys_TitleBar_always_hid 			"Con esta opción deshabilitada (predeterminado), esta 'Barra de título del sistema' aparece normalmente en estos casos: 
+<pg/> • En la vista de 'Grupos de pestañas' (Ctrl+Mayús+E)  <i>[¡eliminada en Fx 45+!]</i>
+<pg2/> • En la 'Vista preliminar' de impresión 
+<pg2/> • Cuando la barra de pestañas está oculta (sucede p.e. en ventanas emergentes y con algunos complementos que manejan pestañas) 
+<pg2/> • Si está activa la opción de debajo
+<pg0/>Puede marcar esta opción para ocultarla siempre (para el máximo ahorro de espacio en pantalla en todos los casos).
+<pg0/>(Nota: Esta 'Barra de título del sistema' se modificó para ser como la 'Barra de título personalizada' pequeña, con un icono de Firefox extra. Esto evita el titilado en especial al cambiar de/a 'Grupos de pestañas' o 'Vista preliminar' de impresión) ">
+
+<!ENTITY check__Fxopt_Sys_TitlBr_always_prsnt 	"Opción de Firefox: 'Barra de título del sistema' (casi) siempre visible">
+<!ENTITY    tt__Fxopt_Sys_TitlBr_always_prsnt 		"Cuando esta opción está marcada, la barra de título está siempre visible excepto en modo pantalla completa (F11). Es la misma opción que el botón 'Barra de título', disponible en el panel 'Personalizar'. ">
+
+
+
+<!ENTITY Fx_default_unchecked 		"(predeterminado de Fx: deshabilitada)">
+<!ENTITY recommended_unchecked 		"(recomendado: deshabilitada)">
+
+
+
+<!ENTITY tt_custom_image__begin 		"Opciones avanzadas - imágenes personalizadas que se deben ubicar en: ">
+<!ENTITY or_but_custom2_png_and_so_on	"
+(o but_custom2.png y sucesivos, también debe funcionar un gif o jpg renombrado)" >
+
+
+<!--  *** Color Picker popup *** -->
+<!ENTITY Opacity					"Opacidad" >
+<!ENTITY Color_Hue					"Matiz del color" >
+<!ENTITY tt_Color_Hue					"Usando la rueda del ratón puede obtener valores exactos de matiz del color,   ej. con 16 saltos-de-rueda puede ir del rojo al púrpura, y sucesivos" >
+<!ENTITY tt_txtbox_col_pick 	"Pulse Tab tras realizar cambios manuales para hacerlos efectivos.   Los valores válidos pueden ser: " >
+<!ENTITY tt_Sys_col_pick_noWo	"El selector de color del sistema no funciona si se abre el panel de Opciones dentro del navegador (marco)" >
+
+
+<!--  __________*** Section:   LOOK AND FEEL 2 ***__________  -->
+
+
+<!ENTITY   Options_Fx_Home_App_but 	" Opciones para el botón principal de Firefox: " >
+
+<!ENTITY   check__hcp_home_enabled 	 "Habilitar botón personalizado de Firefox en la esquina superior izquierda (*)" >
+<!ENTITY   check__hcp_home_enabled_2 "(disponible también a través de la personalización de la interfaz de usuario)" >
+<!ENTITY      tt__hcp_home_enabled 		"En la personalización de la interfaz de usuario, a través de 'Barras de herramientas » Personalizar' (o equivalente), se puede colocar un botón idéntico en la barra de pestañas o cualquier barra de herramientas" >
+
+<!ENTITY Button_Style_Color		"Estilo/Color del botón" >
+<!ENTITY Fx_default_orng		"Naranja  (predeterminado de Fx)" >
+<!ENTITY Blue					"Azul" >
+<!ENTITY Green					"Verde" >
+<!ENTITY Transp_with_Personas	"Transparente con temas-personas" >
+<!ENTITY Transparent			"Transparente" >
+
+
+<!ENTITY Icon_Size_for_Maximized_win		"Tamaño e Icono para 
+		ventana maximizada" >
+<!ENTITY Icon_Size_for_UnMaximized_win		"Tamaño e Icono para 
+		ventana no maximizada" >
+<!ENTITY   ctn_dropmarker 	"Flecha de despliegue" >
+<!ENTITY   tt_ctn_dropmarker    "Tenga en cuenta que sólo algunos tamaños del botón muestran esta flecha" >
+<!ENTITY   dm_auto 			"Predeterminado de Firefox" >
+<!ENTITY   dm_auto_invtd 	"Predeterminado de Firefox en negativo" >
+<!ENTITY   dm_icon1 		"Flecha más grande" >
+<!ENTITY   dm_icon1_invtd	"Flecha más grande en negativo" >
+<!ENTITY   dm_none	 		"Ninguna" >
+<!ENTITY   dm_old_default 	"Antiguo predeterminado de HCTP *" >
+<!ENTITY   tt_old_default 		"* Valor antiguo (no produce cambios en sistemas Windows desde hace mucho) " >
+
+<!ENTITY   ctn_fx_text 	   "Texto del botón" >
+<!ENTITY   tt_ctn_fx_text		"${BrandName} es el valor predeterminado, y se comporta como es habitual (muestra desde el nombre de la aplicación, 'Firefox' o equivalente, en los botones grandes, hasta la primera letra del nombre en los pequeños)" >
+
+<!ENTITY   ctn_fx_image    "Imagen del botón" >
+<!ENTITY   fx_im_icon17 		"Icono de Firefox" >
+<!ENTITY   fx_im_icon17_invtd	"Icono de Firefox en negativo" >
+<!ENTITY   fx_im_icon18 		"Icono 2 de Firefox" >
+<!ENTITY   fx_im_icon18_invtd	"Icono 2 de Firefox en negativo" >
+<!ENTITY   fx_im_icon_classic	"Icono clásico de Firefox" >
+<!ENTITY   fx_im_icon_browser	"Icono predeterminado del navegador">
+<!ENTITY   fx_hc_icon 			"Icono de HCTP" >
+<!ENTITY   custom_image 		"     Imagen personalizada" >
+
+<!ENTITY    Fx_Main_menu_but 		"Mostrar botón (triple barra/hamburguesa) del panel principal de Firefox:">
+<!ENTITY tt_Fx_Main_menu_but			"(situado por defecto en el extremo derecho de la barra de navegación)
+Si utiliza el 'Botón principal de Firefox' personalizado, puede ahorrarse este botón ocultándolo para obtener espacio extra. " >
+<!ENTITY    FxMenu_always_fxdefault	"Siempre  (predeterminado de Fx)" >
+<!ENTITY    FxMenu_notif_badge		"Sólo con notificaciones" >
+<!ENTITY tt_FxMenu_notif_badge			"Mostrarlo sólo cuando tenga un icono de notificación/advertencia (p.e. por un problema de Firefox sync)" >
+<!ENTITY    FxMenu_never			"Nunca (no recomendado)" >
+
+
+<!ENTITY   check__floatMenu 		"Menú principal flotante: Saca el Menú de la 'Barra de menús' y lo hace 'flotar' a continuación del 'Botón principal de Firefox', con auto-ocultado. Emerge al pasar el ratón por encima de ese botón (*), o pulsando las teclas Alt o F10" >
+<!ENTITY      tt__floatMenu 			"Asegúrese de ocultar la (ahora vacía) 'Barra de menús' (desmarcándola en el menú contextual de las barras, o equivalente) para lograr aún más espacio en pantalla" >
+<!ENTITY   check__floatM_pageTitle 	"Título de la página web anexo al menú flotante" >
+
+<!ENTITY floatM_adv_options			"Menú principal flotante:  opciones avanzadas:" >
+
+<!ENTITY floatM_style_title			"<b>Color/apariencia</b> del texto y fondo" >
+<!ENTITY floatM_style_default		"Nuevo estilo  (predeterminado desde sep 2016)" >
+<!ENTITY floatM_style_captionColor	"Imitación de los colores de texto y fondo de la Barra de título de las ventanas del sistema" >
+<!ENTITY floatM_style_captionC_tt		"Excepto para temas-personas" >
+<!ENTITY floatM_style_oldColor		"Estilo y colores antiguos de texto y fondo" >
+
+
+<!ENTITY Custom_style_files			"Ficheros de estilo (.css) personalizados:" >
+<!ENTITY Custom_style_files__tt			"Ficheros .css personalizados para dotar de estilo a la propia interfaz de usuario del navegador (como la menospreciada capacidad de Stylish).
+»Use una lista separada por comas para añadir nombres de fichero  (se asume .css si no se proporciona la extensión)" >
+<!ENTITY files_located_homedir		"Ficheros ubicados en el directorio principal del usuario" >
+<!ENTITY Custom_style_files__failed		"Fichero/s no cargados:" >
+
+<!ENTITY Apply_changes				"Aplicar cambios" >
+
+
+
+<!ENTITY FULL_SCREEN_mode_options	" Opciones del modo pantalla completa: " >
+
+<!ENTITY check_fullscrButs_autohide "Auto-ocultar también los botones 'fijos' (principal de Firefox y Min,Max,Cerrar personalizados) al ocultarse las barras de herramientas en modo pantalla completa  (predeterminado: sí)" >
+<!ENTITY    tt_fullscrButs_autohide 	"Incluso en vídeos a pantalla completa.
+Con esta opción desmarcada, los botones aparecen semi-transparentes.
+<pg0/>Para no perder la posibilidad de utilizar acciones personalizadas de este complemento a pantalla completa, se puede dejar desmarcada (y configurar los botones para que sean muy pequeños y casi transparentes, para una mínima interferencia sobre el contenido).
+<pg0/>(Botones 'fijos' son los que están fijos en las esquinas de la ventana. Por otra parte, cuando los botones Min,Max,Cerrar son colocados en la barra de pestañas u otra barra de herramientas a través de la personalización de la interfaz de usuario, siempre se ocultan junto con esa barra de herramientas)">
+<!ENTITY Autohide_in_FullScr_Videos	"Auto-ocultarlos en vídeos a pantalla completa (recomendado)" >
+<!ENTITY Small_FScr_warn			"Reducir tamaño del mensaje: &quot;[sitio-web] está ahora en pantalla completa&quot;, p.e. para vídeos  (predeterminado de Fx: no)" >
+
+<!ENTITY label__fullscr_tr_duration "Duración de la transición en negro del vídeo a pantalla completa:">
+<!ENTITY    tt__fullscr_tr_duration "Se recomienda 'Ninguna' si esta transición resulta molesta  (ajuste válido desde Fx42+)">
+<!ENTITY When_entering		"Al entrar:" >
+<!ENTITY When_leaving		"Al salir:" >
+<!ENTITY None_p_fastest		"Ninguna (más rápida)" >
+<!ENTITY Fast				"Transición rápida" >
+<!ENTITY Fx_Default_p_slow	"Lenta  (predeterminado de Fx)" >
+				
+
+<!--  New Feature: “Special VERTICAL MAXIMIZE”  -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle     "“MAXIMIZADO VERTICAL <i>mejorado</i>”:   <html:einfo>Las pestañas alcanzan <i>realmente</i> el borde superior también en ventana <b>no-maximizada!</b></html:einfo>">
+<!ENTITY   VERTICAL_MAXIMIZE_subTitle   "<b>Clic para ver más información antes de usar!</b>   Nueva característica <b>experimental</b>.">
+<!ENTITY   vertMax_switch_title     "Activar <b>Maximizado Vertical:</b>">
+<!ENTITY   vertMax_no     "No">
+<!ENTITY   vertMax_yes    "Sí">
+
+<!ENTITY    vmBehave_TITLE     "Comportamiento:">
+<!ENTITY tt_vmBehave_TITLE     "Las opciones en negrita son las que pueden ser especialmente útiles.">
+
+<!ENTITY    vmBehave_default     	"Predeterminado  (la ventana de Fx encastra en los bordes Superior e Inferior)">
+<!ENTITY    vmBehave_right         	"   Encastra también en el borde Derecho">
+<!ENTITY tt_vmBehave_right      		"¡Deja el botón Cerrar en la esquina del escritorio!, como en modo maximizado">
+<!ENTITY    vmBehave_left     		"   Encastra también en el borde Izquierdo">
+
+<!ENTITY    vmBehave_noSize     	"Encastra sólo en el borde Superior   (altura libre)">
+<!ENTITY    vmBehave_top_right   	"   Encastra en los bordes Superior y Derecho">
+<!ENTITY    vmBehave_top_left   	"   Encastra en los bordes Superior e Izquierdo">
+
+<!ENTITY    vmBehave_bottom     	"Encastra sólo en el borde Inferior   (altura libre)">
+<!ENTITY    vmBehave_bottom_right   "   Encastra en los bordes Inferior y Derecho">
+<!ENTITY    vmBehave_bottom_left   	"   Encastra en los bordes Inferior e Izquierdo">
+
+<!ENTITY    vmBehave_leftRight_top 	"Encastra en los bordes Izquierdo, Derecho y Superior   (altura libre)">
+<!ENTITY    vmBehave_leftRight_bot 	"Encastra en los bordes Izquierdo, Derecho e Inferior">
+<!ENTITY    vmBehave_leftRight     	"Encastra en los bordes Izquierdo y Derecho   (“Maximizado Horizontal”)">
+
+
+<!-- FYI: Tags like 'einfo', 'b' and 'i' CAN'T be nested or spaces are lost!!, SOLVED here using 'html:b' -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt              "<html:b>“MAXIMIZADO VERTICAL <i>mejorado</i>”:</html:b>   actúa en ventanas de Fx <b>no-maximizadas</b>.
+<pg0/><pg/>Puede ser activado también en el <i>'Menú contextual de Hctp'</i>  (accesible por ej. via <i>clic secundario</i> del ratón en los botones Maximizar, Minimizar).   El botón Maximizar se ve con un pequeño borde cuando esta característica está activa.
+<pg/>Válida sólo cuando está activa la opción: <b>'&enable_customizable_buts;'</b>.
+<pg2/><b>Por favor vea también</b> la sección “VERTICAL MAXIMIZE” en la página web principal, para ver detalles actualizados! ">
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__LINUX       "<b>Notas sobre LINUX notes:</b> ¡Sólo pruebas preliminares!, Linux Mint, Cinnamon (de hace 2/3 años).
+»Por favor, observe que el autoajustado al acercar la ventana al borde superior del escritorio puede interferir. 
+»Se encontró un problema en multi-monitor: Fx realiza el autoajustado por acercamiento a los bordes siempre hacia el mismo monitor.
+»(Algunos textos de debajo son sólo para Windows.)" >
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__SUBNOTES 	"<b>POR FAVOR, OBSERVE:</b> La ventana de Fx puede sufrir una breve <i>'perturbación'</i> inofensiva tras ser movida/redimensionada.  
+<pg0/>Tras arrastrar los bordes para redimensionar la ventana, o al pinchar sobre otras áreas para arrastrarla, la ventana de Fx puede hacer <b>un pequeño movimiento (10 px) hacia abajo y arriba de nuevo</b>. Esto es esperable, y no lo está provocando nada que interfiera al navegar.   ¡Puede evitarse esto usando el área del título de la página del <i>Menú flotante</i> para arrastrar la ventana! (se activa p.e. con la tecla ALT)
+<pg0/>Arrastre: cuando la característica de <i>autoajustado al acercar al borde del escritorio de Windows</i> está habilitada, si trata de arrastrar la ventana pinchado en la parte superior, se maximizará.   Para evitar esto, puede hacer un movimiento hacia abajo antes de soltar el botón del ratón, o accionar el 'autoajustado vertical al escritorio' (con la combinación de teclas WIN+MAYÚS+<b>￪</b>) 
+<pg0/>Probado principalmente en Windows." >
+
+
+
+
+<!ENTITY Drag_Window_capab_opt			" Opciones de la función de arrastre de la ventana: " >
+<!ENTITY    Drag_win_via_tabbar_defno	"Arrastrar ventana de Fx con el fondo de la barra de pestañas (por defecto: no)" >
+<!ENTITY tt_Drag_win_via_tabbar_defno		"Esto -puede- que haga aparecer siempre las flechas de desplazamiento de la barra de pestañas.
+Es algo que ya está habilitado en Firefox con algunas combinaciones de barra de herramientas (p.e. en Windows con el escritorio 'Aero-Glass')." >
+<!ENTITY and_un_maxim_with_dblclk		"(y doble clic para maximizar/restaurar ventana)" >
+
+
+<!ENTITY    Enable_Ctrls_Widgets_Drag_Win 	"Habilitar controles/elementos para arrastrar la ventana " >
+<!ENTITY tt_Enable_Ctrls_Widgets_Drag_Win		"Opción incluida para mayor compatibilidad con otros complementos, como la opción de auto-ocultado del complemento 'Vertical Toolbar'" >
+
+<!ENTITY All__prevver_2_8_default			"Todos  (predeterminado de versiones HCTP [2.8.*] anteriores)" >
+<!ENTITY All_excpt_othrAddn_SpsWidgts_def	"Todos, excepto elementos de espacio de otros complementos (predeterminado)" >
+<!ENTITY tt_no_foreign_spaces					"Opción recomendada para mayor compatibilidad con otros complementos como la opción de <b>auto-ocultado</b> de 'Vertical Toolbar' (que no funciona bien si se introduce un elemento de espacio con capacidad de arrastre de la ventana).
+
+<html:hr />Nota: Si la opción de auto-ocultado de 'Vertical Toolbar' no funcionase aún, puede utilizar la opción 'Sin arrastre para elementos de espacio'.
+(Esto puede suceder si, tras personalizar la interfaz de usuario, la 'Barra de herramientas vertical' de Vertical Toolbar contiene un elemento de espacio de HCTP. Estos son los que se indican con el prefijo [h] dentro del cuadro 'Herramientas y características adicionales' del panel 'Personalizar...')
+	" >
+<!ENTITY    No_drag_for_Spaces_Widgets		"Sin arrastre para controles/elementos de espacio" >
+<!ENTITY tt_No_drag_for_Spaces_Widgets			"Posteriormente se añadirán opciones que también excluyan otros controles / elementos como el 'Título de la página web', etc." >
+
+
+<!ENTITY Easy_of_use__scr_corner__Fitts_law	" (*) Facilidad de uso incrementada, porque ese botón/control está generalmente en la <b>esquina de la pantalla</b> en modo maximizado.  
+	[Ley de Fitts: En la Wikipedia, lea sobre bordes (edges) y esquinas (corners)] " >
+
+		
+		
+<!--  __________*** Section:   ADVANCED SETTINGS ***__________  -->
+
+
+<!ENTITY hidTit__Dont_use		"No utilizar" >
+<!ENTITY hidTit__use			"Utilizar" >
+
+<!--  __________*** FOR LINUX/OSX ONLY ***__________  -->
+<!ENTITY   title__alternat_hide_titbar_feature__default_Use		"Opción alternativa para ocultar la barra de título  (predeterminado: Utilizar)" >
+<!ENTITY comment__alternat_hide_titbar_feature					"Esto logra ocultar la barra de título en Linux/Gnome (p.e. Ubuntu), está probado sólo en ese entorno. 
+Es más o menos equivalente a desactivar 'Decoraciones de ventana' en la configuración del administrador de ventanas (p.e. 'Compiz-Config' en Ubuntu) 
+	<einfo>   (utiliza el atributo interno 'hidechrome')</einfo> " >
+
+
+<!--  ______*** Small-Tabs and Small-Toolbars MOVED TO LOOK_AND_FEEL_2 ***______  -->
+
+<!ENTITY Styling_options_to_max_spc			"Opciones de estilo: <einfo>(para maximizar el espacio de contenido)</einfo> " >
+
+<!ENTITY    Smaller_Tabs_and_Tab_Bar		"Pestañas y barra de pestañas más pequeñas" >
+<!ENTITY tt_Smaller_Tabs_and_Tab_Bar			"¡Funciona con la característica de <b>múltiples hileras del complemento 'Tab Mix Plus'</b>! (precisa un <b>reinicio de Fx</b> para ajustar la nueva altura). 
+<pg0/>Tal vez tenga que ajustar un poco (1px o algo así) el valor de la 'Posición personalizada del margen del borde superior' para que las pestañas alcancen de nuevo el borde superior de la pantalla. O haga un ciclo de Desmaximización - Maximización si esas opciones están deshabilitadas (se utiliza autocalculado).
+<pg0/>Tenga en cuenta que este estilo fue probado sólo con el tema predeterminado de Windows (y algunas pruebas en Linux), por lo que se recomienda <b>precaución</b> si se usa con temas personalizados y <b>otros complementos que modifican pestañas</b>.
+			" >
+<!ENTITY No__default			"No  (predeterminado)" >
+<!ENTITY Small_australis		"Pequeñas, para el tema Australis de Fx 29+" >
+<!ENTITY Small_near_Classic		"Más pequeñas, parecidas a pestañas clásicas" >
+<!ENTITY Small_almost_Classic	"Aún más pequeñas, como pestañas clásicas  (nueva)" >
+<!ENTITY Small_Classic_0     	"Más pequeñas, ¡pestañas clásicas! (Nuevo 2)">
+
+<!ENTITY likeClassic_mediumH	"Como Pestañas clásicas, altura media." >
+<!ENTITY likeClassic_fullH		"Como Pestañas clásicas, altura total." >
+
+<!ENTITY DEPREC_australis		"Para el tema Australis  (obsoleta)" >
+<!ENTITY DEPREC_almst_Clsc		"Parecidas a pestañas clásicas  (obsoleta)"  >
+<!ENTITY tt_smTabs_deprecated 		"Esta opción obsoleta está sólo para pruebas de compatibilidad y <b>* se eliminará posteriormente *</b>.
+<pg0/>Si esta opción todavía es necesaria para que las cosas luzcan bien en su entorno, por favor, deje un mensaje en la página de soporte (enlace en tiny.cc/hidec).">
+
+
+<!ENTITY    Smaller_Toolbars_and_buttons	"Barras de herramientas y botones más pequeños" >
+<!ENTITY tt_Smaller_Toolbars_and_buttons		"Tenga en cuenta que este estilo sólo fue probado con el tema predeterminado de Windows. Se recomienda precaución cuando se use con temas personalizados." >
+<!ENTITY Small				"Barras pequeñas" >
+<!ENTITY A_bit_smaller		"Barras más pequeñas" >
+<!ENTITY Smaller_buttons	"Botones más pequeños" >
+<!ENTITY tt_smallBars_oldOption	"Estas opciones antiguas pueden ser útiles en versiones de Fx antiguas (ej. Fx ESR 52) cuando el <i>'tamaño del texto y otros elementos'</i> (dpi) > 100&percent;" >
+<!ENTITY Option_compat_only	"Opción para prueba de compatibilidad  (obsoleta)" >
+<!ENTITY tt_smallBars_old_deprecated 	"Esta opción obsoleta está sólo para pruebas de compatibilidad y <b>* se eliminará posteriormente *</b>.
+<pg0/>Puede ser útil en combinación con complementos anticuados, que no están totalmente ajustados al nuevo estilo (CSS) de Fx40.
+<pg0/>Si esta opción todavía es necesaria para que las cosas luzcan bien en su entorno, por favor, deje un mensaje en la página de soporte (enlace en tiny.cc/hidec).">
+
+
+<!ENTITY Top_edge_margn_pos_sets 		" Configuración de posición del margen del borde superior: " >
+<!ENTITY    Cust_Top_edge_margn_f_tbar	"Posición personalizada del margen del borde superior para el área de barras de herramientas: 
+(en píxeles, valor negativo para elevar el contenido)" >
+<!ENTITY tt_Cust_Top_edge_margn_f_tbar		"Desactivado cuando están habilitadas 'Barra de título de Firefox 4+' y (la opción interna de Fx browser.tabs.drawInTitlebar en about:config) 'Pestañas en la barra de título'  (se utiliza auto calculado)" >
+<!ENTITY In_Maximized__window			"En ventana maximizada:" >
+<!ENTITY tt_top_marg_max					"No es válido en modo pantalla completa (ej. con Firefox maximizado puede establecerlo a -1 o -2 para tener las pestañas tocando el borde superior de la pantalla)" >
+<!ENTITY In_Un_Maximized__window		"En ventana no maximizada:" >
+
+
+<!ENTITY Top_margn_style_main_win		"Estilo del margen superior de la ventana principal<html:br/>(contenedor raíz) " >
+<!ENTITY tt_Top_margn_style_main_win		"Puede ayudar a la compatibilidad con otros complementos/temas que afectan a la zona del borde superior de Firefox" >
+<!ENTITY Untouched__default				"Inalterado  (predeterminado)" >
+<!ENTITY    Enforce_zero_top_mrgin		"Margen superior nulo" >
+<!ENTITY tt_Enforce_zero_top_mrgin			"Por ejemplo, en Fx maximizado elimina un pequeño espacio extra en el borde superior para temas como Noia4." >
+
+
+<!ENTITY  old_topEdge_titlebar_msg 		"Opción obsoleta eliminada: 'Estilo para el área del Borde Superior'.  Haga clic para eliminar este mensaje." >
+
+
+<!ENTITY    Translation_Notes 	"Notas de traducción">
+<!ENTITY tt_HCTP_BOTTOM_NOTES   "¡HCTP ahora tiene capacidad completa para ser traducido a cualquier idioma!
+Vea 'Translators tips!' (sugerencias para traductores) en la página principal del complemento." >
+
+
+<!--  *** This DOESN'T NEED to be translated!!! *** Developer only option!! ***  -->		
+<!ENTITY Devel__Print_debug			"[Desarrollador/Probador] Mostrar información de depuración en la consola de errores  (predeterminado: no)" >
+<!ENTITY Devel__Print_debug_audio	"Con <b>avisos de audio</b> al emitir mensajes con 'error' o 'warn' (advertencia)" >
+
+
+<!--  __________*** OTHER SETTINGS ***__________  -->
+
+<!ENTITY Fx_internal_options 		" Opciones internas de Firefox: " >
+
+<!ENTITY Search_Bar 				" Barra de búsqueda: " >
+<!ENTITY    SearchBar_new_UI		"Habilitar la nueva interfaz de la barra de búsqueda de Fx 34+ (campos con iconos)  [* ¡La opción para (des)habilitarla fue suprimida de Firefox 43+! *] " >
+<!ENTITY tt_SearchBar_new_UI		"Desmárquela para restaurar la lista desplegable de la barra de búsqueda, que muestra los nombres de los sitios, y permite hacer persistente la elección de forma fácil.   Precisa reiniciar Fx." >
+
+<!ENTITY Search_in_new_tab		"Las nuevas consultas desde la barra de búsqueda, se abrirán en una nueva pestaña (así no se sobrescribe el contenido de la pestaña actual)" >
+
+<!ENTITY    Other_intOpts 	"Otros:">
+
+<!ENTITY    Tab_switch_MRU		"Establecer orden MRU (usadas más recientemente) para alternar pestañas con 'Ctrl+Tab' (facilita cambiar a las últimas pestañas recorridas) " >
+<!ENTITY tt_Tab_switch_MRU		"Además, al mantener pulsado <b>Ctrl+Tab</b> cuando están abiertas más de dos pestañas, se muestra una lista de previsualización de miniaturas similar a la lista de previsualización de Windows al mantener pulsado <b>Alt+Tab</b>" >
+
+<!ENTITY devPixelsPerPx_label 	"<pg1 />Cambiar tamaño del texto y otros elementos en Fx:" >
+<!ENTITY devPixelsPerPx_tt 		"Esta configuración es la misma que la del cuadro de diálogo de preferencias de pantalla de Windows, pero sólo para Firefox.
+<pg0/> Útil donde se desee un tamaño de fuente distinto del predeterminado del sistema.   Ej.: Al usar 2 o más monitores de diferente tamaño." >
+<!--  <pg />(Using Firefox hidden preference: 'layout.css.devPixelsPerPx')  -->
+<!ENTITY devppp_default	"Tamaño predeterminado del sistema" >
+<!ENTITY devppp_100 	"100&percent; - Más pequeño" >
+<!-- Shouldn't need any translation -->
+<!ENTITY devppp_120     "120&percent;">
+<!ENTITY devppp_125 	"125&percent; - Mediano" >
+<!ENTITY devppp_150 	"150&percent; - Grande" >
+<!ENTITY devppp_9x 		" 94&percent; - Ajuste experimental" >
+
+
+<!ENTITY HCTPs_extra_options 		" Opciones extra de HCTP: " >
+<!ENTITY Wider_Bookmark_panel		"Panel de adición de marcadores (Ctrl+D) más ancho, para facilitar crear o editar nombres largos y descriptivos para sus marcadores " >
+
+<!ENTITY    Stop_image_animations	"Detener imágenes animadas (y otras peticiones en segundo plano) usando el atajo 'Mayús+Esc' " >
+<!ENTITY tt_Stop_image_animations		"Esto emula comportamientos de la tecla Esc en versiones de Firefox anteriores a la 20. Funciona como el complemento 'SuperStop' (pruebe esta opción si 'SuperStop' dejó de funcionar en su entorno)" >
+
+
+
+<!--  __________*** Dynamic Toolbars  section ***__________  -->
+<!ENTITY dynBars_name     			"Barras de herramientas dinámicas">
+
+
+
+<!ENTITY button.Advanced     	"Avanzado">
+
+<!ENTITY hc_rcOnly 			"[ Nueva opción, aparece primero sólo en versiones RC ]" >
+
+<!ENTITY  hc_isBetaFeature 	"Característica BETA: " >
+<!ENTITY tt__isBetaFeature 	"Característica BETA:  Aún puede tener algún defecto visual menor" >
+
+<!ENTITY forUpdatedSections	"(¡actualizado!)">
+
+<!ENTITY bOld		"[Antiguo]  " >
+<!ENTITY NEWe		"¡NUEVO!" >
+<!ENTITY SOONe		"¡PRÓXIMAMENTE!" >
+
+
+<!ENTITY Are_you_sure     	"¿Está Seguro?">
+
+<!ENTITY See_homepage_for_ex	"Vaya a la página principal para ver ejemplo/s.">
+
+<!ENTITY optionForFx57plus     	"Opción para &brandShortName; 57 y superior">
+
+
+<!ENTITY tt_DEPRECATED_IMMINENT     	"Esta opción obsoleta será eliminada muy pronto!   Si todavía es necesaria en su entorno, por favor asegúrese de dejar un aviso en el Sitio de Soporte.  Muchas Gracias!">
+
+
+<!ENTITY Msg__New_Feature_RC_versions  "Hay nueva/s característica/s en las versiones RC!:   vea la sección 'Development Channel' en la página web del complemento" >
+
+
+<!-- ** MULTI LANGUAGE DIALOG ** -->
+<!ENTITY   MultiLanguage_but     	"¡MULTI-IDIOMAS!">
+<!ENTITY   MULTI_LANGUAGE_DIALOG   	"Acceso a MULTI-IDIOMAS:">
+<!ENTITY   multi_lang_subtitle 		"Puede abrir a su conveniencia este cuadro de diálogo de Opciones, incluso <b>simultáneamente</b>, en los siguientes idiomas:">
+<!ENTITY   multi_lang_subtitle_tt 		"Puede ser útil por ejemplo para alternar con idiomas (locale) aún no finalizados (y que probablemente aún no están habilitados de forma predeterminada). 
+<pg0/>Algo muy útil también para traductores." >
+
+
+<!-- ** Please fill this entry (eg. with 'Done') only when finishing the translation/improvements, in order to avoid showing '100percent' 
+     (eg. the spanish one has still many entries MACHINE-translated only)   **   You can check translation status text in opt_lang.dtd.    
+     THANKS A LOT! -->
+<!ENTITY   Translation_endOfJob_entry    "Hecho (es-ES)">
+

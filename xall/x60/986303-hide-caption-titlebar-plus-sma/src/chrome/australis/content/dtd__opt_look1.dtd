@@ -1,0 +1,115 @@
+
+
+<!ENTITY menuitem_group_actions "
+      <menucaption     class='mtitle'  label='&mtit_typical_primary;' />		
+      <menuitem 	value='closewin'   			label='&item_closewin;'   			tooltip='tt_closewin'	/>
+      <menuitem 	value='closetab'   			label='&item_closetab;'	     		tooltip='tt_closetab' 	/>
+      <menuitem 	value='closeWithHistory'   	label='&item_closeWithHistory;          '  tooltip='tt_closeWithHistory'  class='hide_ellipsis'  />
+      <menuseparator />
+      <menuitem  	value='mainPanelUI'   		label='&item_mainPanelUI;'			tooltip='tt_mainPanelUI' 	/>
+  	
+      <menucaption     class='mtitle'  label='&mtit_typical_secondary;' />		
+      <menuitem  	value='ShowAllTabs'   		label='&item_ShowAllTabs;'			tooltip='tt_ShowAllTabs' />
+      <menuitem  	value='undoCloseTab'   		label='&item_undoCloseTab;'			tooltip='tt_undoCloseTab' />
+      <menuitem  	value='hc_context' 			label='&item_hc_context;' 			tooltip='tt_hc_context' 	/>
+
+      <menucaption     class='mtitle'  label='&mtit_typical_annoyances;' />		
+      <menuitem  	value='closeNewerWindow'	label='&item_closeNewerWindow;'     tooltip='tt_closeNewerWindow'	/>
+      <menuitem  	value='zapFrames'   		label='&item_zapFrames;'			tooltip='tt_zapFrames' 	/>
+      <menuitem  	value='zapImages'   		label='&item_zapImages;'			tooltip='tt_zapImages' 	/>
+      <menuitem  	value='superStop'   		label='&item_superStop;'			tooltip='tt_superStop' 	/>
+
+      <menucaption     class='mtitle'  label='&mtit_typical_other;' />		
+      <menuitem  	value='FullScreen'   		label='&item_FullScreen;'			tooltip='tt_FullScreen' 	/>
+      <menuitem  	value='Maximize'   			label='&item_Maximize;'				tooltip='tt_Maximize' 	/>
+      <menuitem 	value='minimize'   			label='&item_minimize;'   />
+      <menuitem  	value='BrowserReload'		label='&item_BrowserReload;'		tooltip='tt_BrowserReload' 	/>
+      <menuitem  	value='quitApplication'		label='&item_quitApplication;'		tooltip='tt_quitApplication' />
+      <menuitem  	value='NewTab'				label='&item_NewTab;'				tooltip='tt_NewTab' />
+      <menuitem  	value='toggleCssDevPx'		label='&devPixelsPerPx_label_2;'	tooltip='tt_toggleCssDevPx' />
+      <menuitem  	value='DynBars_toggle'		label='&item_DynBars_toggle;'		tooltip='tt_DynBars_toggle' />
+      <menuseparator />
+      <menuitem  	value='goBack'    	   		label='&item_goBack;'        		tooltip='tt_goBackFw_key' 	/>
+      <menuitem  	value='goForward' 	   		label='&item_goForward;'      		tooltip='tt_goBackFw_key' 	/>
+      
+      <menucaption     class='mtitle'  label='&mtit_typical_wheel;' />		
+      <menuitem  	value='PageUp'	   			label='&item_PageUp;'   			tooltip='tt_PageKeys' 	/>
+      <menuitem  	value='PageDown'   			label='&item_PageDown;'   			tooltip='tt_PageKeys' 	/>
+
+      <menuitem  	value='ZoomEnlarge'	   		label='&item_ZoomEnlarge;'  		tooltip='tt_ZoomKeys' 	/>
+      <menuitem  	value='ZoomReduce'   		label='&item_ZoomReduce;'   		tooltip='tt_ZoomKeys' 	/>
+      
+      <menuseparator             ordinal='1007' />
+      <menuitem  	value='none'	   			label='&item_noaction;'   ordinal='1010'	hc_flags='dim'	/>
+">
+<!--
+      <menuitem  	value='undoCloseWindow'   	label='&item_undoCloseWindow;'		tooltip='tt_undoCloseWindow' />
+      <menuseparator />
+-->
+
+<!ENTITY menuitem_group_actions__wheel "
+      <menuitem  	value='advSelTab'   		label='&item_advSelTab;'			tooltip='tt_advSelTab' 	/>
+      <menuitem  	value='Page_UpDown'   		label='&item_Page_UpDown;' 			tooltip='tt_PageKeys' 	/>
+      <menuitem  	value='Line_UpDown'   		label='&item_Line_UpDown;' 			tooltip='tt_LineKeys' 	/>
+      <menuitem  	value='Zoom_EnlRed'   		label='&item_Zoom_EnlRed;'   		tooltip='tt_ZoomKeys' 	/>
+      <menuitem  	value='go_BackForw'   		label='&item_go_BackForw;'    		tooltip='tt_go_BackForw' />
+">
+
+
+<!ENTITY actions_tooltip_group "
+  
+	<menupopup  id='hc_recom_and_defaults' >
+		<!-- Close and fxbut prim: --> 
+	    <menuitem 	value='closewin'   			label='&item_closewin_fxdefau;'   	/>
+	    <menuitem 	value='closetab'   			label='&item_closetab_recomen;'		/>
+	    <menuitem 	value='closeWithHistory'	label='&item_closeWithHis_reco;          '	/>
+	
+		<menuitem  	value='mainPanelUI'   		label='&item_mainPanelUI_defau;'	/>
+	 
+		<!-- Close and fxbut sec: --> 
+		<menuitem  	value='hc_context' 			label='&item_hc_context_defau;' 	/>
+<!--	<menuitem  	value='undoCloseTab__AAA'   		label='&item_undoCloseTab_reco;'	/>
+-->
+	</menupopup>
+  
+  
+	<tooltip  id='tt_closewin'			><label>&tt_closewin;</label></tooltip>
+	<tooltip  id='tt_closetab'			><label>&tt_closetab;</label></tooltip>
+	<tooltip  id='tt_closeWithHistory'  class='tooltip_big'	><label>&tt_closeWithHistory;</label></tooltip>
+	<tooltip  id='tt_mainPanelUI'		><label>&tt_mainPanelUI;</label></tooltip>
+	
+	<tooltip  id='tt_ShowAllTabs'		><label>&tt_ShowAllTabs;</label></tooltip>
+	<tooltip  id='tt_undoCloseTab'		><label>&tt_undoCloseTab;
+							[&Shift_Key; &item_closetab;]</label></tooltip>
+	<tooltip  id='tt_hc_context'		><label>&tt_hc_context;</label></tooltip>
+
+	<tooltip  id='tt_closeNewerWindow'	><label>&tt_closeNewerWindow;</label></tooltip>
+	<tooltip  id='tt_zapFrames'			><label>&tt_zapFrames;</label></tooltip>
+	<tooltip  id='tt_zapImages'			><label>&tt_zapImages;</label></tooltip>
+	<tooltip  id='tt_superStop'			><label>&tt_superStop;</label></tooltip>
+	
+	<tooltip  id='tt_FullScreen'		><label>&tt_FullScreen;</label></tooltip>
+	<tooltip  id='tt_Maximize'			><label>&tt_Maximize;</label></tooltip>
+
+	<tooltip  id='tt_BrowserReload'		><label>&tt_BrowserReload;</label></tooltip>
+	<tooltip  id='tt_quitApplication'	><label>&tt_quitApplication;</label></tooltip>
+	<tooltip  id='tt_NewTab'			><label>&tt_NewTab;
+							[&Shift_Key; &item_undoCloseTab;]</label></tooltip>
+	<tooltip  id='tt_toggleCssDevPx'	><label>&tt_toggleCssDevPx;</label></tooltip>
+	<tooltip  id='tt_DynBars_toggle'	><label>&tt_DynBars_toggle;</label></tooltip>
+
+	<tooltip  id='tt_goBackFw_key'		><label>&tt_goBackFw_key;</label></tooltip>
+
+	<tooltip  id='tt_PageKeys'			><label>&tt_PageKeys;</label></tooltip>
+	<tooltip  id='tt_LineKeys'			><label>&tt_LineKeys;</label></tooltip>
+	<tooltip  id='tt_ZoomKeys'			><label>&tt_ZoomKeys;</label></tooltip>
+	
+	<tooltip  id='tt_advSelTab'			><label>&tt_advSelTab;</label></tooltip>
+
+	<tooltip  id='tt_go_BackForw'		><label>&tt_go_BackForw;</label></tooltip>
+" >
+
+
+
+<!ENTITY xxxxx "yyyy">
+

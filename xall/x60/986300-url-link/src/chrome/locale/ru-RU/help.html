@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/REC-html401/loose.dtd">
+<!-- $Id: help.html 797 2009-06-17 07:24:45Z neil $ -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>URL Link Help</title>
+  </head>
+  <body>
+    <h2><img src="chrome://urllink/content/urllink.png" alt="logo">&nbsp;&nbsp;URL Link</h2>
+
+    <h3>Usage</h3>
+    <p>
+    Select some text, in a web-page, text-input (web form) or email, and
+    right-click.
+    <ul>
+      <li>
+      If the text looks like a URL, you'll be able to directly open it (or into
+      a tab) via “Open Selection”.
+      </li>
+      <li>
+      If the text <i>doesn't</i> look like a link, you will get a sub-menu
+      allowing it to be treated as a link anyway, or perform some customisable
+      conversion first (<i>e.g.</i>, add “www.” and “.com”).
+      </li>
+      <li>
+      Under preferences, where you can customise the sub-menu that appears, you
+      can add your own separators with entries consisting solely of hyphens,
+      for example: <tt>"--"</tt>.
+      </li>
+      <li>
+      Custom menu entries may contain any URL, nomatter how long, with the
+      first '*' being replaced by the selection.  You may have a nickname
+      before a bar '|' in the entry to shorten what appears in the menu:<br>
+      <tt>"Short name|http://www.longname.com/q=*"</tt>.
+      </li>
+      <li>
+      In Firefox, hold down &lt;Shift&gt; when selecting 'Open' to open in a new
+      window instead of using the current window.
+      </li>
+      <li>
+      You may choose whether URL Link places its option near the top or the
+      bottom of the standard context menu via a preference.
+      </li>
+    </ul>
+
+    <h3>Functionality</h3>
+    <ul>
+      <li>
+      URL Link is a small Firefox and Thunderbird extension that allows you to
+      select a non-URL in a mail/news message or web-page, and open it in a
+      browser window.
+      </li>
+
+      <li>
+      For emails, it reconnects links in emails which have been broken across
+      several lines, and also replaces spaces with the URL character code %20
+      so that you may follow emailed network `file:' links (which it
+      auto-detects from Windows X: or UNC network references).
+      </li>
+
+      <li>
+      For web pages, it also allows you to select textual links/URLs in web
+      pages or edit boxes, and follow them as if they were real links. It will
+      always let you follow links and also analyses mailto: links.
+      </li>
+
+      <li>
+      It breaks down `mailto:' links (converts, e.g.,
+      mailto:someone@somesite.com to http://www.somesite.com), so you may visit
+      a related website.
+      </li>
+
+      <li>
+      It can `follow' javascript: links that would otherwise generate a pop-up
+      (e.g., http://www.kelkoo.co.uk/ - although they've recently changed some
+      of their links so that URL Link fails :-( I hope to work on that post
+      2.0).
+      </li>
+    </ul>
+
+    <h3>Custom search and replace</h3>
+    <p>
+    Custom search and replacements can be applied to the selection.  The
+    default settings are two values that were in earlier versions of URL Link
+    (for Thunderbird) and which can now be added to or replaced.  The
+    replacement is done after leading &amp; trailing rubbish has been
+    removed, and after all backslashes have been converted to forward
+    slashes.
+    <p>
+    The entry format in the preferences tab is
+    “searchRegExp||Replacement||regExpFlags”.  The final “||” and flags are
+    optional;  the most likely (JavaScript) flag you may want is 'g' for
+    “global” (or “replace-all”).  The replacement may contain the usual “$n”
+    search pattern references.
+    <p>
+    <i>E.g.</i>, you receive emails with Windows file links like
+    “\\server\share\file”.  However, you are on a Linux box with the Windows
+    share mapped to “/mnt/smb/username/share”.  You would need to add an
+    entry to the end of the list (note that backslashes have already been
+    converted and the default entries convert “//server/share” to
+    “file:///server/share”) of the form:
+    “file:///server/share||file:///mnt/smb/username/share”.
+    <p>
+    If you need to debug your expressions, add the special (to URL Link) RegExp
+    flag “D”, as in: ‘from||to||D’.  Then, URL Link will open an alert window
+    telling you what your expression is (“Conversion:”), what the selection is
+    at that point (“From:”) and what the expression has done to the selection
+    (“To:”).
+
+    <h3>Forthcoming changes</h3>
+    <ul>
+      <li>
+      Extend the custom search and replace when it is stable to allow arbitrary
+      JavaScript code to be run over the selection as well.
+      </li>
+      <li>
+      Maybe allowing some of the customised sub-menu items to be promoted to
+      the main menu.
+      </li>
+    </ul>
+
+    <!-- START DO NOT TRANSLATE -->
+    <h3>Translations</h3>
+    <p>
+    If you would like to help by translating URL Link to your native language,
+    you can either sign up to <a
+      href="http://www.babelzilla.org/">Babelzilla</a> and do it automatically,
+    or <a href="mailto:mozilla@fnxweb.com">email me</a> translated versions of
+    the data files you'll find <a href="http://www.fnxweb.com/data/urllink/">on
+      my website</a>.
+    </p>
+    <p>
+    Don't include this section of the help file, though!
+    <p>
+    <!-- END DO NOT TRANSLATE -->
+
+    <h3>Contact</h3>
+    <ul>
+      <li>
+      The author's <a href="http://www.fnxweb.com/software-mozilla">Mozilla page</a>.
+      </li>
+      <li>
+      URL Link's <a href="https://addons.mozilla.org/firefox/403/">official add-ons page</a>
+      </li>
+      <li>
+      <a href="mailto:mozilla@fnxweb.com">Email the author</a>
+      </li>
+    </ul>
+
+    <h3>Licence</h3>
+    <p>
+    This source code, like the Mozilla source, is licensed under a
+    disjunctive tri-licence giving you the choice of one of the three
+    following sets of free software/open source licensing terms:
+    </p>
+    <ul>
+      <li><a href="MPL-1.1.html">Mozilla Public License, version 1.1</a> or later</li>
+      <li><a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2.0</a> or later</li>
+      <li><a href="http://www.gnu.org/licenses/lgpl-2.1.html">GNU Lesser General Public License, version 2.1</a> or later</li>
+    </ul>
+
+    <p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01
+      Transitional" height="31" width="88"></a>
+    </p>
+  </body>
+</html>

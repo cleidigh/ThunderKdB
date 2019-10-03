@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+<!ENTITY % hctpBaseDTD    SYSTEM "h_base.dtd"          >  %hctpBaseDTD;
+<!ENTITY % brandDTD       SYSTEM "chrome://branding/locale/brand.dtd"        >	%brandDTD;
+<!ENTITY % optionDTD      SYSTEM "../locale/option.dtd">  %optionDTD;
+]>
+
+<overlay id="paneContent_overlay"
+		 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		 xmlns:html="http://www.w3.org/1999/xhtml" 
+		 >
+
+<prefpane id="paneContent" label="&tab.look.feel; 2" orient="vertical" flex="1" context="" helpTopicXXX="opt_look2" >
+<preferences>
+	<!-- 	bool,int,string,wstring,unichar 
+			'preference' will modify -> checkbox, colorpicker, radiogroup, textbox, listitem, listbox, and menulist. 
+	<preference id="xxxxxxxxxxxxxxx" name="" type="string" instantApply="true" />
+	-->
+	
+	<preference id="style.small_tabs"              name="extensions.hide_caption.plus.style.small_tabs"       type="string" instantApply="true" />
+	<preference id="style.small_tbars"             name="extensions.hide_caption.plus.style.small_tbars"      type="string" instantApply="true" />
+
+	
+	<preference id="home.enabled"                    name="extensions.hide_caption.plus.home.enabled"           type="bool"   instantApply="true" onchange="
+		HideCaption_opt.refresh_fx_buttonicons();
+		" />
+	<preference id="show_PanelUI_button_2"           name="extensions.hide_caption.plus.show_PanelUI_button_2"  type="string" instantApply="true" onchange="
+		" />
+        
+	<preference id="home.mainmenu_floating"          name="extensions.hide_caption.plus.home.mainmenu_floating" type="bool"   instantApply="true" onchange="
+		mydisable('home.floating_extrabox'        	, !this.value || this.disabled == true);
+        mydisable('home.floating_activeMillis'     	, !this.value || this.disabled == true);
+        mydisable('home.floating_inactiveMillis'   	, !this.value || this.disabled == true);
+		" />
+	<preference id="home.menuFloat_hStyle"           name="extensions.hide_caption.plus.home.menuFloat_hStyle" type="string"  instantApply="true" onchange="" />
+	
+	<preference id="home.floating_extrabox"          name="extensions.hide_caption.plus.home.floating_extrabox" type="bool"   instantApply="true" onchange="" />
+
+	<preference id="home.floating_activeMillis"      name="extensions.hide_caption.plus.home.floating_activeMillis"   type="int" instantApply="true" onchange="" />
+	<preference id="home.floating_inactiveMillis"    name="extensions.hide_caption.plus.home.floating_inactiveMillis" type="int" instantApply="true" onchange="" />
+	
+	<preference id="home.buttonicon_max"             name="extensions.hide_caption.plus.home.buttonicon_max"    type="string" instantApply="true" />
+	<preference id="home.buttonicon_nomax"           name="extensions.hide_caption.plus.home.buttonicon_nomax"  type="string" instantApply="true" />
+	<preference id="home.button_appear"              name="extensions.hide_caption.plus.home.button_appear"     type="string" instantApply="true"   onchange="
+			HideCaption_opt.opt_setAsDomAttribute(this);
+		" />
+
+	<preference id="fx_text_max"               name="extensions.hide_caption.plus.home.fx_text_max"     type="string" instantApply="true" onchange="HideCaption_opt.fx_but_changed(this, '', true );" /> 
+	<preference id="fx_text_nomax"             name="extensions.hide_caption.plus.home.fx_text_nomax"   type="string" instantApply="true" onchange="HideCaption_opt.fx_but_changed(this, '', false);" /> 
+	<preference id="fx_dropm_max"              name="extensions.hide_caption.plus.home.fx_dropm_max"    type="string" instantApply="true" onchange="HideCaption_opt.fx_but_changed(this, '', true );" /> 
+	<preference id="fx_dropm_nomax"            name="extensions.hide_caption.plus.home.fx_dropm_nomax"  type="string" instantApply="true" onchange="HideCaption_opt.fx_but_changed(this, '', false);" /> 
+	<preference id="fx_image_max"              name="extensions.hide_caption.plus.home.fx_image_max"    type="string" instantApply="true" onchange="HideCaption_opt.fx_but_changed(this, '', true );" /> 
+	<preference id="fx_image_nomax"            name="extensions.hide_caption.plus.home.fx_image_nomax"  type="string" instantApply="true" onchange="HideCaption_opt.fx_but_changed(this, '', false);" /> 
+
+	<preference id="customCss_homeDir"     	 	name="extensions.hide_caption.plus.style.customCss_homeDir"  		type="string" instantApply="true" /> 
+	<preference id="customCss_homeDir_failed" 	name="extensions.hide_caption.plus.style.customCss_homeDir_failed"	type="string" instantApply="true" 
+		onchange="document.querySelector('.customCss_homeDir__class').setAttribute('hc_hasSomething', (this.value!=null &amp;&amp; (this.value+'').length > 0)+'' );"  />
+	<!--  Later this can be added for files INSIDE addon!!!:  id="customCss_included"  -->
+	
+	
+	<preference id="fullscrButs_autohide"            name="extensions.hide_caption.plus.home.fullscrButs_autohide" 		 type="bool" instantApply="true" onchange="
+            mydisable(         'fullscrButs_autohide_domFs'     , this.value || this.disabled == true);
+			" />
+	<preference id="fullscrButs_autohide_domFs"      name="extensions.hide_caption.plus.home.fullscrButs_autohide_domFs" type="bool" instantApply="true" onchange="" />
+	<preference id="fullscrWar_Msg_small"            name="extensions.hide_caption.plus.home.fullscrWar_Msg_small" 		 type="bool" instantApply="true" onchange="" />
+
+	<preference id="fullscr_tr_duration_enter"     	 name="full-screen-api.transition-duration.enter"  				type="string" instantApply="true" />
+	<preference id="fullscr_tr_duration_leave"    	 name="full-screen-api.transition-duration.leave"  				type="string" instantApply="true" />
+
+
+	<preference id="vert_max"    	 				 name="extensions.hide_caption.plus.vert_max"  					type="string" instantApply="true" />
+	<preference id="vert_max.behavior"				 name="extensions.hide_caption.plus.vert_max.behavior"			type="string" instantApply="true" />
+
+</preferences>
+
+<box   orient="horizontal" flex="1" >
+ <box  orient="vertical"   flex="1"  class="hOptions_column" >
+
+
+<groupbox> <caption align="center" > 
+	<button type="menu" label="&brandShortName;"  class="hctp-appmenu-button-cls  noPointerEvents"  hcp_appbutton_style="fx_home_med.png" />
+	<label>&Options_Fx_Home_App_but;</label>
+  </caption>
+
+	<checkbox  class="pre_wrap"  id="hcp_home.enabled" preference="home.enabled" label="&check__hcp_home_enabled;&#10;&check__hcp_home_enabled_2;" flex="1"  style="" 
+			   tooltiptext="&tt__hcp_home_enabled;"   hc_flags="recom_true"
+			 />
+
+ <grid class="hc_grid  indent_1"> <!--  stretch  da un problema q los rows pueden invadir la col derecha!! -->
+  <rows>
+   <row align="baseline">
+
+    <label control="hcp_check_home.button_appear"  class="title_multiline_indent  multiline_title  pre_line"  >&Button_Style_Color;</label>
+    <hbox  style="-moz-margin-end: -11ch;">
+	 <menulist   id="hcp_check_home.button_appear"     preference="home.button_appear" >
+		<menupopup> <!-- menuitem-iconic-noaccel  !!! -->
+		  <menuitem class="menuitem-noaccel"   label="&Fx_default_orng;"        value="default"        />
+		  <menuitem class="menuitem-noaccel"   label="&Blue;"                   value="blue"         />
+		  <menuitem class="menuitem-noaccel"   label="&Green;"                 	value="green"          />
+		  <menuitem class="menuitem-noaccel"   label="&Transp_with_Personas;"  	value="lwtheme_transp" />
+		  <menuitem class="menuitem-noaccel"   label="&Transparent;"            value="transparent"    />
+		</menupopup> 
+	 </menulist>
+    </hbox>
+
+   </row>
+   <row  class="multiline">
+
+ 	<label control="hcp_home.buttonicon_max" class="title_multiline_indent  multiline_title  pre_line" >&Icon_Size_for_Maximized_win;</label>
+	<menulist   id="hcp_home.buttonicon_max"   preference="home.buttonicon_max"   hctp_appbutton="true" hctp_fx_isMax="true"  >
+	<!-- dz_images_autosize="true" -->
+
+		<hbox  flex="1"  class="menulist-label-box   menulistLabel-outerbox"> 
+			<button type="menu"  label="&brandShortName;"  class="hctp-appmenu-button-cls  isMax_true  noPointerEvents"  hcp_appbutton_style="fx_home_micro3.png" />
+			<!--  pongo el boton mas chico de previo-al-load() -->
+		</hbox>
+		<dropmarker class="showOn_windows" />
+	
+	  <menupopup >
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home.png"         />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_med0.png"     />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_med.png"     />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_small0.png"  />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_small.png"   />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_smaller.png" />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro.png"   />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro2.png"  />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro3.png"  />
+	  </menupopup> 
+	</menulist>
+	
+	<button    id="fx_more_options_max"  class="tt_info  tt_onlyme  style_shadow_1_std"  align="center"  label="&More_options_e;"  style="margin: 1px 3px;" 
+	        popup="fx_moreop_panel_max"   />
+ 	<panel     id="fx_moreop_panel_max"  class="tooltip_big  hc_smaller" type="arrow" flip="slide" position="rightcenter topcenter"  orient="vertical" >
+ 	  <vbox style="margin: 5px; font-weight: normal; ">
+ 		  
+    <label class="hc_caption  default_label" tooltiptext="&tt_ctn_fx_text;" >&ctn_fx_text;</label>
+	<textbox       preference="fx_text_max"    maxlength="180"  />  
+
+    <label class="hc_caption  default_label" tooltiptext="&tt_ctn_dropmarker;" >&ctn_dropmarker;</label>  
+	<menulist      preference="fx_dropm_max"  sizetopopup="none"  class="menulist_small  fx_special_1" >
+	  <menupopup >
+		<menuitem class="menuitem-iconic-noaccel"  label="&dm_auto;"	   		value="auto"        	/>
+		<menuitem class="menuitem-iconic-noaccel  showOn_windows"  label="&dm_auto_invtd;" 		value="auto inverted"   />
+		<menuitem class="menuitem-iconic-noaccel  showOn_windows"  label="&dm_icon1;"   		value="std"         	/>
+		<menuitem class="menuitem-iconic-noaccel  showOn_windows"  label="&dm_icon1_invtd;"		value="std inverted"    />
+		<menuitem class="menuitem-iconic-noaccel"  label="&dm_none;"   			value="none"         	/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&dm_old_default;"   	value=""      tooltiptext="&tt_old_default;"   	/>
+	  </menupopup> 
+	</menulist>
+
+    <label class="hc_caption  default_label"                                >&ctn_fx_image;</label> 
+	<!-- hc_caption="aaa"    editable="true" cambia los valores por los labels, ouch! -->
+	<menulist      preference="fx_image_max"   sizetopopup="none"  class="menulist_small  mitem_show_image  fx_special_1"  >
+	  <menupopup >
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon17;"   		
+			value="chrome://hidecaptionplus/skin/firefox-17.png  regular"   		
+			image="chrome://hidecaptionplus/skin/firefox-17.png"   		/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon18;"   		
+			value="chrome://hidecaptionplus/skin/firefox-18.png  regular"   		
+			image="chrome://hidecaptionplus/skin/firefox-18.png"   		/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon17_invtd;"	
+			value="chrome://hidecaptionplus/skin/firefox-17.png  inverted"
+			image="chrome://hidecaptionplus/skin/firefox-17.png#hc_inverted" 	  	/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon18_invtd;"	
+			value="chrome://hidecaptionplus/skin/firefox-18.png  inverted"
+			image="chrome://hidecaptionplus/skin/firefox-18.png#hc_inverted" 	  	/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon_classic;"   		
+			value="chrome://hidecaptionplus/skin/icon16.png  regular"   		
+			image="chrome://hidecaptionplus/skin/icon16.png"   			/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon_browser;"   		
+			value="chrome://branding/content/icon16.png  regular"   		
+			image="chrome://branding/content/icon16.png"   			/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_hc_icon;"   		
+			value="chrome://hidecaptionplus/skin/hcp_icon16.png  regular"   	
+			image="chrome://hidecaptionplus/skin/hcp_icon16.png"   		/>
+		<menuseparator />
+		<menuitem label="&custom_image; 1"  tooltip="tt_custom_image" 
+			value="{%configDir%}/Documents/hctp_config/but_custom1.png  regular" />
+		<menuitem label="&custom_image; 2"  tooltip="tt_custom_image" 
+			value="{%configDir%}/Documents/hctp_config/but_custom2.png  regular" />
+		<menuitem class="menuitem-iconic-noaccel"  label="&dm_none;"   			
+			value=""         	/>
+	  </menupopup>
+	</menulist>
+
+ 	  </vbox>
+ 	</panel>
+
+   </row>
+   <row  class="multiline">
+
+ 	<label control="hcp_home.buttonicon_nomax" class="title_multiline_indent  multiline_title  pre_line" >&Icon_Size_for_UnMaximized_win;</label>
+ 		
+	<menulist id="hcp_home.buttonicon_nomax" preference="home.buttonicon_nomax" hctp_appbutton="true" hctp_fx_isMax="false"  >
+	<!-- dz_images_autosize="true" -->
+
+		<hbox  flex="1"  class="menulist-label-box   menulistLabel-outerbox"> 
+			<button type="menu"  label="&brandShortName;"  class="hctp-appmenu-button-cls  isMax_false  noPointerEvents"  hcp_appbutton_style="fx_home_micro3.png" />
+			<!--  pongo el boton mas chico de previo-al-load() -->
+		</hbox>
+		<dropmarker class="showOn_windows" />
+
+		<!--  menuitem child:   <button type="menu" label="&brandShortName;" class="hctp-appmenu-button-cls"	/>  -->
+	  <menupopup >
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home.png"         />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_med0.png"     />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_med.png"     />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_small0.png"  />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_small.png"   />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_smaller.png" />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro.png"   />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro2.png"  />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro3.png"  />
+	  </menupopup> 
+	</menulist>
+	
+	<button    id="fx_more_options_nomax"  class="tt_info  tt_onlyme  style_shadow_1_std"  align="center"  label="&More_options_e;" style="margin: 1px 3px;" 
+	        popup="fx_moreop_panel_nomax"  />
+ 	<panel     id="fx_moreop_panel_nomax"  class="tooltip_big  hc_smaller" type="arrow" flip="slide" position="rightcenter topcenter"  orient="vertical" >
+ 	  <vbox style="margin: 5px; font-weight: normal; ">
+ 	  
+    <label class="hc_caption  default_label" tooltiptext="&tt_ctn_fx_text;" >&ctn_fx_text;</label>
+	<textbox       preference="fx_text_nomax"    maxlength="180"  />  
+ 	  
+    <label class="hc_caption  default_label" tooltiptext="&tt_ctn_dropmarker;" >&ctn_dropmarker;</label>  
+	<menulist      preference="fx_dropm_nomax"   sizetopopup="none"  class="menulist_small  fx_special_1" >
+	  <menupopup >
+		<menuitem class="menuitem-iconic-noaccel"  label="&dm_auto;"	   		value="auto"        	/>
+		<menuitem class="menuitem-iconic-noaccel  showOn_windows"  label="&dm_auto_invtd;" 		value="auto inverted"   />
+		<menuitem class="menuitem-iconic-noaccel  showOn_windows"  label="&dm_icon1;"   		value="std"         	/>
+		<menuitem class="menuitem-iconic-noaccel  showOn_windows"  label="&dm_icon1_invtd;"		value="std inverted"    />
+		<menuitem class="menuitem-iconic-noaccel"  label="&dm_none;"   			value="none"         	/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&dm_old_default;"   	value=""      tooltiptext="&tt_old_default;"   	/>
+	  </menupopup> 
+	</menulist>
+ 	  
+    <label class="hc_caption  default_label"                                >&ctn_fx_image;</label> 
+	<!-- hc_caption="aaa"    editable="true" cambia los valores por los labels, ouch! -->
+	<menulist      preference="fx_image_nomax"   sizetopopup="none"  class="menulist_small  mitem_show_image  fx_special_1"  >
+	  <menupopup >
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon17;"   		
+			value="chrome://hidecaptionplus/skin/firefox-17.png  regular"   		
+			image="chrome://hidecaptionplus/skin/firefox-17.png"   		/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon18;"   		
+			value="chrome://hidecaptionplus/skin/firefox-18.png  regular"   		
+			image="chrome://hidecaptionplus/skin/firefox-18.png"   		/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon17_invtd;"	
+			value="chrome://hidecaptionplus/skin/firefox-17.png  inverted"
+			image="chrome://hidecaptionplus/skin/firefox-17.png#hc_inverted" 	  	/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon18_invtd;"	
+			value="chrome://hidecaptionplus/skin/firefox-18.png  inverted"
+			image="chrome://hidecaptionplus/skin/firefox-18.png#hc_inverted" 	  	/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon_classic;"   		
+			value="chrome://hidecaptionplus/skin/icon16.png  regular"   		
+			image="chrome://hidecaptionplus/skin/icon16.png"   			/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_im_icon_browser;"   		
+			value="chrome://branding/content/icon16.png  regular"   		
+			image="chrome://branding/content/icon16.png"   			/>
+		<menuitem class="menuitem-iconic-noaccel"  label="&fx_hc_icon;"   		
+			value="chrome://hidecaptionplus/skin/hcp_icon16.png  regular"   	
+			image="chrome://hidecaptionplus/skin/hcp_icon16.png"   		/>
+		<menuseparator />
+		<menuitem label="&custom_image; 1"  tooltip="tt_custom_image" 
+			value="{%configDir%}/Documents/hctp_config/but_custom1.png  regular" />
+		<menuitem label="&custom_image; 2"  tooltip="tt_custom_image" 
+			value="{%configDir%}/Documents/hctp_config/but_custom2.png  regular" />
+		<menuitem class="menuitem-iconic-noaccel"  label="&dm_none;"   			
+			value=""         	/>
+	  </menupopup>
+	</menulist>
+ 	  
+ 	  </vbox>
+ 	</panel>
+	
+   </row>
+  
+  </rows>
+ </grid>			 
+
+
+ <hbox flex="1" class="baseline"  style="margin-top: 0.3em;  min-height:2.3em;">
+ 	<label   tooltiptext="&tt_Fx_Main_menu_but;"  class="default_label  hc_default  hc_caption_XXX"  flex="1" >&Fx_Main_menu_but;</label>
+	 <menulist  id="mlist__show_PanelUI_button_2"  preference="show_PanelUI_button_2"    class="hc_compact"   sizetopopup="none"  >
+		<menupopup>
+		  <menuitem class="menuitem-iconic-noaccel"  label="&FxMenu_always_fxdefault;" 		value="default"  	hc_flags="defau" 	/>
+		  <menuitem class="menuitem-iconic-noaccel"  label="&FxMenu_notif_badge;" 			value="badge_msg"     tooltiptext="&tt_FxMenu_notif_badge;" />
+		  <menuitem class="menuitem-iconic-noaccel"  label="&FxMenu_never;" 				value="never"                      	  	/>
+		</menupopup> 
+	 </menulist>
+ </hbox>
+
+</groupbox>
+
+<groupbox  align="stretch" >
+	 <checkbox flex="1" style="max-width: 52em;"    id="hcp_home.mainmenu_floating" preference="home.mainmenu_floating" 
+	 	label="&check__floatMenu;" 
+			tooltiptext="&tt__floatMenu;" /> 
+	
+	<hbox align="center" flex="1"  class="indent_1">
+	 <label  control="h_floating_activeMillis"   class="firstline_ind_wrap  default_label">&hover_activ_delay_time;  <html:span class="extrainfo">&p_milliseconds;</html:span> </label>
+	 <textbox id="h_floating_activeMillis"   type="number" value="0"   size="4" max="2000" min="0" preference="home.floating_activeMillis" />
+	
+	 <label  control="h_floating_inactiveMillis" class="firstline_ind_wrap  default_label">&deactivation_delay_time; <html:span class="extrainfo">&p_milliseconds;</html:span> </label>
+	 <textbox id="h_floating_inactiveMillis" type="number" value="100" size="4" max="2000" min="0" preference="home.floating_inactiveMillis" />
+	 <spacer  flex="50" />
+	</hbox>
+
+	<hbox align="center" flex="1"  class="indent_1">
+	 <checkbox  id="hcp_home.floating_extrabox" preference="home.floating_extrabox" label="&check__floatM_pageTitle;"  hc_flags="recom_true"  class="childPref_XX"  style="margin-top: 4px;"/>
+	 <spacer  flex="1" />
+	 <button  label="&button.Advanced;"  popup="panel_adv_menuFloat"  class="bottom_msg_cls  small  tt_info  tt_onlyme  style_shadow_1_std" flex="0" />
+	</hbox>
+
+ 	<panel     id="panel_adv_menuFloat"  class="hc_smaller"  type="arrow"  flip="slide" position="topcenter bottomright"  orient="vertical" >
+	 <label  class="hc_caption  default_label  strong" >&floatM_adv_options;</label>
+	 
+	 <label  class="hc_caption  default_label" >&floatM_style_title;</label>
+	 <menulist  id="mlist__floatM_hStyle"  preference="home.menuFloat_hStyle"    class=""  >
+		<menupopup>
+		  <menuitem class="menuitem-iconic-noaccel"  label="&floatM_style_default;" 		value="new16"  		hc_flags="defau" 	/>
+		  <menuitem class="menuitem-iconic-noaccel"  label="&floatM_style_captionColor;"	value="new16cap"      tooltiptext="&floatM_style_captionC_tt;" />
+		  <menuitem class="menuitem-iconic-noaccel"  label="&floatM_style_oldColor;"		value="old15"                   	  	/>
+		</menupopup> 
+	 </menulist>
+	</panel>
+	<!--  for bkg of floating menu!
+	<hbox> 
+	 <colorpicker type="button" color="#CC00F0" label="xxxxxxxxx" />
+	 <scale min="0" max="100" />
+	</hbox>
+	-->
+</groupbox>
+
+<groupbox  align="stretch" >
+	<caption align="center"  tooltip="_child" ><label>&Custom_style_files;</label><tooltip class="tooltip_big" >
+		<label>&Custom_style_files__tt;</label></tooltip></caption>
+	<vbox  align=""  class="customCss_homeDir__class" >
+		<hbox flex="1" >
+			<label class="hc_caption  default_label"  tooltip="tt_custom_styles_files" >&files_located_homedir;</label>
+			<spacer flex="1" />
+			<button oncommand="HCPlusLib.HcSingleton.CustomStyles_homeDir.startup();"  label="&Apply_changes;" 
+				class="	  small  style_shadow_1_std  strong"  style="margin-top: -4px; margin-bottom: -1px;" />
+		</hbox>
+		<textbox       preference="customCss_homeDir"    maxlength="300"    rows="2"
+			placeholder="file1.css,file2.css,..." />  <!--  multiline="false"  -->
+		<hbox flex="1" class="customCss_homeDir__failed"  style="width: 100%;" >
+			<label class="hc_caption  default_label" >&Custom_style_files__failed;</label>
+			<textbox  flex="1"     preference="customCss_homeDir_failed"   readonly="true"  class="plain  warning  strong" 
+				style="-moz-user-focus: ignore; margin-left: 0.3em !important; " />
+		</hbox>
+	</vbox>
+</groupbox>
+
+
+ </box>
+ <toolbarseparator  flex="0" />
+ <box  orient="vertical"  flex="1"  class="hOptions_column" >
+
+
+<groupbox orient="horizontal" > 
+ <caption align="center" ><label>&Styling_options_to_max_spc;</label></caption>
+
+<grid class="hc_grid"  flex="1"  style="margin-top: 2px;">
+ <columns>
+  <column flex="1" />
+  <column flex="1" />
+  <column flex="1" />
+ </columns>
+ <rows>
+  <row>
+	<label  tooltip="_child"  class="hc_default  hc_caption_b" >&label.R.class; &Smaller_Tabs_and_Tab_Bar;<tooltip  class="pre_line" >
+		<label>&tt_Smaller_Tabs_and_Tab_Bar;</label></tooltip></label>
+ 	<label  tooltip="_child"  class="hc_default  hc_caption_b" >&Smaller_Toolbars_and_buttons;<tooltip  class="pre_line" >
+ 		<label>&tt_Smaller_Toolbars_and_buttons;</label></tooltip></label>
+  </row>
+  
+  <row>
+
+	<menulist id="dummy_style.small_tabs"  preference="style.small_tabs"    class="hc_compact"  sizetopopup="none"  style="min-width: 32ch;">
+		<menupopup> <!--   menuitem-iconic-noaccel  !!!  -->
+		  <menuitem class="menuitem-iconic-noaccel" label="&No__default;" 			value="no"                      	 hc_flags="defau" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&Small_australis;"		value="always"	    			   					  /> 
+		  <menuitem class="menuitem-iconic-noaccel" label="&Small_near_Classic;" 	value="small_tabs_30_almost"		                  />
+		  <menuitem class="menuitem-iconic-noaccel" label="&Small_almost_Classic;" 	value="small_tabs_40_almost"		 hc_flags="recom" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&Small_Classic_0;" 		value="small_tabs_50_classic"		 hc_flags="recom"  />
+		  <menuseparator />
+		  <menuitem class="menuitem-iconic-noaccel" label="&likeClassic_mediumH;" 	value="small_tabs_44_midH"		                  	/>
+		  <menuitem class="menuitem-iconic-noaccel" label="&likeClassic_fullH;"  	value="small_tabs_48_fullH"		                  	/>
+		  <menuseparator />
+		  <menuitem class="menuitem-iconic-noaccel" label="&DEPREC_australis;"  	value="small_tabs_81_DEPRECATED" 	 hc_flags="deprecated"   tooltip="tt_smTabs_deprecated" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&DEPREC_almst_Clsc;"		value="small_tabs_91_DEPRECATED_alm" hc_flags="deprecated"   tooltip="tt_smTabs_deprecated" />
+		    <tooltip id="tt_smTabs_deprecated" class="pre_line"  ><label>&tt_smTabs_deprecated;</label></tooltip>
+		</menupopup> 
+	</menulist>
+	
+
+	<menulist id="dummy_style.small_tbars"  preference="style.small_tbars"  class="hc_compact"  sizetopopup="none"  style="min-width: 33.2ch;">
+		<menupopup> <!-- menuitem-iconic-noaccel  - dz_images_autosize="true"   -->
+		  <menuitem class="menuitem-iconic-noaccel" 					label="&No__default;" 		value="no"                         hc_flags="defau" />
+		  <menuitem class="menuitem-iconic-noaccel  showOn_Fx57orLater" label="&NEWe;   &Smaller_buttons;"	value="small_tbars57p_30  new57p"  hc_flags="recom"  tooltiptext="&optionForFx57plus;"  />
+		  <menuseparator                   class="  showOn_Fx57orLater" />
+		  <menuitem class="menuitem-iconic-noaccel  showOn_Fx40orLater" label="&Small;" 			value="small_tbars_11  newopt" />
+		  <menuitem class="menuitem-iconic-noaccel  showOn_Fx40orLater" label="&A_bit_smaller;"   	value="small_tbars_21_smaller  newopt" />
+		  <menuitem class="menuitem-iconic-noaccel  showOn_Fx40orLater" label="&Smaller_buttons;"	value="small_tbars_31_butIcons  newopt"    hc_flags="recom" />
+		  <menuseparator />
+		  <menuitem class="menuitem-iconic-noaccel" label="&bOld; &Small;" 				value="always"                     hc_flags="deprecated"  tooltip="tt_smallBars_oldOption" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&bOld; &A_bit_smaller;"   	value="small_tbars_20_smaller"     hc_flags="deprecated" />
+		  <menuitem class="menuitem-iconic-noaccel" label="&bOld; &Smaller_buttons;"	value="small_tbars_30_butIcons"    hc_flags="deprecated" />
+		    <tooltip     id="tt_smallBars_oldOption"  class=""  ><label>&tt_smallBars_oldOption;</label></tooltip>
+		  <menuseparator />
+		  <menuitem class="menuitem-iconic-noaccel  showOn_Fx40orLater  showOn_windows"  label="&Option_compat_only;" 
+		                                                                    	value="small_tbars_90_old_deprecated"  deprecated_option="true"  hc_flags="deprecated "
+		  		    tooltip="tt_smallBars_old_deprecated"  />
+		    <tooltip     id="tt_smallBars_old_deprecated"  class="pre_line"  ><label>&tt_smallBars_old_deprecated;</label></tooltip>
+		</menupopup> 
+	</menulist>
+
+  </row>
+ </rows>
+</grid>
+
+</groupbox>
+
+<box height="3" />
+
+<groupbox>
+ <caption><label>&FULL_SCREEN_mode_options;</label></caption>
+  <hbox class="baseline  inlineXX" flex="1"  tooltip="_child" >
+		<checkbox id="check_fullscrButs_autohide"       preference="fullscrButs_autohide"        flex="1"
+		 	label="&check_fullscrButs_autohide;"
+			/>
+		<tooltip class="pre_line" ><label>&tt_fullscrButs_autohide;</label></tooltip>
+  </hbox>
+  <hbox class="baseline  inlineXX" flex="1">
+		<checkbox id="check_fullscrButs_autohide_domFs" preference="fullscrButs_autohide_domFs"  flex="1"  class="childPref"  hc_flags="recom_true" 
+		 	label="&Autohide_in_FullScr_Videos;" />
+  </hbox>
+  <hbox class="baseline  inlineXX" flex="1">
+  		<checkbox id="check_fullscrWar_Msg_small"       preference="fullscrWar_Msg_small"        flex="1"    label="&Small_FScr_warn;"	/>
+  </hbox>
+
+  <label  class="default_label  strong  gr_caption"  tooltiptext="&tt__fullscr_tr_duration;"> &label__fullscr_tr_duration;</label> 
+  <hbox class="baseline  indent_1"   >
+	<label  class="default_label  multiline_title">&When_entering;</label>
+  	<menulist id="mlist__fullscr_tr_duration_enter"     preference="fullscr_tr_duration_enter"  class="hc_compact"  sizetopopup="none"  style="min-width: 20ch;"  flex="1">
+		<menupopup>
+		  <menuitem class="menuitem-noaccel"   					label="&None_p_fastest;" 		value="0 0"     	/>
+		  <menuitem class="menuitem-noaccel  showOn_windows"  	label="&Fast;"					value="30 0"    	/> <!-- fails on Linux mint --> 
+		  <menuitem class="menuitem-noaccel"   					label="&Fx_Default_p_slow;"   	value="200 200"  	/>
+		</menupopup> 
+	</menulist>
+	<label  class="default_label  multiline_title">&When_leaving;</label>
+  	<menulist id="mlist__fullscr_tr_duration_leave"     preference="fullscr_tr_duration_leave"  class="hc_compact"  sizetopopup="none"  style="min-width: 20ch;"  flex="1">
+		<menupopup>
+		  <menuitem class="menuitem-noaccel"   					label="&None_p_fastest;" 		value="0 0"     	/>
+		  <menuitem class="menuitem-noaccel  showOn_windows"  	label="&Fast;"					value="0 30"    	/> <!-- fails on Linux mint --> 
+		  <menuitem class="menuitem-noaccel"   					label="&Fx_Default_p_slow;"   	value="200 200"  	/>
+		</menupopup> 
+	</menulist>
+  </hbox>
+
+</groupbox>
+
+
+<!--  <label class="default_label" >&Msg__New_Feature_RC_versions;</label>  -->
+
+<hbox      class="hc_item   vertical_maxim_cls"    style="margin: 7px 0 2px 5px;"  >
+			  <box class="isBetaFeature" tooltiptext="&tt__isBetaFeature;" >
+			  	<label class="hc_caption" >&hc_isBetaFeature;</label>
+			  </box>
+</hbox>
+<groupbox  class="hc_item   vertical_maxim_cls"  >
+  <caption  popup="panel__vert_max_help"   orient="vertical"  class="hover_outline  " 
+          context="panel__vert_max_help" 
+          tooltip="tltip__vert_max_help" >
+  	<label                            >&VERTICAL_MAXIMIZE_gTitle;</label>
+    <label  class=" fnormal  fsmall " >&VERTICAL_MAXIMIZE_subTitle;</label>
+  </caption>
+  
+  <tooltip  id="tltip__vert_max_help"  class="tooltip_big  tt_big2"  onpopupshowing="return document.getElementById('panel__vert_max_help').getAttribute('panelopen') != 'true';" 
+       orient="vertical" >
+  		&VERTICAL_MAXIMIZE_tt__ALL;</tooltip>
+  <panel    id="panel__vert_max_help"  class="tooltip_big  tt_big2  hc_smaller" type="arrow" flip="slide" position="leftcenter bottomright" 
+       orient="vertical" >
+  		&VERTICAL_MAXIMIZE_tt__ALL;</panel>
+  
+  <hbox class="baseline  inlineXX" flex="1" style="margin-top: 3px;">
+    <label  control="mlist__vert_max"  class="default_label" >&vertMax_switch_title;</label>
+  	<menulist    id="mlist__vert_max"     preference="vert_max"  class="hc_compactXX"  flex="1"  style="min-width: 7ch;" >
+		<menupopup>
+		  <menuitem class="menuitem-noaccel"	label="&vertMax_no;" 		value="no"     	/>
+		  <menuitem class="menuitem-noaccel"  	label="&vertMax_yes;"		value="yes"   hc_flags="bold" 	/> 
+		</menupopup> 
+	</menulist>
+  </hbox>
+  
+  <hbox class="baseline  inlineXX" flex="1" style="margin-top: 1px;">
+    <label  control="mlist__vert_max_behavior"  tooltip="_child" class="default_label" >&vmBehave_TITLE;<tooltip><label>&tt_vmBehave_TITLE;</label></tooltip></label>
+  	<menulist    id="mlist__vert_max_behavior"     preference="vert_max.behavior"  cBefore="dummy"  class="hc_compact"  sizetopopup="none"  style="min-width: 36ch;" >
+		<menupopup>
+		  <menuitem class="menuitem-noaccel"  cBefore=" ↕" label="&vmBehave_default;" 		value="default top bottom resize"  hc_flags="defau  bold"  
+		      style="--cBefore_scale: 1.7; --cBefore_tranY: -3px; --cBefore_overflow: visible"     />
+		  <menuitem class="menuitem-noaccel"  cBefore="⇥"  label="&vmBehave_right;" 		value="right top bottom resize"    hc_flags="bold"  tooltiptext="&tt_vmBehave_right;"  	/>
+		  <menuitem class="menuitem-noaccel"  cBefore="⇤"  label="&vmBehave_left;" 			value="left top bottom resize"   	/>
+    	  <menuseparator />
+		  
+		  <menuitem class="menuitem-noaccel"  cBefore=" ⤒" label="&vmBehave_noSize;" 		value="default top"     		   	/>
+		  <menuitem class="menuitem-noaccel"  cBefore="⇥"  label="&vmBehave_top_right;" 	value="right top"     				/>
+		  <menuitem class="menuitem-noaccel"  cBefore="⇤"  label="&vmBehave_top_left;"  	value="left top"					/>
+		      	
+	      <menuseparator />
+		  <menuitem class="menuitem-noaccel"  cBefore=" ⤓" label="&vmBehave_bottom;"			value="default bottom"     			/>
+		  <menuitem class="menuitem-noaccel"  cBefore="⇥"  label="&vmBehave_bottom_right;" 	value="right bottom"     			/>
+		  <menuitem class="menuitem-noaccel"  cBefore="⇤"  label="&vmBehave_bottom_left;"  	value="left bottom"					/>
+
+	      <menuseparator />
+		  <menuitem class="menuitem-noaccel"  cBefore=" ⤒" label="&vmBehave_leftRight_top;"	value="left right top"			   hc_flags="bold"	/>
+		  <menuitem class="menuitem-noaccel"  cBefore=" ⤓" label="&vmBehave_leftRight_bot;"	value="left right bottom"			/>
+		  <menuitem class="menuitem-noaccel"  cBefore="↔"  label="&vmBehave_leftRight;"   	value="left right"					/>
+		</menupopup> 
+	</menulist>
+  </hbox>
+
+
+<!-- doble box p/ q sea como .default_label 
+  <vbox><vbox class="pre_line">  VERTICAL_MAXIMIZE_tt__ALL  </vbox></vbox>
+ -->
+
+</groupbox>
+
+
+<vbox flex="8" ></vbox>
+
+ </box>
+</box>
+
+<vbox flex="10" />
+
+
+<label class="extrainfo  firstlinepad  pre_line" flex="0" style="margin: 1px 5px 2px 3ch;" >&Easy_of_use__scr_corner__Fitts_law;</label>
+
+</prefpane>
+	 
+</overlay>

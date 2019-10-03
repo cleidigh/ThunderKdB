@@ -1,0 +1,2040 @@
+
+
+/* 	BEWARE!, this default ns makes non all-ns (*|*) selectors applied ONLY to this default ns.   
+	xxx_namespace    url( ... there.is.only.xul);
+*/
+
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+
+/* making equal <label> and <html:p> */
+/*
+label, 
+p {
+  margin-top: 1px;
+  margin-bottom: 2px;
+  -moz-margin-start: 6px;
+  -moz-margin-end: 5px;
+}
+*/
+
+/* ------------------ Beginning --------------------- */
+
+
+:root:not([hctp_isReleaseVersion="true"])  .showOn_releaseVer {
+	display: none !important;
+}
+:root[hctp_isReleaseVersion="true"]        .hideOn_releaseVer {
+	display: none !important;
+}
+.hideOn_releaseVer[hc_rcOnly]:before {
+	content:  attr(hc_rcOnly);
+	position: absolute;
+	
+	background-color: rgba(255,255,0,0.3);
+	
+	padding: 1px 2px;
+	border-radius: 3px;
+}
+
+
+.isBetaFeature {
+	background-color: rgba(255,255,0,0.3);
+	border-radius: 3px;
+	padding: 1px;
+
+	padding-left:  0px !important;
+	margin-left :  0px !important;
+}
+
+
+:root {
+	--color_needRestart: maroon;
+}
+
+
+groupbox {
+	-moz-box-align: start;
+	
+	padding-top   : 1px;
+	padding-bottom: 3px;
+	
+	margin-top   : 2px;
+}
+prefwindow[platformPlus="linux"]  groupbox {
+	margin-top   : 4px;
+}
+
+prefwindow[platformPlus="linux"]  .groupbox-body {
+  	-moz-padding-start: 2px;
+}
+
+
+
+/*   tooltip-help-icon ---- general   */
+
+/* :not(.tt_aeroglass) */
+
+:not(menulist):-moz-any([tooltiptext],[tooltip])		{	cursor: help !important;	}
+:not(menulist):-moz-any([tooltiptext],[tooltip])  label {	cursor: help !important;	} /*  ACA tengo q poner 'inherit'!  */
+
+prefwindow *[popup] 									{	cursor: pointer !important;	}
+prefwindow *[popup]  >  :-moz-any(label,description) 	{	cursor: inherit !important;	} /* inherit ! */
+
+menulist:-moz-any([tooltiptext],[tooltip]) { /* no agarra si lo pongo en .menulist-label-box o .menulist-label */ 
+	cursor: help !important;
+}
+menulist:-moz-any([tooltiptext],[tooltip])  menupopup { /* apago 'mi' cursor en el popup! */  
+	cursor: auto !important;
+}
+
+prefwindow[platformPlus="windows"]   *[tooltip].tt_hideOn_windows {
+	cursor: default !important;
+}
+
+
+:root {
+	--tt_opacity: 1;
+	--tt_gap_end:    14px; /* si quiero hacerlo dependiente de  .tt_wrap  por ej, tengo q sacarlo de los rules *width   */
+	--tt_gap_margin: .4ch; /* resulta en un poco de margen negativo para los parents NO label */
+}
+*:-moz-any([tooltiptext],[tooltip]):not(:hover) {
+	--tt_opacity: 0.7;
+}
+
+/* ONLY label */
+:not(menulist):not(menuitem):-moz-any([tooltiptext],[tooltip]):not(.tt_onlyme)                 > label:last-of-type,
+:not(menulist):not(menuitem):-moz-any([tooltiptext],[tooltip]):not(.tt_onlyme)   :not(tooltip) > label:last-of-type,
+            :-moz-any(label):-moz-any([tooltiptext],[tooltip]) {
+	--tt_gap_margin: 14px;
+	-moz-padding-end: calc( var(--tt_gap_margin) - .5ch);
+}
+
+/* button:not(.tt_info).tt_onlyme:-moz-any([tooltiptext],[tooltip])  >  .button-box:after  */
+:not(menulist):not(menuitem):-moz-any([tooltiptext],[tooltip]):not(.tt_onlyme)                 > label:last-of-type:after,
+:not(menulist):not(menuitem):-moz-any([tooltiptext],[tooltip]):not(.tt_onlyme)   :not(tooltip) > label:last-of-type:after,
+   :-moz-any(label,.tt_info):-moz-any([tooltiptext],[tooltip]):after {
+	content: url("chrome://hidecaptionplus/skin/opt/info-tip.png") !important; 
+		/* url("chrome://global/skin/icons/information-16.png");  display: -moz-box; */
+	line-height: 0.1;
+	
+	opacity: var(--tt_opacity) !important;
+	
+	display: -moz-box; /*  -moz-inline-box  */
+	margin-top: -3px;
+	
+	white-space: nowrap; /* solo con display - inline vd? */
+	
+	transform: scale(0.69)  translateY(3px)  translateX(0.5ch);
+	
+	width    : var(--tt_gap_end) !important;
+	min-width: var(--tt_gap_end) !important;
+	max-width: var(--tt_gap_end) !important;
+	margin-left : 0px;
+	margin-right: calc( -1 * var(--tt_gap_margin) - 0px );
+
+/*
+	outline: 1px solid orange;
+	outline-offset: 0px;
+*/
+}
+/**
+*|*.title_small:after {
+	transform: translateY(3px) scale(0.7) !important;
+	margin-left: .4ch !important;
+}
+**/
+*|*.title_multiline_center:after {
+	/* margin-right: -1.4ch; */
+}
+*|*.title_multiline_center {
+	/* margin-right:    1ch !important;   //tiene :after tb */ 
+}
+/* WARNING - DANGER !!! TOOLTIP-with-:after DOESNT WORK with [value] !!!!! */
+:not(menulist):not(menuitem):-moz-any([tooltiptext],[tooltip]):not(.tt_onlyme)                 > label[value],
+:not(menulist):not(menuitem):-moz-any([tooltiptext],[tooltip]):not(.tt_onlyme)   :not(tooltip) > label[value],
+            :-moz-any(label):-moz-any([tooltiptext],[tooltip])[value] {
+	background: orange;
+	color: red;
+    font-weight: bold;
+}
+prefwindow[platformPlus="windows"]                           *[tooltip].tt_hideOn_windows  label:after,
+prefwindow[platformPlus="windows"]   :-moz-any(label,.tt_info)[tooltip].tt_hideOn_windows:after { /* TODO: need testing */
+	display: none !important;
+}
+
+
+/*   tooltip-help-icon ---- for menulist   */
+
+menulist   menuitem:-moz-any([tooltiptext],[tooltip])             > .menu-iconic-left {
+	display: -moz-box !important;
+	-moz-box-ordinal-group: 1000 !important;
+	opacity: var(--tt_opacity) !important;
+	margin-left: -2ch !important;
+}
+menulist[sizetopopup="none"]
+           menuitem:-moz-any([tooltiptext],[tooltip])             > .menu-iconic-left {
+	margin-left: 0.1ch !important;
+}
+prefwindow[platformPlus="windows"]  menulist
+           menuitem[tooltip].tt_hideOn_windows                    > .menu-iconic-left {
+	display: none !important;
+}
+menulist   menuitem:-moz-any([tooltiptext],[tooltip])             > .menu-iconic-left  > .menu-iconic-icon {
+	list-style-image: url("chrome://hidecaptionplus/skin/opt/info-tip.png") !important;
+    height: auto !important;
+    width: auto !important;
+    
+    transform: scale(0.75);
+}
+
+
+/** --- better? version of tooltip help-icon right?? ----------------- (el after NO agarra los anon (xbl) objects vd? )
+  [el flex es para hacer espacio como necesitaria en los botones Fx, 
+    ... pero ahora ya no necesito!, probado en Fx38 y 45]
+   y los 2 'right' necesitaba con el flex, pero los dejo igual asi.
+   > y el label hijo ya tiene el flex, pero lo pongo para asegurar nomas
+menulist   menuitem:-moz-any([tooltiptext],[tooltip])   label.menu-iconic-text  {
+	-moz-box-flex: 1;
+}
+menulist   menuitem:-moz-any([tooltiptext],[tooltip])::after {
+	content: url("chrome://hidecaptionplus/skin/opt/info-tip.png") !important;
+	float: right !important;
+	text-align: right;
+
+	opacity: var(--tt_opacity) !important;
+	
+	-moz-margin-end  :  1px !important;
+	-moz-margin-start:  0ch !important;
+
+	display: -moz-inline-box;
+	transform: scale(0.69)  translateY(1.7px);
+}
+**/
+
+
+menulist   menuitem.hide_ellipsis   label.menu-iconic-text {
+	-moz-margin-end: -2ch !important;	
+}
+
+
+button:-moz-any([tooltiptext],[tooltip]) { 
+	-moz-box-align: center;
+}
+button:-moz-any([tooltiptext],[tooltip]):after { 
+	margin-left: -1px !important;
+	transform: scale(0.68) translateY(2.5px) !important;
+}
+
+
+/*  *NOT* AERO - GLASS Section! */
+@media not all and (-moz-windows-compositor) {
+	*[tooltip].tt_aeroglass{
+		cursor: default !important;
+	}
+	*[tooltip].tt_aeroglass   label:after,
+	:-moz-any(label,.tt_info)[tooltip].tt_aeroglass:after{ /* TODO: need testing */
+		display: none !important;
+	}
+	menulist   menuitem[tooltip].tt_aeroglass     > .menu-iconic-left {
+		display: none !important;
+	}
+	tooltip.tt_aeroglass{
+		display: none !important;
+		/* -moz-popup; */
+	}
+
+	/* generic class */
+	*|*.showOn_aeroGlass {
+		display: none !important;
+	}
+}
+
+
+menulist:after {
+	content: url("chrome://hidecaptionplus/skin/opt/info-tip.png") !important; 
+	
+	display: -moz-inline-box; /*  -moz-box  */
+	
+	width:        21px;
+	margin-left: -21px;
+		
+	line-height: 0.1;
+	
+	white-space: nowrap; /* solo con display - inline vd? */
+	
+	transform: scale(0.69) translateY(1px);
+	
+	-moz-box-align: center;
+	-moz-box-ordinal-group: 1001;
+
+	visibility: hidden;
+	
+	/* 
+	position: absolute;
+	overflow-x: hidden; le jode al align center...
+	-moz-box-pack: end;
+	float: right;
+	outline: 1px solid red;
+	outline-offset: 0px;
+	*/
+}
+menulist:-moz-any([tooltiptext],[tooltip]):after {
+	visibility: visible !important;
+}         
+menulist:-moz-any([tooltiptext],[tooltip]):not(:hover):after {
+	opacity: 0.4 !important;
+}
+
+
+
+/* avoids warnings */
+einfo, z {
+	display: -moz-inline-box; 
+	display: inline-block;
+}
+html|einfo , 
+html|z     {
+	display: inline;
+}
+
+
+/* ------ main section ----------------------------- */
+
+dialog,
+prefwindow{
+	min-height: 35em !important; 
+	height    : 55.0em !important;
+
+	width     : 1020px !important;
+	
+	line-height: 1.3em;
+}
+prefwindow[platformPlus="windows"] {
+}
+prefwindow[platformPlus="linux"] {  /* for LINUX ! - adv panel needs more space */
+	/* width     : 95em !important; */  /* este NO toma para el tamanho de apertura! (debe ser pq se setea con delay dps del aranque ) */
+}
+
+
+
+:root {								--hc_font_size: 12px;	}
+:root[platformPlus="linux"] {		--hc_font_size: 11px;  	}
+
+@media    ( min-resolution : 1.19dppx) {
+	:root {							--hc_font_size: 11px;	}
+	:root[platformPlus="linux"] {	--hc_font_size: 10px;  	}
+}
+
+
+:root {								
+	--hFontSize_85: 85%;	
+	--hFontSize_90: 90%;	
+	--hFontSize_90_mline: 90%;	
+	--hFontSize_93: 93%;	
+}
+:root[hctp_locale^="zh"]  ,  /* CHINESE... */
+:root[hctp_locale^="ja"]  {  /* JAPANESE... */
+	--hFontSize_85: 100%;	
+	--hFontSize_90: 100%;	
+	--hFontSize_90_mline: 97%;	/* util para dpi > 1 */
+	--hFontSize_93: 100%;	
+}
+
+
+
+/* SPANISH... */
+:root[hctp_locale^="es"]   :-moz-any(#tt_PageKeys, #tt_LineKeys, #tt_advSelTab, #tt_go_BackForw) {
+	max-width: 52em;
+}
+
+
+
+:root ,
+dialog     ,
+prefwindow ,
+tooltip  , 
+menulist ,  
+menulist > menupopup > :-moz-any(menuitem, menucaption, menu)  ,
+.dialog-button ,
+hc_dummyWithoutComma {
+	font-size: var(--hc_font_size) !important;
+}
+
+
+
+prefwindow > windowdragbox ,
+prefwindow > hbox {
+	
+	max-width: 1070px;
+		
+	box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.4);
+}
+
+.prefWindow-dlgbuttons {
+	padding-top   : 0px;
+	padding-bottom: 0px;
+}
+
+#hc_bottom_box {
+	padding: 1px 11px 1px 6px;
+	box-shadow: 0px 0px 0px 600px rgba(255,255,255,0.5) inset;
+	line-height: 1.2em;
+}
+#hcBut_SeeReadme {
+}
+
+
+.prefWindow-dlgbuttons   .dialog-button {
+	margin-top   : 1px;
+}
+
+
+/* [anonid="selector"] */
+prefwindow  > *  > radiogroup.paneSelector   radio  > image{
+	/* display: none; */
+}
+prefwindow  > *  > radiogroup.paneSelector   radio[pane] {
+  padding: 3px 7px 3px !important;
+  -moz-image-region: auto !important;
+  
+  -moz-box-orient: horizontal !important;
+}
+radio[pane=paneMain] {
+  list-style-image: url("chrome://hidecaptionplus/skin/tabs/main.png"); 
+}
+radio[pane=paneTabs] {
+  list-style-image: url("chrome://hidecaptionplus/skin/tabs/toolbars.png"); 
+}
+radio[pane=paneContent] {
+  list-style-image: url("chrome://hidecaptionplus/skin/tabs/lookFeel.png"); 
+}
+radio[pane=paneApplications] {
+  list-style-image: url("chrome://hidecaptionplus/skin/tabs/lookFeel2.png"); 
+}
+radio[pane=paneAdvanced] {
+  list-style-image: url("chrome://hidecaptionplus/skin/tabs/advanced.png"); 
+}
+radio[pane=paneOther] {
+  list-style-image: url("chrome://hidecaptionplus/skin/tabs/main.png"); 
+}
+
+
+
+tabbox  > * {
+	padding-top: 2px;	padding-bottom: 2px;
+}
+tabbox  > *  > *{ /* prefpane */
+	padding-top: 2px;	padding-bottom: 2px;
+}
+
+/* --- prefpane   > vbox  (matched MY VBOXes inside prefpane)  --- */
+prefpane   > .content-box {
+	overflow: auto;
+	
+	/* min-height: 30em; <- no anda el scroll */
+}
+prefpane  {
+	/* min-height: 37em;  disables auto-scrollbars in vbox! */
+	padding-top: 4px;
+	padding-bottom: 1px;
+}
+
+/*  Darth Madara - MDC menulist talk page:
+	menulist with *image* in menuitem elements doesn't work for me.
+	I've done a fix for this to work: 
+	(in css, 'dz_images_autosize' is optional for better back compatibility, tested in Fx3.5.8, 3.6.4, 4.0.1)
+*/
+menulist[dz_images_autosize="true"] > menupopup > menuitem > .menu-iconic-left{
+	display: -moz-box;
+}
+menulist[dz_images_autosize="true"] > menupopup > menuitem     .menu-iconic-icon{
+  width: auto;
+  height: auto;
+}
+
+
+
+.default_label:not(.not_preLine) {
+	white-space: pre-line;
+}
+
+/*
+.options_radio_vert
+
+radiogroup > p,
+groupbox > p,
+p.extrainfo,
+*/
+radiogroup      > label:not(.default_label),
+groupbox > hbox > label:not(.default_label),
+groupbox > vbox > label:not(.default_label),
+groupbox        > label:not(.default_label),
+label.child_label
+{
+	padding-left: 2em;
+	color: #000077;
+}
+groupbox  radio  label{
+	padding-left: 0px;
+	color: inherit;  /* supports DARK theme also */
+}
+*|*.label_h1{
+	font-weight: bold;
+}
+
+
+/* BEWARE affecting menulist or Fx-button inside <caption>*/
+caption > label,
+.caption_title{
+	white-space: pre-line;
+}
+
+
+groupbox caption,
+.caption_title{
+	font-weight: bold;
+}
+groupbox caption {
+	margin-left: 4px;
+	-moz-box-align: baseline;
+}
+/* q la pos sea IGUAL si hay LABEL o no en el caption!! */
+groupbox caption > label:FIRST-CHILD {  
+	margin-left: 0px;
+}
+
+groupbox caption menulist{
+	font-weight: normal;
+}
+groupbox caption label.extrainfo,
+groupbox caption label  einfo,
+groupbox caption label  *|*.extrainfo{
+		font-weight: normal;
+}
+
+groupbox  radiogroup + label + checkbox,
+groupbox  radiogroup +       checkbox{
+	padding-left: 1.4em;
+}
+
+/* ----- disabled  stuff ! ----- */
+  /*  radiogroup[disabled="true"] + label + checkbox,  <-- better to disable explicitly 'child' checkboxes */
+radiogroup[disabled="true"] + label,
+  checkbox[disabled="true"] + label,
+     radio[disabled="true"]  label,
+  checkbox[disabled="true"]  label  {
+	opacity: 0.6;
+}
+
+label > checkbox[disabled="true"] + * ,
+label >    radio[disabled="true"] + * {
+	opacity: 0.6;
+	color: grayText;
+}
+
+
+menulist[disabled="true"]{
+	opacity: 0.6;
+}
+
+*|*[disabled_color="true"] {
+	opacity: 0.4;
+}
+
+
+einfo,
+label.extrainfo,
+label.extrainfosize,
+*|span.extrainfo,
+*|span.extrainfosize
+{
+	font-size: var(--hFontSize_90);
+}
+einfo,
+label.extrainfo,
+*|span.extrainfo
+{
+	color: #000077;
+}
+tooltip  einfo:LAST-CHILD {
+	margin-top: 0.6em;
+}
+
+
+label.inline  /* these are for the XBL generated ones right? */
+{
+	padding-left: 0px;
+	margin-left: 0px;
+	display: inline;
+	vertical-align: bottom;
+	padding-top: 4px;
+}
+
+label.warning,
+*|span.warning
+{
+	color: #500000;
+}
+
+
+/* extra LEFT indentation for 1st line! */
+*|*.firstlinepad:before{  
+	content: "";
+	margin-left: -2ch;
+}
+
+/* ANOTHER .firstline_xxx class! */
+*|*.firstline_ind,		
+*|*.firstline_ind_wrap {		
+	margin-left: 2ch;
+	line-height: 1.2em;
+}
+*|*.firstline_ind_wrap {
+	-moz-box-flex: 1;
+	
+	white-space: pre-line;
+}
+*|*.firstline_ind {
+	white-space: nowrap; /* this with <br> prevents HORIZONTAL SCROLL BAR in  hardware accelerated video! */
+}		
+*|*.firstline_ind:before,
+*|*.firstline_ind_wrap:before {
+	/* content: "\22C5"; \25B8 right-triangle \2022 - &bull; \2023 - triangle bullet , needs TWO spaces at end ...*/
+	content: "\2022  ";
+	font-size: 110%;
+	margin-left: -1.30ch;
+}
+
+/* menulist[disabled="true"] showing current info! */
+menulist.menulist_info{	color: black ! important;
+}
+menulist.menulist_info   >  dropmarker{	visibility: hidden;  /* display: none; <- destroys frame, so can affect .js code? */
+}
+
+/* Bottom message! */
+label.bottom_msg_cls{
+	padding-left: 0px;
+	margin-top   :  -4px;
+    /* margin-bottom: 0.4em; */
+    
+	white-space: pre-line;
+}
+label.bottom_msg_cls  .margin_l{
+	/* margin-left: -2.1ch; */
+}
+*|*.foot_mark{
+	padding: 0px .2em 0px .3em;
+	font-weight: bold;
+	color: var(--color_needRestart);
+	/* 
+	color: blue; 
+	border: 1px solid blue;
+	*/
+}
+
+
+
+
+prefwindow[platformPlus="windows"]    *|*.hideOn_windows
+{
+	display: none;
+}
+
+prefwindow[platformPlus="linux"]    	*|*.hideOn_fx4tbar_hidden,
+prefwindow:not([platformPlus="linux"])	*|*.hideOn_fx4tbar_shown
+{
+	display: none;
+}
+
+prefwindow:not([platformPlus="windows"])    *|*.showOn_windows          ,
+prefwindow:not([platformPlus="windows"]):not([platformPlus="linux"])    
+                                            *|*.showOn_windows_or_linux {
+	display: none;
+}
+
+
+
+/*  Section only for TESTS! --------------------------------------------------------------- */
+
+/*
+
+*|*.hideOn_windows, 
+*|*.hideOn_fx4tbar_hidden,
+*|*.hideOn_fx4tbar_shown, 
+*|*.showOn_windows,
+*|*.showOn_XXXXXX
+{
+	background-color: cyan;		color: blue; 	outline: 1px solid blue;	-moz-appearance: none;
+}
+prefwindow[platformPlus="windows"]    *|*.hideOn_windows {
+	background-color: orange;	color: red; 	outline: 1px solid red;		-moz-appearance: none;
+}
+
+prefwindow[platformPlus="linux"]    	*|*.hideOn_fx4tbar_hidden,
+prefwindow:not([platformPlus="linux"])	*|*.hideOn_fx4tbar_shown {
+	background-color: orange;	color: red; 	outline: 1px solid red;		-moz-appearance: none;
+}
+prefwindow:not([platformPlus="windows"])    *|*.showOn_windows {
+	background-color: orange;	color: red; 	outline: 1px solid red;		-moz-appearance: none;
+}
+
+*/
+
+/* END Section only for TESTS! --------------------------------------------------------------- */
+
+
+
+
+
+/* ------------------ DIALOG ELEMENTS --------------------- */
+
+
+*|*.baseline {
+	-moz-box-align: baseline;
+}
+*|*.inline {
+	display: inline;
+}
+*|*.warning {
+	color: #BB0000 !important;
+}
+
+/*
+.groupbox-title {
+	-moz-box-pack: center !important;
+}
+*/
+
+label.hcp_title { /* see also .default_label */
+	font-weight: bold;
+	white-space: pre-line;
+}
+
+
+
+*|*.std_custom { /* SPAN with: standard & custom words*/
+	font-style: italic;
+}
+
+
+
+textbox[type="number"] > *|*.textbox-input-box {
+	margin-left: -1ch;
+}
+
+textbox[disabled="true"] {
+	opacity: 0.6;
+}
+
+
+/* WARNING - DANGER !!! TOOLTIP-with-:after DOESNT WORK with [value] !!!!! */
+label[value]{ 
+/*	color: red;
+	background: orange;
+	outline: 3px solid red !important;
+*/	
+}
+
+
+tooltip  html|br {
+	margin-bottom: 0.4em;
+}
+
+menulist  menuitem[selected="true"] {
+	box-shadow     : 0pt 0pt 80px rgba(0, 0, 192, 0.1) inset 
+}
+
+
+
+tooltip {
+	white-space: pre-line;
+}
+
+
+*|*.title_small {
+	font-size: var(--hFontSize_85);
+	line-height: 1em;
+	/* text-align: center; */ 
+
+	white-space: pre-line;
+}
+label.title_small {
+    -moz-margin-start: 3px;
+	-moz-margin-end  : 3px;
+}
+
+
+*|*.nowrap {
+	white-space: nowrap;
+}
+
+
+/* fallback for MAKING THIS VISIBLE if overlay / binding FAILED! */
+colorpickplus {
+	min-width : 20px;
+	min-height: 12px;
+	-moz-appearance: button;
+}
+
+
+prefwindow:not([dz_adv_sysborder~="0"]):not([platformPlus="linux"])   *|*.disableOn_sysborder {
+	opacity: 0.5;
+}
+
+prefwindow:not([dz_fx4_titlebar="ti_unmaximized"])   *|*.enableOn_fx4Titlebar_inUnmaximized {
+	display: none;
+}
+
+
+/* if Customizable buttons are ENABLED!! */
+prefwindow[     dz_adv_sysbut_winappear=""]    *|*.hideOn__sysbut_winappear_none {	display: none !important;	}
+prefwindow:not([dz_adv_sysbut_winappear=""])   *|*.showOn__sysbut_winappear_none {	display: none !important;	}
+/* from browser.css - glass OWN system buttons enabled , right? ... */
+@media (-moz-windows-compositor) {
+  @media (-moz-os-version: windows-vista),
+         (-moz-os-version: windows-win7),
+         (-moz-os-version: windows-win8) {
+		 
+    prefwindow[dz_adv_sysbut_winappear=""]    *|*.obscureOn__sysbut_winappear_none ,
+    prefwindow[dz_adv_sysbut_winappear=""]    *|menulist[preference^="close_button_act"] {
+		opacity: 0.6 !important;  
+    }
+  }
+}
+
+
+checkbox[checked="true"]:not([disabled="true"]) > image.checkbox-check , 
+radio[  selected="true"]:not([disabled="true"]) > .radio-check-box1
+{
+	box-shadow: 0px 0px 1.5px 1px highlight;
+}
+
+
+
+.menulist_small           {
+	font-size: var(--hFontSize_90);
+}
+.menulist_small  menuitem {
+	font-size: 100%;
+}
+
+
+/* legacy or development options checkboxes */
+prefwindow:not([dz_print_debug="true"])         *|*.showOn_printDebug            	checkbox:not(:active):not(:focus)     ,
+prefwindow:not([dz_print_debug="true"])         *|*.showOn_printDebug            	checkbox:not(:active):not(:focus) + * {
+	display: none;
+    /**  visibility: collapse;  queda invisible y hace wrap forzado del texto y provoca scrollbar!  **/
+}
+/**
+ --- NECESARIO pq este LABEL  tenia dentro un <HTML:SPAN> 'rebelde' q hacia wrap a full y provocaba vertical-scrolling-bar a nivel de .content-box!!
+prefwindow[dz_adv_xxxxxx="true"]                *|*.showOn_xxxxx   				checkbox:not(:active):not(:focus) + *|*.showOn_sibling {
+	display: none;  
+}
+**/
+
+
+prefwindow[dz_use_caption="null"]               .use_caption_mode__showOn_nonDefault { /*  never   */
+	visibility: collapse;
+}
+
+
+
+/* esta APAGADO en el XUL mismo (style attr) */
+prefwindow:not([hcp_sys_floatbars_enable="true"])   .showOn_sys_floatbars_enable  {		display   : none     !important;	}
+prefwindow[hcp_sys_floatbars_enable="true"]         .showOn_sys_floatbars_enable  {		display   : -moz-box !important;	}
+
+/* eg. NOT for Pale Moon */
+prefwindow[hcp_sys_floatbars_ALLOWED="true"]        .showOn_sys_floatbars_ALLOWED {
+	display   : -moz-box !important;
+}
+
+
+prefwindow:not([hcp_sys_DynamicBars_enable="true"]) .showOn_sys_DynamicBars_enable  {	display   : none     !important;	}
+prefwindow[hcp_sys_DynamicBars_enable="true"]       .showOn_sys_DynamicBars_enable  {	display   : -moz-box !important;	}
+
+/* using ROOT here to override eg: '.hideOn_releaseVer' */
+:root[hcp_sys_DynamicBars_enable="true"]       		.show_IF_sys_DynamicBars_enable {	display   : -moz-box !important;	}
+
+
+
+
+
+prefwindow:not([hcp_sys_DynamicBars_enable="true"])   .enableOn__hcp_sys_DynamicBars_enable  ,
+prefwindow:not([hcp_sys_floatbars_enable="true"])     .enableOn__hcp_sys_floatbars_enable    {
+	opacity: 0.75 !important;  background-color: rgba(0, 0, 0, 0.12);  border-radius: 4px;
+}
+
+/* Fx57 */
+prefwindow:not([hctp_isFx57plus="true"]) .showOn_Fx57orLater  {	display   : none     !important;	}
+
+
+*|*.groupbox_align {
+	padding: 2px 6px;	
+}
+
+/* 1) FIX  para un problema bien extranho de aparicion de scrollbars en el 'parent' (paso con .content-box)
+   2) Esto jodia cuando el checkbox es visible ('comia una parte').  Ahora vi la causa real: , es el html:span 'rebelde' dentro del label que estaba en 'collapsed'
+.parent_scrollbar_fix {
+	overflow-y: auto;	
+}
+*/
+
+*|*.strong {
+	font-weight: bold;
+}
+
+
+*|*.fnormal {
+	font-weight: normal;
+}
+
+*|*.fsmall {
+	font-size: var(--hFontSize_90);
+}
+
+
+*|*.extrabold  b {
+    font-size: 110%;
+    line-height: 1; /* removes extra height */
+}
+
+
+prefwindow[platformPlus="linux"]   groupbox {
+  /* -moz-appearance: none !important; */
+	outline: 2px groove ThreeDFace !important;
+	outline-offset: 0px;
+	-moz-outline-radius: 6px !important;
+}
+prefwindow[platformPlus="linux"]   toolbarseparator {
+	-moz-appearance: none !important;
+	border-left: 2px groove ThreeDFace !important;
+}
+
+
+bull {
+	margin: 0px .2ch  0px .7ch;
+	display: inline;
+}
+bull:before {
+	content: "\2022";
+	font-size: 173%;
+	line-height: 0.1;
+	display: -moz-inline-box;
+	transform: translateY(2px); /* solo anda con -moz-*-box? */
+}
+
+*|b {
+	display: inline;
+	font-weight: bolder;
+}
+i {
+	display: inline;
+	font-style: italic;
+	margin-left : 0.3ch;
+	margin-right: 0.2ch;
+}
+
+
+:root[     hctp_isInsideFrame="true"]    *|*.hideOn_insideFrame {	display: none !important;	}
+:root:not([hctp_isInsideFrame="true"])   *|*.showOn_insideFrame {	display: none !important;	}
+
+:root[     isAustralis="true"]           *|*.hideOn_Australis {	display: none !important;	}
+:root:not([isAustralis="true"])          *|*.showOn_Australis {	display: none !important;	}
+
+
+radio:not([pane]):hover ,
+checkbox:hover,
+.hover_outline:hover {
+    outline: 1px dotted rgba(0,0,0,0.3);
+    -moz-outline-radius: 3px;
+}
+
+/* In WINDOWS: NICE visual help for focused elements!! (win 7) */
+@media (-moz-windows-default-theme) {
+  prefwindow[platformPlus="windows"]   checkbox:focus:not(:-moz-focusring)                    > .checkbox-label-box ,
+  prefwindow[platformPlus="windows"]   menulist:focus:not(:-moz-focusring):not([open="true"]) > .menulist-label-box {
+	outline: 1px dotted rgba(0,0,0,0.3);
+	outline-offset: -1px;
+  }
+}
+
+
+beta {
+	background-color: rgba(255,255,0,0.5);
+	color: maroon;	
+	display: inline;
+}
+
+checkbox[hc_need_restart="true"]  label.checkbox-label:before {
+	content: "[R]  ";
+	color: var(--color_needRestart);
+	font-weight: bold;
+	/** text-shadow: 1px 1px 1px rgba(255,255,255,0.8);  **/
+}
+
+*.needRst {
+	font-weight: bold;
+	color: var(--color_needRestart);
+	-moz-margin-end: 0.7ch;
+}
+
+checkbox.childPref {
+	-moz-padding-start:1.5em;
+	margin-top: 0px;
+}
+
+
+/* Audio selection stuff --------------- */
+
+scale.volume::before {	content: "-"; font-size: 140%; vertical-align: middle; }
+scale.volume::after  {	content: "+"; font-size: 140%; vertical-align: middle; }
+
+.tranform_volume {
+	transform: scale(0.75); 
+	transform-origin: 2% 50%; 
+	margin-right: -4ch;
+}
+
+
+button.small {
+	min-width: 2em;
+	margin: 0px 3px;
+	font-size: var(--hFontSize_85);
+}
+button.small  .button-box {
+	padding: 0px 2px;
+	margin-top   : -1px;
+}
+button.small.multiline    label{
+	margin-top   :  0px;
+	margin-bottom:  0px;
+	
+	line-height: 1.03em;
+	/* orient="vertical" */
+}
+
+
+/* --- panel --- */
+panel.hc_smaller   .panel-arrowcontent {
+  	padding: 7px;
+}
+@media (-moz-windows-default-theme) {
+}
+
+panel.hc_smaller   .panel-arrowcontent {
+    box-shadow: 2px 2px 5px hsla(210,4%,10%,.9);
+}
+
+
+.style_shadow_1_std {
+	box-shadow: 2px 2px 4px hsla(0, 0%, 50%, 0.7);
+}
+.style_shadow_1_std.small {
+	box-shadow: 1px 1px 3px hsla(0, 0%, 50%, 0.7);
+}
+
+
+.close_but_action {
+	/* -moz-box-align: center; */
+	margin-top   : 2px;
+	margin-bottom: 2px;
+}
+.close_but_action  .mouse_but_txt {
+	margin-top   :  1px;
+	margin-bottom:  1px;
+	
+	margin-left  :  0.7ch;
+	margin-right : -0.1ch;
+	
+	line-height: 1em;
+	font-size: var(--hFontSize_90_mline);
+}
+.close_but_action  .mouse_but_txt::before {
+	content: "";
+	margin-left: -0.6ch;
+}
+
+grid.actions_list  column.but_actions {
+	-moz-appearance: groupbox;
+	/* margin-right: 5px; */
+}
+
+grid.actions_list  row > *:FIRST-CHILD + * ,
+grid.actions_list  row > *:FIRST-CHILD + * + * {
+	margin: 1px 2px !important;
+}
+
+/* LESS margin in linux - the 'appearance' have GREAT borders (5 or 6 px!) */
+prefwindow[platformPlus="linux"]   grid.actions_list  row > *:FIRST-CHILD + * ,
+prefwindow[platformPlus="linux"]   grid.actions_list  row > *:FIRST-CHILD + * + * {
+	margin: 0px 1px !important;
+}
+
+
+
+grid.actions_list  row > *:nth-child(1)     {	-moz-box-ordinal-group: 1 !important;	}
+grid.actions_list  row > *:nth-child(2)	    {	-moz-box-ordinal-group: 3 !important;	}
+grid.actions_list  row > *:nth-child(3)     {	-moz-box-ordinal-group: 2 !important;	}
+grid.actions_list  row > *:nth-child(4)     {	-moz-box-ordinal-group: 4 !important;	}
+grid.actions_list  row > *:nth-child(4) ~ *	{	-moz-box-ordinal-group: 5 !important;	}
+
+/** safety (paranoid) check ... 
+grid.actions_list  menulist:not([preference^="close_button_"]):not([preference^="fxbut_"]) {
+	outline: 2px solid maroon !important; 
+}
+**/
+/**
+grid.actions_list  menulist[preference^="close_button_"] {
+	box-shadow: 0 0 1px rgba(255, 0, 0, 0.5); 
+}
+grid.actions_list  menulist[preference^="fxbut_"] {
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.3); 
+}
+**/
+
+
+grid.actions_list  row.line_before {
+	border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/**
+#box_special_divider_line__parent {
+	position: relative;
+}
+#box_special_divider_line {
+	border-top: 1px solid rgba(0,0,0,0.4);
+	
+	font-size: var(--hFontSize_90);  ..... igual q los menulist
+	--hctp_2row_width: 107.5ch;
+	
+	position: absolute;
+	width: calc(var(--hctp_2row_width));
+	transform: translateX(calc(-1*var(--hctp_2row_width))) translateY(-0.7px);
+	-moz-margin-start: -7px;
+}
+**/
+
+
+
+/**
+	outline: 2px solid orange !important;
+	outline-offset: -2px;
+	-moz-outline-radius: 3px;
+**/
+
+grid.actions_list  row {
+	margin-top   :  0px !important;
+	margin-bottom:  0px !important;
+}
+.actions_list  row.title{
+	font-weight: bold;
+	border-radius: 3px;
+	
+	background-color: rgba(0, 0, 0, 0.1);
+	border-bottom: 1px groove hsla(0, 0%, 50%, 1);
+	
+	margin-top: 0px !important;
+	
+	white-space: pre-line;
+}
+
+
+#box_outer_actions {
+	-moz-box-align: start;
+}
+
+
+menulist > menupopup > menuseparator {
+	margin-left: -5ch;
+}
+menulist.but_action > menupopup > menuseparator {
+	margin-top   : 0.2ch;	
+	margin-bottom: 0.1ch;
+}
+
+menulist > .menulist-label-box {
+	margin-top   : 0px;	
+	margin-bottom: 0px;
+}
+
+menuitem[deprecated_option="true"] {
+	box-shadow: 0 0 50px rgba(170,0,0,0.1) inset;
+}
+
+
+:root:not([hctp_isFx40orLater="true"])  .showOn_Fx40orLater {
+	visibility: collapse;
+}
+/** NEEDED to 'destroy' menuitem, for not showing when using arrow keys on menulist to change items  **/
+:root:not([hctp_isFx40orLater="true"])  menuitem.showOn_Fx40orLater { 
+	display: none;
+}
+
+
+/*   DEBUG checkbox ...   */
+checkbox#cbox_print_debug  .checkbox-label::after {
+	content:" 📢 "; /** "🎶 🔊 📣" **/ 
+	display: -moz-inline-box;
+	transform: scale(1.5) rotate(-10deg);
+	transform-origin: -20% 40%;
+	 
+	visibility: hidden;
+} 
+checkbox#cbox_print_debug:hover  .checkbox-label::after {
+	visibility: visible;
+}
+
+.pre_wrap {	white-space: pre-wrap; }
+.pre_line {	white-space: pre-line; }
+
+.h_disabled { opacity: 0.4; }
+
+
+/* dynamic style of menuitem, etc ---------------  */
+
+:root {
+	--color_recommended		: #007800;
+	--shadw_recommended		: 0.5px 0.5px 1px rgba( 0, 250,   0, 0.50);
+	--shadw_recommended_st	: 0.5px 0.5px 2px rgba( 0, 250,   0, 0.90);
+	 
+	--color_default    		: #0000df;
+	--shadw_default    		: 0.5px 0.5px 1px rgba( 0,   0, 250, 0.35);
+	--shadw_default_st 		: 0.5px 0.5px 2px rgba( 0, 200, 250, 0.99);
+	
+	--color_invalid    		: rgb(220,0,0);
+	--shadw_invalid    		: 0.5px 0.5px 1px rgba(90,   0,   0, 0.4);
+	
+	--color_deprecated 		: rgb(128,0,0);
+	--shadw_deprecated 		: 0.5px 0.5px 1px rgba(90,   0,   0, 0.4);
+}
+
+/***   ya funciona!!
+:root[dz_action_closebut_mouseClick="true"]   menulist[value="closeWithHistory"]  .menulist-label,
+:root[dz_action_closebut_mouseClick="true"]   menuitem[value="closeWithHistory"] {
+	color      : var(--color_invalid) !important;
+	text-shadow: var(--shadw_invalid) !important;
+}
+***/
+
+menulist[hc_flags~="defau"     ]   .menulist-label ,
+menuitem[hc_flags~="defau"     ]  					{		text-shadow: var(--shadw_default_st);	}
+menulist[hc_flags~="recom"     ]   .menulist-label ,
+menuitem[hc_flags~="recom"     ]					{		text-shadow: var(--shadw_recommended_st);	}
+
+.is_defau,
+menulist[hc_flags~="defau"     ]:-moz-any(:not(:focus), [open="true"])   .menulist-label ,
+menuitem[hc_flags~="defau"]:not([_moz-menuactive="true"]) {	color      : var(--color_default);
+															text-shadow: var(--shadw_default);		}
+
+.is_recom,
+menulist[hc_flags~="recom"     ]:-moz-any(:not(:focus), [open="true"])   .menulist-label ,
+menuitem[hc_flags~="recom"]:not([_moz-menuactive="true"]) {	color      : var(--color_recommended);
+															text-shadow: var(--shadw_recommended);		}
+
+menulist[hc_flags~="deprecated"]:-moz-any(:not(:focus), [open="true"])   .menulist-label ,
+menuitem[hc_flags~="deprecated"]:not([_moz-menuactive="true"]) {color      : var(--color_deprecated);
+																text-shadow: var(--shadw_deprecated);	}
+
+/* media: analog as in menulist.css  */
+@media (-moz-windows-default-theme) {
+  @media not all and (-moz-os-version: windows-xp) {
+	menulist[hc_flags~="defau"     ]  .menulist-label {		color      : var(--color_default);
+															text-shadow: var(--shadw_default);		}
+	menulist[hc_flags~="recom"     ]  .menulist-label {		color      : var(--color_recommended);
+															text-shadow: var(--shadw_recommended);	}
+	menulist[hc_flags~="deprecated"]  .menulist-label {		color      : var(--color_deprecated);
+															text-shadow: var(--shadw_deprecated);	}
+  }
+}
+
+menulist[hc_flags~="bold"     ]   .menulist-label ,
+menuitem[hc_flags~="bold"     ]					{		font-weight: bold;	}
+
+menulist[hc_flags~="dim"      ]   .menulist-label ,
+menuitem[hc_flags~="dim"      ]					{		font-style: italic;  color: graytext; }
+
+
+checkbox[hc_flags="recom_true" ][checked="true"] {			color      : var(--color_recommended);
+															text-shadow: 0.5px 0.5px 1px rgba( 0, 250,   0, 0.17);		}
+
+/** bajo intFlags por ahora, a ver q se me ocurre mas adelante ... [TENGO q poner el attributo en el rootElem aca!] 
+:root[dz_z_sys_intFlags~="recom_false"]
+       checkbox[hc_flags="recom_false"][checked="true"] {	color      : var(--color_deprecated);
+															text-shadow: var(--shadw_deprecated);		}
+**/
+
+menulist[hc_flags~="beta"]    ,
+menuitem[hc_flags~="beta"]:not([_moz-menuactive="true"]) {	box-shadow: 0 0 1px #ff8000, 0 0 2px #ff8000 inset;
+	border-radius: 3px;		}
+
+
+menulist[hc_flags~="deprecated"][hc_flags~="IMMINENT"] { 	box-shadow: 0 0 8px #ff0000, 0 0 3px #ff0000 inset;	}
+menuitem[hc_flags~="deprecated"][hc_flags~="IMMINENT"] {	box-shadow: 0 0 4px #ff0000 inset;	}
+.deprec_imminent                                       {	box-shadow: 0 0 6px #ff0000, 0 0 2px #ff0000 inset;  padding: 2px 3px; border-radius: 3px; }
+
+
+/* hide 'closeWithHistory' for WHEEL in NON windows! (doesn't work on LINUX, need testing in Mac ) */
+prefwindow:not([platformPlus="windows"])  menulist:-moz-any([preference^="close_button_act_wheel"],[preference^="fxbut_act_wheel"])[value="closeWithHistory"]  .menulist-label,
+prefwindow:not([platformPlus="windows"])  menulist:-moz-any([preference^="close_button_act_wheel"],[preference^="fxbut_act_wheel"])   menuitem[value="closeWithHistory"] {
+	color     : red !important;
+	visibility: collapse !important;
+	display: none !important; /* este hace falta para navegar bien con cursor-keys */
+}
+
+
+/** small menulists --- widths' related to [sizetopopup="none"]  **/
+menulist.but_action {
+	width: 40ch ! important;
+	font-size: var(--hFontSize_90) !important;
+}
+menulist.but_action   .menulist-label {
+  	-moz-margin-end  : -3.0ch !important;
+}
+menulist.but_action   menupopup {
+	min-width: 51ch;
+}
+menulist.but_action   :-moz-any(menuitem, menucaption) {
+	font-size: 100% !important;
+	-moz-padding-start: 2px !important;
+  	-moz-padding-end  : 0px !important;
+}
+menulist.but_action   menuitem  .menu-iconic-text {
+  	-moz-padding-end: 0px;
+}
+
+
+menulist menupopup .mtitle:not(:FIRST-CHILD) {
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	margin-top: 4px;
+}
+menulist menupopup .mtitle {
+	margin-bottom: 2px;
+	
+	box-shadow: 0 0 40px rgba(100, 100, 100, 0.22)  inset;
+	/*
+	background-color: rgba(0, 0, 0, 0.10);
+	 */
+	
+	border-radius: 3px;
+	font-weight: bold;
+	font-style: italic;
+	
+	opacity: 0.65;
+}
+menulist menupopup .mtitle  label {
+	margin: -1px 2px 1px 6px !important;
+}
+
+
+/* misc. mlists */
+menulist[sizetopopup="none"].hc_compact  {
+	-moz-box-flex: 1;
+	min-width: 27ch;
+}
+menulist[sizetopopup="none"].hc_compact   .menulist-label {
+  	-moz-margin-end  : -1.7ch !important;
+}
+menulist[sizetopopup="none"].hc_compact  >  menupopup {
+	min-width: inherit;
+}
+
+#actions_tooltip_group  tooltip {
+	white-space: pre-line;
+}
+
+/* pg & pg3  have both ... */
+pg0, pg3,
+pg1:not(:first-of-type), 
+ pg:not(:first-of-type) {	padding-top: 1.5em;		}
+pg, pg2, pg3            {	margin-left: 1.5ch;		}
+
+tooltip  html|hr{	margin-bottom: 2px;		}
+
+
+#label_info_hctp_version:-moz-any([value*="pre"],[value*="b"],[value*="a"]) {
+	font-weight: bolder;
+	color: #A65300;
+}
+
+:root    {	--ttBig_width: 45em;	}
+.tt_big2 {	--ttBig_width: 50em;	} /* este 'class-word' es para AGREGAR al otro */
+
+tooltip.tooltip_big                    ,
+panel:not([type="arrow"]).tooltip_big  {  
+	max-width: calc(var(--ttBig_width) + 5em);
+	white-space: pre-line;
+}
+:-moz-any(panel,tooltip).tooltip_big > :-moz-any(label,description) {
+	width    : var(--ttBig_width);
+	max-width: var(--ttBig_width);
+	white-space: pre-line;
+	font-weight: normal;
+}
+
+
+
+label.tinysubtitle {
+	line-height: 0.76em !important;
+	margin-top   : 0px !important;
+	margin-bottom: 0px !important;
+}
+z.tiny {
+	font-size: var(--hFontSize_90);	
+	font-weight: normal;
+	margin: -2px 0px;  /* no veo efecto (por ser inline vd?) pero dejo igual */
+}
+
+
+.at_start {
+	-moz-box-align: start;
+	-moz-box-pack : start;
+}
+.align_end {
+	-moz-box-align: end;
+}
+.pack_end {
+	-moz-box-pack: end;
+}
+
+.lineTop {
+	border-top: 1px solid black;
+}
+
+.mtop_0 {
+	margin-top: 0px;
+}
+
+
+label.hc_caption   ,
+label.hc_caption_b {
+	margin: 0px 2px -1px 4px;
+
+	white-space: pre-line;
+}
+label.hc_caption_b {
+	font-weight: bold;
+}
+
+
+menulist.fx_special_1 {
+	/* width: 24ch ! important; */
+	min-width: 28ch;
+}
+menulist.fx_special_1   .menulist-label {
+  	/* -moz-margin-end  : -3ch !important; */
+}
+menulist.fx_special_1   menupopup {
+	/* min-width: 30ch; */
+}
+
+
+/* menuitems with images  */
+menulist.mitem_show_image  > .menulist-label-box   {
+	min-height: 20px; /* 18 + 2 borders */
+}
+menulist.mitem_show_image  > .menulist-label-box   image.menulist-icon {
+	margin-top:    0px;
+	margin-bottom: 0px;
+	min-height: 16px;
+	min-width:  16px; /* avoid most height changes when selecting ... */
+}
+menulist.mitem_show_image  >  menupopup > menuitem > .menu-iconic-left {
+	display: -moz-box !important;
+	-moz-margin-end: 3px;
+}
+menulist[image$="#hc_inverted"] > .menulist-label-box   image.menulist-icon ,
+menuitem[image$="#hc_inverted"] > .menu-iconic-left     image {
+	filter: invert(1);
+}
+
+
+
+
+
+/**
+*[preference][h_changed="true"] {
+	box-shadow: 0px 0px 6px blue, 0px 0px 4px blue inset !important; 
+} 
+*[preference]:not([h_changed]) {
+	transition: box-shadow ease-out 0.4s;
+}
+**/
+
+
+/*** seccion vieja:
+
+-- FIRST-LETTER/LINE solo anda en el texto hijo directo de un tooltip (sin <label>, etc).  feb-2016: ANDA con display:block por ej!
+*:FIRST-LINE   {
+	background: orange !important;
+	margin-left: 4em !important;
+
+	margin-top : 1em !important;
+	padding-top: 2em !important;
+}
+*:FIRST-LETTER {
+	background: red !important;
+	margin-left: 4em !important;
+
+	margin-top : 1em !important;
+	padding-top: 2em !important;
+}
+
+
+menupopup {
+	-moz-appearance: none !important;
+	display: block !important;
+}
+***/
+
+
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgTooltips"]    *:not(colorpickplus):not(menulist):not(.onlyTTPopup)[tooltiptext]::after {
+	content: attr(tooltiptext) !important;
+	
+	-moz-appearance: tooltip !important;
+	margin: 0px 8px 4px 4px !important;
+	padding: 1px 4px !important;
+	
+	display: block !important;
+	line-height: 1.4em !important;
+	opacity: 1 !important;
+	-moz-box-ordinal-group: 2100;
+	transform: none !important;
+	
+	white-space: pre-wrap !important;
+	
+	max-width: 39em !important;
+	min-width: 15em !important;
+	width: auto !important;
+	
+	/* from tooltip rule */
+	border: 1px solid InfoText !important;
+	background-color: InfoBackground !important;
+	color:            InfoText       !important;
+	font: message-box !important;
+	
+	
+	font-weight: normal !important;
+	/* font-size: 100% !important; */
+	
+	-moz-box-flex: 100 !important;
+	
+	clear:both !important;
+	
+	text-shadow: 0px 0px 20px #00d2ff !important;
+}
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgTooltips"]    :-moz-any(checkbox, .bottom_msg_cls)[tooltiptext]::after {
+	display: -moz-groupbox !important;
+}
+
+
+prefwindow#hcp_options_window:-moz-any([dz_z_sys_intFlags~="dlgTooltips"],[dz_z_sys_intFlags~="dlgPopups"]) {
+	width: 1364px !important;
+}
+prefwindow#hcp_options_window:-moz-any([dz_z_sys_intFlags~="dlgTooltips"],[dz_z_sys_intFlags~="dlgPopups"]) > :-moz-any(windowdragbox, hbox) {
+	max-width: none !important;
+}
+
+
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgTooltips"]    *:not(#bottom_pset) > tooltip {
+	display: -moz-box !important;
+	margin:   11px 10px 18px 12px !important;
+	position: relative !important;
+}
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgTooltips"]    *:not(#bottom_pset) > tooltip:not([id]) { /* asi sale el tt abajo de su label */
+	display: block !important;
+}
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgTooltips"]    tooltip::before {
+	content: "id: "attr(id) !important;
+	display: -moz-inline-box !important;
+
+	background-color: rgba(255, 255, 129, 0.75);
+	border-radius: 3px;
+	padding: 0px 2px;
+	line-height: 13px;
+	
+	position: absolute;
+	transform: translateY(-18px);
+	
+	color:                     InfoText       !important;
+	text-shadow: -1px 1px 2px  InfoBackground !important;
+}
+/*
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgTooltips"]    tooltip:not(.pre_line):not(.pre_wrap) {
+	outline: 3px solid blue;
+	outline-offset: -2px;
+}
+*/
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgTooltips"]    :-moz-any(pg,pg0,pg1,pg2) {
+	outline: 3px solid red;
+	outline-offset: -1px;
+}
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgTooltips"]:not([dz_z_sys_intFlags~="dlgPopups"])    menupopup {
+	min-height: 150px;
+}
+prefwindow#hcp_options_window:-moz-any([dz_z_sys_intFlags~="dlgTooltips"],[dz_z_sys_intFlags~="dlgPopups"])    menupopup > .popup-internal-box {
+	overflow: visible !important;
+	background-color: inherit !important;
+}
+
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgTooltips"]    radiogroup.paneSelector:before {
+	content: "Internal option 'dlgTooltips' is active!! \A     See homepage for details. "; /* \A  */
+	font-size: 120%;
+	font-weight: bold;
+	margin: 2px 10px 0px 2px !important;
+	
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	padding: 4px 7px;
+	box-shadow: 0 0 6px orange;
+
+	display: -moz-box;
+		
+	white-space: pre;
+}
+
+/**  dlgPopups  **/
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgPopups"]    :-moz-any(:not(.but_action):not(.no_dlgPopups), #mlist__fxbut_act1_primary_dblclk) > menupopup:not(.textbox-contextmenu):not(#hc_recom_and_defaults) {
+	display: -moz-box !important;
+	max-height: none !important;
+	max-width : none !important;
+}
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgPopups"]    menulist:not(.but_action)  {
+	max-height: none !important;
+	max-width : none !important;
+}
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgPopups"]    menulist:-moz-any([tooltip],[tooltiptext])::after {
+	content: "" !important;
+	min-width: 0px  !important;
+	display  : none !important;
+}
+prefwindow#hcp_options_window[dz_z_sys_intFlags~="dlgPopups"]    menulist:not(.but_action)   .menulist-label-box {
+	min-width: 10ch !important;
+	max-width: 25ch !important;
+}
+
+.showOn_dlgTooltips ,
+.showOn_dlgNotifs   {
+	display: none;
+}
+/** no uso por ahora al final ...
+prefwindow#hcp_options_window:-moz-any([dz_z_sys_intFlags~="dlgTooltips"],[dz_z_sys_intFlags~="dlgPopups"])    .showOn_dlgTooltips {
+	display: -moz-box !important;
+	box-shadow: 0 0 7px orange;
+}
+**/
+prefwindow#hcp_options_window:-moz-any([dz_z_sys_intFlags~="dlgTooltips"],[dz_z_sys_intFlags~="dlgPopups"],[dz_z_sys_intFlags~="dlgNotifs"])    .showOn_dlgNotifs {
+	display: -moz-box !important;
+	box-shadow: 0 0 7px orange;
+}
+
+prefwindow#hcp_options_window:-moz-any([dz_z_sys_intFlags~="dlgTooltips"],[dz_z_sys_intFlags~="dlgPopups"],[dz_z_sys_intFlags~="dlgNotifs"])   
+		:-moz-any(caption, label, description, y, z, b, i, einfo, .tiny) {
+	-moz-user-select: text;	
+}
+
+
+/***  nuevo: para revisar a full los textos, etc!  
+	  (en los .hideOn_XXX comentar el display:none ) 
+
+.hideOn_windows {
+	
+}
+***/
+
+/* PANELS OPENED! -- devel flag!  ---  agregar dps:   #fx_moreop_panel_max, #fx_moreop_panel_nomax  ?? 
+*/
+prefwindow#hcp_options_window:-moz-any([dz_z_sys_intFlags~="moreOptions"], [dz_z_sys_intFlags~="dlgTooltips"])   :-moz-any(#panel_act_more_opt) { 
+	display: -moz-box !important;
+	opacity: 1 !important;
+	transform: none !important;
+	margin: 0 10px 10px !important;
+}
+
+
+panel  label.hc_caption:not(:first-of-type) ,
+panel  .hc_item:not(:first-of-type) {
+	margin-top: 0.7em;
+}
+
+.hc_item {
+	-moz-box-align: start;
+}
+
+
+
+
+grid.hc_grid > rows > row {
+	-moz-box-align: baseline;
+}
+grid.hc_grid > rows > row.multiline {
+	-moz-box-align: center;
+}
+
+
+grid.hc_grid.stretch > rows > row {
+	outline: 3px solid red;
+}
+grid.hc_grid > rows > row > label:not(.hc_default){
+	font-weight: bold;
+	font-size: var(--hFontSize_93);
+}
+
+.indent_1 {
+	margin-left: 2.2ch;
+}
+
+/**
+.flex_with_childs {
+	-moz-box-flex: 1;
+	flex: 1;
+}
+.flex_with_childs > * {
+	-moz-box-flex: 1;
+	flex: 1;
+}
+**/
+
+.hOptions_column {
+	-moz-box-flex: 1;
+	flex: 1;
+	
+	width: 550px;		
+}
+
+.hOptions_column  +  toolbarseparator {
+	margin-bottom: 2px;
+	opacity: 0.8;
+}
+
+
+.title_multiline_indent::before {
+	content: "";
+	margin-left: -0.8ch;
+}
+
+.multiline_title {
+	line-height: 1em;	
+}
+
+
+groupbox > caption ,
+.gr_caption {
+	-moz-padding-start: 3px;
+	-moz-padding-end  : 2px;
+	border-radius: 4px;
+	/*	
+	box-shadow: 0px 0px 0px 100px rgba(255,255,255, 0.4 ) inset, 0px 0px 0px 1px rgba(0, 0, 0, 0.1 );  
+	*/
+	box-shadow: 0px 0px 0px 100px rgba(  0,  0,  0, 0.06) inset, 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 0px 0px 1px rgba(255,255,255, 0.5) inset;
+}
+groupbox > caption {
+	margin : 0px 4px;
+	padding-top   : 0px;
+	padding-bottom: 0px;
+}
+
+
+caption.h_flex ,
+caption.h_flex > label {		-moz-box-flex: 1;	}
+
+menulist.h_flex {				-moz-box-flex:  1;	}
+menulist.h_flex  +  spacer { 	-moz-box-flex: 20;	}
+
+
+/* 'good' FLEX  CAPTIONS!!!  */ 
+groupbox:not(.noFlex)  >  .groupbox-title::after     {	-moz-box-flex: 50;  display: -moz-box;  content: "";  }
+groupbox:not(.noFlex)   caption                      {	-moz-box-flex: 1;	}
+groupbox:not(.noFlex)   caption > label:not(.noFlex) {	-moz-box-flex: 1;	}
+
+
+*|*.subNote {
+	margin : 5px 3ch 3px;
+	padding: 1px 1ch;
+	outline: 1px solid rgba(0,0,100,0.3);
+	-moz-outline-radius: 4px;
+}
+
+
+/* MULTILANGUAGE ! */
+#pnl_botTransNotes .lin1 {
+	font-weight: bold;
+	width: 42ch;
+}
+
+#pnl_botTransNotes .lin2 {
+	margin-top   : 0.4em; 
+	margin-bottom: 0.6em;
+	
+	width: 47ch;
+}
+
+#pnl_botTransNotes button ,
+#pnl_botTransNotes button  .button-box,
+#pnl_botTransNotes button  label {
+	-moz-box-align: start;
+	-moz-box-pack: start;
+	
+	-moz-box-flex: 1;
+}
+#pnl_botTransNotes button  label > y {
+	min-width: 135px;
+	-moz-box-pack: end;
+	text-align: right;
+	display: -moz-inline-box; display: inline-block;
+}
+#pnl_botTransNotes button  label > z {
+	-moz-padding-start: 15px;
+	font-style: italic;
+	display: -moz-inline-box; display: inline-block;
+}
+#pnl_botTransNotes button.strong  label > z {
+	-moz-padding-start: 14px;
+}
+#pnl_botTransNotes .sublin1 {
+	margin-top: 1.2em; 
+}
+
+
+
+#hcBut_SeeReadme   .button-box {
+	padding: 0px 3px !important;
+}
+
+#title_ttip_actions {
+	max-width: 22ch; 
+}
+#mlist_ttip_actions {
+	--mlist_tt_ac: 22ch; 
+	min-width: 16ch !important;
+	max-width: var(--mlist_tt_ac) !important; 
+	width    : var(--mlist_tt_ac) !important;	
+}
+
+
+
+/**  .vertical_maxim_cls :   NOT for mac 
+      KEEP IN SYNC with MAIN.CSS!!  **/
+:root:not([hcp_platformPlus="windows"]):not([hcp_platformPlus="linux"])   .vertical_maxim_cls {	display: none !important;	}
+
+
+
+/**  [cBefore]  section! , usado en MENUITEMs por ahora **/
+menuitem[cBefore] {
+	padding-top   : 2px;
+	padding-bottom: 2px;
+}
+:root,
+[cBefore] { /* NEEDED reset at EACH level!! */
+	--hctp_bTop   : 1px dotted;	
+	--hctp_bBottom: 1px dotted;	
+	--hctp_bLeft  : 1px dotted;	
+	--hctp_bRight : 1px dotted;	
+}
+[cBefore][value ~= "top"   ] { --hctp_bTop   : 3px solid; }
+[cBefore][value ~= "bottom"] { --hctp_bBottom: 3px solid; }
+[cBefore][value ~= "left"  ] { --hctp_bLeft  : 3px solid; }
+[cBefore][value ~= "right" ] { --hctp_bRight : 3px solid; }
+
+@media (-moz-windows-default-theme) {
+  /* cuando un titulo mas arriba hace wrap , los menulists se achican! */
+  menulist[cBefore] {
+	min-height: 25px;
+  }
+}
+
+
+menulist[cBefore]  .menulist-label-box ,
+menuitem[cBefore] {
+	-moz-box-align: center; /*  redundante para asegurar  el centrado del :before */
+}
+menulist[cBefore]  .menulist-label-box:before ,
+menuitem[cBefore]:before {
+	content: "";
+	line-height: 0.1;
+	
+	display: -moz-box;
+	vertical-align: middle;  /* no vi q ayude, pero lo dejo igual */
+
+	border-color: gray;
+		
+	border-top   : var(--hctp_bTop);
+	border-bottom: var(--hctp_bBottom);
+	border-left  : var(--hctp_bLeft);
+	border-right : var(--hctp_bRight);
+	
+	width    : 22px;
+	max-width: 22px;
+	height    : 19px;
+	/* max-height: 19px;  esto no pq deja des-centrado en el menulist */
+
+	margin: -4px -1px;
+	-moz-margin-end: 8px;
+}
+[cBefore]:last-of-type:before {
+	overflow: hidden;
+}
+
+/**
+:root {
+	--cBefore_scale: 2.1;
+	--cBefore_tranY: -1px;
+	--cBefore_lineh: 0.95;
+	--cBefore_overflow: hidden;
+}
+[cBefore]:before_XXXX {
+	content: attr(cBefore);
+
+	line-height: var(--cBefore_lineh);
+	
+	display: -moz-box;
+	
+	-moz-box-align: center;
+	-moz-box-pack : start;
+	vertical-align: middle;
+	
+	margin: -8px 0px;
+	width: 5ch;
+	
+	white-space: nowrap;
+	
+	transform: scale(var(--cBefore_scale))  translateY(var(--cBefore_tranY));
+	transform-origin: center left;	
+
+	overflow: var(--cBefore_overflow); 
+}
+**/
+/**
+	[display: -moz-box;]   		se ve igual tb  -moz-inline-box 
+	[-moz-box-pack : start;] 	se ubican igual elems de dif. SCALE!
+	overflow: var(--cBefore_overflow);   WOW !!!!  FIXED scrolling bar in menulist menupopup!!!  
+	
+	 
+
+	outline: 0.4px solid orange;
+	outline-offset: -1px;
+
+	font-size  : var(--cBefore_fsize);
+	vertical-align: sub;
+**/
+
+
+:root[dz_z_sys_intFlags~="devel1"]    .showOn_devel1 {
+	display: -moz-box !important;
+}
+
+
+
+.showOn__value_titlebar_old14__or__new15:not([value=titlebar_old14]):not([value=titlebar_new15]) {	 display: none;  }
+
+
+.hc-button-text {
+  margin: 0 !important;
+  text-align: center;
+}
+
+
+#hctp-sound-panel[hc_anchorElem_id="but_Sound_notFound"]  #audio1_mlist {
+	visibility: collapse;	
+}
+
+
+/** no encuentro forma sencilla de hacer aparecer esto ... Al final resolvi con TOOLTIP!
+#txtDebugParent::before {
+	content: "z_sys.intFlags: ";
+	--debugLabelDisplay: none;
+	display: var(--debugLabelDisplay);
+}
+**/
+#txtDebugParent  *::before {
+	/* 
+	display: none; 
+	content: "";
+	border: 1px solid orange;
+	*/
+	
+	
+	color: red;
+	padding: 0.1em 0.6em;
+	margin-right: -1px;
+	
+	background-color: rgba(255,255,255,0.5);
+}
+:root[dz_z_sys_intFlags~="fxBut_oldDisable"]  	#txtDebugParent  *:nth-child(1)::before  {	content: "fxBut_oldDisable";	 } 
+:root[dz_z_sys_intFlags~="fxBut_wid1"]    		#txtDebugParent  *:nth-child(2)::before  {	content: "fxBut_wid1";      	 } 
+
+
+.mpShdw  {
+	text-shadow: 1px 1px 1px orange;
+}
+
+tooltip  html|hr {
+	opacity: 0.6;
+}
+
+.future_option {
+	opacity: 0.7;
+}
+
+
+#id__dynBars_extraTxt_forFloatbars {
+	font-style: italic;	
+	font-size: 90%;
+	margin: 0px 0px 0px 0.3em !important;
+	visibility: collapse;
+}
+/*  hizo falta para pale moon , cuando estaba MAL la logica de la regla de abajo!
+prefwindow:not([hcp_sys_floatbars_ALLOWED="true"])                                                             #id__dynBars_extraTxt_forFloatbars {
+	visibility: collapse;
+}
+*/
+prefwindow[hcp_sys_floatbars_enable="true"]   menulist#mlist__z_adv_sys_DynamicBars_enable_s[value="none"]  +  #id__dynBars_extraTxt_forFloatbars {
+	visibility: visible;
+}
+
+
+:-moz-any(.tooltip_like,tooltip)  ul {
+	display: block;
+	list-style-type: disc;
+	padding-inline-start: 20px;
+	margin: 5px;
+
+	white-space: normal;
+}
+:-moz-any(.tooltip_like,tooltip)  li {
+	display: list-item;
+	margin-bottom: 0.3em;
+	text-align: match-parent;
+	
+	white-space: pre-line;
+}
+:-moz-any(.tooltip_like,tooltip)  sq::before {
+	content: "◼"; 
+}
+sq[t*="r"]::before {
+	color: red;
+}
+
+
+menulist:not([value]) {
+	opacity: 0.4;
+	box-shadow: 0 0 100px lightgray inset;
+	pointer-events: none;
+}
+
+
+
+.customCss_homeDir__class:not([hc_hasSomething="true"])   .customCss_homeDir__failed {
+	visibility: hidden;
+}
+
+
+
+/*
+:root::before {
+	content: "  hctp_locale: [" attr(hctp_locale) "]   ";
+}
+	white-space: pre;
+	display: inline;
+	display: -moz-inline-box;
+*/

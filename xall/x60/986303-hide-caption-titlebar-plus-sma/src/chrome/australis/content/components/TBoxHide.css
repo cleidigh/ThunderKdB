@@ -1,0 +1,385 @@
+/* ------------------------------------------------------------------- */
+
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document url(chrome://browser/content/browser.xul){
+
+
+/*	NOT ON CUSTOMIZATION!!!
+
+	outline: 3px solid green;
+	outline-offset: -3px;
+
+	background: rgba(0,0,255,0.3);
+*/
+  
+/*** THIS CSS FILE WILL BE INCLUDED ON-THE-FLY! :-)  
+:root[dz_tBoxHide_enable="true"] {
+}
+***/
+
+
+/* necesito sacar mi m-top hard (crear un NUEVO hbox!)
+	-moz-transition: margin-top  150ms  ease-out, position 0ms ease-out 100ms;
+	margin-top: -10px;
+	
+	[hctp_tbox_visible]
+*/
+
+:root {
+	--hctp_tBoxHideColor: highlight;
+
+	--hctp_navbar_topMargin_extra: 0px;
+}
+
+#navigator-toolbox {
+	--hctp_OWN_dnbrs_bkg_color: rgb(182, 203, 199); /* NOT important bc It's setted also dinamically at 'style' */
+	--hctp_dynbars_bkg_color: var(--hctp_OWN_dnbrs_bkg_color); /* NOT important bc It's setted also dinamically at 'style' */
+	--hctp_dynbars_bkg_image: none;
+	
+	--hctp_tbox_bkgPosX: 0px;
+}
+
+
+#tab-view-deck:not([hctp_tbox_float="true"])
+   #hctp_float_tbox_button.floating_element_control:not([disabled="true"])  >  vbox {
+	box-shadow: 0px 0px 0.4px;
+	
+	outline: 1px dashed var(--hctp_tBoxHideColor);
+	-moz-outline-radius: 2px;
+	outline-offset: 0px;
+}
+#hctp_float_tbox_button.floating_element_control:not([disabled="true"])     >  vbox {
+	color: var(--hctp_tBoxHideColor); /* tomado por shadow */
+}
+
+
+
+:root:not([customizing="true"])   #tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox {
+	position: fixed !important;
+	top: -1000px;
+	z-index: 14;
+	width: -moz-available;
+
+	margin-top   : 0px !important; /* para Fullscreen + autohide!!! */
+	
+	margin-bottom: -3px; /* no resulta vd? */
+	
+	
+	border-bottom-left-radius : 6px;
+	border-bottom-right-radius: 6px;
+	
+	/**
+	outline       :  2px solid orange;
+	outline-offset: -2px;
+	**/
+}
+#tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox[inactive="true"] {
+	top: -1000px !important; /*  overrides dynamic value  */
+}
+
+/* NEW variables, since Fx5x??? */
+:root:not([customizing="true"])   #tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox:-moz-lwtheme {
+	background-color: var(--lwt-accent-color, var(--hctp_dynbars_bkg_color)); /* NOT important */
+	background-image: var(--lwt-header-image, var(--hctp_dynbars_bkg_image));
+	
+	background-origin: border-box !important;
+	mask-image: linear-gradient(to top, transparent, black 0.5em);
+}
+
+
+:root[inDOMFullscreen="true"]   #navigator-toolbox {
+	z-index: -5 !important;
+}
+
+
+/* forced NO-transition when changing to float yes/no! -> update_TBox_visibility() */
+#hcp-root-box[no_tbox_float_trans]                       ~  #tab-view-deck                           #navigator-toolbox {
+	transition-property: none !important; 
+}
+
+#hcp-root-box[dz_tBoxHide_opc_transition ~= "none"]      ~  #tab-view-deck                           #navigator-toolbox {
+	transition-property: none;  /* margin-right/left  is used for customize mode.  This rule 'kinda' repeated below -old-code- */
+}
+#hcp-root-box[dz_tBoxHide_opc_transition ~= "fast1"]     ~  #tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox[inactive="true"] {
+	margin-top: -3px !important;
+	-moz-transition: margin-top  20ms ease-out, top 0ms ease-out 35ms;
+}
+/** opacity affects 'busy-tab'!, options disabled in dialog! **/
+#hcp-root-box[dz_tBoxHide_opc_transition ~= "vo_trnsp"]  ~  #tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox[inactive="true"] {
+	margin-top: -4px !important;
+	opacity   :  0.3 !important;
+	-moz-transition: margin-top  30ms ease-out, top 0ms ease-out 110ms, opacity 130ms ease-out;
+}
+#hcp-root-box[dz_tBoxHide_opc_transition ~= "slow"]      ~  #tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox[inactive="true"] {
+	margin-top: -6px !important;
+	-moz-transition: margin-top  80ms ease-out, top 0ms ease-out 190ms, opacity 200ms ease-out;
+}
+
+#hcp-root-box[dz_tBoxHide_opc_transition ~= "fast1"]     ~  #tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox                  {
+	margin-top:  0px !important;
+	-moz-transition: margin-top  25ms ease-out  5ms;
+}
+#hcp-root-box[dz_tBoxHide_opc_transition ~= "vo_trnsp"]  ~  #tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox                  {
+	margin-top:  0px !important;
+	-moz-transition: margin-top  35ms ease-out  5ms, opacity 130ms ease-out;
+}
+#hcp-root-box[dz_tBoxHide_opc_transition ~= "slow"]      ~  #tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox                  {
+	margin-top:  0px !important;
+	-moz-transition: margin-top  80ms ease-out  5ms, opacity 230ms ease-out;
+}
+
+
+
+
+@media all and (-moz-windows-compositor) { /* Windows GLASSED DESKTOP  -  same filters as in style.css!  - (only in unmaximized...) */
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][hctp_show_newCustBorders="true"]
+  	#tab-view-deck:not([hctp_tbox_float="true"])   #navigator-toolbox {
+	transition-property: none !important; /* margin-right/left  is used for customize mode */
+  }
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][hctp_show_newCustBorders="true"]
+  	#tab-view-deck[hctp_tbox_float="true"]         #navigator-toolbox {
+	margin-right: 2px !important;
+	--hctp_tbox_bkgPosX: -2px;
+  }
+}
+/* END media ... */
+
+
+#tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox  >  toolbar {
+	width: -moz-available;
+}
+#tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox::after ,
+#tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox  >  *:not(#toolbar-menubar):not(#TabsToolbar):not(#nav-bar) ,
+#tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox  >  *::before ,
+#tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox  >  *::after  {
+	display: none !important;
+}
+/**  ...  :not(#PersonalToolbar)
+#tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox  >  toolbar:-moz-any([collapsed="true"],[moz-collapsed="true"]):not(#toolbar-menubar):not(#TabsToolbar):not(#nav-bar) {
+	display: none !important;
+}
+**/
+
+#tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar,
+#tab-view-deck[hctp_tbox_float="true"]   #TabsToolbar {
+	margin-top: 0px !important;
+}
+#tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar:not(:-moz-lwtheme) ,
+#tab-view-deck[hctp_tbox_float="true"]   #TabsToolbar:not(:-moz-lwtheme)     {
+	background-color: var(--hctp_dynbars_bkg_color) !important; /* rgb(230, 230, 230); */
+}
+#tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar  +  #TabsToolbar:not(:-moz-lwtheme) { /* covers possible unwanted space! */
+	box-shadow: 0px 6px 0px 0px var(--hctp_dynbars_bkg_color);
+}
+
+@media (min-resolution: 1.180dppx) and (max-resolution: 1.24dppx) {
+  #tab-view-deck[hctp_tbox_float="true"]   #TabsToolbar {
+	margin-top: -0.45px !important;
+  }
+}
+
+#tab-view-deck[hctp_tbox_float="true"]   #TabsToolbar::after {
+	/**  :not(:-moz-lwtheme)  **/
+	display: none !important;
+}
+#tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar[moz-collapsed="true"] + #TabsToolbar { /* in fullsrc, le falta 1 o 2px a los q NO LLEGA...  */
+	margin-top: -7px !important;
+}
+
+#tab-view-deck[hctp_tbox_float="true"]   #TabsToolbar  ~  #nav-bar {
+	margin-bottom:  9px !important; /* needed when NOT small bars/tabs */ 
+	box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
+/*	falta flag de floatbars NO visible
+	border-bottom-left-radius : 2.5px;
+	border-bottom-right-radius: 2.5px;
+*/	
+}
+/* lwtheme: 1px border for 'compact light' */
+#tab-view-deck[hctp_tbox_float="true"]   #TabsToolbar  ~  #nav-bar:-moz-lwtheme {
+	margin-bottom: calc(9px - 1px) !important; /* needed when NOT small bars/tabs */ 
+	border-bottom: 1px solid rgba(0,0,0,0.45) !important;
+}
+#tab-view-deck[hctp_tbox_float="true"]   #nav-bar  ~  #TabsToolbar {   /* eg. PaleMoon */ 
+	margin-bottom:  9px !important;
+	box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
+	border-bottom-left-radius : 6px;
+	border-bottom-right-radius: 6px;
+}
+#tab-view-deck[hctp_tbox_float="true"]   #TabsToolbar:not([multibar]):not([collapsed="true"]) + #nav-bar  {  /* not_TabMixP-multibar	*/
+	margin-top: calc(-1 * var(--navbar-tab-toolbar-highlight-overlap, 0px) + var(--hctp_navbar_topMargin_extra)) !important;
+}
+
+/*   toolbar-menubar   */
+:root:not([dz_home_mainmenu_floating="true"])   #tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar[autohide="true"]:not(:-moz-lwtheme) {
+	box-shadow: 0px  var(--hctp_floatMenubar_height)  0px 0px var(--hctp_dynbars_bkg_color);
+}
+                                                #tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar:not([autohide="true"]) ,
+:root:not([dz_home_mainmenu_floating="true"])   #tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar[autohide="true"]:not([inactive="true"]) {
+	padding-top: var(--hctp_floatMenubar_height) !important;
+	/* min-height : 43px !important; -- era sobrepasado por level_ag.css y NO hace falta ademas */
+}
+#tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar[autohide="true"][inactive="true"] { /* luego de ALT, al clickar en TOOLS da un flicker! */
+	transition: padding-top  40ms  cubic-bezier(0.95, 0, 1, 1);
+}
+#tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar[autohide="true"][inactive="true"] {
+	/* position: absolute; -- needs 3 ALT key press to cicle state ....	*/
+}
+/* trick: insert (hidden) text inside menubar      [autohide="true"] 
+  --->>  Also in level_ag.css is:   #toolbar-menubar[...]{  min-height: 20px !important; }
+  //TODO: SACAR dps esto y tb los valores duros de top y pad-top, etc y CALCULAR! 
+ */
+#tab-view-deck[hctp_tbox_float="true"]   #toolbar-menubar[type="menubar"]:not([customizing="true"])::after  {
+	-moz-box-ordinal-group: 10001;
+	-moz-box-orient: vertical;
+	content: "."; /* FILL with some text here! */
+	display: -moz-box !important;
+	min-height: var(--hctp_floatMenubar_height) !important;
+	width       :  10px;
+	margin-right: -10px;
+	font: menu;
+	visibility: hidden;
+}
+
+
+
+#hcp-root-box[hctp_tbox_float="true"]                            ~ #mainPopupSet   #downloads-animation-container {
+  	z-index: 19 !important;
+}
+#hcp-root-box[hctp_tbox_float="true"]                            ~ #mainPopupSet   #downloads-notification-anchor:-moz-any([notification="start"],[notification="finish"]) {
+	margin-top: 1000px;
+}
+/* [hctp_tbox_inactive="true"] - I have to implement [hctp_tbox_*WAS*inactive] right? */
+
+/* when this feature/css is ENABLED! , bigger progress + text */
+#downloads-indicator-progress-area  {
+	transform: scale(1.2);
+}
+
+
+/* topEdge_hover */
+#hcp-root-box[hctp_tbox_float="true"][hctp_tbox_inactive="true"]   #hctp_topEdge_hover {
+	z-index: 17; /* just ABOVE Float-bars */ 	
+}
+
+/*  el 'drag' me sacaba el hover arriba , por ej en mi dialog!!!.  Y no pongo 'no-drag' pq ahi me SACA el drag de mis floating things */
+#hcp-root-box[hctp_tbox_float="true"] ~ #titlebar {
+  /** -moz-binding: url("chrome://global/content/bindings/general.xml#windowdragbox"); **/
+  -moz-window-dragging: default;
+}
+
+
+:root[dz_adv_winbkg_color_enablelist="always"]   #tab-view-deck[hctp_tbox_float="true"]   #navigator-toolbox  {
+	background-color: var(--hctp_OWN_dnbrs_bkg_color) !important;  /* forcing it ! */ 
+	background-image: none                            !important;
+	mask-image: linear-gradient(to top, transparent, black 0.5em); /* for NOT lwttheme */
+}
+
+
+/* esto es solo para el 'nice effect'! */
+#hcp-root-box:not([hctp_tbox_float="true"]) ~ #tab-view-deck  #hctp_toparea	{ margin-bottom : -4px; 	}
+#hcp-root-box:not([hctp_tbox_float="true"]) ~ #tab-view-deck  #hctp_toparea	{ padding-bottom:  4px; 	}
+#hcp-root-box:not([no_tbox_trans])[hctp_tbox_inactive="true"]  ~ #tab-view-deck  #hctp_toparea	{ transition: padding-bottom  ease-out  110ms; } 
+#hcp-root-box:not([no_tbox_trans])[hctp_tbox_inactive="true"]:not([hctp_tbox_float="true"])    
+                                                               ~ #tab-view-deck  #hctp_toparea	{ transition: padding-bottom  ease-out   50ms; } 
+/* [hctp_tbox_inactive=true] evita tb en el tabselect, etc */
+
+
+/** translateY  deja el topEdge ENCIMA del toolbox en unmaximized-mode (no 'funciona' el z-index)
+  y tb: abre un gap en la union con floatbars aunque no este: hctp_tbox_float="true"  
+  y tb: jode con la pos del float-menu
+#hcp-root-box[hctp_tbox_float="true"]     ~  #tab-view-deck	      		   	{ transform: translateY(-5px); 	}
+#hcp-root-box[hctp_tbox_float="true"]     ~  #tab-view-deck	 #browser-panel	{ transform: translateY( 5px); 	}
+#hcp-root-box[hctp_tbox_inactive="true"]  ~  #tab-view-deck       			{ transition: transform  ease-out  110ms; }
+*/
+
+
+
+/**  TAB BUSY FLOTANTE !!! -----  aqui no me anduvo el transition -para la vuelta hacia arriba-, ni con los delays para position etc etc!!!
+#hcp-root-box[hctp_tbox_inactive="true"][hctp_tbox_float="true"] ~ #tab-view-deck
+  #TabsToolbar tab.tabbrowser-tab[visuallyselected="true"] {
+}
+**/
+
+:root                       {  --tabside-width_med: 10px; /* NOT important */ 
+                               --busyTab_trans: margin-top 40ms ease-in;  
+                               --busyTab_mTop: 0px; }
+:root[sizemode="maximized"][hcp_platformPlus="windows"] {  
+                               --busyTab_mTop: 8px; }
+:root[hctp_vertical_maxim_act__TOP="true"]:not([hc-MaxFull="true"]) {
+                               --busyTab_mTop: var(--hcGap_vertMaxim); }
+#hcp-root-box[tempActive="true"] ~ #tab-view-deck  { /* tempActive */
+	                           --busyTab_trans: none;  }
+
+#hcp-root-box[dz_tBoxHide_opc_fltTabMain~="busytab"][hctp_tbox_inactive="true"][hctp_tbox_float="true"] ~                    #tab-view-deck
+  #TabsToolbar  tab.tabbrowser-tab[visuallyselected="true"]:-moz-any([busy]) ,  /** ,[progress],[tab-progress]  **/
+#hcp-root-box[dz_tBoxHide_opc_fltTabMain~="busytab"][hctp_tbox_inactive="true"][hctp_tbox_float="true"][tempActive="true"] ~ #tab-view-deck  /* tempActive */
+  #TabsToolbar  tab.tabbrowser-tab[visuallyselected="true"]                  {
+
+	transition: var(--busyTab_trans) !important;
+	/* [all 0s 1s, xxx]  no anda con position, etc ...	*/
+  
+	position: fixed !important;
+	z-index: 400 !important;
+	top: 0px !important;
+	left: auto !important;
+	margin-top: var(--busyTab_mTop) !important;
+	
+	box-shadow: 0px 0px 6px black !important;
+
+	border-radius: 0px 0px  calc(2px + var(--tabside-width_med))  calc(2px + var(--tabside-width_med))  !important;
+
+	width    : 320px !important;
+	max-width: 320px !important;
+}
+#hcp-root-box[dz_tBoxHide_opc_fltTabMain~="busytab"][hctp_tbox_inactive="true"][hctp_tbox_float="true"] ~                    #tab-view-deck
+  #TabsToolbar  tab.tabbrowser-tab[visuallyselected="true"]:-moz-any([busy])  .tab-stack ,
+#hcp-root-box[dz_tBoxHide_opc_fltTabMain~="busytab"][hctp_tbox_inactive="true"][hctp_tbox_float="true"][tempActive="true"] ~ #tab-view-deck
+  #TabsToolbar  tab.tabbrowser-tab[visuallyselected="true"]                   .tab-stack {
+	width: 100% !important;
+}
+#hcp-root-box[dz_tBoxHide_opc_fltTabMain~="tabInv"][hctp_tbox_inactive="true"][hctp_tbox_float="true"] ~                    #tab-view-deck
+  #TabsToolbar  tab.tabbrowser-tab[visuallyselected="true"]:-moz-any([busy])  .tab-background ,
+#hcp-root-box[dz_tBoxHide_opc_fltTabMain~="tabInv"][hctp_tbox_inactive="true"][hctp_tbox_float="true"][tempActive="true"] ~ #tab-view-deck
+  #TabsToolbar  tab.tabbrowser-tab[visuallyselected="true"]                   .tab-background {
+	transform: scaleY(-1.1)  translateY(-1px) !important;
+}
+
+
+/*  
+BUSYTAB:
+	left: 100px !important;
+	--h_tab_minw: 250px; para tab-stack vd??
+END
+
+	
+prender un attr por-un-rato cuando des/active *DEBIDO* a un scroll, y listo!!
+
+NO EN:
+	- [inFullscreen="true"] + activado el autohide??
+*/
+
+
+/* En este caso de tab sin atributos, estoy obligado a usar el flag */
+#navigator-toolbox[tab_dynbars]  #TabsToolbar  tab {
+	outline: 2px dashed green;
+	outline-offset: -3px;
+}
+#navigator-toolbox[tab_dynbars]  #TabsToolbar  tab[hctp_tbox_float="false"] {
+	outline: 2px solid  black;
+}
+#navigator-toolbox[tab_dynbars]  #TabsToolbar  tab[hctp_tbox_float="true"] {
+	outline: 2px solid  lightgreen;
+}
+
+
+#hcp-root-box[hctp_tbox_float="true"] ~ #tab-view-deck   menupopup  menuitem:-moz-any(#toggle_PersonalToolbar, [command="cmd_ToggleTabsOnTop"]) ,
+#hcp-root-box[hctp_tbox_float="true"] ~ #mainPopupSet    menupopup  menuitem:-moz-any(#toggle_PersonalToolbar, [command="cmd_ToggleTabsOnTop"]) ,
+#hcp-root-box[hctp_tbox_float="true"]                    menupopup  menuitem:-moz-any(#toggle_PersonalToolbar, [command="cmd_ToggleTabsOnTop"]) {
+	/** pointer-events: none !important;  **/
+	cursor: not-allowed  !important;
+}
+
+
+} /*  moz-document  */
+

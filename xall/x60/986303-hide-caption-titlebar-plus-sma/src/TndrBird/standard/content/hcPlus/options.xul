@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/"                             type="text/css"?>
+<?xml-stylesheet href="chrome://HideCaptionTb/content/fx_COMPAT/xul_compat.css"              type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/preferences.css"              type="text/css"?>
+
+<!DOCTYPE prefwindow >
+
+<prefwindow   see_alert=" -- TEMPORAL FILE!! -- "  
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+	xmlns:html="http://www.w3.org/1999/xhtml" 
+
+	title="   "
+	
+	autosize="true" 
+	resizable="yes" 
+	buttons="accept" 
+
+	flex="1"
+	style="width: 67em; height: 32em;"
+	>
+
+ <prefpane   id="paneContent" label="                " orient="vertical" flex="1" >
+ </prefpane>
+
+ <prefpane   id="paneAdvanced" label="   " orient="vertical" flex="1" >
+	<label>.     </label>
+ </prefpane>
+ 
+<script>
+
+/*
+	id="temp_opts"  SIN ID pq no quiero q persista su posicion!
+	style="width: 67em; height: 32em;"
+*/
+
+setTimeout(function(){
+  window.location = "chrome://HideCaptionTb/content/options.xul";
+}, 10);
+
+</script>
+
+</prefwindow>
+

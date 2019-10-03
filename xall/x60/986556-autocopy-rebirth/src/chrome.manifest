@@ -1,0 +1,38 @@
+content    autocopy  chrome/content/
+skin       autocopy  classic  chrome/skin/
+
+overlay    chrome://browser/content/browser.xul  chrome://autocopy/content/overlay3.xul  appversion<=3.6.*
+overlay    chrome://browser/content/browser.xul  chrome://autocopy/content/overlay.xul  appversion>3.6.*
+overlay    chrome://navigator/content/navigator.xul  chrome://autocopy/content/overlaySm.xul
+overlay    chrome://global/content/viewSource.xul  chrome://autocopy/content/overlay3.xul  appversion<=3.6.*
+overlay    chrome://global/content/viewSource.xul  chrome://autocopy/content/overlay.xul  appversion>3.6.*
+overlay    chrome://messenger/content/mailWindowOverlay.xul  chrome://autocopy/content/overlaySmMail.xul  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+overlay    chrome://messenger/content/messengercompose/messengercompose.xul  chrome://autocopy/content/overlaySmMail.xul  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+overlay    chrome://messenger/content/mailWindowOverlay.xul  chrome://autocopy/content/overlayTb.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+overlay    chrome://messenger/content/messengercompose/messengercompose.xul  chrome://autocopy/content/overlayTb.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+
+style     chrome://global/content/customizeToolbar.xul  chrome://autocopy/skin/autocopy.css
+override  chrome://autocopy/skin/autocopy.css  chrome://autocopy/skin/platform/mac/autocopy.css  os=Darwin
+override  chrome://autocopy/content/options.xul  chrome://autocopy/content/optionsTb.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+
+locale    autocopy    cs      chrome/locale/cs/
+locale    autocopy    da      chrome/locale/da/
+locale    autocopy    de      chrome/locale/de/
+locale    autocopy    el      chrome/locale/el/
+locale    autocopy    en-US   chrome/locale/en-US/
+locale    autocopy    es      chrome/locale/es/
+locale    autocopy    es-MX   chrome/locale/es-MX/
+locale    autocopy    fr      chrome/locale/fr/
+locale    autocopy    hu      chrome/locale/hu/
+locale    autocopy    ja      chrome/locale/ja/
+locale    autocopy    oc      chrome/locale/oc/
+locale    autocopy    pl      chrome/locale/pl/
+locale    autocopy    pt-BR   chrome/locale/pt-BR/
+locale    autocopy    pt-PT   chrome/locale/pt-PT/
+locale    autocopy    ru      chrome/locale/ru/
+locale    autocopy    sk      chrome/locale/sk/
+locale    autocopy    sr      chrome/locale/sr/
+locale    autocopy    sv-SE   chrome/locale/sv-SE/
+locale    autocopy    tr      chrome/locale/tr/
+locale    autocopy    zh-CN   chrome/locale/zh-CN/
+locale    autocopy    zh-TW   chrome/locale/zh-TW/

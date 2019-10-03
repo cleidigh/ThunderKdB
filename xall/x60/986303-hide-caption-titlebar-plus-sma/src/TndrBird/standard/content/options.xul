@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/"                             type="text/css"?>
+<?xml-stylesheet href="chrome://HideCaptionTb/content/fx_COMPAT/xul_compat.css"              type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/preferences.css"              type="text/css"?>
+<?xml-stylesheet href="chrome://HideCaptionTb/skin/appmenu_button.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://HideCaptionTb/content/widgets/menulist_appbut.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://HideCaptionTb/skin/options.css"         type="text/css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://HideCaptionTb/locale/option.dtd">
+
+<prefwindow 
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+		xmlns:html="http://www.w3.org/1999/xhtml" 
+	id="hcp_options_window" 
+	
+	title="&dialog.hide.caption.titlebar.plus;"
+	 
+	autosize="true" 
+	resizable="yes" 
+	buttons="accept" 
+	
+	onload="HideCaption_opt.Init();" 
+	ondialogaccept="HideCaption_opt.Save();"
+	
+	flex="1"
+
+	firefox_ver="fx4"
+	>
+    <!--
+	, extra2
+	buttonlabelextra2="&button.see.more.in.readme.file;" 
+	ondialogextra2="HCPlusLib.OpenReadme_inMostRecentWin(null);" 
+
+
+	onpaneload="HideCaption_opt.do_onPaneLoad();" ... solo anda dsd <prefpane> nomas al final?
+
+	cancel, extra1
+	buttonlabelextra1="&dialog.apply;"
+	ondialogextra1="Save(); " 
+
+	ondialoghelp  ="HCPlusLib.OpenReadme_inMostRecentWin(null);"
+	-->
+    
+<!-- Other Panel -->
+                    <prefpane 	id="paneContent" label="&tab.look.feel;"
+								src="chrome://HideCaptionTb/content/opt_look2_home.xul" 
+								onpaneload="HideCaption_opt.do_onPaneLoad();"
+								/>
+
+<!-- Other Panel -->
+                    <prefpane   id="paneAdvanced" label="&tab.advanced.settings;" orient="vertical" flex="1" context="" helpTopicXXX="opt_advanced" 
+								onpaneload="HideCaption_opt.do_onPaneLoad();"
+								>
+<preferences>
+
+	<preference id="tab_marginTop_delta"        name="extensions.hide_caption.plus.look.tab_marginTop_delta" 	    type="int"  	instantApply="true" onchange="
+            HideCaption_opt.refresh_tab_marginTop_delta_all(); " />
+	<preference id="tab_marginTop_delta_nomax"  name="extensions.hide_caption.plus.look.tab_marginTop_delta_nomax" 	type="int"  	instantApply="true" onchange="
+            HideCaption_opt.refresh_tab_marginTop_delta_all(); " />
+	
+
+	<!--  debug flag ! -->
+	<preference id="id_print_debug"                name="extensions.hide_caption.plus.print_debug"	 	      type="bool"  	instantApply="true"  onchange="
+			HideCaption_opt.opt_setAsDomAttribute(this);
+			" />
+
+	<!--  TEST preference!
+	<preference id="z_test.color_test"             name="extensions.hide_caption.plus.z_test.color_test"      type="string" instantApply="true" />
+	-->
+	
+</preferences>
+
+
+<!--
+<groupbox>
+  <caption label=" Top-edge margin position settings: " />
+	<hbox flex="0">
+	
+	  <vbox flex="1">
+		<hbox align="center">
+		  <label id="marginTop_delta_main_label" flex="1" control="c_marginTop_delta" class="firstline_ind"> 
+		  	Custom Top-edge margin for toolbars-area: <html:br/> 
+		  	(in pixels, negative value to move content up) 
+		  </label>
+		  <tooltip id="tt_disabled_by_tabsinTb" > Disabled when 'Place Tabs In Titlebar' are enabled. (auto calculation is used) </tooltip> 
+		  
+		  <groupbox class="container_max_unmax" orient="horizontal" ><caption>
+			  <label class="default_label  hcp_title  m_bot-1"  control="c_marginTop_delta"      >In Maximized <html:br /> window:</label>
+		  	</caption>
+		  	  <label  tooltiptext="Not valid in Full-Screen mode" ></label>
+			  <textbox id="c_marginTop_delta"        type="number" value="0" size="3" max="30" min="-35" preference="tab_marginTop_delta"       />
+		  </groupbox>
+		  <groupbox class="container_max_unmax" orient="horizontal" ><caption>
+			  <label class="default_label  hcp_title  m_bot-1"  control="c_marginTop_delta_nomax">In Un-Maximized <html:br /> window:</label>
+		  	</caption>
+			  <textbox id="c_marginTop_delta_nomax"  type="number" value="0" size="3" max="30" min="-35" preference="tab_marginTop_delta_nomax" />
+		  </groupbox>
+		  
+		</hbox>
+		<label flex="1" class="extrainfosize child_label" style="padding-left: 3ch;" control="c_marginTop_delta" > 
+			(Ie. in maximized window you can set it to '-2' to have the Tabs-on-Top touching the screen top-edge.)</label>
+	  </vbox>
+	  
+	</hbox>
+</groupbox>
+-->
+
+<hbox align="center" pack="center" class="default_label  hcp_title" >	
+	<label  style="padding-top: 3em;  font-weight: bold;" > Advanced Panel in construction. </label>
+</hbox>
+
+<vbox flex="5" />
+
+<hbox flex="0"  class="showOn_printDebug             groupbox_align" >
+	<checkbox id="cbox_print_debug"                    preference="id_print_debug"  flex="1"
+		oncommand="HideCaption_opt.oncommand_remove_checkbox(this, !this.checked)"   
+		label="&label.R; &#160; [Developer/Tester] Print debug info in the error-console (default: no)" />
+	<!--   onclick=".." apaga el checkbox visible pero no cambia realmente!  -->
+</hbox>
+
+
+<!-- 
+	<hbox  align="center" >
+	    <label  value="Select Color (testing!)" />
+		<colorpickplus id="id_test_any_value_(picker)"  preference="z_test.color_test" />
+	</hbox>
+ -->
+
+                    </prefpane>
+
+
+
+  <label id="bottom_msg"  flex="1" class="default_label" >
+   • <html:span class="extrainfo">&label.options.changes.reflects.on.the.fly.in.fir21; </html:span> 
+   <!--
+   <html:span class="extrainfo"> &label.prefix.options.with; <html:span class="foot_mark" >&label.R;</html:span> &label.other.options.saved.instantly.too.but.restart;</html:span>
+   -->
+  </label>
+
+
+<script src="chrome://HideCaptionTb/content/HCPlusLib.js" ></script>
+
+<script src="chrome://HideCaptionTb/content/options.js" ></script>
+
+<script src="chrome://HideCaptionTb/content/widgets/menulist_appbut.js" ></script>
+
+<script type="application/x-javascript">
+  <![CDATA[
+
+function            mydisable(_prefId, _bDisable) {
+	HideCaption_opt.mydisable(_prefId, _bDisable);
+}
+function            mydisable_setValue(_prefId, _bDisable, _value) {
+	HideCaption_opt.mydisable_setValue(_prefId, _bDisable, _value);
+}
+
+
+// console.log("window.location.href: ", window.location.href );
+// console.log("Components.stack.filename: ", Components.stack.filename );
+
+/** por si quiera llamar directo a este mismo xul en vez del temporal (dsd el override por ej)
+if( (""+window.location.href).toLowerCase().indexOf("HideCaptionTb".toLowerCase()) < 0 ){
+	setTimeout(function(){
+	  window.location = "chrome://HideCaptionTb/content/options.xul";
+	}, 100);
+}
+**/
+
+  ]]>
+</script>
+
+</prefwindow>

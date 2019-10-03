@@ -1,0 +1,786 @@
+
+
+/*** *mport  "sys_window.css"; ***/
+
+
+/*  in  australis/skin/  */
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+	
+/* --------- BORDERS! and such for hcp_hiddencaption == TRUE ------------ */
+
+/*  old-flag=>   :not([hcp_hiddencaption="false"])  */
+
+#main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"]){
+	/* TOP edge depends on AERO-GLASS! */
+	padding-right : 2px;
+	padding-bottom: 2px;
+	padding-left  : 2px;
+	
+	border-color : rgba(0,0,0,0.4);  /*  nobody touch this color later! :)  */
+	border-right-width : 1px;  border-right-style:  solid;  
+	border-bottom-width: 1px;  border-bottom-style: solid;
+	border-left-width  : 1px;  border-left-style:   solid;
+}
+#main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"]):-moz-lwtheme{
+	/* TOP edge depends on AERO-GLASS? not exactly! */
+	border-color: transparent;
+}
+
+/* Aero-GLASS !! */
+@media all and (-moz-windows-compositor) {
+
+  #main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"])  { /* :-moz-lwtheme */
+	padding-right : 3px;
+	padding-bottom: 3px;
+	padding-left  : 3px;
+	
+	border-right : 0px none;  
+	border-bottom: 0px none;
+	border-left  : 0px none;
+  }
+}
+/* END Aero-GLASS conditional sections */
+
+
+/* only for lwtheme ! */
+#main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"])  #browser-bottombox:not([hcp_empty="true"]):-moz-lwtheme{
+	margin-right : -3px;
+	margin-bottom: -3px; 
+	margin-left  : -3px;
+	padding-bottom: 1px; 
+}
+/* doesnt work as espected
+#main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"])  #browser-bottombox  #addon-bar:-moz-lwtheme{
+	margin..........
+}
+*/
+
+/* This element behaves now as a Floating panel! */
+#main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"])  #statusbar-display{ 
+	margin-right : 3px;
+	margin-left  : 3px;
+}
+
+
+
+/* ---------  statusbar resizer ...  ------------------- */
+window[hctp_hidden_sysborder="true"]  .statusbar-resizerpanel  resizer{
+	visibility:hidden;
+}
+
+/* ---------  Other .....  ------------------- */
+
+.winactive-cls:-moz-window-inactive:not(:hover) { /* Fx 4.0+ */
+  opacity: 0.7;
+}
+
+/* ---------  Fx4 TITLEBAR ...  ------------------- */
+
+/*  NOT  Aero-GLASS    */
+@media not all and (-moz-windows-compositor) {
+	/*  TEST !!! */
+	.hcp_web_title_cls{
+		/* border: 1px solid red;  ...TODO: check later */ 
+	}
+	
+	/* lwtheme */
+	#main-window[hcp_fx4_titlebar_visible="true"][sizemode="normal"]    > #titlebar:-moz-lwtheme {
+		-moz-appearance: none; /* I can't believe that in Aero basic unmaximized Fx isn't still fully skinned */
+	}
+	#main-window[hcp_fx4_titlebar_visible="true"][sizemode="maximized"] > #titlebar:-moz-lwtheme {
+		/* margin-top:  4px;  q desastre tenia aca habia sido!!  */
+	}
+
+	/* for Fx 4 Titlebar! */
+	#main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"])[hcp_fx4_titlebar_visible="true"]  #titlebar {
+		margin-left  : -3px !important;
+		margin-right : -3px !important;
+	}
+	#main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"])[hcp_fx4_titlebar_visible="true"]  #titlebar  > #titlebar-content{
+		padding-left  : 3px !important;
+		padding-right : 3px !important;
+	}
+	/* for sync position of system-buttons BOX (visible in lwtheme!) */
+	#main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"])[hcp_sysbuttons_active="true"]  #titlebar   #titlebar-buttonbox-container{
+		margin-right: 5px; /* TODO: syncronizar con el border-right de main-window! */
+	}
+
+	#main-window[hcp_hiddencaption="true"]:not([hc-MaxFull="true"]):not([hcp_fx4_titlebar_visible="true"]):not([hcp_platformPlus="linux"]):not(:-moz-lwtheme) {
+		/* NOT in Linux */
+		box-shadow: 0pt 0pt 0px  1px rgba(255, 255, 255, 0.8) inset;  /* extra 2nd! line for nice border */ 
+	}
+	#main-window[hcp_hiddencaption="true"]:not([hc-MaxFull="true"]):not([hcp_fx4_titlebar_visible="true"]):not([hcp_platformPlus="linux"]):not([hctp_hidden_sysborder="true"]):not(:-moz-lwtheme) {
+		/* ONLY touch top border --> for hctp_hidden_sysborder NOT TRUE! */
+		box-shadow: 0pt 2pt 0px -2px rgba(255, 255, 255, 0.8) inset;
+	}
+
+}
+/* Aero-GLASS !! */
+@media all and (-moz-windows-compositor) {
+	
+	/* for sync position of system-buttons BOX (visible in lwtheme!) */
+	#main-window[hctp_hidden_sysborder="true"]:not([hc-MaxFull="true"])[hcp_sysbuttons_active="true"]  #titlebar   #titlebar-buttonbox-container{
+		margin-right: 3px; /* TODO: syncronizar con el border-right de main-window! */
+	}
+
+	/* ---------- custom caption ----------- */
+	#hcp-title-box   label{
+		padding-top: 3px;
+	}
+	:root:not([sizemode="normal"])    #hcp-title-box   label{
+		padding-top: 2px;
+	}
+}
+/* END Aero-GLASS conditional sections */
+
+
+/* ... main titlebar */
+#main-window:not([hcp_fx4_titlebar_visible="true"])  > #titlebar,
+#titlebar[hidden="true"],
+#appmenu-toolbar-button[hidden="true"]{ /* LINUX's Firefox Button */
+	display: -moz-box  !important;
+	-moz-appearance: none !important;
+	margin: 0px !important; border: 0px none !important; 
+	height: 0px !important; min-height: 0px !important; overflow: hidden !important;
+}
+#main-window:not([hcp_fx4_titlebar_visible="true"]):not([hcp_sysbuttons_active="true"]) > #titlebar {
+	-moz-window-dragging: default !important;   /* oct-2016, just to be sure.  Had a case with Tab-Groups addon's iframe + system-mmc enabled */
+}
+
+#main-window:not([hcp_fx4_titlebar_visible="true"])  > #titlebar  #appmenu-button-container,
+#main-window:not([hcp_fx4_titlebar_visible="true"])  > #titlebar  #appmenu-button-container  #appmenu-button {
+	position: relative !important; /* Fxchrome use 'static' and made it visible again */
+	z-index : 2        !important;
+}
+
+
+#main-window:not([hcp_fx4_titlebar_visible="true"])  				.titlebar-placeholder[type="appmenu-button"] {
+	display: none !important;
+}
+#main-window:not([hcp_fx4_titlebar_visible="true"])  				.titlebar-placeholder[type="caption-buttons"] {
+	display: none !important;
+}
+/*	margin-top: -1px;  removed this dummy (NON 'important') rule */
+
+
+#main-window[hcp_fx4_titlebar_visible="true"]                                .hc-hideon-fx4titlebar-all-platform,
+#main-window[hcp_fx4_titlebar_visible="true"][hcp_platformPlus="windows"]    .hc-hideon-fx4titlebar {
+	display: none !important;
+}
+
+
+/* PANORAMA's iframe -- removed in Fx45.
+#main-window:not([hcp_hiddencaption="false"]):not([hcp_fx4_titlebar_visible="true"])   xxx   #tab-view {
+	padding-top: 15px;	
+}
+*/
+
+
+
+
+
+/* for FXChrome theme */
+/* override 'width' attribute */
+/*
+#main-window[tabsontop="true"][sizemode="normal"] #toolbar-menubar[inactive] ~ #TabsToolbar {
+    -moz-padding-start: 0px !important; 
+    -moz-padding-end:   0px !important; 
+}
+#main-window[tabsontop="true"][sizemode="normal"] #toolbar-menubar[inactive] ~ #TabsToolbar  .titlebar-placeholder {
+	display: -moz-box;
+	max-width: 0px; 
+}
+#main-window[tabsontop="true"][sizemode="normal"] #toolbar-menubar[inactive] ~ #TabsToolbar  .titlebar-placeholder[type="appmenu-button"] {
+    -moz-padding-start: 42px !important; 
+}
+#main-window[tabsontop="true"][sizemode="normal"] #toolbar-menubar[inactive] ~ #TabsToolbar  .titlebar-placeholder[type="caption-buttons"] {
+    -moz-padding-end:   104px !important; 
+}
+*/
+
+
+/* not anymore starting from Fx4b9
+#main-window[hc-MaxFull="true"] 	 #appmenu-button-container{
+	margin-left: -1px;
+	margin-top:  -1px;
+}
+*/
+
+/*  FULLSCREEN ->  make menus appear! ------  */
+#main-window[inFullscreen] > #titlebar {
+	display: -moz-box  !important;
+	margin:  0px !important; height: 0px !important; min-height: 0px !important; overflow: hidden !important; -moz-appearance: none !important;
+}
+#main-window[inFullscreen]    toolbox:not([customizing="true"])[dz_home_mainmenu_floating="true"]  >  
+		#toolbar-menubar[moz-collapsed="true"] {
+	/* let menu appear   and   let user check menu-bar to appear. */
+	visibility: visible !important;
+}
+
+/* aug 2015,  Fix and enable floatmenu, but dont interfere with youtube fullscr (alt+f, etc) */ 
+#main-window[inFullscreen]:not([inDOMFullscreen="true"])    toolbox[dz_home_mainmenu_floating="true"]     
+		#toolbar-menubar:not([fullscreentoolbar=true]):not([collapsed="true"]) {
+	visibility: visible;
+}
+
+
+/**  Hide corner buts for FullScreen Toolbars autohide, includes HTML5 VIDEO FULLSCREEN modes!   **/
+#main-window[inFullscreen][dz_home_fullscrButs_autohide="true"]:-moz-any(:not([hctp_fullscrToggler_collapsed="true"]), [inDOMFullscreen="true"])
+  #hcp-root-box:not([hctp_tbox_float="true"])
+    .collapseWith_fullscrBars ,
+/**  .. and ALSO hide for when TBoxHide feature is on but inactive  AND  floatbars are inactive also  ... but NOT_ON_HOVER!! **/
+#main-window[dz_tBoxHide_enable="true"][dz_home_fullscrButs_autohide="true"]  
+  #hcp-root-box[hctp_tbox_float="true"][hctp_tbox_inactive="true"]:-moz-any([hctp_floatbars_inactive="true"], :not([hctp_floatbars_inactive])) 
+    .collapseWith_fullscrBars:not(:hover) {
+	visibility: hidden; /* NOT important for no overriding [inDOMFullscreen] below.  DON'T USE collapse!, for calc_space...()! */
+	top       : -200px !important;
+	z-index   :   -5   !important;
+}
+
+/**  blur them:  inFullScr AND floatbars inactive/disabled! ....  **/
+#main-window[inFullscreen]:-moz-any(:not([hctp_fullscrToggler_collapsed="true"]), [inDOMFullscreen="true"])
+  #hcp-root-box:not([hctp_tbox_float="true"]):-moz-any([hctp_floatbars_inactive="true"], :not([hctp_floatbars_inactive])) 
+    .collapseWith_fullscrBars:not(:hover) ,
+/**  .. and ALSO blur them when TBoxHide feature is on but inactive  AND  floatbars are inactive/disabled  **/
+#main-window[dz_tBoxHide_enable="true"]  
+  #hcp-root-box[hctp_tbox_float="true"][hctp_tbox_inactive="true"]:-moz-any([hctp_floatbars_inactive="true"], :not([hctp_floatbars_inactive])) 
+    .collapseWith_fullscrBars:not(:hover) {
+	opacity: 0.5;
+}
+
+/**  New flag for HTML5 VIDEO [DOM]FULLSCREEN only!  **/
+#main-window[inFullscreen][dz_home_fullscrButs_autohide_domFs="true"][inDOMFullscreen="true"]
+    .collapseWith_fullscrBars {
+	visibility: collapse !important;
+}
+
+/* FIXED a VIDEO bug [fullscreen-to-DOMfullscreen]!  Video needs to 'sense' a changed dimension to become really fs.  
+   Also, this takes the place of fs-toggler */
+#main-window[inFullscreen]:not([inDOMFullscreen]):not([hctp_fullscrToggler_collapsed="true"])  #content-deck ,
+#main-window[inFullscreen]:not([inDOMFullscreen])[dz_tBoxHide_enable="true"]                   #content-deck { /* needed when 'Hide Toolbars' menuitem is UN-checked  */
+	border-top: 1px solid black !important;
+}
+
+
+/* dragging things ! */
+
+:root {
+	--hctp_win_dragging:drag;
+}
+:root[hctp_exclude_windragging="true"] {
+	--hctp_win_dragging:no-drag;
+}
+
+
+/* Scroll window using tabbar ! */
+#main-window:not([customizing="true"])[dz_adv_scroll_via_tabbar="true"]  #TabsToolbar {
+	-moz-window-dragging: var(--hctp_win_dragging);
+	-moz-binding: url("chrome://browser/content/customizableui/toolbar.xml#toolbar-drag");
+}
+
+
+/* Element present only in LINUX (& MacOS?). There is *NO-Fx4 Titlebar* and this Fx button is in Tabbar */
+#main-window:not([hcp_fx4_titlebar_visible="true"])   toolbar  #appmenu-toolbar-button,
+#main-window:not([hcp_fx4_titlebar_visible="true"])   toolbar  #appmenu-toolbar-button  dropmarker{
+	-moz-appearance: none ! important; 
+    height: 0px ! important; min-height: 0px ! important; overflow: hidden ! important;
+	width:  0px ! important; min-width:  0px ! important;
+	border-style: none ! important; padding: 0px ! important; margin: 0px !important;
+}	
+
+
+/* Scroll window using custom caption ! */
+/* #main-window[xxx="true"] */
+:root:not([customizing="true"])   .hcp-dragbox-binding ,
+:root                             .hcp-dragbox-binding.hc-force-drag {
+	-moz-window-dragging: var(--hctp_win_dragging);
+	/** -moz-binding: url("chrome://global/content/bindings/general.xml#windowdragbox"); **/
+}
+
+:root:not([customizing="true"])   toolbar  toolbarbutton.hcp-dragbox-binding{
+	-moz-binding: url("chrome://hidecaptionplus_fx/content/bindings.xml#hcp_toolbarbutton-drag"); 
+}
+
+toolbar  *:-moz-any(toolbarspring,toolbarspacer) {
+	-moz-window-dragging: no-drag;  /* helps when these are on tabbar, Fx48a */
+}
+:root:not([customizing="true"])[dz_adv_drag_controls~="all"]               toolbar  *:-moz-any(toolbarspring,toolbarspacer) ,
+:root:not([customizing="true"])[dz_adv_drag_controls~="no_forgn_spaces"]   toolbar  *:-moz-any(toolbarspring,toolbarspacer)[id^="customizableui-special-sp"] { /* spring,spacer */
+	-moz-window-dragging: var(--hctp_win_dragging);
+	/** -moz-binding: url("chrome://hidecaptionplus_fx/content/bindings.xml#hcp_toolbardecoration-drag"); **/
+}
+/**
+	outline: 3px solid red; 
+	outline-offset: -3px;
+**/
+
+/* ----- option: dz_look_containers_marginTop ---- */
+#main-window[dz_look_containers_marginTop="zeroAll"] 								{  margin-top: 0px !important;	}
+
+
+/* ONLY win7 + glass + lwt */
+@media (-moz-windows-compositor) {
+ @media (-moz-os-version: windows-win7) {
+  #main-window:not([hcp_fx4_titlebar_visible="true"])[hcp_sysbuttons_active="true"]:not([hc-MaxFull="true"])   #titlebar-buttonbox-container:-moz-lwtheme {
+	box-shadow: 0.98px 0px 0px rgb(118, 118, 118);  /* GREAT trick :-) */
+	border-bottom-right-radius: 4px;
+  }
+ }
+}
+
+
+#main-window[sizemode="maximized"]   #titlebar-buttonbox-container {
+	margin-right: 0px !important; /* anula el calculado en js */
+}
+
+/*  win10  */
+@media (-moz-os-version: windows-win10) {
+  #main-window   #titlebar-buttonbox-container   .titlebar-button {
+	  padding: 5px 12px;
+  }
+}
+
+
+/* HIDE hctp's buttons */
+#main-window:not([hcp_fx4_titlebar_visible="true"])[hcp_sysbuttons_active="true"]    #hcp-rightbar-fixed {
+	display: none;	
+}
+
+
+/* for web-titles!:
+	outline: 1px solid rgba(80,80,80,0.2);
+	-moz-outline-radius: 3px;
+*/
+
+
+
+
+
+/* -------------------- fix that REMOVES SYSTEM BUTTONS!! (and GLASS EFFECT)  ---------------------------- */
+
+#main-window[dz_adv_sysbut_winappear_calc]:not([dz_adv_sysbut_winappear_calc=""])  #hcp-root-box  #hctp_system_buttonbox,
+#main-window[dz_adv_sysbut_winappear_calc]:not([dz_adv_sysbut_winappear_calc=""])                 #titlebar-buttonbox-container   { /* use  ...-container here  */
+	display: none !important;
+}
+
+/* Pale Moon:  disable app-but  for  custom-buts  OR  fx-but enabled */
+#main-window[dz_adv_sysbut_winappear_calc]:not([dz_adv_sysbut_winappear_calc=""])      #appmenu-button-container ,
+#hcp-root-box[dz_home_enabled="true"]  ~  #titlebar                                    #appmenu-button-container {  
+	/** I make VISIBLE again the contained MENU below! **/
+	visibility: collapse !important;  
+}
+#main-window[dz_adv_sysbut_winappear_calc]:not([dz_adv_sysbut_winappear_calc=""])      #appmenu-button-container  #appmenu-popup ,
+#hcp-root-box[dz_home_enabled="true"]  ~  #titlebar                                    #appmenu-button-container  #appmenu-popup {  
+	visibility: visible !important;  
+}
+/** podria poner tb:  #appmenu-popup{ ... visible }, o sea siempre!, pero capaz mas adelante puede haber huevas reglas aqui.
+	position: fixed !important;
+	z-index : -10   !important;
+	left:   0px !important;
+	top : -50px !important;
+	
+	max-width: 0px !important;
+	min-width: 0px !important;
+	width    : 0px !important;
+	overflow : hidden !important;
+**/
+
+#main-window {
+	--hctp_winbkg_color: #003A85;
+}
+/** #hctp_titlebar_content  sirve para el extra de arriba en vert-max **/
+#main-window[dz_calc_winbkg_color="true"]   :-moz-any(#hctp_titlebar_content, #hcp-caption-box, #hctp-toolsubparent_box),
+#main-window[dz_calc_winbkg_color="true"]:not([hctp_tbox_float="true"])   #navigator-toolbox  { 
+	background-color: var(--hctp_winbkg_color);
+}
+
+#main-window[dz_calc_winbkg_color="true"]:not([dz_adv_sysbut_winappear_calc~="bkg_solid"])  #hctp_special_bkg   ,
+#main-window[dz_calc_winbkg_color="true"]:not([dz_adv_sysbut_winappear_calc~="bkg_solid"])  #hctp-toolsubparent_box{ 
+                                                                    background-image: url("chrome://HideCaptionPlus/skin/glass_bkg.png");
+                                                                    background-size : 875px auto;
+																	background-repeat: repeat;
+																	background-position: right top;
+}
+
+
+@media all and (-moz-windows-compositor) { /* Windows GLASSED DESKTOP */
+
+  /* in glass + sysbuttons visible! */  
+  #main-window[dz_adv_sysbut_winappear_calc=""]   #hctp_special_bkg {   /*  :not(:-moz-lwtheme)  */
+																	border-radius: 1.4px 1.4px 0 0;
+  }
+
+  
+  
+  /* para sysbut_winappear... normal y extra tb! */
+  /* mimic glass top border -copied from Fx- */
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"]  #hctp-appmenu-button-cont-fixed {			left:  1px;  }
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"]  #hcp-rightbar-fixed             {			right: 1px;  }
+
+  /**
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][hctp_show_newCustBorders="true"]  :-moz-any( .newCustBorder_left , #hctp_special_bkg ) {
+                                                                    padding-left  : 1px;  border-left  : 2px solid;  -moz-border-left-colors  : rgb(37, 44, 51) rgba(255,255,255,.6); 
+  } 
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][hctp_show_newCustBorders="true"]  :-moz-any( .newCustBorder_right, #hctp_special_bkg ) { 
+                                                                    padding-right : 1px;  border-right : 2px solid;  -moz-border-right-colors : rgb(37, 44, 51) rgba(255,255,255,.6); 
+  }
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][hctp_show_newCustBorders="true"]  #hctp_special_bkg {
+                                                                    padding-bottom: 1px;  border-bottom: 2px solid;  -moz-border-bottom-colors: rgb(37, 44, 51) rgba(255,255,255,.6); 
+  } 
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][hctp_show_newCustBorders="true"]  .borderTransparent:-moz-any( .newCustBorder_left , .newCustBorder_right ) {
+  																	-moz-border-left-colors  : transparent;
+  																	-moz-border-right-colors : transparent;
+  																	-moz-border-bottom-colors: transparent;
+  }
+  **/
+
+/**
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][dz_adv_sysborder ~= "7"]:not([dz_adv_sysborder ~= "real"])   :-moz-any( .newCustBorder_left , #hctp_special_bkg ){	margin-left  : -1px;	}
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][dz_adv_sysborder ~= "7"]:not([dz_adv_sysborder ~= "real"])   :-moz-any( .newCustBorder_right, #hctp_special_bkg ){	margin-right : -1px;	}
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][dz_adv_sysborder ~= "7"]:not([dz_adv_sysborder ~= "real"])   #hctp_special_bkg                                   {	margin-bottom: -1px;	}
+**/
+  /* FYI: #hctp-appmenu-button-cont-fixed, #hcp-rightbar-fixed */
+
+/**  
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][hctp_show_newCustBorders="true"]  #hctp-toolparent    {
+																	border-left : 3px solid transparent;
+																	border-right: 3px solid transparent;
+  } 
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][hctp_show_newCustBorders="true"]  #hctp_special_bkg      {   
+   																	border-radius: 3px 3px  0  0;  /* se ve una punta blanca con sysborder=disable + appear=browsertabbar *
+  } 
+  #main-window[dz_adv_sysbut_winappear_calc_unmax~="bkg_dblue"][hctp_show_newCustBorders="true"]  {
+  																	border : 0px !important;
+  																	padding: 0px !important;
+  }
+**/
+
+
+  #main-window[dz_calc_winbkg_color="true"]                                #hctp-toolsubparent_box:-moz-window-inactive ,
+  #main-window[dz_adv_sysbut_winappear_calc      ~="bkg_dblue"]:not([dz_calc_winbkg_color="true"]):-moz-window-inactive  {
+                                                                    box-shadow:     0px 0px 0px 600px rgba(255, 255, 255, 0.4) inset;
+  }
+  #main-window[dz_calc_winbkg_color="true"]                                         #hctp_special_bkg:-moz-window-inactive {
+                                                                    box-shadow:     0px 0px 0px 600px rgba(255, 255, 255, 0.4) inset !important;
+  }
+
+  /**  moved to sys_window.css   **/
+  
+}
+/* END media all and (-moz-windows-compositor)  */
+
+
+
+/***  oct-16: COMMENTED for REMOVAL: old thing! 
+#main-window[hctp_temp_resize="active"] ,
+    #content[hctp_temp_resize="active"] {
+	margin-right : 1px;
+	margin-bottom: 1px; 
+}
+@media  ( min-resolution : 1.1dppx) {
+ #main-window[hctp_temp_resize="active"] ,
+     #content[hctp_temp_resize="active"] {
+	margin-right : 0.6px;
+	margin-bottom: 0.6px; 
+ }
+}
+***/
+
+
+/*  hctp_systemCaption_present  */
+#main-window[hctp_systemCaption_present="true"]   *:-moz-any(#titlebar-buttonbox-container, #hctp_system_buttonbox) {
+	display: none !important;
+}
+
+
+/*  COPY OF floatbars css  to look nice at startup  */
+.hctp-floatbar:not([customizing="true"]) {
+	position: fixed;
+	top: -1100px;
+}
+
+
+
+/* LET this Fx button appear if It's in Ie. floatbars! */
+#hcp-root-box[dz_show_PanelUI_button_2="never"    ]  ~     #navigator-toolbox   #PanelUI-button {
+	max-width: 0px !important;
+	min-width: 0px !important;
+	width    : 0px !important;
+	overflow : hidden !important;
+	
+	border : 0px none !important;
+	margin : 0px !important;
+	-moz-appearance: none !important;
+}
+
+#hcp-root-box[dz_show_PanelUI_button_2="badge_msg"]  ~     #navigator-toolbox   #PanelUI-button {
+	margin : 0px !important;
+	padding: 0px !important;
+	border : 0px none !important;
+}
+#hcp-root-box[dz_show_PanelUI_button_2="badge_msg"]  ~     #navigator-toolbox   #PanelUI-menu-button {
+    transition: margin-right 0ms ease-out 100ms;
+}
+#hcp-root-box[dz_show_PanelUI_button_2="badge_msg"]  ~     #navigator-toolbox   #PanelUI-menu-button:not([badge-status]):-moz-any(:not([badge]),[badge=""]) {
+	max-width: 0px !important;
+	min-width: 0px !important;
+	width    : 0px !important;
+	overflow : hidden !important;
+
+	border : 0px none !important;
+	-moz-appearance: none !important;
+	
+    margin-left :  15px !important;
+    margin-right: -15px !important;
+    transition: margin-right 0ms ease-in 300ms;
+}
+
+
+
+/* ----- popupnotification ------------------------------------------ */
+popupnotification + popupnotification[id^="hctp_"] {
+	border-top: 1px solid rgba(0,0,0,0.17);
+    padding-top: 8px;
+    margin-top: 12px;
+}
+popupnotification[id^="hctp_"]   .popup-notification-icon {
+	width : auto;
+	height: auto;
+}
+popupnotification[id^="hctp_"]   .popup-notification-description {
+	white-space: pre-wrap;
+	font-size: 110%;
+	text-indent: 10px;
+}
+popupnotification[id^="hctp_"]   .popup-notification-button-container {
+  	margin-top: 8px;
+}
+/***
+	font-weight: bold;
+	line-height: 4em;???
+ ***/
+
+
+panel#notification-popup[panelopen="true"][hctp_timeout_dismiss="true"]      popupnotification[id^="hctp_winClosed_"] {
+	box-shadow: 0px 0px 14px 3px hsl(0, 0%, 81%), 0px 0px 4px 3px hsl(0, 0%, 81%) inset;
+	padding: 2px !important;
+	transition: background-color ease-out 4s 3s, box-shadow ease-out 4s 3s;
+	border-radius: 3px;
+	/* 
+	background-color: hsl(0, 0%, 91%) !important;
+	*/
+}
+
+
+/* ----- #hctp_topEdge_hover:  for float-bars AND TBoxHide :-) ------------------------------------------ */
+
+
+#hctp_topEdge_hover {
+	position: fixed;
+	top : -100px;
+	left: 0px;
+	z-index: 10; /* just behind Float-tbox */ 	
+	
+	height: 1px;
+	width : 100%;
+	background-color: rgba(0, 0, 0, 0.1); /* transparent doesn't work over FLASH objects (like TV emissions, etc) */
+	
+	-moz-window-dragging: no-drag !important; /* solo para inactive pq  auqnue quede abajo del toolbox igual hace efecto! */
+}
+:root[sizemode="normal"]:not([hctp_vertical_maxim_act__TOP="true"])                                      #hctp_topEdge_hover {
+	height: 18px;
+	background-color: transparent;
+}
+:root[sizemode="normal"]:not([hctp_vertical_maxim_act__TOP="true"])[dz_show_custom_caption="cc_never"]   #hctp_topEdge_hover {
+	height: 6px;
+}
+
+/* HIDE in fs VIDEOS */
+:root[inDOMFullscreen="true"]   #hctp_topEdge_hover {
+	z-index: -5 !important;
+}
+
+
+
+
+
+/* ---  Grid colored buttons for floating elements!  ------------------------------------------------------- */
+
+.floating_element_control {
+	-moz-appearance: none !important;
+	padding: 0px 1px !important;
+	border: none !important;
+	border-radius: 2px !important;
+}
+/* vbox */
+.floating_element_control                  > vbox {
+	margin: -2px 2px;
+
+	color: highlight; /* tomado por shadow */
+	box-shadow: 0px 0px 1.4px 1px, 0px 0px 1px inset;
+	
+	border-radius: 1px;
+}
+.floating_element_control[disabled="true"] > vbox {
+	background-color: rgba(0,0,0,0.1);
+	color: rgba(0,0,0,0.7); /* tomado por shadow */
+}
+
+.floating_element_control:-moz-any(:hover,[open]):not([disabled="true"])   {
+  background:   var(--toolbarbutton-hover-background, rgba(255,255,255,0.3))  !important;
+  /* estan tb las vars para *-active-, etc
+  border-color: var(--toolbarbutton-hover-bordercolor) !important;
+  box-shadow:   var(--toolbarbutton-hover-boxshadow)   !important;
+  */
+}
+.floating_element_control[disabled="true"] {
+	opacity: 0.4;
+}
+
+/* cell */
+.floating_element_control                 [cell]{	width : 6px;	height: 6px;
+													border-radius: 1px;	
+}
+.floating_element_control[hsize="big"]    [cell]{	width : 7px;	height: 7px;	}
+.floating_element_control[hsize="small"]  [cell]{	width : 5px;	height: 5px;	}
+
+:root:not([customizing="true"])
+  .floating_element_control               [cell]:not([active="true"]){
+	visibility: hidden;
+}
+
+/**  #customization-palette     
+	  .floating_element_control 	[cell] {
+		visibility: visible !important;
+}
+**/
+
+.floating_element_control   [cell="1"]{ 	background-color: #d80000; 	border-top-left-radius    : 1.5px; }
+.floating_element_control   [cell="2"]{ 	background-color: #00df00; 	border-top-right-radius   : 1px; }
+.floating_element_control   [cell="3"]{ 	background-color: #ffff55; 	}
+.floating_element_control   [cell="4"]{ 	background-color: #5b5bff; 	}
+.floating_element_control   [cell="5"]{ 	background-color: white; 	border-bottom-left-radius : 1px; }
+.floating_element_control   [cell="6"]{ 	background-color: #575757; 	border-bottom-right-radius: 1px; }
+
+.floating_element_control   [cell][extra="moveDownOnly_true"]    { box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6) inset; }
+
+/** ACTION tooltips ! ---------------------- **/
+
+tooltip.tt_actionBut_evts  {
+	font-size: 89%;
+	font-family: Tahoma, Arial;
+	padding: 1px 0px 1px 1px;
+}
+tooltip.tt_actionBut_evts   grid {
+	margin: 0px; /* 0px -3px */
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 2px;
+}
+tooltip.tt_actionBut_evts  label {
+	margin: 0px 2px 0px 1px;
+}
+tooltip.tt_actionBut_evts  row {
+	margin : 1px 0px 0px;
+	padding: 0px  1px;
+}
+
+tooltip.tt_actionBut_evts  row.dblclk   label:first-child ,
+tooltip.tt_actionBut_evts  row.dblclk   label[id^="hAction_"] {
+	margin-inline-start : 0.6em;
+}
+
+/*  coloring even rows ...  */
+tooltip.tt_actionBut_evts  rows > hbox {
+	background-color: red;
+	display: none;
+}
+tooltip.tt_actionBut_evts  rows > row:nth-of-type(even) {
+	background-color: rgba(0,30,0,0.045);
+	border-radius: 2px;
+}
+
+
+/** ALERT PANEL! ---------------------- **/
+
+#hctp_alertPanel_leftCol {
+	margin: 9px 15px 5px 5px;
+}
+#hctp_alertPanel_desc {
+	margin: 5px;
+	 
+	white-space: pre-line !important; 
+	pointer-events: none;
+}
+
+
+/** aug 2015, Fullscr fix --- from restored mode was getting 1px upper **/
+#main-window[inFullscreen]   #fullscr-toggler {
+	position: fixed;
+	z-index: 3;
+	
+	top  : 0px;
+	right: 0px;
+	width: 100%;
+	
+	background: rgba(0, 0, 0, 0.1);
+}
+
+
+/* */                .warn_InsideMenuPanel {	display: none     !important;	}
+#PanelUI-contents    .warn_InsideMenuPanel {	display: -moz-box !important;   
+	color: orange;	  
+	transform: scaleX(0.82);
+	transform-origin: left center; 
+}
+#PanelUI-contents    toolbaritem.notInMenu {
+	outline: 1px dotted rgba(0,0,0,0.5);	
+}
+
+
+.pre_wrap {	white-space: pre-wrap; }
+.pre_line {	white-space: pre-line; }
+
+
+
+#backForwardMenu:not([hc_aboutToOpen])   > .popup-internal-box {
+	/* transform: translateY( 0px); no hace falta */
+	transition: transform 60ms ease-out;
+}
+#backForwardMenu[hc_aboutToOpen]         > .popup-internal-box {
+	transform: translateY(-3px);
+	/* transition: transform 0ms; */
+}
+#backForwardMenu[hc_aboutToOpen~="goFw"] > .popup-internal-box {
+	transform: translateY( 3px);
+}
+
+
+
+/** HC's MAIN MENU BUTTON ---------------------- **/
+#hctp_fx_mainmenu_but {
+	list-style-image: url("chrome://hidecaptionplus/skin/fx_menu_button.png");
+	padding: 0px 6px !important;  
+	margin: -2px 2px -3px 2px !important;
+	border-radius: 3px;  
+}
+
+/** usar un .class_dynbars_things  mejor!
+:root:not([hctp__new_special_attr="true"])   #id_toggle_dyn_toolbars_hcmenu {
+	opacity: 0.6;
+}
+**/
+
+/** for PALEMOON , remove own web-title **/
+#main-window[title_normal="Pale Moon"][titlemodifier="Pale Moon"]::after {
+	content: ""   !important;
+	display: none !important;
+}
+
+
+}  /**  @-moz-document  url(...)  **/
+
+

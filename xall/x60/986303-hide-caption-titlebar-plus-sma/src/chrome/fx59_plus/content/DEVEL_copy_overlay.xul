@@ -1,0 +1,536 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE window [
+<!ENTITY % hctpBaseDTD    SYSTEM "chrome://hidecaptionplus/content/h_base_overlay.dtd"  > %hctpBaseDTD;
+<!ENTITY % optionDTD      SYSTEM "../locale/option.dtd"   > %optionDTD;
+<!ENTITY % opt_langDTD    SYSTEM "../locale/opt_lang.dtd" > %opt_langDTD;
+<!ENTITY % optLook1DTD    SYSTEM "chrome://HideCaptionPlus/content/dtd__opt_look1.dtd"   > %optLook1DTD;
+<!ENTITY % browserDTD     SYSTEM "chrome://browser/locale/browser.dtd"   		> %browserDTD;
+<!ENTITY % brandDTD       SYSTEM "chrome://branding/locale/brand.dtd"   		> %brandDTD;
+<!ENTITY % HideCaptionDTD SYSTEM "../locale/overlay.dtd"	> %HideCaptionDTD;
+]>
+
+
+<overlay id="HideCaption-overlay" 
+			xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+			xmlns:html="http://www.w3.org/1999/xhtml" 
+	>
+
+		<!-- 
+<script src="chrome://HideCaptionPlus/content/DevelGlobal_Madara_Lib.js"></script>
+		-->
+
+<window id="main-window"   >    <!-- chromemargin="0,7,7,7" NO, bc this makes a 4px topGap in maxim. in LINUX!  -->
+	
+	<hbox id="hcp-first-box"             insertbefore="mainPopupSet"  style="height:0px; overflow:hidden;" /> <!--  EMPTY box, used to read position! -->
+	
+	<vbox id="hctp_titlebar"             insertbefore="mainPopupSet"  >
+		<hbox id="hctp_titlebar_content"  flex="1"  > 
+		</hbox>
+	</vbox>
+	
+	<hbox id="hcp-root-box"   class=""  hctp_locale="&hctp_locale;"   insertbefore="mainPopupSet"  > <!--  setContentPosition_doXXX  -->
+	
+		<fullscr_observertarget  id="hctp-fullscr_observertarget"  onbroadcast="HideCaption.mainW.setAttribute('hctp_fullscrToggler_collapsed', ''+(this.getAttribute('hidden')=='true' || this.getAttribute('collapsed')=='true') );" >
+		    <observes  element="fullscr-toggler"  attribute="hidden"    />
+		    <observes  element="fullscr-toggler"  attribute="collapsed" />
+		</fullscr_observertarget>
+
+		<mainDeck_obsTarget   onbroadcast="HideCaption.mainDeck__on_selectedIndex(this);" >
+		    <observes  element="tab-view-deck"  attribute="selectedIndex"    />
+		</mainDeck_obsTarget>
+	
+	
+		<hbox id="hcp-rightbar-fixed" context="hcp-menu-windowcontrols"  class="setContentPosition  collapseWith_fullscrBars  newCustBorder_right  borderTransparent  hcp-dragbox-binding">
+		  <hbox id="hctp-controls-top-fixed"  class="hc_mmc_holder  hc-hideon-restoredcaption   hc-hideon-fx4titlebar  winactive-cls" context="hcp-menu-windowcontrols" >
+			<toolbarbutton id="minimize-button"  class="hc-mmcbuttons-cls  hc-min-button-cls"  hctp_ft_minimize="true"
+				tooltiptext="&fullScreenMinimize.tooltip;" oncommand="window.minimize();"      />
+			<toolbarbutton id="restore-button"   class="hc-mmcbuttons-cls  hc-res-button-cls"
+				tooltiptext="&fullScreenRestore.tooltip;"  oncommand="HideCaption.Maximize();" />
+			<toolbarbutton id="close-button"     class="hc-mmcbuttons-cls  hc-close-button-cls"
+				tooltiptext="&fullScreenClose.tooltip;"    oncommand=""      hcp_close_button_events="true"  /> 
+			<!-- 
+			<toolbarbutton id="maximize-button"  class="hc-mmcbuttons-cls  hc-max-button-cls" ... This generic ID was asked for removal in AMO review. Themes can use conditional style for restore-but.  />
+			 -->
+			
+			<toolbarbutton id="hctp_minimize_but"  class="hNew_mmcbuttons  hNew_min_button"  hctp_ft_minimize="true"
+				tooltiptext="&fullScreenMinimize.tooltip;" oncommand="window.minimize();"      />
+			<toolbarbutton id="hctp_restore_but"   class="hNew_mmcbuttons  hNew_res_button"
+				tooltiptext="&fullScreenRestore.tooltip;"  oncommand="HideCaption.Maximize();" />
+			<toolbarbutton id="hctp_close_but"     class="hNew_mmcbuttons  hNew_close_button"
+				tooltiptext="&fullScreenClose.tooltip;"       hcp_close_button_events="true"  />
+		  </hbox>
+ 
+		  <hbox id="hctp-controls-top-micro2" class="hc_mmc_holder  hc-hideon-restoredcaption   hc-hideon-fx4titlebar  winactive-cls" hidden="true" >
+			<toolbarbutton id="close-button"     class="hc-mmcbuttons-cls  hc-close-button-cls"
+				tooltiptext="This must NEVER appear. Please report it."    oncommand="alert('Ignored err.. at close. Please report this.');"    />
+
+			<toolbarbutton id="hctp_close_but"     class="hNew_mmcbuttons  hNew_close_button"
+				tooltiptext="This must NEVER appear. Please report it."    oncommand="alert('Ignored err.. at close. Please report this.');"    />
+		  </hbox>
+
+		  <hbox id="hcp-topright-resizer-space" class="hc-hideon-fullorcaption" >
+				<!-- not used yet... -->
+		  </hbox>
+		</hbox>
+		
+		<menupopup id="hcp-menu-windowcontrols"  onpopupshowing="if(HCPlusLib.onlyForMe(event,this)){ HideCaption.HcExtras.vertMax_update_mitem();  HCPlusLib.ctxMenuOpener= event.explicitOriginalTarget; }" >
+			<!--  onpopuphidden="HCPlusLib.ctxMenuOpener= null;" ___ NO pq me jode con el 'context'-submenu-dummy q intenta abrir el mainpanel
+			 -->
+			<hbox id="hcp-menu-winctrls-titlebar"  align="stretch"  pack="start"  class=""  forbidden_anchor_parent="true" >
+				<!--  image="chrome://hidecaptionplus/skin/opt/fx_home_opt.png" --> 
+			  <hbox  align="start"  forbidden_anchor_parent="true" >
+			   <button id="hctp-appmenu-button-incontextpopup"	type="menu"	label="&brandShortName;"	style="-moz-user-focus: ignore;  padding: 0px 3px;"
+				hcp_appbutton_style="fx_home_med0.png"
+				
+				onmousedown="document.getElementById('hcp-menu-windowcontrols').hidePopup();" 
+				class="hctp-appmenu-button-cls  "
+				hcp_fxbut_events="true"  />
+			  </hbox>
+
+			  <hbox flex="1" /> <!--  Drag works only in Linux! (class="hcp-dragbox-binding")  -->
+
+			  <toolbarbutton  id="hctp_fx_mainmenu_but"
+			    onclick="if(HCPlusLib.isLeftClick(event)){ setTimeout(()=>{ HCPlusLib.openAppmenuPopup(event); },20);  closeMenus(event.target); }  " 
+				/>
+			  
+			  <hbox  align="start" >
+			   <hbox id="hctp-controls-in-menu" class="hc_mmc_holder  winactive-cls" style="margin-top:-1px;" onclick="closeMenus(event.target);" 
+					context="hctp_fx_mainmenu_popup"  forbidden_anchor_parent="true"  >
+				<toolbarbutton id="minimize-button"  class="hc-mmcbuttons-cls  hc-min-button-cls"
+					tooltiptext="&fullScreenMinimize.tooltip;" oncommand="window.minimize();"      />
+				<toolbarbutton id="restore-button"   class="hc-mmcbuttons-cls  hc-res-button-cls"
+					tooltiptext="&fullScreenRestore.tooltip;"  oncommand="HideCaption.Maximize();" />
+				<toolbarbutton id="close-button"     class="hc-mmcbuttons-cls  hc-close-button-cls"
+					tooltiptext="&fullScreenClose.tooltip;"    oncommand=""     hcp_close_button_events="true" />
+
+				<toolbarbutton id="hctp_minimize_but"  class="hNew_mmcbuttons  hNew_min_button"
+					tooltiptext="&fullScreenMinimize.tooltip;" oncommand="window.minimize();"      />
+				<toolbarbutton id="hctp_restore_but"   class="hNew_mmcbuttons  hNew_res_button"
+					tooltiptext="&fullScreenRestore.tooltip;"  oncommand="HideCaption.Maximize();" />
+				<toolbarbutton id="hctp_close_but"     class="hNew_mmcbuttons  hNew_close_button"
+					tooltiptext="&fullScreenClose.tooltip;"       hcp_close_button_events="true"  />
+			   </hbox>
+			  </hbox>
+			</hbox>
+			
+			<menuitem label="&menuitem.hide.caption.titlebar.plus.addon;" accesskey="O" oncommand="HCPlusLib.openOptionDialog(event);" 
+				image="chrome://HideCaptionPlus/skin/hcp_icon16.png" class="menuitem-iconic" 
+					/>
+		
+			<menuseparator/>
+
+			<menu id="hcp-viewToolbarsMenu"
+					  label="&viewToolbarsMenu.label;"
+					  accesskey="&viewToolbarsMenu.accesskey;"
+					  >
+					<menupopup  id="hcp-viewToolbarsMenu-mpopup"
+								onpopupshowing="onViewToolbarsPopupShowing(event);"
+								menugenerated="true" >
+
+								
+						<menuseparator/>
+						<menuitem id="hcp-menu_customizeToolbars"
+								  label="&viewCustomizeToolbar.label;"
+								  accesskey="&viewCustomizeToolbar.accesskey;"
+								  command="cmd_CustomizeToolbars"/>
+
+						<!-- hidden: this node will be cloned!!! -->
+						<menuitem 
+							hidden="true" 
+							id="hcp-fullscreen_autohide" type="checkbox" 
+							label="&fullScreenAutohide.label;" accesskey="&fullScreenAutohide.accesskey;" 
+							tooltiptext="&fullScreenCmd.label;"	autocheck="false"
+							oncommand="FullScreen.setAutohide(); FullScreen.getAutohide(this);"
+							/>
+
+					</menupopup>
+			</menu>
+
+
+			<menuseparator/>
+			
+			<menuitem 
+					accesskey="&fullScreenCmd.accesskey;"
+					label="&fullScreenCmd.label;"  key="key_fullScreen"
+					type="checkbox"  observes="View:FullScreen"
+					
+					image="chrome://HideCaptionPlus/skin/bt/bt_fullscreen.png" class="hcp-menu-iconic  menuitem-iconic"
+					/>
+
+			<menuseparator  class="vertical_maxim_cls" />
+			<menuitem  id="mitem__vertical_maxim_toggle"  type="checkbox"  autocheck="false"  label="&VERTICAL_MAXIMIZE_toggle;"  accesskey="&VERTICAL_MAXIMIZE_accesskey;" 
+				class="vertical_maxim_cls  tt_hc  hcp-menu-iconic  menuitem-iconic"   tooltip="vertMax_toggle_tt"  
+				oncommand="HideCaption.HcExtras.vertMax_toggleEnable();"
+				/>
+				<!--    observes="vertMax.."   key="key_vertMax..."  image="..."  -->
+				<tooltip id="vertMax_toggle_tt" class="hc"><label>&VERTICAL_MAXIMIZE_toggle_tt;</label></tooltip> 
+
+			<menuseparator  class="dynbars_maxim_cls" />
+			<menuitem id="id_toggle_dyn_toolbars_hcmenu" label="&mitem_toggle_dyn_toolbars;" accesskey="&accesskey_toggle_dyn_toolbars;"   
+					oncommand="event.stopPropagation();event.preventDefault();  HideCaption.TBoxHide.toggle_enable();"
+					key="HCTP_DynToolbars_Enable" />
+
+			<!-- 
+			<menuseparator/>
+			<menuitem label="&menuitem.readme.file;"    accesskey="r" oncommand="HCPlusLib.OpenReadmePage(event);" />
+			<menuitem label="&menuitem.options.dialog;" accesskey="o" oncommand="HCPlusLib.openOptionDialog(event);" />
+			 -->
+		</menupopup>
+		
+		<!-- tried put this inside the LABEL (not working) ,and xxxITEM but got width=0 (bc of splitter) -->
+		<menupopup id="hcp-title-popup"  position="after_start" >
+			<menuitem label="&mitem_Reset_title_width;" accesskey="&mitem_Reset_title_w__key;"  oncommand="var mtit= document.getElementById('hcp-web-title-label1'); mtit.removeAttribute('width'); mtit.style.width='75px'; setTimeout( function(){ mtit.width= 75; mtit.style.width='auto'; }, 100 );" /> 
+		</menupopup>
+
+
+		<!-- devel flags... -->
+		<hbox id="hctp-appmenu-button-cont-fixed" 
+			class="setContentPosition  collapseWith_fullscrBars  newCustBorder_left  borderTransparent   hc-hideon-fx4titlebar-all-platform" 
+			>
+		  <hbox id="hctp-appmenu-button-container"
+		  	class="chromeclass-toolbar-additional  "
+		  	  >  <!-- chromeclass-toolbar-additional: Ie. hides it in popups -->
+			<button id="hctp-appmenu-button"		type="menu"		label="&brandShortName;"	style="-moz-user-focus: ignore;"	class="hctp-appmenu-button-cls  max"
+				hcp_fxbut_events="true"  />
+			<button id="hctp-appmenu-button-nomax"	type="menu"		label="&brandShortName;"	style="-moz-user-focus: ignore;"	class="hctp-appmenu-button-cls  nomax"
+				hcp_fxbut_events="true"  />
+		  </hbox>
+		</hbox>
+
+		<!-- to hide glass' system mmc buttons 
+		<hbox id="hctp_system_buttonbox"   class="setContentPosition_doMargin"   customtheme_bkg_appearance="default" />
+		-->
+
+		<hbox id="hctp_topEdge_hover"   class="setContentPosition_doMargin"  />
+
+
+	  <popupset id="hctp_popupset_central" >
+
+		<tooltip id="tt_action_options" class="no_dlgPopups" >
+		  	<menupopup  id="hctp_menupopup__menuitem_group_actions"  >
+				&menuitem_group_actions;
+
+				&menuitem_group_actions__wheel;
+		  	</menupopup>
+		</tooltip>
+
+		<tooltip id="tt_closeBut_evts" 	class="tt_actionBut_evts" 
+			onpopupshowing="return HideCaption.Holder_CloseButtons.ttHolder.onPopupShowing(event, this);" >
+			<grid><rows>
+				<row><label value="&mButShort_primary;" 		/><label id="hAction_close_button_action"  			value="" /></row>
+				<hbox />
+				<row class="dblclk">
+				     <label value="&mButShort_primary_dblclk;" 	/><label id="hAction_close_button_act1_primary_dblclk"	value="" /></row>
+				<hbox />
+				<row><label value="&mButShort_second;" 			/><label id="hAction_close_button_act2_secondary"  	value="" /></row>
+				<hbox />
+				<row class="dblclk">
+				     <label value="&mButShort_second_dblclk;"	/><label id="hAction_close_button_act2_secondary_dblclk"	value="" /></row>
+				<hbox />
+				<row><label value="&mButShort_middle;" 			/><label id="hAction_close_button_act3_middle"  	value="" /></row>
+				<hbox />
+				<row class="dblclk">
+				     <label value="&mButShort_middle_dblclk;" 	/><label id="hAction_close_button_act3_middle_dblclk"  	value="" /></row>
+				<hbox />
+
+				<row><label value="&mButShort_wheel;"			/><label id="hAction_close_button_act_wheel"  		value="" /></row>
+				<hbox />
+				<row><label value="&mButShort_wheelLeft;"		/><label id="hAction_close_button_act_wheelLeft"  	value="" /></row>
+				<hbox />
+				<row><label value="&mButShort_wheelRight;"		/><label id="hAction_close_button_act_wheelRight"  	value="" /></row>
+				<hbox />
+			</rows></grid>
+		</tooltip>
+		<tooltip id="tt_fxBut_evts" 	class="tt_actionBut_evts" 
+			onpopupshowing="return HideCaption.Holder_FxButtons.ttHolder.onPopupShowing(event, this);" >
+			<grid><rows>
+				<row><label value="&mButShort_primary;" 		/><label id="hAction_fxbut_act1_primary"		value="" /></row>
+				<hbox />
+				<row class="dblclk">
+				     <label value="&mButShort_primary_dblclk;" 	/><label id="hAction_fxbut_act1_primary_dblclk"		value="" /></row>
+				<hbox />
+				<row><label value="&mButShort_second;" 			/><label id="hAction_fxbut_act2_secondary"  	value="" /></row>
+				<hbox />
+				<row class="dblclk">
+				     <label value="&mButShort_second_dblclk;"	/><label id="hAction_fxbut_act2_secondary_dblclk"	value="" /></row>
+				<hbox />
+				<row><label value="&mButShort_middle;" 			/><label id="hAction_fxbut_act3_middle"  		value="" /></row>
+				<hbox />
+				<row class="dblclk">
+				     <label value="&mButShort_middle_dblclk;" 	/><label id="hAction_fxbut_act3_middle_dblclk"  	value="" /></row>
+				<hbox />
+				
+				<row><label value="&mButShort_wheel;"			/><label id="hAction_fxbut_act_wheel"  			value="" /></row>
+				<hbox />
+				<row><label value="&mButShort_wheelLeft;"		/><label id="hAction_fxbut_act_wheelLeft"  		value="" /></row>
+				<hbox />
+				<row><label value="&mButShort_wheelRight;"		/><label id="hAction_fxbut_act_wheelRight"  	value="" /></row>
+				<hbox />
+			</rows></grid>
+		</tooltip>
+	
+		
+		<!-- 
+		 -->
+
+		 <panel id="hctp_alertPanel"  type="arrow"  noautofocus="true"  position="bottomcenter topleft"  class=""  style="white-space: pre-line !important;"
+	    		onclick="this.hidePopup();"   onpopupshown=""  orient="horizontal" > 
+	    	<!-- backdrag="true"  jode con el onclick -->
+	    		<vbox        id="hctp_alertPanel_leftCol" > <image src="chrome://HideCaptionPlus/skin/hcp_icon.png" /> </vbox>
+	    		<description id="hctp_alertPanel_desc"    style="" />
+		 </panel>
+
+	  	 <tooltip  id="tt_Please_Restart_Fx__notInMenu" >
+		 	<label>&tt_Please_Restart_Fx;</label>
+		 </tooltip>
+		 
+		<menupopup id="hctp_fx_mainmenu_popup"    onpopupshowing=" HCPlusLib.openAppmenuPopup( HCPlusLib.newEv_wTarget(event.explicitOriginalTarget));  return false;" >
+		</menupopup>
+		 
+	  	<tooltip  id="tt_miscTxts" >
+			<label id="txt__are_you_sure"   >&Are_you_sure;</label>
+			<label id="txt__system_default" >&devppp_default;</label>
+		</tooltip>
+		
+	  </popupset>
+
+	  <!-- box id="hctp_scan_box"   created in .js ! -->
+	  
+	</hbox>
+	
+	
+	<hbox id="hcp-caption-box"    insertbefore="navigator-toolbox"  class="hc-hideon-fullorcaption  hc-hideon-fx4titlebar"   
+			customtheme_tbar_appearance="default"   overflowfortoolbar="dummy" >
+		<!--	overflowfortoolbar:  makes onViewToolbarsPopupShowing() work well :-)  
+		
+		deprecated
+		<vbox id="hcp-icon-box"  flex="0" class="hcp-dragbox-binding" tooltiptext="&vbox.alt.space.for.window.menu;">
+			<image src="chrome://HideCaptionPlus/skin/icon48.png" /> 
+		</vbox>
+		 -->
+		 
+		<hbox id="hcp-title-box" flex="1" class="hcp-dragbox-binding  hc-force-drag" context="toolbar-context-menu" >
+			
+			<image src="chrome://branding/content/icon16.png"  class="fxaustr_syscaption_only"  />
+			
+	    	<image    class="hcp_favicon_cls" />
+			<label id="hcp-title-box-label"  class="hcp_web_title_cls_basic"  crop="right" flex="1" value="&brandShortName;" tooltiptext="&vbox.alt.space.for.window.menu;" />
+		</hbox>
+
+		<!-- position: FIXED !! elements -->
+
+		<hbox     id="hcp-top-box"  	class="hcp-topdownbox-cls  hc-hideon-fullorcaption  top" >
+			<resizer dir="top"         		class="hc-resizer  hcp-resizer-middle" /></hbox>
+		<hbox     id="hcp-left-box"  	class="hcp-sidebox-cls     hc-hideon-fullorcaption  left" >
+			<resizer dir="left"        		class="hc-resizer  hcp-resizer-middle" /></hbox>
+		<hbox     id="hcp-right-box" 	class="hcp-sidebox-cls     hc-hideon-fullorcaption  right" >
+			<resizer dir="right"       		class="hc-resizer  hcp-resizer-middle" /></hbox>
+		<hbox     id="hcp-bottom-box"	class="hcp-topdownbox-cls  hc-hideon-fullorcaption  bottom" >
+			<resizer dir="bottom"      		class="hc-resizer  hcp-resizer-middle" /></hbox>
+		
+		<hbox id="hcp-box-topleft"     class="hcp-box-corner hc-hideon-fullorcaption  top  left"  context="hcp-menu-windowcontrols" >
+			<resizer dir="topleft"     class="hc-resizer hcp-resizer-corner hcp-icon-resizer" /></hbox>
+		<hbox id="hcp-box-topright"    class="hcp-box-corner hc-hideon-fullorcaption  top  right" context="hcp-menu-windowcontrols" >
+			<resizer dir="topright"    class="hc-resizer hcp-resizer-corner hcp-icon-resizer" /></hbox>
+		<hbox id="hcp-box-bottomleft"  class="hcp-box-corner hc-hideon-fullorcaption  bottom  left"  >
+			<resizer dir="bottomleft"  class="hc-resizer hcp-resizer-corner hcp-icon-resizer" /></hbox>
+		<hbox id="hcp-box-bottomright" class="hcp-box-corner hc-hideon-fullorcaption  bottom  right" >
+			<resizer dir="bottomright" class="hc-resizer hcp-resizer-corner hcp-icon-resizer" style="-moz-appearance:none;" /></hbox>
+	  
+	</hbox>
+
+	<vbox id="main-window">
+		<vbox   id="hctp_toparea"   insertbefore="navigator-toolbox"  class="" >
+			<hbox id="hctp_topsub_unmax"  />
+			<hbox id="hctp_topsub_max"    />
+		</vbox>
+	</vbox>
+	
+</window>
+
+
+<!-- vbox id="titlebar" -->
+<!-- have to check deeper about the non-working-yet 'command' attr. -->
+<hbox   id="titlebar-buttonbox" context="hcp-menu-windowcontrols" >
+	<toolbarbutton id="titlebar-close"  command="" oncommand=""    hcp_close_button_events="true"  />
+</hbox>
+
+
+
+<!-- add in Fx's MAIN MENU   ../skin/hcp_icon.png -->
+<menupopup id="menu_ToolsPopup" >
+	<menuitem  insertafter="prefSep"  image="chrome://HideCaptionPlus/skin/hcp_icon16.png" class="menuitem-iconic" 
+		label="&menuitem.hide.caption.t.plus.options;"  accesskey="H"  oncommand="HCPlusLib.openOptionDialog(event);" context="hcp-menu-windowcontrols" />
+</menupopup>
+
+
+<hctp_special_palette  id="hctp_special_palette_main" >
+		
+		<!-- class="panel-wide-item "  is for the zooming-when-grabbing effect :) -->
+		
+		<toolbaritem  id="hcp-web-title-item1" title="&h_webtitle_resize;"     align="center" class="panel-wide-item  hcp_title  hcp-dragbox-binding">
+	    	<image    class="hcp_favicon_cls"  src="chrome://branding/content/icon16.png" />
+			<label    id="hcp-web-title-label1" class="hcp_web_title_cls" value="&brandShortName;" popup="hcp-title-popup" context="hcp-title-popup" 
+				flex="1" crop="right" style="" persist="width" />
+			<splitter id="hcp-title-splitter"  resizeafter="grow" style=""  class="chromeclass-toolbar-additional" />
+		</toolbaritem>
+		
+		<toolbaritem  id="hcp-web-title-item2" title="&h_webtitle_flex; (1)"  align="center" class="panel-wide-item  hcp_title  hcp-dragbox-binding" flex="1">
+	    	<image    class="hcp_favicon_cls"  src="chrome://branding/content/icon16.png" />
+			<label    id="hcp-web-title-label2" class="hcp_web_title_cls" value="&brandShortName;" flex="1" crop="right" />
+		</toolbaritem>
+		
+		<toolbaritem  id="hcp-mmc-buttons-item" label="&h_mmc_buttons;" title="&h_mmc_buttons;"  class="panel-wide-item  notInMenu" >
+			<hbox id="hcp-controls-paletteitem" class="hc_mmc_holder  winactive-cls" context="hcp-menu-windowcontrols" >
+				<toolbarbutton id="minimize-button"  class="hc-mmcbuttons-cls  hc-min-button-cls"  hctp_ft_minimize="true"
+					tooltiptext="&fullScreenMinimize.tooltip;" oncommand="window.minimize();"      />
+				<toolbarbutton id="restore-button"   class="hc-mmcbuttons-cls  hc-res-button-cls"
+					tooltiptext="&fullScreenRestore.tooltip;"  oncommand="HideCaption.Maximize();" />
+				<toolbarbutton id="close-button"     class="hc-mmcbuttons-cls  hc-close-button-cls"
+					tooltip="tt_Please_Restart_Fx__notInMenu"    oncommand=""           hcp_close_button_events="true" />
+
+				<toolbarbutton id="hctp_minimize_but"  class="hNew_mmcbuttons  hNew_min_button"    hctp_ft_minimize="true"
+					tooltiptext="&fullScreenMinimize.tooltip;" oncommand="window.minimize();"      />
+				<toolbarbutton id="hctp_restore_but"   class="hNew_mmcbuttons  hNew_res_button"
+					tooltiptext="&fullScreenRestore.tooltip;"  oncommand="HideCaption.Maximize();" />
+				<toolbarbutton id="hctp_close_but"     class="hNew_mmcbuttons  hNew_close_button"
+					tooltip="tt_Please_Restart_Fx__notInMenu"       hcp_close_button_events="true"  />
+			</hbox>
+		 	
+		 	<label class="warn_InsideMenuPanel  pre_line" >&tt2_notInMenu;</label>
+		 	
+		</toolbaritem>
+		
+		<toolbarbutton id="dragscreen-button"  class="hcp-dragbox-binding hc-dragbutton hc-hideon-fullorcaption toolbarbutton-1 chromeclass-toolbar-additional"
+			label="&tbarbutton.h_drag.win.control;" tooltiptext="&toolbarbutton.drag.window;" disabled="true" />
+		<toolbarbutton id="dragscreen-button2" class="hcp-dragbox-binding hc-dragbutton hc-hideon-fullorcaption toolbarbutton-1 chromeclass-toolbar-additional"
+			label="&tbarbutton.h_drag.win.control;" tooltiptext="&toolbarbutton.drag.window;" disabled="true" />
+
+		<toolbaritem  id="hctp_fx_app_button_item" label="&hctp_fx_app_button_item;" title="&hctp_fx_app_button_item;"  class="panel-wide-item  notInMenu"  >
+			<button id="hctp-appmenu-button-palette"        type="menu"  label="&brandShortName;"  style="-moz-user-focus: ignore;"  hcp_appbutton_style="fx_home_med.png"
+				class="hctp-appmenu-button-cls  max"
+				tooltip="tt_Please_Restart_Fx__notInMenu"   hcp_fxbut_events="true"  />
+			<button id="hctp-appmenu-button-palette-nomax"  type="menu"  label="&brandShortName;"  style="-moz-user-focus: ignore;"  hcp_appbutton_style="fx_home_med.png"
+				class="hctp-appmenu-button-cls  nomax"
+				tooltip="tt_Please_Restart_Fx__notInMenu"   hcp_fxbut_events="true"  />
+				
+		 	<label class="warn_InsideMenuPanel  pre_line" >&tt2_notInMenu;</label>
+		</toolbaritem>
+
+
+		<toolbarbutton id="hctp_float_tbox_button"       class="floating_element_control  toolbarbutton-1 "	
+			disabled="true"    label="&h_float_tbox_button;"       tooltip="_child" 
+			onmousedown="HideCaption.TBoxHide.DynamicElemPos.key_toggleActivation(event);" 
+			ondblclick=" HideCaption.TBoxHide.toggle_enable();"
+			onwheel="    HideCaption.TBoxHide.onWheel_fromButton(event);"
+			context="_child" 
+			h_defaultArea="nav-bar"  >
+			<menupopup id="hctp_popup_float_tbox_but"  position="after_start"
+					onpopupshowing="document.getElementById('id_toggle_dyn_toolbars').setAttribute('checked', ''+HideCaption.TBoxHide.get_is_enable() ); " >
+				<hbox id="hcp-menu-dynTBars-titlebar" align="start" pack="start" class="hcp-menu-titlebar" >
+					<label value="&label_dyn_toolbars;" />
+				</hbox>
+				<menuitem id="id_toggle_dyn_toolbars" label="&mitem_toggle_dyn_toolbars;" accesskey="&accesskey_toggle_dyn_toolbars;"  type="checkbox"  autocheck="false" 
+					oncommand="event.stopPropagation();event.preventDefault();  HideCaption.TBoxHide.toggle_enable();"
+					key="HCTP_DynToolbars_Enable" />
+				<!-- stop & preventDefault() to avoid command-event arriving at BUTTON! --> 
+			</menupopup>
+			<tooltip class="pre_line"><label>&h_float_tbox_tooltiptxt_2;</label></tooltip>
+			<vbox> 
+				<hbox > <box cell="1" /> <box cell="2" />	</hbox>
+				<hbox > <box cell="3" /> <box cell="4" />	</hbox>
+				<hbox > <box cell="5" /> <box cell="6" />	</hbox>
+			</vbox>
+		</toolbarbutton>
+		
+</hctp_special_palette>
+
+
+<toolbarpalette id="BrowserToolbarPalette">
+	<!--
+	 command="command_disabled" - this hanged FF3.6 's javascript when doing CUSTOMIZE !!
+	 h_Flexible_Space;  h_Space;   h_Separator;
+	-->
+	
+	  <!-- restores spaces, flex spaces and separators (from customizeToolbar.js: buildPalette()) -->
+      <toolbarspring 	id="spring"		class="hctp_cust_flexspaces"	label="[h] Flexible Space"  title="[h] Flexible Space"	customizableui-areatype="toolbar" removable="true" flex="1"/>
+      <toolbarspacer 	id="spacer"		class="hctp_cust_spaces"		label="[h] Space"			title="[h] Space"		    customizableui-areatype="toolbar" removable="true"/>
+      <toolbarseparator id="separator"	class="hctp_cust_separators"	label="[h] Separator"		title="[h] Separator"       customizableui-areatype="toolbar" removable="true"/> 
+	  
+      <!-- needed for Fx 56 right????
+      <toolbarspring 	id="customizableui-special-spring"		class="hctp_cust_flexspaces"	label="[h] Flexible Space"  title="[h] Flexible Space"	customizableui-areatype="toolbar" removable="true" flex="1"/>
+      <toolbarspacer 	id="customizableui-special-spacer"		class="hctp_cust_spaces"		label="[h] Space"			title="[h] Space"		    customizableui-areatype="toolbar" removable="true"/>
+      <toolbarseparator id="customizableui-special-separator"	class="hctp_cust_separators"	label="[h] Separator"		title="[h] Separator"       customizableui-areatype="toolbar" removable="true"/> 
+	  -->
+      
+</toolbarpalette>
+
+<toolbar id="nav-bar" >
+	<hbox id="window-controls" hidden="true" style="display:none!important;" />
+</toolbar>
+
+<!-- Floating MENU's extra box!! -->
+<menubar id="main-menubar" >
+	<hbox id="hcp_floating_extrabox" context="hcp-menu-windowcontrols" class="hideon_nonfloating_menu  hideon_nonfloating_extrabox" >
+		<toolbarseparator id="hcp_separator_floatmenu" class="chromeclass-toolbar-additional" />
+	    <image    class="hcp_favicon_cls" />
+		<label id="hcp-web-title-label-fm" class="hcp_web_title_cls" value="&brandShortName;" flex="1" crop="right" />
+		<!-- no insertafter, etc: add as LAST child 
+		<image id="hcp_icon_title_float1" src="chrome://HideCaptionPlus/skin/icon48.png" />
+		-->
+	</hbox>
+</menubar>
+
+
+<keyset id="mainKeyset">
+	<keyset id="hctp_DynToolbars_Keyset"  label="Hide Caption Titlebar Plus keys">
+		<key     id= "HCTP_DynToolbars_Toggle_1"   
+			label="HCTP Dynamic Toolbars: Show/Hide Key 1" 
+			oncommand="HideCaption.key_toggleActivation(event, this, 1);"
+			keycode="VK_F1" 
+	        />
+		<key     id= "HCTP_DynToolbars_Toggle_2"   
+			label="HCTP Dynamic Toolbars: Show/Hide Key 2" 
+			oncommand="HideCaption.key_toggleActivation(event, this, 2);"
+			key=""
+	        />
+	        <!-- TENGO q poner este 'key' vacio pq si no TOMA y Activa con TODAS LAS TECLAS!! -->
+
+		<key     id= "HCTP_DynToolbars_Enable"   
+			label="HCTP Dynamic Toolbars: Enable/Disable Key" 
+			
+			oncommand="HideCaption.TBoxHide.toggle_enable();"
+			key="Q" 
+			modifiers="accel"
+	        />
+			
+	</keyset>
+</keyset>
+
+
+<!-- 
+
+	fx4 title?
+	via css - maximized only ... <spacer id="titlebar-spacer" flex="0" />
+	set font-shadow 
+ -->
+
+<!-- TOOLBAR SECTION: MENUS!!! -->
+<!-- 
+<popup id="toolbar-context-menu" onpopupshowing="HCPlusMenus.onViewToolbarsPopupShowing(event);" >
+</popup>
+<menu  id="viewToolbarsMenu"     onpopupshowing="HCPlusMenus.onViewToolbarsPopupShowing(event);" />
+-->
+
+
+			<!-- 
+<toolbox id="navigator-toolbox">
+</toolbox> 
+		<hbox id="hcp-home-box">
+		</hbox>
+-->
+
+
+</overlay>
+

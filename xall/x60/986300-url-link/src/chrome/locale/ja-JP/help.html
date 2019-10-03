@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/REC-html401/loose.dtd">
+<!-- $Id: help.html 728 2007-03-30 09:49:58Z neil $ -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>URL Linkのヘルプ</title>
+  </head>
+  <body>
+    <h2><img src="chrome://urllink/content/urllink.png" alt="logo">&nbsp;&nbsp;URL Link</h2>
+
+    <h3>使い方</h3>
+    <p>
+    ウェブページ、入力フォーム、あるいは電子メールで、テキストを選択して右クリックします。
+    <ul>
+      <li>
+      URLに見えるテキストなら、「選択したURLを開く」から
+      直接（同じ、または別のタブに）開くことができます。
+      </li>
+      <li>
+      リンクに<i>見えない</i>テキストの場合、サブメニューが表示されます。
+      強引にリンクとして扱うこともできますし、先に変換することもできます
+      （<i>例</i>：“www.”と“.com”を加える）。変換内容はカスタマイズ可能です。
+      </li>
+      <li>
+      Firefoxの場合、Shiftキーを押しながら「開く」を選択すると、
+      新しいウィンドウでリンクを開きます。
+      </li>
+    </ul>
+
+    <h3>機能性</h3>
+    <ul>
+      <li>
+      URL LinkはFirefoxとThunderbird用の小さな拡張機能で、
+      メール/ニュースメッセージやウェブページの非URLテキストを選択し、
+      ブラウザ画面へ開くことができます。
+      </li>
+
+      <li>
+      電子メールの場合、数行に分かれてしまったリンクもつなぎ合わせられます。
+      さらに、半角スペースをURL文字コードの%20と置き換えることで、電子メール中から
+      ネットワークへのリンク（file:）をたどることができます
+      （WindowsのX:やUNCによるネットワーク参照から自動的に検出します）。
+      </li>
+
+      <li>
+      ウェブページの場合、テキストエリアも含めた中から文字だけのリンク/URLを選択し、
+      実際のリンクであるかのごとくたどることが可能になります。いつもリンクが
+      たどれるだけでなく、mailto:リンクも分析します。
+      </li>
+
+      <li>
+      mailto:リンクを分解し（例えば、mailto:someone@somesite.comを
+      http://www.somesite.comに変換）、関連するウェブサイトへアクセスできます。
+      </li>
+
+      <li>
+      そのままクリックするとポップアップ画面が開かれてしまうjavascript:リンクにも
+      対処できます（例：http://www.kelkoo.co.uk/ - もっとも、最近このサイトは
+      リンクを変更したようで、URL Linkが効かないのですが(´・ω・`)…2.0以降の
+      バージョンでこの問題に取り組めればと思います）。
+      </li>
+    </ul>
+
+    <h3>変更予定</h3>
+    <ul>
+      <li>
+      カスタマイズ可能な、テキストからURLへの自動置換。
+      </li>
+      <li>
+      もしかするとカスタマイズされたサブメニューの項目をメインメニューで
+      使えるようにするかもしれません。
+      </li>
+    </ul>
+
+    <!-- START DO NOT TRANSLATE -->
+    <h3>Translations</h3>
+    <p>
+    If you would like to help by translating URL Link to your native language,
+    you can either sign up to <a
+      href="http://www.babelzilla.org/">Babelzilla</a> and do it automatically,
+    or <a href="mailto:mozilla@fnxweb.com">email me</a> translated versions of
+    the data files you'll find <a href="http://www.fnxweb.com/data/urllink/">on
+      my website</a>.
+    </p>
+    <p>
+    Don't include this section of the help file, though!
+    <p>
+    <!-- END DO NOT TRANSLATE -->
+
+    <h3>連絡先</h3>
+    <ul>
+      <li>
+      作者の<a href="http://www.fnxweb.com/software-mozilla">Mozilla関連ページ</a>
+      </li>
+      <li>
+      URL Linkの<a href="https://addons.mozilla.org/firefox/403/">公式アドオンページ</a>
+      </li>
+      <li>
+      <a href="mailto:mozilla@fnxweb.com">作者にメールを送る</a>
+      </li>
+    </ul>
+
+    <h3>Licence</h3>
+    <p>
+    This source code, like the Mozilla source, is licensed under a
+    disjunctive tri-licence giving you the choice of one of the three
+    following sets of free software/open source licensing terms:
+    </p>
+    <ul>
+      <li><a href="MPL-1.1.html">Mozilla Public License, version 1.1</a> or later</li>
+      <li><a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2.0</a> or later</li>
+      <li><a href="http://www.gnu.org/licenses/lgpl-2.1.html">GNU Lesser General Public License, version 2.1</a> or later</li>
+    </ul>
+
+    <p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01
+      Transitional" height="31" width="88"></a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,779 @@
+
+<!--  ___***** Translators Notes: *****___
+   ***  1) New!: Now *All* texts and tooltips have css style: "pre-line". So {html:br} isn't needed for line breaks, (but can be used for convenience.)
+   ***  2) Please note that some tooltips-texts *can't* have line-breaks or any tag (the texts in a "tooltiptext" attribute)
+   ***  3) And there is also several 'hard spaces' characters (alt+255), like this:' ', to prevent some ugly wrapping and to make more space between texts.  
+   ***  (I use NOTEPAD++ free editor)  *** -->
+
+<!ENTITY dialog.hide.caption.titlebar.plus "Einstellungen Hide Caption Titlebar Plus">
+<!ENTITY dialog.apply "Anwenden">
+	
+<!ENTITY tab.main              	"Allgemein">
+<!ENTITY tab.look.feel         	"Erscheinungsbild">
+<!ENTITY tab.advanced.settings 	"Erweiterte Einstellungen">
+<!ENTITY tab.other.settings    	"Andere Einstellungen">
+<!ENTITY tab.float.toolbars    	"Schwebende Symbolleisten">
+
+
+<!--  __________*** Section:   LOOK AND FEEL ***__________  -->
+
+<!ENTITY caption.show.custom.caption.titlebar   "Benutzerdefinierte Titelleiste anzeigen:">
+<!ENTITY      tt.show.custom.caption.titlebar 		"Enthält den Titel der aktuellen Webseite. Gültig, wenn die Systemtitelleiste ausgeblendet ist.">
+<!ENTITY radio.in.unmaximized.windows           "In nichtmaximierten Fenstern">
+<!ENTITY radio.small.caption                    "Klein (in nichtmaximierten Fenstern)">
+<!ENTITY radio.cc_never                         "Niemals">
+
+<!ENTITY w.default  		"Standard">
+<!ENTITY w.Enabled  		"Aktiviert">
+<!ENTITY w.Disabled			"Deaktiviert" >
+<!ENTITY w.No				"Nein" >
+
+
+<!ENTITY    System_borders_c "Systemrahmenlinien:" >
+<!ENTITY tt_System_borders_c	"Breite der linken, rechten und unteren Systemrahmenlinien eines nichtmaximierten Firefox-Fensters deaktivieren oder einstellen. (Genauere Pixelanpassungen sind nur auf Aero-Glass-Desktops wirksam)" >
+<!ENTITY Yes_full_width		 "Ja (volle Breite)" >
+<!ENTITY    Yes-_smaller	 "Ja, kleiner" >
+<!ENTITY tt_Yes_smaller_2			"Firefox 12+ Standard" >
+<!ENTITY tt_Yes_smaller_7			"Standardeinstellung. Für Aero-Gkass-Desktops empfohlen. Es blendet (in Glass) wie die Einstellung 'Deaktiviert' diese Rahmenlinien vollständig aus, aber ohne dessen Nachteile. (Sie können den Bereich für die Größenveränderung der Rahmenlinien mit 'Benutzerdefinierte Rahmenlinien aktivieren...' erweitern)" >
+<!ENTITY tt_Yes_smaller_7_notReal	"Same as previous option, with extra space at borders  (only on Glass-Desktops and with  '&enable_customizable_buts;'  active)" >
+<!ENTITY tt_sysBorders_disabled	"<pg /> Empfohlene Einstellung für Aero-Basic-Desktops. Das ermöglicht Personas, vollständig den Fensterhintergrund einzunehmen. (Alte Standardeinstellung).
+			<pg /> Glass-Desktop: wenn '&enable_customizable_buts;' aktiv ist, können nichtmaximierte Fenster in einigen Fällen die runden Ecken und den Fensterschatten verlieren." >
+
+<!ENTITY    custom_bord_cornr_rz	"Benutzerdefinierte Rahmenlinien und Größenveränderer vonEcken" >
+<!ENTITY tt_custom_bord_cornr_rz		"Kann auch zur Erweiterung des Größenänderungsbereichs verwendet werden, wenn die Systemrahmenlinie zu klein ist" >
+<!ENTITY Make_corners_visible		"Ecken sichtbar machen" >
+
+<!ENTITY    Border_color			"Rahmenfarbe <html:br />" >
+<!ENTITY tt_Border_color				"Die Farbe ist sichtbar, wenn Systemrahmenlinien deaktiviert sind" >
+
+<!--    tt_Skin 			"Custom skins capability will be added too." -->
+<!ENTITY title_Skin 						"Skin:">
+<!ENTITY radio.classic.skin  						"Klassischer Skin" >
+<!ENTITY radio.new.aero      						"Aero-Stil"   >
+<!ENTITY radio.automatic.current.theme.skin.fixed   "Automatisch. Skin des aktuellen Themes (feste Position)" >
+<!ENTITY radio.automatic.current.theme.skin         "Automatisch. Skin des aktuellen Themes (alte Position)" >
+<!ENTITY radio.w10like         						"Neu: Firefox-Stil für Win 10" >
+<!ENTITY radio.w10like.light   						"Neu: Firefox-Stil für Win 10 (light)" >
+<!ENTITY    tt.w10like.light      						"Wenn ein Persona aktiv ist, werden die Schaltflächensymbole das Aussehen des 'normalen' Win-10-Stils haben" >
+<!ENTITY radio.w10like.high   						"Neu: Firefox-Stil für Win 10 (hoher Kontrast)" >
+<!ENTITY    tt.w10like.high       						"Wenn ein Persona aktiv ist, werden die Schaltflächensymbole das Aussehen des 'normalen' Win-10-Stils haben" >
+
+<!ENTITY mmc.custom.mTitle							"Custom options">
+<!ENTITY mmc.custom       							"Custom option">
+<!ENTITY tt_custom_mmc__begin    						"Advanced options: custom file/s to be placed in: ">
+<!ENTITY or_custom2_css_and_so_on						"   (or custom2.css and so on)">
+
+
+<!--    CUSTOM styles css files   -->
+<!ENTITY can_be_anyname_files				  "   ([custom] can be just any name, and you can add several files)">
+
+
+<!ENTITY caption.min.max.close.buttons.location 		"Benutzerdefinierte Schaltflächen Minimieren, Verkleinern und Schließen (in der Ecke oben rechts):">
+<!ENTITY caption.min.max.close.buttons.loc.extrainfo 	"(auch über die Anpassung der Benutzeroberfläche verfügbar)">
+<!ENTITY label.about.hidden.and.customize  					"Anpassung der Benutzeroberfläche: &nbsp; mit Hilfe von 'Symbolleisten » Anpassen', identische Schaltflächen können auf der Tableiste oder irgendeiner Symbolleiste platziert werden" >
+
+<!ENTITY In_Maximized_window 		"Im maximierten Fenster:">
+<!ENTITY In_Un_Maximized_window 	"Im nichtmaximierten Fenster:">
+<!ENTITY radio.bloc.micro     				"Mikroschaltfläche Schließen" >
+
+<!ENTITY checkbox_maxbuttons_canfloat     	"Mikroschaltfläche Schließen: schwebende Schaltflächen erscheinen, wenn der Mauszeiger darüber streicht oder das Hauptmenü aktiviert ist" >
+
+
+<!--  ___*** (These appears at dialog bottom line) ***___  -->
+
+<!ENTITY button.see.more.in.readme.file "Weiteres siehe LIESMICH-Datei ">
+<!ENTITY button.ctrl.click.opens.in.new.tab "Strg+Klick öffnet in einem neuen Tab">
+<!ENTITY DEPRECATED_label.1 "[1]">
+<!ENTITY label.options.changes.reflects.on.the.fly.in.fir21  "Die meisten Einstellungsänderungen werden sofort angezeigt." >
+<!ENTITY label.prefix.options.with  "Einstellungen mit">
+<!ENTITY label.R "[R]">
+<!ENTITY label.R.class "<z class='needRst'>[R]</z>">
+<!ENTITY label.other.options.saved.instantly.too.but.restart "Neustart von Fiefox erforderlich, damit sich Änderungen auswirken.">
+<!ENTITY Restart_needed "[R]estart needed.">
+ 
+ 
+
+<!ENTITY enable_customizable_buts 	"Anpassbare Schaltflächen ermöglichen (Minimieren, Verkleinern, Schließen)">
+<!ENTITY disable_win_system_buts	"(Deaktivierung der Systemschaltflächen des Fensters)">
+<!ENTITY tt_enable_customizable_buts 	" <pg0/>• Durch diese Einstellung können <b>anpassbare&nbsp;Schaltflächen (Minimieren, Verkleinern, Schließen)</b> wider verwendet werden. 
+	<pg /> 
+	<pg /> Sie zeigt die Änderungen des Aussehens, die fast nur im <b>nichtmaximierten</b> Firefox auf Windows 7 sichtbar sind:  
+	<pg /> ⋅Das deaktiviert den GLASS-Hintergrundeffekt (Transluzenz) des Firefox-Fensters, wenn sie aktiv ist (ermöglicht&nbsp;aber einen optionalen GLASS-emulierten Hintergrund).  
+	<pg /> ⋅ Wenn die Einstellung 'Systemrahmenlinien'  'deaktiviert' ist, kann ein <html:b>nichtmaximiertes </html:b> Fenster in einigen Fällen die runden Ecken und den Fensterschatten verlieren.  
+	<pg /> ⋅ Sie hat überhaupt keinen Einfluss auf das Aussehen im Vollbildmodus.  
+	<pg /> 
+	<html:hr />
+	Dies beinhaltet eine Notlösung für ein Problem in Firefox 12 und höher. 
+	&nbsp; (Das originale Problem von Firefox 12 und höher ist noch nicht gelöst. Einzelheiten siehe auf der Startseite der Erweiterung und im Firefox-Fehlerbericht 730219. &nbsp;Dieses Firefox-Problem zwingt die Systemschaltflächen (Minimieren, Verkleinern, Schließen) auf Aero-Glass-Desktops ständig aktiv zu sein) 
+">
+<!ENTITY item_0_none							"No (Fx. default)">
+<!ENTITY item_11_Using_Glasslike_win_bkg_recom	"[1.1] Verwendung eines Fensterhintergrundes wie bei Glass (empfohlen)">
+<!ENTITY   tt_11_Using_Glasslike_win_bkg_recom		"<pg /> Empfohlene Einstellung. Unterstützt Personas.
+			<pg /> Hintergrund wie bei Glass. Nur auf Systemen, wo Glass aktiviert ist. (um den Hintergrund zu sehen,  muss '&Custom_Win_bkg_color;' aktiviert sein)
+			<pg /> Versuchen Sie [2] &amp; [3] nur, wenn Sie auf ein Problem stoßen. (zum Beispiel die schlechte Positionierung eines wiederhergestellten Fensters bei Verwendung einiger anderer unbestimmter Add-ons, wie es um Fiefox 20 herum gemeldet wurde).">
+<!ENTITY item_12_Using_solid_win_bkg_recom		"[1.2] Verwendung eines einfarbigen Fensterhintergrunds  (empfohlen)">
+<!ENTITY   tt_12_Using_solid_win_bkg_recom			"<pg /> Empohlene Einstellung. Unterstützt Personas.">
+<!ENTITY item_2_Same_appearance_compat			"  [2] Gleiches Aussehen. (Nur für Kompatibilitätstests)">
+<!ENTITY   tt_2_Same_appearance_compat				"Versuchen Sie das nur, wenn Sie auf ein Problem stoßen, wo das Firefox-Fenster schlecht positioniert wird und/oder der Inhalt und die Hintergrundfläche mit dem Mauscursor nicht ausgerichtet wird.  (Verwendet eine alternative Methode unter der Haube)">
+<!ENTITY item_3_Another_compat_test				"  [3] Eine weitere Einstellung für Kompatibilitätstests">
+<!ENTITY   tt_3_Another_compat_test					"Versteckt ein Persona, sofern vorhanden.">
+
+
+
+<!ENTITY Custom_Win_bkg_color		"Benutzerdefinierte Fensterhintergrundfarbe" >
+<!ENTITY tt_Custom_Win_bkg_color		"Beinhaltet einen Hintergrund wie bei Glass. Standardfarbwert: #92ACCE (hellblau)" >
+<!ENTITY active_no_persona			"Aktiv, wenn kein Persona vorhanden ist. (Standard)" >
+<!ENTITY active_always				"Immer aktiv. (Verbirgt Personas, sofern vorhanden)" >
+<!ENTITY active_always_tt				"Can be useful also for active Dynamic/Floating Toolbars with newer Firefox's (Compact) Light &amp; Dark themes" >
+
+
+<!ENTITY hover_activ_delay_time		"Verzögerungszeit<html:br /> bei Aktivierung durch Hover" >
+<!ENTITY deactivation_delay_time	"Verzögerungszeit<html:br /> bei Deaktivierung" >
+<!ENTITY p_milliseconds				"(Miliisekunden)" >
+
+
+
+<!--  __________*** Configurable Actions! ***__________  -->
+  
+<!ENTITY Define_Action_for			"Aktion definieren für:">
+ 
+<!ENTITY action_fxbut_title 		"Benutzerdefinierte Firefox-Schaltfläche
+			<z class='tiny'>Hier klicken, um die Informationen zu sehen</z>">
+<!ENTITY    tt__fxbut_title 			"<pg0/> <b>Neu: &nbsp; Konfigurierbare Aktionen für:  Schaltflächen Firefox &amp; Schließen. </b> 
+			<pg />(auf dem Bildschirm/an den Ecken der Anwendung und auch über die Anpassung der Benutzeroberfläche) 
+			<pg />
+			<pg2/> Mit vielen neu hinzugefügten Funktione, einschließlich sekundärer und mittlerer Schaltfläche, Rad, Doppelklick und<b>den Tasten Umsch, Strg, Alt</b>! 
+			<pg /> (Siehe Tips für ergänzende /gegenteilige Aktionen mit der Umschalt-Taste)
+			<pg /> <z class='is_recom'>Einstellungen in Grün werden empfohlen</z> und <z class='is_defau'> die in Blau, sind die Standardeinstellungen.</z>
+			<pg /> Bitte versuchen Sie die voreingestellten Schaltflächen unten (1 &amp; 2 empfohlen, Standard)
+			<pg /> <b>Klänge: </b>
+			<pg /> Nachdem Sie die voreinstellungen ausprobiert haben, können Sie weiter testen und eine gewünschte Aktion auswählen.
+			<pg /> Der Klang für 'Nichtgefunden' könnte auch für bestimmte Aktionen abgespielt werden (aber nur, wenn für diese Aktion ein gültiger Klang eingestellt wurde).  Bei folgenden Ereignissen werden Klänge abgespielt: 
+			<pg /> <pg /> Für <i>[&item_undoCloseTab;]</i>: wenn es keine Tabs mehr gibt, die wiederhergestellt werden können.
+			<pg /> <pg /> Für <i>[&item_closeNewerWindow;]</i>: wenn es keine weiteren Fenster mehr gibt <i>(wird nach einem aktiven Fenster geöffnet)</i>, die geschlossen werden können.
+			<pg /> Sie können alle Klänge abstellen ('Keiner'), damit Sie keinen Klang mehr für 'Nichtgefunden'  hören.
+">
+
+<!ENTITY action_closebut_tit_custom	"Benutzerdefinierte Schließen-Schaltfläche">
+
+<!ENTITY action_closebut_title 		"Schließen-Schaltfläche <einfo>(siehe Tipp)</einfo>">
+<!ENTITY    tt__closebut_tit_NOcustom	"Bitte beachten Sie, dass die empfohlene Einstellung <i>'&enable_customizable_buts;'</i> <b>nicht aktiv ist</b>. Daher können diese Aktionen <i>some</i> auf Windows-Systemen  (z. B. Win7 mit 'Glass'), mit einer Schließen-Schaltfläche von Windows nicht verwendet werden.  (Diese Möglichkeit kann hinzugefügt werden, hat aber bestimmte Einschränkungen)">
+
+<!-- Can be used in txts related to 'Page History' popup menu   -->
+<!ENTITY nav_history				"Page History" >
+
+<!ENTITY More_options_e				"Weitere Einstellungen ..." >
+
+<!ENTITY check__closebut_mouseClick	"Klicken Sie (oder drücken sie und lassen Sie los) mit der Maustaste, um die gewünschte Aktion auszuführen">
+<!ENTITY    tt__closebut_mouseClick 	"• Falls nicht aktiviert (Standardwert und empfohlener Wert), drücken Sie einfach die Maustaste.
+											 &nbsp; &nbsp; <z class='needRst'>[R]</z> Bei Änderungen ist ein Neustart von Firefox erforderlich.">
+
+<!ENTITY ctrl_w_title				"Aktion für das Tastenkürzel <b> STRG+W </b>: ">
+<!ENTITY Fx_default_closeTab		"Fx Standard  (Aktuellen Tab schließen)" >
+
+<!ENTITY clHist_title 				"Aktion für &nbsp; <b>&item_closeWithHistory;</b>: &nbsp; <i>(wenn die Schaltlfächen Zurück und Vorwärts aktiviert sind)</i> ">
+<!ENTITY clHist_popup 				"Pop-up-Menü der Chronik öffnen (Standard)">
+<!ENTITY clHist_pop_back 			"Pop-up-Menü der Chronik öffnen und um eine Seite zurück gehen">
+<!ENTITY tt_Hist_pop_back 				"Sie können Alt+Klick verwenden, um den Tab zu schließen, wenn z. B. eine Warnung, ein Pop-up-Fenster oder etwas anderes Ärgerliches erscheint, nachdem Sie zurückgegangen sind.
+
+										<html:hr /> (Verbleibender sichtbarer Fehler: &nbsp; Bitte beachten Sie, dass der aktive Eintrag im Pop-up-Menü der Chronik manchmal nicht korekt aktualisiert wird)" >
+<!ENTITY clHist_pop_back_fw 		"Pop-up-Menü der Chronik öffnen und um eine Seite vor oder zurück gehen">
+<!ENTITY tt_Hist_pop_back_fw 			"Verwenden Sie Strg + Klick, um eine Seite weiter zu gehen (und einen einfachen Klick, um zurück zu gehen)">
+<!--  using SAME TOOLTIP (tt_Hist_pop_back_fw)  -->
+<!ENTITY clHist_back_fw      		"Just go Back/Forward one page  (no popup)">
+
+
+<!ENTITY line_title 		"Besonderer visueller Effekt beim Zurück- bzw. Weitergehen">
+<!ENTITY line_none 			"Keiner">
+<!ENTITY line_clWHonly		"Senkrechte rote sich verschiebende Linie, wenn mit der obigen Einstellung zurück- bzw. weitergegangen wird">
+<!ENTITY Future_Option_b	"[Zukünftige Einstellung] &nbsp; ">
+<!ENTITY line_always		"Die sich verschiebende Linie wird immer beim Zurück- bzw. Weitergehen gezeigt-">
+<!ENTITY tt_ln_always 			"z. B. wenn die Schaltflächen Zurück und Vorwärts des Browsers, die Zurück- und Vorwärtsschaltflächen der Maus (meist seitlich an der Maus) und Tastenkürzel verwendet werden.">
+<!ENTITY tt_ln_always_2			"<pg0/>Also, It plays a 'not-allowed' sound when It can't go further back/fw   (if <b>“&butt_butSound_action1;”</b> is enabled). ">
+
+
+<!ENTITY mButShort_primary 			"Primär:">
+<!ENTITY mButShort_second 			"Sekundär:">
+<!ENTITY mButShort_middle 			"Mitte:">
+<!ENTITY mButShort_primary_dblclk 	"Primärer Doppelklick:">
+<!ENTITY mButShort_second_dblclk 	"Sekundärer Doppelklick:">
+<!ENTITY mButShort_middle_dblclk 	"Mid.  dblClick:">
+<!ENTITY mButShort_wheel 			"Mausrad:">
+<!ENTITY mButShort_wheelLeft 		"Mausrad links:">
+<!ENTITY mButShort_wheelRight 		"Mausrad rechts:">
+
+
+<!ENTITY label_row_action_Primary 			"Maus <html:br /> primäre Taste:">
+<!ENTITY    tt_row_action_Primary 				"Linke Maustaste für Rechtshänder.">
+<!ENTITY label_row_action_Secondary 		"Maus <html:br /> Sekundäre Taste:">
+<!ENTITY label_row_action_Middle 			"Maus - mittlere <html:br /> Taste (Rad):">
+<!ENTITY label_row_action_Primary_dblclk   	"Maus - primäre<html:br /> <b> Taste (Doppelklick)</b>:">
+<!ENTITY    tt_row_action_Primary_dblclk 		"Bitte beachten Sie, dass die <b><i>Einfachklick-Aktion</i></b> ebenfalls ausgelöst wird. Sie sollten hier darauf achten, dass eine konfliktfreie Einfachklick-Aktion eingestellt wird. Für gewöhnlich sind einfache Aktionen wie das Öffnen von Popup-Fenstern (z. B. Haupt- oder Kontextmenü) sind OK.">
+<!ENTITY label_row_action_Secondary_dblclk  "Maus - sekundäre<html:br /> Taste <b>(Doppelklick)</b>:">
+<!ENTITY    tt_row_action_Secondary_dblclk 		"&tt_row_action_Primary_dblclk;">
+<!ENTITY label_row_action_Middle_dblclk     "Mouse Middle<html:br /> <b>(double click)</b> :">
+
+
+<!ENTITY label_row_action_wheel 			"Mausrad<html:br />:">
+<!ENTITY    tt_row_action_wheel 				"Sich drehendes Rad, wenn der Mauszeiger über der Schaltfläche ist">
+<!ENTITY label_row_action_wheelLeft 		"Mausrad<html:br /> links  <b>kippen</b> :">
+<!ENTITY    tt_row_action_wheelLeft 			"Rad nach links kippen, wenn der Mauszeiger über der Schaltfläche ist (für Mäuse mit dieser Funktion, üblicherweise für horizontales Scrollen)">
+<!ENTITY label_row_action_wheelRight 		"Mausrad<html:br /> rechts <b>kippen</b> :">
+<!ENTITY    tt_row_action_wheelRight 			"Rad nach rechts kippen, wenn der Mauszeiger über der Schaltfläche ist (für Mäuse mit dieser Funktion, üblicherweise für horizontales Scrollen)">
+
+
+<!ENTITY mtit_typical_primary 		"Typische Aktionen für die primäre Maustaste:">
+<!ENTITY mtit_typical_secondary 	"Typische Aktionen für die sekundäre Maustaste:">
+<!ENTITY mtit_typical_annoyances 	"Entfernen Sie Störungen!">
+<!ENTITY mtit_typical_other 		"Andere Aktionen:">
+<!ENTITY mtit_typical_wheel 		"Typische Aktionen für das Mausrad:">
+
+
+<!ENTITY Shift_Key 				"<pg0/>Mit <b>Umsch-Taste:</b> ">
+<!ENTITY Ctrl_Key 				"<pg0/>Mit <b>Strg-Taste:</b> ">
+<!ENTITY Alt_Key 				"<pg0/>Mit <b>Alt-Taste:</b> ">
+
+<!ENTITY item_closewin 			"Firefox-Fenster schließen">
+<!ENTITY item_closewin_fxdefau	"Firefox-Fenster schließen (Firefox-Standard)">
+<!ENTITY   tt_closewin 				"[&Shift_Key; &item_quitApplication;]">
+<!ENTITY item_minimize 			"Firefox-Fenster minimieren">
+<!ENTITY item_closetab 			"Aktuellen Tab schließen">
+<!ENTITY item_closetab_recomen	"Aktuellen Tab schließen (empfohlen)">
+<!ENTITY   tt_closetab 			    "Empfohlene Einstellung für die primäre Maustaste (z. B. für das schnelle Schließen von Tabs), besonders wenn die Schließen-Schaltfläche im Vollbildmodus in die Ecke des Bildschrims gelangt. (D. h. wenn die Systemtaskleiste nicht diesen Platz einnimmt).
+»»»»»»»»»[&Shift_Key; &item_undoCloseTab;]">
+<!ENTITY item_closeWithHistory 	"Tab schließen, wenn sich &quot;&nav_history; nicht dahinter&quot; befindet.">
+<!ENTITY item_closeWithHis_reco	"&item_closeWithHistory; (empfohlen)">
+<!ENTITY   tt_closeWithHistory  	"<pg0/><b> Close tab without missing any previous browsed page: </b> 
+	    	<pg />
+	    	<pg2/> If browser's <b>Back</b> (left arrow) button is enabled (Ie. if You had already traversed some pages), clicking the <i>target (1)</i> button opens the <b>'&nav_history;' popup menu</b> (2)  (with optional <b>sound</b> alert) 
+	    	<pg /> This allows checking those previously traversed pages before closing tab.   You can simply click again the <i>target</i> Button to close the tab. 
+	    	Especially useful when trying to close many opened tabs without missing anything.
+	    	<pg /> <b>CTRL+W</b> shortcut can be set to do this as well.   See <b>'More Options'</b> button.
+	    	<pg /> <i>(1) The target button is the one being configured (eg. Close or Firefox button)</i>
+	    	<pg /> <i>(2) Same popup menu as Back &amp; Forward buttons' one.</i>
+			
+	    	A <b>mouse</b> click/wheel operation with modifier key does:
+	    	<pg /> [&Ctrl_Key; Opens popup menu if either Back or Forward buttons are enabled] 
+	    	<pg /> [&Alt_Key; unconditionally closes tab (never opens popup menu)] 
+	    	<pg2/> [&Shift_Key; &item_undoCloseTab;]" > 
+
+<!ENTITY item_ShowAllTabs 		"Show All Tabs" >
+<!ENTITY   tt_ShowAllTabs 		"<pg /> List All Tabs in a popup menu.  (Ctrl + Shift + Tab)  
+   	<pg/> [&Shift_Key; &item_undoCloseTab;]
+	<html:hr /><pg /> Please note: this won't work if  <b>Menubar > View > 'Show All Tabs'</b>  option is missing.  This can happen when 'List All Tabs' button is hidden. (It can be done by eg. Tab Mix Plus addon)" >
+
+<!ENTITY item_undoCloseTab 		"Letzten geschlossenen Tab wiederherstellen">
+<!ENTITY item_undoCloseTab_reco	"Letzten geschlossenen Tab wiederherstellen (empfohlen)">
+<!ENTITY   tt_undoCloseTab 			"Letzten geschlossenen Tab wiederherstellen. (Strg + Umsch +T).">
+
+<!ENTITY item_zapFrames 		"iFrames und Plugins 'löschen'">
+<!ENTITY   tt_zapFrames 			"Entfernt sie von der Webseite.   
+									[&Shift_Key; &item_zapImages;]   
+									<einfo>('Zap plugins' from  https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_zapImages 		"Bilder 'löschen'">
+<!ENTITY   tt_zapImages 			"Ersetzt Bilder in einer Webseite durch ihren Alternativtext (Bildüberschrift).   
+									[&Shift_Key; &item_zapFrames;]   
+									<einfo>(Ursprüngliche Idee von  https://www.squarefree.com/bookmarklets/zap.html)</einfo> ">
+<!ENTITY item_superStop 		"Bildanimationen anhalten">
+<!ENTITY   tt_superStop 			"Bildanimationen (und Hintergrundanfragen) anhalten. 
+		<pg /> Das entspricht dem Verhalten der Esc-Taste in Firefox-Versionen vor Version 20. Funktioniert wie das Add-on 'SuperStop' (versuchen Sie das hier, falls 'SuperStop' in Ihrer Umgebung nicht mehr funktioniert)
+		[&Shift_Key; &item_BrowserReload;]">
+<!ENTITY item_BrowserReload 	"Webseite neu laden">
+<!ENTITY   tt_BrowserReload 		"Webseite neu laden (F5)
+		[&Shift_Key; Reload skipping cache]">
+
+<!ENTITY item_closeNewerWindow 	"Zuletzt geöffnetes Firefoxfenster schließen">
+<!ENTITY   tt_closeNewerWindow 		"Auf Seiten nützlich, die neue Firefox-Fenster ohne Nachfrage geöffnet halten. Sicherheitshalber wird nur das Fenster hinter dem aktiven (im Vordergrund befindlichen) Fenster geschlossen.
+         [&Shift_Key; &item_undoCloseWindow;]">
+<!ENTITY item_undoCloseWindow 	"Zuletzt geschlossenes Fenster wiederherstellen">
+
+<!ENTITY item_PageUp   			" Bild hoch">
+<!ENTITY item_PageDown 			"Bild herunter">
+<!ENTITY item_Page_UpDown 		"Bild hoch/herunter">
+<!ENTITY   tt_PageKeys   			"Bild hoch, Bild herunter: funktioniert wie die entsprechenden Tasten.                    
+									(Der Webinhalt erhält den Fokus und das aktive Element -mit Fokus - darin wird auf Befehl ausgeführt)  
+									[&Ctrl_Key; springt zum Anfang/Ende der Seite (wie die Tasten Pos1 bzw. Ende)] 
+									[&Alt_Key; springt zum linken bzw. rechten Rand der Seite (d. h. <i><b>scrollt horizontal!</b></i>) ] 
+									[&Shift_Key; &item_Line_UpDown;] ">
+<!ENTITY item_Line_UpDown 		"Zeile nach oben/nach unten">
+<!ENTITY   tt_LineKeys   			"Zeile nach oben/nach unten:         funktioniert wie die entsprechenden Tasten (Pfeil hoch/Pfeil herunter). 
+									(Der Webinhalt erhält den Fokus und das aktive Element - mit Fokus - darin wird auf Befehl ausgeführt)  
+									[&Ctrl_Key; springt zum Anfang/Ende der Seite (wie die Tasten Pos1 bzw. Ende)] 
+									[&Alt_Key; springt zum linken/rechten Seitenrand (d. h. <i><b>scrollt horizontal!</b></i>) ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+<!ENTITY item_ZoomEnlarge   	"Vergrößern">
+<!ENTITY item_ZoomReduce   		"Verkleinern">
+<!ENTITY item_Zoom_EnlRed		"Vergrößern/Verkleinern">
+<!ENTITY   tt_ZoomKeys 				"Vergrößern (Strg + '+') &nbsp;/&nbsp; Verkleinern (Strg + '-')
+									[&Alt_Key;  Zoom zurücksetzen ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY item_hc_context   		"Kontextmenü von Hctp">
+<!ENTITY item_hc_context_defau	"Kontextmenü von Hctp (Standard)">
+<!ENTITY   tt_hc_context   			"[&Shift_Key; &item_mainPanelUI;] ">
+<!ENTITY item_mainPanelUI 		"Hauptmenü von Firefox öffnen">
+<!ENTITY item_mainPanelUI_defau	"Hauptmenü von Firefox öffnen (Standard)">
+<!ENTITY   tt_mainPanelUI 			"[&Shift_Key; &item_hc_context;] ">
+
+<!ENTITY item_quitApplication	"Firefox beenden (alle Fenster)">
+<!ENTITY   tt_quitApplication		"[&Shift_Key; &item_closewin;] ">
+<!ENTITY item_FullScreen		"Vollbild">
+<!ENTITY   tt_FullScreen			"[&Shift_Key; &item_Maximize;] ">
+<!ENTITY item_Maximize			"Maximieren/Fenster wiederherstellen">
+<!ENTITY   tt_Maximize				"[&Shift_Key; &item_FullScreen;] ">
+
+<!ENTITY item_NewTab			"Open a New Tab" >
+<!ENTITY   tt_NewTab 			"Open a New Tab.  (Ctrl + T)" >
+
+<!ENTITY devPixelsPerPx_label_2	"Change the size of text and other items" >
+<!ENTITY tt_toggleCssDevPx			"<pg /> Toggles between  <b>&devppp_default;</b>  &amp;  <b>&devppp_125;</b>
+	<html:hr />&devPixelsPerPx_tt;" >
+
+<!ENTITY item_DynBars_toggle	"&dynBars_name;!, toggle activation" >
+<!ENTITY   tt_DynBars_toggle		"<pg1/>&dynBars_name;: 
+	<pg3/>Default shortcut key:  <b>Ctrl + Q</b>
+	<pg3/>See Help Page in '&tab.float.toolbars;' panel." >
+
+<!ENTITY item_noaction 			"Keine">
+
+<!ENTITY item_advSelTab 		"Vorhergehenden/nächsten Tab auswählen">
+<!ENTITY   tt_advSelTab 			"Select Previous/Next Tab. (Ctrl + PgUp/PgDown)
+									<pg0/>Extra 'scroll' actions:
+									[&Ctrl_Key; move to page's Top/Bottom (like Home/End Keys)] 
+									[&Alt_Key; move page Left/Right (i.e. <i><b>Horizontal scroll !</b></i>) ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+									
+<!ENTITY item_goBack 			"Go back one page">
+<!ENTITY item_goForward 		"Go forward one page">
+<!ENTITY   tt_goBackFw_key 			"Go back / forward one page:   same as browser's back / forward buttons.
+									[&Ctrl_Key; go the opposite way (forward / back)]
+									[&Shift_Key; &item_mainPanelUI;]">
+<!ENTITY item_go_BackForw 		"Go back/forward one page">
+<!ENTITY   tt_go_BackForw 			"Go back / forward one page:   same as browser's back / forward buttons.
+									<pg0/>Extra 'scroll' actions:
+									[&Ctrl_Key; move to page's Top/Bottom (like Home/End Keys)] 
+									[&Alt_Key; move page Left/Right (i.e. <i><b>Horizontal scroll !</b></i>) ] 
+									[&Shift_Key; &item_Page_UpDown;] ">
+
+
+<!ENTITY butt_butSound_tic_1 	"Ton für Tab schließen">
+<!ENTITY butt_butSound_info1 	"Ton beim Erscheinen des Menüs '&nav_history;'">
+<!ENTITY butt_butSound_action1 	"Ton für eine allgemeine Aktion">
+<!ENTITY   tt_butSound_action1 		"Actions includes:
+		• <b>&item_zapFrames;</b>   and 
+		• <b>&item_closeNewerWindow;</b>.  
+		Sound also played when a new opened (probably unrequested) window quickly go behind (Ie. It's probably spam and a candidate for removal)">
+<!ENTITY butt_butSound_wheel1 	"Ton für eine Aktion mit dem Mausrad">
+<!ENTITY   tt_butSound_wheel1 		"Aktion beinhaltet:
+									• <b>&item_advSelTab;</b> ">
+<!ENTITY butt_butSound_notFound	"“Not-allowed”  Sound">
+<!ENTITY   tt_butSound_notFound	"<pg/>Sound played when a certain action isn't allowed.
+	<pg/>Played only if such action has a valid sound configured.   
+	More info in <b>Custom Firefox button</b> title  &amp;  <b>More options > &line_title;</b>.">
+
+<!ENTITY only_volumen 	"<pg/>(Only volume changes allowed for now)">
+
+
+<!ENTITY snd_none     			"None">
+<!ENTITY Custom_Sound 			"Benutzerdefinierter Ton">
+<!--  This goes before the sound names. It's value in english is ' ' (a single space), bc babelzilla fails with empty value.  -->
+<!ENTITY sound_0 				" ">
+<!--  This goes AFTER the sound names.  Before them goes [sound_0] -->
+<!ENTITY sound 					" ">
+<!ENTITY tt_Ths_snds_incl_in_Fx		"Diese Töne sind in Firefox enthalten.">
+<!ENTITY tt_Ths_snds_incl_in_hctp 	"Diese Töne sind in diesem Add-on enthalten.">
+
+<!ENTITY Tick_snd_f_Web_shrt 	"Ton aus dem Web auswählen (gekürzt)">
+<!ENTITY tt_Tick_snd_f_Web_shrt		"Original von Free (CC Attribution) Sound auf  http://soundbible.com/2044-Tick.html  ">
+
+<!ENTITY tt_old_snd__begin 			"These 5 sounds aren't included anymore in Firefox since version 45, but you can still use them 
+			by downloading 'hctp_soundpack_1' (including 2 extra nice custom sounds) from HCTP's homepage and copying the soundfiles in your local storage at: ">
+<!ENTITY tt_old_snd__cont1 			" &nbsp; &nbsp; &nbsp; (derselbe Ordner/dasselbe Verzeichnis, das für benutzerdefinierte Tondateien verwendet wird)">
+
+<!ENTITY tt_custom_sound__begin 	"Erweiterte Einstellungen: benutzerdefinierte Töne werden gespeichert in:">
+<!ENTITY User_Home_Directory 	  	"Startverzeichnis des Benutzers">
+<!ENTITY or_custom2_mp3_and_so_on 	"(oder custom2.mp3 und so weiter. Eine umbenannte wav- oder ogg-Datei sollte auch funktionieren)">
+
+<!ENTITY Volume_c				  "Lautstärke:">
+
+
+
+<!ENTITY label_butPref_default 		"Standardaktionen">
+<!ENTITY    tt_butPref_default 			"Alle Standardaktionen einstellen. Keine Töne.">
+<!ENTITY label_but_recom_1			"Empfohlene Aktionen">
+<!ENTITY    tt_but_recom_1 				"Empfohlene Voreinstellung an Aktionen einstellen. Mit Tönen!">
+<!ENTITY label_but_recom_annoyances "#2 empfohlen, zur Entfernung von Ärgernissen">
+<!ENTITY    tt_but_recom_annoyances 	"Set recommended preset #2: Remove annoyances using Fx button!. With Sounds. Default actions like [&item_mainPanelUI;] and [&item_hc_context;] go to middle (third) button.">
+<!ENTITY label_but_recom_2_1  		"Recommended #2.1">
+
+
+<!ENTITY actt_title			"Show Tooltips:">
+<!ENTITY   tt_title				"Show Tooltips with info about the available actions in each configurable button.">
+<!ENTITY actt_always		"Always">
+<!ENTITY actt_blockFirst	"On mouse 're-entering'  [R]">
+<!ENTITY   tt_blockFirst		"The Tooltip doesn't appear in normal operation.   But You can move the mouse cursor out and over again the button to see it.   [R] This option needs a Firefox restart if selected.">
+<!ENTITY actt_never			"Never">
+
+
+
+<!ENTITY System_TitleBar__title					"System-Titelleiste:">
+<!ENTITY check__Sys_TitleBar_always_hid 		"System-Titelleiste immer ausgeblendet">
+<!ENTITY    tt__Sys_TitleBar_always_hid 			"<pg />With this option unchecked (default), this System-TitleBar normally appears in these cases: 
+			<pg2 /> • in Tab-Groups View (Ctrl+Shift+E)   <i>(removed in Firefox 45+!)</i>
+			<pg2 /> • Print-Preview  
+			<pg2 /> • when Tabs-Toolbar is hidden (happens eg. in Popup windows &amp; with some 'Tabs'-addons)  
+			<pg2 /> • if the option below is allowing It to appear (always). 
+			<pg2 />So, you can check this to always hide it (Ie. for the ultimate screen space saving in all cases).
+			<pg />(FYI: This System-TitleBar was modified to be like the small Custom-TitleBar, showing an extra Firefox Icon.   This avoids flickering especially when switching to/from Tab-Groups or Print-Preview) ">
+
+<!ENTITY check__Fxopt_Sys_TitlBr_always_prsnt 	"Firefox-Einstellung: System-Titelleiste (fast) immer eingeblendet">
+<!ENTITY    tt__Fxopt_Sys_TitlBr_always_prsnt 		"<pg /> Same option as new 'Title-Bar' button available in Customize Panel.
+  													When checked, TitleBar is always present except in Fullscreen mode (F11) ">
+
+
+
+<!ENTITY Fx_default_unchecked 		"(Firefox-Standard: deaktiviert)">
+<!ENTITY recommended_unchecked 		"(empfohlen: dekativiert)">
+
+
+
+<!ENTITY tt_custom_image__begin 		"Erweiterte Einstellungen: benutzerdefinierte Bilder speichern in:">
+<!ENTITY or_but_custom2_png_and_so_on	"(oder but_custom2.png und so weiter. Eine umbenannte gif- oder jpg-Datei sollte auch funktionieren)" >
+
+
+<!--  *** Color Picker popup *** -->
+<!ENTITY Opacity					"Deckkraft" >
+<!ENTITY Color_Hue					"Farbton" >
+<!ENTITY tt_Color_Hue					"Wenn Sie das Mausrad verwenden, können Sie exakte Farbton-Werte erhalten, z. B. können Sie mit 16 Mausrad-Klicks von Rot nach Prupur wechseln usw." >
+<!ENTITY tt_txtbox_col_pick 	"Drücken Sie die TAB-Taste nach manuellen Änderung, damit sie sich auswirken. Gültige Werte können sein:" >
+<!ENTITY tt_Sys_col_pick_noWo	"Der System-Farbwähler funktioniert nicht, wenn der Einstellungsdialog im Browser geöffnet ist (Frame)" >
+
+
+<!--  __________*** Section:   LOOK AND FEEL 2 ***__________  -->
+
+
+<!ENTITY   Options_Fx_Home_App_but 	"Einstellungen für die Startseiten-Schaltfläche:" >
+
+<!ENTITY   check__hcp_home_enabled 	 "Benutzerdefinierte Firefox-Schaltfläche in der linken oberen Ecke aktivieren (*)" >
+<!ENTITY   check__hcp_home_enabled_2 "(auch über die Anpassung der Benutzeroberfläche verfügbar)" >
+<!ENTITY      tt__hcp_home_enabled 		"Anpassung der Benutzeroberfläche: mit Hilfe von 'Symbolleisten --> Anpassen', kann eine identische Schaltfläche auf der Tableiste oder einer anderen Symbolleiste untergebracht werden" >
+
+<!ENTITY Button_Style_Color		"Stil/Farbe" >
+<!ENTITY Fx_default_orng		"Firefox-Standard (Orange)" >
+<!ENTITY Blue					"Blau" >
+<!ENTITY Green					"Grün" >
+<!ENTITY Transp_with_Personas	"Transparent mit Personas" >
+<!ENTITY Transparent			"Transparent" >
+
+
+<!ENTITY Icon_Size_for_Maximized_win		"Icon/Size for 
+											Maximized win." >
+<!ENTITY Icon_Size_for_UnMaximized_win		"Icon/Size for 
+											Un-Maximized win." >
+<!ENTITY   ctn_dropmarker 	"Arrow mark" >
+<!ENTITY   tt_ctn_dropmarker    "Please notice that only some button sizes have this arrow mark" >
+<!ENTITY   dm_auto 			"Firefox default" >
+<!ENTITY   dm_auto_invtd 	"Firefox default, inverted" >
+<!ENTITY   dm_icon1 		"Bigger arrow" >
+<!ENTITY   dm_icon1_invtd	"Bigger arrow, inverted" >
+<!ENTITY   dm_none	 		"None" >
+<!ENTITY   dm_old_default 	"HCTP's old default *" >
+<!ENTITY   tt_old_default 		"* Legacy setting.  (that showed nothing in Windows systems since long ago) " >
+
+<!ENTITY   ctn_fx_text 	   "Button Text" >
+<!ENTITY   tt_ctn_fx_text		"${BrandName}   is default value, that behaves like always (showing 'Firefox'/BrandName for large buttons and 1st letter for small ones)" >
+
+<!ENTITY   ctn_fx_image    "Button Image" >
+<!ENTITY   fx_im_icon17 		"Firefox Icon" >
+<!ENTITY   fx_im_icon17_invtd	"Firefox Icon, inverted" >
+<!ENTITY   fx_im_icon18 		"Firefox Icon 2" >
+<!ENTITY   fx_im_icon18_invtd	"Firefox Icon 2, inverted" >
+<!ENTITY   fx_im_icon_classic	"Firefox Classic Icon" >
+<!ENTITY   fx_im_icon_browser	"Browser default Icon">
+<!ENTITY   fx_hc_icon 			"HCTP's Icon" >
+<!ENTITY   custom_image 		"Custom image" >
+
+<!ENTITY    Fx_Main_menu_but 		"Show Firefox's Main Menu(Panel) button:">
+<!ENTITY tt_Fx_Main_menu_but			"(located at right end of Navigation Toolbar by default).     If you are using the 'Custom Fx Home Button', you can hide this button for getting extra space. " >
+<!ENTITY    FxMenu_always_fxdefault	"Always  (Fx default)" >
+<!ENTITY    FxMenu_notif_badge		"Only with notifications" >
+<!ENTITY tt_FxMenu_notif_badge			"Show button only when It has a notification/warning icon (eg. a Firefox sync issue)" >
+<!ENTITY    FxMenu_never			"Never  (not recommended)" >
+
+
+<!ENTITY   check__floatMenu 		"Floating Main Menu:   menu leaves Menubar and 'floats' alongside new 'Fx Home place' with autohide.  Activated by hovering over Fx Button (*), pressing ALT or F10 key." >
+<!ENTITY      tt__floatMenu 			"Make sure to keep hidden the now-empty Menubar (unchecking it from its context menu) for gaining even more screen space." >
+<!ENTITY   check__floatM_pageTitle 	"Web-Page-Title alongside Floating Menu" >
+
+<!ENTITY floatM_adv_options			"Floating Main Menu:  advanced options:" >
+
+<!ENTITY floatM_style_title			"Font &amp; background <b>color/style</b>" >
+<!ENTITY floatM_style_default		"New style  (default since sep 2016)" >
+<!ENTITY floatM_style_captionColor	"Try to follow System (OS) window caption font &amp; background color" >
+<!ENTITY floatM_style_captionC_tt		"Except for Persona-Themes" >
+<!ENTITY floatM_style_oldColor		"Old style, font &amp; background color" >
+
+
+<!ENTITY Custom_style_files			"Custom style (.css) files:" >
+<!ENTITY Custom_style_files__tt			"Custom .css files for styling browser's own UI  (like the deprecated capability of Stylish). 
+	Use a comma-separated list for adding filenames   (assumed .css extension if not given)" >
+<!ENTITY files_located_homedir		"Files located at User Home Directory" >
+<!ENTITY Custom_style_files__failed		"File/s not loaded: " >
+
+<!ENTITY Apply_changes				"Apply changes" >
+
+
+
+<!ENTITY FULL_SCREEN_mode_options	" FULL-SCREEN mode options: " >
+
+<!ENTITY check_fullscrButs_autohide "Autohide also 'fixed' Firefox button and Custom-Min,Max,Close buttons when autohiding Toolbars in Full-Screen mode.   (default: yes)" >
+<!ENTITY    tt_fullscrButs_autohide 	"<pg />Including in Full-Screen Videos.   When unchecked, the buttons appear semi-transparent.
+   				For not losing actions capability in Full-Screen, You can leave this unchecked 
+   				(and configure the buttons to be of tiny size and almost transparent for minimal interference over content).
+   				<pg />('Fixed' buttons means only those fixed at window corners.  
+   				On the other hand, Fx &amp; Min,Max,Close buttons located in tab-bar/toolbars (via UI customization) always hide with their toolbar)">
+<!ENTITY Autohide_in_FullScr_Videos	"Autohide them in Full-Screen Videos.   (recommended: yes)" >
+<!ENTITY Small_FScr_warn			"Smaller (much less intrusive)  &quot;[Site] is now fullscreen&quot;  message (eg. for videos).   (Fx default: no)" >
+
+<!ENTITY label__fullscr_tr_duration "Full-Screen video black-transition duration:">
+<!ENTITY    tt__fullscr_tr_duration "Recommended 'None' if this black transition annoys you.   (Setting effective since Fx42+)">
+<!ENTITY When_entering		"When <html:br /> entering: " >
+<!ENTITY When_leaving		"When <html:br /> leaving: " >
+<!ENTITY None_p_fastest		"None (fastest)" >
+<!ENTITY Fast				"Fast transition" >
+<!ENTITY Fx_Default_p_slow	"Fx. Default (slow)" >
+				
+
+<!--  New Feature: “Special VERTICAL MAXIMIZE”  -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle     "“The <i>Good</i> VERTICAL MAXIMIZE”:   <html:einfo>Tabs <i>really</i> on top in <b>un-maximized</b> window also!</html:einfo>">
+<!ENTITY   VERTICAL_MAXIMIZE_subTitle   "<b>Click here to see help before use!</b>   New <b>experimental</b> feature!, <b>working</b> prototype.">
+<!ENTITY   vertMax_switch_title     "Activate <b>Vertical Maximize: </b>">
+<!ENTITY   vertMax_no     "No">
+<!ENTITY   vertMax_yes    "Yes">
+
+<!ENTITY    vmBehave_TITLE     "Behavior:">
+<!ENTITY tt_vmBehave_TITLE     "Options in bold text may be especially useful.">
+
+<!ENTITY    vmBehave_default     	"Default.  (Fx window snaps at Desktop Top &amp; Bottom edges)">
+<!ENTITY    vmBehave_right         	"   It snaps also at Desktop Right edge">
+<!ENTITY tt_vmBehave_right      		"Making Close button to stay at Desktop corner!, like in maximized mode">
+<!ENTITY    vmBehave_left     		"   It snaps also at Desktop Left  edge">
+
+<!ENTITY    vmBehave_noSize     	"It snaps at Desktop Top-edge only  (free Window height)">
+<!ENTITY    vmBehave_top_right   	"   It snaps at Top &amp; Right edges">
+<!ENTITY    vmBehave_top_left   	"   It snaps at Top &amp; Left  edges">
+
+<!ENTITY    vmBehave_bottom     	"It snaps at Desktop Bottom-edge only  (free Window height)">
+<!ENTITY    vmBehave_bottom_right   "   It snaps at Bottom &amp; Right edges">
+<!ENTITY    vmBehave_bottom_left   	"   It snaps at Bottom &amp; Left  edges">
+
+<!ENTITY    vmBehave_leftRight_top 	"It snaps at Left, Right &amp; Top  edges  (free Window height)">
+<!ENTITY    vmBehave_leftRight_bot 	"It snaps at Left, Right &amp; Bottom edges">
+<!ENTITY    vmBehave_leftRight     	"It snaps at Left &amp; Right edges  (“Horizontal Maximize”)">
+
+
+<!-- FYI: Tags like 'einfo', 'b' and 'i' CAN'T be nested or spaces are lost!!, SOLVED here using 'html:b' -->
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt              "<html:b>“The <i>Good</i> VERTICAL MAXIMIZE”:</html:b>   works in <b>un-maximized</b> Fx windows.
+	<pg0/><pg/>Can be activated also in <i>'HCTP's Context menu'</i>  (accesible by secondary click in Maximize, Minimize buttons and other places).   Maximize button shows a little border when this is active.
+	<pg/>Valid only when: <b>'&enable_customizable_buts;'</b> is active.
+	<pg2/><b>Please read also</b> the “VERTICAL MAXIMIZE” section @ homepage, for updated details! ">
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__LINUX       "<b>LINUX notes:</b> preliminary testing only!, Linux Mint, Cinnamon (2/3 years old).
+	Please notice that Window-'Auto Snapping' at Desktop Top-edge can interfere. 
+	Found issue in multi monitor: Fx snaps always to the same monitor.
+	(Some texts below are for Windows only.) " >
+<!--  Translation:  this text will be released but It can change later, bc It describes current status of a very new feature  -->	
+<!ENTITY   VERTICAL_MAXIMIZE_gTitle_tt__SUBNOTES 	"<pg/><b>PLEASE NOTICE:</b> Fx window may do a little harmless <i>'hiccup'</i> after moved/resized.  
+	After grabbing and releasing window borders for resizing or other areas for dragging, Fx window may do <b>a little (10 px) quick move down and up again</b>. This is expected, and there isn't any other thing that interferes while browsing.   This can be avoided by dragging using <i>Floating Menu's</i> web-title area! (activated with eg. ALT key)
+	<pg/>Dragging: when <i>Windows' Aero-Snap</i> feature is enabled, if you try to drag window grabbing it from upper edge, it will maximize.   To avoid this, You can move down before releasing mouse button, or by having 'Vertical Aero-snap' active (with WIN+SHIFT+<b>￪</b> keys) 
+	<pg/>Tested mainly in MS-Windows. " >
+
+
+
+
+<!ENTITY Drag_Window_capab_opt			" Drag-Window capability options: " >
+<!ENTITY    Drag_win_via_tabbar_defno	"Drag Fx window using Tab-bar background (default: no)" >
+<!ENTITY tt_Drag_win_via_tabbar_defno		"This is already enabled in Firefox in some toolbar combinations. (eg. in Windows with Aero-Glass desktop).   This -may- make Scroll-Arrows to appear always in Tab-bar" >
+<!ENTITY and_un_maxim_with_dblclk		"(&amp; un/maximize it with double-click)" >
+
+
+<!ENTITY    Enable_Ctrls_Widgets_Drag_Win 	"Enable Controls/Widgets to Drag-Window " >
+<!ENTITY tt_Enable_Ctrls_Widgets_Drag_Win		"Included option for more compatibility with other addons like 'Vertical Toolbar's autohide option." >
+
+<!ENTITY All__prevver_2_8_default			"All   (HCTP's previous version [2.8.*] default)" >
+<!ENTITY All_excpt_othrAddn_SpsWidgts_def	"All except other addon's Spaces Widgets   (default)" >
+<!ENTITY tt_no_foreign_spaces					"Recommended option for more compatibility with other addons like 'Vertical Toolbar's <b>autohide</b> option   (that doesn't work well if there's a Space-Widget with drag-window capability) 
+				<html:hr />
+				PS: If 'Vertical Toolbar's autohide still doesn't work, you can use the 'No drag for Spaces' option.
+				(This can happen if, after user customization, the Vertical Toolbar contains a HCTP's Space-widget.  They're the ones shown with [h] prefix in the Label when inside the 'Additional Tools Pallete') 
+				" >
+<!ENTITY    No_drag_for_Spaces_Widgets		"No drag for Spaces Widgets" >
+<!ENTITY tt_No_drag_for_Spaces_Widgets			"Later on, It will be added option/s that excludes other Widgets too like 'WebPage-Title', etc." >
+
+
+<!ENTITY Easy_of_use__scr_corner__Fitts_law	" (*) Easy of use increased, because that button/control is usually at <b>screen corner</b> in maximized mode.
+		(Fitts' Law: in wikipedia, see about 'Edge' &amp; 'Corner') " >
+
+		
+		
+<!--  __________*** Section:   ADVANCED SETTINGS ***__________  -->
+
+
+<!ENTITY hidTit__Dont_use		"Nicht verwenden" >
+<!ENTITY hidTit__use			"Verwenden" >
+
+<!--  __________*** FOR LINUX/OSX ONLY ***__________  -->
+<!ENTITY   title__alternat_hide_titbar_feature__default_Use		"alternative Funktion für das Ausblenden der Titelleiste (Standard: Verwenden)" >
+<!ENTITY comment__alternat_hide_titbar_feature					"Successfully hides the titlebar in Linux / Gnome (eg. Ubuntu), tested only in this environment. 
+		Roughly equivalent to disabling 'Window-decorations' in Window-Manager Settings (eg. 'Compiz-Config' in Ubuntu) 
+		<einfo>     (uses internal 'hidechrome' attribute) </einfo> " >
+
+
+<!--  ______*** Small-Tabs and Small-Toolbars MOVED TO LOOK_AND_FEEL_2 ***______  -->
+
+<!ENTITY Styling_options_to_max_spc			"Stileinstellungen: <einfo>(zur Maximierung des Inhaltsbereichs)</einfo>" >
+
+<!ENTITY    Smaller_Tabs_and_Tab_Bar		"Kleinere Tabs und Tableiste" >
+<!ENTITY tt_Smaller_Tabs_and_Tab_Bar			" <pg /> Works with <b>'Tab Mix Plus' multirow</b> feature! (needs a <b>Fx restart</b> to adjust new multirow height) 
+			<pg /> Maybe You'll need to adjust a little (1px or so) the 'Custom Top-edge margin position' value for tabs reaching the screen top-edge again. Or do a Unmaximize-Maximize cycle if such options are disabled (auto calculation is used) 
+			<pg /> Please note that this style was tested only with Windows default theme (and some tests in Linux), so <b>caution</b> is recommended when using it with custom themes and/or <b>other addons that modify Tabs</b>.
+			" >
+<!ENTITY No__default			"Nein (Standard)" >
+<!ENTITY Small_australis		"Kleinere Tabs, für das Theme Australis von Firefox" >
+<!ENTITY Small_near_Classic		"Kleinere, fast klassische Tabs" >
+<!ENTITY Small_almost_Classic	"Kleinere klassische Tabs (neu)" >
+<!ENTITY Small_Classic_0     	"Smaller, Classic Tabs! (New 2)">
+
+<!ENTITY likeClassic_mediumH	"Like Classic Tabs, medium height" >
+<!ENTITY likeClassic_fullH		"Like Classic Tabs, full height" >
+
+<!ENTITY DEPREC_australis		"[Veraltet] Theme Australis" >
+<!ENTITY DEPREC_almst_Clsc		"[Veraltet] fast klassisch"  >
+<!ENTITY tt_smTabs_deprecated 		"<pg /> This old [Deprecated] option remains for compatibility test only <b>*and will be removed later*</b>. 
+		<pg /> If this option is needed to make things look nice in your environment, please drop a notice in Support-Site (link in   tiny.cc/hidec).">
+
+
+<!ENTITY    Smaller_Toolbars_and_buttons	"Kleinere Symbolleisten und Schaltflächen" >
+<!ENTITY tt_Smaller_Toolbars_and_buttons		"Bitte beachten Sie, dass dieser Stil nur mit dem Standardtheme von Windows getestet wurde. Seien Sie bitte vorsichtig, wenn Sie ihn mit benutzerdefinierten Themes verwenden." >
+<!ENTITY Small				"Klein" >
+<!ENTITY A_bit_smaller		"Ein bisschen kleiner" >
+<!ENTITY Smaller_buttons	"Kleinere Schaltflächen" >
+<!ENTITY tt_smallBars_oldOption	"These old options may be useful in old Fx versions (eg. Fx ESR 52) when <i>'size of text and other items'</i> (dpi) > 100&percent;" >
+<!ENTITY Option_compat_only	"(Einstellung ist nur für den Kompatibilitätstest)" >
+<!ENTITY tt_smallBars_old_deprecated 	"<pg /> This option is for compatibility test only <b>*and will be removed later*</b>. 
+		<pg /> If this option is needed to make 'Small Toolbars' work in your environment, please drop a notice in Support-Site (link in   tiny.cc/hidec).  
+		<pg /> It may happen in combination with outdated addons, that aren't adjusted yet to new Fx40 style (css) code.">
+
+
+<!ENTITY Top_edge_margn_pos_sets 		" Top-edge margin position settings: " >
+<!ENTITY    Cust_Top_edge_margn_f_tbar	"Custom Top-edge margin position for toolbars-area:  (in pixels, negative value to move content up)" >
+<!ENTITY tt_Cust_Top_edge_margn_f_tbar		"Disabled when 'Firefox 4+ Titlebar' and 'Place Tabs In Titlebar' are enabled. (auto calculation is used) " >
+<!ENTITY In_Maximized__window			"Im maximierten Fenster" >
+<!ENTITY tt_top_marg_max					"Not valid in Full-Screen mode   
+			  	(eg. in maximized Firefox you can set it to  -1  or  -2  to have the Tabs-on-Top touching the screen top-edge.)" >
+<!ENTITY In_Un_Maximized__window		"Im nichtmaximierten Fenster" >
+
+
+<!ENTITY Top_margn_style_main_win		"Top-margin style of main-window <html:br/> (root container). " >
+<!ENTITY tt_Top_margn_style_main_win		"Can help with compatibility with other addons/themes that affects Firefox content's top-edge area" >
+<!ENTITY Untouched__default				"Unberührt (Standard)" >
+<!ENTITY    Enforce_zero_top_mrgin		"Enforce zero top-margin" >
+<!ENTITY tt_Enforce_zero_top_mrgin			"eg. in maximized Fx, it fixes/removes a little extra area at top edge for themes like Noia4." >
+
+
+<!ENTITY  old_topEdge_titlebar_msg 		"Removed legacy option: 'Top Edge area styling'. Click to remove this message." >
+
+
+<!ENTITY    Translation_Notes 	"Übersetzungshinweise">
+<!ENTITY tt_HCTP_BOTTOM_NOTES   "HCTP lässt sich jetz vollständig lokalisieren! (es kann jetzt in jede beliebige Sprache übersetzt werden!). Siehe Startseite > Tipps für Übersetzer!" >
+
+
+<!--  *** This DOESN'T NEED to be translated!!! *** Developer only option!! ***  -->		
+<!ENTITY Devel__Print_debug			"[Developer/Tester]  Print debug info in the error-console (default: no)" >
+<!ENTITY Devel__Print_debug_audio	"With <b>Audio feedback</b> when outputting a msg with 'error' or 'warn' strings." >
+
+
+<!--  __________*** OTHER SETTINGS ***__________  -->
+
+<!ENTITY Fx_internal_options 		"Intere Einstellungen von Firefox:" >
+
+<!ENTITY Search_Bar 				"Suchleiste:" >
+<!ENTITY    SearchBar_new_UI		"[* Option to disable this was removed in Firefox 43! *]     Enable the new Search-Bar UI from Firefox 34+ (using icons fields)  " >
+<!ENTITY tt_SearchBar_new_UI		"Uncheck to restore the Search-Bar's dropdown list with sites names and the ability to easily persist the choice.   Needs a Fx Restart" >
+
+<!ENTITY Search_in_new_tab		"A new search launched from the Search-Bar, will be opened in a new tab.   (So the current content never gets overwrited)" >
+
+<!ENTITY    Other_intOpts 	"Other:">
+
+<!ENTITY    Tab_switch_MRU		"Tab switching:  Sets MRU (Most Recently Used) behavior to 'Ctrl+Tab' tab switching!   (meaning you can easily switch to the last tab/s you saw) " >
+<!ENTITY tt_Tab_switch_MRU		"Also, for a long 'Ctrl+Tab' press, it provides a preview thumbnails list similar to Windows  'Alt+Tab'  preview list. (when having more than 2 tabs opened) " >
+
+<!ENTITY devPixelsPerPx_label 	"<pg1 /> Change the size of text and other items in Firefox:" >
+<!ENTITY devPixelsPerPx_tt 		"<pg  /> This setting is the same as the one in MS Windows' screen preference dialog, but only for Firefox.
+			<pg /> Useful where a different font size from System's default is desired.   Eg. when using 2 or more monitors of different size. " >
+<!--  <pg />(Using Firefox hidden preference: 'layout.css.devPixelsPerPx')  -->
+<!ENTITY devppp_default	"System default size" >
+<!ENTITY devppp_100 	"100&percent; - Smaller" >
+<!-- Shouldn't need any translation -->
+<!ENTITY devppp_120     "120&percent;">
+<!ENTITY devppp_125 	"125&percent; - Medium" >
+<!ENTITY devppp_150 	"150&percent; - Larger" >
+<!ENTITY devppp_9x 		" 94&percent; - Experimental Setting" >
+
+
+<!ENTITY HCTPs_extra_options 		" HCTP's extra options: " >
+<!ENTITY Wider_Bookmark_panel		"Wider Bookmark panel (Ctrl+D):   to easy create/edit long descriptive names for your bookmarks. " >
+
+<!ENTITY    Stop_image_animations	"Stop image animations (and background requests) using SHIFT+ESC shortcut. " >
+<!ENTITY tt_Stop_image_animations		"This matches the behavior of the Esc button in Firefox versions prior to 20.   Works like 'SuperStop' addon (give this a try if 'SuperStop' stopped working in your environment)" >
+
+
+
+<!--  __________*** Dynamic Toolbars  section ***__________  -->
+<!ENTITY dynBars_name     			"Dynamic Toolbars">
+
+
+
+<!ENTITY button.Advanced     	"Advanced">
+
+<!ENTITY hc_rcOnly 			"New option, appearing 1st in RC versions only: " >
+
+<!ENTITY  hc_isBetaFeature 	"BETA feature: " >
+<!ENTITY tt__isBetaFeature 	"BETA feature:  may still have a minor visual glitch " >
+
+<!ENTITY forUpdatedSections	"(updated!)">
+
+<!ENTITY bOld		"[Old]  " >
+<!ENTITY NEWe		"NEW!" >
+<!ENTITY SOONe		"SOON!" >
+
+
+<!ENTITY Are_you_sure     	"Are you sure?">
+
+<!ENTITY See_homepage_for_ex	"See homepage for example/s.">
+
+<!ENTITY optionForFx57plus     	"Option for  &brandShortName; 57 and later">
+
+
+<!ENTITY tt_DEPRECATED_IMMINENT     	"This deprecated option will be removed soon!   If You still need it, please make sure to leave a note at support site, so We can find a suitable replacement. Thank you!">
+
+
+<!ENTITY Msg__New_Feature_RC_versions  "There is new feature/s in RC versions!:   see 'Development Channel' section @ homepage " >
+
+
+<!-- ** MULTI LANGUAGE DIALOG ** -->
+<!ENTITY   MultiLanguage_but     	"MULTI LANGUAGE!">
+<!ENTITY   MULTI_LANGUAGE_DIALOG   	"MULTI LANGUAGE access:">
+<!ENTITY   multi_lang_subtitle 		"You can open this Options Dialog in the following languages, even <b>simultaneously</b> for your convenience:">
+<!ENTITY   multi_lang_subtitle_tt 		"<pg /> Can be useful for eg. switching to/from unfinished (and probably still not enabled-by-default) addon language (locale).  
+			<pg /> Also, very valuable for Translators." >
+
+
+<!-- ** Please fill this entry (eg. with 'Done') only when finishing the translation/improvements, in order to avoid showing '100percent' 
+     (eg. the spanish one has still many entries MACHINE-translated only)   **   You can check translation status text in opt_lang.dtd.    
+     THANKS A LOT! -->
+<!ENTITY   Translation_endOfJob_entry    "Done! (en-US)">
+

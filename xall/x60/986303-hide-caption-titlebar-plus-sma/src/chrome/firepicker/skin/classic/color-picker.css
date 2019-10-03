@@ -1,0 +1,104 @@
+body {
+  margin: 0px;
+  background-color: white;
+  overflow-x: hidden;
+  
+  font-family: Tahoma,Arial;
+  font-size: 12px;
+  
+  background-color: #F8F8F8;
+}
+.fire_picker_dialog {
+  padding: 14px 14px 10px;
+  color: #000;
+  z-index: 10;
+  overflow: hidden;
+}
+.fire_picker_dialog .picker {
+  float: left; 
+}
+.fire_picker_dialog .picker .saturation_brightness, 
+.fire_picker_dialog .picker .hue, 
+.fire_picker_dialog .picker .opacity {
+  border: 1px solid #AEAEAE;
+  position: relative; 
+}
+.fire_picker_dialog .picker .saturation_brightness {
+  float: left;
+  width : 288px;
+  height: 288px;
+  background-image: url("picker_bg.png");
+  background-size: 100% 100%;
+  margin-right:  16px; 
+  margin-bottom: 16px; 
+}
+.fire_picker_dialog .picker .saturation_brightness img.main {
+  left: 0px;
+  margin-left: -5px;
+  margin-top: -5px; 
+}
+
+.fire_picker_dialog .picker .hue-title {
+	
+  display: none;
+ 
+  float: left;
+  -moz-transform: translate(1.8em) rotate(90deg);
+  /*   transform: translate(1.8em) rotate(90deg);  */
+  -moz-transform-origin: 0px 0px;
+  margin-right: -30em;
+}
+.fire_picker_dialog .picker .hue {
+  float: left;
+  width :  32px;
+  height: 288px;
+  background-image: url("hue_bg.png");
+  background-size: 100% 100.4%; /* looking for exact pointer match at yellow */
+  margin-right: 6px; 
+}
+.fire_picker_dialog .picker img.vertical {
+  right: -10px;
+  margin-top: -7px;
+}
+.fire_picker_dialog .picker img {
+  position: absolute;
+  /* top: 0px; */
+}
+.fire_picker_dialog .picker .opacity {
+  background-image: url("checkboard.png");
+  clear: both;
+  height:  32px;
+  width : 288px;
+  margin-bottom: 8px;
+}
+
+html[hide_opacity="true"]   .fire_picker_dialog .picker .opacity,
+html[hide_opacity="true"]   .fire_picker_dialog .picker .opacity-title {
+	visibility: collapse;
+}
+.fire_picker_dialog .picker .opacity-title {
+	display: none;
+}
+
+.fire_picker_dialog .picker img.horizontal {
+  margin-left: -9px;
+  bottom: -10px;
+  /*   top: auto; */
+}
+
+
+
+/* ---- tooltip icon + cursor! ------------------------------- */
+.tooltip[title] {
+		cursor: help !important;
+}
+.tooltip[title]:after {
+	content: url("chrome://hidecaptionplus/skin/opt/info-tip.png") !important; 
+		/* url("chrome://global/skin/icons/information-16.png");  display: -moz-box; */
+	margin-left: 0.3ch !important;
+	opacity: 0.7 !important;
+}
+.tooltip[title]:hover:after { /* :hover 1st, to react on all link surface, right? */
+	opacity: 1 !important;
+}
+

@@ -1,0 +1,19 @@
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url("chrome://browser/content/browser.xul") {
+
+.tab-content[pinned] {
+	-moz-padding-end: 0px;
+}
+
+/* Fx57+ */
+:root[hctp_isFx57plus="true"]   .tab-content[pinned] {
+	-moz-padding-start: 4px;
+	-moz-padding-end  : 5.5px;
+}
+
+
+}  /*** moz-document url(...) ***/
+

@@ -1,0 +1,85 @@
+<!-- 
+	Taken from: http://help.dottoro.com/ljlhiaix.php
+	Big Thanks!
+-->
+<head>
+    <script type="text/javascript">
+        function AddRowToInfo (description, value) {
+            if (value !== undefined) {
+                var infoTable = document.getElementById ("info");
+                var row = infoTable.insertRow (-1);
+				
+                var cell = row.insertCell (-1);
+                cell.textContent = description;
+                cell.style.paddingRight = "10px";
+                cell.style.textAlign="right";
+				
+                cell = row.insertCell (-1);
+                cell.textContent = value;
+                cell.style.paddingLeft = "10px";
+            }
+        }
+
+
+        function GetChromeLocale () {
+        	try {
+				return Components.classes["@mozilla.org/chrome/chrome-registry;1"]
+                     .getService(Components.interfaces.nsIXULChromeRegistry)
+                     .getSelectedLocale("global");
+			} catch (ex) {
+				return "(unknown)";
+			}
+        }
+
+        function GetUseragentLocale () {
+        	try {
+				return Components.classes["@mozilla.org/preferences-service;1"] 
+					.getService(Components.interfaces.nsIPrefService) 
+					.getCharPref("general.useragent.locale");
+			} catch (ex) {
+				return "(unknown)";
+			}
+        }
+
+                     
+        function GetVisitorInfo () {
+            AddRowToInfo ("Name of the browser (appName)", window.navigator.appName);
+            AddRowToInfo ("Name of the browser vendor (vendor)", window.navigator.vendor);
+            AddRowToInfo ("Code name of the browser (appCodeName)", window.navigator.appCodeName);
+            AddRowToInfo ("Engine of the browser (product)", window.navigator.product);
+            AddRowToInfo ("Build number of the browser engine (productSub)", window.navigator.productSub);
+            if (window.opera) {
+                AddRowToInfo ("Build number of the browser (buildNumber)", window.opera.buildNumber ());
+                AddRowToInfo ("Version number of the browser (version)", window.opera.version ());
+            }
+            AddRowToInfo ("Version and platform of the browser (appVersion)", window.navigator.appVersion);
+            AddRowToInfo ("Version of the browser given by the vendor (vendorSub)", window.navigator.vendorSub);
+            //AddRowToInfo ("Minor version of the browser (appMinorVersion)", window.navigator.appMinorVersion);
+            AddRowToInfo ("Build identifier of the browser (buildID)", window.navigator.buildID);
+            AddRowToInfo ("User-agent request header (userAgent)", window.navigator.userAgent);
+            AddRowToInfo ("Language of the browser (chrome-locale)", GetChromeLocale() );
+            AddRowToInfo ("Language preference in the browser (useragent-locale)", GetUseragentLocale() );
+            AddRowToInfo ("Cookies are enabled (cookieEnabled)", window.navigator.cookieEnabled);
+
+            AddRowToInfo ("Operating system (platform)", window.navigator.platform);
+            //if (window.navigator.lang... === undefined) {  // in Opera, the language, browserLanguage and userLanguage properties are equivalent
+            //    AddRowToInfo ("Language of the operating system's user interface (browserLanguage)", window.navigator.browserLanguage);
+            //    AddRowToInfo ("Regional and Language settings of the operating system (userLanguage)", window.navigator.userLanguage);
+            //}
+            //AddRowToInfo ("Language of the installed operating system (systemLanguage)", window.navigator.systemLanguage);
+            //AddRowToInfo ("Class of CPU (cpuClass)", window.navigator.cpuClass);
+            AddRowToInfo ("Information about the OS and CPU (oscpu)", window.navigator.oscpu);
+            AddRowToInfo ("System is online (onLine)", window.navigator.onLine);
+        }
+    </script>
+</head>
+<body onload="GetVisitorInfo ();">
+    <table id="info" cellpadding="0px" cellspacing="0px" border="1px" style="empty-cells:show;">
+        <colgroup>
+            <col style="background-color: #f8e0d0;" />
+            <col />
+        </colgroup>
+        <tbody>
+        </tbody>
+    </table>
+</body>

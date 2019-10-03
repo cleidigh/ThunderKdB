@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+  
+    <em:bootstrap>true</em:bootstrap>
+
+    <em:type>2</em:type>
+    <em:multiprocessCompatible>true</em:multiprocessCompatible> 
+    
+	
+    <em:name>Hide Caption Titlebar Plus ⁴</em:name>
+    <em:id>hidecaptionplus-dp@dummy.addons.mozilla.org</em:id>
+    <em:iconURL>chrome://HideCaptionPlus/skin/hcp_icon.png</em:iconURL>
+    
+    <em:description>⦁ NEW! Floating Toolbars with autohide! ⦁  "Maximize your screen space by adjusting window TitleBar, borders, Tabs, Toolbars, etc!".   
+      ⦁ Multiple Configurable Actions for both screen-corner buttons: Application/'Home' &amp; Close buttons!   
+      ⦁ MULTILANGUAGE! simultaneous in Options dialog!   
+      ⦁ With 'smart' options, custom caption &amp; resizers, customizable buttons or fixed at screen corners!, floating menus and more.   
+    </em:description>
+    <em:optionsURL>chrome://HideCaptionPlus/content/options.xul?_1</em:optionsURL>
+    <em:version>4.2.0</em:version>
+    <em:creator>Javier "Darth Madara"</em:creator>
+    <em:homepageURL>https://tiny.cc/hidec/</em:homepageURL>
+
+	<em:translator> Y.F Yang (yfdyh000) - Chinese, Simplified  [zh-CN] </em:translator>
+	<em:translator> strel - Spanish (Spain)  [es-ES]  </em:translator>
+	<em:translator> Maidur (mdr.ksk) - Estonian  [et]  </em:translator>
+	<em:translator> murovey, wvxwxvw - Russian  [ru]  </em:translator>
+	<em:translator> milupo - German  [de]  </em:translator>
+	<em:translator> kisama - Japanese  [ja-JP]  </em:translator>
+	<em:translator> Sacredwheels - Ukrainian  [uk]  </em:translator>
+	<em:translator> Javier 'DM' - Spanish (International)  [es]  </em:translator>
+
+ 	<!--
+		SUPPORT PAGE:	  https://github.com/Javier-DarthPalpatine/firefox-hide-caption-titlebar-plus/issues?q=is:open+sort:updated-desc
+		<em:developer>    </em:developer>
+    	<em:contributor>  </em:contributor>
+	-->
+	
+    <!-- firefox -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> 
+        <em:minVersion>43.0</em:minVersion>
+        <em:maxVersion>56.*</em:maxVersion> <!-- tested extensively against Firefox up to BETA state -->
+      </Description>
+    </em:targetApplication>
+	
+    <!-- Pale Moon 	-->
+    <em:targetApplication>
+      <Description>
+        <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
+        <em:minVersion>27.5</em:minVersion>
+        <em:maxVersion>28.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+	<!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>60.0a1</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+		
+		<!-- 
+		<em:description> (Tbird own description DOESN'T work here, moved to  tbird.PROPERTIES  file)
+		</em:description>
+		-->
+		
+		<!--
+		<em:homepageURL>https://addons.mozilla.org/thunderbird/addon/hide_titlebar_plus_tb/</em:homepageURL>
+		SUPPORT PAGE:	  http://forums.mozillazine.org/viewtopic.php?f=48&t=2548157
+		-->
+		<!-- this also should go later to  /es/tbird.PROPERTIES
+		<em:localized>
+		 <Description>
+			<em:locale>es</em:locale>
+			<em:name>Hide C. Titlebar Plus. (Eliminar la barra de titulo)</em:name>
+			<em:description>"Maximiza el espacio para tus contenidos en Thunderbird, quitando la Barra-de-titulo de la ventana,
+			</em:description>
+		 </Description>
+		</em:localized> 	
+		-->
+      </Description>
+    </em:targetApplication>
+	
+	
+    <!-- Localizations -->
+	<em:localized>
+     <Description>
+		<em:locale>es</em:locale> <!-- Este locale [es] sería para el Castellano/Español 'neutro' (o internacional) latinoamericano, el [es-ES] para España y los [es-XX] para cada País -->
+		<em:translator> Javier 'DM' - Español (Internacional)  [es]  </em:translator>
+		
+		<em:name>Hide Caption Titlebar Plus ⁴  (Ocultar la barra de título)</em:name>
+		<em:description>¡NUEVO: Barras Flotantes! - "Maximiza el espacio útil en Firefox, configurando cuando aparece y el tamaño de la Barra-de-título de la ventana, bordes y los botones del sistema (Minimizar, Max, Cerrar-ventana), así como la barra-de-pestañas y otras barras de herramientas." 
+		⦁ ¡DESTACADO!: Múltiples Acciones Configurables para los 2 botones en las esquinas: el botón "Firefox" y el de Cerrar-ventana. 
+		⦁ ¡MULTI-IDIOMAS! simultáneo, en diálogo de Opciones! </em:description>
+     </Description>
+	</em:localized> 
+
+	<!-- España -->
+	<em:localized>
+     <Description>
+		<em:locale>es-ES</em:locale> 
+		<em:translator> strel  - Español (España)  [es-ES]  </em:translator>
+		
+		<em:name>Hide Caption Titlebar Plus ⁴</em:name>
+		<em:description>¡NUEVO: Barras Flotantes! - "Maximiza el espacio útil en Firefox, configurando cuando aparece y el tamaño de la Barra-de-título de la ventana, bordes y los botones del sistema (Minimizar, Max, Cerrar-ventana), así como la barra-de-pestañas y otras barras de herramientas." 
+		⦁ ¡DESTACADO!: Múltiples Acciones Configurables para los dos botones en las esquinas: el botón "Firefox" y el de Cerrar-ventana.
+		⦁ ¡MULTI-IDIOMAS! simultáneo, en diálogo de Opciones! </em:description>
+     </Description>
+	</em:localized> 	
+
+	<!-- Chinese! -->
+	<em:localized>
+     <Description>
+		<em:locale>zh-CN</em:locale> 
+		<em:translator> Y.F Yang (yfdyh000) - Chinese, Simplified  [zh-CN] </em:translator>
+		
+		<em:name>Hide Caption Titlebar Plus ⁴</em:name>
+		<em:description>
+ ⦁ 新功能：同时查看多语言的多个选项对话框。
+ ⦁ 新特色：多个可配置的 Firefox 按钮和关闭按钮！     
+ ⦁ MULTILANGUAGE! simultaneous in Options dialog!  "Maximize your screen space by adjusting window TitleBar, borders, Tabs, Toolbars, etc!".   
+ ⦁ Multiple Configurable Actions for both screen-corner buttons: Application/'Home' &amp; Close buttons!   
+ ⦁ With 'smart' options, custom caption &amp; resizers, customizable buttons or fixed at screen corners!, floating menus and more.
+		</em:description>
+     </Description>
+	</em:localized> 	
+	
+  </Description>
+</RDF>

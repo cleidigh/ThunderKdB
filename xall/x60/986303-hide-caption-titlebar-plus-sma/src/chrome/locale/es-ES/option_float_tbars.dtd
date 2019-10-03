@@ -1,0 +1,100 @@
+
+<!--  __________*** DYNAMIC TOOLBARS ***__________  -->
+
+<!--  2017 nov:  Msg to Translators:  for a while, these texts MAY be yet changed !, bc feature texts are all-new!  -->
+
+<!ENTITY label_dynBars_main     	"¡Habilitar <b>&dynBars_name;</b>!">
+<!ENTITY dynBars_main_tt     			"<pg/> <b>¡Barras de herramientas dinámicas (flotantes)!</b> con auto-ocultado, similar al modo de pantalla completa propio de <i>&brandShortName;</i> , pero sin mover el espacio de contenido en absoluto.  Con más formas de mostrar y ocultar las barras de herramientas. 
+»<pg/> El auto-ocultado de barras de herramientas también se puede controlar con el desplazamiento de página, vea la opción de debajo.
+»<pg/> ¡Vea la <b>Página de ayuda</b> para todos los detalles! ">
+<!ENTITY dynBars_main_tt_n1     		"<pg/> Por favor, observe que en modo 'flotante', sólo se pueden ver la <i>&menubarCmd.label;</i> , la <i>barra de pestañas</i>  y la <i>&navbarCmd.label;</i> (puede tener los elementos de la <i>&personalbarCmd.label;</i>  y más dentro de las '&ft_floatTbars_name;').">
+
+<!ENTITY dynBars_extraTxt_forFloatbars 		"(Habilitado por la opción 'Barras Flotantes')">
+	 
+<!ENTITY dy_options_dynBars 		"Opciones para las &dynBars_name;">
+
+<!ENTITY activate_dynbars     			"Activar &dynBars_name;">
+<!ENTITY dynBars_activate_tt     			"<pg/>Tecla de atajo predeterminada: <b>Ctrl+Q</b>
+»<pg/>Vea la 'Página de ayuda' para conocer maneras de cambiarlo y otros detalles">
+
+<!ENTITY Help_dynbars     			"Página de ayuda">
+
+<!ENTITY dy_Appear_dis_Trans	"Transición de aparición/desaparición del auto-ocultado">
+<!ENTITY dy_None_fastest     	"Ninguna (la más rápida)">
+<!ENTITY dy_Vertical_offset     "Rentraqueado vertical">
+<!ENTITY dy_Voffset_transp 		"Retranqueado v. con transparencia">
+<!ENTITY dy_Slower_transition 	"Transición más lenta">
+
+<!ENTITY dy_scrollCtrl_title 	"Usar desplazamiento para la activación del auto-ocultado/flotación">
+<!--   <!ENTITY dy_scrollCtrl_title_tt   " " >  -->
+
+<!ENTITY dy_scrollCtrl_yes 		"Sí">
+<!ENTITY dy_scrollCtrl_yes_tt 		"¡Hace que las barras de herramientas se auto-oculten al desplazar hacia arriba la página web!, como en los navegadores para móvil.
+»<html:hr/><pg0/>Aún no funciona en pestañas 'remote process'  
+»(en las que el contenido web está usando la capacidad multiproceso del navegador, lo cual queda indicado mediante el <z class='mpShdw'>sombreado naranja</z> en el <b>botón/control de barra de herramientas</b> de las &dynBars_name;') ">
+
+<!ENTITY dy_scrollCtrl_no  		"No">
+<!ENTITY dy_scrollCtrl_no_tt  		"Tiene más control del estado de las barras de herramientas (auto-ocultadas o estáticas) usando la rueda del ratón sobre el <b>botón/control de barra de herramientas</b> de las &dynBars_name;' y ALT+rueda sobre el contenido. ">
+
+
+<!ENTITY b_Future_option 		"[Opción futura] ">
+<!ENTITY line__more_choices 	"<html:hr/><pg/>Habrá más opciones aquí.">
+
+
+<!ENTITY dy_showTab_title 		"Mostrar pestaña actual (flotante) cuando:">
+<!ENTITY dy_showTab_busy 		"La página web esté cargando y al cambiar de pestaña.">
+
+
+ 
+<!--  __________*** FLOATING TOOLBARS  section ***__________  -->
+
+<!ENTITY ft_floatTbars_name 		"Barras Flotantes Extra">
+
+<!ENTITY label_floatBars_main     	"¡Habilitar <b>&ft_floatTbars_name;</b>!">
+<!ENTITY floatBars_main_tt     			"<pg /> &ft_floatTbars_name;:
+»<pg /> Esto proporciona 4 barras de herramientas siempre-flotantes <b>extra</b>, con auto-ocultado.
+»El comportamiento es muy similar al de las  <i>&dynBars_name;</i>
+»<pg /> Estas barras son una ubicación excelente para tener -entre muchos otros- su menú principal, elementos de marcadores, el título de la página web (estos ya se colocan por defecto en la primera activación).  
+»<pg /> En esta versión beta, los elementos que activan (muestran) estas barras flotantes al pasarles por encima el ratón son:
+»El botón principal de la aplicación de Fx, el botón Minimizar, el botón 'Mostrar todas las pestañas', el control 'Barras de herramientas flotantes extra' .
+»<pg /> ¡Vea la <b>Página de ayuda</b> para todos los detalles! 
+»<pg /> Por favor, ¡observe que esto también habilita las  <b>&dynBars_name;</b>!">
+
+<!ENTITY txt__ft_msg_activate  		"»<pg /> Activación de las <b>&ft_floatTbars_name;</b>:
+
+»<pg /> (Únicamente) la primera vez que habilite esto, el Menú principal (de la barra de menú) y sus elementos Marcadores (de la barra de herramientas de marcadores) se moverán abajo hacia las barras de herramientas flotantes correspondientes (si no están ya allí).
+»<pg /> Puede revertir o mover adicionalmente estos usando 'Personalizar'.
+»<pg /> Se recomienda desactivar el 'Menú principal flotante' (permanece por defecto en las barras-flotantes)
+»
+»<pg /> &Restart_needed;">
+	
+<!ENTITY txt__ft_msg_deactivate		"»<b>Desactivación de las &ft_floatTbars_name;</b>:
+
+»<pg /> Esto moverá el Menú principal de vuelta a su lugar predeterminado.  
+»<pg /> Sus elementos Marcadores irán a la paleta de 'Personalización' de elementos, desde donde puede personalizarlos de nuevo hacia su lugar original.   (Esto se hará automáticamente en una próxima versión)
+»<pg /> &Restart_needed;">
+
+
+<!ENTITY ft_options_title 		"Opciones para &ft_floatTbars_name;">
+
+<!ENTITY ft_hotspot_title 		"Transición estilo punto-caliente">
+<!ENTITY ft_hotspot_title_tt 		"Puede ver este efecto p.e. en el botón de Fx cuando el ratón pasa sobre este para hacer que aparezcan las barras flotantes">
+<!ENTITY ft_hotspot_none 		"Ninguna">
+<!ENTITY ft_hotspot_shadow 		"Sombreado azul (predeterminada)">
+
+<!ENTITY ft_style_bars     		"Estilo de barras extra">
+<!ENTITY ft_stylebars_none  	"Ninguno">
+<!ENTITY ft_stylebars_shadow	"Sombreado para barras ocultas">
+<!ENTITY ft_stylebars_shadow_tt		"En el menú Ver »  Barras de herramientas, y en el modo Personalizar, las barras no marcadas (ocultas) se visualizan con un sombreado para identificarlas mejor.">
+
+
+
+<!ENTITY default_no     			"(por defecto: no)">
+
+<!ENTITY p_in_construction     		"(en construcción)">
+
+
+
+
+
+

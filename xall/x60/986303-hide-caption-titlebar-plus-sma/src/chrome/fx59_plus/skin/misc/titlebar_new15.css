@@ -1,0 +1,124 @@
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+	
+/***  titlebar_new15  ***/
+/***  titlebar_new15  ***/
+
+#hctp_titlebar {		margin-bottom: -60px !important;	}
+#hctp_titlebar_content{	min-height   :  60px !important;
+						height       :  60px !important;
+}
+#main-window[inFullscreen]                      #hctp_titlebar ,
+#main-window:not([hcp_platformPlus="windows"])  #hctp_titlebar {  /** NOT for linux (AND mac also right?) **/ 
+	display: none !important;
+}
+#main-window[sizemode="normal"]    > #hctp_titlebar {	-moz-appearance: -moz-window-titlebar;          	}
+#main-window[sizemode="maximized"] > #hctp_titlebar {	-moz-appearance: -moz-window-titlebar-maximized;	}
+/*  NOT  Aero-GLASS    */
+@media not all and (-moz-windows-compositor) {
+	@media (-moz-os-version: windows-win7){
+		:root[dz_adv_sysbut_winappear_calc=""][sizemode="maximized"]  #hctp_titlebar         {	margin-top: -1px !important; } /* chau linea negra arriba */
+		:root[dz_adv_sysbut_winappear_calc=""][sizemode="maximized"]  #hctp_titlebar_content {	margin-top:  1px !important; }
+	}
+	
+	#main-window[tabsintitlebar] #hctp_titlebar:-moz-lwtheme { /* para lwtheme, igual q #titlebar */
+		visibility: hidden;
+	}
+}
+
+
+
+
+/* Section: 'setContentPosition' ----------- */
+.setContentPosition {
+	top          : auto !important;
+}
+.setContentPosition_doMargin {
+	margin-top   : 0px !important;
+}
+#hcp-root-box {
+	margin-top   : 0px !important;
+	margin-bottom: 0px !important; /* toca en el onload() */
+}
+
+/* VERTICAL MAXIMIZE! */
+:root[hctp_vertical_maxim_act__TOP="true"][sizemode="normal"]   #hcp-root-box {
+	margin-top: var(--hcGap_vertMaxim) !important;
+}
+
+
+
+/*  NOT  Aero-GLASS    */
+@media not all and (-moz-windows-compositor) {
+
+	/* aero basic win have its OWN SYSTEM border-top 2px */
+	#main-window[hcp_platformPlus="windows"      ][hcp_hiddencaption="true"]:not([hc-MaxFull="true"]):not([hcp_fx4_titlebar_visible="true"])  
+	  #hcp-caption-box:not(:-moz-lwtheme) {
+		margin-top: 2px;
+	}
+	#main-window[hcp_platformPlus="windows"      ][hcp_hiddencaption="true"]:not([hc-MaxFull="true"]):not([hcp_fx4_titlebar_visible="true"])  
+	  #hcp-caption-box:-moz-lwtheme         #hcp-title-box {  /*  lwt, to compensate prev rule  */
+		padding-top: 1px !important;
+	}
+	/* Linux y Mac */
+	#main-window:not([hcp_platformPlus="windows"])[hcp_hiddencaption="true"]:not([hc-MaxFull="true"]):not([hcp_fx4_titlebar_visible="true"])  
+	  #hcp-caption-box {
+		margin-top: 1px;
+	}
+
+	/* #titlebar-buttonbox-container  ------------------------------------------ */
+	#main-window[sizemode="normal"   ]:not([hcp_fx4_titlebar_visible="true"])    #titlebar-buttonbox-container {	margin-top:  -6px  !important;	}
+	#main-window[sizemode="maximized"]:not([hcp_fx4_titlebar_visible="true"])    #titlebar-buttonbox-container {	margin-top:  -1px  !important;	}
+}
+
+/* win10 */
+@media (-moz-os-version: windows-win10) {
+  @media not all and (min-resolution: 1.1dppx) {
+ 	#main-window[sizemode="maximized"]:not([hcp_fx4_titlebar_visible="true"])    #titlebar-buttonbox-container {	margin-top:  -1px  !important;	}
+  }
+  @media             (min-resolution: 1.1dppx) {
+ 	#main-window[sizemode="normal"   ]:not([hcp_fx4_titlebar_visible="true"])    #titlebar-buttonbox-container {	margin-top:   1px  !important;	}
+  }
+}
+
+
+/* topEdge_hover - from TBoxHide.css ---------------------------------------------------------- */
+#hcp-root-box[hctp_tbox_float="true"][hctp_tbox_inactive="true"]                 #hctp_topEdge_hover {
+	top: auto !important;	
+}
+
+
+/* #titlebar-buttonbox-container  ------------------------------------------ */
+#main-window:not([hcp_fx4_titlebar_visible="true"])[hcp_sysbuttons_active="true"]                             #titlebar {
+	height       :  41px !important; /* 1) para q aparezcan los botones (al menos en win7 glass)  2) cubrir TODO el height de los botones, cuan alto es en win10? */
+	margin-bottom: -41px !important;
+}
+#titlebar   #titlebar-buttonbox { 
+	position: relative;	/* <- BUGFIX: necesario cuando NO ESTA [tabsintitlebar] ('System Titlebar is Active!!') */
+	z-index: 21;   		/* <- hace falta en win7 aero-basic, cuando queda debajo del tab-ACTIVO */
+}
+
+
+/**
+#titlebar-buttonbox-container {
+	outline: 6px solid cyan;
+	outline-offset: -3px;
+}
+#titlebar-buttonbox {
+	outline: 4px solid orange;
+	outline-offset: -2px;
+}
+**/
+
+
+
+/* devel flags! -------------- */
+:root[dz_z_sys_intFlags~="tit15"]   #hctp-appmenu-button-container {
+	outline: 2px solid #97ff97;
+	outline-offset: -2px;
+}
+
+}  /**  @-moz-document  url(...)  **/
+

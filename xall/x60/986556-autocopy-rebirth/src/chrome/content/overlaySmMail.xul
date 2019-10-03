@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://autocopy/locale/autocopy.dtd">
+
+<overlay id="AutoCopyOverlaySmMail"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="autocopyStrings" src="chrome://autocopy/locale/autocopy.properties" />
+  </stringbundleset>
+
+  <script type="application/x-javascript" src="chrome://autocopy/content/overlayMail.js" />
+
+  <statusbar id="status-bar">
+    <statusbarpanel id="autocopy-statuspanel" collapsed="true">
+      <deck id="autocopy-status"
+            context="autocopy-statusbar-menu"
+            tooltip="autocopy-tooltip"
+            onclick="if (event.button == 0){ AutoCopyAppMail.switchautocopystatusstate(); }">
+        <image id="autocopy-status-image" src="chrome://autocopy/skin/enabled.png" />
+      </deck>
+      <popupset>
+        <menupopup id="autocopy-statusbar-menu"
+                   position="before_end"
+                   onpopupshown=""
+                   onpopuphidden="">
+          <!--menuitem id="autocopy-statusbar-getoptions"
+                    label="&statusbar-getoptions;"
+                    oncommand="AutoCopyAppMail.showOptions();"
+                    accesskey="&statusbar-getoptions.ak;" /-->
+          <menuitem id="autocopy-statusbar-PasteOnMiddleClick" 
+                    label="&pref.autocopyPasteOnMiddleClick;"
+                    type="checkbox"
+                    checked="true"
+                    autocheck="false"
+                    oncommand="AutoCopyAppMail.toggle('PasteOnMiddleClick');" />
+          <menuitem id="autocopy-statusbar-ContextMenu"
+                    label="&pref.autocopyContextMenu;"
+                    type="checkbox" checked="true"
+                    autocheck="false"
+                    oncommand="AutoCopyAppMail.toggle('ContextMenu');" />
+          <menuitem id="autocopy-statusbar-DeselectAfterCopy"
+                    label="&pref.autocopyDeselectAfterCopy;"
+                    type="checkbox"
+                    checked="true"
+                    autocheck="false"
+                    oncommand="AutoCopyAppMail.toggle('DeselectAfterCopy');" />
+          <menuitem id="autocopy-statusbar-EnableInTextBoxes"
+                    label="&pref.autocopyEnableInTextBoxes;"
+                    type="checkbox"
+                    checked="false"
+                    autocheck="false"
+                    oncommand="AutoCopyAppMail.toggle('EnableInTextBoxes');" />
+          <menuitem id="autocopy-statusbar-StatusbarBlink"
+                    label="&pref.autocopyStatusbarBlink;"
+                    type="checkbox"
+                    checked="true"
+                    autocheck="false"
+                    oncommand="AutoCopyAppMail.toggle('StatusbarBlink');" />
+        </menupopup>
+        <tooltip id="autocopy-tooltip">
+          <description id="autocopy-tooltip-value" value="" style="margin:0px;" />
+        </tooltip>
+      </popupset>
+    </statusbarpanel>
+  </statusbar>
+
+  <!-- Mail & Newsgroups content area context menu -->
+  <menupopup id="mailContext">
+    <menuseparator id="autocopy-context-menuitem-separator" />
+    <menu id="autocopy-context-menuitem"
+          label="&autocopyExtentionName;">
+      <menupopup onpopupshowing="AutoCopyAppMail.context_onpopupshowing();">
+        <menuitem id="autocopy-context-menu-undocopy"
+                  label="&autocopy-undocopy;"
+                  oncommand="AutoCopyAppMail.undocopy()"
+                  accesskey="&autocopy-undocopy.ak;" />
+        <menu id="autocopy-context-menu-clipboards"
+              label="&autocopy-previousclipboards;">
+          <menupopup id="autocopy-context-menupopup-clipboards2"
+                     onpopupshowing="AutoCopyAppMail.context_menupopup_clipboards2_onpopupshowing();">
+            <menuitem label="&autocopy-empty;" />
+          </menupopup>
+        </menu>
+        <menuitem id="autocopy-context-menu-appendurltoclipboard"
+                  label="&autocopy-appendURL;"
+                  accesskey="&autocopy-appendURL.ak;"
+                  oncommand="AutoCopyAppMail.appendurltoclipboard();" />
+      </menupopup>
+    </menu>
+  </menupopup>
+
+  <!-- Mail & Newsgroups message compose content area context menu -->
+  <menupopup id="contentAreaContextMenu">
+    <menuseparator id="autocopy-context-menuitem-separator" />
+    <menu id="autocopy-context-menuitem"
+          label="&autocopyExtentionName;">
+      <menupopup onpopupshowing="AutoCopyAppMail.context_onpopupshowing();">
+        <menuitem id="autocopy-context-menu-undocopy"
+                  label="&autocopy-undocopy;"
+                  oncommand="AutoCopyAppMail.undocopy()"
+                  accesskey="&autocopy-undocopy.ak;" />
+        <menu id="autocopy-context-menu-clipboards"
+              label="&autocopy-previousclipboards;">
+          <menupopup id="autocopy-context-menupopup-clipboards2"
+                     onpopupshowing="AutoCopyAppMail.context_menupopup_clipboards2_onpopupshowing();">
+            <menuitem label="&autocopy-empty;" />
+          </menupopup>
+        </menu>
+        <menuitem id="autocopy-context-menu-appendurltoclipboard"
+                  label="&autocopy-appendURL;"
+                  accesskey="&autocopy-appendURL.ak;"
+                  oncommand="AutoCopyAppMail.appendurltoclipboard();" />
+      </menupopup>
+    </menu>
+  </menupopup>
+
+  <!-- AutoCopy context menu popup in Mail & Newsgroups messenger -->
+  <window id="messengerWindow">
+    <popupset id="autocopypopupset">
+      <menupopup id="autocopy-context-menu"
+             position="at_pointer"
+             onpopupshowing="AutoCopyAppMail.contextmenu_onpopupshowing();"
+             onpopuphidden="" onmouseout="AutoCopyAppMail.timedhidemenu();"
+             onmouseover="AutoCopyAppMail.canceltimedhidemenu();">
+        <menuitem id="autocopy-context-menu-undocopy"
+                  label="&autocopy-undocopy;"
+                  accesskey="&autocopy-undocopy.ak;"
+                  oncommand="AutoCopyAppMail.undocopy()" />
+        <menu id="autocopy-context-menu-clipboards"
+              label="&autocopy-previousclipboards;">
+          <menupopup id="autocopy-context-menupopup-clipboards"
+                     onpopupshowing="AutoCopyAppMail.context_menupopup_clipboards_onpopupshowing();">
+            <menuitem label="&autocopy-empty;" />
+          </menupopup>
+        </menu>
+        <menuitem id="autocopy-context-menu-appendurltoclipboard"
+                  label="&autocopy-appendURL;"
+                  accesskey="&autocopy-appendURL.ak;"
+                  oncommand="AutoCopyAppMail.appendurltoclipboard();" />
+      </menupopup>
+    </popupset>
+  </window>
+
+  <!-- AutoCopy context menu popup in Mail & Newsgroups composer -->
+  <window id="msgcomposeWindow">
+    <popupset id="autocopypopupset">
+      <menupopup id="autocopy-context-menu"
+             position="at_pointer"
+             onpopupshowing="AutoCopyAppMail.contextmenu_onpopupshowing();"
+             onpopuphidden=""
+             onmouseout="AutoCopyAppMail.timedhidemenu();"
+             onmouseover="AutoCopyAppMail.canceltimedhidemenu();">
+        <menuitem id="autocopy-context-menu-undocopy"
+                  label="&autocopy-undocopy;"
+                  accesskey="&autocopy-undocopy.ak;"
+                  oncommand="AutoCopyAppMail.undocopy()" />
+        <menu id="autocopy-context-menu-clipboards"
+              label="&autocopy-previousclipboards;">
+          <menupopup id="autocopy-context-menupopup-clipboards"
+                     onpopupshowing="AutoCopyAppMail.context_menupopup_clipboards_onpopupshowing();">
+            <menuitem label="&autocopy-empty;" />
+          </menupopup>
+        </menu>
+        <menuitem id="autocopy-context-menu-appendurltoclipboard"
+                  label="&autocopy-appendURL;"
+                  accesskey="&autocopy-appendURL.ak;"
+                  oncommand="AutoCopyAppMail.appendurltoclipboard();" />
+      </menupopup>
+    </popupset>
+  </window>
+
+</overlay>

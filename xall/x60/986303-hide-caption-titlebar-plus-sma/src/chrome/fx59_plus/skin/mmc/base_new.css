@@ -1,0 +1,42 @@
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+
+/*  I'm the new, HIDE old buttons  */
+.hc_mmc_holder  .hc-mmcbuttons-cls {
+	display: none !important;
+}
+
+
+/* initial styling */
+.hNew_mmcbuttons {
+	padding: 0;
+	-moz-appearance: none;
+    border-style: none;
+    margin: 0;
+}
+
+#hcp-rightbar-fixed ,
+toolbaritem#hcp-mmc-buttons-item ,
+.hc_mmc_holder  {
+	-moz-box-align: start;
+}
+
+
+#main-window:not([hctp_vertical_maxim_act__TOP="true"]):not([hc-MaxFull="true"])     #hcp-rightbar-fixed {
+	margin-top: 2px;
+}
+
+
+/**   hctp_vertical_maxim_active   **/
+:root[hctp_vertical_maxim_active="true"]   .hNew_res_button {
+	/* box-shadow: 0px 0px 1px rgba(0, 0, 255, 0.95) inset !important; */
+	outline: 1px solid rgba(100, 100, 200, 0.7) !important;
+	outline-offset: -1px !important;
+}
+
+
+}  /**  @-moz-document  url(...)  **/
+

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+<!ENTITY % brandDTD       SYSTEM "chrome://branding/locale/brand.dtd"        >	%brandDTD;
+<!ENTITY % optionsDTD     SYSTEM "chrome://HideCaptionTb/locale/option.dtd">  %optionsDTD;
+]>
+
+<overlay id="paneContent_overlay"
+		 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		 xmlns:html="http://www.w3.org/1999/xhtml" 
+		 >
+
+                    <prefpane id="paneContent" label="&tab.look.feel; 2" orient="vertical" flex="1" context="" helpTopicXXX="opt_look2" >
+<preferences>
+	<!-- 	bool,int,string,wstring,unichar 
+			'preference' will modify -> checkbox, colorpicker, radiogroup, textbox, listitem, listbox, and menulist. 
+	<preference id="xxxxxxxxxxxxxxx" name="" type="string" instantApply="true" />
+	-->
+	<preference id="home.enabled"                    name="extensions.hide_caption.plus.home.enabled"           type="bool"   instantApply="true" onchange="
+		HideCaption_opt.refresh_fx_buttonicons();
+		" />
+	<preference id="home.mainmenu_floating"          name="extensions.hide_caption.plus.home.mainmenu_floating" type="bool"   instantApply="true" onchange="
+		mydisable('home.floating_extrabox'        	, !this.value || this.disabled == true);
+        mydisable('home.floating_activeMillis'     	, !this.value || this.disabled == true);
+        mydisable('home.floating_inactiveMillis'   	, !this.value || this.disabled == true);
+		" />
+	<preference id="home.floating_extrabox"          name="extensions.hide_caption.plus.home.floating_extrabox" type="bool"   instantApply="true" onchange="" />
+
+	<preference id="home.floating_activeMillis"      name="extensions.hide_caption.plus.home.floating_activeMillis"   type="int" instantApply="true" onchange="" />
+	<preference id="home.floating_inactiveMillis"    name="extensions.hide_caption.plus.home.floating_inactiveMillis" type="int" instantApply="true" onchange="" />
+	
+	<preference id="home.buttonicon_max"             name="extensions.hide_caption.plus.home.buttonicon_max"    type="string" instantApply="true" />
+	<preference id="home.buttonicon_nomax"           name="extensions.hide_caption.plus.home.buttonicon_nomax"  type="string" instantApply="true" />
+	<preference id="home.button_appear"              name="extensions.hide_caption.plus.home.button_appear"     type="string" instantApply="true"  onchange="
+			HideCaption_opt.opt_setAsDomAttribute(this);
+		" />
+	<preference id="close_button_action"             name="extensions.hide_caption.plus.action.close_button_action" type="string" instantApply="true" />
+
+    <!--  THUNDERBIRD own preference -->
+	<preference id="closeWindowWithLastTab"          name="mail.tabs.closeWindowWithLastTab"                    type="bool"   instantApply="true" />
+
+</preferences>
+
+<groupbox> <caption align="center" > 
+	<button type="menu" label="&brandShortName;"  class="hctp-appmenu-button-cls  noPointerEvents"  hcp_appbutton_style="fx_home_med.png" />
+	<label> Options for Application 'Home Place' at top-left corner: (*) </label>
+  </caption>
+
+<hbox align="baseline" >
+ <vbox flex="1">
+	<checkbox  class=""   id="hcp_home.enabled" preference="home.enabled" label=" Enable custom Application 'Home' Button." flex="1" 
+		 />
+ </vbox>
+
+ <groupbox orient="horizontal">  <caption><label value="Icon for Maximized win."    control="hcp_home.buttonicon_max"   /></caption>
+	<!-- dz_images_autosize="true" -->
+	<menulist id="hcp_home.buttonicon_max"   preference="home.buttonicon_max"   hctp_appbutton="true" >
+
+		<hbox  class="menulist-label-box   menulistLabel-outerbox"> 
+			<button type="menu"  label="&brandShortName;"  class="hctp-appmenu-button-cls  noPointerEvents"  hcp_appbutton_style="fx_home_micro3.png" />
+			<!--  pongo el boton mas chico de previo-al-load() -->
+		</hbox>
+		<dropmarker />
+	
+	  <menupopup >
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home.png"         />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_med0.png"     />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_med.png"     />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_small0.png"  />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_small.png"   />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_smaller.png" />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro.png"   />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro2.png"  />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro3.png"  />
+	  </menupopup> 
+	</menulist>
+ </groupbox>
+ 
+ <groupbox orient="horizontal">  <caption><label value="Icon for Un-Maximized win." control="hcp_home.buttonicon_nomax" /></caption>
+	<!-- dz_images_autosize="true" -->
+	<menulist id="hcp_home.buttonicon_nomax" preference="home.buttonicon_nomax" hctp_appbutton="true" >
+
+		<hbox  class="menulist-label-box   menulistLabel-outerbox"> 
+			<button type="menu"  label="&brandShortName;"  class="hctp-appmenu-button-cls  noPointerEvents"  hcp_appbutton_style="fx_home_micro3.png" />
+			<!--  pongo el boton mas chico de previo-al-load() -->
+		</hbox>
+		<dropmarker />
+
+		<!--  menuitem child:   <button type="menu" label="&brandShortName;" class="hctp-appmenu-button-cls"	/>  -->
+	  <menupopup >
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home.png"         />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_med0.png"     />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_med.png"     />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_small0.png"  />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_small.png"   />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_smaller.png" />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro.png"   />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro2.png"  />
+		<menuitem class="menuitem-iconic-noaccel"  label=""   value="fx_home_micro3.png"  />
+	  </menupopup> 
+	</menulist>
+ </groupbox>
+
+
+ <groupbox orient="horizontal">  <caption><label control="hcp_check_home.button_appear" >Button Style/Color</label></caption>
+	<menulist id="hcp_check_home.button_appear"     preference="home.button_appear" >
+		<menupopup> <!-- menuitem-iconic-noaccel  !!! -->
+		  <menuitem class="menuitem-noaccel"   label="Default"                          value="default"        />
+		  <menuitem class="menuitem-noaccel"   label="Orange"                           value="orange"         />
+		  <menuitem class="menuitem-noaccel"   label="Green"                            value="green"          />
+		  <menuitem class="menuitem-noaccel"   label="Transparent"                      value="transparent"    />
+		  <!-- 
+		  <menuitem class="menuitem-noaccel"   label="Transparent with Personas skins"  value="lwtheme_transp" /> -->
+		</menupopup> 
+	</menulist>
+ </groupbox>
+
+</hbox>
+</groupbox>
+
+<groupbox>
+	<hbox align="center">
+	 <checkbox flex="1" style=""    id="hcp_home.mainmenu_floating" preference="home.mainmenu_floating" 
+	 	label=" Floating Main Menu.   Menu leaves Menubar and 'floats' alongside new 'App. Home place' with autohide.   It's activated by mouse-hovering over new App. Button (*), pressing ALT or F10 key." 
+			tooltip="tt_mainmenu_floating" />
+		<tooltip id="tt_mainmenu_floating"  >
+			• Also, you can uncheck (hide) the now-empty menubar (from It's context menu) for gaining even more screen space.
+		</tooltip>
+	
+	 <label flex="0" control="h_floating_activeMillis"   class="firstline_ind default_label">
+		hovering activation<html:br />   delay-time<html:br /> <html:span class="extrainfo">(milliseconds)</html:span> </label>
+	 <textbox id="h_floating_activeMillis"   type="number" value="0"   size="4" max="2000" min="0" preference="home.floating_activeMillis" />
+	
+	 <label flex="0" control="h_floating_inactiveMillis" class="firstline_ind default_label">
+		deactivation<html:br /> delay-time<html:br /> <html:span class="extrainfo">(milliseconds)</html:span> </label>
+	 <textbox id="h_floating_inactiveMillis" type="number" value="100" size="4" max="2000" min="0" preference="home.floating_inactiveMillis" />
+	</hbox>
+
+	<!--  
+	<checkbox style="padding-left:1.5em;" id="hcp_home.floating_extrabox" preference="home.floating_extrabox" label=" Web-Page-Title alongside Floating Menu" />
+	-->
+
+	<!--  for bkg of floating menu!
+	<hbox> 
+	 <colorpicker type="button" color="#CC00F0" label="xxxxxxxxx" />
+	 <scale min="0" max="100" />
+	</hbox>
+	-->
+</groupbox>
+
+ <groupbox style="" >  <caption  align="center" >
+ 		<image  class="caption-icon"  src="chrome://HideCaptionTb/skin/opt/win-closebut-high.png" /><label control="close_button_action_id" >
+        Define Action for Window Close Button / ALT+F4 </label></caption>
+ 		
+  <radiogroup id="close_button_action_id" preference="close_button_action" orient="horizontal" class="options_radio_vert">
+    <radio id="closewin"	 value="closewin"   label="Close Window (&w.default;)" />
+    <radio id="exitapp" 	 value="exitapp"    label="Exit Application" 
+            tooltiptext="Closes all opened windows.  Same as  Main-Menu » Exit  or  File » Exit" />
+    <radio id="minimize"     value="minimize"   label="Minimize Window" />
+    <radio id="closetab"     value="closetab"   label="Close Current Tab" 
+    		tooltiptext="Recommended option to try, especially if this button reach Screen's top-right corner in Maximized mode." /> 
+  </radiogroup>
+  
+  <checkbox flex="1"    id="hcp_closeWindowWithLastTab_id"  preference="closeWindowWithLastTab" 
+	 	label="'Close Current Tab':  Close Window if only one Tab remains."  />
+        
+ </groupbox>
+
+
+
+<vbox flex="10" />
+
+<label class="extrainfo  firstlinepad" flex="0" style="margin-left: 3ch;" 
+		tooltiptext="Easy of use: In wikipedia see: Fitts' Law, about 'Edge' &amp; 'Corner'." >
+	(*) Easy of use increased, because that control is usually glued at screen's top-left corner in maximized mode. </label>
+
+                    </prefpane>
+		 
+</overlay>

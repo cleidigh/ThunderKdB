@@ -1,0 +1,18 @@
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul); 
+
+
+@-moz-document url(chrome://messenger/content/messenger.xul) {
+
+
+ /* for nice styling at startup */
+ #hcp-root-box{ 
+	height:0px;  overflow:hidden; 
+ } 
+ #hctp-appmenu-button-cont-fixed {  
+	position:fixed; z-index: -2; visibility: collapse; 
+ } 
+
+
+}

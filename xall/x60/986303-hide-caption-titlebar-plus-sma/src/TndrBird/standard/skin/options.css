@@ -1,0 +1,610 @@
+
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+
+/* making equal <label> and <html:p> */
+/*
+label, 
+p {
+  margin-top: 1px;
+  margin-bottom: 2px;
+  -moz-margin-start: 6px;
+  -moz-margin-end: 5px;
+}
+*/
+
+/* ------------------ Beginning --------------------- */
+
+groupbox {
+	-moz-box-align: start;
+	
+	padding-top   : 2px;
+	padding-bottom: 3px;
+}
+
+/*   tooltip-help-icon ---- general   */
+
+/* :not(.tt_aeroglass) */
+
+*:-moz-any([tooltiptext],[tooltip]),
+*:-moz-any([tooltiptext],[tooltip])   label {
+		cursor: help !important;
+}
+prefwindow[platformPlus="windows"]   *[tooltip].tt_hideOn_windows {
+	cursor: default !important;
+}
+:not(menuitem):-moz-any([tooltiptext],[tooltip])   label:after,
+         label:-moz-any([tooltiptext],[tooltip]):after {
+	content: url("chrome://HideCaptionTb/skin/opt/info-tip.png") !important; 
+		/* url("chrome://global/skin/icons/information-16.png");  display: -moz-box; */
+	opacity: 0.7 !important;
+	
+	display: -moz-box; /*  -moz-inline-box  */
+	margin-top: -3px;
+	
+	white-space: nowrap; /* solo con display - inline vd? */
+	
+	transform: scale(0.75)  translateY(3px)  translateX(0.5ch);
+	margin-left: .4ch;
+
+}
+.title_small:after {
+	-moz-transform: translateY(3px) scale(0.7) !important;
+	margin-left: .4ch !important;
+}
+.title_multiline_center:after {
+	margin-right: -1.4ch;
+}
+.title_multiline_center {
+	margin-right:    1ch !important;
+}
+/* WARNING - DANGER !!! TOOLTIP-with-:after DOESNT WORK with [value] !!!!! */
+:not(menuitem):-moz-any([tooltiptext],[tooltip])   label[value],
+         label:-moz-any([tooltiptext],[tooltip])[value] {
+	background: orange;
+	color: red;
+    font-weight: bold;
+}
+prefwindow[platformPlus="windows"]       *[tooltip].tt_hideOn_windows  label:after,
+prefwindow[platformPlus="windows"]   label[tooltip].tt_hideOn_windows:after { /* TODO: need testing */
+	display: none !important;
+}
+:not(menuitem):-moz-any([tooltiptext],[tooltip]):hover   label:after,
+         label:-moz-any([tooltiptext],[tooltip]):hover:after {
+	opacity: 1 !important;
+}
+/*
+outline: 1px dotted orange;
+-moz-appearance: none;
+*/
+
+/*   tooltip-help-icon ---- for menulist   */
+menulist   menuitem[tooltiptext] > .menu-iconic-left,
+menulist   menuitem[tooltip]     > .menu-iconic-left {
+	display: -moz-box !important;
+	-moz-box-ordinal-group: 1000 !important;
+	opacity: 0.7 !important;
+}
+menulist   menuitem[tooltiptext]:hover > .menu-iconic-left,
+menulist   menuitem[tooltip]:hover     > .menu-iconic-left {
+	opacity:   1 !important;
+}
+prefwindow[platformPlus="windows"]  menulist   menuitem[tooltip].tt_hideOn_windows     > .menu-iconic-left {
+	display: none !important;
+}
+menulist   menuitem[tooltiptext] > .menu-iconic-left  > .menu-iconic-icon,
+menulist   menuitem[tooltip]     > .menu-iconic-left  > .menu-iconic-icon {
+	list-style-image: url("chrome://HideCaptionTb/skin/opt/info-tip.png") !important;
+    height: auto !important;
+    width: auto !important;
+	transform: scale(0.75)  translateY(0px)  translateX(0px) !important;
+}
+
+
+/*  *NOT* AERO - GLASS Section! */
+@media not all and (-moz-windows-compositor) {
+	*[tooltip].tt_aeroglass{
+		cursor: default !important;
+	}
+	*[tooltip].tt_aeroglass   label:after,
+	label[tooltip].tt_aeroglass:after{ /* TODO: need testing */
+		display: none !important;
+	}
+	menulist   menuitem[tooltip].tt_aeroglass     > .menu-iconic-left {
+		display: none !important;
+	}
+	tooltip.tt_aeroglass{
+		display: none !important;
+		/* -moz-popup; */
+	}
+
+	/* generic class */
+	.showOn_aeroGlass {
+		display: none !important;
+	}
+}
+
+/* ------ main section ----------------------------- */
+
+dialog,
+prefwindow{
+	    width : 67em !important;
+	min-width : 52em !important;
+	min-height: 36em !important; 
+}
+prefwindow[platformPlus="linux"] {  /* for LINUX ! - adv panel needs more space */
+	max-width : 76em !important;
+}
+
+/* [anonid="selector"] */
+prefwindow  > *  > radiogroup.paneSelector   radio  > image{
+	/* display: none; */
+}
+prefwindow  > *  > radiogroup.paneSelector   radio[pane] {
+  padding: 5px 3px 1px;
+  -moz-image-region: auto;
+}
+radio[pane=paneMain] {
+  list-style-image: url("chrome://messenger/skin/preferences/general.png");
+}
+radio[pane=paneTabs] {
+  list-style-image: url("chrome://messenger/skin/preferences/chat.png");
+}
+radio[pane=paneContent] {
+  list-style-image: url("chrome://messenger/skin/preferences/display.png");
+}
+radio[pane=paneApplications] {
+  list-style-image: url("chrome://messenger/skin/preferences/composition.png");
+}
+radio[pane=paneAdvanced] {
+  list-style-image: url("chrome://messenger/skin/preferences/advanced.png");
+}
+
+
+
+tabbox  > * {
+	padding-top: 2px;	padding-bottom: 2px;
+}
+tabbox  > *  > *{ /* prefpane */
+	padding-top: 2px;	padding-bottom: 2px;
+}
+
+/* --- prefpane   > vbox  (matched MY VBOXes inside prefpane)  --- */
+prefpane   > .content-box {
+	overflow: auto;
+	
+	/* min-height: 30em; <- no anda el scroll */
+}
+prefpane  {
+	/* min-height: 37em;  disables auto-scrollbars in vbox! */
+	padding-top: 4px;
+	padding-bottom: 2px;
+}
+
+/*  Darth Madara - MDC menulist talk page:
+	menulist with *image* in menuitem elements doesn't work for me.
+	I've done a fix for this to work: 
+	(in css, 'dz_images_autosize' is optional for better back compatibility, tested in Fx3.5.8, 3.6.4, 4.0.1)
+*/
+menulist[dz_images_autosize="true"] > menupopup > menuitem > .menu-iconic-left{
+	display: -moz-box;
+}
+menulist[dz_images_autosize="true"] > menupopup > menuitem     .menu-iconic-icon{
+  width: auto;
+  height: auto;
+}
+
+/*
+.options_radio_vert
+
+radiogroup > p,
+groupbox > p,
+p.extrainfo,
+*/
+radiogroup > label:not(.default_label),
+groupbox > hbox > label:not(.default_label),
+groupbox > vbox > label:not(.default_label),
+groupbox > label:not(.default_label),
+label.child_label
+{
+	padding-left: 3em;
+	color: #000077;
+}
+groupbox  radio  label{
+	padding-left: 0px;
+	color: #000000;
+}
+.label_h1{
+	font-weight: bold;
+}
+
+groupbox caption,
+.caption_title{
+	font-weight: bold;
+}
+groupbox caption menulist{
+	font-weight: normal;
+}
+groupbox caption label.extrainfo,
+groupbox caption label  *.extrainfo{
+		font-weight: normal;
+}
+
+groupbox  radiogroup + label + checkbox,
+groupbox  radiogroup +       checkbox{
+	padding-left: 1.4em;
+}
+
+/* ----- disabled  stuff ! ----- */
+  /*  radiogroup[disabled="true"] + label + checkbox,  <-- better to disable explicitly 'child' checkboxes */
+radiogroup[disabled="true"] + label,
+  checkbox[disabled="true"] + label,
+     radio[disabled="true"]  label,
+  checkbox[disabled="true"]  label  {
+	opacity: 0.6;
+}
+
+menulist[disabled="true"]{
+	opacity: 0.6;
+}
+
+*[disabled_color="true"] {
+	opacity: 0.4;
+}
+
+
+label.extrainfo,
+label.extrainfosize,
+span.extrainfo,
+span.extrainfosize
+{
+	font-size: 0.9em;
+}
+label.extrainfo,
+span.extrainfo
+{
+	color: #000077;
+}
+label.inline  /* these are for the XBL generated ones right? */
+{
+	padding-left: 0px;
+	margin-left: 0px;
+	display: inline;
+	vertical-align: bottom;
+	padding-top: 4px;
+}
+
+label.warning,
+span.warning
+{
+	color: #500000;
+}
+
+
+checkbox#hcp_statusbar_webtitle{
+	/* font-weight: bold;  */
+}
+
+/* extra LEFT indentation for 1st line! */
+.firstlinepad:before{  
+	content: "";
+	margin-left: -2ch;
+}
+
+/* ANOTHER .firstline_xxx class! */
+.firstline_ind,		
+.firstline_ind_wrap {		
+	margin-left: 2ch;
+	line-height: 1.2em;
+}
+.firstline_ind_wrap {
+	-moz-box-flex: 1;
+}
+.firstline_ind {
+	white-space: nowrap; /* this with <br> prevents HORIZONTAL SCROLL BAR in  hardware accelerated video! */
+}		
+.firstline_ind:before,
+.firstline_ind_wrap:before {
+	/* content: "\22C5"; \25B8 right-triangle \2022 - &bull; \2023 - triangle bullet */
+	content: "\2022";
+	font-size: 110%;
+	margin-left: -1.15ch;
+}
+
+/* menulist[disabled="true"] showing current info! */
+menulist.menulist_info{	color: black ! important;
+}
+menulist.menulist_info   >  dropmarker{	visibility: hidden;  /* display: none; <- destroys frame, so can affect .js code? */
+}
+
+/* Bottom message! */
+label#bottom_msg{
+	padding-left: 0.5ch;
+	margin-top: -6px;
+}
+label#bottom_msg  .margin_l{
+	/* margin-left: -2.1ch; */
+}
+.foot_mark{
+	padding: 0px .2em 0px .3em;
+	font-weight: bold;
+	color: maroon; 
+	/* 
+	color: blue; 
+	border: 1px solid blue;
+	*/
+}
+
+
+
+
+prefwindow[firefox_ver="fx3"] 	.hideOn_fx3,
+prefwindow[firefox_ver="fx4"] 	.hideOn_fx4
+{
+	display: none;
+}
+prefwindow[platformPlus="windows"]    .hideOn_windows
+{
+	display: none;
+}
+
+prefwindow[platformPlus="linux"]    	.hideOn_fx4tbar_hidden,
+prefwindow:not([platformPlus="linux"])	.hideOn_fx4tbar_shown
+{
+	display: none;
+}
+
+prefwindow:not([platformPlus="windows"])    .showOn_windows
+{
+	display: none;
+}
+
+
+
+/* Feb 2012: new setting for Fx12a+ bug  */
+prefwindow:not([dz_adv_sysbuttons_enable="true"])  .showOn_sysbuttons_enable {
+	display: none;	
+}
+prefwindow[dz_adv_sysbuttons_enable="true"]        .hideOn_sysbuttons_enable {
+	display: none;	
+}
+
+
+
+
+
+/*  Section only for TESTS! --------------------------------------------------------------- */
+
+/*
+
+.hideOn_fx3,
+.hideOn_fx4, 
+.hideOn_windows, 
+.hideOn_fx4tbar_hidden,
+.hideOn_fx4tbar_shown, 
+.showOn_windows,
+.showOn_sysbuttons_enable
+{
+	background-color: cyan;		color: blue; 	outline: 1px solid blue;	-moz-appearance: none;
+}
+prefwindow[firefox_ver="fx3"] 	.hideOn_fx3,
+prefwindow[firefox_ver="fx4"] 	.hideOn_fx4 {
+	background-color: orange;	color: red; 	outline: 1px solid red;		-moz-appearance: none;
+}
+prefwindow[platformPlus="windows"]    .hideOn_windows {
+	background-color: orange;	color: red; 	outline: 1px solid red;		-moz-appearance: none;
+}
+
+prefwindow[platformPlus="linux"]    	.hideOn_fx4tbar_hidden,
+prefwindow:not([platformPlus="linux"])	.hideOn_fx4tbar_shown {
+	background-color: orange;	color: red; 	outline: 1px solid red;		-moz-appearance: none;
+}
+prefwindow:not([platformPlus="windows"])    .showOn_windows {
+	background-color: orange;	color: red; 	outline: 1px solid red;		-moz-appearance: none;
+}
+
+prefwindow:not([dz_adv_sysbuttons_enable="true"])  .showOn_sysbuttons_enable {
+	background-color: orange;	color: red; 	outline: 1px solid red;		-moz-appearance: none;
+}
+
+*/
+
+/* END Section only for TESTS! --------------------------------------------------------------- */
+
+
+
+
+
+/* ------------------ DIALOG ELEMENTS --------------------- */
+
+
+.baseline {
+	-moz-box-align: baseline;
+}
+.inline {
+	display: inline;
+}
+.warning {
+	color: #BB0000 !important;
+}
+
+/*
+.groupbox-title {
+	-moz-box-pack: center !important;
+}
+*/
+
+label.hcp_title { /* see also .default_label */
+	font-weight: bold;
+}
+
+.std_custom { /* SPAN with: standard & custom words*/
+	font-style: italic;
+}
+
+
+.container_max_unmax {
+	-moz-box-align: end;
+	-moz-box-pack : end;
+	margin: 0  0.4ch; 
+/* if not groupbox --- 
+		border: 1px solid rgba(0,0,0,0.15); 
+		border-radius: 4px;
+	*/
+}
+
+textbox[type="number"] > .textbox-input-box {
+	margin-left: -1ch;
+}
+
+textbox[disabled="true"] {
+	opacity: 0.6;
+}
+
+
+/* WARNING - DANGER !!! TOOLTIP-with-:after DOESNT WORK with [value] !!!!! */
+label[value]{ 
+/*	color: red;
+	background: orange;
+*/	
+}
+
+
+tooltip  html|br {
+	margin-bottom: 0.4em;
+}
+
+menulist  menuitem[selected="true"] {
+	box-shadow     : 0pt 0pt 80px rgba(0, 0, 192, 0.1) inset 
+}
+
+
+/* extra pane - float toolbars -------------  */
+
+prefwindow:not([hcp_sys_floatbars_enable="true"])  .paneSelector   radio[pane="paneTabs"] {
+	visibility: collapse;
+	display: none;
+}
+
+tooltip {
+	white-space: normal;
+}
+
+
+.title_small {
+	font-size: 85%;
+	line-height: 1em;
+	/* text-align: center; */ 
+}
+label.title_small {
+    -moz-margin-start: 3px;
+	-moz-margin-end  : 3px;
+}
+
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.m_bot-1 {
+	margin-bottom: -0.8em;
+}
+
+
+/* fallback for MAKING THIS VISIBLE if overlay / binding FAILED! */
+colorpickplus {
+	min-width : 20px;
+	min-height: 12px;
+	-moz-appearance: button;
+}
+
+
+prefwindow:not([dz_adv_sysborder~="0"])   .disableOn_sysborder {
+	opacity: 0.5;
+}
+
+prefwindow:not([dz_fx4_titlebar="ti_unmaximized"])   .enableOn_fx4Titlebar_inUnmaximized {
+	display: none;
+}
+
+
+
+
+#group_winbkg_color {
+	/*  groove-groupbox-like border :)
+	border-left: 2px solid;
+	-moz-border-left-colors:  rgba(0,0,0,0.15)  rgba(255,255,255,0.8);
+	*/
+	margin-top   : 0px;
+	margin-right : 2px;  
+	margin-bottom: 1px;
+	/*  
+	padding-right : 2px;
+	padding-bottom: 2px;
+	*/
+}
+#group_winbkg_color  checkbox {
+	margin: 0px;
+	padding: 0px;
+}
+#group_winbkg_color  checkbox > .checkbox-label-box {
+	visibility: collapse;
+}
+
+/*
+radio[  selected="true"]:not([disabled="true"]) {
+	background-color: rgba(255,255,255,0.6);
+	border-radius: 4px;
+}
+*/
+
+checkbox[checked="true"]:not([disabled="true"]) > image.checkbox-check , 
+radio[  selected="true"]:not([disabled="true"]) > .radio-check-box1
+{
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.99);
+}
+
+
+
+.menulist_small           {
+	font-size:  90%;
+}
+.menulist_small  menuitem {
+	font-size: 100%;
+}
+
+
+/* legacy or development options checkboxes */
+prefwindow:not([dz_print_debug="true"])         .showOn_printDebug             checkbox:not(:active):not(:focus) ,
+prefwindow:not([dz_statusbar_webtitle="true"])  .showOn_statusbarWebtitle      checkbox:not(:active):not(:focus) {
+	visibility: collapse;
+}
+prefwindow:not([dz_statusbar_webtitle="true"])  .showOn_statusbarWebtitle      checkbox:not(:active):not(:focus) + .showOn_sibling {
+	display: none;  /*   NECESARIO pq este LABEL  tenia dentro un <HTML:SPAN> 'rebelde' q hacia wrap a full y provocaba vertical-scrolling-bar a nivel de .content-box!!  */
+}
+
+
+prefwindow[dz_use_caption="null"]               .use_caption_mode__showOn_nonDefault { /*  never   */
+	visibility: collapse;
+}
+
+
+
+.groupbox_align {
+	padding: 2px 6px;	
+}
+
+/* 1) FIX  para un problema bien extranho de aparicion de scrollbars en el 'parent' (paso con .content-box)
+   2) Esto jodia cuando el checkbox es visible ('comia una parte').  Ahora vi la causa real: , es el html:span 'rebelde' dentro del label que estaba en 'collapsed'
+.parent_scrollbar_fix {
+	overflow-y: auto;	
+}
+*/
+
+/*  DISABLING ADVANCED TAB!!  */
+prefwindow  .paneSelector   radio[pane="paneAdvanced"],
+prefwindow     prefpane#paneAdvanced {
+	visibility: collapse;
+	display: none;
+}
+

@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://autocopy/skin/autocopy.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://autocopy/locale/autocopy.dtd">
+
+<prefwindow id="autocopy-options-dialog" title="&pref.autocopyTitle;"
+      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      onfocus="AutoCopyOptions.testblacklist()">
+
+  <prefpane id="settings" flex="1" label="&pref.autocopyPrefPane;" onpaneload="AutoCopyOptions.loadSettings()">
+    <preferences>
+      <preference id="paste-on-middle-click"
+                  name="extensions.autocopy.optPasteOnMiddleClick"
+                  type="bool" />
+      <preference id="deselect-after-copy"
+                  name="extensions.autocopy.optDeselectAfterCopy"
+                  type="bool" />
+      <preference id="enable-in-textboxes"
+                  name="extensions.autocopy.optEnableInTextBoxes"
+                  type="bool" />
+      <preference id="status-bar-blink"
+                  name="extensions.autocopy.optStatusbarBlink"
+                  type="bool" />
+      <preference id="copy-without-formatting"
+                  name="extensions.autocopy.optCopyWithoutFormatting"
+                  type="bool"
+                  instantApply="true" />
+      <preference id="tool-bar"
+                  name="extensions.autocopy.optToolBarButton"
+                  instantApply="true"
+                  type="bool" />
+      <preference id="status-bar"
+                  name="extensions.autocopy.optStatusBar"
+                  type="bool" />
+      <preference id="edit-menu-item"
+                  name="extensions.autocopy.optEditMenuItem"
+                  type="bool" />
+      <preference id="context-menu-item"
+                  name="extensions.autocopy.optContextMenuItem"
+                  type="bool"
+                  instantApply="true" />
+      <preference id="context-menu"
+                  name="extensions.autocopy.optContextMenu"
+                  type="bool" />
+      <preference id="context-hide-timeout"
+                  name="extensions.autocopy.optContextMenuHideTimeout"
+                  type="int" />
+    </preferences>
+    <groupbox id="prefs">
+      <caption label="&pref.autocopyOptionsGroup;" />
+      <checkbox id="autocopyPasteOnMiddleClick"
+                label="&pref.autocopyPasteOnMiddleClick;"
+                preference="paste-on-middle-click" />
+      <checkbox id="autocopyDeselectAfterCopy"
+                label="&pref.autocopyDeselectAfterCopy;"
+                preference="deselect-after-copy" />
+      <checkbox id="autocopyEnableInTextBoxes"
+                label="&pref.autocopyEnableInTextBoxes;"
+                preference="enable-in-textboxes" />
+      <checkbox id="autocopyStatusbarBlink"
+                label="&pref.autocopyStatusbarBlink;"
+                preference="status-bar-blink" />
+      <hbox>
+        <checkbox id="autocopyCopyWithoutFormatting"
+                  label="&pref.autocopyCopyWithoutFormatting;"
+                  oncommand="AutoCopyOptions.alertDisplay();"
+                  preference="copy-without-formatting" />
+        <image id="autocopyHelp"
+               class="helpButton"
+               tooltiptext="&pref.autocopyCopyWithoutFormatting.tooltip;"
+               onclick="AutoCopyOptions.helpInfo();" />
+      </hbox>
+    </groupbox>
+    <groupbox id="display">
+      <caption label="&pref.autocopyDisplayGroup;" />
+      <checkbox id="autocopyToolBar"
+                label="&pref.autocopyToolBarButton;"
+                instantApply="true"
+                preference="tool-bar" />
+      <checkbox id="autocopyStatusBar"
+                label="&pref.autocopyStatusBarButton;"
+                preference="status-bar" />
+      <checkbox id="autocopyEditMenuItem"
+                label="&pref.autocopyEditMenuItem;"
+                preference="edit-menu-item" />
+      <checkbox id="autocopyContextMenuItem"
+                label="&pref.autocopyContextMenuItem;"
+                preference="context-menu-item" />
+      <checkbox id="autocopyContextMenu"
+                label="&pref.autocopyContextMenu;"
+                oncommand="AutoCopyOptions.showHideMenu();"
+                preference="context-menu" />
+      <hbox id="timeout" align="center" class="indent">
+        <label id="timeoutLabel"
+               value="&pref.autocopyContextMenuHideTimeout;"
+               control="autocopyContextMenuHideTimeout" />
+        <textbox id="autocopyContextMenuHideTimeout"
+                 width="45"
+                 oninput="AutoCopyOptions.validateContextTimeout();"
+                 preference="context-hide-timeout" />
+        <label id="msLabel" value="&pref.autocopyContextMenuHideTimeoutUnits;" />
+      </hbox>
+    </groupbox>
+  </prefpane>
+
+  <prefpane id="shortcut" label="&pref.autocopyShortcutPane;" flex="1">
+    <preferences>
+      <preference id="shortcut-enabled"
+                  name="extensions.autocopy.optKeyboardShortcutEnabled"
+                  type="bool" />
+      <preference id="shortcut-meta"
+                  name="extensions.autocopy.optKeyboardShortcutKeyMeta"
+                  type="bool" />
+      <preference id="shortcut-ctrl"
+                  name="extensions.autocopy.optKeyboardShortcutKeyCtrl"
+                  type="bool" />
+      <preference id="shortcut-shift"
+                  name="extensions.autocopy.optKeyboardShortcutKeyShift"
+                  type="bool" />
+      <preference id="shortcut-alt"
+                  name="extensions.autocopy.optKeyboardShortcutKeyAlt"
+                  type="bool" />
+      <preference id="shortcut-key"
+                  name="extensions.autocopy.optKeyboardShortcutKey"
+                  type="string" />
+    </preferences>
+    <groupbox id="shortcuts">
+      <caption label="&pref.autocopyShortcutGroup;" />
+      <checkbox id="autocopyKeyboardShortcutEnabled"
+                label="&pref.autocopyKeyboardShortcutEnabled;"
+                preference="shortcut-enabled"
+                oncommand="AutoCopyOptions.shortcutChange();" />
+      <separator class="thin" />
+      <label id="chooseShortcutskeys" value="&pref.autocopyKeyboardShortcutKey;" />
+      <hbox id="keys" pack="center">
+        <checkbox id="autocopyKeyboardShortcutKeyMeta"
+                  label="&pref.autocopyKeyboardShortcutMeta;"
+                  preference="shortcut-meta" />
+        <checkbox id="autocopyKeyboardShortcutKeyCtrl"
+                  label="&pref.autocopyKeyboardShortcutCtrl;"
+                  preference="shortcut-ctrl" />
+        <checkbox id="autocopyKeyboardShortcutKeyShift"
+                  label="&pref.autocopyKeyboardShortcutShift;"
+                  preference="shortcut-shift" />
+        <checkbox id="autocopyKeyboardShortcutKeyAlt"
+                  label="&pref.autocopyKeyboardShortcutAlt;"
+                  preference="shortcut-alt" />
+      </hbox>
+      <hbox id="autocopyKeyboardShortcutKeyBox" pack="center" align="center">
+        <label id="autocopyKeyboardShortcutKey+" value=" + " />
+        <menulist id="autocopyKeyboardShortcutKey" preference="shortcut-key">
+          <menupopup>
+            <menuitem label="A" value="A" />
+            <menuitem label="B" value="B" />
+            <menuitem label="C" value="C" />
+            <menuitem label="D" value="D" />
+            <menuitem label="E" value="E" />
+            <menuitem label="F" value="F" />
+            <menuitem label="G" value="G" />
+            <menuitem label="H" value="H" />
+            <menuitem label="I" value="I" />
+            <menuitem label="J" value="J" />
+            <menuitem label="K" value="K" />
+            <menuitem label="L" value="L" />
+            <menuitem label="M" value="M" />
+            <menuitem label="N" value="N" />
+            <menuitem label="O" value="O" />
+            <menuitem label="P" value="P" />
+            <menuitem label="Q" value="Q" />
+            <menuitem label="R" value="R" />
+            <menuitem label="S" value="S" />
+            <menuitem label="T" value="T" />
+            <menuitem label="U" value="U" />
+            <menuitem label="V" value="V" />
+            <menuitem label="W" value="W" />
+            <menuitem label="X" value="X" />
+            <menuitem label="Y" value="Y" />
+            <menuitem label="Z" value="Z" />
+            <menuitem label="VK_1" value="VK_1" />
+            <menuitem label="VK_2" value="VK_1" />
+            <menuitem label="VK_3" value="VK_2" />
+            <menuitem label="VK_4" value="VK_3" />
+            <menuitem label="VK_5" value="VK_4" />
+            <menuitem label="VK_6" value="VK_5" />
+            <menuitem label="VK_7" value="VK_6" />
+            <menuitem label="VK_8" value="VK_7" />
+            <menuitem label="VK_9" value="VK_8" />
+            <menuitem label="VK_0" value="VK_9" />
+            <menuitem label="VK_NUMPAD0" value="VK_NUMPAD0" />
+            <menuitem label="VK_NUMPAD1" value="VK_NUMPAD1" />
+            <menuitem label="VK_NUMPAD2" value="VK_NUMPAD2" />
+            <menuitem label="VK_NUMPAD3" value="VK_NUMPAD3" />
+            <menuitem label="VK_NUMPAD4" value="VK_NUMPAD4" />
+            <menuitem label="VK_NUMPAD5" value="VK_NUMPAD5" />
+            <menuitem label="VK_NUMPAD6" value="VK_NUMPAD6" />
+            <menuitem label="VK_NUMPAD7" value="VK_NUMPAD7" />
+            <menuitem label="VK_NUMPAD8" value="VK_NUMPAD8" />
+            <menuitem label="VK_NUMPAD9" value="VK_NUMPAD9" />
+            <menuitem label="VK_MULTIPLY" value="VK_MULTIPLY" />
+            <menuitem label="VK_ADD" value="VK_ADD" />
+            <menuitem label="VK_SEPARATOR" value="VK_SEPARATOR" />
+            <menuitem label="VK_SUBTRACT" value="VK_SUBTRACT" />
+            <menuitem label="VK_DECIMAL" value="VK_DECIMAL" />
+            <menuitem label="VK_DIVIDE" value="VK_DIVIDE" />
+            <menuitem label="VK_NUMLOCK" value="VK_NUMLOCK" />
+            <menuitem label="VK_SEMICOLON" value="VK_SEMICOLON" />
+            <menuitem label="VK_EQUALS" value="VK_EQUALS" />
+            <menuitem label="VK_DECIMAL" value="VK_DECIMAL" />
+            <menuitem label="VK_SLASH" value="VK_SLASH" />
+            <menuitem label="VK_PERIOD" value="VK_PERIOD" />
+            <menuitem label="VK_COMMA" value="VK_COMMA" />
+            <menuitem label="VK_OPEN_BRACKET" value="VK_OPEN_BRACKET" />
+            <menuitem label="VK_CLOSE_BRACKET" value="VK_CLOSE_BRACKET" />
+            <menuitem label="VK_BACK_SLASH" value="VK_BACK_SLASH" />
+            <menuitem label="VK_QUOTE" value="VK_QUOTE" />
+            <menuitem label="VK_BACK_QUOTE" value="VK_BACK_QUOTE" />
+            <menuitem label="VK_F1" value="VK_F1" />
+            <menuitem label="VK_F2" value="VK_F2" />
+            <menuitem label="VK_F3" value="VK_F3" />
+            <menuitem label="VK_F4" value="VK_F4" />
+            <menuitem label="VK_F5" value="VK_F5" />
+            <menuitem label="VK_F6" value="VK_F6" />
+            <menuitem label="VK_F7" value="VK_F7" />
+            <menuitem label="VK_F8" value="VK_F8" />
+            <menuitem label="VK_F9" value="VK_F9" />
+            <menuitem label="VK_F10" value="VK_F10" />
+            <menuitem label="VK_F11" value="VK_F11" />
+            <menuitem label="VK_F12" value="VK_F12" />
+            <menuitem label="VK_F13" value="VK_F13" />
+            <menuitem label="VK_F14" value="VK_F14" />
+            <menuitem label="VK_F15" value="VK_F15" />
+            <menuitem label="VK_F16" value="VK_F16" />
+            <menuitem label="VK_F17" value="VK_F17" />
+            <menuitem label="VK_F18" value="VK_F18" />
+            <menuitem label="VK_F19" value="VK_F19" />
+            <menuitem label="VK_F20" value="VK_F20" />
+            <menuitem label="VK_F21" value="VK_F21" />
+            <menuitem label="VK_F22" value="VK_F22" />
+            <menuitem label="VK_F23" value="VK_F23" />
+            <menuitem label="VK_F24" value="VK_F24" />
+            <menuitem label="VK_LBUTTON" value="VK_LBUTTON" />
+            <menuitem label="VK_RBUTTON" value="VK_RBUTTON" />
+            <menuitem label="VK_MBUTTON" value="VK_MBUTTON" />
+            <menuitem label="VK_LEFT" value="VK_LEFT" />
+            <menuitem label="VK_UP" value="VK_UP" />
+            <menuitem label="VK_RIGHT" value="VK_RIGHT" />
+            <menuitem label="VK_DOWN" value="VK_DOWN" />
+            <menuitem label="VK_INSERT" value="VK_INSERT" />
+            <menuitem label="VK_DELETE" value="VK_DELETE" />
+            <menuitem label="VK_END" value="VK_END" />
+            <menuitem label="VK_HOME" value="VK_HOME" />
+            <menuitem label="VK_PAGE_UP" value="VK_PAGE_UP" />
+            <menuitem label="VK_PAGE_DOWN" value="VK_PAGE_DOWN" />
+            <menuitem label="VK_ESCAPE" value="VK_ESCAPE" />
+            <menuitem label="VK_TAB" value="VK_TAB" />
+            <menuitem label="VK_CAPITAL" value="VK_CAPITAL" />
+            <menuitem label="VK_BACK" value="VK_BACK" />
+            <menuitem label="VK_RETURN" value="VK_RETURN" />
+            <menuitem label="VK_SHIFT" value="VK_SHIFT" />
+            <menuitem label="VK_CONTROL" value="VK_CONTROL" />
+            <menuitem label="VK_MENU" value="VK_MENU" />
+            <menuitem label="VK_SPACE" value="VK_SPACE" />
+            <menuitem label="VK_LWIN" value="VK_LWIN" />
+            <menuitem label="VK_RWIN" value="VK_RWIN" />
+            <menuitem label="VK_LSHIFT" value="VK_LSHIFT" />
+            <menuitem label="VK_RSHIFT" value="VK_RSHIFT" />
+            <menuitem label="VK_LCONTROL" value="VK_LCONTROL" />
+            <menuitem label="VK_RCONTROL" value="VK_RCONTROL" />
+            <menuitem label="VK_LMENU" value="VK_LMENU" />
+            <menuitem label="VK_RMENU" value="VK_RMENU" />
+            <menuitem label="VK_PRINT" value="VK_PRINT" />
+            <menuitem label="VK_SCROLL" value="VK_SCROLL" />
+            <menuitem label="VK_PAUSE" value="VK_PAUSE" />
+            <menuitem label="VK_APPS" value="VK_APPS" />
+            <menuitem label="VK_ATTN" value="VK_ATTN" />
+            <menuitem label="VK_CANCEL" value="VK_CANCEL" />
+            <menuitem label="VK_CLEAR" value="VK_CLEAR" />
+            <menuitem label="VK_CRSEL" value="VK_CRSEL" />
+            <menuitem label="VK_EREOF" value="VK_EREOF" />
+            <menuitem label="VK_EXECUTE" value="VK_EXECUTE" />
+            <menuitem label="VK_EXSEL" value="VK_EXSEL" />
+            <menuitem label="VK_HELP" value="VK_HELP" />
+            <menuitem label="VK_NEXT" value="VK_NEXT" />
+            <menuitem label="VK_NONAME" value="VK_NONAME" />
+            <menuitem label="VK_OEM_CLEAR" value="VK_OEM_CLEAR" />
+            <menuitem label="VK_PA1" value="VK_PA1" />
+            <menuitem label="VK_PLAY" value="VK_PLAY" />
+            <menuitem label="VK_PRIOR" value="VK_PRIOR" />
+            <menuitem label="VK_PROCESSKEY" value="VK_PROCESSKEY" />
+            <menuitem label="VK_SELECT" value="VK_SELECT" />
+            <menuitem label="VK_SNAPSHOT" value="VK_SNAPSHOT" />
+            <menuitem label="VK_ZOOM" value="VK_ZOOM" />
+          </menupopup>
+        </menulist>
+      </hbox>
+      <separator class="thin" />
+      <vbox id="autocopyKeyboardShortcutKeyDesc" flex="1">
+        <label id="hintDesc" class="achint">&pref.autocopyKeyboardHint;</label>
+      </vbox>
+    </groupbox>
+      <label value="" />
+      <label value="" />
+  </prefpane>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="autocopyStrings" src="chrome://autocopy/locale/autocopy.properties" />
+  </stringbundleset>
+
+  <script type="application/x-javascript" src="chrome://autocopy/content/options.js" />
+  <script type="application/x-javascript" src="chrome://copyplaintext/content/copyplaintext.js" />
+
+</prefwindow>

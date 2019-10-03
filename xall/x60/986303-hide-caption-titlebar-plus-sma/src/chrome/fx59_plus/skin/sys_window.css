@@ -1,0 +1,68 @@
+/*** 
+ *  SYSTEM WINDOW CAPTION disable
+ ***/
+
+/* -------- *MAIN PART* of  fix that REMOVES SYSTEM BUTTONS!! (and GLASS EFFECT)  ---------------------------- */
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+	
+
+	
+@media all and (-moz-windows-compositor) { /* Windows GLASSED DESKTOP */
+
+  #main-window[dz_adv_sysbut_winappear_calc      ~="bkg_dblue"]  {	background-color: #003A85; /* set this color BEFORE appearance! to make sure. Also Make SURE to use an entirely OPAQUE color here! or the window positioning misbehaves badly */
+  }
+  /*  -------------- added IMPORTANT  for NON fullscreen! AND NON-lwtheme  -----------------  */
+  #main-window[dz_adv_sysbut_winappear_calc      ~="bkg_dblue"]:not([inFullscreen]):not(:-moz-lwtheme)   {		
+  																	background-color: #003A85 !important;
+  }
+  #main-window[dz_adv_sysbut_winappear_calc      ~="bkg_dblue"]:not([inFullscreen]):not(:-moz-lwtheme)   {
+                                                                    background-image: linear-gradient(lightgray, lightgray);
+																	background-repeat: repeat;
+  }
+
+
+
+  #main-window[dz_adv_sysbut_winappear_calc      ~="browsertabbar"]                      {          -moz-appearance: -moz-win-browsertabbar-toolbox;
+  }
+  #main-window[dz_adv_sysbut_winappear_calc      ~="browsertabbar"]:not([inFullscreen])  {          -moz-appearance: -moz-win-browsertabbar-toolbox !important;
+  }
+  #main-window[dz_adv_sysbut_winappear_calc      ~="browsertabbar"]     #hctp-toolparent {          background-color: #D3DFF6 !important; /* Kill lwtheme color & image */
+  																									background-image: none    !important;
+  }
+  /* ...browsertabbar-toolbox appearance KILLed borders in #hctp-toolparent .... */
+  
+  #main-window[dz_adv_sysbut_winappear_calc      ~="none"         ]                      {          -moz-appearance: none;
+  }
+  #main-window[dz_adv_sysbut_winappear_calc      ~="none"         ]:not([inFullscreen])  {          -moz-appearance: none !important;
+  }
+  #main-window[dz_adv_sysbut_winappear_calc      ~="window_lite"  ]                      ,
+  #main-window[dz_adv_sysbut_winappear_calc      ~="window"       ]                      {          -moz-appearance: window; /* not important, to allow fullscreen-mode to set it's appearance (none) */
+  }
+  #main-window[dz_adv_sysbut_winappear_calc      ~="window_lite"  ]:not([inFullscreen])  ,
+  #main-window[dz_adv_sysbut_winappear_calc      ~="window"       ]:not([inFullscreen])  {          -moz-appearance: window !important;
+  }
+  #main-window[dz_adv_sysbut_winappear_calc      ~="window"       ]:not([inFullscreen]):not(:-moz-lwtheme)  {   /* added more 'STRONG' bkg if NOT lwtheme ... */
+  																									-moz-appearance: -moz-win-browsertabbar-toolbox !important;
+  }
+
+  /*  only for  lwtheme  , all EXCEPT "browsertabbar"   */
+  #main-window:-moz-any([dz_adv_sysbut_winappear_calc      ~="window_lite"  ],
+                        [dz_adv_sysbut_winappear_calc      ~="window"       ],
+                        [dz_adv_sysbut_winappear_calc      ~="none"         ] ):-moz-lwtheme {      -moz-appearance: toolbar !important;  /* 'FORBID' transparency in bkg-color of Ie. 'GlassMyFox', but ALLOWS lwtheme bkg-color & image */ 
+                                                                                                     margin-top: -2px !important;  /* above appearance adds 2px border-top */ 
+  }
+
+}
+
+
+/*
+-moz-win-media-toolbox
+*/
+
+
+}  /**  @-moz-document  url(...)  **/
+

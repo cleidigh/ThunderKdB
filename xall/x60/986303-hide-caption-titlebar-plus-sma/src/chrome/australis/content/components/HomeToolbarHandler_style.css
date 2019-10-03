@@ -1,0 +1,194 @@
+/* ------------------------------------------------------------------- */
+
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document url(chrome://browser/content/browser.xul){
+
+
+  #menubar-items[dz_home_mainmenu_floating="true"]{
+	vertical-align: top;
+
+	background: Menu; 
+	opacity: 0.98; 
+	
+	/* fixed element accesories */
+	position: fixed; top: -1px; left: 20px;  z-index: 16; 
+	border: 1px solid gray; 
+	border-bottom-left-radius : 6px;
+	border-bottom-right-radius: 6px;
+	padding: 0px 0px;
+	min-height: 12px;
+	
+	box-shadow: 0pt 0pt 4px rgba(0, 0, 0, 0.8);
+}
+/*  :NOT ... hStyle="old15"  */
+  #menubar-items[dz_home_mainmenu_floating="true"]:not([dz_home_menuFloat_hStyle="old15"]) {
+	background-image: linear-gradient( rgba(255,255,255, 0.2), transparent, rgba(0, 0, 0, 0.12));
+}  
+  #menubar-items[dz_home_mainmenu_floating="true"]:not([dz_home_menuFloat_hStyle="old15"]):not(:-moz-lwtheme) {
+	color: MenuText;
+}
+/*  ... hStyle="old15"   - este atributo NO toma mayor precedencia que los -moz-lwtheme-* etc!!  */
+  #menubar-items[dz_home_mainmenu_floating="true"][dz_home_menuFloat_hStyle="old15"] {
+	background-color: -moz-dialog; 
+	padding: 0px 2px;
+}
+/*  ... hStyle="new16cap"  */
+  #menubar-items[dz_home_mainmenu_floating="true"][dz_home_menuFloat_hStyle="new16cap"]:not(:-moz-lwtheme) {
+	background-color: ActiveCaption; 
+  	color           : CaptionText;
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]:-moz-lwtheme-brighttext {
+	background-color: rgba(  0,  0,  0,.97 );
+} 
+  #menubar-items[dz_home_mainmenu_floating="true"]:-moz-lwtheme-darktext {
+	background-color: rgba(255,255,255,.98 );
+}
+/* aqui [devtoolstheme="dark"] contradice a lwtheme-darktext ... */
+:root[devtoolstheme="dark"]
+  #menubar-items[dz_home_mainmenu_floating="true"]:-moz-lwtheme-darktext {
+	background-color: rgba(  0,  0,  0,.97 );
+	color: #F5F7FA;
+	text-shadow: none;
+} 
+  #menubar-items[dz_home_mainmenu_floating="true"]:-moz-lwtheme{
+	-moz-appearance: none;
+	/*
+	border-style: none;
+	*/
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	> * { /* all childs at top edge by default! (Fitss law) */
+	vertical-align: top;
+	-moz-box-align: baseline;
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  {  /* menubar can have other things here too */
+	vertical-align: top  !important;
+	padding-left : 0.3em !important;
+	padding-right: 0.5em !important;
+
+}
+/*  ... hStyle="old15"  */
+  #menubar-items[dz_home_mainmenu_floating="true"][dz_home_menuFloat_hStyle="old15"]   
+                                                  	menubar  {
+	-moz-appearance: toolbox !important; /* New! , 'none' selected in style attr. (by personas?) */
+}
+  #menubar-items[dz_home_mainmenu_floating="true"][dz_home_menuFloat_hStyle="old15"]
+                                                  	menubar:-moz-lwtheme  {
+	-moz-appearance: none    !important; /* New! , 'none' selected in style attr. (by personas?) */
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  > * {
+	/*
+	background-color: -moz-dialog !important; 
+	opacity: 0.98 !important; 
+	border: 1px solid gray !important; 
+	-moz-appearance: none;
+	*/
+	/*  -moz-border-radius: 2px;  */
+	border-radius: 2px;
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  > menu{
+	padding-top   : 0px;
+	padding-bottom: 0px;
+
+	/* border: 0px 2px;
+	   -moz-appearance: none; */
+}
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  > menu:-moz-lwtheme{
+	padding: 1px 1px 2px 1px;
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  > menu > label.menubar-text {
+	/* margin: 0px 5px 1px 5px !important;   smaller menus */
+}
+
+
+/* --------- INACTIVE (hidden!!) ----------- */
+  #menubar-items[dz_home_mainmenu_floating="true"][inactive="true"]{
+	background-color: red; 
+	top: -100px;
+}
+
+
+:root[customizing="true"]   #menubar-items[dz_home_mainmenu_floating="true"] {
+	position: static !important;
+	background-color: transparent !important; 
+}
+:root[customizing="true"]   #menubar-items[dz_home_mainmenu_floating="true"]   #hcp_floating_extrabox {
+	display: none !important;
+}
+
+
+/* floating TITLE ! */
+#hcp_floating_extrabox {
+	display: none;
+	-moz-box-align: center;
+}
+/* Only if NOT MOVED OUT of #menubar-items ancestor (like in Compact Menu Addon) */
+#main-window[dz_home_mainmenu_floating="true"][dz_home_floating_extrabox="true"]   #menubar-items   #hcp_floating_extrabox {
+	display: -moz-box;
+}
+
+toolbox#navigator-toolbox:not([dz_home_mainmenu_floating="true"])   	.hideon_nonfloating_menu,
+#main-window:not([dz_home_floating_extrabox="true"])                   	.hideon_nonfloating_extrabox{
+	display: none;
+}
+
+
+
+  #hcp_separator_floatmenu{
+	padding: 0px 0.5em;
+	height: 20px;
+	margin: -3px 0px;
+}
+  #hcp_icon_title_float1{
+	margin-top: 2px;
+	max-width : 16px;	width : 16px;
+	max-height: 16px;	height: 16px;
+
+	margin-left : .4em;
+}
+  #hcp-web-title-label-fm{
+	/* padding-top  : 2px;  solved by -moz-box-align: baseline; !*/
+	
+	padding-left : .2em;
+	padding-right: .5em;
+}
+
+
+
+
+/* Fix: disable menubar autohide for FLOATING MAIN MENU!  */
+:root:not([customizing="true"])   toolbox#navigator-toolbox[dz_home_mainmenu_floating="true"]:not([dz_home_mainmenu_float_oldautohide="true"])  > 
+         toolbar[type="menubar"][autohide="true"] {
+  overflow: hidden !important;
+
+  min-height: 0 !important;
+  height: 0 !important;
+  -moz-appearance: none !important;
+  border-style: none !important;
+}
+
+#main-window[dz_home_mainmenu_floating="true"] {
+  --space-above-tabbar: 0px;
+}
+/* 2nd (selector?) pretty reduntant to assure compat */
+toolbox#navigator-toolbox:not([customizing="true"])[dz_home_mainmenu_floating="true"]  >  #TabsToolbar ,
+#main-window[dz_home_mainmenu_floating="true"][tabsintitlebar][sizemode="normal"]:not([inFullscreen])  toolbox#navigator-toolbox  
+  #toolbar-menubar[autohide="true"] ~ #TabsToolbar {
+    margin-top: 0px !important;
+}
+
+
+/* Fix 2012-03: The toolbox was partly hidden under content  when menubar was totally empty */
+toolbox[customizing="true"]  >  toolbar[type="menubar"][autohide="true"][customizing="true"] {
+  overflow: visible;
+}
+
+
+} /*  moz-document  */
+

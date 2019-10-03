@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML>
+<HEAD>
+  <meta charset="UTF-8">
+
+  <link rel="icon" 
+      type="image/vnd.microsoft.icon" 
+      href="chrome://HideCaptionPlus/skin/hcp_icon16.png">
+
+  <TITLE> El componente 'Hide Caption Titlebar Plus' ha sido actualizado a una nueva versión!  </TITLE>
+
+<SCRIPT>
+
+function my_onLoad(){
+	var notice_name= "";
+    // duplicate this for other notes... 
+    notice_name= "mmc_disappeared";
+    if( (""+window.location).indexOf(notice_name) >= 0 ){
+    	var elem= document.getElementById(notice_name);
+    	if( elem ){
+    		elem.removeAttribute("style");
+    		//alert("-> "+notice_name);
+    	}
+    }
+    
+}      
+      
+</SCRIPT>
+
+<STYLE TYPE="text/css">
+<!--
+BODY
+{
+ padding-left : 3%; 
+ padding-right: 5%; 
+ background-color: #F2F2F2;
+}
+-->
+body, th, td {
+ font: normal 15px Arial,Helvetica,sans-serif,Verdana;
+}
+pre{
+ font: normal 14px Arial,sans-serif;
+}
+HR{
+ margin-bottom: 2em;
+}
+
+</STYLE>
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+</HEAD>
+
+<BODY onload="my_onLoad();"  style="">
+
+<h3 style="color: #000033;"><img border="1" src="chrome://hidecaptionplus/skin/hcp_icon.png" />&nbsp;&nbsp;  
+		¡El complemento 'Hide Caption Titlebar Plus' ha sido actualizado a una nueva versión! </h3>
+
+<HR />
+
+<h3>¡NOTICIA IMPORTANTE!</h3>
+¡Esta es una nueva versión <b>"RESTARTLESS (SIN REINICIO)"</b> de este componente! <br />
+<br /> 
+Se puede actualizar, activar o desactivar instantáneamente (sin reiniciar Firefox). <br />
+Si apareciera algun problema inesperado, sobre todo en alguna configuración o modificación especial del Firefox, por favor, hágamelo saber en el Sitio de Soporte (Support Site). ¡Muchas gracias!
+<br /> 
+<br /> 
+<p> Se pueden comprobar las nuevas características y arreglos (fixes) en la <A href="https://tiny.cc/hidec/">Página principal</A>, el cuadro de diálogo de Opciones o el <A HREF="readme.html">Archivo LÉAME</A>
+<p>
+
+<!--
+Algunas características/funciones nuevas son:
+-->
+<pre style="margin-left: 4ch; margin-top: 3em;">
+
+
+</pre>
+
+</body>
+</html>

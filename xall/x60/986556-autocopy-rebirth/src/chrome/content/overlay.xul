@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://autocopy/skin/autocopy.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://autocopy/locale/autocopy.dtd">
+
+<overlay id="AutoCopyOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="autocopyStrings" src="chrome://autocopy/locale/autocopy.properties" />
+  </stringbundleset>
+
+  <script type="application/x-javascript" src="chrome://autocopy/content/overlay.js" />
+
+  <toolbarpalette id="BrowserToolbarPalette">
+    <toolbarbutton id="autocopy-toolbar-button"
+                   type="menu-button"
+                   class="toolbarbutton-1 chromeclass-toolbar-additional custombutton"
+                   tooltiptext=""
+                   label="AutoCopy"
+                   oncommand="AutoCopyApp.switchautocopybuttonstatus();">
+      <menupopup id="autocopy-toolbar-menu" oncommand="event.stopPropagation();">
+        <menuitem id="autocopy-statusbar-getoptions"
+                  label="&statusbar-getoptions;"
+                  oncommand="AutoCopyApp.showOptions();"
+                  accesskey="&statusbar-getoptions.ak;" />
+        <menuitem id="autocopy-statusbar-PasteOnMiddleClick" 
+                  label="&pref.autocopyPasteOnMiddleClick;"
+                  type="checkbox"
+                  checked="true"
+                  autocheck="false"
+                  oncommand="AutoCopyApp.toggle('PasteOnMiddleClick');" />
+        <menuitem id="autocopy-statusbar-ContextMenu"
+                  label="&pref.autocopyContextMenu;"
+                  type="checkbox" checked="true"
+                  autocheck="false"
+                  oncommand="AutoCopyApp.toggle('ContextMenu');" />
+        <menuitem id="autocopy-statusbar-DeselectAfterCopy"
+                  label="&pref.autocopyDeselectAfterCopy;"
+                  type="checkbox"
+                  checked="true"
+                  autocheck="false"
+                  oncommand="AutoCopyApp.toggle('DeselectAfterCopy');" />
+        <menuitem id="autocopy-statusbar-EnableInTextBoxes"
+                  label="&pref.autocopyEnableInTextBoxes;"
+                  type="checkbox"
+                  checked="false"
+                  autocheck="false"
+                  oncommand="AutoCopyApp.toggle('EnableInTextBoxes');" />
+        <menuitem id="autocopy-statusbar-StatusbarBlink"
+                  label="&pref.autocopyStatusbarBlink;"
+                  type="checkbox"
+                  checked="true"
+                  autocheck="false"
+                  oncommand="AutoCopyApp.toggle('StatusbarBlink');" />
+      </menupopup>
+    </toolbarbutton>
+  </toolbarpalette>
+
+  <!-- Edit menu option -->
+  <menupopup id="menu_EditPopup">
+    <menuseparator id="autocopy-edit-menuitem-separator" />
+    <menuitem id="autocopy-edit-menuitem"
+              label="&autocopyExtentionName;"
+              type="checkbox"
+              checked="true"
+              autocheck="false"
+              oncommand="AutoCopyApp.switchautocopybuttonstatus();" />
+  </menupopup>
+
+  <!-- Firefox content area context menu -->
+  <menupopup id="contentAreaContextMenu">
+    <menuseparator id="autocopy-context-menuitem-separator" />
+    <menu id="autocopy-context-menuitem"
+          label="&autocopyExtentionName;">
+      <menupopup onpopupshowing="AutoCopyApp.context_onpopupshowing();">
+        <menuitem id="autocopy-context-menu-undocopy"
+                  label="&autocopy-undocopy;"
+                  oncommand="AutoCopyApp.undocopy()"
+                  accesskey="&autocopy-undocopy.ak;" />
+        <menu id="autocopy-context-menu-clipboards"
+              label="&autocopy-previousclipboards;">
+          <menupopup id="autocopy-context-menupopup-clipboards2"
+                     onpopupshowing="AutoCopyApp.context_menupopup_clipboards2_onpopupshowing();">
+            <menuitem label="&autocopy-empty;" />
+          </menupopup>
+        </menu>
+        <menuitem id="autocopy-context-menu-pastelocationbar"
+                  label="&autocopy-pastetolocationbar;"
+                  accesskey="&autocopy-pastetolocationbar.ak;"
+                  oncommand="AutoCopyApp.pastetolocationbar();" />
+        <menuitem id="autocopy-context-menu-pastesearchbar"
+                  label="&autocopy-pastetosearchbar;"
+                  accesskey="&autocopy-pastetosearchbar.ak;"
+                  oncommand="AutoCopyApp.pastetosearchbar();" />
+        <menuitem id="autocopy-context-searchforselection"
+                  label="&autocopy-searchfor;"
+                  accesskey="&autocopy-searchfor.ak;"
+                  oncommand="AutoCopyApp.searchforselection();" />
+        <menuitem id="autocopy-context-menu-openinnewtab"
+                  label="&autocopy-openinewtab;"
+                  accesskey="&autocopy-openinewtab.ak;"
+                  oncommand="AutoCopyApp.openinnewtab();" />
+        <menuitem id="autocopy-context-menu-appendurltoclipboard"
+                  label="&autocopy-appendURL;"
+                  accesskey="&autocopy-appendURL.ak;"
+                  oncommand="AutoCopyApp.appendurltoclipboard();" />
+      </menupopup>
+    </menu>
+    <menuitem id="autocopy-context-menu-addtoblacklist"
+              label="&autocopy-blacklistURL;"
+              accesskey="&autocopy-blacklistURL.ak;"
+              oncommand="AutoCopyApp.addtoblacklist();" />
+  </menupopup>
+
+  <!-- AutoCopy context menu popup in Firefox window -->
+  <window id="main-window">
+    <popupset id="autocopypopupset">
+      <menupopup id="autocopy-context-menu"
+                 position="at_pointer"
+                 onpopupshowing="AutoCopyApp.contextmenu_onpopupshowing();"
+                 onpopuphidden=""
+                 onmouseout="AutoCopyApp.timedhidemenu();"
+                 onmouseover="AutoCopyApp.canceltimedhidemenu();">
+        <menuitem id="autocopy-context-menu-undocopy"
+                  label="&autocopy-undocopy;"
+                  accesskey="&autocopy-undocopy.ak;"
+                  oncommand="AutoCopyApp.undocopy()" />
+        <menu id="autocopy-context-menu-clipboards"
+              label="&autocopy-previousclipboards;">
+          <menupopup id="autocopy-context-menupopup-clipboards"
+                     onpopupshowing="AutoCopyApp.context_menupopup_clipboards_onpopupshowing();">
+            <menuitem label="&autocopy-empty;" />
+          </menupopup>
+        </menu>
+        <menuitem id="autocopy-context-menu-pastelocationbar"
+                  label="&autocopy-pastetolocationbar;"
+                  accesskey="&autocopy-pastetolocationbar.ak;"
+                  oncommand="AutoCopyApp.pastetolocationbar();" />
+        <menuitem id="autocopy-context-menu-pastesearchbar1"
+                  label="&autocopy-pastetosearchbar;"
+                  accesskey="&autocopy-pastetosearchbar.ak;"
+                  oncommand="AutoCopyApp.pastetosearchbar();" />
+        <menuitem id="autocopy-context-menu-searchforselection"
+                  label="&autocopy-searchfor;"
+                  accesskey="&autocopy-searchfor.ak;"
+                  oncommand="AutoCopyApp.searchforselection();" />
+        <menuitem id="autocopy-context-menu-openinnewtab"
+                  label="&autocopy-openinewtab;"
+                  accesskey="&autocopy-openinewtab.ak;"
+                  oncommand="AutoCopyApp.openinnewtab();" />
+        <menuitem id="autocopy-context-menu-appendurltoclipboard"
+                  label="&autocopy-appendURL;"
+                  accesskey="&autocopy-appendURL.ak;"
+                  oncommand="AutoCopyApp.appendurltoclipboard();" />
+      </menupopup>
+    </popupset>
+  </window>
+
+</overlay>

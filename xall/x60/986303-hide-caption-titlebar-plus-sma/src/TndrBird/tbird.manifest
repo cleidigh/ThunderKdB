@@ -1,0 +1,35 @@
+
+## ONLY  TBird 17+
+content  HideCaptionTb               standard/content/      appversion>=17
+#
+skin     HideCaptionTb  classic/1.0  standard/skin/
+#
+locale   HideCaptionTb  en-US        standard/locale/en-US/
+
+
+
+## ONLY  TBird 17+
+## erlay  chrome://messenger/content/messenger.xul         chrome://HideCaptionTb/content/overlay.xul                  
+
+
+### Included in overlay
+### style    chrome://global/content/customizeToolbar.xul  chrome://HideCaptionTb/skin/style.css
+
+
+# Overriding main hctp's ones!
+content  HideCaptionPlus                    standard/content/hcPlus/
+content  HideCaptionPlus_fx                 standard/content/hcPlus/
+skin     HideCaptionPlus      classic/1.0   standard/content/hcPlus/
+skin     HideCaptionPlus_fx   classic/1.0   standard/content/hcPlus/
+skin     HideCaptionPlus_os	  classic/1.0   standard/content/hcPlus/
+content  HideCaptionPlus_fp                 standard/content/hcPlus/
+skin     HideCaptionPlus_fp   classic/1.0   standard/content/hcPlus/
+## locales and multilanguage will be integrated
+## xxle  HideCaptionPlus      lang-XX       ...
+
+
+
+# REDUNDANT for options.xul, just to be sure
+override  chrome://HideCaptionPlus/content/options.xul   chrome://HideCaptionTb/content/hcPlus/options.xul
+override  chrome://HideCaptionPlus/skin/hcp_icon.png     chrome://HideCaptionTb/skin/hcp_icon.png
+

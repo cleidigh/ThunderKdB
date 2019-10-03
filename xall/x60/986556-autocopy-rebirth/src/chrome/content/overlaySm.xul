@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://autocopy/locale/autocopy.dtd">
+
+<overlay id="AutoCopyOverlaySmMail"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="autocopyStrings" src="chrome://autocopy/locale/autocopy.properties" />
+  </stringbundleset>
+
+  <script type="application/x-javascript" src="chrome://autocopy/content/overlaySm.js" />
+
+  <statusbar id="status-bar">
+    <statusbarpanel id="autocopy-statuspanel" collapsed="true">
+      <deck id="autocopy-status"
+            context="autocopy-statusbar-menu"
+            tooltip="autocopy-tooltip"
+            onclick="if (event.button == 0){ AutoCopyAppSm.switchautocopystatusstate(); }">
+        <image id="autocopy-status-image" src="chrome://autocopy/skin/enabled.png" />
+      </deck>
+      <popupset>
+        <menupopup id="autocopy-statusbar-menu"
+                   position="before_end"
+                   onpopupshown=""
+                   onpopuphidden="">
+          <menuitem id="autocopy-statusbar-getoptions"
+                    label="&statusbar-getoptions;"
+                    oncommand="AutoCopyAppSm.showOptions();"
+                    accesskey="&statusbar-getoptions.ak;" />
+          <menuitem id="autocopy-statusbar-PasteOnMiddleClick" 
+                    label="&pref.autocopyPasteOnMiddleClick;"
+                    type="checkbox"
+                    checked="true"
+                    autocheck="false"
+                    oncommand="AutoCopyAppSm.toggle('PasteOnMiddleClick');" />
+          <menuitem id="autocopy-statusbar-ContextMenu"
+                    label="&pref.autocopyContextMenu;"
+                    type="checkbox" checked="true"
+                    autocheck="false"
+                    oncommand="AutoCopyAppSm.toggle('ContextMenu');" />
+          <menuitem id="autocopy-statusbar-DeselectAfterCopy"
+                    label="&pref.autocopyDeselectAfterCopy;"
+                    type="checkbox"
+                    checked="true"
+                    autocheck="false"
+                    oncommand="AutoCopyAppSm.toggle('DeselectAfterCopy');" />
+          <menuitem id="autocopy-statusbar-EnableInTextBoxes"
+                    label="&pref.autocopyEnableInTextBoxes;"
+                    type="checkbox"
+                    checked="false"
+                    autocheck="false"
+                    oncommand="AutoCopyAppSm.toggle('EnableInTextBoxes');" />
+          <menuitem id="autocopy-statusbar-StatusbarBlink"
+                    label="&pref.autocopyStatusbarBlink;"
+                    type="checkbox"
+                    checked="true"
+                    autocheck="false"
+                    oncommand="AutoCopyAppSm.toggle('StatusbarBlink');" />
+        </menupopup>
+        <tooltip id="autocopy-tooltip">
+          <description id="autocopy-tooltip-value" value="" style="margin:0px;" />
+        </tooltip>
+      </popupset>
+    </statusbarpanel>
+  </statusbar>
+
+  <!-- SeaMonkey content area context menu -->
+  <menupopup id="contentAreaContextMenu">
+    <menuseparator id="autocopy-context-menuitem-separator" />
+    <menu id="autocopy-context-menuitem"
+          label="&autocopyExtentionName;"
+          insertbefore="autocopy-context-menu-addtoblacklist">
+      <menupopup onpopupshowing="AutoCopyAppSm.context_onpopupshowing();">
+        <menuitem id="autocopy-context-menu-undocopy"
+                  label="&autocopy-undocopy;"
+                  oncommand="AutoCopyAppSm.undocopy()"
+                  accesskey="&autocopy-undocopy.ak;" />
+        <menu id="autocopy-context-menu-clipboards"
+              label="&autocopy-previousclipboards;">
+          <menupopup id="autocopy-context-menupopup-clipboards2"
+                     onpopupshowing="AutoCopyAppSm.context_menupopup_clipboards2_onpopupshowing();">
+            <menuitem label="&autocopy-empty;" />
+          </menupopup>
+        </menu>
+        <menuitem id="autocopy-context-menu-pastelocationbar"
+                  label="&autocopy-pastetolocationbar;"
+                  accesskey="&autocopy-pastetolocationbar.ak;"
+                  oncommand="AutoCopyAppSm.pastetolocationbar();" />
+        <menuitem id="autocopy-context-searchforselection"
+                  label="&autocopy-searchfor;"
+                  accesskey="&autocopy-searchfor.ak;"
+                  oncommand="AutoCopyAppSm.searchforselection();" />
+        <menuitem id="autocopy-context-menu-openinnewtab"
+                  label="&autocopy-openinewtab;"
+                  accesskey="&autocopy-openinewtab.ak;"
+                  oncommand="AutoCopyAppSm.openinnewtab();" />
+        <menuitem id="autocopy-context-menu-appendurltoclipboard"
+                  label="&autocopy-appendURL;"
+                  accesskey="&autocopy-appendURL.ak;"
+                  oncommand="AutoCopyAppSm.appendurltoclipboard();" />
+      </menupopup>
+    </menu>
+    <menuitem id="autocopy-context-menu-addtoblacklist"
+              label="&autocopy-blacklistURL;"
+              accesskey="&autocopy-blacklistURL.ak;"
+              oncommand="AutoCopyAppSm.addtoblacklist();" />
+  </menupopup>
+
+  <!-- AutoCopy context menu popup in SeaMonkey window -->
+  <window id="main-window">
+    <popupset id="autocopypopupset">
+      <menupopup id="autocopy-context-menu"
+                 position="at_pointer"
+                 onpopupshowing="AutoCopyAppSm.contextmenu_onpopupshowing();"
+                 onpopuphidden=""
+                 onmouseout="AutoCopyAppSm.timedhidemenu();"
+                 onmouseover="AutoCopyAppSm.canceltimedhidemenu();">
+        <menuitem id="autocopy-context-menu-undocopy"
+                  label="&autocopy-undocopy;"
+                  accesskey="&autocopy-undocopy.ak;"
+                  oncommand="AutoCopyAppSm.undocopy()" />
+        <menu id="autocopy-context-menu-clipboards"
+              label="&autocopy-previousclipboards;">
+          <menupopup id="autocopy-context-menupopup-clipboards"
+                     onpopupshowing="AutoCopyAppSm.context_menupopup_clipboards_onpopupshowing();">
+            <menuitem label="&autocopy-empty;" />
+          </menupopup>
+        </menu>
+        <menuitem id="autocopy-context-menu-pastelocationbar"
+                  label="&autocopy-pastetolocationbar;"
+                  accesskey="&autocopy-pastetolocationbar.ak;"
+                  oncommand="AutoCopyAppSm.pastetolocationbar();" />
+        <menuitem id="autocopy-context-menu-searchforselection"
+                  label="&autocopy-searchfor;"
+                  accesskey="&autocopy-searchfor.ak;"
+                  oncommand="AutoCopyAppSm.searchforselection();" />
+        <menuitem id="autocopy-context-menu-openinnewtab"
+                  label="&autocopy-openinewtab;"
+                  accesskey="&autocopy-openinewtab.ak;"
+                  oncommand="AutoCopyAppSm.openinnewtab();" />
+        <menuitem id="autocopy-context-menu-appendurltoclipboard"
+                  label="&autocopy-appendURL;"
+                  accesskey="&autocopy-appendURL.ak;"
+                  oncommand="AutoCopyAppSm.appendurltoclipboard();" />
+      </menupopup>
+    </popupset>
+  </window>
+
+</overlay>

@@ -1,0 +1,323 @@
+/* --------- Small Tabs - *BASE* !! ----------- */
+
+/* --------- from  browser/...skin/**AERO**  ----------- */
+
+@-moz-document url("chrome://browser/content/browser.xul") {
+
+	
+:root,
+#titlebar,
+#tabbrowser-tabs {
+  --tab-min-height: 21px !important;
+  --tabside-width    : 6px !important;
+  --tabside-width_med: 3px !important;
+  
+  --hctp_navbar_topMargin_extra: -1px !important; /* for DynBars */
+}
+
+#TabsToolbar {
+  /** --tab-stroke-background-size: auto 100%;  from Fx55 **/
+  --tab-curve-width: var(--tabside-width);
+  --tab-curve-half-width: var(--tabside-width_med);
+
+
+	--hctp_mTop_newTbut:  -1px;
+	--hctp_mTop_buts:  0px;
+	--hctp_mBot_buts:  0px;
+}
+:root[dz_tBoxHide_enable="true"]:not([customizing="true"])[hctp_tbox_float="true"]   #TabsToolbar:not([multibar="true"]) {
+	--hctp_mTop_newTbut:   0px;  /*  needed for TMP */
+	--hctp_mTop_buts: -2px;
+	--hctp_mBot_buts: -1px;
+}
+
+
+/*  Fx57+  BEGIN  */
+:root[hctp_isFx57plus="true"]   #TabsToolbar {
+	--toolbarbutton-inner-padding         : 1px !important;    
+	--toolbarbutton-vertical-inner-padding: 1px !important;
+	--toolbarbutton-vertical-outer-padding: 0px !important;
+  
+	--hc_marginTabCloseBut: -3px;
+}
+
+:root[hctp_isFx57plus="true"]   #TabsToolbar   tab.tabbrowser-tab   .tab-close-button    { /*  .toolbarbutton-icon  */
+	margin-top   : var(--hc_marginTabCloseBut);
+	margin-bottom: var(--hc_marginTabCloseBut);
+}
+
+:root[hctp_isFx57plus="true"]  :-moz-any(.titlebar-placeholder[type="pre-tabs"], .titlebar-placeholder[type="post-tabs"]) {
+	width: auto;
+	-moz-box-flex: 1;
+	max-width: 40px;
+}
+/*  Fx57+  END  */
+
+
+
+.tab-background-start:-moz-any([visuallyselected=true],[selected=true])::after,
+.tab-background-start:-moz-any([visuallyselected=true],[selected=true])::before,
+.tab-background-start,
+.tab-background-end,
+.tab-background-end:-moz-any(  [visuallyselected=true],[selected=true])::after,
+.tab-background-end:-moz-any(  [visuallyselected=true],[selected=true])::before {
+  width: var(--tabside-width);
+}
+
+
+.tab-background-middle {
+  border-left:  var(--tabside-width_med) solid transparent;
+  border-right: var(--tabside-width_med) solid transparent;
+  margin: 0 calc(-1 * var(--tabside-width_med));
+}
+
+.tab-content { /* original is 9px */
+  -moz-padding-end  : calc(3px   + var(--tabside-width_med) / 2);
+  -moz-padding-start: calc(2.4px + var(--tabside-width_med) / 2);
+}
+
+
+
+/* Selected tab */
+
+/*
+ Tab background pseudo-elements which are positioned above .tab-background-start/end:
+   - ::before - provides the fill of the tab curve and is clipped to the tab shape. This is where
+                pointer events go for the curve.
+   - ::after  - provides the border/stroke of the tab curve and is overlayed above ::before.  Pointer
+                events go through to ::before to get the proper shape.
+ */
+
+.tab-background-start:-moz-any([visuallyselected=true],[selected=true])::after,
+.tab-background-end:-moz-any(  [visuallyselected=true],[selected=true])::after {
+  /* position ::after on top of its parent */
+	-moz-margin-start: calc(-1*var(--tabside-width));
+}
+
+
+/* End selected tab */
+
+/* new tab button border and gradient on hover */
+.tabbrowser-tab:hover > .tab-stack > .tab-background:not([visuallyselected=true]):not([selected=true]),
+.tabs-newtab-button:hover {
+  background-position: left bottom, var(--tabside-width) bottom, right bottom;
+  background-size: var(--tabside-width) 100%, calc(100% - (2 * var(--tabside-width))) 100%, var(--tabside-width) 100%;
+}
+
+
+/* New tab button */
+
+.tabs-newtab-button {
+  width: calc(30px + var(--tabside-width));
+}
+
+/* 2957 */
+.tab-throbber,
+.tab-icon-image,
+.tab-sharing-icon-overlay,
+.tab-icon-sound,
+.tab-close-button {
+  margin-top: 0px;
+}
+
+
+/* nov-2016 */
+.tabbrowser-tab[pinned] > .tab-stack > .tab-content > .tab-icon {
+	-moz-margin-end: -1px;
+}
+
+
+/* 2976 */
+.tab-icon-overlay {
+  /* margin-top: -8px; */
+  -moz-margin-start: calc(-1 * var(--tabside-width_med));
+}
+
+/* 3111 */
+.tab-background,
+.tabs-newtab-button {
+  /* overlap the tab curves */
+  -moz-margin-end:   calc(-1 * var(--tabside-width_med));
+  -moz-margin-start: calc(-1 * var(--tabside-width_med));
+}
+.tabbrowser-arrowscrollbox > .arrowscrollbox-scrollbox {
+  -moz-padding-end:   var(--tabside-width_med);
+  -moz-padding-start: var(--tabside-width_med);
+  
+  min-height: var(--tab-min-height);  /* workaround for great issue [3.33px height!] when tmp get confused with floating tboxhide? */
+}
+
+
+
+/* HCTP touch ... */
+.tabbrowser-tabs     .tabbrowser-tab   .tab-stack {   /* [tabmix_australis]:not([multibar])      [selected=true] */
+	margin-top:    -1px;
+}
+
+/* queda perfecto para vert-max en mi win7 GLASS! */
+@media  ( min-resolution : 1.1dppx) {
+ #main-window[sizemode="normal"]
+  .tabbrowser-tabs   .tabbrowser-tab   .tab-stack  {
+	margin-top:    -0.7px;
+ }
+}
+
+
+
+.tabbrowser-tab {
+  max-height: var(--tab-min-height) !important;   /* only to make sure - more compatibility with other themes */
+}
+:root[hctp_isFx57plus="true"]   .tabbrowser-tab {
+  height    : var(--tab-min-height) !important;   /* for new TMP in Fx57 */
+}
+
+
+/*  Compensa un height: 21px de TABMIX. y tb alinea el topEdge inclusive sin TMix
+    TODO: New17 - ver para win 10??   ...  min-height  todavia no uso */
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox > .tabs-newtab-button {
+  margin-top:  var(--hctp_mTop_newTbut) !important;
+  max-height:  var(--tab-min-height) !important;
+  /** height    :  var(--tab-min-height) !important;  **/
+}
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox > .tabs-newtab-button  .toolbarbutton-icon {
+	padding-bottom: 0px;  /*  useful in Fx57 with TMP */
+}
+
+
+#tabbrowser-tabs[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"]:hover > .tab-stack > .tab-background > .tab-background-start::before,
+#tabbrowser-tabs[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"]:hover   > .tab-stack > .tab-background > .tab-background-start::before,
+#tabbrowser-tabs[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState]):hover      > .tab-stack > .tab-background > .tab-background-start::before,
+#tabbrowser-tabs[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"]:hover > .tab-stack > .tab-background > .tab-background-end::before,
+#tabbrowser-tabs[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"]:hover   > .tab-stack > .tab-background > .tab-background-end::before,
+#tabbrowser-tabs[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState]):hover      > .tab-stack > .tab-background > .tab-background-end::before {
+  min-height: var(--tab-min-height) !important;
+  width: var(--tabside-width) !important;
+}
+
+
+
+#tabbrowser-tabs[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"]:not(:hover) > .tab-stack > .tab-background > .tab-background-middle,
+#tabbrowser-tabs[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"]:not(:hover)   > .tab-stack > .tab-background > .tab-background-middle,
+#tabbrowser-tabs[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState]):not(:hover)      > .tab-stack > .tab-background > .tab-background-middle {
+  border-radius: calc(2px + var(--tabside-width_med))  calc(2px + var(--tabside-width_med))  0 0 !important;
+}
+
+
+/* fix radios for tabs before and after the selected or hovered tab */
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"]:not(:hover)[afterselected-visible="true"] 			> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"]:not(:hover)[afterselected-visible="true"]   			> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState]):not(:hover)[afterselected-visible="true"]      			> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"][afterhovered="true"]  > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"][afterhovered="true"]    > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState])[afterhovered="true"]       > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"]:not(:hover)[tabmix-beforeselected-visible="true"] 	> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"]:not(:hover)[tabmix-beforeselected-visible="true"]   	> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState]):not(:hover)[tabmix-beforeselected-visible="true"]      	> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"][beforehovered="true"] > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"][beforehovered="true"]   > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState])[beforehovered="true"]      > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl) {
+  border-bottom-left-radius:  calc(6px + var(--tabside-width_med)) !important;
+}
+
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"]:not(:hover)[tabmix-beforeselected-visible="true"] 	> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"]:not(:hover)[tabmix-beforeselected-visible="true"] 	> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState]):not(:hover)[tabmix-beforeselected-visible="true"] 		> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"][beforehovered="true"] > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"][beforehovered="true"]   > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState])[beforehovered="true"]      > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"]:not(:hover)[afterselected-visible="true"] 			> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"]:not(:hover)[afterselected-visible="true"] 			> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState]):not(:hover)[afterselected-visible="true"] 				> .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"][afterhovered="true"]  > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"][afterhovered="true"]    > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState])[afterhovered="true"]       > .tab-stack > .tab-background > .tab-background-middle:-moz-locale-dir(rtl) {
+  border-bottom-right-radius: calc(6px + var(--tabside-width_med)) !important;
+}
+
+/* 39.0/tabStyles  224*/
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"][afterselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"][afterselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState])[afterselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"][tabmix-beforeselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"][tabmix-beforeselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState])[tabmix-beforeselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(rtl) {
+  background-position: left bottom, left bottom, right bottom !important;
+  background-size: 0% 0%, calc(100% - (1 * var(--tabside-width))) 100%, var(--tabside-width) 100% !important;
+  border-radius: 13px 0 0 17px !important;
+}
+/* 39.0/tabStyles  247*/
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"][tabmix-beforeselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"][tabmix-beforeselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState])[tabmix-beforeselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(ltr),
+#tabbrowser-tabs:not([movingtab])[tabmix_unloadedStyle~="aus"] > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unloaded"][afterselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_unreadStyle~="aus"]   > .tabbrowser-tab:not([visuallyselected="true"])[tabmix_tabState="unread"][afterselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(rtl),
+#tabbrowser-tabs:not([movingtab])[tabmix_otherStyle~="aus"]    > .tabbrowser-tab:not([visuallyselected="true"]):not([tabmix_tabState])[afterselected-visible="true"]:hover > .tab-stack > .tab-background:-moz-locale-dir(rtl) {
+  background-position: left bottom, var(--tabside-width) bottom, right bottom !important;
+  background-size: var(--tabside-width) 100%, calc(100% - (1 * var(--tabside-width))) 100%, 0% 0% !important;
+  border-radius: 0 13px 17px 0 !important;
+}
+
+
+
+/* :::: TMPlus progress bar on tabs :::: */
+#TabsToolbar   .tabbrowser-tabs[tabmix_australis]:not([treestyletab-mode="vertical"]) > .tabbrowser-tab  .tab-progress {
+  margin-top: 2px !important;
+}
+
+
+/* buttons and Tab scrollbox arrows */
+#TabsToolbar   .tabbrowser-arrowscrollbox > .scrollbutton-up   ,
+#TabsToolbar   .tabbrowser-arrowscrollbox > .scrollbutton-down ,
+#TabsToolbar  >  toolbarbutton {
+	padding-top   :  0px !important;
+	padding-bottom:  0px !important;
+	margin-top   : var(--hctp_mTop_buts) !important;
+	margin-bottom: var(--hctp_mBot_buts) !important;
+}
+#TabsToolbar   #tabmixScrollBox[flowing=multibar] > toolbarbutton {
+	height: 21px !important;
+}
+
+
+#TabsToolbar > .private-browsing-indicator {
+	background-position: center -7px;
+	margin-bottom: -4px !important;
+}
+
+:root[hctp_isFx57plus="true"]   #TabsToolbar > .private-browsing-indicator {
+	background-position: center -2.5px;
+}
+
+
+@media (-moz-windows-compositor) {
+  @media (-moz-os-version: windows-win8),
+         (-moz-os-version: windows-win10) {
+	#titlebar-buttonbox {
+		margin-top: -1px;
+	}
+	@media             ( min-resolution : 1.1dppx) {
+	  #titlebar-buttonbox {
+		margin-top: -2px;
+	  }
+	}
+  }
+}
+
+
+
+/**
+#tabbrowser-tabs   .tab-background-start::before,
+#tabbrowser-tabs   .tab-background-end::before  {
+	outline: 1px solid orange !important;
+	outline-offset: -2px      !important;
+} 
+#tabbrowser-tabs   .tab-background-start::after,
+#tabbrowser-tabs   .tab-background-end::after  {
+	outline: 1px solid blue !important;
+	outline-offset: -1px      !important;
+} 
+**/
+
+
+}  /*** moz-document url(...) ***/
+

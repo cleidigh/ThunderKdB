@@ -1,0 +1,50 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== colorpickplus.css ================================================
+  == Styles used by the XUL colorpickplus element.
+  ======================================================================= */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* ::::: colorpickplus button ::::: */
+ 
+/* colorpicker button  [type="button"]  */
+
+colorpickplus {
+  -moz-appearance: button;
+  padding: 2px;
+  
+  -moz-user-focus: normal;  /* falta q se pueda abrir con SPACE, etc dps */
+}
+
+/* colorpickplus  textbox */  
+.colorpickplus-button-textbox {
+  /*
+  border: 1px solid red;
+  -moz-binding: url("chrome://global/content/bindings/textbox.xml#textbox");
+  */
+  
+}
+
+colorpickplus[disabled="true"]  .colorpickplus-button-colorbox-parent {
+	opacity: 0.5
+}
+
+
+.colorpickplus-button-colorbox-parent {
+  /* border: 1px solid transparent; */
+  margin: 1px;
+  background-image: url("../../skin/checkboard.png");
+  width : 32px;
+  height: 16px;
+}
+
+.colorpickplus-button-colorbox {
+  margin: -1px;
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: 1.5px;
+}
+
+

@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<!-- float toolbars css setted DYNAMICALLY ! -->
+
+<!DOCTYPE window [
+<!ENTITY % browserDTD     SYSTEM "chrome://browser/locale/browser.dtd"         >	%browserDTD;
+<!ENTITY % brandDTD       SYSTEM "chrome://branding/locale/brand.dtd"          >	%brandDTD;
+<!ENTITY % baseMenuDTD    SYSTEM "chrome://browser/locale/baseMenuOverlay.dtd" >	%baseMenuDTD;
+<!ENTITY % HideCaptionDTD SYSTEM "chrome://HideCaptionPlus/locale/overlay.dtd" >	%HideCaptionDTD;
+]>
+
+<overlay id="HideCaption-FloatBars-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<!-- (...floatbars.dtd  OUTSIDE LOCALE  -yet-)
+<script src="chrome://HideCaptionPlus/content/DevelGlobal_Madara_Lib.js"></script>
+-->
+
+<window id="main-window" >
+	
+	<hbox id="hcp-root-box"      >
+	
+		<hbox id="hctp_floatbars_upper_hover"   class="setContentPosition_doMargin"  hcp_sys_floatbars_elem="true" />
+		
+	</hbox>
+
+	
+
+  <!-- FLOATING TOOLBARS! -->
+  <vbox id="browser-panel">
+	  <vbox   hcp_sys_floatbars_elem="true"   class="hctp-floatbar   "
+	  		  id="hctp-toolparent" insertafter="navigator-toolbox"   
+	  	      context="toolbar-context-menu" >
+	   <vbox   id="hctp-toolsubparent_box" style="width: 100%;" >
+	  	<toolbox id="hctp-toolbox" context="toolbar-context-menu"    tabbar_cmd_label="&hc_TabbarCmd.label;" >
+	  		<!-- type="menubar" *not* used due to autohide effect!  -->
+	  		
+	  		<toolbar id="hctp_MenuAndTitle_Toolbar" fullscreentoolbar="true" toolbarname="&hcPrefixBar; &menubarCmd.label;"   	 accesskey="&hcKeyBar_menu;"
+	  			customizable="true" toolboxid="navigator-toolbox" context="toolbar-context-menu"   customtheme_tbar_appearance="default"
+	  			defaulticonsize="small" mode="icons" iconsize="small" class="chromeclass-menubar" 
+	  			hc_defaultCollapsed="false"  hc_defaultPlacements="hcp-main-menu-tbaritem,separator,spacer,hcp-web-title-item3,hctp_floatbars_extra_button,tabview-button"
+	  			 />
+
+	  		<toolbar id="hctp_Nav_Toolbar"          fullscreentoolbar="true" toolbarname="&hcPrefixBar; &navbarCmd.label;"     	 accesskey="&hcKeyBar_nav;"
+	  			customizable="true" toolboxid="navigator-toolbox" context="toolbar-context-menu"   customtheme_tbar_appearance="default"  
+	  			defaulticonsize="small" mode="icons" iconsize="small" class="toolbar-primary chromeclass-toolbar"
+	  			collapsed="true"
+	  			 />
+	  			
+	  		<toolbar id="hctp_Bookmarks_Toolbar"    fullscreentoolbar="true" toolbarname="&hcPrefixBar; &personalbarCmd.label;"	 accesskey="&hcKeyBar_personal;"
+	  			customizable="true" toolboxid="navigator-toolbox" context="toolbar-context-menu"   customtheme_tbar_appearance="default"
+	  			defaulticonsize="small" mode="icons" iconsize="small" class="chromeclass-directories" 
+	  			hc_defaultCollapsed="false"  hc_defaultPlacements="personal-bookmarks"
+	  			 />
+
+	  		<toolbar id="hctp_Extra1_Toolbar"       fullscreentoolbar="true" toolbarname="&hcPrefixBar; &hc_Extra1barCmd.label;" accesskey="&hcKeyBar_extra1;"
+	  			customizable="true" toolboxid="navigator-toolbox" context="toolbar-context-menu"   customtheme_tbar_appearance="default"
+	  			defaulticonsize="small" mode="icons" iconsize="small" class="chromeclass-toolbar"
+	  			collapsed="true"
+	  			 />
+	  			
+		<!--
+	  		<toolbar id="hctp_Extra2_Toolbar"       fullscreentoolbar="true" toolbarname="&hcPrefixBar; &hc_Extra2barCmd.label;" accesskey="&hcKeyBar_extra2;"
+	  			customizable="true" toolboxid="navigator-toolbox" context="toolbar-context-menu"   customtheme_tbar_appearance="default"  collapsed="true"
+	  			defaulticonsize="small" mode="icons" iconsize="small" class="chromeclass-toolbar"
+	  			 />
+
+			collapsed="true"  «« navbar
+			defaultset="hcp-main-menu-tbaritem,separator,spacer,hcp-web-title-item3" ««  using registerArea()
+			defaultset=""	  			 
+		 -->
+	  	</toolbox>
+	   </vbox>
+	  	
+	   <vbox id="hctp-float-bottombox" />
+		  	
+	  </vbox>
+  </vbox>
+
+
+  <hctp_special_palette  id="hctp_special_palette_floatbars" >
+			
+		<toolbaritem  id="hcp-web-title-item3"     title="&h_webtitle_flex; (2)"  align="center"  flex="1"  hcp_sys_floatbars_elem="true" 
+		              class="panel-wide-item  hcp_title  hcp-dragbox-binding" >
+		    <image    class="hcp_favicon_cls"  src="chrome://branding/content/icon16.png" />
+			<label    id="hcp-web-title-label3" class="hcp_web_title_cls" value="&brandShortName;" flex="1" crop="right" />
+		</toolbaritem>
+		
+		<toolbaritem  id="hcp-main-menu-tbaritem"  title="&h_mainmenu_movable;"            label="&h_mainmenu_movable;"    hcp_sys_floatbars_elem="true" 
+		              class="panel-wide-item" >
+			<hbox id="hcp-box-main-menu" class="" align="center">
+				<label value="&fileMenu.label; &editMenu.label; ... &toolsMenu.label; &helpMenu.label;"  class="hide_insidePanelUI" />
+				<label value="&label.Valid_only_in_Toolbar;"                                             class="show_insidePanelUI" /> 
+				<!-- 
+				<label value="&fileMenu.label;  &editMenu.label;  &viewMenu.label;  &historyMenu.label;  &bookmarksMenu.label;  &toolsMenu.label;  &helpMenu.label;" />
+				 -->
+			</hbox>
+		</toolbaritem>
+			
+		<toolbarbutton id="hctp_floatbars_extra_button"  class="floating_element_control  toolbarbutton-1  chromeclass-toolbar-additional"	
+			disabled="true"    label="&h_floatbars_extra_button;"  tooltip="_child"
+			oncommand="HideCaption.FloatToolbarsHandler.DynamicElemPos.key_toggleActivation(event);" >
+			<tooltip class="pre_line"><label>&h_floatbars_extra_tooltiptxt;</label></tooltip>
+			<vbox> 
+				<hbox > <box cell="1" /> <box cell="2" />	</hbox>
+				<hbox > <box cell="3" /> <box cell="4" />	</hbox>
+				<hbox > <box cell="5" /> <box cell="6" />	</hbox>
+			</vbox>
+		</toolbarbutton>
+			
+  </hctp_special_palette>
+
+</window>
+
+</overlay>
+

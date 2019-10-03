@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="icon" 
+      type="image/vnd.microsoft.icon" 
+      href="chrome://HideCaptionPlus/skin/hcp_icon16.png">
+
+<title>Hide Caption Titlebar Plus</title>
+<script type="text/javascript">
+// open_win('chrome://HideCaptionPlus/content/options.xul?_1');
+function open_win(_url)
+{
+window.open(_url,"_blank","toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=yes, width=590, height=590");
+}
+var optionDialog= null;
+function openOptionDialog(e){
+		if( optionDialog ){
+			optionDialog.close();
+		}
+		optionDialog=openDialog('chrome://HideCaptionPlus/content/options.xul?_1', '_OptionsDlg', 'chrome,titlebar,toolbar,scrollbars=yes,resizable=yes,centerscreen,dialog=no');
+}
+</script>
+
+<style>
+body, th, td {
+ font: normal 13px Arial,Helvetica,sans-serif,Verdana;
+}
+body{
+	padding-left: 3em; 
+	background-color: #F6F6F6;
+}
+.smallinfo{
+	font-size: 85%;
+}
+</style>
+
+</head>
+
+<body>
+
+<p><strong><font size="4"><img border="1" src="chrome://hidecaptionplus/skin/hcp_icon.png" />&nbsp;&nbsp; Hide Caption Titlebar Plus</font> &nbsp; &nbsp; <font size="2">
+	[ <a href="https://github.com/Javier-DarthPalpatine/firefox-hide-caption-titlebar-plus/issues?q=is:open+sort:updated-desc">Support Site</a> ]&nbsp;&nbsp; 
+	[ <a href="https://tiny.cc/hidec/">Main Page</a> ]&nbsp;&nbsp; 
+</font><br></strong></p>
+<blockquote>
+<p><strong><em>&quot;Maximize your screen content space by controlling the presence of Firefox window's Title bar (caption)&quot;</em> <br></strong></p></blockquote>
+
+<p style="padding-top:1.0em;"><strong>README:<br></strong></p>
+<p><strong>&nbsp;&nbsp; Please give a look at the <a href="javascript:void(0);" onclick="openOptionDialog();">Options Dialog</a> first! There are descriptions of the main features.</strong></p>
+
+<p><strong>Important</strong>:<br></p>
+<p>&nbsp;&nbsp; <strong>Bug/Issue reports</strong> are very welcomed in the <strong>Support site</strong>. Please don't post them in the Addons Mozilla site.<br></p><p><strong></strong></p>
+
+<p><strong>Brief notes:</strong></p>
+<ul><li><strong></strong>(Info updated for Firefox 4+)<font color="#000080"><strong> <br>
+	Dragging/moving</strong> window:&nbsp; now with AeroSnap/unSnap in Win.Vista/7. (some controls still has some unwanted unSnapping)</font>:<br>
+	You can <strong><em>drag </em></strong>the 'un-maximized' window using the custom caption (titlebar), and also you can use the following items in the <em>&quot;Customize Toolbar&quot;</em> window: the &quot;Web-Page-Title&quot; objects, the &quot;Drag Window&quot; controls, the &quot;Space&quot; or &quot;Flexible Space&quot; (fill easily toolbars' empty spaces).<br> 
+	Please note that these &quot;Drag Window&quot; controls only shows in FF when it's NOT maximized and the standard caption is hidden. <em>(when they are really needed)</em>.</li></ul>
+<ul><li><b>Themes / Skins:</b> Works and looks good with <b>ChromiFox</b> basic theme, with ChromiFox Extreme and Cfx Extreme CARBON. Also with <b>Strata40</b> (+StrataBuddy) theme.<br />
+- (<b>Tip:</b> Try playing with de/activating the cc (custom-caption) with each theme, with Cfx-basic I think it looks better with new small-cc option. Others themes go well without cc).<br />
+- Also looks very good with Mozilla's <b>Persona</b> skins. (see preview in homepage)<br />
+- For Chromifox, Strata40 and others themes: There is an extra option for <b>Min,Max,Close buttons <em>skins</em></b> following the theme's own buttons skins.<br>
+- Via <em>&quot;Customize Toolbar&quot;</em> window, the Min,Max,Close buttons can be placed in any toolbar. (Also, in options dialog, you can hide the buttons located at topright corner)<br>
+</li>
+     </ul>
+<ul><li>There is a <b>Context-Menu</b> (right-click) accesible from the Main Firefox Application Button, System (Min,Max,Close) buttons and &quot;Drag-Window&quot; control, for opening Options dialog, etc.<br></li></ul>
+	
+<strong>Things that will come in next version:</strong> <br>
+<ul>
+<li>... usually more requested features/tweaks are accepted and listed in the Main page or the support page.<br></li>
+</ul>
+
+<br />
+<div>
+	<hr width="80%"/>
+</div>
+<br>
+
+<p class="smallinfo"><a href="system_info.html">System-Info page. (Useful info when asking for Support)</a></p>
+
+<!-- 
+<p></p>
+<br>
+<em>This Readme will reflect all future changes in this addon. You can Bookmark <a href="chrome://HideCaptionPlus/locale/readme.html">the local copy</a>&nbsp; (vXXX)</em>
+ -->
+
+</body>
+</html>
+

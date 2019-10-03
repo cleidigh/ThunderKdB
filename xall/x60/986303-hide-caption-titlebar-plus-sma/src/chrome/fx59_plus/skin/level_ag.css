@@ -1,0 +1,70 @@
+/*** 
+ * @imports at beginning ...
+ ***/
+
+@import  "sys_window.css?_ag";
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+	
+	
+/** FLOAT_MENU: fix an extra margin added for 'classic_restorer' addon  **/
+#main-window[tabsintitlebar]:not([inFullscreen])[sizemode]           #navigator-toolbox:not([customizing="true"])[dz_home_mainmenu_floating="true"]  
+  #toolbar-menubar[autohide="true"]  {
+    margin    : 0px !important;
+}
+#main-window[tabsintitlebar]:not([inFullscreen])[sizemode="normal"]  #navigator-toolbox:not([customizing="true"])[dz_home_mainmenu_floating="true"]  
+  #toolbar-menubar[autohide="true"]  ~  #TabsToolbar {
+    margin-top: 0px !important;
+}
+
+
+#main-window {
+	--hctp_floatMenubar_height: 24px;  /* DEBE coincidir con el vcalor en TBoxHide.js ! */
+}
+
+/* TBoxHide thing: including fullscreen!   */
+:root[dz_tBoxHide_enable="true"]:not([customizing="true"]):not([inDOMFullscreen="true"])[hctp_tbox_float="true"]  
+  #toolbar-menubar[type="menubar"] {
+	min-height: var(--hctp_floatMenubar_height) !important;
+	visibility: visible !important;
+}
+/* toolbars 'calcd-space' for TBoxHide! */
+:root {
+	--hctp_barspace_left : 50px;
+	--hctp_barspace_right: 50px;
+}
+/*  hctp_space_lastAlteredObject  */
+:root[dz_tBoxHide_enable="true"]:not([customizing="true"])[hctp_tbox_float="true"]  toolbar[hctp_space_lastAlteredObject="true"] {
+	padding-left : 0px !important;
+	padding-right: 0px !important;
+}
+:root[dz_tBoxHide_enable="true"]:not([customizing="true"])[hctp_tbox_float="true"]  #toolbar-menubar + #TabsToolbar,
+:root[dz_tBoxHide_enable="true"]:not([customizing="true"])[hctp_tbox_float="true"]  #toolbar-menubar + #nav-bar    , /* eg. PaleMoon */
+:root[dz_tBoxHide_enable="true"]:not([customizing="true"])[hctp_tbox_float="true"]  #toolbar-menubar               {
+	padding-left : var(--hctp_barspace_left ) !important;
+	padding-right: var(--hctp_barspace_right) !important;
+}
+
+/* If floatbars are 'alone', apply also */
+:root[dz_tBoxHide_enable="true"]:not([customizing="true"])   #hcp-root-box[hctp_tbox_float="true"][hctp_tbox_inactive="true"]:not([hctp_floatbars_inactive="true"])  ~  #hctp-toolparent   #hctp_MenuAndTitle_Toolbar  {
+	padding-left : var(--hctp_barspace_left ) !important;
+	padding-right: var(--hctp_barspace_right) !important;
+}
+
+
+/* show menubar/ALL toolbars in customizing */
+/**
+#main-window[customizing="true"]   toolbox > toolbar[toolbarname]:-moz-any([collapsed="true"],
+                                                                           [autohide ="true"][type="menubar"][inactive="true"]) {
+	overflow  : visible !important;
+	min-height: 20px    !important;
+	visibility: visible !important;
+}
+**/
+
+
+}  /**  @-moz-document  url(...)  **/
+

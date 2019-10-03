@@ -1,0 +1,81 @@
+
+
+/* --- Aero only [WINNT osversion>=6] --- */
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+
+	
+@media all and (-moz-windows-compositor) {
+
+/*  
+  ------ Interesting things to review: from skin/classic/aero/browser/ ----------------------------
+
+  #main-window[sizemode="maximized"] #titlebar-buttonbox {
+    -moz-margin-end: 3px;
+  }
+  #main-window[chromemargin^="0,"][sizemode=normal] #navigator-toolbox {
+    margin-top: -7px;
+  }
+*/  
+  
+
+/* 
+  --- Artificially draw window borders that are covered by lwtheme, see bug 591930. ---  Madara: this line crosses the top-edge line of system-buttons! 
+  #main-window[sizemode="normal"]                                  > #titlebar > #titlebar-content:-moz-lwtheme {
+    border-top: 2px solid;
+    -moz-border-top-colors: rgb(37, 44, 51) rgba(255,255,255,.6);
+  }
+*/
+  #main-window[hctp_hidden_sysborder="true"][sizemode="normal"] > #titlebar > #titlebar-content:-moz-lwtheme {
+	
+	padding-left : 3px;  
+	padding-right: 3px;
+	margin-left : -3px;
+	margin-right: -3px;
+  }
+
+}
+/* END media */
+
+
+/* from:  chrome\australis\skin\aero\style.css */
+
+@media all and (-moz-windows-compositor) {
+  /* these should be hidden w/glass enabled. windows draws it's own buttons. */
+
+  #main-window[chromemargin^="0,"][sizemode="normal"]:not([inFullscreen="true"]):not([hcp_fx4_titlebar_visible="true"])   #navigator-toolbox {
+    margin-top: 0px;
+  }
+  
+  #hcp-caption-box:not(:-moz-lwtheme){
+	-moz-appearance: none;
+    /* t-shadow: 0 0 .8em white, 0 0 .5em white, 0 1px 0 rgba(255,255,255,.4); */
+	text-shadow: 0 0 .8em white, 0 0 .5em white, 0 1px 1px white             , 0px 0px 5px white
+  }
+	
+}
+/* END media */
+
+
+#main-window[tabsintitlebar][sizemode="normal"][chromehidden~="menubar"]                     #toolbar-menubar ~ #TabsToolbar,
+#main-window[tabsintitlebar][sizemode="normal"]                   #toolbar-menubar[autohide="true"][inactive] ~ #TabsToolbar {
+  margin-top: 0px !important; /* was 1px, setted to 0 to assure compat. with floatmenu */
+}
+#main-window[hctp_vertical_maxim_act__TOP="true"][tabsintitlebar][chromehidden~="menubar"]     #toolbar-menubar ~ #TabsToolbar,
+#main-window[hctp_vertical_maxim_act__TOP="true"][tabsintitlebar]   #toolbar-menubar[autohide="true"][inactive] ~ #TabsToolbar {
+  margin-top: 0px !important;
+}
+
+
+@media not all and (-moz-windows-classic) {
+  #main-window[hctp_vertical_maxim_act__TOP="true"][sizemode="normal"]    #navigator-toolbox > #toolbar-menubar {
+    margin-top: 0px !important;
+  }
+}
+
+
+}  /**  @-moz-document  url(...)  **/
+

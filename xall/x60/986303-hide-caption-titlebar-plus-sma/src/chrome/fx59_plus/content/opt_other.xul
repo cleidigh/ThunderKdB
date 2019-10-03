@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay [
+<!ENTITY % hctpBaseDTD    SYSTEM "h_base.dtd"        > %hctpBaseDTD;
+<!ENTITY % brandDTD       SYSTEM "chrome://branding/locale/brand.dtd"        >	%brandDTD;
+<!ENTITY % optionDTD     SYSTEM "../locale/option.dtd">  %optionDTD;
+]>
+
+<overlay id="paneOther_overlay"
+		 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		 xmlns:html="http://www.w3.org/1999/xhtml" 
+		 >
+
+                    <prefpane id="paneOther" label="&tab.other.settings;" orient="vertical" flex="1" context="" helpTopicXXX="opt_look2" >
+<preferences>
+	<!-- 	bool,int,string,wstring,unichar 
+			'preference' will modify -> checkbox, colorpicker, radiogroup, textbox, listitem, listbox, and menulist. 
+	<preference id="xxxxxxxxxxxxxxx" name="" type="string" instantApply="true" />
+	-->
+	
+
+	<preference id="search_showOneOffButtons"       name="browser.search.showOneOffButtons" type="bool"   instantApply="true" />
+	<preference id="search_openintab"               name="browser.search.openintab"         type="bool"   instantApply="true" />
+    
+	<preference id="ctrlTab_previews"               name="browser.ctrlTab.previews"         type="bool"   instantApply="true" />
+	
+
+	<preference id="hctp_bookmark_panel_extrawidth" name="extensions.hide_caption.plus.extra.bookmark_panel_extrawidth" type="bool"   instantApply="true" />
+	<preference id="hctp_super_stop_animations" 	name="extensions.hide_caption.plus.extra.super_stop_animations"     type="bool"   instantApply="true" />
+
+	<!--  readonly="true" !!!!!! -->
+	<preference id="layout_css_devPixelsPerPx"      name="layout.css.devPixelsPerPx"        type="string" instantApply="true"  readonly="true" />
+    
+<!--
+    <preference id="fullscreen_animateUp"           name="browser.fullscreen.animateUp"     type="int"    instantApply="true" />
+    
+	<preference id=""            name="" type="bool"   instantApply="true" />
+-->
+
+</preferences>
+
+
+<box   orient="horizontal" flex="1" >
+ <box  orient="vertical"   flex="1"  class="hOptions_column" >
+
+<groupbox> <caption><label>&Fx_internal_options;</label></caption>
+ <groupbox> <caption><label>&Search_Bar;</label></caption>
+  <hbox class="baseline  inlineXX" flex="1">
+		<checkbox id="id_search_showOneOffButtons"  preference="search_showOneOffButtons"   flex="1"
+		 	hc_need_restart="true" label="&SearchBar_new_UI;"
+            tooltiptext="&tt_SearchBar_new_UI;"
+            style="white-space: pre-wrap;" 
+			/>
+  </hbox>
+  <hbox class="baseline  inlineXX" flex="1">
+		<checkbox id="id_search_openintab"          preference="search_openintab"           flex="1"
+		 	label="&Search_in_new_tab;"
+            style="white-space: pre-wrap;" 
+			/>
+  </hbox>
+ </groupbox>
+
+ <groupbox> <caption><label>&Other_intOpts;</label></caption>
+  <hbox class="baseline  inlineXX" flex="1"  tooltip="_child" >
+		<checkbox id="id_ctrlTab_previews"          preference="ctrlTab_previews"           flex="1"  hc_flags="recom_true"
+		 	label="&Tab_switch_MRU;"    
+            style="white-space: pre-wrap;" 
+			/>
+		<tooltip><label>&tt_Tab_switch_MRU;</label></tooltip>
+  </hbox>
+  
+  
+  <hbox class="baseline  inlineXX" flex="1"  style="margin-top:1em; ">
+ 	<label control="id__css_devPixelsPerPx"  flex="1"  class="default_label" tooltip="_child" >&devPixelsPerPx_label;<tooltip><label>&devPixelsPerPx_tt;</label></tooltip></label>
+	<menulist   id="id__css_devPixelsPerPx"     preference="layout_css_devPixelsPerPx"     sizetopopup="none"  class="hc_compact"  style="min-width: 22ch; min-height: 1.5em;"
+	  oncommand="this.menupopup.hidePopup(); if(confirm('&Are_you_sure;')){ Services.prefs.setCharPref('layout.css.devPixelsPerPx', this.value); };" >
+		<menupopup> <!-- menuitem-iconic-noaccel  !!! -->
+		  <menuitem class="menuitem-noaccel"   label="&devppp_default;"	value="-1.0"    hc_flags="defau"   	/>
+		  <menuitem class="menuitem-noaccel"   label="&devppp_100;"		value="1"       	/>
+		  <menuitem class="menuitem-noaccel"   label="&devppp_120;"		value="1.2"        	/>
+		  <menuitem class="menuitem-noaccel"   label="&devppp_125;"		value="1.25"       	/>
+		  <menuitem class="menuitem-noaccel"   label="&devppp_150;"		value="1.50"       	/>
+		  <menuseparator />
+		  <menuitem class="menuitem-noaccel"   label="&devppp_9x;"		value="0.94"       	/>
+		</menupopup> 
+	</menulist>
+  </hbox>
+  
+  
+<!--  
+    <label> Toolbars animation for FullScreen mode ... ?? </label>
+	<menulist id="id_fullscreen_animateUp"     preference="fullscreen_animateUp" style="" >
+		<menupopup>
+		  <menuitem class="menuitem-noaccel"   label="Instant ... (** problems with mouse hovering afterwards??? **)"          value="0"        />
+		  <menuitem class="menuitem-noaccel"   label="Slow? toolbars movement when entering FullScreen mode (F11) (Fx Default)"  value="1"        />
+		  <menuitem class="menuitem-noaccel"   label="Always Slow? toolbars movement "                            value="2"      
+                                                    tooltiptext="(every time they go up after being activated by mouse hovering)"   />
+		</menupopup> 
+	</menulist>
+-->  
+
+ </groupbox>
+</groupbox>
+
+ </box>
+ <toolbarseparator flex="0" />
+ <box  orient="vertical"   flex="1"  class="hOptions_column" >
+
+<groupbox> <caption><label>&HCTPs_extra_options;</label></caption>
+  <hbox class="baseline  inlineXX" flex="1">
+		<checkbox id="id_hctp_bookmark_panel_extrawidth"   preference="hctp_bookmark_panel_extrawidth"  flex="1"  hc_flags="recom_true"
+		 	label="&Wider_Bookmark_panel;"
+			/>
+  </hbox>
+  <hbox class="baseline  inlineXX" flex="1">
+		<checkbox id="checkbox_hctp_super_stop_animations" preference="hctp_super_stop_animations"  	flex="1"  hc_flags="recom_true"
+		 	label="&Stop_image_animations;"
+		 	tooltiptext="&tt_Stop_image_animations;"
+			/>
+  </hbox>
+</groupbox>
+
+ </box>
+</box>
+
+<spacer  flex="100" />
+<!--            
+            
+FALTA:  
+- REVISAR la opcion "Instant..." .... poner un select-list para [fullscreen.animateUp] !!            
+
+-->
+                    </prefpane>
+</overlay>

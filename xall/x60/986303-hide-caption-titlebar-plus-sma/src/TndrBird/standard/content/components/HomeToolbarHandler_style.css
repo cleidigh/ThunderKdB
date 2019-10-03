@@ -1,0 +1,111 @@
+
+/* ------------------------------  FLOATING MENU  ------------------------------------- */
+
+  #menubar-items[dz_home_mainmenu_floating="true"]{
+	vertical-align: top;
+
+	/* background-color: -moz-dialog; */
+	background: Menu; 
+	background-image: linear-gradient( rgba(255,255,255, 0.2), rgba(0, 0, 0, 0.15));
+	color: MenuText;
+	
+	opacity: 0.98; 
+	
+	/* fixed element accesories */
+	position: fixed; top: -1px; left: 20px;  z-index: 3; 
+	border: 1px solid gray; 
+	border-bottom-left-radius : 6px;
+	border-bottom-right-radius: 6px;
+	padding: 0px 2px;
+	min-height: 12px;
+	
+	box-shadow: 0pt 0pt 4px rgba(0, 0, 0, 0.8);
+}
+  #menubar-items[dz_home_mainmenu_floating="true"]:-moz-lwtheme-brighttext {
+	background-color: rgba(  0,  0,  0,.97 );
+} 
+  #menubar-items[dz_home_mainmenu_floating="true"]:-moz-lwtheme-darktext {
+	background-color: rgba(255,255,255,.98 );
+} 
+  #menubar-items[dz_home_mainmenu_floating="true"]:-moz-lwtheme{
+	-moz-appearance: none;
+	/*
+	border-style: none;
+	*/
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	> * { /* all childs at top edge by default! (Fitss law) */
+	vertical-align: top;
+	-moz-box-align: baseline;
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  {  /* menubar can have other things here too */
+	vertical-align: top  !important;
+	padding-left : 0.3em !important;
+	padding-right: 0.5em !important;
+
+	/* -moz-appearance: toolbox;  -- DISABLED, (& NOT important) to try more compatibility with WHITE-TEXT -- New! , 'none' selected in style attr. (by personas?) */
+}
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar:-moz-lwtheme  {
+	-moz-appearance: none    !important; /* New! , 'none' selected in style attr. (by personas?) */
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  > * {
+	/*
+	background-color: -moz-dialog !important; 
+	opacity: 0.98 !important; 
+	border: 1px solid gray !important; 
+	-moz-appearance: none;
+	*/
+	/*  -moz-border-radius: 2px;  */
+	border-radius: 2px;
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  > menu{
+	padding-top   : 0px;
+	padding-bottom: 0px;
+
+	/* border: 0px 2px;
+	   -moz-appearance: none; */
+}
+#messengerWindow  
+  #menubar-items[dz_home_mainmenu_floating="true"]  menubar:not(:-moz-lwtheme) > menu:not([_moz-menuactive="true"]) {
+	color: MenuText;  /* using many elements in selector to override same setting for WinXP blue-bkg with white-text */
+}
+#messengerWindow  
+  #menubar-items[dz_home_mainmenu_floating="true"]  menubar:not(:-moz-lwtheme) > menu:not([_moz-menuactive="true"]):-moz-window-inactive {
+	color: ThreeDShadow;
+  }
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  > menu:-moz-lwtheme{
+	padding: 1px 1px 2px 1px;
+}
+
+  #menubar-items[dz_home_mainmenu_floating="true"]	menubar  > menu > label.menubar-text {
+	/* margin: 0px 5px 1px 5px !important;   smaller menus */
+}
+
+
+/* --------- INACTIVE (hidden!!) ----------- */
+  #menubar-items[dz_home_mainmenu_floating="true"][inactive="true"]{
+	background-color: red; 
+	top: -100px;
+}
+
+
+
+
+/* Fix: disable menubar autohide for FLOATING MAIN MENU!  */
+toolbox[dz_home_mainmenu_floating="true"]  > 
+         toolbar[type="menubar"][autohide="true"]:not([customizing="true"]) {
+  overflow: hidden !important;
+
+  min-height: 0 !important;
+  height: 0 !important;
+  -moz-appearance: none !important;
+  border-style: none !important;
+}
+/* Fix 2012-03: The toolbox was partly hidden under content  when menubar was totally empty */
+toolbox  >  toolbar[type="menubar"][autohide="true"][customizing="true"] {
+  overflow: visible;
+}  

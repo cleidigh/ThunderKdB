@@ -1,0 +1,45 @@
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+	
+
+
+
+/* */	
+#hctp_toparea {
+	height: 0px;
+	pointer-events: none;
+}
+
+#hctp_topsub_unmax , 
+#hctp_topsub_max   {
+	display: none;
+	pointer-events: none;
+}
+:root[sizemode="normal"]:not([hc-MaxFull="true"]):not([hctp_vertical_maxim_act__TOP="true"]):not([inFullscreen])   #hctp_topsub_unmax {	display: -moz-box;	}
+:root:-moz-any([sizemode="maximized"][hc-MaxFull="true"], 
+                                                      [hctp_vertical_maxim_act__TOP="true"]):not([inFullscreen])   #hctp_topsub_max   {	display: -moz-box;	}
+
+
+@media (-moz-windows-compositor) {
+	:root:not([customizing])[sizemode=normal]                         	#hctp_topsub_unmax:-moz-lwtheme {
+		border-left : 1px solid hsla(209,67%,12%,0.35);
+		border-right: 1px solid hsla(209,67%,12%,0.35);
+		/* background-clip: padding-box; */
+	}
+}
+
+@media (-moz-windows-glass) {
+	/** Glass Fog **/
+	#TabsToolbar:not(:-moz-lwtheme)::after {
+		top: 35px !important;
+		position: fixed !important;
+		z-index: -2;
+		opacity: 1;
+	}
+}
+
+
+}  /**  @-moz-document  url(...)  **/
+

@@ -1,0 +1,34 @@
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+
+
+
+
+
+toolbarpaletteitem[place="palette"]  >  toolbarspring:-moz-any([id^="customizableui-special-sp"],#spring) {
+	background: url("chrome://global/skin/toolbar/spring.png") no-repeat center;
+}
+toolbarpaletteitem                   >  :-moz-any(toolbarspring,toolbarspacer):-moz-any([id^="customizableui-special-sp"],#spacer,#spring) { /* matchs 2 IDs */
+  background-color: rgba(255,255,255,0.7) !important;
+  margin: 2px 1px;
+  border: 1px solid #BBBBBB;
+  border-radius: 2px;
+  
+  min-width :  7px;
+  min-height: 12px;
+}
+
+:-moz-any(#navigator-toolbox, #hctp-toolbox)   toolbar:not([orient="vertical"])   toolbarseparator {
+  min-height: 10px;
+}
+
+:-moz-any(toolbarspring,toolbarspacer,toolbarseparator):-moz-any([id^="customizableui-special-s"],#spacer,#spring,#separator)[cui-areatype="menu-panel"] { /* matchs 3 IDs */
+	min-height: 25px;
+	min-width:  10px;
+}
+
+}  /**  @-moz-document  url(...)  **/
+

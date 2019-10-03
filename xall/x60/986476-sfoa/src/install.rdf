@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>sfoa@omoco.de</em:id>
+		<em:name>Show F*cking Outlook Appointments</em:name>
+		<em:version>0.2.3</em:version>
+		<em:creator>Sebastian Hammerl</em:creator>
+		<em:description>A Thunderbird extension to show embedded Outlook calendar parts</em:description>
+		<em:iconURL>chrome://sfoa/content/outlook-appointment-icon.png</em:iconURL>
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>60.0</em:minVersion>
+				<em:maxVersion>60.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+	</Description>
+</RDF>

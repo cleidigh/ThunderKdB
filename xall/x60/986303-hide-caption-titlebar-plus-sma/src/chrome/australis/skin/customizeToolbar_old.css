@@ -1,0 +1,18 @@
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://global/content/customizeToolbar.xul) {
+	
+
+.toolbarbutton-1.hc-dragbutton {
+	list-style-image: url("chrome://HideCaptionPlus/skin/Drag.gif");
+}
+
+.warn_InsideMenuPanel ,
+#hcp-mmc-buttons-item   .hNew_mmcbuttons {
+	display: none     !important;
+}
+
+
+}  /**  @-moz-document  url(...)  **/
+

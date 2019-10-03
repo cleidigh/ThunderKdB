@@ -1,0 +1,40 @@
+/* --------- Small Tabs - almost classic tabs !! ----------- */
+
+/* --------- from  browser/...skin/**AERO**  ----------- */
+
+@import  "small_tabs_base_new.css";
+
+@import  "small_tabs_extraSmall_1.css";
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url("chrome://browser/content/browser.xul") {
+
+:root,
+#titlebar,
+#tabbrowser-tabs {
+  --tab-min-height: 26px !important;
+  --tabside-width    : 2px !important;
+  --tabside-width_med: 1px !important;
+  
+  --hctp_navbar_topMargin_extra: 0px !important; /* for DynBars */
+}
+
+#TabsToolbar {
+	--hctp_mTop_buts:  0px !important;
+	--hctp_mBot_buts:  0px !important;
+}
+
+
+
+/* Fx57+ */
+:root[hctp_isFx57plus="true"]   #TabsToolbar {
+	--toolbarbutton-inner-padding         : 2px !important;    
+	--toolbarbutton-vertical-inner-padding: 2px !important;
+  
+	--hc_marginTabCloseBut:  0px;
+}
+
+}  /*** moz-document url(...) ***/
+

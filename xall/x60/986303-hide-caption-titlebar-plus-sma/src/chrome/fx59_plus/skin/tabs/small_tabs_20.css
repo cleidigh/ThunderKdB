@@ -1,0 +1,22 @@
+/* --------- Small Tabs - australis !! ----------- */
+
+/* --------- from  browser/...skin/**AERO**  ----------- */
+
+@import  "small_tabs_base_new.css";
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url("chrome://browser/content/browser.xul") {
+
+:root,
+#titlebar,
+#tabbrowser-tabs {
+  --tab-min-height: 21px !important;
+  --tabside-width    : 12px !important;
+  --tabside-width_med:  6px !important;
+}
+
+
+}  /*** moz-document url(...) ***/
+

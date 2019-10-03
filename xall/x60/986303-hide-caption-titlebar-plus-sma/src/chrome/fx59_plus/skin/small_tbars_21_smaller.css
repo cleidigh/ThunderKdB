@@ -1,0 +1,37 @@
+
+/* --------- Small Toolbars & toolbarbuttons !! ----------- */
+
+/* beware of affecting floating hctp-'home'-toolbar! */
+
+
+@import  "small_tbars_00_base.css";
+
+
+@namespace      url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document  url(chrome://browser/content/browser.xul) {
+
+	
+toolbar:not(#TabsToolbar)  {
+  
+  --hctp-toolbarbutton-horiz-inner-padding: 3px !important;
+  --hctp-toolbarbutton-horiz-outer-padding: 3px !important;
+}
+
+
+#urlbar-container,
+#search-container {
+	margin-top   :   1px !important;
+	margin-bottom:   1px !important;
+}
+
+@media             ( min-resolution : 1.1dppx) {
+  #urlbar-container,
+  #search-container {
+	margin-top   :   0.94px !important;
+	margin-bottom:   0.94px !important;
+  }
+}
+
+}  /*** moz-document url(...) ***/
+

@@ -1,0 +1,51 @@
+
+# *Main manifest* - For Fx 59+ -------------------------------------
+
+#
+content  HideCaptionPlus    	            content/
+content  HideCaptionPlus_fx 	            content/
+
+#
+skin     HideCaptionPlus_fx   classic/1.0   skin/
+
+
+#use ANOTHER dir for this new filter... (otherwise I could 'cheat' and access aero&non-aero skins by chrome://hidecaptionplus_fx/skin/...)
+skin 	 HideCaptionPlus_os	  classic/1.0   skin_os/classic/ 		os!=WINNT
+skin 	 HideCaptionPlus_os	  classic/1.0   skin_os/classic/ 		os=WINNT osversion<6
+skin 	 HideCaptionPlus_os	  classic/1.0   skin_os/classic/aero/ 	os=WINNT osversion>=6
+
+
+## resource ----HideCaptionPlus	            resource/	
+
+
+
+# For MULTILANGUAGE !!! - access ALL locale files!! ----------------------------------------------------------------
+### deleted...HideCaption_loc/
+
+content       HideCaptionPlus_zh-CN        		content/
+locale        HideCaptionPlus_zh-CN   en-US  	../locale/zh-CN/
+
+content       HideCaptionPlus_en-US        		content/
+locale        HideCaptionPlus_en-US   en-US  	../locale/en-US/
+
+content       HideCaptionPlus_es          		content/
+locale        HideCaptionPlus_es      en-US  	../locale/es/
+
+content       HideCaptionPlus_es-ES        		content/
+locale        HideCaptionPlus_es-ES   en-US  	../locale/es-ES/
+
+content       HideCaptionPlus_et          		content/
+locale        HideCaptionPlus_et      en-US  	../locale/et/
+
+content       HideCaptionPlus_ru          		content/
+locale        HideCaptionPlus_ru      en-US  	../locale/ru/
+
+content       HideCaptionPlus_de          		content/
+locale        HideCaptionPlus_de      en-US  	../locale/de/
+
+content       HideCaptionPlus_ja-JP       		content/
+locale        HideCaptionPlus_ja-JP   en-US  	../locale/ja/
+
+content       HideCaptionPlus_uk          		content/
+locale        HideCaptionPlus_uk      en-US  	../locale/uk/
+

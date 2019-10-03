@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>mintray-reanimated@ysard</em:id>
+    <em:version>1.4.11</em:version>
+    <em:unpack>true</em:unpack>
+    <em:multiprocessCompatible>true</em:multiprocessCompatible>
+    <em:type>2</em:type>
+    <em:targetPlatform>WINNT_x86-msvc</em:targetPlatform>
+    <em:targetPlatform>WINNT_x86_64-msvc</em:targetPlatform>
+    <em:targetPlatform>Linux_x86-gcc3</em:targetPlatform>
+    <em:targetPlatform>Linux_x86_64-gcc3</em:targetPlatform>
+
+    <!-- Front End MetaData -->
+    <em:name>MinimizeToTray Reanimated</em:name>
+    <em:description>Minimizes windows into the system tray</em:description>
+    <em:creator>Nils Maier</em:creator>
+
+    <em:developer>Nils Maier</em:developer>
+    <em:contributor>Mook</em:contributor>
+    <em:contributor>helix400</em:contributor>
+    <em:contributor>Christoph Grimmer</em:contributor>
+    <em:contributor>rsjtdrjgfuzkfg</em:contributor>
+    <em:contributor>Ysard</em:contributor>
+    <em:contributor>kolinger</em:contributor>
+
+    <!-- Front End Integration Hooks (used by Extension Manager)-->
+    <em:homepageURL>https://github.com/ysard/mintrayr</em:homepageURL>
+    <em:optionsURL>chrome://mintrayr/content/prefs/prefs.xul</em:optionsURL>
+
+    <!-- Firefox -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>31.0</em:minVersion>
+        <em:maxVersion>56.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>60.0</em:minVersion>
+        <em:maxVersion>63.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Seamonkey -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+        <em:minVersion>2.29</em:minVersion>
+        <em:maxVersion>*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Palemoon -->
+    <em:targetApplication>
+        <Description>
+            <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
+            <em:minVersion>27.*</em:minVersion>
+            <em:maxVersion>28.*</em:maxVersion>
+        </Description>
+    </em:targetApplication>
+
+    <em:localized>
+        <Description>
+            <em:description>Minimizes windows into the system tray</em:description>
+            <em:creator>Nils Maier</em:creator>
+            <em:locale>en-US</em:locale>
+            <em:translator>Nils Maier</em:translator>
+            <em:contributor>Mook</em:contributor>
+            <em:contributor>helix400</em:contributor>
+            <em:contributor>Christoph Grimmer</em:contributor>
+            <em:developer>Nils Maier</em:developer>
+            <em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL>
+            <em:name>MinimizeToTray Reanimated</em:name>
+        </Description>
+    </em:localized>
+    <em:localized><Description><em:description>Minimalizovat okna do systémové oblasti</em:description><em:creator>Nils Maier</em:creator><em:locale>cs</em:locale><em:translator>Viktor Kleiner</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimerer vinduer til statusfeltet</em:description><em:creator>Nils Maier</em:creator><em:locale>da</em:locale><em:translator>Joergen</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimiert Fenster in den Infobereich</em:description><em:creator>Nils Maier</em:creator><em:locale>de</em:locale><em:translator>Nils Maier</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimiza las ventanas en la bandeja del sistema</em:description><em:creator>Nils Maier</em:creator><em:locale>es-ES</em:locale><em:translator>Proyecto Nave</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Réduit les fenêtres vers la zone de notification (systray)</em:description><em:creator>Nils Maier</em:creator><em:locale>fr</em:locale><em:translator>Jojaba</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>מזער חלונות למגש המערכת</em:description><em:creator>Nils Maier</em:creator><em:locale>he-IL</em:locale><em:translator>תומר כהן</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Ablakok elrejtése a tálcára</em:description><em:creator>Nils Maier</em:creator><em:locale>hu-HU</em:locale><em:translator>Mikes Kaszmán István</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Թաքցնում է պատուհանները էկրանի ներքևի մասում</em:description><em:creator>Nils Maier</em:creator><em:locale>hy-AM</em:locale><em:translator>Նիլս Մայեր</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Consente di ridurre il programma a icona nell'area di notifica</em:description><em:creator>Nils Maier</em:creator><em:locale>it</em:locale><em:translator>Underpass</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>ウィンドウをシステムトレイに最小化</em:description><em:creator>Nils Maier</em:creator><em:locale>ja-JP</em:locale><em:translator>Ryuhei Uchida</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimaliseert vensters naar het systeemvak</em:description><em:creator>Nils Maier</em:creator><em:locale>nl</em:locale><em:translator>markh van BabelZilla.org</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimalizuje okna do obszaru powiadamiania</em:description><em:creator>Nils Maier</em:creator><em:locale>pl</em:locale><em:translator>Nils Maier</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimiza janelas para a área de notificação</em:description><em:creator>Nils Maier</em:creator><em:locale>pt</em:locale><em:translator>Carlos Simão</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimiza janelas para a área de notificação do sistema</em:description><em:creator>Nils Maier</em:creator><em:locale>pt-BR</em:locale><em:translator>Marcelo Ghelman</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimiza janelas para a área de notificação</em:description><em:creator>Nils Maier</em:creator><em:locale>pt-PT</em:locale><em:translator>Carlos Simão</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimizează ferestrele în zona de notificare a sistemului</em:description><em:creator>Nils Maier</em:creator><em:locale>ro</em:locale><em:translator>Cătălin Zamfirescu</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Сворачивает текущее окно в трей</em:description><em:creator>Nils Maier</em:creator><em:locale>ru-RU</em:locale><em:translator>Alexander Mishkovets</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Pomanjša okna v sistemski pladenj</em:description><em:creator>Nils Maier</em:creator><em:locale>sl-SI</em:locale><em:translator>Martin Srebotnjak</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Умањивање прозора у системску траку послова.</em:description><em:creator>Nils Maier</em:creator><em:locale>sr</em:locale><em:translator>Nils Maier</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Minimerar fönster till meddelandefältet</em:description><em:creator>Nils Maier</em:creator><em:locale>sv-SE</em:locale><em:translator>Mikael Hiort af Ornäs</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Pencereyi Sistem Çekmecesine küçültür.</em:description><em:creator>Nils Maier</em:creator><em:locale>tr</em:locale><em:translator>Nils Maier</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>Згортає поточне вікно у системний трей</em:description><em:creator>Nils Maier</em:creator><em:locale>uk</em:locale><em:translator>Alexander Mishkovets</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>最小化窗口到系统托盘</em:description><em:creator>Nils Maier</em:creator><em:locale>zh-CN</em:locale><em:translator>Wang.H.K</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized><em:localized><Description><em:description>視窗最小化至系統列</em:description><em:creator>Nils Maier</em:creator><em:locale>zh-TW</em:locale><em:translator>BloodLust</em:translator><em:contributor>Mook</em:contributor><em:contributor>helix400</em:contributor><em:contributor>Christoph Grimmer</em:contributor><em:developer>Nils Maier</em:developer><em:homepageURL>https://github.com/ysard/mintrayr/</em:homepageURL><em:name>MinimizeToTray Reanimated</em:name></Description></em:localized></Description>
+</RDF>

@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/REC-html401/loose.dtd">
+<!-- $Id$ -->
+<html>
+<head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <title>URL Link Changelog</title> </head>
+<body> <pre>
+<b>URL Link XPI  (C) Neil Bird  mozilla@fnxweb.com</b>
+
+<i>For Firefox, use version 3+</i>
+
+2.05 : 23-sep-18
+- Update for Thunderbird 60
+- TBD: remove legacy Firefox code
+
+2.04.2 : 04-may-14
+- Add always-show-submenu option
+- Various bug fixes
+
+2.04.1 : 11-jul-11
+- Fix regression when using latest Firefox/Thunderbird and non-Latin1 selections.
+- A menu-handling security fix.
+
+2.04.0 : 21-jun-11
+Yeah, it's been a while.
+- Updated to work cleanly with FireFox 5+ and Thunderbird 5 with new packaging style.
+- Now works in Thunderbird's compose window.
+- Fixed ampersand in Thunderbird HTML links.
+- Added more special Thunderbird-selection newline processing.
+- Try to fall-back to Windows encoding for file: links when appropriate (Artur Milczarek)
+- Now handles right-clicked file: links as well.
+
+2.03.4 : 30-nov-09
+- Now works with selections in the Thunderbird compose window.
+
+2.03.3 : 22-oct-09
+- Make it work with "Shredder" (Thunderbird 3.0pre's name)
+
+2.03.2 : 26-sep-09
+- Shortcut keys now work! (&lt;Ctrl-]&gt; and &lt;Alt-Ctrl-]&gt;)
+  Key shortcuts can be changed with keyconfig extension.
+  http://kb.mozillazine.org/Keyconfig_extension
+
+2.03.1 : 2-jul-09
+- Add new custom search and replace options
+- Re-organise code-base to prevent pullution of global namespace
+- Enhance selection tidying logic
+* Some translations not yet completed;
+  please feel free to help out at http://www.babelzilla.org/.
+
+2.02.4 : 15-jun-09
+- Update to work with Thunderbird 3.0b2
+- Allow '()' in URLs when paired (e.g., wikipedia links)
+- Allow '@' in URLs (don't encode) for mailto:* custom entries
+- Recurse mail selections to try to get best text out of HTML selections
+
+2.02.3 : 11-oct-08
+Roll up 2.02.99a
+
+  2.02.99a : 05-oct-08
+  - Guarantee rogue '&gt;' fix in prefs. window checked in
+  - Fix load of default prefs. (first time)
+  - Prevent javascript: being processed for large JS script/links
+  - [Seemingly] Fix menu editing turning items 'undefined'
+    [didn't do anything beyuond the above but it now works?]
+
+2.02.2 : 22-apr-07
+Fix '&amp;'s in URLs (in Thunderbird, at least)
+
+2.02.1 : 14-mar-07
+Release for Firefox 3 beta 4 (no other changes)
+
+2.02.0 : 7-jan-07
+Release for Firefox 3;  rolling up changes from the following beta releases:
+
+  2.01.99c : 7-jan-07
+  - Fix prefs. windows under Firefox 3
+  - Update all locales to date
+
+  2.01.99b : 4-dec-07
+  - Tidy up hide open/tab prefs. (radiogroup now)
+
+  2.01.99a : 30-nov-07
+  - Make Thunderbird text selection better to allow spaces in text but remove line breaks
+  - Add menu shortcuts, and parse '&amp;' from prefs. to let users add their own
+  - New options:
+    - Prefer new window.  Normally we 'follow' links, &amp; &lt;Shift&gt; opens new window;  this option inverts that logic.
+    - Only show normal open options (hide tab options);  this option overrides the only-tabs option
+    - Only show tab open options (hide normal open options)
+  - Should now cope with multiple selection (Firefox 3);  these are added with spaces between them
+  - Default 'www.' and 'ftp.' options have '*' in them now, as there was a report of it failing otherwise
+  - Given up trying to make keyboard shortcuts work cleanly.  Use the &lt;menu&gt; key and the menu shortcuts ...
+
+2.01.0 : 01-may-07
+Rolling up changes from the following beta releases:
+
+  2.00.99c : 19-apr-07
+  - Fixes for TB 2
+  - New pref. to allow context menu to be at top (new default) or bottom (old behaviour)
+
+  2.00.99b : 1-apr-07
+  - '--' in custom menu creates a separator
+  - move URL Link items to top of context menu
+  - Add Changelog button to allow access to it in TB
+    Make Changelog HTML, ditto.
+
+  2.00.99 : 11-feb-07
+  - [2.01 pre-release for Babelzilla]
+  - Allow &lt;Shift&gt; click to open in new window (Firefox)
+  - Add special page for Help so that it works in Thunderbird
+
+2.00.3 : 21-jan-07
+- Fix typo. limiting use to Thunderbird 1.5 (should be 1.5.0.*).
+
+2.00.2 : 30-dec-06
+- Loads more translations
+- More advanced javascript: processing (should work with kelkoo again)
+- Start implementing custom search'n'replace
+  (some defaults already present: '&amp;amp;' replacement and '\' to '/'
+  conversion)
+
+2.00.1 : 24-oct-06
+- Croatian &amp; preliminary Russian
+- Corrected manifest to actually include the more recent translartions (!)
+
+2.00.0 : 14-oct-06
+- Preferences!
+- Help!
+- Babelzilla!
+
+1.07.0 : 27-sep-06
+- Firefox 2 compatability
+- Some minor internal reorganisation
+
+1.06.9 : 20-apr-06
+- Added Hungarian translations (Szarka Peter)
+
+1.06.8 : 05-apr-06
+- Add partial workaround for Mozilla bug 183496;
+  this allows you to 'follow' broken links that have also been quoted in emails:
+    &gt; &gt; http://www.broken
+    &gt; &gt; link.com/
+  This will now also work in Firefox, for what it's worth.
+
+1.06.7 : 31-jan-06
+- Correctly strip &lt;cr&gt; from browser selections
+  (workaround toString() bug)
+- Fix 'open with ftp.'
+
+1.06.6 : 29-jan-06
+- German translations from Martin Hoppen
+- Use new-style 'referer' code (got changed in FF/TB 1.5)
+- Try to honour 'open tabs in background' Firefox pref.
+
+1.06.5 : 13-nov-05
+- .4 was borked (undid .2 fix)
+
+1.06.4 : 13-nov-05
+- Deal with '&gt;'s in quoted broken links
+
+1.06.3 : 12-nov-05
+- No-change up-issue to register 1.5 compat.
+
+1.06.2 : 29-aug-05
+- Fix document.getReferrer() now missing in trunk
+
+1.06.1 : 26-jul-05
+- Fix rawSearchSelected for TB 1.0.6
+
+1.06 : 09-jun-05
+- Enhance javascript parsing, and fix priorities of
+  selection, erm, selection
+
+1.05.2 : 12-mar-05
+- IT translations ("MatrixIsAllOver")
+
+1.05.1 : 03-mar-05
+- Minor JS error with Thunderbird separator
+
+1.05 : 28-feb-05
+- Fix missing separator when new submenus present
+- Add extended javascript: link processing
+
+1.04 : 02-feb-05
+- Fix glitch with textbox selections
+- Always allow selections to be followed
+  (with possible amendments)
+- Cope with mailto: links
+
+1.03.1 : 03-jan-05
+- Add French translations (Olivier Grange-Labat)
+
+1.03 : 25-nov-04
+- Change mechanism for greying out menu options
+
+1.02 : 22-nov-04
+- Add profile installation &amp; Firefox/Thunderbird
+  extension compatibility
+
+1.01 : 20-jan-04
+- Include correct (latest) urllink.jar (!)
+  (tabbed opening was broken)
+
+1.00 : 06-may-03
+- Rename to URL link, incorporating textlink
+
+0.06 : 12-mar-03
+- only convert &lt;space&gt; to "%20" for file: URLs, assume others
+  should be "" (Moz bug converts &lt;CR&gt;s to &lt;space&gt;?)
+
+0.05 : 02-jan-03
+- fix conversion of driver-letter link to file: URL (need colon)
+
+0.04 : 29-nov-02
+- re-insert seperator
+- fix install script to allow continuous installs
+  (handle err==999)
+
+0.03 : 27-nov-02
+- make to work with local NT file specs.
+  ("\\server\dir\file")
+
+0.02 : 27-nov-02
+- seems to be working OK with normal URLs
+
+0.01 : 27-nov-02
+- first version with an actual menu entry up!
+</pre> </body> </html>

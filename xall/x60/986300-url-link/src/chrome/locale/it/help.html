@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/REC-html401/loose.dtd">
+<!-- $Id$ -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Contenuti guida</title>
+  </head>
+  <body>
+    <h2><img src="chrome://urllink/content/urllink.png" alt="logo">&nbsp;&nbsp;URL Link</h2>
+
+    <h3>Utilizzo</h3>
+    <p>
+    Permette di aprire nella stessa scheda oppure in una nuova selezioni del testo e link testuali presenti nelle pagine web e link testuali presenti in
+    messaggi di posta elettronica o di gruppi di discussione tramite clic con tasto destro del mouse e selezione di una fra le voci aggiunte da URL Link
+    <ul>
+      <li>
+      Se il testo &egrave; un link selezionabile, si potr&agrave; aprirlo
+      direttamente (o in una nuova scheda) tramite “Apri selezione”
+      </li>
+      <li>
+      Se il testo <i>non &egrave;</i> un link selezionabile, si aprir&agrave; un sottomenu
+      che permetter&agrave; di aprire il testo selezionato come un vero link, o di effettuare
+      prima alcune conversioni personalizzabili (<i>es:</i> Con “www.*.com”)
+      </li>
+      <li>
+      Nella finestra delle opzioni, dove &egrave; possibile determinare la posizione degli
+      elementi di menu, &egrave; possibile anche aggiungere separatori i cui elementi
+      consistono in semplici trattini. Es: <tt>"--"</tt>
+      </li>
+      <li>
+      Le voci di menu personalizzate possono contenere qualsiasi URL, indipendentemente dalla lunghezza.
+      Il primo segno '*' verr&agrave; sostituito dalla selezione. &Egrave; possibile abbreviare ci&ograve;
+      che apparir&agrave; nel menu inserendo un alias nell'elemento prima della barra '|'<br>
+      Es: <tt>"Nome breve|http://www.longname.com/q=*"</tt>
+      </li>
+      <li>
+      In Firefox, tenere premuto il tasto &lt;Maiusc&gt; quando si seleziona 'Apri' per aprire
+      il link in una nuova finestra invece di aprirlo in quella attuale
+      </li>
+      <li>
+      Nella finestra delle opzioni &egrave; possibile selezionare 'Mostra in cima al menu contestuale'
+      per posizionare le voci di menu di URL Link in cima al menu contestuale
+      </li>
+    </ul>
+
+    <h3>Funzionalit&agrave;</h3>
+    <ul>
+      <li>
+      URL Link &egrave; una piccola estensione per Firefox e Thunderbird che permette di
+      selezionare un &quot;non URL&quot; in un messaggio di posta elettronica o in una
+      pagina web e di aprirlo in una finestra del browser
+      </li>
+
+      <li>
+      Per i messaggi di posta elettronica, ripristina quei link interrotti da parecchie linee
+      e sostituisce gli spazi degli indirizzi web con il codice &quot;%20&quot; affinch&eacute; sia
+      possibile aprire i link di file in rete (che sono rilevati automaticamente da Windows come &quot;X:&quot;
+      o come riferimenti di rete UNC)
+      </li>
+
+      <li>
+      Per le pagine web, permette di selezionare link testuali o URL nelle pagine
+      web o nei campi di testo ed aprirli sempre come fossero veri link. URL Link permette inoltre
+      di analizzare i link di tipo &quot;mailto:&quot;
+      </li>
+
+      <li>
+      URL Link permette di analizzare i link di tipo &quot;mailto:&quot; convertendoli
+      (<i>es:</i> mailto:someone@somesite.com diventa http://www.somesite.com)
+      affinch&eacute; sia possibile visitare il sito web relativo
+      </li>
+
+      <li>
+      URL Link permette di aprire anche link di tipo JavaScript che altrimenti
+      aprirebbero pop-up (<i>es:</i> http://www.kelkoo.co.uk/ - anche se recentemente
+      sono stati modificati alcuni dei link ed essi non sono
+      pi&ugrave; apribili direttamente)
+      </li>
+    </ul>
+	
+	<h3>Stringhe di ricerca/sostituzione</h3>
+    <p>
+    &Egrave; possibile applicare le stringhe di ricerca/sostituzione alla selezione. Le impostazioni
+    predefinite corrispondono a due valori presenti nelle precedenti versioni di URL Link
+    (per Thunderbird) e che attualmente possono essere aggiunti o sostituiti: la sostituzione avviene
+    dopo l&apos;eliminazione di porzioni di codice in eccedenza all'inizio ed alla fine
+    dell&apos;espressione regolare e dopo la conversione di tutti i segni grafici “\\”
+    nel segno grafico “//”
+    <p>
+    Il formato dell&apos;elemento nella finestra delle impostazioni corrisponde a
+    “searchRegExp||Replacement||regExpFlags”. I segni grafici finali “||” e gli 
+    indicatori sono opzionali; l&apos;indicatore di JavaScript probabilmente pi&ugrave; utile 
+	corrisponde a 'g' per “global” (oppure “replace-all”). Nell&apos;espressione per la
+    sostituzione potrebbero essere presenti i riferimenti usuali “$n” del modello di ricerca
+    <p>
+    <i>Es:</i> si ricevono e-mail contenenti link di Windows a file come
+    “\\server\share\file”. Se si &egrave; in ambiente Linux si avrebbe una finestra
+    di condivisione mappata come “/mnt/smb/username/share”. &Egrave; possibile aggiungere
+    un elemento alla fine della lista (da notare che i segni grafici “\\” sono gi&agrave;
+    stati convertiti e che gli elementi predefiniti convertono “//server/share” in
+    “file:///server/share”) del modulo
+    “file:///server/share||file:///mnt/smb/username/share”
+    <p>
+    Per effettuare il debug delle espressioni basta aggiungere (in URL Link) all&apos;espressione regolare lo speciale
+    indicatore “D” nella seguente maniera: ‘From||To||D’. In questo modo URL Link aprir&agrave; una finestra di avviso
+    contenente i dati attuali dell&apos;espressione regolare (“Conversion:”), a che punto
+    si trova la selezione (“From:”) e quali effetti ha prodotto l&apos;espressione regolare
+    alla selezione (“To:”)
+
+    <h3>Prossime modifiche</h3>
+    <ul>
+      <li>
+      Estensione di modifica di ricerca e sostituzione di stringhe quando &egrave; possibile permettere
+      in maniera stabile codice JavaScript arbitrario per la selezione
+      </li>
+      <li>
+      Possibilit&agrave; di spostare alcuni dei sottomenu personalizzati direttamente nel
+      menu contestuale
+      </li>
+    </ul>
+
+    <!-- START DO NOT TRANSLATE -->
+    <h3>Translations</h3>
+    <p>
+    If you would like to help by translating URL Link to your native language,
+    you can either sign up to <a
+      href="http://www.babelzilla.org/">Babelzilla</a> and do it automatically,
+    or <a href="mailto:mozilla@fnxweb.com">email me</a> translated versions of
+    the data files you'll find <a href="http://www.fnxweb.com/data/urllink/">on
+      my website</a>.
+    </p>
+    <p>
+    Don't include this section of the help file, though!
+    <p>
+    <!-- END DO NOT TRANSLATE -->
+
+    <h3>Contatti</h3>
+    <ul>
+      <li>
+      <a href="http://www.fnxweb.com/software-mozilla">Sito web</a> dell'autore
+      </li>
+      <li>
+      <a href="https://addons.mozilla.org/firefox/403/">Pagina ufficiale di AMO</a> inerente a URL Link
+      </li>
+      <li>
+      <a href="mailto:mozilla@fnxweb.com">Invia un'e-mail</a> all'autore
+      </li>
+    </ul>
+
+    <h3>Licenza</h3>
+    <p>
+    Il codice sorgente dell&apos;estensione, come quello di Mozilla, viene rilasciato sotto
+    triplice licenza (libera/open source). L&apos;utilizzatore finale ha quindi la possibilit&agrave;
+    di scegliere una delle seguenti tre licenze:
+    </p>
+    <ul>
+      <li><a href="MPL-1.1.html">Mozilla Public License, versione 1.1</a> o successive</li>
+      <li><a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, versione 2.0</a> o successive</li>
+      <li><a href="http://www.gnu.org/licenses/lgpl-2.1.html">GNU Lesser General Public License, versione 2.1</a> o successive</li>
+    </ul>
+
+    <p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01
+      Transitional" height="31" width="88"></a>
+    </p>
+  </body>
+</html>
+
