@@ -5,10 +5,11 @@
             "id": 85036,
             "name": "Philipp Kewisch",
             "url": "https://addons.thunderbird.net/en-US/thunderbird/user/kewisch/",
-            "username": "kewisch"
+            "username": "kewisch",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/85/85036.png?modified=1509020086"
         }
     ],
-    "average_daily_users": 4775,
+    "average_daily_users": 4750,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -40,6 +41,16 @@
             }
         ],
         "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "* Fix right click menu disappearing"
+        },
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quick-folder-move/versions/1.6.1",
         "version": "1.6.1"
@@ -49,9 +60,7 @@
         "en-US": "Use the keyboard to quickly move messages and navigate folders. First of all, use one of the following keyboard shortcuts:\n<ul>  <li><b>Shift+M</b> opens a context menu that allows you to move the currently selected messages to another folder</li> <li><b>Shift+Y</b> opens a context menu that allows you to copy the currently selected messages to another folder</li>  <li><b>Shift+G</b> opens a context menu that allows you to navigate to the folder you've entered</li> </ul>Then enter parts of the folder you want to move/copy the message to. Pressing Enter will move the message to the first entry in the search results. If you'd rather use the context menus, the Move To/Copy To context menus have also been modified to use the quick folder move menu.",
         "de": "Benutze die Tastatur um schnell Nachrichten zu verschieben und zwischen Ordnern zu wechseln. Folgende Tastaturkürzel werden dabei verwendet:\n<ul>  <li><b>Umschalt+M</b> öffnet ein Menü um aktuell ausgewählte Nachrichten in einen anderen Ordner zu verschieben</li>  <li><b>Umschalt+G</b> öffnet ein Menü um schnell zu einem beliebigen Ordner navigieren</li></ul>In dem Menü besteht die Möglichkeit einen Teil des Ordnernames einzugeben zu dem man navigieren bzw. in den man Nachrichten verschieben möchte. Durch drücken der Eingabetaste wird das erste Resultat ausgewählt. Sollten Sie es bevorzugen Nachrichten durch einen Rechtsklick auf die Nachricht zu verschieben oder zu kopieren, so kann auch hier der Ordner schnell gesucht werden.\n\n<b>BEKANNTE PROBLEME</b>\nNutzt man Umschalt+G und wählt man einen aktuell nicht sichtbaren Ordner so wird die Ordneransicht auf \"Alle Ordner\" geändert."
     },
-    "developer_comments": {
-        "de": "Dies ist die erste version. Ich habe den code noch nicht so sehr verallgemeinert, also funktioniert es momentan nur mit dem \"Verschieben Nach\" menü. Eine zukünftige Version könnte auch das \"Kopieren Nach\" Menü verändern."
-    },
+    "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quick-folder-move/edit",
     "guid": "quickmove@mozilla.kewis.ch",
     "has_eula": false,

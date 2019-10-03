@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/702920-thunderhtmledit/src)  
-Current XPI: [XPI](x68/702920-thunderhtmledit/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/702920-thunderhtmledit/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/702920-thunderhtmledit/xpi)  
 
 
 

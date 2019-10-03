@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/116388-automatic-dictionary-switching/src)  
-Current XPI: [XPI](x68/116388-automatic-dictionary-switching/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/116388-automatic-dictionary-switching/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/116388-automatic-dictionary-switching/xpi)  
 
 
 

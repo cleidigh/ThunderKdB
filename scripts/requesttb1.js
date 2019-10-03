@@ -515,14 +515,14 @@ async function g1() {
 	let startTime = new Date();
 	console.debug('' + startTime);
 
-	// extsJson = fs.readJSONSync(extsAllJsonFileName);
-	await getAllExtensionDetails(1, 56);
+	extsJson = fs.readJSONSync(extsAllJsonFileName);
+	// await getAllExtensionDetails(1, 56);
 
 	console.debug('TotalExtensions: '+extsJson.length);
 	// extsJson = extArray;
 	// try {
 	let p = [];
-	for (let index = 60; index < 50; index++) {
+	for (let index = 0; index < 67; index++) {
 		console.debug('GetIndex ' + index);
 		p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 

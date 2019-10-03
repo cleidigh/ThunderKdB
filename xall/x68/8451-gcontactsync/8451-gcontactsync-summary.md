@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/8451-gcontactsync/src)  
-Current XPI: [XPI](x68/8451-gcontactsync/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/8451-gcontactsync/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/8451-gcontactsync/xpi)  
 
 
 

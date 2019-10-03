@@ -12,8 +12,8 @@ Max: *
 
 # Files
 
-Source Tree: [Src](x68/11005-shrunked-image-resizer/src)  
-Current XPI: [XPI](x68/11005-shrunked-image-resizer/xpi)  
+Source Tree: [Src](C:/Dev/Thunderbird/ThunderKdB/xall/x68/11005-shrunked-image-resizer/src)  
+Current XPI: [XPI](C:/Dev/Thunderbird/ThunderKdB/xall/x68/11005-shrunked-image-resizer/xpi)  
 
 
 
