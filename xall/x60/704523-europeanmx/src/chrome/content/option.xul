@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://europeanmx/locale/europeanmx.dtd">
+
+<prefwindow id="europeanmxOptions" title="EuropeanMX"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://europeanmx/content/europeanmx.js"/>
+
+	<prefpane id="pref-pane1">
+		<!-- europeanmx preferences -->
+		<preferences>
+			<preference id="europeanmx_showInToolbar" name="extensions.europeanmx.showInToolbar" type="bool"/>
+			<preference id="europeanmx_showInMenu" name="extensions.europeanmx.showInMenu" type="bool"/>
+
+			<preference id="europeanmx_spam_tagAsJunk" name="extensions.europeanmx.spam.tagAsJunk" type="bool"/>
+			<preference id="europeanmx_spam_moveToTrash" name="extensions.europeanmx.spam.moveToTrash" type="bool"/>
+		</preferences>
+
+		<vbox flex="1">
+			<label value="&europeanmx.option.general.show;"/>
+			<checkbox preference="europeanmx_showInToolbar" label="&europeanmx.option.general.showintoolbar;"/>
+			<checkbox preference="europeanmx_showInMenu" label="&europeanmx.option.general.showinmenu;"/>
+			<separator/>
+			<label value="&europeanmx.option.action;" />
+			<checkbox preference="europeanmx_spam_tagAsJunk" label="&europeanmx.option.tagAsJunk;" />
+			<checkbox preference="europeanmx_spam_moveToTrash" label="&europeanmx.option.moveToTrash;" />
+		</vbox>
+	</prefpane>
+</prefwindow>

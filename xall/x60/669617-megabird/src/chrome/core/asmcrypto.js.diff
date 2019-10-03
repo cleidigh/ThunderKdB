@@ -1,0 +1,12 @@
+--- asmcrypto.js	2015-02-26 01:28:39.900040800 +0100
++++ asmcrypto.js	2015-03-02 05:57:11.406846400 +0100
+@@ -8185,6 +8185,9 @@
+             buffer = new Uint8Array(32);
+             _global_crypto_getRandomValues.call(_global_crypto, buffer);
+             _isaac_seed(buffer);
++        } else if (typeof Components !== undefined) {
++            _isaac_seed(new Uint8Array(Components.classes["@mozilla.org/security/random-generator;1"]
++                .createInstance(Components.interfaces.nsIRandomGenerator).generateRandomBytes(32)));
+         } else {
+             var buffer = new FloatArray(3), i, t;
+             buffer[0] = _global_math_random();

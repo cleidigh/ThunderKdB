@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://torpedo/locale/instruction.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		title="&showdefaults;"
+		buttons="cancel"
+		buttonlabelcancel="&close;"
+		ondialogcancel="return true;"
+		onload='torpedo.db.getDefaults();'>
+
+    <script type="application/javascript"  src="chrome://torpedo/content/lib/database.js" />
+		<script type="application/x-javascript" src="chrome://torpedo/content/lib/preferences.js"/>
+
+		<stringbundleset>
+      <stringbundle id="torpedo-string-bundle" src="chrome://torpedo/locale/main-strings.properties"/>
+    </stringbundleset>
+
+		<vbox style="min-height:380px">
+			<listbox id="defaultList" width="300"  style="min-height:360px">
+			  <listcols>
+			    <listcol flex="1"/>
+			  </listcols>
+			</listbox>
+		</vbox>
+</dialog>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this file,
+   - You can obtain one at http://mozilla.org/MPL/2.0/.  -->
+
+<!DOCTYPE html [
+  <!ENTITY % htmlDTD PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd"> %htmlDTD;
+  <!ENTITY % managementDTD SYSTEM "chrome://messenger/locale/cloudfile/management.dtd"> %managementDTD;
+  <!ENTITY % subscribeDTD SYSTEM "chrome://messenger/locale/subscribe.dtd"> %subscribeDTD;
+  <!ENTITY % megaDTD SYSTEM "chrome://mega-filelink/locale/management.dtd"> %megaDTD;
+]>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <script type="application/javascript"
+        src="chrome://mega-filelink/content/management.js"/>
+    <link rel="stylesheet" type="text/css"
+        href="chrome://messenger/skin/preferences/preferences.css" />
+    <link rel="stylesheet" type="text/css"
+        href="chrome://mega-filelink/content/management.css" />
+  </head>
+  <body id="provider-management">
+    <div id="provider-header">
+      <div id="provider-terms">
+        <a href="https://mega.nz/#privacy">&cloudfileMgmt.privacyPolicy;</a>
+        <a href="https://mega.nz/#terms">&cloudfileMgmt.termsOfService;</a>
+      </div>
+      <div id="provider-name">
+		<img src="chrome://mega-filelink/content/management.png" height="50" alt="MEGA" />
+      </div>
+	  <div style="clear:both"></div>
+    </div>
+    <div xid="provider-spacebox">
+      <!--div xid="provider-space-visuals"></div-->
+      <div id="provider-spacex">
+		<canvas id="provider-space-canvas" width="150" height="150"></canvas>
+		<ul id="provider-space-ul">
+			<li><div></div><span></span><strong></strong></li>
+			<li><div></div><span></span><strong></strong></li>
+			<li><div></div><span></span><strong></strong></li>
+			<li><div></div><span></span><strong></strong></li>
+			<li><div></div><span>&cloudfileMgmt.usedSpace;</span><strong></strong></li>
+			<li><div></div><span>&cloudfileMgmt.unusedSpace;</span><strong></strong></li>
+		</ul>
+		<div style="clear:both"></div>
+      </div>
+    </div>
+    <div id="upgrade"><a href="https://mega.nz/#pro">&cloudfileMgmt.upgradeOffer;</a></div>
+    <!--div id="provider-account-settings"><a href="https://mega.nz/#account">&megaMgmt.viewSettings;</a></div--> 
+    <div id="provider-account-settings">&server.label; <a href="https://mega.nz/#account"></a></div> 
+  </body>
+</html>

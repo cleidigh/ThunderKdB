@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>plugins@europeanmx.eu</em:id>
+		<em:version>1.0</em:version>
+		<em:type>2</em:type>
+
+		<!-- About the plugin -->
+		<em:name>EuropeanMX</em:name>
+		<em:description>Train your EuropeanMX filter by reporting unrecognized spam or false-positives back to us.</em:description>
+		<em:creator>EuropeanMX</em:creator>
+		<em:developer>Eunetic GmbH</em:developer>
+		<em:homepageURL>https://europeanmx.eu</em:homepageURL>
+
+		<em:localized>
+			<Description>
+				<em:locale>de-DE</em:locale>
+				<em:name>EuropeanMX</em:name>
+				<em:description>Melden Sie unerkannte Spam-Mails oder aber zu unrecht als Spam erkannte E-Mails und trainieren Sie damit bequem Ihren EuropeanMX Filter.</em:description>
+			</Description>
+		</em:localized>
+
+		<!-- Preference window -->
+		<em:optionsURL>chrome://europeanmx/content/option.xul</em:optionsURL>
+
+		<!-- Plugin icon -->
+		<em:iconURL>chrome://europeanmx/skin/icon.png</em:iconURL>
+		<em:icon64URL>chrome://europeanmx/skin/icon64.png</em:icon64URL>
+
+		<!-- Target Application this extension can install into,
+		with minimum and maximum supported versions. -->
+		<em:targetApplication>
+			<Description>
+				<!-- Seamonkey -->
+				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+				<em:minVersion>2.0.*</em:minVersion>
+				<em:maxVersion>2.1.*</em:maxVersion>
+			</Description>
+			<Description>
+				<!--Thunderbird-->
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>2.0</em:minVersion>
+				<em:maxVersion>46.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+	</Description>
+</RDF>

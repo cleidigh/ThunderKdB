@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://tategaki/locale/tategakiCompose.dtd">
+
+<overlay id="tategaki_overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://tategaki/content/tategakiCompose.js"/>
+
+  <commandset id="composeCommands">
+    <command id="cmd_toggleTategaki" oncommand="Tategaki.toggleWritingMode()" />
+    <command id="cmd_tatechuyoko" oncommand="Tategaki.tateChuYoko()" />
+  </commandset>
+
+  <!-- Edit menu  -->
+  <menu id="menu_Edit">
+    <menupopup id="menu_EditPopup">
+      <menuitem id="menu_tategaki"
+          command="cmd_toggleTategaki"
+          label="&tategaki.menu.label;" accesskey="&tategaki.menu.accesskey;"
+          insertbefore="menu_rewrap" />
+    </menupopup>
+  </menu>
+
+  <!-- Compose window toolbar  -->
+  <toolbar id="composeToolbar2">
+    <toolbarbutton id="button-tategaki"
+        command="cmd_toggleTategaki"
+        type="checkbox" autocheck="false" checked="false"
+        label="&tategaki.button.label;" tooltiptext="&tategaki.button.tooltip;"
+        image="chrome://tategaki/content/icon/tategaki-toolbar.ico"
+        insertbefore="button-attach" removable="true" />
+  </toolbar>
+
+  <!-- HTML compose toolbar -->
+  <toolbar id="FormatToolbar">
+    <toolbarbutton id="textCombineUpright" class="formatting-button"
+        label="&tateChuYoko.button.label;" tooltiptext="&tateChuYoko.button.tooltip;"
+        image="chrome://tategaki/content/icon/tcy-blueGrad.ico"
+        insertafter="AlignPopupButton" command="cmd_tatechuyoko"
+        hidden="true" />
+  </toolbar>
+
+</overlay>

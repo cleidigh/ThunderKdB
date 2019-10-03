@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://torpedo/locale/instruction.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		title="&clearentries;"
+		buttons="accept,cancel"
+		buttonlabelcancel="&no;"
+		buttonlabelaccept="&yes;"
+		ondialogaccept="torpedo.dialogmanager.createInfo(); torpedo.db.deleteAllSecond(); return true;"
+		ondialogcancel="return true;"
+		onload='var torpedo = torpedo || {};
+				if(torpedo.textSize="100%") document.getElementById("deleteInfo").style.fontSize="100%";
+    			else document.getElementById("deleteInfo").style.fontSize="115%";'>
+	<script type="application/javascript"  src="chrome://torpedo/content/dialog/instruction.js" />
+	<script type="application/javascript" src="chrome://torpedo/content/lib/dialogmanager.js"/>
+    <script type="application/javascript" src="chrome://torpedo/content/lib/database.js"/>
+	<script type="application/x-javascript" src="chrome://torpedo/content/lib/preferences.js"/>
+
+	<stringbundleset>
+		<stringbundle id="torpedo-string-bundle" src="chrome://torpedo/locale/main-strings.properties"/>
+  </stringbundleset>
+
+	<vbox>
+		<label id="deleteInfo" value="&sure;"/>
+	</vbox>
+</dialog>

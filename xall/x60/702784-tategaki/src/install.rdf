@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>tategaki@marsf.jp</em:id>
+    <em:type>2</em:type>
+    <em:hasEmbeddedWebExtension>true</em:hasEmbeddedWebExtension>
+    <em:name>Tategaki</em:name>
+    <em:version>0.2.2</em:version>
+    <em:description>Tategaki allows vertical writing-mode on mail compose window.</em:description>
+    <em:creator>marsf</em:creator>
+    <em:homepageURL>https://www.geocities.jp/chimantaea_mirabilis/tategaki/</em:homepageURL>
+    <!-- em:optionsURL>chrome://tategaki/content/setting.xul</em:optionsURL -->
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+      <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+      <em:minVersion>45.0</em:minVersion>
+      <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <!-- SeaMonkey -->
+    <em:targetApplication>
+      <Description>
+      <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+      <em:minVersion>2.42</em:minVersion>
+      <em:maxVersion>2.50.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://nocomposeaccount/locale/noComposeAccount.dtd" >
+<dialog xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   onload="noComposeAccount.prefManager.initPrefs();"
+   ondialogaccept="noComposeAccount.prefManager.setPrefs();"
+   title="&prefs.window.title;">
+
+   <script language="javascript" src="chrome://nocomposeaccount/content/constructor.js" />
+   <script language="javascript" src="chrome://nocomposeaccount/content/addon.js" />
+   <script language="javascript" src="chrome://nocomposeaccount/content/prefs.js" />
+   <script language="javascript">var pref = noComposeAccount.prefManager;</script>
+
+   <vbox>
+      <groupbox>
+         <caption label="&prefs.section.1.head;" />
+         <description></description>
+         <grid>
+            <columns>
+               <column />
+               <column />
+            </columns>
+
+            <rows>
+				<row>
+					<radiogroup id="defCompBehavior" onclick="pref.EvalBehaviorSelection(this);">
+					  <radio label="&prefs.section.1.optDontChange;" value="defComp.nothing"/>
+					  <radio label="&prefs.section.1.optBlank;" value="defComp.blank"/>
+					  <radio label="&prefs.section.1.optDefault;" value="defComp.default"/>
+					</radiogroup>
+				</row>
+            </rows>
+         </grid>
+      </groupbox>
+	  
+      <groupbox>
+        <caption label="&prefs.section.2.head;" />
+		<grid>
+			<columns>
+			   <column />
+			   <column />
+			</columns>
+
+			<rows>
+				<row>
+					<checkbox id="defComp.appliesOnComposeNew" label="&prefs.section.2.optCompose;" />
+				</row>
+				<row>
+					<checkbox id="defComp.appliesOnReply" label="&prefs.section.2.optReply;" /> 
+				</row>
+			</rows>
+		</grid>
+      </groupbox>
+	  
+	  <groupbox>
+        <caption label="&prefs.section.4.head;" />
+		<grid>
+			<columns>
+			   <column />
+			   <column />
+			</columns>
+			
+			<rows>
+				<row>
+					<checkbox id="defComp.force" label="&prefs.section.4.force;" />
+				</row>
+			</rows>
+		</grid>
+      </groupbox>
+	  <!--
+	  <groupbox>
+         <caption label="&prefs.section.3.head;" />
+         <description></description>
+         <grid>
+            <columns>
+               <column />
+               <column />
+            </columns>
+
+            <rows>
+				<row>
+					<radiogroup id="defTiggerBehavior" onclick="pref.EvalBehaviorSelection(this);">
+					  <radio label="&prefs.section.3.optOnFocus;" value="triggerOnFocus"/>
+					  <radio label="&prefs.section.3.optOnNew;" value="triggerOnNew"/>
+					</radiogroup>
+				</row>
+            </rows>
+         </grid>
+      </groupbox>
+	  -->
+   </vbox>
+</dialog>

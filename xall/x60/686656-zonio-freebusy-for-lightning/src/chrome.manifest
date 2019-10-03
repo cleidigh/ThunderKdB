@@ -1,0 +1,9 @@
+content  zonio-freebusy           chrome/content/
+resource zonio-freebusy           ./
+locale   zonio-freebusy   en-US   chrome/locale/en-US/
+locale   zonio-freebusy   cs      chrome/locale/cs/
+skin     zonio-freebusy   classic chrome/skin/
+
+component {2378ee03-7b47-4ae5-9f11-4c41d2ac0b50} components/provider.js
+contract @zonio.net/freebusy/provider;1 {2378ee03-7b47-4ae5-9f11-4c41d2ac0b50}
+category profile-after-change zonio-freebusy-provider @zonio.net/freebusy/provider;1
