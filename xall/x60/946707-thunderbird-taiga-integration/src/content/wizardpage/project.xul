@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://taiga/locale/wizardpage/project.dtd">
+
+<overlay 
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    id="taiga-overlay">
+    
+  <wizard id="taiga-wizard">
+    
+    <script src="chrome://taiga/content/wizardpage/project.js" />
+
+    <wizardpage 
+        id="taiga-wizardpage-project"
+        pageid="taiga-wizardpage-project"
+        label="&taiga-choose-project;"
+        onpageshow="taiga.wizardpage.project.onPageShow()">
+
+      <label 
+        control="taiga-project-list" 
+        value="&taiga-available-projects;" />
+        
+      <separator/>
+      
+      <listbox 
+        id="taiga-project-list"
+        height="330"
+        rows="9">
+      </listbox>
+      
+      <description>&taiga-project-list-description;</description>
+
+    </wizardpage>
+  </wizard>
+</overlay>

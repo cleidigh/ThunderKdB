@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://esign/skin/default/styles/esign.css" type="text/css"?>
+<?xml-stylesheet href="chrome://esign/skin/default/styles/esignMsgComposeOverlay.css" type="text/css"?>
+
+<!DOCTYPE window [
+        <!ENTITY % esignDTD SYSTEM "chrome://esign/locale/esign.dtd" >
+        %esignDTD;
+        <!ENTITY % messengercomposeDTD SYSTEM "chrome://messenger/locale/messengercompose/messengercompose.dtd" >
+        %messengercomposeDTD;
+        ]>
+
+<overlay id="esignMsgComposeOverlay"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript"
+            src="chrome://esign/content/script/esignMsgComposeOverlay.js"/>
+
+    <!-- Esign toolbar button -->
+    <toolbarpalette id="MsgComposeToolbarPalette">
+        <!-- Preferences button -->
+        <toolbaritem id="esign-preferences-item">
+            <toolbarbutton class="toolbarbutton-1"
+                           id="esign-preferences"
+                           image="chrome://esign/content/skin/default/icon/icon.png"
+                           oncommand="Msg.openSettings(1);Msg.updateUi();">
+            </toolbarbutton>
+        </toolbaritem>
+
+        <!-- Signing button -->
+        <toolbaritem id="esign-sign-item">
+            <toolbarbutton
+                    id="esign-sign-item-btn"
+                    class="toolbarbutton-1"
+                    label="Подпись"
+                    image="chrome://esign/content/skin/default/icon/signature.png"
+                    type="menu">
+                <menupopup>
+                    <checkbox label="&btn.sign;"
+                              id="esign-sign"
+                              class="esign-sign-item-option"
+                              oncommand="Msg.toggleCheckbox('esign-sign')"
+                              checked="false">
+                    </checkbox>
+                    <checkbox label="&btn.signAttachments;"
+                              id="esign-sign-attachments"
+                              class="esign-sign-item-option"
+                              oncommand="Msg.toggleCheckbox('esign-sign-attachments')"
+                              checked="false">
+                    </checkbox>
+                </menupopup>
+            </toolbarbutton>
+        </toolbaritem>
+
+        <!-- API disabled button -->
+        <toolbaritem id="esign-api-disabled-item">
+            <hbox align="center">
+                <image class="img"
+                       src="chrome://esign/content/skin/default/icon/icon.png">
+                </image>
+                <label id="error-api">
+                    &title.apiDisabled;
+                </label>
+            </hbox>
+
+            <toolbarbutton class="toolbarbutton-1"
+                           id="esign-reconnect"
+                           label="&btn.checkConnect;"
+                           image="chrome://esign/content/skin/default/icon/link.png"
+                           oncommand="if(!Msg.checkConnection()){alert('&title.apiDisabled;')}else{Msg.updateUi();}">
+            </toolbarbutton>
+
+            <toolbarbutton class="toolbarbutton-1"
+                           id="esign-settings"
+                           label="&btn.settings;"
+                           image="chrome://esign/content/skin/default/icon/settings.png"
+                           oncommand="Msg.openSettings(0);Msg.updateUi();">
+            </toolbarbutton>
+        </toolbaritem>
+
+    </toolbarpalette>
+
+    <toolbox id="compose-toolbox">
+        <toolbar id="esign-toolbar"
+                 insertafter="composeToolbar2"
+                 defaultset="esign-preferences-item,esign-sign-item,esign-api-disabled-item"
+                 customizable="true"
+                 class="esignToolbar"
+                 fullscreentoolbar="true"
+                 mode="full">
+        </toolbar>
+    </toolbox>
+
+</overlay>

@@ -1,0 +1,35 @@
+# Basic
+content esign chrome/content/
+resource esign chrome/modules/
+
+# Skin
+skin esign default chrome/content/skin/default
+
+# Locale
+locale esign ru chrome/content/locale/ru/
+
+# Overlay for message editor
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://esign/content/component/esignMsgComposeOverlay.xul
+
+# Overlay for mailWindowOverlay
+overlay chrome://messenger/content/mailWindowOverlay.xul chrome://esign/content/component/esignMessengerOverlay.xul
+
+# Interfaces
+interfaces components/esignGlobal.xpt
+
+# Basic service
+component {2297087c-14ee-48d7-bfc9-bab2d8886df8} components/esign.js
+contract @mozilla.org/esign/cline-handler;1 {2297087c-14ee-48d7-bfc9-bab2d8886df8}
+category command-line-handler cline-esign @mozilla.org/esign/cline-handler;1
+
+# Global service
+component {9d41103d-3574-4379-aa28-364fc60c3336} components/esignGlobal.js
+contract @esign.net/esign/global;1 {9d41103d-3574-4379-aa28-364fc60c3336}
+
+# Registration of service encrypted (sign) messages
+component {933366b2-248a-4379-8862-e617c0f77d67} components/mimeEncrypt.js
+contract @mozilla.org/messengercompose/composesecure;1 {933366b2-248a-4379-8862-e617c0f77d67}
+
+# Registration of service decrypted (verify sign) messages
+component {c24d2b8b-951a-4b82-889d-16e6c7bad80b} components/mimeDecrypt.js
+contract @mozilla.org/mime/pgp-mime-js-decrypt;1 {c24d2b8b-951a-4b82-889d-16e6c7bad80b}

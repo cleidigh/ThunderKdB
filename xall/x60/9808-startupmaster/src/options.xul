@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE options SYSTEM "chrome://startupmaster/locale/options.dtd">
+<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <setting pref="extensions.startupmaster.delay" type="bool" id="delay" title="&delay.label;" desc="&delay.desc;" />
+  <setting pref="extensions.startupmaster.block" type="bool" id="block" title="&block.label;" desc="&block.desc;" />
+  <setting type="control" id="mpops" title="&mpops.label;">
+    <button id="setupmp" label="&setupmp.label;" />
+    <button id="changemp" label="&changemp.label;" hidden="true" />
+    <button id="removemp" label="&removemp.label;" hidden="true" />
+  </setting>
+</vbox>

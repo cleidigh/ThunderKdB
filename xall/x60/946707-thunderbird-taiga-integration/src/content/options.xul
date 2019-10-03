@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/style.css" type="text/css"?>
+<?xml-stylesheet href="chrome://taiga/skin/style.css" type="text/css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://taiga/locale/options.dtd">
+
+<prefwindow id="taiga-options" 
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+  title="&title;"
+  image="chrome://taiga/skin/icon.png">
+
+  <prefpane id="taiga-options-access">
+    <preferences>
+      <preference id="taiga-token" name="extensions.taiga.token" type="string" />
+      <preference id="taiga-address" name="extensions.taiga.address" type="string" />
+    </preferences>
+    
+    <script src="chrome://taiga/content/modules/utils.js" />
+    <script src="chrome://taiga/content/modules/ajax.js" />
+    <script src="chrome://taiga/content/modules/api.js" />
+    
+    <script src="chrome://taiga/content/taiga.js" />
+    <script src="chrome://taiga/content/options.js" />
+    
+    <vbox>
+      
+      <label control="taiga-address">&address;</label>
+      <textbox id="taiga-address" preference="taiga-address" />
+      <description>&address-descr;</description>
+      
+      <hr />
+      
+      <label control="taiga-token">&token;</label>
+      <textbox id="taiga-token" preference="taiga-token" />
+      <description>&token-descr;</description>
+      
+      <hr />
+      
+      <label control="taiga-auth">&authentication;</label>
+      <hbox>
+        <image id="taiga-auth-state" src="chrome://taiga/skin/confused.png" flex="0" />
+        <textbox id="taiga-auth" readonly="true" flex="1" />
+      </hbox>
+      <description>&authentication-descr;</description>
+      
+    </vbox>
+  </prefpane>
+</prefwindow>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>mailing-list-filter@peci1.cz</em:id>
+    <em:version>1.1.1</em:version>
+    <em:creator>Martin Pecka</em:creator>
+    <em:description>Mail filter search term using mailing lists</em:description>
+    <em:name>Mailing-list filter</em:name>
+    <em:homepageURL>https://github.com/peci1/mailing-list-filter</em:homepageURL>
+    <em:localized>
+      <Description>
+        <em:locale>cs</em:locale>
+        <em:name>Filtr zpráv pro mailing listy</em:name>
+        <em:description>Filtrování zpráv podle přítomnosti kontaktu v mailing listu.</em:description>
+      </Description>
+    </em:localized>
+     <!-- Thunderbird -->
+     <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>17.0</em:minVersion>
+        <em:maxVersion>60.*</em:maxVersion>
+      </Description>
+    </em:targetApplication> 
+  </Description>
+</RDF>

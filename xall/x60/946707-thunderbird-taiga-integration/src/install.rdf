@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<Description about="urn:mozilla:install-manifest">
+	
+		<em:id>taiga@pehei.de</em:id>
+		<em:type>2</em:type>
+		<em:version>2.0</em:version>
+		<em:creator>Peter Heisig</em:creator>
+		
+		<em:name>Taiga Integration</em:name>
+		<em:description>Convert mails to user stories, tasks and tickets for the Taiga project management system.</em:description>
+		<em:homepageURL>https://pehei.de/post/thunderbird-taiga-integration/</em:homepageURL>
+		
+		<em:localized>
+			<Description>
+				<em:locale>de-DE</em:locale>
+				<em:name>Taiga Integration</em:name>
+				<em:description>Umwandeln von E-Mails in User-Stories, Aufgaben und Tickets für das Taiga Projektmanagementsystem.</em:description>
+				<em:homepageURL>https://pehei.de/post/thunderbird-taiga-integration/</em:homepageURL>
+			</Description>
+		</em:localized>
+
+		<!-- em:optionsURL>chrome://taiga/content/options.xul</em:optionsURL -->
+		<em:iconURL>chrome://taiga/skin/icon.png</em:iconURL>
+		<em:icon64URL>chrome://taiga/skin/icon.png</em:icon64URL>
+
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>1.0</em:minVersion>
+				<em:maxVersion>60.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+	</Description>
+
+</RDF>

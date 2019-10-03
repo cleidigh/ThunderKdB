@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<overlay id="rtl" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script type="application/x-javascript" src="chrome://rtl/content/rtl.js"/>
+    <toolbar id="FormatToolbar">
+        <toolbarbutton id="btn_rtl" label="Right to Left" style="list-style-image: url('chrome://rtl/skin/rtl.png')" tooltiptext="Right to Left" insertafter="smileButtonMenu" oncommand="change_direction('rtl');"/>
+        <toolbarbutton id="btn_ltr" label="Left to Right" style="list-style-image: url('chrome://rtl/skin/ltr.png')" tooltiptext="Left to Right" insertafter="smileButtonMenu" oncommand="change_direction('ltr');"/>
+        <toolbarseparator class="toolbarseparator-standard" id="rtl_sep" insertafter="smileButtonMenu"/>
+    </toolbar>
+</overlay>

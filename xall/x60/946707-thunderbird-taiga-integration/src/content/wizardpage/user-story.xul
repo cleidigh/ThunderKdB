@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://taiga/locale/wizardpage/user-story.dtd">
+
+<overlay 
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    id="taiga-overlay">
+    
+  <wizard id="taiga-wizard">
+    
+    <script src="chrome://taiga/content/wizardpage/user-story.js" />
+
+    <wizardpage 
+        id="taiga-wizardpage-user-story"
+        pageid="taiga-wizardpage-user-story"
+        label="&taiga-user-story-details;"
+        onpageshow="taiga.wizardpage.userStory.onPageShow()">
+      <stack>
+
+        <vbox>          
+          <label control="taiga-user-story-title" value="&taiga-user-story-title;"/>
+          <textbox class="body" id="taiga-user-story-title" value="" focus="true"/>
+          <description>&taiga-user-story-title-description;</description>
+          <separator/>
+          
+          <label control="taiga-user-story-description" value="&taiga-user-story-description;"/>
+          <textbox class="body" id="taiga-user-story-description" multiline="true" rows="14" value=""/>
+          <description>&taiga-user-story-description-description;</description>
+        </vbox>
+        
+        <stack id="taiga-user-story-progress-overlay" hidden="true">
+          <vbox class="taiga-progress-overlay-background" />
+          <vbox>
+            <spacer flex="1" />
+            <hbox>
+              <spacer flex="1" />
+              <label value="&taiga-creating-user-story;" />
+              <spacer flex="1" />
+            </hbox>
+            <hbox>
+              <spacer flex="1" />
+              <progressmeter mode="undetermined" />
+              <spacer flex="1" />
+            </hbox>
+            <spacer flex="1" />
+          </vbox>
+        </stack>
+        
+      </stack>
+    </wizardpage>
+  </wizard>
+</overlay>

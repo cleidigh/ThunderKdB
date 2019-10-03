@@ -1,0 +1,764 @@
+#keefox-button
+{
+    list-style-image: url("chrome://keefox/skin/KeeFox16.png");  
+}
+
+#keefox-button.disabled
+{
+	list-style-image: url("chrome://keefox/skin/KeeFoxGrey16.png");
+}
+
+/* Bigger icons in the Firefox menu and toolbar palette */
+#keefox-button[cui-areatype="menu-panel"],
+toolbarpaletteitem[place="palette"] > #keefox-button {
+  list-style-image: url("chrome://keefox/skin/KeeFox32.png");
+}
+#keefox-button.disabled[cui-areatype="menu-panel"] {
+  list-style-image: url("chrome://keefox/skin/KeeFoxGrey32.png");
+}
+
+/* Display a notification on the button icon when a match has been found on this page */
+#keefox-button[keefox-match-count]
+{
+    list-style-image: url("chrome://keefox/skin/KeeFox16Matched-Plus.png");  
+}
+#keefox-button[keefox-match-count="1"]
+{
+    list-style-image: url("chrome://keefox/skin/KeeFox16Matched-Star.png");  
+}
+#keefox-button[cui-areatype="menu-panel"][keefox-match-count]
+{
+    list-style-image: url("chrome://keefox/skin/KeeFox32Matched-Plus.png");  
+}
+#keefox-button[cui-areatype="menu-panel"][keefox-match-count="1"]
+{
+    list-style-image: url("chrome://keefox/skin/KeeFox32Matched-Star.png");  
+}
+
+/* option A - with wrapper 
+panelmultiview[mainViewId="keefox-panelview"] .panel-mainview
+{
+    max-width: 45em;
+    min-width: 10em;
+    overflow-x: hidden;
+}
+
+#keefox-panelview
+{
+    background-color: #FFFFFF;
+    padding:5px;
+}
+
+#KeeFox-PanelSection-div-wrapper
+{
+	display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+    */
+
+/* option B - no wrapper */
+panelmultiview[mainViewId="keefox-panelview"] .panel-mainview
+{
+    max-width: 65em;
+    min-width: 10em;
+    overflow-x: hidden;
+}
+
+/* overall panelview container style */
+#keefox-panelview
+{
+    background-color: #FFFFFF;
+    padding:5px;
+}
+
+#keefox-persistent-panel box.panel-arrowcontent
+{
+    background-color: #FFFFFF;
+}
+
+/* backup max height option: Panel wrapper style *
+#KeeFox-PanelSection-div-wrapper
+{
+    max-height: 400px;
+}
+    */
+
+/* search box */
+#KeeFox-PanelSection-searchbox
+{
+    width: calc(100% - 12px);
+    padding: 3px 5px;
+    margin:5px 0px 5px 0px;
+	-moz-box-flex: 1;
+}
+
+.keefox-searchFields {
+    width:100%;
+}
+
+/* default appearence of list items to match australis look and feel */
+#keefox-panelview li,
+#KeeFox-SaveLogin-SearchResults-Container li
+{
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    margin: 0px 0px;
+}
+
+#KeeFox-PanelSection-search li
+{
+    margin: 0px 0px !important;
+}
+
+#keefox-panelview li:active,
+#KeeFox-SaveLogin-SearchResults-Container li:active
+{
+    background-color: #E3E3E3;
+    border: 1px solid #C6C6C7;
+    border-radius: 3px;
+}
+
+#keefox-panelview li:hover,
+#KeeFox-SaveLogin-SearchResults-Container li:hover
+{
+    background-color: #EAEAEA;
+    border: 1px solid #D6D6D6; 
+    border-radius: 3px; 
+}
+
+ul#KeeFox-SaveLogin-selectedEntryList li:hover
+{
+    background-color: #FFFFFF;
+    border: 0px solid #FFFFFF; 
+}
+
+#keefox-panelview li.group-item
+{
+    border-left-width:0px;
+    border-right-width:0px;
+    border-bottom-left-radius: 0px; 
+    border-top-left-radius: 0px;
+    margin-right:0px !important;
+}
+
+#keefox-panelview button,
+#keefox-persistent-panel button
+{
+    -moz-appearance: none;
+    text-align: center;
+}
+
+#keefox-panelview input[type=button],
+#keefox-persistent-panel input[type=button],
+#keefox-panelview button,
+#keefox-persistent-panel button {
+    background: #F4F4F4;
+    border: #DDDDDD solid 1px;
+    border-top-width: 1px;
+    border-radius: 3px;
+    width: calc(100% - 0px);
+    padding: 3px 5px;
+    line-height:21px;
+    min-height: 21px;
+    margin: 3px 0px;
+    display: inline-flex;
+}
+
+#keefox-panelview input[type=button]:hover,
+#keefox-persistent-panel input[type=button]:hover,
+#keefox-panelview button:hover,
+#keefox-persistent-panel button:hover {
+    background: #EAEAEA;
+}
+
+#keefox-panelview .disabled,
+#keefox-panelview input[type=button].disabled
+{
+	display:none;
+}
+
+#keefox-panelview .enabled
+{
+	display:block;
+}
+
+/* Hide subpanels (unless user has enabled them) */
+#keefox-panelview .KeeFox-PanelSubSection,
+#keefox-panelview #KeeFox-PanelSection-close
+{
+	display:none;
+}
+
+/* Hide all panel contents when in subpanel mode unless specifically overridden later */
+#keefox-panelview.subpanel-enabled .KeeFox-PanelSection,
+#keefox-panelview.subpanel-enabled .KeeFox-Search,
+#keefox-panelview.subpanel-enabled .KeeFox-PanelSection .KeeFox-Action,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper .KeeFox-PanelSection,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper .KeeFox-Search,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper .KeeFox-PanelSection .KeeFox-Action
+{
+	display:none;
+}
+
+#keefox-panelview.subpanel-enabled .subpanel-enabled .KeeFox-PanelSubSection,
+#keefox-panelview.subpanel-enabled #KeeFox-PanelSection-close,
+#keefox-panelview.subpanel-enabled #KeeFox-PanelSection-close .KeeFox-Action,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper .subpanel-enabled .KeeFox-PanelSubSection,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper #KeeFox-PanelSection-close,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper #KeeFox-PanelSection-close .KeeFox-Action
+{
+	display:block;
+}
+
+#keefox-panelview.subpanel-enabled #KeeFox-PanelSection-close,
+#keefox-panelview.subpanel-enabled #KeeFox-PanelSection-close .KeeFox-Action,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper #KeeFox-PanelSection-close,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper #KeeFox-PanelSection-close .KeeFox-Action
+{
+	display:inline-flex;
+}
+
+#keefox-panelview.subpanel-enabled .subpanel-enabled,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper .subpanel-enabled
+{
+	display:block;
+}
+
+#keefox-panelview.subpanel-enabled #KeeFox-PanelSection-close .KeeFox-Action,
+#keefox-panelview.KeeFox-PanelSection-div-wrapper #KeeFox-PanelSection-close .KeeFox-Action
+{
+    background-image: url("chrome://keefox/skin/back.png"); 
+    padding:0px 5px 0px 22px;
+    background-repeat:no-repeat;
+    background-position:2px 3px;
+}
+
+#KeeFox-SaveLogin-SearchResults-Container,
+#KeeFox-SaveLogin-selectedEntryList {
+display: block;    
+}
+
+/* Default login list item and group style */
+#keefox-panelview li,
+#KeeFox-SaveLogin-SearchResults-Container li,
+#KeeFox-SaveLogin-selectedEntryList li
+{
+    min-height:26px;
+    padding:0px 5px 0px 22px;
+    margin:0px;
+    background-repeat:no-repeat;
+    background-position:2px 4px;
+    cursor:default;
+    line-height:26px;
+    position:relative;
+}
+
+#keefox-panelview li.group-item {
+    
+    /* Default group folder icons are a bit top heavy but user might have 
+    customised them. Compromise is a 1px shift down so they look a little
+    more aligned most of the time */
+    background-position:2px 5px;
+    padding-right:0px;
+}
+
+/* Unless in the presence of a containing group defined below, display all login items */
+#keefox-panelview li.login-item,
+#KeeFox-SaveLogin-SearchResults-Container li.login-item
+{
+    display:list-item;
+    border-left-width:0px;
+    border-right-width:0px;
+}
+
+/* Hide all groups and their contents by default */
+#keefox-panelview li.group-item,
+#keefox-panelview li.group-item > ul > li
+{
+    display:none;
+}
+
+/* Make sure top-level groups are always displayed */
+#keefox-panelview div.KeeFox-LoginList > ul > li.group-item
+{
+    display:list-item;
+}
+
+/* Make sure siblings of the active group are displayed */
+#keefox-panelview li.active-group-parent > ul > li
+{
+    display:list-item;
+}
+
+/* Display the currently active group and all login or group items directly under that group */
+#keefox-panelview div.KeeFox-LoginList > ul li.active-group
+{
+    display:list-item;
+}
+
+#keefox-panelview li.active-group > ul > li.login-item,
+#keefox-panelview li.active-group > ul > li.group-item
+{
+    display:list-item;
+}
+
+#keefox-panelview div.KeeFox-LoginList > ul li.active-group-parent
+{
+    display:list-item;
+}
+
+/* Basic login list styles */
+#keefox-panelview ul {
+    margin:0 0 0 -22px;
+    padding:0px 0px 0px 8px;
+    background:linear-gradient(to right, #C9DAE8 0px, #C9DAE8 8px, transparent 9px);
+    list-style:none;
+}
+
+/* specific level login list overrides (after 4 levels deep we revert to defaults above) */
+#keefox-panelview div.KeeFox-LoginList > ul,
+#KeeFox-PanelSection-search ul {
+    background:none;
+    padding-left:0px;
+    margin:0px;
+}
+#keefox-panelview div.KeeFox-LoginList > ul > li > ul {
+    background:linear-gradient(to right, #284898  0px, #506dac 8px, transparent 9px);
+}
+#keefox-panelview div.KeeFox-LoginList > ul > li > ul > li > ul {
+    background:linear-gradient(to right, #506dac 0px, #7891c0 8px, transparent 9px);
+}
+#keefox-panelview div.KeeFox-LoginList > ul > li > ul > li > ul > li > ul {
+    background:linear-gradient(to right, #7891c0 0px, #a1b5d4 8px, transparent 9px);
+}
+#keefox-panelview div.KeeFox-LoginList > ul > li > ul > li > ul > li > ul > li > ul {
+    background:linear-gradient(to right, #a1b5d4 0px, #C9DAE8 8px, transparent 9px);
+}
+
+#KeeFox-PanelSubSection-DatabaseList[loading],
+#KeeFox-PanelSubSection-PasswordProfileList[loading]
+{
+    height:32px;
+    background-image: url("chrome://global/skin/icons/loading.png"),url("chrome://browser/skin/tabbrowser/loading.png");
+    background-repeat:no-repeat;
+    background-position:50% 8px;
+}
+
+#keefox-uninstall-helper-submit-container {
+    min-width:620px;
+    height:200px;
+    background-image: url("chrome://global/skin/icons/loading.png"),url("chrome://browser/skin/tabbrowser/loading.png");
+    background-repeat:no-repeat;
+    background-position:50% 92px;
+}
+
+#KeeFox-PanelSubSection-DatabaseList > ul,
+#KeeFox-PanelSubSection-PasswordProfileList > ul {
+    margin:0 0 0 0px;
+    padding:0px 0px 0px 0px;
+    list-style:none;
+    background:none;
+}
+
+
+#KeeFox-PanelSubSection-DatabaseList > ul > li,
+#KeeFox-PanelSubSection-PasswordProfileList > ul > li
+{
+    min-height:26px;
+    padding:0px 5px 0px 26px;
+    margin:0px;
+    background-repeat:no-repeat;
+    background-position:6px 5px;
+    cursor:default;
+    line-height:26px;
+}
+
+#KeeFox-PanelSubSection-DatabaseList > ul > li
+{
+    background-image: url("chrome://keefox/skin/KeeLock.png");
+}
+
+#KeeFox-PanelSubSection-PasswordProfileList > ul > li
+{
+    background-image: url("chrome://keefox/skin/KeeOrange.png");
+}
+
+
+/* put a seperator after each section that contains logins */
+#KeeFox-PanelSection-search ul,
+#KeeFox-PanelSubSection-MatchedLoginsList ul,
+#KeeFox-PanelSubSection-AllLoginsList ul {
+    padding-bottom: 2px;
+    border-bottom: 2px #DDDDDD solid;
+    margin-bottom: 5px;
+}
+
+#KeeFox-PanelSection-search ul:empty,
+#KeeFox-PanelSubSection-MatchedLoginsList ul:empty,
+#KeeFox-PanelSubSection-AllLoginsList ul:empty {
+    padding-bottom: 0px;
+    border-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+/* Shade the item that has keyboard focus */
+#keefox-panelview li:focus,
+#keefox-panelview button:focus,
+#keefox-panelview input[type="button"]:focus
+{
+    background-color: #DDDDDD;
+}
+
+/* FAMS and other notification bar styles */
+
+#KeeFox-PanelSection-notifications-tab button,
+#KeeFox-PanelSection-notifications-window button
+{
+    width: auto;
+}
+
+.keeFoxNotification
+{
+    font-size:1.2em;
+    padding: 5px 0px;
+    margin-bottom:20px;
+    border: 1px solid #D6D6D6;   
+    border-radius: 3px; 
+	width: 100%;
+}
+
+#KeeFox-PanelSection-notifications-window
+{
+}
+
+#KeeFox-PanelSection-notifications-tab
+{
+}
+
+#keefox-panelview .keeFoxNotification button,
+#keefox-persistent-panel .keeFoxNotification button
+{
+    border: 1px solid #D6D6D6;   
+    border-radius: 3px; 
+    margin:10px 5px 0px 5px;
+}
+
+#keefox-panelview button.KeeFox-Close-Notification,
+#keefox-persistent-panel button.KeeFox-Close-Notification
+{
+    -moz-appearance: none;
+    width:24px;
+    min-width:24px;
+    max-width:24px;
+    height:24px;
+    max-height:24px;
+    padding:1px 0px 0px 0px;
+    margin:0px 5px;
+    font-size:14px;
+    font-weight: bold;
+    line-height:1;
+    color: #dd2222;
+    font-family: Arial,sans-serif;
+}
+
+#keefox-panelview .keeFoxNotification button.KeeFox-Close-Notification:hover,
+#keefox-persistent-panel .keeFoxNotification button.KeeFox-Close-Notification:hover
+{
+    background-color: #dd2222;
+    color:white;
+}
+
+.keefox-button-actions
+{
+	margin-top:5px;
+}
+
+#keefox-save-password-db-select,
+#keefox-save-password-group-select
+{
+    background-repeat: no-repeat;
+    border: 1px solid #D6D6D6;
+    margin: 5px;
+    min-width: 350px;
+    display:inline-block;
+    background-color: #FFFFFF;
+}
+
+#keefox-save-password-db-select
+{
+    padding-left: 20px;
+    background-position: 5px 5px;
+}
+
+#KeeFox-PanelSection-searchfilter,
+#KeeFox-SaveLogin-searchfilter {
+    display:inline-block;
+    border: 1px solid #D6D6D6;
+    padding: 3px 5px;
+    background-color: #FFFFFF;
+}
+#KeeFox-PanelSection-searchfilter {
+    margin:5px 0px 5px 0px;
+}
+
+#KeeFox-SaveLogin-searchfilter {
+    margin:5px 5px 0px 0px;
+}
+
+.keeFox-save-password label {
+    white-space:nowrap;
+    -moz-margin-start: 5px;
+}
+
+.keeFox-save-password {
+    white-space:nowrap;
+}
+            
+#keefox-save-password-db-select option{
+padding: 3px 0 3px 25px;
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+}
+
+#keefox-save-password-group-select option {
+background-repeat: no-repeat;
+    padding: 3px 0px 3px 20px;
+    
+}
+
+#keefox-save-password-new-button,
+#keefox-save-password-update-button {
+    -moz-appearance: none;
+width:50% !important;
+    min-width:50% !important;
+    
+    line-height:1;
+    
+    margin: 0px !important;
+    margin-top: 5px !important;
+    border-radius: 0px !important;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    -moz-box-flex: 1;
+}
+
+#keefox-save-password-new-button {
+    margin-left: 5px !important;
+}
+
+#keefox-save-password-update-button {
+    
+    margin-right: 5px !important;
+}
+
+#keefox-save-password-new-button.unselected,
+#keefox-save-password-update-button.unselected {
+    border-bottom-color: #D6D6D6;
+}
+
+#keefox-save-password-new-button.selected,
+#keefox-save-password-update-button.selected {
+    border-bottom-color: white !important;
+    background-color: white !important;
+}
+
+#keefox-save-password-new-panel,
+#keefox-save-password-update-panel1,
+#keefox-save-password-update-panel2 {
+    border: #D6D6D6 solid 1px;
+    border-top-width: 0px;
+    margin: 0px 5px;
+    padding: 5px;
+}
+
+#keefox-save-password-saveTypeContainer .enabled {
+    display: -moz-box;
+}
+
+#keefox-save-password-update-panel2 label.KeeFox-message,
+#keefox-password-updated-notification label.KeeFox-message {
+    width:500px;
+}
+
+#keefox-uninstall-helper-feedback-container label,
+#keefox-uninstall-helper-response-container label {
+    width:600px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#keefox-uninstall-helper-feedback-container radio,
+#keefox-uninstall-helper-response-container radio {
+    margin: 0px 4px;
+}
+
+#keefox-uninstall-helper-feedback-container radio label,
+#keefox-uninstall-helper-response-container radio label {
+    margin: 0px 4px;
+    width: unset;
+}
+
+#keefox-save-password-update-panel2 > hbox {
+    -moz-box-align:center;
+}
+
+#keefox-save-password-update-panel2 > hbox:nth-child(1) {
+    padding-top:10px;
+}
+
+#keefox-save-password-update-panel2 > hbox:nth-child(2) {
+    padding-top:10px;
+    margin-top:10px;
+    border-top:1px solid #D6D6D6;
+}
+
+#keefox-save-password-update-panel2 > hbox#KeeFox-loginURLsUpdateStatusContainer {
+    padding-top:10px;
+    margin-top:10px;
+    margin-bottom:0px;
+    border-top:1px solid #D6D6D6;
+}
+
+#KeeFox-SaveLogin-searchbox
+{
+    width: calc(100% - 12px);
+    padding: 3px 5px;
+    margin:5px 0px 0px 5px;
+    -moz-box-flex: 1;
+}
+
+#KeeFox-SaveLogin-SearchResults {
+    overflow-y:scroll;
+    margin: 5px;
+    margin-top: 0px;
+    border: #D6D6D6 solid 1px;
+    border-top-width: 0px;
+    height:200px;
+    min-height:200px;
+    width:450px;
+}
+
+ul#KeeFox-SaveLogin-SearchResults-Container,
+ul#KeeFox-SaveLogin-selectedEntryList {
+    padding:0px;
+    list-style:none;
+    background:none;
+    margin:0px 5px;
+}
+
+button.KeeFox-SaveLogin-Change-Setting {
+    -moz-appearance: none !important;
+    padding:0px 3px !important;
+    margin:2px 5px !important;
+    font-size: 0.75em;
+    border-radius: 3px !important;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+}
+
+button.KeeFox-SaveLogin-Change-Setting > hbox {
+    padding:0px !important;
+    margin: 0px !important;
+    
+}
+button.KeeFox-SaveLogin-Change-Setting label {
+    padding:0px !important;
+    margin: 0px !important;
+    
+}
+
+button.KeeFox-SaveLogin-Abort {
+	margin-bottom:10px !important;
+}
+
+#KeeFox-loginURLsUpdateRadioGroup {
+    margin:10px 0px 0px 0px;
+    padding-top:10px;
+    border-top:1px solid #D6D6D6;
+}
+
+#keefox-persistent-panel .disabled {
+    display:none;
+}
+
+.keeFoxPriorityLow {
+    color: #303030;
+}
+.keeFoxPriorityHigh label {
+    font-weight: bold;
+}
+.keeFoxPriorityMedium {
+}
+
+.KeeFox-message {
+    margin-bottom: 5px;
+}
+
+
+
+
+.FAMSmessageGroup
+{
+	border: solid 1px #000 !important;
+	padding: 5px !important;
+	margin: 5px !important;
+}
+
+.FAMSdisabled
+{
+	color: gray !important;
+	border-color: gray !important;
+}
+
+.FAMScheckLabelControl
+{
+	padding: 0px;
+}
+
+.FAMSdescription
+{
+	padding: 0px;
+}
+
+.FAMStitle
+{
+	padding: 0px;
+	text-decoration: underline !important;
+}
+
+.FAMSnote
+{
+	padding: 10px;
+	font-style:italic;
+}
+
+.keefoxMessageText 
+{
+	margin: 7px 5px 6px 5px !important;
+}
+
+
+#optionsMenuTrigger
+{
+    width:18px;
+    min-width:18px;
+    height:18px;
+    min-height:18px;
+    background-color: #F4F4F4;
+    border: 1px solid #ccc; 
+    border-radius: 2px; 
+    position:absolute;
+    right: 10px;
+    bottom:calc(50% - 11px);
+    background-image: url("chrome://keefox/skin/menu.png"); 
+    padding:1px;
+    background-repeat:no-repeat;
+    background-position:1px 1px;
+    cursor: pointer;
+}
+
+#optionsMenuTrigger:hover
+{
+    background-color: #fff;
+}

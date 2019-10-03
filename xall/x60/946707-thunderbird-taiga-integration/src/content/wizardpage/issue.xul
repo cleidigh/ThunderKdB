@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://taiga/locale/wizardpage/issue.dtd">
+
+<overlay 
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    id="taiga-overlay">
+    
+  <wizard id="taiga-wizard">
+    
+    <script src="chrome://taiga/content/wizardpage/issue.js" />
+
+    <wizardpage 
+        id="taiga-wizardpage-issue"
+        pageid="taiga-wizardpage-issue"
+        label="&taiga-issue-details;"
+        onpageshow="taiga.wizardpage.issue.onPageShow()">
+      <stack>
+
+        <vbox>
+          <grid flex="1">
+            <columns>
+              <column flex="1" />
+              <column flex="1" />
+              <column flex="1" />
+            </columns>
+            <rows>
+              <row>
+                <label control="" value="&taiga-issue-type;"/>
+                <label control="" value="&taiga-issue-priority;"/>
+                <label control="" value="&taiga-issue-severity;"/>
+              </row>
+              <row>
+                <menulist>
+                  <menupopup id="taiga-issue-type"></menupopup>
+                </menulist>
+                <menulist>
+                  <menupopup id="taiga-issue-priority"></menupopup>
+                </menulist>
+                <menulist>
+                  <menupopup id="taiga-issue-severity"></menupopup>
+                </menulist>
+              </row>
+            </rows>
+          </grid>
+          <description>&taiga-issue-attributes;</description>
+          <separator/>
+          
+          <label control="taiga-issue-title" value="&taiga-issue-title;"/>
+          <textbox class="body" id="taiga-issue-title" value="" focus="true"/>
+          <description>&taiga-issue-title-description;</description>
+          <separator/>
+          
+          <label control="taiga-issue-description" value="&taiga-issue-description;"/>
+          <textbox class="body" id="taiga-issue-description" multiline="true" rows="9" value=""/>
+          <description>&taiga-issue-description-description;</description>
+        </vbox>
+        
+        <stack id="taiga-issue-progress-overlay" hidden="true">
+          <vbox class="taiga-progress-overlay-background" />
+          <vbox>
+            <spacer flex="1" />
+            <hbox>
+              <spacer flex="1" />
+              <label value="&taiga-creating-issue;" />
+              <spacer flex="1" />
+            </hbox>
+            <hbox>
+              <spacer flex="1" />
+              <progressmeter mode="undetermined" />
+              <spacer flex="1" />
+            </hbox>
+            <spacer flex="1" />
+          </vbox>
+        </stack>
+        
+      </stack>
+    </wizardpage>
+  </wizard>
+</overlay>

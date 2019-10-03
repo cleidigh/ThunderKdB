@@ -1,0 +1,71 @@
+#esignNotification {
+    padding: 6px 6px 8px 6px;
+    border-bottom: 2px solid rgba(0, 0, 0, .2);
+    margin-top: 0;
+    height: initial;
+    transition: all 200ms;
+    overflow-x: auto;
+}
+
+.disabled {
+    margin-top: -77px !important;
+    height: 77px !important;
+    overflow: hidden;
+}
+
+#msgHeaderView, .notificationbox-stack {
+    position: relative;
+    z-index: 2;
+}
+
+.correct {
+    background-color: #38a96d;
+    color: #ffffff;
+}
+
+.primary {
+    background-color: #2857fd;
+    color: #ffffff;
+}
+
+.wrong {
+    background-color: #EF3340;
+    color: #ffffff;
+}
+
+.warning {
+    background-color: #efcf24;
+    color: #333333;
+}
+
+.esign-logo {
+    width: 61px;
+    height: auto;
+}
+
+#esign-info {
+    margin: 4px;
+}
+
+#esign-info-title {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.esign-info-val--row {
+    margin-bottom: 2px;
+    font-size: 12px;
+}
+
+.esign-info-val--row:last-child {
+    margin-bottom: 0;
+}
+
+.esign-info-val--head {
+    font-weight: bold;
+}
+
+.esign-info-val--data {
+    margin-left: 12px;
+}

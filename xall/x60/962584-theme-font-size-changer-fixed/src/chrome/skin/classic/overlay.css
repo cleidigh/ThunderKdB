@@ -1,0 +1,41 @@
+	#themefontsizechangertb-statusbar-icon {
+		list-style-image:url('chrome://themefontsizechangertb/skin/statusbaricon.png') !important;
+		cursor:pointer;
+	}
+	
+	#themefontsizechangertb-toolbarbutton {
+		list-style-image:url('chrome://themefontsizechangertb/skin/statusbaricon.png') !important;
+	}
+	
+	#widget-overflow #themefontsizechangertb-toolbarbutton {
+		list-style-image:url('chrome://themefontsizechangertb/skin/statusbaricon.png') !important;
+	}	
+	
+	#themefontsizechangertb-toolbarbutton.seamonkey {
+		list-style-image:url('chrome://themefontsizechangertb/skin/icon30.png') !important;
+	}
+
+	toolbar[iconsize="small"] #themefontsizechangertb-toolbarbutton, #themefontsizechangertb-tools-menuitem {
+		list-style-image: url('chrome://themefontsizechangertb/skin/statusbaricon.png') !important;
+	}
+
+	toolbar[iconsize="small"] #themefontsizechangertb-toolbarbutton.seamonkey {
+		list-style-image: url('chrome://themefontsizechangertb/skin/icon20.png') !important;
+	}	
+
+	/* Added for Australis support */
+	#themefontsizechangertb-toolbarbutton[cui-areatype="menu-panel"],
+	toolbarpaletteitem[place="palette"] > #themefontsizechangertb-toolbarbutton {
+	  list-style-image: url("chrome://themefontsizechangertb/skin/icon32.png") !important;
+	}
+	
+	/* High-resolution displays */
+	@media (min-resolution: 2dppx) {
+		#themefontsizechangertb-toolbarbutton {
+			list-style-image: url(icon32.png);
+		}
+		#themefontsizechangertb-toolbarbutton[cui-areatype="menu-panel"],
+		toolbarpaletteitem[place="palette"] > #themefontsizechangertb-toolbarbutton {
+			list-style-image: url(icon64.png);
+		}
+	}	

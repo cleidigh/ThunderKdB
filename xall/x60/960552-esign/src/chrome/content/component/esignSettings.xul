@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://esign/skin/default/styles/esign.css" type="text/css"?>
+<?xml-stylesheet href="chrome://esign/skin/default/styles/esignSettings.css" type="text/css"?>
+
+<!DOCTYPE window [
+		<!ENTITY % esignDTD SYSTEM "chrome://esign/locale/esign.dtd" >
+		%esignDTD;
+		]>
+
+<dialog id="esignSettings"
+				title="&title.settings;"
+				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				onload="settingsOnLoad();"
+				ondialogaccept="return settingsOnAccept();">
+
+	<script type="application/x-javascript" src="chrome://esign/content/script/esignSettings.js"/>
+
+	<label id="error-api-service" value="&title.apiDisabled;"></label>
+
+	<tabbox flex="1" id="esignSettingsTabs">
+		<tabs id="esignSettingsTabBox">
+			<tab id="tabApi" label="&tab.api;"/>
+			<tab id="tabCert" label="&tab.cert;"/>
+			<tab id="tabVc" label="&tab.vc;"/>
+		</tabs>
+
+		<tabpanels flex="1" id="esignSettingsTabPanel">
+			<!-- Настройки API -->
+			<vbox id="api" flex="1">
+				<label control="apiPort" class="esign--label" value="&form.port;"/>
+				<textbox id="apiPort" type="number"/>
+			</vbox>
+
+			<!-- Настройки сертификатов -->
+			<vbox id="cert" flex="1">
+				<label control="userCertificate" class="esign--label" value="&form.cert;"/>
+				<menulist id="userCertificate" label="&form.empty;">
+					<menupopup id="userCertificate_menuPopup">
+					</menupopup>
+				</menulist>
+			</vbox>
+
+			<!-- Настройки для удостоверяющих центров -->
+			<vbox id="vc" flex="1">
+				<label control="userVerificationCenter" class="esign--label" value="&form.vc;"/>
+				<menulist id="userVerificationCenter" label="&form.empty;">
+					<menupopup id="userVerificationCenter_menuPopup">
+					</menupopup>
+				</menulist>
+			</vbox>
+		</tabpanels>
+
+	</tabbox>
+
+</dialog>

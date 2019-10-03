@@ -1,0 +1,79 @@
+#taiga-options, 
+#taiga-wizard,
+#taiga-wizard .taiga-progress-overlay-background {
+  background-color: -moz-dialog!important;
+}
+
+#taiga-options separator,
+#taiga-wizard separator {
+  height: 5px
+}
+
+#taiga-wizard .taiga-progress-overlay-background {
+  opacity: 0.8;
+}
+
+#taiga-project-list .listcell-icon,
+#taiga-assignee .listcell-icon {
+  max-height: 26px;
+  margin: 3px;
+}
+
+#taiga-watch-list .listcell-icon {
+  max-height: 34px;
+}
+
+#taiga-wizard description,
+#taiga-options description {
+  font-size: 80%;
+  margin: 5px;
+  color: #AAA;
+}
+
+#taiga-wizard hr,
+#taiga-options hr {
+  border-top: 1px solid #DDD;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#taiga-wizard textbox.body {
+  font-size: 13px;
+}
+
+#taiga-wizard .wizard-header-label {
+  font-weight: normal;
+  margin: 0;
+  margin-left: 15px;
+}
+
+#taiga-options #taiga-auth-state {
+  margin: 4px;
+  width: 30px;
+  height: 30px;
+}
+
+#taiga-options label {
+  margin: 5px;
+}
+
+#taiga-wizard .taiga-attachment-icon {
+  list-style-image: url("chrome://messenger/skin/icons/filterbar.png");
+  -moz-image-region: rect(0px, 80px, 16px, 64px);
+  margin-inline-start: 5px;
+  margin-left: 10px;
+}
+
+#taiga-wizard #attachmentName:hover,
+#taiga-wizard #attachmentName[selected="true"] {
+  cursor: pointer;
+  color: HighlightText;
+  background-color: Highlight;
+}
+
+#taiga-attachment-size {
+  margin: 0;
+  margin-right: 6px;
+  margin-inline-start: 8px;
+  color: #888a85; 
+}

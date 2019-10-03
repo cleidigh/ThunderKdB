@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://viewabout/locale/viewabout.dtd">
+
+<overlay id="viewabout-menuoverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="viewabout.js"/>
+
+    <!-- "viewAboutMenu" is defined in overlay-fx.xul & overlay-sm-tb.xul
+         This is a sub-overlay that goes onto one of those, depending on which application this is. (via chrome.manifest)
+         We don't need multiple versions of the menu this way. Detection of available about URLs is in viewabout.js. -->
+    <menu id="viewAboutMenu">
+      <menupopup id="menu_viewAbout" oncommand="viewabout.openUrl(event.target.value);">
+
+        <!-- AtoC menu -->
+        <menu id="menuAtoC" label="&menuAtoC.label;" accesskey="&menuAtoC.accesskey;">
+        <menupopup id="menu_AtoC_popup">
+          <!-- about: -->
+          <menuitem value="about:" label="&about.label;" accesskey="&about.accesskey;"/>
+          <!-- about:about -->
+          <menuitem value="about:about" label="&aboutAbout.label;" accesskey="&aboutAbout.accesskey;"/>
+          <!-- about:accounts -->
+          <menuitem value="about:accounts" label="&aboutAccounts.label;" accesskey="&aboutAccounts.accesskey;"/>
+          <!-- about:addons -->
+          <menuitem value="about:addons" label="&aboutAddons.label;" accesskey="&aboutAddons.accesskey;"/>
+          <!-- about:buildconfig -->
+          <menuitem value="about:buildconfig" label="&aboutBuildConfig.label;" accesskey="&aboutBuildConfig.accesskey;"/>
+          <!-- about:cache menu -->
+          <menu id="viewAboutCacheMenu" label="&viewAboutCacheMenu.label;" accesskey="&viewAboutCacheMenu.accesskey;">
+            <menupopup id="menu_viewAboutCacheMenuPopup">
+              <!-- about:cache and related -->
+              <menuitem value="about:cache" label="&aboutCache.label;" accesskey="&aboutCache.accesskey;"/>
+              <menuitem value="about:cache?device=disk" label="&aboutCacheDisk.label;" accesskey="&aboutCacheDisk.accesskey;"/>
+              <menuitem value="about:cache?device=memory" label="&aboutCacheMemory.label;" accesskey="&aboutCacheMemory.accesskey;"/>
+              <menuitem value="about:cache?device=offline" label="&aboutCacheOffline.label;" accesskey="&aboutCacheOffline.accesskey;"/>
+            </menupopup>
+          </menu>
+          <!-- about:config -->
+          <menuitem value="about:config" label="&aboutConfig.label;" accesskey="&aboutConfig.accesskey;"/>
+          <!-- about:checkerboard -->
+          <menuitem value="about:checkerboard" label="&aboutCheckerboard.label;" accesskey="&aboutCheckerboard.accesskey;"/>
+          <!-- about:crashes -->
+          <menuitem value="about:crashes" label="&aboutCrashes.label;" accesskey="&aboutCrashes.accesskey;"/>
+          <!-- about:credits -->
+          <menuitem value="about:credits" label="&aboutCredits.label;" accesskey="&aboutCredits.accesskey;"/>
+        </menupopup>
+        </menu>
+
+        <!-- DtoM menu -->
+        <menu id="menuDtoM" label="&menuDtoM.label;" accesskey="&menuDtoM.accesskey;">
+          <menupopup id="menu_DtoM_popup">
+            <!-- about:debugging -->
+            <menuitem value="about:debugging" label="&aboutDebugging.label;" accesskey="&aboutDebugging.accesskey;"/>
+            <!-- about:devtools-toolbox -->
+            <menuitem value="about:devtools-toolbox" label="&aboutDevtoolsToolbox.label;" accesskey="&aboutDevtoolsToolbox.accesskey;"/>
+            <!-- about:downloads -->
+            <menuitem value="about:downloads" label="&aboutDownloads.label;" accesskey="&aboutDownloads.accesskey;"/>
+            <!-- about:healthreport -->
+            <menuitem value="about:healthreport" label="&aboutHealthReport.label;" accesskey="&aboutHealthReport.accesskey;"/>
+            <!-- about:home -->
+            <menuitem value="about:home" label="&aboutHome.label;" accesskey="&aboutHome.accesskey;"/>
+            <!-- about:license -->
+            <menuitem value="about:license" label="&aboutLicense.label;" accesskey="&aboutLicense.accesskey;"/>
+            <!-- about:logo -->
+            <menuitem value="about:logo" label="&aboutLogo.label;" accesskey="&aboutLogo.accesskey;"/>
+            <!-- about:me -->
+            <menuitem value="about:me" label="&aboutMe.label;" accesskey="&aboutMe.accesskey;"/>
+            <!-- about:memory -->
+            <menuitem value="about:memory" label="&aboutMemory.label;" accesskey="&aboutMemory.accesskey;"/>
+            <!-- about:mozilla -->
+            <menuitem value="about:mozilla" label="&aboutMozilla.label;" accesskey="&aboutMozilla.accesskey;"/>
+          </menupopup>
+        </menu>
+
+        <!-- NtoR menu -->
+        <menu id="menuNtoR" label="&menuNtoR.label;" accesskey="&menuNtoR.accesskey;">
+          <menupopup id="menu_NtoR_popup">
+            <!-- about:networking -->
+            <menuitem value="about:networking" label="&aboutNetworking.label;" accesskey="&aboutNetworking.accesskey;"/>
+            <!-- about:newtab -->
+            <menuitem value="about:newtab" label="&aboutNewTab.label;" accesskey="&aboutNewTab.accesskey;"/>
+            <!-- about:performance -->
+            <menuitem value="about:performance" label="&aboutPerformance.label;" accesskey="&aboutPerformance.accesskey;"/>
+            <!-- about:permissions -->
+            <menuitem value="about:permissions" label="&aboutPermissions.label;" accesskey="&aboutPermissions.accesskey;"/>
+            <!-- about:plugins -->
+            <menuitem value="about:plugins" label="&aboutPlugins.label;" accesskey="&aboutPlugins.accesskey;"/>
+            <!-- about:preferences -->
+            <menuitem value="about:preferences" label="&aboutPreferences.label;" accesskey="&aboutPreferences.accesskey;"/>
+            <!-- about:privatebrowsing -->
+            <menuitem value="about:privatebrowsing" label="&aboutPrivateBrowsing.label;" accesskey="&aboutPrivateBrowsing.accesskey;"/>
+            <!-- about:profiles -->
+            <menuitem value="about:profiles" label="&aboutProfiles.label;" accesskey="&aboutProfiles.accesskey;"/>
+            <!-- about:rights -->
+            <menuitem value="about:rights" label="&aboutRights.label;" accesskey="&aboutRights.accesskey;"/>
+            <!-- about:robots -->
+            <menuitem value="about:robots" label="&aboutRobots.label;" accesskey="&aboutRobots.accesskey;"/>
+          </menupopup>
+        </menu>
+
+        <!-- StoZ menu -->
+        <menu id="menuStoZ" label="&menuStoZ.label;" accesskey="&menuStoZ.accesskey;">
+          <menupopup id="menu_StoZ_popup">
+            <!-- about:serviceworkers -->
+            <menuitem value="about:serviceworkers" label="&aboutServiceWorkers.label;" accesskey="&aboutServiceWorkers.accesskey;"/>
+            <!-- about:sessionrestore -->
+            <menuitem value="about:sessionrestore" label="&aboutSessionRestore.label;" accesskey="&aboutSessionRestore.accesskey;"/>
+            <!-- about:support -->
+            <menuitem value="about:support" label="&aboutSupport.label;" accesskey="&aboutSupport.accesskey;"/>
+            <!-- about:tabs -->
+            <menuitem value="about:tabs" label="&aboutTabs.label;" accesskey="&aboutTabs.accesskey;"/>
+            <!-- about:telemetry -->
+            <menuitem value="about:telemetry" label="&aboutTelemetry.label;" accesskey="&aboutTelemetry.accesskey;"/>
+            <!-- about:webrtc -->
+            <menuitem value="about:webrtc" label="&aboutWebRTC.label;" accesskey="&aboutWebRTC.accesskey;"/>
+            <!-- about:welcomeback -->
+            <menuitem value="about:welcomeback" label="&aboutWelcomeback.label;" accesskey="&aboutWelcomeback.accesskey;"/>
+          </menupopup>
+        </menu>
+
+        <!-- Menu for various error messages, not useful by themselves -->
+        <menu id="viewAboutErrorMenu" label="&viewAboutErrorMenu.label;" accesskey="&viewAboutErrorMenu.accesskey;">
+          <menupopup id="menu_viewAboutErrorMenuPopup">
+            <!-- about:certerror -->
+            <menuitem value="about:certerror" label="&aboutCertError.label;" accesskey="&aboutCertError.accesskey;"/>
+            <!-- about:neterror (just the error for an unknown page; not useful by itself) -->
+            <menuitem value="about:neterror" label="&aboutNetError.label;" accesskey="&aboutNetError.accesskey;"/>
+          </menupopup>
+        </menu>
+        <!-- End of set of entries -->
+
+      </menupopup>
+    </menu>
+
+</overlay>

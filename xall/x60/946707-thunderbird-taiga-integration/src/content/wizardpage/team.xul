@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/checkbox.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://taiga/locale/wizardpage/team.dtd">
+
+<overlay 
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    id="taiga-overlay">
+    
+  <wizard id="taiga-wizard">
+    
+    <script src="chrome://taiga/content/wizardpage/team.js" />
+
+    <wizardpage 
+        id="taiga-wizardpage-team"
+        pageid="taiga-wizardpage-team"
+        label="&taiga-team;"
+        onpageshow="taiga.wizardpage.team.onPageShow()">
+
+      <stack>
+
+        <vbox>
+          <label value=""/>
+          <hbox>
+            <label control="taiga-assign-to-me" value="&taiga-assign-to-me;" />
+            <spacer flex="1" />
+            <checkbox id="taiga-assign-to-me" checked="false"
+              oncommand="taiga.wizardpage.team.assignToMeUpdate(event.target.checked)" />
+          </hbox>
+          <hbox>
+            <label control="taiga-me-watching" value="&taiga-me-watching;" />
+            <spacer flex="1" />
+            <checkbox id="taiga-me-watching" checked="true"
+              oncommand="taiga.wizardpage.team.setOption('meWatching', event.target.checked)" />
+          </hbox>
+          <hbox>
+            <label control="taiga-participants-watching" value="&taiga-participants-watching;" />
+            <spacer flex="1" />
+            <checkbox id="taiga-participants-watching" checked="true"
+              oncommand="taiga.wizardpage.team.setOption('participantsWatching', event.target.checked)" />
+          </hbox>
+          <description>&taiga-people-description;</description>
+          
+          <separator/>
+          
+          <label 
+            control="taiga-assignee" 
+            value="&taiga-assignee;" />
+            
+          <separator/>
+          
+          <listbox 
+            id="taiga-assignee"
+            height="230"
+            rows="9">
+          </listbox>
+          <description>&taiga-assignee-description;</description>
+        </vbox>
+        
+        <stack id="taiga-team-progress-overlay" hidden="true">
+          <vbox class="taiga-progress-overlay-background" />
+          <vbox>
+            <spacer flex="1" />
+            <hbox>
+              <spacer flex="1" />
+              <label value="&taiga-setup-team;" />
+              <spacer flex="1" />
+            </hbox>
+            <hbox>
+              <spacer flex="1" />
+              <progressmeter mode="undetermined" />
+              <spacer flex="1" />
+            </hbox>
+            <spacer flex="1" />
+          </vbox>
+        </stack>
+
+      </stack>
+    </wizardpage>
+  </wizard>
+</overlay>

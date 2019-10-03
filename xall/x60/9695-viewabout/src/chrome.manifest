@@ -1,0 +1,12 @@
+content  viewabout  chrome/content/
+
+# Applications have different view menu IDs, so different overlays
+overlay  chrome://browser/content/browser.xul              chrome://viewabout/content/overlay-fx.xul
+overlay  chrome://messenger/content/messenger.xul          chrome://viewabout/content/overlay-sm-tb.xul
+overlay  chrome://navigator/content/navigatorOverlay.xul   chrome://viewabout/content/overlay-sm-tb.xul
+
+# Now that a ViewAbout menu is overlaid in the app-specific way, overlay the menu items into it
+overlay  chrome://viewabout/content/overlay-fx.xul         chrome://viewabout/content/viewabout.xul
+overlay  chrome://viewabout/content/overlay-sm-tb.xul      chrome://viewabout/content/viewabout.xul
+
+locale  viewabout  en-US  locale/en-US/

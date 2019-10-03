@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>tbthemefixed@wanhunglo.com</em:id>
+		<em:type>2</em:type>
+		<em:name>Theme Font &amp; Size Changer for Thunderbird</em:name>
+		<em:version>64.6</em:version>
+		<em:bootstrap>true</em:bootstrap>
+		<em:unpack>false</em:unpack>	
+		<em:creator>Bzzz</em:creator>
+		<em:multiprocessCompatible>true</em:multiprocessCompatible>
+		<em:iconURL>chrome://themefontsizechangertb/skin/addonicon.png</em:iconURL>
+		<em:homepageURL>http://www.wanhunglo.com/2018/theme-font-size-changer-for-thunderbird-e6</em:homepageURL>
+		<em:optionsType>3</em:optionsType>
+		<em:optionsURL>chrome://themefontsizechangertb/content/addonoptions.xul</em:optionsURL>
+		<em:targetApplication>
+			<Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id><!-- thunderbird -->
+				<em:minVersion>58.0</em:minVersion>
+				<em:maxVersion>65.0</em:maxVersion>
+			</Description>
+		</em:targetApplication>		
+	</Description>
+</RDF>

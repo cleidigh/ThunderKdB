@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://esign/skin/default/styles/esignMessengerOverlay.css" type="text/css"?>
+
+<overlay id="esignMessengerOverlay"
+				 xmlns:html="http://www.w3.org/1999/xhtml"
+				 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://esign/content/script/esignMessengerOverlay.js"/>
+
+	<notificationbox id="msgNotificationBar">
+		<div id="esignNotification" class="disabled">
+			<hbox align="center">
+				<image class="esign-logo" src="chrome://esign/content/skin/default/icon/icon.png"></image>
+				<vbox align="left" id="esign-info">
+					<vbox id="esign-info-title"></vbox>
+					<vbox id="esign-info-val"></vbox>
+				</vbox>
+			</hbox>
+		</div>
+	</notificationbox>
+
+</overlay>
