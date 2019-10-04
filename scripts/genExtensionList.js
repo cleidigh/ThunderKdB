@@ -96,7 +96,7 @@ function genExtensionListFromJson(extsJson) {
 	console.debug(extsListFile );
 	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/${listBaseName}.md`, extsListFile);
 	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
-	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60.md`, extsListFile);
+	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60all.md`, extsListFile);
 
 	console.debug('Done');
 }
@@ -207,13 +207,17 @@ function createExtMDTableRow(extJson) {
 	// }
 
 	// target 60
-	if ( !(comp_badges.includes(cBadge_tb60)) || comp_badges.includes(cBadge_tb68))  {
-		return "";
-	}
+	// if ( !(comp_badges.includes(cBadge_tb60)) || comp_badges.includes(cBadge_tb68))  {
+	// 	return "";
+	// }
 
 	// if ( !(comp_badges.includes(cBadge_tb68) ) ) {
 	// 	return "";
 	// }
+
+	if ( !(comp_badges.includes(cBadge_tb60) ) ) {
+		return "";
+	}
 
 	let rank = extJson.xpilib.rank;
 	
