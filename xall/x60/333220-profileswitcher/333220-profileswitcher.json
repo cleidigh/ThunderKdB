@@ -11,23 +11,23 @@
     ],
     "average_daily_users": 7051,
     "categories": {
-        "thunderbird": [
-            "miscellaneous"
-        ],
         "firefox": [
             "other"
+        ],
+        "thunderbird": [
+            "miscellaneous"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 2338468,
         "compatibility": {
-            "thunderbird": {
-                "max": "60.*",
-                "min": "14.0"
-            },
             "firefox": {
                 "max": "52.*",
+                "min": "14.0"
+            },
+            "thunderbird": {
+                "max": "60.*",
                 "min": "14.0"
             }
         },
@@ -136,5 +136,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/profileswitcher/",
-    "weekly_downloads": 417
+    "weekly_downloads": 417,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "comp60": true
+        }
+    }
 }

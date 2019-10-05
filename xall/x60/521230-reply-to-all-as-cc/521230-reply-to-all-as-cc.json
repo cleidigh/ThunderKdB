@@ -17,26 +17,26 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2469161,
+        "id": 2472678,
         "compatibility": {
             "thunderbird": {
                 "max": "60.*",
                 "min": "45.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/reply-to-all-as-cc/versions/2469161",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/reply-to-all-as-cc/versions/2472678",
         "files": [
             {
-                "id": 1012300,
-                "created": "2019-01-18T08:46:38Z",
-                "hash": "sha256:17c0f5b5b46154270c6df238831ee57a90219ef11ef8ee4feb368e970750ba05",
+                "id": 1015761,
+                "created": "2019-09-27T10:13:44Z",
+                "hash": "sha256:fc48b200486a68d6e4e76fbb0606873a057246b9738dc7dd95ba9e41fd56a3e9",
                 "is_restart_required": true,
                 "is_webextension": false,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 7552,
+                "size": 8626,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012300/reply_to_all_as_cc-1.5.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015761/reply_to_all_as_cc-1.5.4-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -49,12 +49,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Detect sender in recipients more correctly",
-            "ja": "宛先の中にある元のメールの送信者をより確実に識別するようにした"
+            "en-US": "Keep \"To\" recipients as-is if the original mail was sent by myself.",
+            "ja": "返信元のメールが自分の送信したメールだった場合にToをCcに置き換えないようにした"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/reply-to-all-as-cc/versions/1.5.3",
-        "version": "1.5.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/reply-to-all-as-cc/versions/1.5.4",
+        "version": "1.5.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -75,7 +75,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-01-24T20:24:55Z",
+    "last_updated": "2019-10-03T11:23:44Z",
     "name": {
         "en-US": "Reply to All as Cc"
     },
@@ -103,5 +103,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/reply-to-all-as-cc/",
-    "weekly_downloads": 48
+    "weekly_downloads": 48,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "comp60": true
+        }
+    }
 }
