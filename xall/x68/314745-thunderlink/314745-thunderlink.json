@@ -1,0 +1,192 @@
+{
+    "id": 314745,
+    "authors": [
+        {
+            "id": 5744695,
+            "name": "Christoph Zwirello",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/poohsen/",
+            "username": "poohsen",
+            "picture_url": null
+        },
+        {
+            "id": 14152415,
+            "name": "Mike Hardy",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mikehardy/",
+            "username": "mikehardy",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14152/14152415.png?modified=1535722458"
+        }
+    ],
+    "average_daily_users": 846,
+    "categories": {
+        "thunderbird": [
+            "importexport",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "https://paypal.me/jameschardy",
+    "current_version": {
+        "id": 2469159,
+        "compatibility": {
+            "thunderbird": {
+                "max": "68.*",
+                "min": "38.0"
+            },
+            "firefox": {
+                "max": "*",
+                "min": "42.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderlink/versions/2469159",
+        "files": [
+            {
+                "id": 1012298,
+                "created": "2019-01-17T16:33:26Z",
+                "hash": "sha256:03a812cb99db99ac9e4ca2908c1cc8a2298a3a26525789d38960c9c691db9de0",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 24019,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012298/thunderlink-1.2.9-fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "1.2.9\n-----\n- Fixed preference window on Windows (@mikehardy)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderlink/versions/1.2.9",
+        "version": "1.2.9"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>ThunderLink - clickable, durable links to specific messages</b>\n======================================================\n\nThunderLinks are durable hyperlinks to specific email messages.\n\nMake a reference to the ThunderLink anywhere you want immediate access to the original message contents in full. For example, wikis, task trackers, etc.\n\nClick on a ThunderLink later to open that specific message in Thunderbird.\n\nYou may customize ThunderLink formats to fit your needs.\n\nYou may even configure ThunderLink to tag the email while creating the link, enabling advanced workflows and more productivity!\n\nThunderLinks are durable even if you file the message. They are based on the unique message ID generated when an email is sent. This enables the Thunderbird email client to quickly and reliably find and select any email that exists in your Thunderbird mail store.\n\n<b>Installation</b>\n===========\n<ol><li>Install the ThunderLink Add-On in Thunderbird - <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/thunderlink/?src=search\" rel=\"nofollow\">https://addons.thunderbird.net/en-US/thunderbird/addon/thunderlink/?src=search</a></li><li>Register the 'thunderlink' protocol in your OS following the instructions below:</li></ol> \n\n   <b>Windows:</b>\n   ----------------\n   Download the \"raw\" version of the file that matches your Windows and Thunderbird versions, then double-click the file and confirm the registry script to merge it in to your registry:\n   \n   <ul>   <li><a href=\"https://github.com/mikehardy/thunderlink/blob/master/integration/ThunderLink_WINXP_WIN7_32bit_Thunderbird_32bit.reg\" rel=\"nofollow\">https://github.com/mikehardy/thunderlink/blob/master/integration/ThunderLink_WINXP_WIN7_32bit_Thunderbird_32bit.reg</a>\n   </li><li><a href=\"https://github.com/mikehardy/thunderlink/blob/master/integration/ThunderLink_WIN7_64bit_Thunderbird_32bit.reg\" rel=\"nofollow\">https://github.com/mikehardy/thunderlink/blob/master/integration/ThunderLink_WIN7_64bit_Thunderbird_32bit.reg</a>\n   </li><li><a href=\"https://github.com/mikehardy/thunderlink/blob/master/integration/ThunderLink_WIN10_64bit_Thunderbird_32bit.reg\" rel=\"nofollow\">https://github.com/mikehardy/thunderlink/blob/master/integration/ThunderLink_WIN10_64bit_Thunderbird_32bit.reg</a>\n   </li></ul>\n   These .reg files were generously provided by @mobileartur - please feel free to provide others or open pull requests to help other windows users. Note that 32bit Thunderbird is the current recommendation for Windows. For this reason we don't have registry files for 64-bit Thunderbird.\n\n   <b>Linux (Tested on Ubuntu 18.04LTS):</b>\n   ------------------------------------------\n   <ol>   <li>Install the desktop launcher that opens ThunderLinks in Thunderbird</li>   <ol>   <li>Download the thunderlink launcher <a href=\"https://github.com/mikehardy/thunderlink/blob/master/integration/thunderbird-tl.desktop\" rel=\"nofollow\">https://github.com/mikehardy/thunderlink/blob/master/integration/thunderbird-tl.desktop</a></li>   <li>Copy it to ~/.local/share/applications/thunderbird-tl.desktop</li>   </ol>   <li>Connect the \"thunderlink\" URL type to the launcher file\n   <ol>   <li>Run the command `touch ~/.local/share/applications/mimeapps.list` to make sure you have a local MIME handler registry</li>   <li>Add the handler: `echo \"x-scheme-handler/thunderlink=thunderbird-tl.desktop\" &gt;&gt; ~/.local/share/applications/mimeapps.list`</li>   </ol>   </li></ol>\n   <b>Mac:</b>\n   ----------\n   You may integrate directly with thunderbird using helper scripts as described here:\n   <a href=\"https://github.com/mikehardy/thunderlink/blob/master/integration/macosx/install.txt\" rel=\"nofollow\">https://github.com/mikehardy/thunderlink/blob/master/integration/macosx/install.txt</a>\n   \n   Separately, it is possible to interoperate with Mail.app on macOS and Thunderbird on (for example) Windows with the same links, following these instructions: <a href=\"https://github.com/mikehardy/thunderlink/wiki/macOS-compatibility---interoperability\" rel=\"nofollow\">https://github.com/mikehardy/thunderlink/wiki/macOS-compatibility---interoperability</a>\n   \n   <b>Usage</b>\n   -------------\n   Use the keyboard shortcut for the ThunderLink format you want (e.g. Ctrl-Alt-6) or right-click on an email and select 'ThunderLink...' and the format you want. You now have the ThunderLink to your email in your clipboard. You can paste it into your personal wiki, or your project teams wiki, or a new task entry in your task tracker for instance.\n\n   If you would like a clickable ThunderLink with the email's subject, use a pattern like this: `&lt;A HREF=\"&amp;lt;thunderlink&amp;gt;\"&gt;&lt;subject&gt;` - this may be pasted into other systems that render HTML.\n\n   If you registered the ThunderLink protocol correctly, a click on the ThunderLink will open your email directly using the ThunderLink options you configured (open in a new tab, open in a new window, etc)\n\n   \n   <b>Notes:</b>\n   =======\n   <ul>   <li>Some task managers (for example, MyLifeOrganized (MLO)) require you to prefix the ThunderLink with `file:` to be treated like a link</li>   <li>You can configure very complicated ThunderLinks if you like. For example:\n   ```\n   Email: &lt;subject&gt;   -s Tomorrow -*   @ Work;Email;\\nfile:&lt;thunderlink&gt;\n   ```\n   </li>   </ul>\n   <b>Having trouble?</b>\n   ================\n  Make sure you have escaped newlines in your thunderlink strings. Use '\\n' instead of the actual newline, and it will work. (Note: this is a change from prior versions, sorry)\n\n   In the unlikely event of a bug, please open an issue on the provided github link, taking care to include all the requested information.\n\n   Care to contribute? <a href=\"https://github.com/mikehardy/thunderlink\" rel=\"nofollow\">https://github.com/mikehardy/thunderlink</a>\n\n   For devs cloning the repo use make '<a href=\"http://makeXpi.sh\" rel=\"nofollow\">makeXpi.sh</a> &lt;release-number&gt;' to create distributables for Thunderbird",
+        "de": "<b>ThunderLink</b>\n=========\n<b>PLEASE NOTE: This repository is no longer maintained. I won't take the time to update thunderlink so it works with newer versions of TB. My apologies.</b>\n\n\nThunderLink lets you link to email messages in Thunderbird. \n\nYou can place ThunderLinks on the Desktop (in batch scripts), in OpenOffice/LibreOffice documents or in a personal wiki (such as <a href=\"http://www.tiddlywiki.com\" rel=\"nofollow\"> \"TiddlyWiki\"</a>).\n\nOr maybe you have a Wiki running at your company and you want to link to emails sent to a mailing list so that your colleagues can quickly access them without having to search their inboxes first?\n\nUse a ThunderLink!\n\nWith version 1.0.0, It's now also easy to integrate ThunderLink with todo lists and task managers such as RememberTheMilk, MyLifeOrganized, Evernote, OneNote, Nirvana, Taskwarrior, etc.\nYou can completely customize ThunderLinks to fit your application's needs. And you can tag the emails you created a link to for advanced workflows and more productivity!\n\nThunderLinks are based on the unique message ID generated when an email is sent. This enables the Thunderbird email client to quickly and reliably find and select an email - as long as you actually received it.\n\nWith the companion extension ThunderLinkSpotter for the Firefox webbrowser you can make Firefox \"ThunderLink-aware\", so that it will automatically turn ThunderLinks into hyperlinks. One click and you can read the email you were looking for.\n\nThunderLinks are also recognized and turned into hyperlinks by Thunderbird itself, so you can use them in emails, too.\n\n\n<b>Installation</b>\n========\n<ol><li>install ThunderLink in Thunderbird\n   (use \"all versions\" link below for Thunderbird versions older than 5.0)</li>   <li>install ThunderLinkSpotter in Firefox</li>   <li>register the 'thunderlink' protocol in your OS following the instructions below:</li>   </ol>   \n\n   <b>on Linux (ubuntu):</b>\n   --------------------------\n   <b>pre-Natty:</b>\n   follow these instructions: <a href=\"http://kb.mozillazine.org/Register_protocol\" rel=\"nofollow\">http://kb.mozillazine.org/Register_protocol</a>\n   Make sure you use the <b>-thunderlink</b> command line option when invoking Thunderbird, e.g. for Linux:\n   <code>/gconftool-2 -s /desktop/gnome/url-handlers/thunderlink/command '/usr/bin/thunderbird -thunderlink %s' --type String </code>\n\n   <b>Natty and newer:</b>\n   <ol>   <li>You'll need to update your ~/.local/share/applications/mimeapps.list:\n   under [Added Associations], add the line\n   x-scheme-handler/thunderlink=thunderbird-tl.desktop;</li>\n   <li>then, make a copy of your ~/.local/share/applications/thunderbird.desktop and name it thunderbird-tl.desktop </li>\n   <li>Change the line that starts with\n   Exec=thunderbird %u...\n   to\n   Exec=thunderbird -thunderlink %u...</li>   <li>and the line that starts with\n   MimeType=...\n   to\n   MimeType=x-scheme-handler/thunderlink;\n   this entry for Thunderbird will thus serve only for handling ThunderLinks.</li>   <li>in Thunderbird, you might have to explicitly select the new handler: Go to edit-&gt;preferences-&gt;attachments. In the \"incoming\" tab, you will have to select as the action for thunderlink whatever name you chose for the handler in the thunderbird-tl.desktop file</li>   </ol>\n   <b>Oneiric and newer:</b>\n\n   Like Natty but you might have to\n   <ol>   <li>edit\n   /usr/share/applications/defaults.list instead of ~/.local/share/applications/mimeapps.list\n   </li>   <li>Also, the thunderbird.desktop file has to be copied from /usr/share/applications/, either to your ~/.local/share/applications or /usr/share/applications, depending on your preference.\n   </li>   </ol>   Otherwise, the instructions are the same.\n\n   <b>on Windows 7 (32 bit) and XP:</b>\n   ------------------------------------------------------------------------------------------------\n   there is a .reg script for registering the thunderlink protocol:\n\n\n   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n   <code>\n   REGEDIT4\n\n   [HKEY_CLASSES_ROOT\\thunderlink]\n   @=\"URL:thunderlink Protocol\"\n   \"URL Protocol\"=\"\"\n\n   [HKEY_CLASSES_ROOT\\thunderlink\\shell]\n\n   [HKEY_CLASSES_ROOT\\thunderlink\\shell\\open]\n\n   [HKEY_CLASSES_ROOT\\thunderlink\\shell\\open\\command]\n   @=\"\\\"C:\\\\Program Files\\\\Mozilla Thunderbird\\\\thunderbird.exe\\\" -thunderlink \\\"%1\\\"\"\n   </code>\n   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n   <b>on Windows 7 64 bit:</b>\n\n   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n   <code>\n   REGEDIT4\n\n   [HKEY_CLASSES_ROOT\\thunderlink]\n   @=\"URL:thunderlink Protocol\"\n   \"URL Protocol\"=\"\"\n\n   [HKEY_CLASSES_ROOT\\thunderlink\\shell]\n\n   [HKEY_CLASSES_ROOT\\thunderlink\\shell\\open]\n\n   [HKEY_CLASSES_ROOT\\thunderlink\\shell\\open\\command]\n   @=\"\\\"C:\\\\Program Files (x86)\\\\Mozilla Thunderbird\\\\thunderbird.exe\\\" -thunderlink \\\"%1\\\"\"\n   </code>\n   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n   Create a file with .reg extension, copy the stuff between the dashes into it, changing the path to the thunderbird.exe if necessary, double-click on the file, confirm execution, done.\n\n   <b>on Windows 8</b>\n\n   Haven't tried it myself, but this guide should help: <a href=\"http://msdn.microsoft.com/en-us/library/aa767914%28v=VS.85%29.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-us/library/aa767914%28v=VS.85%29.aspx</a>\n\n   The easiest way to find out the install location is to right-click on the shortcut to Thunderbird in your Start menu and select Properties, and then check the \"Target\" or \"Start in\" fields for the path data. (thx Sean!)\n\n   ... and that's it, you're good to go!\n\n\n   <b>Usage</b>\n   =====\n   Right-click on an email and select 'Copy ThunderLink to clipboard'. You now have the ThunderLink to your email in your clipboard. You can paste it into your personal wiki, or your project teams wiki, for instance.\n\n   Use ThunderLinkSpotter to turn that link into a hyperlink, making it \"clickable\". If you registered the thunderbird protocol correctly, a click on the ThunderLink will take you to Thunderbird and select your email immediately. If Thunderbird wasn't running yet, the email will show in a stand-alone window.\n\n\n   <b>Having trouble?</b>\n   ===========\n   <b>Please note that protocol registration changed in Ubuntu Natty! </b>\n   If you had to use the \"natty and newer\" installation instructions, you might have to tell thunderbird to use the new handler (see instructions above)\n\n\n   I tested this extension with several TB installations and two other beta testers, under Linux and Windows (7 and XP). However..... in the unlikely event of a bug, please don't leave a question or \"doesn't work\" type message as a comment.\n   I'm keen on constructive feedback, so just describe your setup and the issue you're having and send it to: \"firstname underscore lastname, provider is gmx dot de\" and I'll try my best to sort you out. You can still flame me afterwards should I fail ;)\n\n   Care to contribute? <a href=\"https://github.com/poohsen/thunderlink\" rel=\"nofollow\">https://github.com/poohsen/thunderlink</a>\n\n   For devs cloning the repo:\n   - use make '<a href=\"http://makeXpi.sh\" rel=\"nofollow\">makeXpi.sh</a> &lt;release-number&gt;' to create distributables for Thunderbird"
+    },
+    "developer_comments": {
+        "en-US": "Fresh update for Thunderbird 65! Enjoy",
+        "de": "Requires Firefox + \"ThunderLinkSpotter\" Extension for most usecases."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderlink/edit",
+    "guid": "thunderlink@mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/mikehardy/thunderlink",
+        "de": "https://github.com/poohsen/thunderlink"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/downloads-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/downloads-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/downloads-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-01-17T16:35:03Z",
+    "name": {
+        "en-US": "ThunderLink",
+        "de": "ThunderLink"
+    },
+    "previews": [
+        {
+            "id": 205524,
+            "caption": {
+                "en-US": "Create a thunderlink"
+            },
+            "image_size": [
+                713,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205524.png?modified=1544460075",
+            "thumbnail_size": [
+                178,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205524.png?modified=1544460075"
+        },
+        {
+            "id": 205525,
+            "caption": {
+                "en-US": "Use a thunderlink"
+            },
+            "image_size": [
+                967,
+                685
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205525.png?modified=1544460075",
+            "thumbnail_size": [
+                282,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205525.png?modified=1544460075"
+        },
+        {
+            "id": 205526,
+            "caption": {
+                "en-US": "Configure thunderlink"
+            },
+            "image_size": [
+                1217,
+                329
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205526.png?modified=1544460080",
+            "thumbnail_size": [
+                320,
+                87
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205526.png?modified=1544460080"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.37273,
+        "count": 18,
+        "average": 4.4444,
+        "text_count": 18
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderlink/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/314745",
+    "slug": "thunderlink",
+    "status": "public",
+    "summary": {
+        "en-US": "Clickable, durable links to specific messages inside Thunderbird.",
+        "de": "Links to your emails from other apps such as Firefox!"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/mikehardy/thunderlink",
+        "de": "https://github.com/mikehardy/thunderlink"
+    },
+    "tags": [
+        "automation",
+        "deep-link",
+        "firefox",
+        "firefox57",
+        "integration",
+        "link",
+        "productivity"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderlink/",
+    "weekly_downloads": 106,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp68": true,
+            "comp60": true,
+            "comp61plus": true
+        }
+    }
+}
