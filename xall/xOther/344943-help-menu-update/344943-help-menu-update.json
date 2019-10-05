@@ -11,23 +11,23 @@
     ],
     "average_daily_users": 63,
     "categories": {
-        "firefox": [
-            "alerts-updates"
-        ],
         "thunderbird": [
             "miscellaneous"
+        ],
+        "firefox": [
+            "alerts-updates"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1301268,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "8.0"
-            },
             "thunderbird": {
                 "max": "27.0a1",
+                "min": "8.0"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "8.0"
             }
         },
@@ -148,5 +148,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/help-menu-update/",
-    "weekly_downloads": 26
+    "weekly_downloads": 26,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

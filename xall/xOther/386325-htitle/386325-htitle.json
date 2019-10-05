@@ -11,13 +11,13 @@
     ],
     "average_daily_users": 13,
     "categories": {
-        "thunderbird": [
+        "firefox": [
             "appearance"
         ],
         "seamonkey": [
             "interface-customizations"
         ],
-        "firefox": [
+        "thunderbird": [
             "appearance"
         ]
     },
@@ -25,17 +25,17 @@
     "current_version": {
         "id": 1684710,
         "compatibility": {
-            "thunderbird": {
-                "max": "40.0a1",
-                "min": "24.0"
+            "firefox": {
+                "max": "56.*",
+                "min": "29.0"
             },
             "seamonkey": {
                 "max": "2.37a1",
                 "min": "2.26"
             },
-            "firefox": {
-                "max": "56.*",
-                "min": "29.0"
+            "thunderbird": {
+                "max": "40.0a1",
+                "min": "24.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/htitle/versions/1684710",
@@ -209,5 +209,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/htitle/",
-    "weekly_downloads": 55
+    "weekly_downloads": 55,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

@@ -19,12 +19,12 @@
     "current_version": {
         "id": 29691,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
-            },
             "thunderbird": {
                 "max": "2.0b1",
+                "min": "1.5"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "1.5"
             }
         },
@@ -97,5 +97,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/print-preview-toolbar-button/",
-    "weekly_downloads": 22
+    "weekly_downloads": 22,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

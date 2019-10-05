@@ -1,251 +1,244 @@
-{
-    "page_size": 25,
-    "page_count": 1,
-    "count": 7,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 34486,
-            "channel": "listed",
-            "compatibility": {
-                "seamonkey": {
-                    "max": "1.1.*",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "0.6"
-                }
+[
+    {
+        "id": 34486,
+        "channel": "listed",
+        "compatibility": {
+            "seamonkey": {
+                "max": "1.1.*",
+                "min": "1.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/34486",
-            "files": [
-                {
-                    "id": 17763,
-                    "created": "2007-07-21T18:49:48Z",
-                    "hash": "sha256:03da180dc3b201518a88eee89f9b604b99d14bad89706ae5557d8f3349da9934",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 69632,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17763/forumzilla-0.5.8-tb+sm.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "This version:\n\n    * adds an \"Export OPML...\" function that writes your list of subscriptions to an OPML XML file;\n\n    * reduces duplicates by reverting to identifying stories by URL instead of a hash of URL, date, and title when the feed doesn't provide unique IDs for its items; Forumzilla still uses a hash for feeds in \"quick mode\" (i.e. when you tell Forumzilla to show you \"just the summary\" via the advanced options section of the subscriptions dialog box);\n\n    * reduces duplicates by checking a few variations on URLs when using URLs to identify feeds; specifically, Forumzilla tries the URL with or without a trailing slash and \"www.\" at the beginning of the hostname;\n\n    * supports the XML base attribute when added to the root element of an Atom feed;\n\n    * fixes a couple bugs when retrieving the timestamp and escaped HTML content of items in an Atom feed.\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.8",
-            "version": "0.5.8"
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "0.6"
+            }
         },
-        {
-            "id": 29553,
-            "channel": "listed",
-            "compatibility": {
-                "seamonkey": {
-                    "max": "1.1",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "3.0a1",
-                    "min": "0.6"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/29553",
-            "files": [
-                {
-                    "id": 575,
-                    "created": "2007-03-05T13:11:15Z",
-                    "hash": "sha256:405def99504c960359bd7cf8341d03119198f9f38da1c80276fb3aa4d631404f",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 67584,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/575/forumzilla-0.5.7-zm+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "This version fixes minor incompatibilities with the latest development versions of Thunderbird, fixes a bug that caused the New Folder button in the subscriptions dialog not to work, changes the Feeds button icon to the standard feed icon, and fixes a number of other bugs.\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.7",
-            "version": "0.5.7"
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/34486",
+        "files": [
+            {
+                "id": 17763,
+                "created": "2007-07-21T18:49:48Z",
+                "hash": "sha256:03da180dc3b201518a88eee89f9b604b99d14bad89706ae5557d8f3349da9934",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 69632,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17763/forumzilla-0.5.8-tb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version:\n\n    * adds an \"Export OPML...\" function that writes your list of subscriptions to an OPML XML file;\n\n    * reduces duplicates by reverting to identifying stories by URL instead of a hash of URL, date, and title when the feed doesn't provide unique IDs for its items; Forumzilla still uses a hash for feeds in \"quick mode\" (i.e. when you tell Forumzilla to show you \"just the summary\" via the advanced options section of the subscriptions dialog box);\n\n    * reduces duplicates by checking a few variations on URLs when using URLs to identify feeds; specifically, Forumzilla tries the URL with or without a trailing slash and \"www.\" at the beginning of the hostname;\n\n    * supports the XML base attribute when added to the root element of an Atom feed;\n\n    * fixes a couple bugs when retrieving the timestamp and escaped HTML content of items in an Atom feed.\n"
         },
-        {
-            "id": 13912,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "1.5.0.*",
-                    "min": "0.6"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.8",
+        "version": "0.5.8"
+    },
+    {
+        "id": 29553,
+        "channel": "listed",
+        "compatibility": {
+            "seamonkey": {
+                "max": "1.1",
+                "min": "1.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/13912",
-            "files": [
-                {
-                    "id": 574,
-                    "created": "2007-03-05T13:11:15Z",
-                    "hash": "sha256:d7008217a1e85b2c3d2fe20d5aaa1795bbaaedb6e06fc77874b3b27171801be8",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 73728,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/574/forumzilla-0.5.6-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "this version works with Thunderbird 1.5"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.6",
-            "version": "0.5.6"
+            "thunderbird": {
+                "max": "3.0a1",
+                "min": "0.6"
+            }
         },
-        {
-            "id": 5037,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "1.0+",
-                    "min": "0.6"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/5037",
-            "files": [
-                {
-                    "id": 573,
-                    "created": "2007-03-05T13:11:15Z",
-                    "hash": "sha256:03155e92fa9f6ec3017dad95285870888e1c5055315e4e7872681278de20292e",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 74752,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/573/forumzilla-0.5.4-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "This version fixes an incompatibility between Forumzilla and recent nightly development releases of Thunderbird.  Unless you use Thunderbird nightlies, there is no reason to upgrade from 0.5.3 to this version."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.4",
-            "version": "0.5.4"
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/29553",
+        "files": [
+            {
+                "id": 575,
+                "created": "2007-03-05T13:11:15Z",
+                "hash": "sha256:405def99504c960359bd7cf8341d03119198f9f38da1c80276fb3aa4d631404f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 67584,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/575/forumzilla-0.5.7-zm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version fixes minor incompatibilities with the latest development versions of Thunderbird, fixes a bug that caused the New Folder button in the subscriptions dialog not to work, changes the Feeds button icon to the standard feed icon, and fixes a number of other bugs.\n"
         },
-        {
-            "id": 3198,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "1.0+",
-                    "min": "0.6"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/3198",
-            "files": [
-                {
-                    "id": 572,
-                    "created": "2007-03-05T13:11:15Z",
-                    "hash": "sha256:d6be17c280958e050ecdc0eec523a26adf8700bd187b86ed29c09311a18cbaac",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 66560,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/572/forumzilla-0.5.3-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "This version:\n\n    * fixes the bug that caused temp files not to be deleted on Windows;\n    * fixes a number of bugs that caused duplicate stories;\n    * significantly improves OPML import, which now works for hierarchical OPML files and importing to an IMAP account;\n    * brings back the \"view in browser\" link for Seamonkey users;\n    * fixes a number of bugs in the folder pickers in the Subscriptions and Preferences dialog boxes;\n    * adds a margin to story content for added readability;\n    * fixes the bug that caused feeds to sometimes download into the wrong folder when you first subscribe to them;\n    * fixes the bug where the title of the feed wouldn't appear in the title field of the feed subscriptions window.\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.3",
-            "version": "0.5.3"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.7",
+        "version": "0.5.7"
+    },
+    {
+        "id": 13912,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "1.5.0.*",
+                "min": "0.6"
+            }
         },
-        {
-            "id": 483,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "0.9",
-                    "min": "0.6"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/483",
-            "files": [
-                {
-                    "id": 571,
-                    "created": "2007-03-05T13:11:15Z",
-                    "hash": "sha256:945c9cc7b858104c0e3eef60418641987591ff7aeed646898776406000c55451",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 90112,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/571/forumzilla-0.5.2-mz+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": null,
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.2",
-            "version": "0.5.2"
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/13912",
+        "files": [
+            {
+                "id": 574,
+                "created": "2007-03-05T13:11:15Z",
+                "hash": "sha256:d7008217a1e85b2c3d2fe20d5aaa1795bbaaedb6e06fc77874b3b27171801be8",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 73728,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/574/forumzilla-0.5.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "this version works with Thunderbird 1.5"
         },
-        {
-            "id": 205,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "0.9",
-                    "min": "0.7"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/205",
-            "files": [
-                {
-                    "id": 570,
-                    "created": "2007-03-05T13:11:15Z",
-                    "hash": "sha256:9514482c154ec6a973e3f64f5a55efa2a50f8b92ea65d92fcd7a9f99c6ac211c",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 78848,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/570/forumzilla-0.5.1-mz+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": null,
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.1",
-            "version": "0.5.1"
-        }
-    ]
-}
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.6",
+        "version": "0.5.6"
+    },
+    {
+        "id": 5037,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "1.0+",
+                "min": "0.6"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/5037",
+        "files": [
+            {
+                "id": 573,
+                "created": "2007-03-05T13:11:15Z",
+                "hash": "sha256:03155e92fa9f6ec3017dad95285870888e1c5055315e4e7872681278de20292e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 74752,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/573/forumzilla-0.5.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version fixes an incompatibility between Forumzilla and recent nightly development releases of Thunderbird.  Unless you use Thunderbird nightlies, there is no reason to upgrade from 0.5.3 to this version."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.4",
+        "version": "0.5.4"
+    },
+    {
+        "id": 3198,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "1.0+",
+                "min": "0.6"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/3198",
+        "files": [
+            {
+                "id": 572,
+                "created": "2007-03-05T13:11:15Z",
+                "hash": "sha256:d6be17c280958e050ecdc0eec523a26adf8700bd187b86ed29c09311a18cbaac",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 66560,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/572/forumzilla-0.5.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version:\n\n    * fixes the bug that caused temp files not to be deleted on Windows;\n    * fixes a number of bugs that caused duplicate stories;\n    * significantly improves OPML import, which now works for hierarchical OPML files and importing to an IMAP account;\n    * brings back the \"view in browser\" link for Seamonkey users;\n    * fixes a number of bugs in the folder pickers in the Subscriptions and Preferences dialog boxes;\n    * adds a margin to story content for added readability;\n    * fixes the bug that caused feeds to sometimes download into the wrong folder when you first subscribe to them;\n    * fixes the bug where the title of the feed wouldn't appear in the title field of the feed subscriptions window.\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.3",
+        "version": "0.5.3"
+    },
+    {
+        "id": 483,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "0.9",
+                "min": "0.6"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/483",
+        "files": [
+            {
+                "id": 571,
+                "created": "2007-03-05T13:11:15Z",
+                "hash": "sha256:945c9cc7b858104c0e3eef60418641987591ff7aeed646898776406000c55451",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 90112,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/571/forumzilla-0.5.2-mz+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.2",
+        "version": "0.5.2"
+    },
+    {
+        "id": 205,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "0.9",
+                "min": "0.7"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/forumzilla/versions/205",
+        "files": [
+            {
+                "id": 570,
+                "created": "2007-03-05T13:11:15Z",
+                "hash": "sha256:9514482c154ec6a973e3f64f5a55efa2a50f8b92ea65d92fcd7a9f99c6ac211c",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 78848,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/570/forumzilla-0.5.1-mz+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/forumzilla/versions/0.5.1",
+        "version": "0.5.1"
+    }
+]

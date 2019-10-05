@@ -19,7 +19,7 @@
     "current_version": {
         "id": 1861165,
         "compatibility": {
-            "firefox": {
+            "thunderbird": {
                 "max": "50.*",
                 "min": "2.0"
             },
@@ -27,7 +27,7 @@
                 "max": "2.40",
                 "min": "2.0a1"
             },
-            "thunderbird": {
+            "firefox": {
                 "max": "50.*",
                 "min": "2.0"
             }
@@ -150,5 +150,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/about-add-ons/",
-    "weekly_downloads": 35
+    "weekly_downloads": 35,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

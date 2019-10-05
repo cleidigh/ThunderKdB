@@ -20,13 +20,13 @@
     "current_version": {
         "id": 1311131,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "4.0b1"
-            },
             "thunderbird": {
                 "max": "31.*",
                 "min": "1.5"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0b1"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/yelp-search-toolbar/versions/1311131",
@@ -171,5 +171,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/yelp-search-toolbar/",
-    "weekly_downloads": 44
+    "weekly_downloads": 44,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

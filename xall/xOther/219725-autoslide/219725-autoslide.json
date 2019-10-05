@@ -19,16 +19,16 @@
     "current_version": {
         "id": 2468709,
         "compatibility": {
-            "thunderbird": {
-                "max": "63.*",
+            "firefox": {
+                "max": "*",
                 "min": "63.0a1"
             },
             "android": {
                 "max": "*",
                 "min": "63.0a1"
             },
-            "firefox": {
-                "max": "*",
+            "thunderbird": {
+                "max": "63.*",
                 "min": "63.0a1"
             }
         },
@@ -153,5 +153,13 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoslide/",
-    "weekly_downloads": 23
+    "weekly_downloads": 23,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2017-11-15T00:26:20Z"
+        }
+    }
 }

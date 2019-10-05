@@ -11,25 +11,25 @@
     ],
     "average_daily_users": 2,
     "categories": {
+        "thunderbird": [
+            "language-support"
+        ],
         "firefox": [
             "language-support",
             "search-tools"
-        ],
-        "thunderbird": [
-            "language-support"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1270820,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "3.6"
-            },
             "thunderbird": {
                 "max": "3.1.*",
                 "min": "3.0"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "3.6"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/look-up-in-dictionary-7261/versions/1270820",
@@ -180,5 +180,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/look-up-in-dictionary-7261/",
-    "weekly_downloads": 23
+    "weekly_downloads": 23,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

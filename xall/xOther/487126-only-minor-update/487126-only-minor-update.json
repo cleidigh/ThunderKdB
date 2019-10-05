@@ -11,23 +11,23 @@
     ],
     "average_daily_users": 41,
     "categories": {
-        "firefox": [
-            "alerts-updates"
-        ],
         "thunderbird": [
             "miscellaneous"
+        ],
+        "firefox": [
+            "alerts-updates"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1521726,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "24.0"
-            },
             "thunderbird": {
                 "max": "31.*",
+                "min": "24.0"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "24.0"
             }
         },
@@ -134,5 +134,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/only-minor-update/",
-    "weekly_downloads": 24
+    "weekly_downloads": 24,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

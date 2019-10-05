@@ -11,23 +11,23 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "thunderbird": [
-            "miscellaneous"
-        ],
         "firefox": [
             "web-development"
+        ],
+        "thunderbird": [
+            "miscellaneous"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 2046701,
         "compatibility": {
-            "thunderbird": {
-                "max": "52.*",
-                "min": "45.0"
-            },
             "firefox": {
                 "max": "56.*",
+                "min": "45.0"
+            },
+            "thunderbird": {
+                "max": "52.*",
                 "min": "45.0"
             }
         },
@@ -171,5 +171,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/uxu-unittestxul/",
-    "weekly_downloads": 42
+    "weekly_downloads": 42,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

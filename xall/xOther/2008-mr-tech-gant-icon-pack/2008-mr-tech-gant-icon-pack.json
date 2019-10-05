@@ -19,12 +19,12 @@
     "current_version": {
         "id": 20554,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
-            },
             "thunderbird": {
                 "max": "3.0a1",
+                "min": "1.5"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "1.5"
             }
         },
@@ -134,5 +134,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mr-tech-gant-icon-pack/",
-    "weekly_downloads": 21
+    "weekly_downloads": 21,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

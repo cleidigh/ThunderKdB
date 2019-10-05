@@ -11,24 +11,24 @@
     ],
     "average_daily_users": 1,
     "categories": {
-        "firefox": [
-            "language-support"
-        ],
         "thunderbird": [
             "miscellaneous"
+        ],
+        "firefox": [
+            "language-support"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 905850,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "4.0"
-            },
             "thunderbird": {
                 "max": "3.2a1pre",
                 "min": "3.0b3"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/arpitgupta31-1/versions/905850",
@@ -129,5 +129,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/arpitgupta31-1/",
-    "weekly_downloads": 21
+    "weekly_downloads": 21,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

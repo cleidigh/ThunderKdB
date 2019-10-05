@@ -11,23 +11,23 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "firefox": [
-            "privacy-security"
-        ],
         "thunderbird": [
             "privacy-and-security"
+        ],
+        "firefox": [
+            "privacy-security"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1508096,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "13.0"
-            },
             "thunderbird": {
                 "max": "26.*",
+                "min": "13.0"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "13.0"
             }
         },
@@ -126,5 +126,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gnome-keyring-integration/",
-    "weekly_downloads": 22
+    "weekly_downloads": 22,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

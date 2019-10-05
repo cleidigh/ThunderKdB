@@ -11,25 +11,25 @@
     ],
     "average_daily_users": 15,
     "categories": {
-        "thunderbird": [
-            "message-and-news-reading"
-        ],
         "firefox": [
             "feeds-news-blogging",
             "web-development"
+        ],
+        "thunderbird": [
+            "message-and-news-reading"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 73501,
         "compatibility": {
-            "thunderbird": {
-                "max": "3.0b2pre",
-                "min": "1.0+"
-            },
             "firefox": {
                 "max": "56.*",
                 "min": "1.0.7"
+            },
+            "thunderbird": {
+                "max": "3.0b2pre",
+                "min": "1.0+"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/leet-key/versions/73501",
@@ -142,5 +142,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/leet-key/",
-    "weekly_downloads": 108
+    "weekly_downloads": 108,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

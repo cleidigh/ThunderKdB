@@ -11,31 +11,31 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "firefox": [
-            "other"
+        "thunderbird": [
+            "miscellaneous"
         ],
         "seamonkey": [
             "miscellaneous"
         ],
-        "thunderbird": [
-            "miscellaneous"
+        "firefox": [
+            "other"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1407508,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "3.0"
+            "thunderbird": {
+                "max": "52.0",
+                "min": "3.0b1"
             },
             "seamonkey": {
                 "max": "*",
                 "min": "2.9"
             },
-            "thunderbird": {
-                "max": "52.0",
-                "min": "3.0b1"
+            "firefox": {
+                "max": "56.*",
+                "min": "3.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/boinc-stats-2/versions/1407508",
@@ -291,5 +291,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/boinc-stats-2/",
-    "weekly_downloads": 21
+    "weekly_downloads": 21,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

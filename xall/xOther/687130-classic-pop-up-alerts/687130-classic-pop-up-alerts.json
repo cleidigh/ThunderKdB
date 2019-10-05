@@ -11,25 +11,25 @@
     ],
     "average_daily_users": 29,
     "categories": {
-        "thunderbird": [
-            "appearance",
-            "message-and-news-reading"
-        ],
         "firefox": [
             "alerts-updates",
             "appearance"
+        ],
+        "thunderbird": [
+            "appearance",
+            "message-and-news-reading"
         ]
     },
     "contributions_url": "https://www.paypal.me/s3blog/10",
     "current_version": {
         "id": 1952483,
         "compatibility": {
-            "thunderbird": {
-                "max": "51.*",
-                "min": "44.0"
-            },
             "firefox": {
                 "max": "56.*",
+                "min": "44.0"
+            },
+            "thunderbird": {
+                "max": "51.*",
                 "min": "44.0"
             }
         },
@@ -157,5 +157,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/classic-pop-up-alerts/",
-    "weekly_downloads": 27
+    "weekly_downloads": 27,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

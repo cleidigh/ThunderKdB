@@ -11,29 +11,29 @@
     ],
     "average_daily_users": 114,
     "categories": {
-        "firefox": [
-            "language-support",
-            "tabs"
-        ],
         "thunderbird": [
             "appearance",
             "language-support"
+        ],
+        "firefox": [
+            "language-support",
+            "tabs"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 2013265,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "56.0",
                 "min": "35.0"
             },
             "seamonkey": {
                 "max": "*",
                 "min": "2.1"
             },
-            "thunderbird": {
-                "max": "56.0",
+            "firefox": {
+                "max": "56.*",
                 "min": "35.0"
             }
         },
@@ -157,5 +157,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/no-small-text/",
-    "weekly_downloads": 95
+    "weekly_downloads": 95,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

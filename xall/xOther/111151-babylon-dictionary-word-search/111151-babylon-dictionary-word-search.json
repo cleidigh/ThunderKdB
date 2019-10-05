@@ -11,25 +11,25 @@
     ],
     "average_daily_users": 44,
     "categories": {
+        "thunderbird": [
+            "language-support"
+        ],
         "firefox": [
             "language-support",
             "search-tools"
-        ],
-        "thunderbird": [
-            "language-support"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1573614,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "3.0"
-            },
             "thunderbird": {
                 "max": "25.*",
                 "min": "3.0a1pre"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "3.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/babylon-dictionary-word-search/versions/1573614",
@@ -224,5 +224,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/babylon-dictionary-word-search/",
-    "weekly_downloads": 44
+    "weekly_downloads": 44,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

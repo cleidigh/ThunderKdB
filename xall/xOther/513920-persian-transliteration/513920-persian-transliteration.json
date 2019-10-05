@@ -11,13 +11,13 @@
     ],
     "average_daily_users": 1,
     "categories": {
-        "thunderbird": [
+        "firefox": [
             "language-support"
         ],
         "seamonkey": [
             "language-support-and-translation"
         ],
-        "firefox": [
+        "thunderbird": [
             "language-support"
         ]
     },
@@ -25,16 +25,16 @@
     "current_version": {
         "id": 1578806,
         "compatibility": {
-            "thunderbird": {
-                "max": "31.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "10.0"
             },
             "seamonkey": {
                 "max": "2.27",
                 "min": "2.7"
             },
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "31.*",
                 "min": "10.0"
             }
         },
@@ -249,5 +249,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/persian-transliteration/",
-    "weekly_downloads": 27
+    "weekly_downloads": 27,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

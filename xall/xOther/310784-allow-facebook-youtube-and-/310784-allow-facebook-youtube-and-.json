@@ -11,26 +11,26 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "firefox": [
-            "privacy-security",
-            "social-communication"
-        ],
         "thunderbird": [
             "contacts",
             "privacy-and-security"
+        ],
+        "firefox": [
+            "privacy-security",
+            "social-communication"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1199382,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "4.0b7"
-            },
             "thunderbird": {
                 "max": "3.2a1pre",
                 "min": "3.0b3"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0b7"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/allow-facebook-youtube-and-/versions/1199382",
@@ -128,5 +128,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/allow-facebook-youtube-and-/",
-    "weekly_downloads": 24
+    "weekly_downloads": 24,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

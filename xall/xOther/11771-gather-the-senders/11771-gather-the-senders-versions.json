@@ -1,337 +1,330 @@
-{
-    "page_size": 25,
-    "page_count": 1,
-    "count": 5,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 125190,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "12.*",
-                    "min": "3.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/125190",
-            "files": [
-                {
-                    "id": 107311,
-                    "created": "2011-01-06T01:25:53Z",
-                    "hash": "sha256:4608ef184ee349cd24c050440982c6da7d25bf3332d8274dada1af14784a9345",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 11264,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/107311/gather_the_senders_!-1.2.2-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 18,
-                "name": {
-                    "el": "Άδεια BSD",
-                    "vi": "Giấy phép BSD",
-                    "ca": "Llicència BSD",
-                    "it": "Licenza BSD",
-                    "cs": "BSD licence",
-                    "eu": "BSD Lizentzia",
-                    "sv-SE": "BSD-licens",
-                    "id": "Lisensi BSD",
-                    "es": "Licencia BSD",
-                    "ru": "Лицензия BSD",
-                    "nl": "BSD-licentie",
-                    "en-US": "BSD License",
-                    "fr": "Licence BSD",
-                    "bg": "BSD Лиценз",
-                    "de": "BSD-Lizenz",
-                    "da": "BSD-licens",
-                    "fa": "مجوز BSD",
-                    "hu": "BSD licenc",
-                    "pt-PT": "Licença BSD",
-                    "sr": "БСД лиценца",
-                    "sq": "Leje BSD",
-                    "ga-IE": "Ceadúnas BSD",
-                    "sk": "Licencia BSD",
-                    "zh-CN": "BSD 授权"
-                },
-                "text": {
-                    "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
-                },
-                "url": "http://www.opensource.org/licenses/bsd-license.php"
-            },
-            "release_notes": {
-                "en-US": "* 1.2.2 *\n- Add the German translation de-DE (Thanks to Marcus Barkhahn)\n\n* 1.2.1 *\n- Add 3 options for Gather the recipients (To:, Cc:, To&amp;Cc:)\n- Move menu separator after the options\n- Add variables {$VERSION} and {$DEBUG} that are preprocessed when the application is built\n- Rename skin/icon.png to skin/icon_32_32.png\n- Rename gatherTheSenders.common.js in gatherTheSenders.js\n- Rename content/gatherTheSendersMenuOverlayT3.xul in content/gatherTheSendersMenuOverlay.xul\n\n* 1.2.0 *\n- Features works on smart directories of Thunderbird 3\n- Features works with Topic view\n- Drop compatibility with branch 2 of Thunderbird\n- Add Gather the recipients feature\n- Add an icon to the extension\n\n* 1.1.0 *\n- compatible with directory from Thunderbird 3 (not smart directory)\n\n* 1.0.0a *\n- Correction in the translation : en-US/ and fr-FR/\n- Turn off the debug mode"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.2.2",
-            "version": "1.2.2"
+[
+    {
+        "id": 125190,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "12.*",
+                "min": "3.0"
+            }
         },
-        {
-            "id": 108951,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "3.1.*",
-                    "min": "3.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/125190",
+        "files": [
+            {
+                "id": 107311,
+                "created": "2011-01-06T01:25:53Z",
+                "hash": "sha256:4608ef184ee349cd24c050440982c6da7d25bf3332d8274dada1af14784a9345",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 11264,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/107311/gather_the_senders_!-1.2.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/108951",
-            "files": [
-                {
-                    "id": 90710,
-                    "created": "2010-05-31T10:39:40Z",
-                    "hash": "sha256:d1766a1b3c6619f71b296705542b45f9cd78146244c4ec2d51f61f7d1e87e960",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 9216,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/90710/gather_the_senders_!-1.2.0-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 18,
-                "name": {
-                    "el": "Άδεια BSD",
-                    "vi": "Giấy phép BSD",
-                    "ca": "Llicència BSD",
-                    "it": "Licenza BSD",
-                    "cs": "BSD licence",
-                    "eu": "BSD Lizentzia",
-                    "sv-SE": "BSD-licens",
-                    "id": "Lisensi BSD",
-                    "es": "Licencia BSD",
-                    "ru": "Лицензия BSD",
-                    "nl": "BSD-licentie",
-                    "en-US": "BSD License",
-                    "fr": "Licence BSD",
-                    "bg": "BSD Лиценз",
-                    "de": "BSD-Lizenz",
-                    "da": "BSD-licens",
-                    "fa": "مجوز BSD",
-                    "hu": "BSD licenc",
-                    "pt-PT": "Licença BSD",
-                    "sr": "БСД лиценца",
-                    "sq": "Leje BSD",
-                    "ga-IE": "Ceadúnas BSD",
-                    "sk": "Licencia BSD",
-                    "zh-CN": "BSD 授权"
-                },
-                "text": {
-                    "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
-                },
-                "url": "http://www.opensource.org/licenses/bsd-license.php"
+            "text": {
+                "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
             },
-            "release_notes": null,
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.2.0",
-            "version": "1.2.0"
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
-        {
-            "id": 93012,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "3.0.*",
-                    "min": "2.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/93012",
-            "files": [
-                {
-                    "id": 77402,
-                    "created": "2010-01-25T14:04:44Z",
-                    "hash": "sha256:68a80f212de68a416d7f62e8eff2e0af8fdf89581d8053e4ca70182d711c5d90",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 9216,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/77402/gather_the_senders_!-1.1.1-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 18,
-                "name": {
-                    "el": "Άδεια BSD",
-                    "vi": "Giấy phép BSD",
-                    "ca": "Llicència BSD",
-                    "it": "Licenza BSD",
-                    "cs": "BSD licence",
-                    "eu": "BSD Lizentzia",
-                    "sv-SE": "BSD-licens",
-                    "id": "Lisensi BSD",
-                    "es": "Licencia BSD",
-                    "ru": "Лицензия BSD",
-                    "nl": "BSD-licentie",
-                    "en-US": "BSD License",
-                    "fr": "Licence BSD",
-                    "bg": "BSD Лиценз",
-                    "de": "BSD-Lizenz",
-                    "da": "BSD-licens",
-                    "fa": "مجوز BSD",
-                    "hu": "BSD licenc",
-                    "pt-PT": "Licença BSD",
-                    "sr": "БСД лиценца",
-                    "sq": "Leje BSD",
-                    "ga-IE": "Ceadúnas BSD",
-                    "sk": "Licencia BSD",
-                    "zh-CN": "BSD 授权"
-                },
-                "text": {
-                    "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
-                },
-                "url": "http://www.opensource.org/licenses/bsd-license.php"
-            },
-            "release_notes": {
-                "en-US": "[1.1.1]\nReleased date : 25/01/2010\n- support of Thunderbird 3.0.*\n\n[1.1.0]\nReleased date : 17/12/2010\n- support of Thunderbird 3.0.0\n- Refactoring to keep compatibility withThunderbird 2.*\n\n[1.0.0a]\nReleased date : 04/05/2010\n- First version validated as public\n- Correction on the en-us and fr-fr translation\n- Turn off the debug mode\n\n[1.0.0]\nReleased date : 03/05/2010\n- First implementation. Work on thunderbird version 2"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.1.1",
-            "version": "1.1.1"
+        "release_notes": {
+            "en-US": "* 1.2.2 *\n- Add the German translation de-DE (Thanks to Marcus Barkhahn)\n\n* 1.2.1 *\n- Add 3 options for Gather the recipients (To:, Cc:, To&amp;Cc:)\n- Move menu separator after the options\n- Add variables {$VERSION} and {$DEBUG} that are preprocessed when the application is built\n- Rename skin/icon.png to skin/icon_32_32.png\n- Rename gatherTheSenders.common.js in gatherTheSenders.js\n- Rename content/gatherTheSendersMenuOverlayT3.xul in content/gatherTheSendersMenuOverlay.xul\n\n* 1.2.0 *\n- Features works on smart directories of Thunderbird 3\n- Features works with Topic view\n- Drop compatibility with branch 2 of Thunderbird\n- Add Gather the recipients feature\n- Add an icon to the extension\n\n* 1.1.0 *\n- compatible with directory from Thunderbird 3 (not smart directory)\n\n* 1.0.0a *\n- Correction in the translation : en-US/ and fr-FR/\n- Turn off the debug mode"
         },
-        {
-            "id": 88038,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "3.0.*",
-                    "min": "2.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/88038",
-            "files": [
-                {
-                    "id": 73065,
-                    "created": "2009-12-17T15:45:53Z",
-                    "hash": "sha256:0c7e88545eafe26104ac477b60404cc2eacd7b53efb27969b1146ff15e4d562b",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 9216,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/73065/gather_the_senders_!-1.1.0-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 18,
-                "name": {
-                    "el": "Άδεια BSD",
-                    "vi": "Giấy phép BSD",
-                    "ca": "Llicència BSD",
-                    "it": "Licenza BSD",
-                    "cs": "BSD licence",
-                    "eu": "BSD Lizentzia",
-                    "sv-SE": "BSD-licens",
-                    "id": "Lisensi BSD",
-                    "es": "Licencia BSD",
-                    "ru": "Лицензия BSD",
-                    "nl": "BSD-licentie",
-                    "en-US": "BSD License",
-                    "fr": "Licence BSD",
-                    "bg": "BSD Лиценз",
-                    "de": "BSD-Lizenz",
-                    "da": "BSD-licens",
-                    "fa": "مجوز BSD",
-                    "hu": "BSD licenc",
-                    "pt-PT": "Licença BSD",
-                    "sr": "БСД лиценца",
-                    "sq": "Leje BSD",
-                    "ga-IE": "Ceadúnas BSD",
-                    "sk": "Licencia BSD",
-                    "zh-CN": "BSD 授权"
-                },
-                "text": {
-                    "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
-                },
-                "url": "http://www.opensource.org/licenses/bsd-license.php"
-            },
-            "release_notes": {
-                "en-US": "Update version 1.1.0 :\n- Compatible with thunderbird 3.0\n\nBe careful, in TB3, a right click'll do a temporary selection if you click on a message which isn't selected. If you don't use the right click on a message already selected, the selection doesn't work. I am working on this limitation."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.1.0",
-            "version": "1.1.0"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.2.2",
+        "version": "1.2.2"
+    },
+    {
+        "id": 108951,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.1.*",
+                "min": "3.0"
+            }
         },
-        {
-            "id": 67734,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/108951",
+        "files": [
+            {
+                "id": 90710,
+                "created": "2010-05-31T10:39:40Z",
+                "hash": "sha256:d1766a1b3c6619f71b296705542b45f9cd78146244c4ec2d51f61f7d1e87e960",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9216,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/90710/gather_the_senders_!-1.2.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/67734",
-            "files": [
-                {
-                    "id": 52470,
-                    "created": "2009-05-04T04:26:10Z",
-                    "hash": "sha256:48c6651c90b91b4c579303e55fed7e01f09e25acd320ef2230334fa7798f073f",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 4096,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/52470/gather_the_authors_!-1.0.0a-tb-win.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 18,
-                "name": {
-                    "el": "Άδεια BSD",
-                    "vi": "Giấy phép BSD",
-                    "ca": "Llicència BSD",
-                    "it": "Licenza BSD",
-                    "cs": "BSD licence",
-                    "eu": "BSD Lizentzia",
-                    "sv-SE": "BSD-licens",
-                    "id": "Lisensi BSD",
-                    "es": "Licencia BSD",
-                    "ru": "Лицензия BSD",
-                    "nl": "BSD-licentie",
-                    "en-US": "BSD License",
-                    "fr": "Licence BSD",
-                    "bg": "BSD Лиценз",
-                    "de": "BSD-Lizenz",
-                    "da": "BSD-licens",
-                    "fa": "مجوز BSD",
-                    "hu": "BSD licenc",
-                    "pt-PT": "Licença BSD",
-                    "sr": "БСД лиценца",
-                    "sq": "Leje BSD",
-                    "ga-IE": "Ceadúnas BSD",
-                    "sk": "Licencia BSD",
-                    "zh-CN": "BSD 授权"
-                },
-                "text": {
-                    "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
-                },
-                "url": "http://www.opensource.org/licenses/bsd-license.php"
+            "text": {
+                "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
             },
-            "release_notes": {
-                "en-US": "* 1.0.0a *\n- Translation corrected: en-US/ and fr-FR/\n- Turn off debug mode"
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.2.0",
+        "version": "1.2.0"
+    },
+    {
+        "id": 93012,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/93012",
+        "files": [
+            {
+                "id": 77402,
+                "created": "2010-01-25T14:04:44Z",
+                "hash": "sha256:68a80f212de68a416d7f62e8eff2e0af8fdf89581d8053e4ca70182d711c5d90",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9216,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/77402/gather_the_senders_!-1.1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.0.0a",
-            "version": "1.0.0a"
-        }
-    ]
-}
+            "text": {
+                "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "[1.1.1]\nReleased date : 25/01/2010\n- support of Thunderbird 3.0.*\n\n[1.1.0]\nReleased date : 17/12/2010\n- support of Thunderbird 3.0.0\n- Refactoring to keep compatibility withThunderbird 2.*\n\n[1.0.0a]\nReleased date : 04/05/2010\n- First version validated as public\n- Correction on the en-us and fr-fr translation\n- Turn off the debug mode\n\n[1.0.0]\nReleased date : 03/05/2010\n- First implementation. Work on thunderbird version 2"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.1.1",
+        "version": "1.1.1"
+    },
+    {
+        "id": 88038,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/88038",
+        "files": [
+            {
+                "id": 73065,
+                "created": "2009-12-17T15:45:53Z",
+                "hash": "sha256:0c7e88545eafe26104ac477b60404cc2eacd7b53efb27969b1146ff15e4d562b",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9216,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/73065/gather_the_senders_!-1.1.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "text": {
+                "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "Update version 1.1.0 :\n- Compatible with thunderbird 3.0\n\nBe careful, in TB3, a right click'll do a temporary selection if you click on a message which isn't selected. If you don't use the right click on a message already selected, the selection doesn't work. I am working on this limitation."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.1.0",
+        "version": "1.1.0"
+    },
+    {
+        "id": 67734,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gather-the-senders/versions/67734",
+        "files": [
+            {
+                "id": 52470,
+                "created": "2009-05-04T04:26:10Z",
+                "hash": "sha256:48c6651c90b91b4c579303e55fed7e01f09e25acd320ef2230334fa7798f073f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 4096,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/52470/gather_the_authors_!-1.0.0a-tb-win.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "text": {
+                "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "* 1.0.0a *\n- Translation corrected: en-US/ and fr-FR/\n- Turn off debug mode"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gather-the-senders/versions/1.0.0a",
+        "version": "1.0.0a"
+    }
+]

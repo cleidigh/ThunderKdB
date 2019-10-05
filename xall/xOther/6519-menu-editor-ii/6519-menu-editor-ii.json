@@ -19,13 +19,13 @@
     "current_version": {
         "id": 50557,
         "compatibility": {
-            "thunderbird": {
-                "max": "1.5.0.*",
-                "min": "1.1a1"
-            },
             "firefox": {
                 "max": "56.*",
                 "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "1.5.0.*",
+                "min": "1.1a1"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/menu-editor-ii/versions/50557",
@@ -131,5 +131,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/menu-editor-ii/",
-    "weekly_downloads": 55
+    "weekly_downloads": 55,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

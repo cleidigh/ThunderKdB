@@ -11,30 +11,30 @@
     ],
     "average_daily_users": 501,
     "categories": {
-        "thunderbird": [
-            "miscellaneous"
+        "firefox": [
+            "web-development"
         ],
         "seamonkey": [
             "web-and-developer-tools"
         ],
-        "firefox": [
-            "web-development"
+        "thunderbird": [
+            "miscellaneous"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1664416,
         "compatibility": {
-            "thunderbird": {
-                "max": "39.0",
+            "firefox": {
+                "max": "56.*",
                 "min": "22.0"
             },
             "seamonkey": {
                 "max": "2.36",
                 "min": "2.1"
             },
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "39.0",
                 "min": "22.0"
             }
         },
@@ -214,5 +214,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sqlite-manager/",
-    "weekly_downloads": 2313
+    "weekly_downloads": 2313,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

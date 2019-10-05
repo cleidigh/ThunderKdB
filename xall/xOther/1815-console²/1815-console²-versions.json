@@ -1,597 +1,590 @@
-{
-    "page_size": 25,
-    "page_count": 1,
-    "count": 13,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 1301269,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "56.*",
-                    "min": "3.0"
-                },
-                "seamonkey": {
-                    "max": "2.12a1",
-                    "min": "2.0"
-                },
-                "thunderbird": {
-                    "max": "15.0a1",
-                    "min": "3.0"
-                }
+[
+    {
+        "id": 1301269,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "15.0a1",
+                "min": "3.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/1301269",
-            "files": [
-                {
-                    "id": 139488,
-                    "created": "2011-12-19T06:44:07Z",
-                    "hash": "sha256:c7f824a2e20362b394aa37add23a97076aad5cb7ae8f1505c07b5d51bfe228a1",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 114596,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/139488/console2-0.9-fx+tb+sb+sm+fn.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 8,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.9.1-signed.1-let-fixed.1-signed"
+            "seamonkey": {
+                "max": "2.12a1",
+                "min": "2.0"
             },
-            "release_notes": {
-                "en-US": "<b>What's New:</b>\n    *  [new] Message FIFO limit is now controlled by a hidden preference \"extensions.console2.max-errors\" currently 1000. (Patch by Kris Maglione).\n    * [new] Enable blocklist domains from resource:// URLs\n      [new] Enable filter for \"resource://\" URLs\n      [fix] Alias resource:/// to resource://app/ to allow these resource urls to be filtered and blocklisted.\n      (Patches by titoBouzout).\n    * [fix] Use white-space: pre-wrap for the console message descriptions to allow newlines and formatted messages (Patch by titoBouzout).\n    * [new] Add support for Komodo alphas appversion &gt;= 6.9 (Patch by titoBouzout).\n    * [fix] css problems with textonly toolbarbuttons in icon mode toolbars.\n    * [new] Show timestamps if available from nsIScriptError/nsIScriptError2."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.9.1-signed.1-let-fixed.1-signed",
-            "version": "0.9.1-signed.1-let-fixed.1-signed"
+            "firefox": {
+                "max": "56.*",
+                "min": "3.0"
+            }
         },
-        {
-            "id": 1258589,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "11.0a1",
-                    "min": "3.0"
-                },
-                "seamonkey": {
-                    "max": "2.8a1",
-                    "min": "2.0"
-                },
-                "thunderbird": {
-                    "max": "11.0a1",
-                    "min": "3.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/1301269",
+        "files": [
+            {
+                "id": 139488,
+                "created": "2011-12-19T06:44:07Z",
+                "hash": "sha256:c7f824a2e20362b394aa37add23a97076aad5cb7ae8f1505c07b5d51bfe228a1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 114596,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/139488/console2-0.9-fx+tb+sb+sm+fn.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 8,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/1258589",
-            "files": [
-                {
-                    "id": 126682,
-                    "created": "2011-07-19T02:26:13Z",
-                    "hash": "sha256:c11ddfda8c92f091e572431131e02ea603c01a9e2f1d22c81026f755f0e7e996",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 113945,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/126682/console2-0.8-fx+tb+sm+fn+sb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 8,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.8.1-signed.1-signed"
+            "text": {
+                "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
             },
-            "release_notes": {
-                "en-US": "*  [new] Add class=\"padded\" to the TextboxEval textbox to assist themers.\n    * [fix] Firefox App button Web Developer menu item changed id.\n    * [fix] Use |newlines=\"replacewithspaces\"| for the Eval textbox.\n    * [fix] XPConnect and resource:// errors are chrome errors not content.\n    * [fix] Legacy strict errors are warnings.\n    * [fix] Locale syntax errors in chrome.manifest.\n    * [fix] Fix duplicate menu items in the Firefox Web Developer menus.\n    * [babelzilla] New locale Serbian (sr). Updated Locale French (fr). Renamed locales (de-DE, fr-FR, nl-NL, pl-PL) to (de, fr, nl, pl)."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.8.1-signed.1-signed",
-            "version": "0.8.1-signed.1-signed"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.9.1-signed.1-let-fixed.1-signed"
         },
-        {
-            "id": 125754,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "4.0.*",
-                    "min": "3.0"
-                },
-                "seamonkey": {
-                    "max": "2.2.*",
-                    "min": "2.0"
-                },
-                "thunderbird": {
-                    "max": "3.3a4pre",
-                    "min": "3.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/125754",
-            "files": [
-                {
-                    "id": 108015,
-                    "created": "2011-01-12T02:12:40Z",
-                    "hash": "sha256:5aa6728e4378e1108b92411f5d8bce1a837b896e9445f791549929402111e630",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 112849,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/108015/console__-0.7-fx+tb+sm+sb+fn.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 8,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.7.1-signed.1-signed"
-            },
-            "release_notes": {
-                "en-US": "What's New:\n    *  [fix] Fix typos in the install.rdf of 0.6 (and earlier).\n    * [fix] add consolefilter default prefs.\n    * [fix] SeaMonkey 2.1a2pre now using the toolkit viewsource.\n    * [fix] Fix for broken extension manager detection on trunk Gecko1.9.3/Gecko2.0.\n    * [fix] Fix XPCOM registration of components in Gecko 2.0.\n    * [fix] Change &lt;popup&gt; to &lt;menupopup&gt; to fix trunk breakage.\n    * [fix] Flip the \"devtools.errorconsole.enabled\" pref to unhide the Error Console menu item hidden by bug 593538.\n    * [fix] Add a Console² menu item to the new Firefox 4 appmenu.\n    * [fix] Add &lt;em:unpack&gt;true&lt;/em:unpack&gt; to the install.rdf to force Firefox4 to unpack the XPI.\n    * [fix] Use nsIJSON instead of eval()/toSource() to keep AMO happy."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.7.1-signed.1-signed",
-            "version": "0.7.1-signed.1-signed"
+        "release_notes": {
+            "en-US": "<b>What's New:</b>\n    *  [new] Message FIFO limit is now controlled by a hidden preference \"extensions.console2.max-errors\" currently 1000. (Patch by Kris Maglione).\n    * [new] Enable blocklist domains from resource:// URLs\n      [new] Enable filter for \"resource://\" URLs\n      [fix] Alias resource:/// to resource://app/ to allow these resource urls to be filtered and blocklisted.\n      (Patches by titoBouzout).\n    * [fix] Use white-space: pre-wrap for the console message descriptions to allow newlines and formatted messages (Patch by titoBouzout).\n    * [new] Add support for Komodo alphas appversion &gt;= 6.9 (Patch by titoBouzout).\n    * [fix] css problems with textonly toolbarbuttons in icon mode toolbars.\n    * [new] Show timestamps if available from nsIScriptError/nsIScriptError2."
         },
-        {
-            "id": 101660,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.7a4pre",
-                    "min": "1.5"
-                },
-                "seamonkey": {
-                    "max": "2.1a1pre",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "3.2a1pre",
-                    "min": "1.5"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.9.1-signed.1-let-fixed.1-signed",
+        "version": "0.9.1-signed.1-let-fixed.1-signed"
+    },
+    {
+        "id": 1258589,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "11.0a1",
+                "min": "3.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/101660",
-            "files": [
-                {
-                    "id": 87038,
-                    "created": "2010-04-20T22:04:01Z",
-                    "hash": "sha256:8f594111cc05156544810c170520927e141cf5f700d1c275a1ff3881de62d483",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 105472,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/87038/console__-0.6.1-fx+tb+sm+sb+fn.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 8,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.6.1"
+            "seamonkey": {
+                "max": "2.8a1",
+                "min": "2.0"
             },
-            "release_notes": {
-                "en-US": "What's New\n    * [fix] Fix typos in the 0.6 install.rdf.\n    * Updated locales from Babelzilla.\n    * [new] Sunbird specific overrides.\n    * listbox/richlistbox: Sync with trunk and also refactor Gecko version detection.\n    * [new] Add Postbox (unsupported) metadata to install.rdf and chrome.manifest.\n    * [fix] Fix missing text in textonly toolbar buttons when the toolbars are in icons only mode.\n    * [fix] Port Mozilla Bug 458631 Misalignment in --help command line.\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.6.1",
-            "version": "0.6.1"
+            "firefox": {
+                "max": "11.0a1",
+                "min": "3.0"
+            }
         },
-        {
-            "id": 72364,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.7a3pre",
-                    "min": "1.5"
-                },
-                "seamonkey": {
-                    "max": "2.1a1pre",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "3.2a1pre",
-                    "min": "1.5"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/1258589",
+        "files": [
+            {
+                "id": 126682,
+                "created": "2011-07-19T02:26:13Z",
+                "hash": "sha256:c11ddfda8c92f091e572431131e02ea603c01a9e2f1d22c81026f755f0e7e996",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 113945,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/126682/console2-0.8-fx+tb+sm+fn+sb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 8,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/72364",
-            "files": [
-                {
-                    "id": 57660,
-                    "created": "2009-07-04T01:50:55Z",
-                    "hash": "sha256:15f17ab0bf9dcc10aa3e801c8a3618c70ffc8833233242e181fb3d477c31f973",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 104448,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/57660/console__-0.5-fx+tb+sm+sb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 8,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.5"
+            "text": {
+                "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
             },
-            "release_notes": {
-                "en-US": "*  [new] Incorporate the ConsoleFilter extension into Console².\n* New and updated files from Babelzilla.\n ooo [new] Korean (hu-HU) locale (thanks to Mikes Kaszmán István).\n ooo [new] Korean (sv-SE) locale (thanks to peter3).\n ooo [new] Korean (ko-KR) locale (thanks to puryfury).\n* [fix] Automatically turn on the js_exceptions pref for Gecko 1.9.x branches.\n* [fix] Console² Bug 20287 Assign a rational accesskey to the CSS button.\n* [fix] Bug 479588 Error console's text box should always be LTR.\n* [enh] Improve SeaMonkey integration including:\nooo [fix] Remove obsolete SeaMonkey hacks.\nooo [fix] Disable/Enable the SeaMonkey menubar when customizing the toolbars.\nooo [fix] button.label is undefined error.\nooo [enh] For SeaMonkey use \"l\" for the Clear accesskey and \":\" for the Lang accesskey.\n* [enh] Use -moz-pre-wrap or pre-wrap depending on Gecko version.\n* [enh] Use -moz-outline-offset or outline-offset depending on Gecko version.\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.5",
-            "version": "0.5"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.8.1-signed.1-signed"
         },
-        {
-            "id": 67550,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.6a1pre",
-                    "min": "1.5"
-                },
-                "seamonkey": {
-                    "max": "2.0b1",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "3.1a1pre",
-                    "min": "1.5"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/67550",
-            "files": [
-                {
-                    "id": 52267,
-                    "created": "2009-05-01T01:00:39Z",
-                    "hash": "sha256:ef6601a1efc045dae243180430849909d5c69c103954e69d9eae115d9912806c",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 104448,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/52267/console__-0.3.10-fx+tb+sm+sb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 8,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.3.10"
-            },
-            "release_notes": {
-                "en-US": "Version: 0.3.10\n\n* [fix] Part of Bug 335383 \"Make the Error Console easier to overlay\". I mixed up some key bindings.\n* [fix] Gecko trunk now uses pre-wrap and -moz-pre-wrap has been removed.\n* [fix] Bug 455222 All XUL s must have type=\"application/javascript\".\n* [fix] Bug 452415 Switch from  to type=\"search\".\n* [fix] Bug 458588 Remove uses of -moz-outline-offset.\n* Richlistbox fixes:\nooo [fix] Bug 378028 Add an 'axis' field to DOMMouseScroll events so that we can distinguish horizontal from vertical scrolling, and use it in trees and listboxes.\n\nVersion: 0.3.9.2\n\n* [new] Implement UI to manage the blocklist for Gecko apps that don't implement the Permissions Manager and persist this blocklist across sessions in a pref.\n* [new] Add UI to toggle new Gecko 1.9 boolean pref \"dom.report_all_js_exceptions\".\n* [fix] Command line handler rewritten to support nsICmdLineHander and now works in SeaMonkey 1.x (or would but I forgot to update the install.js).\n* Updated locales from Babelzilla.\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.10",
-            "version": "0.3.10"
+        "release_notes": {
+            "en-US": "*  [new] Add class=\"padded\" to the TextboxEval textbox to assist themers.\n    * [fix] Firefox App button Web Developer menu item changed id.\n    * [fix] Use |newlines=\"replacewithspaces\"| for the Eval textbox.\n    * [fix] XPConnect and resource:// errors are chrome errors not content.\n    * [fix] Legacy strict errors are warnings.\n    * [fix] Locale syntax errors in chrome.manifest.\n    * [fix] Fix duplicate menu items in the Firefox Web Developer menus.\n    * [babelzilla] New locale Serbian (sr). Updated Locale French (fr). Renamed locales (de-DE, fr-FR, nl-NL, pl-PL) to (de, fr, nl, pl)."
         },
-        {
-            "id": 47280,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.6a1pre",
-                    "min": "1.5"
-                },
-                "seamonkey": {
-                    "max": "2.0a3",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "3.0b2pre",
-                    "min": "1.5"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.8.1-signed.1-signed",
+        "version": "0.8.1-signed.1-signed"
+    },
+    {
+        "id": 125754,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.3a4pre",
+                "min": "3.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/47280",
-            "files": [
-                {
-                    "id": 30761,
-                    "created": "2008-06-16T20:29:08Z",
-                    "hash": "sha256:b7ee8508c6438684a61a9bbc8c6aacc6a8a053d43f85b0d5875ffe42a4f88ba7",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 102400,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/30761/console__-0.3.9.1-fx+tb+sb+sm.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "# [fix]  bug 415901  Error console should respect line breaks in error messages.\n# [new] Traditional Chinese locale (thanks to Alan CHENG)\n# [new] Allow easier richlistbox themability by theme authors (Part 2). Patch contributed by mcdavis.\n# Richlistbox fixes:\n\n    * [fix] bug 385374 After performing an operation to the selected richlistitem, it is no longer focused.\n    * [fix] bug 416390 ctrl-click (right-click) does not select row.\n"
+            "seamonkey": {
+                "max": "2.2.*",
+                "min": "2.0"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.9.1",
-            "version": "0.3.9.1"
+            "firefox": {
+                "max": "4.0.*",
+                "min": "3.0"
+            }
         },
-        {
-            "id": 39084,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.0b3",
-                    "min": "1.5"
-                },
-                "seamonkey": {
-                    "max": "2.0a1",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "3.0a1",
-                    "min": "1.5"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/125754",
+        "files": [
+            {
+                "id": 108015,
+                "created": "2011-01-12T02:12:40Z",
+                "hash": "sha256:5aa6728e4378e1108b92411f5d8bce1a837b896e9445f791549929402111e630",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 112849,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/108015/console__-0.7-fx+tb+sm+sb+fn.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 8,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/39084",
-            "files": [
-                {
-                    "id": 22428,
-                    "created": "2008-01-05T01:25:26Z",
-                    "hash": "sha256:8d5d5ec421a15732e2f5437c6f842a660c0338b6148d1f06a186d1c9a1b3f7b4",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 101376,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/22428/console__-0.3.9-fx+tb+sb+sm.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* [fix]  bug 335383  menu and toolbar accesskeys clash in suiterunner JS console.\n* [fix] bug 312247 content is rendered outside the window if width is reduced.\n* [fix] Console² bug 17996 badly namespaced spacer causes loop now that mozilla bug 321402 has landed.\n* [fix] Console² bug 18025 Secure updates for Firefox 3 (SHA1 Update hashes and public key signatures using McCoy) [mozdev version only].\n* Richlistbox fixes:\noo [fix] bug 369077 richlistbox is corrupted if \"selected\" is inside richlistitem.\noo [fix] bug 376815 Allow using a listheader in .\noo [fix] bug 387109 context menu regressions WRT richlistbox.\noo [fix] bug 391740 listheader in richlistbox appears to right/at bottom of richlistitems.\noo [fix] bug 396545 listheader in richlistbox should not scroll\n* [new] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bee45990907b2421dbddba78d97a0ed91749fd8ab8e490fb0ab9cd53e66e0b78/http%3A//forums.mozillazine.org/viewtopic.php%3Fp=3020003%233020003\">http://forums.mozillazine.org/viewtopic.php?p=3020003#3020003</a> Allow themes to theme the Console2 richlistbox.\n* [new] Allow themes to theme the Console2 console binding.\n* [new] Sign install.rdf and update manifests with McCoy [mozdev version only]."
+            "text": {
+                "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.9",
-            "version": "0.3.9"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.7.1-signed.1-signed"
         },
-        {
-            "id": 35287,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.0a8",
-                    "min": "1.5"
-                },
-                "seamonkey": {
-                    "max": "2.0a1",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "3.0a1",
-                    "min": "1.5"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/35287",
-            "files": [
-                {
-                    "id": 18568,
-                    "created": "2007-08-17T06:44:12Z",
-                    "hash": "sha256:3e9a7ccc5fc1a80749e2db60d27697f0cbdc8b58e0059242a4a81fde56442915",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 97280,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/18568/console__-0.3.8-fx+tb+sb+ns+sm+fl.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "*  [fix]  Console² bug 17508 \"XPConnect JavaScript\" errors aren't necessarily chrome errors\n* [fix] Custom richlistbox widget should apply only to Console² as it interferes with the native version on trunk builds.\n* [fix] Allow Console² toolbars to be customizable in SuiteRunner\n* [fix] bug 288544 an asynchronous \"oom\" loop in jsconsole's implementation of nsIConsoleListener.observe with nsIConsoleService and xpconnect\n* [fix] bug 386968 Get grippies on error console (SuiteRunner only)\n* [fix] bug 385092 Code evaluation not working\n* [fix] bug 380422 The evaluating iframe may contain nuts (and other remainders).\n* [fix] bug 379439 When closing error console: assertion \"XPConnect is being called on a scope without a 'Components' property!\"\n* Added unofficial support for the eMusic Download Manager, Sunbird and Netscape Navigator 9.\n* Added Turkish locale (thanks to mertsaka)\n* Added Simplified Chinese locale (thanks to Aiseeker)\n* Added a Finnish locale (thanks to Kenmooda)\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.8",
-            "version": "0.3.8"
+        "release_notes": {
+            "en-US": "What's New:\n    *  [fix] Fix typos in the install.rdf of 0.6 (and earlier).\n    * [fix] add consolefilter default prefs.\n    * [fix] SeaMonkey 2.1a2pre now using the toolkit viewsource.\n    * [fix] Fix for broken extension manager detection on trunk Gecko1.9.3/Gecko2.0.\n    * [fix] Fix XPCOM registration of components in Gecko 2.0.\n    * [fix] Change &lt;popup&gt; to &lt;menupopup&gt; to fix trunk breakage.\n    * [fix] Flip the \"devtools.errorconsole.enabled\" pref to unhide the Error Console menu item hidden by bug 593538.\n    * [fix] Add a Console² menu item to the new Firefox 4 appmenu.\n    * [fix] Add &lt;em:unpack&gt;true&lt;/em:unpack&gt; to the install.rdf to force Firefox4 to unpack the XPI.\n    * [fix] Use nsIJSON instead of eval()/toSource() to keep AMO happy."
         },
-        {
-            "id": 31152,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.0a4",
-                    "min": "1.5"
-                },
-                "seamonkey": {
-                    "max": "1.5a",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "3.0a1",
-                    "min": "1.5"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.7.1-signed.1-signed",
+        "version": "0.7.1-signed.1-signed"
+    },
+    {
+        "id": 101660,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.2a1pre",
+                "min": "1.5"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/31152",
-            "files": [
-                {
-                    "id": 14361,
-                    "created": "2007-03-28T19:49:39Z",
-                    "hash": "sha256:f89d566a23b34521493e9658296d345ab800e11fb569c4c987057c59268fb1a6",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 80896,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/14361/console__-0.3.7-fx+tb+sb+sm+fl.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "*  Fixed  bug 348627  (O(N^2) or worse algorithm in error console)\n* SeaMonkey compatibility enhancements including:\n  o Customizable toolbar icons in SuiteRunner MailNews windows.\n  o The Console² menu item now appears in MailNews windows.\n  o Fixed bug 334997 (add menu bar to toolkit-based JS console in suiterunner)\n  o Fixed bug 366901 (Edit→Copy doesn't work in the SuiteRunner Error Console)\n"
+            "seamonkey": {
+                "max": "2.1a1pre",
+                "min": "1.0"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.7",
-            "version": "0.3.7"
+            "firefox": {
+                "max": "3.7a4pre",
+                "min": "1.5"
+            }
         },
-        {
-            "id": 26830,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.0a1",
-                    "min": "1.5"
-                },
-                "seamonkey": {
-                    "max": "1.0.*",
-                    "min": "1.0"
-                },
-                "thunderbird": {
-                    "max": "2.0b1",
-                    "min": "1.5"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/101660",
+        "files": [
+            {
+                "id": 87038,
+                "created": "2010-04-20T22:04:01Z",
+                "hash": "sha256:8f594111cc05156544810c170520927e141cf5f700d1c275a1ff3881de62d483",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 105472,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/87038/console__-0.6.1-fx+tb+sm+sb+fn.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 8,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/26830",
-            "files": [
-                {
-                    "id": 7402,
-                    "created": "2007-03-05T13:15:21Z",
-                    "hash": "sha256:86f452fe250f7f3321a66c94fb9d52aa8adb1aacf525049e2832d39eb757082f",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 68608,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/7402/console_sup2_-0.3.6.2-fx+zm+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": null,
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.6.2",
-            "version": "0.3.6.2"
+            "text": {
+                "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.6.1"
         },
-        {
-            "id": 11187,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "1.5.0.*",
-                    "min": "1.5"
-                },
-                "thunderbird": {
-                    "max": "1.5.0.*",
-                    "min": "1.5"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/11187",
-            "files": [
-                {
-                    "id": 7398,
-                    "created": "2007-03-05T13:15:21Z",
-                    "hash": "sha256:908a480e7c40c0e6ef2d5bdfbf7642e8577c258ee322c53ce01464b72bd59932",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 55296,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/7398/console_acirc_sup2_-0.3.2-fx+mz+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "PLEASE RESET THE CONSOLE'S TOOLBAR, IF YOU'RE UPDATING FROM CONSOLE² 0.2.x!\n\nMain changes since v0.3.1:\n* SeaMonkey compatibility\n* Logging mode for webdevelopers"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.2",
-            "version": "0.3.2"
+        "release_notes": {
+            "en-US": "What's New\n    * [fix] Fix typos in the 0.6 install.rdf.\n    * Updated locales from Babelzilla.\n    * [new] Sunbird specific overrides.\n    * listbox/richlistbox: Sync with trunk and also refactor Gecko version detection.\n    * [new] Add Postbox (unsupported) metadata to install.rdf and chrome.manifest.\n    * [fix] Fix missing text in textonly toolbar buttons when the toolbars are in icons only mode.\n    * [fix] Port Mozilla Bug 458631 Misalignment in --help command line.\n"
         },
-        {
-            "id": 10351,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "1.5.0.*",
-                    "min": "1.5"
-                },
-                "thunderbird": {
-                    "max": "1.5.0.*",
-                    "min": "1.5"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.6.1",
+        "version": "0.6.1"
+    },
+    {
+        "id": 72364,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.2a1pre",
+                "min": "1.5"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/10351",
-            "files": [
-                {
-                    "id": 7396,
-                    "created": "2007-03-05T13:15:20Z",
-                    "hash": "sha256:13aeec561ddbfd6dbd499e38743e4db80ae1fb931fcfaf5bad1db142580bfce3",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 53248,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/7396/console_acirc_sup2_-0.2.5-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": null,
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.2.5",
-            "version": "0.2.5"
-        }
-    ]
-}
+            "seamonkey": {
+                "max": "2.1a1pre",
+                "min": "1.0"
+            },
+            "firefox": {
+                "max": "3.7a3pre",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/72364",
+        "files": [
+            {
+                "id": 57660,
+                "created": "2009-07-04T01:50:55Z",
+                "hash": "sha256:15f17ab0bf9dcc10aa3e801c8a3618c70ffc8833233242e181fb3d477c31f973",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 104448,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/57660/console__-0.5-fx+tb+sm+sb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 8,
+            "name": {
+                "en-US": "Custom License"
+            },
+            "text": {
+                "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.5"
+        },
+        "release_notes": {
+            "en-US": "*  [new] Incorporate the ConsoleFilter extension into Console².\n* New and updated files from Babelzilla.\n ooo [new] Korean (hu-HU) locale (thanks to Mikes Kaszmán István).\n ooo [new] Korean (sv-SE) locale (thanks to peter3).\n ooo [new] Korean (ko-KR) locale (thanks to puryfury).\n* [fix] Automatically turn on the js_exceptions pref for Gecko 1.9.x branches.\n* [fix] Console² Bug 20287 Assign a rational accesskey to the CSS button.\n* [fix] Bug 479588 Error console's text box should always be LTR.\n* [enh] Improve SeaMonkey integration including:\nooo [fix] Remove obsolete SeaMonkey hacks.\nooo [fix] Disable/Enable the SeaMonkey menubar when customizing the toolbars.\nooo [fix] button.label is undefined error.\nooo [enh] For SeaMonkey use \"l\" for the Clear accesskey and \":\" for the Lang accesskey.\n* [enh] Use -moz-pre-wrap or pre-wrap depending on Gecko version.\n* [enh] Use -moz-outline-offset or outline-offset depending on Gecko version.\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.5",
+        "version": "0.5"
+    },
+    {
+        "id": 67550,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.1a1pre",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "2.0b1",
+                "min": "1.0"
+            },
+            "firefox": {
+                "max": "3.6a1pre",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/67550",
+        "files": [
+            {
+                "id": 52267,
+                "created": "2009-05-01T01:00:39Z",
+                "hash": "sha256:ef6601a1efc045dae243180430849909d5c69c103954e69d9eae115d9912806c",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 104448,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/52267/console__-0.3.10-fx+tb+sm+sb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 8,
+            "name": {
+                "en-US": "Custom License"
+            },
+            "text": {
+                "en-US": "/* ***** BEGIN LICENSE BLOCK *****\n * Version: MPL 1.1/GPL 2.0/LGPL 2.1\n *\n * The contents of this file are subject to the Mozilla Public License Version\n * 1.1 (the \"License\"); you may not use this file except in compliance with\n * the License. You may obtain a copy of the License at\n * <a href=\"http://www.mozilla.org/MPL/\" rel=\"nofollow\">http://www.mozilla.org/MPL/</a>\n *\n * Software distributed under the License is distributed on an \"AS IS\" basis,\n * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License\n * for the specific language governing rights and limitations under the\n * License.\n *\n * The Original Code is the Console² extension.\n *\n * The Initial Developer of the Original Code is\n * zeniko (<a href=\"http://forums.mozillazine.org/viewtopic.php?t=318102)\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?t=318102)</a>.\n * Portions created by the Initial Developer are Copyright (C) 2005 - 2006\n * the Initial Developer. All Rights Reserved.\n *\n * Contributor(s):\n * * All contributors to the Toolkit 1.8 JavaScript Console\n * * Philip Chee \n * * mcdavis for better richlistbox themability\n *   &amp;\n * - BabelZilla translators:\n * * MatrixIsAllOver (Italian)\n * * Proyecto Nave (Spanish)\n * * Edgaras Janušauskas (Lithuanian)\n * * Teboga (Portuguese)\n * * Menet (French)\n * * Infoman (Russian)\n * * Leszek (teo) Życzkowski (Polish)\n * * Rastislav Hubočan (Slovak)\n * * Michal Gebauer (Czech)\n * * pitdicker (Dutch)\n * * 'Lachezar Dobrev' (Лъчезар Добрев) (Bulgarian)\n * * Ian Moody (British English)\n * * tom.1 (German)\n * * zeniko (German Switzerland)\n * * mar (Japanese)\n * * garas (Lithuanian)\n * * kenmooda (Finnish)\n * * aiseeker (Chinese-Simplified)\n * * mertsaka (Turkish)\n * * Alan CHENG (Chinese-Traditional)\n *\n * Alternatively, the contents of this file may be used under the terms of\n * either the GNU General Public License Version 2 or later (the \"GPL\"), or\n * the GNU Lesser General Public License Version 2.1 or later (the \"LGPL\"),\n * in which case the provisions of the GPL or the LGPL are applicable instead\n * of those above. If you wish to allow use of your version of this file only\n * under the terms of either the GPL or the LGPL, and not to allow others to\n * use your version of this file under the terms of the MPL, indicate your\n * decision by deleting the provisions above and replace them with the notice\n * and other provisions required by the GPL or the LGPL. If you do not delete\n * the provisions above, a recipient may use your version of this file under\n * the terms of any one of the MPL, the GPL or the LGPL.\n *\n * ***** END LICENSE BLOCK ***** */"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/license/0.3.10"
+        },
+        "release_notes": {
+            "en-US": "Version: 0.3.10\n\n* [fix] Part of Bug 335383 \"Make the Error Console easier to overlay\". I mixed up some key bindings.\n* [fix] Gecko trunk now uses pre-wrap and -moz-pre-wrap has been removed.\n* [fix] Bug 455222 All XUL s must have type=\"application/javascript\".\n* [fix] Bug 452415 Switch from  to type=\"search\".\n* [fix] Bug 458588 Remove uses of -moz-outline-offset.\n* Richlistbox fixes:\nooo [fix] Bug 378028 Add an 'axis' field to DOMMouseScroll events so that we can distinguish horizontal from vertical scrolling, and use it in trees and listboxes.\n\nVersion: 0.3.9.2\n\n* [new] Implement UI to manage the blocklist for Gecko apps that don't implement the Permissions Manager and persist this blocklist across sessions in a pref.\n* [new] Add UI to toggle new Gecko 1.9 boolean pref \"dom.report_all_js_exceptions\".\n* [fix] Command line handler rewritten to support nsICmdLineHander and now works in SeaMonkey 1.x (or would but I forgot to update the install.js).\n* Updated locales from Babelzilla.\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.10",
+        "version": "0.3.10"
+    },
+    {
+        "id": 47280,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0b2pre",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "2.0a3",
+                "min": "1.0"
+            },
+            "firefox": {
+                "max": "3.6a1pre",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/47280",
+        "files": [
+            {
+                "id": 30761,
+                "created": "2008-06-16T20:29:08Z",
+                "hash": "sha256:b7ee8508c6438684a61a9bbc8c6aacc6a8a053d43f85b0d5875ffe42a4f88ba7",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 102400,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/30761/console__-0.3.9.1-fx+tb+sb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "# [fix]  bug 415901  Error console should respect line breaks in error messages.\n# [new] Traditional Chinese locale (thanks to Alan CHENG)\n# [new] Allow easier richlistbox themability by theme authors (Part 2). Patch contributed by mcdavis.\n# Richlistbox fixes:\n\n    * [fix] bug 385374 After performing an operation to the selected richlistitem, it is no longer focused.\n    * [fix] bug 416390 ctrl-click (right-click) does not select row.\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.9.1",
+        "version": "0.3.9.1"
+    },
+    {
+        "id": 39084,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0a1",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "2.0a1",
+                "min": "1.0"
+            },
+            "firefox": {
+                "max": "3.0b3",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/39084",
+        "files": [
+            {
+                "id": 22428,
+                "created": "2008-01-05T01:25:26Z",
+                "hash": "sha256:8d5d5ec421a15732e2f5437c6f842a660c0338b6148d1f06a186d1c9a1b3f7b4",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 101376,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/22428/console__-0.3.9-fx+tb+sb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* [fix]  bug 335383  menu and toolbar accesskeys clash in suiterunner JS console.\n* [fix] bug 312247 content is rendered outside the window if width is reduced.\n* [fix] Console² bug 17996 badly namespaced spacer causes loop now that mozilla bug 321402 has landed.\n* [fix] Console² bug 18025 Secure updates for Firefox 3 (SHA1 Update hashes and public key signatures using McCoy) [mozdev version only].\n* Richlistbox fixes:\noo [fix] bug 369077 richlistbox is corrupted if \"selected\" is inside richlistitem.\noo [fix] bug 376815 Allow using a listheader in .\noo [fix] bug 387109 context menu regressions WRT richlistbox.\noo [fix] bug 391740 listheader in richlistbox appears to right/at bottom of richlistitems.\noo [fix] bug 396545 listheader in richlistbox should not scroll\n* [new] <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/bee45990907b2421dbddba78d97a0ed91749fd8ab8e490fb0ab9cd53e66e0b78/http%3A//forums.mozillazine.org/viewtopic.php%3Fp=3020003%233020003\">http://forums.mozillazine.org/viewtopic.php?p=3020003#3020003</a> Allow themes to theme the Console2 richlistbox.\n* [new] Allow themes to theme the Console2 console binding.\n* [new] Sign install.rdf and update manifests with McCoy [mozdev version only]."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.9",
+        "version": "0.3.9"
+    },
+    {
+        "id": 35287,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0a1",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "2.0a1",
+                "min": "1.0"
+            },
+            "firefox": {
+                "max": "3.0a8",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/35287",
+        "files": [
+            {
+                "id": 18568,
+                "created": "2007-08-17T06:44:12Z",
+                "hash": "sha256:3e9a7ccc5fc1a80749e2db60d27697f0cbdc8b58e0059242a4a81fde56442915",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 97280,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/18568/console__-0.3.8-fx+tb+sb+ns+sm+fl.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "*  [fix]  Console² bug 17508 \"XPConnect JavaScript\" errors aren't necessarily chrome errors\n* [fix] Custom richlistbox widget should apply only to Console² as it interferes with the native version on trunk builds.\n* [fix] Allow Console² toolbars to be customizable in SuiteRunner\n* [fix] bug 288544 an asynchronous \"oom\" loop in jsconsole's implementation of nsIConsoleListener.observe with nsIConsoleService and xpconnect\n* [fix] bug 386968 Get grippies on error console (SuiteRunner only)\n* [fix] bug 385092 Code evaluation not working\n* [fix] bug 380422 The evaluating iframe may contain nuts (and other remainders).\n* [fix] bug 379439 When closing error console: assertion \"XPConnect is being called on a scope without a 'Components' property!\"\n* Added unofficial support for the eMusic Download Manager, Sunbird and Netscape Navigator 9.\n* Added Turkish locale (thanks to mertsaka)\n* Added Simplified Chinese locale (thanks to Aiseeker)\n* Added a Finnish locale (thanks to Kenmooda)\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.8",
+        "version": "0.3.8"
+    },
+    {
+        "id": 31152,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0a1",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "1.5a",
+                "min": "1.0"
+            },
+            "firefox": {
+                "max": "3.0a4",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/31152",
+        "files": [
+            {
+                "id": 14361,
+                "created": "2007-03-28T19:49:39Z",
+                "hash": "sha256:f89d566a23b34521493e9658296d345ab800e11fb569c4c987057c59268fb1a6",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 80896,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/14361/console__-0.3.7-fx+tb+sb+sm+fl.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "*  Fixed  bug 348627  (O(N^2) or worse algorithm in error console)\n* SeaMonkey compatibility enhancements including:\n  o Customizable toolbar icons in SuiteRunner MailNews windows.\n  o The Console² menu item now appears in MailNews windows.\n  o Fixed bug 334997 (add menu bar to toolkit-based JS console in suiterunner)\n  o Fixed bug 366901 (Edit→Copy doesn't work in the SuiteRunner Error Console)\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.7",
+        "version": "0.3.7"
+    },
+    {
+        "id": 26830,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0b1",
+                "min": "1.5"
+            },
+            "seamonkey": {
+                "max": "1.0.*",
+                "min": "1.0"
+            },
+            "firefox": {
+                "max": "3.0a1",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/26830",
+        "files": [
+            {
+                "id": 7402,
+                "created": "2007-03-05T13:15:21Z",
+                "hash": "sha256:86f452fe250f7f3321a66c94fb9d52aa8adb1aacf525049e2832d39eb757082f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 68608,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/7402/console_sup2_-0.3.6.2-fx+zm+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.6.2",
+        "version": "0.3.6.2"
+    },
+    {
+        "id": 11187,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "1.5.0.*",
+                "min": "1.5"
+            },
+            "firefox": {
+                "max": "1.5.0.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/11187",
+        "files": [
+            {
+                "id": 7398,
+                "created": "2007-03-05T13:15:21Z",
+                "hash": "sha256:908a480e7c40c0e6ef2d5bdfbf7642e8577c258ee322c53ce01464b72bd59932",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 55296,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/7398/console_acirc_sup2_-0.3.2-fx+mz+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "PLEASE RESET THE CONSOLE'S TOOLBAR, IF YOU'RE UPDATING FROM CONSOLE² 0.2.x!\n\nMain changes since v0.3.1:\n* SeaMonkey compatibility\n* Logging mode for webdevelopers"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.3.2",
+        "version": "0.3.2"
+    },
+    {
+        "id": 10351,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "1.5.0.*",
+                "min": "1.5"
+            },
+            "firefox": {
+                "max": "1.5.0.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/console%C2%B2/versions/10351",
+        "files": [
+            {
+                "id": 7396,
+                "created": "2007-03-05T13:15:20Z",
+                "hash": "sha256:13aeec561ddbfd6dbd499e38743e4db80ae1fb931fcfaf5bad1db142580bfce3",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 53248,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/7396/console_acirc_sup2_-0.2.5-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/console%C2%B2/versions/0.2.5",
+        "version": "0.2.5"
+    }
+]

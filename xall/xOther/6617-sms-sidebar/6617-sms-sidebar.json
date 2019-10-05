@@ -19,12 +19,12 @@
     "current_version": {
         "id": 45490,
         "compatibility": {
-            "thunderbird": {
-                "max": "3.0a2pre",
-                "min": "2.0"
-            },
             "firefox": {
                 "max": "56.*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "3.0a2pre",
                 "min": "2.0"
             }
         },
@@ -193,5 +193,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sms-sidebar/",
-    "weekly_downloads": 45
+    "weekly_downloads": 45,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

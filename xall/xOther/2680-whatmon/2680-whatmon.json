@@ -11,23 +11,23 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "thunderbird": [
-            "miscellaneous"
-        ],
         "firefox": [
             "alerts-updates"
+        ],
+        "thunderbird": [
+            "miscellaneous"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 74557,
         "compatibility": {
-            "thunderbird": {
-                "max": "3.0.*",
-                "min": "1.5"
-            },
             "firefox": {
                 "max": "56.*",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "3.0.*",
                 "min": "1.5"
             }
         },
@@ -152,5 +152,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/whatmon/",
-    "weekly_downloads": 21
+    "weekly_downloads": 21,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

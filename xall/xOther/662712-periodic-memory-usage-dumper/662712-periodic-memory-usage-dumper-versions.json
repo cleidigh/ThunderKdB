@@ -1,103 +1,96 @@
-{
-    "page_size": 25,
-    "page_count": 1,
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 1781386,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "56.*",
-                    "min": "31.0"
-                },
-                "thunderbird": {
-                    "max": "45.0a1",
-                    "min": "31.0"
-                }
+[
+    {
+        "id": 1781386,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "31.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/periodic-memory-usage-dumper/versions/1781386",
-            "files": [
-                {
-                    "id": 370053,
-                    "created": "2015-11-18T18:14:41Z",
-                    "hash": "sha256:0a6ecf16ab7a4e4d2790237f378d2104b8201ed1913db74a036e66b2d455f78d",
-                    "is_restart_required": false,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 41925,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/370053/periodic_memory_usage_dumper-1.2-tb+fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 3338,
-                "name": {
-                    "en-US": "Mozilla Public License, version 2.0"
-                },
-                "text": {
-                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-                },
-                "url": "http://www.mozilla.org/MPL/2.0/"
-            },
-            "release_notes": {
-                "en-US": "* Observe and apply changes of the idle seconds correctly.\n * Unregister the idle observer correctly."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/periodic-memory-usage-dumper/versions/1.2",
-            "version": "1.2"
+            "thunderbird": {
+                "max": "45.0a1",
+                "min": "31.0"
+            }
         },
-        {
-            "id": 1779770,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "45.0a1",
-                    "min": "31.0"
-                },
-                "thunderbird": {
-                    "max": "45.0a1",
-                    "min": "31.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/periodic-memory-usage-dumper/versions/1781386",
+        "files": [
+            {
+                "id": 370053,
+                "created": "2015-11-18T18:14:41Z",
+                "hash": "sha256:0a6ecf16ab7a4e4d2790237f378d2104b8201ed1913db74a036e66b2d455f78d",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 41925,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/370053/periodic_memory_usage_dumper-1.2-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/periodic-memory-usage-dumper/versions/1779770",
-            "files": [
-                {
-                    "id": 368859,
-                    "created": "2015-11-10T20:26:14Z",
-                    "hash": "sha256:cdd3509ec6e633685abeb3433ca1a8f37c35ad85d4bf543774d75cb93b4c5491",
-                    "is_restart_required": false,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 41839,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/368859/periodic_memory_usage_dumper-1.1-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 3338,
-                "name": {
-                    "en-US": "Mozilla Public License, version 2.0"
-                },
-                "text": {
-                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-                },
-                "url": "http://www.mozilla.org/MPL/2.0/"
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
             },
-            "release_notes": {
-                "en-US": "* Support dynamic change of idle seconds.\n* Remove obsolete codes."
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "* Observe and apply changes of the idle seconds correctly.\n * Unregister the idle observer correctly."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/periodic-memory-usage-dumper/versions/1.2",
+        "version": "1.2"
+    },
+    {
+        "id": 1779770,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "45.0a1",
+                "min": "31.0"
             },
-            "reviewed": "2015-11-13T10:56:17Z",
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/periodic-memory-usage-dumper/versions/1.1.1-signed",
-            "version": "1.1.1-signed"
-        }
-    ]
-}
+            "thunderbird": {
+                "max": "45.0a1",
+                "min": "31.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/periodic-memory-usage-dumper/versions/1779770",
+        "files": [
+            {
+                "id": 368859,
+                "created": "2015-11-10T20:26:14Z",
+                "hash": "sha256:cdd3509ec6e633685abeb3433ca1a8f37c35ad85d4bf543774d75cb93b4c5491",
+                "is_restart_required": false,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 41839,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/368859/periodic_memory_usage_dumper-1.1-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "* Support dynamic change of idle seconds.\n* Remove obsolete codes."
+        },
+        "reviewed": "2015-11-13T10:56:17Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/periodic-memory-usage-dumper/versions/1.1.1-signed",
+        "version": "1.1.1-signed"
+    }
+]

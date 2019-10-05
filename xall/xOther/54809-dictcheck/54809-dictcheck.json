@@ -11,24 +11,24 @@
     ],
     "average_daily_users": 6,
     "categories": {
+        "thunderbird": [
+            "language-support"
+        ],
         "firefox": [
             "language-support",
             "search-tools"
-        ],
-        "thunderbird": [
-            "language-support"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1731172,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "2.0"
-            },
             "thunderbird": {
                 "max": "44.0",
+                "min": "2.0"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "2.0"
             }
         },
@@ -159,5 +159,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dictcheck/",
-    "weekly_downloads": 63
+    "weekly_downloads": 63,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

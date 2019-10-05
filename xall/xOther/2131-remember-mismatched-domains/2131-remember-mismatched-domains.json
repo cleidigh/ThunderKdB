@@ -22,16 +22,16 @@
     "current_version": {
         "id": 40405,
         "compatibility": {
-            "thunderbird": {
-                "max": "2.0.0.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "1.5"
             },
             "seamonkey": {
                 "max": "1.1.*",
                 "min": "1.0"
             },
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "2.0.0.*",
                 "min": "1.5"
             }
         },
@@ -159,5 +159,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remember-mismatched-domains/",
-    "weekly_downloads": 40
+    "weekly_downloads": 40,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

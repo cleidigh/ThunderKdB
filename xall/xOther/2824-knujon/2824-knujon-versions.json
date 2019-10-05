@@ -1,213 +1,206 @@
-{
-    "page_size": 25,
-    "page_count": 1,
-    "count": 6,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 41923,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "3.0b3pre",
-                    "min": "1.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/41923",
-            "files": [
-                {
-                    "id": 25305,
-                    "created": "2008-03-17T07:19:08Z",
-                    "hash": "sha256:fd9ac2418b6b1a3d3fa234403cd5b949e0b147bacb7eb7b4c71b0ff979d3787b",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 15360,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/25305/knujon-2.0.0.0-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "This version adds a lot of new features (optional inline attachments, move to any folder after reporting, custom reporting addresses, updated tips), fixes bugs and stability problems (conflicts with Habu/Okopipi plugins, failure to delete/move messages if you change folders while sending, junk subject lines didn't show up as attachment names, and many more), and adds support for SeaMonkey."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/2.0.0.0",
-            "version": "2.0.0.0"
+[
+    {
+        "id": 41923,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "3.0b3pre",
+                "min": "1.0"
+            }
         },
-        {
-            "id": 31716,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "1.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/31716",
-            "files": [
-                {
-                    "id": 14934,
-                    "created": "2007-04-19T12:49:56Z",
-                    "hash": "sha256:33e5af5c73fbaf96971fd0e527b9d1384bbacb7a5c54973dccb9af7197a30303",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 10240,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/14934/knujon-0.31-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "Tested for Thunderbird 2.0.  No functionality changes for this release.\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.31",
-            "version": "0.31"
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/41923",
+        "files": [
+            {
+                "id": 25305,
+                "created": "2008-03-17T07:19:08Z",
+                "hash": "sha256:fd9ac2418b6b1a3d3fa234403cd5b949e0b147bacb7eb7b4c71b0ff979d3787b",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 15360,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/25305/knujon-2.0.0.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version adds a lot of new features (optional inline attachments, move to any folder after reporting, custom reporting addresses, updated tips), fixes bugs and stability problems (conflicts with Habu/Okopipi plugins, failure to delete/move messages if you change folders while sending, junk subject lines didn't show up as attachment names, and many more), and adds support for SeaMonkey."
         },
-        {
-            "id": 30209,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0b2",
-                    "min": "1.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/30209",
-            "files": [
-                {
-                    "id": 10037,
-                    "created": "2007-03-05T13:17:08Z",
-                    "hash": "sha256:eaef8b402a5b77093ce86cf0490c8dcc2fd7c5f4eba9f60a5e4dad513bcdca66",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 9216,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/10037/knujon-0.3-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "This version adds support for choosing your own reporting address (for members), and fixes a few bugs.\n\nFIXED: the plugin would sometimes delete Junk messages even if the message was not sent successfully (i.e., rejected by the SMTP server, or send failed due to network issues).\nFIXED: new Junk mail that arrived while the plugin was processing a report might be deleted after the email was sent, even if that new mail was not in the report.\nPARTIAL FIX: if the user changed their folder view during processing, the plugin could delete messages flagged \"Junk\" in a different folder.  This version will never delete any message that wasn't included in a report, but changing folders during processing can prevent that deletion."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.3",
-            "version": "0.3"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/2.0.0.0",
+        "version": "2.0.0.0"
+    },
+    {
+        "id": 31716,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "1.0"
+            }
         },
-        {
-            "id": 29020,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0b2",
-                    "min": "1.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/29020",
-            "files": [
-                {
-                    "id": 10036,
-                    "created": "2007-03-05T13:17:07Z",
-                    "hash": "sha256:f0275fe00931bf9aa22c09e047bc17eac5e165fd3eeebcdac1c00a573ba9f1fc",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 9216,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/10036/knujon-0.211-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "No code changes for this version -- just tested that it works in Thunderbird 2.0b2."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.211",
-            "version": "0.211"
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/31716",
+        "files": [
+            {
+                "id": 14934,
+                "created": "2007-04-19T12:49:56Z",
+                "hash": "sha256:33e5af5c73fbaf96971fd0e527b9d1384bbacb7a5c54973dccb9af7197a30303",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 10240,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/14934/knujon-0.31-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Tested for Thunderbird 2.0.  No functionality changes for this release.\n"
         },
-        {
-            "id": 24666,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0b1",
-                    "min": "1.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/24666",
-            "files": [
-                {
-                    "id": 10035,
-                    "created": "2007-03-05T13:17:07Z",
-                    "hash": "sha256:423bfb870f9413b62365fb611bdb6da0ef605c03be66a48553c8495798240749",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 9216,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/10035/knujon-0.21-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "Minor tweaks, including support for Thunderbird 2.0b and changing the reporting address to the coldrain.net address."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.21",
-            "version": "0.21"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.31",
+        "version": "0.31"
+    },
+    {
+        "id": 30209,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0b2",
+                "min": "1.0"
+            }
         },
-        {
-            "id": 17677,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "1.5.0.*",
-                    "min": "1.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/17677",
-            "files": [
-                {
-                    "id": 10034,
-                    "created": "2007-03-05T13:17:07Z",
-                    "hash": "sha256:9b3127845c3b9e8cc8a954129e35dc28d864c26fff1585415b1d7fa19af5d96f",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 9216,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/10034/knujon-0.2-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "Using the new reporting address @yahoo (while KnujOn sorts out issues with the primary reporting addresses): see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/23562fe3dcd499b9d2c7cd9b70dcd6ae414d5b948f4656f6f4477c936645cbd5/http%3A//knujon.com/news.html%23061806\">http://knujon.com/news.html#061806</a> for details."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.2",
-            "version": "0.2"
-        }
-    ]
-}
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/30209",
+        "files": [
+            {
+                "id": 10037,
+                "created": "2007-03-05T13:17:08Z",
+                "hash": "sha256:eaef8b402a5b77093ce86cf0490c8dcc2fd7c5f4eba9f60a5e4dad513bcdca66",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9216,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/10037/knujon-0.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "This version adds support for choosing your own reporting address (for members), and fixes a few bugs.\n\nFIXED: the plugin would sometimes delete Junk messages even if the message was not sent successfully (i.e., rejected by the SMTP server, or send failed due to network issues).\nFIXED: new Junk mail that arrived while the plugin was processing a report might be deleted after the email was sent, even if that new mail was not in the report.\nPARTIAL FIX: if the user changed their folder view during processing, the plugin could delete messages flagged \"Junk\" in a different folder.  This version will never delete any message that wasn't included in a report, but changing folders during processing can prevent that deletion."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.3",
+        "version": "0.3"
+    },
+    {
+        "id": 29020,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0b2",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/29020",
+        "files": [
+            {
+                "id": 10036,
+                "created": "2007-03-05T13:17:07Z",
+                "hash": "sha256:f0275fe00931bf9aa22c09e047bc17eac5e165fd3eeebcdac1c00a573ba9f1fc",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9216,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/10036/knujon-0.211-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "No code changes for this version -- just tested that it works in Thunderbird 2.0b2."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.211",
+        "version": "0.211"
+    },
+    {
+        "id": 24666,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "2.0b1",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/24666",
+        "files": [
+            {
+                "id": 10035,
+                "created": "2007-03-05T13:17:07Z",
+                "hash": "sha256:423bfb870f9413b62365fb611bdb6da0ef605c03be66a48553c8495798240749",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9216,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/10035/knujon-0.21-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Minor tweaks, including support for Thunderbird 2.0b and changing the reporting address to the coldrain.net address."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.21",
+        "version": "0.21"
+    },
+    {
+        "id": 17677,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "1.5.0.*",
+                "min": "1.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/knujon/versions/17677",
+        "files": [
+            {
+                "id": 10034,
+                "created": "2007-03-05T13:17:07Z",
+                "hash": "sha256:9b3127845c3b9e8cc8a954129e35dc28d864c26fff1585415b1d7fa19af5d96f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9216,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/10034/knujon-0.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Using the new reporting address @yahoo (while KnujOn sorts out issues with the primary reporting addresses): see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/23562fe3dcd499b9d2c7cd9b70dcd6ae414d5b948f4656f6f4477c936645cbd5/http%3A//knujon.com/news.html%23061806\">http://knujon.com/news.html#061806</a> for details."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/knujon/versions/0.2",
+        "version": "0.2"
+    }
+]

@@ -11,24 +11,24 @@
     ],
     "average_daily_users": 50,
     "categories": {
+        "thunderbird": [
+            "privacy-and-security"
+        ],
         "firefox": [
             "appearance",
             "privacy-security"
-        ],
-        "thunderbird": [
-            "privacy-and-security"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1777356,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "5.0"
-            },
             "thunderbird": {
                 "max": "42.0a1",
+                "min": "5.0"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "5.0"
             }
         },
@@ -142,5 +142,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/trayhotkey/",
-    "weekly_downloads": 295
+    "weekly_downloads": 295,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

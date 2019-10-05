@@ -18,23 +18,23 @@
     ],
     "average_daily_users": 1,
     "categories": {
-        "firefox": [
-            "photos-music-videos"
-        ],
         "thunderbird": [
             "miscellaneous"
+        ],
+        "firefox": [
+            "photos-music-videos"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 62620,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
-            },
             "thunderbird": {
                 "max": "3.1a1pre",
+                "min": "1.5"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "1.5"
             }
         },
@@ -182,5 +182,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/splash/",
-    "weekly_downloads": 22
+    "weekly_downloads": 22,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

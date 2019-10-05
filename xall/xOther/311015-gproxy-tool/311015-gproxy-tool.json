@@ -11,24 +11,24 @@
     ],
     "average_daily_users": 1,
     "categories": {
-        "thunderbird": [
-            "privacy-and-security"
-        ],
         "firefox": [
             "privacy-security"
+        ],
+        "thunderbird": [
+            "privacy-and-security"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1252194,
         "compatibility": {
-            "thunderbird": {
-                "max": "16.*",
-                "min": "1.0"
-            },
             "firefox": {
                 "max": "56.*",
                 "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "16.*",
+                "min": "1.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gproxy-tool/versions/1252194",
@@ -146,5 +146,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gproxy-tool/",
-    "weekly_downloads": 100
+    "weekly_downloads": 100,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }
