@@ -1,95 +1,88 @@
-{
-    "page_size": 25,
-    "page_count": 1,
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 2472223,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "*",
-                    "min": "68.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/pastemarkdownsyntax/versions/2472223",
-            "files": [
-                {
-                    "id": 1015291,
-                    "created": "2019-09-02T07:50:24Z",
-                    "hash": "sha256:630f3719a3c5ddbc3812656d81435ce7575863914a44324a00a4567648cd01ec",
-                    "is_restart_required": true,
-                    "is_webextension": true,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 4525,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015291/pastemarkdownsyntax-44.9-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 3338,
-                "name": {
-                    "en-US": "Mozilla Public License, version 2.0"
-                },
-                "text": {
-                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-                },
-                "url": "http://www.mozilla.org/MPL/2.0/"
-            },
-            "release_notes": {
-                "en-US": "It is version update for Thunderbird 68.*."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastemarkdownsyntax/versions/44.9",
-            "version": "44.9"
+[
+    {
+        "id": 2472223,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
         },
-        {
-            "id": 2472073,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "60.*",
-                    "min": "1.5"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/pastemarkdownsyntax/versions/2472223",
+        "files": [
+            {
+                "id": 1015291,
+                "created": "2019-09-02T07:50:24Z",
+                "hash": "sha256:630f3719a3c5ddbc3812656d81435ce7575863914a44324a00a4567648cd01ec",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 4525,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015291/pastemarkdownsyntax-44.9-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/pastemarkdownsyntax/versions/2472073",
-            "files": [
-                {
-                    "id": 1015141,
-                    "created": "2019-08-16T04:29:36Z",
-                    "hash": "sha256:9e38558b93e799b1d726dbb117350bdf02e036701c1797da301d61302aa0b7f0",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 13994,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015141/pastemarkdownsyntax-44.6-tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 3338,
-                "name": {
-                    "en-US": "Mozilla Public License, version 2.0"
-                },
-                "text": {
-                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-                },
-                "url": "http://www.mozilla.org/MPL/2.0/"
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
             },
-            "release_notes": {
-                "en-US": "README version 1.7\n\nTitle: PasteMarkdownSyntax\nMain source: install.rdf, chrome.manifest, paste_arr.xul.\nRequired addons: Lightning, AdvancedTasks.\nDescription: \nThis is buttons to paste Markdown syntax texts on event and task dialog descriptions.\nItems are:\n'**', '~~', '```', '###', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )'\n\n\nAugust 16 2019.\n\nFrom Sungho Hwang."
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "It is version update for Thunderbird 68.*."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastemarkdownsyntax/versions/44.9",
+        "version": "44.9"
+    },
+    {
+        "id": 2472073,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/pastemarkdownsyntax/versions/2472073",
+        "files": [
+            {
+                "id": 1015141,
+                "created": "2019-08-16T04:29:36Z",
+                "hash": "sha256:9e38558b93e799b1d726dbb117350bdf02e036701c1797da301d61302aa0b7f0",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 13994,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015141/pastemarkdownsyntax-44.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
             },
-            "reviewed": "2019-08-20T12:20:01Z",
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastemarkdownsyntax/versions/44.6",
-            "version": "44.6"
-        }
-    ]
-}
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "README version 1.7\n\nTitle: PasteMarkdownSyntax\nMain source: install.rdf, chrome.manifest, paste_arr.xul.\nRequired addons: Lightning, AdvancedTasks.\nDescription: \nThis is buttons to paste Markdown syntax texts on event and task dialog descriptions.\nItems are:\n'**', '~~', '```', '###', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )'\n\n\nAugust 16 2019.\n\nFrom Sungho Hwang."
+        },
+        "reviewed": "2019-08-20T12:20:01Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastemarkdownsyntax/versions/44.6",
+        "version": "44.6"
+    }
+]
