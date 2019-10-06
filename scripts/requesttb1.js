@@ -612,7 +612,7 @@ async function _7CmdSync(_7zCommand) {
 		console.debug('' + startTime);
 
 		// extsJson = fs.readJSONSync(extsAllJsonFileName);
-		await getAllExtensionDetails(1, 14);
+		await getAllExtensionDetails(1, 54);
 		console.debug('extension lines ' + extsJson.length);
 
 		// writePrettyJSONFile(extsAllJsonFileName, extsJson);
