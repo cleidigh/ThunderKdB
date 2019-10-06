@@ -3,7 +3,7 @@ Commands
 npm install -g simple-git
 
 cd scripts
-node genExtensionList.js
+node genExtensionList.js > o2.txt
 node requesttb1.js
 node extractSource.js
 node requesttb1.js > o.txt

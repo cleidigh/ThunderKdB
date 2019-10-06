@@ -11,24 +11,24 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "firefox": [
-            "other"
-        ],
         "thunderbird": [
             "miscellaneous"
+        ],
+        "firefox": [
+            "other"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1289123,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.4"
-            },
             "thunderbird": {
                 "max": "31.*",
                 "min": "1.5"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "1.4"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/datodo/versions/1289123",
@@ -204,5 +204,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/datodo/",
-    "weekly_downloads": 22
+    "weekly_downloads": 22,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

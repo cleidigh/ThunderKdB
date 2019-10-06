@@ -11,23 +11,23 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "firefox": [
-            "alerts-updates"
-        ],
         "thunderbird": [
             "contacts"
+        ],
+        "firefox": [
+            "alerts-updates"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1396044,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "3.0"
-            },
             "thunderbird": {
                 "max": "24.*",
+                "min": "3.0"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "3.0"
             }
         },
@@ -181,5 +181,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/crm-integration-itsp-pbx/",
-    "weekly_downloads": 23
+    "weekly_downloads": 23,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

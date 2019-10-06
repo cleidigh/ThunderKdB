@@ -29,12 +29,14 @@ const extsAllJsonFileName = `${rootDir}/xall/xall.json`;
 
 const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-green.png)"
 const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png)"
-const cBadge_tb68_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png)"
+const cBadge_tb69_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png)"
 const cBadge_tb60 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png)"
 const cBadge_tb60_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png)"
-const cBadge_tb60_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png)"
+const cBadge_tb61_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png)"
 const cBadge_maxv_star_warn = "![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png)"
 const cBadge_mx = "![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png)"
+const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-darkpurple.png)"
+const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-darkpurple.png)"
 
 function genExtensionListFromFolders() {
 	let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
@@ -75,17 +77,17 @@ function genExtensionListFromJson(extsJson) {
 	// console.debug(extsListFile);
 
 	extsJson.map((extJson, index) => {
-		console.debug('ExtensionIndex ' + index);
+		// console.debug('Extension ' + extJson.id + ' Index: '+index);
+
 
 		if (extJson === null) {
 			return "";
 		}
 		// 
 		// console.debug('Extension ' + extJson.id + ' '+ JSON.stringify(extJson.xpilib.ext_comp));
-		console.debug('Extension ' + extJson.id + ' ');
 		if (extJson.xpilib === undefined) {
-			console.debug('Compatibility UD');
-			console.debug(extJson);
+			console.debug('Compatibility UD: '+extJson.id);
+			// console.debug(extJson);
 			extJson.xpilib = {};
 
 		}
@@ -112,23 +114,23 @@ function genExtensionListFromJson(extsJson) {
 function createExtMDTableRow(extJson) {
 	let row = "|";
 	let default_locale = extJson.default_locale;
-	console.debug('name: ' + JSON.stringify(extJson.name) + '  ' + default_locale);
+	// console.debug('name: ' + JSON.stringify(extJson.name) + '  ' + default_locale);
 	if (default_locale === undefined) {
-		console.debug('NoLocale: ' + extJson.name);
+		// console.debug('NoLocale: ' + extJson.name);
 		if (typeof extJson.name["en-US"] === 'string') {
 			default_locale = "en-US";
 		} else {
 			let locales = Object.keys(extJson.name);
-			console.debug('Locales: ' + locales);
+			// console.debug('Locales: ' + locales);
 			default_locale = extJson.name[locales[0]];
-			console.debug('Locale 0: ' + default_locale);
+			// console.debug('Locale 0: ' + default_locale);
 		}
 	} else {
 		if (typeof extJson.name["en-US"] !== 'string') {
 			let locales = Object.keys(extJson.name);
-			console.debug('Locales: ' + locales);
+			// console.debug('Locales: ' + locales);
 			default_locale = locales[0];
-			console.debug('Locale 0: ' + default_locale);
+			// console.debug('Locale 0: ' + default_locale);
 		}
 	}
 
@@ -155,7 +157,7 @@ function createExtMDTableRow(extJson) {
 	let v_max_num = p.exec(v_max);
 	let v_min_num = p.exec(v_min);
 
-	console.debug('versions ' + Number(v_max) + " n: " + v_max_num + " ME " + mext);
+	// console.debug('versions ' + Number(v_max) + " n: " + v_max_num + " ME " + mext);
 
 	let comp_badges = " ";
 	const tb68_threshold_date = new Date("2019-2-1");
@@ -203,12 +205,18 @@ function createExtMDTableRow(extJson) {
 		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp68pv === true) {
 			comp_badges += cBadge_tb68_pv;
 		}
-		
+		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp69plus === true) {
+			comp_badges += " " + cBadge_tb69_plus;
+		}
+
 		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp60 === true) {
 			comp_badges += " " + cBadge_tb60;
 		}
 		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp60pv === true) {
 			comp_badges += " " + cBadge_tb60_pv;
+		}
+		if (extJson.xpilib.ext_comp.comp61plus === true && !(compSet.comp68 || compSet.comp68pv) ) {
+			comp_badges += " " + cBadge_tb61_plus;
 		}
 
 		if (compSet.compNoMax) {
@@ -217,6 +225,11 @@ function createExtMDTableRow(extJson) {
 	
 		if (compSet.mext == true) {
 			comp_badges += " " + cBadge_mx;
+		}
+		if (compSet.legacy == true && (compSet.legacy_type == 'restart' || compSet.legacy_type === undefined)) {
+			comp_badges += " " + cBadge_legacy_rs;
+		} else if (compSet.legacy == true && compSet.legacy_type == 'bootstrap') {
+			comp_badges += " " + cBadge_legacy_bs;
 		}
 	}
 

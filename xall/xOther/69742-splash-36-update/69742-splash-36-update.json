@@ -19,12 +19,12 @@
     "current_version": {
         "id": 125271,
         "compatibility": {
-            "thunderbird": {
-                "max": "3.3a2pre",
-                "min": "1.5"
-            },
             "firefox": {
                 "max": "56.*",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "3.3a2pre",
                 "min": "1.5"
             }
         },
@@ -132,5 +132,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/splash-36-update/",
-    "weekly_downloads": 21
+    "weekly_downloads": 21,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }
