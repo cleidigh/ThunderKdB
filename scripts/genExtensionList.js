@@ -27,7 +27,7 @@ const ext68CompDirU = '/extensions-all/exts-tb68-comp';
 
 const extsAllJsonFileName = `${rootDir}/xall/xall.json`;
 
-const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bad59.png)"
+const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png)"
 const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png)"
 const cBadge_tb69_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png)"
 const cBadge_tb60 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png)"
@@ -65,16 +65,16 @@ function genExtensionListFromFolders() {
 
 function genExtensionListFromJson(extsJson) {
 
-	let listBaseName = 'extension-list-all';
-	// let listBaseName = 'extension-list-tb68';
+	// let listBaseName = 'extension-list-all';
+	let listBaseName = 'extension-list-tb68';
 	// let listBaseName = 'extension-list-tb60';
 
-	let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
-	// let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
+	// let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
+	let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
 	// let extsListFile = fs.readFileSync('extension-list-tb60-templ.md', 'utf8');
 
 	let extRows = "";
-
+	let rows = 0;
 	// console.debug(extsListFile);
 
 	extsJson.map((extJson, index) => {
@@ -95,18 +95,27 @@ function genExtensionListFromJson(extsJson) {
 		// console.debug(extJson.xpilib);
 		extJson.xpilib.rank = index + 1;
 
-		return createExtMDTableRow(extJson);
+
+		let row = createExtMDTableRow(extJson);
+		if (row != "") {
+			rows++;
+			
+		}
+		return row;
 	})
 		.map(extRow => {
 			// console.debug('Row '+ extRow);
 			extRows += extRow;
 		});
 
-	console.debug('ListRows ' + extRows.length);
-	extsListFile = extsListFile.replace('__ext-table-tb68__', extRows);
+	console.debug('ListRows ' + rows);
+	extsListFile = extsListFile.replace('__count__', rows);
+	let today = new Date().toISOString().split('T')[0];
+	extsListFile = extsListFile.replace('__date__', today);
+	extsListFile = extsListFile.replace('__ext-md-table__', extRows);
 	console.debug(extsListFile);
-	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/${listBaseName}.md`, extsListFile);
-	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
+	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/${listBaseName}.md`, extsListFile);
+	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
 	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60all.md`, extsListFile);
 
 	console.debug('Done');
@@ -163,39 +172,6 @@ function createExtMDTableRow(extJson) {
 	let comp_badges = " ";
 	const tb68_threshold_date = new Date("2019-2-1");
 
-
-	/* 
-	if (v_min_num <= 68 && v_max_num >= 68) {
-		comp_badges += cBadge_tb68;
-	} else if (mext && v_max !== "*" && v_max_num >= 68) {
-		comp_badges += cBadge_tb68;
-		
-	} else if (mext && v_max === "*" && v_min_num >= 61) {
-		comp_badges += cBadge_tb68;
-	} else if (mext && v_max === "*" && ( new Date(extJson.current_version.files[0].created.split('T')[0]) > tb68_threshold_date) ) {
-		comp_badges += cBadge_tb68;
-	}
-
-
-	if (v_max_num >= 69) {
-		comp_badges += " " + cBadge_tb68_plus;
-	}
-
-	if (v_min_num <= 60 && (v_max_num >= 60 || v_max === "*") ) {
-		comp_badges += " " + cBadge_tb60;
-		if (v_max_num >= 61 && v_max_num < 68) {
-			comp_badges += " " + cBadge_tb60_plus;
-		}
-	}
-
-	if (v_max  ===  "*") {
-		comp_badges += " " + cBadge_maxv_star_warn;
-	}
-
-	if (mext == true) {
-		comp_badges += " " + cBadge_mx;
-	}
- */
 
 	if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp !== undefined) {
 		console.debug(extJson.xpilib);
@@ -262,9 +238,9 @@ function createExtMDTableRow(extJson) {
 	// 	return "";
 	// }
 
-	// if ( !(comp_badges.includes(cBadge_tb68) ) ) {
-	// 	return "";
-	// }
+	if ( !(comp_badges.includes(cBadge_tb68) ) ) {
+		return "";
+	}
 
 	// if ( !(comp_badges.includes(cBadge_tb60) ) ) {
 	// 	return "";

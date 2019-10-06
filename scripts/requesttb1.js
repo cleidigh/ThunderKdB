@@ -551,7 +551,10 @@ async function _7CmdSync(_7zCommand) {
 			qs.page = i;
 			// json_resp = await requestATN_URL(null, 'search', qs);
 			let resp = await requestATN_URL(null, 'search', qs)
-			// console.debug('page:\n'+ JSON.stringify( resp.results));
+			if (i === 0) {
+				console.debug('page:\n'+ JSON.stringify( resp.results));
+				
+			}
 			// console.debug(`page: ${i} ${resp.results[0].id} ${resp.results.length} \n\n\n\n`);
 			ap += resp;
 			extsJson = extsJson.concat(resp.results);
