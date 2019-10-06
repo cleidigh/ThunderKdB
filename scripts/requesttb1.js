@@ -551,7 +551,7 @@ async function _7CmdSync(_7zCommand) {
 			qs.page = i;
 			// json_resp = await requestATN_URL(null, 'search', qs);
 			let resp = await requestATN_URL(null, 'search', qs)
-			if (i === 0) {
+			if (i === 1) {
 				console.debug('page:\n'+ JSON.stringify( resp.results));
 				
 			}

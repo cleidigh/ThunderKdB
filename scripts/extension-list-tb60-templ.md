@@ -14,8 +14,8 @@ body {
 <div class="search-banner">	
 	<img class="banner-image" src='/ThunderKdB/docs/images/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" />
-	<label class="banner-header">Extensions: Thunderbird 60 Compatible</label>
-	<label class="banner-header-rt">2019-10-04</label>
+	<label class="banner-header">Extensions: Thunderbird 60 Compatible (__count__)</label>
+	<label class="banner-header-rt">__date__</label>
 
 </div>
 <div>
@@ -25,7 +25,6 @@ body {
 
 | # | Id | Name | Ver | Date | Users | Min | Max | Compatibility |
 |---: |---: |---|---: |---: |---: |---: |---: |---|
-__ext-table-tb68__
-
+__ext-md-table__
 
 
