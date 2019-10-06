@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Extension Browser</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap');
+		body {
+			font-family: 'Roboto';
+		}
+	</style>
+	<link rel="stylesheet" href="./css/xpi-search.css" />
+	<link rel="stylesheet" href="./css/gh-buttons.css" />
+</head>
+
+<body>
+
+	<div class="search-banner">
+		<img class="banner-image" src='./images/Thunderbird-Banner.png'
+			style="padding-right: 60px; height: 40px; width: 170px" />
+		<label class="banner-header"></label>
+		<label class="banner-header-rt"></label>
+	</div>
+
+	<hr>
+	<br>
+
+	<h2 class="search-section1">Extension File/Issue Search:</h2>
+
+	<div class="search-grid2">
+		<label class="search-label">Topic (s) :</label>
+		<input id="topic" type=" text" class="search-field search-input" />
+		<button id="search-button" type="button" class="search-input-col button icon btn-primary search" onclick="search_exts()">Search</button>
+		<label class="search-options-hdr-label">Options</label>
+		<label class="search-options-label">File Types : </label>
+		<select id="file_types" class="search-field search-select">
+			<option value="">All xpiLib Files</option>
+			<option value="extension:js+extension:jsm">Javascript (.js, .jsm)</option>
+			<option value="extension:xul">XUL</option>
+			<option value="extension:html+extension:xhtml">HTML, XHTML</option>
+			<option value="extension:dtd+extension:properties">dtd, properties</option>
+
+		</select>
+		<label class="search-options-label grid-label-top">Compatibility : </label>
+		<div class="search-field">
+			<table>
+			<tr>
+			<td width="24px"> <input id="comp_all" type="checkbox" class="search-field search-checkbox" /></td>
+			<td width="80px"><div class="search-field-subitem1">All </div></td>
+			
+			<td width="24px"><input id="comp_tb68" type="checkbox" class="search-field search-checkbox" /></td>
+			<td width="100%"><label class="search-field-subitem2">Thunderbird 68</label></td>
+		</tr>
+		<tr>
+				<td width="24px"> <input id="comp_all" type="checkbox" class="ehidden search-field search-checkbox" /></td>
+				<td width="80px"><div class="ehidden search-field-subitem1">All </div></td>
+				
+				<td width="24px"><input id="comp_tb60" type="checkbox" class="search-field search-checkbox" /></td>
+				<td width="100%"><label class="search-field-subitem2">Thunderbird 60</label></td>
+			</tr>
+		
+		</table>
+		</div>
+
+	<br>
+	<br>
+
+	<h2 class="search-section1">Locale Files Search:</h2>
+
+	<div class="search-grid">
+		<label class="search-label">Word (s) :</label>
+		<input id="locale_topic" type=" text" class="search-field search-input" />
+		<button id="locale_topic_btn" type="button" onclick="search_exts_locales()" class="search-input-col button icon btn-primary search" onclick="search_exts()">Search</button>
+
+	</div>
+</body>
+
+</html>
