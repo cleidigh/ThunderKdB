@@ -628,8 +628,8 @@ async function _7CmdSync(_7zCommand) {
 		let startTime = new Date();
 		console.debug('' + startTime);
 
-		extsJson = fs.readJSONSync(extsAllJsonFileName);
-		// await getAllExtensionDetails(1, 54);
+		// extsJson = fs.readJSONSync(extsAllJsonFileName);
+		await getAllExtensionDetails(1, 54);
 		console.debug('extension lines ' + extsJson.length);
 
 		// writePrettyJSONFile(extsAllJsonFileName, extsJson);
@@ -639,7 +639,7 @@ async function _7CmdSync(_7zCommand) {
 		// extsJson = extArray;
 		// try {
 		let p = [];
-		for (let index = 0; index < 1; index++) {
+		for (let index = 0; index < 67; index++) {
 			console.debug('GetIndex ' + index);
 			p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 
@@ -654,8 +654,8 @@ async function _7CmdSync(_7zCommand) {
 		console.debug(new Date() - startTime);
 		console.debug(new Date());
 
-		// console.debug('rewriting masterfile');
-		// writePrettyJSONFile(extsAllJsonFileName, extsJson);
+		console.debug('rewriting masterfile');
+		writePrettyJSONFile(extsAllJsonFileName, extsJson);
 
 		// extArray = extsJson;
 		// await getAll();
