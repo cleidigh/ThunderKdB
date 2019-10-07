@@ -215,6 +215,8 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 	extSummaryFile = extSummaryFile.replace(/__ext-name__/g, name);
 	extSummaryFile = extSummaryFile.replace(/__date__/g, (new Date().toISOString().split('T')[0]));
 	extSummaryFile = extSummaryFile.replace('__ext-id__', extJson.id);
+	extSummaryFile = extSummaryFile.replace('__ext-current-version__', extJson.current_version.version);
+	extSummaryFile = extSummaryFile.replace('__ext-current-version-date__', extJson.current_version.files[0].created);
 	extSummaryFile = extSummaryFile.replace('__ext-slug__', extJson.slug);
 	extSummaryFile = extSummaryFile.replace('__ext-minv__', minv);
 	extSummaryFile = extSummaryFile.replace('__ext-maxv__', maxv);
