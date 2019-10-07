@@ -1,0 +1,58 @@
+<!-- 
+const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png)"
+const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png)"
+const cBadge_tb69_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png)"
+const cBadge_tb60 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png)"
+const cBadge_tb60_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png)"
+const cBadge_tb61_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png)"
+const cBadge_maxv_star_warn = "![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png)"
+const cBadge_mx = "![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png)"
+const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png)"
+// const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-40a156.png)"
+const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png)"
+	<img src=""/><label > -  </label>
+
+
+-->
+As I stated in my post, the reports are still a work in progress.  As 
+Graeme rightly pointed out, the inclusion of a "secret decoder ring" would have been
+helpful.  I will have a legend/help page shortly.  In the meantime I have included
+the cheat sheet.  Note, I reserve the right to modify these either as I see fit
+or by anyone's good suggestions.  Seriously, I do plan to make some tweaks.
+
+Rationale/comments:
+- green  ===  good, light green === very good (tb68, always first flag to see easily)
+- cV , pV : current, previous version (some people ping-pong to officially support both 60/68)
+- 61+ : author has worked past 60, good indication they will hit 68
+- 69+ : author has worked past 68, good indication they will continue towards 76
+- MailExtension flag is kind of ambiguous.  Currently it just means a manifest file is included.
+  It says nothing beyond that.  I am thinking of modifying or combining with the legacy flags
+- No maximum version just strives to flag that you cannot count on specific compatibility beyond 
+  any other representation.
+- Legacy flags currently only get read from the manifest file.  For "non- mailextensions"
+  I will be adding an RDF parser so I can look at it install.rdf
+
+I will also be adding some more status information such as :
+oWIP  ===  original author, work in progress (feel-good flag)
+rWIP === new author for replacement extension, work in progress
+AdoptMe === extension looking for a new home
+
+As I progress there may be other things.  Again, suggestions welcome.  Note!  If possible
+please make an enhancement issue in the repository so we can track.
+
+
+<HTMl>
+
+
+	<img src="https://img.shields.io/badge/68-%20cV-3bc059.png"/><label > - Thunderbird 68 (Current version)</label><br>
+	<img src="https://img.shields.io/badge/68-%20pV-3bc059.png"/><label > - Thunderbird 68 (Previous version)</label><br>
+	<img src="https://img.shields.io/badge/69+-%20cV-blue.png"/><label > - Thunderbird 69+ </label><br>
+	<img src="https://img.shields.io/badge/60-%20cV-darkgreen.png"/><label > - Thunderbird 60 (Current version)</label><br>
+	<img src="https://img.shields.io/badge/60-%20pV-darkgreen.png"/><label > - Thunderbird 60 (Previous version)</label><br>
+	<img src="https://img.shields.io/badge/61+-%20cV-darkblue.png"/><label > - Thunderbird 61+ </label><br>
+	<img src="https://img.shields.io/badge/MX-%20+-purple.png"/><label > - MailExtension (contains manifest.json) </label><br>
+	<img src="https://img.shields.io/badge/v*-%20!-orange.png"/><label > - No maximum version (*) </label><br>
+	<img src="https://img.shields.io/badge/Leg-%20bs-purple.png"/><label > - Legacy Type = bootstrap </label><br>
+	<img src="https://img.shields.io/badge/Leg-%20rs-purple.png"/><label > - Legacy Type = restart required </label><br>
+
+</HTMl>
