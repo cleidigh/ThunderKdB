@@ -204,8 +204,8 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 
 
 	// const srcLink = `[Src](${rootDir}/${extGroupAllDir}/${extGroupDir}/${extJson.id}-${extJson.slug}/src)`;
-	const srcLink = `${repoRootDir}/${extGroupAllDir}/${extGroupDir}/${extJson.id}-${extJson.slug}/src)`;
-	const xpiLink = `${repoRootDir}/${extGroupAllDir}/${extGroupDir}/${extJson.id}-${extJson.slug}/xpi)`;
+	const srcLink = `${repoRootDir}/${extGroupAllDir}/${extGroupDir}/${extJson.id}-${extJson.slug}/src`;
+	const xpiLink = `${repoRootDir}/${extGroupAllDir}/${extGroupDir}/${extJson.id}-${extJson.slug}/xpi`;
 	// const iconPath = `${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src\\${extJson.icon_url}`;
 	const iconPath = `${extJson.icon_url}`;
 	const minv = extJson.current_version.compatibility.thunderbird.min;
