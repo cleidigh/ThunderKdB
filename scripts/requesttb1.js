@@ -187,7 +187,7 @@ async function requestATN_URL(addon_id, query_type, options) {
 
 function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite) {
 	const extRootName = `${addon_identifier}-${extJson.slug}`;
-	const extSummaryFileName = `${rootDir}/${extGroupAllDir}/${extGroupDir}/${extRootName}/${extRootName}-summary.md`;
+	const extSummaryFileName = `${rootDir}/${extGroupAllDir}/${extGroupDir}/${extRootName}/${extRootName}-details.html`;
 
 	if (fs.existsSync(extSummaryFileName) && !overwrite) {
 		console.debug('MarkDown Exists ');
@@ -195,15 +195,16 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 	}
 
 	console.debug('Generate...');
-	let extSummaryFile = fs.readFileSync('extension-summary-templ.md', 'utf8');
+	let extSummaryFile = fs.readFileSync('extension-details-templ.html', 'utf8');
 
 	const default_locale = extJson.default_locale;
 	const name = extJson.name[default_locale];
 	const summary = extJson.summary[default_locale];
 
 
-	const srcLink = `[Src](${rootDir}/${extGroupAllDir}/${extGroupDir}/${extJson.id}-${extJson.slug}/src)`;
-	const xpiLink = `[XPI](${rootDir}/${extGroupAllDir}/${extGroupDir}/${extJson.id}-${extJson.slug}/xpi)`;
+	// const srcLink = `[Src](${rootDir}/${extGroupAllDir}/${extGroupDir}/${extJson.id}-${extJson.slug}/src)`;
+	const srcLink = `${extJson.id}-${extJson.slug}/src)`;
+	const xpiLink = `${extJson.id}-${extJson.slug}/xpi)`;
 	// const iconPath = `${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src\\${extJson.icon_url}`;
 	const iconPath = `${extJson.icon_url}`;
 	const minv = extJson.current_version.compatibility.thunderbird.min;
@@ -221,6 +222,13 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 	extSummaryFile = extSummaryFile.replace('__ext-xpi-path__', xpiLink);
 	extSummaryFile = extSummaryFile.replace('__ext-description__', (summary + "\n"));
 
+	let ext_authors = extJson.authors.map( author => {
+		return author.name;
+	}).join(', ');
+
+	extSummaryFile = extSummaryFile.replace('__ext-authors__', ext_authors);
+	extSummaryFile = extSummaryFile.replace('__ext-users__', extJson.average_daily_users);
+	extSummaryFile = extSummaryFile.replace('__ext-license__', extJson.current_version.license.name["en-US"]);
 
 	fs.writeFileSync(`${extSummaryFileName}`, extSummaryFile);
 	console.debug('summary done');
@@ -366,6 +374,7 @@ async function getExtensionFiles(addon_identifier, index) {
 
 
 		let qs = { page_size: 50 };
+		
 		let ext_versions_raw = await requestATN_URL(addon_identifier, 'versions', qs);
 		// console.debug(ext_versions_raw);
 		// console.debug('links ' + ext_versions_raw.results);
@@ -393,9 +402,9 @@ async function getExtensionFiles(addon_identifier, index) {
 		const extRootName = `${addon_identifier}-${ext.slug}`;
 		const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
 
-		jfile = `${extRootDir}/${extRootName}-versions.json`;
-		await writePrettyJSONFile(jfile, ext_versions);
-		console.debug(`downloaded versions: ${extRootName} : ${ext_versions.length}`);
+		// jfile = `${extRootDir}/${extRootName}-versions.json`;
+		// await writePrettyJSONFile(jfile, ext_versions);
+		// console.debug(`downloaded versions: ${extRootName} : ${ext_versions.length}`);
 
 		// return 1;
 
@@ -410,8 +419,8 @@ async function getExtensionFiles(addon_identifier, index) {
 		}
 		// console.debug('  Done');
 
-		jfile = `${extRootDir}/${extRootName}.json`
-		writePrettyJSONFile(jfile, ext)
+		// jfile = `${extRootDir}/${extRootName}.json`
+		// writePrettyJSONFile(jfile, ext)
 		console.debug(ext.slug);
 
 
@@ -436,8 +445,8 @@ async function getExtensionFiles(addon_identifier, index) {
 		if (ext_comp.mext && fs.existsSync(`${extRootDir}/src/manifest.json`)) {
 			// fs.removeSync(`${extRootDir}/src`);
 			let manifestJson = fs.readJSONSync(`${extRootDir}/src/manifest.json`, { throws: false });
-			let legacy = JSON.stringify(manifestJson.legacy);
 			if (manifestJson.legacy !== undefined) {
+				let legacy = JSON.stringify(manifestJson.legacy);
 				ext_comp.legacy = true;
 				ext_comp.legacy_type = (typeof manifestJson.legacy.type === 'string') ? manifestJson.legacy.type : 'restart';
 				console.debug('ReadingManifest: ' + `${extRootName} : ${manifestJson.legacy.type}`);
@@ -454,7 +463,7 @@ async function getExtensionFiles(addon_identifier, index) {
 
 
 			console.debug('generate markDown	');
-			let overwrite = false;
+			let overwrite = true;
 			genExtensionSummaryMD(addon_identifier, ext, targetGroupDir, overwrite);
 
 			console.debug('Finished: ' + addon_identifier);
@@ -614,8 +623,8 @@ async function _7CmdSync(_7zCommand) {
 		let startTime = new Date();
 		console.debug('' + startTime);
 
-		// extsJson = fs.readJSONSync(extsAllJsonFileName);
-		await getAllExtensionDetails(1, 54);
+		extsJson = fs.readJSONSync(extsAllJsonFileName);
+		// await getAllExtensionDetails(1, 54);
 		console.debug('extension lines ' + extsJson.length);
 
 		// writePrettyJSONFile(extsAllJsonFileName, extsJson);
@@ -625,7 +634,7 @@ async function _7CmdSync(_7zCommand) {
 		// extsJson = extArray;
 		// try {
 		let p = [];
-		for (let index = 0; index < 67; index++) {
+		for (let index = 0; index < 1; index++) {
 			console.debug('GetIndex ' + index);
 			p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 
@@ -640,8 +649,8 @@ async function _7CmdSync(_7zCommand) {
 		console.debug(new Date() - startTime);
 		console.debug(new Date());
 
-		console.debug('rewriting masterfile');
-		writePrettyJSONFile(extsAllJsonFileName, extsJson);
+		// console.debug('rewriting masterfile');
+		// writePrettyJSONFile(extsAllJsonFileName, extsJson);
 
 		// extArray = extsJson;
 		// await getAll();
