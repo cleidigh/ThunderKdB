@@ -213,11 +213,13 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 
 	console.debug('summary name ' + name);
 	extSummaryFile = extSummaryFile.replace(/__ext-name__/g, name);
+	extSummaryFile = extSummaryFile.replace(/__date__/g, (new Date().toISOString().split('T')[0]));
 	extSummaryFile = extSummaryFile.replace('__ext-id__', extJson.id);
 	extSummaryFile = extSummaryFile.replace('__ext-slug__', extJson.slug);
 	extSummaryFile = extSummaryFile.replace('__ext-minv__', minv);
 	extSummaryFile = extSummaryFile.replace('__ext-maxv__', maxv);
 	extSummaryFile = extSummaryFile.replace('__ext-icon64px-path__', iconPath);
+
 	extSummaryFile = extSummaryFile.replace('__ext-src-path__', srcLink);
 	extSummaryFile = extSummaryFile.replace('__ext-xpi-path__', xpiLink);
 	extSummaryFile = extSummaryFile.replace('__ext-description__', (summary + "\n"));
