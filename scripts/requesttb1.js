@@ -447,11 +447,14 @@ async function getExtensionFiles(addon_identifier, index) {
 		// 	console.debug('Removing: ' + `${extRootName}`);
 		// }
 
+		console.debug('check versions');
 		if (ext_comp.mext && fs.existsSync(`${extRootDir}/src/manifest.json`)) {
 			// fs.removeSync(`${extRootDir}/src`);
 			let manifestJson = fs.readJSONSync(`${extRootDir}/src/manifest.json`, { throws: false });
+			console.debug('check legacy');
 			if (manifestJson.legacy !== undefined) {
-				let legacy = JSON.stringify(manifestJson.legacy);
+				console.debug('set legacy');
+				// let legacy = JSON.stringify(manifestJson.legacy);
 				ext_comp.legacy = true;
 				ext_comp.legacy_type = (typeof manifestJson.legacy.type === 'string') ? manifestJson.legacy.type : 'restart';
 				console.debug('ReadingManifest: ' + `${extRootName} : ${manifestJson.legacy.type}`);
@@ -628,8 +631,8 @@ async function _7CmdSync(_7zCommand) {
 		let startTime = new Date();
 		console.debug('' + startTime);
 
-		// extsJson = fs.readJSONSync(extsAllJsonFileName);
-		await getAllExtensionDetails(1, 54);
+		extsJson = fs.readJSONSync(extsAllJsonFileName);
+		// await getAllExtensionDetails(1, 54);
 		console.debug('extension lines ' + extsJson.length);
 
 		// writePrettyJSONFile(extsAllJsonFileName, extsJson);
@@ -639,7 +642,7 @@ async function _7CmdSync(_7zCommand) {
 		// extsJson = extArray;
 		// try {
 		let p = [];
-		for (let index = 0; index < 67; index++) {
+		for (let index = 0; index < 10; index++) {
 			console.debug('GetIndex ' + index);
 			p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 
