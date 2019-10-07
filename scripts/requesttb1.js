@@ -8,7 +8,7 @@ var JSZip = require("jszip");
 const _7z = require('7zip-min');
 var extract = require('extract-zip')
 
-const repoRootDir = "https://github.com/cleidigh/ThunderKdB";
+const repoRootDir = "https://github.com/cleidigh/ThunderKdB/tree/master";
 const rootDir = "C:/Dev/Thunderbird/ThunderKdB";
 const extGroupAllDir = 'xall';
 const extGroupTB68Dir = 'x68';
