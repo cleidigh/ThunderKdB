@@ -65,13 +65,13 @@ function genExtensionListFromFolders() {
 
 function genExtensionListFromJson(extsJson) {
 
-	// let listBaseName = 'extension-list-all';
+	let listBaseName = 'extension-list-all';
 	// let listBaseName = 'extension-list-tb68';
-	let listBaseName = 'extension-list-tb60';
+	// let listBaseName = 'extension-list-tb60';
 
-	// let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
-	// let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
-	let extsListFile = fs.readFileSync('extension-list-tb60-templ.md', 'utf8');
+	let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
+	// let extsListFile = fs.readFileSync('exEvaluate tension-list-tb68-templ.md', 'utf8');
+	// let extsListFile = fs.readFileSync('extension-list-tb60-templ.md', 'utf8');
 
 	let extRows = "";
 	let rows = 0;
@@ -115,8 +115,8 @@ function genExtensionListFromJson(extsJson) {
 	extsListFile = extsListFile.replace('__ext-md-table__', extRows);
 	console.debug(extsListFile);
 	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/${listBaseName}.md`, extsListFile);
-	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
-	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60all.md`, extsListFile);
+	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
+	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60all.md`, extsListFile);
 
 	console.debug('Done');
 }
@@ -225,7 +225,7 @@ function createExtMDTableRow(extJson) {
 	// const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
 
 	// const name_link = `[${name}](/${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
-	const name_link = `[${name}](${repoRoot}/${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
+	const name_link = `[${name}](${repoRoot}/${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-details.html)`
 
 
 	// vision filters
@@ -242,9 +242,9 @@ function createExtMDTableRow(extJson) {
 	// 	return "";
 	// }
 
-	if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb60_pv) ) ) {
-		return "";
-	}
+	// if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb60_pv) ) ) {
+	// 	return "";
+	// }
 
 	let rank = extJson.xpilib.rank;
 
