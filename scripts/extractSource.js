@@ -133,18 +133,25 @@ async function repo_commit(message) {
 
 
 async function walkFolders(parentFolder, options) {
+	console.debug(`WalkFolder: ${parentFolder}  : ${options.checkOnly}`);
 	let dirs = getDirectories(parentFolder);
 
 	let start = (typeof options.start === 'number') ? options.start : 0;
 	let end = (typeof options.end === 'number') ? options.end : dirs.length;
 	let extJson = {};
 
+	// console.debug(dirs);
 	for (let index = start; index < end; index++) {
 		const extDir = dirs[index];
 
+		console.debug(`Checking: ${parentFolder}/${extDir}`);
 		// check XPI
 		if (!fs.existsSync(`${parentFolder}/${extDir}/xpi`)) {
-			// fs.removeSync(`${extDir}/xpi`);
+			if (options.checkOnly) {
+				console.debug('Missing: ' + `index: ${index} : ${extDir}/xpi  : Ignore`);
+				continue;
+			}
+			
 			console.debug('Missing: ' + `index: ${index} : ${extDir}/xpi`);
 			extJson = readExtJson(`${parentFolder}/${extDir}/${extDir}.json`);
 			console.debug('ExtensionId: ' + extJson.id);
@@ -164,8 +171,13 @@ async function walkFolders(parentFolder, options) {
 
 		}
 		if (!fs.existsSync(`${parentFolder}/${extDir}/src`)) {
-			console.debug('Missing: ' + `index: ${index} : ${extDir}/src`);
+			if (options.checkOnly) {
+				console.debug('Missing: ' + `index: ${index} : ${extDir}/src  : Ignore`);
+				continue;
+			}
 			
+			console.debug('Missing: ' + `index: ${index} : ${extDir}/src`);
+			console.debug('Unzip XPI');
 			try {
 				extJson = readExtJson(`${parentFolder}/${extDir}/${extDir}.json`);
 				
@@ -190,7 +202,8 @@ async function walkFolders(parentFolder, options) {
 }
 
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
-walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}`, { extsJson: extsJson, start: 0, end: 220 });
+// walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}`, { extsJson: extsJson, start: 0, end: 220 });
+walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}`, { extsJson: extsJson, start: 0, end: 40, checkOnly: false });
 // walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}`, { extsJson: extsJson });
 // walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTBOtherDir}`, { extsJson: extsJson });
 
