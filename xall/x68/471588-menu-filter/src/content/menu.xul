@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://menufilter/content/menu.css" type="text/css"?>
+
+<!DOCTYPE page SYSTEM "chrome://menufilter/locale/strings.dtd">
+<page title="&page.title;" width="800" height="600"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<hbox flex="1" pack="center">
+		<vbox>
+			<label control="menuid" value="&menuid.list.label;" />
+			<menulist id="menuid" oncommand="menuChosen(this.value)">
+				<menupopup>
+					<menuitem value="mailContext" label="&menuid.list.contentContext.label;" />
+					<menuitem value="folderPaneContext" label="&menuid.list.folderPaneContext.label;" />
+					<menuitem value="menu_FilePopup" label="&menuid.list.file.label;" />
+					<menuitem value="menu_EditPopup" label="&menuid.list.edit.label;" />
+					<menuitem value="menu_View_Popup" label="&menuid.list.view.label;" />
+					<menuitem value="menu_GoPopup" label="&menuid.list.go.label;" />
+					<menuitem value="messageMenuPopup" label="&menuid.list.message.label;" />
+					<menuitem value="menu_Event_Task_Popup" label="&menuid.list.lightning.label;" />
+					<menuitem value="taskPopup" label="&menuid.list.tools.label;" />
+					<menuitem value="menu_HelpPopup" label="&menuid.list.help.label;" />
+				</menupopup>
+			</menulist>
+			<label control="search" value="&search.label;" />
+			<textbox id="search" oninput="search(this.value);" />
+			<spacer flex="1" />
+			<vbox id="donatewrapper">
+				<description id="donatelabel">&donate.label.text;</description>
+				<label id="donatebutton" class="text-link" flex="1"
+					value="&donate.button.label;" onclick="doDonate()" />
+			</vbox>
+		</vbox>
+		<richlistbox id="menu" seltype="multiple" onselect="selectionChanged()" ondblclick="toggleItem(event.target)" />
+		<vbox>
+			<button id="show" onclick="showSelection()" label="&show.button.label;" />
+			<button id="hide" onclick="hideSelection()" label="&hide.button.label;" />
+		</vbox>
+	</hbox>
+	<script src="chrome://menufilter/content/menu.js" type="application/javascript" />
+</page>

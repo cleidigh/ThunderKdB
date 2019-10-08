@@ -1,0 +1,26 @@
+content     identitychooser    chrome/content/
+overlay     chrome://messenger/content/messenger.xul chrome://identitychooser/content/identitychooser.xul
+overlay     chrome://messenger/content/messageWindow.xul chrome://identitychooser/content/identitychooser-messagewindow.xul
+overlay     chrome://messenger/content/messengercompose/messengercompose.xul	chrome://identitychooser/content/identitychooser-messengercompose.xul
+overlay     chrome://messenger/content/addressbook/addressbook.xul	chrome://identitychooser/content/identitychooser-addressbook.xul
+overlay     chrome://contacttabs/content/cotaCardView.xul	chrome://identitychooser/content/identitychooser-addressbook.xul appversion<15.0
+overlay     chrome://contacttabs/content/cotaCardView15.xul	chrome://identitychooser/content/identitychooser-addressbook.xul appversion>=15.0
+
+skin        identitychooser classic/1.0 skin/
+
+locale identitychooser cs chrome/locale/cs/
+locale identitychooser da chrome/locale/da/
+locale identitychooser de chrome/locale/de/
+locale identitychooser en-US chrome/locale/en-US/
+locale identitychooser fr chrome/locale/fr/
+locale identitychooser it chrome/locale/it/
+locale identitychooser ja-JP chrome/locale/ja-JP/
+locale identitychooser nl chrome/locale/nl/
+locale identitychooser pt-BR chrome/locale/pt-BR/
+locale identitychooser pt-PT chrome/locale/pt-PT/
+locale identitychooser sl-SI chrome/locale/sl-SI/
+locale identitychooser sr chrome/locale/sr/
+locale identitychooser sv-SE chrome/locale/sv-SE/
+locale identitychooser tr chrome/locale/tr/
+locale identitychooser zh-CN chrome/locale/zh-CN/
+locale identitychooser zh-TW chrome/locale/zh-TW/

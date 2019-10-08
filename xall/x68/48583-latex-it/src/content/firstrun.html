@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Configuring Thunderbird LaTeX extension</title>
+    <meta http-equiv="Content-Type" content="text/HTML; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="firstrun.css" />
+    <script type="application/javascript">
+      var Cc = Components.classes;
+      var Ci = Components.interfaces;
+      var prefs = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("tblatex.");
+      var isWindows = ("@mozilla.org/windows-registry-key;1" in Components.classes);
+
+      function init_file(path) {
+        var f = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+        try {
+          f.initWithPath(path);
+        } catch (e) {
+          dump("Wrong path! "+path+"\n");
+          return {
+            exists: function () { return false; }
+          };
+        }
+        return f;
+      }
+
+      function search_in_path() {
+        var env = Cc["@mozilla.org/process/environment;1"].createInstance(Ci.nsIEnvironment);
+        var sep = isWindows ? ";" : ":";
+        var ext = isWindows ? ".exe" : "";
+        var dirs = env.get("PATH").split(sep);
+        var latex_found = false; var dvipng_found = false;
+        for (var i = 0; i < dirs.length; ++i) (function (i) {
+          var latex_bin = init_file(dirs[i]);
+          if (latex_bin.exists())
+            latex_bin.append("latex"+ext);
+          if (latex_bin.exists() && !latex_found) {
+            prefs.setCharPref("latex_path", latex_bin.path);
+            latex_found = true;
+            dump("Found latex in "+latex_bin.path+"\n");
+          }
+          var dvipng_bin = init_file(dirs[i]);
+          if (dvipng_bin.exists())
+            dvipng_bin.append("dvipng"+ext);
+          if (dvipng_bin.exists() && !dvipng_found) {
+            prefs.setCharPref("dvipng_path", dvipng_bin.path);
+            dvipng_found = true;
+            dump("Found dvipng in "+dvipng_bin.path+"\n");
+          }
+        })(i);
+      }
+
+      function on_load() {
+        if (isWindows)
+          document.getElementById("div_win32").style.display = "block";
+        search_in_path();
+
+        var latex_path = prefs.getCharPref("latex_path");
+        if (latex_path.length > 0 && init_file(latex_path).exists()) {
+          document.getElementById("latex_path").appendChild(document.createTextNode(latex_path));
+          document.getElementById("latex_icon").src = "accept.png";
+        } else {
+          document.getElementById("latex_path").innerHTML = "<span style='color: #EB887C; font-weight: bold;'>Not Found!</span>";
+          document.getElementById("button_yes").setAttribute("disabled", "disabled");
+        }
+        var dvipng_path = prefs.getCharPref("dvipng_path");
+        if (dvipng_path.length > 0 && init_file(dvipng_path).exists()) {
+          document.getElementById("dvipng_path").appendChild(document.createTextNode(dvipng_path));
+          document.getElementById("dvipng_icon").src = "accept.png";
+        } else {
+          document.getElementById("dvipng_path").innerHTML = "<span style='color: #EB887C; font-weight: bold;'>Not Found!</span>";
+          document.getElementById("button_yes").setAttribute("disabled", "disabled");
+        }
+
+        if (window.arguments && window.arguments[0]) {
+          window.arguments[0](document);
+        }
+      }
+
+      function on_yes() {
+        prefs.setIntPref("firstrun", 3);
+        window.close();
+      }
+
+      function on_no() {
+        window.openDialog("chrome://tblatex/content/options.xul");
+        on_yes();
+      }
+    </script>
+  </head>
+  <body onload="on_load();">
+    <h1>Thunderbird LaTeX extension</h1>
+    Congratulations! You have successfully installed the Thunderbird LaTeX
+    extension. Please take a few seconds to check that the settings we have
+    found are correct.
+    <h2>Required software</h2>
+    <p>
+      This extension depends on a regular LaTeX distribution and the dvipng
+      software. If you haven't installed them already, here are a few tips. If
+      you are running Linux, both can be easily installed through your
+      distribution's package manager. If running MacOS, <a class="external"
+        href="http://www.tug.org/mactex/">MacTeX</a> is probably what you're
+      looking for. If running Windows, <a class="external"
+        href="http://www.miktex.org">MiKTeX</a> is known to work.
+    </p>
+    <p style="color: #8F2E2E">
+      If you choose to install this software now, please make sure you click
+      "autodetect again" at the bottom of the page once you're done with the
+      setup.
+    </p>
+    <div id="div_win32" style="display: none;">
+      <h2>Attention!</h2>
+      <p>
+      It appears you are running Microsoft Windows.
+      </p>
+      <p>
+      Other software is available here:
+      <ul>
+        <li><a class="external" href="http://www.miktex.org">MiKTeX</a> includes both
+        <tt>latex</tt> and <tt>dvipng</tt> executables.</li>
+      </ul>
+      </p>
+      <h2>Where is the required software on Windows?</h2>
+      <p>
+      If autodetection failed, <tt>latex.exe</tt> and <tt>dvipng.exe</tt> are
+      usually found in the <tt>miktex\bin</tt> folder of your MiKTeX install
+      directory.
+      </p>
+    </div>
+    <h2>Autodetection results</h2>
+    <p>
+      We have found the required utilities to be in the following locations:
+    </p>
+    <ul>
+      <li>LaTeX: <span id="latex_path"></span>&nbsp;<img id="latex_icon" src="exclamation.png" /></li>
+      <li>dvipng: <span id="dvipng_path"></span>&nbsp;<img id="dvipng_icon" src="exclamation.png" /></li>
+    </ul>
+    <span id="autodetect_report"></span>
+    <p><strong><u>Are these settings correct?</u></strong></p>
+    <p>
+      <button type="button" onclick="on_yes();" id="button_yes">Yes, don't bother me again</button>
+      <button type="button" onclick="on_no();">No, take me to the options screen</button>
+    </p>
+    <a href="#" onclick="document.location.reload(); return false;">Autodetect again</a>
+    <!--<a href="#" onclick="document.location.reload(); return false;">Reload</a>-->
+  </body>
+</html>

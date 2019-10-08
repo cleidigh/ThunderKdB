@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" 
+href="chrome://messenger/skin/preferences/preferences.css"?>
+
+ <!DOCTYPE dialog SYSTEM "chrome://keynav/locale/options.dtd"> 
+
+<dialog id="keynav-prefs"
+    buttons="accept"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ 
+  <vbox align="left">
+  	<hbox>
+    <checkbox id="mailfolderkeynav" 
+    	preference="extensions.keynav.MailFolderKeyNav" 
+    	label="&options_enableMailFolderKeyNav.label;"/>
+    </hbox>
+	
+	<hbox>
+    <checkbox id="gomenumailfolderkeynavtoggle"
+    	preference="extensions.keynav.GoMenuMailFolderKeyNavToggle" 
+    	label="&options_addGoMenuQuickToggle.label;"/>
+  </hbox>
+  </vbox>
+
+  <script type="application/javascript"
+    src="chrome://global/content/preferencesBindings.js"/>
+  <script type="application/javascript"
+    src="chrome://keynav/content/preferences.js"/>
+
+</dialog>

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "identitychooser@janek.org",
+      "strict_min_version": "68.0"
+    }
+  },
+  "name": "Identity Chooser",
+  "description": "Identity Chooser helps you to choose the correct identity when composing a new email.",
+  "version": "1.9.9",
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://identitychooser/content/preferences.xul",
+      "open_in_tab": false
+    }
+  }
+}

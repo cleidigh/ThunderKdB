@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+	"applications": {
+		"gecko": {
+			"id": "unread-badge@streiff.net",
+			"strict_min_version": "68.0"
+		}
+	},
+	"name": "Unread Badge",
+	"description": "An unread mail count badge for the Thunderbird icon in your Windows taskbar.",
+	"developer": {
+		"name": "Brandon Streiff"
+	},
+	"homepage_url": "https://github.com/bstreiff/unread-badge",
+
+	"version": "2.0.0",
+
+	"legacy": {
+		"type": "bootstrap",
+		"options": {
+			"page": "chrome://unread-badge/content/options.xul"
+		}
+	}
+}

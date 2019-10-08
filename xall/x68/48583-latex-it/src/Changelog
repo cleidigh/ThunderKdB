@@ -1,0 +1,29 @@
+--v0.7
+
+- Use latex/dvipng instead of latex/dvips/convert to generate the image file.
+
+--v0.6.7
+
+- Fixed the mime type of the embedded image to image/png
+
+--v0.6.6
+
+- Adding suggestions from trying to sign add-on through Mozilla
+- Update URL points to github
+- remove manifest.json from xpi, that shouldn't have been there
+
+-- v0.6.5
+
+- Support for TB60+
+
+-- v0.6 development series --
+
+- Add PATH hacks for Thunderbird on OSX
+- Add suggestions explaining why the process might fail.
+- Better error reporting.
+- Don't choke on malformed paths.
+- Add a "load default template" button for the "insert complex latex dialog"
+- Add a "show debug information" option for people who are having trouble
+getting things to work properly
+- Make the paths in the options editable for mac users who cannot navigate to
+the place where the binaries are located

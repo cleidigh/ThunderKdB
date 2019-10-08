@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<?xml-stylesheet href="chrome://identitychooser/skin/messengercompose.css" type="text/css"?>
+
+<!DOCTYPE overlay>
+
+<overlay id="identitychooser-messengercompose"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <commandset>
+    <command id="identitychooser-open-composer"
+             oncommand="org.janek.identitychooser_messengercompose.openNewMessage();"/>
+  </commandset>
+
+  <hbox insertbefore="status-bar">
+    <notificationbox id="identitychooser-sendwarning-box"
+                     flex="1"/>
+  </hbox>
+
+  <script src="identitychooser-identitieshelper.js"/>
+  <script src="identitychooser-prefshelper.js"/>
+  <script src="identitychooser-messengercompose.js"/>
+</overlay>

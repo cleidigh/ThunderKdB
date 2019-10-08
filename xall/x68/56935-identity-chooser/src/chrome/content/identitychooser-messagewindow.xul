@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE overlay>
+
+<overlay id="identitychooser-messagewindow"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script src="identitychooser-identitieshelper.js"/>
+  <script src="identitychooser-prefshelper.js"/>
+  <script src="identitychooser-mailtohelper.js"/>
+  <script src="identitychooser-buttonhelper.js"/>
+  <script src="identitychooser.js"/>
+
+ <!-- We overlay mailto:-hrefs. This happens in pure Javascript. -->
+</overlay>

@@ -1,0 +1,53 @@
+{
+	"manifest_version":2,
+	"version":"1.0.0.1",
+	"name": "AutoarchiveReloaded",
+	"description": "__MSG_addOnDescription__",
+	"author": "__MSG_addOnAuthor__",
+	"homepage_url": "http://brummolix.github.io/AutoarchiveReloaded/",
+	
+	"applications": {
+		"gecko": {
+			"id": "AutoarchiveReloaded@brummolix.addons.mozilla.org",
+			"strict_min_version": "68.0"
+		}
+	},
+
+	"options_ui": 
+	{
+		"page": "options.html",
+		"browser_style":true,
+		"open_in_tab":true
+	},
+	
+	"permissions": ["storage","accountsRead","messagesRead","messagesMove"],
+
+	"background": {
+		"scripts": ["background.js"]
+	},
+
+	"browser_action": {
+		"browser_style": true,
+		"default_icon": "skin/button.svg",
+		"default_title": "__MSG_toolbarArchive__"
+	  },
+
+	"default_locale":"en",
+
+	"experiment_apis": {
+    "autoarchive": {
+      "schema": "autoarchive-api.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "autoarchive"
+          ]
+        ],
+        "script": "autoarchive-api.js"
+      }
+    }
+	}
+}

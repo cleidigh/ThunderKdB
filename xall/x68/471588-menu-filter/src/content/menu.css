@@ -1,0 +1,62 @@
+page {
+	padding: 1em;
+}
+#menuid > menupopup > menuitem[disabled] {
+	display: none;
+}
+#donatewrapper {
+	margin: 2px 4px;
+	padding: 4px;
+	background-color: threedface;
+	border: 1px solid -moz-nativehyperlinktext;
+}
+#donatelabel {
+	white-space: pre-wrap;
+	width: 0;
+}
+#donatebutton {
+	text-align: center;
+}
+richlistbox#menu {
+	width: 25em;
+}
+richlistitem {
+	padding: 2px;
+	-moz-binding: url("chrome://menufilter/content/menu.xml#listitem");
+}
+richlistitem.menu {
+	-moz-binding: url("chrome://menufilter/content/menu.xml#listmenu");
+}
+richlistitem.separator {
+	-moz-binding: url("chrome://menufilter/content/menu.xml#listseparator");
+}
+richlistitem.separator hbox {
+	margin-top: 0.5em;
+	border-top: 1px windowtext solid;
+}
+richlistitem.hidden {
+	color: graytext;
+}
+richlistitem.hidden.separator hbox {
+	border-top: 1px graytext solid;
+}
+.eyeball {
+	width: 16px;
+	height: 16px;
+	list-style-image: url("chrome://menufilter/content/eyeball.svg");
+	-moz-image-region: rect(0, 32px, 32px, 0);
+	background-size: 16px auto;
+	-moz-margin-end: 4px;
+}
+.hidden .eyeball {
+	-moz-image-region: rect(0, 64px, 32px, 32px);
+}
+.menuarrow {
+	width: 16px;
+	height: 16px;
+	list-style-image: url("chrome://menufilter/content/arrow.svg");
+	-moz-image-region: rect(0, 16px, 16px, 0);
+}
+.hidden .menuarrow {
+	-moz-image-region: rect(0, 32px, 16px, 16px);
+}

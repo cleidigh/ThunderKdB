@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<!DOCTYPE dialog>
+<dialog id="tblatex-prefs"
+  title="TBLaTeX options"
+  buttons="accept"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+>
+  <script type="application/javascript" src="chrome://tblatex/content/options.js" />
+ 
+  <vbox>
+    <hbox>
+      <label control="latex_textbox" value="Path to latex executable" />
+      <textbox preference="tblatex.latex_path" id="latex_textbox" />
+      <button label="Browse..." oncommand="pick_file(document.getElementsByTagName('textbox')[0], 'latex');" />
+    </hbox>
+    <hbox>
+      <label control="dvipng_textbox" value="Path to dvipng executable" />
+      <textbox preference="tblatex.dvipng_path" id="dvipng_textbox" />
+      <button label="Browse..." oncommand="pick_file(document.getElementsByTagName('textbox')[1], 'dvipng');" />
+    </hbox>
+    <hbox>
+      <label control="dpi_textbox" value="Resolution (dpi)" />
+      <textbox preference="tblatex.dpi" id="dpi_textbox" />
+      <spacer />
+    </hbox>
+    <hbox>
+      <label control="log_checkbox" value="Generate a log report" />
+      <checkbox preference="tblatex.log" id="log_checkbox" />
+      <spacer />
+    </hbox>
+    <hbox>
+      <label control="debug_checkbox" value="Generate debug info" />
+      <checkbox preference="tblatex.debug" id="debug_checkbox" />
+      <spacer />
+    </hbox>
+    <label style="text-decoration: underline; color: navy; margin-top: 2em;
+      cursor: pointer" value="Open the autodetection dialog"
+      onclick="open_autodetect();" />
+  </vbox>
+  
+  <vbox>
+    <hbox>
+      <label control="template_textbox" value="Template to use to generate LaTeX parts "/>
+      <label style="text-decoration: underline; color: navy; cursor: pointer" value="Help ?"
+        onclick="window.openDialog('chrome://tblatex/content/help.html', '',
+          'all,chrome,dialog=no,status,toolbar,width=640,height=480');" />
+    </hbox>
+    <html:textarea preference="tblatex.template" id="template_textbox" multiline="true"
+      rows="12" />
+  </vbox>
+
+  <script
+     src="chrome://global/content/preferencesBindings.js"
+     type="application/javascript"/>
+
+  <script
+    src="chrome://tblatex/content/preferences.js"
+     type="application/javascript"/>
+
+</dialog>

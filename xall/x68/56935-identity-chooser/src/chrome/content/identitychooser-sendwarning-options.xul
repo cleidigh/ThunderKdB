@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<!DOCTYPE dialog [
+  <!ENTITY % translationsDTD SYSTEM "chrome://identitychooser/locale/translations.dtd">
+  %translationsDTD;
+]>
+
+<dialog id="identitychooser-sendwarning" title="&pref.sendwarning-options-dialog.title;"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        persist="screenX screenY"
+        screenX="50"
+        screenY="50"
+        onload="org.janek.identitychooser_sendwarning_options.onLoad();"
+        ondialogaccept="return org.janek.identitychooser_sendwarning_options.onCloseOK();"
+        ondialogcancel="return org.janek.identitychooser_sendwarning_options.onCloseCancel();">
+
+  <script src="identitychooser-prefshelper.js"/>
+  <script src="identitychooser-sendwarning-options.js"/>
+
+  <dialogheader title="&pref.sendwarning-options-dialog.header;" description=""/>
+
+    <radiogroup id="identitychooser-warn-group">
+      <radio id="identitychooser-warn-always"
+             label="&pref.sendwarning-options-warn-always-radio.label;"/>
+      <radio id="identitychooser-warn-addressbook" label="&pref.sendwarning-options-warn-abook-radio.label;"/>
+      <hbox><spacer width="50px"/>
+      <menulist id="identitychooser-warn-abooklist" disabled="true">
+        <menupopup id="identitychooser-warn-abook-popup">
+          <!-- Addressbooks added at runtime -->
+        </menupopup>
+      </menulist>
+      </hbox>
+    </radiogroup>
+    <spacer height="20px"/>
+</dialog>

@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "author": "Andrew Hart",
+  "version": "2.0",
+  "default_locale": "en",
+  "applications": {
+    "gecko": {
+      "id": "keynav@andrew.hart",
+      "strict_min_version": "68.0"
+    }
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://keynav/content/options.xul",
+      "open_in_tab": false
+    }
+  }
+}

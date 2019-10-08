@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<?xml-stylesheet href="chrome://identitychooser/skin/identitychooser.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % brandDTD SYSTEM "chrome://global/locale/brand.dtd" >
+  %brandDTD;
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd" >
+  %messengerDTD;
+
+  <!ENTITY % msgHdrViewDTD SYSTEM "chrome://messenger/locale/msgHdrViewOverlay.dtd">
+  %msgHdrViewDTD;
+]>
+
+<overlay id="identitychooser"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script src="identitychooser-prefshelper.js"/>
+  <script src="identitychooser-identitieshelper.js"/>
+  <script src="identitychooser-mailtohelper.js"/>
+  <script src="identitychooser-buttonhelper.js"/>
+  <script src="identitychooser.js"/>
+
+  <commandset>
+    <command id="identitychooser-open-new-msg-popup"
+             oncommand="org.janek.identitychooser.openNewMessagePopup();"/>
+    <command id="identitychooser-open-forward-popup"
+             oncommand="org.janek.identitychooser.openForwardPopup();"/>
+    <command id="identitychooser-open-reply-popup"
+             oncommand="org.janek.identitychooser.openReplyPopup();"/>
+    <command id="identitychooser-open-replyall-popup"
+             oncommand="org.janek.identitychooser.openReplyAllPopup();"/>
+    <command id="identitychooser-open-replylist-popup"
+             oncommand="org.janek.identitychooser.openReplyList();"/>
+    <command id="identitychooser-open-edit-as-new-popup"
+             oncommand="org.janek.identitychooser.openMessageEditAsNewPopup();"/>
+  </commandset>
+
+  <!-- The addon overlays a couple of toolbar buttons.
+
+       This happens in Javascript in order to enable/disable overlaying
+       via prefs. -->
+</overlay>
