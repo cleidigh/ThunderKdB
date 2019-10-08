@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "URL Link",
+    "version": "2.6",
+    "description": "Allow navigation to broken/unlinked URLs",
+    "author": "Neil Bird",
+    "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/url-link/",
+    "icons": {
+        "48": "icons/urllink-48.png",
+        "96": "icons/urllink-96.png"
+    },
+
+    "applications": {
+        "gecko": {
+            "id": "{139a120b-c2ea-41d2-bf70-542d9f063dfd}",
+            "strict_min_version": "68.0"
+        }
+    },
+
+    "legacy": {
+        "type": "xul",
+        "options": {
+            "page": "chrome://urllink/content/urllinkPrefs.xul"
+        }
+    }
+}

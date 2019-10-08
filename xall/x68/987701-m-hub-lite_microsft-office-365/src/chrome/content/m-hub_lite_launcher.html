@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  
+  	<title>M-Hub Lite Tab Launcher</title>
+  	<link rel="icon" type="image/png" sizes="32x32" href="img/ghub-logo.png">
+    <meta charset="utf-8">
+    
+    <style>
+	* {
+		box-sizing: border-box !important;
+	}
+	a {
+		cursor: pointer;
+	}
+	a.no_link {
+		cursor: default !important;
+	}
+    #mhublite_preferences_title{
+		width: 87vw;
+		min-width: 400px;
+		max-width: 740px;
+		margin: 0 auto;
+    	font-size: 2em;
+    }
+    #mhublite_preferences_title img{
+    	position: relative;
+    	top: 4px;
+    	width: 32px;
+    }
+    .mhublite_section{
+    	clear: both;
+    	width: 80vw;
+    	min-width: 350px;
+    	max-width: 700px;
+    	margin: 0 auto;
+    	margin-top: 50px;
+    	border: 2px solid #ccc;
+    	background: #f7f7f7;
+    	padding: 0 10px 20px 50px;
+    	font-size: 1.0em;
+    	line-height: 150%;
+		text-align: center;
+    }
+    .mhublite_section .mhublite_section_title{
+    	clear: both;
+    	width: 275px;
+    	margin: -12px 0 20px 25px;
+    	text-align: center;
+    	border: 2px solid #ccc;
+    	background: #fff;
+    	font-weight: bold;
+    	font-size: 1.1em;
+    }
+    .mhublite_section .mhublite_section_line{
+    	display: inline-block;
+    }
+	.mhublite_section .mhublite_section_line img {
+		max-height: 15px;
+		margin: 5px 0 0 0;
+	}
+    .mhublite_section label{
+    	width: 1px;
+    	white-space: nowrap;
+    	padding: 0 10px 0 0;
+    }
+    .mhublite_section input[type="text"]{
+    	width: 100%;
+    }
+    .mhublite_button{
+    	font-size: 0.9em;
+		font-weight: bold;
+    	padding: 10px;
+    	background-color: #4CAF50;
+    	color: #ffffff;
+    	cursor: pointer;
+    	outline: none;
+    	margin-top: 20px;
+    }
+    .mhublite_button.mhublite_reset_button{
+    	background-color: #f44336;
+    	margin-top: 0px;
+    }
+	@media only screen and (min-width : 1px) {
+		.mhublite_section{
+			text-align: left;
+		}
+		.mhublite_section .mhublite_section_line{
+			width: 100%;
+			text-align: left;
+			padding: 5px 0 5px 0;
+		}
+	}
+	@media only screen and (min-width : 768px) {
+		.mhublite_section{
+			text-align: center;
+		}
+		.mhublite_section .mhublite_section_line{
+			width: 30%;
+			text-align: left;
+			padding: 5px 0 5px 0;
+		}
+	}
+    </style>
+	
+  </head>
+  <body>
+  
+  	<div id="mhublite_preferences_title">
+  		<img src="img/mhub-logo.png" alt="" /> M-Hub Lite Tab Launcher
+  	</div>
+  	
+  	<div class="mhublite_section">
+  		<div class="mhublite_section_title">Microsoft Office 365 Services</div>
+  		
+  		<div class="mhublite_section_line"><a id="microsoft_calendar_link"><img src="img/microsoft_calendar_logo.png" alt="" /> Calendar</a></div>
+  		<div class="mhublite_section_line"><a id="microsoft_people_link"><img src="img/microsoft_people_logo.png" alt="" /> People</a></div>
+  		<div class="mhublite_section_line"><a id="microsoft_word_link"><img src="img/microsoft_word_logo.png" alt="" /> Word</a></div>
+  		<div class="mhublite_section_line"><a id="microsoft_onedrive_link"><img src="img/microsoft_onedrive_logo.png" alt="" /> OneDrive</a></div>
+  		<div class="mhublite_section_line"><a id="microsoft_bing_link"><img src="img/microsoft_bing_logo.png" alt="" /> Bing</a></div>
+  		<div class="mhublite_section_line"><a id="microsoft_excel_link"><img src="img/microsoft_excel_logo.png" alt="" /> Excel</a></div>
+  		<div class="mhublite_section_line"><a id="microsoft_powerpoint_link"><img src="img/microsoft_powerpoint_logo.png" alt="" /> PowerPoint</a></div>
+  		<div class="mhublite_section_line"></div>
+  		<div class="mhublite_section_line"></div>
+  	</div>
+  	
+  	<div class="mhublite_section">
+  		<div class="mhublite_section_title">Settings</div>
+  		
+  		<div class="mhublite_section_line"><a id="mhublite_microsoftAddAccountURL"><img src="img/add_account_128.png" alt="" /> Add Microsoft Account</a></div>
+  		<div class="mhublite_section_line"><a id="mhublite_microsoftLogoutURL"><img src="img/logout_logo.png" alt="" /> Logout of Microsoft</a></div>
+  		<div class="mhublite_section_line"><a id="mhublite_optionsURL"><img src="img/icon64.png" alt="" /> M-Hub Options</a></div>		
+  	</div>
+  	
+  	<script src="launcher.js" type="text/javascript"></script>
+  
+  </body>
+  </html>

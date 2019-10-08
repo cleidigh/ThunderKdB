@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id$ -->
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Initial Developer of the Original Code is Neil Bird.
+   - Portions created by the Initial Developer are Copyright (C) 2006
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!-- <!DOCTYPE window SYSTEM "chrome://urllink/locale/urllink.dtd"> -->
+<!DOCTYPE window [
+<!ENTITY % urllinkDTD SYSTEM "chrome://urllink/locale/urllink.dtd" >
+%urllinkDTD;
+]>
+
+<window id="urllink-prefs"
+    class="dialog"
+    title="&urllink-prefs-title;"
+    orient="vertical"
+    autostretch="always"
+    modal="no"
+    resizable="yes"
+    onload="fnxweb.urllink.loadPrefs(); sizeToContent();"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://urllink/content/urllinkCommon.js"/>
+    <script type="application/x-javascript" src="chrome://urllink/content/urllinkPrefs.js"/>
+
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="urllink-strings" src="chrome://urllink/locale/urllink.properties"/>
+    </stringbundleset>
+
+    <vbox>
+        <tabbox flex="1">
+            <tabs>
+                <tab label="&urllink-prefs-editmenu;"/>
+                <tab label="&urllink-prefs-editsandr;"/>
+            </tabs>
+            <tabpanels flex="1">
+                <tabpanel flex="1">
+                    <hbox flex="1">
+                        <vbox>
+                            <image src="chrome://urllink/content/urllink.png" width="32" height="32"/>
+                        </vbox>
+                        <vbox flex="1">
+                            <listbox id="urllinkMenuItems" tooltiptext="&urllink-prefs-list-tip;">
+                            </listbox>
+                            <separator class="small"/>
+                            <hbox>
+                                <description value="&urllink-prefs-newentry;:"/>
+                                <textbox id="urllinkNewMenuItem" onchange="fnxweb.urllink.addItem(fnxweb.urllink.menuitemsListbox,fnxweb.urllink.newmenuitembox,0);"
+                                    flex="1" tooltiptext="&urllink-prefs-entry-tip;"/>
+                            </hbox>
+                        </vbox>
+                        <vbox>
+                            <button label="&urllink-prefs-up;" oncommand="fnxweb.urllink.itemUp(fnxweb.urllink.menuitemsListbox);"/>
+                            <button label="&urllink-prefs-down;" oncommand="fnxweb.urllink.itemDown(fnxweb.urllink.menuitemsListbox);"/>
+                            <spacer height="20px"/>
+                            <button label="&urllink-prefs-defaults;" oncommand="fnxweb.urllink.setMenuDefaults();"/>
+                            <spacer height="20px"/>
+                            <button label="&urllink-prefs-delete;" oncommand="fnxweb.urllink.deleteItem(fnxweb.urllink.menuitemsListbox);"/>
+                            <button label="&urllink-prefs-add;" oncommand="fnxweb.urllink.addItem(fnxweb.urllink.menuitemsListbox,fnxweb.urllink.newmenuitembox,1);"/>
+                        </vbox>
+                    </hbox>
+                </tabpanel>
+                <tabpanel flex="1">
+                    <hbox flex="1">
+                        <vbox>
+                            <image src="chrome://urllink/content/urllink.png" width="32" height="32"/>
+                        </vbox>
+                        <vbox flex="1">
+                            <listbox id="urllinkSandrItems" tooltiptext="&urllink-prefs-sandr-list-tip;"/>
+                            <separator class="small"/>
+                            <hbox>
+                                <description value="&urllink-prefs-newentry;:"/>
+                                <textbox id="urllinkNewSandrItem" onchange="fnxweb.urllink.addItem(fnxweb.urllink.sandritemsListbox,fnxweb.urllink.newsandritembox,0);"
+                                    flex="1" tooltiptext="&urllink-prefs-sandr-entry-tip;"/>
+                            </hbox>
+                        </vbox>
+                        <vbox>
+                            <button label="&urllink-prefs-up;" oncommand="fnxweb.urllink.itemUp(fnxweb.urllink.sandritemsListbox);"/>
+                            <button label="&urllink-prefs-down;" oncommand="fnxweb.urllink.itemDown(fnxweb.urllink.sandritemsListbox);"/>
+                            <spacer height="20px"/>
+                            <button label="&urllink-prefs-defaults;" oncommand="fnxweb.urllink.setSandrDefaults();"/>
+                            <spacer height="20px"/>
+                            <button label="&urllink-prefs-delete;" oncommand="fnxweb.urllink.deleteItem(fnxweb.urllink.sandritemsListbox);"/>
+                            <button label="&urllink-prefs-add;" oncommand="fnxweb.urllink.addItem(fnxweb.urllink.sandritemsListbox,fnxweb.urllink.newsandritembox,1);"/>
+                        </vbox>
+                    </hbox>
+                </tabpanel>
+            </tabpanels>
+        </tabbox>
+
+        <hbox pack="start">
+            <vbox pack="end">
+                <button label="&urllink-prefs-changelog;" oncommand="openDialog('chrome://urllink/content/urllinkChangelog.xul','URL Link','dialog=no,modal=no,resizable=yes,width=640,height=512');"/>
+            </vbox>
+            <vbox pack="end">
+                <checkbox id="urllinkTopmenu" label="&urllink-prefs-topmenu;" tooltiptext="&urllink-prefs-topmenu-tip;"/>
+                <checkbox id="urllinkNewWindow" label="&urllink-prefs-newwindow;" tooltiptext="&urllink-prefs-newwindow-tip;"/>
+                <checkbox id="urllinkForceSubmenu" label="&urllink-prefs-forcesubmenu;" tooltiptext="&urllink-prefs-forcesubmenu-tip;"/>
+                <groupbox>
+                    <caption label="&urllink-prefs-firefoxonly;"/>
+                    <radiogroup id="urllinkOpenOptions">
+                        <radio id="urllinkBothOptions" label="&urllink-prefs-bothoptions;"/>
+                        <radio id="urllinkHideTab" label="&urllink-prefs-hidetab;"/>
+                        <radio id="urllinkHideOpen" label="&urllink-prefs-hideopen;"/>
+                    </radiogroup>
+                </groupbox>
+            </vbox>
+        </hbox>
+
+        <hbox>
+            <hbox pack="start">
+                <button label="&urllink-prefs-help;" oncommand="openDialog('chrome://urllink/content/urllinkHelp.xul','URL Link','dialog=no,modal=no,resizable=yes,width=640,height=512');"/>
+            </hbox>
+            <spacer flex="1"/>
+            <hbox pack="end">
+                <button label="&urllink-prefs-cancel;" oncommand="window.close();"/>
+                <button label="&urllink-prefs-apply;" oncommand="fnxweb.urllink.setPrefs(0);"/>
+                <button label="&urllink-prefs-ok;" oncommand="fnxweb.urllink.setPrefs(1);"/>
+            </hbox>
+        </hbox>
+
+    </vbox>
+
+</window>
+<!-- vim: set ft=xml -->
