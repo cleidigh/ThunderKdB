@@ -7,7 +7,12 @@ var GitHub = require('github-api');
 var JSZip = require("jszip");
 const _7z = require('7zip-min');
 var extract = require('extract-zip')
-
+const {
+	parse,
+	stringify,
+	assign 
+  } = require('comment-json')
+   
 const repoRootDir = "https://github.com/cleidigh/ThunderKdB/tree/master";
 const rootDir = "C:/Dev/Thunderbird/ThunderKdB";
 const extGroupAllDir = 'xall';
@@ -450,7 +455,13 @@ async function getExtensionFiles(addon_identifier, index) {
 		console.debug('check versions');
 		if (ext_comp.mext && fs.existsSync(`${extRootDir}/src/manifest.json`)) {
 			// fs.removeSync(`${extRootDir}/src`);
-			let manifestJson = fs.readJSONSync(`${extRootDir}/src/manifest.json`, { throws: false });
+			let manifestJson = parse(fs.readFileSync(`${extRootDir}/src/manifest.json`).toString())
+
+			// let manifestJson = fs.readJSONSync(`${extRootDir}/src/manifest.json`, { throws: false });
+			if (manifestJson === null) {
+				console.debug(`Missing manifest file: ${extRootDir}/src/manifest.json`);
+				return 1;
+			}
 			console.debug('check legacy');
 			if (manifestJson.legacy !== undefined) {
 				console.debug('set legacy');
@@ -642,9 +653,10 @@ async function _7CmdSync(_7zCommand) {
 		// extsJson = extArray;
 		// try {
 		let p = [];
-		for (let index = 0; index < 10; index++) {
+		for (let index = 0; index < 67; index++) {
 			console.debug('GetIndex ' + index);
 			p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
+			// p.push(await getAll(extsJson, { start: 590 , end: 590 }));
 
 		}
 
