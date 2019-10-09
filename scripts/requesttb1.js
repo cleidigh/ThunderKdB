@@ -418,7 +418,9 @@ async function getExtensionFiles(addon_identifier, index) {
 
 		// return 1;
 
-
+		if (!ext_comp.comp68) {
+			return 1;
+		}
 		console.debug('CheckingFolder: ' + extRootDir);
 
 
