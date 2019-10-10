@@ -431,9 +431,9 @@ async function getExtensionFiles(addon_identifier, index) {
 		const extRootName = `${addon_identifier}-${ext.slug}`;
 		const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
 
-		// jfile = `${extRootDir}/${extRootName}-versions.json`;
-		// await writePrettyJSONFile(jfile, ext_versions);
-		// console.debug(`downloaded versions: ${extRootName} : ${ext_versions.length}`);
+		jfile = `${extRootDir}/${extRootName}-versions.json`;
+		await writePrettyJSONFile(jfile, ext_versions);
+		console.debug(`downloaded versions: ${extRootName} : ${ext_versions.length}`);
 
 		// return 1;
 
@@ -451,22 +451,22 @@ async function getExtensionFiles(addon_identifier, index) {
 		}
 		// console.debug('  Done');
 
-		// jfile = `${extRootDir}/${extRootName}.json`
-		// writePrettyJSONFile(jfile, ext)
+		jfile = `${extRootDir}/${extRootName}.json`
+		writePrettyJSONFile(jfile, ext)
 		console.debug(ext.slug);
 
 
-		// const xpiFileURL = ext.current_version.files[0].url;
-		// const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
+		const xpiFileURL = ext.current_version.files[0].url;
+		const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
 
-		// await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
-		// console.debug('Downloaded filename ' + xpiFileName);
-		// fs.ensureDirSync(`${extRootDir}/xpi`);
+		await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
+		console.debug('Downloaded filename ' + xpiFileName);
+		fs.ensureDirSync(`${extRootDir}/xpi`);
 
-		// if (fs.existsSync(`${extRootDir}/xpi`)) {
-		// 	fs.removeSync(`${extRootDir}/xpi`);
-		// 	console.debug('Removing: ' + `${extRootName}`);
-		// }
+		if (fs.existsSync(`${extRootDir}/xpi`)) {
+			fs.removeSync(`${extRootDir}/xpi`);
+			console.debug('Removing: ' + `${extRootName}`);
+		}
 
 
 		// if (fs.existsSync(`${extRootDir}/src`)) {
@@ -689,7 +689,7 @@ async function _7CmdSync(_7zCommand) {
 		// extsJson = extArray;
 		// try {
 		let p = [];
-		for (let index = 0; index < 20; index++) {
+		for (let index = 0; index < 67; index++) {
 			console.debug('GetIndex ' + index);
 			p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
 			// p.push(await getAll(extsJson, { start: 82 , end: 84 }));

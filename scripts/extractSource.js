@@ -206,7 +206,7 @@ let extsJson = fs.readJSONSync(extsAllJsonFileName);
 // walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}`, { extsJson: extsJson, start: 0, end: 112, checkOnly: false });
 // walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}`, { extsJson: extsJson });
 // walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTBOtherDir}`, { extsJson: extsJson });
-walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTBOtherDir}`, { extsJson: extsJson, start: 0, end: 20 });
+walkFolders(`${rootDir}/${extGroupAllDir}/${extGroupTBOtherDir}`, { extsJson: extsJson, start: 0, end: 10 });
 
 // using the async function
 // repo_status(`${rootDir}`).then(status => console.log(status));
