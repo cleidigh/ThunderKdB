@@ -7,6 +7,8 @@ var GitHub = require('github-api');
 var JSZip = require("jszip");
 const _7z = require('7zip-min');
 var extract = require('extract-zip')
+const xml_util = require('./xml-util.js');
+
 const {
 	parse,
 	stringify,
@@ -238,7 +240,12 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 
 	extSummaryFile = extSummaryFile.replace('__ext-authors__', ext_authors);
 	extSummaryFile = extSummaryFile.replace('__ext-users__', extJson.average_daily_users);
-	extSummaryFile = extSummaryFile.replace('__ext-license__', extJson.current_version.license.name["en-US"]);
+
+	try {
+		extSummaryFile = extSummaryFile.replace('__ext-license__', extJson.current_version.license.name["en-US"]);
+	} catch (error) {
+		extSummaryFile = extSummaryFile.replace('__ext-license__', 'None');
+	}
 
 	fs.writeFileSync(`${extSummaryFileName}`, extSummaryFile);
 	console.debug('summary done');
@@ -253,7 +260,7 @@ function isCompatible(checkVersion, minv, maxv) {
 
 function compatibilityCheck(extJson, options) {
 
-	// console.debug(`CompatibilityCheck: ${extJson.slug} `);
+	console.debug(`CompatibilityCheck: ${extJson.slug} `);
 	let compSet = {};
 	let v_min = `${extJson.current_version.compatibility.thunderbird.min}`;
 	let v_max = `${extJson.current_version.compatibility.thunderbird.max}`;
@@ -318,15 +325,27 @@ function compatibilityCheck(extJson, options) {
 	}
 
 	console.debug('CurrentVersionComp: ' + JSON.stringify(compSet));
-	if (!options.currentVersionOnly && (!compSet.comp60 || !compSet.comp68)) {
+	if (!options.currentVersionOnly && !(compSet.comp60 && compSet.comp68)) {
 		let pv_compSet = {};
 
 		for (let index = 1; index < options.ext_versions.length; index++) {
 			const ext_ver = options.ext_versions[index];
+			if (typeof ext_ver.compatibility.thunderbird !== 'object') {
+				console.debug('no Thunderbird compatibility');
+				continue;
+			}
 			let v_min = `${ext_ver.compatibility.thunderbird.min}`;
 			let v_max = `${ext_ver.compatibility.thunderbird.max}`;
+			
 			let mext = ext_ver.files[0].is_webextension;
 			let ver_date = ext_ver.files[0].created;
+			if ((new Date(ver_date)) < (new Date("2017-01-01"))) {
+				break;
+			}
+
+			if (extJson.slug === 'shrunked-image-resizer') {
+			console.debug(`${extJson.slug} : vMin: ${v_min} vMax: ${v_max} ${index}`);
+			}
 
 			const p = /[\d\.]+/;
 			let v_max_num = 0;
@@ -368,7 +387,7 @@ function compatibilityCheck(extJson, options) {
 		console.debug(compSet2);
 	}
 
-	console.debug(`${extJson.slug} comp: ` + JSON.stringify(compSet));
+	console.debug(`CompatibilityDone: ${extJson.slug} comp: ` + JSON.stringify(compSet));
 
 	return compSet;
 }
@@ -418,9 +437,10 @@ async function getExtensionFiles(addon_identifier, index) {
 
 		// return 1;
 
-		if (!ext_comp.comp68) {
-			return 1;
-		}
+		// if (!ext_comp.comp68) {
+		// 	return 1;
+		// }
+		
 		console.debug('CheckingFolder: ' + extRootDir);
 
 
@@ -467,14 +487,28 @@ async function getExtensionFiles(addon_identifier, index) {
 			console.debug('check legacy');
 			if (manifestJson.legacy !== undefined) {
 				console.debug('set legacy');
-				// let legacy = JSON.stringify(manifestJson.legacy);
+				let legacy = JSON.stringify(manifestJson.legacy);
 				ext_comp.legacy = true;
-				ext_comp.legacy_type = (typeof manifestJson.legacy.type === 'string') ? manifestJson.legacy.type : 'restart';
-				console.debug('ReadingManifest: ' + `${extRootName} : ${manifestJson.legacy.type}`);
+				ext_comp.legacy_type = (typeof manifestJson.legacy.type === 'string') ? manifestJson.legacy.type : 'xul';
+				console.debug('ReadingManifest: ' + `${extRootName} : ${manifestJson.legacy.legacy_type}`);
 				
 			} else {
 				console.debug('Manifest NoLegacy');
 			}
+		} else if (fs.existsSync(`${extRootDir}/src/install.rdf`)) {
+			console.debug('CheckingInstall:');
+			const installRDFExtType = xml_util.rdfGetValue(`${extRootDir}/src/install.rdf`, 'Description[\"em:type\"]');
+			console.debug('type '+installRDFExtType);
+			const installRDFExtBootstrap = xml_util.rdfGetValue(`${extRootDir}/src/install.rdf`, 'Description[\"em:bootstrap\"]');
+			console.debug('type '+installRDFExtBootstrap);
+			if (installRDFExtType === 2 && installRDFExtBootstrap) {
+				ext_comp.legacy = true;
+				ext_comp.legacy_type = 'bootstrap';
+			} else {
+				ext_comp.legacy = true;
+				ext_comp.legacy_type = 'xul';
+			}
+			console.debug('ReadingInstall: ' + `${extRootName} : ${ext_comp.legacy.legacy_type}`);
 		}
 
 			// _7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
@@ -655,10 +689,10 @@ async function _7CmdSync(_7zCommand) {
 		// extsJson = extArray;
 		// try {
 		let p = [];
-		for (let index = 0; index < 67; index++) {
+		for (let index = 0; index < 20; index++) {
 			console.debug('GetIndex ' + index);
 			p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
-			// p.push(await getAll(extsJson, { start: 590 , end: 590 }));
+			// p.push(await getAll(extsJson, { start: 82 , end: 84 }));
 
 		}
 

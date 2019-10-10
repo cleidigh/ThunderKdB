@@ -6,6 +6,7 @@ const path = require('path');
 var GitHub = require('github-api');
 var JSZip = require("jszip");
 const _7z = require('7zip-min');
+const xml_util = require('./xml-util.js');
 
 
 // Create directory array
@@ -65,13 +66,13 @@ function genExtensionListFromFolders() {
 
 function genExtensionListFromJson(extsJson) {
 
-	// let listBaseName = 'extension-list-all';
+	let listBaseName = 'extension-list-all';
 	// let listBaseName = 'extension-list-tb68';
-	let listBaseName = 'extension-list-tb60';
+	// let listBaseName = 'extension-list-tb60';
 
-	// let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
+	let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
 	// let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
-	let extsListFile = fs.readFileSync('extension-list-tb60-templ.md', 'utf8');
+	// let extsListFile = fs.readFileSync('extension-list-tb60-templ.md', 'utf8');
 
 	let extRows = "";
 	let rows = 0;
@@ -115,8 +116,8 @@ function genExtensionListFromJson(extsJson) {
 	extsListFile = extsListFile.replace('__ext-md-table__', extRows);
 	console.debug(extsListFile);
 	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/${listBaseName}.md`, extsListFile);
-	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
-	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60.md`, extsListFile);
+	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
+	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60.md`, extsListFile);
 
 	console.debug('Done');
 }
@@ -203,7 +204,7 @@ function createExtMDTableRow(extJson) {
 		if (compSet.mext == true) {
 			comp_badges += " " + cBadge_mx;
 		}
-		if (compSet.legacy == true && (compSet.legacy_type == 'restart' || compSet.legacy_type === undefined)) {
+		if (compSet.legacy == true && (compSet.legacy_type == 'xul' || compSet.legacy_type === undefined)) {
 			comp_badges += " " + cBadge_legacy_rs;
 		} else if (compSet.legacy == true && compSet.legacy_type == 'bootstrap') {
 			comp_badges += " " + cBadge_legacy_bs;
@@ -234,9 +235,9 @@ function createExtMDTableRow(extJson) {
 	// }
 
 	// target 60
-	if ( !(comp_badges.includes(cBadge_tb60)) || comp_badges.includes(cBadge_tb68))  {
-		return "";
-	}
+	// if ( !(comp_badges.includes(cBadge_tb60)) || comp_badges.includes(cBadge_tb68))  {
+	// 	return "";
+	// }
 
 	// if ( !(comp_badges.includes(cBadge_tb68) ) ) {
 	// 	return "";
