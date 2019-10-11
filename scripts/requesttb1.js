@@ -202,7 +202,7 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 		return 0;
 	}
 
-	console.debug('Generate...');
+	console.debug('Generate... '+extSummaryFileName);
 	let extSummaryFile = fs.readFileSync('extension-details-templ.html', 'utf8');
 
 	const default_locale = extJson.default_locale;
@@ -431,6 +431,7 @@ async function getExtensionFiles(addon_identifier, index) {
 		const extRootName = `${addon_identifier}-${ext.slug}`;
 		const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
 
+		console.debug(`Save versions, ${extRootDir}`);
 		jfile = `${extRootDir}/${extRootName}-versions.json`;
 		await writePrettyJSONFile(jfile, ext_versions);
 		console.debug(`downloaded versions: ${extRootName} : ${ext_versions.length}`);
@@ -463,10 +464,10 @@ async function getExtensionFiles(addon_identifier, index) {
 		console.debug('Downloaded filename ' + xpiFileName);
 		fs.ensureDirSync(`${extRootDir}/xpi`);
 
-		if (fs.existsSync(`${extRootDir}/xpi`)) {
-			fs.removeSync(`${extRootDir}/xpi`);
-			console.debug('Removing: ' + `${extRootName}`);
-		}
+		// if (fs.existsSync(`${extRootDir}/xpi`)) {
+		// 	fs.removeSync(`${extRootDir}/xpi`);
+		// 	console.debug('Removing: ' + `${extRootName}`);
+		// }
 
 
 		// if (fs.existsSync(`${extRootDir}/src`)) {
@@ -474,9 +475,10 @@ async function getExtensionFiles(addon_identifier, index) {
 		// 	console.debug('Removing: ' + `${extRootName}`);
 		// }
 
-		console.debug('check versions');
+		console.debug('check versions: '+extRootDir);
 		if (ext_comp.mext && fs.existsSync(`${extRootDir}/src/manifest.json`)) {
 			// fs.removeSync(`${extRootDir}/src`);
+			console.debug('Read: manifest ');
 			let manifestJson = parse(fs.readFileSync(`${extRootDir}/src/manifest.json`).toString())
 
 			// let manifestJson = fs.readJSONSync(`${extRootDir}/src/manifest.json`, { throws: false });

@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5277/5277500.png?modified=1384763535"
         }
     ],
-    "average_daily_users": 4,
+    "average_daily_users": 3,
     "categories": {
         "firefox": [
             "alerts-updates",
@@ -20,16 +20,16 @@
     "current_version": {
         "id": 107195,
         "compatibility": {
-            "thunderbird": {
-                "max": "31.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "3.0"
             },
             "seamonkey": {
                 "max": "2.25",
                 "min": "2.0"
             },
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "31.*",
                 "min": "3.0"
             }
         },
@@ -201,5 +201,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bnr-exchange-rates/",
-    "weekly_downloads": 23
+    "weekly_downloads": 23,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

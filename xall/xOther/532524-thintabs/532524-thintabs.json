@@ -11,25 +11,25 @@
     ],
     "average_daily_users": 13,
     "categories": {
+        "thunderbird": [
+            "appearance"
+        ],
         "firefox": [
             "appearance",
             "tabs"
-        ],
-        "thunderbird": [
-            "appearance"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1933968,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "4.0"
-            },
             "thunderbird": {
                 "max": "38.*",
                 "min": "5.0"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thintabs/versions/1933968",
@@ -247,5 +247,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thintabs/",
-    "weekly_downloads": 29
+    "weekly_downloads": 29,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

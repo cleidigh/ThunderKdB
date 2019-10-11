@@ -19,16 +19,16 @@
     "current_version": {
         "id": 61677,
         "compatibility": {
-            "thunderbird": {
-                "max": "3.0a1",
+            "firefox": {
+                "max": "56.*",
                 "min": "1.0"
             },
             "seamonkey": {
                 "max": "2.0a1",
                 "min": "1.0"
             },
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "3.0a1",
                 "min": "1.0"
             }
         },
@@ -220,5 +220,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pong-multiplayer/",
-    "weekly_downloads": 22
+    "weekly_downloads": 22,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

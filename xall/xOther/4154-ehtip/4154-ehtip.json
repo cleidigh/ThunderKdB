@@ -11,24 +11,24 @@
     ],
     "average_daily_users": 8,
     "categories": {
+        "firefox": [
+            "language-support"
+        ],
         "thunderbird": [
             "language-support",
             "message-and-news-reading"
-        ],
-        "firefox": [
-            "language-support"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1376702,
         "compatibility": {
-            "thunderbird": {
-                "max": "15.*",
-                "min": "1.5"
-            },
             "firefox": {
                 "max": "56.*",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "15.*",
                 "min": "1.5"
             }
         },
@@ -236,5 +236,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/ehtip/",
-    "weekly_downloads": 105
+    "weekly_downloads": 105,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

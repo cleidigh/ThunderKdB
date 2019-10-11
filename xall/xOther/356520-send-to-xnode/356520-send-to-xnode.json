@@ -20,13 +20,13 @@
     "current_version": {
         "id": 1308116,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "3.6"
-            },
             "thunderbird": {
                 "max": "31.*",
                 "min": "5.0"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "3.6"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-to-xnode/versions/1308116",
@@ -169,5 +169,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-to-xnode/",
-    "weekly_downloads": 21
+    "weekly_downloads": 21,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

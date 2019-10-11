@@ -11,32 +11,32 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "thunderbird": [
-            "privacy-and-security"
+        "firefox": [
+            "privacy-security",
+            "web-development"
         ],
         "seamonkey": [
             "privacy-and-security",
             "web-and-developer-tools"
         ],
-        "firefox": [
-            "privacy-security",
-            "web-development"
+        "thunderbird": [
+            "privacy-and-security"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1484177,
         "compatibility": {
-            "thunderbird": {
-                "max": "24.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "24.0a1"
             },
             "seamonkey": {
                 "max": "2.21.*",
                 "min": "2.21a1"
             },
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "24.*",
                 "min": "24.0a1"
             }
         },
@@ -496,5 +496,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/key-manager/",
-    "weekly_downloads": 71
+    "weekly_downloads": 71,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

@@ -1,0 +1,112 @@
+{
+    "id": 987702,
+    "authors": [
+        {
+            "id": 11612952,
+            "name": "Jan Kiszka",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jan-kiszka/",
+            "username": "jan-kiszka",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/11/11612/11612952.png?modified=1430013327"
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2472730,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-word-wrap/versions/2472730",
+        "files": [
+            {
+                "id": 1015826,
+                "created": "2019-10-08T20:00:21Z",
+                "hash": "sha256:8858002d6769a412df2782b049007e9b9d29cc591b8643c94fab3028a72a0be4",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 15265,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015826/toggle_word_wrap-2.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2019-10-09T12:09:41Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-word-wrap/versions/2.0",
+        "version": "2.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "In the message composition window of Thunderbird, it comes in handy when inserting long text lines which should not get wrapped in the final message (such as log file entries, or diffs inserted into the message body). It only has an effect when using plain text mode for composition - this is a per-account setting which must be configured by disabling Composition &amp; Addressing → Composition → Compose messages in HTML format.\n\nUnchecking Enable Word Wrap in the Options menu (or pressing the keyboard shortcut) will temporarily turn off word wrapping for the current message - lines will take up the whole width of the composer window, and no line breaks will get added to the outgoing message (with the exception of \"hard\" line breaks inserted manually).\n\nChecking Enable Word Wrap will enable word wrapping again and set it to the standard width (which is modifiable through the mailnews.wraplength preference in the Config Editor, the default is 72 characters)."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-word-wrap/edit",
+    "guid": "togglewordwrap@kiszka.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://git.kiszka.org/togglewordwrap.git"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-10-09T12:09:41Z",
+    "name": {
+        "en-US": "Toggle Word Wrap"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-word-wrap/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987702",
+    "slug": "toggle-word-wrap",
+    "status": "public",
+    "summary": {
+        "en-US": "Toggle word wrapping and &lt;PRE&gt; element wrapping in the message composition and HTML display windows, respectively. Based on original version by Kaspar Brand."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-word-wrap/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true
+        }
+    }
+}

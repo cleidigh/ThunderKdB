@@ -9,35 +9,35 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 417,
+    "average_daily_users": 408,
     "categories": {
-        "thunderbird": [
-            "miscellaneous"
+        "firefox": [
+            "download-management",
+            "photos-music-videos"
         ],
         "seamonkey": [
             "downloading-and-file-management",
             "photos-and-media"
         ],
-        "firefox": [
-            "download-management",
-            "photos-music-videos"
+        "thunderbird": [
+            "miscellaneous"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1942423,
         "compatibility": {
-            "thunderbird": {
-                "max": "52.0",
-                "min": "0.3"
+            "firefox": {
+                "max": "56.*",
+                "min": "4.0"
             },
             "seamonkey": {
                 "max": "*",
                 "min": "2.0"
             },
-            "firefox": {
-                "max": "56.*",
-                "min": "4.0"
+            "thunderbird": {
+                "max": "52.0",
+                "min": "0.3"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/download-status-bar/versions/1942423",
@@ -264,5 +264,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/download-status-bar/",
-    "weekly_downloads": 637
+    "weekly_downloads": 637,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

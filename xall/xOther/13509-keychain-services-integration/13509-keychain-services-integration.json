@@ -11,30 +11,30 @@
     ],
     "average_daily_users": 8,
     "categories": {
-        "thunderbird": [
-            "privacy-and-security"
+        "firefox": [
+            "privacy-security"
         ],
         "seamonkey": [
             "privacy-and-security"
         ],
-        "firefox": [
-            "privacy-security"
+        "thunderbird": [
+            "privacy-and-security"
         ]
     },
     "contributions_url": "",
     "current_version": {
         "id": 1950268,
         "compatibility": {
-            "thunderbird": {
-                "max": "49.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "32.0a1"
             },
             "seamonkey": {
                 "max": "2.35.*",
                 "min": "2.29a1"
             },
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "49.*",
                 "min": "32.0a1"
             }
         },
@@ -135,5 +135,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/keychain-services-integration/",
-    "weekly_downloads": 29
+    "weekly_downloads": 29,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

@@ -9,31 +9,31 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 96,
+    "average_daily_users": 95,
     "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ],
         "firefox": [
             "search-tools",
             "web-development"
-        ],
-        "thunderbird": [
-            "message-and-news-reading"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1505140,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "18.0"
+            "thunderbird": {
+                "max": "20.*",
+                "min": "16.0"
             },
             "seamonkey": {
                 "max": "2.2",
                 "min": "2.2"
             },
-            "thunderbird": {
-                "max": "20.*",
-                "min": "16.0"
+            "firefox": {
+                "max": "56.*",
+                "min": "18.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/track-package/versions/1505140",
@@ -143,5 +143,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/track-package/",
-    "weekly_downloads": 39
+    "weekly_downloads": 39,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

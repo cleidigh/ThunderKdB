@@ -9,26 +9,26 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 65,
+    "average_daily_users": 69,
     "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ],
         "firefox": [
             "privacy-security",
             "social-communication"
-        ],
-        "thunderbird": [
-            "miscellaneous"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1265379,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
-            },
             "thunderbird": {
                 "max": "9.*",
+                "min": "1.5"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "1.5"
             }
         },
@@ -190,5 +190,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/extension-list-dumper/",
-    "weekly_downloads": 29
+    "weekly_downloads": 29,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

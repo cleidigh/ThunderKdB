@@ -15,7 +15,7 @@ body {
 	<img class="banner-image" src='/ThunderKdB/docs/images/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" />
 	<label class="banner-header">Extensions: All (1339)</label>
-	<label class="banner-header-rt">2019-10-10</label>
+	<label class="banner-header-rt">2019-10-11</label>
 
 </div>
 <div>
@@ -1363,7 +1363,7 @@ body {
 |1336 | 481491 | [MALA Hindi Spell Checker by MCRPV, (An](/ThunderKdB/xall/xOther/481491-mala-hindi-shabd-shodhak-hi/481491-mala-hindi-shabd-shodhak-hi-details.html) | 1.0.1-signed | 2014-01-23 | 0 | 2.0a1 | 9.0a1 |   |
 |1337 | 628526 | [Kardia CRM Add-on for Thunderbird](/ThunderKdB/xall/xOther/628526-kardia-extension/628526-kardia-extension-details.html) | 1.03 | 2015-07-20 | 0 | 1.5 | 38.* |   |
 |1338 | 636518 | [XL2Report](/ThunderKdB/xall/xOther/636518-xl2report/636518-xl2report-details.html) | 0.14 | 2015-10-30 | 0 | 3.0 | 50.0 |   |
-|1339 | 987702 | [Toggle Word Wrap](/ThunderKdB/xall/x68/987702-toggle-word-wrap/987702-toggle-word-wrap-details.html) | 2.0 | 2019-10-08 | 0 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
+|1339 | 987702 | [Toggle Word Wrap](/ThunderKdB/xall/x68/987702-toggle-word-wrap/987702-toggle-word-wrap-details.html) | 2.0 | 2019-10-08 | 0 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 
 
 

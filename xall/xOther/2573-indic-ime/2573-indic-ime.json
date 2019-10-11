@@ -19,12 +19,12 @@
     "current_version": {
         "id": 48955,
         "compatibility": {
-            "thunderbird": {
-                "max": "2.0a1",
-                "min": "1.0"
-            },
             "firefox": {
                 "max": "56.*",
+                "min": "1.0"
+            },
+            "thunderbird": {
+                "max": "2.0a1",
                 "min": "1.0"
             }
         },
@@ -116,5 +116,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/indic-ime/",
-    "weekly_downloads": 225
+    "weekly_downloads": 225,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

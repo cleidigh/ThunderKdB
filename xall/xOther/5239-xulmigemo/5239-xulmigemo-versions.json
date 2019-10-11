@@ -1,1052 +1,1357 @@
-{
-    "page_size": 25,
-    "page_count": 2,
-    "count": 33,
-    "next": "https://addons.thunderbird.net/api/v4/addons/addon/5239/versions/?page=2",
-    "previous": null,
-    "results": [
-        {
-            "id": 1881276,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "50.0a1",
-                    "min": "45.0"
-                },
-                "firefox": {
-                    "max": "56.*",
-                    "min": "45.0"
-                }
+[
+    {
+        "id": 1881276,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "45.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1881276",
-            "files": [
-                {
-                    "id": 454236,
-                    "created": "2016-06-15T14:33:33Z",
-                    "hash": "sha256:f0c78198851360667e7cf0bd6bd5058e4f737c2e1bc95466e924115245a71bab",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 438050,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/454236/xulmigemo-0.14.9-tb+fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 88,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "Dual license: GPL 2.0 or Ruby license",
-                    "ja": "Dual license: GPL 2.0 or Ruby license"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.9"
-            },
-            "release_notes": {
-                "en-US": "0.14.9 (2016.6.15):<ul><li>Suppress warning about an useless <code>return</code> statement.</li><li>Never show progress message multiply for dictionary downloading.</li></ul>",
-                "ja": "0.14.9 (2016.6.15):<ul><li>不要な<code>return</code>による警告が表示されないようにした</li><li>辞書のダウンロード中に進行状況のメッセージが重複して表示されないようにした</li></ul>"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.9",
-            "version": "0.14.9"
+            "thunderbird": {
+                "max": "50.0a1",
+                "min": "45.0"
+            }
         },
-        {
-            "id": 1880404,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "50.0a1",
-                    "min": "45.0"
-                },
-                "firefox": {
-                    "max": "50.0a1",
-                    "min": "45.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1881276",
+        "files": [
+            {
+                "id": 454236,
+                "created": "2016-06-15T14:33:33Z",
+                "hash": "sha256:f0c78198851360667e7cf0bd6bd5058e4f737c2e1bc95466e924115245a71bab",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 438050,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/454236/xulmigemo-0.14.9-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 88,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1880404",
-            "files": [
-                {
-                    "id": 453255,
-                    "created": "2016-06-14T13:57:33Z",
-                    "hash": "sha256:e88453a06d40f179dcff5d34718f02d453873aa311e7784d2038f763bde404a0",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 438080,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/453255/xulmigemo-0.14.8-tb+fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 88,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "Dual license: GPL 2.0 or Ruby license",
-                    "ja": "Dual license: GPL 2.0 or Ruby license"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.8"
+            "text": {
+                "en-US": "Dual license: GPL 2.0 or Ruby license",
+                "ja": "Dual license: GPL 2.0 or Ruby license"
             },
-            "release_notes": {
-                "en-US": "0.14.8 (2016.6.14):<ul><li>Marked as e10s compaible.</li><li>Works on Nightly 50.0a1.</li><li>Firefox unexpectedly hanged in some pages including subframes.</li></ul>",
-                "ja": "0.14.8 (2016.6.14):<ul><li>e10s対応を明記</li><li>Nightly 50.0a1に対応</li><li>サブフレームを含むページで検索するとフリーズすることがあったのを修正</li></ul>"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.8",
-            "version": "0.14.8"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.9"
         },
-        {
-            "id": 1872235,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "49.0a1",
-                    "min": "45.0"
-                },
-                "firefox": {
-                    "max": "49.0a1",
-                    "min": "45.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1872235",
-            "files": [
-                {
-                    "id": 446150,
-                    "created": "2016-05-31T08:50:24Z",
-                    "hash": "sha256:d37204f5220082d428cbeb28915a508b77e73cfc9129fcaaafca1e866a680112",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 436333,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/446150/xulmigemo-0.14.6-tb+fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 88,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "Dual license: GPL 2.0 or Ruby license",
-                    "ja": "Dual license: GPL 2.0 or Ruby license"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.6"
-            },
-            "release_notes": {
-                "en-US": "0.14.6 (2016.5.31):<ul><li>Don't include needless \".gitignore\" file.</li><li>Fix wrong encoded search queries in location bar results for search engines on Firefox 46 and olders. (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8254945edc8685a62e8db9c5a1831dbc7be1380cf4373b45d8f8958880a18fb0/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1233672\">It is fixed at Firefox 47 and later by Firefox itself.</a>)</li><li>Suppress error for getting property about missing match result for the location bar search</li></ul>0.14.5 (2016.5.29):<ul><li>Firefox unexpectedly hanged in some pages including subframes.</li><li>Preferences are now stored under its private namespace.</li><li>Background operations in sidebar panels and the Places Organizer are now stopped after they are closed. (The running background process could crash Firefox.)</li></ul>",
-                "ja": "0.14.6 (2016.5.31):<ul><li>不要な「.gitignore」をパッケージに含めないようにした</li><li>Firefox 46およびそれ以前のバージョンで、ロケーションバーの検索エンジンに対する候補に表示される検索クエリがURLエンコードされたままになる問題を修正（<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8254945edc8685a62e8db9c5a1831dbc7be1380cf4373b45d8f8958880a18fb0/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1233672\">Firefox 47以降ではFirefox側により修正されている</a>）</li><li>ロケーションバーでの検索処理において、未定義の結果へのアクセスに起因する例外が発生してしまっていたのを修正</li></ul>0.14.5 (2016.5.29):<ul><li>サブフレームを含むページで検索するとフリーズすることがあったのを修正</li><li>設定を専用のネームスペース配下に保存するようにした</li><li>ブックマークサイドバーなどでのMigemo検索について、サイドバーやウィンドウが閉じられた後はバックグラウンドの処理が動き続けないようにした（終了時にこれが原因でクラッシュすることがあった）</li></ul>"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.6",
-            "version": "0.14.6"
+        "release_notes": {
+            "en-US": "0.14.9 (2016.6.15):<ul><li>Suppress warning about an useless <code>return</code> statement.</li><li>Never show progress message multiply for dictionary downloading.</li></ul>",
+            "ja": "0.14.9 (2016.6.15):<ul><li>不要な<code>return</code>による警告が表示されないようにした</li><li>辞書のダウンロード中に進行状況のメッセージが重複して表示されないようにした</li></ul>"
         },
-        {
-            "id": 1870708,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "49.0a1",
-                    "min": "45.0"
-                },
-                "firefox": {
-                    "max": "49.0a1",
-                    "min": "45.0"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.9",
+        "version": "0.14.9"
+    },
+    {
+        "id": 1880404,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "50.0a1",
+                "min": "45.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1870708",
-            "files": [
-                {
-                    "id": 444831,
-                    "created": "2016-05-28T09:33:12Z",
-                    "hash": "sha256:bc48449fc65d5435291eacdf50c1535332c010492df1751cf4dfb5d2bd4fc8f7",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 429107,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/444831/xulmigemo-0.14.4-tb+fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 88,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "Dual license: GPL 2.0 or Ruby license",
-                    "ja": "Dual license: GPL 2.0 or Ruby license"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.4"
-            },
-            "release_notes": {
-                "en-US": "0.14.4 (2016.5.28):<ul><li>Never match to un-normalized patterns of modified latin characters. For example, <code>t-</code> can appear in input text as an alternative of modified <code>ŧ</code>, but it seems not to appear in webpages. So now <code>t-</code> and similar patterns are not matched to regular input like <code>t</code>.</li><li>Works correctly for webpages contains textarea and other input fields. (regression)</li><li>Migemo search in the bookmarks sidebar, the history sidebar, and the places organizer works correctly. (regression)</li></ul>0.14.3 (2016.5.28):<ul><li>Firefox unexpectedly hanged in some pages.</li><li>Backward search works correctly with subframes.</li><li>Works correctly with pages including very long text node which includes the finding term multiple times.</li><li>Apply \"no match\" appearance immediately when there is no match.</li><li>The initialization wizard never appear multiple times for new windows opened on the initial session.</li></ul>",
-                "ja": "0.14.4 (2016.5.28):<ul><li>ラテン文字の修飾パターンについて、修飾をハイフンなどの一般的記号で代用したパターンにはマッチしないようにした（実用上、そのようなパターンは入力にのみ表れる傾向があるようなので）</li><li>textareaなどのフォーム要素があるときに検索の挙動が壊れていたのを修正（後退バグ）</li><li>ブックマークサイドバー、履歴サイドバー、Places Organizerの検索の挙動を乗っ取れていなかったのを修正（後退バグ）</li></ul>0.14.3 (2016.5.28):<ul><li>ページの構成によっては検索するとフリーズすることがあったのを修正</li><li>サブフレームを含むページでの後方検索で、サブフレームが検索対象にならなくなっていたのを修正</li><li>長大な1つのテキストノード内の複数箇所に検索語句が含まれる場合に、後ろの方の箇所にヒットしない事があったのを修正</li><li>インクリメンタルサーチの途中で入力語句にヒットする箇所がなくなった時に、最後にヒットした検索結果の状態を残さずにヒット無しの状態に移るようにした</li><li>初回起動時のセッション中に、新しいウィンドウを開く度に初期化ウィザードが表示されてしまっていたのを修正</li></ul>"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.4",
-            "version": "0.14.4"
+            "thunderbird": {
+                "max": "50.0a1",
+                "min": "45.0"
+            }
         },
-        {
-            "id": 1866226,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "49.0a1",
-                    "min": "45.0"
-                },
-                "firefox": {
-                    "max": "49.0a1",
-                    "min": "45.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1880404",
+        "files": [
+            {
+                "id": 453255,
+                "created": "2016-06-14T13:57:33Z",
+                "hash": "sha256:e88453a06d40f179dcff5d34718f02d453873aa311e7784d2038f763bde404a0",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 438080,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/453255/xulmigemo-0.14.8-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 88,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1866226",
-            "files": [
-                {
-                    "id": 440879,
-                    "created": "2016-05-20T12:35:02Z",
-                    "hash": "sha256:19a8075a9a442b47b056af2ae50cae881fa5431ca308eb707264c14f0282a111",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 425912,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/440879/xulmigemo-0.14.2-tb+fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 88,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "Dual license: GPL 2.0 or Ruby license",
-                    "ja": "Dual license: GPL 2.0 or Ruby license"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.2"
+            "text": {
+                "en-US": "Dual license: GPL 2.0 or Ruby license",
+                "ja": "Dual license: GPL 2.0 or Ruby license"
             },
-            "release_notes": {
-                "en-US": "0.14.2 (2016.5.20):<ul><li>Dictionary manager works again.</li><li>Works correctly on the Places Organizer.</li><li>Works correctly for webpages with inline frames or scrollable elements.</li></ul>0.14.1 (2016.5.19):<ul><li>Works correctly in English mode</li></ul>0.14.0 (2016.5.19):<ul><li>Works on Firefox 45, Nightly 49.0a1 and Thunderbird 45.</li><li>Keyboard shortcuts to start find with specific mode are now defined as you like now.</li><li>Out-of-purpose features like auto highlighting are now removed.</li><li>\"jar\" archive is no longer included.</li></ul>",
-                "ja": "0.14.2 (2016.5.20):<ul><li>辞書の管理ツールが機能していなかったのを修正</li><li>Places Organizerでの検索が機能しない問題を修正</li><li>インラインフレームやスクロール可能な要素があるページでも正しく検索できるようにした</li></ul>0.14.1 (2016.5.19):<ul><li>英語モードで動作しなくなっていたのを修正</li></ul>0.14.0 (2016.5.19):<ul><li>Firefox 45，Nightly 49.0a1およびThunderbird 45に対応</li><li>任意のモードで検索を開始するショートカットを自由に追加できるようにした</li><li>自動強調表示など、本質的でない機能を削除した</li><li>jarファイルを含めない形のパッケージングに変更</li></ul>"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.2",
-            "version": "0.14.2"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.8"
         },
-        {
-            "id": 112632,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "3.1.*",
-                    "min": "3.0"
-                },
-                "firefox": {
-                    "max": "3.6.*",
-                    "min": "3.5"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/112632",
-            "files": [
-                {
-                    "id": 93955,
-                    "created": "2010-07-13T07:05:55Z",
-                    "hash": "sha256:0d174af9443d3f3825a50596b0e5a8fc11e73c5bfe0b423df94742fd4652efa4",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 168960,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/93955/xul_migemo-0.13.6-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 88,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "Dual license: GPL 2.0 or Ruby license",
-                    "ja": "Dual license: GPL 2.0 or Ruby license"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.13.6"
-            },
-            "release_notes": {
-                "en-US": "&lt;p&gt;Changes from 0.13.5 to 0.13.6:&lt;/p&gt;<ul><li>Fixed: On the first startup, the initial state of the find toolbar was wrongly set to \"Migemo\" mode. (*If you got the wrongly initialized preference, you have to repair it manually by \"XUL/Migemo Configuration\" =&gt; \"Find Toolbar\" =&gt; \"Change initial state of the Find Toolbar Features...\" =&gt; \"Find mode:\" =&gt; \"Normal\".)</li><li>Fixed: Failed to switch internal modes when you clicked the find mode switcher.</li></ul>&lt;p&gt;Changes from 0.13.4 to 0.13.5:&lt;/p&gt;<ul><li>Improved: Highlighted terms are shown with drop shadow.</li></ul>&lt;p&gt;Changes from 0.13.3 to 0.13.4:&lt;/p&gt;<ul><li>Improved: Async operation for Safari-style highlighting and markers is landed.</li><li>Fixed: Needless checkboxes for combination about other addons has been removed.</li><li>Fixed: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/24362ff778a8abe26a229db4d09860394edc17696998d419e847137a1e221549/http%3A//piro.sakura.ne.jp/cgi-bin/bbs.cgi%3F2737\">Highlights were wrongly cleared by markers, if Safari-style highlight was disabled.</a></li></ul>&lt;p&gt;Changes from 0.13.2 to 0.13.3:&lt;/p&gt;<ul><li>Fixed: Some fatal regressions around the awsomebar disappeared.</li></ul>&lt;p&gt;Changes from 0.13.1 to 0.13.2:&lt;/p&gt;<ul><li>Fixed: Freezing while highlighting disappeared.</li></ul>&lt;p&gt;Changes from 0.13.0 to 0.13.1:&lt;/p&gt;<ul><li>Fixed: The awsomebar didn't work anymore after a browser window closed and there was another window.</li></ul>&lt;p&gt;Changes from 0.12.2 to 0.13.0:&lt;/p&gt;<ul><li>Improved: Works on Minefield 4.0b2pre.</li><li>Improved: On Minefield 4.0b2pre, \"switch to tab\" feature of the awsomebar is supported.</li><li>Improved: Works on Thunderbird 3.0 and Thunderbird 3.1. (*Note: Migemo find is not available for quick find in folders if the Gloda is disabled.)</li><li>Improved: \"Find from viewport\" is optimized. (*Note: only on Gecko 1.9.2 and later.)</li><li>Improved: Smooth-scroll for \"show the found term in the middle of the screen\". (To disable it, go to about:config and set <code>xulmigemo.highlight.foundMarker.smoothScroll.enabled</code> to <code>false</code>.)</li><li>Improved: Smooth-scroll for markers of found positions. (To disable it, go to about:config and set <code>xulmigemo.highlight.foundMarker.smoothScroll.enabled</code> to <code>false</code>.)</li><li>Modified: \"migemo\" API doesn't return contents in the user dictionary anymore. This is a security improvement.</li><li>Fixed: Keyboard shortcuts can be customized on Firefox 3.6 and later.</li><li>Fixed: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a0789feb7781a87729cfb5451b55ea056acf9dd898e86447cf9c5fa0a69b668d/http%3A//piro.sakura.ne.jp/cgi-bin/bbs.cgi%3F2648\">Annoying focus moving when in-page finding is failed</a> disappeared.</li><li>Fixed: <code>browser.urlbar.autoFill</code> works correctly for the smart location bar with XUL/Migemo.</li><li>Fixed: Highlighted terms for the last search are correctly cleared by the next search.</li><li>Fixed: Warnings from keyup events disappeared.</li><li>Drops support for Firefox 2 and Thunderbird 2.</li></ul>",
-                "ja": "&lt;p&gt;0.13.5から0.13.6の変更点：&lt;/p&gt;<ul><li>初回起動時の初期化処理で検索ツールバーの初期モードがMigemo検索になってしまう問題を修正（※既にこの設定が適用されてしまっている環境では、XUL/Migemoの設定で「検索ツールバー」→「検索ツールバーの初期状態を変更…」→「検索モード」で「通常」を選択肢直す必要があります）</li><li>検索モードを切り替える操作をしたにも関わらず内部的なモードが切り替わらないままになる問題を修正</li></ul>&lt;p&gt;0.13.4から0.13.5の変更点：&lt;/p&gt;<ul><li>Safari風強調表示で強調表示された箇所に影を表示するようにした</li></ul>&lt;p&gt;0.13.3から0.13.4の変更点：&lt;/p&gt;<ul><li>Safari風強調表示や検索のヒット位置のマーカー表示を有効にしている時に、処理を非同期で段階的に行うようにした（ヒット箇所が多い時にフリーズする問題への対策）</li><li>他のアドオンとの連携用の設定など、不要な設定項目が残っていたのを削除した</li><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/24362ff778a8abe26a229db4d09860394edc17696998d419e847137a1e221549/http%3A//piro.sakura.ne.jp/cgi-bin/bbs.cgi%3F2737\">ヒット位置を示すマーカーが表示されるタイミングで選択範囲による強調表示が消えてしまっていた問題</a>を修正</li></ul>&lt;p&gt;0.13.2から0.13.3の変更点：&lt;/p&gt;<ul><li>後退バグでロケーションバーの検索等が動かなくなっていたのを修正</li></ul>&lt;p&gt;0.13.1から0.13.2の変更点：&lt;/p&gt;<ul><li>無限ループで固まる事があったのを修正</li></ul>&lt;p&gt;0.13.0から0.13.1の変更点：&lt;/p&gt;<ul><li>Firefoxのウィンドウを複数開いている時に、1つウィンドウを閉じると後のウィンドウでスマートロケーションバーが機能しなくなる問題を修正</li></ul>&lt;p&gt;0.12.2から0.13.0の変更点：&lt;/p&gt;<ul><li>Minefield 4.0b2pre対応</li><li>Minefield 4.0b2preのスマートロケーションバーで、ヒットした候補が既にタブで開かれている場合はそのタブに切り替える機能に対応</li><li>Thunderbird 3.0およびThunderbird 3.1に対応（※検索用のインデックスが作成されていない場合はフォルダ内の絞り込み検索でのMigemo検索はできません）</li><li>見えている範囲から検索を開始する処理を若干高速化した（Gecko 1.9.2以降のみ）</li><li>ページ内検索のヒット位置を画面の中央近くに表示する形でスクロールする時に、スムーズスクロールするようにした（スムーズスクロールを無効にする場合はabout:configで<code>xulmigemo.scrollSelectionToCenter.smoothScroll.enabled</code>を<code>false</code>に変更して下さい）</li><li>ページ内検索のヒット位置を示すマーカーをクリックした時に、その位置までスムーズにスクロールするようにした（スムーズスクロールを無効にする場合はabout:configで<code>xulmigemo.highlight.foundMarker.smoothScroll.enabled</code>を<code>false</code>に変更して下さい）</li><li>API経由でWeb上のスクリプトからアクセスする時はユーザ辞書の内容を返さないようにした</li><li>Firefox 3.6以降でキーカスタマイズができない問題を修正</li><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a0789feb7781a87729cfb5451b55ea056acf9dd898e86447cf9c5fa0a69b668d/http%3A//piro.sakura.ne.jp/cgi-bin/bbs.cgi%3F2648\">検索失敗時にフレームにフォーカスが移動してしまう問題</a>を修正</li><li>スマートロケーションバーの動作を乗っ取っている時に<code>browser.urlbar.autoFill</code>が機能しない問題を修正</li><li>前回の検索結果がハイライト表示された状態で別の検索を開始すると前回のハイライトが残ったままになってしまう問題を修正</li><li>keyupイベントでの警告が表示されないようにした</li><li>Firefox 2、Thunderbird 2への対応を終了</li></ul>"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.13.6",
-            "version": "0.13.6"
+        "release_notes": {
+            "en-US": "0.14.8 (2016.6.14):<ul><li>Marked as e10s compaible.</li><li>Works on Nightly 50.0a1.</li><li>Firefox unexpectedly hanged in some pages including subframes.</li></ul>",
+            "ja": "0.14.8 (2016.6.14):<ul><li>e10s対応を明記</li><li>Nightly 50.0a1に対応</li><li>サブフレームを含むページで検索するとフリーズすることがあったのを修正</li></ul>"
         },
-        {
-            "id": 81706,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.6.*",
-                    "min": "2.0"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.8",
+        "version": "0.14.8"
+    },
+    {
+        "id": 1872235,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "49.0a1",
+                "min": "45.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/81706",
-            "files": [
-                {
-                    "id": 67595,
-                    "created": "2009-10-23T05:25:06Z",
-                    "hash": "sha256:5592c5ce910002d3beacd715303a07799f2fd81bd8fbfcaa1487c719cf978134",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 172032,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/67595/xul_migemo-0.12.2-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 88,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "Dual license: GPL 2.0 or Ruby license",
-                    "ja": "Dual license: GPL 2.0 or Ruby license"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.12.2"
-            },
-            "release_notes": {
-                "en-US": "* Improved: New API for addons and web applications, available on global namespace of JavaScript.\n* Fixed: \"Highlight All\" works correctly for case sensitive mode.\n* Fixed: Centering for the focused term works correctly for some cases.\n* Fixed: Smart keywords works correctly on the location bar.\n* Fixed: Regexp without \"i\" flag works correctly on the location bar.\n* Fixed: \"ESC\" key in the location bar correctly restores the original input.\n* Fixed: On Thunderbird, works correctly for messages without encoded characters.\n* Still doesn't work on Trunk at 2009-10-21, because of Bug 396392 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/21c6dd7e851dfc81424a3503e4b7b60b1501407c706558cedd77fd0372b8773b/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=396392\">https://bugzilla.mozilla.org/show_bug.cgi?id=396392</a> ) .",
-                "ja": "* JavaScriptのグローバルオブジェクトからアクセス可能な新しいAPIを実装\n* 検索のヒット箇所を強調表示する際、大文字小文字の違いが常に無視されていたのを修正\n* 検索にヒットした箇所を画面中央までスクロールする処理が働かない場合があったのを修正\n* ロケーションバーにスマートキーワードを入力すると検索結果が出ない問題を修正\n* ロケーションバーの検索で、iフラグ無しの正規表現に対して大文字小文字が区別されていなかったのを修正\n* ロケーションバーの入力時にESCキーを押した時、入力中だった内容の復元や検索文字列の消去が正しく行われていなかったのを修正\n* Thunderbirdで、件名等にエンコードされた部分がない時にエラーになっていたのを修正\n* Bug 396392 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/21c6dd7e851dfc81424a3503e4b7b60b1501407c706558cedd77fd0372b8773b/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=396392\">https://bugzilla.mozilla.org/show_bug.cgi?id=396392</a> ) のため、2009年10月21日時点でのTrunkでは動作しません"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.12.2",
-            "version": "0.12.2"
+            "thunderbird": {
+                "max": "49.0a1",
+                "min": "45.0"
+            }
         },
-        {
-            "id": 69903,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.6a1pre",
-                    "min": "2.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1872235",
+        "files": [
+            {
+                "id": 446150,
+                "created": "2016-05-31T08:50:24Z",
+                "hash": "sha256:d37204f5220082d428cbeb28915a508b77e73cfc9129fcaaafca1e866a680112",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 436333,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/446150/xulmigemo-0.14.6-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 88,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/69903",
-            "files": [
-                {
-                    "id": 54852,
-                    "created": "2009-06-07T23:42:46Z",
-                    "hash": "sha256:e173d8860a7f8ba1c880a55a36defe2bea0b266024072e1d92f2ea18446de8d2",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 164864,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/54852/xul_migemo-0.11.16-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 88,
-                "name": {
-                    "en-US": "Custom License"
-                },
-                "text": {
-                    "en-US": "Dual license: GPL 2.0 or Ruby license",
-                    "ja": "Dual license: GPL 2.0 or Ruby license"
-                },
-                "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.11.16"
+            "text": {
+                "en-US": "Dual license: GPL 2.0 or Ruby license",
+                "ja": "Dual license: GPL 2.0 or Ruby license"
             },
-            "release_notes": {
-                "en-US": "* Fixed: Too high usage of CPU when you input many numbers of terms to the location bar dsappeared.\n* Fixed: \"Home\" key for smart location bar items works correctly.\n* Improved: \"Match Cases\" option is available for finding with regular expressions.\n* Fixed: Highlighting in text fields was broken on Shiretoko.\n* Fixed: Finds from document edge (or viewport edge) correctly if the find term is different from the previous find.\n* Fixed: Broken appearance of the find mode selector disappeared for Download Statusbar ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/26\">https://addons.mozilla.org/firefox/addon/26</a> ).\n* Fixed: User dictionary for English system dictionary works correctly.",
-                "ja": "* スマートロケーションバーに多数の単語を入力した時にフリーズしてしまっていた問題について改善したつもり\n* スマートロケーションバーの候補を選択した状態でHomeキーを押した時の挙動が、Mac OS X用とそれ以外のプラットフォーム用とで逆転していたのを修正\n* 正規表現検索の際に大文字小文字を区別するようにした（正規表現リテラル形式でiフラグを付けて検索した場合、または「大文字/小文字を区別」のチェックボックスがOFFの場合は大文字小文字を区別しない）\n* Shiretokoでテキスト入力欄内のヒット箇所の強調表示に失敗するようになっていたのを修正\n* 前方検索・後方検索の違いに関わらず、前回の検索語句と異なる語句で検索する時は必ずドキュメントの端（またはビューポートの端）から検索するようにした\n* Download Statusbar ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/26\">https://addons.mozilla.org/firefox/addon/26</a> )が表示される時に検索モード切り替えボタンの表示位置がずれる問題に対処\n* 英語辞書のユーザ辞書機能が正常に働いていなかったのを修正"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.16",
-            "version": "0.11.16"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.6"
         },
-        {
-            "id": 66863,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.6a1pre",
-                    "min": "2.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/66863",
-            "files": [
-                {
-                    "id": 51503,
-                    "created": "2009-04-20T19:48:10Z",
-                    "hash": "sha256:d017b0ab03d439579c05100e7d5c0ca99e2d4d2ffeb73736e0b2f7221935ccc0",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 163840,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/51503/xul_migemo-0.11.14-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Fixed: Inital startup error disappeared.\n* Fixed: Invisible tests are correctly ignored on Gecko 1.8.\n* Fixed: Highlight screen and markers in background tabs are cleared automatically when the find toolbar is closed.\n* Fixed: The URI of the link is correctly shown in the status bar when the found range is inside a link. (regression)\n* Fixed: Focus ring is shown for the focused link in Quick Migemo Find mode.\n* Fixed: Found link is correctly focused when the find toolbar is closed.\n* Modified: The result shown as blank and \"save\" button for the query is disabled while there is no result yet for Migemo search in Bookmarks, History, and Library.\n* Fixed: Freezing on window resizing disappeared for Minefield. (maybe)\n* Fixed: Infinity increasing of elements for highlighting disappeared even if you switch the find mode with checked \"highlight all\" button.\n* Modified: Application-specific checkboxes in \"Combination\" panel are hidden by the environment.",
-                "ja": "* 初回起動時の初期化に失敗することがあったのを修正\n* Gecko 1.8でテキストの表示・非表示の判別に失敗していたのを修正\n* すべて強調表示を有効にしたままの状態で、タブを切り替えてから検索を終了すると、切り替え前のタブに強調表示やヒット位置のマーカーが残ったままになってしまう問題を修正（検索終了ですべてのタブの強調表示を解除するようにした）\n* クイックMigemo検索でリンク内にヒットしてもステータスバーにリンク先が表示されなくなっていたのを修正（いつの頃からかのregression）\n* クイックMigemo検索でリンク内にヒットした時にフォーカスリングを表示するようにした（Firefox標準の検索の挙動と異なる状態になっていたのを修正）\n* Migemo検索終了時に、リンク内に検索がヒットしていた場合はリンクにフォーカスするようにした（Firefox標準の検索の挙動と異なる状態になっていたのを修正）\n* ブックマークサイドバー、履歴サイドバー、およびライブラリでの検索時に有効な検索結果が見つかっていない状態の時は、検索結果を空にし、クエリとしても保存できないようにした\n* ウィンドウの幅が極端に狭い時などに、検索ツールバーの内容自体のアップデートによって無限に再描画が発生してしまう場合があったのを修正（したつもり）\n* 強調表示を有効にしたままで検索モードを切り替えた時に、強調表示用の要素が無限に増殖する問題を修正\n* 「連携」パネル内のチェックボックスについて、その環境で不要な物は隠すようにした"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.14",
-            "version": "0.11.14"
+        "release_notes": {
+            "en-US": "0.14.6 (2016.5.31):<ul><li>Don't include needless \".gitignore\" file.</li><li>Fix wrong encoded search queries in location bar results for search engines on Firefox 46 and olders. (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8254945edc8685a62e8db9c5a1831dbc7be1380cf4373b45d8f8958880a18fb0/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1233672\">It is fixed at Firefox 47 and later by Firefox itself.</a>)</li><li>Suppress error for getting property about missing match result for the location bar search</li></ul>0.14.5 (2016.5.29):<ul><li>Firefox unexpectedly hanged in some pages including subframes.</li><li>Preferences are now stored under its private namespace.</li><li>Background operations in sidebar panels and the Places Organizer are now stopped after they are closed. (The running background process could crash Firefox.)</li></ul>",
+            "ja": "0.14.6 (2016.5.31):<ul><li>不要な「.gitignore」をパッケージに含めないようにした</li><li>Firefox 46およびそれ以前のバージョンで、ロケーションバーの検索エンジンに対する候補に表示される検索クエリがURLエンコードされたままになる問題を修正（<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8254945edc8685a62e8db9c5a1831dbc7be1380cf4373b45d8f8958880a18fb0/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1233672\">Firefox 47以降ではFirefox側により修正されている</a>）</li><li>ロケーションバーでの検索処理において、未定義の結果へのアクセスに起因する例外が発生してしまっていたのを修正</li></ul>0.14.5 (2016.5.29):<ul><li>サブフレームを含むページで検索するとフリーズすることがあったのを修正</li><li>設定を専用のネームスペース配下に保存するようにした</li><li>ブックマークサイドバーなどでのMigemo検索について、サイドバーやウィンドウが閉じられた後はバックグラウンドの処理が動き続けないようにした（終了時にこれが原因でクラッシュすることがあった）</li></ul>"
         },
-        {
-            "id": 65620,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.6a1pre",
-                    "min": "2.0"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.6",
+        "version": "0.14.6"
+    },
+    {
+        "id": 1870708,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "49.0a1",
+                "min": "45.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/65620",
-            "files": [
-                {
-                    "id": 50135,
-                    "created": "2009-04-01T09:09:50Z",
-                    "hash": "sha256:244dca121b2a7679a06f8ec7a6274327db2aaa8bb0e3cc052e3a3e17f87968a7",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 162816,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/50135/xul_migemo-0.11.12-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Works on Minefield again.\n* Modified: Highlighting is disabled automatically when the find toolbar is closed.\n* Fixed: Highlighting works correctly for the native find.\n",
-                "ja": "* Minefieldで動作しなくなっていたのを修正\n* 検索ツールバーを閉じる時、必ずハイライトのチェックを外すようにした\n* 通常検索ですべて強調表示が機能しない問題を修正\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.12",
-            "version": "0.11.12"
+            "thunderbird": {
+                "max": "49.0a1",
+                "min": "45.0"
+            }
         },
-        {
-            "id": 62488,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.6a1pre",
-                    "min": "2.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1870708",
+        "files": [
+            {
+                "id": 444831,
+                "created": "2016-05-28T09:33:12Z",
+                "hash": "sha256:bc48449fc65d5435291eacdf50c1535332c010492df1751cf4dfb5d2bd4fc8f7",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 429107,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/444831/xulmigemo-0.14.4-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 88,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/62488",
-            "files": [
-                {
-                    "id": 46780,
-                    "created": "2009-02-12T06:18:19Z",
-                    "hash": "sha256:6aa1093c5cb1e0739c666ceeeb8a2e7604d1c12a5701bd8191091a25e13d177f",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 160768,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/46780/xul_migemo-0.11.11-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Improved: Works on Firefox 3.1b3pre.\n* Improved: Search mode can be circulated by Ctrl-F as: [Normal] =&gt; [RegExp] =&gt; [Migemo] =&gt; Exit =&gt; [Normal] =&gt; ...\n* Fixed: You can start Quick Migemo Find even if you've already opened the find toolbar.\n* Fixed: Highlights are shown correctly even if there are hidden elements in the page.\n* Fixed: \"g\" flag works correctly on finding by pIMigemo's API.\n* Modified: XUL/Migemo keep terms highlighted while switching find modes.\n* Fixed: Highlight screen of Safari style highlight disappeared when just you start to find.\nFixed: \"ヴ\", a special kata-kana character, is found correctry by input like \"va\", \"vi\", \"vu\", \"ve\" and \"vo\".\n",
-                "ja": "* Firefox 3.1b3pre対応\n* Ctrl-Fの連打で通常検索→正規表現検索→Migemo検索→検索終了→通常検索→…と切り替えられるようにした\n* 検索ツールバーが表示されている状態でクイックMigemo検索を開始できなくなっていたのを修正\n* 非表示の要素がある時に、ヒット箇所の強調表示の結果がおかしくなっていたのを修正\n* pIMigemoのAPIで正規表現で検索する際、gフラグが指定されていると処理結果がおかしくなっていたのを修正\n* 検索ツールバーを開いたまま検索モードを切り替えた際、強調表示の状態を維持するようにした\n* 検索ツールバーを開いた時、何もヒットしていないのにSafari風強調表示の薄暗い表示になる事があったのを修正\n* va、vi、vu、ve、voなどの入力でカタカナの「ヴ」にヒットしない問題を修正\n"
+            "text": {
+                "en-US": "Dual license: GPL 2.0 or Ruby license",
+                "ja": "Dual license: GPL 2.0 or Ruby license"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.11",
-            "version": "0.11.11"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.4"
         },
-        {
-            "id": 57475,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.1b2pre",
-                    "min": "2.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/57475",
-            "files": [
-                {
-                    "id": 41417,
-                    "created": "2008-11-19T22:54:32Z",
-                    "hash": "sha256:c7d19467d464f4df5d512fb82466705aab993c8ecc5d3e722ebc19f68a744a54",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 158720,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/41417/xul_migemo-0.11.8-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "Search field in sidebar panels (Bookmarks, etc.) works correctly again.",
-                "ja": "0.11.5以降でブックマークサイドバーなどでの検索が機能しなくなっていたのを修正"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.8",
-            "version": "0.11.8"
+        "release_notes": {
+            "en-US": "0.14.4 (2016.5.28):<ul><li>Never match to un-normalized patterns of modified latin characters. For example, <code>t-</code> can appear in input text as an alternative of modified <code>ŧ</code>, but it seems not to appear in webpages. So now <code>t-</code> and similar patterns are not matched to regular input like <code>t</code>.</li><li>Works correctly for webpages contains textarea and other input fields. (regression)</li><li>Migemo search in the bookmarks sidebar, the history sidebar, and the places organizer works correctly. (regression)</li></ul>0.14.3 (2016.5.28):<ul><li>Firefox unexpectedly hanged in some pages.</li><li>Backward search works correctly with subframes.</li><li>Works correctly with pages including very long text node which includes the finding term multiple times.</li><li>Apply \"no match\" appearance immediately when there is no match.</li><li>The initialization wizard never appear multiple times for new windows opened on the initial session.</li></ul>",
+            "ja": "0.14.4 (2016.5.28):<ul><li>ラテン文字の修飾パターンについて、修飾をハイフンなどの一般的記号で代用したパターンにはマッチしないようにした（実用上、そのようなパターンは入力にのみ表れる傾向があるようなので）</li><li>textareaなどのフォーム要素があるときに検索の挙動が壊れていたのを修正（後退バグ）</li><li>ブックマークサイドバー、履歴サイドバー、Places Organizerの検索の挙動を乗っ取れていなかったのを修正（後退バグ）</li></ul>0.14.3 (2016.5.28):<ul><li>ページの構成によっては検索するとフリーズすることがあったのを修正</li><li>サブフレームを含むページでの後方検索で、サブフレームが検索対象にならなくなっていたのを修正</li><li>長大な1つのテキストノード内の複数箇所に検索語句が含まれる場合に、後ろの方の箇所にヒットしない事があったのを修正</li><li>インクリメンタルサーチの途中で入力語句にヒットする箇所がなくなった時に、最後にヒットした検索結果の状態を残さずにヒット無しの状態に移るようにした</li><li>初回起動時のセッション中に、新しいウィンドウを開く度に初期化ウィザードが表示されてしまっていたのを修正</li></ul>"
         },
-        {
-            "id": 56911,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.1b2pre",
-                    "min": "2.0"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.4",
+        "version": "0.14.4"
+    },
+    {
+        "id": 1866226,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "49.0a1",
+                "min": "45.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/56911",
-            "files": [
-                {
-                    "id": 40797,
-                    "created": "2008-11-09T09:41:38Z",
-                    "hash": "sha256:6bdb28dc4f83470a8aa2a67a1bfb044bbd84dab8eda7dbc61055d155953d8e63",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 156672,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/40797/xul_migemo-0.11.6-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "Fixed: Works with SearchWP ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/376\">https://addons.mozilla.org/firefox/addon/376</a> ).",
-                "ja": "SearchWP( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/376\">https://addons.mozilla.org/firefox/addon/376</a> )と衝突していたのを修正"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.6",
-            "version": "0.11.6"
+            "thunderbird": {
+                "max": "49.0a1",
+                "min": "45.0"
+            }
         },
-        {
-            "id": 56820,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.1b2pre",
-                    "min": "2.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/1866226",
+        "files": [
+            {
+                "id": 440879,
+                "created": "2016-05-20T12:35:02Z",
+                "hash": "sha256:19a8075a9a442b47b056af2ae50cae881fa5431ca308eb707264c14f0282a111",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 425912,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/440879/xulmigemo-0.14.2-tb+fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 88,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/56820",
-            "files": [
-                {
-                    "id": 40700,
-                    "created": "2008-11-07T05:18:12Z",
-                    "hash": "sha256:3c28599722d64f813bdd2f1da524c02c1b64d6fe8617300a5f87ddd573043180",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 156672,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/40700/xul_migemo-0.11.5-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Fixed: Items from input histories in the smart location bar appear in the correct order.\n* Fixed: Find mode returns to the normal find mode when Firefox's original \"quick find\" starts.\n* Fixed: Changing find mode finishes the find, while Firefox's quick find or the quick migemo find is running.\n* Fixed: XUL/Migemo works correctly even if the initialization wizard is disabled and the dictionary is not configured.\n* Improved: You can start the initialization wizard from the configuration dialog.\n* Improved: Migemo find is available for the search box in the tab previews of Minefield 3.1b2pre.\n",
-                "ja": "* スマートロケーションバーでの検索結果で、入力確定履歴から検索される項目の表示順がおかしかったのを修正\n* Firefox標準のクイック検索を開始する時は常に検索モードを通常の検索に戻すようにした\n* Firefox標準のクイック検索またはクイックMigemo検索を実行中に検索モードを切り替えた場合は常に検索を終了するようにした\n* 辞書の位置が未設定で、且つ、辞書の初期設定ウィザードを表示しない設定になっている時、初期化に失敗する問題を修正\n* 設定ダイアログから辞書の初期設定ウィザードを開けるようにした\n* Minefield 3.1b2preのタブ一覧の検索欄でMigemo検索できるようにした\n"
+            "text": {
+                "en-US": "Dual license: GPL 2.0 or Ruby license",
+                "ja": "Dual license: GPL 2.0 or Ruby license"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.5",
-            "version": "0.11.5"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.14.2"
         },
-        {
-            "id": 54552,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.1b1pre",
-                    "min": "2.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/54552",
-            "files": [
-                {
-                    "id": 38225,
-                    "created": "2008-09-26T02:44:44Z",
-                    "hash": "sha256:56a61a982766fc94ef3e7174b92376721c35aa356b656ad844a218b11be77a9b",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 155648,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/38225/xul_migemo-0.11.4-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "Fixed: Broken behavior about default find mode and permanent find mode is corrected.\n\nIn the previous version 0.11.3, if you set the default find mode or the permanent find mode by the configuration UI, the actual behavior was different from the described.\n\nInternally, find modes were saved as integer value, like \"0(means native find)\", \"1(means migemo)\" or \"2(means regexp find)\" in 0.11.2. I changed the value sets from \"0,1,2\" to \"1,2,4\" in 0.11.3, but I forgot to upgrade user preferences. Now, old preferences are automatically mapped to new one.",
-                "ja": "検索ツールバーの検索モードの初期値や毎回リセットされる先のモードについて、設定ダイアログのUI上の表示と実際の挙動とが異なってしまっていたのを修正。"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.4",
-            "version": "0.11.4"
+        "release_notes": {
+            "en-US": "0.14.2 (2016.5.20):<ul><li>Dictionary manager works again.</li><li>Works correctly on the Places Organizer.</li><li>Works correctly for webpages with inline frames or scrollable elements.</li></ul>0.14.1 (2016.5.19):<ul><li>Works correctly in English mode</li></ul>0.14.0 (2016.5.19):<ul><li>Works on Firefox 45, Nightly 49.0a1 and Thunderbird 45.</li><li>Keyboard shortcuts to start find with specific mode are now defined as you like now.</li><li>Out-of-purpose features like auto highlighting are now removed.</li><li>\"jar\" archive is no longer included.</li></ul>",
+            "ja": "0.14.2 (2016.5.20):<ul><li>辞書の管理ツールが機能していなかったのを修正</li><li>Places Organizerでの検索が機能しない問題を修正</li><li>インラインフレームやスクロール可能な要素があるページでも正しく検索できるようにした</li></ul>0.14.1 (2016.5.19):<ul><li>英語モードで動作しなくなっていたのを修正</li></ul>0.14.0 (2016.5.19):<ul><li>Firefox 45，Nightly 49.0a1およびThunderbird 45に対応</li><li>任意のモードで検索を開始するショートカットを自由に追加できるようにした</li><li>自動強調表示など、本質的でない機能を削除した</li><li>jarファイルを含めない形のパッケージングに変更</li></ul>"
         },
-        {
-            "id": 54423,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.1b1pre",
-                    "min": "2.0"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.14.2",
+        "version": "0.14.2"
+    },
+    {
+        "id": 112632,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.6.*",
+                "min": "3.5"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/54423",
-            "files": [
-                {
-                    "id": 38080,
-                    "created": "2008-09-23T22:49:59Z",
-                    "hash": "sha256:4cfa2535d2593c85b6adf58f89f7bc13a985b15d58cfe99619aabe872dffc674",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 155648,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/38080/xul_migemo-0.11.3-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Improved: IME is automatically disabled for Migemo Find Mode even if it is started from normal find. (*Available only on Windows or Mac OS X.)\n* Fixed: Popup contents of the smart location bar is correctly filled with recently visited pages when the drop marker is clicked after Migemo Find.\n* Modified: Any integer number from 0 to 100 is available for \"xulmigemo.scrollSelectionToCenter.padding\".\n",
-                "ja": "* 通常の検索についても、検索モードがMigemo検索に切り替えられている場合はIMEを自動的に無効化するようにした（Windows, Mac OS Xのみ）\n* ロケーションバーのドロップダウンマーカーをクリックした時に、最近訪問したページではなく直前のMigemo検索の結果が表示されてしまっていたのを修正\n* xulmigemo.scrollSelectionToCenter.paddingの値として0から100までの範囲を受け付けるようにした\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.3",
-            "version": "0.11.3"
+            "thunderbird": {
+                "max": "3.1.*",
+                "min": "3.0"
+            }
         },
-        {
-            "id": 53783,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.1b1pre",
-                    "min": "2.0"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/112632",
+        "files": [
+            {
+                "id": 93955,
+                "created": "2010-07-13T07:05:55Z",
+                "hash": "sha256:0d174af9443d3f3825a50596b0e5a8fc11e73c5bfe0b423df94742fd4652efa4",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 168960,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/93955/xul_migemo-0.13.6-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 88,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/53783",
-            "files": [
-                {
-                    "id": 37413,
-                    "created": "2008-09-11T21:44:24Z",
-                    "hash": "sha256:f7db95a940767d47da4e342b44858850fe9a83d929c9a512ff70e2656f7e2469",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 154624,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/37413/xul_migemo-0.11.2-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "Fixed: A serious problem is resolved. The previous version (0.11.1) couldn't work after restarting when it was newly installed.\n\n-----------------\nchangelog from 0.10.6:\n\n* Improved: Dictionaries' path can be stored as a relative path from the profile folder. On mobile Firefox, XUL/Migemo possibly works correctly.\n* Improved: Markers beside the scroll bar are available. They indicate where search term is in the page.\n* Improved: New awsomebar features introduced by Firefox 3.1 are supported. Restrictions ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2f77f1ca87654f20f67ff246041e337fab603bf0c98c3a2c4d4ef7cfe37b6ad1/http%3A//ed.agadak.net/2008/07/firefox-31-restricts-matches-keywords\">http://ed.agadak.net/2008/07/firefox-31-restricts-matches-keywords</a> ), dysplaying smart keywords ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2ebf2661f5f9bdafaf33eb707cca83a1b53a2a253205730941b3614d8782792d/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=392143\">https://bugzilla.mozilla.org/show_bug.cgi?id=392143</a> ), and matching only for beginnings of title/URL ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c86f86461e82002e8c790b7337da0a1f83195e70bb7dec7bfec4de46c95e145a/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=451760\">https://bugzilla.mozilla.org/show_bug.cgi?id=451760</a> ).\n* Fixed: Focused search term can be shown in the middle of the screen correctly if it is found by normal search.\n* Improved: Focused search term is shown in nearly middle of the screen, not just middle. In particular, only if the term exists out of the hidden border (30% from window edges), XUL/Migemo scrolls to the term. If you like the old behavior, type \"about:config\" into the location bar and change the value of \"xulmigemo.scrollSelectionToCenter.padding\" to \"50\".\n* Selection based highlighting of Firefox 3.1 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/82db9fc316cd19503164ab8fdf29dfdbd8c473697b8cc33549aba06e1474cbc9/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=263683\">https://bugzilla.mozilla.org/show_bug.cgi?id=263683</a> ) is supported.\n* Improved: Performance improvements on next/previous find for \"Highlight All\".\n* Improved: The timer is stopped while scrolling, for the Quick Migemo Find.\n* Fixed: Find toolbar status is updated correctly.\n* Fixed: Focused term keeps selected after \"Highlight All\" check is turned off.\n* Modified: Now, the last page of the initializing wizard has a checkbox \"never show this wizard\".",
-                "ja": "* Ver.0.11.1における、新規インストールした環境で2度目以降の起動時に動作しなくなる問題を修正\n\n-----------------\n0.10.6からの変更点:\n\n* 辞書のパスをプロファイルフォルダを基準とした相対パスで記憶できるようにし、移動プロファイル環境での動作を改善した\n* 検索がヒットした位置を表示する機能を追加\n* Firefox 3.1のスマートロケーションバーでの新機能（検索対象の絞り込み ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/3077221f4d40106ebaea37f69828ec5b465c5e6bc6fb0f403e35051a611c15a7/http%3A//level.s69.xrea.com/mozilla/index.cgi%3Fid=20080727_AwsomebarPP\">http://level.s69.xrea.com/mozilla/index.cgi?id=20080727_AwsomebarPP</a> )、スマートキーワードとの連携 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2ebf2661f5f9bdafaf33eb707cca83a1b53a2a253205730941b3614d8782792d/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=392143\">https://bugzilla.mozilla.org/show_bug.cgi?id=392143</a> )、タイトルやURIの先頭のみにマッチする隠し設定 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c86f86461e82002e8c790b7337da0a1f83195e70bb7dec7bfec4de46c95e145a/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=451760\">https://bugzilla.mozilla.org/show_bug.cgi?id=451760</a> )）に対応\n* フォーカスされた箇所を画面中央に表示する機能について、Migemo検索でない通常の検索時に機能しなくなっていたのを修正\n* フォーカスされた箇所を画面中央に表示する機能について、正確に画面中央ではなく、ある程度の余裕を持って表示するようにした（画面端から30％の範囲より外にある時はそれより内側に入る位置までスクロールするようにした。旧来の動作に戻す場合はabout:configでxulmigemo.scrollSelectionToCenter.paddingの値を50に変更すること）\n* Firefox 3.1の「すべて強調表示」の表示スタイル ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/82db9fc316cd19503164ab8fdf29dfdbd8c473697b8cc33549aba06e1474cbc9/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=263683\">https://bugzilla.mozilla.org/show_bug.cgi?id=263683</a> ) に対応\n* 常に「すべて強調表示」を有効にする状態の時、再検索時のパフォーマンスを改善\n* クイックMigemo検索中でも、ページをスクロールしている間はタイマーを停止するようにした\n* クイックMigemo検索で最後の文字を消した後にボタンの状態が更新されていなかったのを修正\n* 「すべて強調表示」のハイライトのON/OFF切り替えでフォーカス箇所の選択範囲が失われてしまうことがあったのを修正\n* 辞書を読み込めなかった時の初期化ウィザードについて、最後のページに「今後表示しない」のチェックボックスを追加した"
+            "text": {
+                "en-US": "Dual license: GPL 2.0 or Ruby license",
+                "ja": "Dual license: GPL 2.0 or Ruby license"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.2",
-            "version": "0.11.2"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.13.6"
         },
-        {
-            "id": 49565,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.0.*",
-                    "min": "2.0"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/49565",
-            "files": [
-                {
-                    "id": 33096,
-                    "created": "2008-07-07T06:16:56Z",
-                    "hash": "sha256:53a27c96370e92ed3680c58ba8d18802b2648cda9d92fba155061632b7372d57",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 142336,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/33096/xul_migemo-0.10.6-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Improved: Available for Firefox 3 features, the Smart Location Bar, search boxes of History and Bookmarks.\n* Improved: \"Not\" find is available on the Smart Location Bar. If you add \"-\" before terms, Firefox shows results which don't include those terms.\n* Improved: \"thi\" matches \"てぃ\".\n* Improved: The Find Toolbar can be moved to above the content area or below the tab.\n* Improved: closebox of the Find Toolbar can be moved to rightside.\n* Improved: Tind Toolbar buttons become compact automatically when window is too small.\n* Improved: Better support for Split Browser.\n* Fixed: Auto-highlight feature works correctly.\n* Fixed: Animation preference works correctly in the configuration dialog.\n* Firefox 1.5 is not supported anymore.\n",
-                "ja": "* Firefox 3のスマートロケーションバー、履歴、ブックマークの検索に対応\n* ロケーションバーでNOT検索を可能にした（検索後の頭に「-」を付けると、その語を含まない結果が表示されます）\n* 「thi」で「てぃ」にヒットするようにした\n* 検索ツールバーの位置をウィンドウ上部やタブの下に移動する機能を追加\n* 検索ツールバーのクローズボックスを右端に表示する機能を追加\n* ウィンドウ幅が狭まった時に自動的にボタンのラベルを非表示にするようにした\n* 分割ブラウザとの連携を強化\n* 自動ハイライトの挙動を修正\n* アニメーション効果の設定UIが機能してなかったのを修正\n* Firefox 1.5のサポートを打ち切った\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.10.6",
-            "version": "0.10.6"
+        "release_notes": {
+            "en-US": "&lt;p&gt;Changes from 0.13.5 to 0.13.6:&lt;/p&gt;<ul><li>Fixed: On the first startup, the initial state of the find toolbar was wrongly set to \"Migemo\" mode. (*If you got the wrongly initialized preference, you have to repair it manually by \"XUL/Migemo Configuration\" =&gt; \"Find Toolbar\" =&gt; \"Change initial state of the Find Toolbar Features...\" =&gt; \"Find mode:\" =&gt; \"Normal\".)</li><li>Fixed: Failed to switch internal modes when you clicked the find mode switcher.</li></ul>&lt;p&gt;Changes from 0.13.4 to 0.13.5:&lt;/p&gt;<ul><li>Improved: Highlighted terms are shown with drop shadow.</li></ul>&lt;p&gt;Changes from 0.13.3 to 0.13.4:&lt;/p&gt;<ul><li>Improved: Async operation for Safari-style highlighting and markers is landed.</li><li>Fixed: Needless checkboxes for combination about other addons has been removed.</li><li>Fixed: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/24362ff778a8abe26a229db4d09860394edc17696998d419e847137a1e221549/http%3A//piro.sakura.ne.jp/cgi-bin/bbs.cgi%3F2737\">Highlights were wrongly cleared by markers, if Safari-style highlight was disabled.</a></li></ul>&lt;p&gt;Changes from 0.13.2 to 0.13.3:&lt;/p&gt;<ul><li>Fixed: Some fatal regressions around the awsomebar disappeared.</li></ul>&lt;p&gt;Changes from 0.13.1 to 0.13.2:&lt;/p&gt;<ul><li>Fixed: Freezing while highlighting disappeared.</li></ul>&lt;p&gt;Changes from 0.13.0 to 0.13.1:&lt;/p&gt;<ul><li>Fixed: The awsomebar didn't work anymore after a browser window closed and there was another window.</li></ul>&lt;p&gt;Changes from 0.12.2 to 0.13.0:&lt;/p&gt;<ul><li>Improved: Works on Minefield 4.0b2pre.</li><li>Improved: On Minefield 4.0b2pre, \"switch to tab\" feature of the awsomebar is supported.</li><li>Improved: Works on Thunderbird 3.0 and Thunderbird 3.1. (*Note: Migemo find is not available for quick find in folders if the Gloda is disabled.)</li><li>Improved: \"Find from viewport\" is optimized. (*Note: only on Gecko 1.9.2 and later.)</li><li>Improved: Smooth-scroll for \"show the found term in the middle of the screen\". (To disable it, go to about:config and set <code>xulmigemo.highlight.foundMarker.smoothScroll.enabled</code> to <code>false</code>.)</li><li>Improved: Smooth-scroll for markers of found positions. (To disable it, go to about:config and set <code>xulmigemo.highlight.foundMarker.smoothScroll.enabled</code> to <code>false</code>.)</li><li>Modified: \"migemo\" API doesn't return contents in the user dictionary anymore. This is a security improvement.</li><li>Fixed: Keyboard shortcuts can be customized on Firefox 3.6 and later.</li><li>Fixed: <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a0789feb7781a87729cfb5451b55ea056acf9dd898e86447cf9c5fa0a69b668d/http%3A//piro.sakura.ne.jp/cgi-bin/bbs.cgi%3F2648\">Annoying focus moving when in-page finding is failed</a> disappeared.</li><li>Fixed: <code>browser.urlbar.autoFill</code> works correctly for the smart location bar with XUL/Migemo.</li><li>Fixed: Highlighted terms for the last search are correctly cleared by the next search.</li><li>Fixed: Warnings from keyup events disappeared.</li><li>Drops support for Firefox 2 and Thunderbird 2.</li></ul>",
+            "ja": "&lt;p&gt;0.13.5から0.13.6の変更点：&lt;/p&gt;<ul><li>初回起動時の初期化処理で検索ツールバーの初期モードがMigemo検索になってしまう問題を修正（※既にこの設定が適用されてしまっている環境では、XUL/Migemoの設定で「検索ツールバー」→「検索ツールバーの初期状態を変更…」→「検索モード」で「通常」を選択肢直す必要があります）</li><li>検索モードを切り替える操作をしたにも関わらず内部的なモードが切り替わらないままになる問題を修正</li></ul>&lt;p&gt;0.13.4から0.13.5の変更点：&lt;/p&gt;<ul><li>Safari風強調表示で強調表示された箇所に影を表示するようにした</li></ul>&lt;p&gt;0.13.3から0.13.4の変更点：&lt;/p&gt;<ul><li>Safari風強調表示や検索のヒット位置のマーカー表示を有効にしている時に、処理を非同期で段階的に行うようにした（ヒット箇所が多い時にフリーズする問題への対策）</li><li>他のアドオンとの連携用の設定など、不要な設定項目が残っていたのを削除した</li><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/24362ff778a8abe26a229db4d09860394edc17696998d419e847137a1e221549/http%3A//piro.sakura.ne.jp/cgi-bin/bbs.cgi%3F2737\">ヒット位置を示すマーカーが表示されるタイミングで選択範囲による強調表示が消えてしまっていた問題</a>を修正</li></ul>&lt;p&gt;0.13.2から0.13.3の変更点：&lt;/p&gt;<ul><li>後退バグでロケーションバーの検索等が動かなくなっていたのを修正</li></ul>&lt;p&gt;0.13.1から0.13.2の変更点：&lt;/p&gt;<ul><li>無限ループで固まる事があったのを修正</li></ul>&lt;p&gt;0.13.0から0.13.1の変更点：&lt;/p&gt;<ul><li>Firefoxのウィンドウを複数開いている時に、1つウィンドウを閉じると後のウィンドウでスマートロケーションバーが機能しなくなる問題を修正</li></ul>&lt;p&gt;0.12.2から0.13.0の変更点：&lt;/p&gt;<ul><li>Minefield 4.0b2pre対応</li><li>Minefield 4.0b2preのスマートロケーションバーで、ヒットした候補が既にタブで開かれている場合はそのタブに切り替える機能に対応</li><li>Thunderbird 3.0およびThunderbird 3.1に対応（※検索用のインデックスが作成されていない場合はフォルダ内の絞り込み検索でのMigemo検索はできません）</li><li>見えている範囲から検索を開始する処理を若干高速化した（Gecko 1.9.2以降のみ）</li><li>ページ内検索のヒット位置を画面の中央近くに表示する形でスクロールする時に、スムーズスクロールするようにした（スムーズスクロールを無効にする場合はabout:configで<code>xulmigemo.scrollSelectionToCenter.smoothScroll.enabled</code>を<code>false</code>に変更して下さい）</li><li>ページ内検索のヒット位置を示すマーカーをクリックした時に、その位置までスムーズにスクロールするようにした（スムーズスクロールを無効にする場合はabout:configで<code>xulmigemo.highlight.foundMarker.smoothScroll.enabled</code>を<code>false</code>に変更して下さい）</li><li>API経由でWeb上のスクリプトからアクセスする時はユーザ辞書の内容を返さないようにした</li><li>Firefox 3.6以降でキーカスタマイズができない問題を修正</li><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/a0789feb7781a87729cfb5451b55ea056acf9dd898e86447cf9c5fa0a69b668d/http%3A//piro.sakura.ne.jp/cgi-bin/bbs.cgi%3F2648\">検索失敗時にフレームにフォーカスが移動してしまう問題</a>を修正</li><li>スマートロケーションバーの動作を乗っ取っている時に<code>browser.urlbar.autoFill</code>が機能しない問題を修正</li><li>前回の検索結果がハイライト表示された状態で別の検索を開始すると前回のハイライトが残ったままになってしまう問題を修正</li><li>keyupイベントでの警告が表示されないようにした</li><li>Firefox 2、Thunderbird 2への対応を終了</li></ul>"
         },
-        {
-            "id": 47883,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.0.*",
-                    "min": "1.5"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.13.6",
+        "version": "0.13.6"
+    },
+    {
+        "id": 81706,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.6.*",
+                "min": "2.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/47883",
-            "files": [
-                {
-                    "id": 31369,
-                    "created": "2008-06-20T00:59:25Z",
-                    "hash": "sha256:5bcd9cfa73e82cbca7f17c5d32f5ce0c6521db0dd4aa3f7cc4823bdbcd5a3cc5",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 128000,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/31369/xul_migemo-0.8.15-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Improved: Old animation style can be chosen from the configuration dialog.\n* Fixed: Highlights are correctly cleared.\n* Fixed: IM is correctly disable on Linux.\n* Fixed: Broken appearance on Mac OS X is corrected.\n* Modified: Auto-highlighting is disabled for a blank find field.\n* Fixed: The find toolbar doesn't appear on the startup even if any find mode is chosen for the default mode.\n* Fixed: Works with multiple frames correctly.\n* Modified: Highlighted terms are cleared after the find toolbar is closed.\n",
-                "ja": "* アニメーション効果を設定ダイアログから変更できるようにした\n* 自動ハイライトを有効にしている時に、前の検索語がハイライトされたままになる問題を修正\n* LinuxでIMEが無効化されない問題を修正\n* Mac OS Xでの表示を修正\n* 検索語句が入力されていない時はハイライトを無効にするようにした\n* 起動直後に検索ツールバーを表示するかどうかの設定にかかわらず、起動直後の検索モードの内部的な切り替えによって検索ツールバーが有効化されてしまっていたのを修正\n* 複数のフレームがある時に検索がうまくいかない問題を修正\n* 検索を終了する時は常に強調表示を無効化するようにした\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.8.15",
-            "version": "0.8.15"
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
         },
-        {
-            "id": 44701,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.0pre",
-                    "min": "1.5"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/81706",
+        "files": [
+            {
+                "id": 67595,
+                "created": "2009-10-23T05:25:06Z",
+                "hash": "sha256:5592c5ce910002d3beacd715303a07799f2fd81bd8fbfcaa1487c719cf978134",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 172032,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/67595/xul_migemo-0.12.2-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 88,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/44701",
-            "files": [
-                {
-                    "id": 28147,
-                    "created": "2008-05-13T04:45:44Z",
-                    "hash": "sha256:55de06be2ea1aff241629f0c51de8edb5a446f080af5633c53efe7d719607ffd",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 122880,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/28147/xul_migemo-0.8.12-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Modified: In the Quick Migemo Find mode, label beside the find field is changed.\n* Improved: \"Highlight All\" works in any XML documents.\n* Improved: Focused term is highlighted like safari.\n* Improved: IME is automatically disabled for the Quick Migemo Find. (for Firefox 3)\n* Improved: Quick Migemo Find can be started even if you focus to the location bar or the web search bar.\n* Fixed: State of find toolbar buttons in regular expression search and Migemo Find mode is same to normal find mode.\n* Fixed: Wrongly selected ranges in text field disappeared for \"find next\" and \"find previous\" when \"Highlight All\" is checked.\n* Fixed: The find field is correctly filled with selection terms.\n* Fixed: \"Highlight All\" is correctly checked automatically even if it is the first time.\n* Fixed: Clicked elements keeps its focus correctly after Quick Migemo Find finishes.\n* Fixed: Progress meter is shown with narrow style.\n* Fixed: Back space key doesn't go back if it cancels the Quick Migemo Find.\n* Fixed: Regular expression search can be started with selection terms correctly.\n* Fixed: Dark screen keeps itself shown after you click on somewhere not a link.\n* Fixed: \"Highlight All\" appearance is correctly applied for the first-loaded page.\n* Fixed: Operations on the find field works correctly in the Quick Migemo Find mode.\n* Fixed: \"Enter\" and \"Shfit-Enter\" for normal find works correctly.\n* Fixed: Safari style \"Highlight All\" works with the auto scroll, All-in-One Gestures, FireGestures and Optimoz Mouse Gestures.\n* Fixed: Works with recent versions of the Autocomplete Manager.\n* Fixed: Transparent screen is correctly hidden if highlighted terms are clicked.\n* Fixed: Click events are correctly re-dispatched even if the full-zoom feature is used.\n* Fixed: Find feature works correctly on plain text pages.\n* Fixed: Quick Migemo Find doesn't finish even if the Enter key is pressed on found terms which are not link.\n* Fixed: The find toolbar is hidden correctly after the Quick Migemo Find finishes if that is started from the Migemo find mode.\n* Fixed: Regular expression search and Migemo find works on XML documents.",
-                "ja": "* クイックMigemo検索の時に検索ツールバーの表示を変えるようにした\n* text/xmlの文書などでも「すべて強調表示」のハイライト表示を利用できるようにした\n* Safariのように、フォーカス箇所の強調表示を残すようにした\n* クイックMigemo検索時に自動的にIMEを無効化するようにした（Firefox 3のみ）\n* 内容領域にフォーカスが無い時でもクイックMigemo検索を開始できるようにした\n* 正規表現検索やMigemo検索における、検索がヒットしなかった時の検索ツールバー上のボタンの有効無効や自動ハイライトについて、通常の検索の場合と挙動を合わせた\n* 強調表示を有効にした状態で通常の検索で次候補・前候補を検索するとテキストフィールド内に選択範囲が残ってしまう問題を解消\n* 検索を開始する時、選択範囲の内容が検索窓に自動的に挿入されない場合があったのを修正\n* 「すべて強調表示」を常に有効にする設定の時でも最初の1回だけは強調表示されない場合があったのを修正\n* 画面のクリックなどでクイックMigemo検索を終了した時、フォーカスが失われてしまう問題を修正\n* プログレスバーが大きく表示されていたのを修正\n* クイックMigemo検索時にBSで検索バーを消すと同時に「戻る」が働いてしまっていたのを修正\n* 正規表現検索モードで、選択範囲の内容から検索を開始できなかったのを修正\n* リンクなどがない位置で半透明のスクリーン上でクリックすると、どんな操作であってもスクリーンが消えたままになっていたのを修正\n* 起動直後に読み込まれたページで強調表示のスタイルが適用されないことがある問題を修正\n* クイックMigemo検索時に入力欄の操作が乗っ取られてしまっていたのを修正\n* 通常の検索時にEnterキーで次候補にフォーカスできなくなっていたのを修正\n* Safari風強調表示とオートスクロール、All-in-One Gestures、FireGestures、Optimoz Mouse Gesturesの競合を解消\n* Autocomplete Managerの仕様変更に追従\n* Firefox 3で正常に動作しなくなっていたのを修正\n* クイックMigemo検索でリンク以外がヒットした時はEnterキーを押しても検索を終了しないようにした\n* Migemo検索の状態からクイックMigemo検索を開始するとクイックMigemo検索終了後に検索ツールバーが閉じない問題を修正\n* メニュー等を開いている時にまでクイックMigemo検索が起動してしまう問題を修正\n* XMLのページで正規表現検索時・Migemo検索が動作しない問題を修正\n"
+            "text": {
+                "en-US": "Dual license: GPL 2.0 or Ruby license",
+                "ja": "Dual license: GPL 2.0 or Ruby license"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.8.12",
-            "version": "0.8.12"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.12.2"
         },
-        {
-            "id": 44380,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.0pre",
-                    "min": "1.5"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/44380",
-            "files": [
-                {
-                    "id": 27823,
-                    "created": "2008-05-05T13:20:56Z",
-                    "hash": "sha256:c4c6e2ec2f1fe42fbf38ce051889dec01d5392c4377d21424e281f2df978d94a",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 117760,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/27823/xul_migemo-0.8.5-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Improved: Animation effect of \"Highlight All\" feature becomes like Safari. (If you need, to get old behavior back, set \"xulmigemo.highlight.animationStyle\" to \"1\".)\n* Fixed: Migemo Find works without timeout correctly if you are not in the Quick Migemo Find mode.\n* Fixed: \"BackSpace\" key resets timeout of Quick Migemo Find correctly.\n* Improved: Click events are fired when elements are clicked through the highlighting screen.\n* Improved: Highlights are cleared by clicking if they are in text fields.\n* Fixed: Highlighting screen disappears correctly if the find bar is closed.\n* Improved: \"Find from viewport\" works more intelligently.\n* Improved: Middle click, Ctrl-click or some combinations keeps \"Highlight All\" screen shown.\n* Fixed: \"Highlight All\" screen is correctly hidden if it is disabled.\n",
-                "ja": "* 「すべて強調表示」の時のアニメーション効果をよりSafariに近づけた（xulmigemo.highlight.animationStyleを1にすると旧バージョンの動作に戻ります）\n* 検索モードがMigemo検索の時、常にクイック検索のタイムアウトが適用されてしまっていたのを修正\n* クイック検索時にBackSpaceキーでタイマーがリセットされなくなっていたのを修正\n* Safari風のハイライト表示時において、クリックした箇所にイベントを発生させるようにした\n* テキスト入力欄内の強調箇所について、クリックしたら強調を解除するようにした\n* 検索ツールバーが非表示になる時にSafari風ハイライト表示が無効にならない場合があったのを修正\n* 表示されている範囲からの検索処理を改善したつもり\n* 「すべて強調表示」の時のスクリーンを維持したままミドルクリックやCtrl-クリックなどの操作をできるようにした\n* 「すべて強調表示」を無効にしてもスクリーンが表示されてしまう場合があったのを修正\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.8.5",
-            "version": "0.8.5"
+        "release_notes": {
+            "en-US": "* Improved: New API for addons and web applications, available on global namespace of JavaScript.\n* Fixed: \"Highlight All\" works correctly for case sensitive mode.\n* Fixed: Centering for the focused term works correctly for some cases.\n* Fixed: Smart keywords works correctly on the location bar.\n* Fixed: Regexp without \"i\" flag works correctly on the location bar.\n* Fixed: \"ESC\" key in the location bar correctly restores the original input.\n* Fixed: On Thunderbird, works correctly for messages without encoded characters.\n* Still doesn't work on Trunk at 2009-10-21, because of Bug 396392 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/21c6dd7e851dfc81424a3503e4b7b60b1501407c706558cedd77fd0372b8773b/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=396392\">https://bugzilla.mozilla.org/show_bug.cgi?id=396392</a> ) .",
+            "ja": "* JavaScriptのグローバルオブジェクトからアクセス可能な新しいAPIを実装\n* 検索のヒット箇所を強調表示する際、大文字小文字の違いが常に無視されていたのを修正\n* 検索にヒットした箇所を画面中央までスクロールする処理が働かない場合があったのを修正\n* ロケーションバーにスマートキーワードを入力すると検索結果が出ない問題を修正\n* ロケーションバーの検索で、iフラグ無しの正規表現に対して大文字小文字が区別されていなかったのを修正\n* ロケーションバーの入力時にESCキーを押した時、入力中だった内容の復元や検索文字列の消去が正しく行われていなかったのを修正\n* Thunderbirdで、件名等にエンコードされた部分がない時にエラーになっていたのを修正\n* Bug 396392 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/21c6dd7e851dfc81424a3503e4b7b60b1501407c706558cedd77fd0372b8773b/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=396392\">https://bugzilla.mozilla.org/show_bug.cgi?id=396392</a> ) のため、2009年10月21日時点でのTrunkでは動作しません"
         },
-        {
-            "id": 44262,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "2.0.0.*",
-                    "min": "2.0"
-                },
-                "firefox": {
-                    "max": "3.0pre",
-                    "min": "1.5"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.12.2",
+        "version": "0.12.2"
+    },
+    {
+        "id": 69903,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.6a1pre",
+                "min": "2.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/44262",
-            "files": [
-                {
-                    "id": 27704,
-                    "created": "2008-05-02T11:32:33Z",
-                    "hash": "sha256:30ca50fa87c1319bbe6182f9171233ff513bd7a7b075375e74319ff05b2625ba",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 161792,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/27704/xul_migemo-0.8.1-fx+tb.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Improved: Works more smoothly on Firefox 3.\n* Improved: Quick Migemo Find doesn't send keyboard events from your keytypes to webpages anymore.\n* Improved: The focused link is loaded directly from Quick Migemo Find.\n* Improved: The link URI of the focused link is shown in the status bar.\n* Fixed: Terms in text fields are found correctly.\n* Fixed: Highlights in text fields are cleared correctly.\n* Improved: Regular expression search is available. To activate it, switch the find mode manually or type regexp literal like \"/find/\" to the find field.\n* Improved: Ctrl(Command)-F switches the find mode or closes the find toolbar when it is already focused.\n* Modified: Algorithm of backward find is changed.\n* Modified: Texts are decoded by Thunderbird's built-in feature. Because JavaScript-based decoder became obsolete, the size of the installation file is reduced.\n* Fixed: \"Find Next\" of native search works correctly after XUL/Migemo search is done.\n* Fixed: \"Find Previous\" of XUL/Migemo search works correctly for multiple terms.\n* Improved: Mail bodies can be searched by XUL/Migemo, in Thunderbird.\n* Modified: Configuration dialog is restrucured.\n* Works on Firefox 3 beta5.",
-                "ja": "* Firefox 3のUIとの統合を改善\n* クイック検索時にWebページからフォーカスを外し、キーボード関係のイベントを発生させないようにした\n* クイック検索の終了時にすぐにリンク先に飛ぶようにした\n* 検索がヒットした箇所のリンク文字列をステータスバーに表示するようにした\n* テキスト入力欄にだけ含まれる単語も正しく検索できるようにした\n* テキスト入力欄の中の強調表示が解除されない問題を修正\n* 正規表現で検索する機能を加えた（検索モードの明示的な切り替え、または「/正規表現/」のような正規表現リテラルの形で検索語句を入力することで実行）\n* 検索の実行中にもう一度Ctrl-Fを入力した時、検索モードを切り替えたり検索を終了したりできるようにした\n* 後方検索の処理方法を変更した\n* MIMEエンコードされたテキストのデコード処理をThunderbirdの機能で行うようにした（自前ライブラリを持たなくてよくなったのでファイルサイズが大幅に削減された）\n* Migemo検索を実行した直後に通常の検索を実行すると次候補を検索できなくなる場合があったのを修正\n* 複数単語を入力した時に前方検索で正規表現の生成に失敗する問題を修正\n* Thunderbirdのクイック検索について、メール本文の検索でもXUL/Migemoを利用できるようにした\n* 設定ダイアログを再編\n* Firefox 3 beta5での動作を確認\n"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.8.1",
-            "version": "0.8.1"
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
         },
-        {
-            "id": 39793,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.0a7",
-                    "min": "1.5"
-                }
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/69903",
+        "files": [
+            {
+                "id": 54852,
+                "created": "2009-06-07T23:42:46Z",
+                "hash": "sha256:e173d8860a7f8ba1c880a55a36defe2bea0b266024072e1d92f2ea18446de8d2",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 164864,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/54852/xul_migemo-0.11.16-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 88,
+            "name": {
+                "en-US": "Custom License"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/39793",
-            "files": [
-                {
-                    "id": 23142,
-                    "created": "2008-01-29T15:39:06Z",
-                    "hash": "sha256:25796208f0bba2e6c04b67dc08bf146aca230bbf222f48caeba1145d4b85df79",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 151552,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/23142/xul_migemo-0.7.13-fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Improved: Works with Autocomplete Manager ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/2300\">https://addons.mozilla.org/firefox/addon/2300</a> ).\n* Improved: Available for searching mails on Thunderbird. (But searching in \"body\" field isn't supported yet.)",
-                "ja": "* Autocomplete Manager（ <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/2300\">https://addons.mozilla.org/firefox/addon/2300</a> ）と連係して動作するようにした\n* Thunderbirdでメールの検索にXUL/Migemoを利用できるようにした（本文検索以外）"
+            "text": {
+                "en-US": "Dual license: GPL 2.0 or Ruby license",
+                "ja": "Dual license: GPL 2.0 or Ruby license"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.13",
-            "version": "0.7.13"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/license/0.11.16"
         },
-        {
-            "id": 37170,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.0a7",
-                    "min": "1.5"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/37170",
-            "files": [
-                {
-                    "id": 20485,
-                    "created": "2007-10-28T02:28:16Z",
-                    "hash": "sha256:360d08cb967c09d722febef4c1d4f011743d2bcfbe3881b22790b187799c824e",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 100352,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/20485/xul_migemo-0.7.11-fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "* Fixed: Works with Internote ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c32099310caf5873315d2a7434fa771fe900403ce080191bfad90bee0dd5f1e9/http%3A//internote.sourceforge.net/\">http://internote.sourceforge.net/</a> ) and Source Viewer Tab ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/5908\">https://addons.mozilla.org/firefox/addon/5908</a> ).\n* Fixed: The input \"uwwu-\" hits to \"うっうー\" correctly.",
-                "ja": "* Internote（ <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c32099310caf5873315d2a7434fa771fe900403ce080191bfad90bee0dd5f1e9/http%3A//internote.sourceforge.net/\">http://internote.sourceforge.net/</a> ）、ソース表示タブ（ <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/5908\">https://addons.mozilla.org/firefox/addon/5908</a> ）との衝突を解消\n* uwwu-で「うっうー」にヒットしない問題を修正"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.11",
-            "version": "0.7.11"
+        "release_notes": {
+            "en-US": "* Fixed: Too high usage of CPU when you input many numbers of terms to the location bar dsappeared.\n* Fixed: \"Home\" key for smart location bar items works correctly.\n* Improved: \"Match Cases\" option is available for finding with regular expressions.\n* Fixed: Highlighting in text fields was broken on Shiretoko.\n* Fixed: Finds from document edge (or viewport edge) correctly if the find term is different from the previous find.\n* Fixed: Broken appearance of the find mode selector disappeared for Download Statusbar ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/26\">https://addons.mozilla.org/firefox/addon/26</a> ).\n* Fixed: User dictionary for English system dictionary works correctly.",
+            "ja": "* スマートロケーションバーに多数の単語を入力した時にフリーズしてしまっていた問題について改善したつもり\n* スマートロケーションバーの候補を選択した状態でHomeキーを押した時の挙動が、Mac OS X用とそれ以外のプラットフォーム用とで逆転していたのを修正\n* 正規表現検索の際に大文字小文字を区別するようにした（正規表現リテラル形式でiフラグを付けて検索した場合、または「大文字/小文字を区別」のチェックボックスがOFFの場合は大文字小文字を区別しない）\n* Shiretokoでテキスト入力欄内のヒット箇所の強調表示に失敗するようになっていたのを修正\n* 前方検索・後方検索の違いに関わらず、前回の検索語句と異なる語句で検索する時は必ずドキュメントの端（またはビューポートの端）から検索するようにした\n* Download Statusbar ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/26\">https://addons.mozilla.org/firefox/addon/26</a> )が表示される時に検索モード切り替えボタンの表示位置がずれる問題に対処\n* 英語辞書のユーザ辞書機能が正常に働いていなかったのを修正"
         },
-        {
-            "id": 36094,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.0a7",
-                    "min": "1.5"
-                }
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.16",
+        "version": "0.11.16"
+    },
+    {
+        "id": 66863,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.6a1pre",
+                "min": "2.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/36094",
-            "files": [
-                {
-                    "id": 19384,
-                    "created": "2007-09-19T03:30:16Z",
-                    "hash": "sha256:99aa1d8d0374fda040f6e19065ae58fddb3d7eeda4450c5701f17c6e991b587e",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 100352,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/19384/xul_migemo-0.7.9-fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "*  Fixed: Freezing on start to find with auto-highlighting disappeared. (maybe)\n* Fixed: \"Find from viewport\" feature works correctly.\n* Fixed: The input \"ssyo\" hits to \"っしょ\" correctly.\n",
-                "ja": "*  常に強調表示を有効にする設定の時、検索開始時にしばらく固まったようになってしまうことがある問題について改善したつもり\n* 現在見えている範囲から検索を開始する機能が働いていなかったのを修正\n* ssyoで「っしょ」にヒットしない問題を修正\n"
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/66863",
+        "files": [
+            {
+                "id": 51503,
+                "created": "2009-04-20T19:48:10Z",
+                "hash": "sha256:d017b0ab03d439579c05100e7d5c0ca99e2d4d2ffeb73736e0b2f7221935ccc0",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 163840,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/51503/xul_migemo-0.11.14-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Fixed: Inital startup error disappeared.\n* Fixed: Invisible tests are correctly ignored on Gecko 1.8.\n* Fixed: Highlight screen and markers in background tabs are cleared automatically when the find toolbar is closed.\n* Fixed: The URI of the link is correctly shown in the status bar when the found range is inside a link. (regression)\n* Fixed: Focus ring is shown for the focused link in Quick Migemo Find mode.\n* Fixed: Found link is correctly focused when the find toolbar is closed.\n* Modified: The result shown as blank and \"save\" button for the query is disabled while there is no result yet for Migemo search in Bookmarks, History, and Library.\n* Fixed: Freezing on window resizing disappeared for Minefield. (maybe)\n* Fixed: Infinity increasing of elements for highlighting disappeared even if you switch the find mode with checked \"highlight all\" button.\n* Modified: Application-specific checkboxes in \"Combination\" panel are hidden by the environment.",
+            "ja": "* 初回起動時の初期化に失敗することがあったのを修正\n* Gecko 1.8でテキストの表示・非表示の判別に失敗していたのを修正\n* すべて強調表示を有効にしたままの状態で、タブを切り替えてから検索を終了すると、切り替え前のタブに強調表示やヒット位置のマーカーが残ったままになってしまう問題を修正（検索終了ですべてのタブの強調表示を解除するようにした）\n* クイックMigemo検索でリンク内にヒットしてもステータスバーにリンク先が表示されなくなっていたのを修正（いつの頃からかのregression）\n* クイックMigemo検索でリンク内にヒットした時にフォーカスリングを表示するようにした（Firefox標準の検索の挙動と異なる状態になっていたのを修正）\n* Migemo検索終了時に、リンク内に検索がヒットしていた場合はリンクにフォーカスするようにした（Firefox標準の検索の挙動と異なる状態になっていたのを修正）\n* ブックマークサイドバー、履歴サイドバー、およびライブラリでの検索時に有効な検索結果が見つかっていない状態の時は、検索結果を空にし、クエリとしても保存できないようにした\n* ウィンドウの幅が極端に狭い時などに、検索ツールバーの内容自体のアップデートによって無限に再描画が発生してしまう場合があったのを修正（したつもり）\n* 強調表示を有効にしたままで検索モードを切り替えた時に、強調表示用の要素が無限に増殖する問題を修正\n* 「連携」パネル内のチェックボックスについて、その環境で不要な物は隠すようにした"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.14",
+        "version": "0.11.14"
+    },
+    {
+        "id": 65620,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.6a1pre",
+                "min": "2.0"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.9",
-            "version": "0.7.9"
-        }
-    ]
-}
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/65620",
+        "files": [
+            {
+                "id": 50135,
+                "created": "2009-04-01T09:09:50Z",
+                "hash": "sha256:244dca121b2a7679a06f8ec7a6274327db2aaa8bb0e3cc052e3a3e17f87968a7",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 162816,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/50135/xul_migemo-0.11.12-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Works on Minefield again.\n* Modified: Highlighting is disabled automatically when the find toolbar is closed.\n* Fixed: Highlighting works correctly for the native find.\n",
+            "ja": "* Minefieldで動作しなくなっていたのを修正\n* 検索ツールバーを閉じる時、必ずハイライトのチェックを外すようにした\n* 通常検索ですべて強調表示が機能しない問題を修正\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.12",
+        "version": "0.11.12"
+    },
+    {
+        "id": 62488,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.6a1pre",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/62488",
+        "files": [
+            {
+                "id": 46780,
+                "created": "2009-02-12T06:18:19Z",
+                "hash": "sha256:6aa1093c5cb1e0739c666ceeeb8a2e7604d1c12a5701bd8191091a25e13d177f",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 160768,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/46780/xul_migemo-0.11.11-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: Works on Firefox 3.1b3pre.\n* Improved: Search mode can be circulated by Ctrl-F as: [Normal] =&gt; [RegExp] =&gt; [Migemo] =&gt; Exit =&gt; [Normal] =&gt; ...\n* Fixed: You can start Quick Migemo Find even if you've already opened the find toolbar.\n* Fixed: Highlights are shown correctly even if there are hidden elements in the page.\n* Fixed: \"g\" flag works correctly on finding by pIMigemo's API.\n* Modified: XUL/Migemo keep terms highlighted while switching find modes.\n* Fixed: Highlight screen of Safari style highlight disappeared when just you start to find.\nFixed: \"ヴ\", a special kata-kana character, is found correctry by input like \"va\", \"vi\", \"vu\", \"ve\" and \"vo\".\n",
+            "ja": "* Firefox 3.1b3pre対応\n* Ctrl-Fの連打で通常検索→正規表現検索→Migemo検索→検索終了→通常検索→…と切り替えられるようにした\n* 検索ツールバーが表示されている状態でクイックMigemo検索を開始できなくなっていたのを修正\n* 非表示の要素がある時に、ヒット箇所の強調表示の結果がおかしくなっていたのを修正\n* pIMigemoのAPIで正規表現で検索する際、gフラグが指定されていると処理結果がおかしくなっていたのを修正\n* 検索ツールバーを開いたまま検索モードを切り替えた際、強調表示の状態を維持するようにした\n* 検索ツールバーを開いた時、何もヒットしていないのにSafari風強調表示の薄暗い表示になる事があったのを修正\n* va、vi、vu、ve、voなどの入力でカタカナの「ヴ」にヒットしない問題を修正\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.11",
+        "version": "0.11.11"
+    },
+    {
+        "id": 57475,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.1b2pre",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/57475",
+        "files": [
+            {
+                "id": 41417,
+                "created": "2008-11-19T22:54:32Z",
+                "hash": "sha256:c7d19467d464f4df5d512fb82466705aab993c8ecc5d3e722ebc19f68a744a54",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 158720,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/41417/xul_migemo-0.11.8-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Search field in sidebar panels (Bookmarks, etc.) works correctly again.",
+            "ja": "0.11.5以降でブックマークサイドバーなどでの検索が機能しなくなっていたのを修正"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.8",
+        "version": "0.11.8"
+    },
+    {
+        "id": 56911,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.1b2pre",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/56911",
+        "files": [
+            {
+                "id": 40797,
+                "created": "2008-11-09T09:41:38Z",
+                "hash": "sha256:6bdb28dc4f83470a8aa2a67a1bfb044bbd84dab8eda7dbc61055d155953d8e63",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 156672,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/40797/xul_migemo-0.11.6-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Fixed: Works with SearchWP ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/376\">https://addons.mozilla.org/firefox/addon/376</a> ).",
+            "ja": "SearchWP( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/376\">https://addons.mozilla.org/firefox/addon/376</a> )と衝突していたのを修正"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.6",
+        "version": "0.11.6"
+    },
+    {
+        "id": 56820,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.1b2pre",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/56820",
+        "files": [
+            {
+                "id": 40700,
+                "created": "2008-11-07T05:18:12Z",
+                "hash": "sha256:3c28599722d64f813bdd2f1da524c02c1b64d6fe8617300a5f87ddd573043180",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 156672,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/40700/xul_migemo-0.11.5-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Fixed: Items from input histories in the smart location bar appear in the correct order.\n* Fixed: Find mode returns to the normal find mode when Firefox's original \"quick find\" starts.\n* Fixed: Changing find mode finishes the find, while Firefox's quick find or the quick migemo find is running.\n* Fixed: XUL/Migemo works correctly even if the initialization wizard is disabled and the dictionary is not configured.\n* Improved: You can start the initialization wizard from the configuration dialog.\n* Improved: Migemo find is available for the search box in the tab previews of Minefield 3.1b2pre.\n",
+            "ja": "* スマートロケーションバーでの検索結果で、入力確定履歴から検索される項目の表示順がおかしかったのを修正\n* Firefox標準のクイック検索を開始する時は常に検索モードを通常の検索に戻すようにした\n* Firefox標準のクイック検索またはクイックMigemo検索を実行中に検索モードを切り替えた場合は常に検索を終了するようにした\n* 辞書の位置が未設定で、且つ、辞書の初期設定ウィザードを表示しない設定になっている時、初期化に失敗する問題を修正\n* 設定ダイアログから辞書の初期設定ウィザードを開けるようにした\n* Minefield 3.1b2preのタブ一覧の検索欄でMigemo検索できるようにした\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.5",
+        "version": "0.11.5"
+    },
+    {
+        "id": 54552,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.1b1pre",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/54552",
+        "files": [
+            {
+                "id": 38225,
+                "created": "2008-09-26T02:44:44Z",
+                "hash": "sha256:56a61a982766fc94ef3e7174b92376721c35aa356b656ad844a218b11be77a9b",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 155648,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/38225/xul_migemo-0.11.4-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Fixed: Broken behavior about default find mode and permanent find mode is corrected.\n\nIn the previous version 0.11.3, if you set the default find mode or the permanent find mode by the configuration UI, the actual behavior was different from the described.\n\nInternally, find modes were saved as integer value, like \"0(means native find)\", \"1(means migemo)\" or \"2(means regexp find)\" in 0.11.2. I changed the value sets from \"0,1,2\" to \"1,2,4\" in 0.11.3, but I forgot to upgrade user preferences. Now, old preferences are automatically mapped to new one.",
+            "ja": "検索ツールバーの検索モードの初期値や毎回リセットされる先のモードについて、設定ダイアログのUI上の表示と実際の挙動とが異なってしまっていたのを修正。"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.4",
+        "version": "0.11.4"
+    },
+    {
+        "id": 54423,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.1b1pre",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/54423",
+        "files": [
+            {
+                "id": 38080,
+                "created": "2008-09-23T22:49:59Z",
+                "hash": "sha256:4cfa2535d2593c85b6adf58f89f7bc13a985b15d58cfe99619aabe872dffc674",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 155648,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/38080/xul_migemo-0.11.3-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: IME is automatically disabled for Migemo Find Mode even if it is started from normal find. (*Available only on Windows or Mac OS X.)\n* Fixed: Popup contents of the smart location bar is correctly filled with recently visited pages when the drop marker is clicked after Migemo Find.\n* Modified: Any integer number from 0 to 100 is available for \"xulmigemo.scrollSelectionToCenter.padding\".\n",
+            "ja": "* 通常の検索についても、検索モードがMigemo検索に切り替えられている場合はIMEを自動的に無効化するようにした（Windows, Mac OS Xのみ）\n* ロケーションバーのドロップダウンマーカーをクリックした時に、最近訪問したページではなく直前のMigemo検索の結果が表示されてしまっていたのを修正\n* xulmigemo.scrollSelectionToCenter.paddingの値として0から100までの範囲を受け付けるようにした\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.3",
+        "version": "0.11.3"
+    },
+    {
+        "id": 53783,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.1b1pre",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/53783",
+        "files": [
+            {
+                "id": 37413,
+                "created": "2008-09-11T21:44:24Z",
+                "hash": "sha256:f7db95a940767d47da4e342b44858850fe9a83d929c9a512ff70e2656f7e2469",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 154624,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/37413/xul_migemo-0.11.2-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Fixed: A serious problem is resolved. The previous version (0.11.1) couldn't work after restarting when it was newly installed.\n\n-----------------\nchangelog from 0.10.6:\n\n* Improved: Dictionaries' path can be stored as a relative path from the profile folder. On mobile Firefox, XUL/Migemo possibly works correctly.\n* Improved: Markers beside the scroll bar are available. They indicate where search term is in the page.\n* Improved: New awsomebar features introduced by Firefox 3.1 are supported. Restrictions ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2f77f1ca87654f20f67ff246041e337fab603bf0c98c3a2c4d4ef7cfe37b6ad1/http%3A//ed.agadak.net/2008/07/firefox-31-restricts-matches-keywords\">http://ed.agadak.net/2008/07/firefox-31-restricts-matches-keywords</a> ), dysplaying smart keywords ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2ebf2661f5f9bdafaf33eb707cca83a1b53a2a253205730941b3614d8782792d/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=392143\">https://bugzilla.mozilla.org/show_bug.cgi?id=392143</a> ), and matching only for beginnings of title/URL ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c86f86461e82002e8c790b7337da0a1f83195e70bb7dec7bfec4de46c95e145a/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=451760\">https://bugzilla.mozilla.org/show_bug.cgi?id=451760</a> ).\n* Fixed: Focused search term can be shown in the middle of the screen correctly if it is found by normal search.\n* Improved: Focused search term is shown in nearly middle of the screen, not just middle. In particular, only if the term exists out of the hidden border (30% from window edges), XUL/Migemo scrolls to the term. If you like the old behavior, type \"about:config\" into the location bar and change the value of \"xulmigemo.scrollSelectionToCenter.padding\" to \"50\".\n* Selection based highlighting of Firefox 3.1 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/82db9fc316cd19503164ab8fdf29dfdbd8c473697b8cc33549aba06e1474cbc9/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=263683\">https://bugzilla.mozilla.org/show_bug.cgi?id=263683</a> ) is supported.\n* Improved: Performance improvements on next/previous find for \"Highlight All\".\n* Improved: The timer is stopped while scrolling, for the Quick Migemo Find.\n* Fixed: Find toolbar status is updated correctly.\n* Fixed: Focused term keeps selected after \"Highlight All\" check is turned off.\n* Modified: Now, the last page of the initializing wizard has a checkbox \"never show this wizard\".",
+            "ja": "* Ver.0.11.1における、新規インストールした環境で2度目以降の起動時に動作しなくなる問題を修正\n\n-----------------\n0.10.6からの変更点:\n\n* 辞書のパスをプロファイルフォルダを基準とした相対パスで記憶できるようにし、移動プロファイル環境での動作を改善した\n* 検索がヒットした位置を表示する機能を追加\n* Firefox 3.1のスマートロケーションバーでの新機能（検索対象の絞り込み ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/3077221f4d40106ebaea37f69828ec5b465c5e6bc6fb0f403e35051a611c15a7/http%3A//level.s69.xrea.com/mozilla/index.cgi%3Fid=20080727_AwsomebarPP\">http://level.s69.xrea.com/mozilla/index.cgi?id=20080727_AwsomebarPP</a> )、スマートキーワードとの連携 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2ebf2661f5f9bdafaf33eb707cca83a1b53a2a253205730941b3614d8782792d/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=392143\">https://bugzilla.mozilla.org/show_bug.cgi?id=392143</a> )、タイトルやURIの先頭のみにマッチする隠し設定 ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c86f86461e82002e8c790b7337da0a1f83195e70bb7dec7bfec4de46c95e145a/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=451760\">https://bugzilla.mozilla.org/show_bug.cgi?id=451760</a> )）に対応\n* フォーカスされた箇所を画面中央に表示する機能について、Migemo検索でない通常の検索時に機能しなくなっていたのを修正\n* フォーカスされた箇所を画面中央に表示する機能について、正確に画面中央ではなく、ある程度の余裕を持って表示するようにした（画面端から30％の範囲より外にある時はそれより内側に入る位置までスクロールするようにした。旧来の動作に戻す場合はabout:configでxulmigemo.scrollSelectionToCenter.paddingの値を50に変更すること）\n* Firefox 3.1の「すべて強調表示」の表示スタイル ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/82db9fc316cd19503164ab8fdf29dfdbd8c473697b8cc33549aba06e1474cbc9/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=263683\">https://bugzilla.mozilla.org/show_bug.cgi?id=263683</a> ) に対応\n* 常に「すべて強調表示」を有効にする状態の時、再検索時のパフォーマンスを改善\n* クイックMigemo検索中でも、ページをスクロールしている間はタイマーを停止するようにした\n* クイックMigemo検索で最後の文字を消した後にボタンの状態が更新されていなかったのを修正\n* 「すべて強調表示」のハイライトのON/OFF切り替えでフォーカス箇所の選択範囲が失われてしまうことがあったのを修正\n* 辞書を読み込めなかった時の初期化ウィザードについて、最後のページに「今後表示しない」のチェックボックスを追加した"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.11.2",
+        "version": "0.11.2"
+    },
+    {
+        "id": 49565,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0.*",
+                "min": "2.0"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/49565",
+        "files": [
+            {
+                "id": 33096,
+                "created": "2008-07-07T06:16:56Z",
+                "hash": "sha256:53a27c96370e92ed3680c58ba8d18802b2648cda9d92fba155061632b7372d57",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 142336,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/33096/xul_migemo-0.10.6-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: Available for Firefox 3 features, the Smart Location Bar, search boxes of History and Bookmarks.\n* Improved: \"Not\" find is available on the Smart Location Bar. If you add \"-\" before terms, Firefox shows results which don't include those terms.\n* Improved: \"thi\" matches \"てぃ\".\n* Improved: The Find Toolbar can be moved to above the content area or below the tab.\n* Improved: closebox of the Find Toolbar can be moved to rightside.\n* Improved: Tind Toolbar buttons become compact automatically when window is too small.\n* Improved: Better support for Split Browser.\n* Fixed: Auto-highlight feature works correctly.\n* Fixed: Animation preference works correctly in the configuration dialog.\n* Firefox 1.5 is not supported anymore.\n",
+            "ja": "* Firefox 3のスマートロケーションバー、履歴、ブックマークの検索に対応\n* ロケーションバーでNOT検索を可能にした（検索後の頭に「-」を付けると、その語を含まない結果が表示されます）\n* 「thi」で「てぃ」にヒットするようにした\n* 検索ツールバーの位置をウィンドウ上部やタブの下に移動する機能を追加\n* 検索ツールバーのクローズボックスを右端に表示する機能を追加\n* ウィンドウ幅が狭まった時に自動的にボタンのラベルを非表示にするようにした\n* 分割ブラウザとの連携を強化\n* 自動ハイライトの挙動を修正\n* アニメーション効果の設定UIが機能してなかったのを修正\n* Firefox 1.5のサポートを打ち切った\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.10.6",
+        "version": "0.10.6"
+    },
+    {
+        "id": 47883,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0.*",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/47883",
+        "files": [
+            {
+                "id": 31369,
+                "created": "2008-06-20T00:59:25Z",
+                "hash": "sha256:5bcd9cfa73e82cbca7f17c5d32f5ce0c6521db0dd4aa3f7cc4823bdbcd5a3cc5",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 128000,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/31369/xul_migemo-0.8.15-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: Old animation style can be chosen from the configuration dialog.\n* Fixed: Highlights are correctly cleared.\n* Fixed: IM is correctly disable on Linux.\n* Fixed: Broken appearance on Mac OS X is corrected.\n* Modified: Auto-highlighting is disabled for a blank find field.\n* Fixed: The find toolbar doesn't appear on the startup even if any find mode is chosen for the default mode.\n* Fixed: Works with multiple frames correctly.\n* Modified: Highlighted terms are cleared after the find toolbar is closed.\n",
+            "ja": "* アニメーション効果を設定ダイアログから変更できるようにした\n* 自動ハイライトを有効にしている時に、前の検索語がハイライトされたままになる問題を修正\n* LinuxでIMEが無効化されない問題を修正\n* Mac OS Xでの表示を修正\n* 検索語句が入力されていない時はハイライトを無効にするようにした\n* 起動直後に検索ツールバーを表示するかどうかの設定にかかわらず、起動直後の検索モードの内部的な切り替えによって検索ツールバーが有効化されてしまっていたのを修正\n* 複数のフレームがある時に検索がうまくいかない問題を修正\n* 検索を終了する時は常に強調表示を無効化するようにした\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.8.15",
+        "version": "0.8.15"
+    },
+    {
+        "id": 44701,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0pre",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/44701",
+        "files": [
+            {
+                "id": 28147,
+                "created": "2008-05-13T04:45:44Z",
+                "hash": "sha256:55de06be2ea1aff241629f0c51de8edb5a446f080af5633c53efe7d719607ffd",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 122880,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/28147/xul_migemo-0.8.12-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Modified: In the Quick Migemo Find mode, label beside the find field is changed.\n* Improved: \"Highlight All\" works in any XML documents.\n* Improved: Focused term is highlighted like safari.\n* Improved: IME is automatically disabled for the Quick Migemo Find. (for Firefox 3)\n* Improved: Quick Migemo Find can be started even if you focus to the location bar or the web search bar.\n* Fixed: State of find toolbar buttons in regular expression search and Migemo Find mode is same to normal find mode.\n* Fixed: Wrongly selected ranges in text field disappeared for \"find next\" and \"find previous\" when \"Highlight All\" is checked.\n* Fixed: The find field is correctly filled with selection terms.\n* Fixed: \"Highlight All\" is correctly checked automatically even if it is the first time.\n* Fixed: Clicked elements keeps its focus correctly after Quick Migemo Find finishes.\n* Fixed: Progress meter is shown with narrow style.\n* Fixed: Back space key doesn't go back if it cancels the Quick Migemo Find.\n* Fixed: Regular expression search can be started with selection terms correctly.\n* Fixed: Dark screen keeps itself shown after you click on somewhere not a link.\n* Fixed: \"Highlight All\" appearance is correctly applied for the first-loaded page.\n* Fixed: Operations on the find field works correctly in the Quick Migemo Find mode.\n* Fixed: \"Enter\" and \"Shfit-Enter\" for normal find works correctly.\n* Fixed: Safari style \"Highlight All\" works with the auto scroll, All-in-One Gestures, FireGestures and Optimoz Mouse Gestures.\n* Fixed: Works with recent versions of the Autocomplete Manager.\n* Fixed: Transparent screen is correctly hidden if highlighted terms are clicked.\n* Fixed: Click events are correctly re-dispatched even if the full-zoom feature is used.\n* Fixed: Find feature works correctly on plain text pages.\n* Fixed: Quick Migemo Find doesn't finish even if the Enter key is pressed on found terms which are not link.\n* Fixed: The find toolbar is hidden correctly after the Quick Migemo Find finishes if that is started from the Migemo find mode.\n* Fixed: Regular expression search and Migemo find works on XML documents.",
+            "ja": "* クイックMigemo検索の時に検索ツールバーの表示を変えるようにした\n* text/xmlの文書などでも「すべて強調表示」のハイライト表示を利用できるようにした\n* Safariのように、フォーカス箇所の強調表示を残すようにした\n* クイックMigemo検索時に自動的にIMEを無効化するようにした（Firefox 3のみ）\n* 内容領域にフォーカスが無い時でもクイックMigemo検索を開始できるようにした\n* 正規表現検索やMigemo検索における、検索がヒットしなかった時の検索ツールバー上のボタンの有効無効や自動ハイライトについて、通常の検索の場合と挙動を合わせた\n* 強調表示を有効にした状態で通常の検索で次候補・前候補を検索するとテキストフィールド内に選択範囲が残ってしまう問題を解消\n* 検索を開始する時、選択範囲の内容が検索窓に自動的に挿入されない場合があったのを修正\n* 「すべて強調表示」を常に有効にする設定の時でも最初の1回だけは強調表示されない場合があったのを修正\n* 画面のクリックなどでクイックMigemo検索を終了した時、フォーカスが失われてしまう問題を修正\n* プログレスバーが大きく表示されていたのを修正\n* クイックMigemo検索時にBSで検索バーを消すと同時に「戻る」が働いてしまっていたのを修正\n* 正規表現検索モードで、選択範囲の内容から検索を開始できなかったのを修正\n* リンクなどがない位置で半透明のスクリーン上でクリックすると、どんな操作であってもスクリーンが消えたままになっていたのを修正\n* 起動直後に読み込まれたページで強調表示のスタイルが適用されないことがある問題を修正\n* クイックMigemo検索時に入力欄の操作が乗っ取られてしまっていたのを修正\n* 通常の検索時にEnterキーで次候補にフォーカスできなくなっていたのを修正\n* Safari風強調表示とオートスクロール、All-in-One Gestures、FireGestures、Optimoz Mouse Gesturesの競合を解消\n* Autocomplete Managerの仕様変更に追従\n* Firefox 3で正常に動作しなくなっていたのを修正\n* クイックMigemo検索でリンク以外がヒットした時はEnterキーを押しても検索を終了しないようにした\n* Migemo検索の状態からクイックMigemo検索を開始するとクイックMigemo検索終了後に検索ツールバーが閉じない問題を修正\n* メニュー等を開いている時にまでクイックMigemo検索が起動してしまう問題を修正\n* XMLのページで正規表現検索時・Migemo検索が動作しない問題を修正\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.8.12",
+        "version": "0.8.12"
+    },
+    {
+        "id": 44380,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0pre",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/44380",
+        "files": [
+            {
+                "id": 27823,
+                "created": "2008-05-05T13:20:56Z",
+                "hash": "sha256:c4c6e2ec2f1fe42fbf38ce051889dec01d5392c4377d21424e281f2df978d94a",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 117760,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/27823/xul_migemo-0.8.5-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: Animation effect of \"Highlight All\" feature becomes like Safari. (If you need, to get old behavior back, set \"xulmigemo.highlight.animationStyle\" to \"1\".)\n* Fixed: Migemo Find works without timeout correctly if you are not in the Quick Migemo Find mode.\n* Fixed: \"BackSpace\" key resets timeout of Quick Migemo Find correctly.\n* Improved: Click events are fired when elements are clicked through the highlighting screen.\n* Improved: Highlights are cleared by clicking if they are in text fields.\n* Fixed: Highlighting screen disappears correctly if the find bar is closed.\n* Improved: \"Find from viewport\" works more intelligently.\n* Improved: Middle click, Ctrl-click or some combinations keeps \"Highlight All\" screen shown.\n* Fixed: \"Highlight All\" screen is correctly hidden if it is disabled.\n",
+            "ja": "* 「すべて強調表示」の時のアニメーション効果をよりSafariに近づけた（xulmigemo.highlight.animationStyleを1にすると旧バージョンの動作に戻ります）\n* 検索モードがMigemo検索の時、常にクイック検索のタイムアウトが適用されてしまっていたのを修正\n* クイック検索時にBackSpaceキーでタイマーがリセットされなくなっていたのを修正\n* Safari風のハイライト表示時において、クリックした箇所にイベントを発生させるようにした\n* テキスト入力欄内の強調箇所について、クリックしたら強調を解除するようにした\n* 検索ツールバーが非表示になる時にSafari風ハイライト表示が無効にならない場合があったのを修正\n* 表示されている範囲からの検索処理を改善したつもり\n* 「すべて強調表示」の時のスクリーンを維持したままミドルクリックやCtrl-クリックなどの操作をできるようにした\n* 「すべて強調表示」を無効にしてもスクリーンが表示されてしまう場合があったのを修正\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.8.5",
+        "version": "0.8.5"
+    },
+    {
+        "id": 44262,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0pre",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/44262",
+        "files": [
+            {
+                "id": 27704,
+                "created": "2008-05-02T11:32:33Z",
+                "hash": "sha256:30ca50fa87c1319bbe6182f9171233ff513bd7a7b075375e74319ff05b2625ba",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 161792,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/27704/xul_migemo-0.8.1-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: Works more smoothly on Firefox 3.\n* Improved: Quick Migemo Find doesn't send keyboard events from your keytypes to webpages anymore.\n* Improved: The focused link is loaded directly from Quick Migemo Find.\n* Improved: The link URI of the focused link is shown in the status bar.\n* Fixed: Terms in text fields are found correctly.\n* Fixed: Highlights in text fields are cleared correctly.\n* Improved: Regular expression search is available. To activate it, switch the find mode manually or type regexp literal like \"/find/\" to the find field.\n* Improved: Ctrl(Command)-F switches the find mode or closes the find toolbar when it is already focused.\n* Modified: Algorithm of backward find is changed.\n* Modified: Texts are decoded by Thunderbird's built-in feature. Because JavaScript-based decoder became obsolete, the size of the installation file is reduced.\n* Fixed: \"Find Next\" of native search works correctly after XUL/Migemo search is done.\n* Fixed: \"Find Previous\" of XUL/Migemo search works correctly for multiple terms.\n* Improved: Mail bodies can be searched by XUL/Migemo, in Thunderbird.\n* Modified: Configuration dialog is restrucured.\n* Works on Firefox 3 beta5.",
+            "ja": "* Firefox 3のUIとの統合を改善\n* クイック検索時にWebページからフォーカスを外し、キーボード関係のイベントを発生させないようにした\n* クイック検索の終了時にすぐにリンク先に飛ぶようにした\n* 検索がヒットした箇所のリンク文字列をステータスバーに表示するようにした\n* テキスト入力欄にだけ含まれる単語も正しく検索できるようにした\n* テキスト入力欄の中の強調表示が解除されない問題を修正\n* 正規表現で検索する機能を加えた（検索モードの明示的な切り替え、または「/正規表現/」のような正規表現リテラルの形で検索語句を入力することで実行）\n* 検索の実行中にもう一度Ctrl-Fを入力した時、検索モードを切り替えたり検索を終了したりできるようにした\n* 後方検索の処理方法を変更した\n* MIMEエンコードされたテキストのデコード処理をThunderbirdの機能で行うようにした（自前ライブラリを持たなくてよくなったのでファイルサイズが大幅に削減された）\n* Migemo検索を実行した直後に通常の検索を実行すると次候補を検索できなくなる場合があったのを修正\n* 複数単語を入力した時に前方検索で正規表現の生成に失敗する問題を修正\n* Thunderbirdのクイック検索について、メール本文の検索でもXUL/Migemoを利用できるようにした\n* 設定ダイアログを再編\n* Firefox 3 beta5での動作を確認\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.8.1",
+        "version": "0.8.1"
+    },
+    {
+        "id": 39793,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a7",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/39793",
+        "files": [
+            {
+                "id": 23142,
+                "created": "2008-01-29T15:39:06Z",
+                "hash": "sha256:25796208f0bba2e6c04b67dc08bf146aca230bbf222f48caeba1145d4b85df79",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 151552,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/23142/xul_migemo-0.7.13-fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: Works with Autocomplete Manager ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/2300\">https://addons.mozilla.org/firefox/addon/2300</a> ).\n* Improved: Available for searching mails on Thunderbird. (But searching in \"body\" field isn't supported yet.)",
+            "ja": "* Autocomplete Manager（ <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/2300\">https://addons.mozilla.org/firefox/addon/2300</a> ）と連係して動作するようにした\n* Thunderbirdでメールの検索にXUL/Migemoを利用できるようにした（本文検索以外）"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.13",
+        "version": "0.7.13"
+    },
+    {
+        "id": 37170,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a7",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/37170",
+        "files": [
+            {
+                "id": 20485,
+                "created": "2007-10-28T02:28:16Z",
+                "hash": "sha256:360d08cb967c09d722febef4c1d4f011743d2bcfbe3881b22790b187799c824e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 100352,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/20485/xul_migemo-0.7.11-fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Fixed: Works with Internote ( <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c32099310caf5873315d2a7434fa771fe900403ce080191bfad90bee0dd5f1e9/http%3A//internote.sourceforge.net/\">http://internote.sourceforge.net/</a> ) and Source Viewer Tab ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/5908\">https://addons.mozilla.org/firefox/addon/5908</a> ).\n* Fixed: The input \"uwwu-\" hits to \"うっうー\" correctly.",
+            "ja": "* Internote（ <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c32099310caf5873315d2a7434fa771fe900403ce080191bfad90bee0dd5f1e9/http%3A//internote.sourceforge.net/\">http://internote.sourceforge.net/</a> ）、ソース表示タブ（ <a rel=\"nofollow\" href=\"https://addons.mozilla.org/firefox/addon/5908\">https://addons.mozilla.org/firefox/addon/5908</a> ）との衝突を解消\n* uwwu-で「うっうー」にヒットしない問題を修正"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.11",
+        "version": "0.7.11"
+    },
+    {
+        "id": 36094,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a7",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/36094",
+        "files": [
+            {
+                "id": 19384,
+                "created": "2007-09-19T03:30:16Z",
+                "hash": "sha256:99aa1d8d0374fda040f6e19065ae58fddb3d7eeda4450c5701f17c6e991b587e",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 100352,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/19384/xul_migemo-0.7.9-fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "*  Fixed: Freezing on start to find with auto-highlighting disappeared. (maybe)\n* Fixed: \"Find from viewport\" feature works correctly.\n* Fixed: The input \"ssyo\" hits to \"っしょ\" correctly.\n",
+            "ja": "*  常に強調表示を有効にする設定の時、検索開始時にしばらく固まったようになってしまうことがある問題について改善したつもり\n* 現在見えている範囲から検索を開始する機能が働いていなかったのを修正\n* ssyoで「っしょ」にヒットしない問題を修正\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.9",
+        "version": "0.7.9"
+    },
+    {
+        "id": 34856,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a7",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/34856",
+        "files": [
+            {
+                "id": 18136,
+                "created": "2007-08-02T08:49:32Z",
+                "hash": "sha256:ae4119be2a12cdb855e3275ffbbb6aa8ceb08316ec02263b8967e31f322110df",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 100352,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/18136/xul_migemo-0.7.8-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: Words exist in the dictionary are found preferentially.\n* Improved: Highlight are not re-rendered on \"Find Again\" command. (\"Find Again\" command is optimized.)\n* Fixed: The status message for wrapped find is shown correctly.\n* Fixed: Firefox keeps the selection of found term when you toggle the \"Highlight all\" feature.\n* Fixed: Dictionaries can be loaded correctly if it is encoded in Shift_JIS.\n* Fixed: \"Highlight all\" highlights case-insensitive result.\n* Fixed: \"Highlight all\" can be disabled by hand if it is automatically enabled.\n* Modified: Matched terms are not highlighted automatically when the length of the longest term (or the term in the input field) is shorter than the number of the minimum characters for auto-highlight.\n",
+            "ja": "* 英語などのエンジンでの検索において、入力文字列よりも辞書内のヒットした単語の方を優先して検索するようにした\n* 再検索の時にはハイライトを描画し直さないようにした（再検索を高速化した）\n* 検索がページの最後や最初に達した時のメッセージが正しく表示されていなかったのを修正\n* ハイライトのON/OFFを切り替えた時に、ヒット箇所の選択範囲が失われないようにした\n* 辞書の読み込みに失敗する場合があったのを修正\n* 「すべて強調表示」で大文字小文字が違うと強調表示されていなかったのを修正\n* 強調表示を手動で無効にできなくなっていたのを修正\n* 自動強調表示の最低文字数の判定において、検索欄への入力文字数も同時にチェックするようにした\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.8",
+        "version": "0.7.8"
+    },
+    {
+        "id": 34427,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a5",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/34427",
+        "files": [
+            {
+                "id": 17702,
+                "created": "2007-07-18T18:30:43Z",
+                "hash": "sha256:6881a2e51fdc1012b2591b806b3e02d24a6da0da22749319f688e47532caf1d9",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 96256,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17702/xul_migemo-0.7.6+-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Fixed: The engine creates correct regular-expression for an alphabets input which is not a roman-letter spelling.",
+            "ja": "ローマ字として解釈できないアルファベットの文字列に対して正しい正規表現を生成できなくなっていたのを修正"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.6+",
+        "version": "0.7.6+"
+    },
+    {
+        "id": 34405,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a5",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/34405",
+        "files": [
+            {
+                "id": 17679,
+                "created": "2007-07-18T02:51:09Z",
+                "hash": "sha256:f70919ad2e7b34b7e8b58b4d3361ad64ba6e9b43fbe13c80ac8143e0bc52461a",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 97280,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17679/xul_migemo-0.7.6-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: The Find Toolbar can be shown with compact buttons.\n* Improved: \"Highlight all\" doesn't canceled when you scroll the page.\n* Fixed: The dark screen of the \"Highlight all\" covers the page completely.\n* Modified: Matched terms are not highlighted automatically when the longest term is shorter than the number of the minimum characters for auto-highlight.\n* Fixed: An error in \"Highlight all\" disappeared.\n",
+            "ja": "* 検索ツールバー内のボタンをコンパクト表示する機能を加えた\n* スクロールバー上でのイベントでは強調表示を解除しないようにした\n* 強調表示の半透明のスクリーンについて、正しくWebページ全体を覆うようにした\n* Migemo検索時の自動強調表示の最小文字数について、ヒット箇所の中で最長の文字列の長さと比較するようにした\n* ハイライト時にエラーが起こる場合があったのを修正\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.6",
+        "version": "0.7.6"
+    },
+    {
+        "id": 34394,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a5",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/34394",
+        "files": [
+            {
+                "id": 17668,
+                "created": "2007-07-17T14:02:35Z",
+                "hash": "sha256:b1268ff72021e126c29a574149df4065da351f961bf826c9e5a2f30fb940d33b",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 96256,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17668/xul_migemo-0.7.5+-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Modified: The auto-start feature of the Quick Migemo Find is disabled by default.\n* Fixed: \"Highlight all\" works correctly on Firefox 1.5.\n",
+            "ja": "* 初期状態でクイックMigemo検索の自動開始を無効にした\n* Firefox 1.5で「すべて強調表示」が機能しなくなっていたのを修正\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.5+",
+        "version": "0.7.5+"
+    },
+    {
+        "id": 34381,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a5",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/34381",
+        "files": [
+            {
+                "id": 17655,
+                "created": "2007-07-17T06:05:29Z",
+                "hash": "sha256:a9b741f81548812b3f3fa51aa5910222df8511d33a4de315c695c026cd586608",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 96256,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17655/xul_migemo-0.7.5-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Improved: Minimum length of the search term can be customized for \"Highlight all\" when it is automatically enabled.\n* Improved: Any matched terms of the roman-letter input are highlighted in the Migemo-find mode.\n* Fixed: Some roman-letter inputs are parsed correctly.\n* Modified: Configuration of the Find Toolbar's state is restructured.\n",
+            "ja": "* 「すべて強調表示」を常に有効に設定する時、強調表示を自動的に有効にする最小文字数を設定できるようにした\n* 「すべて強調表示」において、ローマ字に対応するすべての候補を強調するようにした\n* ローマ字に対応する正規表現の生成に失敗する場合があったのを修正\n* 検索ツールバーの状態に関する設定パネルから、わかりにくい設定を隠すようにした\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.5",
+        "version": "0.7.5"
+    },
+    {
+        "id": 34310,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a5",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/34310",
+        "files": [
+            {
+                "id": 17584,
+                "created": "2007-07-14T10:31:39Z",
+                "hash": "sha256:1bad517ee56490deccb4b2a067f7b71a4f7357041e8e0b8e4d418d06dd1763d1",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 94208,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17584/xul_migemo-0.7.4-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "*  Fixed: Some characters, which become two characters when it is translated to half-width kana, are found correctly. And, terms which include spaces are found correctly.\n* Improved: \"Highlight all\" and \"Match Cases\" can be enabled permanently.\n* Improved: Auto-start and auto-exit of the Quick Migemo Find are synchronized.\n",
+            "ja": "*  「ペ」のように半角カナにすると2文字に別れるカタカナを含む単語や、半角スペースを含む単語を検索できなくなっていたのを修正\n* 「すべて強調表示」と「大文字/小文字を区別」を常に有効にできるようにした\n* クイックMigemo検索の自動開始と自動終了の設定を同期するようにした\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.4",
+        "version": "0.7.4"
+    },
+    {
+        "id": 33893,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a5",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/33893",
+        "files": [
+            {
+                "id": 17157,
+                "created": "2007-06-30T22:52:22Z",
+                "hash": "sha256:ea33c22a8565df173a118d6423729bf4e6f2dda10d94640191caef868fdcdb12",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 94208,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17157/xul_migemo-0.7.3-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "* Fixed: Selections are restored correctly, after find in \"Highlight All\" mode.\n* Fixed: \"Highlight all\" can be unchecked by hand correctly, even if you set it is checked by default.\n* Fixed: Some rules of roman-letter input are supported; for example, \"we\" -&gt; \"うぇ\", \"dhi\" -&gt; \"でぃ\", etc.\n",
+            "ja": "* 選択範囲の復元処理が正しく機能しない場合があったのを修正\n* 初期状態で「すべて強調表示」にチェックを入れる設定の時、「すべて強調表示」が常にONになってしまっていたのを修正\n* 訓令式、ヘボン式のいずれにも定義されていないいくつかのローマ字規則に対応（we→うぇ、dhi→でぃ、など）\n"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.3",
+        "version": "0.7.3"
+    },
+    {
+        "id": 33859,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.0a5",
+                "min": "1.5"
+            },
+            "thunderbird": {
+                "max": "2.0.0.*",
+                "min": "2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xulmigemo/versions/33859",
+        "files": [
+            {
+                "id": 17123,
+                "created": "2007-06-29T18:46:40Z",
+                "hash": "sha256:c51c6714009aedbf47a9770cc5ef2956559d1431a8bc3dcb3f795c221a8525e3",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 93184,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/17123/xul_migemo-0.7.2-fx+tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Uploaded to AMO.",
+            "ja": "Mozilla Add-onsにて公開。"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xulmigemo/versions/0.7.2",
+        "version": "0.7.2"
+    }
+]

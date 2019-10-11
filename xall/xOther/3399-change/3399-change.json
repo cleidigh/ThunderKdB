@@ -11,23 +11,23 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "firefox": [
-            "other"
-        ],
         "thunderbird": [
             "message-and-news-reading"
+        ],
+        "firefox": [
+            "other"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 73729,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
-            },
             "thunderbird": {
                 "max": "2.0.0.*",
+                "min": "1.5"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "1.5"
             }
         },
@@ -224,5 +224,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/change/",
-    "weekly_downloads": 21
+    "weekly_downloads": 21,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

@@ -11,24 +11,24 @@
     ],
     "average_daily_users": 1,
     "categories": {
-        "thunderbird": [
-            "miscellaneous"
-        ],
         "firefox": [
             "language-support"
+        ],
+        "thunderbird": [
+            "miscellaneous"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1384824,
         "compatibility": {
-            "thunderbird": {
-                "max": "31.*",
-                "min": "3.0b1"
-            },
             "firefox": {
                 "max": "56.*",
                 "min": "1.0"
+            },
+            "thunderbird": {
+                "max": "31.*",
+                "min": "3.0b1"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/traduku/versions/1384824",
@@ -102,5 +102,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/traduku/",
-    "weekly_downloads": 23
+    "weekly_downloads": 23,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

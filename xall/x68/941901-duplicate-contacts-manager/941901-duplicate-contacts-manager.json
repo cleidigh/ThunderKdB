@@ -1,0 +1,210 @@
+{
+    "id": 941901,
+    "authors": [
+        {
+            "id": 3721275,
+            "name": "David von Oheimb",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dvo/",
+            "username": "dvo",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 4823,
+    "categories": {
+        "thunderbird": [
+            "contacts"
+        ]
+    },
+    "contributions_url": "http://paypal.me/DDvO",
+    "current_version": {
+        "id": 2472724,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/duplicate-contacts-manager/versions/2472724",
+        "files": [
+            {
+                "id": 1015820,
+                "created": "2019-10-06T20:59:22Z",
+                "hash": "sha256:8acb1a9347ba3bea99e8654ddfcae15799a85c5d351c9f911c975f4c97ea10d0",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 66004,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015820/duplicate_contacts_manager-2.1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "version 2.1.1: compatibility with Thunderbird 68+; small presentation and documentation improvements"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/duplicate-contacts-manager/versions/2.1.1",
+        "version": "2.1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This Thunderbird extension facilitates handling of redundant entries in address books.\nPlease report any issues on <a href=\"https://github.com/DDvO/Duplicate-Contacts-Manager/issues/\" rel=\"nofollow\">https://github.com/DDvO/Duplicate-Contacts-Manager/issues/</a>\n\nAfter installation, this add-on can be invoked via the '<code>Tools-&gt;Duplicate Contacts Manager...</code>' menu entry. One can also customize the '<code>Toolbar</code>' of the '<code>Address Book</code>' window with a '<code>Find Duplicates</code>' button.\n\nThe Duplicate Contacts Manager searches address books for pairs of matching contact entries, also known as <i>cards</i>.\nIt can automatically delete all cards that have equivalent or less information than some matching one.\nAny remaining pairs of matching cards  are presented as candidate duplicates for manual treatment.\nEach two cards are shown side-by-side with a comparison of all fields containing data, including any photo.\nSome important fields are always shown such that they can be filled in when they have been empty so far.\n\nWhen pairs of candidate duplicates are presented, various comparison information is given in the column between them.\n<ul><li> The '≡' symbol is shown between non-empty fields with identical values, while non-identical values are highlighted by color.\nAll other relations are determined after abstraction of values (see the definitions below).</li><li> The '≃' symbol indicates matching names, email addresses, or phone numbers.</li><li> The '≅' symbol indicates equivalent cards, equivalent fields, or equal sets (after abstraction).</li><li> The '⊆' and '⊇' symbols indicate the subset/superset relation on mailing list membership, email addresses, and phone numbers.</li><li> The '⋦' and '⋧' symbols indicate that a field or a whole card contains less/more information than the other.</li><li> The '&lt;' and '&gt;' symbols indicate comparison on numerical values or the substring/superstring relation on names and other texts.</li></ul>During manual treatment of a pair of matching cards the user can skip them, can modify one or both of them, and can decide to delete one of them. When a card is deleted and it has a primary email address that is contained in one or more mailing lists and the other card does not have the same primary email address, the address is also deleted from the respective mailing lists.\n\nIn order to exclude pairs of similar cards from being repeatedly presented for manual treatment\nthey may be given different <code>AIMScreenName</code>s, such that they are filtered out from the search results.\n\nThere are two <i>search modes</i> for finding matching cards:\n<ul>  <li>within a single address book with n cards, comparing each card with all other cards, resulting in n*(n-1)/2 pairs of cards to compare.\n  </li><li>with two different address books with n and m cards, comparing each card in the first one with each card of the second one, resulting in n*m pairs to compare.</li></ul>\nThe matching relation is designed to be rather weak, such that it tends to yield all pairs of potential duplicates.\nTwo cards are considered <i>matching</i> if any of the following conditions hold, where the details are explained below.\n<ul>  <li>The cards contain matching names, or\n  </li><li>they contain matching email addresses, or\n  </li><li>they contain matching phone numbers, or\n  </li><li>both cards do not contain any name, email address, or phone number that might match.</li></ul>Yet cards with non-equivalent <code>AIMScreenName</code> are never considered matching.\n\n<i>Matching</i> of names, email addresses, and phone numbers is based upon equivalence and sub-equivalence of fields modulo abstraction, described below. As a result, for example, names differing only in letter case are considered to match.\nFor the matching process, names are completed and their order is normalized — for example, if two name parts are detected in the <code>DisplayName</code> (e.g., \"John Doe\") or in an email address (e.g., \"John.Doe@company.com\"), they are taken as first and last name.\nBoth multiple email addresses within a card and multiple phone numbers within a card are treated as sets, i.e., their order is ignored as well as their types.\n<ul>  <li>Two cards are considered to have <i>matching names</i> if\n  <ul>    <li>their <code>DisplayName</code>s consist both of one word or both of more than one word and are sub-equivalent, or\n    </li><li>both their <code>FirstName</code> and their <code>LastName</code> are not empty and are pairwise sub-equivalent, or\n    </li><li>their <code>DisplayName</code>s are empty but their <code>FirstName</code> or <code>LastName</code> are not empty and are pairwise sub-equivalent, or\n    </li><li>in one card the <code>DisplayName</code> is empty and either the <code>FirstName</code> or <code>LastName</code> is not empty and is sub-equivalent to the <code>DisplayName</code> of the other card, or\n    </li><li>their <code>AIMScreenName</code>s are not empty and sub-equivalent.\n    </li></ul>  </li><li>Two cards are considered to contain <i>matching email address</i> if any of their <code>PrimaryEmail</code> or <code>SecondEmail</code> are equivalent.\n  </li><li>Two cards are considered to contain <i>matching phone numbers</i> if any of their <code>CellularNumber</code>, <code>WorkPhone</code>, or <code>PagerNumber</code> are equivalent. The <code>HomePhone</code> and <code>FaxNumber</code> fields are not considered for matching because such numbers are often shared.</li></ul>\nBefore card fields are compared their values are <i>abstracted</i> using the following steps.\n<ol>  <li> <i>Pruning</i>, which removes stray contents irrelevant for comparison:\n  <ol>    <li>ignore values of certain field types — the set of ignored fields is configurable  with the default being <code>UID, UUID, CardUID, groupDavKey, groupDavVersion, groupDavVersionPrev, RecordKey, DbRowID, PhotoType, PhotoName, LowercasePrimaryEmail, LowercaseSecondEmail, unprocessed:rev, unprocessed:x-ablabel</code>,\n    </li><li>remove leading/trailing/multiple whitespace and strip non-digit characters from phone numbers,\n    </li><li>strip any stray email address duplicates from names, which get inserted by some email clients as default names, and\n    </li><li>replace '<code>@googlemail.com</code>' by '<code>@gmail.com</code>' in email addresses.\n  </li></ol>  </li><li> <i>Transformation</i>, which re-arranges information for better comparison:\n  <ol>    <li>correct the order of first and last name (for instance, re-order \"Doe, John\"),\n    </li><li>move middle initials such as \"M\" from last name to first name, and\n    </li><li>move last name prefixes such as \"von\" from first name to last name.\n  </li></ol>  </li><li> <i>Normalization</i>, which equalizes representation variants:\n  <ol>    <li>convert to lowercase (except for name part of AOL email addresses),\n    </li><li>convert texts by transcribing umlauts and ligatures, and\n    </li><li>if configured, replace in phone numbers the <a href=\"https://en.wikipedia.org/wiki/List_of_international_call_prefixes\" rel=\"nofollow\">international call (IDD) prefix</a> (such as '00') by '+'\n    and the national <a href=\"https://en.wikipedia.org/wiki/Trunk_prefix\" rel=\"nofollow\">trunk prefix</a> (such as '0')\n    by the default <a href=\"https://en.wikipedia.org/wiki/List_of_country_calling_codes\" rel=\"nofollow\">country calling code</a> (such as '+49').\n  </li></ol>  </li><li> <i>Simplification</i>, which strips less relevant information from texts by removing accents and punctuation.</li></ol>Corresponding fields in two cards are considered <i>equivalent</i> if their abstracted values are equal.\n\nParts of names are considered <i>sub-equivalent</i> if their abstracted values are equal or the abstracted value of one of them is a non-empty whole-word substring of the abstracted value of the other.\n\nNote that the value adaptations mentioned above are computed only for the comparison, i.e., they do not change the actual card fields.\n\nIf automatic removal is chosen, only cards are removed that match some other card and have equivalent or less information than the other card and are preferred for deletion; for details see below.\nWhen a pair of matching cards is presented for manual inspection, the card flagged by default with red color for removal is the one preferred for deletion.\n\nA card is considered to have <i>equivalent or less information</i> than another card if for each field:\n<ul>  <li>the field is configured to be ignored or one of <code>PopularityIndex</code>, <code>LastModifiedDate</code>, <code>RecordKey</code>, and <code>DbRowID</code> (which are always ignored here), or else\n  </li><li>the field is equivalent to the corresponding field of the other card, or\n  </li><li>it is a text (e.g., some name, address component, or <code>Notes</code>) and its abstracted value is a substring of the corresponding field value of the other card, or else\n  </li><li>it is treated as a set and the set of abstracted values is a subset of the corresponding set of the other card, or else\n  </li><li>after abstraction it has the default value, i.e., it is empty for text fields or its value is <code>0</code> for numerical fields or <code>false</code> for Boolean fields.</li></ul>For the above field-wise comparison, the email addresses of a card are treated as a set, the phone numbers of a card are also treated as a set, and the set of names of mailing lists a card belongs to is treated as an additional field.\n\nOf two matching cards one is <i>preferred for deletion</i> such that\n<ul>  <li>it has fewer non-empty fields, or else the number of non-empty fields is equal and\n  </li><li>the character weight of the card is smaller, i.e.,\n  its pruned and transformed (non-ignored) textual field and phone number field values have an equal or smaller total number of uppercase letters and special characters than the other card, or else the character weight is equal and\n  </li><li>it is used less frequently (i.e, its <code>PopularityIndex</code> is smaller), or else it has the same usage frequency and\n  </li><li>it is older (i.e., its <code>LastModifiedDate</code> is smaller), or else it has the same age and\n  </li><li>it is found in the second address book if the address books searched are different, or else\n  </li><li>it is found later in the same address book.</li></ul>\nHere is an example.\nThe card on the right will be preferred for deletion because it contains less information.\n<ul>  <li>\t <code>NickName</code>:\t\t...........\t\"Péte\"\t..............................\t\"  pete ! \"\t....................\taccent, punctuation, letter case, and whitespace ignored</li><li>\t <code>FirstName</code>: \t..........\t\"Peter\"\t.............................\t\"Peter Y van\"\t............\tname prefix \"van\" moved to last name</li><li>\t <code>LastName</code>:\t\t...........\t\"Y  van Müller\"\t..............\t\"Mueller\"\t....................\tmiddle initial \"Y\" moved to first name, umlauts transcribed</li><li>\t <code>DisplayName</code>:\t\t..\t\"Hans Peter van Müller\"  ..\t\"van Müller, Peter\"\t..\tfirst name moved to the front, name is substring</li><li>\t <code>PreferDisplayName</code>:\t..\t'yes'\t...........................\t'yes'\t............................\tsame value</li><li>\t <code>AimScreenName</code>:\t\t......\t\"\"\t.................................\t\"\"\t..................................\tsame AIM name</li><li>\t <code>PreferMailFormat</code>:\t\t...\t'HTML'\t.........................\t'unknown'\t..............\tdefault ('unknown') considered less information</li><li>\t <code>PrimaryEmail</code>:\t\t..\t\"Peter.vanMueller@company.com\"\t..\t\"P.van.Mueller@gmx.de\"\t..\temails treated as sets, letter case ignored</li><li>\t <code>SecondaryEmail</code>:\t\t....\t\"p.van.mueller@gmx.de\"\t..\t\"\"\t.........................\temails treated as sets, letter case ignored</li><li>\t <code>WorkPhone</code>:\t.............\t\"089/1234-5678\"\t........\t\"+49 89 12345678\"\t...\ttrunk prefix and international call prefix normalized and non-digits ignored</li><li>\t <code>PopularityIndex</code>:\t\t....\t5\t........................................\t3\t...................................\tfield ignored for information comparison</li><li>\t <code>LastModifiedDate</code>:\t\t..\t2018-02-25 07:51:28\t..\t2018-02-25 08:30:37\t..\tfield ignored for information comparison</li><li>\t <code>UUID</code>:.........................\t\"\"\t.......................\t\"903a61be-64d5-4844-802a\"\t...\tfield ignored</li></ul>\nTechnical information: The options/configuration/preferences used by this Thunderbird extension are saved in configuration keys starting with '<code>extensions.DuplicateContactsManager</code>' - for instance, the list of ignored fields is stored in the variable '<code>ignoreFields</code>'."
+    },
+    "developer_comments": {
+        "en-US": "<ul><li>Original version by Marian Steinbach</li><li>Later maintained by François Godin</li><li>Previous homepage: <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-us/thunderbird/addon/duplicate-contact-manager/\">https://addons.mozilla.org/en-us/thunderbird/addon/duplicate-contact-manager/</a></li><li>Taken over by David von Oheimb</li></ul>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/duplicate-contacts-manager/edit",
+    "guid": "duplicateContactsManager@ddvo.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/DDvO/Duplicate-Contacts-Manager"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/941/941901-64.png?modified=1e54aeef",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/941/941901-32.png?modified=1e54aeef",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/941/941901-64.png?modified=1e54aeef"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-10-06T21:20:52Z",
+    "name": {
+        "en-US": "Duplicate Contacts Manager"
+    },
+    "previews": [
+        {
+            "id": 205548,
+            "caption": {
+                "en-US": "Comparison window showing two matching cards"
+            },
+            "image_size": [
+                752,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205548.png?modified=1546365146",
+            "thumbnail_size": [
+                188,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205548.png?modified=1546365146"
+        },
+        {
+            "id": 205549,
+            "caption": {
+                "en-US": "Start window with the options available"
+            },
+            "image_size": [
+                800,
+                738
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205549.png?modified=1546365146",
+            "thumbnail_size": [
+                217,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205549.png?modified=1546365146"
+        },
+        {
+            "id": 205550,
+            "caption": {
+                "en-US": "Final window showing a statistics on the last run"
+            },
+            "image_size": [
+                853,
+                637
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205550.png?modified=1546365147",
+            "thumbnail_size": [
+                268,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205550.png?modified=1546365147"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.46789,
+        "count": 10,
+        "average": 4.6,
+        "text_count": 10
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/duplicate-contacts-manager/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/941901",
+    "slug": "duplicate-contacts-manager",
+    "status": "public",
+    "summary": {
+        "en-US": "This Thunderbird add-on searches address book(s) for pairs of matching contact entries.\nIt can automatically delete entries that have equivalent or less information than the other one.\nAny remaining matches are presented for manual treatment."
+    },
+    "support_email": {
+        "en-US": "dev@ddvo.net"
+    },
+    "support_url": {
+        "en-US": "https://github.com/DDvO/Duplicate-Contacts-Manager"
+    },
+    "tags": [
+        "abstract",
+        "address book",
+        "automatic",
+        "compare",
+        "contacs",
+        "delete",
+        "duplicate",
+        "edit",
+        "entries",
+        "equivalent",
+        "firefox57",
+        "manage",
+        "manual",
+        "normalize",
+        "properties",
+        "redundant",
+        "remove"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/duplicate-contacts-manager/",
+    "weekly_downloads": 320,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp60pv": true,
+            "comp60pv_date": "2018-03-03T11:07:47Z"
+        }
+    }
+}

@@ -11,24 +11,24 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "firefox": [
-            "appearance"
-        ],
         "thunderbird": [
             "miscellaneous"
+        ],
+        "firefox": [
+            "appearance"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 46523,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
-            },
             "thunderbird": {
                 "max": "3.0a2pre",
                 "min": "2.0"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/classicfox/versions/46523",
@@ -184,5 +184,11 @@
     "tags": [],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/classicfox/",
-    "weekly_downloads": 21
+    "weekly_downloads": 21,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

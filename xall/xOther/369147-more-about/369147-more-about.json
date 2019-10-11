@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 32,
+    "average_daily_users": 33,
     "categories": {
         "firefox": [
             "other"
@@ -19,13 +19,13 @@
     "current_version": {
         "id": 2018411,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "20.0"
-            },
             "thunderbird": {
                 "max": "54.0a1",
                 "min": "24.0"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "20.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/more-about/versions/2018411",
@@ -197,5 +197,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/more-about/",
-    "weekly_downloads": 27
+    "weekly_downloads": 27,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

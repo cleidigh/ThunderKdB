@@ -19,8 +19,8 @@
     "current_version": {
         "id": 1467394,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "31.*",
                 "min": "13.0"
             },
             "android": {
@@ -31,8 +31,8 @@
                 "max": "2.22a1",
                 "min": "2.10"
             },
-            "thunderbird": {
-                "max": "31.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "13.0"
             }
         },
@@ -140,5 +140,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/about-startup/",
-    "weekly_downloads": 30
+    "weekly_downloads": 30,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

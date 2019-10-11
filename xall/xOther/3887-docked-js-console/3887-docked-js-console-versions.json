@@ -1,119 +1,112 @@
-{
-    "page_size": 25,
-    "page_count": 1,
-    "count": 3,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 79074,
-            "channel": "listed",
-            "compatibility": {
-                "thunderbird": {
-                    "max": "3.1a1pre",
-                    "min": "1.5"
-                },
-                "seamonkey": {
-                    "max": "2.0pre",
-                    "min": "1.1"
-                },
-                "firefox": {
-                    "max": "56.*",
-                    "min": "1.5"
-                }
+[
+    {
+        "id": 79074,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/docked-js-console/versions/79074",
-            "files": [
-                {
-                    "id": 68171,
-                    "created": "2009-10-29T21:01:35Z",
-                    "hash": "sha256:8c234e10e3bf5e32a9d827c3b427a2efedded32fb9d87b493d789415d5d8e154",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 12640,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/68171/docked_js-console-0.1.2-fx+tb+sb+sm.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "Support for Thunderbird, Sunbird and Seamonkey added by Philip \"Ratty\" Chee and Archaeopteryx. thanks for your big Contribution!"
+            "seamonkey": {
+                "max": "2.0pre",
+                "min": "1.1"
             },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/docked-js-console/versions/0.1.2.1-signed.1-signed",
-            "version": "0.1.2.1-signed.1-signed"
+            "thunderbird": {
+                "max": "3.1a1pre",
+                "min": "1.5"
+            }
         },
-        {
-            "id": 26156,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "3.5.*",
-                    "min": "1.5"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/docked-js-console/versions/26156",
-            "files": [
-                {
-                    "id": 12581,
-                    "created": "2007-03-05T13:20:10Z",
-                    "hash": "sha256:268ad72f9be199a9ddf47f85f91103911b36728871ca71465b6a16ec5d4d2129",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 2048,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/12581/docked_js-console-0.1.1-fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "style changed a little bit and height of console-frame will be saved across browser-restart."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/docked-js-console/versions/0.1.1",
-            "version": "0.1.1"
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/docked-js-console/versions/79074",
+        "files": [
+            {
+                "id": 68171,
+                "created": "2009-10-29T21:01:35Z",
+                "hash": "sha256:8c234e10e3bf5e32a9d827c3b427a2efedded32fb9d87b493d789415d5d8e154",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 12640,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/68171/docked_js-console-0.1.2-fx+tb+sb+sm.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "Support for Thunderbird, Sunbird and Seamonkey added by Philip \"Ratty\" Chee and Archaeopteryx. thanks for your big Contribution!"
         },
-        {
-            "id": 25971,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "2.0.0.*",
-                    "min": "1.5"
-                }
-            },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/docked-js-console/versions/25971",
-            "files": [
-                {
-                    "id": 12580,
-                    "created": "2007-03-05T13:20:10Z",
-                    "hash": "sha256:784adaf12b78dbbdefa4adae404dbaa3f47c79da85ffbdbb95e26fed1a820e11",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 1024,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/12580/docked_js-console-0.1-fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": null,
-            "release_notes": {
-                "en-US": "this extension simply docks the console to the browser (have a look at the small resizing-grippy over the statusbar).\nevery extension, witch modifies/extends the js-console (\"chrome://global/content/console.xul\"), will be affekted . every other extension-window (venkman, ...) will not.\n\nit just avoids toggeling between browserwindow and consolewindow. you will immediately see every upcomming  errormessage."
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/docked-js-console/versions/0.1",
-            "version": "0.1"
-        }
-    ]
-}
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/docked-js-console/versions/0.1.2.1-signed.1-signed",
+        "version": "0.1.2.1-signed.1-signed"
+    },
+    {
+        "id": 26156,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "3.5.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/docked-js-console/versions/26156",
+        "files": [
+            {
+                "id": 12581,
+                "created": "2007-03-05T13:20:10Z",
+                "hash": "sha256:268ad72f9be199a9ddf47f85f91103911b36728871ca71465b6a16ec5d4d2129",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 2048,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/12581/docked_js-console-0.1.1-fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "style changed a little bit and height of console-frame will be saved across browser-restart."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/docked-js-console/versions/0.1.1",
+        "version": "0.1.1"
+    },
+    {
+        "id": 25971,
+        "channel": "listed",
+        "compatibility": {
+            "firefox": {
+                "max": "2.0.0.*",
+                "min": "1.5"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/docked-js-console/versions/25971",
+        "files": [
+            {
+                "id": 12580,
+                "created": "2007-03-05T13:20:10Z",
+                "hash": "sha256:784adaf12b78dbbdefa4adae404dbaa3f47c79da85ffbdbb95e26fed1a820e11",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 1024,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/12580/docked_js-console-0.1-fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": null,
+        "release_notes": {
+            "en-US": "this extension simply docks the console to the browser (have a look at the small resizing-grippy over the statusbar).\nevery extension, witch modifies/extends the js-console (\"chrome://global/content/console.xul\"), will be affekted . every other extension-window (venkman, ...) will not.\n\nit just avoids toggeling between browserwindow and consolewindow. you will immediately see every upcomming  errormessage."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/docked-js-console/versions/0.1",
+        "version": "0.1"
+    }
+]

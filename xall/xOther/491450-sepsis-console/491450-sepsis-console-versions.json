@@ -1,96 +1,89 @@
-{
-    "page_size": 25,
-    "page_count": 1,
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 1550758,
-            "channel": "listed",
-            "compatibility": {
-                "firefox": {
-                    "max": "56.*",
-                    "min": "17.0"
-                },
-                "seamonkey": {
-                    "max": "2.29",
-                    "min": "2.14"
-                },
-                "thunderbird": {
-                    "max": "32.0",
-                    "min": "17.0"
-                }
+[
+    {
+        "id": 1550758,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "32.0",
+                "min": "17.0"
             },
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sepsis-console/versions/1550758",
-            "files": [
-                {
-                    "id": 256964,
-                    "created": "2014-05-03T20:34:50Z",
-                    "hash": "sha256:ddd42aeeb077fa271e509109843485e5f6b79465a16fac7c5c2c66e8beb2c129",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 75634,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/256964/sepsis_console-0.4-fx.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 3338,
-                "name": {
-                    "en-US": "Mozilla Public License, version 2.0"
-                },
-                "text": {
-                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-                },
-                "url": "http://www.mozilla.org/MPL/2.0/"
+            "seamonkey": {
+                "max": "2.29",
+                "min": "2.14"
             },
-            "release_notes": {
-                "en-US": "<ul>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c2bdb95c8963ba4c4547e40b373624eaf5ad3292d75601f39708361fc8d239ea/http%3A//hg.mozilla.org/users/sevenspade_gmail.com/sepsis-console/rev/47dd547516e9\">Fix clickables in Inspector viewer</a></li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/45653e1b569c573b78bae6c849766d5f2bcd3cf51c64b732fe8602b10aa9296e/http%3A//hg.mozilla.org/users/sevenspade_gmail.com/sepsis-console/rev/e549373c97e2\">Treat non-functions with a [[Call]] correctly in consoleWriter.js.</a></li></ul>\nsepsis-console 0.3 was not made available through AMO due to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/83b7461a212b9a12a33ec80b8b7fb8f8c1e14641317eef2e99babe993205c76f/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1000545\" title=\"Bug 1000545 - Impossible to publish add-on after a rejected review without skipping next logical version number\">bug 1000545</a>.  The notes for the changes in that release are:\n\n<ul>  <li>Make sure to remove \"console-api-log-event\" observer in viewer.</li>  <li>Fix bug where UnambiguousShadow autocomplete responder could get called</li>  <li>multiple times after evaling a string literal, causing the input to blow up.</li>  <li>When objects are output in the console viewer, you can click them to set them as the viewer target and inspect them in the child panel.</li>  <li>Implement console.trace</li>  <li>First pass at implementing drag and drop.  Enabled with the pref \"sepsis.console.draganddrop.enabled\".  Default to off for now, since it still needs ironing out.</li></ul>"
-            },
-            "reviewed": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sepsis-console/versions/0.4.1-signed.1-signed",
-            "version": "0.4.1-signed.1-signed"
+            "firefox": {
+                "max": "56.*",
+                "min": "17.0"
+            }
         },
-        {
-            "id": 1527770,
-            "channel": "listed",
-            "compatibility": {},
-            "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sepsis-console/versions/1527770",
-            "files": [
-                {
-                    "id": 247254,
-                    "created": "2014-03-04T20:21:53Z",
-                    "hash": "sha256:b85336d41d36c7df5905afb23d718a9aaba7dad70793eb3f4e7ce0ec5e7fb580",
-                    "is_restart_required": true,
-                    "is_webextension": false,
-                    "is_mozilla_signed_extension": false,
-                    "platform": "all",
-                    "size": 64013,
-                    "status": "public",
-                    "url": "https://addons.thunderbird.net/thunderbird/downloads/file/247254/sepsis_console-0.2.xpi?src=",
-                    "permissions": []
-                }
-            ],
-            "is_strict_compatibility_enabled": true,
-            "license": {
-                "id": 3338,
-                "name": {
-                    "en-US": "Mozilla Public License, version 2.0"
-                },
-                "text": {
-                    "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-                },
-                "url": "http://www.mozilla.org/MPL/2.0/"
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sepsis-console/versions/1550758",
+        "files": [
+            {
+                "id": 256964,
+                "created": "2014-05-03T20:34:50Z",
+                "hash": "sha256:ddd42aeeb077fa271e509109843485e5f6b79465a16fac7c5c2c66e8beb2c129",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 75634,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/256964/sepsis_console-0.4-fx.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
             },
-            "release_notes": null,
-            "reviewed": "2014-03-12T11:54:50Z",
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sepsis-console/versions/0.2",
-            "version": "0.2"
-        }
-    ]
-}
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "<ul>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c2bdb95c8963ba4c4547e40b373624eaf5ad3292d75601f39708361fc8d239ea/http%3A//hg.mozilla.org/users/sevenspade_gmail.com/sepsis-console/rev/47dd547516e9\">Fix clickables in Inspector viewer</a></li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/45653e1b569c573b78bae6c849766d5f2bcd3cf51c64b732fe8602b10aa9296e/http%3A//hg.mozilla.org/users/sevenspade_gmail.com/sepsis-console/rev/e549373c97e2\">Treat non-functions with a [[Call]] correctly in consoleWriter.js.</a></li></ul>\nsepsis-console 0.3 was not made available through AMO due to <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/83b7461a212b9a12a33ec80b8b7fb8f8c1e14641317eef2e99babe993205c76f/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1000545\" title=\"Bug 1000545 - Impossible to publish add-on after a rejected review without skipping next logical version number\">bug 1000545</a>.  The notes for the changes in that release are:\n\n<ul>  <li>Make sure to remove \"console-api-log-event\" observer in viewer.</li>  <li>Fix bug where UnambiguousShadow autocomplete responder could get called</li>  <li>multiple times after evaling a string literal, causing the input to blow up.</li>  <li>When objects are output in the console viewer, you can click them to set them as the viewer target and inspect them in the child panel.</li>  <li>Implement console.trace</li>  <li>First pass at implementing drag and drop.  Enabled with the pref \"sepsis.console.draganddrop.enabled\".  Default to off for now, since it still needs ironing out.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sepsis-console/versions/0.4.1-signed.1-signed",
+        "version": "0.4.1-signed.1-signed"
+    },
+    {
+        "id": 1527770,
+        "channel": "listed",
+        "compatibility": {},
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sepsis-console/versions/1527770",
+        "files": [
+            {
+                "id": 247254,
+                "created": "2014-03-04T20:21:53Z",
+                "hash": "sha256:b85336d41d36c7df5905afb23d718a9aaba7dad70793eb3f4e7ce0ec5e7fb580",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 64013,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/247254/sepsis_console-0.2.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2014-03-12T11:54:50Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sepsis-console/versions/0.2",
+        "version": "0.2"
+    }
+]

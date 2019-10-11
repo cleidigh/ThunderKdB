@@ -16,28 +16,28 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 200,
+    "average_daily_users": 196,
     "categories": {
-        "firefox": [
-            "bookmarks",
-            "feeds-news-blogging"
-        ],
         "thunderbird": [
             "importexport",
             "message-and-news-reading"
+        ],
+        "firefox": [
+            "bookmarks",
+            "feeds-news-blogging"
         ]
     },
     "contributions_url": "https://www.paypal.me/addondonation/10usd",
     "current_version": {
         "id": 1899809,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "3.6"
-            },
             "thunderbird": {
                 "max": "48.0",
                 "min": "3.0a1"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "3.6"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfox-notes/versions/1899809",
@@ -204,5 +204,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfox-notes/",
-    "weekly_downloads": 392
+    "weekly_downloads": 392,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

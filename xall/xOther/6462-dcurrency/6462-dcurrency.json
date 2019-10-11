@@ -9,27 +9,27 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 8,
+    "average_daily_users": 9,
     "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ],
         "firefox": [
             "feeds-news-blogging",
             "shopping"
-        ],
-        "thunderbird": [
-            "message-and-news-reading"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 2181253,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
-            },
             "thunderbird": {
                 "max": "57.0",
                 "min": "0.3"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dcurrency/versions/2181253",
@@ -228,5 +228,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dcurrency/",
-    "weekly_downloads": 32
+    "weekly_downloads": 32,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

@@ -9,25 +9,25 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 36,
+    "average_daily_users": 37,
     "categories": {
-        "firefox": [
-            "appearance"
-        ],
         "thunderbird": [
             "calendar"
+        ],
+        "firefox": [
+            "appearance"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1936439,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
-            },
             "thunderbird": {
                 "max": "40.*",
+                "min": "1.5"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "1.5"
             }
         },
@@ -150,5 +150,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lcd-clock/",
-    "weekly_downloads": 91
+    "weekly_downloads": 91,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

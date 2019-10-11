@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   - ***** END LICENSE BLOCK ***** -->
+
+<!DOCTYPE overlay [
+<!ENTITY % toggleWordWrapDTD SYSTEM "chrome://togglewordwrap/locale/toggleWordWrap.dtd">
+%toggleWordWrapDTD;
+]>
+
+<overlay id="toggleWordWrapOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+ <script type="application/x-javascript" src="chrome://togglewordwrap/content/toggleWordWrap.js"/>
+
+ <!-- menu item in the composer window's "Options" menu -->
+ <!-- Thunderbird and Seamonkey -->
+ <menupopup id="optionsMenuPopup">
+   <menuitem id="menu_togglewordwrap" insertafter="menu_inlineSpellCheck"
+             label="&togglewordwrap.label;"
+             accesskey="&togglewordwrap.accesskey;"
+             disabled="true"
+             type="checkbox"
+             checked="false"
+             key="key_togglewordwrap"
+             oncommand="ch.velox.tww.toggleWordWrap();"/>
+ </menupopup>
+
+ <keyset id="editorKeys">
+   <key id="key_togglewordwrap"
+        key="w"
+        modifiers="alt"
+        oncommand="ch.velox.tww.toggleWordWrap();"/>
+ </keyset>
+
+ <!-- context menu and keyboard shortcut for HTML display mode -->
+ <!-- Thunderbird 3 and later, Seamonkey 2 and later (message window) -->
+ <menupopup id="mailContext">
+   <menuseparator id="mailContext-sep-tww"
+                  insertbefore="mailContext-sep-open"/>
+   <menuitem id="context-toggleprewrap"
+             insertbefore="mailContext-sep-open"
+             label="&toggleprewrap.label;"
+             type="checkbox"
+             checked="false"
+             hidden="true"
+             key="key_toggleprewrap"
+             oncommand="ch.velox.tww.togglePreWrap();"/>
+ </menupopup>
+
+ <keyset id="mailKeys">
+   <key id="key_toggleprewrap"
+        key="q"
+        modifiers="accel,shift"
+        oncommand="ch.velox.tww.togglePreWrap();"/>
+ </keyset>
+
+ <!-- menu item and context menu for browser window -->
+ <!-- Firefox -->
+ <menupopup id="menu_viewPopup">
+   <menuitem id="menu_toggleprewrap" insertafter="charsetMenu"/>
+ </menupopup>
+
+ <!-- Seamonkey (browser window) -->
+ <menupopup id="menu_View_Popup">
+   <menuitem id="menu_toggleprewrap" insertafter="charsetMenu"/>
+ </menupopup>
+
+ <menuitem id="menu_toggleprewrap"
+           label="&toggleprewrap.label;"
+           accesskey="&toggleprewrap.accesskey;"
+           type="checkbox"
+           checked="false"
+           key="key_toggleprewrap"
+           oncommand="ch.velox.tww.togglePreWrap();"/>
+
+ <keyset id="mainKeyset">
+   <key id="key_toggleprewrap"
+	key="q"
+	modifiers="accel,shift"
+	oncommand="ch.velox.tww.togglePreWrap();"/>
+ </keyset>
+
+ <menupopup id="contentAreaContextMenu">
+   <menuseparator id="context-sep-tpw" insertbefore="context-sep-properties,context-sep-viewsource"/>
+   <menuitem  id="context-toggleprewrap" insertbefore="context-sep-properties,context-sep-viewsource"
+              label="&toggleprewrap.label;"
+              accesskey="&toggleprewrap.accesskey;"
+              type="checkbox"
+              checked="false"
+              oncommand="ch.velox.tww.togglePreWrap();"/>
+ </menupopup>
+
+</overlay>

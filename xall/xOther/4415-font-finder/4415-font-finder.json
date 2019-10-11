@@ -30,33 +30,33 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 57,
+    "average_daily_users": 54,
     "categories": {
-        "firefox": [
-            "web-development"
+        "thunderbird": [
+            "miscellaneous"
         ],
         "seamonkey": [
             "web-and-developer-tools"
         ],
-        "thunderbird": [
-            "miscellaneous"
+        "firefox": [
+            "web-development"
         ]
     },
     "contributions_url": "https://www.paypal.me/addondonation/10usd",
     "current_version": {
         "id": 1982380,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
+            "thunderbird": {
+                "max": "54.0",
+                "min": "3.0a1"
             },
             "seamonkey": {
                 "max": "*",
                 "min": "2.0a1pre"
             },
-            "thunderbird": {
-                "max": "54.0",
-                "min": "3.0a1"
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/font-finder/versions/1982380",
@@ -218,5 +218,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/font-finder/",
-    "weekly_downloads": 155
+    "weekly_downloads": 155,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

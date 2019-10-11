@@ -11,24 +11,24 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "firefox": [
-            "photos-music-videos"
-        ],
         "thunderbird": [
             "miscellaneous"
+        ],
+        "firefox": [
+            "photos-music-videos"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 124947,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "1.5"
-            },
             "thunderbird": {
                 "max": "17.*",
                 "min": "2.0"
+            },
+            "firefox": {
+                "max": "56.*",
+                "min": "1.5"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/foobar-controls/versions/124947",
@@ -179,5 +179,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/foobar-controls/",
-    "weekly_downloads": 22
+    "weekly_downloads": 22,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

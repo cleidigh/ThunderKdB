@@ -11,23 +11,23 @@
     ],
     "average_daily_users": 1,
     "categories": {
-        "firefox": [
-            "other"
-        ],
         "thunderbird": [
             "miscellaneous"
+        ],
+        "firefox": [
+            "other"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 82647,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "2.0"
-            },
             "thunderbird": {
                 "max": "3.1.*",
+                "min": "2.0"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "2.0"
             }
         },
@@ -152,5 +152,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/extension-manager-extended/",
-    "weekly_downloads": 37
+    "weekly_downloads": 37,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }

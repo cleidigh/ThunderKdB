@@ -11,32 +11,32 @@
     ],
     "average_daily_users": 0,
     "categories": {
-        "firefox": [
-            "privacy-security",
-            "web-development"
+        "thunderbird": [
+            "privacy-and-security"
         ],
         "seamonkey": [
             "privacy-and-security",
             "web-and-developer-tools"
         ],
-        "thunderbird": [
-            "privacy-and-security"
+        "firefox": [
+            "privacy-security",
+            "web-development"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1484149,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "24.*",
                 "min": "24.0a1"
             },
             "seamonkey": {
                 "max": "2.21.*",
                 "min": "2.21a1"
             },
-            "thunderbird": {
-                "max": "24.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "24.0a1"
             }
         },
@@ -355,5 +355,11 @@
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xml-digital-signature-tool/",
-    "weekly_downloads": 77
+    "weekly_downloads": 77,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "compOther": true
+        }
+    }
 }
