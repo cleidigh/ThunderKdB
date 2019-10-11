@@ -67,8 +67,8 @@ function genExtensionListFromFolders() {
 function genExtensionListFromJson(extsJson) {
 
 	// let listBaseName = 'extension-list-all';
-	let listBaseName = 'extension-list-tb68';
-	// let listBaseName = 'extension-list-tb60';
+	// let listBaseName = 'extension-list-tb68';
+	let listBaseName = 'extension-list-tb60';
 
 	// let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
 	// let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
@@ -235,13 +235,13 @@ function createExtMDTableRow(extJson) {
 	// }
 
 	// target 60
-	// if ( !(comp_badges.includes(cBadge_tb60)) || comp_badges.includes(cBadge_tb68))  {
-	// 	return "";
-	// }
-
-	if ( !(comp_badges.includes(cBadge_tb68) ) ) {
+	if ( !(comp_badges.includes(cBadge_tb60)) || comp_badges.includes(cBadge_tb68)  || comp_badges.includes(cBadge_tb68_pv) ) {
 		return "";
 	}
+
+	// if ( !(comp_badges.includes(cBadge_tb68) ) ) {
+	// 	return "";
+	// }
 
 	// if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb60_pv) ) ) {
 	// 	return "";
