@@ -1,0 +1,106 @@
+xpiLib:
+
+Overview/Impetus:
+
+I believe all developers, core and extension, smartly peruse other people 's code for inspiration
+and answers.  This is certainly how I began my journey with Thunderbird, and you need to do the same
+ more now than ever.  While there is DXR and Bugzilla, these only house references to the core code trees.
+xpiLib is basically an attempt to provide a simplified version for ALL extension code in one place
+regardless if the extension has its own repository on GH or some other repository site.  This
+it is only part of the intended use.
+
+Currently there is a beta level release with the following:
+
+- Complete metadata (extension detail, versions and manifest files) - all 1339 existing extensions
+- Extension source code for all TB68 and TB60 compatible extensions. - I will upload the remaining later
+- A "basic, focused" search that can target the source library, issues and gists 
+- Use of the issue system for posting solutions, links, code snippets et cetera related to the library
+  or relevant external links
+- Navigation to both the metadata and source from the extension list reports
+
+The library already houses over one gigabyte of data, over 20k files (not yet including the bulk of source code)
+, however, this is new and evolving.
+
+I believe it is already useful and sufficiently populated  for the most likely purpose is currently.
+Here are some brief notes on usage which I will augment as this progresses.
+
+The xpiLib Repository/Library: 
+
+- Contained within the ThunderKdB GitHub repository
+- xpiLib is implemented as a hybrid repository including the source code tree as well as GH pages
+  to accomplish the search as well as a nicer HTML UI
+- Navigation is pretty basic and needs to be improved, the main entry point is the index
+for the GitHub pages side:
+
+		https://cleidigh.github.io/ThunderKdB/
+
+
+- This gets you to the reports, xpiLib search, links to the repository directly and eventually other useful links
+- Clicking any extension name on a report will take you to a details page which is still work in progress
+- The details page is where you eventually will be able to get all metadata, including all old version information
+  currently it gives you pointers to the source tree.
+- The source code trees are currently organized in a fashion to allow searching within three sets:
+   xall - top of the tree for extensions
+   x68 - all extensions that are 68 compatible 
+   x60 - all extensions that are 60 compatible BUT NOT 68 compatible
+   xOther - <60 compatible extensions (metadata only , source to be uploaded soon)
+- The organization set up to specifically deal with how you can GitHub searches done on repository code
+
+Search Notes:
+
+- I am shamelessly letting GitHub do the hard work, therefore I have to follow with rules
+- The current xpiLib search uses GitHub's URL search, NOT THE REST api. 
+- This means that there are some differences in capability since GH searches and renders the results
+- Some specific limitations are:
+    - The search topic(s) ignores almost all special characters (this is crazy but true)
+	- Quoting GitHub:
+	
+	"You can't use the following wildcard characters as part of your search query:
+	   . , : ; / \ ` ' " = * ! ? # $ & + ^ | ~ < > ( ) { } [ ]. 
+	 The search will simply ignore these symbols."
+
+	- Multiple word topics can be used enclosed in quotation marks, unfortunately it does not solve the above.
+	- I have not yet found the ability to define the number of results 
+	- I have also not found a way to change the number of source code lines returned
+	- Some of the above could be fixed by using the actual API, but this would require doing all the results rendering 
+
+- Search Filters/Pointers:
+	- Use the file filters to reduce results and increase specificity
+	- When searching for an XUL element, e.g. <datepicker> use just 'datepicker' (excluding quotes)
+	  AND filter for XUL files only that help since you cannot rely on the < or > to be included
+	- I have filters for markup files, JavaScript files and a few others.  Additional file type suggestions welcome.
+	- You can also look for codes specifically within the 60 or 68 trees or everything
+	- Another important note is that the search will also include issues and ultimately gists
+	  this is where share developer information in the library really synchronize
+	  It is importantly powerful in the sense that anyone can create an issue that provides guidance
+	  as well as pointers to Code or information and these issues will be included in searches that are relevant.
+	- Once search results are returned, one can dive into the particular files or tree to get the full picture
+
+The issues and topic points:
+
+ - Issues are viewed or created the core repository:
+
+ The core repository link (not the GH pages root);
+
+		https://github.com/cleidigh/ThunderKdB
+
+ - All developers can submit "issues" that get tagged for relevant topics that can point to 
+   a particular extension solution, external content, gists et cetera
+ - This is really where the power of the library comes in, community participation, easy pointers to code
+ - The idea is to augment the forums which are good places to ask questions, xpiLib is a place to do searches
+   and ideally memorialize people solutions.  The utility will be proportional to community participation.
+ - The issue for datepicker is something I made from my experience looking to replace the deprecated date picker
+   it also includes references to how SendLater from Jonathan K. used the component from lightning.
+ - There is another example for the deprecation of listbox - something both myself and Klaus have faced
+
+Conclusion:
+
+- it's a work in progress, focused on the extension developer community
+- I have lots of ideas to extend, and I am perfectly willing to do so if the community really finds this useful
+- Suggestions are best done within the repository issues itself unless people want a wider discussion on the forums
+- Thanks for suggestions from the few people who've taken a look at it already.
+
+I realize this is just one tool the tool chest, I am really hoping it becomes more useful with participation!
+
+Saludos,
+Christopher
