@@ -1,9 +1,8 @@
 # ![Thunderbird icon](rep-resources/Thunderbird-icon.png) ThunderKdB: xpiLib , Extensions KnowledgeBase
 
 
-## Thunderbird Developer Tools
-[Extension List - Thunderbird 68 Compatible](extensions-all/exts-tb68-comp/extension-list-tb68.md)
+## Thunderbird Developer Tools : ThunderKdB and xpiLib Entry Index:
 
 
-[xpiLib Browser](https://cleidigh.github.io/ThunderKdB/docs/xpiLib-search.html)
+[Entry Link ThunderKdB / xpiLib Browser](https://cleidigh.github.io/ThunderKdB/index.html)
 
