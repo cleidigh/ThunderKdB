@@ -680,13 +680,13 @@ async function _7CmdSync(_7zCommand) {
 		let startTime = new Date();
 		console.debug('' + startTime);
 
-		extsJson = fs.readJSONSync(extsAllJsonFileName);
-		// await getAllExtensionDetails(1, 54);
+		// extsJson = fs.readJSONSync(extsAllJsonFileName);
+		await getAllExtensionDetails(1, 54);
 		console.debug('extension lines ' + extsJson.length);
 
-		// writePrettyJSONFile(extsAllJsonFileName, extsJson);
+		writePrettyJSONFile(extsAllJsonFileName, extsJson);
 		// console.debug('right file');
-		// return;
+		return;
 		console.debug('TotalExtensions: ' + extsJson.length);
 		// extsJson = extArray;
 		// try {
