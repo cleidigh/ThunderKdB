@@ -686,7 +686,7 @@ async function _7CmdSync(_7zCommand) {
 
 		writePrettyJSONFile(extsAllJsonFileName, extsJson);
 		// console.debug('right file');
-		return;
+		// return;
 		console.debug('TotalExtensions: ' + extsJson.length);
 		// extsJson = extArray;
 		// try {
