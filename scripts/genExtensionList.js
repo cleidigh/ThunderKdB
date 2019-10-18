@@ -61,12 +61,12 @@ var reports = {
 		}
 	},
 	tb60: {
-		baseReportName: "extension-list-tb60",
+		baseReportName: "extension-list-tb60all",
 		 reportFilter: function (xpilib) {
 			// target 60 - !68
 			let compSet = xpilib.ext_comp;
 			console.debug(`comp ${compSet} `);
-			if ( (compSet.comp60 || compSet.comp60pv) && (!compSet.comp68 && !compSet.comp68pv )) {
+			if ( (compSet.comp60 || compSet.comp60pv) ) {
 				console.debug('True');
 				return true;
 			} else {
@@ -322,7 +322,8 @@ console.debug('Generate ExtensionList:');
 
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
 // genExtensionListFromFolders();
-genExtensionListFromJson(extsJson, reports.tb68);
+// genExtensionListFromJson(extsJson, reports.tb68);
+genExtensionListFromJson(extsJson, reports.tb60);
 // genExtensionListFromJson(extsJson, reports.tb60Only);
 // genExtensionListFromJson(extsJson, reports.all);
 
