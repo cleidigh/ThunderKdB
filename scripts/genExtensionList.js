@@ -40,6 +40,29 @@ const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/ba
 // const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-40a156.png)"
 const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png)"
 
+
+var reports = {
+	all: {
+		baseReportName: "extension-list-all",
+		reportFilter: null
+	},
+	tb60Only: {
+		baseReportName: "extension-list-tb60",
+		 reportFilter: function (xpilib) {
+			// target 60 - !68
+			let compSet = xpilib.ext_comp;
+			console.debug(`comp ${compSet} `);
+			if ( (compSet.comp60 || compSet.comp60pv) && (!compSet.comp68 && !compSet.comp68pv )) {
+				console.debug('True');
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+
+}
+
 function genExtensionListFromFolders() {
 	let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
 	let extRows = "";
@@ -64,15 +87,16 @@ function genExtensionListFromFolders() {
 }
 
 
-function genExtensionListFromJson(extsJson) {
+function genExtensionListFromJson(extsJson, report) {
 
+	let listBaseName = report.baseReportName;
 	// let listBaseName = 'extension-list-all';
 	// let listBaseName = 'extension-list-tb68';
 	// let listBaseName = 'extension-list-tb60';
 
-	// let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
+	let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
 	// let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
-	let extsListFile = fs.readFileSync('extension-list-tb60-templ.md', 'utf8');
+	// let extsListFile = fs.readFileSync('extension-list-tb60-templ.md', 'utf8');
 	// let extsListFile = fs.readFileSync('extension-list-tb60all-templ.md', 'utf8');
 
 	let extRows = "";
@@ -80,29 +104,37 @@ function genExtensionListFromJson(extsJson) {
 	// console.debug(extsListFile);
 
 	extsJson.map((extJson, index) => {
-		// console.debug('Extension ' + extJson.id + ' Index: '+index);
+		console.debug('Extension ' + extJson.id + ' Index: '+index);
 
 
 		if (extJson === null) {
 			return "";
 		}
 		// 
-		// console.debug('Extension ' + extJson.id + ' '+ JSON.stringify(extJson.xpilib.ext_comp));
 		if (extJson.xpilib === undefined) {
-			console.debug('Compatibility UD: '+extJson.id);
+			console.debug('Compatibility UD: ' + extJson.id);
 			// console.debug(extJson);
 			extJson.xpilib = {};
+
+		} else {
+		console.debug('Extension ' + extJson.id + ' '+ JSON.stringify(extJson.xpilib.ext_comp));
 
 		}
 		// console.debug(extJson.xpilib);
 		extJson.xpilib.rank = index + 1;
 
+		let row = "";
+		if (report.reportFilter === null || report.reportFilter(extJson.xpilib)) {
+			console.debug('Row '+ report.reportFilter(extJson.xpilib));
+			row = createExtMDTableRow(extJson);
+			if (row != "") {
+				rows++;
 
-		let row = createExtMDTableRow(extJson);
-		if (row != "") {
-			rows++;
-			
+			}
+		} else {
+			console.debug('Skip '+ extJson.slug);
 		}
+
 		return row;
 	})
 		.map(extRow => {
@@ -116,9 +148,9 @@ function genExtensionListFromJson(extsJson) {
 	extsListFile = extsListFile.replace('__date__', today);
 	extsListFile = extsListFile.replace('__ext-md-table__', extRows);
 	console.debug(extsListFile);
-	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB68Dir}/${listBaseName}.md`, extsListFile);
+	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${listBaseName}.md`, extsListFile);
 	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/extension-list-all.md`, extsListFile);
-	fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60.md`, extsListFile);
+	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60.md`, extsListFile);
 	// fs.writeFileSync(`${rootDir}/${extGroupAllDir}/${extGroupTB60Dir}/extension-list-tb60all.md`, extsListFile);
 
 	console.debug('Done');
@@ -195,14 +227,14 @@ function createExtMDTableRow(extJson) {
 		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp60pv === true) {
 			comp_badges += " " + cBadge_tb60_pv;
 		}
-		if (extJson.xpilib.ext_comp.comp61plus === true && !(compSet.comp68 || compSet.comp68pv) ) {
+		if (extJson.xpilib.ext_comp.comp61plus === true && !(compSet.comp68 || compSet.comp68pv)) {
 			comp_badges += " " + cBadge_tb61_plus;
 		}
 
 		if (compSet.compNoMax) {
 			comp_badges += " " + cBadge_maxv_star_warn;
 		}
-	
+
 		if (compSet.mext == true) {
 			comp_badges += " " + cBadge_mx;
 		}
@@ -231,16 +263,9 @@ function createExtMDTableRow(extJson) {
 	const name_link = `[${name}](${repoRoot}/${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-details.html)`
 
 
-	// vision filters - Target 60 !68
-	// if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb68)) ) {
-	// 	return "";
-	// }
 
-	// target 60
-	if ( !(comp_badges.includes(cBadge_tb60)) && !(comp_badges.includes(cBadge_tb60_pv)) || comp_badges.includes(cBadge_tb68)  || comp_badges.includes(cBadge_tb68_pv) ) {
-		return "";
-	}
 
+	// Target 68
 	// if ( !(comp_badges.includes(cBadge_tb68) ) && !(comp_badges.includes(cBadge_tb68_pv) ) ) {
 	// 	return "";
 	// }
@@ -269,4 +294,5 @@ console.debug('Generate ExtensionList:');
 
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
 // genExtensionListFromFolders();
-genExtensionListFromJson(extsJson);
+genExtensionListFromJson(extsJson, reports.tb60Only);
+// genExtensionListFromJson(extsJson, reports.all);

@@ -1,4 +1,5 @@
-var request = require('request-promise-native');
+var request = require('requestretry');
+// var request = require('request-promise-native');
 const fs = require('fs-extra');
 const download = require('download');
 const url = require('url');
@@ -12,9 +13,9 @@ const xml_util = require('./xml-util.js');
 const {
 	parse,
 	stringify,
-	assign 
-  } = require('comment-json')
-   
+	assign
+} = require('comment-json')
+
 const repoRootDir = "https://github.com/cleidigh/ThunderKdB/tree/master";
 const rootDir = "C:/Dev/Thunderbird/ThunderKdB";
 const extGroupAllDir = 'xall';
@@ -138,6 +139,48 @@ function getExtensionJSON(addon_identifier, query_type) {
 
 }
 
+function requestATN_URL2(addon_id, query_type, options) {
+	let extRequestOptions = {
+		url: `https://addons.thunderbird.net/api/v4/addons/addon/${addon_id}`,
+		json: true,
+		maxAttempts: 5,   // (default) try 5 times
+		retryDelay: 5000,  // (default) wait for 5s before trying again
+		retryStrategy: request.RetryStrategies.HTTPOrNetworkError, // (default) retry on 5xx or network errors
+		headers: {
+			'User-Agent': 'request'
+		}
+	};
+
+	if (query_type === 'search') {
+		extRequestOptions.url = "https://addons.thunderbird.net/api/v4/addons/search/";
+		extRequestOptions.qs = options;
+	}
+
+	// let promise = new Promise( ( resolve, reject ) => {
+	return new Promise((resolve, reject) => {
+
+		try {
+			request.get(extRequestOptions)
+				.then(response => {
+					console.debug('Valid');
+					// console.debug(response.body);
+					// console.debug(response.next);
+					resolve(response.body);
+
+				})
+				.catch(err => {
+					console.debug('RequestError: ' + err);
+					reject(err);
+				});
+
+		} catch (error) {
+			reject(0);
+		}
+
+
+	});
+}
+
 async function requestATN_URL(addon_id, query_type, options) {
 	// console.debug('request ' + addon_id + " Type: " + query_type);
 	// let response = await request.get('https://addons.thunderbird.net/api/v4/addons/addon/90003');
@@ -147,6 +190,10 @@ async function requestATN_URL(addon_id, query_type, options) {
 		// qs: {page: 59, app: "thunderbird", type: "extension", sort:"created"},
 		// url: 'https://api.github.com/repos/request/request',
 		json: true,
+		fullResponse: false,
+		// maxAttempts: 5,   // (default) try 5 times
+		// retryDelay: 5000,  // (default) wait for 5s before trying again
+		// retryStrategy: request.RetryStrategies.HTTPOrNetworkError, // (default) retry on 5xx or network errors
 		headers: {
 			'User-Agent': 'request'
 		}
@@ -168,6 +215,20 @@ async function requestATN_URL(addon_id, query_type, options) {
 		try {
 			console.log('StartRequest: ' + reqCnt + '  ' + addon_id);
 			let response = await request.get(extRequestOptions);
+
+			// let response = request.get(extRequestOptions)
+			// 						.then( response => {
+			// 							console.debug('Valid');
+			// 							// return response;
+			// 							resolve(response);
+			// 						})
+			// 						.catch( err => {
+			// 							console.debug('RequestError: '+err);
+
+			// 							// return 0;
+			// 						})
+			// 						return;
+
 			if (response.err) {
 				console.log('Request error' + response.err);
 				response = await request.get(extRequestOptions);
@@ -175,13 +236,13 @@ async function requestATN_URL(addon_id, query_type, options) {
 				return response;
 			}
 			else {
-				console.log(' Done response: ' + addon_id);
+				console.log(' Done response: ' + response.err);
 				// console.debug(response);
 				return response;
 			}
 		}
 		catch (err) {
-			console.debug('Error ' + extRequestOptions.url + '  ' + err);
+			console.debug('Request Error ' + extRequestOptions.url + '  ' + err);
 			return response;
 			if (reqCnt < 3) {
 				console.debug('Continue');
@@ -202,7 +263,7 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 		return 0;
 	}
 
-	console.debug('Generate... '+extSummaryFileName);
+	console.debug('Generate... ' + extSummaryFileName);
 	let extSummaryFile = fs.readFileSync('extension-details-templ.html', 'utf8');
 
 	const default_locale = extJson.default_locale;
@@ -234,7 +295,7 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 	extSummaryFile = extSummaryFile.replace('__ext-xpi-path__', xpiLink);
 	extSummaryFile = extSummaryFile.replace('__ext-description__', (summary + "\n"));
 
-	let ext_authors = extJson.authors.map( author => {
+	let ext_authors = extJson.authors.map(author => {
 		return author.name;
 	}).join(', ');
 
@@ -336,7 +397,7 @@ function compatibilityCheck(extJson, options) {
 			}
 			let v_min = `${ext_ver.compatibility.thunderbird.min}`;
 			let v_max = `${ext_ver.compatibility.thunderbird.max}`;
-			
+
 			let mext = ext_ver.files[0].is_webextension;
 			let ver_date = ext_ver.files[0].created;
 			if ((new Date(ver_date)) < (new Date("2017-01-01"))) {
@@ -344,7 +405,7 @@ function compatibilityCheck(extJson, options) {
 			}
 
 			if (extJson.slug === 'shrunked-image-resizer') {
-			console.debug(`${extJson.slug} : vMin: ${v_min} vMax: ${v_max} ${index}`);
+				console.debug(`${extJson.slug} : vMin: ${v_min} vMax: ${v_max} ${index}`);
 			}
 
 			const p = /[\d\.]+/;
@@ -403,7 +464,7 @@ async function getExtensionFiles(addon_identifier, index) {
 
 
 		let qs = { page_size: 50 };
-		
+
 		let ext_versions_raw = await requestATN_URL(addon_identifier, 'versions', qs);
 		// console.debug(ext_versions_raw);
 		// console.debug('links ' + ext_versions_raw.results);
@@ -420,6 +481,8 @@ async function getExtensionFiles(addon_identifier, index) {
 		extsJson[index].xpilib = {};
 		extsJson[index].xpilib.ext_comp = ext_comp;
 
+		let targetGroupDir = "";
+
 		if (ext_comp.comp68) {
 			targetGroupDir = extGroupTB68Dir;
 		} else if (ext_comp.comp60) {
@@ -431,6 +494,8 @@ async function getExtensionFiles(addon_identifier, index) {
 		const extRootName = `${addon_identifier}-${ext.slug}`;
 		const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
 
+		console.debug(`TargetGroup: ${extRootName} : ${targetGroupDir}`);
+
 		console.debug(`Save versions, ${extRootDir}`);
 		jfile = `${extRootDir}/${extRootName}-versions.json`;
 		await writePrettyJSONFile(jfile, ext_versions);
@@ -441,7 +506,7 @@ async function getExtensionFiles(addon_identifier, index) {
 		// if (!ext_comp.comp68) {
 		// 	return 1;
 		// }
-		
+
 		console.debug('CheckingFolder: ' + extRootDir);
 
 
@@ -474,8 +539,9 @@ async function getExtensionFiles(addon_identifier, index) {
 		// 	fs.removeSync(`${extRootDir}/src`);
 		// 	console.debug('Removing: ' + `${extRootName}`);
 		// }
+		console.debug(`TargetGroup: ${extRootName} : ${targetGroupDir}`);
 
-		console.debug('check versions: '+extRootDir);
+		console.debug('check versions: ' + extRootDir);
 		if (ext_comp.mext && fs.existsSync(`${extRootDir}/src/manifest.json`)) {
 			// fs.removeSync(`${extRootDir}/src`);
 			console.debug('Read: manifest ');
@@ -490,232 +556,303 @@ async function getExtensionFiles(addon_identifier, index) {
 			if (manifestJson.legacy !== undefined) {
 				console.debug('set legacy');
 				let legacy = JSON.stringify(manifestJson.legacy);
+				console.debug(legacy);
 				ext_comp.legacy = true;
 				ext_comp.legacy_type = (typeof manifestJson.legacy.type === 'string') ? manifestJson.legacy.type : 'xul';
-				console.debug('ReadingManifest: ' + `${extRootName} : ${manifestJson.legacy.legacy_type}`);
-				
+				console.debug('ReadingManifest: ' + `${extRootName} : ${ext_comp.legacy_type}`);
+
 			} else {
 				console.debug('Manifest NoLegacy');
 			}
 		} else if (fs.existsSync(`${extRootDir}/src/install.rdf`)) {
 			console.debug('CheckingInstall:');
 			const installRDFExtType = xml_util.rdfGetValue(`${extRootDir}/src/install.rdf`, 'Description[\"em:type\"]');
-			console.debug('type '+installRDFExtType);
+			console.debug('Addon type ' + installRDFExtType);
 			const installRDFExtBootstrap = xml_util.rdfGetValue(`${extRootDir}/src/install.rdf`, 'Description[\"em:bootstrap\"]');
-			console.debug('type '+installRDFExtBootstrap);
+			console.debug('bootstrap: ' + installRDFExtBootstrap);
 			if (installRDFExtType === 2 && installRDFExtBootstrap) {
 				ext_comp.legacy = true;
 				ext_comp.legacy_type = 'bootstrap';
 			} else {
 				ext_comp.legacy = true;
 				ext_comp.legacy_type = 'xul';
+				console.debug('xul type');
 			}
+			console.debug(ext_comp);
 			console.debug('ReadingInstall: ' + `${extRootName} : ${ext_comp.legacy.legacy_type}`);
 		}
 
-			// _7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
-			// console.debug('Starting unzip: ' + xpiFileName);
-			// fileUnzip(`${extRootDir}/xpi/${xpiFileName}`, { dir: `${extRootDir}/src` });
-			// console.debug('unpacked source');
+		// _7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
+		// console.debug('Starting unzip: ' + xpiFileName);
+		// fileUnzip(`${extRootDir}/xpi/${xpiFileName}`, { dir: `${extRootDir}/src` });
+		// console.debug('unpacked source');
 
 
-			console.debug('generate markDown	');
-			let overwrite = true;
-			genExtensionSummaryMD(addon_identifier, ext, targetGroupDir, overwrite);
+		console.debug('generate markDown	' + extRootName + '  ' + targetGroupDir);
+		let overwrite = true;
+		genExtensionSummaryMD(addon_identifier, ext, targetGroupDir, overwrite);
 
-			console.debug('Finished: ' + addon_identifier);
+		console.debug('Finished: ' + addon_identifier);
 
-			return 1;
-			// resolve();
-		} catch (e) {
-			// reject(0);
-			console.debug('Error Files ' + '  ' + e);
-			// throw e;
-			return 0;
-		}
-		// });
-		// await p;
+		return 1;
+		// resolve();
+	} catch (e) {
+		// reject(0);
+		console.debug('Error Files ' + '  ' + e);
+		// throw e;
+		return 0;
 	}
+	// });
+	// await p;
+}
 
 async function _7CmdSync(_7zCommand) {
-		return new Promise((resolve, reject) => {
+	return new Promise((resolve, reject) => {
 
-			console.error(_7zCommand);
-			_7z.cmd(_7zCommand, err => {
-				if (err) {
-					console.debug('Error ' + err);
-					reject(err);
+		console.error(_7zCommand);
+		_7z.cmd(_7zCommand, err => {
+			if (err) {
+				console.debug('Error ' + err);
+				reject(err);
+			}
+			else resolve();
+		});
+
+	});
+}
+
+function fileUnzip(source, options) {
+	extract(source, options, function (err) {
+		// extraction is complete. make sure to handle the err
+		console.debug('extract done: ' + err);
+	});
+}
+
+async function test() {
+	let ext = await requestATN_URL(addon_identifier)
+	console.debug(ext);
+}
+
+async function downloadURL(url, destFile) {
+	await download(url, `${destFile}`);
+	// console.log('done!');
+}
+
+async function ghSearch() {
+	// let ss = new String("q=Thunderbird");
+	let ss = { q: 'addClass in:file language:js repo:jquery/jquery' };
+	let so = gh.search(ss);
+	// "ChromeUtils"
+	let options;
+	// let sresults = await so.forCode(options);
+	return so.forCode(options)
+		.then(function ({ data }) {
+			console.debug('data ' + data);
+			console.debug(JSON.stringify(data[0]));
+		})
+
+	console.debug(so);
+	// console.debug('results\n'+ sresults[0]);
+	// console.debug('results\n'+ JSON.stringify(sresults[0]));
+	// sresults.forEach(element => {
+	// });
+
+}
+
+
+const getDirectories = source =>
+	fs.readdirSync(source, { withFileTypes: true })
+		.filter(dirent => dirent.isDirectory())
+		.map(dirent => dirent.name)
+
+// console.debug('Finished');
+
+
+async function fetchAllCounts(users) {
+	const promises = users.map(async username => {
+		const count = await fetchPublicReposCount(username);
+		return count;
+	});
+	return Promise.all(promises);
+}
+
+var extsJson = [];
+
+
+async function getExtensions() {
+	let qs = { page: 0, app: "thunderbird", type: "extension", sort: "users" };
+	qs.page = 1;
+
+	const stopPage = 54;
+	promises = [];
+	pages = [];
+
+	for (let index = 1; index < stopPage + 1; index++) {
+		console.debug('StartRequest: Page: ' + index);
+		qs.page = index;
+
+		let p = requestATN_URL2(null, 'search', qs)
+			.then(r => {
+				// console.debug('after request ' + r.next);
+				// console.debug('after request ' + r.previous);
+				// console.debug('after  '+JSON.stringify(r));
+				var page;
+				if (r.next !== null) {
+					var parsedUrl = new URL(r.next);
+					page = parsedUrl.searchParams.get("page") - 1;
+
+				} else {
+					var parsedUrl = new URL(r.previous);
+					page = parsedUrl.searchParams.get("page") + 1;
 				}
-				else resolve();
+					console.log('Page: ' + page);
+					pages[page ] = r.results;
+
 			});
 
-		});
-	}
-
-	function fileUnzip(source, options) {
-		extract(source, options, function (err) {
-			// extraction is complete. make sure to handle the err
-			console.debug('extract done: ' + err);
-		});
-	}
-
-	async function test() {
-		let ext = await requestATN_URL(addon_identifier)
-		console.debug(ext);
-	}
-
-	async function downloadURL(url, destFile) {
-		await download(url, `${destFile}`);
-		// console.log('done!');
-	}
-
-	async function ghSearch() {
-		// let ss = new String("q=Thunderbird");
-		let ss = { q: 'addClass in:file language:js repo:jquery/jquery' };
-		let so = gh.search(ss);
-		// "ChromeUtils"
-		let options;
-		// let sresults = await so.forCode(options);
-		return so.forCode(options)
-			.then(function ({ data }) {
-				console.debug('data ' + data);
-				console.debug(JSON.stringify(data[0]));
-			})
-
-		console.debug(so);
-		// console.debug('results\n'+ sresults[0]);
-		// console.debug('results\n'+ JSON.stringify(sresults[0]));
-		// sresults.forEach(element => {
-		// });
+			promises.push(p);
 
 	}
 
+	await Promise.all(promises);
+	console.debug('AfterPromises');
 
-	const getDirectories = source =>
-		fs.readdirSync(source, { withFileTypes: true })
-			.filter(dirent => dirent.isDirectory())
-			.map(dirent => dirent.name)
+	console.debug('NumberedPages ' + pages.length);
+	pages.map(p => { extsJson = extsJson.concat(p); });
 
-	// console.debug('Finished');
+	// console.debug(JSON.stringify(extsJson));
+	extsJson.map((ext, index) => {
+		console.debug(`${index}: ${ext.slug} : ${ext.average_daily_users}`);
+	})
+	return;
 
+}
 
-	async function fetchAllCounts(users) {
-		const promises = users.map(async username => {
-			const count = await fetchPublicReposCount(username);
-			return count;
-		});
-		return Promise.all(promises);
-	}
+async function getAllExtensionDetails(pageStart, pageEnd) {
+	let qs = { page: 0, app: "thunderbird", type: "extension", sort: "users" };
 
-	var extsJson = [];
-
-	async function getAllExtensionDetails(pageStart, pageEnd) {
-		let qs = { page: 0, app: "thunderbird", type: "extension", sort: "users" };
-
-		let ap = [];
-		for (let i = pageStart; i < pageEnd + 1; i++) {
-			qs.page = i;
-			// json_resp = await requestATN_URL(null, 'search', qs);
-			let resp = await requestATN_URL(null, 'search', qs)
-			if (i === 1) {
-				console.debug('page:\n'+ JSON.stringify( resp.results));
-				
-			}
-			// console.debug(`page: ${i} ${resp.results[0].id} ${resp.results.length} \n\n\n\n`);
-			ap += resp;
-			extsJson = extsJson.concat(resp.results);
-			// resp.results.map( ext => console.debug('Response Extension: '+ext.id));
-
-			// console.debug('page:\n' + JSON.stringify( extsJson));
-
+	let ap = [];
+	for (let i = pageStart; i < pageEnd + 1; i++) {
+		qs.page = i;
+		// json_resp = await requestATN_URL(null, 'search', qs);
+		let resp = await requestATN_URL(null, 'search', qs)
+		if (i === 1) {
+			// console.debug('page:\n'+ JSON.stringify( resp.results));
 
 		}
+		// console.debug(`page: ${i} ${resp.results[0].id} ${resp.results.length} \n\n\n\n`);
+		ap += resp;
+		extsJson = extsJson.concat(resp.results);
+		// resp.results.map( ext => console.debug('Response Extension: '+ext.id));
 
-		// console.debug('Await All'); 
-		let ap2 = Promise.all(ap);
-		console.debug('All Promises ' + ap.length + " " + extsJson.length);
+		// console.debug('page:\n' + JSON.stringify( extsJson));
 
-		return ap2;
+
 	}
 
+	// console.debug('Await All'); 
+	let ap2 = Promise.all(ap);
+	console.debug('All Promises ' + ap.length + " " + extsJson.length);
 
-	async function getAll(extArray, options) {
-		// let p = [];
+	return ap2;
+}
 
-		// for (let index = 0; index < extArray.length; index++) {
-		// 	const element = extArray[index];
-		// 	const pc = await getExtensionFiles( element);
-		// 	p.push(pc);
+
+async function getAll(extArray, options) {
+	// let p = [];
+
+	// for (let index = 0; index < extArray.length; index++) {
+	// 	const element = extArray[index];
+	// 	const pc = await getExtensionFiles( element);
+	// 	p.push(pc);
+	// }
+	exts = extArray.slice(options.start, options.end + 1);
+	console.debug(`StartingGet: ${options.start} - ${options.end} : ${exts.length}`);
+
+	const p = exts.map(async (extObj, index) => {
+		console.debug('map start ' + index);
+
+		// if (extObj === undefined) {
+		// 	console.debug('Nul for itself');
+		// 	return 0;
 		// }
-		exts = extArray.slice(options.start, options.end + 1);
-		console.debug(`StartingGet: ${options.start} - ${options.end} : ${exts.length}`);
 
-		const p = exts.map(async (extObj, index) => {
-			console.debug('map start ' + index);
-
-			let pc = {};
-			if (typeof extObj === 'number') {
-				pc = await getExtensionFiles(extObj, options.start + index);
-				// console.debug('after get ' + pc);
-				// console.debug('after get ' + pc);
-			} else {
-				pc = await getExtensionFiles(extObj.id, options.start + index);
-			}
-			// const pc = await getExtensionFiles(extId);
-			// console.debug('after get return ' + pc);
-
-			return pc;
-		});
-
-		console.debug('Await All');
-		let ap = Promise.all(p);
-		console.debug('All Promises ' + ap.length + " " + ap);
-
-		return ap;
-	}
-
-	// ghSearch();
-	// console.debug(getDirectories('.'));
-	async function g1() {
-		let startTime = new Date();
-		console.debug('' + startTime);
-
-		// extsJson = fs.readJSONSync(extsAllJsonFileName);
-		await getAllExtensionDetails(1, 54);
-		console.debug('extension lines ' + extsJson.length);
-
-		writePrettyJSONFile(extsAllJsonFileName, extsJson);
-		// console.debug('right file');
-		// return;
-		console.debug('TotalExtensions: ' + extsJson.length);
-		// extsJson = extArray;
-		// try {
-		let p = [];
-		for (let index = 0; index < 67; index++) {
-			console.debug('GetIndex ' + index);
-			p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
-			// p.push(await getAll(extsJson, { start: 82 , end: 84 }));
-
+		let pc = {};
+		if (typeof extObj === 'number') {
+			pc = await getExtensionFiles(extObj, options.start + index);
+			// console.debug('after get ' + pc);
+			// console.debug('after get ' + pc);
+		} else {
+			pc = await getExtensionFiles(extObj.id, options.start + index);
 		}
+		// const pc = await getExtensionFiles(extId);
+		// console.debug('after get return ' + pc);
 
-		let ap = Promise.all(p);
-		// } catch (error) {
-		// 	console.debug('outside  error ' + error);
-		// }
+		return pc;
+	});
 
-		console.debug('after get all ' + extsJson.length);
-		console.debug(new Date() - startTime);
-		console.debug(new Date());
+	console.debug('Await All');
+	let ap = Promise.all(p);
+	console.debug('All Promises ' + ap.length + " " + ap);
 
-		console.debug('rewriting masterfile');
-		writePrettyJSONFile(extsAllJsonFileName, extsJson);
+	return ap;
+}
 
-		// extArray = extsJson;
-		// await getAll();
+// ghSearch();
+// console.debug(getDirectories('.'));
+async function g1() {
+	let startTime = new Date();
+	console.debug('' + startTime);
+
+	// extsJson = fs.readJSONSync(extsAllJsonFileName);
+	// await getAllExtensionDetails(1, 54);
+	await g2();
+	console.debug('extension lines ' + extsJson.length);
+
+	writePrettyJSONFile(extsAllJsonFileName, extsJson);
+	console.debug('Finished Extension Details:');
+
+	console.debug(new Date() - startTime);
+	// return;
+	console.debug('TotalExtensions: ' + extsJson.length);
+	// extsJson = extArray;
+	// try {
+	let p = [];
+	for (let index = 0; index < 67; index++) {
+		console.debug('GetIndex ' + index);
+		p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
+		// p.push(await getAll(extsJson, { start: 82 , end: 84 }));
 
 	}
-	g1();
 
+	let ap = Promise.all(p);
+	// } catch (error) {
+	// 	console.debug('outside  error ' + error);
+	// }
 
+	console.debug('after get all ' + extsJson.length);
+	console.debug( (new Date() - startTime)/1000);
+	console.debug(new Date());
 
-	console.debug('Totally Done'); 
+	console.debug('rewriting masterfile');
+	writePrettyJSONFile(extsAllJsonFileName, extsJson);
+
+	extsJson.map(ext => {
+		if (ext.xpilib === undefined || ext.xpilib === null) {
+			console.debug(`Ext: ${ext.slug} : No xpilib`);
+		}
+	})
+	// extArray = extsJson;
+	// await getAll();
+
+}
+
+async function g2() {
+	await getExtensions();
+	console.debug('Totally Done');
+
+}
+
+g1();
+
+// g2();
