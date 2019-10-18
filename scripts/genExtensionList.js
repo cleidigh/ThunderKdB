@@ -59,6 +59,34 @@ var reports = {
 				return false;
 			}
 		}
+	},
+	tb60: {
+		baseReportName: "extension-list-tb60",
+		 reportFilter: function (xpilib) {
+			// target 60 - !68
+			let compSet = xpilib.ext_comp;
+			console.debug(`comp ${compSet} `);
+			if ( (compSet.comp60 || compSet.comp60pv) && (!compSet.comp68 && !compSet.comp68pv )) {
+				console.debug('True');
+				return true;
+			} else {
+				return false;
+			}
+		}
+	},
+	tb68: {
+		baseReportName: "extension-list-tb68",
+		 reportFilter: function (xpilib) {
+			// target 60 - !68
+			let compSet = xpilib.ext_comp;
+			console.debug(`comp ${compSet} `);
+			if ( (compSet.comp68 || compSet.comp68pv) ) {
+				console.debug('True');
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 
 }
@@ -294,5 +322,7 @@ console.debug('Generate ExtensionList:');
 
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
 // genExtensionListFromFolders();
-genExtensionListFromJson(extsJson, reports.tb60Only);
+genExtensionListFromJson(extsJson, reports.tb68);
+// genExtensionListFromJson(extsJson, reports.tb60Only);
 // genExtensionListFromJson(extsJson, reports.all);
+
