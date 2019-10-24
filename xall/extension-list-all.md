@@ -15,7 +15,7 @@ body {
 	<img class="banner-image" src='/ThunderKdB/docs/images/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" />
 	<label class="banner-header">Extensions: All (1340)</label>
-	<label class="banner-header-rt">2019-10-23</label>
+	<label class="banner-header-rt">2019-10-24</label>
 
 </div>
 <div>
@@ -25,7 +25,7 @@ body {
 
 | # | Id | Name | Ver | Date | Users | Min | Max | Compatibility |
 |---: |---: |---|---: |---: |---: |---: |---: |---|
-|1 | 2313 | [Lightning](/ThunderKdB/xall/xOther/2313-lightning/2313-lightning-details.html) | 68.1.2 | 2019-10-15 | 6847733 | 68.1.0 | 68.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
+|1 | 2313 | [Lightning](/ThunderKdB/xall/xOther/2313-lightning/2313-lightning-details.html) | 68.2.0 | 2019-10-24 | 6847733 | 68.2.0 | 68.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |2 | 324492 | [ImportExportTools](/ThunderKdB/xall/x60/324492-importexporttools/324492-importexporttools-details.html) | 3.3.2 | 2019-01-27 | 453223 | 14.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |3 | 4631 | [Provider for Google Calendar](/ThunderKdB/xall/x68/4631-provider-for-google-calendar/4631-provider-for-google-calendar-details.html) | 68.0 | 2019-09-02 | 292128 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |4 | 15102 | [Manually sort folders](/ThunderKdB/xall/x68/15102-manually-sort-folders/15102-manually-sort-folders-details.html) | 2.0.2 | 2019-09-26 | 176154 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
@@ -35,13 +35,13 @@ body {
 |8 | 8451 | [gContactSync](/ThunderKdB/xall/x68/8451-gcontactsync/8451-gcontactsync-details.html) | 3.1.7 | 2019-06-12 | 85039 | 67.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |9 | 13564 | [CompactHeader](/ThunderKdB/xall/x68/13564-compactheader/13564-compactheader-details.html) | 3.0.0beta3 | 2019-08-16 | 80344 | 68.0 | 70.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |10 | 195275 | [Send Later](/ThunderKdB/xall/x68/195275-send-later-3/195275-send-later-3-details.html) | 7.2.0 | 2019-09-23 | 75017 | 68.0a1 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
-|11 | 4654 | [Remove Duplicate Messages (Alternate)](/ThunderKdB/xall/x60/4654-remove-duplicate-messages-alte/4654-remove-duplicate-messages-alte-details.html) | 0.3.18b | 2019-03-25 | 70093 | 31.0 | 61.0a1 |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|11 | 4654 | [Remove Duplicate Messages (Alternate)](/ThunderKdB/xall/x68/4654-remove-duplicate-messages-alte/4654-remove-duplicate-messages-alte-details.html) | 0.4.1 | 2019-10-23 | 70093 | 31.0a1 | 68.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |12 | 47144 | [Mail Merge](/ThunderKdB/xall/x68/47144-mail-merge/47144-mail-merge-details.html) | 6.0.0 | 2019-06-19 | 62465 | 68.0a1 | 68.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |13 | 611 | [Signature Switch](/ThunderKdB/xall/x68/611-signature-switch/611-signature-switch-details.html) | 1.8.2 | 2019-09-03 | 62242 | 61.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |14 | 634298 | [CardBook](/ThunderKdB/xall/x68/634298-cardbook/634298-cardbook-details.html) | 42.9 | 2019-10-18 | 49099 | 68.0a1 | 69.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |15 | 550 | [Mail Redirect](/ThunderKdB/xall/x68/550-mailredirect/550-mailredirect-details.html) | 0.10.5 | 2019-10-09 | 37560 | 6.0 | 70.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |16 | 881 | [Display Quota](/ThunderKdB/xall/x60/881-display-quota/881-display-quota-details.html) | 0.3.8 | 2018-08-27 | 32456 | 5.0 | 61.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
-|17 | 2533 | [Addressbooks Synchronizer](/ThunderKdB/xall/x60/2533-addressbooks-synchronizer/2533-addressbooks-synchronizer-details.html) | 1.2.2 | 2018-04-27 | 32016 | 5.0 | 62.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|17 | 2533 | [Addressbooks Synchronizer](/ThunderKdB/xall/x68/2533-addressbooks-synchronizer/2533-addressbooks-synchronizer-details.html) | 2.0.1 | 2019-09-29 | 32016 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |18 | 330424 | [PrintingTools](/ThunderKdB/xall/x60/330424-printingtools/330424-printingtools-details.html) | 1.3.0 | 2018-03-01 | 31135 | 3.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |19 | 4394 | [Stationery](/ThunderKdB/xall/x60/4394-stationery/4394-stationery-details.html) | 1.0.0 | 2018-07-29 | 26270 | 52.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |20 | 6622 | [DOM Inspector](/ThunderKdB/xall/xOther/6622-dom-inspector-6622/6622-dom-inspector-6622-details.html) | 2.0.16.1-sig | 2015-06-25 | 25898 | 5.0 | 42.0 |   |
@@ -202,7 +202,7 @@ body {
 |175 | 596736 | [ThunderStats! Your Thunderbird Statist](/ThunderKdB/xall/x60/596736-thunderstats/596736-thunderstats-details.html) | 1.4.4 | 2019-02-22 | 1469 | 60.0 | 61.0 |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |176 | 2299 | [ThreadKey](/ThunderKdB/xall/xOther/2299-threadkey/2299-threadkey-details.html) | 1.4 | 2019-07-29 | 1465 | 52.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |177 | 269954 | [TBDialOut](/ThunderKdB/xall/x60/269954-tbdialout/269954-tbdialout-details.html) | 1.7.3 | 2018-11-01 | 1461 | 3.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
-|178 | 3492 | [Show InOut](/ThunderKdB/xall/x60/3492-show-inout/3492-show-inout-details.html) | 1.2.2 | 2018-11-23 | 1461 | 5.0 | 64.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|178 | 3492 | [Show InOut](/ThunderKdB/xall/x68/3492-show-inout/3492-show-inout-details.html) | 2.0.1 | 2019-09-29 | 1461 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |179 | 14417 | [Expand mailing list recipients](/ThunderKdB/xall/x60/14417-popmaillistrecipients/14417-popmaillistrecipients-details.html) | 0.3.2 | 2016-06-14 | 1399 | 24.0 | 65.0 |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |180 | 445196 | [Menu On Top (SuperMenu Avatar)](/ThunderKdB/xall/x68/445196-menu-on-top/445196-menu-on-top-details.html) | 1.15 | 2019-06-17 | 1341 | 60.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png) |
 |181 | 67147 | [AddressBookTab](/ThunderKdB/xall/xOther/67147-addressbooktab/67147-addressbooktab-details.html) | 1.5 | 2012-09-04 | 1336 | 3.0 | 28.0 |   |
@@ -286,7 +286,7 @@ body {
 |259 | 471588 | [Menu Filter](/ThunderKdB/xall/x68/471588-menu-filter/471588-menu-filter-details.html) | 25 | 2019-08-01 | 525 | 68.0a1 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png) |
 |260 | 2848 | [Password Exporter](/ThunderKdB/xall/xOther/2848-password-exporter/2848-password-exporter-details.html) | 1.3.4 | 2017-07-04 | 525 | 31.0 | 55.* |   |
 |261 | 502200 | [X-Unsent support](/ThunderKdB/xall/x68/502200-x-unsent-support/502200-x-unsent-support-details.html) | 3.0.0 | 2019-09-06 | 521 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
-|262 | 728162 | [Checkbox Column](/ThunderKdB/xall/x60/728162-checkbox-column/728162-checkbox-column-details.html) | 1.3.0 | 2019-01-30 | 520 | 22.* | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|262 | 728162 | [Checkbox Column](/ThunderKdB/xall/x68/728162-checkbox-column/728162-checkbox-column-details.html) | 1.4.68 | 2019-10-09 | 520 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |263 | 265058 | [ThunderSync](/ThunderKdB/xall/xOther/265058-thundersync/265058-thundersync-details.html) | 2.6 | 2015-11-10 | 511 | 3.0 | 38.* |   |
 |264 | 347232 | [Message Notes Plus](/ThunderKdB/xall/xOther/347232-messagenotesplus/347232-messagenotesplus-details.html) | 1.5.0.0 | 2016-11-12 | 506 | 3.0 | 45.* |   |
 |265 | 262823 | [ResetRec](/ThunderKdB/xall/x60/262823-resetrec/262823-resetrec-details.html) | 1.3 | 2018-12-08 | 502 | 3.1 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
@@ -440,12 +440,12 @@ body {
 |413 | 255237 | [Prevent Delete](/ThunderKdB/xall/xOther/255237-prevent-delete/255237-prevent-delete-details.html) | 1.2.1 | 2011-06-21 | 126 | 3.0 | 31.* |   |
 |414 | 427197 | [tzpush](/ThunderKdB/xall/xOther/427197-tzpush/427197-tzpush-details.html) | 1.9.9.9.9 | 2017-04-15 | 126 | 10.0 | 52.* |   |
 |415 | 2516 | [Mnenhy](/ThunderKdB/xall/xOther/2516-mnenhy/2516-mnenhy-details.html) | 0.8.6.1-sign | 2014-02-25 | 125 | 3.0 | 29.0a1 |   |
-|416 | 986230 | [Mailing list filter](/ThunderKdB/xall/x60/986230-mailing-list-filter/986230-mailing-list-filter-details.html) | 1.1.1 | 2018-09-09 | 125 | 17.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|416 | 986230 | [Mailing list filter](/ThunderKdB/xall/x60/986230-mailing-list-filter/986230-mailing-list-filter-details.html) | 1.1.1 | 2018-09-09 | 125 | 17.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) |
 |417 | 11889 | [Growl/GNTP for Thunderbird](/ThunderKdB/xall/xOther/11889-growlgntp-for-thunderbird/11889-growlgntp-for-thunderbird-details.html) | 1.2.3 | 2011-07-20 | 125 | 2.0 | 24.* |   |
 |418 | 129690 | [Empty 'em](/ThunderKdB/xall/xOther/129690-empty-em/129690-empty-em-details.html) | 0.91 | 2016-06-29 | 124 | 33.0a1 | 49.* |   |
 |419 | 11287 | [Any Confirmation Message before Send](/ThunderKdB/xall/xOther/11287-any-confirmation-message-befor/11287-any-confirmation-message-befor-details.html) | 1.0.2 | 2009-12-11 | 124 | 1.5 | 52.* |   |
 |420 | 317539 | [Follow Up](/ThunderKdB/xall/xOther/317539-follow-up/317539-follow-up-details.html) | 2.0 | 2011-08-02 | 122 | 3.1 | 31.* |   |
-|421 | 607570 | [Gravatars](/ThunderKdB/xall/x60/607570-gravatars/607570-gravatars-details.html) | 1.2 | 2018-10-25 | 119 | 31.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|421 | 607570 | [Gravatars](/ThunderKdB/xall/x60/607570-gravatars/607570-gravatars-details.html) | 1.2 | 2018-10-25 | 119 | 31.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) |
 |422 | 986260 | [EasyRight2Left](/ThunderKdB/xall/x60/986260-easyright2left/986260-easyright2left-details.html) | 1.0 | 2018-08-21 | 118 | 52.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |423 | 326852 | [FastCC](/ThunderKdB/xall/x60/326852-fastcc/326852-fastcc-details.html) | 1.0.1 | 2012-02-05 | 118 | 3.1 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |424 | 87434 | [Quicker Filer](/ThunderKdB/xall/xOther/87434-quicker-filer/87434-quicker-filer-details.html) | 0.6.4 | 2014-09-29 | 117 | 24.0 | 33.* |   |
@@ -499,8 +499,8 @@ body {
 |472 | 910305 | [Asciidoctor for Thunderbird](/ThunderKdB/xall/x60/910305-asciidoctor-for-thunderbird/910305-asciidoctor-for-thunderbird-details.html) | 1.5 | 2019-05-16 | 80 | 1.5 | 67.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |473 | 244879 | [Montezooma](/ThunderKdB/xall/xOther/244879-montezooma/244879-montezooma-details.html) | 1.0.9 | 2013-10-25 | 78 | 3.0 | 31.* |   |
 |474 | 412100 | [Too Many Recipients](/ThunderKdB/xall/xOther/412100-too-many-recipients/412100-too-many-recipients-details.html) | 1.2.1 | 2012-12-17 | 78 | 10.0 | 30.* |   |
-|475 | 330052 | [Mark All Read Button Postbox](/ThunderKdB/xall/xOther/330052-mark-all-read-button-postbox/330052-mark-all-read-button-postbox-details.html) | 0.6 | 2012-03-24 | 77 | 1.0 | 31.* |   |
-|476 | 330052 | [Mark All Read Button Postbox](/ThunderKdB/xall/xOther/330052-mark-all-read-button-postbox/330052-mark-all-read-button-postbox-details.html) | 0.6 | 2012-03-24 | 77 | 1.0 | 31.* |   |
+|475 | 4972 | [SmtpSwitch](/ThunderKdB/xall/xOther/4972-smtpswitch/4972-smtpswitch-details.html) | 1.0.3 | 2011-07-18 | 77 | 2.0 | 21.* |   |
+|476 | 4972 | [SmtpSwitch](/ThunderKdB/xall/xOther/4972-smtpswitch/4972-smtpswitch-details.html) | 1.0.3 | 2011-07-18 | 77 | 2.0 | 21.* |   |
 |477 | 679462 | [Stylish-Custom](/ThunderKdB/xall/xOther/679462-stylish-custom/679462-stylish-custom-details.html) | 0.9.2 | 2017-07-16 | 77 | 3.3a1pre | 56.0 |   |
 |478 | 70001 | [ThunderTabs](/ThunderKdB/xall/xOther/70001-thundertabs/70001-thundertabs-details.html) | 1.5 | 2016-09-23 | 76 | 3.0 | 52.0 |   |
 |479 | 413398 | [Reply Monitor](/ThunderKdB/xall/xOther/413398-reply-manager/413398-reply-manager-details.html) | 1.0.0 | 2018-08-15 | 76 | 38.0 | 52.* |   |
@@ -509,7 +509,7 @@ body {
 |482 | 6501 | [Tab Wheel Scroll](/ThunderKdB/xall/xOther/6501-tab-wheel-scroll/6501-tab-wheel-scroll-details.html) | 20170104.7.4 | 2017-01-04 | 74 | 31.0 | 51.0 |   |
 |483 | 4762 | [Hide Menubar](/ThunderKdB/xall/xOther/4762-hidemenubar/4762-hidemenubar-details.html) | 6.0.20110915 | 2011-09-16 | 74 | 6.0 | 24.* |   |
 |484 | 589130 | [clamdrib LIN](/ThunderKdB/xall/xOther/589130-clamdrib-lin/589130-clamdrib-lin-details.html) | 0.2.1.9 | 2017-05-26 | 73 | 6.* | 56.0 |   |
-|485 | 304954 | [dwMailCopy](/ThunderKdB/xall/x60/304954-dwmailcopy/304954-dwmailcopy-details.html) | 0.0.10 | 2018-12-29 | 72 | 1.5 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) |
+|485 | 304954 | [dwMailCopy](/ThunderKdB/xall/x60/304954-dwmailcopy/304954-dwmailcopy-details.html) | 0.0.10 | 2018-12-29 | 72 | 1.5 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |486 | 812455 | [Webreq® Mailboard®](/ThunderKdB/xall/xOther/812455-webreq/812455-webreq-details.html) | 1.7 | 2018-06-16 | 72 | 45.7.0 | 63.0 |   |
 |487 | 553652 | [Sender Address Columns](/ThunderKdB/xall/xOther/553652-senderaddresscolumn/553652-senderaddresscolumn-details.html) | 1.1.0 | 2016-08-13 | 72 | 7.0 | 31.* |   |
 |488 | 2030 | [Allow Local Addresses](/ThunderKdB/xall/xOther/2030-allow-local-addresses/2030-allow-local-addresses-details.html) | 1.1 | 2007-03-05 | 71 | 1.5 | 16.* |   |
@@ -543,8 +543,8 @@ body {
 |516 | 412894 | [Mark Read On Reply and Reply-All](/ThunderKdB/xall/xOther/412894-mark-read-on-reply-and-repl/412894-mark-read-on-reply-and-repl-details.html) | 2.1 | 2013-11-15 | 59 | 11.0 | 31.* |   |
 |517 | 466796 | [Kmaleon Extension](/ThunderKdB/xall/x60/466796-kmaleon-extension/466796-kmaleon-extension-details.html) | 1.3.0.0 | 2018-10-17 | 59 | 3.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |518 | 621166 | [Page Colors & Fonts Buttons](/ThunderKdB/xall/xOther/621166-page-colors-fonts-buttons/621166-page-colors-fonts-buttons-details.html) | 1.1.3.1-sign | 2015-06-07 | 58 | 20.0 | 42.0 |   |
-|519 | 618822 | [Free Memory Button](/ThunderKdB/xall/xOther/618822-free-memory-button/618822-free-memory-button-details.html) | 1.1.2.1-sign | 2015-06-01 | 58 | 20.0 | 42.0 |   |
-|520 | 337144 | [Mail Sent Notifier](/ThunderKdB/xall/x68/337144-mail-sent-notifier/337144-mail-sent-notifier-details.html) | 0.7.0 | 2019-09-05 | 58 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|519 | 337144 | [Mail Sent Notifier](/ThunderKdB/xall/x68/337144-mail-sent-notifier/337144-mail-sent-notifier-details.html) | 0.7.0 | 2019-09-05 | 58 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|520 | 618822 | [Free Memory Button](/ThunderKdB/xall/xOther/618822-free-memory-button/618822-free-memory-button-details.html) | 1.1.2.1-sign | 2015-06-01 | 58 | 20.0 | 42.0 |   |
 |521 | 332239 | [Element Inspector](/ThunderKdB/xall/xOther/332239-element-inspector/332239-element-inspector-details.html) | 0.1.2 | 2017-03-25 | 57 | 5.0 | 40.0a1 |   |
 |522 | 458038 | [Perfect View](/ThunderKdB/xall/xOther/458038-perfect-view/458038-perfect-view-details.html) | 6.6 | 2017-01-17 | 56 | 35.0 | 56.0 |   |
 |523 | 66590 | [Is It Compatible?](/ThunderKdB/xall/xOther/66590-is-it-compatible/66590-is-it-compatible-details.html) | 0.5.3.1-sign | 2011-09-19 | 56 | 3.0 | 10.* |   |
@@ -577,10 +577,10 @@ body {
 |550 | 371110 | [SavedSearchInSubFolders](/ThunderKdB/xall/xOther/371110-savedsearchinsubfolders/371110-savedsearchinsubfolders-details.html) | 1.3 | 2013-10-09 | 47 | 24.0 | 31.* |   |
 |551 | 407116 | [LastColour](/ThunderKdB/xall/xOther/407116-lastcolour/407116-lastcolour-details.html) | 1.3 | 2012-12-03 | 47 | 13.0 | 31.* |   |
 |552 | 706000 | [No Resource URI Leak](/ThunderKdB/xall/xOther/706000-no-resource-uri-leak/706000-no-resource-uri-leak-details.html) | 1.1.0 | 2016-07-25 | 47 | 38.0a1 | 52.* |   |
-|553 | 436566 | [Collapsed Unread](/ThunderKdB/xall/xOther/436566-collapsed-unread/436566-collapsed-unread-details.html) | 1.0 | 2013-05-05 | 47 | 3.0 | 31.* |   |
-|554 | 583932 | [Simple Week View](/ThunderKdB/xall/xOther/583932-simple-week-view/583932-simple-week-view-details.html) | 1.1 | 2015-02-09 | 47 | 31.0 | 38.* |   |
+|553 | 583932 | [Simple Week View](/ThunderKdB/xall/xOther/583932-simple-week-view/583932-simple-week-view-details.html) | 1.1 | 2015-02-09 | 47 | 31.0 | 38.* |   |
+|554 | 436566 | [Collapsed Unread](/ThunderKdB/xall/xOther/436566-collapsed-unread/436566-collapsed-unread-details.html) | 1.0 | 2013-05-05 | 47 | 3.0 | 31.* |   |
 |555 | 4847 | [Restart Thunderbird](/ThunderKdB/xall/xOther/4847-restart-thunderbird-4847/4847-restart-thunderbird-4847-details.html) | 1.0 | 2009-12-11 | 46 | 1.5 | 3.1.* |   |
-|556 | 987661 | [Autocrypt](/ThunderKdB/xall/x68/987661-autocrypt/987661-autocrypt-details.html) | 0.9.1.6 | 2019-08-20 | 46 | 68.0a1 | 69.0 |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png) |
+|556 | 987661 | [Autocrypt](/ThunderKdB/xall/x68/987661-autocrypt/987661-autocrypt-details.html) | 0.9.3 | 2019-09-06 | 46 | 68.0a1 | 69.0 |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png) |
 |557 | 487114 | [Attachemnt Encoding Detector](/ThunderKdB/xall/xOther/487114-attachemnt-encoding-detecto/487114-attachemnt-encoding-detecto-details.html) | 1.0 | 2014-02-18 | 46 | 10.0 | 31.* |   |
 |558 | 5109 | [Simple HT Jumper](/ThunderKdB/xall/xOther/5109-simple-ht-jumper/5109-simple-ht-jumper-details.html) | 1.0.4.1-let- | 2013-12-30 | 45 | 3.0 | 31.* |   |
 |559 | 406596 | [3e Calendar](/ThunderKdB/xall/xOther/406596-3e-calendar/406596-3e-calendar-details.html) | 1.1.1 | 2014-11-04 | 45 | 7.0 | 45.* |   |
@@ -634,8 +634,8 @@ body {
 |607 | 5530 | [WordReference Translator](/ThunderKdB/xall/xOther/5530-wordreference-translator/5530-wordreference-translator-details.html) | 1.6.14 | 2016-06-26 | 33 | 13.0 | 45.0 |   |
 |608 | 75914 | [THUNDER!Box](/ThunderKdB/xall/xOther/75914-thunderbox/75914-thunderbox-details.html) | 0.9.1 | 2010-07-21 | 33 | 3.0 | 31.* |   |
 |609 | 315380 | [Follow Reply](/ThunderKdB/xall/xOther/315380-follow-reply/315380-follow-reply-details.html) | 1.0.6 | 2011-07-13 | 32 | 3.1 | 31.* |   |
-|610 | 427199 | [Folder Levels](/ThunderKdB/xall/xOther/427199-folder-levels/427199-folder-levels-details.html) | 1.0.1 | 2013-03-17 | 32 | 3.0 | 31.* |   |
-|611 | 328536 | [Smart Folders For Single Account (rest](/ThunderKdB/xall/xOther/328536-smart-folders-for-single-accnt/328536-smart-folders-for-single-accnt-details.html) | 1.2 | 2016-03-14 | 32 | 5.0 | 48.0a1 |   |
+|610 | 328536 | [Smart Folders For Single Account (rest](/ThunderKdB/xall/xOther/328536-smart-folders-for-single-accnt/328536-smart-folders-for-single-accnt-details.html) | 1.2 | 2016-03-14 | 32 | 5.0 | 48.0a1 |   |
+|611 | 427199 | [Folder Levels](/ThunderKdB/xall/xOther/427199-folder-levels/427199-folder-levels-details.html) | 1.0.1 | 2013-03-17 | 32 | 3.0 | 31.* |   |
 |612 | 388351 | [QuickFilter Unreplied](/ThunderKdB/xall/xOther/388351-quickfilter-unreplied/388351-quickfilter-unreplied-details.html) | 1.1 | 2017-04-25 | 32 | 10.0 | 52.0 |   |
 |613 | 369147 | [More About](/ThunderKdB/xall/xOther/369147-more-about/369147-more-about-details.html) | 3.0.0 | 2017-01-23 | 32 | 24.0 | 54.0a1 |   |
 |614 | 9231 | [KeePass Helper](/ThunderKdB/xall/xOther/9231-keepass-helper/9231-keepass-helper-details.html) | 3.0.2.1-sign | 2015-05-04 | 31 | 1.5 | 41.0 |   |
@@ -681,11 +681,11 @@ body {
 |654 | 1379 | [Hebrew Calendar](/ThunderKdB/xall/xOther/1379-hebrew-calendar/1379-hebrew-calendar-details.html) | 1.0.7.4 | 2016-08-29 | 22 | 0.5 | 12.* |   |
 |655 | 685797 | [Email Addresses in Message Headers](/ThunderKdB/xall/xOther/685797-eaimh/685797-eaimh-details.html) | 3.2 | 2016-04-12 | 22 | 38.5.1 | 47.0a2 |   |
 |656 | 12003 | [Clip to OneNote](/ThunderKdB/xall/xOther/12003-clip-to-onenote/12003-clip-to-onenote-details.html) | 5.0.1-signed | 2013-06-11 | 21 | 3.0a1pre | 33.0 |   |
-|657 | 330639 | [FromToGMAP](/ThunderKdB/xall/xOther/330639-fromtogmap/330639-fromtogmap-details.html) | 1.5 | 2017-09-11 | 21 | 1.5 | 57.0 |   |
-|658 | 212316 | [notto](/ThunderKdB/xall/xOther/212316-notto-212316/212316-notto-212316-details.html) | 0.6 | 2010-08-30 | 21 | 3.0 | 12.* |   |
+|657 | 212316 | [notto](/ThunderKdB/xall/xOther/212316-notto-212316/212316-notto-212316-details.html) | 0.6 | 2010-08-30 | 21 | 3.0 | 12.* |   |
+|658 | 330639 | [FromToGMAP](/ThunderKdB/xall/xOther/330639-fromtogmap/330639-fromtogmap-details.html) | 1.5 | 2017-09-11 | 21 | 1.5 | 57.0 |   |
 |659 | 535008 | [MultiBirthdaysReminder](/ThunderKdB/xall/xOther/535008-multibirthdaysreminder/535008-multibirthdaysreminder-details.html) | 4.3 | 2015-09-09 | 21 | 24.0 | 38.* |   |
-|660 | 5584 | [Locale2MUI](/ThunderKdB/xall/xOther/5584-locale2mui/5584-locale2mui-details.html) | 2.6 | 2016-06-10 | 20 | 5.0 | 48.* |   |
-|661 | 141866 | [Quick Web Search](/ThunderKdB/xall/xOther/141866-quick-web-search/141866-quick-web-search-details.html) | 1.0 | 2010-04-12 | 20 | 1.5 | 31.* |   |
+|660 | 141866 | [Quick Web Search](/ThunderKdB/xall/xOther/141866-quick-web-search/141866-quick-web-search-details.html) | 1.0 | 2010-04-12 | 20 | 1.5 | 31.* |   |
+|661 | 5584 | [Locale2MUI](/ThunderKdB/xall/xOther/5584-locale2mui/5584-locale2mui-details.html) | 2.6 | 2016-06-10 | 20 | 5.0 | 48.* |   |
 |662 | 12505 | [sipgateFFX for Firefox and Thunderbird](/ThunderKdB/xall/xOther/12505-sipgateffx/12505-sipgateffx-details.html) | 0.7.5.1-sign | 2013-11-29 | 20 | 3.0a1pre | 31.* |   |
 |663 | 986223 | [Thunderbird Addons Test](/ThunderKdB/xall/x60/986223-thunderbird-addons-test/986223-thunderbird-addons-test-details.html) | 2.2 | 2019-05-25 | 20 | 60.0 | 67.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |664 | 12394 | [InfoNotary Configurator for Mozilla](/ThunderKdB/xall/xOther/12394-infonotary-configurator-for-mo/12394-infonotary-configurator-for-mo-details.html) | 1.4.10 | 2018-01-08 | 20 | 24.0 | 56.* |   |
@@ -737,8 +737,8 @@ body {
 |710 | 320618 | [CookieFast](/ThunderKdB/xall/xOther/320618-cookiefast/320618-cookiefast-details.html) | 3.0 | 2015-10-27 | 12 | 42.0 | 45.* |   |
 |711 | 386325 | [HTitle (discontinued)](/ThunderKdB/xall/xOther/386325-htitle/386325-htitle-details.html) | 3.4.1-signed | 2015-04-17 | 12 | 24.0 | 40.0a1 |   |
 |712 | 684671 | [Delete Only Empty Folder](/ThunderKdB/xall/xOther/684671-delete-only-empty-folder/684671-delete-only-empty-folder-details.html) | 1.2 | 2018-01-18 | 12 | 31.0 | 52.* |   |
-|713 | 134 | [Copy Plain Text](/ThunderKdB/xall/xOther/134-copy-plain-text/134-copy-plain-text-details.html) | 0.3.3 | 2007-03-05 | 12 | 0.5 | 3.0.* |   |
-|714 | 479679 | [Switch Message Colour](/ThunderKdB/xall/xOther/479679-switch-message-colour/479679-switch-message-colour-details.html) | 1.0.1.1-sign | 2014-01-18 | 12 | 18.0 | 24.* |   |
+|713 | 479679 | [Switch Message Colour](/ThunderKdB/xall/xOther/479679-switch-message-colour/479679-switch-message-colour-details.html) | 1.0.1.1-sign | 2014-01-18 | 12 | 18.0 | 24.* |   |
+|714 | 134 | [Copy Plain Text](/ThunderKdB/xall/xOther/134-copy-plain-text/134-copy-plain-text-details.html) | 0.3.3 | 2007-03-05 | 12 | 0.5 | 3.0.* |   |
 |715 | 878 | [Attachment Sizes](/ThunderKdB/xall/xOther/878-attachment-sizes/878-attachment-sizes-details.html) | 0.0.5 | 2007-03-05 | 12 | 0.8 | 3.0a1 |   |
 |716 | 394970 | [From/To Column](/ThunderKdB/xall/xOther/394970-fromto-column/394970-fromto-column-details.html) | 1.2 | 2012-09-21 | 12 | 8.0a1 | 19.* |   |
 |717 | 286843 | [Filter_Copy](/ThunderKdB/xall/xOther/286843-Filter_Copy/286843-Filter_Copy-details.html) | 0.2 | 2011-03-03 | 12 | 3.1 | 31.* |   |
@@ -780,18 +780,18 @@ body {
 |753 | 5239 | [XUL/Migemo](/ThunderKdB/xall/xOther/5239-xulmigemo/5239-xulmigemo-details.html) | 0.14.9 | 2016-06-15 | 8 | 45.0 | 50.0a1 |   |
 |754 | 987665 | [OppositeTodaySubpane](/ThunderKdB/xall/x60/987665-oppositetodaysubpane/987665-oppositetodaysubpane-details.html) | 3.3 | 2019-08-17 | 8 | 1.5 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |755 | 72199 | [Docky Unread Count](/ThunderKdB/xall/xOther/72199-docky-unread-count/72199-docky-unread-count-details.html) | 0.7.2 | 2015-04-09 | 8 | 2.0 | 39.* |   |
-|756 | 822100 | [Message Title Header](/ThunderKdB/xall/xOther/822100-message-title-header/822100-message-title-header-details.html) | 1.0.3 | 2017-08-02 | 8 | 31.0 | 56.0 |   |
-|757 | 4154 | [EHTip](/ThunderKdB/xall/xOther/4154-ehtip/4154-ehtip-details.html) | 2.4.4.1-sign | 2012-09-16 | 8 | 1.5 | 15.* |   |
-|758 | 4259 | [IsAdmin](/ThunderKdB/xall/xOther/4259-isadmin/4259-isadmin-details.html) | 2.5.2 | 2016-12-12 | 8 | 1.5 | 45.* |   |
+|756 | 4154 | [EHTip](/ThunderKdB/xall/xOther/4154-ehtip/4154-ehtip-details.html) | 2.4.4.1-sign | 2012-09-16 | 8 | 1.5 | 15.* |   |
+|757 | 4259 | [IsAdmin](/ThunderKdB/xall/xOther/4259-isadmin/4259-isadmin-details.html) | 2.5.2 | 2016-12-12 | 8 | 1.5 | 45.* |   |
+|758 | 822100 | [Message Title Header](/ThunderKdB/xall/xOther/822100-message-title-header/822100-message-title-header-details.html) | 1.0.3 | 2017-08-02 | 8 | 31.0 | 56.0 |   |
 |759 | 5684 | [Multi-LDAP](/ThunderKdB/xall/xOther/5684-multi-ldap/5684-multi-ldap-details.html) | 1.1.6 | 2010-12-06 | 8 | 2.0 | 3.1.* |   |
 |760 | 376200 | [Signature Fixer](/ThunderKdB/xall/xOther/376200-signature-fixer/376200-signature-fixer-details.html) | 0.3 | 2012-06-24 | 8 | 1.5 | 31.* |   |
 |761 | 852246 | [ansitel Click-to-Dial MT](/ThunderKdB/xall/xOther/852246-ansitel-click-to-dial-mt/852246-ansitel-click-to-dial-mt-details.html) | 1.2 | 2017-09-08 | 7 | 1.5 | 52.* |   |
-|762 | 674247 | [AutoProxy-ng](/ThunderKdB/xall/xOther/674247-autoproxy-ng/674247-autoproxy-ng-details.html) | 0.5.6 | 2017-07-03 | 7 | 3.0b3pre | 3.3a4pre |   |
-|763 | 448660 | [About Home Themer](/ThunderKdB/xall/xOther/448660-about-home-themer/448660-about-home-themer-details.html) | 0.8 | 2016-09-08 | 7 | 38.0 | 52.0 |   |
+|762 | 448660 | [About Home Themer](/ThunderKdB/xall/xOther/448660-about-home-themer/448660-about-home-themer-details.html) | 0.8 | 2016-09-08 | 7 | 38.0 | 52.0 |   |
+|763 | 674247 | [AutoProxy-ng](/ThunderKdB/xall/xOther/674247-autoproxy-ng/674247-autoproxy-ng-details.html) | 0.5.6 | 2017-07-03 | 7 | 3.0b3pre | 3.3a4pre |   |
 |764 | 396448 | [Reject Button 1.0](/ThunderKdB/xall/xOther/396448-reject-button/396448-reject-button-details.html) | 1.1 | 2012-09-19 | 7 | 1.5 | 31.* |   |
 |765 | 398356 | [Rikaichan Japanese-French Dictionary F](/ThunderKdB/xall/xOther/398356-rikaichan-jpfr/398356-rikaichan-jpfr-details.html) | 2.01.170301 | 2017-03-06 | 7 | 3.0 | 45.* |   |
-|766 | 4877 | [BorderColors](/ThunderKdB/xall/xOther/4877-bordercolors/4877-bordercolors-details.html) | 0.6 | 2010-09-08 | 7 | 0.8 | 3.1.* |   |
-|767 | 9584 | [Bugmail](/ThunderKdB/xall/xOther/9584-bugmail/9584-bugmail-details.html) | 1.6.1 | 2009-08-03 | 7 | 2.0 | 17.* |   |
+|766 | 9584 | [Bugmail](/ThunderKdB/xall/xOther/9584-bugmail/9584-bugmail-details.html) | 1.6.1 | 2009-08-03 | 7 | 2.0 | 17.* |   |
+|767 | 4877 | [BorderColors](/ThunderKdB/xall/xOther/4877-bordercolors/4877-bordercolors-details.html) | 0.6 | 2010-09-08 | 7 | 0.8 | 3.1.* |   |
 |768 | 138988 | [Change Referer Button](/ThunderKdB/xall/xOther/138988-change-referer-button/138988-change-referer-button-details.html) | 0.44.1-signe | 2012-11-08 | 7 | 2.0 | 36.0 |   |
 |769 | 142878 | [DontPhishMe](/ThunderKdB/xall/xOther/142878-dontphishme/142878-dontphishme-details.html) | 1.7.16.2.1-s | 2015-03-01 | 7 | 2.0a1 | 25.0 |   |
 |770 | 242190 | [ThunderBridge](/ThunderKdB/xall/xOther/242190-thunderbridge/242190-thunderbridge-details.html) | 7.20 | 2015-07-15 | 7 | 3.0b2 | 40.* |   |
@@ -812,19 +812,19 @@ body {
 |785 | 430274 | [Seturgent](/ThunderKdB/xall/xOther/430274-seturgent/430274-seturgent-details.html) | 2.0 | 2013-09-10 | 6 | 3.0 | 31.* |   |
 |786 | 586560 | [Go Google](/ThunderKdB/xall/xOther/586560-just-google/586560-just-google-details.html) | 0.102.1-sign | 2015-02-17 | 6 | 0.3 | 39.0 |   |
 |787 | 368130 | [Mia CRM](/ThunderKdB/xall/xOther/368130-mia-crm/368130-mia-crm-details.html) | 1.1 | 2013-05-24 | 6 | 1.0 | 31.* |   |
-|788 | 106 | [Buttons!](/ThunderKdB/xall/xOther/106-buttons/106-buttons-details.html) | 0.5.3.2 | 2007-04-11 | 6 | 2.0b1 | 3.1a1pre |   |
-|789 | 159030 | [RealPrevNextButtons](/ThunderKdB/xall/xOther/159030-realprevnextbuttons/159030-realprevnextbuttons-details.html) | 0.1 | 2010-05-02 | 6 | 3.0 | 3.3a4pre |   |
-|790 | 285274 | [No More Install Delay](/ThunderKdB/xall/xOther/285274-no-install-delay/285274-no-install-delay-details.html) | 3.0.1-signed | 2014-08-18 | 6 | 3.3a1 | 40.* |   |
+|788 | 159030 | [RealPrevNextButtons](/ThunderKdB/xall/xOther/159030-realprevnextbuttons/159030-realprevnextbuttons-details.html) | 0.1 | 2010-05-02 | 6 | 3.0 | 3.3a4pre |   |
+|789 | 285274 | [No More Install Delay](/ThunderKdB/xall/xOther/285274-no-install-delay/285274-no-install-delay-details.html) | 3.0.1-signed | 2014-08-18 | 6 | 3.3a1 | 40.* |   |
+|790 | 106 | [Buttons!](/ThunderKdB/xall/xOther/106-buttons/106-buttons-details.html) | 0.5.3.2 | 2007-04-11 | 6 | 2.0b1 | 3.1a1pre |   |
 |791 | 985173 | [EditEmailSubject-hotfix](/ThunderKdB/xall/xOther/985173-editemailsubject-hotfix/985173-editemailsubject-hotfix-details.html) | 2.1.0-hotfix | 2018-07-04 | 6 | 3.0 | 52.* |   |
 |792 | 4003 | [Auto Zip Attachments](/ThunderKdB/xall/xOther/4003-auto-zip-attachments/4003-auto-zip-attachments-details.html) | 0.6.2 | 2008-05-14 | 6 | 1.5 | 2.0.0.* |   |
 |793 | 516626 | [HtmlHighlightr](/ThunderKdB/xall/xOther/516626-htmlhighlightr/516626-htmlhighlightr-details.html) | 0.1 | 2014-05-23 | 6 | 24.0 | 31.* |   |
-|794 | 149 | [Delete Junk Context Menu](/ThunderKdB/xall/xOther/149-delete-junk-context-menu/149-delete-junk-context-menu-details.html) | 0.3.2.1 | 2007-04-11 | 5 | 0.5 | 3.1a1pre |   |
-|795 | 2692 | [MozLab](/ThunderKdB/xall/xOther/2692-mozlab/2692-mozlab-details.html) | 0.1.8.200707 | 2007-07-23 | 5 | 1.5 | 2.0.0.* |   |
+|794 | 2692 | [MozLab](/ThunderKdB/xall/xOther/2692-mozlab/2692-mozlab-details.html) | 0.1.8.200707 | 2007-07-23 | 5 | 1.5 | 2.0.0.* |   |
+|795 | 149 | [Delete Junk Context Menu](/ThunderKdB/xall/xOther/149-delete-junk-context-menu/149-delete-junk-context-menu-details.html) | 0.3.2.1 | 2007-04-11 | 5 | 0.5 | 3.1a1pre |   |
 |796 | 960552 | [Esign](/ThunderKdB/xall/x60/960552-esign/960552-esign-details.html) | 1.0.10 | 2018-09-10 | 5 | 50.0 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |797 | 453880 | [Wunderlist Task Button](/ThunderKdB/xall/xOther/453880-wunderlist-task-button/453880-wunderlist-task-button-details.html) | 0.2 | 2013-07-10 | 5 | 3.0 | 24.* |   |
 |798 | 388535 | [JavaScript Object Examiner](/ThunderKdB/xall/xOther/388535-javascript-object-examiner/388535-javascript-object-examiner-details.html) | 2.0beta.1-si | 2014-08-31 | 5 | 14.0 | 16.* |   |
-|799 | 923239 | [Force Hide Message Pane](/ThunderKdB/xall/xOther/923239-force-hide-message-pane/923239-force-hide-message-pane-details.html) | 0.3 | 2018-01-18 | 5 | 31.0 | 52.* |   |
-|800 | 55673 | [ExecMail](/ThunderKdB/xall/xOther/55673-execmail/55673-execmail-details.html) | 1.1.1 | 2012-09-15 | 5 | 5.0 | 31.* |   |
+|799 | 55673 | [ExecMail](/ThunderKdB/xall/xOther/55673-execmail/55673-execmail-details.html) | 1.1.1 | 2012-09-15 | 5 | 5.0 | 31.* |   |
+|800 | 923239 | [Force Hide Message Pane](/ThunderKdB/xall/xOther/923239-force-hide-message-pane/923239-force-hide-message-pane-details.html) | 0.3 | 2018-01-18 | 5 | 31.0 | 52.* |   |
 |801 | 317264 | [Attachment Manager](/ThunderKdB/xall/xOther/317264-attachment-manager/317264-attachment-manager-details.html) | 0.1 | 2011-05-22 | 5 | 2.0 | 3.3a3pre |   |
 |802 | 460382 | [Channel Guard](/ThunderKdB/xall/xOther/460382-channel-guard/460382-channel-guard-details.html) | 0.1.6.1a.1-s | 2013-08-17 | 5 | 3.0 | 31.* |   |
 |803 | 764831 | [Hütte Nippon for Thunderbird](/ThunderKdB/xall/xOther/764831-hütte-nippon-for-thunderbird/764831-hütte-nippon-for-thunderbird-details.html) | 1.6.6 | 2017-04-08 | 5 | 17.0 | 52.* |   |
@@ -835,8 +835,8 @@ body {
 |808 | 669310 | [关闭即最小化](/ThunderKdB/xall/xOther/669310-acmmize/669310-acmmize-details.html) | 1.6.4 | 2017-01-28 | 5 | 2.0 | 54.0 |   |
 |809 | 11077 | [Zhong Wen](/ThunderKdB/xall/xOther/11077-zhong-wen/11077-zhong-wen-details.html) | 0.2.3.1-sign | 2011-04-07 | 5 | 2.0 | 10.* |   |
 |810 | 372848 | [No Close Other Tabs](/ThunderKdB/xall/xOther/372848-no-close-other-tabs/372848-no-close-other-tabs-details.html) | 0.1.1-signed | 2012-05-04 | 5 | 3.0a1pre | 31.* |   |
-|811 | 557652 | [FireCsv](/ThunderKdB/xall/xOther/557652-firecsv/557652-firecsv-details.html) | 0.2.2.1-sign | 2014-12-08 | 4 | 17.0 | 37.0 |   |
-|812 | 1330 | [CuteMenus - Crystal SVG](/ThunderKdB/xall/xOther/1330-cutemenus-crystal-svg/1330-cutemenus-crystal-svg-details.html) | 1.9.3 | 2008-06-20 | 4 | 1.0 | 3.0b1pre |   |
+|811 | 1330 | [CuteMenus - Crystal SVG](/ThunderKdB/xall/xOther/1330-cutemenus-crystal-svg/1330-cutemenus-crystal-svg-details.html) | 1.9.3 | 2008-06-20 | 4 | 1.0 | 3.0b1pre |   |
+|812 | 557652 | [FireCsv](/ThunderKdB/xall/xOther/557652-firecsv/557652-firecsv-details.html) | 0.2.2.1-sign | 2014-12-08 | 4 | 17.0 | 37.0 |   |
 |813 | 435028 | [Re: Sort](/ThunderKdB/xall/xOther/435028-re-sort/435028-re-sort-details.html) | 1.4 | 2013-08-15 | 4 | 3.0 | 17.* |   |
 |814 | 717100 | [Identity Checker](/ThunderKdB/xall/xOther/717100-identity-checker/717100-identity-checker-details.html) | 0.1 | 2016-07-21 | 4 | 3.0 | 45.* |   |
 |815 | 310952 | [Close Window on IMAP deletion](/ThunderKdB/xall/xOther/310952-close-window-on-imap-deleti/310952-close-window-on-imap-deleti-details.html) | 1.0.2 | 2011-07-14 | 4 | 1.5 | 31.* |   |
@@ -848,8 +848,8 @@ body {
 |821 | 14498 | [One Click Search](/ThunderKdB/xall/xOther/14498-one-click-search/14498-one-click-search-details.html) | 2.0 | 2009-10-26 | 4 | 2.0 | 3.0b4 |   |
 |822 | 9796 | [Keyfixer](/ThunderKdB/xall/xOther/9796-keyfixer/9796-keyfixer-details.html) | 0.5.34.1-sig | 2014-12-11 | 4 | 2.0.0.8 | 34.* |   |
 |823 | 391045 | [Facebook Tab](/ThunderKdB/xall/xOther/391045-facebook-tab/391045-facebook-tab-details.html) | 0.9 | 2012-08-21 | 4 | 3.1 | 31.* |   |
-|824 | 377970 | [Sent-By-User column](/ThunderKdB/xall/xOther/377970-sent-by-user-column/377970-sent-by-user-column-details.html) | 1.1 | 2013-06-18 | 4 | 22.0 | 31.* |   |
-|825 | 9652 | [Mass Password Reset](/ThunderKdB/xall/xOther/9652-mass-password-reset/9652-mass-password-reset-details.html) | 1.05.1-signe | 2011-12-02 | 4 | 3.0b2pre | 32.0 |   |
+|824 | 9652 | [Mass Password Reset](/ThunderKdB/xall/xOther/9652-mass-password-reset/9652-mass-password-reset-details.html) | 1.05.1-signe | 2011-12-02 | 4 | 3.0b2pre | 32.0 |   |
+|825 | 377970 | [Sent-By-User column](/ThunderKdB/xall/xOther/377970-sent-by-user-column/377970-sent-by-user-column-details.html) | 1.1 | 2013-06-18 | 4 | 22.0 | 31.* |   |
 |826 | 765360 | [eBay Template Generator](/ThunderKdB/xall/xOther/765360-ebaygenerator/765360-ebaygenerator-details.html) | 1.0.1 | 2017-01-10 | 4 | 50.0 | 54.0 |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |827 | 420558 | [Dybutar](/ThunderKdB/xall/xOther/420558-dybutar/420558-dybutar-details.html) | 0.5.1.1-sign | 2013-10-06 | 4 | 8.0 | 31.* |   |
 |828 | 650200 | [Copy Reminder List To Clipboard](/ThunderKdB/xall/xOther/650200-copy-reminderlist-to-clipboard/650200-copy-reminderlist-to-clipboard-details.html) | 0.0.1 | 2015-09-02 | 4 | 38.0 | 43.0a1 |   |
@@ -878,29 +878,29 @@ body {
 |851 | 372924 | [Spoof Detector](/ThunderKdB/xall/xOther/372924-spoof-detector/372924-spoof-detector-details.html) | 1.0.0 | 2012-05-09 | 3 | 11.* | 31.* |   |
 |852 | 745378 | [JIRA Integration Plugin (Beta)](/ThunderKdB/xall/xOther/745378-jira-integration-plugin-beta/745378-jira-integration-plugin-beta-details.html) | 0.1 | 2016-10-30 | 3 | 37.0 | 52.0 |   |
 |853 | 367846 | [GTG Aufgaben](/ThunderKdB/xall/xOther/367846-gtg-task-button/367846-gtg-task-button-details.html) | 1.4 | 2015-10-17 | 3 | 3.0 | 32.0 |   |
-|854 | 320619 | [NuevaSync Push Email Synchronization](/ThunderKdB/xall/xOther/320619-nuevasync-push-email-synchr/320619-nuevasync-push-email-synchr-details.html) | 1.0.1 | 2011-06-13 | 3 | 3.0 | 19.* |   |
-|855 | 447148 | [Safe for Amoled](/ThunderKdB/xall/xOther/447148-safeforamoled/447148-safeforamoled-details.html) | 0.9.4 | 2016-06-13 | 3 | 8.0 | 58.0 |   |
-|856 | 764921 | [Delete Read Emails](/ThunderKdB/xall/xOther/764921-delete-read-emails/764921-delete-read-emails-details.html) | 0.2.1 | 2016-12-29 | 3 | 1.5 | 50.* |   |
+|854 | 447148 | [Safe for Amoled](/ThunderKdB/xall/xOther/447148-safeforamoled/447148-safeforamoled-details.html) | 0.9.4 | 2016-06-13 | 3 | 8.0 | 58.0 |   |
+|855 | 764921 | [Delete Read Emails](/ThunderKdB/xall/xOther/764921-delete-read-emails/764921-delete-read-emails-details.html) | 0.2.1 | 2016-12-29 | 3 | 1.5 | 50.* |   |
+|856 | 320619 | [NuevaSync Push Email Synchronization](/ThunderKdB/xall/xOther/320619-nuevasync-push-email-synchr/320619-nuevasync-push-email-synchr-details.html) | 1.0.1 | 2011-06-13 | 3 | 3.0 | 19.* |   |
 |857 | 4976 | [IranZilla](/ThunderKdB/xall/xOther/4976-iranzilla/4976-iranzilla-details.html) | 0.1 | 2007-05-14 | 3 | 2.0 | 51.* |   |
-|858 | 372990 | [Cairo-Dock unread messages](/ThunderKdB/xall/xOther/372990-cairo-dock-unread-messages/372990-cairo-dock-unread-messages-details.html) | 1.0.5 | 2013-03-29 | 3 | 3.0 | 19.* |   |
-|859 | 2462 | [TryAgain](/ThunderKdB/xall/xOther/2462-tryagain/2462-tryagain-details.html) | 3.4.6.1-sign | 2011-02-02 | 3 | 2.0 | 3.3a4pre |   |
-|860 | 508808 | [Firedrive for Filelink](/ThunderKdB/xall/xOther/508808-firedrive-for-filelink/508808-firedrive-for-filelink-details.html) | 1.0.0 | 2014-05-06 | 3 | 13.0 | 31.* |   |
-|861 | 355824 | [Linux Growl](/ThunderKdB/xall/xOther/355824-linux-growl/355824-linux-growl-details.html) | 1.0.0 | 2011-12-30 | 3 | 2.0 | 24.* |   |
-|862 | 666460 | [AutoProxyMod](/ThunderKdB/xall/xOther/666460-autoproxymod/666460-autoproxymod-details.html) | 0.4b2.201604 | 2016-04-04 | 3 | 3.0b3pre | 44.* |   |
+|858 | 2462 | [TryAgain](/ThunderKdB/xall/xOther/2462-tryagain/2462-tryagain-details.html) | 3.4.6.1-sign | 2011-02-02 | 3 | 2.0 | 3.3a4pre |   |
+|859 | 372990 | [Cairo-Dock unread messages](/ThunderKdB/xall/xOther/372990-cairo-dock-unread-messages/372990-cairo-dock-unread-messages-details.html) | 1.0.5 | 2013-03-29 | 3 | 3.0 | 19.* |   |
+|860 | 355824 | [Linux Growl](/ThunderKdB/xall/xOther/355824-linux-growl/355824-linux-growl-details.html) | 1.0.0 | 2011-12-30 | 3 | 2.0 | 24.* |   |
+|861 | 666460 | [AutoProxyMod](/ThunderKdB/xall/xOther/666460-autoproxymod/666460-autoproxymod-details.html) | 0.4b2.201604 | 2016-04-04 | 3 | 3.0b3pre | 44.* |   |
+|862 | 508808 | [Firedrive for Filelink](/ThunderKdB/xall/xOther/508808-firedrive-for-filelink/508808-firedrive-for-filelink-details.html) | 1.0.0 | 2014-05-06 | 3 | 13.0 | 31.* |   |
 |863 | 687261 | [Task Me (activity logger)](/ThunderKdB/xall/xOther/687261-task-me-activity-logger/687261-task-me-activity-logger-details.html) | 1.3.1 | 2016-06-14 | 3 | 38.5.1 | 38.* |   |
 |864 | 1792 | [Purge!](/ThunderKdB/xall/xOther/1792-purge/1792-purge-details.html) | 0.5 | 2009-12-14 | 3 | 1.5 | 3.0.* |   |
-|865 | 287142 | [About Startup](/ThunderKdB/xall/xOther/287142-about-startup/287142-about-startup-details.html) | 0.1.12.1-sig | 2013-06-24 | 3 | 13.0 | 31.* |   |
-|866 | 157773 | [DSN Settings](/ThunderKdB/xall/xOther/157773-dsn-settings/157773-dsn-settings-details.html) | 1.0.1 | 2010-07-29 | 3 | 3.0 | 3.1.* |   |
+|865 | 157773 | [DSN Settings](/ThunderKdB/xall/xOther/157773-dsn-settings/157773-dsn-settings-details.html) | 1.0.1 | 2010-07-29 | 3 | 3.0 | 3.1.* |   |
+|866 | 287142 | [About Startup](/ThunderKdB/xall/xOther/287142-about-startup/287142-about-startup-details.html) | 0.1.12.1-sig | 2013-06-24 | 3 | 13.0 | 31.* |   |
 |867 | 1397 | [Unselect Message](/ThunderKdB/xall/xOther/1397-unselect-message/1397-unselect-message-details.html) | 1.3 | 2007-03-05 | 2 | 1.0 | 1.5.0.* |   |
-|868 | 15093 | [System Monitor](/ThunderKdB/xall/xOther/15093-system-monitor/15093-system-monitor-details.html) | 0.7.0.1-sign | 2013-01-17 | 2 | 10.0 | 24.* |   |
-|869 | 146357 | [BNR Exchange Rates](/ThunderKdB/xall/xOther/146357-bnr-exchange-rates/146357-bnr-exchange-rates-details.html) | 0.2.1-signed | 2010-05-15 | 2 | 3.0 | 31.* |   |
-|870 | 325596 | [conceptERP eMailexport](/ThunderKdB/xall/xOther/325596-concepterp-emailexport/325596-concepterp-emailexport-details.html) | 0.5 | 2011-07-18 | 2 | 3.0 | 31.* |   |
+|868 | 325596 | [conceptERP eMailexport](/ThunderKdB/xall/xOther/325596-concepterp-emailexport/325596-concepterp-emailexport-details.html) | 0.5 | 2011-07-18 | 2 | 3.0 | 31.* |   |
+|869 | 15093 | [System Monitor](/ThunderKdB/xall/xOther/15093-system-monitor/15093-system-monitor-details.html) | 0.7.0.1-sign | 2013-01-17 | 2 | 10.0 | 24.* |   |
+|870 | 146357 | [BNR Exchange Rates](/ThunderKdB/xall/xOther/146357-bnr-exchange-rates/146357-bnr-exchange-rates-details.html) | 0.2.1-signed | 2010-05-15 | 2 | 3.0 | 31.* |   |
 |871 | 388911 | [Toggle Development Profile Prefs](/ThunderKdB/xall/xOther/388911-toggle-development-profile/388911-toggle-development-profile-details.html) | 1.01.1-signe | 2013-02-13 | 2 | 14.0 | 31.* |   |
 |872 | 2131 | [Remember Mismatched Domains](/ThunderKdB/xall/xOther/2131-remember-mismatched-domains/2131-remember-mismatched-domains-details.html) | 1.4.6 | 2008-02-17 | 2 | 1.5 | 2.0.0.* |   |
 |873 | 87440 | [Add Birthdays To Calendar](/ThunderKdB/xall/xOther/87440-add-birthdays-to-calendar/87440-add-birthdays-to-calendar-details.html) | 0.5.0.0 | 2010-06-30 | 2 | 3.0 | 3.1.* |   |
-|874 | 7211 | [Yet Another Remove It Permanently](/ThunderKdB/xall/xOther/7211-yarip/7211-yarip-details.html) | 0.3.5.1-sign | 2014-11-12 | 2 | 24.0 | 37.0 |   |
+|874 | 141504 | [Export All Certificates](/ThunderKdB/xall/xOther/141504-export-all-certificates/141504-export-all-certificates-details.html) | 1.6.1-signed | 2011-03-26 | 2 | 3.0 | 3.3a4pre |   |
 |875 | 211326 | [zFiler mail](/ThunderKdB/xall/xOther/211326-zfiler-mail/211326-zfiler-mail-details.html) | 1.0pre11 | 2011-08-17 | 2 | 5.0 | 19.* |   |
-|876 | 141504 | [Export All Certificates](/ThunderKdB/xall/xOther/141504-export-all-certificates/141504-export-all-certificates-details.html) | 1.6.1-signed | 2011-03-26 | 2 | 3.0 | 3.3a4pre |   |
+|876 | 7211 | [Yet Another Remove It Permanently](/ThunderKdB/xall/xOther/7211-yarip/7211-yarip-details.html) | 0.3.5.1-sign | 2014-11-12 | 2 | 24.0 | 37.0 |   |
 |877 | 394718 | [TB Menubar Unread Notifier](/ThunderKdB/xall/xOther/394718-tb-menubar-unread-notifier/394718-tb-menubar-unread-notifier-details.html) | 0.2 | 2015-04-17 | 2 | 2.0 | 31.* |   |
 |878 | 398358 | [Rikaichan Japanese-Russian Dictionary ](/ThunderKdB/xall/xOther/398358-rikaichan-jpru/398358-rikaichan-jpru-details.html) | 2.01.170301 | 2017-03-06 | 2 | 3.0 | 45.* |   |
 |879 | 444 | [Quitomzilla](/ThunderKdB/xall/xOther/444-quitomzilla/444-quitomzilla-details.html) | 0.7.3.1-sign | 2011-12-05 | 2 | 0.7 | 13.* |   |
@@ -918,79 +918,79 @@ body {
 |891 | 884459 | [Copiar Assunto](/ThunderKdB/xall/xOther/884459-copiar-assunto/884459-copiar-assunto-details.html) | 1 | 2017-11-19 | 2 | 31.* | 52.* |   |
 |892 | 674047 | [Check Attachment before Send](/ThunderKdB/xall/xOther/674047-check-attachment-before-send/674047-check-attachment-before-send-details.html) | 0.6 | 2018-01-18 | 2 | 31.0 | 52.* |   |
 |893 | 223389 | [Compose for Thunderbird](/ThunderKdB/xall/xOther/223389-compose-for-thunderbird/223389-compose-for-thunderbird-details.html) | 0.2 | 2011-06-20 | 2 | 3.1 | 15.0a1 |   |
-|894 | 6738 | [Find In Numbers](/ThunderKdB/xall/xOther/6738-find-in-numbers/6738-find-in-numbers-details.html) | 1.8.1-signed | 2011-03-25 | 2 | 2.0 | 31.* |   |
-|895 | 9405 | [Stacked Inspector](/ThunderKdB/xall/xOther/9405-stacked-inspector/9405-stacked-inspector-details.html) | 1.0.20110524 | 2011-05-24 | 2 | 2.0 | 34.0a1 |   |
+|894 | 9405 | [Stacked Inspector](/ThunderKdB/xall/xOther/9405-stacked-inspector/9405-stacked-inspector-details.html) | 1.0.20110524 | 2011-05-24 | 2 | 2.0 | 34.0a1 |   |
+|895 | 6738 | [Find In Numbers](/ThunderKdB/xall/xOther/6738-find-in-numbers/6738-find-in-numbers-details.html) | 1.8.1-signed | 2011-03-25 | 2 | 2.0 | 31.* |   |
 |896 | 336735 | [Resubmission Folder](/ThunderKdB/xall/xOther/336735-resubmission-folder/336735-resubmission-folder-details.html) | 1.0.1 | 2011-09-14 | 2 | 6.0 | 19.* |   |
 |897 | 337048 | [Follow Broken Lotus Notes Links](/ThunderKdB/xall/xOther/337048-fixlink/337048-fixlink-details.html) | 0.3.1 | 2016-05-13 | 2 | 2.0 | 50.0 |   |
 |898 | 452926 | [Posting Style Enforcer](/ThunderKdB/xall/xOther/452926-posting-style-enforcer/452926-posting-style-enforcer-details.html) | 1.4 | 2014-11-07 | 2 | 7.0 | 35.0 |   |
 |899 | 3428 | [Define](/ThunderKdB/xall/xOther/3428-define/3428-define-details.html) | 1.4.0.1-sign | 2010-03-06 | 2 | 3.0b1 | 9.* |   |
 |900 | 344844 | [Password Mask Changer](/ThunderKdB/xall/xOther/344844-password-mask-changer/344844-password-mask-changer-details.html) | 1.0.6 | 2015-12-19 | 2 | 10.0 | 10.0 |   |
-|901 | 156146 | [ftnQuoter](/ThunderKdB/xall/xOther/156146-ftnquoter/156146-ftnquoter-details.html) | 0.9 | 2010-11-28 | 2 | 2.0 | 3.3a2pre |   |
-|902 | 7438 | [Force RTL](/ThunderKdB/xall/xOther/7438-force-rtl/7438-force-rtl-details.html) | 2.3 | 2017-03-09 | 2 | 38.0a1 | 52.0a1 |   |
+|901 | 344844 | [Password Mask Changer](/ThunderKdB/xall/xOther/344844-password-mask-changer/344844-password-mask-changer-details.html) | 1.0.6 | 2015-12-19 | 2 | 10.0 | 10.0 |   |
+|902 | 156146 | [ftnQuoter](/ThunderKdB/xall/xOther/156146-ftnquoter/156146-ftnquoter-details.html) | 0.9 | 2010-11-28 | 2 | 2.0 | 3.3a2pre |   |
 |903 | 281348 | [ScrollToNext](/ThunderKdB/xall/xOther/281348-scrolltonext/281348-scrolltonext-details.html) | 0.1 | 2011-02-10 | 2 | 2.0 | 31.* |   |
 |904 | 923201 | [Switch Link External Handler](/ThunderKdB/xall/xOther/923201-switch-link-external-handler/923201-switch-link-external-handler-details.html) | 0.2 | 2018-01-18 | 2 | 31.0 | 52.* |   |
 |905 | 324985 | [Limit_Offline_Message_Size Button](/ThunderKdB/xall/xOther/324985-lomsb/324985-lomsb-details.html) | 1.1 | 2011-07-13 | 2 | 3.0 | 31.* |   |
 |906 | 399938 | [NetscapeCommunicator 4.x Account Setti](/ThunderKdB/xall/xOther/399938-nc4migrator/399938-nc4migrator-details.html) | 1.0.1 | 2012-10-23 | 2 | 3.1 | 17.* |   |
 |907 | 487422 | [PennyPost](/ThunderKdB/xall/xOther/487422-pennypost/487422-pennypost-details.html) | 1.5.4 | 2016-03-02 | 2 | 2.0 | 38.* |   |
-|908 | 372600 | [thundertoe](/ThunderKdB/xall/xOther/372600-thundertoe/372600-thundertoe-details.html) | 0.0.2 | 2012-07-01 | 2 | 1.5 | 19.* |   |
-|909 | 311015 | [GProxy Tool](/ThunderKdB/xall/xOther/311015-gproxy-tool/311015-gproxy-tool-details.html) | 1.65.1-signe | 2011-06-27 | 2 | 1.0 | 16.* |   |
-|910 | 4506 | [Account Manager Toolbar Button](/ThunderKdB/xall/xOther/4506-account-manager-toolbar-button/4506-account-manager-toolbar-button-details.html) | 0.2 | 2010-03-14 | 2 | 1.0 | 3.1a1pre |   |
-|911 | 7261 | [Look Up in Dictionary](/ThunderKdB/xall/xOther/7261-look-up-in-dictionary-7261/7261-look-up-in-dictionary-7261-details.html) | 0.3.1.1-sign | 2011-09-22 | 2 | 3.0 | 3.1.* |   |
+|908 | 4506 | [Account Manager Toolbar Button](/ThunderKdB/xall/xOther/4506-account-manager-toolbar-button/4506-account-manager-toolbar-button-details.html) | 0.2 | 2010-03-14 | 2 | 1.0 | 3.1a1pre |   |
+|909 | 7261 | [Look Up in Dictionary](/ThunderKdB/xall/xOther/7261-look-up-in-dictionary-7261/7261-look-up-in-dictionary-7261-details.html) | 0.3.1.1-sign | 2011-09-22 | 2 | 3.0 | 3.1.* |   |
+|910 | 311015 | [GProxy Tool](/ThunderKdB/xall/xOther/311015-gproxy-tool/311015-gproxy-tool-details.html) | 1.65.1-signe | 2011-06-27 | 2 | 1.0 | 16.* |   |
+|911 | 372600 | [thundertoe](/ThunderKdB/xall/xOther/372600-thundertoe/372600-thundertoe-details.html) | 0.0.2 | 2012-07-01 | 2 | 1.5 | 19.* |   |
 |912 | 694437 | [Lowercase Email Addresses in Message H](/ThunderKdB/xall/xOther/694437-leaimh/694437-leaimh-details.html) | 1 | 2016-03-28 | 2 | 38.5.1 | 47.0a2 |   |
-|913 | 8832 | [A Better S/MIME GUI](/ThunderKdB/xall/xOther/8832-a-better-smime-gui/8832-a-better-smime-gui-details.html) | 1.1 | 2008-11-22 | 1 | 1.5 | 2.0.0.* |   |
-|914 | 3990 | [Any key](/ThunderKdB/xall/xOther/3990-any-key/3990-any-key-details.html) | 1.6.4.1-sign | 2009-07-15 | 1 | 1.0+ | 27.0 |   |
-|915 | 423 | [AboutConfig](/ThunderKdB/xall/xOther/423-aboutconfig/423-aboutconfig-details.html) | 0.6.1-let-fi | 2007-03-05 | 1 | 0.8 | 2.0.0.* |   |
-|916 | 55093 | [DeleteSimilar](/ThunderKdB/xall/xOther/55093-deletesimilar/55093-deletesimilar-details.html) | 1.3 | 2010-07-21 | 1 | 3.0 | 31.* |   |
-|917 | 12465 | [Don't Forget CC](/ThunderKdB/xall/xOther/12465-dont-forget-cc/12465-dont-forget-cc-details.html) | 2.0.5 | 2010-11-06 | 1 | 2.0 | 6.0 |   |
-|918 | 12523 | [Gnome Open](/ThunderKdB/xall/xOther/12523-gnome-open/12523-gnome-open-details.html) | 0.9.3.0 | 2010-01-31 | 1 | 3.0a1pre | 3.1.* |   |
-|919 | 239387 | [about:support](/ThunderKdB/xall/xOther/239387-aboutsupport/239387-aboutsupport-details.html) | 1.0 | 2011-01-21 | 1 | 3.1 | 3.3a2pre |   |
-|920 | 518808 | [Element Hiding Helper for Pan](/ThunderKdB/xall/xOther/518808-element-hiding-helper-for-pan/518808-element-hiding-helper-for-pan-details.html) | 1.3.4.2 | 2016-12-06 | 1 | 22.0 | 42.0 |   |
-|921 | 520552 | [AMBER A.I.](/ThunderKdB/xall/xOther/520552-amber/520552-amber-details.html) | 0.961 | 2014-07-30 | 1 | 5.0 | 31.* |   |
-|922 | 674747 | [Complete master password](/ThunderKdB/xall/xOther/674747-complete-master-password/674747-complete-master-password-details.html) | 1.0 | 2015-12-19 | 1 | 1.5 | 46.0 |   |
-|923 | 542204 | [Synnefo for Filelink](/ThunderKdB/xall/xOther/542204-synnefo-for-filelink/542204-synnefo-for-filelink-details.html) | 1.1 | 2014-09-10 | 1 | 24.0 | 32.* |   |
+|913 | 423 | [AboutConfig](/ThunderKdB/xall/xOther/423-aboutconfig/423-aboutconfig-details.html) | 0.6.1-let-fi | 2007-03-05 | 1 | 0.8 | 2.0.0.* |   |
+|914 | 674747 | [Complete master password](/ThunderKdB/xall/xOther/674747-complete-master-password/674747-complete-master-password-details.html) | 1.0 | 2015-12-19 | 1 | 1.5 | 46.0 |   |
+|915 | 542204 | [Synnefo for Filelink](/ThunderKdB/xall/xOther/542204-synnefo-for-filelink/542204-synnefo-for-filelink-details.html) | 1.1 | 2014-09-10 | 1 | 24.0 | 32.* |   |
+|916 | 8832 | [A Better S/MIME GUI](/ThunderKdB/xall/xOther/8832-a-better-smime-gui/8832-a-better-smime-gui-details.html) | 1.1 | 2008-11-22 | 1 | 1.5 | 2.0.0.* |   |
+|917 | 3990 | [Any key](/ThunderKdB/xall/xOther/3990-any-key/3990-any-key-details.html) | 1.6.4.1-sign | 2009-07-15 | 1 | 1.0+ | 27.0 |   |
+|918 | 55093 | [DeleteSimilar](/ThunderKdB/xall/xOther/55093-deletesimilar/55093-deletesimilar-details.html) | 1.3 | 2010-07-21 | 1 | 3.0 | 31.* |   |
+|919 | 12465 | [Don't Forget CC](/ThunderKdB/xall/xOther/12465-dont-forget-cc/12465-dont-forget-cc-details.html) | 2.0.5 | 2010-11-06 | 1 | 2.0 | 6.0 |   |
+|920 | 12523 | [Gnome Open](/ThunderKdB/xall/xOther/12523-gnome-open/12523-gnome-open-details.html) | 0.9.3.0 | 2010-01-31 | 1 | 3.0a1pre | 3.1.* |   |
+|921 | 239387 | [about:support](/ThunderKdB/xall/xOther/239387-aboutsupport/239387-aboutsupport-details.html) | 1.0 | 2011-01-21 | 1 | 3.1 | 3.3a2pre |   |
+|922 | 518808 | [Element Hiding Helper for Pan](/ThunderKdB/xall/xOther/518808-element-hiding-helper-for-pan/518808-element-hiding-helper-for-pan-details.html) | 1.3.4.2 | 2016-12-06 | 1 | 22.0 | 42.0 |   |
+|923 | 520552 | [AMBER A.I.](/ThunderKdB/xall/xOther/520552-amber/520552-amber-details.html) | 0.961 | 2014-07-30 | 1 | 5.0 | 31.* |   |
 |924 | 775 | [MR Tech Disable XPI Install Delay](/ThunderKdB/xall/xOther/775-mr-tech-disable-xpi-install-de/775-mr-tech-disable-xpi-install-de-details.html) | 2.4.1 | 2009-02-13 | 1 | 1.0 | 3.0a1 |   |
 |925 | 2098 | [Update Notifier](/ThunderKdB/xall/xOther/2098-update-notifier/2098-update-notifier-details.html) | 0.1.5.5.1-le | 2009-07-05 | 1 | 1.5 | 3.1.* |   |
-|926 | 6133 | [Disable Folder Drag Button](/ThunderKdB/xall/xOther/6133-disable-folder-drag-button/6133-disable-folder-drag-button-details.html) | 1.0.0 | 2007-12-04 | 1 | 1.5 | 2.0.0.* |   |
-|927 | 126534 | [Dissociate Occurrence](/ThunderKdB/xall/xOther/126534-dissociate-occurrence/126534-dissociate-occurrence-details.html) | 1.0.0.201004 | 2010-04-06 | 1 | 2.0 | 3.1.* |   |
+|926 | 126534 | [Dissociate Occurrence](/ThunderKdB/xall/xOther/126534-dissociate-occurrence/126534-dissociate-occurrence-details.html) | 1.0.0.201004 | 2010-04-06 | 1 | 2.0 | 3.1.* |   |
+|927 | 6133 | [Disable Folder Drag Button](/ThunderKdB/xall/xOther/6133-disable-folder-drag-button/6133-disable-folder-drag-button-details.html) | 1.0.0 | 2007-12-04 | 1 | 1.5 | 2.0.0.* |   |
 |928 | 199423 | [google-pagerank](/ThunderKdB/xall/xOther/199423-google-pagerank/199423-google-pagerank-details.html) | 0.3 | 2010-07-18 | 1 | 3.0b3 | 3.2a1pre |   |
-|929 | 306529 | [arpitgupta31 (1)](/ThunderKdB/xall/xOther/306529-arpitgupta31-1/306529-arpitgupta31-1-details.html) | 1.0.rev6.1-s | 2011-04-12 | 1 | 3.0b3 | 3.2a1pre |   |
-|930 | 270436 | [TweeQuilla Twitter for Thunderbird (Ob](/ThunderKdB/xall/xOther/270436-tweequilla-bundle/270436-tweequilla-bundle-details.html) | 0.2.2 | 2011-06-07 | 1 | 3.1 | 5.* |   |
+|929 | 270436 | [TweeQuilla Twitter for Thunderbird (Ob](/ThunderKdB/xall/xOther/270436-tweequilla-bundle/270436-tweequilla-bundle-details.html) | 0.2.2 | 2011-06-07 | 1 | 3.1 | 5.* |   |
+|930 | 306529 | [arpitgupta31 (1)](/ThunderKdB/xall/xOther/306529-arpitgupta31-1/306529-arpitgupta31-1-details.html) | 1.0.rev6.1-s | 2011-04-12 | 1 | 3.0b3 | 3.2a1pre |   |
 |931 | 427213 | [Gif Remover](/ThunderKdB/xall/xOther/427213-gif-remover/427213-gif-remover-details.html) | 1.0.1-signed | 2013-05-03 | 1 | 18.0 | 31.* |   |
 |932 | 460320 | [Simple Steganography](/ThunderKdB/xall/xOther/460320-simple-steganography/460320-simple-steganography-details.html) | 0.1.5.4.1-si | 2014-10-03 | 1 | 17.0 | 36.0 |   |
 |933 | 460859 | [Massey Omura Cryptosystem](/ThunderKdB/xall/xOther/460859-massey-omura-cryptosystem/460859-massey-omura-cryptosystem-details.html) | 1.0 | 2013-08-20 | 1 | 3.0 | 31.* |   |
-|934 | 578900 | [Gitter](/ThunderKdB/xall/xOther/578900-gitter/578900-gitter-details.html) | 1.0 | 2015-01-26 | 1 | 15.0 | 38.0a1 |   |
-|935 | 591394 | [Force Authentication at Startup.](/ThunderKdB/xall/xOther/591394-force-auth-at-startup/591394-force-auth-at-startup-details.html) | 0.2 | 2015-04-06 | 1 | 31.0 | 36.0a1 |   |
+|934 | 591394 | [Force Authentication at Startup.](/ThunderKdB/xall/xOther/591394-force-auth-at-startup/591394-force-auth-at-startup-details.html) | 0.2 | 2015-04-06 | 1 | 31.0 | 36.0a1 |   |
+|935 | 578900 | [Gitter](/ThunderKdB/xall/xOther/578900-gitter/578900-gitter-details.html) | 1.0 | 2015-01-26 | 1 | 15.0 | 38.0a1 |   |
 |936 | 756749 | [Edit Message Encoding Fallback](/ThunderKdB/xall/xOther/756749-edit-message-encoding-fallback/756749-edit-message-encoding-fallback-details.html) | 1.1 | 2016-12-06 | 1 | 45.0 | 45.* |   |
 |937 | 669876 | [BccBlocker](/ThunderKdB/xall/xOther/669876-bccblocker/669876-bccblocker-details.html) | 1.1 | 2015-11-14 | 1 | 2.0 | 45.0 |   |
-|938 | 210 | [View Headers Toggle Button](/ThunderKdB/xall/xOther/210-view-headers-toggle-button/210-view-headers-toggle-button-details.html) | 2.0.1 | 2007-04-25 | 1 | 2.0 | 2.0.0.* |   |
-|939 | 561 | [Russ Key](/ThunderKdB/xall/xOther/561-russ-key/561-russ-key-details.html) | 1.6.2.1-sign | 2009-07-15 | 1 | 1.0+ | 3.0b2pre |   |
-|940 | 620 | [traduku](/ThunderKdB/xall/xOther/620-traduku/620-traduku-details.html) | 1.3.1-signed | 2012-10-09 | 1 | 3.0b1 | 31.* |   |
-|941 | 617330 | [Steganografi menggunakan PIT dan PRNG](/ThunderKdB/xall/xOther/617330-steganografi-pit-prng/617330-steganografi-pit-prng-details.html) | 1.0 | 2015-05-26 | 1 | 17.0 | 32.0 |   |
+|938 | 561 | [Russ Key](/ThunderKdB/xall/xOther/561-russ-key/561-russ-key-details.html) | 1.6.2.1-sign | 2009-07-15 | 1 | 1.0+ | 3.0b2pre |   |
+|939 | 620 | [traduku](/ThunderKdB/xall/xOther/620-traduku/620-traduku-details.html) | 1.3.1-signed | 2012-10-09 | 1 | 3.0b1 | 31.* |   |
+|940 | 363541 | [Skyrock  by RaouF](/ThunderKdB/xall/xOther/363541-skyrock-by-raouf/363541-skyrock-by-raouf-details.html) | 1.0.1-signed | 2012-02-18 | 1 | 1.5 | 31.* |   |
+|941 | 363649 | [pkrss](/ThunderKdB/xall/xOther/363649-pkrss/363649-pkrss-details.html) | 2.0.6.1-sign | 2013-08-08 | 1 | 1.5 | 31.* |   |
 |942 | 405369 | [Hide Horizontal Scrollbar](/ThunderKdB/xall/xOther/405369-hide-horizontal-scrollbar/405369-hide-horizontal-scrollbar-details.html) | 0.2 | 2012-11-11 | 1 | 13.0 | 31.* |   |
-|943 | 7097 | [Electoral College Monitor](/ThunderKdB/xall/xOther/7097-electoral-college-monitor/7097-electoral-college-monitor-details.html) | 1.1 | 2008-04-27 | 1 | 1.5 | 3.0a1 |   |
-|944 | 12507 | [Indian Language Transliterator](/ThunderKdB/xall/xOther/12507-indian-language-transliterator/12507-indian-language-transliterator-details.html) | 1.4 | 2010-07-31 | 1 | 1.0 | 51.0 |   |
-|945 | 363541 | [Skyrock  by RaouF](/ThunderKdB/xall/xOther/363541-skyrock-by-raouf/363541-skyrock-by-raouf-details.html) | 1.0.1-signed | 2012-02-18 | 1 | 1.5 | 31.* |   |
-|946 | 363649 | [pkrss](/ThunderKdB/xall/xOther/363649-pkrss/363649-pkrss-details.html) | 2.0.6.1-sign | 2013-08-08 | 1 | 1.5 | 31.* |   |
+|943 | 12507 | [Indian Language Transliterator](/ThunderKdB/xall/xOther/12507-indian-language-transliterator/12507-indian-language-transliterator-details.html) | 1.4 | 2010-07-31 | 1 | 1.0 | 51.0 |   |
+|944 | 617330 | [Steganografi menggunakan PIT dan PRNG](/ThunderKdB/xall/xOther/617330-steganografi-pit-prng/617330-steganografi-pit-prng-details.html) | 1.0 | 2015-05-26 | 1 | 17.0 | 32.0 |   |
+|945 | 7097 | [Electoral College Monitor](/ThunderKdB/xall/xOther/7097-electoral-college-monitor/7097-electoral-college-monitor-details.html) | 1.1 | 2008-04-27 | 1 | 1.5 | 3.0a1 |   |
+|946 | 210 | [View Headers Toggle Button](/ThunderKdB/xall/xOther/210-view-headers-toggle-button/210-view-headers-toggle-button-details.html) | 2.0.1 | 2007-04-25 | 1 | 2.0 | 2.0.0.* |   |
 |947 | 228395 | [Thunderbird Pedophile Reporter](/ThunderKdB/xall/xOther/228395-thunderbird-pedophile-reporter/228395-thunderbird-pedophile-reporter-details.html) | 1.1 | 2011-07-06 | 1 | 2.0 | 18.* |   |
 |948 | 304734 | [Find Preferences](/ThunderKdB/xall/xOther/304734-find-preferences/304734-find-preferences-details.html) | 1.0.1-signed | 2011-11-19 | 1 | 3.0 | 38.* |   |
 |949 | 2110 | [MinimizeToTray](/ThunderKdB/xall/xOther/2110-minimizetotray/2110-minimizetotray-details.html) | 0.0.1.200610 | 2007-03-05 | 1 | 1.0+ | 2.0.0.* |   |
 |950 | 1489 | [Headers Toggle](/ThunderKdB/xall/xOther/1489-headers-toggle/1489-headers-toggle-details.html) | 0.5.2.2 | 2007-04-19 | 1 | 0.8 | 2.0.0.* |   |
-|951 | 2110 | [MinimizeToTray](/ThunderKdB/xall/xOther/2110-minimizetotray/2110-minimizetotray-details.html) | 0.0.1.200610 | 2007-03-05 | 1 | 1.0+ | 2.0.0.* |   |
-|952 | 279603 | [JS Deminifier](/ThunderKdB/xall/xOther/279603-deminifier/279603-deminifier-details.html) | 0.2.1-signed | 2011-02-03 | 1 | 3.0b3 | 3.2a1pre |   |
-|953 | 281336 | [Shift Box](/ThunderKdB/xall/xOther/281336-shift-box/281336-shift-box-details.html) | 0.3.2 | 2011-08-23 | 1 | 3.0 | 20.* |   |
-|954 | 59267 | [Autohide Tabbar](/ThunderKdB/xall/xOther/59267-autohide-tabbar/59267-autohide-tabbar-details.html) | 2.8.1-signed | 2011-04-13 | 1 | 3.0 | 3.1.* |   |
+|951 | 4698 | [Translation Panel](/ThunderKdB/xall/xOther/4698-translation-panel-4698/4698-translation-panel-4698-details.html) | 1.4.14.9.141 | 2008-04-18 | 1 | 1.5 | 2.0.0.* |   |
+|952 | 59267 | [Autohide Tabbar](/ThunderKdB/xall/xOther/59267-autohide-tabbar/59267-autohide-tabbar-details.html) | 2.8.1-signed | 2011-04-13 | 1 | 3.0 | 3.1.* |   |
+|953 | 279603 | [JS Deminifier](/ThunderKdB/xall/xOther/279603-deminifier/279603-deminifier-details.html) | 0.2.1-signed | 2011-02-03 | 1 | 3.0b3 | 3.2a1pre |   |
+|954 | 281336 | [Shift Box](/ThunderKdB/xall/xOther/281336-shift-box/281336-shift-box-details.html) | 0.3.2 | 2011-08-23 | 1 | 3.0 | 20.* |   |
 |955 | 441910 | [MiniWebView Sidebar](/ThunderKdB/xall/xOther/441910-miniwebview-sidebar/441910-miniwebview-sidebar-details.html) | 0.1 | 2013-05-27 | 1 | 17.0 | 17.* |   |
 |956 | 677444 | [Rikaichan Japanese-Hungarian Dictionar](/ThunderKdB/xall/xOther/677444-rikaichan-jphu/677444-rikaichan-jphu-details.html) | 2.01.170301 | 2017-03-06 | 1 | 3.0 | 45.* |   |
 |957 | 1962 | [Fast Mail Redirect](/ThunderKdB/xall/xOther/1962-fast-mail-redirect/1962-fast-mail-redirect-details.html) | 0.4.1 | 2007-05-31 | 1 | 1.5 | 2.0.0.* |   |
 |958 | 2195 | [Extension Manager Extended](/ThunderKdB/xall/xOther/2195-extension-manager-extended/2195-extension-manager-extended-details.html) | 2.8.1 | 2009-11-01 | 1 | 2.0 | 3.1.* |   |
-|959 | 2995 | [Splash!](/ThunderKdB/xall/xOther/2995-splash/2995-splash-details.html) | 2.0.2 | 2009-02-13 | 1 | 1.5 | 3.1a1pre |   |
+|959 | 356520 | [Send to xNode](/ThunderKdB/xall/xOther/356520-send-to-xnode/356520-send-to-xnode-details.html) | 1.18.1-signe | 2012-01-16 | 1 | 5.0 | 31.* |   |
 |960 | 274087 | [Keyword to Latest Digg URL Converter](/ThunderKdB/xall/xOther/274087-keyword_digg_converter/274087-keyword_digg_converter-details.html) | 1.0 | 2011-01-18 | 1 | 3.0b3 | 3.2a1pre |   |
-|961 | 469332 | [JSON Inspector](/ThunderKdB/xall/xOther/469332-json-inspector/469332-json-inspector-details.html) | 0.2.1-signed | 2013-12-18 | 1 | 17.0 | 31.* |   |
+|961 | 344931 | [Perapera Japanese-German Dictionary Fi](/ThunderKdB/xall/xOther/344931-perapera-japanese-german-di/344931-perapera-japanese-german-di-details.html) | 1.111022.1-s | 2011-10-22 | 1 | 3.0 | 37.* |   |
 |962 | 5743 | [xSearchbarT2](/ThunderKdB/xall/xOther/5743-xsearchbart2/5743-xsearchbart2-details.html) | 0.4 | 2008-12-12 | 1 | 2.0 | 3.1a1pre |   |
-|963 | 344931 | [Perapera Japanese-German Dictionary Fi](/ThunderKdB/xall/xOther/344931-perapera-japanese-german-di/344931-perapera-japanese-german-di-details.html) | 1.111022.1-s | 2011-10-22 | 1 | 3.0 | 37.* |   |
-|964 | 356520 | [Send to xNode](/ThunderKdB/xall/xOther/356520-send-to-xnode/356520-send-to-xnode-details.html) | 1.18.1-signe | 2012-01-16 | 1 | 5.0 | 31.* |   |
-|965 | 684503 | [Sensitivity Header + SPX](/ThunderKdB/xall/xOther/684503-sensitivity-header-spx/684503-sensitivity-header-spx-details.html) | 0.2a | 2016-02-06 | 1 | 37.0 | 43.0 |   |
-|966 | 986655 | [FrameWhite](/ThunderKdB/xall/x60/986655-framewhite/986655-framewhite-details.html) | 57.8 | 2019-08-13 | 1 | 1.5 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|963 | 2995 | [Splash!](/ThunderKdB/xall/xOther/2995-splash/2995-splash-details.html) | 2.0.2 | 2009-02-13 | 1 | 1.5 | 3.1a1pre |   |
+|964 | 684503 | [Sensitivity Header + SPX](/ThunderKdB/xall/xOther/684503-sensitivity-header-spx/684503-sensitivity-header-spx-details.html) | 0.2a | 2016-02-06 | 1 | 37.0 | 43.0 |   |
+|965 | 986655 | [FrameWhite](/ThunderKdB/xall/x60/986655-framewhite/986655-framewhite-details.html) | 57.8 | 2019-08-13 | 1 | 1.5 | 60.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
+|966 | 469332 | [JSON Inspector](/ThunderKdB/xall/xOther/469332-json-inspector/469332-json-inspector-details.html) | 0.2.1-signed | 2013-12-18 | 1 | 17.0 | 31.* |   |
 |967 | 595 | [MessageID-Finder](/ThunderKdB/xall/xOther/595-messageid-finder/595-messageid-finder-details.html) | 2.0.0 | 2007-03-05 | 1 | 0.6 | 1.5.0.* |   |
 |968 | 829 | [compactfolder](/ThunderKdB/xall/xOther/829-compactfolder/829-compactfolder-details.html) | 0.0.7 | 2007-11-10 | 1 | 1.0 | 2.0.0.* |   |
 |969 | 132 | [Open Long Url](/ThunderKdB/xall/xOther/132-open-long-url/132-open-long-url-details.html) | 0.2.3 | 2007-03-05 | 1 | 0.9 | 3.0.* |   |
@@ -999,22 +999,22 @@ body {
 |972 | 4025 | [ThunderBayes](/ThunderKdB/xall/xOther/4025-thunderbayes/4025-thunderbayes-details.html) | 1.0.1 | 2007-10-01 | 1 | 1.0 | 2.0.0.* |   |
 |973 | 2860 | [[Un]read](/ThunderKdB/xall/xOther/2860-unread/2860-unread-details.html) | 0.5 | 2007-06-25 | 1 | 2.0 | 2.0.0.* |   |
 |974 | 437252 | [SanRockstar](/ThunderKdB/xall/xOther/437252-sanrockstar/437252-sanrockstar-details.html) | 3.1.2.1-sign | 2013-05-08 | 1 | 13.0 | 31.* |   |
-|975 | 375861 | [CX CallBook](/ThunderKdB/xall/xOther/375861-cx-callbook/375861-cx-callbook-details.html) | 1.0.1-signed | 2012-05-26 | 1 | 11.0 | 31.* |   |
+|975 | 411806 | [Free Search & Youtube HD Video Downloa](/ThunderKdB/xall/xOther/411806-djamolgroup/411806-djamolgroup-details.html) | 5.5 | 2016-05-24 | 1 | 0.3 | 53.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |976 | 411806 | [Free Search & Youtube HD Video Downloa](/ThunderKdB/xall/xOther/411806-djamolgroup/411806-djamolgroup-details.html) | 5.5 | 2016-05-24 | 1 | 0.3 | 53.* |   ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |977 | 700342 | [Generate patch command](/ThunderKdB/xall/xOther/700342-generate-patch-command/700342-generate-patch-command-details.html) | 1.1.0 | 2016-05-05 | 1 | 31.0 | 58.0 |   |
 |978 | 710356 | [Telefonkonferenz.de-Vorlagen](/ThunderKdB/xall/xOther/710356-telefonkonferenz-de-vorlagen/710356-telefonkonferenz-de-vorlagen-details.html) | 1.3 | 2016-06-20 | 1 | 10.0 | 45.* |   |
 |979 | 525192 | [EasyVHitG](/ThunderKdB/xall/xOther/525192-easy-vhitg/525192-easy-vhitg-details.html) | 1.1.1 | 2014-07-17 | 1 | 0.3 | 33.0 |   |
-|980 | 6213 | [Couch Managers Mock Draft Monitor](/ThunderKdB/xall/xOther/6213-couch-managers-mock-draft-moni/6213-couch-managers-mock-draft-moni-details.html) | 0.1 | 2007-12-17 | 1 | 1.5 | 2.0.0.* |   |
+|980 | 2129 | [NewsWorthy for Thunderbird 1.5](/ThunderKdB/xall/xOther/2129-newsworthy-for-thunderbird-15/2129-newsworthy-for-thunderbird-15-details.html) | 0.2.0.4 | 2007-03-05 | 1 | 1.5 | 1.5.0.* |   |
 |981 | 5240 | [TB Custom Toolbar](/ThunderKdB/xall/xOther/5240-tb-custom-toolbar/5240-tb-custom-toolbar-details.html) | 1.0 | 2007-06-30 | 1 | 1.5 | 3.0a1 |   |
-|982 | 699635 | [ansitel Click-to-Dial Thunderbird](/ThunderKdB/xall/xOther/699635-ansitel-click-to-dial-tb/699635-ansitel-click-to-dial-tb-details.html) | 1.1 | 2016-04-27 | 1 | 1.5 | 31.* |   |
-|983 | 547694 | [Mukparasi](/ThunderKdB/xall/xOther/547694-mukparasi/547694-mukparasi-details.html) | 2.09.12 | 2016-01-24 | 1 | 5.0 | 43.* |   |
-|984 | 2129 | [NewsWorthy for Thunderbird 1.5](/ThunderKdB/xall/xOther/2129-newsworthy-for-thunderbird-15/2129-newsworthy-for-thunderbird-15-details.html) | 0.2.0.4 | 2007-03-05 | 1 | 1.5 | 1.5.0.* |   |
+|982 | 353304 | [Google Reader Tab](/ThunderKdB/xall/xOther/353304-google-reader-tab/353304-google-reader-tab-details.html) | 0.4 | 2012-01-25 | 1 | 3.0 | 31.* |   |
+|983 | 316903 | [Filter SubFolders](/ThunderKdB/xall/xOther/316903-filter-subfolders/316903-filter-subfolders-details.html) | 1.0 | 2011-05-20 | 1 | 3.0 | 3.1.* |   |
+|984 | 319309 | [Ubuntu Unity unread count and quicklis](/ThunderKdB/xall/xOther/319309-unity-unread-count/319309-unity-unread-count-details.html) | 1.07 | 2011-06-17 | 1 | 3.0 | 3.1.* |   |
 |985 | 121405 | [WebChanges](/ThunderKdB/xall/xOther/121405-webchanges/121405-webchanges-details.html) | 0.3.0.1 | 2011-01-22 | 1 | 3.0 | 24.* |   |
-|986 | 316903 | [Filter SubFolders](/ThunderKdB/xall/xOther/316903-filter-subfolders/316903-filter-subfolders-details.html) | 1.0 | 2011-05-20 | 1 | 3.0 | 3.1.* |   |
-|987 | 319309 | [Ubuntu Unity unread count and quicklis](/ThunderKdB/xall/xOther/319309-unity-unread-count/319309-unity-unread-count-details.html) | 1.07 | 2011-06-17 | 1 | 3.0 | 3.1.* |   |
-|988 | 200736 | [Solpets Quick Button](/ThunderKdB/xall/xOther/200736-solpets-quick-button/200736-solpets-quick-button-details.html) | 1.5.3.1-sign | 2013-03-25 | 1 | 1.5b | 31.* |   |
-|989 | 221519 | [MuteThread](/ThunderKdB/xall/xOther/221519-mutethread/221519-mutethread-details.html) | 0.2 | 2010-08-26 | 1 | 3.1 | 31.* |   |
-|990 | 353304 | [Google Reader Tab](/ThunderKdB/xall/xOther/353304-google-reader-tab/353304-google-reader-tab-details.html) | 0.4 | 2012-01-25 | 1 | 3.0 | 31.* |   |
+|986 | 6213 | [Couch Managers Mock Draft Monitor](/ThunderKdB/xall/xOther/6213-couch-managers-mock-draft-moni/6213-couch-managers-mock-draft-moni-details.html) | 0.1 | 2007-12-17 | 1 | 1.5 | 2.0.0.* |   |
+|987 | 200736 | [Solpets Quick Button](/ThunderKdB/xall/xOther/200736-solpets-quick-button/200736-solpets-quick-button-details.html) | 1.5.3.1-sign | 2013-03-25 | 1 | 1.5b | 31.* |   |
+|988 | 221519 | [MuteThread](/ThunderKdB/xall/xOther/221519-mutethread/221519-mutethread-details.html) | 0.2 | 2010-08-26 | 1 | 3.1 | 31.* |   |
+|989 | 699635 | [ansitel Click-to-Dial Thunderbird](/ThunderKdB/xall/xOther/699635-ansitel-click-to-dial-tb/699635-ansitel-click-to-dial-tb-details.html) | 1.1 | 2016-04-27 | 1 | 1.5 | 31.* |   |
+|990 | 547694 | [Mukparasi](/ThunderKdB/xall/xOther/547694-mukparasi/547694-mukparasi-details.html) | 2.09.12 | 2016-01-24 | 1 | 5.0 | 43.* |   |
 |991 | 6247 | [Equations](/ThunderKdB/xall/xOther/6247-equations/6247-equations-details.html) | 1.2.2 | 2009-11-30 | 1 | 2.0 | 3.1.* |   |
 |992 | 14190 | [tuxdroidthunderbird](/ThunderKdB/xall/xOther/14190-tuxdroidthunderbird/14190-tuxdroidthunderbird-details.html) | 20090908 | 2009-09-08 | 1 | 2.0.0.8 | 2.0.0.* |   |
 |993 | 10488 | [MinimizeToTray For FF 3.5](/ThunderKdB/xall/xOther/10488-minimizetotray-for-ff-35/10488-minimizetotray-for-ff-35-details.html) | 1.5 | 2009-07-05 | 1 | 2.0 | 3.1a1pre |   |
@@ -1025,13 +1025,13 @@ body {
 |998 | 391555 | [Android Debug Bridge For Firefox](/ThunderKdB/xall/xOther/391555-android-debug-bridge-for-fi/391555-android-debug-bridge-for-fi-details.html) | 0.0.1.1-sign | 2012-08-23 | 1 | 5.0b1 | 24.* |   |
 |999 | 651810 | [OpenMixTools](/ThunderKdB/xall/xOther/651810-openmixtools/651810-openmixtools-details.html) | 0.26 | 2015-09-07 | 1 | 3.0 | 44.0 |   |
 |1000 | 497876 | [Plugin Disabler](/ThunderKdB/xall/xOther/497876-plugin-disabler/497876-plugin-disabler-details.html) | 0.2.1-signed | 2014-04-26 | 1 | 24.0 | 38.2.0 |   |
-|1001 | 395384 | [Don't Send Linked Files](/ThunderKdB/xall/xOther/395384-dont-send-linked-files/395384-dont-send-linked-files-details.html) | 0.4 | 2018-11-08 | 1 | 17.0 | 52.* |   |
-|1002 | 656756 | [Disable About Something](/ThunderKdB/xall/xOther/656756-disable-about-something/656756-disable-about-something-details.html) | 1.1 | 2017-01-23 | 1 | 45.0 | 53.0a1 |   |
-|1003 | 614172 | [manoderecha](/ThunderKdB/xall/xOther/614172-manoderecha/614172-manoderecha-details.html) | 1.1 | 2015-05-18 | 1 | 15.0 | 40.0 |   |
-|1004 | 4474 | [Alphanumerator](/ThunderKdB/xall/xOther/4474-alphanumerator/4474-alphanumerator-details.html) | 0.2.1-signed | 2008-05-24 | 1 | 1.0 | 24.* |   |
-|1005 | 4839 | [Recipients Overview](/ThunderKdB/xall/xOther/4839-recipients-overview/4839-recipients-overview-details.html) | 1.0 | 2007-04-20 | 1 | 2.0 | 2.0.0.* |   |
-|1006 | 1624 | [QuickMenuMC](/ThunderKdB/xall/xOther/1624-quickmenumc/1624-quickmenumc-details.html) | 0.9.2.1 | 2007-03-05 | 1 | 1.5 | 3.1a1pre |   |
-|1007 | 2085 | [Email Notification Randomizer](/ThunderKdB/xall/xOther/2085-email-notification-randomizer/2085-email-notification-randomizer-details.html) | 1.2.4 | 2008-12-15 | 1 | 2.0 | 2.0.0.* |   |
+|1001 | 4474 | [Alphanumerator](/ThunderKdB/xall/xOther/4474-alphanumerator/4474-alphanumerator-details.html) | 0.2.1-signed | 2008-05-24 | 1 | 1.0 | 24.* |   |
+|1002 | 4839 | [Recipients Overview](/ThunderKdB/xall/xOther/4839-recipients-overview/4839-recipients-overview-details.html) | 1.0 | 2007-04-20 | 1 | 2.0 | 2.0.0.* |   |
+|1003 | 2085 | [Email Notification Randomizer](/ThunderKdB/xall/xOther/2085-email-notification-randomizer/2085-email-notification-randomizer-details.html) | 1.2.4 | 2008-12-15 | 1 | 2.0 | 2.0.0.* |   |
+|1004 | 1624 | [QuickMenuMC](/ThunderKdB/xall/xOther/1624-quickmenumc/1624-quickmenumc-details.html) | 0.9.2.1 | 2007-03-05 | 1 | 1.5 | 3.1a1pre |   |
+|1005 | 395384 | [Don't Send Linked Files](/ThunderKdB/xall/xOther/395384-dont-send-linked-files/395384-dont-send-linked-files-details.html) | 0.4 | 2018-11-08 | 1 | 17.0 | 52.* |   |
+|1006 | 656756 | [Disable About Something](/ThunderKdB/xall/xOther/656756-disable-about-something/656756-disable-about-something-details.html) | 1.1 | 2017-01-23 | 1 | 45.0 | 53.0a1 |   |
+|1007 | 614172 | [manoderecha](/ThunderKdB/xall/xOther/614172-manoderecha/614172-manoderecha-details.html) | 1.1 | 2015-05-18 | 1 | 15.0 | 40.0 |   |
 |1008 | 5254 | [TB Properties](/ThunderKdB/xall/xOther/5254-tb-properties/5254-tb-properties-details.html) | 0.8 | 2009-02-28 | 1 | 1.5 | 3.0b2 |   |
 |1009 | 5304 | [Copy Link Name for Thunderbird](/ThunderKdB/xall/xOther/5304-copy-link-name-for-thunderbird/5304-copy-link-name-for-thunderbird-details.html) | 0.9 | 2009-05-31 | 1 | 1.5 | 3.0b3pre |   |
 |1010 | 4075 | [Nokia Synchronization](/ThunderKdB/xall/xOther/4075-nokia-synchronization/4075-nokia-synchronization-details.html) | 1.0.29 | 2007-03-05 | 1 | 1.5 | 2.0.0.* |   |
@@ -1073,26 +1073,26 @@ body {
 |1046 | 273644 | [Mail Size Report](/ThunderKdB/xall/xOther/273644-mail-size-report/273644-mail-size-report-details.html) | 0.1.0 | 2011-01-17 | 0 | 3.0 | 3.1.* |   |
 |1047 | 289006 | [Hide Clear List Button](/ThunderKdB/xall/xOther/289006-hide-clear-list-button/289006-hide-clear-list-button-details.html) | 1.0.1-signed | 2011-03-05 | 0 | 2.0a1 | 19.0a1 |   |
 |1048 | 372530 | [Tabbed Mail Preferences](/ThunderKdB/xall/xOther/372530-tabbed-mail-preferences/372530-tabbed-mail-preferences-details.html) | 1.0 | 2012-04-21 | 0 | 3.0 | 3.0.* |   |
-|1049 | 554 | [PONG! Multiplayer](/ThunderKdB/xall/xOther/554-pong-multiplayer/554-pong-multiplayer-details.html) | 2.3 | 2009-01-30 | 0 | 1.0 | 3.0a1 |   |
-|1050 | 763 | [UMTools](/ThunderKdB/xall/xOther/763-umtools/763-umtools-details.html) | 0.0.1 | 2007-03-05 | 0 | 0.8 | 1.0+ |   |
-|1051 | 776 | [MR Tech About:About](/ThunderKdB/xall/xOther/776-mr-tech-aboutabout/776-mr-tech-aboutabout-details.html) | 2.4.2 | 2009-02-13 | 0 | 1.0 | 3.0a1 |   |
-|1052 | 905 | [nntpthreads](/ThunderKdB/xall/xOther/905-nntpthreads/905-nntpthreads-details.html) | 0.1.0 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
-|1053 | 1104 | [GDirections](/ThunderKdB/xall/xOther/1104-gdirections/1104-gdirections-details.html) | 3.1.4 | 2009-05-24 | 0 | 0.5 | 2.0.0.* |   |
-|1054 | 1391 | [Nightly Tester Tools Lite](/ThunderKdB/xall/xOther/1391-nightly-tester-tools-lite/1391-nightly-tester-tools-lite-details.html) | 0.2.2 | 2007-03-05 | 0 | 1.5 | 3.2a1pre |   |
-|1055 | 1835 | [mailconsole](/ThunderKdB/xall/xOther/1835-mailconsole/1835-mailconsole-details.html) | 0.9.6 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
-|1056 | 2121 | [Identity Reminder](/ThunderKdB/xall/xOther/2121-identity-reminder/2121-identity-reminder-details.html) | 1.0 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
-|1057 | 2140 | [FavLoc](/ThunderKdB/xall/xOther/2140-favloc/2140-favloc-details.html) | 1.2 | 2008-06-18 | 0 | 1.5 | 3.1.* |   |
-|1058 | 344 | [RSS Editor](/ThunderKdB/xall/xOther/344-rss-editor/344-rss-editor-details.html) | 0.0.9.3 | 2007-03-05 | 0 | 0.9 | 1.5.0.* |   |
-|1059 | 78231 | [xultray for gecko 1.9.2](/ThunderKdB/xall/xOther/78231-xultray-for-gecko-192/78231-xultray-for-gecko-192-details.html) | 1.3 | 2010-06-04 | 0 | 3.1 | 3.1.* |   |
-|1060 | 4471 | [Key Manager](/ThunderKdB/xall/xOther/4471-key-manager/4471-key-manager-details.html) | 0.1.240.2013 | 2013-08-22 | 0 | 24.0a1 | 24.* |   |
-|1061 | 4540 | [Thunderled](/ThunderKdB/xall/xOther/4540-thunderled/4540-thunderled-details.html) | 0.2.3.9 | 2007-05-07 | 0 | 1.5 | 2.0.0.* |   |
-|1062 | 4634 | [Growl Notifications](/ThunderKdB/xall/xOther/4634-growl-notifications/4634-growl-notifications-details.html) | 1.0.2 | 2007-07-09 | 0 | 2.0b2 | 2.0.0.* |   |
-|1063 | 8900 | [New Mail Icon](/ThunderKdB/xall/xOther/8900-new-mail-icon/8900-new-mail-icon-details.html) | 1.2.4 | 2008-09-16 | 0 | 2.0 | 2.0.0.* |   |
-|1064 | 5962 | [JSW:O Alert](/ThunderKdB/xall/xOther/5962-jswo-alert/5962-jswo-alert-details.html) | 1.4.3.1-sign | 2011-09-04 | 0 | 2.0 | 24.* |   |
+|1049 | 344 | [RSS Editor](/ThunderKdB/xall/xOther/344-rss-editor/344-rss-editor-details.html) | 0.0.9.3 | 2007-03-05 | 0 | 0.9 | 1.5.0.* |   |
+|1050 | 554 | [PONG! Multiplayer](/ThunderKdB/xall/xOther/554-pong-multiplayer/554-pong-multiplayer-details.html) | 2.3 | 2009-01-30 | 0 | 1.0 | 3.0a1 |   |
+|1051 | 763 | [UMTools](/ThunderKdB/xall/xOther/763-umtools/763-umtools-details.html) | 0.0.1 | 2007-03-05 | 0 | 0.8 | 1.0+ |   |
+|1052 | 776 | [MR Tech About:About](/ThunderKdB/xall/xOther/776-mr-tech-aboutabout/776-mr-tech-aboutabout-details.html) | 2.4.2 | 2009-02-13 | 0 | 1.0 | 3.0a1 |   |
+|1053 | 905 | [nntpthreads](/ThunderKdB/xall/xOther/905-nntpthreads/905-nntpthreads-details.html) | 0.1.0 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
+|1054 | 1104 | [GDirections](/ThunderKdB/xall/xOther/1104-gdirections/1104-gdirections-details.html) | 3.1.4 | 2009-05-24 | 0 | 0.5 | 2.0.0.* |   |
+|1055 | 1391 | [Nightly Tester Tools Lite](/ThunderKdB/xall/xOther/1391-nightly-tester-tools-lite/1391-nightly-tester-tools-lite-details.html) | 0.2.2 | 2007-03-05 | 0 | 1.5 | 3.2a1pre |   |
+|1056 | 1835 | [mailconsole](/ThunderKdB/xall/xOther/1835-mailconsole/1835-mailconsole-details.html) | 0.9.6 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
+|1057 | 2121 | [Identity Reminder](/ThunderKdB/xall/xOther/2121-identity-reminder/2121-identity-reminder-details.html) | 1.0 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
+|1058 | 2140 | [FavLoc](/ThunderKdB/xall/xOther/2140-favloc/2140-favloc-details.html) | 1.2 | 2008-06-18 | 0 | 1.5 | 3.1.* |   |
+|1059 | 4073 | [Custom Geometry](/ThunderKdB/xall/xOther/4073-custom-geometry/4073-custom-geometry-details.html) | 2.5.0.1-sign | 2010-12-04 | 0 | 1.5 | 3.0.* |   |
+|1060 | 4185 | [Newsgroup Links](/ThunderKdB/xall/xOther/4185-newsgroup-links/4185-newsgroup-links-details.html) | 0.1.1 | 2007-03-05 | 0 | 1.5 | 3.1.* |   |
+|1061 | 4471 | [Key Manager](/ThunderKdB/xall/xOther/4471-key-manager/4471-key-manager-details.html) | 0.1.240.2013 | 2013-08-22 | 0 | 24.0a1 | 24.* |   |
+|1062 | 4540 | [Thunderled](/ThunderKdB/xall/xOther/4540-thunderled/4540-thunderled-details.html) | 0.2.3.9 | 2007-05-07 | 0 | 1.5 | 2.0.0.* |   |
+|1063 | 4634 | [Growl Notifications](/ThunderKdB/xall/xOther/4634-growl-notifications/4634-growl-notifications-details.html) | 1.0.2 | 2007-07-09 | 0 | 2.0b2 | 2.0.0.* |   |
+|1064 | 78231 | [xultray for gecko 1.9.2](/ThunderKdB/xall/xOther/78231-xultray-for-gecko-192/78231-xultray-for-gecko-192-details.html) | 1.3 | 2010-06-04 | 0 | 3.1 | 3.1.* |   |
 |1065 | 6356 | [BrowsrBounce](/ThunderKdB/xall/xOther/6356-browsrbounce/6356-browsrbounce-details.html) | 0.9 | 2009-09-12 | 0 | 1.5 | 3.1.* |   |
-|1066 | 3464 | [SuperOffice Mail Link](/ThunderKdB/xall/xOther/3464-superoffice-mail-link/3464-superoffice-mail-link-details.html) | 0.3 | 2007-06-07 | 0 | 1.0 | 2.0.0.* |   |
-|1067 | 4073 | [Custom Geometry](/ThunderKdB/xall/xOther/4073-custom-geometry/4073-custom-geometry-details.html) | 2.5.0.1-sign | 2010-12-04 | 0 | 1.5 | 3.0.* |   |
-|1068 | 4185 | [Newsgroup Links](/ThunderKdB/xall/xOther/4185-newsgroup-links/4185-newsgroup-links-details.html) | 0.1.1 | 2007-03-05 | 0 | 1.5 | 3.1.* |   |
+|1066 | 5962 | [JSW:O Alert](/ThunderKdB/xall/xOther/5962-jswo-alert/5962-jswo-alert-details.html) | 1.4.3.1-sign | 2011-09-04 | 0 | 2.0 | 24.* |   |
+|1067 | 8900 | [New Mail Icon](/ThunderKdB/xall/xOther/8900-new-mail-icon/8900-new-mail-icon-details.html) | 1.2.4 | 2008-09-16 | 0 | 2.0 | 2.0.0.* |   |
+|1068 | 3464 | [SuperOffice Mail Link](/ThunderKdB/xall/xOther/3464-superoffice-mail-link/3464-superoffice-mail-link-details.html) | 0.3 | 2007-06-07 | 0 | 1.0 | 2.0.0.* |   |
 |1069 | 235857 | [PLUGIN NO LONGER BEING MAINTAINED](/ThunderKdB/xall/xOther/235857-telephone-message-taker/235857-telephone-message-taker-details.html) | 1.1.6 | 2010-10-25 | 0 | 1.5 | 3.1.* |   |
 |1070 | 162149 | [Sensitive Attachment Guard](/ThunderKdB/xall/xOther/162149-sensitive-attachment-guard/162149-sensitive-attachment-guard-details.html) | 1.0 | 2010-06-02 | 0 | 3.0 | 3.0.* |   |
 |1071 | 305330 | [New Account Types](/ThunderKdB/xall/xOther/305330-new-account-types/305330-new-account-types-details.html) | 18.0 | 2012-11-14 | 0 | 16.0 | 18.* |   |
@@ -1105,26 +1105,26 @@ body {
 |1078 | 787027 | [TipsTrade Ticket Buttons](/ThunderKdB/xall/xOther/787027-tipstrade-ticket-buttons/787027-tipstrade-ticket-buttons-details.html) | 0.1.6 | 2017-03-03 | 0 | 40.* | 54.* |   |
 |1079 | 688457 | [ClickGuard](/ThunderKdB/xall/xOther/688457-clickguard/688457-clickguard-details.html) | 0.2.0 | 2016-03-21 | 0 | 38.0 | 57.* |   |
 |1080 | 540 | [Open As Webfolder](/ThunderKdB/xall/xOther/540-open-as-webfolder/540-open-as-webfolder-details.html) | 0.28.1-signe | 2011-09-24 | 0 | 2.0 | 2.0.0.* |   |
-|1081 | 45501 | [Bugzilla Helper](/ThunderKdB/xall/xOther/45501-bugzilla-helper/45501-bugzilla-helper-details.html) | 0.4.3 | 2011-01-03 | 0 | 3.1 | 21.* |   |
-|1082 | 464538 | [DM Sync](/ThunderKdB/xall/xOther/464538-dm-sync/464538-dm-sync-details.html) | 1.0.18 | 2014-03-04 | 0 | 24.0 | 31.* |   |
-|1083 | 431538 | [sepsis-console (Deprecated)](/ThunderKdB/xall/xOther/431538-sepsis-console-deprecated/431538-sepsis-console-deprecated-details.html) | 0.1.1.1-sign | 2014-03-05 | 0 | 3.0a1 | 31.* |   |
-|1084 | 579480 | [IT Next Consultant](/ThunderKdB/xall/xOther/579480-itnext/579480-itnext-details.html) | 1.0 | 2015-01-28 | 0 | 15.0 | 38.0a1 |   |
-|1085 | 8533 | [Been2Long](/ThunderKdB/xall/xOther/8533-been2long/8533-been2long-details.html) | 1.0 | 2008-08-18 | 0 | 1.5 | 2.0.0.* |   |
-|1086 | 9030 | [File Bug Report](/ThunderKdB/xall/xOther/9030-file-bug-report/9030-file-bug-report-details.html) | 0.4 | 2009-04-12 | 0 | 1.0 | 3.2a1pre |   |
-|1087 | 9413 | [Open Addons TB](/ThunderKdB/xall/xOther/9413-open-addons-tb/9413-open-addons-tb-details.html) | 1.1.6.1 | 2009-03-07 | 0 | 2.0 | 3.2a1pre |   |
-|1088 | 2969 | [Scroll To Key](/ThunderKdB/xall/xOther/2969-scroll-to-key/2969-scroll-to-key-details.html) | 1.0.1 | 2007-06-03 | 0 | 1.5 | 2.0.0.* |   |
-|1089 | 2994 | [TamilVisai (TamilKey)](/ThunderKdB/xall/xOther/2994-tamilvisai-tamilkey/2994-tamilvisai-tamilkey-details.html) | 0.4.3.1-sign | 2011-01-09 | 0 | 1.5 | 17.* |   |
-|1090 | 6357 | [UxU - UnitTest.XUL](/ThunderKdB/xall/xOther/6357-uxu-unittestxul/6357-uxu-unittestxul-details.html) | 2.0.2 | 2017-02-27 | 0 | 45.0 | 52.* |   |
-|1091 | 43 | [PasteIP](/ThunderKdB/xall/xOther/43-pasteip/43-pasteip-details.html) | 1.7 | 2007-03-05 | 0 | 0.7 | 3.0.* |   |
-|1092 | 1837 | [DOM Inspector - Mac OS X](/ThunderKdB/xall/xOther/1837-dom-inspector-mac-os-x/1837-dom-inspector-mac-os-x-details.html) | 1.8 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
-|1093 | 2215 | [SyncMab](/ThunderKdB/xall/xOther/2215-syncmab/2215-syncmab-details.html) | 3.1 | 2007-03-23 | 0 | 1.5b | 2.0.0.* |   |
-|1094 | 2738 | [Spamato4Thunderbird](/ThunderKdB/xall/xOther/2738-spamato4thunderbird/2738-spamato4thunderbird-details.html) | 0.99.1.3 | 2007-04-30 | 0 | 1.0 | 2.0.0.* |   |
+|1081 | 464538 | [DM Sync](/ThunderKdB/xall/xOther/464538-dm-sync/464538-dm-sync-details.html) | 1.0.18 | 2014-03-04 | 0 | 24.0 | 31.* |   |
+|1082 | 431538 | [sepsis-console (Deprecated)](/ThunderKdB/xall/xOther/431538-sepsis-console-deprecated/431538-sepsis-console-deprecated-details.html) | 0.1.1.1-sign | 2014-03-05 | 0 | 3.0a1 | 31.* |   |
+|1083 | 372981 | [Workspace for Thunderbird](/ThunderKdB/xall/xOther/372981-workspace-for-thunderbird/372981-workspace-for-thunderbird-details.html) | 0.5.3 | 2012-05-11 | 0 | 5.0 | 18.* |   |
+|1084 | 12012 | [Avans Imap-account setup](/ThunderKdB/xall/xOther/12012-avans-imap-account-setup/12012-avans-imap-account-setup-details.html) | 1.1 | 2009-06-12 | 0 | 2.0b2 | 2.0.0.* |   |
+|1085 | 45501 | [Bugzilla Helper](/ThunderKdB/xall/xOther/45501-bugzilla-helper/45501-bugzilla-helper-details.html) | 0.4.3 | 2011-01-03 | 0 | 3.1 | 21.* |   |
+|1086 | 4522 | [XML Digital Signature Tool](/ThunderKdB/xall/xOther/4522-xml-digital-signature-tool/4522-xml-digital-signature-tool-details.html) | 0.1.240.2013 | 2013-08-22 | 0 | 24.0a1 | 24.* |   |
+|1087 | 651794 | [mappviewer](/ThunderKdB/xall/xOther/651794-mappviewer/651794-mappviewer-details.html) | 0.84 | 2016-04-02 | 0 | 3.0 | 46.0 |   |
+|1088 | 660408 | [Contact DnD](/ThunderKdB/xall/xOther/660408-contact-dnd/660408-contact-dnd-details.html) | 1.0 | 2015-10-06 | 0 | 1.5 | 5.* |   |
+|1089 | 669010 | [Hide Badge Icon](/ThunderKdB/xall/xOther/669010-hide-badge-icon/669010-hide-badge-icon-details.html) | 1.0 | 2015-11-08 | 0 | 3.0 | 45.0 |   |
+|1090 | 710358 | [ConferenceCall.co.uk templates](/ThunderKdB/xall/xOther/710358-conferencecall-co-uk-templates/710358-conferencecall-co-uk-templates-details.html) | 1.3 | 2016-06-20 | 0 | 10.0 | 45.* |   |
+|1091 | 673530 | [DownloadStudio Firefox Integration](/ThunderKdB/xall/xOther/673530-downloadstudio-firefox-integra/673530-downloadstudio-firefox-integra-details.html) | 10.3 | 2017-10-16 | 0 | 1.0 | 3.0a2pre |   |
+|1092 | 682671 | [RM: EXTERNAL:](/ThunderKdB/xall/xOther/682671-rm-external/682671-rm-external-details.html) | 0.5 | 2016-01-29 | 0 | 38.5.1 | 45.0 |   |
+|1093 | 579480 | [IT Next Consultant](/ThunderKdB/xall/xOther/579480-itnext/579480-itnext-details.html) | 1.0 | 2015-01-28 | 0 | 15.0 | 38.0a1 |   |
+|1094 | 2215 | [SyncMab](/ThunderKdB/xall/xOther/2215-syncmab/2215-syncmab-details.html) | 3.1 | 2007-03-23 | 0 | 1.5b | 2.0.0.* |   |
 |1095 | 5462 | [bosskey](/ThunderKdB/xall/xOther/5462-bosskey/5462-bosskey-details.html) | 0.1.8 | 2008-07-02 | 0 | 1.5 | 2.0.0.* |   |
 |1096 | 5570 | [Kyrgyz Key](/ThunderKdB/xall/xOther/5570-kyrgyz-key/5570-kyrgyz-key-details.html) | 1.4.13 | 2007-08-22 | 0 | 1.0+ | 2.0.0.* |   |
-|1097 | 10583 | [CantoFish](/ThunderKdB/xall/xOther/10583-cantofish/10583-cantofish-details.html) | 1.39.1-signe | 2011-01-07 | 0 | 2.0 | 43.* |   |
-|1098 | 11394 | [CRL over LDAP](/ThunderKdB/xall/xOther/11394-crl-over-ldap/11394-crl-over-ldap-details.html) | 1.0.2beta | 2010-09-08 | 0 | 2.0 | 3.1.* |   |
-|1099 | 12012 | [Avans Imap-account setup](/ThunderKdB/xall/xOther/12012-avans-imap-account-setup/12012-avans-imap-account-setup-details.html) | 1.1 | 2009-06-12 | 0 | 2.0b2 | 2.0.0.* |   |
-|1100 | 372981 | [Workspace for Thunderbird](/ThunderKdB/xall/xOther/372981-workspace-for-thunderbird/372981-workspace-for-thunderbird-details.html) | 0.5.3 | 2012-05-11 | 0 | 5.0 | 18.* |   |
+|1097 | 6357 | [UxU - UnitTest.XUL](/ThunderKdB/xall/xOther/6357-uxu-unittestxul/6357-uxu-unittestxul-details.html) | 2.0.2 | 2017-02-27 | 0 | 45.0 | 52.* |   |
+|1098 | 8533 | [Been2Long](/ThunderKdB/xall/xOther/8533-been2long/8533-been2long-details.html) | 1.0 | 2008-08-18 | 0 | 1.5 | 2.0.0.* |   |
+|1099 | 9030 | [File Bug Report](/ThunderKdB/xall/xOther/9030-file-bug-report/9030-file-bug-report-details.html) | 0.4 | 2009-04-12 | 0 | 1.0 | 3.2a1pre |   |
+|1100 | 43 | [PasteIP](/ThunderKdB/xall/xOther/43-pasteip/43-pasteip-details.html) | 1.7 | 2007-03-05 | 0 | 0.7 | 3.0.* |   |
 |1101 | 2969 | [Scroll To Key](/ThunderKdB/xall/xOther/2969-scroll-to-key/2969-scroll-to-key-details.html) | 1.0.1 | 2007-06-03 | 0 | 1.5 | 2.0.0.* |   |
 |1102 | 2994 | [TamilVisai (TamilKey)](/ThunderKdB/xall/xOther/2994-tamilvisai-tamilkey/2994-tamilvisai-tamilkey-details.html) | 0.4.3.1-sign | 2011-01-09 | 0 | 1.5 | 17.* |   |
 |1103 | 2215 | [SyncMab](/ThunderKdB/xall/xOther/2215-syncmab/2215-syncmab-details.html) | 3.1 | 2007-03-23 | 0 | 1.5b | 2.0.0.* |   |
@@ -1141,15 +1141,15 @@ body {
 |1114 | 579480 | [IT Next Consultant](/ThunderKdB/xall/xOther/579480-itnext/579480-itnext-details.html) | 1.0 | 2015-01-28 | 0 | 15.0 | 38.0a1 |   |
 |1115 | 710358 | [ConferenceCall.co.uk templates](/ThunderKdB/xall/xOther/710358-conferencecall-co-uk-templates/710358-conferencecall-co-uk-templates-details.html) | 1.3 | 2016-06-20 | 0 | 10.0 | 45.* |   |
 |1116 | 231 | [ConQuery](/ThunderKdB/xall/xOther/231-conquery/231-conquery-details.html) | 1.7.3 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
-|1117 | 3225 | [lernu-es](/ThunderKdB/xall/xOther/3225-lernu-es/3225-lernu-es-details.html) | 0.5.1 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
-|1118 | 3376 | [MailClassifier](/ThunderKdB/xall/xOther/3376-mailclassifier/3376-mailclassifier-details.html) | 2.1.0 | 2010-08-03 | 0 | 3.1 | 3.1.* |   |
-|1119 | 2334 | [DOM Inspector Linux](/ThunderKdB/xall/xOther/2334-dom-inspector-linux/2334-dom-inspector-linux-details.html) | 1.8.0.5 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
-|1120 | 873 | [Padma](/ThunderKdB/xall/xOther/873-padma/873-padma-details.html) | 0.4.15.1-sig | 2009-07-11 | 0 | 0.7 | 3.1.* |   |
-|1121 | 877 | [TB QuickMove Extension](/ThunderKdB/xall/xOther/877-tb-quickmove-extension/877-tb-quickmove-extension-details.html) | 0.4.0 | 2007-03-05 | 0 | 0.5 | 1.0+ |   |
-|1122 | 904 | [SMSalias MozClient](/ThunderKdB/xall/xOther/904-smsalias-mozclient/904-smsalias-mozclient-details.html) | 1.0.4 | 2007-03-05 | 0 | 0.5 | 1.5.0.* |   |
-|1123 | 921 | [StickyCharset](/ThunderKdB/xall/xOther/921-stickycharset/921-stickycharset-details.html) | 0.2.1 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
-|1124 | 979 | [Notary](/ThunderKdB/xall/xOther/979-notary/979-notary-details.html) | 0.2 | 2007-03-05 | 0 | 0.8 | 1.0+ |   |
-|1125 | 1704 | [RSS Linkify Subject](/ThunderKdB/xall/xOther/1704-rss-linkify-subject/1704-rss-linkify-subject-details.html) | 0.1 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
+|1117 | 873 | [Padma](/ThunderKdB/xall/xOther/873-padma/873-padma-details.html) | 0.4.15.1-sig | 2009-07-11 | 0 | 0.7 | 3.1.* |   |
+|1118 | 877 | [TB QuickMove Extension](/ThunderKdB/xall/xOther/877-tb-quickmove-extension/877-tb-quickmove-extension-details.html) | 0.4.0 | 2007-03-05 | 0 | 0.5 | 1.0+ |   |
+|1119 | 904 | [SMSalias MozClient](/ThunderKdB/xall/xOther/904-smsalias-mozclient/904-smsalias-mozclient-details.html) | 1.0.4 | 2007-03-05 | 0 | 0.5 | 1.5.0.* |   |
+|1120 | 921 | [StickyCharset](/ThunderKdB/xall/xOther/921-stickycharset/921-stickycharset-details.html) | 0.2.1 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
+|1121 | 979 | [Notary](/ThunderKdB/xall/xOther/979-notary/979-notary-details.html) | 0.2 | 2007-03-05 | 0 | 0.8 | 1.0+ |   |
+|1122 | 1704 | [RSS Linkify Subject](/ThunderKdB/xall/xOther/1704-rss-linkify-subject/1704-rss-linkify-subject-details.html) | 0.1 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
+|1123 | 4945 | [Book Text Mark](/ThunderKdB/xall/xOther/4945-book-text-mark/4945-book-text-mark-details.html) | 1.1.1.1-sign | 2009-07-15 | 0 | 0.3 | 0.3 |   |
+|1124 | 5224 | [Card Viewer Extended](/ThunderKdB/xall/xOther/5224-card-viewer-extended/5224-card-viewer-extended-details.html) | 1.0.0rc.0013 | 2009-04-08 | 0 | 2.0 | 2.0.0.* |   |
+|1125 | 5326 | [ThreadBubble](/ThunderKdB/xall/xOther/5326-threadbubble/5326-threadbubble-details.html) | 0.8 | 2008-08-12 | 0 | 2.0 | 3.0a2pre |   |
 |1126 | 3225 | [lernu-es](/ThunderKdB/xall/xOther/3225-lernu-es/3225-lernu-es-details.html) | 0.5.1 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
 |1127 | 3376 | [MailClassifier](/ThunderKdB/xall/xOther/3376-mailclassifier/3376-mailclassifier-details.html) | 2.1.0 | 2010-08-03 | 0 | 3.1 | 3.1.* |   |
 |1128 | 11023 | [vnotereader](/ThunderKdB/xall/xOther/11023-vnotereader/11023-vnotereader-details.html) | 0.1 | 2009-03-10 | 0 | 1.5 | 2.0.0.* |   |
@@ -1176,54 +1176,54 @@ body {
 |1149 | 348 | [Quickfile](/ThunderKdB/xall/xOther/348-quickfile/348-quickfile-details.html) | 0.17.0.0008 | 2007-03-05 | 0 | 1.5 | 3.0a1 |   |
 |1150 | 758 | [Move Search Items](/ThunderKdB/xall/xOther/758-move-search-items/758-move-search-items-details.html) | 0.0.6 | 2007-03-05 | 0 | 0.8 | 1.0+ |   |
 |1151 | 867 | [Jabberpresence](/ThunderKdB/xall/xOther/867-jabberpresence/867-jabberpresence-details.html) | 2.0.1 | 2007-03-05 | 0 | 0.9 | 1.5.0.* |   |
-|1152 | 125953 | [Mailing List Manager](/ThunderKdB/xall/xOther/125953-mailing-list-manager/125953-mailing-list-manager-details.html) | 0.3.0 | 2010-05-17 | 0 | 3.1b2pre | 3.2a1pre |   |
-|1153 | 146367 | [Color Source](/ThunderKdB/xall/xOther/146367-color-source/146367-color-source-details.html) | 0.6 | 2010-06-18 | 0 | 3.0 | 3.1.* |   |
-|1154 | 151 | [Show SMTP Username](/ThunderKdB/xall/xOther/151-show-smtp-username/151-show-smtp-username-details.html) | 0.2.1 | 2007-03-05 | 0 | 0.5 | 1.0 |   |
-|1155 | 246 | [Foobar Controls](/ThunderKdB/xall/xOther/246-foobar-controls/246-foobar-controls-details.html) | 0.3.6.1-sign | 2011-01-09 | 0 | 2.0 | 17.* |   |
-|1156 | 2569 | [Orb VideoMail](/ThunderKdB/xall/xOther/2569-orb-videomail/2569-orb-videomail-details.html) | 1.2006.831.1 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
-|1157 | 2824 | [KnujOn](/ThunderKdB/xall/xOther/2824-knujon/2824-knujon-details.html) | 2.0.0.0 | 2008-03-17 | 0 | 1.0 | 3.0b3pre |   |
-|1158 | 3887 | [docked JS-Console](/ThunderKdB/xall/xOther/3887-docked-js-console/3887-docked-js-console-details.html) | 0.1.2.1-sign | 2009-10-29 | 0 | 1.5 | 3.1a1pre |   |
-|1159 | 3983 | [DebugLogger](/ThunderKdB/xall/xOther/3983-debuglogger/3983-debuglogger-details.html) | 0.2.2 | 2007-03-05 | 0 | 0.9 | 3.0.* |   |
-|1160 | 4121 | [Show Address](/ThunderKdB/xall/xOther/4121-show-address/4121-show-address-details.html) | 0.0.5.1 | 2009-06-16 | 0 | 1.5 | 2.0.0.* |   |
-|1161 | 4298 | [中止ボタンがしいたけに見えて困る](/ThunderKdB/xall/xOther/4298-中止ボタンがしいたけに見えて困る/4298-中止ボタンがしいたけに見えて困る-details.html) | 0.3.3 | 2007-07-07 | 0 | 1.0 | 3.0a1 |   |
-|1162 | 4426 | [parolu](/ThunderKdB/xall/xOther/4426-parolu/4426-parolu-details.html) | 0.4.0.1-sign | 2010-07-19 | 0 | 3.0b1 | 10.* |   |
-|1163 | 307047 | [GuifiProxy Infocentre Santa Bàrbara](/ThunderKdB/xall/xOther/307047-guifiproxy-infocentre-santa/307047-guifiproxy-infocentre-santa-details.html) | 0.1.1-signed | 2011-04-14 | 0 | 2.0 | 3.3a2pre |   |
-|1164 | 491450 | [sepsis-console](/ThunderKdB/xall/xOther/491450-sepsis-console/491450-sepsis-console-details.html) | 0.4.1-signed | 2014-05-03 | 0 | 17.0 | 32.0 |   |
-|1165 | 522610 | [enMailing for Thunderbird](/ThunderKdB/xall/xOther/522610-enmailing-thunderbird/522610-enmailing-thunderbird-details.html) | 1.1.7 | 2015-11-29 | 0 | 24.1.1 | 38.* |   |
-|1166 | 547730 | [Mukparasi Korean-English Dictionary Fi](/ThunderKdB/xall/xOther/547730-mukparasi-korean-english-dicti/547730-mukparasi-korean-english-dicti-details.html) | 0.1.1-signed | 2014-10-01 | 0 | 3.0 | 35.* |   |
-|1167 | 566914 | [Wepware - Capture and Share Live Conte](/ThunderKdB/xall/xOther/566914-wepware-capture-and-share-live/566914-wepware-capture-and-share-live-details.html) | 1.0.6.1-sign | 2015-03-11 | 0 | 1.5 | 36.* |   |
-|1168 | 578230 | [P18X Protocol](/ThunderKdB/xall/xOther/578230-p18x/578230-p18x-details.html) | 1.1.1 | 2015-01-25 | 0 | 15.0 | 38.0a1 |   |
-|1169 | 479520 | [Remote Developer Tools Server](/ThunderKdB/xall/xOther/479520-remote-developer-tools-server/479520-remote-developer-tools-server-details.html) | 29.0.1-signe | 2014-01-09 | 0 | 29.0 | 31.* |   |
-|1170 | 602670 | [RadioGNU Now Playing](/ThunderKdB/xall/xOther/602670-radiognu/602670-radiognu-details.html) | 1.0 | 2015-04-10 | 0 | 31.0 | 40.0a1 |   |
-|1171 | 604782 | [gLOC for Thunderbird](/ThunderKdB/xall/xOther/604782-gloc-for-thunderbird/604782-gloc-for-thunderbird-details.html) | 1.1.0 | 2016-01-21 | 0 | 28.0 | 38.5.1 |   |
-|1172 | 607756 | [Archived-At](/ThunderKdB/xall/xOther/607756-archived-at/607756-archived-at-details.html) | 1.0.1 | 2016-01-06 | 0 | 31.0 | 38.* |   |
-|1173 | 389049 | [Asystent Nauki Angielskiego](/ThunderKdB/xall/xOther/389049-asystent-nauki-angielskiego/389049-asystent-nauki-angielskiego-details.html) | 0.5.1.1-sign | 2012-08-30 | 0 | 14.0 | 19.* |   |
+|1152 | 2260 | [Message Level Authentication](/ThunderKdB/xall/xOther/2260-message-level-authentication/2260-message-level-authentication-details.html) | 0.8.4 | 2007-11-06 | 0 | 1.5 | 2.0.0.* |   |
+|1153 | 307047 | [GuifiProxy Infocentre Santa Bàrbara](/ThunderKdB/xall/xOther/307047-guifiproxy-infocentre-santa/307047-guifiproxy-infocentre-santa-details.html) | 0.1.1-signed | 2011-04-14 | 0 | 2.0 | 3.3a2pre |   |
+|1154 | 336931 | [Archived Link](/ThunderKdB/xall/xOther/336931-archived-link/336931-archived-link-details.html) | 0.3 | 2011-08-24 | 0 | 3.0.* | 15.* |   |
+|1155 | 235806 | [Personasizer](/ThunderKdB/xall/xOther/235806-personasizer/235806-personasizer-details.html) | 0.1 | 2010-09-28 | 0 | 3.0b3 | 3.2a1pre |   |
+|1156 | 146367 | [Color Source](/ThunderKdB/xall/xOther/146367-color-source/146367-color-source-details.html) | 0.6 | 2010-06-18 | 0 | 3.0 | 3.1.* |   |
+|1157 | 161938 | [IMEStatus](/ThunderKdB/xall/xOther/161938-imestatus/161938-imestatus-details.html) | 0.6.1-signed | 2010-10-07 | 0 | 3.1 | 3.3a4pre |   |
+|1158 | 125953 | [Mailing List Manager](/ThunderKdB/xall/xOther/125953-mailing-list-manager/125953-mailing-list-manager-details.html) | 0.3.0 | 2010-05-17 | 0 | 3.1b2pre | 3.2a1pre |   |
+|1159 | 369855 | [rmIncomingDups](/ThunderKdB/xall/xOther/369855-rmincomingdups/369855-rmincomingdups-details.html) | 0.2 | 2012-05-15 | 0 | 11.0 | 20.* |   |
+|1160 | 5759 | [Attachment Reminder](/ThunderKdB/xall/xOther/5759-attachment-reminder/5759-attachment-reminder-details.html) | 0.3.10 | 2008-07-12 | 0 | 1.5 | 2.0.0.* |   |
+|1161 | 5773 | [Auto Resize JPEG](/ThunderKdB/xall/xOther/5773-auto-resize-jpeg/5773-auto-resize-jpeg-details.html) | 0.10.2 | 2011-12-13 | 0 | 1.5 | 3.2a1pre |   |
+|1162 | 3887 | [docked JS-Console](/ThunderKdB/xall/xOther/3887-docked-js-console/3887-docked-js-console-details.html) | 0.1.2.1-sign | 2009-10-29 | 0 | 1.5 | 3.1a1pre |   |
+|1163 | 3983 | [DebugLogger](/ThunderKdB/xall/xOther/3983-debuglogger/3983-debuglogger-details.html) | 0.2.2 | 2007-03-05 | 0 | 0.9 | 3.0.* |   |
+|1164 | 12873 | [ComposeRTF](/ThunderKdB/xall/xOther/12873-composertf/12873-composertf-details.html) | 1.0 | 2009-07-06 | 0 | 1.5 | 2.0.0.* |   |
+|1165 | 7543 | [Unifinder Views](/ThunderKdB/xall/xOther/7543-unifinder-views/7543-unifinder-views-details.html) | 0.1 | 2008-06-11 | 0 | 2.0a1 | 2.0.0.* |   |
+|1166 | 4121 | [Show Address](/ThunderKdB/xall/xOther/4121-show-address/4121-show-address-details.html) | 0.0.5.1 | 2009-06-16 | 0 | 1.5 | 2.0.0.* |   |
+|1167 | 4298 | [中止ボタンがしいたけに見えて困る](/ThunderKdB/xall/xOther/4298-中止ボタンがしいたけに見えて困る/4298-中止ボタンがしいたけに見えて困る-details.html) | 0.3.3 | 2007-07-07 | 0 | 1.0 | 3.0a1 |   |
+|1168 | 4426 | [parolu](/ThunderKdB/xall/xOther/4426-parolu/4426-parolu-details.html) | 0.4.0.1-sign | 2010-07-19 | 0 | 3.0b1 | 10.* |   |
+|1169 | 2569 | [Orb VideoMail](/ThunderKdB/xall/xOther/2569-orb-videomail/2569-orb-videomail-details.html) | 1.2006.831.1 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
+|1170 | 2824 | [KnujOn](/ThunderKdB/xall/xOther/2824-knujon/2824-knujon-details.html) | 2.0.0.0 | 2008-03-17 | 0 | 1.0 | 3.0b3pre |   |
+|1171 | 479520 | [Remote Developer Tools Server](/ThunderKdB/xall/xOther/479520-remote-developer-tools-server/479520-remote-developer-tools-server-details.html) | 29.0.1-signe | 2014-01-09 | 0 | 29.0 | 31.* |   |
+|1172 | 491450 | [sepsis-console](/ThunderKdB/xall/xOther/491450-sepsis-console/491450-sepsis-console-details.html) | 0.4.1-signed | 2014-05-03 | 0 | 17.0 | 32.0 |   |
+|1173 | 522610 | [enMailing for Thunderbird](/ThunderKdB/xall/xOther/522610-enmailing-thunderbird/522610-enmailing-thunderbird-details.html) | 1.1.7 | 2015-11-29 | 0 | 24.1.1 | 38.* |   |
 |1174 | 538928 | [Date on Thunderbird](/ThunderKdB/xall/xOther/538928-date-on-thunderbird/538928-date-on-thunderbird-details.html) | 0.1 | 2014-08-27 | 0 | 5.0 | 30.* |   |
-|1175 | 336931 | [Archived Link](/ThunderKdB/xall/xOther/336931-archived-link/336931-archived-link-details.html) | 0.3 | 2011-08-24 | 0 | 3.0.* | 15.* |   |
-|1176 | 566914 | [Wepware - Capture and Share Live Conte](/ThunderKdB/xall/xOther/566914-wepware-capture-and-share-live/566914-wepware-capture-and-share-live-details.html) | 1.0.6.1-sign | 2015-03-11 | 0 | 1.5 | 36.* |   |
-|1177 | 578230 | [P18X Protocol](/ThunderKdB/xall/xOther/578230-p18x/578230-p18x-details.html) | 1.1.1 | 2015-01-25 | 0 | 15.0 | 38.0a1 |   |
-|1178 | 602670 | [RadioGNU Now Playing](/ThunderKdB/xall/xOther/602670-radiognu/602670-radiognu-details.html) | 1.0 | 2015-04-10 | 0 | 31.0 | 40.0a1 |   |
-|1179 | 604782 | [gLOC for Thunderbird](/ThunderKdB/xall/xOther/604782-gloc-for-thunderbird/604782-gloc-for-thunderbird-details.html) | 1.1.0 | 2016-01-21 | 0 | 28.0 | 38.5.1 |   |
-|1180 | 607756 | [Archived-At](/ThunderKdB/xall/xOther/607756-archived-at/607756-archived-at-details.html) | 1.0.1 | 2016-01-06 | 0 | 31.0 | 38.* |   |
-|1181 | 547730 | [Mukparasi Korean-English Dictionary Fi](/ThunderKdB/xall/xOther/547730-mukparasi-korean-english-dicti/547730-mukparasi-korean-english-dicti-details.html) | 0.1.1-signed | 2014-10-01 | 0 | 3.0 | 35.* |   |
-|1182 | 653128 | [ThunderBird Ticker](/ThunderKdB/xall/xOther/653128-thunderbird-ticker/653128-thunderbird-ticker-details.html) | 1.0 | 2015-09-10 | 0 | 20.0 | 43.0 |   |
-|1183 | 162023 | [Directory Contact Tabs](/ThunderKdB/xall/xOther/162023-directory-contact-tabs/162023-directory-contact-tabs-details.html) | 1.0.1beta | 2010-09-07 | 0 | 3.0 | 3.1.* |   |
-|1184 | 273536 | [Reload Disabler](/ThunderKdB/xall/xOther/273536-reload-disabler/273536-reload-disabler-details.html) | 0.0.3 | 2011-07-08 | 0 | 3.0 | 31.* |   |
-|1185 | 274100 | [check-links](/ThunderKdB/xall/xOther/274100-check-links/274100-check-links-details.html) | 0.1 | 2011-01-18 | 0 | 3.0b3 | 3.2a1pre |   |
-|1186 | 275531 | [Cairo Dock Unread Count](/ThunderKdB/xall/xOther/275531-cairo-dock-unread-count/275531-cairo-dock-unread-count-details.html) | 0.6.4 | 2011-02-10 | 0 | 2.0 | 3.2a1pre |   |
-|1187 | 286370 | [IO.Translator](/ThunderKdB/xall/xOther/286370-iotranslator-1/286370-iotranslator-1-details.html) | 0.4.0.0.1-si | 2011-02-25 | 0 | 1.0 | 31.* |   |
-|1188 | 713 | [Preferential (New GUID)](/ThunderKdB/xall/xOther/713-preferential-new-guid/713-preferential-new-guid-details.html) | 0.8.2 | 2007-03-05 | 0 | 0.7 | 2.0b1 |   |
-|1189 | 755 | [Tb AutoSave Extension](/ThunderKdB/xall/xOther/755-tb-autosave-extension/755-tb-autosave-extension-details.html) | 0.0.96 | 2007-03-05 | 0 | 0.5 | 1.0+ |   |
-|1190 | 1055 | [FlatStyle for Thunderbird](/ThunderKdB/xall/xOther/1055-flatstyle-for-thunderbird/1055-flatstyle-for-thunderbird-details.html) | 0.9.2.6 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
-|1191 | 1550 | [Shift-Delete Controller](/ThunderKdB/xall/xOther/1550-shift-delete-controller/1550-shift-delete-controller-details.html) | 0.2.8 | 2007-05-27 | 0 | 0.7 | 2.0.0.* |   |
-|1192 | 110 | [Easy Get Mail Button](/ThunderKdB/xall/xOther/110-easy-get-mail-button/110-easy-get-mail-button-details.html) | 0.2.2 | 2007-03-05 | 0 | 0.5 | 1.0 |   |
-|1193 | 183 | [StockTicker](/ThunderKdB/xall/xOther/183-stockticker/183-stockticker-details.html) | 1.0.4 | 2007-03-05 | 0 | 0.9 | 3.0.* |   |
-|1194 | 226843 | [InGmane](/ThunderKdB/xall/xOther/226843-ingmane/226843-ingmane-details.html) | 0.2 | 2012-02-13 | 0 | 3.1 | 31.* |   |
-|1195 | 241027 | [Hidden Archive Prefs](/ThunderKdB/xall/xOther/241027-hidden-archive-prefs/241027-hidden-archive-prefs-details.html) | 0.1 | 2010-10-13 | 0 | 3.1 | 3.3a1pre |   |
-|1196 | 106452 | [CorrectLink](/ThunderKdB/xall/xOther/106452-correctlink/106452-correctlink-details.html) | 0.10 | 2010-04-21 | 0 | 2.0 | 3.3a4pre |   |
-|1197 | 11129 | [Timer Fire](/ThunderKdB/xall/xOther/11129-timer-fire/11129-timer-fire-details.html) | 1.6.2 | 2016-09-22 | 0 | 3.0a1 | 52.0a1 |   |
-|1198 | 11395 | [Notification Viewer](/ThunderKdB/xall/xOther/11395-notification-viewer/11395-notification-viewer-details.html) | 1.0.3beta | 2010-09-24 | 0 | 2.0 | 3.1.* |   |
-|1199 | 12422 | [中止ボタンがバッテン髪飾りに見えて困る](/ThunderKdB/xall/xOther/12422-yunocchi/12422-yunocchi-details.html) | 0.1.7.1-sign | 2011-02-05 | 0 | 1.0 | 3.1.* |   |
+|1175 | 547730 | [Mukparasi Korean-English Dictionary Fi](/ThunderKdB/xall/xOther/547730-mukparasi-korean-english-dicti/547730-mukparasi-korean-english-dicti-details.html) | 0.1.1-signed | 2014-10-01 | 0 | 3.0 | 35.* |   |
+|1176 | 653128 | [ThunderBird Ticker](/ThunderKdB/xall/xOther/653128-thunderbird-ticker/653128-thunderbird-ticker-details.html) | 1.0 | 2015-09-10 | 0 | 20.0 | 43.0 |   |
+|1177 | 602670 | [RadioGNU Now Playing](/ThunderKdB/xall/xOther/602670-radiognu/602670-radiognu-details.html) | 1.0 | 2015-04-10 | 0 | 31.0 | 40.0a1 |   |
+|1178 | 604782 | [gLOC for Thunderbird](/ThunderKdB/xall/xOther/604782-gloc-for-thunderbird/604782-gloc-for-thunderbird-details.html) | 1.1.0 | 2016-01-21 | 0 | 28.0 | 38.5.1 |   |
+|1179 | 607756 | [Archived-At](/ThunderKdB/xall/xOther/607756-archived-at/607756-archived-at-details.html) | 1.0.1 | 2016-01-06 | 0 | 31.0 | 38.* |   |
+|1180 | 566914 | [Wepware - Capture and Share Live Conte](/ThunderKdB/xall/xOther/566914-wepware-capture-and-share-live/566914-wepware-capture-and-share-live-details.html) | 1.0.6.1-sign | 2015-03-11 | 0 | 1.5 | 36.* |   |
+|1181 | 578230 | [P18X Protocol](/ThunderKdB/xall/xOther/578230-p18x/578230-p18x-details.html) | 1.1.1 | 2015-01-25 | 0 | 15.0 | 38.0a1 |   |
+|1182 | 389049 | [Asystent Nauki Angielskiego](/ThunderKdB/xall/xOther/389049-asystent-nauki-angielskiego/389049-asystent-nauki-angielskiego-details.html) | 0.5.1.1-sign | 2012-08-30 | 0 | 14.0 | 19.* |   |
+|1183 | 713 | [Preferential (New GUID)](/ThunderKdB/xall/xOther/713-preferential-new-guid/713-preferential-new-guid-details.html) | 0.8.2 | 2007-03-05 | 0 | 0.7 | 2.0b1 |   |
+|1184 | 755 | [Tb AutoSave Extension](/ThunderKdB/xall/xOther/755-tb-autosave-extension/755-tb-autosave-extension-details.html) | 0.0.96 | 2007-03-05 | 0 | 0.5 | 1.0+ |   |
+|1185 | 110 | [Easy Get Mail Button](/ThunderKdB/xall/xOther/110-easy-get-mail-button/110-easy-get-mail-button-details.html) | 0.2.2 | 2007-03-05 | 0 | 0.5 | 1.0 |   |
+|1186 | 183 | [StockTicker](/ThunderKdB/xall/xOther/183-stockticker/183-stockticker-details.html) | 1.0.4 | 2007-03-05 | 0 | 0.9 | 3.0.* |   |
+|1187 | 162023 | [Directory Contact Tabs](/ThunderKdB/xall/xOther/162023-directory-contact-tabs/162023-directory-contact-tabs-details.html) | 1.0.1beta | 2010-09-07 | 0 | 3.0 | 3.1.* |   |
+|1188 | 226843 | [InGmane](/ThunderKdB/xall/xOther/226843-ingmane/226843-ingmane-details.html) | 0.2 | 2012-02-13 | 0 | 3.1 | 31.* |   |
+|1189 | 241027 | [Hidden Archive Prefs](/ThunderKdB/xall/xOther/241027-hidden-archive-prefs/241027-hidden-archive-prefs-details.html) | 0.1 | 2010-10-13 | 0 | 3.1 | 3.3a1pre |   |
+|1190 | 106452 | [CorrectLink](/ThunderKdB/xall/xOther/106452-correctlink/106452-correctlink-details.html) | 0.10 | 2010-04-21 | 0 | 2.0 | 3.3a4pre |   |
+|1191 | 273536 | [Reload Disabler](/ThunderKdB/xall/xOther/273536-reload-disabler/273536-reload-disabler-details.html) | 0.0.3 | 2011-07-08 | 0 | 3.0 | 31.* |   |
+|1192 | 274100 | [check-links](/ThunderKdB/xall/xOther/274100-check-links/274100-check-links-details.html) | 0.1 | 2011-01-18 | 0 | 3.0b3 | 3.2a1pre |   |
+|1193 | 275531 | [Cairo Dock Unread Count](/ThunderKdB/xall/xOther/275531-cairo-dock-unread-count/275531-cairo-dock-unread-count-details.html) | 0.6.4 | 2011-02-10 | 0 | 2.0 | 3.2a1pre |   |
+|1194 | 286370 | [IO.Translator](/ThunderKdB/xall/xOther/286370-iotranslator-1/286370-iotranslator-1-details.html) | 0.4.0.0.1-si | 2011-02-25 | 0 | 1.0 | 31.* |   |
+|1195 | 310784 | [my site 1.0](/ThunderKdB/xall/xOther/310784-allow-facebook-youtube-and-/310784-allow-facebook-youtube-and--details.html) | completed.re | 2011-04-28 | 0 | 3.0b3 | 3.2a1pre |   |
+|1196 | 11395 | [Notification Viewer](/ThunderKdB/xall/xOther/11395-notification-viewer/11395-notification-viewer-details.html) | 1.0.3beta | 2010-09-24 | 0 | 2.0 | 3.1.* |   |
+|1197 | 12422 | [中止ボタンがバッテン髪飾りに見えて困る](/ThunderKdB/xall/xOther/12422-yunocchi/12422-yunocchi-details.html) | 0.1.7.1-sign | 2011-02-05 | 0 | 1.0 | 3.1.* |   |
+|1198 | 11129 | [Timer Fire](/ThunderKdB/xall/xOther/11129-timer-fire/11129-timer-fire-details.html) | 1.6.2 | 2016-09-22 | 0 | 3.0a1 | 52.0a1 |   |
+|1199 | 316899 | [Report](/ThunderKdB/xall/xOther/316899-report/316899-report-details.html) | 0.1 | 2011-05-20 | 0 | 1.0 | 2.0.0.* |   |
 |1200 | 325590 | [conceptERP Kontaktimport](/ThunderKdB/xall/xOther/325590-concepterp-kontaktimport/325590-concepterp-kontaktimport-details.html) | 0.6.1 | 2011-12-09 | 0 | 3.0 | 31.* |   |
 |1201 | 2913 | [Open all links](/ThunderKdB/xall/xOther/2913-open-all-links/2913-open-all-links-details.html) | 0.3.1 | 2007-04-26 | 0 | 1.5 | 3.0a1 |   |
 |1202 | 4935 | [NotTo](/ThunderKdB/xall/xOther/4935-notto/4935-notto-details.html) | 0.4 | 2007-07-15 | 0 | 1.5 | 2.0.0.* |   |
@@ -1244,12 +1244,12 @@ body {
 |1217 | 613880 | [Kapaza Feed](/ThunderKdB/xall/xOther/613880-kapaza-feed/613880-kapaza-feed-details.html) | 0.5 | 2017-02-02 | 0 | 45.4.0 | 45.* |   |
 |1218 | 617002 | [Rage Hoye](/ThunderKdB/xall/xOther/617002-rage-hoye/617002-rage-hoye-details.html) | 0.0.1 | 2015-05-25 | 0 | 31.0 | 38.* |   |
 |1219 | 638560 | [AFP protocol enabler](/ThunderKdB/xall/xOther/638560-afp-protocol-enabler/638560-afp-protocol-enabler-details.html) | 0.0.3 | 2015-08-11 | 0 | 38.1.0 | 39.0 |   |
-|1220 | 13565 | [Personas Windows Classic Statusbar](/ThunderKdB/xall/xOther/13565-personas-windows-classic-statu/13565-personas-windows-classic-statu-details.html) | 1.1.3 | 2009-12-17 | 0 | 3.0b1 | 3.0.* |   |
-|1221 | 14296 | [Submit Word (Romanian)](/ThunderKdB/xall/xOther/14296-submit-word-romanian/14296-submit-word-romanian-details.html) | 1.1.0.1-sign | 2010-03-31 | 0 | 2.0 | 3.3a4pre |   |
-|1222 | 10471 | [SendVia](/ThunderKdB/xall/xOther/10471-sendvia/10471-sendvia-details.html) | 1.0.1 | 2010-08-06 | 0 | 2.0 | 3.2a1pre |   |
-|1223 | 11608 | [Year View](/ThunderKdB/xall/xOther/11608-year-view/11608-year-view-details.html) | 0.1 | 2009-04-22 | 0 | 1.5 | 3.0b3pre |   |
-|1224 | 3573 | [ClassicFox](/ThunderKdB/xall/xOther/3573-classicfox/3573-classicfox-details.html) | 2.1.1 | 2008-06-07 | 0 | 2.0 | 3.0a2pre |   |
-|1225 | 3632 | [xmpp4moz](/ThunderKdB/xall/xOther/3632-xmpp4moz/3632-xmpp4moz-details.html) | 2009063010.0 | 2009-06-30 | 0 | 1.5 | 2.0.0.* |   |
+|1220 | 3573 | [ClassicFox](/ThunderKdB/xall/xOther/3573-classicfox/3573-classicfox-details.html) | 2.1.1 | 2008-06-07 | 0 | 2.0 | 3.0a2pre |   |
+|1221 | 3632 | [xmpp4moz](/ThunderKdB/xall/xOther/3632-xmpp4moz/3632-xmpp4moz-details.html) | 2009063010.0 | 2009-06-30 | 0 | 1.5 | 2.0.0.* |   |
+|1222 | 3864 | [Adhiyan](/ThunderKdB/xall/xOther/3864-adhiyan/3864-adhiyan-details.html) | 3.0.2.1-sign | 2008-03-12 | 0 | 1.5 | 17.* |   |
+|1223 | 214 | [DirSwitcher](/ThunderKdB/xall/xOther/214-dirswitcher/214-dirswitcher-details.html) | 0.1 | 2007-03-05 | 0 | 0.6 | 0.7.3 |   |
+|1224 | 507 | [Bork Bork Bork!](/ThunderKdB/xall/xOther/507-bork-bork-bork/507-bork-bork-bork-details.html) | 1.9 | 2010-02-08 | 0 | 1.5 | 2.0.0.* |   |
+|1225 | 1488 | [KbdMover](/ThunderKdB/xall/xOther/1488-kbdmover/1488-kbdmover-details.html) | 0.7.2 | 2007-03-05 | 0 | 0.8 | 1.5.0.* |   |
 |1226 | 3864 | [Adhiyan](/ThunderKdB/xall/xOther/3864-adhiyan/3864-adhiyan-details.html) | 3.0.2.1-sign | 2008-03-12 | 0 | 1.5 | 17.* |   |
 |1227 | 427888 | [TreeStat](/ThunderKdB/xall/xOther/427888-treestat/427888-treestat-details.html) | 0.3 | 2015-10-21 | 0 | 5.0 | 45.0 |   |
 |1228 | 404803 | [Яндекс.Метрика для Thunderbird](/ThunderKdB/xall/xOther/404803-yandexmetrika-for-thunderbi/404803-yandexmetrika-for-thunderbi-details.html) | 1.0.2 | 2012-10-26 | 0 | 10.0 | 31.* |   |
@@ -1300,31 +1300,31 @@ body {
 |1273 | 371036 | [Crmthdb Lite ZohoCRM Thunderbird Exten](/ThunderKdB/xall/xOther/371036-crmthdb-lite-zohocrm/371036-crmthdb-lite-zohocrm-details.html) | 1.0.1 | 2012-05-19 | 0 | 3.0 | 24.* |   |
 |1274 | 673737 | [Dialectic Dialer](/ThunderKdB/xall/xOther/673737-dialectic-dialer/673737-dialectic-dialer-details.html) | 1.4.7 | 2016-01-23 | 0 | 3.0 | 38.* |   |
 |1275 | 546216 | [Linagora ESN OpenPaaS](/ThunderKdB/xall/xOther/546216-linagora-esn/546216-linagora-esn-details.html) | 1.0.0 | 2014-09-25 | 0 | 31.0 | 31.* |   |
-|1276 | 8814 | [S/MIME Security for Multiple Identitie](/ThunderKdB/xall/xOther/8814-smime-security-for-multiple-id/8814-smime-security-for-multiple-id-details.html) | 0.3.0 | 2008-10-01 | 0 | 2.0 | 3.1.* |   |
-|1277 | 5736 | [Boomerang](/ThunderKdB/xall/xOther/5736-boomerang/5736-boomerang-details.html) | 1.01.0010 | 2008-12-22 | 0 | 1.5 | 3.0.* |   |
-|1278 | 2672 | [Habu](/ThunderKdB/xall/xOther/2672-habu/2672-habu-details.html) | 1.8.6.5 | 2009-01-10 | 0 | 1.0 | 3.1a1pre |   |
-|1279 | 3033 | [Paste Feed Location](/ThunderKdB/xall/xOther/3033-paste-feed-location/3033-paste-feed-location-details.html) | 0.4 | 2007-03-05 | 0 | 1.5 | 2.0a1 |   |
-|1280 | 2008 | [MR Tech - Gant Icon Pack](/ThunderKdB/xall/xOther/2008-mr-tech-gant-icon-pack/2008-mr-tech-gant-icon-pack-details.html) | 1.0.3 | 2007-03-05 | 0 | 1.5 | 3.0a1 |   |
-|1281 | 2285 | [Folder Selection (Thunderbird)](/ThunderKdB/xall/xOther/2285-folder-selection-thunderbird/2285-folder-selection-thunderbird-details.html) | 0.1.0 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
-|1282 | 3421 | [CallingID Link Advisor](/ThunderKdB/xall/xOther/3421-callingid-link-advisor/3421-callingid-link-advisor-details.html) | 1.0.0.37 | 2007-03-05 | 0 | 1.5 | 2.0b1 |   |
-|1283 | 3452 | [ConnSets](/ThunderKdB/xall/xOther/3452-connsets/3452-connsets-details.html) | 0.9.0.9 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
-|1284 | 3738 | [Lightning Multiweek View](/ThunderKdB/xall/xOther/3738-lightning-multiweek-view/3738-lightning-multiweek-view-details.html) | 0.0.2 | 2007-03-05 | 0 | 1.5 | 2.0b1 |   |
-|1285 | 1411 | [Scroll Menus On Drag](/ThunderKdB/xall/xOther/1411-scroll-menus-on-drag/1411-scroll-menus-on-drag-details.html) | 0.2.5 | 2007-03-05 | 0 | 1.0 | 1.5.0.* |   |
-|1286 | 1832 | [Tag the Bird](/ThunderKdB/xall/xOther/1832-tag-the-bird/1832-tag-the-bird-details.html) | 1.3 | 2007-09-07 | 0 | 2.0 | 2.0.0.* |   |
-|1287 | 472 | [Text size toolbar](/ThunderKdB/xall/xOther/472-text-size-toolbar/472-text-size-toolbar-details.html) | 0.6.2 | 2007-03-05 | 0 | 1.5 | 2.0.0.* |   |
-|1288 | 761 | [SendTools](/ThunderKdB/xall/xOther/761-sendtools/761-sendtools-details.html) | 0.4.1 | 2007-03-05 | 0 | 0.8 | 1.0+ |   |
-|1289 | 896 | [CruiseControl Monitor](/ThunderKdB/xall/xOther/896-cruisecontrol-monitor/896-cruisecontrol-monitor-details.html) | 0.9.8 | 2008-07-03 | 0 | 1.0 | 2.0.0.* |   |
-|1290 | 709887 | [ConferenceCall.nl templates](/ThunderKdB/xall/xOther/709887-conferencecall-nl-templates/709887-conferencecall-nl-templates-details.html) | 1.3 | 2016-06-20 | 0 | 10.0 | 45.* |   |
-|1291 | 329788 | [PassToScript extension](/ThunderKdB/xall/xOther/329788-passtoscript/329788-passtoscript-details.html) | 0.4 | 2011-11-04 | 0 | 3.0 | 8.0a1 |   |
-|1292 | 278843 | [DBus Notifications](/ThunderKdB/xall/xOther/278843-dbus-notifications/278843-dbus-notifications-details.html) | 0.2 | 2011-01-31 | 0 | 2.0 | 3.2a1pre |   |
-|1293 | 295288 | [Reply All Control](/ThunderKdB/xall/xOther/295288-reply-all-control/295288-reply-all-control-details.html) | 1.0 | 2011-03-17 | 0 | 3.1 | 3.1.* |   |
-|1294 | 348042 | [Datodo](/ThunderKdB/xall/xOther/348042-datodo/348042-datodo-details.html) | 1.0.1-signed | 2011-11-06 | 0 | 1.5 | 31.* |   |
-|1295 | 337558 | [Becky! Import](/ThunderKdB/xall/xOther/337558-becky-import/337558-becky-import-details.html) | 1.1.0 | 2011-10-24 | 0 | 7.0 | 7.* |   |
-|1296 | 249353 | [Splash!  （Firefox 4対応版）](/ThunderKdB/xall/xOther/249353-splash-compatible-version-of-f/249353-splash-compatible-version-of-f-details.html) | 2.0.2 | 2010-11-03 | 0 | 1.5 | 3.1.* |   |
-|1297 | 371036 | [Crmthdb Lite ZohoCRM Thunderbird Exten](/ThunderKdB/xall/xOther/371036-crmthdb-lite-zohocrm/371036-crmthdb-lite-zohocrm-details.html) | 1.0.1 | 2012-05-19 | 0 | 3.0 | 24.* |   |
-|1298 | 264090 | [Get An Account](/ThunderKdB/xall/xOther/264090-get-an-account/264090-get-an-account-details.html) | 1.0.4 | 2011-03-03 | 0 | 3.1 | 13.* |   |
-|1299 | 546216 | [Linagora ESN OpenPaaS](/ThunderKdB/xall/xOther/546216-linagora-esn/546216-linagora-esn-details.html) | 1.0.0 | 2014-09-25 | 0 | 31.0 | 31.* |   |
-|1300 | 561628 | [Dooth](/ThunderKdB/xall/xOther/561628-dooth/561628-dooth-details.html) | 1.0 | 2014-11-26 | 0 | 24.0 | 31.0 |   |
+|1276 | 561628 | [Dooth](/ThunderKdB/xall/xOther/561628-dooth/561628-dooth-details.html) | 1.0 | 2014-11-26 | 0 | 24.0 | 31.0 |   |
+|1277 | 572616 | [pass-manager](/ThunderKdB/xall/xOther/572616-pass-manager/572616-pass-manager-details.html) | 0.6.1 | 2017-09-20 | 0 | 25.* | 52.* |   |
+|1278 | 709887 | [ConferenceCall.nl templates](/ThunderKdB/xall/xOther/709887-conferencecall-nl-templates/709887-conferencecall-nl-templates-details.html) | 1.3 | 2016-06-20 | 0 | 10.0 | 45.* |   |
+|1279 | 583794 | [Innovativa Group](/ThunderKdB/xall/xOther/583794-innovativa/583794-innovativa-details.html) | 1.0 | 2015-02-08 | 0 | 15.0 | 38.0a1 |   |
+|1280 | 49357 | [KDE Wallet password integration](/ThunderKdB/xall/xOther/49357-kde-wallet-password-integratio/49357-kde-wallet-password-integratio-details.html) | 2.4.1-signed | 2014-10-17 | 0 | 13.0 | 33.* |   |
+|1281 | 50723 | [TB Tabloc](/ThunderKdB/xall/xOther/50723-tb-tabloc/50723-tb-tabloc-details.html) | 0.1.0 | 2009-11-21 | 0 | 3.0 | 3.1.* |   |
+|1282 | 57295 | [Read2Me "speechify the web"](/ThunderKdB/xall/xOther/57295-read2me-speechify-the-web/57295-read2me-speechify-the-web-details.html) | 1.7.4 | 2016-06-15 | 0 | 0.9 | 50.0 |   |
+|1283 | 62573 | [SUNBIRD Button-**32** bit version-for ](/ThunderKdB/xall/xOther/62573-sunbird-button-32-bit-version-/62573-sunbird-button-32-bit-version--details.html) | 1.3032bit | 2010-09-06 | 0 | 2.0 | 3.3a1pre |   |
+|1284 | 278843 | [DBus Notifications](/ThunderKdB/xall/xOther/278843-dbus-notifications/278843-dbus-notifications-details.html) | 0.2 | 2011-01-31 | 0 | 2.0 | 3.2a1pre |   |
+|1285 | 295288 | [Reply All Control](/ThunderKdB/xall/xOther/295288-reply-all-control/295288-reply-all-control-details.html) | 1.0 | 2011-03-17 | 0 | 3.1 | 3.1.* |   |
+|1286 | 110114 | [Nepali Patro](/ThunderKdB/xall/xOther/110114-nepali-patro-110114/110114-nepali-patro-110114-details.html) | 1.0.5.1-sign | 2010-04-01 | 0 | 2.0 | 9.0a1 |   |
+|1287 | 249353 | [Splash!  （Firefox 4対応版）](/ThunderKdB/xall/xOther/249353-splash-compatible-version-of-f/249353-splash-compatible-version-of-f-details.html) | 2.0.2 | 2010-11-03 | 0 | 1.5 | 3.1.* |   |
+|1288 | 264090 | [Get An Account](/ThunderKdB/xall/xOther/264090-get-an-account/264090-get-an-account-details.html) | 1.0.4 | 2011-03-03 | 0 | 3.1 | 13.* |   |
+|1289 | 6617 | [SMS Sidebar](/ThunderKdB/xall/xOther/6617-sms-sidebar/6617-sms-sidebar-details.html) | 0.9b2 | 2008-05-22 | 0 | 2.0 | 3.0a2pre |   |
+|1290 | 4500 | [Options Toolbar Button](/ThunderKdB/xall/xOther/4500-options-toolbar-button/4500-options-toolbar-button-details.html) | 0.4 | 2007-07-10 | 0 | 1.5 | 3.0a1 |   |
+|1291 | 4501 | [Print Preview Toolbar Button](/ThunderKdB/xall/xOther/4501-print-preview-toolbar-button/4501-print-preview-toolbar-button-details.html) | 0.1 | 2007-03-05 | 0 | 1.5 | 2.0b1 |   |
+|1292 | 4829 | [about:kittens](/ThunderKdB/xall/xOther/4829-aboutkittens/4829-aboutkittens-details.html) | 0.5.080816 | 2008-08-16 | 0 | 1.5 | 3.3a1pre |   |
+|1293 | 5066 | [Custom Buttons²](/ThunderKdB/xall/xOther/5066-custom-buttons²/5066-custom-buttons²-details.html) | 3.1.0 | 2009-09-23 | 0 | 2.0 | 3.1a1pre |   |
+|1294 | 2672 | [Habu](/ThunderKdB/xall/xOther/2672-habu/2672-habu-details.html) | 1.8.6.5 | 2009-01-10 | 0 | 1.0 | 3.1a1pre |   |
+|1295 | 3033 | [Paste Feed Location](/ThunderKdB/xall/xOther/3033-paste-feed-location/3033-paste-feed-location-details.html) | 0.4 | 2007-03-05 | 0 | 1.5 | 2.0a1 |   |
+|1296 | 2008 | [MR Tech - Gant Icon Pack](/ThunderKdB/xall/xOther/2008-mr-tech-gant-icon-pack/2008-mr-tech-gant-icon-pack-details.html) | 1.0.3 | 2007-03-05 | 0 | 1.5 | 3.0a1 |   |
+|1297 | 2285 | [Folder Selection (Thunderbird)](/ThunderKdB/xall/xOther/2285-folder-selection-thunderbird/2285-folder-selection-thunderbird-details.html) | 0.1.0 | 2007-03-05 | 0 | 1.5 | 1.5.0.* |   |
+|1298 | 8789 | [Colorify Unread Watched NNTP](/ThunderKdB/xall/xOther/8789-colorify-unread-watched-nntp/8789-colorify-unread-watched-nntp-details.html) | 0.1.6 | 2008-09-07 | 0 | 2.0.0.8 | 2.0.0.* |   |
+|1299 | 8814 | [S/MIME Security for Multiple Identitie](/ThunderKdB/xall/xOther/8814-smime-security-for-multiple-id/8814-smime-security-for-multiple-id-details.html) | 0.3.0 | 2008-10-01 | 0 | 2.0 | 3.1.* |   |
+|1300 | 3421 | [CallingID Link Advisor](/ThunderKdB/xall/xOther/3421-callingid-link-advisor/3421-callingid-link-advisor-details.html) | 1.0.0.37 | 2007-03-05 | 0 | 1.5 | 2.0b1 |   |
 |1301 | 278843 | [DBus Notifications](/ThunderKdB/xall/xOther/278843-dbus-notifications/278843-dbus-notifications-details.html) | 0.2 | 2011-01-31 | 0 | 2.0 | 3.2a1pre |   |
 |1302 | 295288 | [Reply All Control](/ThunderKdB/xall/xOther/295288-reply-all-control/295288-reply-all-control-details.html) | 1.0 | 2011-03-17 | 0 | 3.1 | 3.1.* |   |
 |1303 | 110114 | [Nepali Patro](/ThunderKdB/xall/xOther/110114-nepali-patro-110114/110114-nepali-patro-110114-details.html) | 1.0.5.1-sign | 2010-04-01 | 0 | 2.0 | 9.0a1 |   |

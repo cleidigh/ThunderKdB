@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 16024,
+    "average_daily_users": 15858,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -18,26 +18,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2470695,
+        "id": 2472747,
         "compatibility": {
             "thunderbird": {
                 "max": "68.*",
                 "min": "60.5"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/exquilla-exchange-web-services/versions/2470695",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/exquilla-exchange-web-services/versions/2472747",
         "files": [
             {
-                "id": 1013757,
-                "created": "2019-06-28T21:58:02Z",
-                "hash": "sha256:8ccceb7bcf382642ef1b389c0221028626576db46ffafc5788fa51295ba569c0",
+                "id": 1015845,
+                "created": "2019-10-14T13:23:20Z",
+                "hash": "sha256:86503eeb3fe46fcfee311754166e9d83cef808521fc02a475b784cc38a5a6af8",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 390897,
+                "size": 392113,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1013757/exquilla_for_exchange-68.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015845/exquilla_for_exchange-68.0.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,12 +50,12 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "* Reworked the addon to be compatible with Thunderbird 68 beta 2\n* Also still compatible with Thunderbird 60\n* Attention: Paid license required.",
+            "en-US": "- Windows: Grey box at the top left fixed from ExQuilla side. This is a Thunderbird regression, see bug 1587930\n- Show errors while contacting license server during manual license check\n- Fix other bugs",
             "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/exquilla-exchange-web-services/versions/68.0.1",
-        "version": "68.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/exquilla-exchange-web-services/versions/68.0.3",
+        "version": "68.0.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -78,17 +78,17 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": false,
-    "last_updated": "2019-07-04T07:54:55Z",
+    "last_updated": "2019-10-14T13:35:31Z",
     "name": {
         "en-US": "ExQuilla for Exchange"
     },
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.12661,
-        "count": 101,
-        "average": 4.1386,
-        "text_count": 101
+        "bayesian_average": 4.12296,
+        "count": 104,
+        "average": 4.1346,
+        "text_count": 104
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/exquilla-exchange-web-services/reviews/",
     "requires_payment": true,
@@ -115,7 +115,9 @@
         "ext_comp": {
             "mext": true,
             "comp68": true,
-            "comp61plus": true
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2019-06-28T21:58:02Z"
         }
     }
 }

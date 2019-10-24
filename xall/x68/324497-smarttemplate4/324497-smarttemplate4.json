@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 13275,
+    "average_daily_users": 12798,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -27,26 +27,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472647,
+        "id": 2472764,
         "compatibility": {
             "thunderbird": {
                 "max": "69.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2472647",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2472764",
         "files": [
             {
-                "id": 1015728,
-                "created": "2019-09-20T13:42:06Z",
-                "hash": "sha256:dfbf3685a27ad4ed6276854ab37b20431e779d9903183bf298b67e9384aa437a",
+                "id": 1015862,
+                "created": "2019-10-20T12:41:59Z",
+                "hash": "sha256:27850c4bfca318e7820bdd86b1cf8178c07731dede83e61098ef4912e931ae70",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 622921,
+                "size": 628998,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015728/smarttemplate4-2.3.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015862/smarttemplate4-2.4.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -56,14 +56,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.3.1"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.4.1"
         },
         "release_notes": {
-            "en-US": "<b>2.3.1 Maintenance version with important fixes for the new file templates feature.</b>\n\nRelease video - showcases the new file templates feature: <a href=\"https://youtu.be/AWdZWB0_ym0\" rel=\"nofollow\">https://youtu.be/AWdZWB0_ym0</a>\n\n<b>Improvements</b>\n<ul><li>2.3.1 - Improved handling of non-working Stationery in Thunderbird 68. You can now jump straight into configuring file templates and \"support stationery\" will be automatically disabled if it cannot be run in the current Tb version.</li><li>[<a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/8\" rel=\"nofollow\">issue #8</a>] Support File Templates - to replace Stationery from Thunderbird 68 forward. \n\nI have repeatedly reached out to the author of the excellent Stationery Add-on over the last 8 months, but unfortunately did not get any reply. I also attempted to patch it for Thunderbird68 but it is just too much work. (I estimate 2-3 man weeks)\n\nSmartTemplate⁴ still supports it, but it looks like it will stop working as soon as Thunderbird 68 lands in August / September 2019; therefore we need another solution to be able to use ad-hoc templates in the form of HTML files.\n\nThe template management system will be tightly integrated into the familiar SmartTemplate⁴ settings interface, as a separate entry in the Accounts drop-down.</li><li>[v2.3.1] Fixed <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/14\" rel=\"nofollow\">[issue 14]</a>: If Lightning is not installed in Thunderbird 68, currently the new \"file templates\" function will not load the template, but may open 2 composer windows instead.</li><li>[v2.3.1] Fixed <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/15\" rel=\"nofollow\">[issue 15]</a>: file templates only work on an account if the box <i>Apply following template</i> is active.</li><li><a href=\"https://www.mozdev.org/bugs/show_bug.cgi?id=26689\" rel=\"nofollow\">[Bug 26689]</a> New function to set E-mail priority\n\n Add a function to set the priority of the composed Email.\n\nExamples:\n\n%header.set(priority,highest)%\n%header.set(priority,high)%\n%header.set(priority,normal)%\n%header.set(priority,low)%\n%header.set(priority,lowest)%</li></ul><b>Known Issues</b>\n<ul><li> You have to disable the option <i>Global Settings</i>»<i>Global Settings</i>»<i>Advanced Functions</i>»<i>Support Stationery Add-on</i>.\nI have raised <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/13\" rel=\"nofollow\">issue 13</a> to handle this bug.</li></ul><b>Bug Fixes</b>\n<ul><li>Fixed a problem with the Czech translation file that caused an error when trying to display the SmartTemplate Settings dialog.</li></ul>"
+            "en-US": "<b>2.4.1 Halloween version - with important fixes for the new file templates feature.</b>\n\nVideo for Ex-Stationery users - showcases the new file templates feature: <a href=\"https://youtu.be/AWdZWB0_ym0\" rel=\"nofollow\">https://youtu.be/AWdZWB0_ym0</a>\n\n<b>Improvements</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/17\" rel=\"nofollow\">[issue 17]</a> Add %spellcheck()% variable for changing spellchecker to a different language.\n\n%spellcheck(language)%\n\nThis is the new variable to switch the spell checked to a different language. language can be any locale string of a dictionary that is already installed, e.g. en, de, en-GB etc.</li></ul><b>Bug Fixes</b>\n<ul><li> <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/16\" rel=\"nofollow\">[issue 16]</a> In some cases, images in signature triggered the \"blocked file\" warning.  The latest version of SmartTemplate⁴ will now parse the signature and replace the  file-based image source with a base64 encoded data link to avoid this warning. </li><li> <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/19\" rel=\"nofollow\">[issue 19]</a> File templates can generate unexpected line breaks, and contained images may break. This can happen if the option \"replacing line breaks with &lt;br&gt;\" is active in the corresponding account template. </li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.3.1",
-        "version": "2.3.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.4.1",
+        "version": "2.4.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -91,7 +91,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-20T13:46:51Z",
+    "last_updated": "2019-10-21T10:07:53Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",
@@ -314,7 +314,7 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.5901,
+        "bayesian_average": 4.59012,
         "count": 57,
         "average": 4.614,
         "text_count": 57
