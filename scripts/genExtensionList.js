@@ -141,8 +141,9 @@ function genExtensionListFromJson(extsJson, report) {
 		// 
 		if (extJson.xpilib === undefined) {
 			console.debug('Compatibility UD: ' + extJson.id);
-			// console.debug(extJson);
+			console.debug(extJson);
 			extJson.xpilib = {};
+			extJson.xpilib.ext_comp = {compOther: true};
 
 		} else {
 		console.debug('Extension ' + extJson.id + ' '+ JSON.stringify(extJson.xpilib.ext_comp));
@@ -326,5 +327,5 @@ let extsJson = fs.readJSONSync(extsAllJsonFileName);
 genExtensionListFromJson(extsJson, reports.tb68);
 genExtensionListFromJson(extsJson, reports.tb60);
 genExtensionListFromJson(extsJson, reports.tb60Only);
-// genExtensionListFromJson(extsJson, reports.all);
+genExtensionListFromJson(extsJson, reports.all);
 

@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 37560,
+    "average_daily_users": 37694,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -27,30 +27,26 @@
     },
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6MLGTSVTYGGJA",
     "current_version": {
-        "id": 2472733,
+        "id": 2472786,
         "compatibility": {
-            "seamonkey": {
-                "max": "2.57.*",
-                "min": "2.3"
-            },
             "thunderbird": {
-                "max": "70.*",
-                "min": "6.0"
+                "max": "*",
+                "min": "67.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailredirect/versions/2472733",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailredirect/versions/2472786",
         "files": [
             {
-                "id": 1015829,
-                "created": "2019-10-09T21:11:58Z",
-                "hash": "sha256:d13d3559bea0690d68fd64cbb0ba0b97deeeeec55380912dcefe1313ebc28069",
+                "id": 1015888,
+                "created": "2019-10-26T12:22:44Z",
+                "hash": "sha256:c0bef75220366295b1ad49ac7104f8f3f949d9b1c98021e20ac263fb384adb0e",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 377327,
+                "size": 377334,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015829/mail_redirect-0.10.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015888/mail_redirect-0.10.6-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -63,11 +59,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "<strong>Bug fixes</strong>\n<ul>  <li>Fix address completion issue with Cardbook add-on for Thunderbird 68</li>  <li>Fix compatibility issue with Conversations add-on</li>  <li>Fix Mail Redirect toolbar display and customization for Thunderbird 70.0a1</li></ul>See also the release notes for <a href=\"https://addons.thunderbird.net/thunderbird/addon/mailredirect/versions/0.10.4\" rel=\"nofollow\">version 0.10.4</a>."
+            "en-US": "<strong>Bug fixes</strong>\n<ul>  <li>Fix bug with exiting full screen mode on Mac</li></ul>See also the release notes for <a href=\"https://addons.thunderbird.net/thunderbird/addon/mailredirect/versions/0.10.5\" rel=\"nofollow\">version 0.10.5</a>."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailredirect/versions/0.10.5",
-        "version": "0.10.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailredirect/versions/0.10.6",
+        "version": "0.10.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -94,7 +90,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-10-09T21:14:49Z",
+    "last_updated": "2019-10-30T01:02:28Z",
     "name": {
         "el": "Mail Redirect",
         "ca": "Mail Redirect",
@@ -395,11 +391,11 @@
     "weekly_downloads": 949,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp60": true,
-            "comp61plus": true
+            "comp60pv": true,
+            "comp60pv_date": "2018-01-29T12:25:50Z"
         }
     }
 }
