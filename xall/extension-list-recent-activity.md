@@ -14,7 +14,7 @@ body {
 <div class="search-banner">	
 	<img class="banner-image" src='/ThunderKdB/docs/images/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" />
-	<label class="banner-header">Extensions: All (23)</label>
+	<label class="banner-header">Extensions: 2 Week Activity&nbsp; (23)</label>
 	<label class="banner-header-rt">2019-11-07</label>
 
 </div>
@@ -25,7 +25,7 @@ body {
 
 | # | Id | Name | Ver | Date | Users | Min | Max | Compatibility |
 |---: |---: |---|---: |---: |---: |---: |---: |---|
-|1 | 2313 | [Lightning](/ThunderKdB/xall/xOther/2313-lightning/2313-lightning-details.html) | 68.2.1 | 2019-11-04 | 6971650 | 68.2.1 | 68.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
+|1 | 2313 | [Lightning](/ThunderKdB/xall/x68/2313-lightning/2313-lightning-details.html) | 68.2.1 | 2019-11-04 | 6971650 | 68.2.1 | 68.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) |
 |3 | 4631 | [Provider for Google Calendar](/ThunderKdB/xall/x68/4631-provider-for-google-calendar/4631-provider-for-google-calendar-details.html) | 68.2.1 | 2019-11-04 | 294415 | 68.0 | * |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
 |6 | 71 | [Enigmail](/ThunderKdB/xall/x68/71-enigmail/71-enigmail-details.html) | 2.1.3 | 2019-10-30 | 120286 | 68.0a1 | 68.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png) |
 |7 | 640 | [Quicktext](/ThunderKdB/xall/x68/640-quicktext/640-quicktext-details.html) | 2.6 | 2019-11-01 | 101388 | 68.0 | 68.* |  ![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png) ![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png) |
