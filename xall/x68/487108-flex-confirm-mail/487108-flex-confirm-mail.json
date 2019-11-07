@@ -1,0 +1,140 @@
+{
+    "id": 487108,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 19267,
+    "categories": {
+        "thunderbird": [
+            "composition",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2472713,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/versions/2472713",
+        "files": [
+            {
+                "id": 1015806,
+                "created": "2019-10-04T08:54:10Z",
+                "hash": "sha256:cbdd6ffb92d9a0c7749d22f5f23cb54caa7a7c49ae46d8e55e7a265ba4748a2c",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 143338,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015806/flex_confirm_mail-2.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3996,
+            "name": {
+                "en-US": "MPL1.1"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/license/2.1"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/versions/2.1",
+        "version": "2.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "# Flex Confirm Mail\n\nThis is an extended version of the addon \"Confirm Mail\". You can define \"exceptions\" for confirmation.\n\n## Exceptional Domains\n\nYou can define exceptions of \"foreign\" domains, via the configuration dialog or the preference `net.nyail.tanabec.confirm-mail.exceptional-domains`. If you put some domains to the list and you try to send a mail to an address listed in the exceptional domains list, then an extra confirmation dialog will be shown. The message of the confirmation dialog can be customized via two preferences: `net.nyail.tanabec.confirm-mail.exceptionalDomain.title` and `net.nyail.tanabec.confirm-mail.exceptionalDomain.message`. It will be useful in a case like: your SMTP server always encrypts your mail automatically but there are some exceptions.\n\n## Exceptional Suffixes\n\nYou can define exceptions of attachments, via the configuration dialog or the preference `net.nyail.tanabec.confirm-mail.exceptional-suffixes`. If you put some \"extension\"s to the list and you try to send a mail with an attachment including a suffix listed in the preference, then an extra confirmation dialog will be shown. The message of the confirmation dialog can be customized via two preferences: `net.nyail.tanabec.confirm-mail.exceptionalSuffix.title` and `net.nyail.tanabec.confirm-mail.exceptionalSuffix.message`. It will be useful in a case like: your SMTP server always encrypts attachments but there are some exceptions.",
+        "ja": "# Flex Confirm Mail\n\nこのアドオンは「Confirm Mail」の改造版です。メール送信時の確認の「例外」を定義する事ができます。\n\n## 例外のドメイン\n\n設定ダイアログ、もしくは設定項目の `net.nyail.tanabec.confirm-mail.exceptional-domains` を使って組織外のドメインの例外を定義する事ができます。\nこのリストにドメインを登録しておくと、そのリストに含まれる例外のドメイン宛のメールを送ろうとした場合に、追加の確認ダイアログが表示されるようになります。\n確認のメッセージは文字列型の設定 `net.nyail.tanabec.confirm-mail.exceptionalDomain.title` と `net.nyail.tanabec.confirm-mail.exceptionalDomain.message` で変更できます。\nこれは、SMTPサーバが常に外部ドメイン宛のメールを暗号化するが、希に暗号化せずに送らなければならない例外のドメインがある、といった場合に利用できます。\n\n## 例外の拡張子\n\n設定ダイアログ、もしくは設定項目の `net.nyail.tanabec.confirm-mail.exceptional-suffixes` を使って添付ファイルの拡張子の例外を定義する事ができます。\nこのリストに拡張子を登録しておくと、そのリストに含まれる拡張子のファイルを添付したメールを送ろうとした場合に、追加の確認ダイアログが表示されるようになります。\n確認のメッセージは文字列型の設定 `net.nyail.tanabec.confirm-mail.exceptionalSuffix.title` と `net.nyail.tanabec.confirm-mail.exceptionalSuffix.message` で変更できます。\nこれは、SMTPサーバが常に添付ファイルを暗号化するが、希に暗号化せずに送らなければならない例外のドメインがある、といった場合に利用できます。"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/edit",
+    "guid": "flexible-confirm-mail@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/clear-code/flex-confirm-mail",
+        "ja": "https://github.com/clear-code/flex-confirm-mail"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/alerts-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/alerts-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/alerts-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-11-06T12:28:27Z",
+    "name": {
+        "en-US": "Flex Confirm Mail",
+        "ja": "Flex Confirm Mail"
+    },
+    "previews": [
+        {
+            "id": 126684,
+            "caption": {
+                "en-US": "Configuration dialog"
+            },
+            "image_size": [
+                407,
+                525
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/126/126684.png?modified=1530209069",
+            "thumbnail_size": [
+                155,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/126/126684.png?modified=1530209069"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.49835,
+        "count": 6,
+        "average": 3.6667,
+        "text_count": 6
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/487108",
+    "slug": "flex-confirm-mail",
+    "status": "public",
+    "summary": {
+        "en-US": "Confirm mail address and attachments based on flexible rules.",
+        "ja": "柔軟なルールに基づいて、宛先のメールアドレスや添付ファイルに対する確認を表示する事ができます。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/clear-code/flex-confirm-mail/issues"
+    },
+    "tags": [
+        "attachment",
+        "compose",
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/",
+    "weekly_downloads": 243,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp60pv": true,
+            "comp60pv_date": "2018-05-08T08:33:36Z"
+        }
+    }
+}

@@ -1,0 +1,166 @@
+{
+    "id": 987670,
+    "authors": [
+        {
+            "id": 165138,
+            "name": "Dillinger",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dillinger/",
+            "username": "dillinger",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 115,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2472711,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remove-duplicates/versions/2472711",
+        "files": [
+            {
+                "id": 1015804,
+                "created": "2019-10-04T01:52:47Z",
+                "hash": "sha256:ce4c7482779a91c20f5be79c250b7a63dcf7fb786865bee913a0ebe2ac7b2d86",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 51444,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015804/remove_duplicates-1.5-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Fixed de-LU and es-ES locales."
+        },
+        "reviewed": "2019-11-06T12:45:59Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/versions/1.5",
+        "version": "1.5"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This is the abandoned <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicate-messages/\" rel=\"nofollow\">Remove Duplicate Messages</a> add-on, rewritten for Thunderbird 68 and higher.\n\nIf you have duplicate messages (e.g. from merging folders or downloading messages several times) you can use this tool to find and remove them by choosing \"Remove Duplicate Messages\" from the context menu.\n\nIt allows you to configure what you want to compare (Sender, Message-ID, Subject etc.).\n\nFeatures :\n* Check subfolders.\n* Examine duplicates before deleting them.\n* Manually adjust the selection of messages to be deleted.\n* Supported Languages: en-US, de-DE, de-LU, es-ES, fr-FR, it-IT, ja-JP, nl-NL, pt-BR, ru-RU, uk-UA\n* Easy to use and fast (1000 messages per second).\n* Optional automatic deletion (without the dialog showing the duplicates, use with care!).\n* Optionally keep either the bigger, smaller, unread or first or last found message.\n\nBugs:\n* Comparing messages by source or line count is still buggy, could mark messages falsely as duplicates.\nDon't use automatic deletion when comparing only by source or line count!\n* When selecting both a subfolder and its parent, all messages in the subfolder will be marked as duplicates.\nDon't select both a subfolder and its parent!"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remove-duplicates/edit",
+    "guid": "removedupes@dillinger",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987670-64.png?modified=bbd4e173",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987670-32.png?modified=bbd4e173",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987670-64.png?modified=bbd4e173"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-11-06T12:45:59Z",
+    "name": {
+        "en-US": "Remove Duplicates"
+    },
+    "previews": [
+        {
+            "id": 205809,
+            "caption": {
+                "en-US": "Duplicates"
+            },
+            "image_size": [
+                730,
+                526
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205809.png?modified=1570032850",
+            "thumbnail_size": [
+                278,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205809.png?modified=1570032850"
+        },
+        {
+            "id": 205808,
+            "caption": {
+                "en-US": "Options"
+            },
+            "image_size": [
+                546,
+                327
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205808.png?modified=1570032850",
+            "thumbnail_size": [
+                320,
+                192
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205808.png?modified=1570032850"
+        },
+        {
+            "id": 205807,
+            "caption": {
+                "en-US": "About"
+            },
+            "image_size": [
+                334,
+                312
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205807.png?modified=1570032846",
+            "thumbnail_size": [
+                214,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205807.png?modified=1570032846"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.94782,
+        "count": 3,
+        "average": 4.3333,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987670",
+    "slug": "remove-duplicates",
+    "status": "public",
+    "summary": {
+        "en-US": "Removes duplicate messages"
+    },
+    "support_email": {
+        "en-US": "dillinger@kpnmail.nl"
+    },
+    "support_url": null,
+    "tags": [
+        "duplicates",
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true
+        }
+    }
+}

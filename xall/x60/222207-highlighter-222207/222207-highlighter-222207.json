@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/3/3845/3845826.png?modified=1460111360"
         }
     ],
-    "average_daily_users": 11008,
+    "average_daily_users": 10840,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -85,7 +85,7 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>I am working on a version for Thunderbird 68. I will keep you posted. In the mean time, use Thunderbird 60, or another software</strong>\n\nThis addon add a dropdown menu to the format toolbar inside the compose window, to quickly highlight the current selection.\nStandard colours are configured: yellow, cyan, green, pink, red, and also light and dark grey.\nThis first version is basic, but should be sufficient for the majority of users.\nOnce you have chosen an highlight colour in the drop down menu, you can just click on the button again to use the last colour.\n\nTo remove the highlight state of a block, simply click inside the block, and select clear from the dropdown menu. To remove the highlight state of many blocks at once, select the block that contains all highlighted elements, and select the clear entry in the drop down.\n\nThe source code for the last version can e downloaded on <a href=\"https://github.com/arodier/Highlighter\" rel=\"nofollow\">github</a>."
+        "en-US": "<strong>I am trying to work on a version for Thunderbird 68. I will keep you posted. In the mean time, use Thunderbird 60, or another software.</strong>.\n\nNovember 2019, the situation is still the same. I list it here, so people can understand:\n<ul><li>No single entry points to Thunderbird addons development, but multiple pages scattered on multiple domains owned or not by Mozilla.</li><li>Some pages contains information from old version of Thunderbird.</li><li>Some pages displays this page is \"badly broken\", and provides a link to another page, totally broken, with a lot of page not found links</li><li>On the official forum, I received an answer to visit another unofficial forum to get the answer to my question.</li><li>Accessing the text editor when composing a message does not work, and I cannot find up to date information anywhere</li><li>A lot of pages are containing information to build Firefox extensions, not Thunderbird</li></ul>\n<ul><li>Entry point: <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Thunderbird_extensions/HowTos\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Thunderbird_extensions/HowTos</a>. Out of date information</li><li>Thunderbird HowTos: <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Thunderbird_extensions/HowTos\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Thunderbird_extensions/HowTos</a>. \"This page is badly broken\". The alternative link provided is shown below.</li><li>The alternative page: <a href=\"https://mdn.beonex.com/en/Extensions/Thunderbird/HowTos.html\" rel=\"nofollow\">https://mdn.beonex.com/en/Extensions/Thunderbird/HowTos.html</a> is even more broken and updated in 2012</li><li>The official forum, on a domain not hosted by Mozilla: <a href=\"https://thunderbird.topicbox.com/groups/addons\" rel=\"nofollow\">https://thunderbird.topicbox.com/groups/addons</a> (WTF?)</li><li></li></ul>\nAt this point, it seems both the API and the documentation are going through a phase of change, I will wait for this to be finished. Unfortunately, this situation is ridiculous, both for the add-ons developers and the users.\n\nAny help is welcome."
     },
     "developer_comments": {
         "en-US": "This need to be implemented\n<ul><li>Add keyboard shortcut to highlight (next version ?)</li><li>Highlight all selected elements at once, when multiple elements are selected in the editor (Ctrl+Select, next version ?)</li><li>Remember the last picked colour when restarting thunderbird (next version ?)</li><li>Allow the user to customise the list of available colors, probably using themed palettes. (later)</li><li>Full Undo/Redo support (Need to find good thunderbird documentation support, later)</li><li>More localisations  (later).</li><li>A basic preferences window  (later).</li></ul>"
@@ -97,10 +97,10 @@
     "homepage": {
         "en-US": "http://github.com/arodier/Highlighter"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/222/222207-64.png?modified=1570651660",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/222/222207-64.png?modified=1572902696",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/222/222207-32.png?modified=1570651660",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/222/222207-64.png?modified=1570651660"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/222/222207-32.png?modified=1572902696",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/222/222207-64.png?modified=1572902696"
     },
     "is_disabled": false,
     "is_experimental": false,
@@ -178,10 +178,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.95736,
-        "count": 74,
-        "average": 3.973,
-        "text_count": 74
+        "bayesian_average": 3.95785,
+        "count": 75,
+        "average": 3.9733,
+        "text_count": 75
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/highlighter-222207/reviews/",
     "requires_payment": false,

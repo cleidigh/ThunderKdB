@@ -48,9 +48,12 @@ var reports = {
 	},
 	tb60Only: {
 		baseReportName: "extension-list-tb60",
-		 reportFilter: function (xpilib) {
+		 reportFilter: function (extJson) {
 			// target 60 - !68
-			let compSet = xpilib.ext_comp;
+			let compSet = extJson.xpilib.ext_comp;
+			// console.debug('reportFilter ' + extJson.id + ' '+ JSON.stringify(extJson.current_version));
+			console.debug('reportFilter ' + extJson.id + ' '+ JSON.stringify(extJson.current_version.files[0].created));
+	
 			console.debug(`comp ${compSet} `);
 			if ( (compSet.comp60 || compSet.comp60pv) && (!compSet.comp68 && !compSet.comp68pv )) {
 				console.debug('True');
@@ -62,9 +65,10 @@ var reports = {
 	},
 	tb60: {
 		baseReportName: "extension-list-tb60all",
-		 reportFilter: function (xpilib) {
+		reportFilter: function (extJson) {
 			// target 60 - !68
-			let compSet = xpilib.ext_comp;
+			let compSet = extJson.xpilib.ext_comp;
+			console.debug('reportFilter 60 all' + extJson.id + ' '+ JSON.stringify(extJson.current_version.files[0].created));
 			console.debug(`comp ${compSet} `);
 			if ( (compSet.comp60 || compSet.comp60pv) ) {
 				console.debug('True');
@@ -76,9 +80,9 @@ var reports = {
 	},
 	tb68: {
 		baseReportName: "extension-list-tb68",
-		 reportFilter: function (xpilib) {
+		reportFilter: function (extJson) {
 			// target 60 - !68
-			let compSet = xpilib.ext_comp;
+			let compSet = extJson.xpilib.ext_comp;
 			console.debug(`comp ${compSet} `);
 			if ( (compSet.comp68 || compSet.comp68pv) ) {
 				console.debug('True');
@@ -87,7 +91,36 @@ var reports = {
 				return false;
 			}
 		}
-	}
+	},
+	recentActivity: {
+		baseReportName: "extension-list-recent-activity",
+		reportFilter: function (extJson) {
+			// console.debug(extJson);
+			console.debug('reportFilter recent' + extJson.id + ' '+ JSON.stringify(extJson.current_version.files[0].created));
+			// return false;
+
+			let c = extJson.current_version.id;
+			console.debug(c);
+			c = extJson.current_version.files[0].created;
+			console.debug(c);
+			let cv = new Date(c);
+			let today = new Date();
+			const msDay = 24*60*60*1000;
+			console.debug('current '+cv);
+			console.debug('today '+today);
+
+			console.debug('current subtracted'+ (today-(14 * msDay)));
+			let d = (today-cv)/msDay;
+			console.debug('DaysOld '+d );
+			if (d <= 14) {
+				console.debug('CurrentTrue');
+				return true;
+			} else {
+				return false;
+			}
+		}
+	},
+
 
 }
 
@@ -153,7 +186,9 @@ function genExtensionListFromJson(extsJson, report) {
 		extJson.xpilib.rank = index + 1;
 
 		let row = "";
-		if (report.reportFilter === null || report.reportFilter(extJson.xpilib)) {
+		console.debug('Extension ' + extJson.id + ' '+ JSON.stringify(extJson.current_version));
+		console.debug('Extension ' + extJson.id + ' '+ JSON.stringify(extJson.current_version.files[0].created));
+		if (report.reportFilter === null || report.reportFilter(extJson)) {
 		
 			// console.debug('Row '+ report.reportFilter(extJson.xpilib));
 			row = createExtMDTableRow(extJson);
@@ -325,7 +360,7 @@ console.debug('Generate ExtensionList:');
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
 // genExtensionListFromFolders();
 genExtensionListFromJson(extsJson, reports.tb68);
-genExtensionListFromJson(extsJson, reports.tb60);
-genExtensionListFromJson(extsJson, reports.tb60Only);
+// genExtensionListFromJson(extsJson, reports.tb60);
+// genExtensionListFromJson(extsJson, reports.tb60Only);
 genExtensionListFromJson(extsJson, reports.all);
-
+genExtensionListFromJson(extsJson, reports.recentActivity);

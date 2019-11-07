@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1567718031"
         }
     ],
-    "average_daily_users": 75672,
+    "average_daily_users": 77047,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -21,26 +21,26 @@
     },
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Send%20Later%20add%2don%20%28%245%2e00%20recommended%20donation%2c%20but%20give%20what%20you%27d%20like%21%29&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donat",
     "current_version": {
-        "id": 2472656,
+        "id": 2472833,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2472656",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2472833",
         "files": [
             {
-                "id": 1015737,
-                "created": "2019-09-23T15:34:18Z",
-                "hash": "sha256:e731deba1b4371fe2648a7b674c8586ecedcb76347571937e7e3009ba6716714",
+                "id": 1015939,
+                "created": "2019-11-05T15:14:37Z",
+                "hash": "sha256:7a612bd7d20d8cbfe4ce6b5def6a11248efae9df9da9095e7fbd66ceb38e77d2",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 486239,
+                "size": 486906,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015737/send_later-7.2.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015939/send_later-7.2.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -53,11 +53,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "<strong>New feature: Support a simple n-minute delay for all sent messages</strong>\n\nYou can now configure Send Later (via its preferences) to schedule all messages which you send with the Send button or Ctrl-Enter to be delayed by a specified number of minutes.\n\nNote that this feature and the \"'Send' does 'Send Later'\" feature are incompatible so only one of them can be enabled at a time.\n\n<strong>Bug fixes:</strong>\n\nThe preferences window works in Thunderbird 71+ now.\n\nSome (but perhaps not all) instances of the \"Send Later\" column showing in folders where it shouldn't have been fixed."
+            "en-US": "Extra logging and error handling to work around an issue that seems to be cropping up for the first time in Thunderbird 68, preventing scheduled messages in some Drafts folders from being sent.\n\nCompatibility changes for Thunderbird 71+.\n\nTranslation updates."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/7.2.0",
-        "version": "7.2.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/7.2.1",
+        "version": "7.2.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -69,7 +69,7 @@
         "sv-SE": "Ändrar kommandot \"Skicka senare\" (Ctrl+Skift+Retur) i Skriv-fönstret. Istället för att endast kopiera meddelandet till din utkorg, så att det skickas nästa gång du ansluter till Internet eller klickar på \"Skicka meddelanden som inte är skickade\", visas ett dialogfönster som låter dig bestämma när meddelandet skall skickas.\n\nDu kan ange en viss tid och ett visst datum, klicka på de förinställda värdena \"15 min senare\", \"30 min senare\" eller \"2 timmar senare\", eller klicka på \"Lägg i utkorgen\" för att använda Thunderbirds inbyggda \"Skicka senare\"-funktion (d.v.s. kopiera till utkorgen).\n\nLäs <a href=\"http://blog.kamens.us/send-later\" rel=\"nofollow\">användarhandboken</a> för ytterligare information.\n\nGå med i <a href=\"http://groups.google.com/group/send-later-users\" rel=\"nofollow\">e-postlistan</a>!\n\nSkicka senare använder <a href=\"http://sugarjs.com/\" rel=\"nofollow\">SugarJS</a> av Andrew Plummer. Tusen tack, Andrew!",
         "es": "Cambia el comando \"enviar después\" (Ctrl+May+Enter) en la ventana de composición de mensajes, para que en vez de simplemente copiar el mensaje a la bandeja de salida para enviarse la siguiente vez que Vd. se conecte (o ejecute \"procesar mensajes\" no enviados), un diálogo aparezca para permitirle especificar cuándo se enviará el mensaje.\n\nPuede especificar una fecha y hora específicas o hacer click en \"15 minutos más tarde\", \"30 minutos más tarde\" o \"2 horas más tarde\", o, alternativamente, pulsar \"enviar a bandeja de salida\" para tener la funcionalidad nativa de Thunderbird para envío diferido.\n\nPara información adicional, mire la guía de usuario en: <a href=\"https://blog.kamens.us/send-later\" rel=\"nofollow\">Send Later user guide</a>.\n\nApúntese a la ilsta de correo en: <a href=\"https://groups.google.com/group/send-later-users\" rel=\"nofollow\">mailing list</a>!\n\nEnviarDespués (SendeLater) utiliza <a href=\"https://sugarjs.com/\" rel=\"nofollow\">SugarJS</a> por Andrew Plummer. ¡Gracias Andrew!",
         "ru": "Вызывайте команду \"Send Later\" (Ctrl+Shift+Return) из окна редактирования письма, чтобы взамен простого копирования сообщения в вашу папку «Исходящие» оно было бы отправлено в следующий раз, когда вы будете онлайн или отправите «Неотправленные сообщения». Эту команду возможно изменить в диалоговом окне, позволяющем указать время отправки сообщения.\n\nЧтобы воспользоваться встроенной функцией \"Send Later\" в Thunderbird (например, скопировать в папку «Исходящие»), Вы можете установить определенное время и дату или нажать на клавиши \"15 минут спустя\", или \"30 минут спустя\", или \"2 часа спустя\", или \"Поместить в папку «Исходящие»\".\n\nДля дополнительной информации смотрите <a href=\"https://blog.kamens.us/send-later\" rel=\"nofollow\">Руководство Пользователя</a>.\n\nПодпишитесь на <a href=\"https://groups.google.com/group/send-later-users\" rel=\"nofollow\">рассылку</a>!\n\nSend Later использует <a href=\"https://sugarjs.com/\" rel=\"nofollow\">SugarJS</a> Андрея Пламмера. Спасибо, Андрей!",
-        "nl": "Verandert het \"Send Later\" commando (Ctrl+Shift+Return) in het bericht aanmaken scherm, zodat in plaats van alleen maar kopiëren van het bericht in je Uitgaande mail map zodat het wordt verzonden de volgende keer dat je online gaat of \"Verzend nog niet verzonden berichten\" doet, een dialoogvenster opkomt dat het mogelijk maakt om aan te geven wanneer het bericht zal worden verzonden.\n\nJe kan een specifieke tijd en datum aangeven, of klik \"15 min. later\", \"30 min. later\" of 2 uur later\", of klik \"Zet in Uitgaande mail\" om de ingebouwde Thunderbird \"Send Later\" functionaliteit te krijgen (m.a.w. kopieer naar Uitgaande mail).\n\nVoor meer informatie, zie de <a href=\"https://blog.kamens.us/send-later\" rel=\"nofollow\">gebruikershandleiding</a>.\n\nDoe mee met de <a href=\"https://groups.google.com/group/send-later-users\" rel=\"nofollow\">maillijst</a>!\n\nSend Later gebruikt <a href=\"https://sugarjs.com/\" rel=\"nofollow\">SugarJS</a> van Andrew Plummer. Bedankt Andrew!",
+        "nl": "Wijzigt de opdracht ‘Later verzenden’ (Ctrl+Shift+Return) in het berichtopstelvenster, zodat in plaats van alleen het bericht naar uw Postvak UIT te kopiëren en dit de volgende keer dat u online gaat of door ‘Niet-verzonden berichten verzenden’ te kiezen wordt verzonden, een dialoogvenster verschijnt waarmee u kunt opgeven wanneer het bericht wordt verzonden.\n\nU kunt een bepaalde tijd en datum opgeven, of op ‘15 min. later’, ‘30 min. later’ of ‘2 uur later’ klikken, of op ‘In Postvak UIT plaatsen’ klikken voor de ingebouwde functionaliteit voor ‘Later verzenden’ van Thunderbird (m.a.w. kopiëren naar Postvak UIT).\n\nZie de <a href=\"https://blog.kamens.us/send-later\" rel=\"nofollow\">gebruikershandleiding</a> voor aanvullende informatie.\n\nSchrijf u in voor de <a href=\"https://groups.google.com/group/send-later-users\" rel=\"nofollow\">mailinglijst</a>!\n\nSend Later gebruikt <a href=\"https://sugarjs.com/\" rel=\"nofollow\">SugarJS</a> van Andrew Plummer. Bedankt Andrew!",
         "en-US": "Changes the \"Send Later\" command (Ctrl+Shift+Return) in the message composition window, so that instead of merely copying the message into your Outbox so that it is sent the next time you go online or do \"Send Unsent Messages\", a dialog pops up which allows you to specify when the message will be sent.\n\nYou can specify a specific time and date, or click \"15 mins later\", \"30 mins later\" or \"2 hours later\", or click \"Put in Outbox\" to get the built-in Thunderbird \"Send Later\" functionality (i.e., copy to Outbox).\n\nFor additional information, see the <a href=\"http://blog.kamens.us/send-later\" rel=\"nofollow\">user guide</a>.\n\nJoin the <a href=\"http://groups.google.com/group/send-later-users\" rel=\"nofollow\">mailing list</a>!\n\nSend Later uses <a href=\"http://sugarjs.com/\" rel=\"nofollow\">SugarJS</a> by Andrew Plummer. Thanks Andrew!",
         "ro": "Schimbă comanda „Trimite mai târziu” (Ctrl+Shift+Return) din fereastra de compunere a mesajului: în loc ca mesajul să fie doar pus în dosarul „De trimis” pentru a fi trimis la următoarea operațiune de trimitere, fie când aplicația revine online fie la „Trimite mesajele neexpediate”, se va deschide o fereastra care permite programarea trimiterii mesajului.\n\nSe poate selecta fie o anumita dată/oră, fie „peste 15 minute”, „peste 30 minute” sau „peste 2 ore”, fie „Pune în „De trimis”” pentru a obține funcționalitatea implicită din Thunderbird pentru „Trimite mai târziu” (adică copiere în „De trimis”).\n\nPentru informații suplimentare, vezi: <a href=\"https://blog.kamens.us/send-later\" rel=\"nofollow\">ghidul utilizatorului</a>.\n\nÎnscrie-te în <a href=\"https://groups.google.com/group/send-later-users\" rel=\"nofollow\">lista de corespondență</a>!\n\nSend Later folosește <a href=\"https://sugarjs.com/\" rel=\"nofollow\">SugarJS</a> de Andrew Plummer. Mulțumesc Andrew!",
         "pl": "Zmienia wbudowane polecenie \"Wyślij później\" (Ctrl + Shift + Return) w oknie tworzenia wiadomości, tak, że zamiast zwykłego umieszczenia wiadomości w skrzynce nadawczej aby były wysyłane przy następnym przejściu w tryb online lub użycia polecenia \"Wyślij niewysłane wiadomości\", wyskakuje okno dialogowe które pozwala określić, kiedy wiadomość zostanie wysłana.\n\nMożesz podać datę i godzinę wysłania, lub wybrać opóźnienie \"za 15 min.\", \"za 30 min.\", \"za 2 godz.\" albo użyć \"umieść w skrzynce nadawczej\" i pozwolić działać wbudowanej w Thunderibirda funkcjonalności \"Wyślij później\".\n\nPo dodatkowe informacje zajżyj do <a href=\"https://blog.kamens.us/send-later\" rel=\"nofollow\">instrukcji</a>.\n\nDołącz się i zapisz się do <a href=\"https://groups.google.com/group/send-later-users\" rel=\"nofollow\">listy mailingowej</a>!\n\nSend Later używa <a href=\"https://sugarjs.com/\" rel=\"nofollow\">SugarJS</a> autorstwa Andrew Plummer. Dzięki Andrew!",
@@ -94,7 +94,7 @@
         "sv-SE": "Vänligen <a href=\"mailto:jik+sendlater3@kamens.us\"> maila mig</a> felrapporter, förslag, etc.",
         "es": "<a href=\"mailto:jik+sendlater3@kamens.us\">Envíeme un correo</a> con problemas (bugs) o sugerencias... (preferiblemente en inglés).",
         "ru": "Пожалуйста, <a href=\"mailto:jik+sendlater3@kamens.us\">пишите мне</a> о возникших ошибках, предложениях и т.д.",
-        "nl": "<a href=\"mailto:jik+sendlater3@kamens.us\">Stuur me</a> a.u.b. bugrapporten, suggesties, enz.",
+        "nl": "Bugrapporten, suggesties etc. zijn welkom <a href=\"mailto:jik+sendlater3@kamens.us\">via e-mail</a>.",
         "en-US": "Please <a href=\"mailto:jik+sendlater3@kamens.us\">email me</a> bug reports, suggestions, etc.",
         "ro": "Raportează erori sau trimite sugestii prin <a href=\"mailto:jik+sendlater3@kamens.us\">email</a>.",
         "pl": "Proszę <a href=\"mailto:jik+sendlater3@kamens.us\">przyślij mi</a> informację o błędach, swoje sugestie, itp.",
@@ -139,16 +139,16 @@
         "zh-TW": "http://blog.kamens.us/send-later",
         "zh-CN": "http://blog.kamens.us/send-later"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-64.png?modified=1568122565",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-64.png?modified=1572966740",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-32.png?modified=1568122565",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-64.png?modified=1568122565"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-32.png?modified=1572966740",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-64.png?modified=1572966740"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2019-09-23T17:38:36Z",
+    "last_updated": "2019-11-05T15:16:01Z",
     "name": {
         "el": "Στείλετε αργότερα",
         "ca": "Enviar més tard",
