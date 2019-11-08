@@ -260,7 +260,9 @@ function createExtMDTableRow(extJson) {
 
 	// const homepage_icon = "![ATN Homepage](/ThunderKdB/docs/images/home1.png)"
 	const ext_homepage = extsJson.url;
-	const homepage_icon = `<img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' href='${ext_homepage}></img>`;
+	// const homepage_icon = `<img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' href='${ext_homepage}></img>`;
+	// const homepage_icon = `[[ATN Homepage](/ThunderKdB/docs/images/home1.png)](${ext_homepage})`;
+	const homepage_icon = `![ATN Homepage](/ThunderKdB/docs/images/home1.png)`;
 
 	let v_min = `${extJson.current_version.compatibility.thunderbird.min}`;
 	let v_max = `${extJson.current_version.compatibility.thunderbird.max}`;
