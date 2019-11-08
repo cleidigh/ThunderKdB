@@ -28,6 +28,8 @@ const ext68CompDirU = '/extensions-all/exts-tb68-comp';
 
 const extsAllJsonFileName = `${rootDir}/xall/xall.json`;
 
+
+
 const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png)"
 const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png)"
 const cBadge_tb69_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png)"
@@ -151,9 +153,6 @@ function genExtensionListFromFolders() {
 function genExtensionListFromJson(extsJson, report) {
 
 	let listBaseName = report.baseReportName;
-	// let listBaseName = 'extension-list-all';
-	// let listBaseName = 'extension-list-tb68';
-	// let listBaseName = 'extension-list-tb60';
 
 	let extsListFile = fs.readFileSync(`${listBaseName}-templ.md`, 'utf8');
 	// let extsListFile = fs.readFileSync('extension-list-tb68-templ.md', 'utf8');
@@ -259,6 +258,10 @@ function createExtMDTableRow(extJson) {
 	const xpiLink = `[XPI](${extGroupTB68Dir}/${extJson.id}-${extJson.slug}/xpi)`;
 	// const srcLink = "s";
 
+	// const homepage_icon = "![ATN Homepage](/ThunderKdB/docs/images/home1.png)"
+	const ext_homepage = extsJson.url;
+	const homepage_icon = `<img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' href='${ext_homepage}></img>`;
+
 	let v_min = `${extJson.current_version.compatibility.thunderbird.min}`;
 	let v_max = `${extJson.current_version.compatibility.thunderbird.max}`;
 	let mext = extJson.current_version.files[0].is_webextension;
@@ -343,7 +346,7 @@ function createExtMDTableRow(extJson) {
 	let rank = extJson.xpilib.rank;
 
 	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
-	row += `${rank} | ${extJson.id} | ${name_link} | ${extJson.current_version.version.substr(0, 12)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
+	row += `${rank} | ${extJson.id} | ${name_link} ${homepage_icon} | ${extJson.current_version.version.substr(0, 12)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
 
 	return row;
 }
@@ -359,8 +362,8 @@ console.debug('Generate ExtensionList:');
 
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
 // genExtensionListFromFolders();
-genExtensionListFromJson(extsJson, reports.tb68);
-genExtensionListFromJson(extsJson, reports.tb60);
-genExtensionListFromJson(extsJson, reports.tb60Only);
-genExtensionListFromJson(extsJson, reports.all);
+// genExtensionListFromJson(extsJson, reports.tb68);
+// genExtensionListFromJson(extsJson, reports.tb60);
+// genExtensionListFromJson(extsJson, reports.tb60Only);
+// genExtensionListFromJson(extsJson, reports.all);
 genExtensionListFromJson(extsJson, reports.recentActivity);

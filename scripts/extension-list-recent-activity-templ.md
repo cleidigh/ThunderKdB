@@ -13,7 +13,7 @@ body {
 
 <div class="search-banner">	
 	<img class="banner-image" src='/ThunderKdB/docs/images/Thunderbird-Banner.png'
-		style="padding-right: 60px; height: 40px; width: 170px" />
+		style="padding-right: 60px; height: 40px; width: 170px" href='/ThunderKdB'/>
 	<label class="banner-header">Extensions: 2 Week Activity&nbsp; (__count__)</label>
 	<label class="banner-header-rt">__date__</label>
 
