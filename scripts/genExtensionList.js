@@ -260,7 +260,7 @@ function createExtMDTableRow(extJson) {
 
 	// const homepage_icon = "![ATN Homepage](/ThunderKdB/docs/images/home1.png)"
 	const ext_homepage = extsJson.url;
-	const homepage_icon = `<img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' href='https://addons.thunderbird.net/en-US/thunderbird/addon/message-archive-options/?src=userprofile'/>`;
+	const homepage_icon = `<img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' href='https://addons.thunderbird.net/en-US/thunderbird/addon/message-archive-options/?src=userprofile' style="padding-top: 2px; padding-right: 6px;" href="${ext_homepage}"/>`;
 	// const homepage_icon = `[[ATN Homepage](/ThunderKdB/docs/images/home1.png)](${ext_homepage})`;
 	// const homepage_icon = `![ATN Homepage](/ThunderKdB/docs/images/home1.png)`;
 
