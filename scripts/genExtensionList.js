@@ -260,7 +260,7 @@ function createExtMDTableRow(extJson) {
 
 	// const homepage_icon = "![ATN Homepage](/ThunderKdB/docs/images/home1.png)"
 	const ext_homepage = extsJson.url;
-	const homepage_icon = `<img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' href='https://addons.thunderbird.net/en-US/thunderbird/addon/message-archive-options/?src=userprofile' style="padding-top: 2px; padding-right: 6px;" href="${ext_homepage}"/>`;
+	const homepage_icon = `<a href="${ext_homepage}"><img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' href='https://addons.thunderbird.net/en-US/thunderbird/addon/message-archive-options/?src=userprofile' style="padding-bottom: -2px; padding-right: 6px;" /></a>`;
 	// const homepage_icon = `[[ATN Homepage](/ThunderKdB/docs/images/home1.png)](${ext_homepage})`;
 	// const homepage_icon = `![ATN Homepage](/ThunderKdB/docs/images/home1.png)`;
 
@@ -332,18 +332,6 @@ function createExtMDTableRow(extJson) {
 	// const name_link = `[${name}](/${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
 	const name_link = `[${name}](${repoRoot}/${extGroupAllDir}/${targetGroupDir}/${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-details.html)`
 
-
-
-
-	// Target 68
-	// if ( !(comp_badges.includes(cBadge_tb68) ) && !(comp_badges.includes(cBadge_tb68_pv) ) ) {
-	// 	return "";
-	// }
-
-	// Target 60 All
-	// if ( !(comp_badges.includes(cBadge_tb60) || comp_badges.includes(cBadge_tb60_pv) ) ) {
-	// 	return "";
-	// }
 
 	let rank = extJson.xpilib.rank;
 
