@@ -26,6 +26,3 @@ body {
 | # | Id | Name | Ver | Date | Users | Min | Max | Compatibility |
 |---: |---: |---|---: |---: |---: |---: |---: |---|
 __ext-md-table__
-
-
-<img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' href='https://addons.thunderbird.net/en-US/thunderbird/addon/message-archive-options/?src=userprofile'/>

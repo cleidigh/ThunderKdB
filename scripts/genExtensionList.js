@@ -185,8 +185,6 @@ function genExtensionListFromJson(extsJson, report) {
 		extJson.xpilib.rank = index + 1;
 
 		let row = "";
-		console.debug('Extension ' + extJson.id + ' '+ JSON.stringify(extJson.current_version));
-		console.debug('Extension ' + extJson.id + ' '+ JSON.stringify(extJson.current_version.files[0].created));
 		if (report.reportFilter === null || report.reportFilter(extJson)) {
 		
 			// console.debug('Row '+ report.reportFilter(extJson.xpilib));
@@ -259,8 +257,8 @@ function createExtMDTableRow(extJson) {
 	// const srcLink = "s";
 
 	// const homepage_icon = "![ATN Homepage](/ThunderKdB/docs/images/home1.png)"
-	const ext_homepage = extsJson.url;
-	const homepage_icon = `<a href="${ext_homepage}"><img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' href='https://addons.thunderbird.net/en-US/thunderbird/addon/message-archive-options/?src=userprofile' style="padding-bottom: -2px; padding-right: 6px;" /></a>`;
+	const ext_homepage = extJson.url;
+	const homepage_icon = `<a href="${ext_homepage}"><img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' style="padding-bottom: -2px; padding-right: 6px;" /></a>`;
 	// const homepage_icon = `[[ATN Homepage](/ThunderKdB/docs/images/home1.png)](${ext_homepage})`;
 	// const homepage_icon = `![ATN Homepage](/ThunderKdB/docs/images/home1.png)`;
 
