@@ -352,8 +352,8 @@ console.debug('Generate ExtensionList:');
 
 let extsJson = fs.readJSONSync(extsAllJsonFileName);
 // genExtensionListFromFolders();
-// genExtensionListFromJson(extsJson, reports.tb68);
-// genExtensionListFromJson(extsJson, reports.tb60);
-// genExtensionListFromJson(extsJson, reports.tb60Only);
-// genExtensionListFromJson(extsJson, reports.all);
+genExtensionListFromJson(extsJson, reports.tb68);
+genExtensionListFromJson(extsJson, reports.tb60);
+genExtensionListFromJson(extsJson, reports.tb60Only);
+genExtensionListFromJson(extsJson, reports.all);
 genExtensionListFromJson(extsJson, reports.recentActivity);

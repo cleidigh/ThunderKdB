@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1603,
+    "average_daily_users": 1736,
     "categories": {
         "thunderbird": [
             "importexport",
@@ -18,26 +18,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472232,
+        "id": 2472818,
         "compatibility": {
             "thunderbird": {
-                "max": "69.*",
+                "max": "68.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2472232",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2472818",
         "files": [
             {
-                "id": 1015300,
-                "created": "2019-09-03T21:00:57Z",
-                "hash": "sha256:e9e0f6c06d3de04cfad8f511b12241ea6134cb5a7bbcfd5ba430ec1425e15f39",
+                "id": 1015924,
+                "created": "2019-11-02T17:32:47Z",
+                "hash": "sha256:1f9b4c9b9c32d4a9967ce5ab0a653a976cfd9b2efa841ab3d46bc1b5498d0f5a",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 286597,
+                "size": 759465,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015300/attachmentextractor_continued-2.0.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015924/attachmentextractor_continued-2.0.4-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -49,10 +49,13 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
-        "reviewed": "2019-10-21T14:36:43Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/2.0.2",
-        "version": "2.0.2"
+        "release_notes": {
+            "en-US": "Fix the missing locale strings (and resulting XUL errors) from version 2.0.3 in many languages",
+            "de": "Diese Version behebt die XUL-Fehler aus Version 2.0.3, da dort viele Texte in zahlreichen Sprachen gefehlt hatten."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/2.0.4",
+        "version": "2.0.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -75,7 +78,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-10-21T14:36:43Z",
+    "last_updated": "2019-11-08T22:29:22Z",
     "name": {
         "en-US": "AttachmentExtractor Continued"
     },
@@ -389,10 +392,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.55164,
-        "count": 32,
-        "average": 4.5938,
-        "text_count": 32
+        "bayesian_average": 4.56134,
+        "count": 35,
+        "average": 4.6,
+        "text_count": 35
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/reviews/",
     "requires_payment": false,
@@ -416,8 +419,9 @@
         "ext_comp": {
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2019-10-30T14:00:06Z"
         }
     }
 }
