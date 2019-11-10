@@ -304,8 +304,10 @@ function genExtensionSummaryMD(addon_identifier, extJson, extGroupDir, overwrite
 	extSummaryFile = extSummaryFile.replace('__ext-users__', extJson.average_daily_users);
 
 	try {
+		console.debug('License '+  extJson.current_version.license);
 		extSummaryFile = extSummaryFile.replace('__ext-license__', extJson.current_version.license.name["en-US"]);
 	} catch (error) {
+		console.debug('LicenseError '+error);
 		extSummaryFile = extSummaryFile.replace('__ext-license__', 'None');
 	}
 
@@ -347,7 +349,7 @@ function compatibilityCheck(extJson, options) {
 		
 		// v_max_num = Number(v_max_num);
 		if (v_max_num && isNaN(v_max_num) ) {
-			v_max_num_parts = v_max_num.split('.');
+			v_max_num_parts = String(v_max_num).split('.');
 			v_max_num = Number(v_max_num_parts[0]) + Number(v_max_num_parts[1]+v_max_num_parts[2])/100;
 			console.debug('vMax adjusted '+v_max_num);
 		} else {
@@ -376,6 +378,7 @@ function compatibilityCheck(extJson, options) {
 	
 	
 	compSet.mext = mext;
+	var current_ver_date = extJson.current_version.files[0].created;
 
 	// if both numbers - unambiguous
 	if (v_max_num > 0 && !isNaN(v_min_num)) {
@@ -421,6 +424,8 @@ function compatibilityCheck(extJson, options) {
 
 	}
 
+	var ver_date;
+	
 	console.debug('   Current Version Comp: ' + JSON.stringify(compSet));
 	if (!options.currentVersionOnly && !(compSet.comp60 && compSet.comp68)) {
 		let pv_compSet = {};
@@ -435,9 +440,9 @@ function compatibilityCheck(extJson, options) {
 			let v_max = `${ext_ver.compatibility.thunderbird.max}`;
 
 			let mext = ext_ver.files[0].is_webextension;
-			let ver_date = ext_ver.files[0].created;
+			ver_date = ext_ver.files[0].created;
 			if ((new Date(ver_date)) < (new Date("2017-01-01"))) {
-				break;
+				// break;
 			}
 
 			// if (extJson.slug === 'shrunked-image-resizer') {
@@ -483,6 +488,11 @@ function compatibilityCheck(extJson, options) {
 		// console.debug(compSet);
 		let compSet2 = Object.assign(compSet, pv_compSet);
 		// console.debug(compSet2);
+	}
+
+	if (compSet.comp60 && (new Date(current_ver_date)) < (new Date("2017-01-01"))) {
+		console.debug(`   Date Old: ${ver_date}`);
+		compSet.comp60OldDate = true;
 	}
 
 	console.debug(`Compatibility Done: ${extJson.slug} : ` + JSON.stringify(compSet));
@@ -876,6 +886,8 @@ async function g1() {
 	extsJson.map(ext => {
 		if (ext.xpilib === undefined || ext.xpilib === null) {
 			console.debug(`Ext: ${ext.slug} : No xpilib`);
+		} else if (ext.xpilib && ext.xpilib.ext_comp && !!ext.xpilib.ext_comp.comp60OldDate) {
+			console.debug(`Ext: ${ext.slug} : ${ext.xpilib.ext_comp.comp60OldDate} ${ext.current_version.files[0].created.split('T')[0]}`);
 		}
 	})
 	// extArray = extsJson;

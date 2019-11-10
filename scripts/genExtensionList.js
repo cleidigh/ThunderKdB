@@ -41,7 +41,7 @@ const cBadge_mx = "![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-
 const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png)"
 // const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-40a156.png)"
 const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png)"
-
+const cBadge_tb60_date_warning = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60cV-%20Date%20Warning-yellow.png)"
 
 var reports = {
 	all: {
@@ -311,6 +311,12 @@ function createExtMDTableRow(extJson) {
 		} else if (compSet.legacy == true && compSet.legacy_type == 'bootstrap') {
 			comp_badges += " " + cBadge_legacy_bs;
 		}
+		
+		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp60 === true && extJson.xpilib.ext_comp.comp60OldDate === true) {
+			comp_badges += " " + cBadge_tb60_date_warning;
+		}
+		
+		
 	}
 
 	let targetGroupDir = "";
@@ -354,4 +360,4 @@ genExtensionListFromJson(extsJson, reports.tb68);
 genExtensionListFromJson(extsJson, reports.tb60);
 genExtensionListFromJson(extsJson, reports.tb60Only);
 genExtensionListFromJson(extsJson, reports.all);
-genExtensionListFromJson(extsJson, reports.recentActivity);
+// genExtensionListFromJson(extsJson, reports.recentActivity);
