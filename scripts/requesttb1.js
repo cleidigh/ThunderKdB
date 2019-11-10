@@ -35,6 +35,7 @@ const gh = new GitHub({
 	// password: 'Crete1997'
 });
 
+var startTime;
 
 // let addon_identifier = 90003;
 // let addon_identifier = "lightning";
@@ -162,7 +163,7 @@ function requestATN_URL2(addon_id, query_type, options) {
 		try {
 			request.get(extRequestOptions)
 				.then(response => {
-					console.debug('Valid');
+					// console.debug('Valid');
 					// console.debug(response.body);
 					// console.debug(response.next);
 					resolve(response.body);
@@ -213,7 +214,7 @@ async function requestATN_URL(addon_id, query_type, options) {
 
 	for (reqCnt = 0; reqCnt < 3; reqCnt++) {
 		try {
-			console.log('StartRequest: ' + reqCnt + '  ' + addon_id);
+			// console.log('StartRequest: ' + reqCnt + '  ' + addon_id);
 			let response = await request.get(extRequestOptions);
 
 			// let response = request.get(extRequestOptions)
@@ -236,7 +237,7 @@ async function requestATN_URL(addon_id, query_type, options) {
 				return response;
 			}
 			else {
-				console.log(' Done response: ' + response.err);
+				// console.log(' Done response: ' + response.err);
 				// console.debug(response);
 				return response;
 			}
@@ -335,22 +336,57 @@ function compatibilityCheck(extJson, options) {
 		compSet.compNoMax = true;
 	} else {
 		v_max_num = p.exec(v_max);
+		console.debug('vMax '+v_max_num);
+		console.debug('vMax '+v_max_num[0]);
+		console.debug('vMax '+v_max_num[1]);
+		console.debug('vMax '+v_max_num[2]);
+		if (isNaN(v_max_num)) {
+			console.debug('   Max NaN');
+		}
+			
+		
+		// v_max_num = Number(v_max_num);
+		if (v_max_num && isNaN(v_max_num) ) {
+			v_max_num_parts = v_max_num.split('.');
+			v_max_num = Number(v_max_num_parts[0]) + Number(v_max_num_parts[1]+v_max_num_parts[2])/100;
+			console.debug('vMax adjusted '+v_max_num);
+		} else {
+			console.debug('vMax n '+v_max_num);
+		}
+
+	
 	}
 	let v_min_num = p.exec(v_min);
+	console.debug('min type '+typeof(v_min_num) + '  '+v_min_num[0]);
+	if (v_min_num && isNaN(v_min_num) ) {
+		console.debug(`   ${extJson.slug} Mi: vMin: ${v_min} vMax: ${v_max} vMax_nun: ${v_max_num}  ME: ${mext}`);
+		v_min_num_parts = String(v_min_num).split('.');
+		v_min_num = Number(v_min_num_parts[0]) + Number(v_min_num_parts[1]+v_min_num_parts[2])/100;
+		console.debug('vMin adjusted '+v_min_num);
+	}
 
-	// console.debug(`${extJson.slug} : vMin: ${v_min} vMax: ${v_max} vMax_nun: ${v_max_num}  ME: ${mext}`);
+	console.debug(`   ${extJson.slug} : vMin: ${v_min} vMax: ${v_max} vMax_nun: ${v_max_num}  ME: ${mext}`);
 
+	if (isNaN(v_max_num)) {
+		console.debug('   Max NaN');
+	}
+	if (isNaN(v_min_num)) {
+		console.debug('   Min NaN');
+	}
+	
+	
 	compSet.mext = mext;
 
 	// if both numbers - unambiguous
 	if (v_max_num > 0 && !isNaN(v_min_num)) {
-		// console.debug('unambiguous versions');
+		console.debug(`   Unambiguous versions ${v_min_num}  :  ${v_max_num}`);
 		// check compatibilities
-		if (v_min_num <= 68 && v_max_num >= 68) {
+		if (v_min_num < 69 && v_max_num >= 68) {
 			compSet.comp68 = true;
-
+			console.debug('   comp68');
 		}
 		if (v_max_num >= 69) {
+			console.debug('   comp69Plus');
 			compSet.comp69plus = true;
 		}
 
@@ -366,7 +402,7 @@ function compatibilityCheck(extJson, options) {
 		}
 
 	} else {
-		console.debug('ambiguous');
+		console.debug('   NoMax');
 		if (v_min_num >= 68 && v_min_num <= 69 && mext) {
 			compSet.comp68 = true;
 		} else if (v_min_num >= 60 && mext) {
@@ -385,14 +421,14 @@ function compatibilityCheck(extJson, options) {
 
 	}
 
-	console.debug('CurrentVersionComp: ' + JSON.stringify(compSet));
+	console.debug('   Current Version Comp: ' + JSON.stringify(compSet));
 	if (!options.currentVersionOnly && !(compSet.comp60 && compSet.comp68)) {
 		let pv_compSet = {};
 
 		for (let index = 1; index < options.ext_versions.length; index++) {
 			const ext_ver = options.ext_versions[index];
 			if (typeof ext_ver.compatibility.thunderbird !== 'object') {
-				console.debug('no Thunderbird compatibility');
+				console.debug('   No Thunderbird compatibility');
 				continue;
 			}
 			let v_min = `${ext_ver.compatibility.thunderbird.min}`;
@@ -404,9 +440,9 @@ function compatibilityCheck(extJson, options) {
 				break;
 			}
 
-			if (extJson.slug === 'shrunked-image-resizer') {
-				console.debug(`${extJson.slug} : vMin: ${v_min} vMax: ${v_max} ${index}`);
-			}
+			// if (extJson.slug === 'shrunked-image-resizer') {
+				// console.debug(`${extJson.slug} : vMin: ${v_min} vMax: ${v_max} ${index}`);
+			// }
 
 			const p = /[\d\.]+/;
 			let v_max_num = 0;
@@ -425,8 +461,9 @@ function compatibilityCheck(extJson, options) {
 					pv_compSet.comp68pv_date = ver_date;
 				}
 				if (v_min_num <= 68 && (v_max_num >= 68 || v_max_num === -1) && mext) {
-					pv_compSet.comp68pv = true;
-					pv_compSet.comp68pv_date = ver_date;
+					// pv_compSet.comp68pv = true;
+					// pv_compSet.comp68pv_date = ver_date;
+					console.debug(`   Q Comp ${ver_date}`);
 				}
 
 			}
@@ -442,13 +479,13 @@ function compatibilityCheck(extJson, options) {
 			}
 
 		}
-		console.debug(pv_compSet);
-		console.debug(compSet);
+		// console.debug(pv_compSet);
+		// console.debug(compSet);
 		let compSet2 = Object.assign(compSet, pv_compSet);
-		console.debug(compSet2);
+		// console.debug(compSet2);
 	}
 
-	console.debug(`CompatibilityDone: ${extJson.slug} comp: ` + JSON.stringify(compSet));
+	console.debug(`Compatibility Done: ${extJson.slug} : ` + JSON.stringify(compSet));
 
 	return compSet;
 }
@@ -525,9 +562,9 @@ async function getExtensionFiles(addon_identifier, index) {
 		const xpiFileURL = ext.current_version.files[0].url;
 		const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
 
-		await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
-		console.debug('Downloaded filename ' + xpiFileName);
-		fs.ensureDirSync(`${extRootDir}/xpi`);
+		// await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
+		// console.debug('Downloaded filename ' + xpiFileName);
+		// fs.ensureDirSync(`${extRootDir}/xpi`);
 
 		// if (fs.existsSync(`${extRootDir}/xpi`)) {
 		// 	fs.removeSync(`${extRootDir}/xpi`);
@@ -544,7 +581,7 @@ async function getExtensionFiles(addon_identifier, index) {
 		console.debug('check versions: ' + extRootDir);
 		if (ext_comp.mext && fs.existsSync(`${extRootDir}/src/manifest.json`)) {
 			// fs.removeSync(`${extRootDir}/src`);
-			console.debug('Read: manifest ');
+			// console.debug('Read: manifest ');
 			let manifestJson = parse(fs.readFileSync(`${extRootDir}/src/manifest.json`).toString())
 
 			// let manifestJson = fs.readJSONSync(`${extRootDir}/src/manifest.json`, { throws: false });
@@ -552,34 +589,33 @@ async function getExtensionFiles(addon_identifier, index) {
 				console.debug(`Missing manifest file: ${extRootDir}/src/manifest.json`);
 				return 1;
 			}
-			console.debug('check legacy');
+			// console.debug('check legacy');
 			if (manifestJson.legacy !== undefined) {
-				console.debug('set legacy');
 				let legacy = JSON.stringify(manifestJson.legacy);
-				console.debug(legacy);
+				// console.debug(legacy);
 				ext_comp.legacy = true;
 				ext_comp.legacy_type = (typeof manifestJson.legacy.type === 'string') ? manifestJson.legacy.type : 'xul';
-				console.debug('ReadingManifest: ' + `${extRootName} : ${ext_comp.legacy_type}`);
+				// console.debug('ReadingManifest: ' + `${extRootName} : ${ext_comp.legacy_type}`);
 
 			} else {
-				console.debug('Manifest NoLegacy');
+				// console.debug('Manifest NoLegacy');
 			}
 		} else if (fs.existsSync(`${extRootDir}/src/install.rdf`)) {
-			console.debug('CheckingInstall:');
+			// console.debug('CheckingInstall:');
 			const installRDFExtType = xml_util.rdfGetValue(`${extRootDir}/src/install.rdf`, 'Description[\"em:type\"]');
-			console.debug('Addon type ' + installRDFExtType);
+			// console.debug('Addon type ' + installRDFExtType);
 			const installRDFExtBootstrap = xml_util.rdfGetValue(`${extRootDir}/src/install.rdf`, 'Description[\"em:bootstrap\"]');
-			console.debug('bootstrap: ' + installRDFExtBootstrap);
+			// console.debug('bootstrap: ' + installRDFExtBootstrap);
 			if (installRDFExtType === 2 && installRDFExtBootstrap) {
 				ext_comp.legacy = true;
 				ext_comp.legacy_type = 'bootstrap';
 			} else {
 				ext_comp.legacy = true;
 				ext_comp.legacy_type = 'xul';
-				console.debug('xul type');
+				// console.debug('xul type');
 			}
-			console.debug(ext_comp);
-			console.debug('ReadingInstall: ' + `${extRootName} : ${ext_comp.legacy.legacy_type}`);
+			// console.debug(ext_comp);
+			// console.debug('ReadingInstall: ' + `${extRootName} : ${ext_comp.legacy.legacy_type}`);
 		}
 
 		// _7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
@@ -687,8 +723,9 @@ async function getExtensions() {
 	promises = [];
 	pages = [];
 
+	console.debug('Starting Details Requests ');
 	for (let index = 1; index < stopPage + 1; index++) {
-		console.debug('StartRequest: Page: ' + index);
+		// console.debug('StartRequest: Page: ' + index);
 		qs.page = index;
 
 		let p = requestATN_URL2(null, 'search', qs)
@@ -705,7 +742,7 @@ async function getExtensions() {
 					var parsedUrl = new URL(r.previous);
 					page = parsedUrl.searchParams.get("page") + 1;
 				}
-					console.log('Page: ' + page);
+					// console.log('Page: ' + page);
 					pages[page ] = r.results;
 
 			});
@@ -715,15 +752,17 @@ async function getExtensions() {
 	}
 
 	await Promise.all(promises);
-	console.debug('AfterPromises');
+	// console.debug('AfterPromises');
 
-	console.debug('NumberedPages ' + pages.length);
+	console.debug('Total Details Pages: ' + pages.length);
 	pages.map(p => { extsJson = extsJson.concat(p); });
 
+	console.debug('Time: '+ (new Date() - startTime)/1000);
 	// console.debug(JSON.stringify(extsJson));
-	extsJson.map((ext, index) => {
-		console.debug(`${index}: ${ext.slug} : ${ext.average_daily_users}`);
-	})
+	// extsJson.map((ext, index) => {
+	// 	console.debug(`${index}: ${ext.slug} : ${ext.average_daily_users}`);
+	// });
+
 	return;
 
 }
@@ -767,10 +806,10 @@ async function getAll(extArray, options) {
 	// 	p.push(pc);
 	// }
 	exts = extArray.slice(options.start, options.end + 1);
-	console.debug(`StartingGet: ${options.start} - ${options.end} : ${exts.length}`);
+	// console.debug(`StartingGet: ${options.start} - ${options.end} : ${exts.length}`);
 
 	const p = exts.map(async (extObj, index) => {
-		console.debug('map start ' + index);
+		// console.debug('map start ' + index);
 
 		// if (extObj === undefined) {
 		// 	console.debug('Nul for itself');
@@ -791,37 +830,34 @@ async function getAll(extArray, options) {
 		return pc;
 	});
 
-	console.debug('Await All');
 	let ap = Promise.all(p);
 	console.debug('All Promises ' + ap.length + " " + ap);
 
 	return ap;
 }
 
-// ghSearch();
-// console.debug(getDirectories('.'));
 async function g1() {
-	let startTime = new Date();
+	startTime = new Date();
 	console.debug('' + startTime);
 
 	// extsJson = fs.readJSONSync(extsAllJsonFileName);
 	// await getAllExtensionDetails(1, 54);
 	await g2();
-	console.debug('extension lines ' + extsJson.length);
 
 	writePrettyJSONFile(extsAllJsonFileName, extsJson);
-	console.debug('Finished Extension Details:');
+	console.debug('Finished Extension Details: ' + extsJson.length);
 
 	console.debug(new Date() - startTime);
 	// return;
-	console.debug('TotalExtensions: ' + extsJson.length);
 	// extsJson = extArray;
 	// try {
 	let p = [];
-	for (let index = 0; index < 67; index++) {
-		console.debug('GetIndex ' + index);
+	let indexStart = 0;	
+	let indexEnd = 68;
+	console.debug(`StartingGetFiles: ${indexStart} - ${indexEnd} : ${extsJson.length}`);
+	for (let index = indexStart; index < indexEnd; index++) {
+		// console.debug('GetIndex ' + index);
 		p.push(await getAll(extsJson, { start: (0 + index * 20), end: (19 + index * 20) }));
-		// p.push(await getAll(extsJson, { start: 82 , end: 84 }));
 
 	}
 
@@ -830,7 +866,7 @@ async function g1() {
 	// 	console.debug('outside  error ' + error);
 	// }
 
-	console.debug('after get all ' + extsJson.length);
+	// console.debug('after get all ' + extsJson.length);
 	console.debug( (new Date() - startTime)/1000);
 	console.debug(new Date());
 
@@ -849,7 +885,7 @@ async function g1() {
 
 async function g2() {
 	await getExtensions();
-	console.debug('Totally Done');
+	// console.debug('Totally Done');
 
 }
 
