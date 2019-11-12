@@ -15,7 +15,7 @@ body {
 	<img class="banner-image" src='/ThunderKdB/docs/images/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" />
 	<label class="banner-header">Extensions: Thunderbird 68 Compatible (150)</label>
-	<label class="banner-header-rt">2019-11-10</label>
+	<label class="banner-header-rt">2019-11-11</label>
 
 </div>
 <div>
