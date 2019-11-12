@@ -22,7 +22,7 @@ const extGroupAllDir = 'xall';
 const extGroupTB68Dir = 'x68';
 const extGroupTB60Dir = 'x60';
 const extGroupTBOtherDir = 'xOther';
-
+ 
 const ext68CompDir = '..\\extensions-all\\exts-tb68-comp';
 const ext68CompDirU = '/extensions-all/exts-tb68-comp';
 
@@ -36,6 +36,18 @@ const gh = new GitHub({
 });
 
 var startTime;
+
+let ext_exdata = [
+	{id: 324492, slug: "importexporttools", alt_ext: 986686, adoptme: false, fWIP: false},
+	{id: 4394, slug: "stationary", alt_ext: 324497, adoptme: true, fWIP: false},
+	{id: 881, slug: "display-quota", alt_ext: 505906, adoptme: false, fWIP: false},
+	{id: 330424, slug: "printingtools", alt_ext: -1, adoptme: false, fWIP: true},
+	{id: 5582, slug: "confirm-address-5582", alt_ext: 986279, adoptme: false, fWIP: false},
+	// {id: , slug: "", alt_ext: , adoptme: false, fWIP: false},
+	{id: 634298, slug: "cardbook", alt_ext: -1, adoptme: false, helpme: true, fWIP: false},
+
+
+];
 
 // let addon_identifier = 90003;
 // let addon_identifier = "lightning";

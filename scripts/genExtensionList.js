@@ -28,6 +28,16 @@ const ext68CompDirU = '/extensions-all/exts-tb68-comp';
 
 const extsAllJsonFileName = `${rootDir}/xall/xall.json`;
 
+let ext_exdata = [
+	{id: 324492, slug: "importexporttools", alt_ext_68: 986686, adoptme: false, fWIP: false},
+	{id: 4394, slug: "stationary", alt_ext_68: 324497, adoptme: true, fWIP: false},
+	{id: 881, slug: "display-quota", alt_ext_68: 505906, adoptme: false, fWIP: false},
+	{id: 330424, slug: "printingtools", alt_ext_68: -1, adoptme: false, fWIP: true},
+	{id: 5582, slug: "confirm-address-5582", alt_ext_68: 986279, adoptme: false, fWIP: false},
+	// {id: , slug: "", alt_ext_68: , adoptme: false, fWIP: false},
+	{id: 634298, slug: "cardbook", alt_ext_68: -1, adoptme: false, help_maintainer: true, fWIP: false},
+
+];
 
 
 const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png)"
@@ -39,9 +49,12 @@ const cBadge_tb61_plus = "![Thunderbird 68 Compatible](https://img.shields.io/ba
 const cBadge_maxv_star_warn = "![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png)"
 const cBadge_mx = "![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png)"
 const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png)"
-// const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-40a156.png)"
 const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png)"
 const cBadge_tb60_date_warning = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60cV-%20Date%20Warning-yellow.png)"
+const cBadge_alt_ext_68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Alt%2068-%20+-brightgreen.png)"
+const cBadge_wip_fork = "![Thunderbird 68 Compatible](https://img.shields.io/badge/WIP-%20Fork-lightblue.png)"
+const cBadge_help_adoptme = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Help-AdoptMe-red.png)"
+const cBadge_help_maintainer = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Help-Maintainer-red.png)"
 
 var reports = {
 	all: {
@@ -316,7 +329,23 @@ function createExtMDTableRow(extJson) {
 			comp_badges += " " + cBadge_tb60_date_warning;
 		}
 		
-		
+		ext_exdata.forEach(ext_x => {
+			if (ext_x.id === extJson.id) {
+				if (ext_x.alt_ext_68 !== -1) {
+					comp_badges += " " + cBadge_alt_ext_68;
+				}
+				if (ext_x.fWIP) {
+					comp_badges += " " + cBadge_wip_fork;
+				}
+				if (ext_x.adoptme) {
+					comp_badges += " " + cBadge_help_adoptme;
+				}
+				if (ext_x.help_maintainer) {
+					comp_badges += " " + cBadge_help_maintainer;
+				}
+			}
+		});
+
 	}
 
 	let targetGroupDir = "";
