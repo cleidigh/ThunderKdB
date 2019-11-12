@@ -502,7 +502,7 @@ function compatibilityCheck(extJson, options) {
 		// console.debug(compSet2);
 	}
 
-	if (compSet.comp60 && (new Date(current_ver_date)) < (new Date("2017-01-01"))) {
+	if (compSet.comp60 && (new Date(current_ver_date)) < (new Date("2018-01-01"))) {
 		console.debug(`   Date Old: ${ver_date}`);
 		compSet.comp60OldDate = true;
 	}

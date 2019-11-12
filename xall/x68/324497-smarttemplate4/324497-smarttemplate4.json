@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 12651,
+    "average_daily_users": 12313,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -27,26 +27,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472794,
+        "id": 2472863,
         "compatibility": {
             "thunderbird": {
                 "max": "69.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2472794",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2472863",
         "files": [
             {
-                "id": 1015898,
-                "created": "2019-10-28T09:50:20Z",
-                "hash": "sha256:ac283772e0c0ff01a4dea38c05c45addc5e78381f10659721358d8ef151b2808",
+                "id": 1015969,
+                "created": "2019-11-11T12:03:48Z",
+                "hash": "sha256:820d18a870d3db8da727efc801b30cb41d0cd0099e0d2c922722ed4d746e42c1",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 629316,
+                "size": 632521,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015898/smarttemplate4-2.4.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015969/smarttemplate4-2.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -56,14 +56,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.4.2"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.5"
         },
         "release_notes": {
-            "en-US": "<b>2.4.2 Halloween version with important fixes for the new file templates feature.</b>\n\nVideo for Ex-Stationery users - showcasing the new file templates feature: <a href=\"https://youtu.be/AWdZWB0_ym0\" rel=\"nofollow\">https://youtu.be/AWdZWB0_ym0</a>\n\n<b>Bug Fixes</b>\n<ul>  <ul>    <li> <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/20\" rel=\"nofollow\">[issue 20]</a> If a html template file starts with certain UTF detection characters,  the \"missing file\" warning is wrongly displayed.    </li>    <li> Sandboxed Javascript (script blocks enclosed in %{%   %}%) implemented in [Bug 25676] stopped working in Thunderbird 68, due to the call to Cu.nukeSandbox failing...  for now, SmartTemplate⁴ allows using these again for versions smaller than 69.</li>  </ul></ul>"
+            "en-US": "<b>2.5 Clarified UI for Ex-Stationery users, spellcheck improvements.</b>\n\nVideo for Ex-Stationery users - showcasing the new file templates feature: <a href=\"https://youtu.be/AWdZWB0_ym0\" rel=\"nofollow\">https://youtu.be/AWdZWB0_ym0</a>\n\n<b>Improvements</b>\n<ul><li>Added switch for toggling automatic proofing: use %spellcheck(off)% to disable or %spellcheck(on)% to enable automatic proofing. Different languages can be set using the language parameter, e.g. %spellcheck(it)% to switch to italian spell check. Additional dictionaries can be installed from <a href=\"https://addons.thunderbird.net/thunderbird/language-tools/\" rel=\"nofollow\">addons.thunderbird.net</a> using Add-ons Manager.</li><li>Improved UI on Template Files page for Stationery users:\n- removed irrelevant Save and Load buttons\n- added a (?) button which links to the <a href=\"http://smarttemplate4.mozdev.org/stationery.html\" rel=\"nofollow\">Stationery support page</a>.</li><li>Completed some of the missing translations for new functionality in the Finnish, French, Czech, Spanish, Italian, Polish and Swedish locales.</li></ul><b>Bug Fixes</b>\n<ul><li>Fixed <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/21\" rel=\"nofollow\">[issue 21]</a> %spellcheck% sometimes doesn't remove red proofing lines after setting language </li><li>Extended error log for trouble shooting the getFileAsDataURI() function; this is used to improve behavior when images are included using the %file()% function, by replacing them with inline data without Thunderbird complaining about security problems. note that image file names should have an extension in order to determine file type correctly. To troubleshoot missing images that are included in this way, enable SmartTemplate's \"debug\" mode and check the Javascript error console.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.4.2",
-        "version": "2.4.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.5",
+        "version": "2.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -82,16 +82,16 @@
         "en-US": "http://smarttemplate4.mozdev.org/",
         "de": "http://smarttemplate4.mozdev.org/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1572551880",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1573478268",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-32.png?modified=1572551880",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1572551880"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-32.png?modified=1573478268",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1573478268"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-10-29T16:28:55Z",
+    "last_updated": "2019-11-11T12:44:39Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",
@@ -329,7 +329,7 @@
         "fr": "Le smart modèle qui peut personnaliser l'en-tête de la citation pour les comptes. SmartTemplate4 permet de personalizar aisidament las entèstas de Thunderbird en utilizant de modèls. Los modèls pòdon èsser creats per cada compte o d'un biais global.",
         "de": "SmartTemplate⁴ automatisiert das Erstellen von Antworten und Einfügen von verschiedenen Mail-Informationen. Vorlagen können für jedes Konto sowie für das Standard Konto erstellt werden. Unterstützt das Stationery Add-on.",
         "nl": "SmartTemplate4 biedt een intelligente / gemakkelijke manier om sjablonen die de standaard aanhalingskoptekst in Thunderbird aanpassen te gebruiken. \n\nSjablonen (voor de aanhalingskoptekst) kunnen worden gebruikt voor een losse account of algemeen.",
-        "en-US": "SmartTemplate⁴ offers an easy and powerful way to automatically create customized replies by auto-inserting various mail headers. Templates can be created for every mail identity, Stationery can now be imported and used directly (from 2.3)",
+        "en-US": "SmartTemplate⁴ offers an easy and powerful way to automatically create customized replies by auto-inserting various mail headers. Templates can be created for every mail identity, Stationery files can now be imported and used directly.",
         "it": "SmartTemplate4 permette di personalizzare con facilità l'intestazione dei messaggi di risposta ed inoltrati, mediante dei modelli. I modelli possono essere specifici per ogni account oppure comuni a tutti gli account.",
         "pt-BR": "SmartTemplate4 oferece um modelos inteligentes / mais fácil forma de usar o que personalizar o Thunderbird padrão citação cabeçalho. Modelos (citação do cabeçalho) pode ser usado para a conta única ou para configurações globais (contas comuns).",
         "pl": "SmartTemplate4 oferuje inteligentne, proste w użyciu szablony do dostosowania nagłówka cytowanej wiadomości. Szablony mogą być używane dla pojedynczego konta lub w ustawieniach globalnych dla wszystkich kont.",
