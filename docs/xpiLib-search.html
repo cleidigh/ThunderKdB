@@ -58,7 +58,16 @@
 				<td width="24px"><input id="comp_tb60" type="checkbox" class="search-field search-checkbox" /></td>
 				<td width="100%"><label class="search-field-subitem2">Thunderbird 60</label></td>
 			</tr>
-		
+
+			<tr>
+				<td width="24px"> <input id="x" type="checkbox" class="ehidden search-field search-checkbox" /></td>
+				<td width="80px"><div class="ehidden search-field-subitem1"></div></td>
+				
+				<td width="24px"><input id="thundernest" type="checkbox" class="search-field search-checkbox" /></td>
+				<td width="100%"><label class="search-field-subitem2">ThunderNest</label></td>
+			</tr>
+
+			
 		</table>
 		</div>
 
@@ -109,7 +118,10 @@
 			if (document.getElementById("comp_tb68").checked) {
 				q += "+path:/xall/x68"
 			}
-			
+			if (document.getElementById("thundernest").checked) {
+				q += "+repo:/thundernest/tb-web-ext-experiments"
+			}
+
 			window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
 
 			if (document.getElementById("search_dxr").checked) {
