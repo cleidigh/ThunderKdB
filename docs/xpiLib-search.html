@@ -113,14 +113,17 @@
 			q += '+' + document.getElementById('file_types').value;
 			if (document.getElementById("comp_tb60").checked) {
 				q += "+path:/xall/x60"
+				q += "+repo%3Acleidigh%2FThunderKdB"
+
 			}
 			
 			if (document.getElementById("comp_tb68").checked) {
 				q += "+path:/xall/x68"
+				q += "+repo%3Acleidigh%2FThunderKdB"
+
 			}
 			if (document.getElementById("thundernest").checked) {
 				q += "+repo%3Athundernest%2Ftb-web-ext-experiments"
-				q += "+repo%3Acleidigh%2FThunderKdB"
 			}
 
 			window.open(`https://github.com/cleidigh/ThunderKdB/search?q=${q}`)
