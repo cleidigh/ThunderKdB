@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 8167,
+    "average_daily_users": 8421,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -18,26 +18,26 @@
     },
     "contributions_url": "https://paypal.me/ThunderbirdMailDE/",
     "current_version": {
-        "id": 2470711,
+        "id": 2472881,
         "compatibility": {
             "thunderbird": {
                 "max": "72.0a1",
-                "min": "68.0a1"
+                "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/getsendbutton/versions/2470711",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/getsendbutton/versions/2472881",
         "files": [
             {
-                "id": 1013773,
-                "created": "2019-06-30T10:51:44Z",
-                "hash": "sha256:50f307175ad28604ecb3aae42d56b870f1c778c4c073e9f0015ac1e72e250537",
+                "id": 1015987,
+                "created": "2019-11-17T00:04:53Z",
+                "hash": "sha256:22a71aa97a630b5d75a69ce96442b90a2072ad00ce47572145f1e2955b523fb8",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 91853,
+                "size": 82260,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1013773/abrufensenden_schaltflache-5.6.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015987/abrufensenden_schaltflache-5.7.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,12 +50,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Small locales fix (shortened addon name)\n* removed the reference to an unnecessary JS file",
-            "de": "* Englische Bezeichnung aus Add-on-Name entfernt\n* Unnötige Referenz zu einer Thunderbird JavaScript-Datei entfernt"
+            "en-US": "- Bugfix: Permanent disabled popup menu items\n- Improvement: Opacity for disabled popup menu items (to \"light\" grey)\n- Addon localization was migrated to the \"Crowdin\" platform",
+            "de": "- Fehlerbehebung: Popup-Menü-Elemente waren teilweise dauerhaft deaktiviert\n- Verbesserung: Deaktivierte Popup-Menü-Elemente waren zu hell \"ausgegraut\"\n- Alle Übersetzungen wurden auf die Plattform \"Crowdin\" migriert und angepasst"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/getsendbutton/versions/5.6.5",
-        "version": "5.6.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/getsendbutton/versions/5.7.5",
+        "version": "5.7.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -80,7 +80,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-06-30T11:50:29Z",
+    "last_updated": "2019-11-18T16:26:25Z",
     "name": {
         "en-US": "Get/Send Button",
         "de": "Abrufen/Senden-Schaltfläche"

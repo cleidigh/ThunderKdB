@@ -36,6 +36,8 @@ let ext_exdata = [
 	{id: 5582, slug: "confirm-address-5582", alt_ext_68: 986279, adoptme: false, fWIP: false},
 	// {id: , slug: "", alt_ext_68: , adoptme: false, fWIP: false},
 	{id: 634298, slug: "cardbook", alt_ext_68: -1, adoptme: false, help_maintainer: true, fWIP: false},
+	{id: 2487, slug: "nostalgy", alt_ext_68: -1, adoptme: false, fWIP: true},
+	{id: 508686, slug: "just_restart", alt_ext_68: -1, adoptme: false, fWIP: true},
 
 ];
 

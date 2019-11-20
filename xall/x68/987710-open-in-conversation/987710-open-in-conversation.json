@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 4,
+    "average_daily_users": 12,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -54,7 +54,9 @@
         "version": "1.0.1"
     },
     "default_locale": "en-US",
-    "description": null,
+    "description": {
+        "en-US": "Make the default message list action be \"Open Message in Conversation\" when double-clicking or using the \"Enter\" key to open an email from the message list.\n\nThe screenshot shows the \"Open Message in Conversation\" button in the context menu. With this add-on, that becomes the default when double-clicking or hitting \"Enter\" on an email in the message list."
+    },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/open-in-conversation/edit",
     "guid": "open_in_conversation@hartz.io",
@@ -63,10 +65,10 @@
     "homepage": {
         "en-US": "https://github.com/jhartz/thunderbird-open-in-conversation"
     },
-    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/tabs-64.png",
     "icons": {
-        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
-        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/tabs-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/tabs-64.png"
     },
     "is_disabled": false,
     "is_experimental": false,
@@ -76,7 +78,22 @@
     "name": {
         "en-US": "Open In Conversation"
     },
-    "previews": [],
+    "previews": [
+        {
+            "id": 205831,
+            "caption": null,
+            "image_size": [
+                1280,
+                728
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205831.png?modified=1573827935",
+            "thumbnail_size": [
+                320,
+                182
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205831.png?modified=1573827935"
+        }
+    ],
     "public_stats": false,
     "ratings": {
         "bayesian_average": 0,
