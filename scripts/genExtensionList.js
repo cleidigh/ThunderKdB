@@ -63,7 +63,7 @@ const cBadge_alt_ext_68_setup = {  badgeBasedURL: 'https://img.shields.io/badge/
 
 // function makeBadgeElement(bLink, badge, bLeftText, bRightText, bColor) {
 	function makeBadgeElement(bOpt) {
-		var badgeBase = `<a href='${bOpt.bLink}' ><img src='${bOpt.badgeBasedURL}/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' tooltip='${bOpt.bTooltip}'></img></a>`;
+		var badgeBase = `<a href='${bOpt.bLink}' ><img src='${bOpt.badgeBasedURL}/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' title='${bOpt.bTooltip}'></a>`;
 	
 		return badgeBase;
 }
