@@ -29,36 +29,67 @@ const ext68CompDirU = '/extensions-all/exts-tb68-comp';
 const extsAllJsonFileName = `${rootDir}/xall/xall.json`;
 
 let ext_exdata = [
-	{id: 324492, slug: "importexporttools", alt_ext_68: 986686, adoptme: false, fWIP: false, alt_ext_68_tooltip: "ImportExportTools NG : Alternate Fork", bLink: '#986686-importexporttools-ng'},
-	{id: 4394, slug: "stationary", alt_ext_68: 324497, adoptme: true, fWIP: false},
-	{id: 881, slug: "display-quota", alt_ext_68: 505906, adoptme: false, fWIP: false},
-	{id: 330424, slug: "printingtools", alt_ext_68: -1, adoptme: false, fWIP: true},
-	{id: 5582, slug: "confirm-address-5582", alt_ext_68: 986279, adoptme: false, fWIP: false},
+	{id: 324492, slug: "importexporttools", alt_ext_tb68: 986686, adoptme: false, fWIP: false, alt_ext_tb68_tooltip: "ImportExportTools NG : Alternate Fork", bLink: '#986686-importexporttools-ng'},
+	{id: 4394, slug: "stationary", alt_ext_tb68: 324497, adoptme: true, fWIP: false},
+	{id: 881, slug: "display-quota", alt_ext_tb68: 505906, adoptme: false, fWIP: false},
+	{id: 330424, slug: "printingtools", alt_ext_tb68: -1, adoptme: false, fWIP: true},
+	{id: 5582, slug: "confirm-address-5582", alt_ext_tb68: 986279, adoptme: false, fWIP: false},
 	// {id: , slug: "", alt_ext_68: , adoptme: false, fWIP: false},
-	{id: 634298, slug: "cardbook", alt_ext_68: -1, adoptme: false, help_maintainer: true, fWIP: false},
-	{id: 2487, slug: "nostalgy", alt_ext_68: -1, adoptme: false, fWIP: true},
-	{id: 508686, slug: "just_restart", alt_ext_68: -1, adoptme: false, fWIP: true},
+	{id: 634298, slug: "cardbook", alt_ext_tb68: -1, adoptme: false, help_maintainer: true, fWIP: false},
+	{id: 2487, slug: "nostalgy", alt_ext_tb68: -1, adoptme: false, fWIP: true},
+	{id: 508686, slug: "just_restart", alt_ext_tb68: -1, adoptme: false, fWIP: true},
 
 ];
 
+const cBadge_alt_ext_tb68_setup = { bLeftText: '68', bRightText: 'Alt%20+', bColor: 'brightgreen', bTooltip: '', badgeBasedURL: 'https://img.shields.io/badge/'};
 
-const cBadge_tb68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20cV-3bc059.png)"
-const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png)"
-const cBadge_tb69_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png)"
-const cBadge_tb60 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png)"
-const cBadge_tb60_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png)"
-const cBadge_tb61_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png)"
+const cBadge_tb68_setup = { bLeftText: '68', bRightText: '%20cV', bColor: 'brightgreen', bTooltip: 'Current Version: TB68 Compatible', badgeBasedURL: 'https://img.shields.io/badge/'};
+const cBadge_tb68_pv_setup = { bLeftText: '68', bRightText: '%20pV', bColor: 'green', bTooltip: 'Prior Version: TB68 Compatible', badgeBasedURL: 'https://img.shields.io/badge/'};
+
+const cBadge_tb60_setup = { bLeftText: '60', bRightText: '%20cV', bColor: 'darkgreen', bTooltip: 'Current Version: TB60 Compatible', badgeBasedURL: 'https://img.shields.io/badge/'};
+const cBadge_tb60_pv_setup = { bLeftText: '60', bRightText: '%20pV', bColor: 'darkgreen', bTooltip: 'Prior Version: TB60 Compatible', badgeBasedURL: 'https://img.shields.io/badge/'};
+
+
+const cBadge_tb68 = makeBadgeElement(cBadge_tb68_setup);
+const cBadge_tb68_pv = makeBadgeElement(cBadge_tb68_pv_setup);
+
+const cBadge_tb60 = makeBadgeElement(cBadge_tb60_setup);
+const cBadge_tb60_pv = makeBadgeElement(cBadge_tb60_pv_setup);
+
+// const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png)"
+// const cBadge_tb69_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png)"
+const cBadge_tb69_plus = makeBadgeElement({ bLeftText: '69+', bRightText: '%20cV', bColor: 'blue', bTooltip: 'Current Version: TB69+ Compatible', badgeBasedURL: 'https://img.shields.io/badge/'});
+const cBadge_tb61_plus = makeBadgeElement({ bLeftText: '61+', bRightText: '%20cV', bColor: 'blue', bTooltip: 'Current Version: TB61+ Compatible', badgeBasedURL: 'https://img.shields.io/badge/'});
+
+// const cBadge_tb60 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20cV-darkgreen.png)"
+// const cBadge_tb60_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60-%20pV-darkgreen.png)"
+// const cBadge_tb61_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png)"
 const cBadge_maxv_star_warn = "![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png)"
-const cBadge_mx = "![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png)"
-const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png)"
-const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png)"
-const cBadge_tb60_date_warning = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60cV-%20Date%20Warning-yellow.png)"
-// const cBadge_alt_ext_68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Alt%2068-%20+-brightgreen.png)"
-const cBadge_wip_fork = "![Thunderbird 68 Compatible](https://img.shields.io/badge/WIP-%20Fork-lightblue.png)"
-const cBadge_help_adoptme = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Help-AdoptMe-red.png)"
-const cBadge_help_maintainer = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Help-Maintainer-red.png)"
+// const cBadge_mx = "![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png)"
+const cBadge_mx = makeBadgeElement({ bLeftText: 'MX', bRightText: '%20+', bColor: 'purple', bTooltip: 'MailExtension (has manifest.json)', badgeBasedURL: 'https://img.shields.io/badge/'});
 
-const cBadge_alt_ext_68_setup = {  badgeBasedURL: 'https://img.shields.io/badge/', bLeftText: 'Alt%2068', bRightText: '%20+', bColor: 'brightgreen', bTooltip: ''};
+// const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png)"
+const cBadge_legacy_rs = makeBadgeElement({ bLeftText: 'Leg', bRightText: '%20rs', bColor: 'purple', bTooltip: 'Legacy - Requires Restart', badgeBasedURL: 'https://img.shields.io/badge/'});
+const cBadge_legacy_bs = makeBadgeElement({ bLeftText: 'Leg', bRightText: '%20bs', bColor: 'purple', bTooltip: 'Legacy - Bootstrap', badgeBasedURL: 'https://img.shields.io/badge/'});
+
+// const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png)"
+// const cBadge_tb60_date_warning = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60cV-%20Date%20Warning-darkyellow.png)"
+const cBadge_tb60_date_warning = makeBadgeElement({ bLeftText: '60cV', bRightText: 'Date Warning', bColor: 'darkyellow', bTooltip: 'Created before 60ESR - Compatibility Questionable', badgeBasedURL: 'https://img.shields.io/badge/'});
+
+
+// const cBadge_alt_ext_68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Alt%2068-%20+-brightgreen.png)"
+// const cBadge_wip_fork = "![Thunderbird 68 Compatible](https://img.shields.io/badge/WIP-%20Fork-blue.png)"
+const cBadge_wip_fork =  makeBadgeElement({ bLeftText: 'WIP', bRightText: 'Fork', bColor: 'blue', bTooltip: 'Work In Progress: Extension Fork', badgeBasedURL: 'https://img.shields.io/badge/'});
+
+// const cBadge_help_adoptme = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Help-AdoptMe-darkred.png)"
+const cBadge_help_adoptme = makeBadgeElement({ bLeftText: 'Help', bRightText: 'Adopt%20Me', bColor: 'darkred', bTooltip: 'Help Wanted: Adopt this Extension', badgeBasedURL: 'https://img.shields.io/badge/'});
+const cBadge_help_maintainer = makeBadgeElement({ bLeftText: 'Help', bRightText: 'Maintainer', bColor: 'darkred', bTooltip: 'Help Wanted: Maintainer Help for this Extension', badgeBasedURL: 'https://img.shields.io/badge/'});
+
+// const cBadge_help_maintainer = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Help-Maintainer-darkred.png)"
+
+
+
+const cBadge_alt_ext_68_setup = {  badgeBasedURL: 'https://img.shields.io/badge/', bLeftText: '68', bRightText: 'Alt%20+', bColor: 'brightgreen', bTooltip: ''};
 
 
 // function makeBadgeElement(bLink, badge, bLeftText, bRightText, bColor) {
@@ -309,6 +340,18 @@ function createExtMDTableRow(extJson) {
 		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp68 === true) {
 			comp_badges += cBadge_tb68;
 		}
+		ext_exdata.forEach(ext_x => {
+			if (ext_x.id === extJson.id) {
+				
+				if (ext_x.alt_ext_tb68 !== -1) {
+					cBadge_alt_ext_tb68_setup.bTooltip = ext_x.alt_ext_tb68_tooltip;
+					cBadge_alt_ext_tb68_setup.bLink = ext_x.bLink;
+					cBadge_alt_ext_tb68 = makeBadgeElement(cBadge_alt_ext_tb68_setup);
+					comp_badges += " " + cBadge_alt_ext_tb68;
+				}
+			}
+		});
+
 		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp68pv === true) {
 			comp_badges += cBadge_tb68_pv;
 		}
@@ -326,9 +369,9 @@ function createExtMDTableRow(extJson) {
 			comp_badges += " " + cBadge_tb61_plus;
 		}
 
-		if (compSet.compNoMax) {
-			comp_badges += " " + cBadge_maxv_star_warn;
-		}
+		// if (compSet.compNoMax) {
+		// 	comp_badges += " " + cBadge_maxv_star_warn;
+		// }
 
 		if (compSet.mext == true) {
 			comp_badges += " " + cBadge_mx;
@@ -345,12 +388,13 @@ function createExtMDTableRow(extJson) {
 		
 		ext_exdata.forEach(ext_x => {
 			if (ext_x.id === extJson.id) {
-				if (ext_x.alt_ext_68 !== -1) {
-					cBadge_alt_ext_68_setup.bTooltip = ext_x.alt_ext_68_tooltip;
-					cBadge_alt_ext_68_setup.bLink = ext_x.bLink;
-					cBadge_alt_ext_68 = makeBadgeElement(cBadge_alt_ext_68_setup);
-					comp_badges += " " + cBadge_alt_ext_68;
-				}
+				// if (ext_x.alt_ext_68 !== -1) {
+				// 	cBadge_alt_ext_tb68_setup.bTooltip = ext_x.alt_ext_tb68_tooltip;
+				// 	cBadge_alt_ext_tb68_setup.bLink = ext_x.bLink;
+				// 	cBadge_alt_ext_tb68 = makeBadgeElement(cBadge_alt_ext_tb68_setup);
+				// 	comp_badges += " " + cBadge_alt_ext_68;
+				// }
+
 				if (ext_x.fWIP) {
 					comp_badges += " " + cBadge_wip_fork;
 				}
