@@ -27,26 +27,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472863,
+        "id": 2472909,
         "compatibility": {
             "thunderbird": {
                 "max": "69.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2472863",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2472909",
         "files": [
             {
-                "id": 1015969,
-                "created": "2019-11-11T12:03:48Z",
-                "hash": "sha256:820d18a870d3db8da727efc801b30cb41d0cd0099e0d2c922722ed4d746e42c1",
+                "id": 1016016,
+                "created": "2019-11-21T16:43:18Z",
+                "hash": "sha256:336fd32d58841d6e33a9ba30255d16d1b44a15e743429ada870f56cd85b75302",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 632521,
+                "size": 634375,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015969/smarttemplate4-2.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016016/smarttemplate4-2.5.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -56,14 +56,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.5"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.5.2"
         },
         "release_notes": {
-            "en-US": "<b>2.5 Clarified UI for Ex-Stationery users, spellcheck improvements.</b>\n\nVideo for Ex-Stationery users - showcasing the new file templates feature: <a href=\"https://youtu.be/AWdZWB0_ym0\" rel=\"nofollow\">https://youtu.be/AWdZWB0_ym0</a>\n\n<b>Improvements</b>\n<ul><li>Added switch for toggling automatic proofing: use %spellcheck(off)% to disable or %spellcheck(on)% to enable automatic proofing. Different languages can be set using the language parameter, e.g. %spellcheck(it)% to switch to italian spell check. Additional dictionaries can be installed from <a href=\"https://addons.thunderbird.net/thunderbird/language-tools/\" rel=\"nofollow\">addons.thunderbird.net</a> using Add-ons Manager.</li><li>Improved UI on Template Files page for Stationery users:\n- removed irrelevant Save and Load buttons\n- added a (?) button which links to the <a href=\"http://smarttemplate4.mozdev.org/stationery.html\" rel=\"nofollow\">Stationery support page</a>.</li><li>Completed some of the missing translations for new functionality in the Finnish, French, Czech, Spanish, Italian, Polish and Swedish locales.</li></ul><b>Bug Fixes</b>\n<ul><li>Fixed <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/21\" rel=\"nofollow\">[issue 21]</a> %spellcheck% sometimes doesn't remove red proofing lines after setting language </li><li>Extended error log for trouble shooting the getFileAsDataURI() function; this is used to improve behavior when images are included using the %file()% function, by replacing them with inline data without Thunderbird complaining about security problems. note that image file names should have an extension in order to determine file type correctly. To troubleshoot missing images that are included in this way, enable SmartTemplate's \"debug\" mode and check the Javascript error console.</li></ul>"
+            "en-US": "<b>2.5.2 - Bug Fixes</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/22\" rel=\"nofollow\">[issue 22]</a> Cannot add new recipients to address widget after modification through %header.set()% or %header.append()%</li><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/23\" rel=\"nofollow\">[issue 23]</a> Settings dialog broken in Czech version.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.5",
-        "version": "2.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.5.2",
+        "version": "2.5.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -91,7 +91,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-11T12:44:39Z",
+    "last_updated": "2019-11-21T16:46:01Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",

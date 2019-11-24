@@ -21,26 +21,26 @@
     },
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Send%20Later%20add%2don%20%28%245%2e00%20recommended%20donation%2c%20but%20give%20what%20you%27d%20like%21%29&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donat",
     "current_version": {
-        "id": 2472833,
+        "id": 2472910,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2472833",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2472910",
         "files": [
             {
-                "id": 1015939,
-                "created": "2019-11-05T15:14:37Z",
-                "hash": "sha256:7a612bd7d20d8cbfe4ce6b5def6a11248efae9df9da9095e7fbd66ceb38e77d2",
+                "id": 1016017,
+                "created": "2019-11-21T17:35:48Z",
+                "hash": "sha256:8f4ec53f4077e33e5405c7f6a8dd813bd38a7ff2d481f73968326b0dfe5bfae7",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 486906,
+                "size": 487001,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015939/send_later-7.2.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016017/send_later-7.3.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -53,11 +53,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Extra logging and error handling to work around an issue that seems to be cropping up for the first time in Thunderbird 68, preventing scheduled messages in some Drafts folders from being sent.\n\nCompatibility changes for Thunderbird 71+.\n\nTranslation updates."
+            "en-US": "Fix date parsing in the Polish locale\n\nPrior to release 7.3.0, we weren't actually parsing dates in Polish for people using Thunderbird in Polish, so we didn't notice that there was a bug for Polish in the third-party date-parsing library Send Later users. Starting in 7.3.0 we were doing a better job of selecting the language for parsing dates, so we started actually trying to parse dates in Polish, which caused the hidden bug to show up.\n\nIn this release we patch that bug, so now Polish users of the add-on should be able to type dates into the prompt window."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/7.2.1",
-        "version": "7.2.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/7.3.1",
+        "version": "7.3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -148,7 +148,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2019-11-05T15:16:01Z",
+    "last_updated": "2019-11-21T20:03:24Z",
     "name": {
         "el": "Στείλετε αργότερα",
         "ca": "Enviar més tard",
@@ -229,10 +229,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.72753,
-        "count": 152,
-        "average": 4.7368,
-        "text_count": 152
+        "bayesian_average": 4.72939,
+        "count": 153,
+        "average": 4.7386,
+        "text_count": 153
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/reviews/",
     "requires_payment": false,

@@ -58,8 +58,8 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Causes Thunderbird's main window to minimize when clicking the close button. This is helpful if you want to keep Thunderbird running in the background – especially when using an external program to minimize Thunderbird into the system tray.",
-        "de": "Minimiert das Hauptfenster von Thunderbird, wenn Sie versuchen, es zu schließen. Dieses Verhalten ist hilfreich, wenn Thunderbird im Hintergrund weiterhin ausgeführt werden soll – insbesondere in Verbindung mit Programmen, die Thunderbird in den Benachrichtigungsbereich minimieren."
+        "en-US": "Minimizes Thunderbird's main window whenever you attempt to close it. This is helpful if you want to keep Thunderbird open in the Background – especially in combination with other tools that move minimized windows into the tray area.\n\n<b>If you want Thunderbird to minimize to the tray, you need an independent application to move it to the tray whenever it is minimized.</b> On Linux I'd recommend <a href=\"https://github.com/user-none/KDocker\" rel=\"nofollow\">KDocker</a> (available in many Linux distributions), on Windows you can probably use <a href=\"https://github.com/sagamusix/TBTray\" rel=\"nofollow\">TBTray</a> (but I have not tested that).",
+        "de": "Minimiert das Hauptfenster von Thunderbird, wenn Sie versuchen, es zu schließen. Dieses Verhalten ist hilfreich, wenn Thunderbird im Hintergrund weiterhin ausgeführt werden soll – insbesondere in Verbindung mit Programmen, die Thunderbird in den Benachrichtigungsbereich minimieren.\n\n<b>Wenn Sie Thunderbird in den Tray minimieren willen, benötigen Sie zwingend ein zusätzliches Programm.</b> Unter Linux empfehle ich hierzu <a href=\"https://github.com/user-none/KDocker\" rel=\"nofollow\">KDocker</a> (in den meisten Linux-Distributionen enthalten), unter Windows funktioniert vermutlich <a href=\"https://github.com/sagamusix/TBTray\" rel=\"nofollow\">TBTray</a> (ich habe das allerdings nicht getestet)."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/minimize-on-close/edit",
@@ -84,10 +84,10 @@
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.45968,
-        "count": 8,
-        "average": 4.625,
-        "text_count": 8
+        "bayesian_average": 4.08851,
+        "count": 9,
+        "average": 4.2222,
+        "text_count": 9
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/minimize-on-close/reviews/",
     "requires_payment": false,

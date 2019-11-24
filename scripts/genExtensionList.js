@@ -29,7 +29,7 @@ const ext68CompDirU = '/extensions-all/exts-tb68-comp';
 const extsAllJsonFileName = `${rootDir}/xall/xall.json`;
 
 let ext_exdata = [
-	{id: 324492, slug: "importexporttools", alt_ext_68: 986686, adoptme: false, fWIP: false},
+	{id: 324492, slug: "importexporttools", alt_ext_68: 986686, adoptme: false, fWIP: false, alt_ext_68_tooltip: "ImportExportTools NG : Alternate Fork", bLink: '#986686-importexporttools-ng'},
 	{id: 4394, slug: "stationary", alt_ext_68: 324497, adoptme: true, fWIP: false},
 	{id: 881, slug: "display-quota", alt_ext_68: 505906, adoptme: false, fWIP: false},
 	{id: 330424, slug: "printingtools", alt_ext_68: -1, adoptme: false, fWIP: true},
@@ -53,10 +53,20 @@ const cBadge_mx = "![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-
 const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png)"
 const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png)"
 const cBadge_tb60_date_warning = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60cV-%20Date%20Warning-yellow.png)"
-const cBadge_alt_ext_68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Alt%2068-%20+-brightgreen.png)"
+// const cBadge_alt_ext_68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Alt%2068-%20+-brightgreen.png)"
 const cBadge_wip_fork = "![Thunderbird 68 Compatible](https://img.shields.io/badge/WIP-%20Fork-lightblue.png)"
 const cBadge_help_adoptme = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Help-AdoptMe-red.png)"
 const cBadge_help_maintainer = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Help-Maintainer-red.png)"
+
+const cBadge_alt_ext_68_setup = {  badgeBasedURL: 'https://img.shields.io/badge/', bLeftText: 'Alt%2068', bRightText: '%20+', bColor: 'brightgreen', bTooltip: ''};
+
+
+// function makeBadgeElement(bLink, badge, bLeftText, bRightText, bColor) {
+	function makeBadgeElement(bOpt) {
+		var badgeBase = `<a href='${bOpt.bLink}' ><img src='${bOpt.badgeBasedURL}/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' tooltip='${bOpt.bTooltip}'></img></a>`;
+	
+		return badgeBase;
+}
 
 var reports = {
 	all: {
@@ -263,6 +273,8 @@ function createExtMDTableRow(extJson) {
 	// let summary = extJson.summary[default_locale].substr(0,42);
 	// summary = summary.replace(/\n/g, ' ');
 
+	const idSlug =  `${extJson.id}-${extJson.slug}`;
+	
 	// const srcLink = `[Src](https://github.com\\cleidigh\\ThunderKdB\\tree\\master\\${ext68CompDir}\\${extJson.id}-${extJson.slug}\\src)`
 	const srcLink = `[Src](./${extJson.id}-${extJson.slug}/src)`
 	// const name_link = `[${name}](./${extJson.id}-${extJson.slug}/${extJson.id}-${extJson.slug}-summary.html)`
@@ -273,7 +285,7 @@ function createExtMDTableRow(extJson) {
 
 	// const homepage_icon = "![ATN Homepage](/ThunderKdB/docs/images/home1.png)"
 	const ext_homepage = extJson.url;
-	const homepage_icon = `<a href="${ext_homepage}"><img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' style="padding-bottom: -2px; padding-right: 6px;" /></a>`;
+	const homepage_icon = `<a id="${idSlug}" href="${ext_homepage}"><img src='/ThunderKdB/docs/images/home1.png' tooltip='test link' height='18px' width='18px' style="padding-bottom: -2px; padding-right: 6px;" /></a>`;
 	// const homepage_icon = `[[ATN Homepage](/ThunderKdB/docs/images/home1.png)](${ext_homepage})`;
 	// const homepage_icon = `![ATN Homepage](/ThunderKdB/docs/images/home1.png)`;
 
@@ -334,6 +346,9 @@ function createExtMDTableRow(extJson) {
 		ext_exdata.forEach(ext_x => {
 			if (ext_x.id === extJson.id) {
 				if (ext_x.alt_ext_68 !== -1) {
+					cBadge_alt_ext_68_setup.bTooltip = ext_x.alt_ext_68_tooltip;
+					cBadge_alt_ext_68_setup.bLink = ext_x.bLink;
+					cBadge_alt_ext_68 = makeBadgeElement(cBadge_alt_ext_68_setup);
 					comp_badges += " " + cBadge_alt_ext_68;
 				}
 				if (ext_x.fWIP) {
