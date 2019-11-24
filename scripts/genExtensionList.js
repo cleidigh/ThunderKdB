@@ -55,7 +55,7 @@ const cBadge_tb68_pv = makeBadgeElement(cBadge_tb68_pv_setup);
 
 const cBadge_tb60 = makeBadgeElement(cBadge_tb60_setup);
 const cBadge_tb60_pv = makeBadgeElement(cBadge_tb60_pv_setup);
-
+ 
 // const cBadge_tb68_pv = "![Thunderbird 68 Compatible](https://img.shields.io/badge/68-%20pV-green.png)"
 // const cBadge_tb69_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/69+-%20cV-blue.png)"
 const cBadge_tb69_plus = makeBadgeElement({ bLeftText: '69+', bRightText: '%20cV', bColor: 'blue', bTooltip: 'Current Version: TB69+ Compatible', badgeBasedURL: 'https://img.shields.io/badge/'});
@@ -66,6 +66,8 @@ const cBadge_tb61_plus = makeBadgeElement({ bLeftText: '61+', bRightText: '%20cV
 // const cBadge_tb61_plus = "![Thunderbird 68 Compatible](https://img.shields.io/badge/61+-%20cV-darkblue.png)"
 const cBadge_maxv_star_warn = "![Thunderbird 68 Compatible](https://img.shields.io/badge/v*-%20!-orange.png)"
 // const cBadge_mx = "![Thunderbird 68 Compatible](https://img.shields.io/badge/MX-%20+-purple.png)"
+
+var cBadge_type_setup = { bLeftText: 'Type', bRightText: '', bColor: 'purple', bTooltip: '', badgeBasedURL: 'https://img.shields.io/badge/'};
 const cBadge_mx = makeBadgeElement({ bLeftText: 'MX', bRightText: '%20+', bColor: 'purple', bTooltip: 'MailExtension (has manifest.json)', badgeBasedURL: 'https://img.shields.io/badge/'});
 
 // const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png)"
@@ -86,10 +88,6 @@ const cBadge_help_adoptme = makeBadgeElement({ bLeftText: 'Help', bRightText: 'A
 const cBadge_help_maintainer = makeBadgeElement({ bLeftText: 'Help', bRightText: 'Maintainer', bColor: 'darkred', bTooltip: 'Help Wanted: Maintainer Help for this Extension', badgeBasedURL: 'https://img.shields.io/badge/'});
 
 // const cBadge_help_maintainer = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Help-Maintainer-darkred.png)"
-
-
-
-const cBadge_alt_ext_68_setup = {  badgeBasedURL: 'https://img.shields.io/badge/', bLeftText: '68', bRightText: 'Alt%20+', bColor: 'brightgreen', bTooltip: ''};
 
 
 // function makeBadgeElement(bLink, badge, bLeftText, bRightText, bColor) {
@@ -373,15 +371,30 @@ function createExtMDTableRow(extJson) {
 		// 	comp_badges += " " + cBadge_maxv_star_warn;
 		// }
 
+		comp_type = [];
+		cBadge_type_setup.bTooltip = "Extension Type :";
+
 		if (compSet.mext == true) {
-			comp_badges += " " + cBadge_mx;
+			// comp_badges += " " + cBadge_mx;
+			comp_type.push("MX");
+			cBadge_type_setup.bTooltip += "&#10; - MX : MailExtension (manifest.json)";
+			console.debug('male extent type ');
 		}
+
 		if (compSet.legacy == true && (compSet.legacy_type == 'xul' || compSet.legacy_type === undefined)) {
-			comp_badges += " " + cBadge_legacy_rs;
+			// comp_badges += " " + cBadge_legacy_rs;
+			comp_type.push("RS");
+			cBadge_type_setup.bTooltip += "&#10; - RS : Legacy, Requires Restart";
 		} else if (compSet.legacy == true && compSet.legacy_type == 'bootstrap') {
-			comp_badges += " " + cBadge_legacy_bs;
+			// comp_badges += " " + cBadge_legacy_bs;
+			comp_type.push("BS");
+			cBadge_type_setup.bTooltip += "&#10; - RS : Legacy, Bootstrap";
 		}
-		
+		cBadge_type_setup.bRightText = comp_type.join(',');
+		let cBadge_type = makeBadgeElement(cBadge_type_setup);
+		console.debug('types '+ cBadge_type.bRightText);
+		comp_badges += " " + cBadge_type;
+
 		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp60 === true && extJson.xpilib.ext_comp.comp60OldDate === true) {
 			comp_badges += " " + cBadge_tb60_date_warning;
 		}
