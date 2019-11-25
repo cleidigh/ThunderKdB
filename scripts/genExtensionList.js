@@ -30,10 +30,10 @@ const extsAllJsonFileName = `${rootDir}/xall/xall.json`;
 
 let ext_exdata = [
 	{id: 324492, slug: "importexporttools", alt_ext_tb68: 986686, adoptme: false, fWIP: false, alt_ext_tb68_tooltip: "ImportExportTools NG : Alternate Fork", bLink: '#986686-importexporttools-ng'},
-	{id: 4394, slug: "stationary", alt_ext_tb68: 324497, adoptme: true, fWIP: false},
-	{id: 881, slug: "display-quota", alt_ext_tb68: 505906, adoptme: false, fWIP: false},
+	{id: 4394, slug: "stationary", alt_ext_tb68: 324497, adoptme: true, fWIP: false, alt_ext_tb68_tooltip: "SmartTemplates4", bLink: "#324497-smarttemplate4"},
+	{id: 881, slug: "display-quota", alt_ext_tb68: 505906, adoptme: false, fWIP: false, alt_ext_tb68_tooltip: "IMAP Quota (Free Space)", bLink: "#505906-imap-quota-free-space"},
 	{id: 330424, slug: "printingtools", alt_ext_tb68: -1, adoptme: false, fWIP: true},
-	{id: 5582, slug: "confirm-address-5582", alt_ext_tb68: 986279, adoptme: false, fWIP: false},
+	{id: 5582, slug: "confirm-address-5582", alt_ext_tb68: 986279, adoptme: false, fWIP: false, alt_ext_tb68_tooltip: "Confirm Address2", bLink: "986279-confirm-address2"},
 	// {id: , slug: "", alt_ext_68: , adoptme: false, fWIP: false},
 	{id: 634298, slug: "cardbook", alt_ext_tb68: -1, adoptme: false, help_maintainer: true, fWIP: false},
 	{id: 2487, slug: "nostalgy", alt_ext_tb68: -1, adoptme: false, fWIP: true},
@@ -76,7 +76,7 @@ const cBadge_legacy_bs = makeBadgeElement({ bLeftText: 'Leg', bRightText: '%20bs
 
 // const cBadge_legacy_bs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20bs-purple.png)"
 // const cBadge_tb60_date_warning = "![Thunderbird 68 Compatible](https://img.shields.io/badge/60cV-%20Date%20Warning-darkyellow.png)"
-const cBadge_tb60_date_warning = makeBadgeElement({ bLeftText: '60cV', bRightText: 'Date Warning', bColor: 'darkyellow', bTooltip: 'Created before 60ESR - Compatibility Questionable', badgeBasedURL: 'https://img.shields.io/badge/'});
+const cBadge_tb60_date_warning = makeBadgeElement({ bLeftText: '60cV', bRightText: 'Date Warning', bColor: 'yellow', bTooltip: 'Created before 60ESR - Compatibility Questionable', badgeBasedURL: 'https://img.shields.io/badge/'});
 
 
 // const cBadge_alt_ext_68 = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Alt%2068-%20+-brightgreen.png)"
@@ -391,6 +391,13 @@ function createExtMDTableRow(extJson) {
 			cBadge_type_setup.bTooltip += "&#10; - RS : Legacy, Bootstrap";
 		}
 		cBadge_type_setup.bRightText = comp_type.join(',');
+		// if (comp_type  ===  [] && compSet.comp_other) {
+			console.debug(comp_type);
+			if (comp_type.length === 0 ) {
+			cBadge_type_setup.bRightText = "Legacy";
+			cBadge_type_setup.bTooltip = "Legacy";
+		}
+
 		let cBadge_type = makeBadgeElement(cBadge_type_setup);
 		console.debug('types '+ cBadge_type.bRightText);
 		comp_badges += " " + cBadge_type;
