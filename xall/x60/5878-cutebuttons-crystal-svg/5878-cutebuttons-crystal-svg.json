@@ -9,15 +9,15 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/61/61348.png?modified=1399738543"
         }
     ],
-    "average_daily_users": 1292,
+    "average_daily_users": 1223,
     "categories": {
-        "firefox": [
+        "thunderbird": [
             "appearance"
         ],
         "seamonkey": [
             "interface-customizations"
         ],
-        "thunderbird": [
+        "firefox": [
             "appearance"
         ]
     },
@@ -25,16 +25,16 @@
     "current_version": {
         "id": 2265317,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "60.*",
                 "min": "8.0"
             },
             "seamonkey": {
                 "max": "*",
                 "min": "2.5"
             },
-            "thunderbird": {
-                "max": "60.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "8.0"
             }
         },
@@ -263,7 +263,8 @@
     "xpilib": {
         "ext_comp": {
             "mext": false,
-            "comp60": true
+            "comp60": true,
+            "comp60OldDate": true
         }
     }
 }

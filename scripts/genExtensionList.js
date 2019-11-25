@@ -33,7 +33,7 @@ let ext_exdata = [
 	{id: 4394, slug: "stationary", alt_ext_tb68: 324497, adoptme: true, fWIP: false, alt_ext_tb68_tooltip: "SmartTemplates4", bLink: "#324497-smarttemplate4"},
 	{id: 881, slug: "display-quota", alt_ext_tb68: 505906, adoptme: false, fWIP: false, alt_ext_tb68_tooltip: "IMAP Quota (Free Space)", bLink: "#505906-imap-quota-free-space"},
 	{id: 330424, slug: "printingtools", alt_ext_tb68: -1, adoptme: false, fWIP: true},
-	{id: 5582, slug: "confirm-address-5582", alt_ext_tb68: 986279, adoptme: false, fWIP: false, alt_ext_tb68_tooltip: "Confirm Address2", bLink: "986279-confirm-address2"},
+	{id: 5582, slug: "confirm-address-5582", alt_ext_tb68: 986279, adoptme: false, fWIP: false, alt_ext_tb68_tooltip: "Confirm Address2", bLink: "#986279-confirm-address2"},
 	// {id: , slug: "", alt_ext_68: , adoptme: false, fWIP: false},
 	{id: 634298, slug: "cardbook", alt_ext_tb68: -1, adoptme: false, help_maintainer: true, fWIP: false},
 	{id: 2487, slug: "nostalgy", alt_ext_tb68: -1, adoptme: false, fWIP: true},

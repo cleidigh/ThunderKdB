@@ -9,15 +9,15 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1066,
+    "average_daily_users": 971,
     "categories": {
-        "firefox": [
+        "thunderbird": [
             "appearance"
         ],
         "seamonkey": [
             "interface-customizations"
         ],
-        "thunderbird": [
+        "firefox": [
             "appearance"
         ]
     },
@@ -25,12 +25,12 @@
     "current_version": {
         "id": 1906162,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
-                "min": "45.0a1"
-            },
             "thunderbird": {
                 "max": "63.*",
+                "min": "45.0a1"
+            },
+            "firefox": {
+                "max": "56.*",
                 "min": "45.0a1"
             }
         },
@@ -135,10 +135,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.68372,
-        "count": 16,
-        "average": 3.75,
-        "text_count": 16
+        "bayesian_average": 3.70131,
+        "count": 17,
+        "average": 3.7647,
+        "text_count": 17
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/viewabout/reviews/",
     "requires_payment": false,
@@ -165,7 +165,8 @@
         "ext_comp": {
             "mext": false,
             "comp60": true,
-            "comp61plus": true
+            "comp61plus": true,
+            "comp60OldDate": true
         }
     }
 }

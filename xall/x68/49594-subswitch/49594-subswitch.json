@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 571,
+    "average_daily_users": 639,
     "categories": {
         "thunderbird": [
             "composition",
@@ -18,26 +18,26 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2472868,
+        "id": 2472925,
         "compatibility": {
             "thunderbird": {
-                "max": "70.*",
-                "min": "68.2.0"
+                "max": "*",
+                "min": "68.1.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/subswitch/versions/2472868",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/subswitch/versions/2472925",
         "files": [
             {
-                "id": 1015974,
-                "created": "2019-11-12T21:44:48Z",
-                "hash": "sha256:2034bbff7dc760c9810723045b5d4f21c67dcca83baac654c6d5d73677ef443d",
+                "id": 1016032,
+                "created": "2019-11-23T22:13:48Z",
+                "hash": "sha256:e297ec51a53c6df6fb859873c5f1ead532ce580dfc9e603b135074f0e5d61065",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 70631,
+                "size": 72019,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015974/subswitch-0.9.37-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016032/subswitch-0.9.39-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -75,11 +75,11 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Please welcome Subswitch mostly aligned with TB 68."
+            "en-US": "few issues fixed (options defects in linux, toolbars integration, opening of hyper-links)\nnew site for reporting issues on github"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subswitch/versions/0.9.37",
-        "version": "0.9.37"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subswitch/versions/0.9.39",
+        "version": "0.9.39"
     },
     "default_locale": "en-US",
     "description": {
@@ -103,7 +103,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-11-13T11:05:12Z",
+    "last_updated": "2019-11-24T18:03:58Z",
     "name": {
         "en-US": "SubSwitch",
         "de": "SubSwitch",
@@ -297,10 +297,9 @@
     "weekly_downloads": 59,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2013-11-11T06:37:56Z"
         }

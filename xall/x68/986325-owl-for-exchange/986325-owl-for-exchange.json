@@ -9,41 +9,41 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 28045,
+    "average_daily_users": 28241,
     "categories": {
-        "firefox": [
-            "other"
+        "thunderbird": [
+            "composition",
+            "message-and-news-reading"
         ],
         "android": [
             "other"
         ],
-        "thunderbird": [
-            "composition",
-            "message-and-news-reading"
+        "firefox": [
+            "other"
         ]
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472913,
+        "id": 2472926,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
+                "max": "*",
                 "min": "60.5"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/owl-for-exchange/versions/2472913",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/owl-for-exchange/versions/2472926",
         "files": [
             {
-                "id": 1016020,
-                "created": "2019-11-22T01:51:51Z",
-                "hash": "sha256:fc0a7208471b54891bd17037e7ef39b8f8cf862535f18a7781287477b58755cf",
+                "id": 1016033,
+                "created": "2019-11-24T16:32:53Z",
+                "hash": "sha256:78c5f6cd8e3fdc3027ab3ea1e821811e2a9b5782305b4f9be71d2e1bd200b760",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 253942,
+                "size": 253961,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016020/eule_fur_exchange-0.7.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016033/eule_fur_exchange-0.7.1.1-tb.xpi?src=",
                 "permissions": [
                     "cookies",
                     "storage",
@@ -63,13 +63,10 @@
             },
             "url": null
         },
-        "release_notes": {
-            "en-US": "- Offer Hotmail users to migrate to IMAP. It was a bug that they were offered Owl.\n- Calendar fixes\n- Only show Internet email addresses in address book, not X500 addresses",
-            "de": ""
-        },
+        "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/versions/0.7.1",
-        "version": "0.7.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/versions/0.7.1.1",
+        "version": "0.7.1.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -114,7 +111,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-11-22T01:55:03Z",
+    "last_updated": "2019-11-24T16:35:02Z",
     "name": {
         "ru": "Сова для Exchange",
         "fr": "Chouette pour Exchange",
@@ -169,12 +166,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp61plus": true,
-            "compNoMax": true,
-            "comp60pv": true,
-            "comp60pv_date": "2019-02-13T16:36:13Z"
+            "comp60": true
         }
     }
 }

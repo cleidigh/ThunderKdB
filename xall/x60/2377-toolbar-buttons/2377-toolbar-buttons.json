@@ -9,29 +9,29 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 6986,
+    "average_daily_users": 6552,
     "categories": {
-        "firefox": [
-            "other"
-        ],
         "thunderbird": [
             "miscellaneous"
+        ],
+        "firefox": [
+            "other"
         ]
     },
     "contributions_url": null,
     "current_version": {
         "id": 1697614,
         "compatibility": {
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "61.*",
                 "min": "20.0"
             },
             "seamonkey": {
                 "max": "2.59",
                 "min": "2.20"
             },
-            "thunderbird": {
-                "max": "61.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "20.0"
             }
         },
@@ -195,7 +195,8 @@
         "ext_comp": {
             "mext": false,
             "comp60": true,
-            "comp61plus": true
+            "comp61plus": true,
+            "comp60OldDate": true
         }
     }
 }

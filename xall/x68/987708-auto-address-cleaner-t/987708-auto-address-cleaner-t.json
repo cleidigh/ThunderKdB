@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 43,
+    "average_daily_users": 105,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -58,7 +58,10 @@
         "version": "1.0.6"
     },
     "default_locale": "en-US",
-    "description": null,
+    "description": {
+        "en-US": "Removes comment, display name automatically from addresses (\"To\", \"Cc\", \"Bcc\") before sending mail.\n\nex.) \"Joe\" &lt; joe@example.com &gt; -&gt; joe@example.com\n\nthis extension can confirm address until sending mail.",
+        "ja": "メッセージ送信時にアドレス(To, Cc, Bcc)から表示名を自動的に除去します。\n\n例) \"雷鳥 太郎\" ＜taro@example.com＞ → taro@example.com\n\nメッセージ作成中は表示名はそのまま表示されます。\n送信されるメールから表示名は取り除きたいけれど、メッセージ作成中は宛先を間違えていないか確認するためにも表示しておきたいケースに有用です。"
+    },
     "developer_comments": {
         "en-US": "Only Auto Address Cleaner is compatible with Thunderbird after Web Extesnsions support. Since development and operation check are done on Daily, it may not work on normal Thunderbird.",
         "ja": "Auto Address CleanerをWeb Extesnsions対応以降のThunderbirdに対応させただけです。開発及び動作確認はDailyで行っているため、通常のThunderbirdでは動作しない可能性があります。"
@@ -99,7 +102,7 @@
     "slug": "auto-address-cleaner-t",
     "status": "public",
     "summary": {
-        "en-US": "Remove comment, display name from addresses before sending mail.",
+        "en-US": "Remove comment, display name from addresses before sending mail.\n\nThis add-on is a fork of Auto Address Cleaner.\n<a href=\"https://addons.thunderbird.net/thunderbird/addon/auto-address-cleaner/\" rel=\"nofollow\">https://addons.thunderbird.net/thunderbird/addon/auto-address-cleaner/</a>",
         "ja": "メッセージ送信時にアドレスから表示名を除去します。\n\nAuto Address CleanerをWeb Extesnsions対応以降のThunderbirdに対応させただけです。開発及び動作確認はDailyで行っているため、通常のThunderbirdでは動作しない可能性があります。"
     },
     "support_email": null,
