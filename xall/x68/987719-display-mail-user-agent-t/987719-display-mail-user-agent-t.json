@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 216,
+    "average_daily_users": 376,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -17,26 +17,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472928,
+        "id": 2472941,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2472928",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2472941",
         "files": [
             {
-                "id": 1016035,
-                "created": "2019-11-25T04:37:54Z",
-                "hash": "sha256:e860975451d467461644ff8987d998e4342f6e256bc7feb9056de1eaabaf9a6f",
+                "id": 1016048,
+                "created": "2019-11-28T07:18:49Z",
+                "hash": "sha256:2236b200cb8d3e3a4dea422a189cfa95dd1819fd64faadd0d9ab4b65650be6b6",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 3808471,
+                "size": 3828998,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016035/display_mail_user_agent_t-1.8.4.7-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016048/display_mail_user_agent_t-1.8.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -70,15 +70,19 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "- change Office 365 judgement method\n- fix size of displayed icon\n- add icon (1872 now)",
-            "ja": "- Office 365 Outlookの判定方法変更\n- アイコンが縮小表示されていたのを修正\n- アイコン追加 (全1872個)"
+            "en-US": "- change O365 judgement method. thanks to silversonic. (<a href=\"https://twitter.com/silversonicboom\" rel=\"nofollow\">https://twitter.com/silversonicboom</a>)\n- add icons (1876 now)\n- The icon can be placed on the left (There is a checkbox in the feedback page that appears when you click the icon)",
+            "de": "- O365-Bewertungsmethode ändern. dank silversonic. ( <a href=\"https://twitter.com/silversonicboom\" rel=\"nofollow\">https://twitter.com/silversonicboom</a> )\n- Icons hinzufügen (jetzt 1876)\n- Das Symbol kann links platziert werden. (Auf der Feedback-Seite befindet sich ein Kontrollkästchen, das angezeigt wird, wenn Sie auf das Symbol klicken.)",
+            "ja": "Office 365の判定方法を変更。silversonic(<a href=\"https://twitter.com/silversonicboom)さんに感謝\" rel=\"nofollow\">https://twitter.com/silversonicboom)さんに感謝</a>\nアイコンの追加 (全1876個)\nアイコンを左に配置出来るようにした(アイコンをクリックすると表示されるフィードバックページ内にチェックボックスあり)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/1.8.4.7",
-        "version": "1.8.4.7"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/1.8.5",
+        "version": "1.8.5"
     },
     "default_locale": "en-US",
-    "description": null,
+    "description": {
+        "en-US": "This addon is fork of Diaplay Mail User Agent(DispMUA).\n<a href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\" rel=\"nofollow\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a href=\"http://www.juergen-ernst.de/addons/dispmua.html\" rel=\"nofollow\">http://www.juergen-ernst.de/addons/dispmua.html</a>",
+        "ja": "このアドオンはDiaplay Mail User Agent(DispMUA)のフォークです。\n<a href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\" rel=\"nofollow\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a href=\"http://www.juergen-ernst.de/addons/dispmua.html\" rel=\"nofollow\">http://www.juergen-ernst.de/addons/dispmua.html</a>"
+    },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/edit",
     "guid": "DisplayMailUserAgent-T@Toshi_",
@@ -109,7 +113,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-11-25T11:50:40Z",
+    "last_updated": "2019-11-28T15:58:57Z",
     "name": {
         "fr": "Display Mail User Agent T",
         "de": "Display Mail User Agent T",
@@ -160,7 +164,13 @@
         "en-US": "https://twitter.com/Toshi_ATN"
     },
     "tags": [
-        "firefox57"
+        "display",
+        "dispmua",
+        "firefox57",
+        "mail",
+        "mua",
+        "user agent",
+        "x-mailer"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/",

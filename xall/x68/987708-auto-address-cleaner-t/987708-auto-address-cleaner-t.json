@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 105,
+    "average_daily_users": 168,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -18,26 +18,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472857,
+        "id": 2472890,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-address-cleaner-t/versions/2472857",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-address-cleaner-t/versions/2472890",
         "files": [
             {
-                "id": 1015963,
-                "created": "2019-11-11T04:51:43Z",
-                "hash": "sha256:954a2614a9eeaadd36858cf02ce92925dcf3090642ad378161fbce1e5a256aa8",
+                "id": 1015996,
+                "created": "2019-11-19T06:01:48Z",
+                "hash": "sha256:2c0135075b5284d2343fa38ad784882f4057e6c99e1a842980a79ba3e3dcc404",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 7979,
+                "size": 7984,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015963/auto_address_cleaner_t-1.0.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015996/auto_address_cleaner_t-1.0.7-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,17 +50,17 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "support 68.2",
-            "ja": ""
+            "en-US": "Fixed a bug that display name did not disappear when sending with drafts automatically saved.",
+            "ja": "自動で下書き保存された状態で送信すると表示名が消えなかったバグを修正"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-address-cleaner-t/versions/1.0.6",
-        "version": "1.0.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-address-cleaner-t/versions/1.0.7",
+        "version": "1.0.7"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Removes comment, display name automatically from addresses (\"To\", \"Cc\", \"Bcc\") before sending mail.\n\nex.) \"Joe\" &lt; joe@example.com &gt; -&gt; joe@example.com\n\nthis extension can confirm address until sending mail.",
-        "ja": "メッセージ送信時にアドレス(To, Cc, Bcc)から表示名を自動的に除去します。\n\n例) \"雷鳥 太郎\" ＜taro@example.com＞ → taro@example.com\n\nメッセージ作成中は表示名はそのまま表示されます。\n送信されるメールから表示名は取り除きたいけれど、メッセージ作成中は宛先を間違えていないか確認するためにも表示しておきたいケースに有用です。"
+        "en-US": "This addpn is fork of Auto Address Cleaner.\n<a href=\"https://addons.thunderbird.net/thunderbird/addon/auto-address-cleaner/\" rel=\"nofollow\">https://addons.thunderbird.net/thunderbird/addon/auto-address-cleaner/</a>\n\nRemoves comment, display name automatically from addresses (\"To\", \"Cc\", \"Bcc\") before sending mail.\n\nex.) \"Joe\" &lt; joe@example.com &gt; -&gt; joe@example.com\n\nthis extension can confirm address until sending mail.",
+        "ja": "このアドオンはAuto Address Cleanerのフォークです。\n<a href=\"https://addons.thunderbird.net/thunderbird/addon/auto-address-cleaner/\" rel=\"nofollow\">https://addons.thunderbird.net/thunderbird/addon/auto-address-cleaner/</a>\n\nメッセージ送信時にアドレス(To, Cc, Bcc)から表示名を自動的に除去します。\n\n例) \"雷鳥 太郎\" ＜taro@example.com＞ → taro@example.com\n\nメッセージ作成中は表示名はそのまま表示されます。\n送信されるメールから表示名は取り除きたいけれど、メッセージ作成中は宛先を間違えていないか確認するためにも表示しておきたいケースに有用です。"
     },
     "developer_comments": {
         "en-US": "Only Auto Address Cleaner is compatible with Thunderbird after Web Extesnsions support. Since development and operation check are done on Daily, it may not work on normal Thunderbird.",
@@ -83,7 +83,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-11-13T19:27:04Z",
+    "last_updated": "2019-11-27T10:37:24Z",
     "name": {
         "en-US": "Auto Address Cleaner T",
         "ja": "Auto Address Cleaner T"
@@ -110,7 +110,11 @@
         "en-US": "https://twitter.com/Toshi_ATN"
     },
     "tags": [
-        "firefox57"
+        "address",
+        "clean up",
+        "display name",
+        "firefox57",
+        "name"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-address-cleaner-t/",

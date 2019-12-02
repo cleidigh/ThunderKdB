@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 14723,
+    "average_daily_users": 14830,
     "categories": {
         "thunderbird": [
             "calendar",
@@ -18,26 +18,26 @@
     },
     "contributions_url": "https://www.paypal.me/johnbieling",
     "current_version": {
-        "id": 2472768,
+        "id": 2472945,
         "compatibility": {
             "thunderbird": {
                 "max": "69.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dav-4-tbsync/versions/2472768",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dav-4-tbsync/versions/2472945",
         "files": [
             {
-                "id": 1015868,
-                "created": "2019-10-22T21:14:09Z",
-                "hash": "sha256:c370e04e291e04de36f1d2587c280a40ef0460b8d7d47c3529be26812fad78ac",
+                "id": 1016052,
+                "created": "2019-11-28T22:05:07Z",
+                "hash": "sha256:fd1ae85844b24bf5b8645abc10825402714a4f8bc6d5c29dcadee46213208e12",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 245155,
+                "size": 257950,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015868/provider_fur_caldav_carddav-1.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016052/provider_fur_caldav_carddav-1.6-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -49,10 +49,13 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "* adding Google support (OAuth)\n* locale updates\n* bugfixes",
+            "de": ""
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dav-4-tbsync/versions/1.5",
-        "version": "1.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dav-4-tbsync/versions/1.6",
+        "version": "1.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -77,7 +80,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-10-23T16:01:37Z",
+    "last_updated": "2019-11-28T22:23:20Z",
     "name": {
         "en-US": "Provider for CalDAV & CardDAV",
         "de": "Provider für CalDAV & CardDAV"
@@ -154,10 +157,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.70653,
-        "count": 15,
-        "average": 4.8,
-        "text_count": 15
+        "bayesian_average": 4.72445,
+        "count": 16,
+        "average": 4.8125,
+        "text_count": 16
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dav-4-tbsync/reviews/",
     "requires_payment": false,
@@ -165,8 +168,8 @@
     "slug": "dav-4-tbsync",
     "status": "public",
     "summary": {
-        "en-US": "This extension adds support for CalDAV &amp; CardDAV accounts to the Thunderbird Sync manager \"TbSync\".",
-        "de": "Erweitert den Thunderbird Sync Manager \"TbSync\" um die Möglichkeit, CalDAV &amp; CardDAV Konten zu verwalten und zu synchronisieren."
+        "en-US": "This extension adds support for CalDAV &amp; CardDAV accounts to the Thunderbird Sync manager \"TbSync\". Including iCloud, Google, ownCloud, Nextcloud, Radicale and many more.",
+        "de": "Erweitert den Thunderbird Sync Manager \"TbSync\" um die Möglichkeit, CalDAV &amp; CardDAV Konten zu verwalten und zu synchronisieren. Einschließlich iCloud, Google, ownCloud, Nextcloud, Radicale und vielen mehr."
     },
     "support_email": {
         "en-US": "john.bieling@gmx.de",
@@ -181,6 +184,7 @@
         "carddav",
         "dav",
         "firefox57",
+        "google",
         "icloud",
         "nextcloud",
         "owncloud",

@@ -1,0 +1,200 @@
+{
+    "id": 546430,
+    "authors": [
+        {
+            "id": 11152920,
+            "name": "Paweł Tomulik",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ptomulik/",
+            "username": "ptomulik",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 66,
+    "categories": {
+        "thunderbird": [
+            "folders-and-filters",
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2472953,
+        "compatibility": {
+            "thunderbird": {
+                "max": "69.*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/resubmit/versions/2472953",
+        "files": [
+            {
+                "id": 1016060,
+                "created": "2019-11-30T20:04:22Z",
+                "hash": "sha256:29cdc32fdc0e6833d13de8184a7d5e2712eef6dacdd445729f9e3308c7ff7bb7",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 17819,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016060/resubmit-2.0.0a1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "Starts 2.x line, which is intended to support TB 68+."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/resubmit/versions/2.0.0a1",
+        "version": "2.0.0a1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>Resubmit</b>\n\nSimple Thunderbird add-on for every-day re-submission of messages received from multiple senders.\n\n<b>Overview</b>\n\nThis tool helps with an automatic (re)submission of messages to a predefined destination. Its most common purpose is a (re)submission of spam samples to a spam reporting centre. Having a bunch of messages (possibly forwarded to you as attachments), the <b>Resubmit</b> tool composes a new message with the original one attached to it and sends the new message to a specified recipient(s). It's particularly useful as a tool for supervised spam/ham sample resubmission.\n\n<b>Motivation</b>\n\nThe following was a motivating use case for the <b>Resubmit</b> add-on.\n\nMy users send me spam/ham samples and I'm supposed to resubmit them to McAfee labs. According to their article <a href=\"https://community.mcafee.com/docs/DOC-1409\" rel=\"nofollow\">Best Practices - Submitting spam samples to McAfee</a>, the samples should be included as attachments into <b>new</b> messages. The emails with samples should originate from a customer address (e.g. <i>admin@example.com</i>) known to McAfee. I receive about ten samples daily and it's quite boring and backbreaking task to extract all the received attachments and re-submit them manually. So, this is basically job for a tool such as <b>Resubmit</b> add-on.\n\n<b>More details</b>\n\nThe extension defines six new filter actions, which may be used to create custom filters for resubmission. The filter actions are:\n\n<ul><li><b>Resubmit - Send Now (Attachments + Template)</b>,</li><li><b>Resubmit - Send Later (Attachments + Template)</b>, </li><li><b>Resubmit - Compose (Attachments + Template)</b>,</li><li><b>Resubmit - Send Now (Message + Template)</b>,</li><li><b>Resubmit - Send Later (Message + Template)</b>, and</li><li><b>Resubmit - Compose (Message + Template)</b>.</li></ul>\nEach action uses a template message which defines all the details of the <b>new</b> message to be sent. Specifically, it contains sender and recipient addresses, subject and content. The filter action just appends an attachment (extracted from the source message) to the template and submits it in this form. \n\nThe <b>Resubmit - Send Now (Attachments + Template)</b> action wraps an extracted attachment with template message and sends it to recipient(s) specified in the template. <b>The Resubmit - Send Later (Attachment + Template)</b> does the similar, but queues the composed new message to be sent later. The <b>Resubmit - Compose (Attachment + Template)</b> opens every new message in a compose window and lets you inspect it, modify, send, save, queue or do whatever the compose window allows to. These actions may be used to resubmit messages forwarded to you as attachments.\n\nThe <b>Resubmit - Send Now (Message + Template)</b> action wraps the original message with template message and sends it to recipient(s) specified in the template (it's equivalent to a forward as attachment functionality, so that the source message get's forwarded as an attachment to template message). The <b>Resubmit - Send Later (Message + Template)</b> does the similar, but queues the composed new message to be sent later. The <b>Resubmit - Compose (Message + Template)</b> opens every new message in a compose window and lets you inspect it, modify, send, save, queue or do whatever the compose window allows to. These actions may be used to submit original messages (original spam messages received from the wild).\n\n<b>Usage</b>\n\nThe usage is three-step. First step is to prepare message template. Second is to setup message filter with one of the <b>Resubmit</b>'s actions enabled. Third is to use the filter.\n\n<ol><li>Compose the message template. Open new message, define the recipient address, write some content and save as template.</li><li> Create new filter. Go to <i>Tools</i> | <i>Message Filters</i>, create a new filter, name it for example <i>Process User Reported Spam</i>. Configure the filter conditions and add one of the <b>Resubmit</b> actions, for  example <b>Resubmit - Send Now (Attachments + Template)</b>. Choose the previously saved template.</li><li>Apply the filter, e.g. <i>Tools</i> | <i>Run Filters on Message</i>.</li></ol>\nThis should be easy!\n\n<b>Configuration</b>\n\nIn most cases, there is actually nothing  to configure on behalf of <b>Resubmit</b>. The defaults provided by the add-on should be fine. If, however, you need to tune the functionality of <b>Resubmit</b>, click on the <i>configure</i> on the addon item and adjust necessary options.\n\nThe current configuration dialog provides two tabs:\n\n<ul><li>Filter actions,</li><li>Debugging.</li></ul>\nIn the <b>Filter actions</b> tab you may configure particular filter actions implemented by <b>Resubmit</b>. For each filter action there are basically two settings - ``Enable ...`` check-box and ``Max.  no. of ....`` text field. The ``Enable ...`` check-box enables or disables the action. If you disable a certain action, it will be unavailable for selection when creating mail filters. The ``Max. no. of ...`` defines the maximum number of messages being sent concurrently or (in case of <b>Compose</b> action) maximum number of compose windows being opened simultaneously. \n\nOn the <b>Debugging</b> pane you may enable/disable debugging and set logging verbosity (debug level).\n\n<b>Debugging</b>\n\nIf you need to change debugging options for <b>Resubmit</b> but have problems with running the configuration dialog, go to the Thunderbird's settings editor (<i>Edit</i> | <i>Preferences</i> | <i>Advanced</i> | <i>Settings editor</i>) and adjust the following preferences:\n\n<code>\n   extensions.resubmit.debug.enable\n   extensions.resubmit.debug.level\n</code>\n\nThe possible values of debugging level are ``1`` to ``7``.\n\nIf you need early debugging, run the <b>Thunderbird</b> from CLI as follows::\n\n<code>\n    thunderbird -jsconsole &amp; \n</code>\n\n<b>License</b>\n\nResubmit - a Thunderbird extension to re-submit attached messages.\n\nCopyright (C) 2014-2019  Paweł Tomulik &lt;ptomulik@meil.pw.edu.pl&gt;\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with this program.  If not, see &lt;<a href=\"http://www.gnu.org/licenses/\" rel=\"nofollow\">http://www.gnu.org/licenses/</a>&gt;",
+        "pl": "<b>Resubmit</b>\n\nProsty dodatek do rutynowego forwardowania wiadomości otrzymywanych od wielu odbiorców.\n\n<b>Overview</b>\n\nTo narzędzie umożliwia automatyzację procesu forwardowania wiadomości do predefiniowanych odbiorców.  Typowym przykładem użycia może być forwardowanie do centrum antyspamowego próbek spamu nadsyłanych do administratora sieci/serwisu pocztowego przez użytkowników, bądź przesyłanie do centrum antyspamowego próbek spamu zebranych samodzielnie.\n\nMając wiele wiadomości (mogą to być emaile zgromadzone w folderze, bądź np. wiadomości nadesłane jako załączniki przez użytkowników serwisu pocztowego) dodatek <b>Resubmit</b> komponuje z każdej takiej wiadomości nową wiadomość do której wkłada oryginalną wiadomość jako załącznik. Nowa wiadomość tworzona jest wg przygotowanego wcześniej szablonu zawierającego tytuł, adresatów oraz treść. Może ona być następnie wysłana natychmiast, złożona do późniejszego wysłania w folderze <i>Wysłane</i> bądź wyświetlona w oknie kompozytora wiadomości do edycji/wysłania.\n\n<b>Przykład użycia</b>\n\nPoniżej przykład użycia, który skłonił autora do opracowania dodatku <b>Resubmit</b>.\n\nUżytkownicy niewielkiego serwisu pocztowego, którym miałem okazję się opiekować, przysyłali mi codziennie próbki spamu, które następnie miałem przesyłać dalej do laboratorium McAfee. Zgodnie z zaleceniami opisanymi w artykule <a href=\"https://community.mcafee.com/docs/DOC-1409\" rel=\"nofollow\">Best Practices - Submitting spam samples to McAfee</a>, nadsyłane próbki miały być nadsyłane jako załączniki do nowej wiadomości i miały wychodzić z ustalonego adresu klienta firmy McAfee (np. <i>admin@example.com</i>) znanego firmie McAfee. Otrzymywałem ok. dziesięciu próbek dziennie, więc szybko znudziło mi się ciągłe ręczne wypakowywanie załączonych wiadomości nadesłanych przez użytkowników i pakowanie ich do nowych e-maili w celu dalszego przesłania. To zmotywowało mnie do opracowania niniejszego dodatku. Idealnie sprawdził się w tej roli.\n\n\n<b>Więcej szczegółów</b>\n\nDodatek definiuje sześć nowych akcji dla filtrów. Akcje te mogą być użyte do stworzenia nowych filtrów realizujących automatyczne forwardowanie wiadomości. Te akcje to:\n\n<ul><li><b>Resubmit - Send Now (Attachments + Template)</b>,</li><li><b>Resubmit - Send Later (Attachments + Template)</b>, </li><li><b>Resubmit - Compose (Attachments + Template)</b>,</li><li><b>Resubmit - Send Now (Message + Template)</b>,</li><li><b>Resubmit - Send Later (Message + Template)</b>, oraz</li><li><b>Resubmit - Compose (Message + Template)</b>.</li></ul>\nKażda z powyższych akcji używa zapisanego szablonu definiującego wszystkie szczegóły <b>nowej</b> wiadomości, która będzie wysyłana przez <b>resubmit</b>. W szczególności, szablon zawiera adresy odbiorców, tytuł i treść wiadomości. Akcje natomiast jedynie dodają załącznik (wyciągnięty wcześniej z przetwarzanej wiadomości źródłowej) do szablonu i wysyłają tak skomponowaną nową wiadomość.\n\nAkcja  <b>Resubmit - Send Now (Attachments + Template)</b> zawija wyciągnięty z oryginalnej wiadomości załącznik-wiadomość w nową wiadomość-szablon i wysyła ją do określonych w szablonie odbiorców (działa to więc na zasadzie forwarduj załącznik jako załącznik). Akcja <b>Resubmit - Send Later (Attachment + Template)</b> działa podobnie, ale kolejkuje nową wiadomość do wysłania (nie wysyła natychmiast). Akcja <b>Resubmit - Compose (Attachment + Template)</b> otwiera każdą nową wiadomość w oknie kompozytora wiadomości co umożliwia jej edycję, zapisanie, wysłanie itd. Te akcje mogą być użyte do forwardowania wiadomości przysłanych jako załączniki.\n\nAkcja <b>Resubmit - Send Now (Message + Template)</b> pakuje oryginalną wiadomość (a nie zawarty w niej załącznik) jako załącznik do szablonowej wiadomości i wysyła taką nową wiadomość do odbiorców określonych w szablonie (jest to równoważne opcji \"prześlij dalej jako załącznik\"). Akcja <b>Resubmit - Send Later (Message + Template)</b> działa podobnie, z tym że kolejkuje nową wiadomość do wysłania zamiast wysłać ją natychmiast.  Akcja <b>Resubmit - Compose (Message + Template)</b> otwiera każdą nowo utworzoną wiadomość w oknie kompozytora wiadomości. Te akcje mogą być np. użyte do bezpośredniego raportowania spamu (wiele wiadomości jednocześnie) odfiltrowanego przez program pocztowy bądź zebranego ręcznie w jednym folderze (oryginalne wiadomości otrzymane z dziczy).\n\n\n<b>Krótka instrukcja obsługi</b>\n\nSposób użycia dodatku przebiega w trzech krokach. Pierwszy krok to przygotowanie szablonu wiadomości, drugi to zdefiniowanie filtra używającego jednej z akcji dodatku <b>resubmit</b>. Trzeci to użycie przygotowanego filtra. Przygotowanie szablonu i filtra robi się tylko raz, natomiast rutynowa codzienna czynność ogranicza się jedynie do zastosowania przygotowanego filtra do wybranych wiadomości.\n\n<ol><li>Utwórz nową wiadomość/szablon. Otwórz okno kompozytora wiadomości, zdefiniuj adresy odbiorców, wpisz jakąś treść wiadomości i zapisz ją jako Szablon.</li><li> Utwórz nowy filtr. Przejdź do menu <i>Tools</i> | <i>Message Filters</i>, utwórz nowy filtr, nazwij go np. <i>Process User Reported Spam</i>. Skonfiguruj kryteria stosowania filtra i dodaj jedną z akcji dodatku <b>Resubmit</b>, np. <b>Resubmit - Send Now (Attachments + Template)</b>. Wybierz poprzednio zapisany szablon jako parametr akcji.</li><li>Zastosuj filtr, np. <i>Tools</i> | <i>Run Filters on Message</i>.</li></ol>\nMyślę, że jest to łatwe!\n\n<b>Konfiguracja</b>\n\nW większosci przypadków nie ma potrzeby konfigurowania niczego, poza przygotowaniem filtrów opisanym w poprzednim rozdziale. Defaultowe ustawienia dodatku powinny być OK. Jeśli jednak wyniknie potrzeba dostrojenia funkcjonalnosci <b>Resubmit</b>'a, kliknij w guzik <i>configure</i> w pozycji dodatku <b>Resubmit</b> na liście dodatków  i dopasuj ustawienia do swoich potrzeb.\n\n\nObecnie okno dialogowe konfiguracji dostarcza dwie zakładki:\n\n<ul><li>Filter actions,</li><li>Debugging.</li></ul>\nW zakładce <b>Filter actions</b> można konfigurować parametry akcji zaimplementowane przez <b>Resubmit</b>. Dla każdej akcji mamy dwa parametry -- checkbox o nazwie``Enable ...``  i pole tekstowe ``Max. no. of...``. Checkbox ``Enable...`` włącza lub wyłącza akcję. Jeśli wyłączysz daną akcję, będzie ona niedostępna na liście akcji podczas konstruowania filtrów. Pole ``Max. no. of ...`` definiuje maksymalną liczbę wiadomości będących wysyłanych równolegle lub (w przypadku akcji <b>Compose ...</b>) maksymalną liczbę okien kompozytora otwieranych jednocześnie.\n\nW zakładce <b>Debugging</b> możesz włączyć/wyłączyć debugowanie i ustawić poziom gadatliwości loggera (debug level).\n\n<b>Debugowanie</b>\n\nJeśli musisz ustawić opcje debuggowania dla dodatku <b>Resubmit</b> ale masz problem z uruchomieniem dialogu konfiguracyjnego, przejdź do edytora ustawień Thunderbirda (<i>Edit</i> | <i>Preferences</i> | <i>Advanced</i> | <i>Settings editor</i>) i dostrój następujące ustawienia:\n\n<code>\n   extensions.resubmit.debug.enable\n   extensions.resubmit.debug.level\n</code>\n\nDopuszczalne wartosci dla \"...debug.level\" leżą w zakresie od  ``1`` do ``7``.\n\n\nJeśli jest potrzeba wczesnego włączenia debugowania, uruchom <b>Thunderbirda</b> z wiersza poleceń jak poniżej::\n<code>\n    thunderbird -jsconsole &amp; \n</code>\n\n<b>License</b>\n\nResubmit - a Thunderbird extension to re-submit attached messages.\n\nCopyright (C) 2014-2019  Paweł Tomulik &lt;ptomulik@meil.pw.edu.pl&gt;\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with this program.  If not, see &lt;<a href=\"http://www.gnu.org/licenses/\" rel=\"nofollow\">http://www.gnu.org/licenses/</a>&gt;"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/resubmit/edit",
+    "guid": "resubmit@ezamber.pl",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/546/546430-64.png?modified=1b958f5c",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/546/546430-32.png?modified=1b958f5c",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/546/546430-64.png?modified=1b958f5c"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-11-30T20:45:13Z",
+    "name": {
+        "en-US": "Resubmit",
+        "pl": "Resubmit"
+    },
+    "previews": [
+        {
+            "id": 143918,
+            "caption": null,
+            "image_size": [
+                700,
+                189
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/143/143918.png?modified=1575144872",
+            "thumbnail_size": [
+                320,
+                86
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/143/143918.png?modified=1575144872"
+        },
+        {
+            "id": 143920,
+            "caption": null,
+            "image_size": [
+                700,
+                189
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/143/143920.png?modified=1575144872",
+            "thumbnail_size": [
+                320,
+                86
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/143/143920.png?modified=1575144872"
+        },
+        {
+            "id": 172087,
+            "caption": null,
+            "image_size": [
+                700,
+                480
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/172/172087.png?modified=1575144872",
+            "thumbnail_size": [
+                292,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/172/172087.png?modified=1575144872"
+        },
+        {
+            "id": 143924,
+            "caption": null,
+            "image_size": [
+                496,
+                153
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/143/143924.png?modified=1575144872",
+            "thumbnail_size": [
+                320,
+                99
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/143/143924.png?modified=1575144872"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.24831,
+        "count": 3,
+        "average": 4.6667,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/resubmit/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/546430",
+    "slug": "resubmit",
+    "status": "public",
+    "summary": {
+        "en-US": "(Re)submit multiple messages to a predefined recipient(s)",
+        "pl": "Re-submit messages received from users to a predefined recipient(s)."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/ptomulik/mozilla-resubmit",
+        "pl": "https://github.com/ptomulik/mozilla-resubmit"
+    },
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/resubmit/",
+    "weekly_downloads": 30,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp68": true,
+            "comp69plus": true,
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2018-12-18T11:18:37Z"
+        }
+    }
+}

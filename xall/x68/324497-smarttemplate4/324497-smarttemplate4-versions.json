@@ -1,5 +1,48 @@
 [
     {
+        "id": 2472948,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "69.0",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2472948",
+        "files": [
+            {
+                "id": 1016055,
+                "created": "2019-11-29T11:30:03Z",
+                "hash": "sha256:f1cd8dcc88c4039ce98d334d19858556c27599948a54f8460bcf16e7284898a1",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 634884,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016055/smarttemplate4-2.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 7344,
+            "name": {
+                "en-US": "CC BY-ND 4.0"
+            },
+            "text": {
+                "en-US": "LICENSE\n\n\nSmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the SmartTemplate4 Add-on (distributed as a XPI file) and all files contained within it\nPremium Feature - a feature or function of the software which is protected by the mechanism outlined below\nSmartTemplate4 Pro - Refers to the registered version of SmartTemplate4\n\n\nAll contents of The Program are subject to the GNU General Public License Version 3\n(the \"License\"); you may not use the file except in compliance with\nthe License. You may obtain a copy of the complete License at\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/legalcode\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a>\nFor a  human-readable summary thereof please refer\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by \na paid registration scheme. Registration keys can be obtained via various licensing links\nfrom within the software (Settings &gt; Advanced &gt; SmartTemplate4 Pro tab, SmartTemplate4 context menu, \npremium notification messages). The profits from Registration are used to develop\nand distribute the program further and to feed the author, as he would like to spend\nmore time developing open source software. Some Premium features may be available in \nthe free software, but they may be restricted (e.g. through a notification to the \nregistration). Premium features are not essential to the core functionality of \nthe Program, but are there to provide an incentive for financially supporting the \nenhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys.\nRegistration keys are personal, non-transferrable and usually restricted to a time period\n(typically one year). To protect their personal nature they are tied to the user's \nEmail address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused \nin order to avoid our monetisation by giving this away for free or cheaper than us \nthus disincentivising the current developers from putting a lot of time into \ndevelopment and support.\n\n\nIf plan to you use large portions of the code please contact the author\n(Axel Grude)\nAnd Support (Marky Mark DE)\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nCreative Commons (CC BY-ND 4.0) License for more details.\n\n\nATTRIBUTIONS\n\nSmartTemplate4 includes work by\n\nCurrent developer: \nAxel Grude\nMarky Mark DE\n\nContributors: \nAris - style support\ntool8 - development, Version 0.7.2 - 0.8.0\n\nTranslations: \nThe current list of translators is listed in the install.rdf (Add-ons Manager / About) and\ndisplayed on the \"about\" Tab.\n\nNOIA ICON SET:\nThis Iconset is Published under GNU LESSER GENERAL PUBLIC LICENSE \n-&gt; see:Noia_KDE_0.95.tar_4.tgz / lesser.txt\n\t\t       \nMade by Carlitus (Carles Carbonell Bernado)\n &lt;mail@carlitus.net&gt;"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.6"
+        },
+        "release_notes": {
+            "en-US": "Get SmartTemplate⁴ Pro <a href=\"https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=amo-version-page\" rel=\"nofollow\">at my web shop</a> during black Friday week for <i>50% off</i> only during Black Friday week - 29th November - 6th December! This will give you access to <a href=\"http://smarttemplate4.mozdev.org/premium.html\" rel=\"nofollow\">premium features</a> and remove all trial reminders. You can even enable silent updates if you want.\n\n<b>2.6 - Improvements</b>\n\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/7\" rel=\"nofollow\">[issue 7]</a> Losing all typed text in compose window when changing identity / signature not updated correctly. \n\nNormally, SmartTemplate⁴ is designed to do all processing (building the email and replacing variables) when opening the compose window; it also does this when you change identity provided you have not typed any text in the body of the email. In that case, Thunderbird rebuilds the email itself, thereby ignoring SmartTemplate and reusing the typed text. This could also lead to losing typed text and variables within the signature not being replaced.\n\nIn this new version this behavior is improved: SmartTemplate⁴ will now process the (replaced) Signature if it contains SmartTemplate variables. It will also replace all \"late resolved\" variable fields (such as %to(name)%) when changing the identity. Since Thunderbird cannot recreate the JavaScript necessary for these advanced functions all \"late resolved\" variables will be replaced; they will be removed if they cannot be replaced meaningfully. \n\nWhen working with these variable fields in New Emails, I recommend to either resolve them first by making sure the <i>To</i> address and <i>subject</i> line are populated, or to  not start typing until the correct identity is selected.\n\nFor using variables such as <code>%identity(name)%</code> within the signature, make sure to activate the appropriate Global Signature settings.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.6",
+        "version": "2.6"
+    },
+    {
         "id": 2472909,
         "channel": "listed",
         "compatibility": {

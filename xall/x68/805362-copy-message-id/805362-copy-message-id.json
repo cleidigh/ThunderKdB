@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12959/12959121.png?modified=1492036029"
         }
     ],
-    "average_daily_users": 108,
+    "average_daily_users": 119,
     "categories": {
         "thunderbird": [
             "composition"
@@ -17,26 +17,26 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2079711,
+        "id": 2472911,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "31.0"
+                "max": "*",
+                "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-message-id/versions/2079711",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-message-id/versions/2472911",
         "files": [
             {
-                "id": 629060,
-                "created": "2017-04-12T22:38:45Z",
-                "hash": "sha256:2ec9eee677c365415f33eaa3d676b6ee70e99933a903d32c2a879f9dd2293dee",
+                "id": 1016018,
+                "created": "2019-11-21T18:13:47Z",
+                "hash": "sha256:1c3eb11429d6cc63749036a8ae1daac4f86e5dec86317f893f12a8f8e3f8bd95",
                 "is_restart_required": true,
-                "is_webextension": false,
+                "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 7303,
+                "size": 7130,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/629060/copy_message_id-1.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016018/copy_message_id-1.0.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -48,10 +48,12 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
-        "reviewed": "2017-04-13T04:46:59Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-message-id/versions/1.0.1",
-        "version": "1.0.1"
+        "release_notes": {
+            "en-US": "Support Thunderbird 68.*"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-message-id/versions/1.0.3",
+        "version": "1.0.3"
     },
     "default_locale": "en-US",
     "description": null,
@@ -72,7 +74,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2017-04-13T04:46:59Z",
+    "last_updated": "2019-11-27T10:25:49Z",
     "name": {
         "en-US": "Copy Message ID"
     },
@@ -113,17 +115,19 @@
         "en-US": "jkahn@barracuda.com"
     },
     "support_url": null,
-    "tags": [],
+    "tags": [
+        "firefox57"
+    ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-message-id/",
     "weekly_downloads": 37,
     "xpilib": {
         "ext_comp": {
-            "mext": false,
+            "compNoMax": true,
+            "mext": true,
             "comp68": true,
-            "comp60": true,
-            "comp61plus": true,
-            "comp60OldDate": true
+            "comp60pv": true,
+            "comp60pv_date": "2017-04-12T22:38:45Z"
         }
     }
 }

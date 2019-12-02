@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1567718031"
         }
     ],
-    "average_daily_users": 81061,
+    "average_daily_users": 81338,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -21,26 +21,26 @@
     },
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Send%20Later%20add%2don%20%28%245%2e00%20recommended%20donation%2c%20but%20give%20what%20you%27d%20like%21%29&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donat",
     "current_version": {
-        "id": 2472910,
+        "id": 2472940,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2472910",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2472940",
         "files": [
             {
-                "id": 1016017,
-                "created": "2019-11-21T17:35:48Z",
-                "hash": "sha256:8f4ec53f4077e33e5405c7f6a8dd813bd38a7ff2d481f73968326b0dfe5bfae7",
+                "id": 1016047,
+                "created": "2019-11-27T17:32:30Z",
+                "hash": "sha256:eadf86d08f8763785d400590c83176988424f0c4a154701a0ea38d91ea75ab3e",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 487001,
+                "size": 487053,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016017/send_later-7.3.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016047/send_later-7.3.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -53,11 +53,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fix date parsing in the Polish locale\n\nPrior to release 7.3.0, we weren't actually parsing dates in Polish for people using Thunderbird in Polish, so we didn't notice that there was a bug for Polish in the third-party date-parsing library Send Later users. Starting in 7.3.0 we were doing a better job of selecting the language for parsing dates, so we started actually trying to parse dates in Polish, which caused the hidden bug to show up.\n\nIn this release we patch that bug, so now Polish users of the add-on should be able to type dates into the prompt window."
+            "en-US": "<strong>Finish up the last few strings in the Polish translation.</strong>\n\nThanks to Wojciech Kazimierczak for getting the Polish translation across the finish line!"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/7.3.1",
-        "version": "7.3.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/7.3.3",
+        "version": "7.3.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -148,7 +148,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2019-11-21T20:03:24Z",
+    "last_updated": "2019-11-27T18:26:50Z",
     "name": {
         "el": "Στείλετε αργότερα",
         "ca": "Enviar més tard",
@@ -229,10 +229,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.72939,
-        "count": 153,
-        "average": 4.7386,
-        "text_count": 153
+        "bayesian_average": 4.73114,
+        "count": 154,
+        "average": 4.7403,
+        "text_count": 154
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/reviews/",
     "requires_payment": false,
