@@ -16,28 +16,28 @@
             "composition"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "",
     "current_version": {
-        "id": 2472953,
+        "id": 2472957,
         "compatibility": {
             "thunderbird": {
-                "max": "69.*",
+                "max": "71.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/resubmit/versions/2472953",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/resubmit/versions/2472957",
         "files": [
             {
-                "id": 1016060,
-                "created": "2019-11-30T20:04:22Z",
-                "hash": "sha256:29cdc32fdc0e6833d13de8184a7d5e2712eef6dacdd445729f9e3308c7ff7bb7",
+                "id": 1016064,
+                "created": "2019-12-01T11:20:48Z",
+                "hash": "sha256:2dc718b57b1d357ecd123559fcdad305673d09d19f751844635d32ff5143480a",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 17819,
+                "size": 17865,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016060/resubmit-2.0.0a1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016064/resubmit-2.0.0a3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -71,11 +71,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Starts 2.x line, which is intended to support TB 68+."
+            "en-US": "- tested compatibility with TB 71.\n- fixed the generated message's body to be text/plain."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/resubmit/versions/2.0.0a1",
-        "version": "2.0.0a1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/resubmit/versions/2.0.0a3",
+        "version": "2.0.0a3"
     },
     "default_locale": "en-US",
     "description": {
@@ -97,7 +97,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-30T20:45:13Z",
+    "last_updated": "2019-12-02T19:35:47Z",
     "name": {
         "en-US": "Resubmit",
         "pl": "Resubmit"
@@ -182,7 +182,14 @@
         "pl": "https://github.com/ptomulik/mozilla-resubmit"
     },
     "tags": [
-        "firefox57"
+        "attachment",
+        "filters",
+        "firefox57",
+        "forward",
+        "reattach",
+        "spam",
+        "submission",
+        "template"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/resubmit/",
