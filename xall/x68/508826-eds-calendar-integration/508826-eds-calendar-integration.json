@@ -81,7 +81,7 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Synchronizes calendars with Evolution Data Server. Evolution DataServer is used by various applications, but most users will be happy to see their calendars events in Date and Time applet (Gnome clock applet).\n\nExtension supports one way synchronization - only Thunderbird changes are reflected in EDS.\n\nAddon version =&lt; 0.7 requires EDS 3.8 - 3.33.2.\nAddon version &gt;= 0.8 requires EDS 3.33.2 or later"
+        "en-US": "Synchronizes calendars with Evolution Data Server. Evolution DataServer is used by various applications, but most users will be happy to see their calendars events in Date and Time applet (Gnome clock applet).\n\nExtension supports one way synchronization - only Thunderbird changes are reflected in EDS.\n\nAddon version =&lt; 0.7 requires EDS 3.8 - 3.33.1 (libecal-1.2)\nAddon version &gt;= 0.8 requires EDS 3.33.2 or later (libecal-2.0)"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eds-calendar-integration/edit",
@@ -133,7 +133,7 @@
     "slug": "eds-calendar-integration",
     "status": "public",
     "summary": {
-        "en-US": "Integrates calendars events with Gnome clock applet"
+        "en-US": "Integrates calendars events with Gnome clock applet\nVersion 0.7 doesn't work with EDS 3.33.2 (Ex Ubuntu 19.10). \nVersion 0.8 is currently available via Github &gt; Release page."
     },
     "support_email": null,
     "support_url": {
