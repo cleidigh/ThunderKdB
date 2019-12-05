@@ -1,0 +1,130 @@
+{
+    "id": 986450,
+    "authors": [
+        {
+            "id": 14158082,
+            "name": "b bb b b  bb b",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/bbbbbr/",
+            "username": "bbbbbr",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "contacts"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2469072,
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/secure-addressing-plus/versions/2469072",
+        "files": [
+            {
+                "id": 1012235,
+                "created": "2018-12-28T02:50:02Z",
+                "hash": "sha256:70845f30f4a40ac60bb8ddaa365d3f44d35a9f7958a416d51cf40b0e8192367d",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 64602,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012235/secure_addressing_plus-1.91-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 12,
+            "name": {
+                "el": "GNU Lesser General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng Ít hơn GNU, phiên bản 3.0",
+                "ca": "Llicència LGPL (Lesser General Public License) de GNU, versió 3.0",
+                "it": "Licenza GNU Lesser General Public License, versione 3.0",
+                "cs": "GNU Lesser General Public License, verze 3.0",
+                "eu": "GNU Lesser General Public License, 3.0 bertsioa",
+                "id": "GNU Lesser General Public License, versi 3.0",
+                "es": "Licencia pública menor GNU Lesser, versión 3.0",
+                "ru": "GNU Lesser General Public License, версия 3.0",
+                "nl": "GNU Lesser General Public License, versie 3.0",
+                "pl": "GNU Lesser General Public License, wersja 3.0",
+                "de": "GNU Lesser General Public License, Version 3.0",
+                "en-US": "GNU Lesser General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی کاهش‌یافتهٔ گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU Lesser General Public License バージョン 3.0",
+                "pt-PT": "GNU Lesser General Public License, versão 3.0",
+                "zh-TW": "GNU Lesser General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike Më e Pakët GNU, version 3.0",
+                "ga-IE": "GNU Lesser General Public License, leagan 3.0",
+                "sk": "GNU Lesser General Public License, verzia 3.0",
+                "zh-CN": "GNU 较宽松公共许可证（LGPL），版本 3.0",
+                "uk": "GNU Lesser General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/lgpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "Added:\n\nIn confirm window:\n+ Show number of Recipients checked in confirm window\n+ Allow attachment checkboxes to follow same defaults as Recipient\n\nFor Autocomplete:\n+ Added preference for how minimum number of characters required before matching names in address book"
+        },
+        "reviewed": "2019-11-06T12:57:46Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secure-addressing-plus/versions/1.91",
+        "version": "1.91"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Added features:\n\nIn confirm window:\n+ Show number of Recipients checked in confirm window\n+ Allow attachment checkboxes to follow same defaults as Recipient\n\nFor Autocomplete:\n+ Added preference for how minimum number of characters required before matching names in address book\n\n\nOriginal Add-on:\n<a href=\"https://addons.thunderbird.net/en-us/thunderbird/addon/secure-addressing/\" rel=\"nofollow\">https://addons.thunderbird.net/en-us/thunderbird/addon/secure-addressing/</a> \n\nDescription duplicated from the original:\n-----------------------------------------------------------\n\nThis add-on provides features to avoid sending emails to wrong addresses.\n\nProvided features\n[Confirmation window]\n+A confirmation window appears when you try to send an e-mail. This allows you to finally check the e-mail addresses and attached files.\n+Last sent date is displayed for each recipient.\n+You have to click all the check-boxes to actually send the email. There is an option to have all the addresses confirmed by default.\n\n[Recipient's affiliation look-up]\nAfter you enter the recipients e-mail address, this add-on looks up his/her name and affiliation in your local address book or LDAP directory and displays them together with the e-mail address. This will help you correctly distinguish people with similar names, especially in a large company.\n\n[Sender's affiliation look-up]\nThis add-on also looks up sender's name and affiliation and displays them in additional columns of main window (where received emails are listed). You must explicitly select these columns at the menu shown at the right most of column headers.\n\n[Safe auto completion]\nThis add-on modifies behavior of auto completion of recipient's e-mail addresses. \n+You must explicitly enter asterisk (*) to auto complete e-mail addresses outside of your company.\n+You can choose address books used for auto completion only if you enter plus(+) before the recipient's e-mail address.\n+You can set up maximal number of suggestions shown by auto completion. Setting this value to one (default) suppresses showing people with similar email addresses.\n+You must enter at least 5 characters for auto completion to work .\n\nFull features list\nEach feature can be selectively disabled.\n+Confirmation window upon sending\n“Display Name”, “Company”, “Department”, and “Company” columns at the main window\n+Customized auto completion\n+Name and other information in To and Cc fields of outgoing emails will be stripped by default\n+Many columns at Contacts Sidebar of the composition window\n“Info” button at the header information area of each received mail, which will pick up all the email addresses in the email.\n+Mail filter action “remove matching string from subject”. This can be used to remove annoying strings such as \"**** SPAM ****\" and increases possibility of an entire subject being displayed. This filter action takes input string as regular expression. USE WITH THOROUGH TESTING WITH UNIMPORTANT EMAILS. NO METHOD IS PROVIDED TO RESTORE REMOVED STRINGS.\n\nHow to use\nGo to preference window of this add-on\nRegister internal domains of your company\nRegister address books for affiliation look up. This can be set up separately for internal and external domains. Typical usage is that you use LDAP for internal addresses and local address books for external ones.\nRegister address books for auto completion. These is an option ”+”, which means the address books below this mark are used only if you add ”+” when you enter the recipient's e-mail address. You may want to put LDAP directory with thousands of people below the ”+” to prevent too many suggestions.\nYou can choose how many suggestions will be shown at auto completion. I recommend you to set it to 1 for best safety.\n\nTips\nYou can register ”@” as an internal domain if you want everything to be internal address\nYou can also register full mail addresses as internal domains\nAt the confirmation window, you can triple click any of the check boxes to mark all the addresses confirmed.\nHow to set up LDAP address book depends on your company's LDAP structure. <a href=\"https://kb.wisc.edu/helpdesk/page.php?id=13509\" rel=\"nofollow\">https://kb.wisc.edu/helpdesk/page.php?id=13509</a> may be helpful."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/secure-addressing-plus/edit",
+    "guid": "secure-addressing@bbbbbr.github.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-11-06T12:57:46Z",
+    "name": {
+        "en-US": "Secure Addressing Plus"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secure-addressing-plus/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/986450",
+    "slug": "secure-addressing-plus",
+    "status": "public",
+    "summary": {
+        "en-US": "Fork of \"Secure Addressing\" addon by Hiroya Matsuba with some added features.\n--\nThis add-on provides features to avoid sending emails to wrong addresses. Key features are a confirmation window of recipient addresses upon sending."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/secure-addressing-plus/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "mext": false,
+            "comp60": true
+        }
+    }
+}
