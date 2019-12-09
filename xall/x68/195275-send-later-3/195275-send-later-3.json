@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1567718031"
         }
     ],
-    "average_daily_users": 81338,
+    "average_daily_users": 81787,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -21,26 +21,26 @@
     },
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Send%20Later%20add%2don%20%28%245%2e00%20recommended%20donation%2c%20but%20give%20what%20you%27d%20like%21%29&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donat",
     "current_version": {
-        "id": 2472940,
+        "id": 2472986,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2472940",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2472986",
         "files": [
             {
-                "id": 1016047,
-                "created": "2019-11-27T17:32:30Z",
-                "hash": "sha256:eadf86d08f8763785d400590c83176988424f0c4a154701a0ea38d91ea75ab3e",
+                "id": 1016093,
+                "created": "2019-12-08T19:54:31Z",
+                "hash": "sha256:2f88b4518864b7d46ab148d1a6a76ea2bfa5012a4229f95d9843186976751a2c",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 487053,
+                "size": 486874,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016047/send_later-7.3.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016093/send_later-7.3.4-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -53,11 +53,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "<strong>Finish up the last few strings in the Polish translation.</strong>\n\nThanks to Wojciech Kazimierczak for getting the Polish translation across the finish line!"
+            "en-US": "<strong>FIX: Update the menu properly in the dynamic function editor</strong>\n\nWhen creating or deleting functions in the dynamic function editor, update the list of available functions in the menu properly. Previously, updates were failing, so you had to close and re-open the editor window to refresh the list of available functions.\n\n<strong>ENH: Accept CRLF line breaks in dynamic function export files</strong>\n\nNow that dynamic function export files, i.e. \".slj\" files, have line breaks in them, it's possible for them to be transmitted and copied in such a way that their LF line terminators get turned into CRLF, e.g., if someone views a .slj file in a browser and then copies and pastes it into a text file on Windows. There's no reason why we can't support this, so let's do it.\n\n<strong>I18N: Several updates to the Chinese translations</strong>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/7.3.3",
-        "version": "7.3.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/7.3.4",
+        "version": "7.3.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -148,7 +148,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2019-11-27T18:26:50Z",
+    "last_updated": "2019-12-08T21:10:57Z",
     "name": {
         "el": "Στείλετε αργότερα",
         "ca": "Enviar més tard",

@@ -1,0 +1,160 @@
+{
+    "id": 534258,
+    "authors": [
+        {
+            "id": 6800362,
+            "name": "Alexander Moisseev",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/moisseev/",
+            "username": "moisseev",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 51,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": null,
+    "current_version": {
+        "id": 2472960,
+        "compatibility": {
+            "thunderbird": {
+                "max": "68.*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/received/versions/2472960",
+        "files": [
+            {
+                "id": 1016067,
+                "created": "2019-12-01T15:11:03Z",
+                "hash": "sha256:b11a05757c858471d1b12b443320b9acedddeb79ba5ba86a682b08e8b256737b",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 6053,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016067/received-1.0.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "* Convert to Thunderbird 68 compatible add-on. This breaks compatibility with previous Thunderbird versions."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/received/versions/1.0.0",
+        "version": "1.0.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This add-on displays a \"Received\" message header part that matches the first capturing group of a regular expression.\n\nThe add-on returns separate matches for each \"Received\" header.\n\nThe add-on displays all \"Received\" headers if \"<strong>(.*)</strong>\" regular expression is used. To display specific part of the header change regexp in the add-on's options according to you needs.\n\nFor instance, to display the host where email came from the regular expression should match the first \"Received\" header added by recipient's smtp server, something like\n\"<strong>^from (.+?) by mx\\.example\\.com </strong>\"."
+    },
+    "developer_comments": {
+        "en-US": "=====================================================\n Please visit issues page before posting any support-related issues here!\n <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/290b91eadaa9d84d9f899c373d431ed1b408f11a1402d2ce15fed62f013e1f8e/https%3A//github.com/moisseev/received/issues\">https://github.com/moisseev/received/issues</a>\n====================================================="
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/received/edit",
+    "guid": "received@alexander.moisseev",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/moisseev/received"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-12-08T12:26:14Z",
+    "name": {
+        "en-US": "Received"
+    },
+    "previews": [
+        {
+            "id": 140302,
+            "caption": null,
+            "image_size": [
+                472,
+                162
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/140/140302.png?modified=1530209147",
+            "thumbnail_size": [
+                320,
+                110
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/140/140302.png?modified=1530209147"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.34552,
+        "count": 2,
+        "average": 5,
+        "text_count": 2
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/received/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/534258",
+    "slug": "received",
+    "status": "public",
+    "summary": {
+        "en-US": "Displays the \"Received\" header parsed with a regular expression."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/moisseev/received/issues"
+    },
+    "tags": [
+        "firefox57",
+        "headers",
+        "received"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/received/",
+    "weekly_downloads": 22,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp68": true,
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2018-02-17T16:04:36Z"
+        }
+    }
+}
