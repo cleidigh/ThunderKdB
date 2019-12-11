@@ -18,26 +18,26 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2472713,
+        "id": 2472964,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/versions/2472713",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/versions/2472964",
         "files": [
             {
-                "id": 1015806,
-                "created": "2019-10-04T08:54:10Z",
-                "hash": "sha256:cbdd6ffb92d9a0c7749d22f5f23cb54caa7a7c49ae46d8e55e7a265ba4748a2c",
+                "id": 1016071,
+                "created": "2019-12-03T09:15:05Z",
+                "hash": "sha256:19e2f135672297ab05fedf5de5127c1afaedfbb310814b0f13b9cd844ae3eb1a",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 143338,
+                "size": 149229,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015806/flex_confirm_mail-2.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016071/flex_confirm_mail-2.2.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -47,12 +47,15 @@
             "name": {
                 "en-US": "MPL1.1"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/license/2.1"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/license/2.2.1"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "* Resize boxes correctly when both subject and body checks are disabled.\n* Add ability to emphasize recipient types (To/Cc/Bcc).\n* Add ability to confirm when there are multiple foreign recipient domains in To/Cc.\n* Show confirmation as \"recipients are modified\" when the composition window is opened for a draft.",
+            "ja": ""
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/versions/2.1",
-        "version": "2.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/versions/2.2.1",
+        "version": "2.2.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -77,7 +80,7 @@
     "is_experimental": true,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-06T12:28:27Z",
+    "last_updated": "2019-12-11T05:37:23Z",
     "name": {
         "en-US": "Flex Confirm Mail",
         "ja": "Flex Confirm Mail"

@@ -11,37 +11,37 @@
     ],
     "average_daily_users": 1527,
     "categories": {
-        "firefox": [
-            "appearance",
-            "bookmarks"
-        ],
         "thunderbird": [
             "appearance",
             "message-and-news-reading"
+        ],
+        "firefox": [
+            "appearance",
+            "bookmarks"
         ]
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2470344,
+        "id": 2472998,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "60.0"
+                "min": "61.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/menu-on-top/versions/2470344",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/menu-on-top/versions/2472998",
         "files": [
             {
-                "id": 1013404,
-                "created": "2019-06-17T18:14:34Z",
-                "hash": "sha256:415650bbfde8f5b28ae76ec5f19a405e23be88bb9dc791fca5a25abdd1da5463",
+                "id": 1016105,
+                "created": "2019-12-10T14:58:36Z",
+                "hash": "sha256:061c95f01bc10f67ee44cb68bdd72faa8822854ee7869aea57602e42bb07522f",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 439963,
+                "size": 466202,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1013404/menu_on_top_supermenu_avatar-1.15-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016105/menu_on_top_supermenu_avatar-1.16-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -75,11 +75,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "<ul><li> Improved loading UI on Thunderbird 68 beta.</li><li> Support for new HTML color picker which replaces the XUL version of same in modern versions orf Thunderbird.</li><li> Support for new Preferences system, but backwards compatible with Thunderbird 60.</li><li> Replacement of document.createElement with createXULElement</li><li> Improved loading custom icon (avatar) in modern versions of Thunderbird.</li></ul>"
+            "en-US": "<b>Version 1.6</b>\n\n<ul><li> Updated color picker controls for Thunderbird 68. </li><li> Updated all numeral textboxes for Thunderbird 68. </li><li> Added Swedish / Italian translations for 'Fire-orange' flavour. </li><li> Experimental: Added the \"Rise of Tools\" functionality (partly). This will elevate the main toolbar above the tab bar. however the toolbar is not hidden on calendar tabs, so this is kind of unfinished work.</li></ul>\nNote: I still plan to add a routine that automatically unpacks all avatar graphics automatically - at the moment you will have to unpack them from the Add-on manually."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/menu-on-top/versions/1.15",
-        "version": "1.15"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/menu-on-top/versions/1.16",
+        "version": "1.16"
     },
     "default_locale": "en-US",
     "description": {
@@ -102,7 +102,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-06-18T05:05:59Z",
+    "last_updated": "2019-12-11T05:24:52Z",
     "name": {
         "en-US": "Menu On Top (SuperMenu Avatar)"
     },
@@ -522,7 +522,8 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp60": true
+            "comp60pv": true,
+            "comp60pv_date": "2018-04-27T22:36:14Z"
         }
     }
 }

@@ -1,5 +1,48 @@
 [
     {
+        "id": 2472965,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "71.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewlayout/versions/2472965",
+        "files": [
+            {
+                "id": 1016072,
+                "created": "2019-12-03T12:23:34Z",
+                "hash": "sha256:e2dc7ae5d7940885d2afefb866fd476f70486ad363902be66cb91c4998661e7d",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 3741,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016072/taskviewlayout-55.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "README version 1.5\n\nTitle: TaskviewLayout\n\nRequired addons: Lightning.\n\nDescription:\nTaskview layout.\nPut task view up to read document of long sentences.\nPut task view neutrally to read tree lists.\nPut task view vertically to read document in which records are many.\nFor height of neutrally horizontal view, it is changeable before any event.\nFor changing sizes of vertical task view, they are not available,\nit is good not to resize task tree which was shrunk enough.\nInstead, See task view to close Today pane.\nPlease, let me know whether default sizes of task tree, task view are needed to change them.\npraise Cardinal Soo-Hwan, Kim.\n\nDecember 01 2019.\n\nFrom Sungho Hwang."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/55.6",
+        "version": "55.6"
+    },
+    {
         "id": 2472620,
         "channel": "listed",
         "compatibility": {
@@ -2508,55 +2551,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/48.4",
         "version": "48.4"
-    },
-    {
-        "id": 2472565,
-        "channel": "listed",
-        "compatibility": {
-            "thunderbird": {
-                "max": "*",
-                "min": "68.0"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewlayout/versions/2472565",
-        "files": [
-            {
-                "id": 1015637,
-                "created": "2019-09-13T13:10:26Z",
-                "hash": "sha256:38edcacac5c76ee6c35ed3ed70b20dfc748062244b9e94f42cd9602707d8e60b",
-                "is_restart_required": false,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 5995,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015637/taskviewlayout-48.3-tb.xpi?src=",
-                "permissions": [
-                    "menus",
-                    "activeTab",
-                    "*://developer.mozilla.org/*",
-                    "webRequest",
-                    "*://mozilla.org/*",
-                    "*://*.mozilla.org/*"
-                ]
-            }
-        ],
-        "is_strict_compatibility_enabled": false,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "en-US": "On development."
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/48.3",
-        "version": "48.3"
     }
 ]

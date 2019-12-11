@@ -17,39 +17,30 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472620,
+        "id": 2472965,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "68.0"
+                "min": "71.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewlayout/versions/2472620",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewlayout/versions/2472965",
         "files": [
             {
-                "id": 1015692,
-                "created": "2019-09-14T16:28:16Z",
-                "hash": "sha256:fbd26d99347c80b295d7f92221de03f41dc14f3b256cba7757aa89b06a8d4837",
-                "is_restart_required": false,
+                "id": 1016072,
+                "created": "2019-12-03T12:23:34Z",
+                "hash": "sha256:e2dc7ae5d7940885d2afefb866fd476f70486ad363902be66cb91c4998661e7d",
+                "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 7487,
+                "size": 3741,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015692/taskviewlayout-55.3-tb.xpi?src=",
-                "permissions": [
-                    "menus",
-                    "activeTab",
-                    "*://developer.mozilla.org/*",
-                    "webRequest",
-                    "*://mozilla.org/*",
-                    "tabs",
-                    "tabHide",
-                    "*://*.mozilla.org/*"
-                ]
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016072/taskviewlayout-55.6-tb.xpi?src=",
+                "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -58,15 +49,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "On development."
+            "en-US": "README version 1.5\n\nTitle: TaskviewLayout\n\nRequired addons: Lightning.\n\nDescription:\nTaskview layout.\nPut task view up to read document of long sentences.\nPut task view neutrally to read tree lists.\nPut task view vertically to read document in which records are many.\nFor height of neutrally horizontal view, it is changeable before any event.\nFor changing sizes of vertical task view, they are not available,\nit is good not to resize task tree which was shrunk enough.\nInstead, See task view to close Today pane.\nPlease, let me know whether default sizes of task tree, task view are needed to change them.\npraise Cardinal Soo-Hwan, Kim.\n\nDecember 01 2019.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/55.3",
-        "version": "55.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/55.6",
+        "version": "55.6"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Put task view up to read document of long sentences.\nPut task view neutrally to read tree lists.\nPut task view vertically to read document in which records are many.\nFor height of neutrally horizontal view, it is changeable before any event.\nFor changing sizes of vertical task view, they are not available,\nit is good not to resize task tree which was shrunk enough.\nPlease, let me know whether default sizes of task tree, task view are needed to change them.\n\n[Notification]\nVertical task view is sensitive for flex.\nSo, if having any changes of calendar or task flexes, \nScreen of vertical task view is cut due to the above.\nPlease, restart Thunderbird in this case.\n\nVersion 21.0.\nIn vertical task view scripts, all flexes are deleted except for calendar display deck.\nPerhaps, these flexes influence task view screen.\nCalendar display deck flex was changed as '0 2 0';\n\nScreen of vertical task view is cut after 21 clicks of menu in version 18.1\nIn the next version 21.0, this screen cut is shown after 41 clicks of menu.\n\nVersion 25.2 IS AVAILABLE OVER Thunderbird 71.0\nScripts were many reduced.\nAlthough Functionality is as it is, \nscripts are different with old scripts.\nUnstable vertical task view screen was improved.\n\nVERSIONS FROM 25.3 to 55.3 WERE NOT TO WORK PROPERLY.\n\nVersion 55.6 (upcoming)\nButton disappearance was solved.\nIt is stable with button fixed in Thunderbird 71.0 beta.\nFORTUNATELY! It is more stable in 72.0b1 than 71.0b.\nSo, I use Thunderbird 72.0b1 now.\nThanks Mozilla Calendar Project team! \\o/\nAnd I am waiting for approval of TaskviewLayout 55.6.\nSoon, I expect that TaskviewLayout v 55.6 is released.\n\nAnd,\nIf vertical taskview screen is cut, \nplease, set the size of text, app, and other items on Windows display settings.\n\npraise Cardinal Soo-Hwan, Kim.",
+        "en-US": "Put task view up to read document of long sentences.\nPut task view neutrally to read tree lists.\nPut task view vertically to read document in which records are many.\nFor height of neutrally horizontal view, it is changeable before any event.\nFor changing sizes of vertical task view, they are not available,\nit is good not to resize task tree which was shrunk enough.\nPlease, let me know whether default sizes of task tree, task view are needed to change them.\n\n[Notification]\nVertical task view is sensitive for flex.\nSo, if having any changes of calendar or task flexes, \nScreen of vertical task view is cut due to the above.\nPlease, restart Thunderbird in this case.\n\nVersion 21.0.\nIn vertical task view scripts, all flexes are deleted except for calendar display deck.\nPerhaps, these flexes influence task view screen.\nCalendar display deck flex was changed as '0 2 0';\n\nScreen of vertical task view is cut after 21 clicks of menu in version 18.1\nIn the next version 21.0, this screen cut is shown after 41 clicks of menu.\n\nVersion 25.2.\nScripts were many reduced.\nAlthough Functionality is as it is, \nscripts are different with old scripts.\nUnstable vertical task view screen was improved.\n\nVERSIONS FROM 25.3 to 55.3 WERE NOT TO WORK PROPERLY.\n\nVersion 55.6.\nButton disappearance was solved.\nIt is stable with button fixed in Thunderbird 71.0 beta.\nFORTUNATELY! It is more stable in 72.0b1 than 71.0b.\nSo, I use Thunderbird 72.0b1 now.\nThanks Mozilla Calendar Project team! \\o/\n\nAnd,\nIf vertical taskview screen is cut, \nplease, set the size of text, app, and other items on Windows display settings.\n\npraise Cardinal Soo-Hwan, Kim.",
         "ko": "문서를 읽을 때는 올려서 보세요.\n목록을 읽을 때는 내리고 보세요.\n행이 많은 문장은 세로로 보세요.\n세로로 크게 보시려면, 투데이 페인을 닫으세요.\n\n김수환 추기경님을 기리며.\n\n개발자 황성호."
     },
     "developer_comments": null,
@@ -84,7 +75,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-14T16:30:03Z",
+    "last_updated": "2019-12-11T05:38:37Z",
     "name": {
         "en-US": "TaskviewLayout",
         "ko": "타스크뷰 레이아웃"

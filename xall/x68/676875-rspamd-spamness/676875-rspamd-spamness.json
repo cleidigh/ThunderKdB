@@ -1,0 +1,167 @@
+{
+    "id": 676875,
+    "authors": [
+        {
+            "id": 6800362,
+            "name": "Alexander Moisseev",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/moisseev/",
+            "username": "moisseev",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 555,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2472996,
+        "compatibility": {
+            "thunderbird": {
+                "max": "68.*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rspamd-spamness/versions/2472996",
+        "files": [
+            {
+                "id": 1016103,
+                "created": "2019-12-10T10:15:03Z",
+                "hash": "sha256:81d5e72294a26066ba482c37853e738b6f98b03377e26c74140c9bc6def3d6f4",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 67691,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016103/rspamd_spamness-1.0.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "* Convert to Thunderbird 68 compatible add-on (by @RemcodM). This breaks compatibility with previous Thunderbird versions.\n+ Add rules dialog auto-sizing."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/versions/1.0.0",
+        "version": "1.0.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Rspamd-spamness is an add-on for visualizing <a href=\"https://rspamd.com/\" rel=\"nofollow\">Rspamd</a> spam scores generated on the server-side and embedded in message headers.\n\n<strong>Supported mail headers</strong>\n\nThe add-on uses extended Rspamd headers added by <a href=\"https://rspamd.com/doc/workers/rspamd_proxy.html\" rel=\"nofollow\">Rspamd proxy worker</a> (`X-Spamd-Result`) and (from version 0.8.0) headers added by Exim (`X-Spam-Score` and `X-Spam-Report`).\n\nTo enable extended spam headers in <a href=\"https://rspamd.com/doc/modules/milter_headers.html\" rel=\"nofollow\">Milter headers module</a> add the following line to <em>local.d/milter_headers.conf</em>:\n<code>\nextended_spam_headers = true;</code>\n\nTo enable headers in Exim refer to the \"Integration with Exim MTA\" section of <a href=\"https://rspamd.com/doc/integration.html\" rel=\"nofollow\">MTA integration</a> document.\n\nTo enable extended spam headers in <a href=\"https://www.rspamd.com/rmilter/\" rel=\"nofollow\">Rmilter</a> (deprecated) add the following line to <em>rmilter.conf</em>:\n<code>\nspamd {\n...\n        extended_spam_headers = yes;\n};</code>\n\n<strong>Third-party spam filters</strong>\n\nThe add-on (from version 0.9.0) also supports SpamAssassin-based spam filters (e.g. `SpamAssassin`, `MailScanner`). The support is limited to displaying the total message score in the column.\n\n===========================================================\n  Learn more at <a href=\"https://github.com/moisseev/rspamd-spamness\" rel=\"nofollow\">https://github.com/moisseev/rspamd-spamness</a> .\n==========================================================="
+    },
+    "developer_comments": {
+        "en-US": "=====================================================\n Please visit issues page before posting any support-related issues here!\n <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/987bf0ab3a082e76ca9c5e27a4acdfc989776b8b70828efbb5970d2af70c50e5/https%3A//github.com/moisseev/rspamd-spamness/issues\">https://github.com/moisseev/rspamd-spamness/issues</a>\n====================================================="
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rspamd-spamness/edit",
+    "guid": "rspamd-spamness@alexander.moisseev",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/moisseev/rspamd-spamness"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/676/676875-64.png?modified=af0a4216",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/676/676875-32.png?modified=af0a4216",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/676/676875-64.png?modified=af0a4216"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-12-11T05:26:53Z",
+    "name": {
+        "en-US": "Rspamd-spamness"
+    },
+    "previews": [
+        {
+            "id": 169791,
+            "caption": {
+                "en-US": "Rspamd-spamness adds a column to the thread pane (message list) and a header to the message pane. The size and saturation of a circle reflects larger or smaller spam score."
+            },
+            "image_size": [
+                700,
+                421
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/169/169791.png?modified=1576042926",
+            "thumbnail_size": [
+                320,
+                192
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/169/169791.png?modified=1576042926"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.86765,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/676875",
+    "slug": "rspamd-spamness",
+    "status": "public",
+    "summary": {
+        "en-US": "Rspamd spam filtering system score visualization."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/moisseev/rspamd-spamness/issues"
+    },
+    "tags": [
+        "firefox57",
+        "mailscanner",
+        "rmilter",
+        "rspamd",
+        "spam",
+        "spamassassin",
+        "visualization"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/",
+    "weekly_downloads": 52,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp68": true,
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2018-02-11T14:56:20Z"
+        }
+    }
+}
