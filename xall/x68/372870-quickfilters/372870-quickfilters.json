@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
         }
     ],
-    "average_daily_users": 14401,
+    "average_daily_users": 13629,
     "categories": {
         "seamonkey": [
             "downloading-and-file-management"
@@ -21,26 +21,26 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2472650,
+        "id": 2473010,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2472650",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2473010",
         "files": [
             {
-                "id": 1015731,
-                "created": "2019-09-21T16:58:29Z",
-                "hash": "sha256:4d960904167633d223e186d4a1b1d700974ca6fce50cc5185082bebafbf0be3f",
+                "id": 1016117,
+                "created": "2019-12-13T15:43:29Z",
+                "hash": "sha256:d7ca88fdfdf8c39707c26c89078340515fdbc934bb76b98b139a0ffaf18276ee",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 448329,
+                "size": 451180,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015731/quickfilters-4.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016117/quickfilters-4.3.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,14 +50,14 @@
             "name": {
                 "en-US": "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/4.2"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/4.3.1"
         },
         "release_notes": {
-            "en-US": "quickFilters Change Log - Version 4.2\n\n<ul><li> The buttons on the QuickFolders \"current folder toolbar\" are not displayed anymore in Thunderbird 68.</li><li> Custom filters: removing / avoiding own email addresses from new filter conditions is not working in Custom Filters. This is now remedied. If you need to add your own email address to the filter conditions its probably a safe bet you would want to do it manually.</li><li> To celebrate the arrival of Thunderbird 68 - Make sure to catch the September sale  - get a license for 33% off</li></ul>"
+            "en-US": "quickFilters Change Log - Version 4.3.1\n\n<ul><li>Missing notifyBox can lead to problems when toggling assistant</li><li>Premium feature: run filters local inbox didn't work depending on local folder hostname, changed method of determining whether an inbox is in local folders (to force filter running)</li><li>Made modification of toolbar more reliable</li><li>Fixed licensing problem with accounts that have no default identity</li><li><a href=\"https://github.com/RealRaven2000/quickFilters/issues/2\" rel=\"nofollow\">[issue 2]</a> Merged filters: some conditions may end up not working.\n\nWhen merging multiple filters, sometimes conditions will not work. This is caused by mixing filters with different radio buttons \"all conditions\" vs \"any conditions\". Apparently the merged filter conditions internal \"booleanAnd\" attributes are not changed towards that of the target filter. So if the target (first) filter has \"any\" and the merged filter has \"all\" it may lead to some (or all) of it's conditions being to ignored.</li><li>Added configuration options to troubleshooter. Simply right-click the troubleshoot button to get a choice between the following tests:\n<ol> <li><code>incomingFlag</code> - filters sometimes are missing this flag and will never be executed when downloading new mail. However you may want to have some filters that you only want to run manually so you may want to generally disable this check.</li> <li><code>invalidTargetFolder</code> - can occur when filters are imported from other / older mail profiles or folders are moved / deleted on Imap.\n </li> <li><code>customActions</code> - finds invalid custom actions which may have been added by 3rd party add-ons (e.g FiltaQuilla); this problem will occur such Add-ons are disabled or uninstalled.\n </li> <li><code>mixedAnyAndAll</code> - NEW TROUBLESHOOTING STEP: Fix filters that have both mixed Any and All conditions. This can occur when merging filters that have different Any/All definitions and may lead to some conditions being omitted.\n </li></ol></li><li><a href=\"https://github.com/RealRaven2000/quickFilters/issues/3\" rel=\"nofollow\">[issue 3]</a> \nFilter conditions which deal with subject are not exported correctly during backup. This will lead to the condition having a \"disabled\" subject attribute in the editor after importing them.</li>  </ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/4.2",
-        "version": "4.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/4.3.1",
+        "version": "4.3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -82,7 +82,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-21T18:15:27Z",
+    "last_updated": "2019-12-13T16:17:45Z",
     "name": {
         "ru": "quickFilters",
         "fr": "quickFilters",
@@ -482,10 +482,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.57308,
-        "count": 43,
-        "average": 4.6047,
-        "text_count": 43
+        "bayesian_average": 4.58257,
+        "count": 44,
+        "average": 4.6136,
+        "text_count": 44
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/reviews/",
     "requires_payment": false,

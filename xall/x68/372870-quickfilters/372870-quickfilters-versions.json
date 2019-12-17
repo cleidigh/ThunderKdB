@@ -1,5 +1,48 @@
 [
     {
+        "id": 2473010,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2473010",
+        "files": [
+            {
+                "id": 1016117,
+                "created": "2019-12-13T15:43:29Z",
+                "hash": "sha256:d7ca88fdfdf8c39707c26c89078340515fdbc934bb76b98b139a0ffaf18276ee",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 451180,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016117/quickfilters-4.3.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 7111,
+            "name": {
+                "en-US": "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)"
+            },
+            "text": {
+                "en-US": "All contents of The Program are subject to the Creative Commons (CC BY-ND 4.0) (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a>\nFor a  human-readable summary thereof please refer\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/quickFilters Pro tab, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author\n(Axel Grude)"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/4.3.1"
+        },
+        "release_notes": {
+            "en-US": "quickFilters Change Log - Version 4.3.1\n\n<ul><li>Missing notifyBox can lead to problems when toggling assistant</li><li>Premium feature: run filters local inbox didn't work depending on local folder hostname, changed method of determining whether an inbox is in local folders (to force filter running)</li><li>Made modification of toolbar more reliable</li><li>Fixed licensing problem with accounts that have no default identity</li><li><a href=\"https://github.com/RealRaven2000/quickFilters/issues/2\" rel=\"nofollow\">[issue 2]</a> Merged filters: some conditions may end up not working.\n\nWhen merging multiple filters, sometimes conditions will not work. This is caused by mixing filters with different radio buttons \"all conditions\" vs \"any conditions\". Apparently the merged filter conditions internal \"booleanAnd\" attributes are not changed towards that of the target filter. So if the target (first) filter has \"any\" and the merged filter has \"all\" it may lead to some (or all) of it's conditions being to ignored.</li><li>Added configuration options to troubleshooter. Simply right-click the troubleshoot button to get a choice between the following tests:\n<ol> <li><code>incomingFlag</code> - filters sometimes are missing this flag and will never be executed when downloading new mail. However you may want to have some filters that you only want to run manually so you may want to generally disable this check.</li> <li><code>invalidTargetFolder</code> - can occur when filters are imported from other / older mail profiles or folders are moved / deleted on Imap.\n </li> <li><code>customActions</code> - finds invalid custom actions which may have been added by 3rd party add-ons (e.g FiltaQuilla); this problem will occur such Add-ons are disabled or uninstalled.\n </li> <li><code>mixedAnyAndAll</code> - NEW TROUBLESHOOTING STEP: Fix filters that have both mixed Any and All conditions. This can occur when merging filters that have different Any/All definitions and may lead to some conditions being omitted.\n </li></ol></li><li><a href=\"https://github.com/RealRaven2000/quickFilters/issues/3\" rel=\"nofollow\">[issue 3]</a> \nFilter conditions which deal with subject are not exported correctly during backup. This will lead to the condition having a \"disabled\" subject attribute in the editor after importing them.</li>  </ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/4.3.1",
+        "version": "4.3.1"
+    },
+    {
         "id": 2472650,
         "channel": "listed",
         "compatibility": {
