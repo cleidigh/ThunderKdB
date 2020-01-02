@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 326,
+    "average_daily_users": 263,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -59,7 +59,7 @@
         "en-US": "The button is compatible with Thunderbird 3 default theme.\nAfter installation, right-click on the Toolbar, select Customise... and drag the Empty Deleted Folder button to the Toolbar, placing it any where you want.\nIf other extensions are installed that provide menu icons, such as CuteMenus, these may override mine. If mine don't appear in the File menu and Deleted Folder context menu \"Empty Deleted\" items, insert this into your userChrome.css file:\n/* Add Empty Deleted Folder icons to menus*/\n#menu_emptyTrash {\n    -moz-binding: url(chrome://global/content/bindings/menu.xml#menuitem-iconic);\n    list-style-image: url(chrome://deletetrashbutton/skin/deletetrash-small.png) !important;\n    -moz-image-region: rect(0px 16px 16px 0px) !important;\n}\n#folderPaneContext-emptyTrash {\n    -moz-binding: url(chrome://global/content/bindings/menu.xml#menuitem-iconic);\n    list-style-image: url(chrome://deletetrashbutton/skin/deletetrash-small.png) !important;\n    -moz-image-region: rect(0px 16px 16px 0px) !important;\n}\n"
     },
     "developer_comments": {
-        "en-US": "maxversion bump, should work with TB v60"
+        "en-US": "maxversion bump, should work with TB v68"
     },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/delete_trash_button/edit",
     "guid": "{EEA09C80-4B78-4293-9F74-74059B9EE30D}",
@@ -68,10 +68,10 @@
     "homepage": {
         "en-US": "http://www.linnhe.net/thunderbird/extensions.html"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/57/57534-64.png?modified=1559396612",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/57/57534-64.png?modified=1577215666",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/57/57534-32.png?modified=1559396612",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/57/57534-64.png?modified=1559396612"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/57/57534-32.png?modified=1577215666",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/57/57534-64.png?modified=1577215666"
     },
     "is_disabled": false,
     "is_experimental": false,

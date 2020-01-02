@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2287,
+    "average_daily_users": 1855,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -59,7 +59,7 @@
         "en-US": "Adds toolbar buttons to Mark All emails as Read, Mark Thread as Read, and Goto Next Unread Thread. Also places an icon on the \"Message...Mark...All Read\" menu item, folder pane folder context menu \"Mark Folder Read\", thread pane and message pane context menu \"Mark...All Read\".\n\nIf you don't wish the \"Message...Mark...All Read\" menu item to show an icon, insert this into your userChrome.css file:\n\n#folderPaneContext-markMailFolderAllRead {\n    list-style-image: none !important;\n}\n\nIf you don't wish the context menus to show an icon, insert this into your userChrome.css file:\n\nmenuitem[label=\"All Read\"] {\n    list-style-image: none !important;\n}\n\nYou may find that my icons don't show up in menus if you have another theme or extension, such as Cutemenus,  that installs other icons and overrides mine. In that case, insert this into your userChrome.css file:\n\nmenuitem[label=\"All Read\"], #folderPaneContext-markMailFolderAllRead {\n    -moz-binding: url(chrome://global/content/bindings/menu.xml#menuitem-iconic);\n    list-style-image: url(chrome://markallreadbutton/skin/menuicon.png) !important;\n    -moz-image-region: rect(0px 16px 16px 0px) !important;\n}"
     },
     "developer_comments": {
-        "en-US": "maxversion bump, should work with TB v60"
+        "en-US": "maxversion bump, should work with TB v68"
     },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mark-all-read-button/edit",
     "guid": "{DA506923-55C4-4fbe-9E4C-D24B80D7DE9F}",
@@ -68,10 +68,10 @@
     "homepage": {
         "en-US": "http://www.linnhe.net/thunderbird/extensions.html"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2273-64.png?modified=1544208754",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2273-64.png?modified=1577215730",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2273-32.png?modified=1544208754",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2273-64.png?modified=1544208754"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2273-32.png?modified=1577215730",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2273-64.png?modified=1577215730"
     },
     "is_disabled": false,
     "is_experimental": false,
