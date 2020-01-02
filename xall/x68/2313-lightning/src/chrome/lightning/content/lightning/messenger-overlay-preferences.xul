@@ -1,0 +1,747 @@
+<?xml version="1.0"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<?xml-stylesheet href="chrome://calendar-common/skin/calendar-preferences.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+    <!ENTITY % lightningDTD SYSTEM "chrome://lightning/locale/lightning.dtd">
+    <!ENTITY % preferencesDTD SYSTEM "chrome://calendar/locale/preferences/preferences.dtd">
+    <!ENTITY % generalDTD SYSTEM "chrome://calendar/locale/preferences/general.dtd">
+    <!ENTITY % globalDTD SYSTEM "chrome://calendar/locale/global.dtd">
+    <!ENTITY % eventDTD SYSTEM "chrome://calendar/locale/calendar-event-dialog.dtd">
+    <!ENTITY % alarmsDTD SYSTEM "chrome://calendar/locale/preferences/alarms.dtd">
+    <!ENTITY % categoriesDTD SYSTEM "chrome://calendar/locale/preferences/categories.dtd">
+    <!ENTITY % viewsDTD SYSTEM "chrome://calendar/locale/preferences/views.dtd">
+    %lightningDTD;
+    %preferencesDTD;
+    %generalDTD;
+    %globalDTD;
+    %eventDTD;
+    %alarmsDTD;
+    %categoriesDTD;
+    %viewsDTD;
+]>
+
+<?xml-stylesheet href="chrome://lightning/skin/lightning.css"?>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         xmlns:html="http://www.w3.org/1999/xhtml">
+    <prefpane id="paneLightning"
+              flex="1"
+              insertbefore="paneAdvanced"
+              label="&lightning.preferencesLabel;">
+        <tabbox id="calPreferencesTabbox"
+                flex="1">
+            <tabs>
+                <tab id="calPreferencesTabGeneral"
+                     label="&paneGeneral.title;"/>
+                <tab id="calPreferencesTabAlarms"
+                     label="&paneAlarms.title;"/>
+                <tab id="calPreferencesTabCategories"
+                     label="&paneCategories.title;"/>
+                <tab id="calPreferencesTabViews"
+                     label="&paneViews.title;"/>
+            </tabs>
+            <tabpanels flex="1">
+                <tabpanel orient="vertical">
+    <vbox id="calPreferencesBoxGeneral">
+        <groupbox>
+            <label><html:h2>&pref.mainbox.label;</html:h2></label>
+            <vbox align="left">
+              <hbox align="center">
+                <label value="&pref.dateformat.label;"
+                       accesskey="&pref.dateformat.accesskey;"
+                       control="dateformat"/>
+                <menulist id="dateformat" crop="none"
+                          preference="calendar.date.format">
+                    <menupopup id="dateformatpopup">
+                        <menuitem id="dateformat-long-menuitem"
+                                  label="&pref.dateformat.long;"
+                                  value="0"/>
+                        <menuitem id="dateformat-short-menuitem"
+                                  label="&pref.dateformat.short;"
+                                  value="1"/>
+                    </menupopup>
+                </menulist>
+              </hbox>
+            </vbox>
+        </groupbox>
+
+        <groupbox>
+            <label><html:h2>&pref.timezones.caption;</html:h2></label>
+            <hbox align="center">
+                <label value="&pref.timezones.label;"
+                       accesskey="&pref.timezones.accesskey;"
+                       control="calendar-timezone-menulist"/>
+                <menulist id="calendar-timezone-menulist"
+                          preference="calendar.timezone.local">
+                    <menupopup id="calendar-timezone-menupopup"/>
+                </menulist>
+            </hbox>
+        </groupbox>
+
+        <groupbox id="defaults-itemtype-groupbox">
+            <label><html:h2 id="defaults-itemtype-caption">&pref.defaults.label;</html:h2></label>
+            <vbox id="defaults-itemtype-box">
+                <label><html:h3>&pref.events.label;</html:h3></label>
+                <hbox id="defaults-event-grid-box" align="center">
+                    <label id="default-event-length-label"
+                            value="&pref.default_event_length.label;"
+                            accesskey="&pref.default_event_length.accesskey;"
+                            control="defaultlength"/>
+                    <html:input id="defaultlength" type="number" class="size3"
+                                min="0"
+                                preference="calendar.event.defaultlength"
+                                onselect="updateUnitLabelPlural('defaultlength', 'defaultlengthunit', 'minutes')"
+                                oninput="updateUnitLabelPlural('defaultlength', 'defaultlengthunit', 'minutes')"/>
+                    <label id="defaultlengthunit"/>
+                </hbox>
+                <label><html:h3>&pref.tasks.label;</html:h3></label>
+                <html:table id="defaults-task-table">
+                    <html:tr id="defaults-task-start-row">
+                        <html:td>
+                            <label id="default-task-start-label"
+                                    value="&read.only.task.start.label;"
+                                    control="default_task_start"/>
+                        </html:td>
+                        <html:td>
+                            <menulist id="default_task_start"
+                                      crop="none"
+                                      oncommand="gCalendarGeneralPane.updateDefaultTodoDates()"
+                                      preference="calendar.task.defaultstart">
+                                <menupopup id="default_task_start_popup">
+                                    <menuitem id="default_task_start_none"
+                                              label="&pref.default_task_none.label;"
+                                              value="none"
+                                              selected="true"/>
+                                    <menuitem id="default_task_start_start_of_day"
+                                              label="&pref.default_task_start_of_day.label;"
+                                              value="startofday"/>
+                                    <menuitem id="default_task_start_tomorrow"
+                                              label="&pref.default_task_tomorrow.label;"
+                                              value="tomorrow"/>
+                                    <menuitem id="default_task_start_next_week"
+                                              label="&pref.default_task_next_week.label;"
+                                              value="nextweek"/>
+                                    <menuitem id="default_task_start_offset_current"
+                                              label="&pref.default_task_offset_current.label;"
+                                              value="offsetcurrent"/>
+                                    <menuitem id="default_task_start_offset_next_hour"
+                                              label="&pref.default_task_offset_next_hour.label;"
+                                              value="offsetnexthour"/>
+                                </menupopup>
+                            </menulist>
+                        </html:td>
+                        <html:td>
+                            <hbox id="default_task_start_offset" align="center">
+                                <html:input id="default_task_start_offset_text" type="number" class="size3"
+                                            min="0"
+                                            preference="calendar.task.defaultstartoffset"
+                                            onselect="updateMenuLabelsPlural('default_task_start_offset_text', 'default_task_start_offset_units')"
+                                            oninput="updateMenuLabelsPlural('default_task_start_offset_text', 'default_task_start_offset_units')"/>
+                                <menulist id="default_task_start_offset_units"
+                                          crop="none"
+                                          preference="calendar.task.defaultstartoffsetunits">
+                                    <menupopup id="default_task_start_offset_units_popup">
+                                        <menuitem id="default_task_start_offset_units_minutes"
+                                                  value="minutes"
+                                                  selected="true"/>
+                                        <menuitem id="default_task_start_offset_units_hours"
+                                                  value="hours"/>
+                                        <menuitem id="default_task_start_offset_units_days"
+                                                  value="days"/>
+                                    </menupopup>
+                                </menulist>
+                            </hbox>
+                        </html:td>
+                    </html:tr>
+                    <html:tr id="defaults-task-due-row">
+                        <html:td>
+                            <label id="default-task-due-label"
+                                    value="&read.only.task.due.label;"
+                                    control="default_task_due"/>
+                        </html:td>
+                        <html:td>
+                            <menulist id="default_task_due"
+                                      crop="none"
+                                      oncommand="gCalendarGeneralPane.updateDefaultTodoDates()"
+                                      preference="calendar.task.defaultdue">
+                                <menupopup id="default_task_due_popup">
+                                    <menuitem id="default_task_due_none"
+                                              label="&pref.default_task_none.label;"
+                                              value="none"
+                                              selected="true"/>
+                                    <menuitem id="default_task_due_end_of_day"
+                                              label="&pref.default_task_end_of_day.label;"
+                                              value="endofday"/>
+                                    <menuitem id="default_task_due_tomorrow"
+                                              label="&pref.default_task_tomorrow.label;"
+                                              value="tomorrow"/>
+                                    <menuitem id="default_task_due_next_week"
+                                              label="&pref.default_task_next_week.label;"
+                                              value="nextweek"/>
+                                    <menuitem id="default_task_due_offset_current"
+                                              label="&pref.default_task_offset_start.label;"
+                                              value="offsetcurrent"/>
+                                    <menuitem id="default_task_due_offset_next_hour"
+                                              label="&pref.default_task_offset_next_hour.label;"
+                                              value="offsetnexthour"/>
+                                </menupopup>
+                            </menulist>
+                        </html:td>
+                        <html:td>
+                            <hbox id="default_task_due_offset" align="center">
+                                <html:input id="default_task_due_offset_text" type="number" class="size3"
+                                            min="0"
+                                            preference="calendar.task.defaultdueoffset"
+                                            onselect="updateMenuLabelsPlural('default_task_due_offset_text', 'default_task_due_offset_units')"
+                                            oninput="updateMenuLabelsPlural('default_task_due_offset_text', 'default_task_due_offset_units')"/>
+                                <menulist id="default_task_due_offset_units"
+                                          crop="none"
+                                          preference="calendar.task.defaultdueoffsetunits">
+                                    <menupopup id="default_task_due_offset_units_popup">
+                                        <menuitem id="default_task_due_offset_units_minutes"
+                                                  value="minutes"
+                                                  selected="true"/>
+                                        <menuitem id="default_task_due_offset_units_hours"
+                                                  value="hours"/>
+                                        <menuitem id="default_task_due_offset_units_days"
+                                                  value="days"/>
+                                    </menupopup>
+                                </menulist>
+                            </hbox>
+                        </html:td>
+                    </html:tr>
+                </html:table>
+            </vbox>
+        </groupbox>
+
+        <groupbox>
+            <label><html:h2>&pref.calendar.todaypane.agenda.caption;</html:h2></label>
+            <hbox align="center">
+                <label value="&pref.soondays2.label;"
+                       accesskey="&pref.soondays2.accesskey;"
+                       control="soondays-menulist"/>
+                <menulist id="soondays-menulist"
+                          preference="calendar.agendaListbox.soondays">
+                    <menupopup id="soondaysdurationpopup">
+                        <menuitem value="1"/>
+                        <menuitem value="2"/>
+                        <menuitem value="3"/>
+                        <menuitem value="4"/>
+                        <menuitem value="5"/>
+                        <menuitem value="6"/>
+                        <menuitem value="7"/>
+                        <menuitem value="14"/>
+                        <menuitem value="21"/>
+                        <menuitem value="28"/>
+                    </menupopup>
+                </menulist>
+            </hbox>
+        </groupbox>
+
+        <groupbox id="systemColorsGroupbox">
+            <label><html:h2>&pref.accessibility.label;</html:h2></label>
+            <hbox align="center">
+                <checkbox id="systemColors" pack="end"
+                          label="&pref.systemcolors.label;"
+                          accesskey="&pref.systemcolors.accesskey;"
+                          preference="calendar.view.useSystemColors"/>
+            </hbox>
+        </groupbox>
+
+        <groupbox>
+            <label><html:h2>&pref.eventsandtasks.label;</html:h2></label>
+            <hbox align="center">
+                <checkbox id="tabedit" pack="end"
+                          label="&pref.editInTab.label;"
+                          accesskey="&pref.editInTab.accesskey;"
+                          preference="calendar.item.editInTab"/>
+            </hbox>
+        </groupbox>
+    </vbox>
+                </tabpanel>
+                <tabpanel orient="vertical">
+    <vbox id="calPreferencesBoxAlarms">
+        <groupbox>
+            <label><html:h2>&pref.alarmgoesoff.label;</html:h2></label>
+            <vbox id="alarm-sound-box">
+                <hbox align="center">
+                    <checkbox id="alarmSoundCheckbox"
+                              preference="calendar.alarms.playsound"
+                              label="&pref.playasound;"
+                              accesskey="&pref.calendar.alarms.playsound.accessKey;"/>
+                    <spacer flex="1"/>
+                    <button id="calendar.prefs.alarm.sound.play"
+                            label="&pref.calendar.alarms.sound.play.label;"
+                            accesskey="&pref.calendar.alarms.sound.play.accessKey;"
+                            oncommand="gAlarmsPane.previewAlarm()"/>
+                </hbox>
+                <radiogroup id="alarmSoundType"
+                            class="indent"
+                            orient="vertical"
+                            preference="calendar.alarms.soundType"
+                            aria-labelledby="alarmSoundCheckbox">
+                    <hbox>
+                        <radio id="alarmSoundSystem"
+                               value="0"
+                               label="&pref.calendar.alarms.sound.useDefault.label;"
+                               accesskey="&pref.calendar.alarms.sound.useDefault.accessKey;"/>
+                    </hbox>
+                    <hbox>
+                        <radio id="alarmSoundCustom"
+                               value="1"
+                               label="&pref.calendar.alarms.sound.useCustom.label;"
+                               accesskey="&pref.calendar.alarms.sound.useCustom.accessKey;"/>
+                    </hbox>
+                </radiogroup>
+                <hbox align="center">
+                    <textbox id="alarmSoundFileField"
+                             type="filefield"
+                             class="indent"
+                             readonly="true"
+                             flex="1"
+                             preference="calendar.alarms.soundURL"
+                             preference-editable="true"
+                             onsyncfrompreference="return gAlarmsPane.readSoundLocation();"/>
+                    <button id="calendar.prefs.alarm.sound.browse"
+                            label="&pref.calendar.alarms.sound.browse.label;"
+                            accesskey="&pref.calendar.alarms.sound.browse.accessKey;"
+                            oncommand="gAlarmsPane.browseAlarm()"/>
+                </hbox>
+            </vbox>
+            <hbox align="center" flex="1">
+                <checkbox id="alarmshow"
+                          preference="calendar.alarms.show"
+                          label="&pref.showalarmbox;"
+                          accesskey="&pref.calendar.alarms.showAlarmBox.accessKey;"/>
+            </hbox>
+            <hbox align="center" flex="1">
+                <checkbox id="missedalarms"
+                          preference="calendar.alarms.showmissed"
+                          label="&pref.missedalarms2;"
+                          accesskey="&pref.calendar.alarms.missedAlarms.accessKey;"/>
+            </hbox>
+        </groupbox>
+
+        <groupbox>
+            <label><html:h2>&pref.calendar.alarms.defaults.label;</html:h2></label>
+            <html:table id="alarm-defaults-table">
+                <html:tr>
+                    <html:td>
+                        <label value="&pref.defaultsnoozelength.label;"
+                               accesskey="&pref.defaultsnoozelength.accesskey;"
+                               control="defaultsnoozelength"/>
+                    </html:td>
+                    <html:td width="30%">
+                        <hbox align="center">
+                            <html:input id="defaultsnoozelength" type="number" class="size3"
+                                        min="0"
+                                        preference="calendar.alarms.defaultsnoozelength"
+                                        onselect="updateUnitLabelPlural('defaultsnoozelength', 'defaultsnoozelengthunit', 'minutes')"
+                                        oninput="updateUnitLabelPlural('defaultsnoozelength', 'defaultsnoozelengthunit', 'minutes')"/>
+                            <label id="defaultsnoozelengthunit"/>
+                        </hbox>
+                    </html:td>
+                </html:tr>
+                <html:tr>
+                    <html:td>
+                        <label value="&pref.defalarm4events.label;"
+                               accesskey="&pref.defalarm4events.accesskey;"
+                               control="eventdefalarm"/>
+                    </html:td>
+                    <html:td>
+                        <menulist id="eventdefalarm"
+                                  crop="none"
+                                  preference="calendar.alarms.onforevents">
+                            <menupopup id="eventdefalarmpopup">
+                                <menuitem id="eventdefalarmon"
+                                          label="&pref.alarm.on;"
+                                          value="1"/>
+                                <menuitem id="eventdefalarmoff"
+                                          label="&pref.alarm.off;"
+                                          value="0"
+                                          selected="true"/>
+                            </menupopup>
+                        </menulist>
+                    </html:td>
+                </html:tr>
+                <html:tr>
+                    <html:td>
+                        <label value="&pref.defalarm4todos.label;"
+                               accesskey="&pref.defalarm4todos.accesskey;"
+                               control="tododefalarm"/>
+                    </html:td>
+                    <html:td>
+                        <menulist id="tododefalarm"
+                                  crop="none"
+                                  preference="calendar.alarms.onfortodos">
+                            <menupopup id="tododefalarmpopup">
+                                <menuitem id="tododefalarmon"
+                                          label="&pref.alarm.on;"
+                                          value="1"/>
+                                <menuitem id="tododefalarmoff"
+                                          label="&pref.alarm.off;"
+                                          value="0"
+                                          selected="true"/>
+                            </menupopup>
+                        </menulist>
+                    </html:td>
+                </html:tr>
+                <html:tr>
+                    <html:td>
+                        <label value="&pref.defalarmlen4events.label;"
+                               accesskey="&pref.defalarmlen4events.accesskey;"
+                               control="eventdefalarmlen"/>
+                    </html:td>
+                    <html:td>
+                        <hbox class="defaultTimeBox"
+                              align="center"
+                              flex="1">
+                            <html:input id="eventdefalarmlen" type="number" class="size3" min="0"
+                                        preference="calendar.alarms.eventalarmlen"
+                                        onselect="updateMenuLabelsPlural('eventdefalarmlen', 'eventdefalarmunit')"
+                                        oninput="updateMenuLabelsPlural('eventdefalarmlen', 'eventdefalarmunit')"/>
+                            <menulist id="eventdefalarmunit"
+                                      flex="1"
+                                      crop="none"
+                                      preference="calendar.alarms.eventalarmunit">
+                                <menupopup id="eventdefalarmunitpopup">
+                                    <menuitem id="eventdefalarmunitmin"
+                                              value="minutes"
+                                              selected="true"/>
+                                    <menuitem id="eventdefalarmunithour"
+                                              value="hours"/>
+                                    <menuitem id="eventdefalarmunitday"
+                                              value="days"/>
+                                </menupopup>
+                            </menulist>
+                        </hbox>
+                    </html:td>
+                </html:tr>
+                <html:tr>
+                    <html:td>
+                        <label value="&pref.defalarmlen4todos.label;"
+                               accesskey="&pref.defalarmlen4todos.accesskey;"
+                               control="tododefalarmlen"/>
+                    </html:td>
+                    <html:td>
+                        <hbox class="defaultTimeBox"
+                              align="center"
+                              flex="1">
+                            <html:input id="tododefalarmlen" type="number" class="size3" min="0"
+                                        preference="calendar.alarms.todoalarmlen"
+                                        onselect="updateMenuLabelsPlural('tododefalarmlen', 'tododefalarmunit')"
+                                        oninput="updateMenuLabelsPlural('tododefalarmlen', 'tododefalarmunit')"/>
+                            <menulist id="tododefalarmunit"
+                                      flex="1"
+                                      crop="none"
+                                      preference="calendar.alarms.todoalarmunit">
+                                <menupopup id="tododefalarmunitpopup">
+                                    <menuitem id="tododefalarmunitmin"
+                                              value="minutes"
+                                              selected="true"/>
+                                    <menuitem id="tododefalarmunithour"
+                                              value="hours"/>
+                                    <menuitem id="tododefalarmunitday"
+                                              value="days"/>
+                                </menupopup>
+                            </menulist>
+                        </hbox>
+                    </html:td>
+                </html:tr>
+            </html:table>
+        </groupbox>
+    </vbox>
+                </tabpanel>
+                <tabpanel orient="vertical">
+    <vbox id="calPreferencesBoxCategories" flex="1">
+        <richlistbox id="categorieslist"
+                     flex="1"
+                     seltype="multiple"
+                     onselect="gCategoriesPane.updateButtons()"
+                     ondblclick="gCategoriesPane.listOnDblClick(event)"/>
+        <hbox pack="end">
+            <button label="&pref.categories.newButton.label;"
+                    accesskey="&pref.categories.newButton.accesskey;"
+                    oncommand="gCategoriesPane.addCategory()"/>
+            <button id="editCButton"
+                    label="&pref.categories.editButton.label;"
+                    accesskey="&pref.categories.editButton.accesskey;"
+                    oncommand="gCategoriesPane.editCategory()"/>
+            <button id="deleteCButton"
+                    label="&pref.categories.removeButton.label;"
+                    accesskey="&pref.categories.removeButton.accesskey;"
+                    oncommand="gCategoriesPane.deleteCategory()"/>
+        </hbox>
+    </vbox>
+                </tabpanel>
+                <tabpanel orient="vertical">
+    <vbox id="calPreferencesBoxViews">
+        <groupbox>
+            <label><html:h2>&pref.calendar.view.allview.caption;</html:h2></label>
+            <hbox>
+                <hbox align="center" flex="1">
+                    <label value="&pref.weekstarts.label;"
+                           accesskey="&pref.weekstarts.accesskey;"
+                           control="weekstarts"/>
+                    <menulist id="weekstarts"
+                              preference="calendar.week.start"
+                              oncommand="gViewsPane.updateViewWorkDayCheckboxes(this.value)">
+                        <menupopup id="weekstartspopup">
+                            <menuitem label="&day.1.name;" value="0"/>
+                            <menuitem label="&day.2.name;" value="1"/>
+                            <menuitem label="&day.3.name;" value="2"/>
+                            <menuitem label="&day.4.name;" value="3"/>
+                            <menuitem label="&day.5.name;" value="4"/>
+                            <menuitem label="&day.6.name;" value="5"/>
+                            <menuitem label="&day.7.name;" value="6"/>
+                        </menupopup>
+                    </menulist>
+                </hbox>
+                <hbox align="center" flex="1">
+                    <checkbox id="weekNumber"
+                              crop="end"
+                              label="&pref.calendar.view-minimonth.showweeknumber.label;"
+                              accesskey="&pref.calendar.view-minimonth.showweeknumber.accesskey;"
+                              preference="calendar.view-minimonth.showWeekNumber"/>
+                </hbox>
+            </hbox>
+        </groupbox>
+
+        <groupbox>
+            <label><html:h2>&pref.calendar.view.workweek.caption;</html:h2></label>
+            <label value="&pref.daysoff.label;"/>
+            <hbox>
+                <checkbox id="dayoff0"
+                          class="dayOffCheckbox"
+                          label="&day.1.Ddd;"
+                          accesskey="&day.1.Ddd.accesskey;"
+                          orient="vertical"
+                          preference="calendar.week.d0sundaysoff"/>
+                <checkbox id="dayoff1"
+                          class="dayOffCheckbox"
+                          label="&day.2.Ddd;"
+                          accesskey="&day.2.Ddd.accesskey;"
+                          orient="vertical"
+                          preference="calendar.week.d1mondaysoff"/>
+                <checkbox id="dayoff2"
+                          class="dayOffCheckbox"
+                          label="&day.3.Ddd;"
+                          accesskey="&day.3.Ddd.accesskey;"
+                          orient="vertical"
+                          preference="calendar.week.d2tuesdaysoff"/>
+                <checkbox id="dayoff3"
+                          class="dayOffCheckbox"
+                          label="&day.4.Ddd;"
+                          accesskey="&day.4.Ddd.accesskey;"
+                          orient="vertical"
+                          preference="calendar.week.d3wednesdaysoff"/>
+                <checkbox id="dayoff4"
+                          class="dayOffCheckbox"
+                          label="&day.5.Ddd;"
+                          accesskey="&day.5.Ddd.accesskey;"
+                          orient="vertical"
+                          preference="calendar.week.d4thursdaysoff"/>
+                <checkbox id="dayoff5"
+                          class="dayOffCheckbox"
+                          label="&day.6.Ddd;"
+                          accesskey="&day.6.Ddd.accesskey;"
+                          orient="vertical"
+                          preference="calendar.week.d5fridaysoff"/>
+                <checkbox id="dayoff6"
+                          class="dayOffCheckbox"
+                          label="&day.7.Ddd;"
+                          accesskey="&day.7.Ddd.accesskey;"
+                          orient="vertical"
+                          preference="calendar.week.d6saturdaysoff"/>
+            </hbox>
+        </groupbox>
+
+        <groupbox>
+            <label><html:h2>&pref.calendar.view.dayandweekviews.caption;</html:h2></label>
+            <html:table id="dayAndWeekViewsTable">
+                <html:tr>
+                    <html:td>
+                        <label value="&pref.calendar.view.daystart.label;"
+                               accesskey="&pref.calendar.view.daystart.accesskey;"
+                               control="daystarthour"/>
+                    </html:td>
+                    <html:td>
+                        <menulist id="daystarthour"
+                                  oncommand="gViewsPane.updateViewEndMenu(this.value);"
+                                  preference="calendar.view.daystarthour">
+                            <menupopup id="daystarthourpopup">
+                                <menuitem id="timeStart0" label="&time.midnight;" value="0"/>
+                                <menuitem id="timeStart1"                         value="1"/>
+                                <menuitem id="timeStart2"                         value="2"/>
+                                <menuitem id="timeStart3"                         value="3"/>
+                                <menuitem id="timeStart4"                         value="4"/>
+                                <menuitem id="timeStart5"                         value="5"/>
+                                <menuitem id="timeStart6"                         value="6"/>
+                                <menuitem id="timeStart7"                         value="7"/>
+                                <menuitem id="timeStart8"                         value="8"/>
+                                <menuitem id="timeStart9"                         value="9"/>
+                                <menuitem id="timeStart10"                        value="10"/>
+                                <menuitem id="timeStart11"                        value="11"/>
+                                <menuitem id="timeStart12" label="&time.noon;"    value="12"/>
+                                <menuitem id="timeStart13"                        value="13"/>
+                                <menuitem id="timeStart14"                        value="14"/>
+                                <menuitem id="timeStart15"                        value="15"/>
+                                <menuitem id="timeStart16"                        value="16"/>
+                                <menuitem id="timeStart17"                        value="17"/>
+                                <menuitem id="timeStart18"                        value="18"/>
+                                <menuitem id="timeStart19"                        value="19"/>
+                                <menuitem id="timeStart20"                        value="20"/>
+                                <menuitem id="timeStart21"                        value="21"/>
+                                <menuitem id="timeStart22"                        value="22"/>
+                                <menuitem id="timeStart23"                        value="23"/>
+                            </menupopup>
+                        </menulist>
+                    </html:td>
+                    <html:td>
+                        <hbox align="center" pack="center">
+                            <label value="&pref.calendar.view.visiblehours.label;"
+                                   accesskey="&pref.calendar.view.visiblehours.accesskey;"
+                                   control="visiblehours"/>
+                            <menulist id="visiblehours"
+                                      preference="calendar.view.visiblehours">
+                                <menupopup id="visiblehourspopup">
+                                    <menuitem label="1"  value="1"/>
+                                    <menuitem label="2"  value="2"/>
+                                    <menuitem label="3"  value="3"/>
+                                    <menuitem label="4"  value="4"/>
+                                    <menuitem label="5"  value="5"/>
+                                    <menuitem label="6"  value="6"/>
+                                    <menuitem label="7"  value="7"/>
+                                    <menuitem label="8"  value="8"/>
+                                    <menuitem label="9"  value="9"/>
+                                    <menuitem label="10" value="10"/>
+                                    <menuitem label="11" value="11"/>
+                                    <menuitem label="12" value="12"/>
+                                    <menuitem label="13" value="13"/>
+                                    <menuitem label="14" value="14"/>
+                                    <menuitem label="15" value="15"/>
+                                    <menuitem label="16" value="16"/>
+                                    <menuitem label="17" value="17"/>
+                                    <menuitem label="18" value="18"/>
+                                    <menuitem label="19" value="19"/>
+                                    <menuitem label="20" value="20"/>
+                                    <menuitem label="21" value="21"/>
+                                    <menuitem label="22" value="22"/>
+                                    <menuitem label="23" value="23"/>
+                                    <menuitem label="24" value="24"/>
+                                </menupopup>
+                            </menulist>
+                            <label value="&pref.calendar.view.visiblehoursend.label;"/>
+                        </hbox>
+                    </html:td>
+                </html:tr>
+                <html:tr>
+                    <html:td>
+                        <label value="&pref.calendar.view.dayend.label;"
+                               accesskey="&pref.calendar.view.dayend.accesskey;"
+                               control="dayendhour"/>
+                    </html:td>
+                    <html:td>
+                        <menulist id="dayendhour"
+                                  oncommand="gViewsPane.updateViewStartMenu(this.value);"
+                                  preference="calendar.view.dayendhour">
+                            <menupopup id="dayendhourpopup">
+                                <menuitem id="timeEnd1"                          value="1"/>
+                                <menuitem id="timeEnd2"                          value="2"/>
+                                <menuitem id="timeEnd3"                          value="3"/>
+                                <menuitem id="timeEnd4"                          value="4"/>
+                                <menuitem id="timeEnd5"                          value="5"/>
+                                <menuitem id="timeEnd6"                          value="6"/>
+                                <menuitem id="timeEnd7"                          value="7"/>
+                                <menuitem id="timeEnd8"                          value="8"/>
+                                <menuitem id="timeEnd9"                          value="9"/>
+                                <menuitem id="timeEnd10"                         value="10"/>
+                                <menuitem id="timeEnd11"                         value="11"/>
+                                <menuitem id="timeEnd12" label="&time.noon;"     value="12"/>
+                                <menuitem id="timeEnd13"                         value="13"/>
+                                <menuitem id="timeEnd14"                         value="14"/>
+                                <menuitem id="timeEnd15"                         value="15"/>
+                                <menuitem id="timeEnd16"                         value="16"/>
+                                <menuitem id="timeEnd17"                         value="17"/>
+                                <menuitem id="timeEnd18"                         value="18"/>
+                                <menuitem id="timeEnd19"                         value="19"/>
+                                <menuitem id="timeEnd20"                         value="20"/>
+                                <menuitem id="timeEnd21"                         value="21"/>
+                                <menuitem id="timeEnd22"                         value="22"/>
+                                <menuitem id="timeEnd23"                         value="23"/>
+                                <menuitem id="timeEnd24" label="&time.midnight;" value="24"/>
+                            </menupopup>
+                        </menulist>
+                    </html:td>
+                </html:tr>
+            </html:table>
+            <checkbox id="showLocation" pack="end"
+                      label="&pref.showlocation.label;"
+                      preference="calendar.view.showLocation"/>
+            <spacer/>
+        </groupbox>
+
+        <groupbox id="viewsMultiweekGroupbox">
+            <label><html:h2>&pref.calendar.view.multiweekview.caption;</html:h2></label>
+            <hbox align="center">
+                <label value="&pref.numberofweeks.label;"
+                       accesskey="&pref.numberofweeks.accesskey;"
+                       control="viewsMultiweekTotalWeeks"/>
+                <menulist id="viewsMultiweekTotalWeeks"
+                          preference="calendar.weeks.inview">
+                    <menupopup>
+                        <menuitem label="&pref.numberofweeks.1;" value="1"/>
+                        <menuitem label="&pref.numberofweeks.2;" value="2"/>
+                        <menuitem label="&pref.numberofweeks.3;" value="3"/>
+                        <menuitem label="&pref.numberofweeks.4;" value="4"/>
+                        <menuitem label="&pref.numberofweeks.5;" value="5"/>
+                        <menuitem label="&pref.numberofweeks.6;" value="6"/>
+                    </menupopup>
+                </menulist>
+            </hbox>
+            <hbox align="center" id="previousWeeksBox">
+                <label value="&pref.numberofpreviousweeks.label;"
+                       accesskey="&pref.numberofpreviousweeks.accesskey;"
+                       control="viewsMultiweekPreviousWeeks"/>
+                <menulist id="viewsMultiweekPreviousWeeks"
+                          preference="calendar.previousweeks.inview">
+                    <menupopup>
+                        <menuitem label="&pref.numberofweeks.0;" value="0"/>
+                        <menuitem label="&pref.numberofweeks.1;" value="1"/>
+                        <menuitem label="&pref.numberofweeks.2;" value="2"/>
+                    </menupopup>
+                </menulist>
+            </hbox>
+        </groupbox>
+    </vbox>
+                </tabpanel>
+            </tabpanels>
+        </tabbox>
+    </prefpane>
+
+    <script src="chrome://calendar/content/calendar-ui-utils.js"/>
+    <script src="chrome://calendar/content/calendar-dialog-utils.js"/>
+
+    <!-- Get the localized text for use in the .js -->
+    <script>
+        var labelLong  = "&pref.dateformat.long;";
+        var labelShort = "&pref.dateformat.short;";
+        var noneLabel  = "&pref.categories.none.label;";
+        var newTitle   = "&pref.categories.new.title;";
+        var editTitle  = "&pref.categories.edit.title;";
+        var overwrite  = "&pref.categories.overwrite;";
+        var overwriteTitle = "&pref.categories.overwrite.title;";
+        var noBlankCategories = "&pref.categories.noBlankCategories;";
+    </script>
+
+    <script src="chrome://calendar/content/preferences/general.js"/>
+    <script src="chrome://calendar/content/preferences/alarms.js"/>
+    <script src="chrome://calendar/content/preferences/categories.js"/>
+    <script src="chrome://calendar/content/preferences/views.js"/>
+    <script src="chrome://lightning/content/messenger-overlay-preferences.js"/>
+</overlay>

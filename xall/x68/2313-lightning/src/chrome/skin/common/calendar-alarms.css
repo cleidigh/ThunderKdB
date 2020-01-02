@@ -1,0 +1,72 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/**
+ * Reminder icons (used from the event dialog, reminder dialog, views, ...)
+ */
+.reminder-icon {
+    -moz-context-properties: fill;
+    fill: currentColor;
+}
+
+.reminder-icon[value="DISPLAY"] {
+    list-style-image: url(chrome://calendar-common/skin/icons/alarm.svg);
+}
+
+.alarm-icons-box[suppressed="true"] > .reminder-icon[value="DISPLAY"] {
+    list-style-image: url(chrome://calendar-common/skin/icons/alarm-no.svg);
+}
+
+.reminder-icon[value="EMAIL"] {
+    list-style-image: url(chrome://calendar-common/skin/icons/email.svg);
+}
+
+.alarm-icons-box[flashing="true"] > .reminder-icon[value="DISPLAY"] {
+    background: red;
+    fill: white;
+}
+
+.alarm-icons-box > .reminder-icon {
+    width: 12px;
+    height: 12px;
+}
+
+/**
+ * Reminder dialog (i.e "custom" alarm in the event dialog)
+ * Please make sure rules added here are very specific and won't hurt other
+ * dialogs.
+ */
+#reminder-listbox {
+    min-height: 100px;
+}
+
+#reminder-relative-radio > .radio-label-center-box > .radio-label-box,
+#reminder-absolute-radio > .radio-label-center-box > .radio-label-box {
+    display: none;
+}
+
+#reminder-actions-menulist > menupopup > menuitem > .menu-iconic-left {
+    display: -moz-box;
+}
+
+#reminder-notifications > notification[type="warning"] > hbox > .messageImage {
+    width: 32px;
+    height: 32px;
+    fill: #ffbf00;
+}
+
+#reminder-notifications {
+  padding: 0 4px 4px;
+}
+
+#reminder-actions-caption,
+#reminder-details-caption,
+#calendar-event-dialog-reminder > .dialog-button-box {
+    padding-top: 20px;
+}
+
+.reminder-icon > .menu-iconic-left > .menu-iconic-icon {
+    width: auto;
+    height: auto;
+}

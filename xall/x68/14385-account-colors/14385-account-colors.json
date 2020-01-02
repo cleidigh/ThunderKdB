@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1236/1236621.png?modified=1442452499"
         }
     ],
-    "average_daily_users": 14041,
+    "average_daily_users": 12564,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -17,26 +17,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472969,
+        "id": 2473036,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/account-colors/versions/2472969",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/account-colors/versions/2473036",
         "files": [
             {
-                "id": 1016076,
-                "created": "2019-12-04T16:01:03Z",
-                "hash": "sha256:c48704fca26e84379858cc2d2e920f812ba901e736dc866528d165fb41429ac7",
+                "id": 1016143,
+                "created": "2019-12-18T19:57:28Z",
+                "hash": "sha256:a79d7c8c3881fc46823bb5a77c56362c382a87429432e797cb59914bbd4f0b35",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 54969,
+                "size": 55034,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016076/account_colors-13.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016143/account_colors-13.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -70,15 +70,15 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "New features, changes and fixes in Version 13.0:\n\n    • New: Account Colors is now fully compatible with Thunderbird's Light and Dark themes.\n    • New: Can now color all columns in Folder and Thread Panes.\n    • New: 'Color Unread/Total/Size Fonts' option for Folder Pane.\n    • New: 'Black Row Fonts' option for Folder &amp; Thread Panes.\n    • New: 'White Row Fonts' option for Folder &amp; Thread Panes.\n    • New: 'Light Pane Background' option for Folder &amp; Thread Panes.\n    • New: 'Dark Pane Background' option for Folder &amp; Thread Panes.\n    • New: 'Black Header Labels' option for Message Pane/Tab/Window.\n    • New: 'White Header Labels' option for Message Pane/Tab/Window.\n    • New: 'White Header Labels' option for Compose Window.\n    • New: 'White Field Fonts' option for Compose Window.\n    • New: 'Light Field Backgrounds (on hover or focus) ' option for Compose Window.\n    • New: 'Dark Field Backgrounds (on hover or focus) ' option for Compose Window.\n\n    • Chg: On first installation 'Reinstate default hover and select styles' option is now enabled for both Folder and Thread Panes.\n    • Chg: On first installation 'Reinstate default hover style (on From menu)' option is now enabled for Compose Window.\n    • Chg: Hover style on From menu in Compose Window changed to Thunderbird standard white font on blue background.\n    • Chg: Attachments container in Compose Window is now lightly shaded by default.\n    • Chg: 'White Field Background' option replaced bynamed to 'Light Field Background' for Compose window..\n\n    • Fix: Tree lines in Folder Pane did not always contrast with row background color. Fixed.\n    • Fix: Hover and select bars in Folder and Thread Panes were not visible with themes enabled. Fixed.\n    • Fix: Darker (unfocused) select bars in Folder and Thread Pane was not visible with themes enabled. Fixed.\n    • Fix: Color picker RGB number boxes allowed values &lt;0 or &gt;255. Fixed.\n    • Fix: Color picker HSV H number box allowed values &lt;0 or &gt;360. Fixed.\n    • Fix: Color picker HSV S&amp;V number boxes allowed values &lt;0 or &gt;100. Fixed."
+            "en-US": "New features, changes and fixes in Version 13.1:\n\n    • Fix: OK button did not close color picker palette when \"Apply color to all identities\" was enabled. Fixed.\n    • Fix: In Folder pane, enabling Color Account/Folder Font options did not override account/inbox new mail colors. Fixed."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/account-colors/versions/13.0",
-        "version": "13.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/account-colors/versions/13.1",
+        "version": "13.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>ACCOUNT COLOURS NOW WORKS WITH THUNDERBIRD 68.0</b>\n\n<b>CHANGES</b>\n\n<b>Version 13.0</b>\n\n    • Account Colors is now fully compatible with Thunderbird's Light and Dark themes.\n    • Includes 15 new font and background coloring options.\n    • Allows coloring of all columns in Folder and Thread Panes.\n    • Hover and select bars are now visible in Folder and Thread Panes with themes enabled. \n    • Several other minor improvements and bug fixess.\n\nIt is recommended to enable these options:\n\n    • 'Reinstate default hover and select styles' option for both Folder and Thread Panes.\n    • 'Reinstate default hover style (on From menu)' option for Compose Window.\n\n\n<b>OVERVIEW</b>\n\n<i>Account Colors</i> allows a font color and a background color to be associated with each POP3/IMAP account or identity. The colors for an account are the same as the colors for its default identity.  The colors and other settings can be changed in the <i>Account Colors Options</i> dialog.\n\n<b>USER REFERENCE</b>\n\n<b>Accessing Account Colors Options</b>\n\nThe best way to access the <i>Account Colors Options</i> dialog is to select <i>Tools</i> | <i>Account Colors Options...</i> on the Thunderbird main menu, since this allows the coloring and styling changes to be seen while still in the <i>Account Colors Options</i> dialog.\n\n<b>Font and Background Colors</b>\n\nThe font and background colors can be set for each account or identity.\n\nColors can be applied in the <i>Folder Pane</i> using these options:\n\n    Font Colors\n        • Color Account Font; Color Folder Font; Color Unread/Total/Size Fonts.\n        • Black Row Fonts; White Row Fonts.\n\n    Background Colors\n        • Color Account Background; Color Folder Background.\n        • Light Pane Background; Dark Pane Background.\n\nColors can be applied in the <i>Thread Pane</i> using these options:\n\n    Font Colors\n        • Color Subject Font; Color From Font; Color Recipient/Date/Size/Account/etc Fonts.\n        • Black Row Fonts; White Row Fonts.\n\n    Background Colors\n        • Color Row Background.\n        • Light Pane Background; Dark Pane Background.\n\nColors can be applied in the <i>Message Pane/Tabs/Windows</i> using these options:\n\n    Font Colors\n        • Color Subject Font; Color From Font.\n        • Black Header Labels; White Header Labels.\n\n    Background Colors\n        • Color Header Background.\n\nColors can be applied in the <i>Compose</i> Window using these options:\n\n    Font Colors\n        • Color Subject Font; Color From Font; Color To/Cc/Bcc Fonts; Color Attachment Font.\n        • Black Header Labels; White Header Labels, Black Field Fonts; White Field Fonts.\n\n    Background Colors\n        • Color Subject Background; Color From Background; Color To/Cc/Bcc Backgrounds; \n            Color Attachment Background; Color Header Background.\n        • Light Field Backgrounds (on hover or focus); Dark Field Backgrounds (on hover or focus).\n\nIn each of the above bullet lists, the options are listed in decreasing priority order.\n\nIn the thread pane and message pane/tabs/windows, the colors applied are based either on the account in which the folder containing the message is located, or on the account in which the message was received. Applying colors based on the account in which the message was received is especially useful when using a <i>Global Inbox</i> for POP3 messages or when using <i>Local Folders</i> to store POP3 and/or IMAP messages. \n\nIn compose windows, the colors applied are based on the <i>From</i> identity. After adding a new identity, the font and background colors must be defined in <i>Options</i>.\n\nIt is possible to retain Thunderbird's default background color if <i>White</i> is selected as the background color.\n\nNote, if a Light or Dark Pane Background option is enabled, the applied light or dark color will in effect replace Thunderbird's default background color.\n\n<b>Font Styles and Sizes</b>\n\nThe font style and font size can be changed for:\n    • <i>Account</i> names [folder pane]\n    • <i>Subject</i> and <i>From</i> names [thread pane]\n    • <i>Subject</i> and <i>From</i> names [message pane/tabs/window]\n    • <i>Subject</i> and <i>From</i> names [compose windows]\n\n<b>Additional Styles</b>\n\nAdditional styles can be chosen to:\n    • Bold on Accounts/Folders with new mail [folder pane]\n    • Underline on Accounts/Folders with new mail [folder pane]\n    • No bold on Folders with unread messages [folder pane]\n    • Bold <i>Subject</i> on unread messages [thread pane]\n    • Bold <i>From</i> on unread messages [thread pane]\n    • Show tree lines [folder pane]\n    • Show row stripes [thread pane]\n    • Darker unfocused select bar [folder &amp; thread panes]\n    • Increase row spacing based on Account font size [folder pane]\n    • Increase row spacing based on Subject/From font sizes [thread pane]\n    • Reinstate the default hover and select styles [folder &amp; thread panes]\n    • Reinstate the default hover style on the <i>From</i> menu [compose window]\n\n<b>Options</b>\n\nThe <i>Account Colors Options</i> dialog box has a tabbed interface. The first tab defines the font and background colors for each account or identity. The subsequent tabs choose whether the font/background colors are to be applied and also choose the font styles/sizes and additional styles to be applied for the folder pane, thread pane, message pane/tabs/windows and compose windows.\n\n<b>Compatibility</b>\n\nAccount Colors is compatible with the <i>CompactHeader</i> add-on (Versions 3.0.0beta3 on Thunderbird 68)."
+        "en-US": "<b>ACCOUNT COLOURS NOW WORKS WITH THUNDERBIRD 68.0</b>\n\n<b>CHANGES</b>\n\n<b>Version 13.0</b>\n\n    • Account Colors is now fully compatible with Thunderbird's Light and Dark themes.\n    • Includes 15 new font and background coloring options.\n    • Allows coloring of all columns in Folder and Thread Panes.\n    • Hover and select bars are now visible in Folder and Thread Panes with themes enabled. \n    • Several other minor improvements and bug fixess.\n\n<b>Version 13.1</b>\n\n    • Fix: In the color pickers, clicking the palette OK button now always closes the palette.\n    • Fix: In the Folder pane, the Color Account/Folder Font options now override the account/inbox new mail colors.\n\nIt is recommended to enable these options:\n\n    • 'Reinstate default hover and select styles' option for both Folder and Thread Panes.\n    • 'Reinstate default hover style (on From menu)' option for Compose Window.\n\n<b>OVERVIEW</b>\n\n<i>Account Colors</i> allows a font color and a background color to be associated with each POP3/IMAP account or identity. The colors for an account are the same as the colors for its default identity.  The colors and other settings can be changed in the <i>Account Colors Options</i> dialog.\n\n<b>USER REFERENCE</b>\n\n<b>Accessing Account Colors Options</b>\n\nThe best way to access the <i>Account Colors Options</i> dialog is to select <i>Tools</i> | <i>Account Colors Options...</i> on the Thunderbird main menu, since this allows the coloring and styling changes to be seen while still in the <i>Account Colors Options</i> dialog.\n\n<b>Font and Background Colors</b>\n\nThe font and background colors can be set for each account or identity.\n\nColors can be applied in the <i>Folder Pane</i> using these options:\n\n    Font Colors\n        • Color Account Font; Color Folder Font; Color Unread/Total/Size Fonts.\n        • Black Row Fonts; White Row Fonts.\n\n    Background Colors\n        • Color Account Background; Color Folder Background.\n        • Light Pane Background; Dark Pane Background.\n\nColors can be applied in the <i>Thread Pane</i> using these options:\n\n    Font Colors\n        • Color Subject Font; Color From Font; Color Recipient/Date/Size/Account/etc Fonts.\n        • Black Row Fonts; White Row Fonts.\n\n    Background Colors\n        • Color Row Background.\n        • Light Pane Background; Dark Pane Background.\n\nColors can be applied in the <i>Message Pane/Tabs/Windows</i> using these options:\n\n    Font Colors\n        • Color Subject Font; Color From Font.\n        • Black Header Labels; White Header Labels.\n\n    Background Colors\n        • Color Header Background.\n\nColors can be applied in the <i>Compose</i> Window using these options:\n\n    Font Colors\n        • Color Subject Font; Color From Font; Color To/Cc/Bcc Fonts; Color Attachment Font.\n        • Black Header Labels; White Header Labels, Black Field Fonts; White Field Fonts.\n\n    Background Colors\n        • Color Subject Background; Color From Background; Color To/Cc/Bcc Backgrounds; \n            Color Attachment Background; Color Header Background.\n        • Light Field Backgrounds (on hover or focus); Dark Field Backgrounds (on hover or focus).\n\nIn each of the above bullet lists, the options are listed in decreasing priority order.\n\nIn the thread pane and message pane/tabs/windows, the colors applied are based either on the account in which the folder containing the message is located, or on the account in which the message was received. Applying colors based on the account in which the message was received is especially useful when using a <i>Global Inbox</i> for POP3 messages or when using <i>Local Folders</i> to store POP3 and/or IMAP messages. \n\nIn compose windows, the colors applied are based on the <i>From</i> identity. After adding a new identity, the font and background colors must be defined in <i>Options</i>.\n\nIt is possible to retain Thunderbird's default background color if <i>White</i> is selected as the background color.\n\nNote, if a Light or Dark Pane Background option is enabled, the applied light or dark color will in effect replace Thunderbird's default background color.\n\n<b>Font Styles and Sizes</b>\n\nThe font style and font size can be changed for:\n    • <i>Account</i> names [folder pane]\n    • <i>Subject</i> and <i>From</i> names [thread pane]\n    • <i>Subject</i> and <i>From</i> names [message pane/tabs/window]\n    • <i>Subject</i> and <i>From</i> names [compose windows]\n\n<b>Additional Styles</b>\n\nAdditional styles can be chosen to:\n    • Bold on Accounts/Folders with new mail [folder pane]\n    • Underline on Accounts/Folders with new mail [folder pane]\n    • No bold on Folders with unread messages [folder pane]\n    • Bold <i>Subject</i> on unread messages [thread pane]\n    • Bold <i>From</i> on unread messages [thread pane]\n    • Show tree lines [folder pane]\n    • Show row stripes [thread pane]\n    • Darker unfocused select bar [folder &amp; thread panes]\n    • Increase row spacing based on Account font size [folder pane]\n    • Increase row spacing based on Subject/From font sizes [thread pane]\n    • Reinstate the default hover and select styles [folder &amp; thread panes]\n    • Reinstate the default hover style on the <i>From</i> menu [compose window]\n\n<b>Options</b>\n\nThe <i>Account Colors Options</i> dialog box has a tabbed interface. The first tab defines the font and background colors for each account or identity. The subsequent tabs choose whether the font/background colors are to be applied and also choose the font styles/sizes and additional styles to be applied for the folder pane, thread pane, message pane/tabs/windows and compose windows.\n\n<b>Compatibility</b>\n\nAccount Colors is compatible with the <i>CompactHeader</i> add-on (Versions 3.0.0beta3 on Thunderbird 68)."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/account-colors/edit",
@@ -86,16 +86,16 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": null,
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/14/14385-64.png?modified=1575476796",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/14/14385-64.png?modified=1576826243",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/14/14385-32.png?modified=1575476796",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/14/14385-64.png?modified=1575476796"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/14/14385-32.png?modified=1576826243",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/14/14385-64.png?modified=1576826243"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-12-04T16:14:11Z",
+    "last_updated": "2019-12-19T13:40:00Z",
     "name": {
         "en-US": "Account Colors"
     },
@@ -199,10 +199,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.15141,
-        "count": 124,
-        "average": 4.1613,
-        "text_count": 124
+        "bayesian_average": 4.16482,
+        "count": 126,
+        "average": 4.1746,
+        "text_count": 126
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/account-colors/reviews/",
     "requires_payment": false,

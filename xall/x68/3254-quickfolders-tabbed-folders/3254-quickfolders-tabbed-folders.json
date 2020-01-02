@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 23260,
+    "average_daily_users": 20647,
     "categories": {
         "seamonkey": [
             "bookmarks",
@@ -29,26 +29,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472949,
+        "id": 2473091,
         "compatibility": {
             "thunderbird": {
-                "max": "69.*",
+                "max": "69.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2472949",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2473091",
         "files": [
             {
-                "id": 1016056,
-                "created": "2019-11-29T13:55:11Z",
-                "hash": "sha256:b0f7a3697e20b6d2e65867ee068dcceea4e4562941e26a71ad7ffb7ea990c932",
+                "id": 1016202,
+                "created": "2019-12-27T15:10:18Z",
+                "hash": "sha256:24488e3bb6680c75f2ecf7d2c506bb580d16b67a5b73a6743a18d6444be5a817",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1101259,
+                "size": 1102982,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016056/quickfolders_tabbed_folders-4.17.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016202/quickfolders_tabbed_folders-4.17.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -58,14 +58,14 @@
             "name": {
                 "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.17.4"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.17.5"
         },
         "release_notes": {
-            "en-US": "<b>Version 4.17.4 Maintenance Version</b>\n<ul><li>Added Alt + [Up] as possible navigation shortcut to go to parent folder.</li><li>Extended Alt + [Left] and Alt + [Right] shortcuts to go to the next sibling folder if no QuickFolders tab is selected. If a visible QuickFolders tab is selected, then the next tab will be activated, as before - for these features the corresponding <i>Keyboard Shortcuts</i> choice on the QF General Options tab has to be activated.</li><li>Sometimes the current folder bar shows an incorrect subfolder menu (from a previously visited folder) - fixed by forcing it to rebuild every time a different folder is visited.</li><li>Removed unnecessary error console warning from simplified setElementStyle() function.</li></ul>\n\n<b>Version 4.17.3 Maintenance Version</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/QuickFolders/issues/14\" rel=\"nofollow\">[issue 14]</a> Gray area shown below email list when starting Thunderbird in wide view with Current Folder Toolbar hidden.</li><li><a href=\"https://github.com/RealRaven2000/QuickFolders/issues/15\" rel=\"nofollow\">[issue 15]</a> Current Folder Bar background styling is ignored in Thunderbird 68</li><li><a href=\"https://github.com/RealRaven2000/QuickFolders/issues/15\" rel=\"nofollow\">[issue 16]</a> Avoid showing current folder toolbar at bottom of screen in column view. Ideally it should be shown as vertical bar between thread pane and preview. For now, it shows on top of the preview pane.</li><li>Improved label color for Renewal button</li><li>Completed translations for Spanish, French, Polish, Brazilian, Russian and Swedish users. If you have any suggestions for improvements please contact support or join the official             translators team <a href=\"https://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=0&amp;type=show&amp;extension=5099\" rel=\"nofollow\">on Babelzilla</a></li></ul>\n\n<b>Version 4.17.2 Maintenance Version</b>\n<ul><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/13\" rel=\"nofollow\">[Issue 13]</a> Thunderbird 68 regression: Cannot modify From and To addresses using Advanced Tab Properties.</li></ul>\n<b>Version 4.17.1 Maintenance Version</b>\n<ul><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/11\" rel=\"nofollow\">[Issue 11]</a> Thunderbird 60 regression: in 4.17 - No results are shown in quickJump / quickMove when typing in Thunderbird 60.9; this s a regression caused by moving the search panel to a separate xul file (necessary for compatibility with Thunderbird 70, where search boxes are replaced by an new XUL element).</li><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/9\" rel=\"nofollow\">[Issue 9]</a> Thunderbird 68 regression: when the shortcuts combinations SHIFT+S, SHIFT+M, SHIFT+J are used in the quick filter search field, they are accidentally executed and do not enter as uppercase letters in the search box as expected. This is caused by some input types have changed in Thunderbird 68 following deprecation of XUL elements.</li></ul>\n\n<b>Version 4.17 Release</b>\n<ul><li> <a href=\"https://www.mozdev.org/bugs/show_bug.cgi?id=26703\" rel=\"nofollow\">[Bug 26703]</a> Added option to hide mail commands popup menu. If acive, the QuickFolders commands menuy will only be shown when CTRL is pressed while clicking the tab. </li><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/7\" rel=\"nofollow\">[issue 7]</a> Fixed: font color in striped mode ignored on colored tabs</li><li> [Bug 26683] Advanced tab property - Option to set dragged / moved emails to UNREAD. </li></ul>\n<b>Thunderbird 68 specific Fixes</b>\n<ul><li> Fixed: number fields are displayed too wide and with unnecessary paddings which may lead to legibility issues after preferences.css had to he removed.</li><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/8\" rel=\"nofollow\">[issue 8]</a> in Thunderbird 70, the label is removed on right-clicking a tab. Also, the quickJump and quickMove functions stopped working.\n\nI highly recommend using the current release version Thunderbird 68.* and not a beta version on your daily mail profile as there will be many breaking changes in the next months. If you want to use beta versions, make sure to use a test profile and regularly back up your mail to avoid data loss.</li><li> The filter template dialog isn't shown properly in Thunderbird 68 - generally I would recommend to install the <a href=\"https://addons.thunderbird.net/thunderbird/addon/quickfilters/\" rel=\"nofollow\">quickFilters Add-on</a> instead, as it has more advanced functions for managing and creating mail filters.  </li></ul>"
+            "en-US": "<b>Version 4.17.5 Maintenance Version</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/QuickFolders/issues/18\" rel=\"nofollow\">[issue 18]</a> Allow single-key keyboard shortcuts for Navigation.</li><li><a href=\"https://github.com/RealRaven2000/QuickFolders/issues/3\" rel=\"nofollow\">[issue 3]</a> Mark messages READ in folder and all its subfolders tree \"in one click\".</li></ul>\n<b>Version 4.17.4 Maintenance Version</b>\n<ul><li>Added Alt + [Up] as possible navigation shortcut to go to parent folder.</li><li>Extended Alt + [Left] and Alt + [Right] shortcuts to go to the next sibling folder if no QuickFolders tab is selected. If a visible QuickFolders tab is selected, then the next tab will be activated, as before - for these features the corresponding <i>Keyboard Shortcuts</i> choice on the QF General Options tab has to be activated.</li><li>Sometimes the current folder bar shows an incorrect subfolder menu (from a previously visited folder) - fixed by forcing it to rebuild every time a different folder is visited.</li><li>Removed unnecessary error console warning from simplified setElementStyle() function.</li></ul>\n\n<b>Version 4.17.3 Maintenance Version</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/QuickFolders/issues/14\" rel=\"nofollow\">[issue 14]</a> Gray area shown below email list when starting Thunderbird in wide view with Current Folder Toolbar hidden.</li><li><a href=\"https://github.com/RealRaven2000/QuickFolders/issues/15\" rel=\"nofollow\">[issue 15]</a> Current Folder Bar background styling is ignored in Thunderbird 68</li><li><a href=\"https://github.com/RealRaven2000/QuickFolders/issues/15\" rel=\"nofollow\">[issue 16]</a> Avoid showing current folder toolbar at bottom of screen in column view. Ideally it should be shown as vertical bar between thread pane and preview. For now, it shows on top of the preview pane.</li><li>Improved label color for Renewal button</li><li>Completed translations for Spanish, French, Polish, Brazilian, Russian and Swedish users. If you have any suggestions for improvements please contact support or join the official             translators team <a href=\"https://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=0&amp;type=show&amp;extension=5099\" rel=\"nofollow\">on Babelzilla</a></li></ul>\n\n<b>Version 4.17.2 Maintenance Version</b>\n<ul><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/13\" rel=\"nofollow\">[Issue 13]</a> Thunderbird 68 regression: Cannot modify From and To addresses using Advanced Tab Properties.</li></ul>\n<b>Version 4.17.1 Maintenance Version</b>\n<ul><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/11\" rel=\"nofollow\">[Issue 11]</a> Thunderbird 60 regression: in 4.17 - No results are shown in quickJump / quickMove when typing in Thunderbird 60.9; this s a regression caused by moving the search panel to a separate xul file (necessary for compatibility with Thunderbird 70, where search boxes are replaced by an new XUL element).</li><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/9\" rel=\"nofollow\">[Issue 9]</a> Thunderbird 68 regression: when the shortcuts combinations SHIFT+S, SHIFT+M, SHIFT+J are used in the quick filter search field, they are accidentally executed and do not enter as uppercase letters in the search box as expected. This is caused by some input types have changed in Thunderbird 68 following deprecation of XUL elements.</li></ul>\n\n<b>Version 4.17 Release</b>\n<ul><li> <a href=\"https://www.mozdev.org/bugs/show_bug.cgi?id=26703\" rel=\"nofollow\">[Bug 26703]</a> Added option to hide mail commands popup menu. If acive, the QuickFolders commands menuy will only be shown when CTRL is pressed while clicking the tab. </li><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/7\" rel=\"nofollow\">[issue 7]</a> Fixed: font color in striped mode ignored on colored tabs</li><li> [Bug 26683] Advanced tab property - Option to set dragged / moved emails to UNREAD. </li></ul>\n<b>Thunderbird 68 specific Fixes</b>\n<ul><li> Fixed: number fields are displayed too wide and with unnecessary paddings which may lead to legibility issues after preferences.css had to he removed.</li><li> <a href=\"https://github.com/RealRaven2000/QuickFolders/issues/8\" rel=\"nofollow\">[issue 8]</a> in Thunderbird 70, the label is removed on right-clicking a tab. Also, the quickJump and quickMove functions stopped working.\n\nI highly recommend using the current release version Thunderbird 68.* and not a beta version on your daily mail profile as there will be many breaking changes in the next months. If you want to use beta versions, make sure to use a test profile and regularly back up your mail to avoid data loss.</li><li> The filter template dialog isn't shown properly in Thunderbird 68 - generally I would recommend to install the <a href=\"https://addons.thunderbird.net/thunderbird/addon/quickfilters/\" rel=\"nofollow\">quickFilters Add-on</a> instead, as it has more advanced functions for managing and creating mail filters.  </li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.17.4",
-        "version": "4.17.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.17.5",
+        "version": "4.17.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -93,7 +93,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2019-11-29T15:02:28Z",
+    "last_updated": "2019-12-27T18:15:31Z",
     "name": {
         "en-US": "QuickFolders (Tabbed Folders)",
         "de": "QuickFolders (Ordner Tabs)",
@@ -509,10 +509,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.93081,
-        "count": 137,
-        "average": 4.9416,
-        "text_count": 137
+        "bayesian_average": 4.9103,
+        "count": 139,
+        "average": 4.9209,
+        "text_count": 139
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/reviews/",
     "requires_payment": false,

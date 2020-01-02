@@ -1,0 +1,124 @@
+{
+    "id": 987745,
+    "authors": [
+        {
+            "id": 5816524,
+            "name": "fredy",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Alfredos/",
+            "username": "Alfredos",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 11,
+    "categories": {
+        "thunderbird": [
+            "folders-and-filters",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2473079,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mark-all-as-read/versions/2473079",
+        "files": [
+            {
+                "id": 1016190,
+                "created": "2019-12-25T16:25:24Z",
+                "hash": "sha256:a576212535b634d2e9dc21087e67e5ef77c76157274443f64897ecc5addd8c8d",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 20660,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016190/mark_all_as_read-0.2-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Removed unnecessary permission."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mark-all-as-read/versions/0.2",
+        "version": "0.2"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This is an initial attempt to revive part of \"Mark All Read Button\" by Mark S Baines. Please the description bellow for known bugs and explanation of used permissions.\n\nThis Add-on uses the Thunderbird WebExtension APIs. It adds a button on the toolbar that change every unread message on the current displayed folder to read. I've used icons from Mark S Baines' Add-on but his may change in the future.\n\nAdd-on is tested only on Thunderbird 68.3.1, please let me know if it doesn't work in any version from 68.2 and later. For requests, bugs or issues please open an issue at <a href=\"https://gitlab.com/adamkalis/mark-all-as-read/issues\" rel=\"nofollow\">gitlab issue tracker</a> or send an email to support email address.\n\nKnown bugs:\n<ul><li>It doesn't work for Trash and Junk Folder - <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1605937\" rel=\"nofollow\">bug 1605937</a></li><li>In some cases of messages with the same content, it may mark as read only the one of these - <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1605938\" rel=\"nofollow\">bug 1605938</a></li><li>As it tries to find all the unread messages in a folder, it may take several seconds to minutes if the folder contains many emails. For example mark as read some hundreds emails in a folder with some thousands emails it may take two or more minutes. There is nothing I can do about it. Also the unread messages are marked as read by 100 each time as this is the hardcoded number of emails that a query returns, this number may change in the future</li></ul>\nPermissions used:\n<ul>  <li><b>accountsRead:</b> Used for being able to get the <a href=\"https://thunderbird-webextensions.readthedocs.io/en/latest/mailTabs.html#mailtabs-mailtab\" rel=\"nofollow\">displayedFolder</a> property of a tab when using mailTab API</li>  <li><b>messagesRead:</b> Used for querying and marking as read the emails/messages</li></ul>"
+    },
+    "developer_comments": {
+        "en-US": "Known bugs:\nIt doesn't work for Trash and Junk Folder - <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1605937\" rel=\"nofollow\">bug 1605937</a>\nIn some cases of messages with the same content it may mark as read only the one of these - <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1605938\" rel=\"nofollow\">bug 1605938</a>"
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mark-all-as-read/edit",
+    "guid": "mark-all-as-read@fredy.gr",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2019-12-25T16:30:03Z",
+    "name": {
+        "en-US": "Mark All As Read"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.86504,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mark-all-as-read/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987745",
+    "slug": "mark-all-as-read",
+    "status": "public",
+    "summary": {
+        "en-US": "This is an initial attempt to revive part of \"Mark All Read Button\" by Mark S Baines.\n\nThis Add-on uses the Thunderbird WebExtension APIs. It adds a button on the Mail Toolbar that marks unread messages on the current displayed folder as read."
+    },
+    "support_email": {
+        "en-US": "markallasread@fredy.gr"
+    },
+    "support_url": null,
+    "tags": [
+        "button",
+        "firefox57",
+        "mark all as read",
+        "mark all read",
+        "mark folder as ready"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mark-all-as-read/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true
+        }
+    }
+}
