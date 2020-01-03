@@ -583,16 +583,15 @@ async function getExtensionFiles(addon_identifier, index) {
 
 		const xpiFileURL = ext.current_version.files[0].url;
 		const xpiFileName = path.posix.basename(url.parse(xpiFileURL).pathname);
-/* 
-		if (fs.existsSync(`${extRootDir}/xpi`)) {
-			fs.removeSync(`${extRootDir}/xpi`);
-			console.debug('Removing: ' + `${extRootName}`);
-		}
+
+		// if (fs.existsSync(`${extRootDir}/xpi`)) {
+		// 	fs.removeSync(`${extRootDir}/xpi`);
+		// 	console.debug('Removing: ' + `${extRootName}`);
+		// }
 
 		await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
 		console.debug('Downloaded filename ' + xpiFileName);
 		fs.ensureDirSync(`${extRootDir}/xpi`);
- */
 
 
 		// if (fs.existsSync(`${extRootDir}/src`)) {
