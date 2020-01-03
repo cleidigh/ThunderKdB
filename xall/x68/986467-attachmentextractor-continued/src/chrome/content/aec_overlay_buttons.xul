@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<?xml-stylesheet href="chrome://attachmentextractor_cont/skin/aec_buttons.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd">
+  %messengerDTD;
+  <!ENTITY % attachmentextractor_contDTD SYSTEM "chrome://attachmentextractor_cont/locale/attachmentextractor.dtd">
+  %attachmentextractor_contDTD;
+]>
+
+<overlay id="aec_buttonsOverlay" 
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_listener_toolbarButton.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_common.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_attachmentextractor.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_listener_menus.js"/>
+
+  <toolbarpalette id="MailToolbarPalette">
+
+    <toolbarbutton id="aec-toolbarButton" 
+      class="toolbarbutton-1" 
+      type="menu-button" 
+      is="toolbarbutton-menu-button" 
+      label="&attachmentextractor.toolbarbutton.label;" 
+      tooltiptext="&attachmentextractor.toolbarbutton.tooltip2;" 
+      command="cmd_aec_extractToDefault">
+
+      <menupopup id="aec-toolbarButtonPopup"
+        onpopupshowing="attachmentextractor.updatePopupMenus()" >
+
+        <menuitem id="menu_aec_extractToBrowse_toolbar" 
+          label="&attachmentextractor.browse.label;" 
+          accesskey="&attachmentextractor.browse.accesskey;" 
+          command="cmd_aec_extractToBrowse" />
+
+        <menu id="menu_aec_extractToFavorite_toolbar" 
+          label="&attachmentextractor.extractToFavoritefolders.label;" 
+          accesskey="&attachmentextractor.extractToFavoritefolders.accesskey;">
+          <menupopup id="menu_aec_extractFavoritefolder_toolbar-Popup" 
+            onpopupshowing="attachmentextractor.updateFavoriteMenuItems(this)" 
+            paramAll="false" />
+        </menu>
+
+        <menu id="menu_aec_extractToMRU_toolbar" 
+          label="&attachmentextractor.extractToMRUfolders.label;" 
+          accesskey="&attachmentextractor.extractToMRUfolders.accesskey;">
+          <menupopup id="menu_aec_extractMRU_toolbar-Popup" 
+            onpopupshowing="attachmentextractor.updateMRUMenuItems(this)" 
+            paramAll="false" />
+        </menu>
+
+        <menuitem id="menu_aec_extractToSuggest_toolbar" 
+          label="&attachmentextractor.extractToSuggestfolders.label;" 
+          accesskey="&attachmentextractor.extractToSuggestfolders.accesskey;" 
+          command="cmd_aec_extractToSuggest" />
+
+        <menuseparator/>
+
+        <menuitem id="menu_aec_justDeleteAttachments_toolbar" 
+          label="&attachmentextractor.justDeleteAttachments.label;" 
+          accesskey="&attachmentextractor.justDeleteAttachments.accesskey;" 
+          command="cmd_aec_justDeleteAttachments" />
+
+      </menupopup>
+    </toolbarbutton>
+  </toolbarpalette>
+
+  <toolbarpalette id="header-view-toolbar-palette">
+    <toolbarbutton id="aeHdrButton" 
+      class="hdrAEButton toolbarbutton-1 msgHeaderView-button customize-header-toolbar-button" 
+      label="&attachmentextractor.headerbutton.label;" 
+      tooltiptext="&attachmentextractor.headerbutton.tooltip;" 
+      command="cmd_aec_extractToDefault">
+    </toolbarbutton>
+  </toolbarpalette>
+
+</overlay>

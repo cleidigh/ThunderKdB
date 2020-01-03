@@ -1,0 +1,27 @@
+{
+  "author": "mital",
+  "manifest_version": 2,
+  "name": "NoComposeAccount",
+  "description": "Have the option of Thunderbird always using the default account or a blank account when composing or replying to messages",
+  "version": "1.5.3",
+  "developer": {
+	  "name": "mital",
+    "url": "https://dotnector.dk"
+	},
+  "applications": {
+    "gecko": {
+      "id": "noComposeAccount@mi.tal",
+       "strict_min_version": "68.0"
+    }
+  },
+  //"icons": {
+//    "32": "content/icon32x32.png"
+//  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://NoComposeAccount/content/prefs.xul",
+      "open_in_tab": true
+    }
+  }
+}

@@ -1,0 +1,36 @@
+content    attachmentextractor_cont                            chrome/content/
+
+skin       attachmentextractor_cont             classic/1.0    chrome/skin/
+skin       attachmentextractor_cont-os          classic/1.0    chrome/skin/os/unix/
+skin       attachmentextractor_cont-os          classic/1.0    chrome/skin/os/windows/    os=WINNT
+skin       attachmentextractor_cont-os          classic/1.0    chrome/skin/os/mac/        os=Darwin
+
+
+style      chrome://messenger/content/customizeToolbar.xul     chrome://attachmentextractor_cont/skin/aec_buttons.css
+overlay    chrome://messenger/content/customizeToolbar.xul     chrome://attachmentextractor_cont/content/aec_overlay_customizeToolbar.xul
+
+overlay    chrome://messenger/content/messenger.xul            chrome://attachmentextractor_cont/content/aec_overlay_debugOnStart.xul
+overlay    chrome://messenger/content/messenger.xul            chrome://attachmentextractor_cont/content/aec_overlay_commandsets.xul
+overlay    chrome://messenger/content/messageWindow.xul        chrome://attachmentextractor_cont/content/aec_overlay_commandsets.xul
+overlay    chrome://messenger/content/messenger.xul            chrome://attachmentextractor_cont/content/aec_overlay_buttons.xul
+overlay    chrome://messenger/content/messageWindow.xul        chrome://attachmentextractor_cont/content/aec_overlay_buttons.xul
+overlay    chrome://messenger/content/messenger.xul            chrome://attachmentextractor_cont/content/aec_overlay_menus.xul
+overlay    chrome://messenger/content/messageWindow.xul        chrome://attachmentextractor_cont/content/aec_overlay_menus.xul
+overlay    chrome://messenger/content/messenger.xul            chrome://attachmentextractor_cont/content/aec_overlay_attachmentViewMenus.xul
+overlay    chrome://messenger/content/messageWindow.xul        chrome://attachmentextractor_cont/content/aec_overlay_attachmentViewMenus.xul
+
+locale attachmentextractor_cont en    chrome/locale/en/
+locale attachmentextractor_cont bg    chrome/locale/bg-BG/
+locale attachmentextractor_cont cs    chrome/locale/cs-CZ/
+locale attachmentextractor_cont da    chrome/locale/da-DK/
+locale attachmentextractor_cont de    chrome/locale/de-DE/
+locale attachmentextractor_cont es    chrome/locale/es-ES/
+locale attachmentextractor_cont fi    chrome/locale/fi-FI/
+locale attachmentextractor_cont fr    chrome/locale/fr-FR/
+locale attachmentextractor_cont it    chrome/locale/it-IT/
+locale attachmentextractor_cont ko    chrome/locale/ko-KR/
+locale attachmentextractor_cont nl    chrome/locale/nl-NL/
+locale attachmentextractor_cont pt    chrome/locale/pt-PT/
+locale attachmentextractor_cont pt-BR chrome/locale/pt-BR/
+locale attachmentextractor_cont ru    chrome/locale/ru-RU/
+locale attachmentextractor_cont sk    chrome/locale/sk-SK/

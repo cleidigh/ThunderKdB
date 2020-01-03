@@ -1,0 +1,44 @@
+#dialog_message {
+  font-size: 1.3em;
+}
+
+treechildren::-moz-tree-cell-text {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-cell-text(checked) {
+  font-weight: normal;
+}
+
+
+.all_check {
+  margin-left: 3px;
+}
+.confirmed {
+  margin-left: 7px;
+}
+
+treechildren::-moz-tree-checkbox {
+  /* unchecked checkbox treecells. This style MUST come before treechildren::-moz-tree-checkbox(checked) otherwise it won't take effect. */
+  list-style-image: url("chrome://messenger/skin/icons/notchecked.gif");
+}
+treechildren::-moz-tree-checkbox(checked) {
+  /* css for checked cells */
+  list-style-image: url("chrome://messenger/skin/icons/check.gif");
+}
+
+treechildren::-moz-tree-row(selected) {
+  background-color: #FFFFAA;
+}
+treechildren::-moz-tree-row(odd) {
+  background-color: #EEEEEE;
+}
+treechildren::-moz-tree-row(odd, selected) {
+  background-color: #FFFFAA;
+}
+treechildren::-moz-tree-cell-text(selected) {
+  color: #000000;
+}
+treechildren::-moz-tree-cell-text(odd, selected) {
+  color: #000000;
+}

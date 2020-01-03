@@ -1,0 +1,35 @@
+<h4>Modo</h4>
+<ul>
+    <li>"0" : la lista contiene 1 grupo :
+        <ul>
+            <li>'inician' :    aquellos contactos y listas con informaci&oacute;n que inicie con lo escrito</li>
+        </ul>
+        Con el modo "0", es mejor establecer "N&oacute;m. m&aacute;x. en cada grupo" de 15 a 30.
+    </li>
+    <li>"1" : la lista contiene 1 grupo :
+        <ul>
+            <li>'contienen' : los contactos y listas cuya informaci&oacute;n que contiene lo escrito</li>
+        </ul>
+        Con el modo "1", es mejor establecer "N&oacute;m. m&aacute;x. en cada secci&oacute;n" de 15 a 30.
+    </li>
+    <li>"2" : la lista contiene 2 grupos :
+        <ul>
+            <li>'inician' : aquellos contactos y listas con informaci&oacute;n que inicie con lo escrito</li>
+            <li>'contienen' : los contactos y listas cuya informaci&oacute;n que contiene lo escrito (excepto los del primer grupo)</li>
+            <li>'lista' : grupos cuya informaci&oacute;n contiene lo escrito</li>
+        </ul>
+        Con modo "2", es mejor establecer "N&oacute;m. m&aacute;x. en cada grupo" de 5 a 10.<br/>
+    </li>
+    <li>"3" : la lista contiene 1 grupo de cada libreta de direcciones :
+        <ul>
+            <li>contactos y listas cuya informaci&oacute;n contiene lo escrito de cada libreta</li>
+        </ul>
+        Con modo "3", es mejor establecer "N&oacute;m. m&aacute;x. en cada grupo" de 5 a 10.<br/>
+    </li>
+</ul>
+Los campos en los que se busca son :
+<ul>
+<li>'Correo principal', 'Nombre', 'Apellidos', 'Apodo' para contactos</li>
+<li>'Apellidos' para las listas.</li>
+</ul>
+En equipos lentos, es mejor elegir "1".

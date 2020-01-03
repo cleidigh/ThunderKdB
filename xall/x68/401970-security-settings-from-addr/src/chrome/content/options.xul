@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet type="text/css" href="chrome://communicator/skin/"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://securitysettingsfromaddressbook/locale/options.dtd">
+
+<dialog    
+   id="securitysettingsfromaddressbook_options"
+   title="Security Settings from Address Book - Options"
+   buttons="accept"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <vbox>
+    <label value="&options_adressbook_field.label;" />       
+    <textbox  
+       id="extensions.securitysettingsfromaddressbook.adressbook_field" 
+       preference="extensions.securitysettingsfromaddressbook.adressbook_field"
+       label="&options_adressbook_field.label;" 
+       />
+    <checkbox 
+       id="extensions.securitysettingsfromaddressbook.warn_missing" 
+       preference="extensions.securitysettingsfromaddressbook.warn_missing"
+       label="&options_warn_missing.label;" 
+       />
+  </vbox>          
+
+  <script 
+     src="chrome://global/content/preferencesBindings.js" 
+     type="application/javascript"/>
+  <script 
+     src="chrome://securitysettingsfromaddressbook/content/preferences.js" 
+     type="application/javascript"/>          
+</dialog>

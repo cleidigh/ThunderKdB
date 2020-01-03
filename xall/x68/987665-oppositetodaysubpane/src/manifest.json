@@ -1,0 +1,22 @@
+﻿{
+	"manifest_version": 2,
+             "applications": {
+                "gecko": {
+                   "id": "OppositeTodaySubpane@Sungho.Hwang",
+                   "strict_min_version": "71.0"
+                    }
+             },
+	"name": "OppositeTodaySubpane",
+	"version": "4.5",
+	"description": "When today pane is hidden for wide view, it is to remain Today subpane on folder pane and calendar mini-month or subscription pane.",
+             "icons": {
+               "32": "icons/oppositetodaysubpane32.png"
+                 },
+             "legacy" : {
+               "type": "xul",
+               "options" : {
+               "page" : "chrome://oppositetodaysubpane/content/oppositetodaysubpane.xul",
+               "open_in_tab": true
+               }
+             }
+}

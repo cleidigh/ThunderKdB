@@ -1,0 +1,22 @@
+"0" : the list contains 1 part :
+    'begin' :    contacts whose fields begin with X
+    With mode "0", it's better to set "Nb line max in each part" to 15-30.
+
+"1" : the list contains 1 part :
+    'contains' : contacts &amp; lists whose fields contains X
+    With mode "1", it's better to set "Nb line max in each part" to 15-30.
+
+"2" : the list contains 2 parts :
+    'begin' :    contacts whose fields begin with X
+    'contains' : contacts whose fields contains X (except those in part 1)
+    With mode "2", it's better to set "Nb line max in each part" to 5-10.
+
+"3" : the list contains 1 part for each AddressBook :
+    contacts &amp; lists whose fields contains X
+    With mode "3", it's better to set "Nb line max in each part" to 5-10.
+
+Searched fields are :
+- 'PrimaryEmail', 'FirstName', 'LastName', 'NickName' for contacts
+- fields is 'LastName' for list
+
+On slow machines, it's better to choose "1".

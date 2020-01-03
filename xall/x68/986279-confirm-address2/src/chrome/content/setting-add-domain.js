@@ -1,0 +1,24 @@
+var parentWindow;
+
+function startup(){
+	dump("[setting start]\n");
+	parentWindow = window.arguments[0];
+	
+	if(parentWindow.domainName !== null){
+		document.getElementById("textbox").value = parentWindow.domainName;
+	}
+
+	document.addEventListener("dialogaccept", doOK);
+	document.addEventListener("dialogcancel", doCancel);
+}
+
+function doOK(){
+	parentWindow.domainName = document.getElementById("textbox").value;
+	dump("[input] " + parentWindow.domainName + "\n");
+	parentWindow.setConfirmOK(true);
+}
+
+function doCancel(){
+	dump("[cancel]\n");
+	parentWindow.setConfirmOK(false);
+}

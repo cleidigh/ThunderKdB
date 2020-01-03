@@ -1,0 +1,33 @@
+{
+    "manifest_version": 2,
+    "name": "__MSG_extensionName__",
+    "description": "__MSG_extensionDescription__",
+    "version": "1.0.0",
+    "default_locale": "en",
+    "author": "Toshi_",
+    "homepage_url": "https://addons.thunderbird.net/ja/thunderbird/addon/open-tab/",
+    "legacy": false,
+    "applications": {
+      "gecko": {
+        "id": "OpenTab@Toshi_",
+        "strict_min_version": "60.0"
+      }
+    }, 
+
+    "icons": {
+      "16": "icons/open-in-browser-16.png",
+      "32": "icons/open-in-browser-32.png",
+      "48": "icons/open-in-browser-48.png"
+    }, 
+
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+
+    "permissions": [
+        "activeTab",
+        "menus"
+    ]
+}

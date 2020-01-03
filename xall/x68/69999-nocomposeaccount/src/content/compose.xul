@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://NoComposeAccount/locale/overlay.dtd">
+<overlay id="nocomposeaccount-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="NoComposeAccountStringBundle" src="chrome://NoComposeAccount/locale/noComposeAccount.properties"/>
+	</stringbundleset>
+	<script src="constructor.js"/>
+	<script src="compose.js"/>
+	<script src="prefs.js"/>
+	<script src="addon.js"/>
+</overlay>

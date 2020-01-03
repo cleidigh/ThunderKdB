@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://removedupes/locale/removedupes.dtd">
+
+<overlay id="removedupesOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+ <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+ <script type="application/x-javascript" src="chrome://removedupes/content/removedupes.js"/>
+ <script type="application/x-javascript" src="chrome://removedupes/content/removedupesprefs.js"/>
+ <script type="application/x-javascript" src="chrome://removedupes/content/md5dupes.js"/>
+ <script type="application/x-javascript" src="chrome://removedupes/content/sortdupes.js"/>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="bundle_removedupes" src="chrome://removedupes/locale/removedupes.properties"/>
+  </stringbundleset>
+
+
+ <popup id="folderPaneContext">
+  <menuitem id="folderPaneContext-removeDuplicateMessages"
+   label="&removedupes.popupmenuname;"
+   insertafter="folderPaneContext-compact"
+   oncommand="removeDupes.Rdm.removeDuplicateMessages();"/>
+ </popup>
+
+</overlay>

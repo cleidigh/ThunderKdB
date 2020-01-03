@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "1.7.0",
+  "default_locale": "en",
+  "author": "Philipp Kewisch",
+  "applications": {
+    "gecko": {
+      "id": "quickmove@mozilla.kewis.ch",
+      "strict_min_version": "68.0"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "quickmove@mozilla.kewis.ch",
+      "strict_min_version": "68.0"
+    }
+  },
+  "legacy": {
+    "type": "bootstrap"
+  },
+  "icons": {
+    "32": "content/addon.png"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true
+  },
+  "permissions": [
+    "storage"
+  ]
+}

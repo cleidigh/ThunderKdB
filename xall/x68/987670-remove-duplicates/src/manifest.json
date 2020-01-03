@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Remove Duplicates",
+  "description": "Removes duplicate messages",
+  "version": "1.5",
+  "author": "Dillinger",
+  "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/",
+  "legacy" : {
+    "options" : {
+      "page" : "chrome://removedupes/content/removedupesprefs.xul",
+      "open_in_tab" : false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "removedupes@dillinger",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "32": "content/removedupes.svg",
+    "64": "content/removedupes.svg"
+  }
+}

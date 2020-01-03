@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<?xml-stylesheet href="chrome://dispmua/skin/dispmua.css" type="text/css"?>
+
+<!--<!DOCTYPE overlay SYSTEM "chrome://dispmua/locale/dispmua.dtd">-->
+<!DOCTYPE overlay [
+  <!ENTITY % dispmuaDTD SYSTEM
+  "chrome://dispmua/locale/dispmua.dtd">
+  %dispmuaDTD;
+]>
+
+<overlay id="dispMUAoverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/javascript" src="chrome://dispmua/content/dispmua-common.js"/>
+	<script type="application/javascript" src="chrome://dispmua/content/dispmua-3.js"/>
+
+	<!--<stringbundleset id="stringbundleset">
+		<stringbundle id="dispmua-strings" src="chrome://dispmua/locale/dispmua.properties" insertbefore="dispMUAoverlay"/>
+	</stringbundleset>-->
+
+	<broadcasterset>
+		<!--<broadcaster id="dispMUAbroadcast" tooltiptext="" src=""/>-->
+		<broadcaster id="dispMUAbroadcast" tooltiptext="" src="" image="" title="" iconPosition=""/>
+	</broadcasterset>
+
+	<hbox id="expandedHeadersBottomBox">
+		<vbox id="dispMUA" insertbefore="otherActionsBox">
+			<!--<image id="dispMUAicon" observes="dispMUAbroadcast" style="width:48px; height:48px; margin-left:2px; margin-right:2px; float:left;" onclick="dispMUA.infopopup();"/>-->
+			<toolbar>
+				<toolbarbutton id="dispMUAicon" observes="dispMUAbroadcast" onclick="dispMUA.infopopup();"/>
+			</toolbar>
+			<spacer flex="1"/>
+		</vbox>
+	</hbox>
+
+	<popup id="mailContext">
+		<menuitem id="dispmua-checktext" oncommand="dispMUA.checktext();" insertafter="mailContext-mark"/>
+	</popup>
+
+</overlay>

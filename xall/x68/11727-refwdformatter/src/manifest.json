@@ -1,0 +1,28 @@
+{
+  "author": "Masahiko Isshiki",
+  "manifest_version": 2,
+  "name": "ReFwdFormatter",
+	"description": "Remove the \"&gt;\" prefix from quote. Remove \"[\" and \"]\" from the forward subject.",
+  "version": "2.68.0",
+  "developer": {
+	  "name": "Masahiko Isshiki",
+    "url": "https://github.com/isshiki/ReFwdFormatter"
+	},
+  "applications": {
+    "gecko": {
+      "id": "refwdformatter@masahiko.info",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "64": "icons/refwd.png",
+    "32": "icons/refwd-32px.png",
+    "16": "icons/refwd-16px.png"
+  },
+  "legacy": {
+    "options": {
+      "page": "chrome://refwdformatter/content/options.xul",
+      "open_in_tab": false
+    }
+  }
+}

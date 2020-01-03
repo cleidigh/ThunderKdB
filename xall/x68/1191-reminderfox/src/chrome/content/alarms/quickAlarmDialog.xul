@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<!--  ?xml-stylesheet type="text/css" href="chrome://calendar/content/datetimepickers/datetimepickers.css"?  -->
+
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox-platform/skin/gtk3linux.css"?>
+
+<?xul-overlay href="chrome://reminderfox/content/calendar/calendarWidget.xul"?>
+<?xul-overlay href="chrome://reminderfox/content/editing/eventEntryOverlay.xul"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-quickAlarmDialog" persist="screenX screenY"
+		onfocus="reminderFox_snoozeTimeChanged()" onload="loadAlarmOptions()"
+		title="&rf.quickalarm.dialog.title;">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/alarms/quickAlarmDialog.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/editing/eventEntry.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/datepicker/datepicker.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/addReminderDialog.js" />
+
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="reminderFox_closeAlarm();" />
+		<key keycode="VK_ENTER" oncommand="setAlarm();" />
+		<key keycode="VK_RETURN" oncommand="setAlarm();" />
+	</keyset>
+
+
+
+
+
+	<vbox id="reminderFoxVbox" flex="1">
+		<hbox align="center">
+			<label id="alarmDescLabel" control="newAlarmText"
+				value="&rf.add.addTodo.description.label;" />
+			<textbox width="305px" flex="1" id="newAlarmText" />
+			<toolbarbutton id="notesToggle" type="checkbox"
+				oncommand="reminderFox_toggleNotes();" tabindex="2" autoCheck="false" />
+		</hbox>
+
+		<vbox orient="vertical" flex="2">
+			<textbox width="305px" flex="1" id="notesText" multiline="true"
+				rows="4" />
+		</vbox>
+
+		<hbox id="alertGroup" align="center">
+			<label id="reminderFox-alert" value="&rf.quickalarm.notify.label;" />
+			<menulist id="reminderFox-alertTime" editable="true"
+				oninput="reminderFox_updateSnoozeTimeDate()" oncommand="reminderFox_updateSnoozeTimeDate()">
+				<menupopup>
+					<menuitem label="1" />
+					<menuitem label="5" />
+					<menuitem label="10" />
+					<menuitem label="15" selected="true" />
+					<menuitem label="30" />
+					<menuitem label="60" />
+				</menupopup>
+			</menulist>
+			<menulist id="reminderFox-alertTimeUnits" oncommand="reminderFox_updateSnoozeTimeDate()">
+				<menupopup>
+					<menuitem value="minutes"
+						label="&rf.reminderoptions.notify.minutes.label;" />
+					<menuitem value="hours" label="&rf.reminderoptions.notify.hours.label;" />
+					<menuitem value="days" label="&rf.reminderoptions.notify.days.label;" />
+				</menupopup>
+			</menulist>
+			<label id="reminderFox-alertInfo" value="&rf.quickalarm.notify.fromnow;" />
+
+			<!-- Calendar date-input and calendar popup button -->
+			<panel id="rmFx-moz-datepicker">
+				<vbox id="rmFx-moz-datepicker-box">
+					<hbox id="datepickerBox">		<!-- datepicker param will be set with JS -->
+						<datepicker id="datePickerCurrent" type='grid'
+							firstdayofweek="2" />
+					</hbox>
+
+					<hbox id="timepickerBox">	<!-- time will be set with JS -->
+						<spacer width="3px"/>
+						<timepicker id="timePickerCurrent" hideseconds="true" />
+
+						<button label="&rf.ok;" id="okButton" default="true"
+							oncommand="rmFx_datePickerQAClosed(this);" />
+						<spacer width="3px"/>
+					</hbox>
+				</vbox>
+			</panel>
+
+			<toolbarbutton id="datepickerAnchor" onclick="rmFx_datePickerQA(event)"
+				tooltiptext="&rf.timeDateSelect;" />
+		</hbox>
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+			align="center" />
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+			align="center" />
+
+		<vbox id="snoozeGroup">
+			<hbox align="center">
+				<button id="snoozeButton" label="&rf.alarm.button.snooze;"
+					oncommand="setAlarm();" />
+				<menulist id="reminderFox-snoozeTime" editable="true"
+					oninput="reminderFox_snoozeTimeChanged();" oncommand="reminderFox_snoozeTimeChanged();">
+					<menupopup>
+						<menuitem label="1" />
+						<menuitem label="5" />
+						<menuitem label="10" />
+						<menuitem label="15" />
+						<menuitem label="30" />
+						<menuitem label="60" />
+					</menupopup>
+				</menulist>
+				<menulist id="reminderFox-snoozeTimeUnits" oncommand="reminderFox_updateSnoozeTimeDate()">
+					<menupopup>
+						<menuitem label="&rf.reminderoptions.notify.minutes.label;" />
+						<menuitem label="&rf.reminderoptions.notify.hours.label;" />
+						<menuitem label="&rf.reminderoptions.notify.days.label;" />
+					</menupopup>
+				</menulist>
+				<spacer id="reminderfox-entry-spacer.i" width="30px" />
+				<spacer class="reminderFox-btnspacer" flex="1" />
+				<button label="&rf.ok;" id="okButton" default="true"
+					oncommand="reminderFox_closeAlarm();" />
+			</hbox>
+			<hbox align="center">
+				<label value="&rf.alarm.snoozeUntil.label;" disabled="true" />
+				<label id="snoozeUntilTime" align="right" disabled="true" />
+			</hbox>
+		</vbox>
+
+		<vbox id="alertButtonGroup">
+			<hbox align="center">
+				<spacer class="reminderFox-btnspacer" flex="1" />
+				<button label="&rf.ok;" default="true" oncommand="setAlarm()" />
+				<button label="&rf.cancel;" oncommand="window.close();" />
+			</hbox>
+			<hbox>
+				<label value="&rf.quickalarm.alarmAt.label;" disabled="true" />
+				<label id="alarmAtTime" align="right" disabled="true" />
+			</hbox>
+		</vbox>
+	</vbox>
+
+</window>

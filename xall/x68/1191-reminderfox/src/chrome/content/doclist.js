@@ -1,0 +1,23 @@
+if (!rmFxDocs)  var  rmFxDocs = {
+  "doc-1": "de,en",
+   "doc-addsubscribe": "en",
+   "doc-contacts": "de,en",
+   "doc-email": "de,en",
+   "doc-events": "de,en",
+   "doc-exchanging": "de,en",
+   "doc-faq-problems": "de,en",
+   "doc-faq-questions": "de,en",
+   "doc-ical": "en",
+   "doc-invitations": "de,en",
+   "doc-notification": "de,en",
+   "doc-options": "de,en",
+   "doc-overview": "de,en",
+   "doc-printing": "de,en",
+   "doc-reminderdialog": "de,en",
+   "doc-todos": "de,en",
+   "doc-uninstall": "de,en",
+   "doc-view-editor": "de,en",
+   "help": "de,en",
+   "index": "en",
+   "videos": "en"
+  };

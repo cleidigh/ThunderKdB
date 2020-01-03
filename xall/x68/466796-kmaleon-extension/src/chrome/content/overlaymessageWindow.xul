@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://kmaleonext/skin/icon-button.css" ?>
+
+<!DOCTYPE overlay >
+<overlay id="sample" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script type="application/javascript" src="chrome://kmaleonext/content/overlaymessageWindow.js"/><!-- A reference to your JavaScript file -->
+    <toolbox id="header-view-toolbar">
+        <toolbarbutton id="send_new" label="Enviar Mensaje" class="toolbarbutton-1 msgHeaderView-button" tooltiptext="Enviar este email" command="cmd_editAsNew" />
+    </toolbox>
+</overlay>

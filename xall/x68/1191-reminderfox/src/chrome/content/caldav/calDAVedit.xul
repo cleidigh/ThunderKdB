@@ -1,0 +1,257 @@
+<?xml version="1.0"?>		<!-- calDAVedit.xul -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/toolbar.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/datepicker/datepicker.css"  type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox-platform/skin/gtk3linux.css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-editAccount" persist="screenX screenY" onload="rmFxCalDAVedit.go_Load()"
+		unload="rmFxCalDAVedit.do_CANCEL('%%', 'W');"
+		title="&rf.caldav.definition.title;">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+  <script type="application/x-javascript" src="chrome://reminderfox/content/doclist.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/network/passwordManagerUtils.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVrequester.js" />
+  <script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVcalls.js" />
+  <script type="application/x-javascript" src="chrome://reminderfox/content/caldav/calDAVedit.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/HTTP.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();" />
+		<key keycode="VK_ENTER" oncommand="rmFxCalDAVedit.do_OK();" />
+		<key keycode="VK_RETURN" oncommand="rmFxCalDAVedit.do_OK();" />
+	</keyset>
+
+
+	<vbox id="reminderFoxAccountEdit">
+
+		<!-- name/url/pw item - - - - - - - - - - -->
+
+		<grid align="center" width="650px">
+			<columns>
+				<column width="100px" />
+				<column flex="1" />
+				<column width="80px" />
+			</columns>
+
+			<rows>
+
+				<row align="center">
+					<label value="&rf.caldav.calendars;" />
+
+					<vbox>
+						<menulist id="calDAVserver" tooltiptext="&rf.caldav.serverselection;">
+							<menupopup id="popCalDAVserver" onpopuphiding="rmFxCalDAVedit.calDAVserverSelect(this);">
+								<menuitem label="&rf.caldav.selectserver;" selected="true" />
+
+								<menuitem id="fruux" label="fruux"
+									urlServer="https://dav.fruux.com"
+									urlDav="https://dav.fruux.com"
+									type="VEVENT" />
+
+								<menuitem id="GCal2" label="Google Calendar (V2)"
+									urlServer="https://www.googleapis.com"
+									urlDav="https://www.googleapis.com"
+									type="VEVENT" />
+
+								<menuitem id="OC_local7" label="ownCloud 7 (local)"
+									urlServer="http://localhost"
+									urlDav="http://localhost"
+									type="VEVENT" />
+
+								<menuitem id="OC_local" label="ownCloud (local)"
+									urlServer="http://localhost"
+									urlDav="http://localhost"
+									type="VEVENT" />
+
+								<menuitem id="General" label="Other (define your own)"
+									urlServer=""
+									urlDav=""
+									type="VEVENT" />
+
+							</menupopup>
+						</menulist>
+					</vbox>
+
+					<hbox align="right">
+						<label align="center" class="reminderfox-moreLabel" bold="true"
+							value="&rf.main.help.label; .."  tooltiptext="&rf.help.docupages;"
+							onclick="reminderfox.util.docRmFX('doc-ical');"/>  <!--#addAccount -->
+						<spacer width="10px"/>
+					</hbox>
+				</row>
+
+				<row align="center" id="gCalV2instruction" hidden="true">
+					<label id="x" value=" " width="159px" />
+
+					<hbox>
+						<vbox>
+							<description id="gCalV2instructionText" width="280px" class="reminderfox_TextNote">
+								&rf.caldav.google.request;
+							</description>
+						</vbox>
+						<vbox valign="bottum">
+							<label value="&rf.caldav.account.example;" class="reminderfox_TextNote"/>
+							<hbox>
+							<vbox height="47px">
+								<image class="rmFx_pic" id="rmFx_pic0"
+									src='chrome://reminderfox/skin/images/gCal_AuthPermission.thumb.png'
+									onmouseover="reminderfox.util.picturePanel(this)"
+									tooltiptext="&rf.caldav.google.request.requires;" /> <!--  //$$$_locale -->
+							</vbox>
+							<spacer width="10px" />
+							<vbox height="28px">
+								<image class="rmFx_pic" id="rmFx_pic1"
+									src='chrome://reminderfox/skin/images/gCal_ACCEPT.thumb.png'
+									onmouseover="reminderfox.util.picturePanel(this)"
+									tooltiptext="&rf.caldav.google.auth.token;"/> 		<!--  //$$$_locale -->
+							</vbox>
+							</hbox>
+						</vbox>
+					</hbox>
+
+				</row>
+
+				<row align="center">
+					<label id="accountLoginLabel" value="&rf.caldav.username;" />
+
+					<!--  usernames, if possible read from LoginManager -->
+					<menulist editable="true" id="accountLogin" disabled="true" flex="1"
+						onchange="rmFxCalDAVedit.setUserName()" onfocus="rmFxCalDAVedit.clearMenuUserName(this)"
+						tooltiptext="Enter the user account name or select with menu">		<!-- //$$$_locale -->
+						<menupopup id="accountLoginPopup">
+							<menuitem label="-- Select username with menu --" id="accountLoginBox"/>
+							<menuitem label="name1" />
+							<menuitem label="name2" />
+							<menuitem label="name3" />
+							<menuitem label="name4" />
+						</menupopup>
+					</menulist>
+
+					<button id="requestGCal2Button" label="Request" class="reminderfox-iconLabel"
+						icon="false"
+						oncommand='rmFxCalDAVedit.gcal2Request()'
+						accountURL="" hidden="true" />
+				</row>
+
+
+				<row align="center"  id="accountPWrow">
+					<label id="accountPWLabel" value="&rf.caldav.password;"
+						width="159px" />
+					<hbox>
+						<textbox id="accountPW" flex="1" type="password" disabled="true" />
+						<checkbox id="showPW" tooltiptext="&rf.caldav.pw;" label="Show"
+							onclick="rmFxCalDAVedit.toggle_PW(this)" disabled="true" />
+					</hbox>
+				</row>
+
+
+				<row align="center">
+					<label id="accountURLLabel" value="&rf.caldav.select.calendar;"/>
+					<hbox id="accountURLBox" flex="1">
+						<textbox id="accountURLtext" disabled="true" flex="1" />
+						<!--  menulist build with JS
+						<menulist id="accountURLlist" tooltiptext="Select your calendar">
+							<menupopup id="accountURLpopup" onpopuphiding="rmFxCalDAVedit.selectURL(this);">
+								<menuitem label="calendar" selected="true" url="" />
+								<menuitem label="calendar_2" url="" />
+						 -->
+					</hbox>
+
+					<button id="loginButton" class="reminderfox-iconLabel"
+						icon="false" oncommand="rmFxCalDAVedit.accountsGet(this);"
+						accountURL="" disabled="true"
+						label="Login" />
+				</row>
+
+
+				<hbox align="right"  height="20px">
+					<label id="accountStatus" value="" validated="false"/>
+					<progressmeter id="rmFx_progressmeter" mode="undetermined"
+						hidden="true" />
+					<spacer width="14px" />
+				</hbox>
+
+				<!-- -. -. -. -. -. -. -. -. -. -. -. -->
+
+				<hbox id="reminderFox-options-footer" />
+
+				<row align="center">
+					<label id="accountNameLabel" value="&rf.caldav.calndr.name;" />
+					<hbox>
+						<textbox id="accountName" flex="1" tooltiptext="&rf.caldav.account.name;"
+							class="accountName" width="100px" disabled="true"/>
+						<hbox align="center" >
+							<label value="ID"/>
+						</hbox>
+						<textbox id="accountID" width="28px" value="X"
+							tooltiptext="&rf.caldav.account.userletter;" onblur="rmFxCalDAVedit.setCalDAV_ID(this);" />
+
+						<hbox id="accountColorDefault" class="rmFx-calDAV-color-selector"
+							label="  " />
+					</hbox>
+
+				</row>
+
+				<!-- error line if accountID is wrong -->
+				<row id="accountIDStatus" >
+					<spacer />
+					<label id="accountIDStatusLabel" value=""
+						class="reminderFox_BoldError" />
+				</row>
+
+			</rows>
+		</grid>
+
+
+		<!-- -. -. -. -. -. -. -. -. -. -. -. -->
+		<vbox id="reminderFox-options-footer">
+			<hbox id="reminderFox-status" align="center" hidden="true">
+				<description id="rmFx_OptionStatus" class="reminderFox_BoldError" >
+					&rf.options.file.note.label;
+				</description>
+			</hbox>
+
+			<hbox id="alertButtonGroup" align="center" class="reminderFox-footer">
+				<spacer flex="1" />
+
+				<label id="accountOKInfo" value="&rf.caldav.login.correct;" />
+				<spacer width="10px"/>
+				<button id="rmFxOK" label="&rf.ok;" oncommand="rmFxCalDAVedit.do_OK();" disabled="true"/>
+				<spacer width="5px" />
+				<button id="rmFxCancel" label="&rf.cancel;" oncommand="rmFxCalDAVedit.do_CANCEL('%%','C');" />
+			</hbox>
+		</vbox>
+
+	</vbox>
+
+
+	<!-- PANEL for picture -->
+	<panel id="rmFx_pic_panel"
+		onmouseleave="document.getElementById('rmFx_pic_panel').hidePopup();">
+
+		<label id="rmFx_picture_label"/>
+		<hbox>
+			<image id="rmFx_picture_src"/>
+		</hbox>
+	</panel>
+
+<!-- JS code moved to calDAVedit.js -->
+</window>

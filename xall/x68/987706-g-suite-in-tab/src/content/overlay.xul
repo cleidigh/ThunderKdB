@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://gsuiteintab/skin/overlay.css" type="text/css" ?>
+
+<overlay id="gsuiteintab" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="overlay.js" />
+
+  <!-- MailToolbarPalette -->
+  <toolbarpalette id="MailToolbarPalette">
+    <toolbarbutton id="gsuiteintab-calendar-button"
+      class=""
+      label="Calendar"
+      type="button"
+      tooltiptext="Abrir calentadrio"
+      image="chrome://gsuiteintab/skin/calendar.png"
+      oncommand="gsuiteintab.ShowCalendar(event);"
+      />
+
+      <toolbarbutton id="gsuiteintab-keep-button"
+        class=""
+        label="Keep"
+        type="button"
+        tooltiptext="Abrir calentadrio"
+        image="chrome://gsuiteintab/skin/keep.png"
+        oncommand="gsuiteintab.ShowKeep(event);"
+        />
+
+  </toolbarpalette>
+
+</overlay>

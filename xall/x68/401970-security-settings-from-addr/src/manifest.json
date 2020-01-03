@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "securitysettingsfromaddressbook@gwu.at",
+      "strict_min_version": "68.0"
+    }
+  },
+  "name": "Security Settings from Address Book",
+  "description": "A simple add-on to activate message security (sign/encrypt) when sending or saving messages based on recipients' address book entry's field 'Custom1'.",
+  "version": "2.1",
+  "icons": {
+    "32": "icon.png"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://securitysettingsfromaddressbook/content/options.xul",
+      "open_in_tab": false
+    }
+  }
+}

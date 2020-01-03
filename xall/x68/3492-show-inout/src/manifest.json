@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "Show InOut",
+  "description": "Adds columns to ThreadPane indicating if a mail is incoming or outgoing",
+  "version": "2.0.1",
+  "author": "Günter Gersdorf",
+  "homepage_url": "https://www.ggbs.de/extensions/ShowInOut.html",
+  "applications": {
+    "gecko": {
+      
+      "id": "showInOut@ggbs.de",
+      "strict_min_version": "68.0"
+    }
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://showInOut/content/options.xul",
+      "open_in_tab": false
+    }
+  },
+  "icons": {
+    "16": "skin/inout-col.png",
+    "48": "skin/inout-col48.png"
+  }
+
+}
+

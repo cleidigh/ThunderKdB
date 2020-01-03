@@ -1,0 +1,40 @@
+<?xml version="1.0"?> 
+<!DOCTYPE overlay SYSTEM "chrome://foldersize/locale/foldersize.dtd">
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	buttons="accept, cancel"
+	title="ShowFolderSize">
+
+	<groupbox>
+		<hbox align="center">
+			<checkbox id="hidestatusbar" label="&hidessbarlabel;" preference="extensions.foldersize.hide.statusbar_panel"/>
+		</hbox>
+		<hbox align="center">
+			<checkbox id="imapRemoteSize" label="&imapSize.label;" preference="extensions.foldersize.imap.show_remote_size"/>
+		</hbox>
+		<hbox align="center">
+			<checkbox id="imapQuota" label="&imapQuota.label;" preference="extensions.foldersize.imap.show_quota"/>
+		</hbox>
+		<hbox align="center">
+			<checkbox id="startupCheck" label="&checkStartup;" preference="extensions.foldersize.startup.check"/>
+		</hbox>
+		<hbox align="center">
+			<label id="hidestatusbarlbl" value="&foldertoobig; " />
+			<html:input id="foldertoobigsize" type="number" size="4" preference="extensions.foldersize.file_too_big.mb"/>
+		</hbox>
+		<hbox align="center">
+			<label value="&warningColor.label;" />
+			<html:input id="warningColor" type="color" width="50" onchange="" preference="extensions.foldersize.warningColor"/>
+		</hbox>
+	</groupbox>
+
+	<script src="chrome://global/content/preferencesBindings.js" type="application/javascript"/>
+	<script src="chrome://foldersize/content/foldersizeOptions.js" type="application/javascript"/>
+	<script src="chrome://global/content/globalOverlay.js" type="application/javascript"/>
+
+</dialog>

@@ -1,0 +1,37 @@
+/* Extension Icon */
+/*
+#icon {
+  list-style-image: url("chrome://showInOut/skin/icon.png");
+}
+*/
+
+
+/* ..... inout column ..... */
+
+treecol.inoutColumnHeader {
+  list-style-image: url("chrome://showinout/skin/correspondents-col.svg");
+}
+
+/* Using indicators */
+treechildren::-moz-tree-image(sio_inoutCol, out) {
+  list-style-image: url("chrome://showinout/skin/indicators.png");
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+treechildren::-moz-tree-image(sio_inoutCol, to_me) {
+  list-style-image: url("chrome://showinout/skin/indicators.png");
+  -moz-image-region: rect(0px 64px 16px 48px);
+}
+treechildren::-moz-tree-image(sio_inoutCol, to_others) {
+  list-style-image: url("chrome://showinout/skin/indicators.png");
+  -moz-image-region: rect(0px 48px 16px 32px);
+}
+treechildren::-moz-tree-image(sio_inoutCol, to_list) {
+  list-style-image: url("chrome://showinout/skin/indicators.png");
+  -moz-image-region: rect(0px 32px 16px 16px);
+}
+/* end indicators*/
+/* revert to old icons:
+treechildren::-moz-tree-image(sio_inoutCol) {
+  list-style-image: url("chrome://showinout/skin/inout.png");
+}
+*/

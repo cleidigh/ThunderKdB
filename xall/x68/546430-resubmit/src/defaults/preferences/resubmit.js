@@ -1,0 +1,9 @@
+pref("extensions.resubmit@ezamber.pl", "chrome://resubmit/locale/resubmit.properties");
+pref("extensions.resubmit.debug.enabled", false);
+pref("extensions.resubmit.debug.level", 1);
+pref("extensions.resubmit.sendnow.enabled", true);
+pref("extensions.resubmit.sendnow.max_messages", 1);
+pref("extensions.resubmit.sendlater.enabled", true);
+pref("extensions.resubmit.sendlater.max_messages", 1);
+pref("extensions.resubmit.compose.enabled", true);
+pref("extensions.resubmit.compose.max_windows", 5);

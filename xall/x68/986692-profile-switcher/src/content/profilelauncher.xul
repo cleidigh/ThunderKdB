@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://profilelauncher/locale/profilelauncher.dtd">
+<overlay id="profilelauncher"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/x-javascript" src="chrome://profilelauncher/content/profilelauncher.js" />
+<script type="application/x-javascript" src="chrome://profilelauncher/content/utils.js" />
+<popupset id="mainPopupSet">
+  <menupopup id="profileNamePopup">
+    <menu label="&startProf;">
+      <menupopup id="profList2" />
+    </menu>
+    <menu label="&startPM;" insertafter="goOfflineMenuitem">
+      <menupopup>
+        <menuitem id="profManager2"
+                  oncommand="profileLauncher.runExec(this)"
+                  label="&normalmode;" />
+        <menuitem id="profManagerSF2"
+                  oncommand="profileLauncher.runExec(this)"
+                  label="&safemode;" />
+      </menupopup>
+    </menu>
+    <menuitem id="aboutProfiles2"
+              oncommand="profileLauncher.openAboutProfiles();"
+              label="Open About Profiles" />
+    <menuitem id="profSwitcherLog2"
+              oncommand="profileLauncher.restartWithLog()"
+              label="&restartWithLog;" />
+    <menuseparator />
+    <menuitem id="openOptions"
+              label="&openOptions;"
+              oncommand="profileLauncher.openOptions()" />
+  </menupopup>
+</popupset>
+
+<toolbarpalette id="MailToolbarPalette">
+  <toolbarbutton id="profSwitcherButtonTB"
+                 is="toolbarbutton-menu-button"
+                 label="&profiles;"
+                 class="toolbarbutton-1"
+                 type="menu-button"
+                 oncommand="profileLauncher.runProfileButton(event,this);"
+                 tooltiptext="Profile Switcher">
+    <menupopup>
+      <menu label="&startProf;">
+        <menupopup id="profList4"
+                   onpopupshowing="profileLauncher.fillToolbarPopup(this)"/>
+      </menu>
+      <menu label="&startPM;" insertafter="goOfflineMenuitem">
+        <menupopup>
+          <menuitem id="profManager4"
+                    oncommand="profileLauncher.runExec(this)"
+                    label="&normalmode;" />
+          <menuitem id="profManagerSF4"
+                    oncommand="profileLauncher.runExec(this)"
+                    label="&safemode;" />
+        </menupopup>
+      </menu>
+      <menuitem id="aboutProfiles4"
+                oncommand="profileLauncher.openAboutProfiles();"
+                label="Open About Profiles" />
+      <menuitem id="profSwitcherLog4"
+                oncommand="profileLauncher.restartWithLog()"
+                label="&restartWithLog;" />
+      <menuseparator />
+      <menuitem label="&openOptions;"
+                oncommand="profileLauncher.openOptions()" />
+    </menupopup>
+  </toolbarbutton>
+</toolbarpalette>
+
+<menupopup id="menu_FilePopup">
+  <menuseparator insertafter="goOfflineMenuitem"
+                 id="MFP_PSsep1" />
+  <menu insertafter="goOfflineMenuitem"
+        label="&startProf;"
+        id="MFP_PSmenu1">
+    <menupopup id="profList" />
+  </menu>
+  <menu label="&startPM;"
+        insertafter="goOfflineMenuitem"
+        id="MFP_PSmenu2">
+    <menupopup>
+      <menuitem id="profManager"
+                oncommand="profileLauncher.runExec(this)"
+                label="&normalmode;" />
+      <menuitem id="profManagerSF"
+                oncommand="profileLauncher.runExec(this)"
+                label="&safemode;" />
+    </menupopup>
+  </menu>
+  <menuitem id="aboutProfiles"
+            oncommand="profileLauncher.openAboutProfiles();"
+            label="Open About Profiles" />
+  <menuitem id="profSwitcherLog"
+            oncommand="profileLauncher.restartWithLog()"
+            label="&restartWithLog;" />
+<!--
+  <menuseparator insertafter="goOfflineMenuitem"
+                 id="MFP_PSsep2" />
+-->
+</menupopup>
+
+<!--
+<panelview id="appMenu-addonsView">
+  <vbox class="panel-subview-body"
+        style="margin-top: -12px">
+    <toolbarseparator/>
+    <toolbarbutton label="&startProf;"
+                   type="menu"
+                   class="subviewbutton subviewbutton-iconic"
+                   closemenu="none">
+      <menupopup id="profList3"
+                 onpopupshowing="profileLauncher.fillToolbarPopup(this)" />
+    </toolbarbutton>
+    <toolbarbutton label="&startPM;"
+                   type="menu"
+                   class="subviewbutton subviewbutton-iconic"
+                   closemenu="none">
+      <menupopup>
+        <menuitem id="profManager3"
+                  oncommand="profileLauncher.runExec(this)"
+                  label="&normalmode;" />
+        <menuitem id="profManagerSF3"
+                  oncommand="profileLauncher.runExec(this)"
+                  label="&safemode;" />
+      </menupopup>
+    </toolbarbutton>
+    <toolbarbutton id="aboutProfiles3"
+                   oncommand="profileLauncher.openAboutProfiles();"
+                   label="Open About Profiles" />
+    <toolbarbutton id="profSwitcherLog3"
+                   class="subviewbutton subviewbutton-iconic"
+                   oncommand="profileLauncher.restartWithLog()"
+                   label="&restartWithLog;" />
+  </vbox>
+</panelview>
+-->
+
+<statusbar id="status-bar">
+  <toolbarbutton id="profileNameSBP"
+                 class="statusbarpanel"
+                 collapsed="true"
+                 onmousedown="profileLauncher.runStatusbarProfileButton(event,this);"
+                 context="profileNamePopup"
+                 tooltiptext="&TTtext;">
+    <image id="profileNameIcon"
+           src="chrome://profilelauncher/skin/icons/user0.png"
+           class="statusbarpanel-iconic" />
+    <label id="profileNameLabel"
+           value="" />
+  </toolbarbutton>
+</statusbar>
+
+</overlay>
+

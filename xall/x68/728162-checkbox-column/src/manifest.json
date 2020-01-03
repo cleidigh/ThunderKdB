@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "checkbox@ganss.org",
+      "strict_min_version": "68.0"
+    }
+  },
+  "name": "Checkbox Column",
+  "description": "Adds a checkbox column to the list of messages, making it easier to select multiple messages on devices with a touchscreen display.",
+  "version": "1.4.68",
+  "homepage_url": "https://www.updatestar.com/dl/checkbox/checkbox.html",
+  "icons": {
+    "48": "chrome/skin/icon.svg",
+    "96": "chrome/skin/icon.svg"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://checkbox/content/preferences.xul",
+      "open_in_tab": true
+    }  
+  }
+}

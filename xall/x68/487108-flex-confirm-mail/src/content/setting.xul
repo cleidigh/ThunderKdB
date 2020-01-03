@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="./listbox.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://confirm-mail/locale/confirm-mail.dtd">
+
+<!--
+-  "The contents of this file are subject to the Mozilla Public Licenske
+-  Version 1.1 (the "License"); you may not use this file except in
+-  compliance with the License. You may obtain a copy of the License at
+-  http://www.mozilla.org/MPL/
+-  
+-  Software distributed under the License is distributed on an "AS IS"
+-  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+-  License for the specific language governing rights and limitations
+-  under the License.
+-  
+-  The Original Code is confirm-address.
+-  
+-  The Initial Developers of the Original Code are kentaro.matsumae and Meatian.
+-  Portions created by Initial Developers are 
+-  Copyright (C) 2007-2011 the Initial Developer.All Rights Reserved.
+-  
+-  Contributor(s): tanabec
+-->
+<dialog id="setting" title="&setting.dialog.title;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="startup()"
+	buttons="accept"
+	onbuttonaccept="window.close()">
+
+<script type="application/x-javascript" src="chrome://confirm-mail/content/constants.js"/>
+<script type="application/x-javascript" src="chrome://confirm-mail/content/setting.js"/>
+
+<tabbox flex="1">
+	<tabs>
+		<tab label="&setting.dialog.tab.recipients;"/>
+		<tab label="&setting.dialog.tab.exceptionalDomains;"/>
+		<tab label="&setting.dialog.tab.attachments;"/>
+		<tab label="&setting.dialog.tab.misc;"/>
+	</tabs>
+	<tabpanels flex="1">
+		<vbox flex="1">
+			<vbox>
+				<label value="&setting.dialog.enableConfirmation.caption;"/>
+				<radiogroup id="enable-confirmation" orient="vertical" style="margin-left: 1em"
+					preference="net.nyail.tanabec.confirm-mail.confirmation.mode">
+					<radio label="&setting.dialog.enableConfirmation.always.label;" value="1"/>
+					<radio label="&setting.dialog.enableConfirmation.onModified.label;" value="2"/>
+					<radio label="&setting.dialog.enableConfirmation.never.label;" value="0"/>
+				</radiogroup>
+			</vbox>
+
+			<separator/>
+
+			<label value="&setting.dialog.message;"/>
+			<richlistbox id="group-list"
+				style="height: 8em; max-height: 8em">
+			</richlistbox>
+			<hbox>
+				<button id="add" label="&setting.dialog.button.add.label;"
+					control="group-list"
+					oncommand="internalDomains.add(event)"/>
+				<button id="edit" label="&setting.dialog.button.edit.label;"
+					control="group-list"
+					oncommand="internalDomains.edit(event)"/>
+				<spacer flex="1"/>
+			</hbox>
+
+			<separator/>
+
+			<checkbox id="not-display" label="&setting.dialog.checkbox.notdisplay;"
+				preference="net.nyail.tanabec.confirm-mail.not-display"/>
+			<hbox align="center">
+				<label value="&setting.dialog.label.minRecipientsCount.before;" control="min-recipients-count"/>
+				<textbox id="min-recipients-count" style="width:10ch" type="number"
+					preference="net.nyail.tanabec.confirm-mail.min-recipients-count"/>
+				<label value="&setting.dialog.label.minRecipientsCount.after;" control="min-recipients-count"/>
+			</hbox>
+			<checkbox id="confirmMultipleRecipientDomains" label="&setting.dialog.confirmMultipleRecipientDomains.label;"
+				preference="net.nyail.tanabec.confirm-mail.confirmMultipleRecipientDomains"/>
+
+			<separator/>
+
+			<checkbox id="allowCheckAll.yourDomains" label="&setting.dialog.checkbox.allowCheckAll.yourDomains;"
+				preference="net.nyail.tanabec.confirm-mail.allowCheckAll.yourDomains"/>
+			<checkbox id="allowCheckAll.otherDomains" label="&setting.dialog.checkbox.allowCheckAll.otherDomains;"
+				preference="net.nyail.tanabec.confirm-mail.allowCheckAll.otherDomains"/>
+		</vbox>
+		<vbox flex="1">
+			<label value="&setting.dialog.exceptionalDomains.label;" control="exceptional-domains"/>
+			<vbox>
+				<label value="&setting.dialog.exceptionalDomains.highlight;"/>
+				<radiogroup id="exceptional-domains-highlight" orient="vertical" style="margin-left: 1em"
+					preference="net.nyail.tanabec.confirm-mail.exceptional-domains.highlight.mode">
+					<radio label="&setting.dialog.exceptionalDomains.highlight.always.label;" value="1"/>
+					<radio label="&setting.dialog.exceptionalDomains.highlight.withAttachments.label;" value="2"/>
+					<radio label="&setting.dialog.exceptionalDomains.highlight.never.label;" value="0"/>
+				</radiogroup>
+			</vbox>
+			<vbox>
+				<label value="&setting.dialog.exceptionalDomains.confirmation;"/>
+				<radiogroup id="exceptional-domains-confirmation" orient="vertical" style="margin-left: 1em"
+					preference="net.nyail.tanabec.confirm-mail.exceptional-domains.confirmation.mode">
+					<radio label="&setting.dialog.exceptionalDomains.confirmation.always.label;" value="1"/>
+					<radio label="&setting.dialog.exceptionalDomains.confirmation.withAttachments.label;" value="2"/>
+					<radio label="&setting.dialog.exceptionalDomains.confirmation.never.label;" value="0"/>
+				</radiogroup>
+			</vbox>
+			<radiogroup id="exceptional-domains-source" orient="vertical"
+				preference="net.nyail.tanabec.confirm-mail.exceptional-domains.source">
+				<radio label="&setting.dialog.exceptionalDomains.source.pref.label;" value="pref"/>
+				<vbox style="margin-left: 1em">
+					<richlistbox id="exceptional-domains"
+						style="height: 6em; max-height: 6em">
+					</richlistbox>
+					<hbox>
+						<button label="&setting.dialog.button.add.label;"
+							control="exceptional-domains"
+							oncommand="exceptionalDomains.add(event)"/>
+						<button label="&setting.dialog.button.edit.label;"
+							control="exceptional-domains"
+							oncommand="exceptionalDomains.edit(event)"/>
+						<spacer flex="1"/>
+					</hbox>
+				</vbox>
+				<hbox align="center">
+					<radio label="&setting.dialog.exceptionalDomains.source.file.label;" value="file"/>
+					<textbox id="exceptional-domains-file"
+						preference="net.nyail.tanabec.confirm-mail.exceptional-domains.file"
+						flex="1"/>
+					<button label="&setting.dialog.exceptionalDomains.source.file.button.label;"
+						chooser-title="&setting.dialog.exceptionalDomains.source.file.button.choose;"
+						oncommand="chooseFile(this);"/>
+				</hbox>
+			</radiogroup>
+		</vbox>
+		<vbox flex="1">
+			<label value="&setting.dialog.exceptionalSuffixes.label;" control="exceptional-suffixes"/>
+			<checkbox id="exceptional-suffixes-confirm" label="&setting.dialog.exceptionalSuffixes.confirm;"
+				preference="net.nyail.tanabec.confirm-mail.exceptional-suffixes.confirm"/>
+			<radiogroup id="exceptional-suffixes-source" orient="vertical"
+				preference="net.nyail.tanabec.confirm-mail.exceptional-suffixes.source">
+				<radio label="&setting.dialog.exceptionalSuffixes.source.pref.label;" value="pref"/>
+				<vbox style="margin-left: 1em">
+					<richlistbox id="exceptional-suffixes"
+						style="height: 6em; max-height: 6em">
+					</richlistbox>
+					<hbox>
+						<button label="&setting.dialog.button.add.label;"
+							control="exceptional-suffixes"
+							oncommand="exceptionalSuffixes.add(event)"/>
+						<button label="&setting.dialog.button.edit.label;"
+							control="exceptional-suffixes"
+							oncommand="exceptionalSuffixes.edit(event)"/>
+						<spacer flex="1"/>
+					</hbox>
+				</vbox>
+				<hbox align="center">
+					<radio label="&setting.dialog.exceptionalSuffixes.source.file.label;" value="file"/>
+					<textbox id="exceptional-suffixes-file"
+						preference="net.nyail.tanabec.confirm-mail.exceptional-suffixes.file"
+						flex="1"/>
+					<button label="&setting.dialog.exceptionalSuffixes.source.file.button.label;"
+						chooser-title="&setting.dialog.exceptionalSuffixes.source.file.button.choose;"
+						oncommand="chooseFile(this);"/>
+				</hbox>
+			</radiogroup>
+			<checkbox id="requireReinputAttachmentNames" label="&setting.dialog.checkbox.requireReinputAttachmentNames;"
+				preference="net.nyail.tanabec.confirm-mail.requireReinputAttachmentNames"/>
+			<separator/>
+			<checkbox id="allowCheckAll.fileNames" label="&setting.dialog.checkbox.allowCheckAll.fileNames;"
+				preference="net.nyail.tanabec.confirm-mail.allowCheckAll.fileNames"/>
+		</vbox>
+		<vbox flex="1">
+			<hbox align="center">
+				<checkbox id="countdown" label="&setting.dialog.checkbox.countdown;"
+					preference="net.nyail.tanabec.confirm-mail.is-countdown"/>
+				<textbox id="countdown-time" maxwidth="50" type="number"
+					preference="net.nyail.tanabec.confirm-mail.countdown.time"/>
+				<label value="&setting.dialog.label.countdown;" control="countdown-time"/>
+			</hbox>
+			<checkbox id="countdownAllowSkip" label="&setting.dialog.checkbox.countdown.allowSkip;"
+				preference="net.nyail.tanabec.confirm-mail.countdown.allowSkip"/>
+			<separator/>
+			<checkbox id="requireCheckSubject" label="&setting.dialog.checkbox.requireCheckSubject;"
+				preference="net.nyail.tanabec.confirm-mail.requireCheckSubject"/>
+			<checkbox id="requireCheckBody" label="&setting.dialog.checkbox.requireCheckBody;"
+				preference="net.nyail.tanabec.confirm-mail.requireCheckBody"/>
+			<checkbox id="highlightUnmatchedDomains" label="&setting.dialog.checkbox.highlightUnmatchedDomains;"
+				preference="net.nyail.tanabec.confirm-mail.highlightUnmatchedDomains"/>
+			<checkbox id="largeFontSizeForAddresses" label="&setting.dialog.checkbox.largeFontSizeForAddresses;"
+				preference="net.nyail.tanabec.confirm-mail.largeFontSizeForAddresses"/>
+			<checkbox id="alwaysLargeDialog" label="&setting.dialog.checkbox.alwaysLargeDialog;"
+				preference="net.nyail.tanabec.confirm-mail.alwaysLargeDialog"/>
+			<hbox align="center">
+				<label value="&setting.dialog.label.topMessage;" control="topMessage"/>
+				<textbox id="topMessage" flex="1"
+					preference="net.nyail.tanabec.confirm-mail.topMessage"/>
+			</hbox>
+			<hbox align="center">
+				<spacer style="width:1em"/>
+				<checkbox id="emphasizeTopMessage" label="&setting.dialog.checkbox.emphasizeTopMessage;"
+					preference="net.nyail.tanabec.confirm-mail.emphasizeTopMessage"/>
+			</hbox>
+			<checkbox id="emphasizeRecipientType" label="&setting.dialog.checkbox.emphasizeRecipientType;"
+				preference="net.nyail.tanabec.confirm-mail.emphasizeRecipientType"/>
+		</vbox>
+	</tabpanels>
+</tabbox>
+
+</dialog>

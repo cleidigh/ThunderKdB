@@ -1,0 +1,17 @@
+{
+	"manifest_version": 2,
+	"name": "Mark GMail Read",
+	"description": "Automatically marks all messages in the [Gmail] folder and all subfolders as read. IMPORTANT! If your GMail uses localized (translated) Gmail folder names, you have to set three Thunderbird preferences: extensions.mark_gmail_read.folder_names.(all_mail|important|starred). If these names do not correspond to the actually shown folder names under the [GMail] folder, you can expect unwanted behavior, e.g. marking all messages in all folders as read.",
+	"version": "2.0",
+	"applications": {
+		"gecko": {
+			"id": "mark-gmail-read@alexcabal.com",
+			"strict_min_version": "68.0"
+		}
+	},
+	"author": "Alex Cabal",
+	"homepage_url": "https://alexcabal.com",
+	"legacy": {
+		"type": "bootstrap"
+	}
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<overlay id="folderSize"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/x-javascript" src="chrome://foldersize/content/foldersize.js" />
+<script>
+<![CDATA[
+	window.addEventListener("load", showFolderSize.loadFolderSize, false);
+]]>
+</script>
+</overlay>

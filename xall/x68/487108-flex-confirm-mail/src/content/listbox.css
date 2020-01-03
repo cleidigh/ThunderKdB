@@ -1,0 +1,8 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+richlistitem:not(.editing) > textbox,
+richlistitem.editing > label,
+richlistitem.editing > toolbarbutton,
+richlistitem[value=""] > toolbarbutton {
+	visibility: collapse;
+}

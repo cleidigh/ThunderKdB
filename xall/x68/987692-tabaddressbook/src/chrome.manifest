@@ -1,0 +1,20 @@
+content AddressBookTab  chrome/content/
+
+skin    AddressBookTab     default     chrome/skin/
+
+locale  AddressBookTab     en-US           chrome/locale/en-US/
+locale  AddressBookTab     fr-FR           chrome/locale/fr-FR/
+locale  AddressBookTab     it-IT           chrome/locale/it-IT/
+locale  AddressBookTab     cs              chrome/locale/cs/
+locale  AddressBookTab     de              chrome/locale/de/
+locale  AddressBookTab     nl              chrome/locale/nl/
+locale  AddressBookTab     pt-PT           chrome/locale/pt-PT/
+locale  AddressBookTab     sr              chrome/locale/sr/
+locale  AddressBookTab     sv-SE           chrome/locale/sv-SE/
+locale  AddressBookTab     zh-CN           chrome/locale/zh-CN/
+
+
+style	  chrome://global/content/customizeToolbar.xul	chrome://AddressBookTab/skin/addressbookasTab.css
+style	  chrome://messenger/content/addressbook/addressbook.xul chrome://AddressBookTab/skin/addressbookasTab.css
+
+overlay	chrome://messenger/content/messenger.xul                 chrome://AddressBookTab/content/AddressBookTab.xul

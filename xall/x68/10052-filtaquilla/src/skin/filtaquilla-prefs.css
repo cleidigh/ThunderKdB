@@ -1,0 +1,167 @@
+/* styling for filtaquilla preferences dialog */
+
+.buttonLink {
+	cursor: pointer !important;
+	padding: 4px 16px;
+	margin: 4px auto 6px;
+	border: 1px solid rgba(120,120,120,0.5);
+	box-shadow: 4px 4px 3px rgba(80,80,80,0.3);
+}
+
+#mesquillaLink {
+	background: linear-gradient(to bottom, #67b6ce 0%,#316c8c 31%,#066dab 100%);
+	color: #FFF;
+}
+
+#mesquillaLink:hover {
+	background: linear-gradient(to bottom, #6ecfec 0%,#1e98da 31%,#0492ea 100%);
+}
+
+#quickFiltersLink {
+	background: linear-gradient(to bottom, #cb60b3 0%,#c146a1 50%,#a80077 51%,#db36a4 100%);
+	color: #FFF;
+}
+
+#quickFiltersLink:hover {
+	background: linear-gradient(to bottom, #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%);
+}
+
+#licenseLink {
+	background: linear-gradient(to bottom, #f78a4f 0%,#f05a04 31%,#b84300 61%,#f7782f 100%);
+	color: #FFF;
+}
+
+#licenseLink:hover {
+  background: linear-gradient(to bottom, #fdd8b3 0%,#fea546 31%,#f47e00 61%,#fdc589 100%);
+}
+
+
+.customLogo {
+  margin-left: 5px;
+	width: 32px;
+	height: 32px;
+}
+
+#filtaquilla_img {
+	/* just a hack as I don't appear to be able to use img url for a chrome address? */
+	background-image:url("chrome://filtaquilla/skin/filtaquilla-32.png");
+	background-repeat: no-repeat;
+}
+
+#quickfilters_img {
+	/* just a hack as I don't appear to be able to use img url for a chrome address? */
+	background-image:url("chrome://filtaquilla/skin/quickfilters.png");
+	background-repeat: no-repeat;
+}
+
+#community_img {
+	background-image:url("chrome://filtaquilla/skin/community.png");
+	background-repeat: no-repeat;
+}
+
+.helpLink,
+.helpLinkDisabled {
+  -moz-appearance: none !important;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-top: 3px;
+  width: 16px !important;
+  min-width: 22px;
+}
+
+.helpLink {
+  background-image: url("chrome://filtaquilla/skin/fugue-question.png");
+}
+.helpLinkDisabled {
+  background-image: url("chrome://filtaquilla/skin/fugue-question-disabled.png");
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.title spacer {
+  width: 1em;
+}
+
+#fq-options-header-version {
+  background-color: rgba(80,80,80,0.13);
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+
+#fq-options-header-version:hover {
+  color: white;
+  background-color: rgba(80,80,80,0.5);
+}
+
+
+.linkBox {
+	border: 1px solid rgb(230,230,230);
+	margin: 0 20px 1em 20px !important;
+	max-width: 660px;
+	padding-top: 0.75em;
+	white-space: normal !important;
+}
+
+.linkDescriptionBox vbox {
+  vertical-align: top;
+  display: table-cell;
+}
+
+.linkDescriptionBox img {
+	position: relative;	
+	top: auto;
+}
+
+.linkBox hbox {
+	max-width: 55em;
+}
+
+.linkDescriptionBox {
+	display: table;
+}
+
+.linkDescription {
+	/* -moz-appearance: none; */
+	display: table-cell;
+	margin: 0 5px;
+	max-width: 50em !important;
+	padding: 4px;
+	padding-bottom: 0.7em;
+	text-align: left;
+	width: 50em !important;
+	white-space: wrap;
+}
+
+.linkDescription * {
+	max-width: 50em !important;
+}
+
+#actionCols column {
+	min-width: 175px;
+}
+
+.icontabs tab {
+	padding: 5px 8px;
+  margin-top: 5px;
+}
+
+.icontabs tab label {
+	margin-left:5px !important;
+}
+
+#filterActionsTab {
+  list-style-image: url("chrome://filtaquilla/skin/fugue-arrow-curve.png") !important;
+}
+
+#conditionsTab {
+  list-style-image: url("chrome://filtaquilla/skin/script.png") !important;
+}
+
+#supportTab {
+  list-style-image: url("chrome://filtaquilla/skin/fugue-question.png") !important;
+}
+
+

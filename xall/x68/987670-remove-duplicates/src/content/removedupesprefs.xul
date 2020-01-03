@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE dialog SYSTEM "chrome://removedupes/locale/removedupes.dtd">
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="removeDupes.PrefDialog.init();"
+        buttons="accept, cancel, extra2"
+        buttonlabelextra2="&removedupesPrefs.captionabout;"
+        id="removedupesPrefsDialog"
+        title="&removedupesPrefs.title;">
+
+  <script type="application/x-javascript" src="chrome://removedupes/content/removedupesprefs.js"/>
+  <script type="application/x-javascript" src="chrome://removedupes/content/removedupes.js"/>
+
+  <groupbox>
+    <label class="header" style="text-align: center;">&removedupesPrefs.descsettings;</label>
+      <hbox>
+        <vbox>
+          <groupbox>
+            <vbox>
+              <checkbox id="removedupesMessageIdPref"        label="&removedupesPrefs.compmessageid;"/>
+              <checkbox id="removedupesDatePref"             label="&removedupesPrefs.compdate;"/>
+              <checkbox id="removedupesDateInSecondsPref"    label="&removedupesPrefs.compdateinseconds;"/>
+              <checkbox id="removedupesSubjectPref"          label="&removedupesPrefs.compsubject;"/>
+              <checkbox id="removedupesAuthorPref"           label="&removedupesPrefs.compauthor;"/>
+              <checkbox id="removedupesRecipientPref"        label="&removedupesPrefs.comprecipient;"/>
+              <checkbox id="removedupesBodyPref"             label="&removedupesPrefs.compbody;"/>
+              <checkbox id="removedupesLinecountPref"        label="&removedupesPrefs.complinecount;"/>
+            </vbox>
+          </groupbox>
+        </vbox>
+        <vbox>
+          <groupbox>
+            <vbox>
+              <hbox align="center">
+                <label value="&removedupesPrefs.preferetodelete;" />
+                <menulist id="removedupesPreferedDeletePref">
+                  <menupopup>
+                    <menuitem value="0" label="&removedupesPrefs.firstfound;" selected="true"/>
+                    <menuitem value="1" label="&removedupesPrefs.unreadmail;"/>
+                    <menuitem value="2" label="&removedupesPrefs.smallmail;"/>
+                    <menuitem value="3" label="&removedupesPrefs.largemail;"/>
+                    <menuitem value="4" label="&removedupesPrefs.unansweredmail;"/>
+                  </menupopup>
+                </menulist>
+                <label value="&removedupesPrefs.email;" />
+              </hbox>
+              <checkbox id="removedupesSubFolderFirstPref"       label="&removedupesPrefs.checksubfolderfirst;"/>
+              <checkbox id="removedupesReverseSearchPref"        label="&removedupesPrefs.reversesearch;"/>
+              <checkbox id="removedupesExcludeTrashcanPref"      label="&removedupesPrefs.excludeTrashcan;"/>
+              <checkbox id="removedupesExcludeSentfolderPref"    label="&removedupesPrefs.excludeSentfolder;"/>
+              <checkbox id="removedupesShowDuplicatesDialogPref" label="&removedupesPrefs.showDuplicateDialog;"/>
+              <checkbox id="removedupesAutodeletePref"           label="&removedupesPrefs.autodelete;"/>
+              <checkbox id="removedupesDebugInfoPref"            label="&removedupesPrefs.printdebuginfo;"/>
+            </vbox>
+          </groupbox>
+        </vbox>
+      </hbox>
+  </groupbox>
+</dialog>

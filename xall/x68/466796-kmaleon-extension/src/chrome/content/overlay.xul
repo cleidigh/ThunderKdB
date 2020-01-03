@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://kmaleonext/skin/icon-button.css" ?>
+
+<!DOCTYPE overlay >
+<overlay id="sample" 
+xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script type="application/javascript" src="chrome://kmaleonext/content/overlay.js"/><!-- A reference to your JavaScript file -->
+	<script type="application/javascript" src="chrome://kmaleonext/content/saveattachments.js"/><!-- A reference to your JavaScript file -->
+	<script type="application/javascript" src="chrome://kmaleonext/content/managetags.js"/><!-- A reference to your JavaScript file -->
+	<script type="application/javascript" src="chrome://kmaleonext/content/listenerFolders.js"/><!-- A reference to your JavaScript file -->
+	<toolbox id="header-view-toolbox">
+		<toolbarbutton id="my-panel" label="Anexar a expediente" class="toolbarbutton-1 msgHeaderView-button" tooltiptext="Anexar email a expediente en Kmaleon" oncommand="funciones.SaveMail('ANEXAREMAIL'); event.stopPropagation();RestoreFocusAfterHdrButton()" />
+		<toolbarbutton id="save-attachment" disabled = "true" label="Anexar adjunto"  class="toolbarbutton-1 msgHeaderView-button" type="menu" tooltiptext="Anexar adjunto a expediente en Kmaleon">	
+				<hbox id="box_attach">
+					<image src="chrome://kmaleonext/skin/icon-smallA.png"/>
+					<tooltiptext value="Anexar adjunto a expediente en Kmaleon"/>
+					<label value="Anexar adjunto"/>
+				</hbox>
+				<menupopup id = "popup_attach" onpopupshowing="popup_functions.setTipoAnex('ANEXAREMAIL')">			
+				</menupopup>				
+		</toolbarbutton>
+		<toolbarbutton id="my-panel2" label="Anexar a referencia" class="toolbarbutton-1 msgHeaderView-button" tooltiptext="Anexar email a referencia en Kmaleon" oncommand="funciones.SaveMail('ANEXAREMAILAREFERENCIA'); event.stopPropagation();RestoreFocusAfterHdrButton()" />
+		<toolbarbutton id="save-attachment-ref" disabled = "true" label="Anexar adjunto a referencia"  class="toolbarbutton-1 msgHeaderView-button" type="menu" tooltiptext="Anexar adjunto a referencia en Kmaleon">	
+				<hbox id="box_attach">
+					<image src="chrome://kmaleonext/skin/AdjuntoRef.png"/>
+					<tooltiptext value="Anexar adjunto a referencia en Kmaleon"/>
+					<label value="Anexar adjunto a referencia"/>
+				</hbox>
+				<menupopup id = "popup_attach_ref" onpopupshowing="popup_functions.setTipoAnex('ANEXAREMAILAREFERENCIA')">			
+				</menupopup>				
+		</toolbarbutton>
+	</toolbox>
+	
+	<toolbarpalette id="MailToolbarPalette">
+		<toolbarbutton id="buttonexterior"/>
+		<toolbarbutton id="buttonexteriorA">
+			<menupopup id = "popup_attach2" onpopupshowing="popup_functions.setTipoAnex('ANEXAREMAIL')">
+			</menupopup>
+		</toolbarbutton>
+		<toolbarbutton id="buttonexteriorR"/>
+		<toolbarbutton id="buttonexteriorAR">
+			<menupopup id = "popup_attach2_ref" onpopupshowing="popup_functions.setTipoAnex('ANEXAREMAILAREFERENCIA')">
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+	
+	<toolbarbutton id="buttonexterior"
+		label="Anexar a expediente"
+		hidden="false"
+		disabled = "false"
+		tooltiptext="Anexar email a expediente en Kmaleon"
+		oncommand="funciones.SaveMail('ANEXAREMAIL');" 	
+		class="toolbarbutton-1"
+	/>
+	<toolbarbutton id="buttonexteriorA"
+		type="menu"
+		hidden="false"
+		label="Anexar adjunto"
+		disabled = "true"
+		tooltiptext="Anexar adjunto a expediente en Kmaleon" 	
+		class="toolbarbutton-1"
+	/>
+	<toolbarbutton id="buttonexteriorR"
+		label="Anexar a referencia"
+		hidden="false"
+		disabled = "false"
+		tooltiptext="Anexar email a referencia en Kmaleon"
+		oncommand="funciones.SaveMail('ANEXAREMAILAREFERENCIA');" 	
+		class="toolbarbutton-1"
+	/>
+	<toolbarbutton id="buttonexteriorAR"
+		type="menu"
+		hidden="false"
+		label="Anexar adjunto a referencia"
+		disabled = "true"
+		tooltiptext="Anexar adjunto a referencia en Kmaleon" 	
+		class="toolbarbutton-1"
+	/>
+</overlay>

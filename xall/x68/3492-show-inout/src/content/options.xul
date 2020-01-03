@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is ShowInOut.
+ *
+ * The Initial Developer of the Original Code is Günter Gersdorf.
+ * Portions created by the Initial Developer are Copyright (C) 2006
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *  Günter Gersdorf <G.Gersdorf@ggbs.de>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** -->
+ 
+<!DOCTYPE dialog
+[
+<!ENTITY % showinoutDTD SYSTEM "chrome://showinout/locale/showInOut.dtd" >
+%showinoutDTD;
+<!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd" >
+%messengerDTD;
+<!ENTITY % AccountWizardDTD SYSTEM "chrome://messenger/locale/AccountWizard.dtd" >
+%AccountWizardDTD;
+<!ENTITY % msgAccountCentralDTD SYSTEM "chrome://messenger/locale/msgAccountCentral.dtd" >
+%msgAccountCentralDTD;
+<!ENTITY % msgViewPickerOverlayDTD SYSTEM "chrome://messenger/locale/msgViewPickerOverlay.dtd" >
+%msgViewPickerOverlayDTD;
+]
+>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!-- the following for the folder picker -->
+<?xml-stylesheet href="chrome://messenger/skin/accountManager.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id="de-ggbs-sio-options"
+        buttons="accept"
+        onload="return de_ggbs_sio.doInit();"
+        onunload="return de_ggbs_sio.doOK();"
+        windowtype="de-ggbs-sio-options"
+        title="&showInOut.title;">
+
+  <script type="application/javascript" src="chrome://messenger/content/widgetglue.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/customElements.js"/>
+  <script type="application/javascript" src="chrome://showinout/content/options.js"/>
+  <!--TEST script type="application/javascript" src="chrome://showinout/content/showInOut.js"/-->
+
+  <vbox>
+<!--    
+    <textbox id="addaddr_pref" preference="extensions.showInOut.addaddr" style="display: none"/>
+-->
+    <groupbox orient="vertical">
+      <hbox class="groupbox-title">
+        <label class="header">&sio_addaddr;</label>
+      </hbox>
+	    <hbox class="specialFolderPickerGrid" id="forAccountBox">
+	      <label value="&accnameTitle.label;" align="baseline"/>
+	      <menulist id="forAccount"
+	                oncommand="de_ggbs_sio.accountChange(event)">
+	        <menupopup id="accountPopup" is="folder-menupopup" mode="filing"
+	                   expandFolders="false">
+	          <menuitem label="&viewAll.label; &accountsSectionHdr.label;" id="default://" class="folderMenuItem menuitem-iconic"
+	                 oncommand="de_ggbs_sio.accountChange(event)" />
+	        </menupopup>
+	      </menulist>
+	    </hbox>
+      <!--separator class="groove"/-->
+      <checkbox id="addTo" label="&addEmailTo.label;"
+          onclick="document.getElementById('addTo_group').disabled=!this.checked;"/>
+        <!-- in TB60 war es:  onclick="document.getElementById('addTo_group').disabled=this.checked;" -->
+        <!-- keyboard feuert onclick nicht, aber onchange geht gar nicht -->
+        <radiogroup id="addTo_group" orient="horizontal" style="margin-left: 20px;">
+          <radio id="addTo_lf" label="Local Folders" align="top"/>
+          <radio id="addTo_aa" label="&viewAll.label; &accountsSectionHdr.label;" align="top"/>
+        </radiogroup>
+      <vbox id="addaddr_list" orient="vertical" flex="1" height="107px" style="overflow: auto;">
+      </vbox>
+    </groupbox>
+    <textbox id="columns_pref" preference="extensions.showInOut.Columns" style="display: none"/>
+    <groupbox orient="vertical">
+      <hbox class="groupbox-title">
+        <label class="header">&sio_inoutaddressCol.label; Prefix</label>
+      </hbox>
+      <grid flex="1">
+        <columns>
+          <column/>
+          <column/>
+        </columns>
+        <rows>
+          <row align="baseline">
+            <label value="&incoming.label;"/>
+            <textbox size="10" preference="extensions.showInOut.InTextPrefix" />
+          </row>
+          <row align="baseline">
+            <label value="&outgoing.label;" />
+            <textbox size="10" preference="extensions.showInOut.OutTextPrefix" />
+          </row>
+        </rows>
+      </grid>
+    </groupbox>
+    <groupbox orient="vertical">
+      <hbox class="groupbox-title">
+          <label class="header">&sio_columns;</label>
+      </hbox>
+      <vbox id="columns_list" orient="vertical" flex="1" height="100px" style="overflow: auto;">
+      </vbox>
+    </groupbox>
+  </vbox>
+  <script 
+     src="chrome://global/content/preferencesBindings.js" 
+     type="application/javascript"/>
+  <script 
+     src="chrome://showinout/content/preferences.js" 
+     type="application/javascript"/>          
+</dialog>

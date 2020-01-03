@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/datepicker/datepicker.css"  type="text/css" ?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+<window
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&mail.send.reminder.reference.title;"
+	id="rmFxReminder4mailList"
+	width="550px" height="830px"
+	persist="screenX screenY width height"
+	onload="reminderfox.sendPlus.reminder4mailList();" >
+
+	<script type="application/x-javascript"  src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFox.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/addReminderDialog.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxMail.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxIcalMail.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxSendwReminder.js" />
+
+	<keyset id="reminderFoxKeys">
+		<key keycode="VK_ESCAPE" oncommand="window.close();"/>
+	</keyset>
+
+
+	<groupbox  flex="0">
+		<caption label="&mail.send.withreminder.selection0;" style="font-weight: bold"/>
+
+		<spacer height="10px"/>
+		<hbox>
+			<spacer width="30px"/>
+			<vbox>
+				<description id="idSubject" value="Subject: xxxxxxxxxx"></description>
+				<description id="idDate" value="Date: yyyyyyyyy"></description>
+				<description id="idFrom" value="From: zzzzzzzz"></description>
+			</vbox>
+		</hbox>
+
+	</groupbox>
+
+	<groupbox  flex="1">
+		<caption label="&mail.send.withreminder.selection1;" style="font-weight: bold"/>
+
+		<description>&mail.send.withreminder.selection2; </description>
+
+		<spacer height="10px"/>
+		<hbox	flex="1">
+			<richlistbox id="rmFx_ReferencesListbox" style="overflow: auto;"
+				flex="1" seltype="single" >
+
+				<!-- ......  each reference is displayed with this list entry:
+					<richlistitem id="rmFxRefList" value="1200351600000-900032640">
+						<vbox style="border:0px;padding:0px;margin:0px">
+							<description value="Subject: CCCCCCCC" />
+							<description value="Date: Jan 5th 2008, 12:44" />
+							<description value="From: nobody.com" />
+						</vbox>
+					</richlistitem>
+				.......                     -->
+
+			</richlistbox>
+		</hbox>
+
+	</groupbox>
+
+
+	<hbox id="rmFxButtonBox">
+
+		<spacer class="reminderFox-btnspacer" flex="1"/>
+
+		<description style="font-weight: bold">&mail.send.withreminder.selection3; [&rf.ok;]</description>
+		<spacer width="30px"/>
+		<button label="&rf.ok;" oncommand="reminderfox.sendPlus.go4it();" />
+		<button label="&rf.cancel;" oncommand="window.close();"/>
+	</hbox>
+
+</window>

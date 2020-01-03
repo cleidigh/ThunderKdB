@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "path@tsubasa.kobayashi",
+      "strict_min_version": "68.0"
+    }
+  },
+  "name": "PathExplorer",
+  "version": "1.0.3",
+  "author": "Tsubasa Kobayashi",
+  "default_locale": "en-US",
+  "description": "__MSG_extensionDescription__",  
+  "icons": {
+    "64": "chrome/skin/icon.png"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://path/content/preferences.xul",
+      "open_in_tab": false
+    }
+  }
+}

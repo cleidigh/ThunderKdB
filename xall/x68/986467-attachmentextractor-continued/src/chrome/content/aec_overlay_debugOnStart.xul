@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<!DOCTYPE overlay [
+  <!ENTITY % aemainDTD SYSTEM "chrome://attachmentextractor_cont/locale/attachmentextractor.dtd">
+  %aemainDTD; 
+]>
+
+<overlay id="aec_menusOverlay" 
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_common.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_attachmentextractor.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_overlay_debugOnStart.js"/>
+
+  <script type="application/x-javascript"><![CDATA[ attachmentextractor.init(); ]]></script>
+
+</overlay>

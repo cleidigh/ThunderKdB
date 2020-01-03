@@ -1,0 +1,67 @@
+/* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*-
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== alert.css =====================================================
+  == Styles specific to the alerts dialog.
+  ======================================================================= */
+
+/* ????? @import url("chrome://messenger/skin/");    ????*/
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#newAlertNotification {
+  -moz-appearance: none;
+  min-height: 60px;
+  border: 1px solid threedshadow;
+  background-color: -moz-Dialog;
+}
+
+#alertImageBox {
+  padding: 4px;
+  background-image: linear-gradient(rgba(255, 255, 255, .7),
+                                    rgba(255, 255, 255, .6));
+  -moz-border-end: 1px solid rgba(0, 0, 0, .1);
+}
+
+#alertImage {
+  list-style-image: url("chrome://branding/content/icon64.png");
+}
+
+#alertTextBox {
+  padding: 4px;
+  -moz-padding-end: 25px;
+  background-image: linear-gradient(rgba(255, 255, 255, .2),
+                                    rgba(255, 255, 255, .1));
+}
+
+#alertTitle {
+  font-weight: bold;
+  font-size: 110%;
+  -moz-padding-start: 5px;
+  -moz-padding-end: 5px;
+}
+
+#alertGroove {
+  -moz-margin-start: 11px;
+}
+
+
+#closeButton {
+  list-style-image: url("chrome://reminderfox/skin/images/close.png");
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+  -moz-appearance: none;
+  border: none !important;
+  padding: 2px;
+  margin-right: 8px;
+}
+
+#closeButton:hover {
+  -moz-image-region: rect(0px, 32px, 16px, 16px);
+  cursor:pointer;
+}
+
+#closeButton:hover:active {
+  -moz-image-region: rect(0px, 48px, 16px, 32px);
+}

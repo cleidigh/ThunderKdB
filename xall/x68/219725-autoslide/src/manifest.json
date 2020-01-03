@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "AutoSlide",
+  "description": "Automatically adjust the size of the thread pane",
+  "version": "0.0.17beta1",
+  "author": "Joachim Herb",
+  "homepage_url": "http://autoslide.mozdev.org/",
+  "legacy": {
+    "options": {
+      "page": "chrome://AutoSlide/content/preferences.xul",
+      "open_in_tab": false
+    }
+   },
+  "applications": {
+    "gecko": {
+      "id": "autoslide@mozdev.org",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "64": "chrome/AutoSlide/skin/global/autoslide-64.png"
+  }
+}

@@ -1,0 +1,70 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+:root {
+  --toolbarbutton-icon-fill-attention: var(--lwt-toolbarbutton-icon-fill-attention, #0a84ff);
+}
+
+#wdw_aecOptionsWindow {
+  -moz-appearance: none;
+  font: message-box;
+  background-color: var(--in-content-page-background);
+  color: var(--in-content-page-color);
+}
+
+#aec-prefBox {
+  position: relative;
+}
+
+#aec-pref-category-box {
+  background-color: #ebebef;
+  width: 240px;
+}
+
+#aec-preferencesContainer {
+  padding: 40px 28px;
+  overflow: auto;
+}
+
+#wdw_aecOptionsWindow prefpane {
+  max-width: 800px;
+  padding: 0;
+  -moz-box-flex: 1;
+  -moz-box-orient: vertical;
+}
+
+#wdw_aecOptionsWindow prefpane:not([selected]) {
+  display: none;
+}
+
+@media (max-width: 830px) {
+  #aec-pref-category-box {
+    width: 118px;
+  }
+
+  #aec-preferencesContainer {
+    padding-inline-start: 15px;
+    padding-inline-end: 15px;
+  }
+}
+
+/* Preference tabs */
+radio[pane=aec-generalPane] > .radio-check {
+  list-style-image: url("chrome://attachmentextractor_cont/skin/general.svg");
+}
+radio[pane=aec-foldersPane] > .radio-check {
+  list-style-image: url("chrome://attachmentextractor_cont/skin/folder.svg");
+}
+radio[pane=aec-filenamePane] > .radio-check {
+  list-style-image: url("chrome://attachmentextractor_cont/skin/compose.svg");
+}
+radio[pane=aec-autoPane] > .radio-check {
+  list-style-image: url("chrome://attachmentextractor_cont/skin/getmsg.svg");
+}
+radio[pane=aec-advancedPane] > .radio-check {
+  list-style-image: url("chrome://attachmentextractor_cont/skin/advanced.svg");
+}
+radio[pane=aec-protocollPane] > .radio-check {
+  list-style-image: url("chrome://attachmentextractor_cont/skin/file-item.svg");
+}

@@ -1,0 +1,29 @@
+content addressbookssync content/
+resource addressbookssync modules/
+
+locale addressbookssync en locale/en/
+locale addressbookssync de locale/de/
+locale addressbookssync fr locale/fr/
+locale addressbookssync ja locale/ja/
+locale addressbookssync cs locale/cs/
+locale addressbookssync it locale/it/
+locale addressbookssync nl locale/nl/
+locale addressbookssync pt-PT locale/pt-PT/
+locale addressbookssync ru locale/ru/
+locale addressbookssync uk locale/uk/
+locale addressbookssync bg locale/bg/
+locale addressbookssync tr locale/tr/
+locale addressbookssync sk locale/sk/
+locale addressbookssync es locale/es/
+locale addressbookssync pt-BR locale/pt-BR/
+locale addressbookssync ko locale/ko/
+locale addressbookssync zh-CN locale/zh-CN/
+locale addressbookssync lt locale/lt/
+locale addressbookssync nb locale/nb/
+locale addressbookssync sv locale/sv/
+
+overlay chrome://messenger/content/messenger.xul chrome://addressbookssync/content/addressbookssync.xul
+overlay chrome://messenger/content/addressbook/addressbook.xul  chrome://addressbookssync/content/addressbook.xul
+
+skin  addressbookssync classic/1.0 skin/
+style chrome://messenger/content/customizeToolbar.xul chrome://addressbookssync/skin/addressbookssync.css

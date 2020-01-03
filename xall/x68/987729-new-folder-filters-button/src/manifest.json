@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "1.5",
+  "author": "Chris Malek (update to TB68 by J. Rathlev)",
+  "applications": {
+    "gecko": {
+      "id": "{9d8c34df-e80e-4d83-829b-6c9853020d9e}",
+      "strict_min_version": "68.0"
+    }
+  },
+  "default_locale": "en",
+  "icons": {
+    "64": "icons/filter_64.png",
+    "32": "icons/filter_32.png",
+    "24": "icons/filter_24.png",
+    "16": "icons/filter_16.png"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "open_in_tab": false,
+      "page": "chrome://filtersbutton/content/about.xul"
+    }
+  }
+}

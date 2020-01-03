@@ -1,0 +1,30 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url("chrome://mailsummaries/content/accountSummary.css");
+
+.starred .star {
+  background-image: url("chrome://messenger/skin/icons/flaggedmail.png");
+  height: 16px;
+  width: 16px;
+  margin-top: calc((1.2em - 16px)/2);
+  -moz-margin-start: -20px;
+}
+
+.folder_icon[data-type="Inbox"] {
+  background-image: url("chrome://messenger/skin/icons/folder-inbox.png");
+}
+
+.folder_icon[data-type="Outbox"] {
+  background-image: url("chrome://messenger/skin/icons/folder-outbox.png");
+}
+
+.compose_icon {
+  background-image: url("chrome://mailsummaries/skin/account-summary.png");
+  background-position: -16px top;
+}
+
+.drafts_icon {
+  background-image: url("chrome://messenger/skin/icons/folder-draft.png");
+}

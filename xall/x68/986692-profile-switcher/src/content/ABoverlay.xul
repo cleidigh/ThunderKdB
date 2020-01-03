@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://profilelauncher/locale/profilelauncher.dtd">
+<overlay id="ABprofilelauncher"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/x-javascript" src="chrome://profilelauncher/content/profilelauncher.js" />
+<script type="application/x-javascript" src="chrome://profilelauncher/content/utils.js" />
+<statusbar id="status-bar">
+	<toolbarbutton id="ABprofileNameSBP" class="statusbarpanel" collapsed="true" >
+		<image id="ABprofileNameSBPimg" src="chrome://profilelauncher/skin/icons/user0.png" class="statusbarpanel-iconic" />
+		<label id="ABprofileNameLabel" value="" tooltiptext="&TTtext;" />
+	</toolbarbutton>
+</statusbar>
+
+</overlay>
+

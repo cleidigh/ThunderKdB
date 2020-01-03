@@ -1,0 +1,468 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<?xml-stylesheet href="chrome://reminderfox-platform/skin/gtk3linux.css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="reminderFox-set-mailAppString"
+		windowtype="window:ItemDialog"
+		title="&mail.sendexport.reminder.invitation.title;"
+		width="550px"
+		persist="screenX screenY"
+		onload="invitationLoadDialog()">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxMail.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/rmFxIcalMail.js"  />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/mail/addContact2Reminder.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="invitationCloseDialog('CANCEL'); window.close();" />
+		<key keycode="VK_ENTER" oncommand="invitationCloseDialog('OK');"/>
+		<key keycode="VK_RETURN" oncommand="invitationCloseDialog('CANCEL'); window.close();"/>
+	</keyset>
+
+	<vbox flex="1">
+
+		<spacer height="10px"/>
+
+		<vbox>
+			<hbox flex="1">
+				<groupbox id="exportGroupbox" flex="1">
+					<caption>
+						<checkbox id="exportSection" label="&mail.sendexport.reminder.export;"
+							checked="true" oncommand="sendExportChange(this)" class="reminderFox_Bold" />
+					</caption>
+
+					<hbox>
+						<spacer width="20px" />
+						<label value="&mail.sendexport.reminder.exportto;" width="120px" />
+						<textbox id="exportFile" width="290px" editable="true"
+							value="../reminderfoxEvents.ics" />
+						<button  id="getFileLocationButton" label="..."
+							tooltiptext="&mail.sendexport.reminder.export.file;"
+							oncommand="reminderfox.util.getExportFile()" />
+					</hbox>
+				</groupbox>
+			</hbox>
+		</vbox>
+
+		<vbox flex="1">
+			<hbox flex="1">
+				<groupbox id="sendGroupbox" flex="1">
+					<caption>
+						<checkbox id="sendSection" label="&mail.sendexport.reminder.send;"
+							checked="false" class="reminderFox_Bold" align="top"
+							oncommand="sendExportChange(this)" />
+					</caption>
+
+					<hbox>
+						<spacer width="20px" />
+						<label value="&mail.sendexport.reminder.sender;"
+							width="120px" />
+						<menulist id="organizerMenu" width="290px" editable="true"
+							disabled="true" />
+					</hbox>
+
+
+					<vbox id="reminderFox-invitationGroup">
+						<hbox>
+							<spacer width="20px" />
+							<checkbox id="inviteEnable" checked="false" disabled="true"
+								label="&mail.send.reminder.invitation.check;" oncommand="invitationSwitch();">
+							</checkbox>
+						</hbox>
+					</vbox>
+
+					<vbox id="reminderFox-attendeeGroup">
+						<hbox align="center">
+							<spacer width="40px" />
+							<label value="&mail.send.reminder.invitation.attendees;"
+								width="100px" />
+
+								<textbox id="attendees" value="" width="290px"
+									type="autocomplete" autocompletesearch="addrbook"
+									autocompletesearchparam="{&quot;type&quot;:&quot;addr_to&quot;}"
+									tooltiptext="&mail.send.reminder.invitation.attendees.tooltip;" />
+
+								<label id="personInvite"
+									align="center" class="reminderfox-moreLabel"
+									onclick="openpanel_addAddressBookEntry(this);"
+									value="&mail.ical.Invit; .." tooltiptext="&mail.ical.invitation.attendees;"/>
+
+						</hbox>
+					</vbox>
+
+					<vbox id="reminderFox-commentGroup" flex="1">
+						<hbox>
+							<spacer width="40px" />
+							<text value="&mail.send.reminder.invitation.comment;" />
+						</hbox>
+
+						<hbox id="commentEntry">
+							<spacer width="40px" />
+
+							<textbox id="commentText" value="" flex="1" multiline="true"
+								rows="4" />
+							<spacer width="10px" />
+
+						</hbox>
+					</vbox>
+
+					<!-- mail.app.location  -->
+					<text />
+					<vbox id="reminderFox-mailApp.Location-Box">
+						<hbox>
+							<spacer width="20px" />
+							<description width="290px" id="mailApp.Description"
+								class="reminderfox_TextDisabled">
+													&mail.send.reminder.invitation.mail;
+							</description>
+						</hbox>
+
+						<hbox>
+							<spacer width="30px" />
+
+							<description width="410px" id="mailApp.location.input"
+								tooltiptext="&mail.send.reminder.invitation.reload;" class="reminderfox_TextDisabled"
+								value="undefined" />
+
+							<toolbarbutton class="image-button" id="mailAppButton"
+								onclick="reminderfox.util.mailAppStringBrowse();"
+								tooltiptext="&mail.send.reminder.invitation.browse;"
+								disabled="true" />
+						</hbox>
+					</vbox>
+
+				</groupbox>
+			</hbox>
+		</vbox>
+	</vbox>
+
+	<box id="panel-Anchor"></box>
+
+
+	<vbox>
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3"
+			align="center" />
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2"
+			align="center" />
+
+		<hbox id="alertButtonGroup">
+
+			<spacer class="reminderFox-btnspacer" flex="1" />
+
+			<button id="rmCatOK" label="&rf.ok;"
+				oncommand="invitationCloseDialog('OK');" />
+			<spacer width="5px" />
+
+			<button id="rmCatCancel" label="&rf.cancel;"
+				oncommand="invitationCloseDialog('CANCEL'); window.close();" />
+		</hbox>
+	</vbox>
+
+	<!--  ************    PANEL   ************* -->
+	<panel id="addAddressBookEntry" hidden="true" height="50px" noautohide="true">
+		<vbox>
+			<label value="&mail.ical.invitation.attendees;"/>
+				<textbox id="moreAttendee" value="" width="290px" type="autocomplete"
+					autocompletesearch="addrbook"
+					tooltiptext="&mail.send.reminder.invitation.attendees.tooltip;" />
+				<hbox>
+					<spacer flex="1" />
+					<button oncommand="pasteAttendantFromClipboard();"
+					label="&rf.Paste;" tooltiptext="&mail.ical.invitation.attendees.paste;"/>
+
+					<spacer width="20px" />
+
+					<button oncommand="addAttendee ();"
+						label="&rf.Add;" />
+					<spacer width="20px" />
+
+					<button oncommand="document.getElementById('addAddressBookEntry').hidePopup()"
+						label="&rf.Close;"/>
+				</hbox>
+		</vbox>
+	</panel>
+
+
+<script type="application/x-javascript"><![CDATA[
+// ---- invitation XUL dialogs -------------
+	function openpanel_addAddressBookEntry(anchor){
+
+		document.getElementById("moreAttendee").value = ""
+		var panel = document.getElementById("addAddressBookEntry");
+		panel.removeAttribute('hidden');
+		panel.openPopup(anchor, 'bottomleft topright', -1, -1);
+
+		if (!reminderfox.util.messenger()) {
+			reminderfox.abCard.abookOpen();
+		}
+	}
+
+	function pasteAttendantFromClipboard() {
+		var aText = reminderfox.util.copyTextfromClipboard()
+		document.getElementById("moreAttendee").value = aText;
+	}
+
+	function addAttendee () {
+		var xAttendee = document.getElementById("moreAttendee").value;
+		var attendeeBox = document.getElementById("attendees");
+		var attendeeText = attendeeBox.value;
+		var end0 = attendeeBox.selectionEnd;
+
+		if (attendeeText == "" && attendeeText != null) {
+			attendeeBox.value = xAttendee;
+		}
+		else {
+			if (attendeeText.charAt(attendeeText.length) != ',') {
+				attendeeBox.value = attendeeText + ',' + xAttendee;
+			}
+			else {
+				attendeeBox.value = attendeeText + xAttendee;
+			}
+		}
+		var end = attendeeBox.textLength;
+		attendeeBox.setSelectionRange(end);
+		document.getElementById("moreAttendee").value = ""
+		focus();
+}
+
+
+/**
+ *    RmFx Invitation/Send load
+ *    @param passed with  'window.arguments'
+ */
+function invitationLoadDialog () {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	var rmFx_exportFile;
+
+	var orgMenu= document.getElementById('organizerMenu');
+
+	//  with reminderfox.msgnr.myMailIDs the mailIdentities/organizer
+	//  and the mailApplication location are checked and read
+	var myAccount = reminderfox.msgnr.myMailIDs();
+
+	if (!!myAccount) {
+		var myAccounts = myAccount.split(",");
+		for (var i = 0; i < myAccounts.length; i++) {
+			  var myAccount = myAccounts[i];
+			 var menuitem = orgMenu.appendItem(myAccount, i);
+		}
+		orgMenu.selectedIndex = 0;
+	}
+
+	// with TB/SM the pulldown menu is NOT editable !!!
+	if (reminderfox.util.messenger()) {
+		document.getElementById('organizerMenu').removeAttribute( "editable");
+			//	 document.getElementById('reminderFox-mailApp.Location-Box')	 /* //gWTEST DARWIN  do not hide for testing */
+			//		 .setAttribute( "hidden", true);
+	}
+
+	var defaultFile = reminderfox.util.eventsExportFile("reminderfoxEvents.ics");
+	document.getElementById("exportFile").setAttribute ("value", defaultFile);
+
+	if (window.arguments[0].reminderTyp == 'reminder') {
+		document.title = document.title
+			+ " :  " + reminderfox.string("rf.html.heading.reminders")	  /*Reminders*/
+			+ " (" + window.arguments[0].eventLength + ") ";							/*Todo's*/
+	} else {
+		document.title = document.title
+			+ " :  " + reminderfox.string("rf.html.heading.todos")
+			+ " (" + window.arguments[0].eventLength + ") ";
+	}
+
+	invitationSwitch();  // setting to 'Export'
+};
+
+
+/**
+ *    RmFx Invitation/Send switch
+ *    toggle to enable / disable invitation
+ */
+function invitationSwitch () {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//	document.title= "Invitation/Schedule change"   // reminderfox.string("rf.schedule.statusChange);"
+
+	if (window.arguments[0].selectedTyp == 'info') {
+
+		document.getElementById('reminderFox-invitationGroup')
+			.setAttribute( "hidden", true );
+		document.getElementById('reminderFox-commentGroup')
+			.setAttribute( "hidden", true );
+		sizeToContent();
+
+		sendExportChange("exportSection");
+		return;
+	 }
+
+	if ( document.getElementById('inviteEnable').checked ==  true ) {
+		  document.getElementById('reminderFox-commentGroup')
+						  .setAttribute( "hidden", false );
+		  document.getElementById('reminderFox-attendeeGroup')
+						  .setAttribute( "hidden", false );
+	}
+
+	if ( document.getElementById('inviteEnable').checked ==  false ) {
+		document.getElementById('reminderFox-commentGroup')
+			.setAttribute( "hidden", true );
+		document.getElementById('reminderFox-attendeeGroup')
+			.setAttribute( "hidden", true );
+	}
+	//  check the messenger to be used
+	reminderfox.util.messengerApp();
+	document.getElementById('mailApp.location.input').value = reminderfox.core.getPreferenceValue(reminderfox.consts.MAIL_PATH, "");
+	sizeToContent();
+};
+
+
+/**
+ *    RmFx Invitation dialog:  close
+ * 	@param  mode = CANCEL or OK
+ */
+function invitationCloseDialog (mode) {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	if (mode == 'CANCEL') {
+		window.arguments[0].mode = mode;
+		return;
+	}
+
+	// --- Send section -----------------
+	if (document.getElementById('sendSection').checked) {
+		window.arguments[0].mode = 'xSend';
+
+		var organizer = document.getElementById('organizerMenu').label;
+		window.arguments[0].organizer = organizer;
+
+		reminderfox.core.setPreferenceValue(reminderfox.consts.MAIL_SENDER, organizer);
+
+		if (document.getElementById('inviteEnable').checked == true) {
+			window.arguments[0].selectedTyp = 'invite';
+			window.arguments[0].attendees = document.getElementById('attendees').value;
+		} else {
+			window.arguments[0].selectedTyp = 'info';
+			window.arguments[0].attendees = "";
+		}
+
+		if ( document.getElementById('commentText').value != "") {
+			window.arguments[0].schComment  = document.getElementById('commentText').value;
+		}else {
+			window.arguments[0].schComment  = "";
+		}
+		window.close();
+	}
+
+	// --- Export section -----------------
+	 if (document.getElementById('exportSection').checked) {
+		window.arguments[0].mode = 'xExport';
+		window.arguments[0].selectedTyp = 'info';
+
+		var exportFile = document.getElementById('exportFile').value;
+
+		// need to check export file -- valid filePath, NOT a directory?
+
+		var fs = reminderfox.util.fileCheck(exportFile);
+		if (fs == -1) {
+			alert ("&rf.reminder.file.notadirectory;");
+			return;
+		};
+		if (fs == 1) {
+			if (!confirm (reminderfox.string("rf.mail.sendexport.reminder.export.fileexists"))) return;
+		};
+
+		var defaultFile = reminderfox.util.eventsExportFile("reminderfoxEvents.ics");
+		reminderfox.core.setPreferenceValue(reminderfox.consts.EXPORT_EVENTS, defaultFile);
+		window.close();
+	}
+};
+
+
+/**
+ *	 Change Groupbox elements for 'Export' and 'Send' dialogs
+ *
+ */
+function sendExportChange (mode) {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	 var sendOp;
+
+	 if (mode.id == "exportSection") sendOp = !mode.checked;
+	 if (mode.id == "sendSection")	sendOp = mode.checked;
+
+	 // called from ... send Invitation as 'info' see: invitationLoadDialog
+	 if (mode == "sendSection")		sendOp = true;
+
+	 if (sendOp) {
+		  /* --- 'Export' -->	  disabled */
+		  document.getElementById("exportSection").setAttribute("checked", "false");
+		  document.getElementById("exportFile").setAttribute("disabled", "true");
+		  document.getElementById("getFileLocationButton").setAttribute("disabled", "true");
+
+		  /* --- 'Send' -->		 enabled */
+		  document.getElementById("sendSection").setAttribute("checked", "true");
+
+		  document.getElementById('mailApp.Description')   .setAttribute( "class", "reminderfox_TextNormal" );
+		  document.getElementById('mailApp.location.input').setAttribute( "class", "reminderfox_TextNormal" );
+
+		  document.getElementById("organizerMenu").removeAttribute("disabled");
+		  document.getElementById("inviteEnable").removeAttribute("disabled");
+
+		  if (document.getElementById('inviteEnable').checked == true){
+				document.getElementById('reminderFox-attendeeGroup').setAttribute( "hidden", false );
+				document.getElementById('reminderFox-commentGroup').setAttribute( "hidden", false );
+		  }
+		  document.getElementById('attendees').removeAttribute( "disabled");
+		  document.getElementById('commentText').removeAttribute( "disabled");
+		  document.getElementById("mailAppButton").removeAttribute("disabled");
+
+	 } else {
+		/* --- 'Export' -->	  enabled */
+		  document.getElementById("exportSection").setAttribute("checked", "true");
+		  document.getElementById("exportFile").removeAttribute("disabled");
+		  document.getElementById("getFileLocationButton").removeAttribute("disabled");
+
+		  /* --- 'Send' -->		 disabled */
+		  document.getElementById("sendSection").setAttribute("checked", "false");
+
+		  document.getElementById('mailApp.Description')	.setAttribute( "class", "reminderfox_TextDisabled" );
+		  document.getElementById('mailApp.location.input').setAttribute( "class", "reminderfox_TextDisabled" );
+
+		  document.getElementById("organizerMenu").setAttribute("disabled", "true");
+		  document.getElementById("inviteEnable").setAttribute("disabled","true");
+
+		  document.getElementById('reminderFox-attendeeGroup').setAttribute( "hidden", true );
+		  document.getElementById('reminderFox-commentGroup').setAttribute( "hidden", true );
+
+		  document.getElementById("mailAppButton").setAttribute("disabled", "true");
+	 }
+	 sizeToContent();
+};
+
+function getMailAddress(address) {
+	//	.replace(/(\ )/g, '')		// remove all spaces
+		var addressArray = []
+		addressArray.name = ""
+		addressArray.mail = ""
+
+		var attendeeX = address.split("<");
+		if (attendeeX.length == 1) {  // only mailAdr
+			addressArray.mail = attendeeX[0].replace(/(^\s+)|(\s+$)/g, '').replace(">", '');
+		} else {					 // mailName and adr
+			addressArray.name = attendeeX[0].replace(/(^\s+)|(\s+$)/g, '');
+			addressArray.mail = attendeeX[1].replace(/(^\s+)|(\s+$)/g, '').replace(">", '');
+		}
+	return addressArray
+}
+
+
+]]></script>
+</window>

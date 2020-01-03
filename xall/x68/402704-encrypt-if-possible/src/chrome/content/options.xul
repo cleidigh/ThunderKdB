@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet type="text/css" href="chrome://communicator/skin/"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://encryptifpossible/locale/options.dtd">
+
+<dialog    
+   id="encryptifpossible_options"
+   title="Encrypt if possible - Options"
+   buttons="accept"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <vbox>
+    <checkbox 
+       id="extensions.encryptifpossible.auto_encrypt_ask" 
+       preference="extensions.encryptifpossible.auto_encrypt_ask"
+       label="&auto_encrypt_ask.label;" 
+       />
+    <checkbox 
+       id="extensions.encryptifpossible.auto_sign" 
+       preference="extensions.encryptifpossible.auto_sign"
+       label="&auto_sign_ask.label;" 
+       />
+    <label class="header" value="&warn_no_encrypt.label;" />       
+    <radiogroup id="extensions.encryptifpossible.warn_no_encrypt" preference="extensions.encryptifpossible.warn_no_encrypt">
+      <radio value="0" label="&warn_no_encrypt_none.label;"/>
+      <radio value="1" label="&warn_no_encrypt_mixed.label;"/>
+      <radio value="2" label="&warn_no_encrypt_all.label;"/>
+    </radiogroup>
+  </vbox>          
+
+  <script 
+     src="chrome://global/content/preferencesBindings.js" 
+     type="application/javascript"/>
+  <script 
+     src="chrome://encryptifpossible/content/preferences.js" 
+     type="application/javascript"/>          
+</dialog>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://layoutbutton/skin/layoutbutton.css" type="text/css"?>
+
+<overlay id="layoutButtonOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ <script type="application/javascript" src="chrome://layoutbutton/content/overlay.js"/>
+ 
+ <toolbarpalette id="MailToolbarPalette">
+	<toolbarbutton
+		class="toolbarbutton-1"
+		id="layoutbutton"
+		label="Layout"
+		tooltiptext="Switch between different layouts"
+		type="menu-button"
+		oncommand="turtletec_layoutbutton.MailOverlay.cycleLayout()"
+		title="Layout Button">
+		
+		<menupopup>
+			<menuitem label="Classic" oncommand="ChangeMailLayout(0); event.stopPropagation();" id="layoutButtonClassic"  />
+			<menuitem label="Wide" oncommand="ChangeMailLayout(1); event.stopPropagation();" id="layoutButtonWide"  />
+			<menuitem label="Vertical" oncommand="ChangeMailLayout(2); event.stopPropagation();" id="layoutButtonVertical"  />
+		</menupopup>
+		
+	</toolbarbutton>
+
+</toolbarpalette>
+</overlay>

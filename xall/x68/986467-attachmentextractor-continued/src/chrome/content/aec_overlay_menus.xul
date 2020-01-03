@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<?xml-stylesheet href="chrome://attachmentextractor_cont/skin/aec_buttons.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % aemainDTD SYSTEM "chrome://attachmentextractor_cont/locale/attachmentextractor.dtd">
+  %aemainDTD; 
+]>
+
+<overlay id="aec_menusOverlay" 
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_common.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_attachmentextractor.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_listener_menus.js"/>
+
+  <!-- Menu 'Message' -->
+  <menupopup id="messageMenuPopup">
+
+    <menuseparator id="aec-messageMenuPopup-separator" 
+      insertafter="msgAttachmentMenu" />
+    <menu id="aec-messageMenuPopup-menu" 
+      label="&attachmentextractor.extractMessagesTo.label;" 
+      accesskey="&attachmentextractor.extractTo.accesskey;" 
+      insertafter="aec-messageMenuPopup-separator">
+      <menupopup id="aec-messageMenuPopup-extractToPopup"
+        onpopupshowing="attachmentextractor.updatePopupMenus()">
+
+        <menuitem id="menu_aec_extractToBrowse_messageMenu" 
+          label="&attachmentextractor.extractToBrowse.label;" 
+          accesskey="&attachmentextractor.extractToBrowse.accesskey;" 
+          command="cmd_aec_extractToBrowse" />
+
+        <menuseparator/>
+
+        <menuitem id="menu_aec_extractToDefault_messageMenu" 
+          label="&attachmentextractor.extractToDefault.label;" 
+          accesskey="&attachmentextractor.extractToDefault.accesskey;" 
+          command="cmd_aec_extractToDefault" />
+
+        <menu id="menu_aec_extractToFavorite_messageMenu" 
+          label="&attachmentextractor.extractToFavoritefolders.label;" 
+          accesskey="&attachmentextractor.extractToFavoritefolders.accesskey;">
+          <menupopup id="menu_aec_extractFavoritefolder_messageMenu-Popup" 
+            onpopupshowing="attachmentextractor.updateFavoriteMenuItems(this)" 
+            paramAll="false" />
+        </menu>
+
+        <menu id="menu_aec_extractToMRU_messageMenu" 
+          label="&attachmentextractor.extractToMRUfolders.label;" 
+          accesskey="&attachmentextractor.extractToMRUfolders.accesskey;">
+          <menupopup id="menu_aec_extractMRU_toolbar-Popup" 
+            onpopupshowing="attachmentextractor.updateMRUMenuItems(this)" 
+            paramAll="false" />
+        </menu>
+
+        <menuitem id="menu_aec_extractToSuggest_messageMenu" 
+          label="&attachmentextractor.extractToSuggestfolders.label;" 
+          accesskey="&attachmentextractor.extractToSuggestfolders.accesskey;" 
+          command="cmd_aec_extractToSuggest" />
+
+        <menuseparator/>
+
+        <menuitem id="menu_aec_justDeleteAttachments_messageMenu" 
+          label="&attachmentextractor.justDeleteAttachments.label;" 
+          accesskey="&attachmentextractor.justDeleteAttachments.accesskey;" 
+          command="cmd_aec_justDeleteAttachments" />
+
+      </menupopup>
+    </menu>
+
+  </menupopup>
+
+  <!-- context Menu in threadpane and previewpane -->
+  <!-- mailContext -->
+  <menupopup id="mailContext">
+
+    <menuseparator id="aec-mailContextPopup-separator" 
+      insertafter="mailContext-delete">
+      <observes element="mailContext-delete" 
+        attribute="hidden"/>
+    </menuseparator>
+
+    <menu id="aec-mailContextPopup-menu" 
+      label="&attachmentextractor.extractMessagesTo.label;" 
+      accesskey="&attachmentextractor.extractTo.accesskey;" 
+      insertafter="aec-mailContextPopup-separator">
+      <observes element="mailContext-delete" 
+        attribute="hidden"/>
+      <menupopup id="aec-mailContextPopup-extractToPopup"
+        onpopupshowing="attachmentextractor.updatePopupMenus()">
+
+        <menuitem id="menu_aec_extractToBrowse_mailContext" 
+          label="&attachmentextractor.extractToBrowse.label;" 
+          accesskey="&attachmentextractor.extractToBrowse.accesskey;" 
+          command="cmd_aec_extractToBrowse" />
+
+        <menuseparator/>
+
+        <menuitem id="menu_aec_extractToDefault_mailContext" 
+          label="&attachmentextractor.extractToDefault.label;" 
+          accesskey="&attachmentextractor.extractToDefault.accesskey;" 
+          command="cmd_aec_extractToDefault" />
+
+        <menu id="menu_aec_extractToFavorite_mailContext" 
+          label="&attachmentextractor.extractToFavoritefolders.label;" 
+          accesskey="&attachmentextractor.extractToFavoritefolders.accesskey;">
+          <menupopup id="menu_aec_extractFavoritefolder_mailContext-Popup" 
+            onpopupshowing="attachmentextractor.updateFavoriteMenuItems(this)" 
+            paramAll="false" />
+        </menu>
+
+        <menu id="menu_aec_extractToMRU_mailContext" 
+          label="&attachmentextractor.extractToMRUfolders.label;" 
+          accesskey="&attachmentextractor.extractToMRUfolders.accesskey;">
+          <menupopup id="menu_aec_extractMRU_toolbar-Popup" 
+            onpopupshowing="attachmentextractor.updateMRUMenuItems(this)" 
+            paramAll="false" />
+        </menu>
+
+        <menuitem id="menu_aec_extractToSuggest_mailContext" 
+          label="&attachmentextractor.extractToSuggestfolders.label;" 
+          accesskey="&attachmentextractor.extractToSuggestfolders.accesskey;" 
+          command="cmd_aec_extractToSuggest" />
+
+        <menuseparator/>
+
+        <menuitem id="menu_aec_justDeleteAttachments_mailContext" 
+          label="&attachmentextractor.justDeleteAttachments.label;" 
+          accesskey="&attachmentextractor.justDeleteAttachments.accesskey;" 
+          command="cmd_aec_justDeleteAttachments" />
+
+      </menupopup>
+    </menu>
+
+  </menupopup>
+
+  <!-- Menu 'File' -->
+  <menupopup id="menu_FilePopup">
+
+    <menuseparator id="aec-fileMenuPopup-separator" 
+      insertafter="menu_saveAs" />
+    <menu id="aec-fileMenuPopup-menu" 
+      label="&attachmentextractor.extractFoldersTo.label;" 
+      accesskey="&attachmentextractor.extractTo.accesskey;" 
+      insertafter="aec-fileMenuPopup-separator">
+      <menupopup id="aec-fileMenuPopup-extractToPopup"
+        onpopupshowing="attachmentextractor.updatePopupMenus()">
+
+        <menuitem id="menu_aec_extractAllToBrowse_fileMenu" 
+          label="&attachmentextractor.extractToBrowse.label;" 
+          accesskey="&attachmentextractor.extractToBrowse.accesskey;" 
+          command="cmd_aec_extractAllToBrowse" />
+        <menuitem id="menu_aec_extractDeepToBrowse_fileMenu" 
+          label="&attachmentextractor.extractWithSubToBrowse.label;" 
+          accesskey="&attachmentextractor.extractWithSubToBrowse.accesskey;" 
+          command="cmd_aec_extractDeepToBrowse" />
+
+        <menuseparator/>
+
+        <menuitem id="menu_aec_extractAllToDefault_fileMenu" 
+          label="&attachmentextractor.extractToDefault.label;" 
+          accesskey="&attachmentextractor.extractToDefault.accesskey;" 
+          command="cmd_aec_extractAllToDefault" />
+        <menuitem id="menu_aec_extractDeepToDefault_fileMenu" 
+          label="&attachmentextractor.extractWithSubToDefault.label;" 
+          accesskey="&attachmentextractor.extractWithSubToDefault.accesskey;" 
+          command="cmd_aec_extractDeepToDefault" />
+
+        <menu id="menu_aec_extractAllToFavorite_fileMenu" 
+          label="&attachmentextractor.extractToFavoritefolders.label;" 
+          accesskey="&attachmentextractor.extractToFavoritefolders.accesskey;">
+          <menupopup id="menu_aec_extractAllFavoritefolder_fileMenu-Popup" 
+            onpopupshowing="attachmentextractor.updateFavoriteMenuItems(this)" 
+            paramAll="true" />
+        </menu>
+        <menu id="menu_aec_extractDeepToFavorite_fileMenu" 
+          label="&attachmentextractor.extractWithSubToFavoritefolders.label;" 
+          accesskey="&attachmentextractor.extractWithSubToFavoritefolders.accesskey;">
+          <menupopup id="menu_aec_extractDeepFavoritefolder_fileMenu-Popup" 
+            onpopupshowing="attachmentextractor.updateFavoriteMenuItems(this)" 
+            paramAll="2" />
+        </menu>
+
+        <menu id="menu_aec_extractAllToMRU_fileMenu" 
+          label="&attachmentextractor.extractToMRUfolders.label;" 
+          accesskey="&attachmentextractor.extractToMRUfolders.accesskey;">
+          <menupopup id="menu_aec_extractAllMRU_toolbar-Popup" 
+            onpopupshowing="attachmentextractor.updateMRUMenuItems(this)" 
+            paramAll="true" />
+        </menu>
+        <menu id="menu_aec_extractDeepToMRU_fileMenu" 
+          label="&attachmentextractor.extractWithSubToMRUfolders.label;" 
+          accesskey="&attachmentextractor.extractWithSubToMRUfolders.accesskey;">
+          <menupopup id="menu_aec_extractDeepMRU_toolbar-Popup" 
+            onpopupshowing="attachmentextractor.updateMRUMenuItems(this)" 
+            paramAll="2" />
+        </menu>
+
+        <menuitem id="menu_aec_extractAllToSuggest_fileMenu" 
+          label="&attachmentextractor.extractToSuggestfolders.label;" 
+          accesskey="&attachmentextractor.extractToSuggestfolders.accesskey;" 
+          command="cmd_aec_extractAllToSuggest" />
+        <menuitem id="menu_aec_extractDeepToSuggest_fileMenu" 
+          label="&attachmentextractor.extractWithSubToSuggestfolders.label;" 
+          accesskey="&attachmentextractor.extractWithSubToSuggestfolders.accesskey;" 
+          command="cmd_aec_extractDeepToSuggest" />
+
+      </menupopup>
+    </menu>
+
+  </menupopup>
+
+  <!-- context menu in folder pane -->
+  <popup id="folderPaneContext">
+
+    <menuseparator id="aec-folderPaneContextPopup-separator" 
+      insertafter="folderPaneContext-rename" />
+    <menu id="aec-folderPaneContextPopup-menu" 
+      label="&attachmentextractor.extractFoldersTo.label;" 
+      accesskey="&attachmentextractor.extractTo.accesskey;" 
+      insertafter="aec-folderPaneContextPopup-separator">
+      <menupopup id="aec-folderPaneContextPopup-extractToPopup"
+        onpopupshowing="attachmentextractor.updatePopupMenus()">
+
+        <menuitem id="menu_aec_extractAllToBrowse_folderPaneContext" 
+          label="&attachmentextractor.extractToBrowse.label;" 
+          accesskey="&attachmentextractor.extractToBrowse.accesskey;" 
+          command="cmd_aec_extractAllToBrowse" />
+        <menuitem id="menu_aec_extractDeepToBrowse_folderPaneContext" 
+          label="&attachmentextractor.extractWithSubToBrowse.label;" 
+          accesskey="&attachmentextractor.extractWithSubToBrowse.accesskey;" 
+          command="cmd_aec_extractDeepToBrowse" />
+
+        <menuseparator/>
+
+        <menuitem id="menu_aec_extractAllToDefault_folderPaneContext" 
+          label="&attachmentextractor.extractToDefault.label;" 
+          accesskey="&attachmentextractor.extractToDefault.accesskey;" 
+          command="cmd_aec_extractAllToDefault" />
+        <menuitem id="menu_aec_extractDeepToDefault_folderPaneContext" 
+          label="&attachmentextractor.extractWithSubToDefault.label;" 
+          accesskey="&attachmentextractor.extractWithSubToDefault.accesskey;" 
+          command="cmd_aec_extractDeepToDefault" />
+
+        <menu id="menu_aec_extractAllToFavorite_folderPaneContext" 
+          label="&attachmentextractor.extractToFavoritefolders.label;" 
+          accesskey="&attachmentextractor.extractToFavoritefolders.accesskey;">
+          <menupopup id="menu_aec_extractAllFavoritefolder_folderPaneContext-Popup" 
+            onpopupshowing="attachmentextractor.updateFavoriteMenuItems(this)" 
+            paramAll="true" />
+        </menu>
+        <menu id="menu_aec_extractDeepToFavorite_folderPaneContext" 
+          label="&attachmentextractor.extractWithSubToFavoritefolders.label;" 
+          accesskey="&attachmentextractor.extractWithSubToFavoritefolders.accesskey;">
+          <menupopup id="menu_aec_extractDeepFavoritefolder_folderPaneContext-Popup" 
+            onpopupshowing="attachmentextractor.updateFavoriteMenuItems(this)" 
+            paramAll="2" />
+        </menu>
+
+        <menu id="menu_aec_extractAllToMRU_folderPaneContext" 
+          label="&attachmentextractor.extractToMRUfolders.label;" 
+          accesskey="&attachmentextractor.extractToMRUfolders.accesskey;">
+          <menupopup id="menu_aec_extractAllMRU_toolbar-Popup" 
+            onpopupshowing="attachmentextractor.updateMRUMenuItems(this)" 
+            paramAll="true" />
+        </menu>
+        <menu id="menu_aec_extractDeepToMRU_folderPaneContext" 
+          label="&attachmentextractor.extractWithSubToMRUfolders.label;" 
+          accesskey="&attachmentextractor.extractWithSubToMRUfolders.accesskey;">
+          <menupopup id="menu_aec_extractDeepMRU_toolbar-Popup" 
+            onpopupshowing="attachmentextractor.updateMRUMenuItems(this)" 
+            paramAll="2" />
+        </menu>
+
+        <menuitem id="menu_aec_extractAllToSuggest_folderPaneContext" 
+          label="&attachmentextractor.extractToSuggestfolders.label;" 
+          accesskey="&attachmentextractor.extractToSuggestfolders.accesskey;" 
+          command="cmd_aec_extractAllToSuggest" />
+        <menuitem id="menu_aec_extractDeepToSuggest_folderPaneContext" 
+          label="&attachmentextractor.extractWithSubToSuggestfolders.label;" 
+          accesskey="&attachmentextractor.extractWithSubToSuggestfolders.accesskey;" 
+          command="cmd_aec_extractDeepToSuggest" />
+
+      </menupopup>
+    </menu>
+  </popup>
+
+</overlay>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<!DOCTYPE overlay [
+  <!ENTITY % aemainDTD SYSTEM "chrome://attachmentextractor_cont/locale/attachmentextractor.dtd">
+  %aemainDTD; 
+]>
+
+<overlay id="attachmentextractorCommonOverlay" 
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_common.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_attachmentextractor.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_progresstracker.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_messenger.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_window.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_attachmentFileMaker.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_overlay_commandsets.js"/>
+
+  <commandset id="mailCommands">
+    <commandset id="aec_commandset">
+
+      <commandset id="aec_commandset_msg">
+        <command id="cmd_aec_extractToDefault" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'default',false);" 
+          observes="aec_commandset_msg"/>
+        <command id="cmd_aec_extractToBrowse" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'browse',false);" 
+          observes="aec_commandset_msg" />
+        <command id="cmd_aec_extractToSuggest" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'suggest',false);" 
+          observes="aec_commandset_msg"/>
+        <command id="cmd_aec_justDeleteAttachments" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'deleteAtt',false);" 
+          observes="aec_commandset_msg"/>
+      </commandset>
+
+      <commandset id="aec_commandset_folder">
+        <command id="cmd_aec_extractAllToDefault" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'default',1);" 
+          observes="aec_commandset_folder"/>
+        <command id="cmd_aec_extractDeepToDefault" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'default',2);" 
+          observes="aec_commandset_folder"/>
+        <command id="cmd_aec_extractAllToBrowse" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'browse',1);" 
+          observes="aec_commandset_folder"/>
+        <command id="cmd_aec_extractDeepToBrowse" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'browse',2);" 
+          observes="aec_commandset_folder"/>
+        <command id="cmd_aec_extractAllToSuggest" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'suggest',1);" 
+          observes="aec_commandset_folder"/>
+        <command id="cmd_aec_extractDeepToSuggest" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'suggest',2);" 
+          observes="aec_commandset_folder"/>
+
+        <command id="cmd_aec_justDeleteAllAttachments" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'deleteAtt',1);" 
+          observes="aec_commandset_folder"/>
+        <command id="cmd_aec_justDeleteDeepAttachments" 
+          oncommand="attachmentextractor.doAttachmentextraction(event,'deleteAtt',2);" 
+          observes="aec_commandset_folder"/>
+      </commandset>
+
+      <commandset id="aec_commandset_ind">
+        <command id="cmd_aec_extractIndToDefault" 
+          oncommand="attachmentextractor.doIndividualAttachmentextraction('default','selected');" 
+          observes="aec_commandset_ind"/>
+        <command id="cmd_aec_extractIndToBrowse" 
+          oncommand="attachmentextractor.doIndividualAttachmentextraction('browse','selected');" 
+          observes="aec_commandset_ind"/>
+        <command id="cmd_aec_extractIndToSuggest" 
+          oncommand="attachmentextractor.doIndividualAttachmentextraction('suggest','selected');"/>
+
+        <command id="cmd_aec_extractIndAllToDefault" 
+          oncommand="attachmentextractor.doIndividualAttachmentextraction('default','all');"/>
+        <command id="cmd_aec_extractIndAllToBrowse" 
+          oncommand="attachmentextractor.doIndividualAttachmentextraction('browse','all');"/>
+        <command id="cmd_aec_extractIndAllToSuggest" 
+          oncommand="attachmentextractor.doIndividualAttachmentextraction('suggest','all');"/>
+      </commandset>
+
+    </commandset>
+  </commandset>
+
+</overlay>

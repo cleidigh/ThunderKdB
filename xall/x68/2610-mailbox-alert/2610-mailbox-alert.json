@@ -17,26 +17,26 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2472305,
+        "id": 2473025,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailbox-alert/versions/2472305",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailbox-alert/versions/2473025",
         "files": [
             {
-                "id": 1015375,
-                "created": "2019-09-08T08:45:22Z",
-                "hash": "sha256:2696389ab7ee99bf939c2b9d906cb0016f54f84122e8176e68a0514e99009059",
+                "id": 1016132,
+                "created": "2019-12-16T22:48:44Z",
+                "hash": "sha256:0706aa2122789f8a29e071d4d985d78cca6c8b69f7a7b0feec7038fb4a95c100",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 206526,
+                "size": 206591,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015375/mailbox_alert-0.22.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016132/mailbox_alert-0.23.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -71,10 +71,12 @@
             },
             "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "- Fixed issue where %server and %folder macros were no longer working\n- Fixed issue where deleting alerts did not work"
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/versions/0.22.1",
-        "version": "0.22.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/versions/0.23.1",
+        "version": "0.23.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -97,7 +99,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-08T09:21:15Z",
+    "last_updated": "2020-01-03T18:48:09Z",
     "name": {
         "en-US": "Mailbox Alert"
     },

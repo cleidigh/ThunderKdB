@@ -1,0 +1,117 @@
+/* style */
+
+#top-message {
+    font-size: 1.3em;
+    padding-bottom: 3px;
+}
+
+:root.emphasize-top-message #top-message {
+    color: red;
+    font-size: 1.6em;
+}
+
+.confirm-mail-list-separator {
+    font-weight: bold;
+}
+.confirm-mail-list-separator:not([selected="true"]) {
+    background: #DEEFFF;
+}
+
+#otherDomainsList > richlistitem[data-exceptional]:not([selected="true"]),
+#otherDomainsList > richlistitem[data-exceptional][selected="true"],
+#otherDomainsList:focus > richlistitem[data-exceptional]:not([selected="true"]),
+#otherDomainsList:focus > richlistitem[data-exceptional][selected="true"],
+#otherDomainsList:not(:focus) > richlistitem[data-exceptional]:not([selected="true"]),
+#otherDomainsList:not(:focus) > richlistitem[data-exceptional][selected="true"],
+#fileNamesList > richlistitem[data-exceptional]:not([selected="true"]),
+#fileNamesList > richlistitem[data-exceptional][selected="true"],
+#fileNamesList:focus > richlistitem[data-exceptional]:not([selected="true"]),
+#fileNamesList:focus > richlistitem[data-exceptional][selected="true"],
+#fileNamesList:not(:focus) > richlistitem[data-exceptional]:not([selected="true"]),
+#fileNamesList:not(:focus) > richlistitem[data-exceptional][selected="true"] {
+    color: red !important;
+}
+
+:root.large-font-size-for-addresses #yourDomainsList label,
+:root.large-font-size-for-addresses #otherDomainsList label {
+	font-size: 120%;
+}
+
+:root.highlight-domains #otherDomainsList richlistitem.confirm-mail-list-separator label {
+	font-size: 125%;
+}
+:root.large-font-size-for-addresses.highlight-domains #otherDomainsList richlistitem.confirm-mail-list-separator label {
+	font-size: 160%;
+}
+
+:root.highlight-domains #otherDomainsList richlistitem.domain-even:not([selected="true"]) label {
+	background: rgb(255, 192, 0);
+}
+:root.highlight-domains #otherDomainsList:not(:focus) richlistitem.domain-even[selected="true"] label {
+	background: rgb(198, 156, 27);
+}
+
+:root.highlight-domains #otherDomainsList richlistitem.domain-odd:not([selected="true"]) label {
+	background: rgb(70, 170, 252);
+}
+:root.highlight-domains #otherDomainsList:not(:focus) richlistitem.domain-odd[selected="true"] label {
+	background: rgb(72, 146, 206);
+}
+
+richlistbox, iframe {
+	min-height: 4em;
+}
+
+richlistitem {
+	-moz-box-orieng: horizontal;
+	-moz-box-align: center;
+	-moz-box-pack: stretch;
+}
+
+richlistitem hbox.checkbox {
+	max-width: 20px;
+}
+richlistitem hbox.checkbox checkbox label {
+	display: none;
+}
+
+richlistbox#otherDomainsList richlistitem.confirm-mail-list-separator {
+	background-image: url("chrome://confirm-mail/skin/icon/blank16.png");
+	background-repeat: no-repeat;
+	background-position: 3px center;
+	padding-left: 18px;
+}
+richlistbox#otherDomainsList richlistitem.confirm-mail-list-separator.all-checked {
+	background-image: url("chrome://confirm-mail/skin/icon/star16.png");
+}
+
+richlistbox#otherDomainsList richlistitem:not(.confirm-mail-list-separator) {
+	padding-left: 32px;
+}
+
+richlistitem label.type {
+    margin-right: 0;
+}
+
+:root.emphasize-recipient-type label.type {
+    font-weight:  bold;
+    font-size: 150%;
+}
+
+splitter {
+    -moz-appearance: none;
+    background: transparent;
+    border: 0 none;
+    margin: -2px 0;
+}
+
+iframe {
+    /*
+    See also:
+    https://searchfox.org/mozilla-esr68/rev/6411a94b91c47361af35cdee913f9838e868a392/toolkit/themes/linux/global/richlistbox.css#7
+    https://searchfox.org/mozilla-esr68/rev/6411a94b91c47361af35cdee913f9838e868a392/toolkit/themes/osx/global/richlistbox.css#7
+    https://searchfox.org/mozilla-esr68/rev/6411a94b91c47361af35cdee913f9838e868a392/toolkit/themes/windows/global/richlistbox.css#7
+   */
+    -moz-appearance: listbox;
+    margin: 2px 4px;
+}

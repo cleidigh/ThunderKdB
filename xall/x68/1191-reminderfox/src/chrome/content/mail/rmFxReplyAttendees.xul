@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="rmFx_selectAttendee"
+		windowtype="window:ItemDialog"
+		title="&rf.main.tooltip.todaysreminders.label;"
+		onload="replyAttendeeAdd()"
+		persist="screenX screenY">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+
+	<keyset id="reminderFoxOptions-keys">
+		<key keycode="VK_ESCAPE" oncommand="replyAttDialogCancel(); window.close();"/>
+		<key keycode="VK_ENTER"  oncommand="replyAttDialogClose(); window.close();"/>
+		<key keycode="VK_RETURN" oncommand="replyAttDialogClose(); window.close();"/>
+	</keyset>
+
+	<vbox id="mailAppStringBox">
+		<description width="500px" flex="1" id="rmFx_replyAttendeeList">&mail.ical.selectReplyAttendee.description;</description>
+		<radiogroup id="rmFx_replyAttendeeGroup" >
+				<!--   radio  group="rmFx_replyAttendeeGroup" label="attendee1"  /-->
+
+		</radiogroup>
+
+		<!-- -. -. -. -. -. -. -. -. -. -. -.  -->
+
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer3" align="center"/>
+		<hbox id="reminderFox-options-footer" class="reminderFox-footer2" align="center"/>
+
+		<hbox id="alertButtonGroup">
+
+			<spacer class="reminderFox-btnspacer" flex="1"/>
+
+			<button id="rmCatOK" label="&rf.ok;"
+				oncommand="replyAttDialogClose(); window.close();" />
+			<spacer  width="5px" />
+
+			<button id="rmCatCancel" label="&rf.cancel;"
+				oncommand="replyAttDialogCancel(); window.close();" />
+		</hbox>
+	</vbox>
+
+
+<script type="application/x-javascript"><![CDATA[
+/**
+ *    select Attendee from menu
+ */
+function replyAttDialogClose () {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	window.arguments[0].attendeeNo =
+		document.getElementById('rmFx_replyAttendeeGroup').selectedIndex;
+};
+
+/**
+ *
+ */
+function replyAttDialogCancel () {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	window.arguments[0].attendeeNo = -1;
+};
+
+/**
+ *
+ */
+function replyAttendeeAdd () {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	var attendeesList = window.arguments[0].attendees;
+	var attGroup = document.getElementById("rmFx_replyAttendeeGroup");
+	for ( var i = 0; i < attendeesList.length; i++ ) {
+
+		var fndIndex = attendeesList[i].toUpperCase().lastIndexOf( "MAILTO:" );
+		  if (fndIndex != -1) {
+				var fndString =  attendeesList[i].substring( fndIndex + 7);
+
+			var e = document.createElement("radio");
+				e.setAttribute("group", "rmFx_replyAttendeeGroup");
+				e.setAttribute("label", fndString);
+			attGroup.appendChild(e);
+		  }
+	}
+};
+
+
+]]></script>
+
+</window>

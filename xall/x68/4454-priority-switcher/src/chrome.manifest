@@ -1,0 +1,28 @@
+content priosw jar:chrome/priosw.jar!/content/priosw/
+
+overlay	chrome://messenger/content/messenger.xul	chrome://priosw/content/priosw.xul
+overlay	chrome://messenger/content/messenger.xul	chrome://priosw/content/psw_thread.xul
+overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://priosw/content/prioswcompose.xul
+locale priosw ca-AD jar:chrome/priosw.jar!/locale/ca-AD/priosw/
+locale priosw cs-CZ jar:chrome/priosw.jar!/locale/cs-CZ/priosw/
+locale priosw de jar:chrome/priosw.jar!/locale/de/priosw/
+locale priosw en-US jar:chrome/priosw.jar!/locale/en-US/priosw/
+locale priosw fi-FI jar:chrome/priosw.jar!/locale/fi-FI/priosw/
+locale priosw fr jar:chrome/priosw.jar!/locale/fr/priosw/
+locale priosw it-IT jar:chrome/priosw.jar!/locale/it-IT/priosw/
+locale priosw ja-JP jar:chrome/priosw.jar!/locale/ja-JP/priosw/
+locale priosw ko-KR jar:chrome/priosw.jar!/locale/ko-KR/priosw/
+locale priosw nl jar:chrome/priosw.jar!/locale/nl/priosw/
+locale priosw pl jar:chrome/priosw.jar!/locale/pl/priosw/
+locale priosw pt-BR jar:chrome/priosw.jar!/locale/pt-BR/priosw/
+locale priosw pt-PT jar:chrome/priosw.jar!/locale/pt-PT/priosw/
+locale priosw ru jar:chrome/priosw.jar!/locale/ru/priosw/
+locale priosw sk-SK jar:chrome/priosw.jar!/locale/sk-SK/priosw/
+locale priosw sv-SE jar:chrome/priosw.jar!/locale/sv-SE/priosw/
+locale priosw zh-CN jar:chrome/priosw.jar!/locale/zh-CN/priosw/
+
+skin	priosw	classic/1.0	jar:chrome/priosw.jar!/skin/classic/priosw/
+style chrome://messenger/content/customizeToolbar.xul chrome://priosw/skin/priosw.css
+style chrome://messenger/content/messenger.xul chrome://priosw/skin/priosw.css
+style chrome://messenger/content/messageWindow.xul chrome://priosw/skin/priosw.css
+

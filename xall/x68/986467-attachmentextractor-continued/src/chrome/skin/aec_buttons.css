@@ -1,0 +1,20 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#aec-toolbarButton .toolbarbutton-icon,
+.hdrAEButton .toolbarbutton-icon {
+  width: 18px;
+  height: 18px;
+  min-width: unset;
+  min-height: unset;
+}
+
+#aec-toolbarButton[disabled="true"] .toolbarbutton-icon {
+  opacity: .4;
+}
+
+#aec-toolbarButton,
+.hdrAEButton {
+  list-style-image: url("chrome://attachmentextractor_cont/skin/aec_icon_contextfill.svg");
+}

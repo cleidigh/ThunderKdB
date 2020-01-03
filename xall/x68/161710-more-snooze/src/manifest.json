@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.0.1",
+  "author": "Martin Pecka",
+  "homepage_url": "https://github.com/peci1/more-snooze",
+  "default_locale": "en",
+  "icons": {
+    "32": "skin/icon.png"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://moresnooze/content/options-dialog.xul",
+      "open_in_tab": false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "moresnooze@cyrille.nocus",
+      "strict_min_version": "68.0"
+    }
+  }
+}

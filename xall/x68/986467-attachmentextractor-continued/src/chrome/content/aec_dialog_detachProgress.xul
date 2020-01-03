@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<!DOCTYPE dialog SYSTEM "chrome://attachmentextractor_cont/locale/attachmentextractor-progress.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<window class="dialog" 
+  id="AEDialog" 
+  title="&attachmentextractor.progress.windowtitle;" 
+  onload="aewindow.init();" 
+  onunload="aewindow.uninit();" 
+  orient="vertical" 
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:html="http://www.w3.org/1999/xhtml" 
+  windowtype="mail:AEDialog" 
+  resizeable="no" 
+  persist="screenX screenY"
+  style="margin: 20px;">
+
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_common.js"/>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_progresstracker.js"></script>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_window.js"></script>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_messenger.js"></script>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_js_attachmentFileMaker.js"></script>
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_dialog_detachProgress.js"></script>
+
+  <groupbox align="center" 
+    orient="vertical">
+    <vbox align="center">
+      <image src="chrome://attachmentextractor_cont/skin/animation.gif" 
+        minwidth="150px" 
+        minheight="50px"/>
+      <separator class="thin"/>
+      <text id="status1" 
+        value="&attachmentextractor.progress.status1.text;" 
+        style="font-weight: bold; font-size: large;"/>
+    </vbox>
+    <separator class="thin"/>
+    <separator class="thin"/>
+    <separator class="thin"/>
+    <vbox align="center">
+      <vbox>
+        <hbox>
+          <description id="status_message" 
+            style="width: 10em; text-align: right;" 
+            value="&attachmentextractor.progress.status.message.text;"/>
+          <html:progress max="100" 
+            style="width: 30em;" 
+            flex="1" 
+            id="progress_message" 
+            mode="undetermined" 
+            value="50"/>
+          <description id="status2" 
+            style="width: 10em;" 
+            value="&attachmentextractor.progress.status2.text;"/>
+        </hbox>
+        <separator class="thin"/>
+        <hbox id="subjecthbox">
+          <description id="subjecttext" 
+            style="width: 50em; text-align: center;" 
+            value="" 
+            crop="end"/>
+        </hbox>
+
+        <separator class="thin"/>
+        <separator class="thin"/>
+        <separator class="thin"/>
+
+        <hbox>
+          <description id="status_attachment" 
+            style="width: 10em; text-align: right;" 
+            value="&attachmentextractor.progress.status.attachment.text;"/>
+          <html:progress max="100" 
+            style="width: 30em;" 
+            flex="1" 
+            id="progress_attachment" 
+            mode="determined" 
+            value="0"/>
+          <description id="status3" 
+            style="width: 10em;" 
+            value=""/>
+        </hbox>
+        <separator class="thin"/>
+        <hbox id="filenamehbox">
+          <description id="filenametext" 
+            style="width: 50em; text-align: center;" 
+            value="" 
+            crop="end"/>
+        </hbox>
+
+        <separator class="thin"/>
+        <separator class="thin"/>
+        <separator class="thin"/>
+
+        <vbox id="status_file_box" 
+          hidden="true">
+          <hbox>
+            <description id="status_file" 
+              style="width: 10em; text-align: right;" 
+              value="&attachmentextractor.progress.status.file.text;"/>
+            <html:progress max="100" 
+              style="width: 30em;" 
+              flex="1" 
+              id="progress_file" 
+              mode="undetermined" 
+              value="0"/>
+            <description id="" 
+              style="width: 10em;" 
+              value=""/>
+          </hbox>
+          <separator class="thin"/>
+          <hbox id="filetexthbox">
+            <description id="status4" 
+              style="width: 50em; text-align: center;" 
+              value="" 
+              crop="end"/>
+          </hbox>
+        </vbox>
+      </vbox>
+    </vbox>
+  </groupbox>
+
+  <browser id="aemessagepane" 
+    minheight="0" 
+    minwidth="0" 
+    name="messagepane" 
+    type="content-primary" 
+    src="about:blank" 
+    disablehistory="true" 
+    disablesecurity="true" />
+</window>

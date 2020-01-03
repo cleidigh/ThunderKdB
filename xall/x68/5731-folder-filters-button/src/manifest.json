@@ -1,0 +1,27 @@
+{
+  "name": "Folder Filters Button",
+  "description": "Toolbar button to execute Run Filters on Folders from Tools menu",
+  "version": "2.0",
+  "author": "Chris Malek",
+  "applications": {
+    "gecko": {
+      "id": "kkmalek@gmail.com",
+      "strict_min_version": "68.0"
+    }
+  },
+  "default_locale": "en",
+  "manifest_version": 2,
+  "icons": {
+    "64": "icons/filter_64.png",
+    "32": "icons/filter_32.png",
+    "24": "icons/filter_24.png",
+    "16": "icons/filter_16.png"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "open_in_tab": false,
+      "page": "chrome://filtersbutton/content/about.xul"
+    }
+  }
+}

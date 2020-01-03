@@ -17,26 +17,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2473005,
+        "id": 2473122,
         "compatibility": {
             "thunderbird": {
                 "max": "68.*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enigmail/versions/2473005",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enigmail/versions/2473122",
         "files": [
             {
-                "id": 1016112,
-                "created": "2019-12-12T17:21:28Z",
-                "hash": "sha256:b4350e94adbba9dc7e1011f10f949c7938d7280fcd5bca6860e29a6032d7ac5e",
+                "id": 1016233,
+                "created": "2019-12-31T15:35:31Z",
+                "hash": "sha256:455069fc031032473646cc023a4e1d9d1cfe0a6fd6a9fdf094e10a1388539df0",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 3167869,
+                "size": 3174455,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016112/enigmail-2.1.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016233/enigmail-2.1.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -49,11 +49,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "This release addresses the following issues:\n* Mixed classic/​pEp mode on startup if the pEp Engine is not fully operational\n* Key Management menu bar unreadable on dark themes\n* OpenPGP column re-appears after every startup\n* \"Attach my public key to message\" option is not restored properly\n* Better activity feedback in the \"Create OpenPGP Key\" window\n* Automatic updating GnuPG does not work"
+            "en-US": "This release fixes a security issue related to displaying signature information for unsigned message parts.\nImproved handling for GnuPG installations that are upgraded from 2.0 to 2.2."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enigmail/versions/2.1.4",
-        "version": "2.1.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enigmail/versions/2.1.5",
+        "version": "2.1.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -88,7 +88,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": false,
-    "last_updated": "2019-12-13T17:06:32Z",
+    "last_updated": "2020-01-03T18:32:52Z",
     "name": {
         "ru": "Enigmail",
         "fr": "Enigmail",

@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://confirm-mail/skin/css/confirm-mail-dialog.css"?>
+<!DOCTYPE window SYSTEM "chrome://confirm-mail/locale/confirm-mail.dtd">
+
+<!--
+-  "The contents of this file are subject to the Mozilla Public Licenske
+-  Version 1.1 (the "License"); you may not use this file except in
+-  compliance with the License. You may obtain a copy of the License at
+-  http://www.mozilla.org/MPL/
+-  
+-  Software distributed under the License is distributed on an "AS IS"
+-  basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+-  License for the specific language governing rights and limitations
+-  under the License.
+-  
+-  The Original Code is confirm-address.
+-  
+-  The Initial Developers of the Original Code are kentaro.matsumae and Meatian.
+-  Portions created by Initial Developers are 
+-  Copyright (C) 2007-2011 the Initial Developer.All Rights Reserved.
+-  
+-  Contributor(s): tanabec
+-->
+<dialog id="donothing" title="&confirm.dialog.title;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttons="accept,cancel"
+	onload="startup()"
+	width="680" height="600"
+	persist="width height screenX screenY">
+
+	<script type="application/x-javascript" src="chrome://confirm-mail/content/constants.js"/>
+	<script type="application/x-javascript" src="chrome://confirm-mail/content/confirm-mail-dialog.js"/>
+
+	<stringbundleset>
+		<stringbundle id="strings" src="chrome://confirm-mail/locale/confirm-mail.properties"/>
+	</stringbundleset>
+
+	<hbox>
+		<description id="top-message" flex="1"/>
+	</hbox>
+	<vbox flex="1">
+	<groupbox id="yourDomains" flex="1" height="150" persist="height">
+		<label class="check_each" value="&confirm.dialog.yourdomain.label;"/>
+		<checkbox label="&confirm.dialog.yourdomain.label;"
+					class="check_all"
+					oncommand="checkAllChecked()"/>
+		<richlistbox id="yourDomainsList" flex="1">
+		</richlistbox>
+	</groupbox>
+	<splitter/>
+	<groupbox id="otherDomains" flex="2" height="250" persist="height">
+		<label class="check_each" value="&confirm.dialog.otherdomain.label;"/>
+		<checkbox label="&confirm.dialog.otherdomain.label;"
+					class="check_all"
+					oncommand="checkAllChecked()"/>
+		<richlistbox id="otherDomainsList" flex="1">
+		</richlistbox>
+	</groupbox>
+	<splitter id="bodySeparator"/>
+	<vbox flex="2" id="bodyContainer" persist="height">
+	<checkbox id="subjectCheck"
+	          oncommand="checkAllChecked();"/>
+	<groupbox id="body" flex="1">
+		<checkbox id="checkbox_body"
+					label="&confirm.dialog.body.label;"
+					oncommand="checkAllChecked()"/>
+		<iframe id="bodyField"
+			flex="1"
+			src="data:text/html,&lt;!DOCTYPE html&gt;&lt;html style=&quot;margin: 0; padding: 0.3em; color: -moz-fieldtext; background: -moz-field; font-family: -moz-fixed;&quot;&gt;&lt;style type=&quot;text/css&quot;&gt;* { font-size: medium !important; } body { margin: 0; } body &gt; *:first-child { margin-top: 0 !important; } &lt;/style&gt;&lt;/html&gt;"/>
+	</groupbox>
+	</vbox>
+	<splitter/>
+	<groupbox id="fileNames" flex="2" persist="height">
+		<label class="check_each" value="&confirm.dialog.fileName.label;"/>
+		<checkbox label="&confirm.dialog.fileName.label;"
+					class="check_all"
+					oncommand="checkAllChecked()"/>
+		<richlistbox id="fileNamesList" flex="1">
+		</richlistbox>
+	</groupbox>
+	</vbox>
+</dialog>

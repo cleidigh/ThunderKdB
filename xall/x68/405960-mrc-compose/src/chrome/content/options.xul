@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is MRC Compose
+   -
+   - The Initial Developer of the Original Code is
+   - Michel Renon (renon@mrc-consultant.net)
+   - Portions created by the Initial Developer are Copyright (C) 2012
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the GPL or the LGPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   -   -**** END LICENSE BLOCK   -****   -->
+
+<!DOCTYPE overlay [
+    <!ENTITY % dtd2 SYSTEM "chrome://mrc_compose/locale/mrc_compose.dtd" >
+    <!ENTITY % dtd1 SYSTEM "chrome://messenger/locale/messengercompose/messengercompose.dtd" >
+    <!ENTITY % dtd3 SYSTEM "chrome://messenger/locale/preferences/compose.dtd" >
+    %dtd2;
+    %dtd1;
+    %dtd3;
+]>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://mrc_compose/content/mrc_compose.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+
+<dialog id="mrc-compose-prefs"
+     title="MRC Compose Options"
+     buttons="cancel"
+     buttonlabelcancel="Close"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+     xmlns:html="http://www.w3.org/1999/xhtml"
+     onload="mrcOnPrefLoaded();"
+     onunload="mrcOnPrefUnloaded();"
+     >
+
+    <vbox id="mrc-compose-pane" label="" >
+
+    <tooltip id="mrctip_mode" orient="vertical" >
+        <vbox>
+            <html:div id="helptip">&options.mode.help;</html:div>
+        </vbox>
+    </tooltip>
+    <tooltip id="mrctip_max_elmts_part" orient="vertical" >
+        <vbox>
+            <html:div id="helptip">&options.max_elements_part_menu.help;</html:div>
+        </vbox>
+    </tooltip>
+
+    <tabbox>
+    <tabs>
+        <tab label="&options.tab1.label;" />
+        <tab label="&options.tab2.label;" />
+        <tab label="&options.tab3.label;" />
+        <tab label="&options.tab4.label;" />
+    </tabs>
+    <tabpanels>
+        <tabpanel>
+            <hbox >
+                <vbox>
+                    <grid>
+                        <columns>
+                            <column flex="1"/>
+                            <column />
+                        </columns>
+                        <rows>
+                            <!--
+                            <row>
+                                <label control="search_collected_ab" value="Search in 'Collected AB': "/>
+                                <checkbox id="search_collected_ab" preference="extensions.mrccompose.search_collected_ab"  />
+                            </row>
+                            -->
+                            <row>
+                                <textbox id="search_ab_URI" type="string"
+                                        hidden="true"
+                                        preference="extensions.mrccompose.search_ab_URI"
+                                        preference-editable="true" />
+                            </row>
+                            <row>
+
+                                <label control="search_ab_URI_list" value="&options.search_ab_URI_list.label;"/>
+                                <richlistbox id="search_ab_URI_list" style="min-height:100px"/>
+                            </row>
+
+                            <row>
+
+                                <label control="" value=""/>
+                                <!--
+                                <button id="editButton" label="&editDirectories.label;"
+                                        oncommand="gComposePane.editDirectories();"
+                                        preference="pref.ldap.disable_button.edit_directories"
+                                        accesskey="&editDirectories.accesskey;"/>
+
+                                <toolbarbutton id="button-address"
+                                   class="toolbarbutton-1"
+                                   label="&addressBookButton.label;"
+                                   oncommand="toAddressBook();"
+                                   tooltiptext="&addressBookButton.tooltip;"/>
+                                -->
+                                <hbox>
+                                    <button id="editButton" label="&options.edit_directories.label;"
+                                        oncommand="mrcEditDirectories();"/>
+
+                                </hbox>
+                            </row>
+                            <row>
+                                <label control="remove_duplicates" value="&options.remove_duplicates.label;" tooltiptext="&options.remove_duplicates.help;"/>
+                                <checkbox id="remove_duplicates" preference="extensions.mrccompose.remove_duplicates" tooltiptext="&options.remove_duplicates.help;"/>
+                            </row>
+
+                            <row>
+                                <label control="mode" value="&options.mode.label;" tooltip="mrctip_mode"/>
+                                <menulist id="mode" preference="extensions.mrccompose.mode" tooltip="mrctip_mode">
+                                    <menupopup>
+                                        <menuitem label="&options.mode_value4.label;" value="4"/>
+                                        <menuitem label="&options.mode_value1.label;" value="1"/>
+                                        <menuitem label="&options.mode_value2.label;" value="2"/>
+                                        <menuitem label="&options.mode_value3.label;" value="3"/>
+                                    </menupopup>
+                                </menulist>
+                            </row>
+                            <row>
+                                <label control="max_elements_part_menu" value="&options.max_elements_part_menu.label;" tooltip="mrctip_max_elmts_part"/>
+                                <textbox id="max_elements_part_menu" preference="extensions.mrccompose.max_elements_part_menu" type="number" min="1" max="50" size="3" tooltip="mrctip_max_elmts_part"/>
+                            </row>
+                            <row>
+                                <label control="sort_field_level_1" value="&options.sort_field_level_1.label;"/>
+                                <menulist id="sort_field_level_1" preference="extensions.mrccompose.sort_field_level_1" >
+                                    <menupopup>
+                                        <menuitem label="&options.sort_field_1.label;" value="mrcPopularity"/>
+                                        <menuitem label="&options.sort_field_2.label;" value="lastName"/>
+                                        <menuitem label="&options.sort_field_3.label;" value="firstName"/>
+                                    </menupopup>
+                                </menulist>
+                            </row>
+                            <row>
+                                <label control="sort_field_level_2" value="&options.sort_field_level_2.label;"/>
+                                <menulist id="sort_field_level_2" preference="extensions.mrccompose.sort_field_level_2" >
+                                    <menupopup>
+                                        <menuitem label="&options.sort_field_1.label;" value="mrcPopularity"/>
+                                        <menuitem label="&options.sort_field_2.label;" value="lastName"/>
+                                        <menuitem label="&options.sort_field_3.label;" value="firstName"/>
+                                    </menupopup>
+                                </menulist>
+                            </row>
+                            <row>
+                                <label control="sort_field_level_3" value="&options.sort_field_level_3.label;"/>
+                                <menulist id="sort_field_level_3" preference="extensions.mrccompose.sort_field_level_3" >
+                                    <menupopup>
+                                        <menuitem label="&options.sort_field_1.label;" value="mrcPopularity"/>
+                                        <menuitem label="&options.sort_field_2.label;" value="lastName"/>
+                                        <menuitem label="&options.sort_field_3.label;" value="firstName"/>
+                                    </menupopup>
+                                </menulist>
+                            </row>
+                            <row>
+                                <label control="show_popularity" value="&options.show_popularity.label;" tooltiptext="&options.show_popularity.help;"/>
+                                <checkbox id="show_popularity" preference="extensions.mrccompose.show_popularity" tooltiptext="&options.show_popularity.help;"/>
+                            </row>
+                            <row>
+                                <label control="search_timeout" value="&options.search_timeout.label;" tooltiptext="&options.search_timeout.help;"/>
+                                <textbox id="search_timeout" preference="extensions.mrccompose.search_timeout" type="number" min="1" max="300000" tooltiptext="&options.search_timeout.help;"/>
+                            </row>
+                            <row>
+                                <label control="show_no_result" value="&options.show_no_result.label;" tooltiptext="&options.show_no_result.help;"/>
+                                <checkbox id="show_no_result" preference="extensions.mrccompose.show_no_result" tooltiptext="&options.show_no_result.help;"/>
+                            </row>
+
+                        </rows>
+                    </grid>
+                </vbox>
+                <!--
+                <scrollbox flex="1" >
+                    <html:div  id="help1" style="height:500px;margin-left:25px;">
+                    </html:div>
+                </scrollbox>
+                -->
+            </hbox>
+        </tabpanel>
+
+        <tabpanel>
+            <hbox >
+                <vbox>
+                    <grid>
+                        <columns>
+                            <column flex="1"/>
+                            <column />
+                        </columns>
+                        <rows>
+                            <row>
+                                <label control="min_recipients_show" value="&options.min_recipients_show.label;" tooltiptext="&options.min_recipients_show.help;"/>
+                                <textbox id="min_recipients_show" preference="extensions.mrccompose.min_recipients_show" type="number" min="1" max="50" size="3" tooltiptext="&options.min_recipients_show.help;"/>
+                            </row>
+                            <row>
+                                <label control="max_recipients_warning" value="&options.max_recipients_warning.label;" tooltiptext="&options.max_recipients_warning.help;"/>
+                                <textbox id="max_recipients_warning" preference="extensions.mrccompose.max_recipients_warning" type="number" min="1" max="50" size="3" tooltiptext="&options.max_recipients_warning.help;"/>
+                            </row>
+                            <row>
+                                <label control="search_min_char" value="&options.search_min_char.label;" tooltiptext="&options.search_min_char.help;"/>
+                                <textbox id="search_min_char" preference="extensions.mrccompose.search_min_char" type="number" min="1" max="50" size="3" tooltiptext="&options.search_min_char.help;"/>
+                            </row>
+
+                        </rows>
+                    </grid>
+                </vbox>
+                <!--
+                <scrollbox flex="1" >
+                    <html:div  id="help2" style="height:500px;margin-left:25px;">
+                    </html:div>
+                </scrollbox>
+                -->
+            </hbox>
+        </tabpanel>
+
+
+        <tabpanel>
+            <hbox >
+                <vbox>
+                    <grid>
+                        <columns>
+                            <column flex="1"/>
+                            <column />
+                        </columns>
+                        <rows>
+                            <row>
+                                <vbox>
+                                    <label control="first_focus" value="&options.first_focus.label;"/>
+                                    <label control="first_focus" value="&options.first_focus.label2;"/>
+                                </vbox>
+                                <menulist id="first_focus" preference="extensions.mrccompose.first_focus" >
+                                    <menupopup>
+                                        <menuitem label="&options.first_focus_default.label;" value="default"/>
+                                        <menuitem label="&toAddr.label;" value="msgTO"/>
+                                        <menuitem label="&subject.label;" value="msgSubject"/>
+                                        <menuitem label="&options.first_focus_message.label;" value="content-frame"/>
+                                    </menupopup>
+                                </menulist>
+                            </row>
+                            <row>
+                                <label value=""/>
+                            </row>
+                            <row>
+                                <vbox>
+                                    <label control="first_focus_reply" value="&options.first_focus_reply.label;"/>
+                                    <label control="first_focus_reply" value="&options.first_focus_reply.label2;"/>
+                                </vbox>
+                                <menulist id="first_focus_reply" preference="extensions.mrccompose.first_focus_reply" >
+                                    <menupopup>
+                                        <menuitem label="&options.first_focus_default.label;" value="default"/>
+                                        <menuitem label="&toAddr.label;" value="msgTO"/>
+                                        <menuitem label="&subject.label;" value="msgSubject"/>
+                                        <menuitem label="&options.first_focus_message.label;" value="content-frame"/>
+                                    </menupopup>
+                                </menulist>
+                            </row>
+                            <row>
+                                <label value=""/>
+                            </row>
+                            <row>
+                                <vbox>
+                                    <label control="first_focus_reply_html" value="&options.first_focus_reply_html.label;"/>
+                                    <label control="first_focus_reply_html" value="&options.first_focus_reply_html.label2;"/>
+                                </vbox>
+                                <menulist id="first_focus_reply_html" preference="extensions.mrccompose.first_focus_reply_html" >
+                                    <menupopup>
+                                        <menuitem label="&options.first_focus_default.label;" value="default"/>
+                                        <menuitem label="&toAddr.label;" value="msgTO"/>
+                                        <menuitem label="&subject.label;" value="msgSubject"/>
+                                        <menuitem label="&options.first_focus_message.label;" value="content-frame"/>
+                                    </menupopup>
+                                </menulist>
+                            </row>
+                            <row>
+                                <label value=""/>
+                            </row>
+
+                            <row>
+                                <label control="force_cc" value="&options.showcc.label;"/>
+                                <checkbox id="force_cc" preference="extensions.mrccompose.force_cc"  />
+                            </row>
+                            <row>
+                                <label control="force_bcc" value="&options.showbcc.label;"/>
+                                <checkbox id="force_bcc" preference="extensions.mrccompose.force_bcc"  />
+                            </row>
+
+                            <row>
+                                <label control="show_placeholder" value="&options.show_placeholder.label;"/>
+                                <checkbox id="show_placeholder" preference="extensions.mrccompose.show_placeholder"  />
+                            </row>
+                            <row>
+                                <label value="&options.show_placeholder.label2;"/>
+                            </row>
+                            <row>
+                                <label value="&options.show_placeholder.label3;"/>
+                            </row>
+
+                            <row>
+                                <label value=""/>
+                            </row>
+
+                            <row>
+                                <label control="max_nb_line" value="&options.max_nb_line.label;" tooltiptext="&options.max_nb_line.help;"/>
+                                <textbox id="max_nb_line" preference="extensions.mrccompose.max_nb_line" type="number" min="1" max="10" size="3" tooltiptext="&options.max_nb_line.help;"/>
+                            </row>
+                            <row>
+                                <label control="first_line_height" value="&options.first_line_height.label;" tooltiptext="&options.first_line_height.help;"/>
+                                <textbox id="first_line_height" preference="extensions.mrccompose.first_line_height" type="number" min="10" max="30" size="3" tooltiptext="&options.first_line_height.help;" />
+                            </row>
+                            <row>
+                                <label control="line_height" value="&options.line_height.label;" tooltiptext="&options.line_height.help;" />
+                                <textbox id="line_height" preference="extensions.mrccompose.line_height" type="number" min="10" max="30" size="3" tooltiptext="&options.line_height.help;"/>
+                            </row>
+                            <row>
+                                <label control="default_line_height" value="&options.default_line_height.label;" tooltiptext="&options.default_line_height.help;"/>
+                                <button id="default_line_height" label="&options.default_line_height.button;" oncommand="mrcDefaultLineHeight(event);"  tooltiptext="&options.default_line_height.help;"/>
+                            </row>
+                            <row>
+                                <label control="automatic_height" value="&options.automatic_height.label;" tooltiptext="&options.automatic_height.help;"/>
+                                <checkbox id="automatic_height" preference="extensions.mrccompose.automatic_height" tooltiptext="&options.automatic_height.help;"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </vbox>
+                <!--
+                <scrollbox flex="1" >
+                    <html:div  id="help3" style="height:500px;margin-left:25px;">
+                    </html:div>
+                </scrollbox>
+                -->
+            </hbox>
+        </tabpanel>
+
+        <tabpanel>
+            <hbox >
+                <vbox>
+                    <grid>
+                        <columns>
+                            <column flex="1"/>
+                            <column />
+                        </columns>
+                        <rows>
+                            <row>
+                                <label control="min_search_delay" value="&options.min_search_delay.label;" tooltiptext="&options.min_search_delay.help;"/>
+                                <textbox id="min_search_delay" preference="extensions.mrccompose.min_search_delay" type="number" min="1" max="1000" size="4" tooltiptext="&options.min_search_delay.help;"/>
+                            </row>
+                            <row>
+                                <label control="add_comma" value="&options.add_comma.label;" tooltiptext="&options.add_comma.help;"/>
+                                <checkbox id="add_comma" preference="extensions.mrccompose.add_comma" tooltiptext="&options.add_comma.help;"/>
+                            </row>
+                            <!--
+                            <row>
+                                <label control="ldap_search_version" value="&options.ldap_search_version.label;" tooltip="mrctip"/>
+                                <menulist id="ldap_search_version" preference="extensions.mrccompose.ldap_search_version" tooltip="mrctip" >
+                                    <menupopup>
+                                        <menuitem label="Standard (Thunderbird 24+)" value="TB24"/>
+                                        <menuitem label="Test (Thunderbird 31+, weird results)" value="TB31"/>
+                                    </menupopup>
+                                </menulist>
+                            </row>
+                            -->
+                        </rows>
+
+                    </grid>
+                    <label value="&options.special_values.label;" style="&options.special_values.style;"/>
+                </vbox>
+                <!--
+                <scrollbox flex="1" >
+                    <html:div  id="help4" style="height:500px;margin-left:25px;">
+                    </html:div>
+                </scrollbox>
+                -->
+            </hbox>
+        </tabpanel>
+
+
+    </tabpanels>
+</tabbox>
+
+
+</vbox>
+
+
+    <script
+      src="chrome://mrc_compose/content/mrc_pref.js"
+      type="application/javascript"/><!-- A reference to your JavaScript file -->
+    <script
+     src="chrome://global/content/preferencesBindings.js"
+     type="application/javascript"/>
+    <script
+     src="chrome://mrc_compose/content/preferences.js"
+     type="application/javascript"/>
+
+</dialog>

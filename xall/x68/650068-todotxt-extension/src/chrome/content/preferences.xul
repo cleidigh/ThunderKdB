@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+
+<!DOCTYPE dialog SYSTEM 'chrome://todotxt/locale/preferences.dtd'>
+
+<dialog xmlns='http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul'
+			title='&todotxt; &preferences;'
+			id='todotxt-preferences'
+      buttons="accept"
+			persist='screenX screenY'>
+
+    <groupbox>
+      <caption label='&todotxt.todofile;' />
+      <hbox align="center">
+        <textbox id="todotxt-todo-path" preference="extensions.todotxt.todo-txt"
+                 readonly="true" size="30"/>
+        <button id="todotxt-browse-todo-path"
+            label="&browse;"
+            oncommand="todotxt.ns.Preferences.selectStoragePath('todotxt-todo-path')"/>
+      </hbox>
+    </groupbox>
+
+    <groupbox>
+      <caption label='&todotxt.donefile;' />
+      <hbox align="center">
+        <textbox id="todotxt-done-path" preference="extensions.todotxt.done-txt"
+                     readonly="true" size="30"/>
+        <button id="todotxt-browse-done-path"
+            label="&browse;"
+            oncommand="todotxt.ns.Preferences.selectStoragePath('todotxt-done-path')"/>
+      </hbox>
+    </groupbox>
+
+    <vbox>
+      <caption label='&behavior;' />
+      <checkbox label='&todotxt.thunderbird;' id='thunderbird' preference="extensions.todotxt.thunderbird" 
+                oncommand="todotxt.ns.Preferences.selectBool('thunderbird')" />
+      <checkbox label='&todotxt.creation;' id='creation' preference="extensions.todotxt.creation"
+                oncommand="todotxt.ns.Preferences.selectBool('creation')" />
+      <checkbox label='&todotxt.showFullTitle;' id='showFullTitle' preference="extensions.todotxt.showFullTitle"
+                oncommand="todotxt.ns.Preferences.selectBool('showFullTitle')" />
+    </vbox>
+
+  <script type="application/javascript" src="chrome://global/content/preferencesBindings.js"/>
+  <script type="application/javascript" src="chrome://todotxt/content/preferences.js"/>
+</dialog> 

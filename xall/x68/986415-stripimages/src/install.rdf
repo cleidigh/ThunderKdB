@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+  
+    <em:id>stripImages@mi.tal</em:id>
+    <em:type>2</em:type>
+    <em:name>stripImages</em:name>
+    <em:version>1.0.7</em:version>
+    <em:description>Remove all images from message with one click</em:description>
+    <em:creator>madmital</em:creator>
+    <!-- optional items -->
+    <em:contributor>http://google.com</em:contributor>
+	<em:contributor>https://developer.mozilla.org</em:contributor>
+    <em:optionsURL>chrome://stripImages/content/prefs.xul</em:optionsURL>
+	<em:iconURL>chrome://stripImages/content/icon.png</em:iconURL>
+	<!--em:homepageURL>http://kb.mozillazine.org/Getting_started_with_extension_development</em:homepageURL-->
+    <!--em:aboutURL>chrome://sampleext/content/about.xul</em:aboutURL>
+    
+    <em:updateURL>http://sampleextension.mozdev.org/update.rdf</em:updateURL-->
+
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>60.0</em:minVersion>
+        <em:maxVersion>62.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+  </Description>
+
+</RDF>

@@ -1,0 +1,37 @@
+content  dispmua  chrome/content/
+
+skin  dispmua  classic/1.0  chrome/skin/classic/
+
+locale  dispmua  bg		chrome/locale/bg/
+locale  dispmua  ca		chrome/locale/ca/
+locale  dispmua  cs		chrome/locale/cs/
+locale  dispmua  de		chrome/locale/de/
+locale  dispmua  en-US	chrome/locale/en-US/
+locale  dispmua  es-AR	chrome/locale/es-AR/
+locale  dispmua  es-ES	chrome/locale/es-ES/
+locale  dispmua  fr		chrome/locale/fr/
+locale  dispmua  hr		chrome/locale/hr/
+locale  dispmua  hu		chrome/locale/hu/
+locale  dispmua  it		chrome/locale/it/
+locale  dispmua  ja		chrome/locale/ja/
+locale  dispmua  ko		chrome/locale/ko/
+locale  dispmua  nl		chrome/locale/nl/
+locale  dispmua  pl		chrome/locale/pl/
+locale  dispmua  pt-BR	chrome/locale/pt-BR/
+locale  dispmua  pt-PT	chrome/locale/pt-PT/
+locale  dispmua  ro		chrome/locale/ro/
+locale  dispmua  ru		chrome/locale/ru/
+locale  dispmua  sk		chrome/locale/sk/
+locale  dispmua  sr		chrome/locale/sr/
+locale  dispmua  sv-SE	chrome/locale/sv-SE/
+locale  dispmua  tr		chrome/locale/tr/
+locale  dispmua  uk		chrome/locale/uk/
+locale  dispmua  zh-CN  chrome/locale/zh-CN/
+locale  dispmua  zh-TW  chrome/locale/zh-TW/
+
+overlay  chrome://messenger/content/messageWindow.xul  chrome://dispmua/content/dispmua-3.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}  appversion>=60.0
+overlay  chrome://messenger/content/messenger.xul  chrome://dispmua/content/dispmua-3.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}  appversion>=60.0
+#overlay  chrome://messenger/content/mailWindowOverlay.xul  chrome://dispmua/content/dispmua-3.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}  appversion>=3.0
+#overlay  chrome://messenger/content/mailWindowOverlay.xul  chrome://dispmua/content/dispmua-3.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}  appversion=3.0b4
+#overlay  chrome://messenger/content/mailWindowOverlay.xul  chrome://dispmua/content/dispmua-2.xul  application={3550f703-e582-4d05-9a08-453d09bdfdc6}  appversion<3.0b4
+#overlay  chrome://messenger/content/mailWindowOverlay.xul  chrome://dispmua/content/dispmua-2.xul  application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}  appversion>=2.0

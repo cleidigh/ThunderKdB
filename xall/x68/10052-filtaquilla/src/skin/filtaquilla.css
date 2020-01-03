@@ -1,0 +1,69 @@
+.ruleactiontarget[type="filtaquilla@mesquilla.com#launchFile"] {
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="filtaquilla@mesquilla.com#runFile"] {
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="filtaquilla@mesquilla.com#addSender"] {
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="filtaquilla@mesquilla.com#saveAttachment"] {
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="filtaquilla@mesquilla.com#detachAttachments"] {
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="filtaquilla@mesquilla.com#javascriptAction"] {
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="filtaquilla@mesquilla.com#javascriptActionBody"] {
+  -moz-box-flex: 1;
+}
+
+.ruleactiontarget[type="filtaquilla@mesquilla.com#saveMessageAsFile"] {
+  -moz-box-flex: 1;
+}
+
+toolbarbutton.focusbutton {
+  -moz-user-focus: normal;
+}
+
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#subjectRegex"] {
+  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
+}
+
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#attachmentRegex"] {
+  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
+}
+
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#headerRegex"] {
+  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
+}
+
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#javascript"] {
+  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#javascript");
+}
+
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#searchBcc"] {
+  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
+}
+
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#folderName"] {
+  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
+}
+
+/*  converted to js, BUT AIN'T WORKING YET */
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#threadheadtag"] {
+  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#tag");
+}
+
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#threadanytag"] {
+  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#tag");
+}
+

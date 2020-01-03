@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+	* Version: MPL 1.1/GPL 2.0/LGPL 2.1
+	*
+	* The contents of this file are subject to the Mozilla Public License Version
+	* 1.1 (the "License"); you may not use this file except in compliance with
+	* the License. You may obtain a copy of the License at
+	* http://www.mozilla.org/MPL/
+	*
+	* Software distributed under the License is distributed on an "AS IS" basis,
+	* WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+	* for the specific language governing rights and limitations under the
+	* License.
+	*
+	* The Original Code is AddressbooksSynchronizer.
+	*
+	* The Initial Developer of the Original Code is Günter Gersdorf.
+	* Portions created by the Initial Developer are Copyright (C) 2006
+	* the Initial Developer. All Rights Reserved.
+	*
+	* Contributor(s):
+	*  Günter Gersdorf <G.Gersdorf@ggbs.de>
+	*
+	* Alternatively, the contents of this file may be used under the terms of
+	* either the GNU General Public License Version 2 or later (the "GPL"), or
+	* the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+	* in which case the provisions of the GPL or the LGPL are applicable instead
+	* of those above. If you wish to allow use of your version of this file only
+	* under the terms of either the GPL or the LGPL, and not to allow others to
+	* use your version of this file under the terms of the MPL, indicate your
+	* decision by deleting the provisions above and replace them with the notice
+	* and other provisions required by the GPL or the LGPL. If you do not delete
+	* the provisions above, a recipient may use your version of this file under
+	* the terms of any one of the MPL, the GPL or the LGPL.
+	*
+	* ***** END LICENSE BLOCK ***** -->
+
+<!DOCTYPE dialog
+[
+<!ENTITY % addressbookssyncDTD SYSTEM "chrome://addressbookssync/locale/addressbookssync.dtd" >
+%addressbookssyncDTD;
+<!ENTITY % messengercomposeDTD SYSTEM "chrome://messenger/locale/messengercompose/messengercompose.dtd" >
+%messengercomposeDTD;   <!-- undoCmd, closeCmd, saveCmd, saveAsFileCmd in TB -->
+<!ENTITY % viewDTD SYSTEM "chrome://global/locale/viewSource.dtd" >
+%viewDTD;     <!-- closeCmd in SM -->
+<!ENTITY % textDTD SYSTEM "chrome://global/locale/textcontext.dtd" >
+%textDTD;     <!-- undoCmd in SM -->
+<!ENTITY % editorDTD SYSTEM "chrome://editor/locale/editorOverlay.dtd" >
+%editorDTD;     <!-- saveCmd in SM -->
+]
+>
+
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+<?xml-stylesheet href="chrome://addressbookssync/skin/addressbookssync.css" type="text/css"?>
+
+<dialog
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		id="de-ggbs-abs-options"
+    onload="de_ggbs_abs.abs_init();"
+		buttons="extra1,accept,cancel"
+		buttonlabelextra1="&addressbookssync.apply;"
+		persist="screenX screenY"
+		title="&addressbookssync.title;"
+		windowtype="de-ggbs-abs-options">
+
+<!--
+  <script type="application/javascript" src="chrome://messenger/content/msgFolderPickerOverlay.js"/>
+-->
+  <script type="application/javascript" src="chrome://messenger/content/customElements.js"/>
+<!--  <script type="application/javascript" src="chrome://addressbookssync/content/imapfolder-menupopup.js"/>-->
+
+	<script type="application/javascript" src="chrome://addressbookssync/content/init.js" />
+	<script type="application/javascript" src="chrome://addressbookssync/content/addressbookssync.js" />
+	<script type="application/javascript"	src="chrome://addressbookssync/content/options.js" />
+	<script type="application/javascript"	src="chrome://addressbookssync/content/download.js" />
+	<script type="application/javascript"	src="chrome://addressbookssync/content/upload.js" />
+	<script type="application/javascript"	src="chrome://addressbookssync/content/NetworkService.js" />
+	<script type="application/javascript"	src="chrome://addressbookssync/content/imap.js" />
+<!-- TEST -->
+<!--
+	<script type="application/javascript" src="chrome://addressbookssync/modules/addressbookssync.jsm" />
+-->
+
+  <popupset>
+    <panel id="de-ggbs-abs-ef" onpopupshowing='de_ggbs_abs.enter_externalfilename()'
+        ignorekeys="true" position="end_before">
+      <label id="de-ggbs-abs-ef-l"/>
+      <label value="&saveAsFileCmd.label;"/>
+      <textbox id="de-ggbs-abs-ef-t" />
+      <hbox pack="end">
+        <image src="chrome://addressbookssync/skin/arrow-lft.gif"
+            tooltiptext="&undoCmd.label;" width="18" height="17"
+            style="border: 2px outset; margin: 5px; padding: 4px 3px;"
+            onmousedown='this.setAttribute("style","border: 2px inset; margin: 5px; padding: 4px 3px;")'
+            onmouseout='this.setAttribute("style","border: 2px outset; margin: 5px; padding: 4px 3px;")'
+            onmouseup='this.setAttribute("style","border: 2px outset; margin: 5px; padding: 4px 3px;")'
+            onclick='de_ggbs_abs.enter_externalfilename()'
+        />
+        <image src="chrome://addressbookssync/skin/close.gif"
+            tooltiptext="&closeCmd.label;" width="18" height="17"
+            style="border: 2px outset; margin: 5px; padding: 2px;"
+            onmousedown='this.setAttribute("style","border: 2px inset; margin: 5px; padding: 2px;")'
+            onmouseout='this.setAttribute("style","border: 2px outset; margin: 5px; padding: 2px;")'
+            onmouseup='this.setAttribute("style","border: 2px outset; margin: 5px; padding: 2px;")'
+            onclick='document.getElementById("de-ggbs-abs-ef").hidePopup()'
+        />
+        <image src="chrome://addressbookssync/skin/check.gif"
+            tooltiptext="&saveCmd.label;" width="17" height="17"
+            style="border: 2px outset; margin: 5px; padding: 3px 3px;"
+            onmousedown='this.setAttribute("style","border: 2px inset; margin: 5px; padding: 3px 3px;")'
+            onmouseout='this.setAttribute("style","border: 2px outset; margin: 5px; padding: 3px 3px;")'
+            onmouseup='this.setAttribute("style","border: 2px outset; margin: 5px; padding: 3px 3px;")'
+            onclick='de_ggbs_abs.set_externalfilename()'
+        />
+      </hbox>
+    </panel>
+  </popupset>
+	<tabbox>
+		<tabs onselect="de_ggbs_abs.abs_finish();">
+			<tab label="&remotetab.label;" />
+			<tab label="&localtab.label;" />
+			<tab label="&settingstab.label;" />
+		</tabs>
+		<tabpanels>
+			<!-- synchronize tab -->
+			<tabpanel>
+				<groupbox orient="vertical" id='SyncList'>
+          <hbox class="groupbox-title">
+            <label class="header">&syncbooks.label;</label>
+          </hbox>
+					<description id="SyncLiscDesc" value="Up-   Download" />
+					<arrowscrollbox id="SyncListCheck"
+						orient="vertical" flex="1" height="150px">
+					</arrowscrollbox>
+				</groupbox>
+        <vbox flex="1">
+					<radiogroup id="synctype">
+						<tabbox>
+							<tabs id="absTabs">
+								<tab id="absTabLocal" label="&tab.local;" />
+								<tab id="absTabRemote" label="&tab.remote;" />
+								<tab id="absTabIMAP" label="&tab.imap;" />
+							</tabs>
+							<tabpanels id="absTab">
+               <tabpanel>
+								<groupbox orient="vertical" flex="1">
+                  <hbox class="groupbox-title">
+                    <label class="header">
+                      <radio id="synclocal"	label="&synclocal.label;" />
+                    </label>
+                  </hbox>
+									<hbox>
+										<button	label="&synclocal.choosepath;" oncommand="de_ggbs_abs.ChoosePath();" />
+										<textbox id="localpath"	flex="1" />
+									</hbox>
+								</groupbox>
+               </tabpanel>
+               <tabpanel>
+								<groupbox orient="vertical" flex="1">
+                  <hbox class="groupbox-title">
+                    <label class="header">
+                      <radio id="syncremote" label="&syncremote.label;" />
+                    </label>
+                  </hbox>
+									<radiogroup orient="horizontal"
+										id="protocol">
+										<radio label="FTP" id="ftp"
+											value="ftp" />
+										<radio label="HTTP" id="http"
+											value="http" />
+										<radio label="HTTPS" id="https"
+											value="https" />
+									</radiogroup>
+									<grid>
+										<columns>
+											<column />
+											<column flex="1" />
+										</columns>
+										<rows>
+											<row>
+												<description
+													value="&host.label;" />
+												<textbox id="host" />
+											</row>
+											<row>
+												<description
+													value="&user.label;" />
+												<textbox id="username" />
+											</row>
+											<row>
+												<description
+													value="&password.label;" />
+												<textbox id="password"
+													type="password" />
+											</row>
+											<row>
+												<description
+													value="&path.label;" />
+												<textbox id="path" />
+											</row>
+										</rows>
+									</grid>
+									<textbox id="URI" class="plain"
+										readonly="true" />
+								</groupbox>
+               </tabpanel>
+               <tabpanel>
+								<groupbox orient="vertical" flex="1">
+                  <hbox class="groupbox-title">
+                    <label class="header">
+                      <radio id="syncimap" label="&syncimap.label;" />
+                    </label>
+                  </hbox>
+									<description value="&syncimap.choosefolder;" />
+                  <menulist id="syncimapPicker" uri=""
+                            class="folderMenuItem"
+                            displayformat="verbose" sizetopopup="pref">
+                    <menupopup id="syncimapFolderPopup" 
+                               is="imapfolder-menupopup" mode="imaponly"
+                               class="menulist-menupopup" showFileHereLabel="true"
+                               oncommand="de_ggbs_abs.PickedMsgFolder(event.target)"/>
+                  </menulist>
+								</groupbox>
+               </tabpanel>
+							</tabpanels>
+						</tabbox>
+					</radiogroup>
+
+					<separator class="thin" />
+					<grid flex="1">
+						<columns>
+							<column flex="1"/>
+							<column style="border-left: 1px solid grey" />
+							<column flex="1"/>
+						</columns>
+
+						<rows>
+							<row>
+								<checkbox id="autodownload"
+									label="&autodownload.label;" />
+								<spacer />
+								<checkbox id="timeddownload"
+									label="&timeddownload.label;" />
+							</row>
+							<row>
+								<checkbox id="autoupload"
+									label="&autoupload.label;" />
+								<spacer />
+								<checkbox id="timedupload"
+									label="&timedupload.label;" />
+							</row>
+							<row>
+								<hbox />
+								<spacer />
+								<hbox align="center">
+									<label value="&loadtimer.label;"
+										control="loadtimer" />
+									<textbox id="loadtimer" size="3" />
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+					<separator class="thin" />
+					<hbox>
+						<button id="autodownloadnow"
+							label="&addressbookssync.download;"
+							oncommand="de_ggbs_abs.abs_finish(); de_ggbs_abs.downloadNow(true);" />
+						<button id="autouploadnow"
+							label="&addressbookssync.upload;"
+							oncommand="de_ggbs_abs.abs_finish(); de_ggbs_abs.uploadNow(true);" />
+					</hbox>
+				</vbox>
+ 			</tabpanel>
+
+			<!-- import/export tab -->
+
+			<tabpanel orient="vertical">
+				<vbox>
+					<groupbox orient="vertical">
+            <hbox class="groupbox-title">
+              <label class="header">&save.saveAddressBook;</label>
+            </hbox>
+						<hbox>
+							<menulist id="MabList"></menulist>
+							<spacer flex="1" />
+							<button label="&save.save;"
+								oncommand="de_ggbs_abs.SaveMab();" />
+						</hbox>
+					</groupbox>
+
+					<groupbox orient="vertical">
+            <hbox class="groupbox-title">
+              <label class="header">&load.loadAddressBook;</label>
+            </hbox>
+            <grid>
+              <columns>
+                <column />
+                <column flex="1" />
+                <column />
+              </columns>
+              <rows>
+                <row>
+									<description>&load.file;</description>
+									<textbox id="MabFilePath" align="right" flex="1" class="uri-element" />
+									<button label="&load.browse;" oncommand="de_ggbs_abs.ChooseFile();" />
+                </row>
+                <row>
+									<description>&load.loadName;</description>
+									<textbox id="MabName" align="right" flex="1" />
+									<button label="&load.load;" oncommand="de_ggbs_abs.LoadMab();" />
+                </row>
+              </rows>
+            </grid>
+					</groupbox>
+
+					<groupbox id="export" orient="vertical">
+            <hbox class="groupbox-title">
+              <label class="header">&load.uploadAddressBook;*)</label>
+            </hbox>
+						<hbox>
+							<menulist id="MabList1"></menulist>
+							<spacer flex="1" />
+							<button label="&save.save;" oncommand="de_ggbs_abs.UploadMab();" />
+						</hbox>
+					</groupbox>
+					<groupbox id="import" orient="vertical">
+            <hbox class="groupbox-title">
+              <label class="header">&load.downloadAddressBook;*)</label>
+            </hbox>
+						<hbox>
+							<description>&load.loadName;</description>
+							<textbox id="DownloadMabName" align="right" flex="1" />
+							<button label="&load.load;" oncommand="de_ggbs_abs.DownloadMab();" />
+						</hbox>
+					</groupbox>
+            <description>*) &load.downloadAddressBookInfo;</description>
+				</vbox>
+
+			</tabpanel>
+
+			<!-- options tab -->
+
+			<tabpanel orient="vertical">
+				<checkbox id="hidepopups" label="&hidepopups.label;" />
+				<checkbox id="hideallpopups" label="&hideallpopups.label;" />
+				<checkbox id="usepost" label="&usepost.label;" />
+				<checkbox id="separateupdown" label="&separateupdown.label;" />
+				<checkbox id="noupload" label="&noupload.label;" />
+				<checkbox id="notimecheck" label="&notimecheck.label;" />
+
+				<vbox>
+					<radiogroup id="syncpolicy">
+						<groupbox orient="vertical">
+              <hbox class="groupbox-title">
+                <label class="header">&syncpolicy.label;</label>
+              </hbox>
+							<description>&syncpolicy.desc;
+							</description>
+							<radio id="syncpolicyentry" label="&syncpolicy.entry;" />
+							<radio id="syncpolicyfile" label="&syncpolicy.file;" />
+						</groupbox>
+					</radiogroup>
+				</vbox>
+
+        <hbox>
+					<vbox>
+						<radiogroup id="imappolicy">
+							<groupbox orient="vertical">
+                <hbox class="groupbox-title">
+                  <label class="header">&imappolicy.label;</label>
+                </hbox>
+								<radio id="imappolicydraft" label="&imappolicy.draft;" />
+								<radio id="imappolicyfile" label="&imappolicy.file;" />
+							</groupbox>
+						</radiogroup>
+					</vbox>
+
+					<vbox>
+						<radiogroup id="downloadpolicy">
+							<groupbox orient="vertical">
+                <hbox class="groupbox-title">
+                  <label class="header">&downloadpolicy.label;</label>
+                </hbox>
+								<radio id="downloadpolicyask" label="&downloadpolicy.ask;" />
+								<radio id="downloadpolicyoverwrite" label="&downloadpolicy.overwrite;" />
+								<radio id="downloadpolicykeep" label="&downloadpolicy.keep;" />
+							</groupbox>
+						</radiogroup>
+					</vbox>
+        </hbox>
+			</tabpanel>
+
+		</tabpanels>
+	</tabbox>
+</dialog>
+

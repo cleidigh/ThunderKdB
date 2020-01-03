@@ -1,0 +1,22 @@
+"0" : La liste contient 1 partie :
+    'begin' :    contacts dont les champs commencent par X
+    Avec le mode "0", il est pr&eacute;f&eacute;rable de mettre "Nb ligne max dans chaque partie" &agrave; 15-30.
+
+"1" : La liste contient 1 partie :
+    'contains' : contacts &amp; groupes dont les champs contiennent X
+    Avec le mode "1", il est pr&eacute;f&eacute;rable de mettre "Nb ligne max dans chaque partie" &agrave; 15-30.
+
+"2" : La liste contient 2 parties :
+    'begin' :    contacts dont les champs commencent par X
+    'contains' : contacts dont les champs contiennent X (except&eacute; ceux de la partie 1)
+    Avec le mode "2", il est pr&eacute;f&eacute;rable de mettre "Nb ligne max dans chaque partie" &agrave; 5-10.
+
+"3" : La liste contient 1 partie pour chaque carnet d'adresses :
+    contacts &amp; groupes dont les champs contiennent X
+    Avec le mode "3", il est pr&eacute;f&eacute;rable de mettre "Nb ligne max dans chaque partie" &agrave; 5-10.
+
+Les champs de recherche sont :
+- 'PrimaryEmail', 'FirstName', 'LastName', 'NickName' pour les contacts,
+- 'LastName' pour les groupes.
+
+Pour les machines lentes, il est pr&eacute;f&eacute;rable de choisir le mode "1".

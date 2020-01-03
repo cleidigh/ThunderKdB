@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE dialog SYSTEM "chrome://removedupes/locale/removedupes.dtd">
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="removeDupes.aboutDupes.Init();"
+        buttons="accept"
+        id="removedupesAboutDialog"
+        title="&removedupesPrefs.captionabout; Remove Duplicates">
+
+  <script type="application/x-javascript" src="chrome://removedupes/content/removedupesabout.js"/>
+
+  <groupbox>
+    <hbox>
+      <image src="chrome://removedupes/content/removedupes.svg"/>
+      <spacer width="20"/>
+      <vbox>
+        <label value="&removedupes.title;"/>
+        <label value="&removedupes.version;"/>
+      </vbox>
+    </hbox>
+    <spacer height="10"/>
+    <label value="Remove Duplicate Messages rewritten for Thunderbird 68"/>
+    <vbox>
+      <spacer height="5"/>
+      <label value="&removedupes.creditstitle;:"/>
+      <spacer height="5"/>
+      <label value="&removedupes.credits1;"/>
+      <label value="&removedupes.credits2;"/>
+      <label value="&removedupes.credits3;"/>
+      <label value="&removedupes.credits4;"/>
+      <label value="&removedupes.credits5;"/>
+      <label value="&removedupes.credits6;"/>
+      <label value="&removedupes.credits7;"/>
+      <label value="&removedupes.credits8;"/>
+      <label value="&removedupes.credits9;"/>
+    </vbox>
+  </groupbox>
+
+</dialog>

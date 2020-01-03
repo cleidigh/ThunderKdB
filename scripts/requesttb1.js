@@ -555,6 +555,10 @@ async function getExtensionFiles(addon_identifier, index) {
 
 		console.debug(`TargetGroup: ${extRootName} : ${targetGroupDir}`);
 
+		if (extRootDir.indexOf(extGroupTB68Dir) === -1) {
+			return;
+		}
+
 		console.debug(`Save versions, ${extRootDir}`);
 		jfile = `${extRootDir}/${extRootName}-versions.json`;
 		await writePrettyJSONFile(jfile, ext_versions);
@@ -589,7 +593,7 @@ async function getExtensionFiles(addon_identifier, index) {
 		// 	console.debug('Removing: ' + `${extRootName}`);
 		// }
 
-		if (extRootDir === ext68CompDirU) {
+		if (extRootDir.indexOf(extGroupTB68Dir) > -1) {
 			await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
 			console.debug('Downloaded filename ' + xpiFileName);
 			fs.ensureDirSync(`${extRootDir}/xpi`);

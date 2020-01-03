@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Addressbooks Synchronizer",
+  "description": "Synchronize addressbooks with files stored locally, in IMAP folders or via FTP/WebDAV",
+  "version": "2.0.1",
+  "author": "Günter Gersdorf",
+  "homepage_url": "https://www.ggbs.de/extensions/AddressbooksSynchronizer.html",
+  "applications": {
+    "gecko": {
+      
+      "id": "addressbookssync@ggbs.de",
+      "strict_min_version": "68.0"
+    }
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://addressbookssync/content/options.xul",
+      "open_in_tab": false
+    }
+  },
+  "icons": {
+    "32": "skin/icon.png",
+    "48": "skin/icon48.png"
+  }
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay [
+<!ENTITY % autoSaveDraftsFolders-CopiesFoldersDTD SYSTEM "chrome://autoSaveDraftsFolders/locale/autoSaveDraftsFolders-CopiesFoldersOverlay.dtd"> %autoSaveDraftsFolders-CopiesFoldersDTD;
+<!ENTITY % amCopiesDTD SYSTEM "chrome://messenger/locale/am-copies.dtd"> %amCopiesDTD;
+<!ENTITY % msgFolderPickerDTD SYSTEM "chrome://messenger/locale/msgFolderPickerOverlay.dtd"> %msgFolderPickerDTD;
+]>
+<overlay id="autoSaveDraftsFolders-copiesFoldersOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://autoSaveDraftsFolders/content/autoSaveDraftsFolders-CopiesFoldersOverlay.js"/>
+  <vbox id="copiesAndFolders">
+    <label hidden="true" wsm_persist="true" 
+	    id="identity.autoSaveDraftsFolders_AutoSaveDraftFolder" 
+		insertafter="identity.draftFolder"
+		pref="true" preftype="string" prefattribute="value" genericattr="true"
+		prefstring="extensions.autoSaveDraftsFolders.%identitykey%.autoSaveDraftFolder"
+		/>
+	<label hidden="true" wsm_persist="true" 
+	    id="identity.autoSaveDraftsFolders_AutoSaveDraftsFolderPickerMode" 
+		insertafter="identity.draftsFolderPickerMode"
+		pref="true" preftype="int" prefattribute="value" genericattr="true"
+		prefstring="extensions.autoSaveDraftsFolders.%identitykey%.autoSaveDraftsFolderPickerMode"
+		/>
+  </vbox>
+  <groupbox id="foldersGroup">
+    <hbox align="center" id="AutoSaveDraftsFolders_label" insertafter="messageDrafts">
+      <label value="&autoSaveDraftsFolders_keepDraftsIn.label;" control="autoSaveDraftsFolders_radioGroup"/>
+    </hbox>
+    <radiogroup id="autoSaveDraftsFolders_radioGroup" insertafter="AutoSaveDraftsFolders_label">
+      <grid class="specialFolderPickerGrid">
+        <columns>
+          <column/>
+          <column flex="1"/>
+        </columns>
+        <rows>
+          <row align="center">
+            <radio id="autoSaveDraftsFolders_selectAccount"
+                oncommand="autoSaveDraftsFolders.setPickersState('autoSaveDraftsFolders_AutoSaveDraftsAccountPicker', 'autoSaveDraftsFolders_AutoSaveDraftsFolderPicker', event)"
+                value="0" label="&draftsFolderOn.label;"
+                accesskey="&draftsFolderOn.accesskey;"/>
+              <menulist id="autoSaveDraftsFolders_AutoSaveDraftsAccountPicker"
+                  class="folderMenuItem"
+                  aria-labelledby="autoSaveDraftsFolders_selectAccount">
+                <menupopup id="autoSaveDraftsFolders_msgDraftAccountPopup"
+                    is="folder-menupopup"  mode="filing"
+                    expandFolders="false"
+                    oncommand="autoSaveDraftsFolders.noteSelectionChange('Account', event)"/>
+            </menulist>
+          </row>
+          <row align="center">
+            <radio id="autoSaveDraftsFolders_selectFolder"
+                oncommand="autoSaveDraftsFolders.setPickersState('autoSaveDraftsFolders_AutoSaveDraftsFolderPicker', 'autoSaveDraftsFolders_AutoSaveDraftsAccountPicker', event)"
+                value="1" label="&draftInOtherFolder.label;"
+                accesskey="&draftInOtherFolder.accesskey;"/>
+            <menulist id="autoSaveDraftsFolders_AutoSaveDraftsFolderPicker"
+                class="folderMenuItem"
+                aria-labelledby="autoSaveDraftsFolders_selectFolder"
+                displayformat="verbose">
+              <menupopup id="autoSaveDraftsFolders_msgDraftFolderPopup"
+                  is="folder-menupopup"  mode="filing"
+                  class="menulist-menupopup"
+                  showFileHereLabel="true"
+                  oncommand="autoSaveDraftsFolders.noteSelectionChange('Folder', event)"/>
+            </menulist>
+          </row>
+        </rows>
+      </grid>
+    </radiogroup>
+  </groupbox>
+</overlay>

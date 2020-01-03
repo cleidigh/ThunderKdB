@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="taskviewlayout.css" type="text/css"?>
+
+<overlay id="ltnToolbarOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="text/javascript"
+                  src="taskviewlayout2.js"/>
+
+<toolbarpalette id="TaskToolbarPalette">
+<toolbarbutton id= "taskviewlayout" tooltiptext="Taskview Layout" class="toolbarbutton-1 chromeclass-toolbar-additonal" label=" Taskview layout" type="menu-button">
+<menupopup>
+<menuitem id="menuitem1" label="View to put task view up" onclick="
+var layoutContainer = document.getElementById('calendar-task-details-container');
+var layoutABox = window.document.getElementById('task-addition-box');
+window.document.getElementById('calendar-task-box').insertBefore(layoutContainer, layoutABox);
+document.getElementById('calendarDisplayDeck').style.flex = '1';
+"/>
+<menuitem id="menuitem2" label="View to put task view neutrally" onclick="
+var layoutContainer = document.getElementById('calendar-task-details-container');
+window.document.getElementById('calendar-task-box').appendChild(layoutContainer);
+document.getElementById('calendarDisplayDeck').style.flex = '1';
+"/>
+<menuitem id="menuitem3" label="View to put task view vertically" onclick="
+var layoutContainer = document.getElementById('calendar-task-details-container');
+document.getElementById('calendarDisplayDeck').style.flex = '0 2 0';
+document.getElementById('calendarContent').appendChild(layoutContainer);
+"/>
+</menupopup>
+</toolbarbutton>
+</toolbarpalette>
+</overlay>

@@ -1,0 +1,13 @@
+content opentab jar:chrome/opentab.jar!/content/opentab/
+
+overlay	chrome://messenger/content/messenger.xul	chrome://opentab/content/opentab.xul
+overlay	chrome://messenger/content/messenger.xul	chrome://opentab/content/opentab_hdr.xul
+#overlay	chrome://messenger/content/msgHdrViewOverlay.xul	chrome://opentab/content/opentab_hdr.xul
+
+locale	opentab	en-US		jar:chrome/opentab.jar!/locale/en-US/opentab/
+locale	opentab	ja-JP		jar:chrome/opentab.jar!/locale/ja-JP/opentab/
+
+skin	opentab	classic/1.0	jar:chrome/opentab.jar!/skin/classic/opentab/
+style chrome://messenger/content/customizeToolbar.xul chrome://opentab/skin/opentab.css
+style chrome://messenger/content/messenger.xul chrome://opentab/skin/opentab.css
+#style chrome://messenger/content/msgHdrViewOverlay.xul chrome://opentab/skin/opentab.css

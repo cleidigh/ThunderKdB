@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is CopySent2Current.
+ *
+ * The Initial Developer of the Original Code is Günter Gersdorf.
+ * Portions created by the Initial Developer are Copyright (C) 2006
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *  Günter Gersdorf <G.Gersdorf@ggbs.de>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** -->
+
+<!--
+<!DOCTYPE dialog SYSTEM "chrome://copysent2current/locale/copysent2current.dtd">
+-->
+<!DOCTYPE dialog
+[
+<!ENTITY % copysent2currentDTD SYSTEM "chrome://copysent2current/locale/copysent2current.dtd" >
+%copysent2currentDTD;
+<!ENTITY % copiesDTD SYSTEM "chrome://messenger/locale/am-copies.dtd">%copiesDTD;
+]
+>
+
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id="CopySent2Current_config"
+        buttons="accept"
+        onload='let s=document.getElementById("i_accesskey_sent_label"); s.value=s.value.replace(/.*"(.*)".*/,"$1");'
+          xcomment='Ordner "Gesendet" in: wird Gesendet'
+        windowtype="de-ggbs-cs2c-options"
+        title="&copysent2current.title;">
+
+<!-- TEST
+  <script type="application/javascript" src="chrome://copysent2current/content/copysent2current.js"/>
+-->
+  <vbox>
+    <checkbox id="i_choosebehind" label="&chooseBehind.label;" preference="extensions.copysent2current.choosebehind"/>
+    <hbox align="center">
+      <label value="&lastusedlength.label;" />
+      <textbox id="i_lastusedlength" size="2" maxlength="2" preference="extensions.copysent2current.lastusedlength"/>
+    </hbox>
+    <checkbox id="i_movedef" label="&moveoriginal.default;" preference="extensions.copysent2current.movemessage"/>
+    <checkbox id="i_movetrash" label="&moveoriginal.trash;" preference="extensions.copysent2current.nomovetrash"/>
+    <separator class="groove"/>
+    <groupbox flex="1">
+      <hbox class="groupbox-title">
+        <label class="header">&accesskey.label;</label>
+      </hbox>
+      <grid flex="1">
+        <columns>
+          <column/>
+          <column/>
+          <column/>
+        </columns>
+        <rows>
+          <row>
+            <label value="&accesskey_default.label;" />
+            <textbox id="i_accesskey_default" size="1" maxlength="1" preference="extensions.copysent2current.accesskey_default" />
+            <spacer flex="1" />
+          </row>
+          <row>
+            <label id="i_accesskey_sent_label" value="&sentFolderOn.label;" />
+                <!-- from chrome://messenger/locale/am-copies.dtd; modified below -->
+            <textbox id="i_accesskey_sent" size="1" maxlength="1" preference="extensions.copysent2current.accesskey_sent" />
+            <spacer flex="1" />
+          </row>
+          <row>
+            <label value="&accesskey_nocopy.label;" />
+            <textbox id="i_accesskey_nocopy" size="1" maxlength="1"  preference="extensions.copysent2current.accesskey_nocopy" />
+            <spacer flex="1" />
+          </row>
+          <row>
+            <label value="&accesskey_lastused.label;" />
+            <textbox id="i_accesskey_lastused" size="1" maxlength="1"  preference="extensions.copysent2current.accesskey_lastused" />
+            <spacer flex="1" />
+          </row>
+           <separator class="groove"/>
+           <row>
+            <vbox>
+              <label value="&sendNoCopyCmd.label;/" />
+              <label value="&sendCopy2SentCmd.label;" />
+            </vbox>
+            <textbox id="i_accesskey_send" size="1" maxlength="1" preference="extensions.copysent2current.accesskey_send" />
+            <spacer flex="1" />
+          </row>
+        </rows>
+      </grid>
+    </groupbox>
+    <separator class="groove"/>
+  </vbox>
+  <script 
+     src="chrome://global/content/preferencesBindings.js" 
+     type="application/javascript"/>
+  <script 
+     src="chrome://copysent2current/content/preferences.js" 
+     type="application/javascript"/>          
+</dialog>

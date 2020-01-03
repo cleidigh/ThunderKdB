@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "EnForward",
+  "description": "Forward email to Evernote and OneNote",
+  "version": "0.5.0",
+  "author": "H.Ogi",
+  "homepage_url": "http://hogi.sakura.ne.jp/en/",
+  "legacy": {
+    "type": "xul",
+    "options" : {
+      "page" : "chrome://enforward/content/settings.xul",
+      "open_in_tab" : false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "{C83FDE78-4980-4a97-B91A-47A4B98761A7}",
+      "strict_min_version": "68.0"
+    }
+  }
+}

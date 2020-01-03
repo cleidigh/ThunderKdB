@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<?xml-stylesheet href="chrome://dispmua/skin/dispmua.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://dispmua/locale/dispmua.dtd">
+
+<overlay id="dispMUAoverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/javascript" src="chrome://dispmua/content/dispmua-common.js"/>
+	<script type="application/javascript" src="chrome://dispmua/content/dispmua-2.js"/>
+
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="dispmua-strings" src="chrome://dispmua/locale/dispmua.properties" insertbefore="dispMUAoverlay"/>
+	</stringbundleset>
+
+	<hbox id="expandedHeaderView">
+		<vbox id="dispMUA" insertafter="mailrouteFrom,editMessageBox,expandedKeywordBox,smimeBox,expandedHeaders">
+			<spacer flex="1" maxheight="40"/>
+			<image id="dispMUAicon" observes="dispMUAbroadcast" style="width:48px;height:48px;margin-left:3px;margin-right:3px;" onclick="dispMUA.infopopup();"/>
+			<spacer flex="1"/>
+		</vbox>
+	</hbox>
+
+	<popup id="messagePaneContext">
+		<menuitem id="dispmua-checktext" oncommand="dispMUA.checktext();" insertafter="messagePaneContext-mark"/>
+	</popup>
+
+</overlay>

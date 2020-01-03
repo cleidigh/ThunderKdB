@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://folderSize/skin/folderSize.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://foldersize/locale/foldersize.dtd">
+<overlay id="folderSize"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/javascript" src="chrome://foldersize/content/foldersize.js" />
+<script>
+<![CDATA[
+	window.addEventListener("load", showFolderSize.initMainWinOverlay, false);
+]]>
+</script>
+
+
+<hbox id="status-bar">
+	<hbox id="folderSizePanel" class="statusbarpanel" label="" collapsed="false"  insertafter="totalMessageCount" context="folderSizeContext">
+		<observes element="unreadMessageCount" attribute="hidden"/>
+		<image id="folderSizeIcon" class="sfs-statusbarpanel-menu-iconic"/>
+		<label id="folderSizeLabel" value="" tooltip="" />
+		<label id="folderSizeQuota" value="" tooltip="folderSizeTip3" collapsed="true"/>
+	</hbox>
+	<popupset>
+		<menupopup id="folderSizeContext" position="before_start" style="-moz-appearance: menupopup;">
+			<menuitem label="&compact;" oncommand="showFolderSize.compact();"/>
+			<menuitem label="&checkAll;" oncommand="showFolderSize.checkAll();"/>
+			<menuitem label="&options;" oncommand="showFolderSize.openOptions();" />
+		</menupopup>
+	</popupset>
+	<tooltip id="folderSizeTip1" orient="vertical" style="background-color: #33DD00;" position="before_start">
+		<label value="&ttipline1;"/>
+		<label value="&ttipline2;"/>
+		<label id="explabel1" value=""/>
+	</tooltip>
+
+	<tooltip id="folderSizeTip2" orient="vertical" style="background-color: #33DD00;" position="before_start">
+		<label value="&ttipline3;"/>
+		<label id="explabel2" value=""/>
+	</tooltip>
+
+	<tooltip id="folderSizeTip3" orient="vertical" style="background-color: #33DD00;" position="before_start">
+		<label value="" id="explabel3"/>
+	</tooltip>
+</hbox>
+
+</overlay>

@@ -1,0 +1,20 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#wdw_aecOptionsWindow prefpane {
+  font-size: 1.36em;
+}
+
+#wdw_aecOptionsWindow h1 {
+/*  margin: 0 0 8px; */
+  font-size: 1.46em;
+  font-weight: 300;
+/*  line-height: 1.3em; */
+}
+  
+#wdw_aecOptionsWindow .subcategory:not([hidden]) ~ .subcategory {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--in-content-border-color);
+}

@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "applications": {
+    "gecko": {
+      "id": "mrc_compose@mr-consultant.net",
+      "strict_min_version": "68.0"
+    }
+  },
+  "version": "2.0.2",
+
+  "default_locale": "en",
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://mrc_compose/content/options.xul",
+      "open_in_tab": false
+    }
+  }
+}

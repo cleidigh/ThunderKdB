@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "received@alexander.moisseev",
+      "strict_min_version": "68.0",
+      "strict_max_version": "68.*"
+    }
+  },
+  "name": "Received",
+  "description": "Displays the \"Received\" header parsed with a regular expression.",
+  "version": "1.0.0",
+  "author": "Alexander Moisseev (moiseev@mezonplus.ru)",
+  "homepage_url": "https://github.com/moisseev/received",
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://received/content/options.xul",
+      "open_in_tab": true
+    }
+  }
+}

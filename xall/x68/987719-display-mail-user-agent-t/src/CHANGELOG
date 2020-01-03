@@ -1,0 +1,269 @@
+C H A N G E L O G
+Extension: dispMUA
+Build for: Mozilla Thunderbird and SeaMonkey
+Created by: Christian Weiske <cweiske@cweiske.de>
+Further development by: Juergen Ernst <dispmua@juergen-ernst.de>
+Forked by: Toshi_ <dispmua@outlook.com>
+
+1.8.6
+- Some more icons(1883 now)
+
+1.8.5.4 2019-12-13
+- Some more icons(1881 now)
+
+1.8.5.3 2019-12-10
+- Some more icons(1880 now)
+
+1.8.5.2 2019-12-9
+- Some more icons(1878 now)
+
+1.8.5   2019-11-28
+- change O365 judgement method. thanks to silversonic. (https://twitter.com/silversonicboom)
+- Some more icons (1876 now)
+- The icon can be placed on the left
+
+1.8.4.7   2019-11-22
+- change O365 judgement method
+- fix size of displayed icon
+- Some more icons (1872 now)
+
+1.8.4.6   2019-11-19
+- Some more icons (1871 now)
+  added countermeasures against problems with event registration in version 68.x
+
+1.8.4.5   2019-11-13
+- fix locale.
+- Supports Thunderbird 68.0 User-Agent.
+
+1.8.4.4   2019-11-12
+- change some language code
+
+1.8.4.3   2019-11-12
+- change some language code
+
+1.8.4   2019-11-11
+- Some more icons (1870 now)
+
+1.8.3   2019-10-30
+- Supports XUL changes.
+
+1.8.2   2018-11-04
+- new locale: hu
+- Added hungarian translation by Ovari.
+
+1.8.1   2018-10-13
+- Raised max version to 60 manually. Thought thunderbird would adjust automagically like done so in the past.
+
+1.8.0   2018-09-11
+- In Thunderbird, changes to JS in mozilla60 dropped expression closures, needing the arrow function syntax (see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Expression_closures).
+- Moved dispmua.css to the place stated in XUL files, then corrected a typo on the name of the file included.
+- In Thunderbird, changes to XUL in mozilla57 states that links to JS files in script tags has the type attribute changed from "application/x-javascript" to "application/javascript".
+- Changed EOL in feedback.js from DOS/Windows mode to Unix mode.
+
+1.7.0   2015-05-25
+- DOM element content_checktext changed to dispmua-checktext for better compatibility with other addons
+- data stored in non-executable JSON file format, javascript files removed
+- some more icons (1863 now)
+- Supported mail headers: 6361 of 10298 (61.8%) with URL (60.9%)
+
+1.6.9   2012-07-17
+- some more icons (1861 now)
+- Supported mail headers: 6361 of 10298 (61.8%) with URL (60.9%)
+
+1.6.8   2011-09-17
+- fixed bug: use new AddonManager instead of old nsIExtensionManager if available
+
+1.6.7   2011-09-01
+- works with Thunderbird 4, 5 and 6
+- now compatible with addon CompactHeader
+- new locale: es-AR
+
+1.6.6   2010-07-11
+- quick update for Thunderbird 3.1
+
+1.6.5   2009-12-09
+- support for Thunderbird 3, Thunderbird 2 and SeaMonkey 2
+
+1.6.4.3   2009-07-09
+- some corrections to make TB 3.0b3 work
+
+1.6.4.2   2009-05-05
+- correction of a bug: TB 3.0b2 didn't show icons
+
+1.6.4.1   2009-05-04
+- correction of a minor bug due to redefining const XUL_NS.
+
+1.6.4   2009-05-02
+- new locales: ro-RO, sr-RS, tr-TR, uk-UA
+- different thunderbird icons for linux, mac, sun and windows users
+- in expanded header view the icon position is limited to max 40 pixels from the top.
+- in collapsed header view now a smaller icon is shown. Note: unfortunately I had to work around some TB bugs!
+- DispMUA runs with Seamonkey too
+- some more icons (1796 now)
+- Supported mail headers: 3818 of 5936 (64.3%) with URL (62.8%)
+
+1.6.3   2008-12-15
+- user agent string in feedback window now selectable
+- selected text can be send to dispMUA using context menu
+- some more icons (1645 now)
+- Supported mail headers: 2901 of 4730 (61.3%) with URL (59.2%)
+
+1.6.2   2008-10-14
+- Bug removed: user agent string not found if it was last line of header
+- some more icons (1483 now)
+- Supported mail headers: 2719 of 4551 (59.7%) with URL (56.8%)
+
+1.6.1   2008-08-19
+- new javascript files for headers starting with "[", "'" and ">"
+- new javascript file for small headers matching each letter
+- Bug removed: header parser didn't stop at first blank line
+- some more icons (1392 now)
+- Supported mail headers: 2580 of 4403 (58.6%) with URL (52.4%)
+
+1.6.0   2008-07-12
+- dispMUA is able to run with Thunderbird 3.0a2pre
+- Addon "Mnenhy" is not needed anymore to access headers
+- more generalized scanning procedures
+- Header "X-MimeOLE" has new separate javascript file
+- Popup blocked for "Message-ID" only headers
+- new locale tr-TR added
+- some more icons (1243 now)
+- Supported mail headers: 2253 of 3963 (56.9%) with URL (30.3%)
+
+1.5.4   2008-05-31
+- some more icons (1157 now)
+- Supported mail headers: 2147 of 3840 (55.9%)
+
+1.5.3   2008-04-08
+- some more icons (1006 now)
+- Supported mail headers: 1989 of 3686 (54.0%)
+
+1.5.2   2008-02-29
+- some more icons (888 now)
+- Supported mail headers: 1827 of 3535 (51.7%)
+
+1.5.1   2008-02-18
+- Folder chrome is now located in jar file for faster installation
+- This also prevents the "Chrome Protocol Directory Traversal Vulnerability"
+- Added version number to subject in feedback mail
+- some more icons (817 now)
+- Supported mail headers: 1757 of 3512 (50.0%)
+
+1.5.0   2008-02-15
+- Data structure extended: begin of adding URL for user agent website
+- Click on icon in feedback window links to user agent website (if possible)
+- Header "Message-ID" has new separate javascript file
+- Long Message-IDs now shortened in the middle of the string
+- Bug removed: false positives if "Organization"/"X-MimeOLE"/"Message-ID" not found
+- Locales: bg-BG, ca-AD, cs-CZ, de-DE, en-US, es-ES, fr-FR, hr-HR, it-IT, ja-JP, ko-KR, nl-NL, pl-PL, pt-BR, pt-PT, ru-RU, sk-SK, sv-SE, zh-CN, zh-TW
+- some more icons (805 now) and nearly 100 icons updated
+- Supported mail headers: 1753 of 3509 (50.0%)
+
+1.4.2   2008-01-26
+- Header "Organization" has new separate javascript file
+- Changed behaviour of feedback window
+- Locales: ca-AD, de-DE, en-US, es-ES, fr-FR, it-IT, ja-JP, ko-KR, nl-NL, pl-PL, pt-BR, pt-PT, ru-RU, sk-SK, sv-SE, zh-CN, zh-TW
+- Some more icons (673 now)
+- Supported mail headers: 1564 of 3456 (45.3%)
+
+1.4.1   2008-01-01
+- Header search split in separate javascript files (a-z, preseach, postsearch)
+- Corrected locale sk-SK
+- Some more icons (585 now)
+
+1.4.0   2007-12-14
+- Recoded to support Thunderbird 2.0.0.* only
+- Support for older versions removed
+- Some more icons (564 now)
+
+All Versions below written by Christian Weiske:
+
+1.3.2   2007-04-20
+- Thunderbird 2.0.0.*
+- Some more icons (536 now)
+- Don't send a mail with unsupported agents anymore
+
+1.3.1   2006-06-23
+- Slovak translation by Jan Kendi
+
+1.3   2006-06-22
+- Hindi translation thanks to Anant Narayanan
+- Thunderbird 1.5.0.*
+- 471 icons, 1395 unsupported
+
+1.2   2006-01-07
+- 401 icons now, and 840 unsupported ones
+  I think it's getting too much now
+- support for Thunderbird 1.5 (with chrome.manifest)
+- SeaMonkey 1.0 support (Thanks to Alexander Opitz)
+- Own about dialog
+- License is GPL now
+
+1.1.4   2005-09-18
+- Added Eudora, which had been out since the code re-organization
+- Columba icon
+- Icon shouldn't jump left and right any more
+- 300 icons
+
+1.1.3   2005-09-18
+- Version bump to Thunderbird 1.5beta1
+
+1.1.2   2005-09-03
+- Thomas Bertels <the_redburn@perso.be> sent me a localized
+  version of dispMUA, including french and the original english
+  locale. He also told me that I can use OptiPNG to make the
+  pngs smaller; so I reduced the icons from 272kiB size to 255kiB.
+- Made the "mostwanted" icons to be searched only at the beginning
+  of the identifier
+- Went back from mostwanted, replaced it with "presearch" which is
+  searched full (not only at the beginning) as there were problems
+  with thunderbird identification
+- There is a ChangeLog file now
+- xhtmail [http://ptaff.ca/xhtmail/] uses the dispMUA icons
+- gnus-muaicon.el [http://www.geocities.jp/emacsjjjj/gnus/]
+  is a dispMUA port to Gnus
+- Added several new icons; there are 300 supported mail programs now!!
+
+1.1.1   2005-08-28
+- fixed some unidentified mail programs due to the changes in 1.1.0
+- 250 supported programs
+
+1.1.0   2005-08-27
+- Rewrote the identifier-icon-association array to be more efficient
+  I use a nested array with the first letter as index so that the
+  loop does not need to go through all of the items
+- 237 supported programs
+
+1.0.6   2005-06-24
+- We are over the 200 mark..
+- Support for user overrides so that users can add their own icons
+  without modifying the dispMUA sources
+- 207 supported programs
+
+1.0.1   2005-04-26
+- 164 supported programs
+
+1.0   2005-04-20
+- Time for version 1.0 as it's really stable
+- 103 supported programs
+
+0.5beta 2005-04-15
+- Over one hundred supported MUAs... never thought there would be so much
+- 102 supported programs
+
+0.4.1   2005-04-07
+- 84 supported programs
+
+0.4   2005-04-06
+- 81 supported programs
+
+0.3   2005-04-03
+- 53 supported programs
+
+0.2   2005-03-31
+- 47 supported programs
+
+0.1   2005-03-31
+- first official released version
+- 23 supported programs!
+- That should be all programs out there... That's what my naive mind thought that time

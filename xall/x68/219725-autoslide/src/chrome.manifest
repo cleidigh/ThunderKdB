@@ -1,0 +1,14 @@
+content   AutoSlide                 chrome/AutoSlide/content/
+
+skin      AutoSlide     global      chrome/AutoSlide/skin/global/
+skin      AutoSlide-os  classic/1.0 chrome/AutoSlide/skin/common/
+skin      AutoSlide-os  classic/1.0 chrome/AutoSlide/skin/gnome/   os=Linux
+skin      AutoSlide-os  classic/1.0 chrome/AutoSlide/skin/windows/ os=WINNT
+skin      AutoSlide-os  classic/1.0 chrome/AutoSlide/skin/mac/     os=Darwin
+
+locale    AutoSlide     en-US   chrome/AutoSlide/locale/en-US/
+locale    AutoSlide     de-DE   chrome/AutoSlide/locale/de-DE/
+locale    AutoSlide     fr      chrome/AutoSlide/locale/fr/
+locale    AutoSlide     sl      chrome/AutoSlide/locale/sl/
+
+overlay chrome://messenger/content/messenger.xul         chrome://AutoSlide/content/ASmessengerOverlay.xul

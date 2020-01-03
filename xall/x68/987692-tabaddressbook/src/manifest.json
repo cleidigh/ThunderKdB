@@ -1,0 +1,21 @@
+{
+	"name": "TabAddressbook",
+	"version": "2.0",
+	"author": "Margot Berg",
+	"applications": {
+		"gecko": {
+		"id": "{215268f4-312e-4386-9628-d7fb7eb68d60}", 
+			"strict_min_version": "68.0"
+			}
+	},
+		"legacy": {
+		"options": {
+			"page": "chrome://messenger/content/addressbook/addressbook.xul",
+			"open_in_tab": true
+		}
+	},
+		"icons": {
+		"16" : "/chrome/skin/addressbook.png"
+	},		
+	"manifest_version": 2
+}

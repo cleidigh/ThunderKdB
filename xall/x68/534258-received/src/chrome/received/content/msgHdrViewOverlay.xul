@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<overlay id="mailingListHeaderOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript"
+          src="chrome://received/content/scripts/received.js" />
+  <script type="application/x-javascript"
+          src="chrome://received/content/scripts/messageHeader.js" />
+
+  <rows id="expandedHeader2Rows">
+    <row id="expandedReceivedRow">
+      <label id="expandedReceivedLabel"
+             class="headerName"
+             value="Received"
+             control="receivedReceivedHeader" />
+      <mail-headerfield id="receivedReceivedHeader"
+                        flex="1"
+                        headerValue="" />
+    </row>
+  </rows>
+</overlay>

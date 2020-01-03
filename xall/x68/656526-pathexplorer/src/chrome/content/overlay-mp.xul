@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://path/locale/path.dtd">
+<overlay id="pathOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<!-- This is for our javascript to access the locale strings -->
+<stringbundleset id="stringbundleset">
+  <stringbundle id="path-bundle" src="chrome://path/locale/path.properties"/>
+</stringbundleset>
+
+<!-- This imports our javascript -->
+<script type="application/x-javascript" src="chrome://path/content/overlay.js"/>
+
+<!-- This is for the message pane's context menu -->
+<popup id="mailContext">
+  <menuitem id="pathItem"
+            class="menuitem-iconic"
+            image="chrome://path/skin/icon.png"
+            accesskey="&path.accesskey;"
+            oncommand="path.launchExplorer();"/>
+</popup>
+
+</overlay>

@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<!-- ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is CopySent2Current.
+ *
+ * The Initial Developer of the Original Code is Günter Gersdorf.
+ * Portions created by the Initial Developer are Copyright (C) 2006
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ *  Günter Gersdorf <G.Gersdorf@ggbs.de>
+ *
+ * Alternatively, the contents of this file may be used under the terms of
+ * either the GNU General Public License Version 2 or later (the "GPL"), or
+ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+ * in which case the provisions of the GPL or the LGPL are applicable instead
+ * of those above. If you wish to allow use of your version of this file only
+ * under the terms of either the GPL or the LGPL, and not to allow others to
+ * use your version of this file under the terms of the MPL, indicate your
+ * decision by deleting the provisions above and replace them with the notice
+ * and other provisions required by the GPL or the LGPL. If you do not delete
+ * the provisions above, a recipient may use your version of this file under
+ * the terms of any one of the MPL, the GPL or the LGPL.
+ *
+ * ***** END LICENSE BLOCK ***** -->
+
+<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+<?xml-stylesheet href="chrome://copysent2current/skin/copysent2current.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+<!ENTITY % copysent2currentDTD SYSTEM "chrome://copysent2current/locale/copysent2current.dtd" >
+%copysent2currentDTD;
+]>
+
+<!-- Ohne die Zeile xmlns:nc wird das Overlay nicht geladen! -->
+<overlay id="de-ggbs-cs2c-messagecompose"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:nc="http://home.netscape.com/NC-rdf#">
+
+  <script type="application/javascript" src="chrome://messenger/content/msgFolderPickerOverlay.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/customElements.js"/>
+
+  <script type="application/javascript" src="chrome://copysent2current/content/compose.js"/>
+  <script type="application/javascript" src="chrome://copysent2current/content/utils.js"/>
+
+
+<!-- from chrome://messenger/content/messenger/mailWindowOverlay.xul -->
+<!-- overlays chrome://messenger/content/messengercompose/messengercompose.xul -->
+
+  <vbox id="headers-box">
+    <toolbox id="de-ggbs-cs2c-toolbar" insertafter="subject-box">
+      <hbox align="center" id="de-ggbs-cs2c-copysent-chooser" class="groove-top" flex="0">
+        <label value="&copysent2choose.label;"
+          accesskey="&copysent2choose.accesskey;"
+          control="de-ggbs-cs2c-fccFolderPicker"/>
+
+        <menulist label="&copysent2choose.label;" uri="" id="de-ggbs-cs2c-fccFolderPicker"
+          onfocus="window.setTimeout(de_ggbs_cs2c.mc.showPopup,0);"
+          disableonsend="true"
+                  displayformat="verbose" sizetopopup="pref">
+          <menupopup id="de-ggbs-cs2c-copyMenuPopup"  crop="none"
+                      is="folder-menupopup" mode="filing"
+                      class="menulist-menupopup" showFileHereLabel="true"
+                      oncommand="de_ggbs_cs2c.mc.picked(null, event.target, false)">
+            <menuitem label="current" id="default://" class="folderMenuItem menuitem-iconic"
+                      accesskey="#" />
+            <menuitem label="sent" id="sent://" class="folderMenuItem menuitem-iconic"
+                      accesskey="!" />
+            <menuitem label="&copysent2current.nocopy;" id="nocopy://" xclass="folderMenuItem menuitem-iconic"
+                      accesskey="-" />
+            <menuseparator id="de-ggbs-cs2c-sep"/>
+            <menuitem label="lastused" id="lastused://" class="folderMenuItem menuitem-iconic"
+                      accesskey="+" />
+            <menuseparator/>
+          </menupopup>
+        </menulist>
+        <checkbox id="de-ggbs-cs2c-move" label="&moveoriginal.label;" accesskey="&moveoriginal.accesskey;"/>
+      </hbox>
+    </toolbox>
+  </vbox>
+
+  <window id="msgcomposeWindow">
+
+  <!--
+    <statusbar class="chromeclass-status" id="status-bar">
+      <hbox insertbefore="unreadMessageCount"  id="statusTextBox" flex="1">
+        <statusbarpanel id="statusText" label="&statusText.label;" flex="1"/>
+        <statusbarpanel class="statusbarpanel-progress" collapsed="true" id="statusbar-progresspanel">
+          <progressmeter class="progressmeter-statusbar" id="statusbar-icon" mode="normal" value="0"/>
+        </statusbarpanel>
+      </hbox>
+    </statusbar>
+  -->
+
+  </window>
+
+  <commandset id="composeCommands">
+    <command id="de-ggbs-cs2c-cmd_sendNoCopy" oncommand="goDoCommand('de-ggbs-cs2c-cmd_sendNoCopy')"/>
+    <command id="de-ggbs-cs2c-cmd_sendCopy2Sent" oncommand="goDoCommand('de-ggbs-cs2c-cmd_sendCopy2Sent')"/>
+    <command id="de-ggbs-cs2c-cmd_sendNoCopyWithCheck" oncommand="goDoCommand('de-ggbs-cs2c-cmd_sendNoCopyWithCheck')"/>
+    <command id="de-ggbs-cs2c-cmd_sendCopy2SentWithCheck" oncommand="goDoCommand('de-ggbs-cs2c-cmd_sendCopy2SentWithCheck')"/>
+  </commandset>
+  <keyset id="tasksKeys">
+    <key id="de-ggbs-cs2c-key_sendNoCopy" key="D" observes="de-ggbs-cs2c-cmd_sendNoCopyWithCheck" modifiers="accel"/>
+    <key id="de-ggbs-cs2c-key_sendCopy2Sent" key="D" observes="de-ggbs-cs2c-cmd_sendCopy2SentWithCheck" modifiers="accel, shift"/>
+  </keyset>
+  <menupopup id="menu_FilePopup">
+    <menuitem label="&sendNoCopyCmd.label;"
+      accesskey="&sendNoCopyCmd.accesskey;" key="de-ggbs-cs2c-key_sendNoCopy"
+      command="de-ggbs-cs2c-cmd_sendNoCopy" id="de-ggbs-cs2c-menu-item-send-NoCopy"
+      insertafter="menu-item-send-now"/>
+    <menuitem label="&sendCopy2SentCmd.label;"
+      accesskey="&sendCopy2SentCmd.accesskey;" key="de-ggbs-cs2c-key_sendCopy2Sent"
+      command="de-ggbs-cs2c-cmd_sendCopy2Sent" id="de-ggbs-cs2c-menu-item-send-Copy2Sent"
+      insertafter="menu-item-send-now"/>
+  </menupopup>
+
+  <toolbarpalette id="MsgComposeToolbarPalette">
+    <toolbarbutton class="toolbarbutton-1"
+      id="de_ggbs_cs2c_button-sendnocopy"
+      label="&sendNoCopyButton.label;"
+      tooltiptext="&sendNoCopyButton.label;"
+      command="de-ggbs-cs2c-cmd_sendNoCopy"/>
+    <toolbarbutton class="toolbarbutton-1"
+      id="de_ggbs_cs2c_button-sendcopy2sent"
+      label="&sendCopy2SentButton.label;"
+      tooltiptext="&sendCopy2SentButton.label;"
+      command="de-ggbs-cs2c-cmd_sendCopy2Sent"/>
+  </toolbarpalette>
+
+
+</overlay>

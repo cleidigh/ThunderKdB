@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Check and Send",
+  "description": "Confirm before sending mail.",
+  "version": "1.1.1",
+  "author": "H.Ogi",
+  "homepage_url": "http://hogi.sakura.ne.jp/en/",
+  "legacy": {
+  	"type": "xul",
+    "options" : {
+      "page" : "chrome://chksend/content/settings.xul",
+      "open_in_tab" : false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "{1B0ADFEC-846C-401D-BA54-7842CBD485D4}",
+      "strict_min_version": "68.0"
+    }
+  }
+}

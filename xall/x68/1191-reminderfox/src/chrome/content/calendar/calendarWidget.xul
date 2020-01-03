@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+
+<!-- CSS Files -->
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/skin/datepicker/datepicker.css"  type="text/css" ?>
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+
+
+<!-- DTD Files -->
+<!DOCTYPE window
+[
+    <!ENTITY % dtd1 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd1;
+]>
+
+
+<overlay id="reminderfox-calendar-overlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<!-- 'Calendar' part of the ReminderFox main dialog -->
+	<vbox id="reminderfox-calendar-box" hidden="false" flex="0">
+
+		<vbox id="reminderfox-calendar-box-widget" flex="1">
+
+			<hbox class="reminderfox-calendar-title-box" onmouseover="reminderfox.calendar.ui.panelClose()">  <!-- Year/month control -->
+
+				<image class="reminderfox-calendar-button-left"  onclick="reminderfox.calendar.ui.yearChange(-1)"
+					tooltiptext="&rf.calendar.year.previous;" />
+				<spacer flex="1" />
+				<label id="reminderfox-calendar-year-title" class="reminderfox-calendar-title" value="set with JS" />
+				<spacer flex="1" />
+				<image class="reminderfox-calendar-button-right" onclick="reminderfox.calendar.ui.yearChange(1)"
+					tooltiptext="&rf.calendar.year.next;" />
+
+			</hbox>  <!-- Year/month control -->
+
+			<spacer height="3px"
+				onmouseover="reminderfox.calendar.dayPanel (this, 'close')" />
+
+			<hbox id="reminderfox-calendar-week-header-box" />  <!-- week headers # MO .. SO -->
+
+			<spacer height="3px"
+				onmouseover="reminderfox.calendar.dayPanel (this, 'close')" />
+
+			<arrowscrollbox id="reminderfox-calendar-month-grid-box"
+				orient="vertical" flex="1" />
+
+		</vbox>  <!-- calendar box -->
+
+		<!--spacer flex="1" onmouseover="reminderfox.calendar.dayPanel (this, 'close');" / -->
+
+		<!-- foxy icon on calendar widget area -->
+		<menupopup id="reminderfox-y-context">
+		  <menuitem id="reminderfox-y-hide-menu" label="&rf.add.sidebar.hideFoxy.label;" oncommand="reminderfox.calendar.toggleFoxy();"/>
+		  <menuitem id="reminderfox-y-show-menu" label="&rf.add.sidebar.showFoxy.label;" oncommand="reminderfox.calendar.toggleFoxy();"/>
+		  <menuitem label="&rf.main.about.label;" oncommand="reminderfox.overlay.openAboutReminderFoxDialog();"/>
+		</menupopup>
+		<spacer id="reminderfox-y-spacer" flex="100" context="reminderfox-y-context" oncontextmenu="reminderfox.calendar.activateCalendarFoxyContext(event);"/>
+		<hbox id="reminderfox-y-box" hidden="false" context="reminderfox-y-context" oncontextmenu="reminderfox.calendar.activateCalendarFoxyContext(event);">
+			<spacer flex="100"/>
+			<image id="reminderfox-y-calendar" src='chrome://reminderfox/skin/images/foxy-small.png' />
+		</hbox>
+
+
+		<!--   Box to control  Reminderfox NEWS  -->
+		<hbox id="reminderfox-News-box" hidden="true">
+			<button label="Reminderfox NEWS" id="newsButton"
+				class="reminderfox-calendar-iconLabel reminderFox_BoldBlue" oncommand="reminderfox.go4news.callNews();" />
+		</hbox>
+
+
+		<!-- popup on calendar day event with right mouse, function as context
+			menu -->
+		<panel id="reminderfox-calendar-contextEvent">
+
+			<menuitem id="reminderfox-calendar-menu-Event" label="xxEventxx" class="reminderFox_Bold"/> <!-- will be overwritten with JS -->
+			<menuseparator />
+
+			<menuitem id="reminderfox-calendar-menu-editReminder" label="&rf.add.event.edit.label;"
+				oncommand="reminderfox.calendar.ui.eventContext('Edit',this)" />
+
+			<menuitem id="reminderfox-calendar-menu-copyReminder" label="&rf.add.event.copy.label;"
+				oncommand="reminderfox.calendar.ui.eventContext('Copy',this)" />
+
+			<menuitem id="reminderfox-calendar-menu-delete" label="&rf.add.event.delete.label;"
+				oncommand="reminderfox.calendar.ui.eventContext('Delete',this)" />
+
+			<!--menu id="reminderfox-calendar-menu-moveReminderToList" label="&rf.add.reminders.context.moveToList.label;">
+				<menupopup id="reminderfox-calendar-menu-moveReminderToList-popup"> </menupopup>
+				</menu -->
+			<menuseparator />
+
+			<menuitem id="reminderfox-calendar-menu-important" label="&rf.add.reminders.context.important.label;"
+				type="checkbox" autocheck="false"
+				oncommand="reminderfox.calendar.ui.eventContext('Important',this)" />
+			<menuitem id="reminderfox-calendar-menu-markAsComplete"
+				label="&rf.add.reminders.context.complete.label;" type="checkbox"
+				autocheck="false" oncommand="reminderfox.calendar.ui.eventContext('Complete',this);"
+				disabled="false" />
+
+			<menuitem id="reminderfox-calendar-menu-remindUntilComplete"
+				label="&rf.add.reminders.context.remindUntilCompleted.label;" type="checkbox"
+				autocheck="false" oncommand="reminderfox.calendar.ui.eventContext('RUC',this)"
+				hidden="true"/>  <!--  for Reminders -->
+
+			<menuitem id="reminderfox-calendar-menu-showInTooltip"
+				label="&rf.add.todos.context.showInTooltip.label;" type="checkbox"
+				autocheck="false" oncommand="reminderfox.calendar.ui.eventContext('ShowInTooltip',this)"
+				hidden="true"/>  <!--   for Todos/List -->
+
+			<menuseparator />
+
+			<menuitem id="reminderfox-calendar-menu-sendReminder"
+				label="&rf.add.reminders.context.exportSendReminders.label;"
+				oncommand="reminderfox.calendar.ui.eventContext('Export',this)" />
+
+			<menuitem id="reminderfox-calendar-menu-reminder-openABcard"
+				label="&rf.main.contextmenu.openAB;" oncommand="reminderfox.calendar.ui.eventContext('ABcard',this)"
+				hidden="true" disabled="true" />			<!-- //gWXXX  NOT YET IMPLEMENTED -->
+		</panel>
+
+		<!-- popup on calendar day with day-header and all day events -->
+		<panel id="reminderfox-calendar-dayPanel" flex="0" width="400px"
+	onmouseleave= "reminderfox.calendar.ui.panelLeave(this)">
+			<description id="reminderfox-calendar-dayPanelItems" value="Really!"
+				style="color: red;" />
+		</panel>
+
+	</vbox>
+
+</overlay>

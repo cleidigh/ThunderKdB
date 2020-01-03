@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://resubmit/locale/options.dtd">
+
+<dialog
+  id="prefwindow"
+  title="&prefwindow.title;"
+  type="child"
+  buttons="accept, cancel"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <vbox>
+  <tabbox>
+    <tabs>
+      <tab id="prefwindow.tab1"
+                 label="&prefwindow.tab1.label;"
+                 linkedpanel="prefwindow.tabpanel1"/>
+      <tab id="prefwindow.tab2"
+                 label="&prefwindow.tab2.label;"
+                 linkedpanel="prefwindow.tabpanel2"/>
+    </tabs>
+    <tabpanels>
+      <tabpanel id="prefwindow.tabpanel1">
+
+              <!-- Send Now -->
+              <groupbox id="gboxSend"
+                        tooltiptext="&gboxSendNow.tooltiptext;"
+                        orient="vertical">
+
+                <!-- Caption -->
+                <hbox class="groupbox-title">
+                  <label id="captSend" class="header">&captSendNow.label;</label>
+                </hbox>
+
+                <!-- Checkbox -->
+                <checkbox id="checkSendNowEnabled"
+                          label="&checkSendNowEnabled.label;"
+                          preference="extensions.resubmit.sendnow.enabled"/>
+
+                <!-- Textbox -->
+                <label value="&textSendNowMaxMessages.label;" />
+                <html:input id="textSendNowMaxMessages"
+                            type="number"
+                            min="1"
+                            max="4"
+                            preference="extensions.resubmit.sendnow.max_messages"/>
+              </groupbox>
+
+              <!-- Send Later -->
+              <groupbox id="gboxSendLater"
+                        tooltiptext="&gboxSendLater.tooltiptext;"
+                        orient="vertical">
+
+                <!-- Caption -->
+                <hbox class="groupbox-title">
+                  <label id="captSendLater" class="header">&captSendLater.label;</label>
+                </hbox>
+
+                <!-- Checkbox -->
+                <checkbox id="checkSendLaterEnabled"
+                          label="&checkSendLaterEnabled.label;"
+                          preference="extensions.resubmit.sendlater.enabled"/>
+
+                <!-- Textbox -->
+                <label value="&textSendLaterMaxMessages.label;" />
+                <html:input id="textSendLaterMaxMessages"
+                            type="number"
+                            min="1"
+                            max="4"
+                            preference="extensions.resubmit.sendlater.max_messages"/>
+              </groupbox>
+
+              <!-- Compose -->
+              <groupbox id="gboxCompose"
+                        tooltiptext="&gboxCompose.tooltiptext;"
+                        orient="vertical">
+
+                <!-- Caption -->
+                <hbox class="groupbox-title">
+                  <label id="captCompose" class="header">&captCompose.label;</label>
+                </hbox>
+
+                <!-- Checkbox -->
+                <checkbox id="checkComposeEnabled"
+                          label="&checkComposeEnabled.label;"
+                          preference="extensions.resubmit.compose.enabled"/>
+
+                <!-- Textbox -->
+                <label value="&textComposeMaxWindows.label;" />
+                <html:input id="textComposeMaxWindows"
+                            type="number"
+                            min="1"
+                            max="20"
+                            preference="extensions.resubmit.compose.max_windows"/>
+              </groupbox>
+
+
+      </tabpanel>
+      <tabpanel id="prefwindow.tabpanel2">
+              <groupbox id="gboxDebug"
+                        tooltiptext="&gboxDebug.tooltiptext;"
+                        orient="vertical">
+                  <!-- Checkbox -->
+                  <checkbox id="checkDebugEnabled"
+                            label="&checkDebugEnabled.label;"
+                            preference="extensions.resubmit.debug.enabled"/>
+
+                  <!-- Textbox -->
+                  <label value="&textDebugLevel.label;" />
+                  <html:input id="textDebugLevel"
+                              type="number"
+                              min="1"
+                              max="7"
+                              preference="extensions.resubmit.debug.level"/>
+              </groupbox>
+      </tabpanel>
+    </tabpanels>
+  </tabbox>
+  </vbox>
+
+  <script
+      type="application/javascript"
+      src="chrome://global/content/preferencesBindings.js"/>
+  <script
+      type="application/javascript"
+      src="chrome://resubmit/content/options.js"/>
+</dialog>

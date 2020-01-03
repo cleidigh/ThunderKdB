@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://getpartialmessages/skin/getpartialmessages.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://getpartialmessages/locale/getpartialmessages.dtd">
+
+
+<overlay id="compactHeaderOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/javascript" src="chrome://getpartialmessages/content/getpar.js"/>
+
+  <keyset>
+    <key id="getPartitialMessagesKey"
+         modifiers="accel, shift"
+         key="&button-getPartialMessages.key;"
+         oncommand="org_mozdev_getpartialmessages.wrapper.getMessages();"/>
+  </keyset>
+
+</overlay>

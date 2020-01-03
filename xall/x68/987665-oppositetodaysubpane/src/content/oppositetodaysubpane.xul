@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="opposite.css" type="text/css"?>
+
+<overlay id="messengerWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<toolbarpalette id="MailToolbarPalette">
+<toolbarbutton id="opposite" class="toolbarbutton-1 chromeclass-toolbar-additonal" label=" Today subpane" type="menu-button">
+<menupopup>
+<menuitem onclick="
+var todayBox = window.document.getElementById('mini-day-box');
+var todayContent = window.document.getElementById('calendarContent');
+todayContent.allowEvents = true;
+var todaySidebar = window.document.getElementById('ltnSidebar'); 
+var todayPane = window.document.getElementById('minimonth-pane');
+todaySidebar.allowEvents = true;
+todayPane.allowEvents = true;
+var todayClone3 = todayBox.cloneNode(3); 
+todayClone3.width = '200'; 
+todayClone3.height = '50';
+todaySidebar.insertBefore(todayClone3, todayPane).persist = 'true';
+todayClone3.style.setProperty('background-color', 'black', 'important'); 
+todayClone3.style.setProperty('color', 'white', 'important'); 
+todayClone3.style.setProperty('border', 'solid', 'important'); 
+todayClone3.style.setProperty('border-width', '1px', 'important'); 
+todayClone3.style.setProperty('border-color', 'white', 'important');
+var todayBox = window.document.getElementById('mini-day-box');
+var todayMBox = window.document.getElementById('messengerBox');
+todayMBox.allowEvents = true;
+var todayFBox = window.document.getElementById('folderPaneBox');
+todayFBox.allowEvents = true;
+var todayToolbar = window.document.getElementById('folderPane-toolbar');
+var todayHeader = window.document.getElementById('folderPaneHeader');
+var todayTree = window.document.getElementById('folderTree');
+var todayClone4 = todayBox.cloneNode(4);
+todayClone4.width = '200'; 
+todayClone4.height = '50';
+todayFBox.insertBefore(todayClone4, todayTree).persist = true;
+todayClone4.style.setProperty('background-color', 'black', 'important'); 
+todayClone4.style.setProperty('color', 'white', 'important'); 
+todayClone4.style.setProperty('border', 'solid', 'important'); 
+todayClone4.style.setProperty('border-width', '1px', 'important'); 
+todayClone4.style.setProperty('border-color', 'white', 'important');"
+label="append today subpane to opposite, left"/>
+
+<menuitem onclick="
+var todayBox = window.document.getElementById('mini-day-box');
+var todayContent = window.document.getElementById('calendarContent');
+todayContent.allowEvents = true;
+var todaySidebar = window.document.getElementById('ltnSidebar'); 
+var todayPane = window.document.getElementById('minimonth-pane');
+todaySidebar.allowEvents = true;
+todayPane.allowEvents = true;
+var todayClone3 = todayBox.cloneNode(3); 
+todaySidebar.removeChild(todaySidebar.firstChild);
+var todayBox = window.document.getElementById('mini-day-box');
+var todayMBox = window.document.getElementById('messengerBox');
+todayMBox.allowEvents = true;
+var todayFBox = window.document.getElementById('folderPaneBox');
+todayFBox.allowEvents = true;
+var todayToolbar = window.document.getElementById('folderPane-toolbar');
+var todayTree = window.document.getElementById('folderTree');
+var todayClone4 = todayBox.cloneNode(4);
+todayFBox.removeChild(todayFBox.childNodes[1]);"
+label="[Warning] remove today subpane on opposite, left"/>
+
+<splitter/>
+
+<menuitem onclick="
+var todayBox = window.document.getElementById('mini-day-box');
+var todayContent = window.document.getElementById('calendarContent');
+todayContent.allowEvents = true;
+var todaySidebar = window.document.getElementById('ltnSidebar');
+todaySidebar.allowEvents = true;
+var todayClone1 = todayBox.cloneNode(1);
+todaySidebar.appendChild(todayClone1).persist = 'true';
+var todayMBox = window.document.getElementById('messengerBox');
+todayMBox.allowEvents = true;
+var todayFBox = window.document.getElementById('folderPaneBox');
+todayFBox.allowEvents = true;
+var todayClone2 = todayBox.cloneNode(2);
+todayFBox.appendChild(todayClone2).persist = 'true';
+todayClone1.style.setProperty('background-color', 'black', 'important'); 
+todayClone1.style.setProperty('color', 'white', 'important'); 
+todayClone1.style.setProperty('border', 'solid', 'important'); 
+todayClone1.style.setProperty('border-width', '1px', 'important'); 
+todayClone1.style.setProperty('border-color', 'white', 'important');
+todayClone2.style.setProperty('border', 'solid', 'important'); 
+todayClone2.style.setProperty('background-color', 'black', 'important'); 
+todayClone2.style.setProperty('color', 'white', 'important'); 
+todayClone2.style.setProperty('border-width', '1px', 'important'); 
+todayClone2.style.setProperty('border-color', 'white', 'important');" 
+label="append today subpane to opposite, bottom"/>
+
+<menuitem onclick="
+var todayBox = window.document.getElementById('mini-day-box');
+var todaySidebar = window.document.getElementById('ltnSidebar');
+var todayFBox = window.document.getElementById('folderPaneBox');
+var todayClone1 = todayBox.cloneNode(1);
+var todayClone2 = todayBox.cloneNode(2);
+todaySidebar.removeChild(todaySidebar.lastChild);
+todayFBox.removeChild(todayFBox.lastChild);"
+label="[Warning] remove today subpane on opposite, bottom"/>
+</menupopup>
+</toolbarbutton>
+</toolbarpalette>
+</overlay>

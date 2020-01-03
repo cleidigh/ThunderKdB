@@ -1,0 +1,34 @@
+.selectColumnHeader {
+    width: 12px;
+    list-style-image: url('chrome://checkbox/skin/uncheckHeader.svg');    
+}
+
+.selectColumnHeader.all {
+    list-style-image: url('chrome://checkbox/skin/checkHeader.svg');
+}
+
+.selectColumnHeader.some {
+    list-style-image: url('chrome://checkbox/skin/someHeader.svg');
+}
+
+#threadTree.largeFont treechildren::-moz-tree-row {
+    height: 48px;
+}
+
+#threadTree.largeFont treechildren::-moz-tree-cell-text {
+    font-size: 133%;
+}
+
+treechildren::-moz-tree-image(selectCol) {
+    width: 16px;
+    list-style-image: url('chrome://checkbox/skin/uncheck.svg');
+}
+
+#threadTree.largeFont treechildren::-moz-tree-image(selectCol) {
+    width: 32px;
+}
+
+treechildren::-moz-tree-image(selectCol, selected)
+{
+    list-style-image: url('chrome://checkbox/skin/check.svg');    
+}

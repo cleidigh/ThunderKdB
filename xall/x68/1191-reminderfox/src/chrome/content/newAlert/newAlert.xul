@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!-- DTD Files -->
+<!DOCTYPE window 
+[
+    <!ENTITY % dtd2 SYSTEM "chrome://reminderfox/locale/reminderfox.dtd" > %dtd2;
+]>
+
+<?xml-stylesheet href="chrome://reminderfox/skin/reminder.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/alerts/alert.css" type="text/css"?>
+
+
+<?xml-stylesheet href="chrome://reminderfox/content/newAlert/newAlert.css"  type="text/css"?>
+<?xml-stylesheet href="chrome://reminderfox/content/newAlert/newAlertFade.css"  type="text/css"?>
+
+
+<window id="newAlertNotification"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		windowtype="alert:alert"
+		role="alert"
+		align="start"
+		onload="onAlertLoad()">
+
+	<script type="application/x-javascript" src="chrome://reminderfox/content/utils/rmFxUtils.js" />
+	<script type="application/x-javascript" src="chrome://reminderfox/content/reminderFoxCore.js" />
+	<script type="application/javascript" src="chrome://reminderfox/content/newAlert/newAlert.js" />
+
+
+	<vbox id="alertContainer" mousethrough="always">
+		<hbox>
+			<spacer  flex="1" />
+			<toolbarbutton id="closeButton" onclick="fadeOutAlert(true);"/>
+		</hbox>
+
+		<hbox>
+		<vbox id="reminderfox-foxpaw">
+			<hbox>
+				<image src='chrome://reminderfox/skin/images/foxy-small.png' class="small-fox-icon"/>
+				<spacer id="reminderfox-entry-spacer.i" width="6px" />
+			</hbox>
+		</vbox>
+
+		<vbox id="tooltipChildrenReminders2">
+
+			<description id="reminderfox-todayRemindersDescription2" 
+				style="font-weight:bold">&rf.main.tooltip.todaysreminders.label;</description>
+
+			<vbox id="reminderfox-todaysRemindersBox2" >
+			</vbox>
+
+			<spacer id="reminderfox-reminderSpacer" height="4px"/>
+			<description value="&rf.main.tooltip.upcomingreminders.label;" id="reminderfox-upcomingRemindersDescription2" style="font-weight:bold"/>
+
+			<vbox id="reminderfox-upcomingRemindersBox2">
+			</vbox>
+
+		</vbox>
+		</hbox>
+	</vbox>
+
+</window>

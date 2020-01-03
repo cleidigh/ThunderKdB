@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Copy Sent to Current",
+  "description": "Allows to (additionally) save a copy of sent messages to the current folder or choose folder on send",
+  "version": "2.0.3",
+  "author": "Günter Gersdorf",
+  "homepage_url": "https://www.ggbs.de/extensions/CopySent2Current.html",
+  "applications": {
+    "gecko": {
+      
+      "id": "copysent2current@ggbs.de",
+      "strict_min_version": "68.0"
+    }
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://copysent2current/content/options.xul",
+      "open_in_tab": false
+    }
+  },
+  "icons": {
+    "32": "skin/copyMailIcon.png",
+    "48": "skin/copyMailIcon48.png"
+  }
+}
+

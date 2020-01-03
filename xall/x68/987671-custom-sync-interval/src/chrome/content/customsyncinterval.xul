@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay>
+<overlay id="customsyncinterval-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <dialog id="calendar-properties-dialog-2">
+    <stringbundle id="customsyncinterval-strings" src="chrome://customsyncinterval/locale/global.properties"/>
+  </dialog>
+  <script type="application/javascript" src="chrome://calendar/content/calendar-ui-utils.js"/>
+  <script type="application/javascript" src="chrome://customsyncinterval/content/customsyncinterval.js"/>
+</overlay>

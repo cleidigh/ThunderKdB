@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "applications": {
+        "gecko": {
+            "id":"warnattachment@jdede.de",
+            "strict_min_version": "68.0"
+        }
+    },
+    "default_locale": "en",
+    "name":"WarnAttachment",
+    "description":"__MSG_extensionDescription__",
+    "author": "Jens Dede",
+    "homepage_url": "https://github.com/jdede/WarnAttachment",
+    "version":"1.2",
+    "icons":{
+        "32" : "icons/icon32.png"
+    },
+    "legacy": {
+        "type":"xul",
+        "options":{
+            "page":"chrome://warnattachment/content/preferences.xul",
+            "open_in_tab":false
+        }
+    }
+}

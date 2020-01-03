@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Profile Switcher",
+  "description": "Adds options to launch other profiles",
+  "version": "2.4",
+  "author": "Dillinger",
+  "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/profile-switcher/",
+  "legacy" : {
+    "options" : {
+      "page" : "chrome://profilelauncher/content/profilelauncherOptions.xul",
+      "open_in_tab" : false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "pswitcher2@dillinger",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "32": "skin/icons/profileswitcher.svg",
+    "64": "skin/icons/profileswitcher.svg"
+  }
+}

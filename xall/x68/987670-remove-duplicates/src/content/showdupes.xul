@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE dialog SYSTEM "chrome://removedupes/locale/removedupes.dtd">
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="removeDupes.ShowDuplicateMessages.Init();"
+        buttons="accept, cancel, extra2"
+        buttonlabelaccept="&showdupes.buttonDel;"
+        buttonlabelcancel="&showdupes.buttonCancel;"
+        buttonlabelextra2="&removedupesPrefs.captionabout;"
+        id="removedupesShowMessagesDialog"
+        title="&showdupes.title;">
+
+  <script type="application/x-javascript" src="chrome://removedupes/content/removedupes.js"/>
+  <script type="application/x-javascript" src="chrome://removedupes/content/removedupesprefs.js"/>
+  <script type="application/x-javascript" src="chrome://removedupes/content/showdupes.js"/>
+  <script type="application/x-javascript" src="chrome://removedupes/content/md5dupes.js"/>
+  <script type="application/x-javascript" src="chrome://removedupes/content/sortdupes.js"/>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="bundle_removedupes" src="chrome://removedupes/locale/removedupes.properties"/>
+  </stringbundleset>
+
+  <vbox>
+    <label class="header">&showdupes.caption;</label>
+    <vbox flex="1">
+      <description>&showdupes.hint;</description>
+        <label id="label1" value=""/>
+      <hbox>
+        <label id="label2" value=""/>
+        <spacer flex="1"/>
+        <label id="label3" value=""/>
+      </hbox>
+      <tree id="messageList"
+        enableColumnDrag="true"
+        flex="1" width="700" height="350" style="margin: 7px 5px;"
+        onclick="removeDupes.ShowDuplicateMessages.messageListClick(event)"
+        ondblclick="removeDupes.ShowDuplicateMessages.messageListDblClick(event)"
+        onmousedown="removeDupes.ShowDuplicateMessages.messageListMiddleClick(event)"
+        oncontextmenu="removeDupes.ShowDuplicateMessages.messageListContextmenu(event)">
+        <treecols id="messageListCols">
+          <treecol id="messageid"    label="&showdupes.id;"        flex="5" primary="true"/>
+          <splitter class="tree-splitter"/>
+          <treecol id="flagCol"      label="&showdupes.flag;"      flex="2"/>
+          <splitter class="tree-splitter"/>
+          <treecol id="senderCol"    label="&showdupes.sender;"    flex="5"/>
+          <splitter class="tree-splitter"/>
+          <treecol id="recipientCol" label="&showdupes.recipient;" flex="5" hidden="true"/>
+          <splitter class="tree-splitter"/>
+          <treecol id="subjectCol"   label="&showdupes.subject;"   flex="5"/>
+          <splitter class="tree-splitter"/>
+          <treecol id="folderCol"    label="&showdupes.folder;"    flex="2"/>
+          <splitter class="tree-splitter"/>
+          <treecol id="dateCol"      label="&showdupes.date;"      flex="5"/>
+          <splitter class="tree-splitter"/>
+          <treecol id="linecountCol" label="&showdupes.linecount;" flex="2" hidden="true"/>
+        </treecols>
+        <treechildren id="messageListChildren"/>
+      </tree>
+    </vbox>
+    <hbox>
+      <spacer flex="1"/>
+      <tooltip id="tooltip.buttonDefault"><description height="33" flex="1">&tooltip.buttonDefault;</description></tooltip>
+      <tooltip id="tooltip.buttonSelDel"> <description height="33" flex="1">&tooltip.buttonSelDel;</description> </tooltip>
+      <tooltip id="tooltip.buttonSelKeep"><description height="33" flex="1">&tooltip.buttonSelKeep;</description></tooltip>
+      <button disabled="true"  id="buttonDefault" tooltip="tooltip.buttonDefault" label="&showdupes.buttonDefault;"  oncommand="return removeDupes.ShowDuplicateMessages.doSelectAllDefault();"/>
+      <button disabled="true"  id="buttonSelDel"  tooltip="tooltip.buttonSelDel"  label="&showdupes.buttonSelDel;"   oncommand="return removeDupes.ShowDuplicateMessages.doSelectAllDelete();"/>
+      <button disabled="true"  id="buttonSelKeep" tooltip="tooltip.buttonSelKeep" label="&showdupes.buttonSelNoDel;" oncommand="return removeDupes.ShowDuplicateMessages.doSelectAllNoDelete();"/>
+    </hbox>
+  </vbox>
+</dialog>

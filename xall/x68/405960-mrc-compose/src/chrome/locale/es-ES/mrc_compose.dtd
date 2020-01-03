@@ -1,0 +1,134 @@
+<!ENTITY field.placeholder "escriba uno o mas destinatarios separados por comas" >
+<!ENTITY field.warning_number "Advertencia : deberías mover tus destinarios en '&bccAddr.label;'." >
+<!ENTITY field.info_first_cardbook "Este es el primer lanzamiento de MRC Compose con CardBook. Le recomendamos que abra las preferencias para actualizar las libretas de direcciones que AAA leerá (desactivar los cuadernos tipo 'Thunderbird' y activar los cuadernos 'LDAP' y 'Cardbook')." >
+
+<!ENTITY field.open_prefs_cardbook "Preferencias abiertas" >
+<!ENTITY field.close_info_cardbook "No gracias" >
+
+<!ENTITY fieldcc.show "Mostrar '&ccAddr.label;'" >
+<!ENTITY fieldbcc.show "Mostrar '&bccAddr.label;'" >
+<!ENTITY fieldreply.show "Mostrar '&replyAddr.label;'" >
+<!ENTITY fieldng.show "Mostrar '&newsgroupsAddr.label;'" >
+<!ENTITY fieldfollow.show "Mostrar '&followupAddr.label;'" >
+
+<!ENTITY fieldcheckbox.style "-moz-appearance:none; font-size:0.8em;" >
+
+<!ENTITY minimize.label "Minimizar" >
+<!ENTITY maximize.label "Maximizar" >
+
+<!ENTITY minimize.style "min-height:22px; height:22px; max-height:22px; font-size:0.75em;" >
+<!ENTITY info_nb.style "font-style:italic; color:gray;">
+
+<!ENTITY preferences.label "Preferencias..." >
+
+
+<!-- options dialog -->
+<!ENTITY options.tab1.label "Buscar y mostrar" >
+<!ENTITY options.tab2.label "Autocompletar" >
+<!ENTITY options.tab3.label "Apariencia de campos" >
+<!ENTITY options.tab4.label "Avanzado" >
+
+<!-- tab 1 -->
+<!ENTITY options.search_ab_URI_list.label "Buscar en libreta de direcciones: ">
+<!ENTITY options.edit_directories.label     "&editDirectories.label;">
+<!ENTITY options.remove_duplicates.label "Eliminar duplicados (?) : ">
+<!ENTITY options.mode.label "Modo (?): ">
+<!ENTITY options.mode_value1.label "1 : Todos los que contienen">
+<!ENTITY options.mode_value2.label "2 : Todos los que inician con / Todos los que contienen">
+<!ENTITY options.mode_value3.label "3 : Cada libreta de direcciones">
+<!ENTITY options.mode_value4.label "0 : Todos los que inician con">
+<!ENTITY options.max_elements_part_menu.label "Núm. max. de líneas en cada sección (?): ">
+<!ENTITY options.sort_field_level_1.label "Orden 1: ">
+<!ENTITY options.sort_field_level_2.label "Orden 2: ">
+<!ENTITY options.sort_field_level_3.label "Orden 3: ">
+<!ENTITY options.sort_field_1.label "Popularidad">
+<!ENTITY options.sort_field_2.label "Apellidos">
+<!ENTITY options.sort_field_3.label "Nombre">
+<!ENTITY options.show_popularity.label "Mostrar popularidad (?): ">
+<!ENTITY options.show_no_result.label "Mostrar 'Sin resultados' (?) : ">
+
+<!-- tab 2 -->
+<!ENTITY options.min_recipients_show.label "Mostrar destinatarios si superan (?): "> <!-- min_recipients_show -->
+<!ENTITY options.max_recipients_warning.label "Núm. max de destinatarios sugeridos (?): "> <!-- recimax_recipients_warning -->
+<!ENTITY options.search_min_char.label "Iniciar busqueda después este núm. de caracteres (?): " > <!-- pref_search_min_char-->
+
+<!-- tab 3 -->
+<!ENTITY options.first_focus.label "Enfoque predeterminado en :" >
+<!ENTITY options.first_focus.label2 "(Correos nuevos y reenviados)" >
+<!ENTITY options.first_focus_reply.label "Enfoque predeterminado en :" >
+<!ENTITY options.first_focus_reply.label2 "(Responder correo en texto plano)" >
+<!ENTITY options.first_focus_reply_html.label "Enfoque predeterminado en :" >
+<!ENTITY options.first_focus_reply_html.label2 "(Responder correo en HTML)" >
+<!ENTITY options.first_focus_default.label "Predeterminado" >
+<!ENTITY options.first_focus_message.label "Cuerpo" >
+
+<!ENTITY options.showcc.label "Siempre mostra el campo '&ccAddr.label;' " >
+<!ENTITY options.showbcc.label "Siempre mostra el campo '&bccAddr.label;' " >
+<!ENTITY options.show_placeholder.label "Mostrar texto prederminado" >
+<!ENTITY options.show_placeholder.label2 "'escriba uno o mas destinatarios...' " >
+<!ENTITY options.show_placeholder.label3 "(necesita reiniciar)" >
+<!ENTITY options.max_nb_line.label "Núm máximo de líneas (?): ">
+<!ENTITY options.first_line_height.label "Altura de la primera línea (?): ">
+<!ENTITY options.line_height.label "Altura de la línea (?): ">
+<!ENTITY options.default_line_height.label "">
+<!ENTITY options.default_line_height.button "Altura predeterminada">
+<!ENTITY options.automatic_height.label "Altura automática (?): ">
+
+<!-- tab 4 -->
+<!ENTITY options.min_search_delay.label "Retraso mín. de la busqueda (ms) (?): ">
+<!ENTITY options.search_timeout.label "Tiempo para busquedas en LDAP (ms) (?)">
+<!ENTITY options.add_comma.label "Agregar comas automáticamente (?): ">
+
+<!ENTITY options.special_values.label "Estos valores son especiales. Es mejor NO cambiarlos.">
+<!ENTITY options.special_values.style "font-size:1.2em; font-style:italic"> 
+
+<!ENTITY options.ldap_search_version.label "Usar esta versíon de API de LDAP :">
+
+
+
+<!-- help tooltips -->
+
+<!ENTITY options.add_comma.help "Agrega una coma entre cada destinatario.">
+<!ENTITY options.automatic_height.help "Adapta la altura de los campos de acuerdo a los caracteres escritos.">
+<!ENTITY options.default_line_height.help "Reestablece los campos 'Altura de la primera línea' y 'Altura de la línea'.">
+<!ENTITY options.first_line_height.help "Altura de la primera línea de cada campo (en pixeles).">
+<!ENTITY options.line_height.help "Altura de las otras líneas de los campos (en pixeles).">
+<!ENTITY options.max_elements_part_menu.help "Núm. max. de líneas en cada sección.
+    Con Modo '0', Puede establecer 'Núm. max. de líneas en cada sección' entre 15 y 30.
+    Con Modo '1', Es mejor establecer 'Núm. max. de líneas en cada sección' entre 15 y 30.
+    Con Modo '2', Se recomienda establecer 'Núm. max. de líneas en cada sección' entre 5 y 10.
+    Con Modo '3', lo ideal  'Núm. max. de líneas en cada sección' es entre 5 y 10.">
+<!ENTITY options.max_nb_line.help "Núm. máximo de líneas en cada campo. Arriba de este número se usará la rueda del ratón.">
+<!ENTITY options.max_recipients_warning.help "Para los campos 'Para' y 'Cc', se muestra una advertencia si el nómero de destinatarios supera este nómero.
+La advertencia le dice al usuario que es mejor usar el campo 'bcc' en su lugar.">
+<!ENTITY options.min_recipients_show.help "El nómero de destinatarios es indicado a la izquierda de la etiqueta de cada campo.
+Se muestra solo si supera este nómero.">
+<!ENTITY options.min_search_delay.help "El retraso mínimo entre cada busqueda identica (milisegundos).">
+<!ENTITY options.mode.help "'0' : la lista contiene 1 grupo :
+    'inician' :    aquellos contactos y listas con información que inicien con lo escrito
+    Con el modo '0', es mejor establecer 'Núm. max. de líneas en cada sección' de 15 a 30.
+
+'1' : la lista contiene 1 grupo :
+    'contienen' : los contactos y listas cuya información que contiene lo escrito
+    Con el modo '1', es mejor establecer 'Núm. max. de líneas en cada sección' de 15 a 30.
+
+'2' : la lista contiene 2 grupos :
+    'inician' :    aquellos contactos y listas con información que inicie con lo escrito
+    'contienen' : los contactos y listas cuya información que contiene lo escrito (excepto los del primer grupo)
+    Con modo '2', es mejor establecer 'Núm. max. de líneas en cada sección' de 5 a 10.
+
+'3' : la lista contiene 1 grupo de cada libreta de direcciones :
+    contactos y listas cuya información contiene lo escrito de cada libreta
+    Con modo '3', es mejor establecer 'Núm. max. de líneas en cada sección' de 5 a 10.
+
+Los campos en los que se busca son :
+- 'Correo principal', 'Nombre', 'Apellidos', 'Apodo' para contactos
+- 'Apellidos' para las listas.
+
+En equipos lentos, es mejor elegir '1'.">
+<!ENTITY options.search_min_char.help "La busqueda inicia después de escribir este nóm. de caracteres.
+En equipos lentos, es mejor elegir 2 o 3.">
+<!ENTITY options.search_timeout.help "Tiempo máx. de espera para busquedas en LDAP (milisegundos).">
+<!ENTITY options.show_no_result.help "Si no hay resultados, muestra una panel informativo.">
+<!ENTITY options.show_popularity.help "Muestra la popularidad de los contactos.">
+<!ENTITY options.remove_duplicates.help "Los duplicados se definen por el correo electrónico principal.">

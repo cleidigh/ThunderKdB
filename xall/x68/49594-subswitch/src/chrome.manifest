@@ -1,0 +1,16 @@
+overlay chrome://messenger/content/messengercompose/messengercompose.xul    chrome://subjects_prefix_switch/content/subjects_prefix_switch.xul
+overlay chrome://messenger/content/messenger.xul                            chrome://subjects_prefix_switch/content/messenger-overlay-toolbar.xul
+
+content subjects_prefix_switch                                              jar:chrome/subjects_prefix_switch.jar!/content/
+
+skin    subjects_prefix_switch                         classic/1.0          jar:chrome/subjects_prefix_switch.jar!/skin/classic/
+
+style   chrome://messenger/content/customizeToolbar.xul   chrome://subjects_prefix_switch/skin/subjects_prefix_switch.css
+
+locale        subjects_prefix_switch        en-US        jar:chrome/subjects_prefix_switch.jar!/locale/en-US/
+locale        subjects_prefix_switch        de-DE        jar:chrome/subjects_prefix_switch.jar!/locale/de-DE/
+locale        subjects_prefix_switch        pl-PL        jar:chrome/subjects_prefix_switch.jar!/locale/pl-PL/
+locale        subjects_prefix_switch        es-ES        jar:chrome/subjects_prefix_switch.jar!/locale/es-ES/
+locale        subjects_prefix_switch        sv-SE        jar:chrome/subjects_prefix_switch.jar!/locale/sv-SE/
+locale        subjects_prefix_switch        fr-FR        jar:chrome/subjects_prefix_switch.jar!/locale/fr-FR/
+locale        subjects_prefix_switch        zh-TW        jar:chrome/subjects_prefix_switch.jar!/locale/zh-TW/

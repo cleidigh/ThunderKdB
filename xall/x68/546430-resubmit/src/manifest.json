@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "Resubmit",
+  "author": "Paweł Tomulik",
+  "description": "Re-submit messages received from users to a predefined recipient(s).",
+  "version": "2.0.0a3",
+
+  "applications": {
+    "gecko": {
+      "id": "resubmit@ezamber.pl",
+      "strict_min_version": "68.0",
+      "strict_max_version": "71.*"
+    }
+  },
+
+  "icons": {
+    "32" : "icons/resubmit.svg",
+    "48" : "icons/resubmit.svg",
+    "64" : "icons/resubmit.svg",
+    "96" : "icons/resubmit.svg"
+  },
+
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://resubmit/content/options.xul",
+      "open_in_tab": true
+    }
+  }
+}

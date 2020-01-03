@@ -1,0 +1,140 @@
+<?xml version="1.0"?> 
+<!DOCTYPE overlay SYSTEM "chrome://profilelauncher/locale/profilelauncher.dtd">
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="initPanel();"
+        buttons="accept, cancel"
+        title="Profile Switcher">
+<script type="application/x-javascript" src="chrome://profilelauncher/content/profilelauncherOptions.js" />
+<script type="application/x-javascript" src="chrome://profilelauncher/content/utils.js" />
+<hbox>
+<vbox>
+<groupbox>
+    <label class="header">&optionCaption;</label> 
+    <hbox align="center">
+	<radiogroup id="actionlist">
+		<radio id="dontclose" label="&dontclose;"/>
+		<radio id="close" label="&closealways;"/>
+ 		<radio id="ask" label="&askalways;"/>
+	</radiogroup>
+    </hbox>
+</groupbox>
+ 
+<groupbox>
+    <label class="header">&whereCaption;</label> 
+    <hbox align="center">
+		<checkbox id="sbpan"  label="&asPanel;"/>
+    </hbox>
+	<hbox align="center">
+		<checkbox id="titlebar"  label="" />
+    </hbox>
+</groupbox>
+ 
+<groupbox id="otherOptions">
+    <label class="header">&otherCaption;</label> 
+     <hbox align="center">
+		<checkbox id="hideMenus" label="&hideMenus;" />
+	</hbox>
+    <hbox align="center">
+	<checkbox id="loadCurrentPage" label="&loadCurrentPage.label;" />
+    </hbox>
+    <hbox align="center">
+	 <checkbox id="sortProfiles" label="&sortProf;" />
+    </hbox>
+    <label value="(&mustRestart;)" />
+</groupbox>
+
+ <groupbox>
+    <label class="header">&execCaption;</label> 
+     <hbox align="center">
+		<textbox value="" id="execpath" flex="1" />
+		<button label="&browse;" oncommand="pickFile(this)" />
+     </hbox>
+    <hbox align="center">
+	<label value="&execLabel;" />
+    </hbox>
+</groupbox>
+<groupbox>
+    <label class="header">&yesnoLabel;</label> 
+    <hbox align="center">	
+	<radiogroup id="promptpos" orient="horizontal">
+		<radio label="&no;/&yes;"/>
+		<radio label="&yes;/&no;"/>
+	</radiogroup>
+    </hbox>
+</groupbox>
+</vbox>
+<vbox>
+<groupbox>
+    <label class="header">&profileButtonCaption;</label> 
+    <hbox align="center">	
+	<menulist id="profiles">
+		<menupopup>
+			<menuitem label="&disableButtonRun;" value="-" />
+			<menuseparator />
+			<menuitem label="&profileManager;" value="§" id="pbpm" />
+			<menuseparator />
+		</menupopup>
+	</menulist>
+    </hbox>
+</groupbox>
+<groupbox>
+    <label class="header">&iconColorLabel;</label> 
+    <hbox align="center">	
+	<menulist id="colors">
+	<menupopup>
+		<menuitem label="&blue;" value="0" image="../../skin/icons/user0.png"><hbox><image src="../../skin/icons/user0.png" /><label value="&blue;" /></hbox></menuitem>
+		<menuitem label="&red;" value="1" image="../../skin/icons/user1.png" ><hbox><image src="../../skin/icons/user1.png" /><label value="&red;" /></hbox></menuitem>
+		<menuitem label="&purple;" value="2" image="../../skin/icons/user2.png"><hbox><image src="../../skin/icons/user2.png" /><label value="&purple;" /></hbox></menuitem>
+		<menuitem label="&green;" value="3" image="../../skin/icons/user3.png"><hbox><image src="../../skin/icons/user3.png" /><label value="&green;" /></hbox></menuitem>	
+		<menuitem label="&yellow;" value="4" image="../../skin/icons/user4.png"><hbox><image src="../../skin/icons/user4.png" /><label value="&yellow;" /></hbox></menuitem>
+		<menuitem label="&fuchsia;" value="5" image="../../skin/icons/user5.png"><hbox><image src="../../skin/icons/user5.png" /><label value="&fuchsia;" /></hbox></menuitem>
+		<menuitem label="&blue;" value="6" image="../../skin/icons/user6.png"><hbox><image src="../../skin/icons/user6.png" /><label value="&blue;" /></hbox></menuitem>
+		<menuitem label="&red;" value="7" image="../../skin/icons/user7.png" ><hbox><image src="../../skin/icons/user7.png" /><label value="&red;" /></hbox></menuitem>
+		<menuitem label="&purple;" value="8" image="../../skin/icons/user8.png"><hbox><image src="../../skin/icons/user8.png" /><label value="&purple;" /></hbox></menuitem>
+		<menuitem label="&green;" value="9" image="../../skin/icons/user9.png"><hbox><image src="../../skin/icons/user9.png" /><label value="&green;" /></hbox></menuitem>	
+		<menuitem label="&yellow;" value="10" image="../../skin/icons/user10.png"><hbox><image src="../../skin/icons/user10.png" /><label value="&yellow;" /></hbox></menuitem>
+	</menupopup>
+	</menulist>
+    </hbox>
+    <label value="(&mustRestart;)" />
+</groupbox>
+<groupbox>
+    <label class="header">&PMshortcut;</label> 
+    <label value="&emptyDisable;" />
+    <hbox align="center">	
+	<label value="&key;: " />
+	<textbox maxlength="1" size="1" id="PMkey" />
+	<checkbox label="&shift;" id="PMshift" />
+	<checkbox label="&control;" id="PMcontrol" />
+	<checkbox label="&alt;" id="PMalt" />
+    </hbox>
+    <label value="(&mustRestart;)" />
+</groupbox>
+<groupbox>
+    <label class="header">&advanced;</label> 
+    <label value="&advancedLabel1;" />
+    <label value="&advancedLabel2;" />
+    <hbox align="center">	
+	<checkbox label="&resetNoremote;" id="no_remote" />
+    </hbox>
+    <hbox align="center">	
+	<checkbox label="&newInstance;" id="new_instance" />
+    </hbox>
+<spacer height="10" />
+<tooltip id="iconic">
+<description>&iconicTooltipLine1;</description>
+<description>&iconicTooltipLine2;</description>
+<description>&iconicTooltipLine3;</description>
+<description>&iconicTooltipLine4;</description>
+<description>&iconicTooltipLine5;</description>
+</tooltip>
+ <hbox align="center" collapsed="true">
+	<label value="&currentDefProf; " /><label id="currDefProfName" value="" /><image src="PShelp.png"  tooltip="iconic" style="padding-left:10px"   />
+</hbox>
+</groupbox>
+</vbox>
+</hbox>
+</dialog>

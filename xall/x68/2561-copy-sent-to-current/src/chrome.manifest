@@ -1,0 +1,30 @@
+content copysent2current content/
+resource copysent2current modules/
+
+locale copysent2current en locale/en/
+locale copysent2current de locale/de/
+locale copysent2current ja locale/ja/
+locale copysent2current es locale/es/
+locale copysent2current fr locale/fr/
+locale copysent2current nl locale/nl/
+locale copysent2current pt-PT locale/pt-PT/
+locale copysent2current pt-BR locale/pt-BR/
+locale copysent2current ru locale/ru/
+locale copysent2current uk locale/uk/
+locale copysent2current hr locale/hr/
+locale copysent2current it locale/it/
+locale copysent2current hu locale/hu/
+locale copysent2current tr locale/tr/
+locale copysent2current zh-CN locale/zh-CN/
+locale copysent2current sv-SE locale/sv-SE/
+locale copysent2current da locale/da/
+locale copysent2current sr locale/sr/
+
+overlay chrome://messenger/content/messenger.xul chrome://copysent2current/content/copysent2current.xul
+overlay chrome://messenger/content/messengercompose/messengercompose.xul chrome://copysent2current/content/compose.xul
+overlay chrome://messenger/content/am-copies.xul chrome://copysent2current/content/copiesandfolder.xul
+overlay chrome://messenger/content/am-identity-edit.xul chrome://copysent2current/content/copiesandfolder.xul
+
+skin  copysent2current classic/1.0 skin/
+style chrome://messenger/content/customizeToolbar.xul chrome://copysent2current/skin/copysent2current.css
+
