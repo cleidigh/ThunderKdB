@@ -589,10 +589,13 @@ async function getExtensionFiles(addon_identifier, index) {
 		// 	console.debug('Removing: ' + `${extRootName}`);
 		// }
 
-		await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
-		console.debug('Downloaded filename ' + xpiFileName);
-		fs.ensureDirSync(`${extRootDir}/xpi`);
+		if (extRootDir === ext68CompDirU) {
+			await downloadURL(xpiFileURL, `${extRootDir}/xpi`);
+			console.debug('Downloaded filename ' + xpiFileName);
+			fs.ensureDirSync(`${extRootDir}/xpi`);
 
+		}
+		
 
 		// if (fs.existsSync(`${extRootDir}/src`)) {
 		// 	fs.removeSync(`${extRootDir}/src`);
