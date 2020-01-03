@@ -15,7 +15,7 @@ body {
 	<img class="banner-image" src='/ThunderKdB/docs/images/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" href='/ThunderKdB'/>
 	<label class="banner-header">Extensions: 2 Week Activity&nbsp; (12)</label>
-	<label class="banner-header-rt">2020-01-02</label>
+	<label class="banner-header-rt">2020-01-03</label>
 
 </div>
 <div>
