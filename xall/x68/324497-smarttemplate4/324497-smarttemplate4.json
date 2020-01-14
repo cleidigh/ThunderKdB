@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 10130,
+    "average_daily_users": 7665,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -27,26 +27,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472948,
+        "id": 2473183,
         "compatibility": {
             "thunderbird": {
                 "max": "69.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2472948",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473183",
         "files": [
             {
-                "id": 1016055,
-                "created": "2019-11-29T11:30:03Z",
-                "hash": "sha256:f1cd8dcc88c4039ce98d334d19858556c27599948a54f8460bcf16e7284898a1",
+                "id": 1016294,
+                "created": "2020-01-08T23:16:38Z",
+                "hash": "sha256:cbc704a06e84fc7f58699ab351a3c9f6f0e8d615d869301b6ffd3f0a76df6313",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 634884,
+                "size": 637162,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016055/smarttemplate4-2.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016294/smarttemplate4-2.7-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -56,14 +56,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.6"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.7"
         },
         "release_notes": {
-            "en-US": "Get SmartTemplate⁴ Pro <a href=\"https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=amo-version-page\" rel=\"nofollow\">at my web shop</a> during black Friday week for <i>50% off</i> only during Black Friday week - 29th November - 6th December! This will give you access to <a href=\"http://smarttemplate4.mozdev.org/premium.html\" rel=\"nofollow\">premium features</a> and remove all trial reminders. You can even enable silent updates if you want.\n\n<b>2.6 - Improvements</b>\n\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/7\" rel=\"nofollow\">[issue 7]</a> Losing all typed text in compose window when changing identity / signature not updated correctly. \n\nNormally, SmartTemplate⁴ is designed to do all processing (building the email and replacing variables) when opening the compose window; it also does this when you change identity provided you have not typed any text in the body of the email. In that case, Thunderbird rebuilds the email itself, thereby ignoring SmartTemplate and reusing the typed text. This could also lead to losing typed text and variables within the signature not being replaced.\n\nIn this new version this behavior is improved: SmartTemplate⁴ will now process the (replaced) Signature if it contains SmartTemplate variables. It will also replace all \"late resolved\" variable fields (such as %to(name)%) when changing the identity. Since Thunderbird cannot recreate the JavaScript necessary for these advanced functions all \"late resolved\" variables will be replaced; they will be removed if they cannot be replaced meaningfully. \n\nWhen working with these variable fields in New Emails, I recommend to either resolve them first by making sure the <i>To</i> address and <i>subject</i> line are populated, or to  not start typing until the correct identity is selected.\n\nFor using variables such as <code>%identity(name)%</code> within the signature, make sure to activate the appropriate Global Signature settings.</li></ul>"
+            "en-US": "<b>2.7 - Improvements</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/29\" rel=\"nofollow\">[issue 29]</a> Add configuration item to file template menus.</li><li>Premium function: Added an optional 3rd parameter to &lt;tt&gt;%matchTextFromBody(<i>regular Expression</i>,<i>group #</i>,<i>\"<b>alternative text</b>\"</i>)%&lt;/tt&gt;.\n\nIf the quoted email has no match, then the alternative text will be inserted instead.</li><li>Completed translations for Brazil (Portuguese) and Russian - thanks to google translate.</li><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/25\" rel=\"nofollow\">[issue 25]</a> Set variables from addressbook fields.<b>Contact</b>\n&lt;pre&gt;  firstname\n  lastname\n  name  (uses Display Name but only if the option 'Resolve Name from Address Book' is enabled)\n  nickname\n  additionalmail\n  chatname\n  workphone\n  homephone\n  fax\n  pager\n  mobile\n&lt;/pre&gt;<b>Private</b>\n&lt;pre&gt;  private.city\n  private.address1\n  private.address2\n  private.state\n  private.country\n  private.zipcode\n  private.webpage\n&lt;/pre&gt;<b>Other</b>\n&lt;pre&gt;  other.custom1\n  other.custom2\n  other.custom3\n  other.custom4\n  other.notes\n&lt;/pre&gt;<b>Work</b>\n&lt;pre&gt;  work.title\n  work.department\n  work.organization\n  work.address1\n  work.address2\n  work.city\n  work.state\n  work.country\n  work.zipcode\n  work.webpage\n&lt;/pre&gt;</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.6",
-        "version": "2.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.7",
+        "version": "2.7"
     },
     "default_locale": "en-US",
     "description": {
@@ -91,7 +91,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-29T14:25:52Z",
+    "last_updated": "2020-01-09T20:16:25Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",
@@ -314,10 +314,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.5275,
-        "count": 60,
-        "average": 4.55,
-        "text_count": 60
+        "bayesian_average": 4.49449,
+        "count": 62,
+        "average": 4.5161,
+        "text_count": 62
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/reviews/",
     "requires_payment": true,

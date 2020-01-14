@@ -9,13 +9,13 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1664,
+    "average_daily_users": 1626,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "",
     "current_version": {
         "id": 2472812,
         "compatibility": {
@@ -81,7 +81,9 @@
         "en-US": "This extension shows two basic pieces of information in the incoming email header pane:\n<ul><li>Was the connection encrypted at all the time when this message was sent between servers?</li><li>Which large corporations had a copy of this message and, theoretically, could read it?</li></ul> There is an emoticon showing the state of encryption. Click on the emoticon and you'll see a list of connections which were made before this message arrived in your inbox, and state of encryption of each of them.\n<ul>&lt;lI&gt; Yellow super-happy emoticon = connection encrypted at all times, and hasn't passed any known big corporations\n<li> Yellow happy emoticon = connection encrypted on the public Internet</li><li> Blue sad emoticon = 1 connection not encrypted</li><li> Red terrified emoticon = message sent more than 1 time unencrypted, on the public network (internet)</li></ul> The symbols in the list of connections are as following:\n<ul><li>✓ - encrypted</li><li>✗ - unencrypted</li><li>⌂ - unencrypted, but in a local network</li></ul> On the left of the emoticon, small icons of internet corporations are displayed. Hold your mouse over the logo to see the name of a corporation. The list is not very complete and you're welcome to contribute new entries on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/69c4db84b07fcb8b4d73a217760151a056dcd0ede2ea52ad0a7a57c9ecd7bef4/https%3A//github.com/gjedeer/paranoia\">Github</a>.",
         "pl": "Paranoia to proste rozszerzenie dla klienta e-mail Thunderbird, które pokazuje dwie informacje:\n\t\t<ul>\t\t\t<li>Które z dużych firm internetowych miały kopię Twojej wiadomości?</li>\t\t\t<li>Czy wiadomość była zaszyfrowana podczas przekazywania jej między serwerami?</li>\t\t</ul> Wysyłanie wiadomości e-mail, chociaż z pozoru proste, polega na przekazaniu jej do serwera pocztowego który następnie przekazuje je do kolejnych serwerów pocztowych, aż trafi do odbiorcy. Powstaje tu dwojakie zagrożenie dla prywatności:\n\t\t<ul>\t\t\t<li>Jeśli ruch między kolejnymi serwerami nie jest szyfrowany, systemy rejestrujące ruch (np. rządowe bądź ciekawskich administratorów sieci) uzyskają kopię wiadomości</li>\t\t\t<li>Na każdym z serwerów istnieje możliwość sporządzenia kopii wiadomości, nawet jeśli ruch był szyfrowany. Dlatego ważne jest czy serwery pocztowe są zarządzane przez sprzedające dane korporacje, czy przez osoby i firmy godne zaufania.</li>\t\t</ul>\t\t Po zaisntalowaniu, dodatek wyświetla dwa nowe elementy, odpowiadające wymienionym wyżej zagrożeniom:\n\t\t<ul>\t\t\t<li>Emotkę pokazujacą stan szyfrowania pomiędzy serwerami</li>\t\t\t<li>Listę firm które mogły sporządzić kopię wiadomości</li>\t\t</ul><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/9469ea2b1a003f5ea373305027563f7bdf98b29a9764e1602e937c16e41db54c/http%3A//gdr.geekhood.net/gdrwpl/paranoia.php\"><b>Dokładny opis oznaczeń używanych w programie</b></a>"
     },
-    "developer_comments": null,
+    "developer_comments": {
+        "en-US": "I'm not a Thunderbird user any more so I don't actively develop this extension, but the users' bug reports and code contributions help me release new versions."
+    },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/paranoia/edit",
     "guid": "tls-paranoia@gdr.name",
     "has_eula": false,
@@ -90,10 +92,10 @@
         "en-US": "https://github.com/gjedeer/paranoia",
         "pl": "http://gdr.geekhood.net/gdrwpl/paranoia.php"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/451/451482-64.png?modified=1507324822",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/451/451482-64.png?modified=1578510144",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/451/451482-32.png?modified=1507324822",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/451/451482-64.png?modified=1507324822"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/451/451482-32.png?modified=1578510144",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/451/451482-64.png?modified=1578510144"
     },
     "is_disabled": false,
     "is_experimental": false,
@@ -156,10 +158,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.87496,
-        "count": 9,
-        "average": 4,
-        "text_count": 9
+        "bayesian_average": 3.98259,
+        "count": 10,
+        "average": 4.1,
+        "text_count": 10
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/paranoia/reviews/",
     "requires_payment": false,
@@ -175,7 +177,10 @@
         "en-US": "https://github.com/gjedeer/paranoia/issues"
     },
     "tags": [
-        "firefox57"
+        "encryption",
+        "firefox57",
+        "privacy",
+        "tls"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/paranoia/",
