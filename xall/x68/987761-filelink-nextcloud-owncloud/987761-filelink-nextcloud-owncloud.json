@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14177/14177326.png?modified=1578907143"
         }
     ],
-    "average_daily_users": 0,
+    "average_daily_users": 98,
     "categories": {
         "thunderbird": [
             "composition"
@@ -17,26 +17,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2473206,
+        "id": 2473244,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filelink-nextcloud-owncloud/versions/2473206",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filelink-nextcloud-owncloud/versions/2473244",
         "files": [
             {
-                "id": 1016317,
-                "created": "2020-01-13T14:05:47Z",
-                "hash": "sha256:74fd006a784354c5c600b2741ce1f3cb1f7edbadf9abf07204fccb4a4145f186",
+                "id": 1016356,
+                "created": "2020-01-19T17:05:24Z",
+                "hash": "sha256:eb4f18e1419c077fe1180248c2850c2f1034619cfbc630ad418026ed7aa1cadb",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 20543,
+                "size": 24094,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016317/cloud_filelink_fur_nextcloud_und_owncloud-3.1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016356/cloud_filelink_fur_nextcloud_und_owncloud-3.2.1-tb.xpi?src=",
                 "permissions": [
                     "<all_urls>",
                     "storage"
@@ -75,18 +75,19 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "New features:\n- Don't upload file if it's already in the cloud\n- Use existing share link instead of generating new ones\n- Send url that immediately starts download",
-            "de": "Neue Funktionen:\n- Dateien, die bereits in der Cloud liegen, werden nicht erneut hochgeladen\n- Wenn es schon einen passenden Share-Link gibt, wird kein neuer erzeugt\n- Der Share-Link führt nun direkt zum Download"
+            "en-US": "Help text for expiry was missing.",
+            "de": "Hilfetext für zeitlich begrenzte Downloads fehlte."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filelink-nextcloud-owncloud/versions/3.1.0",
-        "version": "3.1.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filelink-nextcloud-owncloud/versions/3.2.1",
+        "version": "3.2.1"
     },
     "default_locale": "en-US",
-    "description": null,
-    "developer_comments": {
-        "en-US": "If you installed my \"Filelink for Nextcloud\" Add On before, Thunderbird will not recocnise this Add On as an update. You have to configure your cloud acounts again and to manually remove the old Add On. Sorry for the inconvenience."
+    "description": {
+        "en-US": "This Addon is a FileLink provider that plugs into the \"Attachments -&gt; Outgoing\"\npreferences page. Just insert your cloud's web address, your username and an\n\"App token\" (you can also use your cloud password, but that's less secure).\n\nTo get an App token open your cloud account in the browser, go to Settings -&gt; Security -&gt; App Token and at the bottom of the page generate a new token. Copy&amp;paste it into the \"App token\" field of the Attachments preferences page in Thunderbird.\n\nFeatures\n<ul><li>Multiple accounts (even on the same server)</li><li>Doesn't upload existing files again</li><li>Doesn't overwrite exiting files with local changes</li><li>Share expiry after given number of days</li></ul>\nRequirements\n<ul><li>Nexcloud Version 16+ or ownCloud 10+</li><li><em>Allow apps to use the Share API</em> enabled on cloud server</li><li><em>Allow users to share via link</em> enabled on cloud server</li></ul>",
+        "de": "Dieses Addon ist ein \"FileLink provider\" der sich in die Einstellungen unter \"Attachments -&gt; Senden\" einklinkt. Gib einfach die URL deines Cloud-Servers, deinen Usernamen und ein \"App token\" ein (Das Passwort funktioniert auch, ist aber weinger sicher).\n\nUm ein App token zu erzeugen, öffne deinen Cloud-Account im Browser, und gehe auf\nProfil -&gt; Einstellungen -&gt; Sicherheit. Erzeuge den Knopf unten auf dieser Seite, um eine App token zu erzeugen, das du dann mit Copy&amp;Paste in Thunderbird überträgst.\n\nFeatures\n<ul><li>Mehrere Konten (sogar auf demselben Server)</li><li>Vorhandene Dateien werden nicht erneut hochgeladen</li><li>Lokale Änderungen überschreiben Cloud-Datei nicht</li><li>Shares nach konfigurierbarer Zeit deaktivieren</li></ul>\nAnforderungen\n<ul><li>Nexcloud Version 16+ oder ownCloud 10+</li><li><em>Apps die Benutzung der Share-API erlauben</em> aktiv auf dem Server</li><li><em>Benutzern erlauben, Inhalte über Links zu teilen</em>  aktiv auf dem Server</li></ul>"
     },
+    "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filelink-nextcloud-owncloud/edit",
     "guid": "cloud@johannes-endres.de",
     "has_eula": false,
@@ -95,24 +96,42 @@
         "en-US": "https://gitlab.com/joendres/filelink-nextcloud",
         "de": "https://gitlab.com/joendres/filelink-nextcloud"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987761-64.png?modified=c1de0eb0",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987761-64.png?modified=f78ef3a5",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987761-32.png?modified=c1de0eb0",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987761-64.png?modified=c1de0eb0"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987761-32.png?modified=f78ef3a5",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987761-64.png?modified=f78ef3a5"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
-    "is_source_public": true,
-    "last_updated": "2020-01-13T14:10:03Z",
+    "is_source_public": false,
+    "last_updated": "2020-01-17T12:00:11Z",
     "name": {
         "en-US": "*cloud - FileLink for Nextcloud and ownCloud",
         "de": "*cloud - FileLink für Nextcloud und ownCloud"
     },
-    "previews": [],
+    "previews": [
+        {
+            "id": 205891,
+            "caption": {
+                "en-US": "Just insert your cloud's web address, your user name and a password.",
+                "de": ""
+            },
+            "image_size": [
+                1043,
+                741
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205891.png?modified=1579263592",
+            "thumbnail_size": [
+                282,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205891.png?modified=1579263592"
+        }
+    ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.92236,
+        "bayesian_average": 3.92206,
         "count": 2,
         "average": 4.5,
         "text_count": 2
@@ -126,10 +145,10 @@
         "en-US": "Upload large attachments to your Cloud and send the link by email",
         "de": "Lade große Anhänge in deine Cloud und sende den Link per Mail"
     },
-    "support_email": null,
-    "support_url": {
-        "en-US": "https://gitlab.com/joendres/filelink-nextcloud/issues"
+    "support_email": {
+        "en-US": "cloud@johannes-endres.de"
     },
+    "support_url": null,
     "tags": [
         "cloudfile",
         "filelink",

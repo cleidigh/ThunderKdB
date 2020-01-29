@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 8191,
+    "average_daily_users": 10722,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -17,26 +17,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472651,
+        "id": 2473267,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dkim-verifier/versions/2472651",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dkim-verifier/versions/2473267",
         "files": [
             {
-                "id": 1015732,
-                "created": "2019-09-22T18:42:16Z",
-                "hash": "sha256:68f44ed7429df256bdf6a89e2221a67b8c41b61a0e76659552613f8a2df112fe",
+                "id": 1016379,
+                "created": "2020-01-22T17:51:54Z",
+                "hash": "sha256:d1be8866c1f04a00af3e246907818e18b88ed7e1fdd8d33581b98590c74d42e0",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 705061,
+                "size": 886041,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015732/dkim_verifier-3.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016379/dkim_verifier-3.1.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -72,11 +72,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "- fixed incompatibility with Thunderbird 70 (#167)\n - fixed DKIM status not visible when a message is opened in a new window (#172)\n - fixed incompatibility with CompactHeader add-on (#177)\n - JSDNS: fixed proxy support (#173)"
+            "en-US": "- fix default rules and favicons (#197)\n - includes changes from 2.2.0:\n   - Authentication-Results header: fix relaxed parsing option and trailing \";\"\n   - exposed option on how to treat weak keys. Default is now ignore (was warning since 2.1.0) (#174)\n   - fixed default text color for unsigned e-mail in dark theme if highlighting of From header is enabled (#181)\n   - libunbound resolver: add ability to explicitly load dependencies of libunbound (#170, #179)\n   - updated default rules and favicons (#165, #168, #169, #180)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/versions/3.0.1",
-        "version": "3.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/versions/3.1.0",
+        "version": "3.1.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -119,7 +119,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-22T22:21:52Z",
+    "last_updated": "2020-01-29T16:17:22Z",
     "name": {
         "fr": "DKIM Verifier",
         "de": "DKIM Verifier",

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 11004,
+    "average_daily_users": 14344,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -17,26 +17,26 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2473025,
+        "id": 2473245,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "60.0"
+                "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailbox-alert/versions/2473025",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailbox-alert/versions/2473245",
         "files": [
             {
-                "id": 1016132,
-                "created": "2019-12-16T22:48:44Z",
-                "hash": "sha256:0706aa2122789f8a29e071d4d985d78cca6c8b69f7a7b0feec7038fb4a95c100",
+                "id": 1016357,
+                "created": "2020-01-19T21:36:38Z",
+                "hash": "sha256:1269b8119b0dcf4f06cce2b7cefe9b206b03e186c0ce6426d2e25a359b422c07",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 206591,
+                "size": 211975,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016132/mailbox_alert-0.23.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016357/mailbox_alert-0.24-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -72,11 +72,11 @@
             "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
         "release_notes": {
-            "en-US": "- Fixed issue where %server and %folder macros were no longer working\n- Fixed issue where deleting alerts did not work"
+            "en-US": "- The Mailbox Alert action for Message Filters now works with Thunderbird 68\n- Unfortunately, the changed APIs do mean that it now no longer works with older\n    versions (Thunderbird 60 and before), so from now on, older versions of TB\n    are no longer supported by new versions of Mailbox Alert. From now on, the\n    minimum TB version is 68, and I will start removing legacy code in the future.\n- The %folder macro no longer adds a trailing / to the final folder (thanks to <a href=\"https://github.com/rnc\" rel=\"nofollow\">https://github.com/rnc</a>)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/versions/0.23.1",
-        "version": "0.23.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/versions/0.24",
+        "version": "0.24"
     },
     "default_locale": "en-US",
     "description": {
@@ -99,7 +99,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-01-03T18:48:09Z",
+    "last_updated": "2020-01-20T18:45:56Z",
     "name": {
         "en-US": "Mailbox Alert"
     },
@@ -123,10 +123,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.93417,
-        "count": 124,
-        "average": 3.9435,
-        "text_count": 124
+        "bayesian_average": 3.91943,
+        "count": 126,
+        "average": 3.9286,
+        "text_count": 126
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/reviews/",
     "requires_payment": false,
@@ -155,7 +155,8 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp60": true
+            "comp60pv": true,
+            "comp60pv_date": "2018-02-12T19:15:58Z"
         }
     }
 }

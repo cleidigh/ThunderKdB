@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 6508,
+    "average_daily_users": 8274,
     "categories": {
         "firefox": [
             "photos-music-videos"
@@ -26,26 +26,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472710,
+        "id": 2473234,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "73.*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/2472710",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/2473234",
         "files": [
             {
-                "id": 1015803,
-                "created": "2019-10-03T23:03:28Z",
-                "hash": "sha256:de907ea05090a1b10e870a86bb5d08719d3f2d7a0ebc092190efb9718141b1a9",
+                "id": 1016346,
+                "created": "2020-01-18T02:49:23Z",
+                "hash": "sha256:23b3d7ecf8abca8faa904ddbd8b2a5f9bc771851d3ddc8589efed6b5f842ff4c",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 48461,
+                "size": 48838,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015803/shrunked_image_resizer-4.5.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016346/shrunked_image_resizer-4.5.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -58,11 +58,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fixes a bug when uploading attachments that are larger than 768kB after resizing. Such attachments are now saved to a temporary file (as was the case in some earlier versions).\n\n<a href=\"https://github.com/darktrojan/shrunked/compare/VERSION_4.5.3...VERSION_4.5.4\" rel=\"nofollow\">https://github.com/darktrojan/shrunked/compare/VERSION_4.5.3...VERSION_4.5.4</a>"
+            "en-US": "This version fixes some visual glitches in dialogs, and the image quality option which apparently has been broken since 2011(!). There's also some small updates to the French translation.\n\n<a href=\"https://github.com/darktrojan/shrunked/compare/VERSION_4.5.4...VERSION_4.5.5\" rel=\"nofollow\">https://github.com/darktrojan/shrunked/compare/VERSION_4.5.4...VERSION_4.5.5</a>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/shrunked-image-resizer/versions/4.5.4",
-        "version": "4.5.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/shrunked-image-resizer/versions/4.5.5",
+        "version": "4.5.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -97,7 +97,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-10-04T11:59:12Z",
+    "last_updated": "2020-01-19T12:22:37Z",
     "name": {
         "pt-PT": "Shrunked Image Resizer",
         "en-US": "Shrunked Image Resizer"
@@ -138,10 +138,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.48903,
-        "count": 47,
-        "average": 3.5106,
-        "text_count": 46
+        "bayesian_average": 3.43749,
+        "count": 48,
+        "average": 3.4583,
+        "text_count": 47
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/shrunked-image-resizer/reviews/",
     "requires_payment": false,
@@ -168,9 +168,11 @@
     "weekly_downloads": 170,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp61plus": true,
+            "compNoMax": true,
             "comp60pv": true,
             "comp60pv_date": "2017-09-08T00:32:53Z"
         }

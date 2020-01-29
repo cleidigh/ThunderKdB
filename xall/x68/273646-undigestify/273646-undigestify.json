@@ -6,10 +6,10 @@
             "name": "Jonathan Kamens",
             "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jikamens/",
             "username": "jikamens",
-            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1567718031"
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1579925536"
         }
     ],
-    "average_daily_users": 76,
+    "average_daily_users": 90,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -17,30 +17,30 @@
     },
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Undigestify%20add%2don&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted",
     "current_version": {
-        "id": 2469639,
+        "id": 2473199,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "71.*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/undigestify/versions/2469639",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/undigestify/versions/2473199",
         "files": [
             {
-                "id": 1012698,
-                "created": "2019-04-01T00:41:38Z",
-                "hash": "sha256:dd9425f0104a83d64e3bfb52fe44644c5ef6e7e8ac6f51a17e2fd0159a946c57",
+                "id": 1016310,
+                "created": "2020-01-11T14:18:22Z",
+                "hash": "sha256:16954da19a8c50d89ecd4086e2b8998ea8525f4a409ec72829d20457bef9d542",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 38678,
+                "size": 38679,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012698/undigestify-2.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016310/undigestify-2.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 5,
             "name": {
@@ -74,15 +74,15 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Thunderbird 68 compatibility.\n\nPeople using older versions of Thunderbird should use <a href=\"/thunderbird/addon/undigestify/versions/?page=1#version-1.0.3\" rel=\"nofollow\">version 1.0.3</a>."
+            "en-US": "Compatibility fix for Thunderbird 68."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/undigestify/versions/2.0.0",
-        "version": "2.0.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/undigestify/versions/2.0.1",
+        "version": "2.0.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>Executive summary</strong>\nTo undigestify a message containing an RFC 1153 or ListStar digest, select it and then select the \"Undigestify\" command on the \"Message\" menu, or right-click on it in the thread pane and select \"Undigestify\" in the pop-up menu. If the message is a valid digest, then its constituent messages will be appear in the same folder as the original. Otherwise, an error message will be displayed explaining why the message could not be undigestified.\n<strong>Additional information</strong>\nInternet <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ae52ac6b64382ad2ca07da10d6a8090ce50ac6405e440cebedc8336b316cf687/http%3A//www.rfc-editor.org/rfc/rfc1153.txt\">Request For Comments (RFC) 1153</a> defines the \"Digest Message Format\", a simple format for encapsulating a series of plain-text email messages within a single message. Briefly, each digest message contains:\n<ol><li>a preamble followed by a separator line of 70 hyphens and a blank line;</li><li>one or more enclosed messages, each followed by a separator line of 30 hyphens and a blank line; and</li><li>a footer whose first line starts with \"End of\" and whose second line consists of nothing but asterisks.</li></ol>Years ago, when digested mailing lists were much more common, many mail readers had a built-in command for splitting a digest message into its constituent messages so that each could be read and replied to separately.\nNowadays, digests are much less common, but there are still some mailing lists, e.g., <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/da1b77b81e7b0eb7193f9654d48b3d7e3473a68ad9247ddf29e12b89a6e9a47c/http%3A//catless.ncl.ac.uk/risks\">the RISKS Digest</a>, that use them. This add-on adds digest splitting functionality to Thunderbird for people who still receive RFC 1153 digests.\nNote that this add-on is compatible with Postbox in addition to Thunderbird."
+        "en-US": "<strong>This add-on will no longer be supported when Thunderbird 78 is released in a few months, unless enough people commit to supporting continued maintenance of the add-on to make it feasible. To show your commitment, please visit <a href=\"https://www.kickstarter.com/projects/jik/rewritten-add-ons-for-mozilla-thunderbirds-next-release\" rel=\"nofollow\">https://www.kickstarter.com/projects/jik/rewritten-add-ons-for-mozilla-thunderbirds-next-release</a> and make a pledge. As a bonus, Kickstarter supporters of this and my other add-ons will receive significant discounts on add-on licenses.</strong>\n\n<strong>Executive summary</strong>\nTo undigestify a message containing an RFC 1153 or ListStar digest, select it and then select the \"Undigestify\" command on the \"Message\" menu, or right-click on it in the thread pane and select \"Undigestify\" in the pop-up menu. If the message is a valid digest, then its constituent messages will be appear in the same folder as the original. Otherwise, an error message will be displayed explaining why the message could not be undigestified.\n<strong>Additional information</strong>\nInternet <a href=\"http://www.rfc-editor.org/rfc/rfc1153.txt\" rel=\"nofollow\">Request For Comments (RFC) 1153</a> defines the \"Digest Message Format\", a simple format for encapsulating a series of plain-text email messages within a single message. Briefly, each digest message contains:\n<ol><li>a preamble followed by a separator line of 70 hyphens and a blank line;</li><li>one or more enclosed messages, each followed by a separator line of 30 hyphens and a blank line; and</li><li>a footer whose first line starts with \"End of\" and whose second line consists of nothing but asterisks.</li></ol>Years ago, when digested mailing lists were much more common, many mail readers had a built-in command for splitting a digest message into its constituent messages so that each could be read and replied to separately.\nNowadays, digests are much less common, but there are still some mailing lists, e.g., <a href=\"http://catless.ncl.ac.uk/risks\" rel=\"nofollow\">the RISKS Digest</a>, that use them. This add-on adds digest splitting functionality to Thunderbird for people who still receive RFC 1153 digests.\nNote that this add-on is compatible with Postbox in addition to Thunderbird."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/undigestify/edit",
@@ -99,7 +99,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-04-02T08:59:28Z",
+    "last_updated": "2020-01-17T20:17:34Z",
     "name": {
         "en-US": "Undigestify"
     },
@@ -131,9 +131,11 @@
     "weekly_downloads": 22,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp61plus": true,
+            "compNoMax": true,
             "comp60pv": true,
             "comp60pv_date": "2017-12-14T21:15:36Z"
         }

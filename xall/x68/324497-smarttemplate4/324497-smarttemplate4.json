@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 7665,
+    "average_daily_users": 11020,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -27,26 +27,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2473183,
+        "id": 2473286,
         "compatibility": {
             "thunderbird": {
                 "max": "69.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473183",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473286",
         "files": [
             {
-                "id": 1016294,
-                "created": "2020-01-08T23:16:38Z",
-                "hash": "sha256:cbc704a06e84fc7f58699ab351a3c9f6f0e8d615d869301b6ffd3f0a76df6313",
+                "id": 1016398,
+                "created": "2020-01-24T13:38:26Z",
+                "hash": "sha256:0fd11a018b5e0dafbef2aadbbaac73cc1a2dcfee3f555a960ecee6672d4030a5",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 637162,
+                "size": 664613,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016294/smarttemplate4-2.7-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016398/smarttemplate4-2.8-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -56,14 +56,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.7"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.8"
         },
         "release_notes": {
-            "en-US": "<b>2.7 - Improvements</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/29\" rel=\"nofollow\">[issue 29]</a> Add configuration item to file template menus.</li><li>Premium function: Added an optional 3rd parameter to &lt;tt&gt;%matchTextFromBody(<i>regular Expression</i>,<i>group #</i>,<i>\"<b>alternative text</b>\"</i>)%&lt;/tt&gt;.\n\nIf the quoted email has no match, then the alternative text will be inserted instead.</li><li>Completed translations for Brazil (Portuguese) and Russian - thanks to google translate.</li><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/25\" rel=\"nofollow\">[issue 25]</a> Set variables from addressbook fields.<b>Contact</b>\n&lt;pre&gt;  firstname\n  lastname\n  name  (uses Display Name but only if the option 'Resolve Name from Address Book' is enabled)\n  nickname\n  additionalmail\n  chatname\n  workphone\n  homephone\n  fax\n  pager\n  mobile\n&lt;/pre&gt;<b>Private</b>\n&lt;pre&gt;  private.city\n  private.address1\n  private.address2\n  private.state\n  private.country\n  private.zipcode\n  private.webpage\n&lt;/pre&gt;<b>Other</b>\n&lt;pre&gt;  other.custom1\n  other.custom2\n  other.custom3\n  other.custom4\n  other.notes\n&lt;/pre&gt;<b>Work</b>\n&lt;pre&gt;  work.title\n  work.department\n  work.organization\n  work.address1\n  work.address2\n  work.city\n  work.state\n  work.country\n  work.zipcode\n  work.webpage\n&lt;/pre&gt;</li></ul>"
+            "en-US": "Full change log with screen shots <a href=\"http://smarttemplate4.mozdev.org/version.html#2.8\" rel=\"nofollow\">can be found here</a>\n\n<b>Improvements</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/31\" rel=\"nofollow\">[issue 31]</a> New premium variables to remove text / tags from quoted parts.<code>%deleteQuotedText(\"<i>searchText</i>\",<i>quoteLevel</i>)%</code> Deletes quoted Text <code>%replaceQuotedText(\"<i>searchText</i>\",\"<i>replacementHTML</i>\",<i>quoteLevel</i>)%</code> Replaces quoted text<i>searchText</i> - must be in double quotes - the searchText argument must be a regular expression. Note that whitespace can be best represented as \\s because it can also contain line breaks. Commas and double quote characters cannot be used.<i>replacementHTML</i> - must be in double quotes - text or a html tag which will be inserted in page.<i>quoteLevel</i> - optional, (number) which minimal quote level to start from.<code>%deleteQuotedTags(\"<i>selector</i>\",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote<code>%replaceQuotedTags(\"<i>selector</i>\",\"<i>replacementHTML</i>\",<i>quoteLevel</i>,<i>minSize</i>)%</code> Deletes tags from the quote<i>selector</i> -  what you would use to address the tag in css. simplest case \"img\", or \"p\" but attribute selectors can be added as long as double quotes can be avoided.<i>quoteLevel</i> - A note on quoteLevel, for images I would recommend 2 if you want to remove images to retain some context in your replies. This will dramatically decrease email sizes in long threads which contain a lot of images (e.g. screenshots).<i>minSize</i> - (optional, numeric) - number of kByte, minimum size for removing the tag. \nThis way you can keep smaller images like icons / emojis while discarding large images.</li><li>Variables window: Added documentation for address book functions and modernized layout. Added accordion UI to minimize scrolling. Simply click one of the headers to expand an article.</li> <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/33\" rel=\"nofollow\">[issue 33]</a> New variable %mailto(body)% for including body text for internet mailto links in template. Also slightly improved behavior if body is empty, so that standard template can be used when a mailto link is clicked on.</li><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/35\" rel=\"nofollow\">[issue 35]</a> Extended <code>%identity%</code> with the variable 'addressbook' in order to extract <a href=\"http://smarttemplate4.mozdev.org/variables.html#ab_fields\" rel=\"nofollow\">extended info from the Address Book</a> based on an email match, some examples:\n\n  %identity(addressbook,work.title)%\n  %identity(addressbook,work.organization)%\n  %identity(addressbook,homephone)%\n  \nThe addressbook variables also support using the optionality syntax [[ ... ]] in order to leave out a section of text or html if the particular addressbook field is empty. \n\nThe following line will be omitted if State information is not available from the address book for the current identity:\n\n[[State: %identity(addressbook,work.state)%]]         </li><li>Completed translations for locales: cs, es-ES, fi, it, pl,pt-BR, ru, sl, sv-SE.</li><li>The template editor boxes now resize vertically with dialog for easier editing.</li><li>Added international examples for <code>%dateformat%</code> in the variables tab.</li></ul>\n<b>Bug Fixes</b>\n<ul><li>Fixed: <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/32\" rel=\"nofollow\">[issue 30]</a>, <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/32\" rel=\"nofollow\">[issue 32]</a>, <a href=\"https://www.mozdev.org/bugs/show_bug.cgi?id=26755\" rel=\"nofollow\">[Bug 26755]</a>\nSome reply / forward buttons were missing the file template dropdowns.</li><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/36\" rel=\"nofollow\">[issue 36]</a>\nFixed: Smart-Reply button is missing template menus / template menus not working on combined \"Reply All\" / \"Reply to Sender\" / \"Reply to List\" button in preview header area.\n\nI have added a simplified menu solution for this case. Instead of having template submenus for each command, clicking a template below the smart buttons is modified through the keys [Shift] and [Ctrl]. The template items will:\n  <ul>  <li>trigger the top command (e.g. reply all) by clicking on any templates below</li>  <li>trigger the 2nd command (e.g. reply to sender) via Shift+click</li>  <li>trigger the 3rd command via Ctrl+click</li>  </ul></li><li>Fixed: <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/38\" rel=\"nofollow\">[issue 38]</a> Images with encoded file URLs are not loaded correctly. An image tag that contains URLencoded characters can lead to the image not being loaded, for example:<code>&lt;img src=\"file:///C%3A%5CUsers%5CJohn%5Cimg%5Cimg3.png\"&gt;</code></li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.7",
-        "version": "2.7"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.8",
+        "version": "2.8"
     },
     "default_locale": "en-US",
     "description": {
@@ -91,7 +91,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-01-09T20:16:25Z",
+    "last_updated": "2020-01-24T13:43:55Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",
@@ -314,10 +314,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.49449,
-        "count": 62,
-        "average": 4.5161,
-        "text_count": 62
+        "bayesian_average": 4.50248,
+        "count": 63,
+        "average": 4.5238,
+        "text_count": 63
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/reviews/",
     "requires_payment": true,

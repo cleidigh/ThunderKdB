@@ -1,5 +1,71 @@
 [
     {
+        "id": 2473245,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailbox-alert/versions/2473245",
+        "files": [
+            {
+                "id": 1016357,
+                "created": "2020-01-19T21:36:38Z",
+                "hash": "sha256:1269b8119b0dcf4f06cce2b7cefe9b206b03e186c0ce6426d2e25a359b422c07",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 211975,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016357/mailbox_alert-0.24-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "text": {
+                "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "en-US": "- The Mailbox Alert action for Message Filters now works with Thunderbird 68\n- Unfortunately, the changed APIs do mean that it now no longer works with older\n    versions (Thunderbird 60 and before), so from now on, older versions of TB\n    are no longer supported by new versions of Mailbox Alert. From now on, the\n    minimum TB version is 68, and I will start removing legacy code in the future.\n- The %folder macro no longer adds a trailing / to the final folder (thanks to <a href=\"https://github.com/rnc\" rel=\"nofollow\">https://github.com/rnc</a>)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/versions/0.24",
+        "version": "0.24"
+    },
+    {
         "id": 2473025,
         "channel": "listed",
         "compatibility": {
