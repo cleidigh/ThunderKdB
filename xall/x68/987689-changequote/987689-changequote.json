@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 281,
+    "average_daily_users": 469,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -18,26 +18,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2473290,
+        "id": 2473356,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/changequote/versions/2473290",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/changequote/versions/2473356",
         "files": [
             {
-                "id": 1016402,
-                "created": "2020-01-25T00:05:05Z",
-                "hash": "sha256:f31ceb97fb041f314c604a5214cc71602005f062c52d0e910822e325f0067349",
+                "id": 1016478,
+                "created": "2020-02-01T14:35:11Z",
+                "hash": "sha256:490fdda813f335f64a3eaed592ea5373962dc817f0106ba6a6d3b2da47fd8ca7",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
                 "size": 64672,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016402/changequote-1.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016478/changequote-1.4-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -72,11 +72,11 @@
         },
         "release_notes": {
             "fr": "",
-            "en-US": "Fix bug: if the message is opened in a new window the reply header is incorrect"
+            "en-US": "Fix bug in customized reply header when using several curly braces: the sections included in the curly braces {{ }} are not in reply header even when they should be present."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/changequote/versions/1.3",
-        "version": "1.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/changequote/versions/1.4",
+        "version": "1.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -101,7 +101,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-01-25T11:56:31Z",
+    "last_updated": "2020-02-01T16:17:10Z",
     "name": {
         "fr": "changeQuote",
         "en-US": "changeQuote"
@@ -169,8 +169,8 @@
     "slug": "changequote",
     "status": "public",
     "summary": {
-        "fr": "C'est une extension pour personnaliser l'en-tête de réponse.",
-        "en-US": "It's an extension that changes the format of reply mails."
+        "fr": "C'est une extension pour personnaliser l'en-tête de réponse. Vous pouvez configurer l'en-tête à partir de Outils -&gt; Options des modules -&gt; changeQuote. Vous avez le choix entre l'en-tête par défaut, l'en-tête détaillé ou un en-tête personnalisé.",
+        "en-US": "It's an extension that changes the format of reply header.\nYou can choose between  the standard Thunderbird reply header, a detailed reply header or a  Customized reply header.\nYou can configure it in the Tools -&gt;“Add-on Preferences -&gt; changeQuote."
     },
     "support_email": {
         "fr": "olivier2042@outlook.fr",

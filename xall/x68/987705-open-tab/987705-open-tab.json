@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 70,
+    "average_daily_users": 101,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -17,33 +17,33 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472739,
+        "id": 2473289,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/open-tab/versions/2472739",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/open-tab/versions/2473289",
         "files": [
             {
-                "id": 1015835,
-                "created": "2019-10-11T12:15:37Z",
-                "hash": "sha256:63c6af268a6011670e059096b2e173cdefb69613d41938fa5effb150b4579d53",
-                "is_restart_required": true,
+                "id": 1016401,
+                "created": "2020-01-24T15:55:40Z",
+                "hash": "sha256:28781573c7527076f532eca5104be34e43ab09b9957592bde1b5c9c0b3f93f41",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4681,
+                "size": 4676,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015835/open_tab-1.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016401/open_tab-1.0.1-tb.xpi?src=",
                 "permissions": [
                     "activeTab",
                     "menus"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -51,10 +51,13 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
-        "reviewed": "2019-11-06T13:01:08Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/open-tab/versions/1.0.0",
-        "version": "1.0.0"
+        "release_notes": {
+            "en-US": "remove legacy key",
+            "ja": "legacyキーの削除"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/open-tab/versions/1.0.1",
+        "version": "1.0.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -79,7 +82,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-11-06T13:01:08Z",
+    "last_updated": "2020-02-01T09:10:04Z",
     "name": {
         "en-US": "Open Tab",
         "ja": "Open Tab"
