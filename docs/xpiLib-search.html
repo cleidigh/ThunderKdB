@@ -45,10 +45,10 @@
 		<div class="search-field">
 			<table>
 			<tr>
-			<td width="24px"> <input id="comp_all" type="checkbox" class="search-field search-checkbox" checked="true" disabled="false"/></td>
+			<td width="24px"> <input id="comp_all" type="checkbox" class="search-field search-checkbox" checked onclick="all_checkbox()" /></td>
 			<td width="80px"><div class="search-field-subitem1">All </div></td>
 			
-			<td width="24px"><input id="comp_tb68" type="checkbox" class="search-field search-checkbox" checked="false"/></td>
+			<td width="24px"><input id="comp_tb68" type="checkbox" class="search-field search-checkbox" /></td>
 			<td width="100%"><label class="search-field-subitem2">Thunderbird 68</label></td>
 		</tr>
 		<tr>
@@ -106,6 +106,23 @@
 	</div>
 
 	<script>
+
+		function all_checkbox() {
+			if (document.getElementById("comp_all").checked) {
+				document.getElementById("comp_tb60").checked = true;
+				document.getElementById("comp_tb60").disabled = true;
+				document.getElementById("comp_tb68").checked = true;
+				document.getElementById("comp_tb68").disabled = true;
+			} else {
+				document.getElementById("comp_tb60").removeAttribute("checked");
+				document.getElementById("comp_tb60").removeAttribute("disabled");
+				document.getElementById("comp_tb68").removeAttribute("checked");
+				document.getElementById("comp_tb68").removeAttribute("disabled");
+			}
+
+
+
+		}
 		function search_exts() {
 			console.debug('test' + document.getElementById('topic').value);
 			let q = document.getElementById('topic').value;
