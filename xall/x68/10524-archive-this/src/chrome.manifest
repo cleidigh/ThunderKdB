@@ -1,0 +1,97 @@
+content archive-this chrome/content/
+
+locale archive-this en-US chrome/locale/en-US/
+
+# Thanks to Sven Buijssen
+locale archive-this de chrome/locale/de/
+
+# Thanks to Ichiro Kaneko (一郎金子)
+locale archive-this ja chrome/locale/ja/
+
+# Thanks to Andrei Latyshau (Андрей Латышев), Anton Burkun (Антон Буркун)
+locale archive-this ru chrome/locale/ru/
+
+# Thanks to Christophe Mège
+locale archive-this fr chrome/locale/fr/
+
+# Thanks to Krzysztof Kozłowski, Mateusz Jasiak
+locale archive-this pl chrome/locale/pl/
+
+# Thanks to Juan Moreno Oto
+locale archive-this es-ES chrome/locale/es-ES/
+
+# Thanks to Bas Gosselink
+locale archive-this nl chrome/locale/nl/
+
+# Thanks to Mikael Hiort af Ornäs
+locale archive-this sv chrome/locale/sv-SE/
+locale archive-this sv-SE chrome/locale/sv-SE/
+
+# Thanks to Akong Wu (吳汝剛)
+locale archive-this zh-TW chrome/locale/zh-TW/
+
+###########################################################################
+# These locales have not yet been checked, and probably suffer from
+# automated translation errors.
+
+# locale archive-this en-GB chrome/locale/en-GB/
+# locale archive-this es-AR chrome/locale/es-AR/
+# locale archive-this es-CL chrome/locale/es-CL/
+# locale archive-this es-MX chrome/locale/es-MX/
+# locale archive-this it chrome/locale/it/
+# locale archive-this pt chrome/locale/pt/
+# locale archive-this af chrome/locale/af/
+# locale archive-this ar chrome/locale/ar/
+# locale archive-this be chrome/locale/be/
+# locale archive-this bg chrome/locale/bg/
+# locale archive-this ca chrome/locale/ca/
+# locale archive-this cs chrome/locale/cs/
+# locale archive-this cy chrome/locale/cy/
+# locale archive-this da chrome/locale/da/
+# locale archive-this el chrome/locale/el/
+# locale archive-this et chrome/locale/et/
+# locale archive-this fa chrome/locale/fa/
+# locale archive-this fi chrome/locale/fi/
+# locale archive-this ga chrome/locale/ga/
+# locale archive-this gl chrome/locale/gl/
+# locale archive-this hi chrome/locale/hi/
+# locale archive-this hr chrome/locale/hr/
+# locale archive-this hu chrome/locale/hu/
+# locale archive-this id chrome/locale/id/
+# locale archive-this is chrome/locale/is/
+# locale archive-this it chrome/locale/it/
+# locale archive-this iw chrome/locale/iw/
+# locale archive-this ko chrome/locale/ko/
+# locale archive-this lt chrome/locale/lt/
+# locale archive-this lv chrome/locale/lv/
+# locale archive-this mk chrome/locale/mk/
+# locale archive-this ms chrome/locale/ms/
+# locale archive-this mt chrome/locale/mt/
+# locale archive-this no chrome/locale/no/
+# locale archive-this ro chrome/locale/ro/
+# locale archive-this sk chrome/locale/sk/
+# locale archive-this sl chrome/locale/sl/
+# locale archive-this sq chrome/locale/sq/
+# locale archive-this sr chrome/locale/sr/
+# locale archive-this sv chrome/locale/sv/
+# locale archive-this sw chrome/locale/sw/
+# locale archive-this th chrome/locale/th/
+# locale archive-this tl chrome/locale/tl/
+# locale archive-this tr chrome/locale/tr/
+# locale archive-this uk chrome/locale/uk/
+# locale archive-this vi chrome/locale/vi/
+# locale archive-this yi chrome/locale/yi/
+# locale archive-this zh-CN chrome/locale/zh-CN/
+# locale archive-this zh-TW chrome/locale/zh-TW/
+
+
+###########################################################################
+# "Archive This" button (currently disabled)
+style chrome://global/content/customizeToolbar.xul chrome://archive-this/content/button.css
+
+
+###########################################################################
+# Overlays for Thunderbird mail
+overlay chrome://messenger/content/messenger.xul chrome://archive-this/content/main.xul
+overlay	chrome://messenger/content/messenger.xul chrome://archive-this/content/context.xul
+

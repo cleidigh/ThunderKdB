@@ -1,0 +1,49 @@
+#archive-this-button-1,
+#wrapper-archive-this-button-1
+{
+  list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.png");
+}
+
+.archive-this
+{
+  -moz-image-region: rect(0px 352px 32px 320px);
+}
+
+.archive-this:hover:active
+{
+  -moz-image-region: rect(32px 352px 64px 320px);
+}
+
+.badge
+{
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width:16px;
+  height:16px
+}
+
+[iconsize="small"] #archive-this-button-1,
+[iconsize="small"] #wrapper-archive-this-button-1
+{
+  list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-small.png");
+}
+
+[iconsize="small"] .archive-this
+{
+  -moz-image-region: rect(0px 264px 24px 240px);
+}
+
+[iconsize="small"] .archive-this:hover:active
+{
+  -moz-image-region: rect(24px 264px 48px 240px);
+}
+
+[iconsize="small"] .badge
+{
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width:12px;
+  height:12px
+}

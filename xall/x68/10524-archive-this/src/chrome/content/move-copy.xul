@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href = "move-copy.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<!DOCTYPE window [
+  <!ENTITY % commonDTD SYSTEM "chrome://archive-this/locale/common.dtd">
+  %commonDTD;
+  <!ENTITY % movecopyDTD SYSTEM "chrome://archive-this/locale/move-copy.dtd">
+  %movecopyDTD;
+]>
+
+<dialog
+    id="archive-this-move-copy"
+    title="Move/Copy/Go To"
+    orient="vertical"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    buttons="accept,cancel"
+    buttonlabelaccept="&ok;"
+    buttonlabelcancel="&cancel;"
+    onload="ArchiveThisMoveCopy.onLoad();"
+    onunload="ArchiveThisMoveCopy.shutdown();"
+    >
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="archive-this-string-bundle" src="chrome://archive-this/locale/archive-this.properties"/>
+  </stringbundleset>
+
+  <script type="application/x-javascript" 
+          src="chrome://global/content/strres.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/mailCommands.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/commandglue.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://messenger/content/widgetglue.js"/>
+
+  <script type="application/x-javascript" 
+          src="chrome://archive-this/content/move-copy.js"/>
+
+<vbox>
+<grid flex="1" id="archive-this-header-grid">
+  <columns>
+    <column flex="1"/>
+    <column flex="1"/>
+  </columns>
+  <rows>
+    <row flex="1">
+      <vbox pack="start" align="end"><label class="header" value="&move_copy_subject;:"/></vbox>
+      <vbox pack="start"><label id="archive-this-subject" value="[subject]"/></vbox>
+    </row>
+    <row flex="1">
+      <vbox pack="start" align="end"><label class="header" value="&move_copy_from;:"/></vbox>
+      <vbox pack="start"><label id="archive-this-from" value="[from]"/></vbox>
+    </row>
+    <row flex="1">
+      <vbox pack="start" align="end"><label class="header" value="&move_copy_to;:"/></vbox>
+      <vbox pack="start"><label id="archive-this-to" value="[to]"/></vbox>
+    </row>
+    <row flex="1">
+      <vbox pack="start" align="end"><label class="header" value="&move_copy_account;:"/></vbox>
+      <vbox pack="start"><label id="archive-this-account" value="[account]"/></vbox>
+    </row>
+  </rows>
+</grid>
+
+<separator class="groove" id="archive-this-header-sep"/>
+
+<grid>
+  <columns>
+    <column />
+    <column flex="1"/>
+  </columns>
+  <rows>
+    <row>
+      <vbox pack="start" align="end"><description id="archive-this-mode" class="header" value="Move To: "/></vbox>
+      <vbox pack="start"><description id="archive-this-candidate">Account/folder/subfolder</description></vbox>
+    </row>
+    <row>
+      <vbox pack="center"><label value="" align="end"/></vbox>
+      <textbox id="archive-this-search" oninput="ArchiveThisMoveCopy.updateList();"
+               onkeypress="return ArchiveThisMoveCopy.onSearchKeyPress(event);"
+               popup="archive-this-folder-panel" 
+               onblur="ArchiveThisMoveCopy.onSearchBlur()"
+               />
+    </row>
+  </rows>
+</grid>
+</vbox>
+
+<panel id="archive-this-folder-panel" noautofocus="true"
+       position="after_start"
+       onpopupshowing="ArchiveThisMoveCopy.onFolderListShowing();"
+       onpopupshown="ArchiveThisMoveCopy.onFolderListShown();">
+  <richlistbox id="archive-this-folder-list" flex="1"
+           onselect="ArchiveThisMoveCopy.onFolderListSelect();" />
+</panel>
+
+</dialog>

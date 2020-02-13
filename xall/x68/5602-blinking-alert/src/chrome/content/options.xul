@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Blinking Alert
+ *
+ * Copyright(c) 2007-2020 Iwasa Kazmi
+ * All rights reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+-->
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css"?>
+<!DOCTYPE dialog SYSTEM "chrome://blinkingalert/locale/notifications.dtd">
+<dialog id="BlinkingAlertOptionsDialog"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        type="child"
+        buttons="accept,cancel"
+        title="&prefDialog.title;">
+  <vbox>
+    <checkbox id="disableAutoHide"  class="indent" label="&disableAutoHide.label;" preference="extensions.blinkingAlert.disableAutoHide"/>
+    <checkbox id="closeOnClick"  class="indent" label="&closeOnClick.label;" preference="extensions.blinkingAlert.closeOnClick"/>
+    <hbox class="indent" align="center">
+      <label id="blinkIntervalLabel" value="&blinkInterval.label;" control="blinkInterval"/>
+      <html:input id="blinkInterval" type="number" min="0" preference="extensions.blinkingAlert.blinkInterval" style="width:5em;"/>
+      <label id="blinkIntervalUnit" value="&blinkIntervalUnit.label; (0:&noBlink.label;)" control="blinkInterval"/>
+    </hbox>
+    <hbox class="indent" align="center">
+        <label id="blinkColorLabel" value="&blinkColor.label;" control="blinkColor"/>
+        <html:input type="color" id="blinkColor" preference="extensions.blinkingAlert.blinkColor"/>
+    </hbox>
+  </vbox>
+  <script src="chrome://global/content/preferencesBindings.js"/>
+  <script src="chrome://blinkingalert/content/preferences/notifications.js"/>
+</dialog>

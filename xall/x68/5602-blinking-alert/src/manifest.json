@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "Blinking Alert",
+  "developer": {
+    "name": "Iwasa Kazmi",
+    "url": "https://github.com/kzmi/BlinkingAlert"
+  },
+  "version": "1.3.1",
+  "default_locale": "en",
+  "description": "__MSG_extensionDescription__",
+  "icons": {
+    "32": "icons/icon.svg",
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "applications": {
+    "gecko": {
+      "id": "{06f79612-34ef-4f4b-beab-0902b61fcc4b}",
+      "strict_min_version": "68.0"
+    }
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://blinkingalert/content/options.xul",
+      "open_in_tab": false
+    }
+  }
+}
