@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "RemindIt",
+    "description": "help in mail reminding. Version for Tb68",
+    "version": "3.0.68",
+    "author": "o.marce@free.fr",
+    "applications": {
+        "gecko": {
+            "id": "RemindIt@o.marce.free.fr",
+            "strict_min_version": "68.0"
+        }
+    },
+    "browser_action": {
+        "default_title": "RemindIt",
+        "default_icon": "images/RemindIt32.png",
+	"default_popup": "popup.html"
+    },
+    "permissions": [
+        "messagesRead",
+	"alarms",
+	"storage"
+    ],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "icons": {
+        "64": "images/RemindIt64.png",
+        "32": "images/RemindIt32.png",
+        "16": "images/icon-16px.png"
+    }
+}
