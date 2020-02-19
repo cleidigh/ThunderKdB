@@ -501,7 +501,7 @@ var mailmergeutils = {
 			for(var j = 0; j < json[0].length; j++) {
 				
 				if(json[0][j] == "") { continue; }
-				object[json[0][j]] = (json[i][j] || "");
+				object[json[0][j]] = (json[i][j] === undefined || json[i][j] === null) ? "" : json[i][j].toString();
 				
 			}
 			/* object end */

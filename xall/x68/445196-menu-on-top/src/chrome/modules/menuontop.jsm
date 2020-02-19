@@ -162,12 +162,17 @@ END LICENSE BLOCK
 	1.14.1 - 07/05/2019
 	  # removed javascript console warnings caused by MenuOnTop unnecessarily running on dialog windows.
 
-  1.15 - 
+  1.15 - 17/06/2019
 	  # Improved loading UI on Thunderbird 68 beta.
 		# Support for new HTML color picker which replaces the XUL version of same in modern versions orf Thunderbird.
 		# Support for new Preferences system, but backwards compatible with Thunderbird 60.
 		# Replacement of document.createElement with createXULElement
 		# Improved loading custom icon (avatar) in modern versions of Thunderbird.
+		
+	1.16 - WIP
+    # Thunderbird 70 Compatibility: 
+		#   Removed QueryInterface to nsIDOMChromeWindow and nsIInterfaceRequestor
+		# fixed a missing entity in Italian locale
 		
 */
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -192,11 +197,15 @@ var EXPORTED_SYMBOLS = [ 'MenuOnTop' ],
               + "###    MenuOnTop.loadCSS()   ###" +'\n'
               + "################################";
 			util.logDebug (txt);
-			var css = document.getElementById(util.MainWindowId).
-								appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "style"));
+			let styleElement = document.createElementNS("http://www.w3.org/1999/xhtml", "style");
+			/*
+				document.createXULElement ? 
+				document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', "style");
+				document.createElementNS("http://www.w3.org/1999/xhtml", "style");
+				*/
+			var css = document.getElementById(util.MainWindowId).appendChild(styleElement);
 			css.setAttribute("type", "text/css");
 			css.id = this.CSSid;
-			
 			
 			let Prefs = this.Preferences,
 			    m = '-' + (Math.abs(Prefs.negativeMargin)).toString(),
@@ -273,9 +282,22 @@ var EXPORTED_SYMBOLS = [ 'MenuOnTop' ],
 					// no reordering necessary.
 				}
 				else {
-					ordinalTb = '-moz-box-ordinal-group: 10 !important;';
-					cssCode += '#tabs-toolbar{-moz-box-ordinal-group: 20 !important;} ' 
-					cssCode	+= '#mail-bar3{-moz-box-ordinal-group: 30 !important;} ';
+          // menu bar on top:
+          ordinalTb = '-moz-box-ordinal-group: 10 !important;';
+          if (prefs.getBoolPref('riseOfTools')) {
+            // Tools
+            cssCode	+= '#mail-bar3{-moz-box-ordinal-group: 20 !important;} ';
+            // Tabs
+            cssCode += '#tabs-toolbar{-moz-box-ordinal-group: 30 !important;} ';
+            util.riseOfTools(document, true);
+          }
+          else {
+            // Tabs
+            cssCode += '#tabs-toolbar{-moz-box-ordinal-group: 20 !important;} ';
+            // Tools
+            cssCode	+= '#mail-bar3{-moz-box-ordinal-group: 30 !important;} ';
+            util.riseOfTools(document, false);            
+          }
 				}
       }
 			
@@ -552,7 +574,9 @@ var EXPORTED_SYMBOLS = [ 'MenuOnTop' ],
       menuPopup.appendChild(
 				this.makeMenuItem(
 					doc, 
-					function() { _mot.appendBookmark(menuPopup); }, 
+					function() { 
+						_mot.TopMenu.appendBookmark(menuPopup); 
+					}, 
 					lblAddItem,  
 					'function'
 				)
@@ -560,7 +584,9 @@ var EXPORTED_SYMBOLS = [ 'MenuOnTop' ],
       menuPopup.appendChild(
 				this.makeMenuItem(
 					doc, 
-					function(evt) { _mot.showOptions(evt); },
+					function(evt) { 
+						_mot.showOptions(evt); 
+					},
 					lblOptions, 'function'
 				)
       ); // add my own command
@@ -766,9 +792,10 @@ var EXPORTED_SYMBOLS = [ 'MenuOnTop' ],
   },
 	
   showOptions: function showOptions(evt, win) {
-    var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
-        .getService(Components.interfaces.nsIWindowMediator);
-    var addonWin = windowManager.getMostRecentWindow("addon:MenuOnTop"); // use windowtype to set this
+		const util = this.Util,
+          windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
+           .getService(Components.interfaces.nsIWindowMediator),
+          addonWin = windowManager.getMostRecentWindow("addon:MenuOnTop"); // use windowtype to set this
     if (addonWin) {
       addonWin.focus();
 			return;
@@ -781,7 +808,12 @@ var EXPORTED_SYMBOLS = [ 'MenuOnTop' ],
 				win = window;
 		}
     
-		win.openDialog("chrome://menuontop/content/menuOnTop_options66.xul",'menuontop-options','chrome,titlebar,centerscreen,resizable,alwaysRaised');
+		let optionsDialog =
+		 util.versionGreaterOrEqual(util.AppverFull, "66") ?
+			 "chrome://menuontop/content/menuOnTop_options66.xul" :
+			 "chrome://menuontop/content/menuOnTop_options.xul";
+			 
+		win.openDialog(optionsDialog,'menuontop-options','chrome,titlebar,centerscreen,resizable,alwaysRaised');
   } ,
   
 	showAddonButton :function showAddonButton(mainWindow) {
@@ -839,6 +871,8 @@ var EXPORTED_SYMBOLS = [ 'MenuOnTop' ],
 	} ,
   
   get Application() {
+		// test
+		return 'Thunderbird';
 		if (null == this.mAppName) {
 			const CI = Components.interfaces;
 			var appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
@@ -870,12 +904,13 @@ var EXPORTED_SYMBOLS = [ 'MenuOnTop' ],
 	
 	get ApplicationName() {
 		if (!this.mAppNameFull) {
+			const CI = Components.interfaces;
 			var appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(CI.nsIXULAppInfo);
 			this.mAppNameFull = appInfo.name;
 		}
 		return this.mAppNameFull;
 	}
-
+	
 };  // MenuOnTop
 
 // Components.utils.import("resource://gre/modules/osfile.jsm")
@@ -915,7 +950,42 @@ MenuOnTop.Util = {
 			}
 		return this.mPlatformVer;
 	},
-  
+	
+	get AppverFull() {
+		let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
+						.getService(Components.interfaces.nsIXULAppInfo);
+		return appInfo.version;
+	},	
+	
+	versionGreaterOrEqual: function(a, b) {
+		/*
+			Compares Application Versions
+			returns
+			- is smaller than 0, then A < B
+			-  equals 0 then Version, then A==B
+			- is bigger than 0, then A > B
+		*/
+		let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
+														.getService(Components.interfaces.nsIVersionComparator);
+		return (versionComparator.compare(a, b) >= 0);
+	} ,
+	
+	get MailUtils() { // wrapper!
+		const util = MenuOnTop.Util,
+		      isTb66 = util.versionGreaterOrEqual(util.AppverFull, "61"),
+		      mailUtilsName =
+			isTb66 ?
+			 "MailUtils.jsm" : 
+       "MailUtils.js"; // why o why? 
+	
+		var { MailUtils } = 
+			isTb66 ?
+				ChromeUtils.import("resource:///modules/" + mailUtilsName) :
+				Components.utils.import("resource:///modules/" + mailUtilsName);		
+			
+		return MailUtils;
+	},
+	
 	simplifyVersion: function simplifyVersion(verStringOrNum) {
 		function strip(version, token) {
 			let cutOff = version.indexOf(token);
@@ -1357,7 +1427,7 @@ MenuOnTop.Util = {
       if (tabmail) { // Tb Content Tab
         this.mailWindow.focus()
 				sTabMode = "contentTab";
-        let browser = this.TopMenu.getBrowser(); // tabmail.getBrowserForDocument(content);
+        let browser = MenuOnTop.TopMenu.getBrowser(); // tabmail.getBrowserForDocument(content);
         tabmail.openTab(sTabMode,
             { contentPage: URL,
               background: false,
@@ -1387,7 +1457,7 @@ MenuOnTop.Util = {
         method = forceMethod || 'currentTab'; // || prefs.getStringPref('bookmarks.openMethod');
     if (util.Application != 'Thunderbird')
       throw('Cannot open email, application is not supported:' + util.Application);
-    Components.utils.import("resource:///modules/MailUtils.js");
+    // Components.utils.import("resource:///modules/MailUtils.js");
     try {
       if (!msgHdr) return false;
       if ((msgHdr.messageId.toString() + msgHdr.author + msgHdr.subject) == '' 
@@ -1402,10 +1472,10 @@ MenuOnTop.Util = {
       switch (method) {
         case 'currentTab':
           let mode = tabmail.selectedTab.mode.name; // mode should be 3pane or folder
-          MailUtils.displayMessageInFolderTab(msgHdr);
+          util.MailUtils.displayMessageInFolderTab(msgHdr);
           return true;
         case 'window':
-          MailUtils.openMessageInNewWindow(msgHdr);
+          util.MailUtils.openMessageInNewWindow(msgHdr);
           return true;
         default:
           util.logDebug('Unknown bookmarks.open.method: {' + method + '}'); 
@@ -1459,10 +1529,11 @@ MenuOnTop.Util = {
 		const util = this.util;
     const win = util.MainWindow;
     if (!win) return false;
-    if (util.Application == 'Thunderbird') {
-      Components.utils.import("resource:///modules/MailUtils.js");
-    }
-    let msgFolder = MailUtils.getFolderForURI(uri, true),
+		
+    let mailUtils = util.MailUtils,
+		    msgFolder = mailUtils.getExistingFolder ?
+					mailUtils.getExistingFolder(uri, true) :
+				  mailUtils.getFolderForURI(uri, true),
         theTreeView = win.gFolderTreeView;
     theTreeView.selectFolder(msgFolder);
     return true;
@@ -1566,7 +1637,19 @@ MenuOnTop.Util = {
 			util.logDebug ("Can not retrieve color value: " + hexIn);
 			return "#666";
 		}
-	}
+	},
+  
+  riseOfTools: function (doc, isRise) {
+    let toolbar = doc.getElementById("mail-bar3"),
+        newparent = doc.getElementById("navigation-toolbox");
+        
+    // Move the toolbar
+    if (isRise)
+      for (let node of newparent.childNodes){
+        if (node.id == "tabs-toolbar")
+          newparent.insertBefore(toolbar, node);
+      }
+  }
 	
 };  // Util
 
@@ -1943,7 +2026,7 @@ MenuOnTop.TopMenu = {
           text = getBundleString('menuontop.bookmarks.promptTitle', "Please enter a short title:");
     let input = {value: label},
         check = {value: false},
-        result = prompts.prompt(util.MainWindow, title, text, input, null, check); 
+        result = prompts.prompt(util.MainWindow, title, text, input, null, check); // #loginTextBox { min-height :2em; }
     if (!result) return label;
     return input.value;
   } ,
@@ -2016,7 +2099,7 @@ MenuOnTop.TopMenu = {
   },
   
   remove: function remove() {
-    if (this.prefs.isDebug) debugger;
+    if (MenuOnTop.Preferences.isDebug) debugger;
     let listbox = this.ListBox,
         idx = listbox.selectedIndex;
     if (idx<0) return;

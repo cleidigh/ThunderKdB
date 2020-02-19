@@ -10,13 +10,13 @@
   "name": "__MSG_extensionName__",
   "default_locale": "en",
   "description": "__MSG_extensionDescription__",
-  "version": "2.15.13",
+  "version": "3.0.12",
   "homepage_url": "http://github.com/protz/thunderbird-conversations/wiki",
   "legacy": {
     "type": "bootstrap"
   },
   "background": {
-    "scripts": ["prefs.js"]
+    "page": "background.html"
   },
   "options_ui": {
     "open_in_tab": true,
@@ -37,6 +37,14 @@
         ],
         "script": "experiment-api/api.js"
       }
+    }
+  },
+  "commands": {
+    "quick_compose": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+N"
+      },
+      "description": "Open the quick compose window"
     }
   }
 }

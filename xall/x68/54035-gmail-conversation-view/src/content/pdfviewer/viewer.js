@@ -9,6 +9,8 @@
 
 // Imported via viewer.xhtml -> pdf.js
 /* global pdfjsLib */
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  "chrome://conversations/content/vendor/pdf.worker.js";
 
 let viewer;
 
@@ -21,13 +23,12 @@ function Viewer() {
 }
 
 Viewer.prototype = {
-
   async load(data) {
     let self = this;
     let status = document.getElementById("status");
 
     try {
-      let pdfDocument = await pdfjsLib.getDocument(data);
+      let pdfDocument = await pdfjsLib.getDocument(data).promise;
 
       self.pdfDoc = pdfDocument;
       document.getElementById("numPages").textContent = self.pdfDoc.numPages;
@@ -48,7 +49,7 @@ Viewer.prototype = {
     this.pdfDoc.getPage(aPageNum).then(function(page) {
       self.curPage = aPageNum;
       let scale = 1.5;
-      let viewport = page.getViewport(scale);
+      let viewport = page.getViewport({ scale });
 
       //
       // Prepare canvas using PDF page dimensions
@@ -72,20 +73,27 @@ Viewer.prototype = {
   },
 
   prevPage() {
-    if (this.curPage > 1)
+    if (this.curPage > 1) {
       this.switchToPage(this.curPage - 1);
+    }
   },
 
   nextPage() {
-    if (this.curPage < this.pdfDoc.numPages)
+    if (this.curPage < this.pdfDoc.numPages) {
       this.switchToPage(this.curPage + 1);
+    }
   },
 
   _initPageForm(pageForm, numBox) {
     let self = this;
     pageForm.addEventListener("submit", function(event) {
       let page = parseInt(numBox.value, 10);
-      if (!isNaN(page) && page != self.curPage && page > 0 && page <= self.pdfDoc.numPages) {
+      if (
+        !isNaN(page) &&
+        page != self.curPage &&
+        page > 0 &&
+        page <= self.pdfDoc.numPages
+      ) {
         self.switchToPage(page);
       } else {
         numBox.value = self.curPage;

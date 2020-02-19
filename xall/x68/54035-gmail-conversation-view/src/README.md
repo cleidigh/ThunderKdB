@@ -27,11 +27,24 @@ Building
 ========
 
 1. Clone the repository
-2. Change into the main folder, run `git submodule init` and `git submodule update`
-3. Run `npm install`
+2. Change into the main folder, run `git submodule update --init`
+3. Run `npm ci`
 4. Run `npm run build`
 
 This will package a `converstions.xpi` file of the latest codebase which can be installed via add-on manager in Thunderbird (hint: you can drag & drop it onto the add-on manager view).
+
+Development
+===========
+
+Some `thunderbird-conversations` components can be developed fully in the browser. To build these components do
+
+```
+$ npm run dev
+```
+
+and then browse to http://localhost:8126 and select a browser-compatible component file. For example, http://localhost:8126/options.html  Missing Thunderbird APIs are mocked in `addon/content/es-modules/thunderbird-compat.js`.
+
+Please see [Development.md](docs/Development.md) for details.
 
 Testing
 =======
@@ -41,6 +54,7 @@ To run the tests:
 ```
 $ npm test
 ```
+Please see [Development.md](docs/Development.md) for details.
 
 Contributing
 ============

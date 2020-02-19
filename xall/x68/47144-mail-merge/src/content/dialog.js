@@ -316,9 +316,9 @@ var mailmerge = {
 			
 			var filePicker = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
 			filePicker.init(window, "Mail Merge", Ci.nsIFilePicker.modeOpen);
-			filePicker.appendFilter("Spreadsheet", "*.xlsx; *.xls; *.ods; *.csv");
-			filePicker.appendFilter("Microsoft Excel", "*.xlsx; *.xls");
-			filePicker.appendFilter("LibreOffice", "*.ods");
+			filePicker.appendFilter("Spreadsheet", "*.xlsx; *.xlsm; *.xlsb; *.xls; *.ods; *.fods; *.csv");
+			filePicker.appendFilter("Microsoft Office", "*.xlsx; *.xlsm; *.xlsb; *.xls");
+			filePicker.appendFilter("LibreOffice", "*.ods; *.fods");
 			filePicker.appendFilter("CSV", "*.csv");
 			filePicker.appendFilter("*", "*.*");
 			

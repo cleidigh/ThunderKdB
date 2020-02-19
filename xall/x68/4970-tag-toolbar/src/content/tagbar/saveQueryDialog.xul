@@ -1,0 +1,16 @@
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://tagbar/locale/save_query.dtd">
+<dialog xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="&tagbar.savequery.title;"
+        onload="onLoad()"
+        ondialogaccept="gQuerySaver.onOK()">
+
+  <script type="application/javascript" src="chrome://tagbar/content/saveQueryDialog.js"/>
+  <label value="&tagbar.savequery.catname;"/>
+  <hbox>
+    <textbox id="name" oninput="gQuerySaver.doEnabling(this.value);" flex="1"/>
+  </hbox>
+  <separator/>
+</dialog>

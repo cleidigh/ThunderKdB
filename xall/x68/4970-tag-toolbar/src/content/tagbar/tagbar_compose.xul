@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://tagbar/skin/tagbar.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % TTBDTD SYSTEM "chrome://tagbar/locale/tagbar.dtd">
+  %TTBDTD;
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd">
+  %messengerDTD;
+]>
+<overlay id="tagbar_compose_overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+  <script type="application/javascript" src="chrome://tagbar/content/utils.js"/>
+  <script type="application/javascript" src="chrome://tagbar/content/catmgr.js"/>
+  <script type="application/javascript" src="chrome://tagbar/content/tagSearcher.js"/>
+  <script type="application/javascript" src="chrome://tagbar/content/tagbar.js"/>
+  <script type="application/javascript" src="chrome://tagbar/content/tagbar_compose.js"/>
+  <script type="application/javascript" src="chrome://global/content/elements/stringbundle.js"/>
+  
+  <stringbundleset id="stringbundleset">
+	<stringbundle id="TTBBundle"
+	  src="chrome://tagbar/locale/tagbar.properties"/>
+  </stringbundleset>
+  
+	<broadcasterset>
+	<broadcaster id="TTB:ShowToolBar" checked="true"/>
+	<broadcaster id="TTB:TagStatus" disabled="false"/>
+  </broadcasterset>
+  
+<toolbox id="compose-toolbox">
+  <toolbarpalette id="MsgComposeToolbarPalette">
+    <toolbarbutton id="tag-toolbar-tagcategory" label="Tag Category"
+								 class="toolbarbutton-1"
+								 type="menu">
+		<menupopup onpopupshowing="if (event.target == this) gTagToolbar.onTagCategoryButtonPopupShowing(this)">
+		</menupopup>
+  </toolbarbutton>
+ 	<toolbarbutton id="tag-toolbar-attach-button" type="checkbox"
+ 								 checked="false" label="Attach tags" tooltiptext="Attach tags to the outgoing message"/>
+	<toolbarbutton id="tag-toolbar-find-startbutton" label="&tagbar.search_button;"
+				   type="checkbox" autoCheck="false" tooltiptext="&tagbar.search_button;" oncommand="gTagToolbar.invokeSearch()"/>
+	<toolbarbutton id="tag-toolbar-remove-button" label="&tagbar.remove_button;"
+				   tooltiptext="&tagbar.remove_button;" oncommand="gTagToolbar.removeAllMessageTags();"/>
+	<toolbaritem id="tag-toolbar-container" align="center"
+	   curcat="0" dispMode="text" akey="true" catcol="false" 
+	  persist="curcat catcol dispMode akey" flex="1" style="padding-left: 0px;"
+	  context="tag-toolbar-context-menu" title="&tagbar.title;"
+	  onpopupshowing="gTagToolbar.setOpenedMenu(event);"
+	  onpopuphidden="gTagToolbar.unsetOpenedMenu(event);">
+		<!--
+    <hbox id="tag-toolbar-find-startcontainer">
+  		<toolbarbutton id="tag-toolbar-find-startbutton" tooltiptext="Search tags" oncommand="gTagToolbar.invokeSearch()"/>
+	</hbox>
+	-->
+	  <hbox id="tag-toolbar-searchbox-container" collapsed="true" align="center">
+	  	<!--
+	  	<toolbarbutton id="tag-toolbar-find-closebutton" tooltiptext="End search" oncommand="gTagToolbar.invokeSearch()"/>
+	  	-->
+	  	<textbox value="" id="tag-toolbar-searchbox" oninput="gTagToolbar.searchTags()" tooltiptext="&tagbar.search_texttip;">
+	  	</textbox>
+		<toolbarbutton id="tag-toolbar-search-option" class="ttb-search-opt" type="menu" tooltiptext="&tagbar.search_opttip;">
+      		<menupopup popupalign="topleft" popupanchor="bottomleft">
+   			    <menuitem id="tag-toolbar-search-regexp" label="&tagbar.search_regexp;" type="checkbox" autocheck="false"
+                  		persist="checked" oncommand="gTagToolbar.changeSearchOption(this)"/>
+   			    <menuitem id="tag-toolbar-search-case" label="&tagbar.search_case;" type="checkbox" autocheck="false" 
+                  		persist="checked" oncommand="gTagToolbar.changeSearchOption(this)"/>
+			</menupopup>
+		</toolbarbutton>
+	  	<toolbarbutton id="tag-toolbar-find-colorbutton" color="NONE" tooltiptext="&tagbar.search_colortip;"
+	  				   oncommand="gTagToolbar.showColorPicker();">
+	  		<spacer id="tag-toolbar-find-colorbutton-content" class="tagbar-color-box"/>
+	  	</toolbarbutton>
+	  	<toolbarbutton id="tag-toolbar-query-savebutton" tooltiptext="&tagbar.search_savetip;" oncommand="gTagToolbar.saveQueryAsCategory()"/>
+	  </hbox>
+	  <hbox id="tag-toolbar-container-box"  class="tagbar-container-box"
+		/>
+	  <!--
+	  <hbox mousethrough="always">
+	  -->
+		<!--
+		<hbox mousethrough="always" id="tag-toolbar-overflow-padder"/>
+		  -->
+		<toolbarbutton id="tag-toolbar-container-chevron" class="ttb-chevron"
+		  type="menu" collapsed="true" observes="TTB:TagStatus">
+		  <menupopup 
+			onpopupshowing="if (event.target == this) gTagToolbar.initChevronMenu(this)"/>
+		</toolbarbutton>
+		<!--
+	  </hbox>
+	  -->
+	</toolbaritem>
+	
+	<toolbarbutton id="tag-toolbar-button-tag" type="menu" class="toolbarbutton-1"
+                     label="&tagButton.label;" tooltiptext="&tagButton.tooltip;">
+        <menupopup onpopupshowing="gTagToolbar.initTagsButtonPopup(this)">
+          <menuitem oncommand="gTagToolbar.removeAllMessageTags();" label="&tagbar.remove_button;"/>
+          <menuseparator/>
+        </menupopup>
+      </toolbarbutton>
+  </toolbarpalette>
+  <toolbar id="tag-toolbar" insertafter="composeToolbar2"
+	class="chromeclass-toolbar tagbar-container-box"
+	toolbarname="&tagbar.menu_toggle_bar;" 
+	context="toolbar-context-menu"
+	fullscreentoolbar="true" mode="full"
+	customizable="true"
+	iconsize="small"
+	defaultset="tag-toolbar-attach-button,tag-toolbar-find-startbutton,tag-toolbar-container"
+	collapsed="false"
+	persist="collapsed"
+	/>
+</toolbox>
+<!--
+<menupopup id="menu_View_Popup">
+  <menuitem type="checkbox" observes="TTB:ShowToolBar"
+	oncommand="gTagToolbar.toggleTagToolbar();"
+	insertafter="menu_showMessengerToolbar" id="menu-show-tag-toolbar"
+	label="&tagbar.menu_toggle_bar;"/>
+</menupopup>
+-->
+<window id="msgcomposeWindow">
+	<!--
+  <popup id="toolbar-context-menu">
+	<menuitem type="checkbox" observes="TTB:ShowToolBar"
+	  oncommand="gTagToolbar.toggleTagToolbar();" id="show-tag-toolbar"
+	  label="&tagbar.menu_toggle_bar;"/>
+  </popup>
+  -->
+  <menupopup id="tag-toolbar-context-menu" onpopupshowing="gTagToolbar.initTagToolbarPopupMenu()">
+	<menuitem id="tag-toolbar-remove-tag"
+	  oncommand="gTagToolbar.removeAllMessageTags();"/>
+	<menuseparator/>
+<!--
+	<menuitem id="tagtoolbar-new-tag" label="&addNewTag.label;"
+	  oncommand="gTagToolbar.addNewTag()"/>
+-->
+	<menuitem id="tagtoolbar-edit-tags" label="&tagbar.menu_edit_tags;"
+	  oncommand='openOptionsDialog("paneDisplay")'/>
+	<menuitem id="tagtoolbar-edit-cat" label="&tagbar.menu_edit_cat;"
+	  oncommand='gTagToolbar.changeCat("TTBEdit")'/>
+	<menuseparator/>
+	<menu id="tag-toolbar-disp" label="&tagbar.menu_disp;">
+	  <menupopup onpopupshowing="gTagToolbar.initTagDisplayMenu()">
+		<menuitem id="tag-toolbar-disp-text" label="&tagbar.menu_disp_text;" 
+		  dispType="text" name="TTBDispType" type="radio"
+		  oncommand='gTagToolbar.switchTagDisplay(this)' autocheck="false"/>
+		<menuitem id="tag-toolbar-disp-color" label="&tagbar.menu_disp_color;" 
+		  dispType="color" name="TTBDispType" type="radio"
+		  oncommand='gTagToolbar.switchTagDisplay(this)' autocheck="false"/>
+		<menuitem id="tag-toolbar-disp-cat" label="&tagbar.menu_disp_cat;" 
+		  dispType="category" name="TTBDispType" type="radio"
+		  oncommand='gTagToolbar.switchTagDisplay(this)' autocheck="false"/>
+		<menuseparator/>
+		<menuitem id="tag-toolbar-disp-akey" label="&tagbar.menu_disp_akey;" 
+		  type="checkbox" oncommand='gTagToolbar.switchTagDisplay(this)'/>
+	  </menupopup>
+	</menu>
+	<menu id="tag-toolbar-swcat" label="&tagbar.menu_disp_cat;"
+	  oncommand='gTagToolbar.changeCatByIndex(parseInt(event.originalTarget.getAttribute("catno")));'>
+	  <menupopup id="tag-toolbar-swcat-popup" onpopupshowing="gTagToolbar.onCategoryPopupShowing(this)">
+	  </menupopup>
+	</menu>
+	<menuitem id="tagtoolbar-update-tag" label="&tagbar.menu_update_tagbar;"
+	  oncommand="gTagToolbar.updateTagToolbar();"/>
+	<menuitem id="tagtoolbar-search-tag" label="&tagbar.menu_search;" type="checkbox"
+	  oncommand="gTagToolbar.invokeSearch();"/>
+	<menuseparator/>
+	<menuitem type="checkbox" observes="TTB:ShowToolBar"
+	  oncommand="gTagToolbar.toggleTagToolbar();" id="tagbar-show-tag-toolbar"
+	  label="&tagbar.menu_toggle_bar;"/>
+	<menuitem id="tagtoolbar-show-category" label="&tagbar.menu_toggle_catlist;"
+	  type="checkbox" checked="true" collapsed="false"
+	  oncommand="gTagToolbar.toggleCatList();"/>
+  </menupopup>
+  
+   <tooltip id="tagtoolbar-searchcat-tip" noautohide="true" orient="vertical"
+	  position="before_start" style="padding:2px;">
+	  <vbox id="tagtoolbar-searchcat-tip-text">
+			<hbox>
+			  <label value="&tagbar.search_keyword;:" style="margin:2px;"/>
+			  <label value="" style="margin:2px;"/>
+			</hbox>
+			<hbox>
+			  <label value="&tagbar.search_regexp;:" style="margin:2px;"/>
+			  <label value="" style="margin:2px;"/>
+			</hbox>
+			<hbox>
+			  <label value="&tagbar.search_case;:" style="margin:2px;"/>
+				<label value="" style="margin:2px;"/>
+			</hbox>
+			<hbox align="center">
+			  <label value="&tagbar.search_color;:" style="margin:2px;"/>
+				<label value="" style="margin:2px;"/>
+				<spacer class="tagbar-color-box-mini"/>
+			</hbox>
+	  </vbox>
+	</tooltip>
+</window>
+</overlay>

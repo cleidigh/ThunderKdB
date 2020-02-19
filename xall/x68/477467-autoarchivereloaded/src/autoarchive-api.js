@@ -1,4 +1,13 @@
 "use strict";
+var AutoarchiveReloaded;
+(function (AutoarchiveReloaded) {
+    let GlobalStates;
+    (function (GlobalStates) {
+        GlobalStates[GlobalStates["UNINITIALZED"] = 0] = "UNINITIALZED";
+        GlobalStates[GlobalStates["READY_FOR_WORK"] = 1] = "READY_FOR_WORK";
+        GlobalStates[GlobalStates["IN_PROGRESS"] = 2] = "IN_PROGRESS";
+    })(GlobalStates = AutoarchiveReloaded.GlobalStates || (AutoarchiveReloaded.GlobalStates = {}));
+})(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
 /*!
 Copyright 2018-2019 Brummolix (AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
 
@@ -69,14 +78,6 @@ class Logger {
         console.log(value);
     }
 }
-class ClassicTBHelper {
-    static getThePromptService() {
-        return Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-    }
-    static getMail3Pane() {
-        return Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("mail:3pane");
-    }
-}
 /*!
 Copyright 2013-2019 Brummolix (new version AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
 Copyright 2012 Alexey Egorov (original version Autoarchive, http://code.google.com/p/autoarchive/ )
@@ -99,30 +100,11 @@ Copyright 2012 Alexey Egorov (original version Autoarchive, http://code.google.c
 var autoarchive = class extends ExtensionCommon.ExtensionAPI {
     constructor() {
         super(...arguments);
-        this.toolbarCustomizationDetection = new ToolbarCustomizationDetection();
         this.legacyOptions = new LegacyOptions();
     }
     getAPI(context) {
         return {
             autoarchive: {
-                alert: async (title, text) => {
-                    await ClassicTBHelper.getThePromptService().alert(null, title, text);
-                },
-                confirm: async (title, text) => {
-                    return await ClassicTBHelper.getThePromptService().confirm(null, title, text);
-                },
-                initToolbarConfigurationObserver: () => {
-                    try {
-                        this.toolbarCustomizationDetection.registerToolbarCustomizationListener(ClassicTBHelper.getMail3Pane());
-                    }
-                    catch (e) {
-                        log.error(e);
-                        throw e;
-                    }
-                },
-                isToolbarConfigurationOpen: async () => {
-                    return this.toolbarCustomizationDetection.isInToolbarCustomize;
-                },
                 askForLegacyPreferences: async (accounts) => {
                     log.info("askForLegacyPreferences");
                     try {
@@ -235,33 +217,3 @@ class LogLevelInfo {
 }
 let logLevelInfo = new LogLevelInfo();
 const log = new Logger(logLevelInfo);
-class ToolbarCustomizationDetection {
-    constructor() {
-        this.bIsInToolbarCustomize = false;
-    }
-    get isInToolbarCustomize() {
-        return this.bIsInToolbarCustomize;
-    }
-    registerToolbarCustomizationListener(window) {
-        if (!window) {
-            return;
-        }
-        window.addEventListener("aftercustomization", this.afterCustomize.bind(this));
-        window.addEventListener("beforecustomization", this.beforeCustomize.bind(this));
-    }
-    removeToolbarCustomizationListener(window) {
-        if (!window) {
-            return;
-        }
-        window.removeEventListener("aftercustomization", this.afterCustomize);
-        window.removeEventListener("beforecustomization", this.beforeCustomize);
-    }
-    beforeCustomize(e) {
-        log.info("toolbar customization detected");
-        this.bIsInToolbarCustomize = true;
-    }
-    afterCustomize(e) {
-        log.info("toolbar customization ended");
-        this.bIsInToolbarCustomize = false;
-    }
-}

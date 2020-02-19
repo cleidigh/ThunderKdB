@@ -6,39 +6,29 @@
 
 "use strict";
 
-const {XPCOMUtils} = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+const { XPCOMUtils } = ChromeUtils.import(
+  "resource://gre/modules/XPCOMUtils.jsm"
+);
 
 XPCOMUtils.defineLazyModuleGetters(this, {
-  Conversation: "resource://conversations/modules/conversation.js",
-  // CustomizeKeys: "resource://conversations/modules/keycustomization.js",
-  GlodaAttrProviders: "resource://conversations/modules/plugins/glodaAttrProviders.js",
-  MonkeyPatch: "resource://conversations/modules/monkeypatch.js",
+  Conversation: "chrome://conversations/content/modules/conversation.js",
+  GlodaAttrProviders:
+    "chrome://conversations/content/modules/plugins/glodaAttrProviders.js",
+  MonkeyPatch: "chrome://conversations/content/modules/monkeypatch.js",
+  Prefs: "chrome://conversations/content/modules/prefs.js",
   Services: "resource://gre/modules/Services.jsm",
 });
 
 let Log;
 
-// from wjohnston (cleary for Fennec)
-let ResourceRegister = {
-  init(aURI, aName) {
-    let resource = Services.io.getProtocolHandler("resource")
-      .QueryInterface(Ci.nsIResProtocolHandler);
-    let alias = Services.io.newURI(aURI);
-    resource.setSubstitution(aName, alias);
-  },
-
-  uninit(aName) {
-    let resource = Services.io.getProtocolHandler("resource")
-      .QueryInterface(Ci.nsIResProtocolHandler);
-    resource.setSubstitution(aName, null);
-  },
-};
-
 function monkeyPatchWindow(window) {
   let doIt = function() {
     try {
-      if (window.document.location != "chrome://messenger/content/messenger.xul")
+      if (
+        window.document.location != "chrome://messenger/content/messenger.xul"
+      ) {
         return;
+      }
       Log.debug("The window looks like a mail:3pane, monkey-patching...");
 
       // Insert our own global Conversations object
@@ -57,8 +47,6 @@ function monkeyPatchWindow(window) {
         currentConversation: null,
         counter: 0,
 
-        quickCompose() {},
-
         createDraftListenerArrayForId(aId) {
           window.Conversations.draftListeners[aId] = [];
         },
@@ -72,20 +60,18 @@ function monkeyPatchWindow(window) {
       // Used by the in-stub.html detachTab function
       window.Conversations.monkeyPatch = monkeyPatch;
 
-      window.Conversations.quickCompose = function() {
-        const {Prefs} = ChromeUtils.import("resource://conversations/modules/prefs.js");
-        if (Prefs.compose_in_tab)
-          window.openTab("chromeTab", { chromePage: "chrome://conversations/content/stub.xhtml?quickCompose=1" });
-        else
-          window.open("chrome://conversations/content/stub.xhtml?quickCompose=1", "", "chrome,width=1020,height=600");
-      };
-
       // The modules below need to be loaded when a window exists, i.e. after
       // overlays have been properly loaded and applied
       /* eslint-disable no-unused-vars */
-      ChromeUtils.import("resource://conversations/modules/plugins/enigmail.js");
-      ChromeUtils.import("resource://conversations/modules/plugins/lightning.js");
-      ChromeUtils.import("resource://conversations/modules/plugins/dkimVerifier.js");
+      ChromeUtils.import(
+        "chrome://conversations/content/modules/plugins/enigmail.js"
+      );
+      ChromeUtils.import(
+        "chrome://conversations/content/modules/plugins/lightning.js"
+      );
+      ChromeUtils.import(
+        "chrome://conversations/content/modules/plugins/dkimVerifier.js"
+      );
       /* eslint-enable no-unused-vars */
     } catch (e) {
       Cu.reportError(e);
@@ -96,23 +82,30 @@ function monkeyPatchWindow(window) {
     Log.debug("Document is ready...");
     doIt();
   } else {
-    Log.debug(`Document is not ready (${window.document.readyState}), waiting...`);
-    window.addEventListener("load", () => {
-      doIt();
-    }, {once: true});
+    Log.debug(
+      `Document is not ready (${window.document.readyState}), waiting...`
+    );
+    window.addEventListener(
+      "load",
+      () => {
+        doIt();
+      },
+      { once: true }
+    );
   }
 }
 
 function monkeyPatchAllWindows() {
-  for (let w of Services.wm.getEnumerator("mail:3pane"))
+  for (let w of Services.wm.getEnumerator("mail:3pane")) {
     monkeyPatchWindow(w);
+  }
 }
 
 // This obserer is notified when a new window is created and injects our code
 let windowObserver = {
   observe(aSubject, aTopic, aData) {
     if (aTopic == "domwindowopened") {
-      if (aSubject && ("QueryInterface" in aSubject)) {
+      if (aSubject && "QueryInterface" in aSubject) {
         aSubject.QueryInterface(Ci.nsIDOMWindow);
         monkeyPatchWindow(aSubject.window);
       }
@@ -120,10 +113,12 @@ let windowObserver = {
   },
 };
 
-function startup(aData, aReason) {
-  ResourceRegister.init(aData.resourceURI.spec, "conversations");
-  const {setupLogging, dumpCallStack} = ChromeUtils.import("resource://conversations/modules/log.js");
-  const {Config} = ChromeUtils.import("resource://conversations/modules/config.js");
+async function startup(aData, aReason) {
+  await Prefs.initialized;
+
+  const { setupLogging, dumpCallStack } = ChromeUtils.import(
+    "chrome://conversations/content/modules/log.js"
+  );
 
   Log = setupLogging("Conversations.MonkeyPatch");
   Log.debug("startup, aReason=", aReason);
@@ -136,32 +131,6 @@ function startup(aData, aReason) {
 
     // Patch all future windows
     Services.ww.registerNotification(windowObserver);
-
-    // Show the assistant if the extension is installed or enabled
-    if (aReason == Config.BOOTSTRAP_REASONS.ADDON_INSTALL || aReason == Config.BOOTSTRAP_REASONS.ADDON_ENABLE) {
-      Services.ww.openWindow(
-        null,
-        "chrome://conversations/content/assistant/assistant.xhtml",
-        "",
-        "chrome,width=800,height=500", {});
-    }
-
-    // Hook into options window
-    // TODO: Maybe bring this back?
-    // Services.obs.addObserver({
-    //   observe(aSubject, aTopic, aData) {
-    //     if (aTopic == "addon-options-displayed" && aData == "gconversation@xulforum.org") {
-    //       CustomizeKeys.enable(aSubject); // aSubject is the options document
-    //     }
-    //   },
-    // }, "addon-options-displayed");
-    // Services.obs.addObserver({
-    //   observe(aSubject, aTopic, aData) {
-    //     if (aTopic == "addon-options-hidden" && aData == "gconversation@xulforum.org") {
-    //       CustomizeKeys.disable(aSubject); // aSubject is the options document
-    //     }
-    //   },
-    // }, "addon-options-hidden");
   } catch (e) {
     Cu.reportError(e);
     dumpCallStack(e);
@@ -169,19 +138,19 @@ function startup(aData, aReason) {
 }
 
 function shutdown(aData, aReason) {
-  const {SimpleStorage} = ChromeUtils.import("resource://conversations/modules/stdlib/SimpleStorage.js");
-  const {Config} = ChromeUtils.import("resource://conversations/modules/config.js");
-  SimpleStorage.close().catch(Cu.reportError);
+  const { Config } = ChromeUtils.import(
+    "chrome://conversations/content/modules/config.js"
+  );
 
   // No need to do extra work here
   Log.debug("shutdown, aReason=", aReason);
-  if (aReason == Config.BOOTSTRAP_REASONS.APP_SHUTDOWN)
+  if (aReason == Config.BOOTSTRAP_REASONS.APP_SHUTDOWN) {
     return;
+  }
 
   Services.ww.unregisterNotification(windowObserver);
 
   // Reasons to be here can be DISABLE or UNINSTALL
-  ResourceRegister.uninit("conversations");
   for (let w of Services.wm.getEnumerator("mail:3pane")) {
     if ("Conversations" in w) {
       w.Conversations.monkeyPatch.undo(aReason);
@@ -189,8 +158,6 @@ function shutdown(aData, aReason) {
   }
 }
 
-function install(aData, aReason) {
-}
+function install(aData, aReason) {}
 
-function uninstall(aData, aReason) {
-}
+function uninstall(aData, aReason) {}

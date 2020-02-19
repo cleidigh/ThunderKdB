@@ -1,4 +1,13 @@
 "use strict";
+var AutoarchiveReloaded;
+(function (AutoarchiveReloaded) {
+    let GlobalStates;
+    (function (GlobalStates) {
+        GlobalStates[GlobalStates["UNINITIALZED"] = 0] = "UNINITIALZED";
+        GlobalStates[GlobalStates["READY_FOR_WORK"] = 1] = "READY_FOR_WORK";
+        GlobalStates[GlobalStates["IN_PROGRESS"] = 2] = "IN_PROGRESS";
+    })(GlobalStates = AutoarchiveReloaded.GlobalStates || (AutoarchiveReloaded.GlobalStates = {}));
+})(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
 /*!
 Copyright 2018-2019 Brummolix (AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
 
@@ -169,7 +178,7 @@ var AutoarchiveReloaded;
             }
         }
         static isAccountArchivable(account) {
-            return (account.type === "pop3" || account.type === "imap" || account.type === "rss" || account.type === "nntp" || account.type === "exquilla");
+            return (account.type === "pop3" || account.type === "imap" || account.type === "rss" || account.type === "nntp" || account.type === "exquilla" || account.type === "none");
         }
     }
     AutoarchiveReloaded.AccountIterator = AccountIterator;

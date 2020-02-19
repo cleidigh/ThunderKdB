@@ -43,6 +43,10 @@ button {
   -moz-appearance: button;
 }
 
+.hidden {
+  display: none;
+}
+
 .button-flat {
   -moz-appearance: none;
   background: none;
@@ -191,7 +195,7 @@ a img {
 
 .author {
   font-weight: bold;
-  margin-right: .3rem;
+  margin-inline-end: .3rem;
 }
 
 .to,
@@ -207,15 +211,7 @@ a img {
   text-overflow:  ellipsis;
   overflow:       hidden;
   flex:           1;
-  margin-right:   .4em;
-}
-
-.recipient-tooltips {
-  /* place it over '.to' sibling element */
-  position: absolute;
-  top: 0;
-  left: 0;
-  line-height: 1.8;
+  margin-inline-end:   .4em;
 }
 
 .tooltipWrapper {
@@ -237,9 +233,15 @@ a img {
   border: 1px solid ThreeDShadow;
   box-shadow: 0 0 8px rgba(0,0,0,0.25);
   z-index: 1000;
+  line-height: 1.8;
 }
 
-.tooltip[fadein=true] {
+html[dir="rtl"] .tooltip {
+  left: 0;
+  right: 16px;
+}
+
+.transition-in > .tooltip {
   animation: fadein 400ms ease-out;
 }
 
@@ -248,7 +250,7 @@ a img {
   to { opacity: 1; }
 }
 
-.tooltip[fadein=false] {
+.transition-out > .tooltip {
   animation: fadeout 400ms ease-in;
 }
 
@@ -262,6 +264,12 @@ a img {
   left: 0;
 }
 
+html[dir="rtl"] .contactTooltipWrapper .tooltip {
+  /* override generic tooltip, so to look closer to contact name */
+  left: 16px;
+  right: 0;
+}
+
 .createFilter {
   height: 1.86em;
 }
@@ -271,7 +279,7 @@ a img {
   display: inline;
 }
 
-.options .hide-details {
+.options > .details-hidden {
   color: -moz-CellHighlight;
 }
 
@@ -300,6 +308,11 @@ a img {
   left: auto;
   right: -0.2em;
   line-height: 1.8;
+}
+
+html[dir="rtl"] .dropDown .tooltip {
+  left: right: -0.2em;
+  right: auto;
 }
 
 .dropDown ul {
@@ -339,9 +352,19 @@ a img {
   width: 0;
 }
 
+html[dir="rtl"] .arrow {
+  right: 10px;
+  left: 0;
+}
+
 .dropDown .arrow {
   left: auto;
   right: .5em;
+}
+
+html[dir="rtl"] .dropDown .arrow {
+  right: auto;
+  left: .5em;
 }
 
 .arrow.inside {
@@ -389,13 +412,13 @@ a img {
 }
 
 .authorLinks {
-  clear: left;
+  clear: inline-start;
 }
 
 .name {
   font-size: 1.4rem;
-  float: left;
-  clear: left;
+  float: inline-start;
+  clear: inline-start;
   max-width: calc(40rem - 100px);
   text-overflow: ellipsis;
   overflow: hidden;
@@ -412,7 +435,7 @@ a img {
 .authorEmailAddress {
   text-overflow: ellipsis;
   overflow: hidden;
-  margin-right: 5px;
+  margin-inline-end: 5px;
 }
 
 .authorPicture {
@@ -430,26 +453,18 @@ a img {
   padding: 5px 10px;
   background-color: rgba(160, 160, 160, 0.1);
   border-top: 1px solid ThreeDShadow;
-  float: left;
+  float: inline-start;
   border-radius: 0 0 5px 5px;
 }
 
 .tipFooter button {
   padding: 0 5px;
-  float: left;
+  float: inline-start;
   margin: 0 3px 0 0;
 }
 
 .moreExpander {
-  float: right;
-}
-
-.message:not(.with-details) .show-with-details {
-  display: none;
-}
-
-.message.with-details .hide-with-details {
-  display: none !important;
+  float: inline-end;
 }
 
 .message:not(.bugzilla) .bzTo {
@@ -460,23 +475,13 @@ a img {
   display: none;
 }
 
-.message.collapsed .to,
 .message.collapsed .bzTo,
-.message.collapsed .details,
-.message.collapsed .hide-details,
-.message.collapsed .dropDown,
-.message.collapsed .replyLinkWrapper,
-.message.collapsed .editDraftLinkWrapper,
 .message.collapsed .messageBody,
-.message.collapsed .messageFooter,
 .message.collapsed .quickReply,
-.message.collapsed .notificationBar,
 .message.collapsed .smallEmail,
 .message.collapsed p,
 .message.collapsed iframe,
-.message.collapsed .attachments,
-.message.collapsed .detailsLine,
-.message:not(.collapsed) .snippet {
+.message.collapsed .detailsLine {
   display: none !important;
 }
 
@@ -512,7 +517,7 @@ a img {
   font-size: 1.0rem;
   line-height: 1.8;
   padding: 0 .9em;
-  margin-right: .4rem;
+  margin-inline-end: .4rem;
   border-radius: .9em;
   color: #fff;
 }
@@ -523,9 +528,9 @@ a img {
   text-align: center;
   font-weight: bold;
   width: 1.8em;
-  margin-right: -0.9em;
+  margin-inline-end: -0.9em;
   border-radius: .9em;
-  margin-left: .5em;
+  margin-inline-start: .5em;
   background-color: rgba(255,255,255,0.4);
 }
 
@@ -538,10 +543,6 @@ a img {
 }
 
 .tags li.light-tag .tag-x {
-  border-color: rgb(10, 10, 10);
-}
-
-.tags li.blc-FFFFFF {
   border: 1px solid black;
 }
 
@@ -553,12 +554,12 @@ a img {
   vertical-align: middle;
 }
 
-.in-folder {
+.tags li.can-click {
   cursor: pointer;
 }
 
-.message.inView .in-folder {
-  display: none;
+.in-folder {
+  cursor: pointer;
 }
 
 .notificationBar {
@@ -588,24 +589,20 @@ a img {
 .notificationBar a {
   text-decoration: underline;
   font-weight: bold;
+  color: black;
+  cursor: pointer;
 }
 
 .notificationBar .icon {
   font-size: 1.8em;
 }
 
-.lightningImipImage {
-  height: 24px;
-  width: 24px;
-  vertical-align: middle;
-}
-
 .lightningImipButton {
-  float: right;
+  float: inline-end;
 }
 
 .enigmailBar .enigmailDetails {
-  float: right;
+  float: inline-end;
 }
 
 .detailsLine {
@@ -688,7 +685,7 @@ a img {
 
 .attachmentInfo {
   display: inline-block;
-  float: left;
+  float: inline-start;
 }
 
 .filename,
@@ -706,7 +703,7 @@ a img {
 }
 
 .footerActions {
-  float: right;
+  float: inline-end;
 }
 
 .footerActions button {
@@ -743,10 +740,11 @@ a img {
 
 .star {
   display: inline;
-  margin-right: 3px;
+  margin-inline-end: 3px;
   color: #888a85;
   font-size: 80%;
 }
+
 .star .icon {
   fill: none;
   stroke: currentColor;
@@ -763,7 +761,7 @@ a img {
 
 /* bottom links: forward this conversation, print this conversation */
 .bottom-links {
-  text-align: right;
+  text-align: end;
   padding: 5px 10px 10px 10px;
 }
 
@@ -778,44 +776,33 @@ a img {
   display: none;
 }
 
-.message:not(.signed) .tag-signed {
-  display: none;
-}
-
-.tag-signed,
+.special-tag.enigmail-signed,
 .tag-decrypted {
   background-color: #68AB57 !important;
 }
 
 /* DKIM Verifier plugin */
-.message:not(.dkim-signed) .tag-dkim-signed {
-  display: none;
-}
-
-.message[dkimStatus="SUCCESS"] .tag-dkim-signed {
+.special-tag.dkim-signed.SUCCESS {
   background-color: #68AB57 !important;
 }
 
-.message[dkimStatus="SUCCESS"][warnings="true"] .tag-dkim-signed {
+.special-tag.dkim-signed.SUCCESS.warnings {
   background-color: orange !important;
 }
 
-.message[dkimStatus="PERMFAIL"] .tag-dkim-signed {
+.special-tag.dkim-signed.PERMFAIL {
   background-color: red!important;
 }
 
-.message[dkimStatus="TEMPFAIL"] .tag-dkim-signed {
-}
-
-.tag-dkim-signed {
+.dkim-signed {
   position: relative;
 }
 
-.tag-dkim-signed span {
+.dkim-signed span {
   display:none;
 }
 
-.tag-dkim-signed:hover span {
+.dkim-signed:hover span {
   display: inline;
   position: absolute;
   top: 24px;
@@ -825,6 +812,7 @@ a img {
   border: 1px solid #aaa;
   box-shadow: 0 0 0 6px rgba(0,0,0,0.25);
   border-radius: 5px;
+  width: -moz-max-content;
   z-index: 1000;
 }
 
@@ -852,4 +840,9 @@ html[xmlns] .clearfix {
   width: 16px;
   height: 16px;
   background-image: url(loader.gif);
+}
+
+.messageBody > iframe {
+  overflow-y: hidden;
+  border: none;
 }

@@ -267,6 +267,17 @@ MenuOnTop.Options = {
     document.getElementById('moveBar').disabled = !isToggle;
   },
   
+  toggleRiseOfTools: function toggleRiseOfTools(checkbox) {
+    // let the observer handle it...
+    /*
+    const prefs = MenuOnTop.Preferences,
+		      util = MenuOnTop.Util;
+    let newFlag = !prefs.getBoolPref('riseOfTools');
+    prefs.setBoolPref('riseOfTools', newFlag);
+    this.apply();
+    */
+  },
+  
   onTabSelect: function onTabSelect(cl, event) {
     let el = event.target;
     if (!MenuOnTop.Options.isLoaded) {

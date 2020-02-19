@@ -39,3 +39,4 @@ pref("extensions.menuontop.statusIcon", true);
 pref("extensions.menuontop.tabbarMargin", 3);
 pref("extensions.menuontop.textShadow", true);
 pref("extensions.menuontop.toolbarMargin.right", 350);
+pref("extensions.menuontop.riseOfTools", false);

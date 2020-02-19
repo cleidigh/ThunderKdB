@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://tagbar/locale/color_picker.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        title="&tagbar.colorpicker.title;" buttons="accept,cancel"
+        onload="onLoad()"
+        ondialogaccept="gColorPicker.onOK();"
+        >
+  <script type="application/javascript" src="chrome://tagbar/content/colorPicker.js"/>
+  <label value="Choose Tag Color:"/>
+  <vbox>
+  	<radiogroup id="colorradio" value="0">
+  		<radio value="0" label="&tagbar.colorpicker.not_spec;"></radio>
+  		<radio value="1" label="&tagbar.colorpicker.def_color;"></radio>
+  		<hbox>
+	  		<radio value="2" label="Other:"></radio>
+	  		<html:input type="color" id="colorpicker"/>
+  		</hbox>
+  	</radiogroup>
+  </vbox>
+</dialog>

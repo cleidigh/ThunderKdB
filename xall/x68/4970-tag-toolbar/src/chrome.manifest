@@ -1,25 +1,25 @@
-content tagbar jar:chrome/tagbar.jar!/content/tagbar/
+content tagbar content/tagbar/
 
 overlay	chrome://messenger/content/messenger.xul	chrome://tagbar/content/tagbar.xul
 overlay	chrome://messenger/content/messageWindow.xul	chrome://tagbar/content/tagbar.xul
 overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://tagbar/content/tagbar_compose.xul
 
-locale tagbar	cs jar:chrome/tagbar.jar!/locale/cs/tagbar/
-locale tagbar de jar:chrome/tagbar.jar!/locale/de/tagbar/
-locale tagbar en-US jar:chrome/tagbar.jar!/locale/en-US/tagbar/
-locale tagbar es-ES jar:chrome/tagbar.jar!/locale/es-ES/tagbar/
-locale tagbar fr jar:chrome/tagbar.jar!/locale/fr/tagbar/
-locale tagbar it-IT jar:chrome/tagbar.jar!/locale/it-IT/tagbar/
-locale tagbar ja-JP jar:chrome/tagbar.jar!/locale/ja-JP/tagbar/
-locale tagbar nl jar:chrome/tagbar.jar!/locale/nl/tagbar/
-locale tagbar pl jar:chrome/tagbar.jar!/locale/pl/tagbar/
-locale tagbar pt-BR jar:chrome/tagbar.jar!/locale/pt-BR/tagbar/
-locale tagbar ru-RU jar:chrome/tagbar.jar!/locale/ru-RU/tagbar/
-locale tagbar sv-SE jar:chrome/tagbar.jar!/locale/sv-SE/tagbar/
-locale tagbar tr-TR jar:chrome/tagbar.jar!/locale/tr-TR/tagbar/
-locale tagbar zh-CN jar:chrome/tagbar.jar!/locale/zh-CN/tagbar/
+locale tagbar	cs locale/cs/tagbar/
+locale tagbar de locale/de/tagbar/
+locale tagbar en-US locale/en-US/tagbar/
+locale tagbar es-ES locale/es-ES/tagbar/
+locale tagbar fr locale/fr/tagbar/
+locale tagbar it-IT locale/it-IT/tagbar/
+locale tagbar ja-JP locale/ja-JP/tagbar/
+locale tagbar nl locale/nl/tagbar/
+locale tagbar pl locale/pl/tagbar/
+locale tagbar pt-BR locale/pt-BR/tagbar/
+locale tagbar ru-RU locale/ru-RU/tagbar/
+locale tagbar sv-SE locale/sv-SE/tagbar/
+locale tagbar tr-TR locale/tr-TR/tagbar/
+locale tagbar zh-CN locale/zh-CN/tagbar/
 
-skin	tagbar	classic/1.0	jar:chrome/tagbar.jar!/skin/classic/tagbar/
+skin	tagbar	classic/1.0	skin/classic/tagbar/
 
 style chrome://messenger/content/customizeToolbar.xul chrome://tagbar/skin/tagbar.css
 style chrome://messenger/content/messenger.xul chrome://tagbar/skin/tagbar.css

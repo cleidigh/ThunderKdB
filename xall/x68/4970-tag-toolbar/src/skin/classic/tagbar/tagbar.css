@@ -1,0 +1,310 @@
+/* for menu button except for icon beside text */
+/*
+.toolbarbutton-1[type="menu"] {
+  -moz-binding: url("chrome://global/content/bindings/toolbarbutton.xml#menu-vertical");
+}
+*/
+/* for menu button with icon beside text */
+/*
+toolbox[labelalign="end"] > toolbar[mode="full"] .toolbarbutton-1[type="menu"] {
+  -moz-binding: url("chrome://global/content/bindings/toolbarbutton.xml#menu");
+}
+*/
+.tagbar-container-box {
+  min-height: 24px !important;
+}
+
+.tagtoolbar {
+  min-height: 26px !important;
+}
+
+.tagbar-item {
+  margin: 0;
+  min-width: 0;
+  max-width: 13em;
+  padding: 2px 2px;
+}
+
+.tagbar-item[disabled="true"] {
+	color: GrayText !important;
+}
+
+toolbarbutton.tagbar-item[checked="true"]{
+  padding-top: 3px;
+  padding-bottom: 1px;
+  -moz-padding-start: 3px !important;
+  -moz-padding-end: 1px !important;
+}
+
+toolbarbutton.tagbar-item:hover:active:not([disabled="true"]),
+toolbarbutton.tagbar-item[open="true"]:not([disabled="true"]) {
+  padding-top: 3px;
+  padding-bottom: 1px;
+  -moz-padding-start: 3px;
+  -moz-padding-end: 1px;
+}
+
+.tagbar-item > .toolbarbutton-icon {
+  padding: 0px 1px;
+  margin: 0px;
+}
+
+.tagbar-item > .toolbarbutton-text {
+  padding: 0px 1px;
+  margin: 0px;
+}
+
+toolbarbutton.tagbar-item[type="menu"] {
+  /* list-style-image: url("chrome://messenger/skin/icons/folder.png"); */
+  list-style-image: url("chrome://tagbar/skin/folder.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+toolbarbutton.tagbar-item[type="menu"][open="true"] {
+  /* list-style-image: url("chrome://messenger/skin/icons/folder.png"); */
+  list-style-image: url("chrome://tagbar/skin/folder.png");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+toolbarbutton.tagbar-item[type="menu"][query="true"] {
+  /* list-style-image: url("chrome://messenger/skin/icons/folder.png"); */
+  list-style-image: url("chrome://tagbar/skin/query.png");
+  -moz-image-region: rect(0 16px 16px 0px) !important;
+  /* -moz-image-region: rect(0 176px 16px 160px) !important; */
+}
+
+toolbarbutton.tagbar-item[type="menu"][query="true"][open="true"] {
+  /* list-style-image: url("chrome://messenger/skin/icons/folder.png"); */
+  list-style-image: url("chrome://tagbar/skin/query.png");
+  -moz-image-region: rect(0 16px 16px 0px);
+}
+
+/* Prevent [mode="icons"] from hiding the label */
+.tagbar-item > .toolbarbutton-text {
+  display: -moz-box !important;
+}
+
+.tagbar-item > .toolbarbutton-menu-dropmarker {
+  display: none;
+}
+
+menu.tagbar-item,
+menuitem.tagbar-item {
+  min-width: 0;
+  max-width: 26em;
+}
+
+.tagbar-color-box {
+  min-height: 15px !important;
+  min-width: 24px !important;
+  border: 1px solid #000000 !important;
+  background-color: ThreeDFace;
+}
+
+.tagbar-color-box[disabled="true"] {
+  min-height: 15px !important;
+  min-width: 24px !important;
+  border: 1px solid GrayText !important;
+  background-color: ThreeDFace !important; 
+}
+
+#wrapper-tag-toolbar-container[place="palette"] {
+  background: 50% 25% url("chrome://tagbar/skin/tag16.png") no-repeat;
+}
+
+#wrapper-tag-toolbar-container[place="toolbar"] {
+  background: 5px url("chrome://tagbar/skin/tag16.png") no-repeat;
+}
+
+toolbarbutton.ttb-chevron {
+	/* list-style-image: url("chrome://global/skin/toolbar/chevron.gif") !important; */
+	list-style-image: url("chrome://tagbar/skin/chevron.gif") !important;
+	min-height: 24px !important;
+}
+
+toolbarbutton.ttb-chevron[chromedir="rtl"] {
+	/* list-style-image: url("chrome://global/skin/toolbar/chevron-rtl.gif") !important; */
+	list-style-image: url("chrome://tagbar/skin/chevron-rtl.gif") !important;
+	min-height: 24px !important;
+}
+
+toolbarbutton[disabled="true"].ttb-chevron {
+	list-style-image: url("chrome://tagbar/skin/chevron_gray.png") !important;
+	min-height: 24px !important;
+}
+
+toolbarbutton[disabled="true"].ttb-chevron[chromedir="rtl"] {
+	list-style-image: url("chrome://tagbar/skin/chevron-rtl_gray.png") !important;
+	min-height: 24px !important;
+}
+
+toolbarbutton.ttb-chevron {
+  margin: 0;
+  -moz-padding-start: 4px;
+  -moz-padding-end: 0px;
+}
+
+toolbarbutton.ttb-chevron > .toolbarbutton-text {
+  display: none; /* hide chevron label */
+}
+
+toolbarbutton.ttb-chevron > .toolbarbutton-menu-dropmarker {
+  display: none;
+}
+
+toolbar[mode="text"] toolbarbutton.ttb-chevron > .toolbarbutton-icon {
+  display: -moz-box; /* display chevron icon in text mode */
+}
+
+#tag-toolbar-query-savebutton {
+  /* list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-small.png"); */
+  /* -moz-image-region: rect(0px 176px 16px 160px); */
+  list-style-image: url("chrome://tagbar/skin/save-query.png");
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+
+#tag-toolbar-query-savebutton:hover{
+  /* -moz-image-region: rect(16px 176px 32px 160px); */
+  list-style-image: url("chrome://tagbar/skin/save-query.png");
+  -moz-image-region: rect(16px 16px 32px 0px);
+} 
+
+#tag-toolbar-query-savebutton[disabled="true"] {
+  /* -moz-image-region: rect(32px 176px 48px 160px) !important; */
+  list-style-image: url("chrome://tagbar/skin/save-query.png");
+  -moz-image-region: rect(32px 16px 48px 0px) !important;
+} 
+
+#tag-toolbar-remove-button {
+  list-style-image: url("chrome://tagbar/skin/rmtags16.png")
+}
+
+#tag-toolbar-remove-button[disabled="true"] {
+  list-style-image: url("chrome://tagbar/skin/rmtags16_gray.png")
+}
+
+#tag-toolbar-find-startbutton {
+  list-style-image: url("chrome://tagbar/skin/Search-bar.png");
+}
+
+#wrapper-tag-toolbar-container[place="palette"] {
+  list-style-image: none;
+}
+
+#wrapper-tag-toolbar-container[place="toolbar"] {
+  list-style-image: none;
+}
+
+#button_no_color {
+  border: 1px solid #000000 !important;
+}
+
+#button_clear_color {
+  border: 1px solid #000000 !important;
+}
+
+toolbarbutton.ttb-search-opt {
+	list-style-image: url("chrome://tagbar/skin/arrow-dn.gif") !important;
+	min-height: 24px !important;
+}
+
+toolbarbutton.ttb-search-opt {
+  margin: 0;
+  -moz-padding-start: 4px;
+  -moz-padding-end: 0px;
+}
+
+toolbarbutton.ttb-search-opt > .toolbarbutton-text {
+  display: none; /* hide label */
+}
+
+toolbarbutton.ttb-search-opt > .toolbarbutton-menu-dropmarker {
+  display: none;
+}
+
+toolbar[mode="text"] toolbarbutton.ttb-search-opt > .toolbarbutton-icon {
+  display: -moz-box; /* display icon in text mode */
+}
+
+#tag-toolbar-button-tag {
+  /*
+  -moz-box-orient: vertical;
+  -moz-binding: url("chrome://global/content/bindings/toolbarbutton.xml#menu-vertical");
+  */
+  /*
+  list-style-image: url("chrome://messenger/skin/icons/mail-toolbar.png");
+  -moz-image-region: rect(0px 360px 24px 336px);
+  */
+  list-style-image: url("chrome://tagbar/skin/add-tag-small.png");
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+
+#tag-toolbar-button-tag:hover {
+  /* -moz-image-region: rect(24px 360px 48px 336px); */
+  -moz-image-region: rect(16px 16px 32px 0px);
+} 
+
+#tag-toolbar-button-tag[disabled] {
+  /* -moz-image-region: rect(48px 360px 72px 336px) !important; */
+  -moz-image-region: rect(32px 16px 48px 0px);
+} 
+
+toolbar[iconsize="small"] #tag-toolbar-button-tag {
+  /*
+  -moz-box-orient: vertical;
+  -moz-binding: url("chrome://global/content/bindings/toolbarbutton.xml#menu-vertical");
+  */
+  /*
+  list-style-image: url("chrome://messenger/skin/icons/mail-toolbar-small.png");
+  -moz-image-region: rect(0px 240px 16px 224px);
+  */
+  list-style-image: url("chrome://tagbar/skin/add-tag-small.png");
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+
+toolbar[iconsize="small"] #tag-toolbar-button-tag:hover {
+  /* -moz-image-region: rect(16px 240px 32px 224px); */
+  -moz-image-region: rect(16px 16px 32px 0px);
+} 
+
+toolbar[iconsize="small"] #tag-toolbar-button-tag[disabled] {
+  /* -moz-image-region: rect(32px 240px 48px 224px) !important; */
+  -moz-image-region: rect(32px 16px 48px 0px);
+}
+
+#tag-toolbar-toggleincat-button {
+  list-style-image: url("chrome://tagbar/skin/toggleAll.png");
+}
+
+#tag-toolbar-toggleincat-button[disabled] {
+  list-style-image: url("chrome://tagbar/skin/toggleAll_gray.png");
+}
+
+listheader.tagbar-color-box-mini {
+  min-height: 10px !important;
+  min-width: 13px !important;
+  border: 1px solid #000000 !important;
+  /*background-color: ThreeDFace;*/
+  margin:	2px;
+}
+
+#tag-toolbar-attach-button {
+  /* list-style-image: url("chrome://tagbar/skin/attachment.png"); */
+  list-style-image: url("chrome://tagbar/skin/attach.png");
+}
+
+#tag-toolbar-tagcategory {
+  list-style-image: url("chrome://tagbar/skin/tagfolder16.png");
+}
+
+toolbar[iconsize="small"] #tag-toolbar-tagcategory {
+  list-style-image: url("chrome://tagbar/skin/tagfolder16.png");
+}
+
+#tag-toolbar-tagcategory[disabled] {
+  list-style-image: url("chrome://tagbar/skin/tagfolder16_gray.png");
+}
+
+toolbar[iconsize="small"] #tag-toolbar-tagcategory[disabled] {
+  list-style-image: url("chrome://tagbar/skin/tagfolder16_gray.png");
+}

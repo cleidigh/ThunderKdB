@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
 <?xml-stylesheet href="chrome://mailmerge/content/overlay.css" type="text/css"?>
 
 <!DOCTYPE window SYSTEM "chrome://mailmerge/locale/mailmerge.dtd">
@@ -20,6 +19,7 @@
 			id="mailmerge-menuitem"
 			label="Mail Merge"
 			oncommand="mailmerge.init(event);"
+			class="menuitem-iconic"
 			insertbefore="menu-item-send-now" />
 		<menuseparator
 			insertbefore="menu-item-send-now" />

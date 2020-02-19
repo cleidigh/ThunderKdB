@@ -41,11 +41,30 @@ var MenuOnTop  = {};
 var styleSheets = ["chrome://menuontop/skin/menuOnTop_main.css"];
 var winListener = {
   onOpenWindow: function(aWindow) {
-		let domWindow = aWindow.QueryInterface(Components.interfaces.nsIInterfaceRequestor).
+		let domWindow;
+		// test - this version worked in Tb68 before:
+		try {
+			domWindow = aWindow.QueryInterface(Components.interfaces.nsIInterfaceRequestor).
                           getInterface(Components.interfaces.nsIDOMWindow);
+		}
+		catch (e) {
+			const Ci = Components.interfaces;
+			debugger;
+			if (aWindow.QueryInterface) {
+				try {  // Thunderbird 60
+					domWindow = aWindow.QueryInterface(Components.interfaces.nsIInterfaceRequestor).
+														getInterface(Components.interfaces.nsIDOMWindow);
+				}
+				catch(ex) {
+					// Thunderbird 68
+					domWindow = aWindow.QueryInterface(Ci.nsIDOMWindow);
+				}
+			}
+		}
+		
     // Wait for the window to finish loading
 		new Promise(function(resolve) {
-			if (domWindow.document.readyState == "complete") {
+			if (domWindow.document && domWindow.document.readyState == "complete") {
 				resolve();
 				return;
 			}
@@ -126,7 +145,7 @@ function startup(data, reason){
   var enumerator = wm.getEnumerator(util.MainWindowXulId); // "mail:3pane"
 	
   while (enumerator.hasMoreElements()) {
-    var window = enumerator.getNext().QueryInterface(Components.interfaces.nsIDOMWindow);
+    var window = enumerator.getNext(); // .QueryInterface(Components.interfaces.nsIDOMWindow)
     start(window);
 		// if we install or change the version, we must make the menu visible otherwise no obvious change for user
 		if (   reason == ADDON_INSTALL 

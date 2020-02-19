@@ -1,4 +1,13 @@
 "use strict";
+var AutoarchiveReloaded;
+(function (AutoarchiveReloaded) {
+    let GlobalStates;
+    (function (GlobalStates) {
+        GlobalStates[GlobalStates["UNINITIALZED"] = 0] = "UNINITIALZED";
+        GlobalStates[GlobalStates["READY_FOR_WORK"] = 1] = "READY_FOR_WORK";
+        GlobalStates[GlobalStates["IN_PROGRESS"] = 2] = "IN_PROGRESS";
+    })(GlobalStates = AutoarchiveReloaded.GlobalStates || (AutoarchiveReloaded.GlobalStates = {}));
+})(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
 /*!
 Copyright 2018-2019 Brummolix (AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
 
@@ -169,7 +178,7 @@ var AutoarchiveReloaded;
             }
         }
         static isAccountArchivable(account) {
-            return (account.type === "pop3" || account.type === "imap" || account.type === "rss" || account.type === "nntp" || account.type === "exquilla");
+            return (account.type === "pop3" || account.type === "imap" || account.type === "rss" || account.type === "nntp" || account.type === "exquilla" || account.type === "none");
         }
     }
     AutoarchiveReloaded.AccountIterator = AccountIterator;
@@ -565,7 +574,7 @@ var AutoarchiveReloaded;
                 other = false;
                 ageInDays = Math.max(ageInDays, settings.daysMarked);
             }
-            const tags = messageHeader.tags.filter((tag) => tag !== "junk");
+            const tags = messageHeader.tags.filter((tag) => (tag !== "junk" && tag !== "nonjunk"));
             if (tags.length > 0) {
                 if (!settings.bArchiveTagged) {
                     return false;
@@ -623,11 +632,10 @@ var AutoarchiveReloaded;
     async function startup() {
         try {
             AutoarchiveReloaded.log.info("Autoarchive background script started");
-            browser.autoarchive.initToolbarConfigurationObserver();
-            browser.browserAction.onClicked.addListener(onArchiveManuallyClicked);
             const optionHelper = new AutoarchiveReloaded.OptionHelper();
             await optionHelper.initializePreferencesAtStartup();
             await AutoarchiveReloaded.MainFunctions.startupAndInitialzeAutomaticArchiving();
+            browser.runtime.onMessage.addListener(handleMessage);
         }
         catch (e) {
             AutoarchiveReloaded.log.errorException(e);
@@ -635,29 +643,52 @@ var AutoarchiveReloaded;
         }
     }
     AutoarchiveReloaded.startup = startup;
-    async function onArchiveManuallyClicked() {
-        if (await browser.autoarchive.isToolbarConfigurationOpen()) {
-            AutoarchiveReloaded.log.info("archive manually rejected because of toolbar customization");
-            return;
+    function handleMessage(request, sender, sendResponse) {
+        switch (request.message) {
+            case "getArchiveStatus":
+                {
+                    AutoarchiveReloaded.log.info("background script getArchiveStatus");
+                    sendResponse({ status: AutoarchiveReloaded.MainFunctions.getStatus() });
+                    break;
+                }
+            case "archiveManually":
+                {
+                    AutoarchiveReloaded.log.info("user choosed to archive manually");
+                    AutoarchiveReloaded.MainFunctions.onArchiveManually();
+                    sendResponse(null);
+                    break;
+                }
         }
-        await AutoarchiveReloaded.MainFunctions.onArchiveManually();
     }
 })(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
 AutoarchiveReloaded.startup();
+/*!
+Copyright 2013-2019 Brummolix (new version AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
+Copyright 2012 Alexey Egorov (original version Autoarchive, http://code.google.com/p/autoarchive/ )
+
+ This file is part of AutoarchiveReloaded.
+
+    AutoarchiveReloaded is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    AutoarchiveReloaded is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with AutoarchiveReloaded.  If not, see <http://www.gnu.org/licenses/>.
+*/
 var AutoarchiveReloaded;
 (function (AutoarchiveReloaded) {
-    let GlobalStates;
-    (function (GlobalStates) {
-        GlobalStates[GlobalStates["UNINITIALZED"] = 0] = "UNINITIALZED";
-        GlobalStates[GlobalStates["READY_FOR_WORK"] = 1] = "READY_FOR_WORK";
-        GlobalStates[GlobalStates["IN_PROGRESS"] = 2] = "IN_PROGRESS";
-    })(GlobalStates || (GlobalStates = {}));
     class MainFunctions {
         static async startupAndInitialzeAutomaticArchiving() {
             AutoarchiveReloaded.log.info("start...");
             const appInfoLogger = new AutoarchiveReloaded.AppInfoLogger();
             await appInfoLogger.log();
-            this.status = GlobalStates.READY_FOR_WORK;
+            this.status = AutoarchiveReloaded.GlobalStates.READY_FOR_WORK;
             AutoarchiveReloaded.log.info("ready for work");
             const optionHelper = new AutoarchiveReloaded.OptionHelper();
             const settings = await optionHelper.loadCurrentSettings();
@@ -670,28 +701,15 @@ var AutoarchiveReloaded;
                 AutoarchiveReloaded.log.info("archive type manually");
             }
         }
+        static getStatus() {
+            return this.status;
+        }
         static async onArchiveManually() {
-            AutoarchiveReloaded.log.info("try manual archive");
-            if (this.status === GlobalStates.UNINITIALZED) {
-                AutoarchiveReloaded.log.info("not initialized, cancel");
-                await browser.autoarchive.alert(browser.i18n.getMessage("dialogTitle"), browser.i18n.getMessage("waitForInit"));
-                return;
-            }
-            if (await browser.autoarchive.confirm(browser.i18n.getMessage("dialogTitle"), browser.i18n.getMessage("dialogStartManualText"))) {
-                if (this.status === GlobalStates.IN_PROGRESS) {
-                    AutoarchiveReloaded.log.info("busy with other archive..., cancel");
-                    await browser.autoarchive.alert(browser.i18n.getMessage("dialogTitle"), browser.i18n.getMessage("waitForArchive"));
-                    return;
-                }
-                await this.onDoArchive();
-            }
-            else {
-                AutoarchiveReloaded.log.info("manual archive canceled by user");
-            }
+            await this.onDoArchive();
         }
         static async onDoArchiveAutomatic() {
             AutoarchiveReloaded.log.info("try automatic archive");
-            if (this.status !== GlobalStates.READY_FOR_WORK) {
+            if (this.status !== AutoarchiveReloaded.GlobalStates.READY_FOR_WORK) {
                 AutoarchiveReloaded.log.info("automatic archive busy, wait");
                 setTimeout(this.onDoArchiveAutomatic.bind(this), 5000);
             }
@@ -701,14 +719,14 @@ var AutoarchiveReloaded;
         }
         static async onDoArchive() {
             AutoarchiveReloaded.log.info("start archiving");
-            this.status = GlobalStates.IN_PROGRESS;
+            this.status = AutoarchiveReloaded.GlobalStates.IN_PROGRESS;
             const autoarchiveReloaded = new AutoarchiveReloaded.Archiver();
             await autoarchiveReloaded.archiveAccounts();
             AutoarchiveReloaded.log.info("archive (searching messages to archive) done");
-            this.status = GlobalStates.READY_FOR_WORK;
+            this.status = AutoarchiveReloaded.GlobalStates.READY_FOR_WORK;
         }
     }
-    MainFunctions.status = GlobalStates.UNINITIALZED;
+    MainFunctions.status = AutoarchiveReloaded.GlobalStates.UNINITIALZED;
     AutoarchiveReloaded.MainFunctions = MainFunctions;
 })(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
 var AutoarchiveReloaded;

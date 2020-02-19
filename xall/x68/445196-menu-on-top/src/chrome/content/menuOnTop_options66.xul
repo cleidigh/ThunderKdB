@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<!--  tb 59 -->
+<!--  tb 59 
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
+-->
+<!--  tb 70 -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css" ?>
 <?xml-stylesheet href="menuOnTop-options.css" type="text/css"?>
 <?xml-stylesheet href="menuOnTop-options66.css" type="text/css"?>
 <?xml-stylesheet href="menuOnTop-contribute.css" type="text/css"?>
@@ -40,6 +43,7 @@
       <preference id="TabbarMargin"  name="extensions.menuontop.tabbarMargin" type="int"  instantApply="true" />
       <preference id="MenuMarginTop"   name="extensions.menuontop.menuMargin" type="int"  instantApply="true" />
       <preference id="MenuMarginLeft"  name="extensions.menuontop.menuMargin.left" type="int"  instantApply="true" />
+      <preference id="riseOfTools"     name="extensions.menuontop.riseOfTools" type="bool"  instantApply="true" />
       <preference id="toolbarMarginRight"  name="extensions.menuontop.toolbarMargin.right" type="int"  instantApply="true" />
       <preference id="NormalIconSize"  name="extensions.menuontop.iconSize.normal" type="int"  instantApply="true" />
       <preference id="SmallIconSize"   name="extensions.menuontop.iconSize.small" type="int"  instantApply="true" />
@@ -107,21 +111,31 @@
 			<hbox align="center">
 				<html:fieldset orient="horizontal">
 			    <html:legend>&mot.primaryMenu;</html:legend>
-					<hbox align="center">
-						<checkbox id="tabsInTitle"
-											label="&mot.menuInTitle;"
-											tooltiptext="&mot.menuInTitle.tooltip;"
-											oncommand="MenuOnTop.Options.toggleTabsInTitle(this);" />
-						<toolbarseparator />
-						<label control="moveBar"
-									 value="&mot.dragArea;" />
-						<textbox id="moveBar"
-										 type="number"
-										 increment="50"								 
-										 preference="toolbarMarginRight"
-										 tooltiptext="&mot.dragArea.tooltip;"
-										 />
-					</hbox>
+            <vbox>
+              <hbox>
+                <checkbox id="tabsInTitle"
+                          label="&mot.menuInTitle;"
+                          tooltiptext="&mot.menuInTitle.tooltip;"
+                          oncommand="MenuOnTop.Options.toggleTabsInTitle(this);" />
+                <toolbarseparator />
+                <label control="moveBar"
+                       value="&mot.dragArea;" />
+                <html:input id="moveBar"
+                         type="number"
+                         class="size3"
+                         increment="50"								 
+                         preference="toolbarMarginRight"
+                         tooltiptext="&mot.dragArea.tooltip;"
+                         />
+              </hbox>
+            
+              <checkbox id="riseOfTools"
+                        label="Move toolbars above tabs"
+                        tooltiptext="Does the same as the extension 'Rise Of the Tools'"
+                        preference="riseOfTools"
+                        oncommand="MenuOnTop.Options.toggleRiseOfTools(this);" />
+            </vbox>
+          
 				</html:fieldset>
 				<spacer flex="1" />
 				<html:fieldset>
@@ -362,8 +376,9 @@
 					</hbox>
 					<hbox align="center">
 						<label control="txtMenuBorderWidth" value="&mot.borders.width;" />
-						<textbox id="txtMenuBorderWidth" 
+						<html:input id="txtMenuBorderWidth" 
 								 type="number" 
+								 class="size3"
 								 preference="MenuBorderWidth"  
 								 tooltiptext="&mot.borders.width.tooltip;" />
 						<label value="px" />
@@ -371,8 +386,9 @@
 					<hbox align="center">
 					<label control="txtMenuRadius" value="&mot.borders.radius;" />
 					<!-- removed em and added px because of Firefox [Bug 1429625] -->
-					<textbox id="txtMenuRadius" 
+					<html:input id="txtMenuRadius" 
 							 type="number" 
+							 class="size3"
 							 preference="MenuRadius"  
 							 tooltiptext="&mot.borders.radius.tooltip;" />
 					<label value="px" />
@@ -395,40 +411,45 @@
 						<rows>
 							<row align="left">
 								<label control="txtNegativeMargin" value="&mot.spacing.negativeMargin;" />
-								<textbox id="txtNegativeMargin" 
+								<html:input id="txtNegativeMargin" 
 										 type="number" 
+										 class="size3"
 										 preference="NegativeMargin"  
 										 tooltiptext="&mot.spacing.negativeMargin.tooltip;" />
 								<label value="px" />
 							</row>
 							<row align="left">
 								<label control="txtTabbarMargin" value="&mot.spacing.tabbarMargin;" />
-								<textbox id="txtTabbarMargin" 
+								<html:input id="txtTabbarMargin" 
 										 type="number" 
+										 class="size3"
 										 preference="TabbarMargin"  
 										 tooltiptext="&mot.spacing.tabbarMargin.tooltip;" />
 								<label value="px" />
 							</row>
 							<row align="left">
 								<label control="txtMenuMarginTop" value="&mot.spacing.topMargin;" />
-								<textbox id="txtMenuMarginTop" 
+								<html:input id="txtMenuMarginTop" 
 										 type="number" 
+										 class="size3"
 										 preference="MenuMarginTop"  
 										 tooltiptext="&mot.spacing.topMargin.tooltip;" />
 								<label value="px" />
 							</row>
 							<row align="left">
 								<label control="txtMenuMarginLeft" value="&mot.spacing.leftMargin;" />
-								<textbox id="txtMenuMarginLeft" 
+								<html:input id="txtMenuMarginLeft" 
 										 type="number" 
+										 class="size3"
 										 preference="MenuMarginLeft"  
 										 tooltiptext="&mot.spacing.leftMargin.tooltip;" />
 								<label value="px" />
 							</row>
 							<row align="left">
 								<label control="txtMaxHeight" value="&mot.spacing.maxHeight;" />
-								<textbox id="txtMaxHeight" 
+								<html:input id="txtMaxHeight" 
 										 type="number" 
+										 class="size3"
 										 increment="2"
 										 min="20"
 										 preference="MaxHeight"
@@ -450,8 +471,9 @@
 							<rows>
 								<row align="center">
 									<label control="txtMenuIconSmall" value="&mot.buttons.small;" />
-									<textbox id="txtMenuIconSmall" 
+									<html:input id="txtMenuIconSmall" 
 											 type="number" 
+											 class="size3"
 											 preference="SmallIconSize"  
 											 tooltiptext="&mot.buttons.small.tooltip;" />
 									<label value="px" />
@@ -464,8 +486,9 @@
 								</row>
 								<row align="center">
 									<label control="txtMenuIconNormal" value="&mot.buttons.normal;" />
-									<textbox id="txtMenuIconNormal" 
+									<html:input id="txtMenuIconNormal" 
 											 type="number" 
+											 class="size3"
 											 preference="NormalIconSize"  
 											 tooltiptext="&mot.buttons.normal.tooltip;" />
 									<label value="px" />
@@ -508,8 +531,9 @@
 										oncommand="MenuOnTop.Options.onCustomMenuIcon();" />
 						<label control="customMenuIconSize"
 									 value="&mot.customMenu.size;" />
-						<textbox id="customMenuIconSize"
+						<html:input id="customMenuIconSize"
 										 type="number"
+										 class="size3"
 										 increment="2"
 										 min="16"
 										 preference="CustomMenuIconSize"
@@ -530,8 +554,9 @@
 						<spacer />
 						<label control="txtCustomMenuSize" 
 									 value="&mot.customMenu.customStyle.fontSize;" />
-						<textbox id="txtCustomMenuSize" 
+						<html:input id="txtCustomMenuSize" 
 										 type="number" 
+										 class="size3"
 										 preference="CustomMenuFontSize"  
 										 tooltiptext="&mot.customMenu.customStyle.fontSize.tooltip;" />
 						<label value="pt" />				 
@@ -645,6 +670,9 @@
 							tooltiptext="&mot.debug.tooltip;"
 							oncontextmenu="MenuOnTop.Options.showAboutConfig(this, 'menuontop.debug', true);return false;"							/>
 			</hbox>
+			<button label="apply" 
+			        oncommand="MenuOnTop.Options.apply();"
+			/>
 		</tabpanel>
 	  
 	</tabpanels >
@@ -653,6 +681,7 @@
   </prefpane>
 	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
 	<script type="text/javascript">
+		debugger;
 		MenuOnTop.Options.loadPreferences();
 	</script>	
 </dialog>
