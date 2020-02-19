@@ -2,238 +2,225 @@
 <!-- /********************************************************************************* * The contents of this file are subject to the Opacus Licence, available at * http://www.opacus.co.uk/licence or available on request. * By installing or using this file, You have unconditionally agreed to the * terms and conditions of the License, and You may not use this file except in * compliance with the License.  Under the terms of the license, You shall not, * among other things: 1) sublicense, resell, rent, lease, redistribute, assign * or otherwise transfer Your rights to the Software. Use of the Software * may be subject to applicable fees and any use of the Software without first * paying applicable fees is strictly prohibited.  You do not have the right to * remove Opacus copyrights from the source code. * * The software is provided "as is", without warranty of any kind, express or * implied, including but not limited to the warranties of merchantability, * fitness for a particular purpose and noninfringement. In no event shall the * authors or copyright holders be liable for any claim, damages or other * liability, whether in an action of contract, tort or otherwise, arising from, * out of or in connection with the software or the use or other dealings in * the software. * * Portions created by Opacus are Copyright (C) 2010 Mathew Bland, Jonathan Cutting * Opacus Ltd. * All Rights Reserved. ********************************************************************************/ -->
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://opacustep/content/opacustep-css.css" type="text/css"?>
-<?xml-stylesheet href="chrome://messenger/content/menulist.css" type="text/css"?>
-
-<!--
-Overlay can be included for custom fields
-
-<?xul-overlay href="chrome://opacustep/content/opacustep-createCustom.xul"?>
--->
-
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/menulist.css"?>
 <!DOCTYPE createwindow SYSTEM "chrome://opacustep/locale/create.dtd" >
-<window id="createWindow" title="&createwindow.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" flex="1" onload= 'if(window.arguments[0]){document.getElementById("createButtons").className  = "opacusBoxReverse";}'>
-  <tabbox flex="1">
-  <tabs id="opacusCreateTabs" hidden='true'>
-    <tab label="&opacus_createDefault.label;" />
-    <tab label="&opacus_createCustom.label;" />
-  </tabs>
-  <tabpanels flex="1">
-    <tabpanel id="createTab" flex="1">
-      <vbox flex="1">
-        <groupbox flex="1">
-          <caption label="&opacus_createdetails.label;" />
-          <vbox flex="1" style="margin-bottom: 12px">
-            <hbox class='persondetails' hidden='true'>
-				<vbox>
-					<label style='display:block; height: 1em;'> </label>
-					<menulist style='width: 5em;' id="salutation" sizetopopup='none'>
-                  <menupopup>
-                    <menuitem selected='true' label="" />
-                  </menupopup>
-                </menulist>
-				</vbox>
-              <vbox>
-                <label>&opacus_firstname.label;</label>
-                <textbox size='12' id="first_name" value="" />
-              </vbox>
-              <vbox>
-                <label>&opacus_lastname.label;</label>
-                <textbox size='13' id="last_name" value="" />
-              </vbox>
-            </hbox>
-            <hbox class='defaultdetails' hidden='true'>
-              <vbox>
-                <label>&opacus_name.label;</label>
-                <textbox size='38' id="name" value="" />
-              </vbox>
-            </hbox>
-            <hbox class='opportunitydetails' hidden='true'>
-              <vbox>
-                <label>&opacus_opportunityamount.label;</label>
-                <textbox size='12' type='number' decimalplaces='2' id="opportunityamount" value="" />
-              </vbox>
-              <vbox>
-                <label>&opacus_opportunityclosedate.label;</label>
-                <datepicker id='opportunityclosedate' type="popup" />
-              </vbox>
-            </hbox>
-            <vbox class='opportunitydetails' hidden='true'>
-              <label>&opacus_opportunitysalesstage.label;</label>
+<window id="createWindow" title="&createwindow.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml" flex="1" onload= 'if(window.arguments[0]){document.getElementById("createButtons").className  = "opacusBoxReverse";}'
+ >
+  <vbox flex="1">
+    <groupbox flex="1">
+      <caption label="&opacus_createdetails.label;" />
+      <vbox flex="1" style="margin-bottom: 12px">
+        <hbox class='persondetails' hidden='true'>
+          <vbox>
+            <label style='display:block; height: 1em;' />
+            <menulist style='width: 5em;' id="salutation" sizetopopup='none'>
+              <menupopup id="mpsalutation">
+                <menuitem selected='true' label="" />
+              </menupopup>
+            </menulist>
+          </vbox>
+          <vbox>
+            <label>&opacus_firstname.label;</label>
+            <textbox size='12' id="first_name" value="" />
+          </vbox>
+          <vbox>
+            <label>&opacus_lastname.label;</label>
+            <textbox size='13' id="last_name" value="" />
+          </vbox>
+        </hbox>
+        <hbox class='defaultdetails' hidden='true'>
+          <vbox>
+            <label>&opacus_name.label;</label>
+            <textbox size='38' id="name" value="" />
+          </vbox>
+        </hbox>
+        <hbox class='opportunitydetails' hidden='true'>
+          <vbox>
+            <label>&opacus_opportunityamount.label;</label>
+            <textbox size='12' type='number' decimalplaces='2' id="opportunityamount" value="" />
+          </vbox>
+          <vbox>
+            <label>&opacus_opportunityclosedate.label;</label>
+            <datepicker id='opportunityclosedate' type="popup" />
+          </vbox>
+        </hbox>
+        <vbox class='opportunitydetails' hidden='true'>
+          <label>&opacus_opportunitysalesstage.label;</label>
+          <hbox>
+            <menulist style='width: 17em !important;' id="opportunitysalesstage" sizetopopup='none'>
+              <menupopup id="mpopportunitysalesstage">
+                <menuitem selected='true' label="&opacus_emptymenulist.label;" />
+              </menupopup>
+            </menulist>
+          </hbox>
+        </vbox>
+        <hbox>
+          <vbox class='phonedetails' hidden='true'>
+            <label>&opacus_phone_office.label;</label>
+            <textbox size='17' id="phone_work" value="" />
+          </vbox>
+          <vbox class='persondetails' hidden='true'>
+            <label>&opacus_phone_mobile.label;</label>
+            <textbox size='17' id="phone_mobile" value="" />
+          </vbox>
+        </hbox>
+        <hbox>
+          <vbox class='accounttypedetails' hidden='true'>
+            <label>&opacus_accounttype.label;</label>
+            <menulist style='width: 17em;' id="accounttype" sizetopopup='none'>
+              <menupopup id="mpaccounttype">
+                <menuitem selected='true' label="&opacus_emptymenulist.label;" />
+              </menupopup>
+            </menulist>
+          </vbox>
+          <vbox class='leaddetails' hidden='true'>
+            <label>&opacus_lead_source.label;</label>
+            <menulist style='width: 17em;' id="lead_source" sizetopopup='none'>
+              <menupopup id="mplead_source">
+                <menuitem selected='true' label="&opacus_emptymenulist.label;" />
+              </menupopup>
+            </menulist>
+          </vbox>
+          <vbox class='taskdetails' hidden='true'>
+            <vbox>
+              <label>&opacus_taskstartdate.label;</label>
               <hbox>
-                <menulist style='width: 17em !important;' id="opportunitysalesstage" sizetopopup='none'>
-                  <menupopup>
-                    <menuitem selected='true' label="&opacus_emptymenulist.label;" />
-                  </menupopup>
-                </menulist>
-              </hbox>
-            </vbox>
-            <hbox>
-              <vbox class='phonedetails' hidden='true'>
-                <label>&opacus_phone_office.label;</label>
-                <textbox size='17' id="phone_work" value="" />
-              </vbox>
-              <vbox class='persondetails' hidden='true'>
-                <label>&opacus_phone_mobile.label;</label>
-                <textbox size='17' id="phone_mobile" value="" />
-              </vbox>
-            </hbox>
-            <hbox>
-              <vbox class='accounttypedetails' hidden='true'>
-                <label>&opacus_accounttype.label;</label>
-                <menulist style='width: 17em;' id="accounttype" sizetopopup='none'>
-                  <menupopup>
-                    <menuitem selected='true' label="&opacus_emptymenulist.label;" />
-                  </menupopup>
-                </menulist>
-              </vbox>
-              <vbox class='leaddetails' hidden='true'>
-                <label>&opacus_lead_source.label;</label>
-                <menulist style='width: 17em;' id="lead_source" sizetopopup='none'>
-                  <menupopup>
-                    <menuitem selected='true' label="&opacus_emptymenulist.label;" />
-                  </menupopup>
-                </menulist>
-              </vbox>
-              <vbox class='taskdetails' hidden='true'>
-                <vbox>
-                  <label>&opacus_taskstartdate.label;</label>
-                  <hbox>
-                    <datepicker id='taskstartdate' type="popup" />
-                    <timepicker id='taskstarttime' increment="5" hideseconds="true" is24HourClock="true" hourLeadingZero="true" minuteLeadingZero="true" />
-                  </hbox>
-                </vbox>
-                <vbox>
-                  <label>&opacus_taskduedate.label;</label>
-                  <hbox>
-                    <datepicker id='taskduedate' type="popup" />
-                    <timepicker id='taskduetime' increment="5" hideseconds="true" is24HourClock="true" hourLeadingZero="true" minuteLeadingZero="true" />
-                  </hbox>
-                </vbox>
-                <vbox>
-                  <label>&opacus_issuepriority.label;</label>
-                  <menulist style='width: 17em;' id="taskpriority" sizetopopup='none'>
-                    <menupopup>
-                      <menuitem selected='true' label="&opacus_emptymenulist.label;" />
-                    </menupopup>
-                  </menulist>
-                </vbox>
-                <vbox>
-                  <label>&opacus_issuestatus.label;</label>
-                  <menulist style='width: 17em;' id="taskstatus" sizetopopup='none'>
-                    <menupopup>
-                      <menuitem selected='true' label="&opacus_emptymenulist.label;" />
-                    </menupopup>
-                  </menulist>
-                </vbox>
-              </vbox>
-              <vbox class='issuedetails' hidden='true'>
-                <vbox>
-                  <label>&opacus_issuepriority.label;</label>
-                  <menulist style='width: 17em;' id="issuepriority" sizetopopup='none'>
-                    <menupopup>
-                      <menuitem selected='true' label="&opacus_emptymenulist.label;" />
-                    </menupopup>
-                  </menulist>
-                </vbox>
-                <vbox>
-                  <label>&opacus_issuestatus.label;</label>
-                  <menulist style='width: 17em;' id="issuestatus" sizetopopup='none'>
-                    <menupopup>
-                      <menuitem selected='true' label="&opacus_emptymenulist.label;" />
-                    </menupopup>
-                  </menulist>
-                </vbox>
-                <vbox>
-                  <label>&opacus_issuetype.label;</label>
-                  <menulist style='width: 17em;' id="issuetype" sizetopopup='none'>
-                    <menupopup>
-                      <menuitem selected='true' label="&opacus_emptymenulist.label;" />
-                    </menupopup>
-                  </menulist>
-                </vbox>
-            <vbox flex='1' class='bugdetails' hidden='true'>
-                <vbox>
-                  <label>&opacus_resolution.label;</label>
-                  <menulist style='width: 17em;' id="bugresolution" sizetopopup='none'>
-                    <menupopup>
-                      <menuitem selected='true' label="&opacus_emptymenulist.label;" />
-                    </menupopup>
-                  </menulist>
-                </vbox>
-            </vbox>
-              </vbox>
-            </hbox>
-            <hbox class='persondetails' hidden='true'>
-              <vbox>
-                <label>&opacus_title.label;</label>
-                <textbox size='32' id="title" value="" />
-              </vbox>
-            </hbox>
-            <hbox class='emaildetails' hidden='true'>
-              <vbox>
-                <label>&opacus_email_address.label;</label>
-                <textbox size='32' id="email_address" value="" />
-              </vbox>
-            </hbox>
-            <vbox class='contactdetails' hidden='true'>
-              <hbox>
-                <label>&opacus_contact_search.label;</label>
-                <label id="opacusModuleChooserContact" style="font-size: .9em; font-style: italic; margin: 0 0 .4em 0;" class="text-link moduleChooser" value='&opacus_module_chooser.label;' onclick='window.controller.chooseModule(this,window.controller)' />
-              </hbox>
-              <hbox>
-                <menulist id="contact_menulist" sizetopopup='none' onfocus='this.open=false;this.firstChild.focus()' editable='true' flex='1' onkeydown="if (event.keyCode == 13) document.getElementById('contact_search_button').click()">
-                  <menupopup />
-                </menulist>
-                <button id="contact_search_button" icon='find' class='create_search_button' label="&account_search.label;" onkeydown="if (event.keyCode == 13){this.click();}" onclick='if(!this.disabled==true){window.controller.searchContact(window.controller);}' />
-                <button class='create_add_button' icon='add' label="&opacus_new.label;" id="contact_add_button" tooltiptext='&opacus_add_contact.label;' onkeydown="if (event.keyCode == 13){this.click();}" onclick="opener.opacustep.create('Contact')" />
-              </hbox>
-            </vbox>
-            <vbox class='accountdetails' hidden='true'>
-              <hbox>
-                <label id="opacus_account_search">&opacus_account_name.label;</label>
-                <label id="opacusModuleChooserAccount" hidden='true' style="font-size: .9em; font-style: italic; margin: 0 0 .4em 0;" class="text-link moduleChooser" value='&opacus_module_chooser_account.label;' onclick='window.controller.chooseModule(this,window.controller)' />
-              </hbox>
-              <hbox>
-                <menulist hidden='true' id="account_menulist" sizetopopup='none' onfocus='this.open=false;this.firstChild.focus()' editable='true' flex='1' onkeydown="if (event.keyCode == 13) document.getElementById('account_search_button').click()">
-                  <menupopup />
-                </menulist>
-                <textbox id="account_name" value="" flex='1' hidden='true' />
-                <button hidden='true' icon='find' class='create_search_button' id="account_search_button" label="&account_search.label;" onkeydown="if (event.keyCode == 13){this.click();}" onclick='if(!this.disabled==true){window.controller.searchAccount(window.controller);}' />
-                <button hidden='true' icon='add' class='create_add_button' label="&opacus_new.label;" id="account_add_button" tooltiptext='&opacus_add_account.label;' onkeydown="if (event.keyCode == 13){this.click();}" onclick="opener.opacustep.create('Account')" />
+                <datepicker id='taskstartdate' type="popup" />
+                <timepicker id='taskstarttime' increment="5" hideseconds="true" is24HourClock="true" hourLeadingZero="true" minuteLeadingZero="true" />
               </hbox>
             </vbox>
             <vbox>
-              <label>&opacus_assigned_to.label;</label>
+              <label>&opacus_taskduedate.label;</label>
               <hbox>
-                <menulist style='width: 17em !important;' id="assUser" sizetopopup='none'>
-                  <menupopup>
+                <datepicker id='taskduedate' type="popup" />
+                <timepicker id='taskduetime' increment="5" hideseconds="true" is24HourClock="true" hourLeadingZero="true" minuteLeadingZero="true" />
+              </hbox>
+            </vbox>
+            <vbox>
+              <label>&opacus_issuepriority.label;</label>
+              <menulist style='width: 17em;' id="taskpriority" sizetopopup='none'>
+                <menupopup id="mptaskpriority">
+                  <menuitem selected='true' label="&opacus_emptymenulist.label;" />
+                </menupopup>
+              </menulist>
+            </vbox>
+            <vbox>
+              <label>&opacus_issuestatus.label;</label>
+              <menulist style='width: 17em;' id="taskstatus" sizetopopup='none'>
+                <menupopup id="mptaskstatus">
+                  <menuitem selected='true' label="&opacus_emptymenulist.label;" />
+                </menupopup>
+              </menulist>
+            </vbox>
+          </vbox>
+          <vbox class='issuedetails' hidden='true'>
+            <vbox>
+              <label>&opacus_issuepriority.label;</label>
+              <menulist style='width: 17em;' id="issuepriority" sizetopopup='none'>
+                <menupopup id="mpissuepriority">
+                  <menuitem selected='true' label="&opacus_emptymenulist.label;" />
+                </menupopup>
+              </menulist>
+            </vbox>
+            <vbox>
+              <label>&opacus_issuestatus.label;</label>
+              <menulist style='width: 17em;' id="issuestatus" sizetopopup='none'>
+                <menupopup id="mpissuestatus">
+                  <menuitem selected='true' label="&opacus_emptymenulist.label;" />
+                </menupopup>
+              </menulist>
+            </vbox>
+            <vbox>
+              <label>&opacus_issuetype.label;</label>
+              <menulist style='width: 17em;' id="issuetype" sizetopopup='none'>
+                <menupopup id="mpissuetype">
+                  <menuitem selected='true' label="&opacus_emptymenulist.label;" />
+                </menupopup>
+              </menulist>
+            </vbox>
+            <vbox flex='1' class='bugdetails' hidden='true'>
+              <vbox>
+                <label>&opacus_resolution.label;</label>
+                <menulist style='width: 17em;' id="bugresolution" sizetopopup='none'>
+                  <menupopup id="mpbugresolution">
                     <menuitem selected='true' label="&opacus_emptymenulist.label;" />
                   </menupopup>
                 </menulist>
-              </hbox>
-            </vbox>
-            <label>&opacus_description.label;</label>
-            <textbox size='38' flex='1' multiline='true' rows='2' id="description" value="" />
-            <vbox flex='1' class='issuedetails' hidden='true'>
-              <label id='issueresolution_label'>&opacus_resolution.label;</label>
-              <textbox size='38' flex='1' multiline='true' rows='2' id="issueresolution" value="" />
+              </vbox>
             </vbox>
           </vbox>
-        </groupbox>
+        </hbox>
+        <hbox class='persondetails' hidden='true'>
+          <vbox>
+            <label>&opacus_title.label;</label>
+            <textbox size='32' id="title" value="" />
+          </vbox>
+        </hbox>
+        <hbox class='emaildetails' hidden='true'>
+          <vbox>
+            <label>&opacus_email_address.label;</label>
+            <textbox size='32' id="email_address" value="" />
+          </vbox>
+        </hbox>
+        <vbox class='contactdetails' hidden='true'>
+          <hbox>
+            <label>&opacus_contact_search.label;</label>
+            <label id="opacusModuleChooserContact" style="font-size: .9em; font-style: italic; margin: 0 0 .4em 0;" class="text-link moduleChooser" value='&opacus_module_chooser.label;' onclick='window.controller.chooseModule(this,window.controller)' />
+          </hbox>
+          <hbox>
+            <menulist is="menulist-editable" id="contact_menulist" sizetopopup='none' onfocus='this.open=false;' editable='true' flex='1' onkeydown="if (event.keyCode == 13) document.getElementById('contact_search_button').click()">
+              <menupopup id="mpcontact_menulist" />
+            </menulist>
+            <button id="contact_search_button" icon='find' class='create_search_button' label="&account_search.label;" onkeydown="if (event.keyCode == 13){this.click();}" onclick='if(!this.disabled==true){window.controller.searchContact(window.controller);}' />
+            <button class='create_add_button' icon='add' label="&opacus_new.label;" id="contact_add_button" tooltiptext='&opacus_add_contact.label;' onkeydown="if (event.keyCode == 13){this.click();}" onclick="opener.opacustep.create('Contact')" />
+          </hbox>
+        </vbox>
+        <vbox class='accountdetails' hidden='true'>
+          <hbox>
+            <label id="opacus_account_search">&opacus_account_name.label;</label>
+            <label id="opacusModuleChooserAccount" hidden='true' style="font-size: .9em; font-style: italic; margin: 0 0 .4em 0;" class="text-link moduleChooser" value='&opacus_module_chooser_account.label;' onclick='window.controller.chooseModule(this,window.controller)' />
+          </hbox>
+          <hbox>
+            <menulist is="menulist-editable" hidden='true' id="account_menulist" sizetopopup='none' onfocus='this.open=false;' editable='true' flex='1' onkeydown="if (event.keyCode == 13) document.getElementById('account_search_button').click()">
+              <menupopup id="mpaccount_menulist" />
+            </menulist>
+            <textbox id="account_name" value="" flex='1' hidden='true' />
+            <button hidden='true' icon='find' class='create_search_button' id="account_search_button" label="&account_search.label;" onkeydown="if (event.keyCode == 13){this.click();}" onclick='if(!this.disabled==true){window.controller.searchAccount(window.controller);}' />
+            <button hidden='true' icon='add' class='create_add_button' label="&opacus_new.label;" id="account_add_button" tooltiptext='&opacus_add_account.label;' onkeydown="if (event.keyCode == 13){this.click();}" onclick="opener.opacustep.create('Account')" />
+          </hbox>
+        </vbox>
+        <vbox>
+          <label>&opacus_assigned_to.label;</label>
+          <hbox>
+            <menulist style='width: 17em !important;' id="assUser" sizetopopup='none'>
+              <menupopup id="mpassUser">
+                <menuitem selected='true' label="&opacus_emptymenulist.label;" />
+              </menupopup>
+            </menulist>
+          </hbox>
+        </vbox>
+        <vbox flex='1'>
+          <vbox flex='1'>
+            <label>&opacus_description.label;</label>
+            <html:textarea style='resize: both; height:100%; margin: 3px;' id="description" value="" />
+          </vbox>
+          <vbox flex='1' class='issuedetails' hidden='true'>
+            <label id='issueresolution_label'>&opacus_resolution.label;</label>
+            <html:textarea style='resize: both; height: 100%; margin: 3px;' id="issueresolution" value="" />
+          </vbox>
+        </vbox>
       </vbox>
-    </tabpanel>
-    <tabpanel id='createCustomTab' />
-  </tabpanels>
-</tabbox>
-<hbox style='margin: 4px;' align='right'>
+    </groupbox>
+  </vbox>
+  <hbox style='margin: 4px;' align='right'>
     <hbox id='feedbackBox' align='center' flex='1' width='30%'>
       <progressmeter hidden='true' id="feedback" flex='1' mode="determined" />
     </hbox>
-  <spacer flex='1' />
-  <hbox id='createButtons'>
-    <button icon='cancel' label="&cancel.label;" onkeydown="if (event.keyCode == 13){this.click();}" onclick='window.close()' />
-    <button icon='apply' id='create_button' label="&create.label;" onkeydown="if (event.keyCode == 13){this.click();}" onclick='if(!this.disabled==true){window.controller.send();}' />
+    <spacer flex='1' />
+    <hbox id='createButtons'>
+      <button icon='cancel' label="&cancel.label;" onkeydown="if (event.keyCode == 13){this.click();}" onclick='window.close()' />
+      <button icon='apply' id='create_button' label="&create.label;" onkeydown="if (event.keyCode == 13){this.click();}" onclick='if(!this.disabled==true){window.controller.send();}' />
+    </hbox>
   </hbox>
-</hbox>
-<script type="application/javascript" src="chrome://messenger/content/customElements.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/customElements.js"/>
 </window>

@@ -1,0 +1,11 @@
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="Edit Tags List - EnForward"
+        onload="gENFTagList.onLoad();">
+  <script type="application/javascript" src="chrome://enforward/content/ENFTagList.js"/>
+
+	<label value="Check tags to be used for Evernote"/>
+	<richlistbox id="ENFTagList" height="200px">
+	</richlistbox>
+</dialog>

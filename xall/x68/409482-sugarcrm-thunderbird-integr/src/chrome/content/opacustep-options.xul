@@ -3,154 +3,104 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
 <?xml-stylesheet href="chrome://opacustep/content/opacustep-css.css" type="text/css"?>
-<!DOCTYPE prefwindow SYSTEM "chrome://opacustep/locale/options.dtd" >
-<prefwindow flex="1" id="opacustep-preferences" onload='
-	var wMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<!DOCTYPE dialog SYSTEM "chrome://opacustep/locale/options.dtd" >
+<dialog
+    flex="1"
+    id="opacustep-preferences"
+    onload='var wMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
 	this.parentWindow = wMediator.getMostRecentWindow("mail:3pane");
-	this.parentWindow.opacustep.optionsLoad(this);' onbeforeunload="this.parentWindow.opacustep.updateServerInfo(this);" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;">
-    <vbox>
-  <tabbox>
-    <tabs>
-      <tab label="&pane1.title;" />
-      <tab label="&pane2.title;" />
-      <tab label="&pane3.title;" />
-      <tab label="&pane4.title;" />
-      <tab label="&pane5.title;" />
-    </tabs>
-    <tabpanels>
-      <tabpanel flex='1'>
-        <vbox class="ostpOptions" flex="1" width="420">
-          <preferences>
-            <preference id="sugarcrm_url" name="extensions.opacustep.sugarcrm_url" type="unichar" />
-            <preference id="sugarcrm_username" name="extensions.opacustep.sugarcrm_username" type="unichar" />
-            <preference id="opacus_licence_key" name="extensions.opacustep.opacus_licence_key" type="unichar" />
-            <preference id="opacus_activation_key" name="extensions.opacustep.opacus_activation_key" type="unichar" />
-            <preference id="auto_archive" name="extensions.opacustep.auto_archive" type="bool" />
-            <preference id="auto_archive_attachments" name="extensions.opacustep.auto_archive_attachments" type="bool" />
-            <preference id="opacus_notify" name="extensions.opacustep.opacus_notify" type="bool" />
-            <preference id="opacus_cases" name="extensions.opacustep.opacus_cases" type="bool" />
-            <preference id="opacus_ldap" name="extensions.opacustep.opacus_ldap" type="bool" />
-            <preference id="opacus_ldap_key" name="extensions.opacustep.opacus_ldap_key" type="unichar" />
-            <preference id="opacus_mycontactsonly" name="extensions.opacustep.opacus_mycontactsonly" type="bool" />
-            <preference id="opacus_honoursynctooutlook" name="extensions.opacustep.opacus_honoursynctooutlook" type="bool" />
-            <preference id="opacus_addbcc" name="extensions.opacustep.opacus_addbcc" type="bool" />
-            <preference id="opacus_usestoredid" name="extensions.opacustep.opacus_usestoredid" type="bool" />
-            <preference id="opacus_searchonopen" name="extensions.opacustep.opacus_searchonopen" type="bool" />
-            <preference id="opacus_syncatstart" name="extensions.opacustep.opacus_syncatstart" type="bool" />
-            <preference id="opacus_synchourly" name="extensions.opacustep.opacus_synchourly" type="bool" />
-            <preference id="opacus_syncmodules" name="extensions.opacustep.opacus_syncmodules" type="unichar" />
-            <preference id="opacus_blacklist" name="extensions.opacustep.opacus_blacklist" type="unichar" />
-            <preference id="opacus_syncdeletions" name="extensions.opacustep.opacus_syncdeletions" type="bool" />
-            <preference id="opacus_filtersaftersync" name="extensions.opacustep.filtersAfterSync" type="bool" />
-            <preference id="delete_threshold" name="extensions.opacustep.delete_threshold" type="int" />
-            <preference id="opacus_ignoreconverted" name="extensions.opacustep.ignoreConverted" type="bool" />
-            <preference id="opacus_twowaysync" name="extensions.opacustep.opacus_twowaysync" type="bool" />
-            <preference id="opacus_caseprefix" name="extensions.opacustep.casePrefix" type="unichar" />
-          </preferences>
-          <hbox>
-            <groupbox flex="1">
-              <caption label="&opacus_serverdetails.label;" />
-              <label accesskey="&sugarcrm_url.accesskey;" control="textsugarcrm_url">&sugarcrm_url.label;</label>
-              <textbox id="textsugarcrm_url" preference="sugarcrm_url" onblur="window.prefsObject.checkLicence(document);" />
-              <hbox>
-                <vbox flex='1'>
-                  <label accesskey="&sugarcrm_username.accesskey;" control="textsugarcrm_username">&sugarcrm_username.label;</label>
-                  <textbox id="textsugarcrm_username" preference="sugarcrm_username" onblur="window.prefsObject.checkLicence(document);" />
-                  <label accesskey="&sugarcrm_password.accesskey;" control="textsugarcrm_password">&sugarcrm_password.label;</label>
-                  <textbox id="passwordsugarcrm_password" type="password" />
-                </vbox>
-                <vbox>
-                  <spacer flex='1' />
-                  <hbox align='end'>
-                    <button label="&opacus_testConnectionSettings.label;" onclick="window.prefsObject.testConnectionSettings();" />
-                  </hbox>
-                </vbox>
-              </hbox>
-            </groupbox>
-          </hbox>
-          <hbox>
-            <groupbox flex="1">
-              <caption label="&opacus_ldapdetails.label;" />
-              <checkbox onclick="if(this.checked){document.getElementById('ldap_key_box').hidden=true;window.sizeToContent();}else{document.getElementById('ldap_key_box').hidden=false;window.sizeToContent();}" id="checkopacus_ldap" preference="opacus_ldap" label="&opacus_ldap.label;" />
-              <vbox flex='1' id="ldap_key_box" hidden='false'>
-                <label control="textldap_key">&opacus_ldap_key.label;</label>
-                <textbox id="textldap_key" preference="opacus_ldap_key" />
-              </vbox>
-            </groupbox>
-          </hbox>
-        </vbox>
-      </tabpanel>
-      <tabpanel flex='1'>
-        <vbox class="ostpOptions" flex="1" width="420">
-          <hbox>
-            <groupbox flex="1">
-              <caption label="&opacus_advanceddetails.label;" />
-              <checkbox id="checkauto_archive" preference="auto_archive" label="&auto_archive.label;" accesskey="&auto_archive.accesskey;" />
-              <checkbox id="checkauto_archive_attachments" preference="auto_archive_attachments" label="&auto_archive_attachments.label;" accesskey="&auto_archive_attachments.accesskey;" />
-              <checkbox id="checkopacus_notify" preference="opacus_notify" label="&opacus_notify.label;" tooltiptext="&opacus_notify.tooltiptext;" accesskey="&opacus_notify.accesskey;" />
-              <checkbox id="checkopacus_cases" preference="opacus_cases" label="&opacus_cases.label;" accesskey="&opacus_cases.accesskey;" />
-              <hbox>
-                <label style='line-height: 30px;' control="textopacus_caseprefix">&opacus_casemacro.label;</label>
-                <textbox size='8' id="textopacus_caseprefix" preference="opacus_caseprefix" />
-              </hbox>
-              <checkbox id="checkopacus_addbcc" preference="opacus_addbcc" label="&opacus_addbcc.label;" accesskey="&opacus_addbcc.accesskey;" />
-              <checkbox id="checkopacus_usestoredid" preference="opacus_usestoredid" label="&opacus_usestoredid.label;" />
-              <checkbox id="checkopacus_searchonopen" preference="opacus_searchonopen" label="&opacus_searchonopen.label;" />
-              <checkbox id="checkopacus_ignoreconverted" preference="opacus_ignoreconverted" label="&opacus_ignoreconverted.label;" />
-            </groupbox>
-          </hbox>
-          <hbox flex="1" width="420">
-            <groupbox flex="1">
-              <label tooltiptext="&opacus_blacklist.tooltiptext;" control="textareaopacus_blacklist">&opacus_blacklistdetails.label;</label>
-              <textbox multiline="true" rows="3" id="textareaopacus_blacklist" preference="opacus_blacklist" onkeydown="return window.prefsObject.checkBlacklist(event);" />
-            </groupbox>
-          </hbox>
-        </vbox>
-      </tabpanel>
-      <tabpanel flex='1'>
-        <vbox class="ostpOptions" flex="1" width="420">
-          <groupbox flex="1">
-            <caption label="&opacus_custommodules.label;" />
-            <button label="&opacus_getcustommodules.label;" onclick="window.prefsObject.getCustomModules();" />
-            <richlistbox id="modulesList" flex="1" seltype="mutiple">
-            </richlistbox>
-          </groupbox>
-        </vbox>
-      </tabpanel>
-      <tabpanel flex='1'>
-        <vbox class="ostpOptions" flex="1" width="420">
-          <groupbox flex='1'>
-            <caption label="&opacus_sync.label;" />
-            <hbox style='padding: 3px;' flex='1'>
-              <grid flex='1'>
-                <columns>
-                  <column flex="1" />
-                  <column flex="1" />
-                </columns>
-                <rows flex='1'>
-                  <row flex='1'>
-                    <label style='padding:2px;'>&opacus_syncmodules.label;</label>
-                    <radiogroup orient="horizontal" preference='opacus_syncmodules'>
-                      <radio value='contacts' label="&opacus_contacts;" />
-                      <radio value='leads' label="&opacus_leads;" />
-                      <radio value='both' label="&opacus_both;" />
-                    </radiogroup>
-                  </row>
-                </rows>
-              </grid>
-              <spacer flex='1' />
+    this.parentWindow.opacustep.optionsLoad(this);'
+    onbeforeunload="this.parentWindow.opacustep.updateServerInfo(this);"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    title="&prefwindow.title;">
+  <vbox>
+    <tabbox>
+      <tabs>
+        <tab label="&pane1.title;" />
+        <tab label="&pane2.title;" />
+        <tab label="&pane3.title;" />
+        <tab label="&pane4.title;" />
+        <tab label="&pane5.title;" />
+      </tabs>
+      <tabpanels>
+        <tabpanel flex='1'>
+          <vbox class="ostpOptions" flex="1" width="420">
+            <hbox>
+              <groupbox flex="1">
+                <caption label="&opacus_serverdetails.label;" />
+                <label accesskey="&sugarcrm_url.accesskey;" control="textsugarcrm_url">&sugarcrm_url.label;</label>
+                <textbox id="textsugarcrm_url" preference="extensions.opacustep.sugarcrm_url" onblur="window.prefsObject.checkLicence(document);" />
+                <hbox>
+                  <vbox flex='1'>
+                    <label accesskey="&sugarcrm_username.accesskey;" control="textsugarcrm_username">&sugarcrm_username.label;</label>
+                    <textbox id="textsugarcrm_username" preference="extensions.opacustep.sugarcrm_username" onblur="window.prefsObject.checkLicence(document);" />
+                    <label accesskey="&sugarcrm_password.accesskey;" control="textsugarcrm_password">&sugarcrm_password.label;</label>
+                    <textbox id="passwordsugarcrm_password" type="password" />
+                  </vbox>
+                  <vbox>
+                    <spacer flex='1' />
+                    <hbox align='end'>
+                      <button label="&opacus_testConnectionSettings.label;" onclick="window.prefsObject.testConnectionSettings();" />
+                    </hbox>
+                  </vbox>
+                </hbox>
+              </groupbox>
             </hbox>
-          </groupbox>
-          <groupbox>
-            <checkbox id="checkmycontactsonly" preference="opacus_mycontactsonly" label="&mycontactsonly.label;" />
-            <checkbox id="checkhonoursynctooutlook" preference="opacus_honoursynctooutlook" label="&honoursynctooutlook.label;" onclick='if(this.checked){document.getElementById("checkmycontactsonly").disabled=false;} else {document.getElementById("checkmycontactsonly").disabled=true;document.getElementById("checkmycontactsonly").checked=false;}' />
-            <checkbox id="checkopacus_filtersaftersync" preference="opacus_filtersaftersync" label="&opacus_filtersaftersync.label;" />
-            <checkbox id="checkopacus_twowaysync" preference="opacus_twowaysync" tooltiptext="&opacus_twowaysync.tooltiptext;" label="&opacus_twowaysync.label;" />
-            <checkbox id="checkopacus_syncatstart" preference="opacus_syncatstart" label="&opacus_syncatstart.label;" />
-            <checkbox id="checkopacus_synchourly" preference="opacus_synchourly" label="&opacus_synchourly.label;" />
-            <vbox flex='1' id='deleteOptions' hidden='true'>
-              <checkbox id="checkopacus_syncdeletions" preference="opacus_syncdeletions" label="&opacus_syncdeletions.label;" onclick='if(this.checked){document.getElementById("menulist_threshold").disabled=true;} else {document.getElementById("menulist_threshold").disabled=false;}' />
-              <hbox style="padding:3px;" flex='1'>
+            <hbox>
+              <groupbox flex="1">
+                <caption label="&opacus_ldapdetails.label;" />
+                <checkbox onclick="if(!this.checked){document.getElementById('ldap_key_box').hidden=true;window.sizeToContent();}else{document.getElementById('ldap_key_box').hidden=false;window.sizeToContent();}" id="checkopacus_ldap" preference="extensions.opacustep.opacus_ldap" label="&opacus_ldap.label;" />
+                <vbox flex='1' id="ldap_key_box" hidden='false'>
+                  <label control="textldap_key">&opacus_ldap_key.label;</label>
+                  <textbox id="textldap_key" preference="extensions.opacustep.opacus_ldap_key" />
+                </vbox>
+              </groupbox>
+            </hbox>
+          </vbox>
+        </tabpanel>
+        <tabpanel flex='1'>
+          <vbox class="ostpOptions" flex="1" width="420">
+            <hbox>
+              <groupbox flex="1">
+                <caption label="&opacus_advanceddetails.label;" />
+                <checkbox id="checkauto_archive" preference="extensions.opacustep.auto_archive" label="&auto_archive.label;" accesskey="&auto_archive.accesskey;" />
+                <checkbox id="checkauto_archive_attachments" preference="extensions.opacustep.auto_archive_attachments" label="&auto_archive_attachments.label;" accesskey="&auto_archive_attachments.accesskey;" />
+                <checkbox id="checkopacus_notify" preference="extensions.opacustep.opacus_notify" label="&opacus_notify.label;" tooltiptext="&opacus_notify.tooltiptext;" accesskey="&opacus_notify.accesskey;" />
+                <checkbox id="checkopacus_cases" preference="extensions.opacustep.opacus_cases" label="&opacus_cases.label;" accesskey="&opacus_cases.accesskey;" />
+                <hbox>
+                  <label style='line-height: 30px;' control="textopacus_caseprefix">&opacus_casemacro.label;</label>
+                  <textbox size='8' id="textopacus_caseprefix" preference="extensions.opacustep.casePrefix" />
+                </hbox>
+                <checkbox id="checkopacus_addbcc" preference="extensions.opacustep.opacus_addbcc" label="&opacus_addbcc.label;" accesskey="&opacus_addbcc.accesskey;" />
+                <checkbox id="checkopacus_usestoredid" preference="extensions.opacustep.opacus_usestoredid" label="&opacus_usestoredid.label;" />
+                <checkbox id="checkopacus_searchonopen" preference="extensions.opacustep.opacus_searchonopen" label="&opacus_searchonopen.label;" />
+                <checkbox id="checkopacus_ignoreconverted" preference="extensions.opacustep.ignoreConverted" label="&opacus_ignoreconverted.label;" />
+              </groupbox>
+            </hbox>
+            <hbox flex="1" width="420">
+              <groupbox flex="1">
+                <label tooltiptext="&opacus_blacklist.tooltiptext;" control="textareaopacus_blacklist">&opacus_blacklistdetails.label;</label>
+                <html:textarea rows="3" id="textareaopacus_blacklist" preference="extensions.opacustep.opacus_blacklist" onkeydown="return window.prefsObject.checkBlacklist(event);"></html:textarea>
+              </groupbox>
+            </hbox>
+          </vbox>
+        </tabpanel>
+        <tabpanel flex='1'>
+          <vbox class="ostpOptions" flex="1" width="420">
+            <groupbox flex="1">
+                  <label class='header'>&opacus_custommodules.label;</label>
+              <button label="&opacus_getcustommodules.label;" onclick="window.prefsObject.getCustomModules();" />
+              <richlistbox id="modulesList" flex="1" seltype="multiple" />
+            </groupbox>
+          </vbox>
+        </tabpanel>
+        <tabpanel flex='1'>
+          <vbox class="ostpOptions" flex="1" width="420">
+            <groupbox flex='1'>
+              <caption label="&opacus_sync.label;" />
+              <hbox style='padding: 3px;' flex='1'>
                 <grid flex='1'>
                   <columns>
                     <column flex="1" />
@@ -158,63 +108,97 @@
                   </columns>
                   <rows flex='1'>
                     <row flex='1'>
-                      <label style='padding: 3px;'>&opacus_deletethreshold.label;</label>
-                      <menulist style='min-height: 1.9em;' id='menulist_threshold' preference="delete_threshold">
-                        <menupopup>
-                          <menuitem label="&opacus_oneitem.label;" value='1' />
-                          <menuitem label="&opacus_fiveitems.label;" value='5' />
-                          <menuitem label="&opacus_twentyitems.label;" value='20' />
-                          <menuitem label="&opacus_hundreditems.label;" value='100' />
-                          <!--<menuitem label="&opacus_noitems.label;" value='0' />-->
-                        </menupopup>
-                      </menulist>
+                      <label style='padding:2px;'>&opacus_syncmodules.label;</label>
+                      <radiogroup orient="horizontal" preference='extensions.opacustep.opacus_syncmodules'>
+                        <radio value='contacts' label="&opacus_contacts;" />
+                        <radio value='leads' label="&opacus_leads;" />
+                        <radio value='both' label="&opacus_both;" />
+                      </radiogroup>
                     </row>
                   </rows>
                 </grid>
                 <spacer flex='1' />
               </hbox>
-            </vbox>
-          </groupbox>
-          <groupbox>
-            <label>&opacus_conflicts.label;</label>
-            <radiogroup>
-              <radio group="conflicts" id="sugarcrmwins" label="SugarCRM" accesskey="r" />
-              <radio group="conflicts" id="thunderbirdwins" label="Thunderbird" accesskey="b" />
-            </radiogroup>
-          </groupbox>
-        </vbox>
-      </tabpanel>
-      <tabpanel flex='1'>
-        <vbox class="ostpOptions" flex="1" width="420">
-          <groupbox flex="1">
-            <caption label="&opacus_activatedetails.label;" />
-            <label control="textopacus_activation_key">&opacus_activation_key.label;</label>
-            <hbox>
-              <textbox size='7' maxlength='8' id="textopacus_activation_key" preference="opacus_activation_key" />
-              <button label="&opacus_activate.label;" onclick="window.prefsObject.activate(window);" />
-              <spacer flex="1" />
-              <button label="&opacus_freetrial.label;" onclick="window.prefsObject.requestTrial(window);" />
-            </hbox>
-            <label style="font-style:italic;padding: .5em;" id="activation_feedback" />
-          </groupbox>
-          <groupbox flex="1">
-            <caption label="&opacus_licencedetails.label;" />
-            <hbox hidden='false'>
-              <label accesskey="&opacus_licence_key.accesskey;" control="textopacus_licence_key">&opacus_licence_key.label;</label>
-              <label class="text-link" style="font-size: .9em; font-style: italic; margin: 0 0 .4em 0;" value="&opacus_licenceExplained.label;" onclick="window.parentWindow.opacustep.showInfoTab('chrome://opacustep/content/version.html#licenceExplained')" />
-            </hbox>
-            <textbox hidden='false' id="textopacus_licence_key" maxlength='50' preference="opacus_licence_key" oninput="window.prefsObject.checkLicence(document);" />
-            <label style="min-height: 30px; font-style:italic;padding: .5em;" id="licence_feedback" />
-          </groupbox>
-        </vbox>
-      </tabpanel>
-    </tabpanels>
-  </tabbox>
-  <vbox flex='1'>
-    <hbox flex='1' id='saveButton' hidden='true' align='right'>
-      <spacer flex='1' />
-      <button label="&opacus_saveprefs.label;" onclick="window.close()" />
+            </groupbox>
+            <groupbox>
+              <checkbox id="checkmycontactsonly" preference="extensions.opacustep.opacus_mycontactsonly" label="&mycontactsonly.label;" />
+              <checkbox id="checkhonoursynctooutlook" preference="extensions.opacustep.opacus_honoursynctooutlook" label="&honoursynctooutlook.label;" onclick='if(this.checked){document.getElementById("checkmycontactsonly").disabled=false;} else {document.getElementById("checkmycontactsonly").disabled=true;document.getElementById("checkmycontactsonly").checked=false;}' />
+              <checkbox id="checkopacus_filtersaftersync" preference="extensions.opacustep.filtersAfterSync" label="&opacus_filtersaftersync.label;" />
+              <checkbox id="checkopacus_twowaysync" preference="extensions.opacustep.opacus_twowaysync" tooltiptext="&opacus_twowaysync.tooltiptext;" label="&opacus_twowaysync.label;" />
+              <checkbox id="checkopacus_syncatstart" preference="extensions.opacustep.opacus_syncatstart" label="&opacus_syncatstart.label;" />
+              <checkbox id="checkopacus_synchourly" preference="extensions.opacustep.opacus_synchourly" label="&opacus_synchourly.label;" />
+              <vbox flex='1' id='deleteOptions' hidden='true'>
+                <checkbox id="checkopacus_syncdeletions" preference="extensions.opacustep.opacus_syncdeletions" label="&opacus_syncdeletions.label;" onclick='if(!this.checked){document.getElementById("menulist_threshold").disabled=true;} else {document.getElementById("menulist_threshold").disabled=false;}' />
+                <hbox style="padding:3px;" flex='1'>
+                  <grid flex='1'>
+                    <columns>
+                      <column flex="1" />
+                      <column flex="1" />
+                    </columns>
+                    <rows flex='1'>
+                      <row flex='1'>
+                        <label style='padding: 3px;'>&opacus_deletethreshold.label;</label>
+                        <menulist style='min-height: 1.9em;' id='menulist_threshold' preference="extensions.opacustep.delete_threshold">
+                          <menupopup>
+                            <menuitem label="&opacus_oneitem.label;" value='1' />
+                            <menuitem label="&opacus_fiveitems.label;" value='5' />
+                            <menuitem label="&opacus_twentyitems.label;" value='20' />
+                            <menuitem label="&opacus_hundreditems.label;" value='100' />
+                            <!--<menuitem label="&opacus_noitems.label;" value='0' />-->
+                          </menupopup>
+                        </menulist>
+                      </row>
+                    </rows>
+                  </grid>
+                  <spacer flex='1' />
+                </hbox>
+              </vbox>
+            </groupbox>
+            <groupbox>
+              <label>&opacus_conflicts.label;</label>
+              <radiogroup>
+                <radio group="conflicts" id="sugarcrmwins" label="SugarCRM" accesskey="r" />
+                <radio group="conflicts" id="thunderbirdwins" label="Thunderbird" accesskey="b" />
+              </radiogroup>
+            </groupbox>
+          </vbox>
+        </tabpanel>
+        <tabpanel flex='1'>
+          <vbox class="ostpOptions" flex="1" width="420">
+            <groupbox flex="1">
+              <caption label="&opacus_activatedetails.label;" />
+              <label control="textopacus_activation_key">&opacus_activation_key.label;</label>
+              <hbox>
+                <textbox size='7' maxlength='8' id="textopacus_activation_key" preference="extensions.opacustep.opacus_activation_key" />
+                <button label="&opacus_activate.label;" onclick="window.prefsObject.activate(window);" />
+                <spacer flex="1" />
+                <button label="&opacus_freetrial.label;" onclick="window.prefsObject.requestTrial(window);" />
+              </hbox>
+              <label style="font-style:italic;padding: .5em;" id="activation_feedback" />
+            </groupbox>
+            <groupbox flex="1">
+              <caption label="&opacus_licencedetails.label;" />
+              <hbox hidden='false'>
+                <label accesskey="&opacus_licence_key.accesskey;" control="textopacus_licence_key">&opacus_licence_key.label;</label>
+                <label class="text-link" style="font-size: .9em; font-style: italic; margin: 0 0 .4em 0;" value="&opacus_licenceExplained.label;" onclick="window.parentWindow.opacustep.showInfoTab('chrome://opacustep/content/version.html#licenceExplained')" />
+              </hbox>
+              <textbox hidden='false' id="textopacus_licence_key" maxlength='50' preference="extensions.opacustep.opacus_licence_key" oninput="window.prefsObject.checkLicence(document);" />
+              <label style="min-height: 30px; font-style:italic;padding: .5em;" id="licence_feedback" />
+            </groupbox>
+          </vbox>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+</vbox>
+<vbox>
+    <hbox>
+        <button
+        icon='help'
+        label='&opacus_help.label;'
+        onclick="window.parentWindow.opacustep.showInfoTab('chrome://opacustep/content/version.html');"
+        />
     </hbox>
 </vbox>
-</vbox>
-</prefwindow>
+  <script src="chrome://global/content/preferencesBindings.js" type="application/javascript" />
+  <script src="chrome://opacustep/content/opacustep-prefdefs.js" type="application/javascript" />
+</dialog>

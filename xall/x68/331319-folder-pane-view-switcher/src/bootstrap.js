@@ -13,8 +13,10 @@ var {Log4Moz} = ChromeUtils.import("resource:///modules/gloda/log4moz.js");
 // So we declare the global variable here and load it in onLoad.
 var fpvsUtils;
 
+var didKickstarter = false;
+
 // Rules:
-// 
+//
 // Enter title bar:
 //   Start timer
 // Exit title bar:
@@ -36,6 +38,18 @@ var fpvsUtils;
 //     Cancel watch timer
 
 var FolderPaneSwitcher = {
+  // This is replaced with Log4Moz when we're initialized, but we need to be
+  // able to log before it's initialized.
+  logger: {
+    trace(msg) {
+      console.log("extensions.FolderPaneSwitcher TRACE " + msg);
+    },
+
+    debug(msg) {
+      console.log("extensions.FolderPaneSwitcher DEBUG " + msg);
+    }
+  },
+
   addRemoveButtonsObserver: {
     observe: function(document) {
       var prefBranch = Components.classes["@mozilla.org/preferences-service;1"]
@@ -77,7 +91,7 @@ var FolderPaneSwitcher = {
       gFolderTreeView.mode = prevMode;
     }
   },
-    
+
   goForwardView: function(window) {
     var gFolderTreeView = window.gFolderTreeView;
     var currentMode = gFolderTreeView.mode;
@@ -142,6 +156,7 @@ var FolderPaneSwitcher = {
   },
 
   onLoad: function(window) {
+    this.logger.debug("onLoad, readyState=" + window.document.readyState);
     var gFolderTreeView = window.gFolderTreeView;
     var document = window.document;
     var {DefaultPreferencesLoader} = ChromeUtils.import(
@@ -151,16 +166,15 @@ var FolderPaneSwitcher = {
 
     fpvsUtils.init();
 
-    if (! FolderPaneSwitcher.logger) {
-      FolderPaneSwitcher.logger = Log4Moz.getConfiguredLogger(
-        "extensions.FolderPaneSwitcher",
-	Log4Moz.Level.Trace,
-	Log4Moz.Level.Info,
-	Log4Moz.Level.Debug);
-    }
+    FolderPaneSwitcher.logger = Log4Moz.getConfiguredLogger(
+      "extensions.FolderPaneSwitcher",
+      Log4Moz.Level.Trace,
+      Log4Moz.Level.Info,
+      Log4Moz.Level.Debug);
 
     var me = FolderPaneSwitcher;
     var title = document.getElementById("folderPane-toolbar");
+    this.logger.debug("title=" + title);
     fpvsUtils.updateViews(gFolderTreeView);
     FolderPaneSwitcher.views = fpvsUtils.getViews(true);
     FolderPaneSwitcher.viewsObserver.register(
@@ -173,6 +187,30 @@ var FolderPaneSwitcher = {
     title.addEventListener("drop", me.onDragDrop, false);
     title.addEventListener("dragenter", me.onDragEnter, false);
     title.collapsed = false;
+    this.logger.debug("title.collapsed=" + title.collapsed);
+    // This is really gross. There appears to be some sort of race condition
+    // in TB68 which causes it occasionally to be not finished initializing the
+    // window when this functiong gets called, such that shortly after this
+    // function sets collapsed to false, TB sets it back to true. Ugh! So we
+    // try to catch that and fix it here.
+    this.raceIntervalsRemaining = 5
+    this.raceInterval = window.setInterval(() => {
+      this.raceIntervalsRemaining--;
+      if (title.collapsed) {
+        this.logger.warn("title.collapsed changed, flipping it back!");
+        title.collapsed = false;
+        this.raceIntervalsRemaining = 0;
+      }
+      else {
+        this.logger.debug("title.collapsed is still false, will keep " +
+                          "checking for " + this.raceIntervalsRemaining +
+                         " more seconds");
+      }
+      if (! this.raceIntervalsRemaining) {
+        this.logger.debug("Clearing this.raceInterval");
+        window.clearInterval(this.raceInterval);
+      }
+    }, 1000);
     FolderPaneSwitcher.addRemoveButtonsObserver.observe(document);
     var observer = {
       observe: function() {
@@ -189,10 +227,6 @@ var FolderPaneSwitcher = {
     // Thunderbird (see bz#674807). To work around it, I register a
     // folder listener to detect when a move or copy is
     // completed. This is gross, but appears to work well enough.
-    var ns =
-      Components.classes["@mozilla.org/messenger/msgnotificationservice;1"]
-      .getService(Components.interfaces.nsIMsgFolderNotificationService);
-
     // Disable this because the watcher serves the same function now,
     // by automatically reverting to the cached view within a half
     // second at most of when the drop finishes, and leaving this
@@ -202,9 +236,26 @@ var FolderPaneSwitcher = {
     // it needs to be reactivated, e.g., if we can get rid of the
     // watcher because the drag&drop infrastructure has improved to
     // the point where the watcher is no longer needed.
-
+//    var ns =
+//      Components.classes["@mozilla.org/messenger/msgnotificationservice;1"]
+//      .getService(Components.interfaces.nsIMsgFolderNotificationService);
+//
 //    ns.addListener(me.folderListener, ns.msgsMoveCopyCompleted|
 //		   ns.folderMoveCopyCompleted);
+
+    if (! didKickstarter) {
+      didKickstarter = true;
+      this.logger.debug("Loading Kickstarter popup");
+      var {KickstarterPopup} = ChromeUtils.import(
+        "chrome://FolderPaneSwitcher/content/kickstarter.jsm");
+      this.logger.debug("Triggering Kickstarter popup");
+      KickstarterPopup(window,
+                       "chrome://FolderPaneSwitcher/content/kickstarter.xul");
+      this.logger.debug("Done triggering Kickstarter popup");
+    }
+    else {
+      this.logger.debug("Skipping Kickstarter popup");
+    }
   },
 
   onUnload: function() {
@@ -213,7 +264,7 @@ var FolderPaneSwitcher = {
 
   folderListener: {
     msgsMoveCopyCompleted: function(aMove, aSrcMsgs, aDestFolder, aDestMsgs) {
-      FolderPaneSwitcher.logger.debug("msgsMoveCopyCompleted");
+      FolderPaneSwitcher.logger.trace("msgsMoveCopyCompleted");
       if (aDestFolder == FolderPaneSwitcher.currentFolder) {
 	// Still remotely possible that someone else could be copying
 	// into the same folder at the same time as us, but this is
@@ -221,11 +272,12 @@ var FolderPaneSwitcher = {
 	FolderPaneSwitcher.onDragDrop({type:"msgsMoveCopyCompleted"});
       }
       else {
-	FolderPaneSwitcher.logger.debug("msgsMoveCopyCompleted: non-matching folder");
+	FolderPaneSwitcher.logger.debug(
+          "msgsMoveCopyCompleted: non-matching folder");
       }
     },
     folderMoveCopyCompleted: function(aMove, aSrcFolder, aDestFolder) {
-      FolderPaneSwitcher.logger.debug("folderMoveCopyCompleted");
+      FolderPaneSwitcher.logger.trace("folderMoveCopyCompleted");
       if (aDestFolder == FolderPaneSwitcher.currentFolder) {
 	// Still remotely possible that someone else could be copying
 	// into the same folder at the same time as us, but this is
@@ -233,15 +285,17 @@ var FolderPaneSwitcher = {
 	FolderPaneSwitcher.onDragDrop({type:"folderMoveCopyCompleted"});
       }
       else {
-	FolderPaneSwitcher.logger.debug("folderMoveCopyCompleted: non-matching folder");
+	FolderPaneSwitcher.logger.debug(
+          "folderMoveCopyCompleted: non-matching folder");
       }
     }
   },
 
   onDragEnter: function(aEvent) {
-    FolderPaneSwitcher.logger.debug("onDragEnter");
+    FolderPaneSwitcher.logger.trace("onDragEnter");
     if (FolderPaneSwitcher.cachedView) {
-      FolderPaneSwitcher.logger.debug("onDragEnter: switch already in progress");
+      FolderPaneSwitcher.logger.debug(
+        "onDragEnter: switch already in progress");
     }
     else {
       FolderPaneSwitcher.setTimer(aEvent.view);
@@ -249,7 +303,7 @@ var FolderPaneSwitcher = {
   },
 
   onDragExit: function(aEvent) {
-    FolderPaneSwitcher.logger.debug("onDragExit("+aEvent.type+")");
+    FolderPaneSwitcher.logger.trace("onDragExit("+aEvent.type+")");
     if (FolderPaneSwitcher.timer) {
       FolderPaneSwitcher.timer.cancel();
       FolderPaneSwitcher.timer = null;
@@ -263,14 +317,14 @@ var FolderPaneSwitcher = {
   },
 
   onDragDrop: function(aEvent) {
-    FolderPaneSwitcher.logger.debug("onDragDrop("+aEvent.type+")");
+    FolderPaneSwitcher.logger.trace("onDragDrop("+aEvent.type+")");
     if (FolderPaneSwitcher.cachedView) {
       aEvent.view.gFolderTreeView.mode = FolderPaneSwitcher.cachedView;
       FolderPaneSwitcher.cachedView = null;
       FolderPaneSwitcher.currentFolder = null;
     }
   },
-  
+
   timer: null,
 
   setTimer: function(window) {
@@ -291,12 +345,13 @@ var FolderPaneSwitcher = {
 };
 
 function timerCallback(window) {
+  FolderPaneSwitcher.logger.trace("timerCallback");
   this.window = window;
 }
 
 timerCallback.prototype = {
   notify: function() {
-    FolderPaneSwitcher.logger.debug("timerCallback.notify");
+    FolderPaneSwitcher.logger.trace("timerCallback.notify");
     FolderPaneSwitcher.cachedView = this.window.gFolderTreeView.mode;
     this.window.gFolderTreeView.mode = "all";
 
@@ -311,11 +366,13 @@ timerCallback.prototype = {
 };
 
 function watchTimerCallback(window) {
+  FolderPaneSwitcher.logger.trace("watchTimerCallback");
   this.window = window;
 }
 
 watchTimerCallback.prototype = {
   notify: function() {
+    FolderPaneSwitcher.logger.trace("watchTimerCallback.notify");
     if (FolderPaneSwitcher.cachedView) {
       var dragService = Components
 	  .classes["@mozilla.org/widget/dragservice;1"]
@@ -335,13 +392,19 @@ watchTimerCallback.prototype = {
 };
 
 function forEachOpenWindow(todo) { // Apply a function to all open windows
+  FolderPaneSwitcher.logger.trace("forEachOpenWindow");
   for (let window of Services.wm.getEnumerator("mail:3pane")) {
-    if (window.document.readyState != "complete") continue;
+    if (window.document.readyState != "complete") {
+      FolderPaneSwitcher.logger.debug("forEachOpenWindow skip, readyState=" +
+                                      window.document.readyState);
+      continue;
+    }
     todo(window);
   }
 }
 
 function loadIntoWindow(window) {
+    FolderPaneSwitcher.logger.trace("loadIntoWindow");
     var document = window.document;
 
     var toolbar = document.getElementById("folderPane-toolbar");
@@ -369,6 +432,7 @@ function loadIntoWindow(window) {
 }
 
 function unloadFromWindow(window) {
+  FolderPaneSwitcher.logger.trace("unloadFromWindow");
   var document = window.document;
   var toolbar = document.getElementById("folderPane-toolbar");
   if (! toolbar) return;
@@ -381,6 +445,7 @@ function unloadFromWindow(window) {
 
 var WindowObserver = {
     observe: function(aSubject, aTopic, aData) {
+        FolderPaneSwitcher.logger.trace("WindowObserver.observe");
         var window = aSubject;
         var document = window.document;
         if (document.documentElement.getAttribute("windowtype") ==
@@ -395,12 +460,13 @@ var WindowObserver = {
 // https://developer.mozilla.org/en-US/Add-ons/How_to_convert_an_overlay_extension_to_restartless
 
 function startup(data, reason) {
+    FolderPaneSwitcher.logger.trace("startup");
     /// Bootstrap data structure @see https://developer.mozilla.org/en-US/docs/Extensions/Bootstrapped_extensions#Bootstrap_data
     ///   string id
     ///   string version
     ///   nsIFile installPath
     ///   nsIURI resourceURI
-    /// 
+    ///
     /// Reason types:
     ///   APP_STARTUP
     ///   ADDON_ENABLE
@@ -413,12 +479,13 @@ function startup(data, reason) {
 }
 
 function shutdown(data, reason) {
+    FolderPaneSwitcher.logger.trace("shutdown");
     /// Bootstrap data structure @see https://developer.mozilla.org/en-US/docs/Extensions/Bootstrapped_extensions#Bootstrap_data
     ///   string id
     ///   string version
     ///   nsIFile installPath
     ///   nsIURI resourceURI
-    /// 
+    ///
     /// Reason types:
     ///   APP_SHUTDOWN
     ///   ADDON_DISABLE
@@ -434,12 +501,13 @@ function shutdown(data, reason) {
 }
 
 function install(data, reason) {
+    FolderPaneSwitcher.logger.trace("install");
     /// Bootstrap data structure @see https://developer.mozilla.org/en-US/docs/Extensions/Bootstrapped_extensions#Bootstrap_data
     ///   string id
     ///   string version
     ///   nsIFile installPath
     ///   nsIURI resourceURI
-    /// 
+    ///
     /// Reason types:
     ///   ADDON_INSTALL
     ///   ADDON_UPGRADE
@@ -447,12 +515,13 @@ function install(data, reason) {
 }
 
 function uninstall(data, reason) {
+    FolderPaneSwitcher.logger.trace("uninstall");
     /// Bootstrap data structure @see https://developer.mozilla.org/en-US/docs/Extensions/Bootstrapped_extensions#Bootstrap_data
     ///   string id
     ///   string version
     ///   nsIFile installPath
     ///   nsIURI resourceURI
-    /// 
+    ///
     /// Reason types:
     ///   ADDON_UNINSTALL
     ///   ADDON_UPGRADE

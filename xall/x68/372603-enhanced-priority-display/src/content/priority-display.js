@@ -36,6 +36,10 @@ function enhancedPriorityDisplayIcons() {
 	var ObserverService = Components.classes["@mozilla.org/observer-service;1"]
 	    .getService(Components.interfaces.nsIObserverService);
 	ObserverService.addObserver(createDbObserver, "MsgCreateDBView", false);
+        var {KickstarterPopup} = ChromeUtils.import(
+            "chrome://EnhancedPriorityDisplay/content/kickstarter.jsm");
+        KickstarterPopup(
+            window, "chrome://EnhancedPriorityDisplay/content/kickstarter.xul");
     };
 
     function createGenericHandler(colId, oldHandler) {

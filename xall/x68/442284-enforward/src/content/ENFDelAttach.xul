@@ -1,0 +1,16 @@
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="Delete Attachments - EnForward"
+        onload="gENFDelAttach.onload();">
+  <script type="application/javascript" src="chrome://enforward/content/ENFDelAttach.js"/>
+	<label value="Check attachments to be forwarded."/>
+	<hbox>
+		<richlistbox id="ENFAttachList" height="200px"/>
+		<vbox>
+			<button label="All" oncommand="gENFDelAttach.selectAll(true)"/>
+			<button label="Clear" oncommand="gENFDelAttach.selectAll(false)"/>
+		</vbox>
+	</hbox>
+</dialog>

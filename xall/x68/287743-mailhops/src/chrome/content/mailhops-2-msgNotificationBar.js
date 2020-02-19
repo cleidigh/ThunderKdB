@@ -60,7 +60,7 @@ var mailHopsDisplay =
     });
 
     this.mailhopsDataPaneHops.addEventListener("click", function () {
-      this.classList.toggle('active');
+      this.parentElement.classList.toggle('active');
       if(mailHopsDisplay.resultDetails.style.display !== 'block')
         mailHopsDisplay.resultDetails.style.display = 'block';
       else
@@ -170,22 +170,22 @@ var mailHopsDisplay =
     //X-Mailer, User-Agent or X-MimeOLE
     if(header_xmailer){
       this.mailhopsDataPaneMailer.style.backgroundImage = "url('chrome://mailhops/content/images/email.png')";
-      if(header_xmailer.indexOf('(')!=-1)
-        this.mailhopsDataPaneMailer.setAttribute('value',header_xmailer.substring(0,header_xmailer.indexOf('(')));
-      else if(header_xmailer.indexOf('[')!=-1)
-        this.mailhopsDataPaneMailer.setAttribute('value',header_xmailer.substring(0,header_xmailer.indexOf('[')));
-      else
-        this.mailhopsDataPaneMailer.setAttribute('value',header_xmailer);
+      // if(header_xmailer.indexOf('(')!=-1)
+      //   this.mailhopsDataPaneMailer.setAttribute('value',header_xmailer.substring(0,header_xmailer.indexOf('(')));
+      // else if(header_xmailer.indexOf('[')!=-1)
+      //   this.mailhopsDataPaneMailer.setAttribute('value',header_xmailer.substring(0,header_xmailer.indexOf('[')));
+      // else
+      //   this.mailhopsDataPaneMailer.setAttribute('value',header_xmailer);
       this.mailhopsDataPaneMailer.setAttribute('tooltiptext',header_xmailer);
       this.mailhopsDataPaneMailer.style.display='block';
     } else if(header_useragent){
       this.mailhopsDataPaneMailer.style.backgroundImage = "url('chrome://mailhops/content/images/email.png')";
-      if(header_useragent.indexOf('(')!=-1)
-        this.mailhopsDataPaneMailer.setAttribute('value',header_useragent.substring(0,header_useragent.indexOf('(')));
-      else if(header_useragent.indexOf('[')!=-1)
-        this.mailhopsDataPaneMailer.setAttribute('value',header_useragent.substring(0,header_useragent.indexOf('[')));
-      else
-        this.mailhopsDataPaneMailer.setAttribute('value',header_useragent);
+      // if(header_useragent.indexOf('(')!=-1)
+      //   this.mailhopsDataPaneMailer.setAttribute('value',header_useragent.substring(0,header_useragent.indexOf('(')));
+      // else if(header_useragent.indexOf('[')!=-1)
+      //   this.mailhopsDataPaneMailer.setAttribute('value',header_useragent.substring(0,header_useragent.indexOf('[')));
+      // else
+      //   this.mailhopsDataPaneMailer.setAttribute('value',header_useragent);
       this.mailhopsDataPaneMailer.setAttribute('tooltiptext',header_useragent);
       this.mailhopsDataPaneMailer.style.display='block';
     } else if(header_xmimeole){
@@ -196,10 +196,10 @@ var mailHopsDisplay =
       else if(header_xmimeole.indexOf('[')!=-1)
         header_xmimeole = header_xmimeole.substring(0,header_xmimeole.indexOf('['));
 
-      if(header_xmimeole.indexOf('Produced By ')!=-1)
-        this.mailhopsDataPaneMailer.setAttribute('value',header_xmimeole.replace('Produced By ',''));
-      else
-        this.mailhopsDataPaneMailer.setAttribute('value',header_xmimeole);
+      // if(header_xmimeole.indexOf('Produced By ')!=-1)
+      //   this.mailhopsDataPaneMailer.setAttribute('value',header_xmimeole.replace('Produced By ',''));
+      // else
+      //   this.mailhopsDataPaneMailer.setAttribute('value',header_xmimeole);
 
       this.mailhopsDataPaneMailer.setAttribute('tooltiptext',header_xmimeole);
       this.mailhopsDataPaneMailer.style.display='block';

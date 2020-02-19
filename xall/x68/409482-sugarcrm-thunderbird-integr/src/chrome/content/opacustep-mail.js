@@ -183,7 +183,7 @@ opacustepMail.prototype.parseHeader = function(){
     this.subject = this.msgHeader.mime2DecodedSubject !== '' ? this.msgHeader.mime2DecodedSubject : this.msgHeader.subject;
     const MsgFlagHasRe = 0x0010; // MSG_FLAG_HAS_RE
     if(this.msgHeader.flags & MsgFlagHasRe){
-        this.subject = opacustep.strings.getString('re') + ' ' + this.subject;
+        this.subject = opacustep.strings.GetStringFromName('re') + ' ' + this.subject;
     }
     this.recipients = this.msgHeader.mime2DecodedRecipients !== '' ? this.msgHeader.mime2DecodedRecipients : this.msgHeader.recipients;
     if(/^\w\w+\s+\w\w+\s+</.test(this.recipients)){
@@ -224,9 +224,6 @@ opacustepMail.prototype.mimeCallback = function(aMimeMsg,aMsgHdr,mailObject){
     if(mailObject.allowEdit && opacustep.searchObject.ready){
         opacustep.searchObject.searchWindow.document.getElementById('opacusSearchTabs').hidden = false;
         opacustep.searchObject.setEditFields(mailObject);
-        if(mailObject.attachmentNames.length > 0 && mailObject.email_id === false){
-            opacustep.searchObject.searchWindow.document.getElementById('attTab').hidden = false;
-        }
     }
     if(mailObject.usedForCreate){
         if(mailObject.plain === ''){
@@ -326,11 +323,13 @@ opacustepMail.prototype.archiveMail = function(){
                 this.subject = newSubject;
             }
             var attList = opacustep.searchObject.searchWindow.document.getElementById('allattachments');
-            var checkBoxes = attList.getElementsByClassName('attSelected'); 
-            for (var i = 0; i < checkBoxes.length; i++){  
-                if(!checkBoxes[i].hasAttribute('checked')){
-                    var idTest = this.attachmentNames.indexOf(checkBoxes[i].label);
-                    this.attachmentNames.splice(idTest,1);
+            var selectedAttachments = attList.selectedItems; 
+            if (selectedAttachments !== null) {
+                this.attachmentsNames = [];
+                for (var j in selectedAttachments) {
+                    if (selectedAttachments[j].value) {
+                        this.attachmentNames.push(selectedAttachments[j].value);
+                    }
                 }
             }
         }
@@ -431,7 +430,7 @@ opacustepMail.prototype.archive_callback = function(response,mailObject){
             opacustep.setStatus('hidden');
         }
         opacustep.console.logStringMessage("OpacusSTP received no email id. Response: "+JSON.stringify(response));
-        opacustep.notifyUser('error',opacustep.strings.getString('notifyNoArchive') + ' ' + mailObject.subject);
+        opacustep.notifyUser('error',opacustep.strings.GetStringFromName('notifyNoArchive') + ' ' + mailObject.subject);
     }
 };
 

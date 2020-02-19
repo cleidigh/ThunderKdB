@@ -49,6 +49,12 @@
 			<toolbar id="templateTools" 
 			         mode="icons" 
 							 customizable="false">
+        <toolbarbutton id="helpTemplates"
+            class="toolbarbutton-1 chromeclass-toolbar-additional"
+            onclick = "SmartTemplate4.Util.showStationeryHelpPage();" 
+            label = ""
+            tooltiptext="&tip.fileTemplates;"
+            />
 				<toolbarbutton id="btnSaveTemplate"
 											 class="toolbarbutton-1 chromeclass-toolbar-additional"
 											 tooltiptext="&btnSaveTemplate.tooltip;"
@@ -62,7 +68,8 @@
 											 tooltiptext="&btnYouTube.tooltip;"
 											 onclick="SmartTemplate4.Util.showYouTubePage();" 
 											 />
-			</toolbar>
+      </toolbar>
+
 			<spacer flex = "1" />
 			<button id="btnAdvanced"
 			        class = "buttonIcon"
@@ -310,7 +317,7 @@
 						           orient = "vertical"
 											 onselect="SmartTemplate4.Settings.selectFileCase(this, event);"
 											 >
-							<tabpanel class = "newGroup">
+							<tabpanel class = "newGroup" id="new-fileTemplates">
 								<groupbox flex = "1" orient = "vertical" class="transparent">
 									<hbox class="groupbox-title"><label class="header">&pref_newmsg.cap;</label></hbox>
 									<vbox flex="1" class="vfield">
@@ -400,7 +407,7 @@
 							</tabpanel>
 
 							<!-- ######## Content [Reply] Tab ######## -->
-							<tabpanel class = "replyGroup">
+							<tabpanel class = "replyGroup" id="rsp-fileTemplates">
 								<groupbox flex = "1" class="transparent">
 									<hbox class="groupbox-title"><label class="header">&pref_rspmsg.cap;</label></hbox>
 									<vbox flex="1" class="vfield">
@@ -418,7 +425,7 @@
 							</tabpanel>
 
 							<!-- ######## Content [Forward] File Tab ######## -->
-							<tabpanel class = "forwardGroup">
+							<tabpanel class = "forwardGroup" id="fwd-fileTemplates">
 								<groupbox  flex = "1" class="transparent">
 									<hbox class="groupbox-title"><label class="header">&pref_fwdmsg.cap;</label></hbox>
 									<vbox flex="1" class="vfield">
@@ -477,6 +484,7 @@
 			<preference id = "pref_guessNameFromMail" name = "extensions.smartTemplate4.names.guessFromMail" type = "bool" instantApply="true"/>
 			<preference id = "pref_defaultMimeFormat" name = "extensions.smartTemplate4.mime.defaultFormat" type = "string" instantApply="true"/>
 			<preference id = "pref_suppressMailTo" name =  "extensions.smartTemplate4.mail.suppressLink" type = "bool" instantApply="true"/>
+			<preference id = "pref_silentUpdate" name =  "extensions.smartTemplate4.silentUpdate" type = "bool" instantApply="true"/>
 		</preferences>
 
 		<tabbox id = "rightPane" flex = "1">
@@ -646,13 +654,14 @@
 											label = "&pref_nameSwap;"
 											tooltiptext = "&pref_nameSwap_tip;"
 											preference = "pref_firstLastSwap"/>
-								<checkbox id = "chkFirstLastSwap"
+								<checkbox id = "chkGuessName"
 											label = "&guessNameFromMail;"
 											preference = "pref_guessNameFromMail"/>
 								<hbox  align="center">
 									<label value="&defaultMimeFormat;"
-												 control="txtNameDelimiter"/>
+												 control="default_address_format"/>
 									<textbox flex="1"
+                           id="default_address_format"
 													 preference = "pref_defaultMimeFormat"
 													 tooltiptext= "&defaultMimeFormat_tip;"/>
 								</hbox>
@@ -824,6 +833,11 @@
 											 tooltiptext="http://smarttemplate4.mozdev.org/"
 											 onclick="SmartTemplate4.Util.showPremiumFeatures();">&label.premiumFeaturesSite;</label>
 							</hbox>
+              <checkbox id = "chkSilentUpdates"
+                    label = "&pref_silentUpdates;"
+                    tooltiptext = "&pref_silentUpdates_tip;"
+                    preference = "pref_silentUpdate"
+                    disabled = "true" /> 
 						</groupbox>
 					</hbox>
 					<!-- will be populated / modified from bundle in code -->

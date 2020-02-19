@@ -67,13 +67,13 @@
 
 #QuickFolders-quickMove > label, #QuickFolders-readingList > label {
   border-radius: 4px;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96) inset;
-  color: #ffffff;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96) inset !important;
   padding: 0px 2px;
 }
 
 #QuickFolders-quickMove > label {
   background-color: rgba(220, 0, 0, 0.9);
+	color: #ffffff !important;
 	border: 1px solid rgba(128,128,128,0.5);
   margin-left: 2px !important;
   text-decoration: none;
@@ -81,6 +81,7 @@
 }
 #QuickFolders-readingList > label {
   background-color: rgba(180, 180, 180, 0.9);
+	color: white !important;
 	border: 1px solid rgba(128,128,128,0.5);
 	margin-left: 0px;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96), 0px 0px 3px rgba(0, 0, 0, 0.8), 0px 0px 4px rgba(0, 0, 0, 0.5);
@@ -134,6 +135,8 @@ menupopup.widerMenu menucaption {
 	margin-top: 0px;
 	min-height: 20px !important;
 	width: -moz-min-content;
+  /* Tb 70+ */
+  min-width: 50px;
 }
 
 #QuickFolders-FindFolder.quickMove,
@@ -337,14 +340,17 @@ menupopup.widerMenu menucaption {
 }
 
 
-#QuickFolders-Toolbar #QuickFolders-title-label.expired {
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
 	animation: quickfoldersRenew 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);
 	box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.0);
 	background-color: #990038 !important; /* dark purple */
 	background-image: linear-gradient(to bottom, #bf376b 0%,#990038 51%,#700029 100%) !important; 
-	color: white !important;
 	margin: 0 4px 1px 7px;
 	padding: 2px 3px;
+}
+
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired label {	
+	color: rgb(245, 235, 185) !important;
 }
 
 #QuickFolders-Toolbar[brighttext="true"] #QuickFolders-title-label.expired  {
@@ -426,7 +432,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 	-moz-appearance: none;
 	border-radius: 0 0 6px 6px !important;
 	box-shadow: 1px 2px 4px -1px rgba(0,0,0,0.7);
-	background: linear-gradient(to top, #FFFFFF 7%, #BDB9BD 88%, #EEE 100%);
+	background-image: linear-gradient(to top, #FFFFFF 7%, #BDB9BD 88%, #EEE 100%);
 	border-style: solid  !important;
 	border-color: #666;
 	height: 1.8em; /* large font support, test on Mac / Linux! */
@@ -893,7 +899,9 @@ menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-properties {
 }
 
 /* [Bug 26570] only show mark folder read if it has unread items in it */
-toolbarbutton:not(.has-unread) #folderPaneContext-markMailFolderAllRead {
+toolbarbutton:not(.has-unread) #folderPaneContext-markMailFolderAllRead,
+toolbarbutton:not(.has-unread):not(.has-unreadSubOnly) #folderPaneContext-markMailFolderAllReadRecursive,
+toolbarbutton:not(.has-unreadSubOnly) #folderPaneContext-markMailFolderAllReadRecursive {
 	display: none;
 }
 

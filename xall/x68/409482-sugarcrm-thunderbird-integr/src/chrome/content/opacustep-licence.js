@@ -42,7 +42,7 @@ opacusteplicence.prototype.check = function (hostname, username) {
 		|| this.md5(this.md5(trimmed_host.toLowerCase()) + username + expDate).toLowerCase() == opacustep.licence_key.substring(0,32).toLowerCase()){
 		if(parseInt(currentDateStamp) > parseInt(expDate)){
 			if(!opacustep.suppressLicenseErrors){
-				opacustep.notifyUser('critical',opacustep.strings.getString('notifyLicenceExpired'));
+				opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyLicenceExpired'));
 			}
 			return false;
 		}

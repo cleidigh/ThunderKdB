@@ -73,14 +73,14 @@ function opacustepCreate(){
 opacustepCreate.prototype.init = function(){
 
     if(!opacustep.licence.check(opacustep.sugarurlOrig.toLowerCase(),opacustep.sugarcrm_username.toLowerCase())){
-        opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoLicence'));
+        opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoLicence'));
         return;
     }
 
     this.worker = new opacusteprest();
     this.worker.setCredentials(opacustep.sugarurl,opacustep.sugarcrm_username,opacustep.sugarcrm_password);
     this.worker.login();
-    this.localizedType = opacustep.strings.getString(this.type);
+    this.localizedType = opacustep.strings.GetStringFromName(this.type);
     this.window = window.openDialog("chrome://opacustep/content/opacustep-create.xul","","chrome,dialog=no,resizable=yes,titlebar,centerscreen",opacustep.windows,this);
     this.window.controller = this;
     this.module = this.type + 's';
@@ -119,8 +119,8 @@ opacustepCreate.prototype.init = function(){
             this.document.getElementById('account_search_button').hidden = false;
             this.document.getElementById('account_add_button').hidden = false;
             this.document.getElementById('account_menulist').hidden = false;
-            this.document.getElementById('description').style.height = '4em';
-            this.document.getElementById('issueresolution').style.height = '4em';
+            this.document.getElementById('description').style.height = '5em';
+            this.document.getElementById('issueresolution').style.height = '5em';
             this.document.getElementById('name').focus();
             this.controller.moduleFieldsObject.module = 'Cases';
             this.controller.moduleFieldsObject.fields = new Array('status','priority','type');
@@ -134,10 +134,10 @@ opacustepCreate.prototype.init = function(){
             this.document.getElementById('account_search_button').hidden = false;
             this.document.getElementById('account_add_button').hidden = false;
             this.document.getElementById('account_menulist').hidden = false;
-            this.document.getElementById('description').style.height = '4em';
-            this.document.getElementById('issueresolution').style.height = '4em';
+            this.document.getElementById('description').style.height = '5em';
+            this.document.getElementById('issueresolution').style.height = '5em';
             this.document.getElementById('name').focus();
-            this.document.getElementById('issueresolution_label').value = opacustep.strings.getString('workLog');
+            this.document.getElementById('issueresolution_label').value = opacustep.strings.GetStringFromName('workLog');
             this.controller.moduleFieldsObject.module = 'Bugs';
             this.controller.moduleFieldsObject.fields = new Array('status','priority','type', 'resolution');
             break;
@@ -149,7 +149,7 @@ opacustepCreate.prototype.init = function(){
             this.document.getElementById('account_menulist').hidden = false;
             this.document.getElementById('account_add_button').hidden = false;
             this.document.getElementById('opacusModuleChooserAccount').hidden = false;
-            this.document.getElementById('description').style.height = '7em';
+            this.document.getElementById('description').style.height = '8em';
             this.document.getElementById('name').focus();
             this.document.getElementById('taskduetime').hour=10;
             this.document.getElementById('taskduetime').minute=30;
@@ -166,7 +166,7 @@ opacustepCreate.prototype.init = function(){
             this.document.getElementById('account_search_button').hidden = false;
             this.document.getElementById('account_add_button').hidden = false;
             this.document.getElementById('account_menulist').hidden = false;
-            this.document.getElementById('description').style.height = '7em';
+            this.document.getElementById('description').style.height = '8em';
             this.document.getElementById('name').focus();
             this.controller.module = 'Opportunities';
             this.controller.moduleFieldsObject.module = 'Opportunities';
@@ -178,10 +178,10 @@ opacustepCreate.prototype.init = function(){
             this.controller.setToShow(this.controller,'phonedetails');
             this.controller.setToShow(this.controller,'emaildetails');
             this.controller.setToShow(this.controller,'accountdetails');
-            this.document.getElementById('opacus_account_search').value = opacustep.strings.getString('memberOf');
+            this.document.getElementById('opacus_account_search').value = opacustep.strings.GetStringFromName('memberOf');
             this.document.getElementById('account_search_button').hidden = false;
             this.document.getElementById('account_menulist').hidden = false;
-            this.document.getElementById('description').style.height = '6em';
+            this.document.getElementById('description').style.height = '8em';
             this.document.getElementById('name').focus();
             this.controller.moduleFieldsObject.module = 'Accounts';
             this.controller.moduleFieldsObject.fields = new Array('account_type');
@@ -204,7 +204,7 @@ opacustepCreate.prototype.init = function(){
             this.controller.feedback.hidden=false;
             this.controller.feedback.setAttribute('mode','undetermined');
             this.document.title = "Opacus "+ this.controller.localizedType;
-            this.document.getElementById('create_button').label = opacustep.strings.getString('save');
+            this.document.getElementById('create_button').label = opacustep.strings.GetStringFromName('save');
         }
     };
     this.window.addEventListener('load', setFields, false);
@@ -277,13 +277,13 @@ opacustepCreate.prototype.send = function(){
     this.populateFromWindow();
     var notifyType = this.checkForm();
     if(notifyType){
-        opacustep.notifyUser('error',opacustep.strings.getString(notifyType));
+        opacustep.notifyUser('error',opacustep.strings.GetStringFromName(notifyType));
     } else {
         this.window.document.getElementById('create_button').disabled=true;
         if(this.action != 'edit'){
-            this.window.document.getElementById('create_button').label = opacustep.strings.getString('creating');
+            this.window.document.getElementById('create_button').label = opacustep.strings.GetStringFromName('creating');
         } else {
-            this.window.document.getElementById('create_button').label = opacustep.strings.getString('saving');
+            this.window.document.getElementById('create_button').label = opacustep.strings.GetStringFromName('saving');
         }
         this.worker.login();
         this.check(this.process);
@@ -419,7 +419,7 @@ opacustepCreate.prototype.populateDropdown = function(elId,data){
         }
         selectItem.setAttribute('value',data[i].name);
         selectItem.setAttribute('label', data[i].value.replace(/&#039;/g,"'").replace(/&quot;/g,'"'));
-        this.window.document.getElementById(elId).firstChild.appendChild(selectItem);
+        this.window.document.getElementById('mp' + elId).appendChild(selectItem);
     }
 };
 
@@ -463,7 +463,7 @@ opacustepCreate.prototype.wrapUp = function(createObject){
 
 
     if(createObject.action == 'createFromEmail' || createObject.action == 'create'){
-        opacustep.notifyUser('',opacustep.strings.getString('newObject') + ' ' + createObject.type.toLowerCase() + "\n" + objectName);
+        opacustep.notifyUser('',opacustep.strings.GetStringFromName('newObject') + ' ' + createObject.type.toLowerCase() + "\n" + objectName);
         /* Let's not bother doing this any more. It's really bloody annoying when it's not required, and only mildly helpful when it is.
         try{
             opacustep.searchObject.searchWindow.document.getElementById('searchField').value = searchString;
@@ -471,7 +471,7 @@ opacustepCreate.prototype.wrapUp = function(createObject){
         }
         catch(ex){}*/
     } else if(createObject.action == 'edit'){
-        opacustep.notifyUser('',opacustep.strings.getString('updated') + ' ' + createObject.type.toLowerCase() + "\n" + objectName);
+        opacustep.notifyUser('',opacustep.strings.GetStringFromName('updated') + ' ' + createObject.type.toLowerCase() + "\n" + objectName);
     }
 };
     
@@ -579,18 +579,8 @@ opacustepCreate.prototype.populateWindow = function(createObject){
     if(createObject.type == 'Task' || createObject.type == 'Case' || createObject.type == 'Bug'){
         createObject.mail.usedForCreate = true;
         createObject.mail.createWindow = createObject.window;
-        var scriptableUnescapeHTML = Components.classes["@mozilla.org/feed-unescapehtml;1"]
-                             .getService(Components.interfaces.nsIScriptableUnescapeHTML);
-        if(createObject.mail.plain !== '' || createObject.mail.html !== ''){
-            // Set plain if it exists. Might not be ready yet from Mime callback, but it'll be set in
-            // mailObject later.
-            if(createObject.mail.plain !== ''){
-                createObject.window.document.getElementById('description').value = createObject.mail.plain;
-            } else {
-                createObject.window.document.getElementById('description').value = scriptableUnescapeHTML.unescape(createObject.mail.html);
-            }
-        } else if(createObject.mail.direction == 'outbound'){
-            createObject.window.document.getElementById('description').value = scriptableUnescapeHTML.unescape(createObject.mail.html);
+        if(createObject.mail.plain !== ''){
+            createObject.window.document.getElementById('description').value = createObject.mail.plain;
         }
     }
     if(!createObject.mail.displayRecipients){
@@ -619,7 +609,6 @@ opacustepCreate.prototype.populateWindow = function(createObject){
     }
 };
 
-
 opacustepCreate.prototype.populateFromWindow = function(){
     if(this.custom){
         this.customPopulateFromWindow();
@@ -645,7 +634,7 @@ opacustepCreate.prototype.populateFromWindow = function(){
             break;
         case 'Contact':
             try{
-                this.fields.account_id = this.window.document.getElementById('account_menulist').selectedItem.value;
+                this.fields.account_id = this.window.document.getElementById('account_menulist').selectedItem.getAttribute('data-id');
             }
             catch(ex){}
             break;
@@ -662,13 +651,13 @@ opacustepCreate.prototype.populateFromWindow = function(){
             }
             if(this.chosenModule == 'Contacts'){
                 try{
-                    this.fields.contact_id = this.window.document.getElementById('contact_menulist').selectedItem.value;
-                    this.fields.account_id = this.window.document.getElementById('contact_menulist').selectedItem.id;
+                    this.fields.contact_id = this.window.document.getElementById('contact_menulist').selectedItem.getAttribute('data-id');
+                    this.fields.account_id = this.window.document.getElementById('contact_menulist').selectedItem.getAttribute('data-account_id');
                 }
                 catch(ex){}
             } else {
                 try{
-                    this.fields.account_id = this.window.document.getElementById('account_menulist').selectedItem.value;
+                    this.fields.account_id = this.window.document.getElementById('account_menulist').selectedItem.getAttribute('data-id');
                 }
                 catch(ex){}
             }
@@ -682,14 +671,14 @@ opacustepCreate.prototype.populateFromWindow = function(){
                 ' ' + this.window.document.getElementById('taskduetime').value);
             if(this.chosenModule == 'Contacts'){
                 try{
-                    this.fields.contact_id = this.window.document.getElementById('contact_menulist').selectedItem.value;
-                    this.fields.parent_id = this.window.document.getElementById('contact_menulist').selectedItem.id;
+                    this.fields.contact_id = this.window.document.getElementById('contact_menulist').selectedItem.getAttribute('data-id');
+                    this.fields.parent_id = this.window.document.getElementById('contact_menulist').selectedItem.getAttribute('data-account_id');
                     this.fields.parent_type = 'Accounts';
                 }
                 catch(ex){}
             } else {
                 try{
-                    this.fields.parent_id = this.window.document.getElementById('account_menulist').selectedItem.value;
+                    this.fields.parent_id = this.window.document.getElementById('account_menulist').selectedItem.getAttribute('data-id');
                     this.fields.parent_type = 'Accounts';
                 }
                 catch(ex){}
@@ -701,13 +690,13 @@ opacustepCreate.prototype.populateFromWindow = function(){
             this.fields.sales_stage = this.window.document.getElementById('opportunitysalesstage').selectedItem.value;
             if(this.chosenModule == 'Contacts'){
                 try{
-                    this.fields.contact_id = this.window.document.getElementById('contact_menulist').selectedItem.value;
-                    this.fields.account_id = this.window.document.getElementById('contact_menulist').selectedItem.id;
+                    this.fields.contact_id = this.window.document.getElementById('contact_menulist').selectedItem.getAttribute('data-id');
+                    this.fields.account_id = this.window.document.getElementById('contact_menulist').selectedItem.getAttribute('data-account_id');
                 }
                 catch(ex){}
             } else {
                 try{
-                    this.fields.account_id = this.window.document.getElementById('account_menulist').selectedItem.value;
+                    this.fields.account_id = this.window.document.getElementById('account_menulist').selectedItem.getAttribute('data-id');
                 }
                 catch(ex){}
             }
@@ -715,7 +704,7 @@ opacustepCreate.prototype.populateFromWindow = function(){
         case 'Account':
             this.fields.account_type = this.window.document.getElementById('accounttype').selectedItem.value;
             try{
-                this.fields.parent_id = this.window.document.getElementById('account_menulist').selectedItem.value;
+                this.fields.parent_id = this.window.document.getElementById('account_menulist').selectedItem.getAttribute('data-id');
             }
             catch(ex){}
             break;
@@ -803,16 +792,17 @@ opacustepCreate.prototype.addToMenuList = function(elId,data){
                     name = data.entry_list[i].name_value_list.name.value;
             }
             selectItem = this.window.document.createElement('menuitem');
-            selectItem.setAttribute('value',id);
+            selectItem.setAttribute('data-id',id);
             selectItem.setAttribute('label', name.replace(/&#039;/g,"'").replace(/&quot;/g,'"'));
-            selectItem.setAttribute('id',account_id);
-            this.window.document.getElementById(elId).firstChild.appendChild(selectItem);       
+            selectItem.setAttribute('value', name.replace(/&#039;/g,"'").replace(/&quot;/g,'"'));
+            selectItem.setAttribute('data-account_id',account_id);
+            this.window.document.getElementById('mp' + elId).appendChild(selectItem);       
         }
         this.window.document.getElementById(elId).open = true;
     } else {
         selectItem = this.window.document.createElement('menuitem');
-        selectItem.setAttribute('label', opacustep.strings.getString('noresults'));
-        this.window.document.getElementById(elId).firstChild.appendChild(selectItem);
+        selectItem.setAttribute('label', opacustep.strings.GetStringFromName('noresults'));
+        this.window.document.getElementById('mp' + elId).appendChild(selectItem);
         this.window.document.getElementById(elId).open = true;
         var createObject = this;
         var event = { notify: function(timer) {
@@ -826,7 +816,7 @@ opacustepCreate.prototype.addToMenuList = function(elId,data){
 
 
 opacustepCreate.prototype.clearMenuList = function(elId,createObject){
-    var menuList = createObject.window.document.getElementById(elId).firstChild;
+    var menuList = createObject.window.document.getElementById('mp' + elId);
     while(menuList.childNodes.length > 0){
         menuList.removeChild( menuList.lastChild );
     }
@@ -861,7 +851,7 @@ opacustepCreate.prototype.check = function(returnFunc){
                     if(counter < 100){
                         checkSession();
                     } else {
-                        opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoLogin'));
+                        opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoLogin'));
                         return;
                     }
                 }

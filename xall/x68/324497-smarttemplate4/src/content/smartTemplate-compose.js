@@ -103,7 +103,10 @@ SmartTemplate4.classSmartTemplate = function() {
 	  SmartTemplate4.Sig.init(Ident);
 		let htmlSigText = SmartTemplate4.Sig.htmlSigText, // might not work if it is an attached file (find out how this is done)
 		    sig = '',
-		    isSignatureHTML = SmartTemplate4.Sig.htmlSigFormat; // only reliable if in textbox!
+		    isSignatureHTML = SmartTemplate4.Sig.htmlSigFormat,
+        sigPath = SmartTemplate4.Sig.htmlSigPath; // only reliable if in textbox!
+    const flags = SmartTemplate4.PreprocessingFlags;
+    
 		util.logDebugOptional(
       'functions','extractSignature()\nSTART==========  extractSignature(' + Ident + ', defined type=' + signatureDefined + ', compose type=' + composeType + ')  ========');
 		let bodyEl = gMsgCompose.editor.rootElement,
@@ -200,6 +203,17 @@ SmartTemplate4.classSmartTemplate = function() {
       sigText = sigText.replace(/\r\n/g, '<br>');
       sigText = sigText.replace(/\n/g, '<br>');
     }
+    else {
+      // replace image(s) in signature with data src if necessary.
+      const Frex = new RegExp("file:\/\/\/[^\"\'\>]*", "g");
+      sigText = sigText.replace(Frex, 
+        function(match) {
+          util.logDebugOptional('composer', 'Replacing signature image as data url: ' + match);
+          return util.getFileAsDataURI(match);
+        }
+      );
+      
+    }
 		
 
 		let removed = false;
@@ -207,16 +221,24 @@ SmartTemplate4.classSmartTemplate = function() {
 		//  && signatureDefined
 		if (isSignatureTb && sigNode) {
 			util.logDebugOptional('functions.extractSignature', 'First attempt to remove Signature.');
-			let ps = sigNode.previousElementSibling;
-			if (ps && ps.tagName === "BR") {
-				//remove the preceding BR that TB always inserts
-				try {
-					gMsgCompose.editor.deleteNode(ps);
-				}
-				catch(ex) {
-					util.logException("extractSignature - exception removing <br> before signature!", ex);
-				}
-			}
+      const after = 0x04;
+			let pe = sigNode.previousElementSibling, // line break
+          ps = sigNode.previousSibling;  // text node
+      if (pe && ps && 
+          (pe.compareDocumentPosition(ps) & after)) {
+        /* there is some text before the signature, possibly after a line break. can happen with mailto links */
+      }
+      else {
+        if (pe && pe.tagName === "BR") {
+          //remove the preceding BR that TB always inserts
+          try {
+            gMsgCompose.editor.deleteNode(pe);
+          }
+          catch(ex) {
+            util.logException("extractSignature - exception removing <br> before signature!", ex);
+          }
+        }
+      }
 			// remove original signature (the one inserted by Thunderbird)
 			try {
 				gMsgCompose.editor.deleteNode(sigNode);
@@ -259,12 +281,19 @@ SmartTemplate4.classSmartTemplate = function() {
 
 		// okay now for the coup de grace!!
 		if (prefs.getMyBoolPref('parseSignature') && sigText) {
+      if (!flags.filePaths) flags.filePaths=[]; // make sure we have a stack for paths!
+      let pathArray = flags.filePaths;
+      // if this has a path - put it on the stack so we can process %file()% variables within
+      if (isSignatureTb && sigPath)
+        pathArray.push(sigPath);
 			try {
 				sigText = getProcessedText(sigText, idKey, composeType, true);
 			}
 			catch(ex) {
 				util.logException(ex, "getProcessedText(signature) failed.");
 			}
+      if (isSignatureTb && sigPath)
+        pathArray.pop();
 		}
 
 		let dashesTxt = 
@@ -302,7 +331,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			// createTextNode( ) returns a DOMString (16bit)
 			sig = dashesTxt + sigText;  // gMsgCompose.editor.document.createTextNode(sigText);
 		}
-
+    
 		util.logDebugOptional('functions.extractSignature','==============  extractSignature=============END\n'
 		                                   + 'Return Signature:\n' + sig );
 
@@ -542,15 +571,8 @@ SmartTemplate4.classSmartTemplate = function() {
 
 	// helper function to find a child node of the passed class Name
 	function findChildNode(node, className) {
-		while (node) {
-			if (node && node.className == className)
-				return node;
-			let n = findChildNode(node.firstChild, className);
-			if (n)
-				return n;
-			node = node.nextSibling;
-		}
-		return null;
+    const util = SmartTemplate4.Util;
+    return util.findChildNode(node, className);
 	};
 	
 	// if can't find in child node, search direct parent
@@ -784,8 +806,9 @@ SmartTemplate4.classSmartTemplate = function() {
 	// Get processed template
 	function getProcessedText(templateText, idKey, composeType, ignoreHTML) 	{
 		if (!templateText) return "";
+    const flags = SmartTemplate4.PreprocessingFlags;
 
-		let isStationery = SmartTemplate4.PreprocessingFlags.isStationery;
+		let isStationery = flags.isStationery;
 		util.logDebugOptional('functions.getProcessedText', 'START =============  getProcessedText()   ==========');
 		util.logDebugOptional('functions.getProcessedText', 'Process Text:\n' +
 		                                     templateText + '[END]');
@@ -793,7 +816,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		SmartTemplate4.calendar.init(); // set for default locale
 		let isDraftLike = !composeType 
-		  || SmartTemplate4.PreprocessingFlags.isFileTemplate
+		  || flags.isFileTemplate
 		  || pref.isUseHtml(idKey, composeType, false); // do not escape / convert to HTML
 		let regular = SmartTemplate4.regularize(templateText, 
 				composeType, 
@@ -809,7 +832,8 @@ SmartTemplate4.classSmartTemplate = function() {
 		// This won't work if there is no "file:\\\" portion given (relative path / current folder not supported)
 		// we can fix the Data urls for file:/// images now
 		// assume they are enclosed in single quote, double quote or terminated by &gt;
-		regular = regular.replace(/file:\/\/\/[^\"\'\>]*/g, 
+    const Frex = new RegExp("file:\/\/\/[^\"\'\>]*", "g");
+		regular = regular.replace(Frex,   // /file:\/\/\/[^\"\'\>]*/g
 		  function(match) {
 				util.logDebugOptional('composer', 'Replacing image file as data: ' + match);
 				return util.getFileAsDataURI(match);
@@ -885,7 +909,7 @@ SmartTemplate4.classSmartTemplate = function() {
         
     util.logDebugOptional("identities", "Retrieved msgIdentity key value: " + idKey);
     if (!idKey) {
-      util.logDebugOptional("identities", "no key, getting from gMsgCompose.identity...");
+      util.logDebugOptional("identities", "no key, getting from gMsgCompose.identity…");
       idKey = gMsgCompose.identity.key;
     }
 		let isActiveOnAccount = false,
@@ -1021,8 +1045,14 @@ SmartTemplate4.classSmartTemplate = function() {
 				
 				// if Stationery has %sig(none)% then flags.omitSignature == true
 				sigVarDefined = (flags.hasSignature || sigType) ? true : false; 
-				// get signature and remove the one Tb has inserted
-				SmartTemplate4.signature = extractSignature(theIdentity, sigType, st4composeType);
+        try {
+          // get signature and remove the one Tb has inserted
+          SmartTemplate4.signature = extractSignature(theIdentity, sigType, st4composeType);
+        }
+        catch(ex) {
+          SmartTemplate4.signature = "";
+          util.logException("Could not extract signature - is your signature path correct?", ex);
+        }
 				
 				if (flags.isThunderbirdTemplate) {
 					// use innerHTML instead of outer (we do not want to replace the "body" part)
@@ -1036,7 +1066,8 @@ SmartTemplate4.classSmartTemplate = function() {
 					// for thunderbird template case, we should get the body contents AND PROCESS THEM?
 					if (flags.isFileTemplate) {
 						util.logDebugOptional('functions.insertTemplate','processing fileTemplate(' + fileTemplateSource + ')');
-						template = getProcessedText(rawTemplate, idKey, st4composeType, false); // ignoreHTML
+            // [issue 19] switch on ignoreHTML to avoid unneccessarily replacing line breaks with <br>
+						template = getProcessedText(rawTemplate, idKey, st4composeType, true); // ignoreHTML
 					}
 				  else {
 						util.logDebugOptional('functions.insertTemplate','retrieving Template: getSmartTemplate(' + st4composeType + ', ' + idKey + ')');
@@ -1161,13 +1192,23 @@ SmartTemplate4.classSmartTemplate = function() {
 		
 		// [Bug 26260] only remove body for mailto case if active on account
 		if (isActiveOnAccount && gMsgCompose.type == msgComposeType.MailToUrl) {
-			// back up the mailto body
-			bodyContent = bodyEl.innerHTML;
-			bodyEl.innerHTML = '';
+			// back up the mailto body  (was  bodyContent = bodyEl.innerHTML;  )
+      // replace newline chars, usually encoded LF or CLRF (decimal 10 / 13-10)
+      bodyContent = bodyEl.textContent.trim().replace(/\\n/gm,"<br/>").replace(/%0D%0A/gm,"<br/>").replace(/%0A/gm,"<br/>");
 			if (bodyContent) {
-				util.logDebugOptional('composer','msgComposeType.MailToUrl - clearing template and setting to:\n' + bodyContent);
-				template = bodyContent; // clear template
-				SmartTemplate4.sigInTemplate = false;
+        const mailtoVar = "%mailto(body)%";
+        if (template && rawTemplate.includes(mailtoVar)) {
+          template = template.replace("<span class='mailToBody'/>", bodyEl.innerHTML);
+          bodyEl.innerHTML = '';
+          bodyContent = '';
+          util.logDebugOptional('composer','msgComposeType.MailToUrl - injecting mailto content:\n' + bodyEl.innerHTML);
+        }
+        else {
+          bodyEl.innerHTML = '';
+          util.logDebugOptional('composer','msgComposeType.MailToUrl - clearing template and setting to:\n' + bodyContent);
+          template = bodyContent; // clear template
+          SmartTemplate4.sigInTemplate = false;
+        }
 			}
 		}
 

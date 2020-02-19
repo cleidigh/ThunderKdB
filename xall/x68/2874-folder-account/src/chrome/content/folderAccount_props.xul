@@ -299,10 +299,19 @@ var folderAccountProps = {
         //// Now add an event handler for when the user clicks "OK"
 
         // First, grab the current event handler
-        var handler = document.documentElement.getAttribute('ondialogaccept');
+        // var handler = document.documentElement.getAttribute('ondialogaccept');
 
         // And prepend our save function to it...
-        document.documentElement.setAttribute('ondialogaccept','folderAccountProps.saveAccountPrefs();' + handler);
+        // document.documentElement.setAttribute('ondialogaccept','folderAccountProps.saveAccountPrefs();' + handler);
+		
+        // The preceding code no longer works in Thunderbird 68 
+        // (see https://developer.thunderbird.net/add-ons/tb68/changes#less-than-dialog-greater-than-events),
+        // therefore changed preference weren't saved.
+        // This way seems to work fine:
+
+        document.addEventListener("dialogaccept", function(event) {
+        	folderAccountProps.saveAccountPrefs();
+        });
     },
 
 

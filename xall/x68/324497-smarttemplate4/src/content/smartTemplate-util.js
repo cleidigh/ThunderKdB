@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.3.1",
+	HARDCODED_CURRENTVERSION : "2.9.1",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -254,7 +254,7 @@ SmartTemplate4.Util = {
 					util.VersionProxyRunning) // no recursion...
 				return;
 
-			util.logDebug("Util.VersionProxy()...");
+			util.logDebug("Util.VersionProxy()…");
 			util.VersionProxyRunning = true;
 			util.logDebug("Util.VersionProxy() started.");
 			let myId = util.ADDON_ID;
@@ -301,6 +301,43 @@ SmartTemplate4.Util = {
 			util.logDebug("Util.VersionProxy ends()");
 		}
 	},
+  
+  initTabListener: function() {
+    const util = SmartTemplate4.Util;
+    try {
+      let tabMon = {
+        monitorName: "st4TabMon",
+        onTabTitleChanged() {},
+        onTabOpened(tab, aFirstTab, aOldTab)
+        {
+          if (tab.mode.name != "preferencesTab")
+            return;
+          if (util.getTabMode()=='message') {
+            util.logDebug("tabListener event:" + event);
+          }          
+        }
+      }
+      
+      
+      if (document) {
+        let tabmail = document.getElementById("tabmail");
+        util.logDebug("adding tablistener for tabmail.");
+        // tabmail.registerTabMonitor()
+        let tabContainer = tabmail.tabContainer || document.getElementById('tabmail-tabs');
+			  tabContainer.addEventListener("TabOpen", function tabOpened_st4(event) { 
+          let tabInfo = event.detail.tabInfo;
+          if (util.getTabMode(tabInfo)=='message') {
+            util.logDebug("tabListener event:" + event);
+            // main window.
+            SmartTemplate4.fileTemplates.initMenus();
+          }
+        });
+      }
+    }
+    catch(ex) {
+      util.logException("initTabListener - ", ex);
+    }
+  },
 
 	get Version() {
 		const util = SmartTemplate4.Util;
@@ -445,8 +482,7 @@ SmartTemplate4.Util = {
 				util.getBundleString("SmartTemplate4.notification.license.text",
 					"From now on, SmartTemplate⁴ requires at least a standard license. " +
 					"Read more about it on our licensing page.");
-			let gracePeriod = SmartTemplate4.Licenser.GracePeriod,
-					txtGracePeriod = util.getBundleString("SmartTemplate4.trialDays", "You have {0} trial days left.").replace("{0}", gracePeriod);
+			let txtGracePeriod = util.gracePeriodText(SmartTemplate4.Licenser.GracePeriod);
 			theText = theText + '  ' + txtGracePeriod;
 		}
 		
@@ -586,6 +622,13 @@ SmartTemplate4.Util = {
 		}
 	} ,
 	
+  gracePeriodText: function gracePeriodText(days) {
+    let txt = (days>=0) ?
+      this.getBundleString("SmartTemplate4.trialDays", "You have {0} trial days left.").replace("{0}", days) :
+      this.getBundleString("SmartTemplate4.trialExpiry", "Your trial period expired {0} days ago.").replace("{0}", -days);
+    return txt;
+  },
+  
 	debugVar: function debugVar(value) {
 		let str = "Value: " + value + "\r\n";
 		for (let prop in value) {
@@ -1268,6 +1311,8 @@ SmartTemplate4.Util = {
     }
   } ,
 	
+  // @global=true returns a regular expression from a quoted string
+  // @global=false returns a string from a quoted string
   unquotedRegex: function unquotedRegex(s, global) {
 		let quoteLess = s.substring(1, s.length-1);
 	  if (global)
@@ -1280,7 +1325,9 @@ SmartTemplate4.Util = {
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util,
 					Ci = Components.interfaces,
-		      Cc = Components.classes;
+		      Cc = Components.classes,
+          MimeService = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService);
+          
     let filename = aURL.substr(aURL.lastIndexOf("/") + 1);
     filename = decodeURIComponent(filename);
 		util.logDebugOptional('images',"getFileAsDataURI()\nfilename=" + filename);
@@ -1291,7 +1338,18 @@ SmartTemplate4.Util = {
 			Components.utils.import('resource://gre/modules/Services.jsm');
 		
     let url = Services.io.newURI(aURL), // , null, null
-        contentType = Cc["@mozilla.org/mime;1"].getService(Ci.nsIMIMEService).getTypeFromURI(url);
+        contentType;
+    try {
+      contentType = MimeService.getTypeFromURI(url);
+    }
+    catch(ex) {
+      util.logException("MimeService failed to determine MIME type from url:\n"
+        + "asciiSpec: " + url.asciiSpec + "\n"
+        + "path: " + url.path + "\n"
+        + "I cannot convert this into a data URI, therefore you may get security warnings when Composer loads content.\n"
+        + "returning raw URL: " + aURL, ex);
+      return aURL;
+    }
     if (!contentType.startsWith("image/")) {
 			util.logDebugOptional('images',"getFileAsDataURI()\nthe file is not an image\ncontentType = " + contentType);
 			// non-image content-type; let Thunderbird show a warning after insertion
@@ -1309,13 +1367,13 @@ SmartTemplate4.Util = {
 					  Services.io.newChannelFromURI2(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER);
 			}
 			else { // Thunderbird 68 + 
-				LoadInfoFlags = Ci.nsILoadInfo.SEC_NORMAL | Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL;
+				LoadInfoFlags = Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL; // SEC_NORMAL has been removed.
 			  channel = 
 					  Services.io.newChannelFromURI(url, null, Services.scriptSecurityManager.getSystemPrincipal(), null, LoadInfoFlags, Ci.nsIContentPolicy.TYPE_OTHER);
 			}
 			let stream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream);
 			stream.setInputStream(channel.open());
-			util.logDebugOptional('images',"opening image stream...");
+			util.logDebugOptional('images',"opening image stream…");
 			let encoded = btoa(stream.readBytes(stream.available()));
 			stream.close();
 			let encodedFileName = filename ? encodeURIComponent(filename) : "";
@@ -1529,20 +1587,36 @@ SmartTemplate4.Util = {
 		}
 		
 	} ,
+  
 	
-	cleanupDeferredFields : function cleanupDeferredFields() {
+	cleanupDeferredFields : function cleanupDeferredFields(forceDelete) {
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util,
 					editor = gMsgCompose.editor;
+          
+  	function isQuotedNode(node) {
+      if (!node)
+        return false;
+      if (node.nodeName && node.nodeName.toLowerCase() == 'blockquote')
+        return true;
+      if (!node.parentNode) return false;
+      // make this recursive; if the node is child of a quoted parent, it is also considered to be quoted.
+      return isQuotedNode(node.parentNode); 
+    };
+          
 		let body = editor.rootElement,
 		    el = body,
 				treeWalker = editor.document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT),
 				nodeList = [];
-				
+        
+
 		util.logDebug('cleanupDeferredFields()');
 		while(treeWalker.nextNode()) {
 			let node = treeWalker.currentNode;
+      // omit all quoted material.
+      if (isQuotedNode(node)) continue;
 			if (node.tagName && node.tagName.toLowerCase()=='smarttemplate') {
+        // update content of late deferred variables and add to nodeList for deletion
 				util.resolveDeferred(editor, node, true, nodeList); 
 			}
 		}	
@@ -1550,8 +1624,12 @@ SmartTemplate4.Util = {
 		// replace all divs (working backwards.)
 		while (nodeList.length) {
 			let nL = nodeList.pop();
-			nL.divNode.parentNode.insertBefore(nL.txtNode, nL.divNode);
-			editor.deleteNode(nL.divNode);
+      if (nL.resolved) {
+        nL.divNode.parentNode.insertBefore(nL.txtNode, nL.divNode);
+      }
+      // tidy up unresolved variables, if forced!
+      if (nL.resolved || forceDelete)
+        editor.deleteNode(nL.divNode);
 		}
 	} ,
 	
@@ -1655,7 +1733,7 @@ SmartTemplate4.Util = {
 						// create an array of elements that will be replaced.
 						// (can't do DOM replacements during the treeWalker)
 						// replace div with a text node.
-						nodeList.push ( { txtNode:txtNode, divNode: el } );
+						nodeList.push ( { txtNode:txtNode, divNode: el, resolved: (alreadyResolved || resolved) } );
 					}
 					else { // called from context menu: remove the field and replace with content
 						el.parentNode.insertBefore(txtNode, el);
@@ -1665,6 +1743,9 @@ SmartTemplate4.Util = {
 				else
 					el.className = "resolved";
 			}
+      else {
+        nodeList.push ( { txtNode: null, divNode: el, resolved: false } );
+      }
 		}
 	} ,
 	
@@ -1727,18 +1808,24 @@ SmartTemplate4.Util = {
 	
 	checkIsURLencoded: function checkIsURLencoded(tok) {
 		if (tok.length>=4) {
-			let t = tok.substr(1,2);
-			if (/[0-9a-fA-F]+/.test(t)) {
+			let t = tok.substr(0,2); // hexcode, such as %5C
+			if (/\%[0-9a-fA-F][0-9a-fA-F]/.test(t)) {
 				this.logDebug("checkIsURLencoded()\n" +
-				  "I will ignore the following character sequence as not a SmartTemplate because it looks like an URL encoded sequence:\n" +
+				  "Ignoring character sequence as not a SmartTemplate because it looks like an URL encoded sequence:\n" +
 					tok)
 				return true;
 			}
 		}
-		this.logDebug("checkIsURLencoded()\nNot an encoded string, I believe this is a SmartTemplate⁴ header:\n" + tok);
+		this.logDebug("checkIsURLencoded()\nNot an encoded string,  this may be a SmartTemplate⁴ header:\n" + tok);
 		return false;
 	}	,
-	
+
+  isAddressHeader: function	isAddressHeader(token='') {
+    if (!token) return false;
+    return RegExp(" " + token + " ", "i").test(
+       " Bcc Cc Disposition-Notification-To Errors-To From Mail-Followup-To Mail-Reply-To Reply-To" +
+       " Resent-From Resent-Sender Resent-To Resent-cc Resent-bcc Return-Path Return-Receipt-To Sender To ");
+  } ,
 	// new function for manually formatting a time / date string in one go.
 	dateFormat: function dateFormat(time, timeFormat, timezone) {
 		const util = SmartTemplate4.Util;
@@ -2493,16 +2580,6 @@ SmartTemplate4.Util = {
 					                +  requiredLocaleTxt + '\n'
 					                + 'Available Locales on your system: ' + listLocales.substring(0, listLocales.length-2);
 					util.logToConsole(errorText);
-					/*
-					let parentWin = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getMostRecentWindow("msgcomposeWindow") || window;
-					SmartTemplate4.Message.display(errorText,
-							"centerscreen,titlebar",
-							{ ok: function() { parentWin.focus(); }},
-							parentWin
-					);
-					forcedLocale = null;
-					*/
-					
 				}
 				else {
 					util.logDebug('calendar - found global locales: ' + listLocales + '\nconfiguring ' + forcedLocale);
@@ -2518,6 +2595,118 @@ SmartTemplate4.Util = {
 			return "en";
 		}
 	} ,
+  
+  // isDisabled - force disabled (on retry)
+  setSpellchecker: function(language, isDisabled) {
+		const Ci = Components.interfaces,
+		      Cc = Components.classes,
+		      util = SmartTemplate4.Util;
+    
+    let retry = util.retrySpellCheck || 0;
+    try {
+      let spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker,
+          o1 = {}, 
+          o2 = {};
+      if (language=='on') {
+        gSpellChecker.enabled = true;
+        util.logDebug('Enabled automatic spellcheck');
+        return;
+      }
+      if (!isDisabled)
+        isDisabled = (gSpellChecker.enabled == false);
+      if (isDisabled && language!='off') {
+        // temporarily enable
+        gSpellChecker.enabled = true;
+        spellChecker = gSpellChecker.mInlineSpellChecker.spellChecker;
+      }
+      if (!spellChecker) {
+        if (retry<5) {
+          retry++;
+          util.retrySpellCheck = retry;
+          util.logDebug("spellChecker not available, retrying later...{ attempt " + retry + " }");
+          // if spellChecker is not ready, we try again in 2 seconds.
+          setTimeout(function() {
+            util.setSpellchecker(language, isDisabled); // force disabled if this is set globally.
+          }, 2000);
+          return;
+        }
+        else {
+          let wrn = "Could not retrieve spellChecker, giving up after " + retry + " attempts.";
+          util.retrySpellCheck=0;
+          throw wrn;          
+        }
+      }
+      if (language=='off') {
+        gSpellChecker.enabled = false; // restore disabled status if this is a global setting.
+        util.logDebug('Disabled automatic spellcheck');
+        return;
+      }
+      
+      spellChecker.GetDictionaryList(o1, o2);
+      util.retrySpellCheck=0;
+      // Cc['@mozilla.org/spellchecker/engine;1'].getService(Ci.mozISpellCheckingEngine).getDictionaryList(o1, o2);
+      let dictList = o1.value, 
+          count = o2.value,
+          found = false;
+      if (count==0) {
+        let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.noDictionary", "No dictionaries installed.");
+        throw wrn;
+      }
+      
+      if (language.length>=2) 
+        for (let i = 0; i < dictList.length; i++) {
+          if (dictList[i].startsWith(language)) {
+            found = true;
+            language = dictList[i];
+            break;
+          }
+        }
+      
+      if (found) {
+        // nsIEditorSpellCheck: We need "SpecialPowers" for instanicating this in modern Tb builds
+        // var editorSpellCheck = Cc["@mozilla.org/editor/editorspellchecker;1"].createInstance(Components.interfaces.nsIEditorSpellCheck);
+        // this should trigger gLanguageObserver to select the correct spell checker.
+        util.logDebug("Setting spellchecker / document language to: " + language);
+        document.documentElement.setAttribute("lang", language); 
+        spellChecker.SetCurrentDictionary(language);
+        // force re-checking:
+        if (gSpellChecker.enabled) {
+          gSpellChecker.mInlineSpellChecker.spellCheckRange(null);
+        }
+        if (isDisabled) { // force restoring disabled status
+          gSpellChecker.enabled = false; 
+          util.logDebug('Disabling automatic spellcheck according to global setting.');
+        }
+      }
+      else {
+        let wrn = util.getBundleString("SmartTemplate4.notification.spellcheck.notFound", "Dictionary '{0}' not found.");
+        throw wrn.replace("{0}", language);
+      }
+    }
+    catch(ex) {
+      let msg = util.getBundleString("SmartTemplate4.notification.spellcheck.error", 
+                  "Cannot switch spell checker language. Have you installed the correct dictionary?");
+      SmartTemplate4.Message.display(msg + "\n" + ex, 
+        "centerscreen,titlebar,modal,dialog",
+        { ok: function() { ; }},
+        window
+      );
+    }
+    
+  },
+  
+	// helper function to find a child node of the passed class Name
+	findChildNode: function findChildNode(node, className) {
+		while (node) {
+			if (node && node.className == className)
+				return node;
+			let n = this.findChildNode(node.firstChild, className);
+			if (n)
+				return n;
+			node = node.nextSibling;
+		}
+		return null;
+	},  
 	
 	
 	/* 
@@ -2541,16 +2730,13 @@ SmartTemplate4.Util = {
 
 SmartTemplate4.Util.firstRun =
 {
-	update: function(previousVersion) {
-		// upgrade routines for future use...
-		// SmartTemplate4.Util.logDebug('convert { %% } to [[ ]] ');
-
-	} ,
-	
 	silentUpdate: function st4_silentUpdate(previousVersion, newVersion) {
 		let p = previousVersion.toString(),
 		    n = newVersion.toString();
-		if (p=="2.2" && (n=="2.2.1" || n=="2.2.2")) {
+		if ( p=="2.2" && (n=="2.2.1" || n=="2.2.2")
+         || 
+         p=="2.5.1" && n=="2.5.2"
+    ) {
 			SmartTemplate4.Util.logToConsole(
 				"Silent Update - no version history displayed because v{0} is a maintenance release for v{1}"
 				.replace("{0}",n).replace("{1}",p));
@@ -2632,8 +2818,7 @@ SmartTemplate4.Util.firstRun =
 			let pureVersion = util.VersionSanitized;
 			util.logDebugOptional ("firstRun","finally - pureVersion=" + pureVersion);
 			// change this depending on the branch
-			let versionPage = util.VersionPage + "#" + pureVersion;
-			util.logDebugOptional ("firstRun","finally - versionPage=" + versionPage);
+			util.logDebugOptional ("firstRun","finally - versionPage=" + util.VersionPage + "#" + pureVersion);
 			
 			let isPremium = util.hasLicense(true),
 			    updateVersionMessage = util.getBundleString (
@@ -2657,19 +2842,21 @@ SmartTemplate4.Util.firstRun =
 				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
 					
 					/* EXTENSION UPDATED */
-					let isUpdated = this.update(prev);
 					util.logDebug("===========================\n"+
 					              "ST4 Test  - SmartTemplate4 Update Detected:\n" +
 												" **PREVIOUS**:" + prev + 
 												"\npure Version: " + pureVersion + 
 												"\ncurrent: " + current +
-												"\nisUpdated=" + isUpdated);
+                        "\nisPremium=" + isPremium);
 					util.logDebugOptional ("firstRun","prev!=current -> upgrade case.");
 
 					// VERSION HISTORY PAGE
 					// display version history - disable by right-clicking label above show history panel
-					if (!prefs.getBoolPrefSilent("extensions.smarttemplate4.hideVersionOnUpdate")
-						  && !this.silentUpdate(prev,pureVersion)) {
+          let isSilentUpdate =
+            isPremium && prefs.getMyBoolPref("silentUpdate");
+          if (isSilentUpdate) 
+            util.logDebug("Supressing Change Log, as disabled by user.")
+          else if (!this.silentUpdate(prev,pureVersion)) {
 						util.logDebugOptional ("firstRun","open tab for version history, ST " + current);
 						window.setTimeout(function(){ util.showVersionHistory(false); }, 2200);
 					}
@@ -2704,6 +2891,8 @@ SmartTemplate4.Util.firstRun =
 					SmartTemplate4.fileTemplates.initMenus();
 				}, 4500
 			);
+      
+      util.initTabListener(); // need this for initialising fileTemplate menus in single message window
 
 			util.logDebugOptional ("firstRun","finally { } ends.");
 		} // end finally
@@ -2727,19 +2916,44 @@ SmartTemplate4.Message = {
 	myWindow : null,
 	parentWindow : null,
 	display : function(text, features, callbacksObj, parent) {
+    let countDown = callbacksObj.countDown || 0,
+        isLicenseWarning = callbacksObj.isLicenseWarning,
+        licenser = callbacksObj.licenser || null;
+    if (licenser) {
+      if (licenser.GracePeriod<0) {
+        if (licenser.isExpired) {
+          // license is expired
+          // 0.5 sec penalty / week. (2secs per month)
+          countDown = parseInt(licenser.GracePeriod * (-1) / 14, 10); 
+        }
+        else {
+          // no license: trial period is over
+          // 1 sec penalty + 1 sec / week.
+          countDown = parseInt((licenser.GracePeriod * (-1) / 7), 10) + 1; 
+        }
+      }
+    }
 		// initialize callback functions
 		this.okCALLBACK = callbacksObj.ok || null;
 		this.cancelCALLBACK = callbacksObj.cancel || null;
 		this.yesCALLBACK = callbacksObj.yes  || null;
 		this.noCALLBACK = callbacksObj.no || null;
-		// parent window
-		if (parent) this.parentWindow = parent;
+		// remember parent window
+		if (parent) {
+      this.parentWindow = parent;
+      // if this is the composer window, check if countdown has already been (partically) spent...
+      if ("SmartTemplate4_countDown" in parent)
+        countDown = parent.SmartTemplate4_countDown; // remaining seconds.
+      else
+        parent.SmartTemplate4_countDown = countDown; // remember seconds.
+    }
 
 		// pass some data as args. we allow nulls for the callbacks
 		// avoid using "this" in here as it confuses Tb3?
 		let params =
 		{
 			messageText:    text,
+      countDown:      countDown,
 			okCallback:     SmartTemplate4.Message.okCALLBACK,
 			cancelCallback: SmartTemplate4.Message.cancelCALLBACK,
 			yesCallback:    SmartTemplate4.Message.yesCALLBACK,
@@ -2790,15 +3004,106 @@ SmartTemplate4.Message = {
 		}
 		window.close();
 	} ,
-
+  
+  windowKeyPress: function(e,dir) {
+    function logEvent(eventTarget) {
+			try {
+				util.logDebugOptional("msg", "KeyboardEvent on unknown target" 
+					+ "\n" + "  id: " + (eventTarget.id || '(no id)') 
+					+ "\n" + "  nodeName: " + (eventTarget.nodeName || 'null')
+					+ "\n" + "  tagName: "  + (eventTarget.tagName || 'none'));
+			}
+			catch (e) {;}
+    }
+		function logKey(event) {
+			if (!prefs.isDebugOption('msg')) return;
+      util.logDebugOptional("msg", 
+				(isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') +
+			  "charcode = " + e.charCode + " = "  + (String.fromCharCode(e.charCode)).toLowerCase() + "\n" +
+        "keyCode = " + e.keyCode);
+		}
+    const util = SmartTemplate4.Util,
+          prefs = SmartTemplate4.Preferences,
+          VK_ESCAPE = 0x1B,
+          VK_F4 = 0x73;
+		let isAlt = e.altKey,
+		    isCtrl = e.ctrlKey,
+		    isShift = e.shiftKey,
+        eventTarget = e.target,
+        theKeyPressed = (String.fromCharCode(e.charCode)).toLowerCase();
+        
+    logKey(e);
+    // disable closing window via keyboard:
+    // Mac: Command+w
+    // Windows,Linux: Alt+F4
+    if (SmartTemplate4.Message.allowClose) return;
+    if ( e.keyCode == VK_ESCAPE || 
+        (isAlt && e.keyCode == VK_F4) || 
+        (theKeyPressed=='w' && e.getModifierState("Meta"))) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    
+  } ,
+  
+  boundKeyListener: false,
+  allowClose: false,
 	loadMessage : function () {
+    const MSG = SmartTemplate4.Message;
+    function startTimer(duration, label) {
+      var timer = duration;
+      if (duration < 0) return;
+      if (duration == 0) label.collapsed = true;
+      let fun = setInterval(
+        function () {
+          timer--;
+          if (timer<=0) {
+            clearInterval(fun);
+            label.collapsed = true; // hide the label if it is zero!
+          }
+          label.value = timer.toString(); // make sure the last number shown is 1...
+        }, 1000);
+    }    
+
+    if(!MSG.boundKeyListener) {
+      window.addEventListener("keypress", this.keyListen = function(e) {
+        MSG.windowKeyPress(e,'down');
+      }, true);
+      window.addEventListener("keyup", function(e) {
+        MSG.windowKeyPress(e,'up');
+      }, true);
+      MSG.boundKeyListener = true;
+    }
+
+
 		try {
+      let countDown;
+      function addButton(id, myCallback) {
+        let btn = document.getElementById(id);
+        if (btn) {
+          btn.addEventListener("click", myCallback, true);
+          btn.hidden = false;
+          if (countDown) btn.disabled = true;
+        }
+        return btn;
+      }
+      
 			if (window.arguments && window.arguments.length) {
 				let params = window.arguments[0],  // leads to errors in tb3?
 				    msgDiv = document.getElementById('innerMessage'),
-				    theMessage = window.arguments[0].messageText,
-				// split text (passed in with /n as delimiter) into paragraphs
+				    theMessage = params.messageText,
+            // split text (passed in with /n as delimiter) into paragraphs
 				    textNodes = theMessage.split("\n");
+            
+        countDown = params.countDown || 0;
+        if (countDown) {
+          let cdLabel = document.getElementById('countDown');
+          startTimer(countDown, cdLabel);
+        }
+        else 
+          SmartTemplate4.Message.allowClose = true;
+        
 						
 				for (let i = 0; i < textNodes.length; i++) {
 					// empty nodes will be <br>
@@ -2808,27 +3113,35 @@ SmartTemplate4.Message = {
 					msgDiv.appendChild(par);
 				}
 				// contents.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
+        let buttons = [];
 
-				document.getElementById('ok').addEventListener("click", window.arguments[0].okCallback, true);
-				window.st4OkListener = window.arguments[0].okCallback; // this is the minimum
-				if (window.arguments[0].cancelCallback) {
-					let cancelBtn = document.getElementById('cancel');
-					cancelBtn.addEventListener("click", window.arguments[0].cancelCallback, true);
-					cancelBtn.hidden = false;
-					window.st4CancelListener = window.arguments[0].cancelCallback;
+        // ok callback is mandatory!
+        buttons.push(addButton('ok', params.okCallback));
+				window.st4OkListener = params.okCallback; // this is the minimum
+        
+				if (params.cancelCallback) {
+          buttons.push(addButton('cancel', params.cancelCallback));
+					window.st4CancelListener = params.cancelCallback;
 				}
-				if (window.arguments[0].yesCallback) {
-					let yesBtn = document.getElementById('yes');
-					yesBtn.addEventListener("click", window.arguments[0].yesCallback, true);
-					yesBtn.hidden = false;
-					window.st4YesListener = window.arguments[0].yesCallback;
+				if (params.yesCallback) {
+          buttons.push(addButton('yes', params.yesCallback));
+					window.st4YesListener = params.yesCallback;
 				}
-				if (window.arguments[0].noCallback) {
-					let noBtn = document.getElementById('no');
-					noBtn.addEventListener("click", window.arguments[0].noCallback, true);
-					noBtn.hidden = false;
-					window.st4NoListener = window.arguments[0].noCallback;
+				if (params.noCallback) {
+          buttons.push(addButton('no', params.noCallback));
+					window.st4NoListener = params.noCallback;
 				}
+        if (countDown) {
+          // enable the buttons after countDown period.
+          window.setTimeout( 
+            function() {
+              for (let i=0; i<buttons.length; i++) {
+                if (buttons[i])
+                  buttons[i].disabled = false;
+              }
+              SmartTemplate4.Message.allowClose = true;
+            }, countDown*1000);
+        }
 			}
 			else
 				alert('window.arguments: ' + window.arguments);
@@ -2846,6 +3159,12 @@ SmartTemplate4.Message = {
 		this.yesCALLBACK = null;
 		this.noCALLBACK = null;
 		this.myWindow = null;
+    let cdLabel = document.getElementById('countDown');
+    if (cdLabel && cdLabel.value.length>0) {
+      let remainingCountdown = parseInt(cdLabel.value,10);
+      // composer should remember remaining seconds of countdown;
+      win.opener.SmartTemplate4_countDown = remainingCountdown;
+    }
 		if (win.st4OkListener) {
 			document.getElementById('ok').removeEventListener("click", win.st4OkListener, false);
 		}

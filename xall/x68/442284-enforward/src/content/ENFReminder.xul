@@ -1,0 +1,33 @@
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+
+<!-- for lightning datetimepicker -->
+<?xml-stylesheet type="text/css" href="chrome://calendar-common/skin/widgets/minimonth.css"?>
+<?xml-stylesheet type="text/css" href="chrome://calendar/content/widgets/calendar-widget-bindings.css"?>
+<?xml-stylesheet type="text/css" href="chrome://lightning-common/skin/datetimepickers.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="Setup Reminder - EnForward"
+        onload="gENFReminder.onload();">
+  <script type="application/javascript" src="chrome://enforward/content/ENFReminder.js"/>
+  
+  <!-- for lightning datetimepicker -->
+  <script type="application/javascript" src="chrome://calendar/content/calendar-ui-utils.js"/>
+	<script type="application/javascript" src="chrome://messenger/content/customElements.js"/>
+	<script type="application/javascript" src="chrome://calendar/content/datetimepickers/datetimepickers.js"/>
+	
+  <radiogroup id="ENFRemType" oncommand="gENFReminder.onToggleReminderType(event.target.value);" value="0">
+  	<radio label="Just add a reminder" value="0"/>
+  	<radio label="Set notification" value="1"/>
+  	<hbox align="center">
+  		<spacer style="width:2.0em;"/>
+			<label value="Date:"/>
+			<datepicker id="ENFRemDate" />
+			<!--
+  		<datepicker id="ENFRemDate" type="popup" value=""/>
+  		-->
+  		
+  	</hbox>
+  </radiogroup>
+</dialog>

@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Tallenna pohja…">
 <!ENTITY btnLoadTemplate.tooltip "Lataa pohja…">
 <!ENTITY btnYouTube.tooltip "Käy &quot;Thunderbird Daily&quot; -Youtube-kanavalla. jotta saat vinkkejä ja ohjeita Stationaryn ja muiden lisäosien käyttämiseen">
+<!ENTITY tip.fileTemplates "Napsauta lukeaksesi täydelliset ohjeet Stationery- ja ulkoisista HTML-malleista tukisivustollamme…">
 <!ENTITY pref_server_def "Oletus">
 <!ENTITY pref_def.label "Käytä oletusta">
 <!ENTITY pref_def.cap "Poista valinta kohdasta &quot;Käytä oletusta&quot;, käyttääksesi muokattuja otsakkeita tällä tilillä.">
@@ -76,11 +77,13 @@
 <!ENTITY help_keyword.cap "Ohje">
 <!ENTITY pref_debug_check "Debug-tila">
 <!ENTITY pref_hideExamples "Piilota esimerkit-välilehti">
+<!ENTITY pref_silentUpdates "Hiljaiset päivitykset">
+<!ENTITY pref_silentUpdates_tip "Älä avaa muutoslokea SmartTemplate⁴: n päivityksen jälkeen.">
 <!ENTITY pref_debug_tip "Oikea napsautus avaa debug-tilan lisäasetukset">
 <!ENTITY pref_nameSwap "Korjaa LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "'LastName, FirstName' muutetaan muotoon 'First Last'">
-<!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
+<!ENTITY defaultMimeFormat "Oletusosoitteen muoto:">
+<!ENTITY defaultMimeFormat_tip "Käytettävä muoto korvaamalla tavallinen &#37;to&#37; &#37;from&#37; &#37;cc&#37;. Esim. (firstname,lastname,??mail) näyttää etunimen ja sukunimen; Jos molemmat eivät ole käytettävissä, se näyttää sähköpostiosoitteen.">
 <!ENTITY pref_addressDelimiter "Erota useita vastaanottajia merkillä:">
 <!ENTITY pref_addressDelimiter_tip "Vastaanottajien erottaminen merkillä. Outlook käyttää erottamiseen puolipistettä (;), Thunderbirdin oletusmerkki on pilkku (,)">
 <!ENTITY resolveNamesFromAB "Selvitä nimet osoitekirjasta">
@@ -117,6 +120,10 @@
 <!ENTITY fix_var.cap "Määrätyt muuttujat">
 <!ENTITY ownname.label "Nimesi">
 <!ENTITY ownmail.label "Sähköpostiosoitteesi">
+<!ENTITY identity_ab "Käytä avainsanaa 'addressbook' hakeaksesi lisätietoja henkilöllisyydestä osoitekirjasta.">
+<!ENTITY identity_ab.field "Lisätietoja kenttäarvoista on jäljempänä luvussa 'Osoitekirjan kentät'.">
+<!ENTITY identity_ab.example "Esimerkki">
+<!ENTITY identity_ab.phoneno "Puhelinnumero">
 <!ENTITY date.label "Päiväys / Aika (sama kuin alkuperäisessä viestin otsakkeessa)">
 <!ENTITY tomail.label "Vastaanottajan sähköpostiosoite">
 <!ENTITY frommail.label "Lähettäjän sähköpostiosoite">
@@ -127,12 +134,14 @@
 <!ENTITY fileImage.label "Kuvatiedosto (png, jpg, gif,bmp, svg). Näytetään valinnainen altText, jos kuvaa ei löydetä.">
 <!ENTITY attach.label "Lisää tiedosto liitteenä">
 <!ENTITY cursor.label "Aseta osoittimen sijainti">
+<!ENTITY spellcheck.label "Asettaa oikeinkirjoituksen kielen. Esimerkkiarvot: (en, de-DE, es-ES, ru, fi) - Huomaa, että sanakirja on asennettava.">
 <!ENTITY to_var.cap "Vastaanottajan muuttujat (To-kenttä)">
 <!ENTITY to_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY to.label "Vastaanottajan nimi (oletus)">
+<!ENTITY standardformat.config "Määritä oletusmuoto…">
 <!ENTITY tofirstname.label "Vastaanottaja etunimi">
 <!ENTITY toname.label "Vastaanottajan nimi">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
+<!ENTITY tofwd.label "Käytä fwd lisätäksesi napsautettavan vastaanottajan edelleenlähetettyihin viesteihin">
 <!ENTITY from_var.cap "Lähettäjän muuttujat (From-kenttä)">
 <!ENTITY from_note.label "Kun nimi ei ole käytettävissä, näytetään sähköpostiosoite">
 <!ENTITY from.label "Lähettäjän nimi (oletus)">
@@ -143,9 +152,16 @@
 <!ENTITY cc.label "Vastaanottajan nimi (oletus)">
 <!ENTITY ccfirstname.label "Vastaanottajan etunimi">
 <!ENTITY ccname.label "Vastaanottajan nimi">
+<!-- #### TABLE #### -->
+<!ENTITY ab_fields "Osoitekirjan kentät">
+<!ENTITY ab_fields.desc "Kun vastaat vastaavaan sähköpostiosoitteeseen, voit nyt käyttää lisäkenttiä osoitemuuttujille, &#37;from&#37;: sta, kuten:">
+<!ENTITY ab_contact "Yhteyshenkilö">
+<!ENTITY ab_private "Yksityinen">
+<!ENTITY ab_other "Muu">
+<!ENTITY ab_work "Työ">
 <!ENTITY spec_form.cap "Erikoismuotoilu">
 <!ENTITY specform_note.label "Lauseke tuplahakasulkeiden sisällä [[Cc: &#37;cc(name)&#37;]] näytetään vain, jos &#37;cc(name)&#37; voidaan korvata!">
-<!ENTITY ex_brack.label "Esim: To: boo Cc: foo">
+<!ENTITY ex_brack.label "Esim: To: AKSELI | Cc: JAAKOB">
 <!ENTITY brack_with_var.label "Seuraavia muuttujia voidaan käyttää [[..]]-sulkeiden sisällä">
 <!ENTITY sub_var.cap "Aihe">
 <!ENTITY sub.label "vastattavan / välitettävän vietin aihe">
@@ -170,16 +186,32 @@
 <!ENTITY matchTextFromBody "Etsi RegEx-kaava lainatusta sähköpostista ja lisää se funktioihin.">
 <!ENTITY matchTextFromSubject "Etsi RegEx-kaava aiheesta ja lisää se funktioihin.">
 <!ENTITY stringmanip.match.comment "vastaavat funktiot: Ensimmäinen parametri (RegEx, säännöllinen lauseke) on oltava lainausmerkkien sisällä. Toisen parametrin on vastattava ryhmän numeroa. 0 vastaa koko lauseketta, 1 ensimmäistä ryhmää jne.">
+<!ENTITY stringmanip.alttext "[valinnainen parametri] Vaihtoehtoinen teksti: Jos vastaavuutta ei löydy, lisää vaihtoehtoisen tekstin.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Lainaa manipulointia">
+<!ENTITY quote_changers.desc "Ensisijaiset muuttujat tekstien / tunnisteiden poistamiseksi lainatuista osista ja tilan säästämiseksi.">
+<!ENTITY deleteQuotedText "Poistaa lainatun tekstin">
+<!ENTITY replaceQuotedText "Korvaa lainatun tekstin HTML-koodilla">
+<!ENTITY deleteQuotedTags "Poistaa tunnisteet tarjouksesta">
+<!ENTITY replaceQuotedTags "Korvaa tarjouksen tunnisteet tekstillä tai html-tiedostolla">
+<!ENTITY Parameters "Parametri">
+<!ENTITY regexpAnyText "Minkä tahansa tekstin - säännöllisen lausekkeen - on oltava lainausmerkeissä.">
+<!ENTITY replacementHTML "Tämän on oltava lainausmerkeissä - joko teksti tai html-tunniste, joka lisätään lainausmerkkeihin, jos vastaavuus löytyy.">
+<!ENTITY quoteLevel "on oltava lainausmerkeissä - joko teksti tai html-tunniste, joka lisätään lainausmerkkeihin, jos vastaavuus löytyy.">
+<!ENTITY selector "- mitä käyttäisit osoitteen käsittelemiseen css-muodossa. yksinkertaisin tapaus 'img' tai 'p', mutta ominaisuusvalitsimet voidaan lisätä, kunhan kaksinkertaiset lainaukset voidaan välttää.">
+<!ENTITY minSize "[valinnainen, numeerinen] - ktby-lukumäärä, vähimmäiskoko tunnisteen poistamiseen. Tällä tavalla voit pitää pienempiä kuvia, kuten kuvakkeita / hymiöitä, hylkäämättä suuria kuvia.">
+<!ENTITY whitespace_note "Huomaa, että välilyönti voidaan parhaiten edustaa nimellä \ s, koska se voi sisältää myös rivinvaihtoja. Pilkuja ja kaksoislainausmerkkejä ei voi käyttää.">
+<!ENTITY minSize_detail "Kokoa ei aina voida määrittää oikein, varsinkin jos Thunderbird lataa kuvaa edelleen, usein suuren koon takia - tässä tapauksessa tunniste poistetaan joka tapauksessa.">
 <!ENTITY fix_vartz.cap "Määrätty päiväyksen muoto / Aikavyöhyke">
 <!ENTITY fix_vartz_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY datelocal.label "Päiväys / Aika (paikallinen muotoilu)">
 <!ENTITY dateshort.label "Päiväys / Aika lyhyt muoto (esim. 01.01.2000 1:23:45)">
 <!ENTITY datetz.label "Aikavyöhyke (+0100, +0200, ... )">
 <!ENTITY tzname.label "GMT, PST, EST, …">
-<!ENTITY timezone.explain "Force specific timezone for date variables by replacing the tz parameter (GMT, EST, CST, PST etc.)">
-<!ENTITY dateoffset_note.label "The following function adds an offset to all following displayed times.">
-<!ENTITY calculate.explain "DD=number of days to add. H=number of hours to add (optional). MM=minutes to add (optional) ">
-<!ENTITY calculate.reset "Set the argument to 0 to stop modifying any dates.">
+<!ENTITY timezone.explain "Pakota erityinen aikavyöhyke päivämäärämuuttujille korvaamalla tz-parametri (GMT, EST, CST, PST jne.)">
+<!ENTITY dateoffset_note.label "Seuraava toiminto lisää siirtymän kaikkiin seuraaviin näytettyihin aikoihin.">
+<!ENTITY calculate.explain "DD = lisättävien päivien lukumäärä. H = lisättävien tuntien määrä (valinnainen). MM = lisättävät minuutit (valinnainen)">
+<!ENTITY calculate.reset "Aseta argumentti arvoon 0 lopettaaksesi päivämäärien muokkaamisen.">
 <!ENTITY var_custom.cap "Muuttujat muokatulle päiväyksen muotoilulle">
 <!ENTITY customdf_note.label "Voidaan yhdistää &#37;X:=sent&#37; kanssa">
 <!ENTITY A.label "Viikonpäivä (Perjantai)">
@@ -201,8 +233,8 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.label "Toiminto nykyisen ajan lisäämiseksi (napsautettava kenttä).">
+<!ENTITY dateformat.explain "Suurinta osaa yllä olevista aikamuuttujista voidaan käyttää parametrijonoon jättämällä &#37; pois. Katso myös:">
 <!ENTITY dateformat.example "Esimerkki:">
 <!ENTITY var_xsent.cap "&#37;X:=sent&#37;:n käyttö">
 <!ENTITY xsent_note.label "Päiväys / Aika-muuttujat asetetaan normaalisti nykyisillä arvoilla. Yhdistettäessä &#37;X:=sent&#37; kanssa, käytetään alkuperäisen viestin muotoilua.">
@@ -248,7 +280,7 @@
 <!ENTITY licenseValidation.invalidMail "Lisenssiavaimeen [{1}] sidottu sähköpostiosoite ei ole tällä hetkellä mikään sähköpostitileistäsi. Ota yhteyttä minuun Tuki-välilehdeltä saadaksesi apua.">
 <!ENTITY licenseValidation.notMatchedMail "Salattu sähköpostiosoite ei vastaa lukukelpoista">
 <!ENTITY premiumConfig "Maksulliset lisätoiminnot">
-<!ENTITY label.premiumFeaturesSite "Lisätietoja maksullisista lisätoiminnoista saat verkkosivuiltamme">
+<!ENTITY label.premiumFeaturesSite "Lisätietoja maksullisista lisätoiminnoista saat verkkosivuiltamme…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Lähetä sähköpostia tukeen">
 <!ENTITY support.type "Tyyppi:">

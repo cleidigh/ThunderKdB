@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Vorlage speichern…">
 <!ENTITY btnLoadTemplate.tooltip "Vorlage laden…">
 <!ENTITY btnYouTube.tooltip "Besuchen Sie unseren 'Thunderbird Daily' YouTube-Kanal - für gratis Tipps und Anleitungen zum Benutzen von Stationery und anderen Add-Ons.">
+<!ENTITY tip.fileTemplates "Hier klicken um die vollständige Dokumentation über Stationery und externe HTML Vorlagen auf unserer Support Seite zu lesen…">
 <!ENTITY pref_server_def "Allgemein">
 <!ENTITY pref_def.label "Allgemein verwenden">
 <!ENTITY pref_def.cap "Deaktivieren Sie 'Allgemein verwenden', wenn Sie die Einstellungen für dieses Konto einzeln anpassen wollen">
@@ -76,11 +77,13 @@
 <!ENTITY help_keyword.cap "Hilfe">
 <!ENTITY pref_debug_check "Debug Modus">
 <!ENTITY pref_hideExamples "Beispiele nicht anzeigen">
+<!ENTITY pref_silentUpdates "Stille Updates">
+<!ENTITY pref_silentUpdates_tip "Bei updates die Versionsgeschichte nicht anzeigen.">
 <!ENTITY pref_debug_tip "Rechts-klick für weitere Debug Optionen">
 <!ENTITY pref_nameSwap "Tausche Reihenfolge Nachname, Vorname">
 <!ENTITY pref_nameSwap_tip "Ändert die Reihenfolge Nachname, Vorname nach Vorname, Nachname">
 <!ENTITY defaultMimeFormat "Standardformat für Adressen:">
-<!ENTITY defaultMimeFormat_tip "Format beim Ersetzen von &#37;to&#37; &#37;from&#37; &#37;cc&#37; Addressen. z.B. firstname,lastname,??mail ersetzt mit Vornamen gefolgt vom Nachnamen; sind beide nicht verfügbar, wird die Email-Adresse eingesetzt.">
+<!ENTITY defaultMimeFormat_tip "Format beim Ersetzen von &#37;to&#37; &#37;from&#37; &#37;cc&#37; Addressen. z.B. (firstname,lastname,??mail) ersetzt durch Vornamen gefolgt vom Nachnamen; sind beide nicht verfügbar, wird die Email-Adresse eingesetzt.">
 <!ENTITY pref_addressDelimiter "Trenne mehrere Korrespondenten mit:">
 <!ENTITY pref_addressDelimiter_tip "Trennzeichen zwischen mehreren Briefpartnern. Outlook benutzt Semikolon (;) Die Voreinstellung in Thunderbird ist Komma (,)">
 <!ENTITY resolveNamesFromAB "Namen aus dem Adressbuch ermitteln">
@@ -117,6 +120,10 @@
 <!ENTITY fix_var.cap "Feste Variablen">
 <!ENTITY ownname.label "Ihr Name">
 <!ENTITY ownmail.label "Ihre E-Mail Adresse">
+<!ENTITY identity_ab "Verwenden Sie das Schlüsselwort 'addressbook', um zusätzliche Identitätsinformationen aus dem Adressbuch abzurufen.">
+<!ENTITY identity_ab.field "Informationen zu möglichen zusätzlichen Feldwerten finden Sie im nachfolgenden Kapitel 'Adressbuchfelder'.">
+<!ENTITY identity_ab.example "Beispiel">
+<!ENTITY identity_ab.phoneno "Telefon-Nr">
 <!ENTITY date.label "Datum und Zeit (gleiches Format wie in der E-Mail Kopfzeile)">
 <!ENTITY tomail.label "Empfänger E-Mail Adresse">
 <!ENTITY frommail.label "Absender E-Mail Adresse">
@@ -126,10 +133,16 @@
 <!ENTITY fileHTML.label "HTML or Textdatei. Bei weglassen des optionalen Charset Parameters wird UTF-8 verwendet.">
 <!ENTITY fileImage.label "Bilddatei (png,jpg,gif,bmp,svg). Der optionale altText wird angezeigt falls das Bild nicht zu finden ist.">
 <!ENTITY attach.label "Datei als Anhang anfügen">
+<!ENTITY basepath.desc "Falls Ihre Vorlage Bilder mit dem 'img' Tag enthält, welche lokal gespeichert sind, muss dies SmartTemplate mitgeteilt werden.">
+<!ENTITY basepath.desc2 "Die 'basepath' Variable fügt ein HTML-Tag 'base' ein, um alle Bilder basierend auf einer Startposition zu finden. Sie kann nur einmal in einer E-Mail verwendet werden.">
+<!ENTITY basepath.relative "Verwenden Sie diese Variable, um die Bilder am selben Speicherort wie die HTML-Dateivorlage zu finden.">
+<!ENTITY basepath.absolute "Klicken Sie hier, um einen bestimmten Ordner auf Ihrem lokalen Laufwerk festzulegen.">
 <!ENTITY cursor.label "Bestimmt die Position des Cursors">
+<!ENTITY spellcheck.label "Setzt die Sprache der Rechtschreibprüfung. Beispiele: (en, de-DE, es-ES, ru) - das entsprechende Wörterbuch muss installiert sein.">
 <!ENTITY to_var.cap "Empfängervariablen (An)">
 <!ENTITY to_note.label "Wenn der Name nicht verfügbar ist, wird die Email-Adresse angezeigt">
 <!ENTITY to.label "Empfängername (Standardformat)">
+<!ENTITY standardformat.config "Standardformat setzen…">
 <!ENTITY tofirstname.label "Empfängervorname">
 <!ENTITY toname.label "Empfängername">
 <!ENTITY tofwd.label "Benutzen Sie fwd um beim weiterleiten den klickbaren Empfänger einzufügen">
@@ -143,14 +156,21 @@
 <!ENTITY cc.label "Empfängername (Standardformat)">
 <!ENTITY ccfirstname.label "Empfängervorname">
 <!ENTITY ccname.label "Empfängername">
+<!-- #### TABLE #### -->
+<!ENTITY ab_fields "Felder für Adressbuch">
+<!ENTITY ab_fields.desc "Wenn eine passende Email Adresse im Adressbuch gefunden werden kann, können zu Variablen wie &#37;from&#37; folgende zusätzliche Felder hinzugefügt werden:">
+<!ENTITY ab_contact "Kontakt">
+<!ENTITY ab_private "Privat">
+<!ENTITY ab_other "Sonstiges">
+<!ENTITY ab_work "Dienstlich">
 <!ENTITY spec_form.cap "Sonderformatierung">
 <!ENTITY specform_note.label "Der Satz in der Doppelklammer [[Cc: &#37;cc(name)&#37;]] wird nur dann gezeigt, wenn die Variable &#37;cc(name)&#37; ersetzt werden konnte!">
-<!ENTITY ex_brack.label "Beispiel: An: Friedrich Cc: Eva">
+<!ENTITY ex_brack.label "Beispiel: An: Friedrich | Cc: Eva">
 <!ENTITY brack_with_var.label "Folgende Variablen lassen sich innerhalb [[…]] verwenden">
 <!ENTITY sub_var.cap "Betreff">
 <!ENTITY sub.label "Betreff (gleiches Format wie in der E-Mail Kopfzeile)">
 <!ENTITY sub2.label "Betreff (gleiches Format wie im Nachrichten-Editor)">
-<!ENTITY spec_var.cap "Sondervariablen">
+<!ENTITY spec_var.cap "Spezialheader">
 <!ENTITY messid.label "Nachrichten ID">
 <!ENTITY newsgr.label "Nachrichtengruppen">
 <!ENTITY xmail.label "X-Mailer">
@@ -170,6 +190,22 @@
 <!ENTITY matchTextFromBody "Findet einen Regulären Ausdruck in der zitierten Email und fügt ihn an der Position dieser Funktion ein.">
 <!ENTITY matchTextFromSubject "Findet einen Regulären Ausdruck in der Betreff-Zeile and und fügt ihn an der Position dieser Funktion ein.">
 <!ENTITY stringmanip.match.comment "match Funktionen: Der erste Parameter ist der Reguläre Ausdruck in Anführungszeichen. Der zweite Parameter ist die Nummer der Gruppierung. 0 steht für den gesamten Ausdruck, 1 für die erste Gruppierung usw.">
+<!ENTITY stringmanip.alttext "[optionaler Parameter] Alternativtext: wenn kein match gefunden wird, wird stattdessen dies als Text eingefügt.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Zitat-Bearbeitung">
+<!ENTITY quote_changers.desc "Premiumvariable um Text oder Tags vom zitierten Teil zu entfernen und Platz einzusparen.">
+<!ENTITY deleteQuotedText "Löscht Text im Zitat">
+<!ENTITY replaceQuotedText "Ersetzt Text im Zitat mit HTML">
+<!ENTITY deleteQuotedTags "Löscht HTML Tags aus Zitaten">
+<!ENTITY replaceQuotedTags "Ersetzt HTML Tags in Zitaten mit Text oder HTML">
+<!ENTITY Parameters "Parameter">
+<!ENTITY regexpAnyText "Beliebiger Text - regulärer Ausdruck - muß in doppelten Anführungszeichen sein.">
+<!ENTITY replacementHTML "muß in doppelten Anführungszeichen sein - entweder Text oder ein HTML tag wird im Zitat eingefügt.">
+<!ENTITY quoteLevel "[optional, numerisch]: minimaler Zitatlevel ab dem ersetzt werden soll">
+<!ENTITY selector "- CSS kompatibler Selektor, im simpelsten Fall 'img' oder 'p', Attribut Selektoren können verwendet werden. Ausnahme: doppelte Anführungszeichen müssen vermiden werden.">
+<!ENTITY minSize "[optional, numerisch] - minimale Grösse, in kByte, ab der das html Tag entfernt werden soll. Auf diese weise können kleinere Bilder wie Icons / Emojis erhalten bleiben während grössere entfernt werden.">
+<!ENTITY whitespace_note "Whitespace kann am besten als \s repräsentiert werden da es auch Zeilenwechsel enthalten kann. Kommas und doppelte Anführungszeichen können nicht verwendet werden.">
+<!ENTITY minSize_detail "Es ist nicht immer möglich die richtige Grösse zu ermitteln, insbesondere wenn Thunderbird is moch am Laden ist, was oft bei großen Bildern passiert - in diesem Fall wird das Tag trotzdem entfernt.">
 <!ENTITY fix_vartz.cap "Feste Variablen für Datumsformate und Zeitzone">
 <!ENTITY fix_vartz_note.label "kombinierbar mit &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum und Zeit (Lokales Format)">
@@ -228,7 +264,7 @@
 <!ENTITY html_note.label "Verwenden Sie bitte ausschließlich den UTF-8 (Unicode) Zeichensatz innerhalb des HTML Quellcodes!">
 <!ENTITY table.cap "Anwenden der Variablen">
 <!ENTITY table_note.label "Wird eine Variable falsch angewendet, erscheint eine Fehlermeldung in der Fehlerkonsole von Thunderbird!">
-<!-- #### TABLE #### -->
+<!-- #####  Support ##### -->
 <!ENTITY table_keyword.label "Variable">
 <!ENTITY table_new.label "Verfassen">
 <!ENTITY table_reply.label "Antworten">
@@ -240,15 +276,15 @@
 <!ENTITY button.pasteLicense "einfügen">
 <!ENTITY button.validateLicense "bestätigen">
 <!ENTITY label.licenseValid "Ihre Lizenz ist gültig bis:">
-<!ENTITY licenseValidation.passed "Danke für die Registering von SmartTemplate⁴ Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
-<!ENTITY licenseValidation.standard "Danke für die Registering von SmartTemplate⁴ Standard - damit Sie helfen dem Add-on ungemein! Ab jetzt können Sie auch die Premium-Funktionen ausprobieren.">
+<!ENTITY licenseValidation.passed "Danke für die Registrierung von SmartTemplate⁴ Pro! Alle Premium-Funktionen sind nun freigeschaltet.">
+<!ENTITY licenseValidation.standard "Danke für die Registrierung von SmartTemplate⁴ Standard - damit helfen Sie dem Add-on ungemein! Ab jetzt können Sie auch die Premium-Funktionen ausprobieren.">
 <!ENTITY licenseValidation.failed "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY licenseValidation.expired "Der eingegebene Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten.">
 <!ENTITY licenseValidation.invalidAddon "Der eingegebene Lizenzschlüssel könnte für ein anderes Add-on sein. Lizenzen für {0} beginnen mit {1}.">
 <!ENTITY licenseValidation.invalidMail "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Konten vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab.">
 <!ENTITY licenseValidation.notMatchedMail "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein.">
 <!ENTITY premiumConfig "Premium Funktionen">
-<!ENTITY label.premiumFeaturesSite "Lesen Sie mehr über die Premium Funktionen auf unserer Webseite">
+<!ENTITY label.premiumFeaturesSite "Lesen Sie mehr über die Premium Funktionen auf unserer Webseite…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Email an Support">
 <!ENTITY support.type "Typ:">
@@ -261,4 +297,3 @@
 <!ENTITY support.mail.instructions "Klicken Sie die Schaltfläche unterhalb um eine neue Email an Support zu schreiben. Falls Sie technische Probleme haben, kann ein Screenshot hilfreich sein.">
 <!ENTITY support.compose "An Support schreiben…">
 <!ENTITY support.links "Support Links">
-

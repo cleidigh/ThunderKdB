@@ -183,7 +183,8 @@ var opacustep = {
     }
     // initialization code
     opacustep.initialized = true;
-    opacustep.strings = document.getElementById("opacus_strings");
+    opacustep.strings = Services.strings.createBundle("chrome://opacustep/locale/strings.properties");
+    //opacustep.strings = document.getElementById("opacus_strings");
     opacustep.licence = new opacusteplicence();
     // Set up address book listener for removed contacts
     opacustep.abListen = new opacustepab();
@@ -227,7 +228,7 @@ var opacustep = {
                             }
                             if(doArchive){
                                 autoMail.inboundAutoArchive(true);
-                                opacustep.setStatus(opacustep.strings.getString('autoArchiving'));
+                                opacustep.setStatus(opacustep.strings.GetStringFromName('autoArchiving'));
                             } else if(opacustep.opacus_notify){
                                 var subject = aMsgHdr.mime2DecodedSubject !== '' ? aMsgHdr.mime2DecodedSubject : aMsgHdr.subject;
                                 opacustep.notifyUser('newmail',subject + "\n" + author.replace(/&#039;/g,"'"));
@@ -252,7 +253,7 @@ var opacustep = {
                             autoMail.type = 'auto';
                             autoMail.parseHeader();
                             autoMail.inboundAutoArchive(true);
-                            opacustep.setStatus(opacustep.strings.getString('autoArchiving'));
+                            opacustep.setStatus(opacustep.strings.GetStringFromName('autoArchiving'));
                         }
                     }
                 }
@@ -365,9 +366,6 @@ var opacustep = {
   optionsLoad: function(optionsWindow){
     opacustep.domain_blacklist = [];
     opacustep.email_blacklist = [];
-    if(navigator.platform.indexOf('Mac') == -1){
-        optionsWindow.document.getElementById('saveButton').hidden=false;
-    }
     optionsWindow.document.getElementById('passwordsugarcrm_password').value = opacustep.sugarcrm_password_plain;
     if(opacustep.sugarcrmwins){
         optionsWindow.document.getElementById('sugarcrmwins').setAttribute('selected',true);
@@ -394,8 +392,11 @@ var opacustep = {
     link: function(identifier) {
         if(identifier.indexOf('http') == -1){
             var idArray = identifier.split(':');
-            var sugarUri = opacustep.sugarurl.replace('service/v4/rest.php','');
+            var sugarUri = opacustep.sugarurl.replace('/service/v4/rest.php','');
             identifier = sugarUri + '/index.php?action=DetailView&module=' + idArray[0] + '&record=' + idArray[1];
+            if (opacustep.server_info.version.substring(0,1) > 6) {
+                identifier = sugarUri + '/#' + idArray[0] + '/' + idArray[1];
+            }
         }
         var extProtocolSvc = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
             .getService(Components.interfaces.nsIExternalProtocolService);
@@ -497,9 +498,9 @@ var opacustep = {
                 // Remove old login
                 try {  
                     // Find users for this extension   
-                    logins = opacustep.passwordManager.findLogins({}, 'chrome://opacustep', '', 'SugarCRM Login');     
+                    logins = opacustep.passwordManager.getAllLogins();
                     for (i = 0; i < logins.length; i++) {  
-                        if (logins[i].username == opacustep.sugarcrm_username) {  
+                        if (logins[i].hostname == 'chrome://opacustep' && logins[i].username == opacustep.sugarcrm_username) {  
                             opacustep.passwordManager.removeLogin(logins[i]);  
                             break;  
                         }  
@@ -513,11 +514,9 @@ var opacustep = {
 
         try {     
             // Find users for the given parameters  
-            logins = opacustep.passwordManager.findLogins({}, 'chrome://opacustep', '', 'SugarCRM Login');  
-
-            // Find user from returned array of nsILoginInfo objects  
+            logins = opacustep.passwordManager.getAllLogins();
             for (i = 0; i < logins.length; i++) {  
-                if (logins[i].username == opacustep.sugarcrm_username) {  
+                if (logins[i].hostname == 'chrome://opacustep' && logins[i].username == opacustep.sugarcrm_username) {  
                     opacustep.sugarcrm_password_plain = logins[i].password;
                     break;  
                 }  
@@ -552,7 +551,7 @@ var opacustep = {
                     opacustep.searchableModules.push('Quotes');
                 }
                 for(i in opacustep.searchableModules){
-                    opacustep.moduleLabels[opacustep.searchableModules[i]] = opacustep.strings.getString(opacustep.searchableModules[i]);
+                    opacustep.moduleLabels[opacustep.searchableModules[i]] = opacustep.strings.GetStringFromName(opacustep.searchableModules[i]);
                 }
                 for(i in opacustep.custom_modules){
                     var custom_module = opacustep.custom_modules[i];
@@ -612,7 +611,7 @@ var opacustep = {
     sendAndAutoArchive: function(composeWindow){
         if(opacustep.licence.check(opacustep.sugarurlOrig.toLowerCase(),opacustep.sugarcrm_username.toLowerCase())){
             if(navigator.onLine && opacustep.mailNewsPrefs.getBoolPref('sendInBackground') === false){
-                opacustep.setStatus(opacustep.strings.getString('autoArchiving'));
+                opacustep.setStatus(opacustep.strings.GetStringFromName('autoArchiving'));
                 composeWindow.document.getElementById('opacustep-send-archive').disabled = true;
                 opacustep.webservice.login();
                 opacustep.sendAndArchiveStatus = 'unknown';
@@ -688,7 +687,7 @@ var opacustep = {
                         this.mails[j].displayRecipients = folderType;
                     }
                     if(bulk){
-                        opacustep.setStatus(opacustep.strings.getString('autoArchiving'));
+                        opacustep.setStatus(opacustep.strings.GetStringFromName('autoArchiving'));
                         opacustep.totalMails = this.mails.length;
                         opacustep.totalBulkMails = this.mails.length;
                         if(opacustep.totalMails > 100){
@@ -716,7 +715,7 @@ var opacustep = {
                         this.searchObject.search();
                     }
                 } else {
-                    opacustep.notifyUser('error',opacustep.strings.getString('notifyNoMessages'));
+                    opacustep.notifyUser('error',opacustep.strings.GetStringFromName('notifyNoMessages'));
                 }
             }
         }
@@ -725,15 +724,24 @@ var opacustep = {
     archiveMails: function() {
         var doAttachments = this.searchObject.searchWindow.document.getElementById('doAttachments').checked;
         var forceRearchive = this.searchObject.searchWindow.document.getElementById('forceRearchive').checked;
-        var sugarObjects = this.searchObject.getCellChecked(this.searchObject.searchWindow.document.getElementById('resultList'),'resultTick');
-        if(!sugarObjects && (this.mails[0].email_id === false || this.mails[0].allowEdit === false)){
+        var selectedObjects = this.searchObject.searchWindow.document.getElementById('resultList').selectedItems;
+        var sugarObjects = [];
+        if (selectedObjects !== null) {
+            for (var b in selectedObjects) {
+                if (selectedObjects[b].id) {
+                    sugarObjects.push(selectedObjects[b].id);
+                }
+            }
+        }
+
+        if(sugarObjects.length == 0 && (this.mails[0].email_id === false || this.mails[0].allowEdit === false)){
             opacustep.searchObject.searchWindow.document.getElementById('archive_button').disabled=false;
-            opacustep.notifyUser('error',opacustep.strings.getString('notifyNoSugarObjects'));
+            opacustep.notifyUser('error',opacustep.strings.GetStringFromName('notifyNoSugarObjects'));
             return false;
         }
         opacustep.totalMails = this.mails.length;
         opacustep.searchObject.searchWindow.document.getElementById('feedback').setAttribute('mode','undetermined');
-        opacustep.searchObject.searchWindow.document.getElementById('archive_button').setAttribute('label',opacustep.strings.getString('archiving'));
+        opacustep.searchObject.searchWindow.document.getElementById('archive_button').setAttribute('label',opacustep.strings.GetStringFromName('archiving'));
         for(var i=0;i<this.mails.length;i++){
             this.mails[i].worker = new opacusteprest();
             this.mails[i].worker.setCredentials(opacustep.sugarurl,opacustep.sugarcrm_username,opacustep.sugarcrm_password);
@@ -745,11 +753,13 @@ var opacustep = {
                     var newHtml = opacustep.searchObject.searchWindow.document.getElementById('opacusEditmail').contentDocument.documentElement.innerHTML;
                     var newSubject = opacustep.searchObject.searchWindow.document.getElementById('opacusEditSubject').value;
                     var attList = opacustep.searchObject.searchWindow.document.getElementById('allattachments');
-                    var checkBoxes = attList.getElementsByClassName('attSelected'); 
-                    for (var j = 0; j < checkBoxes.length; j++){  
-                        if(!checkBoxes[j].hasAttribute('checked')){
-                            var idTest = this.mails[i].attachmentNames.indexOf(checkBoxes[j].label);
-                            this.mails[i].attachmentNames.splice(idTest,1);
+                    var selectedAttachments = attList.selectedItems; 
+                    if (selectedAttachments !== null) {
+                        this.mails[i].attachmentsNames = [];
+                        for (var j in selectedAttachments) {
+                            if (selectedAttachments[j].value) {
+                                this.mails[i].attachmentNames.push(selectedAttachments[j].value);
+                            }
                         }
                     }
                     if(this.mails[i].origHtml != newHtml){
@@ -786,7 +796,7 @@ var opacustep = {
         if(type == 'standard' || type == 'bulkauto'){
             opacustep.totalMails--;
             if(type == 'bulkauto'){
-                opacustep.setStatus(opacustep.strings.getString('autoArchiving') +
+                opacustep.setStatus(opacustep.strings.GetStringFromName('autoArchiving') +
                     " " + (opacustep.totalBulkMails - opacustep.totalMails) + '/' + opacustep.totalBulkMails);
             }
             if(opacustep.totalMails > 0){
@@ -800,7 +810,7 @@ var opacustep = {
         } else if(type == 'standard' && direction=='inbound'){
             totalMails = this.mails.length;
         }
-        var plural=opacustep.strings.getString('plural');
+        var plural=opacustep.strings.GetStringFromName('plural');
         if(totalMails == 1){
             plural = '';
         }
@@ -809,9 +819,9 @@ var opacustep = {
             opacustep.mails = '';
             opacustep.setStatus('hidden');
             opacustep.notifyUser('notify',totalMails + ' '+
-                opacustep.strings.getString('email') +
+                opacustep.strings.GetStringFromName('email') +
                 plural + ' ' +
-                opacustep.strings.getString('verifyArchived'));
+                opacustep.strings.GetStringFromName('verifyArchived'));
             if(type != 'bulkauto'){
                 this.searchObject.searchWindowClose();
             }
@@ -901,23 +911,23 @@ var opacustep = {
         } 
         if(opacustep.allowNotify || type == 'critical'){
             // TODO We can specify different images depending on notification type
-            var title=opacustep.strings.getString('notification');
+            var title=opacustep.strings.GetStringFromName('notification');
             var image = (opacustep.windows)? 'chrome://global/skin/icons/information-32.png' : 'chrome://global/skin/icons/information-48.png';
             switch(type){
                 case 'error' :
                     image = (opacustep.windows)? 'chrome://global/skin/icons/Warning.png' : 'chrome://global/skin/icons/warning-large.png';
-                    title = opacustep.strings.getString('error');
+                    title = opacustep.strings.GetStringFromName('error');
                     break;
                 case 'critical' :
                     image = (opacustep.windows)? 'chrome://global/skin/icons/Warning.png' : 'chrome://global/skin/icons/warning-large.png';
-                    title = opacustep.strings.getString('critical');
+                    title = opacustep.strings.GetStringFromName('critical');
                     break;
                 case 'newmail' :
                     image = 'chrome://messenger/skin/icons/new-mail-alert.png';
-                    title = opacustep.strings.getString('newmail');
+                    title = opacustep.strings.GetStringFromName('newmail');
                     break;
                 case 'sync' :
-                    title = opacustep.strings.getString('absync');
+                    title = opacustep.strings.GetStringFromName('absync');
                     break;
                 default:
             }

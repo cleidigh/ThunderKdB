@@ -54,15 +54,15 @@ opacustepPrefs.prototype.checkLicence = function(optionsDoc){
             .replace(/^\s\s*/,'').replace(/\s\s*$/,'');
 		var url = optionsDoc.getElementById("textsugarcrm_url").value.replace(/\/$/,'').toLowerCase();
 		var username = optionsDoc.getElementById("textsugarcrm_username").value.toLowerCase();
-		var text = opacustep.strings.getString('licenceExpired');
+		var text = opacustep.strings.GetStringFromName('licenceExpired');
 		if(opacustep.licence.check(url,username)) {
 			var year = opacustep.expDate.toString().substring(0,4);
 			var month = opacustep.expDate.toString().substring(4,6);
 			var day = opacustep.expDate.toString().substring(6,8);
-			text = opacustep.strings.getString('licenceValid') + " " + year + "-" + month + "-" + day;
+			text = opacustep.strings.GetStringFromName('licenceValid') + " " + year + "-" + month + "-" + day;
 		}
 		if(username === '' || url === ''){
-			text = opacustep.strings.getString('licenceWarning');
+			text = opacustep.strings.GetStringFromName('licenceWarning');
 		}
 		var label = optionsDoc.getElementById('licence_feedback');
 		try{
@@ -107,7 +107,7 @@ opacustepPrefs.prototype.requestTrial = function(optionsWindow){
 		};
 		this.applyWindow.addEventListener('load', setFields, false);
 	} else {
-		opacustep.notifyUser('prompt',opacustep.strings.getString('testSettingsWarning'));
+		opacustep.notifyUser('prompt',opacustep.strings.GetStringFromName('testSettingsWarning'));
 	}
 };
 
@@ -133,7 +133,7 @@ opacustepPrefs.prototype.activate = function(optionsWindow){
 			label.removeChild(label.firstChild);
 		}
 		catch(ex){}
-		var textString = this.prefdoc.createTextNode(opacustep.strings.getString('activating'));
+		var textString = this.prefdoc.createTextNode(opacustep.strings.GetStringFromName('activating'));
 		label.appendChild(textString);
 		this.setIdentifier(optionsWindow.document);
 		var activationKey = optionsWindow.document.getElementById("textopacus_activation_key").value;
@@ -146,7 +146,7 @@ opacustepPrefs.prototype.activate = function(optionsWindow){
 		};
 		this.makeRequest('activate',post_data);
 	} else {
-		opacustep.notifyUser('prompt',opacustep.strings.getString('testSettingsWarning'));
+		opacustep.notifyUser('prompt',opacustep.strings.GetStringFromName('testSettingsWarning'));
 	}
 };
 
@@ -227,14 +227,14 @@ opacustepPrefs.prototype.handleResponse = function(data, prefsObject){
                 label.removeChild(label.firstChild);
             }
             catch(ex){}
-            opacustep.notifyUser('prompt',opacustep.strings.getString('noLicenceConnect'));
+            opacustep.notifyUser('prompt',opacustep.strings.GetStringFromName('noLicenceConnect'));
         }
 	} else {
 		if(prefsObject.method == 'trial'){
 			if(data.trial_sent == 'true'){
-				opacustep.notifyUser('prompt',opacustep.strings.getString('trialSent'));
+				opacustep.notifyUser('prompt',opacustep.strings.GetStringFromName('trialSent'));
 			} else if(data.trial_sent == 'already'){
-				opacustep.notifyUser('prompt',opacustep.strings.getString('alreadyTried'));
+				opacustep.notifyUser('prompt',opacustep.strings.GetStringFromName('alreadyTried'));
 			}
 			prefsObject.applyWindow.close();
 		}
@@ -245,12 +245,12 @@ opacustepPrefs.prototype.handleResponse = function(data, prefsObject){
 				prefsObject.prefdoc.getElementById('textopacus_licence_key').value = data.licence_key;
 				opacustep.prefs.setCharPref("opacus_licence_key",data.licence_key);
 				prefsObject.checkLicence(prefsObject.prefdoc);
-				text = opacustep.strings.getString('activationSuccess') +
-				"\n" + data.keys_remaining + " " + opacustep.strings.getString('keysRemaining');
+				text = opacustep.strings.GetStringFromName('activationSuccess') +
+				"\n" + data.keys_remaining + " " + opacustep.strings.GetStringFromName('keysRemaining');
 			} else if(data.activated == 'false'){
-				text = opacustep.strings.getString('activationFailed');
+				text = opacustep.strings.GetStringFromName('activationFailed');
 			} else {
-				text = opacustep.strings.getString('noKeyFound');
+				text = opacustep.strings.GetStringFromName('noKeyFound');
 			}
 			label = prefsObject.prefdoc.getElementById('activation_feedback');
 			try{
@@ -266,7 +266,7 @@ opacustepPrefs.prototype.handleResponse = function(data, prefsObject){
 				opacustep.prefs.setCharPref("opacus_licence_key",data.licence_key);
             } else {
                 // Okay we failed to silent activate an expired license. Tell user.
-                opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoLicence'));
+                opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoLicence'));
             }
 		}
 	}
@@ -381,48 +381,40 @@ opacustepPrefs.prototype.refreshCustomModules = function(moduleArray){
 	var modList = this.prefdoc.getElementById('modulesList');
 	for(var i in moduleArray){
 		var row = document.createElement('richlistitem');
-		var cell = document.createElement('listcell');
-		var cell2 = document.createElement('listcell');
 		var textbox	= document.createElement('textbox');
-		var checkbox = document.createElement('checkbox');
-		checkbox.setAttribute('label',moduleArray[i].module);
-		if(moduleArray[i].checked == true){
-			checkbox.setAttribute('checked',true);
-		}
-        checkbox.id = moduleArray[i].link;
-		row.setAttribute('allowevents','true');
-		cell.setAttribute('flex','3');
-		cell.style.overflow = 'hidden';
-		checkbox.setAttribute('flex','1');
+
+        var label = document.createElement('label');
+        label.value = moduleArray[i].module;
+        row.value = moduleArray[i].module;
+        row.id = moduleArray[i].link;
 		textbox.setAttribute('size','12');
-		cell2.setAttribute('flex','2');
-		cell.appendChild(checkbox);
-		cell2.appendChild(textbox);
-		row.appendChild(cell);
-		row.appendChild(cell2);
+		row.appendChild(label);
+		row.appendChild(textbox);
 		modList.appendChild(row);
-		textbox.value = moduleArray[i].label;
+		textbox.value = moduleArray[i].label || moduleArray[i].module;
+		if(moduleArray[i].checked == true){
+            modList.addItemToSelection(row);
+		}
 	}
 };
 
 
 opacustepPrefs.prototype.storeCustomModules = function(){	
 	var rows = this.prefdoc.getElementById('modulesList').getElementsByTagName('richlistitem');
-	var return_array = new Array();
-	for(var i in rows){
-		try{
-			var checkbox = rows[i].firstChild.firstChild;
-			var module = checkbox.getAttribute('label');
-			var link = checkbox.id;
-			var customLabel = rows[i].firstChild.nextSibling.firstChild.inputField.value;
+	var return_array = [];
+	for(let row of rows){
+		//try{
+			var module = row.value;
+			var link = row.id;
+			var customLabel = row.getElementsByTagName('textbox')[0].inputField.value;
 			return_array.push({
                 module: module,
                 link: link,
                 label: customLabel,
-                checked: checkbox.checked
+                checked: row.selected
             });
-		}
-		catch(ex){}
+		//}
+		//catch(ex){}
 	}
 	return return_array;
 };
@@ -459,7 +451,7 @@ opacustepPrefs.prototype.check = function(returnFunc){
 				if(counter < 100){
 					checkSession();
 				} else {
-					opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoLogin'));
+					opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoLogin'));
 					return;
 				}
 			}}

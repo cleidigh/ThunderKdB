@@ -113,7 +113,7 @@ SmartTemplate4.Licenser =
 	},
 	
 	graceDate: function ST4_licenser_graceDate() {
-		util.logDebugOptional("premium.licenser", "Setting graceDate()...");
+		util.logDebugOptional("premium.licenser", "Setting graceDate()…");
 		let graceDate = "", isResetDate = false;
 		try {
 			graceDate = prefs.getStringPref("license.gracePeriodDate");
@@ -160,9 +160,7 @@ SmartTemplate4.Licenser =
 		    installDate = new Date(graceDate),
 				days = Math.floor( (today.getTime() - installDate.getTime()) / SINGLE_DAY);
 		// later.setDate(later.getDate()-period);
-		if (period-days>0)
-			return (period-days); // returns number of days left, or 0 if past period
-		return 0;
+    return (period-days); // returns number of days left, or -days since trial expired if past period
 	},
 	
   ValidationStatus: 0,
@@ -314,7 +312,7 @@ SmartTemplate4.Licenser =
 						  "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
 				}
 
-				// hide the "Enter License Key..." button + label
+				// hide the "Enter License Key…" button + label
 				if (!this.isExpired) {
 					getElement('haveLicense').collapsed=true;
 					getElement('btnEnterCode').collapsed=true;
@@ -698,7 +696,7 @@ SmartTemplate4.Licenser =
         this.AllowSecondaryMails = true;
         util.logDebug("Premium License Check: There is no account with default identity!\n" +
                       "You may want to check your account configuration as this might impact some functionality.\n" + 
-                      "Allowing use of secondary email addresses...");
+                      "Allowing use of secondary email addresses…");
       }
     }
     let licensedMail = this.DecryptedMail.toLowerCase();
@@ -708,8 +706,12 @@ SmartTemplate4.Licenser =
       if (ac.defaultIdentity && !ForceSecondaryMail) {
         util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] Default Identity =\n" 
           + logIdentity(ac.defaultIdentity));
-				if (!ac.defaultIdentity || !ac.defaultIdentity.email)
+				if (!ac.defaultIdentity || !ac.defaultIdentity.email) {
+					if (ac.incomingServer.username != "nobody") {
+						util.logDebug("Account " + ac.incomingServer.prettyName + " has no default identity!");
+					}
 					continue;
+        }
         if (isIdMatchedLicense(ac.defaultIdentity.email, licensedMail)) {
           isMatched = true;
           break;
@@ -725,7 +727,7 @@ SmartTemplate4.Licenser =
         // ... allow using non default identities 
         let ids = ac.identities, // array of nsIMsgIdentity 
             idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
-        util.logDebugOptional("premium.licenser", "Iterating " + idCount + " ids...");
+        util.logDebugOptional("premium.licenser", "Iterating " + idCount + " ids…");
         if (ids) {
           for (let i=0; i<idCount; i++) {
             // use ac.defaultIdentity ??

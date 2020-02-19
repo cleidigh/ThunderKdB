@@ -11,9 +11,13 @@ var winListener = {
                           getInterface(Components.interfaces.nsIDOMWindow);
     domWindow.addEventListener("load", function() {
       domWindow.removeEventListener("load", arguments.callee, false);
-      try{
-        start(domWindow, 0);
-      } catch (e) {Components.utils.reportError(e);}
+      // We should not start during onload, but directly afterwards. That will
+      // permit Add-on toolbar buttons to be restored before moving the toolbar.
+      domWindow.setTimeout(function(){
+        try{
+          start(domWindow, 0);
+        } catch (e) {Components.utils.reportError(e);}
+      }, 0);
     }, false);
     /*domWindow.addEventListener("unload", function() {
       try{
@@ -58,7 +62,7 @@ var start = function(window, attempt){
   if (!(toolbar && newparent)) {
     if (attempt < 10) {
       // Repeatedly retry in the first ~5 seconds after loading the window.
-      // (the onload event does not work, as it fires too early in some cases)
+      // (with a zero-delay after the onload event is too early in some cases)
       window.setTimeout(function(){ start(window, attempt + 1); }, 500);
       return;
     }

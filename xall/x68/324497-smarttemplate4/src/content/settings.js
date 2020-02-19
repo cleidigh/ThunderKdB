@@ -21,6 +21,7 @@ if (SmartTemplate4.Util.Application == 'Postbox'){
 
 
 SmartTemplate4.Settings = {
+  dialogHeight: 0,
 	accountKey : ".common",  // default to common; .file for files
 	preferenceElements : [],
 	get isFileTemplates() {
@@ -318,6 +319,44 @@ SmartTemplate4.Settings = {
 		}
 		SmartTemplate4.Util.logDebugOptional("settings.prefs", "reloadPrefs() COMPLETE");
 	} ,
+  
+  resizeSettings: function(evt) {
+		const util = SmartTemplate4.Util,
+          settings = SmartTemplate4.Settings,
+					getElement = window.document.getElementById.bind(window.document),
+          dlg = getElement('smartTemplate_prefDialog');
+    
+    // only do something if height changes!
+    if (settings.dialogHeight && dlg.clientHeight == settings.dialogHeight)
+      return;
+    settings.dialogHeight = dlg.clientHeight; // remember new height
+    
+    let decksWrapper = getElement('decksWrapper'),
+        templateBoxes = decksWrapper.getElementsByClassName('template');
+    for (let i=0; i<templateBoxes.length; i++) {
+      let t = templateBoxes[i];
+      t.style.height = (t.parentNode.clientHeight - 15) + "px";
+    }
+    
+    let quoteBoxes = decksWrapper.getElementsByClassName('quote');
+    for (let i=0; i<quoteBoxes.length; i++) {
+      let t = quoteBoxes[i];
+      t.style.height = (t.parentNode.clientHeight - 15) + "px";
+    }
+        
+    let writeBoxes = decksWrapper.getElementsByClassName('templateWrite');
+    for (let i=0; i<writeBoxes.length; i++) {
+      let t = writeBoxes[i],
+          cbs = t.parentNode.getElementsByTagName('checkbox'),
+          cbHeight = 0;
+      for (let j=0; j<cbs.length; j++) {
+        cbHeight += cbs[j].clientHeight;
+      }
+      
+      t.style.height = (t.parentNode.clientHeight - 25 - cbHeight) + "px";
+    }
+    
+  },
 
 	//******************************************************************************
 	// Preferences
@@ -329,8 +368,10 @@ SmartTemplate4.Settings = {
 		const util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences,
 					settings = SmartTemplate4.Settings,
-					getElement = window.document.getElementById.bind(window.document),
-					isAdvancedPanelOpen = prefs.getMyBoolPref('expandSettings');
+					getElement = window.document.getElementById.bind(window.document);
+    
+    let isAdvancedPanelOpen = prefs.getMyBoolPref('expandSettings'),
+        composeType = null;
 					
 		util.logDebugOptional("functions", "onLoad() …");
 		// Check and set common preference
@@ -345,16 +386,27 @@ SmartTemplate4.Settings = {
 		let args = window.arguments,
 		    mode = null;
 		// Switch account (from account setting)  // add 0.4.0
-		if (args && args.length >= 1) {
-			if (args[0])
-				this.switchIdentity(args[0]);
-			if (args.length >=2) {
-				mode = args[1].inn.mode;
-			}
-		}
-		else {
-			this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
-		}
+    try {
+      if (args && args.length >= 1) {
+        if (args[0])
+          this.switchIdentity(args[0]);
+        if (args.length >=2) {
+          let inParams = args[1].inn;
+          mode = inParams.mode;
+          if (mode == "fileTemplates")
+            isAdvancedPanelOpen = false; // simplify the window.
+          if (inParams.composeType) {
+            composeType = inParams.composeType;
+          }
+        }
+      }
+      else {
+        this.switchIdentity(CurId ? CurId : 'common'); // also switch if id == 0! bug lead to common account checkboxes not operating properly!
+      }
+    }
+    catch(ex) {
+      util.logException("Settings onLoad() switching account", ex);
+    }
 			
 
 		// disable Use default (common account)
@@ -363,6 +415,8 @@ SmartTemplate4.Settings = {
 		window.onCodeWord = function(code, className) {
 			settings.onCodeWord(code, className);
 		};
+    
+		window.addEventListener('resize', settings.resizeSettings);
 
     window.setTimeout( 
 		  function() {
@@ -481,10 +535,10 @@ SmartTemplate4.Settings = {
 				tabbox.selectedIndex = 5;
 				break;
 			case 'fileTemplates': // set up file templates.
-				let idMenu = document.getElementById("msgIdentity");
+				let idMenu = getElement("msgIdentity");
 				if (idMenu)
 					idMenu.selectedIndex = 1;
-				SmartTemplate4.Settings.switchIdentity("fileTemplates");
+				SmartTemplate4.Settings.switchIdentity("fileTemplates", composeType);
 			  break;
 		}
 		
@@ -495,8 +549,8 @@ SmartTemplate4.Settings = {
 			if (prefs.isDebug) debugger;
 			let licenseDate = getElement('licenseDate'),
 			    licenseDateLbl = getElement('licenseDateLabel'),
-					gracePeriod = SmartTemplate4.Licenser.GracePeriod,
-					txtGracePeriod=util.getBundleString("SmartTemplate4.trialDays", "You have {0} trial days left.").replace("{0}", gracePeriod);
+					txtGracePeriod= util.gracePeriodText(SmartTemplate4.Licenser.GracePeriod);
+          
 			if (!licenseDateLbl.getAttribute("originalContent")) { // save original label!
 				licenseDateLbl.setAttribute("originalContent", licenseDateLbl.textContent);
 			}
@@ -518,7 +572,6 @@ SmartTemplate4.Settings = {
 		
 		// Stationery replacement :)
 		SmartTemplate4.fileTemplates.loadCustomMenu(true);
-		
     
 		util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
@@ -535,7 +588,7 @@ SmartTemplate4.Settings = {
 				function() {
 					const st4 = parentWin.SmartTemplate4;
 					st4.Util.logDebug("Refreshing fileTemplate menus...");
-					st4.fileTemplates.initMenus();
+					st4.fileTemplates.initMenus(true); // force reset!
 				} , 100
 			);
 		}
@@ -598,6 +651,10 @@ SmartTemplate4.Settings = {
         code = settings.getFileName(code, editBox, "file");
         return; // cancel
       }
+      if (code.indexOf('%basepath(')==0) {
+        code = settings.getFileName(code, editBox, "basepath");
+        return; // cancel
+      }
       if (code.indexOf('%attach')==0) {
         code = settings.getFileName(code, editBox, "attach");
         return; // cancel
@@ -613,7 +670,9 @@ SmartTemplate4.Settings = {
   // %file(filePath,encoding)%
   // %file(imagePath,altText)%
 	// %attach(filePath)%
-  getFileName: function getFileName(code, editBox, functionName) {
+  // %basepath(folderPath)%
+  // @functionName: file / basepath / attach - corresponding to the ST4 variables %file% / %basepath% / %attach%
+  getFileName: function getFileName(code, editBox, functionName='file') {
     const Cc = Components.classes,
           Ci = Components.interfaces;
     let fileType = "all",
@@ -621,17 +680,30 @@ SmartTemplate4.Settings = {
 		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
 		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
         filterText;
-		if (functionName=="file") 
-			fileType = (code.indexOf('filePath')>0) ? 'html' :
-                   ((code.indexOf('imagePath')>0) ? 'image' : 'unknown');	
-		if (!functionName) functionName='file'; // default %file%
-    
+    switch (functionName) {
+      case "file":
+        fileType = (code.indexOf('filePath')>0) ? 'html' :
+                     ((code.indexOf('imagePath')>0) ? 'image' : 'unknown');	
+        break;
+      case "basepath":
+        fileType = "folder";
+        break;
+    }
     if (fileType=='unknown')
       return false; // error
+                   
+    
     
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
-		fp.init(window, "", fp.modeOpen); // second parameter: prompt
+    if (fileType=='folder')
+      fp.init(window, "", fp.modeGetFolder);
+    else
+      fp.init(window, "", fp.modeOpen); // second parameter: prompt
     switch (fileType) {
+      case 'folder':
+        filterText = bundle.GetStringFromName("fpFolder");
+        fp.appendFilter(filterText, "*.");
+        break;
       case 'html':
         filterText = bundle.GetStringFromName("fpHTMLFile");
         fp.appendFilter(filterText, "*.htm;*.html;*.txt");
@@ -929,9 +1001,10 @@ SmartTemplate4.Settings = {
 
 	// Switch Identity (from account setting window)		// add 0.4.0 S
 	//--------------------------------------------------------------------
-	switchIdentity : function switchIdentity(idKey)	{
+	switchIdentity : function switchIdentity(idKey, composeType)	{
 		let el = document.getElementById("msgIdentityPopup").firstChild,
 		    index = 0;
+    composeType = composeType || null;
 		SmartTemplate4.Util.logDebugOptional("identities", "switchIdentity(" + idKey + ")");
 		while (el) {
 			if (el.getAttribute("value") == idKey) {
@@ -942,7 +1015,23 @@ SmartTemplate4.Settings = {
 				break;
 			}
 			el = el.nextSibling; index++;
-		}
+    }
+    // select the correct compose type tab
+		if (idKey=='fileTemplates' && composeType) {
+      let fileTemplatesTabs = document.getElementById('fileTemplatesTabs'),
+          panelId = composeType + '-fileTemplates',
+          idx = 0;
+      switch (composeType) {
+        case 'new': idx = 0; break;
+        case 'rsp': idx = 1; break;
+        case 'fwd': idx = 2; break;
+      }
+      fileTemplatesTabs.selectedPanel = document.getElementById(panelId);
+      fileTemplatesTabs.selectedIndex = idx;
+      // attract attention to the picker button
+      document.getElementById('btnPickTemplate').classList.add('pulseRed');
+    }
+    
 		SmartTemplate4.Util.logDebugOptional("functions", "switchIdentity(" + idKey + ") COMPLETE");
 
 	} , // add 0.4.0 E
@@ -986,11 +1075,18 @@ SmartTemplate4.Settings = {
 			idx++;
 		}
 		//
-		if (idkey == "fileTemplates") {
+    let btnSave = document.getElementById("btnSaveTemplate"),
+        btnLoad = document.getElementById("btnLoadTemplate"),
+        tipHelp = document.getElementById("helpTemplates"),
+        isShowTemplateSelector = (idkey == "fileTemplates");
+		if (isShowTemplateSelector) {
 			found = true;
 			deck.selectedIndex = 1;
 			this.accountKey = "files";
 		}
+    btnSave.collapsed = (isShowTemplateSelector);
+    btnLoad.collapsed = (isShowTemplateSelector);
+    tipHelp.collapsed = (!isShowTemplateSelector);
 
 		// nothing found, then we are in common! (changed from previous behavior where common accountKey was "", now it is ".common"
 		if (!found) {
@@ -1692,11 +1788,13 @@ SmartTemplate4.Settings = {
 //				    v = mainUtil.Version; // test
 			}
 			
+      let silentUpdateOption = getElement("chkSilentUpdates");
 			switch(result) {
 				case ELS.Valid:
 					let today = new Date(),
 					    later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
 							dateString = later.toISOString().substr(0, 10);
+          silentUpdateOption.disabled = false;
 					// if we were a month ahead would this be expired?
 					if (licenser.DecryptedDate < dateString) {
 						settings.labelLicenseBtn(btnLicense, "extend");
@@ -1715,13 +1813,15 @@ SmartTemplate4.Settings = {
 					beautyTitle.classList.add('aboutLogoPro');
 				  break;
 				case ELS.Expired:
+          silentUpdateOption.disabled = true;
 					settings.labelLicenseBtn(btnLicense, "renew");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'expired');
 					replaceCssClass(btnLicense, 'expired');
 					beautyTitle.setAttribute('src', "chrome://smarttemplate4/skin/logo-pro.png");
 					break;
-				default:
+				default: // no license
+          silentUpdateOption.disabled = true;
           settings.labelLicenseBtn(btnLicense, "buy");
 				  btnLicense.collapsed = false;
 					replaceCssClass(proTab, 'free');

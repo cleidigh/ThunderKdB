@@ -13,7 +13,7 @@
         onunload = "SmartTemplate4.Message.unloadMessage(this);"
         width = "750"
         height = "200">
-
+  <key id="key-esc" keycode="VK_ESCAPE" oncommand="(function doEscape(event) { alert(event); if(event) { event.preventDefault(); event.stopPropagation(); } })();" />
 	<vbox id="messageCanvas" >
 		<hbox id = "titleBox" align = "center" height = "45px">
 		</hbox>
@@ -27,24 +27,27 @@
 			<spacer flex = "1"/>
 			<button id = "ok"
 			        label = "&accept_button;"
-			        onclick = "SmartTemplate4.Message.okMessage();"/>
+			        onclick = "if (!this.disabled) SmartTemplate4.Message.okMessage();"/>
 			<button id = "yes"
 			        label = "&yes_button;"
-			        onclick = "SmartTemplate4.Message.yesMessage();"
+			        onclick = "if (!this.disabled) SmartTemplate4.Message.yesMessage();"
 			        hidden = "true" />
 			<button id = "no"
 			        label = "&no_button;"
-			        onclick = "SmartTemplate4.Message.noMessage();"
+			        onclick = "if (!this.disabled) SmartTemplate4.Message.noMessage();"
 			        hidden = "true" />
 			<button id = "cancel"
 			        label = "&cancel_button;"
-			        onclick = "SmartTemplate4.Message.cancelMessage();"
+			        onclick = "if (!this.disabled) SmartTemplate4.Message.cancelMessage();"
 			        hidden = "true" />
+      <label id="countDown"> </label>
 			<spacer flex = "1"/>
+      
 		</hbox>
 	</vbox>
 
 	<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-main.js"/>
 	<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-util.js"/>
+	<script type = "application/x-javascript" src="chrome://smarttemplate4/content/smartTemplate-prefs.js"/>
 
 </dialog>

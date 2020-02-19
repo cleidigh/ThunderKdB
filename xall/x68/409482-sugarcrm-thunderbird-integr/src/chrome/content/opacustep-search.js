@@ -23,7 +23,7 @@
  * All Rights Reserved.
  ********************************************************************************/
 function opacustepsearch(parent,searchSuggestion,subject){
-	this.max_results = 10;
+	this.max_results = 5;
 	this.parent = parent;
 	this.searchSuggestion = searchSuggestion;
 	this.searchString = '';
@@ -36,7 +36,7 @@ function opacustepsearch(parent,searchSuggestion,subject){
     this.prefs.QueryInterface(Components.interfaces.nsIPrefBranch);
     var macro = this.prefs.getCharPref('casePrefix');
     macro = macro.replace(/[^\w]/, '.');
-    var caseRegexString = opacustep.strings.getString('caseRegex').replace('MACRO', macro);
+    var caseRegexString = opacustep.strings.GetStringFromName('caseRegex').replace('MACRO', macro);
     this.caseRegex = new RegExp(caseRegexString,'i');
 	this.loginTimer = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 	this.allowEdit = false;
@@ -61,7 +61,7 @@ opacustepsearch.prototype.check = function(returnFunc,worker){
 					if(opacustep.debug){dump("opacustepsearch check function failure on line 48\n");}
 					// Hide the status message as something's gone wrong
 					opacustep.setStatus('hidden');
-					opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoLogin'));
+					opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoLogin'));
 					return;
 				}
 			}}
@@ -76,55 +76,37 @@ opacustepsearch.prototype.check = function(returnFunc,worker){
 	checkSession(onceMore);
 };
 
-opacustepsearch.prototype.findRelatedRecords = function(searchObject){
-	while(document.getElementById('opacustep-related').childNodes.length >= 1){
-        	document.getElementById('opacustep-related').removeChild(document.getElementById('opacustep-related').lastChild );
-	}
-	var mailObject = searchObject.mail;
-	if(mailObject.email_id){
-		mailObject.worker.callback = searchObject.findRelatedRecords_callback;
-		var link_module;
-		for(var i in opacustep.searchableModules){
-			link_module = opacustep.searchableModules[i];
-			if(link_module.indexOf('_') != -1){
-					link_module += '_activities_emails';
-			}
-			mailObject.worker.get_relationships('Emails',mailObject.email_id,link_module,null,new Array('id','name','first_name','last_name'),0,searchObject);
-		}
-	}
-};
-
-opacustepsearch.prototype.findRelatedRecords_callback = function(data,mailObject){
-	for(var i in data.entry_list){
-		var id = data.entry_list[i].id;
-		var module_name = data.entry_list[i].module_name;
-		var name = '';
-		if(typeof(data.entry_list[i].name_value_list.name) !== 'undefined'){
-			name = data.entry_list[i].name_value_list.name.value;
-		// If we've not got a name we'll have a last_name ergo person object
-		} else if(typeof(data.entry_list[i].name_value_list.last_name) !== 'undefined'){
-			var first_name = (typeof(data.entry_list[i].name_value_list.first_name) !== 'undefined') ? data.entry_list[i].name_value_list.first_name.value + ' ' : '(...) ';
-			name = first_name + data.entry_list[i].name_value_list.last_name.value;
-		// and if we've not got either we must be in a parallel universe so reward user with 5 stars
-		} else {
-			name = '*****';
-		}
-		var cell = document.createElement('listcell');
-		var row = document.createElement('richlistitem');
-		row.setAttribute('image','chrome://opacustep/content/images/' + module_name + '.png');
-		row.setAttribute('label',name.replace(/&#039;/g,"'").replace(/&quot;/g,'"'));
-		row.setAttribute('id',module_name+":"+id);
-		row.setAttribute('context','quickEditRelated');
-		var onRowClick = function(event){if(event.button == 2){document.getElementById("quickEditRelated").firstChild.id = (this.id);}};
-		row.addEventListener('click',onRowClick);
-		document.getElementById('opacustep-related').appendChild(row);
-	}
-};
 
 opacustepsearch.prototype.search = function(){
 	this.searchWindow = window.openDialog("chrome://opacustep/content/opacustep-search.xul","","chrome,height=530,width=600,resizable=yes,dialog=no,titlebar,centerscreen");
 	this.searchWindow.addEventListener('load', this.updateSearchField, false);
 	this.searchWindow.searchObject = this;
+};
+
+
+opacustepsearch.prototype.onRearchive = function(cb) {
+    if (cb.checked) {
+        cb.ownerDocument.defaultView.searchObject.toggleAttachments('on');
+    } else {
+        cb.ownerDocument.defaultView.searchObject.toggleAttachments();
+    }
+};
+        
+opacustepsearch.prototype.toggleAttachments = function(direction) {
+    direction = direction || 'off';
+    if (opacustep.mails.length > 1) {
+        direction = 'off';
+    }
+	var singleMail = opacustep.mails[0];
+    if (direction == 'on') {
+        if (singleMail.attachmentNames.length > 0) {
+            this.searchWindow.document.getElementById('attachmentBox').hidden = false;
+            this.searchWindow.document.getElementById('allattachments').selectAll();
+            return;
+        }
+    }
+    this.searchWindow.document.getElementById('allattachments').clearSelection();
+    this.searchWindow.document.getElementById('attachmentBox').hidden = true;
 };
 
 
@@ -242,9 +224,9 @@ opacustepsearch.prototype.autoArchiveSearch_callback = function(data,mailObject)
 		if(mailObject.type == 'bulkauto'){
 			opacustep.searchesReturned++;
 			if(opacustep.searchesReturned == opacustep.totalBulkMails){
-				opacustep.setStatus(opacustep.strings.getString('autoArchiving') + " " + (opacustep.totalBulkMails - opacustep.totalMails) + "/"  + opacustep.totalBulkMails);
+				opacustep.setStatus(opacustep.strings.GetStringFromName('autoArchiving') + " " + (opacustep.totalBulkMails - opacustep.totalMails) + "/"  + opacustep.totalBulkMails);
 			} else {
-				opacustep.setStatus(opacustep.strings.getString('searching') + " " + opacustep.searchesReturned + "/"  + opacustep.totalBulkMails);
+				opacustep.setStatus(opacustep.strings.GetStringFromName('searching') + " " + opacustep.searchesReturned + "/"  + opacustep.totalBulkMails);
 			}
 		}
 		if(mailObject.sugarObjects.length > 0){
@@ -258,7 +240,7 @@ opacustepsearch.prototype.autoArchiveSearch_callback = function(data,mailObject)
 			}
 			if(mailObject.type != 'bulkauto'){
 				opacustep.setStatus('hidden');
-				opacustep.notifyUser('auto',mailObject.subject + opacustep.strings.getString('archivedTo') + mailObject.sugarNames.join("\n").replace(/&#039;/g,"'"));
+				opacustep.notifyUser('auto',mailObject.subject + opacustep.strings.GetStringFromName('archivedTo') + mailObject.sugarNames.join("\n").replace(/&#039;/g,"'"));
 				opacustep.wrapUp(mailObject);
 			}
 		} else {
@@ -271,7 +253,7 @@ opacustepsearch.prototype.autoArchiveSearch_callback = function(data,mailObject)
 			if(mailObject.type == 'auto' && mailObject.direction == 'outbound'){
 				opacustep.setStatus('hidden');
 				opacustep.sendAndArchiveStatus = 'unknown';
-				opacustep.notifyUser('notify',opacustep.strings.getString('noAuto') + mailObject.searchSuggestion.replace(/&#039;/g,"'"));
+				opacustep.notifyUser('notify',opacustep.strings.GetStringFromName('noAuto') + mailObject.searchSuggestion.replace(/&#039;/g,"'"));
 				mailObject.composeWindow.document.getElementById('opacustep-send-archive').disabled = false;
 				mailObject.composeWindow.GenericSendMessage.apply();
 			}
@@ -317,33 +299,30 @@ opacustepsearch.prototype.updateFields = function(){
 	}
 	catch(ex){
 	}
-	
+
+    
+    var moduleList = this.searchWindow.document.getElementById('moduleList');
 	for(var i in opacustep.searchableModules)
 	{
 		var row = document.createElement('richlistitem');
-		var cell = document.createElement('listcell');
-		var checkbox = document.createElement('checkbox');
-		checkbox.setAttribute('label',opacustep.moduleLabels[opacustep.searchableModules[i]]);
-		checkbox.setAttribute('id',opacustep.searchableModules[i]);
-		row.setAttribute('allowevents','true');
-		
+        row.value = opacustep.searchableModules[i];
+
+        var label = document.createElement('label');
+        label.value = opacustep.moduleLabels[opacustep.searchableModules[i]];
+
+		moduleList.appendChild(row);
+        row.appendChild(label);
 		for(var j in this.selectedModules){
 			if(this.selectedModules[j] == opacustep.searchableModules[i]){
-				checkbox.setAttribute('checked','true');
+                moduleList.addItemToSelection(row);
 			}
 		}
-		cell.appendChild(checkbox);
-		row.appendChild(cell);
-		this.searchWindow.document.getElementById('moduleList').appendChild(row);
 	}
 	var singleMail = opacustep.mails[0];
 	if(this.allowEdit){
 		// If we're allowing edit and the mail has it's html/plain body (if not we'll set it in the mime callback)
 		if(singleMail.fieldsSet){
 			this.searchWindow.document.getElementById('opacusSearchTabs').hidden = false;
-			if(singleMail.attachmentNames.length > 0 && singleMail.email_id == false){
-				this.searchWindow.document.getElementById('attTab').hidden = false;
-			}
 			this.setEditFields(singleMail);
 		}
 	} else {
@@ -351,9 +330,10 @@ opacustepsearch.prototype.updateFields = function(){
 	}
 	if(singleMail.email_id !== false){
 		this.searchWindow.document.getElementById('forceRearchive').hidden = false;
+        this.toggleAttachments('off');
 	}
 	if(this.searchWindow.document.getElementById('advancedSettings').hidden === false){
-		this.searchWindow.document.getElementById('advancedToggle').value = opacustep.strings.getString('hideAdvanced');
+		this.searchWindow.document.getElementById('advancedToggle').value = opacustep.strings.GetStringFromName('hideAdvanced');
 	}
 };
 
@@ -372,33 +352,28 @@ opacustepsearch.prototype.setEditFields = function(singleMail){
 		heditor.insertHTML(singleMail.html);
 		singleMail.origHtml = editor.contentDocument.documentElement.innerHTML;
 	}
-	for(var i in singleMail.attachmentNames){
+	for (var i in singleMail.attachmentNames) {
 		var row = document.createElement('richlistitem');
-		var cell = document.createElement('listcell');
-		var checkbox = document.createElement('checkbox');
-		checkbox.setAttribute('checked',true);
-		checkbox.className='attSelected';
-		checkbox.setAttribute('label',singleMail.attachmentNames[i]);
-		row.setAttribute('allowevents','true');
-		cell.style.overflow = 'hidden';
-		cell.appendChild(checkbox);
-		row.appendChild(cell);
+        var label = document.createElement('label');
+        label.value = singleMail.attachmentNames[i];
+        row.value = singleMail.attachmentNames[i];
 		list.appendChild(row);
+		row.appendChild(label);
 	}
+    list.selectAll();
+    this.toggleAttachments('on');
 };
 
 opacustepsearch.prototype.getSelectedModules = function(){	
-	var checkboxes = this.searchWindow.document.getElementById('moduleList').getElementsByTagName('checkbox');
-	var return_array = new Array();
-	for(var i in checkboxes){
-		try{
-			var cellLabel = checkboxes[i].getAttribute('id');
-			if(checkboxes[i].checked){
-				return_array.push(cellLabel);
-			}
-		}
-		catch(ex){}
-	}
+	var items = this.searchWindow.document.getElementById('moduleList').selectedItems;
+	var return_array = [];
+    if (items !== null) {
+        for(var i in items){
+            if (items[i].value) {
+                return_array.push(items[i].value);
+            }
+        }
+    }
 	return return_array;
 };
 
@@ -416,7 +391,7 @@ opacustepsearch.prototype.runSearch = function(searchObject){
 	var default_query;
 	var enhanced_query;
 	var selectedModules = searchObject.getSelectedModules();
-	searchObject.max_results = 9;
+	searchObject.max_results = 5;
 	var select_fields = new Array("id","first_name","last_name","account_name","name","case_number","account_id","converted");
 	var link_fields = new Array("id","name","date_modified","status","account_name","sales_stage","assigned_user_id","case_number");
 	var order_by = 'date_modified DESC';
@@ -430,7 +405,7 @@ opacustepsearch.prototype.runSearch = function(searchObject){
 	// Get search and settings from xul doc
 	searchObject.searchString = searchObject.searchWindow.document.getElementById('searchField').value;
 	searchObject.searchWindow.document.getElementById('feedback').removeAttribute('hidden');
-	searchObject.searchWindow.document.getElementById('searchButton').setAttribute('label',opacustep.strings.getString('searching'));
+	searchObject.searchWindow.document.getElementById('searchButton').setAttribute('label',opacustep.strings.GetStringFromName('searching'));
 	searchObject.searchString = searchObject.searchString.toLowerCase().replace(/'/g,"\\'");
 
 	// Clear results from prior searches
@@ -615,7 +590,7 @@ opacustepsearch.prototype.accountSearch = function(searchObject){
 
 	searchObject.searchWindow.document.getElementById('feedback').removeAttribute('hidden');
 	searchObject.searchWindow.document.getElementById('searchButton').disabled=true;
-	searchObject.searchWindow.document.getElementById('searchButton').setAttribute('label',opacustep.strings.getString('searching'));
+	searchObject.searchWindow.document.getElementById('searchButton').setAttribute('label',opacustep.strings.GetStringFromName('searching'));
 	var resultList = searchObject.searchWindow.document.getElementById('resultList');
 
 	for(var j in selectedModules){
@@ -653,7 +628,7 @@ opacustepsearch.prototype.displayResults = function(data,callType){
 	if(opacustep.searchChildren == 0){
 			opacustep.searchObject.searchWindow.document.getElementById('feedback').setAttribute('hidden','true');
 			opacustep.searchObject.searchWindow.document.getElementById('searchButton').disabled=false;
-			opacustep.searchObject.searchWindow.document.getElementById('searchButton').setAttribute('label',opacustep.strings.getString('search'));
+			opacustep.searchObject.searchWindow.document.getElementById('searchButton').setAttribute('label',opacustep.strings.GetStringFromName('search'));
 			opacustep.searchObject.searchWindow.document.getElementById('accSearch').hidden = false;
 
 	}
@@ -773,41 +748,21 @@ opacustepsearch.prototype.createParentListNode = function(resultBox,module)
 	if(opacustep.searchObject.searchWindow.document.getElementById(id) == null ){
 		var labelText = opacustep.moduleLabels[module];
 		var row = document.createElement('richlistitem');
-        row.style.margin = '2px';
-        row.style.padding = '2px';
+        row.style.padding = '4px';
         row.style.borderBottom = '1px solid #BBB';
 		var label = document.createElement('label');
         label.setAttribute('value', labelText);
-        var moduleIcon = document.createElement('image');
-        var imgname = (opacustep.customSelectedModules.indexOf(module_lowercase) == -1) ? module : "Basic";
-        moduleIcon.setAttribute('src', 'chrome://opacustep/content/images/' + imgname + '.png');
-		row.setAttribute('allowevents','true');
 		row.setAttribute('id',id);
-		row.className='allUnticked';
-		row.appendChild(moduleIcon);
+        var span = document.createElement('html:span');
+        span.className = 'moduleIcon moduleIcon' + module;
+        span.appendChild(document.createTextNode(module.slice(0,2)));
+        row.appendChild(span);
 		row.appendChild(label);
-		var onCellClick = function(event){if(event.button == 0){opacustep.searchObject.selectAllChildren(this,module)}};
-		label.addEventListener('click',onCellClick);
-		moduleIcon.addEventListener('click',onCellClick);
 		resultBox.appendChild(row);
+        row.disabled = true;
 	}
 	return false
 };
-
-opacustepsearch.prototype.selectAllChildren = function(el,module){
-	var isTicked=false;
-	var myCells=opacustep.searchObject.searchWindow.document.getElementsByClassName(module + 'checkbox');
-	if(el.parentNode.className == "allUnticked"){
-		el.parentNode.className = "allTicked";
-		isTicked=true;
-	} else {
-		el.parentNode.className = "allUnticked";
-	}
-	for(var i=0;i<myCells.length;i++){
-		myCells[i].checked = isTicked;
-	}
-};
-	
 
 opacustepsearch.prototype.createListNode = function(resultBox,module,record)
 {
@@ -835,20 +790,17 @@ opacustepsearch.prototype.createListNode = function(resultBox,module,record)
 			}
 		}
 		var row = document.createElement('richlistitem');
-		var cell = document.createElement('listcell');
-		var cell2 = document.createElement('listcell');
-		var checkbox = document.createElement('checkbox');
-		checkbox.setAttribute('id',module + ':' + id);
-		checkbox.className='resultTick '+ module + 'checkbox';
-		checkbox.setAttribute('label','  ' + label.replace(/^\s\s*/,'').replace(/\s\s*$/,'').replace(/&#039;/g,"'").replace(/&quot;/g,'"'));
+        var icon = document.createElement('image', {'src':'chrome://opacustep/content/images/edit_inline.png'});
+        var recordName = document.createElement('label');
+		recordName.value = '  ' + label.replace(/^\s\s*/,'').replace(/\s\s*$/,'').replace(/&#039;/g,"'").replace(/&quot;/g,'"');
 		row.setAttribute('allowevents','true');
 		row.setAttribute('tooltiptext',tooltiptext);
-		var onCellEvent = function(event){opacustep.quickEdit(this.nextSibling.firstChild.id + ":searchResults");};
+        row.id = module + ':' + id;
+		var onCellEvent = function(event){opacustep.quickEdit(this.id + ":searchResults");};
 		switch(module){
 			case 'Accounts':
 				row.setAttribute('context','accSearch');
-                cell2.addEventListener('click', onCellEvent);
-                cell2.setAttribute('image', 'chrome://opacustep/content/images/edit_inline.png');
+                icon.addEventListener('click', onCellEvent);
 				break;
 			case 'Leads':
 			case 'Contacts':
@@ -856,20 +808,17 @@ opacustepsearch.prototype.createListNode = function(resultBox,module,record)
 			case 'Cases':
 			case 'Opportunities':
 				row.setAttribute('context','quickEdit');
-                cell2.addEventListener('click', onCellEvent);
-                cell2.setAttribute('image', 'chrome://opacustep/content/images/edit_inline.png');
+                icon.addEventListener('click', onCellEvent);
 				break;
 			default:
 				row.setAttribute('context','openInSugar');
 		}
-		var onRowEvent = function(event){if(event.button == 2 || (typeof(event.keyCode) !== 'undefined' && event.keyCode == 93)){opacustep.searchObject.searchWindow.document.getElementById("openInSugar").firstChild.id = this.firstChild.nextSibling.firstChild.id + ":searchResults";}};
+		var onRowEvent = function(event){if(event.button == 2 || (typeof(event.keyCode) !== 'undefined' && event.keyCode == 93)){opacustep.searchObject.searchWindow.document.getElementById("openInSugar").firstChild.id = this.id + ":searchResults";}};
 		row.addEventListener('click',onRowEvent);
 		row.addEventListener('keydown',onRowEvent);
-		cell.style.overflow = 'hidden';
 
-		cell.appendChild(checkbox);
-		row.appendChild(cell2);
-		row.appendChild(cell);
+		row.appendChild(recordName);
+		row.appendChild(icon);
 		if(opacustep.searchObject.searchWindow.document.getElementById(module_lowercase + 'ParentNode').nextSibling == null){
 			resultBox.appendChild(row);
 		} else {
@@ -879,16 +828,3 @@ opacustepsearch.prototype.createListNode = function(resultBox,module,record)
 	return false;
 };
 
-opacustepsearch.prototype.getCellChecked = function(el,className){
-	var checkBoxes = el.getElementsByClassName(className);
-	var arr = new Array();    
-	for (var i = 0; i < checkBoxes.length; i++){  
-		if (checkBoxes[i].hasAttribute('checked')){
-			arr.push(checkBoxes[i].getAttribute('id'));  
-		}
-	}
-	if(arr.length > 0){
-		return arr;
-	}
-	return false;  
-};

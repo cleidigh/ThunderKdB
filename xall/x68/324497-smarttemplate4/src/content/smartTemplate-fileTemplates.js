@@ -253,7 +253,7 @@ SmartTemplate4.fileTemplates = {
   },
   
   remove: function remove() {
-    if (SmartTemplate4.Preferences.isDebug) debugger;
+    if (SmartTemplate4.Preferences.isDebugOption("fileTemplates.menus")) debugger;
     let listbox = this.ListBox,
         idx = listbox.selectedIndex;
     if (idx<0) return;
@@ -492,9 +492,9 @@ SmartTemplate4.fileTemplates = {
 					fT = SmartTemplate4.fileTemplates,
 					maxFreeItems = 3,
 					isLicensed = util.hasLicense(false);
+		let parent = msgPopup.parentNode;			
 					
-					
-		util.logDebugOptional("fileTemplates", "Add " + composeType + " templates: " + templates.length + " entries");
+		util.logDebugOptional("fileTemplates", "Add " + composeType + " templates: " + templates.length + " entries to [" + (parent.id || 'anonymous') + "]");
 		// first clear entries:
 							
 		let lastChild = msgPopup.lastChild;
@@ -508,6 +508,7 @@ SmartTemplate4.fileTemplates = {
 				msgPopup.appendChild(menuseparator);
 			}
 			
+      /* insert one item for each listed html template */
 			let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
 			menuitem.setAttribute("label", theTemplate.label);
 			menuitem.setAttribute("st4composeType", composeType);
@@ -537,7 +538,7 @@ SmartTemplate4.fileTemplates = {
 					util.logDebugOptional("fileTemplates", "Click event for fileTemplate:\n"
 						+ "composeType=" + composeType + "\n"
 						+ "template=" + theTemplate.label);
-					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label); 
+					fT.onItemClick(menuitem, msgPopup.parentNode, fT, composeType, theTemplate.path, theTemplate.label, event); 
 					return false; 
 				}, 
 				{capture:true } , 
@@ -547,7 +548,7 @@ SmartTemplate4.fileTemplates = {
 			
 			msgPopup.appendChild(menuitem);									 
 		}
-		// add an item for choosing ad hoc file template
+		/* add an item for choosing ad hoc file template - uses file picker */
 		let menuseparator = document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator");
 		menuseparator.id = "fileTemplates-" + composeType + "msg-bottom";
 		menuseparator.classList.add ("st4templateSeparator");
@@ -579,12 +580,43 @@ SmartTemplate4.fileTemplates = {
 			}
 		);
 		msgPopup.appendChild(menuitem);	
+    
+		/* [item 29]  Add configuration item to file template menus. */
+    menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
+		menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.configureMenu","Configure menu items…");
+		menuitem.setAttribute("label", menuTitle);
+		menuitem.setAttribute("st4composeType", composeType);
+		menuitem.classList.add("menuitem-iconic");
+		menuitem.classList.add("st4templateConfig");
+
+		menuitem.addEventListener("click", 
+			function(event) { 
+			  event.stopImmediatePropagation();
+        let win = SmartTemplate4.Util.Mail3PaneWindow,
+            params = {inn:{mode:"fileTemplates",tab:-1, message: "", instance: win.SmartTemplate4, composeType: composeType}, out:null};
+				win.openDialog('chrome://smarttemplate4/content/settings.xul', 
+          'Preferences', 
+          'chrome,titlebar,toolbar,centerscreen,dependent,resizable',
+          null,
+					params);
+				return false; 
+			}, 
+			{capture:true } , 
+			true);
+		// stop the oncommand event bubbling up.
+		menuitem.addEventListener("command",
+			function(event) { 
+				event.stopImmediatePropagation();
+			}
+		);
+		msgPopup.appendChild(menuitem);	
+    
 		
 		// push stationery separator down to the bottom - Stationery appends its own items dynamically.
 		if (lastChild && lastChild.tagName == 'menuseparator') {
 			msgPopup.appendChild(lastChild);
 		}
-		
+		msgPopup.setAttribute("st4configured", true);
 	} ,
 	
 	// find menupopup in button's childNodes. If there is no menupopup, then append a new one.
@@ -600,7 +632,7 @@ SmartTemplate4.fileTemplates = {
 					  if (cV.tagName=="toolbaritem") { // drill down into "smart" reply buttons - hdrSmartReplyButton item
 							cV.childNodes.forEach(
 							  function(bV, bI, id) {
-									if (buttonName.includes(bV.id) && !bV.getAttribute('hidden')) {
+									if (buttonName == bV.id ) {  // && !bV.getAttribute('hidden')
 										element = bV;
 									}
 								}
@@ -608,7 +640,7 @@ SmartTemplate4.fileTemplates = {
 						}
 						else
 							// make sure the button is not hidden!
-							if (buttonName.includes(cV.id) && !cV.getAttribute('hidden')) {
+							if (buttonName == cV.id ) {  // !cV.getAttribute('hidden')
 								element = cV;
 							}
 					}
@@ -623,6 +655,10 @@ SmartTemplate4.fileTemplates = {
 		if (nodes.length) {
 			for (let i = 0; i < nodes.length; ++i) {
 				if (nodes[i].nodeName == 'menupopup') {
+          // Stationery hack for Tb60:
+          // make sure the click event fires even if menu has been enhanced by Stationery too.
+          if (nodes[i].getAttribute('stationery-related-id'))
+            nodes[i].setAttribute("st4nonNative", true);
 					return nodes[i];
 				}
 			}
@@ -630,18 +666,24 @@ SmartTemplate4.fileTemplates = {
 		
 		// there is no existing menu popup, let's create one.
 		let menupopup = doc.createXULElement ? doc.createXULElement('menupopup') : doc.createElement('menupopup');
-		// we do not want to add the click handler on the hdr buttons as the button click is alreayd triggered. (?)
-		// if (!parent)  // issue 14
-			menupopup.setAttribute("st4nonNative", true);
+		// we do not want to add the click handler on the hdr buttons as the button click is already triggered. (?)
+		menupopup.setAttribute("st4nonNative", true);
+    
 		element.appendChild(menupopup);
 		return menupopup;		
 	} ,
 	
-  initMenus: function () {
-		const util = SmartTemplate4.Util;
+  initMenus: function (reset = false) {
+		const util = SmartTemplate4.Util,
+          prefs = SmartTemplate4.Preferences;
 		function logDebug (t) {
 			util.logDebugOptional("fileTemplates", t);
 		} 
+    function needsConfig(menu) {
+      if (!menu) return false;
+      if (reset) return true;
+      return (!menu.getAttribute('st4configured'));
+    }
 		// check for toolbar 1st
 		let toolbar = document.getElementById('mail-bar3');
 		logDebug("initMenus() - toolbar: " + toolbar);
@@ -656,20 +698,34 @@ SmartTemplate4.fileTemplates = {
 					// 0) clear all old items if they exist
 					let separators = document.getElementsByClassName("st4templateSeparator"),
 							items = document.getElementsByClassName("st4templateEntry"),
-							pickers = document.getElementsByClassName("st4templatePicker");
-							
+							pickers = document.getElementsByClassName("st4templatePicker"),
+              configurators = document.getElementsByClassName("st4templateConfig");
+					logDebug("Resetting all menus…");
+          
 					try {
 						 // turn these HTMLCollections into Arrays
 						Array.from(separators).forEach(el => { 
-								el.parentNode.removeChild(el); 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
 							} 
 						);
 						Array.from(items).forEach(el => { 
-								el.parentNode.removeChild(el); 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
 							} 
 						);
 						Array.from(pickers).forEach(el => { 
-								el.parentNode.removeChild(el); 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
+							} 
+						);
+						Array.from(configurators).forEach(el => { 
+                let menu = el.parentNode;
+                if (!menu.getAttribute('st4configured') || reset)
+                  el.parentNode.removeChild(el); 
 							} 
 						);
 					} catch (ex) {;}
@@ -691,8 +747,10 @@ SmartTemplate4.fileTemplates = {
 							btn.appendChild(newMsgPopup);
 						}
 					}
-					if (newMsgPopup)
+          
+					if (needsConfig(newMsgPopup)) {
 						fT.configureMenu(fT.Entries.templatesNew, newMsgPopup, "new");
+          }
 					
 					// 2a) reply entries     --------------------
 					//    calling getPopup() - if it doesn't exist, the popup will be automatically created & appended to button
@@ -705,7 +763,8 @@ SmartTemplate4.fileTemplates = {
 							// attach the menupopup
 							btn.insertBefore(replyPopup, btn.firstChild);
 						}
-						fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+            if (needsConfig(replyPopup))
+						  fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
 					}
 					
 					// 2b) reply all entries     --------------------
@@ -718,43 +777,81 @@ SmartTemplate4.fileTemplates = {
 							// attach the menupopup
 							btn.insertBefore(replyPopup, btn.firstChild);
 						}
-						fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+            if (needsConfig(replyPopup))
+              fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
 					}
 					
 					// 3) forwarding entries --------------------
 					let fwdMsgPopup = document.getElementById('button-ForwardPopup');
-					if (fwdMsgPopup)
-						fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
+					if (needsConfig(fwdMsgPopup)) {
+            fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
+          }
 					
 					// ====  preview header area ==== //
 					let headerToolbox = document.getElementById('header-view-toolbox');
 					if (headerToolbox) {
-						logDebug("headerToolbox found; adding template file menus...");
+						logDebug("headerToolbox found; adding template file menus…");
 						
-						// 4) (header) reply entries     --------------------
-						replyPopup = fT.getPopup(["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrReplyToSenderButton","button-reply","hdrFollowUpButton"], headerToolbox); // compactHeader support
-						if (replyPopup) {
-							let btn = replyPopup.parentNode;
-							if (!replyPopup.id) {
-								replyPopup.id='button-replyMsgPopup';
-								btn.type = "menu-button";
-								// attach the menupopup
-								btn.insertBefore(replyPopup, btn.firstChild);
-							}
-							fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
-						}
-						else logDebug("replyPopup not found.");
+						// 4) (header) reply entries     -------------------- 
+            let hrBtns=["hdrReplyButton","hdrReplyAllButton","hdrReplyListButton","hdrFollowupButton","hdrReplyToSenderButton","button-reply","button-replyall"];
+            for (let b=0; b<hrBtns.length; b++) {
+              let id = hrBtns[b],
+                  theB = document.getElementById(id);
+              if (theB && theB.parentNode.Id == 'hdrSmartReplyButton') { // skip these and deal with them directly
+                if (prefs.isDebugOption("fileTemplates.menus")) debugger;
+                replyPopup = fT.getPopup(id, null);
+              }
+              else
+                replyPopup = fT.getPopup(id, headerToolbox); // compactHeader support
+              if (needsConfig(replyPopup)) {
+                let btn = replyPopup.parentNode;
+                if (!replyPopup.id) {
+                  replyPopup.id='button-replyMsgPopup'+b;
+                  btn.type = "menu-button";
+                  // attach the menupopup
+                  btn.insertBefore(replyPopup, btn.firstChild);
+                }
+                fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+              }
+              if(!replyPopup) logDebug("not found: " + id);            
+            }
+            
+            // 4.1) smart reply button - submenus! parent is
+            let smartSM=["hdrReplyAll_ReplyAllSubButton","hdrReplySubButton"];
+            for (let b=0; b<smartSM.length; b++) {
+              let id=smartSM[b];
+              replyPopup = fT.getPopup(id, headerToolbox); // compactHeader support
+              if (needsConfig(replyPopup)) {
+                let btn = replyPopup.parentNode;
+                if (!replyPopup.id) {
+                  replyPopup.id='button-replyMsgPopup'+b;
+                  btn.type = "menu-button";
+                  // attach the menupopup
+                  btn.insertBefore(replyPopup, btn.firstChild);
+                }
+                fT.configureMenu(fT.Entries.templatesRsp, replyPopup, "rsp");
+              }
+              if(!replyPopup) logDebug("not found: " + id);            
+            }
+
 						
 						// 5) (header) forwarding entries --------------------
 						// what about hdrDualForwardButton ?
-						fwdMsgPopup = fT.getPopup(['hdrForwardButton','button-forward'], headerToolbox); // compactHeader support 'hdrDualForwardButton'
-						if (fwdMsgPopup) {
-							let btn = fwdMsgPopup.parentNode;
-							btn.type = "menu-button";
-							fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
-							btn.insertBefore(fwdMsgPopup, btn.firstChild);
-						}
-						else logDebug("fwdMsgPopup not found.");
+            let hfBtns=['hdrForwardButton','hdrDualForwardButton','button-forward'];
+            for (let b=0; b<hfBtns.length; b++) {
+              let id=hfBtns[b];
+              if (prefs.isDebugOption("fileTemplates.menus")) debugger;
+              fwdMsgPopup = fT.getPopup(id, headerToolbox); // compactHeader support 'hdrDualForwardButton'
+              if (needsConfig(fwdMsgPopup)) {
+                let btn = fwdMsgPopup.parentNode;
+                btn.type = "menu-button";
+                fT.configureMenu(fT.Entries.templatesFwd, fwdMsgPopup, "fwd");
+                btn.insertBefore(fwdMsgPopup, btn.firstChild);
+                logDebug("added fwdMsgPopup to: " + id);
+              }
+              if(!fwdMsgPopup) logDebug("not found: " + id);
+            }
+
 					}
 					else {
 						logDebug("headerToolbox NOT found!");
@@ -803,6 +900,9 @@ SmartTemplate4.fileTemplates = {
 	} ,
 	
 	pickFileFromSettings: function pickFileFromSettings() {
+    let el = document ?
+      document.getElementById('btnPickTemplate') : null;
+    if (el) el.classList.remove('pulseRed'); // remove animation. we've found the button!
 		this.pickFile(
 		  function(localFile) {
 				const prefs = SmartTemplate4.Preferences;
@@ -815,10 +915,13 @@ SmartTemplate4.fileTemplates = {
 					prefs.setStringPref('fileTemplates.path',localFile.parent.path); // store folder as default for next time.
 				}
 			}
-		)
+		),
+    'fileTemplates.path'
 	} ,
 	
-	pickFile: function fileTemplates_pickFile(lastCallback) {
+  // @initialPathPref: defaults to the path setting from menu configuration (ST4 prefs dialog)
+  //                   but can be overwritten for remembering a path when open file is selected from reply menu
+	pickFile: function fileTemplates_pickFile(lastCallback, initialPathPref='fileTemplates.path') {
     const Cc = Components.classes,
           Ci = Components.interfaces,
           util = SmartTemplate4.Util,
@@ -833,10 +936,15 @@ SmartTemplate4.fileTemplates = {
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 				
 		// set default path
-		if (prefs.getStringPref('fileTemplates.path')) {
-			let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-			defaultPath.initWithPath(prefs.getStringPref('fileTemplates.path'))
-			fp.displayDirectory = defaultPath; // nsILocalFile
+		if (prefs.getStringPref(initialPathPref)) {
+      try {
+        let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
+        defaultPath.initWithPath(prefs.getStringPref(initialPathPref))
+        fp.displayDirectory = defaultPath; // nsILocalFile
+      }
+      catch (ex) {
+        util.logException("Failed to open path: " + defaultPath, ex);
+      }
 		} 
 		
 		fp.init(window, "", fp.modeOpen);
@@ -875,8 +983,9 @@ SmartTemplate4.fileTemplates = {
   }  ,
 	
 	// origin: "new", "rsp", "fwd"
-	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label) {
-		const util = SmartTemplate4.Util;
+	onItemClick: function fileTemplate_onItemClick (menuitem, btn, fileTemplateInstance, composeType, path, label, originalEvent) {
+		const util = SmartTemplate4.Util,
+          prefs = SmartTemplate4.Preferences;
 		// now remember the correct template for the next composer window!
 		fileTemplateInstance.armedEntry = 
 		  { 
@@ -889,18 +998,67 @@ SmartTemplate4.fileTemplates = {
 		  + "template:" + label + "\n"
 			+ "path:" + path);
 			
-		let popup = menuitem.parentNode;
+		let popup = menuitem.parentNode,
+        isSmartReplyBtn = 
+          (btn.parentElement.id == "hdrSmartReplyButton"); // contains all "smart" buttons
+        
+    
 		if (popup.getAttribute("st4nonNative") 
 			  || btn.id=="button-newmsg"
 			  || btn.id=="button-forward"  
-			  || btn.id=="button-reply") {
+			  || btn.id=="button-reply"
+        || isSmartReplyBtn) {
 			// we need to trigger the button.
-			// in Thunderbird 68 for some reason it is not done on the message header pagen buttons automatically. 
+			// in Thunderbird 68 for some reason it is not done on the message header page buttons automatically. 
 			// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
       // we may want to control which of these 2 are triggered (inline or attach), but I guess 
 			// without specifying it will likely be the Thunderbird account defaults
-			util.logDebugOptional("fileTemplates","firing btn.click() ...");
-			btn.click(); // or fire the command event? 
+			util.logDebugOptional("fileTemplates","firing btn.click() …");
+      if (isSmartReplyBtn) {
+        const isAlt = originalEvent.altKey, 
+              isCtrl = originalEvent.ctrlKey, 
+              isShift = originalEvent.shiftKey;
+        let buttonNo = 0,
+            buttons = btn.parentElement.childNodes,
+            popupMenuItems = menuitem.parentElement.childNodes;
+        
+        /* select first second third or fourth button. default is the first one (usally reply all): */
+        if (prefs.isDebugOption("fileTemplates.menus")) debugger;
+        if (isShift) buttonNo = 1;
+        if (isCtrl) buttonNo = 2;
+        if (isShift && isCtrl) buttonNo = 3;
+        // find out whether to chose the top (default) command or one below.
+        let counter = 0;
+        for (let c=0; c<popupMenuItems.length; c++) {
+          if (popupMenuItems[c].tagName != "menuitem") continue;
+          if (popupMenuItems[c].getAttribute('hidden')=='true') continue;
+          if (buttonNo == counter) { 
+            let ob = popupMenuItems[c].getAttribute('observes');
+            if (ob) {
+              originalEvent.stopPropagation();
+              util.logDebugOptional("fileTemplates","triggering click event for command: " + ob);
+              return popupMenuItems[c].click();
+            }
+            
+            switch(popupMenuItems[c].id) {
+              case "hdrReplyList_ReplyListSubButton":  // first item
+              case "hdrReplyAll_ReplyAllSubButton":
+              case "hdrRelplyList_ReplyAllSubButton": // genuine typo from Tb
+              case "hdrReplyList_ReplyAllSubButton":  // in case they fix it :)
+              case "hdrReplySubButton":
+              case "hdrReplyList_ReplySubButton":
+                util.logDebugOptional("fileTemplates","Clicking the menu item: " + popupMenuItems[c].id);
+                return popupMenuItems[c].click();
+              default:
+                util.logDebugOptional("fileTemplates","Click direct, Smart Button id:"  + popupMenuItems[c].id);
+                return btn.click(); // or fire the standard command event? 
+            }
+          }
+          counter++;
+        }
+      }
+      else
+        btn.click(); // or fire the standard command event? 
 		}
 		else {
 			util.logDebugOptional("fileTemplates","+======++++++======++++++======+\nNo click event fired for button id=" + btn.id);
@@ -932,7 +1090,8 @@ SmartTemplate4.fileTemplates = {
 							path: localFile.path, 
 							label: name
 						};
-						
+            
+          prefs.setStringPref('fileTemplates.instantPath',localFile.parent.path); // store folder as default for next time.
 					// we need to trigger the button.
 					// in Thunderbird 68 for some reason it is not done on the message header pagen buttons automatically. 
 					// Guess they have event handlers on the submenu items cmd_forwardInline and cmd_forwardAttachment
@@ -940,7 +1099,8 @@ SmartTemplate4.fileTemplates = {
 					// without specifying it will likely be the Thunderbird account defaults
 					btn.click();
 				}
-			}
+			},
+      'fileTemplates.instantPath'
 		)
 	},
 	
@@ -1034,7 +1194,7 @@ SmartTemplate4.fileTemplates = {
 					//reinit "is" because inStream.close(); closes "is" too
 					fstream.init(localFile, 1, 0, null);
 					
-					inStream = Stationery.XPCOM('nsIConverterInputStream');
+					inStream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream); // Stationery.XPCOM('nsIConverterInputStream');
 					inStream.init(fstream, bomCharset, fstream.available(), inStream.DEFAULT_REPLACEMENT_CHARACTER);
 					let str = {};
 					while (inStream.readString(-1, str) != 0) {
@@ -1086,10 +1246,11 @@ SmartTemplate4.fileTemplates = {
 					}
 					if (!charSet) {
 						charSet =  "UTF-8"; // Stationery.getPref('DefaultTemplateEncoding');
-						util.logDebugOptional("fileTemplates","No charset found, defaulting to: " + charSet);
+						util.logDebugOptional("fileTemplates", "No charset found, defaulting to: " + charSet);
 					}
 					if (charSet) {
 						template.HTML = toUnicode(charSet, template.HTML);
+            template.charset = charSet;
 					}
 				}
 				
@@ -1115,7 +1276,8 @@ SmartTemplate4.fileTemplates = {
 			HTML:"", 
 			path: aFileTemplateArmedEntry.path, 
 			label: aFileTemplateArmedEntry.label,
-      failed: false			
+      failed: false,
+      charset: null			
 		};
 		if (this.readHTMLTemplateFile(template)) {
 			try { 

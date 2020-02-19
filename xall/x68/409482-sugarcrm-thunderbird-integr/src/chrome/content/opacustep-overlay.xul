@@ -6,34 +6,6 @@
 <overlay id="opacus-core-overlay"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     xmlns:html="http://www.w3.org/1999/xhtml">
-  <stringbundleset id="stringbundleset">
-    <stringbundle id="opacus_strings" src="chrome://opacustep/locale/strings.properties" />
-  </stringbundleset>
-  <script src="chrome://opacustep/content/opacustep-REST.js" />
-  <script src="chrome://opacustep/content/opacustep-overlay.js" />
-  <script src="chrome://opacustep/content/opacustep-search.js" />
-  <script src="chrome://opacustep/content/opacustep-mail.js" />
-  <script src="chrome://opacustep/content/opacustep-attachment.js" />
-  <script src="chrome://opacustep/content/opacustep-licence.js" />
-  <script src="chrome://opacustep/content/opacustep-create.js" />
-  <script src="chrome://opacustep/content/opacustep-crypt.js" />
-  <script src="chrome://opacustep/content/opacustep-prefs.js" />
-  <script src="chrome://opacustep/content/opacustep-ab.js" />
-  <script src="chrome://opacustep/content/opacustep-createCustom.js" />
-  <menupopup id="taskPopup">
-    <menuitem label="&opacus_context.label;" insertbefore="prefSep" oncommand="opacustep.showPreferences();" />
-    <menuitem label="&opacus_contactsync.label;" insertbefore="prefSep" oncommand="opacustep.contactSync();" />
-  </menupopup>
-  <menupopup id="appmenu_taskPopup">
-    <menuitem label="&opacus_context.label;" insertbefore="prefSep" oncommand="opacustep.showPreferences();" />
-    <menuitem label="&opacus_contactsync.label;" insertbefore="prefSep" oncommand="opacustep.contactSync();" />
-  </menupopup>
-  <menupopup id="menu_HelpPopup">
-    <menuitem label="&opacus_help.label;" insertbefore="prefSep" oncommand="opacustep.showInfoTab('chrome://opacustep/content/version.html');" />
-  </menupopup>
-  <menupopup id="appmenu_helpMenupopup">
-    <menuitem label="&opacus_help.label;" insertbefore="prefSep" oncommand="opacustep.showInfoTab('chrome://opacustep/content/version.html');" />
-  </menupopup>
   <menupopup id="mailContext">
     <menuitem id="mailContext-opacustep-bulk-archive" label="&opacus_context_bulk_archive.label;" insertafter="mailContext-sep-open2" oncommand="opacustep.archive(true);" />
     <menuitem id="mailContext-opacustep-archive" label="&opacus_context_archive.label;" insertafter="mailContext-sep-open2" oncommand="opacustep.archive(false);" />
@@ -70,7 +42,16 @@
          <image src="chrome://opacustep/content/images/icon.svg" height='16' width='16' id="opacusStatusIcon" />
       </hbox>
     <statusbarpanel position='3' hidden='true' id="opacusStatusText" label="" style="border-right:none;border-left:none;" />
-    <hbox position='4' xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="opacusStatusProgressContainer" class="statusbarpanel statusbarpanel-progress" hidden="true"><html:progress xmlns:html="http://www.w3.org/1999/xhtml" class="progressmeter-statusbar" id="opacusStatusProgress"></html:progress></hbox>
+    <hbox position='4' id="opacusStatusProgressContainer" class="statusbarpanel statusbarpanel-progress" hidden="true"><html:progress class="progressmeter-statusbar" id="opacusStatusProgress"></html:progress></hbox>
   </statusbar>
-  <!--<vbox id="folderPaneBox"> <menupopup id="quickEditRelated"> <menuitem label="&opacus_quickEditRelated.label;" onclick="opacustep.quickEdit(this.id)" /> </menupopup> <tree id="folderTree" flex="1" /> <splitter id="opacustep-splitter" insertafter="folderTree" hidden="false" persist="hidden"/> <vbox min-height="0" id="opacustep-sidebarbox" hidden="false" persist="height hidden"> <hbox><button label="Show Related" onclick="opacustep.getRelated()" /></hbox> <listbox id="opacustep-related"></listbox> <spacer flex="1" /> </vbox> </vbox>-->
+  <script src="chrome://opacustep/content/opacustep-overlay.js" />
+  <script src="chrome://opacustep/content/opacustep-REST.js" />
+  <script src="chrome://opacustep/content/opacustep-search.js" />
+  <script src="chrome://opacustep/content/opacustep-mail.js" />
+  <script src="chrome://opacustep/content/opacustep-attachment.js" />
+  <script src="chrome://opacustep/content/opacustep-licence.js" />
+  <script src="chrome://opacustep/content/opacustep-create.js" />
+  <script src="chrome://opacustep/content/opacustep-crypt.js" />
+  <script src="chrome://opacustep/content/opacustep-prefs.js" />
+  <script src="chrome://opacustep/content/opacustep-ab.js" />
 </overlay>

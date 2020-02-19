@@ -36,7 +36,8 @@ pref("extensions.smartTemplate4.cleanDeferredButton.installer", false);
 pref("extensions.smartTemplate4.files.path", ""); /* location of last saved / loaded json template  */
 // pref("extensions.smartTemplate4.fileTemplates", false);  Test; will be removed and set to true
 pref("extensions.smartTemplate4.vars.file.fileTemplateMethod", false); // use the template loader for %file% variables
-pref("extensions.smartTemplate4.fileTemplates.path", ""); /* location of external html templates "Stationery" */
+pref("extensions.smartTemplate4.fileTemplates.path", ""); /* location of external html templates "Stationery" for next menu config action */
+pref("extensions.smartTemplate4.fileTemplates.instantPath", "") /* location for path used for adhoc html template selection */
 pref("extensions.smartTemplate4.dateformat.hour", "numeric"); // change to "2-digit" for forcing 2digit hours in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.day", "numeric"); // change to "2-digit" for forcing 2digit day in datelocal / dateshort
 pref("extensions.smartTemplate4.dateformat.month", "numeric"); // change to "2-digit" for forcing 2digit month in dateshort
@@ -77,8 +78,10 @@ pref("extensions.smartTemplate4.debug.tokens", false);
 pref("extensions.smartTemplate4.debug.tokens.deferred", false);
 pref("extensions.smartTemplate4.debug.mime", false);
 pref("extensions.smartTemplate4.debug.mime.split", false);
+pref("extensions.smartTemplate4.debug.msg",false);
 pref("extensions.smartTemplate4.debug.parseModifier", false);
 pref("extensions.smartTemplate4.debug.fileTemplates",false);
+pref("extensions.smartTemplate4.debug.fileTemplates.menus",false);
 pref("extensions.smartTemplate4.debug.firstRun", false);
 pref("extensions.smartTemplate4.debug.test.update", false);
 pref("extensions.smartTemplate4.debug.identities", false);
@@ -94,8 +97,8 @@ pref("extensions.smartTemplate4.debug.premium.licenser", false);
 pref("extensions.smartTemplate4.debug.premium.rsa", false);
 pref("extensions.smartTemplate4.debug.premium.testNotification", false);
 
-
-// SmartTemplate Pro specific:
+// SmartTemplate License specific:
 pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
 pref("extensions.smartTemplate4.licenseType", 0); // private license, 1-domain
 pref("extensions.smartTemplate4.LicenseKey", "");
+pref("extensions.smartTemplate4.silentUpdate", false);

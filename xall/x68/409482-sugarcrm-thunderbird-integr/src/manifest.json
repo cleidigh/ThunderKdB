@@ -2,14 +2,20 @@
   "manifest_version": 2,
   "name": "Opacus SugarCRM Integration Professional",
   "description": "Synchronises data between Thunderbird and SugarCRM",
-  "version": "1.0.5",
+  "version": "1.0.9",
   "author": "Jonathan Cutting [Opacus]",
   "homepage_url": "https://www.opacus.co.uk/",
-  "legacy": true,
+  "legacy": {
+      "type": "xul",
+      "options": {
+          "page": "chrome://opacustep/content/opacustep-options.xul",
+          "open_in_tab":false
+      }
+  },
   "applications": {
     "gecko": {
       "id": "opacustep@opacus.co.uk",
-      "strict_min_version": "63.0"
+      "strict_min_version": "68.0"
     }
   },
   "icons": {

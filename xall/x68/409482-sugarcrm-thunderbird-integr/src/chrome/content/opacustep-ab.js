@@ -51,12 +51,12 @@ function opacustepab(){
     this.tbirdNews      =   [];
     this.conflicts      =   [];
     this.alertStrings   =   new Array(
-    opacustep.strings.getString('tbirdmods'),
-    opacustep.strings.getString('tbirdadds'),
-    opacustep.strings.getString('sugarmods'),
-    opacustep.strings.getString('sugaradds'),
-    opacustep.strings.getString('tbirddeletes'),
-    opacustep.strings.getString('sugardeletes')
+    opacustep.strings.GetStringFromName('tbirdmods'),
+    opacustep.strings.GetStringFromName('tbirdadds'),
+    opacustep.strings.GetStringFromName('sugarmods'),
+    opacustep.strings.GetStringFromName('sugaradds'),
+    opacustep.strings.GetStringFromName('tbirddeletes'),
+    opacustep.strings.GetStringFromName('sugardeletes')
     );
     this.sugarCardFields = new Array(
         'id',
@@ -209,10 +209,10 @@ opacustepab.prototype.sync = function(type){
         this.sugarLastSync  =   this.prefs.getCharPref("sugarcrmLastSync");
     }
     if(!opacustep.licence.check(opacustep.sugarurlOrig.toLowerCase(),opacustep.sugarcrm_username.toLowerCase())){
-        opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoLicence'));
+        opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoLicence'));
         return;
     }
-    opacustep.setStatus(opacustep.strings.getString('syncing'));
+    opacustep.setStatus(opacustep.strings.GetStringFromName('syncing'));
 
     // Check to see if the Opacus Address Book exists
     if(this.abURI != 'none'){
@@ -235,7 +235,7 @@ opacustepab.prototype.sync = function(type){
         this.tbirdLastSync = '0';
 
         // Create new Address Book
-        var abName = "Opacus SugarCRM "+opacustep.strings.getString(type);
+        var abName = "Opacus SugarCRM "+opacustep.strings.GetStringFromName(type);
         this.abmanager.newAddressBook(abName,'',2);
 
         // Get the URI for the newly created Address Book
@@ -707,10 +707,10 @@ opacustepab.prototype.setAccountRel_callback = function(data,returnObject){
 opacustepab.prototype.populateDeleteWindow = function(abObject,deleteWindow,type){
     var entries;
     if(type == 'sugar'){
-        deleteWindow.document.getElementById('helpText').textContent = opacustep.strings.getString('deleteHelpText') + ' SugarCRM?';
+        deleteWindow.document.getElementById('helpText').textContent = opacustep.strings.GetStringFromName('deleteHelpText') + ' SugarCRM?';
         entries = opacustep.sugarCardsToDelete;
     } else {
-        deleteWindow.document.getElementById('helpText').textContent = opacustep.strings.getString('deleteHelpText') + ' Thunderbird?';
+        deleteWindow.document.getElementById('helpText').textContent = opacustep.strings.GetStringFromName('deleteHelpText') + ' Thunderbird?';
         entries = opacustep.tbirdCardsToDelete;
     }
     var list = deleteWindow.document.getElementById('allrecords');
@@ -727,7 +727,7 @@ opacustepab.prototype.populateDeleteWindow = function(abObject,deleteWindow,type
         checkbox.setAttribute('checked',true);
         checkbox.setAttribute('id',entries[i].module_name + ':' + entries[i].id);
         checkbox.className='deleteSelected';
-        checkbox.setAttribute('label','  '+opacustep.strings.getString(entries[i].module_name) + ': ' + first_name + ' ' + last_name);
+        checkbox.setAttribute('label','  '+opacustep.strings.GetStringFromName(entries[i].module_name) + ': ' + first_name + ' ' + last_name);
         row.setAttribute('allowevents','true');
         cell.setAttribute('flex','1');
         cell.style.overflow = 'hidden';
@@ -902,7 +902,7 @@ opacustepab.prototype.cleanUp = function(abObject){
         }
     }
     if(!mods){
-        text = opacustep.strings.getString('noabmods');
+        text = opacustep.strings.GetStringFromName('noabmods');
     }
     opacustep.notifyUser('sync',text);
     opacustep.setStatus('hidden');
@@ -939,7 +939,7 @@ opacustepab.prototype.check = function(returnFunc){
                 if(counter < 100){
                     checkSession(onceMore);
                 } else {
-                    opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoLogin'));
+                    opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoLogin'));
                     return;
                 }
             }};

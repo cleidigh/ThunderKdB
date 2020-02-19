@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Save Template…">
 <!ENTITY btnLoadTemplate.tooltip "Load Template…">
 <!ENTITY btnYouTube.tooltip "Visit 'Thunderbird Daily' YouTube channel - for tips and tutorials for using Stationery and other Addons">
+<!ENTITY tip.fileTemplates "Click to read full documentation about Stationery and external HTML templates on our support site…">
 <!ENTITY pref_server_def "Уобичајено">
 <!ENTITY pref_def.label "Користи подразумевано">
 <!ENTITY pref_def.cap "Демаркирајте „Користи подразумевано“ да бисте направили прилагођено заглавље цитирања на овом налогу.">
@@ -76,11 +77,13 @@
 <!ENTITY help_keyword.cap "Помоћ">
 <!ENTITY pref_debug_check "Отклањање грешака">
 <!ENTITY pref_hideExamples "Сакриј картицу са примерима">
+<!ENTITY pref_silentUpdates "Тиха ажурирања">
+<!ENTITY pref_silentUpdates_tip "Не отварајте дневник промена након што је СмартТемплате⁴ ажуриран.">
 <!ENTITY pref_debug_tip "Притисните десним тастером миша за напредније опције отклањања грешака.">
 <!ENTITY pref_nameSwap "Исправи LastName, FirstName">
 <!ENTITY pref_nameSwap_tip "Мења „LastName, FirstName“ у „First Last“">
 <!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
+<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. (firstname,lastname,??mail) will show first name followed by last name; if both are unavailable, it will show the mail address.">
 <!ENTITY pref_addressDelimiter "Delimit multiple correspondents with:">
 <!ENTITY pref_addressDelimiter_tip "Delimiter between multiple correspondents. Outlook uses semicolon (;) Default for Thunderbird is Comma (,)">
 <!ENTITY resolveNamesFromAB "Разреши имена из адресара">
@@ -117,6 +120,10 @@
 <!ENTITY fix_var.cap "Контролне променљиве">
 <!ENTITY ownname.label "Ваше име">
 <!ENTITY ownmail.label "Е-адреса">
+<!ENTITY identity_ab "Use the 'addressbook' keyword to retrieve additional identity information from address book.">
+<!ENTITY identity_ab.field "For additional field values, see chapter 'Address Book Fields' below.">
+<!ENTITY identity_ab.example "Example">
+<!ENTITY identity_ab.phoneno "Phone No">
 <!ENTITY date.label "Датум/време (као и заглавље е-поруке)">
 <!ENTITY tomail.label "Е-адреса примаоца">
 <!ENTITY frommail.label "Е-адреса пошиљаоца">
@@ -127,9 +134,11 @@
 <!ENTITY fileImage.label "Датотека слике (PNG, JPG, GIF, BMP или SVG). Ако слика недостаје, altText ће бити приказан.">
 <!ENTITY attach.label "Add file as attachment">
 <!ENTITY cursor.label "Sets the cursor position">
+<!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Прималац">
 <!ENTITY to_note.label "Када име није доступно, биће приказана е-адреса">
 <!ENTITY to.label "Име примаоца (подразумевано)">
+<!ENTITY standardformat.config "Configure default format…">
 <!ENTITY tofirstname.label "Име примаоца">
 <!ENTITY toname.label "Име примаоца">
 <!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
@@ -143,9 +152,16 @@
 <!ENTITY cc.label "Име примаоца (подразумевано)">
 <!ENTITY ccfirstname.label "Име примаоца">
 <!ENTITY ccname.label "Име примаоца">
+<!-- #### TABLE #### -->
+<!ENTITY ab_fields "Address Book Fields">
+<!ENTITY ab_fields.desc "When replying to a matching email address you can now use additional fields for address variables such as &#37;from&#37;, such as:">
+<!ENTITY ab_contact "Contact">
+<!ENTITY ab_private "Private">
+<!ENTITY ab_other "Other">
+<!ENTITY ab_work "Work">
 <!ENTITY spec_form.cap "Посебан формат">
 <!ENTITY specform_note.label "Одељци унутар угластих заграда [[Cc: &#37;cc(name)&#37;]] биће приказани само ако променљива &#37;cc(name)&#37; може да се замени.">
-<!ENTITY ex_brack.label "Пример: „За: boo CC: foo“">
+<!ENTITY ex_brack.label "Пример: „За: Анђелка | CC: Илинка“">
 <!ENTITY brack_with_var.label "Унутра можете да користите следеће променљиве [[...]]">
 <!ENTITY sub_var.cap "Наслов">
 <!ENTITY sub.label "наслов одговорене/прослеђене поруке">
@@ -170,6 +186,22 @@
 <!ENTITY matchTextFromBody "Find a RegEx pattern in quoted Email and insert at function location.">
 <!ENTITY matchTextFromSubject "Find a RegEx pattern in subject and insert at function location.">
 <!ENTITY stringmanip.match.comment "match Functions: The first parameter (the regular expression) must be within double quotes. The second parameter is the match group number. Use 0 to match the complete expression, 1 for the first group etc.">
+<!ENTITY stringmanip.alttext "[optional parameter] Alternative Text: if no match is found, inserts the alternative text instead.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Quote Manipulation">
+<!ENTITY quote_changers.desc "Premium variables to remove text / tags from quoted parts and save space.">
+<!ENTITY deleteQuotedText "Deletes quoted Text">
+<!ENTITY replaceQuotedText "Replaces quoted text with HTML">
+<!ENTITY deleteQuotedTags "Deletes tags from the quote">
+<!ENTITY replaceQuotedTags "Replaces tags from the quote with text or html">
+<!ENTITY Parameters "Parameters">
+<!ENTITY regexpAnyText "Any text - regular expression - must be in double quotes.">
+<!ENTITY replacementHTML "must be in double quotes - either a text or a html tag which will be inserted in quotes wherever a match is found.">
+<!ENTITY quoteLevel "[optional, numeric]:  which minimal quote level to start from">
+<!ENTITY selector "- what you would use to address the tag in css. simplest case 'img', or 'p' but attribute selectors can be added as long as double quotes can be avoided.">
+<!ENTITY minSize "[optional, numeric] - number of kByte, minimum size for removing the tag. This way you can keep smaller images like icons / emojis while discarding large images.">
+<!ENTITY whitespace_note "Note that whitespace can be best represented as \s because it can also contain line breaks. Commas and double quote characters cannot be used.">
+<!ENTITY minSize_detail "It is not always possible to determine size, especially if Thunderbird is still loading the image, often due to large size - in this case the tag will be removed anyway.">
 <!ENTITY fix_vartz.cap "Контролне променљиве за „Формат датума/временска зона“">
 <!ENTITY fix_vartz_note.label "Може да се комбинује са &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Датум/време (локални формат)">
@@ -202,7 +234,7 @@
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
 <!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
+<!ENTITY dateformat.explain "Most time variables above can be used in the parameter string by omitting '&#37;'. See also:">
 <!ENTITY dateformat.example "Example: ">
 <!ENTITY var_xsent.cap "Модификатор &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "По подразумеваним поставкама, променљиве за датум и време ће увек приказивати тренутно време. У комбинацији са &#37;X:=sent&#37;, променљиве ће одражавати датум и време оригиналних порука.">
@@ -248,7 +280,7 @@
 <!ENTITY licenseValidation.invalidMail "Ел. адреса која је повезана са кључем лиценце [{1}] тренутно се не налази у твојим налозима ел. поште. Контактирајте ме преко језичка Подршка, ако вам затреба помоћ.">
 <!ENTITY licenseValidation.notMatchedMail "Шифроване ел. адресе се не подударају са читљивима.">
 <!ENTITY premiumConfig "Премијум могућности">
-<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website">
+<!ENTITY label.premiumFeaturesSite "Read more about Premium Features on our Website…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Mail to Support">
 <!ENTITY support.type "Type:">

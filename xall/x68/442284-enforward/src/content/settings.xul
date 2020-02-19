@@ -1,0 +1,701 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttons="accept, cancel"
+  title="EnForward Preferences"
+  onload="gENFSettings.onLoad();gENFONSettings.onLoad();"
+  style="width:55em;height:45em" persist="screenX screenY"
+  id="enforward-settings">
+	
+	<script type="application/javascript" src="chrome://enforward/content/settings_en.js"/>
+	<script type="application/javascript" src="chrome://enforward/content/settings_on.js"/>
+  <script type="application/javascript" src="chrome://enforward/content/utils.js"/>
+
+	<preferences id="EnPrefList">
+		<preference id="pref_email" name="extensions.enforward.email" type="unichar"/>
+		<preference id="pref_forward_mode" name="extensions.enforward.forward_mode" type="int"/>
+		<preference id="pref_forward_id" name="extensions.enforward.forward_id" type="unichar"/>
+		<preference id="pref_send_interval" name="extensions.enforward.send_interval" type="int"/>
+		<preference id="pref_save_sent" name="extensions.enforward.save_sent" type="bool"/>
+		<preference id="pref_mark_as_forwarded" name="extensions.enforward.mark_as_forwarded" type="bool"/>
+		<preference id="pref_del_org_msg" name="extensions.enforward.del_org_msg" type="bool"/>
+		<preference id="pref_show_conf_dialog" name="extensions.enforward.show_conf_dialog" type="bool"/>
+		<preference id="pref_account_type" name="extensions.enforward.account_type" type="unichar"/>
+		<preference id="pref_alert_limit" name="extensions.enforward.alert_limit" type="bool"/>
+		<preference id="pref_title" name="extensions.enforward.title" type="unichar"/>
+		<preference id="pref_rm_re_fwd" name="extensions.enforward.rm_re_fwd" type="bool"/>
+		<preference id="pref_rm_mltag" name="extensions.enforward.rm_mltag" type="bool"/>
+		<preference id="pref_notebook" name="extensions.enforward.notebook" type="unichar"/>
+		<preference id="pref_tags" name="extensions.enforward.tags" type="unichar"/>
+		<preference id="pref_add_msg_tags" name="extensions.enforward.add_msg_tags" type="bool"/>
+		<preference id="pref_ignored_tags" name="extensions.enforward.ignored_tags" type="unichar"/>
+		<preference id="pref_add_header" name="extensions.enforward.add_header" type="bool"/>
+		<preference id="pref_add_footer" name="extensions.enforward.add_footer" type="bool"/>
+		<preference id="pref_mailto_link" name="extensions.enforward.mailto_link" type="bool"/>
+		<preference id="pref_header_use_html" name="extensions.enforward.header_use_html" type="bool"/>
+		<preference id="pref_footer_use_html" name="extensions.enforward.footer_use_html" type="bool"/>
+		<preference id="pref_add_header" name="extensions.enforward.add_header" type="bool"/>
+		<preference id="pref_add_footer" name="extensions.enforward.add_footer" type="bool"/>
+		<preference id="pref_attachments_forward_mode" name="extensions.enforward.attachments_forward_mode" type="int"/>
+		<preference id="pref_attachments_ext_filter" name="extensions.enforward.attachments_ext_filter" type="unichar"/>
+		<preference id="pref_attachments_size_filter" name="extensions.enforward.attachments_size_filter" type="unichar"/>
+		<preference id="pref_enable_skey" name="extensions.enforward.enable_skey" type="bool"/>
+		<preference id="pref_skey" name="extensions.enforward.skey" type="unichar"/>
+		<preference id="pref_skey_alt" name="extensions.enforward.skey_alt" type="bool"/>
+		<preference id="pref_skey_ctrl" name="extensions.enforward.skey_ctrl" type="bool"/>
+		<preference id="pref_skey_meta" name="extensions.enforward.skey_meta" type="bool"/>
+		<preference id="pref_rem_enable_skey" name="extensions.enforward.rem_enable_skey" type="bool"/>
+		<preference id="pref_rem_skey" name="extensions.enforward.rem_skey" type="unichar"/>
+		<preference id="pref_rem_skey_alt" name="extensions.enforward.rem_skey_alt" type="bool"/>
+		<preference id="pref_rem_skey_ctrl" name="extensions.enforward.rem_skey_ctrl" type="bool"/>
+		<preference id="pref_rem_skey_meta" name="extensions.enforward.rem_skey_meta" type="bool"/>
+	</preferences>
+	
+	<preferences id="OnPrefList">
+		<preference id="pref_onenote.email" name="extensions.enforward.onenote.email" type="unichar"/>
+		<preference id="pref_onenote.forward_id" name="extensions.enforward.onenote.forward_id" type="unichar"/>
+		<preference id="pref_onenote.send_interval" name="extensions.enforward.onenote.send_interval" type="int"/>
+		<preference id="pref_onenote.save_sent" name="extensions.enforward.onenote.save_sent" type="bool"/>
+		<preference id="pref_onenote.mark_as_forwarded" name="extensions.enforward.onenote.mark_as_forwarded" type="bool"/>
+		<preference id="pref_onenote.del_org_msg" name="extensions.enforward.onenote.del_org_msg" type="bool"/>
+		<preference id="pref_onenote.title" name="extensions.enforward.onenote.title" type="unichar"/>
+		<preference id="pref_onenote.rm_re_fwd" name="extensions.enforward.onenote.rm_re_fwd" type="bool"/>
+		<preference id="pref_onenote.rm_mltag" name="extensions.enforward.onenote.rm_mltag" type="bool"/>
+		<preference id="pref_onenote.attachments_forward_mode" name="extensions.enforward.onenote.attachments_forward_mode" type="int"/>
+		<preference id="pref_onenote.attachments_ext_filter" name="extensions.enforward.onenote.attachments_ext_filter" type="unichar"/>
+		<preference id="pref_onenote.attachments_size_filter" name="extensions.enforward.onenote.attachments_size_filter" type="unichar"/>
+		<preference id="pref_onenote.enable_skey" name="extensions.enforward.onenote.enable_skey" type="bool"/>
+		<preference id="pref_onenote.skey" name="extensions.enforward.onenote.skey" type="unichar"/>
+		<preference id="pref_onenote.skey_alt" name="extensions.enforward.onenote.skey_alt" type="bool"/>
+		<preference id="pref_onenote.skey_ctrl" name="extensions.enforward.onenote.skey_ctrl" type="bool"/>
+		<preference id="pref_onenote.skey_meta" name="extensions.enforward.onenote.skey_meta" type="bool"/>
+	</preferences>
+	
+	<preferences id="TipsPrefList">
+			<preference id="PrefPreviewMode" name="extensions.enforward.preview_mode" type="bool"/>
+	</preferences>
+		
+<tabbox>
+	<tabs>
+	  <tab id="entab" label="Evernote"/>
+	  <tab id="ontab" label="Onenote"/>
+	  <tab id="tipstab" label="Tips"/>		
+	</tabs>
+	<tabpanels>
+	<!-- Evernote -->
+	<tabpanel id="EnPref" flex="1">
+		<tabbox>
+		<tabs>
+		  <tab id="gentab" label="General"/>
+		  <tab id="notetab" label="Note"/>
+		  <tab id="memotab" label="Memo"/>
+		  <tab id="atttab" label="Attachments"/>
+		  <tab id="skeytab" label="Keyboard Shortcut"/>
+		</tabs>
+		<tabpanels>
+		  <!-- General -->
+		  <tabpanel orient="vertical" flex="1">
+				<groupbox>
+					<hbox class="groupbox-title">
+    				<label class="header" value="Forwarding"/>
+  				</hbox>
+  				<!--
+					<caption label="Forwarding"/>
+					-->
+					<hbox align="center">
+						<label value="Evernote Email Address:"/>
+						<textbox id="ENFEmail" value="" flex="1"
+										 preference="pref_email" />
+					</hbox>
+					<hbox align="center">
+						<label value="Mode:"/>
+						<radiogroup id="ENFFwdMode" orient="horizontal" align="center"
+												preference="pref_forward_mode" >
+							<radio label="Attachment" value="0" align="center"/>
+							<radio label="Inline" value="1"/>
+						</radiogroup>
+					</hbox>
+					<hbox align="center">
+						<label value="Identity:"/>
+						<menulist id="ENFIdList" preference="pref_forward_id"  >
+							<menupopup id="ENFIdListPopup">
+								<menuitem label="Auto" value="auto"/>
+							</menupopup>
+						</menulist>
+					</hbox>
+					<hbox align="center">
+						<label value="Interval between sending notes:"/>
+						<html:input id="ENFSendInterval" class="size3" type="number" min="0" max="3600" preference="pref_send_interval"/>
+						<!--
+						<textbox id="ENFSendInterval" type="number" min="0" max="3600" size="2" multiline="false"
+										wraparound="true"  preference="pref_send_interval" />
+						-->
+						<label value="seconds"/>
+					</hbox>
+					<checkbox id="ENFSaveInSent" label="Save note in sent folder"
+					  				preference="pref_save_sent" />
+					<checkbox id="ENFMarkAsForward" label="Mark original message as forwarded"
+					  				preference="pref_mark_as_forwarded" />
+					<checkbox id="ENFDelOrgMsg" label="Move orginal message into Trash"
+					  				preference="pref_del_org_msg" />
+					<checkbox id="ENFShowConfirm" label="Confirm before forwarding notes"
+										preference="pref_show_conf_dialog" />
+				</groupbox>
+				
+				<groupbox>
+					<hbox class="groupbox-title">
+    				<label class="header" value="Limitations"/>
+  				</hbox>
+  				<!--
+					<caption label="Limitations"/>
+					-->
+					<hbox align="center">
+						<label value="Account:"/>
+						<menulist id="ENFAccType" oncommand="gENFSettings.onChangeAccountType()" 
+											preference="pref_account_type" >
+							<menupopup>
+								<menuitem label="Plus" value="plus"/>
+								<menuitem label="Premium" value="premium"/>
+							</menupopup>
+						</menulist>
+					</hbox>
+					<hbox align="center">
+						<spacer style="width:2.0em;"/>
+						<label value="Note size:"/>
+						<label id="ENFNoteSize" value="25"/>
+						<label value="MB"/>
+					</hbox>
+					
+					<hbox align="center">
+						<spacer style="width:2.0em;"/>
+						<label value="Sent Today:"/>
+						<!--
+						<progressmeter id="ENFSentNotesMeter" mode="determined" value="0"/>
+						-->
+						<label id="ENFSentNotes" value=""/>
+						<label value="notes"/>
+					</hbox>
+					
+					<checkbox id="ENFAlertLimit" label="Enable limitations check"
+										preference="pref_alert_limit" />
+				</groupbox>
+			</tabpanel>
+			
+			<!-- Note -->
+			<tabpanel orient="vertical" flex="1">
+					<grid flex="1">
+						<columns>
+							<column/>
+							<column flex="1"/>
+						</columns>
+						<rows>
+							<row align="center">
+								<label value="Note title:"/>
+								<textbox id="ENFNoteTitle" value="%S" flex="1"
+												 preference="pref_title" />
+							</row>
+							<row align="center">
+								<spacer/>
+								<checkbox id="ENFRmReFwd" label="Remove Re:, Fwd: and Fw: in front of subject"
+										preference="pref_rm_re_fwd" />
+							</row>
+							<row align="center">
+								<spacer/>
+								<checkbox id="ENFRmMLTag" label="Remove [...] and (...) in front of subject"
+										preference="pref_rm_mltag" />
+							</row>
+						  <row align="center">
+								<label value="Notebook:"/>
+								<textbox id="ENFNotebook" value="" flex="1"
+												 preference="pref_notebook" />
+							</row>
+							<row align="center">
+								<label value="Tags:"/>
+								<textbox id="ENFNoteTags" value="" flex="1"
+												 placeholder="Input tags separated by commas. ex) mail,thunderbird"
+												 preference="pref_tags" />
+							</row>
+							<row align="center">
+								<spacer/>
+								<hbox>
+									<checkbox id="ENFMsgTags" label="Add message tags"
+											preference="pref_add_msg_tags" />
+									<spacer flex="1"/>
+									<button id="ENFEnTags" label="Specify Evernote Tags" oncommand="gENFSettings.editTagList(event);"
+													preference="pref_ignored_tags" />
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+			</tabpanel>
+			
+			<!-- Memo -->
+			<tabpanel orient="vertical" flex="1">
+					<grid>
+						<columns>
+							<column/>
+							<column/>
+						</columns>
+						<rows>
+							<row>
+								<checkbox id="ENFHeader" label="Add header text"
+									preference="pref_add_header" />
+								<checkbox id="ENFFooter" label="Add footer text"
+									preference="pref_add_footer" />
+							</row>
+							<row>
+								<checkbox id="ENFMemoMailLink" label = "Provide mailto: link to email address"
+									preference="pref_mailto_link" />
+							</row>
+						</rows>
+					</grid>
+					<tabbox>
+						<tabs>
+							<tab label="Header"/>
+							<tab label="Footer"/>
+						</tabs>
+						<tabpanels>
+							<tabpanel orient="vertical" flex="1">
+								<checkbox id="ENFHeaderHTML" label="Use HTML tags"
+													preference="pref_header_use_html" />
+								<html:textarea id="ENFHeaderText" rows="10"  flex="1"/>
+								<!--
+								<textbox id="ENFHeaderText" rows="10" multiline="true" flex="1"/>
+								-->
+							</tabpanel>
+							<tabpanel orient="vertical" flex="1">
+								<checkbox id="ENFFooterHTML" label="Use HTML tags"
+													preference="pref_footer_use_html" />
+								<html:textarea id="ENFFooterText" rows="10"  flex="1"/>
+								<!--
+								<textbox id="ENFFooterText" rows="10" multiline="true" flex="1"/>
+								-->
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+				<label value="NOTE: Memo is only available for Attachment mode, which is in the General tab"/>
+			</tabpanel>
+			
+			<!-- Attachments -->
+			<tabpanel orient="vertical" flex="1">
+				<label value="When a message has attachments:"/>
+				<hbox align="center">
+				<spacer style="width:2.0em;"/>
+				<radiogroup id="ENFAttFwdMode" value="0" flex="1" preference="pref_attachments_forward_mode" >
+					<radio label="Forward all" value="0"/>
+					<radio label="Remove all" value="1"/>
+					<radio label="Ask me" value="2"/>
+					<radio label="Remove ones matched with AT LEAST ONE of the filter conditions" value="3"/>
+					<radio label="Remove ones matched with ALL of the filter conditions" value="4"/>
+					<groupbox orient="vertical">
+						<hbox class="groupbox-title">
+  	  				<label class="header" value="Filter conditions"/>
+  					</hbox>
+  					<!--
+						<caption label="Filter conditions"/>
+						-->
+						<hbox align="center">
+							<label value="Extension:"/>
+							<textbox id="ENFAttExtFilter" flex="1" value="" placeholder="Input file extensions separated by commas. ex) exe,avi"
+											 preference="pref_attachments_ext_filter" />
+						</hbox>
+						<hbox align="center">
+							<label value="Size: more than"/>
+							<html:input id="ENFAttSizeFilter" class="size3" type="number" value="0" step="0.01"
+													preference="pref_attachments_size_filter"/>
+							<!--
+							<textbox id="ENFAttSizeFilter" value="0" size="2" type="number" decimalplaces="2" increment="0.01" 
+											 preference="pref_attachments_size_filter" />
+							-->
+							<label value="MB (0.00MB means disabled)"/>
+						</hbox>
+						</groupbox>
+				</radiogroup>
+				</hbox>
+				<hbox>
+				<spacer style="width:2.0em;"/>
+				<label value="NOTE: Detached attachments are not forwarded."/>
+				</hbox>
+			</tabpanel>
+			
+			<!-- Shortcut key -->
+		  <tabpanel flex="1">
+			<vbox flex="1">
+			  <!-- Normal Forward -->
+			  <groupbox>
+			  <hbox class="groupbox-title">
+  	  		<checkbox class="header" label="Forward" id="ENFSkeyEnable" preference="pref_enable_skey"/>
+  			</hbox>
+  			<!--
+				<caption>
+					<checkbox label="Forward" id="ENFSkeyEnable"
+										preference="pref_enable_skey" />
+				</caption>
+				-->
+				<hbox align="center">
+				  <spacer style="height:0.5em"/>
+				  <hbox align="center">
+					<label value="Key:"/>
+					<groupbox orient="vertical" align="center" style="min-width:8.5em">
+					  <label id="ENFSkey" value="" skey="" preference="pref_skey"/>
+					</groupbox>
+					<spacer style="width:1.0em"/>
+					<button id="ENFSkeyChangeButton" label="Change"
+					  disabled="false" onclick="gENFSettings.controlKeyChange(event)"
+					  onkeypress="gENFSettings.changeKey(event)"
+					  onblur="gENFSettings.cancelKeyChange(event)"/>
+				  </hbox>
+				  <spacer style="height:1.0em;"/>
+				  <hbox align="center">
+					<label value="Modifier:"/>
+					<spacer style="height:1.0em"/>
+					<checkbox id="ENFSkeyAlt" label="Alt"
+					  preference="pref_skey_alt" 
+					  />
+					<checkbox id="ENFSkeyCtrl" label="Ctrl"
+					  preference="pref_skey_ctrl" 
+					  />
+					<checkbox id="ENFSkeyMeta" label="Meta"
+					  preference="pref_skey_meta" 
+					  />
+				  </hbox>
+				</hbox>
+			  </groupbox>
+	
+				<!-- Forward with Reminder-->
+			  <groupbox>
+			  <hbox class="groupbox-title">
+  	  		<checkbox class="header" label="Forward with Reminder" id="ENFRemSkeyEnable" preference="pref_rem_enable_skey"/>
+  			</hbox>
+  			<!--
+				<caption>
+					<checkbox label="Forward with Reminder" id="ENFRemSkeyEnable" 
+										preference="pref_rem_enable_skey" />
+				</caption>
+				-->
+				<hbox align="center">
+				  <spacer style="height:0.5em"/>
+				  <hbox align="center">
+					<label value="Key:"/>
+					<groupbox orient="vertical" align="center" style="min-width:8.5em">
+					  <label id="ENFRemSkey" value="" skey="" preference="pref_rem_skey"/>
+					</groupbox>
+					<spacer style="width:1.0em"/>
+					<button id="ENFRemSkeyChangeButton" label="Change"
+					  disabled="false" onclick="gENFSettings.controlKeyChange(event)"
+					  onkeypress="gENFSettings.changeKey(event)"
+					  onblur="gENFSettings.cancelKeyChange(event)"/>
+				  </hbox>
+				  <spacer style="height:1.0em;"/>
+				  <hbox align="center">
+					<label value="Modifier:"/>
+					<spacer style="height:1.0em"/>
+					<checkbox id="ENFRemSkeyAlt" label="Alt"
+					  preference="pref_rem_skey_alt" 
+					  />
+					<checkbox id="ENFRemSkeyCtrl" label="Ctrl"
+					  preference="pref_rem_skey_ctrl" 
+					  />
+					<checkbox id="ENFRemSkeyMeta" label="Meta"
+					  preference="pref_rem_skey_meta" 
+					  />
+				  </hbox>
+				</hbox>
+			  </groupbox>
+				<label value="NOTE: Settings are applied after restart of Thunderbird"/>
+			</vbox>
+		  </tabpanel>
+		</tabpanels>
+		</tabbox>
+	</tabpanel>
+
+	<!-- OneNote -->
+	<tabpanel id="ONPref" flex="1">
+		<tabbox>
+		<tabs>
+		  <tab id="gentab" label="General"/>
+		  <tab id="notetab" label="Note"/>
+		  <tab id="atttab" label="Attachments"/>
+		  <tab id="skeytab" label="Keyboard Shortcut"/>
+		</tabs>
+		<tabpanels>
+		  <!-- General -->
+		  <tabpanel orient="vertical" flex="1">
+				<groupbox>
+					<hbox class="groupbox-title">
+ 	  				<label class="header" value="Forwarding"/>
+ 					</hbox>
+ 					<!--
+					<caption label="Forwarding"/>
+					-->
+					<hbox align="center">
+						<label value="OneNote Email Address:"/>
+						<textbox id="ENFONEmail" value="" flex="1"
+										 preference="pref_onenote.email" />
+						<!--
+						<textbox id="ENFONEmail" value="" flex="1" readonly="true" disabled="true"
+										 preference="pref_onenote.email" />
+						-->
+					</hbox>
+					<hbox align="center">
+						<label value="Identity:"/>
+						<menulist id="ENFONIdList" preference="pref_onenote.forward_id"  >
+							<menupopup id="ENFONIdListPopup">
+							</menupopup>
+						</menulist>
+					</hbox>
+					<hbox align="center">
+						<label value="Interval between sending notes:"/>
+						<html:input id="ENFONSendInterval" class="size3" type="number" min="0" max="3600" preference="pref_onenote.send_interval"/>
+						<!--
+						<textbox id="ENFONSendInterval" type="number" min="0" max="3600" size="2" multiline="false"
+										wraparound="true"  preference="pref_onenote.send_interval" />
+						-->
+						<label value="seconds"/>
+					</hbox>
+					<checkbox id="ENFONSaveInSent" label="Save note in sent folder"
+					  				preference="pref_onenote.save_sent" />
+					<checkbox id="ENFONMarkAsForward" label="Mark original message as forwarded"
+					  				preference="pref_onenote.mark_as_forwarded" />
+					<checkbox id="ENFONDelOrgMsg" label="Move orginal message into Trash"
+					  				preference="pref_onenote.del_org_msg" />
+				</groupbox>
+			</tabpanel>
+			
+			<!-- Note -->
+			<tabpanel orient="vertical" flex="1">
+					<grid flex="1">
+						<columns>
+							<column/>
+							<column flex="1"/>
+						</columns>
+						<rows>
+							<row align="center">
+								<label value="Note title:"/>
+								<textbox id="ENFONNoteTitle" value="%S" flex="1"
+												 preference="pref_onenote.title" />
+							</row>
+							<row align="center">
+								<spacer/>
+								<checkbox id="ENFONRmReFwd" label="Remove Re:, Fwd: and Fw: in front of subject"
+										preference="pref_onenote.rm_re_fwd" />
+							</row>
+							<row align="center">
+								<spacer/>
+								<checkbox id="ENFONRmMLTag" label="Remove [...] and (...) in front of subject"
+										preference="pref_onenote.rm_mltag" />
+							</row>
+						</rows>
+					</grid>
+			</tabpanel>
+			
+			<!-- Attachments -->
+			<tabpanel orient="vertical" flex="1">
+				<label value="When a message has attachments:"/>
+				<hbox align="center">
+				<spacer style="width:2.0em;"/>
+				<radiogroup id="ENFONAttFwdMode" value="0" flex="1" preference="pref_onenote.attachments_forward_mode" >
+					<radio label="Forward all" value="0"/>
+					<radio label="Remove all" value="1"/>
+					<radio label="Ask me" value="2"/>
+					<radio label="Remove ones matched with AT LEAST ONE of the filter conditions" value="3"/>
+					<radio label="Remove ones matched with ALL of the filter conditions" value="4"/>
+					<groupbox orient="vertical">
+						<hbox class="groupbox-title">
+	 	  				<label class="header" value="Filter conditions"/>
+ 						</hbox>
+ 						<!--
+						<caption label="Filter conditions"/>
+						-->
+						<hbox align="center">
+							<label value="Extension:"/>
+							<textbox id="ENFONAttExtFilter" flex="1" value="" placeholder="Input file extensions separated by commas. ex) exe,avi"
+											 preference="pref_onenote.attachments_ext_filter" />
+						</hbox>
+						<hbox align="center">
+							<label value="Size: more than"/>
+							<html:input id="ENFONAttSizeFilter" class="size3" value="0" size="2" type="number" step="0.01" 
+											 preference="pref_onenote.attachments_size_filter" />
+							<!--
+							<textbox id="ENFONAttSizeFilter" value="0" size="2" type="number" decimalplaces="2" increment="0.01" 
+											 preference="pref_onenote.attachments_size_filter" />
+							-->
+							<label value="MB (0.00MB means disabled)"/>
+						</hbox>
+						</groupbox>
+				</radiogroup>
+				</hbox>
+				<hbox>
+				<spacer style="width:2.0em;"/>
+				<label value="NOTE: Detached attachments are not forwarded."/>
+				</hbox>
+			</tabpanel>
+			
+			<!-- Shortcut key -->
+		  <tabpanel flex="1">
+			<vbox flex="1">
+			  <!-- Normal Forward -->
+			  <groupbox>
+				<hbox class="groupbox-title">
+	 				<checkbox class="header" label="Forward" id="ENFONSkeyEnable" preference="pref_onenote.enable_skey"/>
+ 				</hbox>
+ 				<!--
+				<caption>
+					<checkbox label="Forward" id="ENFONSkeyEnable"
+										preference="pref_onenote.enable_skey" />
+				</caption>
+				-->
+				<hbox align="center">
+				  <spacer style="height:0.5em"/>
+				  <hbox align="center">
+					<label value="Key:"/>
+					<groupbox orient="vertical" align="center" style="min-width:8.5em">
+					  <label id="ENFONSkey" value="" skey="" preference="pref_onenote.skey"
+						/>
+					</groupbox>
+					<spacer style="width:1.0em"/>
+					<button id="ENFONSkeyChangeButton" label="Change"
+					  disabled="false" onclick="gENFONSettings.controlKeyChange(event)"
+					  onkeypress="gENFONSettings.changeKey(event)"
+					  onblur="gENFONSettings.cancelKeyChange(event)"/>
+				  </hbox>
+				  <spacer style="height:1.0em;"/>
+				  <hbox align="center">
+					<label value="Modifier:"/>
+					<spacer style="height:1.0em"/>
+					<checkbox id="ENFONSkeyAlt" label="Alt"
+					  preference="pref_onenote.skey_alt" 
+					  />
+					<checkbox id="ENFONSkeyCtrl" label="Ctrl"
+					  preference="pref_onenote.skey_ctrl" 
+					  />
+					<checkbox id="ENFONSkeyMeta" label="Meta"
+					  preference="pref_onenote.skey_meta" 
+					  />
+				  </hbox>
+				</hbox>
+			  </groupbox>
+				<label value="NOTE: Settings are applied after restart of Thunderbird"/>
+			</vbox>
+		  </tabpanel>
+		</tabpanels>
+		</tabbox>
+	</tabpanel>
+
+	<!-- Tips -->
+	<tabpanel id="TipsPref" flex="1">
+		<tabbox>
+		<tabs>
+		  <tab id="comtab" label="Common"/>
+		  <tab id="entab" label="Evernote"/>
+		</tabs>
+		<tabpanels>
+			<!-- Common -->
+			<tabpanel orient="vertical" flex="1">
+				<label value="- Following meta characters are available for note title, notebook, tags and memo:"/>
+				<grid>
+					<columns>
+						<column/>
+						<column/>
+						<column/>
+						<column/>
+						<column/>
+						<column/>
+						<column/>
+					</columns>
+					<rows>
+						<row>
+							<spacer style="width:2.0em;"/>
+							<label value="%S"/>
+							<label value="Subject"/>
+							<label value="%F"/>
+							<label value="Folder name"/>
+							<label value="%N"/>
+							<label value="Account name"/>
+	
+						</row>
+						<row>
+							<spacer style="width:2.0em;"/>
+							<label value="%A"/>
+							<label value="Sender"/>
+							<label value="%T"/>
+							<label value="To:"/>
+							<label value="%C"/>
+							<label value="CC:"/>
+						</row>
+						<row>
+							<spacer style="width:2.0em;"/>
+							<label value="%a"/>
+							<label value="Sender name"/>
+							<label value="%t"/>
+							<label value="To: names"/>
+							<label value="%c"/>
+							<label value="CC: names"/>
+						</row>
+						<row>
+							<spacer style="width:2.0em;"/>
+							<label value="%Y"/>
+							<label value="Sent year"/>
+							<label value="%M"/>
+							<label value="Sent month"/>
+							<label value="%D"/>
+							<label value="Sent date"/>
+						</row>
+						<row>
+							<spacer style="width:2.0em;"/>
+							<label value="%h"/>
+							<label value="Send hours"/>
+							<label value="%m"/>
+							<label value="Sent minutes"/>
+							<label value="%s"/>
+							<label value="Sent seconds"/>
+						</row>
+						<row>
+							<spacer style="width:2.0em;"/>
+							<label value="%R"/>
+							<label value="Removed attachments"/>
+							<label value="%r"/>
+							<label value="Forwarded attachments"/>
+						</row>
+					</rows>
+				</grid>
+				<hbox>
+					<spacer style="width:1.0em;"/>
+					<vbox>
+						<label value='NOTE: %R and %r are only available in memo.'/>
+					</vbox>
+				</hbox>
+
+				<spacer style="height:1.0em;"/>
+				<label value="- Preview mode: In this mode, a note is not sent but saved in the Unsent folder."/>
+				<hbox>
+					<spacer style="width:2.0em;"/>
+					<checkbox id="ENFPreviewMode" label="Enable Preview mode" checked="false" preference="PrefPreviewMode"/>
+				</hbox>
+			</tabpanel>
+			
+			<!-- Evernote -->
+			<tabpanel orient="vertical" flex="1">
+				<label value="- By forwarding notes with shift key, they will be merged into the most recent note"/>
+				<label value="  with the same title in Evernote."/>
+				<label value="  Notebook, tags and reminder settings are ignored in this case."/>
+				
+				<spacer style="height:1.0em;"/>
+				<label value="- Use Inline mode in the General tab if your SMTP server does not allow eml or html attachments."/>
+				<label value="  But please note Inline mode has the following limitations:"/>
+				<label value="  * Memo settings are ignored"/>
+				<label value="  * Always forward whole message; cannot send only selected text"/>
+				
+				<spacer style="height:1.0em;"/>
+				<label value='- @, # and ! in title, notebook and tags are replaced by _.'/>
+			</tabpanel>
+		</tabpanels>
+		</tabbox>
+	</tabpanel>
+	</tabpanels>
+</tabbox>
+</dialog>

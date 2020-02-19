@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<overlay id="ENFwd_overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript; charset=UTF-8" src="chrome://enforward/content/utils.js"/>
+  <script type="application/javascript; charset=UTF-8" src="chrome://enforward/content/ENFwd.js"/>
+  <broadcasterset>
+		<broadcaster id="ENFwd:FwdMenu" collapsed="false"/>
+		<broadcaster id="ENFwd:CancelMenu" collapsed="true"/>
+  </broadcasterset>
+  
+  <keyset id="mailKeys">
+	<!-- For Evernote -->
+    <key id="ENF:key_FwdMsgs" disabled="false"
+	  oncommand="gENForward.forwardSelectedMsgs(event, false, true)"/>
+    <key id="ENF:key_FwdMsgsRem" disabled="false"
+	  oncommand="gENForward.forwardSelectedMsgs(event, true, true)"/>
+ 	<!-- For OneNote -->
+    <key id="ENF:key_FwdMsgsON" disabled="false"
+	  oncommand="gENForward.forwardSelectedMsgsON(event, true)"/>
+  </keyset>
+  
+  <popup id="mailContext">
+    <menuitem id="ENFwd_mailContext-forward_to_en" insertafter="mailContext-forwardAsMenu,mailContext-forward"
+    					observes="ENFwd:FwdMenu"
+    					label="Forward to Evernote" oncommand="gENForward.forwardSelectedMsgs(event, false)" />
+    <menuitem id="ENFwd_mailContext-forward_to_en_rem" insertafter="ENFwd_mailContext-forward_to_en"
+    					observes="ENFwd:FwdMenu"
+    					label="Forward to Evernote with Reminder" oncommand="gENForward.forwardSelectedMsgs(event, true)" />
+    <menuitem id="ENFwd_mailContext-forward_to_on" insertafter="ENFwd_mailContext-forward_to_en_rem"
+    					observes="ENFwd:FwdMenu"
+    					label="Forward to OneNote" oncommand="gENForward.forwardSelectedMsgsON(event)" />
+    <menuitem id="ENFwd_mailContext-forward_cancel" insertafter="ENFwd_mailContext-forward_to_on"
+    					observes="ENFwd:CancelMenu"
+    					label="Abort Fowarding to Evernote" oncommand="gENForward.abortForward()" />
+  </popup>
+
+	<menupopup id="button-ForwardPopup">
+		<menuseparator/>
+		<menuitem id="ENFwd_button-forward_to_en"
+							observes="ENFwd:FwdMenu"
+							label="Forward to Evernote" oncommand="gENForward.forwardSelectedMsgs(event, false)" />
+		<menuitem id="ENFwd_button-forward_to_en_rem"
+							observes="ENFwd:FwdMenu"
+							label="Forward to Evernote with Reminder" oncommand="gENForward.forwardSelectedMsgs(event, true)" />
+		<menuitem id="ENFwd_button-forward_to_on"
+							observes="ENFwd:FwdMenu"
+							label="Forward to OneNote" oncommand="gENForward.forwardSelectedMsgsON(event)" />
+	  <menuitem id="ENFwd_button-forward_cancel" insertafter="ENFwd_button-forward_to_en_on"
+	  					observes="ENFwd:CancelMenu"
+	  					label="Abort Fowarding to Evernote" oncommand="gENForward.abortForward()" />
+	</menupopup>
+
+	<menupopup id="hdrForwardDropdown">
+		<menuseparator/>
+		<menuitem id="ENFwd_hdrbutton-forward_to_en"
+							observes="ENFwd:FwdMenu"
+							label="Forward to Evernote" oncommand="gENForward.forwardSelectedMsgs(event, false)" />
+		<menuitem id="ENFwd_hdrbutton-forward_to_en_rem"
+							observes="ENFwd:FwdMenu"
+							label="Forward to Evernote with Reminder" oncommand="gENForward.forwardSelectedMsgs(event, true)" />
+		<menuitem id="ENFwd_hdrbutton-forward_to_on"
+							observes="ENFwd:FwdMenu"
+							label="Forward to OneNote" oncommand="gENForward.forwardSelectedMsgsON(event)" />
+  	<menuitem id="ENFwd_hdrbutton-forward_cancel" insertafter="ENFwd_hdrbutton-forward_to_en_on"
+  						observes="ENFwd:CancelMenu"
+  						label="Abort Fowarding to Evernote" oncommand="gENForward.abortForward()" />
+	</menupopup>
+
+</overlay>

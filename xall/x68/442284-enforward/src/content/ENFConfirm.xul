@@ -1,0 +1,31 @@
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="Confirm notes information - EnForward"
+        onload="gENFConfirm.onload();"
+        style="min-width:900px; min-height:200px;">
+  <script type="application/javascript" src="chrome://enforward/content/utils.js"/>
+  <script type="application/javascript" src="chrome://enforward/content/ENFConfirm.js"/>
+  
+  <tree id="ENFNoteTree" editable="true" flex="1" rows="5" hidecolumnpicker="false" enableColumnDrag="true">
+  	<treecols>
+  		<treecol id="ENFFwdCol" label="Fwd" type="checkbox" editable="true" persist="width ordinal hidden"/>
+  		<splitter class="tree-splitter"/>
+  		<treecol id="ENFTitleCol" label="Note title" editable="true" width="400" persist="width ordinal hidden"/>
+  		<splitter class="tree-splitter"/>
+  		<treecol id="ENFAppendCol" label="Append" type="checkbox" editable="true" persist="width ordinal hidden"/>
+  		<splitter class="tree-splitter"/>
+  		<treecol id="ENFRemCol" label="Reminder" type="checkbox" editable="true" persist="width ordinal hidden"/>
+  		<splitter class="tree-splitter"/>
+  		<treecol id="ENFRemDateCol" label="Notification" editable="true" width="80" persist="width ordinal hidden"/>
+  		<splitter class="tree-splitter"/>
+  		<treecol id="ENFNotebookCol" label="Notebook" editable="true" widht="100" persist="width ordinal hidden"/>
+  		<splitter class="tree-splitter"/>
+  		<treecol id="ENFTagsCol" label="Tags" editable="true" flex="1" persist="width ordinal hidden"/>
+  		<splitter class="tree-splitter"/>
+  	</treecols>
+  	<treechildren id="ENFNoteTreeBody"/>
+  </tree>
+  <checkbox id="ENFNotShowDialog" label="Don't show this dialog again"/>
+</dialog>

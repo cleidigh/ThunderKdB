@@ -342,24 +342,109 @@ END LICENSE BLOCK
 		# Extended trial period from 14 days to 28 days.
 		# Support using %X:=sent% modifier with %dateformat()% function when replying to / forwarding emails. 
 		
-	Version 2.3 - WIP
+	Version 2.3 - 16/09/2019
 	  # [Bug 26689] Support setting priority with %header.set(priority,value)%
 		# [issue 9] %header.set(from)% not working in Tb60.9
 	  # Add file template function and management functions
 		
-  ...........	
-	
-	Version 2.Future Version? 
-	  # add template management functions. to do:
-		  - add save SmartTemplate items to menu_SaveAsCmdPopup menu
-			- add list of eml templates to wrtie / reply / fwd buttons
-			- support "reply with" from thunderbird template (sub)folder
-			- support editing templates with SmartTemplate variables
-			- ...
-		# ...
-			
+	Version 2.3.1 - 20/09/2019		
+	  # Improved handling of non-working Stationery Add-on in Thunderbird 68.
+		# [issue 14] If Lightning is not installed in Thunderbird 68, the new "file templates" 
+		  function will not load the template
+		# [issue 15] file templates only work on an account if the box "Apply following template" 
+		  is active
+
+	Version 2.4.1 - 20/10/2019
+    # [issue 16] in some cases, images in signature trigger the "blocked file" warning
+      Improved image replacement with %file()% in signatures.
+    # [issue 17] Add switch for Dictionary to change to a different language %spellcheck()%
+    # [issue 19] file templates have unexpected line breaks, and contained images may break
+      this can happen if option "replacing line breaks with <br>" is active
+    # added count down if trial period is expired
+    # fixed an issue with handling missing default identities (licenser would fail silently 
+      rather than log an error in JS console)
+      
+	Version 2.4.2 - 28/10/2019
+    # [issue 20] If a template file starts with UTF detection character "missing file" is wrongly displayed
+    # Sandboxed Javascript (script blocks enclosed in %{%   %}%) implemented in [Bug 25676]
+      stopped working in Thunderbird 68, due to the call to Cu.nukeSandbox failing... 
+      for now, SmartTemplate⁴ allows using these again for versions smaller than 69
+      
+		
+	Version 2.5 - 11/11/2019
+    # Added switch for toggling automatic proofing; %spellcheck(off)% to disable, %spellcheck(on)% to enable
+      To force switching and change to a different language do the toggle command first.
+    # [issue 21] %spellcheck% sometimes doesn't remove red proofing lines after setting language
+    # Improved UI on Template Files page for Stationery users:
+      - removed irrelevant Save and Load buttons
+      - added a (?) button which links to the Stationery help page
+    # Completed some of the missing translations for new functionality in the Finnish, French, Czech, 
+      Spanish, Italian, Polish and Swedish locales.
+    # Extended error log for trouble shooting getFileAsDataURI
+  
+  
+	Version 2.5.1 - 21/11/2019
+    # Fix "cut off descriptions" bug in Linux 
+    # Added "Silent updates" option
+      
+	Version 2.5.2 - 21/11/2019
+    # [issue 22] Cannot add new recipients to address widget after modifiction through header.set
+    # [issue 23] Settings dialog broken in Czech version. 
+    
+
+  Version 2.6 - 29/11/2019
+    # [issue 7] Losing all text in compose window when changing identity / signature not updated correctly
+
+    
+  Version 2.7 - 09/01/2020
+    # [issue 25] Set variables from addressbook fields
+    # [issue 29] Add configuration item to file template menus.
+    # Added an optional 3rd parameter to %matchTextFromBody()% - insert string when no match is found
+    
+  Version 2.8 - 24/01/2019
+    # [issue 31] New functions to remove text / tags from quoted parts
+    # The template editor boxes now resize vertically with dialog for easier editing
+    # new variable for including mailto body text in template
+    # Variables window: Added documentation for address book functions window and slightly modernised layout.
+    # [issue 35] extended %identity% with the variable 'addressbook' in order to pull extended info
+      from the AB based on an email match
+    # completed translations for locales: cs, es-ES, fi, it, pl,pt-BR, ru, sl, sv-SE
+    # added international examples for %dateformat% in the variables tab
+    
+    # [issue 32] Fixed: Single Message window header buttons missing file template dropdowns
+    # [Bug 26755],[issue 30] reply button has no template list if reply add is enabled by default.
+    # when AB replacement is enabled, allow displayname to be a single word.
+    # [issue 38] Images with encoded file URLs are not loaded correctly
+    
+  Version 2.9 - 11/02/2020
+    # [issue 45] Support using %file()% with relative paths and nesting %file()% within a template.
+    # [issue 48] Support [[optional double brackets]] syntax for all extended address book fields
+    # Remember the last path separately for opening templates from the menu directly
+    --
+    # [issue 41] No file template menus in single message window
+    # [issue 42] The (lastname) switch uses first name from AB if only single name is matched from received address.
+    # [issue 43] %file(template)% doesn't work on Mac for paths that start with "/user". 
+    # Fixed: Do not run cleanupDeferredFields() on quoted elements
+    # Remove double quote from alt attribute in %file(image,alttext)%
+    # [issue 46] In Thunderbird 60, mixed Stationery / SmartTemplate, external html file items added by SmartTemplate⁴ do not work. 
+    
+  Version 2.9.1 - WIP
+    # since v2.9: template may not work if signature path is invalid  
+    
+    
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
+	
+	Version 2.x
+    # [issue 30] Reply button loses template menu items
+    # [issue 28] Add "Smart Snippets": smart fragments that can be inserted from Composer.
+    # [issue 27] Insert external HTML Templates from a web page URL
+    # [issue 24] Allow selecting different file template after opening composer. 
+      As starting point, we could just do a file open mechanism and an optional single toolbar button.
+    # [issue 10] add %deliveryoptions% function to force Return Receipt.
+    # [issue 12] <head> section is merged into <body>
+		# ...
+			
   Version 2.2
     # Known issues: The "clean up button" is not automatically installed in the composer toolbar.
 
@@ -650,10 +735,10 @@ var SmartTemplate4 = {
 			}
 			else {
 				flags.isFileTemplate = true; // !!! new Stationery substitution
+        if (!flags.filePaths) flags.filePaths = [];
+        flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
 			}
 		}
-		
-				
 				
 		// We must make sure that Thunderbird's own  NotifyComposeBodyReady has been ran FIRST!		
     // https://searchfox.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#343
@@ -788,7 +873,8 @@ var SmartTemplate4 = {
 	// A handler to switch identity
 	// -------------------------------------------------------------------
 	loadIdentity: function loadIdentity(startup, previousIdentity) {
-		const prefs = SmartTemplate4.Preferences;		
+		const prefs = SmartTemplate4.Preferences,
+          util = SmartTemplate4.Util;    
 		let isTemplateProcessed = false;
 		SmartTemplate4.Util.logDebugOptional('functions','SmartTemplate4.loadIdentity(' + startup +')');
 		if (startup) {
@@ -796,9 +882,11 @@ var SmartTemplate4 = {
 			this.original_LoadIdentity(startup);
 		}
 		else {
+      let newSig;
 		  // change identity on an existing message:
 			// Check body modified or not
-			let isBodyModified = gMsgCompose.bodyModified;
+			let isBodyModified = gMsgCompose.bodyModified,
+          composeType = util.getComposeType();
 			// we can only reliable roll back the previous template and insert
 			// a new one if the user did not start composing yet (otherwise danger
 			// of removing newly composed content)
@@ -809,20 +897,35 @@ var SmartTemplate4 = {
 				//             (I think what really happens is that it is inserted twice)
 				isTemplateProcessed = true;
 			}
-			if (isBodyModified) {
+			else {
 				// if previous id has added a signature, we should try to remove it from there now
 				// we do not touch smartTemplate4-quoteHeader or smartTemplate4-template
 				// as the user might have edited here already! 
 				// however, the signature is important as it should match the from address?
 				if (prefs.getMyBoolPref("removeSigOnIdChangeAfterEdits")) {
-					this.smartTemplate.extractSignature(gMsgCompose.identity, false);
+					newSig = this.smartTemplate.extractSignature(gMsgCompose.identity, false, composeType);
 				}
 			}
 			// AG 31/08/2012 put this back as we need it!
 			// AG 24/08/2012 we do not call this anymore if identity is changed before body is modified!
 			//               as it messes up the signature (pulls it into the blockquote)
-			// if (!isTemplateProcessed)
+      // AG 27/11/2019 [issue 7] putting condition back as it can mess up signature.
+			if (!isTemplateProcessed) {
+        if (isBodyModified && composeType=="new") {
+          // when Thunderbird changes identity, we cannot keep our JavaScript stuff / late resolved variables around.
+          util.cleanupDeferredFields(true); // remove the fields even if they can't be resolved!
+        }
 				this.original_LoadIdentity(startup);
+        // try replacing the (unprocessed) signature that Thunderbird has inserted.
+        if (prefs.getMyBoolPref('parseSignature') && newSig ) {
+          // find and replace signature node.
+          let sigNode = util.findChildNode(gMsgCompose.editor.rootElement, 'moz-signature');
+          if (sigNode) {
+            sigNode.innerHTML = newSig.innerHTML;
+          }
+          gMsgCompose.bodyModified = isBodyModified; // restore body modified flag!
+        }
+      }
 			if (!isBodyModified && gMsgCompose.bodyModified) {
 				gMsgCompose.editor.resetModificationCount();
 			}	// for TB bug?
@@ -835,7 +938,7 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	escapeHtml: function escapeHtml(str)
 	{
-		return str.replace(/&/gm, "&amp;").replace(/"/gm, "&quot;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>");
+		return str.replace(/&/gm, "&amp;").replace(/</gm, "&lt;").replace(/>/gm, "&gt;").replace(/\n/gm, "<br>"); // remove quote replacements
 	},
 
 

@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Spara mall…">
 <!ENTITY btnLoadTemplate.tooltip "Läs in mall…">
 <!ENTITY btnYouTube.tooltip "Besök YouTube-kanalen &quot;Thunderbird Daily&quot; - för tips och guider om hur man använder Stationery och andra tillägg">
+<!ENTITY tip.fileTemplates "Klicka för att läsa full dokumentation om brevpapper och externa HTML-mallar på vår supportwebbplats…">
 <!ENTITY pref_server_def "Allmänna inställningar">
 <!ENTITY pref_def.label "Använd allmänna inställningar">
 <!ENTITY pref_def.cap "Avmarkera &quot;Använd allmänna inställningar&quot; om du vill ändra inställningarna för det här kontot.">
@@ -76,6 +77,8 @@
 <!ENTITY help_keyword.cap "Hjälp">
 <!ENTITY pref_debug_check "Felsökningsläge">
 <!ENTITY pref_hideExamples "Dölj flik med exempel">
+<!ENTITY pref_silentUpdates "Tyst uppdateringar">
+<!ENTITY pref_silentUpdates_tip "Öppna inte ändringsloggen efter att SmartTemplate⁴ har uppdaterats.">
 <!ENTITY pref_debug_tip "Högerklicka för avancerade felsökningsalternativ">
 <!ENTITY pref_nameSwap "Korrigera Efternamn, Förnamn">
 <!ENTITY pref_nameSwap_tip "Ändrar &quot;Efternamn, Förnamn&quot; till &quot;Förnamn Efternamn&quot;">
@@ -105,7 +108,7 @@
 <!ENTITY pref_defaultCharset_tip "När sidhuvuden läses in, återgå till denna teckenuppsättning om den inte kan identifieras.">
 <!-- SmartTemplate4 Pro stuff -->
 <!ENTITY about.cap "Ca SmartTemplate⁴">
-<!ENTITY support.tab "Support">
+<!ENTITY support.tab "Stöd">
 <!ENTITY creator.label "Creator">
 <!ENTITY developer.label "Developer">
 <!ENTITY localename.label "sv-SE">
@@ -117,6 +120,10 @@
 <!ENTITY fix_var.cap "Fasta variabler">
 <!ENTITY ownname.label "Ditt namn">
 <!ENTITY ownmail.label "Din e-postadress">
+<!ENTITY identity_ab "Använd nyckelordet 'addressbook' för att hämta ytterligare identitetsinformation från adressboken.">
+<!ENTITY identity_ab.field "För ytterligare fältvärden, se kapitlet 'Adressbokfält' nedan.">
+<!ENTITY identity_ab.example "Exempel">
+<!ENTITY identity_ab.phoneno "Telefonnr">
 <!ENTITY date.label "Datum och tid (samma som originalmeddelandehuvudet)">
 <!ENTITY tomail.label "Mottagarens e-postadress">
 <!ENTITY frommail.label "Avsändarens e-postadress">
@@ -127,9 +134,11 @@
 <!ENTITY fileImage.label "Bildfil (png,jpg,gif,bmp,svg). Den valfria altText visas om bilden inte kan hittas.">
 <!ENTITY attach.label "Lägg till bifogad fil">
 <!ENTITY cursor.label "Ändrar pekarpositionen">
+<!ENTITY spellcheck.label "Ställer in stavkontrollspråket. Exempelvärden: (en, de-DE, es-ES, ru) - Observera att ordboken måste vara installerad.">
 <!ENTITY to_var.cap "Mottagarvariabler (Till)">
 <!ENTITY to_note.label "När inget namn finns tillgängligt visas e-postadressen">
 <!ENTITY to.label "Mottagarens namn (Standard)">
+<!ENTITY standardformat.config "Konfigurera standardformat…">
 <!ENTITY tofirstname.label "Mottagarens förnamn">
 <!ENTITY toname.label "Mottagarens namn">
 <!ENTITY tofwd.label "Använd fwd för att lägga till klickbara mottagare i vidarebefordrade e-postmeddelanden">
@@ -143,9 +152,16 @@
 <!ENTITY cc.label "Mottagarens namn (Standard)">
 <!ENTITY ccfirstname.label "Mottagarens förnamn">
 <!ENTITY ccname.label "Mottagarens namn">
+<!-- AB switch section -->
+<!ENTITY ab_fields "Adressbokfält">
+<!ENTITY ab_fields.desc "När du svarar på en matchande e-postadress kan du nu använda ytterligare fält för adressvariabler som &#37;from&#37;, till exempel:">
+<!ENTITY ab_contact "Kontakt">
+<!ENTITY ab_private "Privat">
+<!ENTITY ab_other "Annat">
+<!ENTITY ab_work "Arbete">
 <!ENTITY spec_form.cap "Specialformat">
 <!ENTITY specform_note.label "Frasen i välvda Konsoler [[Cc: &#37;cc(name)&#37;]] kommer endast visas om variabeln &#37;cc(name)&#37; kan ersättas!">
-<!ENTITY ex_brack.label "Exempelvis: To: boo Cc: foo">
+<!ENTITY ex_brack.label "Exempelvis: To: ALFHILD | Cc: HENRIKA">
 <!ENTITY brack_with_var.label "The following variables can be used inside [[...]]">
 <!ENTITY sub_var.cap "Ämne">
 <!ENTITY sub.label "Ämne (Samma som original Mailheader)">
@@ -170,6 +186,22 @@
 <!ENTITY matchTextFromBody "Hitta ett RegEx-mönster i citerat e-post och infoga i funktionsplatsen.">
 <!ENTITY matchTextFromSubject "Hitta ett RegEx-mönster i ämnet och infoga i funktionsplatsen.">
 <!ENTITY stringmanip.match.comment "matchfunktion: Den första parametern (det reguljära uttrycket) måste vara inom citationstecken. Den andra parametern är det matchande gruppnumret. Använd 0 för att matcha det fullständiga uttrycket, 1 för den första gruppen, etc.">
+<!ENTITY stringmanip.alttext "[valfri parameter] Alternativ text: om ingen matchning hittas, infogar den alternativa texten istället.">
+<!-- quote manipulation section -->
+<!ENTITY quote_changers.cap "Citat Manipulation">
+<!ENTITY quote_changers.desc "Premiumvariabler för att ta bort text / taggar från citerade delar och spara utrymme.">
+<!ENTITY deleteQuotedText "Tar bort citerad text">
+<!ENTITY replaceQuotedText "Ersätter citerad text med HTML">
+<!ENTITY deleteQuotedTags "Tar bort taggar från offerten">
+<!ENTITY replaceQuotedTags "Ersätter taggar från offerten med text eller html">
+<!ENTITY Parameters "Parametrar">
+<!ENTITY regexpAnyText "All text - regelbundet uttryck - måste vara i dubbla citat.">
+<!ENTITY replacementHTML "måste vara i dubbla citat - antingen en text eller en html-tagg som kommer att infogas i citat varhelst en matchning hittas.">
+<!ENTITY quoteLevel "[valfritt, numeriskt]: vilken lägsta offertnivå att börja med">
+<!ENTITY selector "- vad du skulle använda för att adressera taggen i css. enklaste fallet 'img' eller 'p' men attributväljare kan läggas till så länge dubbla citat kan undvikas.">
+<!ENTITY minSize "[valfritt, numeriskt] - antal kByte, minsta storlek för att ta bort taggen. På detta sätt kan du behålla mindre bilder som ikoner / emojis medan du kasserar stora bilder.">
+<!ENTITY whitespace_note "Observera att whitespace bäst kan representeras som '\s' eftersom det också kan innehålla rader. Kommatecken och dubbelcitationstecken kan inte användas.">
+<!ENTITY minSize_detail "Det är inte alltid möjligt att bestämma storleken korrekt, särskilt om Thunderbird fortfarande laddar bilden, ofta på grund av stor storlek - i detta fall kommer taggen att tas bort ändå.">
 <!ENTITY fix_vartz.cap "Fasta variabler för datumformat och tidszon ">
 <!ENTITY fix_vartz_note.label "Kan kombineras med &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Datum och tid (lokalt format)">
@@ -248,16 +280,16 @@
 <!ENTITY licenseValidation.invalidMail "E-postadressen som är knuten till licensnyckeln [{1}] är för närvarande inte listad i något av dina e-postkonton. Kontakta oss via supportfliken för assistans.">
 <!ENTITY licenseValidation.notMatchedMail "Den krypterade e-postadressen matchar inte den läsbara adressen.">
 <!ENTITY premiumConfig "Premiumfunktioner">
-<!ENTITY label.premiumFeaturesSite "Läs mer om premiumfunktioner på vår webbplats">
+<!ENTITY label.premiumFeaturesSite "Läs mer om premiumfunktioner på vår webbplats…">
 <!-- #####  Support ##### -->
-<!ENTITY support.title "Mail to Support">
-<!ENTITY support.type "Type:">
-<!ENTITY support.type.selectOne "Select a topic!">
-<!ENTITY support.type.license "Licensing related">
-<!ENTITY support.type.tech "Technical">
-<!ENTITY support.type.html "Help with HTML / CSS">
-<!ENTITY support.type.other "Other">
-<!ENTITY support.subject "Subject:">
-<!ENTITY support.mail.instructions "Click the button below to open a new Email to support. If you are having technical problems, consider adding a screenshot.">
-<!ENTITY support.compose "Write to support…">
-<!ENTITY support.links "Support Links">
+<!ENTITY support.title "skriva Mail to Support">
+<!ENTITY support.type "Typ:">
+<!ENTITY support.type.selectOne "Välj ett ämne!">
+<!ENTITY support.type.license "Licensrelaterade">
+<!ENTITY support.type.tech "Teknisk">
+<!ENTITY support.type.html "Hjälp med HTML / CSS">
+<!ENTITY support.type.other "Övrig">
+<!ENTITY support.subject "Ämne:">
+<!ENTITY support.mail.instructions "Klicka på knappen nedan för att öppna en ny e-post som ska stödjas. Om du har tekniska problem kan du överväga att lägga till en skärmdump.">
+<!ENTITY support.compose "Skriv för att stödja…">
+<!ENTITY support.links "Support Länkar">

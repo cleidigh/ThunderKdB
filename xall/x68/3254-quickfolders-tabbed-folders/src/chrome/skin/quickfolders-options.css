@@ -333,7 +333,7 @@ hbox.quickhelp-dbg {
 	font-family: Consolas, Courier, monospace;
 }
 #txtLicenseKey {
-	height: 4.5em !important;
+	height: 5.2em !important;
 	min-width: 45em; /* avoid "shrinking" too much in licenseKey only mode */
 }
 
@@ -582,3 +582,29 @@ hbox.quickhelp-dbg {
   background-color: var(--lwt-accent-color-inactive, var(--lwt-accent-color)) !important;
 }
 */
+
+/* number fields */
+textbox[type="number"] {
+	padding-right: 0;
+	padding-bottom: 1px;
+	padding-top: 1px;
+	margin-right: 0px;
+}
+textbox[type="number"] .textbox-input {
+	margin: 0;
+}
+
+.num1digit {
+	max-width: 4em;
+	width: auto;
+}
+
+.num2digits {
+	max-width: 5em;
+	width: auto;
+}
+
+.num3digits {
+	max-width: 6em;
+	width: auto;
+}

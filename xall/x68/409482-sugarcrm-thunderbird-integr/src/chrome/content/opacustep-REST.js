@@ -97,7 +97,7 @@ opacusteprest.prototype.full_login_callback = function(response, extraData){
         if (extraData == 'test' || extraData == 'silenttest'){
             opacustep.successfulConnection = true;
             if (extraData == 'test') {
-                opacustep.notifyUser('prompt',opacustep.strings.getString('settingsSuccess'));
+                opacustep.notifyUser('prompt',opacustep.strings.GetStringFromName('settingsSuccess'));
             } else {
                 opacustep.prefsObject.silentActivate();
             }
@@ -107,9 +107,9 @@ opacusteprest.prototype.full_login_callback = function(response, extraData){
         // Hide status message as something's gone wrong
         opacustep.setStatus('hidden');
         if(extraData == 'test'){
-            opacustep.notifyUser('prompt',opacustep.strings.getString('notifyNoLogin'));
+            opacustep.notifyUser('prompt',opacustep.strings.GetStringFromName('notifyNoLogin'));
         } else if (extraData != 'silenttest') {
-            opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoLogin'));
+            opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoLogin'));
         }
     }
     opacustep.suppressLicenseErrors = false;
@@ -163,7 +163,15 @@ opacusteprest.prototype.makeRequest = function(method,rest_data,extraData){
                     orest.get_server_info(false,'');
                 } else {
                     try{
-                        var parsed = JSON.parse(client.responseText);
+                        try {
+                            var parsed = JSON.parse(client.responseText);
+                        }
+                        catch (ex) {
+                            var parsed = client.responseText;
+                        }
+                        if (method !== 'seamless_login' && typeof(parsed) !== 'object') {
+                            throw "Unable to correctly parse response as JSON";
+                        }
                         if(parsed.name == 'Invalid Session ID'){
                             opacustep.console.logStringMessage("OpacusSTP received Invalid Session ID from last call: " + params);
                         }
@@ -182,12 +190,12 @@ opacusteprest.prototype.makeRequest = function(method,rest_data,extraData){
                             client.setRequestHeader("Connection", "close");
                             client.send(params);
                         } else {
-                            opacustep.console.logStringMessage("OpacusSTP unable to parse response: " + client.responseText);
+                            opacustep.console.logStringMessage("Opacus unable to parse response, error " + ex + ", response: " + client.responseText);
                             if(opacustep.debug){
-                                dump("Unable to parse response: " + client.responseText + "\n\n");
+                                dump("Unable to parse response, error " + ex + ", response: " + client.responseText + "\n\n");
                             }
                             orest.callback("ERROR", extraData);
-                            opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoArchive'));
+                            opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoArchive'));
                             return;
                         }
                     }
@@ -203,7 +211,7 @@ opacusteprest.prototype.makeRequest = function(method,rest_data,extraData){
                 catch(ex){
                     opacustep.console.logStringMessage("OpacusSTP http call returned no error message");
                 }
-                opacustep.notifyUser('critical',opacustep.strings.getString('notifyNoConnect'));
+                opacustep.notifyUser('critical',opacustep.strings.GetStringFromName('notifyNoConnect'));
             }
         }
     };
@@ -328,7 +336,8 @@ opacusteprest.prototype.fullArchive = function(mailObject){
             "from_addr_name" : mailObject.authorName,
             "parent_id" : mailObject.parent_id,
             "parent_type" : mailObject.parent_type,
-            "date_sent" : mailObject.formatDate(mailObject.unixTime)
+            "date_sent" : mailObject.formatDate(mailObject.unixTime),
+            "date_sent_received" : mailObject.formatDate(mailObject.unixTime)
         }
     };
     if (opacustep.user_default_team_id !== '') {

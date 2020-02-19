@@ -585,7 +585,7 @@ UndigestifyKamensUs.UriStreamListener.prototype = {
 	}
     },
 
-    onDataAvailable: function(aReq, aContext, aInputStream, aOffset, aCount) {
+    onDataAvailable: function(aReq, aInputStream, aOffset, aCount) {
 	var stream = Components
 	    .classes["@mozilla.org/scriptableinputstream;1"]
 	    .createInstance()

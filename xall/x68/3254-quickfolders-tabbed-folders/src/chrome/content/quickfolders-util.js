@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.16", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "4.17.5", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -93,7 +93,8 @@ QuickFolders.Util = {
 		EMAIL_RECURSIVE : 0x0004,
     CUSTOM_CSS :      0x0100,
     CUSTOM_PALETTE :  0x0200,
-		IGNORE_QUICKJUMP: 0x0400
+		IGNORE_QUICKJUMP: 0x0400,
+    SETMAIL_UNREAD:   0x0800         // [Bug 26683]
   } ,	
 	// avoid these global objects
 	Cc: Components.classes,
@@ -859,7 +860,6 @@ QuickFolders.Util = {
         util.slideAlert (util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
 				return null;
 			}
-			let targetResource = targetFolder.QueryInterface(Ci.nsIRDFResource);
 			step = 1;
 
 			let messageList,
@@ -915,8 +915,7 @@ QuickFolders.Util = {
         return null;
       }
 			step = 5;
-			let sourceResource = sourceFolder.QueryInterface(Ci.nsIRDFResource),
-			    cs = Components.classes["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
+			let cs = Components.classes["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
 			step = 6;
 			targetFolder = targetFolder.QueryInterface(Ci.nsIMsgFolder);
 			step = 7;
@@ -1984,6 +1983,8 @@ QuickFolders.Util.FirstRun = {
 				if ((pureVersion.indexOf('4.7.') == 0 && prev.indexOf("4.7") == 0)
 					  ||
 					  (pureVersion.indexOf('4.9.') == 0 && prev.indexOf("4.9") == 0)
+            ||
+            (pureVersion.indexOf('4.17.4') == 0 && prev.indexOf("4.17.3") == 0)
 					  )
         {
 					suppressVersionScreen = true;
@@ -2014,7 +2015,7 @@ QuickFolders.Util.FirstRun = {
 						// display version history - disable by right-clicking label above show history panel
 						if (!suppressVersionScreen) {
 							util.logDebugOptional ("firstrun","open tab for version history, QF " + current);
-							window.setTimeout(function(){util.openURL(null, versionPage);}, 2200);
+							window.setTimeout(function(){ util.openURL(null, versionPage); }, 2200);
 						}
 					}
 

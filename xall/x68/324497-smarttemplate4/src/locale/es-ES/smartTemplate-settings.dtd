@@ -59,6 +59,7 @@
 <!ENTITY btnSaveTemplate.tooltip "Guardar plantilla…">
 <!ENTITY btnLoadTemplate.tooltip "Cargar plantilla…">
 <!ENTITY btnYouTube.tooltip "Visite el canal &quot;Thunderbird Daily&quot; en Youtube: encontrará consejos y tutoriales sobre Stationery y otros complementos.">
+<!ENTITY tip.fileTemplates "Haga clic para leer la documentación completa sobre Papelería y plantillas HTML externas en nuestro sitio de soporte…">
 <!ENTITY pref_server_def "Común">
 <!ENTITY pref_def.label "Usar común">
 <!ENTITY pref_def.cap "Deseleccione 'Usar común' para crear un encabezado de cita personalizado para esta cuenta.">
@@ -76,11 +77,13 @@
 <!ENTITY help_keyword.cap "Ayuda">
 <!ENTITY pref_debug_check "Modo depuración">
 <!ENTITY pref_hideExamples "Ocultar pestaña de ejemplos">
+<!ENTITY pref_silentUpdates "Actualizaciones silenciosas">
+<!ENTITY pref_silentUpdates_tip "No abra el registro de cambios después de actualizar SmartTemplate⁴.">
 <!ENTITY pref_debug_tip "Haga clic derecho para opciones avanzadas de depuración">
 <!ENTITY pref_nameSwap "Corregir Apellido, Nombre">
 <!ENTITY pref_nameSwap_tip "Camiba 'Apellido, Nombre' a 'Nombre Apellido'">
 <!ENTITY defaultMimeFormat "Default address format:">
-<!ENTITY defaultMimeFormat_tip "Format to use when replacing plain &#37;to&#37; &#37;from&#37; &#37;cc&#37; addresses. E.g. firstname,lastname,??mail will show first name followed by last name; if both are unavailable, it will show the mail address.">
+<!ENTITY defaultMimeFormat_tip "Formato para usar al reemplazar de las direcciones &#37;to&#37; &#37;from&#37; &#37;cc&#37;.ej.  (firstname,lastname,??mail) mostrará el nombre seguido del apellido; si ambos no están disponibles, mostrará la dirección de correo.">
 <!ENTITY pref_addressDelimiter "Delimitar corresponsales múltiples con:">
 <!ENTITY pref_addressDelimiter_tip "Delimitador entre corresponsales múltiples. Outlook utiliza el punto y coma (;), mientras que Thunderbird usa por defecto la coma (,).">
 <!ENTITY resolveNamesFromAB "Resolver nombres a partir de la agenda">
@@ -117,6 +120,10 @@
 <!ENTITY fix_var.cap "Variables fijas">
 <!ENTITY ownname.label "Su nombre">
 <!ENTITY ownmail.label "Su dirección de correo">
+<!ENTITY identity_ab "Use la palabra clave 'addressbook' para recuperar información de identidad adicional de la libreta de direcciones.">
+<!ENTITY identity_ab.field "Para valores de campo adicionales, consulte el capítulo 'Campos de la libreta de direcciones' a continuación.">
+<!ENTITY identity_ab.example "Ejemplo">
+<!ENTITY identity_ab.phoneno "Telefono no">
 <!ENTITY date.label "Fecha y hora (las de la cabecera original del correo)">
 <!ENTITY tomail.label "Dirección del destinatario">
 <!ENTITY frommail.label "Dirección del remitente">
@@ -127,12 +134,14 @@
 <!ENTITY fileImage.label "Archivo de imagen (png,jpg,gif,bmp,svg). El texto alternativo opcional se muestra si no se puede encontrar la imagen.">
 <!ENTITY attach.label "Añadir archivo como adjunto">
 <!ENTITY cursor.label "Establece la posición del cursor">
+<!ENTITY spellcheck.label "Establece el lenguaje de corrección ortográfica. Valores de ejemplo: (en, de-DE, es-ES, ru): tenga en cuenta que el diccionario debe estar instalado.">
 <!ENTITY to_var.cap "Destinatario (Para)">
 <!ENTITY to_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY to.label "Nombre del destinatario (predeterminado)">
+<!ENTITY standardformat.config "Configurar formato predeterminado…">
 <!ENTITY tofirstname.label "Nombre de pila del destinatario">
 <!ENTITY toname.label "Apellido del destinatario">
-<!ENTITY tofwd.label "Use fwd to add the clickable recipient in forwarded mails">
+<!ENTITY tofwd.label "Use fwd para agregar el destinatario en el que se puede hacer clic en los correos reenviados">
 <!ENTITY from_var.cap "Remitente (De)">
 <!ENTITY from_note.label "Si no se dispone del nombre, se mostrará la dirección de correo">
 <!ENTITY from.label "Nombre de remitente (predeterminado)">
@@ -143,9 +152,16 @@
 <!ENTITY cc.label "Nombre de destinatario (predeterminado)">
 <!ENTITY ccfirstname.label "Nombre de pila del destinatario">
 <!ENTITY ccname.label "Apellido del destinatario">
+<!-- #### TABLE #### -->
+<!ENTITY ab_fields "Variables de la libreta de direcciones">
+<!ENTITY ab_fields.desc "Al responder a una dirección de correo electrónico coincidente, ahora puede usar campos adicionales para variables de dirección como &#37;from&#37;, como:">
+<!ENTITY ab_contact "Contacto">
+<!ENTITY ab_private "Privado">
+<!ENTITY ab_other "Otros">
+<!ENTITY ab_work "Trabajo">
 <!ENTITY spec_form.cap "Formato especial">
 <!ENTITY specform_note.label "Sólo se mostrará la frase [[Cc: &#37;cc(name)&#37;]] si se puede sustituir la variable &#37;cc(name)&#37;">
-<!ENTITY ex_brack.label "Ejemplo: Para: boo Cc: foo">
+<!ENTITY ex_brack.label "Ejemplo: Para: ÁGUEDA | Cc: BENIGNO">
 <!ENTITY brack_with_var.label "Las siguientes variables pueden usarse dentro de [[…]]">
 <!ENTITY sub_var.cap "Asunto">
 <!ENTITY sub.label "asunto del correo que se responde o reenvía.">
@@ -170,6 +186,22 @@
 <!ENTITY matchTextFromBody "Encontrar una patrón de RegEx en el correco citado e insertar en la ubicación de la función.">
 <!ENTITY matchTextFromSubject "Encontrar una patrón de RegEx en el asunto e insertar en la ubicación de la función.">
 <!ENTITY stringmanip.match.comment "Funciones de coincidencia: El primer parámetro (expresión regular) debe estar dentro de comillas. El segundo es el el número de grupo de coincidencia. Use 0 para que coincida toda la expresión, 1 para el primer grupo, etc.">
+<!ENTITY stringmanip.alttext "[parámetro opcional] Texto alternativo: si no se encuentra ninguna coincidencia, inserta el texto alternativo en su lugar.">
+<!-- SmartTemplate4 Pro stuff -->
+<!ENTITY quote_changers.cap "Manipulación de cotizaciones">
+<!ENTITY quote_changers.desc "Variables premium para eliminar texto / etiquetas de las partes citadas y ahorrar espacio.">
+<!ENTITY deleteQuotedText "Elimina el texto citado">
+<!ENTITY replaceQuotedText "Reemplaza el texto citado con HTML">
+<!ENTITY deleteQuotedTags "Elimina tags de la cita.">
+<!ENTITY replaceQuotedTags "Reemplaza las etiquetas html de la cita con texto o html">
+<!ENTITY Parameters "Parámetros">
+<!ENTITY regexpAnyText "Cualquier texto, expresión regular, debe estar entre comillas dobles.">
+<!ENTITY replacementHTML "debe estar entre comillas dobles, ya sea un texto o una etiqueta html que se insertará entre comillas donde se encuentre una coincidencia.">
+<!ENTITY quoteLevel "[opcional, numérico]: desde qué nivel mínimo de presupuesto comenzar">
+<!ENTITY selector "- lo que usarías para direccionar la etiqueta en css. caso más simple 'img' o 'p' pero los selectores de atributos se pueden agregar siempre que se puedan evitar las comillas dobles.">
+<!ENTITY minSize "[opcional, numérico]: número de kByte, tamaño mínimo para eliminar la etiqueta. De esta manera, puede mantener imágenes más pequeñas como iconos / emojis mientras descarta imágenes grandes.">
+<!ENTITY whitespace_note "Tenga en cuenta que el espacio en blanco se puede representar mejor como \ s porque también puede contener saltos de línea. No se pueden usar comas ni comillas dobles.">
+<!ENTITY minSize_detail "No siempre es posible determinar el tamaño, especialmente si Thunderbird todavía está cargando la imagen, a menudo debido al gran tamaño; en este caso, la etiqueta se eliminará de todos modos.">
 <!ENTITY fix_vartz.cap "Variables fijas para formatos de fecha y zona horaria">
 <!ENTITY fix_vartz_note.label "Se pueden combinar con &#37;X:=sent&#37;">
 <!ENTITY datelocal.label "Fecha y hora (formato local)">
@@ -201,9 +233,9 @@
 <!ENTITY p1.label "a.m.">
 <!ENTITY p2.label "A.M.">
 <!ENTITY p3.label "AM">
-<!ENTITY dateformat.label "Function for inserting current time (clickable field).">
-<!ENTITY dateformat.explain "Most time variables from above can be used in the parameter string by omitting &#37;. See also:">
-<!ENTITY dateformat.example "Example: ">
+<!ENTITY dateformat.label "Función para insertar la hora actual (campo en el que se puede hacer clic).">
+<!ENTITY dateformat.explain "La mayoría de las variables de tiempo de arriba se pueden usar en la cadena de parámetros omitiendo '&#37;'. Ver también:">
+<!ENTITY dateformat.example "Ejemplo: ">
 <!ENTITY var_xsent.cap "Modificador &#37;X:=sent&#37;">
 <!ENTITY xsent_note.label "Las variables de fecha y hora se inicializan a los valores actuales. Cuando cuando se combinan con &#37;X:=sent&#37;, adoptarán los valores del mensaje original.">
 <!ENTITY xsent_long.cap "Ejemplo de una cadena de texto larga:">
@@ -248,7 +280,7 @@
 <!ENTITY licenseValidation.invalidMail "La dirección de correo electrónico asociada a la clave de licencia [{1}] no está en este momento asociada ningua de sus cuentas de correo. Por favor contacte conmigo a través de la pestaña de Ayuda para que poder solucionarlo.">
 <!ENTITY licenseValidation.notMatchedMail "La dirección de correo encriptada no coincide con la legible.">
 <!ENTITY premiumConfig "Funcionalidades premium">
-<!ENTITY label.premiumFeaturesSite "Para saber más sobre las funcionalidades premium visite nuestre página web.">
+<!ENTITY label.premiumFeaturesSite "Para saber más sobre las funcionalidades premium visite nuestre página web…">
 <!-- #####  Support ##### -->
 <!ENTITY support.title "Escribir un correo electrónico a Soporte">
 <!ENTITY support.type "Tipo:">
