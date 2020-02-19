@@ -1,6 +1,6 @@
 <!-- -*- coding: utf-8 -*- -->
-<!ENTITY prefwindow.title "Options d'« Envoi différé »">
-<!ENTITY pane1.title "Options d'« Envoi différé »">
+<!ENTITY prefwindow.title "Options d'« Envoyer Plus Tard »">
+<!ENTITY pane1.title "Options d'« Envoyer Plus Tard »">
 <!ENTITY checktimepref.label "Vérifier toutes les :">
 <!ENTITY checktimepref2.label "minutes">
 <!ENTITY checktimepref.tooltip "Intervalle (en minutes) des vérifications de messages à expédier. Augmenter cette valeur si les messages ne sont pas expédiés à temps ou si le nombre de message en attente est erroné.">
@@ -10,24 +10,29 @@
 <!ENTITY quickoption3.caption "3e délai">
 <!ENTITY quickoptionname.label "Texte du bouton :">
 <!ENTITY quickoptionvalue.label "Minutes :">
-<!ENTITY showsendlatercolumn.caption "Afficher la colonne d'Envoi différé">
-<!ENTITY showsendlatercolumn.tooltip "Ajoute la colonne « Envoi différé » pour les messages dans le dossier « Brouillons ».">
-<!ENTITY showsendlaterheader.caption "Afficher l'en-tête d'Envoi différé">
+<!ENTITY showsendlatercolumn.caption "Afficher la colonne d'Envoyer Plus Tard">
+<!ENTITY showsendlatercolumn.tooltip "Ajoute la colonne « Envoyer Plus Tard » pour les messages dans le dossier « Brouillons ».">
+<!ENTITY showsendlaterheader.caption "Afficher l'en-tête d'Envoyer Plus Tard">
 <!ENTITY showsendlaterheader.tooltip "Autorise l'affichage de l'en-tête « x-send-later-at », c.à.d., le moment prévu d'envoi du message.">
-<!ENTITY showsendlaterstatus.caption "Afficher « Envoi différé » dans la barre d'état">
+<!ENTITY showsendlaterstatus.caption "Afficher « Envoyer Plus Tard » dans la barre d'état">
 <!ENTITY showsendlaterprogress.caption "Afficher les tâches en arrière-plan dans la barre d'état">
 <!ENTITY showsendlaterunsentmessages.caption "Expédier automatiquement les messages programmés">
-<!ENTITY showsendlaterunsentmessages.tooltip "Effectue les envois planifiés sans les placer dans « Message en attente ». Désactiver l'option, par exemple, lors de l'utilisation d'une extension automatisant l'envoi des messages en attente (tel que BlunderDelay). Remarque : si cette option est activée ; quand « Envoi différé » déclenche un envoi, TOUS les messages en attente sont expédiés.">
-<!ENTITY sendlatersendbutton.caption "Remplacer « Envoyer » par « Envoyer plus tard »">
-<!ENTITY sendlatersendbutton.tooltip "Remplace l'action par défaut d'« Envoyer » (bouton ou raccourci « Ctrl+Entrée ») par celle d'« Envoyer plus tard ».">
+<!ENTITY showsendlaterunsentmessages.tooltip "Effectue les envois planifiés sans les placer dans « Message en attente ». Désactiver l'option, par exemple, lors de l'utilisation d'une extension automatisant l'envoi des messages en attente (tel que BlunderDelay). Remarque : si cette option est activée ; quand « Envoyer Plus Tard » déclenche un envoi, TOUS les messages en attente sont expédiés.">
+<!ENTITY sendlatersendbutton.caption "« Envoyer » exécute « Envoyer Plus Tard »">
+<!ENTITY sendlatersendbutton.tooltip "Remplace l'action par défaut d'« Envoyer » (bouton ou raccourci « Ctrl+Entrée ») par celle d'« Envoyer Plus Tard ».">
+<!ENTITY senddelay.tooltip "Quand cette option est activée, tous les messages envoyés avec la commande &quot;Envoyer&quot; (avec le bouton ou avec Ctrl+Entrée) sont retardés du nombre de minutes spécifié dans Envoyer Plus Tard.">
+<!ENTITY senddelay.label "&quot;Envoyer&quot; retarde l'envoi du message de :">
+<!ENTITY senddelay2.label "minutes">
 <!ENTITY altbinding.caption "Utiliser Alt+Maj+Entrée à la place de Ctrl+Maj+Entrée">
+<!ENTITY composewindowhotkeys.tooltip "Pendant la rédaction d'un message vous pouvez taper Ctrl-Alt-1, -2 ou -3 pour activer respectivement le premier, le deuxième ou le troisième bouton prédéfini, sauf si cette option est décochée auquel cas, ces raccourcis clavier sont désactivés.">
+<!ENTITY composewindowhotkeys.caption "Autoriser les raccourcis claviers vers les boutons prédéfinis, dans la fenêtre de composition du message">
 <!ENTITY markread.caption "Marquer les messages en attente comme lus">
 <!ENTITY advanced.caption "Avancé">
 <!ENTITY dumplevel.caption "Niveau de journalisation :">
 <!ENTITY consolelevel.caption "Console de journalisation :">
-<!ENTITY contactauthor.tooltip "Envoyer un message à l'auteur de Envoyer Envoi différé (en anglais, s'il vous plaît !).">
+<!ENTITY contactauthor.tooltip "Envoyer un message à l'auteur de Envoyer Envoyer Plus Tard (en anglais, s'il vous plaît !).">
 <!ENTITY contactauthor.value "Contacter l'auteur">
-<!ENTITY helplink.tooltip "Ouvre la documentation en ligne pour Envoi différé (en anglais).">
+<!ENTITY helplink.tooltip "Ouvre la documentation en ligne pour Envoyer Plus Tard (en anglais).">
 <!ENTITY helplink.value "Guide de l'utilisateur">
 <!ENTITY releasenotes.value "Notes de version">
 <!ENTITY donatelink.value "Faire un don">
@@ -47,7 +52,3 @@
 <!ENTITY loglevel.debug "Débogage">
 <!ENTITY loglevel.trace "Trace">
 <!ENTITY loglevel.all "Tout">
-<!ENTITY senddelay.tooltip "With this option enabled, all messages sent with the “Send” command (either the button or typing Ctrl-Enter) are delayed by the specified number of minutes by scheduling them with Envoi différé.">
-<!ENTITY senddelay.label "“Send” delays messages by:">
-<!ENTITY composewindowhotkeys.tooltip "While composing a message you can type Ctrl-Alt-1, -2, or -3 to activate the first, second, or third preset button, unless you uncheck this preference, in which case these key bindings are disabled.">
-<!ENTITY composewindowhotkeys.caption "Enable compose window key bindings for presets">

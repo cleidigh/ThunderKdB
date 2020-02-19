@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+ 
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Calendar Tweaks  -  Thunderbird Extension  -  Options           */
+/*                                                                      */
+/*      XUL for Options dialog                                          */
+/*                                                                      */
+/*      Copyright (C) 2008-2019  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  26 Nov 2019                                       */
+/*                                                                      */
+/************************************************************************/
+-->    
+ 
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<?xml-stylesheet href="chrome://calendartweaks/skin/calendartweaks-options.css" type="text/css"?>
+<?xml-stylesheet href="chrome://calendartweaks/skin/calendartweaks-colorpicker-bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://calendartweaks/skin/calendartweaks-scale-bindings.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://calendartweaks/locale/calendartweaks.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        id="calendartweaks-options" title="&calendartweaks.optionstitle;"
+        buttons="accept,cancel,extra1" persist="screenX screenY"
+        onload="calendarTweaksOptions.initPrefs();"
+        buttonlabelextra1="&calendartweaks.applyprefs;"
+        windowtype="calendartweaks-options">
+    
+    <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+    <script type="application/x-javascript" src="chrome://calendartweaks/content/calendartweaks-options.js"/>
+    
+    <tabbox>
+        
+        <tabs>
+            <tab label="  &calendartweaks.general;  "/>
+            <tab label="  &calendartweaks.events;  "/>
+            <tab label="  &calendartweaks.daycolors;  "/>
+        </tabs>
+        
+        <tabpanels flex="0">
+            
+            <tabpanel orient="vertical">
+                
+                <groupbox>
+                    
+                    <hbox class="groupbox-title">
+                        <label class="header">&calendartweaks.daystyles;</label>
+                    </hbox>
+                    
+                    <vbox>
+                        <checkbox id="calendartweaks-newtoday" label="&calendartweaks.newtoday;"/>
+                        <checkbox id="calendartweaks-newselday" label="&calendartweaks.newselday;"/>
+                        <checkbox id="calendartweaks-showondayview" label="&calendartweaks.showondayview;"/>
+                    </vbox>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <hbox class="groupbox-title">
+                        <label class="header">&calendartweaks.miscellaneous;</label>
+                    </hbox>
+                    
+                    <vbox>
+                        <checkbox id="calendartweaks-datelabelbkgd" label="&calendartweaks.datelabelbkgd;"/>
+                        <checkbox id="calendartweaks-distinctother" label="&calendartweaks.distinctother;"/>
+                        <checkbox id="calendartweaks-alldaylabel" label="&calendartweaks.alldaylabel;"/>
+                    </vbox>
+                    
+                </groupbox>
+                
+            </tabpanel>
+            
+            <tabpanel orient="vertical">
+                
+                <groupbox>
+                    
+                    <hbox class="groupbox-title">
+                        <label class="header">&calendartweaks.miscellaneous;</label>
+                    </hbox>
+                    
+                    <vbox>
+                        <checkbox id="calendartweaks-eventborder" label="&calendartweaks.eventborder;"/>
+                        <checkbox id="calendartweaks-eventsingleline" label="&calendartweaks.eventsingleline;"/>
+                        <checkbox id="calendartweaks-eventreduceheight" label="&calendartweaks.eventreduceheight;"/>
+                        <checkbox id="calendartweaks-eventtodaypane" label="&calendartweaks.eventtodaypane;"/>
+                        <checkbox id="calendartweaks-eventbkgdcolor" label="&calendartweaks.eventbkgdcolor;" oncommand="calendarTweaksOptions.setEventBkgdNocatState();"/>
+                        <checkbox id="calendartweaks-eventbkgdnocat" label="&calendartweaks.eventbkgdnocat;"/>
+                    </vbox>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <hbox class="groupbox-title">
+                        <label class="header">&calendartweaks.repeating;</label>
+                    </hbox>
+                    
+                    <vbox>
+                        <checkbox id="calendartweaks-repeatnormal" label="&calendartweaks.repeatnormal;"/>
+                        <checkbox id="calendartweaks-repeatexcept" label="&calendartweaks.repeatexcept;"/>
+                    </vbox>
+                    
+                </groupbox>
+                
+            </tabpanel>
+            
+            <tabpanel orient="vertical">
+                
+                <hbox>
+                    <checkbox id="calendartweaks-focusable-nonbutton"/>  <!-- on selecting tab keeps OK button as default button instead of todayheadercolor button -->
+                </hbox>
+                
+                <groupbox>
+                    
+                    <hbox class="groupbox-title">
+                        <label class="header">&calendartweaks.todaycolors;</label>
+                    </hbox>
+                    
+                    <hbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.headercolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-todayheadercolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.dayboxcolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-todaydayboxcolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.bordercolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-todaybordercolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                    </hbox>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <hbox class="groupbox-title">
+                        <label class="header">&calendartweaks.selecteddaycolors;</label>
+                    </hbox>
+                    
+                    <hbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.headercolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-seldayheadercolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.dayboxcolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-seldaydayboxcolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.bordercolor;"/>
+                            <hbox pack="center">
+                                <button id="calendartweaks-seldaybordercolor" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerOpen(this);"/>
+                            </hbox>
+                        </vbox>
+                    </hbox>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <hbox class="groupbox-title">
+                        <label class="header">&calendartweaks.bordersettings;</label>
+                    </hbox>
+                    
+                    <checkbox id="calendartweaks-bordertoday" label="&calendartweaks.bordertoday;"/>
+                    <checkbox id="calendartweaks-borderselday" label="&calendartweaks.borderselday;"/>
+                    <checkbox id="calendartweaks-borderminimonth" label="&calendartweaks.borderminimonth;"/>
+                    
+                </groupbox>
+                
+                <groupbox>
+                    
+                    <hbox class="groupbox-title">
+                        <label class="header">&calendartweaks.restoredefaults;</label>
+                    </hbox>
+                    
+                    <hbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.caltweaksdefaults;"/>
+                            <hbox pack="center">
+                                <button label="&calendartweaks.restore;" oncommand="calendarTweaksOptions.restoreDefaultColors(1);"/>
+                            </hbox>
+                        </vbox>
+                        <vbox align="center" flex="1">
+                            <label value="&calendartweaks.lightningdefaults;"/>
+                            <hbox pack="center">
+                                <button label="&calendartweaks.restore;" oncommand="calendarTweaksOptions.restoreDefaultColors(2);"/>
+                            </hbox>
+                        </vbox>
+                    </hbox>
+                    
+                </groupbox>
+                
+            </tabpanel>
+            
+        </tabpanels>
+        
+    </tabbox>
+    
+    <panel id="calendartweaks-picker-panel" noautohide="true">
+        <hbox id="calendartweaks-picker-header">
+            <label id="calendartweaks-picker-headertitle" value="&calendartweaks.picker.headertitle;" flex="1"/>
+            <label id="calendartweaks-picker-dayboxtitle" value="&calendartweaks.picker.dayboxtitle;" flex="1"/>
+            <label id="calendartweaks-picker-bordertitle" value="&calendartweaks.picker.bordertitle;" flex="1"/>
+            <spacer id="calendartweaks-picker-close" flex="0" onclick="calendarTweaksOptions.pickerClose();"/>
+        </hbox>
+        <hbox id="calendartweaks-picker-overview">
+            <button id="calendartweaks-picker-normalpalette" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerPaletteOpen(this);"/>
+            <button id="calendartweaks-picker-dayboxpalette" class="calendartweaks-picker" oncommand="calendarTweaksOptions.pickerPaletteOpen(this);"/>
+            <vbox id="calendartweaks-picker-sampleborder" flex="1">
+                <hbox id="calendartweaks-picker-sampleheader"/>
+                <hbox id="calendartweaks-picker-sampledaybox"/>
+            </vbox>
+            <textbox id="calendartweaks-picker-hexstr" oninput="calendarTweaksOptions.pickerHexStrChange()"/>
+        </hbox>
+        <separator id="calendartweaks-picker-separator-1" class="groove"/>
+        <grid>
+            <rows>
+                <row/>
+                <row/>
+                <row/>
+            </rows>
+            <columns>
+                <column>
+                    <label id="calendartweaks-picker-r-title" value="&calendartweaks.picker.red;"/>
+                    <label id="calendartweaks-picker-g-title" value="&calendartweaks.picker.green;"/>
+                    <label id="calendartweaks-picker-b-title" value="&calendartweaks.picker.blue;"/>
+                </column>
+                <column flex="1">
+                    <html:input type="range" id="calendartweaks-picker-r-scale" min="0" max="255" oninput="calendarTweaksOptions.pickerRGBScaleChange()"/>
+                    <html:input type="range" id="calendartweaks-picker-g-scale" min="0" max="255" oninput="calendarTweaksOptions.pickerRGBScaleChange()"/>
+                    <html:input type="range" id="calendartweaks-picker-b-scale" min="0" max="255" oninput="calendarTweaksOptions.pickerRGBScaleChange()"/>
+                </column>
+                <column>
+                    <textbox id="calendartweaks-picker-r-value" type="number" min="0" max="255" onchange="calendarTweaksOptions.pickerRGBValueChange()" 
+                             oninput="calendarTweaksOptions.pickerRGBValueChange()"/>
+                    <textbox id="calendartweaks-picker-g-value" type="number" min="0" max="255" onchange="calendarTweaksOptions.pickerRGBValueChange()"
+                             oninput="calendarTweaksOptions.pickerRGBValueChange()"/>
+                    <textbox id="calendartweaks-picker-b-value" type="number" min="0" max="255" onchange="calendarTweaksOptions.pickerRGBValueChange()"
+                             oninput="calendarTweaksOptions.pickerRGBValueChange()"/>
+                </column>
+            </columns>
+        </grid>
+        <separator id="calendartweaks-picker-separator-2" class="groove"/>
+        <grid>
+            <rows>
+                <row/>
+                <row/>
+                <row/>
+            </rows>
+            <columns>
+                <column>
+                    <label id="calendartweaks-picker-h-title" value="&calendartweaks.picker.hue;"/>
+                    <label id="calendartweaks-picker-s-title" value="&calendartweaks.picker.saturation;"/>
+                    <label id="calendartweaks-picker-v-title" value="&calendartweaks.picker.value;"/>
+                </column>
+                <column flex="1">
+                    <html:input type="range" id="calendartweaks-picker-h-scale" min="0" max="360" oninput="calendarTweaksOptions.pickerHSVScaleChange()"/>
+                    <html:input type="range" id="calendartweaks-picker-s-scale" min="0" max="100" oninput="calendarTweaksOptions.pickerHSVScaleChange()"/>
+                    <html:input type="range" id="calendartweaks-picker-v-scale" min="0" max="100" oninput="calendarTweaksOptions.pickerHSVScaleChange()"/>
+                </column>
+                <column>
+                    <textbox id="calendartweaks-picker-h-value" type="number" min="0" max="360" onchange="calendarTweaksOptions.pickerHSVValueChange()"
+                             oninput="calendarTweaksOptions.pickerHSVValueChange()"/>
+                    <textbox id="calendartweaks-picker-s-value" type="number" min="0" max="100" onchange="calendarTweaksOptions.pickerHSVValueChange()"
+                             oninput="calendarTweaksOptions.pickerHSVValueChange()"/>
+                    <textbox id="calendartweaks-picker-v-value" type="number" min="0" max="100" onchange="calendarTweaksOptions.pickerHSVValueChange()"
+                             oninput="calendarTweaksOptions.pickerHSVValueChange()"/>
+                </column>
+            </columns>
+        </grid>
+        <separator id="calendartweaks-picker-separator-3" class="groove"/>
+        <hbox id="calendartweaks-picker-options" pack="center">
+            <vbox>
+                <hbox id="calendartweaks-picker-autodaybox-box">
+                    <checkbox id="calendartweaks-picker-autodaybox" label="&calendartweaks.picker.autodaybox;" oncommand="calendarTweaksOptions.pickerAutoDayBoxChange()"/>
+                </hbox>
+            </vbox>
+        </hbox>
+        <separator id="calendartweaks-picker-separator-4" class="groove"/>
+        <hbox id="calendartweaks-picker-buttons" pack="center">
+            <button id="calendartweaks-picker-okay" label="&calendartweaks.picker.okay;" default="true" oncommand="calendarTweaksOptions.pickerOkay();"/>
+            <button id="calendartweaks-picker-cancel" label="&calendartweaks.picker.cancel;" oncommand="calendarTweaksOptions.pickerClose();"/>
+        </hbox>
+    </panel>
+    
+    <panel id="calendartweaks-picker-normalpalette-panel">
+        <vbox flex="1">
+            <hbox>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFFFF" color="#FFFFFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFCCCC" color="#FFCCCC"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFCC99" color="#FFCC99"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFF99" color="#FFFF99"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFFCC" color="#FFFFCC"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #99FF99" color="#99FF99"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #99FFFF" color="#99FFFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #CCFFFF" color="#CCFFFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #CCCCFF" color="#CCCCFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFCCFF" color="#FFCCFF"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile" style="background-color: #CCCCCC" color="#CCCCCC"/>
+                <spacer class="colorpickertile" style="background-color: #FF6666" color="#FF6666"/>
+                <spacer class="colorpickertile" style="background-color: #FF9966" color="#FF9966"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFF66" color="#FFFF66"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFF33" color="#FFFF33"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #66FF99" color="#66FF99"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #33FFFF" color="#33FFFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #66FFFF" color="#66FFFF"/>
+                <spacer class="colorpickertile" style="background-color: #9999FF" color="#9999FF"/>
+                <spacer class="colorpickertile" style="background-color: #FF99FF" color="#FF99FF"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile" style="background-color: #C0C0C0" color="#C0C0C0"/>
+                <spacer class="colorpickertile" style="background-color: #FF0000" color="#FF0000"/>
+                <spacer class="colorpickertile" style="background-color: #FF9900" color="#FF9900"/>
+                <spacer class="colorpickertile" style="background-color: #FFCC66" color="#FFCC66"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFF00" color="#FFFF00"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #33FF33" color="#33FF33"/>
+                <spacer class="colorpickertile" style="background-color: #66CCCC" color="#66CCCC"/>
+                <spacer class="colorpickertile" style="background-color: #33CCFF" color="#33CCFF"/>
+                <spacer class="colorpickertile" style="background-color: #6666CC" color="#6666CC"/>
+                <spacer class="colorpickertile" style="background-color: #CC66CC" color="#CC66CC"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile" style="background-color: #999999" color="#999999"/>
+                <spacer class="colorpickertile" style="background-color: #CC0000" color="#CC0000"/>
+                <spacer class="colorpickertile" style="background-color: #FF6600" color="#FF6600"/>
+                <spacer class="colorpickertile" style="background-color: #FFCC33" color="#FFCC33"/>
+                <spacer class="colorpickertile" style="background-color: #FFCC00" color="#FFCC00"/>
+                <spacer class="colorpickertile" style="background-color: #33CC00" color="#33CC00"/>
+                <spacer class="colorpickertile" style="background-color: #00CCCC" color="#00CCCC"/>
+                <spacer class="colorpickertile" style="background-color: #3366FF" color="#3366FF"/>
+                <spacer class="colorpickertile" style="background-color: #6633FF" color="#6633FF"/>
+                <spacer class="colorpickertile" style="background-color: #CC33CC" color="#CC33CC"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile" style="background-color: #666666" color="#666666"/>
+                <spacer class="colorpickertile" style="background-color: #990000" color="#990000"/>
+                <spacer class="colorpickertile" style="background-color: #CC6600" color="#CC6600"/>
+                <spacer class="colorpickertile" style="background-color: #CC9933" color="#CC9933"/>
+                <spacer class="colorpickertile" style="background-color: #999900" color="#999900"/>
+                <spacer class="colorpickertile" style="background-color: #009900" color="#009900"/>
+                <spacer class="colorpickertile" style="background-color: #339999" color="#339999"/>
+                <spacer class="colorpickertile" style="background-color: #3333FF" color="#3333FF"/>
+                <spacer class="colorpickertile" style="background-color: #6600CC" color="#6600CC"/>
+                <spacer class="colorpickertile" style="background-color: #993399" color="#993399"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile" style="background-color: #333333" color="#333333"/>
+                <spacer class="colorpickertile" style="background-color: #660000" color="#660000"/>
+                <spacer class="colorpickertile" style="background-color: #993300" color="#993300"/>
+                <spacer class="colorpickertile" style="background-color: #996633" color="#996633"/>
+                <spacer class="colorpickertile" style="background-color: #666600" color="#666600"/>
+                <spacer class="colorpickertile" style="background-color: #006600" color="#006600"/>
+                <spacer class="colorpickertile" style="background-color: #336666" color="#336666"/>
+                <spacer class="colorpickertile" style="background-color: #000099" color="#000099"/>
+                <spacer class="colorpickertile" style="background-color: #333399" color="#333399"/>
+                <spacer class="colorpickertile" style="background-color: #663366" color="#663366"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile" style="background-color: #000000" color="#000000"/>
+                <spacer class="colorpickertile" style="background-color: #330000" color="#330000"/>
+                <spacer class="colorpickertile" style="background-color: #663300" color="#663300"/>
+                <spacer class="colorpickertile" style="background-color: #663333" color="#663333"/>
+                <spacer class="colorpickertile" style="background-color: #333300" color="#333300"/>
+                <spacer class="colorpickertile" style="background-color: #003300" color="#003300"/>
+                <spacer class="colorpickertile" style="background-color: #003333" color="#003333"/>
+                <spacer class="colorpickertile" style="background-color: #000066" color="#000066"/>
+                <spacer class="colorpickertile" style="background-color: #330099" color="#330099"/>
+                <spacer class="colorpickertile" style="background-color: #330033" color="#330033"/>
+            </hbox>
+        </vbox>
+    </panel>
+    
+    <panel id="calendartweaks-picker-dayboxpalette-panel">
+        <vbox flex="1">
+            <hbox>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFFFF" color="#FFFFFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFF9F9" color="#FFF9F9"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFF9F3" color="#FFF9F3"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFFF3" color="#FFFFF3"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFFF9" color="#FFFFF9"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F3FFF3" color="#F3FFF3"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F3FFFF" color="#F3FFFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F9FFFF" color="#F9FFFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F9F9FF" color="#F9F9FF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFF9FF" color="#FFF9FF"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile cp-light" style="background-color: #F9F9F9" color="#F9F9F9"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFEDED" color="#FFEDED"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFF3ED" color="#FFF3ED"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFFED" color="#FFFFED"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFFE7" color="#FFFFE7"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDFFF3" color="#EDFFF3"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7FFFF" color="#E7FFFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDFFFF" color="#EDFFFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F3F3FF" color="#F3F3FF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFF3FF" color="#FFF3FF"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile cp-light" style="background-color: #F8F8F8" color="#F8F8F8"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFE1E1" color="#FFE1E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFF3E1" color="#FFF3E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFF9ED" color="#FFF9ED"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFFFE1" color="#FFFFE1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7FFE7" color="#E7FFE7"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDF9F9" color="#EDF9F9"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7F9FF" color="#E7F9FF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDEDF9" color="#EDEDF9"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F9EDF9" color="#F9EDF9"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile cp-light" style="background-color: #F3F3F3" color="#F3F3F3"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F9E1E1" color="#F9E1E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFEDE1" color="#FFEDE1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFF9E7" color="#FFF9E7"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #FFF9E1" color="#FFF9E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7F9E1" color="#E7F9E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E1F9F9" color="#E1F9F9"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7EDFF" color="#E7EDFF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDE7FF" color="#EDE7FF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F9E7F9" color="#F9E7F9"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDEDED" color="#EDEDED"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F3E1E1" color="#F3E1E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F9EDE1" color="#F9EDE1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F9F3E7" color="#F9F3E7"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F3F3E1" color="#F3F3E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E1F3E1" color="#E1F3E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7F3F3" color="#E7F3F3"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7E7FF" color="#E7E7FF"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDE1F9" color="#EDE1F9"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F3E7F3" color="#F3E7F3"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7E7E7" color="#E7E7E7"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDE1E1" color="#EDE1E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F3E7E1" color="#F3E7E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #F3EDE7" color="#F3EDE7"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDEDE1" color="#EDEDE1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E1EDE1" color="#E1EDE1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7EDED" color="#E7EDED"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E1E1F3" color="#E1E1F3"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7E7F3" color="#E7E7F3"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDE7ED" color="#EDE7ED"/>
+            </hbox>
+            <hbox>
+                <spacer class="colorpickertile cp-light" style="background-color: #E1E1E1" color="#E1E1E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7E1E1" color="#E7E1E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDE7E1" color="#EDE7E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #EDE7E7" color="#EDE7E7"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7E7E1" color="#E7E7E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E1E7E1" color="#E1E7E1"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E1E7E7" color="#E1E7E7"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E1E1ED" color="#E1E1ED"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7E1F3" color="#E7E1F3"/>
+                <spacer class="colorpickertile cp-light" style="background-color: #E7E1E7" color="#E7E1E7"/>
+            </hbox>
+        </vbox>
+    </panel>
+    
+</dialog>

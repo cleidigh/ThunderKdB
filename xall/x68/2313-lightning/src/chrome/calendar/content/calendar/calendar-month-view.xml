@@ -142,6 +142,13 @@
     </content>
 
     <implementation>
+      <constructor><![CDATA[
+          // If this function exists, it's because we're late and something is waiting for us.
+          if (this.onBindingReady) {
+              this.onBindingReady();
+          }
+      ]]></constructor>
+
       <field name="mDate">null</field>
       <field name="mItemHash">{}</field>
       <field name="mShowMonthLabel">false</field>

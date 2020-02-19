@@ -10,11 +10,12 @@
  * ***** END LICENSE BLOCK *****
  */
 -->
-<window title=""
+<window title="Login"
+        contenttitlesetting="true"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <notificationbox id="notifications"/>
   <browser id="maincontent"
-           type="content-primary"
+           type="content" primary="true"
            disablehistory="true"
            src="about:blank"
            flex="1"/>

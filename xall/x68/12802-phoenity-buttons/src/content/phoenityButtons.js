@@ -4,6 +4,7 @@ if ("undefined" == typeof(phoenityButtons)) {
 
 var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
 var prefServiceBranch = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("");
+var xulAppInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
 
 Services.obs.notifyObservers(null, "startupcache-invalidate");
 
@@ -12,6 +13,7 @@ window.addEventListener("load", function load(event){
     phoenityButtons.checkIconSize();
     phoenityButtons.checkDetails();
     phoenityButtons.checkTabsInTitlebar();
+    phoenityButtons.checkCompactHeader();
 },false);
 
 phoenityButtons = {
@@ -24,6 +26,15 @@ phoenityButtons = {
       goDoCommand('cmd_viewWideMailLayout');
     } else {
       goDoCommand('cmd_viewClassicMailLayout');
+    }
+  },
+
+  checkCompactHeader: function() {
+    if (typeof org_mozdev_compactHeader != "undefined") {
+      document.getElementById("phb_twistyBox").setAttribute("hidden","true");
+      document.getElementById("expandedHeaderView").className = "expanded";
+      prefs.setBoolPref('extensions.phoenitybuttons.display.headers',true);
+      document.getElementById("phb_CompactHeader-separator").removeAttribute("hidden");
     }
   },
 
@@ -241,6 +252,14 @@ phoenityButtons = {
   nextUnreadGroup: function() {
     goDoCommand('cmd_markAllRead');
     goDoCommand('cmd_nextUnreadMsg');
+  },
+
+  devToolbox: function() {
+    if (xulAppInfo.version >= "72.0") {
+    BrowserToolboxLauncher.init();
+    } else {
+    BrowserToolboxProcess.init();
+    }
   },
 
   configEditor: function() {

@@ -1,0 +1,5 @@
+overlay	chrome://messenger/content/messenger.xul	chrome://exitbutton/content/exitbuttonTbOverlay.xul
+content	exitbutton		chrome/content/
+skin	exitbutton		classic/1.0	chrome/skin/
+style	chrome://global/content/customizeToolbar.xul chrome://exitbutton/skin/exitbutton.css appversion<59.0a1
+style	chrome://messenger/content/customizeToolbar.xul chrome://exitbutton/skin/exitbutton.css appversion>=59.0a1

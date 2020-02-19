@@ -1,0 +1,280 @@
+/************************************************************************/
+/*                                                                      */
+/*      Calendar Tweaks  -  Thunderbird Extension  -  Options           */
+/*                                                                      */
+/*      CSS for Options dialog                                          */
+/*                                                                      */
+/*      Copyright (C) 2014-2019  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  26 Nov 2019                                       */
+/*                                                                      */
+/************************************************************************/
+
+:root
+{
+    --r-scale-image: -moz-linear-gradient(left,#F0F0F0,#F0F0F0);
+    --g-scale-image: -moz-linear-gradient(left,#F0F0F0,#F0F0F0);
+    --b-scale-image: -moz-linear-gradient(left,#F0F0F0,#F0F0F0);
+    --h-scale-image: -moz-linear-gradient(left,#F0F0F0,#F0F0F0);
+    --s-scale-image: -moz-linear-gradient(left,#F0F0F0,#F0F0F0);
+    --v-scale-image: -moz-linear-gradient(left,#F0F0F0,#F0F0F0);
+}
+
+groupbox  /* from chrome://messenger/skin/messenger.css */
+{
+  -moz-appearance: groupbox;
+  border: 2px groove ThreeDFace;
+  border-radius: 3px;
+  margin: 3px;
+  margin-top: 1em;
+  padding: 3px 0 6px;
+}
+
+groupbox > .groupbox-title > .header  /* from chrome://messenger/skin/messenger.css */
+{
+  font-weight: normal;
+  margin-top: -1em;
+  margin-inline-start: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+  background-color: -moz-dialog;
+}
+
+groupbox > .groupbox-title > .header
+{
+    margin-top: -13px;
+    background-color: white;
+}
+
+#calendartweaks-focusable-nonbutton,#calendartweaks-focusable-nonbutton *
+{
+    -moz-appearance: none;
+    min-width: 0px;
+    min-height: 0px;
+    width: 0px;
+    height: 0px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+}
+
+#calendartweaks-eventbkgdnocat
+{
+    margin-left: 24px;
+}
+
+.calendartweaks-picker
+{
+    min-width: 40px;
+    width: 52px;
+    height: 24px;
+    margin: 0px 3px;
+    padding: 2px;
+}
+
+.calendartweaks-picker > hbox 
+{
+    border: 1px solid black;
+}
+
+#calendartweaks-picker-header
+{
+    background: -moz-linear-gradient(left,#BFCDDB,#D6E3F1);
+    margin: 3px;
+}
+
+#calendartweaks-picker-close
+{
+    width: 14px;
+    height: 14px;
+    margin: 4px 6px;
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-close.png);
+    background-repeat: center no-repeat;
+}
+
+#calendartweaks-picker-close:hover
+{
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-close-hover.png);
+    background-repeat: center no-repeat;
+}
+
+#calendartweaks-picker-overview
+{
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+#calendartweaks-picker-headertitle,
+#calendartweaks-picker-dayboxtitle,
+#calendartweaks-picker-bordertitle
+{
+    margin: 3px 6px;
+}
+
+#calendartweaks-picker-normalpalette,
+#calendartweaks-picker-dayboxpalette
+{
+    min-width: 40px;
+    width: 52px;
+    margin: 0px 4px 0px 6px;
+    padding: 2px;
+}
+
+#calendartweaks-picker-sampleborder
+{
+    min-width: 100px;
+    margin: 1px 4px;
+    border: 1px solid #ADADAD;
+}
+
+#calendartweaks-picker-sampleheader
+{
+    height: 8px; 
+    border-bottom: 1px solid #ADADAD;
+}
+
+#calendartweaks-picker-sampledaybox
+{
+    height: 12px;
+}
+
+#calendartweaks-picker-hexstr
+{
+    width: 50px;
+    margin: 1px 6px 1px 4px;
+    padding: 2px 2px 3px 2px;
+    border: 1px solid #ADADAD;
+    text-align: center;
+}
+
+#calendartweaks-picker-separator-1
+{
+    margin: 3px 0px 2px 0px;
+    opacity: 0.3;
+}
+
+#calendartweaks-picker-separator-2,
+#calendartweaks-picker-separator-3,
+#calendartweaks-picker-separator-4
+{
+    margin: 3px 0px;
+    opacity: 0.3;
+}
+
+#calendartweaks-picker-r-title,
+#calendartweaks-picker-g-title,
+#calendartweaks-picker-b-title,
+#calendartweaks-picker-h-title,
+#calendartweaks-picker-s-title,
+#calendartweaks-picker-v-title
+{
+    margin-top: 5px;
+}
+
+#calendartweaks-picker-r-scale,
+#calendartweaks-picker-g-scale,
+#calendartweaks-picker-b-scale,
+#calendartweaks-picker-h-scale,
+#calendartweaks-picker-s-scale,
+#calendartweaks-picker-v-scale
+{
+    background-color: #F0F0F0;
+}
+
+#calendartweaks-picker-r-value,
+#calendartweaks-picker-g-value,
+#calendartweaks-picker-b-value,
+#calendartweaks-picker-h-value,
+#calendartweaks-picker-s-value,
+#calendartweaks-picker-v-value
+{
+    width: 40px;
+    margin-left: 6px;
+    margin-right: 6px;
+    padding: 2px 0px 1px 0px;
+}
+
+#calendartweaks-picker-options
+{
+    margin-left: -3px;
+}
+
+#calendartweaks-picker-autodaybox
+{
+    margin-top: 0px;
+}
+
+#calendartweaks-picker-buttons
+{
+    margin-top: 4px;
+    margin-bottom: 8px;
+    margin-left: -3px;
+}
+
+input[type=range]::-moz-range-thumb
+{
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-arrows.png);
+    background-repeat: center no-repeat;
+}
+
+div[role=button]
+{
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-arrows.png);
+    background-repeat: center no-repeat;
+}
+
+#calendartweaks-picker-r-scale::-moz-range-track
+{
+    height: 8px;
+    border-radius: 4px;
+    background-image: var(--r-scale-image);
+}
+
+#calendartweaks-picker-g-scale::-moz-range-track
+{
+    height: 8px;
+    border-radius: 4px;
+    background-image: var(--g-scale-image);
+}
+
+#calendartweaks-picker-b-scale::-moz-range-track
+{
+    height: 8px;
+    border-radius: 4px;
+    background-image: var(--b-scale-image);
+}
+
+#calendartweaks-picker-h-scale::-moz-range-track
+{
+    height: 8px;
+    border-radius: 4px;
+    background-image: var(--h-scale-image);
+}
+
+#calendartweaks-picker-s-scale::-moz-range-track
+{
+    height: 8px;
+    border-radius: 4px;
+    background-image: var(--s-scale-image);
+}
+
+#calendartweaks-picker-v-scale::-moz-range-track
+{
+    height: 8px;
+    border-radius: 4px;
+    background-image: var(--v-scale-image);
+}
+
+.colorpickertile
+{
+    width: 22px;
+    height: 22px;
+    border: 1px solid #A0A0A0;
+    background-clip: content-box;
+}
+
+.colorpickertile:hover,
+.colorpickertile[selected=true]
+{
+    border: 2px dotted black;
+}

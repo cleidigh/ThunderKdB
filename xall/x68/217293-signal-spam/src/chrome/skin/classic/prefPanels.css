@@ -11,7 +11,7 @@
     color:black;
     font-family: sans-serif;
     font-weight: 400;
-    max-width: 100%;
+    max-width: 99vw;
     display: inline-block;
     padding:5%;
     margin-top:30px;
@@ -38,17 +38,17 @@ caption {
 label {
     font-size: 1em;
     font-family: sans-serif;
-    display:inline-block;
-    word-wrap: break-word;
-    word-break: break-all;
     word-spacing: normal;
     padding-top: 0.3em;
+    max-width: 90vw;
+    word-wrap: normal;
+    word-break: initial;
 }
 
 #grid-credentials {
-    width:100%;
-    min-width:100%;
-    max-width:100%;
+    width:95vw;
+    min-width:95vw;
+    max-width:95vw;
 }
 
 .desc {
@@ -57,8 +57,11 @@ label {
 }
 
 description {
-    width: 100%;
+    width: 95vw;
+    max-width: 95vw;
 }
+
+
 
 /*prefwindow {
     overflow-x: auto;

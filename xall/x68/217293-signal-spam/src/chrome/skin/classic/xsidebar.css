@@ -1,0 +1,29 @@
+#sidebar-close-button {
+  list-style-image: url("chrome://signalspam/skin/close.gif");
+  margin-bottom: 0px !important;
+  padding: 0px 2px 0px 2px !important;
+}
+
+#sidebar-box .tabs-closebutton {
+  margin-bottom: 0px !important;
+  padding: 0px 2px 0px 2px !important;
+}
+
+sidebarheader > label {
+  -moz-padding-start: 2px;
+}
+
+#sidebar-title-box > toolbarbutton > .toolbarbutton-icon {
+  -moz-margin-end: 0px; /* TB >= 2.0 override toolkit's default value */
+}
+
+/*#sidebar {
+  background-color: Window;
+}*/
+
+.signalspam-sidebar-splitter {
+  background-color: dimgrey;
+  width: 2px;
+  min-width: 2px;
+  max-width: 2px;
+}

@@ -130,6 +130,9 @@ EwsNativeMachine.prototype = {
             let oldUrl = aMailbox.ewsUrl;
             for (let url of urls)
             {
+              if (!url) {
+                continue;
+              }
               aMailbox.ewsURL = url;
               result = await promiseCheckOnline(aMailbox, aListener);
 
@@ -1919,15 +1922,6 @@ EwsNativeMachine.prototype = {
   machineErrorResponse: function _machineErrorResponse(aListener, aResponseError, aResponseCode, aMessageText)
   {
     let responseCode = aResponseCode || aResponseError;
-    if (aResponseError == "PasswordMissing")
-    {
-      log.info("Machine prompting for password");
-      try {
-        aContext.EwsNativeMailbox
-                .promptUsernameAndPassword(Services.ww.activeWindow);
-      } catch (e) {log.warning("Error running promptUsernameAndPassword: " + e);}
-    }
-
     if (responseCode == "ErrorItemNotFound")
     {
       log.info("SOAP error ErrorItemNotFound but not reporting");
@@ -2004,7 +1998,9 @@ function _errorResponse(aRequest, aResponseError, aResponseCode, aMessageText)
     {
       // signal password changed so that user can rety
       this.passwordChanged = true;
-      this.listener.onEvent(this, "PasswordChanged", null, Cr.NS_OK);
+      if (this.listener) {
+        this.listener.onEvent(this, "PasswordChanged", null, Cr.NS_OK);
+      }
       return;
     }
   }

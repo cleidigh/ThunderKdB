@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Account Colors",
+    "version": "13.5",
+    
+    "description": "Associates colors with account names and identities. Applies colors to folder tree, message list and message headers.",
+    "icons": { "32": "chrome/skin/accountcolors-icon.png" },
+    
+    "applications": { "gecko": { "id": "accountcolors@DW-dev", "strict_min_version": "68.0" } },
+    
+    "legacy": { "type": "xul",
+                "options": { "page": "chrome://accountcolors/content/accountcolors-options.xul",
+                             "open_in_tab": false
+                           }
+              }
+}

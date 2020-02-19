@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://exitbutton/skin/exitbutton.css" type="text/css"?>
+
+<overlay id="exitbuttonsOverlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<toolbarpalette id="MailToolbarPalette">
+		<toolbarbutton
+			class="toolbarbutton-1"
+			id="ExitButton"
+			label="Exit"
+			tooltiptext="Exit Thunderbird"
+			oncommand="goQuitApplication();" />
+
+	</toolbarpalette>
+
+</overlay>

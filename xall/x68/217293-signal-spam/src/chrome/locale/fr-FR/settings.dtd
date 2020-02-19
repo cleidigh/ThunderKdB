@@ -1,8 +1,10 @@
+<!ENTITY % commonDTD SYSTEM "chrome://signalspam/locale/signalspam.dtd">
+%commonDTD;
 <!ENTITY signalspam.title.label        "Module Signal Spam - Préférences">
 <!ENTITY signalspam-pref-pane-label        "Paramètres et options de votre module Signal Spam">
 <!ENTITY signalspam.credentials.label        "Informations utilisateurs Signal Spam :">
 <!ENTITY signalspam.userid.label        "Nom d'utilisateur Signal Spam :">
-<!ENTITY signalspam.userid.placeholder        "Nom d'utilisateur (différent de l'adresse email)">
+<!ENTITY signalspam.userid.placeholder        "Nom d'utilisateur">
 <!ENTITY signalspam.userid.tooltip        "Indiquez le nom d'utilisateur choisi lors de votre inscription sur le site Signal Spam. Celui-ci est différent de votre adresse email. Les caractères autorisés sont a-z, A-Z, 0-9, le point, le trait d'union et le tiret bas.">
 <!ENTITY signalspam.password.label        "Mot de passe associé :">
 <!ENTITY signalspam.password.tooltip        "Au moins 6 caractères">
@@ -15,7 +17,7 @@
 <!ENTITY signalspam.oneclick.tooltip        "En cochant cette option vous n'aurez plus à confirmer les signalements après un clic sur le bouton Signal Spam dans la barre d'outils du navigateur.">
 <!ENTITY signalspam.urldetect.label        "Détection de sites frauduleux :">
 <!ENTITY signalspam.urldetect.desc        "En désactivant cette fonctionnalité (option décochée), vous ne serez plus alerté si vous consultez un e-mail contenant des liens vers des un site identifié comme frauduleux. Nous vous recommandons de ne pas modifier cette option (Garder cette option cochée).">
-<!ENTITY signalspam.urldetect.tooltip        "En désactivant cette fonctionnalité (option décochée), vous ne serez plus alerté si vous consultez un e-mail contenant des liens frauduleux. Nous vous recommandons de ne pas modifier cette option (Garder cette option cochée).">
+<!ENTITY signalspam.urldetect.tooltip        "En désactivant cette fonctionnalité (option décochée), vous ne serez plus alerté (hors webmail) si vous consultez un site identifié comme frauduleux. Nous vous recommandons de ne pas modifier cette option (Garder cette option cochée).">
 <!ENTITY signalspam.movereport.label        "Archivage des e-mails signalés :">
 <!ENTITY signalspam.movereport.desc        "Les e-mails signalés seront automatiquement déplacés dans le dossier des courriers indésirables (spam), ou supprimés, en fonction des paramètres de sécurité de Thunderbird. Si cette option n'est pas sélectionnée les e-mails ne seront pas déplacés ou supprimés lors d'un signalement à Signal Spam, quels que soient les paramètres choisis dans les préférences de Thunderbird.">
 <!ENTITY signalspam.manualMarkFalse.desc        "⚠ Vous n'avez pas encore paramétré Thunderbird pour que les e-mails signalés soient déplacés ou supprimés. Pour que cette option soit active vous devez également modifier les paramètres Thunderbird.">
@@ -29,8 +31,9 @@
 <!ENTITY signalspam-forgotpwd  "Si vous avez oublié le mot de passe de votre compte Signal Spam, pour demander un nouveau mot de passe :">
 <!ENTITY signalspam-linkresetpwd  "cliquer ici">
 <!ENTITY signalspam-invalidcredentials  "Le nom d'utilisateur et/ou le mot de passe est invalide. Merci de vérifier vos identifiants.">
-<!ENTITY signalspam-invaliduserid  "Le nom d'utilisateur ne peut pas être votre adresse e-mail, les caractères autorisés sont a-z, A-Z, 0-9, l'espace, le point, le trait d'union et le tiret bas.">
+<!ENTITY signalspam-invaliduserid  "Le nom d'utilisateur ne peut pas être votre adresse e-mail, les caractères autorisés sont a-z, A-Z, 0-9, le point, le trait d'union et le tiret bas.">
 <!ENTITY signalspam-notauthentified  "Pour pouvoir signaler un e-mail, vous devez avoir configuré votre compte Signal Spam.">
+<!ENTITY signalspam-error403 "Identifiant utilisateur ou mot de passe incorrect">
 <!ENTITY signalspam.pref.okbutton        "Enregistrer">
 <!ENTITY signalspam.pref.cancelbutton        "Annuler">
 <!ENTITY signalspam.junkbutton.src  "chrome://signalspam/skin/junkbutton-fr.png">

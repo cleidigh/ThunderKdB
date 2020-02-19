@@ -20,7 +20,12 @@
 <!ENTITY showsendlaterunsentmessages.tooltip "このオプションを無効にすると、Send Later はメッセージを送信しませんが、送信予定日時になると [送信トレイ] へメッセージを移します。他の拡張機能 (BlunderDelay など) を使って、メッセージを [送信トレイ] から定期的に送信するようにしている場合には、このオプションを無効にしてください。注意: このオプションを有効にすると、メッセージを送信する際に、Send Later は [送信トレイ] にあるすべてのメッセージを送信します。">
 <!ENTITY sendlatersendbutton.caption "“送信” を “後で送信” にする">
 <!ENTITY sendlatersendbutton.tooltip "このオプションを有効にすると、“送信” コマンド (ボタンと Ctrl-Enter の両方) は “後で送信” と同じ動作をします。">
+<!ENTITY senddelay.tooltip "このオプションを有効にすると、Send Later でスケジュールされた特定の時間(分) だけ&quot;送信&quot;コマンド(ボタンクリックあるいはCtrl-Enterキー) によるすべてのメッセージ送信を遅延します。">
+<!ENTITY senddelay.label "メッセージの&quot;送信&quot;を遅延する">
+<!ENTITY senddelay2.label "分">
 <!ENTITY altbinding.caption "Ctrl+Shift+Enter ではなく Alt+Shift+Enter に割り当てる">
+<!ENTITY composewindowhotkeys.tooltip "メッセージの作成中にCtrl-Alt-1, -2, -3を押すと1,2,3番目のプリセットボタンが作動します。これは設定でチェックを外すかキー割り当てを無効にしない限り有効です。">
+<!ENTITY composewindowhotkeys.caption "メッセージ作成ウィンドウでプリセット用のキー割り当てを有効にする">
 <!ENTITY markread.caption "送信予定の下書きを既読とする">
 <!ENTITY advanced.caption "詳細">
 <!ENTITY dumplevel.caption "出力ログレベル:">
@@ -47,7 +52,3 @@
 <!ENTITY loglevel.debug "デバッグ">
 <!ENTITY loglevel.trace "トレース">
 <!ENTITY loglevel.all "すべて">
-<!ENTITY senddelay.tooltip "With this option enabled, all messages sent with the “Send” command (either the button or typing Ctrl-Enter) are delayed by the specified number of minutes by scheduling them with Send Later.">
-<!ENTITY senddelay.label "“Send” delays messages by:">
-<!ENTITY composewindowhotkeys.tooltip "While composing a message you can type Ctrl-Alt-1, -2, or -3 to activate the first, second, or third preset button, unless you uncheck this preference, in which case these key bindings are disabled.">
-<!ENTITY composewindowhotkeys.caption "Enable compose window key bindings for presets">

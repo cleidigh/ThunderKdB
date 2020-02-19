@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "signal-spam@signal-spam.fr",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "16": "chrome/content/signalspam/logo/16x16.png",
+    "32": "chrome/content/signalspam/logo/32x32.png",
+    "48": "chrome/content/signalspam/logo/48x48.png",
+    "96": "chrome/content/signalspam/logo/96x96.png",
+    "128": "chrome/content/signalspam/logo/128x128.png",
+    "256": "chrome/content/signalspam/logo/256x256.png"
+  },
+  "name": "Signal Spam",
+  "description": "Signal Spam Extension",
+  "version": "3.0.5",
+  "author": "VERIFROM for Signal Spam",
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://signalspam/content/signalspam/settings.xul",
+      "open_in_tab": true
+    }
+  }
+}

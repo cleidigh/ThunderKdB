@@ -1,13 +1,21 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE overlay SYSTEM "chrome://phoenityButtons/locale/phoenityButtons.dtd" >
+<!DOCTYPE overlay [
+  <!ENTITY % phoenityButtonsDTD SYSTEM "chrome://phoenityButtons/locale/phoenityButtons.dtd">
+  %phoenityButtonsDTD;
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd" >
+  %messengerDTD;
+  <!ENTITY % acctCentralDTD SYSTEM "chrome://messenger/locale/msgAccountCentral.dtd">
+  %acctCentralDTD;
+]>
 
-<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityButtons/skin/phoenityButtons.css" type="text/css"?>
 
 <overlay id="messengerWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 <script src="chrome://global/content/globalOverlay.js"/>
 <script src="chrome://messenger/content/mailWindowOverlay.js"/>
+<script src="chrome://messenger/content/about-support/aboutSupport.js"/>
+<script src="chrome://phoenityButtons/content/phoenityElements.js"/>
 <script src="chrome://phoenityButtons/content/phoenityButtons.js"/>
 <script src="chrome://phoenityButtons/content/toggleButtons1.js"/>
 <script src="chrome://phoenityButtons/content/toggleButtons2.js"/>
@@ -56,8 +64,7 @@
             type="checkbox"
             label="&phoenityButtons.useSmallIcons;"
             oncommand="phoenityButtons.toggleIconSize();"/>
-  <menuseparator id="phb_drawTabsInTitlebarSeparator"
-                 insertbefore="CustomizeMailToolbar"/>
+  <menuseparator insertbefore="CustomizeMailToolbar"/>
 </menupopup>
 
 <menupopup id="chat-toolbar-context-menu">
@@ -71,8 +78,7 @@
             type="checkbox"
             label="&phoenityButtons.useSmallIcons;"
             oncommand="phoenityButtons.toggleIconSize();"/>
-  <menuseparator id="phb_CustomizeChatToolbarSeparator"
-                 insertbefore="CustomizeChatToolbar"/>
+  <menuseparator insertbefore="CustomizeChatToolbar"/>
 </menupopup>
 
 <menupopup id="calendar-toolbar-context">
@@ -86,8 +92,7 @@
             type="checkbox"
             label="&phoenityButtons.useSmallIcons;"
             oncommand="phoenityButtons.toggleIconSize();"/>
-  <menuseparator id="phb_CustomizeCalendarToolbar"
-                 insertbefore="CustomizeCalendarToolbar"/>
+  <menuseparator insertbefore="CustomizeCalendarToolbar"/>
 </menupopup>
 
 <menupopup id="task-toolbar-context">
@@ -101,8 +106,7 @@
             type="checkbox"
             label="&phoenityButtons.useSmallIcons;"
             oncommand="phoenityButtons.toggleIconSize();"/>
-  <menuseparator id="phb_CustomizeTaskToolbar"
-                 insertbefore="CustomizeTaskToolbar"/>
+  <menuseparator insertbefore="CustomizeTaskToolbar"/>
 </menupopup>
 
 <menupopup id="cardbook-toolbar-context">
@@ -116,8 +120,7 @@
             type="checkbox"
             label="&phoenityButtons.useSmallIcons;"
             oncommand="phoenityButtons.toggleIconSize();"/>
-  <menuseparator id="phb_CustomizeCardBookToolbar"
-                 insertbefore="CustomizeCardBookToolbar"/>
+  <menuseparator insertbefore="CustomizeCardBookToolbar"/>
 </menupopup>
 
 <toolbar id="tabs-toolbar">
@@ -131,9 +134,7 @@
           iconsize="small" defaulticonsize="small" lockiconsize="true"
           defaultset="button-appmenu"/>
  <toolbar id="tabbar-toolbar"
-          defaultset="button-addons,phb_configEditor,phb_preferences,
-          phb_devtoolbox,phb_filterManager,phb_activityManager,
-          qfb-show-filter-bar,phb_restartThunderbird"/>
+          defaultset="button-addons,phb_configEditor,phb_preferences,phb_devtoolbox,phb_profiledir,phb_restartThunderbird"/>
 </toolbar>
 
 <vbox id="otherActionsBox"
@@ -153,7 +154,6 @@
            name="viewheadergroup"
            label="&phoenityButtons.viewNormalHeaders;"
            command="cmd_viewNormalHeader"/>
- <menuseparator id="phb_CompactHeader-separator"/>
 </menupopup>
 
 <menupopup id="menu_FilePopup">
@@ -280,6 +280,16 @@
                 id="phb_devtoolbox"
                 label="&phoenityButtons.devtoolbox;"
                 tooltiptext="&phoenityButtons.devtoolbox;"
-                oncommand="BrowserToolboxProcess.init();"/>
+                oncommand="phoenityButtons.devToolbox();"/>
+ <toolbarbutton class="toolbarbutton-1 phoenitybutton"
+                id="phb_profiledir"
+                label="&phoenityButtons.profiledir;"
+                tooltiptext="&phoenityButtons.tooltips.profiledir;"
+                oncommand="openProfileDirectory();"/>
+ <toolbarbutton class="toolbarbutton-1 phoenitybutton"
+                id="phb_searchmessages"
+                label="&findMenu.label;"
+                tooltiptext="&searchMsgsLink.label;"
+                oncommand="MsgSearchMessages();"/>
 </toolbarpalette>
 </overlay>

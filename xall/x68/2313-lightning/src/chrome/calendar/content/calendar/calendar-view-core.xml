@@ -172,6 +172,8 @@
                 let cssClassesArray = categoriesArray.map(cal.view.formatStringForCSSRule);
                 this.setAttribute("categories", cssClassesArray.join(" "));
                 let categoriesBox = document.getAnonymousElementByAttribute(this, "anonid", "category-box");
+                // Yes, categoriesBox really does have an inner element with the same anonid.
+                categoriesBox = document.getAnonymousElementByAttribute(categoriesBox, "anonid", "category-box");
                 categoriesBox.style.backgroundColor = `var(--category-${cssClassesArray[0]}-color)`;
             }
 

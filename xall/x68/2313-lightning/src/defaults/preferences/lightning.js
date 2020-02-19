@@ -135,7 +135,7 @@ pref("calendar.threading.latency ", 250);
 pref("calendar.network.multirealm", false);
 
 // Set up user agent
-pref("calendar.useragent.extra", "Lightning/68.0");
+pref("calendar.useragent.extra", "Lightning/68.5.0");
 
 // Disable use of system colors in minimonth and calendar views
 pref("calendar.view.useSystemColors", false);

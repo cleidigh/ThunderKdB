@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Calendar Tweaks  -  Thunderbird Extension  -  Calendar Views    */
+/*                                                                      */
+/*      XUL for Calendar Views overlay                                  */
+/*                                                                      */
+/*      Copyright (C) 2008-2019  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  26 Nov 2019                                       */
+/*                                                                      */
+/************************************************************************/
+-->    
+
+<?xml-stylesheet href="chrome://calendartweaks/skin/calendartweaks-calendar-views-generated.css" type="text/css"?>
+<?xml-stylesheet href="chrome://calendartweaks/skin/calendartweaks-calendar-views.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://calendartweaks/locale/calendartweaks.dtd">
+
+<overlay id="calendartweaks-calendar-views-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    
+    <script src="chrome://calendartweaks/content/calendartweaks-calendar-views.js" type="application/x-javascript"/>
+    
+    <toolbar id="mail-toolbar-menubar2">
+        <toolbaritem id="menubar-items">
+            <menubar id="mail-menubar">
+                <menu id="tasksMenu">
+                    <menupopup id="taskPopup">
+                        <menuitem id="calendartweaks-toolsmenu-options" label="&calendartweaks.options;" accesskey="&calendartweaks.options.ak;"
+                                  oncommand="calendarTweaks.cmdOptions();" insertbefore="menu_preferences"/>
+                    </menupopup>
+                </menu>
+            </menubar>
+        </toolbaritem>
+    </toolbar>
+    
+</overlay>

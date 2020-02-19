@@ -59,6 +59,21 @@
             <textbox wsm_persist="true" id="server.domain"
                      prefstring="mail.server.%serverkey%.domain"/>
       </row>
+      <row align="center">
+            <label value="&authMethod.label;"
+                   accesskey="&authMethod.accesskey;"
+                   control="server.authMethod"/>
+            <menulist id="server.authMethod"
+                      wsm_persist="true"
+                      preftype="int"
+                      prefstring="mail.server.%serverkey%.authMethod">
+              <menupopup id="server.authMethodPopup">
+                <menuitem value="3" label="&ews.authMethod3;"/>
+                <menuitem value="25" label="&ews.authMethod25;"/>
+                <menuitem value="10" label="&ews.authMethod10;"/>
+              </menupopup>
+            </menulist>
+      </row>
     </rows>
   </grid>
 

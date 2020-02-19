@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/prefPanels.css" type="text/css"?>
+<?xml-stylesheet href="chrome://signalspam/skin/prefPanels.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://signalspam/locale/settings.dtd">
+<!--
+ondialogaccept="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return validPrefs(true);"
+ondialogcancel="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return cancelPrefs(true);"
+height="650"
+width="900"
+ondialogaccept="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return validPrefs(true);"
+ondialogcancel="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return cancelPrefs(true);"
+onload="window.sizeToContent();"
+-->
+<dialog id="signalspam-preferences"
+        instantApply="false"
+        type="child"
+        title="&signalspam.options.title;"
+        buttons="accept,cancel"
+        image="chrome://signalspam/skin/icon48.png"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        style="overflow: auto;">
+
+    <tooltip id="oneclicktooltip" orient="vertical" style="background-color: #33DD00;">
+        <label value="&signalspam.options.oneclickDescription.label;"/>
+    </tooltip>
+    <tooltip id="urldetecttooltip" orient="vertical" style="background-color: #33DD00;">
+        <label value="&signalspam.urldetect.tooltip;"/>
+    </tooltip>
+    <tooltip id="movereporttooltip" orient="vertical" style="background-color: #33DD00;">
+        <label value="&signalspam.movereport.tooltip;"/>
+    </tooltip>
+    <tooltip id="spambtonactivetooltip" orient="vertical" style="background-color: #33DD00;">
+        <label value="&signalspam.spambtonactive.tooltip;"/>
+    </tooltip>
+
+    <hbox id="preferencesNotificationBox">
+    </hbox>
+    <vbox pack="start" style="margin-left:1vw; margin-right: 1vw;">
+        <hbox align="center" pack="center">
+            <image id="logo" src='chrome://signalspam/skin/icon48.png' width='48' height='48'/>
+            <label id="title" class="header">&signalspam.options.title;</label>
+        </hbox>
+        <description class="intro" width="50">
+            &signalspam-intro;
+        </description>
+        <separator class="thin"/>
+        <groupbox id="credentials" align="start">
+            <hbox class="groupbox-title">
+                <label class="header">&signalspam.credentials.label;</label>
+            </hbox>
+            <grid id="grid-credentials">
+                <columns>
+                    <column width="20%"/>
+                    <column width="80%"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label control="signalspam_pref_userid" value="&signalspam.userid.label;"/>
+                        <textbox preference="signalspam_pref_userid" id="signalspam_pref_userid"
+                                 placeholder="&signalspam.userid.placeholder;"
+                                 tooltip="useridtooltip"
+                                 size="30" maxlength="128"
+                                 tabindex="1"
+                                 onchange="checkUserIdAndPassord();"/>
+                    </row>
+                    <row>
+                        <label control="signalspam_pref_password" value="&signalspam.password.label;"/>
+                        <!--<textbox preference="signalspam_pref_password" id="signalspam_pref_password"-->
+                        <textbox id="signalspam_pref_password"
+                                 size="20" maxlength="128"
+                                 type="password"
+                                 tooltip="passwordtooltip"
+                                 onchange="checkUserIdAndPassord();"
+                                 tabindex="2"/>
+                    </row>
+                    <row>
+                        <label></label>
+                        <hbox>
+                            <description class="desc" width="400">
+                                &signalspam-forgotpwd;
+                                <label value="&signalspam-linkresetpwd;" class="text-link"
+                                       href="https://signalants.signal-spam.fr/password/new" id="newPasswordLink"/>
+                            </description>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+        </groupbox>
+        <separator class="thin" orient="vertical"/>
+        <groupbox id="options" align="start">
+            <hbox class="groupbox-title">
+                <label class="header">&signalspam.options.label;</label>
+            </hbox>
+            <hbox hidden="false">
+                <label control="oneclick" value="&signalspam.oneclick.label;"/>
+                <checkbox preference="signalspam_pref_oneclick" id="oneclick"
+                          tooltip="oneclicktooltip"
+                          tabindex="99"/>
+            </hbox>
+            <description class="desc" hidden="false">&signalspam.oneclick.desc;</description>
+            <separator class="thin"/>
+            <hbox>
+                <label control="urldetect" value="&signalspam.urldetect.label;"/>
+                <checkbox preference="signalspam_pref_urldetect" id="urldetect"
+                          tooltip="urldetecttooltip"
+                          tabindex="3"/>
+            </hbox>
+            <description class="desc">&signalspam.urldetect.desc;</description>
+            <separator class="thin"/>
+            <hbox>
+                <label control="movereport" value="&signalspam.movereport.label;"/>
+                <checkbox preference="signalspam_pref_movereport" id="movereport"
+                          tooltip="movereporttooltip"
+                          tabindex="4"/>
+            </hbox>
+            <description class="desc">&signalspam.movereport.desc;
+                <label value="&signalspam-thunderbirdpreferences;" id="thunderbirdpreferences" class="text-link"/>
+            </description>
+            <description class="desc" hidden="true" id="manualMarkFalse"
+                         style="color:red;">&signalspam.manualMarkFalse.desc;
+            </description>
+            <separator class="thin"/>
+            <hbox>
+                <image src='&signalspam.junkbutton.src;' style="height:2em;"/>
+                <label control="spambtonactive" value="&signalspam.spambtonactive.label;"/>
+                <checkbox preference="signalspam_pref_spambtonactive" id="spambtonactive"
+                          tooltip="spambtonactivetooltip"
+                          tabindex="5"/>
+            </hbox>
+            <description class="desc">&signalspam.spambtonactive.desc;</description>
+            <spacer flex="1"></spacer>
+        </groupbox>
+    </vbox>
+
+    <!-- mandatory to recreate the functionality of the preference attribute -->
+    <script
+            src="chrome://global/content/preferencesBindings.js"
+            type="application/javascript"/>
+    <script type="application/javascript"
+            src="chrome://signalspam/content/signalspam/specific/signalspam/extensionConfig.js"/>
+    <script type="application/javascript" src="chrome://signalspam/content/signalspam/include/verifrom_api.js"/>
+    <script type="application/javascript" src="chrome://signalspam/content/signalspam/settings.js"/>
+
+    <!--</prefpane>-->
+</dialog>

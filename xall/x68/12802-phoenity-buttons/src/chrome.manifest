@@ -1,18 +1,19 @@
-overlay	chrome://messenger/content/messenger.xul				chrome://phoenityButtons/content/phoenityButtons.xul
-overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://phoenityButtons/content/phoenityCompose.xul
+content   phoenityButtons   content/
 
-style	chrome://messenger/content/customizeToolbar.xul	chrome://phoenityButtons/skin/phoenityButtons.css
-style	chrome://messenger/content/AccountManager.xul	chrome://phoenityButtons/skin/phoenityButtons.css
-style	about:addons					chrome://phoenityButtons/skin/phoenityButtons.css
+skin      phoenityButtons   classic/1.0   skin/
+skin      twistyBox         classic/1.0   linux/    os=Linux
+skin      twistyBox         classic/1.0   darwin/   os=Darwin
+skin      twistyBox         classic/1.0   aero/     os=WINNT
 
-skin	phoenityButtons	classic/1.0	skin/
-skin	twistyBox			classic/1.0	linux/	os=Linux
-skin	twistyBox			classic/1.0	darwin/	os=Darwin
-skin	twistyBox			classic/1.0	aero/	os=WINNT
+locale    phoenityButtons   en-US   locale/en-US/
+locale    phoenityButtons   nl      locale/nl/
+locale    phoenityButtons   fr      locale/fr/
+locale    phoenityButtons   uk-UA   locale/uk-UA/
+locale    phoenityButtons   de      locale/de/
 
-content	phoenityButtons		content/
+overlay   chrome://messenger/content/messenger.xul                           chrome://phoenityButtons/content/phoenityButtons.xul
+overlay   chrome://messenger/content/messengercompose/messengercompose.xul   chrome://phoenityButtons/content/phoenityCompose.xul
 
-locale	phoenityButtons	en	locale/en/
-locale	phoenityButtons	nl	locale/nl/
-locale	phoenityButtons	fr	locale/fr/
-locale	phoenityButtons	uk-UA	locale/uk-UA/
+style     chrome://messenger/content/customizeToolbar.xul                    chrome://phoenityButtons/skin/phoenityButtons.css
+style     chrome://messenger/content/AccountManager.xul                      chrome://phoenityButtons/skin/phoenityButtons.css
+style     about:addons                                                       chrome://phoenityButtons/skin/phoenityButtons.css

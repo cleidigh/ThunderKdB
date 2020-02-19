@@ -30,7 +30,7 @@ exquilla.prefsOverlay = (function _prefsOverlay()
   function onLoad()
   { try {
     log.debug("exquilla.prefsOverlay.onLoad");
-    if (!window.Preferences) { // COMPAT for TB 60
+    if (typeof window.Preferences != "object") { // COMPAT for TB 60
       return;
     }
     // locate the "Addressing Autocompletion" groupbox

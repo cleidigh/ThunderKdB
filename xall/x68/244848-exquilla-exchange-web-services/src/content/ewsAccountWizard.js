@@ -111,6 +111,13 @@ exquilla.AW = (function exquillaAW()
     let pageData = GetPageData();
     gCurrentAccountData = ewsData;
     AccountDataToPageData(ewsData, pageData);
+    try {
+      _e("fullName").value = Cc["@mozilla.org/userinfo;1"].getService(Ci.nsIUserInfo).fullname;
+    } catch (ex) {
+      // It's OK if the user info does not exist or fails.
+      // We normally get the full name from XML anyway.
+      // If that fails, we'll just wait for the user to enter it.
+    }
     return true;
   } catch (e) {log.warn(re(e));}}
 
@@ -148,7 +155,7 @@ exquilla.AW = (function exquillaAW()
   function serverPageValidate()
   { try {
     if (_e("exquillaManualURL").getAttribute("status") != "success")
-      ewsTestUrl([_e('exquillaserverurl').value]);
+      ewsTestUrl([_e('exquillaserverurl').value], Ci.nsMsgAuthMethod.anything);
   } catch(e) {log.warn(e);}}
 
   function ewsIdentityPageValidate()
@@ -466,15 +473,29 @@ exquilla.AW = (function exquillaAW()
     if (!exquilla.AW.didAutodiscover) {
       exquilla.AW.didAutodiscover = true;
       autodiscover(function() {
-        document.documentElement.advance();
+        if (validFullName()) {
+          document.documentElement.advance();
+        } else {
+          _e("fullName").focus();
+        }
       });
     }
   } catch(e) {log.warn(re(e));}}
 
-  function serverPageUnload()
-  { try {
-    var pageData = parent.GetPageData();
+  function validFullName() {
+    return !!_e("fullName").value.trim();
+  }
 
+  function serverPageUnload(event)
+  { try {
+    if (!validFullName()) {
+      event.preventDefault();
+      _e("fullName").focus();
+      Services.prompt.alert(window, null, _e("bundle_dom").getString("FormValidationValueMissing"));
+      return false;
+    }
+
+    var fullName = _e("fullName").value.trim();
     var ewsServerUrl = _e("exquillaserverurl").value.trim();
     var useMail = _e("exquillaUseMail").checked;
     var useAB = _e("exquillaUseAB").checked;
@@ -483,8 +504,9 @@ exquilla.AW = (function exquillaAW()
     //var domain = _e("exquillaDomain").value;
     var password = _e("exquillaPassword").value;
 
+    var pageData = parent.GetPageData();
+
     dump('ewsServerUrl is ' + ewsServerUrl + '\n');
-    let fullName = _e("fullName").value.trim();
     // we will use this for the host name, as well as set it for the ewsURL
     let uri = newParsingURI(ewsServerUrl);
     setPageData(pageData, "server", "hostname", uri.host);
@@ -645,8 +667,10 @@ exquilla.AW = (function exquillaAW()
         _e("exquillaAutoURL").setAttribute("status", "pending");
         _e("exquillaadresult").value =
          exquillaStrings.GetStringFromName("UrlTestInProgress");
-        _e("fullName").value = aDisplayName;
-        ewsTestUrl([aResult.mEwsUrl, aResult.mInternalEwsUrl, aResult.mEwsOWAGuessUrl], this.successCallback);
+         if (aDisplayName) {
+           _e("fullName").value = aDisplayName;
+         }
+        ewsTestUrl([aResult.mEwsUrl, aResult.mInternalEwsUrl, aResult.mEwsOWAGuessUrl], aResult.mAuthMethod, this.successCallback);
       }
       else
       {
@@ -685,7 +709,7 @@ exquilla.AW = (function exquillaAW()
     }
   } catch(e) {dump(e + '\n');}}
 
-  function ewsTestUrl(aUrls, successCallback)
+  function ewsTestUrl(aUrls, aAuthMethod, successCallback)
   {
     let listener = {
       ewsUrl: "",
@@ -706,6 +730,7 @@ exquilla.AW = (function exquillaAW()
         {
           let nativeService = new EwsNativeService();
           nativeService.removeNativeMailbox(this.mailbox);
+          let authMethod = this.mailbox.authMethod;
           this.mailbox = null;
 
           // remove temporarily added ntlm host
@@ -722,6 +747,7 @@ exquilla.AW = (function exquillaAW()
             _e("exquillaUrlResult").value = exquillaStrings.GetStringFromName("UrlTestSuccess");
             _e("exquillaManualURL").setAttribute("status", "success");
             document.documentElement.canAdvance = true;
+            gCurrentAccountData.incomingServer.authMethod = authMethod;
             if (successCallback) {
               successCallback();
             }
@@ -736,7 +762,7 @@ exquilla.AW = (function exquillaAW()
         }
       },
 
-      nextUrl: function _nextUrl()
+      nextUrl: async function _nextUrl()
       {
         document.documentElement.canAdvance = false;
         while ( (this.ewsUrl = aUrls.shift()) && this.ewsUrl)
@@ -772,6 +798,20 @@ exquilla.AW = (function exquillaAW()
             this.mailbox.domain = domain;
             this.mailbox.email = email;
             this.mailbox.ewsURL = this.ewsUrl;
+            if (aAuthMethod == Ci.nsMsgAuthMethod.anything) {
+              try {
+                if (await this.tryPasswordAuth(this.ewsUrl, username, password, domain)) {
+                  this.mailbox.authMethod = Ci.nsMsgAuthMethod.passwordCleartext;
+                } else {
+                  this.mailbox.authMethod = await this.mailbox.oAuth2Login.detectAuthMethod();
+                }
+              } catch (ex) {
+                log.warn(ex);
+                return this.onEvent(null, "StopMachine", null, ex.result || Cr.NS_ERROR_FAILURE);
+              }
+            } else {
+              this.mailbox.authMethod = aAuthMethod;
+            }
             _e("exquillaUrlResult").value =
               exquillaStrings.GetStringFromName("UrlTestInProgress");
             _e("exquillaManualURL").setAttribute("status", "loading");
@@ -788,6 +828,45 @@ exquilla.AW = (function exquillaAW()
           alertAutodiscover(true);
         }
       },
+
+      /**
+       * Attempt a simple EWS request with basic authentication.
+       *
+       * @param aEwsUrl   {String}
+       * @param aUsername {String}
+       * @param aPassword {String}
+       * @param aDomain   {String?}
+       * @returns         {Boolean} Whether the request succeeded
+       */
+      tryPasswordAuth: async function tryPasswordAuth(aEwsUrl, aUsername, aPassword, aDomain) {
+        let userdomain = aDomain ? aDomain + "\\" + aUsername : aUsername;
+        let response = await fetch(aEwsUrl, {
+          method: "POST",
+          headers: {
+            Authorization: "Basic " + btoaUTF(userdomain + ":" + aPassword),
+            "Content-Type": "text/xml; charset=utf-8",
+          },
+          body: `<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+            xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <s:Header>
+    <t:RequestServerVersion Version="Exchange2007_SP1"/>
+  </s:Header>
+  <s:Body>
+    <m:GetFolder>
+      <m:FolderShape>
+        <t:BaseShape>IdOnly</t:BaseShape>
+      </m:FolderShape>
+      <m:FolderIds>
+        <t:DistinguishedFolderId Id="msgfolderroot"/>
+      </m:FolderIds>
+    </m:GetFolder>
+  </s:Body>
+</s:Envelope>`,
+        });
+        return response.ok;
+      }
     };
 
     listener.nextUrl();

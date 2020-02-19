@@ -268,6 +268,7 @@ EwsIncomingServer.prototype = {
       this._mailbox.username = this.realUsername ;
       this._mailbox.domain = this.domain;
       this._mailbox.password = this.cppBase.password;
+      this._mailbox.authMethod = this.cppBase.authMethod;
       log.config("msqEwsIncomingServer::GetNativeMailbox username is " + this.realUsername);
       log.config("msqEwsIncomingServer::GetNativeMailbox domain is " + this.domain);
 
@@ -326,16 +327,22 @@ EwsIncomingServer.prototype = {
       let namesFile = this.localPath.clone();
       namesFile.append("folderNames.json");
       if (namesFile.exists()) {
-        let stream = Cc["@mozilla.org/network/file-input-stream;1"]
-                       .createInstance(Ci.nsIFileInputStream);
-        stream.init(namesFile, -1, 0, 0);
-        let converterInputStream = Cc["@mozilla.org/intl/converter-input-stream;1"]
-                                     .createInstance(Ci.nsIConverterInputStream);
-        converterInputStream.init(stream, 'UTF-8', 0, 0);
-        let stringObject = {};
-        converterInputStream.readString(-1, stringObject);
-        this._nameMap = JSON.parse(stringObject.value);
-        converterInputStream.close();
+        try {
+          let stream = Cc["@mozilla.org/network/file-input-stream;1"]
+                         .createInstance(Ci.nsIFileInputStream);
+          stream.init(namesFile, -1, 0, 0);
+          let converterInputStream = Cc["@mozilla.org/intl/converter-input-stream;1"]
+                                       .createInstance(Ci.nsIConverterInputStream);
+          converterInputStream.init(stream, 'UTF-8', 0, 0);
+          let stringObject = {};
+          converterInputStream.readString(-1, stringObject);
+          this._nameMap = JSON.parse(stringObject.value);
+          converterInputStream.close();
+        } catch (ex) {
+          // Just delete the corrupt file; folder discovery will repopulate it,
+          // although some folders might need to be rebuilt.
+          namesFile.remove(false);
+        }
       }
     }
       

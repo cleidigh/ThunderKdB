@@ -20,7 +20,7 @@ var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm")
 var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 var { Utils } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
 var { EwsFBA } = ChromeUtils.import("resource://exquilla/EwsFBA.jsm");
-Cu.importGlobalProperties(["XMLHttpRequest"]);
+Cu.importGlobalProperties(["fetch", "XMLHttpRequest"]);
 if ("@mozilla.org/xmlextras/domparser;1" in Cc) {
   this.DOMParser = Components.Constructor("@mozilla.org/xmlextras/domparser;1", Ci.nsIDOMParser); // COMPAT for TB 60
 } else {
@@ -50,7 +50,6 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
     let status = 0;
     let displayName = "";
     let urls = [];
-    let foundAutodiscover = false;
 
     // Bug 799234 added a check that the upload channel is rewound, but it does not appear
     //  to be and I am hitting an assertion. I believe there is a core bug that is causing
@@ -142,6 +141,24 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
       for (let urlbase of urls)
       { try {
         // outer loop to try each url in urls
+        let urlv2 = urlbase + '/autodiscover/autodiscover.json/v1.0/';
+        log.config('try autodiscover to url ' + urlv2);
+        if (aSiteCallback) aSiteCallback(urlv2); // just to show the url in UI
+        try {
+          let response = await fetch(urlv2 + aEmail + '?Protocol=Ews');
+          status = response.status;
+          if (status == 200) {
+            let json = await response.json();
+            if (/\/Exchange\.asmx$/i.test(json.Url)) {
+              eventListener.mFoundAutodiscover = true;
+              eventListener.mEwsUrl = json.Url;
+              eventListener.mAuthMethod = Ci.nsMsgAuthMethod.anything; // we can't readily distinguish personal and Office 365 accounts using the API
+            }
+          }
+        } catch (ex) {
+          log.warn(ex);
+        }
+
         let url = urlbase + '/autodiscover/autodiscover.xml';
         let originalUrl = url;
 
@@ -230,8 +247,6 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
               }
             }
 
-            if (eventListener.mFoundAutodiscover)
-              foundAutodiscover = true;
             displayName = eventListener.mDisplayName;
             break;
           }
@@ -254,12 +269,15 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
       result.mInternalEwsUrl = eventListener.mInternalEwsUrl;
       result.mEwsUrl = eventListener.mEwsUrl;
       result.mEwsOWAGuessUrl = eventListener.mEwsOWAGuessUrl;
+      result.mAuthMethod = eventListener.mAuthMethod;
       result.mPassword = eventListener.mPassword;
-      aListener.handleAutodiscover(status, result, displayName, foundAutodiscover);
+      aListener.handleAutodiscover(status, result, displayName, eventListener.mFoundAutodiscover);
     }
   }
 
   log.config('doAutodiscover email is ' + aEmail + ' username is ' + aUsername + ' domain is ' + aDomain);
+  // Clear HTTP authentication session in case we configure 2 accounts on the same server
+  Cc['@mozilla.org/network/http-auth-manager;1'].getService(Ci.nsIHttpAuthManager).clearAll();
   var eventListener = new EventListener(aEmail, aUsername, aDomain, aPassword, aSavePassword);
 
   coroutine();
@@ -290,7 +308,9 @@ function EventListener(aEmail, aUsername, aDomain, aPassword, aSavePassword)
   this.mEwsUrl = ''; // the external EWS url
   this.mInternalEwsUrl = ''; // the internal EWS url
   this.mEwsOWAGuessUrl = ''; // ews url guess from OWA
+  this.mAuthMethod = Ci.nsMsgAuthMethod.passwordCleartext;
   this.mDisplayName = '';
+  this.mFoundAutodiscover = false;
   this.mCallback = null;
   this.mSavePassword = aSavePassword;
   this.mStatus = 0;
@@ -319,7 +339,6 @@ EventListener.prototype =
   sendRequest: function sendRequest(aCallback)
   {
     this.mCallback = aCallback;
-    this.mFoundAutodiscover = false;
     this.mCertError = false; // if we resend
     this.mRequest = new XMLHttpRequest();
 
@@ -446,6 +465,8 @@ EventListener.prototype =
                                    .getElementsByTagName("OWAUrl")[0]
                                    .textContent;
               this.mEwsOWAGuessUrl = owaUrl.replace(/\/owa\//i, "/EWS/") + 'Exchange.asmx';
+              this.mAuthMethod = owaUrl.startsWith("https://outlook.office365.com/owa/") ?
+                Ci.nsMsgAuthMethod.anything : Ci.nsMsgAuthMethod.passwordCleartext;
             }
           } catch (e) {log.config("protocol parse error " + e); continue;}}
 
@@ -571,7 +592,8 @@ EventListener.prototype =
     if (aDomain && aDomain.length)
     {
       aAuthInfo.domain = aDomain;
-      aAuthInfo.flags |= Ci.nsIAuthInformation.NEED_DOMAIN;
+      // Why was this here?
+      //aAuthInfo.flags |= Ci.nsIAuthInformation.NEED_DOMAIN;
     }
     aAuthInfo.username = aUsername;
     aAuthInfo.password = localPassword;
@@ -590,7 +612,13 @@ EventListener.prototype =
       log.debug('first attempt, returning credentials without prompt');
       return cancelable;
     }
-      
+
+    if (this.mFoundAutodiscover) {
+      executeSoon(() => aCallback.onAuthCancelled(aContext, false));
+      log.debug("found EWS URL via JSON, don't prompt for XML password");
+      return null;
+    }
+
     let bundleSvc = Cc["@mozilla.org/intl/stringbundle;1"]
                       .getService(Ci.nsIStringBundleService);
     let cdBundle = bundleSvc.createBundle("chrome://global/locale/commonDialogs.properties");

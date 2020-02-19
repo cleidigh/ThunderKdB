@@ -36,7 +36,7 @@ XPCOMUtils.defineLazyGetter(this, "log", () => {
 
 Cu.importGlobalProperties(["crypto", "fetch", "URLSearchParams"]);
 
-var EXPORTED_SYMBOLS = ["EnsureLicensed", "FetchTicket", "CheckLicense", "AddTicketFromString", "OpenPurchasePage", "OpenManualAccountCreation", "AnyExQuillaAccountConfigured", "exquillaSettings"];
+var EXPORTED_SYMBOLS = ["EnsureLicensed", "FetchTicket", "CheckLicense", "AddTicketFromString", "OpenPurchasePage", "OpenManualAccountCreation", "GetLicensedEmail", "exquillaSettings"];
 
 const kSoonExpiringPollInterval = 24 * 60 * 60 * 1000; // 1 day
 const kSoonExpiring = 14 * 24 * 60 * 60 * 1000; // 2 weeks
@@ -84,7 +84,11 @@ async function EnsureLicensed()
     // We lost that user. Stop polling.
     return false;
   }
-  ticket = await FetchTicket();
+  try {
+    ticket = await FetchTicket();
+  } catch (ex) {
+    log.error(ex);
+  }
   if (!ticket || !ticket.valid) {
     return false;
   }
@@ -100,7 +104,11 @@ async function NextPoll()
   if (ticket.status == "normal" && !ticket.requiresRefresh) {
     return;
   }
-  FetchTicket();
+  try {
+    await FetchTicket();
+  } catch (ex) {
+    log.error(ex);
+  }
 }
 
 function getGlobalPrimaryIdentity() {
@@ -201,6 +209,10 @@ async function FetchTicketUnqueued()
       // (We use a specific error code for this, because we don't want
       // this purge to happen accidentally, even after a server bug.)
       Services.prefs.setStringPref("extensions.exquilla.ticket", "");
+    } else if (response.status == 404) {
+      // Continue to call startTrial()
+    } else {
+      throw new Error(response.statusText + " (HTTP " + response.status + ")");
     }
     let ticket = await CheckLicense();
     if (!ticket.valid) {
@@ -210,13 +222,12 @@ async function FetchTicketUnqueued()
     Services.obs.notifyObservers(null, "LicenseChecked", JSON.stringify(ticket));
     return ticket;
   } catch (ex) {
-    log.error(ex);
     try {
       Services.obs.notifyObservers(null, "LicenseChecked", JSON.stringify(await CheckLicense()));
     } catch (ex2) {
       log.error(ex2);
     }
-    return new BadTicket();
+    throw ex;
   }
 }
 
@@ -246,6 +257,8 @@ async function startTrial(aAliases) {
   if (response.ok) {
     let ticket = await response.json();
     Services.prefs.setStringPref("extensions.exquilla.ticket", JSON.stringify(ticket));
+  } else {
+    throw new Error(response.statusText + " (HTTP " + response.status + ")");
   }
 }
 
@@ -354,7 +367,13 @@ async function OpenPurchasePage() {
   }) + "#purchase");
   Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService).loadURI(uri);
 
-  let purchasePoller = setInterval(FetchTicket, kPurchasePollInterval);
+  let purchasePoller = setInterval(async () => {
+    try {
+      await FetchTicket();
+    } catch (ex) {
+      log.error(ex);
+    }
+  }, kPurchasePollInterval);
   setTimeout(() => {
     clearInterval(purchasePoller);
   }, kPurchasePollFor);
@@ -365,28 +384,49 @@ function OpenManualAccountCreation() {
               "AccountWizard", "chrome,modal,titlebar,centerscreen", null);
 }
 
-function AnyExQuillaAccountConfigured()
+function GetLicensedEmail()
 {
   let accounts = MailServices.accounts.accounts;
   for (let i = 0; i < accounts.length; i++) {
     let account = accounts.queryElementAt(i, Ci.nsIMsgAccount);
     if (account.incomingServer.type == "exquilla") {
-      return true;
+      return account.identities.queryElementAt(0, Ci.nsIMsgIdentity).email;
     }
   }
-  return false;
+  return "";
+}
+
+/**
+ * Logs any exceptions thrown by functions used by the settings page.
+ *
+ * @parameter aFuncton {Function} The function to wrap
+ * @returns            {Function}
+ *
+ * This is here because the settings page doesn't have access to logging,
+ * and the equivalent function in webapi/exquilla/exquilla.js has to drop
+ * everything except the exception message anyway.
+ */
+function wrapExceptions(aFunction) {
+  return async (...args) => {
+    try {
+      return await aFunction(...args);
+    } catch (ex) {
+      log.error(ex);
+      throw ex;
+    }
+  };
 }
 
 /**
  * This object mirrors the `exquillaSettings` WebExperiment API.
  */
 var exquillaSettings = {
-  fetchTicket: FetchTicket,
-  checkLicense: CheckLicense,
-  addTicketFromString: AddTicketFromString,
-  openPurchasePage: OpenPurchasePage,
-  openManualAccountCreation: OpenManualAccountCreation,
-  anyExQuillaAccountConfigured: AnyExQuillaAccountConfigured,
+  fetchTicket: wrapExceptions(FetchTicket),
+  checkLicense: wrapExceptions(CheckLicense),
+  addTicketFromString: wrapExceptions(AddTicketFromString),
+  openPurchasePage: wrapExceptions(OpenPurchasePage),
+  openManualAccountCreation: wrapExceptions(OpenManualAccountCreation),
+  getLicensedEmail: wrapExceptions(GetLicensedEmail),
   onLicenseChecked: {
     addListener: function(aListener) {
       Services.obs.addObserver(aListener, "LicenseChecked");

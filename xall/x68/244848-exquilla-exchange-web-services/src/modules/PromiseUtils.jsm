@@ -221,6 +221,7 @@ PromiseUtils.promiseAutodiscover = function promiseAutodiscover
                      ewsUrl: aResult.mEwsUrl,
                      internalEwsUrl: aResult.mInternalEwsUrl,
                      ewsOWAGuessUrl: aResult.mEwsOWAGuessUrl,
+                     authMethod: aResult.mAuthMethod,
                      displayName: aDisplayName,
                      foundSite: aFoundSite});
     }

@@ -118,7 +118,7 @@
     gNotificationBox = new MozElements.NotificationBox(element => {
       element.id = "exquilla-notification-box";
       element.setAttribute("notificationside", "top");
-      gNotificationBox.replaceWith(element);
+      document.getElementById("exquilla-notification-box").replaceWith(element);
     });
   }
 

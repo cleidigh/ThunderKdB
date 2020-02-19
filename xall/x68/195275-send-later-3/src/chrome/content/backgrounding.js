@@ -240,7 +240,7 @@ var Sendlater3Backgrounding = function() {
         msgAdded: function(aMsgHdr) {
             if (aMsgHdr.getStringProperty("x-send-later-at")) {
                 if (! SL3U.getBoolPref("mark_drafts_read")) return;
-		readlist = Components.classes["@mozilla.org/array;1"]
+		var readlist = Components.classes["@mozilla.org/array;1"]
 		    .createInstance(Components.interfaces.nsIMutableArray);
 		readlist.appendElement(aMsgHdr, false);
 	        aMsgHdr.folder.markMessagesRead(readlist, true);
@@ -752,8 +752,9 @@ var Sendlater3Backgrounding = function() {
 	    // with bare \n's on them, so we're back to the original
 	    // problem.
 	    if (content.slice(0,5) != "From ") {
-		content = "From - " + Date().toString() + "\n"
-		    + content;
+                var dt = Date().toString().replace(/ \(.*/, "");
+                var fromline = "From - " + dt;
+		content = fromline + "\n" + content;
 	    }
 	    content = content.replace(/\n/g,"\r\n");
 
@@ -981,11 +982,23 @@ var Sendlater3Backgrounding = function() {
 		catch (ex) {}
 	    }
 	    else {
-		SL3U.alert(window, null,
-			   SL3U.PromptBundleGetFormatted(
-			       "CorruptFolderError",
-			       [folder.URI]));
-		throw e;
+                // Owl for Exchange, maybe others as well
+                try {
+                    var o = {};
+                    var f = thisfolder.getDBFolderInfoAndDB(o);
+                    messageenumerator = f.EnumerateMessages();
+                } catch (ex) {}
+                if (messageenumerator) {
+                    sl3log.info(".messages failed on " + folder.URI +
+                                ", using .EnumerateMessages on DB instead");
+                }
+                else {
+		    SL3U.alert(window, null,
+			       SL3U.PromptBundleGetFormatted(
+			           "CorruptFolderError",
+			           [folder.URI]));
+		    throw e;
+                }
 	    }
 	}
 	if ( messageenumerator ) {
@@ -1153,9 +1166,13 @@ var Sendlater3Backgrounding = function() {
 		sl3log.debug("IMMEDIATE " + msg + " - " + uri);
 		folderLoadListener.OnItemEvent(folder, "Immediate");
 	    }
-	    
-	    CheckFolder(SL3U.FindSubFolder(fdrlocal, "Drafts"), true,
-			"local Drafts folder");
+
+	    var folder = SL3U.FindSubFolder(fdrlocal, "Drafts");
+            if (folder)
+	        CheckFolder(folder , true, "local Drafts folder");
+            else
+                sl3log.warn("SL3U.FindSubFolder(fdrlocal, \"Drafts\") " +
+                            "returned nothing");
 	    // Local Drafts folder might have different name, e.g., in other
 	    // locales.
             var local_draft_pref;
@@ -1172,7 +1189,6 @@ var Sendlater3Backgrounding = function() {
             }
 	    sl3log.debug("mail.identity.default.draft_folder=" +local_draft_pref);
 	    if (local_draft_pref) {
-		var folder;
 		// Will fail if folder doesn't exist
 		try {
 		    folder = getMsgFolderFromUri(local_draft_pref);
@@ -1228,6 +1244,7 @@ var Sendlater3Backgrounding = function() {
 		    switch (thisaccount.incomingServer.type) {
 		    case "pop3":
 		    case "imap":
+                    case "owl":
 			var identityNum;
 			for (identityNum = 0; identityNum < numIdentities;
 			     identityNum++) {
@@ -1262,7 +1279,13 @@ var Sendlater3Backgrounding = function() {
 			    }
 			    pref_value = SL3U.GetUpdatePref(identity.key) ||
 				pref_value;
-			    CheckFolder(thisfolder, pref_value, msg);
+                            if (thisfolder)
+			        CheckFolder(thisfolder, pref_value, msg);
+                            else
+                                sl3log.warn("getMsgFolderFromUri on " +
+                                            identity.draftFolder + " for " +
+                                            " identity " + identityNum +
+                                            " returned nothing");
 			}
 			break;
 		    default:
@@ -1624,6 +1647,10 @@ var Sendlater3Backgrounding = function() {
     sl3log.Leaving("Sendlater3Backgrounding");
     addMsgSendLaterListener();
     addNewMessageListener();
+
+    var {KickstarterPopup} = ChromeUtils.import(
+        "resource://sendlater3/kickstarter.jsm");
+    KickstarterPopup(window, "chrome://sendlater3/content/kickstarter.xul");
 }
 
 window.addEventListener("load", Sendlater3Backgrounding, false);

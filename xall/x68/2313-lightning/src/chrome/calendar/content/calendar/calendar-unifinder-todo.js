@@ -10,10 +10,10 @@
  * Called when the window is loaded to set up the unifinder-todo.
  */
 function prepareCalendarToDoUnifinder() {
-    // add listener to update the date filters
-    getViewDeck().addEventListener("dayselect", updateCalendarToDoUnifinder);
+  // add listener to update the date filters
+  getViewDeck().addEventListener("dayselect", updateCalendarToDoUnifinder);
 
-    updateCalendarToDoUnifinder();
+  updateCalendarToDoUnifinder();
 }
 
 /**
@@ -21,46 +21,46 @@ function prepareCalendarToDoUnifinder() {
  *
  * @param aFilter        The filter name to set.
  */
-async function updateCalendarToDoUnifinder(aFilter) {
-    let tree = document.getElementById("unifinder-todo-tree");
-    if (!("updateFilter" in tree)) {
-        await new Promise(resolve => tree.addEventListener("bindingattached", resolve, { once: true }));
+function updateCalendarToDoUnifinder(aFilter) {
+  let tree = document.getElementById("unifinder-todo-tree");
+
+  // Set up hiding completed tasks for the unifinder-todo tree
+  let showCompleted = document.getElementById("show-completed-checkbox").checked;
+  let oldFilter = document
+    .getElementById("unifinder-todo-filter-broadcaster")
+    .getAttribute("value");
+  let filter = oldFilter;
+
+  // This function acts as an event listener, in which case we get the Event as the
+  // parameter instead of a filter.
+  if (aFilter && !(aFilter instanceof Event)) {
+    filter = aFilter;
+  }
+
+  if (filter && filter != oldFilter) {
+    document.getElementById("unifinder-todo-filter-broadcaster").setAttribute("value", aFilter);
+  }
+
+  if (filter && !showCompleted) {
+    let filterProps = tree.mFilter.getDefinedFilterProperties(filter);
+    if (filterProps) {
+      filterProps.status =
+        (filterProps.status || filterProps.FILTER_STATUS_ALL) &
+        (filterProps.FILTER_STATUS_INCOMPLETE | filterProps.FILTER_STATUS_IN_PROGRESS);
+      filter = filterProps;
     }
+  }
 
-    // Set up hiding completed tasks for the unifinder-todo tree
-    let showCompleted = document.getElementById("show-completed-checkbox").checked;
-    let oldFilter = document.getElementById("unifinder-todo-filter-broadcaster").getAttribute("value");
-    let filter = oldFilter;
-
-    // This function acts as an event listener, in which case we get the Event as the
-    // parameter instead of a filter.
-    if (aFilter && !(aFilter instanceof Event)) {
-        filter = aFilter;
-    }
-
-    if (filter && (filter != oldFilter)) {
-        document.getElementById("unifinder-todo-filter-broadcaster").setAttribute("value", aFilter);
-    }
-
-    if (filter && !showCompleted) {
-        let filterProps = tree.mFilter.getDefinedFilterProperties(filter);
-        if (filterProps) {
-            filterProps.status = (filterProps.status || filterProps.FILTER_STATUS_ALL) &
-                                 (filterProps.FILTER_STATUS_INCOMPLETE |
-                                  filterProps.FILTER_STATUS_IN_PROGRESS);
-            filter = filterProps;
-        }
-    }
-
-    // update the filter
-    tree.showCompleted = showCompleted;
-    tree.updateFilter(filter);
+  // update the filter
+  tree.showCompleted = showCompleted;
+  tree.updateFilter(filter);
 }
 
 /**
- * Called when the window is unloaded to clean up the unifinder-todo.
+ * Called when the window is unloaded to clean up the unifinder-todo. Note that
+ * this function could be called even if prepareCalendarToDoUnifinder hasn't.
  */
 function finishCalendarToDoUnifinder() {
-    // remove listeners
-    getViewDeck().removeEventListener("dayselect", updateCalendarToDoUnifinder);
+  // remove listeners
+  getViewDeck().removeEventListener("dayselect", updateCalendarToDoUnifinder);
 }

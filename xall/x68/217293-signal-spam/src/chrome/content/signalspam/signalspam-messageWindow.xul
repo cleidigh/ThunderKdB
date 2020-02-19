@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://signalspam/skin/sspam.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://signalspam/skin/xsidebar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://signalspam/skin/sidebarViews.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<!-- messenger.css is required for groupbox -->
+
+<!DOCTYPE overlay SYSTEM "chrome://signalspam/locale/signalspam.dtd" >
+
+<overlay id="signalspam"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam/specific/signalspam/extensionConfig.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam/include/URLCanonicalization.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam/include/verifrom_api.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam/signalspam-common.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam/signalspam-messageWindow.js"/>
+
+    <commandset>
+        <command id="cmd_signalspamReport" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_signalspamPreferences" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_signalspamSelfcare" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_signalspamFalsePositive" oncommand="goDoCommand(this.id);"/>
+    </commandset>
+
+    <!-- <statusbar id="status-bar">
+        <statusbarpanel id="signalspam-statusbar"
+                        tooltipText="&signalspam.contentScript.sidebar.sendingsinglereport;"
+                        hidden="true">
+            <image src='chrome://signalspam/skin/icon48.png' width='20' height='20'/>
+            <html:progress mode="undetermined"/>
+        </statusbarpanel>
+    </statusbar> -->
+
+    <hbox class="statusbar">
+        <hbox class="signalspam_statusbar" id="signalspam-statusbar">
+            <label
+                   class="statusbarpanel"
+                   tooltipText="&signalspam.contentScript.sidebar.sendingsinglereport;"
+                   value="label" />
+            <image src='chrome://signalspam/skin/icon48.png' width='20' height='20'/>
+            <html:progress mode="undetermined"/>
+        </hbox>
+    </hbox>
+
+    <popup id="mailContext">
+        <menuitem id="signalspam-ctx" label="&signalspam.brand; - &signalspam.buttonlabel;" accesskey="&signalspam.accesskey;"
+                  command="cmd_signalspamReport">
+            <image src='chrome://signalspam/skin/icon48.png' width='18' height='18'/>
+            <label>&signalspam.buttonlabel;</label>
+        </menuitem>
+        <menuseparator id="signalspam-ctx-separator"/>
+    </popup>
+
+    <toolbar id="header-view-toolbar">
+        <toolbarbutton removable="true" id="signalspam-button-hdr"
+                       class="toolbarbutton-1 msgHeaderView-button hdrReplyToSenderButton"
+                       label="&signalspam.buttonlabel;"
+                       tooltiptext="&signalspam.actionButton;" command="cmd_signalspamReport"/>
+    </toolbar>
+
+    <!--<hbox id="messenger-notification-bottom">
+        <stack xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" class="notificationbox-stack" flex="1">
+            <spacer/>
+            <notification
+                    id="signalspam-alert-notification"
+                    label="&signalspam.contentScript.sidebar.phishingtitle;"
+                    value="VFPhishingNotification"
+                    image="chrome://signalspam/skin/icon48.png"
+                    priority="10"
+                    type="critical"
+                    hidden="true">
+                <hbox class="notification-inner" flex="1" type="critical" hidden="false">
+                    <hbox anonid="details" align="center" flex="1"
+                          oncommand="this.parentNode.parentNode._doButtonCommand(event);">
+                        <description anonid="messageText"
+                                     class="messageText"
+                                     flex="1">
+                            &signalspam.contentScript.sidebar.phishingdetected;
+                        </description>
+                        <toolbarbutton id="signalspam-button-alert" class="toolbarbutton-1 signalspam-report-phishing"
+                                       tooltiptext="&signalspam.contentScript.sidebar.buttonlabel;" type="menu-button"
+                                       label="&signalspam.contentScript.sidebar.buttonlabel;" command="cmd_signalspamReport">
+                            <menupopup id="VFPhishingButtonMenuPopup">
+                                <menuitem label="&signalspam.contentScript.sidebar.buttonlabel;" command="cmd_signalspamReport"
+                                          tooltiptext="&signalspam.contentScript.sidebar.buttonlabel;"/>
+                                <menuitem label="&signalspam.contentScript.sidebar.phishingfalseposbutton;" command="cmd_signalspamFalsePositive"
+                                          tooltiptext="&signalspam.phishingAlert.false1;"/>
+                            </menupopup>
+                        </toolbarbutton>
+                    </hbox>
+                </hbox>
+            </notification>
+        </stack>
+    </hbox>-->
+
+    <hbox id="messagepaneboxwrapper">
+        <vbox id="sidebar-box"
+              width="200"
+              insertafter="messagepanebox"/>
+        <splitter id="sidebar-splitter"
+                  insertafter="messagepanebox"
+                  hidden="false"/>
+    </hbox>
+
+    <command id="signalspam_closeSidebar" oncommand="signalspam_closeSidebar();"/>
+
+    <vbox id="sidebar-box"
+          width="200"
+          style="overflow: auto;"
+          persist="width"
+          hidden="false">
+        <splitter id="sidebar-panels-splitter" hidden="true"/>
+        <vbox id="sidebar-panels-splitter-box">
+            <sidebarheader class="signalspam-sidebarheader" id="sidebar-title-box"
+                           align="center">
+                <hbox flex="1">
+                    <image id="logo"
+                           src="chrome://signalspam/skin/icon48.png" width="22" height="22"/>
+                    <description class="signalspam-sidebarTitle" crop="end" flex="1"
+                                 value="&signalspam.contentScript.sidebar.title;"/>
+                    <spacer id="sidebarheader-spacer"
+                            flex="2" position="2"/>
+                    <toolbarbutton id="sidebar-close-button" style=""
+                                   insertafter="sidebar-panel-picker,xsidebar-panel-config"
+                                   oncommand="signalspam_closeSidebar();"/>
+                </hbox>
+            </sidebarheader>
+            <groupbox id="signalspamSingleReport">
+                <vbox flex="1" pack="center" class="signalspamOriginalEmail">
+                    <description label="" class="SPsectionOK SPsectionTitle">&signalspam.contentScript.sidebar.emailreport;
+                    </description>
+                    <separator class="thick"/>
+                    <description class="SPsectionOK">&signalspam.contentScript.sidebar.calltoactionsingle;</description>
+                    <description class="SPsectionOK" style="font-weight: bold;">&signalspam.contentScript.sidebar.emailfrom;
+                    </description>
+                    <description crop="end" flex="1"
+                                 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" id="fromvalue"
+                                 class="SPsectionOK" value="from value from value from value from value from value"/>
+                    <description class="SPsectionOK" style="font-weight: bold;">&signalspam.contentScript.sidebar.emailsubject;
+                    </description>
+                    <description crop="end" flex="1"
+                                 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" id="emailsubject"
+                                 class="SPsectionOK"
+                                 value="emailsubject value emailsubject value emailsubject value emailsubject value emailsubject value"/>
+                    <separator class="thin"/>
+                    <!--<checkbox class="SPsectionOK SPsectionInputs" id="dataprivacy"
+                              label="&signalspam.contentScript.sidebar.dataprivacy;" flex="1" crop="end" oncommand=""/>
+                    <checkbox class="SPsectionOK SPsectionInputs" id="feedback" label="&signalspam.contentScript.sidebar.feedback;"
+                              flex="1" crop="end" oncommand=""/>-->
+                    <spacer flex="1"/>
+                    <button flex="1" class="SPOKBox" label="&signalspam.contentScript.sidebar.buttonlabel;"/>
+                    <description class="SPoriginalDesc">&signalspam.contentScript.sidebar.disclosureSingle;</description>
+                    <description class="SPoriginalDesc" id="zoomOriginalEmail">&signalspam.contentScript.sidebar.zoom;</description>
+                </vbox>
+            </groupbox>
+            <groupbox id="signalspamViewSingleMail" hidden="true">
+                <vbox flex="1" class="signalspamViewSingleMail">
+                    <description></description>
+                </vbox>
+            </groupbox>
+            <groupbox id="signalspamSendingSingleReport" hidden="true">
+                <vbox flex="1"  pack="center" class="signalspamSendingSingleReportBox">
+                    <spacer flex="1"/>
+                    <description flex="1" class="SPsectionOK reportTransmissionLabel">&signalspam.contentScript.sidebar.sendingsinglereport;</description>
+                    <spacer flex="2"/>
+                    <html:progress flex="1" mode="undetermined"/>
+                    <spacer flex="1"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="signalspamSingleReportSent" hidden="true">
+                <vbox flex="1" pack="center" class="signalspamSingleReportSentBox">
+                    <spacer flex="3"/>
+                    <description class="SPsectionOK" style="text-align: center;font-weight: bold;font-size: 1.2em;">&signalspam.contentScript.sidebar.singlereportok;</description>
+                    <description id="SigSpamOKBox" style="margin-top:2em; margin-bottom:2em; text-align: center;font-weight: bold;font-size: 1.2em;">&signalspam.contentScript.sidebar.buttonlabelReported;</description>
+                    <spacer flex="2"/>
+                    <description class="SPoriginalDesc">&signalspam.contentScript.sidebar.disclosureSingle;</description>
+                    <!--<description class="SPoriginalDesc">&signalspam.contentScript.sidebar.dataprivacyonreport;</description>
+                    <description class="SPoriginalDesc" id="signalspamWillNotify">&signalspam.contentScript.sidebar.feedbackinfo;</description>-->
+                    <spacer flex="3"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="signalspamSingleReportFailed" hidden="true">
+                <vbox flex="1" pack="center" class="signalspamSingleReportSentBox">
+                    <spacer flex="2"/>
+                    <description class="signalspamReportFailure">&signalspam.contentScript.sidebar.multiplereportsfailed;</description>
+                    <spacer flex="1"/>
+                    <hbox pack="center">
+                        <description>&signalspam.contentScript.sidebar.failureReason;</description>
+                        <description id="signalspamFailureReason" value=""></description>
+                    </hbox>
+                    <spacer flex="2"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="signalspamReportMultipleEmails" hidden="true">
+                <vbox flex="1" pack="center" class="signalspamMultipleReportsBox">
+                    <spacer flex="1"/>
+                    <description class="SPsectionTitle">&signalspam.contentScript.sidebar.calltoaction;</description>
+                    <description id="signalspamReportsNumber">&signalspam.contentScript.sidebar.numbering;</description>
+                    <description id="signalspamReportsNumber2" hidden="true">&signalspam.contentScript.sidebar.numbering;</description>
+                    <spacer flex="1"/>
+                    <!--<checkbox class="SPsectionOK SPsectionInputs" id="dataprivacy2"
+                              label="&signalspam.contentScript.sidebar.dataprivacy;" flex="1" crop="end" oncommand=""/>
+                    <checkbox class="SPsectionOK SPsectionInputs" id="feedback2" label="&signalspam.contentScript.sidebar.feedback;"
+                              flex="1" crop="end" oncommand=""/>
+                    <spacer flex="1"/>-->
+                    <button flex="1" class="SPOKBox" label="&signalspam.contentScript.sidebar.buttonlabel;"/>
+                    <description class="SPoriginalDesc">&signalspam.contentScript.sidebar.disclosure;</description>
+                    <description class="SPoriginalDesc" id="zoomOriginalEmail">&signalspam.contentScript.sidebar.zoom;</description>
+                    <spacer flex="1"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="signalspamViewMultipleMails" hidden="true">
+                <hbox>
+                    <spacer></spacer>
+                    <description id="signalspamPrevEml" style="-moz-appearance:button; color:initial;" value="&lt;"></description>
+                    <description id="signalspamNDisplay" value="1"></description>
+                    <description>/</description>
+                    <description id="signalspamNEmls" value="1"></description>
+                    <description id="signalspamNextEml" style="-moz-appearance:button; color:initial;" value="&gt;"></description>
+                    <spacer flex="2" position="2"></spacer>
+                </hbox>
+                <vbox flex="1" class="signalspamViewSingleMail">
+                    <description id="signalspamEmlContent"></description>
+                </vbox>
+            </groupbox>
+            <groupbox id="signalspamSendingReports" hidden="true">
+                <vbox flex="1" pack="center" class="signalspamMultipleReportsBox">
+                    <spacer flex="4"/>
+                    <description flex="1" class="SPsectionTitle reportTransmissionLabel">&signalspam.contentScript.sidebar.sendingmultiplereports;</description>
+                    <spacer flex="2"/>
+                    <html:progress flex="1" mode="determined" id="signalspamReportsProgress"/>
+                    <spacer flex="4"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="signalspamMultipleReportsSent" hidden="true">
+                <vbox flex="1" pack="center" class="signalspamMultipleReportsBox">
+                    <spacer flex="3"/>
+                    <description class="SPsectionTitle" id="calltoaction">&signalspam.contentScript.sidebar.multiplereportsok;</description>
+                    <description class="SPsectionOK" id="SigSpamOKBox" style="margin-top:2em; margin-bottom:2em; text-align: center;font-weight: bold;font-size: 1.2em;">&signalspam.contentScript.sidebar.buttonlabelReported;</description>
+                    <spacer flex="2"/>
+                    <description class="SPoriginalDesc">&signalspam.contentScript.sidebar.disclosureSingle;</description>
+                    <!--<description class="SPoriginalDesc">&signalspam.contentScript.sidebar.dataprivacyonreport;</description>
+                    <description class="SPoriginalDesc" id="signalspamWillNotifyMultiple">&signalspam.contentScript.sidebar.feedbackinfo;</description>-->
+                    <spacer flex="3"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="signalspamMultipleReportsFailed" hidden="true">
+                <vbox flex="1" pack="center" class="signalspamMultipleReportsBox">
+                    <spacer flex="2"/>
+                    <description class="SPsectionTitle" id="calltoaction">&signalspam.contentScript.sidebar.multiplereportsfailed;</description>
+                    <spacer flex="1"/>
+                    <hbox flex="1">
+                        <description>&signalspam.contentScript.sidebar.successNumber;</description>
+                        <description id="successNumber" value="0"></description>
+                    </hbox>
+                    <hbox flex="1">
+                        <description>&signalspam.contentScript.sidebar.failureNumber;</description>
+                        <description id="failureNumber" value="0"></description>
+                    </hbox>
+                    <spacer flex="3"/>
+                    <hbox pack="center">
+                        <description>&signalspam.contentScript.sidebar.failureReason;</description>
+                        <description id="signalspamFailureReason" value=""></description>
+                    </hbox>
+                    <spacer flex="2"/>
+                </vbox>
+            </groupbox>
+        </vbox>
+    </vbox>
+
+</overlay>

@@ -67,6 +67,7 @@ function SoapTransport()
   try {
 
   // module variables
+  this.mAccessToken = null;
   this.mPassword = null;
   this.mUser = null;
   this.mDomain = null;
@@ -148,23 +149,34 @@ SoapTransport.prototype =
     //request.addEventListener("abort", completion, false);
     this.mMonitoredRequest.completion = completion;
     request.mozBackgroundRequest = true;
-    // Override the transportURI to insert the user. This is needed to make sure that
-    //  we can detect changes in user when we fix connection caching
-    let uri = Services.io.newURI(aCall.transportURI);
-    let userdomain = this.mDomain && this.mDomain.length ?
-                         this.mDomain + "\\" + this.mUser :
-                         this.mUser;
-    if (uri.scheme != 'file') { // used in testing
-      if (Ci.nsIURIMutator) { // tb 60
-        uri = uri.mutate().setUsername(encodeURIComponent(userdomain))
-                          .setPassword(encodeURIComponent(this.mPassword))
-                          .finalize();
-      } else {
-        uri.username = encodeURIComponent(userdomain);
-        uri.password = encodeURIComponent(this.mPassword);
+    let transportURI = aCall.transportURI;
+    if (!this.mAccessToken) {
+      // Override the transportURI to insert the user. This is needed to make sure that
+      //  we can detect changes in user when we fix connection caching
+      let uri = Services.io.newURI(transportURI);
+      let userdomain = this.mDomain && this.mDomain.length ?
+                           this.mDomain + "\\" + this.mUser :
+                           this.mUser;
+      if (uri.scheme != 'file') { // used in testing
+        if (Ci.nsIURIMutator) { // tb 60
+          uri = uri.mutate().setUsername(encodeURIComponent(userdomain))
+                            .setPassword(encodeURIComponent(this.mPassword))
+                            .finalize();
+        } else {
+          uri.username = encodeURIComponent(userdomain);
+          uri.password = encodeURIComponent(this.mPassword);
+        }
+        transportURI = uri.spec;
       }
     }
-    request.open('POST', uri.spec, true);
+    request.open('POST', transportURI, true);
+    if (this.mAccessToken) {
+      // We don't want Gecko to try to fall back to basic authentication.
+      request.channel.loadFlags = Ci.nsIChannel.LOAD_ANONYMOUS |
+                                  Ci.nsIChannel.LOAD_BYPASS_CACHE |
+                                  Ci.nsIChannel.INHIBIT_CACHING;
+      request.setRequestHeader("Authorization", "Bearer " + this.mAccessToken);
+    }
     // noParse eliminates bogus error messages on failed authentication
     if (aCall.noParse)
       request.overrideMimeType("text/plain");
@@ -228,6 +240,9 @@ SoapTransport.prototype =
    */
   get password()          { return this.mPassword;},
   set password(aPassword) { this.mPassword = aPassword;},
+
+  get accessToken()             { return this.mAccessToken; },
+  set accessToken(aAccessToken) { this.mAccessToken = aAccessToken; },
 
   // Give the user a chance to save the certificate easily
   notifyCertProblem: function(socketInfo, status, targetSite)
@@ -552,7 +567,7 @@ httpSoapTransportCompletion.prototype =
       case 'timeout':
       {
         let request = evt.target;
-        if (request) {
+        if (request && this.mCall) {
           if (evt.type == 'timeout')
             log.debug('http request error type ' + evt.type +
                       ' to URL <' + this.mCall.transportURI +
@@ -565,7 +580,7 @@ httpSoapTransportCompletion.prototype =
                       ' statusText: ' + request.statusText);
         }
         else
-          log.warn('http request error, request is missing');
+          log.warn('http request error, request or call is missing');
         if (this.mCall && request && request.status && evt.type != 'timeout')
           log.debug('call envelope:\n' + stringXMLResponse(this.mCall.envelope));
         if (this.mCertError)

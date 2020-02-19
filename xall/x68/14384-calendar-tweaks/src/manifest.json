@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Calendar Tweaks",
+    "version": "8.3",
+    
+    "description": "Allows several tweaks to the Thunderbird Lightning calendar user interface including new selection styles and repeating event icons.",
+    "icons": { "32": "chrome/skin/calendartweaks-icon.png" },
+    
+    "applications": { "gecko": { "id": "calendartweaks@DW-dev", "strict_min_version": "68.0" } },
+    
+    "legacy": { "type": "xul",
+                "options": { "page": "chrome://calendartweaks/content/calendartweaks-options.xul",
+                             "open_in_tab": false
+                           }
+              }
+}

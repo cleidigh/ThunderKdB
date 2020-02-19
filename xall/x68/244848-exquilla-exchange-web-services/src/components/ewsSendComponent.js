@@ -144,7 +144,6 @@ EwsSend.prototype = {
     // we get an exception.
     let gatherMimeResult = Cr.NS_ERROR_FAILURE;
     try {
-      let fccSucceeded = true;
       let deliveryMode = this.deliveryMode;
 
       // First, determine if we will be saving an item in the current mailbox
@@ -363,6 +362,12 @@ EwsSend.prototype = {
       {
         try {
           let attachment = this.getAttachment(i);
+          if (!attachment.uri) {
+            // This attachment is a duplicate of a previous attachment
+            // (e.g. image repeated in multiple signatures) so only
+            // the contentId (if any) will have been initialised.
+            continue;
+          }
           if (attachment.sendViaCloud)
           {
             log.config("Send attachment via cloud: " + attachment.name);
@@ -397,6 +402,7 @@ EwsSend.prototype = {
       {
         let sendSucceeded = false;
         let sendToMailboxResult = Cr.NS_ERROR_FAILURE;
+        let fccResult = Cr.NS_OK;
         try {
           // switch message to "Creating mail message"
           if (this.sendReport)
@@ -467,7 +473,7 @@ EwsSend.prototype = {
             !doServerFcc && savetoURL.length)
         {
           log.config("doing foreign server fcc");
-          fccSucceeded = false; // reset to true after success
+          fccResult = Cr.NS_ERROR_FAILURE; // reset to true after success
           try {
             if (this.sendReport)
               this.sendReport.currentProcess = Ci.nsIMsgSendReport.process_FCC;
@@ -479,9 +485,7 @@ EwsSend.prototype = {
               let saveFccListener = new PromiseUtils.MachineListener();
               savetoNativeFolder.mailbox.saveNewItem(itemToSend, saveFccListener);
               let saveFccMOS = await saveFccListener.promise;
-              if (saveFccMOS.status == Cr.NS_OK) {
-                fccSucceeded = true;
-              }
+              fccResult = saveFccMOS.status;
             }
             else if (compFields.fcc.length)
             {
@@ -523,13 +527,11 @@ EwsSend.prototype = {
                 let copyResult = await copyListener.promise;
                 log.debug("fcc copyResult is " + (copyResult && copyResult.status));
                 file.remove(false);
-                if (copyResult.status == Cr.NS_OK) {
-                  fccSucceeded = true;
-                }
+                fccResult = copyResult.status;
               }
             }
             else // nothing to do
-              fccSucceeded = true;
+              fccResult = Cr.NS_OK;
           }
           catch (e) {
             log.warn("Failed to copy sent message to FCC folder: " + e);
@@ -537,18 +539,18 @@ EwsSend.prototype = {
         }
         if (sendToMailboxResult == Cr.NS_OK)// we need this since compose will leave open the window
         {
-          //if (fccSucceeded)
-          //  this.notifyListenerOnStopCopy(Cr.NS_OK);
-          //else {
-          //  if (this._isTesting)
-          //    throw CE("Failed to complete fcc");
-          //  else
-          //    this.notifyListenerOnStopCopy(Cr.NS_ERROR_FAILURE);
-          //}
+          if (fccResult == Cr.NS_OK)
+            this.notifyListenerOnStopCopy(Cr.NS_OK);
+          else {
+            if (this._isTesting)
+              throw CE("Failed to complete fcc");
+            else
+              this.notifyListenerOnStopCopy(fccResult);
+          }
         }
 
         // do we have an existing item to delete?
-        if ((fccSucceeded && sendToMailboxResult == Cr.NS_OK) &&
+        if ((fccResult == Cr.NS_OK && sendToMailboxResult == Cr.NS_OK) &&
           this.ewsCompose.draftItemId && this.ewsCompose.draftItemId.length)
         {
           log.config("Compose is deleting draft copy");
@@ -604,16 +606,13 @@ EwsSend.prototype = {
       //  which is critical to delete temporary files.
       //this.ewsSend.__proto__ = this.ewsSend.__proto__.__proto__;
       //this.baseSend = null;
-      if (fccSucceeded)
-        gatherMimeResult = Cr.NS_OK;
     } catch (ex) {
       if (ex != "TESTING") {
         log.error(ex);
         gatherMimeResult = ex.result || Cr.NS_ERROR_FAILURE;
+        log.debug("calling notifyListenerOnStopCopy with result " + gatherMimeResult);
+        this.notifyListenerOnStopCopy(gatherMimeResult);
       }
-    } finally {
-      log.debug("calling notifyListenerOnStopCopy with result " + gatherMimeResult);
-      this.notifyListenerOnStopCopy(gatherMimeResult);
     }
   },
 

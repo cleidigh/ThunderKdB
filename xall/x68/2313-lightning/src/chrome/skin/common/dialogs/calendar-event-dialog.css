@@ -4,7 +4,7 @@
 
 dialog {
     --eventBorderColor: #8d8e90;
-    --eventWidgetBorderColor: #cacaff;
+    --eventWidgetBorderColor: #aaaabc;
     --eventGridStartBorderColor: #bdbec0;
 }
 
@@ -348,7 +348,12 @@ label.label {
     -moz-appearance: none;
     margin: 0px 0px;
     border: 1px solid var(--eventBorderColor);
-    background-color: #fff;
+    background-color: -moz-Field;
+    color: -moz-FieldText;
+}
+
+#timebar {
+    overflow: hidden;
 }
 
 #timebar > .listbox-noborder {
@@ -411,8 +416,7 @@ calendar-event-scroll-container > box {
 
 /* negative margins to clear freebusy-day's border and margin */
 calendar-event-freebusy-day > box {
-    margin-inline-start: -1px;
-    margin-inline-end: -3px;
+    margin-inline: -1px;
 }
 
 .freebusy-content {
@@ -427,10 +431,14 @@ calendar-event-freebusy-day > box {
 }
 
 .freebusy-timebar-hour {
-    padding-inline-start: 2px;
-    padding-inline-end: 3px;
     margin-top: 2px;
     margin-bottom: 3px;
+    border-inline-start: 1px solid transparent;
+    padding-inline: 2px;
+}
+
+.freebusy-timebar-hour.last-in-day {
+    border-inline-end: 1px solid transparent;
 }
 
 .freebusy-timebar-hour[scheduled="true"] {
@@ -445,10 +453,10 @@ calendar-event-freebusy-day > box {
 
 .freebusy-grid {
     border-inline-start: 1px solid var(--eventGridStartBorderColor);
+    padding-inline: 2px;
     background-color: #E09EBD;
     color: #E09EBD;
     min-height: 16px;
-    padding-inline-start: 1px;
 }
 
 .freebusy-grid[state="busy"] {
@@ -518,7 +526,6 @@ calendar-event-freebusy-day > box {
      the attendee-list always have the same height,
      regardless of the font size. */
     height: 17px;
-    overflow: hidden;
 }
 
 .addressingWidgetCell {
@@ -644,6 +651,10 @@ calendar-event-freebusy-day > box {
 
 #attendees-list hbox textbox {
     width: 100%;
+}
+#attendees-list hbox textbox[disabled="true"] {
+    color: inherit;
+    opacity: 0.5;
 }
 
 .selection-bar-left {

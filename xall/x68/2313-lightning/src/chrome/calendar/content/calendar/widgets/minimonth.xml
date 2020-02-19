@@ -233,6 +233,11 @@
           // Add pref observer
           let branch = Services.prefs.getBranch("");
           branch.addObserver("calendar.", this);
+
+          // If this function exists, it's because we're late and something is waiting for us.
+          if (this.onBindingReady) {
+              this.onBindingReady();
+          }
       ]]></constructor>
 
       <destructor><![CDATA[

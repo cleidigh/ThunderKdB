@@ -17,23 +17,40 @@
     color: green !important;
 }
 
+:root[lwt-tree-brighttext] .calendar-task-tree > treechildren::-moz-tree-cell-text(inprogress) {
+    color: #00bd00 !important;
+}
+
 .calendar-task-tree > treechildren::-moz-tree-row(inprogress, selected, focus) {
     background-color: green !important;
 }
 
-.calendar-task-tree > treechildren::-moz-tree-cell-text(inprogress, selected, focus) {
-    color: HighlightText !important;
+:root[lwt-tree-brighttext] .calendar-task-tree > treechildren::-moz-tree-row(inprogress, selected, focus) {
+    background-color: #00bd00 !important;
 }
 
 .calendar-task-tree > treechildren::-moz-tree-cell-text(overdue) {
     color: red !important;
 }
 
+:root[lwt-tree-brighttext] .calendar-task-tree > treechildren::-moz-tree-cell-text(overdue) {
+    color: #ff7a7a !important;
+}
+
 .calendar-task-tree > treechildren::-moz-tree-row(overdue, selected, focus) {
     background-color: red !important;
 }
 
-.calendar-task-tree > treechildren::-moz-tree-cell-text(overdue, selected, focus) {
+:root[lwt-tree-brighttext] .calendar-task-tree > treechildren::-moz-tree-row(overdue, selected, focus) {
+    background-color: #ff7a7a !important;
+}
+
+.calendar-task-tree > treechildren::-moz-tree-cell-text(inprogress, selected, focus),
+:root[lwt-tree-brighttext] .calendar-task-tree >
+  treechildren::-moz-tree-cell-text(inprogress, selected, focus),
+.calendar-task-tree > treechildren::-moz-tree-cell-text(overdue, selected, focus),
+:root[lwt-tree-brighttext] .calendar-task-tree >
+  treechildren::-moz-tree-cell-text(overdue, selected, focus) {
     color: HighlightText !important;
 }
 
@@ -42,36 +59,45 @@
     font-style: italic;
 }
 
+.calendar-task-tree > treechildren::-moz-tree-cell-text(duetoday) {
+    font-weight: bold;
+}
+
 .calendar-task-tree-col-priority {
+    list-style-image: url(chrome://calendar-common/skin/icons/priority.svg);
+    -moz-context-properties: fill;
+    fill: currentColor;
+}
+
+.calendar-task-tree > treechildren::-moz-tree-image(calendar-task-tree-col-priority, normalpriority) {
     list-style-image: url(chrome://calendar-common/skin/task-images.png);
     -moz-image-region: rect(0 13px 13px 0);
 }
 
-.calendar-task-tree > treechildren::-moz-tree-image(calendar-task-tree-col-priority, normalpriority),
-.todo-due-image-class {
-    list-style-image: url(chrome://calendar-common/skin/task-images.png);
-    -moz-image-region: rect(0 13px 13px 0);
+.calendar-task-tree > treechildren::-moz-tree-image(calendar-task-tree-col-priority, highpriority) {
+    list-style-image: url(chrome://calendar-common/skin/icons/priority.svg);
+    -moz-image-region: none;
+    -moz-context-properties: fill;
+    fill: red;
+    margin-inline-start: -2px;
 }
 
-.calendar-task-tree > treechildren::-moz-tree-image(calendar-task-tree-col-priority, highpriority),
-.todo-due-image-class[highpriority="true"] {
-    list-style-image: url(chrome://calendar-common/skin/task-images.png);
-    -moz-image-region: rect(0 52px 13px 39px);
+:root[lwt-tree-brighttext] .calendar-task-tree >
+  treechildren::-moz-tree-image(calendar-task-tree-col-priority, highpriority) {
+    fill: #ff7a7a;
 }
 
-.calendar-task-tree > treechildren::-moz-tree-image(calendar-task-tree-col-priority, lowpriority),
-.todo-due-image-class[lowpriority="true"] {
+.calendar-task-tree > treechildren::-moz-tree-image(calendar-task-tree-col-priority, lowpriority) {
     list-style-image: url(chrome://calendar-common/skin/task-images.png);
     -moz-image-region: rect(0 26px 13px 13px);
 }
 
-.calendar-task-tree > treechildren::-moz-tree-image(calendar-task-tree-col-priority, selected, highpriority) {
-    list-style-image: url(chrome://calendar-common/skin/task-images.png);
-    -moz-image-region: rect(0 65px 13px 52px);
+.calendar-task-tree > treechildren::-moz-tree-image(calendar-task-tree-col-priority, selected, lowpriority) {
+    -moz-image-region: rect(0 39px 13px 26px);
 }
 
-.calendar-task-tree > treechildren::-moz-tree-image(calendar-task-tree-col-priority, selected, lowpriority) {
-    list-style-image: url(chrome://calendar-common/skin/task-images.png);
+:root[lwt-tree-brighttext] .calendar-task-tree >
+  treechildren::-moz-tree-image(calendar-task-tree-col-priority, lowpriority) {
     -moz-image-region: rect(0 39px 13px 26px);
 }
 

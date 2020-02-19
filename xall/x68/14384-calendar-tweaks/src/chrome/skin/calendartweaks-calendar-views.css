@@ -1,0 +1,782 @@
+/************************************************************************/
+/*                                                                      */
+/*      Calendar Tweaks  -  Thunderbird Extension  -  Calendar Views    */
+/*                                                                      */
+/*      CSS for Calendar Views overlay                                  */
+/*                                                                      */
+/*      Copyright (C) 2008-2019  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  26 Nov 2019                                       */
+/*                                                                      */
+/************************************************************************/
+ 
+/**********************************************************************************************************/
+/*                                                                                                        */
+/*      Today and Selected Day - Background and Border Colors        * = top color with gradient below    */
+/*                                                                                                        */
+/*                                            TB24.0    TB31.0    TB38.0    TB60.0   TB68.2.1  Calendar   */
+/*      Style    View         Element         2.6.6     3.3.3    4.0.5.2     6.2      68.2.1    Tweaks    */
+/*                                                                                                        */
+/*      Today    Day/Week     Day Header     #fafafa*  #fafafa*  #e1f0fd*  #e1f0fd*  #e1f0fd*  #FFC0C0*   */
+/*      Today    Day/Week     Day Box        #e1f0fd   #e1f0fd   #e1f0fd   #d2e3f3   #e1f0d2   #FFF0F0    */
+/*      Today    Day/Week     Borders        #67acd8   #67acd8   #67acd8   #67acd8   #67acd8   #D2D2D2    */
+/*      Today    Day/Week     Borders (on)                                                     #FFA0A0    */
+/*                                                                                                        */
+/*      Today    MW/Month     Day Header     #fafafa*  #fafafa*  #d2e3f3*  #d2e3f3*  #d2e3f3*  #FFC0C0*   */
+/*      Today    MW/Month     Date Header    #d2e3f3   #d2e3f3   #d2e3f3   #d2e3f3   #d2e3f3   #FFC0C0    */
+/*      Today    MW/Month     Day Box        #e1f0fd   #e1f0fd   #e1f0fd   #e1f0fd   #e1f0fd   #FFF0F0    */
+/*      Today    MW/Month     Borders        #7fb9ee   #7fb9ee   #7fb9ee   #7fb9ee   #7fb9ee   #D2D2D2    */
+/*      Today    MW/Month     Borders (on)                                                     #FFA0A0    */
+/*                                                                                                        */
+/*      Today    Mini-Month   Day Box        #dfeaf4   #dfeaf4   #dfeaf4   #dfeaf4   #dfeaf4   #FFF0F0    */
+/*      Today    Mini-Month   Borders        #67acd8   #67acd8   #67acd8   #67acd8   #67acd8   #D2D2D2    */
+/*      Today    Mini-Month   Borders (on)                                                     #FFA0A0    */
+/*                                                                                                        */
+/*      SelDay   Day/Week     Day Header     #fafafa*  #fafafa*  #fffabc*  #ffffff*  #ffffff*  #FFE696*   */
+/*      SelDay    - /Week     Day Box        #fffcd8   #fffcd8   #fffcd8   #fffcd8   #fffcd8   #FFFAE8    */
+/*      SelDay   Day/Week     Borders        #d2d2d2   #d2d2d2   #d2d2d2   #d2d2d2   #d2d2d2   #D2D2D2    */
+/*      SelDay   Day/Week     Borders (on)                                                     #D2D2D2    */
+/*                                                                                                        */
+/*      SelDay   MW/Month     Day Header     #fafafa*  #fafafa*  #ffffff*  #ffffff*  #ffffff*  #ffffff*   */
+/*      SelDay   MW/Month     Date Header    #f2edb2   #f2edb2   #f2edb2   #f2edb2   #f2edb2   #FFE696    */
+/*      SelDay   MW/Month     Day Box        #fffcd8   #fffcd8   #fffcd8   #fffcd8   #fffcd8   #FFFAE8    */
+/*      SelDay   MW/Month     Borders        #d2d2d2   #d2d2d2   #d2d2d2   #d2d2d2   #d2d2d2   #D2D2D2    */
+/*      SelDay   MW/Month     Borders (on)                                                     #D2D2D2    */
+/*                                                                                                        */
+/*      SelDay   Mini-Month   Day Box        #fffabc   #fffabc   #fffabc   #fffabc   #fffabc   #FFF0F0    */
+/*      SelDay   Mini-Month   Borders        #d9c585   #d9c585   #d9c585   #d9c585   #d9c585   #D2D2D2    */
+/*      SelDay   Mini-Month   Borders (on)                                                     #E8D088    */
+/*                                                                                                        */
+/**********************************************************************************************************/
+
+/************************************************************************/
+/*                                                                      */
+/*      Notes                                                           */
+/*                                                                      */
+/*      1. When changing rules be very careful about CSS specificity.   */
+/*                                                                      */
+/*      2. Last rule has precedence if rules have equal specificity.    */
+/*                                                                      */
+/*      3. !important selectors are only used where essential.          */
+/*                                                                      */
+/*      4. content: properties have no effect, because there are no     */
+/*         ::before or ::after pseudo-element selectors specified,      */
+/*         and are used as identifying tags when searching CSS rules.   */
+/*                                                                      */
+/************************************************************************/
+
+/************************************************************************/
+/* Mini-Month - New Today and New Selected Day Indicators               */
+/************************************************************************/
+
+/* apply new today background and border (and contrasting font) */
+
+window[calendartweaks-newtoday] .minimonth-day[today="true"]:not([selected="true"])
+{
+    content: "todaydayboxcolor";
+    background-color: #FFF0F0;
+    color: #000000;
+}
+
+window[calendartweaks-newtoday] .minimonth-day[today="true"]
+{
+    content: "todaybordercolor";
+    border-color: #FFA0A0;
+}
+
+/* apply new selected day background and border */
+
+window[calendartweaks-newselday] .minimonth-day[selected="true"]
+{
+    content: "seldaydayboxcolor";
+    background-color: #FFFAE8;
+    color: #000000;
+}
+
+window[calendartweaks-newselday] .minimonth-day[selected="true"]:not([today="true"])
+{
+    content: "seldaybordercolor";
+    border-color: #E8D088;
+}
+
+/************************************************************************/
+/* Today Pane - Fix styling for allday events                           */
+/************************************************************************/
+
+richlistitem[is=agenda-allday-richlist-item] .agenda-allday-container-box
+{
+    padding-top: 0px;
+    padding-bottom: 3px;
+}
+
+richlistitem[is=agenda-allday-richlist-item][today-tomorrow] .agenda-allday-container-box
+{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+/************************************************************************/
+/* Today Pane - Apply calendar event styling to event list              */
+/************************************************************************/
+
+/* Hide calendar indicator */
+
+window[calendartweaks-eventtodaypane] richlistitem[is=agenda-richlist-item] > hbox > hbox > vbox
+{
+    display: none;
+}
+
+/* Apply calendar event styling to today, tomorrow and upcoming events */
+
+window[calendartweaks-eventtodaypane] richlistitem[is=agenda-richlist-item] .agenda-event-box-2
+{
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.01) 50%, rgba(0, 0, 0, 0.05));
+}
+
+window[calendartweaks-eventtodaypane] richlistitem[is=agenda-richlist-item] .agenda-container-box
+{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 3px;
+}
+
+window[calendartweaks-eventtodaypane] richlistitem[is=agenda-richlist-item] .agenda-event-start
+{
+    margin: 0px 4px;
+}
+
+window[calendartweaks-eventtodaypane] richlistitem[is=agenda-richlist-item] .agenda-event-title
+{
+    margin: 0px 4px;
+}
+
+window[calendartweaks-eventtodaypane] richlistitem[is=agenda-richlist-item] .agenda-event-title-2
+{
+    margin: 0px 4px;
+}
+
+/************************************************************************/
+/* Today Pane - Show Time and Event on Single Line                      */
+/************************************************************************/
+
+window[calendartweaks-eventtodaypane][calendartweaks-eventsingleline] richlistitem[is=agenda-richlist-item] .agenda-container-box
+{
+    padding-top: 3px;
+}
+
+window[calendartweaks-eventsingleline] richlistitem[is=agenda-richlist-item][today-tomorrow] .agenda-event-box-1
+{
+    display: none;
+}
+
+window[calendartweaks-eventsingleline] richlistitem[is=agenda-richlist-item][today-tomorrow] .agenda-event-title
+{
+    display: none;
+}
+
+window:not([calendartweaks-eventsingleline]) richlistitem[is=agenda-richlist-item][today-tomorrow] .agenda-event-title-2
+{
+    display: none;
+}
+
+/************************************************************************/
+/* Today Pane - Reduce Height of Events                                 */
+/************************************************************************/
+
+window[calendartweaks-eventtodaypane][calendartweaks-eventreduceheight] richlistitem[is=agenda-richlist-item] .agenda-event-box-2
+{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/************************************************************************/
+/* Today Pane - Apply category color to event backgrounds               */
+/************************************************************************/
+
+window[calendartweaks-eventtodaypane] richlistitem[is=agenda-richlist-item] .category-bkgd-box
+{
+    width: 7px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.38), transparent);
+}
+
+/************************************************************************/
+/* Today Pane - Use calendar color if no category color                 */
+/************************************************************************/
+
+window[calendartweaks-eventtodaypane]:not([calendartweaks-eventbkgdcolor]) richlistitem[is=agenda-richlist-item]:not([category]) .category-bkgd-box
+{
+    display: none;
+}
+
+window[calendartweaks-eventtodaypane][calendartweaks-eventbkgdcolor][calendartweaks-eventbkgdnocat] richlistitem[is=agenda-richlist-item]:not([category]) .category-bkgd-box
+{
+    display: none;
+}
+
+window[calendartweaks-eventtodaypane][calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) richlistitem[is=agenda-richlist-item]:not([category]) .agenda-event-box-2
+{
+    background-color: #E0E0E0;
+}
+
+window[calendartweaks-eventtodaypane][calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) richlistitem[is=agenda-richlist-item]:not([category]) .agenda-event-box-2
+{
+    color: black;
+}
+
+window[calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) richlistitem[is=agenda-richlist-item]:not([category]) .agenda-calendar-image
+{
+    background-color: #E0E0E0 !important;
+}
+
+/************************************************************************/
+/* Today Pane - Repeating Events                                        */
+/************************************************************************/
+
+window[calendartweaks-eventtodaypane][calendartweaks-repeatnormal] richlistitem[is=agenda-richlist-item] .repeat-icons-box
+{
+    width: 12px;
+    margin-right: 1px;
+    margin-top: 2px;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}
+
+window[calendartweaks-eventtodaypane][calendartweaks-repeatnormal] richlistitem[is=agenda-richlist-item][recurrence="normal-black"] .repeat-icons-box
+{
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-normal-black-icon.png);
+}
+
+window[calendartweaks-eventtodaypane][calendartweaks-repeatnormal] richlistitem[is=agenda-richlist-item][recurrence="normal-white"] .repeat-icons-box
+{
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-normal-white-icon.png);
+}
+
+window[calendartweaks-eventtodaypane][calendartweaks-repeatexcept] richlistitem[is=agenda-richlist-item][recurrence="except-black"] .repeat-icons-box
+{
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-except-black-icon.png);
+}
+
+window[calendartweaks-eventtodaypane][calendartweaks-repeatexcept] richlistitem[is=agenda-richlist-item][recurrence="except-white"] .repeat-icons-box
+{
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-except-white-icon.png);
+}
+
+/************************************************************************/
+/* All Views - New Today and New Selected Day Indicators                */
+/************************************************************************/
+
+/* replace original blue borders around today day label */
+
+window[calendartweaks-newtoday] calendar-day-label[relation="today"]
+{
+    content: "todaybordercolor";
+    border-color: #D2D2D2;
+}
+
+/* apply new today backgrounds to today day label */
+
+window[calendartweaks-newtoday] calendar-day-label[relation="today"]
+{
+    content: "todayheadercolor(!)";
+    background-color: #FFC0C0 !important;
+    background-image: -moz-linear-gradient(rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 48%, rgba(0,0,0,0.02) 52%, rgba(0,0,0,0.1) 100%);
+}
+
+/************************************************************************/
+/* Day & Week Views - New Today and New Selected Day Indicators         */
+/************************************************************************/
+
+/* Fix today pane splitter to make right border visible in rotated view */
+
+#today-splitter
+{
+    margin-left: -4px;
+}
+
+/* replace original blue borders around today allday header and event column */
+
+window[calendartweaks-newtoday] calendar-header-container[relation="today"]
+{
+    content: "todaybordercolor";
+    border-left-color: #D2D2D2;
+    border-right-color: #D2D2D2;
+}
+
+window[calendartweaks-newtoday] calendar-header-container[rotated="true"][relation="today"]
+{
+    content: "todaybordercolor";
+    border-top-color: #D2D2D2;
+    border-bottom-color: #D2D2D2;
+}
+
+window[calendartweaks-newtoday] calendar-event-column[orient="vertical"][relation="today"]
+{
+    content: "todaybordercolor";
+    border-left-color: #D2D2D2;
+    border-right-color: #D2D2D2;
+}
+
+window[calendartweaks-newtoday] calendar-event-column[orient="horizontal"][relation="today"]
+{
+    content: "todaybordercolor";
+    border-top-color: #D2D2D2;
+    border-bottom-color: #D2D2D2;
+}
+
+window[calendartweaks-newtoday] .calendar-event-column-linebox[orient="vertical"][relation="today"]:last-child
+{
+    content: "todaybordercolor";
+    border-bottom-color: #D2D2D2;
+}
+
+window[calendartweaks-newtoday] .calendar-event-column-linebox[orient="horizontal"][relation="today"]:last-child
+{
+    content: "todaybordercolor";
+    border-right-color: #D2D2D2;
+}
+
+/* apply new selected day border */
+
+window[calendartweaks-newselday] calendar-header-container:not([rotated="true"])[selected="true"]:not([relation="today"])
+{
+    content: "seldaybordercolor";
+    border-left-color: #D2D2D2;
+    border-right-color: #D2D2D2;
+}
+
+window[calendartweaks-newselday] calendar-header-container:not([rotated="true"])[selected="true"]:not([relation="today"])
+{
+    border-right-width: 1px;
+    border-right-style: solid;
+    margin-right: -1px;
+    position: relative;
+}
+
+window[calendartweaks-newselday] calendar-header-container[rotated="true"][selected="true"]:not([relation="today"])
+{
+    content: "seldaybordercolor";
+    border-left-color: #D2D2D2;
+    border-top-color: #D2D2D2;
+    border-bottom-color: #D2D2D2;
+}
+
+window[calendartweaks-newselday] calendar-header-container[rotated="true"][selected="true"]:not([relation="today"])
+{
+    border-top-width: 1px;
+    border-top-style: solid;
+    margin-top: -1px;
+    position: relative;
+}
+
+window[calendartweaks-newselday] calendar-event-column[orient="vertical"][selected-column="true"]:not([relation="today"])
+{
+    content: "seldaybordercolor";
+    border-left-color: #D2D2D2;
+    border-right-color: #D2D2D2;
+}
+
+window[calendartweaks-newselday] calendar-event-column[orient="vertical"][selected-column="true"]:not([relation="today"])
+{
+    border-right-width: 1px;
+    border-right-style: solid;
+    margin-right: -1px;
+    position: relative;
+}
+
+window[calendartweaks-newselday] calendar-event-column[orient="horizontal"][selected-column="true"]:not([relation="today"])
+{
+    content: "seldaybordercolor";
+    border-top-color: #D2D2D2;
+    border-bottom-color: #D2D2D2;
+}
+
+window[calendartweaks-newselday] calendar-event-column[orient="horizontal"][selected-column="true"]:not([relation="today"])
+{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    margin-bottom: -1px;
+    position: relative;
+}
+
+window[calendartweaks-newselday] .calendar-event-column-linebox[orient="vertical"][selected="true"]:not([relation="today"]):last-child
+{
+    content: "seldaybordercolor";
+    border-bottom-color: #D2D2D2;
+}
+
+window[calendartweaks-newselday] .calendar-event-column-linebox[orient="horizontal"][selected="true"]:not([relation="today"]):last-child
+{
+    content: "seldaybordercolor";
+    border-right-color: #D2D2D2;
+}
+
+window[calendartweaks-newselday] calendar-day-label[orient="horizontal"][selected-label="true"]:not([relation="today"])
+{
+    content: "seldaybordercolor";
+    border-bottom-color: #D2D2D2;
+}
+
+/* apply new today backgrounds on week view */
+
+window[calendartweaks-newtoday] calendar-header-container[relation="today"]:not([selected="true"]),
+window[calendartweaks-newtoday] .calendar-event-column-linebox[relation="today"]:not([selected="true"])
+{
+    content: "todaydayboxcolor";
+    background-color: #FFF0F0;
+}
+
+window[calendartweaks-newtoday] .calendar-event-column-linebox[relation="today"]:not([selected="true"])[off-time="true"]
+{
+    background-image: -moz-linear-gradient(rgba(0,0,0,0.04) 0%,rgba(0,0,0,0.04) 100%);
+}
+
+/* apply new today backgrounds on day view */
+
+window[calendartweaks-newtoday][calendartweaks-showondayview]  calendar-day-view calendar-day-label[relation="today1day"]
+{
+    content: "todayheadercolor(!)";
+    background-color: #FFC0C0 !important;
+    background-image: -moz-linear-gradient(rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 48%, rgba(0,0,0,0.02) 52%, rgba(0,0,0,0.1) 100%);
+}
+
+/* apply new selected day backgrounds on week view */
+
+window[calendartweaks-newselday] calendar-header-container[selected="true"],
+window[calendartweaks-newselday] .calendar-event-column-linebox[selected="true"]
+{
+    content: "seldaydayboxcolor";
+    background-color: #FFFAE8;
+}
+
+window[calendartweaks-newselday] .calendar-event-column-linebox[selected="true"][off-time="true"]
+{
+    background-image: -moz-linear-gradient(rgba(0,0,0,0.04) 0%,rgba(0,0,0,0.04) 100%);
+}
+
+/* apply new selected day backgrounds on day view */
+
+window[calendartweaks-newselday][calendartweaks-showondayview] calendar-day-view calendar-header-container,
+window[calendartweaks-newselday][calendartweaks-showondayview] calendar-day-view .calendar-event-column-linebox
+{
+    content: "seldaydayboxcolor";
+    background-color: #FFFAE8;
+}
+
+window[calendartweaks-newselday][calendartweaks-showondayview] calendar-day-view .calendar-event-column-linebox[off-time="true"]
+{
+    background-image: -moz-linear-gradient(rgba(0,0,0,0.04) 0%,rgba(0,0,0,0.04) 100%);
+}
+
+/************************************************************************/
+/* Day & Week Views - Label for All Day Events                          */
+/************************************************************************/
+
+window .multiday-view-header-time-spacer[orient="horizontal"]
+{
+    display: block;
+    color: #FFFFFF;
+    padding: 1px 5px 4px 4px;
+    text-align: right;
+}
+
+window[calendartweaks-alldaylabel] .multiday-view-header-time-spacer[orient="horizontal"]::before
+{
+    content: "All Day";
+    color: #6A6969;
+    vertical-align: -1px;
+}
+
+window .multiday-view-header-time-spacer[orient="vertical"]
+{
+    display: block;
+    color: #FFFFFF;
+    padding-top: 2px;
+    text-align: center;
+}
+
+window[calendartweaks-alldaylabel] .multiday-view-header-time-spacer[orient="vertical"]::before
+{
+    content: "All Day";
+    color: #6A6969;
+    vertical-align: 0px;
+}
+
+/************************************************************************/
+/* Day & Week Views - Border Around Selected Event                      */
+/************************************************************************/
+
+window[calendartweaks-eventborder] calendar-event-box[selected="true"] box > .calendar-event-selection
+{
+    outline: 1px solid #000000;
+    outline-offset: 0px;
+}
+
+/************************************************************************/
+/* Day & Week Views - Apply category color to event backgrounds         */
+/************************************************************************/
+
+window[calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) calendar-event-box .calendar-event-box-container
+{
+    margin-right: 0px;
+}
+
+window[calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) calendar-event-box calendar-category-box
+{
+    display: -moz-box;
+}
+
+window[calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) calendar-event-box .alarm-icons-box
+{
+    margin-right: 8px;
+}
+
+window[calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) calendar-event-box:not([categories]) .calendar-color-box
+{
+    background-color: #E0E0E0;
+    color: black;
+}
+
+/************************************************************************/
+/* Day & Week Views - Repeating Events                                  */
+/************************************************************************/
+
+window[calendartweaks-repeatnormal] calendar-event-box[recurrence="normal-black"] .repeat-icons-box
+{
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-normal-black-icon.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}
+
+window[calendartweaks-repeatnormal] calendar-event-box[recurrence="normal-white"] .repeat-icons-box
+{
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-normal-white-icon.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}
+
+window[calendartweaks-repeatexcept] calendar-event-box[recurrence="except-black"] .repeat-icons-box
+{
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-except-black-icon.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}
+
+window[calendartweaks-repeatexcept] calendar-event-box[recurrence="except-white"] .repeat-icons-box
+{
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-except-white-icon.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}
+
+/* Fix position of alarms icon  */
+
+window calendar-event-box .alarm-icons-box
+{
+    margin-top: 2px;
+}
+
+/************************************************************************/
+/* Month View - More Distinct Shading on Other Months                   */
+/************************************************************************/
+
+window[calendartweaks-distinctother] .calendar-month-day-box-other-month:not([relation="today"]):not([selected="true"])
+{
+    background-color: #ECECEC;
+}
+
+window[calendartweaks-distinctother] .calendar-month-day-box-other-month.calendar-month-day-box-day-off:not([relation="today"]):not([selected="true"])
+{
+    background-color: #E0E0E0;
+}
+
+window[calendartweaks-distinctother] .calendar-month-day-box-other-month:not([relation="today"]):not([selected="true"]) .calendar-month-day-box-date-label
+{
+    background-color: #E0E0E0;
+}
+
+window[calendartweaks-distinctother] .calendar-month-day-box-other-month.calendar-month-day-box-day-off:not([relation="today"]):not([selected="true"]) .calendar-month-day-box-date-label
+{
+    background-color: #D4D4D4;
+}
+
+/************************************************************************/
+/* Multiweek & Month Views - New Today and New Selected Day Indicators  */
+/************************************************************************/
+
+/* replace original blue borders around today day box */
+
+window[calendartweaks-newtoday] .calendar-month-day-box-current-month[relation="today"],
+window[calendartweaks-newtoday] .calendar-month-day-box-day-off[relation="today"],
+window[calendartweaks-newtoday] .calendar-month-day-box-other-month[relation="today"]
+{
+    content: "todaybordercolor(!)";
+    border-color: #D2D2D2 !important;
+}
+
+/* apply new selected day border */
+
+window[calendartweaks-newselday] .calendar-month-day-box-current-month[selected="true"]:not([relation="today"]),
+window[calendartweaks-newselday] .calendar-month-day-box-day-off[selected="true"]:not([relation="today"]),
+window[calendartweaks-newselday] .calendar-month-day-box-other-month[selected="true"]:not([relation="today"])
+{
+    content: "seldaybordercolor(!)";
+    border-color: #D2D2D2 !important;
+}
+
+window[calendartweaks-newselday] .calendar-month-day-box-current-month[selected="true"]:not([relation="today"]),
+window[calendartweaks-newselday] .calendar-month-day-box-day-off[selected="true"]:not([relation="today"]),
+window[calendartweaks-newselday] .calendar-month-day-box-other-month[selected="true"]:not([relation="today"])
+{
+    border-right-width: 1px !important;
+    border-right-style: solid !important;
+    border-top-width: 1px !important;
+    border-top-style: solid !important;
+    margin-right: -1px;
+    margin-top: -1px;
+    position: relative;
+}
+
+/* apply new today backgrounds and date label color */
+
+window[calendartweaks-newtoday] .calendar-month-day-box-current-month[relation="today"]:not([selected="true"]),
+window[calendartweaks-newtoday] .calendar-month-day-box-day-off[relation="today"]:not([selected="true"]),
+window[calendartweaks-newtoday] .calendar-month-day-box-other-month[relation="today"]:not([selected="true"])
+{
+    content: "todaydayboxcolor";
+    background-color: #FFF0F0;
+}
+
+window[calendartweaks-newtoday] .calendar-month-day-box-date-label[relation="today"]
+{
+    content: "todayheadercolor";
+    background-color: #FFC0C0;
+}
+
+/* apply new selected day backgrounds and date label color */
+
+window[calendartweaks-newselday] .calendar-month-day-box-current-month[selected="true"],
+window[calendartweaks-newselday] .calendar-month-day-box-day-off[selected="true"],
+window[calendartweaks-newselday] .calendar-month-day-box-other-month[selected="true"]
+{
+    content: "seldaydayboxcolor";
+    background-color: #FFFAE8;
+}
+
+window[calendartweaks-newselday] .calendar-month-day-box-date-label[selected="true"]:not([relation="today"]),
+window[calendartweaks-newselday]:not([calendartweaks-newtoday]) .calendar-month-day-box-date-label[selected="true"]
+{
+    content: "seldayheadercolor";
+    background-color: #FFE696;
+    color: #000000;
+}
+
+/************************************************************************/
+/* Multiweek & Month Views - Background on Box Date Labels              */
+/************************************************************************/
+
+window[calendartweaks-datelabelbkgd] .calendar-month-day-box-date-label
+{
+    background-image: -moz-linear-gradient(rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 48%, rgba(0,0,0,0.02) 52%, rgba(0,0,0,0.1) 100%);
+}
+
+/************************************************************************/
+/* Multiweek & Month Views - Border Around Selected Event               */
+/************************************************************************/
+
+window[calendartweaks-eventborder] calendar-month-day-box-item[selected="true"] .calendar-event-selection:not(.category-color-box)
+{
+    outline: 1px solid #000000;
+    outline-offset: 0px;
+}
+
+/************************************************************************/
+/* Multiweek & Month Views - Reduce Height of Events                    */
+/************************************************************************/
+
+window[calendartweaks-eventreduceheight] calendar-month-day-box-item .calendar-event-box-container
+{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+/************************************************************************/
+/* Multiweek & Month Views - Apply category color to event backgrounds  */
+/************************************************************************/
+
+window[calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) calendar-month-day-box-item .calendar-event-box-container
+{
+    margin-right: 0px;
+}
+
+window[calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) calendar-month-day-box-item calendar-category-box
+{
+    display: -moz-box;
+}
+
+window[calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) calendar-month-day-box-item calendar-category-box + hbox
+{
+    margin-right: 8px;
+}
+
+window[calendartweaks-eventbkgdcolor]:not([calendartweaks-eventbkgdnocat]) calendar-month-day-box-item:not([categories]) .calendar-color-box
+{
+    background-color: #E0E0E0;
+    color: black;
+}
+
+/************************************************************************/
+/* Multiweek & Month Views - Repeating Events                           */
+/************************************************************************/
+
+window[calendartweaks-repeatnormal] calendar-month-day-box-item[recurrence="normal-black"] .repeat-icons-box
+{
+    width: 12px;
+    height: 12px;
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-normal-black-icon.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}
+
+window[calendartweaks-repeatnormal] calendar-month-day-box-item[recurrence="normal-white"] .repeat-icons-box
+{
+    width: 12px;
+    height: 12px;
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-normal-white-icon.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}
+
+window[calendartweaks-repeatexcept] calendar-month-day-box-item[recurrence="except-black"] .repeat-icons-box
+{
+    width: 12px;
+    height: 12px;
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-except-black-icon.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}
+
+window[calendartweaks-repeatexcept] calendar-month-day-box-item[recurrence="except-white"] .repeat-icons-box
+{
+    width: 12px;
+    height: 12px;
+    background-image: url(chrome://calendartweaks/skin/calendartweaks-repeat-except-white-icon.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+}

@@ -46,6 +46,8 @@ XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) _log = Utils.configureLogging("native");
   return _log;
 });
+ChromeUtils.defineModuleGetter(this, "kOAuth2Password",
+                               "resource://exquilla/EwsOAuth2.jsm");
 ChromeUtils.defineModuleGetter(this, "EwsNativeFolder",
                                "resource://exquilla/EwsNativeFolder.jsm");
 ChromeUtils.defineModuleGetter(this, "SoapTransport",
@@ -413,7 +415,7 @@ SoapCall.prototype = {
   //                               [optional] in AString aUser,
   //                               [optional] in AString aPassword,
   //                               [optional] in AString aDomain);
-  asyncInvoke(listener, username, password, domain)
+  asyncInvoke(listener, username, password, domain, accessToken)
   {
     if (!this.transportURI)
       throw CE("No transport URI was specified", Cr.NS_ERROR_NOT_INITIALIZED);
@@ -426,6 +428,8 @@ SoapCall.prototype = {
       transport.password = password;
     if (domain)
       transport.domain = domain;
+    if (accessToken)
+      transport.accessToken = accessToken;
     if (this.useragent)
       transport.useragent = this.useragent;
     return transport.asyncCall(this, listener, response);
@@ -485,6 +489,8 @@ var gInstanceCount = 0;
 function EwsSoapRequest() {
   if (typeof (safeGetJS) == "undefined")
     Utils.importLocally(global);
+
+  this._retriedOAuth = false;
 
   // generally used values.
   this._inProgress = false;
@@ -1189,10 +1195,13 @@ StreamingSubscriptionRequest example from:
     if (this.mailbox.serverVersion == "2007sp1")
       throw CE("Not supported in 2007sp1", NS_ERROR_NOT_IMPLEMENTED);
 
+    // We can't use `folderIdsXML()` here because that puts the `FolderIds`
+    // element in the `messages` namespace but `StreamingSubscriptionRequest`
+    // is a special snowflake and needs it in the `types` namespace.
     let body = 
       `<m:Subscribe>` +
         `<m:StreamingSubscriptionRequest SubscribeToAllFolders="${aCheckAll ? 'true' : 'false'}">` +
-          (aCheckAll ? `<FolderIds>` + folderIdsXML(aNativeFolders) + `</FolderIds>` : "") +
+          (aCheckAll ? "" : `<FolderIds>` + aNativeFolders.map(folderIdXML) + `</FolderIds>`) +
           `<EventTypes>` +
             //`<EventType>NewMailEvent</EventType>` +
             //`<EventType>CreatedEvent</EventType>` +
@@ -1604,7 +1613,7 @@ StreamingSubscriptionRequest example from:
       this.mailbox.writeToSoapLog("DOM element is invalid or empty\n");
   },
 
-  invoke()
+  async invoke()
   {
     //log.debug("ewsSoapRequestComponent.invoke instance# " + this._instanceCount);
 
@@ -1650,14 +1659,27 @@ StreamingSubscriptionRequest example from:
 
       let username = this.mailbox.username;
       let domain = this.mailbox.domain;
+      let authMethod = this.mailbox.authMethod;
+      let accessToken;
       let password;
       try {
         password = this.mailbox.password;
       } catch (e) {}
-      if (!password) {
+      if (!password && authMethod == Ci.nsMsgAuthMethod.passwordCleartext) {
         rv = Cr.NS_ERROR_NOT_INITIALIZED;
         this._error("Password missing", "PasswordMissing", "");
         break;
+      }
+      if (authMethod == Ci.nsMsgAuthMethod.OAuth2 || authMethod == kOAuth2Password) {
+        try {
+          // May open a window and wait for user to login, i.e. may block for minutes.
+          accessToken = await this.mailbox.oAuth2Login.getAccessToken();
+        } catch (e) {
+          log.warn(se(e));
+          rv = Cr.NS_ERROR_NOT_INITIALIZED;
+          this._error(e.name, e.type, e.message);
+          break;
+        }
       }
 
       // Set a custom useragent
@@ -1665,7 +1687,7 @@ StreamingSubscriptionRequest example from:
       if (!useragent && !(useragent == "default"))
         soapCall.useragent = useragent;
 
-      let completion = soapCall.asyncInvoke(this, username, password, domain);
+      let completion = soapCall.asyncInvoke(this, username, password, domain, accessToken);
       this._soapResponse = completion.mResponse;
       rv = Cr.NS_OK;
     } while (false);
@@ -1684,10 +1706,10 @@ StreamingSubscriptionRequest example from:
   },
 
   // SOAPResponseListener overrides
-  handleResponse(/* in SOAPResponse */   aResponse,
-                 /* in SOAPCall aCall */ aCall,
-                 /* in nsresult */       aStatus,
-                 /* in boolean */        aLast)
+  async handleResponse(/* in SOAPResponse */   aResponse,
+                       /* in SOAPCall aCall */ aCall,
+                       /* in nsresult */       aStatus,
+                       /* in boolean */        aLast)
   {
     //dl("ewsSoapRequestComponent: handleResponse instance# " + this._instanceCount + " for " + this.requestName);
 
@@ -1838,6 +1860,30 @@ StreamingSubscriptionRequest example from:
         this._error("SoapFault", fault.faultCode, fault.faultString);
         haveFault = true;
         break;
+      }
+
+      if (htmlStatus == 401 &&
+          (this.mailbox.authMethod == Ci.nsMsgAuthMethod.OAuth2 ||
+           this.mailbox.authMethod == kOAuth2Password) &&
+          !this._retriedOAuth) {
+        // The OAuth2 access token is no longer valid.
+        try {
+          this._retriedOAuth = true; // avoid loops
+          this.mailbox.oAuth2Login.clearAccessToken();
+          // Get a new access token, transparently using refresh token, background password login,
+          // or interactive login (e.g. for MFA), as needed.
+          // Given that this may wait for the end user, this may block for minutes.
+          let accessToken = await this.mailbox.oAuth2Login.getAccessToken();
+          let completion = aCall.asyncInvoke(this, null, null, null, accessToken);
+          this._soapResponse = completion.mResponse;
+          return;
+        } catch (e) {
+          log.warn(se(e));
+          this._error(e.name, e.type, e.message);
+          haveFault = true;
+          errorReturn = e.result || Cr.NS_ERROR_FAILURE;
+          break;
+        }
       }
 
       // HTML status errors.

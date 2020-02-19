@@ -30,37 +30,56 @@ async function onInit() {
 document.addEventListener("DOMContentLoaded", onInit);
 
 function onUnload() {
-  browser.exquillaSettings.onLicenseChecked.removeListener(updateLicenseStatus);
+  try {
+    browser.exquillaSettings.onLicenseChecked.removeListener(updateLicenseStatus);
+  } catch (ex) {
+    logError(ex);
+  }
 }
 document.addEventListener("unload", onUnload);
 
 function openPurchasePage() {
-  browser.exquillaSettings.openPurchasePage();
+  try {
+    browser.exquillaSettings.openPurchasePage();
+  } catch (ex) {
+    showError(ex);
+  }
 }
 
 function openManualAccountCreation() {
-  browser.exquillaSettings.openManualAccountCreation();
+  try {
+    browser.exquillaSettings.openManualAccountCreation();
+  } catch (ex) {
+    showError(ex);
+  }
 }
 
 async function manuallyEnterLicense() {
-  let ticket = prompt(gBundle.get("enterLicenseKey"));
   try {
+    let ticket = prompt(gBundle.get("enterLicenseKey"));
+    if (!ticket) {
+      return;
+    }
     await browser.exquillaSettings.addTicketFromString(atob(ticket));
     updateLicenseStatus();
   } catch (ex) {
-    showError(ex);
-    return false;
+    showLicenseError(ex);
   }
 }
 
 async function checkLicense(aEvent) {
-  if (aEvent.shiftKey) {
-    manuallyEnterLicense();
-    return;
+  try {
+    licenseFetchError.textContent = "";
+    if (aEvent.shiftKey) {
+      manuallyEnterLicense();
+      return;
+    }
+    licenseMessage.textContent = gBundle.get("checkStatus");
+    await browser.exquillaSettings.fetchTicket();
+    updateLicenseStatus();
+  } catch (ex) {
+    showLicenseError(ex);
   }
-  licenseMessage.textContent = gBundle.get("checkStatus");
-  await browser.exquillaSettings.fetchTicket();
-  updateLicenseStatus();
 }
 
 async function updateLicenseStatus() {
@@ -71,17 +90,19 @@ async function updateLicenseStatus() {
       licenseType = "paid"; // treat "lifetime" or other unknown types same as paid
     }
 
-    let hasServers = await browser.exquillaSettings.anyExQuillaAccountConfigured();
+    let licensedEmail = await browser.exquillaSettings.getLicensedEmail();
+    email.textContent = licensedEmail;
+
     getLicenseButton.hidden =
       ticket.end > Date.now() + kMinimumRenew &&
       licenseType == "paid";
-    checkLicenseButton.hidden = !hasServers ||
+    checkLicenseButton.hidden = !licensedEmail ||
       ticket.refresh > Date.now() &&
       ticket.end > Date.now() + kMinimumRenew &&
       licenseType != "trial";
 
     let msg;
-    if (!hasServers) {
+    if (!licensedEmail) {
       msg = gBundle.get("noAccountsConfigured");
     } else if (!licenseType) {
       msg = gBundle.get("noLicenseFound");
@@ -94,11 +115,16 @@ async function updateLicenseStatus() {
     }
     licenseMessage.textContent = msg;
   } catch (ex) {
-    logError(ex);
+    showLicenseError(ex);
   }
 }
 
+function showLicenseError(ex) {
+  licenseFetchError.textContent = ex.message || ex;
+  showError(ex);
+}
+
 function showError(ex) {
+  logError(ex);
   alert(ex.message || ex);
-  console.error(ex);
 }

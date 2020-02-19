@@ -7,7 +7,9 @@ var { cal } = ChromeUtils.import("resource://calendar/modules/calUtils.jsm");
 
 this.EXPORTED_SYMBOLS = ["cal"];
 
-Deprecated.warning("calItipUtils.jsm must no longer be imported directly, it" +
-                   " is already available via calUtils.jsm",
-                   "https://bugzilla.mozilla.org/show_bug.cgi?id=905097",
-                   Components.stack.caller);
+Deprecated.warning(
+  "calItipUtils.jsm must no longer be imported directly, it" +
+    " is already available via calUtils.jsm",
+  "https://bugzilla.mozilla.org/show_bug.cgi?id=905097",
+  Components.stack.caller
+);

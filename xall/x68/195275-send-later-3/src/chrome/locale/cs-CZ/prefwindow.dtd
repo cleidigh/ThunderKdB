@@ -1,6 +1,6 @@
 <!-- -*- coding: utf-8 -*- -->
-<!ENTITY prefwindow.title "Odeslat později - předvolby">
-<!ENTITY pane1.title "Odeslat později - předvolby">
+<!ENTITY prefwindow.title "Odeslat Později - předvolby">
+<!ENTITY pane1.title "Odeslat Později - předvolby">
 <!ENTITY checktimepref.label "Zkontrolovat každých :">
 <!ENTITY checktimepref2.label "minut">
 <!ENTITY checktimepref.tooltip "Po kolika minutách se kontroluje, zda je třeba odeslat koncepty. Zvyš tuto hodnotu, pokud tvoje koncepty neodchází včas nebo množství čekajících zpráv ve stavovém řádku někdy neodpovídá skutečnosti.">
@@ -10,24 +10,29 @@
 <!ENTITY quickoption3.caption "Předvolba 3">
 <!ENTITY quickoptionname.label "Popisek tlačítka:">
 <!ENTITY quickoptionvalue.label "Minuty :">
-<!ENTITY showsendlatercolumn.caption "Zobrazovat sloupec „Odeslat později“">
-<!ENTITY showsendlatercolumn.tooltip "Zobrazovat sloupeček „Odeslat později“ při prohlížení složek s koncepty">
-<!ENTITY showsendlaterheader.caption "Zobrazit „Odeslat později“ v hlavičce">
+<!ENTITY showsendlatercolumn.caption "Zobrazovat sloupec „Odeslat Později“">
+<!ENTITY showsendlatercolumn.tooltip "Zobrazovat sloupeček „Odeslat Později“ při prohlížení složek s koncepty">
+<!ENTITY showsendlaterheader.caption "Zobrazit „Odeslat Později“ v hlavičce">
 <!ENTITY showsendlaterheader.tooltip "Má-li se zobrazovat v záhlaví zprávy hlavička “X-Send-Later-At”, tj. datum a čas, kdy bude koncept odeslán.">
-<!ENTITY showsendlaterstatus.caption "Zobrazit „Odeslat později“ ve stavovém řádku">
+<!ENTITY showsendlaterstatus.caption "Zobrazit „Odeslat Později“ ve stavovém řádku">
 <!ENTITY showsendlaterprogress.caption "Zobrazit stav na pozadí zpracovávaných úloh ve stavovém řádku">
 <!ENTITY showsendlaterunsentmessages.caption "Odeslat čekající zprávy ze složky &quot;K odeslání&quot;">
-<!ENTITY showsendlaterunsentmessages.tooltip "Vypnete-li toto nastavení, pak Odeslat později nebude odesílat zprávy - pouze je uloží do složky &quot;K odeslání&quot;. Hodí se to když používáte jiná rozšíření, např. BlunderDelay pro pravidelné odesílání zpráv ze složky &quot;K odeslání&quot;. Pokud bude toto nastavení zapnuté, pokaždé, když Odeslat později odešle zprávu, budou odeslány VŠECHNY zprávy z vaší složky &quot;K odeslání&quot;.">
+<!ENTITY showsendlaterunsentmessages.tooltip "Vypnete-li toto nastavení, pak Odeslat Později nebude odesílat zprávy - pouze je uloží do složky &quot;K odeslání&quot;. Hodí se to když používáte jiná rozšíření, např. BlunderDelay pro pravidelné odesílání zpráv ze složky &quot;K odeslání&quot;. Pokud bude toto nastavení zapnuté, pokaždé, když Odeslat Později odešle zprávu, budou odeslány VŠECHNY zprávy z vaší složky &quot;K odeslání&quot;.">
 <!ENTITY sendlatersendbutton.caption "„Odeslat“ = „Odeslat později“">
 <!ENTITY sendlatersendbutton.tooltip "Pokud tuto možnost povolíte, bude se příkaz „Odeslat“ (tlačítko nebo klávesová zkratka Ctrl-Enter) chovat stejně jako „Odeslat později“.">
+<!ENTITY senddelay.tooltip "Pokud je tato možnost zapnutá, všechny zprávy odeslané příkazem &quot;Odeslat&quot; (tlačítkem nebo stisknutím Ctrl-Enter) budou zdrženy o zadaný čas naplánovaný pomocí Odeslat Později.">
+<!ENTITY senddelay.label "&quot;Odeslat&quot; zdrží zprávy o:">
+<!ENTITY senddelay2.label "minut">
 <!ENTITY altbinding.caption "Použít Alt-Shift-Enter namísto Ctrl-Shift-Enter">
+<!ENTITY composewindowhotkeys.tooltip "Zatímco píšete zprávu, můžete stisknout Ctrl-Alt-1, -2 nebo -3 abyste aktivovali první, druhé nebo třetí tlačítko předvolby odesílání. Platí pouze pokud jste v nastavení nezakázali použití klávesový zkratek.">
+<!ENTITY composewindowhotkeys.caption "Povolit použití klávesových zkratek (pro předvolby odeslání) při psaní zprávy">
 <!ENTITY markread.caption "Označit naplánované koncepty jako přečtené">
 <!ENTITY advanced.caption "Rozšířené">
 <!ENTITY dumplevel.caption "Úroveň zápisu protokolu:">
 <!ENTITY consolelevel.caption "Úroveň zápisu protokolu pro příkazový řádek:">
-<!ENTITY contactauthor.tooltip "Pošlete email autorovi rozšíření „Odeslat později&quot;.">
+<!ENTITY contactauthor.tooltip "Pošlete email autorovi rozšíření „Odeslat Později&quot;.">
 <!ENTITY contactauthor.value "Kontaktovat autora">
-<!ENTITY helplink.tooltip "Zobrazte dokumentaci rozšíření „Odeslat později&quot;.">
+<!ENTITY helplink.tooltip "Zobrazte dokumentaci rozšíření „Odeslat Později&quot;.">
 <!ENTITY helplink.value "Uživatelská příručka">
 <!ENTITY releasenotes.value "Poznámky k vydání">
 <!ENTITY donatelink.value "Přispějte">
@@ -47,7 +52,3 @@
 <!ENTITY loglevel.debug "Ladit">
 <!ENTITY loglevel.trace "Trasovat">
 <!ENTITY loglevel.all "Vše">
-<!ENTITY senddelay.tooltip "With this option enabled, all messages sent with the “Send” command (either the button or typing Ctrl-Enter) are delayed by the specified number of minutes by scheduling them with Odeslat později.">
-<!ENTITY senddelay.label "“Send” delays messages by:">
-<!ENTITY composewindowhotkeys.tooltip "While composing a message you can type Ctrl-Alt-1, -2, or -3 to activate the first, second, or third preset button, unless you uncheck this preference, in which case these key bindings are disabled.">
-<!ENTITY composewindowhotkeys.caption "Enable compose window key bindings for presets">

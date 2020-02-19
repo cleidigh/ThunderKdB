@@ -266,6 +266,12 @@
             if (aAttr == "broadcaster") {
                 this.mBroadcaster = document.getElementById(aVal);
                 if (this.mBroadcaster) {
+                    if (this.mBroadcaster.hasAttribute("mode")) {
+                        this.onModeModified({
+                            attrName: "mode",
+                            newValue: this.mBroadcaster.getAttribute("mode"),
+                        }, this);
+                    }
                     this.mModHandler = {
                         binding: this,
                         handleEvent: function(aEvent, aHandled) {

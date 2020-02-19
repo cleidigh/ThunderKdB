@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://signalspam/skin/reports.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://signalspam/locale/signalspam.dtd">
+
+<!--
+ondialogaccept="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return validPrefs(true);"
+ondialogcancel="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return cancelPrefs(true);"
+height="650"
+width="900"
+ondialogaccept="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return validPrefs(true);"
+ondialogcancel="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return cancelPrefs(true);"
+onload="window.sizeToContent();"
+-->
+
+<window id="signalspam-reports"
+            resizable="yes"
+            title="&signalspam.reports.title;"
+            image="chrome://signalspam/skin/icon48.png"
+            xmlns:html="http://www.w3.org/1999/xhtml"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            style="overflow: auto;"
+            persist="width height screenX screenY">
+
+    <!--<html:link rel="icon" href="chrome://signalspam/content/signalspam/skin/icon48.png"/>-->
+    <!--<stringbundleset id="stringbundleset">
+        <stringbundle id="string-bundle" src="chrome://signalspam/locale/signalspam.properties"/>
+    </stringbundleset>-->
+
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam/specific/signalspam/extensionConfig.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam/include/verifrom_api.js"/>
+    <script type="application/x-javascript" src="chrome://signalspam/content/signalspam/reports.js"/>
+
+    <tooltip id="deletetooltip" orient="vertical">
+        <label value="&signalspam.reports.deleteRowsInfo;"/>
+    </tooltip>
+    <hbox pack="center" style="height:95vh;">
+        <spacer flex="5"></spacer>
+        <vbox flex="90" align="center" pack="center">
+            <spacer flex="1"></spacer>
+            <hbox class='reportsPageHeader' flex="2">
+                <spacer flex="5" position="1"></spacer>
+                <vbox flex="20" position="2">
+                    <description class="reportsTitle">&signalspam.reports.title;</description>
+                    <description class='reportsSubTitle'>&signalspam.reports.subTitle;</description>
+                </vbox>
+                <spacer flex="20" position="3"></spacer>
+                <image flex="1" position="4" id="logo" src='chrome://signalspam/skin/icon48.png'/>
+                <spacer flex="5" position="5"></spacer>
+            </hbox>
+            <hbox id="spinner" hidden="true">
+                <image id="logo" src='chrome://global/skin/icons/loading.png'/>
+            </hbox>
+            <spacer flex="1"></spacer>
+            <vbox class="TableAndStatus">
+                <grid class="minimalistBlack tableAndStatus">
+                    <rows>
+                        <row/>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                        <row>
+                            <checkbox class="selectRow" disabled="false" checked="false" label="" style="-moz-appearance: checkbox-container;-moz-box-align: center;"/>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class=""></description>
+                            <description crop="end" class="" tooltipText=""></description>
+                        </row>
+                    </rows>
+                    <columns>
+                        <column flex="1">
+                            <description class="deleteRows"  tooltip="deletetooltip">🗑</description>
+                        </column>
+                        <column flex="3">
+                            <description crop="end" class="" value="&signalspam.reports.col2;"/>
+                        </column>
+                        <column flex="20">
+                            <description crop="end" class="" value="&signalspam.reports.col3;"/>
+                        </column>
+                        <column flex="20">
+                            <description crop="end" class="" value="&signalspam.reports.col4;"/>
+                        </column>
+                        <column flex="3">
+                            <description crop="end" class="" value="&signalspam.reports.col5;"/>
+                        </column>
+                        <column flex="2">
+                            <description crop="end" class="" value="&signalspam.reports.col6;"/>
+                        </column>
+                    </columns>
+                </grid>
+                <grid class="minimalistBlack tfoot">
+                    <columns>
+                        <column flex="1" align="center" pack="center">
+                            <description class="deleteRows" tooltip="deletetooltip">🗑</description>
+                        </column>
+                        <column flex="23" align="center" pack="center">
+                            <hbox align="center" pack="center">
+                                <description class="">&signalspam.reports.pager.page;</description>
+                                <html:textarea size="3" id="pageNumber"/>
+                                <description class="">&signalspam.reports.pager.onpages;</description>
+                                <description class="" value="0" id="numberPages"></description>
+                            </hbox>
+                        </column>
+                        <column flex="25" align="center" pack="center">
+                            <hbox flex="20" class="pager" align="center" pack="center">
+                                <description class="firstPage"></description>
+                                <description class="prevPage"></description>
+                                <description class="nextPage"></description>
+                                <description class="lastPage"></description>
+                            </hbox>
+                        </column>
+                    </columns>
+                </grid>
+            </vbox>
+            <spacer flex="1"></spacer>
+        </vbox>
+        <spacer flex="5"></spacer>
+    </hbox>
+</window>

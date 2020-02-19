@@ -20,7 +20,12 @@
 <!ENTITY showsendlaterunsentmessages.tooltip "Ao desativar essa opção, Enviar mais tarde não enviará todas as mensagens; em vez disso, transfere-a para a caixa de saída quando agendadas para envio. Desative esta opção caso use outras extensões como p.ex. BlunderDelay para o envio periódico de mensagens em sua caixa de saída. Observe que, quando essa opção estiver ativa, sempre que Enviar mais tarde enviar uma mensagem, TODAS as outra mensagens em sua caixa de saída serão enviadas.">
 <!ENTITY sendlatersendbutton.caption "“Enviar Mais Tarde” substitui “Enviar”">
 <!ENTITY sendlatersendbutton.tooltip "Ao ativar esta opção, o comando “Enviar” (tanto seu ícone quanto teclando Ctrl+Enter) age da mesma forma que “Envie Mais Tarde”.">
+<!ENTITY senddelay.tooltip "Com esta opção habilitada, todas as mensagens enviadas com o comando &quot;Enviar&quot; (com o botão ou digitando Ctrl-Enter) são atrasadas pelo número especificado de minutos do agendamento com Enviar mais tarde.">
+<!ENTITY senddelay.label "&quot;Enviar&quot; posterga o envio por:">
+<!ENTITY senddelay2.label "minutos">
 <!ENTITY altbinding.caption "Combinar Alt+Shift+Enter em vez de Ctrl+Shift+Enter">
+<!ENTITY composewindowhotkeys.tooltip "Enquanto você digita uma mensagem, você pode usar Ctrl-Alt-1, -2, ou -3 para ativar a primeira, segunda ou terceira predefinição, a menos que você desmarque esta preferência, nesse caso esses atalhos estarão desabilitados.">
+<!ENTITY composewindowhotkeys.caption "Ativar combinações de teclas da janela de composição para predefinições">
 <!ENTITY markread.caption "Marcar rascunhos agendados como lidos">
 <!ENTITY advanced.caption "Avançado">
 <!ENTITY dumplevel.caption "Nível de log de descarga:">
@@ -47,7 +52,3 @@
 <!ENTITY loglevel.debug "Debug">
 <!ENTITY loglevel.trace "Trace">
 <!ENTITY loglevel.all "All">
-<!ENTITY senddelay.tooltip "With this option enabled, all messages sent with the “Send” command (either the button or typing Ctrl-Enter) are delayed by the specified number of minutes by scheduling them with Enviar mais tarde.">
-<!ENTITY senddelay.label "“Send” delays messages by:">
-<!ENTITY composewindowhotkeys.tooltip "While composing a message you can type Ctrl-Alt-1, -2, or -3 to activate the first, second, or third preset button, unless you uncheck this preference, in which case these key bindings are disabled.">
-<!ENTITY composewindowhotkeys.caption "Enable compose window key bindings for presets">

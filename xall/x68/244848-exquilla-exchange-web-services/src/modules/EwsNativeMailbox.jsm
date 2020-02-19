@@ -24,6 +24,8 @@ XPCOMUtils.defineLazyGetter(this, "log", () => {
 
 ChromeUtils.defineModuleGetter(this, "Services",
                                "resource://gre/modules/Services.jsm");
+ChromeUtils.defineModuleGetter(this, "OAuth2Login",
+                               "resource://exquilla/EwsOAuth2.jsm");
 ChromeUtils.defineModuleGetter(this, "EwsNativeMachine",
                                "resource://exquilla/EwsNativeMachine.jsm");
 ChromeUtils.defineModuleGetter(this, "EwsNativeItem",
@@ -59,6 +61,7 @@ function EwsNativeMailbox() {
   this._email = "";
   this._username = "";
   this._password = "";
+  this._authMethod = Ci.nsMsgAuthMethod.anything;
   this._serverURI = "";
   this._rootFolderId = "";
   this._datastoreDirectory = null;
@@ -69,6 +72,8 @@ function EwsNativeMailbox() {
   this._activityListener = null;
   this._ewsURL = "";
   this._testType = 0;
+
+  this._oAuth2Login = new OAuth2Login(this);
 }
 
 EwsNativeMailbox.prototype = {
@@ -127,6 +132,9 @@ EwsNativeMailbox.prototype = {
   },
   set password(a) { this._password = a;},
 
+  get authMethod()  { return this._authMethod; },
+  set authMethod(a) { this._authMethod = a; },
+
   get serverURI()  { return this._serverURI;},
   set serverURI(a) { this._serverURI = a;},
 
@@ -141,6 +149,8 @@ EwsNativeMailbox.prototype = {
 
   get rootFolderId()  { return this._rootFolderId;},
   set rootFolderId(a) { this._rootFolderId = a;},
+
+  get oAuth2Login() { return this._oAuth2Login; },
 
   promptUsernameAndPassword(domWindow) {
     this._checkShutdown();

@@ -229,8 +229,8 @@ function doFbaExpanded(aUsername, aPassword, aUrl)
 
   if (isModal)
   {
-    fbaWindow = Services.ww.openWindow(activeWindow, "chrome://exquilla/content/moreinfo.xul", "ExQuillaFBA",
-                           "centerscreen,chrome,width=980,height=600", null);
+    let fbaWindow = Services.ww.openWindow(activeWindow, "chrome://exquilla/content/moreinfo.xul", "ExQuillaFBA",
+                           "centerscreen,chrome,location,width=980,height=600", null);
     fbaWindow.addEventListener("load", function(e) {
         let browser = fbaWindow.document.getElementById('maincontent');
         browser.loadURI(aUrl);
@@ -392,7 +392,11 @@ function doFbaCollapsed(aUsername, aPassword, aUrl, aCallback)
   browser.addProgressListener(progressListener,
                               Ci.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
   log.debug("browser.loadURIWithFlags for url " + aUrl);
-  browser.loadURIWithFlags(aUrl, Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK, null, null, null);
+  if (browser.loadURIWithFlags) { // COMPAT for TB 60
+    browser.loadURIWithFlags(aUrl, Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK, null, null, null);
+  } else {
+    browser.loadURI(aUrl, { flags: Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK });
+  }
   return;
 } catch (e) {re(e);}}
 

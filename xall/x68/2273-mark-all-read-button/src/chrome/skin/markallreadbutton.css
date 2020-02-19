@@ -1,0 +1,99 @@
+/* Mark Read All Button extension */
+/* default theme support */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#MarkAllReadButton {
+	list-style-image: url("chrome://markallreadbutton/skin/markallread.png");
+	-moz-image-region: rect(0px 24px 24px 0px);
+}
+
+#MarkThreadReadButton {
+	list-style-image: url("chrome://markallreadbutton/skin/markthreadread.png");
+	-moz-image-region: rect(0px 24px 24px 0px);
+}
+
+#NextThreadUnreadButton {
+	list-style-image: url("chrome://markallreadbutton/skin/nextthreadunread.png");
+	-moz-image-region: rect(0px 24px 24px 0px);
+}
+
+#MarkAllReadButton:hover {
+	list-style-image: url("chrome://markallreadbutton/skin/markallread.png");
+	 -moz-image-region: rect(24px 24px 48px 0px);
+}
+
+#MarkThreadReadButton:hover {
+	list-style-image: url("chrome://markallreadbutton/skin/markthreadread.png");
+	 -moz-image-region: rect(24px 24px 48px 0px);
+}
+
+#NextThreadUnreadButton:hover {
+	list-style-image: url("chrome://markallreadbutton/skin/nextthreadunread.png");
+	 -moz-image-region: rect(24px 24px 48px 0px);
+}
+
+#MarkAllReadButton[disabled="true"] {
+	list-style-image: url("chrome://markallreadbutton/skin/markallread.png");
+	 -moz-image-region: rect(48px 24px 72px 0px);
+}
+
+#MarkThreadReadButton[disabled="true"] {
+	list-style-image: url("chrome://markallreadbutton/skin/markthreadread.png");
+	 -moz-image-region: rect(48px 24px 72px 0px);
+}
+
+#NextThreadUnreadButton[disabled="true"] {
+	list-style-image: url("chrome://markallreadbutton/skin/nextthreadunread.png");
+	 -moz-image-region: rect(48px 24px 72px 0px);
+}
+
+toolbar[iconsize="small"] #MarkAllReadButton {
+	list-style-image: url("chrome://markallreadbutton/skin/markallread-small.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+
+toolbar[iconsize="small"] #MarkThreadReadButton {
+	list-style-image: url("chrome://markallreadbutton/skin/markthreadread-small.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+
+toolbar[iconsize="small"] #NextThreadUnreadButton {
+	list-style-image: url("chrome://markallreadbutton/skin/nextthreadunread-small.png");
+	-moz-image-region: rect(0px 16px 16px 0px);
+}
+
+toolbar[iconsize="small"] #MarkAllReadButton:hover {
+	list-style-image: url("chrome://markallreadbutton/skin/markallread-small.png");
+	-moz-image-region: rect(16px 16px 32px 0px);
+}
+
+toolbar[iconsize="small"] #MarkThreadReadButton:hover {
+	list-style-image: url("chrome://markallreadbutton/skin/markthreadread-small.png");
+	-moz-image-region: rect(16px 16px 32px 0px);
+}
+
+toolbar[iconsize="small"] #NextThreadUnreadButton:hover {
+	list-style-image: url("chrome://markallreadbutton/skin/nextthreadunread-small.png");
+	-moz-image-region: rect(16px 16px 32px 0px);
+}
+
+toolbar[iconsize="small"] #MarkAllReadButton[disabled="true"] {
+	list-style-image: url("chrome://markallreadbutton/skin/markallread-small.png");
+	-moz-image-region: rect(32px 16px 48px 0px);
+}
+
+toolbar[iconsize="small"] #MarkThreadReadButton[disabled="true"] {
+	list-style-image: url("chrome://markallreadbutton/skin/markthreadread-small.png");
+	-moz-image-region: rect(32px 16px 48px 0px);
+}
+
+toolbar[iconsize="small"] #NextThreadUnreadButton[disabled="true"] {
+	list-style-image: url("chrome://markallreadbutton/skin/nextthreadunread-small.png");
+	-moz-image-region: rect(32px 16px 48px 0px);
+}
+
+menuitem[label="All Read"], #folderPaneContext-markMailFolderAllRead {
+	-moz-binding: url("chrome://global/content/bindings/menu.xml#menuitem-iconic");
+	list-style-image: url("chrome://markallreadbutton/skin/menuicon.png");
+}

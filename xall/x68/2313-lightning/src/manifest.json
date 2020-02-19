@@ -1,20 +1,20 @@
 {
-  "manifest_version": 2,
-  "default_locale": "en-US",
-  "name": "__MSG_extensionName__",
-  "description": "__MSG_extensionDescription__",
-  "version": "68.0",
-  "author": "Mozilla Calendar Project",
-  "homepage_url": "https://www.mozilla.org/projects/calendar/",
-  "legacy": true,
   "applications": {
     "gecko": {
       "id": "{e2fda1a4-762b-4020-b5ad-a41df1933103}",
-      "strict_min_version": "68.0",
-      "strict_max_version": "68.*"
+      "strict_max_version": "68.*",
+      "strict_min_version": "68.5.0"
     }
   },
+  "author": "__MSG_extensionAuthor__",
+  "default_locale": "en-US",
+  "description": "__MSG_extensionDescription__",
+  "homepage_url": "https://www.mozilla.org/projects/calendar/",
   "icons": {
     "32": "chrome/skin/common/icons/icon32.svg"
-  }
+  },
+  "legacy": true,
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "version": "68.5.0"
 }

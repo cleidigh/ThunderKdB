@@ -5,7 +5,8 @@
 @import url("chat.css");
 @import url("primaryToolbar.css");
 
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
 
 /* ::::: minimum row & menu height ::::: */
 
@@ -22,7 +23,6 @@ menu, menuitem, menucaption {
 #phb_pretab-toolbar {
   -moz-appearance: none;
   padding: 0;
-  z-index: 1;
   border: none;
   min-width: 0px;
 }
@@ -79,7 +79,8 @@ menu, menuitem, menucaption {
 
 /* Compact Headers */
 
-#expandedHeaderView.compact #expandedHeader2Rows > row:not([id="expandedsubjectRow"]) {
+#expandedHeaderView.compact #expandedHeader2Rows > row:not([id="expandedsubjectRow"]),
+#expandedHeaderView.compact html|table#expandedHeaders2 > html|tr:not([id="expandedsubjectRow"]) {
   visibility: collapse;
 }
 
@@ -285,4 +286,12 @@ toolbar[iconsize="small"] .phoenitybutton .toolbarbutton-icon {
 
 #phb_devtoolbox {
   -moz-image-region: rect(0px, 528px, 24px, 504px);
+}
+
+#phb_profiledir {
+  -moz-image-region: rect(0px, 648px, 24px, 624px);
+}
+
+#phb_searchmessages {
+  -moz-image-region: rect(0px, 672px, 24px, 648px);
 }

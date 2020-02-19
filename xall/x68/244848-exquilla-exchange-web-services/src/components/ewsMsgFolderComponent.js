@@ -455,7 +455,8 @@ EwsMsgFolder.prototype = {
         // Cripple point: don't proceed with invalid license
         if (!(await EnsureLicensed())) {
           log.info("Not doing update because of license status");
-          return Cr.NS_OK;
+          let bundle = Services.strings.createBundle("chrome://exquilla/locale/settings.properties");
+          throw CE(bundle.GetStringFromName("noLicenseFound"));
         }
 
         let syncState = "";
@@ -623,6 +624,9 @@ EwsMsgFolder.prototype = {
       this._updateInProcess = false;
       if (urlListener) {
         executeSoon( () => urlListener.OnStopRunningUrl(null, ex.result || Cr.NS_ERROR_FAILURE));
+      }
+      if (aMsgWindow && aMsgWindow.statusFeedback) {
+        aMsgWindow.statusFeedback.showStatusString(ex.message);
       }
       return;
     }
@@ -2161,7 +2165,8 @@ EwsMsgFolder.prototype = {
 
           // Cripple point: don't proceed with invalid license
           if (!(await EnsureLicensed())) {
-            return Cr.NS_OK;
+            let bundle = Services.strings.createBundle("chrome://exquilla/locale/settings.properties");
+            throw CE(bundle.GetStringFromName("noLicenseFound"));
           }
 
           while (mFolders.length)
@@ -2184,6 +2189,9 @@ EwsMsgFolder.prototype = {
         log.error("Error in getNewMessages", ex);
         if (urlListener) {
           executeSoon( () => urlListener.OnStopRunningUrl(null, ex.result || Cr.NS_ERROR_FAILURE));
+        }
+        if (aWindow && aWindow.statusFeedback) {
+          aWindow.statusFeedback.showStatusString(ex.message);
         }
         return;
       }
@@ -2626,9 +2634,17 @@ EwsMsgFolder.prototype = {
       let msgHdr = this.GetMessageHeader(key);
       // ignore messages that already have a preview body.
       let prevBody = msgHdr.getStringProperty("preview");
-      if (prevBody.length > 2)
-        continue;
+      if (prevBody.length > 2) {
+        try {
+          // Check whether it's valid UTF-8
+          decodeURIComponent(escape(prevBody));
+          continue;
+        } catch (ex) {
+          // cached preview is broken, fix it by continuing on below
+        }
+      }
 
+      // Get the msg body
       let itemId = msgHdr.getProperty("ewsItemId");
       if (!itemId) {
         log.warn("Blank itemId for message header");
@@ -2668,7 +2684,7 @@ EwsMsgFolder.prototype = {
 
         // finally, truncate the string based on aMaxOutputLen
         body = body.substring(0, MAXIMUM_SNIPPET_LENGTH);
-        msgHdr.setStringProperty("preview", body);
+        msgHdr.setStringProperty("preview", unescape(encodeURIComponent(body)));
       }
     }
   },
@@ -2773,7 +2789,7 @@ EwsMsgFolder.prototype = {
         let foldersEnum = trashFolder.subFolders;
         while (foldersEnum.hasMoreElements())
         {
-          let folder = foldersEnum.getNext().queryInterface(Ci.nsIMsgFolder);
+          let folder = foldersEnum.getNext().QueryInterface(Ci.nsIMsgFolder);
           folders.appendElement(folder, false);
         }
 
@@ -2789,7 +2805,7 @@ EwsMsgFolder.prototype = {
           log.config("Deleting messages from trash, count is", messages.length);
           let deleteMessagesListener = new PromiseUtils.CopyListener();
           trashFolder.deleteMessages(messages,  msgWindow, true, false, deleteMessagesListener, false);
-          havePromise = deleteMessageListener.promise;
+          havePromise = deleteMessagesListener.promise;
         }
 
         if (folders.length)

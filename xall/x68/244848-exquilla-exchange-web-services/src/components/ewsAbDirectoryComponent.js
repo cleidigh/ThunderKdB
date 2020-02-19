@@ -215,7 +215,7 @@ EwsAbDirectory.prototype = {
     let uri = aDirectory.URI;
     for (let i = 0; i < addressLists.length; i++)
     {
-      existingDirectory = addressLists.queryElementAt(i, Ci.nsIAbDirectory);
+      let existingDirectory = addressLists.queryElementAt(i, Ci.nsIAbDirectory);
       //dl('Looking for subdirectory ' + existingDirectory.URI);
       if (uri == existingDirectory.URI)
         return true;

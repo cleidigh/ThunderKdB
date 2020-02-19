@@ -1,0 +1,322 @@
+/************************************************************************/
+/*                                                                      */
+/*      Account Colors  -  Thunderbird Extension  -  Compose Window     */
+/*                                                                      */
+/*      CSS for Compose Window overlay                                  */
+/*                                                                      */
+/*      Copyright (C) 2008-2019  by  DW-dev                             */
+/*                                                                      */
+/*      Last Edit  -  04 Dec 2019                                       */
+/*                                                                      */
+/************************************************************************/
+
+/* Improve appearance of From menu */
+
+window #msgIdentity .menulist-label
+{
+    padding-bottom: 1px !important;
+}
+
+window #msgIdentity menuitem
+{
+    font-weight: normal !important;
+}
+
+window #msgIdentity menuseparator
+{
+    margin: 0px 0px !important;
+    border-top-color: rgba(128,128,128,0.5) !important;
+}
+
+/* Improve appearance of Attachment container */
+
+window #attachmentBucket
+{
+    background-color: #F8F8F8;
+}
+
+/* Black field fonts */
+
+window[ac-blackfieldfont] #msgSubject
+{ 
+    color: black;
+}
+
+window[ac-blackfieldfont] #msgIdentity
+{ 
+    color: black;
+    fill: black;  /* down-arrow - TT Deep Dark theme */
+}
+
+window[ac-blackfieldfont] #msgIdentity .menulist-label
+{ 
+    color: black;
+}
+
+window[ac-blackfieldfont] #msgIdentity .menulist-description
+{ 
+    color: black;
+}
+
+window[ac-blackfieldfont] #msgIdentity menuitem
+{ 
+    color: black;
+}
+
+window[ac-blackfieldfont] #msgIdentity menuitem .menu-iconic-text
+{ 
+    color: black;
+}
+
+window[ac-blackfieldfont] #msgIdentity menuitem .menu-description
+{ 
+    color: black;
+}
+
+window[ac-blackfieldfont] #msgIdentity menuitem:last-child
+{ 
+    background-color: white;  /* only for 'Customize From Address...' menu item */
+}
+
+window[ac-blackfieldfont] #msgIdentity .menulist-dropmarker
+{ 
+    fill: black;  /* down-arrow - Thunderbird built-in themes */
+}
+
+window[ac-blackfieldfont] #addressingWidget textbox
+{
+    color: black;
+}
+
+window[ac-blackfieldfont] #attachmentBucket attachmentitem
+{
+    color: black;
+}
+
+window[ac-blackfieldfont] #attachmentBucket .attachmentcell-nameselection
+{
+    color: black;
+}
+
+window[ac-blackfieldfont] #attachmentBucket .attachmentcell-size
+{
+    color: black;
+    opacity: 1.0;
+}
+
+/* White field fonts */
+
+window[ac-whitefieldfont] #msgSubject
+{ 
+    color: white;
+}
+
+window[ac-whitefieldfont] #msgIdentity
+{ 
+    color: white;
+    fill: white;  /* down-arrow - TT Deep Dark theme */
+}
+
+window[ac-whitefieldfont] #msgIdentity .menulist-label
+{ 
+    color: white;
+}
+
+window[ac-whitefieldfont] #msgIdentity .menulist-description
+{ 
+    color: white;
+}
+
+window[ac-whitefieldfont] #msgIdentity menuitem
+{ 
+    color: white;
+}
+
+window[ac-whitefieldfont] #msgIdentity menuitem .menu-iconic-text
+{ 
+    color: white;
+}
+
+window[ac-whitefieldfont] #msgIdentity menuitem .menu-description
+{ 
+    color: white;
+}
+
+window[ac-whitefieldfont] #msgIdentity menuitem:last-child
+{ 
+    background-color: white;  /* only for 'Customize From Address...' menu item */
+}
+
+window[ac-whitefieldfont] #msgIdentity .menulist-dropmarker
+{ 
+    fill: white;  /* down-arrow - Thunderbird built-in themes */
+}
+
+window[ac-whitefieldfont] #addressingWidget textbox
+{
+    color: white;
+}
+
+window[ac-whitefieldfont] #attachmentBucket attachmentitem
+{
+    color: white;
+}
+
+window[ac-whitefieldfont] #attachmentBucket .attachmentcell-nameselection
+{
+    color: white;
+}
+
+window[ac-whitefieldfont] #attachmentBucket .attachmentcell-size
+{
+    color: white;
+    opacity: 1.0;
+}
+
+/* To/Cc/Bcc font color */
+
+window[ac-colortofont] #addressingWidget textbox
+{
+    color: var(--ac-colortofont);
+}
+
+/* To/Cc/Bcc background color */
+
+window[ac-colortobkgd] #addressingWidget textbox
+{
+    background-color: var(--ac-colortobkgd);
+}
+
+/* Attachment font color */
+
+window[ac-coloratmfont] #attachmentBucket attachmentitem
+{
+    color: var(--ac-coloratmfont);
+}
+
+window[ac-coloratmfont] #attachmentBucket .attachmentcell-nameselection
+{
+    color: var(--ac-coloratmfont);
+}
+
+window[ac-coloratmfont] #attachmentBucket .attachmentcell-size
+{
+    color: var(--ac-coloratmfont);
+    opacity: 1.0;
+}
+
+/* Black header labels */
+
+window[ac-blackhdrlabels] #addressingWidget .aw-menulist
+{
+    color: black;
+}
+
+window[ac-blackhdrlabels] #addressingWidget .deleteAddress
+{
+    color: black !important;
+}
+
+window[ac-blackhdrlabels] #attachmentBucketCloseButton .toolbarbutton-icon
+{
+    color: black;
+}
+
+/* White header labels */
+
+window[ac-whitehdrlabels] #addressingWidget .aw-menulist
+{
+    color: white;
+}
+
+window[ac-whitehdrlabels] #addressingWidget .deleteAddress
+{
+    color: white !important;
+}
+
+window[ac-whitehdrlabels] #attachmentBucketCloseButton .toolbarbutton-icon
+{
+    color: white;
+}
+
+/* Light field backgrounds on hover or focus */
+
+window[ac-lightfieldbkgd] #msgSubject:hover
+{ 
+    background-color: white !important;
+}
+
+window[ac-lightfieldbkgd] #msgSubject[focused="true"]
+{
+    background-color: white !important;
+}
+
+window[ac-lightfieldbkgd] #msgIdentity:hover
+{ 
+    background-color: white !important;
+}
+
+window[ac-lightfieldbkgd] #msgIdentity[focused="true"]
+{
+    background-color: white !important;
+}
+
+window[ac-lightfieldbkgd] #addressingWidget textbox:hover
+{
+    background-color: white !important;
+}
+
+window[ac-lightfieldbkgd] #addressingWidget textbox[focused="true"]
+{
+    background-color: white !important;
+}
+
+window[ac-lightfieldbkgd] #attachmentBucket:hover
+{
+    background-color: white !important;
+}
+
+/* Dark field backgrounds on hover or focus */
+
+window[ac-darkfieldbkgd] #msgSubject:hover
+{
+    background-color: #383838 !important;
+}
+
+window[ac-darkfieldbkgd] #msgSubject[focused="true"]
+{
+    background-color: #383838 !important;
+}
+
+window[ac-darkfieldbkgd] #msgIdentity:hover
+{ 
+    background-color: #383838 !important;
+}
+
+window[ac-darkfieldbkgd] #msgIdentity[focused="true"]
+{
+    background-color: #383838 !important;
+}
+
+window[ac-darkfieldbkgd] #addressingWidget textbox:hover
+{
+    background-color: #383838 !important;
+}
+
+window[ac-darkfieldbkgd] #addressingWidget textbox[focused="true"]
+{
+    background-color: #383838 !important;
+}
+
+window[ac-darkfieldbkgd] #attachmentBucket:hover
+{
+    background-color: #383838 !important;
+}
+
+/* Reinstate default hover style on From menu */
+
+window[ac-hoverfrom] #msgIdentity menuitem[_moz-menuactive]
+{
+    background-color: #0078D9 !important;
+    color: white !important;
+}

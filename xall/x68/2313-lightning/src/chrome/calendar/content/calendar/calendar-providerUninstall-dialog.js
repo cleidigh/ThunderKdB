@@ -7,28 +7,30 @@
 var { cal } = ChromeUtils.import("resource://calendar/modules/calUtils.jsm");
 
 function onLoad() {
-    let extension = window.arguments[0].extension;
-    document.getElementById("provider-name-label").value = extension.name;
+  let extension = window.arguments[0].extension;
+  document.getElementById("provider-name-label").value = extension.name;
 
-    let calendars = cal.getCalendarManager().getCalendars({})
-                       .filter(x => x.providerID == extension.id);
+  let calendars = cal
+    .getCalendarManager()
+    .getCalendars({})
+    .filter(x => x.providerID == extension.id);
 
-    document.getElementById("calendar-list-tree").calendars = calendars;
+  document.getElementById("calendar-list-tree").calendars = calendars;
 }
 
 document.addEventListener("dialogaccept", () => {
-    // Tell our caller that the extension should be uninstalled.
-    let args = window.arguments[0];
-    args.shouldUninstall = true;
+  // Tell our caller that the extension should be uninstalled.
+  let args = window.arguments[0];
+  args.shouldUninstall = true;
 
-    // Unsubscribe from all selected calendars
-    let calendarList = document.getElementById("calendar-list-tree");
-    let calendars = calendarList.selectedCalendars || [];
-    let calMgr = cal.getCalendarManager();
-    calendars.forEach(calMgr.unregisterCalendar, calMgr);
+  // Unsubscribe from all selected calendars
+  let calendarList = document.getElementById("calendar-list-tree");
+  let calendars = calendarList.selectedCalendars || [];
+  let calMgr = cal.getCalendarManager();
+  calendars.forEach(calMgr.unregisterCalendar, calMgr);
 });
 
 document.addEventListener("dialogcancel", () => {
-    let args = window.arguments[0];
-    args.shouldUninstall = false;
+  let args = window.arguments[0];
+  args.shouldUninstall = false;
 });

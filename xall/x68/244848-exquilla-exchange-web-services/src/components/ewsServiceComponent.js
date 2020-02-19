@@ -302,7 +302,7 @@ EwsService.prototype = {
     else if (matchingDirectory && (isDeleted || !useAB))
     {
       // deleted from the address book manager
-      MailServices.ab.deleteAddressBook(matchingDirectory.uri);
+      MailServices.ab.deleteAddressBook(matchingDirectory.URI);
     }
 
     // This will also update the dirName if the server changed the name

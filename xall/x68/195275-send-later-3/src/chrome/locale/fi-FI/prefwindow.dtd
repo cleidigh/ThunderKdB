@@ -20,7 +20,12 @@
 <!ENTITY showsendlaterunsentmessages.tooltip "Jos et aseta tätä valintaa, ei Lähetä myöhemmin tule toimittamaan viestejä, vaan sen sijaan se siirtää ne Lähtevät-kansioon niiden lähetysajankohtana. Jätä asettamatta tämä valinta, esim. jos käytät jotain muuta lisäosaa, kuten BlunderDelay, lähettääksesi määräajoin viestejä Lähtevät-kansiostasi. Huomaa, että kun tämä valinta on asetettuna, niin aina kun Lähetä myöhemmin lähettää viestin, lähtevät KAIKKI viestisi Lähtevät-kansiostasi.">
 <!ENTITY sendlatersendbutton.caption "”Lähetä” toimii, kuten ”Lähetä myöhemmin”">
 <!ENTITY sendlatersendbutton.tooltip "Tämän valinnan ollessa käytössä &quot;Lähetä&quot; -komento (joko painike, tai näppäimet Ctrl-Enter) toimii kuten &quot;Lähetä myöhemmin&quot;.">
+<!ENTITY senddelay.tooltip "Tämä valinta aktivoituna kaikki “Lähetä” -komennolla (joko painikkeella, tai painamalla Ctrl+Enter) lähetetyt viestit lähtevät määritetyn arvon mukaisella viiveellä aikatauluttamalla ne käyttämällä Lähetä myöhemmin.">
+<!ENTITY senddelay.label "“Lähetä” viivyttää viestejä:">
+<!ENTITY senddelay2.label "minuutti">
 <!ENTITY altbinding.caption "Käytä näppäinyhdistelmää Alt-Shift-Enter näppäinyhdistelmän Ctrl-Shift-Enter sijasta">
+<!ENTITY composewindowhotkeys.tooltip "Kirjoittaessasi viestiä voit painaa Ctrl-Alt-1, -2, tai -3 aktivoidaksesi ensimmäisen, toisen, tai kolmannen painikkeen. Jos määritys on jätetty valitsematta, eivät näppäinyhdistelmät ole käytöstä.">
+<!ENTITY composewindowhotkeys.caption "Salli viestinkirjoituksessa mukautetut näppäinkomennot">
 <!ENTITY markread.caption "Merkitse ajastetut luonnokset luetuiksi">
 <!ENTITY advanced.caption "Laajemmat">
 <!ENTITY dumplevel.caption "Datankeruutaso:">
@@ -47,7 +52,3 @@
 <!ENTITY loglevel.debug "Vianetsintä">
 <!ENTITY loglevel.trace "Jäljitys">
 <!ENTITY loglevel.all "Kaikki">
-<!ENTITY senddelay.tooltip "With this option enabled, all messages sent with the “Send” command (either the button or typing Ctrl-Enter) are delayed by the specified number of minutes by scheduling them with Lähetä myöhemmin.">
-<!ENTITY senddelay.label "“Send” delays messages by:">
-<!ENTITY composewindowhotkeys.tooltip "While composing a message you can type Ctrl-Alt-1, -2, or -3 to activate the first, second, or third preset button, unless you uncheck this preference, in which case these key bindings are disabled.">
-<!ENTITY composewindowhotkeys.caption "Enable compose window key bindings for presets">

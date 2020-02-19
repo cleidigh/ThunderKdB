@@ -1,6 +1,6 @@
 {
     "name": "__MSG_appName__",
-    "version": "7.2.0",
+    "version": "7.4.0",
     "description": "__MSG_appDesc__",
     "author": "Jonathan Kamens",
     "default_locale": "en-US",
@@ -14,7 +14,8 @@
     "applications": {
         "gecko": {
             "id": "sendlater3@kamens.us",
-            "strict_min_version": "68.0a1"
+            "strict_min_version": "68.0a1",
+            "strict_max_version": "71.*"
         }
     },
     "icons": {

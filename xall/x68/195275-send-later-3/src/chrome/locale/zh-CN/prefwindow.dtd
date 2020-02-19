@@ -20,7 +20,12 @@
 <!ENTITY showsendlaterunsentmessages.tooltip "如果取消此选项，那么达到消息的预定发送时间时，Send Later 将不会完全发送消息，只会将它们放到发件箱里。如果您使用一些其他的扩展，如 BlunderDelay， 来定期地发送您发件箱里的消息，请取消此选项。注意，勾选此选项后，只要 Send Later 发送消息，发件箱里的所有消息都将被发送出去。">
 <!ENTITY sendlatersendbutton.caption "“发送”变成“延期发送”">
 <!ENTITY sendlatersendbutton.tooltip "启用此选项时，“发送”命令（按钮或 Ctrl-Enter 快捷键）效果会变为“延期发送”。">
+<!ENTITY senddelay.tooltip "所有讯息自动使用预设延迟发送时间，“传送”命令（按钮或 Ctrl-Enter）均会由 Send Later 延迟发送。">
+<!ENTITY senddelay.label "预设所有讯息自动延迟：">
+<!ENTITY senddelay2.label "分钟">
 <!ENTITY altbinding.caption "绑定快捷键 Alt-Shift-Enter 代替 Ctrl-Shift-Enter">
+<!ENTITY composewindowhotkeys.tooltip "选择使用快速键。完成准备讯息后，可以键入Ctrl-Alt-1，-2或-3快速键来完成编写及使用预设延迟发送时间。">
+<!ENTITY composewindowhotkeys.caption "使用 Ctrl-Alt-1，-2或-3快速键">
 <!ENTITY markread.caption "标记日程草稿为已读">
 <!ENTITY advanced.caption "高级">
 <!ENTITY dumplevel.caption "转储日志级别：">
@@ -47,7 +52,3 @@
 <!ENTITY loglevel.debug "调试">
 <!ENTITY loglevel.trace "追查">
 <!ENTITY loglevel.all "所有">
-<!ENTITY senddelay.tooltip "With this option enabled, all messages sent with the “Send” command (either the button or typing Ctrl-Enter) are delayed by the specified number of minutes by scheduling them with Send Later.">
-<!ENTITY senddelay.label "“Send” delays messages by:">
-<!ENTITY composewindowhotkeys.tooltip "While composing a message you can type Ctrl-Alt-1, -2, or -3 to activate the first, second, or third preset button, unless you uncheck this preference, in which case these key bindings are disabled.">
-<!ENTITY composewindowhotkeys.caption "Enable compose window key bindings for presets">
