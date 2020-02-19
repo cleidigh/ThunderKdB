@@ -1,0 +1,5 @@
+overlay	chrome://messenger/content/messenger.xul	chrome://deletetrashbutton/content/deletetrashbuttonTbOverlay.xul
+content	deletetrashbutton		chrome/content/
+skin	deletetrashbutton		classic/1.0	chrome/skin/
+style	chrome://global/content/customizeToolbar.xul chrome://deletetrashbutton/skin/deletetrashbutton.css appversion<59.0a1
+style	chrome://messenger/content/customizeToolbar.xul chrome://deletetrashbutton/skin/deletetrashbutton.css appversion>=59.0a1

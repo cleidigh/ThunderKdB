@@ -32,6 +32,7 @@
 
 <window id="msgMailRedirectWindow"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
         icon="msgMailRedirectWindow"
         title="&msgMailRedirectWindow.title;"
         onload="BounceLoad();"
@@ -295,8 +296,8 @@
                         <menuitem value="addr_cc" label="&resendCcAddr.label;" />
                         <menuitem value="addr_bcc" label="&resendBccAddr.label;" />
                       </menupopup>
-                     </menulist>
-                   </listcell>
+                    </menulist>
+                  </listcell>
                   <listcell class="addressingWidgetCell">
                     <textbox id="addressCol2#1" class="plain textbox-addressingWidget uri-element"
                              aria-labelledby="addressCol1#1"

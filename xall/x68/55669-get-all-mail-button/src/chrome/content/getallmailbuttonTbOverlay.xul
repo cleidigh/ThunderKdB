@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://getallmailbutton/skin/getallmailbutton.css" type="text/css"?>
+
+<overlay id="getallmailbuttonsOverlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<toolbarpalette id="MailToolbarPalette">
+		<toolbarbutton
+			class="toolbarbutton-1"
+			id="GetAllMailButton"
+			label="Get All Mail Accounts"
+			tooltiptext="Get All Mail Accounts"
+			oncommand="GetMessagesForAllAuthenticatedAccounts(); SendUnsentMessages();" />
+	</toolbarpalette>
+
+</overlay>

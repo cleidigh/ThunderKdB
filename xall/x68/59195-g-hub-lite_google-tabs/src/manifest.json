@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "description": "Google Tabs for Mozilla Thunderbird",
   "name": "G-Hub Lite",
-  "version": "7.0.1",
+  "version": "7.1.0",
   "permissions": [
     "tabs",
     "activeTab",
@@ -17,8 +17,7 @@
   "applications": {
     "gecko": {
       "id": "thundervoice@chris.schiffner",
-      "strict_min_version": "68.0",
-	  "strict_max_version": "72.0a1"
+      "strict_min_version": "63.0"
     }
   },
   "icons": {
@@ -31,7 +30,8 @@
         "16": "chrome/content/img/icon16.png",
         "32": "chrome/content/img/icon32.png",
 		"64": "chrome/content/img/icon64.png"
-      }
+      },
+	  "default_popup": "chrome/content/G-Hub_Lite_Menu.html"
     },
   "options_ui": {
     "page": "chrome/content/options_lite.html",

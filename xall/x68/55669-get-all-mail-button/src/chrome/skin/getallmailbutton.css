@@ -1,0 +1,29 @@
+/* Get All Mail Button extension */
+/* default theme support */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#GetAllMailButton {
+	list-style-image: url(chrome://getallmailbutton/skin/getallmail.png);
+	-moz-image-region: rect(0px 24px 24px 0px) !important;
+}
+#GetAllMailButton:hover {
+	list-style-image: url(chrome://getallmailbutton/skin/getallmail.png);
+	-moz-image-region: rect(24px 24px 48px 0px) !important;
+}
+#GetAllMailButton[disabled] {
+	list-style-image: url(chrome://getallmailbutton/skin/getallmail.png);
+	-moz-image-region: rect(48px 24px 72px 0px) !important;
+}
+toolbar[iconsize="small"] #GetAllMailButton {
+	list-style-image: url(chrome://getallmailbutton/skin/getallmail-small.png);
+	-moz-image-region: rect(0px 16px 16px 0px) !important;
+}
+toolbar[iconsize="small"] #GetAllMailButton:hover {
+	list-style-image: url(chrome://getallmailbutton/skin/getallmail-small.png);
+	-moz-image-region: rect(16px 16px 32px 0px) !important;
+}
+toolbar[iconsize="small"] #GetAllMailButton[disabled] {
+	list-style-image: url(chrome://getallmailbutton/skin/getallmail-small.png);
+	-moz-image-region: rect(32px 16px 48px 0px) !important;
+}

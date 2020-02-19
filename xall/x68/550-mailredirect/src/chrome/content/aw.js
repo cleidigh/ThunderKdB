@@ -597,31 +597,6 @@ function _awSetFocus()
   top.awInputElement.focus();
 }
 
-function awTabFromRecipient(element, event)
-{
-  // If we are the last element in the listbox, we don't want to create a new row.
-  if (element === awGetInputElement(top.MAX_RECIPIENTS)) {
-    top.doNotCreateANewRow = true;
-  }
-
-  var row = awGetRowByInputElement(element);
-  if (!event.shiftKey && row < top.MAX_RECIPIENTS) {
-    var listBoxRow = row - 1; // listbox row indices are 0-based, ours are 1-based.
-    var listBox = document.getElementById("addressingWidget");
-    listBox.listBoxObject.ensureIndexIsVisible(listBoxRow + 1);
-  }
-}
-
-function awTabFromMenulist(element, event)
-{
-  var row = awGetRowByInputElement(element);
-  if (event.shiftKey && row > 1) {
-    var listBoxRow = row - 1; // listbox row indices are 0-based, ours are 1-based.
-    var listBox = document.getElementById("addressingWidget");
-    listBox.listBoxObject.ensureIndexIsVisible(listBoxRow - 1);
-  }
-}
-
 function awGetNumberOfRecipients()
 {
   return top.MAX_RECIPIENTS;
@@ -765,13 +740,17 @@ function awRecipientKeyPress(event, element)
           }
         });
       }
-      // if the user text contains a comma or a line return, ignore
-      if (element.value.includes(",")) {
+      // If the recipient input text contains a comma (we also convert pasted
+      // line feeds into commas), check if multiple recipients and add them
+      // accordingly. Handle semicolons too.
+      if (element.value.includes(",") || element.value.includes(";")) {
         var addresses = element.value;
-        element.value = ""; // clear out the current line so we don't try to autocomplete it..
+        element.value = ""; // Clear out the current line so we don't try to autocomplete it.
         parseAndAddAddresses(addresses, awGetPopupElement(awGetRowByInputElement(element)).value);
       } else if (event.key === "Tab") {
-        awTabFromRecipient(element, event);
+        // Do nothing
+      } else if (event.key === "Enter") {
+        awReturnHit(element);
       }
 
       break;
@@ -820,15 +799,6 @@ function awRecipientKeyDown(event, inputElement)
           awSetFocusTo(awGetInputElement(targetRow));
         }
       }
-      break;
-  }
-}
-
-function awMenulistKeyPress(event, element)
-{
-  switch(event.keyCode) {
-    case KeyEvent.DOM_VK_TAB:
-      awTabFromMenulist(element, event);
       break;
   }
 }
@@ -964,16 +934,6 @@ function awSizerResized(aSplitter)
   for (let sib = aSplitter.previousSibling; sib; sib = sib.previousSibling) {
     sib.removeAttribute("height");
   }
-}
-
-function awDocumentKeyPress(event)
-{
-  try {
-    var id = event.target.id;
-    if (id.startsWith("addressCol1")) {
-      awMenulistKeyPress(event, event.target);
-    }
-  } catch (e) { }
 }
 
 // Given an arbitrary block of text like a comma delimited list of names or a names separated by spaces,

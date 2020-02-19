@@ -68,6 +68,9 @@ var gAppInfoPlatformVersion = null;
 var gMsgCompose;
 var gWindowLocked;
 var gSendLocked;
+
+var gMsgIdentityElement;
+var gMsgAddressingWidgetTreeElement;
 var gMsgHeadersToolbarElement;
 var gAccountManager;
 var gSessionAdded;
@@ -98,6 +101,8 @@ function InitializeGlobalVariables()
 
   gMsgCompose = null;
   gWindowLocked = false;
+  gMsgIdentityElement = null;
+  gMsgAddressingWidgetTreeElement = null;
   gSetupLdapAutocomplete = false;
   mailredirectRecipients = null;
   aSender = null;
@@ -111,6 +116,8 @@ function ReleaseGlobalVariables()
 {
   gMessenger = null;
   gMsgCompose = null;
+  gMsgIdentityElement = null;
+  gMsgAddressingWidgetTreeElement = null;
   mailredirectRecipients = null;
   mstate = null;
   MailServices.mailSession.RemoveMsgWindow(msgWindow);
@@ -727,7 +734,8 @@ function queryIArray(aArray, iid)
 
 function onAddressColCommand(aAddressWidgetId)
 {
-  awSetAutoComplete(aAddressWidgetId.slice(aAddressWidgetId.lastIndexOf("#") + 1));
+  var row = aAddressWidgetId.slice(aAddressWidgetId.lastIndexOf("#") + 1);
+  awSetAutoComplete(row);
   updateSendCommands(true);
 }
 
@@ -802,7 +810,7 @@ function FillIdentityList(menulist)
 function getCurrentAccountKey()
 {
   // get the accounts key
-  var identityList = document.getElementById("msgIdentity");
+  var identityList = GetMsgIdentityElement();
   return identityList.selectedItem.getAttribute("accountkey");
 }
 
@@ -845,7 +853,7 @@ function fromKeyPress(event)
 
 function LoadIdentity(startup)
 {
-  var identityElement = document.getElementById("msgIdentity");
+  var identityElement = GetMsgIdentityElement();
   var prevIdentity = gCurrentIdentity;
 
   if (identityElement) {
@@ -921,6 +929,24 @@ function GetMsgHdrForUri(msg_uri)
   return hdr;
 }
 
+function GetMsgIdentityElement()
+{
+  if (!gMsgIdentityElement) {
+    gMsgIdentityElement = document.getElementById("msgIdentity");
+  }
+
+  return gMsgIdentityElement;
+}
+
+function GetMsgAddressingWidgetTreeElement()
+{
+  if (!gMsgAddressingWidgetTreeElement) {
+    gMsgAddressingWidgetTreeElement = document.getElementById("addressingWidget");
+  }
+
+  return gMsgAddressingWidgetTreeElement;
+}
+
 function GetMsgHeadersToolbarElement()
 {
   if (!gMsgHeadersToolbarElement)
@@ -975,10 +1001,20 @@ function BounceStartup(aParams)
     document.documentElement.setAttribute("screenY", screen.availTop);
   }
 
-  var identityList = document.getElementById("msgIdentity");
+  // Workaround for missing inbuilt functionality of <menulist> to restore
+  // visibility when focused and receiving key presses while scrolled out of view.
+  // Note: Unrelated key presses (e.g. access keys for other UI elements)
+  // typically do not fire keyup on the menulist as focus will have shifted.
+  // Some false positives like function or OS keys might occur; we accept that.
+  // Alt+CursorDown will still show the dropdown in the wrong place.
+  let addressingWidget = GetMsgAddressingWidgetTreeElement();
+  addressingWidget.addEventListener("keyup", function(event) {
+    if (event.target.classList.contains("aw-menulist")) {
+      addressingWidget.ensureElementIsVisible(event.target);
+    }
+  });
 
-  document.addEventListener("keypress", awDocumentKeyPress, true);
-
+  var identityList = GetMsgIdentityElement();
   if (identityList) {
     FillIdentityList(identityList);
   }
@@ -1308,10 +1344,10 @@ function WizCallback(state)
   }
 }
 
-function MsgComposeCloseWindow(recycleIt)
+function MsgComposeCloseWindow()
 {
   if (gMsgCompose) {
-    gMsgCompose.CloseWindow(recycleIt);
+    gMsgCompose.CloseWindow();
   } else {
     window.close();
   }
@@ -1334,6 +1370,10 @@ function BounceLoad()
   var mail3paneWindow = windowMediator.getMostRecentWindow("mail:3pane");
   var currMsgWindow = windowMediator.getMostRecentWindow("mail:messageWindow");
 
+  var appInfo = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo);
+  gAppInfoID = appInfo.ID;
+  gAppInfoPlatformVersion = parseInt(appInfo.platformVersion.replace(/\..*/,''));
+
   setupAutocomplete();
 
   // Check to see if CardBook is installed in order to modify autocomplete
@@ -1341,11 +1381,11 @@ function BounceLoad()
     if (aAddon !== null && aAddon.isActive) {
       var cardbookAutocompletion = getPref("extensions.cardbook.autocompletion");
       if (cardbookAutocompletion) {
+        var cardbookExclusive = getPref("extensions.cardbook.exclusive");
         var listitem = 1;
         var textbox = document.getElementById("addressCol2#" + listitem);
         while (textbox !== null) {
           // listitems can already be cloned, so we need to adjust them all
-          var cardbookExclusive = getPref("extensions.cardbook.exclusive");
           if (cardbookExclusive) {
             textbox.setAttribute("autocompletesearch", "addrbook-cardbook");
           } else {
@@ -1358,23 +1398,15 @@ function BounceLoad()
       }
     }
   }
-  AddonManager.getAddonByID("cardbook@vigneau.philippe", cardbookCallback);
 
-  // copy toolbar appearance settings from mail3pane
-  if (mail3paneWindow) {
-    var aBounceToolbar = document.getElementById("bounceToolbar");
-    if (aBounceToolbar) {
-      var mailBar = mail3paneWindow.document.getElementById("mail-bar");
-      if (mailBar) {
-        aBounceToolbar.setAttribute("iconsize", mailBar.getAttribute("iconsize"));
-        aBounceToolbar.setAttribute("mode", mailBar.getAttribute("mode"));
-      }
-    }
+  if (gAppInfoPlatformVersion < 61) {
+    AddonManager.getAddonByID("cardbook@vigneau.philippe", cardbookCallback);
+  } else {
+    // Although this is executed in TB >= 61, I need to write arrow function backwards compatible with ECMAScript 5, in order not to crash in TB <24
+    // AddonManager.getAddonByID("cardbook@vigneau.philippe").then(addon => { cardbookCallback(addon); });
+    AddonManager.getAddonByID("cardbook@vigneau.philippe").then(function(addon) { return cardbookCallback(addon); });
   }
 
-  var appInfo = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo);
-  gAppInfoID = appInfo.ID;
-  gAppInfoPlatformVersion = parseInt(appInfo.platformVersion.replace(/\..*/,''));
   if (gAppInfoPlatformVersion < 65) {
     // Hide html progress and show old progressmeter
     var elem = document.getElementById("status-bar");
@@ -1392,6 +1424,18 @@ function BounceLoad()
     textbox.removeAttribute("onblur");
   }
 
+  // copy toolbar appearance settings from mail3pane
+  if (mail3paneWindow) {
+    var aBounceToolbar = document.getElementById("bounceToolbar");
+    if (aBounceToolbar) {
+      var mailBar = mail3paneWindow.document.getElementById("mail-bar");
+      if (mailBar) {
+        aBounceToolbar.setAttribute("iconsize", mailBar.getAttribute("iconsize"));
+        aBounceToolbar.setAttribute("mode", mailBar.getAttribute("mode"));
+      }
+    }
+  }
+
   awInitializeNumberOfRowsShown();
 
   // get defaults for Resent-To, Resent-Cc and Resent-Bcc from preferences
@@ -1402,8 +1446,7 @@ function BounceLoad()
     defaultResentToString  = Services.prefs.getCharPref("extensions.mailredirect.defaultResentTo").replace(/^\s+|\s+$/g, "");
     defaultResentCcString  = Services.prefs.getCharPref("extensions.mailredirect.defaultResentCc").replace(/^\s+|\s+$/g, "");
     defaultResentBccString = Services.prefs.getCharPref("extensions.mailredirect.defaultResentBcc").replace(/^\s+|\s+$/g, "");
-  }
-  catch (ex) {
+  } catch (ex) {
     // do nothing...
   }
 
@@ -1455,8 +1498,7 @@ function BounceLoad()
     if (getPref("mail.autoComplete.commentColumn")) {
       document.getElementById("addressCol2#1").showCommentColumn = true;
     }
-  }
-  catch (ex) {
+  } catch (ex) {
     // do nothing...
   }
 
@@ -1467,8 +1509,7 @@ function BounceLoad()
     if (state) {
       BounceStartup(null);
     }
-  }
-  catch (ex) {
+  } catch (ex) {
     Components.utils.reportError(ex);
     let bounceMsgsBundle = Services.strings.createBundle("chrome://mailredirect/locale/mailredirect-compose.properties");
     let errorTitle = bounceMsgsBundle.GetStringFromName("initErrorDlogTitle");
@@ -1524,7 +1565,7 @@ function ExitFullscreenMode()
 {
   // On OS X we need to deliberately exit full screen mode before closing.
   if (typeof AppConstants !== "undefined") {
-    if (AppConstants.platformIsMac) {
+    if (AppConstants.platform === "mac") {
       window.fullscreen = false;
     }
   } else {
@@ -2969,8 +3010,8 @@ function RemoveDupAddresses()
 
 function WhichElementHasFocus()
 {
-  var msgIdentityElement             = document.getElementById("msgIdentity");
-  var msgAddressingWidgetTreeElement = document.getElementById("addressingWidget");
+  var msgIdentityElement = GetMsgIdentityElement();
+  var msgAddressingWidgetTreeElement = GetMsgAddressingWidgetTreeElement();
 
   var currentNode = top.document.commandDispatcher.focusedElement;
   while (currentNode) {
@@ -3001,8 +3042,8 @@ function SwitchElementFocus(event)
   }
 
   var focusedElement = WhichElementHasFocus();
-  var msgIdentityElement = document.getElementById("msgIdentity");
-  var addressingWidget = document.getElementById("addressingWidget");
+  var msgIdentityElement = GetMsgIdentityElement();
+  var addressingWidget = GetMsgAddressingWidgetTreeElement();
   var threadTree = document.getElementById("threadTree");
 
   if (event.shiftKey) {
@@ -3321,8 +3362,7 @@ function ResolveMailLists()
               existingCard.setProperty("PopularityIndex", ++popularityIndex);
               try {
                 abDirectory.modifyCard(existingCard);
-              }
-              catch(ex) {
+              } catch(ex) {
                 Components.utils.reportError(ex);
               }
             }

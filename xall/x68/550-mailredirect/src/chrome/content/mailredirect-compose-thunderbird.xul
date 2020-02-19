@@ -59,6 +59,8 @@
   <script type="application/javascript" src="chrome://mailredirect/content/mailredirect-debug.js" />
   <script type="application/javascript" src="chrome://mailredirect/content/mailredirect-compose.js" />
   <script type="application/javascript" src="chrome://mailredirect/content/aw.js" />
+  <script type="application/javascript" src="chrome://mailredirect/content/mailredirect-customization.js" />
+  <script type="application/javascript" src="chrome://mailredirect/content/customizable-toolbar.js"/>
 
   <!-- drag and drop -->
   <script type="application/javascript" src="chrome://global/content/nsDragAndDrop.js" />
@@ -133,6 +135,7 @@
 
     <!-- Menu -->
     <toolbar id="mailredirect-toolbar-menubar"
+             is="customizable-toolbar"
              type="menubar"
              class="chromeclass-menubar"
              persist="collapsed"
@@ -234,6 +237,7 @@
     </toolbarpalette>
 
     <toolbar id="bounceToolbar"
+             is="customizable-toolbar"
              class="chromeclass-toolbar"
              toolbarname="&showBounceToolbarCmd.label;"
              accesskey="&showBounceToolbarCmd.accesskey;"
@@ -265,6 +269,7 @@
     <vbox id="headers-parent" flex="1">
       <toolbox id="headers-box" class="toolbox-top" mode="icons">
         <toolbar id="MsgHeadersToolbar" persist="collapsed" flex="1"
+                 is="customizable-toolbar"
                  customizable="true" nowindowdrag="true"
                  ondragover="nsDragAndDrop.dragOver(event, mailredirectDragObserver);"
                  ondrop="nsDragAndDrop.drop(event, mailredirectDragObserver);"
