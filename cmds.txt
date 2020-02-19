@@ -6,7 +6,7 @@ cd scripts
 node requesttb1.js > o.txt
 node genExtensionList.js > o2.txt
 node requesttb1.js
-node extractSource.js
+node extractSource.js > o3.txt
 
 git commit -m "68 src 1"
 git status

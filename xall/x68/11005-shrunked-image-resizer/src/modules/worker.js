@@ -1,4 +1,3 @@
-/* globals self */
 self.onmessage = function(event) {
 	let {oldData, newData, ratio, func} = event.data;
 

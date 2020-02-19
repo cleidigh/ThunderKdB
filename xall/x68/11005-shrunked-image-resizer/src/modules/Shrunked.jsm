@@ -1,3 +1,4 @@
+/* globals FileReader */
 var EXPORTED_SYMBOLS = ['Shrunked'];
 
 var ID = 'shrunked@darktrojan.net';
@@ -7,18 +8,22 @@ var DONATE_URL = 'https://darktrojan.github.io/donate.html?shrunked';
 const { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 const { XPCOMUtils } = ChromeUtils.import('resource://gre/modules/XPCOMUtils.jsm');
 
-/* globals AddonManager, FileUtils, PluralForm, ShrunkedImage */
+/* globals AddonManager, FileUtils, OS, PluralForm, ShrunkedImage */
 ChromeUtils.defineModuleGetter(this, 'AddonManager', 'resource://gre/modules/AddonManager.jsm');
 ChromeUtils.defineModuleGetter(this, 'FileUtils', 'resource://gre/modules/FileUtils.jsm');
+ChromeUtils.defineModuleGetter(this, 'OS', 'resource://gre/modules/osfile.jsm');
 ChromeUtils.defineModuleGetter(this, 'PluralForm', 'resource://gre/modules/PluralForm.jsm');
 ChromeUtils.defineModuleGetter(this, 'ShrunkedImage', 'resource://shrunked/ShrunkedImage.jsm');
 
 /* globals idleService */
 XPCOMUtils.defineLazyServiceGetter(this, 'idleService', '@mozilla.org/widget/idleservice;1', 'nsIIdleService');
 
-if (!('FileReader' in this)) {
-	this.FileReader = Services.appShell.hiddenDOMWindow.FileReader;
-}
+var temporaryFiles = new Set();
+Services.obs.addObserver(function() {
+	for (let path of temporaryFiles) {
+		OS.File.remove(path, { ignoreAbsent: true });
+	}
+}, "quit-application");
 
 var Shrunked = {
 	get fileSizeMinimum() {
@@ -45,15 +50,41 @@ var Shrunked = {
 		}
 		return image.resize();
 	},
-	getDataURLFromFile(file) {
+	async getURLFromFile(file, forceDataURL=false) {
+		// If the total URL length is going to be less than 1MB, return a data URL.
+		if (file.size < 768000 || forceDataURL) {
+			return new Promise(function(resolve) {
+				let reader = new FileReader();
+				reader.onloadend = function() {
+					let dataURL = reader.result;
+					dataURL = 'data:image/jpeg;filename=' + encodeURIComponent(file.name) + dataURL.substring(15);
+					resolve(dataURL);
+				};
+				reader.readAsDataURL(file);
+			});
+		}
+
+		let tempDir = OS.Constants.Path.tmpDir;
+		let destFile = OS.Path.join(tempDir, file.name);
+
+		let {
+			path: outputPath,
+			file: outputFileWriter
+		} = await OS.File.openUnique(destFile);
+
 		return new Promise(function(resolve) {
 			let reader = new FileReader();
-			reader.onloadend = function() {
-				let dataURL = reader.result;
-				dataURL = 'data:image/jpeg;filename=' + encodeURIComponent(file.name) + dataURL.substring(15);
-				resolve(dataURL);
+			reader.onloadend = async function() {
+				await outputFileWriter.write(new Uint8Array(reader.result));
+				outputFileWriter.close();
+
+				temporaryFiles.add(outputPath);
+
+				let outputFile = new FileUtils.File(outputPath);
+				let outputURL = Services.io.newFileURI(outputFile);
+				resolve(outputURL.spec);
 			};
-			reader.readAsDataURL(file);
+			reader.readAsArrayBuffer(file);
 		});
 	},
 	versionUpgrade() {

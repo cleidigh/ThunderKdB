@@ -176,8 +176,9 @@ var ShrunkedCompose = {
 
 					this.showNotification({
 						images: this.inlineImages,
-						onResize(image, dataURL) {
-							image.src = dataURL;
+						forceDataURL: true,
+						onResize(image, destURL) {
+							image.src = destURL;
 							image.removeAttribute('width');
 							image.removeAttribute('height');
 							image.setAttribute('shrunked:resized', 'true');
@@ -219,10 +220,10 @@ var ShrunkedCompose = {
 		if (images.length) {
 			ShrunkedCompose.showNotification({
 				images,
-				onResize(imageData, dataURL, size) {
+				onResize(imageData, destURL, size) {
 					let attachment = imageData.attachment;
 					attachment.contentLocation = attachment.url;
-					attachment.url = dataURL;
+					attachment.url = destURL;
 					window.gAttachmentsSize += size - attachment.size;
 					attachment.size = size;
 
@@ -250,8 +251,8 @@ var ShrunkedCompose = {
 	onContentContextMenuCommand() {
 		this.showOptionsDialog({
 			images: [document.popupNode],
-			onResize(image, dataURL) {
-				image.src = dataURL;
+			onResize(image, destURL) {
+				image.src = destURL;
 				image.removeAttribute('width');
 				image.removeAttribute('height');
 				image.setAttribute('shrunked:resized', 'true');
@@ -276,10 +277,10 @@ var ShrunkedCompose = {
 		}
 		this.showOptionsDialog({
 			images,
-			onResize(imageData, dataURL, size) {
+			onResize(imageData, destURL, size) {
 				let attachment = imageData.attachment;
 				attachment.contentLocation = attachment.url;
-				attachment.url = dataURL;
+				attachment.url = destURL;
 				window.gAttachmentsSize += size - attachment.size;
 				attachment.size = size;
 
@@ -365,8 +366,8 @@ var ShrunkedCompose = {
 			for (let image of callbackObject.images) {
 				try {
 					let destFile = await Shrunked.resize(image.src, maxWidth, maxHeight, quality, image.maybesrc);
-					let dataURL = await Shrunked.getDataURLFromFile(destFile);
-					callbackObject.onResize(image, dataURL, destFile.size);
+					let destURL = await Shrunked.getURLFromFile(destFile, callbackObject.forceDataURL);
+					callbackObject.onResize(image, destURL, destFile.size);
 					Shrunked.log('Successfully resized ' + destFile.name);
 					this.setStatusCount(++count);
 				} catch (ex) {
@@ -403,10 +404,10 @@ var ShrunkedCompose = {
 					ShrunkedCompose.showOptionsDialog({
 						isAttachment: true,
 						images,
-						onResize(imageData, dataURL, size) {
+						onResize(imageData, destURL, size) {
 							let attachment = imageData.attachment;
 							attachment.contentLocation = attachment.url;
-							attachment.url = dataURL;
+							attachment.url = destURL;
 							window.gAttachmentsSize += size - attachment.size;
 							attachment.size = size;
 

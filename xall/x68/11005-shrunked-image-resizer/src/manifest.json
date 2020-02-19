@@ -2,11 +2,12 @@
 	"manifest_version": 2,
 	"name": "__MSG_extensionName__",
 	"description": "__MSG_extensionDescription__",
-	"version": "4.5.3",
+	"version": "4.5.5",
 	"applications": {
 		"gecko": {
 			"id": "shrunked@darktrojan.net",
-			"strict_min_version": "68.0a1"
+			"strict_min_version": "68.0a1",
+			"strict_max_version": "73.*"
 		}
 	},
 	"author": "Geoff Lankow",

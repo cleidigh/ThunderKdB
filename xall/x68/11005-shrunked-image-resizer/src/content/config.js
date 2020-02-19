@@ -18,7 +18,7 @@ var p_maxheight = Preferences.get("extensions.shrunked.default.maxHeight");
 var p_quality = Preferences.get("extensions.shrunked.default.quality");
 
 /* globals tb_minsize, rg_size, r_noresize,
-   r_small, r_medium, r_large, r_custom, l_width, tb_width, l_height, tb_height, s_quality,
+   r_small, r_medium, r_large, r_custom, l_width, tb_width, l_height, tb_height, l_measure, s_quality,
    cb_exif, cb_orient, cb_gps */
 for (let element of document.querySelectorAll('[id]')) {
 	window[element.id] = element;
@@ -26,6 +26,17 @@ for (let element of document.querySelectorAll('[id]')) {
 
 /* exported load */
 function load() {
+	let width = l_measure.getBoundingClientRect().right;
+	let element = l_measure;
+	do {
+		let style = getComputedStyle(element);
+		width += parseInt(style.paddingRight, 10);
+		width += parseInt(style.borderRightWidth, 10);
+		width += parseInt(style.marginRight, 10);
+		element = element.parentNode;
+	} while (element && element != document);
+	document.documentElement.style.minWidth = `${width}px`;
+
 	tb_minsize.value = p_minsize.value;
 	let maxWidth = p_maxwidth.value;
 	let maxHeight = p_maxheight.value;

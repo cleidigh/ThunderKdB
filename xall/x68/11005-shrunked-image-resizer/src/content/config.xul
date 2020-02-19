@@ -13,13 +13,13 @@
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 
-	<prefpane>
-		<tabbox>
+	<prefpane flex="1">
+		<tabbox flex="1">
 			<tabs>
 				<tab id="t_defaults" label="&shrunked-defaults.label;" />
 				<tab id="t_advanced" label="&shrunked-advanced.label;" />
 			</tabs>
-			<tabpanels>
+			<tabpanels flex="1">
 				<tabpanel id="tp_defaults" orient="vertical">
 					<hbox align="center">
 						<label value="&shrunked-minsize.label;" />
@@ -84,7 +84,7 @@
 								max="2500"
 								disabled="true"
 								onchange="setSize();" />
-							<label value="&shrunked-custom.pixels;" />
+							<label id="l_measure" value="&shrunked-custom.pixels;" />
 						</hbox>
 					</radiogroup>
 					<label value="&shrunked-defaults.quality.label;" />

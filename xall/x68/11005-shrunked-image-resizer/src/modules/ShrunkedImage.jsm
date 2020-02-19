@@ -1,4 +1,4 @@
-/* globals fetch */
+/* globals ChromeWorker, fetch, File */
 var EXPORTED_SYMBOLS = ['ShrunkedImage'];
 
 /* globals ExifData, OS, Services, Shrunked */
@@ -164,7 +164,7 @@ ShrunkedImage.prototype = {
 				} catch (ex) {
 					reject(ex);
 				}
-			}, 'image/jpeg', 'quality=' + this.quality);
+			}, 'image/jpeg', this.quality/100);
 		});
 	},
 	estimateSize() {

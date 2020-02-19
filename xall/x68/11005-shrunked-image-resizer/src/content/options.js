@@ -9,7 +9,7 @@ var imageData = [];
 var imageIndex = 0;
 var maxWidth, maxHeight;
 
-/* globals rg_size, r_noresize, r_custom, l_width, tb_width, l_height, tb_height,
+/* globals rg_size, r_noresize, r_custom, l_width, tb_width, l_height, tb_height, l_measure
    b_previewarrows, l_previewarrows, i_previewthumb, l_previewfilename, l_previeworiginalsize,
    l_previeworiginalfilesize, l_previewresized, l_previewresizedfilesize, cb_savedefault */
 for (let element of document.querySelectorAll('[id]')) {
@@ -18,6 +18,17 @@ for (let element of document.querySelectorAll('[id]')) {
 
 /* exported load */
 function load() {
+	let width = l_measure.getBoundingClientRect().right;
+	let element = l_measure;
+	do {
+		let style = getComputedStyle(element);
+		width += parseInt(style.paddingRight, 10);
+		width += parseInt(style.borderRightWidth, 10);
+		width += parseInt(style.marginRight, 10);
+		element = element.parentNode;
+	} while (element && element != document);
+	document.documentElement.style.minWidth = `${width}px`;
+
 	maxWidth = Shrunked.prefs.getIntPref('default.maxWidth');
 	maxHeight = Shrunked.prefs.getIntPref('default.maxHeight');
 
