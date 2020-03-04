@@ -1,12 +1,16 @@
-const { XPCOMUtils } = ChromeUtils.import(
+var { XPCOMUtils } = ChromeUtils.import(
   "resource://gre/modules/XPCOMUtils.jsm"
 );
 
 XPCOMUtils.defineLazyModuleGetters(this, {
-  // Get various parts of the WebExtension framework that we need.
+  ConversationUtils: "chrome://conversations/content/modules/conversation.js",
   Customizations: "chrome://conversations/content/modules/assistant.js",
   dumpCallStack: "chrome://conversations/content/modules/log.js",
   ExtensionCommon: "resource://gre/modules/ExtensionCommon.jsm",
+  MsgHdrToMimeMessage: "resource:///modules/gloda/mimemsg.js",
+  msgUriToMsgHdr:
+    "chrome://conversations/content/modules/stdlib/msgHdrUtils.js",
+  NetUtil: "resource://gre/modules/NetUtil.jsm",
   Prefs: "chrome://conversations/content/modules/prefs.js",
   Services: "resource://gre/modules/Services.jsm",
   setupLogging: "chrome://conversations/content/modules/log.js",
@@ -20,6 +24,37 @@ const SIMPLE_STORAGE_TABLE_NAME = "conversations";
 // Note: we must not use any modules until after initialization of prefs,
 // otherwise the prefs might not get loaded correctly.
 let Log = null;
+
+function StreamListener(resolve, reject) {
+  return {
+    _data: "",
+    _stream: null,
+
+    QueryInterface: ChromeUtils.generateQI([
+      Ci.nsIStreamListener,
+      Ci.nsIRequestObserver,
+    ]),
+
+    onStartRequest(aRequest) {},
+    onStopRequest(aRequest, aStatusCode) {
+      try {
+        resolve(this._data);
+      } catch (e) {
+        reject("Error inside stream listener:\n" + e + "\n");
+      }
+    },
+
+    onDataAvailable(aRequest, aInputStream, aOffset, aCount) {
+      if (this._stream == null) {
+        this._stream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(
+          Ci.nsIBinaryInputStream
+        );
+        this._stream.setInputStream(aInputStream);
+      }
+      this._data += this._stream.readBytes(aCount);
+    },
+  };
+}
 
 function prefType(name) {
   switch (name) {
@@ -129,6 +164,73 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
             };
           });
         },
+        async getMessageIdForUri(uri) {
+          const msgHdr = msgUriToMsgHdr(uri);
+          if (!msgHdr) {
+            return null;
+          }
+          return context.extension.messageManager.convert(msgHdr).id;
+        },
+        async getAttachmentBody(id, partName) {
+          const msgHdr = context.extension.messageManager.get(id);
+          return new Promise((resolve, reject) => {
+            MsgHdrToMimeMessage(
+              msgHdr,
+              this,
+              (mimeHdr, aMimeMsg) => {
+                const attachments = aMimeMsg.allAttachments.filter(
+                  x => x.partName == partName
+                );
+                const msgUri = Services.io.newURI(attachments[0].url);
+                const tmpChannel = NetUtil.newChannel({
+                  uri: msgUri,
+                  loadUsingSystemPrincipal: true,
+                });
+                tmpChannel.asyncOpen(
+                  new StreamListener(resolve, reject),
+                  msgUri
+                );
+              },
+              true,
+              {
+                partsOnDemand: false,
+                examineEncryptedParts: true,
+              }
+            );
+          });
+        },
+        async formatFileSize(size) {
+          const messenger = Cc["@mozilla.org/messenger;1"].createInstance(
+            Ci.nsIMessenger
+          );
+          return messenger.formatFileSize(size);
+        },
+        async createTab(createTabProperties) {
+          const params = {};
+          if (createTabProperties.type == "contentTab") {
+            params.contentPage = createTabProperties.url;
+          } else {
+            params.chromePage = createTabProperties.url;
+          }
+          Services.wm
+            .getMostRecentWindow("mail:3pane")
+            .document.getElementById("tabmail")
+            .openTab(createTabProperties.type, params);
+        },
+        onCallAPI: new ExtensionCommon.EventManager({
+          context,
+          name: "conversations.onCallAPI",
+          register(fire) {
+            function callback(apiName, apiItem, ...args) {
+              return fire.async(apiName, apiItem, args);
+            }
+
+            ConversationUtils.setBrowserListener(callback);
+            return function() {
+              ConversationUtils.setBrowserListener(null);
+            };
+          },
+        }).api(),
       },
     };
   }

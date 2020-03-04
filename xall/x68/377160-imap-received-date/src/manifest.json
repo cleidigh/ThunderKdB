@@ -1,6 +1,6 @@
 {
     "name": "IMAP Received Date",
-    "version": "2.0.2",
+    "version": "2.0.5",
     "description": "Make the “Received” column in IMAP folders show when messages were actually received.",
     "author": "Jonathan Kamens",
     "homepage_url": "https://addons.mozilla.org/thunderbird/addon/imap-received-date/",
@@ -10,7 +10,8 @@
     "applications": {
         "gecko": {
             "id": "IMAPReceivedDate@kamens.us",
-            "strict_min_version": "68.0a1"
+            "strict_min_version": "68.0a1",
+            "strict_max_version": "71.*"
         }
     },
     "manifest_version": 2

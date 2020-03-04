@@ -10,7 +10,7 @@
   "name": "__MSG_extensionName__",
   "default_locale": "en",
   "description": "__MSG_extensionDescription__",
-  "version": "3.0.12",
+  "version": "3.0.16",
   "homepage_url": "http://github.com/protz/thunderbird-conversations/wiki",
   "legacy": {
     "type": "bootstrap"
@@ -22,7 +22,7 @@
     "open_in_tab": true,
     "page": "options.html"
   },
-  "permissions": ["storage"],
+  "permissions": ["addressBooks", "messagesRead", "messagesMove", "storage"],
   "experiment_apis": {
     "conversations": {
       "schema": "experiment-api/schema.json",
@@ -36,6 +36,20 @@
           ]
         ],
         "script": "experiment-api/api.js"
+      }
+    },
+    "convContacts": {
+      "schema": "experiment-api/contactsSchema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "convContacts"
+          ]
+        ],
+        "script": "experiment-api/contactsApi.js"
       }
     }
   },

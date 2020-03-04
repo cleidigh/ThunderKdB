@@ -401,8 +401,8 @@ function awDeleteHit(inputElement, deleteForward = false)
   // Set the focus to the input field of the next/previous row according to
   // the direction of deleting if possible.
   // Note: awSetFocusTo() is asynchronous, i.e. we'll focus after row removal.
-  if (!deleteForward && row > 1 ||
-      deleteForward && row == top.MAX_RECIPIENTS) {
+  if ((!deleteForward && row > 1) ||
+      (deleteForward && row === top.MAX_RECIPIENTS)) {
     // We're deleting backwards, but not the first row,
     // or forwards on the last row: Focus previous row.
     awSetFocusTo(awGetInputElement(row - 1));
@@ -763,7 +763,7 @@ function awRecipientKeyDown(event, inputElement)
     // Enable deletion of empty recipient rows.
     case "Delete":
     case "Backspace":
-      if (inputElement.textLength == 1 && event.repeat) {
+      if (inputElement.textLength === 1 && event.repeat) {
         // User is holding down Delete or Backspace to delete recipient text
         // inline and is now deleting the last character: Set flag to
         // temporarily block row deletion.
@@ -780,7 +780,7 @@ function awRecipientKeyDown(event, inputElement)
           top.awRecipientInlineDelete = false;
         }
         if (!top.awRecipientInlineDelete) {
-          let deleteForward = (event.key == "Delete");
+          let deleteForward = (event.key === "Delete");
           awDeleteHit(inputElement, deleteForward);
         }
       }
@@ -792,7 +792,7 @@ function awRecipientKeyDown(event, inputElement)
       // Only browse recipients if the autocomplete popup is not open.
       if (!inputElement.popupOpen) {
         let row = awGetRowByInputElement(inputElement);
-        let down = (event.key == "ArrowDown");
+        let down = (event.key === "ArrowDown");
         let noEdgeRow = down ? row < top.MAX_RECIPIENTS : row > 1;
         if (noEdgeRow) {
           let targetRow = down ? row + 1 : row - 1;

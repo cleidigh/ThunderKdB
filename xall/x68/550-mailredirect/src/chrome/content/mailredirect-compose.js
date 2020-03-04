@@ -1904,15 +1904,26 @@ function FileSpecFromLocalFile(localfile)
   return filespec;
 }
 
+function encodeMimePartIIStr_UTF8(aHeader, aFieldNameLen)
+{
+  if ((gAppInfoID === THUNDERBIRD_ID && gAppInfoPlatformVersion >= 63) ||
+      (gAppInfoID === SEAMONKEY_ID && gAppInfoPlatformVersion >= 60)) {
+    // This function call changed with bug 1412574 for Thunderbird 63, but SeaMonkey 2.53.1 also uses the new form
+    return MailServices.mimeConverter.encodeMimePartIIStr_UTF8(aHeader, true, aFieldNameLen,
+                                                               Ci.nsIMimeConverter.MIME_ENCODED_WORD_SIZE);
+  } else {
+    return MailServices.mimeConverter.encodeMimePartIIStr_UTF8(aHeader, true, "UTF-8", aFieldNameLen,
+                                                               Ci.nsIMimeConverter.MIME_ENCODED_WORD_SIZE);
+  }
+}
+
 function encodeMimeHeader(header)
 {
   let fieldNameLen = (header.indexOf(": ") + 2);
   if (header.length <= MAX_HEADER_LENGTH) {
     header = header.replace(/\r\n$/, ""); // Don't encode closing end of line
     return header.substr(0, fieldNameLen) + // and don't encode field name
-           MailServices.mimeConverter.
-                        encodeMimePartIIStr_UTF8(header.substr(fieldNameLen), true, "UTF-8", fieldNameLen,
-                                                 Ci.nsIMimeConverter.MIME_ENCODED_WORD_SIZE) + "\r\n";
+           encodeMimePartIIStr_UTF8(header.substr(fieldNameLen), fieldNameLen) + "\r\n";
   } else {
     header = header.replace(/\r\n$/, "");
     let fieldName = header.substr(0, fieldNameLen);
@@ -1935,14 +1946,10 @@ function encodeMimeHeader(header)
         }
       }
       splitHeader += currentLine.substr(0, fieldNameLen) + // Don't encode field name
-                     MailServices.mimeConverter.
-                                  encodeMimePartIIStr_UTF8(currentLine.substr(fieldNameLen), true, "UTF-8", fieldNameLen,
-                                                           Ci.nsIMimeConverter.MIME_ENCODED_WORD_SIZE) + "\r\n";
+                     encodeMimePartIIStr_UTF8(currentLine.substr(fieldNameLen), fieldNameLen) + "\r\n";
     }
     splitHeader += header.substr(0, fieldNameLen) + // Don't encode field name
-                   MailServices.mimeConverter.
-                                encodeMimePartIIStr_UTF8(header.substr(fieldNameLen), true, "UTF-8", fieldNameLen,
-                                                         Ci.nsIMimeConverter.MIME_ENCODED_WORD_SIZE) + "\r\n";
+                   encodeMimePartIIStr_UTF8(header.substr(fieldNameLen), fieldNameLen) + "\r\n";
     return(splitHeader);
   }
 }

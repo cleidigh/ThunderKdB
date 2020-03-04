@@ -225,7 +225,7 @@ class MessageHeader extends React.PureComponent {
     event.preventDefault();
     this.props.dispatch({
       type: "MSG_STAR",
-      msgUri: this.props.msgUri,
+      id: this.props.id,
       star: !this.props.starred
     });
   }
@@ -282,23 +282,35 @@ class MessageHeader extends React.PureComponent {
     })), !this.props.expanded && React.createElement("span", {
       className: "snippet"
     }, React.createElement(MessageTags, {
-      dispatch: this.props.dispatch,
+      onTagsChange: tags => {
+        this.props.dispatch({
+          type: "MSG_SET_TAGS",
+          id: this.props.id,
+          tags
+        });
+      },
       expanded: false,
-      msgUri: this.props.msgUri,
       tags: this.props.tags
     }), React.createElement(SpecialMessageTags, {
-      canClickFolder: false,
-      dispatch: this.props.dispatch,
+      onTagClick: (event, tag) => {
+        this.props.dispatch({
+          type: "TAG_CLICK",
+          event,
+          msgUri: this.props.msgUri,
+          details: tag.details
+        });
+      },
       folderName: this.props.shortFolderName,
       inView: this.props.inView,
-      msgUri: this.props.msgUri,
-      strings: this.strings
+      strings: this.strings,
+      specialTags: this.props.specialTags
     }), this.props.snippet)), React.createElement(MessageHeaderOptions, {
       dispatch: this.props.dispatch,
       date: this.props.date,
       detailsShowing: this.props.detailsShowing,
       expanded: this.props.expanded,
       fullDate: this.props.fullDate,
+      id: this.props.id,
       msgUri: this.props.msgUri,
       attachments: this.props.attachments,
       multipleRecipients: this.props.multipleRecipients,
@@ -318,6 +330,7 @@ MessageHeader.propTypes = {
   expanded: PropTypes.bool.isRequired,
   from: PropTypes.object.isRequired,
   fullDate: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   msgUri: PropTypes.string.isRequired,
   attachments: PropTypes.array.isRequired,
   multipleRecipients: PropTypes.bool.isRequired,
@@ -328,5 +341,6 @@ MessageHeader.propTypes = {
   snippet: PropTypes.string.isRequired,
   starred: PropTypes.bool.isRequired,
   tags: PropTypes.array.isRequired,
-  to: PropTypes.array.isRequired
+  to: PropTypes.array.isRequired,
+  specialTags: PropTypes.array.isRequired
 };

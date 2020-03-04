@@ -1,6 +1,6 @@
 {
     "name": "Undigestify",
-    "version": "2.0.1",
+    "version": "2.0.4",
     "description": "Undigestify RFC 1153, ListStar, and Yahoo digest messages",
     "author": "Jonathan Kamens",
     "homepage_url": "https://addons.thunderbird.net/thunderbird/addon/undigestify/",
@@ -8,7 +8,8 @@
     "applications": {
         "gecko": {
             "id": "undigestify@kamens.us",
-            "strict_min_version": "68.0a1"
+            "strict_min_version": "68.0a1",
+            "strict_max_version": "71.*"
         }
     },
     "manifest_version": 2

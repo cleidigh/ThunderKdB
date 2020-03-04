@@ -160,11 +160,13 @@ window.MailredirectExtension = {
     }
 
     var multiForward = document.getElementById("mailContext-multiForwardAsAttachment");
-    var multiRedirect = document.getElementById("mailContext-multiMailredirect");
-    multiRedirect.hidden = multiForward.hidden;
-    if (multiRedirect.hidden !== true && item !== null) {
-      // Only show one Redirect menuitem
-      item.hidden = true;
+    if (multiForward !== null) { // SeaMonkey doesn't have multiForward
+      var multiRedirect = document.getElementById("mailContext-multiMailredirect");
+      multiRedirect.hidden = multiForward.hidden;
+      if (multiRedirect.hidden !== true && item !== null) {
+        // Only show one Redirect menuitem
+        item.hidden = true;
+      }
     }
   },
 

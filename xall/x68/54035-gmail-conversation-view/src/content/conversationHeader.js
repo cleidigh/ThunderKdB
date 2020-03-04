@@ -157,6 +157,7 @@ class _ConversationHeader extends React.PureComponent {
   }
 
   render() {
+    document.title = this.props.subject;
     return React.createElement("div", {
       className: "conversationHeaderWrapper"
     }, React.createElement("div", {

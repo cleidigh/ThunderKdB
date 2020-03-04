@@ -12,6 +12,13 @@ class Background {
   async init() {
     await this._prefs.init();
     await this._keyHandler.init();
+
+    // Setup the temporary API caller that stub.xhtml uses.
+    browser.conversations.onCallAPI.addListener(
+      async (apiName, apiItem, args) => {
+        return browser[apiName][apiItem](...args);
+      }
+    );
   }
 }
 

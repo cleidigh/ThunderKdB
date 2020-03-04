@@ -7,18 +7,23 @@
            MessageDetails, MessageNotification */
 
 /* exported Message */
+function isAccel(event) {
+  if (window.navigator.platform.includes("Mac")) {
+    return event.metaKey;
+  }
+
+  return event.ctrlKey;
+}
+
 class Message extends React.PureComponent {
   constructor(props) {
     super(props);
     this.strings = new StringBundle("chrome://conversations/locale/template.properties");
     this.onSelected = this.onSelected.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   componentDidMount() {
-    this.li.addEventListener("focus", this.onSelected, true);
-    this.li.addEventListener("click", this.onSelected, true);
-    this.li.addEventListener("keydown", this.onSelected, true);
-
     if (this.lastScrolledMsgUri != this.props.message.msgUri && this.props.message.scrollTo) {
       this.lastScrolledMsgUri = this.props.message.msgUri; // The header is 44px high (yes, this is harcodeadly ugly).
 
@@ -51,9 +56,6 @@ class Message extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.li.removeEventListener("focus", this.onSelected, true);
-    this.li.removeEventListener("click", this.onSelected, true);
-    this.li.removeEventListener("keydown", this.onSelected, true);
     this.removeScrollListener();
   }
 
@@ -88,6 +90,104 @@ class Message extends React.PureComponent {
       type: "MSG_SELECTED",
       msgUri: this.props.message.msgUri
     });
+  }
+
+  onKeyDown(event = {}) {
+    const {
+      key,
+      shiftKey
+    } = event;
+    const shortcut = `${isAccel(event) ? "accel-" : ""}${key}`;
+
+    function stopEvent() {
+      event.stopPropagation();
+      event.preventDefault();
+    } // Handle the basic keyboard shortcuts
+
+
+    switch (shortcut) {
+      case "accel-r":
+      case "accel-R":
+        this.props.dispatch({
+          type: "MSG_REPLY",
+          msgUri: this.props.message.msgUri,
+          shiftKey
+        });
+        stopEvent();
+        break;
+
+      case "accel-l":
+        this.props.dispatch({
+          type: "MSG_OPEN_FORWARD",
+          msgUri: this.props.message.msgUri
+        });
+        break;
+
+      case "accel-u":
+        this.props.dispatch({
+          type: "MSG_OPEN_SOURCE",
+          msgUri: this.props.message.msgUri
+        });
+        break;
+
+      case "a":
+        this.props.dispatch({
+          type: "MSG_ARCHIVE",
+          id: this.props.message.id
+        });
+        break;
+
+      case "o":
+        this.props.dispatch({
+          type: "MSG_EXPAND",
+          msgUri: this.props.message.msgUri
+        });
+        break;
+
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9":
+        this.props.dispatch({
+          type: "MSG_TOGGLE_TAG_BY_INDEX",
+          id: this.props.message.id,
+          tags: this.props.message.tags,
+          // Tag indexes start at 0
+          index: +shortcut - 1
+        });
+        stopEvent();
+        break;
+
+      case "0":
+        // Remove all tags
+        this.props.dispatch({
+          type: "MSG_SET_TAGS",
+          id: this.props.message.id,
+          tags: []
+        });
+        stopEvent();
+        break;
+
+      case "f":
+        this.props.advanceMessage(1);
+        stopEvent();
+        break;
+
+      case "b":
+        this.props.advanceMessage(-1);
+        stopEvent();
+        break;
+
+      default:
+        break;
+    }
+
+    this.onSelected();
   }
 
   onScroll() {
@@ -126,7 +226,14 @@ class Message extends React.PureComponent {
     // <div class="body-container"></div>
     return React.createElement("li", {
       className: "message",
-      ref: li => this.li = li
+      ref: li => {
+        this.li = li;
+        this.props.setRef(li);
+      },
+      tabIndex: this.props.index + 1,
+      onFocusCapture: this.onSelected,
+      onClickCapture: this.onSelected,
+      onKeyDownCapture: this.onKeyDown
     }, React.createElement(MessageHeader, {
       dispatch: this.props.dispatch,
       bcc: this.props.message.bcc,
@@ -137,6 +244,7 @@ class Message extends React.PureComponent {
       from: this.props.message.from,
       to: this.props.message.to,
       fullDate: this.props.message.fullDate,
+      id: this.props.message.id,
       msgUri: this.props.message.msgUri,
       attachments: this.props.message.attachments,
       multipleRecipients: this.props.message.multipleRecipients,
@@ -146,7 +254,8 @@ class Message extends React.PureComponent {
       shortFolderName: this.props.message.shortFolderName,
       snippet: this.props.message.snippet,
       starred: this.props.message.starred,
-      tags: this.props.message.tags
+      tags: this.props.message.tags,
+      specialTags: this.props.message.specialTags
     }), this.props.message.expanded && this.props.message.detailsShowing && React.createElement(MessageDetails, {
       bcc: this.props.message.bcc,
       cc: this.props.message.cc,
@@ -167,17 +276,33 @@ class Message extends React.PureComponent {
     }), React.createElement("div", {
       className: "messageBody"
     }, this.props.message.expanded && React.createElement(SpecialMessageTags, {
-      canClickFolder: true,
-      dispatch: this.props.dispatch,
+      onFolderClick: () => {
+        this.dispatch({
+          type: "SWITCH_TO_FOLDER",
+          msgUri: this.props.message.msgUri
+        });
+      },
+      onTagClick: (event, tag) => {
+        this.props.dispatch({
+          type: "TAG_CLICK",
+          event,
+          msgUri: this.props.message.msgUri,
+          details: tag.details
+        });
+      },
       folderName: this.props.message.folderName,
       inView: this.props.message.inView,
-      msgUri: this.props.message.msgUri,
       specialTags: this.props.message.specialTags,
       strings: this.strings
     }), this.props.message.expanded && React.createElement(MessageTags, {
-      dispatch: this.props.dispatch,
+      onTagsChange: tags => {
+        this.props.dispatch({
+          type: "MSG_SET_TAGS",
+          id: this.props.message.id,
+          tags
+        });
+      },
       expanded: true,
-      msgUri: this.props.message.msgUri,
       tags: this.props.message.tags
     }), React.createElement(MessageIFrame, {
       dispatch: this.props.dispatch,
@@ -217,5 +342,7 @@ Message.propTypes = {
   index: PropTypes.number.isRequired,
   isLastMessage: PropTypes.bool.isRequired,
   message: PropTypes.object.isRequired,
-  prefs: PropTypes.object.isRequired
+  prefs: PropTypes.object.isRequired,
+  setRef: PropTypes.func.isRequired,
+  advanceMessage: PropTypes.func.isRequired
 };

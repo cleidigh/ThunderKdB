@@ -336,8 +336,8 @@ function awDeleteHit(inputElement, deleteForward)
   // Set the focus to the input field of the next/previous row according to
   // the direction of deleting if possible.
   // Note: awSetFocusTo() is asynchronous, i.e. we'll focus after row removal.
-  if (!deleteForward && row > 1 ||
-      deleteForward && row == top.MAX_RECIPIENTS) {
+  if ((!deleteForward && row > 1) ||
+      (deleteForward && row === top.MAX_RECIPIENTS)) {
     // We're deleting backwards, but not the first row,
     // or forwards on the last row: Focus previous row.
     awSetFocusTo(awGetInputElement(row - 1));

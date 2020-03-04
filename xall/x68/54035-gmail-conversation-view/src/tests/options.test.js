@@ -178,4 +178,15 @@ describe("Option full page tests", () => {
       }
     });
   });
+  test("Pressing the button opens the setup assistant", async () => {
+    const mockedTabCreate = jest.spyOn(browser.tabs, "create");
+    const main = enzyme.mount(React.createElement(Main, null));
+    waitForComponentToPaint(main);
+    const button = main.find("button");
+    button.simulate("click");
+    expect(mockedTabCreate).toHaveBeenCalled();
+    expect(mockedTabCreate.mock.calls[0][0]).toStrictEqual({
+      url: "assistant/assistant.html"
+    });
+  });
 });

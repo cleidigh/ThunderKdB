@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 8303,
+    "average_daily_users": 9018,
     "categories": {
         "firefox": [
             "other"
@@ -23,27 +23,28 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2469768,
+        "id": 2473496,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "60.5"
+                "min": "68.2.1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filelink-provider-for-dropbox/versions/2469768",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filelink-provider-for-dropbox/versions/2473496",
         "files": [
             {
-                "id": 1012826,
-                "created": "2019-05-21T09:04:44Z",
-                "hash": "sha256:ab56ff44ed79fcc9dcdfa2226e3f3ecd121c050fb9d04efd6cb224dcfc8b61ff",
+                "id": 1016636,
+                "created": "2020-03-01T22:15:04Z",
+                "hash": "sha256:229d2bf55714df31a785275494cd3fe2afd8c3e98a9a849959113d4d29754ed9",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 17976,
+                "size": 17834,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012826/filelink_provider_for_dropbox-4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016636/filelink_provider_for_dropbox-7-tb.xpi?src=",
                 "permissions": [
+                    "https://*.dropboxapi.com/*",
                     "storage"
                 ]
             }
@@ -58,8 +59,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filelink-provider-for-dropbox/versions/4",
-        "version": "4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filelink-provider-for-dropbox/versions/7",
+        "version": "7"
     },
     "default_locale": "en-US",
     "description": {
@@ -80,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-05-21T09:05:03Z",
+    "last_updated": "2020-03-01T22:20:03Z",
     "name": {
         "en-US": "FileLink Provider for Dropbox"
     },
@@ -117,7 +118,8 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp60": true
+            "comp60pv": true,
+            "comp60pv_date": "2018-12-17T10:42:21Z"
         }
     }
 }

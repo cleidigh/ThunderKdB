@@ -9,13 +9,13 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 30,
+    "average_daily_users": 31,
     "categories": {
         "thunderbird": [
             "miscellaneous"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "",
     "current_version": {
         "id": 2473284,
         "compatibility": {
@@ -79,7 +79,7 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Sometimes messages with the type \"multipart/alternative\" can have multiple bodies with same Content-Type, like \"text/plain\". However Thunderbird automatically chooses the last one and ignores others, so we cannot read other part bodes even if the last one is broken.\n\nThis addon automatically detects such conflicting bodies and converts secondary part to an attachment.",
+        "en-US": "Sometimes messages with the type \"multipart/alternative\" can have multiple bodies with same Content-Type, like \"text/plain\". However Thunderbird automatically chooses the last one and ignores others, so we cannot read other part bodies even if the last one is broken.\n\nThis addon automatically detects such conflicting bodies and converts secondary part to an attachment.",
         "ja": "\"multipart/alternative\"のメールにおいて、複数の本文パートが\"text/plain\"のような同じContent-Typeを持っている場合、Thunderbirdはそれらの中から最後の物を表示してそれ以外の本文パートを無視します。そのため、最後の本文パートが壊れている場合であっても、他の正常な本文パートは読めないという状態になってしまいます。\n\nこのアドオンは、そのような競合する本文パートを持つメールを自動検出して、2番目以降の競合する本文を添付ファイルに変換します。"
     },
     "developer_comments": null,
@@ -119,7 +119,7 @@
     "slug": "rescue-conflicting-alt",
     "status": "public",
     "summary": {
-        "en-US": "Converts a mail with conflicting alternative bodes to regular multipart mail.",
+        "en-US": "Converts a mail with conflicting alternative bodies to regular multipart mail.",
         "ja": "競合する代替の本文を持つメールを通常の添付ファイルに変換します。"
     },
     "support_email": null,

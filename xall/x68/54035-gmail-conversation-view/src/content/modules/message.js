@@ -4,18 +4,14 @@
 
 "use strict";
 
-var EXPORTED_SYMBOLS = [
-  "MessageFromGloda",
-  "MessageFromDbHdr",
-  "MessageUtils",
-  "watchIFrame",
-];
+var EXPORTED_SYMBOLS = ["MessageFromGloda", "MessageFromDbHdr", "MessageUtils"];
 
 const { XPCOMUtils } = ChromeUtils.import(
   "resource://gre/modules/XPCOMUtils.jsm"
 );
 
 XPCOMUtils.defineLazyModuleGetters(this, {
+  ConversationUtils: "chrome://conversations/content/modules/conversation.js",
   GlodaUtils: "resource:///modules/gloda/utils.js",
   makeFriendlyDateAgo: "resource:///modules/templateUtils.js",
   MsgHdrToMimeMessage: "resource:///modules/gloda/mimemsg.js",
@@ -29,7 +25,6 @@ const {
   escapeHtml,
   getIdentityForEmail,
   parseMimeLine,
-  sanitize,
 } = ChromeUtils.import("chrome://conversations/content/modules/stdlib/misc.js");
 
 // It's not really nice to write into someone elses object but this is what the
@@ -44,12 +39,10 @@ let strings = new StringBundle(
 );
 
 const {
-  msgHdrsArchive,
   msgHdrGetHeaders,
   msgHdrGetUri,
   msgHdrIsDraft,
   msgHdrIsJunk,
-  msgHdrsDelete,
   msgHdrsMarkAsRead,
   msgHdrGetTags,
   msgHdrSetTags,
@@ -93,10 +86,7 @@ let Log = setupLogging("Conversations.Message");
 // This is high because we want enough snippet to extract relevant data from
 // bugzilla snippets.
 const kSnippetLength = 700;
-const kViewerUrl = "chrome://conversations/content/pdfviewer/wrapper.xul?uri=";
 
-let makeViewerUrl = (name, url) =>
-  kViewerUrl + encodeURIComponent(url) + "&name=" + encodeURIComponent(name);
 const pdfMimeTypes = [
   "application/pdf",
   "application/x-pdf",
@@ -133,19 +123,6 @@ function dateAccordingToPref(date) {
 }
 
 class _MessageUtils {
-  previewAttachment(win, name, url, isPdf, maybeViewable) {
-    if (maybeViewable) {
-      win.document
-        .getElementById("tabmail")
-        .openTab("contentTab", { contentPage: url });
-    }
-    if (isPdf) {
-      win.document
-        .getElementById("tabmail")
-        .openTab("chromeTab", { chromePage: makeViewerUrl(name, url) });
-    }
-  }
-
   _getAttachmentInfo(win, msgUri, attachment) {
     const attInfo = new win.AttachmentInfo(
       attachment.contentType,
@@ -182,18 +159,18 @@ class _MessageUtils {
 
   _compose(win, compType, msgUri, shiftKey) {
     const msgHdr = msgUriToMsgHdr(msgUri);
-    if (shiftKey) {
-      win.ComposeMessage(
-        compType,
-        Ci.nsIMsgCompFormat.OppositeOfDefault,
-        msgHdr.folder,
-        [msgUri]
-      );
-    } else {
-      win.ComposeMessage(compType, Ci.nsIMsgCompFormat.Default, msgHdr.folder, [
-        msgUri,
-      ]);
-    }
+    // if (shiftKey) {
+    //   win.ComposeMessage(
+    //     compType,
+    //     Ci.nsIMsgCompFormat.OppositeOfDefault,
+    //     msgHdr.folder,
+    //     [msgUri]
+    //   );
+    // } else {
+    win.ComposeMessage(compType, Ci.nsIMsgCompFormat.Default, msgHdr.folder, [
+      msgUri,
+    ]);
+    // }
   }
 
   editDraft(win, msgUri, shiftKey = false) {
@@ -230,16 +207,6 @@ class _MessageUtils {
     }
   }
 
-  archive(msgUri) {
-    const msgHdr = msgUriToMsgHdr(msgUri);
-    msgHdrsArchive([msgHdr]);
-  }
-
-  delete(msgUri) {
-    const msgHdr = msgUriToMsgHdr(msgUri);
-    msgHdrsDelete([msgHdr]);
-  }
-
   ignorePhishing(msgUri) {
     const msgHdr = msgUriToMsgHdr(msgUri);
     msgHdr.setUint32Property("notAPhishMessage", 1);
@@ -257,21 +224,6 @@ class _MessageUtils {
     win.ViewPageSource([msgUri]);
   }
 
-  setTags(msgUri, tags) {
-    msgHdrSetTags(
-      msgUriToMsgHdr(msgUri),
-      tags.map(tag => {
-        return {
-          key: tag.id,
-        };
-      })
-    );
-  }
-
-  setStar(msgUri, star) {
-    msgUriToMsgHdr(msgUri).markFlagged(star);
-  }
-
   getMsgHdrDetails(win, msgUri) {
     const msgHdr = msgUriToMsgHdr(msgUri);
     msgHdrGetHeaders(msgHdr, headers => {
@@ -279,7 +231,7 @@ class _MessageUtils {
         let extraLines = [
           {
             key: strings.get("header-folder"),
-            value: sanitize(folderName(msgHdr.folder)[1]),
+            value: folderName(msgHdr.folder)[1],
           },
         ];
         let interestingHeaders = [
@@ -299,14 +251,14 @@ class _MessageUtils {
             } catch (e) {}
             extraLines.push({
               key,
-              value: sanitize(headers.get(h)),
+              value: headers.get(h),
             });
           }
         }
         let subject = headers.get("subject");
         extraLines.push({
           key: strings.get("header-subject"),
-          value: subject ? sanitize(GlodaUtils.deMime(subject)) : "",
+          value: subject ? GlodaUtils.deMime(subject) : "",
         });
 
         win.conversationDispatch({
@@ -327,6 +279,7 @@ var MessageUtils = new _MessageUtils();
 class Message {
   constructor(aConversation, msgHdr) {
     this._msgHdr = msgHdr;
+    this._id = null;
     this._domNode = null;
     this._snippet = "";
     this._conversation = aConversation;
@@ -454,19 +407,20 @@ class Message {
     addMsgListener(this);
 
     let data = {
-      date: sanitize(this._date),
+      id: this._id,
+      date: this._date,
       hasRemoteContent: this.hasRemoteContent,
       isDraft: !!msgHdrIsDraft(this._msgHdr),
       isJunk: msgHdrIsJunk(this._msgHdr),
       isOutbox: !!this._msgHdr.folder.getFlag(Ci.nsMsgFolderFlags.Queue),
       isPhishing: this.isPhishing,
-      msgUri: sanitize(this._uri),
+      msgUri: this._uri,
       multipleRecipients: this.isReplyAllEnabled,
       neckoUrl: msgHdrToNeckoURL(this._msgHdr),
       read: this.read,
-      realFrom: sanitize(this._realFrom.email || this._from.email),
+      realFrom: this._realFrom.email || this._from.email,
       recipientsIncludeLists: this.isReplyListEnabled,
-      snippet: sanitize(this._snippet),
+      snippet: this._snippet,
       specialTags: this._specialTags,
       starred: this._msgHdr.isFlagged,
     };
@@ -510,8 +464,8 @@ class Message {
       : dateAsInMessageList(new Date(this._msgHdr.date / 1000));
 
     let [name, fullName] = folderName(this._msgHdr.folder);
-    data.folderName = sanitize(fullName);
-    data.shortFolderName = sanitize(name);
+    data.folderName = fullName;
+    data.shortFolderName = name;
 
     const tags = msgHdrGetTags(this._msgHdr);
     data.tags = tags.map(tag => {
@@ -566,10 +520,10 @@ class Message {
         size: att.size,
         contentType: att.contentType,
         formattedSize,
-        thumb: sanitize(thumb),
+        thumb,
         imgClass,
         isExternal: att.isExternal,
-        name: sanitize(att.name),
+        name: att.name,
         url: att.url,
         anchor: "msg" + this.initialPosition + "att" + i,
         /* Only advertise the preview for PDFs (images have the gallery view). */
@@ -673,7 +627,7 @@ class Message {
     this._conversation._htmlPane.conversationDispatch({
       type: "MSG_UPDATE_SPECIAL_TAGS",
       specialTags: this._specialTags,
-      uri: sanitize(this._uri),
+      uri: this._uri,
     });
   }
 
@@ -930,6 +884,9 @@ class MessageFromGloda extends Message {
   }
 
   async init() {
+    let browser = ConversationUtils.getBrowser();
+    this._id = await browser.conversations.getMessageIdForUri(this._uri);
+
     // Our gloda plugin found something for us, thanks dude!
     if (this._glodaMsg.alternativeSender) {
       this._realFrom = this._from;
@@ -1070,6 +1027,8 @@ class MessageFromDbHdr extends Message {
   }
 
   async init() {
+    let browser = ConversationUtils.getBrowser();
+    this._id = await browser.conversations.getMessageIdForUri(this._uri);
     // Gloda is not with us, so stream the message... the MimeMsg API says that
     //  the streaming will fail and the underlying exception will be re-thrown in
     //  case the message is not on disk. In that case, the fallback is to just get

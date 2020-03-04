@@ -198,6 +198,12 @@ function localize(prefsInfo, i18n = browser.i18n) {
   }
 
   throw new Error("Don't know how to localize the object", prefsInfo);
+}
+
+function openSetupAssistant() {
+  browser.tabs.create({
+    url: "assistant/assistant.html"
+  });
 } //
 // React components to render the options types
 //
@@ -337,8 +343,10 @@ BinaryOption.propTypes = {
 function _ConversationOptions({
   localizedPrefsInfo,
   localizedName,
+  localizedStartAssistant,
   prefs,
-  setPref
+  setPref,
+  startSetupAssistant
 }) {
   return React.createElement(React.Fragment, null, React.createElement("h1", null, localizedName), React.createElement("form", {
     id: "conversationOptions"
@@ -348,14 +356,18 @@ function _ConversationOptions({
     key: i,
     value: prefs[Item.props.name],
     onChange: setPref
-  }))))));
+  }))))), React.createElement("button", {
+    onClick: startSetupAssistant
+  }, localizedStartAssistant));
 }
 
 _ConversationOptions.propTypes = {
   localizedPrefsInfo: PropTypes.array.isRequired,
   localizedName: PropTypes.string.isRequired,
+  localizedStartAssistant: PropTypes.string.isRequired,
   prefs: PropTypes.object.isRequired,
-  setPref: PropTypes.func.isRequired
+  setPref: PropTypes.func.isRequired,
+  startSetupAssistant: PropTypes.func.isRequired
 };
 const ConversationOptions = ReactRedux.connect(state => ({
   prefs: state
@@ -365,7 +377,8 @@ const ConversationOptions = ReactRedux.connect(state => ({
 
 export function Main() {
   const [localizedName, setLocalizedName] = React.useState(localize("extensionName", i18n));
-  const [localizedPrefsInfo, setLocalizedPrefsInfo] = React.useState(localize(PREFS_INFO, i18n)); // When the i18n library is loaded, we want to translate all
+  const [localizedPrefsInfo, setLocalizedPrefsInfo] = React.useState(localize(PREFS_INFO, i18n));
+  const [localizedStartAssistant, setLocalizedStartAssistant] = React.useState(localize("options.start_setup_assistant", i18n)); // When the i18n library is loaded, we want to translate all
   // the localized strings.
 
   React.useEffect(() => {
@@ -379,6 +392,7 @@ export function Main() {
     i18n.isLoaded.then(() => {
       setLocalizedName(localize("extensionName", i18n));
       setLocalizedPrefsInfo(localize(PREFS_INFO, i18n));
+      setLocalizedStartAssistant(localize("options.start_setup_assistant", i18n));
     }).catch(e => {
       throw e;
     });
@@ -387,6 +401,8 @@ export function Main() {
     store: store
   }, React.createElement(ConversationOptions, {
     localizedPrefsInfo: localizedPrefsInfo,
-    localizedName: localizedName
+    localizedName: localizedName,
+    localizedStartAssistant: localizedStartAssistant,
+    startSetupAssistant: openSetupAssistant
   }));
 }

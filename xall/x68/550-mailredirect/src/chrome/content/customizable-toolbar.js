@@ -34,7 +34,7 @@
         // Look to see if there is a toolbarpalette.
         let node = toolbox.firstChild;
         while (node) {
-          if (node.localName == "toolbarpalette") {
+          if (node.localName === "toolbarpalette") {
             break;
           }
           node = node.nextSibling;
@@ -87,7 +87,7 @@
       }
 
       this._toolbox =
-        this.parentNode && this.parentNode.localName == "toolbox"
+        this.parentNode && this.parentNode.localName === "toolbox"
           ? this.parentNode
           : null;
 
@@ -101,7 +101,7 @@
      * @return {string}  Comma-separated list of IDs or "__empty".
      */
     set currentSet(val) {
-      if (val == this.currentSet) {
+      if (val === this.currentSet) {
         return val;
       }
 
@@ -115,7 +115,7 @@
         paletteItems[item.id] = item;
       }
 
-      let ids = val == "__empty" ? [] : val.split(",");
+      let ids = (val === "__empty") ? [] : val.split(",");
       let children = this.childNodes;
       let nodeidx = 0;
       let added = {};
@@ -127,11 +127,11 @@
         let found = false;
         for (let i = nodeidx; i < children.length; i++) {
           let curNode = children[i];
-          if (this._idFromNode(curNode) == id) {
+          if (this._idFromNode(curNode) === id) {
             // The node already exists. If i equals nodeidx, we haven't
             // iterated yet, so the item is already in the right position.
             // Otherwise, insert it here.
-            if (i != nodeidx) {
+            if (i !== nodeidx) {
               this.insertBefore(curNode, children[nodeidx]);
             }
 
@@ -162,7 +162,7 @@
 
         let curNodeId = this._idFromNode(curNode);
         // Skip over fixed items.
-        if (curNodeId && curNode.getAttribute("removable") == "true") {
+        if (curNodeId && curNode.getAttribute("removable") === "true") {
           if (palette) {
             palette.appendChild(curNode);
           } else {
@@ -201,7 +201,7 @@
      * @return {string}  The ID of the node.
      */
     _idFromNode(node) {
-      if (node.getAttribute("skipintoolbarset") == "true") {
+      if (node.getAttribute("skipintoolbarset") === "true") {
         return "";
       }
       const specialItems = {
@@ -226,7 +226,7 @@
         // elements created in small timeframes.  So ids are
         // differentiated through a unique count suffix.
         newItem.id = id + Date.now() + ++this._newElementCount;
-        if (id == "spring") {
+        if (id === "spring") {
           newItem.flex = 1;
         }
         return newItem;
@@ -243,8 +243,8 @@
       if (
         item &&
         item.parentNode &&
-        item.parentNode.localName == "toolbar" &&
-        item.parentNode.toolbox == toolbox
+        item.parentNode.localName === "toolbar" &&
+        item.parentNode.toolbox === toolbox
       ) {
         return item;
       }
@@ -253,7 +253,7 @@
         // Attempt to locate an item with a matching ID within the palette.
         let paletteItem = toolbox.palette.firstChild;
         while (paletteItem) {
-          if (paletteItem.id == id) {
+          if (paletteItem.id === id) {
             return paletteItem;
           }
           paletteItem = paletteItem.nextSibling;
@@ -303,7 +303,7 @@
      * @return {boolean}  Whether the current set has custom interactive items.
      */
     hasCustomInteractiveItems(currentSet) {
-      if (currentSet == "__empty") {
+      if (currentSet === "__empty") {
         return false;
       }
 
