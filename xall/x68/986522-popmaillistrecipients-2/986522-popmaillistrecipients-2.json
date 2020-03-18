@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 200,
+    "average_daily_users": 216,
     "categories": {
         "thunderbird": [
             "composition"
@@ -17,27 +17,30 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2472420,
+        "id": 2473535,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "61.0"
+                "min": "74.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/popmaillistrecipients-2/versions/2472420",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/popmaillistrecipients-2/versions/2473535",
         "files": [
             {
-                "id": 1015492,
-                "created": "2019-09-11T14:05:11Z",
-                "hash": "sha256:483a3cdadb4013ae9c24f25369bbf10f5516b9cf04660677b5a95a4086027ba7",
+                "id": 1016679,
+                "created": "2020-03-16T09:14:28Z",
+                "hash": "sha256:0f14ca85a7840b0f90d9211c9313bf384c12e92be78c96dfac236ab7f1603042",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 8140,
+                "size": 14836,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015492/popmaillistrecipients_2-1.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016679/popmaillistrecipients_2-2.2-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "addressBooks"
+                ]
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -49,11 +52,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "This is to replace popmaillistrecipients with something that works for the current TB"
+            "en-US": "Corrected a small bug in 2.1"
         },
-        "reviewed": "2019-09-11T14:10:03Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/popmaillistrecipients-2/versions/1.1",
-        "version": "1.1"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/popmaillistrecipients-2/versions/2.2",
+        "version": "2.2"
     },
     "default_locale": "en-US",
     "description": null,
@@ -74,17 +77,17 @@
     "is_experimental": true,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-09-11T14:10:03Z",
+    "last_updated": "2020-03-16T09:15:03Z",
     "name": {
         "en-US": "PopMailListRecipients 2"
     },
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.34417,
-        "count": 3,
-        "average": 3.6667,
-        "text_count": 3
+        "bayesian_average": 3.726,
+        "count": 4,
+        "average": 4,
+        "text_count": 4
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/popmaillistrecipients-2/reviews/",
     "requires_payment": false,
@@ -108,7 +111,9 @@
         "ext_comp": {
             "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp60pv": true,
+            "comp60pv_date": "2019-09-11T14:05:11Z"
         }
     }
 }

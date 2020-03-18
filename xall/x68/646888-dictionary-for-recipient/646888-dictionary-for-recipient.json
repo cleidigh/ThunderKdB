@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6190/6190978.png?modified=1531852834"
         }
     ],
-    "average_daily_users": 135,
+    "average_daily_users": 138,
     "categories": {
         "thunderbird": [
             "language-support"
@@ -17,30 +17,30 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2470791,
+        "id": 2473518,
         "compatibility": {
             "thunderbird": {
-                "max": "73.*",
+                "max": "*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dictionary-for-recipient/versions/2470791",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dictionary-for-recipient/versions/2473518",
         "files": [
             {
-                "id": 1013853,
-                "created": "2019-07-06T08:57:28Z",
-                "hash": "sha256:9de7e84b1f5b68240a90a2f128b4914667542cd627a3f80718353bd3a453516c",
-                "is_restart_required": true,
+                "id": 1016662,
+                "created": "2020-03-08T18:40:29Z",
+                "hash": "sha256:0cd1d8789103d262f4ef3bbbdc9f02d748925b7c1cc7a1cb0c7681be29ecd9b7",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 3271,
+                "size": 3866,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1013853/dictionary_for_recipient-1.0.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016662/dictionary_for_recipient-2.0.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,12 +71,12 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dictionary-for-recipient/versions/1.0.4",
-        "version": "1.0.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dictionary-for-recipient/versions/2.0.0",
+        "version": "2.0.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Sets the spell check dictionary based on the first recipient (\"To\" field).\n\nThe dictionary needs to be defined in the \"Custom 4\" field of the contact in the address book.\n\"Custom 4\" can be found in the \"Other\" tab of the contact.\nYou need to set the language code as used by the dictionary.\nExamples: en-US, en-AU, en-GB, de-DE, es-ES, it-IT, fr-modern.\nPlease ensure that you get the language code correct, otherwise it will not work\n(and there won't be an error message).\n\nThe add-on notifies in the status area of the message compose window when it sets the dictionary.\n\nThis is a \"no frills\" add-on. No configuration, no options.\n\nThis add-on requires Thunderbird 38/SeaMonkey 2.38 or higher.\n\nNote that one day in the future Thunderbird will absorb this add-on, since there is an enhancement request for it:\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1020181\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1020181</a>\n\nWith this add-on you get the solution today!\n\nFor Thunderbird 60.0 please visit the \"All Versions\" section to download a compatible version."
+        "en-US": "Sets the spell check dictionary based on the first recipient (\"To\" field).\n\nThe dictionary needs to be defined in the \"Custom 4\" field of the contact in the address book.\n\"Custom 4\" can be found in the \"Other\" tab of the contact.\nYou need to set the language code as used by the dictionary.\nExamples: en-US, en-AU, en-GB, de-DE, es-ES, it-IT, fr-classic.\nPlease ensure that you get the language code correct, otherwise it will not work\n(and there won't be an error message).\n\nThe add-on notifies in the status area of the message compose window when it sets the dictionary.\n\nThis is a \"no frills\" add-on. No configuration, no options.\n\nNote that one day in the future Thunderbird will absorb this add-on, since there is an enhancement request for it:\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1020181\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1020181</a>\n\nWith this add-on you get the solution today!\n\nFor Thunderbird 60.0 please visit the \"All Versions\" section to download a compatible version."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dictionary-for-recipient/edit",
@@ -93,7 +93,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-07-06T09:16:07Z",
+    "last_updated": "2020-03-08T19:02:53Z",
     "name": {
         "en-US": "Dictionary for recipient"
     },
@@ -127,10 +127,9 @@
     "weekly_downloads": 50,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-04T23:13:17Z"
         }

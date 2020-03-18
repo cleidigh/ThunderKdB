@@ -1,0 +1,186 @@
+{
+    "id": 987764,
+    "authors": [
+        {
+            "id": 165138,
+            "name": "Dillinger",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dillinger/",
+            "username": "dillinger",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 528,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2473246,
+        "compatibility": {
+            "thunderbird": {
+                "max": "68.*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/headertools-lite/versions/2473246",
+        "files": [
+            {
+                "id": 1016358,
+                "created": "2020-01-20T06:37:12Z",
+                "hash": "sha256:99ea63d5d9056131d57f73124eead024446623a6e0838c34c91aa0f5729dde40",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 18194,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016358/headertools_lite-2.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": {
+            "en-US": "Tweaked numberbox appearance.\nAdded homepage &amp; changelog.\nTweaked the source editor."
+        },
+        "reviewed": "2020-03-07T23:53:04Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/headertools-lite/versions/2.1",
+        "version": "2.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This is a legacy WebExtension version of <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/header-tools-lite/\" rel=\"nofollow\">Header Tools Lite</a> by Paolo Kaosmos.\nNo functionality has been added or removed.\n\nThis extension allows the user to change (edit) messages in any folder.\n\nThe editing features (changing the headers only or the entire source of a message) are accessible from the menu \"Message\" -&gt; \"HeaderToolsLite\" or from the context menu in the message panel.\n\nThe edit source function should be used with caution, because an error could cause problems in displaying all messages in a folder. Moreover, it could work not properly with some characters and some encodings.\n\nOptions for the extension:\n\n- Put the original message to the Trash (default = true): the changes are made by creating a copy of the original message. This option controls whether the original message goes to the Trash folder, or is deleted.\n\n- Forcing changes with IMAP accounts (default = true): some IMAP servers, such as Gmail, do not accept changes if some basic headers (date, sender, the message id, object) are not modified . With this option enabled, the changes are forced by changing the date of the message by 1 second.\n\n- Add the header X-HeaderToolsLite (default = false): by enabling this option, every change (edit) adds a header that describes the type of change and its time and date.\n\n- Set the maximum number of characters initially displayed when editing the full source (default = 150000).\n\n- There are no default keyboard shortcuts set, you can choose them yourself."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/headertools-lite/edit",
+    "guid": "hdrtoolslite@dillinger",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://addons.thunderbird.net/en-US/thunderbird/addon/headertools-lite/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987764-64.png?modified=df8c9bef",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987764-32.png?modified=df8c9bef",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987764-64.png?modified=df8c9bef"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-03-07T23:53:04Z",
+    "name": {
+        "en-US": "HeaderTools Lite"
+    },
+    "previews": [
+        {
+            "id": 205897,
+            "caption": {
+                "en-US": "Change header details"
+            },
+            "image_size": [
+                532,
+                299
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205897.png?modified=1579507969",
+            "thumbnail_size": [
+                320,
+                180
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205897.png?modified=1579507969"
+        },
+        {
+            "id": 205895,
+            "caption": {
+                "en-US": "Edit full source"
+            },
+            "image_size": [
+                703,
+                457
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205895.png?modified=1579507968",
+            "thumbnail_size": [
+                308,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205895.png?modified=1579507968"
+        },
+        {
+            "id": 205896,
+            "caption": {
+                "en-US": "Options"
+            },
+            "image_size": [
+                474,
+                368
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205896.png?modified=1579507968",
+            "thumbnail_size": [
+                258,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205896.png?modified=1579507968"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.71522,
+        "count": 12,
+        "average": 4.8333,
+        "text_count": 12
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/headertools-lite/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987764",
+    "slug": "headertools-lite",
+    "status": "public",
+    "summary": {
+        "en-US": "Allows to modify the header and the source of messages"
+    },
+    "support_email": {
+        "en-US": "dillinger@kpnmail.nl"
+    },
+    "support_url": null,
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/headertools-lite/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp68": true,
+            "comp61plus": true
+        }
+    }
+}
