@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2300,
+    "average_daily_users": 2121,
     "categories": {
         "thunderbird": [
             "contacts"
@@ -17,26 +17,26 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2472854,
+        "id": 2473557,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "69.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mrc-compose/versions/2472854",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mrc-compose/versions/2473557",
         "files": [
             {
-                "id": 1015960,
-                "created": "2019-11-10T11:56:56Z",
-                "hash": "sha256:589d1267273b2309acf0f9aa06dcd22802ee0322accb3399b8fae77068d7d7b0",
+                "id": 1016701,
+                "created": "2020-03-21T10:57:43Z",
+                "hash": "sha256:590c89f42b8e4b49070cd50ddf3780fd64903849b162a77b6c0c753abcfa0668",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 92920,
+                "size": 92931,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015960/mrc_compose-2.0.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016701/mrc_compose-2.0.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -75,12 +75,12 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mrc-compose/versions/2.0.2",
-        "version": "2.0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mrc-compose/versions/2.0.3",
+        "version": "2.0.3"
     },
     "default_locale": "fr",
     "description": {
-        "fr": "About <b>version 2.0.0</b> :\n<ul><li>Compatibility with Thunderbird 68</li><li>Can search in 'Cardbook' address books </li><li>In preferences, show type of each address book : 'Thunderbird', 'LDAP', 'Cardbook'</li></ul>\nAbout <b>version 1.9.1</b> :\n<ul><li>Correct the bug of field \"To\" : bad height depending on nb recipients</li><li>Add spanish translation (thanks to newton181)</li></ul>\nAbout <b>version 1.9.0</b> :\n<ul><li>Compatible with Thunderbird 59-60</li></ul>\nAbout <b>version 1.8</b> :\n<ul><li>support LDAP</li><li>some optimizations</li><li>some UI enhancements : spinning wheel while searching, information if no results, if timeout, if error</li></ul>Important compatibility note :\n<ul><li>version 1.6.2 corrects a regression with TB31 where names were not quoted anymore if they contain comma</li><li><b>For Thunderbird 31 users : please update to version 1.6.1 or more</b></li><li>the addon \"Stationery\" is incompatible with \"MRC Compose\", because it prevents MRC Compose to change height to adapt to number of recipients. With version 1.6.1, \"MRC Compose\" has a workaround</li><li>If you use the \"contact panel\" : when you make a double-click on a contact, the standard action defined in the contact panel is to paste the contact in \"To\" field. This is not a behavior that MRC Compose want to change.</li></ul>\nNotes about usage :\n<ul><li>If you want MRC Compose to remember to show/hide some fields, you have to define it in preferences (available via the gear icon on the left, then tab 'Appearence') ; otherwise every new mail will use the default fields configuration</li><li>MRC Compose supports the default CC and BCC address you can define in TB accounts (panel 'Copies &amp; Folders', checkboxes 'Cc/Bcc these email addresses'</li></ul>"
+        "fr": "About <b>version 2.0.3</b> :\n<ul><li>Compatibility with Thunderbird 69 maximum</li></ul>\n<strong>Starting with Thunderbird 70, this addon will be useless : TB will change its UI for compose window.\nMRC Compose will follow TB68  availability (till fall 2020).\n</strong>\n\n\n\nAbout <b>version 2.0.1 - 2.0.2</b> :\n<ul><li>Compatibility with Thunderbird 68 : handle unlimited number of emails</li></ul>\nAbout <b>version 2.0.0</b> :\n<ul><li>Compatibility with Thunderbird 68</li><li>Can search in 'Cardbook' address books </li><li>In preferences, show type of each address book : 'Thunderbird', 'LDAP', 'Cardbook'</li></ul>\nAbout <b>version 1.9.1</b> :\n<ul><li>Correct the bug of field \"To\" : bad height depending on nb recipients</li><li>Add spanish translation (thanks to newton181)</li></ul>\nAbout <b>version 1.9.0</b> :\n<ul><li>Compatible with Thunderbird 59-60</li></ul>\nAbout <b>version 1.8</b> :\n<ul><li>support LDAP</li><li>some optimizations</li><li>some UI enhancements : spinning wheel while searching, information if no results, if timeout, if error</li></ul>Important compatibility note :\n<ul><li>version 1.6.2 corrects a regression with TB31 where names were not quoted anymore if they contain comma</li><li><b>For Thunderbird 31 users : please update to version 1.6.1 or more</b></li><li>the addon \"Stationery\" is incompatible with \"MRC Compose\", because it prevents MRC Compose to change height to adapt to number of recipients. With version 1.6.1, \"MRC Compose\" has a workaround</li><li>If you use the \"contact panel\" : when you make a double-click on a contact, the standard action defined in the contact panel is to paste the contact in \"To\" field. This is not a behavior that MRC Compose want to change.</li></ul>\nNotes about usage :\n<ul><li>If you want MRC Compose to remember to show/hide some fields, you have to define it in preferences (available via the gear icon on the left, then tab 'Appearence') ; otherwise every new mail will use the default fields configuration</li><li>MRC Compose supports the default CC and BCC address you can define in TB accounts (panel 'Copies &amp; Folders', checkboxes 'Cc/Bcc these email addresses'</li></ul>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mrc-compose/edit",
@@ -97,7 +97,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-10T13:56:36Z",
+    "last_updated": "2020-03-21T12:52:33Z",
     "name": {
         "fr": "MRC Compose"
     },
@@ -161,7 +161,7 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.33393,
+        "bayesian_average": 4.33392,
         "count": 62,
         "average": 4.3548,
         "text_count": 62
@@ -186,9 +186,11 @@
     "weekly_downloads": 85,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp61plus": true,
+            "compNoMax": true,
             "comp60pv": true,
             "comp60pv_date": "2018-05-01T17:29:32Z"
         }

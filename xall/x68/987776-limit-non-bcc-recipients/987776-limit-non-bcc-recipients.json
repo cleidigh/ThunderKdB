@@ -1,0 +1,182 @@
+{
+    "id": 987776,
+    "authors": [
+        {
+            "id": 4376648,
+            "name": "DaveRo",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/DaveRo/",
+            "username": "DaveRo",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": "",
+    "current_version": {
+        "id": 2473578,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "75.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/limit-non-bcc-recipients/versions/2473578",
+        "files": [
+            {
+                "id": 1016722,
+                "created": "2020-03-28T17:52:48Z",
+                "hash": "sha256:d8a57491d0e97b22ca8bcf13a3931a48309a273eeaefd1af1fcbbc2015db4535",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 23190,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016722/limit_non_bcc_recipients-1.0.0-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "compose",
+                    "addressBooks"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "First complete working version"
+        },
+        "reviewed": "2020-03-28T17:55:03Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/limit-non-bcc-recipients/versions/1.0.0",
+        "version": "1.0.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "el": "Βοηθάει στην αποφυγή τυχαίας αποκάλυψης διευθύνσεων ηλεκτρονικού ταχυδρομείου άλλων παραληπτών, ίσως με την εισαγωγή μιας λίστας αλληλογραφίας σε κοιν και όχι σε κρυφή κοιν.\n\nΟρίζετε έναν μέγιστο αριθμό παραληπτών μη κρυφή κοιν (προς και κοιν) και αν ο αριθμός αυτός ξεπεραστεί, θα λάβετε μια προειδοποίηση όταν στέλνετε το μήνυμα ηλεκτρονικού ταχυδρομείου. Μπορείτε να συνεχίσετε ή να ακυρώσετε. Μπορείτε επίσης να μετακινήσετε όλους τους παραλήπτες σε κρυφή κοιν και να στείλετε το μήνυμα ηλεκτρονικού ταχυδρομείου.\n\nΤο πρόσθετο πρόσθετο, Αναπτύξτε λίστες αλληλογραφίας, θα μετατρέψει όλες τις λίστες αλληλογραφίας στους συντάκτες τους, αφαιρώντας τα διπλά.",
+        "fr": "Aide à vous empêcher de révéler accidentellement les adresses e-mail des autres destinataires, peut-être en insérant une liste de diffusion dans CC plutôt que BCC.\n\nVous spécifiez un nombre maximum de destinataires non cachés (POUR ou COPIE) et si ce nombre est dépassé, vous recevrez un avertissement lorsque vous enverrez l'e-mail. Vous pouvez continuer ou annuler. Vous pouvez également déplacer tous les destinataires dans copie cachée et envoyer l'e-mail.\n\nL'addon complémentaire, Étendez les listes de diffusion, convertira toutes les listes de diffusion en leurs destinataires constitutifs, supprimant les doublons.",
+        "de": "Verhindert, dass Sie versehentlich die E-Mail-Adressen anderer Empfänger preisgeben, indem Sie möglicherweise eine Verteilerliste in CC anstelle von BCC einfügen.\n\nSie geben eine maximale Anzahl von Nicht-BCC-Empfängern (An oder CC) an. Wenn diese Anzahl überschritten wird, erhalten Sie beim Senden der E-Mail eine Warnung. Sie können fortfahren oder abbrechen. Sie können auch alle Empfänger in BCC verschieben und die E-Mail senden.\n\nDas Companion-Addon \"Mailinglisten erweitern\" konvertiert alle Mailinglisten in ihre Empfänger und entfernt Duplikate.",
+        "nl": "Helpt voorkomen dat u per ongeluk de e-mailadressen van andere ontvangers onthult, bijvoorbeeld door een mailinglijst in CC in te voegen in plaats van BCC.\n\nU specificeert een maximum aantal niet-BCC (AAn en CC) ontvangers en als dit aantal wordt overschreden, ontvangt u een waarschuwing wanneer u de e-mail verzendt. U kunt doorgaan of annuleren. U kunt ook alle ontvangers naar BCC verplaatsen en de e-mail verzenden.\n\nDe bijbehorende add-on, Uitvouwen mailinglijsten, converteert alle mailinglijsten naar hun samenstellende ontvangers en verwijdert duplicaten.",
+        "pt-PT": "Ajuda a impedir que você revele acidentalmente os endereços de e-mail de outros destinatários, talvez inserindo uma lista de correio no CC e não no BCC.\n\nVocê especifica um número máximo de destinatários não BCC (TO e CC) e, se esse número for excedido, você receberá um aviso quando enviar o email. Você pode continuar ou cancelar. Você também pode mover todos os destinatários para o BCC e enviar o email.\n\nO complemento complementar, Expandir listas de correio, converterá todas as listas de correio em seus destinatários constituintes, removendo duplicatas.",
+        "en-US": "Helps prevent you accidentally revealing other recipients' email addresses, perhaps by inserting a mailing list in CC rather than BCC.\n\nYou specify a maximum number of non-BCC (TO and CC) recipients and if this number is exceeded you will receive a warning when you send the email. You can continue or cancel. You can also move all recipients into BCC and send the email.\n\nThe companion addon, Expand mailing lists, will convert all mailing lists into their constituent recipients, removing duplicates.",
+        "it": "Ti aiuta a non rivelare accidentalmente gli indirizzi e-mail degli altri destinatari, magari inserendo una liste di distribuzione in Cc anziché in Cnn.\n\nSi specifica un numero massimo di destinatari non Cnn (A e Cc) e se questo numero viene superato, si riceverà un avviso quando si invia l'e-mail. Puoi continuare o cancellare. Puoi anche spostare tutti i destinatari in Cnn e inviare l'e-mail.\n\nIl componente aggiuntivo associato, Espandi le liste di distribuzione, convertirà tutte le mailing list nei rispettivi destinatari, rimuovendo i duplicati.",
+        "pl": "Pomaga zapobiegać przypadkowemu ujawnieniu adresów e-mail innych odbiorców, być może poprzez wstawienie listy dystrybuvyjna w kopia zamiast w ukryta kopia.\n\nPodajesz maksymalną liczbę odbiorców nie ukryta (Do i Kopia), a jeśli liczba ta zostanie przekroczona, otrzymasz ostrzeżenie podczas wysyłania wiadomości e-mail. Możesz kontynuować lub anulować. Możesz także przenieść wszystkich odbiorców do ukryta kopia i wysłać wiadomość e-mail.\n\nDodatek towarzyszący, Rozwiń listy dystrybuvyjna, przekształci wszystkie listy dystrybuvyjna w swoich adresatów, usuwając duplikaty.",
+        "ja": "他の受信者の電子メールアドレスを誤って公開するのを防ぐのに役立ちます。\n\n非BCC（TOおよびCC）受信者の最大数を指定する必要があります。この数を超えると、メールを送信するときに警告が表示されます。 続行またはキャンセルできます。 メールを送信する前に、すべての受信者をBCCに変更することもできます。\n\nコンパニオンアドオン「アドレスリストを全部展開する」は、すべてのメーリングリストを構成する受信者に変換し、重複を削除します。",
+        "es": "Ayuda a evitar que reveles accidentalmente las direcciones de correo electrónico de otros destinatarios, quizás insertando una lista de correo en CC en lugar de BCC.\n\nUsted especifica un número máximo de destinatarios que no son BCC (TO y CC) y si se excede este número, recibirá una advertencia cuando envíe el correo electrónico. Puedes continuar o cancelar. También puede mover a todos los destinatarios a BCC y enviar el correo electrónico.\n\nEl complemento complementario, Expandir listas de correo, convertirá todas las listas de correo en sus destinatarios constitutivos, eliminando duplicados."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/limit-non-bcc-recipients/edit",
+    "guid": "limit_non-BCC_recipients@davero.addons.mozilla.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987776-64.png?modified=9012d703",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987776-32.png?modified=9012d703",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987776-64.png?modified=9012d703"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-03-28T17:55:03Z",
+    "name": {
+        "el": "Περιορίστε τους μη κρυφή παραλήπτες",
+        "fr": "Limiter les destinataires non cachés",
+        "de": "Limit der nicht ausgeblendeten Empfänger",
+        "nl": "Beperk niet-BCC ontvangers",
+        "pt-PT": "Limitar destinatários não BCC",
+        "en-US": "Limit non-BCC recipients",
+        "it": "Controlla il numero di destinatari non in Ccn",
+        "pl": "Ogranicz nie ukryty odbiorców",
+        "ja": "非BCC受信者を制限する",
+        "es": "Limitar el número de direcciones fuera de Bcc"
+    },
+    "previews": [
+        {
+            "id": 205945,
+            "caption": {
+                "fr": "",
+                "en-US": "Preferences."
+            },
+            "image_size": [
+                695,
+                215
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205945.png?modified=1585492441",
+            "thumbnail_size": [
+                320,
+                99
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205945.png?modified=1585492441"
+        },
+        {
+            "id": 205946,
+            "caption": {
+                "fr": "",
+                "en-US": "Warning: non-BCC limit exceeded on sending."
+            },
+            "image_size": [
+                606,
+                332
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205946.png?modified=1585492441",
+            "thumbnail_size": [
+                320,
+                175
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205946.png?modified=1585492441"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/limit-non-bcc-recipients/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987776",
+    "slug": "limit-non-bcc-recipients",
+    "status": "public",
+    "summary": {
+        "el": "Ελέγξτε ότι ο αριθμός των μη κρυφή παραληπτών δεν υπερβαίνει μια παράμετρο.",
+        "fr": "Vérifiez que le nombre total de destinataires non cachés (POUR ou COPIE) ne dépasse pas un paramètre.",
+        "de": "Stellen Sie sicher, dass die Anzahl der Empfänger An oder CC einen Parameter nicht überschreitet.",
+        "nl": "Controleer of het aantal niet-BCC ontvangers een parameter niet overschrijdt.",
+        "pt-PT": "Verifique se o número de destinatários não BCC não excede um parâmetro.",
+        "en-US": "Check that number of non-BCC recipients does not exceed a parameter.",
+        "it": "Verificare che il numero di destinatari A: e Cc: non sia maggiore di un parametro.",
+        "pl": "Sprawdź czy liczba nie ukrytych odbiorców nie przekracza parametru.",
+        "ja": "BCC以外の受信者の数がパラメーターを超えていないことを確認します。",
+        "es": "Verificar del número de direcciones A o Cc sea menor que un parámetro."
+    },
+    "support_email": {
+        "en-US": "daveroaddonsupp@gmail.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/revad/limit_non-BCC_recipients"
+    },
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/limit-non-bcc-recipients/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true
+        }
+    }
+}

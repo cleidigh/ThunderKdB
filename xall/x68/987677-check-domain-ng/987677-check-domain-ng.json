@@ -17,26 +17,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2473507,
+        "id": 2473509,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
-                "min": "68.0"
+                "max": "68.5.0",
+                "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/check-domain-ng/versions/2473507",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/check-domain-ng/versions/2473509",
         "files": [
             {
-                "id": 1016649,
-                "created": "2020-03-04T07:23:30Z",
-                "hash": "sha256:077b6c5b3756bf6584c0ef186a64fbed3db268864f6682dcacd271753b5d7af0",
+                "id": 1016651,
+                "created": "2020-03-05T07:00:40Z",
+                "hash": "sha256:c4686bd77e6cc717a29e88dd0f222a6230f6f2486d56e2bc1d449d88f151a631",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
-                "platform": "linux",
-                "size": 20413,
+                "platform": "all",
+                "size": 20426,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016649/check_domain_ng-2.1-tb-linux.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016651/check_domain_ng-2.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -49,11 +49,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Add-on work on TB68."
+            "en-US": "This version work on TB 60 and TB 68"
         },
-        "reviewed": "2020-03-04T14:04:52Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-domain-ng/versions/2.1",
-        "version": "2.1"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-domain-ng/versions/2.3",
+        "version": "2.3"
     },
     "default_locale": "en-US",
     "description": null,
@@ -72,7 +72,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-03-04T14:04:52Z",
+    "last_updated": "2020-03-14T01:24:39Z",
     "name": {
         "en-US": "Check Domain NG"
     },
@@ -104,9 +104,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp60": true,
+            "comp61plus": true
         }
     }
 }
