@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 9511,
+    "average_daily_users": 8700,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -27,26 +27,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2473430,
+        "id": 2473612,
         "compatibility": {
             "thunderbird": {
                 "max": "69.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473430",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473612",
         "files": [
             {
-                "id": 1016558,
-                "created": "2020-02-14T01:38:46Z",
-                "hash": "sha256:7751e135c5ef04d16e1626372dbb9b8b2a3a83216d926bc2dfe78facd336f5b5",
+                "id": 1016760,
+                "created": "2020-04-14T16:54:20Z",
+                "hash": "sha256:073622fe2ed27cffb05e6cab7deefee783ddac68b13e9f14639add5b5b307c66",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 667775,
+                "size": 683714,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016558/smarttemplate4-2.9.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016760/smarttemplate4-2.10.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -56,14 +56,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.9.1"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.10.1"
         },
         "release_notes": {
-            "en-US": "Full change log with screen shots <a href=\"http://smarttemplate4.mozdev.org/version.html#2.9.1\" rel=\"nofollow\">can be found here</a>\n<b>Hotfix 2.9.1</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/53\" rel=\"nofollow\">[issue 53]</a>      template may not work if signature path is invalid.\n\nOn mail accounts where a non-existent path is defined for signature the template functionality may break on singular accounts. Typically an exception will be displayed in error log:<code>\n  insertTemplate - exception during parsing. Continuing with inserting template\n</code></li></ul>\n<b>Improvements</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/45\" rel=\"nofollow\">[issue 45]</a> Support for using <code>%file()%</code>  with relative paths and nesting <code>%file()%</code> variables within a template. Also supports this for including more html parts and images in subfolders relative to the template.</li><li> <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/48\" rel=\"nofollow\">[issue 48]</a> Support [[optional double brackets]] syntax for all extended address book fields. This will make it possible to show more information from the Addressbook without  causing half-empty lines:<code>\n&lt;h3&gt;Sender Info&lt;/h3&gt;\nSender: %from% \n[[Mail: %from(mail)% &lt;br&gt;]]\n[[First Name: %from(firstname)% &lt;br&gt;]]\n[[Name: %from(name)% &lt;br&gt;]]\n[[Additional mail: %from(additionalmail)% &lt;br&gt;]]\n[[Work City: %from(work.city)%&lt;br&gt;]]\n[[Web Page: %from(work.webpage)%&lt;br&gt;]]\n</code></li><li>Remember the last path separately for opening templates from the menu directly.</li></ul>\n<b>Bug Fixes</b>\n<ul>   <li> Fixed: <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/42\" rel=\"nofollow\">[issue 42]</a> The <code>(lastname)</code> switch uses first name from address book if only a single name is matched from the received address. This affects any address book switch of the format <code>%from(lastname)%</code>, provided there is only a single name in the transmitted email address, e.g. john@mail.com.</li>  <li> Fixed: <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/41\" rel=\"nofollow\">[issue 41]</a>       No file template menus in single message window\n  Single message windows (not tabs) did not support replying / writing mails using the external HTML template files.</li>  <li> Fixed: <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/43\" rel=\"nofollow\">[issue 43]</a>      <code>%file(template)%</code> doesn't work on Mac for paths that start with \"/user\". Unfortunately, it is still not supported to use relative <code>&lt;img&gt;</code> paths in a html file, but when using <code>%file(img)%</code> using a path relative to the location of the template should be possible now when used from within an external HTML template file. \n\n  Ideally we will need this to support <code>&lt;img&gt;</code> paths as well.</li>  <li>Fix: Remove double quote from alt attribute in %file(image,alttext)%</li>  <li>Fixed: Do not run cleanupDeferredFields() on quoted elements. This leads to problems with <code>%file()%</code> variables in replied emails (both correspondents have to use SmartTemplate⁴ for this problem to occur.    </li>  <li>Fixed: <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/46\" rel=\"nofollow\">[issue 46]</a> In Thunderbird 60, mixed Stationery / SmartTemplate, external html file items added by SmartTemplate⁴ do not work.</li>  <li> Fixed: <a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/49\" rel=\"nofollow\">[issue 49]</a> CSS pattern <code>%;-ms-text-size-adjust:100%;</code> is falsely recognized as header variable. </li></ul>"
+            "en-US": "Full change log with screen shots <a href=\"http://smarttemplate4.mozdev.org/version.html#2.10.1\" rel=\"nofollow\">can be found here</a>\n\nYou can also find there a discounted sale for Pro and Standard licenses for the 2 weeks following easter!\n\n<b>Enhancements</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/59\" rel=\"nofollow\">[issue 59]</a> External templates: SmartTemplate⁴ now supports image tags with relative location.  This will make external templates management more compatible with Stationery and make it easier to preview / trouble shoot our templates in a web browser.\n\nIn order to use relative image paths, such as &lt;img src=\"images/img1.jpg\"&gt; these tags must be included in a html template. To use this in an account template, simply include the external html file using the %file()% variable. When SmartTemplate opens the file, it will now remember the file's location and be able to insert images from this position, just like when loading a  stored web page.\n\nAfter placing the cursor in the template field, expand the dialog via <i>Advanced</i> and open the chapter <i>fixed variables</i>. Then Click on the <code>%file()%</code> variable and select a file from disk.</li><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/56\" rel=\"nofollow\">[issue 56]</a> Support including external style sheets. Use the new %style()% variable to insert a style block wtih CSS rules. Also, supports relative paths, just like %file()%.</li><li>Remember the last path separately for opening templates from the menu directly.</li></ul>\n<b>Bug Fixes</b>\n<ul>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/51\" rel=\"nofollow\">[issue 51]</a> Outgoing SMTP always using DEFAULT account. When changing the <i>from</i> address from the drop down before editing the email, Thunderbird did not internally change the from header, which could cause emails to be sent from the wrong account. This is now fixed.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/54\" rel=\"nofollow\">[issue 54]</a>Fixed: ST4 now removes unwanted empty lines in reply/forward headers in plain-text emails.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/55\" rel=\"nofollow\">[issue 55]</a> Added back some of the support for Postbox, which was broken since v2.1. You can find patched versions of previous releases at the issue.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/58\" rel=\"nofollow\">[issue 58]</a> If firstName is guessed from the address book field <i>DisplayName</i>,  it can lead to last name duplication in case a format like <code>%from(firstname,lastname)%</code> is used and the first name field in the address card is empty.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.9.1",
-        "version": "2.9.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.10.1",
+        "version": "2.10.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -91,7 +91,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-02-14T13:07:10Z",
+    "last_updated": "2020-04-14T17:18:51Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",

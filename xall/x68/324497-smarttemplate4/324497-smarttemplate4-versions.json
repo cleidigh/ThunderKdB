@@ -1,5 +1,91 @@
 [
     {
+        "id": 2473612,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "69.0",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473612",
+        "files": [
+            {
+                "id": 1016760,
+                "created": "2020-04-14T16:54:20Z",
+                "hash": "sha256:073622fe2ed27cffb05e6cab7deefee783ddac68b13e9f14639add5b5b307c66",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 683714,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016760/smarttemplate4-2.10.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 7344,
+            "name": {
+                "en-US": "CC BY-ND 4.0"
+            },
+            "text": {
+                "en-US": "LICENSE\n\n\nSmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the SmartTemplate4 Add-on (distributed as a XPI file) and all files contained within it\nPremium Feature - a feature or function of the software which is protected by the mechanism outlined below\nSmartTemplate4 Pro - Refers to the registered version of SmartTemplate4\n\n\nAll contents of The Program are subject to the GNU General Public License Version 3\n(the \"License\"); you may not use the file except in compliance with\nthe License. You may obtain a copy of the complete License at\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/legalcode\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a>\nFor a  human-readable summary thereof please refer\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by \na paid registration scheme. Registration keys can be obtained via various licensing links\nfrom within the software (Settings &gt; Advanced &gt; SmartTemplate4 Pro tab, SmartTemplate4 context menu, \npremium notification messages). The profits from Registration are used to develop\nand distribute the program further and to feed the author, as he would like to spend\nmore time developing open source software. Some Premium features may be available in \nthe free software, but they may be restricted (e.g. through a notification to the \nregistration). Premium features are not essential to the core functionality of \nthe Program, but are there to provide an incentive for financially supporting the \nenhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys.\nRegistration keys are personal, non-transferrable and usually restricted to a time period\n(typically one year). To protect their personal nature they are tied to the user's \nEmail address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused \nin order to avoid our monetisation by giving this away for free or cheaper than us \nthus disincentivising the current developers from putting a lot of time into \ndevelopment and support.\n\n\nIf plan to you use large portions of the code please contact the author\n(Axel Grude)\nAnd Support (Marky Mark DE)\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nCreative Commons (CC BY-ND 4.0) License for more details.\n\n\nATTRIBUTIONS\n\nSmartTemplate4 includes work by\n\nCurrent developer: \nAxel Grude\nMarky Mark DE\n\nContributors: \nAris - style support\ntool8 - development, Version 0.7.2 - 0.8.0\n\nTranslations: \nThe current list of translators is listed in the install.rdf (Add-ons Manager / About) and\ndisplayed on the \"about\" Tab.\n\nNOIA ICON SET:\nThis Iconset is Published under GNU LESSER GENERAL PUBLIC LICENSE \n-&gt; see:Noia_KDE_0.95.tar_4.tgz / lesser.txt\n\t\t       \nMade by Carlitus (Carles Carbonell Bernado)\n &lt;mail@carlitus.net&gt;"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.10.1"
+        },
+        "release_notes": {
+            "en-US": "Full change log with screen shots <a href=\"http://smarttemplate4.mozdev.org/version.html#2.10.1\" rel=\"nofollow\">can be found here</a>\n\nYou can also find there a discounted sale for Pro and Standard licenses for the 2 weeks following easter!\n\n<b>Enhancements</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/59\" rel=\"nofollow\">[issue 59]</a> External templates: SmartTemplate⁴ now supports image tags with relative location.  This will make external templates management more compatible with Stationery and make it easier to preview / trouble shoot our templates in a web browser.\n\nIn order to use relative image paths, such as &lt;img src=\"images/img1.jpg\"&gt; these tags must be included in a html template. To use this in an account template, simply include the external html file using the %file()% variable. When SmartTemplate opens the file, it will now remember the file's location and be able to insert images from this position, just like when loading a  stored web page.\n\nAfter placing the cursor in the template field, expand the dialog via <i>Advanced</i> and open the chapter <i>fixed variables</i>. Then Click on the <code>%file()%</code> variable and select a file from disk.</li><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/56\" rel=\"nofollow\">[issue 56]</a> Support including external style sheets. Use the new %style()% variable to insert a style block wtih CSS rules. Also, supports relative paths, just like %file()%.</li><li>Remember the last path separately for opening templates from the menu directly.</li></ul>\n<b>Bug Fixes</b>\n<ul>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/51\" rel=\"nofollow\">[issue 51]</a> Outgoing SMTP always using DEFAULT account. When changing the <i>from</i> address from the drop down before editing the email, Thunderbird did not internally change the from header, which could cause emails to be sent from the wrong account. This is now fixed.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/54\" rel=\"nofollow\">[issue 54]</a>Fixed: ST4 now removes unwanted empty lines in reply/forward headers in plain-text emails.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/55\" rel=\"nofollow\">[issue 55]</a> Added back some of the support for Postbox, which was broken since v2.1. You can find patched versions of previous releases at the issue.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/58\" rel=\"nofollow\">[issue 58]</a> If firstName is guessed from the address book field <i>DisplayName</i>,  it can lead to last name duplication in case a format like <code>%from(firstname,lastname)%</code> is used and the first name field in the address card is empty.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.10.1",
+        "version": "2.10.1"
+    },
+    {
+        "id": 2473610,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "69.0",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473610",
+        "files": [
+            {
+                "id": 1016758,
+                "created": "2020-04-14T14:36:41Z",
+                "hash": "sha256:26850dd004b099afae682a3e7737ec61220aa58d4a6eaf240e8c46e6cee1d135",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 683554,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016758/smarttemplate4-2.10-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 7344,
+            "name": {
+                "en-US": "CC BY-ND 4.0"
+            },
+            "text": {
+                "en-US": "LICENSE\n\n\nSmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the SmartTemplate4 Add-on (distributed as a XPI file) and all files contained within it\nPremium Feature - a feature or function of the software which is protected by the mechanism outlined below\nSmartTemplate4 Pro - Refers to the registered version of SmartTemplate4\n\n\nAll contents of The Program are subject to the GNU General Public License Version 3\n(the \"License\"); you may not use the file except in compliance with\nthe License. You may obtain a copy of the complete License at\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/legalcode\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a>\nFor a  human-readable summary thereof please refer\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by \na paid registration scheme. Registration keys can be obtained via various licensing links\nfrom within the software (Settings &gt; Advanced &gt; SmartTemplate4 Pro tab, SmartTemplate4 context menu, \npremium notification messages). The profits from Registration are used to develop\nand distribute the program further and to feed the author, as he would like to spend\nmore time developing open source software. Some Premium features may be available in \nthe free software, but they may be restricted (e.g. through a notification to the \nregistration). Premium features are not essential to the core functionality of \nthe Program, but are there to provide an incentive for financially supporting the \nenhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys.\nRegistration keys are personal, non-transferrable and usually restricted to a time period\n(typically one year). To protect their personal nature they are tied to the user's \nEmail address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused \nin order to avoid our monetisation by giving this away for free or cheaper than us \nthus disincentivising the current developers from putting a lot of time into \ndevelopment and support.\n\n\nIf plan to you use large portions of the code please contact the author\n(Axel Grude)\nAnd Support (Marky Mark DE)\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nCreative Commons (CC BY-ND 4.0) License for more details.\n\n\nATTRIBUTIONS\n\nSmartTemplate4 includes work by\n\nCurrent developer: \nAxel Grude\nMarky Mark DE\n\nContributors: \nAris - style support\ntool8 - development, Version 0.7.2 - 0.8.0\n\nTranslations: \nThe current list of translators is listed in the install.rdf (Add-ons Manager / About) and\ndisplayed on the \"about\" Tab.\n\nNOIA ICON SET:\nThis Iconset is Published under GNU LESSER GENERAL PUBLIC LICENSE \n-&gt; see:Noia_KDE_0.95.tar_4.tgz / lesser.txt\n\t\t       \nMade by Carlitus (Carles Carbonell Bernado)\n &lt;mail@carlitus.net&gt;"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.10"
+        },
+        "release_notes": {
+            "en-US": "Full change log with screen shots <a href=\"http://smarttemplate4.mozdev.org/version.html#2.10\" rel=\"nofollow\">can be found here</a>\n\nYou can also find there a discounted sale for Pro and Standard licenses for the 2 weeks following easter!\n\n<b>Enhancements</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/59\" rel=\"nofollow\">[issue 59]</a> External templates: SmartTemplate⁴ now supports image tags with relative location.  This will make external templates management more compatible with Stationery and make it easier to preview / trouble shoot our templates in a web browser.\n\nIn order to use relative image paths, such as &lt;img src=\"images/img1.jpg\"&gt; these tags must be included in a html template. To use this in an account template, simply include the external html file using the %file()% variable. When SmartTemplate opens the file, it will now remember the file's location and be able to insert images from this position, just like when loading a  stored web page.\n\nAfter placing the cursor in the template field, expand the dialog via <i>Advanced</i> and open the chapter <i>fixed variables</i>. Then Click on the <code>%file()%</code> variable and select a file from disk.</li><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/54\" rel=\"nofollow\">[issue 54]</a> Support including external style sheets. Use the new %style()% variable to insert a style block wtih CSS rules. Also, supports relative paths, just like %file()%.</li><li>Remember the last path separately for opening templates from the menu directly.</li><li>Plain text</li></ul>\n<b>Bug Fixes</b>\n<ul>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/51\" rel=\"nofollow\">[issue 51]</a> Outgoing SMTP always using DEFAULT account. When changing the <i>from</i> address from the drop down before editing the email, Thunderbird did not internally change the from header, which could cause emails to be sent from the wrong account. This is now fixed.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/54\" rel=\"nofollow\">[issue 54]</a>Fixed: ST4 now removes unwanted empty lines in reply/forward headers in plain-text emails.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/55\" rel=\"nofollow\">[issue 55]</a> Added back some of the support for Postbox, which was broken since v2.1. You can find patched versions of previous releases at the issue.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/58\" rel=\"nofollow\">[issue 58]</a> If firstName is guessed from the address book field <i>DisplayName</i>,  it can lead to last name duplication in case a format like <code>%from(firstname,lastname)%</code> is used and the first name field in the address card is empty.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.10",
+        "version": "2.10"
+    },
+    {
         "id": 2473430,
         "channel": "listed",
         "compatibility": {
