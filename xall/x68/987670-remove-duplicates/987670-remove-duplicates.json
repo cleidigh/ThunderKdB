@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2417,
+    "average_daily_users": 2599,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -17,26 +17,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2473176,
+        "id": 2473623,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "71.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remove-duplicates/versions/2473176",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remove-duplicates/versions/2473623",
         "files": [
             {
-                "id": 1016287,
-                "created": "2020-01-08T05:24:56Z",
-                "hash": "sha256:cc93ec2dc750798e33d0d6d3d3fd06049019a7339a440bf264031753d5ffe066",
+                "id": 1016772,
+                "created": "2020-04-22T03:49:34Z",
+                "hash": "sha256:8bb983ca48e397a42737a8af4589966d445b618920493930d2d25a31677b03f4",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 52217,
+                "size": 53044,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016287/remove_duplicates-1.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016772/remove_duplicates-1.7-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -49,11 +49,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fixed default preferences.\nAdded Options item to folder context menu."
+            "en-US": "Fixed de-DE and fr-FR locales.\nAdded option to ignore subfolders.\nMoved debug info from alerts to the console log.\nAdded option to ignore archive folders."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/versions/1.6",
-        "version": "1.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/versions/1.7",
+        "version": "1.7"
     },
     "default_locale": "en-US",
     "description": {
@@ -76,45 +76,45 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-01-17T20:18:14Z",
+    "last_updated": "2020-04-30T23:56:00Z",
     "name": {
         "en-US": "Remove Duplicates"
     },
     "previews": [
         {
-            "id": 205809,
+            "id": 205953,
             "caption": {
                 "en-US": "Duplicates"
             },
             "image_size": [
                 730,
-                526
+                528
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205809.png?modified=1570032850",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205953.png?modified=1587878900",
             "thumbnail_size": [
-                278,
+                277,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205809.png?modified=1570032850"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205953.png?modified=1587878900"
         },
         {
-            "id": 205808,
+            "id": 205954,
             "caption": {
                 "en-US": "Options"
             },
             "image_size": [
-                546,
-                327
+                608,
+                391
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205808.png?modified=1570032850",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205954.png?modified=1587878919",
             "thumbnail_size": [
-                320,
-                192
+                311,
+                200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205808.png?modified=1570032850"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205954.png?modified=1587878919"
         },
         {
-            "id": 205807,
+            "id": 205955,
             "caption": {
                 "en-US": "About"
             },
@@ -122,12 +122,12 @@
                 334,
                 312
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205807.png?modified=1570032846",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205955.png?modified=1587878900",
             "thumbnail_size": [
                 214,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205807.png?modified=1570032846"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205955.png?modified=1587878900"
         }
     ],
     "public_stats": true,
@@ -158,9 +158,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp69plus": true,
+            "comp61plus": true
         }
     }
 }

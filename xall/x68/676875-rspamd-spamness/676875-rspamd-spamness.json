@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 988,
+    "average_daily_users": 1039,
     "categories": {
         "thunderbird": [
             "message-and-news-reading",
@@ -18,26 +18,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2473129,
+        "id": 2473590,
         "compatibility": {
             "thunderbird": {
                 "max": "68.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rspamd-spamness/versions/2473129",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rspamd-spamness/versions/2473590",
         "files": [
             {
-                "id": 1016240,
-                "created": "2020-01-01T14:32:35Z",
-                "hash": "sha256:76f998562f2052aed399dd914cb284d67c4076b3d56da3fc5e86e90e65e34b0f",
+                "id": 1016736,
+                "created": "2020-04-03T13:31:57Z",
+                "hash": "sha256:a4f6b3c4c5aef43b53c84f51401bee0615aea919551fcb3a5f1e36c61c2fd80e",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 71828,
+                "size": 71829,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016240/rspamd_spamness-1.1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016736/rspamd_spamness-1.1.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -73,11 +73,11 @@
             "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
         "release_notes": {
-            "en-US": "+ Added `per-account folder location settings` options dialog window that allows to set distinct `ham/spam` training folder URIs for mail accounts.\n+ Added `dark` Thunderbird themes and OS color modes support which is limited to the message header pane (background of the Rspamd symbols) as Thunderbird dark mode seems not consistent yet.\n- Fixed moving/copying messages to \"per-account\" training folders from subfolders. In previous add-on versions per-account training folders worked only for moving/copying from the root folders and 1 level deep.\n- Restored add-on options item in the context menu.\n- Fixed groupboxes display in the main add-on options window.\n* The add-on preferences tab converted to a dialog window.\n* Now preferences in the main add-on options window are saved instantly after they have been changed."
+            "en-US": "- Fix RGBA matching in theme detection when leading zero is omitted in Alpha channel (by @ichier)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/versions/1.1.0",
-        "version": "1.1.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/versions/1.1.1",
+        "version": "1.1.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -102,7 +102,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-01-03T16:59:45Z",
+    "last_updated": "2020-04-30T23:47:17Z",
     "name": {
         "en-US": "Rspamd-spamness"
     },

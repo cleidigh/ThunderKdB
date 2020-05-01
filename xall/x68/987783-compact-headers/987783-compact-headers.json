@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 100,
+    "average_daily_users": 114,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -18,26 +18,26 @@
     },
     "contributions_url": "",
     "current_version": {
-        "id": 2473437,
+        "id": 2473567,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/compact-headers/versions/2473437",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/compact-headers/versions/2473567",
         "files": [
             {
-                "id": 1016565,
-                "created": "2020-02-15T03:17:57Z",
-                "hash": "sha256:6b58136c840c41874e12a268a29ef9aee9e7e4e2992b2ea5c878c4f2f3bdcbd6",
+                "id": 1016711,
+                "created": "2020-03-24T06:34:58Z",
+                "hash": "sha256:d56197d007fca46bdd583c51f1a11478dde9090bf66ea6835789675b14d08a68",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 2455,
+                "size": 4460,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016565/compact_headers-1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016711/compact_headers-2.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -70,14 +70,16 @@
             },
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
-        "release_notes": null,
-        "reviewed": "2020-02-17T03:08:57Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/compact-headers/versions/1.1",
-        "version": "1.1"
+        "release_notes": {
+            "en-US": "Added twisty.\nRemoved toolbarbutton.\nFixed uninstall &amp; disable.\nAdded shortcut key [Alt-D]."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/compact-headers/versions/2.1",
+        "version": "2.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Currently a toolbar button, version 2 adds a twisty and removes the toolbarbutton."
+        "en-US": "Adds a twisty to the header area which toggles between compact and normal headers."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/compact-headers/edit",
@@ -96,7 +98,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-02-17T03:08:57Z",
+    "last_updated": "2020-04-22T10:37:56Z",
     "name": {
         "en-US": "Compact Headers"
     },
@@ -147,7 +149,7 @@
     "slug": "compact-headers",
     "status": "public",
     "summary": {
-        "en-US": "Limits displayed headers to 2 lines. Currently a toolbar button, version 2 adds a twisty to the header area and removes the toolbar button."
+        "en-US": "Limits displayed headers to 2 lines.\nAdds a twisty to the header area."
     },
     "support_email": {
         "en-US": "dillinger@kpnmail.nl"

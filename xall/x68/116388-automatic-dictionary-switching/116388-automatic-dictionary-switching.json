@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5772,
+    "average_daily_users": 6127,
     "categories": {
         "thunderbird": [
             "language-support",
@@ -18,30 +18,34 @@
     },
     "contributions_url": null,
     "current_version": {
-        "id": 2472314,
+        "id": 2473579,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "67.0"
+                "min": "74.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/automatic-dictionary-switching/versions/2472314",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/automatic-dictionary-switching/versions/2473579",
         "files": [
             {
-                "id": 1015384,
-                "created": "2019-09-08T14:15:47Z",
-                "hash": "sha256:a46e1f130bcf925bc6e3a3808ecef834a527e4c6a90f923833eb588a350aef28",
-                "is_restart_required": true,
+                "id": 1016723,
+                "created": "2020-03-29T18:43:40Z",
+                "hash": "sha256:dc9d7dde7a1e7c9d78696c774dfc52f7f684b281b8df68ca06127eed6ee2f428",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 50609,
+                "size": 54002,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015384/automatic_dictionary-1.12.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016723/automatic_dictionary-2.0.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "storage",
+                    "addressBooks"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 22,
             "name": {
@@ -72,10 +76,12 @@
             },
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "=== 2.0.0\n\n* Migrated to MailExtension\n* Drop support for conversations\n* Broken compatibility with TB &lt; 74\n* Removed unit test, only integration tests are working."
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/automatic-dictionary-switching/versions/1.12.0",
-        "version": "1.12.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/automatic-dictionary-switching/versions/2.0.0",
+        "version": "2.0.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -108,7 +114,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-10T04:16:52Z",
+    "last_updated": "2020-04-29T20:09:12Z",
     "name": {
         "ca": "Automatic dictionary",
         "de": "Automatisches Wechseln des Wörterbuchs",
