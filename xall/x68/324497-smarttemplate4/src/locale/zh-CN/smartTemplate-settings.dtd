@@ -132,7 +132,12 @@
 <!ENTITY sig2.label "Siganture 签名（来自TB帐户设置，但没有'--'">
 <!ENTITY fileHTML.label "HTML 或纯文本文件。省略可选的字符集参数时，将假定 UTF-8。">
 <!ENTITY fileImage.label "图像文件 (png,jpg,gif,bmp,svg)。如果图像不能找到，将显示可选的 altText。">
+<!ENTITY fileCSS.label "External style sheet (css). Include your favorite CSS rules to share between different templates.">
 <!ENTITY attach.label "添加文件作为附件">
+<!ENTITY basepath.desc "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these.">
+<!ENTITY basepath.desc2 "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email.">
+<!ENTITY basepath.relative "Use this variable to find the images in the same location as the html file template.">
+<!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "设置光标位置">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "收件人变量 (To)">

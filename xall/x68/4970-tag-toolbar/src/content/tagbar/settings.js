@@ -832,7 +832,7 @@ TTBSetting.prototype.showColorSample = function(lightness)
 	if (isNaN(lightness)) return;
 	var fg = document.getElementById("TTBThreadFgStyle").getAttribute("value");
 
-	var colors = TTBCSSManager.getAllTagColors();
+	var colors = TTBCSSManager.getAllTagColors(false,true);
 	//var colors = TTBCSSManager.getCurrentTagColors();
 	colors = colors.sort();
 	var list = document.getElementById("TTBThreadStyleLightness");

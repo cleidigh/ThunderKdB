@@ -1,4 +1,5 @@
-TTBCSSManager = {
+var {TagUtils} = ChromeUtils.import("resource:///modules/TagUtils.jsm");
+var TTBCSSManager = {
 	cssURI: null,
 	bgColors: [], //bgColors[selector]: FFFFFF
 	sss: null,
@@ -114,14 +115,20 @@ TTBCSSManager = {
 		}
 	},
 	
-	getAllTagColors: function(hex) {
+	getAllTagColors: function(hex, unique) {
 		var color;
 		var ret = [];
+		var checked = [];
 		for (color in this.bgColors) {
-			if (hex) {
-				ret.push(this.bgColors[color]);
+			var rgbStr = this.bgColors[color];
+			if (unique && checked[rgbStr]) {
+				continue;
 			} else {
-				var rgbStr = this.bgColors[color];
+				checked[rgbStr] = true;
+			}
+			if (hex) {
+				ret.push(rgbStr);
+			} else {
 				if (rgbStr == "white") {
 					rgbStr = "FFFFFF";
 				} else if (rgbStr == "black") {
@@ -174,9 +181,19 @@ TTBCSSManager = {
 			var fgColor = this.getFgColor(r, g, b, bgColor[0], bgColor[1], bgColor[2], lightness);
 
 			//newCSS = newCSS + "treechildren::-moz-tree-cell-text(" + color + "), ." + color +":not([_moz-menuactive]) {color: rgb("+ fgColor.join(", ") + ") !important;}\n";
+			if (gTTBPreferences.getIntPref("ttb.thread_fgcolor", 0) > 0) {
+				newCSS = newCSS + "treechildren::-moz-tree-cell-text(" + color + "), ." + color +":not([_moz-menuactive]) {color: rgb("+ fgColor.join(", ") + ") !important;}\n";
+				//redefine color of selected row
+			  var textColor = "black";
+  			if (!TagUtils.isColorContrastEnough(color)) {
+    			textColor = "white";
+  			}
+				newCSS = newCSS + "treechildren::-moz-tree-cell-text(" + color + ", selected, focus){color: " + textColor + " !important;}\n";
+			}
 			newCSS = newCSS + "treechildren::-moz-tree-cell(" + color + "){background-color: rgb(" + bgColor.join(", ") +") !important;}\n";
 			newCSS = newCSS + "treechildren::-moz-tree-cell(" + color + ", selected, focus){background-color: transparent !important;}\n";
 		}
+		
 		return newCSS;
 	},
 	

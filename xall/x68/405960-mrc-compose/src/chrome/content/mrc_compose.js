@@ -208,17 +208,32 @@ function CompFields2Recipients(msgCompFields)
 
     // define values of fields
     let f = function(elt_id, value, field) {
+        let headerParser = MailServices.headerParser;
         let recipient = null;
-        if (mimeConvert) {
-            try {
-                recipient = value;
-                recipient = mimeConvert.decodeMimeHeader(recipient, null, false, true);
-            } catch (ex) {
+        let l_recipients = Array();
+        let rcp = msgCompFields.splitRecipients(value, false, {});
+        if (rcp.length) {
+            mrcTools.mrcLog("f() :     msgCompFields.splitRecipients()");
+            for (let i=0 ; i < rcp.length ; i++) {
+                mrcTools.mrcLog("f() :     rcp "+i+" : '"+rcp[i]+"'");
+                // check for quotes
+                fieldValue = rcp[i];
+                try {
+                    rcp_ok = headerParser
+                      .makeFromDisplayAddress(fieldValue, {})
+                      .map(fullValue =>
+                        headerParser.makeMimeAddress(fullValue.name, fullValue.email)
+                      )
+                      [0];
+                } catch (ex) {
+                    rcp_ok = fieldValue;
+                }
+                l_recipients.push(rcp_ok);
             }
         }
-        if (!recipient) {
-            recipient = value;
-        }
+        recipient = l_recipients.join(mrcAComplete.PART_SUFFIX+mrcAComplete.SEP+mrcAComplete.PART_PREFIX);
+        mrcTools.mrcLog("f() : "+elt_id+" recipient='"+recipient+"'");
+
         let inputField = document.getElementById(elt_id);
         inputField.value = recipient;
         if (recipient != "" && mrcAComplete.param_add_comma) {
@@ -1905,17 +1920,41 @@ var mrcAComplete = {
          * return
          *   object
          */
-        let emails = [];
+
+        // the popularity of a card is max of popularity of each email
+        let card_pop_i = 0;
+        let cb_emails = [];
         for (let i=0, l=cbcard.email.length ; i<l; i++) {
-            emails.push(cbcard.email[i][0].join());
+            let email = cbcard.email[i][0].join();
+            let email_pop_i = 0;
+            if (window.cardbookRepository.cardbookMailPopularityIndex.hasOwnProperty(email)) {
+                email_pop_i = Number(window.cardbookRepository.cardbookMailPopularityIndex[email]);
+                if (email_pop_i > card_pop_i) {
+                    card_pop_i = email_pop_i;
+                }
+            }
+            cb_emails.push({'email':email, 'pop': email_pop_i});
         }
+
+        // now reverse sort emails by popularity
+        let fct = function(a, b) {
+            return b['pop'] - a['pop'];
+        };
+        cb_emails.sort(fct);
+
+        // extract emails only
+        let emails = [];
+        for (let i=0 ; i < cb_emails.length ; i++) {
+            emails.push(cb_emails[i]['email']);
+        }
+
         let temp = {
             'emailList' : emails,
             'displayName' : cbcard.fn,
             'firstName' : cbcard.firstname,
             'lastName' : cbcard.lastname,
             'nickName' : cbcard.nickname,
-            'mrcPopularity' : "0",
+            'mrcPopularity' : String(card_pop_i),
             'isMailList' : false,
             'mailListURI' : "",
             };
@@ -1954,7 +1993,7 @@ var mrcAComplete = {
          * Reinit internal fields for a future search
          */
         this.searchID++;
-        // mrcTools.mrcLog(now()+" _initSearchID : "+this.searchID);
+        mrcTools.mrcLog(" _initSearchID : "+this.searchID);
         this.search_res1 = [];
         this.search_res2 = [];
         this.search_res3 = [];
@@ -1965,6 +2004,7 @@ var mrcAComplete = {
          * Mark current search as obsolete
          */
         this.searchID++;
+        mrcTools.mrcLog(" _obsoleteSearchID : "+this.searchID);
     },
 
     _archiveSearchListeners : function() {
@@ -2004,10 +2044,10 @@ var mrcAComplete = {
          *
          *
          */
-        let temp = searchListener.addressBook.dirName + searchListener.searchID;
+        let temp = searchListener.addressBook.name + searchListener.searchID;
         // let hash = this._hashCode(temp); // no need to create a real hash
         let hash = temp;
-        // mrcTools.mrcLog("_createHashSearchListener : "+hash);
+        mrcTools.mrcLog("_createHashSearchListener : hash="+hash);
         return hash;
     },
 
@@ -2015,28 +2055,33 @@ var mrcAComplete = {
         this.allListenersStarted = false;
         this._archiveSearchListeners();
         this._initSearchID();
-        // mrcTools.mrcLog(now()+" _initSearchListeners : "+this.searchID);
+        mrcTools.mrcLog("_initSearchListeners : this.searchID="+this.searchID);
     },
 
 
     _addSearchListener : function(abSearchListener) {
+        mrcTools.mrcLog("> _addSearchListener");
         abSearchListener.hash = this._createHashSearchListener(abSearchListener);
         let key = abSearchListener.hash;
         this.searchedAB[key] = abSearchListener;
-        // mrcTools.mrcLog("_addSearchListener : "+abSearchListener.addressBook.URI+":"+abSearchListener.hash+", "+this.allListenersStarted);
+        mrcTools.mrcLog("abSearchListener.aB.uri="+abSearchListener.addressBook.uri+", abSearchListener.hash="+abSearchListener.hash+", this.allListenersStarted="+this.allListenersStarted);
+        mrcTools.mrcLog("< _addSearchListener");
     },
 
     _completeSearchListener : function(abSearchListener) {
         /*
          * Perform actions when a search is finished on ONE addressbook.
          */
-        // mrcTools.mrcLog(now()+" _completeSearchListener : "+abSearchListener.searchID+"/"+this.searchID+":"+abSearchListener.addressBook.dirName);
+        mrcTools.mrcLog("> _completeSearchListener : ");
+        mrcTools.mrcLog(" abSearchListener.searchID="+abSearchListener.searchID+" / this.searchID="+this.searchID+": ab.name="+abSearchListener.addressBook.name);
         if (abSearchListener.searchID == this.searchID) {
             // OK, it's a searchListener for current search
             switch(this.param_mode) {
                 case 1:
                     // Add results for current searchListenet in global results
                     // this.search_res1.mrc_extend(abSearchListener.localRes);
+                    mrcTools.mrcLog("nb abSearchListener.localRes="+abSearchListener.localRes.length);
+
                     array_extend(this.search_res1, abSearchListener.localRes);
                     break;
 
@@ -2045,6 +2090,9 @@ var mrcAComplete = {
                     // this.search_res1.mrc_extend(abSearchListener.localRes1);
                     // this.search_res2.mrc_extend(abSearchListener.localRes2);
                     // this.search_res3.mrc_extend(abSearchListener.localRes3);
+                    mrcTools.mrcLog("nb abSearchListener.localRes1="+abSearchListener.localRes1.length);
+                    mrcTools.mrcLog("nb abSearchListener.localRes2="+abSearchListener.localRes2.length);
+                    mrcTools.mrcLog("nb abSearchListener.localRes3="+abSearchListener.localRes3.length);
                     array_extend(this.search_res1, abSearchListener.localRes1);
                     array_extend(this.search_res2, abSearchListener.localRes2);
                     array_extend(this.search_res3, abSearchListener.localRes3);
@@ -2054,6 +2102,7 @@ var mrcAComplete = {
                     // sum localRes in global res
                     abSearchListener.localRes = this._removeDuplicatecards(abSearchListener.localRes);
                     abSearchListener.localRes.sort(this._sort_card);
+                    mrcTools.mrcLog("nb abSearchListener.localRes="+abSearchListener.localRes.length);
 
                     this.datas[abSearchListener.addressBook.name] = abSearchListener.localRes;
                     this.nbDatas += abSearchListener.localRes.length;
@@ -2062,6 +2111,7 @@ var mrcAComplete = {
                 case 4:
                     // Add results for current searchListenet in global results
                     // this.search_res1.mrc_extend(abSearchListener.localRes);
+                    mrcTools.mrcLog("nb abSearchListener.localRes="+abSearchListener.localRes.length);
                     array_extend(this.search_res1, abSearchListener.localRes);
                     break;
             }
@@ -2076,13 +2126,14 @@ var mrcAComplete = {
             }
 
 
-            // mrcTools.mrcLog("_completeSearchListener : "+abSearchListener.addressBook.URI+":"+this.searchedAB+", "+this.allListenersStarted);
+            mrcTools.mrcLog("abSearchListener.aB.uri="+abSearchListener.addressBook.uri+", this.searchedAB="+this.searchedAB+", this.allListenersStarted="+this.allListenersStarted);
             // Then test if search is complete for all addressbooks.
             this._testSearchComplete();
         } else {
             // it's an obsolete searchListener :
-            // mrcTools.mrcLog("_completeSearchListener : "+abSearchListener.addressBook.URI+":obsolete = "+abSearchListener.searchID);
+            mrcTools.mrcLog("obsolete : abSearchListener.aB.uri="+abSearchListener.addressBook.uri+", abSearchListener.searchID="+abSearchListener.searchID);
         }
+        mrcTools.mrcLog("< _completeSearchListener : ");
     },
 
     _timeOutSearchListener : function(originalSearchID) {
@@ -2096,14 +2147,14 @@ var mrcAComplete = {
         if (originalSearchID == this.searchID) {
             // make any search obsolete
             this._obsoleteSearchID();
-            // mrcTools.mrcLog(now()+" _timeOutSearchListener : "+this.searchID);
+            mrcTools.mrcLog(" _timeOutSearchListener : "+this.searchID);
 
             let keys = Object.keys(this.searchedAB);
-            // mrcTools.mrcLog("_timeOutSearchListener() keys="+keys+":"+(typeof keys));
+            mrcTools.mrcLog("_timeOutSearchListener() keys="+keys+":"+(typeof keys));
             for (let i=0, l=keys.length ; i<l; i++) {
                 let k = keys[i];
                 // mrcTools.mrcLog("k="+k);
-                this._addWarningTimeout(this.searchedAB[k].addressBook.dirName);
+                this._addWarningTimeout(this.searchedAB[k].addressBook.name);
             }
 
             // force search complete
@@ -2115,19 +2166,20 @@ var mrcAComplete = {
     },
 
     _testSearchComplete : function() {
-        // mrcTools.mrcLog(now()+" _testSearchComplete : "+this.searchID);
+        mrcTools.mrcLog("> _testSearchComplete,  this.searchID="+this.searchID);
         let keys = Object.keys(this.searchedAB);
         if (keys.length == 0 && this.allListenersStarted == true) {
             /*
              * Perform actions when ALL searches are completed.
              */
 
+            mrcTools.mrcLog(" search is Complete");
             // make any search obsolete
             this._obsoleteSearchID();
 
             // stop the current timeout
             clearTimeout(this.searchTimeOut);
-            // mrcTools.mrcLog("clearTimeout() ");
+            mrcTools.mrcLog("clearTimeout() ");
 
             // then handle results
             switch(this.param_mode) {
@@ -2181,6 +2233,7 @@ var mrcAComplete = {
 
             }
 
+            mrcTools.mrcLog("nb datas found ="+this.nbDatas);
             if (this.nbDatas == 0 && this.param_show_no_result) {
                 this._addInfoNoResult();
             }
@@ -2188,11 +2241,13 @@ var mrcAComplete = {
             if (this.cbSearch) {
                 this.cbSearch();
             }
-            // mrcTools.mrcLog("archiv="+this.searchedAB_archiv.length);
+            mrcTools.mrcLog("nb this.searchedAB_archiv="+this.searchedAB_archiv.length);
         }
+        mrcTools.mrcLog("< _testSearchComplete");
     },
 
     _startWaitingSearchListeners : function() {
+        mrcTools.mrcLog("> _startWaitingSearchListeners ");
         this.allListenersStarted = true;
         // clear previous timeout
         if (this.searchTimeOut) {
@@ -2205,8 +2260,8 @@ var mrcAComplete = {
                 mrcAComplete._timeOutSearchListener(tempSearchID);
             }, this.param_search_timeout);
 
-        // mrcTools.mrcLog("_startWaitingSearchListeners ");
         this._testSearchComplete();
+        mrcTools.mrcLog("< _startWaitingSearchListeners ");
     },
 
     _addInfoNoResult : function() {
@@ -2263,6 +2318,36 @@ var mrcAComplete = {
                                             nsACString & _retval NS_OUTPARAM) = 0;
 
      */
+
+
+    /*
+     * Code from CardBook addon
+     *
+
+    normalizeString: function (aString) {
+        return aString.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    },
+
+    makeSearchString: function (aString) {
+        return cardbookRepository.normalizeString(aString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase());
+    },
+    */
+    getCardBookString : function(aString) {
+        /*
+         * Return the string fo a cardbook search.
+         *
+         * The string must not contain some caracters.
+         * The code is copied from CardBook addon.
+         *
+         * params :
+         *   aString : the text to search in fields of address book
+         * return:
+         *   string transformed for cardbook search
+         */
+        aString = aString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase();
+        aString = aString.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+        return aString;
+    },
 
     _search_mode_1 : function(aString) {
         /*
@@ -2335,12 +2420,12 @@ var mrcAComplete = {
                 }
             } else {
                 if (ab instanceof Components.interfaces.nsIAbLDAPDirectory) {
-                    // mrcTools.mrcLog("param_search="+this.param_search_ab_URI+" ; ab.URI="+ab.URI)
+                    mrcTools.mrcLog("param_search="+this.param_search_ab_URI+" ; ab.URI="+ab.URI)
                     // check if user wants to search in this AB
                     let doSearch = this.param_search_ab_URI.indexOf(ab.URI) >= 0;
                     if (doSearch) {
                         try {
-                            // mrcTools.mrcLog("AB LDAP = " + ab.dirName);
+                            mrcTools.mrcLog("AB LDAP = " + ab.dirName);
                             /* CODE FOR TB 24 to 31? */
                             // if (this.param_ldap_search_version == 'TB24') {
                             if (true) {
@@ -2460,7 +2545,8 @@ var mrcAComplete = {
         if (window.hasOwnProperty("cardbookRepository")) {
             // search in Cardbooks
             // one search : CONTAINS
-            let patt = new RegExp(aString, "i");
+            let cb_string = this.getCardBookString(aString);
+            let patt = new RegExp(cb_string, "i");
             for (let account of window.cardbookRepository.cardbookAccounts) {
                 mrcTools.mrcLog("test du CB : "+account);
                 if (account[1] && account[5] && account[6] != "SEARCH") {
@@ -2770,7 +2856,7 @@ var mrcAComplete = {
 
                                 onSearchFoundCard : function(aCard) {
                                     // TODO : check if "card.isMailList" is OK
-                                    if (card.isMailList) {
+                                    if (aCard.isMailList) {
                                         this.localRes3.push(this.cbObject._createMyCard(aCard));
                                     } else {
                                         this.localRes2.push(this.cbObject._createMyCard(aCard));
@@ -2832,11 +2918,12 @@ var mrcAComplete = {
         if (window.hasOwnProperty("cardbookRepository")) {
             // search in Cardbooks
             // first search : BEGIN WITH
-            let patt0 = new RegExp("^"+aString, "i");
-            let patt1 = new RegExp("\\|"+aString, "i");
+            let cb_string = this.getCardBookString(aString);
+            let patt0 = new RegExp("^"+cb_string, "i");
+            let patt1 = new RegExp("\\|"+cb_string, "i");
             // second search : CONTAINS
             // We will make the exclusion manually, after all searches completed.
-            let patt2 = new RegExp(aString, "i");
+            let patt2 = new RegExp(cb_string, "i");
 
             for (let account of window.cardbookRepository.cardbookAccounts) {
                 mrcTools.mrcLog("test du CB : "+account);
@@ -3115,7 +3202,8 @@ var mrcAComplete = {
         if (window.hasOwnProperty("cardbookRepository")) {
             // search in Cardbooks
             // one search : CONTAINS
-            let patt = new RegExp(aString, "i");
+            let cb_string = this.getCardBookString(aString);
+            let patt = new RegExp(cb_string, "i");
             for (let account of window.cardbookRepository.cardbookAccounts) {
                 mrcTools.mrcLog("test du CB : "+account);
                 if (account[1] && account[5] && account[6] != "SEARCH") {
@@ -3362,8 +3450,9 @@ var mrcAComplete = {
         if (window.hasOwnProperty("cardbookRepository")) {
             // search in Cardbooks
             // one search : BEGIN WITH
-            let patt0 = new RegExp("^"+aString, "i");
-            let patt = new RegExp("\\|"+aString, "i");
+            let cb_string = this.getCardBookString(aString);
+            let patt0 = new RegExp("^"+cb_string, "i");
+            let patt = new RegExp("\\|"+cb_string, "i");
             for (let account of window.cardbookRepository.cardbookAccounts) {
                 mrcTools.mrcLog("test du CB : "+account);
                 if (account[1] && account[5] && account[6] != "SEARCH") {
@@ -4218,7 +4307,8 @@ var mrcAComplete = {
          * return :
          *   none
          */
-        mrcTools.mrcLog(now()+" search() "+this.searchID);
+        mrcTools.mrcLog("> search()");
+        mrcTools.mrcLog("searchID="+this.searchID);
         this.datas = {}; // TODO : check if it's the right way to empty dictionary
         this.errors = [];
         this.warnings = [];
@@ -4580,7 +4670,7 @@ var mrcAComplete = {
             } else {
                 // --> enter his email in the text
                 email = card.text;
-                // mrcTools.mrcLog("EMAIL = "+email);
+                mrcTools.mrcLog("validate() : EMAIL = '"+email + "'");
             }
             this._elementInsertInPart(this.currentTextBox, this.currentTextBox.selectionStart, email);
             this.updateNbRecipients(this.currentTextBox);
@@ -4907,7 +4997,7 @@ function mrcRecipientKeyUp(event, element) {
             break;
     }
 
-    mrcTools.mrcLog("mrcRecipientKeyUp : keyCode="+event.keyCode+" canUpdateUI="+canUpdateUI+" canUpdatePanel="+canUpdatePanel);
+    // mrcTools.mrcLog("mrcRecipientKeyUp : keyCode="+event.keyCode+" canUpdateUI="+canUpdateUI+" canUpdatePanel="+canUpdatePanel);
 
     // fill cache for next keyups
     mrcAComplete._textPart_cache = textPart;
@@ -4987,8 +5077,8 @@ function mrcRecipientResize(element, maxi) {
         let idCopy = element.id + "_COPY";
         let element_COPY = document.getElementById(idCopy);
 
-        mrcTools.mrcLog("mrcAComplete.param_first_line_height:", mrcAComplete.param_first_line_height);
-        mrcTools.mrcLog("mrcAComplete.param_max_height:", mrcAComplete.param_max_height);
+        // mrcTools.mrcLog("mrcAComplete.param_first_line_height:", mrcAComplete.param_first_line_height);
+        // mrcTools.mrcLog("mrcAComplete.param_max_height:", mrcAComplete.param_max_height);
 
         element_COPY.innerHTML = mrcAComplete._myEncode(element.value);
         // Briefly make the hidden div block but invisible
@@ -5001,17 +5091,17 @@ function mrcRecipientResize(element, maxi) {
         element_COPY.style.display = 'none';
 
         let nbLinesCopy = fullHeight / mrcAComplete.param_line_height;
-        mrcTools.mrcLog("nbLinesCopy : ", nbLinesCopy);
+        // mrcTools.mrcLog("nbLinesCopy : ", nbLinesCopy);
         nbLinesCopy = Math.floor(nbLinesCopy);
-        mrcTools.mrcLog("int(nbLinesCopy) : ", nbLinesCopy);
+        // mrcTools.mrcLog("int(nbLinesCopy) : ", nbLinesCopy);
         if (nbLinesCopy < 1)
             nbLinesCopy = 1;
         if (nbLinesCopy > mrcAComplete.param_max_nb_line)
             nbLinesCopy = mrcAComplete.param_max_nb_line;
-        mrcTools.mrcLog("nbLinesCopy (recadré) : ", nbLinesCopy);
+        // mrcTools.mrcLog("nbLinesCopy (recadré) : ", nbLinesCopy);
 
         newHeight = mrcAComplete.param_first_line_height + (nbLinesCopy-1)*mrcAComplete.param_line_height;
-        mrcTools.mrcLog("newHeight : ", newHeight);
+        // mrcTools.mrcLog("newHeight : ", newHeight);
         element.style.height = newHeight + 'px';
 
     } catch (e) {

@@ -13,8 +13,6 @@ var {Log4Moz} = ChromeUtils.import("resource:///modules/gloda/log4moz.js");
 // So we declare the global variable here and load it in onLoad.
 var fpvsUtils;
 
-var didKickstarter = false;
-
 // Rules:
 //
 // Enter title bar:
@@ -242,20 +240,6 @@ var FolderPaneSwitcher = {
 //
 //    ns.addListener(me.folderListener, ns.msgsMoveCopyCompleted|
 //		   ns.folderMoveCopyCompleted);
-
-    if (! didKickstarter) {
-      didKickstarter = true;
-      this.logger.debug("Loading Kickstarter popup");
-      var {KickstarterPopup} = ChromeUtils.import(
-        "chrome://FolderPaneSwitcher/content/kickstarter.jsm");
-      this.logger.debug("Triggering Kickstarter popup");
-      KickstarterPopup(window,
-                       "chrome://FolderPaneSwitcher/content/kickstarter.xul");
-      this.logger.debug("Done triggering Kickstarter popup");
-    }
-    else {
-      this.logger.debug("Skipping Kickstarter popup");
-    }
   },
 
   onUnload: function() {

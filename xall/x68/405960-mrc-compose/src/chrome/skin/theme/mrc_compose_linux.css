@@ -94,8 +94,8 @@ Theme linux pour TB60
   background-color: inherit;
   color: inherit;
   border: 1px solid transparent;
-  border-bottom-color: rgba(0, 0, 0, 0.25); /* var(--toolbarbutton-hover-bordercolor); */
-  padding: 4px 2px;
+  border-bottom-color: var(--toolbarbutton-hover-bordercolor);
+  padding: 3px 2px;
   padding-inline-start: 5px !important;
   transition: border .2s, background-color .2s;
 }
@@ -113,7 +113,39 @@ Theme linux pour TB60
 #msgFOLLOW:hover,
 #msgFOLLOW[focused="true"] {
   background-color: -moz-field;
-  border-color: rgba(0, 0, 0, 0.25); /* var(--toolbarbutton-hover-bordercolor); */
+  border-color: var(--toolbarbutton-hover-bordercolor);
 }
 
 
+
+
+
+/* dark theme */
+
+
+#msgTO:-moz-lwtheme,
+#msgCC:-moz-lwtheme,
+#msgBCC:-moz-lwtheme,
+#msgREPLY:-moz-lwtheme,
+#msgNG:-moz-lwtheme,
+#msgFOLLOW:-moz-lwtheme  {
+  border-bottom-color: var(--composer-header-border-color) !important;
+  color: var(--lwt-text-color);
+}
+
+#msgTO:-moz-lwtheme:hover,
+#msgTO:-moz-lwtheme[focused="true"],
+#msgCC:-moz-lwtheme:hover,
+#msgCC:-moz-lwtheme[focused="true"],
+#msgBCC:-moz-lwtheme:hover,
+#msgBCC:-moz-lwtheme[focused="true"],
+#msgREPLY:-moz-lwtheme:hover,
+#msgREPLY:-moz-lwtheme[focused="true"],
+#msgNG:-moz-lwtheme:hover,
+#msgNG:-moz-lwtheme[focused="true"],
+#msgFOLLOW:-moz-lwtheme:hover,
+#msgFOLLOW:-moz-lwtheme[focused="true"] {
+  background-color: var(--lwt-toolbar-field-background-color);
+  color: var(--lwt-toolbar-field-color);
+  border-color: var(--lwt-toolbar-field-border-color) !important;
+}

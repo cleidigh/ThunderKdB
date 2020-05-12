@@ -708,12 +708,25 @@ var verifrom = {
     // Simpler indexedDB API to simplify the background script code
     indexeddb : {
         openedDBs:[],
+        _enabled:null,
+        enabled: function() {
+            if (verifrom.indexeddb._enabled!==null)
+                return verifrom.indexeddb._enabled;
+            try {
+                let idb=indexedDB;
+                verifrom.indexeddb._enabled = true;
+            } catch(e) {
+                verifrom.indexeddb._enabled = false;
+            }
+            return verifrom.indexeddb._enabled;
+        },
         close: function(dbName)
         {
             if (verifrom.indexeddb.openedDBs[dbName])
             {
                 try {
-                    verifrom.indexeddb.openedDBs[dbName].close();
+                    if (verifrom.indexeddb.enabled())
+                        verifrom.indexeddb.openedDBs[dbName].close();
                 } finally {
                     delete verifrom.indexeddb.openedDBs[dbName];
                 }
@@ -721,6 +734,11 @@ var verifrom = {
         },
         delete: function(dbName, onSuccessCallBack, onErrorCallBack)
         {
+            if (verifrom.indexeddb.enabled()===false) {
+
+                onSuccessCallBack();
+                return;
+            }
             verifrom.indexeddb.close(dbName);
             var deleteRequest=indexedDB.deleteDatabase(dbName);
             if ('function' === typeof onSuccessCallBack)
@@ -734,6 +752,12 @@ var verifrom = {
             verifrom.console.log(2,'openOnSuccess - dbName='+dbName+' objectStoreName='+objectStoreName+' version='+dbVersion);
 
             verifrom.indexeddb.openedDBs[dbName]=dbEvent.target.result;
+            if (verifrom.indexeddb.enabled()===false) {
+                onSuccessCallBack();
+                return;
+            }
+
+
             verifrom.indexeddb.openedDBs[dbName].onversionchange = function(event) {
                 verifrom.indexeddb.close(dbName);
             };
@@ -764,10 +788,15 @@ var verifrom = {
         open : function(dbName, objectStoreName, objectStoreOptions, dbVersion, onSuccessCallBack, onErrorCallBack, onUpgradeCallBack)
         {
             verifrom.console.log(2,'open - dbName='+dbName+' objectStoreName='+objectStoreName+' version='+dbVersion);
-
-
+            if (verifrom.indexeddb.enabled()===false) {
+                if (!verifrom.indexeddb.openedDBs[dbName])
+                    verifrom.indexeddb.openedDBs[dbName] = {};
+                // {keyPath: 'UID', autoIncrement: false}
+                verifrom.indexeddb.openedDBs[dbName][objectStoreName] = { m:new Map(), k:objectStoreOptions.keyPath};
+                onSuccessCallBack();
+                return;
+            }
             var openRequest=verifrom.indexeddb.openedDBs[dbName] ? verifrom.indexeddb.openedDBs[dbName] : indexedDB.open(dbName, dbVersion);
-
             if ((typeof onSuccessCallBack !== 'function') || (typeof onErrorCallBack !== 'function'))
                 throw 'VF - missing argument for opening indexedDB';
 
@@ -788,12 +817,18 @@ var verifrom = {
             }
             else verifrom.console.log(1,'Database '+dbName+' not opened');
         },
-        objectStore: {
+        objectStoreStandard: {
             create: function(dbObject, objectStoreName, objectStoreOptions) {
                 return dbObject.createObjectStore(objectStoreName, objectStoreOptions);
             },
             get : function(dbName, objectStoreName, options)
             {
+                if (verifrom.indexeddb.enabled()===false) {
+                    if (!verifrom.indexeddb.openedDBs[dbName])
+                        verifrom.indexeddb.openedDBs[dbName] = {};
+                    verifrom.indexeddb.openedDBs[dbName][objectStoreName] = new Map();
+                    return;
+                }
                 if (verifrom.indexeddb.openedDBs[dbName] && verifrom.indexeddb.openedDBs[dbName].objectStoreNames.contains(objectStoreName))
                     return verifrom.indexeddb.openedDBs[dbName].transaction(objectStoreName, options?options:"readwrite").objectStore(objectStoreName);
                 else throw 'DB '+dbName+' with '+objectStoreName+' is not opened';
@@ -986,7 +1021,62 @@ var verifrom = {
                     transaction.abort();
                 }
             }
-        }
+        },
+        objectStoreMemory : {
+            create: function(dbObject,objectStoreName,objectStoreOptions) {
+                throw new Error("Not implemented");
+            },
+            clear: function(dbName, objectStoreName, onSuccessCallBack) {
+                if (!verifrom.indexeddb.openedDBs[dbName][objectStoreName])
+                    throw new Error(`indexedDBMemory - store ${dbName}.${objectStoreName} not created`);
+                verifrom.indexeddb.openedDBs[dbName][objectStoreName].m.clear();
+                if (typeof onSuccessCallBack==="function")
+                    onSuccessCallBack();
+            },
+            addItem: function(dbName, objectStoreName, object, onSuccessCallBack, onErrorCallBack) {
+                if (!verifrom.indexeddb.openedDBs[dbName][objectStoreName])
+                    throw new Error(`indexedDBMemory - store ${dbName}.${objectStoreName} not created`);
+                let s = verifrom.indexeddb.openedDBs[dbName][objectStoreName];
+                s.m.set(object[s.m],object);
+                if (typeof onSuccessCallBack==="function")
+                    onSuccessCallBack(object);
+            },
+            putItem: function(dbName, objectStoreName, object, onSuccessCallBack, onErrorCallBack) {
+                if (!verifrom.indexeddb.openedDBs[dbName][objectStoreName])
+                    throw new Error(`indexedDBMemory - store ${dbName}.${objectStoreName} not created`);
+                let s = verifrom.indexeddb.openedDBs[dbName][objectStoreName];
+                s.m.set(object[s.k],object);
+                if (typeof onSuccessCallBack==="function")
+                    onSuccessCallBack(object);
+            },
+            deleteItem: function(dbName, objectStoreName, object, onSuccessCallBack, onErrorCallBack) {
+                if (!verifrom.indexeddb.openedDBs[dbName][objectStoreName])
+                    throw new Error(`indexedDBMemory - store ${dbName}.${objectStoreName} not created`);
+                let s = verifrom.indexeddb.openedDBs[dbName][objectStoreName];
+                if (typeof onSuccessCallBack==="function")
+                    s.m.delete(object[s.k]);
+            },
+            getItem: function(dbName, objectStoreName, keyValue, onSuccessCallBack, onErrorCallBack) {
+                if (!verifrom.indexeddb.openedDBs[dbName][objectStoreName])
+                    throw new Error(`indexedDBMemory - store ${dbName}.${objectStoreName} not created`);
+                let s = verifrom.indexeddb.openedDBs[dbName][objectStoreName];
+                if (typeof onSuccessCallBack==="function")
+                    onSuccessCallBack({result:s.m.get(keyValue)});
+            },
+            getAllItems: function(dbName, objectStoreName, onSuccessCallBack, onErrorCallBack) {
+                if (!verifrom.indexeddb.openedDBs[dbName][objectStoreName])
+                    throw new Error(`indexedDBMemory - store ${dbName}.${objectStoreName} not created`);
+                let s = verifrom.indexeddb.openedDBs[dbName][objectStoreName];
+                const i = s.m.values();
+                const a = new Array();
+                for (let item of i) {
+                    a.push(item);
+                }
+                if (typeof onSuccessCallBack==="function")
+                    onSuccessCallBack(a);
+            }
+        },
+        objectStore : null
     },
     /*indexeddb : {
 
@@ -1264,7 +1354,7 @@ var verifrom = {
             return newReq;
         } catch (err)
         {
-            console.log('signalspam_loadParams - Exception including parameters :',err);
+            verifrom.console.log(0,'signalspam_loadParams - Exception including parameters :',err);
         }
     },
     request: {
@@ -1333,27 +1423,61 @@ var verifrom = {
         if (optionObject && optionObject.url && optionObject.where)
             self.port.emit("openWindow",optionObject);
     },
-    worker: function(worker) {
-            if (typeof worker==='string')
-            {
-                this.worker=new SharedWorker(worker);
-                this.worker.port.start();
-            }
-            else if (typeof worker==='object' && typeof worker.postMessage==='function')
-                    this.worker={port:worker};
-            else throw "Missing uri or worker for worker instance";
+    worker: function(worker,sharedWorkerDisabled) {
 
+            verifrom.console.log(0,'worker - sharedWorkerDisabled='+sharedWorkerDisabled);
+            if (sharedWorkerDisabled===undefined) {
+                sharedWorkerDisabled = false;
+                try {
+                    try {
+                        new SharedWorker("");
+                    } catch(e) {
+                        sharedWorkerDisabled = /insecure/i.test(e.message);
+                    }
+                    verifrom.console.log(0,"SharedWorker disabled? :",sharedWorkerDisabled);
+                } catch(e) {
+                    verifrom.console.log(0,"got exception when checking cookies behaviour",e);
+                }
+            }
+            this._sharedWorkerDisabled = sharedWorkerDisabled;
+            if (sharedWorkerDisabled) {
+                verifrom.console.log(2,'worker - SharedWorkers are disabled, we will use window for posting messages');
+                worker = window;
+                if (typeof worker==='object' && typeof worker.postMessage==='function')
+                    this.worker={port:worker};
+                else throw new Error("Missing worker for worker instance");
+                verifrom.console.log(4,'worker - worker =',this.worker, this.worker.port, this.worker.port.onmessage);
+            } else {
+                if (typeof worker==='string')
+                {
+                    try {
+                        this.worker=new SharedWorker(worker);
+                        this.worker.port.start();
+                    } catch(e) {
+                        verifrom.console.error(-1,"worker - could not instantiate worker",e);
+                    }
+                }
+                else if (typeof worker==='object' && typeof worker.postMessage==='function')
+                    this.worker={port:worker};
+                else throw new Error("Missing uri or worker for worker instance");
+            }
             var text = "";
             var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
             for( var i=0; i < 16; i++ )
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
             this._id=text;
+            verifrom.console.log(2,'worker - new with id '+this._id);
             this.messageChannels={};
             this.messageChannelsOnce={};
-
-            this.worker.port.onmessage= function(event) {
-
+            this.messageListener = function(event) {
+                if (event && event.origin) {
+                    verifrom.console.log(4,"worker - message listener - event origin="+event.origin);
+                }
+                if (event && event.data && event.data.source===this._id)
+                {
+                    verifrom.console.log(4,"worker onmessage to itself, message ignored");
+                    return;
+                }
                 if (event && event.data && event.data.channel)
                 {
                     if (typeof this.messageChannelsOnce[event.data.channel]==='function')
@@ -1365,13 +1489,17 @@ var verifrom = {
                         // verifrom.console.log(5,'onmessage handler : channel='+event.data.channel,event.data.payload);
                         this.messageChannels[event.data.channel](event.data.payload);
                     } else {
-                        verifrom.console.error(1,'No handler for message '+event.data.channel);
+                        verifrom.console.error(1,'No handler for message '+event.data.channel,this._id);
                     }
                 } else {
                     verifrom.console.error(1,"worker onmessage : invalid event",event);
-                    throw "worker onmessage : invalid event";
+                    throw new Error("worker onmessage : invalid event");
                 }
             }.bind(this);
+            if (sharedWorkerDisabled===true) {
+                this.worker.port.addEventListener("message",this.messageListener,false);
+            }
+            else this.worker.port.onmessage = this.messageListener;
     },
     debugapi:{
         sendEvent:function(){},
@@ -1423,7 +1551,7 @@ var verifrom = {
                 if (typeof msg.onClosed==='function') {
                     notification.onclosed=msg.onClosed;
                 }
-                console.log(4,'Notification created with ID '+id,n);
+                verifrom.console.log(4,'Notification created with ID '+id,n);
             } catch (e) {
                 verifrom.console.error(1, 'Exception while notifying user ', e);
             }
@@ -1548,6 +1676,12 @@ verifrom.worker.prototype = {
             throw "callback not a function :"+typeof callback;
         this.messageChannelsOnce[channel]=callback;
     },
+    removeAllListeners:function() {
+        for (channel in this.messageChannels) {
+            if (channel!=="connect")
+                this.removeListener(channel);
+        }
+    },
     removeListener:function(channel) {
         if (this.messageChannels && typeof this.messageChannels[channel]==='function')
         {
@@ -1558,23 +1692,32 @@ verifrom.worker.prototype = {
     },
     postMessage:function(message,options) {
         try {
-            this.worker.port.postMessage({"channel":options.channel,"payload":message});
+            this.worker.port.postMessage({"source":this._id,"channel":options.channel,"payload":message});
         } catch(e) {
             verifrom.console.error(0,'postMessage exception',e);
         }
     },
     emit:function (channel,message) {
         try {
-            this.worker.port.postMessage({"channel":channel, "payload":message});
+            this.worker.port.postMessage({"source":this._id, "channel":channel, "payload":message});
         } catch(e)
         {
             verifrom.console.error(0,'emit exception',e);
         }
     },
-    close:function () {
+    close:function (removeListeners) {
         try {
-            this.worker.port.postMessage({"channel":"_close", "payload":{}});
-            this.worker.port.close();
+            if (removeListeners!==false) {
+                this.removeAllListeners();
+                if (this._sharedWorkerDisabled===true) {
+                    this.worker.port.removeEventListener("message",this.messageListener);
+                }
+                else if (this.worker.port.onmessage === this.messageListener)
+                    this.worker.port.onmessage = null;
+            }
+            this.worker.port.postMessage({"source":this._id, "channel":"_close", "payload":{}});
+            if ("function"===this.worker.port.close)
+                this.worker.port.close();
         } catch(e) {
             verifrom.console.error(0,'worker.close - exception',e);
         }
@@ -1621,3 +1764,4 @@ if (verifrom.appInfo.staging===false || verifrom.appInfo.logLevel<0)
 }
 
 verifrom.notifications.checkEnabled();
+verifrom.indexeddb.objectStore = verifrom.indexeddb.enabled() ? verifrom.indexeddb.objectStoreStandard : verifrom.indexeddb.objectStoreMemory;

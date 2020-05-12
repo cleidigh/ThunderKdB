@@ -210,21 +210,7 @@ class MessageIFrame extends React.Component {
     if (iframeDoc.querySelectorAll(":not(.mimemail-body) > .moz-text-html").length) {
       styleRules = ["body, table {", // "  line-height: 112.5%;",
       "  font-size: " + textSize + "px;", "}"];
-    } // TODO: Re-implement monospaced?
-    // Unless the user specifically asked for this message to be
-    //  dislayed with a monospaced font...
-    // let [{/* name, */ email}] = this.parse(this._msgHdr.author);
-    // if (email && !(email.toLowerCase() in this.props.prefs.monospaced_senders) &&
-    //     !(this.mailingLists.some(x => (x.toLowerCase() in this.props.prefs.monospaced_senders)))) {
-    //   styleRules = styleRules.concat([
-    //     ".moz-text-flowed, .moz-text-plain {",
-    //     "  font-family: sans-serif !important;",
-    //     "  font-size: " + textSize + "px !important;",
-    //     "  line-height: 112.5% !important;",
-    //     "}",
-    //   ]);
-    // }
-    // Do some reformatting + deal with people who have bad taste. All these
+    } // Do some reformatting + deal with people who have bad taste. All these
     // rules are important: some people just send messages with horrible colors,
     // which ruins the conversation view. Gecko tends to automatically add
     // padding/margin to html mails. We still want to honor these prefs but

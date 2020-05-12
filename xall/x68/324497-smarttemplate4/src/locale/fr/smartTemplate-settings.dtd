@@ -132,7 +132,12 @@
 <!ENTITY sig2.label "Signature issue des paramètres du compte, mais sans '--'">
 <!ENTITY fileHTML.label "Fichier HTML ou texte brut. L'encodage est fixé à UTF-8 si le paramètre d'encodage facultatif n'a pas été précisé.">
 <!ENTITY fileImage.label "Fichier image (png, jpg, gif, bmp, svg). Le texte alternatif est affiché si l'image est introuvable.">
+<!ENTITY fileCSS.label "Feuille de style externe (css). Incluez vos règles CSS préférées à partager entre différents modèles.">
 <!ENTITY attach.label "Ajouter comme fichier joint">
+<!ENTITY basepath.desc "Si votre modèle contient des images avec la balise 'img' qui se trouvent sur votre lecteur local, vous devrez indiquer à SmartTemplate où les trouver.">
+<!ENTITY basepath.desc2 "La variable 'basepath' insérera une balise html 'base' pour trouver toutes les images en fonction d'un emplacement de départ - elle ne peut être utilisée qu'une seule fois dans un e-mail.">
+<!ENTITY basepath.relative "Utilisez cette variable pour rechercher les images au même emplacement que le modèle de fichier html.">
+<!ENTITY basepath.absolute "Cliquez ici pour sélectionner un dossier spécifique sur votre disque local.">
 <!ENTITY cursor.label "Définit la position du curseur">
 <!ENTITY spellcheck.label "Définit la langue de vérification orthographique. Exemples de valeurs: (en, de-DE, es-ES, fr) - notez que le dictionnaire doit être installé.">
 <!ENTITY to_var.cap "Destinataires (Pour)">

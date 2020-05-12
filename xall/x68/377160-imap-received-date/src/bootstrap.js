@@ -1,5 +1,4 @@
 const {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var didKickstarter = false;
 
 function startup() {
     var prefBranch = Components.classes["@mozilla.org/preferences-service;1"]
@@ -43,11 +42,4 @@ var WindowObserver = {
 };
 
 function loadIntoWindow(window) {
-    if (! didKickstarter) {
-        didKickstarter = true;
-        var {KickstarterPopup} = ChromeUtils.import(
-            "chrome://IMAPReceivedDate/content/kickstarter.jsm");
-        KickstarterPopup(window,
-                         "chrome://IMAPReceivedDate/content/kickstarter.xul");
-    }
 }

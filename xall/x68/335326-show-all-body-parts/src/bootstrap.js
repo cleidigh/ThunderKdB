@@ -5,7 +5,6 @@ if (! ("addObserver" in prefBranch))
     prefBranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
 var pref1 = "extensions.ShowAllBodyParts.active";
 var pref2 = "mailnews.display.show_all_body_parts_menu";
-var didKickstarter = false;
 
 function getActive() {
     var active;
@@ -73,11 +72,4 @@ var WindowObserver = {
 };
 
 function loadIntoWindow(window) {
-    if (! didKickstarter) {
-        didKickstarter = true;
-        var {KickstarterPopup} = ChromeUtils.import(
-            "chrome://ShowAllBodyParts/content/kickstarter.jsm");
-        KickstarterPopup(window,
-                         "chrome://ShowAllBodyParts/content/kickstarter.xul");
-    }
 }

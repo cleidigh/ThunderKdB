@@ -5,13 +5,13 @@ var extensionConfig = {
     appInfo : {
         staging : false,
         environment : 'thunderbird',
-        version : '3.0.5',
-        manifestVersion : '3.0.5',
+        version : '3.1.2',
+        manifestVersion : '3.1.2',
         upgradeDB : false,
         updateManifestURL : {
             display:true,
-            'fr':'https://vrf01.signal-spam.fr/extension/dist/thunderbird/update_manifests/thunderbird.3.0.5.fr.html',
-            'en':'https://vrf01.signal-spam.fr/extension/dist/thunderbird/update_manifests/thunderbird.3.0.5.en.html'
+            'fr':'https://vrf01.signal-spam.fr/extension/dist/thunderbird/update_manifests/thunderbird.3.1.0.fr.html',
+            'en':'https://vrf01.signal-spam.fr/extension/dist/thunderbird/update_manifests/thunderbird.3.1.0.en.html'
         },
         installManifestURL : {
             'fr':'https://vrf01.signal-spam.fr/extension/dist/thunderbird/install_manifests/thunderbird.3.0.0.fr.html',
@@ -45,3 +45,5 @@ var extensionConfig = {
         staging:'https://vrf01.signal-spam.fr/extension/params/thunderbird/preprod/v3.0.0.json'
     }
 };
+if (typeof exports !== "undefined")
+    exports.default = extensionConfig;

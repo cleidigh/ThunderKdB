@@ -81,15 +81,7 @@ const PREFS_INFO = [{
     name: "hide_quote_length"
   },
   component: NumericOption
-}, // {
-//   props: {
-//     title: "options.monospaced_senders_title",
-//     desc: "options.monospaced_senders_desc",
-//     name: "monospaced_senders",
-//   },
-//   component: TextOption,
-// },
-{
+}, {
   props: {
     title: "options.hide_sigs_title",
     desc: "options.hide_sigs_desc",

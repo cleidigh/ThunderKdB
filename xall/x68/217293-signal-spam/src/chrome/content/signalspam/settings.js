@@ -1,147 +1,140 @@
-//var psvc = Components.classes["@mozilla.org/preferences-service;1"]
-//                                .getService(Components.interfaces.nsIPrefBranch);
-//var instantApply = psvc.getBoolPref("browser.preferences.instantApply");
-
-//var prefWindow;
-/*var signalspam_prefs = Components.classes["@mozilla.org/preferences-service;1"]
-    .getService(Components.interfaces.nsIPrefService)
-    .getBranch("");*/
 var prefWindow=null;
 var signalspam_NotificationReady = false;
 const signalspam_Notification = {};
-if (typeof opener.XPCOMUtils==='object')
-    opener.XPCOMUtils.defineLazyGetter(signalspam_Notification
-        , "notificationbox"
-        , function() {
-            return new MozElements.NotificationBox(function(element) {
-                element.setAttribute("flex", "1");
-                element.setAttribute("notificationside","top");
-                document.getElementById("preferencesNotificationBox").append(element);
-                signalspam_NotificationReady = true;
-                verifrom.console.log(4,'signalspam_Notification initialized');
+try {
+    if (typeof opener.XPCOMUtils==='object')
+        opener.XPCOMUtils.defineLazyGetter(signalspam_Notification
+            , "notificationbox"
+            , function() {
+                return new MozElements.NotificationBox(function(element) {
+                    element.setAttribute("flex", "1");
+                    element.setAttribute("notificationside","top");
+                    document.getElementById("preferencesNotificationBox").append(element);
+                    signalspam_NotificationReady = true;
+                    verifrom.console.log(4,'signalspam_Notification initialized');
+                });
             });
-        });
+} catch(e) {
+    console.error("settings - cannot create notificationbox",e);
+}
 var credentials;
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-var prefs = Services.prefs.getBranch("");
-Preferences.addAll([
-    {
-        id: "signalspam_pref_userid",
-        instantApply: "false",
-        name: "extensions.signalspam.userid",
-        type: "string",
-        defaultValue: ""
-    }/*,{
-        id: "signalspam_pref_password",
-        instantApply: "false",
-        name: "extensions.signalspam.password",
-        type: "string",
-        defaultValue: "false"
-    }*/
-    , {
-        id: "signalspam_pref_oneclick",
-        instantApply: "false",
-        name: "extensions.signalspam.oneclick",
-        type: "bool",
-        defaultValue: false,
-        hidden: "false"
-    }
-    , {
-        id: "signalspam_pref_urldetect",
-        instantApply: "false",
-        name: "extensions.signalspam.urldetect",
-        type: "bool",
-        defaultValue: true
-    }
-    , {
-        id: "signalspam_pref_movereport",
-        instantApply: "false",
-        name: "extensions.signalspam.movereport",
-        type: "bool",
-        defaultValue: true
-    }
-    , {
-        id: "signalspam_pref_spambtonactive",
-        instantApply: "false",
-        name: "extensions.signalspam.spambtonactive",
-        type: "bool",
-        defaultValue: false
-    }
-    , {
-        id: "signalspam_pref_userauthentified",
-        instantApply: "false",
-        name: "extensions.signalspam.userauthentified",
-        type: "bool",
-        defaultValue: false,
-        hidden: "true"
-    }
-    , {
-        id: "signalspam_pref_firsttime",
-        instantApply: "false",
-        name: "extensions.signalspam.firsttime",
-        type: "bool",
-        defaultValue: true,
-        hidden: "true"
-    }
-    , {
-        id: "signalspam_pref_lastversion",
-        instantApply: "false",
-        name: "extensions.signalspam.lastversion",
-        type: "string",
-        defaultValue: "",
-        hidden: "true"
-    }
-    , {
-        id: "signalspam_pref_notification",
-        instantApply: "false",
-        name: "extensions.signalspam.notification",
-        type: "bool",
-        defaultValue: true,
-        hidden: "true"
-    }
-    , {
-        id: "signalspam_pref_privacy",
-        instantApply: "false",
-        name: "extensions.signalspam.privacy",
-        type: "bool",
-        defaultValue: false,
-        hidden: "true"
-    }]);
+var prefs;
+try {
+    prefs = Services.prefs.getBranch("");
+    Preferences.addAll([
+        {
+            id: "signalspam_pref_userid",
+            instantApply: "false",
+            name: "extensions.signalspam.userid",
+            type: "string",
+            defaultValue: ""
+        }
+        , {
+            id: "signalspam_pref_oneclick",
+            instantApply: "false",
+            name: "extensions.signalspam.oneclick",
+            type: "bool",
+            defaultValue: false,
+            hidden: "false"
+        }
+        , {
+            id: "signalspam_pref_urldetect",
+            instantApply: "false",
+            name: "extensions.signalspam.urldetect",
+            type: "bool",
+            defaultValue: true
+        }
+        , {
+            id: "signalspam_pref_movereport",
+            instantApply: "false",
+            name: "extensions.signalspam.movereport",
+            type: "bool",
+            defaultValue: true
+        }
+        , {
+            id: "signalspam_pref_spambtonactive",
+            instantApply: "false",
+            name: "extensions.signalspam.spambtonactive",
+            type: "bool",
+            defaultValue: false
+        }
+        , {
+            id: "signalspam_pref_userauthentified",
+            instantApply: "false",
+            name: "extensions.signalspam.userauthentified",
+            type: "bool",
+            defaultValue: false,
+            hidden: "true"
+        }
+        , {
+            id: "signalspam_pref_firsttime",
+            instantApply: "false",
+            name: "extensions.signalspam.firsttime",
+            type: "bool",
+            defaultValue: true,
+            hidden: "true"
+        }
+        , {
+            id: "signalspam_pref_lastversion",
+            instantApply: "false",
+            name: "extensions.signalspam.lastversion",
+            type: "string",
+            defaultValue: "",
+            hidden: "true"
+        }
+        , {
+            id: "signalspam_pref_notification",
+            instantApply: "false",
+            name: "extensions.signalspam.notification",
+            type: "bool",
+            defaultValue: true,
+            hidden: "true"
+        }
+        , {
+            id: "signalspam_pref_privacy",
+            instantApply: "false",
+            name: "extensions.signalspam.privacy",
+            type: "bool",
+            defaultValue: false,
+            hidden: "true"
+        }]);
+} catch(e) {
+    console.error("settings - exception initializing settings",e);
+}
 
-
-window.addEventListener("load", function (e) {
+function loaded (e) {
     verifrom.console.log(1,'Preferences window loaded');
     prefWindow = document.querySelector('dialog');
-
-    credentials=verifrom.credentials.get(prefs.getCharPref("extensions.signalspam.userid"));
-    if (credentials && credentials.username)
-    {
-        document.getElementById('signalspam_pref_password').value=credentials.password;
+    let userId;
+    try {
+        userId = prefs.getCharPref("extensions.signalspam.userid");
+        // That should not happen...
+        if (Preferences.get("signalspam_pref_userid") && Preferences.get("signalspam_pref_userid").value!==userId)
+            Preferences.get("signalspam_pref_userid").value=userId;
+    } catch(e) {
+        try {
+            userId = Preferences.get("signalspam_pref_userid").value = false;
+        } catch(e) {
+            console.error("Prefs loaded - Got Exception",e);
+        }
     }
-    document.getElementById("thunderbirdpreferences").onclick=function(){
-       try {
-           var tWindow=window.open("chrome://messenger/content/preferences/aboutPreferences.xul", "Preferences","chrome,titlebar,toolbar,centerscreen");
-           tWindow.onloadend=function() {
-               //mail.spam.manualMark
-               tWindow.focus();
-               if (tWindow) {
-                   var paneSec=tWindow.document.querySelector('#paneSecurity');
-                   if (paneSec && paneSec.id)
-                       tWindow.showPane(paneSec.id);
-               }
-           };
-           setTimeout(function() {
-               if (typeof tWindow.showPane === "function")
-                   tWindow.showPane("paneSecurity");
-           },300);
-       } catch(e) {
-           verifrom.console.log('Exception opening Thunderbird preferences window',e);
-       }
-    };
-    prefs.setBoolPref("extensions.signalspam.firsttime",false);
-    prefs.setCharPref("extensions.signalspam.lastversion",extensionConfig.appInfo.version);
-    Preferences.get("signalspam_pref_firsttime").value = false;
-    Preferences.get("signalspam_pref_lastversion").value = extensionConfig.appInfo.version;
+    try {
+        credentials = verifrom.credentials.get(userId);
+        if (credentials && credentials.username) {
+            document.getElementById('signalspam_pref_password').value = credentials.password;
+        }
+        try {
+            prefs.setBoolPref("extensions.signalspam.firsttime", false);
+            prefs.setCharPref("extensions.signalspam.lastversion", extensionConfig.appInfo.version);
+            Preferences.get("signalspam_pref_firsttime").value = false;
+            Preferences.get("signalspam_pref_lastversion").value = extensionConfig.appInfo.version;
+        } catch (e) {
+            console.error("Prefs loaded - Got Exception", e);
+        }
+    } catch(e) {
+        console.error("Prefs loaded - Got Exception",e);
+    }
 
     let link = document.getElementById('newPasswordLink');
     if (link) {
@@ -150,10 +143,36 @@ window.addEventListener("load", function (e) {
                 opener.openLinkExternally(link.getAttribute("href"));
         });
     }
+
     if (prefWindow)
         prefWindow.getButton("accept").setAttribute("default",false);
+
     checkUserIdAndPassord();
-});
+
+    document.getElementById("thunderbirdpreferences").onclick=function(){
+        try {
+            var tWindow=window.open("chrome://messenger/content/preferences/aboutPreferences.xul", "Preferences","chrome,titlebar,toolbar,centerscreen");
+            tWindow.onloadend=function() {
+                //mail.spam.manualMark
+                tWindow.focus();
+                if (tWindow) {
+                    var paneSec=tWindow.document.querySelector('#paneSecurity');
+                    if (paneSec && paneSec.id)
+                        tWindow.showPane(paneSec.id);
+                }
+            };
+            setTimeout(function() {
+                if (typeof tWindow.showPane === "function")
+                    tWindow.showPane("paneSecurity");
+            },300);
+        } catch(e) {
+            verifrom.console.log('Exception opening Thunderbird preferences window',e);
+        }
+    };
+
+}
+
+window.addEventListener("load", loaded);
 
 window.addEventListener("focus", function (e) {
     if (prefs.getBoolPref('mail.spam.manualMark') === false)
@@ -186,8 +205,6 @@ function keyhandler(e) {
 }
 
 
-document.getElementById('signalspam_pref_userid').oninput= keyOnCredentialshandler;
-document.getElementById('signalspam_pref_password').oninput= keyOnCredentialshandler;
 var keyOnCredentialshandlerTimeout = null;
 function keyOnCredentialshandler(e) {
     if (keyOnCredentialshandlerTimeout) {
@@ -196,41 +213,47 @@ function keyOnCredentialshandler(e) {
     }
     keyOnCredentialshandlerTimeout = setTimeout(checkUserIdAndPassord,1000);
 }
+document.getElementById('signalspam_pref_userid').oninput= keyOnCredentialshandler;
+document.getElementById('signalspam_pref_password').oninput= keyOnCredentialshandler;
 
 var prevUserId  = null;
 var prevPassword = null;
 var prevResult = null;
 function checkUserIdAndPassord() {
-    let userid=document.getElementById('signalspam_pref_userid').value;
-    let password=document.getElementById('signalspam_pref_password').value;
-    if (userid === prevUserId && password === prevPassword && prevResult !== null) {
-        if (prefWindow)
-            prefWindow.getButton("accept").disabled = !prevResult;
-        return prevResult;
+    try {
+        let userid = document.getElementById('signalspam_pref_userid').value;
+        let password = document.getElementById('signalspam_pref_password').value;
+        if (userid === prevUserId && password === prevPassword && prevResult !== null) {
+            if (prefWindow)
+                prefWindow.getButton("accept").disabled = !prevResult;
+            return prevResult;
+        }
+        if (userid.length === 0 && password.length === 0) {
+            showNotification('notauthentified');
+            prevResult = false;
+            if (prefWindow)
+                prefWindow.getButton("accept").disabled = !prevResult;
+            return;
+        }
+        if (checkUserId() === false) {
+            prevResult = false;
+            if (prefWindow)
+                prefWindow.getButton("accept").disabled = !prevResult;
+            return;
+        }
+        checkCredentials(userid, password, function (valid, error403) {
+            prevResult = valid;
+            if (prefWindow)
+                prefWindow.getButton("accept").disabled = !prevResult;
+            if (valid)
+                showNotification('userauthentified');
+            else if (error403 === false)
+                showNotification('invalidcredentials');
+            else showNotification('error403');
+        });
+    } catch(e) {
+        console.error("checkUserIdAndPassord - Got Exception",e);
     }
-    if (userid.length===0 && password.length===0) {
-        showNotification('notauthentified');
-        prevResult = false;
-        if (prefWindow)
-            prefWindow.getButton("accept").disabled = !prevResult;
-        return;
-    }
-    if (checkUserId()===false) {
-        prevResult = false;
-        if (prefWindow)
-            prefWindow.getButton("accept").disabled = !prevResult;
-        return;
-    }
-    checkCredentials(userid,password,function(valid, error403) {
-        prevResult = valid;
-        if (prefWindow)
-            prefWindow.getButton("accept").disabled = !prevResult;
-        if (valid)
-            showNotification('userauthentified');
-        else if (error403===false)
-            showNotification('invalidcredentials');
-        else showNotification('error403');
-    })
 }
 
 function checkCredentials(userid, password, callback)
@@ -273,75 +296,78 @@ function checkCredentials(userid, password, callback)
 }
 
 function showNotification(notificationId) {
-    if (!signalspam_Notification || typeof signalspam_Notification.notificationbox === "undefined") {
-        verifrom.console.log(4,'signalspam_showNotification - notification box not initialized');
-        if (typeof opener.XPCOMUtils === 'object')
-            opener.XPCOMUtils.defineLazyGetter(signalspam_Notification
-                , "notificationbox"
-                , function() {
-                    return new MozElements.NotificationBox(function(element) {
-                        element.setAttribute("flex", "1");
-                        element.setAttribute("notificationside","top");
-                        document.getElementById("preferencesNotificationBox").append(element);
-                        signalspam_NotificationReady = true;
-                        verifrom.console.log(4,'signalspam_Notification initialized (2)');
-                        showNotification(notificationId);
+    try {
+        if (!signalspam_Notification || typeof signalspam_Notification.notificationbox === "undefined") {
+            verifrom.console.log(4, 'signalspam_showNotification - notification box not initialized');
+            if (typeof opener.XPCOMUtils === 'object')
+                opener.XPCOMUtils.defineLazyGetter(signalspam_Notification
+                    , "notificationbox"
+                    , function () {
+                        return new MozElements.NotificationBox(function (element) {
+                            element.setAttribute("flex", "1");
+                            element.setAttribute("notificationside", "top");
+                            document.getElementById("preferencesNotificationBox").append(element);
+                            signalspam_NotificationReady = true;
+                            verifrom.console.log(4, 'signalspam_Notification initialized (2)');
+                            showNotification(notificationId);
+                        });
                     });
-                });
-        return;
-    }
-    signalspam_Notification.notificationbox.removeAllNotifications();
-
-    let notifyBox = signalspam_Notification.notificationbox;
-    notifyBox.removeAllNotifications();
-
-    let bundle = Services.strings.createBundle("chrome://signalspam/locale/signalspam.properties");
-    let notifications = {
-        "invalidcredentials": {
-            "label": bundle.GetStringFromName("signalspam-invalidcredentials"),
-            "value": "invalidcredentials",
-            "priority": notifyBox.PRIORITY_CRITICAL_HIGH
-        },
-        "invaliduserid": {
-            "label": bundle.GetStringFromName("signalspam-invaliduserid"),
-            "value": "invaliduserid",
-            "priority": notifyBox.PRIORITY_CRITICAL_HIGH
-        },
-        "notauthentified": {
-            "label": bundle.GetStringFromName("signalspam-notauthentified"),
-            "value": "notauthentified",
-            "priority": notifyBox.PRIORITY_CRITICAL_HIGH
-        },
-        "userauthentified": {
-            "label": bundle.GetStringFromName("signalspam-userauthentified"),
-            "value": "userauthentified",
-            "priority": notifyBox.PRIORITY_INFO_LOW
-        },
-        "error403": {
-            "label": bundle.GetStringFromName("signalspam-error403"),
-            "value": "usernotconfirmed",
-            "priority": notifyBox.PRIORITY_CRITICAL_HIGH
+            return;
         }
-    };
-    let notificationToDisplay = notifications[notificationId];
+        signalspam_Notification.notificationbox.removeAllNotifications();
 
-    let notification = notifyBox.getNotificationWithValue(notificationToDisplay.value);
-    if (notification)
-    {
-        verifrom.console.log(4,`signalspam_showNotification - notification ${notificationToDisplay.value} already displayed`);
-        return;
-    }
+        let notifyBox = signalspam_Notification.notificationbox;
+        notifyBox.removeAllNotifications();
 
-    if (notifyBox) {
-        notifyBox.appendNotification(
-            notificationToDisplay.label,
-            notificationToDisplay.value,
-            "chrome://signalspam/skin/icon48.png",
-            notificationToDisplay.priority,
-            [],function(){
-                verifrom.console.log("signalspam_showNotification - notification event",arguments);
+        let bundle = Services.strings.createBundle("chrome://signalspam/locale/signalspam.properties");
+        let notifications = {
+            "invalidcredentials": {
+                "label": bundle.GetStringFromName("signalspam-invalidcredentials"),
+                "value": "invalidcredentials",
+                "priority": notifyBox.PRIORITY_CRITICAL_HIGH
+            },
+            "invaliduserid": {
+                "label": bundle.GetStringFromName("signalspam-invaliduserid"),
+                "value": "invaliduserid",
+                "priority": notifyBox.PRIORITY_CRITICAL_HIGH
+            },
+            "notauthentified": {
+                "label": bundle.GetStringFromName("signalspam-notauthentified"),
+                "value": "notauthentified",
+                "priority": notifyBox.PRIORITY_CRITICAL_HIGH
+            },
+            "userauthentified": {
+                "label": bundle.GetStringFromName("signalspam-userauthentified"),
+                "value": "userauthentified",
+                "priority": notifyBox.PRIORITY_INFO_LOW
+            },
+            "error403": {
+                "label": bundle.GetStringFromName("signalspam-error403"),
+                "value": "usernotconfirmed",
+                "priority": notifyBox.PRIORITY_CRITICAL_HIGH
             }
-        );
+        };
+        let notificationToDisplay = notifications[notificationId];
+
+        let notification = notifyBox.getNotificationWithValue(notificationToDisplay.value);
+        if (notification) {
+            verifrom.console.log(4, `signalspam_showNotification - notification ${notificationToDisplay.value} already displayed`);
+            return;
+        }
+
+        if (notifyBox) {
+            notifyBox.appendNotification(
+                notificationToDisplay.label,
+                notificationToDisplay.value,
+                "chrome://signalspam/skin/icon48.png",
+                notificationToDisplay.priority,
+                [], function () {
+                    verifrom.console.log("signalspam_showNotification - notification event", arguments);
+                }
+            );
+        }
+    } catch(e) {
+        console.error("showNotification - got exception",e);
     }
 }
 
@@ -368,103 +394,118 @@ function checkUserId()
 
 function savePrefs()
 {
-    prefs.setBoolPref("extensions.signalspam.userauthentified",true);
-    prefs.setBoolPref("extensions.signalspam.firsttime",false);
-    prefs.setCharPref("extensions.signalspam.lastversion",extensionConfig.appInfo.version);
-    var preferences=document.querySelectorAll('preference');
-    let userid=document.getElementById('signalspam_pref_userid').value;
-    let password=document.getElementById('signalspam_pref_password').value;
-    Preferences.get("signalspam_pref_lastversion").value = extensionConfig.appInfo.version;
-    Preferences.get("signalspam_pref_userauthentified").value = true;
-    Preferences.get("signalspam_pref_firsttime").value = false;
+    try {
+        prefs.setBoolPref("extensions.signalspam.userauthentified", true);
+        prefs.setBoolPref("extensions.signalspam.firsttime", false);
+        prefs.setCharPref("extensions.signalspam.lastversion", extensionConfig.appInfo.version);
+        var preferences = document.querySelectorAll('preference');
+        let userid = document.getElementById('signalspam_pref_userid').value;
+        let password = document.getElementById('signalspam_pref_password').value;
+        Preferences.get("signalspam_pref_lastversion").value = extensionConfig.appInfo.version;
+        Preferences.get("signalspam_pref_userauthentified").value = true;
+        Preferences.get("signalspam_pref_firsttime").value = false;
 
-    verifrom.credentials.set(userid, password);
-    if (credentials) {
-        credentials.username=userid;
-        credentials.password=password;
+        verifrom.credentials.set(userid, password);
+        if (credentials) {
+            credentials.username = userid;
+            credentials.password = password;
+        }
+    } catch(e) {
+        console.error("savePrefs - got exception",e);
     }
 }
 
 function validPrefs(accept)
 {
-    verifrom.console.log(2,'validPrefs',arguments);
+    try {
+        verifrom.console.log(2, 'validPrefs', arguments);
+        var userid = document.getElementById('signalspam_pref_userid').value;
+        var password = document.getElementById('signalspam_pref_password').value;
 
-    var userid=document.getElementById('signalspam_pref_userid').value;
-    var password=document.getElementById('signalspam_pref_password').value;
+        if (checkUserId() === false)
+            return false;
 
-    if (checkUserId()===false)
-        return false;
-
-    let credentialsValid = checkCredentials(userid, password);
-    if (credentialsValid===true) {
-        savePrefs();
-        document.removeEventListener('dialogaccept',onDialogAcceptHandler,{capture:true});
-        document.removeEventListener('dialogcancel',onDialogCancelHandler,{capture:true});
-        if (prefWindow)
-            prefWindow.acceptDialog();
-        window.close();
-        return true;
-    } else if (credentialsValid===403) {
-        showNotification('error403');
-        prefs.setCharPref("extensions.signalspam.userid",userid);
-        Preferences.get("signalspam_pref_userid").value = userid;
-        if (accept===true)
-        {
-            if (credentials && credentials.username)
-            {
-                //signalspam_prefs.setCharPref("extensions.signalspam.password","");
-                document.getElementById('signalspam_pref_userid').value=credentials.username;
-                document.getElementById('signalspam_pref_password').value=credentials.password;
-                checkUserIdAndPassord();
+        let credentialsValid = checkCredentials(userid, password);
+        if (credentialsValid === true) {
+            savePrefs();
+            document.removeEventListener('dialogaccept', onDialogAcceptHandler, {capture: true});
+            document.removeEventListener('dialogcancel', onDialogCancelHandler, {capture: true});
+            if (prefWindow)
+                prefWindow.acceptDialog();
+            window.close();
+            return true;
+        } else if (credentialsValid === 403) {
+            showNotification('error403');
+            prefs.setCharPref("extensions.signalspam.userid", userid);
+            Preferences.get("signalspam_pref_userid").value = userid;
+            if (accept === true) {
+                if (credentials && credentials.username) {
+                    //signalspam_prefs.setCharPref("extensions.signalspam.password","");
+                    document.getElementById('signalspam_pref_userid').value = credentials.username;
+                    document.getElementById('signalspam_pref_password').value = credentials.password;
+                    checkUserIdAndPassord();
+                }
             }
-        }
-        return false;
-    } else if (credentialsValid===false) {
-        showNotification('invalidcredentials');
-        prefs.setCharPref("extensions.signalspam.userid",userid);
-        Preferences.get("signalspam_pref_userid").value = userid;
-        if (accept===true)
-        {
-            if (credentials && credentials.username)
-            {
-                //signalspam_prefs.setCharPref("extensions.signalspam.password","");
-                document.getElementById('signalspam_pref_userid').value=credentials.username;
-                document.getElementById('signalspam_pref_password').value=credentials.password;
-                checkUserIdAndPassord();
+            return false;
+        } else if (credentialsValid === false) {
+            showNotification('invalidcredentials');
+            prefs.setCharPref("extensions.signalspam.userid", userid);
+            Preferences.get("signalspam_pref_userid").value = userid;
+            if (accept === true) {
+                if (credentials && credentials.username) {
+                    //signalspam_prefs.setCharPref("extensions.signalspam.password","");
+                    document.getElementById('signalspam_pref_userid').value = credentials.username;
+                    document.getElementById('signalspam_pref_password').value = credentials.password;
+                    checkUserIdAndPassord();
+                }
             }
+            return false;
         }
-        return false;
+    } catch(e) {
+        console.error("validPrefs - got exception",e);
     }
 }
 
 function cancelPrefs(cancel)
 {
-    verifrom.console.log(2,'cancelPrefs');
-    prefs.setBoolPref("extensions.signalspam.firsttime",false);
-    Preferences.get("signalspam_pref_userauthentified").value = prefs.getBoolPref("extensions.signalspam.userauthentified");
-    Preferences.get("signalspam_pref_firsttime").value = false;
-    document.removeEventListener('dialogaccept',onDialogAcceptHandler,{capture:true});
-    document.removeEventListener('dialogcancel',onDialogCancelHandler,{capture:true});
-    if (prefWindow)
-        prefWindow.cancelDialog();
-    window.close();
-    return true;
+    try {
+        verifrom.console.log(2, 'cancelPrefs');
+        prefs.setBoolPref("extensions.signalspam.firsttime", false);
+        Preferences.get("signalspam_pref_userauthentified").value = prefs.getBoolPref("extensions.signalspam.userauthentified");
+        Preferences.get("signalspam_pref_firsttime").value = false;
+        document.removeEventListener('dialogaccept', onDialogAcceptHandler, {capture: true});
+        document.removeEventListener('dialogcancel', onDialogCancelHandler, {capture: true});
+        if (prefWindow)
+            prefWindow.cancelDialog();
+        window.close();
+        return true;
+    } catch(e) {
+        console.error("cancelPrefs - got exception",e);
+    }
 }
 
 
 
 document.addEventListener('dialogaccept', onDialogAcceptHandler, {capture:true});
 function onDialogAcceptHandler(event) {
-    event.stopImmediatePropagation();
-    event.stopPropagation();
-    event.preventDefault();
-    return validPrefs(true);
+    try {
+        event.stopImmediatePropagation();
+        event.stopPropagation();
+        event.preventDefault();
+        return validPrefs(true);
+    } catch(e) {
+        console.error("onDialogAcceptHandler - got exception",e);
+    }
 }
 
 document.addEventListener('dialogcancel', onDialogCancelHandler, {capture:true});
 function onDialogCancelHandler(event) {
-    event.stopImmediatePropagation();
-    event.stopPropagation();
-    event.preventDefault();
-    return cancelPrefs(true);
+    try {
+        event.stopImmediatePropagation();
+        event.stopPropagation();
+        event.preventDefault();
+        return cancelPrefs(true);
+    } catch(e) {
+        console.error("onDialogCancelHandler - got exception",e);
+    }
 }

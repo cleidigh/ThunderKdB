@@ -323,6 +323,7 @@ class Message extends React.PureComponent {
       strings: this.strings
     })), this.props.message.expanded && React.createElement(MessageFooter, {
       dispatch: this.props.dispatch,
+      id: this.props.message.id,
       msgUri: this.props.message.msgUri,
       multipleRecipients: this.props.message.multipleRecipients,
       recipientsIncludeLists: this.props.message.recipientsIncludeLists,

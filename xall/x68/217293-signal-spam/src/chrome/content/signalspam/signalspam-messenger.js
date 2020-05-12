@@ -1,6 +1,18 @@
 (function(){
 
-    console.log("signalspam - loaded");
+    verifrom.console.log(1,"Extension loaded");
+
+    let sharedWorkerDisabled=false;
+    try {
+        try {
+            new SharedWorker("");
+        } catch(e) {
+            sharedWorkerDisabled = /insecure/i.test(e.message);
+        }
+        verifrom.console.log(1,"SharedWorker disabled? :",sharedWorkerDisabled);
+    } catch(e) {
+        console.error("got exception when checking cookies behaviour",e);
+    }
 
     var signalspamController = {
         do_cmd_closeSidebar: function () {
@@ -93,6 +105,20 @@
         return true;
     });
 
+    function installButtons(tries) {
+        if (!tries)
+            tries = 0;
+        let toolbar = document.querySelector("#mail-bar3");
+        if (!toolbar && tries < 5) {
+            tries++;
+            console.warn("installButtons - no toolbar");
+            setTimeout(installButtons, tries * 500, tries);
+        } else if (toolbar) {
+            signalspam_installButton("mail-bar3", "signalspam-button", "button-address");
+            signalspam_installButton("header-view-toolbar", "signalspam-button-hdr", "hdrJunkButton");
+        } else console.error("installButtons - unable to install report button in toolbar");
+    }
+
     window.addEventListener("load", function loadAtStartup(e) {
         verifrom.console.log(1, '######################## signalspam addon is starting ######################## ');
         window.removeEventListener("load", loadAtStartup, false);
@@ -113,9 +139,6 @@
 
             verifrom.console.log(4, 'Add-on version : ' + signalspam_prefs.getCharPref("extensions.signalspam.lastversion") + ' vs current version :' + extensionConfig.appInfo.version + ' and first run ? :' + signalspam_firstRun);
 
-            // TB68 : it seems we need to install the button on every launch
-            signalspam_installButton("mail-bar3", "signalspam-button", "button-address");
-            signalspam_installButton("header-view-toolbar", "signalspam-button-hdr", "hdrJunkButton");
             if (signalspam_firstRun !== false) {
                 // The "addon-bar" is available since Firefox 4
                 verifrom.console.log(4, 'add button to mail-bar3')
@@ -131,6 +154,8 @@
             verifrom.console.log(4, 'After UPDATE : Last add-on version : ' + signalspam_prefs.getCharPref("extensions.signalspam.lastversion") + ' vs current version :' + extensionConfig.appInfo.version + ' and first run ? :' + signalspam_firstRun);
             if (signalspam_prefs.getBoolPref("extensions.signalspam.spambtonactive") === true)
                 signalspam_setJunkButton(true);
+
+            installButtons();
         } catch (e) {
             verifrom.console.error(0, 'Exception on load', e);
         }
@@ -266,7 +291,7 @@
                     signalspam_verifromSafeBrowsing.close();
                     signalspam_verifromSafeBrowsing = null;
                 }
-                signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js');
+                signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js',sharedWorkerDisabled);
                 setMessageListeners(signalspam_verifromSafeBrowsing, function () {
                     signalspam_verifromSafeBrowsing.postMessage(signalspam_PARAM, {channel: 'start'});
                     if (!signalspam_emailInspect)
@@ -274,8 +299,16 @@
                     signalspam_emailInspect.start();
                 });
             } else {
-                signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js');
-                signalspam_verifromSafeBrowsing.postMessage(signalspam_PARAM, {channel: "params"});
+                if (signalspam_verifromSafeBrowsing) {
+                    signalspam_verifromSafeBrowsing.close();
+                    signalspam_verifromSafeBrowsing = null;
+                }
+                signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js',sharedWorkerDisabled);
+                setMessageListeners(signalspam_verifromSafeBrowsing, function () {
+                    verifrom.console.log(2,'start StopPhishing - message from worker listeners set');
+                    signalspam_verifromSafeBrowsing.postMessage(signalspam_PARAM, {channel: 'connect'});
+                    signalspam_verifromSafeBrowsing.postMessage(signalspam_PARAM, {channel: "params"});
+                });
             }
         }
     }
@@ -291,7 +324,8 @@
             signalspam_verifromSafeBrowsing.removeListener("ready");
             signalspam_verifromSafeBrowsing.close();
             signalspam_verifromSafeBrowsing = null;
-            signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js');
+            signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js',sharedWorkerDisabled);
+            signalspam_verifromSafeBrowsing.postMessage(signalspam_PARAM, {channel: 'connect'});
             signalspam_verifromSafeBrowsing.postMessage(signalspam_PARAM, {channel: "params"});
             signalspam_emailInspect.stop();
             signalspam_emailInspect = null;

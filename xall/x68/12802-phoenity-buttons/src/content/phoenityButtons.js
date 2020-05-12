@@ -254,6 +254,14 @@ phoenityButtons = {
     goDoCommand('cmd_nextUnreadMsg');
   },
 
+  getAllMessages: function() {
+    goDoCommand('cmd_getMsgsForAuthAccounts');
+  },
+
+  viewIgnoredThreads: function() {
+    goDoCommand('cmd_viewIgnoredThreads');
+  },
+
   devToolbox: function() {
     if (xulAppInfo.version >= "72.0") {
     BrowserToolboxLauncher.init();

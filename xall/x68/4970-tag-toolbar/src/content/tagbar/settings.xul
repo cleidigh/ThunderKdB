@@ -105,7 +105,7 @@
 			  	<checkbox id="TTBThreadStyle" label="Change background colors of tagged messages (need restart)" checked="true"
 			  						oncommand="gTTBSetting.showColorSample(null);"
 			  						prefstring="ttb.thread_bgcolor.enabled" defaultpref="false"/>
-		  			<vbox>
+		  			<hbox align="center">
 		  				<vbox>
 					  			<!--
 					  			<caption label="Lightness"/>
@@ -123,22 +123,23 @@
 			  							 -->
 			  						<label value="%"/>
 		  						</hbox>
-						  	<groupbox collapsed="true">
-						  		<!--
-						  		<caption label="Text color"/>
-						  		-->
-						  		<label value="Text color" class="header"/>
-								 	<menulist id="TTBThreadFgStyle" value="0" oncommand="gTTBSetting.showColorSample(null);"
-								 						preftype="int" prefstring="ttb.thread_fgcolor" defaultpref="0">
-						  			<menupopup>
-						  				<menuitem value="0" label="Tag colors"/>
-						  				<menuitem value="1" label="Black/White"/>
-						  				<menuitem value="2" label="Complementary colors"/>
-						  			</menupopup>
-									</menulist>
-								</groupbox>	
+							  	<hbox align="center">
+							  		<!--
+							  		<caption label="Text color"/>
+							  		-->
+							  		<spacer style="width:1em;"/>
+							  		<label value="Text color"/>
+									 	<menulist id="TTBThreadFgStyle" value="0" oncommand="gTTBSetting.showColorSample(null);"
+									 						preftype="int" prefstring="ttb.thread_fgcolor" defaultpref="0">
+							  			<menupopup>
+							  				<menuitem value="0" label="Tag colors"/>
+							  				<menuitem value="1" label="Black/White"/>
+							  				<menuitem value="2" label="Complementary colors"/>
+							  			</menupopup>
+										</menulist>
+									</hbox>	
 							</vbox>
-							<hbox>
+
 							<spacer style="width:1em;"/>
 					  	<groupbox flex="1">
 					  		<!--
@@ -151,8 +152,7 @@
 						  						 preftype="string" prefstring="ttb.thread_bgcolor.lightness" defaultpref="0.75">
 					  		</richlistbox>
 				  		</groupbox>
-				  		</hbox>
-			  		</vbox>
+			  		</hbox>
 			  </groupbox>
 				<vbox align="right">
 					<button label="&tagbar.set_default;"

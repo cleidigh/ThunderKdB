@@ -42,9 +42,9 @@ function onInit() {
     MessageBoxTitleList = MessageBoxTitleList + "|" + MessageBoxTitle;
   }
   findPreferences(MessageBoxTitleList);
-  browser.composeAction.setTitle({title: "Expand addresses"});
-  browser.composeAction.setIcon({path:"icons/icon_toolbar.png" });
-  browser.composeAction.onClicked.addListener(ExpandButton);
+  //browser.composeAction.setTitle({title: "Expand addresses"});
+  //browser.composeAction.setIcon({path:"icons/icon_toolbar.png" });
+  //browser.composeAction.onClicked.addListener(ExpandButton);
 }
 
 function ExpandButton() {

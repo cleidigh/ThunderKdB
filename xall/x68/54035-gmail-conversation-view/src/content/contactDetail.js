@@ -9,12 +9,8 @@ class _ContactDetail extends React.PureComponent {
   constructor(props) {
     super(props);
     this.strings = new StringBundle("chrome://conversations/locale/template.properties");
-    this.state = {
-      expanded: false
-    };
     this.addContact = this.addContact.bind(this);
     this.editContact = this.editContact.bind(this);
-    this.expandFooter = this.expandFooter.bind(this);
     this.createFilter = this.createFilter.bind(this);
     this.copyEmail = this.copyEmail.bind(this);
     this.sendEmail = this.sendEmail.bind(this);
@@ -65,14 +61,6 @@ class _ContactDetail extends React.PureComponent {
     });
   }
 
-  expandFooter(event) {
-    event.stopPropagation();
-    event.preventDefault();
-    this.setState({
-      expanded: true
-    });
-  }
-
   sendEmail(event) {
     event.stopPropagation();
     event.preventDefault();
@@ -99,8 +87,7 @@ class _ContactDetail extends React.PureComponent {
       left: 0,
       top: 0,
       bottom: 0
-    }; // TODO: Show monospace?
-
+    };
     const elm = React.createElement("div", {
       className: "tooltip",
       style: {
@@ -139,34 +126,7 @@ class _ContactDetail extends React.PureComponent {
       className: "authorPicture"
     }, React.createElement("img", {
       src: this.props.avatar
-    }))), this.state.expanded && React.createElement("div", {
-      className: "tipFooter hiddenFooter"
-    }, React.createElement("button", {
-      className: "createFilter",
-      onClick: this.createFilter
-    }, this.strings.get("createFilter")), this.props.hasCard ? React.createElement("button", {
-      className: "editContact",
-      title: this.strings.get("editCardAb"),
-      onClick: this.editContact
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#edit"
-    }))) : React.createElement("button", {
-      className: "addContact",
-      title: this.strings.get("addToAb"),
-      onClick: this.addContact
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#add"
-    })))), React.createElement("div", {
+    }))), React.createElement("div", {
       className: "tipFooter"
     }, React.createElement("button", {
       className: "sendEmail",
@@ -190,18 +150,32 @@ class _ContactDetail extends React.PureComponent {
       xmlnsXlink: "http://www.w3.org/1999/xlink"
     }, React.createElement("use", {
       xlinkHref: "chrome://conversations/skin/material-icons.svg#history"
-    }))), !this.state.expanded && React.createElement("button", {
-      className: "moreExpander",
-      title: this.strings.get("more"),
-      onClick: this.expandFooter
+    }))), this.props.hasCard ? React.createElement("button", {
+      className: "editContact",
+      title: this.strings.get("editCardAb"),
+      onClick: this.editContact
     }, React.createElement("svg", {
       className: "icon",
       viewBox: "0 0 24 24",
       xmlns: "http://www.w3.org/2000/svg",
       xmlnsXlink: "http://www.w3.org/1999/xlink"
     }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#expand_more"
-    }))))); // In TB 68, when an element with `tabIndex` gets focused,
+      xlinkHref: "chrome://conversations/skin/material-icons.svg#edit"
+    }))) : React.createElement("button", {
+      className: "addContact",
+      title: this.strings.get("addToAb"),
+      onClick: this.addContact
+    }, React.createElement("svg", {
+      className: "icon",
+      viewBox: "0 0 24 24",
+      xmlns: "http://www.w3.org/2000/svg",
+      xmlnsXlink: "http://www.w3.org/1999/xlink"
+    }, React.createElement("use", {
+      xlinkHref: "chrome://conversations/skin/material-icons.svg#add"
+    }))), React.createElement("button", {
+      className: "createFilter",
+      onClick: this.createFilter
+    }, this.strings.get("createFilter")))); // In TB 68, when an element with `tabIndex` gets focused,
     // it gets set as the position parent. It shouldn't. To resolve
     // this issue, reparent the popup to <body> so its parent will never
     // change. See https://github.com/protz/thunderbird-conversations/pull/1432

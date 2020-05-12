@@ -132,7 +132,12 @@
 <!ENTITY sig2.label "Tanda tangan dari Setelan Akun tanpa '--'">
 <!ENTITY fileHTML.label "HTML atau berkas teks biasa. Diasumsikan UTF-8 ketika menghilangkan opsi parameter charset.">
 <!ENTITY fileImage.label "Berkas gambar (png,jpg,gif,bmp,svg). AltText opsional ditampilkan jika gambar tidak dapat ditemukan.">
+<!ENTITY fileCSS.label "External style sheet (css). Include your favorite CSS rules to share between different templates.">
 <!ENTITY attach.label "Tambah berkas lampiran">
+<!ENTITY basepath.desc "If your template contains images with the 'img' tag that are on your local drive, you will need to tell SmartTemplate where to find these.">
+<!ENTITY basepath.desc2 "The 'basepath' variable will insert a html 'base' tag to find all images based on a start location - it can only be used once in an email.">
+<!ENTITY basepath.relative "Use this variable to find the images in the same location as the html file template.">
+<!ENTITY basepath.absolute "Click here to select a specific folder on your local drive.">
 <!ENTITY cursor.label "Setel posisi kursor">
 <!ENTITY spellcheck.label "Sets the spell-checking language. Example values: (en, de-DE, es-ES, ru) - note that the dictionary must be installed.">
 <!ENTITY to_var.cap "Penerima (Untuk)">

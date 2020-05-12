@@ -197,7 +197,7 @@
                 observes="button_next"
                 label="&phoenityButtons.viewIgnoredThreads;"
                 tooltiptext="&phoenityButtons.tooltips.viewIgnoredThreads;"
-                command="cmd_viewIgnoredThreads"/>
+                oncommand="phoenityButtons.viewIgnoredThreads();"/>
  <toolbarbutton class="toolbarbutton-1 phoenitybutton"
                 id="phb_toggleMessagePane"
                 observes="button_next"
@@ -270,7 +270,7 @@
                 observes="button_getNewMessages"
                 label="&phoenityButtons.getAllMessages;"
                 tooltiptext="&phoenityButtons.tooltips.getAllMessages;"
-                command="cmd_getMsgsForAuthAccounts"/>
+                oncommand="phoenityButtons.getAllMessages();"/>
  <toolbarbutton class="toolbarbutton-1 phoenitybutton"
                 id="phb_preferences"
                 label="&phoenityButtons.preferences;"

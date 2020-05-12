@@ -2,6 +2,18 @@
 
     verifrom.console.log(1,'**************** signalspam messageWindow SCRIPT ************************');
 
+    let sharedWorkerDisabled=false;
+    try {
+        try {
+            new SharedWorker("");
+        } catch(e) {
+            sharedWorkerDisabled = /insecure/i.test(e.message);
+        }
+        verifrom.console.log(1,"SharedWorker disabled? :",sharedWorkerDisabled);
+    } catch(e) {
+        console.error("got exception when checking cookies behaviour",e);
+    }
+
     var signalspamController = {
         do_cmd_signalspamReport: function () {
             verifrom.console.log(2,'do_cmd_signalspamReport', arguments);
@@ -157,45 +169,47 @@
         notificationService.addListener(newMailListener, notificationService.msgAdded);
         */
     }
-
-    function startStopPhishing()
-    {
+    function startStopPhishing() {
         if (signalspam_stopPhishingStarted)
             return;
-        if (signalspam_PARAM.OPTIONS.STOPPHISHING_WEBMAIL_ENABLE===true) {
+        if (signalspam_PARAM.OPTIONS.STOPPHISHING_WEBMAIL_ENABLE === true) {
             if (((signalspam_PARAM.OPTIONS.STOPPHISHING_USERACCOUNT_REQUIRED_ENABLED === true && signalspam_prefs.getBoolPref("extensions.signalspam.userauthentified") === true) || signalspam_PARAM.OPTIONS.STOPPHISHING_USERACCOUNT_REQUIRED_ENABLED === false) && signalspam_prefs.getBoolPref("extensions.signalspam.urldetect") === true) {
-                verifrom.console.log(2,'start StopPhishing - start worker and listen');
-                signalspam_stopPhishingStarted=true;
+                verifrom.console.log(2, 'start StopPhishing - start worker and listen');
+                signalspam_stopPhishingStarted = true;
                 if (signalspam_verifromSafeBrowsing) {
                     signalspam_verifromSafeBrowsing.close();
-                    signalspam_verifromSafeBrowsing=null;
+                    signalspam_verifromSafeBrowsing = null;
                 }
-                signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js');
-                if (!signalspam_verifromSafeBrowsing)
-                    verifrom.console.error(0,"Could not connect to Shared Worker");
-                if (!signalspam_emailInspect)
-                    signalspam_emailInspect=new signalspam_emailInspector(document, window, signalspam_onMessageLoadHandler);
-                signalspam_emailInspect.start();
-            }
-            else {
-                signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js');
-                if (!signalspam_verifromSafeBrowsing)
-                    verifrom.console.error(0,"Could not connect to Shared Worker");
+
+                signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js',sharedWorkerDisabled);
+                setMessageListeners(signalspam_verifromSafeBrowsing, function () {
+                    signalspam_verifromSafeBrowsing.postMessage(signalspam_PARAM, {channel: 'start'});
+                    if (!signalspam_emailInspect)
+                        signalspam_emailInspect = new signalspam_emailInspector(document, window, signalspam_onMessageLoadHandler);
+                    signalspam_emailInspect.start();
+                });
+            } else {
+                signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js',sharedWorkerDisabled);
+                signalspam_verifromSafeBrowsing.postMessage(signalspam_PARAM, {channel: "params"});
             }
         }
     }
 
     function stopStopPhishing() {
+
         if (!signalspam_stopPhishingStarted)
             return;
 
         if (signalspam_PARAM.OPTIONS.STOPPHISHING_WEBMAIL_ENABLE === true) {
-            verifrom.console.log(2,'close connection to worker and listeners');
-            signalspam_stopPhishingStarted=false;
+            verifrom.console.log(2, 'stop StopPhishing - stop worker and listeners');
+            signalspam_stopPhishingStarted = false;
+            signalspam_verifromSafeBrowsing.removeListener("ready");
             signalspam_verifromSafeBrowsing.close();
-            signalspam_verifromSafeBrowsing=null;
+            signalspam_verifromSafeBrowsing = null;
+            signalspam_verifromSafeBrowsing = new verifrom.worker('chrome://signalspam/content/signalspam/worker/verifromSafeBrowsing.js',sharedWorkerDisabled);
+            signalspam_verifromSafeBrowsing.postMessage(signalspam_PARAM, {channel: "params"});
             signalspam_emailInspect.stop();
-            signalspam_emailInspect=null;
+            signalspam_emailInspect = null;
         }
     }
 

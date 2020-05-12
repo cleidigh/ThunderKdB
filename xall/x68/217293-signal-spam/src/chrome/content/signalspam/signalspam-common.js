@@ -368,10 +368,13 @@ function signalspam_startMailCheck(emailDOMElement, win) {
     // get clicable links
     verifrom.console.log(3, 'signalspam_startMailCheck - get links');
     var mailLinks = signalspam_getMailLinks(emailDOMElement, true);
-
+    if (!mailLinks)
+        return;
     verifrom.console.log(3, 'got links');
     signalspam_checkHostPathCombination(mailLinks.urlArray, id,
         function onSuspect(message) {
+            if (!mailLinks)
+                return;
             if (message.id < signalspam_lastCheckId)
                 return;
             phishingAlert = true;
@@ -1387,24 +1390,22 @@ function signalspam_prepare(doc) {
 }
 
 function signalspam_installButton(toolbarId, id, afterId) {
-    if (!document.getElementById(id)) {
+    const selector = "#"+toolbarId+">#"+id;
+    const alreadyInstalled = document.querySelectorAll(selector).length === 1;
+    if (!alreadyInstalled) {
         var toolbar = document.getElementById(toolbarId);
-
         // If no afterId is given, then append the item to the toolbar
         var before = null;
         if (afterId) {
             var elem = document.getElementById(afterId);
             if (elem && elem.parentNode == toolbar)
                 before = elem.nextElementSibling;
-        }
+            else before = toolbar.lastChild;
+        } else before = toolbar.lastChild;
 
         toolbar.insertItem(id, before);
         toolbar.setAttribute("currentset", toolbar.currentSet);
-        //document.persist removed in TB68
-        //document.persist(toolbar.id, "currentset");
         Services.xulStore.persist(toolbar, "currentSet");
-
-
 
         if (toolbarId == "addon-bar")
             toolbar.collapsed = false;

@@ -46,9 +46,21 @@ function myAlertToSend(e,domain,Version,titles) {
 //let sending = document.runtime.sendMessage({"type": "Hello"})
   var win = Services.wm.getMostRecentWindow("msgcompose");
   var gCompose = win["gMsgCompose"];
-  win.Recipients2CompFields(gCompose.compFields);
-  win.expandRecipients()
-  win.CompFields2Recipients(gCompose.compFields);
+  console.log("First " + gCompose.compFields);
+  console.log(JSON.stringify(gCompose.compFields));
+  //if (gCompose.compFields.to == "" && gCompose.compFields.cc == "" && gCompose.compFields.bcc == "") {
+        win.Recipients2CompFields(gCompose.compFields);
+  //}
+  console.log("Second " + gCompose.compFields);
+  console.log(JSON.stringify(gCompose.compFields));
+  //if (MailingListFound(gCompose.compFields.to) || MailingListFound(gCompose.compFields.cc) || MailingListFound(gCompose.compFields.bcc)) {
+      win.expandRecipients()
+  //}
+  console.log("Third " + gCompose.compFields);
+  //win.CompFields2Recipients(gCompose.compFields);
+  console.log("Fourth " + gCompose.compFields);
+  console.log(JSON.stringify(gCompose.compFields));
+
   //---------------------------------------------------------------------- Works despite error
   var identityElement = win.document.getElementById("msgIdentity");
 	var mySender = identityElement.value;
@@ -85,30 +97,44 @@ function myAlertToSend(e,domain,Version,titles) {
   var winListTitle = TitleBox[4];
   var winCancel = TitleBox[5];
 	var check = { value: false };
-  row = 1;
-  while ((inputField = myGetInputElement(row))) {
-    fieldValue = inputField.value;
-		if (fieldValue != "") {
-			try {
-              			let headerParser = MailServices.headerParser;
-              			recipient =
-                			headerParser.makeFromDisplayAddress(fieldValue, {})
-                            		.map(fullValue => headerParser.makeMimeAddress(fullValue.name,
-                                                                           fullValue.email))
-                            		.join(", ");
+  var recipient;
+  var TotalAdresses = gCompose.compFields.to
+  if (TotalAdresses != "") {
+    if (gCompose.compFields.cc != "") {
+      TotalAdresses = TotalAdresses + ", " + gCompose.compFields.cc
+    }
+  } else {
+    TotalAdresses = gCompose.compFields.cc
+  }
+  if (TotalAdresses != "") {
+    if (gCompose.compFields.bcc != "") {
+      TotalAdresses = TotalAdresses + ", " + gCompose.compFields.bcc
+    }
+  } else {
+    TotalAdresses = gCompose.compFields.bcc
+  }
+  console.log("About to test: " + TotalAdresses + "*");
 
-            			} catch (ex) {
-              			recipient = fieldValue;
-            			}
+  while (TotalAdresses.indexOf(",") > 0) {
+    if (TotalAdresses.indexOf("@") > TotalAdresses.indexOf(",")) {
+      TotalAdresses = TotalAdresses.slice(TotalAdresses.indexOf("<"))
+    }
+    recipient = TotalAdresses.slice(0,TotalAdresses.indexOf(","));
+    TotalAdresses = TotalAdresses.slice(TotalAdresses.indexOf(",") + 1)
+
 		if (recipient.indexOf(domain) > 0)  {
 			controlledRecipients += conSep + recipient; conSep = ", ";
 		} else {
 			Recipients += Sep + recipient; Sep = ", ";
 		}
-		}row++
-  }
+		}
+  if (TotalAdresses.indexOf(domain) > 0)  {
+		controlledRecipients += conSep + TotalAdresses; conSep = ", ";
+	} else {
+		Recipients += Sep + TotalAdresses; Sep = ", ";
+	}
   console.log(mySender + " " +domain);
-  console.log(Recipients + " " + controlledRecipients);
+  console.log("Recipients " + Recipients + " controlledRecipients " + controlledRecipients);
   if (mySender.indexOf(domain) > 0) {
   	if (Recipients !== "") {
       console.log("Recipients " + Recipients);
@@ -151,6 +177,19 @@ function myAlertToSend(e,domain,Version,titles) {
     }
 }
 }
+function MailingListFound(ListOfAddresses) {
+  while (ListOfAddresses.indexOf(",") > 0) {
+    var CurrentAddress = ListOfAddresses.slice(0,ListOfAddresses.indexOf(",") - 1);
+    var ListOfAddresses = ListOfAddresses.slice(ListOfAddresses.indexOf(",") + 1)
+
+		if (CurrentAddress.indexOf(",") == 0)  {
+			return true
+		}
+
+  }
+return false
+}
+
 function myGetInputElement(row) {
 	var win = Services.wm.getMostRecentWindow("msgcompose");
 	var document = win.document;

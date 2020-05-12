@@ -88,10 +88,6 @@ UndigestifyKamensUs.Initialize = function(e) {
 				     UndigestifyKamensUs.UpdateMenuItems,
 				     false);
     }
-
-    var {KickstarterPopup} = ChromeUtils.import(
-        "chrome://undigestify/content/kickstarter.jsm");
-    KickstarterPopup(window, "chrome://undigestify/content/kickstarter.xul");
 }
 
 UndigestifyKamensUs.IsThunderbird2 = function() {

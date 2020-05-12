@@ -5,7 +5,7 @@
 /* import-globals-from quickReply.js */
 /* import-globals-from reducer.js */
 /* global Redux, ReactDOM, React, ReactRedux, ConversationWrapper,
-          Log:true, masqueradeAsQuickCompose */
+          masqueradeAsQuickCompose */
 
 let store;
 var { StringBundle } = ChromeUtils.import(
@@ -38,14 +38,10 @@ const { Prefs } = ChromeUtils.import(
 const { topMail3Pane } = ChromeUtils.import(
   "chrome://conversations/content/modules/misc.js"
 );
-const { setupLogging, dumpCallStack } = ChromeUtils.import(
-  "chrome://conversations/content/modules/log.js"
-);
-const { ConversationUtils } = ChromeUtils.import(
+const { ConversationUtils, Conversation } = ChromeUtils.import(
   "chrome://conversations/content/modules/conversation.js"
 );
 
-Log = setupLogging("Conversations.Stub");
 // Declare with var, not let, so that it's in the global scope, not the lexical scope.
 /* exported isInTab */
 var isInTab = false;
@@ -91,6 +87,84 @@ document.addEventListener(
   { once: true }
 );
 
+function setupConversationInTab(params) {
+  let scrollMode = params.get("scrollMode");
+  if (scrollMode) {
+    scrollMode = parseInt(scrollMode);
+  } else {
+    scrollMode = Prefs.kScrollUnreadOrLast;
+  }
+  // If we start up Thunderbird with a saved conversation tab, then we
+  // have no selected message. Fallback to the usual mode.
+  if (
+    scrollMode == Prefs.kScrollSelected &&
+    !topMail3Pane(window).gFolderDisplay.selectedMessage
+  ) {
+    scrollMode = Prefs.kScrollUnreadOrLast;
+  }
+
+  isInTab = true;
+  if (window.frameElement) {
+    window.frameElement.setAttribute("tooltip", "aHTMLTooltip");
+  }
+  // let willExpand = parseInt(params.get("willExpand"));
+  let msgHdrs = params
+    .get("urls")
+    .split(",")
+    .map(x => msgUriToMsgHdr(x))
+    .filter(x => x != null && x.messageId);
+  // It might happen that there are no messages left...
+  if (!msgHdrs.length) {
+    document.getElementById("messageList").textContent = strings.get(
+      "messageMovedOrDeletedConversation"
+    );
+  } else {
+    window.Conversations = {
+      currentConversation: null,
+      counter: 0,
+    };
+    let freshConversation = new Conversation(
+      window,
+      msgHdrs,
+      scrollMode,
+      ++Conversations.counter
+    );
+    let browser = window.frameElement;
+    // Because Thunderbird still hasn't fixed that...
+    if (browser) {
+      browser.setAttribute("context", "mailContext");
+    }
+
+    freshConversation.outputInto(window, function(aConversation) {
+      // This is a stripped-down version of what's in monkeypatch.js,
+      //  make sure the two are in sync!
+      Conversations.currentConversation = aConversation;
+      aConversation.completed = true;
+      // TODO: Re-enable this.
+      // registerQuickReply();
+      // That's why we saved it before...
+      // newComposeSessionByDraftIf();
+      // TODO: expandQuickReply isn't defined anywhere. Should it be?
+      // if (willExpand)
+      //   expandQuickReply();
+      // Create a new rule that will override the default rule, so that
+      // the expanded quick reply is twice higher.
+      document.body.classList.add("inTab");
+      // Do this now so as to not defeat the whole expand/collapse
+      // logic.
+      if (Services.prefs.getBoolPref("mailnews.mark_message_read.auto")) {
+        setTimeout(function() {
+          msgHdrsMarkAsRead(msgHdrs, true);
+        }, Services.prefs.getIntPref(
+          "mailnews.mark_message_read.delay.interval"
+        ) *
+          Services.prefs.getBoolPref("mailnews.mark_message_read.delay") *
+          1000);
+      }
+    });
+  }
+}
+
 /**
  * That big event handler tries to parse URL query parameters, and then acts
  * upon these, by firing a conversation on its own. This is a very
@@ -106,87 +180,23 @@ document.addEventListener(
     // Oh, are we expected to build a conversation on our own? Let's do it,
     // yay!
     if (params.has("urls")) {
-      try {
-        let scrollMode = params.get("scrollMode");
-        if (scrollMode) {
-          scrollMode = parseInt(scrollMode);
-        } else {
-          scrollMode = Prefs.kScrollUnreadOrLast;
-        }
-        /* If we start up Thunderbird with a saved conversation tab, then we
-         * have no selected message. Fallback to the usual mode. */
-        if (
-          scrollMode == Prefs.kScrollSelected &&
-          !topMail3Pane(window).gFolderDisplay.selectedMessage
-        ) {
-          scrollMode = Prefs.kScrollUnreadOrLast;
-        }
-
-        isInTab = true;
-        if (window.frameElement) {
-          window.frameElement.setAttribute("tooltip", "aHTMLTooltip");
-        }
+      function checkStarted() {
         let mainWindow = topMail3Pane(window);
-        // let willExpand = parseInt(params.get("willExpand"));
-        let msgHdrs = params
-          .get("urls")
-          .split(",")
-          .map(x => msgUriToMsgHdr(x))
-          .filter(x => x != null && x.messageId);
-        // It might happen that there are no messages left...
-        if (!msgHdrs.length) {
-          document.getElementById("messageList").textContent = strings.get(
-            "messageMovedOrDeletedConversation"
-          );
-        } else {
-          window.Conversations = {
-            currentConversation: null,
-            counter: 0,
-          };
-          let freshConversation = new mainWindow.Conversations.monkeyPatch._Conversation(
-            window,
-            msgHdrs,
-            scrollMode,
-            ++Conversations.counter
-          );
-          let browser = window.frameElement;
-          // Because Thunderbird still hasn't fixed that...
-          if (browser) {
-            browser.setAttribute("context", "mailContext");
+        if (
+          mainWindow.Conversations &&
+          mainWindow.Conversations.monkeyPatch &&
+          mainWindow.Conversations.monkeyPatch.finishedStartup
+        ) {
+          try {
+            setupConversationInTab(params);
+          } catch (ex) {
+            console.error(ex);
           }
-
-          freshConversation.outputInto(window, function(aConversation) {
-            // This is a stripped-down version of what's in monkeypatch.js,
-            //  make sure the two are in sync!
-            Conversations.currentConversation = aConversation;
-            aConversation.completed = true;
-            // TODO: Re-enable this.
-            // registerQuickReply();
-            // That's why we saved it before...
-            // newComposeSessionByDraftIf();
-            // TODO: expandQuickReply isn't defined anywhere. Should it be?
-            // if (willExpand)
-            //   expandQuickReply();
-            // Create a new rule that will override the default rule, so that
-            // the expanded quick reply is twice higher.
-            document.body.classList.add("inTab");
-            // Do this now so as to not defeat the whole expand/collapse
-            // logic.
-            if (Services.prefs.getBoolPref("mailnews.mark_message_read.auto")) {
-              setTimeout(function() {
-                msgHdrsMarkAsRead(msgHdrs, true);
-              }, Services.prefs.getIntPref(
-                "mailnews.mark_message_read.delay.interval"
-              ) *
-                Services.prefs.getBoolPref("mailnews.mark_message_read.delay") *
-                1000);
-            }
-          });
+        } else {
+          setTimeout(checkStarted, 100);
         }
-      } catch (e) {
-        Log.debug(e);
-        dumpCallStack(e);
       }
+      checkStarted();
     } else if (params.get("quickCompose")) {
       masqueradeAsQuickCompose();
     }
