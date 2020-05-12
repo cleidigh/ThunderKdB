@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 110120,
+    "average_daily_users": 106653,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -18,26 +18,26 @@
     },
     "contributions_url": "http://paypal.me/cleidigh",
     "current_version": {
-        "id": 2472632,
+        "id": 2473655,
         "compatibility": {
             "thunderbird": {
-                "max": "69.*",
+                "max": "72.*",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/importexporttools-ng/versions/2472632",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/importexporttools-ng/versions/2473655",
         "files": [
             {
-                "id": 1015705,
-                "created": "2019-09-17T07:11:03Z",
-                "hash": "sha256:5fe2aca3f9a162849d0fbafab619f17b0158dba2093aeee3dea700551cd2216c",
+                "id": 1016810,
+                "created": "2020-04-30T22:31:40Z",
+                "hash": "sha256:51a4e5c5996169beea61f461f11a295c619c6acee9b3889d6448b39a3641ba93",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 225206,
+                "size": 421456,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015705/importexporttools_ng-4.0.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016810/importexporttools_ng-4.1.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -71,15 +71,15 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Fixed text format or signature"
+            "en-US": "Version 4.1.0 : New Features\n\n\t\t- Help/User guide : Fully localized\n\t\t- Suffix option for filenames\n\t\t- Custom date option for filenames allowing strftime() like full date and time formatting\n\t\t- Use custom file naming for both attachments and embedded attachments\n\t\t- Custom date option for index filenames\n\t\t- Option to use 'Received Date' for filename and index\n\t\t- User configurable Hotkeys (Keyboard shortcuts)\n\t\t- PDF output now uses the global print options\n\t\t- Improved HTML index file layout\n\t\t\n\tBug Issues Fixed:\n\t- #68 fix for index attachment flag\n\t- #74 fix for in-line image attachments not exported\n\t- Fix #56 handle cancel on import dialog\n\t- #77 use preferences for PDF output\n\t- UI cleanup tweaks (#80, #81, #82 ) OS variations - @ovari\n\t- German translation fix #93 - @dipgithub\n\t- Hungarian translation fixes - @ovari\n\t- Add missing license file #96"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools-ng/versions/4.0.4",
-        "version": "4.0.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools-ng/versions/4.1.0",
+        "version": "4.1.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "ImportExportTools NG adds import and export functions for messages, folders and profiles.\n\nThis derivative add-on is the update of the original work of Paolo \"Kaosmos\", ImportExportTools.\nThe add-on is being updated for Thunderbird 68 (and 60) so that users can continue to enjoy the\nfunctionality of this great add-on.\n\nThe first NG release, 4.0.0 , is a fork of v3.3.2 of the original add-on with the same functionality.\nThe name and icon have been changed to differentiate from the original version.\n\nThe author's original homepage as a reference:\n<a href=\"https://freeshell.de/~kaosmos/mboximport-en.html\" rel=\"nofollow\">https://freeshell.de/~kaosmos/mboximport-en.html</a>\n\nOriginal Add-on homepage:\n<a href=\"https://addons.thunderbird.net/thunderbird/addon/importexporttools\" rel=\"nofollow\">https://addons.thunderbird.net/thunderbird/addon/importexporttools</a>\n\nFeatures:\n\nMenus:\n - Tools (most import and export functions including profiles)\n - Folders (most import and export functions)\n - Search dialog (export search results)\n - Selected messages (export or copy to clipboard)\n\nExport:\n - Individual folder(s), optionally including subfolders (mbox format)\n - All folder messages in the following formats:\n   - EML, HTML, PDF, CSV or plaintext\n   - Export as individual files or a single file\n   - Optionally include attachments\n   - Export indexes as plain text or CSV\n   - Extensive file naming convention options\n   - Export messages from search dialog\n\nImport:\n - Mbox files (including structure)\n - EML &amp; EMLX files\n - Individual or all directory files\n\nProfiles:\n - Export complete profile or just the mail files\n - Import profile\n - Auto profile backup with schedule on shutdown\n\nSMS:\n - Import SMS from the \"SMS Backup and Restore\" program for Android and Nokia2AndroidSMS\n - Note: SMS not verified for NG (unable to test), please comment on issues\n\nMajor Release Notes:  v4.0.4:\n - ImportExportTools NG includes all functionality from v3.3.2\n - Fixed issue #13 : Fix plaintext/HTML attachment exports\n - Fixed EML import issue\n - Improved HTML attachment boxes\n - Fixed text formater  signature change"
+        "en-US": "ImportExportTools NG adds import and export functions for messages, folders and profiles.\n\nNew Version:  v4.1.0 Enhancements/Additions:\n\n- Help/User guide : Fully localized\n- Suffix option for filenames\n- Custom date option for filenames allowing strftime() like full date and time formatting\n- Use custom file naming for both attachments and embedded attachments\n- Custom date option for index filenames\n- Option to use 'Received Date' for filename and index\n- User configurable Hotkeys (Keyboard shortcuts)\n- PDF output now uses the global print options\n- Improved HTML index file layout\n\n\nThis derivative add-on is the update of the original work of Paolo \"Kaosmos\", ImportExportTools. Original Add-on homepage:\n<a href=\"https://addons.thunderbird.net/thunderbird/addon/importexporttools\" rel=\"nofollow\">https://addons.thunderbird.net/thunderbird/addon/importexporttools</a>\n\nFeatures:\n\nMenus:\n - Tools (most import and export functions including profiles)\n - Folders (most import and export functions)\n - Search dialog (export search results)\n - Selected messages (export or copy to clipboard)\n\nExport:\n - Individual folder(s), optionally including subfolders (mbox format)\n - All folder messages in the following formats:\n   - EML, HTML, PDF, CSV or plaintext\n   - Export as individual files or a single file\n   - Optionally include attachments\n   - Export indexes as plain text or CSV\n   - Extensive file naming convention options\n   - Export messages from search dialog\n\nImport:\n - Mbox files (including structure)\n - EML &amp; EMLX files\n - Individual or all directory files\n\nProfiles:\n - Export complete profile or just the mail files\n - Import profile\n - Auto profile backup with schedule on shutdown"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/importexporttools-ng/edit",
@@ -98,7 +98,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2019-09-17T09:13:45Z",
+    "last_updated": "2020-05-02T15:00:59Z",
     "name": {
         "ru": "ImportExportTools NG",
         "fr": "ImportExportTools NG",
@@ -182,10 +182,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.26516,
-        "count": 48,
-        "average": 4.2917,
-        "text_count": 48
+        "bayesian_average": 4.28,
+        "count": 49,
+        "average": 4.3061,
+        "text_count": 49
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools-ng/reviews/",
     "requires_payment": false,
