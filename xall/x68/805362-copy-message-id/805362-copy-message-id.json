@@ -9,38 +9,43 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12959/12959121.png?modified=1492036029"
         }
     ],
-    "average_daily_users": 143,
+    "average_daily_users": 146,
     "categories": {
         "thunderbird": [
             "composition"
         ]
     },
     "contributions_url": "",
+    "created": "2017-04-12T22:16:46Z",
     "current_version": {
-        "id": 2472911,
+        "id": 2473730,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "68.0"
+                "min": "68.7.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-message-id/versions/2472911",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-message-id/versions/2473730",
         "files": [
             {
-                "id": 1016018,
-                "created": "2019-11-21T18:13:47Z",
-                "hash": "sha256:1c3eb11429d6cc63749036a8ae1daac4f86e5dec86317f893f12a8f8e3f8bd95",
-                "is_restart_required": true,
+                "id": 1016892,
+                "created": "2020-05-20T02:58:10Z",
+                "hash": "sha256:478cb64718217b58d7729ce13beec38b20c7f52278e0ced8365f37584edfee61",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 7130,
+                "size": 9388,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016018/copy_message_id-1.0.3-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016892/copy_message_id-1.2.0-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "messagesRead",
+                    "clipboardWrite"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -49,11 +54,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Support Thunderbird 68.*"
+            "en-US": "Version 1.2.0 adds a new option to copy the raw message-id. This means copying the message-id header and value as-is with exact casing and whitespace. For example, if the ID was:\nMesSaGe-iD:           &lt;123@\n <a href=\"http://email.com\" rel=\"nofollow\">email.com</a>&gt;\n\nWithout raw enabled the add-on would copy:\n123@email.com\n\nbut with the option enabled you get:\nMesSaGe-iD:           &lt;123@\n <a href=\"http://email.com\" rel=\"nofollow\">email.com</a>&gt;\"\n\nThe minimum supported version is now 68.7, but anyone who doesn't need raw copy and wants to stay on a lower version is not missing out on anything yet."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-message-id/versions/1.0.3",
-        "version": "1.0.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-message-id/versions/1.2.0",
+        "version": "1.2.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -76,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-27T10:25:49Z",
+    "last_updated": "2020-05-20T03:00:03Z",
     "name": {
         "en-US": "Copy Message ID"
     },
@@ -90,12 +95,28 @@
                 730,
                 72
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205967.png?modified=1589169460",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205967.png?modified=1589943959",
             "thumbnail_size": [
                 320,
                 32
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205967.png?modified=1589169460"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205967.png?modified=1589943959"
+        },
+        {
+            "id": 205973,
+            "caption": {
+                "en-US": "Options available for Copy Message ID."
+            },
+            "image_size": [
+                664,
+                631
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205973.png?modified=1589943942",
+            "thumbnail_size": [
+                210,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205973.png?modified=1589943942"
         }
     ],
     "public_stats": false,
@@ -118,7 +139,12 @@
     },
     "support_url": null,
     "tags": [
-        "firefox57"
+        "clipboard",
+        "copy",
+        "firefox57",
+        "message header",
+        "message-id",
+        "thunderbird"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-message-id/",

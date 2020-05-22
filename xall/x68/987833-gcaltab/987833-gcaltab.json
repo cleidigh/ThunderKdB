@@ -1,0 +1,222 @@
+{
+    "id": 987833,
+    "authors": [
+        {
+            "id": 14188397,
+            "name": "Florent Tassy",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/ftassy/",
+            "username": "ftassy",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14188/14188397.png?modified=1589573079"
+        }
+    ],
+    "average_daily_users": 4,
+    "categories": {
+        "thunderbird": [
+            "calendar"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2020-05-14T00:03:25Z",
+    "current_version": {
+        "id": 2473710,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gcaltab/versions/2473710",
+        "files": [
+            {
+                "id": 1016870,
+                "created": "2020-05-14T21:23:05Z",
+                "hash": "sha256:cfea4c24dc4383ea34f05beb059fe9c7216072fbb0b88d352d615a547ecade54",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "linux",
+                "size": 63364,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016870/gcaltab-0.4-tb-linux.xpi?src=",
+                "permissions": [
+                    "*://calendar.google.com/*",
+                    "*://accounts.google.com/*",
+                    "*://google.com/calendar*",
+                    "storage"
+                ]
+            },
+            {
+                "id": 1016871,
+                "created": "2020-05-14T21:23:05Z",
+                "hash": "sha256:cfea4c24dc4383ea34f05beb059fe9c7216072fbb0b88d352d615a547ecade54",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "mac",
+                "size": 63364,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016871/gcaltab-0.4-tb-mac.xpi?src=",
+                "permissions": [
+                    "*://calendar.google.com/*",
+                    "*://accounts.google.com/*",
+                    "*://google.com/calendar*",
+                    "storage"
+                ]
+            },
+            {
+                "id": 1016872,
+                "created": "2020-05-14T21:23:05Z",
+                "hash": "sha256:cfea4c24dc4383ea34f05beb059fe9c7216072fbb0b88d352d615a547ecade54",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "windows",
+                "size": 63364,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016872/gcaltab-0.4-tb-windows.xpi?src=",
+                "permissions": [
+                    "*://calendar.google.com/*",
+                    "*://accounts.google.com/*",
+                    "*://google.com/calendar*",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": null,
+        "reviewed": "2020-05-14T21:40:03Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gcaltab/versions/0.4",
+        "version": "0.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<strong>How does it work ?</strong>\nOnce the add-on is installed, a new icon appears in Thunderbird Mail toolbar. Click on it to see GCalTab menu.\n\nClick on \"Open\" to open the Google Calendar tab. You can switch on/off the \"Dark\" button to activate DarkReader on the Google Calendar tab.\n\n<strong>What permissions are needed ?</strong>\nGCalTab will need to access your data for:\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul><strong>Does it means that GCalTab collects my data ?</strong>\n\nNo, GCalTab simply opens tabs in Thunderbird, exactly as it would be done in a web browser.\nIt does not collect any data.\nThese permissions are needed to allow GCalTab to \"manage\" tabs for these three domains in Thunderbird. \"Manage\" means:\n<ul><li>opening tabs</li><li>execute scripts on these tabs</li></ul>\nTabs are open for obvious reason: that's the aim of the add-on.\nThe only script that can be executed on these tabs is the DarkReader algorithm, that has a strict privacy policy.\n\nOf course, Google Calendar works as it would do in your web browser, including regarding data collection.\n\n<strong>So GCalTab will never transmit my data to anyone ?</strong>\nNever.\n\n<strong>How do I stay connected when I re-open Thunderbird ?</strong>\nIf you wish to stay connected to Google Calendar, you will have to allow cookies.\nThe cookies menu can be access as follow in Thunderbird:\nGNU/Linux : \"Edit\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nmacOS : \"Thunderbird\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nWindows : \"Tools\" &gt; \"Options\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nYou will have to allow and keep cookies for these three domains:\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>\n<strong>How do I disconnect from a Google Calendar account ?</strong>\nIf you use the \"Sign out\" button, the link will open in your web browser and will not disconnect Thunderbird.\nIn order to properly disconnect Thunderbird from Google Calendar, you need to delete three cookies.\nGNU/Linux : \"Edit\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nmacOS : \"Thunderbird\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nWindows : \"Tools\" &gt; \"Options\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nDelete the cookies for these three domains:\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gcaltab/edit",
+    "guid": "gcaltab@ftassy.github.io",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/ftassy/GCalTab"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987833-64.png?modified=3f119100",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987833-32.png?modified=3f119100",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987833-64.png?modified=3f119100"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-05-14T21:40:03Z",
+    "name": {
+        "en-US": "GCalTab"
+    },
+    "previews": [
+        {
+            "id": 205971,
+            "caption": {
+                "fr": "",
+                "en-US": "GCalTab button in Thunderbird Mail toolbar"
+            },
+            "image_size": [
+                953,
+                89
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205971.png?modified=1589572172",
+            "thumbnail_size": [
+                320,
+                30
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205971.png?modified=1589572172"
+        },
+        {
+            "id": 205972,
+            "caption": {
+                "fr": "",
+                "en-US": "GCalTab menu"
+            },
+            "image_size": [
+                360,
+                320
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205972.png?modified=1589572175",
+            "thumbnail_size": [
+                225,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205972.png?modified=1589572175"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gcaltab/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987833",
+    "slug": "gcaltab",
+    "status": "public",
+    "summary": {
+        "en-US": "GCalTab is a Thunderbird add-on that opens Google Calendar website in a Thunderbird tab. It features a beautiful dark mode thanks to the DarkReader algorithm."
+    },
+    "support_email": {
+        "en-US": "ftassy@e.email"
+    },
+    "support_url": {
+        "en-US": "https://github.com/ftassy/GCalTab"
+    },
+    "tags": [
+        "agenda",
+        "calendar",
+        "dark",
+        "darkreader",
+        "firefox57",
+        "google",
+        "theme"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gcaltab/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true
+        }
+    }
+}

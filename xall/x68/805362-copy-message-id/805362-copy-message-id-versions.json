@@ -1,5 +1,99 @@
 [
     {
+        "id": 2473730,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.7.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-message-id/versions/2473730",
+        "files": [
+            {
+                "id": 1016892,
+                "created": "2020-05-20T02:58:10Z",
+                "hash": "sha256:478cb64718217b58d7729ce13beec38b20c7f52278e0ced8365f37584edfee61",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 9388,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016892/copy_message_id-1.2.0-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "messagesRead",
+                    "clipboardWrite"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Version 1.2.0 adds a new option to copy the raw message-id. This means copying the message-id header and value as-is with exact casing and whitespace. For example, if the ID was:\nMesSaGe-iD:           &lt;123@\n <a href=\"http://email.com\" rel=\"nofollow\">email.com</a>&gt;\n\nWithout raw enabled the add-on would copy:\n123@email.com\n\nbut with the option enabled you get:\nMesSaGe-iD:           &lt;123@\n <a href=\"http://email.com\" rel=\"nofollow\">email.com</a>&gt;\"\n\nThe minimum supported version is now 68.7, but anyone who doesn't need raw copy and wants to stay on a lower version is not missing out on anything yet."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-message-id/versions/1.2.0",
+        "version": "1.2.0"
+    },
+    {
+        "id": 2473703,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.3.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-message-id/versions/2473703",
+        "files": [
+            {
+                "id": 1016861,
+                "created": "2020-05-12T04:33:15Z",
+                "hash": "sha256:e6293391bf8bcf8723e516aeb680fe7bcd471b24164a22041561bbc132fc8c51",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 8880,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016861/copy_message_id-1.1.0-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "messagesRead",
+                    "clipboardWrite"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Adds an options page with the following options:\n* prefix/suffix strings to append to the message ID\n* Include the angle brackets around the message ID\n* URL encode the message ID\n\nUpdates the add-on to use the newer WebExtension APIs. The add-on no longer requires a restart to enable. If it doesn't show up in your message display toolbar immediately, try right-clicking and selecting \"Customize\". If two buttons appear, try restarting Thunderbird."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-message-id/versions/1.1.0",
+        "version": "1.1.0"
+    },
+    {
         "id": 2472911,
         "channel": "listed",
         "compatibility": {
