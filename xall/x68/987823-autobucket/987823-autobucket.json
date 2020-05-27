@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14180/14180175.png?modified=1580647754"
         }
     ],
-    "average_daily_users": 1,
+    "average_daily_users": 2,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2020-05-06T07:30:11Z",
     "current_version": {
-        "id": 2473741,
+        "id": 2473747,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2473741",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2473747",
         "files": [
             {
-                "id": 1016903,
-                "created": "2020-05-21T14:40:22Z",
-                "hash": "sha256:6752fdce40acbf8a3c3335f30a2014310aa4eb7e3960f2de8a396968f87f1414",
+                "id": 1016909,
+                "created": "2020-05-26T12:03:23Z",
+                "hash": "sha256:fcf2fcd20a82478aacec2bd924a1e04e754b9ef6b055eebe3d1a8125fe524d82",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1145267,
+                "size": 1523810,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016903/autobucket-1.0.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016909/autobucket-1.0.6-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "menus",
@@ -56,12 +56,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Moved the setting clear function to the option\n* Optimization of learning process\n* Changed so that words with a score of 0 are not displayed in the log viewer.",
-            "ja": "* 設定クリア機能をオプションに移動\n* 学習処理の最適化\n* スコアが0の単語についてはログビュワーに表示しないように変更"
+            "en-US": "* Added statistical information display function. It can be displayed by add-on popup or shortcut key. \n\nShortcut key\nCtrl + Shift + S (Option + Shift + S on Mac)",
+            "ja": "* 統計情報表示機能を追加しました。アドオンのポップアップまたはショートカットキーで表示できます。\n\nショートカットキー\nCtrl + Shift + S(Macの場合はOption + Shift + S)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.0.3",
-        "version": "1.0.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.0.6",
+        "version": "1.0.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -86,12 +86,64 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-05-21T14:45:03Z",
+    "last_updated": "2020-05-26T12:05:03Z",
     "name": {
         "en-US": "AutoBucket",
         "ja": "AutoBucket"
     },
-    "previews": [],
+    "previews": [
+        {
+            "id": 205976,
+            "caption": {
+                "en-US": "logo",
+                "ja": "ロゴ"
+            },
+            "image_size": [
+                1280,
+                640
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205976.png?modified=1590495604",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205976.png?modified=1590495604"
+        },
+        {
+            "id": 205977,
+            "caption": {
+                "en-US": "Statistics View(Japanese)",
+                "ja": "統計情報表示"
+            },
+            "image_size": [
+                1111,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205977.png?modified=1590495604",
+            "thumbnail_size": [
+                278,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205977.png?modified=1590495604"
+        },
+        {
+            "id": 205978,
+            "caption": {
+                "en-US": "Statistics View(English)",
+                "ja": "統計情報(英語表示)"
+            },
+            "image_size": [
+                1168,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205978.png?modified=1590495604",
+            "thumbnail_size": [
+                292,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205978.png?modified=1590495604"
+        }
+    ],
     "public_stats": false,
     "ratings": {
         "bayesian_average": 3.10419,

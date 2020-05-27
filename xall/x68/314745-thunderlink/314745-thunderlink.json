@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14152/14152415.png?modified=1535722458"
         }
     ],
-    "average_daily_users": 1062,
+    "average_daily_users": 1056,
     "categories": {
         "thunderbird": [
             "importexport",
@@ -26,34 +26,30 @@
     "contributions_url": "https://paypal.me/jameschardy",
     "created": "2011-05-13T08:55:36Z",
     "current_version": {
-        "id": 2469159,
+        "id": 2473711,
         "compatibility": {
-            "firefox": {
-                "max": "*",
-                "min": "42.0"
-            },
             "thunderbird": {
-                "max": "68.*",
-                "min": "38.0"
+                "max": "*",
+                "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderlink/versions/2469159",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderlink/versions/2473711",
         "files": [
             {
-                "id": 1012298,
-                "created": "2019-01-17T16:33:26Z",
-                "hash": "sha256:03a812cb99db99ac9e4ca2908c1cc8a2298a3a26525789d38960c9c691db9de0",
-                "is_restart_required": false,
+                "id": 1016873,
+                "created": "2020-05-15T02:10:07Z",
+                "hash": "sha256:8813eacdb26bd0b45e3d8f369750fde6f9b65c40c313662fac1e60dda928ccaa",
+                "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 24019,
+                "size": 24302,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012298/thunderlink-1.2.9-fx.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016873/thunderlink-1.2.10-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -62,11 +58,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "1.2.9\n-----\n- Fixed preference window on Windows (@mikehardy)"
+            "en-US": "Minor updates, enabling 'mid:' RFC-compliant message URLs and a few more sender tags"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderlink/versions/1.2.9",
-        "version": "1.2.9"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderlink/versions/1.2.10",
+        "version": "1.2.10"
     },
     "default_locale": "en-US",
     "description": {
@@ -94,7 +90,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-01-17T16:35:03Z",
+    "last_updated": "2020-05-23T02:11:20Z",
     "name": {
         "en-US": "ThunderLink",
         "de": "ThunderLink"
@@ -184,10 +180,10 @@
     "weekly_downloads": 106,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp60": true,
-            "comp61plus": true
+            "comp60": true
         }
     }
 }
