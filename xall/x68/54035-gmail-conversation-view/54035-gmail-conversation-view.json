@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 21243,
+    "average_daily_users": 21229,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -25,35 +25,37 @@
     "contributions_url": "https://paypal.me/protzenko",
     "created": "2009-12-10T03:34:09Z",
     "current_version": {
-        "id": 2473720,
+        "id": 2473774,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmail-conversation-view/versions/2473720",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmail-conversation-view/versions/2473774",
         "files": [
             {
-                "id": 1016882,
-                "created": "2020-05-17T12:15:24Z",
-                "hash": "sha256:40d2d2b60ad07a17ba5da70c529bc9a173171cbdabff8effa6766732dd65897d",
-                "is_restart_required": true,
+                "id": 1016936,
+                "created": "2020-06-06T10:08:36Z",
+                "hash": "sha256:9915f1cf9cdb2b6f2bcbb938488466e244974af946f901bd4746c4147b2f9a10",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 973860,
+                "size": 958961,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016882/thunderbird_conversations-3.0.18-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016936/thunderbird_conversations-3.1.6-tb.xpi?src=",
                 "permissions": [
+                    "accountsRead",
                     "addressBooks",
                     "messagesRead",
                     "messagesMove",
-                    "storage"
+                    "storage",
+                    "tabs"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -62,11 +64,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Fixes selecting a different folder when clicking the folder tag in a message.\n* Adds a pre-fix to allow upgrading to the next major version to work properly."
+            "en-US": "* Added support for Thunderbird 77 beta.\n* Fixed jumping to folder by clicking on a folder name.\n* Lots of fixes to prevent new messages being received into a selected conversation from being marked as read immediately or affecting the display. This should make receiving new messages a lot more stable now.\n* Fixes a race condition where switching rapidly may have ended up display the wrong conversation.\n* Improved handling of when the add-on update. Future updates should work better without needing to restart.\n* Fixes display of attachments if messages are not downloaded for offline use.\n* Performance improvements when displaying messages.\n* Attempt to fix issue with grey background on Linux.\n* Added Ukrainian translation."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/versions/3.0.18",
-        "version": "3.0.18"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/versions/3.1.6",
+        "version": "3.1.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -109,7 +111,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-05-17T23:28:46Z",
+    "last_updated": "2020-06-09T11:54:37Z",
     "name": {
         "fr": "Thunderbird Conversations",
         "en-US": "Thunderbird Conversations",

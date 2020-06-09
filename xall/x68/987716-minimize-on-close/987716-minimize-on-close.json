@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5162/5162928.png?modified=1398762384"
         }
     ],
-    "average_daily_users": 12281,
+    "average_daily_users": 12736,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2019-10-27T18:37:41Z",
     "current_version": {
-        "id": 2473583,
+        "id": 2473744,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/minimize-on-close/versions/2473583",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/minimize-on-close/versions/2473744",
         "files": [
             {
-                "id": 1016729,
-                "created": "2020-03-30T20:46:36Z",
-                "hash": "sha256:5d460671e45be3c82856141d874654ca12f1ac543753e60047817427d37c5951",
-                "is_restart_required": true,
+                "id": 1016906,
+                "created": "2020-05-23T21:42:44Z",
+                "hash": "sha256:b519335644310c2ffda7e48b40484bc40be559783f3a7f04ee6c508590d4fd5f",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 2998,
+                "size": 4172,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016729/minimize_on_close-1.1.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016906/minimize_on_close-2.0.0.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,17 +50,17 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Starting with this update, closing the main window is now permitted in either of the following cases:\n<ul><li>There is another open main window. This permits to close duplicate main windows, for example after opening a folder in a new window.</li><li>The window is already minimized. This permits you to close Thunderbird without accessing Thunderbird's menu: close the window once (to minimize), then right-click it in the task bar and close it again.</li></ul>",
-            "de": "Das Hauptfenster kann nun in folgenden Sonderfällen geschlossen werden, ohne minimiert zu werden:\n<ul><li>Während ein anderes Hauptfenster geöffnet ist. Auf diese Weise können separate Hauptfenster einzeln geschlossen werden (z.B. nach dem Öffnen eines Verzeichnisses in einem neuen Fenster).</li><li>Wenn das Fenster bereits minimiert wurde. Auf diese Weise kann Thunderbird nun auch ohne Menü beendet werden: minimierte Fenster können i.d.R. über das Kontextmenü (rechte Maustaste) in der Taskleiste geschlossen werden.</li></ul>"
+            "en-US": "Update for upcoming versions of Thunderbird, especially 78.",
+            "de": "Aktualisierung für zukünftige Versionen von Thunderbird, insbesondere 78."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/minimize-on-close/versions/1.1.0.0",
-        "version": "1.1.0.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/minimize-on-close/versions/2.0.0.0",
+        "version": "2.0.0.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Minimizes Thunderbird's main window whenever you attempt to close it. This is helpful if you want to keep Thunderbird open in the Background – especially in combination with other tools that move minimized windows into the tray area.\n\nClosing the main window will still be permitted in either of the following cases:\n<ul><li>There is another open main window. This permits to close duplicate main windows, for example after opening a folder in a new window.</li><li>The window is already minimized. This permits you to close Thunderbird without accessing Thunderbird's menu: close the window once (to minimize), then right-click it in the task bar and close it again.</li></ul>\n<b>If you want Thunderbird to minimize to the tray, you need an independent application to move it to the tray whenever it is minimized.</b> On Linux I'd recommend <a href=\"https://github.com/user-none/KDocker\" rel=\"nofollow\">KDocker</a> (available in many Linux distributions), on Windows you can probably use <a href=\"https://github.com/sagamusix/TBTray\" rel=\"nofollow\">TBTray</a> (but I have not tested that).",
-        "de": "Minimiert das Hauptfenster von Thunderbird, wenn Sie versuchen, es zu schließen. Dieses Verhalten ist hilfreich, wenn Thunderbird im Hintergrund weiterhin ausgeführt werden soll – insbesondere in Verbindung mit Programmen, die Thunderbird in den Benachrichtigungsbereich minimieren.\n\nDas Hauptfenster kann in folgenden Sonderfällen geschlossen werden, ohne minimiert zu werden:\n<ul><li>Während ein anderes Hauptfenster geöffnet ist. Auf diese Weise können separate Hauptfenster einzeln geschlossen werden (z.B. nach dem Öffnen eines Verzeichnisses in einem neuen Fenster).</li><li>Wenn das Fenster bereits minimiert wurde. Auf diese Weise kann Thunderbird nun auch ohne Menü beendet werden: minimierte Fenster können i.d.R. über das Kontextmenü (rechte Maustaste) in der Taskleiste geschlossen werden.</li></ul>\n<b>Wenn Sie Thunderbird in den Tray minimieren willen, benötigen Sie zwingend ein zusätzliches Programm.</b> Unter Linux empfehle ich hierzu <a href=\"https://github.com/user-none/KDocker\" rel=\"nofollow\">KDocker</a> (in den meisten Linux-Distributionen enthalten), unter Windows funktioniert vermutlich <a href=\"https://github.com/sagamusix/TBTray\" rel=\"nofollow\">TBTray</a> (ich habe das allerdings nicht getestet)."
+        "en-US": "Minimizes Thunderbird's main window whenever you attempt to close it. This is helpful if you want to keep Thunderbird open in the Background – especially in combination with other tools that move minimized windows into the tray area.\n\nClosing the main window will still be permitted in either of the following cases:\n<ul><li>There is another open main window. This permits to close duplicate main windows, for example after opening a folder in a new window.</li><li>The window is already minimized. This permits you to close Thunderbird without accessing Thunderbird's menu: close the window once (to minimize), then right-click it in the task bar and close it again.</li></ul>\n<b>If you want Thunderbird to minimize to the tray, you need to enable the option for that in Thunderbird's settings (Windows-only on Thunderbird 76+) or install an independent application to move Thunderbird to the tray whenever it is minimized.</b> On Linux I'd recommend <a href=\"https://github.com/user-none/KDocker\" rel=\"nofollow\">KDocker</a> (available in many Linux distributions).",
+        "de": "Minimiert das Hauptfenster von Thunderbird, wenn Sie versuchen, es zu schließen. Dieses Verhalten ist hilfreich, wenn Thunderbird im Hintergrund weiterhin ausgeführt werden soll – insbesondere in Verbindung mit Programmen, die Thunderbird in den Benachrichtigungsbereich minimieren.\n\nDas Hauptfenster kann in folgenden Sonderfällen geschlossen werden, ohne minimiert zu werden:\n<ul><li>Während ein anderes Hauptfenster geöffnet ist. Auf diese Weise können separate Hauptfenster einzeln geschlossen werden (z.B. nach dem Öffnen eines Verzeichnisses in einem neuen Fenster).</li><li>Wenn das Fenster bereits minimiert wurde. Auf diese Weise kann Thunderbird nun auch ohne Menü beendet werden: minimierte Fenster können i.d.R. über das Kontextmenü (rechte Maustaste) in der Taskleiste geschlossen werden.</li></ul>\n<b>Wenn Sie Thunderbird in den Tray minimieren willen, muss die Option dazu in den Thunderbird-Einstellungen aktiviert werden (Thunderbird 76+ unter Windows) oder ein zusätzliches Programm installiert werden.</b> Unter Linux empfehle ich hierzu <a href=\"https://github.com/user-none/KDocker\" rel=\"nofollow\">KDocker</a> (in den meisten Linux-Distributionen enthalten)."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/minimize-on-close/edit",
@@ -77,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-30T23:40:35Z",
+    "last_updated": "2020-05-28T13:51:06Z",
     "name": {
         "en-US": "Minimize on Close",
         "de": "Minimize on Close"
@@ -85,10 +85,10 @@
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.60507,
-        "count": 28,
-        "average": 3.6429,
-        "text_count": 28
+        "bayesian_average": 3.56516,
+        "count": 30,
+        "average": 3.6,
+        "text_count": 30
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/minimize-on-close/reviews/",
     "requires_payment": false,

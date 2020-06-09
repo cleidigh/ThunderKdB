@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14188/14188397.png?modified=1589573079"
         }
     ],
-    "average_daily_users": 11,
+    "average_daily_users": 41,
     "categories": {
         "thunderbird": [
             "calendar"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-05-14T00:03:25Z",
     "current_version": {
-        "id": 2473743,
+        "id": 2473769,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gcaltab/versions/2473743",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gcaltab/versions/2473769",
         "files": [
             {
-                "id": 1016905,
-                "created": "2020-05-23T13:10:13Z",
-                "hash": "sha256:def6498cdd607d43f6a45c6922d16209ed8572be68965c4dea66898210dbfc32",
+                "id": 1016931,
+                "created": "2020-06-04T18:00:32Z",
+                "hash": "sha256:7fb3c34644c5d165c371d06117985cedef0b091b21ad3243b199279cddae71b1",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 63805,
+                "size": 68598,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016905/gcaltab-0.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016931/gcaltab-0.7-tb.xpi?src=",
                 "permissions": [
                     "*://calendar.google.com/*",
                     "*://accounts.google.com/*",
@@ -80,12 +80,12 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gcaltab/versions/0.5",
-        "version": "0.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gcaltab/versions/0.7",
+        "version": "0.7"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>How does it work ?</strong>\nOnce the add-on is installed, a new icon appears in Thunderbird Mail toolbar. Click on it to see GCalTab menu.\n\nClick on \"Open\" to open the Google Calendar tab. You can switch on/off the \"Dark\" button to activate DarkReader on the Google Calendar tab.\n\n<strong>There are plenty of add-ons that open a Google Calendar tab in Thunderbird. What does GCalTab bring ?</strong>\nGCalTab brings two things that are often missed in other add-ons:  \n<ul><li>The possibility to switch to a dark mode. Save your eyes !</li><li>The possibility to disconnect - reconnect from GCalTab menu. Especially useful if you have several Google Calendar accounts !</li></ul>\n<strong>What permissions are needed ?</strong>\nGCalTab will need to access your data for:\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>In addition, GCalTab will need to access Thunderbird tabs to maintain a unique tab.\n\n<strong>Does it means that GCalTab collects my data ?</strong>\n\nNo, GCalTab simply opens tabs in Thunderbird, exactly as it would be done in a web browser.\nIt does not collect any data.\nThese permissions are needed to allow GCalTab to \"manage\" tabs for these three domains in Thunderbird. \"Manage\" means:\n<ul><li>opening tabs</li><li>execute scripts on these tabs</li></ul>\nTabs are open for obvious reason: that's the aim of the add-on.\nThe only script that can be executed on these tabs is the DarkReader algorithm, that has a strict privacy policy.\n\nOf course, Google Calendar works as it would do in your web browser, including regarding data collection.\n\n<strong>So GCalTab will never collect my data ?</strong>\nNever.\n\n<strong>How do I stay connected when I re-open Thunderbird ?</strong>\nIf you wish to stay connected to Google Calendar, you will have to allow cookies.\nThe cookies menu can be access as follow in Thunderbird:\nGNU/Linux : \"Edit\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nmacOS : \"Thunderbird\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nWindows : \"Tools\" &gt; \"Options\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nYou will have to allow and keep cookies for these three domains:\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>\n<strong>How do I disconnect from a Google Calendar account ?</strong>\nIf you use the Google Calendar \"Sign out\" button, the link will open in your web browser and will not disconnect Thunderbird but your web browser session.\n<strong>Since version 0.5</strong>, it is possible to sign out from GCalTab menu by pushing the \"Sign out\" button."
+        "en-US": "<strong>How does it work ?</strong>\nOnce the add-on is installed, a new icon appears in Thunderbird Mail toolbar. Click on it to see GCalTab menu.\n\nClick on \"Open\" to open the Google Calendar tab. You can switch on/off the \"Dark\" button to activate DarkReader on the Google Calendar tab.\n\n<strong>There are plenty of add-ons that open a Google Calendar tab in Thunderbird. What does GCalTab bring ?</strong>\nGCalTab brings two things that are often missed in other add-ons:  \n<ul><li>The possibility to switch to a dark mode. Save your eyes !</li><li>The possibility to simply disconnect - reconnect and switch between several accounts from GCalTab menu.</li></ul>\n<strong>What permissions are needed ?</strong>\nGCalTab will need to access your data for:\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>In addition, GCalTab will need to access Thunderbird tabs to maintain a unique tab.\n\n<strong>Does it means that GCalTab collects my data ?</strong>\n\nNo, GCalTab simply opens tabs in Thunderbird, exactly as it would be done in a web browser.\nIt does not collect any data.\nThese permissions are needed to allow GCalTab to \"manage\" tabs for these three domains in Thunderbird. \"Manage\" means:\n<ul><li>opening tabs</li><li>execute scripts on these tabs</li></ul>\nTabs are open for obvious reason: that's the aim of the add-on.\nThe only script that can be executed on these tabs is the DarkReader algorithm, that has a strict privacy policy.\n\nOf course, Google Calendar works as it would do in your web browser, including regarding data collection.\n\n<strong>So GCalTab will never collect my data ?</strong>\nNever.\n\n<strong>How do I stay connected when I re-open Thunderbird ?</strong>\nIf you wish to stay connected to Google Calendar, you will have to allow cookies.\nThe cookies menu can be access as follow in Thunderbird:\nGNU/Linux : \"Edit\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nmacOS : \"Thunderbird\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nWindows : \"Tools\" &gt; \"Options\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nYou will have to allow and keep cookies for these three domains:\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>\n<strong>How do I disconnect from a Google Calendar account ?</strong>\nIf you use the Google Calendar \"Sign out\" button, the link will open in your web browser and will not disconnect Thunderbird but your web browser session.\n<strong>Since version 0.5</strong>, it is possible to sign out from GCalTab menu by pushing the \"Sign out\" button\n\n<strong>How do I switch to another Google Calendar account ?</strong>\nIf you use the Google Calendar \"Add account\" or \"Manage your Google Account\" button, the link will open in your web browser and will not change your Thunderbird session.\n<strong>Since version 0.7</strong>\nIf you have ever connected to the account you wish to switch to, you can click the \"Switch account\" button.\nIf you wish to connect to a new account, this can be done by clicking the \"Add account\" button."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gcaltab/edit",
@@ -104,7 +104,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-05-23T13:15:03Z",
+    "last_updated": "2020-06-04T18:05:03Z",
     "name": {
         "en-US": "GCalTab"
     },
@@ -119,29 +119,29 @@
                 953,
                 89
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205971.png?modified=1590240177",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205971.png?modified=1591293803",
             "thumbnail_size": [
                 320,
                 30
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205971.png?modified=1590240177"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205971.png?modified=1591293803"
         },
         {
-            "id": 205975,
+            "id": 205983,
             "caption": {
                 "fr": "",
                 "en-US": "GCalTab menu"
             },
             "image_size": [
-                366,
-                375
+                361,
+                376
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205975.png?modified=1590240181",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205983.png?modified=1591293808",
             "thumbnail_size": [
-                195,
+                192,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205975.png?modified=1590240181"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205983.png?modified=1591293808"
         },
         {
             "id": 205974,
@@ -153,12 +153,12 @@
                 1029,
                 745
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205974.png?modified=1590240177",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205974.png?modified=1591293803",
             "thumbnail_size": [
                 276,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205974.png?modified=1590240177"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205974.png?modified=1591293803"
         }
     ],
     "public_stats": false,

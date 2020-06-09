@@ -176,7 +176,7 @@ function requestATN_URL2(addon_id, query_type, options) {
 			request.get(extRequestOptions)
 				.then(response => {
 					// console.debug('Valid');
-					// console.debug(response.body);
+					console.debug(response.body);
 					// console.debug(response.next);
 					resolve(response.body);
 

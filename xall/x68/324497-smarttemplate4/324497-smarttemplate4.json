@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 9254,
+    "average_daily_users": 9453,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -28,26 +28,26 @@
     "contributions_url": "",
     "created": "2011-06-23T15:49:52Z",
     "current_version": {
-        "id": 2473612,
+        "id": 2473784,
         "compatibility": {
             "thunderbird": {
                 "max": "69.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473612",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473784",
         "files": [
             {
-                "id": 1016760,
-                "created": "2020-04-14T16:54:20Z",
-                "hash": "sha256:073622fe2ed27cffb05e6cab7deefee783ddac68b13e9f14639add5b5b307c66",
+                "id": 1016946,
+                "created": "2020-06-09T15:18:59Z",
+                "hash": "sha256:d3974ccdd4a58b77d0a648a7c0b6e01b30277b8cb7412cd31de5ebc0b50312c1",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 683714,
+                "size": 682904,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016760/smarttemplate4-2.10.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016946/smarttemplate4-2.11-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -57,14 +57,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.10.1"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.11"
         },
         "release_notes": {
-            "en-US": "Full change log with screen shots <a href=\"http://smarttemplate4.mozdev.org/version.html#2.10.1\" rel=\"nofollow\">can be found here</a>\n\nYou can also find there a discounted sale for Pro and Standard licenses for the 2 weeks following easter!\n\n<b>Enhancements</b>\n<ul><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/59\" rel=\"nofollow\">[issue 59]</a> External templates: SmartTemplate⁴ now supports image tags with relative location.  This will make external templates management more compatible with Stationery and make it easier to preview / trouble shoot our templates in a web browser.\n\nIn order to use relative image paths, such as &lt;img src=\"images/img1.jpg\"&gt; these tags must be included in a html template. To use this in an account template, simply include the external html file using the %file()% variable. When SmartTemplate opens the file, it will now remember the file's location and be able to insert images from this position, just like when loading a  stored web page.\n\nAfter placing the cursor in the template field, expand the dialog via <i>Advanced</i> and open the chapter <i>fixed variables</i>. Then Click on the <code>%file()%</code> variable and select a file from disk.</li><li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/56\" rel=\"nofollow\">[issue 56]</a> Support including external style sheets. Use the new %style()% variable to insert a style block wtih CSS rules. Also, supports relative paths, just like %file()%.</li><li>Remember the last path separately for opening templates from the menu directly.</li></ul>\n<b>Bug Fixes</b>\n<ul>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/51\" rel=\"nofollow\">[issue 51]</a> Outgoing SMTP always using DEFAULT account. When changing the <i>from</i> address from the drop down before editing the email, Thunderbird did not internally change the from header, which could cause emails to be sent from the wrong account. This is now fixed.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/54\" rel=\"nofollow\">[issue 54]</a>Fixed: ST4 now removes unwanted empty lines in reply/forward headers in plain-text emails.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/55\" rel=\"nofollow\">[issue 55]</a> Added back some of the support for Postbox, which was broken since v2.1. You can find patched versions of previous releases at the issue.</li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/58\" rel=\"nofollow\">[issue 58]</a> If firstName is guessed from the address book field <i>DisplayName</i>,  it can lead to last name duplication in case a format like <code>%from(firstname,lastname)%</code> is used and the first name field in the address card is empty.</li></ul>"
+            "en-US": "Full change log with screen shots <a href=\"http://smarttemplates.quickfolders.org/version.html#2.11\" rel=\"nofollow\">can be found here</a>\n\nYou can also find there a discounted sale for Pro and Standard licenses for the 2 weeks until June 25th.\n\n<b>Enhancements</b>\n<ul>  <ul>    <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/24\" rel=\"nofollow\">[issue 24]</a> Select a different html template file while composer is open. Note that <i>any manually entered text will be discarded</i> when you change the template, so do this before you start typing.\n    \n    In order to do this the new <i>Change Template</i> button can be added via right-click and <i>Customize</i> on the composer toolbar. After adding the button, reopen the Composer window to update it with the appropriate template list (write / reply or forward).\n    </li>    <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/60\" rel=\"nofollow\">[issue 60]</a> Fixed some barriers with screenreader navigation in Settings Dialog. All buttons on the settings screen can now be executed without mouse clicks. Also the licensing message will be displayed as a OS notification which will be read out by the widely accepted JAWS reader. It appears that NVDA still cannot read these. Many thanks to my user Rüdiger L. for testing this with me.</li>    <li>Completed translations for Serbian locale.</li>  </ul><b>Bug Fixes</b><ul>  <li></li></ul></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.10.1",
-        "version": "2.10.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.11",
+        "version": "2.11"
     },
     "default_locale": "en-US",
     "description": {
@@ -83,16 +83,16 @@
         "en-US": "http://smarttemplate4.mozdev.org/",
         "de": "http://smarttemplate4.mozdev.org/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1573478268",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1591723810",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-32.png?modified=1573478268",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1573478268"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-32.png?modified=1591723810",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/324/324497-64.png?modified=1591723810"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-14T17:18:51Z",
+    "last_updated": "2020-06-09T15:50:54Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",
@@ -315,10 +315,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.44448,
-        "count": 69,
-        "average": 4.4638,
-        "text_count": 69
+        "bayesian_average": 4.3955,
+        "count": 70,
+        "average": 4.4143,
+        "text_count": 70
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/reviews/",
     "requires_payment": true,
@@ -344,7 +344,7 @@
         "de": "axel.grude@gmail.com"
     },
     "support_url": {
-        "en-US": "http://smarttemplate4.mozdev.org/",
+        "en-US": "http://smarttemplates.quickfolders.org/",
         "de": "http://smarttemplate4.mozdev.org/"
     },
     "tags": [

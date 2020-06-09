@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14180/14180175.png?modified=1580647754"
         }
     ],
-    "average_daily_users": 2,
+    "average_daily_users": 11,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2020-05-06T07:30:11Z",
     "current_version": {
-        "id": 2473747,
+        "id": 2473758,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2473747",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2473758",
         "files": [
             {
-                "id": 1016909,
-                "created": "2020-05-26T12:03:23Z",
-                "hash": "sha256:fcf2fcd20a82478aacec2bd924a1e04e754b9ef6b055eebe3d1a8125fe524d82",
+                "id": 1016920,
+                "created": "2020-05-29T06:05:58Z",
+                "hash": "sha256:e20bafa918ef4b32e957d9d2f3530cdd0f0eec871a9cde889a02bd63465cfe19",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1523810,
+                "size": 1524019,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016909/autobucket-1.0.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016920/autobucket-1.0.8-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "menus",
@@ -56,17 +56,17 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Added statistical information display function. It can be displayed by add-on popup or shortcut key. \n\nShortcut key\nCtrl + Shift + S (Option + Shift + S on Mac)",
-            "ja": "* 統計情報表示機能を追加しました。アドオンのポップアップまたはショートカットキーで表示できます。\n\nショートカットキー\nCtrl + Shift + S(Macの場合はOption + Shift + S)"
+            "en-US": "* Fixed the problem that the initial value of the option was empty\n* Added instructions on how to use when installing an extension\n* Fixed help",
+            "ja": "* オプションの初期値が空だった問題を修正\n* 拡張機能インストール時に使い方の説明が表示されるようにしました\n* ヘルプを修正"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.0.6",
-        "version": "1.0.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.0.8",
+        "version": "1.0.8"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This extension requires access to your email account and folder in order to bulk process emails in the folder.\n\nHelp:\n<a href=\"https://a-tak.github.io/auto-bucket/\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/</a>",
-        "ja": "この拡張機能はフォルダ内のメールを一括処理するために、メールアカウントとフォルダへのアクセス権を必要とします。\n\nヘルプ\n<a href=\"https://a-tak.github.io/auto-bucket/README_ja\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/README_ja</a>"
+        "en-US": "Basic usage\n\n1. Add a classification tag to Thunderbird and restart Thunderbird\n2. Select the tag used for classification from the add-on settings and restart Thunderbird\n3. Let's learn which tag to assign from AutoBucket in the menu displayed by right-clicking the email\n4. After classifying some, right click or shortcut to judge mail. AutoBucket automatically classifies and tags according to the learning content.\n5. If you find a wrong email in the classification, please let us know again. Classification accuracy will improve from the next time.\n\nHelp\n<a href=\"https://a-tak.github.io/auto-bucket/\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/</a>",
+        "ja": "基本的な使い方\n\n1. 分類用のタグをThunderbirdに追加してThunderbirdを再起動します\n2. アドオンの設定から分類に使用するタグを選択してThunderbirdを再起動します\n3. メールを右クリックして、AutoBucketのメニューからどのタグに割り当てるか学習させます\n4. いくつか分類をしたら右クリックかショートカットでメールを判定します。AutoBucketが学習内容に応じて自動で分類してタグをつけます。\n5. 分類に誤ったメールがあれば再度学習させてください。次回からの分類精度が上がっていきます。\n\n\nこの拡張機能はフォルダ内のメールを一括処理するために、メールアカウントとフォルダへのアクセス権を必要とします。\n\nヘルプ\n<a href=\"https://a-tak.github.io/auto-bucket/README_ja\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/README_ja</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/edit",
@@ -86,7 +86,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-05-26T12:05:03Z",
+    "last_updated": "2020-05-29T06:10:03Z",
     "name": {
         "en-US": "AutoBucket",
         "ja": "AutoBucket"
@@ -144,12 +144,12 @@
             "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205978.png?modified=1590495604"
         }
     ],
-    "public_stats": false,
+    "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.10419,
-        "count": 1,
-        "average": 4,
-        "text_count": 1
+        "bayesian_average": 2.19995,
+        "count": 2,
+        "average": 2.5,
+        "text_count": 2
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/reviews/",
     "requires_payment": false,
