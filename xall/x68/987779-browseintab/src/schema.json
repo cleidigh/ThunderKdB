@@ -1,0 +1,50 @@
+[
+  {
+    "namespace": "browseintab",
+    "functions": [
+      {
+        "name": "notifyLocaleMessages",
+        "type": "function",
+        "description": "Make the current locale's messages.json map available to an overlay extension implementing an observer for 'extension:locale-messages'.",
+        "async": false,
+        "parameters": []
+      },
+      {
+        "name": "notifyStorageLocal",
+        "type": "function",
+        "description": "Make local indexedDB storage available to an overlay extension implementing an observer for 'extension:storage-local'.",
+        "async": false,
+        "parameters": [
+          {
+            "name": "storageLocalData",
+            "type": "any",
+            "description": "The storage.local object for this extension."
+          },
+          {
+            "name": "startup",
+            "type": "boolean",
+            "description": "If true, we are in startup, wait for ready notification; otherwise send data."
+          }
+        ]
+      },
+      {
+        "name": "injectScriptIntoChromeDocument",
+        "type": "function",
+        "description": "Inject an overlay script.",
+        "async": false,
+        "parameters": [
+          {
+            "name": "scriptFile",
+            "type": "string",
+            "description": "The script relative path name."
+          },
+          {
+            "name": "windowType",
+            "type": "string",
+            "description": "The windowType."
+          }
+        ]
+      }
+    ]
+  }
+]

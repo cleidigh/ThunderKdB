@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "Restart Button",
+  "description": "Adds a Restart Button, restarts Thunderbird",
+  "version": "1.0",
+  "experiment_apis": {
+    "restartButtonApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "restartButtonApi"
+          ]
+        ],
+        "script": "implementation.js"
+      }
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_title": "Restart",
+    "default_icon": "restartButton.svg"
+  },
+  "applications": {
+    "gecko": {
+      "id": "restartButton@dillinger",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "32": "restartButton.svg",
+    "64": "restartButton.svg"
+  }
+}

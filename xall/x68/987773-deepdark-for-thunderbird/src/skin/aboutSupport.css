@@ -1,0 +1,38 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+.data-public {
+  display: none;
+}
+
+#safe-mode-box > h3 {
+  margin-top: 0;
+}
+
+#check-show-private-data {
+  margin-bottom: -0.5em;
+}
+
+.gray-text {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.thead-level2 > th {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+td.data-private {
+  background-color: #ff9;
+}

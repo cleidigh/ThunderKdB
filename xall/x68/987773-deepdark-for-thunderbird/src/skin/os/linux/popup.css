@@ -1,0 +1,73 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+.panel-arrowcontent,
+panelview,
+menupopup,
+panel {
+/* DeepDark custom CSS */
+  border-radius: 0 !important;
+/* DeepDark custom CSS - end */
+}
+
+panel {
+/* DeepDark custom CSS */
+  background: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+.panel-arrowcontent,
+panelview {
+/* DeepDark custom CSS */
+  box-shadow: 0 1px 4px rgba(0,0,0,.25), 0 0 1px var(--deepdark-dark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.panel-arrowcontent {
+/* DeepDark custom CSS */
+    border: 1px solid var(--deepdark-arrowpanel-border-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#widget-overflow-mainView > .panel-subview-body > toolbarseparator,
+.PanelUI-subView menuseparator,
+.PanelUI-subView toolbarseparator,
+.cui-widget-panelview menuseparator,
+.cui-widget-panel toolbarseparator {
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.PanelUI-subView toolbarseparator[orient="vertical"] {
+/* DeepDark custom CSS */
+  border-inline-start: 1px solid var(--deepdark-separator-color);
+  border-top: 0 !important;
+/* DeepDark custom CSS - end */
+}
+
+.panel-header {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#editContactPanel .editContactPanelButton,
+button#editContactPanelDoneButton,
+button.popup-notification-primary-button:-moz-locale-dir(ltr),
+button.popup-notification-secondary-button:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  border-radius: 0;
+/* DeepDark custom CSS - end */
+}
+
+panel#miniday-month-panel {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}

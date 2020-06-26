@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://hdrtoolslite/locale/hdrtools.dtd">
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://hdrtoolslite/content/hdrtools.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept, cancel"
+        onload="HeaderToolsLiteObj.initDialog();"
+        title="&extName; - &changeDetails;"
+        orient="vertical"
+        flex="1"
+        id="HTLdialog1new"
+        persist="screenX screenY width height">
+
+  <vbox id="cnghdrs" flex="1">
+    <grid>
+      <columns>
+        <column />
+        <column flex="1" />
+      </columns>
+      <rows>
+        <row align="center">
+          <label value="&subject;" class="tright" />
+          <textbox id="subBox" flex="1" />
+        </row>
+        <row align="center">
+          <label value="&date;" class="tright" />
+          <hbox>
+            <menulist id="date3">
+            <menupopup>
+              <menuitem label="" selected="true"  />
+              <menuitem label="Mon" />
+              <menuitem label="Tue" />
+              <menuitem label="Wed" />
+              <menuitem label="Thu" />
+              <menuitem label="Fri" />
+              <menuitem label="Sat" />
+              <menuitem label="Sun" />
+            </menupopup>
+            </menulist>
+            <textbox id="dateBox" flex="1"/>
+          </hbox>
+        </row>
+        <row align="center">
+          <label value="&author;" class="tright" />
+          <textbox id="authBox" flex="1"/>
+        </row>
+        <row align="center">
+          <label value="&recipients;" class="tright" />
+          <textbox id="recBox" flex="1"/>
+        </row>
+        <row align="center">
+          <label value="&replyto;" class="tright" />
+          <textbox id="replytoBox" readonly="readonly" flex="1"/>
+        </row>
+        <row align="center">
+          <label value="&mid;" class="tright" />
+          <textbox id="midBox" flex="1"/>
+        </row>
+        <row align="center">
+          <label value="&refs;" class="tright" />
+          <textbox id="refBox" flex="1"/>
+        </row>
+      </rows>
+    </grid>
+  </vbox>
+
+  <script type="application/x-javascript" src="chrome://hdrtoolslite/content/hdrtools.js"/>
+
+</dialog>
+

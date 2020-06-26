@@ -1,0 +1,74 @@
+/* Message bar */
+
+#msg_container {
+    position: absolute;
+    top: 9%;
+    width: 97%;
+    z-index: 1;
+}
+
+.msg_bar {
+    border-radius: 4px;
+    font-size: var(--body-10);
+    font-weight: 400;
+    margin-bottom: 4px;
+    min-height: 32px;
+    padding: 4px;
+}
+
+.msg_bar .popup_message {
+    /* Height of Icon: 16px + padding 4px */
+    line-height: 24px;
+}
+
+.msg_bar .msg_bar_icon {
+    background-color: currentColor;
+    box-sizing: content-box;
+    float: left;
+    height: 16px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 16px;
+    padding: 4px;
+    width: 16px;
+}
+
+.msg_bar .msg_bar_closebtn {
+    background-color: currentColor;
+    box-sizing: content-box;
+    float: right;
+    height: 16px;
+    mask-image: url(../images/Close.svg);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 16px;
+    padding: 4px;
+    width: 16px;
+}
+
+.error_bar {
+    background-color: var(--red-60);
+    color: white;
+}
+
+.error_bar>.msg_bar_icon {
+    mask-image: url(../images/Warning.svg);
+}
+
+.warning_bar {
+    background-color: var(--yellow-50);
+    color: var(--yellow-90);
+}
+
+.warning_bar>.msg_bar_icon {
+    mask-image: url(../images/Warning.svg);
+}
+
+.success_bar {
+    background-color: var(--green-50);
+    color: var(--green-90);
+}
+
+.success_bar>.msg_bar_icon {
+    mask-image: url(../images/Check.svg);
+}

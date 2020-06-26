@@ -1,0 +1,274 @@
+/* Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* :::::: Addons additional styling :::::: */
+
+/* ::: CardBook ::: */
+
+#qfb-cardbook,
+#cardbookToolbarButton,
+toolbar[brighttext] #cardbookTabButton,
+toolbar[brighttext] #cardbookToolbarButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addressbook/abcard.svg") !important;
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.icon-holder[type="cardbookTab"][class],
+.tabmail-tab[type="cardbookTab"][class] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addressbook/abcard.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+.cardbookAccountHeaderTreeClass[class] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.cardbookBackgroundColorClass {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-tree-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#mainHbox {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.cardbookVerticalSplitterClass {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  border-top: 0px !important;
+  border-left: 1px solid var(--deepdark-border-color) !important;
+  border-right: 1px solid var(--deepdark-border-color) !important;
+  border-bottom: 0px !important;
+  margin-right: 0px !important;
+  background-color: var(--deepdark-splitter-bg-color) !important;
+  background-image: url("chrome://DeepdarkOverlay/skin/icons/dimple-v.svg") !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+  
+radio[pane][selected="true"] {
+/* DeepDark custom CSS */
+  background: transparent !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, local) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addressbook/ABLocal.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookToolbarConfigurationButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/options.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookToolbarSyncButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/sync.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookToolbarAddContactButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addcontact.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookToolbarAddListButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addlist.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookToolbarRemoveButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/delete.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookToolbarWriteButton,
+#cardbookToolbarEditButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/newmsg.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+treecol#cardIcon.cardIconHeader .treecol-sortdirection,
+.cardIconHeader[class] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/address.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+tabbox#cardbookTabbox tab {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-content-color) !important;
+  border-top: 2px solid transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+tabbox#cardbookTabbox tab:hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+tabbox#cardbookTabbox tab[visuallyselected="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+  background-color: transparent !important;
+  border-top: 2px solid var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+tabbox#cardbookTabbox  tabpanels {
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+#cardbookFolderPaneToolbar > .toolbarbutton-1,
+#cardbookFolderPaneToolbar > toolbaritem > menulist {
+/* DeepDark custom CSS */
+  border-radius: 0 !important;
+/* DeepDark custom CSS - end */
+}
+
+#rightPaneDownHbox,
+#cardbookFolderPaneToolbox {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-content-color) !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookFolderPaneToolbar {
+/* DeepDark custom CSS */
+  border-bottom-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookFolderPaneToolbar {
+/* DeepDark custom CSS */
+  background: transparent !important;
+  border-bottom: 1px solid transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree] #accountsOrCatsTree,
+:root[lwt-tree] #cardsTree {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-tree-bg-color) !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#accountsOrCatsTree[id] treechildren::-moz-tree-row(odd),
+#accountsOrCatsTree[id] treechildren::-moz-tree-row {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+#accountsOrCatsTree[id] treechildren::-moz-tree-row(odd, hover),
+#accountsOrCatsTree[id] treechildren::-moz-tree-row(hover) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-hovered-tree-row-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#accountsOrCatsTree[id] treechildren::-moz-tree-row(selected) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-selected-tree-row-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#accountsOrCatsTree[id] treechildren::-moz-tree-row(selected, focus) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-focus-tree-row-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#accountsOrCatsTree[id] treechildren::-moz-tree-cell-text(odd),
+#accountsOrCatsTree[id] treechildren::-moz-tree-cell-text {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#accountsOrCatsTree[id] treechildren::-moz-tree-cell-text(odd, hover),
+#accountsOrCatsTree[id] treechildren::-moz-tree-cell-text(hover) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#accountsOrCatsTree[id] treechildren::-moz-tree-cell-text(selected, focus),
+#accountsOrCatsTree[id] treechildren::-moz-tree-cell-text(selected) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren#cardsTreeChildren::-moz-tree-row(selected) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-selected-tree-row-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren#cardsTreeChildren::-moz-tree-row(selected, focus) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-focus-tree-row-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren#cardsTreeChildren::-moz-tree-cell-text(selected),
+treechildren#cardsTreeChildren::-moz-tree-cell-text(selected, focus) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookTabbox tabs {
+/* DeepDark custom CSS */
+  margin-bottom: 0px !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookTabbox tabpanels {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookTabbox groupbox {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookTabbox textbox#email_0_valueBox {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}

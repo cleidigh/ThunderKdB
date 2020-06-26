@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
+  "developer": {
+    "name": "DaveRo"
+  },
+  "applications": {
+    "gecko": {
+      "id": "expand_mailing_lists@davero.addons.mozilla.org",
+      "strict_min_version": "75.0"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "compose_action": {
+    "default_icon": {
+      "48": "icons/expand_48.png"
+    },
+    "default_title": "__MSG_extensionButton__"
+  },
+  "permissions": 
+    ["compose", "addressBooks"],
+  "icons": {
+    "48": "icons/expand_48.png"
+  }
+}

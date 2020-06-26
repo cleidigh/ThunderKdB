@@ -1,0 +1,155 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay-OS/skin/accountCreation.css");
+
+.technical_details {
+  cursor: pointer;
+  margin: 0;
+  padding-left: 20px;
+  background: url("chrome://messenger/skin/section_collapsed.png") left 0 no-repeat;
+}
+
+.technical_details[expanded] {
+  background-image: url("chrome://messenger/skin/section_expanded.png");
+}
+
+.initialDesc,
+.columnHeader {
+  margin-top: 2px;
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+menulist[editable="true"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color) !important;
+  padding: 0px 4px !important;
+/* DeepDark custom CSS - end */ 
+}
+
+menulist[editable="true"][is="menulist-editable"] {
+/* DeepDark custom CSS */
+  padding: 0px 2px !important;
+/* DeepDark custom CSS - end */ 
+}
+
+menulist[editable="true"]:hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */ 
+}
+
+menulist[editable="true"] textbox {
+/* DeepDark custom CSS */
+  padding: 0px 4px !important;
+  background: transparent;
+/* DeepDark custom CSS - end */ 
+}
+
+menulist[editable="true"]:hover textbox {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */ 
+}
+
+menulist#incoming_port .menulist-dropmarker {
+/* DeepDark custom CSS */
+  margin-top: 4px !important;
+/* DeepDark custom CSS - end */ 
+}
+
+menulist#outgoing_hostname,
+menulist#outgoing_port {
+/* DeepDark custom CSS */
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+/* DeepDark custom CSS - end */ 
+}
+
+.status-line[status="loading"] .status-img {
+  -moz-context-properties: fill;
+  fill: currentColor;
+  width: 16px;
+  height: 16px;
+/* DeepDark custom CSS */
+  background: url("icons/loading.svg") no-repeat;
+  background-size: 16px 16px;
+  background-position: center center;
+/* DeepDark custom CSS - end */
+}
+
+.status-line[status="failed"] .status-img {
+  width: 16px;
+  height: 16px;
+/* DeepDark custom CSS */ 
+  -moz-context-properties: fill;
+  fill: var(--deepdark-red-color);
+  background: url("icons/stop.svg") no-repeat;
+/* DeepDark custom CSS - end */
+}
+
+.status-line[status="succeeded"] .status-img {
+  width: 16px;
+  height: 16px;
+/* DeepDark custom CSS */ 
+  -moz-context-properties: fill;
+  fill: var(--deepdark-green-color);
+  background: url("icons/menu/check.svg") no-repeat;
+/* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 1.1dppx) {
+  .status-line[status="failed"] .status-img {
+  /* DeepDark custom CSS */ 
+    -moz-context-properties: fill;
+    fill: var(--deepdark-red-color);
+    background: url("icons/stop.svg") no-repeat;
+  /* DeepDark custom CSS - end */
+  }
+
+  .status-line[status="succeeded"] .status-img {
+  /* DeepDark custom CSS */ 
+    -moz-context-properties: fill;
+    fill: var(--deepdark-green-color);
+    background: url("icons/menu/check.svg") no-repeat;
+  /* DeepDark custom CSS - end */
+  }	
+}
+
+#status_area[status=error] #status_img_before {
+  background: url("chrome://global/skin/icons/warning.svg") no-repeat;
+  background-position-y: 3px;
+  width: 16px;
+  height: 16px;
+}
+
+#status_area[status=loading] #status_img_after {
+  -moz-context-properties: fill;
+  fill: currentColor;
+  width: 16px;
+  height: 16px;
+/* DeepDark custom CSS */
+  background: url("icons/loading.svg") no-repeat;
+  background-position: center center;
+  background-size: 16px 16px;
+/* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 1.1dppx) {
+  #status_area[status=loading] #status_img_after {
+    -moz-context-properties: fill;
+    fill: currentColor;
+  /* DeepDark custom CSS */
+    background-image: url("icons/loading.svg"); 
+    width: 32px;
+    height: 32px;
+  /* DeepDark custom CSS - end */
+  }
+}

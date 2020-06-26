@@ -1,0 +1,1293 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/button.css");
+@import url("chrome://DeepdarkOverlay/skin/checkbox.css");
+@import url("chrome://DeepdarkOverlay/skin/customizeToolbar.css");
+@import url("chrome://DeepdarkOverlay/skin/dropmarker.css");
+@import url("chrome://DeepdarkOverlay/skin/folderMenus.css");
+@import url("chrome://DeepdarkOverlay/skin/menu.css");
+@import url("chrome://DeepdarkOverlay/skin/menulist.css");
+@import url("chrome://DeepdarkOverlay/skin/notification.css");
+@import url("chrome://DeepdarkOverlay/skin/progressmeter.css");
+@import url("chrome://DeepdarkOverlay/skin/popup.css");
+@import url("chrome://DeepdarkOverlay/skin/radio.css");
+@import url("chrome://DeepdarkOverlay/skin/searchBox.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+@import url("chrome://DeepdarkOverlay-OS/skin/menu.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/messenger.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/messengercompose.css");
+
+
+textarea::-moz-selection,
+*.textbox-input::-moz-selection, 
+*.textbox-textarea::-moz-selection {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-brightest-color) !important;
+  background: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbox {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+#compose-toolbox:not(:-moz-lwtheme),
+#compose-toolbox:-moz-lwtheme {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  --chrome-content-separator-color: transparent;
+  background-image: linear-gradient(to bottom, var(--deepdark-darkest-color), transparent) 1px, transparent 1px);
+  background-color: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+  border-bottom-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+#compose-toolbox:-moz-lwtheme::after {
+  content: "";
+  display: -moz-box;
+  margin-top: -1px;
+  height: 1px;
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#compose-toolbox > toolbar:not(:-moz-lwtheme),
+#compose-toolbox > toolbar {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  background-color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+#MsgHeadersToolbar,
+:root[lwt-default-theme-in-dark-mode] #headers-box,
+:root[lwt-default-theme-in-dark-mode] #msgHeaderView {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  background-color: var(--deepdark-dark-ash-color);
+  background-image: none !important;
+  background-image: none !important;
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-default-theme-in-dark-mode] #compose-toolbar-sizer {
+  background-image: none;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree] #attachmentBucket {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#attachmentBucket {
+  -moz-appearance: none;
+  width: 15em;
+  min-width: 15em;
+  padding: 1px;
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-separator-color);
+  border-bottom: 1px solid var(--deepdark-separator-color);
+  background-color: transparent;
+  color: var(--deepdark-content-color);
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#attachmentbucket-sizer {
+  position: relative;
+  z-index: 10;
+  min-width: 0;
+  width: 5px;
+  margin-inline-end: -4px;
+  border-inline-end-width: 0;
+/* DeepDark custom CSS */
+  border-inline-start: 1px solid var(--deepdark-separator-color);
+  background-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+#attachments-header-box {
+/* DeepDark custom CSS */
+/* DeepDark custom CSS - end */
+}
+
+#attachmentBucket .attachmentItem,
+:root[lwt-tree] #attachmentBucket .attachmentItem {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+  border: 0 !important;
+  border-bottom: 2px dotted var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+#attachmentBucket .attachmentItem:not([selected="true"]):not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#attachmentBucket .attachmentItem[selected="true"],
+:root[lwt-tree-brighttext] #attachmentBucket .attachmentItem[selected="true"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-focus-tree-row-bg-color);
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+:root:-moz-window-inactive #attachmentBucket .attachmentItem[selected="true"],
+:root[lwt-tree-brighttext]:-moz-window-inactive #attachmentBucket .attachmentItem[selected="true"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-selected-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#attachmentBucket[seltype="multiple"]:focus .attachmentItem[current="true"],
+:root[lwt-tree] #attachmentBucket[seltype="multiple"]:focus .attachmentItem[current="true"],
+:root[lwt-tree-brighttext] #attachmentBucket[seltype="multiple"]:focus .attachmentItem[current="true"] {
+/* DeepDark custom CSS */
+  outline: 1px solid transparent !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#attachmentBucket attachmentitem[dropOn="top"] {
+  outline-color: transparent;
+/* DeepDark custom CSS */
+  border-top-color: var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+#attachmentBucket attachmentitem[dropOn="bottom"] {
+/* DeepDark custom CSS */
+  border-bottom-color: var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+/* Inactive window state */
+#compose-toolbox > toolbar:-moz-window-inactive {
+/* DeepDark custom CSS */
+  border-top-color: transparent;
+  border-bottom-color: var(--deepdark-darkest-color);
+  background-color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+#composeContentBox {
+/* DeepDark custom CSS */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) inset;
+  background-color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+#composeContentBox:-moz-window-inactive {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+#msgIdentity,
+#msgSubject,
+textbox.textbox-addressingWidget,
+.dummy-row-cell:last-child,
+:root[lwt-default-theme-in-dark-mode] #msgIdentity,
+:root[lwt-default-theme-in-dark-mode] #msgSubject,
+:root[lwt-default-theme-in-dark-mode] textbox.textbox-addressingWidget,
+:root[lwt-default-theme-in-dark-mode] .dummy-row-cell:last-child {
+  border-bottom-color: var(--deepdark-separator-color) !important;
+  color: var(--deepdark-content-color);
+}
+
+#msgIdentity .menulist-dropmarker{
+/* DeepDark custom CSS */
+  display: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#msgIdentity:hover,
+#msgIdentity:focus,
+#msgIdentity[focused="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+#msgIdentity > .menulist-editable-box {
+  padding-inline-start: 3px;
+/* DeepDark custom CSS */
+  filter: invert(.7);
+/* DeepDark custom CSS - end */
+}
+
+#msgIdentity[editable="true"] > menupopup {
+  margin-inline-start: 0;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+/* DeepDark custom CSS - end */
+}
+
+#msgIdentity[editable="true"] > menupopup > menuitem {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+/* DeepDark custom CSS - end */
+}
+
+#attachmentBucketSize {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-default-theme-in-dark-mode] #msgIdentity,
+:root[lwt-default-theme-in-dark-mode] #msgSubject,
+:root[lwt-default-theme-in-dark-mode] textbox.textbox-addressingWidget {
+/* DeepDark custom CSS */
+  border-radius: var(--deepdark-border-radius) !important;
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-default-theme-in-dark-mode] #msgIdentity:hover,
+:root[lwt-default-theme-in-dark-mode] #msgSubject:hover,
+:root[lwt-default-theme-in-dark-mode] textbox.textbox-addressingWidget:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color);
+  color: var(--deepdark-brightest-color);
+  border-color: var(--deepdark-btn-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-default-theme-in-dark-mode] #msgIdentity:focus,
+:root[lwt-default-theme-in-dark-mode] #msgIdentity:focus-within,
+:root[lwt-default-theme-in-dark-mode] #msgSubject[focused="true"],
+:root[lwt-default-theme-in-dark-mode] textbox.textbox-addressingWidget[focused="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color-a15);
+  color: var(--deepdark-accent-color);
+  border-color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.menulist-description {
+/* DeepDark custom CSS */
+  color: inherit;
+  opacity: .5;
+/* DeepDark custom CSS - end */
+}
+
+.deleteAddress {
+/* DeepDark custom CSS */
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::::: attachment reminder ::::: */
+
+.notification-button[type="menu-button"] > button {
+/* DeepDark custom CSS */
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: -5px;
+  margin-inline-start: -10px;
+  border-inline-end: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+#msgSubject {
+/* DeepDark custom CSS */
+  border-bottom-color: var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#msgSubject:hover,
+#msgSubject[focused="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::::: autocomplete icons ::::: */
+
+.textbox-addressingWidget > .autocomplete-result-popupset,
+.autocomplete-richlistitem {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */  
+}
+
+.textbox-addressingWidget panel[type="autocomplete-richlistbox"] {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */  
+}
+
+.autocomplete-richlistitem:not([selected="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-autocomplete-item-hover-color) !important;
+  color: var(--deepdark-brightest-color);
+  border-radius: 0;
+/* DeepDark custom CSS - end */
+}
+
+.autocomplete-richlistitem[selected="true"]:hover,
+.autocomplete-richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color) !important;
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */  
+}
+
+.ac-site-icon {
+  display: -moz-box;
+  margin: 2px 5px;
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.autocomplete-richlistitem[type="local-abook"] > .ac-site-icon {
+  width: 16px;
+  height: 16px;
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/addressbook/addrbook.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: auto;
+}
+
+.autocomplete-richlistitem[type="remote-abook"] > .ac-site-icon {
+  width: 16px;
+  height: 16px;
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/addressbook/remote-addrbook.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: auto;
+}
+
+
+@media (min-resolution: 2dppx) {
+  .autocomplete-richlistitem[type="local-abook"] > .ac-site-icon {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://deepdarkOverlay/skin/icons/addressbook/addrbook.svg");
+  /* DeepDark custom CSS - end */
+  }
+
+  .autocomplete-richlistitem[type="remote-abook"] > .ac-site-icon {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://deepdarkOverlay/skin/icons/addressbook/remote-addrbook.svg");
+  /* DeepDark custom CSS - end */
+  }
+}
+
+.autocomplete-richlistitem[type="subscribed-news"] > .ac-site-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 160px 16px 144px);
+}
+
+/* ::::: addressing widget ::::: */
+
+.textbox-addressingWidget,
+.dummy-row-cell:not(:first-child) {
+/* DeepDark custom CSS */
+  border-bottom-color: var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.textbox-addressingWidget[class][focused="true"],
+.textbox-addressingWidget[class]:hover {
+  background-image: none;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-focus-tree-row-bg-color) !important;
+  border-color: var(--deepdark-accent-color) !important;
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.aw-menulist {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-btn-bg-color);
+  border-radius: var(--deepdark-border-radius);
+  background: var(--deepdark-btn-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+.aw-menulist:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.aw-menulist > .menulist-dropmarker {
+/* DeepDark custom CSS */
+  display: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.menu-description {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::::: compose toolbar sizer ::::: */
+
+#compose-toolbar-sizer {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color);
+  border-bottom: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::::: format toolbar ::::: */
+
+#FormatToolbar toolbarseparator {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  margin: 5px 0;
+  min-width: 2px;
+/* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 1.1dppx) {
+  #FormatToolbar toolbarseparator {
+  /* DeepDark custom CSS */
+    margin: 4px 0;
+  /* DeepDark custom CSS - end */
+  }
+}
+
+#FormatToolbar toolbarseparator:-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  -moz-border-end: 1px solid transparent;
+/* DeepDark custom CSS - end */
+}
+
+#FormatToolbar toolbarseparator:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  -moz-border-start: 1px solid transparent;
+/* DeepDark custom CSS - end */
+}
+
+#FormatToolbar {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton.formatting-button {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons.png") !important;
+  border-radius: var(--deepdark-border-radius);
+  -moz-appearance: none;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton.formatting-button:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons-hover.png") !important;
+  color: var(--deepdark-brightest-color);
+  box-shadow: none !important;
+  border-color: transparent !important;
+  background-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton.formatting-button:active,
+toolbarbutton.formatting-button:active:hover,
+toolbarbutton.formatting-button[open="true"]:hover,
+toolbarbutton.formatting-button[open="true"]:active:hover,
+toolbarbutton.formatting-button[open="true"],
+toolbarbutton.formatting-button[checked="true"],
+toolbarbutton.formatting-button[checked="true"]:hover,
+#FormatToolbar[id]:not(:-moz-window-inactive) > toolbarbutton.formatting-button[checked="true"]:after {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons-checked.png") !important;
+  color: var(--deepdark-accent-color);
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  background-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+
+#AbsoluteFontSizeButton {
+  -moz-image-region: rect(180px 20px 192px 0px) !important;
+}
+
+#AbsoluteFontSizeButton[disabled="true"] {
+  -moz-image-region: rect(180px 60px 192px 40px) !important;
+}
+
+#IncreaseFontSizeButton {
+  -moz-image-region: rect(0px 20px 12px 0px) !important;
+}
+
+#IncreaseFontSizeButton[disabled="true"] {
+  -moz-image-region: rect(0px 60px 12px 40px) !important;
+}
+
+#DecreaseFontSizeButton {
+  -moz-image-region: rect(12px 20px 24px 0px) !important;
+}
+
+#DecreaseFontSizeButton[disabled="true"] {
+  -moz-image-region: rect(12px 60px 24px 40px) !important;
+}
+
+#align-justify-button {
+  -moz-image-region: rect(24px 20px 36px 0px) !important;
+}
+
+#align-justify-button[disabled="true"] {
+  -moz-image-region: rect(24px 60px 36px 40px) !important;
+}
+
+#align-left-button {
+  -moz-image-region: rect(36px 20px 48px 0px) !important;
+}
+
+#align-left-button[disabled="true"] {
+  -moz-image-region: rect(36px 60px 48px 40px) !important;
+}
+
+#align-right-button {
+  -moz-image-region: rect(48px 20px 60px 0px) !important;
+  border: 1px solid red;
+}
+
+#align-right-button[disabled="true"] {
+  -moz-image-region: rect(48px 60px 60px 40px) !important;
+}
+
+#align-center-button {
+  -moz-image-region: rect(60px 20px 72px 0px) !important;
+}
+
+#align-center-button[disabled="true"] {
+  -moz-image-region: rect(60px 60px 72px 40px) !important;
+}
+
+#InsertPopupButton {
+  -moz-image-region: rect(72px 20px 84px 0px) !important;
+}
+
+#InsertPopupButton[disabled="true"] {
+  -moz-image-region: rect(72px 60px 84px 40px) !important;
+}
+
+#ulButton {
+  -moz-image-region: rect(84px 20px 96px 0px) !important;
+}
+
+#ulButton[disabled="true"] {
+  -moz-image-region: rect(84px 60px 96px 40px) !important;
+}
+
+#olButton {
+  -moz-image-region: rect(96px 20px 108px 0px) !important;
+}
+
+#olButton[disabled="true"] {
+    -moz-image-region: rect(96px 60px 108px 40px) !important;
+}
+
+#smileButtonMenu {
+  -moz-image-region: rect(108px 20px 120px 0px) !important;
+}
+
+#smileButtonMenu[disabled="true"] {
+   -moz-image-region: rect(108px 60px 120px 40px) !important;
+}
+
+#boldButton {
+  -moz-image-region: rect(120px 20px 132px 0px) !important;
+}
+
+#boldButton[disabled="true"] {
+  -moz-image-region: rect(120px 60px 132px 40px) !important;
+}
+
+#underlineButton {
+  -moz-image-region: rect(132px 20px 144px 0px) !important;
+}
+
+#underlineButton[disabled="true"] {
+  -moz-image-region: rect(132px 60px 144px 40px) !important;
+}
+
+#italicButton {
+  -moz-image-region: rect(144px 20px 156px 0px) !important;
+}
+
+#italicButton[disabled="true"] {
+  -moz-image-region: rect(144px 60px 156px 40px) !important;
+}
+
+#outdentButton {
+  -moz-image-region: rect(156px 20px 168px 0px) !important;
+}
+
+#outdentButton[disabled="true"] {
+   -moz-image-region: rect(156px 60px 168px 40px) !important;
+}
+
+#indentButton {
+  -moz-image-region: rect(168px 20px 180px 0px) !important;
+}
+
+#indentButton[disabled="true"] {
+  -moz-image-region: rect(168px 60px 180px 40px) !important;
+}
+
+#AlignPopupButton {
+    -moz-image-region: rect(36px 20px 48px 0px) !important;
+}
+
+#AlignPopupButton[disabled="true"] {
+  -moz-image-region: rect(36px 60px 48px 40px) !important;
+}
+
+/* ..... align menu ..... */
+
+#AlignPopup > menuitem {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons.png") !important;
+/* DeepDark custom CSS - end */
+}
+
+#AlignPopup > menuitem:hover {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons-hover.png") !important;
+/* DeepDark custom CSS - end */
+}
+
+#AlignLeftItem,
+#AlignPopupButton[state="left"] {
+  -moz-image-region: rect(36px 20px 48px 0px) !important;
+}
+
+#AlignLeftItem:hover {
+/* DeepDark custom CSS */
+  -moz-image-region: rect(36px 20px 48px 0px) !important;
+/* DeepDark custom CSS - end */
+}
+
+#AlignCenterItem, #AlignPopupButton[state="center"] {
+  -moz-image-region: rect(60px 20px 72px 0px) !important;
+}
+
+#AlignCenterItem:hover {
+/* DeepDark custom CSS */
+  -moz-image-region: rect(60px 20px 72px 0px) !important;
+/* DeepDark custom CSS - end */
+}
+
+#AlignRightItem,
+#AlignPopupButton[state="right"] {
+  -moz-image-region: rect(48px 20px 60px 0px) !important;
+}
+
+#AlignRightItem:hover {
+/* DeepDark custom CSS */
+  -moz-image-region: rect(48px 20px 60px 0px) !important;
+/* DeepDark custom CSS - end */
+}
+
+#AlignJustifyItem, #AlignPopupButton[state="justify"] {
+  -moz-image-region: rect(24px 20px 36px 0px) !important;
+}
+
+#AlignJustifyItem:hover {
+/* DeepDark custom CSS */
+  -moz-image-region: rect(24px 20px 36px 0px) !important;
+/* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 1.25dppx) {
+  toolbarbutton.formatting-button > .toolbarbutton-icon {
+    width: 20px;
+    height: 12px;
+  }
+  
+  toolbarbutton.formatting-button {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons@2x.png") !important;
+  /* DeepDark custom CSS - end */
+  }
+  
+  toolbarbutton.formatting-button:not([disabled="true"]):not([active="true"]):not([checked="true"]):not([open="true"]):hover {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons-hover@2x.png") !important;
+  /* DeepDark custom CSS - end */
+  }
+  
+  toolbarbutton.formatting-button:active,
+  toolbarbutton.formatting-button[open="true"]:hover,
+  toolbarbutton.formatting-button[open="true"]:active:hover,
+  toolbarbutton.formatting-button[open="true"],
+  toolbarbutton.formatting-button[checked="true"],
+  toolbarbutton.formatting-button[checked="true"]:hover,
+  toolbarbutton.formatting-button[checked="true"]:active:hover  {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons-checked@2x.png") !important;
+  /* DeepDark custom CSS - end */
+    background-color: transparent !important;
+  }
+  
+  #AbsoluteFontSizeButton {
+    -moz-image-region: rect(360px 40px 384px 0px) !important;
+  }
+
+  #AbsoluteFontSizeButton[disabled="true"] {
+    -moz-image-region: rect(360px 120px 384px 80px) !important;
+  }
+
+  #IncreaseFontSizeButton {
+    -moz-image-region: rect(0px 40px 24px 0px) !important;
+  }
+
+  #IncreaseFontSizeButton[disabled="true"] {
+    -moz-image-region: rect(0px 120px 24px 80px) !important;
+  }
+
+  #DecreaseFontSizeButton {
+    -moz-image-region: rect(24px 40px 48px 0px) !important;
+  }
+
+  #DecreaseFontSizeButton[disabled="true"] {
+    -moz-image-region: rect(24px 120px 48px 80px) !important;
+  }
+
+  #align-justify-button {
+    -moz-image-region: rect(48px 40px 72px 0px) !important;
+  }
+
+  #align-justify-button[disabled="true"] {
+    -moz-image-region: rect(48px 120px 72px 80px) !important;
+  }
+
+  #align-left-button {
+    -moz-image-region: rect(72px 40px 96px 0px) !important;
+  }
+
+  #align-left-button[disabled="true"] {
+    -moz-image-region: rect(72px 120px 96px 80px) !important;
+  }
+
+  #align-right-button {
+    -moz-image-region: rect(96px 40px 120px 0px) !important;
+  }
+
+  #align-right-button[disabled="true"] {
+    -moz-image-region: rect(96px 120px 120px 80px) !important;
+  }
+
+  #align-center-button {
+    -moz-image-region: rect(120px 40px 144px 0px) !important;
+  }
+
+  #align-center-button[disabled="true"] {
+    -moz-image-region: rect(120px 120px 144px 80px) !important;
+  }
+
+  #InsertPopupButton {
+    -moz-image-region: rect(144px 40px 168px 0px) !important;
+  }
+
+  #InsertPopupButton[disabled="true"] {
+    -moz-image-region: rect(144px 120px 168px 80px) !important;
+  }
+
+  #ulButton {
+    -moz-image-region: rect(168px 40px 192px 0px) !important;
+  }
+
+  #ulButton[disabled="true"] {
+    -moz-image-region: rect(168px 120px 192px 80px) !important;
+  }
+
+  #olButton {
+    -moz-image-region: rect(192px 40px 216px 0px) !important;
+  }
+
+  #olButton[disabled="true"] {
+      -moz-image-region: rect(192px 120px 216px 80px) !important;
+  }
+
+  #smileButtonMenu {
+    -moz-image-region: rect(216px 40px 240px 0px) !important;
+  }
+
+  #smileButtonMenu[disabled="true"] {
+     -moz-image-region: rect(216px 120px 240px 80px) !important;
+  }
+
+  #boldButton {
+    -moz-image-region: rect(240px 40px 264px 0px) !important;
+  }
+
+  #boldButton[disabled="true"] {
+    -moz-image-region: rect(240px 120px 264px 80px) !important;
+  }
+
+  #underlineButton {
+    -moz-image-region: rect(264px 40px 288px 0px) !important;
+  }
+
+  #underlineButton[disabled="true"] {
+    -moz-image-region: rect(264px 120px 288px 80px) !important;
+  }
+
+  #italicButton {
+    -moz-image-region: rect(288px 40px 312px 0px) !important;
+  }
+
+  #italicButton[disabled="true"] {
+    -moz-image-region: rect(288px 120px 312px 80px) !important;
+  }
+
+  #outdentButton {
+    -moz-image-region: rect(312px 40px 336px 0px) !important;
+  }
+
+  #outdentButton[disabled="true"] {
+     -moz-image-region: rect(312px 120px 336px 80px) !important;
+  }
+
+  #indentButton {
+    -moz-image-region: rect(336px 40px 360px 0px) !important;
+  }
+
+  #indentButton[disabled="true"] {
+    -moz-image-region: rect(336px 120px 360px 80px) !important;
+  }
+
+  #AlignPopupButton {
+      -moz-image-region: rect(72px 40px 96px 0px) !important;
+  }
+
+  #AlignPopupButton[disabled="true"] {
+    -moz-image-region: rect(72px 120px 96px 80px) !important;
+  }
+
+  #AlignPopup > menuitem {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons@2x.png") !important;
+  /* DeepDark custom CSS - end */
+  }
+  
+  #AlignPopup > menuitem:not([disabled="true"]):hover {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/format-buttons-hover@2x.png") !important;
+  /* DeepDark custom CSS - end */
+  }
+  
+  #AlignLeftItem,
+  #AlignPopupButton[state="left"] {
+    -moz-image-region: rect(72px 40px 96px 0px) !important;
+  }
+
+  #AlignLeftItem:hover {
+  /* DeepDark custom CSS */
+    -moz-image-region: rect(72px 40px 96px 0px) !important;
+  /* DeepDark custom CSS - end */
+  }
+  
+  #AlignCenterItem,
+  #AlignPopupButton[state="center"] {
+    -moz-image-region: rect(120px 40px 144px 0px) !important;
+  }
+
+  #AlignCenterItem:hover {
+  /* DeepDark custom CSS */
+    -moz-image-region: rect(120px 40px 144px 0px) !important;
+  /* DeepDark custom CSS - end */
+  }
+  
+  #AlignRightItem,
+  #AlignPopupButton[state="right"] {
+  /* DeepDark custom CSS */
+    -moz-image-region: rect(96px 40px 120px 0px) !important;
+  /* DeepDark custom CSS - end */
+  }
+
+  #AlignRightItem:hover {
+  /* DeepDark custom CSS */
+    -moz-image-region: rect(96px 40px 120px 0px) !important;
+  /* DeepDark custom CSS - end */
+  }
+  
+  #AlignJustifyItem,
+  #AlignPopupButton[state="justify"] {
+  /* DeepDark custom CSS */
+    -moz-image-region: rect(48px 40px 72px 0px) !important;
+  /* DeepDark custom CSS - end */
+  }
+
+  #AlignJustifyItem:hover {
+  /* DeepDark custom CSS */
+    -moz-image-region: rect(48px 40px 72px 0px) !important;
+  /* DeepDark custom CSS - end */
+  }
+}
+
+/* ..... insert menu ..... */
+
+#InsertPopup > menuitem {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/insert-menu.png") !important;
+/* DeepDark custom CSS - end */
+}
+
+#InsertPopup > menuitem:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/insert-menu-hover.png") !important;
+/* DeepDark custom CSS - end */
+}
+
+#InsertLinkItem {
+  -moz-image-region: rect(0px 16px 16px 0px) !important;
+}
+
+#InsertAnchorItem {
+  -moz-image-region: rect(16px 16px 32px 0px) !important;
+}
+
+#InsertImageItem {
+  -moz-image-region: rect(32px 16px 48px 0px) !important;
+}
+
+#InsertHRuleItem {
+  -moz-image-region: rect(48px 16px 64px 0px) !important;
+}
+
+#InsertTableItem {
+  -moz-image-region: rect(64px 16px 80px 0px) !important;
+}
+
+@media  (min-resolution: 1.25dppx) {
+  #InsertPopup > menuitem {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/insert-menu@2x.png") !important;
+  /* DeepDark custom CSS - end */
+  }
+  
+  #InsertPopup > menuitem:not([disabled="true"]):hover {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://DeepdarkOverlay/skin/icons/messengercompose/insert-menu-hover@2x.png") !important;
+  /* DeepDark custom CSS - end */
+  }
+  
+  #InsertLinkItem {
+    -moz-image-region: rect(0px 32px 32px 0px) !important;
+  }
+
+  #InsertAnchorItem {
+    -moz-image-region: rect(32px 32px 64px 0px) !important;
+  }
+
+  #InsertImageItem {
+    -moz-image-region: rect(64px 32px 96px 0px) !important;
+  }
+
+  #InsertHRuleItem {
+    -moz-image-region: rect(96px 32px 128px 0px) !important;
+  }
+
+  #InsertTableItem {
+    -moz-image-region: rect(128px 32px 160px 0px) !important;
+  }
+}
+
+/* ..... fg/bg color picker ..... */
+
+.ColorPickerLabel {
+/* DeepDark custom CSS */
+  border: 1px inset var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+.color-button {
+/* DeepDark custom CSS */
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--deepdark-darkest-color);
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.color-button[disabled="true"],
+.color-button[disabled="true"]:hover {
+/* DeepDark custom CSS */
+  border: 1px inset var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: address book sidebar ::::: */
+
+#sidebar-box {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  -moz-font-smoothing-background-color: var(--deepdark-dark-ash-color);
+  background-color: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#sidebarHeader {
+  text-shadow: none;
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-content-color) !important;
+  border-bottom-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+#sidebar-splitter {
+  border-inline-end-width: 0;
+  min-width: 0;
+  width: 5px;
+  background-color: transparent;
+  margin-inline-end: -4px;
+  position: relative;
+  z-index: 10;
+/* DeepDark custom CSS */
+  border-inline-start: 1px solid var(--deepdark-darkest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#sidebar-title {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#searchInput #sidebar {
+/* DeepDark custom CSS */
+  -moz-appearance: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.close-icon {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.close-icon:hover {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.close-icon > .button-icon,
+.close-icon > .button-box > .button-icon,
+.close-icon > .toolbarbutton-icon {
+/* DeepDark custom CSS */
+  width: 20px;
+  height: 20px;
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+
+/* Primary Toolbar Buttons */
+
+#button-send {
+  list-style-image: url("chrome:icons/send.svg") !important;
+}
+
+#button-contacts {
+  list-style-image: url("chrome:icons/address.svg") !important;
+}
+
+#spellingButton {
+  list-style-image: url("chrome:icons/spelling.svg") !important;
+}
+
+#button-security {
+  list-style-image: url("chrome:icons/security.svg") !important;
+}
+
+#button-save {
+  list-style-image: url("chrome:icons/save.svg") !important;
+}
+
+.toolbarbutton-1 {
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS */
+  opacity: var(--deepdark-toolbarbutton-icon-fill-opacity);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1[disabled="true"] .toolbarbutton-text,
+.toolbarbutton-1[type="menu-button"] > .toolbarbutton-menubutton-button[disabled="true"] > .toolbarbutton-icon {
+  opacity: .4;
+}
+
+.toolbarbutton-1[disabled="true"],
+.toolbarbutton-1[disabled="true"] .toolbarbutton-text {
+  opacity: var(--deepdark-disabled-toolbarbutton-icon-fill-opacity);
+}
+
+.toolbarbutton-1[disabled="true"] .toolbarbutton-text,
+.toolbarbutton-1[type="menu-button"] > .toolbarbutton-menubutton-button[disabled="true"] > .toolbarbutton-icon,
+.toolbarbutton-1:-moz-window-inactive .toolbarbutton-icon {
+  opacity: var(--deepdark-disabled-toolbarbutton-icon-fill-opacity);
+}
+
+.toolbarbutton-1[disabled="true"] > .toolbarbutton-icon,
+.toolbarbutton-1[type="menu-button"] > .toolbarbutton-menubutton-button[disabled="true"] > .toolbarbutton-icon,
+.toolbarbutton-1[disabled="true"] > .toolbarbutton-menu-dropmarker,
+.toolbarbutton-1[disabled="true"] > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+.toolbarbutton-1:-moz-window-inactive > .toolbarbutton-menu-dropmarker,
+.toolbarbutton-1:-moz-window-inactive > .toolbarbutton-menu-dropmarker > .dropmarker-icon,
+.toolbarbutton-1:-moz-window-inactive > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+.toolbarbutton-menu-dropmarker[disabled="true"] > .dropmarker-icon {
+  opacity: .5;
+}
+
+.toolbarbutton-1:-moz-window-inactive[disabled="true"] > .toolbarbutton-icon,
+.toolbarbutton-1:-moz-window-inactive[type="menu-button"] > .toolbarbutton-menubutton-button[disabled="true"] > .toolbarbutton-icon {
+  opacity: .25;
+}
+
+toolbar[brighttext] {
+/* DeepDark custom CSS */
+  --toolbarbutton-icon-fill-attention: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.mail-toolbox > toolbar:-moz-lwtheme,
+#compose-toolbox > toolbar:-moz-lwtheme,
+#navigation-toolbox > toolbar:-moz-lwtheme {
+/* DeepDark custom CSS */
+  --toolbarbutton-hover-background: var(--deepdark-btn-hover-color);
+  --toolbarbutton-active-background: var(--deepdark-border-color);
+  --toolbarbutton-checkedhover-backgroundcolor: var(--deepdark-border-color);
+/* DeepDark custom CSS - end */
+}
+
+:-moz-any(.chromeclass-toolbar, .chromeclass-menubar, #tabbar-toolbar) .toolbarbutton-1:not([disabled="true"]):hover:-moz-lwtheme > .toolbarbutton-menubutton-dropmarker {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+:-moz-any(.chromeclass-toolbar, .chromeclass-menubar, #tabbar-toolbar) .toolbarbutton-1[open="true"]:-moz-lwtheme > .toolbarbutton-menubutton-dropmarker:not([disabled="true"]) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([type="menu-button"]),
+.toolbarbutton-1 > .toolbarbutton-menubutton-button,
+.toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker {
+  padding: 0 4px;
+  border: 1px transparent solid;
+  transition-property: background, border-color;
+  transition-duration: 250ms;
+  background-clip: padding-box;
+/* DeepDark custom CSS */
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([disabled="true"]):-moz-any(:hover,[open="true"]) > .toolbarbutton-menubutton-button,
+.toolbarbutton-1:not([disabled="true"]):hover > .toolbarbutton-menubutton-dropmarker,
+.toolbarbutton-1:not([type="menu-button"]):not([disabled="true"]):not([checked="true"]):not([open="true"]):not(:active):hover {
+/* DeepDark custom CSS */
+  border-color: transparent;
+  background: var(--deepdark-btn-hover-color);
+  box-shadow: none;
+  -moz-context-properties: fill;
+  fill: var(--deepdark-brightest-color);
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([disabled="true"]):-moz-any([open="true"]) > .toolbarbutton-menubutton-button,
+.toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled="true"]):hover:active,
+.toolbarbutton-1[open="true"] > .toolbarbutton-menubutton-dropmarker:not([disabled="true"]),
+.toolbarbutton-1[open="true"]:not([disabled="true"]),
+.toolbarbutton-1:not([type="menu-button"]):not([disabled="true"]):-moz-any([open="true"],[checked="true"],:hover:active) {
+  transition-duration: 10ms;
+/* DeepDark custom CSS */
+  border-color: transparent;
+  box-shadow: none;
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([disabled="true"]):-moz-any([open="true"]) > .toolbarbutton-menubutton-button,
+.toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled="true"]):hover:active,
+.toolbarbutton-1[open="true"] > .toolbarbutton-menubutton-dropmarker:not([disabled="true"]),
+.toolbarbutton-1[open="true"]:not([disabled="true"]),
+.toolbarbutton-1:not([type="menu-button"]):not([disabled="true"]):-moz-any([open="true"],[checked="true"],:hover:active) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color) !important;
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+/* Separator between menu and split type buttons */
+.toolbarbutton-1:not(:hover):not(:active):not([open]):not([checked="true"]) > .toolbarbutton-menubutton-dropmarker::before,
+.toolbarbutton-1[disabled="true"] > .toolbarbutton-menubutton-dropmarker::before {
+  content: "";
+  display: -moz-box;
+  width: 1px;
+  height: 18px;
+  margin-inline-start: -5px;
+  margin-inline-end: 4px;
+  margin-bottom: 2px;
+/* DeepDark custom CSS */
+  background: var(--deepdark-separator-color) padding-box;
+  box-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+
+/* Status Bar */
+
+#status-bar:not(:-moz-lwtheme),
+#status-bar:-moz-lwtheme {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-dark-ash-color);
+  background-image: none;
+  color: var(--deepdark-content-color);
+  border-top: 1px solid var(--deepdark-darkest-color);
+  padding: 4px;
+  padding-top: 3px !important;
+  text-shadow: none !important;
+/* DeepDark custom CSS - end */
+}

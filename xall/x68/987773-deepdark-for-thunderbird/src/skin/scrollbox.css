@@ -1,0 +1,68 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay-OS/skin/scrollbox.css");
+
+/*
+ * Scroll arrows
+ */
+ 
+.scrollbutton-up,
+.scrollbutton-down {
+  -moz-image-region: auto;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.scrollbutton-up > .toolbarbutton-text,
+.scrollbutton-down > .toolbarbutton-text {
+  display: none;
+}
+
+.scrollbutton-up,
+.scrollbutton-down {
+  -moz-box-align: center;
+  -moz-box-pack: center;
+  margin-top: 1px;
+  margin-bottom: 2px;
+  margin-inline-start: 1px;
+  margin-inline-end: 2px;
+}
+
+arrowscrollbox:not([clicktoscroll="true"]) > .scrollbutton-up,
+arrowscrollbox:not([clicktoscroll="true"]) > .scrollbutton-down {
+  border: 1px solid transparent;
+  padding: 1px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: transparent;
+/* DeepDark custom CSS - end */
+}
+
+arrowscrollbox:not([clicktoscroll="true"]) > .scrollbutton-up:not([disabled="true"]):hover,
+arrowscrollbox:not([clicktoscroll="true"]) > .scrollbutton-down:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  padding: 1px;
+  margin-top: 1px;
+  margin-bottom: 2px;
+  margin-inline-start: 1px;
+  margin-inline-end: 2px;
+  border: 1px solid transparent;
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.tabmail-arrowscrollbox > .scrollbutton-up[disabled],
+.tabmail-arrowscrollbox > stack > .scrollbutton-down[disabled] {
+/* DeepDark custom CSS */
+  opacity: .25 !important;
+/* DeepDark custom CSS - end */
+}

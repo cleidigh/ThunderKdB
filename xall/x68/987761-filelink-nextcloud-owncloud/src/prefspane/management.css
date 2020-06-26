@@ -1,0 +1,149 @@
+/* Fix problems in the official css */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, ubuntu, roboto, noto, 'segoe ui', 'helvetica new', helvetica, arial, sans-serif;
+}
+
+.input__field {
+    font-size: inherit;
+    /* Quick fix for gnome themes that change this */
+    background-color: white;
+}
+
+.input__field:disabled {
+    background-color: ThreeDLightShadow;
+}
+
+/* Put everything in its place */
+
+* {
+    box-sizing: border-box;
+}
+
+.input__field, .input__label {
+    width: 100%;
+}
+
+#header {
+    display: flex;
+    align-items: flex-end;
+}
+
+#header_left {
+    width: 100%;
+}
+
+#freespaceGauge {
+    display: flex;
+    visibility: hidden;
+    white-space: nowrap;
+}
+
+#freespace {
+    width: 100%;
+    margin: 0 4px;
+}
+
+#freespacelabel {
+    max-width: 75%;
+}
+
+#header_right {
+    width: 48px;
+    padding-left: 4px;
+}
+
+#logo {
+    width: 100%;
+}
+
+.labelline {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    min-height: 24px;
+}
+
+.labelline>.spacer {
+    width: 100%;
+}
+
+.spacer>.input__label {
+    display: inline;
+}
+
+#expiryDays {
+    max-width: 4em;
+    text-align: right;
+}
+
+.helpbutton {
+    display: inline-flex;
+}
+
+#resetButton {
+    float: right;
+}
+
+/* show the turning wheel cursor while the dialog is busy */
+
+.busy * {
+    cursor: progress;
+}
+
+#disableable_fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Header elements */
+
+h2 {
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#obsolete_string {
+    color: red;
+    font-weight: bolder;
+    position: absolute;
+    top: 8px;
+    right: 0;
+    white-space: pre-line;
+}
+
+/* Free space display */
+
+meter:-moz-meter-optimum::-moz-meter-bar {
+    background: var(--green-50);
+}
+
+meter:-moz-meter-sub-optimum::-moz-meter-bar {
+    background: var(--yellow-50);
+}
+
+meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background: var(--red-50);
+}
+
+meter {
+    background: var(--grey-30);
+}
+
+/* Help overlay */
+
+.helpbutton>.card {
+    position: absolute;
+    right: 1em;
+    visibility: hidden;
+    max-width: 75%;
+    z-index: 1;
+    white-space: pre-line;
+}
+
+.helpbutton:hover>.card {
+    visibility: visible;
+}

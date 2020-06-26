@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>GCalTab</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="css/spectre.min.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/popup.css" />
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="columns">
+      <div class="column col-4">
+        <img src="icons/gcaltab.png" alt="GCalTab icon" class="img-responsive">
+      </div>
+      <div class="column col-8 text-primary p-centered">
+        <h2>
+          GCalTab
+        </h2>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="columns  p-centered">
+        <div class="column col-12">
+          <p>
+            Google Calendar one tab away!
+          </p>
+        </div>
+      </div>
+      <div class="columns">
+        <div id="gcal" class="column col-6">
+          <button class="btn btn-primary">
+            Open
+          </button>
+        </div>
+        <div class="column col-6">
+          <div class="form-group">
+            <label class="form-switch">
+              <input id="switchMode" type="checkbox">
+              <i class="form-icon"></i> Dark
+            </label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="columns">
+      <div class="column col4">
+        <div id="addAccount" class="column" title="Add account">
+          <button class="btn btn-primary s-circle">
+            <img src="icons/user-plus-solid.svg" width="22px" color="red" alt="Add account" title="Add account">
+          </button>
+        </div>
+      </div>
+      <div class="column col4">
+        <div id="switchAccount" class="column" title="Switch account">
+          <button class="btn btn-primary s-circle">
+            <img src="icons/user-friends-solid.svg" width="22px" color="red" alt="Switch account" title="Switch account">
+          </button>
+        </div>
+      </div>
+      <div class="column col4">
+        <div id="signout" class="column" title="Sign out">
+          <button class="btn btn-error s-circle">
+            <img src="icons/sign-out-alt-solid.svg" width="22px" color="red" alt="Sign out" title="Sign out">
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+</body>
+<script src="js/popup.js"></script>
+</html>

@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "Snakes by Bluemods",
+    "description" : "Classic Snakes game at your finger tips.",
+    "version": "1.0",
+    "icons": {
+        "16" : "icons/snake-16.png",
+        "32" : "icons/snake-32.png",
+        "64" : "icons/snake-64.png",
+        "128" : "icons/snake-128.png"
+    },
+    "browser_action": {
+        "default_title": "Start Playing",
+        "default_popup": "index.html",
+        "default_icon": "icons/snake-128.png"
+    },
+    "applications": {
+        "gecko": {
+            "id": "snakes@bluemods.com",
+            "strict_min_version": "66.0"
+        }
+    }
+  }

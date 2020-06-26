@@ -1,0 +1,86 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+@import url("chrome://DeepdarkOverlay-OS/skin/popup.css");
+
+#downloadsPanel,
+#widget-overflow,
+#appMenu-popup,
+#customizationui-widget-panel {
+/* DeepDark custom CSS */
+  margin-top: -2px;
+/* DeepDark custom CSS - end */
+}
+
+menupopup,
+panel {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-font-smoothing-background-color: var(--deepdark-arrowpanel-bg-color);
+  background: var(--deepdark-arrowpanel-bg-color);
+  border-radius: var(--deepdark-arrowpanel-border-radius);
+  color: var(--deepdark-arrowpanel-color);
+/* DeepDark custom CSS - end */
+}
+
+menupopup {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-dark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+menulist > menupopup {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-arrowpanel-bg-color);
+  border: 1px solid var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */  
+}
+
+.panel-arrowcontent,
+panelview {
+/* DeepDark custom CSS */
+  color: var(--deepdark-arrowpanel-color);
+  background: var(--deepdark-arrowpanel-bg-color);
+  border-radius: var(--deepdark-arrowpanel-border-radius);
+  box-shadow: 0 0 0 1px var(--deepdark-arrowpanel-border-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-arrow {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill, stroke;
+  fill: var(--deepdark-arrowpanel-bg-color);
+  stroke: var(--deepdark-arrowpanel-border-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button:not([disabled])[default] {
+  color: white !important;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button:not([disabled])[default]:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button:not([disabled])[default]:hover:active {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+panel#miniday-month-panel {
+/* DeepDark custom CSS */
+  border-radius: 0px;
+/* DeepDark custom CSS - end */
+}

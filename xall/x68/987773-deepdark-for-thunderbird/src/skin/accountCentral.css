@@ -1,0 +1,322 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* ===== accountCentral.css ==========================================
+  == Styles for the Messenger Account Central panel.
+  ======================================================================= */
+
+@import url("chrome://DeepdarkOverlay-OS/skin/accountCentral.css");
+
+:root {
+  --deepdark-accent-color: rgb(0,173,238);
+  --deepdark-hover-accent-color: rgb(0,153,218);
+  --deepdark-hover-accent-color-02: rgba(0,173,238,.25);
+  --deepdark-content-color: rgba(249,249,250,.7);
+  --deepdark-disabled-content-color: rgba(249,249,250,.3);
+  --deepdark-darkest-color: rgb(0,0,0);
+  --deepdark-brightest-color: rgb(255,255,255);
+  --deepdark-ash-color: rgb(52,53,55);
+  --deepdark-dark-ash-color: rgb(30,30,30);
+  --deepdark-large-radius: 1000px;
+  --deepdark-separator-color: rgba(249,249,250,.25);
+  --deepdark-btn-bg-color: rgba(249,249,250,.15);
+  --deepdark-btn-hover-color: rgba(249,249,250,.23);
+  --deepdark-btn-light-hover-color: rgba(249,249,250,.15);
+  --deepdark-border-color: rgba(0,0,0,.5);
+  --deepdark-border-radius: 3px;
+  --deepdark-arrowpanel-bg-color: rgb(64,65,67);
+  --deepdark-notification-bar-bg-color: rgb(110,110,110);
+  --deepdark-treecolpicker-bg-color: rgb(59,60,62);
+  --deepdark-treecolpicker-border-color: var(--deepdark-border-color);
+  --deepdark-tree-bg-color: rgb(44,45,47);
+  --deepdark-tree-border-color: rgb(35,35,35);
+  --deepdark-odd-tree-row-bg-color: rgb(36,37,39);
+  --deepdark-hovered-tree-row-bg-color: rgba(249,249,250,.1);
+  --deepdark-focus-tree-row-bg-color: rgba(0,173,238,.15);
+  --deepdark-selected-tree-row-bg-color: rgba(0,0,0,.5);
+  --deepdark-listbox-bg-color: var(--deepdark-tree-bg-color);
+  --deepdark-table-data-bg-color: rgb(44,45,47);
+  
+  scrollbar-color: rgba(249,249,250,.35) var(--deepdark-ash-color);
+  
+  /* devtools toolbar related variables */
+  --theme-body-color: rgba(249,249,250,.7) !important; 
+  --theme-selection-background: var(--deepdark-accent-color) !important;
+  --theme-toolbar-selected-color: var(--deepdark-accent-color) !important;
+  --theme-icon-checked-color: var(--deepdark-accent-color) !important;
+  --toolbarbutton-checked-background: var(--deepdark-accent-color) !important;
+  --tab-line-selected-color: var(--deepdark-accent-color) !important;
+}
+
+#acctCentralGrid {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+spacer {
+  display: none;
+}
+
+#lightning-newCalendar-row > hbox > label {
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS */
+  background: url(chrome://DeepdarkOverlay/skin/addons/lightning/img/lightning.svg) no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: rows ::::: */
+
+#acctCentralHeaderRow {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-inline-start: 10px;
+  padding-inline-end: 0px;
+  font: menu;
+  font-size: 180%;
+  margin: 0px;
+/* DeepDark custom CSS */  
+  color: var(--deepdark-accent-color);
+  font-weight: lighter;
+/* DeepDark custom CSS - end */
+}
+
+.acctCentralRow {
+  height: 48px;
+  margin: 0px 20px !important;
+}
+
+.acctCentralRow > hbox {
+  margin: 0px 6px;
+  padding: 8px 7px;
+}
+
+
+.row-iconic-icon {
+  list-style-image: inherit;
+  margin-inline-end: 10px;
+}
+
+.acctCentralRowTitleBox {
+  padding-inline-end: 4px;
+  font: menu;
+/* DeepDark custom CSS */
+  background-color: transparent;
+  margin: 15px 0px 5px;
+  border: 0;
+  border-bottom: 1px solid var(--deepdark-separator-color);
+  color: var(--deepdark-accent-color);
+  border-radius: 0;
+  padding-top: 2px;
+  padding-bottom: 5px;
+  font-weight: lighter;
+  padding-inline-start: 0;
+  font-size: 125%;
+/* DeepDark custom CSS - end */
+}
+
+.acctCentralRowTitleBox description{
+/* DeepDark custom CSS */
+  margin-inline-start: 0;
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: links ::::: */
+
+.acctCentralText {
+  padding-inline-start: 50px;
+  padding-top: 7px;
+  min-height: 32px;
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.acctCentralNewAcctText {
+/* DeepDark custom CSS */
+  margin-bottom: 10px;
+  padding-inline-start: 22px;
+  padding-inline-end: 25px;
+  min-height: 18px;
+  -moz-margin-end: 15px;
+  color: var(--deepdark-content-color);
+  background-position: center left;
+/* DeepDark custom CSS - end */
+}
+
+.acctCentralNewAcctText:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  background-position: center right;
+/* DeepDark custom CSS - end */
+}
+
+.acctCentralLinkText {
+  cursor: pointer;
+}
+
+.acctCentralLinkText:hover {  
+  text-decoration: underline;
+}
+
+.acctCentralLinkText:hover,
+.acctCentralLinkText:focus {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#CreateAccounts {
+  height: 30px;
+}
+
+#CreateAccountsList {
+  display: block;
+/* DeepDark custom CSS */
+  padding-inline-start: /*50px*/ 64px;
+/* DeepDark custom CSS - end */
+}
+
+#ReadMessages label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/read-messages.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#ComposeMessage label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/writemail.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#JunkSettingsMail label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/junk.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#SubscribeNewsgroups label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/manage-subscriptions.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#AccountSettings label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/accountsettings.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#CreateAccount label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/newaccount.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#SearchMessages label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/search-messages.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#CreateFilters label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/messages-filters.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#SubscribeImapFolders label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/folder.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#SubscribeRSS label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/manage-rss.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+#OfflineSettings label {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/accountcentral/offline.svg")  no-repeat !important;
+/* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 1.25dppx) {
+  #ReadMessages label,
+  #ComposeMessage label,
+  #OfflineSettings label,
+  #SubscribeRSS label,
+  #SubscribeImapFolders label,
+  #CreateFilters label,
+  #SearchMessages label,
+  #CreateAccount label,
+  #AccountSettings label,
+  #SubscribeNewsgroups label,
+  #JunkSettingsMail label{
+    background-size: 32px 32px !important;
+  }
+}
+
+#CreateAccountMail,
+#CreateAccountMovemail {
+/* DeepDark custom CSS */
+  background-image: -moz-image-rect(url("chrome://DeepdarkOverlay/skin/icons/server.svg"), 0, 16, 16, 0);
+/* DeepDark custom CSS - end */
+  background-repeat: no-repeat;
+}
+
+#CreateAccountChat {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/chat.svg") no-repeat;
+/* DeepDark custom CSS - end */
+  background-size: 15px 15px;
+  background-position: center left;
+}
+
+#CreateAccountChat:-moz-locale-dir(rtl) {
+  background-position: center right;
+}
+
+#CreateAccountNewsgroups {
+/* DeepDark custom CSS */
+  background-image: -moz-image-rect(url("chrome://DeepdarkOverlay/skin/icons/server.svg"), 0, 64, 16, 48);
+/* DeepDark custom CSS - end */
+  background-repeat: no-repeat;
+}
+
+#CreateAccountRSS {
+/* DeepDark custom CSS */
+  background-image: -moz-image-rect(url("chrome://DeepdarkOverlay/skin/icons/server.svg"), 0, 96, 316, 80);
+/* DeepDark custom CSS - end */
+  background-repeat: no-repeat;
+}
+
+#ReadMessages label,
+#ComposeMessage label,
+#OfflineSettings label,
+#SubscribeRSS label,
+#SubscribeImapFolders label,
+#CreateFilters label,
+#SearchMessages label,
+#CreateAccount label,
+#AccountSettings label,
+#SubscribeNewsgroups label,
+#JunkSettingsMail label,
+#CreateAccountMail,
+#CreateAccountMovemail,
+#CreateAccountChat,
+#CreateAccountNewsgroups,
+#CreateAccountRSS{
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}

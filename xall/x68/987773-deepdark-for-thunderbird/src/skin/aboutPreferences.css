@@ -1,0 +1,731 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@namespace html "http://www.w3.org/1999/xhtml";
+
+:root {
+/* DeepDark custom CSS */
+  --deepdark-large-radius: 1000px;
+  --in-content-categories-background: var(--deepdark-ash-color);
+  --in-content-dialogtitle-background: var(--deepdark-ash-color);
+  --in-content-dialogtitle-border: var(--deepdark-separator-color);
+  --in-content-warning-container: var(--deepdark-accent-color-a15);
+/* DeepDark custom CSS - end */
+}
+
+@supports -moz-bool-pref("browser.in-content.dark-mode") {
+  @media (prefers-color-scheme: dark) {
+    :root {
+    /* DeepDark custom CSS */
+      --in-content-categories-background: var(--deepdark-ash-color);
+      --in-content-dialogtitle-background: var(--deepdark-ash-color);
+      --in-content-dialogtitle-border: var(--deepdark-separator-color);
+      --in-content-warning-container: var(--deepdark-accent-color-a15);
+    /* DeepDark custom CSS - end */
+  }
+ }
+}
+
+#MailPreferences {
+  -moz-appearance: none;
+  font: message-box;
+  background-color: var(--in-content-page-background);
+  color: var(--in-content-page-color);
+}
+
+#prefBox {
+  position: relative;
+}
+
+#pref-category-box {
+  background-color: var(--in-content-categories-background);
+  width: 240px;
+}
+
+html|h2 {
+  font-size: 1.14em;
+  margin: 4px 0 !important;
+}
+
+html|h3 {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 4px 0 !important;
+}
+
+#preferencesContainer {
+  padding: 40px 28px;
+  overflow: auto;
+}
+
+#MailPreferences prefpane {
+  max-width: 800px;
+  padding: 0;
+  -moz-box-flex: 1;
+  -moz-box-orient: vertical;
+}
+
+#MailPreferences prefpane:not([selected]) {
+  display: none;
+}
+
+tabpanel > label,
+tabpanel > description,
+tabpanel > hbox > description {
+  margin-inline-start: 0;
+}
+
+/* Web search menulist */
+#defaultWebSearch > .menulist-label-box > .menulist-icon[src] {
+  margin-inline-start: 5px;
+  margin-inline-end: 8px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Category List */
+
+.paneSelector {
+  -moz-appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border-bottom: none;
+  padding: 54px 0 0;
+  margin: 0;
+}
+
+radio[pane] {
+  -moz-box-orient: horizontal;
+  -moz-box-align: center;
+  -moz-appearance: none;
+  width: 240px;
+  color: var(--in-content-text-color);
+  border-right-width: 0;
+  border-left-width: 0;
+  border-radius: 2px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-inline-start: 34px;
+  margin-inline-end: 0;
+  padding: 5px 10px;
+  min-height: 40px;
+  outline-offset: -1px;
+  transition: background-color 150ms;
+}
+
+radio[pane][selected] {
+  color: var(--in-content-category-text-selected);
+  background: none;
+}
+
+radio[pane]:not([selected]):hover {
+  background: var(--in-content-category-background-hover);
+}
+
+radio[pane][selected]:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color-a15);
+/* DeepDark custom CSS - end */
+}
+
+radio[pane]:hover:active {
+  color: var(--in-content-category-text-selected-active);
+  background-color: var(--in-content-category-background-selected-active);
+}
+
+radio[pane][selected]:hover:active {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color-a10);
+/* DeepDark custom CSS - end */
+}
+
+.paneSelector[focused="true"][keyboard-navigation="true"] > radio[pane][focused="true"] {
+  outline: var(--in-content-category-outline-focus);
+}
+
+radio[pane]:hover::before,
+radio[pane][selected]::before {
+  display: none;
+}
+
+radio[pane] > .radio-label-box {
+  line-height: 22px;
+  padding-bottom: 2px;
+  padding-inline-start: 9px;
+  margin: 0;
+  -moz-user-select: none;
+}
+
+radio[pane][focused="true"] > .radio-label-box {
+  outline: none;
+}
+
+radio[pane] > .radio-label-box > .radio-label {
+  margin: 0;
+}
+
+radio[pane] > .radio-check {
+  width: 24px;
+  height: 24px;
+  border-width: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  margin-inline-end: 0;
+  -moz-image-region: auto;
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+/* DeepDark custom CSS */
+  fill-opacity: 1;
+  outline: none !important;
+/* DeepDark custom CSS - end */
+}
+
+radio[pane][selected] > .radio-check {
+  fill-opacity: 1;
+}
+
+@media (max-width: 830px) {
+  #pref-category-box {
+    width: 118px;
+  }
+
+  radio[pane] > .radio-label-box {
+    display: none;
+  }
+
+  radio[pane] {
+    min-width: 44px;
+    padding-inline-start: 13px; /* make icons align center */
+    margin-inline-end: 35px;
+  }
+
+  #preferencesContainer {
+    padding-inline-start: 15px;
+    padding-inline-end: 15px;
+  }
+}
+
+radio[pane=paneGeneral] > .radio-check {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/options.svg");
+/* DeepDark custom CSS - end */
+}
+
+radio[pane=paneDisplay] > .radio-check {
+  list-style-image: url("chrome://messenger/skin/shared/in-content/display.svg");
+}
+
+radio[pane=paneApplications] > .radio-check {
+  list-style-image: url("chrome://messenger/skin/shared/in-content/attachment.svg");
+}
+
+radio[pane=panePrivacy] > .radio-check {
+  list-style-image: url("chrome://messenger/skin/shared/in-content/privacy.svg");
+}
+
+radio[pane=paneSecurity]> .radio-check {
+  list-style-image: url("chrome://messenger/skin/shared/in-content/security.svg");
+}
+
+radio[pane=paneCompose] > .radio-check {
+  list-style-image: url("chrome://messenger/skin/shared/in-content/compose.svg");
+}
+
+radio[pane=paneAdvanced] > .radio-check {
+  list-style-image: url("chrome://messenger/skin/shared/in-content/advanced.svg");
+}
+
+radio[pane=paneChat] > .radio-check {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/chat.svg");
+/* DeepDark custom CSS - end */
+}
+
+radio[pane=paneLightning] > .radio-check {
+  list-style-image: url("chrome://messenger/skin/shared/in-content/calendar.svg");
+}
+
+radio[pane=paneAccount] > .radio-check {
+  list-style-image: url("chrome://messenger/skin/shared/in-content/account.svg");
+}
+
+textbox[type="filefield"] {
+  padding-inline-start: 30px;
+  background-position-x: left 8px;
+  background-color: var(--in-content-box-background);
+/* DeepDark custom CSS */    
+  border-color: transparent;
+/* DeepDark custom CSS - end */ 
+}
+
+textbox[type="filefield"]:-moz-locale-dir(rtl) {
+  background-position-x: right 8px;
+}
+
+textbox[type="filefield"][disabled="true"] {
+  color: var(--in-content-text-color);
+}
+
+textbox + button {
+/* DeepDark custom CSS */    
+  margin-inline-start: 4px;
+/* DeepDark custom CSS - end */
+}
+
+html|input[type="number"] {
+  margin-inline-start: 4px;
+  padding: 1px;
+/* DeepDark custom CSS */ 
+  margin-inline-end: 4px;
+/* DeepDark custom CSS - end */ 
+}
+/* sizes: chars + 8px padding + 1px borders + spin buttons 25+2+10px  */
+html|input[type="number"].size2 {
+  width: calc(2ch + 55px);
+}
+html|input[type="number"].size3 {
+  width: calc(3ch + 55px);
+}
+html|input[type="number"].size4 {
+  width: calc(4ch + 55px);
+}
+html|input[type="number"].size5 {
+  width: calc(5ch + 55px);
+}
+
+html|input[type="number"]::-moz-number-spin-box {
+  margin-inline-start: 10px;
+}
+
+html|input[type="number"]::-moz-number-spin-up,
+html|input[type="number"]::-moz-number-spin-down {
+  -moz-appearance: none;
+  min-width: 25px;
+  border-color: var(--in-content-box-border-color);
+  background-color: var(--in-content-button-background);
+  background-position: center;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+html|input[type="number"]::-moz-number-spin-up:hover,
+html|input[type="number"]::-moz-number-spin-down:hover {
+  background-color: var(--in-content-button-background-hover);
+}
+
+html|input[type="number"]::-moz-number-spin-up {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-radius: 1px 1px 0 0;
+  background-image: url("chrome://global/skin/icons/arrow-up-12.svg")
+}
+
+html|input[type="number"]::-moz-number-spin-down {
+  border-radius: 0 0 1px 1px;
+  background-image: url("chrome://global/skin/icons/arrow-dropdown-12.svg");
+}
+
+separator.groove:not([orient="vertical"]) {
+  border-bottom-width: 0;
+/* DeepDark custom CSS */
+  border-top-color: var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+tab:-moz-focusring {
+  outline: var(--in-content-category-outline-focus);
+}
+
+tab:-moz-focusring > .tab-middle {
+  outline: none;
+}
+
+#defaultWebSearchPopup > menuitem > .menu-iconic-left {
+  display: -moz-box;
+}
+
+/* Applications Pane Styles */
+
+#applications-content {
+  padding: 15px;
+}
+
+#filter {
+  margin-inline-start: 0;
+}
+
+#handlersView > richlistitem {
+  min-height: 36px !important;
+  padding: 0;
+}
+
+.shortDetails {
+  text-align: end;
+  opacity: 0.5;
+}
+
+#handlersView richlistitem[selected="true"] .shortDetails {
+  color: inherit;
+}
+
+.typeIcon {
+  margin-inline-start: 10px;
+  margin-inline-end: 9px;
+}
+
+.actionIcon {
+  margin-inline-start: 11px;
+  margin-inline-end: 8px;
+}
+
+.actionsMenu {
+  min-height: 36px;
+}
+
+.actionsMenu > menupopup > menuitem {
+  padding-inline-start: 10px !important;
+}
+
+.actionsMenu > menupopup > menuitem > .menu-iconic-left {
+  margin-inline-end: 8px !important;
+}
+
+listhead > listheader:first-of-type:-moz-locale-dir(ltr),
+listhead > listheader:last-of-type:-moz-locale-dir(rtl) {
+  margin-left: -2px;
+}
+
+listhead > listheader:first-of-type:-moz-locale-dir(rtl),
+listhead > listheader:last-of-type:-moz-locale-dir(ltr) {
+  margin-right: -2px;
+}
+
+/* XXX This style is for bug 740213 and should be removed once that
+   bug has a solution. */
+description > html|a {
+  cursor: pointer;
+}
+
+#provider-listing {
+  width: 200px;
+}
+
+#addCloudFileAccountButtons button,
+#addCloudFileAccount,
+#removeCloudFileAccount,
+#moreProvidersLink {
+  margin: 4px 0 0;
+  text-align: center;
+}
+
+#addCloudFileAccountButtons button .button-icon {
+  width: 16px;
+  height: 16px;
+  margin-inline-end: 8px;
+}
+
+#addCloudFileAccountListItems {
+  text-align: start;
+}
+
+#addCloudFileAccountListItems > menuitem > .menu-iconic-left {
+  display: -moz-box;
+}
+
+#moreProvidersLink {
+  padding: 4px;
+}
+
+#paneChat {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+tabs {
+  margin-inline-end: 4px; /* add the 4px end-margin of other elements */
+}
+
+.indent {
+  margin-inline-start: 33px;
+}
+
+.update-throbber {
+  margin-inline-start: 0;
+  margin-inline-end: 4px;
+}
+
+/* DeepDark custom CSS */
+.update-throbber {
+  width: 16px;
+  min-height: 16px;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/loading-16.svg") !important;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+@media (min-resolution: 1.1dppx) {
+  .update-throbber {
+	list-style-image: url("chrome://DeepdarkOverlay/skin/icons/loading.svg") !important;
+  }
+}
+/* DeepDark custom CSS - end */
+
+.updateSettingCrossUserWarningContainer {
+  background: var(--in-content-warning-container);
+  border-radius: 5px;
+  padding-inline: 8px;
+  padding-block-start: 2px;
+  padding-block-end: 8px;
+  margin-block-end: 17px;
+}
+
+#updateSettingCrossUserWarning {
+  padding-inline-start: 30px;
+  margin-block-start: 20px;
+  line-height: 20px;
+  background-image: url("chrome://messenger/skin/icons/info.svg");
+  background-position-x: left 2px;
+  background-position-y: top 2px;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+#updateSettingCrossUserWarning:-moz-locale-dir(rtl) {
+  background-position-x: right 2px;
+}
+
+#releasenotes {
+  margin-inline-start: 6px !important;
+}
+
+#telemetryLearnMore,
+#crashReporterLearnMore {
+  margin-inline-end: 4px !important;
+}
+
+/* Remove the start margin to align these elements */
+#addCloudFileAccount,
+#chatStartupAction,
+#defaults-itemtype-menulist,
+#manageCertificatesButton {
+  margin-inline-start: 0;
+}
+
+/**
+ * Font dialog menulist fixes
+ */
+
+#defaultFontType,
+#serif,
+#sans-serif,
+#monospace {
+  min-width: 30ch;
+}
+
+/**
+ * toolkit element overrides
+ */
+
+groupbox label:not(.menu-accel):not(.menu-iconic-accel):not(.menu-text):not(.menu-iconic-text):not(.menulist-label):not(.indent):not(.learnMore):not(.tail-with-learn-more),
+groupbox description {
+  /* !important needed to override toolkit !important rule */
+  margin-inline-start: 0 !important;
+  margin-inline-end: 0 !important;
+}
+
+richlistbox {
+  -moz-appearance: none;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-tree-bg-color);
+  color: var(--deepdark-content-color);
+  scrollbar-color: rgba(249,249,250,.35) var(--deepdark-tree-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistbox richlistitem {
+  padding: 0.3em;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background-image: none;
+}
+
+richlistbox richlistitem:hover {
+/* DeepDark custom CSS */
+  background-color: var(--in-content-item-hover);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+richlistbox richlistitem[selected="true"]:hover,
+richlistbox richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+richlistbox:focus > richlistitem[selected="true"] {
+  background-color: var(--in-content-item-selected);
+  color: var(--in-content-selected-text) !important;
+}
+
+#messengerLanguagesDialogPane {
+  min-height: 360px;
+}
+
+#defaultMessengerLanguage {
+  margin-inline-start: 0;
+  min-width: 20em;
+}
+
+#MessengerLanguagesDialog > .dialog-button-box > .dialog-button[dlgtype="accept"] {
+  margin-inline-end: 0;
+}
+
+#availableLocales {
+  margin: 0;
+  margin-inline-end: 4px;
+}
+
+#warning-message {
+  margin-top: 8px;
+}
+
+#warning-message > .message-bar-description {
+  width: 32em;
+}
+
+.add-messenger-language {
+  margin: 0;
+  margin-inline-start: 4px;
+}
+
+.action-button {
+  margin-inline-end: 0;
+}
+
+/* Menulist styles */
+.label-item {
+  font-size: .8em;
+}
+
+/**
+ * Dialog
+ */
+
+.dialogOverlay {
+  visibility: hidden;
+}
+.dialogOverlay[topmost="true"] {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.dialogBox {
+  -moz-appearance: none;
+  background-color: var(--in-content-page-background);
+  color: var(--in-content-page-color);
+  /* `transparent` will use the dialogText color in high-contrast themes and
+     when page colors are disabled */
+  border: 1px solid transparent;
+  border-radius: 2.5px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+  display: -moz-box;
+  margin: 0;
+  padding: 0;
+}
+
+.dialogBox[resizable="true"] {
+  resize: both;
+  overflow: hidden;
+  min-height: 20em;
+  min-width: 66ch;
+}
+
+.dialogTitleBar {
+  margin-top: 0;
+  padding: 3.5px 0;
+  background-color: var(--in-content-dialogtitle-background);
+  border-bottom: 1px solid var(--in-content-dialogtitle-border);
+}
+
+.dialogTitle {
+  font-size: 1.026em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.close-icon {
+  border: none;
+  background: none !important;
+  min-width: 0;
+  min-height: auto;
+}
+
+.dialogFrame {
+  margin: 20px;
+  -moz-box-flex: 1;
+  /* Default dialog dimensions */
+  height: 12em;
+  width: 40ch;
+}
+
+.largeDialogContainer.doScroll {
+  overflow-y: auto;
+  -moz-box-flex: 1;
+}
+
+#MailPreferences .dialogBox resizer {
+  opacity: 0 !important;
+}
+
+/**
+ * End Dialog
+ */
+
+
+/* :::::: VISUAL ADJUSTMENTS FOR "CARDBOOK" ADDON :::::: */
+
+#cardbook-pref-category-box {
+/* DeepDark custom CSS */
+  background: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+radio[pane="cardbook-listsPane"] > .radio-check {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addlist.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+radio[pane="cardbook-IMPPPane"] > .radio-check {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/chat.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+radio[pane="cardbook-syncPane"] > .radio-check {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/sync.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+radio[pane="cardbook-generalPane"] > .radio-check {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/options.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+radio[pane="cardbook-birthdaylistPane"] > .radio-check {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/smiley.svg") !important;
+/* DeepDark custom CSS - end */
+}

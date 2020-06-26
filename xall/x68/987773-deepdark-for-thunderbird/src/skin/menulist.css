@@ -1,0 +1,72 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+@import url("chrome://DeepdarkOverlay-OS/skin/menulist.css");
+
+menulist {
+  margin: 5px;
+  text-shadow: none;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-content-color) !important;
+  background-color: var(--deepdark-btn-bg-color);
+  border-color: transparent !important;
+  border-radius: var(--deepdark-border-radius);
+  padding: 1px 4px 2px;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+menulist[open="true"],
+menulist:not([disabled]):hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+  background-color: var(--deepdark-btn-hover-color);
+/* DeepDark custom CSS - end */
+}
+
+.menulist-label-box {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  border-color: transparent;
+  background-color: transparent;
+  color: inherit;
+/* DeepDark custom CSS - end */
+}
+
+/* ::: Dropmarker ::: */
+
+.menulist-dropmarker {
+  display: inline-block !important;
+}
+
+/* ::: Disabled State ::: */
+
+menulist[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+menulist[disabled="true"] > .menulist-dropmarker[class] {
+/* DeepDark custom CSS */
+  padding-inline-start: 0px !important;
+/* DeepDark custom CSS - end */
+}
+
+/* ::: Editable Menulists ::: */
+
+menulist[editable="true"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background: inherit;
+  font: inherit;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}

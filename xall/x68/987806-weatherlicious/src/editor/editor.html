@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Options</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+<body class="browser-style">
+  <h1>City</h1>
+  <div class="browser-style">
+    <input type="text" id="city" placeholder="City"/>
+  </div>
+  <a id="picked">Check the city that you have picked (corresponds to the first result)</a>
+  <h1>Theme mode</h1>
+  <p>Choose whether the day or night theme is displayed, or switch automatically.</p>
+  <div class="browser-style">
+    <select id="theme-mode">
+      <option value="automatic">Automatic</option>
+      <option value="d">Always display day theme</option>
+      <option value="n">Always display night theme</option>
+    </select>
+  </div>
+
+  <h1>About</h1>
+  <p>Add-on by <a href="https://github.com/nt1m">Tim Nguyen</a></p>
+  <p>Data provided by <a href="http://openweathermap.org/">OpenWeatherMap</a>.</p>
+  <script src="../shared.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

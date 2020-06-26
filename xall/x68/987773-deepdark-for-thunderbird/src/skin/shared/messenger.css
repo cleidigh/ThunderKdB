@@ -1,0 +1,156 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+:root[lwt-tree] tree,
+:root[lwt-tree] #folderPane-toolbar {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree] tree,
+:root[lwt-tree-brighttext] tree {
+/* DeepDark custom CSS */
+  scrollbar-color: rgba(249,249,250,.35) var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree] #folderPane-toolbar,
+:root[lwt-tree-brighttext] #folderPane-toolbar {
+  background-image: none;
+}
+
+:root[lwt-tree] treechildren::-moz-tree-image,
+:root[lwt-tree] treechildren::-moz-tree-twisty,
+:root[lwt-tree] #threadTree treechildren::-moz-tree-cell-text(untagged),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text {
+  color: currentColor;
+}
+
+:root[lwt-tree] treechildren::-moz-tree-image(selected),
+:root[lwt-tree] treechildren::-moz-tree-twisty(selected),
+:root[lwt-tree] #threadTree treechildren::-moz-tree-cell-text(untagged, selected),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text(selected) {
+  color: currentColor;
+}
+
+:root[lwt-tree] treechildren::-moz-tree-line {
+  border-color: currentColor;
+}
+
+:root[lwt-tree] treechildren::-moz-tree-line(selected) {
+  border-color: currentColor;
+}
+
+treecol:not([hideheader="true"]),
+treecolpicker:not([hideheader="true"]),
+:root[lwt-tree] treecol:not([hideheader="true"]),
+:root[lwt-tree] treecolpicker:not([hideheader="true"]) {
+  -moz-appearance: none !important;
+  color: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color);
+  border-bottom: 1px solid var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+treecol,
+:root[lwt-tree] treecol {
+/* DeepDark custom CSS */
+  border-inline-end: 1px solid var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+treecol,
+treecolpicker,
+:root[lwt-tree-brighttext] treecol,
+:root[lwt-tree-brighttext] treecolpicker {
+/* DeepDark custom CSS */
+  border-inline-end: 1px solid var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree-brighttext] treecol {
+/* DeepDark custom CSS */
+  border-inline-end-color: var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+treecol:hover,
+treecolpicker:hover,
+:root[lwt-tree] treecol:hover,
+:root[lwt-tree] treecolpicker:hover,
+:root[lwt-tree-brighttext] treecol:hover,
+:root[lwt-tree-brighttext] treecolpicker:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+#calendar-task-details-container .toolbarbutton-1:not(.qfb-tag-button) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#calendar-task-details-container .toolbarbutton-1:not([disabled="true"]):not(.qfb-tag-button):hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#calendar-task-details-container .toolbarbutton-1:not([disabled="true"]):not(.qfb-tag-button):active:hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#calendar-task-details-container .toolbarbutton-1:not([disabled="true"]):not(.qfb-tag-button)[open],
+#calendar-task-details-container .toolbarbutton-1:not([disabled="true"]):not(.qfb-tag-button)[open]:hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.contentTabSecurity[level="high"] {
+  background-image: url("chrome://messenger/skin/icons/connection-secure.svg");
+  -moz-context-properties: fill;
+/* DeepDark custom CSS */
+  fill: var(--deepdark-green-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Address Book Menuitem Icons ::: */
+
+.abMenuItem[AddrBook="true"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addressbook/addrbook.svg");
+/* DeepDark custom CSS - end */
+}
+
+.abMenuItem[MailList="true"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addressbook/ablist.png");
+/* DeepDark custom CSS - end */
+}
+
+.abMenuItem[AddrBook="true"][IsRemote="true"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addressbook/remote-addrbook.png");
+/* DeepDark custom CSS - end */
+}
+
+.abMenuItem[AddrBook="true"][IsRemote="true"][IsSecure="true"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addressbook/secure-remote-addrbook.png");
+/* DeepDark custom CSS - end */
+}

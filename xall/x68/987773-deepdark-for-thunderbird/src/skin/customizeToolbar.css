@@ -1,0 +1,268 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/button.css");
+@import url("chrome://DeepdarkOverlay/skin/dropmarker.css");
+@import url("chrome://DeepdarkOverlay/skin/menu.css");
+@import url("chrome://DeepdarkOverlay/skin/menulist.css");
+@import url("chrome://DeepdarkOverlay/skin/popup.css");
+@import url("chrome://DeepdarkOverlay/skin/radio.css");
+@import url("chrome://DeepdarkOverlay/skin/toolbar.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+@import url("chrome://DeepdarkOverlay-OS/skin/customizeToolbar.css");
+
+/* DeepDark custom CSS */
+panel#customizeToolbarSheetPopup[id] {
+  -moz-appearance: menupopup !important;
+  min-width: 102ch;
+}
+
+
+window#CustomizeToolbarWindow {
+  -moz-appearance: none !important;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-arrowpanel-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+menupopup {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  border: 0 !important;
+  background-color: var(--deepdark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+menulist > menupopup > menuitem,
+menulist > menupopup > menucaption,
+menulist > menupopup > menu {
+/* DeepDark custom CSS */
+  color: var(--deepdark-arrowpanel-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+menu[_moz-menuactive="true"],
+menuitem[_moz-menuactive="true"] {
+/* DeepDark custom CSS */
+  -moz-font-smoothing-background-color: var(--deepdark-btn-hover-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+/* DeepDark custom CSS - end */
+
+#palette-box {
+  margin-top: 2px;
+  margin: 0 0 10px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  border-top: 1px solid transparent;
+/* DeepDark custom CSS - end */
+}
+
+#palette-box > toolbarpaletteitem {
+  padding: 8px 2px;
+  margin: 0 8px;
+}
+
+#main-box {
+  padding: 12px;
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#main-box > separator {
+  -moz-appearance: none;
+  border-bottom: none;
+} 
+
+#instructions {
+  font: menu;
+  line-height: 16pt;
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+  font-weight: normal;
+/* DeepDark custom CSS - end */
+}
+
+hbox button {
+  font: menu;
+}
+
+#main-box > box > button {
+  min-height: 19px; /* aqua size for small buttons */
+  font: message-box;
+}
+
+:root[toolboxId="mail-toolbox"] #titlebarSettings {
+  display: -moz-box;
+}
+
+.junk-button {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/junk.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-mark {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/mark.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+.delete-button {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/delete.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#qfb-show-filter-bar {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/filter.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-archive {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/archive.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-addons {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addons.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+.hdrTagButton,
+#button-tag {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/tag.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-address,
+#button-contacts {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/address.svg") !important;
+  -moz-image-region: auto !important;
+/* DeepDark custom CSS - end */
+}
+
+#wrapper-throbber-box > #throbber-box {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/loading-16.svg") !important;
+  fill: currentColor;
+  -moz-context-properties: fill;
+/* DeepDark custom CSS - end */
+}
+
+#cardbookToolbarButton[id] {
+/* DeepDark custom CSS */
+    list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addressbook/abcard.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#palette-box .toolbarbutton-1.msgHeaderView-button {
+/* DeepDark custom CSS */
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not(:hover):not(:active):not([open]):not([checked="true"]) > .toolbarbutton-menubutton-dropmarker::before,
+.toolbarbutton-1[disabled="true"] > .toolbarbutton-menubutton-dropmarker::before {
+/* DeepDark custom CSS */
+  background: var(--deepdark-separator-color) padding-box;
+  box-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarpaletteitem-box[type="spring"][place="toolbar"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-accent-color-a15) !important;
+  border: 1px dashed var(--deepdark-accent-color) !important;
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarpaletteitem-box[type="spacer"] {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-accent-color) !important;
+  background-color: var(--deepdark-accent-color-a15) !important;
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+separator.groove:not([orient="vertical"]) {
+  height: 0;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+separator.groove[orient="vertical"] {
+  width: 0;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+/* DeepDark custom CSS */
+  border-left: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#main-box toolbarseparator#separator {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  margin: 7px 4px;
+  border-left: 2px dotted var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#main-box .toolbarpaletteitem-box[type="spacer"] {
+/* DeepDark custom CSS */
+  border: 2px solid var(--deepdark-accent-color) !important;
+  background-color: var(--deepdark-accent-color-a15) !important;
+/* DeepDark custom CSS - end */
+}
+
+#main-box:-moz-window-inactive .toolbarpaletteitem-box[type="spacer"] {
+/* DeepDark custom CSS */
+  border: 2px solid var(--deepdark-accent-color-a30) !important;
+  background-color: var(--deepdark-accent-color-a15) !important;
+/* DeepDark custom CSS - end */
+}
+
+#main-box .toolbarpaletteitem-box[type="spring"] {
+/* DeepDark custom CSS */
+  border: 2px dashed var(--deepdark-accent-color) !important;
+  background: url("chrome://DeepdarkOverlay/skin/icons/spring.svg") var(--deepdark-accent-color-a15) no-repeat center center !important;
+  border-radius: var(--deepdark-border-radius) !important;
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#main-box:-moz-window-inactive .toolbarpaletteitem-box[type="spring"] {
+/* DeepDark custom CSS */
+  border: 2px dashed var(--deepdark-accent-color-a30) !important;
+  background: url("chrome://DeepdarkOverlay/skin/icons/spring.svg") var(--deepdark-accent-color-a15) no-repeat center center !important;
+  border-radius: var(--deepdark-border-radius) !important;
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color-a30);
+/* DeepDark custom CSS - end */
+}
+
+#button-newim {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/chat.svg") !important;
+/* DeepDark custom CSS - end */
+}

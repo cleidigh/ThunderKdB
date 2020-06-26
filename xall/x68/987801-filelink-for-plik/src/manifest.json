@@ -1,0 +1,35 @@
+{
+    "manifest_version": 2,
+    "applications": {
+        "gecko": {
+            "id": "plik@johannes-endres.de",
+            "strict_min_version": "68.2.1"
+        }
+    },
+    "name": "__MSG_extensionName__",
+    "description": "__MSG_extensionDescription__",
+    "homepage_url": "https://gitlab.com/joendres/filelink-plik",
+    "author": "Johannes Endres",
+    "version": "1.1.0",
+    "icons": {
+        "168": "plik.png"
+    },
+    "background": {
+        "scripts": [
+            "lib/plikconnection.js",
+            "background.js"
+        ]
+    },
+    "cloud_file": {
+        "name": "Plik",
+        "management_url": "prefspane/management.html",
+        "data_format": "File",
+        "service_url": "https://plik.root.gg/"
+    },
+    "permissions": [
+        "<all_urls>",
+        "storage",
+        "notifications"
+    ],
+    "default_locale": "en"
+}

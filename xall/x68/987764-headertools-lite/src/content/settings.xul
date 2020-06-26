@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://hdrtoolslite/content/settings.css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://hdrtoolslite/locale/hdrtools.dtd">
+
+<dialog xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept, cancel"
+        title="&prefTitle;"
+        id="HTLsettings"
+        onload="onLoad()"
+        ondialogaccept="savePrefs();">
+
+<script type="application/x-javascript" src="chrome://hdrtoolslite/content/settings.js"/>
+
+<groupbox>
+  <hbox class="groupbox-title">
+    <label class="header">&misc;</label>
+  </hbox>
+  <hbox align="center">
+    <checkbox id="delOrig" label="&trashOption;"/>
+  </hbox>
+  <hbox align="center">
+    <checkbox id="imapFix" label="&imapFix;"/>
+  </hbox>
+  <hbox align="center">
+    <checkbox id="addHTLheader" label="&addHTLheader;"/>
+  </hbox>
+  <hbox align="center">
+    <label value="&maxchars;" />
+    <html:input type="number" id="maxFSchars" min="-1" max="999999" />
+  </hbox>
+  <label value="&nolimit;" />
+</groupbox>
+
+<groupbox>
+  <hbox class="groupbox-title">
+    <label class="header">&shortcuts;</label>
+  </hbox>
+  <hbox align="center">
+    <label value="&shortCut; CTRL +"/>
+    <textbox id="shortcutBox1" size="1" maxlength="1" />
+  </hbox>
+  <hbox align="center">
+    <label value="&shortCutFS; CTRL +"/>
+    <textbox id="shortcutBox2" size="1" maxlength="1" />
+  </hbox>
+  <label value="&shortCutWarn;" />
+</groupbox>
+
+<spacer height="10px" />
+</dialog>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://quicknote/skin/quicknote-button.css" type="text/css"?>
+<?xml-stylesheet href="chrome://quicknote/skin/quicknotesm.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://quicknote/locale/overlay.dtd">
+
+<overlay id="quicknotetasksOverlay"
+				 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://quicknote/content/globalvar.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/jsio.js" />
+	<!--<script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js" />-->
+	<script type="application/x-javascript" src="chrome://quicknote/content/quicknote.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/overlay.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/tboverlay.js" />
+
+	<!-- Toolbar Overlay main window -->
+	<toolbarpalette id="MailToolbarPalette">
+		<toolbarbutton id="quicknote-buttonsm"
+									 type="menu-button"
+									 class="toolbarbutton-1"
+									 label="&quicknote.open.title;"
+									 tooltiptext="&quicknote.open.title;"
+									 oncommand="QNtb.openQuickNote();">
+			<menupopup oncommand="event.stopPropagation();">
+				<menuitem id="quicknote-smopenoptions"
+									oncommand="QNtb.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									class="menuitem-iconic" />
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+
+	<!-- Toolbar Overlay compose window -->
+	<toolbarpalette id="MsgComposeToolbarPalette">
+		<toolbarbutton id="quicknote-composebutton"
+									 type="menu-button"
+									 class="toolbarbutton-1"
+									 label="&quicknote.open.title;"
+									 tooltiptext="&quicknote.open.title;"
+									 oncommand="QNtb.openQuickNote();">
+			<menupopup oncommand="event.stopPropagation();">
+				<menuitem id="quicknote-smopenoptions"
+									oncommand="QNtb.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									class="menuitem-iconic" />
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+
+	<!-- Statusbar Overlay -->
+	<statusbar id="status-bar">
+		<statusbarpanel id="quicknote-statuspanel" hidden="true">
+			<menupopup id="quicknote-status"
+								 class="statusbarpanel-menu-iconic icon-quicknote16"
+								 tooltiptext="&quicknote.title.tooltip;"
+								 context="quicknote-statusbar-menu"
+								 onclick="if (event.button == 0) {QNtb.openQuickNote();}">
+			</menupopup>
+			<menupopup id="quicknote-statusbar-menu"
+								 position="before_end"
+								 onpopupshowing="QNtb.updateKeys();">
+				<menuitem id="quicknote-optionsmail"
+									oncommand="QNtb.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									class="menuitem-iconic" />
+			</menupopup>
+		</statusbarpanel>
+	</statusbar>
+
+	<!-- Menu Tools -->
+	<menupopup id="taskPopup">
+		<menu id="quicknote-toolsmenu"
+					position="3"
+					label="&quicknote.open.title;"
+					accesskey="&quicknote.open.title.accesskey;"
+					class="menu-iconic qnicon">
+			<menupopup id="menu_ToolsTbPopup">
+				<menuitem id="quicknote-mailopenfloat"
+									oncommand="QNtb.openQNFloat();"
+									label="&quicknote.open.float;"
+									accesskey="&quicknote.open.float.accesskey;"
+									class="menuitem-iconic"
+									key="key_qnfocus" />
+				<menuitem id="quicknote-options"
+									oncommand="QNtb.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									insertafter="quicknote-tbtab"
+									class="menuitem-iconic qnset" />
+				</menupopup>
+		</menu>
+	</menupopup>
+
+	<!-- Context Menu -->
+	<menupopup id="mailContext">
+		<menuitem id="quicknote-mail-context" insertafter="context-copy"
+							class="menuitem-iconic qnicon"
+							label="&quicknote.context.sendto;"
+							accesskey="&quicknote.context.sendto.accesskey;"
+							oncommand="QNtb.qnCopyToTbCompose();" />
+		<menuitem id="quicknote-mail-linkcontext" insertafter="context-copy"
+							class="menuitem-iconic qnicon"
+							label="&quicknote.context.sendlinkto;"
+							accesskey="&quicknote.context.sendlinkto.accesskey;"
+							oncommand="QNtb.qnCopyLinkToTb();" />
+	</menupopup>
+
+	<!-- Context Menu Compose window-->
+	<menupopup id="contentAreaContextMenu">
+		<menuitem id="quicknote-mail-context" insertafter="context-delete"
+							class="menuitem-iconic qnicon"
+							label="&quicknote.context.sendto;"
+							accesskey="&quicknote.context.sendto.accesskey;"
+							oncommand="QNtb.qnCopyToTbCompose();"/>
+	</menupopup>
+
+	<!-- Hot Key Ctrl-F7 -->
+	<keyset id="mailKeys">
+		<key id="key_qnfocus" keycode="VK_F7" modifiers="accel" command="cmd_qnfocus" />
+	</keyset>
+
+	<keyset id="tasksKeys">
+		<key id="key_qnfocus" keycode="VK_F7" modifiers="accel" command="cmd_qnfocus" />
+	</keyset>
+
+</overlay>

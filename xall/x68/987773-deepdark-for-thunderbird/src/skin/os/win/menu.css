@@ -1,0 +1,122 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+
+/* ::: Menu/menuitem/menucaption/menupopup ::: */
+
+menu,
+menuitem,
+menucaption {
+  padding: 2px 4px !important;
+}
+
+menupopup {
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+
+menupopup[is="folder-menupopup"] menu.folderMenuItem[class],
+menupopup[is="folder-menupopup"] menuitem.folderMenuItem[class],
+menupopup[is="folder-menupopup"] menu[_moz-menuactive="true"].folderMenuItem[class],
+menupopup[is="folder-menupopup"] menuitem[_moz-menuactive="true"].folderMenuItem[class] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+/* DeepDark custom CSS - end */
+}
+
+menupopup[is="folder-menupopup"] menu.folderMenuItem[class],
+menupopup[is="folder-menupopup"] menuitem.folderMenuItem[class] {
+/* DeepDark custom CSS */
+  color: currentColor !important;
+/* DeepDark custom CSS - end */
+}
+
+menupopup[is="folder-menupopup"] menu[_moz-menuactive="true"].folderMenuItem[class],
+menupopup[is="folder-menupopup"] menuitem[_moz-menuactive="true"].folderMenuItem[class] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.folderMenuItem > .menu-right{
+/* DeepDark custom CSS */
+  margin-inline-end: -4px !important;
+/* DeepDark custom CSS - end */
+}
+
+#modelistpopup[id] {
+/* DeepDark custom CSS */
+   border-radius: 0 !important;
+/* DeepDark custom CSS - end */ 
+}
+
+
+/* Separators */
+
+menuseparator {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  padding: 0px !important;
+  border-top: 1px solid var(--deepdark-separator-color) !important;
+  border-bottom: 1px solid transparent !important;
+  background: transparent !important;
+  margin: 3px 0px !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* Menuitem checkboxes */
+
+menuitem[type="checkbox"] > .menu-iconic-left,
+menuitem[checked="true"] > .menu-iconic-left {
+  -moz-appearance: none !important;
+  padding-top: 0 !important;
+  display: none !important;
+}
+
+:not(menulist) > menupopup > menuitem[checked="true"]::before,
+:not(menulist) > menupopup > menuitem[selected="true"]::before {
+  margin-inline-start: 5px !important;
+}
+
+menuitem[type="checkbox"] > .menu-iconic-left,
+menuitem[checked="true"] > .menu-iconic-left {
+/* DeepDark custom CSS */
+  display: inline-block !important;
+  -moz-appearance: none !important;
+  -moz-margin-end: 13px !important;
+/* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 1.1dppx) {
+  menuitem[type="checkbox"] > .menu-iconic-left,
+  menuitem[checked="true"] > .menu-iconic-left {
+  /* DeepDark custom CSS */
+    -moz-margin-end: 8px !important;
+  /* DeepDark custom CSS - end */
+  }
+}
+
+
+/* Menuitem radio */
+
+menulist menuitem[type="radio"][checked="false"],
+menulist menuitem[type="radio"][checked="true"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  padding-left: 20px !important;
+/* DeepDark custom CSS - end */
+}
+
+menulist > menupopup > menuitem[type="radio"][checked="true"] > .menu-iconic-left {
+/* DeepDark custom CSS */
+  display: none !important;
+  padding-left: 20px !important;
+/* DeepDark custom CSS - end */
+}

@@ -1,0 +1,86 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+@import url("chrome://DeepdarkOverlay-OS/skin/tabbox.css");
+
+tabbox {
+  margin: 0 5px;
+}
+
+tabpanels {
+  padding: 33px 15px 15px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  color: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+tabs {
+  -moz-box-align: center;
+  font: menu;
+}
+
+tabbox > tabs {
+  padding: 0 10px;
+  position: relative;
+/* DeepDark custom CSS */
+  margin-bottom: 0px;
+  border-bottom: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+tab {
+  padding-top: 1px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+tab:not([disabled="true"]):hover{
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-mailtoolbox-btn-hover-color);
+/* DeepDark custom CSS - end */
+}
+
+tab[visuallyselected="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+  box-shadow: -1px 0px transparent, 1px 0px transparent, 0px 1px var(--deepdark-accent-color);
+  border-bottom: 0px;
+/* DeepDark custom CSS - end */
+}
+
+tab[visuallyselected="true"]:not(:-moz-window-inactive):hover {
+/* DeepDark custom CSS */
+  background-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+tab:-moz-focusring {
+  /* Tab focus rings need to overlay adjacent tabs. */
+  position: relative;
+}
+
+tab:first-of-type {
+  padding-inline-start: 2px;
+}
+
+tab:last-of-type {
+  padding-inline-end: 2px;
+}
+
+.tab-middle {
+  padding: 1px 6px 2px;
+}
+
+.tabs-left,
+.tabs-right  {
+  -moz-box-flex: 1;
+}

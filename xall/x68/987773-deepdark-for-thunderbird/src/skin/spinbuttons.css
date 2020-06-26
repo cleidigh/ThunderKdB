@@ -1,0 +1,83 @@
+/* The default Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+input[type="number"]::-moz-number-spin-up {
+  writing-mode: horizontal-tb;
+  display: block;
+  flex: none;
+  cursor: default;
+  border: 0;
+/* DeepDark custom CSS */
+  -moz-appearance: none;  
+  background-image: url("chrome://DeepdarkOverlay/skin/arrow/arrow-up.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 5px auto;
+  width: 15px;
+  height: 10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+input[type="number"]::-moz-number-spin-down {
+  writing-mode: horizontal-tb;
+  display: block;
+  flex: none;
+  cursor: default;
+  border: 0;
+/* DeepDark custom CSS */
+  -moz-appearance: none;  
+  background-image: url("chrome://DeepdarkOverlay/skin/arrow/arrow-dn.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 5px auto;
+  width: 15px;
+  height: 10px; 
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+input[type="number"]::-moz-number-spin-up,
+input[type="number"]::-moz-number-spin-down {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+input[type="number"]:not([disabled="true"])::-moz-number-spin-up:hover,
+input[type="number"]:not([disabled="true"])::-moz-number-spin-down:hover {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+input[type="number"]:not([disabled="true"])::-moz-number-spin-up:active:hover,
+input[type="number"]:not([disabled="true"])::-moz-number-spin-down:active:hover,
+input[type="number"]:not([disabled="true"])::-moz-number-spin-up:active,
+input[type="number"]:not([disabled="true"])::-moz-number-spin-down:active {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+input[type="number"][disabled="true"]::-moz-number-spin-up {
+/* DeepDark custom CSS */
+  background-image: url("chrome://DeepdarkOverlay/skin/arrow/arrow-up-dis.svg");
+/* DeepDark custom CSS - end */
+}
+
+input[type="number"][disabled="true"]::-moz-number-spin-down {
+/* DeepDark custom CSS */
+  background-image: url("chrome://DeepdarkOverlay/skin/arrow/arrow-dn-dis.svg");
+/* DeepDark custom CSS - end */
+}

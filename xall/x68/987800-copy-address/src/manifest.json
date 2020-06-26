@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "0.0.1",
+  "author": "ctrlxc",
+  "applications": {
+    "gecko": {
+      "id": "copyaddrs@pqpq.dev",
+      "strict_min_version": "68.0"
+    }
+  },
+  "default_locale": "en",
+  "icons": {
+    "24": "icon.svg"
+  },
+  "permissions": [
+    "messagesRead",
+    "clipboardWrite"
+  ],
+  "browser_action": {
+    "default_icon": "icon.svg",
+    "default_title": "__MSG_extensionTitle__",
+    "default_area": "tabstrip"
+  },
+  "background": {
+    "page": "background.html"
+  }
+}

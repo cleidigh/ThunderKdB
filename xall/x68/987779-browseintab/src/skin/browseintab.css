@@ -1,0 +1,28 @@
+/* All platforms */
+
+/* Make the fake urlbar look like someone cares.. */
+.contentTabAddress > hbox {
+  background-clip: padding-box;
+  border: 1px solid;
+  border-color: ThreeDShadow; /* browser.css urlbar default theme */
+  border-radius: 4px; /* var(--toolbarbutton-border-radius); (2px on win) */
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  min-height: 30px;
+  text-shadow: none;
+}
+
+.contentTabAddress:-moz-lwtheme > hbox {
+  border-color: var(--lwt-toolbar-field-border-color, hsla(240,5%,5%,.25));
+}
+
+#copyUrlPopup[linknode] > menuitem.urlpopup,
+#aboutPagesContext[linknode] > menuitem.urlpopup {
+  display: block;
+}
+
+#copyUrlPopup > menuitem.urlpopup,
+#aboutPagesContext > menuitem.urlpopup,
+#copyUrlPopup[linknode] > menuitem:not(.urlpopup),
+#aboutPagesContext[linknode] > menuitem:not(.urlpopup) {
+  display: none;
+}

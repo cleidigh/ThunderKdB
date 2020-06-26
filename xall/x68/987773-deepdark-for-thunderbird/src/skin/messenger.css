@@ -1,0 +1,1825 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/addons/addons.css");
+@import url("chrome://DeepdarkOverlay/skin/addons/lightning/lightning.css");
+@import url("chrome://DeepdarkOverlay/skin/chat.css");
+@import url("chrome://DeepdarkOverlay/skin/checkbox.css");
+@import url("chrome://DeepdarkOverlay/skin/customizeToolbar.css");
+@import url("chrome://DeepdarkOverlay/skin/dropmarker.css");
+@import url("chrome://DeepdarkOverlay/skin/editContactPanel.css");
+@import url("chrome://DeepdarkOverlay/skin/folderMenus.css");
+@import url("chrome://DeepdarkOverlay/skin/groupbox.css");
+@import url("chrome://DeepdarkOverlay/skin/menu.css");
+@import url("chrome://DeepdarkOverlay/skin/menulist.css");
+@import url("chrome://DeepdarkOverlay/skin/messageHeader.css");
+@import url("chrome://DeepdarkOverlay/skin/messageIcons.css");
+@import url("chrome://DeepdarkOverlay/skin/notification.css");
+@import url("chrome://DeepdarkOverlay/skin/numberinput.css");
+@import url("chrome://DeepdarkOverlay/skin/popup.css");
+@import url("chrome://DeepdarkOverlay/skin/progressmeter.css");
+@import url("chrome://DeepdarkOverlay/skin/radio.css");
+@import url("chrome://DeepdarkOverlay/skin/richlistbox.css");
+@import url("chrome://DeepdarkOverlay/skin/scrollbox.css");
+@import url("chrome://DeepdarkOverlay/skin/searchBox.css");
+@import url("chrome://DeepdarkOverlay/skin/shared/messenger.css");
+@import url("chrome://DeepdarkOverlay/skin/textbox.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+@import url("chrome://DeepdarkOverlay-OS/skin/menu.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/messenger.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/searchBox.css");
+
+
+/* :::::: ROOT ELEMENTS :::::: */
+
+window,
+page,
+dialog,
+wizard,
+wizard#AccountWizard{
+  -moz-appearance: none !important;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-arrowpanel-bg-color) !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+  font: message-box;
+}
+
+
+:root:-moz-lwtheme {
+  --toolbar-bgimage: none;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: TOOLBOX :::::: */
+
+#messengerWindow,
+#navigation-toolbox,
+#navigation-toolbox > #tabs-toolbar {
+  -moz-appearance: none;
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  background-color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+.mail-toolbox::after,
+.contentTabToolbox::after {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: TABS BAR :::::: */
+
+.tabmail-tab:not(:-moz-lwtheme),
+.tabmail-tab:-moz-lwtheme {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  text-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.tab-line[selected=true] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.tabmail-tab[selected="true"]:not(:-moz-lwtheme),
+.tabmail-tab[visuallyselected="true"],
+.tabmail-tab[visuallyselected="true"]:-moz-lwtheme {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+  text-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.tabmail-tab > .tab-stack > .tab-background[selected="true"],
+.tabmail-tab > .tab-stack > .tab-background[selected="true"]:-moz-lwtheme {
+  background-color: transparent;
+  background-image: none;
+}
+
+
+/* ::: Scrollbox arrows ::: */
+
+.tabmail-arrowscrollbox > .scrollbutton-up,
+.tabmail-arrowscrollbox > stack > .scrollbutton-down {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/arrow/arrow-autoscroll-lft.svg") !important;
+  -moz-context-properties: fill;
+  fill: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.tabmail-arrowscrollbox > .scrollbutton-up:not([disabled]):hover,
+.tabmail-arrowscrollbox > stack > .scrollbutton-down:not([disabled]):hover {
+/* DeepDark custom CSS - end */
+  background: var(--deepdark-btn-bg-color);
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.tabmail-arrowscrollbox > .scrollbutton-up:not([disabled]):active:hover,
+.tabmail-arrowscrollbox > stack > .scrollbutton-down:not([disabled]):active:hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color) !important;
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Tab separators ::: */
+
+.tabmail-tab[visuallyselected]::before,
+.tabmail-tab[visuallyselected]::after,
+.tabmail-tab[visuallyselected] + .tabmail-tab::before,
+.tabmail-tab::after,
+.tabmail-tab::before {
+/* DeepDark custom CSS */
+  opacity: 1;
+  border-left: 2px dotted var(--deepdark-separator-color);
+  margin-top: 8px;
+  margin-bottom: 7px;
+/* DeepDark custom CSS - end */
+}
+
+.tabmail-tab:not([selected="true"]):last-child:hover::after,
+.tabmail-tab:not([selected]) + .tabmail-tab:not([selected]):hover::before,
+.tabmail-tab:not([selected]):hover + .tabmail-tab:not([selected])::before,
+:root[tabsintitlebar]:not([extradragspace]) #mail-toolbar-menubar2[autohide="true"] ~ #tabs-toolbar > #tabmail-tabs > .tabmail-tab::after,
+:root[tabsintitlebar]:not([extradragspace]) #mail-toolbar-menubar2[autohide="true"] ~ #tabs-toolbar > #tabmail-tabs > .tabmail-tab::before {
+/* DeepDark custom CSS */
+  margin-top: 8px;
+  margin-bottom: 7px;
+/* DeepDark custom CSS - end */
+}
+
+.tabmail-tab:first-child::before,
+.tabmail-tab:first-child::after{
+/* DeepDark custom CSS */
+  opacity: 0;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Throbber ::: */
+
+#throbber-box[busy="true"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/loading-16.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+  width: 17px;
+  margin: 0 4px;
+/* DeepDark custom CSS - end */
+}
+
+alltabs-item[busy],
+.tab-throbber {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/loading.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 2dppx) {
+  #throbber-box[busy="true"] > image {
+  /* DeepDark custom CSS */
+	list-style-image: url("chrome://DeepdarkOverlay/skin/icons/loading.svg");
+    -moz-context-properties: fill;
+    fill: currentColor;
+    width: 17px;
+    margin: 0 4px;
+  /* DeepDark custom CSS - end */
+  }
+}
+
+.contentTabSecurity[loading="true"] {
+  /* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  background-image: url("chrome://DeepdarkOverlay/skin/icons/loading.svg");
+  background-size: 16px;
+  /* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 1.1dppx) {
+  #security-button[loading="true"] {
+  /* DeepDark custom CSS */
+    background-image: url("chrome://DeepdarkOverlay/skin/icons/loading.svg");
+  /* DeepDark custom CSS - end */
+  }
+}
+
+
+/* ::: Drag Indicator ::: */
+
+.tab-drop-indicator {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color);
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/dragIndicator.svg");
+  z-index: 3;
+/* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 2dppx) {
+  .tab-drop-indicator {
+	/* DeepDark custom CSS */
+    list-style-image: url("chrome://DeepdarkOverlay/skin/icons/dragIndicator.svg");
+    /* DeepDark custom CSS - end */
+    width: 9px;
+  }
+}
+
+
+/* ::: Url bar ::: */
+
+.nav-button:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.nav-button:not([disabled="true"]):active,
+.nav-button:not([disabled="true"]):active:hover {
+/* DeepDark custom CSS */
+  background-color: transparent !important;
+  fill: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Custom Favicons ::: */
+
+tab.tabmail-tab[label*="Gestionnaire de modules complémentaires"] image.tab-icon-image,
+tab.tabmail-tab[label*="Add-ons Manager"] image.tab-icon-image,
+tab.tabmail-tab[label*="Préférences"] image.tab-icon-image,
+tab.tabmail-tab[label*="Preferences"] image.tab-icon-image,
+tab.tabmail-tab[label*="about:preferences"] image.tab-icon-image,
+tab.tabmail-tab[label*="Options"] image.tab-icon-image {
+  visibility: hidden !important;  
+}
+
+tab.tabmail-tab[label*="Gestionnaire de modules complémentaires"]:not([busy]) .tab-content,
+tab.tabmail-tab[label*="Add-ons Manager"]:not([busy]) .tab-content,
+tab.tabmail-tab[label*="Préférences"]:not([busy]) .tab-content,
+tab.tabmail-tab[label*="Preferences"]:not([busy]) .tab-content,
+tab.tabmail-tab[label*="about:preferences"]:not([busy]) .tab-content,
+tab.tabmail-tab[label*="Options"]:not([busy]) .tab-content {
+  background-size: 16px 16px !important;
+  background-repeat: no-repeat !important;
+  background-position: 8px center !important;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+tab.tabbrowser-tab[label*="Gestionnaire de modules complémentaires"]:not([busy]) .tab-content:-moz-locale-dir(rtl),
+tab.tabbrowser-tab[label*="Add-ons Manager"]:not([busy]) .tab-content:-moz-locale-dir(rtl),
+tab.tabbrowser-tab[label*="Préférences"]:not([busy]) .tab-content:-moz-locale-dir(rtl),
+tab.tabbrowser-tab[label*="Preferences"]:not([busy]) .tab-content:-moz-locale-dir(rtl),
+tab.tabbrowser-tab[label*="about:preferences"]:not([busy]) .tab-content:-moz-locale-dir(rtl),
+tab.tabbrowser-tab[label*="Options"]:not([busy]) .tab-content:-moz-locale-dir(rtl) {
+  background-position: right 8px center !important;
+}
+
+/* Addons Manager */
+tab.tabmail-tab[label*="Gestionnaire de modules complémentaires"]:not([busy]) .tab-content,
+tab.tabmail-tab[label*="Add-ons Manager"]:not([busy]) .tab-content {
+  background-image: url("icons/addons.svg") !important;
+}
+
+/* Preferences */
+tab.tabmail-tab[label*="Préférences"]:not([busy]) .tab-content,
+tab.tabmail-tab[label*="Preferences"]:not([busy]) .tab-content,
+tab.tabmail-tab[label*="about:preferences"]:not([busy]) .tab-content,
+tab.tabmail-tab[label*="Options"]:not([busy]) .tab-content {
+  background-image: url("icons/options.svg") !important;
+}
+
+/* Chat */
+.tabmail-tab[type="chat"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/chat.svg");
+/* DeepDark custom CSS - end */
+}
+
+
+
+/* :::::: PRIMARY TOOLBAR :::::: */
+
+.mail-toolbox,
+#mail-toolbox:-moz-lwtheme,
+.contentTabToolbox {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.mail-toolbox:-moz-lwtheme,
+.contentTabToolbox:-moz-lwtheme {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1 {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  opacity: var(--deepdark-toolbarbutton-icon-fill-opacity);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1[disabled="true"] .toolbarbutton-text,
+.toolbarbutton-1[type="menu-button"] > .toolbarbutton-menubutton-button[disabled="true"] > .toolbarbutton-icon {
+  opacity: .4;
+}
+
+.toolbarbutton-1[disabled="true"],
+.toolbarbutton-1[disabled="true"] .toolbarbutton-text {
+/* DeepDark custom CSS */
+  opacity: var(--deepdark-disabled-toolbarbutton-icon-fill-opacity);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1[disabled="true"] .toolbarbutton-text,
+.toolbarbutton-1[type="menu-button"] > .toolbarbutton-menubutton-button[disabled="true"] > .toolbarbutton-icon,
+.toolbarbutton-1:-moz-window-inactive .toolbarbutton-icon {
+/* DeepDark custom CSS */
+  opacity: var(--deepdark-disabled-toolbarbutton-icon-fill-opacity);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1[disabled="true"] > .toolbarbutton-icon,
+.toolbarbutton-1[type="menu-button"] > .toolbarbutton-menubutton-button[disabled="true"] > .toolbarbutton-icon,
+.toolbarbutton-1[disabled="true"] > .toolbarbutton-menu-dropmarker,
+.toolbarbutton-1[disabled="true"] > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+.toolbarbutton-1:-moz-window-inactive > .toolbarbutton-menu-dropmarker,
+.toolbarbutton-1:-moz-window-inactive > .toolbarbutton-menu-dropmarker > .dropmarker-icon,
+.toolbarbutton-1:-moz-window-inactive > .toolbarbutton-menubutton-dropmarker > .dropmarker-icon,
+.toolbarbutton-menu-dropmarker[disabled="true"] > .dropmarker-icon {
+  opacity: .5;
+}
+
+.toolbarbutton-1:-moz-window-inactive[disabled="true"] > .toolbarbutton-icon,
+.toolbarbutton-1:-moz-window-inactive[type="menu-button"] > .toolbarbutton-menubutton-button[disabled="true"] > .toolbarbutton-icon {
+  opacity: .25;
+}
+
+#tabs-toolbar {
+  background-image: none;
+}
+
+toolbar:not(.inline-toolbar):not(.contentTabToolbar):not(:-moz-lwtheme) {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#notification-popup-box > image.notification-anchor-icon {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill, fill-opacity;
+  fill: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Buttons ::: */
+
+toolbar[brighttext] {
+/* DeepDark custom CSS */
+  --toolbarbutton-icon-fill-attention: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#ab-toolbox > toolbar:-moz-lwtheme,
+.mail-toolbox > toolbar:-moz-lwtheme,
+#compose-toolbox > toolbar:-moz-lwtheme,
+#navigation-toolbox > toolbar:-moz-lwtheme {
+/* DeepDark custom CSS */
+  --toolbarbutton-hover-background: var(--deepdark-btn-hover-color);
+  --toolbarbutton-active-background: var(--deepdark-border-color);
+  --toolbarbutton-checkedhover-backgroundcolor: var(--deepdark-border-color);
+/* DeepDark custom CSS - end */
+}
+
+:-moz-any(.chromeclass-toolbar, .chromeclass-menubar, #tabbar-toolbar)
+  .toolbarbutton-1:not([disabled="true"]):hover:-moz-lwtheme >
+  .toolbarbutton-menubutton-dropmarker {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+:-moz-any(.chromeclass-toolbar, .chromeclass-menubar, #tabbar-toolbar) .toolbarbutton-1[open="true"]:-moz-lwtheme > .toolbarbutton-menubutton-dropmarker:not([disabled="true"]) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-button {
+  background: none;
+  box-shadow: none !important;
+  color: inherit;
+  transition-property: background, border-color;
+  transition-duration: 250ms;
+  border: 1px solid transparent;
+/* DeepDark custom CSS */  
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([type="menu-button"]),
+.toolbarbutton-1 > .toolbarbutton-menubutton-button,
+.toolbarbutton-1 > .toolbarbutton-menubutton-dropmarker {
+  padding: 0 4px;
+  border: 1px transparent solid;
+  transition-property: background, border-color;
+  transition-duration: 250ms;
+  background-clip: padding-box;
+/* DeepDark custom CSS */
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.findbar-button:not(:-moz-any([checked="true"],[disabled="true"])):hover,
+.toolbarbutton-1:not([disabled="true"]):-moz-any(:hover,[open="true"]) > .toolbarbutton-menubutton-button,
+.toolbarbutton-1:not([disabled="true"]):hover > .toolbarbutton-menubutton-dropmarker,
+.toolbarbutton-1:not([type="menu-button"]):not([disabled="true"]):not([checked="true"]):not([open="true"]):not(:active):hover {
+/* DeepDark custom CSS */
+  border-color: transparent;
+  background: var(--deepdark-btn-hover-color);
+  box-shadow: none;
+  -moz-context-properties: fill;
+  fill: var(--deepdark-brightest-color);
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-button:not([disabled=true]):-moz-any([checked="true"],:hover:active),
+.toolbarbutton-1:not([disabled="true"]):-moz-any([open="true"]) > .toolbarbutton-menubutton-button,
+.toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled="true"]):hover:active,
+.toolbarbutton-1[open="true"] > .toolbarbutton-menubutton-dropmarker:not([disabled="true"]),
+.toolbarbutton-1[open="true"]:not([disabled="true"]),
+.toolbarbutton-1:not([type="menu-button"]):not([disabled="true"]):-moz-any([open="true"],[checked="true"],:hover:active) {
+  transition-duration: 10ms;
+/* DeepDark custom CSS */
+  border-color: transparent !important;
+  box-shadow: none !important;
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([disabled="true"]):-moz-any([open="true"]) > .toolbarbutton-menubutton-button,
+.toolbarbutton-1 > .toolbarbutton-menubutton-button:not([disabled="true"]):hover:active,
+.toolbarbutton-1[open="true"] > .toolbarbutton-menubutton-dropmarker:not([disabled="true"]),
+.toolbarbutton-1[open="true"]:not([disabled="true"]),
+.toolbarbutton-1:not([type="menu-button"]):not([disabled="true"]):-moz-any([open="true"],[checked="true"],:hover:active) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color) !important;
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.findbar-button:not([disabled=true]):-moz-any([checked="true"],:hover:active) {
+/* DeepDark custom CSS */
+  background: transparent !important;
+/* DeepDark custom CSS - end */ 
+}
+
+#miniday-dropdown-button > .toolbarbutton-menu-dropmarker > .dropmarker-icon,
+.toolbarbutton-menu-dropmarker > .dropmarker-icon {
+  -moz-appearance: none;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/arrow/arrow-dropdown-12.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+  padding-inline-start: 2px;
+  width: 12px !important;
+  height: auto !important;
+}
+
+.toolbarbutton-menu-dropmarker:-moz-window-inactive > .dropmarker-icon {
+/* DeepDark custom CSS */  
+  opacity: .4;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-button[checked="true"]:not(:active):hover,
+.toolbarbutton-1[checked="true"]:not(:active):hover {
+  transition: background-color 250ms;
+/* DeepDark custom CSS */  
+  background-color: var(--deepdark-darkest-color);
+  color: var(--deepdark-accent-color);
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#button-getmsg {
+/* DeepDark custom CSS */  
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/getmsg.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-newmsg,
+notification[value="draftMsgContent"] .messageImage,
+#newMsgButton-mail-menuitem {
+/* DeepDark custom CSS - end */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/newmsg.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+menupopup[is="folder-menupopup"] > menu,
+menupopup[is="folder-menupopup"] > menuitem {
+/* DeepDark custom CSS - end */
+  -moz-appearance: none !important;
+/* DeepDark custom CSS - end */ 
+}
+
+#appmenu_addressBook,
+#button-address,
+#qfb-inaddrbook {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/address.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-addons,
+#appmenu_addons,
+#appmenu_Add-Ons,
+.addons-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addons.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-reply,
+.hdrReplyButton,
+.hdrReplyToSenderButton,
+.hdrDummyReplyButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/reply.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-replyall,
+.hdrReplyAllButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/replyall.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-replylist,
+.hdrReplyListButton,
+.hdrFollowupButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/replylist.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-forward,
+.hdrForwardButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/forwarding.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+.delete-button,
+.hdrTrashButton,
+#appmenu_emptyTrash {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/delete.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+.junk-button,
+.hdrJunkButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/junk.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-file {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/file.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-mark,
+#qfb-unread {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/mark.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-tag,
+#qfb-tags {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/tag.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-goback {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/back.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-goforward {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/forward.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-archive,
+.hdrArchiveButton {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/archive.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-chat {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/chat.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#qfb-show-filter-bar,
+#palette-box #qfb-show-filter-bar,
+#appmenu_filters,
+#appmenu_filtersCmd {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/filter.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#qfb-sticky {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/sticky.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+.button-appmenu {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/menu.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+#appmenu_customize, #appmenu_preferences {
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/options.svg") !important;
+}
+
+#button-add-buddy {
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addcontact.svg") !important;
+}
+
+#button-join-chat {
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/join_chat.svg") !important;
+}
+
+#button-chat-accounts {
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/accounts.svg") !important;
+}
+
+#task-actions-category {
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/tag.svg") !important;
+}
+
+#calendar-delete-task-button {
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/delete.svg") !important;
+}
+/* DeepDark custom CSS - end */
+
+toolbar > #button-chat[unreadMessages="true"] {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbar[brighttext] > .toolbarbutton-1 {
+}
+
+/* Separator between menu and split type buttons */
+.toolbarbutton-1:not(:hover):not(:active):not([open]):not([checked="true"]) > .toolbarbutton-menubutton-dropmarker::before,
+.toolbarbutton-1[disabled="true"] > .toolbarbutton-menubutton-dropmarker::before {
+  content: "";
+  display: -moz-box;
+  width: 1px;
+  height: 18px;
+  margin-inline-start: -5px;
+  margin-inline-end: 4px;
+  margin-bottom: 2px;
+/* DeepDark custom CSS */
+  background: var(--deepdark-separator-color) padding-box;
+  box-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+
+
+/* :::::: MESSAGES BOX :::::: */
+
+/* ::: Quick Filter bar ::: */
+
+#quick-filter-bar-main-bar,
+#quick-filter-bar-main-bar:-moz-window-inactive,
+#quick-filter-bar-main-bar:-moz-lwtheme,
+#quick-filter-bar-main-bar:-moz-lwtheme:-moz-window-inactive,
+#quick-filter-bar-expando,
+#quick-filter-bar-expando:-moz-window-inactive {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+  background-image: none;
+/* DeepDark custom CSS - end */
+}
+
+#quick-filter-bar-expando,
+#quick-filter-bar-expando:-moz-window-inactive,
+#quick-filter-bar-expando:-moz-lwtheme,
+#quick-filter-bar-expando:-moz-lwtheme:-moz-window-inactive {
+/* DeepDark custom CSS */
+  border-bottom: 0 !important;
+/* DeepDark custom CSS - end */
+}
+
+#qfb-qs-textbox,
+#qfb-qs-textbox:not([focused="true"]):hover,
+#qfb-qs-textbox:-moz-lwtheme,
+#qfb-qs-textbox:-moz-lwtheme:not([focused="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--deepdark-large-radius) !important;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#qfb-qs-textbox[focused="true"],
+#qfb-qs-textbox[focused="true"]:hover,
+#qfb-qs-textbox:-moz-lwtheme[focused="true"],
+#qfb-qs-textbox:-moz-lwtheme[focused="true"]:hover {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-accent-color) !important;
+  background-color: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarseparator {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  margin: 3px 4px;
+  border-left: 2px dotted var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+#threadTree[filterActive="nomatches"] {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill, fill-opacity;
+  background-image: url("icons/search-not-found.svg");
+  background-size: 128px 128px;
+  fill-opacity: .15;
+/* DeepDark custom CSS - end */
+}
+
+
+
+/* ::: Splitter ::: */
+
+#folderpane_splitter {
+/* DeepDark custom CSS */
+  border-inline-start: 1px solid rgb(5,5,5);
+/* DeepDark custom CSS - end */
+}
+
+#folderpane_splitter[state="collapsed"]:hover {
+/* DeepDark custom CSS */
+  border-inline-start: 4px solid var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#threadpane-splitter[state="collapsed"]:hover,
+#attachment-splitter[state="collapsed"]:hover {
+/* DeepDark custom CSS */
+  border-bottom: 4px solid var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderpane_splitter {
+/* DeepDark custom CSS */
+  margin-inline-end: -5px;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: FOLDER TREE + THREAD TREE ::: */
+
+tree {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-tree-bg-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderPane-toolbar,
+#folderPane-toolbar:-moz-window-inactive {
+/* DeepDark custom CSS */
+  background: var(--deepdark-splitter-bg-color);
+  border-bottom: 1px solid var(--deepdark-darkest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-indentation {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#threadpane-splitter:not([orient="vertical"]) {
+/* DeepDark custom CSS */
+  border-inline-end: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderTree {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-font-smoothing-background-color: var(--deepdark-splitter-bg-color);
+  background-color: var(--deepdark-splitter-bg-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderTree:-moz-window-inactive {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-splitter-bg-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree] #threadTree treechildren::-moz-tree-cell-text(untagged),
+:root[lwt-tree-brighttext] #threadTree treechildren::-moz-tree-cell-text(untagged),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text,
+:root[lwt-tree-brighttext] tree:not(#threadTree) treechildren::-moz-tree-cell-text {
+/* DeepDark custom CSS */
+  color: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-cell-text(hover),
+#threadTree treechildren::-moz-tree-cell-text(untagged, hover) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-cell-text(selected),
+#threadTree treechildren::-moz-tree-cell-text(untagged, selected),
+:root[lwt-tree] #threadTree treechildren::-moz-tree-cell-text(untagged, selected),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text(selected),
+:root:-moz-window-inactive #threadTree treechildren::-moz-tree-cell-text(untagged, selected),
+:root[lwt-tree]:-moz-window-inactive #threadTree treechildren::-moz-tree-cell-text(untagged, selected),
+:root[lwt-tree-brighttext] #threadTree treechildren::-moz-tree-cell-text(untagged, selected),
+:root[lwt-tree-brighttext] tree:not(#threadTree) treechildren::-moz-tree-cell-text(selected),
+:root[lwt-tree-brighttext]:-moz-window-inactive #threadTree treechildren::-moz-tree-cell-text(untagged, selected) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-cell-text(selected, focus),
+#threadTree treechildren::-moz-tree-cell-text(untagged, selected, current, focus),
+:root:-moz-window-inactive #threadTree treechildren::-moz-tree-cell-text(untagged, selected, current, focus),
+:root[lwt-tree] #threadTree treechildren::-moz-tree-cell-text(untagged, selected, current, focus),
+#threadTree treechildren::-moz-tree-cell-text(untagged, selected, focus),
+:root:-moz-window-inactive #threadTree treechildren::-moz-tree-cell-text(untagged, selected, focus),
+:root:-moz-window-inactive #threadTree treechildren::-moz-tree-cell-text(untagged, selected, hover),
+:root[lwt-tree-brighttext] #threadTree treechildren::-moz-tree-cell-text(untagged, selected, focus),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text(selected, focus),
+:root[lwt-tree-brighttext] tree:not(#threadTree) treechildren::-moz-tree-cell-text(selected, focus) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree] #folderTree[id] > treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, biffState-NewMail, selected),
+:root[lwt-tree] #folderTree[id] > treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true, selected),
+:root[lwt-tree] #folderTree[id] > treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true, selected),
+:root[lwt-tree] #folderTree[id] > treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, biffState-NewMail, selected, focus),
+:root[lwt-tree] #folderTree[id] > treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true, selected, focus),
+:root[lwt-tree] #folderTree[id] > treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true, selected, focus),
+:root[lwt-default-theme-in-dark-mode] #folderTree[id]:-moz-lwtheme-brighttext treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, biffState-NewMail),
+:root[lwt-default-theme-in-dark-mode] #folderTree[id]:-moz-lwtheme-brighttext treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true),
+:root[lwt-default-theme-in-dark-mode] #folderTree[id]:-moz-lwtheme-brighttext treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-newmail-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+tree treechildren::-moz-tree-cell-text(subfoldersHaveUnreadMessages-true),
+tree treechildren::-moz-tree-cell-text(hasUnreadMessages-true), 
+tree treechildren::-moz-tree-cell-text(untagged,unread),
+:root[lwt-tree] tree treechildren::-moz-tree-cell-text(subfoldersHaveUnreadMessages-true),
+:root[lwt-tree] tree treechildren::-moz-tree-cell-text(hasUnreadMessages-true), 
+:root[lwt-tree] tree treechildren::-moz-tree-cell-text(untagged,unread),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text(subfoldersHaveUnreadMessages-true, selected),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text(hasUnreadMessages-true, selected), 
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text(unread, selected),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text(subfoldersHaveUnreadMessages-true, selected, focus),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text(hasUnreadMessages-true, selected, focus), 
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-cell-text(unread, selected, focus) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#threadTree:-moz-locale-dir(ltr) treechildren::-moz-tree-row(multicol, odd) {
+/* DeepDark custom CSS */
+  background-image: linear-gradient(to right, var(--deepdark-odd-tree-row-bg-color) 80%, var(--deepdark-tree-bg-color));
+/* DeepDark custom CSS - end */
+}
+
+#threadTree:-moz-locale-dir(rtl) treechildren::-moz-tree-row(multicol, odd) {
+/* DeepDark custom CSS */
+  background-image: linear-gradient(to left, var(--deepdark-odd-tree-row-bg-color) 80%, var(--deepdark-tree-bg-color));
+/* DeepDark custom CSS - end */
+}
+
+#threadTree:-moz-locale-dir(ltr) treechildren::-moz-tree-row(multicol, odd, hover),
+#threadTree:-moz-locale-dir(rtl) treechildren::-moz-tree-row(multicol, odd, hover),
+#threadTree treechildren::-moz-tree-row(hover),
+#folderTree treechildren::-moz-tree-row(hover) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-hovered-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-row(selected),
+#threadTree treechildren::-moz-tree-row(untagged, selected),
+:root[lwt-tree] #threadTree treechildren::-moz-tree-row(untagged, selected),
+:root[lwt-tree] tree:not(#threadTree) treechildren::-moz-tree-row(selected),
+:root[lwt-tree]:-moz-window-inactive #threadTree treechildren::-moz-tree-row(untagged, selected),
+:root[lwt-tree-brighttext] #threadTree treechildren::-moz-tree-row(untagged, selected),
+:root[lwt-tree-brighttext] tree:not(#threadTree) treechildren::-moz-tree-row(selected),
+:root:-moz-window-inactive #threadTree[id] treechildren::-moz-tree-row(selected),
+:root[lwt-tree-brighttext]:-moz-window-inactive #threadTree treechildren::-moz-tree-row(untagged, selected) {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-font-smoothing-background-color: var(--deepdark-selected-tree-row-bg-color);
+  border-color: transparent !important;
+  background: var(--deepdark-selected-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+#folderTree treechildren::-moz-tree-row(current,focus),
+#threadTree treechildren::-moz-tree-row(current,focus) {
+  border: 1px dashed rgba(249,249,250,.5) !important;
+}
+
+#folderTree treechildren::-moz-tree-row(current,selected,focus),
+#threadTree treechildren::-moz-tree-row(current,selected,focus) {
+  border: 1px dashed transparent !important;
+}
+/* DeepDark custom CSS - end */
+
+#folderTree treechildren::-moz-tree-row(selected, focus),
+#threadTree treechildren::-moz-tree-row(untagged, selected, focus),
+:root[lwt-tree] #threadTree treechildren::-moz-tree-row(untagged, selected, focus),
+:root[lwt-tree]:-moz-window-inactive #threadTree treechildren::-moz-tree-row(untagged, selected, focus),
+:root[lwt-tree-brighttext] #threadTree treechildren::-moz-tree-row(untagged, selected, focus),
+:root:-moz-window-inactive #threadTree treechildren::-moz-tree-row(untagged, selected, focus),
+:root[lwt-tree-brighttext]:-moz-window-inactive #threadTree treechildren::-moz-tree-row(untagged, selected, focus) {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-font-smoothing-background-color: var(--deepdark-focus-tree-row-bg-color) !important;
+  background: var(--deepdark-focus-tree-row-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#threadTree treechildren::-moz-tree-row(tagged, selected, odd) {
+/* DeepDark custom CSS */
+  background-image: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-image(hover) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+#threadTree treechildren::-moz-tree-image(untagged, selected),
+#folderTree treechildren::-moz-tree-image(selected) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-image(subfoldersHaveUnreadMessages-true, selected),
+#folderTree treechildren::-moz-tree-image(hasUnreadMessages-true, selected), 
+#folderTree treechildren::-moz-tree-image(unread, selected) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+#threadContentArea > #threadTree {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-tree-bg-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderTree > treechildren::-moz-tree-image(folderNameCol, specialFolder-Junk),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Junk) {
+  opacity: 0.5;
+}
+
+#folderTree > treechildren::-moz-tree-image(folderNameCol, specialFolder-Junk, selected),
+#folderTree > treechildren::-moz-tree-image(folderNameCol, specialFolder-Junk, hover),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Junk, selected) ,
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Junk, hover) {
+  opacity: 1;
+}
+
+#folderTree > treechildren::-moz-tree-image(folderNameCol, serverIsPaused),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, serverIsPaused),
+#folderTree > treechildren::-moz-tree-image(folderNameCol, isPaused),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, isPaused) {
+  opacity: 0.4;
+}
+
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true),
+#folderTree > treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-row(tagged, selected, current),
+treechildren::-moz-tree-row(tagged, selected, focus) {
+/* DeepDark custom CSS */
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+#threadTree treechildren::-moz-tree-row(selected, current),
+#threadTree treechildren::-moz-tree-row(selected) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree-brighttext]:-moz-window-inactive #threadTree treechildren::-moz-tree-row(selected, current),
+:root[lwt-tree-brighttext]:-moz-window-inactive #threadTree treechildren::-moz-tree-row(selected) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree-brighttext] #threadTree treechildren::-moz-tree-row(selected, focus) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-focus-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#logTree[id] treechildren::-moz-tree-row(selected, current) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-selected-tree-row-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#logTree[id] treechildren::-moz-tree-row(selected, current, focus) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-focus-tree-row-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderTree {
+/* DeepDark custom CSS */
+  scrollbar-color: rgba(249,249,250,.35) var(--deepdark-splitter-bg-color);
+/* DeepDark custom CSS - end */  
+}
+
+
+/* Group Rows */
+
+treechildren::-moz-tree-row(dummy) {
+  margin: 0 1px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: transparent !important;
+  border: 1px solid transparent;
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+treechildren::-moz-tree-row(dummy, hover) {
+  background-color: var(--deepdark-hovered-tree-row-bg-color) !important;
+}
+/* DeepDark custom CSS - end */
+
+treechildren::-moz-tree-row(dummy, selected) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-row(dummy, focus, selected) {
+  background-image: none !important;
+  margin: 0px;
+  padding: 0 1px;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-focus-tree-row-bg-color) !important;
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+treechildren::-moz-tree-cell-text(dummy, hover) {
+  color: var(--deepdark-brightest-color) !important;
+}
+
+treechildren::-moz-tree-cell-text(dummy, selected) {
+  color: var(--deepdark-accent-color) !important;
+}
+
+tree[seltype="cell"] > treechildren::-moz-tree-line(untagged,selected),
+tree[seltype="text"] > treechildren::-moz-tree-line(untagged,selected),
+treechildren::-moz-tree-line(untagged,selected) {
+  border: 1px dotted var(--deepdark-accent-color) !important;
+}
+/* DeepDark custom CSS - end */
+
+
+/* Tree Folder Icons */
+
+.tabmail-tab[type="folder"] {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(folderNameCol) {
+  margin-inline-end: 4px;
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 16px 16px 0);
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+treechildren::-moz-tree-image(folderNameCol,selected) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(folderNameCol, newMessages-true) {
+/* DeepDark custom CSS */
+  /*fill: var(--deepdark-newmail-color);*/
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(folderNameCol, newMessages-true) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+/* News Folders */
+.tabmail-tab[type="folder"][ServerType="nntp"],
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp) {
+  -moz-image-region: rect(0 160px 16px 144px);
+}
+
+/* Feed Folders */
+treechildren::-moz-tree-image(folderNameCol, isFeed-true) {
+  list-style-image: url("icons/rss-feed.svg");
+  -moz-image-region: rect(0 16px 16px 0);
+  width: 16px;
+  height: 16px;
+}
+
+.tabmail-tab[type="folder"][IsFeedFolder="true"],
+treechildren::-moz-tree-image(folderNameCol, isFeedFolder-true) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 224px 16px 208px);
+  width: 16px;
+  height: 16px;
+}
+
+treechildren::-moz-tree-image(folderNameCol, serverIsPaused),
+treechildren::-moz-tree-cell-text(folderNameCol, serverIsPaused),
+treechildren::-moz-tree-image(folderNameCol, isPaused),
+treechildren::-moz-tree-cell-text(folderNameCol, isPaused) {
+  opacity: 0.4;
+}
+
+treechildren::-moz-tree-image(folderNameCol, closed, isBusy),
+treechildren::-moz-tree-image(folderNameCol, leaf, isBusy) {
+  list-style-image: url("icons/status.svg");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+treechildren::-moz-tree-image(folderNameCol, closed, hasError),
+treechildren::-moz-tree-image(folderNameCol, leaf, hasError) {
+  list-style-image: url("icons/error-16.svg");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+/* Inbox */
+.tabmail-tab[type="folder"][SpecialFolder="Inbox"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+/* Sent */
+.tabmail-tab[type="folder"][SpecialFolder="Sent"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Sent) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+/* Unsent */
+.tabmail-tab[type="folder"][SpecialFolder="Outbox"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Outbox) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+/* Drafts */
+.tabmail-tab[type="folder"][SpecialFolder="Drafts"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Drafts) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+/* Templates */
+.tabmail-tab[type="folder"][SpecialFolder="Templates"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Templates) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 112px 16px 96px);
+}
+
+/* Junk */
+.tabmail-tab[type="folder"][SpecialFolder="Junk"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Junk) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 128px 16px 112px);
+}
+
+/* Trash */
+.tabmail-tab[type="folder"][SpecialFolder="Trash"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Trash) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 144px 16px 128px);
+}
+
+/* Saved Search Folder */
+.tabmail-tab[type="folder"][SpecialFolder="Virtual"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual) {
+  list-style-image: url("icons/folder-pane.svg");
+  -moz-image-region: rect(0 176px 16px 160px);
+}
+
+/* Archive Folder */
+.tabmail-tab[type="folder"][SpecialFolder="Archive"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Archive) {
+  list-style-image: url("icons/folder-pane.svg") !important;
+  -moz-image-region: rect(0 208px 16px 192px) !important;
+}
+
+/* Account nodes */
+.tabmail-tab[type="folder"][IsServer="true"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true),
+treechildren::-moz-tree-image(folderNameCol, isServer-true, biffState-NewMail) {
+  list-style-image: url("icons/server.svg");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+/* Secure IMAP/POP account nodes */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="imap"][IsSecure="true"],
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="pop3"][IsSecure="true"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-pop3, isSecure-true),
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-imap, isSecure-true) {
+  list-style-image: url("icons/server.svg");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+/* Local folders */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="none"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-none) {
+  list-style-image: url("icons/server.svg");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+/* News Folders */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="nntp"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp) {
+  list-style-image: url("icons/server.svg");
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+/* Secure news server */
+.folderMenuItem[IsServer="true"][ServerType="nntp"][IsSecure="true"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp, isSecure-true) {
+  list-style-image: url("icons/server.svg");
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+/* Feed Folders */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="rss"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-rss) {
+  list-style-image: url("icons/server.svg");
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+
+/* All Servers */
+:root[lwt-tree-brighttext] #folderTree[id] treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, biffState-NewMail),
+:root[lwt-tree-brighttext] #folderTree[id] treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true),
+:root[lwt-tree-brighttext] #folderTree[id] treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true),
+#folderTree[id] treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, biffState-NewMail),
+#folderTree[id] treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true),
+#folderTree[id] treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true),
+treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, biffState-NewMail),
+treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true),
+treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  font-weight: bold;
+/* DeepDark custom CSS */
+  color: var(--deepdark-newmail-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+treechildren::-moz-tree-image(folderNameCol, isServer-true, biffState-NewMail),
+treechildren::-moz-tree-image(folderNameCol, newMessages-true),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  -moz-context-properties: fill;
+  fill: var(--deepdark-newmail-color) !important;
+}/* DeepDark custom CSS - end */
+
+treechildren::-moz-tree-cell-text(subfoldersHaveUnreadMessages-true) {
+  font-weight: bold;
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-cell-text(hasUnreadMessages-true) {
+  font-weight: bold;
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+treechildren::-moz-tree-image(subfoldersHaveUnreadMessages-true),
+treechildren::-moz-tree-image(hasUnreadMessages-true) {
+  -moz-context-properties: fill;
+  fill: var(--deepdark-brightest-color);
+}/* DeepDark custom CSS - end */
+
+treechildren::-moz-tree-cell-text(folderNameCol, noSelect-true) {
+  font-style: italic;
+/* DeepDark custom CSS */
+  color: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-cell-text(subfoldersHaveUnreadMessages-true, folderNameCol, noSelect-true),
+treechildren::-moz-tree-cell-text(hasUnreadMessages-true, folderNameCol, noSelect-true) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* Drop feedback */
+
+#folderTree treechildren::-moz-tree-cell(dropOn) {
+/* DeepDark custom CSS */
+  background-image: none !important;
+  background-color: transparent;
+  border-radius: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-row(dropOn) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-cell-text(dropOn) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+  background: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-image(dropOn) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Twisty ::: */
+
+#folderTree > treechildren::-moz-tree-twisty {
+  -moz-appearance: none;
+  padding-inline-start: 5px;
+  padding-inline-end: 5px;
+  padding-top: 1px;
+  width: 9px;
+  fill: currentColor;
+  list-style-image: url("chrome:icons/twisty-clsd.svg");
+}
+
+#folderTree > treechildren::-moz-tree-twisty(hover) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderTree > treechildren::-moz-tree-twisty(selected),
+#folderTree > treechildren::-moz-tree-twisty(selected, focus) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#folderTree > treechildren::-moz-tree-twisty(open) {
+  -moz-appearance: none;
+  list-style-image: url("chrome:icons/twisty-open.svg");
+}
+
+
+
+/* :::::: FINDBAR :::::: */
+
+:root:not([lwtheme-image]) findbar:-moz-lwtheme {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-splitter-bg-color);
+  background-image: none;
+  border-top: 1px solid var(--deepdark-darkest-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.findbar-textbox:-moz-lwtheme:-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-fields-bg-color);
+  color: var(--deepdark-content-color);
+  border-radius: var(--deepdark-large-radius) 0 0 var(--deepdark-large-radius);
+  border-color: transparent;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-textbox:-moz-lwtheme:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  border-radius: 0 var(--deepdark-large-radius) var(--deepdark-large-radius) 0;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-textbox[focused="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  border: 1px solid var(--deepdark-accent-color) !important;
+  color: var(--deepdark-accent-color) !important;
+  fill: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-textbox[status="notfound"] {
+/* DeepDark custom CSS */
+  color: white !important;
+  background-color: var(--deepdark-red-color-a25) !important;
+  border-color: var(--deepdark-red-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-textbox[flash="true"] {
+/* DeepDark custom CSS */
+  color: black !important;
+  background-color: var(--deepdark-yellow-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-find-next:-moz-lwtheme,
+.findbar-find-previous:-moz-lwtheme {
+/* DeepDark custom CSS */
+  border-color: transparent;
+  background-color: var(--deepdark-fields-bg-color);
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-find-next:-moz-lwtheme:not([disabled="true"]):hover,
+.findbar-find-previous:-moz-lwtheme:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.findbar-find-next:-moz-lwtheme:not([disabled="true"]):active:hover,
+.findbar-find-previous:-moz-lwtheme:not([disabled="true"]):active:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color);
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.findbar-find-next:-moz-lwtheme[disabled="true"],
+.findbar-find-previous:-moz-lwtheme[disabled="true"] {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.findbar-find-next-moz-lwtheme:-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  border-radius: 0 var(--deepdark-large-radius) var(--deepdark-large-radius) 0;
+/* DeepDark custom CSS - end */
+}
+
+.findbar-find-next:-moz-lwtheme:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  border-radius: var(--deepdark-large-radius) 0 0 var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: STATUS BAR :::::: */
+
+statusbarpanel,
+.statusbarpanel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -moz-box-align: center;
+  -moz-box-pack: center;
+  padding: 0 4px;
+}
+
+#status-bar:not(:-moz-lwtheme),
+#status-bar:-moz-lwtheme {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+  background-image: none;
+  color: var(--deepdark-content-color);
+  border-top: 1px solid var(--deepdark-darkest-color);
+  text-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#offline-status {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color);
+  list-style-image: url("icons/online.svg");
+/* DeepDark custom CSS - end */
+}
+
+#offline-status[offline="true"] {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-disabled-content-color);
+  list-style-image: url("icons/offline.svg");
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Quota Meter ::: */
+
+#quotaMeter {
+  min-width: 8em;
+  max-width: 8em;
+/* DeepDark custom CSS */
+  border: 0;
+  border-radius: var(--deepdark-large-radius);
+  background-color: var(--deepdark-progress-remainder-color);
+/* DeepDark custom CSS - end */
+}
+
+#quotaPanel ::-moz-progress-bar {
+  -moz-appearance: none;
+/* DeepDark custom CSS */  
+  background-color: var(--deepdark-quotapanel-color);
+  opacity: 1;
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+#quotaPanel[alert="warning"] ::-moz-progress-bar {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-quotapanel-warning-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#quotaPanel[alert="critical"] ::-moz-progress-bar {
+/* DeepDark custom CSS */
+  opacity: 1;
+  background-color: var(--deepdark-red-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#quotaLabel {
+  text-align: center;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  color: black;
+}
+
+
+/* :::::: MISCELANEOUS :::::: */
+
+::-moz-selection {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-brightest-color) !important;
+  background: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.close-icon > .button-icon,
+.close-icon > .button-box > .button-icon,
+.close-icon > .toolbarbutton-icon {
+/* DeepDark custom CSS */
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+#widget-overflow-mainView > .panel-subview-body > toolbarseparator,
+.PanelUI-subView menuseparator, .PanelUI-subView toolbarseparator,
+.cui-widget-panelview menuseparator, .cui-widget-panel toolbarseparator {
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.PanelUI-subView toolbarseparator[orient="vertical"] {
+/* DeepDark custom CSS */
+  border-inline-start: 1px solid var(--deepdark-separator-color) !important;
+  border-top: 0px !important;
+/* DeepDark custom CSS - end */
+}
+
+.subviewbutton[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-header {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbaritem-combined-buttons:-moz-any(:not([cui-areatype="toolbar"]),[overflowedItem=true]) > separator {
+/* DeepDark custom CSS */
+  background: var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+@keyframes highlight {
+/* DeepDark custom CSS */
+  from { background-color: var(--deepdark-accent-color); }
+  to { background-color: transparent; }
+/* DeepDark custom CSS - end */
+}
+
+.thead-level2 > th {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.text-link {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#accountlist {
+/* DeepDark custom CSS */
+  border-bottom-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+#accountCentralBox {
+/* DeepDark custom CSS */
+  border-bottom: 0 !important;
+/* DeepDark custom CSS  - end */
+}
+
+notification > hbox > button {
+  margin: 0 3px;
+  min-width: 60px;
+  min-height: 16px;
+  -moz-appearance: none;
+/* DeepDark custom CSS */
+  padding: 5px 10px;
+  color: var(--deepdark-brightest-color) !important;
+  text-shadow: none;
+  border-radius: var(--deepdark-border-radius);
+  border: 0;
+  background: rgba(0,0,0,.25);
+  box-shadow: none;
+  transition-property: background, border-color;
+  transition-duration: 250ms;
+  background-clip: padding-box;
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button:hover {
+/* DeepDark custom CSS */
+  background: rgba(0,0,0,.15);
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button:not([disabled="true"]):hover:active {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+  fill: var(--deepdark-brightest-color);
+  background: rgba(0,0,0,.35) !important;
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button:-moz-focusring {
+/* DeepDark custom CSS */
+  box-shadow: var(--deepdark-focus-ring-box-shadow);
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button:hover:active:-moz-focusring {
+/* DeepDark custom CSS */
+  box-shadow: var(--deepdark-focus-ring-box-shadow);
+/* DeepDark custom CSS - end */
+}
+
+.nav-button {
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/navigation.svg);
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: LIGHTNING :::::: */
+
+#calendar-edit-button,
+#task-edit-button {
+  list-style-image: url("chrome:icons/newmsg.svg");
+}
+
+#calendar-delete-button,
+#task-delete-button {
+  list-style-image: url("chrome:icons/delete.svg");
+}
+
+#calendar-unifinder-button {
+  list-style-image: url("chrome:icons/search-glass.svg");
+}
+
+.imipRescheduleButton,
+.imipUpdateButton {
+  list-style-image: url("chrome:icons/sync.svg");
+}
+
+.imipDeleteButton {
+  list-style-image: url("chrome:icons/delete.svg");
+}

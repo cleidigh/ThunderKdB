@@ -1,0 +1,30 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+#cnghdrs {
+  overflow: auto;
+  min-width: 48em;
+  min-height: 21em;
+}
+
+#cnghdrs html|input[readonly] {
+  opacity: 0.5;
+}
+
+.tright {
+  text-align: right;
+}
+
+#cnghdrs2 {
+  display: flex;
+  overflow: auto;
+  min-width: 64em;
+  min-height: 32em;
+}
+
+#cnghdrs2 html|textarea {
+  height: auto;
+  width: -moz-available;
+  margin: 0 2px 6px 4px;
+  padding-inline-start: 2px;
+}

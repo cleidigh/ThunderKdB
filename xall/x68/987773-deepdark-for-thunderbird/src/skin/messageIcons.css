@@ -1,0 +1,342 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* ..... thread column ..... */
+
+.threadColumnHeader {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/column-headers.svg);
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+treechildren::-moz-tree-image(threadCol, container) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/threadpane-col.svg);
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(threadCol, container, focus, selected) {
+  -moz-image-region: rect(16px 16px 32px 0);
+}
+
+treechildren::-moz-tree-image(threadCol, container, hasUnread) {
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+treechildren::-moz-tree-image(threadCol, container, hasUnread, focus, selected) {
+  -moz-image-region: rect(16px 32px 32px 16px);
+}
+
+/* ..... read column ..... */
+
+.readColumnHeader {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/column-headers.svg);
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/threadpane-col.svg);
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader, focus, selected) {
+  -moz-image-region: rect(16px 48px 32px 32px);
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader, unread) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/unreadmail.svg") !important;
+/* DeepDark custom CSS - end */
+  -moz-image-region: auto !important; 
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader, unread, selected, focus) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/unreadmail.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(subjectCol, replied) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/symbol-replied.svg) !important;
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0, 16px, 16px, 0) !important;
+}
+
+treechildren::-moz-tree-image(subjectCol, replied, focus, selected) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/symbol-replied.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(subjectCol, forwarded) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/symbol-forwarded.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(subjectCol, forwarded, focus, selected) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/symbol-forwarded.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(subjectCol, replied, forwarded) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/symbol-replied-forwarded.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(subjectCol, replied, forwarded, focus, selected) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/symbol-replied-forwarded.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+/* ..... attachment column ..... */
+
+.attachmentColumnHeader {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/attachment-col.svg);
+/* DeepDark custom CSS - end */
+  padding-inline-start: 2px;
+  padding-inline-end: 3px;
+}
+
+treechildren::-moz-tree-image(attachmentCol, attach) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/attachment-col.svg);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(attachmentCol, attach, focus, selected) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/attachment-selected.svg);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(attachmentCol),
+#threadCols > .attachmentColumnHeader > .treecol-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ..... flag column ..... */
+
+.flagColumnHeader {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/column-headers.svg);
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+treechildren::-moz-tree-image(flaggedCol) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/threadpane-col.svg);
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+treechildren::-moz-tree-image(flaggedCol, focus, selected) {
+  -moz-image-region: rect(16px 48px 32px 32px);
+}
+
+treechildren::-moz-tree-image(flaggedCol, flagged) {
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+treechildren::-moz-tree-image(flaggedCol, flagged, focus, selected) {
+  -moz-image-region: rect(16px 80px 32px 64px);
+}
+
+/* ..... junkStatus column ..... */
+
+.junkStatusHeader {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/column-headers.svg);
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 48px 16px 32px);
+  padding-inline-start: 2px;
+}
+
+/* "unknown" now looks like "not junk".  see bug #182386 */
+treechildren::-moz-tree-image(junkStatusCol) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/threadpane-col.svg);
+/* DeepDark custom CSS - end */
+  /*-moz-image-region: rect(0 96px 16px 80px);*/
+
+  margin-inline-start: 1px;
+/* DeepDark custom CSS */
+  -moz-image-region: rect(0 48px 16px 32px);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(junkStatusCol, junk) {
+/* DeepDark custom CSS */
+  opacity: 1;
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/threadpane-col.svg);
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(16px 96px 32px 80px);
+}
+
+/* ..... correspondent column ..... */
+
+#correspondentCol {
+  padding-inline-start: 20px;
+}
+
+#threadTree:-moz-locale-dir(ltr)
+  > treechildren::-moz-tree-image(correspondentCol, outgoing, focus, selected) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/correspondents.svg#right-selected);
+/* DeepDark custom CSS - end */
+}
+
+#threadTree:-moz-locale-dir(rtl)
+  > treechildren::-moz-tree-image(correspondentCol, outgoing, focus, selected) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/correspondents.svg#left-selected);
+/* DeepDark custom CSS - end */
+}
+
+/* ..... subject column ..... */
+
+#subjectCol {
+  padding-inline-start: 13px;
+}
+
+#subjectCol[primary="true"] {
+  padding-inline-start: 30px;
+}
+
+treechildren::-moz-tree-image(subjectCol) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/symbol-null.png);
+/* DeepDark custom CSS - end */
+  margin: 0;
+  padding: 0;
+}
+
+treechildren::-moz-tree-image(subjectCol, imapdeleted) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/symbol-imapdeleted.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(subjectCol, imapdeleted, focus, selected) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/symbol-imapdeleted.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+
+treechildren::-moz-tree-image(subjectCol, news) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(subjectCol, news, attach) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(subjectCol, news, attach, offline) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(subjectCol, news, new) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(subjectCol, news, new, attach) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(subjectCol, new) {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-newmail-color);
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/new.svg);
+  -moz-image-region: rect(0 16px 16px 0px);
+/* DeepDark custom CSS - end */
+}
+
+/* ..... new thread icons for watch and ignore ..... */
+
+treechildren::-moz-tree-image(threadCol, watch) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/thread-closed-eye.svg) !important;
+/* DeepDark custom CSS - end */
+  -moz-image-region: auto !important;
+}
+
+treechildren::-moz-tree-image(threadCol, ignore) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/thread-closed-kill.svg) !important;
+/* DeepDark custom CSS - end */
+  -moz-image-region: auto !important;
+}
+
+treechildren::-moz-tree-image(threadCol, ignoreSubthread) {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/message-closed-kill.svg) !important;
+/* DeepDark custom CSS - end */
+  -moz-image-region: auto !important;
+}
+
+.junkStatusHeader,
+.flagColumnHeader,
+.readColumnHeader,
+.threadColumnHeader,
+.attachmentColumnHeader,
+treechildren::-moz-tree-image(unreadButtonColHeader),
+treechildren::-moz-tree-image(attachmentCol, attach),
+treechildren::-moz-tree-image(threadCol, container),
+treechildren::-moz-tree-image(threadCol, container, hasUnread),
+treechildren::-moz-tree-image(subjectCol, replied),
+treechildren::-moz-tree-image(subjectCol, forwarded),
+treechildren::-moz-tree-image(subjectCol, replied, forwarded),
+treechildren::-moz-tree-image(subjectCol, imapdeleted),
+treechildren::-moz-tree-image(threadCol, ignoreSubthread),
+treechildren::-moz-tree-image(junkStatusCol),
+treechildren::-moz-tree-image(flaggedCol),
+treechildren::-moz-tree-image(flaggedCol, flagged) {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader, unread) {
+  -moz-context-properties: fill;
+/* DeepDark custom CSS */
+  fill: var(--deepdark-newmail-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(junkStatusCol, junk),
+treechildren::-moz-tree-image(attachmentCol, attach, focus, selected),
+treechildren::-moz-tree-image(unreadButtonColHeader, unread, selected, focus),
+treechildren::-moz-tree-image(subjectCol, replied, focus, selected),
+treechildren::-moz-tree-image(subjectCol, forwarded, focus, selected),
+treechildren::-moz-tree-image(subjectCol, replied, forwarded, focus, selected),
+treechildren::-moz-tree-image(subjectCol, imapdeleted, focus, selected),
+treechildren::-moz-tree-image(flaggedCol, focus, selected),
+treechildren::-moz-tree-image(flaggedCol, flagged, focus, selected),
+treechildren::-moz-tree-image(threadCol, container, focus, selected),
+treechildren::-moz-tree-image(threadCol, container, hasUnread, focus, selected) {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}

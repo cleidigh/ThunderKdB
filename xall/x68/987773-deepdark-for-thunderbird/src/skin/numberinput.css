@@ -1,0 +1,31 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* ===== numberbox.css ==================================================
+  == Styles used by the XUL textbox type="number" element.
+  ======================================================================= */
+
+:root input[type="number"],
+:root input[type="number"]::-moz-number-wrapper {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+  border-radius: var(--deepdark-large-radius) !important;
+  border-color: transparent !important;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+:root input[type="number"]:focus,
+:root input[type="number"]::-moz-number-wrapper:focus {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  border: 1px solid var(--deepdark-accent-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}

@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xul-overlay href="chrome://quicknote/content/menuoverlay.xhtml"?>
+<?xml-stylesheet href="chrome://quicknote/skin/quicknote-button.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/primaryToolbar.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<!DOCTYPE window SYSTEM "chrome://quicknote/locale/quicknote.dtd">
+
+<window id="quicknote-main"
+				xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:html="http://www.w3.org/1999/xhtml"
+				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				title="&quicknote.title;"
+				windowtype="quicknote:mainwindow"
+				width="270" height="330"
+				screenX="10" screenY="10"
+				persist="screenX screenY height width sizemode"
+				orient="vertical"
+				onkeyup="QNover.qnclosewin(event);"
+				onkeypress="QNqn.chooseqntab(event);"
+				onclose="return QNqn.onClose();"
+				onunload="QNqn.autoSave();" 
+				onload="QNqn.OnLoad();"
+				onfocus="QNqn.qnonfocus()"
+				align="vertical">
+	<script src="chrome://global/content/globalOverlay.js"/>
+	<script src="chrome://global/content/editMenuOverlay.js.js"/>
+	<script src="chrome://messenger/content/toolbarIconColor.js"/>
+  	<script src="chrome://messenger/content/customizable-toolbar.js"/>
+	<script src="chrome://quicknote/content/globalvar.js"/>
+	<script src="chrome://quicknote/content/jsio.js" />
+	<!--<script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js" />-->
+	<script src="chrome://global/content/printUtils.js"/>
+	<script src="chrome://quicknote/content/quicknote.js"/>
+	<script src="chrome://quicknote/content/overlay.js"/>
+	<script type="application/x-javascript">
+	<![CDATA[
+function QuickNote_focusPad(n){
+	var thePad = document.getElementById("Pad" + n);
+	thePad.focus();
+}
+]]></script>
+
+	<!--<stringbundleset id="qnpage">
+		<stringbundle id="qnstrings" src="chrome://quicknote/locale/quicknote.properties" />
+	</stringbundleset>-->
+
+	<commandset id="maincommands" />
+
+	<keyset id="mainkeys">
+		<key id="key_insertdatetime" keycode="VK_F5" modifiers="" oncommand="QNqn.insertDateTime();" />
+	</keyset>
+
+	<keyset id="searchkeys">
+		<key id="key_opensearchbar" key="F" modifiers="accel,shift" oncommand="QNqn.toggleSearchBar();" />
+	</keyset>
+
+	<popupset>
+		<menupopup id="clipmenu" />
+	</popupset>
+
+	<popupset>
+		<menupopup id="clipmenu1" />
+	</popupset>
+
+	<popupset>
+		<menupopup id="clipmenu2" />
+	</popupset>
+
+	<tabbox id="tabbox" flex="1">
+		<hbox>
+			<tabs orient="horizontal" id="qntabs">
+				<tab id="Tab1" collapsed="false" oncommand="QuickNote_focusPad(1);" context="clipmenu1" />
+				<tab id="Tab2" collapsed="false" oncommand="QuickNote_focusPad(2);" context="clipmenu1" />
+				<tab id="Tab3" collapsed="true" oncommand="QuickNote_focusPad(3);" context="clipmenu1" />
+				<tab id="Tab4" collapsed="true" oncommand="QuickNote_focusPad(4);" context="clipmenu1" />
+				<tab id="Tab5" collapsed="true" oncommand="QuickNote_focusPad(5);" context="clipmenu1" />
+				<tab id="Tab6" collapsed="true" oncommand="QuickNote_focusPad(6);" context="clipmenu1" />
+			</tabs>
+			<spacer flex="1" style="min-width: 1px;" />
+			<hbox id="notebar" pack="end">
+				<toolbarbutton id="qnoptions" popup="clipmenu" class="icon-quicknote16" />
+			</hbox>
+		</hbox>
+		<tabpanels id="tabpanels" class="qn_tabpanels" flex="1">
+			<tabpanel id="TabPanel1" class="qn_tabpanel"
+								orient="vertical"
+								flex="1"
+								width="1600px"
+								height="700px">
+				<html:textarea id="Pad1"
+								 class="QNtextbox"
+								 value=""
+								 flex="1"
+								 oninput="QNqn.onInput('1');"
+								 onkeypress="return QNqn.onKeyPress(event);"
+								 spellcheck="true"
+								 spellcheckenabled="true"
+								 persist="spellcheckenabled" />
+				<hbox id="buttonbox1" context="disabled">
+					<toolbarbutton id="clear1"
+												 disabled="false"
+												 class="clear"
+												 tooltiptext="&quicknote.clear.label;"
+												 value="clear"
+												 oncommand="QNqn.qnClearNote('1');" />
+					<toolbarbutton id="print1"
+												 disabled="false"
+												 class="print"
+												 tooltiptext="&quicknote.print.label;"
+												 value="print"
+												 oncommand="QNqn.qnprint('1');" />
+					<html:inpit id="qnfind1" 
+									 is="search-textbox"
+									 class="searchBox"
+									 searchbutton="true"
+									 hidden="true"
+									 flex="1"
+									 emptytext="&quicknote.search.label;"
+									 placeholder="&quicknote.search.label;"
+									 oncommand="QNqn.qnfind('1');" />
+					<spacer flex="1"/>
+					<toolbarbutton id="save1"
+												 disabled="true"
+												 class="save"
+												 tooltiptext="&quicknote.save.label;"
+												 value="save"
+												 context="clipmenu2"
+												 oncommand="QNqn.saveNote('1');" />
+					<toolbarbutton id="save-as1" hidden="true"
+												 disabled="false"
+												 class="saveas"
+												 tooltiptext="&quicknote.save-as.label;"
+												 value="Save As"
+												 context="clipmenu2"
+												 oncommand="QNqn.saveNoteAs('1')" />
+				</hbox>
+			</tabpanel>
+			<tabpanel id="TabPanel2" class="qn_tabpanel"
+								orient="vertical"
+								flex="1">
+				<html:textarea id="Pad2"
+								 class="QNtextbox"
+								 multiline="true"
+								 value=""
+								 flex="1"
+								 oninput="QNqn.onInput('2');"
+								 onkeypress="return QNqn.onKeyPress(event);"
+								 spellcheck="true"
+								 spellcheckenabled="true"
+								 persist="spellcheckenabled" />
+				<hbox id="buttonbox2" context="disabled">
+					<toolbarbutton id="clear2"
+												 disabled="false"
+												 class="clear"
+												 tooltiptext="&quicknote.clear.label;"
+												 value="clear"
+												 oncommand="QNqn.qnClearNote('2');" />
+					<toolbarbutton id="print2"
+												 disabled="false"
+												 class="print"
+												 tooltiptext="&quicknote.print.label;"
+												 value="print"
+												 oncommand="QNqn.qnprint('2');" />
+					<html:input id="qnfind2" 
+									 is="search-textbox"
+									 class="searchBox"
+									 searchbutton="true"
+									 timeout="800"
+									 hidden="true"
+									 flex="1"
+									 emptytext="&quicknote.search.label;"
+									 placeholder="&quicknote.search.label;"
+									 oncommand="QNqn.qnfind('2');" />
+					<spacer flex="1" />
+					<toolbarbutton id="save2"
+												 disabled="true"
+												 class="save"
+												 tooltiptext="&quicknote.save.label;"
+												 value="save"
+												 context="clipmenu2"
+												 oncommand="QNqn.saveNote('2');" />
+					<toolbarbutton id="save-as2" hidden="true"
+												 disabled="false"
+												 class="saveas"
+												 tooltiptext="&quicknote.save-as.label;"
+												 value="Save As"
+												 oncommand="QNqn.saveNoteAs('2')" />
+				</hbox>
+			</tabpanel>
+			<tabpanel id="TabPanel3" class="qn_tabpanel"
+								orient="vertical"
+								flex="1">
+				<html:textarea id="Pad3"
+								 class="QNtextbox"
+								 multiline="true"
+								 value=""
+								 flex="1"
+								 oninput="QNqn.onInput('3');"
+								 onkeypress="return QNqn.onKeyPress(event);"
+								 spellcheck="true"
+								 spellcheckenabled="true"
+								 persist="spellcheckenabled" />
+
+				<hbox id="buttonbox3" context="disabled">
+					<toolbarbutton id="clear3"
+												 disabled="false"
+												 class="clear"
+												 tooltiptext="&quicknote.clear.label;"
+												 value="clear"
+												 oncommand="QNqn.qnClearNote('3');" />
+					<toolbarbutton id="print3"
+												 disabled="false"
+												 class="print"
+												 tooltiptext="&quicknote.print.label;"
+												 value="print"
+												 oncommand="QNqn.qnprint('3');" />
+					<html:input id="qnfind3" 
+									 is="search-textbox"
+									 class="searchBox"
+									 searchbutton="true"
+									 timeout="800"
+									 hidden="true"
+									 flex="1"
+									 emptytext="&quicknote.search.label;"
+									 placeholder="&quicknote.search.label;"
+									 oncommand="QNqn.qnfind('3');" />
+					<spacer flex="1" />
+					<toolbarbutton id="save3"
+												 disabled="true"
+												 class="save"
+												 tooltiptext="&quicknote.save.label;"
+												 value="save"
+												 context="clipmenu2"
+												 oncommand="QNqn.saveNote('3');" />
+					<toolbarbutton id="save-as3" hidden="true"
+												 disabled="false"
+												 class="saveas"
+												 tooltiptext="&quicknote.save-as.label;"
+												 value="Save As"
+												 oncommand="QNqn.saveNoteAs('3')" />
+				</hbox>
+			</tabpanel>
+			<tabpanel id="TabPanel4" class="qn_tabpanel"
+								orient="vertical"
+								flex="1">
+				<html:textarea id="Pad4"
+								 class="QNtextbox"
+								 multiline="true"
+								 value=""
+								 flex="1"
+								 oninput="QNqn.onInput('4');"
+								 onkeypress="return QNqn.onKeyPress(event);"
+								 spellcheck="true"
+								 spellcheckenabled="true"
+								 persist="spellcheckenabled" />
+
+				<hbox id="buttonbox4" context="disabled">
+					<toolbarbutton id="clear4"
+												 disabled="false"
+												 class="clear"
+												 tooltiptext="&quicknote.clear.label;"
+												 value="clear"
+												 oncommand="QNqn.qnClearNote('4');" />
+					<toolbarbutton id="print4"
+												 disabled="false"
+												 class="print"
+												 tooltiptext="&quicknote.print.label;"
+												 value="print"
+												 oncommand="QNqn.qnprint('4');" />
+					<html:input id="qnfind4" 
+									 is="search-textbox"
+									 class="searchBox"
+									 searchbutton="true"
+									 timeout="800"
+									 hidden="true"
+									 flex="1"
+									 emptytext="&quicknote.search.label;"
+									 placeholder="&quicknote.search.label;"
+									 oncommand="QNqn.qnfind('4');" />
+					<spacer flex="1" />
+					<toolbarbutton id="save4"
+												 disabled="false"
+												 class="save"
+												 tooltiptext="&quicknote.save.label;"
+												 value="save"
+												 context="clipmenu2"
+												 oncommand="QNqn.saveNote('4');" />
+					<toolbarbutton id="save-as4" hidden="true"
+												 disabled="false"
+												 class="saveas"
+												 tooltiptext="&quicknote.save-as.label;"
+												 value="Save As"
+												 oncommand="QNqn.saveNoteAs('4')" />
+				</hbox>
+			</tabpanel>
+			<tabpanel id="TabPanel5" class="qn_tabpanel"
+								orient="vertical"
+								flex="1">
+				<html:textarea id="Pad5"
+								 class="QNtextbox"
+								 multiline="true"
+								 value=""
+								 flex="1"
+								 oninput="QNqn.onInput('5');"
+								 onkeypress="return QNqn.onKeyPress(event);"
+								 spellcheck="true"
+								 spellcheckenabled="true"
+								 persist="spellcheckenabled" />
+
+				<hbox id="buttonbox5" context="disabled">
+					<toolbarbutton id="clear5"
+												 disabled="false"
+												 class="clear"
+												 tooltiptext="&quicknote.clear.label;"
+												 value="clear"
+												 oncommand="QNqn.qnClearNote('5');" />
+					<toolbarbutton id="print5"
+												 disabled="false"
+												 class="print"
+												 tooltiptext="&quicknote.print.label;"
+												 value="print"
+												 oncommand="QNqn.qnprint('5');" />
+					<html:input id="qnfind5" 
+									 is="search-textbox"
+									 class="searchBox"
+									 searchbutton="true"
+									 timeout="800"
+						 			 hidden="true"
+									 flex="1"
+									 emptytext="&quicknote.search.label;"
+									 placeholder="&quicknote.search.label;"
+									 oncommand="QNqn.qnfind('5');" />
+					<spacer flex="1" />
+					<toolbarbutton id="save5"
+												 disabled="true"
+												 class="save"
+												 tooltiptext="&quicknote.save.label;"
+												 value="save"
+												 context="clipmenu2" />
+					<toolbarbutton id="save-as5" hidden="true"
+												 disabled="false"
+												 class="saveas"
+												 tooltiptext="&quicknote.save-as.label;"
+												 value="Save As"
+												 oncommand="QNqn.saveNoteAs('5')" />
+				</hbox>
+			</tabpanel>
+			<tabpanel id="TabPanel6" class="qn_tabpanel"
+								orient="vertical"
+								flex="1">
+				<html:textarea id="Pad6"
+								 class="QNtextbox"
+								 multiline="true"
+								 value=""
+								 flex="1"
+								 oninput="QNqn.onInput('6');"
+								 onkeypress="return QNqn.onKeyPress(event);"
+								 spellcheck="true"
+								 spellcheckenabled="true"
+								 persist="spellcheckenabled" />
+
+				<hbox id="buttonbox6" context="disabled">
+					<toolbarbutton id="clear6"
+												 disabled="false"
+												 class="clear"
+												 tooltiptext="&quicknote.clear.label;"
+												 value="clear"
+												 oncommand="QNqn.qnClearNote('6');" />
+					<toolbarbutton id="print6"
+												 disabled="false"
+												 class="print"
+												 tooltiptext="&quicknote.print.label;"
+												 value="print"
+												 oncommand="QNqn.qnprint('6');" />
+					<html:input id="qnfind6"
+									 is="search-textbox"
+									 class="searchBox"
+									 searchbutton="true"
+									 timeout="800"
+									 hidden="true"
+									 flex="1"
+									 emptytext="&quicknote.search.label;"
+									 placeholder="&quicknote.search.label;"
+									 oncommand="QNqn.qnfind('6');" />
+					<spacer flex="1" />
+					<toolbarbutton id="save6"
+												 disabled="true"
+												 class="save"
+												 tooltiptext="&quicknote.save.label;"
+												 value="save"
+												 context="clipmenu2"
+												 oncommand="QNqn.saveNote('6');" />
+					<toolbarbutton id="save-as6" hidden="true"
+												 disabled="false"
+												 class="saveas"
+												 tooltiptext="&quicknote.save-as.label;"
+												 value="Save As"
+												 oncommand="QNqn.saveNoteAs('6')" />
+				</hbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+</window>

@@ -1,0 +1,101 @@
+{
+  "extensionName": {
+    "message": "MessagePreview",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Adds a column to the Thunderbird message list to display the message preview in a tooltip on column row icon mouse hover or a short preview in the column row itself.",
+    "description": "Description of the extension."
+  },
+  "extensionBye": {
+    "message": "MessagePreview - goodbye",
+    "description": "Message on disable/remove completed."
+  },
+
+  "messagePreviewColumnLabel": {
+    "message": "Message Preview",
+    "description": "Column label."
+  },
+  "messagePreviewColumnTooltip": {
+    "message": "Sort by message preview text",
+    "description": "Column tooltip."
+  },
+
+
+  "previewTitle": {
+    "message": "**  MESSAGE PREVIEW  **",
+    "description": "Preview tooptip string."
+  },
+  "previewTitleNA": {
+    "message": "** MESSAGE PREVIEW NOT AVAILABLE **",
+    "description": "Preview tooptip string."
+  },
+  "previewNoAccess": {
+    "message": "You are not logged in or have disallowed IMAP downloads",
+    "description": "Preview tooptip string."
+  },
+  "previewNoMimeMsg": {
+    "message": "The message could not be retrieved - mimeMsg is null",
+    "description": "Preview tooptip string."
+  },
+  "previewNNTP": {
+    "message": "Preview not available for newsgroups (NNTP)",
+    "description": "Preview tooptip string."
+  },
+  "previewError": {
+    "message": "Error getting preview: $VAL$",
+    "description": "Preview tooptip string.",
+    "placeholders": {
+      "val" : {
+        "content" : "$1",
+        "example" : "Error message"
+      }
+    }
+  },
+  "previewCannotDecrypt": {
+    "message": "\u26A0 The message cannot be decrypted",
+    "description": "Preview tooptip string."
+  },
+  "previewSeparator": {
+    "message": "~~~~~~~~~~~~~~~~~~~~~~~~",
+    "description": "Preview tooptip string; separator length matches title length in proportional font."
+  },
+
+
+  "previewTooltipEnabled": {
+    "message": "Enable Preview tooltip on column row mouse hover",
+    "description": "Options label."
+  },
+  "previewTooltipMaxSize": {
+    "message": "Maximum characters to display in tooltip:",
+    "description": "Options label."
+  },
+  "previewTextEnabled": {
+    "message": "Enable Preview text display in column row (adjust width to view)",
+    "description": "Options label."
+  },
+  "previewTextMaxSize": {
+    "message": "Maximum characters to display in column row:",
+    "description": "Options label."
+  },
+  "previewGetOption": {
+    "message": "Get the message preview text:",
+    "description": "Options label."
+  },
+  "previewGetAuto": {
+    "message": "Automatically, when row is scrolled into view",
+    "description": "Options label."
+  },
+  "previewGetHover": {
+    "message": "On column mouse hover",
+    "description": "Options label."
+  },
+  "imapAllowDownload": {
+    "message": "Download imap message, if necessary, to get the preview",
+    "description": "Options label."
+  },
+  "previewRestoreDefaults": {
+    "message": "Restore Defaults",
+    "description": "Options label."
+  }
+}

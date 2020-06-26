@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<head>
+<title>OppositeTodaySubpane</title>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://addons.thunderbird.net/en-US/">
+<base target="_top"/> 
+<link rel="manifest" href="/manifest.json"/>
+</head>
+<body>
+<ul class="dropdown-content" id="form1">
+<li id="form11"><a href="#!">Dark screen</a></li>
+<li id="form12"><a href="#!">Grey screen</a></li>
+<li id="form13"><a href="#!">Light screen</a></li>
+<li id="form14"><a href="#!">Khaki screen</a></li>
+<li id="form15"><a href="#!">White screen</a></li>
+</ul>
+<ul class="dropdown-content" id="form2">
+<li id="form21"><a href="#!">Black font</a></li>
+<li id="form22"><a href="#!">Blue font</a></li>
+<li id="form23"><a href="#!">Green font</a></li>
+<li id="form24"><a href="#!">White font</a></li>
+</ul> 
+<ul class="dropdown-content" id="form3">
+<li id="form31"><a href="#!">Serif</a></li>
+<li id="form32"><a href="#!">Sans-serif</a></li>
+</ul> 
+<ul class="dropdown-content" id="form4">
+<li id="form41"><a href="#!">Bold</a></li>
+<li id="form21"><a href="#!">Normal</a></li>
+</ul>
+<ul class="dropdown-content" id="form5">
+<li id="form51"><a href="#!">Italic</a></li>
+<li id="form52"><a href="#!">Normal</a></li>
+</menu>
+<ul class="dropdown-content" id="form6">
+<li id="form61"><a href="#!">Small</li>
+<li id="form62"><a href="#!">Medium</li>
+<li id="form63"><a href="#!">Large</li>
+</ul>
+<ul class="dropdown-content" id="form7">
+<li id="form71"><a href="#!">Inherit</a></li>
+<li id="form72"><a href="#!">Justify</a></li>
+<li id="form73"><a href="#!">Center</a></li>
+<li id="form74"><a href="#!">Left</a></li>
+<li id="form75"><a href="#!">Right</a></li>
+</ul>
+<nav>
+<li><a class="dropdown-trigger" href="#!" data-target="form1">Screen color<i class="material-icons right">arrow_drop_down</i></a></li>
+<li><a class="dropdown-trigger" href="#!" data-target="form2">Font color<i class="material-icons right">arrow_drop_down</i></a></li>
+<li><a class="dropdown-trigger" href="#!" data-target="form3">Font family<i class="material-icons right">arrow_drop_down</i></a></li>
+<li><a class="dropdown-trigger" href="#!" data-target="form4">Font weight<i class="material-icons right">arrow_drop_down</i></a></li>
+<li><a class="dropdown-trigger" href="#!" data-target="form5">Font style<i class="material-icons right">arrow_drop_down</i></a></li>
+<li><a class="dropdown-trigger" href="#!" data-target="form6">Font size<i class="material-icons right">arrow_drop_down</i></a></li>
+<li><a class="dropdown-trigger" href="#!" data-target="form7">Text align<i class="material-icons right">arrow_drop_down</i></a></li>
+</nav>
+</body>
+</html>

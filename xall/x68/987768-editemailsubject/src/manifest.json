@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Edit Email Subject",
+  "description": "Edit Email Subject for Thunderbird",
+  "version": "2.5",
+  "author": "Dillinger",
+  "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/editemailsubject/",
+  "legacy" : {
+    "options" : {
+      "page" : "chrome://editEmailSubject/content/editEmailSubjectSettings.xul",
+      "open_in_tab" : false
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "editemailsubject@dillinger",
+      "strict_min_version": "68.0",
+      "strict_max_version": "68.*"
+    }
+  },
+  "icons": {
+    "32": "content/editEmailSubject32.png"
+  }
+}

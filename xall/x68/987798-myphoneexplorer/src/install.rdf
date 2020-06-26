@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>myphoneexplorer@fjsoft.at</em:id>
+    <em:unpack>true</em:unpack>
+    <em:version>2.0.25</em:version>
+    
+    <!-- Mozilla Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>3.0</em:minVersion>
+        <em:maxVersion>99.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Mozilla SeaMonkey -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+        <em:minVersion>2.0</em:minVersion>
+        <em:maxVersion>10.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>  
+
+    <!-- Postbox -->
+    <em:targetApplication>
+      <Description>
+        <em:id>postbox@postbox-inc.com</em:id>
+        <em:minVersion>3.0</em:minVersion>
+        <em:maxVersion>5.0</em:maxVersion>
+      </Description>      
+    </em:targetApplication>
+    
+    <em:name>MyPhoneExplorer</em:name>
+    <em:description>MyPhoneExplorer Synchronisation</em:description>
+    <em:creator>F.J. Wechselberger, N. Pueschel</em:creator>
+    <em:homepageURL>http://www.fjsoft.at/</em:homepageURL>
+    <em:optionsURL>chrome://myphoneexplorer/content/mpeOptions.xul</em:optionsURL>
+    <em:iconURL>chrome://myphoneexplorer/skin/icon.png</em:iconURL>    
+    <em:updateURL>https://www.fjsoft.at/myphoneexplorer/update.rdf</em:updateURL>
+  </Description>      
+</RDF>

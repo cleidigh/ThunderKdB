@@ -1,0 +1,312 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://messenger/content/glodaFacetView.css");
+@import url("chrome://DeepdarkOverlay/skin/searchBox.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+/* DeepDark custom CSS - variables */
+
+#body {
+  --popupColor: var(--deepdark-arrowpanel-bg-color);
+  --popupBorder: var(--deepdark-dark-ash-color);
+  --popupHLColor: var(--deepdark-btn-hover-color);
+  --popupHLTextColor: var(--deepdark-brightest-color);
+  --barColor: var(--deepdark-accent-color);
+  --barHlColor: var(--deepdark-accent-color);
+  --dateColor: var(--deepdark-focus-tree-row-bg-color);
+  --dateHLColor: var(--deepdark-accent-color);
+  --borderRadius: var(--deepdark-border-radius);
+  --buttonHoverColor: var(--deepdark-btn-hover-color);
+  --buttonHoverTextColor: var(--deepdark-brightest-color);
+}
+
+/* DeepDark custom CSS - variables - end */
+
+::-moz-selection {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-brightest-color) !important;
+  background: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.facets-sidebar {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-sidebar-bg-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.facets-sidebar:-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  border-right: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+.facets-sidebar:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  border-left: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#table {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  background-color: var(--deepdark-fields-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+.barry {
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.bar {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.bar-link {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.bar:hover > .bar-link,
+.bar:focus > .bar-link {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.bar:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+span.empty{
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+span.loading {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  background-color: var(--deepdark-ash-color);
+  border: 0;
+  border-radius: var(--deepdark-border-radius);
+  padding: 6px 4px;
+/* DeepDark custom CSS - end */
+}
+
+.facet-more {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+/* DeepDark custom CSS - end */
+}
+
+.bar:focus {
+/* DeepDark custom CSS */
+  background: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+.bar[selected="true"],
+.bar[selected="true"] > .bar-link {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+  background: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+.popup-menu {
+/* DeepDark custom CSS */
+  border: 1px solid var(--popupBorder);
+  background-color: var(--popupColor);
+  border-radius: var(--deepdark-border-radius);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#main-column {
+/* DeepDark custom CSS */
+  background: var(--deepdark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#header {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#date-toggle {
+/* DeepDark custom CSS */
+  border-radius: var(--deepdark-border-radius);
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#date-toggle:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+  fill: var(--deepdark-pure-white-color);
+/* DeepDark custom CSS - end */
+}
+
+.message{
+/* DeepDark custom CSS */
+  border-radius: var(--deepdarl-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.message .message-subject {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.message:hover {
+/* DeepDark custom CSS */
+  border-color: transparent;
+  background-color: var(--deepdark-focus-tree-row-bg-color);
+  box-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+.message:hover .message-subject {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.message .message-subject:hover,
+.message .message-subject:focus {
+/* DeepDark custom CSS */
+  background-color: transparent;
+  color: var(--deepdark-accent-color);
+  text-decoration: underline;
+/* DeepDark custom CSS - end */
+}
+
+.message-body-fulltext-match {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+  color: var(--deepdark-brightest-color);
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.facetious[type="boolean"]:not([disabled]):hover > .facet-checkbox-bubble,
+.facetious[type="boolean-filtered"]:not([disabled]):hover > .facet-checkbox-bubble {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-mailtoolbox-btn-hover-color);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.bar-count{
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+img.empty {
+/* DeepDark custom CSS */
+  display: none;
+/* DeepDark custom CSS - end */
+}
+
+.message-author,
+.message-recipients {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.message,
+.message-body {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.message-meta {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.message {
+/* DeepDark custom CSS */
+  border-bottom-color: var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+.results-message-header {
+/* DeepDark custom CSS */
+  background-color: transparent;
+  border-top: 1px solid var(--deepdark-separator-color);
+  border-bottom: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+.show-more {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.show-more:hover {
+/* DeepDark custom CSS */
+  text-decoration: underline;
+/* DeepDark custom CSS - end */
+}
+
+.show-more:active,
+.show-more:active:hover {
+/* DeepDark custom CSS */
+  text-decoration: none;
+/* DeepDark custom CSS - end */
+}
+
+.date-vis-frame text {
+/* DeepDark custom CSS */
+  filter: invert(1);
+/* DeepDark custom CSS - end */
+}
+
+facet-boolean:not([disabled]):hover > .facet-checkbox-bubble,
+facet-boolean-filtered:not([disabled]):hover > .facet-checkbox-bubble {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+facet-boolean:not([disabled]):active:hover > .facet-checkbox-bubble,
+facet-boolean-filtered:not([disabled]):active:hover > .facet-checkbox-bubble {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+* {
+/* DeepDark custom CSS */
+  scrollbar-color: var(--deepdark-scrollbar-slider-color) var(--deepdark-ash-color);
+/* DeepDark custom CSS - end */  
+}

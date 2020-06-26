@@ -1,0 +1,26 @@
+/* All platforms */
+
+/* Options/Preferences */
+#previewTooltipFieldset,
+#previewTextFieldset,
+#previewRadioFieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+#previewTooltipFieldset,
+#previewTextFieldset {
+  margin-top: .4em;
+  margin-inline-start: 2em;
+}
+
+#previewTooltipFieldset[disabled] label,
+#previewTextFieldset[disabled] label,
+#previewRadioFieldset[disabled] label {
+  opacity: 0.5;
+}
+
+.maxsize {
+ width: 5em;
+ text-align: end;
+}

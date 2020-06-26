@@ -1,0 +1,382 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+notification {
+  padding: 2px 0 3px;
+  padding-inline-start: 12px;
+  border-style: solid;
+  border-width: 1px 0;
+  text-shadow: none;
+/* DeepDark custom CSS */
+  background: var(--deepdark-accent-color);
+  color: var(--deepdark-brightest-color);
+  border-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+notificationbox[notificationside="top"] > notification {
+  border-top-style: none;
+}
+
+notificationbox[notificationside="bottom"] > notification {
+  border-bottom-style: none;
+}
+
+notification[type="warning"],
+notification[type="critical"] {
+/* DeepDark custom CSS */
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+notification[type="warning"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-warning-color);
+/* DeepDark custom CSS - end */
+  color: #0c0c0d;
+}
+
+notification[type="critical"] {
+  background: #d70022;
+  color: #fff;
+}
+
+button.notification-button,
+button.button-menu-list {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  color: var(--deepdark-brightest-color) !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-radius: var(--deepdark-border-radius) !important;
+  background: rgba(0,0,0,.25) !important;
+  text-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+button.notification-button:not([disabled="true"]):hover,
+button.button-menu-list:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+  background: rgba(0,0,0,.15) !important;
+/* DeepDark custom CSS - end */
+}
+
+button.button-menu-list:not([disabled="true"]):active:hover,
+button.button-menu-list:not([disabled="true"]):active {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+  fill: var(--deepdark-brightest-color);
+  background: rgba(0,0,0,.35) !important;
+/* DeepDark custom CSS - end */
+}
+
+notification[type="warning"] button.notification-button,
+notification[type="warning"] button.button-menu-list {
+/* DeepDark custom CSS */
+  background: rgb(220,110,55) !important;
+/* DeepDark custom CSS - end */
+}
+
+notification[type="warning"]:not([disabled="true"]) button.notification-button:hover,
+notification[type="warning"]:not([disabled="true"]) button.button-menu-list:hover {
+/* DeepDark custom CSS */
+  background: rgba(220,110,55,.5) !important;
+/* DeepDark custom CSS - end */
+}
+
+notification[type="warning"]:not([disabled="true"]) button.notification-button:active,
+notification[type="warning"]:not([disabled="true"]) button.button-menu-list:hover:active {
+/* DeepDark custom CSS */
+  background: rgb(200,100,45) !important;
+/* DeepDark custom CSS - end */
+}
+
+.button-box {
+/* DeepDark custom CSS */
+  margin-top: -2px;
+  margin-bottom: -2px;
+/* DeepDark custom CSS - end */	
+}
+
+button.notification-button > .button-box > button {
+/* DeepDark custom CSS */
+  margin-top: 0px;
+  margin-bottom: -2px;
+  border-inline-end: 1px solid var(--deepdark-separator-color);
+  background-color: transparent;
+  color: var(--deepdark-brightest-color) !important;
+  border-radius: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+/* DeepDark custom CSS - end */
+}
+
+button.notification-button > .button-box > dropmarker {
+/* DeepDark custom CSS */
+  margin-top: 2px;
+  margin-bottom: 0;
+/* DeepDark custom CSS - end */
+}
+
+.messageText {
+  margin-inline-start: 12px !important;
+  margin-bottom: 1px !important;
+}
+
+.messageText > .text-link {
+  color: inherit !important;
+  text-decoration: underline;
+}
+
+.messageImage {
+  width: 16px;
+  height: 16px;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.messageImage[type="info"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/help.svg");
+/* DeepDark custom CSS - end */
+}
+
+.messageImage[type="warning"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/warning.svg");
+/* DeepDark custom CSS - end */
+}
+
+.messageImage[type="critical"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/error.svg");
+/* DeepDark custom CSS - end */
+}
+
+.messageCloseButton {
+  margin: 0;
+  padding: 0;
+}
+
+/* Close button needs to be clickable from the edge of the window */
+.messageCloseButton > .toolbarbutton-icon {
+  margin-inline-end: 12px;
+}
+
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.popup-notification-body-container {
+  padding: var(--arrowpanel-padding);
+}
+
+.popup-notification-icon {
+  width: 32px;
+  height: 32px;
+  margin-inline-end: var(--arrowpanel-padding);
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS -end */
+}
+
+/* DeepDark custom CSS */
+image.popup-notification-icon[src="chrome://mozapps/skin/extensions/extensionGeneric.svg"] {
+  visibility: hidden;
+}
+
+popupnotification#addon-webext-permissions-notification[popupid="addon-webext-permissions"][icon="chrome://mozapps/skin/extensions/extensionGeneric.svg"] {
+  -moz-context-properties: fill;
+  fill: currentColor;
+  background-image: url("chrome://DeepdarkOverlay/skin/icons/addons.svg");
+  background-position: 15px 15px;
+  background-repeat: no-repeat;
+  background-size: 32px auto;
+}
+
+.popup-notification-icon[popupid="xpinstall-disabled"],
+.popup-notification-icon[popupid="addon-install-blocked"],
+.popup-notification-icon[popupid="addon-install-origin-blocked"] {
+  -moz-context-properties: fill;
+  fill: currentColor;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addon-install-blocked.svg");
+}
+
+.popup-notification-icon[popupid="addon-progress"] {
+  -moz-context-properties: fill;
+  fill: currentColor;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addon-install-downloading.svg");
+}
+
+.popup-notification-icon[popupid="addon-install-failed"] {
+  -moz-context-properties: fill;
+  fill: currentColor;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addon-install-error.svg");
+}
+
+.popup-notification-icon[popupid="addon-install-confirmation"] {
+  -moz-context-properties: fill;
+  fill: currentColor;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addon-install-confirm.svg");
+}
+
+#addon-install-confirmation-notification[warning] .popup-notification-icon[popupid="addon-install-confirmation"] {
+  -moz-context-properties: fill;
+  fill: currentColor;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addon-install-warning.svg");
+}
+
+.popup-notification-icon[popupid="addon-install-complete"] {
+  -moz-context-properties: fill;
+  fill: currentColor;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addon-install-installed.svg");
+}
+/* DeepDark custom CSS - end */
+
+.popup-notification-body {
+  width: 25em;
+}
+
+.popup-notification-closebutton {
+  margin-inline-end: -8px;
+  margin-top: -8px;
+}
+
+.popup-notification-origin:not([value]),
+.popup-notification-learnmore-link:not([href]) {
+  display: none;
+}
+
+.popup-notification-origin {
+  margin-bottom: .3em !important;
+}
+
+.popup-notification-learnmore-link {
+  margin-top: .5em !important;
+}
+
+.popup-notification-button-container {
+  background-color: var(--arrowpanel-dimmed);
+  display: flex;
+}
+
+.popup-notification-button-container > toolbarseparator {
+  -moz-appearance: none;
+  border: 0;
+/* DeepDark custom CSS */
+  border-left: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+  margin: 7px 0 7px;
+  min-width: 0;
+}
+
+.popup-notification-button-container:hover > toolbarseparator {
+  margin: 0;
+}
+
+.popup-notification-button {
+  flex: 1;
+  -moz-appearance: none;
+  background-color: transparent;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  min-height: 41px;
+  border: none;
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+.popup-notification-button:hover:not([disabled]) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-brighter-btn-hover-color);
+/* DeepDark custom CSS - end */
+}
+
+.popup-notification-button:hover:active:not([disabled]) {
+/* DeepDark custom CSS */
+  background-color: inherit;
+  box-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+.popup-notification-button[disabled] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color);
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.popup-notification-button[default]:not([alone]) {
+  flex: 0 50%;
+}
+
+.popup-notification-button[default][highlight="true"]:not([disabled]) {
+  background-color: #0996f8;
+  color: white;
+}
+
+.popup-notification-button[default][highlight="true"]:hover:not([disabled]) {
+  background-color: #0675d3;
+}
+
+.popup-notification-button[default][highlight="true"]:hover:active:not([disabled]) {
+  background-color: #0568ba;
+}
+
+.popup-notification-button[anonid="secondarybutton"][hidden="true"] ~ .popup-notification-button[default] {
+  flex: 1;
+}
+
+.popup-notification-button > .button-box {
+  padding: 0;
+}
+
+.popup-notification-dropmarker {
+  flex: none;
+  padding: 0 15px;
+}
+
+.popup-notification-dropmarker > .button-box > hbox {
+  display: none;
+}
+
+.popup-notification-dropmarker > .button-box > .button-menu-dropmarker {
+  /* This is to override the linux !important */
+  -moz-appearance: none !important;
+  display: -moz-box;
+  padding: 0;
+  margin: 0;
+}
+
+.popup-notification-dropmarker > .button-box > .button-menu-dropmarker > .dropmarker-icon {
+  width: 16px;
+  height: 16px;
+  list-style-image: url(chrome://global/skin/icons/arrow-dropdown-16.svg);
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.popup-notification-button:-moz-focusring {
+  outline: 2px -moz-mac-focusring solid;
+  outline-offset: -2px;
+}
+
+.popup-notification-warning {
+  color: #aa1b08;
+}
+
+.popup-notification-button[anonid="secondarybutton"]:not([hidden="true"])  ~ .popup-notification-button[default]:not([highlight="true"]) {
+/* DeepDark custom CSS */
+  border-inline-start: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}

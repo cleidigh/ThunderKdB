@@ -1,0 +1,49 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+#filterListDialog button[type="menu-button"]#newButton > .button-box > button {
+/* DeepDark custom CSS */
+  margin-top: -6px !important;
+  margin-bottom: -7px !important;
+/* DeepDark custom CSS - end */
+}
+
+#filterListDialog button[type="menu-button"]#newButton > .button-box > button:-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  margin-inline-start: -4px !important;
+  margin-bottom: -4px !important;
+  margin-top: -4px !important;
+/* DeepDark custom CSS - end */
+}
+
+#filterListDialog button[type="menu-button"]#newButton > .button-box > button:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  margin-inline-end: -4px !important;
+  margin-bottom: -4px !important;
+  margin-top: -4px !important;
+/* DeepDark custom CSS - end */
+}
+
+#newButton .button-menubutton-dropmarker:-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  margin-left: 8px;
+/* DeepDark custom CSS - end */
+}
+
+#newButton .button-menubutton-dropmarker:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  margin-right: 8px;
+/* DeepDark custom CSS - end */
+}
+
+.small-button	.button-text {
+/* DeepDark custom CSS */
+  margin-inline-start: 0px !important;
+/* DeepDark custom CSS - end */
+}

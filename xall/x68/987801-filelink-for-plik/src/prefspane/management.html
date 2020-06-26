@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="photon.css">
+    <link rel="stylesheet" href="management.css">
+    <title>Filelink for Plik</title>
+</head>
+
+<body>
+    <p data-i18n="extensionDescription"></p>
+
+    <form id="configForm">
+        <fieldset id="entireForm">
+            <p>
+                <label class="input__label" for="serverUrl" data-i18n="serverurl"></label>
+                <input class="input input__field" type="text" value="https://plik.root.gg" pattern="https?://.*"
+                    required id="serverUrl">
+            </p>
+            <p>
+                <input type="checkbox" class="input checkbox" id="oneShot">
+                <label for="oneShot" data-i18n="oneShot"></label>
+            </p>
+            <p>
+                <input type="checkbox" class="input checkbox" id="protectedDownloads">
+                <label for="protectedDownloads" data-i18n="protectedDownloads"></label>
+                <label for="DLUser" data-i18n="DLUser"></label>
+                <input type="text" class="input input__field" id="DLUser" value="plik" disabled>
+                <label for="DLPass" data-i18n="DLPass"></label>
+                <input type="text" class="input input__field" id="DLPass" disabled>
+            </p>
+            <p>
+                <label for="Ttl_days" data-i18n="Ttl_before"></label>
+                <input type="number" class="input input__field" id="Ttl_days" min="1" value="30">
+                <label for="Ttl_days" data-i18n="Ttl_after"></label>
+            </p>
+            <p>
+                <button class="button button--primary" type="button" disabled id="saveButton"
+                    data-i18n="saveButton"></button>
+            </p>
+        </fieldset>
+    </form>
+
+    <script src="../lib/plikconnection.js" defer></script>
+    <script src="management.js" defer></script>
+</body>
+
+</html>

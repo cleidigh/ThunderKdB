@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % editEmailSubjectDTD SYSTEM "chrome://editEmailSubject/locale/editEmailSubject.dtd">
+  %editEmailSubjectDTD;
+  <!ENTITY % messengercomposeDTD SYSTEM "chrome://messenger/locale/messengercompose/messengercompose.dtd" >
+  %messengercomposeDTD;
+]>
+
+<overlay id="editEmailSubjectOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://editEmailSubject/content/editEmailSubject.js"/>
+
+  <menupopup id="messageMenuPopup">
+    <menu id="editEmailSubjectMessageMenuPopupMenu"
+          label="Edit Email Subject"
+          insertafter="messageMenuAfterMarkSeparator">
+      <menupopup>
+        <menuitem id="editEmailSubjectMessageMenuPopup"
+                  label="&lang.menuTitle;"
+                  oncommand="objEditEmailSubject.edit();"
+                  accesskey="&lang.accesskey;"
+                  key="editEmailSubject-key_edit"
+                  keytext="&lang.accesskey;" />
+        <menuitem id="editEmailSubjectMessageMenuPopupSettings"
+                  label="Edit Email Subject - &optionsMenu.label;"
+                  insertafter="editEmailSubjectMessageMenuPopup"
+                  oncommand="objEditEmailSubject.showSettings();" />
+      </menupopup>
+    </menu>
+    <menuseparator insertafter="editEmailSubjectMessageMenuPopupMenu" />
+  </menupopup>
+
+  <menupopup id="mailContext">
+    <menu id="editEmailSubjectMailContextMenu"
+          label="Edit Email Subject"
+          insertafter="mailContext-sep-afterMarkMenu">
+      <menupopup>
+        <menuitem id="editEmailSubjectMailContext"
+                  label="&lang.menuTitle;"
+                  oncommand="objEditEmailSubject.edit();"
+                  accesskey="&lang.accesskey;"
+                  key="editEmailSubject-key_edit"
+                  keytext="&lang.accesskey;" />
+        <menuitem id="editEmailSubjectMailContextSettings"
+                  label="Edit Email Subject - &optionsMenu.label;"
+                  insertafter="editEmailSubjectMailContext"
+                  oncommand="objEditEmailSubject.showSettings();" />
+      </menupopup>
+    </menu>
+    <menuseparator insertafter="editEmailSubjectMailContextMenu" />
+  </menupopup>
+
+  <keyset>
+    <key id="editEmailSubject-key_edit"
+         key="&lang.accesskey;"
+         command="editEmailSubject-cmd_edit" />
+  </keyset>
+
+  <commandset>
+    <command id="editEmailSubject-cmd_edit"
+             label="&lang.menuTitle;"
+             accesskey="&lang.accesskey;"
+             oncommand="objEditEmailSubject.edit();"/>
+  </commandset>
+
+</overlay>

@@ -1,0 +1,45 @@
+{
+    "manifest_version": 2,
+    "applications": {
+        "gecko": {
+            "id": "cloud@johannes-endres.de",
+            "strict_min_version": "68.2.1"
+        }
+    },
+    "name": "__MSG_extensionName__",
+    "description": "__MSG_extensionDescription__",
+    "homepage_url": "https://joendres.gitlab.io/filelink-nextcloud",
+    "author": "Johannes Endres",
+    "version": "3.7.1",
+    "icons": {
+        "48": "icon48.png"
+    },
+    "background": {
+        "scripts": [
+            "lib/utils.js",
+            "lib/status.js",
+            "lib/davuploader.js",
+            "lib/cloudconnection.js",
+            "lib/punycode.js",
+            "background.js"
+        ]
+    },
+    "cloud_file": {
+        "name": "*cloud",
+        "management_url": "prefspane/management.html",
+        "data_format": "File",
+        "service_url": "https://addons.thunderbird.net/de/thunderbird/addon/filelink-nextcloud-owncloud/"
+    },
+    "compose_action": {
+        "default_popup": "progress/progress.html",
+        "default_title": "__MSG_status_menuname__",
+        "default_icon": "icon48.png",
+        "browser_style": true
+    },
+    "permissions": [
+        "<all_urls>",
+        "storage",
+        "cookies"
+    ],
+    "default_locale": "en"
+}

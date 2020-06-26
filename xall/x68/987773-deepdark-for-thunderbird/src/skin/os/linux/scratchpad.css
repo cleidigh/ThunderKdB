@@ -1,0 +1,65 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+menupopup {
+/* DeepDark custom CSS */
+  padding-top: 6px;
+  padding-bottom: 6px;
+/* DeepDark custom CSS - end */
+}
+
+menupopup menu,
+menupopup menuitem:not([type="checkbox"]):not([type="radio"]),
+menupopup menucaption {
+/* DeepDark custom CSS */
+  padding: 0px 21px 0px 26px !important;
+/* DeepDark custom CSS - end */
+}
+
+menuitem[type="radio"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+/* DeepDark custom CSS - end */
+}
+
+menuitem[type="radio"][checked="true"]:-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  padding-left: 0px !important;
+/* DeepDark custom CSS - end */
+}
+
+menuitem[type="radio"][checked="true"]:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  padding-right: 0px !important;
+/* DeepDark custom CSS - end */
+}
+
+menuitem[type="radio"]:not([checked="true"]):-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  padding-left: 5px !important;
+/* DeepDark custom CSS - end */
+}
+
+menuitem[type="radio"]:not([checked="true"]):-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  padding-right: 5px !important;
+/* DeepDark custom CSS - end */
+}
+
+.menu-iconic-left {
+/* DeepDark custom CSS */
+  display: inline-block !important;
+/* DeepDark custom CSS - end */
+}
+
+.menu-iconic-text {
+/* DeepDark custom CSS */
+  min-width: 6rem;
+/* DeepDark custom CSS - end */
+}

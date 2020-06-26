@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://hdrtoolslite/locale/hdrtools.dtd">
+
+<overlay id="headerToolsLightMain" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/x-javascript" src="chrome://hdrtoolslite/content/hdrtools.js"/>
+<script type="application/x-javascript" src="chrome://hdrtoolslite/content/keysets.js"/>
+
+<keyset id="mailKeys">
+  <keyset id="headerToolsLightkeyset"/>
+</keyset>
+
+<commandset id="mailCommands">
+  <command id="headerToolsLightedit"
+           observes="button_mark"
+           oncommand="HeaderToolsLiteObj.edit();" />
+  <command id="headerToolsLighteditFS"
+           observes="button_mark"
+           oncommand="HeaderToolsLiteObj.editFS();" />
+</commandset>
+
+<menupopup id="messageMenuPopup">
+  <menu id="hdrToolsMessageMenu"
+        label="&extName;"
+        insertafter="messageMenuAfterMarkSeparator">
+    <observes element="button_mark"
+              attribute="disabled" />
+    <menupopup>
+      <menuitem id="headerToolsLightModify1"
+                label="&changeDetails;"
+                command="headerToolsLightedit">
+      </menuitem>
+      <menuitem id="headerToolsLightModify2"
+                label="&fullSource;"
+                command="headerToolsLighteditFS">
+      </menuitem>
+      <menuitem id="headerToolsLightSettings1"
+                label="&prefTitle;"
+                oncommand="HeaderToolsLiteObj.showSettings();">
+      </menuitem>
+    </menupopup>
+  </menu>
+  <menuseparator insertafter="hdrToolsMessageMenu" />
+</menupopup>
+
+<menupopup id="mailContext">
+  <menu id="hdrToolsMailContextMenu"
+        label="&extName;"
+        insertafter="mailContext-sep-afterMarkMenu">
+    <observes element="button_mark"
+              attribute="disabled" />
+    <menupopup>
+      <menuitem id="headerToolsLightModify3"
+                label="&changeDetails;"
+                command="headerToolsLightedit">
+      </menuitem>
+      <menuitem id="headerToolsLightModify4"
+                label="&fullSource;"
+                command="headerToolsLighteditFS">
+      </menuitem>
+      <menuitem id="headerToolsLightSettings2"
+                label="&prefTitle;"
+                oncommand="HeaderToolsLiteObj.showSettings();">
+      </menuitem>
+    </menupopup>
+  </menu>
+  <menuseparator insertafter="hdrToolsMailContextMenu" />
+</menupopup>
+
+</overlay>

@@ -1,0 +1,110 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/button.css");
+@import url("chrome://DeepdarkOverlay/skin/checkbox.css");
+@import url("chrome://DeepdarkOverlay/skin/dropmarker.css");
+@import url("chrome://DeepdarkOverlay/skin/menu.css");
+@import url("chrome://DeepdarkOverlay/skin/menulist.css");
+@import url("chrome://DeepdarkOverlay/skin/radio.css");
+@import url("chrome://DeepdarkOverlay/skin/richlistbox.css");
+@import url("chrome://DeepdarkOverlay/skin/tabbox.css");
+@import url("chrome://DeepdarkOverlay/skin/textbox.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+
+
+dialog {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: var(--deepdark-ash-color) !important;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#commonDialog {
+  line-height: 13px;
+}
+
+#filler {
+  margin: 0px -14px;
+}
+
+#infoContainer {
+  max-width: 33em;
+}
+
+#loginContainer {
+  padding-top: 10px;
+}
+
+#infoIcon {
+  margin: 3px 5px 4px;
+  margin-inline-end: 14px;
+}
+
+#infoTitle,
+#infoHeader,
+#infoBody {
+  font: menu;
+  line-height: 16px;
+  margin-bottom: 6px;
+}
+
+#infoTitle {
+  font-weight: bold;
+}
+
+
+/* ::: Alert Icons :::*/
+
+.message-icon,
+.alert-icon,
+.error-icon,
+.question-icon {
+  width: 32px;
+  height: 32px;
+  margin: 6px;
+  margin-inline-end: 20px;
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.alert-dialog #infoIcon {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */ 
+}
+
+.message-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/info.svg");
+/* DeepDark custom CSS - end */
+}
+
+.alert-dialog #infoIcon,
+.alert-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/warning.svg");
+/* DeepDark custom CSS - end */
+}
+
+.error-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/error.svg");
+/* DeepDark custom CSS - end */
+}
+
+.question-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/question.svg");
+/* DeepDark custom CSS - end */
+}

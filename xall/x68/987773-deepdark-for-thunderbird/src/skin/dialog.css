@@ -1,0 +1,653 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/button.css");
+@import url("chrome://DeepdarkOverlay/skin/checkbox.css");
+@import url("chrome://DeepdarkOverlay/skin/dropmarker.css");
+@import url("chrome://DeepdarkOverlay/skin/filterDialog.css");
+@import url("chrome://DeepdarkOverlay/skin/folderMenus.css");
+@import url("chrome://DeepdarkOverlay/skin/folderPane.css");
+@import url("chrome://DeepdarkOverlay/skin/listbox.css");
+@import url("chrome://DeepdarkOverlay/skin/menu.css");
+@import url("chrome://DeepdarkOverlay/skin/menulist.css");
+@import url("chrome://DeepdarkOverlay/skin/numberinput.css");
+@import url("chrome://DeepdarkOverlay/skin/popup.css");
+@import url("chrome://DeepdarkOverlay/skin/progressmeter.css");
+@import url("chrome://DeepdarkOverlay/skin/radio.css");
+@import url("chrome://DeepdarkOverlay/skin/richlistbox.css");
+@import url("chrome://DeepdarkOverlay/skin/spinbuttons.css");
+@import url("chrome://DeepdarkOverlay/skin/searchBox.css");
+@import url("chrome://DeepdarkOverlay/skin/splitter.css");
+@import url("chrome://DeepdarkOverlay/skin/tabbox.css");
+@import url("chrome://DeepdarkOverlay/skin/textbox.css");
+@import url("chrome://DeepdarkOverlay/skin/toolbar.css");
+@import url("chrome://DeepdarkOverlay/skin/tree.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+@import url("chrome://DeepdarkOverlay-OS/skin/dialog.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/menu.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/searchBox.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/tree.css");
+
+
+
+@keyframes highlight {
+/* DeepDark custom CSS */
+  from { background-color: var(--deepdark-accent-color); }
+  to { background-color: transparent; }
+/* DeepDark custom CSS - end */
+}
+
+.text-link {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+textbox {
+/* DeepDark custom CSS */
+  margin: 3px;
+/* DeepDark custom CSS - end */
+}
+
+#commonDialog > image {
+  margin-inline-end: 14px !important;
+}
+
+#commonDialog > .dialog-button-box {
+  margin-inline-start: 0px;
+  margin-bottom: 10px;
+}
+
+window,
+page,
+dialog,
+wizard {
+  padding: 14px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+  box-shadow: none !important;
+  margin: 1px;
+/* DeepDark custom CSS - end */
+}
+
+groupbox {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+label[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#quotaPercentageBar {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  border: 0 !important;
+  border-radius: var(--deepdark-large-radius);
+  background-color: var(--deepdark-progress-remainder-color);
+/* DeepDark custom CSS - end */
+}
+
+::-moz-progress-bar {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background-color: var(--deepdark-accent-color);
+  opacity: 1;
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+#tagColorPicker {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  border-color: transparent !important;
+  background-color: transparent;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+separator.groove:not([orient="vertical"]) {
+  height: 0;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-separator-color) !important;
+  border-bottom-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+separator.groove[orient="vertical"] {
+  width: 0;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+/* DeepDark custom CSS */
+  border-left: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#status-bar.statusbar[class] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  text-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#filterListDialog button[type="menu-button"]#newButton {
+/* DeepDark custom CSS */
+  margin: 0 6px !important;
+/* DeepDark custom CSS - end */ 
+}
+
+#filterListDialog button[type="menu-button"]#newButton > .button-box > button {
+/* DeepDark custom CSS */
+  margin-top: -5px;
+  margin-bottom: -5px;
+  margin-inline-start: -4px;
+  margin-inline-end: 0px;
+  padding: 4px 5px;
+  background: transparent;
+  -moz-border-end: 1px solid var(--deepdark-separator-color);
+  border-radius: 3px 0 0 3px;
+/* DeepDark custom CSS - end */
+}
+
+#filterListDialog button[type="menu-button"]#newButton > .button-box > button:not([disabled]):hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-hover-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Chat Login ::: */
+
+#statusImageStack,
+#displayNameAndstatusMessageStack {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#displayName[usingDefault]:not([editing]) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#displayName:not([focused="true"]),
+#displayNameInput:not([focused="true"]) {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+#displayName[focused="true"],
+#displayNameInput[focused="true"] {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+window#accountManager #bottombuttons {
+/* DeepDark custom CSS */
+  -moz-box-pack: end;
+  -moz-appearance: none;
+  min-height: 28px;
+  background: var(--deepdark-dark-ash-color);
+  border-top: 0;
+  padding: 2px 3px 3px 3px;
+/* DeepDark custom CSS - end */
+}
+
+window#accountManager  richlistitem[error="true"] .accountName,
+window#accountManager .error {
+/* DeepDark custom CSS */
+  color: var(--deepdark-red-color);
+/* DeepDark custom CSS - end */
+}
+
+#statusTypeIcon[status="available"],
+#statusTypeAvailable,
+.statusTypeIcon[status="available"],
+#imStatusAvailable,
+#appmenu_imStatusAvailable,
+richlistitem[state="connected"] .accountStateIcon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/status.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+
+#statusTypeIcon[status="idle"],
+.statusTypeIcon[status="idle"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/status.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 32px 16px 16px);
+}
+
+#statusTypeIcon[status="offline"],
+#statusTypeIcon[status="invisible"],
+#statusTypeOffline,
+.statusTypeIcon[status="offline"],
+.statusTypeIcon[status="invisible"],
+#imStatusOffline,
+#appmenu_imStatusOffline,
+richlistitem[state="disconnected"] .accountStateIcon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/status.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 48px 16px 32px);
+}
+
+#statusTypeIcon[status="unavailable"],
+#statusTypeIcon[status="away"],
+#statusTypeUnavailable,
+.statusTypeIcon[status="unavailable"],
+.statusTypeIcon[status="away"],
+#imStatusUnavailable,
+#appmenu_imStatusUnavailable {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/status.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 64px 16px 48px);
+}
+
+@media (min-resolution: 2dppx) {
+  .prplIcon,
+  #statusTypeIcon .button-icon {
+  /* DeepDark custom CSS */
+    width: 16px;
+    height: 16px;
+  /* DeepDark custom CSS - end */
+  }
+}
+
+#userIcon[src=""] {
+/* DeepDark custom CSS */
+  background-image: url("chrome://deepdarkOverlay/skin/icons/userIcon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  -moz-context-properties: fill;
+  fill: currentColor;
+  border: 0;
+/* DeepDark custom CSS - end */
+}
+
+#statusImageStack #statusTypeIcon {
+/* DeepDark custom CSS */
+  width: 16px;
+  height: 16px;
+  min-height: 16px;
+  min-width: 16px;
+  -moz-appearance: none;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  margin: 24px 0 0 28px;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Color Picker ::: */
+
+input#ColorPicker {
+/* DeepDark custom CSS */
+  -moz-appearance:none !important;
+  background-color: var(--deepdark-btn-bg-color);
+  border-radius: var(--deepdark-border-radius);
+  border: 0;
+/* DeepDark custom CSS - end */
+}
+
+#ColorPickerSwatch {
+  width: 25px;
+  height: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 3px;
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-content-color);
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Account Manager ::: */
+
+.dialogheader {
+/* DeepDark custom CSS */
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+button#accountActionsButton {
+/* DeepDark custom CSS */
+  margin: 5px 7px 5px 3px;
+  padding: 0px 0px;
+  height: 23px;
+/* DeepDark custom CSS - end */
+}
+
+#accountActionsButton .button-menu-dropmarker {
+/* DeepDark custom CSS */
+  display: inline-block;
+/* DeepDark custom CSS - end */
+}
+
+#certPrettyPrint textarea,
+textarea {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */  
+}
+
+#certPrettyPrint textarea,
+textarea {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-tree-bg-color);
+  border: 1px solid var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */  
+}
+
+textarea {
+/* DeepDark custom CSS */
+  padding: 5px;
+/* DeepDark custom CSS - end */  
+}
+
+
+/* ::: Separators ::: */
+
+menuseparator {
+/* DeepDark custom CSS */
+  padding: 0px !important;
+  border-top: 1px solid var(--deepdark-separator-color);
+  border-bottom: 1px solid transparent;
+  background: transparent !important;
+  margin: 3px 0px !important;
+/* DeepDark custom CSS - end */
+}
+
+statusbarpanel,
+.statusbarpanel,
+statusbarpanel:-moz-lwtheme,
+.statsubarpanel:-moz-lwtheme {
+/* DeepDark custom CSS */
+  border-inline-end: 1px solid transparent;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Download Icons ::: */
+
+treechildren::-moz-tree-image(syncCol) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/menu/notchecked.svg");
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(syncCol, synchronize-true) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/menu/checked.svg");
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(syncCol, isServer-true) {
+  list-style-image: none;
+}
+
+
+/* ::: Activity popup ::: */
+
+window#activityManager {
+/* Deepdark custom CSS */
+  padding: 0 !important;
+  margin: 0 !important;
+/* Deepdark custom CSS - end */
+}
+
+richlistbox.activityview {
+/* Deepdark custom CSS */
+  border: 0 !important;
+  margin: 0px !important;
+  background-color: transparent !important;
+/* Deepdark custom CSS - end */
+}
+
+richlistitem.activityitem {
+/* Deepdark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  background-color: transparent !important;
+  color: var(--deepdark-content-color) !important;
+  border-bottom: 0 !important;
+/* Deepdark custom CSS - end */
+}
+
+.activityitem:not([selected="true"]):nth-child(odd) {
+/* Deepdark custom CSS */
+  background-color: var(--deepdark-odd-tree-row-bg-color) !important;
+/* Deepdark custom CSS - end */
+}
+
+.activityitem:not([disabled="true"]):hover {
+/* Deepdark custom CSS */
+  background-color: var(--deepdark-btn-bg-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+/* Deepdark custom CSS - end */
+}
+
+.activityitem[class][selected="true"],
+.activityitem[class][selected="true"]:hover {
+/* Deepdark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* Deepdark custom CSS - end */
+}
+
+richlistbox:focus .activityitem[selected="true"],
+richlistbox:focus activity-group[selected="true"] {
+/* Deepdark custom CSS */
+  background-color: var(--deepdark-focus-tree-row-bg-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* Deepdark custom CSS - end */
+}
+
+richlistbox:focus .activityitem[selected="true"] .statusText,
+richlistbox:focus .activityitem[selected="true"] .dateTime,
+richlistbox:focus .activityitem[selected="true"] .displayText,
+richlistbox:focus .activityitem[selected="true"] .completionTime {
+/* Deepdark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* Deepdark custom CSS - end */
+}
+
+activity-group button,
+activity-process button,
+activity-event button,
+activity-warning button {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/buttons.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+.eventIconBox image {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/defaultEventIcon.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+.blockedIcon {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/Error.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+.processIconBox image {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/defaultProcessIcon.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+.warningIconBox image {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/warning.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.syncMail {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/sync.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.sendMail {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/send.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.copyMail {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/copy.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.moveMail {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/move.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.deleteMail {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/delete.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.addItem {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/addItemIcon.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.removeItem {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/remove.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.undo {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/undo.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.indexMail {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/indexMailIcon.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+image.compactMail {
+/* Deepdark custom CSS */
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/activity/compact.svg) !important;
+/* Deepdark custom CSS - end */
+}
+
+hbox#search {
+/* Deepdark custom CSS */
+  -moz-appearance: none !important;
+/* Deepdark custom CSS - end */
+}
+
+#clearListButton,
+#clearListButton:-moz-window-inactive {
+/* Deepdark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-btn-bg-color);
+  color: var(--deepdark-content-color);
+  border: 0;
+  border-radius: var(--deepdark-border-radius);
+  text-shadow: none;
+  box-shadow: none;
+  padding: 4px;
+  margin: 10px;
+/* Deepdark custom CSS - end */
+}
+
+#clearListButton:not([disabled="true"]):hover,
+#clearListButton:-moz-window-inactive:not([disabled="true"]):hover {
+/* Deepdark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+  color: var(--deepdark-brightest-color);
+/* Deepdark custom CSS - end */
+}
+
+#clearListButton:active:hover,
+#clearListButton:active,
+#clearListButton:-moz-window-inactive:active:hover,
+#clearListButton:-moz-window-inactive:active {
+/* Deepdark custom CSS */
+  background-color: var(--deepdark-btn-bg-color) !important;
+  border: 0 !important;
+  border-radius: var(--deepdark-border-radius) !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  padding: 4px !important;
+/* Deepdark custom CSS - end */
+}
+
+#clearListButton:not([disabled="true"]):focus,
+#clearListButton:-moz-window-inactive:not([disabled="true"]):focus {
+/* Deepdark custom CSS */
+  box-shadow: var(--deepdark-focus-ring-box-shadow);
+/* Deepdark custom CSS - end */
+}
+
+#clearListButton > .button-box > .button-icon {
+/* Deepdark custom CSS */
+  display: none;
+/* Deepdark custom CSS - end */	
+}
+
+
+/* ::: 'Insert' dialogs - Mail Compositor ::: */
+
+groupbox > .groupbox-title > .header {
+/* Deepdark custom CSS */
+  background-color: transparent;
+/* Deepdark custom CSS - end */
+}
+
+dialog#advancedEditDlg menulist[editable="true"],
+dialog#advancedEditDlg menulist[editable="true"][open="true"],
+dialog#advancedEditDlg menulist[editable="true"]:not([disabled]):hover {
+/* Deepdark custom CSS */
+  background-color: transparent !important;
+/* Deepdark custom CSS - end */
+}
+
+/* Image */
+#preview-image-box {
+/* Deepdark custom CSS */
+  border: 4px solid var(--deepdark-dark-ash-color);
+  border-radius: var(--deepdark-border-radius);
+  background-color: var(--deepdark-dark-ash-color);
+  box-shadow: 0 0 0 1px var(--deepdark-separator-color);
+/* Deepdark custom CSS - end */
+}

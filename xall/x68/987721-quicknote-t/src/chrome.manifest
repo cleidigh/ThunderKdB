@@ -1,0 +1,62 @@
+content	quicknote	 chrome/content/
+overlay	chrome://browser/content/browser.xul	chrome://quicknote/content/overlay.xul
+overlay	chrome://navigator/content/navigator.xul	chrome://quicknote/content/smoverlay.xul
+#overlay	chrome://messenger/content/mailWindowOverlay.xul	chrome://quicknote/content/tboverlay.xul	application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+overlay	chrome://messenger/content/messengercompose/messengercompose.xhtml	chrome://quicknote/content/tbcomposeoverlay.xul	application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=73.0a1
+overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://quicknote/content/tbcomposeoverlay.xul	application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+
+overlay chrome://messenger/content/messenger.xhtml chrome://quicknote/content/tboverlay.xul	application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=73.0a1
+overlay chrome://messenger/content/messageWindow.xhtml chrome://quicknote/content/tboverlay.xul	application={3550f703-e582-4d05-9a08-453d09bdfdc6} appversion>=73.0a1
+overlay chrome://messenger/content/messenger.xul chrome://quicknote/content/tboverlay.xul	application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+overlay chrome://messenger/content/messageWindow.xul chrome://quicknote/content/tboverlay.xul	application={3550f703-e582-4d05-9a08-453d09bdfdc6}
+
+overlay	chrome://messenger/content/mailWindowOverlay.xul	chrome://quicknote/content/mailoverlay.xul	application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://quicknote/content/mailoverlay.xul	application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+
+skin	quicknote	classic chrome/skin/
+override	chrome://quicknote/skin/quicknote-button.css	chrome://quicknote/skin/quicknote-button-mac.css	os=Darwin
+override	chrome://quicknote/skin/quicknote-button.css	chrome://quicknote/skin/quicknote-button-lin.css	os=Linux
+style	chrome://browser/content/browser.xul	chrome://quicknote/skin/quicknote-button.css application={ec8030f7-c20a-464f-9b0e-13a3a9e97384}
+style	chrome://navigator/content/navigator.xul	chrome://quicknote/skin/quicknotesm.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style	chrome://messenger/content/customizeToolbar.xhtml	chrome://quicknote/skin/quicknote-button.css appversion>=73.0a1
+style	chrome://messenger/content/customizeToolbar.xul	chrome://quicknote/skin/quicknote-button.css
+style	chrome://messenger/content/customizeToolbar.xul	chrome://quicknote/skin/quicknotesm.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style	chrome://messenger/content/mailWindowOverlay.xhtml	chrome://quicknote/skin/quicknote-button.css appversion>=73.0a1
+style	chrome://messenger/content/messengercompose/messengercompose.xhtml	chrome://quicknote/skin/quicknote-button.css appversion>=73.0a1
+style	chrome://messenger/content/mailWindowOverlay.xul	chrome://quicknote/skin/quicknote-button.css
+style	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://quicknote/skin/quicknote-button.css
+
+style	chrome://messenger/content/messenger.xhtml	chrome://quicknote/skin/quicknote-button.css appversion>=73.0a1
+style	chrome://messenger/content/messageWindow.xhtml	chrome://quicknote/skin/quicknote-button.css appversion>=73.0a1
+style	chrome://messenger/content/messenger.xul	chrome://quicknote/skin/quicknote-button.css
+style	chrome://messenger/content/messageWindow.xul	chrome://quicknote/skin/quicknote-button.css
+
+style	chrome://messenger/content/mailWindowOverlay.xul	chrome://quicknote/skin/quicknotesm.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+style	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://quicknote/skin/quicknotesm.css application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
+
+#locale	quicknote	ar	chrome/locale/ar/
+locale	quicknote	cs	chrome/locale/cs/
+locale	quicknote	da	chrome/locale/da/
+locale	quicknote	de	chrome/locale/de/
+locale	quicknote	el	chrome/locale/el/
+locale	quicknote	en-US	chrome/locale/en-US/
+locale	quicknote	es-MX	chrome/locale/es-MX/
+locale	quicknote	fr	chrome/locale/fr/
+locale	quicknote	hu	chrome/locale/hu/
+locale	quicknote	it	chrome/locale/it/
+locale	quicknote	ja-JP	chrome/locale/ja-JP/
+locale	quicknote	ko-KR	chrome/locale/ko-KR/
+locale	quicknote	lt	chrome/locale/lt/
+locale	quicknote	nl	chrome/locale/nl/
+locale	quicknote	pl	chrome/locale/pl/
+locale	quicknote	pt-BR	chrome/locale/pt-BR/
+locale	quicknote	ro-RO	chrome/locale/ro-RO/
+locale	quicknote	ru	chrome/locale/ru/
+locale	quicknote	sk	chrome/locale/sk/
+locale	quicknote	sl	chrome/locale/sl/
+locale	quicknote	sr	chrome/locale/sr/
+locale	quicknote	sv-SE	chrome/locale/sv-SE/
+locale	quicknote	tr	chrome/locale/tr/
+locale	quicknote	uk-UA	chrome/locale/uk-UA/
+locale	quicknote	zh-CN	chrome/locale/zh-CN/
+locale	quicknote	zh-TW	chrome/locale/zh-TW/

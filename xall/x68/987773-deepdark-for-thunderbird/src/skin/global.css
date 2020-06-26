@@ -1,0 +1,479 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* all localizable skin settings shall live here */
+@import url("chrome://global/locale/intl.css");
+@import url("chrome://global/content/widgets.css");
+
+@import url("chrome://DeepdarkOverlay/skin/accountCreation.css");
+@import url("chrome://DeepdarkOverlay/skin/button.css");
+@import url("chrome://DeepdarkOverlay/skin/checkbox.css");
+@import url("chrome://DeepdarkOverlay/skin/customizeToolbar.css");
+@import url("chrome://DeepdarkOverlay/skin/dialog.css");
+@import url("chrome://DeepdarkOverlay/skin/dropmarker.css");
+@import url("chrome://DeepdarkOverlay/skin/groupbox.css");
+@import url("chrome://DeepdarkOverlay/skin/listbox.css");
+@import url("chrome://DeepdarkOverlay/skin/menulist.css");
+@import url("chrome://DeepdarkOverlay/skin/menu.css");
+@import url("chrome://DeepdarkOverlay/skin/numberinput.css");
+@import url("chrome://DeepdarkOverlay/skin/popup.css");
+@import url("chrome://DeepdarkOverlay/skin/progressmeter.css");
+@import url("chrome://DeepdarkOverlay/skin/radio.css");
+@import url("chrome://DeepdarkOverlay/skin/richlistbox.css");
+@import url("chrome://DeepdarkOverlay/skin/spinbuttons.css");
+@import url("chrome://DeepdarkOverlay/skin/tabbox.css");
+@import url("chrome://DeepdarkOverlay/skin/textbox.css");
+@import url("chrome://DeepdarkOverlay/skin/toolbar.css");
+@import url("chrome://DeepdarkOverlay/skin/tree.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+@import url("chrome://DeepdarkOverlay-OS/skin/wizard.css");
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+
+/* :::::: GENERAL STYLES :::::: */
+
+*|*.plain {
+  -moz-appearance: none;
+  margin: 0 !important;
+  border: none;
+  padding: 0;
+}
+
+html|input,
+html|textarea {
+  font: inherit;
+}
+
+
+/* :::::: CLOSE ICON :::::: */
+
+.close-icon {
+  -moz-appearance: none;
+  -moz-context-properties: fill, fill-opacity;
+  list-style-image: url(chrome://global/skin/icons/close.svg);
+  color: inherit !important;
+  fill: currentColor;
+  fill-opacity: 0;
+}
+
+.close-icon:hover {
+  fill-opacity: 0.1;
+}
+
+.close-icon:hover:active {
+  fill-opacity: 0.2;
+}
+
+.close-icon > .button-icon,
+.close-icon > .button-box > .button-icon,
+.close-icon > .toolbarbutton-icon {
+  width: 20px;
+  height: 20px;
+}
+
+
+/* :::::: AUTOSCROLL POPUP :::::: */
+
+.autoscroller {
+  border: none;
+  padding: 0;
+  background-image: url("chrome://global/skin/icons/autoscroll.svg");
+  background-size: contain;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  -moz-appearance: none;
+  -moz-window-shadow: none;
+}
+
+.autoscroller[scrolldir="NS"] {
+  background-image: url("chrome://global/skin/icons/autoscroll-vertical.svg");
+}
+
+.autoscroller[scrolldir="EW"] {
+  background-image: url("chrome://global/skin/icons/autoscroll-horizontal.svg");
+}
+
+
+/* :::::: PANEL FOOTERS :::::: */
+
+.panel-footer {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button {
+  -moz-appearance: none;
+  border-top: 0;
+  /* !important overrides :hover and :active colors from button.css: */
+  color: inherit !important;
+  min-width: 0;
+  margin: 0;
+  padding: .9em 2px;
+}
+
+.panel-footer > button[disabled] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button:-moz-focusring {
+  outline: 1px dotted;
+  outline-offset: -3px;
+}
+
+.panel-footer > button:not([disabled]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button:not([disabled]):hover:active,
+.panel-footer > button:not([disabled])[open] {
+  box-shadow: 0 1px 0 hsla(210,4%,10%,.05) inset;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button:not([disabled])[default] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+  background-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button:not([disabled])[default]:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button:not([disabled])[default]:hover:active {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: ROOT ELEMENTS :::::: */
+
+window,
+page,
+dialog,
+wizard {
+  font: message-box;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: WIZARD :::::: */
+
+.wizard-header {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+/* DeepDark custom CSS - end */
+}
+
+.wizard-header-box-1 {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+  background: var(--deepdark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.wizard-page-box {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: ALERT ICONS :::::: */
+
+.message-icon,
+.alert-icon,
+.error-icon,
+.question-icon {
+  width: 32px;
+  height: 32px;
+  margin: 6px;
+  margin-inline-end: 20px;
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.alert-dialog #infoIcon {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */ 
+}
+
+.message-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/info.svg");
+/* DeepDark custom CSS - end */
+}
+
+.alert-dialog #infoIcon,
+.alert-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/warning.svg");
+/* DeepDark custom CSS - end */
+}
+
+.error-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/error.svg");
+/* DeepDark custom CSS - end */
+}
+
+.question-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/question.svg");
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: ADDRESSBOOK :::::: */
+
+#photo,
+.person-icon,
+#GenericPhotoList[value="default"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/userIcon.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+#GenericPhotoList[value="default"] .menulist-icon {
+/* DeepDark custom CSS */
+  width: 22px;
+/* DeepDark custom CSS - end */
+}
+
+#PhotoDropTarget {
+/* DeepDark custom CSS */
+  border: 2px dotted transparent;
+  border-radius: 10px;
+/* DeepDark custom CSS - end */
+}
+
+#PhotoDropTarget:hover {
+/* DeepDark custom CSS */
+  border: 2px dotted var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+.abMenuItem[AddrBook="true"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addressbook/addrbook.svg");
+/* DeepDark custom CSS - end */
+}
+
+.person-icon {
+/* DeepDark custom CSS */
+  height: 16px;
+  width: 16px;
+/* DeepDark custom CSS - end */
+}
+
+.addressingWidgetCell,
+.dummy-row-cell:first-child {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: MISCELLANEOUS FORMATTING :::::: */
+
+sidebarheader {
+  text-shadow: none;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+separator.groove:not([orient="vertical"]) {
+  height: 0;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+separator.groove[orient="vertical"] {
+  width: 0;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+/* DeepDark custom CSS */
+  border-left: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+label[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.tooltip-label {
+  margin: 0;
+}
+
+.header {
+  font-weight: bold;
+}
+
+.indent {
+  margin-inline-start: 23px;
+}
+
+.box-padded {
+  padding: 5px;
+}
+
+.text-link {
+  cursor: pointer;
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+.text-link:-moz-focusring {
+/* DeepDark custom CSS */
+  box-shadow: var(--deepdark-focus-ring-box-shadow);
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button {
+  margin: 0 3px;
+  padding: 1px 10px;
+  min-width: 60px;
+  min-height: 16px;
+  -moz-appearance: none !important;
+/* DeepDark custom CSS */
+  color: var(--deepdark-dark-ash-color);
+  background-color: rgba(255,255,255,.5) !important;
+  background-image: none;
+  border: 0px;
+  border-radius: var(--deepdark-border-radius);
+  text-shadow:none !important;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-dark-ash-color) !important;
+  background: rgba(255,255,255,.75) !important;
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button:active:hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-dark-ash-color) !important;
+  background: rgba(255,255,255,.45) !important;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button:-moz-focusring {
+/* DeepDark custom CSS */
+  box-shadow: var(--focus-ring-box-shadow), 0 1px var(--deepdark-accent-color-a30), inset 0 1px 1px var(--deepdark-accent-color-a30);
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button:active:hover:-moz-focusring {
+/* DeepDark custom CSS */
+  box-shadow: var(--focus-ring-box-shadow), 0 1px var(--deepdark-accent-color-a15), inset 0 1px 3px var(--deepdark-accent-color-a15);
+/* DeepDark custom CSS - end */
+}
+
+notification > hbox > button > .button-box > .button-text {
+  margin: 0 !important;
+}
+
+popupnotificationcontent {
+  margin-top: .5em;
+}
+
+.popup-notification-panel > .panel-arrowcontainer > .panel-arrowcontent {
+  /* In order to display the action buttons near the edge of the arrow panel we
+   * have to reset its default padding and specify the padding in the individual
+   * "popupnotification" elements instead. To keep the rounded borders of the
+   * panel, we also have to ensure the contents are clipped to the border box
+   * by hiding the overflow, and we have to override the "display" property so
+   * that the height of the contents is computed correctly in that case. */
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  /* Make multiple popupnotifications stack vertically. */
+  flex-direction: column;
+}
+
+/* autorepeatbuttons in menus */
+
+.popup-internal-box > .scrollbutton-up,
+.popup-internal-box > .scrollbutton-down {
+  height: 15px;
+  position: relative;
+  list-style-image: none;
+  /* Here we're using a little magic.
+   * The arrow button is supposed to overlay the scrollbox, blocking
+   * everything under it from reaching the screen. However, the menu background
+   * is slightly transparent, so how can we block something completely without
+   * messing up the transparency? It's easy: The native theming of the
+   * "menuitem" appearance uses CGContextClearRect before drawing, which
+   * clears everything under it.
+   * Without help from native theming this effect wouldn't be achievable.
+   */
+  -moz-appearance: menuitem;
+}
+
+.popup-internal-box > .scrollbutton-up {
+  padding-top: 1px; /* 4px padding-top from the .popup-internal-box. */
+  margin-bottom: -15px;
+}
+
+.popup-internal-box > .scrollbutton-up > .toolbarbutton-icon {
+  -moz-appearance: button-arrow-up;
+}
+
+.popup-internal-box > .scrollbutton-down {
+  padding-top: 5px;
+  margin-top: -15px;
+}
+
+.popup-internal-box > .scrollbutton-down > .toolbarbutton-icon {
+  -moz-appearance: button-arrow-down;
+}
+
+.popup-internal-box > .scrollbutton-up[disabled="true"],
+.popup-internal-box > .scrollbutton-down[disabled="true"] {
+  visibility: collapse;
+}

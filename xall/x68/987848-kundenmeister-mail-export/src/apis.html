@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>KundenMeister</title>
+    <link rel="shortcut icon" type="image/x-icon" href="icons/Kundenmeister.svg"/>
+    <script type="text/javascript" src="apis.js" defer="true"></script>
+    <style>
+        .container {
+            padding: 30px;
+            width: 400px
+        }
+
+        .label-div {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .item-container {
+            padding: 10px;
+        }
+
+        .input-element {
+            width: 300px;
+            height: 40px;
+            font-size: 15px;
+        }
+
+        .logo {
+            width: 300px;
+        }
+
+        .email-list {
+            list-style: none;
+            text-align: left;
+            padding: 0px;
+            border: 1px solid #393939;
+            margin: 0px;
+            width: 503px;
+            max-height: 300px;
+            overflow: auto;
+        }
+
+        .custom-email-list-item {
+            padding: 10px 10px;
+            width: 286px;
+            cursor: pointer;
+            color: #393939;
+            display: inline-block;
+        }
+
+        .company-text {
+            color: #ff892a !important;
+            font-weight: 900;
+            font-size: 15px;
+        }
+
+        .name-text {
+            font-size: 15px;
+        }
+
+        .email-text {
+            font-size: 14px;
+            color: rgb(43, 125, 188);
+        }
+
+        .location-text {
+            font-size: 14px;
+            color: #c09853 !important;
+        }
+
+        .input-search-element {
+            width: 500px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            font-size: 14px;
+            color: #fff;
+            display: block;
+            background-color: #000;
+        }
+
+        .email-btn {
+            background-color: #428bca !important;
+            border: 1px solid #428bca !important;
+            padding: 10px 23px !important;
+            margin: 5px 0px;
+        }
+
+        .comment-btn {
+            background-color: #ffb752 !important;
+            border: 1px solid #ffb752 !important;
+            padding: 10px !important;
+            margin: 5px 0px;
+        }
+
+        .save-actions {
+            text-align: center;
+            display: inline-block;
+        }
+
+        li {
+            border-bottom: 1px solid #393939;
+            max-height: 140px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="login_form" style="display:none;">
+    <div class="container">
+        <div class="item-container">
+            <img src="icons/Kundenmeister-typo-black.svg" class="logo">
+        </div>
+        <div class="item-container">
+            <div class="label-div">
+                Username
+            </div>
+            <div>
+                <input name="username" id="user_name" class="input-element" placeholder="Username"/>
+            </div>
+        </div>
+        <div class="item-container">
+            <div class="label-div">
+                Password
+            </div>
+            <div>
+                <input name="password" id="password" type="password" class="input-element" placeholder="Password"/>
+            </div>
+        </div>
+        <div class="item-container">
+            <input type="checkbox" value="Remember me" id="remember_me" checked>Keep me logged in
+        </div>
+        <div class="item-container ">
+            <input type="button" name="submit" value="login" class="btn" id="login_btn"/>
+        </div>
+    </div>
+</div>
+<div id="search_form"  style="display:none;">
+    <div class="item-container">
+        <div style="display:inline-block;">
+            <div class="label-div">
+                Search for Customer
+            </div>
+            <div>
+                <input name="email" id="email" class="input-search-element" placeholder="Search with customer name.."/>
+                <!--<input type="button" value="send" class="btn" id="send"/>-->
+            </div>
+            <div>
+                <ul class="email-list" id="email_list" style="display:none;">
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                    <li style="display:none;">
+                        <div class="custom-email-list-item">
+
+                        </div>
+                        <div class="save-actions">
+                            <input type="button" value="Save as email" class="email-btn btn">
+                            <input type="button" value="Save as comment" class="comment-btn btn">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div style="display:inline-block;margin: 25px;position:absolute">
+            <button value="Logout" class="btn" id="logout_btn">Logout</button>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

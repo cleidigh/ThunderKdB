@@ -1,0 +1,161 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/button.css");
+@import url("chrome://DeepdarkOverlay/skin/checkbox.css");
+@import url("chrome://DeepdarkOverlay/skin/dropmarker.css");
+@import url("chrome://DeepdarkOverlay/skin/menulist.css");
+@import url("chrome://DeepdarkOverlay/skin/menu.css");
+@import url("chrome://DeepdarkOverlay/skin/numberinput.css");
+@import url("chrome://DeepdarkOverlay/skin/popup.css");
+@import url("chrome://DeepdarkOverlay/skin/radio.css");
+@import url("chrome://DeepdarkOverlay/skin/spinbuttons.css");
+@import url("chrome://DeepdarkOverlay/skin/textbox.css");
+@import url("chrome://DeepdarkOverlay/skin/toolbar.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+
+.print-preview-navigate-button {
+  min-width: 1.9em;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: transparent !important;
+  margin: 5px !important;
+  border-radius: var(--deepdark-border-radius) !important;
+  -moz-context-properties: fill !important;
+  fill: currentColor !important;
+/* DeepDark custom CSS - end */
+}
+
+.print-preview-navigate-button:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-light-hover-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.print-preview-navigate-button:not([disabled="true"]):active:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton[tooltiptext="First page"].print-preview-navigate-button.tabbable,
+toolbarbutton[tooltiptext="Première page"].print-preview-navigate-button.tabbable {
+/* DeepDark custom CSS */
+  background-image: url('chrome://deepdarkOverlay/skin/icons/fast-backward.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton[tooltiptext="Previous page"].print-preview-navigate-button.tabbable,
+toolbarbutton[tooltiptext="Page précédente"].print-preview-navigate-button.tabbable {
+/* DeepDark custom CSS */
+  background-image: url('chrome://deepdarkOverlay/skin/icons/back.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton[tooltiptext="Next page"].print-preview-navigate-button.tabbable,
+toolbarbutton[tooltiptext="Page suivante"].print-preview-navigate-button.tabbable {
+/* DeepDark custom CSS */
+  background-image: url('chrome://deepdarkOverlay/skin/icons/forward.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton[tooltiptext="Last page"].print-preview-navigate-button.tabbable,
+toolbarbutton[tooltiptext="Dernière page"].print-preview-navigate-button.tabbable {
+/* DeepDark custom CSS */
+  background-image: url('chrome://deepdarkOverlay/skin/icons/fast-forward.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton[tooltiptext="First page"].print-preview-navigate-button.tabbable label,
+toolbarbutton[tooltiptext="Première page"].print-preview-navigate-button.tabbable label,
+toolbarbutton[tooltiptext="Previous page"].print-preview-navigate-button.tabbable label,
+toolbarbutton[tooltiptext="Page précédente"].print-preview-navigate-button.tabbable label,
+toolbarbutton[tooltiptext="Next page"].print-preview-navigate-button.tabbable label,
+toolbarbutton[tooltiptext="Page suivante"].print-preview-navigate-button.tabbable label,
+toolbarbutton[tooltiptext="Last page"].print-preview-navigate-button.tabbable label,
+toolbarbutton[tooltiptext="Dernière page"].print-preview-navigate-button.tabbable label {
+  display: none !important;
+}
+
+toolbarbutton.print-preview-navigate-button > .toolbarbutton-icon {
+  display: none !important;
+}
+
+#print-preview-portrait-button,
+#print-preview-landscape-button {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-context-properties: fill;
+  fill: currentColor;
+  padding: 5px;
+/* DeepDark custom CSS - end */
+}
+
+#print-preview-portrait-button:hover,
+#print-preview-landscape-button:hover {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-brightest-color);
+  color: var(--deepdark-brightest-color);
+  border-radius: var(--deepdark-border-radius);
+  background-color: var(--deepdark-btn-light-hover-color);
+/* DeepDark custom CSS - end */
+}
+
+#print-preview-portrait-button:active:hover,
+#print-preview-landscape-button:active:hover,
+#print-preview-portrait-button[checked],
+#print-preview-landscape-button[checked],
+#print-preview-portrait-button[checked]:hover,
+#print-preview-landscape-button[checked]:hover {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color);
+  color: var(--deepdark-accent-color);
+  background-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+#print-preview-portrait-button {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/Portrait.svg") !important;
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 32px 32px 0px) !important;
+}
+
+#print-preview-landscape-button {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/Landscape.svg") !important;
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 32px 32px 0px) !important;
+}
+
+#print-preview-pageNumber {
+/* DeepDark custom CSS */
+  width: calc(40px + 3ch) !important;
+  border: 1px solid transparent;
+/* DeepDark custom CSS - end */
+}
+
+#print-preview-toolbar input[type="number"],
+#print-preview-toolbar input[type="number"]::-moz-number-wrapper {
+/* Graphite custom CSS */
+  background-color: var(--deepdark-ash-color) !important;
+/* Graphite custom CSS - end */
+}

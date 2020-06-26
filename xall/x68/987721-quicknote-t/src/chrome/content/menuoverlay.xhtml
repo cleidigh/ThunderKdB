@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://quicknote/locale/menuoverlay.dtd">
+
+<overlay id="menuoverlay" xmlns:html="http://www.w3.org/1999/xhtml"
+				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+
+	<commandset id="maincommands">
+		<command id="menu-help-about:command"
+						 oncommand="window.open('about.xhtml','','chrome,centerscreen')" />
+		<command id="menu-help-contents:command"
+						 oncommand="QNover.openLink('http://quicknote.mozdev.org/help.html'); window.close();" />
+		<command id="menu-help-settings:command"
+						 oncommand="QNover.openQNOptions()" />
+		<command id="menu-help-blank:command"
+						 oncommand="" />
+		<command id="menu-help-saveas:command"
+						 oncommand="QNqn.saveNoteAs(QNqn.currentNote());" />
+		<command id="menu-help-savecurr:command"
+						 oncommand="QNqn.saveCurrent();" />
+		<command id="menu-help-saveall:command"
+						 oncommand="QNqn.saveAll();" />
+		<command id="menu-help-renamecurrtab:command"
+						 oncommand="QNqn.renameCurrentTab();" />
+		<command id="menu-help-print:command"
+						 oncommand="QNqn.qnprint('0');" />
+	</commandset>
+
+	<keyset id="mainkeys">
+		<!-- comment out unused keys
+		key id= "menu-help-about:key"
+				 key="" observes="menu-help-about:command"
+				 modifiers="accel" />
+		<key id="menu-help-contents:key"
+				 key="" observes="menu-help-contents:command"
+				 modifiers="accel" />
+		<key id="menu-help-settings:key"
+				 key="" observes="menu-help-settings:command"
+				 modifiers="accel" />
+		<key id="menu-help-blank:key"
+				 key="" observes="menu-help-blank:command"
+				 modifiers="" /-->
+		<key id="menu-help-saveas:key"
+				 key="&context.menu-help-saveas.key;"
+				 observes="menu-help-saveas:command"
+				 modifiers="accel"/>
+		<key id="menu-help-savecurr:key"
+				 key="&context.menu-help-savecurr.key;"
+				 observes="menu-help-savecurr:command"
+				 modifiers="accel" />
+		<key id="menu-help-saveall:key"
+				 key="&context.menu-help-saveall.key;"
+				 observes="menu-help-saveall:command"
+				 modifiers="accel,shift" />
+		<key id="menu-help-renamecurrtab:key"
+				 key="&context.menu-help-renamecurrtab.key;"
+				 observes="menu-help-renamecurrtab:command"
+				 modifiers="accel,shift" />
+		<key id="menu-help-print:key"
+				 key="P"
+				 observes="menu-help-print:command"
+				 modifiers="accel" />
+	</keyset>
+
+	<menupopup id="clipmenu">
+		<menuitem id="menu-help-about"
+							key="menu-help-about:key"
+							label="&context.menu-help-about;"
+							command="menu-help-about:command"
+							accesskey="&context.menu-help-about.accesskey;" />
+		<menuitem id="menu-help-contents"
+							key="menu-help-contents:key"
+							label="&context.menu-help-contents;"
+							command="menu-help-contents:command"
+							accesskey="&context.menu-help-contents.accesskey;" />
+		<menuitem id="menu-help-settings"
+							key="menu-help-settings:key"
+							label="&context.menu-help-settings;"
+							command="menu-help-settings:command"
+							accesskey="&context.menu-help-settings.accesskey;" />
+	</menupopup>
+
+	<menupopup id="clipmenu1">
+		<menuitem id="menu-help-savecurr"
+							key="menu-help-savecurr:key"
+							label="&context.menu-help-savecurr;"
+							command="menu-help-savecurr:command"
+							accesskey="&context.menu-help-savecurr.accesskey;" />
+		<menuitem id="menu-help-saveas"
+							key="menu-help-saveas:key"
+							label="&context.menu-help-saveas;"
+							command="menu-help-saveas:command"
+							accesskey="&context.menu-help-saveas.accesskey;" />
+		<menuitem id="menu-help-saveall"
+							key="menu-help-saveall:key"
+							label="&context.menu-help-saveall;"
+							command="menu-help-saveall:command"
+							accesskey="&context.menu-help-saveall.accesskey;" />
+		<menuitem id="menu-help-print"
+							key="menu-help-print:key"
+							label="&context.menu-help-print;"
+							command="menu-help-print:command"
+							accesskey="&context.menu-help-print.accesskey;" />
+		<menuseparator id="menu-help-separator" />
+		<menuitem id="menu-help-renamecurrtab"
+							key="menu-help-renamecurrtab:key"
+							label="&context.menu-help-renamecurrtab;"
+							command="menu-help-renamecurrtab:command"
+							accesskey="&context.menu-help-renamecurrtab.accesskey;" />
+	</menupopup>
+
+	<menupopup id="clipmenu2">
+		<menuitem id="menu-help-saveas"
+							key="menu-help-saveas:key"
+							label="&context.menu-help-saveas;"
+							command="menu-help-saveas:command"
+							accesskey="&context.menu-help-saveas.accesskey;" />
+		<menuitem id="menu-help-saveall"
+							key="menu-help-saveall:key"
+							label="&context.menu-help-saveall;"
+							command="menu-help-saveall:command"
+							accesskey="&context.menu-help-saveall.accesskey;" />
+	</menupopup>
+
+</overlay>

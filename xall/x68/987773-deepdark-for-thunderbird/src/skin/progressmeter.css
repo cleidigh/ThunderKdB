@@ -1,0 +1,66 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+progressmeter {
+  margin: 2px 4px;
+  min-width: 128px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  height: 6px;
+  box-shadow: none;
+  border: 0;
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+.progress-remainder[flex="100"],
+.progress-remainder[flex="0"] {
+  background-image: none !important;
+  -moz-appearance: none;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-progress-remainder-color);
+  border: 0;
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+.progress-bar{
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background: var(--deepdark-accent-color);
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+progress {
+  display: inline-block;
+  vertical-align: -0.2em;
+  border: 0px !important;
+  box-shadow: none !important;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-progress-remainder-color) !important;
+  border-radius: var(--deepdark-large-radius) !important;
+  height: 6px !important;
+/* DeepDark custom CSS - end */
+}
+
+progress::-moz-progress-bar {
+  display: inline-block !important;
+  float: none !important;
+  position: static !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+  height: 100%;
+  width: 100%;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-accent-color) !important;
+  border-radius: var(--deepdark-large-radius) !important;
+/* DeepDark custom CSS - end */
+}

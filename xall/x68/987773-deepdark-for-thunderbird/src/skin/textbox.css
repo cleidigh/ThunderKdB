@@ -1,0 +1,143 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay-OS/skin/textbox.css");
+
+textbox {
+  cursor: text;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  margin: 5px;
+  padding: 2px 4px;
+  background-color: var(--deepdark-dark-ash-color);
+  border: 1px solid transparent;
+  color: var(--deepdark-content-color);
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+textbox[focused="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color);
+  border: 1px solid var(--deepdark-accent-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+html|*.textbox-input, 
+html|*.textbox-textarea {
+  margin: 0px !important;
+  border: none !important;
+  padding: 0px 1px !important;
+  background-color: inherit;
+  color: inherit;
+  font: inherit;
+}
+
+textarea::-moz-selection,
+*.textbox-input::-moz-selection, 
+*.textbox-textarea::-moz-selection {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-brightest-color) !important;
+  background: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.textbox-contextmenu {
+  cursor: default;
+}
+
+textbox[readonly="true"] {
+/* DeepDark custom CSS */
+  background-color: transparent;
+  border-color: transparent !important;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+textbox[disabled="true"],
+input[disabled="true"],
+menulist[disabled="true"] {
+  cursor: default;
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+textbox[disabled="true"],
+input[disabled="true"] {
+/* DeepDark custom CSS */
+  background: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+menulist[disabled="true"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+textbox[disabled="true"] {
+  cursor: default;
+/* DeepDark custom CSS */
+  background-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+textbox.plain {
+  -moz-appearance: none !important;
+  background-color: transparent;
+  padding: 0px !important;
+  margin: 0px !important;
+  border: none !important;
+}
+
+textbox.plain html|*.textbox-input,
+textbox.plain html|*.textbox-textarea {
+  padding: 0px !important;
+}
+
+/* ::::: search box ::::: */
+
+textbox[type="search"] {
+  padding: 1px;
+  font-size: 12px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background-color: var(--deepdark-dark-ash-color);
+  border: 1px solid transparent;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.textbox-search-clear {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/searchfield-cancel.svg);
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0, 14px, 14px, 0);
+  margin-bottom: 1px;
+}
+
+textbox[type="search"].compact {
+  padding: 0;
+  font-size: 11px;
+}
+
+textbox[type="search"].compact > .textbox-input-box > .textbox-search-icons > .textbox-search-clear {
+  width: 11px;
+}
+
+.textbox-search-clear:not([disabled]) {
+  cursor: default;
+}
+ 
+.textbox-search-icons:not([selectedIndex="1"]) {
+  visibility: hidden;
+}

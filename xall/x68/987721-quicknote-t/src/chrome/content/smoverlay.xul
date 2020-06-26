@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://quicknote/skin/quicknote-button.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://quicknote/locale/overlay.dtd">
+
+<overlay id="quicknotetasksSMoverlay"
+				 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script type="application/x-javascript" src="chrome://quicknote/content/globalvar.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/jsio.js" />
+	<script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/quicknote.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/overlay.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/smoverlay.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/browser.js" />
+
+	<!-- Toolbar Overlay -->
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbarbutton id="quicknote-buttonsm"
+									 onpopupshowing="QNover.updateKeys();"
+									 type="menu-button"
+									 class="toolbarbutton-1 chromeclass-toolbar-additional"
+									 label="&quicknote.open.title;"
+									 tooltiptext="&quicknote.open.title;"
+									 oncommand="QNbrowser.openQuickNote();">
+			<menupopup oncommand="event.stopPropagation();">
+				<menuitem id="quicknote-smopenfloattb"
+									oncommand="QNover.openQNFloat();"
+									label="&quicknote.open.float;"
+									accesskey="&quicknote.open.float.accesskey;"
+									class="menuitem-iconic" />
+				<menuitem id="quicknote-smopentabttb"
+									oncommand="QNbrowser.openQuickNoteInTab();"
+									label="&quicknote.open.tab;"
+									accesskey="&quicknote.open.tab.accesskey;"
+									class="menuitem-iconic" />
+				 <menuseparator />
+				<menuitem id="quicknote-optionstb"
+									oncommand="QNover.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									class="menuitem-iconic" />
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+
+	<!-- Statusbar Overlay -->
+	<statusbar id="status-bar">
+		<statusbarpanel id="quicknote-statuspanel" hidden="true">
+			<menupopup id="quicknote-status"
+								 class="statusbarpanel-menu-iconic icon-quicknote16"
+								 tooltiptext="&quicknote.title.tooltip;"
+								 context="quicknote-statusbar-menu"
+								 onclick="if (event.button == 0) {QNbrowser.openQuickNote();}">
+			</menupopup>
+			<menupopup id="quicknote-statusbar-menu"
+								 position="before_end"
+								 onpopupshowing="QNover.updateKeys();">
+				<menuitem id="quicknote-fopenfloat"
+									oncommand="QNover.openQNFloat();"
+									label="&quicknote.open.float;"
+									accesskey="&quicknote.open.float.accesskey;"
+									class="menuitem-iconic" />
+				<menuitem id="quicknote-fopentab"
+									oncommand="QNbrowser.openQuickNoteInTab();"
+									label="&quicknote.open.tab;"
+									accesskey="&quicknote.open.tab.accesskey;"
+									class="menuitem-iconic" />
+				<menuseparator />
+				<menuitem id="quicknote-optionsf"
+									oncommand="QNover.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									class="menuitem-iconic" />
+			</menupopup>
+		</statusbarpanel>
+	</statusbar>
+
+	<menupopup id="taskPopup">
+		<menu id="quicknotesm-moztab"
+					onpopupshowing="QNover.updateKeys();"
+					class="menu-iconic qnicon"
+					position="3"
+					label="&quicknote.open.title;"
+					accesskey="&quicknote.open.title.accesskey;">
+			<menupopup>
+				<menuitem id="quicknote-smopenfloat"
+									oncommand="QNover.openQNFloat();"
+									label="&quicknote.open.float;"
+									accesskey="&quicknote.open.float.accesskey;"
+									class="menuitem-iconic" />
+				<menuitem id="quicknote-smopentab"
+									oncommand="QNbrowser.openQuickNoteInTab();"
+									label="&quicknote.open.tab;"
+									accesskey="&quicknote.open.tab.accesskey;"
+									class="menuitem-iconic" />
+					<menuseparator />
+				<menuitem id="quicknote-option"
+									oncommand="QNover.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									class="menuitem-iconic" />
+			</menupopup>
+		</menu>
+	</menupopup>
+
+	<!-- ContextMenu Overlay -->
+	<menupopup id="contentAreaContextMenu">
+		<menuitem id="quicknote-contexttab" insertafter="context-sep-properties"
+							class="menuitem-iconic qnicon"
+							label="&quicknote.context.sendto;"
+							accesskey="&quicknote.context.sendto.accesskey;"
+							oncommand="QNover.qnCopyTo()" />
+		<menuitem id="quicknote-contexttablink" insertafter="context-sep-properties"
+							class="menuitem-iconic qnicon"
+							label="&quicknote.context.sendlinkto;"
+							accesskey="&quicknote.context.sendlinkto.accesskey;"
+							oncommand="QNover.qnCopyLinkTo()" />
+	</menupopup>
+
+	<!-- Sidebar Overlay -->
+	<menupopup id="viewSidebarMenu">
+		<menuitem observes="viewQuickNoteSidebar"
+							class="icon-quicknote16" />
+		<menuitem hidden="true">
+			<observes element="viewQuickNoteSidebar"
+								attribute="checked"
+								onbroadcast="QNbrowser.onBeforeToggleSidebar();" />
+		</menuitem>
+	</menupopup>
+
+	<broadcasterset id="mainBroadcasterSet">
+		<broadcaster id="viewQuickNoteSidebar"
+								 autoCheck="false"
+								 label="&quicknote.open.title;"
+								 type="checkbox" group="sidebar"
+								 sidebarurl="chrome://quicknote/content/"
+								 sidebartitle="&quicknote.open.title;"
+								 oncommand="toggleSidebar('viewQuickNoteSidebar');" />
+	</broadcasterset>
+
+	<!-- Hot Key Ctrl-F7 -->
+	<keyset id="navigationKeys">
+		<key id="key_qnfocus" keycode="VK_F7" modifiers="accel" command="cmd_qnfocus" />
+	</keyset>
+
+	<keyset id="mainKeyset">
+		<key id="key_qnfocus" keycode="VK_F7" modifiers="accel" command="cmd_qnfocus" />
+	</keyset>
+
+</overlay>

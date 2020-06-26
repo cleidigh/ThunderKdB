@@ -1,0 +1,29 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+tab[visuallyselected="true"] {
+/* DeepDark custom CSS */
+  margin-top: 2px;
+  padding: 1px 4px 3px;
+  margin-top: 2px;
+  margin-bottom: 0px;
+/* DeepDark custom CSS - end */
+}
+
+tab:first-of-type,
+tab:first-of-type[visuallyselected="true"] {
+/* DeepDark custom CSS */
+  padding-right: 4px !important;
+  padding-left: 4px !important;
+  margin-top: 0;
+  margin-bottom: 0px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+/* DeepDark custom CSS - end */
+}

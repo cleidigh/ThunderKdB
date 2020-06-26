@@ -1,0 +1,186 @@
+@import url("chrome://global/skin/");
+
+#qnprefwindow {
+  min-height:510px;
+  max-height:510px;
+}
+
+#quicknote-button {
+  list-style-image: url("chrome://quicknote/skin/toolbar_icon.png");
+  -moz-image-region: rect(0 16px 16px 0) !important;
+}
+
+#quicknote-button[cui-areatype="menu-panel"],
+toolbarpaletteitem[place="palette"] > #quicknote-button {
+	-moz-image-region: rect( 0 48px 32px 16px);
+}
+
+#quicknote-buttontb {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 24px 24px 0) !important;
+}
+
+#quicknote-buttontb:hover {
+  -moz-image-region: rect(24px 24px 48px 0) !important;
+}
+
+toolbar[iconsize="small"] #quicknote-buttontb {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 40px 16px 24px) !important;
+}
+
+toolbar[iconsize="small"] #quicknote-buttontb:hover {
+  -moz-image-region: rect(16px 40px 32px 24px) !important;
+}
+
+#quicknote-composebutton {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 24px 24px 0) !important;
+}
+
+#quicknote-composebutton:hover {
+  -moz-image-region: rect(24px 24px 48px 0) !important;
+}
+
+toolbar[iconsize="small"] #quicknote-composebutton {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 40px 16px 24px) !important;
+}
+
+toolbar[iconsize="small"] #quicknote-composebutton:hover {
+  -moz-image-region: rect(16px 40px 32px 24px) !important;
+}
+
+radio[pane] {
+  list-style-image: url("chrome://quicknote/skin/qn_pref.png");
+}
+
+radio[pane=mainTabPanel] {
+  -moz-image-region: rect(0px, 32px, 32px, 0px);
+ }
+
+radio[pane=mainTabPanel]:hover, radio[pane=mainTabPanel][selected="true"]  {
+  -moz-image-region: rect(32px, 32px,  64px, 0px)
+}
+
+radio[pane=userFileTabPanel] {
+  -moz-image-region: rect(0px, 64px, 32px, 32px);
+}
+
+radio[pane=userFileTabPanel]:hover, radio[pane=userFileTabPanel][selected="true"]  {
+  -moz-image-region: rect(32px, 64px,  64px, 32px)
+}
+
+radio[pane=advancedtabprefs] {
+  -moz-image-region: rect(0px, 96px, 32px, 64px);
+ }
+
+radio[pane=advancedtabprefs]:hover, radio[pane=advancedtabprefs][selected="true"]  {
+  -moz-image-region: rect(32px, 96px,  64px, 64px)
+}
+
+radio[pane=advancedPrefTab] {
+  -moz-image-region: rect(0px, 128px, 32px, 96px);
+}
+
+radio[pane=advancedPrefTab]:hover, radio[pane=advancedPrefTab][selected="true"]  {
+  -moz-image-region: rect(32px, 128px, 64px, 96px)
+}
+
+.qn_tabpanels { 
+  border-right: 1px solid;
+  border-left: 1px solid;
+  padding: 1px;
+  padding-right: 0px;
+}
+
+.QNtextbox 
+{
+  margin: 0px 0px;
+  margin-right: 0px;
+  border: 0px solid;
+  padding: 0px 0px 0px 0px;
+  font: inherit;
+  line-height: 1;
+  background-color: #FFFFCC; 
+  width: 100%; 
+  height: 100%;  
+  min-height: 100px;
+}
+
+.icon-quicknote16 {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 40px 16px 24px);
+  padding: 0 2px 2px 4px;  
+}
+
+.qnicon {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 40px 16px 24px);
+}
+
+.qnset {
+  list-style-image: url("chrome://quicknote/skin/settings.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+#largelogo {
+  list-style-image: url("chrome://quicknote/skin/quicknote-Large.png");
+}
+
+#confirmsave {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 24px 24px 0);
+}
+
+.save {
+  list-style-image: url("chrome://quicknote/skin/save.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+.saveas {
+  list-style-image: url("chrome://quicknote/skin/save.png");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+.clear {
+  list-style-image: url("chrome://quicknote/skin/save.png");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+.print {
+  list-style-image: url("chrome://quicknote/skin/save.png");
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+#qninfo, #qninfo1  {
+  list-style-image: url("chrome://quicknote/skin/info.png");
+  padding: 0 0 9px 0;
+}
+
+.qnfont {
+  font-weight: bold; 
+}
+
+.qnfont1 {
+  font-weight: bold; 
+  font-size: x-large;
+}
+
+.link {
+	color: #3366FF;
+	text-decoration: none;
+	cursor: pointer;
+
+}
+.link:hover {
+	text-decoration: underline ;
+}
+
+#qnMacbutton, #qnbuttons {
+  padding: 5px;
+}
+
+#buttonbox1, #buttonbox2, #buttonbox3, #buttonbox4, #buttonbox5, #buttonbox6 {
+  max-height: 24px !important;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://hdrtoolslite/locale/hdrtools.dtd">
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://hdrtoolslite/content/hdrtools.css"?>
+
+<dialog xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="HeaderToolsLiteObj.initDialog2();"
+        title="&extName; - &fullSource;"
+        orient="vertical"
+        flex="1"
+        id="HTLdialog2"
+        persist="screenX screenY width height">
+
+<hbox align="center">
+  <label value="&mailCharset;" /><textbox id="charsetBox" />
+  <spacer flex="1" />
+  <button id="FS_button" label="&showComplete;" oncommand="HeaderToolsLiteObj.showFullSource()" collapsed="true" />
+  <label id="sourcePercent" value="&percent;" />
+</hbox>
+<spacer height="10px" />
+<vbox id="cnghdrs2" flex="1">
+  <html:textarea id="editFSarea" flex="1" />
+</vbox>
+
+<script type="application/x-javascript" src="chrome://hdrtoolslite/content/hdrtools.js"/>
+
+</dialog>

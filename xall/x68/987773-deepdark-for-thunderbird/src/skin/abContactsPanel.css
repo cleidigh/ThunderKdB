@@ -1,0 +1,44 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== sidebarPanel.css ===============================================
+  == Styles for the Address Book sidebar panel.
+  ======================================================================= */
+
+@import url("chrome://messenger/skin/");
+@import url("chrome://deepdarkOverlay/skin/addressbook.css");
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#abContextMenuButton > .toolbarbutton-icon {
+  margin-inline-end: 0;
+  width: 11px;
+  height: 11px;
+}
+
+#abContextMenuButton > .toolbarbutton-text {
+  display: none;
+}
+
+@media (-moz-windows-default-theme) {
+  button,
+  #abContextMenuButton,
+  #addressbookList {
+    -moz-appearance: none;
+    margin: 1px 4px;
+    padding: 1px 5px !important;
+    border: 1px solid transparent;
+  }
+}
+
+@media (-moz-os-version: windows-win7) and (-moz-windows-default-theme) {
+  #abContactsPanel {
+    -moz-appearance: none;
+  }
+
+  button,
+  #addressbookList {
+    border-radius: 2px;
+  }
+}

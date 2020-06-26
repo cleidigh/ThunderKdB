@@ -1,0 +1,268 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/button.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+
+html {
+/* DeepDark custom CSS */ 
+  background-color: var(--deepdark-chat-bg-color);
+  scrollbar-color: rgba(249,249,250,.35) var(--deepdark-chat-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#Chat {
+  white-space: normal;
+/* DeepDark custom CSS */  
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+/* The "#chat " is required to override "#Chat *" from conv.css */
+#Chat .pseudo {
+  overflow-x: hidden !important;
+}
+
+.message {
+  clear: both;
+}
+
+.pseudo {
+  font-weight: bold;
+  float: left;
+  width: calc(15% - 3px);
+  text-align: right;
+  padding-bottom: 5px;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.outgoing > .pseudo {
+  color: rgb(80, 80, 200);
+}
+
+.incoming > .pseudo {
+  color: rgb(200, 80, 80);
+}
+
+.message:not(.action) > .next {
+  visibility: hidden;
+}
+
+.date {
+  font-style: normal;
+  font-weight: normal;
+  float: right;
+/* DeepDark custom CSS */
+  color: var(--deepdark-inactive-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.message > .ib-msg-txt,
+.event {
+  display: block;
+  margin-left: 15%;
+  padding-bottom: 5px;
+}
+
+p.event {
+  margin-left: 0;
+}
+
+.usericon {
+  display: none;
+}
+
+.event {
+  clear: both;
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.nick {
+  font-weight: bold;
+}
+
+.nick > .pseudo {
+  text-decoration: underline;
+}
+
+.action {
+  font-style: italic;
+}
+
+.context {
+  color: rgb(91, 91, 91);
+}
+
+.context > .pseudo {
+  opacity: 0.7;
+}
+
+p {
+  margin: 0px auto;
+}
+
+p *:any-link img {
+  margin-bottom: 1px;
+  border-bottom: solid 1px;
+}
+
+.sessionstart-ruler {
+  margin: 8px 0 12px;
+  width: 100%;
+  border: none;
+/* DeepDark custom CSS */
+  border-top: 1px dashed var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* used by javascript */
+.eventToggle {
+  cursor: pointer;
+  min-height: 11px;
+  margin-inline-start: -20px;
+  padding-inline-start: 20px;
+  margin-bottom: -22px;
+  width: 0px;
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  min-height: 18px;
+  margin-inline-start: -40px;
+  padding-inline-start: 18px;
+  background: url('chrome://DeepdarkOverlay/skin/icons/minus.svg') no-repeat left center;
+  background-size: 15px auto !important;
+/* DeepDark custom CSS - end */
+}
+
+.eventToggle:hover {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.eventToggle:active:hover {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.hide-children > .eventToggle {
+  width: 100%;
+  margin-bottom: -5px;
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  background: url('chrome://DeepdarkOverlay/skin/icons/plus.svg') no-repeat left center;
+/* DeepDark custom CSS - end */
+}
+
+.hide-children > .eventToggle:hover {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.hide-children > .eventToggle:active:hover {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.hide-children > .eventToggle:after {
+  content: "\2026"; /* &hellip; */
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.hide-children > :-moz-any(p.event, hr):not(:first-of-type):not(:last-of-type) {
+  display: none;
+}
+
+/* We style Twitter differently from other types of chat */
+
+.message:-moz-any([data-prpl="Twitter"], [data-prpl="twitter"]) {
+  border: 0;
+  min-height: 48px;
+  padding: 6px;
+  margin-left: 0px;
+  margin-bottom: 6px;
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  background-color: var(--deepdark-chat-msg-bg-color);
+  background-image: url("chrome://DeepdarkOverlay/skin/icons/userIcon.svg");
+  background-repeat: no-repeat;
+  background-size: 48px auto;
+  background-position: 10px center;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px rgba(0,0,0,.35);
+  color: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+.message:-moz-any([data-prpl="Twitter"], [data-prpl="twitter"]):-moz-locale-dir(rtl) {
+  background-position: right 10px center;
+}
+
+.message:-moz-any([data-prpl="Twitter"], [data-prpl="twitter"]) a {
+  color: var(--deepdark-accent-color) !important;
+}
+
+img.usericon {
+  display: none !important;
+}
+/* DeepDark custom CSS - end */
+
+.message:-moz-any([data-prpl="Twitter"], [data-prpl="twitter"]) > .pseudo {
+  float: none;
+  text-align: left;
+  display: block;
+  width: auto;
+  padding-left: 64px;
+}
+
+.message:-moz-any([data-prpl="Twitter"], [data-prpl="twitter"]) > .next {
+  visibility: visible;
+}
+
+.message:-moz-any([data-prpl="Twitter"], [data-prpl="twitter"]) > .ib-msg-txt {
+  margin-left: 0px;
+  padding-left: 64px;
+}
+
+.message:-moz-any([data-prpl="Twitter"], [data-prpl="twitter"]) > .usericon {
+  position: absolute;
+  display: block;
+  max-width: 48px;
+  max-height: 48px;
+  margin-right: 6px;
+  border-radius: 5px;
+/* DeepDark custom CSS */  
+  background-image: url("chrome://DeepdarkOverlay/skin/icons/userIcon.svg");
+  background-size: 48px auto;
+  background-position: center center;
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.message:-moz-any([data-prpl="Twitter"], [data-prpl="twitter"]) ~ .event {
+  margin-left: 71px;
+}
+
+.message:-moz-any([data-prpl="Twitter"], [data-prpl="twitter"]) ~ .event > .date {
+  margin-right: 7px;
+}

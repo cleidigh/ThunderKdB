@@ -1,0 +1,34 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+dropmarker {
+  width: 16px;
+  height: 16px;
+  -moz-box-align: center;
+  -moz-box-pack: center;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/arrow/arrow-dropdown-16.svg");
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+  fill-opacity: 1;
+  background-color: transparent;
+  -moz-image-region: auto !important;
+/* DeepDark custom CSS - end */
+}
+
+dropmarker:hover:active:not([disabled="true"]) {
+  padding: 3px;
+}
+
+dropmarker[disabled="true"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/arrow/arrow-dropdown-16.svg");
+  fill-opacity: .35;
+/* DeepDark custom CSS - end */
+}

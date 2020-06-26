@@ -1,0 +1,31 @@
+{
+  "name": "KundenMeister Email Import",
+  "description": "An email import addon from KundenMeister.",
+  "version": "1",
+  "icons": {
+    "48": "icons/Kundenmeister.png"
+  },
+  "applications": {
+    "gecko": {
+      "id": "office@kundenmeister.com"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "accountsRead",
+    "messagesRead",
+    "notifications"
+  ],
+  "browser_action": {
+    "default_title": "KundenMeister",
+    "default_icon": "icons/Kundenmeister.png"
+  },
+  "default_locale": "en",
+  "manifest_version": 2
+}

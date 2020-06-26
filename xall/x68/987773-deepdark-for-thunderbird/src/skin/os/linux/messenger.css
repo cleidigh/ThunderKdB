@@ -1,0 +1,299 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+:root[tabsintitlebar="true"] #titlebar-buttonbox {
+/* DeepDark custom CSS */
+  margin-top: -4px;
+/* DeepDark custom CSS - end */ 
+}
+
+:root[tabsintitlebar="true"] #mail-toolbar-menubar2[autohide="true"][inactive] ~ #tabs-toolbar {
+/* DeepDark custom CSS */
+  margin-top: -3px;
+  padding-top: 1px;
+/* DeepDark custom CSS - end */ 
+}
+
+.tab-background[selected="true"] {
+/* DeepDark custom CSS */
+  border-top-color: transparent;
+  background-color: transparent;
+  background-image: none;
+  background-repeat: no-repeat;
+/* DeepDark custom CSS - end */
+}
+
+.tabmail-tab[selected="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.mail-toolbox::after,
+.contentTabToolbox::after {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([disabled="true"]):not([checked="true"]):not([open="true"]):not(:active):not(:hover) {
+/* DeepDark custom CSS */
+  fill: currentColor !important;
+/* DeepDark custom CSS - end */
+}
+
+#quick-filter-bar {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-ash-color);
+  border-bottom: 0px !important;
+  margin-bottom: -2px;
+/* DeepDark custom CSS - end */
+}
+
+#messagesBox {
+/* DeepDark custom CSS */
+  margin-bottom: -1px;
+/* DeepDark custom CSS - end */
+}
+
+#folderPane-toolbar {
+/* DeepDark custom CSS */
+  border-bottom: 0 !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderPane-toolbar[id] > toolbaritem > menulist {
+/* DeepDark custom CSS */
+  border-radius: 0 !important;
+  background-color: var(--deepdark-tree-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderPane-toolbar[id] > toolbaritem > menulist:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  border-radius: 0 !important;
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderPane-toolbar[id] > toolbaritem > menulist:not([disabled="true"]):active:hover,
+#folderPane-toolbar[id] > toolbaritem > menulist[open="true"]:hover,
+#folderPane-toolbar[id] > toolbaritem > menulist[open="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderpane-mode-selector-menulist .menulist-dropmarker {
+/* DeepDark custom CSS */
+  margin-top: 1px !important;
+/* DeepDark custom CSS - end */
+}
+
+.treecol-sortdirection {
+/* DeepDark custom CSS */
+  filter: invert(1);
+/* DeepDark custom CSS - end */
+}
+
+#folderTree treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true) {
+/* DeepDark custom CSS */
+  background-image: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderTree {
+/* DeepDark custom CSS */
+  background: var(--deepdark-splitter-bg-color) !important;
+  border-bottom-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+#calendar-list-tree-widget treechildren::-moz-tree-row,
+#calendar-task-tree treechildren::-moz-tree-row,
+#logTree treechildren::-moz-tree-row,
+#folderTree treechildren::-moz-tree-row,
+#folderTree treechildren::-moz-tree-row(odd) {
+/* DeepDark custom CSS */
+  background: transparent;
+/* DeepDark custom CSS - end */
+}
+
+#calendar-list-tree-widget treechildren::-moz-tree-row(hover),
+#calendar-task-tree treechildren::-moz-tree-row(hover),
+#logTree[id] treechildren::-moz-tree-row(hover) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-hovered-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#calendar-list-tree-widget treechildren::-moz-tree-row(selected),
+#calendar-task-tree treechildren::-moz-tree-row(selected),
+#threadTree[id] treechildren::-moz-tree-row(selected),
+#folderTree treechildren::-moz-tree-row(selected) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-selected-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#calendar-list-tree-widget treechildren::-moz-tree-row(selected, focus),
+#calendar-task-tree treechildren::-moz-tree-row(selected, focus),
+#threadTree[id] treechildren::-moz-tree-row(selected, focus),
+#folderTree treechildren::-moz-tree-row(selected, focus) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-focus-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#calendar-list-tree-widget treechildren::-moz-tree-cell-text(hover),
+#calendar-task-tree treechildren::-moz-tree-cell-text(hover),
+#logTree[id] treechildren::-moz-tree-cell-text(hover),
+#threadTree[id] treechildren::-moz-tree-cell-text(hover, untagged),
+#folderTree treechildren::-moz-tree-cell-text(hover) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+#calendar-list-tree-widget treechildren::-moz-tree-cell-text(selected),
+#calendar-task-tree treechildren::-moz-tree-cell-text(selected),
+#logTree[id] treechildren::-moz-tree-cell-text(selected),
+#threadTree[id] treechildren::-moz-tree-cell-text(selected, untagged),
+#folderTree treechildren::-moz-tree-cell-text(selected) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#threadTree treechildren::-moz-tree-cell-text(untagged, unread) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.conv-nicklist richlistitem:not([selected="true"]):hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+  background: var(--deepdark-hovered-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+.conv-nicklist richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+.conv-nicklist richlistitem[selected="true"]:focus {
+/* DeepDark custom CSS */
+  background: var(--deepdark-accent-color-a10);
+/* DeepDark custom CSS - end */
+}
+
+.conv-nicklist richlistitem[selected="true"]:not([disabled="true"]),
+.conv-nicklist richlistitem[selected="true"]:not([disabled="true"]):focus {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */	
+}
+
+#threadTree[id] treecolpicker,
+#threadTree[id] treecol {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: var(--deepdark-dark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+  border-top: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#threadTree[id] treecol {
+/* DeepDark custom CSS */
+  border-inline-end: 1px solid var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#threadTree[id] treecolpicker:hover,
+#threadTree[id] treecol:hover {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: var(--deepdark-btn-hover-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.abMenuItem[AddrBook="true"] {
+/* DeepDark custom CSS */
+    width: 16px;
+    height: 16px;
+    list-style-image: url("chrome://deepdarkOverlay/skin/icons/addressbook/addrbook.svg");
+    -moz-image-region: auto;
+/* DeepDark custom CSS - end */
+}
+
+.panel-footer > button {
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+menulist[is="menulist-editable"][editable="true"] > .menulist-dropmarker {
+/* DeepDark custom CSS */
+  min-width: 1em;
+/* DeepDark custom CSS - end */
+}
+
+#miniday-dropdown-button > .toolbarbutton-menu-dropmarker > .dropmarker-icon,
+toolbar:not(#FormatToolbar) .toolbarbutton-menu-dropmarker > .dropmarker-icon {
+/* DeepDark custom CSS */
+  width: 16px !important;
+  background-image: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.statusbar {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-dark-ash-color);
+  background-image: none;
+  color: var(--deepdark-content-color);
+  border-top: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#ltnSidebar,
+.calendar-list-tree, calendar-list-tree > tree {
+/* DeepDark custom CSS */
+    margin-bottom: -1px !important;
+/* DeepDark custom CSS - end */
+}
+
+.agenda-container-box[current="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+button.notification-button,
+button.button-menu-list {
+/* DeepDark custom CSS */
+  padding-bottom: 4px;
+  margin-top: 1px;
+/* DeepDark custom CSS - end */
+}
+
+button.notification-button > .button-box > dropmarker {
+/* DeepDark custom CSS */
+  margin-top: 2px;
+  margin-bottom: 1px;
+/* DeepDark custom CSS - end */
+}

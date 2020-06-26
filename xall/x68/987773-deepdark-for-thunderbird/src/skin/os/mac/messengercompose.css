@@ -1,0 +1,40 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+.autocomplete-richlistitem[type="standard-abook"] > image.ac-site-icon {
+/* DeepDark custom CSS */
+  visibility: hidden !important;
+/* DeepDark custom CSS - end */
+}
+
+.autocomplete-richlistitem[type="standard-abook"] {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-content-color);
+  background-image: url("chrome://deepdarkOverlay/skin/icons/addressbook/addrbook.svg");
+  background-repeat: no-repeat;
+/* DeepDark custom CSS - end */
+}
+
+.autocomplete-richlistitem[type="standard-abook"]:-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  background-position: left 3px center;
+/* DeepDark custom CSS - end */
+}
+
+.autocomplete-richlistitem[type="standard-abook"]:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  background-position: right 3px center;
+/* DeepDark custom CSS - end */
+}
+
+.autocomplete-richlistitem[type="standard-abook"]:hover {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}

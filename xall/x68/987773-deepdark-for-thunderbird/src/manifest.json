@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "DeepDark",
+  "description": "Dark mode for Thunderbird UI",
+  "permissions":["theme"],
+  "version": "13.1.5",
+  "author": "Stefano Rosselli",
+  "homepage_url": "https://addons.thunderbird.net/En-US/thunderbird/addon/deepdark-for-thunderbird",
+  "legacy": {
+    "type": "xul"
+  },
+  "applications": {
+    "gecko": {
+      "id": "{d5e81018-f07b-4719-b893-3dc450504672}",
+      "strict_min_version": "68.0",
+      "strict_max_version": "68.*"
+    }
+  },
+  "icons": {
+    "48": "icon.png",
+    "96": "icon@2x.png"
+  }
+}

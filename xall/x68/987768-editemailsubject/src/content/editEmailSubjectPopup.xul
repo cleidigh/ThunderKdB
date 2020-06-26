@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://editEmailSubject/locale/editEmailSubject.dtd">
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="objEditEmailSubject.initDialog();"
+        title="&lang.menuTitle;"
+        buttons="accept, cancel"
+        orient="vertical"
+        flex="1"
+        id="editEmailSubject_dialog"
+        persist="screenX screenY width height">
+
+  <script type="application/x-javascript" src="chrome://editEmailSubject/content/editEmailSubject.js"/>
+
+  <vbox style="overflow: auto; min-width:300px;" flex="1">
+    <hbox align="center">
+      <label value="&lang.subject;" />
+      <textbox id="editEmailSubjectInput" flex="1" />
+    </hbox>
+  </vbox>
+
+</dialog>

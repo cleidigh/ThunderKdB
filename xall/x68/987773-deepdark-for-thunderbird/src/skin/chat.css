@@ -1,0 +1,1205 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay-OS/skin/chat.css");
+
+#logDisplay {
+/* DeepDark custom CSS */
+  background: var(--deepdark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.im-placeholder-screen {
+  overflow: auto;
+  font-size: 15px;
+  font-weight: normal;
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  background-color: var(--deepdark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+.im-placeholder-box {
+  max-width: calc(500px + 9em);
+  min-height: 3em;
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/info.svg") left 0 no-repeat;
+/* DeepDark custom CSS - end */
+  background-size: 3em;
+  margin-right: .5em;
+  margin-left: .5em;
+  padding-right: 4.5em;
+  padding-left: 4.5em;
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.im-placeholder-innerbox {
+  opacity: .8;
+}
+
+.im-placeholder-title {
+  font-size: 2em;
+  font-weight: lighter;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: .5em;
+  padding-bottom: .4em;
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-separator-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.im-placeholder-desc {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#noPreviousConvDesc {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.im-placeholder-button-box > button {	
+  -moz-appearance: none;
+  font: inherit;
+  min-height: 30px;
+/* DeepDark custom CSS */
+  border: 0;
+  background-color: var(--deepdark-btn-bg-color);
+  border-radius: var(--deepdark-border-radius);
+  color: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.im-placeholder-button-box > button:hover {	
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.im-placeholder-button-box > button:active:hover {	
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color);
+  color: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.im-placeholder-button-box > button > .button-box {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+
+:root[lwt-tree-brighttext] #listPaneBox,
+#listPaneBox {
+/* DeepDark custom CSS */
+  border-inline-end: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#contactlistbox {
+  margin: 0;
+  /* make it possible to let the children overwrite the end border.
+     margin-inline-start because of the inverted direction */
+  margin-inline-start: -1px;
+}
+
+/* move the scrollbar to the left */
+#contactlistbox:-moz-locale-dir(ltr),
+#contactlistbox:-moz-locale-dir(rtl) > scrollbox > .scrollbox-innerbox {
+  direction: rtl;
+}
+
+#contactlistbox:-moz-locale-dir(rtl),
+#contactlistbox:-moz-locale-dir(ltr) > scrollbox > .scrollbox-innerbox {
+  direction: ltr;
+}
+
+imgroup {
+  padding-inline-start: 4px;
+/* DeepDark custom CSS */
+  margin-inline-end: 2px;
+/* DeepDark custom CSS - end */
+}
+
+imgroup > label {
+  margin-inline-start: 4px;
+}
+
+imgroup,
+imconv[unread] {
+  font-weight: bold;
+}
+
+imconv[attention] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-newmail-color);
+/* DeepDark custom CSS - end */
+}
+
+imgroup[selected] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-focus-tree-row-bg-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+imgroup[selected]:-moz-window-inactive {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree-brighttext] imconv[selected="true"],
+:root[lwt-tree-brighttext] imcontact[selected="true"],
+:root[lwt-tree] imconv[selected="true"],
+:root[lwt-tree] imcontact[selected="true"],
+imconv,
+imcontact {
+  border-top: 1px solid transparent !important;
+  border-bottom: 1px solid transparent !important;
+  -moz-box-align: stretch;
+}
+
+.box-line {
+  width: 2px;
+}
+
+imcontact > .box-line {
+  /* equalize the space, the .closeConversationButton uses */
+  margin-inline-end: 22px;
+}
+
+.box-line[selected=true] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+:-moz-any(imconv, imcontact, imgroup):not([selected=true]):hover {
+/* DeepDark custom CSS */
+  background-color: rgba(249,249,250,.05);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+imconv[selected=true],
+imcontact[selected=true] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-focus-tree-row-bg-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+imconv[selected=true]:-moz-window-inactive,
+imcontact[selected=true]:-moz-window-inactive {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+imconv:not(:hover) > .closeConversationButton {
+  visibility: hidden;
+}
+
+/* From instantbird/themes/blist.css */
+.contactStatusText,
+.convStatusText {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.convUnreadCount,
+.contactDisplayName,
+.convDisplayName {
+  margin-inline-end: 0;
+}
+
+.convUnreadCount {
+  margin-inline-start: 0.5ch;
+}
+
+.convUnreadTargetedCount {
+  padding: 2px 7px;
+  border-radius: 50px;
+  margin: 1px 3px;
+  margin-inline-start: 1ch;
+/* DeepDark custom CSS */
+  color: var(--deepdark-red-color);
+  background-color: rgba(250,100,100,.2);
+/* DeepDark custom CSS - end */
+}
+
+imcontact[aliasing] .contactDisplayName {
+  -moz-binding: url("chrome://global/content/bindings/textbox.xml#textbox");
+}
+
+.contactStatusText,
+.convStatusText {
+  margin-inline-start: 0;
+}
+
+/* Avoid a strange jumping bug when hovering and the startChatBubble appears */
+.contact-vbox {
+  min-height: 40px;
+}
+
+.startChatBubble,
+.closeConversationButton {
+  margin: 0 3px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  min-height: 16px;
+  min-width: 16px;
+/* DeepDark custom CSS */
+  color: inherit;
+/* DeepDark custom CSS - end */
+}
+
+.startChatBubble {
+/* DeepDark custom CSS */
+  list-style-image: url('chrome://DeepdarkOverlay/skin/icons/chat.svg');
+/* DeepDark custom CSS - end */
+}
+
+.closeConversationButton {
+  -moz-stack-sizing: ignore;
+}
+
+.closeConversationButton:hover {
+/* DeepDark custom CSS */
+  background-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+.startChatBubble > .button-box,
+.closeConversationButton > .button-box {
+  padding: 0;
+}
+
+.closeConversationButton > .button-box > .button-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* From im/themes/conversation.css */
+.browser {
+  margin: 0 0;
+}
+
+.conv-bottom, .conv-nicklist {
+  margin: 0 0;
+}
+
+.convBox {
+  min-height: 135px;
+}
+
+.conv-top {
+  min-height: 60px;
+}
+
+.conv-top-info {
+  margin: 0 0;
+  padding: 0 0;
+  border-style: none;
+  /* Copy of .main-header-area from osx/mail/messageHeader.css */
+  padding: 0.6ex;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-splitter-bg-color) !important;
+  border-bottom: 1px solid var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.userIconHolder {
+  border: 2px solid rgba(0,0,0,0.15);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.userIcon,
+.userIconHolder {
+  max-width: 48px;
+  max-height: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.userIcon:not([src]),
+.userIconHolder:not([userIcon]) {
+  display: none;
+}
+
+.userIcon[src=""] {
+  background-image: url("chrome://DeepdarkOverlay/skin/icons/userIcon.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.statusTypeIcon {
+  margin: 0 0;
+  width: 16px;
+  height: 16px;
+  min-height: 16px;
+  min-width: 16px;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+}
+
+.statusTypeIcon[typing] {
+  list-style-image: url('chrome://chat/skin/typing-16.png');
+}
+
+.statusTypeIcon[typed] {
+  list-style-image: url('chrome://chat/skin/typed-16.png');
+}
+
+.statusMessage {
+  margin: 0 0 !important;
+  min-height: 16px;
+}
+
+.statusMessage[noTopic]:not([editing]),
+.statusMessageWithDash[noTopic] {
+  font-style: italic;
+}
+
+.status-overlay-icon[status="away"],
+.status-overlay-icon[status="unavailable"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/away.svg");
+/* DeepDark custom CSS - end */
+}
+
+.status-overlay-icon[status="idle"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/idle.svg");
+/* DeepDark custom CSS - end */
+}
+
+.status-overlay-icon[status="mobile"] {
+  list-style-image: url('chrome://chat/skin/mobile.png');
+}
+
+.status-overlay-icon[status="offline"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/offline-16.svg");
+/* DeepDark custom CSS - end */
+}
+
+.status-overlay-icon[status="unknown"] {
+  list-style-image: url('chrome://chat/skin/unknown.png');
+}
+
+/* corresponds to im/themes/conversation.css @media all and (min-height: 251px) */
+.statusImageStack,
+.displayNameAndstatusMessageStack {
+  margin: 2px 2px;
+}
+
+.statusMessage {
+  margin-top: 32px !important;
+}
+
+.statusMessage[editing] {
+  margin: 29px 0 -1px -4px !important;
+}
+
+.displayName {
+  font-size: 16px;
+  margin: 0 0 16px !important;
+  padding-right: 20px;
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+.prplIcon {
+  margin: 0 1px 16px -16px !important;
+}
+
+.statusTypeIcon {
+  margin: 32px 0 0;
+}
+
+.userIconHolder[userIcon] + .statusTypeIcon {
+  margin-left: 32px;
+}
+
+.conv-messages {
+  min-width: 150px;
+}
+
+
+/* Animation copied from the find bar in Firefox - http://dxr.mozilla.org/mozilla-central/source/toolkit/themes/linux/global/findBar.css#7 */
+.conv-status-container {
+  display: block;
+  height: 20px;
+  padding: 3px;
+  transition-property: margin-top, opacity, visibility;
+  transition-duration: 150ms, 150ms, 0s;
+  transition-timing-function: ease-in-out, ease-in-out, linear;
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+.conv-status-container[hidden] {
+  /* Override display:none to make the transition work. */
+  display: -moz-box;
+  visibility: collapse;
+  margin-top: -1em;
+  opacity: 0;
+  transition-delay: 0s, 0s, 150ms;
+}
+
+.conv-textbox {
+  -moz-appearance: none;
+  margin: 0;
+  padding: 3px;
+  border: none;
+/* DeepDark custom CSS */
+  border-top: 1px solid var(--deepdark-darkest-color);
+  background-color: var(--deepdark-dark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+  border-radius: 0;
+/* DeepDark custom CSS - end */
+}
+
+.conv-textbox[focused="true"] {
+/* DeepDark custom CSS */
+  box-shadow: 0 0 0 2px var(--deepdark-accent-color) inset;
+/* DeepDark custom CSS - end */
+}
+
+.conv-textbox[invalidInput="true"] {
+/* DeepDark custom CSS */
+  box-shadow: 0 0 0 2px var(--deepdark-red-color) inset;
+/* DeepDark custom CSS - end */
+}
+
+
+.conv-counter {
+  /* Padding that gets flipped to margins in .conv-counter[value^="0"] to avoid the red border. */
+  font-size: 130%;
+  padding-top: 0;
+  padding-bottom: 1px;
+  padding-inline-start: 5px;
+  padding-inline-end: 6px;
+  margin: 0;
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+  background-color: var(--deepdark-dark-ash-color);
+  border-inline-start: 1px solid var(--deepdark-darkest-color);
+  border-top: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+.conv-counter:-moz-locale-dir(ltr) {
+  border-top-left-radius: 3px;
+}
+
+.conv-counter:-moz-locale-dir(rtl) {
+  border-top-right-radius: 3px;
+}
+
+.conv-counter[value=""] {
+  display: none;
+}
+
+/* Negative counter values (user went over the character limit). */
+.conv-counter[value^="-"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-red-color);
+/* DeepDark custom CSS - end */
+}
+
+.conv-counter {
+  padding-bottom: 0;
+  padding-inline-end: 5px;
+  margin-inline-end: 2px;
+  margin-bottom: 2px !important; /* override 4px from description */
+}
+
+grippy {
+  display: none;
+}
+
+.splitter,
+splitter.conv-chat{
+  margin: 0;
+  border-style: none;
+  min-height: 2px;
+/* DeepDark custom CSS */
+  cursor: ns-resize;
+  min-width: 9px;
+  min-height: 9px;
+  background-image: url("chrome://DeepdarkOverlay/skin/dimple.svg");
+  background-color: var(--deepdark-splitter-bg-color);
+  background-repeat: no-repeat;
+  background-position: center center;
+/* DeepDark custom CSS - end */
+}
+
+#conv-toolbar {
+  border-style: none;
+}
+
+#logTree {
+  margin: 0 0;
+}
+
+.conv-nicklist > richlistitem > label,
+.conv-nicklist > .listitem-iconic .listcell-label {
+  font-weight: bold;
+  padding-inline-start: 1px;
+/* DeepDark custom CSS */
+  text-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+.conv-nicklist > .listitem-iconic .listcell-icon {
+  min-width: 16px;
+  margin: 0 2px;
+}
+
+:root[lwt-tree-brighttext] #nicklist,
+:root[lwt-tree-brighttext] .conv-nicklist-header,
+:root[lwt-tree-brighttext] .conv-logs-header-label {
+/* DeepDark custom CSS */
+  border-bottom-color: var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree] #nicklist,
+:root[lwt-tree] .conv-nicklist-header,
+:root[lwt-tree] .conv-logs-header-label {
+  -moz-appearance: none;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-tree-bg-color);
+  border-bottom: 1px solid var(--deepdark-separator-color);
+  color: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.conv-logs-header-label {
+  margin: 0 -1px 0 0;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  margin-right: -1px;
+  padding: 3px 3px 6px;
+  background: var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+.conv-nicklist-header {
+  margin-right: -1px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  margin-right: -1px;
+  padding: 3px 3px 6px;
+  background: var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+.conv-nicklist-header-label {
+  margin-inline-start: 3px !important;
+  margin-top: 1px !important;
+  margin-bottom: 0 !important;
+  margin-inline-end: 2px !important;
+}
+
+.conv-nicklist,
+#logTree {
+  width: 250px;
+  border: 0px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-tree-bg-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree-brighttext] .conv-nicklist.theme-listbox > richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color);
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+#nicklist > richlistitem[selected] > label,
+#nicklist:focus > richlistitem[inactive][selected] > label,
+:root[lwt-tree-brighttext] .conv-nicklist richlistitem[selected="true"],
+.conv-nicklist[class] richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree-brighttext] .conv-nicklist.theme-listbox:focus > richlistitem[current="true"],
+:root[lwt-tree-brighttext] .conv-nicklist.theme-listbox:focus > richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-focus-tree-row-bg-color);
+  border-color: transparent;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-tree] #nicklist > richlistitem[inactive][selected] > label,
+:root[lwt-tree] #nicklist:focus > richlistitem[inactive][selected] > label,
+#nicklist > richlistitem[inactive][selected] > label {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.listitem-iconic[inactive] .listcell-icon {
+  opacity: 0.45;
+}
+
+.listitem-iconic[inactive][selected] .listcell-icon {
+  opacity: 0.7;
+}
+
+.listitem-iconic[inactive] .listcell-label {
+  font-weight: normal;
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.listitem-iconic[inactive][selected] .listcell-label {
+/* DeepDark custom CSS */
+  color: rgba(255,255,255,.5) !important;
+/* DeepDark custom CSS - end */
+}
+
+.conv-nicklist:focus > .listitem-iconic[inactive][selected] .listcell-label {
+/* DeepDark custom CSS */
+  color: rgba(255,255,255,.75) !important;
+/* DeepDark custom CSS - end */
+}
+
+/* from instantbird/themes/blist.css */
+imgroup .twisty {
+  width: 9px;
+  height: 9px;
+  margin-inline-end: 2px;
+  margin-inline-start: 5px;
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/arrow/arrow-dn.svg") no-repeat center;
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+imgroup[closed] .twisty {
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/arrow/arrow-rit.svg") no-repeat center;
+/* DeepDark custom CSS - end */
+}
+
+.prplBuddyIcon {
+  margin: 2px 0;
+}
+
+#searchResultConv > .prplBuddyIcon > .protoIcon {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/search-glass.svg);
+/* DeepDark custom CSS - end */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  opacity: 0.54;
+}
+
+#statusTypeIcon {
+  min-width: 40px;
+}
+
+#statusTypeIcon > .toolbarbutton-icon {
+/* DeepDark custom CSS */
+  width: auto;
+  padding: 0;
+/* DeepDark custom CSS - end */
+}
+
+/* show the status icon also in text mode */
+toolbar[mode="text"] #statusTypeIcon > .toolbarbutton-icon {
+  display: -moz-box;
+}
+
+.statusMessageToolbarItem {
+  margin: 2px 4px;
+  margin-inline-start: -1px;
+  padding: 3px 5px 4px;
+  border: 1px solid transparent;
+}
+
+#chat-status-selector:hover > .statusMessageToolbarItem,
+.statusMessageToolbarItem:focus {
+/* DeepDark custom CSS */
+  border-color: transparent;
+  background: var(--deepdark-btn-hover-color);
+/* DeepDark custom CSS - end */
+}
+
+#chat-status-selector:-moz-lwtheme > vbox > .statusMessageToolbarItem[editing] {
+/* DeepDark custom CSS */
+  box-shadow: none;
+  border-color: var(--deepdark-accent-color);
+  background-color: var(--deepdark-darkest-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.statusMessageToolbarItem[statusType="offline"],
+.statusMessageToolbarItem[disabled] {
+  border: none;
+}
+
+#chat-status-selector > .statusMessageToolbarItem[editing] {
+  -moz-appearance: none;
+  padding-inline-start: 4px;
+  padding-inline-end: 4px;
+/* DeepDark custom CSS */
+  border-color: transparent;
+  background-color: var(--deepdark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+.tabmail-tab[type="chat"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/chat.svg");
+/* DeepDark custom CSS - end */
+}
+
+.alltabs-item[style*="chat.svg"],
+.tabmail-tab[type="chat"] > .tab-stack > .tab-content > .tab-icon-image {
+  -moz-context-properties: fill, stroke-opacity;
+  stroke-opacity: 0;
+  fill: currentColor;
+}
+
+#button-add-buddy {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addcontact.svg");
+/* DeepDark custom CSS - end */
+}
+
+#button-join-chat {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/join.svg");
+/* DeepDark custom CSS - end */
+}
+
+#button-chat-accounts {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/accounts.svg");
+/* DeepDark custom CSS - end */
+}
+
+#chatTabPanel {
+/* DeepDark custom CSS */
+  --imbox-selected-text-color: var(--deepdark-content-color);
+  --imbox-selected-background-color: var(--deepdark-dark-ash-color);
+  --imbox-selected-border-color: var(--deepdark-darkest-color);
+  --imgroup-selected-background-color: var(--deepdark-selected-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+.convUnreadCount,
+.contactDisplayName,
+.convDisplayName,
+.contactStatusText,
+.convStatusText {
+  margin-top: 3px;
+}
+
+#contactlistbox {
+  /* border-inline-start because of the inverted direction */
+/* DeepDark custom CSS */
+  border-inline-start: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#contactlistbox > scrollbox {
+  margin-inline-start: -1px;
+}
+
+#statusTypeIcon:-moz-locale-dir(ltr) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#statusTypeIcon:-moz-locale-dir(rtl) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#statusTypeIcon > .toolbarbutton-text {
+  display: none;
+}
+
+.statusMessageToolbarItem {
+  height: 22px;
+  margin-inline-start: -3px;
+  margin-bottom: 2px;
+  padding-bottom: 3px;
+}
+
+#chat-status-selector:hover > .statusMessageToolbarItem,
+#chat-status-selector > .statusMessageToolbarItem[editing],
+.statusMessageToolbarItem:focus {
+/* DeepDark custom CSS */
+  background: transparent;
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+#chat-status-selector > .statusMessageToolbarItem[editing] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+/* Adaptation of #folderpane_splitter */
+#listSplitter,
+#contextSplitter {
+  background-image: none;
+  /* splitter grip area */
+  width: 5px;
+  min-width: 5px;
+  /* because of the negative margin needed to make the splitter visible */
+  position: relative;
+  z-index: 10;
+  transition: border-width .3s ease-in;
+}
+
+#listSplitter {
+  border-inline-start: 1px solid transparent;
+  /* make only the splitter border visible */
+/* DeepDark custom CSS */
+  margin-inline-end: -5px;
+/* DeepDark custom CSS - end */
+}
+
+#listSplitter[state="collapsed"]:hover {
+/* DeepDark custom CSS */
+  border-inline-start: 4px solid var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#contextSplitter {
+  /* make only the splitter border visible */
+  margin-inline-start: -4px;
+/* DeepDark custom CSS */
+  border-inline-end: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#contextSplitter[state="collapsed"]:hover {
+/* DeepDark custom CSS */
+  border-inline-end: 4px solid var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.splitter[orient="vertical"],
+#logsSplitter {
+    border-bottom: 0;
+}
+
+.conv-status-container {
+/* DeepDark custom CSS */
+  border-bottom-color: var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+.startChatBubble > .button-box > .button-icon,
+.closeConversationButton > .button-box > .button-icon {
+  margin-inline-start: 0;
+}
+
+/* Adaptation of #folderPaneBox/#folderPaneTree from osx/mail/mailWindow1.css */
+:root[lwt-tree] #listPaneBox,
+#listPaneBox {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-font-smoothing-background-color: var(--deepdark-splitter-bg-color);
+  background-color: var(--deepdark-splitter-bg-color) !important;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#listPaneBox > * {
+  background: transparent !important;
+  -moz-appearance: none !important;
+/* DeepDark custom CSS */
+  border: 0;
+/* DeepDark custom CSS - end */
+}
+
+/* Set a background color to avoid lightweight theme backgrounds */
+:root[lwt-tree] #contextPane,
+#contextPane {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color);
+  border-bottom: 0;
+/* DeepDark custom CSS - end */
+}
+
+#statusTypeIcon[status="available"],
+#statusTypeAvailable,
+.statusTypeIcon[status="available"],
+#imStatusAvailable,
+#appmenu_imStatusAvailable,
+richlistitem[state="connected"] .accountStateIcon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/status.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+
+#statusTypeIcon[status="idle"],
+.statusTypeIcon[status="idle"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/status.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 32px 16px 16px);
+}
+
+#statusTypeIcon[status="offline"],
+#statusTypeIcon[status="invisible"],
+#statusTypeOffline,
+.statusTypeIcon[status="offline"],
+.statusTypeIcon[status="invisible"],
+#imStatusOffline,
+#appmenu_imStatusOffline,
+richlistitem[state="disconnected"] .accountStateIcon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/status.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 48px 16px 32px);
+}
+
+#statusTypeIcon[status="unavailable"],
+#statusTypeIcon[status="away"],
+#statusTypeUnavailable,
+.statusTypeIcon[status="unavailable"],
+.statusTypeIcon[status="away"],
+#imStatusUnavailable,
+#appmenu_imStatusUnavailable {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/status.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0px 64px 16px 48px);
+}
+
+@media (min-resolution: 2dppx) {
+  .prplIcon,
+  #statusTypeIcon .button-icon {
+  /* DeepDark custom CSS */
+    width: 16px;
+    height: 16px;
+  /* DeepDark custom CSS - end */
+  }
+}
+
+#displayNameAndstatusMessageStack #statusMessage {
+  margin: 32px 0 0;
+  min-height: 16px;
+}
+
+#displayNameAndstatusMessageStack #statusMessage[editing] {
+  margin: 29px 2px 0 -4px;
+}
+
+#displayNameAndstatusMessageStack #displayName[editing] {
+  margin-left: -4px;
+  margin-right: -2px;
+  margin-bottom: 18px;
+}
+
+.statusIcon[status="away"],
+.statusIcon[status="unavailable"] {
+/* DeepDark custom CSS */
+  background-image: url('chrome://DeepdarkOverlay/skin/icons/away.svg');
+/* DeepDark custom CSS - end */
+}
+
+.statusIcon[status="idle"] {
+/* DeepDark custom CSS */
+  background-image: url('chrome://DeepdarkOverlay/skin/icons/idle.svg');
+/* DeepDark custom CSS - end */
+}
+
+.statusIcon[status="mobile"] {
+  background-image: url('chrome://chat/skin/mobile.png');
+}
+
+.statusIcon[status="offline"],
+.statusIcon[status="left"] {
+/* DeepDark custom CSS */
+  background-image: url('chrome://DeepdarkOverlay/skin/icons/chat-offline.svg');
+  background-size: 11px auto;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+/* DeepDark custom CSS - end */
+}
+
+.statusIcon[status="joining"] {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  background-image: url('chrome://DeepdarkOverlay/skin/icons/loading.svg');
+/* DeepDark custom CSS - end */
+}
+
+.statusIcon[status="unknown"] {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color);
+  background-image: url('chrome://DeepdarkOverlay/skin/icons/unknown.svg');
+/* DeepDark custom CSS - end */
+}
+
+.statusTypeIcon[status="unknown"] {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color);
+  list-style-image: url('chrome://DeepdarkOverlay/skin/icons/unknown-16.svg');
+/* DeepDark custom CSS - end */
+}
+
+.statusTypeIcon[status="chat"] {
+/* DeepDark custom CSS */	
+  list-style-image: url('chrome://DeepdarkOverlay/skin/icons/chat-16.svg');
+/* DeepDark custom CSS - end */
+}
+
+.statusTypeIcon[status="mobile"] {
+  list-style-image: url('chrome://chat/skin/mobile-16.png');
+}
+
+.protoIcon[status="offline"],
+.protoIcon[status="joining"],
+.protoIcon[status="unknown"] {
+  opacity: 0.3;
+}
+
+.protoIcon[status="offline"][selected],
+.protoIcon[status="joining"][selected],
+.protoIcon[status="unknown"][selected] {
+  opacity: 0.7;
+}
+
+.startChatBubble,
+.statusTypeIcon[status="chat"] {
+/* DeepDark custom CSS */	
+  -moz-context-properties: fill;
+	fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Progressmeter ::: */
+
+#conversationsDeck progress,
+#conversationsDeck progress::-moz-progress-bar  {
+/* DeepDark custom CSS */
+  border-radius: 0 !important;
+/* DeepDark custom CSS - end */ 
+}
+
+#conversationsDeck progress {
+/* DeepDark custom CSS */
+  height: 3px !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+/* DeepDark custom CSS - end */ 
+}
+
+
+
+/* :::::: BUTTONS :::::: */
+
+button#goToConversation {
+  /* The horizontal margin used here come from the Aqua Human Interface
+     Guidelines, there should be 12 pixels between two buttons. */
+  min-width: 79px;
+  text-shadow: none;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-content-color);
+  background: var(--deepdark-btn-bg-color);
+  border-radius: var(--deepdark-border-radius);
+  margin: 5px;
+  padding: 4px 4px;
+  box-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+button#goToConversation:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-hover-color);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+button#goToConversation:not([disabled="true"]):hover:active {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+button#goToConversation:not([disabled="true"]):focus{
+/* DeepDark custom CSS */
+  box-shadow: var(--deepdark-focus-ring-box-shadow);
+/* DeepDark custom CSS - end */
+}
+
+/* When the window isn't focused, the default button background isn't drawn,
+ * so don't change the text color then: */
+button#goToConversation[default="true"]:not([disabled="true"]):not(:-moz-window-inactive) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+/* Likewise, when active (mousedown) but not hovering, the default button
+ * background isn't drawn, override the previous selector for that case: */
+button#goToConversation[default="true"]:not(:hover):active {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Disabled State ::: */
+
+button#goToConversation[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}

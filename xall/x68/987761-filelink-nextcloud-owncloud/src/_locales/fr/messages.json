@@ -1,0 +1,152 @@
+{
+  "extensionDescription": {
+    "message": "Téléverser des fichiers volumineux vers votre Cloud et envoyer le lien par email"
+  },
+  "extensionName": {
+    "message": "*cloud - FileLink for Nextcloud and ownCloud"
+  },
+  "saveButton": {
+    "message": "Sauvegarder"
+  },
+  "resetButton": {
+    "message": "Réinitialiser"
+  },
+  "detailSummary": {
+    "message": "Aide"
+  },
+  "serverUrl": {
+    "message": "Adresse du serveur"
+  },
+  "serverUrl_details": {
+    "message": "L'adresse de votre serveur Cloud doit commencer par http ou https.\nSi votre serveur utilise un port non standard, insérez le dans l'adresse."
+  },
+  "username": {
+    "message": "Utilisateur"
+  },
+  "username_details": {
+    "message": "Votre nom d'utilisateur enregistré sur votre serveur"
+  },
+  "password": {
+    "message": "Mot de passe d'application ou mot de passe de votre compte utilisateur"
+  },
+  "password_details": {
+    "message": "Indiquez un mot de passe d'application (solution à privilégier) ou le mot de passe de votre compte utilisateur.\nUniquement avec Nextcloud, cette extension tente systèmatiquement de convertir le mot de passe du compte utilisateur en un mot de passe d'application. En cas d'échec, votre mot de passe sera enregistré sans chiffrement."
+  },
+  "storageFolder": {
+    "message": "Chemin d'accès au dossier distant"
+  },
+  "storageFolder_details": {
+    "message": "Indiquez le chemin qui pointe sur le dossier distant de votre serveur Cloud destiné à stocker les pièces jointes. Si le dossier indiqué n'existe pas, il sera créé automatiquement pendant le téléversement."
+  },
+  "useDlPassword": {
+    "message": "Protection du téléchargement par mot de passe :"
+  },
+  "useDlPassword_details": {
+    "message": "Le mot de passe doit respecter les règles de caractères appliquées sur votre serveur Cloud (ex: longueur, casse, mélange...). Dans le cas contraire, le téléversement échouera. Pensez à communiquer ce mot de passe au(x) destinataire(s) de la pièce jointe, il sera nécessaire pour l'obtention de cette dernière. "
+  },
+  "expiryDaysBefore": {
+    "message": "Expiration du lien après "
+  },
+  "expiryDaysAfter": {
+    "message": " jours"
+  },
+  "expiry_details": {
+    "message": "Nombre de jours durant lequel le lien de téléchargement sera valide, à partir de ce jour."
+  },
+  "freespace": {
+    "message": "Espace disponible ($FREE$GB utilisés sur $FULL$GB)",
+    "placeholders": {
+      "free": {
+        "content": "$1"
+      },
+      "full": {
+        "content": "$2"
+      }
+    }
+  },
+  "success": {
+    "message": "Réussi"
+  },
+  "error_0": {
+    "message": "Erreur inconnue"
+  },
+  "error_typeerror": {
+    "message": "Connexion impossible. Veuillez vérifier votre connexion internet et l'adresse de votre serveur."
+  },
+  "error_404": {
+    "message": "Utilisateur inexistant ou aucun serveur Cloud compatible à cette adresse."
+  },
+  "warn_unsupported_cloud": {
+    "message": "Attention, la version d'ownCloud ou Nextcloud que vous utilisez est obsolète. Si vous continuez, vous risquez de perdre des données. Contactez l'administrateur de votre serveur pour une mise à jour."
+  },
+  "obsolete_version": {
+    "description": "This is displayed instead of the icon if the cloud version is not supported, so it should be quite short and contain exactly two lines.",
+    "message": "Version\nobsolète"
+  },
+  "error_401": {
+    "message": "Échec de la connexion. Vérifiez le nom d'utilisateur et le mot de passe."
+  },
+  "error_sharing_off": {
+    "message": "Le partage n'est pas activé sur ce serveur Cloud. Contactez votre administrateur pour l'activer."
+  },
+  "error_invalid_pw": {
+    "message": "Mot de passe de téléchargement incorrect (les téléversements échoueront). Raison communiquée par le serveur: $1"
+  },
+  "error_password_enforced": {
+    "message": "Votre serveur Cloud requiert un mot de passe de téléchargement."
+  },
+  "warn_expiry_too_long": {
+    "message": "Le temps d'expiration choisi dépasse la limite fixée par votre administrateur de serveur Cloud à $1 jour(s). La valeur a donc été ramenée à cette limite pour éviter un échec du téléversement."
+  },
+  "useNoDlPassword": {
+    "message": "Pas de mot de passe"
+  },
+  "useNoDlPassword_details": {
+    "message": "Aucun mot de passe ne sera demandé pour ce téléchargement"
+  },
+  "oneDlPassword": {
+    "message": "Utiliser un mot de passe unique pour tous les téléchargements"
+  },
+  "useGeneratedDlPassword": {
+    "message": "Utiliser un mot de passe généré automatiquement pour chaque téléchargement"
+  },
+  "useGeneratedDlPassword_details": {
+    "message": "Un mot de passe aléatoire est généré automatiquement pour chaque fichier. Il faudra le copier depuis la fenêtre surgissante de statut après le téléversement."
+  },
+  "status_menuname": {
+    "description": "This is put after the *cloud logo to form the button in the message compose window that opens the progress popup window",
+    "message": "Statut"
+  },
+  "status_no_uploads": {
+    "message": "Aucun téléversement en cours"
+  },
+  "status_button_clear": {
+    "description": "Button to remove messages from status popup",
+    "message": "Vider la liste des téléversements achevés"
+  },
+  "status_preparing": {
+    "message": "Préparation du téléversement"
+  },
+  "status_creating": {
+    "message": "Création du dossier"
+  },
+  "status_moving": {
+    "message": "Déplacement du fichier en conflit"
+  },
+  "status_uploading": {
+    "message": "Téléversement du fichier"
+  },
+  "status_sharing": {
+    "message": "Partage du fichier"
+  },
+  "status_error": {
+    "description": "The $1 will be replaced with one of the states above, eg 'Sharing failed'. You may put text before and after it. If this doesn't work in your language, please tell me.",
+    "message": "$1 : échec"
+  },
+  "status_password": {
+    "message": "mot de passe: $1"
+  },
+  "warn_nonascii_password": {
+    "message": "Votre mot de passe contient des caractères qui semblent poser un problème d'identification. Veuillez utiliser plutôt un mot de passe d'application."
+  }
+}

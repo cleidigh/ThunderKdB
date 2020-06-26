@@ -1,0 +1,99 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* :::::: VARIABLES :::::: */
+
+:root {  
+  /* DeepDark custom CSS - various variables */
+  --deepdark-accent-color: rgb(0,173,238);
+  --deepdark-accent-color-a10: rgba(0,173,238,.1);
+  --deepdark-accent-color-a15: rgba(0,173,238,.15);
+  --deepdark-accent-color-a30: rgba(0,173,238,.3);
+  --deepdark-accent-color-a50: rgba(0,173,238,.5);
+  --deepdark-hover-accent-color: rgb(0,153,218);
+  --deepdark-newmail-color: rgb(255,150,75);
+  --deepdark-warning-color: rgb(255,150,75);
+  --deepdark-brightest-color: rgb(255,255,255);
+  --deepdark-darkest-color: rgb(0,0,0);
+  --deepdark-green-color: rgb(144,254,34);
+  --deepdark-red-color: rgb(250,100,100);
+  --deepdark-red-color-a25: rgba(250,100,100,.25);
+  --deepdark-light-red-color: rgb(100,60,60);
+  --deepdark-yellow-color: rgb(216,184,38);
+  --deepdark-dark-ash-color: rgb(30,30,30);
+  --deepdark-ash-color: rgb(50,51,53);
+  --deepdark-content-color: rgba(249,249,250,.7);
+  --deepdark-disabled-content-color: rgba(249,249,250,.35);
+  --deepdark-inactive-content-color: rgba(249,249,250,.25);
+  --deepdark-icons-color: rgba(249,249,250,.7);
+  --deepdark-separator-color: rgba(249,249,250,.25);
+  --deepdark-tabbar-separator-color: rgba(249,249,250,.1);
+  --deepdark-border-color: rgba(0,0,0,.5);
+  --deepdark-sidebar-border-color: rgb(15,15,15);
+  --deepdark-sidebar-bg-color: rgb(20,20,20);
+  --deepdark-splitter-bg-color: rgb(20,20,20);
+  --deepdark-warning-color: var(--deepdark-newmail-color);
+  --deepdark-fields-bg-color: rgb(53,54,56);
+  --deepdark-disabled-popup-fields-bg-color: rgba(30,30,30,.5);
+  --deepdark-focus-ring-border-color: rgba(249,249,250,.35);
+  --deepdark-focus-ring-box-shadow: 0 0 0 3px var(--deepdark-focus-ring-border-color);
+  --deepdark-progress-remainder-color: rgba(249,249,250,.15);
+  --deepdark-quotapanel-color: rgba(249,249,250,.7);
+  --deepdark-quotapanel-warning-color: var(--deepdark-warning-color);
+  --deepdark-fields-bg-color: var(--deepdark-ash-color);
+  --deepdark-large-radius: 1000px;
+  --deepdark-toolbarbutton-icon-fill-opacity: 1;
+  --deepdark-disabled-toolbarbutton-icon-fill-opacity: .4;
+  --deepdark-chat-bg-color: rgb(39,40,42);
+  --deepdark-chat-msg-bg-color: var(--deepdark-ash-color);
+  --deepdark-scrollbar-slider-color: rgba(249,249,250,.35);
+  --deepdark-autocomplete-item-hover-color: rgb(64,65,67);
+
+  /* DeepDark custom CSS - variables - trees/listboxes/richlistboxes */
+  --deepdark-treecolpicker-bg-color: rgb(59,60,62);
+  --deepdark-treecolpicker-border-color: var(--deepdark-border-color);
+  --deepdark-tree-bg-color: rgb(44,45,47);
+  --deepdark-tree-border-color: rgb(35,35,35);
+  --deepdark-odd-tree-row-bg-color: rgb(39,40,42);
+  --deepdark-hovered-tree-row-bg-color: rgba(249,249,250,.1);
+  --deepdark-focus-tree-row-bg-color: var(--deepdark-accent-color-a10);
+  --deepdark-selected-tree-row-bg-color: rgba(0,0,0,.5);
+  --deepdark-listbox-bg-color: var(--deepdark-tree-bg-color);
+  
+  /* DeepDark custom CSS - variables - buttons */
+  --deepdark-mailtoolbox-btn-hover-color: rgba(249,249,250,.15);
+  --deepdark-btn-bg-color: rgba(249,249,250,.15);
+  --deepdark-btn-border-color: rgba(249,249,250,.1);
+  --deepdark-secondary-btn-bg-color: rgba(249,249,250,.25);
+  --deepdark-btn-hover-color: rgba(249,249,250,.25);
+  --deepdark-brighter-btn-hover-color: rgba(249,249,250,.35);
+  --deepdark-border-radius: 3px;
+  --toolbarbutton-hover-background: var(--deepdark-btn-hover-color);
+  --toolbarbutton-active-background: var(--deepdark-border-color);
+  --toolbarbutton-icon-fill-attention: var(--deepdark-accent-color);
+  --toolbarbutton-border-radius: var(--deepdark-border-radius);
+  
+  /* DeepDark custom CSS - variables - arrowpanels */
+  --deepdark-arrowpanel-color: var(--deepdark-content-color);
+  --deepdark-arrowpanel-border-radius: 3px;
+  --deepdark-arrowpanel-border-color: var(--deepdark-dark-ash-color);
+  --deepdark-arrowpanel-bg-color: rgb(59,60,62);
+  --deepdark-arrowpanel-padding: 16px;
+  
+  /* DeepDark custom CSS - variables - end */
+
+}
+
+*,
+tree,
+#threadTree,
+#abResultsTree {
+/* DeepDark custom CSS */
+  scrollbar-color: rgba(249,249,250,.35) var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */  
+}

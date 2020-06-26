@@ -1,0 +1,209 @@
+/*@import url("chrome://global/skin/");*/
+
+#qnprefwindow {
+  min-height:465px;
+  max-height:465px;
+}
+
+#quicknote-button {
+  list-style-image: url("chrome://quicknote/skin/toolbar_icon.png");
+  -moz-image-region: rect(0 16px 16px 0) !important;
+  /*list-style-image: url("chrome://quicknote/skin/icon64.svg");
+  -moz-image-region: auto;*/
+}
+
+#quicknote-button[cui-areatype="menu-panel"],
+toolbarpaletteitem[place="palette"] > #quicknote-button {
+	-moz-image-region: rect( 0 48px 32px 16px);
+}
+
+#quicknote-buttontb {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 24px 24px 0) !important;
+  /*list-style-image: url("chrome://quicknote/skin/icon64.svg");*/
+  /*-moz-image-region: auto;*/
+}
+#quicknote-buttontb image {
+  /*filter: invert(100%);*/
+  filter: brightness(1) invert(0);
+}
+#tabbar-toolbar #quicknote-buttontb image {
+  filter: invert(0);
+}
+
+#quicknote-buttontb:hover {
+  -moz-image-region: rect(24px 24px 48px 0) !important;
+}
+
+toolbar[iconsize="small"] #quicknote-buttontb {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 40px 16px 24px) !important;
+  /*list-style-image: url("chrome://quicknote/skin/icon64.svg");*/
+  /*filter: invert(100%);*/
+  filter: brightness(1) invert(0);
+}
+
+toolbar[iconsize="small"] #quicknote-buttontb:hover {
+  -moz-image-region: rect(16px 40px 32px 24px) !important;
+}
+
+#quicknote-composebutton {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 24px 24px 0) !important;
+  /*list-style-image: url("chrome://quicknote/skin/icon64.svg");
+  -moz-image-region: auto;*/
+}
+
+#quicknote-composebutton:hover {
+  -moz-image-region: rect(24px 24px 48px 0) !important;
+}
+
+toolbar[iconsize="small"] #quicknote-composebutton {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 40px 16px 24px) !important;
+  /*list-style-image: url("chrome://quicknote/skin/icon64.svg");
+  -moz-image-region: auto;*/
+}
+
+toolbar[iconsize="small"] #quicknote-composebutton:hover {
+  -moz-image-region: rect(16px 40px 32px 24px) !important;
+}
+
+.tabimages {
+  list-style-image: url("chrome://quicknote/skin/qn_pref.png");
+}
+
+.tabimages[id="mainTab"] {
+  -moz-image-region: rect(0px, 32px, 32px, 0px);
+ }
+
+.tabimages[id="mainTab"]:hover, .tabimages[id="mainTab"][selected="true"]  {
+  -moz-image-region: rect(32px, 32px,  64px, 0px)
+}
+
+.tabimages[id="userFileTab"] {
+  -moz-image-region: rect(0px, 64px, 32px, 32px);
+}
+
+.tabimages[id="userFileTab"]:hover, .tabimages[id="userFileTab"][selected="true"]  {
+  -moz-image-region: rect(32px, 64px,  64px, 32px)
+}
+
+.tabimages[id="customizationTab"] {
+  -moz-image-region: rect(0px, 96px, 32px, 64px);
+ }
+
+.tabimages[id="customizationTab"]:hover, .tabimages[id="customizationTab"][selected="true"]  {
+  -moz-image-region: rect(32px, 96px,  64px, 64px)
+}
+
+.tabimages[id="advancedTab"] {
+  -moz-image-region: rect(0px, 128px, 32px, 96px);
+}
+
+.tabimages[id="advancedTab"]:hover, .tabimages[id="advancedTab"][selected="true"]  {
+  -moz-image-region: rect(32px, 128px, 64px, 96px)
+}
+
+.qn_tabpanels { 
+  border-right: 1px solid;
+  border-left: 1px solid;
+  padding: 1px;
+  padding-right: 0px;
+}
+
+.qn_tabpanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.QNtextbox 
+{
+  margin: 0px 0px;
+  margin-right: 0px;
+  border: 0px solid;
+  padding: 0px 0px 0px 0px;
+  font: inherit;
+  line-height: 1;
+  background-color: #FFFFCC;
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+}
+
+.icon-quicknote16 {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 40px 16px 24px);
+  padding: 0 2px 2px 4px;
+}
+
+.qnicon {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 40px 16px 24px);
+}
+
+.qnset {
+  list-style-image: url("chrome://quicknote/skin/settings.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+#largelogo {
+  list-style-image: url("chrome://quicknote/skin/quicknote-Large.png");
+}
+
+#confirmsave {
+  list-style-image: url("chrome://quicknote/skin/qntoolbar.png");
+  -moz-image-region: rect(0 24px 24px 0);
+}
+
+.save {
+  list-style-image: url("chrome://quicknote/skin/save.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+.saveas {
+  list-style-image: url("chrome://quicknote/skin/save.png");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+.clear {
+  list-style-image: url("chrome://quicknote/skin/save.png");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+.print {
+  list-style-image: url("chrome://quicknote/skin/save.png");
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+#qninfo, #qninfo1  {
+  list-style-image: url("chrome://quicknote/skin/info.png");
+  padding: 0 0 9px 0;
+}
+
+.qnfont {
+  font-weight: bold; 
+}
+
+.qnfont1 {
+  font-weight: bold; 
+  font-size: x-large;
+}
+
+.link {
+	color: #3366FF;
+	text-decoration: none;
+	cursor: pointer;
+
+}
+.link:hover {
+	text-decoration: underline ;
+}
+
+#qnMacbutton, #qnbuttons {
+  padding: 5px;
+}
+
+#buttonbox1, #buttonbox2, #buttonbox3, #buttonbox4, #buttonbox5, #buttonbox6 {
+  max-height: 24px !important;
+}

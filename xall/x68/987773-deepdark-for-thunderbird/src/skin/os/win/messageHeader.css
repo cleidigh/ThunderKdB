@@ -1,0 +1,35 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* ===== messageHeader.css ==============================================
+  == Styles for the header toolbars of a mail message.
+  ======================================================================= */
+
+.toolbarbutton-1.msgHeaderView-button,
+.toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-button,
+.toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-dropmarker {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color);
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1.msgHeaderView-button:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-hover-color);
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1.msgHeaderView-button:not([disabled="true"]):hover > .toolbarbutton-menubutton-button,
+.toolbarbutton-1.msgHeaderView-button:not([disabled="true"]):hover > .toolbarbutton-menubutton-dropmarker {
+/* DeepDark custom CSS */
+  background: transparent !important;
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}

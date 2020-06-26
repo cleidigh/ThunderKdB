@@ -1,0 +1,376 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* ===== messageHeader.css ==============================================
+  == Styles for the header toolbars of a mail message.
+  ======================================================================= */
+
+@import url("chrome://DeepdarkOverlay-OS/skin/messageHeader.css");
+
+/* ::: Message Header ::: */
+
+:root[lwt-default-theme-in-dark-mode] #headers-box,
+:root[lwt-default-theme-in-dark-mode] #msgHeaderView,
+#msgHeaderView {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-splitter-bg-color) !important;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbox#header-view-toolbox,
+toolbar#header-view-toolbar {
+/* DeepDark custom CSS */
+  background: var(--deepdark-splitter-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.main-header-area {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#threadpane-splitter {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#displayDeck:not([collapsed="true"]) + #threadpane-splitter + #messagepanebox .main-header-area {
+/* DeepDark custom CSS */
+  background: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* Msg Header Toolbars */
+
+#expandedHeaderView[show_header_mode="all"] {
+  overflow-x: hidden;
+  overflow-y: visible;
+  max-height: 14em;
+}
+
+.inline-toolbox {
+  padding-inline-end: 6px;
+}
+
+#expandedBoxSpacer {
+  display: block;
+  height: 5px;
+}
+
+
+/* Attachment View */
+
+#attachmentList {
+  margin: 0px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background-color: var(--deepdark-accent-color);
+  color: var(--deepdark-brightest-color);
+  border: 0;
+  padding: 4px;
+/* DeepDark custom CSS - end */
+}
+
+#attachmentToggle {
+  -moz-user-focus: normal;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  -moz-margin-end: 0;
+  -moz-context-properties: fill;
+  fill: var(--deepdark-brightest-color);
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/twisty-clsd.svg");
+  background: none;
+/* DeepDark custom CSS - end */
+}
+
+button#attachmentToggle{
+/* DeepDark custom CSS */
+  min-width: 16px;
+/* DeepDark custom CSS - end */
+}
+
+#attachmentToggle[checked="true"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/twisty-open.svg");
+/* DeepDark custom CSS - end */
+}
+
+#attachmentToggle:hover {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+#attachmentToggle:focus {
+/* DeepDark custom CSS */
+  outline: 1px dotted var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+#attachmentName:hover,
+#attachmentName[selected="true"] {
+  cursor: pointer;
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-hover-color);
+/* DeepDark custom CSS - end */
+}
+
+#attachmentSize {
+  margin: 0;
+  margin-inline-start: 8px;
+/* DeepDark custom CSS */
+  color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+#attachmentSaveAllSingle > .toolbarbutton-menubutton-button,
+#attachmentSaveAllMultiple > .toolbarbutton-menubutton-button {
+  /* Make sure that the icon is vertically centered */
+  /*padding-bottom: 0px !important;*/
+}
+
+#attachmentView {
+/* DeepDark custom CSS */
+  border-top: 0px;
+/* DeepDark custom CSS - end */
+}
+
+#attachmentBar {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* Attachment List */
+
+.attachmentcell-size {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-brightest-color) !important;
+  opacity: .6 !important;
+/* DeepDark custom CSS - end */
+}
+
+attachmentlist:focus > attachmentitem[selected="true"][current="true"] {
+/* DeepDark custom CSS */
+  outline: 1px dotted var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+attachmentitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+#attachmentlist:focus > attachmentitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+attachmentitem .attachmentcell-size {
+/* DeepDark custom CSS */
+  color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* Msg Header Captions */
+
+/* Override primaryToolbar.css rules to give a button appearance */
+
+.toolbarbutton-1.msgHeaderView-button {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  background: var(--deepdark-btn-bg-color);
+  border-radius: var(--deepdark-border-radius);
+  border: 0 !important;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1.msgHeaderView-button:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1.msgHeaderView-button[type="menu-button"][open],
+.toolbarbutton-1.msgHeaderView-button[type="menu-button"][open]:hover,
+.toolbarbutton-1.msgHeaderView-button[type="menu-button"][buttondown="true"],
+.toolbarbutton-1.msgHeaderView-button[type="menu-button"][buttondown="true"]:hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+  fill: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1.msgHeaderView-button[type="menu-button"]:not([open]):hover{
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-brighter-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([disabled="true"]):-moz-any([open="true"]) > .toolbarbutton-menubutton-button{
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  fill: var(--deepdark-accent-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1.msgHeaderView-button[type="menu-button"][buttondown="true"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color);
+  fill: var(--deepdark-accent-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+/* Separator between menu and split type buttons */
+.toolbarbutton-1.msgHeaderView-button >
+.toolbarbutton-menubutton-dropmarker::before {
+/* DeepDark custom CSS */
+  background: var(--deepdark-separator-color);
+  box-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+#attachmentSaveAllSingle,
+#attachmentSaveAllMultiple {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/save.svg");
+  background: transparent;
+  color: var(--deepdark-brightest-color);
+  margin: 2px 0px;
+  -moz-margin-end: 0px;
+/* DeepDark custom CSS - end */
+}
+
+#attachmentSaveAllSingle[open] .toolbarbutton-text {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton#attachmentSaveAllSingle[open] .toolbarbutton-icon,
+toolbarbutton#attachmentSaveAllSingle[open] .toolbarbutton-menubutton-button > .toolbarbutton-icon {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbar[mode="icons"] > #otherActionsButton > .toolbarbutton-menu-dropmarker > .dropmarker-icon {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.headerName {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+:root[lwt-default-theme-in-dark-mode] .headerValue,
+.headerValue {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.headerValueUrl:hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* Msg Header message Ids */
+
+.messageIdDisplayButton {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.messageIdDisplayButton:hover {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* Msg Header Email Addresses */
+
+.emailDisplayButton {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS -end */
+}
+
+.emailDisplayButton:hover,
+mail-emailaddress[selected="true"] > .emailDisplayButton {
+/* DeepDark custom CSS */
+  background: transparent;
+  text-decoration: underline;
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.emailPopup {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* View Expand And Collapse Twisties */
+
+.expandHeaderViewButton {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+
+/* Expanded Header Pane ::::: */
+
+#expandedsubjectBox > .headerValue {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.tagvalue {
+/* DeepDark custom CSS */
+  border-radius: var(--deepdark-border-radius);
+  font-weight: bold;
+  padding: 2px 4px;
+  text-shadow: none;
+  color: var(--deepdark-dark-ash-color);
+  border: 0;
+/* DeepDark custom CSS - end */
+}

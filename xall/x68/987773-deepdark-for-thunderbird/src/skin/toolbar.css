@@ -1,0 +1,54 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+toolbox {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbar {
+  min-width: 1px;
+  min-height: 20px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+menubar {
+  min-width: 1px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+/* DeepDark custom CSS - end */
+}
+
+toolbarseparator {
+  -moz-appearance: none;
+  padding: 0;
+  width: 1px !important;
+/* DeepDark custom CSS */
+  background: transparent;
+  border-left: 2px dotted var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbarpaletteitem[dragover="left"] {
+/* DeepDark custom CSS */
+  border-left-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbarpaletteitem[dragover="right"] {
+/* DeepDark custom CSS */
+  border-right-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}

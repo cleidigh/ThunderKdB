@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://quicknote/skin/quicknote-button.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://quicknote/locale/qnsettings.dtd">
+
+<dialog id="qnprefwindow" title="&qnsettings.title;"
+						xmlns:html="http://www.w3.org/1999/xhtml"
+						xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+						onload="sizeToContent(); teo_qn.modeDisplay()">
+
+	<tabbox id="qnpreftab">
+		<tabs>
+			<tab id="mainTab" label="&qnsettings.mainTab;" class="tabimages"/>
+			<tab id="userFileTab" label="&qnsettings.userFileTab;" class="tabimages"/>
+			<tab id="customizationTab" label="&qnsettings.customization;" class="tabimages"/>
+			<tab id="advancedTab" label="&qnsettings.advanced;" class="tabimages"/>
+		</tabs>
+		<tabpanels>
+			<tabpanel id="mainTabPanel" label="&qnsettings.mainTab;" orient="vertical">
+				<groupbox>
+					<hbox class="groupbox-title">
+						<label class="header" value="&qnsettings.numtab.label;" />
+					</hbox>
+					<radiogroup orient="horizontal" id="numtab-radiogroup">
+						<radio id="numtab-1" label="1" value="1" oncommand="teo_qn.showHideTabPaths()" />
+						<radio id="numtab-2" label="2" value="2" oncommand="teo_qn.showHideTabPaths()" />
+						<radio id="numtab-3" label="3" value="3" oncommand="teo_qn.showHideTabPaths()" />
+						<radio id="numtab-4" label="4" value="4" oncommand="teo_qn.showHideTabPaths()" />
+						<radio id="numtab-5" label="5" value="5" oncommand="teo_qn.showHideTabPaths()" />
+						<radio id="numtab-6" label="6" value="6" oncommand="teo_qn.showHideTabPaths()" />
+					</radiogroup>
+				</groupbox>
+				<groupbox>
+					<hbox class="groupbox-title">
+						<label class="header" value="&qnsettings.behaviour;" />
+					</hbox>
+					<hbox align="center">
+						<label value="&qnsettings.mainTabPanel.label;" />
+						<menulist id="totabint-radiogroup" minwidth="100">
+							<menupopup>
+								<menuitem id="choose-tab1" label="&qnsettings.note1;" value="1" />
+								<menuitem id="choose-tab2" label="&qnsettings.note2;" value="2" disabled="true" />
+								<menuitem id="choose-tab3" label="&qnsettings.note3;" value="3" disabled="true" />
+								<menuitem id="choose-tab4" label="&qnsettings.note4;" value="4" disabled="true" />
+								<menuitem id="choose-tab5" label="&qnsettings.note5;" value="5" disabled="true" />
+								<menuitem id="choose-tab6" label="&qnsettings.note6;" value="6" disabled="true" />
+							</menupopup>
+						</menulist>
+					</hbox>
+					<separator class="thin" />
+					<checkbox id="qn-placetextTop" label="&qnsettings.placetextTop.label;" preference="extensions.quicknote.cursorposstart" />
+					<checkbox id="qn-sendtotextUrl" label="&qnsettings.sendtotextUrl.label;" preference="extensions.quicknote.showUrl" />
+					<checkbox id="qn-autostart" label="&qnsettings.autostart.label;" preference="extensions.quicknote.autostart" />
+				</groupbox>
+				<groupbox>
+					<hbox class="groupbox-title">
+						<label class="header" value="&qnsettings.display;" />
+					</hbox>
+					<checkbox id="showClearButton" label="&qnsettings.showClearButton;" preference="extensions.quicknote.showclearbutton" />
+					<checkbox id="showPrintButton" label="&qnsettings.showPrintButton;" preference="extensions.quicknote.showprintbutton" />
+					<checkbox id="showSaveButton" label="&qnsettings.showSaveButton;" preference="extensions.quicknote.showsavebutton" />
+					<!--checkbox id="showSaveAsButton" label="&qnsettings.showSaveAsButton;" preference="showsaveasbutton" /-->
+					<checkbox id="showinFirefoxButton" label="&qnsettings.showinFxButton.label;" preference="extensions.quicknote.showinfirefoxbutton" />
+					<checkbox id="showinAddonsBar" label="&qnsettings.showinAddonsBar;" preference="extensions.quicknote.showinaddonsbar" />
+					<checkbox id="showQNbutton" label="&qnsettings.showQNbutton;" preference="extensions.quicknote.showqnbutton" />
+				</groupbox>
+				<groupbox>
+					<hbox class="groupbox-title">
+						<label class="header" value="&qnsettings.printing;" />
+					</hbox>
+						<hbox id="printbox" align="center">
+							<label value="&qnsettings.QNTabFontsize;" />
+							<html:input id="printFontsize" type="number" min="6" max="25" width="45" preference="extensions.quicknote.printfontsize" />
+							<label value="px" />
+						</hbox>
+				</groupbox>
+			</tabpanel>
+			<tabpanel id="userFileTabPanel" label="&qnsettings.userFileTab;">
+				<groupbox id="QnDefaultFile">
+					<hbox class="groupbox-title">
+					    <label class="header" value="&qnsettings.userFileTabPanel;" />
+					</hbox>
+					<grid flex="">
+						<columns>
+							<column />
+							<column />
+							<column />
+						</columns>
+						<rows>
+							<row id="QNTabOneFileB" align="center">
+								<label value="&qnsettings.note1;" />
+								<html:input id="QNTabOneFile" size="70" />
+								<button label="&qnsettings.choose;" accesskey="&qnsettings.choose.ak;" oncommand="teo_qn.loaduserFile1()" />
+							</row>
+							<row id="QNTabTwoFileB" align="center">
+								<label value="&qnsettings.note2;" />
+								<html:input id="QNTabTwoFile" size="70" />
+								<button label="&qnsettings.choose;" accesskey="&qnsettings.choose.ak;" oncommand="teo_qn.loaduserFile2()" />
+							</row>
+							<row id="QNTabThreeFileB" align="center">
+								<label value="&qnsettings.note3;" />
+								<html:input id="QNTabThreeFile" size="70" />
+								<button label="&qnsettings.choose;" accesskey="&qnsettings.choose.ak;" oncommand="teo_qn.loaduserFile3()" />
+							</row>
+							<row id="QNTabFourFileB" align="center">
+								<label value="&qnsettings.note4;" />
+								<html:input id="QNTabFourFile" size="70" />
+								<button label="&qnsettings.choose;" accesskey="&qnsettings.choose.ak;" oncommand="teo_qn.loaduserFile4()" />
+							</row>
+							<row id="QNTabFiveFileB" align="center">
+								<label value="&qnsettings.note5;" />
+								<html:input id="QNTabFiveFile" size="70" />
+								<button label="&qnsettings.choose;" accesskey="&qnsettings.choose.ak;" oncommand="teo_qn.loaduserFile5()" />
+							</row>
+							<row id="QNTabSixFileB" align="center">
+								<label value="&qnsettings.note6;" />
+								<html:input id="QNTabSixFile" size="70" />
+								<button label="&qnsettings.choose;" accesskey="&qnsettings.choose.ak;" oncommand="teo_qn.loaduserFile6()" />
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+			</tabpanel>
+			<tabpanel id="advancedtabprefs" label="&qnsettings.customization;">
+				<tabbox flex="">
+					<tabs>
+						<tab label="&qnsettings.note1;" id="tabadvanced1" collapsed="false" />
+						<tab label="&qnsettings.note2;" id="tabadvanced2" collapsed="false" />
+						<tab label="&qnsettings.note3;" id="tabadvanced3" collapsed="true" />
+						<tab label="&qnsettings.note4;" id="tabadvanced4" collapsed="true" />
+						<tab label="&qnsettings.note5;" id="tabadvanced5" collapsed="true" />
+						<tab label="&qnsettings.note6;" id="tabadvanced6" collapsed="true" />
+					</tabs>
+					<tabpanels id="tabpanels" flex="">
+						<tabpanel id="tabadvancedprefs1" orient="vertical">
+							<hbox>
+								<groupbox id="tabPrefBox1" flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.tabadvancedfont;" />
+									</hbox>
+									<hbox id="QNTabOneFonts" align="center">
+										<label value="&qnsettings.QNTabFontsize;" />
+										<html:input id="QNTabOneFontsizetb" type="number" min="6" max="25" width="45" />
+										<label value="&qnsettings.QNTabFontColor;" />
+										<html:input type="color" width="50" id="QNTabOneFontColor" onchange="" />
+									</hbox>
+									<hbox id="QNTabOneFontTypes" flex="1" align="center">
+										<label value="&qnsettings.QNTabFontTypes;" />
+										<menulist id="QNTabOneFontName" editable="true" value="verdana">
+											<menupopup>
+												<menuitem value="verdana" label="Verdana" selected="true" />
+												<menuitem value="tahoma" label="Tahoma" />
+												<menuitem value="sans" label="Sans" />
+												<menuitem value="serif" label="Serif" />
+												<menuitem value="monospace" label="Monospace" />
+												<menuitem value="courier new" label="Courier" />
+												<menuitem value="arial" label="Arial" />
+												<menuitem value="georgia" label="Georgia" />
+												<menuitem value="bradley hand itc" label="Bradley Hand ITC" />
+												<menuitem value="tempus sans itc" label="Tempus Sans ITC" />
+												<menuitem value="kristen itc" label="Kristen ITC" />
+												<menuitem value="times new roman" label="Times New Roman" />
+												<menuitem value="comic sans ms" label="Comic Sans MS" />
+												<menuitem value="trebuchet ms" label="Trebuchet MS" />
+											</menupopup>
+										</menulist>
+									</hbox>
+								</groupbox>
+								<groupbox flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.QNTabBG;" />
+									</hbox>
+									<label value="&qnsettings.QNTabFontColor;" />
+									<hbox pack="center">
+										<html:input type="color" width="50" id="QNTabOneBGColor" onchange="" />
+									</hbox>
+								</groupbox>
+							</hbox>
+							<groupbox>
+								<hbox class="groupbox-title">
+									<label class="header" value="&qnsettings.udstab;" />
+								</hbox>
+								<label id="udstab1" style="font-style: italic;" value="&qnsettings.udstab1;" />
+								<label id="udstab_1" style="font-style: italic;" value="&qnsettings.udstab_1;" />
+								<html:textarea id="UserStyleDefTab1" flex="1" multiline="true" rows="3" cols="7" />
+							</groupbox>
+						</tabpanel>
+						<tabpanel id="tabadvancedprefs2" orient="vertical">
+							<hbox>
+								<groupbox id="tabPrefBox2" flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.tabadvancedfont;" />
+									</hbox>
+									<hbox id="QNTabTwoFonts" align="center">
+										<label value="&qnsettings.QNTabFontsize;" />
+										<html:input id="QNTabTwoFontsizetb" type="number" min="6" max="25" width="45" />
+										<label value="&qnsettings.QNTabFontColor;" />
+										<html:input type="color" width="50" id="QNTabTwoFontColor" onchange="" />
+									</hbox>
+									<hbox id="QNTabTwoFontTypes" flex="1" align="center">
+										<label value="&qnsettings.QNTabFontTypes;" />
+										<menulist id="QNTabTwoFontName" editable="true" value="verdana">
+											<menupopup>
+												<menuitem value="verdana" label="Verdana" selected="true" />
+												<menuitem value="tahoma" label="Tahoma" />
+												<menuitem value="sans" label="Sans" />
+												<menuitem value="serif" label="Serif" />
+												<menuitem value="monospace" label="Monospace" />
+												<menuitem value="courier new" label="Courier" />
+												<menuitem value="arial" label="Arial" />
+												<menuitem value="georgia" label="Georgia" />
+												<menuitem value="bradley hand itc" label="Bradley Hand ITC" />
+												<menuitem value="tempus sans itc" label="Tempus Sans ITC" />
+												<menuitem value="kristen itc" label="Kristen ITC" />
+												<menuitem value="times new roman" label="Times New Roman" />
+												<menuitem value="comic sans ms" label="Comic Sans MS" />
+												<menuitem value="trebuchet ms" label="Trebuchet MS" />
+											</menupopup>
+										</menulist>
+									</hbox>
+								</groupbox>
+								<groupbox flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.QNTabBG;" />
+									</hbox>
+									<label value="&qnsettings.QNTabFontColor;" />
+									<hbox pack="center">
+										<html:input type="color" width="50" id="QNTabTwoBGColor" onchange="" />
+									</hbox>
+								</groupbox>
+							</hbox>
+							<groupbox>
+								<hbox class="groupbox-title">
+									<label class="header" value="&qnsettings.udstab;" />
+								</hbox>
+								<label id="udstab2" style="font-style: italic;" value="&qnsettings.udstab1;" />
+								<label id="udstab_2" style="font-style: italic;" value="&qnsettings.udstab_1;" />
+								<html:textarea id="UserStyleDefTab2" flex="1" multiline="true" rows="3" cols="7" />
+							</groupbox>
+						</tabpanel>
+						<tabpanel id="tabadvancedprefs3" orient="vertical">
+							<hbox>
+								<groupbox id="tabPrefBox3" flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.tabadvancedfont;" />
+									</hbox>
+									<hbox id="QNTabThreeFonts" align="center">
+										<label value="&qnsettings.QNTabFontsize;" />
+										<html:input id="QNTabThreeFontsizetb" type="number" min="6" max="25" width="45" />
+										<label value="&qnsettings.QNTabFontColor;" />
+										<html:input type="color" width="50" id="QNTabThreeFontColor" onchange="" />
+									</hbox>
+									<hbox id="QNTabThreeFontTypes" flex="1" align="center">
+										<label value="&qnsettings.QNTabFontTypes;" />
+										<menulist id="QNTabThreeFontName" editable="true" value="verdana">
+											<menupopup>
+												<menuitem value="verdana" label="Verdana" selected="true" />
+												<menuitem value="tahoma" label="Tahoma" />
+												<menuitem value="sans" label="Sans" />
+												<menuitem value="serif" label="Serif" />
+												<menuitem value="monospace" label="Monospace" />
+												<menuitem value="courier new" label="Courier" />
+												<menuitem value="arial" label="Arial" />
+												<menuitem value="georgia" label="Georgia" />
+												<menuitem value="bradley hand itc" label="Bradley Hand ITC" />
+												<menuitem value="tempus sans itc" label="Tempus Sans ITC" />
+												<menuitem value="kristen itc" label="Kristen ITC" />
+												<menuitem value="times new roman" label="Times New Roman" />
+												<menuitem value="comic sans ms" label="Comic Sans MS" />
+												<menuitem value="trebuchet ms" label="Trebuchet MS" />
+											</menupopup>
+										</menulist>
+									</hbox>
+								</groupbox>
+								<groupbox flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.QNTabBG;" />
+									</hbox>
+									<label value="&qnsettings.QNTabFontColor;" />
+									<hbox pack="center">
+										<html:input type="color" width="50" id="QNTabThreeBGColor" onchange="" />
+									</hbox>
+								</groupbox>
+							</hbox>
+							<groupbox>
+								<hbox class="groupbox-title">
+									<label class="header" value="&qnsettings.udstab;" />
+								</hbox>
+								<label id="udstab3" style="font-style: italic;" value="&qnsettings.udstab1;" />
+								<label id="udstab_3" style="font-style: italic;" value="&qnsettings.udstab_1;" />
+								<html:textarea id="UserStyleDefTab3" flex="1" multiline="true" rows="3" cols="7" />
+							</groupbox>
+						</tabpanel>
+						<tabpanel id="tabadvancedprefs4" orient="vertical">
+							<hbox>
+								<groupbox id="tabPrefBox4" flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.tabadvancedfont;" />
+									</hbox>
+									<hbox id="QNTabFourFonts" align="center">
+										<label value="&qnsettings.QNTabFontsize;" />
+										<html:input id="QNTabFourFontsizetb" type="number" min="6" max="25" width="45" />
+										<label value="&qnsettings.QNTabFontColor;" />
+										<html:input type="color" width="50" id="QNTabFourFontColor" onchange="" />
+									</hbox>
+									<hbox id="QNTabFourFontTypes" flex="1" align="center">
+										<label value="&qnsettings.QNTabFontTypes;" />
+										<menulist id="QNTabFourFontName" editable="true" value="verdana">
+											<menupopup>
+												<menuitem value="verdana" label="Verdana" selected="true" />
+												<menuitem value="tahoma" label="Tahoma" />
+												<menuitem value="sans" label="Sans" />
+												<menuitem value="serif" label="Serif" />
+												<menuitem value="monospace" label="Monospace" />
+												<menuitem value="courier new" label="Courier" />
+												<menuitem value="arial" label="Arial" />
+												<menuitem value="georgia" label="Georgia" />
+												<menuitem value="bradley hand itc" label="Bradley Hand ITC" />
+												<menuitem value="tempus sans itc" label="Tempus Sans ITC" />
+												<menuitem value="kristen itc" label="Kristen ITC" />
+												<menuitem value="times new roman" label="Times New Roman" />
+												<menuitem value="comic sans ms" label="Comic Sans MS" />
+												<menuitem value="trebuchet ms" label="Trebuchet MS" />
+											</menupopup>
+										</menulist>
+									</hbox>
+								</groupbox>
+								<groupbox flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.QNTabBG;" />
+									</hbox>
+									<label value="&qnsettings.QNTabFontColor;" />
+									<hbox pack="center">
+										<html:input type="color" width="50" id="QNTabFourBGColor" onchange="" />
+									</hbox>
+								</groupbox>
+							</hbox>
+							<groupbox>
+								<hbox class="groupbox-title">
+									<label class="header" value="&qnsettings.udstab;" />
+								</hbox>
+								<label id="udstab4" style="font-style: italic;" value="&qnsettings.udstab1;" />
+								<label id="udstab_4" style="font-style: italic;" value="&qnsettings.udstab_1;" />
+								<html:textarea id="UserStyleDefTab4" flex="1" multiline="true" rows="3" cols="7" />
+							</groupbox>
+						</tabpanel>
+						<tabpanel id="tabadvancedprefs5" orient="vertical">
+							<hbox>
+								<groupbox id="tabPrefBox5" flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.tabadvancedfont;" />
+									</hbox>
+									<hbox id="QNTabFiveFonts" align="center">
+										<label value="&qnsettings.QNTabFontsize;" />
+										<html:input id="QNTabFiveFontsizetb" type="number" min="6" max="25" width="45" />
+										<label value="&qnsettings.QNTabFontColor;" />
+										<html:input type="color" width="50" id="QNTabFiveFontColor" onchange="" />
+									</hbox>
+									<hbox id="QNTabFiveFontTypes" flex="1" align="center">
+										<label value="&qnsettings.QNTabFontTypes;" />
+										<menulist id="QNTabFiveFontName" editable="true" value="verdana">
+											<menupopup>
+												<menuitem value="verdana" label="Verdana" selected="true" />
+												<menuitem value="tahoma" label="Tahoma" />
+												<menuitem value="sans" label="Sans" />
+												<menuitem value="serif" label="Serif" />
+												<menuitem value="monospace" label="Monospace" />
+												<menuitem value="courier new" label="Courier" />
+												<menuitem value="arial" label="Arial" />
+												<menuitem value="georgia" label="Georgia" />
+												<menuitem value="bradley hand itc" label="Bradley Hand ITC" />
+												<menuitem value="tempus sans itc" label="Tempus Sans ITC" />
+												<menuitem value="kristen itc" label="Kristen ITC" />
+												<menuitem value="times new roman" label="Times New Roman" />
+												<menuitem value="comic sans ms" label="Comic Sans MS" />
+												<menuitem value="trebuchet ms" label="Trebuchet MS" />
+											</menupopup>
+										</menulist>
+									</hbox>
+								</groupbox>
+								<groupbox flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.QNTabBG;" />
+									</hbox>
+									<label value="&qnsettings.QNTabFontColor;" />
+									<hbox pack="center">
+										<html:input type="color" width="50" id="QNTabFiveBGColor" onchange="" />
+									</hbox>
+								</groupbox>
+							</hbox>
+							<groupbox>
+								<hbox class="groupbox-title">
+									<label class="header" value="&qnsettings.udstab;" />
+								</hbox>
+								<label id="udstab5" style="font-style: italic;" value="&qnsettings.udstab1;" />
+								<label id="udstab_5" style="font-style: italic;" value="&qnsettings.udstab_1;" />
+								<html:textarea id="UserStyleDefTab5" flex="1" multiline="true" rows="3" cols="7" />
+							</groupbox>
+						</tabpanel>
+						<tabpanel id="tabadvancedprefs6" orient="vertical">
+							<hbox>
+								<groupbox id="tabPrefBox6" flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.tabadvancedfont;" />
+									</hbox>
+									<hbox id="QNTabSixFonts" align="center">
+										<label value="&qnsettings.QNTabFontsize;" />
+										<html:input id="QNTabSixFontsizetb" type="number" min="6" max="25" width="45" />
+										<label value="&qnsettings.QNTabFontColor;" />
+										<html:input type="color" width="50" id="QNTabSixFontColor" onchange="" />
+									</hbox>
+									<hbox id="QNTabSixFontTypes" flex="1" align="center">
+										<label value="&qnsettings.QNTabFontTypes;" />
+										<menulist id="QNTabSixFontName" editable="true" value="verdana">
+											<menupopup>
+												<menuitem value="verdana" label="Verdana" selected="true" />
+												<menuitem value="tahoma" label="Tahoma" />
+												<menuitem value="sans" label="Sans" />
+												<menuitem value="serif" label="Serif" />
+												<menuitem value="monospace" label="Mmonospace" />
+												<menuitem value="courier new" label="Courier" />
+												<menuitem value="arial" label="Arial" />
+												<menuitem value="georgia" label="Georgia" />
+												<menuitem value="bradley hand itc" label="Bradley Hand ITC" />
+												<menuitem value="tempus sans itc" label="Tempus Sans ITC" />
+												<menuitem value="kristen itc" label="Kristen ITC" />
+												<menuitem value="times new roman" label="Times New Roman" />
+												<menuitem value="comic sans ms" label="Comic Sans MS" />
+												<menuitem value="trebuchet ms" label="Trebuchet MS" />
+											</menupopup>
+										</menulist>
+									</hbox>
+								</groupbox>
+								<groupbox flex="1">
+									<hbox class="groupbox-title">
+										<label class="header" value="&qnsettings.QNTabBG;" />
+									</hbox>
+									<label value="&qnsettings.QNTabFontColor;" />
+									<hbox pack="center">
+										<html:input type="color" width="50" id="QNTabSixBGColor" onchange="" />
+									</hbox>
+								</groupbox>
+							</hbox>
+							<groupbox>
+								<hbox class="groupbox-title">
+									<label class="header" value="&qnsettings.udstab;" />
+								</hbox>
+								<label id="udstab6" style="font-style: italic;" value="&qnsettings.udstab1;" />
+								<label id="udstab_6" style="font-style: italic;" value="&qnsettings.udstab_1;" />
+								<html:textarea id="UserStyleDefTab6" flex="1" multiline="true" rows="3" cols="7" />
+							</groupbox>
+						</tabpanel>
+						<tabpanel>
+							<groupbox>
+								<hbox class="groupbox-title">
+									<label class="header" value="&qnsettings.autoSave;" />
+								</hbox>
+								<radiogroup id="AutoSave-radiogroup">
+									<radio id="onxchar" label="&qnsettings.autoSaveOnxchar;" value="10" oncommand="teo_qn.qnasch()" />
+									<hbox id="xthchar" align="center">
+										<label id="xthCharLabel" class="indent" value="&qnsettings.xthCharLabel;" />
+										<html:input id="xthCharTB" type="number" min="5" max="99" value="10" width="45" />
+									</hbox>
+									<radio id="onclose" label="&qnsettings.autoSaveOnclose;" value="0" oncommand="teo_qn.qnasch()" />
+									<radio id="noautosave" label="&qnsettings.noautosave;" value="-1" oncommand="teo_qn.qnasch()" />
+								</radiogroup>
+							</groupbox>
+							<groupbox>
+								<hbox class="groupbox-title">
+									<label class="header" value="&qnsettings.fbtbfunc.label;" />
+								</hbox>
+								<radiogroup id="openqn-radiogroup" preference="extensions.quicknote.openqn">
+									<radio id="fbtbfunc-s" label="&qnsettings.fbtbfunc-s;" value="0" oncommand="teo_qn.modeDisplay()" />
+									<radio id="fbtbfunc-f" label="&qnsettings.fbtbfunc-f;" value="1" oncommand="teo_qn.modeDisplay()" />
+									<vbox id="displayBox">
+										<hbox id="showinAsDependentBox">
+											<checkbox id="showinAsDependent" class="indent" label="&qnsettings.dependentWindow;" preference="extensions.quicknote.dependent" oncommand="teo_qn.childDisabled()" />
+											<image id="qninfo" tooltiptext="&qnsettings.dependentWindowTip;" />
+										</hbox>
+										<checkbox id="closeChildWindow" class="indent" label="&qnsettings.closeChild;" preference="extensions.quicknote.closechild" oncommand="teo_qn.childDisabled()" />
+									</vbox>
+									<hbox id="tabInfoBox">
+										<radio id="fbtbfunc-t" label="&qnsettings.fbtbfunc-t;" value="2" oncommand="teo_qn.modeDisplay()" />
+											<image id="qninfo1" tooltiptext="&qnsettings.fbtbfunc-tTip;" />
+									</hbox>
+										<checkbox id="loadTabBackground" class="indent" label="&qnsettings.tabBackground;" preference="extensions.quicknote.tabBackground" />
+								</radiogroup>
+							</groupbox>
+						</tabpanel>
+					</tabpanels>
+					<!--spacer flex="" /-->
+				</tabbox>
+			</tabpanel>
+			<tabpanel id="advancedPrefTab" label="&qnsettings.advanced;" orient="vertical">
+				<groupbox>
+					<hbox class="groupbox-title">
+					    <label class="header" value="&qnsettings.autoSave;" />
+					</hbox>
+					<radiogroup id="AutoSave-radiogroup">
+						<radio id="onxchar" label="&qnsettings.autoSaveOnxchar;" value="10" oncommand="teo_qn.qnasch()" />
+						<hbox id="xthchar" align="center">
+							<label id="xthCharLabel" class="indent" value="&qnsettings.xthCharLabel;" />
+							<html:input id="xthCharTB" type="number" min="5" max="99" value="10" width="45" />
+						</hbox>
+						<radio id="onclose" label="&qnsettings.autoSaveOnclose;" value="0" oncommand="teo_qn.qnasch()" />
+						<radio id="noautosave" label="&qnsettings.noautosave;" value="-1" oncommand="teo_qn.qnasch()" />
+					</radiogroup>
+				</groupbox>
+				<groupbox>
+					<hbox class="groupbox-title">
+				    	<label class="header" value="&qnsettings.fbtbfunc.label;" />
+					</hbox>
+					<radiogroup id="openqn-radiogroup" preference="extensions.quicknote.openqn">
+						<radio id="fbtbfunc-s" label="&qnsettings.fbtbfunc-s;" value="0" oncommand="teo_qn.modeDisplay()" />
+						<radio id="fbtbfunc-f" label="&qnsettings.fbtbfunc-f;" value="1" oncommand="teo_qn.modeDisplay()" />
+						<vbox id="displayBox">
+							<hbox id="showinAsDependentBox">
+								<checkbox id="showinAsDependent" class="indent" label="&qnsettings.dependentWindow;" preference="extensions.quicknote.dependent" oncommand="teo_qn.childDisabled()" />
+								<image id="qninfo" tooltiptext="&qnsettings.dependentWindowTip;" />
+							</hbox>
+							<checkbox id="closeChildWindow" class="indent" label="&qnsettings.closeChild;" preference="extensions.quicknote.closechild" oncommand="teo_qn.childDisabled()" />
+						</vbox>
+						<hbox id="tabInfoBox">
+							<radio id="fbtbfunc-t" label="&qnsettings.fbtbfunc-t;" value="2" oncommand="teo_qn.modeDisplay()" />
+								<image id="qninfo1" tooltiptext="&qnsettings.fbtbfunc-tTip;" />
+						</hbox>
+							<checkbox id="loadTabBackground" class="indent" label="&qnsettings.tabBackground;" preference="extensions.quicknote.tabBackground" />
+					</radiogroup>
+				</groupbox>
+				<spacer flex="1" />
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+
+	<hbox id="qnMacbutton" flex="1" pack="end">
+		<button id="qnMacAccept" label="&qnsettings.save;" oncommand="teo_qn.acceptQNSettings(); window.close();" hidden="true" />
+	</hbox>
+
+	<hbox id="qnbuttons" flex="1" pack="end">
+		<button dlgtype="accept" id="qnAccept" label="&qnsettings.save;" oncommand="teo_qn.acceptQNSettings();" />
+		<button dlgtype="cancel" id="qnCancel" />
+	</hbox>
+
+	<script src="chrome://global/content/preferencesBindings.js" type="application/javascript"/>
+	<script type="application/x-javascript" src="chrome://quicknote/content/globalvar.js" />
+	<!--<script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js" />-->
+	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/jsio.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/qnsettings.js" />
+	<script src="chrome://global/content/editMenuOverlay.js.js"/>
+</dialog>

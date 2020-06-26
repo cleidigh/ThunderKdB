@@ -1,0 +1,154 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+button {
+  /* The horizontal margin used here come from the Aqua Human Interface
+     Guidelines, there should be 12 pixels between two buttons. */
+  min-width: 79px;
+  text-shadow: none;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-content-color) !important;
+  background: var(--deepdark-btn-bg-color);
+  border-radius: var(--deepdark-border-radius);
+  margin: 5px;
+  padding: 4px 4px;
+  box-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+button.popup-notification-primary-button:-moz-locale-dir(rtl),
+button.popup-notification-secondary-button:-moz-locale-dir(ltr) {
+  border-radius: 0 0 0 var(--deepdark-border-radius); 
+}
+
+button.popup-notification-primary-button:-moz-locale-dir(ltr),
+button.popup-notification-secondary-button:-moz-locale-dir(rtl) {
+  border-radius: 0 0 var(--deepdark-border-radius) 0; 
+}
+/* DeepDark custom CSS - end */
+
+button:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-hover-color);
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+button:not([disabled="true"]):hover:active {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color);
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+button:not([disabled="true"]):focus{
+/* DeepDark custom CSS */
+  box-shadow: var(--deepdark-focus-ring-box-shadow);
+/* DeepDark custom CSS - end */
+}
+
+/* When the window isn't focused, the default button background isn't drawn,
+ * so don't change the text color then: */
+button[default="true"]:not([disabled="true"]):not(:-moz-window-inactive) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+/* Likewise, when active (mousedown) but not hovering, the default button
+ * background isn't drawn, override the previous selector for that case: */
+button[default="true"]:not(:hover):active {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.button-text {
+  margin: 1px 0 !important;
+  margin-inline-start: 3px !important;
+  margin-inline-end: 2px !important;
+  text-align: center;
+}
+
+.button-icon {
+  margin-inline-start: 1px;
+}
+
+button[type="default"] {
+  font: menu;
+}
+
+/* .......... disabled state .......... */
+
+button[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: menu/menu-button buttons ::::: */
+
+button[type="menu-button"] {
+  margin: 0;
+  border: none;
+}
+
+.button-menu-dropmarker,
+.button-menubutton-dropmarker {
+  -moz-appearance: none !important;
+  border: none;
+  background-color: transparent !important;
+  margin: 1px;
+}
+
+.button-menu-dropmarker {
+  display: none;
+}
+
+/* ::::: plain buttons ::::: */
+
+button.plain {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ::::: help button ::::: */
+
+button[dlgtype="help"] {
+  width: 20px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  color: var(--deepdark-brightest-color);
+  background: var(--deepdark-accent-color);
+  border-radius: 1000px;
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: toolbar buttons ::::: */
+
+toolbarbutton {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton:hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton:active,
+toolbarbutton:active:hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+

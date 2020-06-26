@@ -1,0 +1,143 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+textbox[nomatch="true"][highlightnonmatches="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-red-color);
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: autocomplete popups ::::: */
+
+panel[type="autocomplete-richlistbox"],
+.autocomplete-history-popup {
+  padding: 0px !important;
+  font: icon;
+  -moz-appearance: none;
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  background-color: var(--deepdark-arrowpanel-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+.autocomplete-history-popup {
+  max-height: 180px;
+}
+
+/* ::::: richlistbox autocomplete ::::: */
+
+.autocomplete-richlistbox {
+  -moz-appearance: none;
+  margin: 0;
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+  background-color: var(--deepdark-arrowpanel-bg-color);  
+  border: 0;
+/* DeepDark custom CSS - end */
+}
+
+.autocomplete-richlistitem:not([selected="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-mailtoolbox-btn-hover-color) !important;
+  color: var(--deepdark-brightest-color);
+  border-radius: 0;
+/* DeepDark custom CSS - end */
+}
+
+.ac-type-icon {
+  display: none;
+  width: 16px;
+  height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+  margin-inline-start: 6px;
+  margin-inline-end: 6px;
+}
+
+.ac-site-icon {
+  display: none;
+  width: 16px;
+  height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+  margin-inline-start: 6px;
+  margin-inline-end: 9px;
+  list-style-image: url("chrome://mozapps/skin/places/defaultFavicon.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.ac-title {
+  margin-inline-start: 0;
+  margin-inline-end: 6px;
+}
+
+html|span.ac-tag {
+  margin-inline-start: 0;
+  margin-inline-end: 2px;
+}
+
+.ac-tags {
+  display: none;
+  margin-inline-start: 0;
+  margin-inline-end: 4px;
+}
+
+.ac-separator {
+  display: none;
+  margin-inline-start: 0;
+  margin-inline-end: 6px;
+}
+
+.ac-url,
+.ac-action {
+  display: none;
+}
+
+html|span.ac-emphasize-text {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+/* Better align the URL/action with the title. */
+.ac-tags,
+.ac-separator,
+.ac-url,
+.ac-action {
+  margin-bottom: -2px;
+}
+
+.ac-title-text,
+.ac-tags-text,
+.ac-separator-text,
+.ac-action-text,
+.ac-text-overflow-container {
+  padding: 0 !important;
+  margin: 0 !important;
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */  
+}
+
+.ac-url-text{
+  padding: 0 !important;
+  margin: 0 !important;
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: textboxes inside toolbarpaletteitems ::::: */
+
+toolbarpaletteitem > toolbaritem > textbox > .textbox-input-box > html|*.textbox-input,
+toolbarpaletteitem > toolbaritem > * > textbox > .textbox-input-box > html|*.textbox-input {
+  visibility: hidden;
+}

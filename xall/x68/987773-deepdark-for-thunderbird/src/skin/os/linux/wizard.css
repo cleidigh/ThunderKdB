@@ -1,0 +1,36 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+.wizard-header {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-separator-color);
+  background-color: transparent;
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+richlistbox.theme-listbox > richlistitem {
+/* DeepDark custom CSS */
+  --listitem-selectedFocusCurrentBackground: var(--deepdark-focus-tree-row-bg-color) !important;
+  color: var(--deepdark-content-color);
+  border: 0;
+/* DeepDark custom CSS - end */
+}
+
+richlistbox.theme-listbox > richlistitem[selected="true"] > label {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.wizard-button[dlgtype="back"] {
+/* DeepDark custom CSS */
+  margin-inline-end: 2px !important;
+/* DeepDark custom CSS - end */
+}

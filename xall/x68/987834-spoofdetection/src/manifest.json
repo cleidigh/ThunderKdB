@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "spoofdetection@marvin.herrmann",
+      "strict_min_version": "73.0a1"
+    }
+  },
+  "name": "Spoofdetection",
+  "description": "Detects spoofing attempts",
+  "version": "2.6.2",
+
+  "content_security_policy": "default-src 'self' https://dns.google.com/ https://dns.google/ https://rdap.db.ripe.net/ https://rdap.apnic.net/ https://rdap.arin.net/ https://rdap.lacnic.net/ https://rdap.afrinic.net/ https://talosintelligence.com/documents/ip-blacklist https://talos-intelligence-site.s3.amazonaws.com https://spamcheck.postmarkapp.com/filter",
+
+  "options_ui": {
+    "page": "settings/options.html",
+    "open_in_tab": true
+  },
+
+  "icons": {
+    "64": "images/antispoof.png",
+    "32": "images/antispoof-32px.png",
+    "16": "images/antispoof-16px.png"
+  },
+
+  "background": {
+    "page": "content/background-page.html"
+  },
+
+  "permissions": [
+    "accountsRead",
+    "messagesRead",
+    "storage",
+    "unlimitedStorage",
+    "webRequest",
+    "*://spamcheck.postmarkapp.com/*",
+    "*://talosintelligence.com/*",
+    "*://rdap.db.ripe.net/*",
+    "*://rdap.apnic.net/*",
+    "*://rdap.arin.net/*",
+    "*://rdap.lacnic.net/*",
+    "*://rdap.afrinic.net/*",
+    "*://rdap.registro.br/*"
+  ]
+}

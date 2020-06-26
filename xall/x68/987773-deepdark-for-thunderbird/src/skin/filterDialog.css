@@ -1,0 +1,142 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* ===== filterDialog.css ===============================================
+  == Styles for the Mail Filters dialog.
+  ======================================================================= */
+
+#filterListDialog {
+  padding: 0px;
+}
+
+#filterListDialog > hbox {
+   margin: 8px;
+   font: menu;
+}
+
+#filterListDialog > grid {
+   margin: 8px;
+}
+
+/* ::::: columns :::::: */
+
+listcell[enabled="false"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://messenger/skin/icons/dot.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+listcell[enabled="true"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/menu/check.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+.small-button {
+  -moz-appearance: none;
+  font: icon;
+  min-width: 22px;
+  padding: 0 1px 1px 0;
+/* DeepDark custom CSS */
+  max-height: 20px;
+  background-color: transparent;
+  margin: 6px 0px 3px 0px;
+/* DeepDark custom CSS - end */
+}
+
+.small-button:first-child {
+  margin-left: 1px;
+}
+
+.small-button:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.small-button:not([disabled="true"]):hover:active {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+.small-button[disabled="true"] {
+  opacity: 0.6;
+}
+
+.small-button + .small-button,
+.small-button + .small-button:hover:active {
+  border-left-width: 0;
+  min-width: 21px;
+}
+
+.small-button:focus {
+/* DeepDark custom CSS */
+  box-shadow:  var(--deepdark-focus-ring-box-shadow);
+/* DeepDark custom CSS - end */
+}
+
+.small-button:focus + .small-button {
+  box-shadow: inset 1px 0 -moz-mac-focusring;
+}
+
+listcell > hbox {
+  -moz-box-pack: end;
+}
+
+/* No '.filler' here, so add margin to make more room. */
+hbox > .small-button + .small-button {
+  margin-inline-end: 9px;
+}
+
+.search-menulist, .search-value-menulist {
+  width: 12em;
+}
+
+.search-menulist[unavailable="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#searchTermList > listitem[selected="true"] {
+  background-color: inherit;
+}
+
+.filler {
+  padding-inline-end: 22px;
+}
+
+.ruleaction {
+  border: 1px solid transparent;
+}
+
+.ruleactionitem {
+  min-width: 20em;
+}
+
+.ruleaction-type {
+  min-width: 15em;
+}
+
+#countBox[filterActive="matches"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-green-color);
+/* DeepDark custom CSS - end */
+}
+
+#countBox[filterActive="nomatches"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-red-color);
+/* DeepDark custom CSS - end */
+}

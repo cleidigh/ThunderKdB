@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Compact Headers",
+  "description": "Adds a twisty to the headers, limits displayed headers to 2 lines",
+  "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/compact-headers/",
+  "version": "2.1",
+  "experiment_apis": {
+    "compactHeadersApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "compactHeadersApi"
+          ]
+        ],
+        "script": "compactHeadersApi.js"
+      }
+    }
+  },
+  "background": {
+    "scripts": [
+      "compactHeaders.js"
+    ]
+  },
+  "applications": {
+    "gecko": {
+      "id": "compactHeaders@dillinger",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "32": "compactHeaders.svg",
+    "64": "compactHeaders.svg"
+  }
+}

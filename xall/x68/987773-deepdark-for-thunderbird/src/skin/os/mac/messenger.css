@@ -1,0 +1,44 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+#folderPane-toolbox menulist {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-tree-bg-color) !important;
+  border-radius: 0 !important;
+  padding: 6px 5px;
+/* DeepDark custom CSS - end */
+}
+
+#folderPane-toolbox menulist:not([disabled]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#folderPane-toolbox menulist:not([disabled])[open="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+.mail-toolbox::after,
+.contentTabToolbox::after {
+/* DeepDark custom CSS */
+  box-shadow: 0 -1px var(--deepdark-darkest-color) inset;
+/* DeepDark custom CSS - end */
+}
+
+button.notification-button,
+button.button-menu-list {
+/* DeepDark custom CSS */
+  padding-top: 2px;
+  padding-bottom: 2px;
+/* DeepDark custom CSS - end */
+}

@@ -1,0 +1,87 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* ::::: splitter (vertical) ::::: */
+
+splitter {
+  -moz-box-align: center;
+  -moz-box-pack: center;
+  cursor: ew-resize;
+  min-width: 8px;
+  min-height: 8px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: url("chrome://DeepdarkOverlay/skin/icons/dimple-v.svg") transparent no-repeat center;
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+splitter[state="collapsed"][collapse="before"],
+splitter[state="collapsed"][substate="before"],
+splitter[state="collapsed"][collapse="after"]:-moz-locale-dir(rtl),
+splitter[state="collapsed"][substate="after"]:-moz-locale-dir(rtl) {
+  cursor: e-resize;
+}
+
+splitter[state="collapsed"][collapse="after"],
+splitter[state="collapsed"][substate="after"],
+splitter[state="collapsed"][collapse="before"]:-moz-locale-dir(rtl),
+splitter[state="collapsed"][substate="before"]:-moz-locale-dir(rtl) {
+  cursor: w-resize;
+}
+
+splitter:-moz-lwtheme {
+  background: none;
+}
+
+/* ::::: splitter (horizontal) ::::: */
+
+#today-pane-splitter,
+#FilterEditor splitter,
+splitter[orient="vertical"] {
+  cursor: ns-resize;
+  min-height: 8px;
+  min-width: 8px;
+/* DeepDark custom CSS */
+  background: url("chrome://DeepdarkOverlay/skin/icons/dimple.svg") transparent no-repeat center;
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+splitter[orient="vertical"][state="collapsed"][collapse="before"],
+splitter[orient="vertical"][state="collapsed"][substate="before"] {
+  cursor: s-resize;
+}
+
+splitter[orient="vertical"][state="collapsed"][collapse="after"],
+splitter[orient="vertical"][state="collapsed"][substate="after"] {
+  cursor: n-resize;
+}
+
+splitter[disabled="true"] {
+  cursor: default !important;
+}
+
+/* ::::: splitter grippy ::::: */
+  
+grippy {
+  cursor: pointer;
+  margin: 0px 1px;
+  min-width: 4px;
+  min-height: 115px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+}
+
+splitter[orient="vertical"] > grippy {
+  margin: 1px 0px;
+  min-width: 115px;
+  min-height: 4px;
+}

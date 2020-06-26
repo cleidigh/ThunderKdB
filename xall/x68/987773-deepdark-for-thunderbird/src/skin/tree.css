@@ -1,0 +1,169 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+tree,
+#threadTree {
+  margin: 2px 4px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background-color: var(--deepdark-listbox-bg-color);
+  border: 1px solid var(--deepdark-tree-border-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-row {
+/* DeepDark custom CSS */
+  background-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-row(hover) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-hovered-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-row(selected) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-row(selected, focus) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-focus-tree-row-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-cell-text(hover) {
+/* DeepDark custom CSS */
+ color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-cell-text(selected) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-cell-text(selected, focus) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image,
+treechildren::-moz-tree-twisty {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(hover),
+treechildren::-moz-tree-twisty(hover) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(selected, focus),
+treechildren::-moz-tree-image(selected),
+treechildren::-moz-tree-twisty(selected, focus),
+treechildren::-moz-tree-twisty(selected) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-twisty {
+  -moz-appearance: none;
+  padding-inline-start: 5px;
+  padding-inline-end: 5px;
+  width: 9px;
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/twisty-clsd.svg");
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-twisty(open) {
+  -moz-appearance: none;
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/twisty-open.svg");
+/* DeepDark custom CSS - end */
+}
+
+treecol:not([hideheader="true"]),
+treecolpicker:not([hideheader="true"]) {
+  -moz-appearance: none !important;
+  color: inherit;
+  padding-top: 2px;
+  padding-bottom: 2px;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color);
+  border-bottom: 1px solid var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+treecol {
+/* DeepDark custom CSS */
+  border-inline-end: 1px solid var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+treecol:last-of-type {
+  border-inline-end: 0;
+}
+
+treecol,
+treecolpicker {
+/* DeepDark custom CSS */
+  border-color: var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+treecol:hover,
+treecolpicker:hover {
+  background-color: hsla(0,0%,60%,.4);
+}
+
+treecol:hover,
+treecolpicker:hover {
+  background-color: rgba(249,249,250,.2);
+}
+
+
+/* ::::: drop feedback ::::: */
+
+treechildren::-moz-tree-row(dropOn) {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+tree[seltype="cell"] > treechildren::-moz-tree-cell-text(primary, dropOn),
+tree[seltype="text"] > treechildren::-moz-tree-cell-text(primary, dropOn),
+treechildren::-moz-tree-cell-text(primary, dropOn) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(primary, dropOn) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-drop-feedback {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}

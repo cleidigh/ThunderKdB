@@ -1,0 +1,37 @@
+{
+
+  "manifest_version": 2,
+  "name": "POPFile Jump",
+  "version": "1.1.0",
+  "author": "A-tak",
+  "description": "Popfileのリンクを開く拡張機能です",
+  "homepage_url": "https://github.com/a-tak/popfile-jump",
+  "icons": {
+    "48": "icons/beasts-48.png"
+  },
+  "applications": {
+    "gecko": {
+      "id": "pop-jump@a-tak.com",
+      "strict_min_version": "68.0"
+    }
+  },
+
+  "permissions": [
+    "messagesRead"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/beasts-32.png",
+    "default_title": "POPFlie Jump"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "commands": {
+    "toggle-feature": {
+      "suggested_key": { "default": "Alt+Shift+P" },
+      "description": "POPFile Jumpの呼び出し"
+    }
+  }
+}

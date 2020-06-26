@@ -1,0 +1,43 @@
+{
+    "manifest_version": 2,
+    "name": "GCalTab",
+    "description": "Google Calendar one tab away!",
+    "version": "0.7",
+    "author": "Florent Tassy",
+    "applications": {
+        "gecko": {
+            "id": "gcaltab@ftassy.github.io",
+            "strict_min_version": "68.0"
+        }
+    },
+    "permissions": [
+        "*://calendar.google.com/*",
+        "*://accounts.google.com/*",
+        "*://google.com/calendar*",
+        "storage",
+        "tabs"
+    ],
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_title": "GCalTab",
+        "default_icon": "icons/gcaltab.png"
+    },
+    "icons": {
+        "96": "icons/gcaltab-96px.png",
+        "48": "icons/gcaltab-48px.png",
+        "443": "icons/gcaltab.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://calendar.google.com/*",
+                "*://accounts.google.com/*",
+                "*://google.com/calendar*"
+            ],
+            "js": [
+                "js/darkreader/darkreader.js",
+                "js/gcaltab.js"
+            ]
+        }
+    ]
+}

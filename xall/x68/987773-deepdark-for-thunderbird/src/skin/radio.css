@@ -1,0 +1,83 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+radiogroup {
+  margin: 1px 0px 1px 0px;
+}
+
+radio {
+  -moz-box-align: center;
+  margin: 4px 2px;
+  -moz-user-focus: ignore;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.radio-label-box {
+  margin-inline-start: 0px;
+  padding: 0px;
+}
+
+.radio-icon {
+  margin-inline-end: 2px;
+}
+
+.radio-label {
+  margin: 1px 0 !important;
+}
+
+radio[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.radio-check {
+  margin: 0 1px 1px;
+  /* vertical-align tells native theming where to snap to. However, this doesn't
+   * always work reliably because of bug 503833. */
+  vertical-align: bottom;
+  width: 1.3em;
+  height: 1.3em;
+/* DeepDark custom CSS */
+  list-style-image: none;
+  -moz-appearance: none !important;
+  border: 1px solid var(--deepdark-content-color);
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-radius: 50%;
+/* DeepDark custom CSS - end */
+}
+
+.radio-check[disabled="true"] {
+/* DeepDark custom CSS */
+  border-color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.radio-check[selected="true"] {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  background-image: url("icons/radio.svg");
+  background-repeat: no-repeat;
+  background-size: 1.3rem 1.3rem;
+  background-position: center center;
+  fill: var(--deepdark-accent-color);
+  border-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.radio-check[selected="true"][disabled="true"]{
+/* DeepDark custom CSS */
+  opacity: .75;
+/* DeepDark custom CSS - end */
+}

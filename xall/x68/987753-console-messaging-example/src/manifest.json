@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "Console messaging example",
+  "description": "Console messaging example add-on",
+  "version": "1.0",
+  "author": "Maxime Rijnders",
+  "homepage_url": "https://github.com/Ximi1970/moz-addon-test",
+
+  "applications": {
+    "gecko": {
+      "id": "console-test@Ximi1970",
+      "strict_min_version": "68.0"
+    }
+  },
+
+  "icons": {
+    "48": "icons/message.svg"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "browser_action": {
+    "default_icon": "icons/message.svg"
+  }
+
+}

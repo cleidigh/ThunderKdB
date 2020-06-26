@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <!--
+    MIT License
+
+    Copyright (c) 2020 Johannes Endres
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to
+    deal in the Software without restriction, including without limitation the
+    rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+    sell copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+    IN THE SOFTWARE.
+ -->
+
+  <title>*cloud</title>
+  <link rel="stylesheet" href="../lib/photon.css">
+  <link rel="stylesheet" href="management.css">
+  <link rel="stylesheet" href="popup/popup.css">
+
+  <script src="../lib/cloudconnection.js" defer></script>
+  <script src="../lib/localize.js" defer></script>
+  <script src="popup/popup.js" defer></script>
+  <script src="management.js" defer></script>
+
+</head>
+
+<body>
+  <div id="header">
+    <div id="header_left">
+      <h2 id="provider_name">*cloud</h2>
+      <div id="freespaceGauge">
+        <label id="freespacelabel" data-message="freespace"></label>
+        <meter id="freespace" min="0" max="0" value="0"> </meter>
+      </div>
+    </div>
+    <div id="header_right">
+      <a id="service_url" tabindex="-1" class="link">
+        <img id="logo" src="images/management.png" alt="*cloud Logo" />
+        <div id="cloud_version">&nbsp;</div>
+        <div id="obsolete_string" hidden data-message="obsolete_version"></div>
+      </a>
+    </div>
+  </div>
+
+  <div id="msg_container"> </div>
+
+  <form id="accountForm">
+    <fieldset id="disableable_fieldset">
+
+      <p>
+      <div class="labelline">
+        <label for="serverUrl" class="input__label" data-message="serverUrl"></label>
+        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+          <div class="card card--shadow" data-message="serverUrl_details"></div>
+        </div>
+      </div>
+      <input id="serverUrl" type="url" pattern="https?://.*" required placeholder="https://example.com"
+        class="input__field" value="" />
+      </p>
+
+      <p>
+      <div class="labelline">
+        <label for="username" class="input__label" data-message="username"></label>
+        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+          <div class="card card--shadow" data-message="username_details"></div>
+        </div>
+      </div>
+      <input id="username" type="text" required class="input__field" value="" />
+      </p>
+
+      <p>
+      <div class="labelline">
+        <label for="password" class="input__label" data-message="password"></label>
+        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+          <div class="card card--shadow" data-message="password_details"></div>
+        </div>
+      </div>
+      <input id="password" type="password" required class="input__field" value="" />
+      </p>
+
+      <p>
+      <div class="labelline">
+        <label for="storageFolder" class="input__label" data-message="storageFolder"></label>
+        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+          <div class="card card--shadow" data-message="storageFolder_details"></div>
+        </div>
+      </div>
+      <input id="storageFolder" type="text" required class="input__field" value="/Mail-attachments" />
+      </p>
+
+      <p>
+      <div class="labelline">
+        <input id="useExpiry" type="checkbox" class="input checkbox" />
+        <span class="spacer">
+          <label for="useExpiry" class="input__label" data-message="expiryDaysBefore"></label>
+          <input type="number" id="expiryDays" min="1" step="1" value="7" disabled class="input__field">
+          <label class="input__label" data-message="expiryDaysAfter"></label>
+        </span>
+        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+          <div class="card card--shadow" data-message="expiry_details"></div>
+        </div>
+      </div>
+      </p>
+
+      <p>
+      <div class="labelline">
+        <label class="input__label" data-message="useDlPassword"></label>
+        <input id="useDlPassword" type="checkbox" disabled hidden />
+      </div>
+      <div class="labelline">
+        <span class="spacer">
+          <input id="useNoDlPassword" type="radio" name="DLPRadio" checked class="input radio" />
+          <label for="useNoDlPassword" class="input__label" data-message="useNoDlPassword"></label>
+        </span>
+        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+          <div class="card card--shadow" data-message="useNoDlPassword_details"></div>
+        </div>
+      </div>
+      <div class="labelline">
+        <span class="spacer">
+          <input id="useGeneratedDlPassword" type="radio" name="DLPRadio" class="input radio" />
+          <label for="useGeneratedDlPassword" class="input__label" data-message="useGeneratedDlPassword"></label>
+        </span>
+        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+          <div class="card card--shadow" data-message="useGeneratedDlPassword_details"></div>
+        </div>
+      </div>
+      <div class="labelline">
+        <span class="spacer">
+          <input id="oneDLPassword" type="radio" name="DLPRadio" class="input radio" />
+          <label for="oneDLPassword" class="input__label" data-message="oneDlPassword"></label>
+        </span>
+        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+          <div class="card card--shadow" data-message="useDlPassword_details"></div>
+        </div>
+      </div>
+      <input id="downloadPassword" type="text" disabled class="input__field" value="" />
+      </p>
+
+      <p>
+        <button id="saveButton" class="button button--primary" type="button" disabled
+          data-message="saveButton"></button>
+        <button id="resetButton" class="button" type="reset" disabled data-message="resetButton"></button>
+      </p>
+    </fieldset>
+  </form>
+
+  <!-- Message bar templates -->
+  <div id="success_popup" class="msg_bar success_bar" hidden>
+    <span class="msg_bar_icon"> </span>
+    <span class="msg_bar_closebtn"></span>
+    <span class="popup_message"></span>
+  </div>
+
+  <div id="warning_popup" class="msg_bar warning_bar" hidden>
+    <span class="msg_bar_icon"> </span>
+    <span class="msg_bar_closebtn"></span>
+    <span class="popup_message"></span>
+  </div>
+
+  <div id="error_popup" class="msg_bar error_bar" hidden>
+    <span class="msg_bar_icon"> </span>
+    <span class="msg_bar_closebtn"></span>
+    <span class="popup_message"></span>
+  </div>
+</body>
+
+</html>

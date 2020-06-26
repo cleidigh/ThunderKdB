@@ -1,0 +1,36 @@
+﻿// * Software:	Thunderbird Add-on "TRANSLITERUSSIAN"
+// * Version:	0.2 beta
+// * Date:		2020-05-09
+// * Author:	Vlad Koutsenok (www.koutsenok.de)
+// * File:		manifest.json
+
+{
+  "manifest_version": 2,
+  "name": "TransliteRussian for Thunderbird",
+  "version": "0.2",
+  "description": "E-Mails auf Russisch auf der deutschen Tastatur in Thunderbird; E-mails in russian on german keyboard in Thunderbird; Пишем письма по русски на немецкой клавиатуре в Thunderbird.",
+  "author": "Vlad Koutsenok, it@koutsenok.de",
+
+ "applications": {
+    "gecko": {
+      "id": "transliterussian@koutsenok.de"
+    }
+  },
+
+  "permissions": [
+    "activeTab"
+  ], 
+   
+  "browser_action": {
+  "default_popup": "popup_newmessage.html",
+  "default_title": "TransliteRussian",
+  "default_icon": "icons/icon32.png"
+  },
+
+  "icons": {
+        "96": "icons/icon96.png",
+		"48": "icons/icon48.png",
+        "32": "icons/icon32.png",
+        "16": "icons/icon16.png"
+    }
+}

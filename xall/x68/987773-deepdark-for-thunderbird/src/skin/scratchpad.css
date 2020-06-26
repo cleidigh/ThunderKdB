@@ -1,0 +1,156 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/menu.css");
+@import url("chrome://DeepdarkOverlay/skin/menulist.css");
+@import url("chrome://DeepdarkOverlay/skin/popup.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+@import url("chrome://DeepdarkOverlay-OS/skin/scratchpad.css");
+
+toolbox {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbar#sp-menu-toolbar,
+toolbar#sp-toolbar {
+  min-width: 1px;
+  min-height: 20px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.devtools-toolbarbutton[label],
+.devtools-toolbarbutton[standalone],
+.devtools-button[data-standalone],
+.devtools-button:not(:empty) {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.devtools-toolbarbutton[label]:not([disabled="true"]):hover,
+.devtools-toolbarbutton[standalone]:not([disabled="true"]):hover,
+.devtools-button[data-standalone]:not([disabled="true"]):hover,
+.devtools-button:not(:empty):not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-hover-color);
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.devtools-toolbarbutton[label]:not([disabled="true"]):active:hover,
+.devtools-toolbarbutton[standalone]:not([disabled="true"]):active:hover,
+.devtools-button[data-standalone]:not([disabled="true"]):active:hover,
+.devtools-button:not(:empty):not([disabled="true"]):active:hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+menubar {
+  min-width: 1px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+/* DeepDark custom CSS - end */
+}
+
+toolbarseparator {
+  -moz-appearance: none;
+  padding: 0;
+  width: 1px !important;
+/* DeepDark custom CSS */
+  background: transparent;
+  border-left: 2px dotted var(--deepdark-separator-color);
+  margin: 7px 4px;
+/* DeepDark custom CSS - end */
+}
+
+toolbarpaletteitem[dragover="left"] {
+/* DeepDark custom CSS */
+  border-left-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+toolbarpaletteitem[dragover="right"] {
+/* DeepDark custom CSS */
+  border-right-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+
+/* :::::: menu/menuitems in menubar :::::: */
+
+menu,
+menuitem,
+menucaption {
+/* DeepDark custom CSS */
+  padding: 0px 21px 2px 0px;
+/* DeepDark custom CSS - end */
+}
+
+menubar > menu[_moz-menuactive="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+  background-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+menubar > menu[_moz-menuactive="true"][open="true"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  color: var(--deepdark-accent-color) !important;
+  background-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+menuseparator {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  padding: 0px !important;
+  border-top: 1px solid var(--deepdark-separator-color) !important;
+  border-bottom: 1px solid transparent !important;
+  background: transparent !important;
+  margin: 3px 0px !important;
+/* DeepDark custom CSS - end */
+}
+
+menuitem[type="checkbox"] > .menu-iconic-left,
+menuitem[checked="true"] > .menu-iconic-left {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  padding-top: 0 !important;
+  display: none !important;
+/* DeepDark custom CSS - end */
+}
+
+:not(menulist) > menupopup > menuitem[checked="true"]::before,
+:not(menulist) > menupopup > menuitem[selected="true"]::before {
+/* DeepDark custom CSS */
+  margin-inline-start: 4px !important;
+  margin-inline-end: -20px !important;
+/* DeepDark custom CSS - end */
+}
+
+menuitem[type="checkbox"] > .menu-iconic-left,
+menuitem[checked="true"] > .menu-iconic-left {
+/* DeepDark custom CSS */
+  display: inline-block !important;
+  -moz-appearance: none !important;
+  -moz-margin-end: 8px !important;
+/* DeepDark custom CSS - end */
+}

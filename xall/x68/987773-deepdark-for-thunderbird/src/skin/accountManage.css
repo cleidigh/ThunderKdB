@@ -1,0 +1,285 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://messenger/skin/");
+@import url("chrome://DeepdarkOverlay/skin/dialog.css");
+@import url("chrome://messenger/content/bindings.css");
+
+
+
+#accounttree {
+  margin-inline-end: 8px;
+}
+
+textarea {
+/* DeepDark custom CSS */
+  border: 1px solid transparent;
+  background-color: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-cell-text(folderNameCol, isServer-true) {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-smtp) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/server.svg");
+  -moz-image-region: rect(0 112px 16px 96px);
+/* DeepDark custom CSS - end */
+}
+
+button:not(.dialog-button) {
+  min-height: 19px; /* aqua size for small buttons */
+}
+
+description {
+  margin: 4px 4px 8px;
+}
+
+.specialFolderPickerGrid {
+  margin-inline-start: 20px;
+}
+
+.fccReplyFollowsParent {
+  margin-inline-start: 20px;
+}
+
+.signatureBox {
+  font-family: -moz-fixed;
+}
+
+richlistitem[default="true"],
+#identitiesList > richlistitem:first-child {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-cell-text(isDefaultServer-true) {
+  text-decoration: underline;
+}
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-im) {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/chat.svg");
+  -moz-image-region: auto;
+/* DeepDark custom CSS - end */
+}
+
+@media (min-resolution: 2dppx) {
+  treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-im) {
+  /* DeepDark custom CSS */
+    list-style-image: url("chrome://deepdarkOverlay/skin/icons/chat.svg");
+    -moz-image-region: auto;
+  /* DeepDark custom CSS - end */
+  }
+}
+
+#accounttree treechildren::-moz-tree-indentation {
+  width: 1ch;
+}
+
+#accountActionsDropdown {
+  min-width: 30ch;
+}
+
+/* ::::: SMTP Server Panel :::::: */
+
+.smtpServerListItem {
+  padding-inline-start: 3px;
+}
+
+#backgroundBox {
+  opacity: 0.5;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#smtpServerInfoBox {
+  margin: 0 5px 5px;
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+#smtpServerInfoBox textbox {
+  background-color: transparent;
+}
+
+#archiveTree > treechildren {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-tree-bg-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#archiveTree {
+  -moz-appearance: none !important;
+}
+
+/* ::::: dialog header ::::: */
+
+.dialogheader {
+  margin: 0 5px 5px;
+  padding: 5px 8px;
+/* DeepDark custom CSS */
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.dialogheader-title {
+  display: none;
+}
+
+.dialogheader-title {
+  margin: 0 !important;
+  font-size: larger;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  margin-inline-start: 4px;
+}
+input[type="number"].size2 {
+  width: calc(2ch + 30px);
+}
+input[type="number"].size3 {
+  width: calc(3ch + 30px);
+}
+input[type="number"].size4 {
+  width: calc(4ch + 30px);
+}
+input[type="number"].size5 {
+  width: calc(5ch + 30px);
+}
+
+
+/* ::: Richlistbox ::: */
+
+richlistbox {
+  margin: 2px 4px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-tree-bg-color) !important;
+  border: 1px solid var(--deepdark-tree-border-color) !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistbox[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistbox.theme-listbox:not(:focus) > richlistitem[selected="true"],
+richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color) !important;
+  color: var(--deepdark-accent-color) !important;
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistbox:focus > richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-focus-tree-row-bg-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+listheader {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-border-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Textbox ::: */
+
+textbox {
+  cursor: text;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  padding: 2px 4px !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+textbox[focused="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+textbox[readonly="true"] {
+/* DeepDark custom CSS */
+  background-color: transparent  !important;
+  color: var(--deepdark-content-color) important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Menulist ::: */
+
+menulist {
+/* DeepDark custom CSS */
+  margin: 7px 5px
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Menupopup ::: */
+
+menupopup {
+/* DeepDark custom CSS */
+  background: var(--deepdark-arrowpanel-bg-color) !important;
+  color: var(--deepdark-arrowpanel-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+menu,
+menuitem,
+menucaption {
+/* DeepDark custom CSS */
+  color: var(--deepdark-arrowpanel-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+menu[disabled="true"],
+menuitem[disabled="true"],
+menu[_moz-menuactive="true"][disabled="true"],
+menuitem[_moz-menuactive="true"][disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+menu[_moz-menuactive="true"],
+menuitem[_moz-menuactive="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#accounttree[id] .folderMenuItem,
+.folderMenuItem {
+  -moz-image-region: rect(0 16px 16px 0) !important;
+/* DeepDark custom CSS */
+  list-style-image: url("icons/folder-pane.svg") !important;
+  -moz-context-properties: fill;
+  fill: currentColor; 
+/* DeepDark custom CSS - end */
+}

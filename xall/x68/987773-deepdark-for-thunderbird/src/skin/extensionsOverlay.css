@@ -1,0 +1,63 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+:root {
+/* DeepDark custom CSS */
+  --in-content-categories-background: var(--deepdark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+#category-box {
+  background-color: var(--in-content-categories-background);
+}
+
+.nav-button {
+  -moz-appearance: none;
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/navigation.svg");
+/* DeepDark custom CSS - end */
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.nav-button[disabled="true"] > .toolbarbutton-icon {
+  opacity: 0.4;
+/* DeepDark custom CSS */  
+  fill: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.nav-button:not([disabled="true"]):hover {
+  background-color: #bebebe;
+  cursor: pointer;
+}
+
+.nav-button > .toolbarbutton-text {
+  display: none;
+}
+
+#back-btn:-moz-locale-dir(rtl),
+#forward-btn:-moz-locale-dir(ltr) {
+  transform: scaleX(-1);
+}
+
+#categories {
+  padding-top: 0;
+}
+
+#preferencesButton {
+ margin-bottom: 36px;
+}
+
+.sidebar-footer-button.help-button {
+  display: none;
+}

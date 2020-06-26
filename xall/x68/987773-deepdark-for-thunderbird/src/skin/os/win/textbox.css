@@ -1,0 +1,23 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+textbox:not([searchbutton]) > .textbox-search-sign {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: var(--deepdark-disabled-content-color);
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/search-glass.svg);
+  margin-inline-end: 5px;
+/* DeepDark custom CSS - end */
+}
+
+textbox:not([searchbutton])[focused] > .textbox-search-sign {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}

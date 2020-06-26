@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Weatherlicious",
+  "version": "2.0",
+  "description": "Theme the browser based on the weather.",
+  "permissions": ["theme", "alarms", "storage", "notifications"],
+  "background": {
+    "scripts": [
+      "shared.js",
+      "background/background.js"
+    ]
+  },
+  "options_ui": {
+    "page": "editor/editor.html",
+    "browser_style": true
+  },
+  "applications": {
+    "gecko": {
+      "id": "weatherlicious@ntim.ml",
+      "strict_min_version": "60.0"
+    }
+  }
+}

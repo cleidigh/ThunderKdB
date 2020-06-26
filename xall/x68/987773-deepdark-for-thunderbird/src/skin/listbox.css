@@ -1,0 +1,155 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+listbox {
+  margin: 2px 4px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-listbox-bg-color);
+  border: 1px solid var(--deepdark-tree-border-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#searchResultListBox {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+/* DeepDark custom CSS - end */ 
+}
+
+.listcell-label {
+  margin: 0px !important;
+  padding-bottom: 1px;
+  padding-inline-start: 4px;
+  white-space: nowrap;
+}
+
+/* ::::: listitem ::::: */
+
+listitem {
+  border: 1px solid transparent;
+}
+
+listitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color);
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+listbox:focus > listitem[selected="true"] {
+/* DeepDark custom CSS */
+   background-color: var(--deepdark-focus-tree-row-bg-color);
+   color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: listheader ::::: */
+
+listheader {
+  -moz-box-align: center;
+  padding: 0 4px;
+/* DeepDark custom CSS */  
+  -moz-appearance: none;
+  background: var(--deepdark-treecolpicker-bg-color);
+  color: var(--deepdark-content-color);
+  border-inline-start-width: 1px;
+  border-inline-start-style: solid;
+  border-image: linear-gradient(transparent 20%, rgba(249,249,250,.15) 20%, rgba(249,249,250,.15) 80%, transparent 80%) 1 1;
+/* DeepDark custom CSS - end */
+}
+
+listheader,
+listhead{
+/* DeepDark custom CSS */
+  border-bottom: 1px solid transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+listheader:first-child {
+/* DeepDark custom CSS */
+  -moz-border-start: 0px;
+/* DeepDark custom CSS - end */
+}
+
+listheader[sortable="true"]:hover:active {
+  padding-top: 1px;
+  padding-inline-start: 5px;
+  padding-inline-end: 4px;
+}
+
+.listheader-icon {
+  margin-inline-end: 2px;
+}
+
+.listheader-label {
+  margin: 0px !important;
+}
+
+/* ::::: listcell ::::: */
+
+.listcell-label {
+  margin: 0px !important;
+  padding-bottom: 1px;
+  padding-inline-start: 4px;
+  white-space: nowrap;
+}
+
+.listcell-icon {
+  margin-inline-end: 2px;
+}
+
+.listcell-label[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: listcell checkbox ::::: */
+
+.listcell-check {
+  -moz-box-align: center;
+  margin: 0px 2px;
+  min-width: 13px;
+  min-height: 13px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  border: 1px solid var(--deepdark-content-color);
+  background: transparent;
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.listcell-check[checked="true"] {
+/* DeepDark custom CSS */
+  background-image: url("chrome://global/skin/checkbox/cbox-check.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 13px 13px;
+  border: 1px solid var(--deepdark-accent-color);
+  -moz-context-properties: fill;
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+.listcell-check[disabled="true"] {
+/* DeepDark custom CSS */
+  border-color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+.listcell-check[disabled="true"][checked="true"] {
+/* DeepDark custom CSS */
+  background-image: url("chrome://global/skin/checkbox/cbox-check.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 13px 13px;
+  -moz-context-properties: fill;
+  fill: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}

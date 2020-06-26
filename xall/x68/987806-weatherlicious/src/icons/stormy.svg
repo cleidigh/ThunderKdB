@@ -1,0 +1,28 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill-opacity=".8" viewBox="-20 0 140 140">
+  <defs>
+    <path id="b" d="M48 63l12 1-10 11 8 8-15 16 7-15-9-8z"/>
+    <filter x="-44.7%" y="-23.6%" width="189.5%" height="147.2%" filterUnits="objectBoundingBox" id="a">
+      <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"/>
+      <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.190981658 0" in="shadowBlurOuter1"/>
+    </filter>
+    <path d="M90.357 40.172c0-6.17-4.989-11.172-11.143-11.172-.063-.757 0-1.535 0-2.328 0-7.97-6.444-14.43-14.393-14.43-4.1 0-7.8 1.718-10.42 4.476-1.846-5.835-7.292-10.063-13.722-10.063-7.95 0-14.393 6.461-14.393 14.431 0 2.676.591 4.835 1.857 6.983-2.018-1.393-4.33-1.862-6.964-1.862-6.924 0-12.536 5.627-12.536 12.569 0 6.47 4.875 11.797 11.143 12.492l60.357.077c5.72-.512 10.214-5.316 10.214-11.173zM80.143 56H19.786c-.515 0-1.01-.084-1.473-.24C10.128 54.384 4 47.249 4 38.777c0-9.513 7.691-17.224 17.179-17.224.157 0 .464-.308.464-.466C21.643 10.546 30.165 2 40.679 2A19.02 19.02 0 0 1 56 9.755a18.95 18.95 0 0 1 8.82-2.169c9.958 0 18.13 7.666 18.966 17.433A15.83 15.83 0 0 1 95 40.172c0 8.012-5.958 14.701-13.77 15.7a4.643 4.643 0 0 1-1.087.128z" id="d"/>
+    <filter x="-8.2%" y="-13.9%" width="116.5%" height="127.8%" filterUnits="objectBoundingBox" id="c">
+      <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.190981658 0" in="shadowBlurOuter1"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+      <use stroke="#FFF" stroke-width="2" fill="#FFF" xlink:href="#b"/>
+    </g>
+    <g fill-rule="nonzero">
+      <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+      <use fill="#FFF" fill-rule="evenodd" xlink:href="#d"/>
+    </g>
+  </g>
+</svg>

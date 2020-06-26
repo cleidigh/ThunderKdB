@@ -1,0 +1,309 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+menu,
+menuitem,
+menucaption {
+  -moz-box-align: center;
+  font: -moz-pull-down-menu;
+  list-style-image: none;
+  -moz-image-region: auto;
+  padding: 0 21px 2px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-font-smoothing-background-color: var(--deepdark-arrowpanel-bg-color);
+  color: var(--deepdark-arrowpanel-color);
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+menu[disabled="true"], menuitem[disabled="true"],
+menu[_moz-menuactive="true"][disabled="true"],
+menuitem[_moz-menuactive="true"][disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+  -moz-font-smoothing-background-color: var(--deepdark-arrowpanel-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+/* ..... internal content .... */
+
+.menu-text,
+.menu-iconic-text,
+.menu-accel,
+.menu-iconic-accel {
+  margin: 0 !important;
+}
+
+.menu-text,
+.menu-iconic-text {
+  font-weight: inherit;
+  color: inherit;
+}
+
+menucaption > .menu-iconic-text {
+  font-weight: bold;
+}
+
+.menu-iconic-icon {
+  height: 16px;
+  margin-top: -2px;
+  margin-bottom: -2px;
+  margin-inline-end: 5px;
+  /* Empty icons shouldn't take up room, so we need to compensate
+   * the 5px margin-end with a negative margin-start.
+   */
+  margin-inline-start: -5px;
+}
+
+/* menuitems with icons */
+.menuitem-iconic,
+.menu-iconic,
+menuitem[image],
+menuitem[src] {
+  /* 2px higher than those without icons */
+  padding-top: 1px;
+  padding-bottom: 3px;
+}
+
+.menuitem-iconic > .menu-iconic-left > .menu-iconic-icon,
+.menu-iconic > .menu-iconic-left > .menu-iconic-icon,
+menuitem[image] > .menu-iconic-left > .menu-iconic-icon,
+menuitem[src] > .menu-iconic-left > .menu-iconic-icon {
+  margin-inline-start: 0;
+  width: 16px;
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+/* ..... menu arrow box ..... */
+
+.menu-right,
+.menu-accel-container {
+  margin-inline-start: 21px;
+  margin-inline-end: -9px;
+  -moz-box-pack: end;
+}
+
+.menu-right {
+/* DeepDark custom CSS */
+  background-color: transparent;
+  color: var(--deepdark-content-color);
+  -moz-appearance: none !important;
+  -moz-context-properties: fill !important;
+  list-style-image: url("icons/menu/menu-arrow.svg");
+  fill: var(--deepdark-content-color) !important;
+  margin-top: 2px;
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+.folderMenuItem > .menu-right{
+  background-color: transparent;
+  background-image: url("icons/menu/menu-arrow.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+  list-style-image: none;
+  margin-inline-end: -12px;
+}
+/* DeepDark custom CSS - end */
+
+menu[disabled="true"] .menu-right,
+menuitem[disabled="true"] .menu-right,
+menu[_moz-menuactive="true"][disabled="true"] .menu-right,
+menuitem[_moz-menuactive="true"][disabled="true"] .menu-right {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: menu/menuitems in menubar ::::: */
+
+menubar > menu {
+  -moz-appearance: none;
+  padding: 2px 5px 2px 7px;
+  margin: 1px 0;
+}
+
+menubar > menu[_moz-menuactive="true"] {
+  color: inherit;
+  background-color: transparent;
+}
+
+menubar > menu[_moz-menuactive="true"][open="true"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  -moz-font-smoothing-background-color: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-accent-color) !important;
+  background-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+/* ..... internal content .... */
+
+.menubar-left {
+  margin: 0 2px;
+  color: inherit;
+}
+
+.menubar-text {
+  margin: 0 1px !important;
+  color: inherit;
+}
+
+/* ::::: menu/menuitems in popups ::::: */
+
+menupopup > menu,
+menupopup > menuitem,
+menupopup > menucaption {
+  max-width: 42em;
+}
+
+menu[_moz-menuactive="true"],
+menuitem[_moz-menuactive="true"] {
+/* DeepDark custom CSS */
+  -moz-font-smoothing-background-color: var(--deepdark-btn-hover-color);
+  color: var(--deepdark-brightest-color);
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+menuitem[customoptionstyling="true"] {
+  -moz-appearance: none !important;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* ::::: menu/menuitems in menulist popups ::::: */
+
+menulist > menupopup > menuitem,
+menulist > menupopup > menucaption,
+menulist > menupopup > menu {
+  max-width: none;
+  font: inherit;
+/* DeepDark custom CSS */
+  color: var(--deepdark-arrowpanel-color);
+/* DeepDark custom CSS - end */
+}
+
+#modelistpopup {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-dark-ash-color) !important;
+/* DeepDark custom CSS - end */ 
+}
+
+/* ::::: menuitems in editable menulist popups ::::: */
+
+menulist[editable="true"] > menupopup > menuitem,
+menulist[editable="true"] > menupopup > menucaption {
+  -moz-appearance: none !important;
+}
+
+menulist[editable="true"] > menupopup > :-moz-any(menuitem, menucaption) > .menu-iconic-left {
+  display: none;
+}
+
+/* ::::: checked menuitems ::::: */
+
+menuitem[type="checkbox"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+/* DeepDark custom CSS - end */
+}
+
+:not(menulist) > menupopup > menuitem[checked="true"],
+:not(menulist) > menupopup > menuitem[selected="true"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: inherit;
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+menulist:not([editable="true"]) > menupopup > menuitem[checked="true"]::before,
+menulist:not([editable="true"]) > menupopup > menuitem[selected="true"]::before,
+menupopup > menuitem[checked="true"]::before,
+menupopup > menuitem[selected="true"]::before {
+/* DeepDark custom CSS */
+  display: block;
+  width: 16px;
+  margin-inline-start: -20px;
+  -moz-margin-end: 4px;
+  margin-top: 3px;
+/* DeepDark custom CSS - end */
+}
+
+menulist:not([editable="true"]) > menupopup > menuitem[type="checkbox"][checked="true"]::before,
+menulist:not([editable="true"]) > menupopup > menuitem[type="checkbox"][selected="true"]::before,
+menupopup > menuitem[type="checkbox"][checked="true"]::before,
+menupopup > menuitem[type="checkbox"][selected="true"]::before {
+/* DeepDark custom CSS */
+  content: url("icons/menu/check.svg");
+/* DeepDark custom CSS - end */
+}
+
+menulist:not([editable="true"]) > menupopup > menuitem[type="radio"][checked="true"]::before,
+menulist:not([editable="true"]) > menupopup > menuitem[type="radio"][selected="true"]::before,
+menupopup > menuitem[type="radio"][checked="true"]::before,
+menupopup > menuitem[type="radio"][selected="true"]::before {
+/* DeepDark custom CSS */
+  content: url("chrome://DeepdarkOverlay/skin/icons/radio.svg");
+/* DeepDark custom CSS - end */
+}
+
+menupopup > menuitem[type="radio"][checked="true"]:-moz-locale-dir(ltr)::before,
+menupopup > menuitem[type="radio"][selected="true"]:-moz-locale-dir(ltr)::before {
+/* DeepDark custom CSS */
+  padding-left: 4px;
+/* DeepDark custom CSS - end */
+}
+
+menupopup > menuitem[type="radio"][checked="true"]:-moz-locale-dir(rtl)::before,
+menupopup > menuitem[type="radio"][selected="true"]:-moz-locale-dir(rtl)::before {
+/* DeepDark custom CSS */
+  padding-left: 4px;
+/* DeepDark custom CSS - end */
+}
+
+menulist:not([editable="true"]) > menupopup > menuitem[checked="true"]::before,
+menulist:not([editable="true"]) > menupopup > menuitem[selected="true"]::before {
+  /*content: '\2713';  a checkmark
+  display: block;
+  width: 15px;
+  margin-inline-start: -15px;*/
+}
+
+menupopup > menuitem[checked="true"]:hover,
+menupopup > menuitem[selected="true"]:hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: menuseparator ::::: */
+
+menuseparator {
+  margin: 5px 0;
+  padding: 1px 0 0 0;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background: var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+/* ::::: autocomplete ::::: */
+
+.autocomplete-history-popup > menuitem {
+  max-width: none !important;
+  font: message-box;
+}

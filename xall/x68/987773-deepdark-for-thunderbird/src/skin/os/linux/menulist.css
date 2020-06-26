@@ -1,0 +1,42 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+menulist {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-bg-color) !important;
+  background-image: none !important;
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+.menulist-dropmarker {
+/* DeepDark custom CSS */
+  margin-top: 3px !important;
+/* DeepDark custom CSS - end */
+}
+
+#main-box .menulist-dropmarker,
+#FormatToolbox .menulist-dropmarker,
+#folderpane-mode-selector-menulist .menulist-dropmarker {
+/* DeepDark custom CSS */
+   margin-top: 2px !important;
+/* DeepDark custom CSS - end */
+}
+
+menulist[open="true"], menulist:not([disabled]):hover {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.menulist-label-box {
+/* DeepDark custom CSS */
+  background-image: none !important;
+/* DeepDark custom CSS - end */
+}

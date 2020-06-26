@@ -1,0 +1,128 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@import url("chrome://DeepdarkOverlay/skin/button.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+
+/* :::::: ABOUT DIALOG :::::: */
+
+#aboutDialog[id] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#clientBox {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color) !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#aboutDialogContainer {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-content-color) !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#aboutDialogContainer .text-link {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#aboutDialogContainer .text-link:focus {
+  border: 0px;
+  transition: .1s ease-in;
+}
+
+#userAgent {
+/* DeepDark custom CSS */
+  background-color: transparent !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#updateDeck > hbox > label:not([class=”text-link”]) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.trademark-label{
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#bottomBox[id] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-dark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#bottomBox .text-link {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#bottomBox .text-link:focus {
+  text-decoration: underline !important;
+  border: 0px;
+  transition: .1s ease-in;
+}
+
+#leftBox {
+/* DeepDark custom CSS */
+  background: var(--deepdark-dark-ash-color) url("icons/aboutdialog/about-logomark.png") no-repeat center center !important;
+/* DeepDark custom CSS - end */
+  background-size: 210px 210px !important;
+}
+
+#rightBox {
+/* DeepDark custom CSS */
+  background-image: url("icons/aboutdialog/about-wordmark.svg") !important;
+/* DeepDark custom CSS - end */
+  background-repeat: no-repeat !important;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+.update-throbber {
+/* DeepDark custom CSS */
+  list-style-image: url("icons/loading.svg") !important;
+/* DeepDark custom CSS - end */
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+
+/* ::: Dialogs/wizards - commons ::: */
+
+window,
+page,
+dialog,
+wizard {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+ 
+dialog,
+wizard {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}

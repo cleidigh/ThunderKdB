@@ -1,0 +1,48 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+#addressbookList {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color);
+/* DeepDark custom CSS - end */	
+}
+
+button:not([disabled="true"]):hover,
+#abContextMenuButton:not([disabled="true"]):hover,
+#addressbookList:not([disabled="true"]):not([open="true"]):hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-hover-color);
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+button:not([disabled="true"]):hover:active,
+#abContextMenuButton:not([disabled="true"]):hover:active {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color);
+  border-color: var(--toolbarbutton-active-bordercolor);
+  color: var(--deepdark-accent-color) !important;
+  box-shadow: none;
+/* DeepDark custom CSS - end */
+}
+
+#addressbookList[open="true"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */	
+}
+
+button[disabled="true"],
+#abContextMenuButton[disabled="true"]:hover,
+#addressbookList[disabled="true"]:hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color) !important;
+  color: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}

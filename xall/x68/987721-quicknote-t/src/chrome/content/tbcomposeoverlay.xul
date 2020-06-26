@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://quicknote/skin/quicknote-button.css" type="text/css"?>
+<?xml-stylesheet href="chrome://quicknote/skin/quicknotesm.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % qnDTD SYSTEM "chrome://quicknote/locale/overlay.dtd"> %qnDTD;
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd"> %messengerDTD;
+  <!ENTITY % mailOverlayDTD SYSTEM "chrome://messenger/locale/mailOverlay.dtd" > %mailOverlayDTD;
+  <!ENTITY % baseMenuOverlayDTD SYSTEM "chrome://messenger/locale/baseMenuOverlay.dtd" > %baseMenuOverlayDTD;
+]>
+
+<overlay id="quicknotetasksOverlay"
+				 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://quicknote/content/globalvar.js"/>
+	<script type="application/x-javascript" src="chrome://quicknote/content/jsio.js"/>
+	<!--<script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>-->
+	<script type="application/x-javascript" src="chrome://quicknote/content/quicknote.js"/>
+	<script type="application/x-javascript" src="chrome://quicknote/content/overlay.js"/>
+	<script type="application/x-javascript" src="chrome://quicknote/content/tboverlay.js"/>
+
+	<!-- Toolbar Overlay compose window -->
+	<toolbarpalette id="MsgComposeToolbarPalette">
+		<toolbarbutton id="quicknote-composebutton"
+									 type="menu-button"
+									 class="toolbarbutton-1"
+									 label="&quicknote.open.title;"
+									 tooltiptext="&quicknote.open.title;"
+									 oncommand="QNtb.openQuickNote();">
+			<menupopup oncommand="event.stopPropagation();">
+				<menuitem id="quicknote-smopenoptions"
+									oncommand="QNtb.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									class="menuitem-iconic" />
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+
+	<!-- Menu Tools -->
+	<menupopup id="taskPopup">
+		<menu id="quicknote-toolsmenu"
+					onpopupshowing="QNtb.updateKeys();"
+					position="3"
+					label="&quicknote.open.title;"
+					accesskey="&quicknote.open.title.accesskey;"
+					class="menu-iconic qnicon">
+			<menupopup id="menu_ToolsTbPopup">
+				<menuitem id="quicknote-tbcomposeopenfloat"
+									oncommand="QNtb.openQNFloat();"
+									label="&quicknote.open.float;"
+									accesskey="&quicknote.open.float.accesskey;"
+									class="menuitem-iconic" />
+				<menuitem id="quicknote-options"
+									oncommand="QNtb.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									insertafter="quicknote-tbtab"
+									class="menuitem-iconic qnset"/>
+				</menupopup>
+		</menu>
+	</menupopup>
+
+	<!-- Statusbar Overlay -->
+	<statusbar id="status-bar">
+		<statusbarpanel id="quicknote-statuspanel" hidden="true">
+			<menupopup id="quicknote-status"
+								 class="statusbarpanel-menu-iconic icon-quicknote16"
+								 tooltiptext="&quicknote.title.tooltip;"
+								 context="quicknote-statusbar-menu"
+								 onclick="if (event.button == 0) {QNtb.openQuickNote();}">
+			</menupopup>
+			<menupopup id="quicknote-statusbar-menu"
+								 position="before_end"
+								 onpopupshowing="QNtb.updateKeys();">
+				<menuitem id="quicknote-optionstb"
+									oncommand="QNtb.openQNOptions();"
+									label="&quicknote.open.settings;"
+									accesskey="&quicknote.open.settings.accesskey;"
+									class="menuitem-iconic" />
+			</menupopup>
+		</statusbarpanel>
+	</statusbar>
+
+	<!-- Context Menu -->
+	<menupopup id="msgComposeContext">
+		<menuitem id="quicknote-mail-context" insertafter="context-delete"
+							class="menuitem-iconic qnicon"
+							label="&quicknote.context.sendto;"
+							accesskey="&quicknote.context.sendto.accesskey;"
+							oncommand="QNtb.qnCopyToTbCompose();"/>
+	</menupopup>
+
+	<!-- Hot Key Ctrl-F7 -->
+	<keyset id="baseMenuKeyset">
+		<key id="key_qnfocus" keycode="VK_F7" modifiers="accel" command="cmd_qnfocus"/>
+	</keyset>
+
+</overlay>

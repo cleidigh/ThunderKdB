@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://quicknote/skin/quicknote-button.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://quicknote/locale/about.dtd">
+
+<dialog title="&about.title1;"
+				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+				buttons="cancel"
+				buttonlabelcancel="&about.close.label;"
+				autostretch="always"
+				onload="QNover.initNum(); sizeToContent();">
+
+	<script type="application/x-javascript" src="chrome://quicknote/content/globalvar.js" />
+	<script type="application/x-javascript" src="chrome://quicknote/content/overlay.js" />
+
+	<groupbox align="center" orient="horizontal">
+		<vbox>
+			<label value="&about.name;" class="qnfont1" />
+			<hbox align="center" class="qnfont">
+				<label value="&about.version.label;" />
+				<label id="vernumb" value="" />
+			</hbox>
+			<separator class="thin" />
+			<label value="&about.createdby.label;" class="qnfont" />
+			<label value="Jed Brown" />
+			<separator class="thin" />
+			<label value="&about.additionalcodeby.label;" class="qnfont" />
+			<label value="Nickolay Ponomarev" />
+			<label value="Leszek(teo)Życzkowski" />
+			<label value="Internauta1024A" />
+			<label value="Toshi_" />
+			<separator class="thin" />
+			<label value="&about.artworkby.label;" class="qnfont" />
+			<label value="Quanta" />
+			<label value="Leszek(teo)Życzkowski" />
+			<separator class="thin" />
+			<label value="&about.translator1.label;" class="qnfont" />
+			<label value="&about.translator2.label;" />
+			<separator class="thin" />
+			<label value="&about.homepage.label;" class="qnfont" />
+			<label value="http://quicknote.mozdev.org/" class="link"
+						 onclick="QNover.openLink('http://quicknote.mozdev.org/'); window.close();" />
+			<separator class="thin" />
+			<label value="&about.help.label;" class="qnfont" />
+			<label value="http://quicknote.mozdev.org/help.html" class="link"
+						 onclick="QNover.openLink('http://quicknote.mozdev.org/help.html'); window.close();" />
+		</vbox>
+		<spacer flex="1" />
+		<image id="largelogo" />
+	</groupbox>
+</dialog>

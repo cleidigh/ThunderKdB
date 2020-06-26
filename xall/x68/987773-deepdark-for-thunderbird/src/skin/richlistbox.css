@@ -1,0 +1,92 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+richlistbox {
+  margin: 2px 4px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-tree-bg-color);
+  border: 1px solid var(--deepdark-tree-border-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+richlistbox[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+richlistbox.theme-listbox > richlistitem {
+/* DeepDark custom CSS */
+  color: currentColor !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistbox.theme-listbox:not(:focus) > richlistitem[selected="true"],
+richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistitem[selected="true"]:focus,
+richlistbox:focus > richlistitem[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-focus-tree-row-bg-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistitem {
+/* DeepDark custom CSS */
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+listheader {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-border-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#accountlist {
+/* DeepDark custom CSS */
+  border-bottom-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistitem.attachmentItem[class]:not([selected="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistitem.attachmentItem[class][selected="true"],
+richlistbox:focus > richlistitem.attachmentItem[class][selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistbox[seltype="multiple"]:focus > richlistitem[current="true"][selected="true"] {
+/* DeepDark custom CSS */
+  outline: 1px dashed var(--deepdark-accent-color) !important;
+  outline-offset: -1px;
+/* DeepDark custom CSS - end */
+}
+
+richlistbox[seltype="multiple"]:focus > richlistitem.attachmentItem[class][current="true"][selected="true"] {
+/* DeepDark custom CSS */
+  outline: 1px dotted var(--deepdark-accent-color) !important;
+  outline-offset: -2px;
+/* DeepDark custom CSS - end */
+}

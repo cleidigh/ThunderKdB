@@ -1,0 +1,25 @@
+{
+    "name": "MyPhoneExplorer",
+    "version": "2.0.25",
+    "description": "Required for the sync with your smartphone",
+    "author": "Franz Josef Wechselberger",
+    "default_locale": "en-US",
+    "homepage_url": "https://www.fjsoft.at",
+    "legacy": {
+	"type" : "xul",
+        "options": {
+            "page": "chrome://myphoneexplorer/content/mpeOptions.xul",
+            "open_in_tab": true
+        }
+    },
+    "applications": {
+        "gecko": {
+            "id": "myphoneexplorer@fjsoft.at",
+            "strict_min_version": "68.0"
+        }
+    },
+    "icons": {
+        "32": "icon.png"
+    },
+    "manifest_version": 2
+}

@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "checkdomainng@hayasa.com",
+      "strict_min_version": "60.0",
+      "strict_max_version": "68.5.0"
+    }
+  },
+  "name": "Check Domain NG",
+  "description": "This is a fork of Check Domain addon by karakawa, which can run on 68.0 version of Thunderbird",
+  "version": "2.3",
+  "icons": {
+    "48": "icons/check_domain.png"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://checkdomain/content/checkdomain-pref.xul",
+      "open_in_tab": true
+    }
+  }
+}

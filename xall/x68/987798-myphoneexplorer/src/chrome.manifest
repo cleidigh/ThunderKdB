@@ -1,0 +1,20 @@
+content myphoneexplorer jar:chrome/mpe.jar!/content/
+locale myphoneexplorer en jar:chrome/mpe.jar!/locale/en/ 
+locale myphoneexplorer de jar:chrome/mpe.jar!/locale/de/
+locale myphoneexplorer sk jar:chrome/mpe.jar!/locale/sk/
+locale myphoneexplorer nl jar:chrome/mpe.jar!/locale/nl/
+locale myphoneexplorer ru jar:chrome/mpe.jar!/locale/ru/
+skin myphoneexplorer classic/1.0 jar:chrome/mpe.jar!/skin/classic/ 
+style chrome://global/content/customizeToolbar.xul   chrome://myphoneexplorer/skin/mpe.css
+overlay chrome://messenger/content/addressbook/addressbook.xul  chrome://myphoneexplorer/content/mpeABook.xul
+overlay chrome://messenger/content/addressbook/addressbook.xul  chrome://myphoneexplorer/content/mpeAddressButton.xul
+overlay chrome://messenger/content/messenger.xul  chrome://myphoneexplorer/content/mpeAddressButtonMail.xul
+overlay chrome://messenger/content/messenger.xul  chrome://myphoneexplorer/content/mpeCalendarButtonMail.xul
+overlay chrome://messenger/content/messenger.xul  chrome://myphoneexplorer/content/mpeSyncButtonMail.xul
+overlay chrome://messenger/content/messenger.xul  chrome://myphoneexplorer/content/mpeSyncButtonMode.xul
+overlay chrome://calendar/content/calendar.xul  chrome://myphoneexplorer/content/mpeCalendarButton.xul application={718e30fb-e89b-41dd-9da7-e25a45638b28}
+component {cd51fa3f-2663-49d0-91c9-fdf81fb87fc2} components/mpe.js
+contract @fjsoft.at/MyPhoneExplorer;1 {cd51fa3f-2663-49d0-91c9-fdf81fb87fc2}
+component {ce17443a-943a-401c-8955-ed0c173c729d} components/mpecli.js
+contract @mozilla.org/commandlinehandler/general-startup;1?type=mpe {ce17443a-943a-401c-8955-ed0c173c729d}
+category command-line-handler m-mpe @mozilla.org/commandlinehandler/general-startup;1?type=mpe

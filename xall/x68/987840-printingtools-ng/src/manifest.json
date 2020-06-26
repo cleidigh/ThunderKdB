@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "PrintingTools NG",
+    "version": "0.1.3",
+    "description": "__MSG_extensionDescription__",
+    "author": "Christopher Leidigh",
+    "xpi-name": "printing-tools-ng",
+    "applications": {
+        "gecko": {
+            "id": "PrintingToolsNG@cleidigh.kokkini.net",
+            "strict_min_version": "68.0",
+            "strict_max_version": "72.*"
+        }
+    },
+    "legacy": {
+        "options": {
+            "page": "chrome://printmydate/content/pmd-options.xul",
+            "open_in_tab": false
+        }
+    },
+    "icons": {
+        "64": "chrome/content/printmydate/icons/printing-tools-ng-icon-64px.png",
+        "32": "chrome/content/printmydate/icons/printing-tools-ng-icon-32px.png"
+    },
+    "default_locale": "en-US"
+ 
+}

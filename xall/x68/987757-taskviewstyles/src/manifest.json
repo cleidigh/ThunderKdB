@@ -1,0 +1,33 @@
+﻿{
+	"manifest_version": 2,
+             "applications": {
+                "gecko": {
+                   "id": "TaskviewStyles@Sungho.Hwang",
+                   "strict_min_version": "71.0"
+                    }
+             },
+	"name": "TaskviewStyles",
+	"version": "1.7",
+	"description": "Change taskview styles",
+             "icons": {
+               "32": "icons/fontstyle.png"
+                 },
+"browser_action": {
+    "default_icon": "icons/fontstyle.png",
+    "default_title": "TaskviewStyles",
+    "default_popup": "popup.html"
+  },
+"content_scripts": [
+  {
+    "matches": ["*://developer.mozilla.org/*"],
+    "js": ["form1.js", "form2.js", "form3.js", "form4.js", "form5.js", "form6.js", "form7.js", "form8.js", "form9.js", "form10.js", "form11.js", "form12.js", "form13.js", "form14.js", "form15.js", "form16.js", "form17.js", "form18.js", "form19.js", "form20.js", "form21.js", "form22.js", "form23.js", "form24.js"]
+  }
+],
+"permissions": [
+  "webRequest", "webNavigation", "tabs", "nativeMessaging", "activeTab", "tabHide", "*://developer.mozilla.org/*", "<all_urls>",
+"https://www.thunderbird.net/*", "https://start.thunderbird.net/*"
+        ],
+"background": {
+  "scripts": ["background1.js", "background2.js", "background3.js", "background4.js", "background5.js", "background6.js", "background7.js", "background8.js", "background9.js", "background10.js", "background11.js", "background12.js", "background13.js", "background14.js", "background15.js", "background16.js", "background17.js", "background18.js", "background19.js", "background20.js", "background21.js", "background22.js", "background23.js", "background24.js"]
+}
+}

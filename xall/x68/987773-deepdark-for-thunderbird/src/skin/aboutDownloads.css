@@ -1,0 +1,140 @@
+/* The default Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+@import url("chrome://DeepdarkOverlay/skin/button.css");
+@import url("chrome://DeepdarkOverlay/skin/checkbox.css");
+@import url("chrome://DeepdarkOverlay/skin/dropmarker.css");
+@import url("chrome://DeepdarkOverlay/skin/filterDialog.css");
+@import url("chrome://DeepdarkOverlay/skin/folderMenus.css");
+@import url("chrome://DeepdarkOverlay/skin/folderPane.css");
+@import url("chrome://DeepdarkOverlay/skin/listbox.css");
+@import url("chrome://DeepdarkOverlay/skin/menu.css");
+@import url("chrome://DeepdarkOverlay/skin/menulist.css");
+@import url("chrome://DeepdarkOverlay/skin/numberinput.css");
+@import url("chrome://DeepdarkOverlay/skin/popup.css");
+@import url("chrome://DeepdarkOverlay/skin/progressmeter.css");
+@import url("chrome://DeepdarkOverlay/skin/radio.css");
+@import url("chrome://DeepdarkOverlay/skin/richlistbox.css");
+@import url("chrome://DeepdarkOverlay/skin/spinbuttons.css");
+@import url("chrome://DeepdarkOverlay/skin/searchBox.css");
+@import url("chrome://DeepdarkOverlay/skin/splitter.css");
+@import url("chrome://DeepdarkOverlay/skin/tabbox.css");
+@import url("chrome://DeepdarkOverlay/skin/textbox.css");
+@import url("chrome://DeepdarkOverlay/skin/toolbar.css");
+@import url("chrome://DeepdarkOverlay/skin/tree.css");
+@import url("chrome://DeepdarkOverlay/skin/variables.css");
+
+@import url("chrome://DeepdarkOverlay-OS/skin/dialog.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/menu.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/searchBox.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/tree.css");
+
+/*** Panel and outer controls ***/
+
+#aboutDownloads {
+  padding: 18px;
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-ash-color);
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#msgDownloadsListEmptyDescription {
+  margin: 1em;
+  text-align: center;
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#msgDownloadsRichListBox {
+  /** The default listbox appearance comes with an unwanted margin. **/
+  -moz-appearance: none;
+  margin: 0;
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-tree-border-color);
+  background-color: var(--deepdark-tree-bg-color);
+/* DeepDark custom CSS - end */
+}
+
+#msgDownloadsRichListBox > richlistitem.download {
+  height: 6em;
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-tree-border-color);
+/* DeepDark custom CSS - end */
+}
+
+#clearDownloads {
+  margin-inline-start: 0;
+}
+
+#searchBox {
+  margin-inline-end: 0;
+  padding-inline-start: 5px;
+}
+
+.fileTypeIcon {
+  margin-inline-start: 8px;
+  margin-inline-end: 8px;
+  margin-top: 12px;
+  /* explicitly size the icon, so size doesn't vary on hidpi systems */
+  max-height: 32px;
+  width: 32px;
+}
+
+.fileName {
+  margin-bottom: 3px;
+  cursor: inherit;
+}
+
+.size,
+.startDate {
+  opacity: 0.7;
+  font-size: 95%;
+  cursor: inherit;
+}
+
+/* DeepDark custom CSS */
+textbox#searchBox {
+  transition: .15s ease-in;
+}
+/* DeepDark custom CSS - end */
+
+textbox#searchBox:not([focused="true"]):not([disabled="true"]) {
+/* DeepDark custom CSS */
+  width: 14rem;
+  background-color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+@media (-moz-windows-default-theme) {
+  /*
+  -moz-appearance: menuitem is almost right, but the hover effect is not
+  transparent and is lighter than desired.
+
+  Copied from the autocomplete richlistbox styling in
+  toolkit/themes/windows/global/autocomplete.css
+
+  This styling should be kept in sync with the style from the above file.
+  */
+  #msgDownloadsRichListBox > richlistitem.download[selected] {
+    /* four gradients for the bevel highlights on each edge, one for blue background */
+    background-clip: content-box;
+    outline-offset: -2px;
+  /* DeepDark custom CSS */
+    outline: 1px solid var(--deepdark-accent-color);
+    -moz-outline-radius: 0px;
+	border-radius: 0px;
+    color: var(--deepdark-accent-color);
+	background-image: none;
+    background-color: var(--deepdark-selected-tree-row-bg-color);
+  /* DeepDark custom CSS - end */
+  }
+}

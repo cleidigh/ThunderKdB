@@ -1,0 +1,151 @@
+{
+  "extensionName": {
+    "message": "*cloud - FileLink für Nextcloud und ownCloud"
+  },
+  "extensionDescription": {
+    "message": "Lade große Anhänge in deine Cloud und sende den Link per Mail"
+  },
+  "saveButton": {
+    "message": "Speichern"
+  },
+  "resetButton": {
+    "message": "Zurücksetzen"
+  },
+  "serverUrl": {
+    "message": "Server-URL"
+  },
+  "serverUrl_details": {
+    "message": "Die URL des Cloud-Servers, muss mit http oder https beginnen.\nFalls der Server auf einem ungewöhnlichen Port läuft, gehört die Portnummer mit in die URL."
+  },
+  "username": {
+    "message": "Username"
+  },
+  "username_details": {
+    "message": "Der Username auf dem Cloud-Server"
+  },
+  "password": {
+    "message": "App-Token oder Passwort"
+  },
+  "password_details": {
+    "message": "Ein App Passwort (Einstellungen -> Sicherheit -> App Passwort auf der Cloud) oder notfalls dein Cloud-Passwort.\nNur mit Nextcloud: Das Add-On versucht, vor dem Speichern ein App Passwort zu erzeugen. Aber falls das fehlschlägt, wir das Passwort unverschlüsselt gespeichert."
+  },
+  "storageFolder": {
+    "message": "Speicherpfad in der Cloud"
+  },
+  "storageFolder_details": {
+    "message": "Das Verzeichnis, in dem die Dateien abgelegt werden. Falls es nicht existiert, wird es automatisch angelegt."
+  },
+  "useDlPassword": {
+    "message": "Download-Passwörter"
+  },
+  "useNoDlPassword": {
+    "message": "Kein Passwort"
+  },
+  "useNoDlPassword_details": {
+    "message": "Downloads sind ohne Passwort zugänglich"
+  },
+  "oneDlPassword": {
+    "message": "Ein Passwort für alle Downloads"
+  },
+  "useDlPassword_details": {
+    "message": "Dieses Passwort muss allen Richtlinien entsprechen, die der Admin deiner Cloud aufgestellt hat (Länge, Zeichen, Ziffern, ...), sonst schlägt der Upload fehl."
+  },
+  "useGeneratedDlPassword": {
+    "message": "Ein zufälliges Passwort pro Datei"
+  },
+  "useGeneratedDlPassword_details": {
+    "message": "Für jede Datei wird ein zufälliges Passwort erzeugt. Es erscheint nach dem Upload im Status-Dialog."
+  },
+  "expiryDaysBefore": {
+    "message": "Downloads verfügbar für "
+  },
+  "expiryDaysAfter": {
+    "message": " Tage"
+  },
+  "expiry_details": {
+    "message": "Die Dauer für die der Download verfügbar bleibt, heute mitgezählt"
+  },
+  "freespace": {
+    "message": "Freier Speicher: $FREE$ GB von $FULL$ GB",
+    "placeholders": {
+      "free": {
+        "content": "$1"
+      },
+      "full": {
+        "content": "$2"
+      }
+    }
+  },
+  "success": {
+    "message": "Alles OK"
+  },
+  "error_0": {
+    "message": "Unbekannter Fehler"
+  },
+  "warn_unsupported_cloud": {
+    "message": "Datenverlust droht: Veraltete Version von Nextcloud oder ownCloud. Bitte den Cloud-Admin um ein Update"
+  },
+  "obsolete_version": {
+    "description": "This is displayed over the icon if the cloud version is not supported, so it should be quite short and contain at most two lines.",
+    "message": "Veraltete\nVersion"
+  },
+  "error_404": {
+    "message": "Account-Prüfung fehlgeschlagen: User existiert nicht, inkompatible Cloud oder Netzwerkproblem"
+  },
+  "error_401": {
+    "message": "Login fehlgeschlagen. Wahrscheinlich ist der Username oder das Passwort falsch."
+  },
+  "error_typeerror": {
+    "message": "Keine Verbindung zur Cloud. Prüfe die Server-URL und deine Netzwerkverbindung"
+  },
+  "error_sharing_off": {
+    "message": "Freigaben sind in dieser Cloud deaktiviert. Bitte den Admin, sie zu aktivieren."
+  },
+  "error_invalid_pw": {
+    "message": "Ungültiges Download-Passwort (Uploads werden fehlschlagen). Erklärung vom Server: $1"
+  },
+  "error_password_enforced": {
+    "message": "Diese Cloud verlangt ein Download-Passwort."
+  },
+  "warn_expiry_too_long": {
+    "message": "Dein Cloud-Admin hat eine maximale Ablaufzeit von $1 Tagen gesetzt. Dein gewählter Wert wurde geändert, weil sonst die Uploads fehlschlagen."
+  },
+  "warn_no_config_check": {
+    "message": "Account-Prüfung fehlgeschlagen, Netzwerkprobleme?"
+  },
+  "status_menuname": {
+    "message": "Status"
+  },
+  "status_no_uploads": {
+    "message": "Keine aktiven Uploads"
+  },
+  "status_button_clear": {
+    "description": "Button to remove error messages from status popup",
+    "message": "Erledigte Uploads entfernen"
+  },
+  "status_preparing": {
+    "message": "Vorbereiten"
+  },
+  "status_creating": {
+    "message": "Erstellen des Upload-Ordners"
+  },
+  "status_moving": {
+    "message": "Verschieben einer alten Datei"
+  },
+  "status_uploading": {
+    "message": "Upload"
+  },
+  "status_sharing": {
+    "message": "Teilen"
+  },
+  "status_password": {
+    "message": "Passwort: $1"
+  },
+  "status_error": {
+    "description": "This will be combined with one of the states above, eg 'Fehler beim Teilen'. If this doesn't work in your language, please tell me.",
+    "message": "Fehler beim $1"
+  },
+  "warn_nonascii_password": {
+    "message": "Das Passwort enthält Zeichen, die oft Loginprobleme verursachen. Benutze hier besser ein App-Passwort (unter \"Sicherheit\" in den Einstellunten deiner Cloud)."
+  }
+}

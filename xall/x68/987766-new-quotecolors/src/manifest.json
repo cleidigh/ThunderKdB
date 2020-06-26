@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "quotecolor-moz@librefox.org",
+      "strict_min_version": "60.0"
+    }
+  },
+  "icons": {
+    "32": "chrome/qcicon.png"
+  },
+  "name": "QuoteColors TB 68",
+  "description": "QuoteColors",
+  "version": "0.3.5",
+  "author": "QuoteColors",
+  "homepage_url": "https://github.com/Intika-Firefox-Addons/thunderbird-quote-colors/",	
+  "legacy" : {
+	"type": "xul",
+    "options" : {
+      "page" : "chrome://quotecolors/content/qc_options.xul",
+      "open_in_tab" : false
+    }
+  }
+}

@@ -1,0 +1,663 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+
+@import url("chrome://DeepdarkOverlay-OS/skin/messenger.css");
+@import url("chrome://DeepdarkOverlay-OS/skin/lightningDialogs.css");
+
+.mail-toolbox > toolbar {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+.mail-toolbox::after,
+.contentTabToolbox::after {
+  content: "";
+  display: -moz-box;
+  margin-top: -1px;
+  height: 1px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  box-shadow: inset 0 -1px var(--deepdark-darkest-color);
+  border-bottom: 0;
+/* DeepDark custom CSS - end */
+}
+
+.statusbar {
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  text-shadow: none;
+  background: var(--deepdark-ash-color);
+  border-top: 1px solid var(--deepdark-dialog-statusbar-border-top-color);
+  padding: 5px;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton#keepduration-button {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  border-radius: var(--deepdark-border-radius) !important;
+  padding: 3px 6px !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton#keepduration-button:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton#keepduration-button[keep="true"]:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-accent-color-a10) !important;
+/* DeepDark custom CSS - end */
+}
+
+toolbarbutton#keepduration-button:not([disabled="true"]):hover:active {
+/* DeepDark custom CSS */
+  background: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Tasks dialog ::: */
+
+toolbarbutton.cal-event-toolbarbutton[class] {
+  border: 0px !important;
+  box-shadow: none !important;
+}
+
+.toolbarbutton-menu-dropmarker > .dropmarker-icon {
+  -moz-appearance: none;
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/arrow/arrow-dropdown-12.svg");
+/* DeepDark custom CSS - end */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  padding-inline-start: 2px;
+  width: 12px;
+  height: auto;
+}
+
+.toolbarbutton-1:-moz-window-inactive .toolbarbutton-menu-dropmarker > .dropmarker-icon {
+/* DeepDark custom CSS */
+  opacity: var(--deepdark-disabled-toolbarbutton-icon-fill-opacity) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([type="menu-button"]):not([disabled="true"]),
+.toolbarbutton-1:not([disabled="true"]) .toolbarbutton-menu-dropmarker > .dropmarker-icon {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([type="menu-button"]):not([disabled="true"]):hover,
+.toolbarbutton-1:not([disabled="true"]):hover .toolbarbutton-menu-dropmarker > .dropmarker-icon {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.toolbarbutton-1:not([type="menu-button"]):not([disabled="true"]):-moz-any([open="true"], [checked="true"], :hover:active),
+.toolbarbutton-1:not([disabled="true"]):-moz-any([open="true"], [checked="true"], :hover:active) .toolbarbutton-menu-dropmarker > .dropmarker-icon {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+  background-color: var(--deepdark-darkest-color);
+/* DeepDark custom CSS - end */
+}
+
+#deleteButton[id],
+#button-delete.cal-event-toolbarbutton[class],
+#calendar-delete-button,
+#task-delete-button {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/delete.svg") !important;
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+#calendar-synchronize-button,
+#task-synchronize-button {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/sync.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+#saveandcloseButton,
+#button-saveandclose {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/addons/lightning/img/save-close.svg") !important;
+/* DeepDark custom CSS - end */
+}
+
+#button-save {
+/* DeepDark custom CSS */
+  list-style-image: url(chrome://DeepdarkOverlay/skin/icons/save.svg) !important;
+/* DeepDark custom CSS - end */
+}
+
+#event-grid-tabpanel-description,
+#event-grid {
+/* DeepDark custom CSS */
+  background: var(--deepdark-ash-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#event-grid listbox {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+#event-grid textbox {
+/* DeepDark custom CSS */
+  border: 1px solid transparent;
+/* DeepDark custom CSS - end */
+}
+
+#event-grid-tabpanel-description > #item-description,
+#item-description {
+/* DeepDark custom CSS */
+  background: var(--deepdark-dark-ash-color);
+  border: 0;
+  border-radius: 0 !important;
+  padding: 4px !important;
+  margin: 2px 4px !important;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#event-grid .menulist-editable-box .textbox-input-box,
+#event-grid-enddate-picker-box .textbox-input-box,
+datetimepicker .textbox-input-box,
+datepicker .textbox-input-box {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  filter: invert(1);
+/* DeepDark custom CSS - end */
+}
+
+#event-grid .menulist-editable-box .textbox-input-box[disabled="true"],
+#event-grid-enddate-picker-box .textbox-input-box[disabled="true"],
+datetimepicker .textbox-input-box[disabled="true"],
+datepicker .textbox-input-box[disabled="true"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  filter: invert(.25);
+/* DeepDark custom CSS - end */
+}
+
+#event-grid menulist[type="panel"],
+#event-grid menulist[editable="true"] {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color) !important;
+  height: 20px;
+/* DeepDark custom CSS - end */
+}
+
+#keepduration-button[keep="true"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  fill: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#calendar-event-dialog-attendees-v2 listbox {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-tree-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.listbox-noborder .addressingWidgetCell,
+#freebusy-container .addressingWidgetCell {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-separator-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-button,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-dropmarker {
+/* DeepDark custom CSS */
+  border-color: transparent !important;
+  background: rgb(220,110,55) !important;
+  color: var(--deepdark-brightest-color) !important;
+  -moz-context-properties: fill !important;
+  fill: var(--deepdark-brightest-color) !important;
+  transition: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button:hover,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button:hover > .toolbarbutton-menubutton-button,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button:hover > .toolbarbutton-menubutton-dropmarker {
+/* DeepDark custom CSS */
+  background: rgb(237,129,64) !important;
+/* DeepDark custom CSS - end */
+}
+
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button:hover:active,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button:hover:active > .toolbarbutton-menubutton-button,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button:hover:active > .toolbarbutton-menubutton-dropmarker,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button[open="true"],
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button[open="true"] > .toolbarbutton-menubutton-button,
+#imip-view-toolbar > .toolbarbutton-1.msgHeaderView-button[open="true"] > .toolbarbutton-menubutton-dropmarker {
+/* DeepDark custom CSS */
+  background: rgb(200,100,45) !important;
+/* DeepDark custom CSS - end */
+}
+
+lightning-notification-bar {
+/* DeepDark custom CSS */
+  background: var(--deepdark-warning-color) !important;
+  border-bottom: 0 !important;
+/* DeepDark custom CSS - end */
+}
+
+#calendar-event-dialog-attendees-v2 .listbox-noborder {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-tree-border-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#attendees-list > .listbox-noborder {
+/* DeepDark custom CSS */
+  border-inline-end-style: solid !important;
+/* DeepDark custom CSS - end */
+}
+
+#calendar-event-dialog-attendees-v2 listbox[disabled="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.freebusy-timebar-title,
+.freebusy-timebar-hour {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#item-attendees-box {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: var(--deepdark-dark-ash-color) !important;
+  border: 1px solid transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+#event-grid .categories-listbox {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: transparent !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#event-grid .categories-listbox listitem .listcell-check {
+/* DeepDark custom CSS */
+  border-radius: 2px;
+/* DeepDark custom CSS - end */
+}
+
+#event-grid .categories-listbox listitem:not([selected="true"]):hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#event-grid .categories-listbox listitem[checked="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#event-grid .categories-listbox listitem[checked="true"]:hover {
+/* DeepDark custom CSS */
+  background: var(--deepdark-btn-bg-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.categories-textbox,
+#event-grid .categories-textbox {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background: var(--deepdark-dark-ash-color) !important;
+  border: 1px solid var(--deepdark-border-color) !important;
+  border-radius: var(--deepdark-border-radius) !important;
+/* DeepDark custom CSS - end */
+}
+
+.conv-nicklist,
+#logTree {
+/* DeepDark custom CSS */
+  background: var(--deepdark-tree-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.statusTypeIcon[status="chat"] {
+  -moz-context-properties: fill;
+  fill: currentColor;
+/* DeepDark custom CSS */
+  list-style-image: url('chrome://DeepdarkOverlay/skin/icons/chat.svg') !important;
+/* DeepDark custom CSS - end */
+}
+
+.categories-listbox {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+  background: var(--deepdark-arrowpanel-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.categories-listbox .listcell-check {
+/* DeepDark custom CSS */
+  list-style-image: none !important;
+/* DeepDark custom CSS - end */
+}
+
+richlistbox#attachment-link {
+  margin: 2px 4px;
+/* DeepDark custom CSS */
+  -moz-appearance: none;
+  background-color: var(--deepdark-dark-ash-color);
+  border: 0;
+  color: var(--deepdark-content-color);
+/* DeepDark custom CSS - end */
+}
+
+#button-attendees {
+/* DeepDark custom CSS */
+  list-style-image: url('chrome://DeepdarkOverlay/skin/icons/addlist.svg') !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Date Time Picker ::: */
+
+.time-picker-minutes-bottom {
+/* DeepDark custom CSS */
+  background-color: transparent;
+  color: var(--deepdark-content-color);
+  border: 1px solid transparent;
+  border-top: 2px dotted var(--deepdark-separator-color);
+  padding-top: 3px;
+  margin-top: 3px;
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-one-minute-class,
+.time-picker-hour-box-class,
+.time-picker-five-minute-class {
+/* DeepDark custom CSS */
+  min-width: 24px;
+  -moz-box-align: center;
+  border-left: 1px solid var(--deepdark-separator-color);
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-grids {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-hour-box-class {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-hour-grid {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color);
+  color: var(--deepdark-content-color);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-five-minute-class {
+/* DeepDark custom CSS */
+  border-bottom-color: transparent !important;
+  border-top-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-one-minute-grid[class],
+.time-picker-five-minute-grid[class] {
+/* DeepDark custom CSS */
+  margin-top: 2px;
+  margin-inline-end: 1px;
+  border: 1px solid var(--deepdark-separator-color) !important;
+  background-color: var(--deepdark-tree-bg-color) !important;
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-one-minute-class:hover,
+.time-picker-hour-box-class[class]:hover,
+.time-picker-five-minute-class:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+  color: var(--deepdark-brightest-color);
+  cursor: pointer;
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-one-minute-class[class][selected="true"],
+.time-picker-hour-box-class[class][selected="true"],
+.time-picker-five-minute-class[class][selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color) !important;
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+ 
+.timepicker-topRow-hour-class {
+/* DeepDark custom CSS */
+  border-bottom: 1px solid var(--deepdark-separator-color);
+  background: var(--deepdark-dark-ash-color);
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-more-control-label {
+  font-size: 12pt;
+  height: 12px;
+  min-width: 40px;
+  margin: 0px;
+  text-align: center;
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+  color: var(--deepdark-brightest-color);
+  border: 1px solid transparent;
+  border-radius: var(--deepdark-border-radius);
+  margin: 0px 3px;
+  padding-bottom: 3px;
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-more-control-label:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-hover-accent-color);
+  border: 1px solid transparent;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.time-picker-more-control-label:active:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color);
+  border: 1px solid transparent;
+  box-shadow: none !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* ::: Minimonth ::: */
+
+minimonth {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-arrowpanel-bg-color) !important;
+  padding: 0px !important;
+/* DeepDark custom CSS - end */
+}
+
+minimonth-header,
+.minimonth-month-box {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color) !important;
+  border: 0 !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-nav-btns,
+.minimonth-nav-btns[dir="0"] {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill !important;
+  fill: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+  border: 1px solid var(--deepdark-arrowpanel-bg-color) !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+  border-radius: var(--deepdark-border-radius) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-row-header-week {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+  background-color: rgb(87,88,91) !important;
+  border: 1px solid rgb(87,88,91) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-row-header {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-week {
+/* DeepDark custom CSS */
+  color: var(--deepdark-content-color) !important;
+  border: 1px solid transparent !important;
+  background-color: rgb(87,88,91) !important;
+  border: 1px solid rgb(87,88,91) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day[othermonth="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-disabled-content-color) !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day[today="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color) !important;
+  border: 1px solid transparent !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day:focus {
+/* DeepDark custom CSS */
+  outline: 2px solid var(--deepdark-accent-color) !important;
+  outline-offset: 1px !important;
+  -moz-outline-radius: 6px !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day[selected="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+  border: 1px solid transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day[selected="true"][today="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-dark-ash-color) !important;
+  color: var(--deepdark-accent-color) !important;
+  border: 1px solid var(--deepdark-arrowpanel-bg-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day[selected="true"][today="true"]:hover {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day[busy],
+.minimonth-day[busy][selected="true"] {
+/* DeepDark custom CSS */
+  color: var(--deepdark-red-color) !important; 
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day[busy][today="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-red-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day[busy][selected="true"][today="true"] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-selected-tree-row-bg-color) !important;
+  color: var(--deepdark-red-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day:hover[interactive] {
+/* DeepDark custom CSS */
+  border: 1px solid var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-day:active[interactive] {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.minimonth-list:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#today-minimonth-box {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-splitter-bg-color) !important;
+/* DeepDark custom CSS - end */  
+}

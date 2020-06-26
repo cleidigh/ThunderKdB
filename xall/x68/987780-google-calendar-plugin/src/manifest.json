@@ -1,0 +1,26 @@
+{
+  "applications": {
+    "gecko": {
+      "id": "googleCalendar@weptun.de",
+      "strict_min_version": "64.0"
+    }
+  },
+  "browser_action": {
+    "default_title": "Google Calendar",
+    "default_icon": "images/Google_Calendar_icon.png"
+  },
+  "icons": {
+    "64": "images/Google_Calendar_icon.png",
+    "32": "images/Google_Calendar_icon.png",
+    "16": "images/Google_Calendar_icon.png"
+  },
+  "background": {
+    "scripts": ["scripts/tabs.js"]
+  },
+  "description": "Button to open Google Calendar Tab",
+  "homepage_url": "https://gitlab.weptun.de/internal/thunderbird-google-calendar-plugin",
+  "manifest_version": 2,
+  "name": "Google Calendar Plugin",
+  "permissions": [],
+  "version": "0.2"
+}

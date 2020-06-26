@@ -1,0 +1,303 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+/* ::::: Folder Pane ::::: */
+.tabmail-tab[type="folder"] {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(folderNameCol) {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor;
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 16px 16px 0);
+  margin-inline-end: 4px;
+}
+
+treechildren::-moz-tree-image(folderNameCol,selected) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(folderNameCol, newMessages-true) {
+/* DeepDark custom CSS */
+  fill: var(--deepdark-newmail-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-image(folderNameCol, newMessages-true) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+/* ..... News Folders ..... */
+.tabmail-tab[type="folder"][ServerType="nntp"],
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp) {
+  -moz-image-region: rect(0 160px 16px 144px);
+}
+
+/* ..... Feed Folders ..... */
+treechildren::-moz-tree-image(folderNameCol, isFeed-true) {
+  list-style-image: url("chrome://messenger-newsblog/skin/rss-feed.svg");
+  -moz-image-region: rect(0 16px 16px 0);
+  width: 16px;
+  height: 16px;
+}
+.tabmail-tab[type="folder"][IsFeedFolder="true"],
+treechildren::-moz-tree-image(folderNameCol, isFeedFolder-true) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 224px 16px 208px);
+  width: 16px;
+  height: 16px;
+}
+treechildren::-moz-tree-image(folderNameCol, serverIsPaused),
+treechildren::-moz-tree-cell-text(folderNameCol, serverIsPaused),
+treechildren::-moz-tree-image(folderNameCol, isPaused),
+treechildren::-moz-tree-cell-text(folderNameCol, isPaused) {
+  opacity: 0.4;
+}
+treechildren::-moz-tree-image(folderNameCol, closed, isBusy),
+treechildren::-moz-tree-image(folderNameCol, leaf, isBusy) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/status.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+treechildren::-moz-tree-image(folderNameCol, closed, hasError),
+treechildren::-moz-tree-image(folderNameCol, leaf, hasError) {
+  list-style-image: url("chrome://global/skin/icons/error-16.svg");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+/* ..... Inbox ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Inbox"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox, newMessages-true) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+/* ..... Sent ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Sent"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Sent) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+/* ..... Unsent ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Outbox"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Outbox) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+/* ..... Drafts ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Drafts"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Drafts) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+/* ..... Templates ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Templates"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Templates) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 112px 16px 96px);
+}
+
+/* ..... Junk ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Junk"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Junk) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 128px 16px 112px);
+}
+
+/* ..... Trash ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Trash"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Trash) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 144px 16px 128px);
+}
+
+/* ..... Saved Search Folder ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Virtual"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 176px 16px 160px);
+}
+
+/* ..... Archive Folder ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Archive"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Archive) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/folder-pane.svg") !important;
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 208px 16px 192px) !important;
+}
+
+
+/* ..... Server Folders ..... */
+
+/* ..... Account nodes ..... */
+.tabmail-tab[type="folder"][IsServer="true"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true),
+treechildren::-moz-tree-image(folderNameCol, isServer-true, biffState-NewMail) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/server.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+/* ..... Secure IMAP/POP account nodes ..... */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="imap"][IsSecure="true"],
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="pop3"][IsSecure="true"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-pop3, isSecure-true),
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-imap, isSecure-true) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/server.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+/* ..... Local folders ..... */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="none"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-none) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/server.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+/* ..... News Folders ..... */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="nntp"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/server.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+/* ..... Secure news server ..... */
+.folderMenuItem[IsServer="true"][ServerType="nntp"][IsSecure="true"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp, isSecure-true) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/server.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+/* ..... Feed Folders ..... */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="rss"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-rss) {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://deepdarkOverlay/skin/icons/server.svg");
+/* DeepDark custom CSS - end */
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+
+/* ::::: All Servers ::::: */
+
+treechildren::-moz-tree-cell-text(folderNameCol, isServer-true, biffState-NewMail),
+treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true),
+treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  font-weight: bold;
+/* DeepDark custom CSS */
+  color: var(--deepdark-newmail-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+treechildren::-moz-tree-image(folderNameCol, isServer-true, biffState-NewMail),
+treechildren::-moz-tree-image(folderNameCol, newMessages-true),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  -moz-context-properties: fill;
+  fill: var(--deepdark-newmail-color) !important;
+}/* DeepDark custom CSS - end */
+
+treechildren::-moz-tree-cell-text(subfoldersHaveUnreadMessages-true) {
+  font-weight: bold;
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-cell-text(hasUnreadMessages-true) {
+  font-weight: bold;
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+/* DeepDark custom CSS */
+treechildren::-moz-tree-image(subfoldersHaveUnreadMessages-true),
+treechildren::-moz-tree-image(hasUnreadMessages-true) {
+  -moz-context-properties: fill;
+  fill: var(--deepdark-brightest-color);
+}/* DeepDark custom CSS - end */
+
+treechildren::-moz-tree-cell-text(folderNameCol, noSelect-true) {
+  font-style: italic;
+/* DeepDark custom CSS */
+  color: currentColor;
+/* DeepDark custom CSS - end */
+}
+
+treechildren::-moz-tree-cell-text(subfoldersHaveUnreadMessages-true, folderNameCol, noSelect-true),
+treechildren::-moz-tree-cell-text(hasUnreadMessages-true, folderNameCol, noSelect-true) {
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */
+}
+
+.tree-folder-checkbox {
+  list-style-image: none;
+}
+
+/* ::::: Folder Summary Popup ::::: */
+
+.folderSummary-message-row {
+  /* This max width ends up dictating the overall width of the popup
+     because it controls how large the preview, subject and sender text can be
+     before cropping kicks in */
+  max-width: 450px;
+}
+
+.folderSummary-subject {
+  font-weight: bold;
+}
+
+.folderSummary-previewText {
+  color: gray;
+}

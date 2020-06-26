@@ -1,0 +1,35 @@
+{
+  "name": "Clacks Overhead",
+  "description": "Display the X-Clacks-Overhead in Clacks Semaphore",
+  "version": "1.0.1",
+  "author": "Shane Eskritt",
+  "applications": {
+    "gecko": {
+      "id": "clacks@eskritt.ca",
+      "strict_min_version": "68.9.0"
+    }
+  },
+  "permissions": [
+    "messagesRead"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "message_display_action": {
+    "default_popup": "popup.html",
+    "default_title": "Clacks",
+    "default_icon": {
+      "64": "data/Clacks64/BLANK.png",
+      "32": "data/Clacks32/BLANK.png",
+      "16": "data/Clacks16/BLANK.png"
+    }
+  },
+  "icons": {
+      "64": "data/icon-64.png",
+      "32": "data/icon-32.png",
+      "16": "data/icon-16.png"
+  },
+  "manifest_version": 2
+}

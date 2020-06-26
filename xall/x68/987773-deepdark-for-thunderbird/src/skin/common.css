@@ -1,0 +1,1309 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+@namespace html "http://www.w3.org/1999/xhtml";
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+*|*:root {
+  /* DeepDark custom CSS - various variables*/
+  --deepdark-accent-color: rgb(0,173,238);
+  --deepdark-accent-color-a10: rgba(0,173,238,.1);
+  --deepdark-accent-color-a15: rgba(0,173,238,.15);
+  --deepdark-accent-color-a30: rgba(0,173,238,.3);
+  --deepdark-hover-accent-color: rgb(0,153,218);
+  --deepdark-brightest-color: rgb(255,255,255);
+  --deepdark-darkest-color: rgb(0,0,0);
+  --deepdark-green-color: rgb(144,254,34);
+  --deepdark-red-color: rgb(250,100,100);
+  --deepdark-red-color-a30: rgba(250,100,100,.3);
+  --deepdark-light-red-color: rgb(100,60,60);
+  --deepdark-yellow-color: rgb(216,184,38);
+  --deepdark-dark-ash-color: rgb(30,30,30);
+  --deepdark-ash-color: rgb(50,51,53);
+  --deepdark-content-color: rgba(249,249,250,.7);
+  --deepdark-disabled-content-color: rgba(249,249,250,.35);
+  --deepdark-icons-color: rgba(249,249,250,.7);
+  --deepdark-separator-color: rgba(249,249,250,.25);
+  --deepdark-tabbar-separator-color: rgba(249,249,250,.1);
+  --deepdark-border-color: rgba(0,0,0,.5);
+  --deepdark-sidebar-border-color: rgb(15,15,15);
+  --deepdark-splitter-bg-color: rgb(20,20,20);
+  --deepdark-warning-color: var(--deepdark-newmail-color);
+  --deepdark-fields-bg-color: rgb(53,54,56);
+  --deepdark-disabled-popup-fields-bg-color: rgba(30,30,30,.5);
+  --deepdark-focus-ring-border-color: rgba(249,249,250,.35);
+  --deepdark-focus-ring-box-shadow: 0 0 0 3px var(--deepdark-focus-ring-border-color);
+  --deepdark-progress-remainder-color: rgba(249,249,250,.15);
+  --deepdark-fields-bg-color: var(--deepdark-ash-color);
+  --deepdark-large-radius: 1000px;
+  --deepdark-toolbarbutton-icon-fill-opacity: 1;
+  --deepdark-disabled-toolbarbutton-icon-fill-opacity: .35;
+
+  /* DeepDark custom CSS - trees/listboxes/richlistboxes */
+  --deepdark-treecolpicker-bg-color: rgb(59,60,62);
+  --deepdark-treecolpicker-border-color: var(--deepdark-border-color);
+  --deepdark-tree-bg-color: rgb(44,45,47);
+  --deepdark-tree-border-color: rgb(35,35,35);
+  --deepdark-odd-tree-row-bg-color: rgb(36,37,39);
+  --deepdark-hovered-tree-row-bg-color: rgba(249,249,250,.1);
+  --deepdark-focus-tree-row-bg-color: var(--deepdark-accent-color-a10);
+  --deepdark-selected-tree-row-bg-color: rgba(0,0,0,.5);
+  --deepdark-listbox-bg-color: var(--deepdark-tree-bg-color);
+  
+  /* DeepDark custom CSS - buttons */
+  --deepdark-mailtoolbox-btn-hover-color: rgba(249,249,250,.15);
+  --deepdark-btn-bg-color: rgba(249,249,250,.15);
+  --deepdark-btn-border-color: rgba(249,249,250,.1);
+  --deepdark-secondary-btn-bg-color: rgba(249,249,250,.25);
+  --deepdark-btn-hover-color: rgba(249,249,250,.25);
+  --deepdark-brighter-btn-hover-color: rgba(249,249,250,.35);
+  --deepdark-border-radius: 3px;
+  --toolbarbutton-hover-background: var(--deepdark-btn-hover-color);
+  --toolbarbutton-active-background: var(--deepdark-border-color);
+  --toolbarbutton-icon-fill-attention: var(--deepdark-accent-color);
+  --toolbarbutton-border-radius: var(--deepdark-border-radius);
+  
+  /* DeepDark custom CSS - arrowpanels */
+  --deepdark-arrowpanel-color: var(--deepdark-content-color);
+  --deepdark-arrowpanel-border-radius: 3px;
+  --deepdark-arrowpanel-border-color: var(--deepdark-dark-ash-color);
+  --deepdark-arrowpanel-bg-color: rgb(59,60,62);
+  --deepdark-arrowpanel-padding: 16px;
+  
+  /* DeepDark custom CSS */
+  --in-content-page-color: var(--deepdark-content-color);
+  --in-content-page-background: var(--deepdark-ash-color);
+  --in-content-text-color: var(--in-content-page-color);
+  --in-content-deemphasized-text: var(--deepdark-disabled-content-color);
+  --in-content-selected-text: var(--deepdark-accent-color);
+  --in-content-box-background: var(--deepdark-dark-ash-color);
+  --in-content-box-background-odd: rgba(249,249,250,0.05);
+  --in-content-box-background-hover: rgba(249,249,250,0.15);
+  --in-content-box-background-active: rgba(249,249,250,0.2); 
+  --in-content-box-border-color: rgba(249,249,250,0.2);
+  --in-content-box-info-background: rgba(249,249,250,0.15);
+  --in-content-item-hover: var(--deepdark-btn-hover-color);
+  --in-content-item-selected: var(--deepdark-accent-color-a10);
+  --in-content-border-highlight: var(--deepdark-accent-color);
+  --in-content-border-focus: var(--deepdark-accent-color);
+  --in-content-border-hover: rgba(249,249,250,0.3);
+  --in-content-border-active: var(--deepdark-accent-color);
+  --in-content-border-active-shadow: var(--deepdark-accent-color-a30);
+  --in-content-border-invalid: var(--deepdark-red-color);
+  --in-content-border-invalid-shadow: var(--deepdark-red-color-a30);
+  --in-content-border-color: rgba(249,249,250,0.2);
+  --in-content-category-outline-focus: 1px dotted var(--deepdark-accent-color);
+  --in-content-category-text-selected: var(--deepdark-accent-color);
+  --in-content-category-text-selected-active: var(--deepdark-accent-color);
+  --in-content-category-background-hover: rgba(249,249,250,0.1);
+  --in-content-category-background-active: rgba(249,249,250,0.15);
+  --in-content-category-background-selected-hover: rgba(249,249,250,0.15);
+  --in-content-category-background-selected-active: rgba(249,249,250,0.2);
+  --in-content-tab-color: var(--deepdark-content-color);
+  --in-content-link-color: var(--deepdark-accent-color);
+  --in-content-link-color-hover: var(--deepdark-hover-accent-color);
+  --in-content-link-color-active: var(--deepdark-accent-color);
+  --in-content-link-color-visited: rgb(235,75,170);
+  --in-content-button-background: rgba(249,249,250,0.1);
+  --in-content-button-background-hover: rgba(249,249,250,0.15);
+  --in-content-button-background-active: rgba(249,249,250,0.2);
+  --in-content-primary-button-background: var(--deepdark-accent-color);
+  --in-content-primary-button-background-hover: var(--deepdark-hover-accent-color);
+  --in-content-primary-button-background-active: var(--deepdark-accent-color);
+  --in-content-table-background: var(--deepdark-dark-ash-color);
+  --in-content-table-border-dark-color: rgba(249,249,250,0.2);
+  --in-content-table-header-background: rgb(23,23,23);
+  
+  scrollbar-color: rgba(249,249,250,.35) var(--deepdark-ash-color);
+  /* DeepDark custom CSS - end */
+
+  --panel-border-radius: 2px; /* This is overridden on Windows */
+
+  /* The photon animation curve */
+  --animation-curve: cubic-bezier(.07,.95,0,1);
+
+  --blue-40: #45a1ff;
+  --blue-40-a10: rgb(69, 161, 255, 0.1);
+  --blue-50: #0a84ff;
+  --blue-50-a30: rgba(10, 132, 255, 0.3);
+  --blue-60: #0060df;
+  --blue-70: #003eaa;
+  --blue-80: #002275;
+  --grey-20: #ededf0;
+  --grey-30: #d7d7db;
+  --grey-40: #b1b1b3;
+  --grey-50: #737373;
+  --grey-60: #4a4a4f;
+  --grey-90: #0c0c0d;
+  --grey-90-a10: rgba(12, 12, 13, 0.1);
+  --grey-90-a20: rgba(12, 12, 13, 0.2);
+  --grey-90-a30: rgba(12, 12, 13, 0.3);
+  --grey-90-a50: rgba(12, 12, 13, 0.5);
+  --grey-90-a60: rgba(12, 12, 13, 0.6);
+  --green-50: #30e60b;
+  --green-60: #12bc00;
+  --green-70: #058b00;
+  --green-80: #006504;
+  --green-90: #003706;
+  --orange-50: #ff9400;
+  --purple-70: #6200a4;
+  --purple-70-a40: rgba(98, 0, 164, 0.4);
+  --red-50: #ff0039;
+  --red-50-a30: rgba(255, 0, 57, 0.3);
+  --red-60: #d70022;
+  --red-70: #a4000f;
+  --red-80: #5a0002;
+  --red-90: #3e0200;
+  --yellow-50: #ffe900;
+  --yellow-60: #d7b600;
+  --yellow-70: #a47f00;
+  --yellow-80: #715100;
+  --yellow-90: #3e2800;
+
+  --shadow-10: 0 1px 4px var(--grey-90-a10);
+  --shadow-30: 0 4px 16px var(--grey-90-a10);
+
+  --card-padding: 16px;
+  --card-shadow: var(--shadow-10);
+        --card-outline-color: var(--grey-60);
+  --card-shadow-hover: var(--card-shadow), 0 0 0 5px var(--card-outline-color);
+  /* DeepDark custom CSS */
+  --card-shadow-focus: 0 0 0 2px var(--deepdark-accent-color), 0 0 0 6px var(--deepdark-accent-color-a30);
+  /* DeepDark custom CSS - end */
+}
+
+html|html,
+xul|page,
+xul|window {
+  font: message-box;
+  -moz-appearance: none;
+  background-color: var(--in-content-page-background);
+  color: var(--in-content-page-color);
+}
+
+html|body {
+  font-size: 15px;
+  font-weight: normal;
+  margin: 0;
+}
+
+html|h1 {
+  font-size: 2.5em;
+  font-weight: lighter;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: .5em;
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+html|hr {
+  border-style: solid none none none;
+  border-color: var(--in-content-border-color);
+}
+
+html|h2 {
+  font-weight: 600;
+  line-height: 1.4em;
+/* DeepDark custom CSS */
+  font-weight: normal !important;
+/* DeepDark custom CSS - end */
+}
+
+*|*.main-content {
+  padding: 40px 28px;
+  overflow: auto;
+}
+
+/* tabpanels and tabs */
+
+xul|tabpanels {
+  -moz-appearance: none;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  color: inherit;
+}
+
+xul|tabs {
+  margin-bottom: 15px;
+  border-top: 1px solid var(--in-content-box-border-color);
+  border-bottom: 1px solid var(--in-content-box-border-color);
+  background-color: var(--in-content-page-background);
+  color: var(--in-content-tab-color);
+}
+
+xul|tab {
+  -moz-appearance: none;
+  margin-top: 0;
+  padding: 4px 20px 0 !important;
+  min-height: 44px;
+  color: inherit;
+  background-color: var(--in-content-page-background);
+  transition: background-color 50ms ease 0s;
+/* DeepDark custom CSS */
+  border-bottom: 2px solid transparent;
+/* DeepDark custom CSS - end */
+}
+
+xul|tab:hover {
+  background-color: var(--in-content-box-background-hover);
+}
+
+xul|tab[selected] {
+  border-bottom-color: var(--in-content-border-highlight);
+/* DeepDark custom CSS */
+  background-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+/* html buttons */
+
+html|button {
+  padding: 3px;
+}
+
+/* xul buttons and menulists */
+
+*|button,
+html|select,
+html|input[type="color"],
+xul|menulist {
+  -moz-appearance: none;
+  min-height: 32px;
+  /* !important overrides button.css for disabled and default XUL buttons: */
+  color: inherit !important;
+  border: 1px solid transparent; /* needed for high-contrast mode, where it'll show up */
+  border-radius: 2px;
+  background-color: var(--in-content-button-background);
+  font-weight: 400;
+  padding: 0 8px;
+  text-decoration: none;
+  margin: 4px 8px;
+  /* Ensure font-size isn't overridden by widget styling (e.g. in forms.css) */
+  font-size: 1em;
+}
+
+xul|button,
+html|button {
+  /* use the same margin of other elements for the alignment */
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+html|button::-moz-focus-inner,
+html|select::-moz-focus-inner,
+html|input[type="color"]::-moz-focus-inner {
+  border: none;
+}
+
+*|button:-moz-focusring,
+html|select:-moz-focusring,
+html|input[type="color"]:-moz-focusring,
+xul|menulist:-moz-focusring {
+  outline: 2px solid var(--in-content-border-active);
+  /* offset outline to align with 1px border-width set for buttons/menulists above. */
+  outline-offset: -1px;
+  /* Make outline-radius slightly bigger than the border-radius set above,
+   * to make the thicker outline corners look smooth */
+  -moz-outline-radius: 3px;
+  box-shadow: 0 0 0 4px var(--in-content-border-active-shadow);
+}
+
+html|select:not([size]):not([multiple]) {
+  background-image: url("chrome://global/skin/icons/arrow-dropdown-12.svg");
+  background-position: right 3px center;
+  background-repeat: no-repeat;
+  background-size: auto 12px;
+  -moz-context-properties: fill;
+  fill: currentColor;
+  font-size: inherit;
+  line-height: 2.1;
+  padding-inline-start: 5px;
+  padding-inline-end: 24px;
+  text-overflow: ellipsis;
+}
+
+html|select:not([size]):not([multiple]):dir(rtl) {
+  background-position: left 3px center;
+}
+
+html|button:enabled:hover,
+html|select:not([size]):not([multiple]):enabled:hover,
+html|input[type="color"]:hover,
+xul|button:not([disabled="true"]):hover,
+xul|menulist:not([disabled="true"]):hover {
+  background-color: var(--in-content-button-background-hover);
+}
+
+html|button:enabled:hover:active,
+html|select:not([size]):not([multiple]):enabled:hover:active,
+html|input[type="color"]:enabled:hover:active,
+xul|button:not([disabled="true"]):hover:active,
+xul|button[open],
+xul|button[open]:hover,
+xul|menulist[open="true"]:not([disabled="true"]) {
+  background-color: var(--in-content-button-background-active);
+}
+
+html|button:disabled,
+html|select:disabled,
+html|input[type="color"]:disabled,
+xul|button[disabled="true"],
+xul|menulist[disabled="true"] {
+  opacity: 0.4;
+}
+
+xul|menulist[disabled="true"] {
+  background-color: var(--in-content-button-background);
+}
+
+html|button[autofocus],
+*|button.primary {
+  background-color: var(--in-content-primary-button-background);
+/* DeepDark custom CSS */
+  color: var(--deepdark-brightest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+html|button[autofocus]:enabled:hover,
+html|button.primary:enabled:hover,
+xul|button.primary:not([disabled="true"]):hover {
+  background-color: var(--in-content-primary-button-background-hover);
+}
+
+html|button[autofocus]:enabled:hover:active,
+html|button.primary:enabled:hover:active,
+xul|button.primary:not([disabled="true"]):hover:active {
+  background-color: var(--in-content-primary-button-background-active);
+}
+
+html|button.ghost-button {
+  background-color: transparent;
+}
+
+html|button.ghost-button:enabled:hover {
+  background-color: var(--in-content-button-background);
+}
+
+html|button.ghost-button:enabled:hover:active {
+  background-color: var(--in-content-button-background-hover);
+}
+
+html|input[type="color"] {
+  padding: 6px;
+  width: 50px;
+}
+
+xul|menulist > xul|*.menulist-label-box > xul|*.menulist-icon[src] {
+  margin-inline-end: 5px;
+}
+
+xul|*.close-icon > xul|*.button-box {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+xul|*.menulist-dropmarker {
+  -moz-appearance: none;
+  margin-inline-end: 4px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  list-style-image: url("chrome://global/skin/icons/arrow-dropdown-12.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+xul|*.menulist-dropmarker > xul|*.dropmarker-icon {
+  width: 12px;
+  height: 12px;
+}
+
+xul|menulist > xul|menupopup {
+  -moz-appearance: none;
+  border: 1px solid var(--in-content-box-border-color);
+  border-radius: 2px;
+  background-color: var(--in-content-box-background);
+}
+
+xul|menulist > xul|menupopup xul|menu,
+xul|menulist > xul|menupopup xul|menuitem {
+  -moz-appearance: none;
+  font-size: 1em;
+  color: var(--in-content-text-color);
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-inline-start: 10px;
+  padding-inline-end: 30px;
+}
+
+xul|menulist > xul|menupopup > xul|menu:not([disabled="true"])[_moz-menuactive="true"],
+xul|menulist > xul|menupopup > xul|menuitem:not([disabled="true"])[_moz-menuactive="true"] {
+  color: var(--in-content-text-color);
+  background-color: var(--in-content-item-hover);
+}
+
+xul|menulist > xul|menupopup > xul|menu:not([disabled="true"])[selected="true"],
+xul|menulist > xul|menupopup > xul|menuitem:not([disabled="true"])[selected="true"] {
+  color: var(--in-content-selected-text);
+  background-color: var(--in-content-item-selected);
+}
+
+xul|menulist > xul|menupopup > xul|menu[disabled="true"],
+xul|menulist > xul|menupopup > xul|menuitem[disabled="true"] {
+  color: #999;
+  /* override the [_moz-menuactive="true"] background color from
+     global/menu.css */
+  background-color: transparent;
+}
+
+xul|menulist > xul|menupopup xul|menuseparator {
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--in-content-box-border-color);
+  border-bottom: none;
+}
+
+
+/* textboxes */
+
+html|input[type="email"],
+html|input[type="tel"],
+html|input[type="text"],
+html|input[type="number"],
+html|textarea,
+xul|textbox {
+  -moz-appearance: none;
+  /* !important to override disabled styling from textbox.css. We reduce the
+     opacity instead of changing colors. */
+  color: inherit !important;
+/* DeepDark custom CSS */  
+  border-radius: var(--deepdark-large-radius);
+  background-color: var(--in-content-box-background) !important;
+  border: 1px solid transparent;
+/* DeepDark custom CSS - end */
+}
+
+html|input[type="email"],
+html|input[type="tel"],
+html|input[type="text"],
+html|input[type="number"],
+xul|textbo {
+/* DeepDark custom CSS */  
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+html|textarea {
+/* DeepDark custom CSS */  
+  border-radius: var(--deepdark-border-radius);
+/* DeepDark custom CSS - end */
+}
+
+xul|textbox {
+  min-height: 30px;
+  padding-right: 8px;
+  padding-left: 8px;
+/* DeepDark custom CSS */    
+  border-radius: var(--deepdark-large-radius);
+  border: 1px solid transparent;
+/* DeepDark custom CSS - end */  
+}
+
+html|input[type="email"],
+html|input[type="tel"],
+html|input[type="text"],
+html|input[type="number"],
+html|textarea {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 5px 8px;
+}
+
+html|input[type="email"]:enabled:not(:focus):hover,
+html|input[type="tel"]:enabled:not(:focus):hover,
+html|input[type="text"]:enabled:not(:focus):hover,
+html|input[type="number"]:enabled:not(:focus):hover,
+html|textarea:enabled:not(:focus):hover,
+xul|textbox:not([disabled="true"]):not([focused]):hover {
+/* DeepDark custom CSS */  
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+html|input[type="email"]:focus,
+html|input[type="tel"]:focus,
+html|input[type="text"]:focus,
+html|input[type="number"]:focus,
+html|textarea:focus,
+xul|textbox[focused] {
+  border-color: var(--in-content-border-active);
+  box-shadow: 0 0 0 1px var(--in-content-border-active),
+    0 0 0 4px var(--in-content-border-active-shadow);
+/* DeepDark custom CSS */  
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+textbox[focused] {
+/* DeepDark custom CSS */  
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+*.textbox-input::-moz-selection, 
+*.textbox-textarea::-moz-selection {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  color: var(--deepdark-brightest-color) !important;
+  background: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+html|input[type="email"]:-moz-ui-invalid,
+html|input[type="tel"]:-moz-ui-invalid,
+html|input[type="text"]:-moz-ui-invalid,
+html|input[type="number"]:-moz-ui-invalid,
+html|textarea:-moz-ui-invalid {
+  border-color: var(--in-content-border-invalid);
+}
+
+/* Don't show the field error outlines and focus borders at the same time.
+   This doesn't apply to XUL <textbox> since they don't expose validity
+   attributes */
+html|input[type="email"]:-moz-ui-invalid:focus,
+html|input[type="tel"]:-moz-ui-invalid:focus,
+html|input[type="text"]:-moz-ui-invalid:focus,
+html|input[type="number"]:-moz-ui-invalid:focus,
+html|textarea:-moz-ui-invalid:focus {
+  box-shadow: 0 0 0 3px var(--in-content-border-invalid-shadow);
+}
+
+html|input[type="email"]:disabled,
+html|input[type="tel"]:disabled,
+html|input[type="text"]:disabled,
+html|input[type="number"]:disabled,
+html|textarea:disabled,
+xul|textbox[disabled="true"] {
+  opacity: 0.4;
+}
+
+/* DeepDark custom CSS */ 
+#cookieInfoSettings xul|textbox[disabled="true"] {
+  background: transparent !important;
+}
+/* DeepDark custom CSS - end */
+
+
+/* spinbuttons */
+
+html|input[type="number"]::-moz-number-spin-down {
+  border-radius: 0 0 1px 1px;
+  background-image: url("chrome://global/skin/icons/arrow-dropdown-12.svg");
+/* DeepDark custom CSS */  
+  background-color: transparent !important;
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+html|input[type="number"]::-moz-number-spin-up {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-radius: 1px 1px 0 0;
+  background-image: url("chrome://global/skin/icons/arrow-up-12.svg");
+/* DeepDark custom CSS */ 
+  background-color: transparent !important;
+  border-color: transparent !important;
+/* DeepDark custom CSS - end */
+}
+
+html|input[type="number"]:not([disabled="true"])::-moz-number-spin-down:hover,
+html|input[type="number"]:not([disabled="true"])::-moz-number-spin-up:hover {
+/* DeepDark custom CSS */ 
+  fill: var(--deepdark-brightest-color);
+/* DeepDark custom CSS - end */ 
+}
+
+
+/* Links */
+
+html|a,
+.text-link {
+  color: var(--in-content-link-color);
+  text-decoration: none;
+}
+
+html|a {
+  color: var(--in-content-link-color) !important;
+}
+
+html|a:hover,
+.text-link:hover {
+  color: var(--in-content-link-color-hover);
+  text-decoration: underline;
+}
+
+html|a:visited {
+  color: var(--in-content-link-color-visited);
+}
+
+html|a:hover:active,
+.text-link:hover:active {
+  color: var(--in-content-link-color-active);
+  text-decoration: none;
+}
+
+/* Checkboxes and radio buttons */
+
+xul|checkbox {
+  -moz-appearance: none;
+  height: 30px;
+  margin: 2px 0;
+}
+
+xul|*.checkbox-check,
+html|input[type="checkbox"] {
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  padding: 1px;
+  border: 1px solid var(--in-content-box-border-color);
+  border-radius: 2px;
+  margin: 0;
+  margin-inline-end: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+/* DeepDark custom CSS */  
+  background-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+xul|checkbox:not([disabled="true"]):hover > xul|*.checkbox-check,
+html|input[type="checkbox"]:not(:disabled):hover {
+  border-color: var(--in-content-border-focus);
+}
+
+xul|checkbox[checked] > xul|*.checkbox-check {
+  list-style-image: url("chrome://global/skin/icons/check.svg");
+  -moz-context-properties: fill;
+  
+  fill: var(--deepdark-accent-color);
+  border-color: var(--deepdark-accent-color);
+}
+
+html|input[type="checkbox"]:checked {
+  background-image: url("chrome://global/skin/icons/check.svg");
+  -moz-context-properties: fill;
+  
+  fill: var(--deepdark-accent-color);
+  border-color: var(--deepdark-accent-color);
+}
+
+xul|checkbox[disabled="true"],
+xul|label[disabled="true"] {
+  color: inherit;
+}
+
+xul|checkbox[disabled="true"],
+html|input[type="checkbox"]:disabled,
+xul|label[disabled="true"] {
+  opacity: 0.5;
+}
+
+xul|richlistitem > xul|*.checkbox-check {
+  margin: 3px 6px;
+}
+
+html|*.toggle-container-with-text {
+  display: flex;
+  align-items: center;
+}
+
+xul|radio {
+  margin-inline-start: 0;
+  -moz-appearance: none;
+}
+
+xul|*.radio-check {
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--in-content-box-border-color);
+  border-radius: 50%;
+  margin: 0;
+  margin-inline-end: 10px;
+/* DeepDark custom CSS */  
+  background-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+xul|radio:not([disabled="true"]):hover > xul|*.radio-check {
+  border-color: var(--in-content-border-focus);
+}
+
+xul|*.radio-check[selected] {
+  list-style-image: url("chrome://global/skin/in-content/radio.svg");
+  -moz-context-properties: fill;
+/* DeepDark custom CSS */
+  fill: var(--deepdark-accent-color);
+  border-color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+xul|radio[disabled="true"] {
+  color: inherit;
+  opacity: 0.5;
+}
+
+xul|*.radio-label-box {
+  margin-inline-start: -1px; /* negative margin for the transparent border */
+  margin-inline-end: 8px;
+  padding-inline-start: 0;
+}
+
+/* Category List */
+
+*|*#categories {
+  -moz-appearance: none;
+  background-color: initial; /* override the background-color set on all richlistboxes in common.inc.css */
+  margin: 70px 0 0;
+  border-width: 0;
+  width: 240px;
+}
+
+*|*#categories > *|*.category {
+  min-height: 48px;
+  -moz-appearance: none;
+  margin-inline-start: 34px;
+  padding-inline-end: 10px;
+  padding-inline-start: 10px;
+  transition: background-color 150ms;
+}
+
+*|*#categories > *|*.category:hover {
+  background-color: var(--in-content-category-background-hover);
+  border-radius: 2px;
+}
+
+*|*#categories > *|*.category:hover:active {
+  background-color: var(--in-content-category-background-active);
+}
+
+*|*#categories > *|*.category[selected],
+*|*#categories > *|*.category.selected {
+  color: var(--in-content-category-text-selected);
+  background-color: transparent;
+}
+
+*|*#categories > *|*.category[selected]:hover,
+*|*#categories > *|*.category.selected:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color-a15);
+/* DeepDark custom CSS - end */
+}
+
+*|*#categories > *|*.category[selected]:hover:active,
+*|*#categories > *|*.category.selected:hover:active {
+  color: var(--in-content-category-text-selected-active);
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-accent-color-a10);
+/* DeepDark custom CSS - end */
+}
+
+*|*#categories[keyboard-navigation="true"]:-moz-focusring > *|*.category[current] {
+  outline: var(--in-content-category-outline-focus);
+}
+
+*|*.category-name {
+  font-size: 1.07em;
+  line-height: 1.4em;
+  padding-bottom: 2px;
+  padding-inline-start: 9px;
+  margin: 0;
+  -moz-user-select: none;
+}
+
+*|*.category-icon {
+  width: 24px;
+  height: 24px;
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+}
+
+*|*.category[selected] > *|*.category-icon,
+*|*.category.selected > *|*.category-icon {
+  fill-opacity: 1;
+}
+
+@media (max-width: 830px) {
+  #categories {
+    width: 118px;
+  }
+
+  .category-icon + .category-name {
+    display: none;
+  }
+
+  #categories > .category {
+    padding-inline-start: 13px; /* make category icons align center */
+    margin-inline-end: 33px;
+  }
+
+  .main-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .pane-container {
+    margin-inline-end: 10px;
+  }
+}
+
+/* header */
+
+*|*.header {
+  margin-inline-end: 4px; /* add the 4px end-margin of other elements */
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  -moz-box-align: baseline;
+}
+
+*|*.header-name {
+  font-size: 1.46em;
+  font-weight: 300;
+  line-height: 1.3em;
+  margin: 0;
+  -moz-user-select: none;
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color);
+/* DeepDark custom CSS - end */
+}
+
+/* List boxes */
+
+html|select[size][multiple],
+xul|listheader,
+xul|richlistbox {
+  -moz-appearance: none;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: var(--in-content-box-background);
+  border: 1px solid var(--in-content-box-border-color);
+  border-radius: 2px;
+  color: var(--in-content-text-color);
+}
+
+xul|listheader {
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-bottom: 1px;
+  box-shadow: inset 0 -1px var(--in-content-border-color);
+}
+
+xul|listheader + xul|richlistbox {
+  margin-top: 0;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+html|select[size][multiple] > html|option,
+xul|treechildren::-moz-tree-row {
+  padding: 0.3em;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background-image: none;
+}
+
+xul|treechildren::-moz-tree-row(multicol, odd) {
+  background-color: var(--in-content-box-background-odd);
+}
+
+html|select[size][multiple] > html|option:hover,
+xul|treechildren::-moz-tree-row(hover) {
+  background-color: var(--in-content-item-hover);
+}
+
+xul|treechildren::-moz-tree-row(selected) {
+  background-color: var(--in-content-item-selected);
+}
+
+/* Trees */
+
+xul|tree {
+  -moz-appearance: none;
+  font-size: 1em;
+  border: 1px solid var(--in-content-box-border-color);
+  border-radius: 2px;
+  background-color: var(--in-content-box-background);
+  margin: 0;
+}
+
+xul|tree:-moz-focusring,
+xul|richlistbox:-moz-focusring {
+  border: 1px dotted var(--in-content-border-focus);
+}
+
+xul|treecols {
+  -moz-appearance: none;
+  border: none;
+  padding: 0;
+/* DeepDark custom CSS */
+  border-bottom: 0;
+/* DeepDark custom CSS - end */
+}
+
+xul|treecol:not([hideheader="true"]),
+xul|treecolpicker {
+  -moz-appearance: none;
+  border: none;
+  background-color: var(--in-content-box-background-hover);
+  color: #808080;
+  padding: 5px 10px;
+}
+
+xul|treecol:not([hideheader="true"]):not([sortable="false"]):hover,
+xul|treecolpicker:hover {
+  background-color: var(--in-content-box-background-active);
+  color: var(--in-content-text-color);
+}
+
+xul|treecol:not([hideheader="true"]):not(:first-child),
+xul|treecolpicker {
+  border-inline-start-width: 1px;
+  border-inline-start-style: solid;
+  border-image: linear-gradient(transparent 0%, transparent 20%, var(--in-content-box-border-color) 20%, var(--in-content-box-border-color) 80%, transparent 80%, transparent 100%) 1 1;
+}
+
+xul|treecol[sortDirection]:not([hideheader="true"]) > xul|*.treecol-sortdirection {
+  list-style-image: url("chrome://global/skin/in-content/dropdown.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+  width: 18px;
+  height: 18px;
+}
+
+xul|treecol[sortDirection="ascending"]:not([hideheader="true"]) > xul|*.treecol-sortdirection {
+  transform: scaleY(-1);
+}
+
+/* This is the only way to increase the height of a tree row unfortunately */
+xul|treechildren::-moz-tree-row {
+  min-height: 2em;
+}
+
+/* Color needs to be set on tree cell in order to be applied */
+xul|treechildren::-moz-tree-cell-text,
+xul|treechildren::-moz-tree-twisty,
+xul|treechildren::-moz-tree-image {
+  color: var(--in-content-text-color);
+}
+
+xul|treechildren::-moz-tree-cell-text(selected),
+xul|treechildren::-moz-tree-twisty(selected),
+xul|treechildren::-moz-tree-image(selected) {
+  color: var(--in-content-selected-text);
+}
+
+/* Message bars */
+.message-bar {
+  background-color: var(--in-content-box-info-background);
+  border-radius: 4px;
+  min-height: 32px;
+  -moz-box-align: center;
+  padding: 4px;
+}
+
+.message-bar-description {
+  margin: 2px 0;
+  line-height: 1.25;
+}
+
+/* The message-bar-button styles have extra specificity to override
+ * the defaults for buttons. */
+.message-bar-content > .message-bar-button {
+  background-color: var(--grey-90-a10);
+  border: none;
+  border-radius: 2px;
+  height: 24px;
+  margin-inline-start: 8px;
+  padding: 0 8px;
+}
+
+.message-bar-content > .message-bar-button:hover {
+  background-color: var(--grey-90-a20);
+}
+
+.message-bar-content > .message-bar-button:hover:active {
+  background-color: var(--grey-90-a30);
+}
+
+.message-bar-icon {
+  list-style-image: url("chrome://browser/skin/identity-icon.svg");
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  margin-inline-end: 4px;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+/* Warning styles */
+#warningTitle {
+/* DeepDark custom CSS */
+  color: var(--deepdark-yellow-color);
+/* DeepDark custom CSS - end */
+}
+
+.message-bar-warning {
+  background-color: var(--yellow-50);
+  color: var(--yellow-90);
+}
+
+.message-bar-warning > .message-bar-icon {
+  list-style-image: url("chrome://browser/skin/warning.svg");
+}
+
+.card {
+  background: var(--in-content-box-background);
+  /* Needed for high-contrast where the border will appear. */
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: var(--card-shadow);
+  margin: 0 0 8px;
+  /* Remove the border from the overall padding. */
+  padding: calc(var(--card-padding) - 1px);
+  transition: box-shadow 150ms;
+}
+
+.card:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+.card-heading-image {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  margin: -16px -16px 16px;
+}
+
+.sidebar-footer-button {
+  padding: 1px; /* Adding padding around help label in order to make entire keyboard focusing outline visible */
+}
+
+.sidebar-footer-button > .text-link {
+  -moz-box-flex: 1;
+  margin-inline-start: 34px;
+  margin-inline-end: 0;
+  text-decoration: none;
+  color: currentColor;
+  width: 36px;
+  height: 36px;
+  cursor: default;
+}
+
+.sidebar-footer-button > .text-link:hover {
+  background-color: var(--in-content-category-background-hover);
+  border-radius: 2px;
+}
+
+.sidebar-footer-button > .text-link:hover:active:not([disabled]) {
+  background-color: var(--in-content-category-background-active);
+}
+
+.sidebar-footer-button > .text-link:-moz-focusring {
+  outline: var(--in-content-category-outline-focus);
+}
+
+.sidebar-footer-icon {
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+  width: 16px;
+  height: 16px;
+  margin: 10px;
+  margin-inline-start: 13px;
+  vertical-align: middle;
+}
+
+.sidebar-footer-icon:hover {
+  fill: currentColor !important;
+}
+
+.sidebar-footer-button:last-of-type {
+  margin-bottom: 36px;
+}
+
+.help-icon {
+  list-style-image: url("chrome://global/skin/icons/help.svg");
+}
+
+.preferences-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/options.svg");
+/* DeepDark custom CSS - end */
+}
+
+.addons-icon {
+/* DeepDark custom CSS */
+  list-style-image: url("chrome://DeepdarkOverlay/skin/icons/addons.svg");
+/* DeepDark custom CSS - end */
+  width: 14px;
+  height: 14px;
+  margin-inline-start: 15px;
+}
+
+.sidebar-footer-label {
+  margin: 0 4px;
+  font-size: .9em;
+  -moz-user-select: none;
+}
+
+@media (max-width: 830px) {
+  .sidebar-footer-button > .text-link {
+    -moz-box-flex: 0;
+    width: 36px;
+    height: 36px;
+    margin-inline-start: 0;
+  }
+
+  .sidebar-footer-icon {
+    margin: 10px;
+  }
+
+  .sidebar-footer-label {
+    display: none;
+  }
+}
+
+xul|tabs {
+  padding-right: 0;
+  padding-left: 0;
+  position: static;
+}
+
+xul|tab[visuallyselected] {
+  text-shadow: none;
+/* DeepDark custom CSS */
+  color: var(--deepdark-accent-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+xul|button[dlgtype="help"] {
+  -moz-appearance: none;
+  width: auto;
+}
+
+xul|menulist > xul|menupopup > xul|menuitem[checked="true"]::before,
+xul|menulist > xul|menupopup > xul|menuitem[selected="true"]::before {
+  display: none;
+}
+
+xul|*.menulist-dropmarker {
+  display: -moz-box;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+xul|menulist > xul|menupopup xul|menu,
+xul|menulist > xul|menupopup xul|menuitem {
+  padding-inline-end: 34px;
+}
+
+xul|*.help-button > xul|*.button-box > xul|*.button-icon {
+  margin-inline-start: 0;
+}
+
+xul|*.checkbox-icon {
+  margin-right: 0;
+}
+
+xul|*.radio-icon {
+  margin-inline-end: 0;
+}
+
+xul|*.text-link:-moz-focusring {
+  color: var(--in-content-link-highlight);
+  text-decoration: underline;
+  box-shadow: none;
+}
+
+xul|checkbox:-moz-focusring > .checkbox-check,
+html|input[type="checkbox"]:-moz-focusring + html|label:before,
+xul|radio[focused="true"] > .radio-check,
+xul|tab:-moz-focusring > .tab-middle > .tab-text {
+  outline: 2px solid rgba(0,149,221,0.5);
+  outline-offset: 1px;
+  -moz-outline-radius: 2px;
+}
+
+xul|radio[focused="true"] > .radio-check {
+  -moz-outline-radius: 100%;
+}
+
+textbox[is="search-textbox"] {
+  -moz-appearance: none;
+  padding-inline-start: 8px;
+  padding-inline-end: 8px;
+/* DeepDark custom CSS */  
+  border-radius: var(--deepdark-large-radius);
+  border-color: transparent;
+/* DeepDark custom CSS - end */
+}
+
+xul|textbox[is="search-textbox"] > .textbox-search-sign {
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+  fill-opacity: 0.8;
+  margin-inline-end: 5px;
+/* DeepDark custom CSS */ 
+  list-style-image: url(chrome://deepdarkOverlay/skin/icons/search-glass.svg);
+/* DeepDark custom CSS - end */
+}
+
+html|button {
+  /* XUL button min-width */
+  min-width: 79px;
+}
+
+
+/* :::::: MISCELANEOUS :::::: */
+
+.close-icon > .button-icon,
+.close-icon > .button-box > .button-icon,
+.close-icon > .toolbarbutton-icon,
+.dialogClose {
+/* DeepDark custom CSS */
+  border-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+button.dialogClose {
+/* DeepDark custom CSS */
+  padding: 0;
+  margin-right: 7px;
+  -moz-outline-radius: var(--deepdark-large-radius);
+/* DeepDark custom CSS - end */
+}
+
+button.dialogClose:-moz-locale-dir(ltr) {
+/* DeepDark custom CSS */
+  margin-right: 7px;
+/* DeepDark custom CSS - end */
+}
+
+button.dialogClose:-moz-locale-dir(rtl) {
+/* DeepDark custom CSS */
+  margin-left: 7px;
+/* DeepDark custom CSS - end */
+}

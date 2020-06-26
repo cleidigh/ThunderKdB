@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "quicker quicksearch",
+  "description": "quicker searching: insert email address or email domain of selected message into quickfilterbox with a mouseclick from messagelist-contextmenu or by keyboard",
+  "version": "2.2",
+  "author": "opto (Klaus Buecher)",
+    "applications": {
+        "gecko": {
+            "id": "quickersearch@opto.one",
+            "strict_min_version": "68.0"
+        }
+    },  
+
+//  "browser_action": {
+//    "browser_style": true,
+//    "default_title": "quick-search",
+//    "default_icon": "search.svg"
+ //   "default_popup": "popup/tag_sync_popup.html"
+//  },
+   
+   "permissions": [
+    "messagesRead",
+    "menus", 
+    "tabs",
+    "activeTab"
+  
+  ],
+
+ 
+   "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+  
+
+  
+}

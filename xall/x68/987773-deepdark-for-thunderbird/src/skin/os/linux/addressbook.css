@@ -1,0 +1,56 @@
+/* Default Thunderbird Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ * Source code following the 'DeepDark custom CSS' annotation is 
+ * subject to the theme's terms of use. For more information you can
+ * consult the README_LICENSE.txt file included in the theme's package. */
+
+toolbar:not(.inline-toolbar):not(.contentTabToolbar):not(:-moz-lwtheme) {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+/* DeepDark custom CSS - end */
+}
+
+#ab-toolbox {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: var(--deepdark-dark-ash-color) !important;
+  border-bottom: 1px solid var(--deepdark-darkest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+#abContent {
+/* DeepDark custom CSS */
+  margin-bottom: -1px !important;
+/* DeepDark custom CSS - end */
+}
+
+#abResultsTree treecol,
+#abResultsTree treecolpicker {
+/* DeepDark custom CSS */
+  border-top: 0 !important;
+/* DeepDark custom CSS - end */
+}
+
+
+/* Menuitem */
+
+menu[type="radio"],
+menuitem[type="radio"],
+menucaption[type="radio"],
+menu[_moz-menuactive="true"],
+menuitem[_moz-menuactive="true"],
+menucaption[_moz-menuactive="true"] {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+/* DeepDark custom CSS - end */
+}
+
+.menu-iconic-left,
+menuitem[type="checkbox"] > .menu-iconic-left,
+menuitem[checked="true"] > .menu-iconic-left {
+/* DeepDark custom CSS */
+  display: none !important;
+/* DeepDark custom CSS - end */
+}
