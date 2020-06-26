@@ -465,7 +465,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		},
 
 		loadTemplate: function () {
-			cardbookWindowUtils.callFilePicker("fileSelectionTPLTitle", "OPEN", "TPL", wdw_csvTranslator.getDefaultTemplateName(), wdw_csvTranslator.loadTemplateNext);
+			cardbookWindowUtils.callFilePicker("fileSelectionTPLTitle", "OPEN", "TPL", wdw_csvTranslator.getDefaultTemplateName(), "", wdw_csvTranslator.loadTemplateNext);
 		},
 
 		loadTemplateNext: function (aFile) {
@@ -492,7 +492,7 @@ if ("undefined" == typeof(wdw_csvTranslator)) {
 		},
 
 		saveTemplate: function () {
-			cardbookWindowUtils.callFilePicker("fileCreationTPLTitle", "SAVE", "TPL", wdw_csvTranslator.getDefaultTemplateName(), wdw_csvTranslator.saveTemplateNext);
+			cardbookWindowUtils.callFilePicker("fileCreationTPLTitle", "SAVE", "TPL", wdw_csvTranslator.getDefaultTemplateName(), "", wdw_csvTranslator.saveTemplateNext);
 		},
 
 		saveTemplateNext: function (aFile) {

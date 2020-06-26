@@ -83,11 +83,20 @@ Send.prototype = {
     this.cppBase.gatherMimeAttachments();
   },
   notifyListenerOnStopSending: async function(aMsgID, aStatus, aMsg, aFile) {
+    let strongThis = this.delegator.get();
     let msgWindow = this.cppBase.getProgress().msgWindow;
     try {
       let incomingServer = gSendProperties.incomingServer;
       let compFields = this.cppBase.sendCompFields;
-      // XXX TODO collect addresses
+      try {
+        let collectNewAddresses = Services.prefs.getBoolPref("mail.collect_email_address_outgoing");
+        let addressCollector = Cc["@mozilla.org/addressbook/services/addressCollector;1"].getService(Ci.nsIAbAddressCollector);
+        for (let field of ["to", "cc", "bcc"]) {
+          addressCollector.collectAddress(compFields[field], collectNewAddresses, Ci.nsIAbPreferMailFormat.unknown);
+        }
+      } catch (ex) {
+        ReportException(ex, msgWindow);
+      }
       let content = await readFileAsync(aFile);
       let bcc = ToMailboxObjects(compFields.bcc);
       let message = await CallExtension(incomingServer, "ComposeMessageFromMime", { content, bcc }, msgWindow);

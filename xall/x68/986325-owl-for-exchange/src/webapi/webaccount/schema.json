@@ -113,7 +113,7 @@
     }, {
       "name": "msgWindow",
       "type": "number",
-      "optional": "true",
+      "optional": true,
       "default": 0,
       "description": "The msgWindow opaque identifier, in case a prompt is needed. Pass null if you don't want to prompt."
     }],
@@ -133,7 +133,7 @@
     }, {
       "name": "msgWindow",
       "type": "number",
-      "optional": "true",
+      "optional": true,
       "default": 0,
       "description": "The msgWindow opaque identifier."
     }, {
@@ -269,6 +269,238 @@
       "description": "The folder hierarchy."
     }]
   }, {
+    "name": "notifyFolderCopied",
+    "type": "function",
+    "description": "Notifies that a folder was copied on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "oldFolder",
+      "type": "string",
+      "description": "The folder id of the copied folder."
+    }, {
+      "name": "oldParent",
+      "type": "string",
+      "description": "The folder id containing the copied folder."
+    }, {
+      "name": "newFolder",
+      "type": "string",
+      "description": "The folder id of the copy."
+    }, {
+      "name": "newParent",
+      "type": "string",
+      "description": "The folder id containing the copy."
+    }]
+  }, {
+    "name": "notifyFolderCreated",
+    "type": "function",
+    "description": "Notifies that a folder was created on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "parent",
+      "type": "string",
+      "description": "The folder id containing the new folder."
+    }, {
+      "name": "folder",
+      "type": "string",
+      "description": "The folder id of the new folder."
+    }, {
+      "name": "name",
+      "type": "string",
+      "description": "The name of the new folder."
+    }, {
+      "name": "total",
+      "type": "number",
+      "description": "The total item count of the new folder."
+    }, {
+      "name": "unread",
+      "type": "number",
+      "description": "The unread count of the new folder."
+    }]
+  }, {
+    "name": "notifyFolderDeleted",
+    "type": "function",
+    "description": "Notifies that a folder was deleted on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "folder",
+      "type": "string",
+      "description": "The item id of the deleted folder."
+    }, {
+      "name": "parent",
+      "type": "string",
+      "description": "The folder id containing the deleted folder."
+    }]
+  }, {
+    "name": "notifyFolderModified",
+    "type": "function",
+    "description": "Notifies that a folder was modified on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "folder",
+      "type": "string",
+      "description": "The folder id of the modified folder."
+    }, {
+      "name": "name",
+      "type": "string",
+      "description": "The current name of the modified folder."
+    }, {
+      "name": "total",
+      "type": "number",
+      "description": "The total item count of the modified folder."
+    }, {
+      "name": "unread",
+      "type": "number",
+      "description": "The unread count of the modified folder."
+    }]
+  }, {
+    "name": "notifyFolderMoved",
+    "type": "function",
+    "description": "Notifies that a folder was moved on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "oldFolder",
+      "type": "string",
+      "description": "The old folder id of the moved folder."
+    }, {
+      "name": "oldParent",
+      "type": "string",
+      "description": "The folder id from which the folder was moved."
+    }, {
+      "name": "newFolder",
+      "type": "string",
+      "description": "The new folder id of the folder."
+    }, {
+      "name": "newParent",
+      "type": "string",
+      "description": "The folder id to which the folder was moved."
+    }]
+  }, {
+    "name": "notifyMessageCopied",
+    "type": "function",
+    "description": "Notifies that a message was copied on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "oldMessage",
+      "type": "string",
+      "description": "The item id of the copied message."
+    }, {
+      "name": "oldFolder",
+      "type": "string",
+      "description": "The folder id containing the copied message."
+    }, {
+      "name": "newMessage",
+      "type": "string",
+      "description": "The item id of the copy."
+    }, {
+      "name": "newFolder",
+      "type": "string",
+      "description": "The folder id containing the copy."
+    }]
+  }, {
+    "name": "notifyMessageCreated",
+    "type": "function",
+    "description": "Notifies that a message was created on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "newMessage",
+      "type": "string",
+      "description": "The item id of the new message."
+    }, {
+      "name": "folder",
+      "type": "string",
+      "description": "The folder id containing the new message."
+    }]
+  }, {
+    "name": "notifyMessageDeleted",
+    "type": "function",
+    "description": "Notifies that a message was deleted on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "oldMessage",
+      "type": "string",
+      "description": "The item id of the deleted message."
+    }, {
+      "name": "folder",
+      "type": "string",
+      "description": "The folder id containing the deleted message."
+    }]
+  }, {
+    "name": "notifyMessageModified",
+    "type": "function",
+    "description": "Notifies that a message was modified on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "message",
+      "type": "string",
+      "description": "The item id of the modified message."
+    }, {
+      "name": "folder",
+      "type": "string",
+      "description": "The folder id containing the modified message."
+    }]
+  }, {
+    "name": "notifyMessageMoved",
+    "type": "function",
+    "description": "Notifies that a message was moved on the server.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "oldMessage",
+      "type": "string",
+      "description": "The old item id of the moved message."
+    }, {
+      "name": "oldFolder",
+      "type": "string",
+      "description": "The folder id from which the message was moved."
+    }, {
+      "name": "newMessage",
+      "type": "string",
+      "description": "The new item id of the message."
+    }, {
+      "name": "newFolder",
+      "type": "string",
+      "description": "The folder id to which the message was moved."
+    }]
+  }, {
     "name": "getServersOfTypes",
     "type": "function",
     "description": "Gets the server keys for given server types.",
@@ -292,6 +524,16 @@
 }, {
   "namespace": "webAccount",
   "functions": [{
+    "name": "markAddressBookAsReadOnly",
+    "type": "function",
+    "description": "Marks an address book as read only in the UI.",
+    "async": true,
+    "parameters": [{
+      "name": "uid",
+      "type": "string",
+      "description": "The UID of the address book."
+    }]
+  }, {
     "name": "wizard",
     "type": "function",
     "description": "Opens the Create Account.wizard.",

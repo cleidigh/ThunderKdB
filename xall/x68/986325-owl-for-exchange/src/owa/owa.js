@@ -78,6 +78,12 @@ class OWAAccount extends OwlAccount {
     this.connectionsLimit = OWAAccount.kMaxParallelFetches;
 
     /**
+     * Whether we've performed startup tasks.
+     * {Boolean}
+     */
+    this.startedUp = false;
+
+    /**
       * Last login time
       * {Number} like Date.now()
       */
@@ -141,6 +147,52 @@ async getURL() {
     // Generically detecting the redirect complicates the code, so instead we
     // just anticipate the redirect here.
     owaURL.hostname = "outlook.office.com";
+
+    // Thunderbird autoconfigure wrongly returns https://outlook.office365.com/owa/
+    // for personal accounts (*@outlook.com, *@hotmail.com, *@live.com, *@msn.com, etc.)
+    // as well -- due to MX having the same TLD, ISPDB entry for outlook.com and bug 1571772.
+    // But OWA https://outlook.office.com doesn't work for personal accounts.
+    // First try checking the full MX record for the domain.
+    let username = await browser.incomingServer.getUsername(this.serverID);
+    let domain = username.split("@")[1];
+    let response = await fetch("https://live.thunderbird.net/dns/mx/" + domain);
+    let mx = await response.text();
+    mx = mx.split("\n")[0];
+    if (mx.endsWith(".olc.protection.outlook.com")) {
+      // Personal account: *@outlook.com, *@hotmail.com, *@live.com, *@msn.com, etc.
+      owaURL.href = "https://outlook.live.com/owa/";
+    } else if (mx.endsWith(".mail.protection.outlook.com")) {
+      // Business account: Office365. Keep OWA URL as-is.
+    } else {
+      // We didn't recognise the MX record, so we'll try AutoDiscover instead.
+      let password = await browser.incomingServer.getPassword(this.serverID, null);
+      for (let autodiscoverURL of [
+        "https://autodiscover-s.outlook.com/Autodiscover/Autodiscover.xml",
+        "https://outlook.com/Autodiscover/Autodiscover.xml",
+      ]) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", autodiscoverURL, true, username, password);
+        xhr.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+        let onloadend = new Promise((resolve, reject) => {
+          xhr.onloadend = resolve;
+        });
+        xhr.send('<?xml version="1.0" encoding="utf-8"?><Autodiscover xmlns="http://schemas.microsoft.com/exchange/autodiscover/outlook/requestschema/2006"><Request><EMailAddress>' + username + '</EMailAddress><AcceptableResponseSchema>http://schemas.microsoft.com/exchange/autodiscover/outlook/responseschema/2006a</AcceptableResponseSchema></Request></Autodiscover>');
+        await onloadend;
+        if (xhr.status == 200 && xhr.responseXML) {
+          let OWAUrl = xhr.responseXML.querySelector("OWAUrl");
+          // returns https://outlook.live.com/owa/ for personal accounts,
+          // and https://outlook.office365.com/owa/ for Office365 accounts
+          if (OWAUrl && OWAUrl.textContent) {
+            // Avoid reverting our outlook.office.com fix for 301 above.
+            if (OWAUrl.textContent != "https://outlook.office365.com/owa/") {
+              owaURL.href = OWAUrl.textContent;
+            }
+            break;
+          }
+        }
+      }
+    }
+    browser.incomingServer.setStringValue(this.serverID, "owa_url", owaURL.href);
   }
   return owaURL;
 }
@@ -208,9 +260,9 @@ async CallServiceUnqueued(aAction, aData) {
   if (result.Body) {
     result = result.Body;
   }
-  if (result.ResponseMessages) {
-    // TODO this removes all but the first result, even for success cases.
-    // Compare EWSAccount.CheckResponse()
+  // TODO filter mixed successful and error items
+  // Compare EWSAccount.CheckResponse()
+  if (result.ResponseMessages && result.ResponseMessages.Items.length == 1) {
     result = result.ResponseMessages.Items[0];
   }
   // Check for this specific error in case we want to retry the operation.
@@ -288,7 +340,9 @@ async CheckJSONResponse(aResponse, aOriginalURL, aAction, aData) {
       await this.ClearCookies(); // auth.js
       throw new OwlError("login-expired");
     }
-    throw ex;
+    let error = new OWAError(aResponse, null, aAction, aData);
+    error.message = ex.message;
+    throw error;
   }
 }
 
@@ -340,6 +394,8 @@ async StartupAfterLogin()
 {
   // First, ensure that all of the folder counts are up-to-date.
   await this.CheckFolders(true);
+  // Register this account's calendar with Lightning, if it is installed.
+  browser.calendarProvider.registerCalendar(this.serverID);
   // Download the contacts in the background.
   noAwait(this.ResyncAddressBooks(), logError); // contacts.js
 }

@@ -499,52 +499,56 @@ const accessHkpInternal = {
     };
     let key = null;
 
+    let searchArr = searchTerm.split(/ +/);
+
     try {
-      let r = await this.accessKeyServer(EnigmailConstants.SEARCH_KEY, keyserver, searchTerm, listener);
+      for (let k in searchArr) {
+        let r = await this.accessKeyServer(EnigmailConstants.SEARCH_KEY, keyserver, searchArr[k], listener);
 
-      let lines = r.split(/\r?\n/);
+        let lines = r.split(/\r?\n/);
 
-      for (var i = 0; i < lines.length; i++) {
-        let line = lines[i].split(/:/).map(unescape);
-        if (line.length <= 1) continue;
+        for (var i = 0; i < lines.length; i++) {
+          let line = lines[i].split(/:/).map(unescape);
+          if (line.length <= 1) continue;
 
-        switch (line[0]) {
-          case "info":
-            if (line[1] !== "1") {
-              // protocol version not supported
-              throw {
-                result: 7,
-                errorDetails: EnigmailLocale.getString("keyserver.error.unsupported"),
-                pubKeys: []
-              };
-            }
-            break;
-          case "pub":
-            if (line.length >= 6) {
-              if (key) {
-                retObj.pubKeys.push(key);
-                key = null;
+          switch (line[0]) {
+            case "info":
+              if (line[1] !== "1") {
+                // protocol version not supported
+                throw {
+                  result: 7,
+                  errorDetails: EnigmailLocale.getString("keyserver.error.unsupported"),
+                  pubKeys: []
+                };
               }
-              let dat = new Date(line[4] * 1000);
-              let month = String(dat.getMonth() + 101).substr(1);
-              let day = String(dat.getDate() + 100).substr(1);
-              key = {
-                keyId: line[1],
-                keyLen: line[3],
-                keyType: line[2],
-                created: dat.getFullYear() + "-" + month + "-" + day,
-                uid: [],
-                status: line[6]
-              };
-            }
-            break;
-          case "uid":
-            key.uid.push(EnigmailData.convertToUnicode(line[1].trim(), "utf-8"));
+              break;
+            case "pub":
+              if (line.length >= 6) {
+                if (key) {
+                  retObj.pubKeys.push(key);
+                  key = null;
+                }
+                let dat = new Date(line[4] * 1000);
+                let month = String(dat.getMonth() + 101).substr(1);
+                let day = String(dat.getDate() + 100).substr(1);
+                key = {
+                  keyId: line[1],
+                  keyLen: line[3],
+                  keyType: line[2],
+                  created: dat.getFullYear() + "-" + month + "-" + day,
+                  uid: [],
+                  status: line[6]
+                };
+              }
+              break;
+            case "uid":
+              key.uid.push(EnigmailData.convertToUnicode(line[1].trim(), "utf-8"));
+          }
         }
-      }
 
-      if (key) {
-        retObj.pubKeys.push(key);
+        if (key) {
+          retObj.pubKeys.push(key);
+        }
       }
     }
     catch (ex) {
@@ -712,6 +716,7 @@ const accessKeyBase = {
    * @return:   Promise<...>
    */
   download: async function(keyIDs, keyserver, listener = null) {
+    EnigmailLog.DEBUG(`keyserver.jsm: accessKeyBase: download()\n`);
     let keyIdArr = keyIDs.split(/ +/);
     let retObj = {
       result: 0,
@@ -757,9 +762,10 @@ const accessKeyBase = {
    *           - created: String (YYYY-MM-DD)
    *           - status: String: one of ''=valid, r=revoked, e=expired
    *           - uid: Array of Strings with UIDs
-   
+
    */
   search: async function(searchTerm, keyserver, listener = null) {
+    EnigmailLog.DEBUG(`keyserver.jsm: accessKeyBase: search()\n`);
     let retObj = {
       result: 0,
       errorDetails: "",
@@ -806,6 +812,7 @@ const accessKeyBase = {
   },
 
   refresh: function(keyServer, listener = null) {
+    EnigmailLog.DEBUG(`keyserver.jsm: accessKeyBase: refresh()\n`);
     let keyList = EnigmailKeyRing.getAllKeys().keyList.map(keyObj => {
       return "0x" + keyObj.fpr;
     }).join(" ");
@@ -1215,11 +1222,20 @@ const accessVksServer = {
           }
         }
         else {
-          try {
-            searchTerm = EnigmailFuncs.stripEmail(searchTerm);
+          if (searchTerm.search(/^[A-F0-9]+$/) === 0 && searchTerm.length === 16) {
+            lookup = "/vks/v1/by-keyid/" + searchTerm;
           }
-          catch (x) {}
-          lookup = "/vks/v1/by-email/" + searchTerm;
+          else if (searchTerm.search(/^[A-F0-9]+$/) === 0 && searchTerm.length === 40) {
+            lookup = "/vks/v1/by-fingerprint/" + searchTerm;
+          }
+          else {
+            try {
+              searchTerm = EnigmailFuncs.stripEmail(searchTerm);
+            }
+            catch (x) {}
+
+            lookup = "/vks/v1/by-email/" + searchTerm;
+          }
         }
         url += lookup;
       }
@@ -1518,27 +1534,31 @@ const accessVksServer = {
     };
     let key = null;
 
+    let searchArr = searchTerm.split(/ +/);
+
     try {
-      let r = await this.accessKeyServer(EnigmailConstants.SEARCH_KEY, keyserver, searchTerm, listener);
+      for (let i in searchArr) {
+        let r = await this.accessKeyServer(EnigmailConstants.SEARCH_KEY, keyserver, searchArr[i], listener);
 
-      const cApi = EnigmailCryptoAPI();
-      let keyList = await cApi.getKeyListFromKeyBlock(r);
+        const cApi = EnigmailCryptoAPI();
+        let keyList = await cApi.getKeyListFromKeyBlock(r);
 
-      for (let k in keyList) {
-        key = {
-          keyId: keyList[k].fpr,
-          keyLen: "0",
-          keyType: "",
-          created: keyList[k].created,
-          uid: [keyList[k].name],
-          status: keyList[k].revoke ? "r" : ""
-        };
+        for (let k in keyList) {
+          key = {
+            keyId: keyList[k].fpr,
+            keyLen: "0",
+            keyType: "",
+            created: keyList[k].created,
+            uid: [keyList[k].name],
+            status: keyList[k].revoke ? "r" : ""
+          };
 
-        for (let uid of keyList[k].uids) {
-          key.uid.push(uid);
+          for (let uid of keyList[k].uids) {
+            key.uid.push(uid);
+          }
+
+          retObj.pubKeys.push(key);
         }
-
-        retObj.pubKeys.push(key);
       }
     }
     catch (ex) {
@@ -1585,8 +1605,8 @@ var EnigmailKeyServer = {
 
   /**
    * Search keys on a keyserver
-   * @param searchString: String - search term
-   * @param keyserver:    String  - keyserver URL (optionally incl. protocol)
+   * @param searchString: String - search term. Multiple email addresses can be search by spaces
+   * @param keyserver:    String - keyserver URL (optionally incl. protocol)
    * @param listener:     optional Object implementing the KeySrvListener API (above)
    *
    * @return:   Promise<Object>

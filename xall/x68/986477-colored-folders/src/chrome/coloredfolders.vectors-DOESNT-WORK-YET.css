@@ -1,0 +1,237 @@
+/* *
+ * @package     Lab5 - Colored Folders
+ *
+ * version :  v1.3
+ *
+ * @author	:	Lab5 - Dennis Riegelsberger
+ * @authorUrl	:	https://lab5.ch
+ * @authorEmail	:	info@lab5.ch
+ * @copyright	:	(C) 2019+ Lab5 - Dennis Riegelsberger. fisheater. All rights reserved.
+ * @copyrightUrl	:	https://lab5.ch
+ * @license	:	GNU General Public License version 2 or later;
+ * @licenseUrl	:	https://www.gnu.org/licenses/gpl-2.0.html
+ * @project	:	https://lab5.ch/blog
+ * @CHANGELOG :
+ * * 
+ */ 
+
+#folderPaneContext-colorFolders {
+  list-style-image: url("chrome://coloredfolders/content/icon/coloredfolders16.png");
+}
+
+
+/* * * * * * *
+https://developer.mozilla.org/en-US/docs/Archive/Mozilla/XUL/Tutorial/Styling_a_Tree
+* * * * * * */
+
+/*  
+.dir::before {
+
+  list-style-image: url("chrome://coloredfolders/skin/folder.png");
+}
+
+treechildren::-moz-tree-image{
+  list-style-image: url("chrome://coloredfolders/skin/folder2.png");
+}
+
+treechildren::-moz-tree-image(*){
+  list-style-image: url("chrome://coloredfolders/skin/folder3.png");
+}
+
+*/ 
+
+
+
+
+/*******************
+
+		see Style Inspector :
+
+		coloredfolders.css  
+		folderMenues.css 
+		folderpane.css 
+		tree.css
+		
+*******************/ 
+ 
+
+treechildren::-moz-tree-image(folderNameCol),
+treechildren::-moz-tree-image(folderNameCol, folderColorTypeDefault),
+.folderColorTypeDefault .menuitem-iconic,
+.folderColorTypeDefault .menu-iconic,
+.tabmail-tab[type="folder"],
+.tabmail-tab[type="folder"][selected="true"] {
+	
+ -moz-margin-end: 2px;
+ 
+/* * * * * * * * * * * * * * *
+
+
+		background-image: url("chrome://coloredfolders/skin/foldersvg.svg"), url("chrome://coloredfolders/skin/star2.svg");
+		background-image: url("chrome://coloredfolders/skin/star.svg"), url("chrome://coloredfolders/skin/foldersvg.svg");
+		background-image: url("chrome://coloredfolders/skin/star2.svg"), url("chrome://coloredfolders/skin/foldersvg.svg");
+		background-position:  right top, center;
+		background-repeat: no-repeat, no-repeat;
+
+		list-style-image: none;
+		list-style-image: url("chrome://coloredfolders/skin/transparent.png");
+
+		background-image:  url("chrome://coloredfolders/skin/foldersvg.svg");
+		list-style-image: url("chrome://coloredfolders/skin/star.png");
+		background-image:  url("chrome://coloredfolders/skin/foldernew.svg");
+
+	
+* * * * * * * * * * * * * * */
+  
+		background-image:  url("chrome://coloredfolders/skin/foldernew2.svg");
+
+		background-repeat:no-repeat;
+		background-position: center center;
+  
+  
+  
+/* * * * * * * * * * * * * * *
+
+    background-color: red;
+    background-color: white;
+    background-color: yellow;
+    background-color: transparent;
+    background-color: black;
+    background-color: blue;
+    background-color: #0000ff99;
+    background-color: blue !important;
+	
+* * * * * * * * * * * * * * */
+  
+    background-color: blue;
+	  
+/* * * * * * * * * * * * * * *
+
+		background-blend-mode: darken, luminosity; // one per background
+	  
+		background-blend-mode: normal;
+
+		background-blend-mode: multiply;
+		background-blend-mode: overlay;
+		background-blend-mode: saturation;
+		background-blend-mode: color-dodge;
+		background-blend-mode: darken;
+
+		background-blend-mode: screen;
+		background-blend-mode: luminosity;
+
+		background-blend-mode: color;
+		background-blend-mode: lighten;
+		background-blend-mode: darken;
+		background-blend-mode: normal;
+
+		background-blend-mode: hue;
+
+		background-blend-mode: hard-light;
+		background-blend-mode: soft-light;
+
+		background-blend-mode: color-burn;
+		background-blend-mode: exclusion;
+		background-blend-mode: difference;
+
+		background-blend-mode: normal;
+		background-blend-mode: unset;
+		
+* * * * * * * * * * * * * * */
+
+		background-blend-mode: difference;
+		
+   
+   
+	  
+/* * * * * * * * * * * * * * *
+		  
+		  list-style-image: url("chrome://coloredfolders/skin/star2.svg"), url("chrome://coloredfolders/skin/foldersvg.svg");
+		  
+		  list-style-image: url("chrome://coloredfolders/skin/foldersvg.svg");
+		  
+		  list-style-image: url("chrome://coloredfolders/skin/star2.svg");
+		  
+		  list-style-image: none;
+		  list-style-image: url("chrome://coloredfolders/skin/transparent.png");
+		  
+		  list-style-image: url("chrome://coloredfolders/skin/star.svg");
+		  list-style-image: url("chrome://coloredfolders/skin/star2.svg");
+		  
+* * * * * * * * * * * * * * */
+
+  list-style-image: url("chrome://coloredfolders/skin/star2.svg");
+  
+    
+	  
+/* * * * * * * * * * * * * * *
+
+	// SOLLTE DEN HINTERGRUND  (FARBE ) VIA MAKE AUSSCHNEIDEN - TUT'S ABER NICHT
+
+  mask: url("chrome://coloredfolders/skin/star.png"); 
+  -moz-mask: url("chrome://coloredfolders/skin/star.png");
+  -webkit-mask: url("chrome://coloredfolders/skin/star.png");
+  
+   
+  mask: url("chrome://coloredfolders/skin/star.svg"); 
+  -moz-mask: url("chrome://coloredfolders/skin/star.svg");
+  -webkit-mask: url("chrome://coloredfolders/skin/star.svg");
+  
+  
+  mask: url("chrome://coloredfolders/skin/star.png"); 
+  -moz-mask: url("chrome://coloredfolders/skin/star.png");
+  -webkit-mask: url("chrome://coloredfolders/skin/star.png");
+
+  mask: url("chrome://coloredfolders/skin/foldernew.png"); 
+  -moz-mask: url("chrome://coloredfolders/skin/foldernew.png");
+  -webkit-mask: url("chrome://coloredfolders/skin/foldernew.png");
+  
+* * * * * * * * * * * * * * */
+
+  mask: url("chrome://coloredfolders/skin/foldernew.png"); 
+  
+
+
+  
+  /* 
+  */
+    
+    
+  
+  padding:5px;
+  padding:0px 1px 0px 1px;
+  
+  margin:0;
+  
+ -moz-margin-end: 4px;
+  
+  color: blue;
+  
+  
+  opacity: 1;
+  
+   /* 
+	Funktioniert NUR im Menü - vermutlich überschreibt ein anderer Filter in der Folderlist diesen ilter hier.
+  */
+   /* 
+  
+   -webkit-filter: hue-rotate(80deg) !important;
+   filter: hue-rotate(80deg) !important
+
+   
+  -webkit-filter: grayscale(100%); 
+  filter: grayscale(100%);
+  
+  -webkit-filter: invert(100%) !important;
+  filter: invert(100%) !important;
+  -moz-filter: invert(100%) !important;
+  
+  */
+  
+  
+  
+}
+ 
+
+
+ 

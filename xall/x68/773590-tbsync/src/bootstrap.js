@@ -21,10 +21,8 @@ function startup(data, reason) {
   // set default prefs
   let defaults = Services.prefs.getDefaultBranch("extensions.tbsync.");
   defaults.setBoolPref("debug.testoptions", false);
-
   defaults.setBoolPref("log.toconsole", false);
-  defaults.setBoolPref("log.tofile", false);
-  defaults.setIntPref("log.userdatalevel", 0); //0 - metadata only (except errors)   1 - including userdata,  2 - redacted xml , 3 - raw xml + wbxml
+  defaults.setIntPref("log.userdatalevel", 0); //0 - off   1 - userdata only on errors   2 - including full userdata,  3 - extra infos
 
   // Check if the main window has finished loading
   let windows = Services.wm.getEnumerator("mail:3pane");
@@ -59,6 +57,7 @@ function shutdown(data, reason) {
   TbSync.dump("TbSync shutdown","Unloading TbSync modules.");
   TbSync.unload().then(function() {
     Cu.unload("chrome://tbsync/content/tbsync.jsm");
+    Cu.unload("chrome://tbsync/content/HttpRequest.jsm");
     Cu.unload("chrome://tbsync/content/OverlayManager.jsm");
     // HACK WARNING:
     //  - the Addon Manager does not properly clear all addon related caches on update;
@@ -78,9 +77,12 @@ var WindowListener = {
       });
     }
 
-    // the main window has loaded, continue with init
-    var { TbSync } = ChromeUtils.import("chrome://tbsync/content/tbsync.jsm");
-    if (!TbSync.enabled) TbSync.load(window);
+    // Check if the opened window is the one we want to modify.
+    if (window.document.documentElement.getAttribute("windowtype") === "mail:3pane") {
+      // the main window has loaded, continue with init
+      var { TbSync } = ChromeUtils.import("chrome://tbsync/content/tbsync.jsm");
+      if (!TbSync.enabled) TbSync.load(window);
+    }
   },
 
 
@@ -91,10 +93,8 @@ var WindowListener = {
   onOpenWindow(xulWindow) {
     // A new window has opened.
     let domWindow = xulWindow.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIDOMWindow);
-    // Check if the opened window is the one we want to modify.
-    if (domWindow.document.documentElement.getAttribute("windowtype") === "mail:3pane") {
-      this.loadIntoWindow(domWindow);
-    }
+    // The domWindow.document.documentElement.getAttribute("windowtype") is not set before the load, so we cannot check it here
+    this.loadIntoWindow(domWindow);
   },
 
   onCloseWindow(xulWindow) {

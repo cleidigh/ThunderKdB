@@ -14,14 +14,10 @@
 
 var EXPORTED_SYMBOLS = ["EnigmailpEpListener"];
 
-
-
-
-
 const MIN_PORT_NUM = 15900;
 const MAX_PORT_NUM = 15991;
 
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 const EnigmailData = ChromeUtils.import("chrome://enigmail/content/modules/data.jsm").EnigmailData;
 
@@ -93,7 +89,7 @@ function createHttpResponse(statusCode, messageData) {
 
 PepListener.prototype = {
 
-  QueryInterface: EnigmailTb60Compat.generateQI(["nsIServerSocketListener"]),
+  QueryInterface: EnigmailCompat.generateQI(["nsIServerSocketListener"]),
 
   reader: {
     self: null,

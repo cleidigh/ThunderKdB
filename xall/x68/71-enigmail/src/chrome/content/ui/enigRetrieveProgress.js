@@ -8,6 +8,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 var EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
 var EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 var EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;

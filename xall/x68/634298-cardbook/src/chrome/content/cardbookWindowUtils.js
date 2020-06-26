@@ -4,6 +4,10 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
+	if ("undefined" == typeof(cardbookActions)) {
+		XPCOMUtils.defineLazyModuleGetter(this, "cardbookActions", "chrome://cardbook/content/cardbookActions.js");
+	}
+
 	var cardbookWindowUtils = {
 		
 		getBroadcasterOnCardBook: function () {
@@ -19,7 +23,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			return false;
 		},
 
-		callFilePicker: function (aTitle, aMode, aType, aDefaultFileName, aCallback, aCallbackParam) {
+		callFilePicker: function (aTitle, aMode, aType, aDefaultFileName, aDefaultDir, aCallback, aCallbackParam) {
 			try {
 				var myWindowTitle = cardbookRepository.strBundle.GetStringFromName(aTitle);
 				var nsIFilePicker = Components.interfaces.nsIFilePicker;
@@ -44,6 +48,9 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				fp.appendFilters(fp.filterAll);
 				if (aDefaultFileName) {
 					fp.defaultString = aDefaultFileName;
+				}
+				if (aDefaultDir) {
+					fp.displayDirectory = aDefaultDir;
 				}
 				fp.open(rv => {
 					if (rv == nsIFilePicker.returnOK || rv == nsIFilePicker.returnReplace) {
@@ -146,17 +153,17 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 		getSelectedCardsId: function () {
 			var myTree = document.getElementById('cardsTree');
-			var listOfUid = [];
+			var listOfId = [];
 			var numRanges = myTree.view.selection.getRangeCount();
 			var start = new Object();
 			var end = new Object();
 			for (var i = 0; i < numRanges; i++) {
 				myTree.view.selection.getRangeAt(i,start,end);
 				for (var j = start.value; j <= end.value; j++){
-					listOfUid.push(myTree.view.getCellText(j, myTree.columns.getNamedColumn('cbid')));
+					listOfId.push(myTree.view.getCellText(j, myTree.columns.getNamedColumn('cbid')));
 				}
 			}
-			return listOfUid;
+			return listOfId;
 		},
 
 		getCardsFromAccountsOrCats: function () {
@@ -751,7 +758,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 			if (aReadOnly) {
 				var contextualGroupboxes = [ "fnGroupbox", "persBox", "orgBox" ];
-				for (contextualGroupbox of contextualGroupboxes) {
+				for (let contextualGroupbox of contextualGroupboxes) {
 					if (document.getElementById(contextualGroupbox)) {
 						document.getElementById(contextualGroupbox).addEventListener("popupshowing", cardbookRichContext.loadCopyContext, true);
 					}
@@ -1348,7 +1355,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				}
 			} else {
 				if (document.getElementById('bdayRow1')) {
-					if (wdw_cardEdition.LightningOK) {
+					if (wdw_cardEdition.LightningOK && !aReadOnly) {
 						document.getElementById('bdayRow1').removeAttribute('hidden');
 						document.getElementById('bdayRow2').setAttribute('hidden', 'true');
 					} else {
@@ -1578,6 +1585,24 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 						cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'notValidated', 'validate', fireValidateTelButton);
 					}
 				}
+			} else if (aType == "url") {
+				function fireValidateUrlButton(event) {
+					if (document.getElementById(this.id).disabled) {
+						return;
+					}
+					function assignUrlButton(aFile, aField) {
+						aField.value = "file://" + aFile.path;
+					};
+					var myUrlTextBox = document.getElementById(aType + '_' + aIndex + '_valueBox');
+					try {
+						var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
+						myFile.initWithPath(myUrlTextBox.value.replace("file://", ""));
+						cardbookWindowUtils.callFilePicker("fileSelectionTitle", "OPEN", "", "", myFile.parent, assignUrlButton, myUrlTextBox);
+					} catch(e) {
+						cardbookWindowUtils.callFilePicker("fileSelectionTitle", "OPEN", "", "", "", assignUrlButton, myUrlTextBox);
+					}
+				};
+				cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'link', 'link', fireValidateUrlButton);
 			}
 			
 			function fireUpButton(event) {
@@ -2142,17 +2167,20 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				}
 
 				var listOfDirPrefId = cardbookWindowUtils.getSelectedCardsDirPrefId();
-				var selectedUid = cardbookWindowUtils.getSelectedCardsId();
-				var useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
-				if (selectedUid.length > 0 && listOfDirPrefId.length == 1) {
-					var myDirPrefId = listOfDirPrefId[0];
-					var myCategoryList = cardbookUtils.cleanCategories(cardbookRepository.cardbookAccountsCategories[myDirPrefId]);
-					for (category of myCategoryList) {
+				var selectedId = cardbookWindowUtils.getSelectedCardsId();
+				if (selectedId.length > 0) {
+					var myCategoryList = [];
+					for (let dirPrefId of listOfDirPrefId) {
+						myCategoryList = myCategoryList.concat(cardbookRepository.cardbookAccountsCategories[dirPrefId]);
+					}
+					myCategoryList = cardbookUtils.cleanCategories(myCategoryList);
+					cardbookUtils.sortArrayByString(myCategoryList,1);
+					for (let category of myCategoryList) {
 						var item = document.createXULElement("menuitem");
 						item.setAttribute("id", category);
 						item.setAttribute("type", "checkbox");
 						item.setAttribute("class", "menuitem-iconic cardbookCategoryMenuClass");
-						if (category in cardbookRepository.cardbookNodeColors && useColor != "nothing") {
+						if (category in cardbookRepository.cardbookNodeColors && cardbookRepository.useColor != "nothing") {
 							item.setAttribute("colorType", 'category_' + cardbookUtils.formatCategoryForCss(category));
 						}
 						item.addEventListener("command", function(aEvent) {
@@ -2164,15 +2192,24 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 								aEvent.stopPropagation();
 							}, false);
 						item.setAttribute("label", category);
-						item.setAttribute("checked", "false");
-						myPopup.appendChild(item);
-					}
-					if (selectedUid.length == 1) {
-						var myCard = cardbookRepository.cardbookCards[selectedUid[0]];
-						for (var i = 0; i < myCard.categories.length; i++) {
-							var myMenuItem = document.getElementById(myCard.categories[i]);
-							myMenuItem.setAttribute("checked", "true");
+						var categoryCount = 0;
+						for (let id of selectedId) {
+							var myCard = cardbookRepository.cardbookCards[id];
+							if (myCard.categories.includes(category)) {
+								categoryCount++;
+							}
 						}
+						if (categoryCount == 0) {
+							item.setAttribute("checked", "false");
+							item.setAttribute("disabled", "false");
+						} else if (categoryCount == selectedId.length) {
+							item.setAttribute("checked", "true");
+							item.setAttribute("disabled", "false");
+						} else {
+							item.setAttribute("checked", "false");
+							item.setAttribute("disabled", "true");
+						}						
+						myPopup.appendChild(item);
 					}
 				}
 			}

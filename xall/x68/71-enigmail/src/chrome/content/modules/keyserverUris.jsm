@@ -16,6 +16,7 @@ const AUTO_KEYSERVER_SELECTION_PREF = "autoKeyServerSelection";
 
 const supportedProtocols = {
   "hkps": "443",
+  "vks": "443",
   "hkp": "11371",
   "ldap": "389"
 };
@@ -73,7 +74,7 @@ function combineIntoURI(protocol, domain, port) {
 }
 
 function isValidProtocol(uri) {
-  return uri.match(/:\/\//) === null || /^(hkps|hkp|ldap):\/\//i.test(uri);
+  return uri.match(/:\/\//) === null || /^(hkps|hkp|ldap|vks):\/\//i.test(uri);
 }
 
 function validProtocolsExist() {
@@ -111,7 +112,8 @@ function buildKeyserverUris() {
  * @return true if keyservers exist and are valid, false otherwise.
  */
 function validKeyserversExist() {
-  return EnigmailPrefs.getPref(KEYSERVER_PREF).trim() !== "" && validProtocolsExist();
+  const keyservers = EnigmailPrefs.getPref(KEYSERVER_PREF);
+  return keyservers !== undefined && keyservers.trim() !== "" && validProtocolsExist();
 }
 
 var EnigmailKeyserverURIs = {

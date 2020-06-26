@@ -9,18 +9,23 @@
 "use strict";
 
 var tools = {
-
+    
     getEmailsFromCard: function (aCard) { //return array of objects {meta, value}
-        let emailData = JSON.parse(aCard.getProperty("X-DAV-JSON-Emails","[]").trim());
-
+        let emailData = [];
+        try {
+            emailData = JSON.parse(aCard.getProperty("X-DAV-JSON-Emails","[]").trim());
+        } catch (e) {
+            //Components.utils.reportError(e);                
+        }
+        
         // always use the core email field values, they could have been mod outside by the user,
         // not knowing that we store our stuff in X-DAV-JSON-Emails
         let emailFields = ["PrimaryEmail", "SecondEmail"];
         for (let i = 0; i < emailFields.length; i++) {
-            let email = aCard.getProperty(emailFields[i],"").trim();
+            let email = aCard.getProperty(emailFields[i], "");
             if (email) {
-                if (emailData.length > i) emailData[i].value = email;
-                else emailData.push({value: email, meta: []});
+                if (emailData.length > i) emailData[i].value = email.trim();
+                else emailData.push({value: email.trim(), meta: []});
             }
         }    
            
@@ -28,14 +33,14 @@ var tools = {
     },
     
     getPhoneNumbersFromCard: function (aCard) { //return array of objects {meta, value}
-        let phones = aCard.getProperty("X-DAV-JSON-Phones","").trim();
-        if (phones) {
-            return JSON.parse(phones);
+        let phones = [];
+        try {
+            phones = JSON.parse(aCard.getProperty("X-DAV-JSON-Phones","").trim());
+            return phones;
+        } catch (e) {
+            //Components.utils.reportError(e);                
         }
-                
-        phones = [];
-        
-        
+
         //So this card is not a "DAV" card: Get the phone numbers from current numbers stored in 
         //CellularNumber, FaxNumber, PagerNumber, WorkPhone, HomePhone"},
         let todo = [
@@ -47,9 +52,9 @@ var tools = {
         ];
             
         for (let data of todo) {
-            let phone = aCard.getProperty(data.field,"").trim();
+            let phone = aCard.getProperty(data.field, "");
             if (phone) {
-                phones.push({value: phone, meta: data.meta});
+                phones.push({value: phone.trim(), meta: data.meta});
             }
         }
         return phones;
@@ -162,7 +167,8 @@ var tools = {
 
 
     getEmailsFromJSON: function (emailDataJSON) {
-        let emailFields = {};
+        // prepare defaults
+        let emailFields = {PrimaryEmail:[], SecondEmail:[]};
 
         if (emailDataJSON) {
             try {
@@ -170,7 +176,6 @@ var tools = {
                 // For compatibility with the Phones, we return arrays, even though we only return
                 // one element per array.
                 let emailData = JSON.parse(emailDataJSON);
-                emailFields = {PrimaryEmail:[], SecondEmail:[]};
                 
                 for (let d=0; d < emailData.length && d < 2; d++) {
                     let field = (d==0) ? "PrimaryEmail" : "SecondEmail";
@@ -188,22 +193,26 @@ var tools = {
 
 
     getPhoneNumbersFromJSON: function (phoneDataJSON) {
-        let phoneFields = {};
+        let phoneMap = [
+            {meta: "CELL", field: "CellularNumber"},
+            {meta: "FAX", field: "FaxNumber"},
+            {meta: "PAGER", field: "PagerNumber"},
+            {meta: "WORK", field: "WorkPhone"},
+            {meta: "", field: "HomePhone"},
+            ];
 
+        // prepare defaults
+        let phoneFields = {};
+        for (let m=0; m < phoneMap.length; m++) {
+            phoneFields[phoneMap[m].field] = [];            
+        }
+                
         if (phoneDataJSON) {
             try {
                 //we first search and remove CELL, FAX, PAGER and WORK from the list and put the remains into HOME
                 let phoneData = JSON.parse(phoneDataJSON);
-                let phoneMap = [
-                    {meta: "CELL", field: "CellularNumber"},
-                    {meta: "FAX", field: "FaxNumber"},
-                    {meta: "PAGER", field: "PagerNumber"},
-                    {meta: "WORK", field: "WorkPhone"},
-                    {meta: "", field: "HomePhone"},
-                    ];
-                
-                for (let m=0; m < phoneMap.length; m++) {
-                    phoneFields[phoneMap[m].field] = [];            
+
+                for (let m=0; m < phoneMap.length; m++) {        
                     for (let d=phoneData.length-1; d >= 0; d--) {
                         if (phoneData[d].meta.includes(phoneMap[m].meta) || phoneMap[m].meta == "") {
                             phoneFields[phoneMap[m].field].unshift(phoneData[d].value);
@@ -272,10 +281,24 @@ var tools = {
         return null;
     },
 
+    hrefMatch:function (_requestHref, _responseHref) {
+        if (_requestHref === null)
+            return true;
+        
+        let requestHref = _requestHref;
+        let responseHref = _responseHref;
+        while (requestHref.endsWith("/")) { requestHref = requestHref.slice(0,-1); }        
+        while (responseHref.endsWith("/")) { responseHref = responseHref.slice(0,-1); }        
+        if (requestHref.endsWith(responseHref) || decodeURIComponent(requestHref).endsWith(responseHref) || requestHref.endsWith(decodeURIComponent(responseHref))) 
+            return true;
+        
+        return false;
+    },
+    
     getNodeTextContentFromMultiResponse: function (response, path, href = null, status = ["200"]) {
         for (let i=0; i < response.multi.length; i++) {
             let node = dav.tools.evaluateNode(response.multi[i].node, path);
-            if (node !== null && (href === null || response.multi[i].href == href || decodeURIComponent(response.multi[i].href) == href || response.multi[i].href == decodeURIComponent(href)) && status.includes(response.multi[i].status)) {
+            if (node !== null && dav.tools.hrefMatch(href, response.multi[i].href) && status.includes(response.multi[i].status)) {
                 return node.textContent;
             }
         }
@@ -289,7 +312,8 @@ var tools = {
         
         for (let i=0; i < response.multi.length; i++) {
             let node = dav.tools.evaluateNode(response.multi[i].node, path);
-            if (node !== null && (href === null || response.multi[i].href == href || decodeURIComponent(response.multi[i].href) == href || response.multi[i].href == decodeURIComponent(href)) && response.multi[i].status == status) {
+            if (node !== null && dav.tools.hrefMatch(href, response.multi[i].href) && response.multi[i].status == status) {
+                
                 //get all children
                 let children = node.getElementsByTagNameNS(dav.sync.ns[lastPathElement[0]], lastPathElement[1]);
                 for (let c=0; c < children.length; c++) {
@@ -321,7 +345,7 @@ var tools = {
     //* CARDS OPERATIONS  *
     //* * * * * * * * * * *
 
-    addContact: function(syncData, id, data, etag) {
+    addContact: async function(syncData, id, data, etag) {
         let vCard = data.textContent.trim();
         let vCardData = dav.vCard.parse(vCard);
 
@@ -333,12 +357,12 @@ var tools = {
             card.setProperty("X-DAV-ETAG", etag.textContent);
             card.setProperty("X-DAV-VCARD", vCard);
 
-            dav.tools.setThunderbirdCardFromVCard(syncData, card, vCardData);
+            await dav.tools.setThunderbirdCardFromVCard(syncData, card, vCardData);
             syncData.target.addItem(card);
         }
     },
 
-    modifyContact: function(syncData, id, data, etag) {
+    modifyContact: async function(syncData, id, data, etag) {
         let vCard = data.textContent.trim();
         let vCardData = dav.vCard.parse(vCard);
 
@@ -354,7 +378,7 @@ var tools = {
                 card.setProperty("X-DAV-ETAG", etag.textContent);
                 card.setProperty("X-DAV-VCARD", vCard);
                 
-                dav.tools.setThunderbirdCardFromVCard(syncData, card, vCardData, oCardData);
+                await dav.tools.setThunderbirdCardFromVCard(syncData, card, vCardData, oCardData);
                 syncData.target.modifyItem(card);
             }        
 
@@ -468,11 +492,13 @@ var tools = {
         {name: "HomeZipCode", minversion: "0.4"},
         {name: "HomeState", minversion: "0.4"},
         {name: "HomeAddress", minversion: "0.4"},
+        {name: "HomeAddress2", minversion: "1.4.1"},
         {name: "WorkCity", minversion: "0.4"},
         {name: "WorkCountry", minversion: "0.4"},
         {name: "WorkZipCode", minversion: "0.4"},
         {name: "WorkState", minversion: "0.4"},
         {name: "WorkAddress", minversion: "0.4"},
+        {name: "WorkAddress2", minversion: "1.4.1"},
         {name: "Categories", minversion: "0.4"},
         {name: "JobTitle", minversion: "0.4"},
         {name: "Department", minversion: "0.4"},
@@ -530,12 +556,14 @@ var tools = {
         "HomeZipCode" : {item: "adr", type: "HOME"},
         "HomeState" : {item: "adr", type: "HOME"},
         "HomeAddress" : {item: "adr", type: "HOME"},
+        "HomeAddress2" : {item: "adr", type: "HOME"},
 
         "WorkCity" : {item: "adr", type: "WORK"},
         "WorkCountry" : {item: "adr", type: "WORK"},
         "WorkZipCode" : {item: "adr", type: "WORK"},
         "WorkState" : {item: "adr", type: "WORK"},
         "WorkAddress" : {item: "adr", type: "WORK"},
+        "WorkAddress2" : {item: "adr", type: "WORK"},	
     },
 
     //map thunderbird fields to impp vcard fields with additional x-service-types
@@ -662,16 +690,18 @@ var tools = {
             case "HomeZipCode":
             case "HomeState":
             case "HomeAddress":
+            case "HomeAddress2":
             case "WorkCity":
             case "WorkCountry":
             case "WorkZipCode":
             case "WorkState":
             case "WorkAddress":
+            case "WorkAddress2":
                 {
                     let field = property.substring(4);
                     let adr = (Services.vc.compare("0.8.11", syncData.currentFolderData.getFolderProperty("createdWithProviderVersion")) > 0)
-                                    ?  ["OfficeBox","ExtAddr","Address","City","Country","ZipCode", "State"] //WRONG
-                                    : ["OfficeBox","ExtAddr","Address","City","State","ZipCode", "Country"]; //RIGHT, fixed in 0.8.11
+                                    ?  ["OfficeBox","Address2","Address","City","Country","ZipCode", "State"] //WRONG
+                                    : ["OfficeBox","Address2","Address","City","State","ZipCode", "Country"]; //RIGHT, fixed in 0.8.11
 
                     let index = adr.indexOf(field);
                     return dav.tools.getSaveArrayValue(vCardValue, index);
@@ -763,16 +793,18 @@ var tools = {
             case "HomeZipCode":
             case "HomeState":
             case "HomeAddress":
+            case "HomeAddress2":
             case "WorkCity":
             case "WorkCountry":
             case "WorkZipCode":
             case "WorkState":
             case "WorkAddress":
+            case "WorkAddress2":
                 {
                     let field = property.substring(4);
                     let adr = (Services.vc.compare("0.8.11", syncData.currentFolderData.getFolderProperty("createdWithProviderVersion")) > 0)
-                                    ?  ["OfficeBox","ExtAddr","Address","City","Country","ZipCode", "State"] //WRONG
-                                    : ["OfficeBox","ExtAddr","Address","City","State","ZipCode", "Country"]; //RIGHT, fixed in 0.8.11
+                                    ?  ["OfficeBox","Address2","Address","City","Country","ZipCode", "State"] //WRONG
+                                    : ["OfficeBox","Address2","Address","City","State","ZipCode", "Country"]; //RIGHT, fixed in 0.8.11
 
                     let index = adr.indexOf(field);
                     if (store) {
@@ -859,9 +891,11 @@ var tools = {
     //MAIN FUNCTIONS FOR UP/DOWN SYNC
 
     //update send from server to client
-    setThunderbirdCardFromVCard: function(syncData, card, vCardData, oCardData = null) {
-        if (TbSync.prefs.getIntPref("log.userdatalevel")>1) TbSync.dump("JSON from vCard", JSON.stringify(vCardData));
-        //if (oCardData) TbSync.dump("JSON from oCard", JSON.stringify(oCardData));
+    setThunderbirdCardFromVCard: async function(syncData, card, vCardData, oCardData = null) {
+        if (TbSync.prefs.getIntPref("log.userdatalevel") > 2) {
+            TbSync.dump("JSON from vCard", JSON.stringify(vCardData));
+            TbSync.dump("JSON from oCard", oCardData ? JSON.stringify(oCardData) : "");
+        }
 
         for (let f=0; f < dav.tools.supportedProperties.length; f++) {
             //Skip sync fields that have been added after this folder was created (otherwise we would delete them)
@@ -881,15 +915,46 @@ var tools = {
                     case "Photo":
                         {
                             if (newServerValue) {
-                                //set if supported
+                                let type = "";
+                                try {
+                                    // Try to get the type from the the meta field but only use a given subtype (cut of leading "image/").
+                                    // See draft: https://tools.ietf.org/id/draft-ietf-vcarddav-vcardrev-02.html#PHOTO
+                                    // However, no mentioning of this in final RFC2426 for vCard 3.0.
+                                    // Also make sure, that the final type does not include any non alphanumeric chars.
+                                    type = vCardData[vCardField.item][0].meta.type[0].toLowerCase().split("/").pop().replace(/\W/g, "");
+                                } catch (e) {
+                                    Components.utils.reportError(e);
+                                }
+
+                                // check for inline data or linked data
                                 if (vCardData[vCardField.item][0].meta && vCardData[vCardField.item][0].meta.encoding) {
-                                    card.addPhoto(TbSync.generateUUID() + '.jpg', vCardData["photo"][0].value);
+                                    
+                                    let ext = type || "jpg";
+                                    let data = vCardData[vCardField.item][0].value;
+                                    card.addPhoto(TbSync.generateUUID(), data, ext);
+                                } else  if (vCardData[vCardField.item][0].meta && Array.isArray(vCardData[vCardField.item][0].meta.value) && vCardData[vCardField.item][0].meta.value[0].toString().toLowerCase() == "uri") {
+                                    let connectionData = new dav.network.ConnectionData();
+                                    connectionData.eventLogInfo = syncData.connectionData.eventLogInfo;
+                                    // add credentials, if image is on the account server, go anonymous otherwise
+                                    try {
+                                        if (vCardData[vCardField.item][0].value.split("://").pop().startsWith(syncData.connectionData.fqdn)) {
+                                            connectionData.password = syncData.connectionData.password;
+                                            connectionData.username = syncData.connectionData.username;
+                                        }
+                                        
+                                        let ext = type || this.getImageExtension(vCardData[vCardField.item][0].value);
+                                        let data = await dav.network.sendRequest("", vCardData[vCardField.item][0].value , "GET", connectionData, {}, {responseType: "base64"});
+                                        card.addPhoto(TbSync.generateUUID(), data, ext, vCardData[vCardField.item][0].value);
+                                    } catch(e) {
+                                        Components.utils.reportError(e);
+                                        TbSync.eventlog.add("warning", syncData.eventLogInfo,"Could not extract externally linked photo from vCard", JSON.stringify(vCardData));
+                                    }
                                 }
                             } else {
                                 //clear
-                                card.deleteProperty("PhotoName");
-                                card.deleteProperty("PhotoType");
-                                card.deleteProperty("PhotoURI");
+                                card.setProperty("PhotoName", "");
+                                card.setProperty("PhotoType", "");
+                                card.setProperty("PhotoURI", "");
                             }
                         }
                         break;
@@ -902,9 +967,9 @@ var tools = {
                                 card.setProperty("BirthMonth", bday[2]);
                                 card.setProperty("BirthDay", bday[3]);
                             } else {
-                                card.deleteProperty("BirthYear");
-                                card.deleteProperty("BirthMonth");
-                                card.deleteProperty("BirthDay");
+                                card.setProperty("BirthYear", "");
+                                card.setProperty("BirthMonth", "");
+                                card.setProperty("BirthDay", "");
                             }
                         }
                         break;
@@ -923,30 +988,27 @@ var tools = {
                                     tbData = dav.tools.getPhoneNumbersFromJSON(newServerValue);
                                     break;
                             }
-                                
+
                             for (let field in tbData) {
                                 if (tbData.hasOwnProperty(field)) {
                                     //set or delete TB Property
-                                    if (  tbData[field].length > 0 ) {
+                                    if (tbData[field].length > 0) {
                                         card.setProperty(field, tbData[field].join(", "));
                                     } else {
-                                        card.deleteProperty(field);
+                                        card.setProperty(field, "");
                                     }                            
                                 }
                             }
                         }
-
+                        
                     default:
                         {
                             if (newServerValue) {
                                 //set
                                 card.setProperty(property, newServerValue);
                             } else {
-                                //clear (del if possible)
+                                //clear
                                 card.setProperty(property, "");
-                                try {
-                                    card.deleteProperty(property);
-                                } catch (e) {}
                             }
                         }
                         break;
@@ -1026,6 +1088,40 @@ var tools = {
         return {data: newCard, etag: list.getProperty("X-DAV-ETAG"), modified: modified};
     },
 
+    
+    setDefaultMetaButKeepCaseIfPresent: function(defaults, currentObj) {
+        const keys = Object.keys(defaults);
+        for (const key of keys) {
+            let defaultValue = defaults[key];
+
+            // we need to set this value, but do not want to cause a "modified" if it was set like this before, but just with different case
+            // so keep the current case
+            try {
+                let c = currentObj.meta[key][0];
+                if (c.toLowerCase() == defaultValue.toLowerCase()) defaultValue = c;
+            } catch(e) {
+                //Components.utils.reportError(e);                
+            }
+            
+            if (!currentObj.hasOwnProperty("meta")) currentObj.meta = {};
+            currentObj.meta[key]=[defaultValue];
+        }
+    },
+    
+    getImageExtension: function(filename) {
+        // get extension from filename
+	    let extension = "jpg";
+        try {
+            let parts = filename.toString().split("/").pop().split(".");
+            let lastPart = parts.pop();
+            if (parts.length > 0 && lastPart) {
+                extension = lastPart;
+            }
+        } catch (e) {}        
+        return extension.toLowerCase();
+    },
+    
+    
     //return the stored vcard of the card (or empty vcard if none stored) and merge local changes
     getVCardFromThunderbirdContactCard: function(syncData, card, generateUID = false) {
         let currentCard = card.getProperty("X-DAV-VCARD").trim();
@@ -1043,11 +1139,21 @@ var tools = {
             switch (property) {
                 case "Photo":
                     {
+                        let extension = this.getImageExtension(card.getProperty("PhotoURI", ""));
+                        let type = (extension == "jpg") ? "JPEG" : extension.toUpperCase();
+                        
                         if (card.getProperty("PhotoType", "") == "file") {
                             TbSync.eventlog.add("info", syncData.eventLogInfo, "before photo ("+vCardField.item+")", JSON.stringify(vCardData));
-                            dav.tools.updateValueOfVCard(syncData, property, vCardData, vCardField, card.getPhoto());
+                            dav.tools.updateValueOfVCard(syncData, property, vCardData, vCardField, card.getPhoto());                            
+                            this.setDefaultMetaButKeepCaseIfPresent({encoding : "B", type : type}, vCardData[vCardField.item][0]);
                             TbSync.eventlog.add("info", syncData.eventLogInfo, "after photo ("+vCardField.item+")", JSON.stringify(vCardData));
-                            vCardData[vCardField.item][0].meta = {"encoding": ["b"], "type": ["JPEG"]};
+                        } else if (card.getProperty("PhotoType", "") == "web" && card.getProperty("PhotoURI", "")) {
+                            TbSync.eventlog.add("info", syncData.eventLogInfo, "before photo ("+vCardField.item+")", JSON.stringify(vCardData));
+                            dav.tools.updateValueOfVCard(syncData, property, vCardData, vCardField, card.getProperty("PhotoURI", ""));
+                            this.setDefaultMetaButKeepCaseIfPresent({value : "uri", type : type}, vCardData[vCardField.item][0]);
+                            TbSync.eventlog.add("info", syncData.eventLogInfo, "after photo ("+vCardField.item+")", JSON.stringify(vCardData));
+                        } else {
+                            dav.tools.updateValueOfVCard(syncData, property, vCardData, vCardField, "");                            
                         }
                     }
                     break;

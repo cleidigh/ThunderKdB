@@ -56,6 +56,7 @@ var providers = {
         this.loadedProviders[provider].createAccountWindow = null;
 
         this.loadedProviders[provider].bundle = Services.strings.createBundle(this[provider].Base.getStringBundleUrl());
+        addon.contributorsURL = this[provider].Base.getContributorsUrl();
 
         // check if provider has its own implementation of folderList
         if (!this[provider].hasOwnProperty("folderList")) this[provider].folderList = new TbSync.manager.FolderList(provider);
@@ -92,7 +93,7 @@ var providers = {
         while (allAddressBooks.hasMoreElements()) {
           let addressBook = allAddressBooks.getNext();
           if (addressBook instanceof Components.interfaces.nsIAbDirectory) {
-            let storedProvider = addressBook.getStringValue("tbSyncProvider", "");
+            let storedProvider = TbSync.addressbook.getStringValue(addressBook, "tbSyncProvider", "");
             if (provider == storedProvider && providerData.getFolders({"target": addressBook.UID}).length == 0) {
               let name = addressBook.dirName;
               addressBook.dirName = TbSync.getString("target.orphaned") + ": " + name;              
@@ -103,7 +104,7 @@ var providers = {
           }
         }
         
-		if (TbSync.lightning.isAvailable()) {
+        if (TbSync.lightning.isAvailable()) {
           for (let calendar of TbSync.lightning.cal.getCalendarManager().getCalendars({})) {
             let storedProvider = calendar.getProperty("tbSyncProvider");
             if (provider == storedProvider && calendar.type == "storage" && providerData.getFolders({"target": calendar.id}).length == 0) {
@@ -154,6 +155,7 @@ var providers = {
     defaults.lastsynctime = 0;
     defaults.status = "disabled";
     defaults.autosync = 0;
+    defaults.noAutosyncUntil = 0;
     defaults.accountname = "";
     // DefaultAccountPropsEnd
 

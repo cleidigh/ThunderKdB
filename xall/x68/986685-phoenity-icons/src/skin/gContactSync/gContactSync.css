@@ -9,6 +9,7 @@
   background-image: url("chrome://gcontactsync/skin/logo_main_16.png");
   background-repeat: no-repeat;
   background-position: 4px center;
+  margin-top: -1px;
   padding-inline-start: 20px;
 }
 
@@ -35,8 +36,11 @@
 
 /* Preference tabs */
 
+#gContactSyncPrefs tabs {
+  background-color: -moz-Field;
+}
+
 #gContactSyncPrefs tab {
-  min-width: 60px !important;
   margin: 0px 1px 0px 0px;
   padding: 2px 4px;
 }

@@ -16,15 +16,15 @@ var Calendar = {
     // --------------------------------------------------------------------------- //
     // Read WBXML and set Thunderbird item
     // --------------------------------------------------------------------------- //
-    setThunderbirdItemFromWbxml: function (tbItem, data, id, syncdata) {
+    setThunderbirdItemFromWbxml: function (tbItem, data, id, syncdata, mode = "standard") {
         
         let item = tbItem instanceof TbSync.lightning.TbItem ? tbItem.nativeItem : tbItem;
         
         let asversion = syncdata.accountData.getAccountProperty("asversion");
         item.id = id;
-        let easTZ = new eas.tools.TimeZoneDataStructure();
-
         eas.sync.setItemSubject(item, syncdata, data);
+        if (TbSync.prefs.getIntPref("log.userdatalevel") > 2) TbSync.dump("Processing " + mode + " calendar item", item.title + " (" + id + ")");
+
         eas.sync.setItemLocation(item, syncdata, data);
         eas.sync.setItemCategories(item, syncdata, data);
         eas.sync.setItemBody(item, syncdata, data);
@@ -32,22 +32,23 @@ var Calendar = {
         //timezone
         let stdOffset = eas.defaultTimezoneInfo.std.offset;
         let dstOffset = eas.defaultTimezoneInfo.dst.offset;
-
+        let easTZ = new eas.tools.TimeZoneDataStructure();
         if (data.TimeZone) {
             if (data.TimeZone == "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==") {
                 TbSync.dump("Recieve TZ", "No timezone data received, using local default timezone.");
             } else {
                 //load timezone struct into EAS TimeZone object
                 easTZ.easTimeZone64 = data.TimeZone;
-                if (TbSync.prefs.getIntPref("log.userdatalevel")>2) TbSync.dump("Recieve TZ", item.title + easTZ.toString());
+                if (TbSync.prefs.getIntPref("log.userdatalevel") > 2) TbSync.dump("Recieve TZ", item.title + easTZ.toString());
                 stdOffset = easTZ.utcOffset;
                 dstOffset = easTZ.daylightBias + easTZ.utcOffset;
             }
         }
-
+        let timezone = eas.tools.guessTimezoneByStdDstOffset(stdOffset, dstOffset, easTZ.standardName);
+        
         if (data.StartTime) {
             let utc = cal.createDateTime(data.StartTime); //format "19800101T000000Z" - UTC
-            item.startDate = utc.getInTimezone(eas.tools.guessTimezoneByStdDstOffset(stdOffset, dstOffset, easTZ.standardName));
+            item.startDate = utc.getInTimezone(timezone);
             if (data.AllDayEvent && data.AllDayEvent == "1") {
                 item.startDate.timezone = (cal.dtz && cal.dtz.floating) ? cal.dtz.floating : cal.floating();
                 item.startDate.isDate = true;
@@ -56,7 +57,7 @@ var Calendar = {
 
         if (data.EndTime) {
             let utc = cal.createDateTime(data.EndTime);
-            item.endDate = utc.getInTimezone(eas.tools.guessTimezoneByStdDstOffset(stdOffset, dstOffset, easTZ.standardName));
+            item.endDate = utc.getInTimezone(timezone);
             if (data.AllDayEvent && data.AllDayEvent == "1") {
                 item.endDate.timezone = (cal.dtz && cal.dtz.floating) ? cal.dtz.floating : cal.floating();
                 item.endDate.isDate = true;
@@ -69,15 +70,20 @@ var Calendar = {
         //EAS Reminder
         item.clearAlarms();
         if (data.Reminder && data.StartTime) {
-            let startDate = new Date(eas.tools.getIsoUtcString(cal.createDateTime(data.StartTime), true));
-            let nowDate = new Date();
-
             let alarm = cal.createAlarm();
             alarm.related = Components.interfaces.calIAlarm.ALARM_RELATED_START;
             alarm.offset = cal.createDuration();
             alarm.offset.inSeconds = (0-parseInt(data.Reminder)*60);
             alarm.action ="DISPLAY";
             item.addAlarm(alarm);
+            
+            let alarmData = cal.alarms.calculateAlarmDate(item, alarm);
+            let startDate = cal.createDateTime(data.StartTime);
+            let nowDate = eas.tools.getNowUTC();
+            if (startDate.compare(nowDate) < 0) {
+                // Mark alarm as ACK if in the past.
+                item.alarmLastAck = nowDate;
+            }
         }
 
         eas.sync.mapEasPropertyToThunderbird ("BusyStatus", "TRANSP", data, item);
@@ -156,7 +162,18 @@ var Calendar = {
             item.organizer = organizer;
         }
 
-        eas.sync.setItemRecurrence(item, syncdata, data);
+        eas.sync.setItemRecurrence(item, syncdata, data, timezone);
+        
+        // BusyStatus is always representing the status of the current user in terms of availability.
+        // It has nothing to do with the status of a meeting. The user could be just the organizer, but does not need to attend, so he would be free.
+        // The correct map is between BusyStatus and TRANSP (show time as avail, busy, unset)
+        // A new event always sets TRANSP to busy, so unset is indeed a good way to store Tentiative
+        // However:
+        //  - EAS Meetingstatus only knows ACTIVE or CANCELLED, but not CONFIRMED or TENTATIVE
+        //  - TB STATUS has UNSET, CONFIRMED, TENTATIVE, CANCELLED
+        //  -> Special case: User sets BusyStatus to TENTIATIVE -> TRANSP is unset and also set STATUS to TENTATIVE
+        // The TB STATUS is the correct map for EAS Meetingstatus and should be unset, if it is not a meeting EXCEPT if set to TENTATIVE
+        let tbStatus = (data.BusyStatus && data.BusyStatus == "1" ?  "TENTATIVE" : null);
         
         if (data.MeetingStatus) {
             //store original EAS value 
@@ -165,19 +182,21 @@ var Calendar = {
             let M = data.MeetingStatus & 0x1;
             let R = data.MeetingStatus & 0x2;
             let C = data.MeetingStatus & 0x4;
-            
-            //we can map M+C to TB STATUS (TENTATIVE, CONFIRMED, CANCELLED, unset)
-            //if it is not a meeting -> unset
-            //if it is a meeting -> CANCELLED or CONFIRMED
-            if (M) item.setProperty("STATUS", (C ? "CANCELLED" : "CONFIRMED"));
-            else item.deleteProperty("STATUS");
+
+            // We can map M+C to TB STATUS (TENTATIVE, CONFIRMED, CANCELLED, unset).
+            if (M) {
+                if (C) tbStatus = "CANCELLED";
+                else if (!tbStatus) tbStatus = "CONFIRMED"; // do not override "TENTIATIVE"
+            }
             
             //we can also use the R information, to update our fallbackOrganizerName
             if (!R && data.OrganizerName) syncdata.target.calendar.setProperty("fallbackOrganizerName", data.OrganizerName);            
         }
 
-        //TODO: attachements (needs EAS 16.0!)
+        if (tbStatus) item.setProperty("STATUS", tbStatus)
+        else item.deleteProperty("STATUS");
 
+        //TODO: attachements (needs EAS 16.0!)
     },
 
 
@@ -219,8 +238,8 @@ var Calendar = {
             easTZ.standardBias = 0;
             easTZ.daylightBias =  tzInfo.dst.offset -  tzInfo.std.offset;
 
-            easTZ.standardName = tzInfo.std.displayname;
-            easTZ.daylightName = tzInfo.dst.displayname;
+            easTZ.standardName = eas.ianaToWindowsTimezoneMap.hasOwnProperty(tzInfo.std.displayname) ? eas.ianaToWindowsTimezoneMap[tzInfo.std.displayname] : tzInfo.std.displayname;
+            easTZ.daylightName = eas.ianaToWindowsTimezoneMap.hasOwnProperty(tzInfo.dst.displayname) ? eas.ianaToWindowsTimezoneMap[tzInfo.dst.displayname] : tzInfo.dst.displayname;
 
             if (tzInfo.std.switchdate && tzInfo.dst.switchdate) {
                 easTZ.standardDate.wMonth = tzInfo.std.switchdate.month;
@@ -239,7 +258,7 @@ var Calendar = {
             }
             
             wbxml.atag("TimeZone", easTZ.easTimeZone64);
-             if (TbSync.prefs.getIntPref("log.userdatalevel")>2) TbSync.dump("Send TZ", item.title + easTZ.toString());
+             if (TbSync.prefs.getIntPref("log.userdatalevel") > 2) TbSync.dump("Send TZ", item.title + easTZ.toString());
         }
         
         //AllDayEvent (for simplicity, we always send a value)
@@ -248,9 +267,14 @@ var Calendar = {
         //Body
         wbxml.append(eas.sync.getItemBody(item, syncdata));
 
-        //BusyStatus (TRANSP)
-        wbxml.atag("BusyStatus", eas.sync.mapThunderbirdPropertyToEas("TRANSP", "BusyStatus", item));
-
+        //BusyStatus (Free, Tentative, Busy) is taken from TRANSP (busy, free, unset=tentative)
+        //However if STATUS is set to TENTATIVE, overide TRANSP and set BusyStatus to TENTATIVE
+        if (item.hasProperty("STATUS") && item.getProperty("STATUS") == "TENTATIVE") {
+            wbxml.atag("BusyStatus","1");
+        } else {
+            wbxml.atag("BusyStatus", eas.sync.mapThunderbirdPropertyToEas("TRANSP", "BusyStatus", item));
+        }
+        
         //Organizer
         if (!isException) {
             if (item.organizer && item.organizer.commonName) wbxml.atag("OrganizerName", item.organizer.commonName);

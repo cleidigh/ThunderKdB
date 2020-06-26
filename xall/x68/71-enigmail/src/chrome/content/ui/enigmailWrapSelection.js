@@ -11,6 +11,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 
 function onLoad() {
   EnigmailLog.DEBUG("enigmailwrapSelection.js: onLoad\n");

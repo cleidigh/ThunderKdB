@@ -152,7 +152,7 @@ if ("undefined" == typeof(cardbookDirTreeUtils)) {
 			
 			typeColumn.removeAttribute('hidden');
 			enabledColumn.removeAttribute('hidden');
-			if (cardbookPreferences.getStringPref("extensions.cardbook.useColor") == "nothing") {
+			if (cardbookRepository.useColor == "nothing") {
 				colorColumn.setAttribute("hidden", true);
 			} else {
 				colorColumn.removeAttribute('hidden');

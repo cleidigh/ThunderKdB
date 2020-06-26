@@ -18,20 +18,24 @@ var EXPORTED_SYMBOLS = [
 ]
 
 const {
-  classes: Cc,
-  interfaces: Ci,
-  utils: Cu,
   results: Cr
 } = Components;
 
-//ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
 const {
   MsgHdrToMimeMessage,
   MimeMessage, MimeContainer,
   MimeBody, MimeUnknown,
   MimeMessageAttachment
 } = ChromeUtils.import("resource:///modules/gloda/mimemsg.js");
-const MailServices = ChromeUtils.import("resource:///modules/MailServices.jsm").MailServices;
+
+
+var MailServices;
+try {
+  MailServices = ChromeUtils.import("resource:///modules/MailServices.jsm").MailServices;
+}
+catch (x){
+  MailServices = ChromeUtils.import("resource:///modules/mailServices.js").MailServices;
+}
 
 const {
   gIdentities,

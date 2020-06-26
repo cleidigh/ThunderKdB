@@ -1,7 +1,11 @@
-/* 
+/*
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
+/**
+ * Filter Editor Overlay for Thunderbird 67 and newer
  */
 
 "use strict";
@@ -11,14 +15,14 @@
 /* global  gFilterActionList: true, gCustomActions: false, gFilterList: false */
 /* global gFilterType: false, gFilterBundle: false, gFilterActionStrings: false */
 
-var EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+var EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 var EnigmailTimer = ChromeUtils.import("chrome://enigmail/content/modules/timer.jsm").EnigmailTimer;
 var EnigmailStringBundle = ChromeUtils.import("resource:///modules/StringBundle.js").StringBundle;
 
 var EnigmailFilterEditor = {
   onLoad: function() {
     let self = this;
-    let platformTb66 = EnigmailTb60Compat.isPlatformNewerThan("66");
+    let platformTb66 = EnigmailCompat.isPlatformNewerThan("66");
 
     this.mozStringBundle = new EnigmailStringBundle("chrome://messenger/locale/messenger.properties");
 
@@ -179,7 +183,7 @@ var EnigmailFilterEditor = {
   },
 
   /**
-   * Taken from FilterEditor.js; adjusted for Enigmail custom actions  
+   * Taken from FilterEditor.js; adjusted for Enigmail custom actions
    */
   validateAction: function() {
     // returns true if this row represents a valid filter action and false otherwise.

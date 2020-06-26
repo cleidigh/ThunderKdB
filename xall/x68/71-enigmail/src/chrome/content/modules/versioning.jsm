@@ -9,10 +9,6 @@
 
 const EXPORTED_SYMBOLS = ["EnigmailVersioning"];
 
-
-
-
-
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 const EnigmailExecution = ChromeUtils.import("chrome://enigmail/content/modules/execution.jsm").EnigmailExecution;
 

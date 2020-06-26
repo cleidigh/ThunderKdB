@@ -10,11 +10,8 @@
  */
 
 const {
-  classes: Cc,
-  interfaces: Ci,
   manager: Cm,
   results: Cr,
-  utils: Cu,
   Constructor: CC
 } = Components;
 Cm.QueryInterface(Ci.nsIComponentRegistrar);
@@ -22,7 +19,7 @@ Cm.QueryInterface(Ci.nsIComponentRegistrar);
 
 var EXPORTED_SYMBOLS = ["EnigmailPgpmimeHander"];
 
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 const EnigmailMimeDecrypt = ChromeUtils.import("chrome://enigmail/content/modules/mimeDecrypt.jsm").EnigmailMimeDecrypt;
@@ -88,7 +85,7 @@ UnknownProtoHandler.prototype = {
   },
 
   onDataAvailable: function(p1, p2, p3, p4) {
-    if (EnigmailTb60Compat.isMessageUriInPgpMime()) {
+    if (EnigmailCompat.isMessageUriInPgpMime()) {
       this.processData(p1, p2, p3, p4);
     }
     else {
@@ -155,7 +152,7 @@ PgpMimeHandler.prototype = {
   classDescription: "Enigmail JS Decryption Handler",
   classID: PGPMIME_JS_DECRYPTOR_CID,
   contractID: PGPMIME_JS_DECRYPTOR_CONTRACTID,
-  QueryInterface: EnigmailTb60Compat.generateQI([Ci.nsIStreamListener]),
+  QueryInterface: EnigmailCompat.generateQI([Ci.nsIStreamListener]),
   inStream: Cc["@mozilla.org/scriptableinputstream;1"].createInstance(Ci.nsIScriptableInputStream),
 
   onStartRequest: function(request, ctxt) {

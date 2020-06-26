@@ -19,12 +19,15 @@ const kScriptFiles = [
   "send.js",
   "uiOverlay.js",
   "errorLog.js",
+  "migration.js",
 ];
 
 /// A map of webextensions to the listeners registered with the dispatcher.
 var gDispatchListeners = new Map();
 /// A map of webextensions to additional options that affect their behaviour.
 var gSchemeOptions = new Map();
+/// A set of address book UIDs known to be global address lists.
+var gAddressBooksMarkedAsReadOnly = new Set();
 /// An array of modules that need to be registered with the component manager.
 var gModules = [];
 var {ExtensionError} = ExtensionUtils;
@@ -157,6 +160,17 @@ function getIncomingServer(key)
     logError(ex);
     throw new ExtensionError("Invalid server key");
   }
+}
+
+function getFolderById(aServer, aFolderId) {
+  let descendants = aServer.rootFolder.descendants;
+  for (let i = 0; i < descendants.length; i++) {
+    let msgFolder = descendants.queryElementAt(i, Ci.nsIMsgFolder);
+    if (msgFolder.getStringProperty("FolderId") == aFolderId) {
+      return msgFolder;
+    }
+  }
+  return null;
 }
 
 var gMsgWindowList = [null];
@@ -371,6 +385,76 @@ function HeartTransplant(aServer)
         }
       }
     }
+  }
+}
+
+/**
+ * For an Office 365 account, the account creation dialog might have
+ * accidentally created an unwanted SMTP server.
+ * We check that this is the case based on the expected accounts and servers.
+ */
+function checkForUnwantedOffice365SMTP() {
+  try {
+    if (MailServices.accounts.accounts.length > 2) {
+      return;
+    }
+    for (let account of iterateEnumerator(MailServices.accounts.accounts.enumerate(Ci.nsIMsgAccount), Ci.nsIMsgAccount)) {
+      switch (account.incomingServer.type) {
+      case "owl":
+      case "owl-ews":
+      case "none":
+        break; // OK, continue
+      default:
+        return; // We have another account -> don't delete anything and just exit
+      }
+    }
+
+    let smtpCount = 0;
+    let smtpServer = null;
+    for (smtpServer of iterateEnumerator(MailServices.smtp.servers, Ci.nsISmtpServer)) {
+      smtpCount++;
+    }
+    if (smtpCount != 1) {
+      return;
+    }
+    if (smtpServer.hostname != "smtp.office365.com") {
+      return;
+    }
+    // Use global default server -> Use Exchange protocol to send mail
+    MailServices.accounts.allIdentities.queryElementAt(0, Ci.nsIMsgIdentity).smtpServerKey = "";
+    // Delete the SMTP server
+    try {
+      smtpServer.forgetPassword();
+    } catch (ex) {
+      // Thunderbird thinks this might throw, so just in case.
+    }
+    MailServices.smtp.deleteServer(smtpServer);
+  } catch (ex) {
+    logError(ex);
+  }
+}
+
+/**
+ * One-time reset the SMTP server to default for all our accounts.
+ */
+function useGlobalPreferredServer(aType) {
+  try {
+    if (Services.prefs.getBoolPref("owl.useGlobalPreferredServer." + aType, false)) {
+      return;
+    }
+    Services.prefs.setBoolPref("owl.useGlobalPreferredServer." + aType, true);
+    let allAccounts = MailServices.accounts.accounts;
+    for (let i = 0; i < allAccounts.length; i++) {
+      let account = allAccounts.queryElementAt(i, Ci.nsIMsgAccount);
+      if (account.incomingServer.type == aType) {
+        for (let j = 0; j < account.identities.length; j++) {
+          let identity = account.identities.queryElementAt(i, Ci.nsIMsgIdentity);
+          identity.smtpServerKey = "";
+        }
+      }
+    }
+  } catch (ex) {
+    logError(ex);
   }
 }
 
@@ -605,6 +689,149 @@ this.webAccount = class extends ExtensionAPI {
             throw SanitiseException(ex);
           }
         },
+        notifyFolderCopied: function(key, oldFolder, oldParent, newFolder, newParent) {
+          // We don't have a good way to clone the hierarchy.
+          // I'm not sure that we can actually get this notification anyway.
+          this.notifyFolderCreated(key, newFolder, newParent);
+        },
+        notifyFolderCreated: async function(key, parent, folder, name, total, unread) {
+          try {
+            let server = getIncomingServer(key);
+            let parentFolder = getFolderById(server, parent);
+            if (!parentFolder) {
+              return;
+            }
+            if (parentFolder.containsChildNamed(name)) {
+              return;
+            }
+            let newFolder = CreateSubfolder(server, parentFolder, name);
+            newFolder.setStringProperty("FolderId", folder);
+            newFolder.changeNumPendingTotalMessages(total);
+            newFolder.changeNumPendingUnread(unread);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyFolderDeleted: function(key, folder, parent) {
+          try {
+            let server = getIncomingServer(key);
+            let msgFolder = getFolderById(server, folder);
+            if (!msgFolder || !msgFolder.parent) {
+              return;
+            }
+            msgFolder.parent.propagateDelete(msgFolder, true, null);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyFolderModified: async function(key, folder, name, total, unread) {
+          try {
+            let server = getIncomingServer(key);
+            let msgFolder = getFolderById(server, folder);
+            if (!msgFolder) {
+              return;
+            }
+            // Don't try to change the counts if we happen to be doing a sync
+            // (e.g., if a notification triggered us to sync)
+            if (!msgFolder.locked) {
+              msgFolder.changeNumPendingTotalMessages(total - msgFolder.getTotalMessages(false));
+              msgFolder.changeNumPendingUnread(unread - msgFolder.getNumUnread(false));
+            }
+            if (msgFolder.name != name) {
+              RenameFolder(msgFolder, name, null);
+            }
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyFolderMoved: function(key, oldFolder, oldParent, newFolder, newParent) {
+          try {
+            let server = getIncomingServer(key);
+            let srcFolder = getFolderById(server, oldFolder);
+            if (!srcFolder) {
+              return;
+            }
+            let destParent = getFolderById(server, newParent);
+            if (!destParent) {
+              return;
+            }
+            MoveFolder(srcFolder, destParent, null);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyMessageCopied: function(key, oldMessage, oldFolder, newMessage, newFolder) {
+          // TODO copy header from old folder if possible (?)
+          this.notifyMessageCreated(key, newMessage, newFolder);
+        },
+        notifyMessageCreated: function(key, newMessage, folder) {
+          try {
+            let server = getIncomingServer(key);
+            let msgFolder = getFolderById(server, folder);
+            if (!msgFolder) {
+              return;
+            }
+            // Check whether we need to pretend that we're biffing this folder.
+            let performingBiff = msgFolder.flags & (Ci.nsMsgFolderFlags.Inbox | Ci.nsMsgFolderFlags.CheckNew);
+            ResyncFolder(msgFolder, null, null, false, performingBiff);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyMessageDeleted: function(key, oldMessage, folder, isMove) {
+          try {
+            let server = getIncomingServer(key);
+            let msgFolder = getFolderById(server, folder);
+            if (!msgFolder) {
+              return;
+            }
+            let hdr = msgFolder.msgDatabase.GetMsgHdrForGMMsgID(oldMessage);
+            if (!hdr) {
+              return;
+            }
+            let hdrArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+            hdrArray.appendElement(hdr);
+            if (isMove) {
+              // We don't have a good way of telling the module that
+              // this is really a move, not a delete, so just silence it.
+              MailServices.mfn.removeListener(moveCopyModule);
+            }
+            deleteFromDatabase(msgFolder, hdrArray, [hdr.messageKey], true);
+            if (isMove) {
+              moveCopyModule.init();
+            }
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyMessageModified: async function(key, message, folder) {
+          try {
+            let server = getIncomingServer(key);
+            let msgFolder = getFolderById(server, folder);
+            if (!msgFolder) {
+              return;
+            }
+            let hdr = msgFolder.msgDatabase.GetMsgHdrForGMMsgID(message);
+            if (!hdr) {
+              return;
+            }
+            let details = await CallExtension(server, "GetMessageProperties", { folder, message }, null);
+            UpdateHeaderStates(hdr, details);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyMessageMoved: function(key, oldMessage, oldFolder, newMessage, newFolder) {
+          this.notifyMessageCopied(key, oldMessage, oldFolder, newMessage, newFolder);
+          this.notifyMessageDeleted(key, oldMessage, oldFolder, true);
+        },
         getServersOfTypes: function(types) {
           try {
             let keys = [];
@@ -623,12 +850,36 @@ this.webAccount = class extends ExtensionAPI {
         },
       },
       webAccount: {
+        markAddressBookAsReadOnly: function(aUID) {
+          gAddressBooksMarkedAsReadOnly.add(aUID);
+        },
         wizard: function() {
           let mail3pane = Services.wm.getMostRecentWindow("mail:3pane");
           mail3pane.NewMailAccount(mail3pane.msgWindow);
         },
         verifyLogin: async function(aScheme, aHostname, aAuthMethod, aUsername, aPassword) {
-          let server = null;
+          let server = MailServices.accounts.findRealServer(aUsername, aHostname, aScheme, 443);
+          if (server) {
+            // Check that there's an account for the server we found.
+            let accounts = MailServices.accounts.accounts;
+            for (let i = 0; i < accounts.length; i++) {
+              if (server == accounts.queryElementAt(i, Ci.nsIMsgAccount).incomingServer) {
+                throw new ExtensionError("Server already exists");
+              }
+            }
+            // There's no account for this server, so we'll remove this server.
+            try {
+              MailServices.accounts.removeIncomingServer(server, true);
+            } catch (ex) {
+              // Deleting files failes, so try a quick remove instead.
+              try {
+                MailServices.accounts.removeIncomingServer(server, false);
+              } catch (ex) {
+                logError(ex);
+                throw new ExtensionError("Server already exists");
+              }
+            }
+          }
           try {
             server = MailServices.accounts.createIncomingServer(aUsername, aHostname, aScheme);
             server.valid = true;
@@ -637,14 +888,19 @@ this.webAccount = class extends ExtensionAPI {
             return await CallExtension(server, "VerifyLogin", null, null);
           } catch (ex) {
             logError(ex);
-            if (ex instanceof Ci.nsIException) { // TODO catch more specifically
-              throw new ExtensionError("Server already exists");
-            } else {
-              throw new ExtensionError(ex.message);
-            }
+            throw SanitiseException(ex);
           } finally {
             if (server) {
-              MailServices.accounts.removeIncomingServer(server, true);
+              try {
+                MailServices.accounts.removeIncomingServer(server, true);
+              } catch (ex) {
+                // Deleting files failed, so retry without removing files.
+                try {
+                  MailServices.accounts.removeIncomingServer(server, false);
+                } catch (ex) {
+                  logError(ex);
+                }
+              }
             }
           }
         },
@@ -726,6 +982,8 @@ this.webAccount = class extends ExtensionAPI {
               }
             }
             MailServices.accounts.ReactivateAccounts();
+            checkForUnwantedOffice365SMTP();
+            useGlobalPreferredServer(scheme);
             return () => {
               // XXX can't unregister contracts
               gDispatchListeners.delete(scheme);

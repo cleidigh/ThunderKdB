@@ -2,6 +2,7 @@ var { wzQuicktextGroup } = ChromeUtils.import("chrome://quicktext/content/module
 var { wzQuicktextTemplate } = ChromeUtils.import("chrome://quicktext/content/modules/wzQuicktextTemplate.jsm");
 var { wzQuicktextScript } = ChromeUtils.import("chrome://quicktext/content/modules/wzQuicktextScript.jsm");
 var { OS } = ChromeUtils.import("resource://gre/modules/osfile.jsm");
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 var EXPORTED_SYMBOLS = ["gQuicktext"];
 
@@ -26,13 +27,15 @@ var gQuicktext = {
   mViewPopup:           false,
   mCollapseGroup:       true,
   mDefaultImport:       "",
-  mKeywordKey:          9,
+  mKeywordKey:          "Tab",
   mShortcutModifier:    "alt",
   mShortcutTypeAdv:     false,
   mQuicktextDir:        null,
   mObserverList:        [],
   mOS:                  "WINNT",
-  mCollapseState:       ""
+  mCollapseState:       "",
+  mSelectionContent:    "" ,
+  mStringBundle: Services.strings.createBundle("chrome://quicktext/locale/quicktext.properties")	
 ,
   get viewToolbar() { return this.mViewToolbar; },
   set viewToolbar(aViewToolbar)
@@ -78,7 +81,7 @@ var gQuicktext = {
   set keywordKey(aKeywordKey)
   {
     this.mKeywordKey = aKeywordKey;
-    this.mPrefBranch.setIntPref("keywordKey", aKeywordKey);
+    this.mPrefBranch.setCharPref("keywordKey", aKeywordKey);
 
     return this.mKeywordKey;
   }
@@ -151,6 +154,13 @@ var gQuicktext = {
                                .getService(Components.interfaces.nsIProperties)
                                .get("ProfD", Components.interfaces.nsIFile);
 
+	// check if an alternative path has been given for the config folder
+	if (this.mPrefBranch.getCharPref("settingsFolder"))
+	{
+		profileDir = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
+		profileDir.initWithPath(this.mPrefBranch.getCharPref("settingsFolder"));	  
+	}
+	
     this.mQuicktextDir = profileDir;
     this.mQuicktextDir.append("quicktext");
     if (!this.mQuicktextDir.exists())
@@ -186,14 +196,26 @@ var gQuicktext = {
       this.mCollapseGroup = this.mPrefBranch.getBoolPref("menuCollapse");
 
     if (this.mPrefBranch.getPrefType("keywordKey") == this.mPrefBranch.PREF_INT) {
-      this.mKeywordKey = this.mPrefBranch.getIntPref("keywordKey");
-      //migrate old keywordKey (and reset to default), if differs from default(9)
-      if (this.mPrefBranchOld.prefHasUserValue("keywordKey") && this.mPrefBranchOld.getPrefType("keywordKey") == this.mPrefBranchOld.PREF_INT && this.mPrefBranchOld.getIntPref("keywordKey") != 9) {
-        this.mKeywordKey = this.mPrefBranchOld.getIntPref("keywordKey");
-        this.mPrefBranchOld.setIntPref("keywordKey", 9);
-        this.mPrefBranch.setIntPref("keywordKey", this.mKeywordKey);
+      //migrate old keywordKey (and reset to default), if differs from default(Tab)
+      let code = "Tab";
+      switch(this.mPrefBranch.getIntPref("keywordKey")) {
+        case 32:
+          code = "Space"; 
+          break;
+        case 13: 
+          code = "Enter"; 
+          break;
+        case 9:
+        default:
+          code = "Tab"; 
+          break;
       }
+      this.mPrefBranch.deleteBranch("keywordKey");
+      this.mPrefBranch.setCharPref("keywordKey", code);
     }
+
+    if (this.mPrefBranch.getPrefType("keywordKey") == this.mPrefBranch.PREF_STRING)
+      this.mKeywordKey = this.mPrefBranch.getCharPref("keywordKey", this.mKeywordKey);
 
     if (this.mPrefBranch.getPrefType("popup") == this.mPrefBranch.PREF_BOOL)
       this.mViewPopup = this.mPrefBranch.getBoolPref("popup");
@@ -639,6 +661,37 @@ var gQuicktext = {
     return text;
   }
 ,
+  readBinaryFile: function(aFile)
+  {
+
+
+    var data = "";
+
+    var file = Components.classes["@mozilla.org/file/local;1"]
+                .createInstance(Components.interfaces.nsIFile);
+    file.initWithFile(aFile);
+    if(file.exists())
+    {
+      var fiStream = Components.classes["@mozilla.org/network/file-input-stream;1"]
+                      .createInstance(Components.interfaces.nsIFileInputStream);
+
+      var biStream = Components.classes["@mozilla.org/binaryinputstream;1"]
+                      .createInstance(Components.interfaces.nsIBinaryInputStream);
+      
+      //Get file as raw byte array
+      fiStream.init(file, 1, 0, false);
+      biStream.setInputStream(fiStream);
+      var len = biStream.available();
+      data = biStream.readBytes(len);
+      biStream.close();
+      fiStream.close();
+
+    }
+
+    return data;
+
+  }
+,
   writeFile: async function(aFile, aData)
   {
     //MDN states, instead of checking if dir exists, just create it and
@@ -647,14 +700,16 @@ var gQuicktext = {
     await OS.File.writeAtomic(aFile.path, aData, {tmpPath: aFile.path + ".tmp"});
   }
 ,
-  pickFile: function(aWindow, aType, aMode, aTitle)
+  pickFile: async function(aWindow, aType, aMode, aTitle)
   {
     var filePicker = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-
+    let checkFileEncoding = true;
+    
     switch(aMode)
     {
       case 1:
         filePicker.init(aWindow, aTitle, filePicker.modeSave);
+        checkFileEncoding = false;
         break;
       default:
         filePicker.init(aWindow, aTitle, filePicker.modeOpen);
@@ -663,34 +718,81 @@ var gQuicktext = {
 
     switch(aType)
     {
-      case 0:
+      case 0: // insert TXT file
         filePicker.appendFilters(filePicker.filterText);
         filePicker.defaultExtension = "txt";
         break;
-      case 1:
+      case 1: // insert HTML file
         filePicker.appendFilters(filePicker.filterHTML);
         filePicker.defaultExtension = "html";
         break;
-      case 2:
+      case 2: // insert file
+        break;
+
+      case 3: // Quicktext XML file
         filePicker.appendFilters(filePicker.filterXML);
         filePicker.defaultExtension = "xml";
+        break;
+
+      case 4: // images
+        filePicker.appendFilters(filePicker.filterImages);
+      default: // attachments
+        checkFileEncoding = false;
         break;
     }
 
     filePicker.appendFilters(filePicker.filterAll);
 
-    //Lazy async-to-sync implementation with ACK from Philipp Kewisch
-    //http://lists.thunderbird.net/pipermail/maildev_lists.thunderbird.net/2018-June/001205.html
-    let inspector = Components.classes["@mozilla.org/jsinspector;1"].createInstance(Components.interfaces.nsIJSInspector);
-    let rv, result;
-    filePicker.open(result => {
-      rv = result;
-      inspector.exitNestedEventLoop();
+    let rv = await new Promise(function(resolve, reject) {
+      filePicker.open(result => {
+        resolve(result);
+      });
     });
-    inspector.enterNestedEventLoop(0); /* wait for async process to terminate */
+    
+    if(rv == filePicker.returnOK || rv == filePicker.returnReplace) {
+      if (checkFileEncoding) {
+        let content = this.readFile(filePicker.file);
+        if (content.includes(String.fromCharCode(0xFFFD))) {
+          aWindow.alert(gQuicktext.mStringBundle.GetStringFromName("fileNotUTF8"));
+          return null;
+        }
+      }
+      return filePicker.file;
+    } else {
+      return null;
+    }
+  }
+,
+  getTypeFromExtension(aFile)
+  {
 
-    if(rv == filePicker.returnOK || rv == filePicker.returnReplace) return filePicker.file;
-    return null;
+    var ext = aFile.leafName.substring(aFile.leafName.lastIndexOf('.'));
+
+    // Extracted from https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#Image_types
+    switch(ext)
+    {
+      case ".apng":
+        return "image/apng";
+      case ".bmp":
+        return "image/bmp";
+      case ".gif":
+        return "image/gif";
+      case ".ico", ".cur":
+        return "image/x-icon";
+      case ".jpg", ".jpeg", ".jfif", ".pjpeg", ".pjp":
+        return "image/jpeg";
+      case ".png":
+        return "image/png";
+      case ".svg":
+        return "image/svg+xml";
+      case ".tif", ".tiff":
+        return "image/tiff";
+      case ".webp":
+        return "image/webp";
+      default:
+        return "application/octet-stream";
+    }
+
   }
 ,
   /*
@@ -701,7 +803,10 @@ var gQuicktext = {
     var buffer = "<?xml version=\"1.0\"?>\n<quicktext version=\"2\">\n\t<filetype>scripts</filetype>\n";
     for (var i = 0; i < this.mScripts.length; i++)
     {
-      buffer += "\t<script>\n\t\t<name><![CDATA["+ this.removeIllegalChars(this.mScripts[i].name) +"]]></name>\n\t\t<body><![CDATA["+ this.removeIllegalChars(this.mScripts[i].script) +"]]></body>\n\t</script>\n";
+      // Only export scripts which have not been auto imported.
+      if (this.mScripts[i].type == 0) {
+        buffer += "\t<script>\n\t\t<name><![CDATA["+ this.removeIllegalChars(this.mScripts[i].name) +"]]></name>\n\t\t<body><![CDATA["+ this.removeIllegalChars(this.mScripts[i].script) +"]]></body>\n\t</script>\n";
+      }
     }
     buffer += "</quicktext>";
     this.writeFile(aFile, buffer);
@@ -712,6 +817,7 @@ var gQuicktext = {
     var buffer = "<?xml version=\"1.0\"?>\n<quicktext version=\"2\">\n\t<filetype>templates</filetype>\n";
     for (var i = 0; i < this.mGroup.length; i++)
     {
+      // Only export templates which have not been auto imported.
       if (this.mGroup[i].type == 0)
       {
         if (this.mTexts[i])

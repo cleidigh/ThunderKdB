@@ -16,6 +16,7 @@ if ("undefined" == typeof(cardbookSynchronizationYahoo)) {
 	}
 	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js");
+	loader.loadSubScript("chrome://cardbook/content/cardbookPasswordManager.js");
 	
 	var EXPORTED_SYMBOLS = ["cardbookSynchronizationYahoo"];
 	var cardbookSynchronizationYahoo = {
@@ -96,8 +97,8 @@ if ("undefined" == typeof(cardbookSynchronizationYahoo)) {
 
 		requestNewRefreshTokenForYahoo: function (aConnection, aCallback, aOperationType, aParams) {
 			cardbookRepository.cardbookRefreshTokenRequest[aConnection.connPrefId]++;
-			var myArgs = {operationType: aOperationType, dirPrefId: aConnection.connPrefId};
-			var wizard = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_newToken.xul", "", "chrome,resizable,scrollbars=no,status=no", myArgs);
+			var myArgs = {operationType: aOperationType, operationMail: aConnection.connUser, dirPrefId: aConnection.connPrefId};
+			var wizard = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_newToken.xul", "", "chrome,resizable,scrollbars=no,status=no", myArgs);
 			wizard.addEventListener("load", function onloadListener() {
 				var browser = wizard.document.getElementById("browser");
 				var url = cardbookSynchronizationYahoo.getYahooOAuthURL(aConnection.connUser);

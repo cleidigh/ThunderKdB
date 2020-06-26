@@ -30,7 +30,7 @@ var EXPORTED_SYMBOLS = ["InstallGnuPG"];
 var Cu = Components.utils;
 
 Components.utils.importGlobalProperties(["XMLHttpRequest"]);
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const subprocess = ChromeUtils.import("chrome://enigmail/content/modules/subprocess.jsm").subprocess;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 const EnigmailOS = ChromeUtils.import("chrome://enigmail/content/modules/os.jsm").EnigmailOS;
@@ -212,7 +212,7 @@ Installer.prototype = {
       // use runwAsync in order to get UAC approval on Windows 7 / 8 if required
 
       var obs = {
-        QueryInterface: EnigmailTb60Compat.generateQI(["nsIObserver"]),
+        QueryInterface: EnigmailCompat.generateQI(["nsIObserver"]),
 
         observe: function(proc, aTopic, aData) {
           EnigmailLog.DEBUG("installGnuPG.jsm: installWindows.observe: topic='" + aTopic + "' \n");

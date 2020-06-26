@@ -7,6 +7,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 /* from EnigmailCommon.js: */
 /* global EnigSetActive: false, ENIG_KEY_EXPIRED: false, ENIG_KEY_NOT_VALID: false */
 
@@ -15,12 +19,14 @@ var EnigmailKeyServer = ChromeUtils.import("chrome://enigmail/content/modules/ke
 var EnigmailDialog = ChromeUtils.import("chrome://enigmail/content/modules/dialog.jsm").EnigmailDialog;
 var EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 var EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
+var EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 
 const INPUT = 0;
 const RESULT = 1;
 
 var gProgressMeter;
 var gKeyServer = null;
+var getCellAt = null;
 var gAllKeysSelected = 0;
 
 const DownloadListener = {
@@ -36,6 +42,8 @@ function onLoad() {
   let searchList = window.arguments[INPUT].searchList;
   gProgressMeter = document.getElementById("dialog.progress");
   gProgressMeter.removeAttribute("value");
+  let tree = document.getElementById("enigmailKeySel");
+  getCellAt = EnigmailCompat.getTreeCompatibleFuncs(tree, null).getCellAt;
 
   if (searchList.length == 1 &&
     searchList[0].search(/^0x[A-Fa-f0-9]{8,16}$/) === 0) {
@@ -112,6 +120,10 @@ function startDownload(downloadKeys) {
         if (res.result === 0 && res.keyList.length > 0) {
           window.arguments[RESULT].importedKeys = res.keyList;
           EnigmailDialog.keyImportDlg(window, res.keyList.length > 0 ? res.keyList : downloadKeys);
+          closeDialog();
+        }
+        else {
+          EnigmailDialog.info(window, getKeyNotFoundMsg());
           closeDialog();
         }
       }).catch(
@@ -289,7 +301,7 @@ function keySelectCallback(event) {
   let {
     row,
     col
-  } = Tree.getCellAt(event.clientX, event.clientY);
+  } = getCellAt(event.clientX, event.clientY);
   if (row == -1) return;
 
   let treeItem = Tree.view.getItemAtIndex(row);

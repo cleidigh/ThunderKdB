@@ -12,7 +12,7 @@
 
         onload="quicktext.init();"
         onunload="quicktext.unload();"
-
+        onresize="quicktext.onResize()"
         ondialogcancel="return quicktext.close(false);"
 
         buttons="extra1, cancel"
@@ -28,10 +28,6 @@
   <script type="application/x-javascript" src="chrome://global/content/nsDragAndDrop.js"/>
   <script type="application/x-javascript" src="chrome://global/content/nsTransferable.js"/>
   <script type="application/x-javascript" src="chrome://quicktext/content/settings.js" />
-
-  <stringbundleset id="stringbundleset">
-    <stringbundle id="quicktextStringBundle" src="chrome://quicktext/locale/quicktext.properties"/>
-  </stringbundleset>
 
   <keyset id="quicktextSettingsKeys">
     <key keycode="VK_ESCAPE" xulkey="false" oncommand="quicktext.close(true);"/>
@@ -85,7 +81,7 @@
             <hbox flex="1">
               <vbox flex="1">
                 <groupbox>
-                  <hbox><caption>&quicktext.settings.label;</caption></hbox>
+                  <hbox class="box-title"><label class="header">&quicktext.settings.label;</label></hbox>
                   <vbox>
                     <checkbox label="&quicktext.rightClickSetting.label;" id="checkbox-viewPopup" oncommand="quicktext.checkForGeneralChanges(0);" />
                     <checkbox label="&quicktext.collapseSetting.label;" id="checkbox-collapseGroup" oncommand="quicktext.checkForGeneralChanges(1);" />
@@ -105,9 +101,16 @@
                     <hbox>
                       <menulist id="select-keywordKey" oncommand="quicktext.checkForGeneralChanges(4);" style="width: 120px">
                         <menupopup>
-                          <menuitem label="&quicktext.tabKey.label;" value="9" />
-                          <menuitem label="&quicktext.spaceKey.label;" value="32" />
-                          <menuitem label="&quicktext.enterKey.label;" value="13" />
+                          <!-- we are using KeyboardEvent.code as values (https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) -->
+                          <menuitem label="&quicktext.tabKey.label;" value="Tab" />
+                          <menuitem label="&quicktext.spaceKey.label;" value="Space" />
+                          <menuitem label="&quicktext.enterKey.label;" value="Enter" />
+                          <menuitem label="&quicktext.f2Key.label;" value="F2" />
+                          <menuitem label="&quicktext.f4Key.label;" value="F4" />
+                          <menuitem label="&quicktext.f5Key.label;" value="F5" />
+                          <menuitem label="&quicktext.f8Key.label;" value="F8" />
+                          <menuitem label="&quicktext.f11Key.label;" value="F11" />
+                          <menuitem label="&quicktext.f12Key.label;" value="F12" />
                         </menupopup>
                       </menulist>
                       <label value="&quicktext.keywordKeySetting.label;" control="select-keywordKey" style="margin-top: 6px" />
@@ -115,18 +118,18 @@
                   </vbox>
                 </groupbox>
                 <groupbox>
-                  <hbox><caption>&quicktext.defaultImport.label;</caption></hbox>
+                  <hbox class="box-title"><label class="header">&quicktext.defaultImport.label;</label></hbox>
                   <textbox id="text-defaultImport" flex="1" oninput="quicktext.checkForGeneralChanges(5);" />
                 </groupbox>
               </vbox>
               <vbox flex="1">
                 <groupbox>
-                  <hbox><caption>&quicktext.sharingTemplates.label;</caption></hbox>
+                  <hbox class="box-title"><label class="header">&quicktext.sharingTemplates.label;</label></hbox>
                   <button label="&quicktext.export.label;" oncommand="quicktext.exportTemplatesToFile();" />
                   <button label="&quicktext.import.label;" oncommand="quicktext.importTemplatesFromFile();" />
                 </groupbox>
                 <groupbox>
-                  <hbox><caption>&quicktext.sharingScripts.label;</caption></hbox>
+                  <hbox class="box-title"><label class="header">&quicktext.sharingScripts.label;</label></hbox>
                   <button label="&quicktext.export.label;" oncommand="quicktext.exportScriptsToFile();" />
                   <button label="&quicktext.import.label;" oncommand="quicktext.importScriptsFromFile();" />
                 </groupbox>
@@ -136,7 +139,7 @@
           <tabpanel id="tab-templates">
             <vbox style="width: 200px">
               <groupbox flex="1">
-                <hbox><caption>&quicktext.title.label;</caption></hbox>
+                <hbox class="box-title"><label class="header">&quicktext.title.label;</label></hbox>
                 <hbox><button id="group-button-add-group" label="&quicktext.addGroup.label;" flex="1" oncommand="quicktext.addGroup();" /></hbox>
                 <hbox><button id="group-button-add-text" label="&quicktext.addTemplate.label;" flex="1" oncommand="quicktext.addText();" /></hbox>
                 <tree id="group-tree"
@@ -163,7 +166,7 @@
             </splitter>
             <vbox flex="1">
               <groupbox flex="1">
-                <hbox><caption id="text-caption">&quicktext.template.label;</caption></hbox>
+                <hbox class="box-title"><label id="text-caption" class="header">&quicktext.template.label;</label></hbox>
                 <vbox flex="1">
                   <grid flex="1">
                     <columns>
@@ -235,10 +238,19 @@
                               <menu label="&quicktext.other.label;">
                                 <menupopup>
                                   <menuitem label="&quicktext.clipboard.label;" oncommand="quicktext.insertVariable('CLIPBOARD');" />
+                                  <menuitem label="&quicktext.counter.label;" oncommand="quicktext.insertVariable('COUNTER');" />
+                                  <menuitem label="&quicktext.input.label;" oncommand="quicktext.insertVariable('INPUT=name|type|options');" />
+                                  <menuitem label="&quicktext.selection.label;" oncommand="quicktext.insertVariable('SELECTION');" />
+                                  <menuitem label="&quicktext.orgatt.label;" oncommand="quicktext.insertVariable('ORGATT=\\n');" />
+                                  <menuitem label="&quicktext.orgheader.label;" oncommand="quicktext.insertVariable('ORGHEADER=type|\\n');" />
                                   <menuitem label="&quicktext.subject.label;" oncommand="quicktext.insertVariable('SUBJECT');" />
+                                  <menuitem label="&quicktext.url.label;" oncommand="quicktext.insertVariable('URL=url|data');" />
+                                  <menuitem label="&quicktext.insertfile.label;" oncommand="quicktext.insertFileVariable();" />
+                                  <menuitem label="&quicktext.image.label;" oncommand="quicktext.insertImageVariable();" />
                                   <menuitem label="&quicktext.version.label;" oncommand="quicktext.insertVariable('VERSION');" />
+                                  <menuseparator/>
+                                  <menuitem label="&quicktext.header.label;" oncommand="quicktext.insertVariable('HEADER=type|value');" />
                                   <menuitem label="&quicktext.cursor.label;" oncommand="quicktext.insertVariable('CURSOR');" />
-                                  <menuitem label="&quicktext.file.label;" oncommand="quicktext.insertFileVariable();" />
                                 </menupopup>
                               </menu>
                               <menu label="&quicktext.templates.label;" id="quicktext-other-texts" />
@@ -247,8 +259,8 @@
                           </menu>
                         </vbox>
                       </hbox>
-                      <vbox flex="1" showfor="text">
-                        <html:textarea id="text" rows="10" disabled="true" candisable="true" oninput="quicktext.checkForTextChanges(1);"/>
+                      <vbox class="textarea-container" flex="1" showfor="text">
+                        <html:textarea id="text" rows="10" disabled="true" candisable="true" wrap="on" oninput="quicktext.checkForTextChanges(1);"/>
                       </vbox>
                       <row showfor="text">
                         <label align="center" value="&quicktext.insertAs.label;:" control="text-type" style="margin-top: 6px" />
@@ -307,8 +319,9 @@
           <tabpanel id="tab-scripts">
             <vbox style="width: 200px;">
               <groupbox flex="1">
-                <hbox><caption>&quicktext.title.label;</caption></hbox>
+                <hbox class="box-title"><label class="header">&quicktext.title.label;</label></hbox>
                 <hbox><button id="script-button-add" label="&quicktext.addScript.label;" flex="1" oncommand="quicktext.addScript();" /></hbox>
+                <hbox><button label="&quicktext.getScript.label;" flex="1" oncommand="quicktext.getCommunityScripts();" /></hbox>
                 <richlistbox id="script-list" flex="1" onselect="quicktext.pickScript();"/>
                 <hbox><button id="script-button-remove" label="&quicktext.remove.label;" flex="1" oncommand="quicktext.removeScript();" /></hbox>
               </groupbox>
@@ -319,7 +332,7 @@
             </splitter>
             <vbox flex="1">
               <groupbox flex="1">
-                <hbox><caption id="script-caption">&quicktext.script.label;</caption></hbox>
+                <hbox class="box-title"><label id="script-caption" class="header">&quicktext.script.label;</label></hbox>
                 <vbox flex="1">
                   <grid flex="1">
                     <columns>
@@ -333,8 +346,8 @@
                         </vbox>
                         <textbox id="script-title" flex="1" oninput="quicktext.checkForScriptChanges(0);"/>
                       </row>
-                      <vbox flex="1">
-                        <html:textarea id="script" rows="14" disabled="true" candisable="true" oninput="quicktext.checkForScriptChanges(1);"/>
+                      <vbox class="textarea-container" flex="1">
+                        <html:textarea id="script" style="font-family:Consolas,Courier New,monospace;" rows="10" disabled="true" wrap="off" oninput="quicktext.checkForScriptChanges(1);"/>
                       </vbox>
                     </rows>
                   </grid>

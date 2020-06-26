@@ -6,6 +6,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 // modules:
 /* global EnigmailLocale: false, EnigmailWindows: false, EnigmailLog: false, EnigmailCore: false, EnigmailDialog: false */
 /* global EnigmailKeyEditor: false, fillIdentityListPopup: false, getCurrentIdentity: false */

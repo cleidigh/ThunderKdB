@@ -6,6 +6,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 /* global EnigmailLog: false, EnigmailCore: false, EnigmailConstants: false */
 
 

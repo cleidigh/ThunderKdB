@@ -38,6 +38,20 @@ constructor(aServerID) {
    */
   this.requestVersion = kExchangeUnknown;
 
+  /**
+   * Cache of local storage containing data used to
+   * reconcile changes with the server.
+   */
+  this.storage = null;
+  /**
+   * Contacts part of the cache for convenient access.
+   */
+  this.contacts = null;
+  /**
+   * Mailing lists part of the cache for convenient access.
+   */
+  this.mailingLists = null;
+
   return this.load();
 }
 
@@ -81,13 +95,29 @@ async getURL() {
 CheckResponse(aXHR, aRequest) {
   let responseXML = aXHR.responseXML;
   if (!responseXML) {
-    throw new EWSError(aXHR, aRequest);
+    if (!aXHR.getResponseHeader("Content-Type").toLowerCase().trim().startsWith("text/xml")) {
+      // No XML response
+      throw new EWSError(aXHR, aRequest);
+    }
+    // Reparse in case of invalid character entities.
+    responseXML = this.parseXML(aXHR.responseText);
   }
   if (this.requestVersion == kExchangeUnknown) {
     let version = responseXML.querySelector("ServerVersionInfo");
     if (version) {
       this.requestVersion = version.getAttribute("Version").includes("2010_") ? kExchange2010_SP1 : kExchange2013;
     }
+  }
+  // Free/Busy is a special snowflake and has its own element.
+  let freebusy = responseXML.querySelector("FreeBusyResponseArray");
+  if (freebusy) {
+    freebusy = EWSAccount.GetItem(XML2JSON(freebusy));
+    for (let response of ensureArray(freebusy)) {
+      if (response.ResponseMessage.ResponseClass != "Success") {
+        throw new EWSError(aXHR, aRequest);
+      }
+    }
+    return freebusy;
   }
   let messages = responseXML.querySelector("ResponseMessages");
   if (!messages) {
@@ -124,9 +154,44 @@ CheckResponse(aXHR, aRequest) {
 }
 
 /**
+ * Parses XML from a string after cleaning it of illegal entities.
+ *
+ * @param aXMLasText {String}         The XML string to parse
+ * @returns     {Document}       The XML response document
+ * @throws      {ParameterError} If the XML failed to parse
+ */
+parseXML(aXMLasText) {
+  // Exchange simply encodes illegal characters, rather than filtering
+  // them out, so we have to manually filter out their entities here.
+  // https://www.w3.org/TR/2006/REC-xml-20060816/Overview.html#charsets
+  // XML 1.0 character legality (both literal and as entities):
+  // &#x0; (NUL) - &#x8; (BS) are illegal
+  // &#x9; (TAB) - &#xA; (LF) are legal
+  // &#xB; (VT) - &#xC; (FF) are illegal
+  // &#xD; (CR) is legal
+  // &#xE; (SO) - &#x1F; (S7) are illegal
+  // &#x20; (SPACE) - &#xD7FF; are legal
+  // &#xD800; - &#xDFFF; are illegal
+  // &#xE000; - &#xFFFD; are legal
+  // &#xFFFE; - &#xFFFF; are illegal
+  // &#x10000; - &#x10FFFF; are legal
+  let cleanText = aXMLasText.replace(/&#x([0-8BCEF]|1[0-9A-F]|D[89A-F][0-9A-F][0-9A-F]|FFF[EF]);/gi, "");
+  let document = new DOMParser().parseFromString(cleanText, "text/xml");
+  if (document.documentElement.namespaceURI == "http://www.mozilla.org/newlayout/xml/parsererror.xml") {
+    let errorMessage = document.documentElement.textContent;
+    throw new ParameterError("xml-parsing-error", errorMessage.split("\n")[0], { errorMessage });
+  }
+  return document;
+}
+
+/**
  * Internal function. Used only by CallService().
  *
  * Translates an EWS request to a SOAP/XML document.
+ *
+ * Implementation limitations:
+ * The time zone is currently hardcoded as UTC, although
+ * appointments and events are given time zone overrides.
  *
  * @param aRequest {Object} The request to translate.
  * @returns        {String} The XML source.
@@ -144,6 +209,11 @@ request2XML(aRequest) {
   JSON2XML({
     t$RequestServerVersion: {
       Version: String(this.requestVersion) || "Exchange2010_SP1",
+    },
+    t$TimeZoneContext: {
+      t$TimeZoneDefinition: {
+        Id: "UTC",
+      },
     },
   }, envelope, envelopeNS, "s:Header");
   JSON2XML(aRequest, envelope, envelopeNS, "s:Body");
@@ -185,6 +255,44 @@ async CallService(aMsgWindow, aRequest) {
 }
 
 /**
+ * Listens to streaming notifications.
+ *
+ * @param aMsgWindow  {Integer?} The identifier used to prompt for a password
+ * @param aRequestXML {Document} The JSON encoded request
+ * @param responseCallback {function(message {XML})} Called each time that the server
+ *      gives us a new XML snipplet.
+ */
+async CallStream(aMsgWindow, aRequestXML, responseCallback) {
+  let xhr = new XMLHttpRequest();
+  // Exchange streams multiple XML documents, so we have to parse manually.
+  xhr.overrideMimeType("text/plain");
+  let responseLength = 0;
+  xhr.onprogress = async event => {
+    try {
+      let responseText = xhr.responseText;
+      let responseXML = this.parseXML(responseText.slice(responseLength));
+      responseLength = responseText.length;
+      let message = responseXML.querySelector("GetStreamingEventsResponseMessage");
+      message = XML2JSON(message);
+      if (message.ResponseClass == "Error") {
+        throw new EWSItemError(message, aRequest);
+      }
+      if (message.ConnectionStatus == "Closed") {
+        // Exchange wants us to start a new stream.
+        this.CallStream(aMsgWindow, aRequestXML, responseCallback);
+      }
+      responseCallback(message);
+    } catch (ex) {
+      logError(ex);
+    }
+  };
+  let password = await browser.incomingServer.getPassword(this.serverID, aMsgWindow);
+  xhr.open("POST", this.serverURL, true, this.username, password);
+  xhr.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+  xhr.send(aRequestXML);
+}
+
+/**
  * Check whether the user has logged on in this session yet.
  *
  * @param aMsgWindow {Integer} The identifier used to prompt for a password
@@ -219,8 +327,152 @@ async EnsureStartup(aMsgWindow) {
 async StartupAfterLogin(aMsgWindow) {
   // First, ensure that all of the folder counts are up-to-date.
   await this.CheckFolders(aMsgWindow, true);
+  // Register this account's calendar with Lightning, if it is installed.
+  browser.calendarProvider.registerCalendar(this.serverID);
   // Download the contacts in the background.
-  noAwait(this.ResyncContacts(aMsgWindow), logError); // contacts.js
+  noAwait(this.ResyncAddressBooks(aMsgWindow), logError); // contacts.js
+  await this.SubscribeToNotifications(aMsgWindow);
+}
+
+/**
+ * Subscribe to streaming notifications, i.e. push mail.
+ *
+ * This allows the server to tell us when something changed
+ * on the server side.
+ *
+ * @param aMsgWindow {Integer} The identifier used to prompt for a password
+ */
+async SubscribeToNotifications(aMsgWindow) {
+  let subscribe = {
+    m$Subscribe: {
+      m$StreamingSubscriptionRequest: {
+        t$EventTypes: {
+          t$EventType: [
+            "CopiedEvent",
+            "CreatedEvent",
+            "DeletedEvent",
+            "ModifiedEvent",
+            "MovedEvent",
+            "NewMailEvent",
+          ],
+        },
+        SubscribeToAllFolders: true,
+      },
+    },
+  };
+  let response = await this.CallService(aMsgWindow, subscribe);
+  let streamRequest = {
+    m$GetStreamingEvents: {
+      m$SubscriptionIds: {
+        t$SubscriptionId: response.SubscriptionId,
+      },
+      // Maximum number of minutes to keep a stream open.
+      // In minutes, between 1 and 30, inclusive.
+      m$ConnectionTimeout: 29, // minutes
+    },
+  };
+  this.CallStream(aMsgWindow, this.request2XML(streamRequest), async message => {
+    for (let notification of ensureArray(message.Notifications && message.Notifications.Notification)) {
+      try {
+        await this.ProcessStreamEvents(notification);
+      } catch (ex) {
+        logError(ex);
+      }
+    }
+  });
+}
+
+/**
+ * Process the events in an EWS streaming notification.
+ *
+ * @param aNotification {Notification} The EWS notification object.
+ *
+ * This object has one or more of the following properties:
+ * CopiedEvent   {MoveCopyEvent} Indicates a message or folder was copied
+ * CreatedEvent  {BaseEvent}     Indicates a message or folder was created
+ * DeletedEvent  {BaseEvent}     Indicates a message or folder was deleted
+ * ModifiedEvent {BaseEvent}     Indicates a message or folder was modified
+ * MovedEvent    {MoveCopyEvent} Indicates a message or folder was moved
+ * NewMailEvent  {BaseEvent}     Indicates that a new message was received
+ */
+async ProcessStreamEvents(aNotification) {
+  for (let copiedEvent of ensureArray(aNotification.CopiedEvent)) {
+    if (copiedEvent.ItemId) {
+      let oldItem = copiedEvent.OldItemId.Id;
+      let newItem = copiedEvent.ItemId.Id;
+      let oldFolder = copiedEvent.OldParentFolderId.Id;
+      let newFolder = copiedEvent.ParentFolderId.Id;
+      browser.incomingServer.notifyMessageCopied(this.serverID, oldItem, oldFolder, newItem, newFolder);
+    } else if (copiedEvent.FolderId) {
+      let oldFolder = copiedEvent.OldFolderId.Id;
+      let newFolder = copiedEvent.FolderId.Id;
+      let oldParent = copiedEvent.OldParentFolderId.Id;
+      let newParent = copiedEvent.ParentFolderId.Id;
+      browser.incomingServer.notifyFolderCopied(this.serverID, oldFolder, oldParent, newFolder, newParent);
+    } else {
+      throw new Error("CopiedEvent did not conform to schema");
+    }
+  }
+  for (let createdEvent of ensureArray(aNotification.CreatedEvent)) {
+    if (createdEvent.ItemId) {
+      let newItem = createdEvent.ItemId.Id;
+      let folder = createdEvent.ParentFolderId.Id;
+      browser.incomingServer.notifyMessageCreated(this.serverID, newItem, folder);
+    } else if (createdEvent.FolderId) {
+      let parent = createdEvent.ParentFolderId.Id;
+      let {id, name, total, unread} = await this.GetFolder(null, createdEvent.FolderId.Id);
+      browser.incomingServer.notifyFolderCreated(this.serverID, parent, id, name, total, unread);
+    } else {
+      throw new Error("CreatedEvent did not conform to schema");
+    }
+  }
+  for (let deletedEvent of ensureArray(aNotification.DeletedEvent)) {
+    if (deletedEvent.ItemId) {
+      let oldItem = deletedEvent.ItemId.Id;
+      let folder = deletedEvent.ParentFolderId.Id;
+      browser.incomingServer.notifyMessageDeleted(this.serverID, oldItem, folder);
+    } else if (deletedEvent.FolderId) {
+      let folder = deletedEvent.FolderId.Id;
+      let parent = deletedEvent.ParentFolderId.Id;
+      browser.incomingServer.notifyFolderDeleted(this.serverID, folder, parent);
+    } else {
+      throw new Error("DeletedEvent did not conform to schema");
+    }
+  }
+  for (let modifiedEvent of ensureArray(aNotification.ModifiedEvent)) {
+    if (modifiedEvent.ItemId) {
+      let item = modifiedEvent.ItemId.Id;
+      let folder = modifiedEvent.ParentFolderId.Id;
+      browser.incomingServer.notifyMessageModified(this.serverID, item, folder);
+    } else if (modifiedEvent.FolderId) {
+      let {id, name, total, unread} = await this.GetFolder(null, modifiedEvent.FolderId.Id);
+      browser.incomingServer.notifyFolderModified(this.serverID, id, name, total, unread);
+    } else {
+      throw new Error("ModifiedEvent did not conform to schema");
+    }
+  }
+  for (let movedEvent of ensureArray(aNotification.MovedEvent)) {
+    if (movedEvent.ItemId) {
+      let oldItem = movedEvent.OldItemId.Id;
+      let newItem = movedEvent.ItemId.Id;
+      let oldFolder = movedEvent.OldParentFolderId.Id;
+      let newFolder = movedEvent.ParentFolderId.Id;
+      browser.incomingServer.notifyMessageMoved(this.serverID, oldItem, oldFolder, newItem, newFolder);
+    } else if (movedEvent.FolderId) {
+      let oldFolder = movedEvent.OldFolderId.Id;
+      let newFolder = movedEvent.FolderId.Id;
+      let oldParent = movedEvent.OldParentFolderId.Id;
+      let newParent = movedEvent.ParentFolderId.Id;
+      browser.incomingServer.notifyFolderMoved(this.serverID, oldFolder, oldParent, newFolder, newParent);
+    } else {
+      throw new Error("MovedEvent did not conform to schema");
+    }
+  }
+  for (let newMailEvent of ensureArray(aNotification.NewMailEvent)) {
+    let newItem = newMailEvent.ItemId.Id;
+    let folder = newMailEvent.ParentFolderId.Id;
+    browser.incomingServer.notifyMessageCreated(this.serverID, newItem, folder);
+  }
 }
 
 /**
@@ -246,6 +498,8 @@ async CheckFolders(aMsgWindow, aForLogin) {
  * Performs an EWS operation to verify the user's credentials.
  *
  * @returns         {Object} An object providing the status of the operation
+ *   If success, returns an empty object with no properties.
+ *   If error, returns an object with:
  *   message        {String} The text of any exception
  *   code           {String} An internal error identifier
  *
@@ -304,6 +558,12 @@ EWSAccount.kMinCheckAfterLogin = 10 * 1000; // 10 seconds
  * The maximum number of messages to fetch in a single call to GetMessages.
  */
 EWSAccount.kMaxGetItemIds = 50;
+
+/**
+ * The maximum number of calendar items to fetch in a single call to SyncItems.
+ * (This value cannot exceed the server limit of 512.)
+ */
+EWSAccount.kMaxSyncChanges = 500;
 
 // Static functions
 
@@ -381,5 +641,4 @@ browser.webAccount.dispatcher.addListener(async function(aServerId, aOperation, 
 browser.webAccount.setSchemeOptions("owl-ews", {
   authMethods: [3],
   sentFolder: "SameServer",
-  extraHiddenItems: [["server.GAL_enabled"]],
 });

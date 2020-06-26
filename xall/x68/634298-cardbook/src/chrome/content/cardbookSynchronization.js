@@ -898,7 +898,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 				while (files.hasMoreElements()) {
 					var file = files.getNext().QueryInterface(Components.interfaces.nsIFile);
 					if (file.isFile()) {
-						listOfFileName.push(file.leafName);
+						if (cardbookUtils.getFileNameExtension(file.leafName) == "vcf") {
+							listOfFileName.push(file.leafName);
+						}
 					}
 				}
 			} catch(e) {}
@@ -908,7 +910,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 		loadDir: function (aDir, aDirPrefId, aTarget, aMode, aImportMode, aActionId) {
 			var aListOfFileName = [];
 			aListOfFileName = cardbookSynchronization.getFilesFromDir(aDir.path);
-			cardbookRepository.cardbookServerSyncTotal[aDirPrefId] = aListOfFileName.length;
 			// load dir in background
 			Services.tm.currentThread.dispatch({ run: function() {
 				for (var i = 0; i < aListOfFileName.length; i++) {
@@ -922,11 +923,11 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookSynchronization.loadFile(myFile, aDirPrefId, aTarget, aMode, aImportMode, aActionId);
 						}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 					} else {
-						cardbookRepository.cardbookServerSyncDone[aDirPrefId]++;
+						cardbookRepository.cardbookFileResponse[aDirPrefId]++;
 					}
 				}
+				cardbookRepository.cardbookDirResponse[aDirPrefId]++;
 			}}, Components.interfaces.nsIEventTarget.DISPATCH_NORMAL);
-			cardbookRepository.cardbookDirResponse[aDirPrefId]++;
 		},
 
 		handleRemainingCache: function (aPrefIdType, aConnection, aMode) {
@@ -1126,6 +1127,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
+					} else if (status == 401) {
+						if (!cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSearchRemote", aConnection.connUrl, status], "Error");
+						}
+						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
+						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					} else if (response && response["parsererror"] && response["parsererror"][0]["sourcetext"] && response["parsererror"][0]["sourcetext"][0]) {
 						cardbookUtils.formatStringForOutput("unableToParseResponse", [aConnection.connDescription, response["parsererror"][0]["sourcetext"][0]], "Error");
 						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
@@ -1195,12 +1202,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookLog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.serverSearchRemote error : " + e, "Error");
 							cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 						}
-						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
-					} else {
-						if (!cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
-							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSearchRemote", aConnection.connUrl, status], "Error");
-						}
-						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					}
 				}
@@ -1321,6 +1322,12 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
+					} else if (status == 401) {
+						if (!cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
+							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status], "Error");
+						}
+						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
+						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					} else if (response && response["parsererror"] && response["parsererror"][0]["sourcetext"] && response["parsererror"][0]["sourcetext"][0]) {
 						cardbookUtils.formatStringForOutput("unableToParseResponse", [aConnection.connDescription, response["parsererror"][0]["sourcetext"][0]], "Error");
 						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
@@ -1386,12 +1393,6 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 							cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncHandleRemainingTotal[aConnection.connPrefId] = cardbookRepository.cardbookServerSyncHandleRemainingDone[aConnection.connPrefId];
 						}
-						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
-					} else {
-						if (!cardbookSynchronization.handleWrondPassword(aConnection, status, response)) {
-							cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status], "Error");
-						}
-						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					}
 				}
@@ -1887,7 +1888,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			}
 		},
 
-		syncAccount: function (aPrefId, aMode) {
+		syncAccount: function (aPrefId, aMode, aFirstSync = true) {
 			try {
 				if (cardbookUtils.isMyAccountSyncing(aPrefId)) {
 					return;
@@ -1913,6 +1914,8 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 						if (myPrefIdType == "GOOGLE") {
 							cardbookActions.initSyncActivity(aPrefId, myPrefIdName);
 							cardbookSynchronization.initMultipleOperations(aPrefId);
+							// As Google dictates its ids, we should resync
+							cardbookRepository.cardbookServerSyncAgain[aPrefId] = aFirstSync;
 							cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
 							var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connUrl: cardbookRepository.cardbookOAuthData.GOOGLE.REFRESH_REQUEST_URL, connDescription: myPrefIdName};
 							var myCode = cardbookPasswordManager.getPassword(myPrefIdUser, myPrefIdUrl);
@@ -2011,7 +2014,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 								if (cardbookRepository.cardbookServerSyncAgain[aPrefId]) {
 									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									cardbookUtils.formatStringForOutput("synchroForcedToResync", [aPrefName]);
-									cardbookSynchronization.syncAccount(aPrefId, aMode);
+									cardbookSynchronization.syncAccount(aPrefId, aMode, false);
 								} else {
 									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
@@ -2032,7 +2035,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 											var myPrefId = syncAgain[j];
 											var myPrefName = cardbookUtils.getPrefNameFromPrefId(myPrefId);
 											cardbookUtils.formatStringForOutput("synchroForcedToResync", [myPrefName]);
-											cardbookSynchronization.syncAccount(myPrefId, aMode);
+											cardbookSynchronization.syncAccount(myPrefId, aMode, false);
 										}
 										for (var j = 0; j < syncFailed.length; j++) {
 											var myPrefId = syncFailed[j];
@@ -2055,7 +2058,7 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
 		},
 
-		waitForLoadFinished: function (aPrefId, aPrefName, aMode, aSync = null) {
+		waitForLoadFinished: function (aPrefId, aPrefName, aMode, aSync = null, aRunBirthdaysAfterLoad = true) {
 			cardbookRepository.lTimerDirAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lTimerDir = cardbookRepository.lTimerDirAll[aPrefId];
 			lTimerDir.initWithCallback({ notify: function(lTimerDir) {
@@ -2079,18 +2082,15 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 										cardbookSynchronization.syncAccount(aPrefId, aMode);
 									} else {
 										setTimeout(function() {
-												cardbookSynchronization.syncAccount(aPrefId, aMode);
+											cardbookSynchronization.syncAccount(aPrefId, aMode);
 										}, initialSyncDelayMs);
 									}
 								} else {
 									cardbookSynchronization.syncAccount(aPrefId, aMode);
 								}
 							}
-							var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
-							if (total === 0) {
-								if (aMode == "INITIAL") {
-									ovl_birthdays.onLoad();
-								}
+							if (aRunBirthdaysAfterLoad) {
+								ovl_birthdays.onLoad();
 							}
 							lTimerDir.cancel();
 						}
@@ -2168,14 +2168,21 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 			var myMode = "INITIAL";
 			var result = [];
 			result = cardbookPreferences.getAllPrefIds();
-			for (let i = 0; i < result.length; i++) {
-				cardbookSynchronization.loadAccount(result[i], initialSync, true, myMode);
+			var runBirthdaysAfterLoad = true;
+			for (let dirPrefId of result) {
+				if (cardbookUtils.isMyAccountRemote(cardbookPreferences.getType(dirPrefId)) && cardbookPreferences.getEnabled(dirPrefId) && initialSync) {
+					runBirthdaysAfterLoad = false;
+					break;
+				}
+			}
+			for (let dirPrefId of result) {
+				cardbookSynchronization.loadAccount(dirPrefId, initialSync, true, myMode, runBirthdaysAfterLoad);
 			}
 			cardbookSynchronization.setPeriodicSyncs();
 			cardbookUtils.notifyObservers("accountsLoaded");
 		},
 
-		loadAccount: function (aDirPrefId, aSync, aAddAccount, aMode) {
+		loadAccount: function (aDirPrefId, aSync, aAddAccount, aMode, aRunBirthdaysAfterLoad = true) {
 			var myPrefName = cardbookPreferences.getName(aDirPrefId);
 			if (myPrefName == "") {
 				return;
@@ -2204,26 +2211,26 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					cardbookSynchronization.initMultipleOperations(aDirPrefId);
 					cardbookRepository.cardbookDBRequest[aDirPrefId]++;
 					cardbookIndexedDB.loadDB(aDirPrefId, myPrefName, aMode);
-					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode, aSync);
+					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode, aSync, aRunBirthdaysAfterLoad);
 				} else if (myPrefType === "LOCALDB") {
 					cardbookSynchronization.initMultipleOperations(aDirPrefId);
 					cardbookRepository.cardbookDBRequest[aDirPrefId]++;
 					cardbookIndexedDB.loadDB(aDirPrefId, myPrefName, aMode);
-					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode);
+					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode, false, aRunBirthdaysAfterLoad);
 				} else if (myPrefType === "FILE") {
 					cardbookSynchronization.initMultipleOperations(aDirPrefId);
 					cardbookRepository.cardbookFileRequest[aDirPrefId]++;
 					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myFile.initWithPath(myPrefUrl);
 					cardbookSynchronization.loadFile(myFile, aDirPrefId, aDirPrefId, aMode, "NOIMPORTFILE", "");
-					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode);
+					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode, false, aRunBirthdaysAfterLoad);
 				} else if (myPrefType === "DIRECTORY") {
 					cardbookSynchronization.initMultipleOperations(aDirPrefId);
 					cardbookRepository.cardbookDirRequest[aDirPrefId]++;
 					var myDir = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myDir.initWithPath(myPrefUrl);
 					cardbookSynchronization.loadDir(myDir, aDirPrefId, aDirPrefId, aMode, "NOIMPORTDIR", "");
-					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode);
+					cardbookSynchronization.waitForLoadFinished(aDirPrefId, myPrefName, aMode, false, aRunBirthdaysAfterLoad);
 				}
 			}
 		},
@@ -2393,11 +2400,9 @@ if ("undefined" == typeof(cardbookSynchronization)) {
 					var fileContentArray = cardbookUtils.cleanArrayWithoutTrim(aContent.split(re));
 
 					var fileContentArrayLength = fileContentArray.length
-					if (aParams.aImportMode.endsWith("FILE")) {
-						for (let i = 0; i < fileContentArrayLength; i++) {
-							if (fileContentArray[i].toUpperCase() == "BEGIN:VCARD") {
-								cardbookRepository.cardbookServerSyncTotal[aParams.aPrefId]++;
-							}
+					for (let i = 0; i < fileContentArrayLength; i++) {
+						if (fileContentArray[i].toUpperCase() == "BEGIN:VCARD") {
+							cardbookRepository.cardbookServerSyncTotal[aParams.aPrefId]++;
 						}
 					}
 					cardbookRepository.importConflictChoicePersist = false;

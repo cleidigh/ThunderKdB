@@ -26,16 +26,24 @@ OWAContactFields = function(aProperties)
   for (let path in this) {
     this[path] = aProperties[this[path]] || "";
   }
+  // For email addresses, if we have their original index, then update that,
+  // although the update property name and the index name are subtly different.
+  // OWA also requires us to update the original display name subproperty.
+  let primaryKey = aProperties.PrimaryEmailIndex || "Email1";
+  let primaryNumber = parseInt(primaryKey.replace("Email", ""));
+  primaryKey = primaryKey.replace("Email", "PersonaEmails");
+  this[primaryKey + "OriginalDisplayNames"] = this[primaryKey] = aProperties.PrimaryEmail || "";
+  let secondaryKey = aProperties.SecondEmailIndex
+      ? aProperties.SecondEmailIndex.replace("Email", "PersonaEmails")
+      : `PersonaEmails${  primaryNumber ? primaryNumber + 1 : 2 }`;
+  this[secondaryKey + "OriginalDisplayNames"] = this[secondaryKey] = aProperties.SecondEmail || "";
 }
 
 OWAContactFields.prototype = {
   PersonaGivenNames: "FirstName",
   PersonaSurnames: "LastName",
   PersonaNicknames: "NickName",
-  PersonaEmails1: "PrimaryEmail",
-  PersonaEmails1OriginalDisplayNames: "PrimaryEmail", // OWA requires this
-  PersonaEmails2: "SecondEmail",
-  PersonaEmails2OriginalDisplayNames: "SecondEmail", // OWA requires this
+  // Email addresses special-cased in the constructor.
   PersonaHomeAddresses: "HomeFullAddress",
   PersonaPersonalHomePages: "WebPage2",
   PersonaBusinessAddresses: "WorkFullAddress",
@@ -174,7 +182,7 @@ browser.contacts.onDeleted.addListener(async (addressBook, id) => {
             }],
           },
         };
-        await OWA.CallService(account.serverID, "DeletePersonas", request);
+        await account.CallService("DeletePersonas", request);
       }
     }
   } catch (ex) {
@@ -250,7 +258,7 @@ OWAAccount.prototype.UpdateDescriptionForList = async function(aPersonaId, aId, 
  * Updates the mapping between Personas and Contacts and removes stale entries.
  *
  * @param aManager     {Object}        browser.contacts or browser.mailingLists
- * @param aCache       {Object}        The stored contacts or lists mappings
+ * @param aCache       {inout Object}  The stored contacts or lists mappings
  *   fields            {Object}        A mapping from persona ids to Fields
  *   ids               {Object}        A mapping from persona ids to ids
  *   personaIds        {Object}        A mapping from ids to persona ids
@@ -430,6 +438,7 @@ OWAAccount.prototype.DownloadGAL = async function(aFilter) {
     await browser.incomingServer.setStringValue(this.serverID, "GAL", id);
     addressBook = { id: id, contacts: [], mailingLists: [] };
   }
+  browser.webAccount.markAddressBookAsReadOnly(addressBook.id);
   try {
     // Whether to get all details of all contacts in the GAL. Do you need the phone numbers?
     // Needs one server request per contact.
@@ -523,6 +532,7 @@ OWAAccount.prototype.ResyncAddressBooks = async function() {
  * Note: This function is passed as a callback, so it has no `this`.
  */
 OWAAccount.convertPersona = function(aPersona) {
+  let emailAddresses = ensureArray(aPersona.EmailAddresses).filter(address => !address.RoutingType || address.RoutingType == "SMTP");
   let homeAddress = aPersona.HomeAddressesArray && aPersona.HomeAddressesArray[0].Value;
   let workAddress = aPersona.BusinessAddressesArray && aPersona.BusinessAddressesArray[0].Value;
   let birthday = aPersona.BirthdaysLocalArray && aPersona.BirthdaysLocalArray[0].Value;
@@ -532,8 +542,10 @@ OWAAccount.convertPersona = function(aPersona) {
     LastName: aPersona.Surname || "",
     DisplayName: aPersona.DisplayName || "",
     NickName: aPersona.Nickname || "",
-    PrimaryEmail: aPersona.EmailAddress && aPersona.EmailAddress.EmailAddress || "",
-    SecondEmail: aPersona.EmailAddresses && aPersona.EmailAddresses[1] && aPersona.EmailAddresses[1].EmailAddress || "",
+    PrimaryEmail: emailAddresses[0] && emailAddresses[0].EmailAddress || "",
+    PrimaryEmailIndex: emailAddresses[0] && emailAddresses[0].EmailAddressIndex || "",
+    SecondEmail: emailAddresses[1] && emailAddresses[1].EmailAddress || "",
+    SecondEmailIndex: emailAddresses[1] && emailAddresses[1].EmailAddressIndex || "",
     HomeAddress: homeAddress && homeAddress.Street || "",
     HomeCity: aPersona.HomeCity || "",
     HomeState: homeAddress && homeAddress.State || "",

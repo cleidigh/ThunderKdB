@@ -34,7 +34,12 @@ Enigmail.edit = {
 
   onInit: function() {
     // initialize all of our elements based on the current identity values....
-    EnigmailFuncs.collapseAdvanced(document.getElementById("enigmail_PrefsBox"), "hidden");
+
+    let prefsBox = document.getElementById("enigmail_PrefsBox");
+
+    if (prefsBox) {
+      EnigmailFuncs.collapseAdvanced(prefsBox, "hidden");
+    }
 
     this.enablePgp = document.getElementById("enigmail_enablePgp");
     this.pgpKeyMode = document.getElementById("enigmail_pgpKeyMode");
@@ -94,13 +99,14 @@ Enigmail.edit = {
       this.pgpSignEncPolicy.checked = this.identity.getBoolAttribute("pgpSignEncrypted");
       this.pgpSignPlainPolicy.checked = this.identity.getBoolAttribute("pgpSignPlain");
       this.autoEncryptDrafts.checked = this.identity.getBoolAttribute("autoEncryptDrafts");
-
+      this.openPgpSendKeyWithMsg.checked = this.identity.getBoolAttribute("attachPgpKey");
     } else {
       this.enablePgp.checked = false;
       this.cryptoChoicesEnabled = false;
       this.pgpMimeMode.checked = true;
       this.pgpSignEncPolicy.checked = true;
       this.autoEncryptDrafts.checked = true;
+      this.openPgpSendKeyWithMsg.checked = false;
     }
 
     if (this.account) {
@@ -253,8 +259,12 @@ Enigmail.edit = {
       // cancel pressed -> don't send mail
       return;
     }
-  }
+  },
 
+  openEditSingleAccount: function() {
+    this.identity = window.arguments[0].identity;
+    this.account = window.arguments[0].account;
+  }
 };
 
 window.addEventListener("load-enigmail", Enigmail.edit.onLoadEditor.bind(Enigmail.edit), false);

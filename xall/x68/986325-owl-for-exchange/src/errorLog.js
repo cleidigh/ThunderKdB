@@ -6,7 +6,8 @@ const kErrorLogURL = "https://api.beonex.com/error/log";
 
 function logError(ex) {
   console.error(ex);
-  noAwait(logErrorToServer(ex), console.error);
+  //noAwait(logErrorToServer(ex), console.error);
+  logErrorToServer(ex);
 }
 
 /**
@@ -58,7 +59,7 @@ async function logErrorToServer(ex) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body, sanitiseExchangeData),
     });
   } catch (ex2) {
     console.error(ex2);
@@ -120,4 +121,24 @@ async function getLoginURLForUser() {
     console.error(ex);
     return null;
   }
+}
+
+/**
+ * Pass to JSON.stringify to sanitise sensitive values.
+ * Id, ChangeKey and RecurrenceId are trimmed to 23 characters.
+ * Name and EmailAddress properties are replaced with placeholders.
+ */
+function sanitiseExchangeData(aKey, aValue) {
+  switch (aKey) {
+  case "EmailAddress":
+  case "Name":
+    return "***";
+  case "ChangeKey":
+  case "Id":
+  case "RecurrenceId":
+    if (typeof aValue == "string" && aValue.length > 22) {
+      return aValue.slice(0, 10) + "..." + aValue.slice(-10);
+    }
+  }
+  return aValue;
 }

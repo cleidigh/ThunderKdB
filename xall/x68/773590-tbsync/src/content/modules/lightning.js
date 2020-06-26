@@ -15,21 +15,39 @@ var lightning = {
   cal: null,
   ICAL: null,
   
-  load: async function () {
-    //check for lightning
-    let lightning = await AddonManager.getAddonByID("{e2fda1a4-762b-4020-b5ad-a41df1933103}");
-    if (lightning !== null) {
-      TbSync.dump("Check4Lightning","Start");
-
+  importLightningModules: function () {
+    try {
       //try to import
       if ("calICalendar" in Components.interfaces) {
         var { cal } = ChromeUtils.import("resource://calendar/modules/calUtils.jsm");
         var { ICAL } = ChromeUtils.import("resource://calendar/modules/ical.js");
         TbSync.lightning.cal = cal;
         TbSync.lightning.ICAL = ICAL;
+        return true;
+      } else {
+        TbSync.dump("Check4Lightning","calICalendar not found");
       }
+    } catch (e) {
+        TbSync.dump("Check4Lightning","Error during lightning module import: " + e.toString() + "\n" + e.stack);
+        Components.utils.reportError(e);
+    }
+    return false;
+  },
+  
+  load: async function () {
+    //check for lightning
+    let lightning = await AddonManager.getAddonByID("{e2fda1a4-762b-4020-b5ad-a41df1933103}");
+    if (lightning !== null) {
+      TbSync.dump("Check4Lightning", lightning.version);
+      
+      // Lightning version should match TB version
+      if (Services.appinfo.version != lightning.version) {
+        TbSync.dump("Check4Lightning", "This may be a wrong Lightning version, expected <"+Services.appinfo.version+">, but found <"+lightning.version+">");
+      }
+      
+      this.importLightningModules();
 
-      if (typeof TbSync.lightning.cal !== 'undefined') {
+      if (TbSync.lightning.cal && typeof TbSync.lightning.cal !== 'undefined') {
         //adding a global observer
         TbSync.lightning.cal.getCalendarManager().addCalendarObserver(this.calendarObserver);
         TbSync.lightning.cal.getCalendarManager().addObserver(this.calendarManagerObserver);
@@ -92,7 +110,7 @@ var lightning = {
     // be whatever you want and is returned by FolderData.targetData.getTarget().
     // If the target does not exist, it should be created. Throw a simple Error, if that
     // failed.
-    getTarget() {
+    async getTarget() {
       if (!TbSync.lightning.isAvailable()) {
           throw new Error("nolightning");
       }
@@ -101,7 +119,7 @@ var lightning = {
       let calendar = calManager.getCalendarById(target);
       
       if (!calendar) {
-        calendar = TbSync.lightning.createCalendar(this._folderData);
+        calendar = await TbSync.lightning.prepareAndCreateCalendar(this._folderData);
         if (!calendar)
           throw new Error("notargets");
       }
@@ -194,8 +212,13 @@ var lightning = {
     }
 
     setReadOnly(value) {
-      if (this.hasTarget()) {
-        this.getTarget().calendar.setProperty("readOnly", value);
+      // hasTarget() can throw an error, ignore that here
+      try {
+        if (this.hasTarget()) {
+          this.getTarget().then(target => target.calendar.setProperty("readOnly", value));
+        }
+      } catch (e) {
+        Components.utils.reportError(e);
       }
     }
 
@@ -245,7 +268,9 @@ var lightning = {
       }
     }
 
-    createCalendar(newname) {
+    // replace this with your own implementation to create the actual addressbook,
+    // when this class is extended
+    async createCalendar(newname) {
       if (!TbSync.lightning.isAvailable()) {
           throw new Error("nolightning");
       }
@@ -499,6 +524,15 @@ var lightning = {
     return null;
   },
   
+  getFolderFromCalendarURL: function(calURL) {
+    let folders = TbSync.db.findFolders({"url": calURL});
+    if (folders.length == 1) {
+      let accountData = new TbSync.AccountData(folders[0].accountID);
+      return new TbSync.FolderData(accountData, folders[0].folderID);
+    }
+    return null;
+  },  
+  
   calendarObserver : { 
     onStartBatch : function () {},
     onEndBatch : function () {},
@@ -723,32 +757,13 @@ var lightning = {
   
   
   //this function actually creates a calendar if missing
-  createCalendar: function (folderData) {       
+  prepareAndCreateCalendar: async function (folderData) {       
     let calManager = TbSync.lightning.cal.getCalendarManager();
     let provider = folderData.accountData.getAccountProperty("provider");
 
     //check if  there is a known/cached name, and use that as starting point to generate unique name for new calendar 
     let cachedName = folderData.getFolderProperty("targetName");                         
     let newname = cachedName == "" ? folderData.accountData.getAccountProperty("accountname") + " (" + folderData.getFolderProperty("foldername") + ")" : cachedName;
-
-    /* this seems to cause more trouble than it helps
-    let count = 1;
-    let unique = false;
-    let newname = basename;
-    do {
-      unique = true;
-      for (let calendar of calManager.getCalendars({})) {
-        if (calendar.name == newname) {
-          unique = false;
-          break;
-        }
-      }
-      if (!unique) {
-        newname = basename + " #" + count;
-        count = count + 1;
-      }
-    } while (!unique);*/
-
 
     //check if there is a cached or preloaded color - if not, chose one
     if (!folderData.getFolderProperty("targetColor")) {
@@ -803,7 +818,7 @@ var lightning = {
     }
     
     //create and register new calendar
-    let newCalendar = folderData.targetData.createCalendar(newname);
+    let newCalendar = await folderData.targetData.createCalendar(newname);
     newCalendar.setProperty("tbSyncProvider", provider);
     newCalendar.setProperty("tbSyncAccountID", folderData.accountData.accountID);
 

@@ -45,8 +45,8 @@ var cardbookRepository = {
 						["url", ["url"] ] ],
 					"note": ["note"],
 					"calculated": ["age", "ABName"],
-					"technical": ["version", "rev"],
-					"technicalForTree": ["cardIcon", "name", "dirPrefId", "uid", "cbid", "class1", "etag", "geo", "mailer",
+					"technical": ["version", "rev", "uid"],
+					"technicalForTree": ["cardIcon", "name", "dirPrefId", "cbid", "class1", "etag", "geo", "mailer",
 											"prodid", "tz", "sortstring", "kind"] },
 
 	newFields : [ 'gender', 'birthplace', 'anniversary', 'deathdate', 'deathplace' ],
@@ -110,6 +110,8 @@ var cardbookRepository = {
 	addonVersion : "",
 	userAgent : "",
 	prodid : "",
+	
+	useColor : "",
 	
 	autocompleteRestrictSearch : false,
 	autocompleteRestrictSearchFields : [],
@@ -1932,31 +1934,30 @@ var cardbookRepository = {
 	},
 
 	createCssCardRules: function (aStyleSheet, aDirPrefId, aColor) {
-		var useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
 		var oppositeColor = cardbookRepository.getTextColorFromBackgroundColor(aColor);
-		if (useColor == "text") {
-			var ruleString1 = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH color_" + aDirPrefId + ") {color: " + aColor + ";}";
+		if (cardbookRepository.useColor == "text") {
+			var ruleString1 = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH color_" + aDirPrefId + ") {color: " + aColor + " !important;}";
 			var ruleIndex1 = aStyleSheet.insertRule(ruleString1, aStyleSheet.cssRules.length);
 
-			var ruleString2 = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH color_" + aDirPrefId + ") {background-color: " + oppositeColor + ";}";
+			var ruleString2 = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH color_" + aDirPrefId + ") {background-color: " + oppositeColor + " !important;}";
 			var ruleIndex2 = aStyleSheet.insertRule(ruleString2, aStyleSheet.cssRules.length);
 			
-			var ruleString3 = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH color_" + aDirPrefId + ", selected, focus) {color: HighlightText;}";
+			var ruleString3 = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH color_" + aDirPrefId + ", selected, focus) {color: HighlightText !important;}";
 			var ruleIndex3 = aStyleSheet.insertRule(ruleString3, aStyleSheet.cssRules.length);
 
-			var ruleString4 = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH color_" + aDirPrefId + ", selected, focus) {background-color: Highlight;}";
+			var ruleString4 = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH color_" + aDirPrefId + ", selected, focus) {background-color: Highlight !important;}";
 			var ruleIndex4 = aStyleSheet.insertRule(ruleString4, aStyleSheet.cssRules.length);
-		} else if (useColor == "background") {
-			var ruleString1 = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH color_" + aDirPrefId + ") {background-color: " + aColor + ";}";
+		} else if (cardbookRepository.useColor == "background") {
+			var ruleString1 = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH color_" + aDirPrefId + ") {background-color: " + aColor + " !important;}";
 			var ruleIndex1 = aStyleSheet.insertRule(ruleString1, aStyleSheet.cssRules.length);
 
-			var ruleString2 = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH color_" + aDirPrefId + ") {color: " + oppositeColor + ";}";
+			var ruleString2 = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH color_" + aDirPrefId + ") {color: " + oppositeColor + " !important;}";
 			var ruleIndex2 = aStyleSheet.insertRule(ruleString2, aStyleSheet.cssRules.length);
 
-			var ruleString3 = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH color_" + aDirPrefId + ", selected, focus) {background-color: Highlight;}";
+			var ruleString3 = ".cardbookCardsTreeClass treechildren::-moz-tree-row(SEARCH color_" + aDirPrefId + ", selected, focus) {background-color: Highlight !important;}";
 			var ruleIndex3 = aStyleSheet.insertRule(ruleString3, aStyleSheet.cssRules.length);
 
-			var ruleString4 = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH color_" + aDirPrefId + ", selected, focus) {color: HighlightText;}";
+			var ruleString4 = ".cardbookCardsTreeClass treechildren::-moz-tree-cell-text(SEARCH color_" + aDirPrefId + ", selected, focus) {color: HighlightText !important;}";
 			var ruleIndex4 = aStyleSheet.insertRule(ruleString4, aStyleSheet.cssRules.length);
 		}
 	},

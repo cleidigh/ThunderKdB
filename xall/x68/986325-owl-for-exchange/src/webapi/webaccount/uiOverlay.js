@@ -194,6 +194,18 @@ async function overlayListener(aDocument)
           setupFccItems();
         }
       };
+    } else if (/^chrome:\/\/messenger\/content\/addressbook\/ab((Edit|New)Card|(Edit|Mail)List)Dialog\.xul$/.test(aDocument.documentURI)) {
+      aDocument.defaultView.GetDirectoryFromURI = function(aURI) {
+        let directory = MailServices.ab.getDirectory(aURI);
+        if (gAddressBooksMarkedAsReadOnly.has(directory.UID)) {
+          directory = new Proxy(directory, {
+            get(directory, property) {
+              return property == "readOnly" ? true : directory[property];
+            },
+          });
+        }
+        return directory;
+      };
     } else if (aDocument.documentURI == "about:preferences" ||
         aDocument.documentURI == "chrome://messenger/content/AccountManager.xul") { // COMPAT for TB 60 (bug 1096006)
       let window = aDocument.defaultView;

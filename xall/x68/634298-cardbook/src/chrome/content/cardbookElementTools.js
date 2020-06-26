@@ -195,9 +195,12 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		loadCountries: function (aPopup, aMenu, aDefaultValue, aAddEmptyCountries, aUseCodeValues) {
+			// const { L10nRegistry } = ChromeUtils.import("resource://gre/modules/L10nRegistry.jsm");
+			// var regionStrBundleTest = L10nRegistry.generateBundlesSync(["en-US", "fr"], ["toolkit/intl/regionNames.ftl"])
+				
 			var regionStrBundle = new LocalizationSync(["toolkit/intl/regionNames.ftl"]);
 			var myResult = [];
-			for (const bundle of regionStrBundle.bundles) {
+			for (let bundle of regionStrBundle.bundles) {
 				for (let string of bundle._messages) {
 					if (aUseCodeValues) {
 						myResult.push([string[0].replace(/^region-name-/, '').toUpperCase(), string[1]]);
@@ -205,6 +208,8 @@ if ("undefined" == typeof(cardbookElementTools)) {
 						myResult.push([string[1], string[1]]);
 					}
 				}
+				// first bundle
+				break;
 			}
 			cardbookUtils.sortMultipleArrayByString(myResult,1,1);
 			cardbookElementTools.deleteRows(aPopup.id);
@@ -826,10 +831,12 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				aEditButton.setAttribute('label', '!');
 			} else if (aButtonType == "noValidated") {
 				aEditButton.setAttribute('label', '?');
+			} else if (aButtonType == "link") {
+				aEditButton.setAttribute('label', '↔');
 			}
 			aEditButton.setAttribute('class', 'small-button');
 			aEditButton.setAttribute('tooltiptext', cardbookRepository.strBundle.GetStringFromName(aButtonType + "EntryTooltip"));
-			aEditButton.addEventListener("click", aFunction, false);
+			// aEditButton.addEventListener("click", aFunction, false);
 			aEditButton.addEventListener("command", aFunction, false);
 		}
 	};

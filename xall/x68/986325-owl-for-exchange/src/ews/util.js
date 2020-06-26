@@ -86,7 +86,7 @@ class EWSItemError extends ParameterError {
  *     The $ delimits the namespace prefix from the local name.
  *     Their values are recursively translated.
  *   We have to do this because FieldURI could be a local name or an attribute.
- *   As a special case, the property "Value" becomes the content,
+ *   As a special case, the property "_TextContent_" becomes the content,
  *   if you need to be able to combine content with attributes.
  */
 function JSON2XML(aJSON, aParent, aNS, aTag) {
@@ -107,12 +107,12 @@ function JSON2XML(aJSON, aParent, aNS, aTag) {
   }
   const w3cNS = "http://www.w3.org/2000/xmlns/";
   for (let key in aJSON) {
-    if (key.includes("$")) {
+    if (key == "_TextContent_") {
+      element.textContent = aJSON[key];
+    } else if (key.includes("$")) {
       let ns = aParent.ownerDocument.documentElement.getAttributeNS(w3cNS, key.slice(0, key.indexOf("$")));
       let tagName = key.replace("$", ":");
       JSON2XML(aJSON[key], element, ns, tagName);
-    } else if (key == "Value") {
-      element.textContent = aJSON[key];
     } else {
       element.setAttribute(key, aJSON[key]);
     }

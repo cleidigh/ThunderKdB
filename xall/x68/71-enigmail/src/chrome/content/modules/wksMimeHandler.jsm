@@ -10,7 +10,7 @@ var EXPORTED_SYMBOLS = ["EnigmailWksMimeHandler"];
  *  Module for handling response messages from OpenPGP Web Key Service
  */
 
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailVerify = ChromeUtils.import("chrome://enigmail/content/modules/mimeVerify.jsm").EnigmailVerify;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 const EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
@@ -64,7 +64,7 @@ PgpWkdHandler.prototype = {
   uri: null,
   backgroundJob: false,
 
-  QueryInterface: EnigmailTb60Compat.generateQI([Ci.nsIStreamListener]),
+  QueryInterface: EnigmailCompat.generateQI([Ci.nsIStreamListener]),
 
   onStartRequest: function(request, ctxt) {
     EnigmailLog.DEBUG("wksMimeHandler.jsm: onStartRequest\n"); // always log this one

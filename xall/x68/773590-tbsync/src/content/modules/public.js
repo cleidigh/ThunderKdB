@@ -403,7 +403,13 @@ var FolderData = class {
       switch (this.getFolderProperty("status").split(".")[0]) { //the status may have a sub-decleration
         case "success":
         case "modified":
-          status = status + ": " + this.targetData.targetName;
+          try {
+            status = status + ": " + this.targetData.targetName;
+          } catch (e) {
+            this.resetFolderProperty("target");
+            this.setFolderProperty("status","notsyncronized");
+            return TbSync.getString("status.notsyncronized");
+          }
           break;
           
         case "pending":
@@ -462,14 +468,19 @@ var FolderData = class {
   // will be added to its name, to indicate, that it is no longer
   // managed by TbSync.
   remove(keepStaleTargetSuffix = "") {
-    if (this.targetData.hasTarget()) {
-      if (keepStaleTargetSuffix) {
-        let oldName =  this.targetData.targetName;
-        this.targetData.targetName = TbSync.getString("target.orphaned") + ": " + oldName + " " + keepStaleTargetSuffix;
-        this.targetData.disconnectTarget();
-      } else {
-        this.targetData.removeTarget();
+    // hasTarget() can throw an error, ignore that here
+    try {
+      if (this.targetData.hasTarget()) {
+        if (keepStaleTargetSuffix) {
+          let oldName =  this.targetData.targetName;
+          this.targetData.targetName = TbSync.getString("target.orphaned") + ": " + oldName + " " + keepStaleTargetSuffix;
+          this.targetData.disconnectTarget();
+        } else {
+          this.targetData.removeTarget();
+        }
       }
+    } catch (e) {
+        Components.utils.reportError(e);
     }
     this.setFolderProperty("cached", true);
   }
@@ -619,7 +630,7 @@ var dump = function (what, aMessage) {
     Services.console.logStringMessage("[TbSync] " + what + " : " + aMessage);
   }
   
-  if (this.prefs.getBoolPref("log.tofile")) {
+  if (TbSync.prefs.getIntPref("log.userdatalevel") > 0) {
     let now = new Date();
     TbSync.io.appendToFile("debug.log", "** " + now.toString() + " **\n[" + what + "] : " + aMessage + "\n\n");
   }

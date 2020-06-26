@@ -69,8 +69,7 @@
                             <image src="chrome://urllink/content/urllink.png" width="32" height="32"/>
                         </vbox>
                         <vbox flex="1">
-                            <listbox id="urllinkMenuItems" tooltiptext="&urllink-prefs-list-tip;">
-                            </listbox>
+                            <richlistbox id="urllinkMenuItems" tooltiptext="&urllink-prefs-list-tip;"/>
                             <separator class="small"/>
                             <hbox>
                                 <description value="&urllink-prefs-newentry;:"/>
@@ -95,7 +94,7 @@
                             <image src="chrome://urllink/content/urllink.png" width="32" height="32"/>
                         </vbox>
                         <vbox flex="1">
-                            <listbox id="urllinkSandrItems" tooltiptext="&urllink-prefs-sandr-list-tip;"/>
+                            <richlistbox id="urllinkSandrItems" tooltiptext="&urllink-prefs-sandr-list-tip;"/>
                             <separator class="small"/>
                             <hbox>
                                 <description value="&urllink-prefs-newentry;:"/>

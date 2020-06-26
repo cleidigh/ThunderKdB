@@ -73,4 +73,76 @@
 			</constructor>
 		</implementation>
 	</binding>
+
+	<binding id='abPickerAction'>
+		<resources>
+			<stylesheet src="chrome://cardbook/content/filters/filters.css"/>
+		</resources>
+		<content>
+			<xul:menulist flex="1" class="ruleactionitem" xbl:inherits="disabled" sizetopopup="none"
+					oncommand="this.parentNode.setAttribute('value', this.value);">
+				<xul:menupopup anonid="abPickerAction-menupopup"/>
+			</xul:menulist>
+		</content>
+		<implementation>
+			<method name="addDirectories">
+				<parameter name="aMenuPopup"/>
+				<parameter name="aMenuValue"/>
+				<parameter name="aMenuLabel"/>
+				<body>
+					<![CDATA[
+						let newMenuItem = document.createXULElement('menuitem');
+						newMenuItem.setAttribute('label', aMenuLabel);
+						newMenuItem.setAttribute('value', aMenuValue);
+						aMenuPopup.appendChild(newMenuItem);
+					]]>
+				</body>
+			</method>
+			<constructor>
+				<![CDATA[
+					let loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+					loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.js");
+
+					let value = this.getAttribute("value");
+					let menulist = document.getAnonymousNodes(this)[0];
+					let menupopup = document.getAnonymousElementByAttribute(this, "anonid", "abPickerAction-menupopup");
+
+					var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+					XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+					var defaultIndex = 0;
+					var defaultValue = "";
+					var found = false;
+					var k = 0;
+					for (let account of cardbookRepository.cardbookAccounts) {
+						if (account[5] && account[6] != "SEARCH" && !cardbookPreferences.getReadOnly(account[4])) {
+							var dirPrefId = account[4];
+							var dirPrefName = account[0];
+							this.addDirectories(menupopup, dirPrefId, dirPrefName);
+							if (!found) {
+								defaultValue = dirPrefId;
+								found = true;
+							}
+							if (dirPrefId == value) {
+								defaultIndex = k;
+								defaultValue = dirPrefId;
+							}
+							k++;
+
+							for (let category of cardbookRepository.cardbookAccountsCategories[dirPrefId]) {
+								this.addDirectories(menupopup, dirPrefId + "::" + category, dirPrefName + " / " + category);
+								if (dirPrefId + "::" + category == value) {
+									defaultIndex = k;
+									defaultValue = dirPrefId + "::" + category;
+								}
+								k++;
+							}
+						}
+					}
+
+					menulist.selectedIndex = defaultIndex;
+					menulist.setAttribute("value", defaultValue);
+				]]>
+			</constructor>
+		</implementation>
+	</binding>
 </bindings>

@@ -1048,14 +1048,17 @@ function BounceStartup(aParams)
   // " <>" is an empty identity, and most likely not valid
   if (!params.identity || params.identity.identityName === " <>") {
     // no pre selected identity, so use the default account
-    let identities = MailServices.accounts.defaultAccount.identities;
-    if (identities.length === 0) {
-      identities = MailServices.accounts.allIdentities;
-    }
-    if (identities.queryElementAt) {
-      params.identity = identities.queryElementAt(0, Ci.nsIMsgIdentity);
-    } else {
-      params.identity = identities.QueryElementAt(0, Ci.nsIMsgIdentity);
+    let identities;
+    if (MailServices.accounts.defaultAccount !== null) {
+      identities = MailServices.accounts.defaultAccount.identities;
+      if (identities.length === 0) {
+        identities = MailServices.accounts.allIdentities;
+      }
+      if (identities.queryElementAt) {
+        params.identity = identities.queryElementAt(0, Ci.nsIMsgIdentity);
+      } else {
+        params.identity = identities.QueryElementAt(0, Ci.nsIMsgIdentity);
+      }
     }
   }
 
@@ -1078,9 +1081,13 @@ function BounceStartup(aParams)
   }
 
   if (!preSelectedIdentityKey) {
-    // no pre selected identity, so use the default account
-    var identities = gAccountManager.defaultAccount.identities;
-    if ((typeof identities.length !== "undefined" && identities.length === 0) ||
+    // No pre-selected identity, so use the default account
+    let identities;
+    if (gAccountManager.defaultAccount !== null) {
+      identities = gAccountManager.defaultAccount.identities;
+    }
+    if (identities === undefined ||
+        (typeof identities.length !== "undefined" && identities.length === 0) ||
         (typeof identities.Count !== "undefined" && identities.Count() === 0)) {
       identities = gAccountManager.allIdentities;
     }
@@ -1376,22 +1383,35 @@ function BounceLoad()
 
   setupAutocomplete();
 
-  // Check to see if CardBook is installed in order to modify autocomplete
-  let cardbookCallback = function(aAddon) {
-    if (aAddon !== null && aAddon.isActive) {
-      var cardbookAutocompletion = getPref("extensions.cardbook.autocompletion");
-      if (cardbookAutocompletion) {
-        var cardbookExclusive = getPref("extensions.cardbook.exclusive");
+  // Check to see if CardBook or TbSync is installed in order to modify autocomplete
+  let addonCallback = function(aAddon) {
+    if (aAddon !== null) {
+      let cardbookExclusive = false;
+      if (aAddon.filter(function(e) { return e !== null && e.id === "cardbook@vigneau.philippe" && e.isActive; }).length > 0) {
+        var cardbookAutocompletion = getPref("extensions.cardbook.autocompletion");
+        if (cardbookAutocompletion) {
+          cardbookExclusive = getPref("extensions.cardbook.exclusive");
+          var listitem = 1;
+          var textbox = document.getElementById("addressCol2#" + listitem);
+          while (textbox !== null) {
+            // listitems can already be cloned, so we need to adjust them all
+            if (cardbookExclusive) {
+              textbox.setAttribute("autocompletesearch", "addrbook-cardbook");
+            } else {
+              var autocompletesearch = textbox.getAttribute("autocompletesearch");
+              textbox.setAttribute("autocompletesearch", "addrbook-cardbook " + autocompletesearch);
+            }
+            listitem++;
+            var textbox = document.getElementById("addressCol2#" + listitem);
+          }
+        }
+      }
+      if (!cardbookExclusive && aAddon.filter(function(e) { return e != null && e.id === "tbsync@jobisoft.de" && e.isActive; }).length > 0) {
         var listitem = 1;
         var textbox = document.getElementById("addressCol2#" + listitem);
         while (textbox !== null) {
-          // listitems can already be cloned, so we need to adjust them all
-          if (cardbookExclusive) {
-            textbox.setAttribute("autocompletesearch", "addrbook-cardbook");
-          } else {
-            var autocompletesearch = textbox.getAttribute("autocompletesearch");
-            textbox.setAttribute("autocompletesearch", "addrbook-cardbook " + autocompletesearch);
-          }
+          var autocompletesearch = textbox.getAttribute("autocompletesearch");
+          textbox.setAttribute("autocompletesearch", autocompletesearch + " tbSyncAutoCompleteSearch");
           listitem++;
           var textbox = document.getElementById("addressCol2#" + listitem);
         }
@@ -1400,11 +1420,11 @@ function BounceLoad()
   }
 
   if (gAppInfoPlatformVersion < 61) {
-    AddonManager.getAddonByID("cardbook@vigneau.philippe", cardbookCallback);
+    AddonManager.getAddonsByIDs(["cardbook@vigneau.philippe", "tbsync@jobisoft.de"], addonCallback);
   } else {
     // Although this is executed in TB >= 61, I need to write arrow function backwards compatible with ECMAScript 5, in order not to crash in TB <24
-    // AddonManager.getAddonByID("cardbook@vigneau.philippe").then(addon => { cardbookCallback(addon); });
-    AddonManager.getAddonByID("cardbook@vigneau.philippe").then(function(addon) { return cardbookCallback(addon); });
+    // AddonManager.getAddonsByIDs(["cardbook@vigneau.philippe", "tbsync@jobisoft.de"]).then(addon => { addonCallback(addon); });
+    AddonManager.getAddonsByIDs(["cardbook@vigneau.philippe", "tbsync@jobisoft.de"]).then(function(addon) { return addonCallback(addon); });
   }
 
   if (gAppInfoPlatformVersion < 65) {

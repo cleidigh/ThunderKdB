@@ -164,16 +164,16 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 					return;
 				}
 
+				var editListener = {
+					onOperationComplete: function(aCalendar, aStatus, aOperationType, aId, aDetail) {
+						wdw_cardbookEventContacts.loadEvents();
+					}
+				};
 
 				var onModifyItem = function(item, calendar, originalItem, listener, extresponse=null) {
-					var editListener = {
-						onOperationComplete: function(aCalendar, aStatus, aOperationType, aId, aDetail) {
-							wdw_cardbookEventContacts.loadEvents();
-						}
-					};
 					doTransaction('modify', item, calendar, originalItem, editListener, extresponse);
-					// as the editlistener does not work
-					wdw_cardbookEventContacts.loadEvents();
+					// as the editlistener does not work, bug seems solved
+					// wdw_cardbookEventContacts.loadEvents();
 				};
 
 				let item = myItem;
@@ -205,8 +205,8 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 					// Otherwise, this is an addition
 					doTransaction('add', item, calendar, null, createListener);
 				}
-				// as the createListener does not work
-				wdw_cardbookEventContacts.loadEvents();
+				// as the createListener does not work, bug seems solved
+				// wdw_cardbookEventContacts.loadEvents();
 			};
 		
 			event = cal.createEvent();

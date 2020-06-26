@@ -24,20 +24,30 @@ function injectStyleSheet(aDoc, aURI) {
 
 /**
  * Try to create a new notificationbox for a 3-pane window.
+ *
+ * @param aWin {Window}
+ * @returns    {NotificationBox}
  */
-function createNotificationBox(aDoc) {
-  // Try to clone the existing notificationbox.
-  // We can't create one from scratch because it won't have any XBL.
-  let box = aDoc.getElementById("mail-notification-box");
-  if (!box) {
-    return null;
+function createNotificationBox(aWin) {
+  let insertBox = element => {
+    element.id = kBoxID;
+    element.setAttribute("notificationside", "top");
+    doc.documentElement.insertBefore(element, doc.getElementById("navigation-toolbox").nextElementSibling);
+  };
+  let doc = aWin.document;
+  let box = doc.getElementById("mail-notification-box"); // TB 60 COMPAT
+  if (box) {
+    // Clone the existing notificationbox.
+    // We can't create one from scratch because it won't have any XBL.
+    // (Unless we fiddle around with document fragments.)
+    box = box.cloneNode(false);
+    box._notificationBox = box;
+    insertBox(box);
+  } else {
+    box = new aWin.MozElements.NotificationBox(insertBox);
   }
-  box = box.cloneNode(false);
-  box.id = kBoxID;
-  box.setAttribute("notificationside", "top");
-  aDoc.documentElement.insertBefore(box, aDoc.getElementById("navigation-toolbox").nextElementSibling);
   for (let uri of gStyleSheets) {
-    injectStyleSheet(aDoc, uri);
+    injectStyleSheet(doc, uri);
   }
   return box;
 }
@@ -46,16 +56,18 @@ function createNotificationBox(aDoc) {
  * Enumerate all the notificationboxes for the main 3-pane windows.
  *
  * @param aCreate {Boolean} Create boxes in those windows that don't have one
- * @returns {Array[<xul:notificationbox>]}
+ * @returns {Array[NotificationBox]}
  */
 function enumerateNotificationBoxes(aCreate) {
   let boxes = [];
   let enumerator = Services.wm.getEnumerator("mail:3pane");
   while (enumerator.hasMoreElements()) {
-    let doc = enumerator.getNext().document;
-    let box = doc.getElementById(kBoxID);
-    if (!box && aCreate) {
-      box = createNotificationBox(doc);
+    let win = enumerator.getNext();
+    let box = win.document.getElementById(kBoxID);
+    if (box) {
+      box = box._notificationBox;
+    } else if (aCreate) {
+      box = createNotificationBox(win);
     }
     if (box) {
       boxes.push(box);
@@ -78,7 +90,7 @@ async function ButtonCallback(aNotification, aButton, aTarget, aEvent)
 {
   for (let fire of gButtonCallbacks) {
     try {
-      await fire.async(aNotification.value, aButton.value);
+      await fire.async(aNotification.getAttribute("value"), aButton.value);
     } catch (ex) {
       console.error(ex);
     }

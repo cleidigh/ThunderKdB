@@ -18,7 +18,8 @@ eas.flags = Object.freeze({
     allowEmptyResponse: true, 
 });
 
-eas.windowsTimezoneMap = {};
+eas.windowsToIanaTimezoneMap = {};
+eas.ianaToWindowsTimezoneMap = {};
 eas.cachedTimezoneData = null;
 eas.defaultTimezoneInfo = null;
 eas.defaultTimezone = null;
@@ -43,7 +44,7 @@ var Base = class {
         eas.defaultTimezone = null;
         eas.utcTimezone = null;
         eas.defaultTimezoneInfo = null;
-        eas.windowsTimezoneMap = {};
+        eas.windowsToIanaTimezoneMap = {};
         eas.openWindows = {};
 
         eas.overlayManager = new OverlayManager({verbose: 0});
@@ -84,6 +85,14 @@ var Base = class {
                 }
                 
                 //get windows timezone data from CSV
+                let aliasData = await eas.tools.fetchFile("chrome://eas4tbsync/content/timezonedata/Aliases.csv");
+                let aliasNames = {};
+                for (let i = 0; i<aliasData.length; i++) {
+                    let lData = aliasData[i].split(",");
+                    if (lData.length<2) continue;
+                    aliasNames[lData[0].toString().trim()] = lData[1].toString().trim().split(" ");
+                }
+
                 let csvData = await eas.tools.fetchFile("chrome://eas4tbsync/content/timezonedata/WindowsTimezone.csv");
                 for (let i = 0; i<csvData.length; i++) {
                     let lData = csvData[i].split(",");
@@ -93,11 +102,33 @@ var Base = class {
                     let zoneType = lData[1].toString().trim();
                     let ianaZoneName = lData[2].toString().trim();
                     
-                    if (zoneType == "001") eas.windowsTimezoneMap[windowsZoneName] = ianaZoneName;
+                    if (zoneType == "001") eas.windowsToIanaTimezoneMap[windowsZoneName] = ianaZoneName;
                     if (ianaZoneName == eas.defaultTimezoneInfo.std.id) eas.defaultTimezoneInfo.std.windowsZoneName = windowsZoneName;
+                                        
+                    // build the revers map as well, which is many-to-one, grap iana aliases from the csvData and from the aliasData
+                    // 1. multiple iana zones map to the same windows zone
+                    let ianaZones = ianaZoneName.split(" "); 
+                    for (let ianaZone of ianaZones) {
+                        eas.ianaToWindowsTimezoneMap[ianaZone] = windowsZoneName;
+                        if (aliasNames.hasOwnProperty(ianaZone)) {
+                            for (let aliasName of aliasNames[ianaZone]) {
+                                // 2. multiple iana zonescan be an alias to a main iana zone
+                                eas.ianaToWindowsTimezoneMap[aliasName] = windowsZoneName;
+                            }
+                        }
+                    }
                 }
 
+                let tzService = TbSync.lightning.cal.getTimezoneService();
+                let enumerator = tzService.timezoneIds;
+                while (enumerator.hasMore()) {
+                    let id = enumerator.getNext();
+                    if (!eas.ianaToWindowsTimezoneMap[id]) {
+                        TbSync.eventlog.add("info", eventLogInfo, "The IANA timezone <"+id+"> cannot be mapped to any Exchange timezone.");
+                    }
+                }
 
+                
                 //If an EAS calendar is currently NOT associated with an email identity, try to associate, 
                 //but do not change any explicitly set association
                 // - A) find email identity and accociate (which sets organizer to that user identity)
@@ -140,7 +171,11 @@ var Base = class {
         // Close all open windows of this provider.
         for (let id in eas.openWindows) {
           if (eas.openWindows.hasOwnProperty(id)) {
-            eas.openWindows[id].close();
+            try {
+                eas.openWindows[id].close();
+            } catch(e) {
+                //NOOP
+            }
           }
         }
     }
@@ -157,20 +192,22 @@ var Base = class {
     /**
      * Returns version of the TbSync API this provider is using
      */
-    static getApiVersion() { return "2.1"; }
+    static getApiVersion() { return "2.2"; }
 
 
     /**
      * Returns location of a provider icon.
      */
     static getProviderIcon(size, accountData = null) {
+        let base = (accountData && accountData.getAccountProperty("servertype") == "office365") ? "365_" : "eas";
+        
         switch (size) {
             case 16:
-                return "chrome://eas4tbsync/skin/eas16.png";
+                return "chrome://eas4tbsync/skin/" + base + "16.png";
             case 32:
-                return "chrome://eas4tbsync/skin/eas32.png";
+                return "chrome://eas4tbsync/skin/" + base + "32.png";
             default :
-                return "chrome://eas4tbsync/skin/eas64.png";
+                return "chrome://eas4tbsync/skin/" + base + "64.png";
         }
     }
 
@@ -191,6 +228,14 @@ var Base = class {
 
 
     /**
+     * Returns the url of a page with details about contributors (used in the manager UI)
+     */
+    static getContributorsUrl() {
+        return "https://github.com/jobisoft/EAS-4-TbSync/blob/master/CONTRIBUTORS.md";
+    }
+
+
+    /**
      * Returns the email address of the maintainer (used for bug reports).
      */
     static getMaintainerEmail() {
@@ -203,7 +248,7 @@ var Base = class {
      * accessed by TbSync.getString(<key>, <provider>)
      */
     static getStringBundleUrl() {
-        return "chrome://eas4tbsync/locale/eas.strings";
+        return "chrome://eas4tbsync/locale/eas.properties";
     }
 
 
@@ -295,6 +340,15 @@ var Base = class {
      * @param accountData  [in] AccountData
      */
     static onDisableAccount(accountData) {
+    }
+
+
+    /**
+     * Is called everytime an account of this provider is deleted in the
+     * manager UI.
+     */
+    static onDeleteAccount(accountData) {
+        eas.network.getAuthData(accountData).removeLoginData();
     }
 
 
@@ -531,14 +585,14 @@ var TargetData_addressbook = class extends TbSync.addressbook.AdvancedTargetData
         }
     }
     
-    createAddressbook(newname) {
+    async createAddressbook(newname) {
         let dirPrefId = MailServices.ab.newAddressBook(newname, "", 2);  /* kPABDirectory - return abManager.newAddressBook(name, "moz-abmdbdirectory://", 2); */
         let directory = MailServices.ab.getDirectoryFromId(dirPrefId);
         
         eas.sync.resetFolderSyncInfo(this.folderData);
         
         if (directory && directory instanceof Components.interfaces.nsIAbDirectory && directory.dirPrefId == dirPrefId) {
-            directory.setStringValue("tbSyncIcon", "eas");
+            directory.setStringValue("tbSyncIcon", "eas" + (this.folderData.accountData.getAccountProperty("servertype") == "office365" ? "_365" : ""));
             return directory;		
         }
         return null;
@@ -590,7 +644,7 @@ var TargetData_calendar = class extends TbSync.lightning.AdvancedTargetData {
         }
     }
 
-    createCalendar(newname) {
+    async createCalendar(newname) {
         let calManager = TbSync.lightning.cal.getCalendarManager();
         //Alternative calendar, which uses calTbSyncCalendar
         //let newCalendar = calManager.createCalendar("TbSync", Services.io.newURI('tbsync-calendar://'));
@@ -606,6 +660,23 @@ var TargetData_calendar = class extends TbSync.lightning.AdvancedTargetData {
         newCalendar.setProperty("relaxedMode", true); //sometimes we get "generation too old for modifyItem", check can be disabled with relaxedMode
         newCalendar.setProperty("calendar-main-in-composite",true);
         newCalendar.setProperty("readOnly", this.folderData.getFolderProperty("downloadonly"));
+        
+        switch (this.folderData.getFolderProperty("type")) {
+            case "8": //event
+            case "13":
+                newCalendar.setProperty("capabilities.tasks.supported", false);
+                newCalendar.setProperty("capabilities.events.supported", true);
+                break;
+            case "7": //todo
+            case "15":        
+                newCalendar.setProperty("capabilities.tasks.supported", true);
+                newCalendar.setProperty("capabilities.events.supported", false);
+                break;
+            default:
+                newCalendar.setProperty("capabilities.tasks.supported", false);
+                newCalendar.setProperty("capabilities.events.supported", false);
+        }
+        
         calManager.registerCalendar(newCalendar);
 
         let authData = eas.network.getAuthData(this.folderData.accountData);

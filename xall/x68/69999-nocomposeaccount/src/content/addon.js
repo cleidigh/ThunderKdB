@@ -24,12 +24,6 @@ noComposeAccount.addon = {
 
 noComposeAccount.IO = {
    pref: null,
-
-   /*tests: function() {
-	   
-	   alert("5");
-	   Components.utils.import('resource:///modules/iteratorUtils.jsm');
-   },*/
    
    init: function() {
 		let accountMgrSvc = Components.classes["@mozilla.org/messenger/account-manager;1"]

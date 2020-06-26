@@ -79,7 +79,6 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 					var OSName="LINUX";
 				}
 				var autocompleteWithColor = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteWithColor");
-				var useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
 				for (var prop in document.styleSheets) {
 					var styleSheet = document.styleSheets[prop];
 					if (styleSheet.href == "chrome://cardbook/skin/cardbookAutocomplete.css") {
@@ -90,12 +89,12 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 								var myColor = cardbookPreferences.getColor(dirPrefId)
 								var oppositeColor = cardbookRepository.getTextColorFromBackgroundColor(myColor);
 								var myStyle = cardbookRepository.getABIconType(account[6]) + "_color_" + dirPrefId;
-								if (useColor == "text" && autocompleteWithColor) {
+								if (cardbookRepository.useColor == "text" && autocompleteWithColor) {
 									cardbookAutocomplete.createCssMsgAccountRules60(styleSheet, myStyle, myColor, OSName, "color");
 									cardbookAutocomplete.createCssMsgAccountRules60(styleSheet, myStyle, oppositeColor, OSName, "background-color");
 									cardbookAutocomplete.createCssMsgAccountSelectedRules60(styleSheet, myStyle, "HighlightText", OSName, "color");
 									cardbookAutocomplete.createCssMsgAccountSelectedRules60(styleSheet, myStyle, "Highlight", OSName, "background-color");
-								} else if (useColor == "background" && autocompleteWithColor) {
+								} else if (cardbookRepository.useColor == "background" && autocompleteWithColor) {
 									cardbookAutocomplete.createCssMsgAccountRules60(styleSheet, myStyle, myColor, OSName, "background-color");
 									cardbookAutocomplete.createCssMsgAccountRules60(styleSheet, myStyle, oppositeColor, OSName, "color");
 									cardbookAutocomplete.createCssMsgAccountSelectedRules60(styleSheet, myStyle, "Highlight", OSName, "background-color");
@@ -108,12 +107,12 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 							var oppositeColor = cardbookRepository.getTextColorFromBackgroundColor(color);
 							for (type of cardbookRepository.getABIconType("ALL")) {
 								var myStyle =  type + "_color_category_" + cardbookUtils.formatCategoryForCss(category);
-								if (useColor == "text" && autocompleteWithColor) {
+								if (cardbookRepository.useColor == "text" && autocompleteWithColor) {
 									cardbookAutocomplete.createCssMsgAccountRules60(styleSheet, myStyle, color, OSName, "color");
 									cardbookAutocomplete.createCssMsgAccountRules60(styleSheet, myStyle, oppositeColor, OSName, "background-color");
 									cardbookAutocomplete.createCssMsgAccountSelectedRules60(styleSheet, myStyle, "HighlightText", OSName, "color");
 									cardbookAutocomplete.createCssMsgAccountSelectedRules60(styleSheet, myStyle, "Highlight", OSName, "background-color");
-								} else if (useColor == "background" && autocompleteWithColor) {
+								} else if (cardbookRepository.useColor == "background" && autocompleteWithColor) {
 									cardbookAutocomplete.createCssMsgAccountRules60(styleSheet, myStyle, color, OSName, "background-color");
 									cardbookAutocomplete.createCssMsgAccountRules60(styleSheet, myStyle, oppositeColor, OSName, "color");
 									cardbookAutocomplete.createCssMsgAccountSelectedRules60(styleSheet, myStyle, "Highlight", OSName, "background-color");

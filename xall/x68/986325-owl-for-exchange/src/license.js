@@ -75,10 +75,7 @@ async function EnsureLicensed(aServerId)
     ex.report = false;
     throw ex;
   }
-  if (!gFetchingTicket) {
-    gFetchingTicket = FetchTicket();
-  }
-  ticket = await gFetchingTicket;
+  ticket = await FetchTicket();
   if (!ticket || !ticket.valid) {
     let ex = new OwlError("no-valid-license");
     ex.report = false;
@@ -95,16 +92,36 @@ async function NextPoll()
   if (ticket.status == "normal" && !ticket.requiresRefresh) {
     return;
   }
-  if (!gFetchingTicket) {
-    gFetchingTicket = FetchTicket();
+  try {
+    await FetchTicket();
+  } catch (ex) {
+    logError(ex);
   }
-  await gFetchingTicket;
+}
+
+/**
+ * Downloads a new license ticket, but avoids downloading twice in parallel.
+ *
+ * @returns {Promise} (i.e. call `await FetchTicket()`, i.e. treat as async function)
+ */
+function FetchTicket()
+{
+  if (!gFetchingTicket) {
+    gFetchingTicket = (async () => {
+      try {
+        return await FetchTicketUnqueued();
+      } finally {
+        gFetchingTicket = null;
+      }
+    })();
+  }
+  return gFetchingTicket;
 }
 
 /**
  * Downloads a new license ticket.
  */
-async function FetchTicket()
+async function FetchTicketUnqueued()
 {
   try {
     let servers = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews"]);
@@ -152,15 +169,12 @@ async function FetchTicket()
     notifyGlobalObservers("LicenseChecked", ticket);
     return ticket;
   } catch (ex) {
-    logError(ex);
     try {
       notifyGlobalObservers("LicenseChecked", await CheckLicense());
     } catch (ex2) {
       logError(ex2);
     }
-    return new BadTicket();
-  } finally {
-    gFetchingTicket = null;
+    throw ex;
   }
 }
 
@@ -299,6 +313,13 @@ const kPurchasePollFor = 30 * 60 * 1000; // 30 minutes
 // Called from [Purchase] button in license bar and in settings page
 async function OpenPurchasePage(mode) {
   let identity = await browser.incomingServer.getGlobalPrimaryIdentity();
+  let servers = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews"]);
+  if (servers.length) {
+    let identities = await browser.incomingServer.getIdentities(servers[0]);
+    if (identities.length) {
+      identity = identities[0];
+    }
+  }
   browser.external.openLink(kGetLicenseURL + new URLSearchParams({
     email: identity.email,
     name: identity.fullName,
@@ -306,7 +327,13 @@ async function OpenPurchasePage(mode) {
     goal: mode,
   }) + "#" + (mode || "purchase"));
 
-  let purchasePoller = setInterval(FetchTicket, kPurchasePollInterval);
+  let purchasePoller = setInterval(async () => {
+    try {
+      await FetchTicket();
+    } catch (ex) {
+      logError(ex);
+    }
+  }, kPurchasePollInterval);
   setTimeout(() => {
     clearInterval(purchasePoller);
   }, kPurchasePollFor);

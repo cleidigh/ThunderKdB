@@ -162,5 +162,8 @@ var EnigmailConstants = {
   ADDON_INSTALL: 5, // The add-on is being installed.
   ADDON_UNINSTALL: 6, // The add-on is being uninstalled.
   ADDON_UPGRADE: 7, // The add-on is being upgraded.
-  ADDON_DOWNGRADE: 8 // The add-on is being downgraded.
+  ADDON_DOWNGRADE: 8, // The add-on is being downgraded.
+
+  /* Protected subject replacement as specified in Protected Headers Spec, draft 02*/
+  PROTECTED_SUBJECT: "..."
 };

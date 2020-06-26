@@ -314,7 +314,7 @@
 										</row>
 										<row align="center">
 											<label value="&adrCountryLabel;" control="adrCountryMenulist" class="header"/>
-											<menulist id="adrCountryMenulist" is="menulist-editable" onpopupshowing="wdw_cardEdition.loadCountries();">
+											<menulist id="adrCountryMenulist" is="menulist-editable" editable="true" onpopupshowing="wdw_cardEdition.loadCountries();">
 												<menupopup id="adrCountryMenupopup"/>
 											</menulist>
 										</row>

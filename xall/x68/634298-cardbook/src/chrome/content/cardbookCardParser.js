@@ -86,6 +86,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 		
 		mediaParser: function (aField, aString) {
 			try {
+				aString = aString.replace(/\\\\n/g,"");
 				var localDelim0 = aString.indexOf(",",0);
 				var cacheDir = cardbookRepository.getLocalDirectory();
 				if (localDelim0 >= 0) {

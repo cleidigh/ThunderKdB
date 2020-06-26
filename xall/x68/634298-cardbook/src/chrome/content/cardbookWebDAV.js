@@ -345,9 +345,8 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				}
 			}
 			catch(e) {
-				var prompts = Services.prompt;
-				var errorTitle = "dumpSecurityInfo error";
-				prompts.alert(null, errorTitle, e);
+				// var errorTitle = "dumpSecurityInfo error";
+				// Services.prompt.alert(null, errorTitle, e);
 			}
 		},
 	
@@ -431,9 +430,9 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 	
 			}
 			catch(e) {
-				var prompts = Services.prompt;
-				var errorTitle = "sendHTTPRequest error";
-				prompts.alert(null, errorTitle, e);
+				// var errorTitle = "sendHTTPRequest error";
+				// Services.prompt.alert(null, errorTitle, e);
+				cardbookLog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : 666 error : ", e);
 				if (this.target && this.target.onDAVQueryComplete) {
 					this.target.onDAVQueryComplete(666, "", this.askCertificate, "", 0);
 				}
@@ -569,7 +568,9 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 		_buildMultigetRequest: function(props) {
 			var query = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 			query += "<C:addressbook-multiget xmlns:D=\"DAV:\" xmlns:C=\"urn:ietf:params:xml:ns:carddav\">";
-			query += "<D:prop><D:getetag/><C:address-data Content-Type='text/vcard'/></D:prop>";
+			
+			var version = cardbookPreferences.getVCardVersion(this.prefId);
+			query += "<D:prop><D:getetag/><C:address-data Content-Type='text/vcard' version='" + version + "'/></D:prop>";
 			for (var i = 0; i < props.length; i++) {
 				this.reportLength++;
 				query += "<D:href>" + this._formatRelativeHref(props[i]) + "</D:href>";

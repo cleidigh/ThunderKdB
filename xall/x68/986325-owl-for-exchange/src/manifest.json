@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.6.8.5",
+  "version": "0.7.2",
   "name": "__MSG_extName__",
   "description": "__MSG_extDescription__",
   "developer": {
@@ -29,11 +29,13 @@
       "ews/ews.js",
       "ews/emails.js",
       "ews/contacts.js",
+      "ews/calendar.js",
       "ews/util.js",
       "owa/owa.js",
       "owa/auth.js",
       "owa/emails.js",
       "owa/contacts.js",
+      "owa/calendar.js",
       "owa/useragent.js",
       "owa-2010/owa-2010.js",
       "ui/util/utils.js",
@@ -84,6 +86,18 @@
           "incomingServer"
         ]],
         "script": "webapi/webaccount/webaccount.js"
+      }
+    },
+    "calendar": {
+      "schema": "webapi/calendar/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "calendarProvider"
+        ]],
+        "script": "webapi/calendar/calendar.js"
       }
     },
     "notificationbox": {

@@ -12,6 +12,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 // enigmailCommon.js: shared JS functions for Enigmail
 
 // WARNING: This module functions must not be loaded in overlays to standard functionality!

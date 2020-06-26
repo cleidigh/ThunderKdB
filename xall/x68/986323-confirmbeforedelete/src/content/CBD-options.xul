@@ -22,7 +22,15 @@
         <checkbox id="CBDoption6" label="&CBDcheck6;" /> 
         <separator />
         <checkbox id="CBDoption5" label="&CBDcheck5;" /> 
-        <checkbox id="CBDoption7" label="&CBDcheck7;" /> 
+        <checkbox id="CBDoption7" label="&CBDcheck7;" />
+        
+        <checkbox id="CBDoption10" label="&CBDcheck10;"  oncommand="toggleTag(this)"/>
+        <menulist id="taglist" oncommand="listChange();" >
+			<menupopup id="tagpop">
+			</menupopup>
+        </menulist>
     </groupbox>
- 
+    
+    
+
 </dialog>

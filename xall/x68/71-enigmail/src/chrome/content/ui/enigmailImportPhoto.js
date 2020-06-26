@@ -6,6 +6,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 
 function onLoad() {
   document.getElementById("photoImage").setAttribute("src", window.arguments[0].photoUri);

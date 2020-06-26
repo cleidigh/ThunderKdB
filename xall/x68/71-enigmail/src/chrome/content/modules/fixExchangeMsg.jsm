@@ -9,9 +9,7 @@
 
 var EXPORTED_SYMBOLS = ["EnigmailFixExchangeMsg"];
 
-
-
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
 const EnigmailFuncs = ChromeUtils.import("chrome://enigmail/content/modules/funcs.jsm").EnigmailFuncs;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
@@ -46,7 +44,7 @@ var EnigmailFixExchangeMsg = {
         self.brokenByApp = brokenByApp;
 
         if (destFolderUri) {
-          self.destFolder = EnigmailTb60Compat.getExistingFolder(destFolderUri);
+          self.destFolder = EnigmailCompat.getExistingFolder(destFolderUri);
         }
 
 
@@ -80,11 +78,7 @@ var EnigmailFixExchangeMsg = {
 
     return new Promise(
       function(resolve, reject) {
-        let u = {};
-        self.msgSvc.GetUrlForUri(self.hdr.folder.getUriForMsg(self.hdr), u, null);
-
-        let op = (u.value.spec.indexOf("?") > 0 ? "&" : "?");
-        let url = u.value.spec; // + op + 'part=' + part+"&header=enigmailConvert";
+        let url = EnigmailCompat.getUrlFromUriSpec(self.hdr.folder.getUriForMsg(self.hdr));
 
         EnigmailLog.DEBUG("fixExchangeMsg.jsm: getting data from URL " + url + "\n");
 
@@ -429,8 +423,6 @@ var EnigmailFixExchangeMsg = {
       }
     };
 
-    let copySvc = Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
-    copySvc.CopyFileMessage(fileSpec, this.destFolder, null, false, this.hdr.flags, null, copyListener, null);
-
+    EnigmailCompat.copyFileToMailFolder(fileSpec, this.destFolder, 0, this.hdr.flags, copyListener, null);
   }
 };

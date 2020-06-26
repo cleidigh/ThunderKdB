@@ -39,7 +39,7 @@ var noComposeAccount = {
 	// to be able to show an "please choose From account" alert
 	if(this.g("button-send")) {
 		//Application.console.log('button-send found');
-		this.g("button-send").addEventListener("click", function(e) { noComposeAccount.onSendButtonClick(); }, true);
+		this.g("button-send").addEventListener("click", function(e) { noComposeAccount.onSendButtonClick(e); }, true);
 	}
   },
   onComposeInit: function() {
@@ -172,13 +172,16 @@ var noComposeAccount = {
   // onClose: function() {
   // },
   
-  onSendButtonClick: function() {
+  onSendButtonClick: function(evt) {
 	var obj = this.g("msgIdentity");
 	if(obj.selectedIndex == -1) {
 		var strbundle = document.getElementById("NoComposeAccountStringBundle");
 		var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
 					.getService(Components.interfaces.nsIPromptService);
 		prompts.alert(null, strbundle.getString("chooseFromAccountTitle"), strbundle.getString("chooseFromAccount"));
+		evt.stopPropagation();
+		evt.preventDefault();
+		return false;
 	}
   }
 };

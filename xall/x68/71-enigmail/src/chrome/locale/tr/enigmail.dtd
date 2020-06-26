@@ -1,4 +1,4 @@
-<!ENTITY enigmail.SendingPrefs.label              "General Preferences for Sending">
+<!ENTITY enigmail.SendingPrefs.label              "Gönderim için Genel Seçenekler">
 <!ENTITY enigmail.about.accesskey           "P">
 <!ENTITY enigmail.about.label              "Enigmail Hakkında">
 <!ENTITY enigmail.acKeyTransfer.displayPasswd.title  "Code for Autocrypt Setup Message">
@@ -38,7 +38,7 @@
 <!ENTITY enigmail.advanced.label         "Gelişmiş">
 <!ENTITY enigmail.advancedIdentityDlg.title          "Gelişmiş Enigmail Kimlik Ayarları">
 <!ENTITY enigmail.advancedPrefsButton.label       "Gelişmiş...">
-<!ENTITY enigmail.afterDefaultsAndRules.label     "After application of defaults and rules:">
+<!ENTITY enigmail.afterDefaultsAndRules.label     "Varsayılanların ve kuralların uygulanmasından sonra:">
 <!ENTITY enigmail.agentAdditionalParam.label    "GnuPG için ek parametreler">
 <!ENTITY enigmail.agentAdditionalParam.tooltip  "GnuPG tarafından kullanılacak seçenekleri belirtin.">
 <!ENTITY enigmail.always.label                      "Her Zaman">
@@ -69,26 +69,27 @@
 <!ENTITY enigmail.attachkey.label              "Genel Anahtar Ataçla ...">
 <!ENTITY enigmail.attachmykey.accesskey        "M">
 <!ENTITY enigmail.attachmykey.label            "Genel Anahtarımı Ataçla">
+<!ENTITY enigmail.attachmykey.short.label      "Attach Key">
 <!ENTITY enigmail.autoDecrypt.accesskey     "A">
 <!ENTITY enigmail.autoDecrypt.label      "Mesajları otomatik Deşifre et/Doğrula">
-<!ENTITY enigmail.autoEncryptDrafts.label         "Encrypt draft messages on saving">
+<!ENTITY enigmail.autoEncryptDrafts.label         "Kaydetmede taslak iletilerin şifresini çöz">
 <!ENTITY enigmail.autoKeyRetrieve.label           "İmza doğrulaması için anahtarları otomatik indir">
 <!ENTITY enigmail.autoKeyRetrieve2.label          "şu anahtar sunucusundan:">
-<!ENTITY enigmail.autoKeyServerSelection.label     "Always use first keyserver">
-<!ENTITY enigmail.autoKeyServerSelection.tooltip   "Take the first keyserver from the list as default">
-<!ENTITY enigmail.autoSendEncryptedIfKeys.label   "If possible">
+<!ENTITY enigmail.autoKeyServerSelection.label     "Her zaman ilk anahtar sunucusunu kullan ">
+<!ENTITY enigmail.autoKeyServerSelection.tooltip   "Listeden ilk anahtar sunucusunu varsayılan olarak al">
+<!ENTITY enigmail.autoSendEncryptedIfKeys.label   "Eğer mümkünse">
 <!ENTITY enigmail.autoSendEncryptedIfKeys.tooltip "Automatically send encrypted when for each recipient at least one key is known and accepted (see above) and no per-recipient rule forces not to encrypt.">
 <!ENTITY enigmail.autoSendEncryptedNever.label    "Asla">
-<!ENTITY enigmail.autoSendEncryptedNever.tooltip  "Don't automatically send encrypted except explicitly triggered by per-recipient rules">
-<!ENTITY enigmail.autoSendEncryptedOption.label   "Automatically send encrypted">
+<!ENTITY enigmail.autoSendEncryptedNever.tooltip  "Kullanıcıya özgü kurallar tetiklemediği sürece otomatik olarak şifreli gönderme">
+<!ENTITY enigmail.autoSendEncryptedOption.label   "Otomatik olarak şifreli gönder">
 <!ENTITY enigmail.autocrypt.label         "Autocrypt">
-<!ENTITY enigmail.backupPrefs.tooltip     "Save all Enigmail preferences including your OpenPGP keys to a file.">
-<!ENTITY enigmail.backupPrefsButton.label "Export Settings and Keys">
-<!ENTITY enigmail.backupRestore.desc       "Export (backup) and Restore your Enigmail settings including your OpenPGP keys.">
+<!ENTITY enigmail.backupPrefs.tooltip     "Bütün Enigmail yapılandırmasını OpenPGP anahtarlarınızla birlikte bir dosyaya kaydet.">
+<!ENTITY enigmail.backupPrefsButton.label "Ayarları ve Anahtarları Dışa Aktar">
+<!ENTITY enigmail.backupRestore.desc       "Enigmail ayarlarını OpenPGP anahtarlarınızla birlikte Dışa Aktarın (yedekleyin) ve Geri Yükleyin">
 <!ENTITY enigmail.basic.label            "Temel">
 <!ENTITY enigmail.basicPrefs.label       "Temel Ayarlar">
 <!ENTITY enigmail.basicUser.tooltip        "Uzman kullanıcılar için olan menü öğeleri ve seçenekleri görmek istemiyorsanız tıklayın.">
-<!ENTITY enigmail.basicUserMenus.label     "Hide Expert Settings and Menus">
+<!ENTITY enigmail.basicUserMenus.label     "Uzman Ayarları ve Menüleri Gizle">
 <!ENTITY enigmail.browse.label             "Göz at...">
 <!ENTITY enigmail.cancelKey.label         "Vazgeç">
 <!ENTITY enigmail.cancelKey.tooltip       "Anahtar Üretiminden Vazgeç">
@@ -145,7 +146,7 @@
 <!ENTITY enigmail.compose.use_mime_radio.label      "Use PGP/MIME (good signature, but some receivers cannot decode it)">
 <!ENTITY enigmail.compose.wrap_radio.label          "Wrap automatically (good signature, but may not look good)">
 <!ENTITY enigmail.composemenu.accesskey        "n">
-<!ENTITY enigmail.composetoolbar.desc         "Enigmail Encryption Info">
+<!ENTITY enigmail.composetoolbar.desc         "Enigmail Şifreleme Bilgisi">
 <!ENTITY enigmail.confirmBeforeSendingAlways.label           "Her zaman">
 <!ENTITY enigmail.confirmBeforeSendingAlways.tooltip         "Always display information dialog about signing/encryption before sending a message">
 <!ENTITY enigmail.confirmBeforeSendingIfEncrypted.label      "If encrypted">
@@ -171,7 +172,7 @@
 <!ENTITY enigmail.debugMenu.accesskey       "G">
 <!ENTITY enigmail.debugMenu.label        "OpenPGP Hata ayıklama">
 <!ENTITY enigmail.decryptToFolder.accesskey "y">
-<!ENTITY enigmail.decryptToFolder.label     "Decrypt to folder">
+<!ENTITY enigmail.decryptToFolder.label     "Dizine çöz">
 <!ENTITY enigmail.decryptbutton.label     "Deşifre">
 <!ENTITY enigmail.decryptbutton.tip       "Mesajı OpenPGP(Enigmail) ile deşifre et ya da doğrula">
 <!ENTITY enigmail.decryptverify.accesskey   "D">
@@ -179,7 +180,7 @@
 <!ENTITY enigmail.defaultEncryption.label         "Mesajları otomatik/öntanımlı olarak şifrele">
 <!ENTITY enigmail.defaultKeySelOpts.accesskey  "K">
 <!ENTITY enigmail.defaultKeySelOpts.label      "Anahtar Seçimi Ayarları...">
-<!ENTITY enigmail.defaultSigning.label            "Sign messages by default">
+<!ENTITY enigmail.defaultSigning.label            "İletileri varsayılan olarak imzala">
 <!ENTITY enigmail.defineRules.label               "Kuralları Düzenle ...">
 <!ENTITY enigmail.delete.accesskey                  "E">
 <!ENTITY enigmail.delete.label                      "Sil">
@@ -217,8 +218,8 @@
 <!ENTITY enigmail.encryptedsend.label         "Mesajı Şifrele">
 <!ENTITY enigmail.encryption.label                  "Şifreleme">
 <!ENTITY enigmail.encryptionDlg.label               "Enigmail Şifreleme &amp; İmzalama Ayarları">
-<!ENTITY enigmail.encryptionModelConvenient.label "Use default encryption settings">
-<!ENTITY enigmail.encryptionModelManually.label   "Manually configure encryption settings">
+<!ENTITY enigmail.encryptionModelConvenient.label "Varsayılan şifreleme ayarlarını kullan">
+<!ENTITY enigmail.encryptionModelManually.label   "Şifreleme ayarlarını elle yapılandır">
 <!ENTITY enigmail.enigAttachDontEncryptMsgEncrypt.label        "Don't encrypt the message at all">
 <!ENTITY enigmail.enigAttachDontEncryptMsgEncryptAndSign.label "Don't encrypt and sign the message at all">
 <!ENTITY enigmail.enigAttachDontEncryptMsgSign.label           "Don't sign the message at all">
@@ -240,7 +241,7 @@
 <!ENTITY enigmail.exchangeGarbage.fixButton.label   "Repair message">
 <!ENTITY enigmail.exchangeGarbage.waitMessage       "Please wait ...">
 <!ENTITY enigmail.expertUser.tooltip       "Deneyimli kullanıcılar için menü öğeleri ve seçenekleri görmek istiyorsanız seçin.">
-<!ENTITY enigmail.expertUserMenus.label    "Display Expert Settings and Menus">
+<!ENTITY enigmail.expertUserMenus.label    "Uzman Ayarları ve Menüleri Göster">
 <!ENTITY enigmail.exportWiz.pgExport.done            "Your OpenPGP keys and your Enigmail settings are now saved.
                                                       Please transfer the generated file to your new computer, launch
                                                       Thunderbird and start the Setup Wizard from the Enigmail menu.">
@@ -255,8 +256,8 @@
 <!ENTITY enigmail.exportWiz.pgIntro.title            "Welcome to the Export Settings Wizard">
 <!ENTITY enigmail.exportWiz.title                    "Export your Enigmail Settings">
 <!ENTITY enigmail.filterEditor.moveError.label       "Actions that follow the 'Decrypt Permanently' action are not supported.">
-<!ENTITY enigmail.finallySignEncrypted.label      "Sign encrypted messages">
-<!ENTITY enigmail.finallySignNotEncrypted.label   "Sign non-encrypted messages">
+<!ENTITY enigmail.finallySignEncrypted.label      "Şifreli iletileri imzala">
+<!ENTITY enigmail.finallySignNotEncrypted.label   "Şifrelenmemiş iletileri imzala">
 <!ENTITY enigmail.genCardKey.backupKey.label         "Anahtarın yedeğini kart dışında kaydet">
 <!ENTITY enigmail.genCardKey.desc                    "<a class='enigmailStrong'>NOT: Anahtar üretimi biraz uzun sürebilir.</a> Anahtar üretimi sırasında uygulamayı kapatmayın. Anahtar üretimi bittiğinde uyarılacaksınız.">
 <!ENTITY enigmail.genCardKey.title                   "OpenPGP Anahtarı Oluştur">
@@ -269,7 +270,7 @@
 <!ENTITY enigmail.importMissingKeys.accesskey       "I">
 <!ENTITY enigmail.importMissingKeys.label           "Kayıp anahtarları indir">
 <!ENTITY enigmail.importMissingKeys.tooltip         "Kayıp anahtarları bir anahtar sunucudan indirmeye çalış">
-<!ENTITY enigmail.importSetup.dlgTitle               "Restore Settings and Keys">
+<!ENTITY enigmail.importSetup.dlgTitle               "Ayarları ve Anahtarları Geri Yükle">
 <!ENTITY enigmail.importSetup.importingKeys          "Importing keys in GnuPG. This may take a while ...">
 <!ENTITY enigmail.importSetup.restoringEnigmail      "Restoring Enigmail settings ...">
 <!ENTITY enigmail.importSetup.restoringGnupgSettings "Restoring GnuPG settings ...">
@@ -278,8 +279,8 @@
 <!ENTITY enigmail.importSetup.topDesc                "Using this dialog, you can restore your settings and keys from an existing Enigmail installation. To create a backup of your settings and keys, use the 'Transfer Settings' tab in the Enigmail preferences.">
 <!ENTITY enigmail.importpublickey.accesskey "I">
 <!ENTITY enigmail.importpublickey.label  "Genel anahtar ithal et">
-<!ENTITY enigmail.keepCryptoSettingsForReply.label   "Encrypt/sign replies to encrypted/signed messages">
-<!ENTITY enigmail.keepCryptoSettingsForReply.tooltip "When possible, encrypt/sign responses to encrypted/signed email">
+<!ENTITY enigmail.keepCryptoSettingsForReply.label   "Şifreli/İmzalı iletilere yanıtları şifrele/imzala">
+<!ENTITY enigmail.keepCryptoSettingsForReply.tooltip "Mümkün olduğunda, şifreli/imzalı e-postalara yanıtları da şifrele/imzala">
 <!ENTITY enigmail.keyDetails.ID.label                "ID">
 <!ENTITY enigmail.keyDetails.algorithm.label         "Algoritma">
 <!ENTITY enigmail.keyDetails.alsoKnown.label         "Ayrıca şöyle bilinir">
@@ -304,12 +305,12 @@
 <!ENTITY enigmail.keyExpiry.expiryKey.label         "Keys to change expiration date:">
 <!ENTITY enigmail.keyExpiry.label                   "Son kullanım">
 <!ENTITY enigmail.keyExpiry.title                   "Enigmail - Change Expiration Date">
-<!ENTITY enigmail.keyGen.console.label    "Key Generation">
+<!ENTITY enigmail.keyGen.console.label    "Anahtar Üretimi">
 <!ENTITY enigmail.keyGen.days.label       "Gün">
 <!ENTITY enigmail.keyGen.expire.label     "Anahtar son kullanma tarihi">
 <!ENTITY enigmail.keyGen.expiry.title     "Anahtar son kullanma tarihi">
 <!ENTITY enigmail.keyGen.keySize.label    "Anahtar boyu">
-<!ENTITY enigmail.keyGen.keyType.ecc      "ECC (Elliptic Curve)">
+<!ENTITY enigmail.keyGen.keyType.ecc      "ECC (Eliptik Eğri)">
 <!ENTITY enigmail.keyGen.keyType.label    "Anahtar tipi">
 <!ENTITY enigmail.keyGen.keyType.rsa      "RSA">
 <!ENTITY enigmail.keyGen.months.label     "Ay">
@@ -435,8 +436,8 @@
 <!ENTITY enigmail.keygenTitle.label       "OpenPGP Anahtarı Üret">
 <!ENTITY enigmail.keyserver.label         "Anahtar sunucusu">
 <!ENTITY enigmail.keyserverDlg.label      "Anahtar sunucusu seçin">
-<!ENTITY enigmail.keyservers.label        "Specify your keyserver(s):">
-<!ENTITY enigmail.keyservers.sample2      "Example: keys.openpgp.org, pool.sks-keyservers.net">
+<!ENTITY enigmail.keyservers.label        "Anahtar sunucularını belirtin:">
+<!ENTITY enigmail.keyservers.sample2      "Örnek: pool.sks-keyservers.net, pgp.mit.edu">
 <!ENTITY enigmail.label                   "Enigmail">
 <!ENTITY enigmail.manageUidDlg.addUid.label          "Ekle">
 <!ENTITY enigmail.manageUidDlg.affectedKey.label     "Değiştirilecek anahtar:">
@@ -450,9 +451,9 @@
 <!ENTITY enigmail.matchDescStart.label              "Kural uygula alıcı eğer">
 <!ENTITY enigmail.matchEnd.label                    "Bitiyorsa">
 <!ENTITY enigmail.matchExact.label                  "Tam olarak">
-<!ENTITY enigmail.maxIdleMinutes.tooltip   "Remember passphrase for a limited time.">
+<!ENTITY enigmail.maxIdleMinutes.tooltip   "Parolayı sınırlı bir süre için hatırla.">
 <!ENTITY enigmail.maxIdleMinutesHead.label "Parolayı şu kadar süre hatırla">
-<!ENTITY enigmail.maxIdleMinutesTail.label "minutes of inactivity (before needing to re-enter it)">
+<!ENTITY enigmail.maxIdleMinutesTail.label "(yeniden girmenin gerekmesi için) etkinlik olmadan geçen süre">
 <!ENTITY enigmail.maybe.label                       "Mesaj yazarken seçildiyse, Evet">
 <!ENTITY enigmail.messeneger.pEpIcon.tootlip          "This message was encrypted with p≡p. Click the icon for more details.">
 <!ENTITY enigmail.messengermenu.accesskey "n">
@@ -471,7 +472,7 @@
 <!ENTITY enigmail.noHushMailSupport.tooltip    "GnuPG için posta adresi belirtmek için '&lt;' ve '&gt;' karakterlerini kullan. Alıcıların eski Hushmail anahtarları varsa etkisiz kıl.">
 <!ENTITY enigmail.not.label                         "Değilse">
 <!ENTITY enigmail.openPgpSecurity.label            "OpenPGP Güvenliği">
-<!ENTITY enigmail.openpgpPrefsButton.label        "Enigmail Preferences...">
+<!ENTITY enigmail.openpgpPrefsButton.label        "Enigmail Seçenekleri...">
 <!ENTITY enigmail.pEp.composestatus.label             "Bilinmeyen">
 <!ENTITY enigmail.pEp.label               "Enigmail/p≡p">
 <!ENTITY enigmail.pEp.privacyStatus.label             "Privacy Status:">
@@ -487,9 +488,9 @@
 <!ENTITY enigmail.pEp.trustWordsDlg.trustwordsShort   "Trustwords">
 <!ENTITY enigmail.pEp.verifyTrustwords.accesskey      "H">
 <!ENTITY enigmail.pEp.verifyTrustwords.label          "p≡p Handshake">
-<!ENTITY enigmail.passwordSettings.label   "Passphrase Timeout">
+<!ENTITY enigmail.passwordSettings.label   "Parola Zaman Aşımı">
 <!ENTITY enigmail.pepEnableProtection.accesskey     "E">
-<!ENTITY enigmail.pepEnableProtection.label         "Enable Protection">
+<!ENTITY enigmail.pepEnableProtection.label         "Korumayı Etkinleştir">
 <!ENTITY enigmail.pepHandshake.SuggestionTitle       "p≡p Suggestion">
 <!ENTITY enigmail.pepHandshake.explanation           "Explanation">
 <!ENTITY enigmail.pepPref.aboutTab.label             "Hakkında">
@@ -515,7 +516,7 @@
 <!ENTITY enigmail.pgpMime.label          "PGP/MIME">
 <!ENTITY enigmail.pgpSecurityInfo.label            "Enigmail Güvenlik Bilgisi ...">
 <!ENTITY enigmail.photoViewer.title                "OpenPGP Photo Viewer">
-<!ENTITY enigmail.pref.acSetupMessage.button "Initiate Autocrypt Setup">
+<!ENTITY enigmail.pref.acSetupMessage.button "Autocrypt Kurulumunu Başlat">
 <!ENTITY enigmail.preferences.label       "Enigmail Seçenekleri">
 <!ENTITY enigmail.prefs.accesskey           "n">
 <!ENTITY enigmail.prefs.label            "Seçenekler">
@@ -529,14 +530,14 @@
 <!ENTITY enigmail.progress.label                   "İşlem">
 <!ENTITY enigmail.progressText.label               "İşlem:">
 <!ENTITY enigmail.protectHeaders.accesskey     "A">
-<!ENTITY enigmail.protectHeaders.label         "Protect Subject">
-<!ENTITY enigmail.protectHeadersPrefs.label    "Encrypt subject by default (PGP/MIME encrypted message only)">
-<!ENTITY enigmail.protectHeadersPrefs.tooltip  "Remove subject and other sensitive headers from encrypted messages.">
-<!ENTITY enigmail.protectedSubjectText.label    "Subject text to protect encrypted messages">
-<!ENTITY enigmail.protectedSubjectText.placeholder "Encrypted Message">
-<!ENTITY enigmail.protectedSubjectText.tooltip  "Specify the subject that will be publicly visible instead of the real subject when sending encrypted messages">
+<!ENTITY enigmail.protectHeaders.label         "Konuyu koru">
+<!ENTITY enigmail.protectHeadersPrefs.label    "Konuyu varsayılan olarak şifrele (sadece PGP/MIME şifrelenmiş iletiler)">
+<!ENTITY enigmail.protectHeadersPrefs.tooltip  "Şifrelenmiş iletilerden konuyu ve diğer hassas başlıkları kaldır.">
+<!ENTITY enigmail.protectedSubjectText.label    "Şifrelenmiş iletileri korumak için konu metni">
+<!ENTITY enigmail.protectedSubjectText.placeholder "Şifrelenmiş İleti">
+<!ENTITY enigmail.protectedSubjectText.tooltip  "Şifreli iletiler gönderirken gerçek konu yerine herkese açık olarak gözükecek olan konuyu belirtin.">
 <!ENTITY enigmail.recent.accesskey          "D">
-<!ENTITY enigmail.recent.label              "Recent">
+<!ENTITY enigmail.recent.label              "Yakın Zamandaki">
 <!ENTITY enigmail.recipientsSelectionOption.label "Anahtarları nasıl seçmeliyiz?">
 <!ENTITY enigmail.refreshKeys.accesskey             "R">
 <!ENTITY enigmail.refreshKeys.label                 "Anahtar listesini yenile">
@@ -546,8 +547,8 @@
 <!ENTITY enigmail.resetPrefsButton.label "Temizle">
 <!ENTITY enigmail.resetRememberedValues.label     "Uyarıları eski haline getir">
 <!ENTITY enigmail.resetRememberedValues.tooltip   "Geçmişte gizlediğiniz tüm uyarı diyaloglarını ve soruları tekrar göstert.">
-<!ENTITY enigmail.restorePrefs.tooltip     "Restore all Enigmail preferences including your OpenPGP keys from a file.">
-<!ENTITY enigmail.restorePrefsButton.label "Restore Settings and Keys">
+<!ENTITY enigmail.restorePrefs.tooltip     "Bütün Enigmail yapılandırmasını OpenPGP anahtarlarınızla birlikte dosyadan geri yükle.">
+<!ENTITY enigmail.restorePrefsButton.label "Ayarları ve Anahtarları Geri Yükle">
 <!ENTITY enigmail.revealAttachments.button          "Reveal">
 <!ENTITY enigmail.revealAttachmentsButton.label     "The names of the files attached are hidden. Press the 'Reveal' button to retrieve the original file names.">
 <!ENTITY enigmail.ruleEmail.label                   "Şunun için Enigmail kuralı koy">
@@ -565,16 +566,16 @@
 <!ENTITY enigmail.sKeyDlg.signWithKey.label        "İmzalanacak anahtar:">
 <!ENTITY enigmail.sKeyDlg.title                    "Enigmail - Anahtar İmzala">
 <!ENTITY enigmail.savelogfile.label                   "Save Log to File ...">
-<!ENTITY enigmail.searchForKey.desc1	    "'Forename Surname' finds all keys that contain 'Forename' OR 'Surname'">
-<!ENTITY enigmail.searchForKey.desc2      "'Forename+Surname' finds all keys that contain both 'Forename' AND 'Surname'">
-<!ENTITY enigmail.searchForKey.desc3      "'example.com' finds all keys that contain 'example.com', such as 'example@example.com'">
-<!ENTITY enigmail.searchForKey.example    "Example: 'Forename Surname &lt;user@example.com&gt;'">
+<!ENTITY enigmail.searchForKey.desc1	    "'Ad Soyad', 'Ad' VEYA 'Soyad' içeren bütün anahtarları bulur">
+<!ENTITY enigmail.searchForKey.desc2      "'Ad+Soyad', 'Ad' VE 'Soyad' içeren bütün anahtarları bulur">
+<!ENTITY enigmail.searchForKey.desc3      "'example.com', 'example.com' içeren bütün anahtarları bulur, örneğin 'example@example.com'">
+<!ENTITY enigmail.searchForKey.example    "Örnek: 'Ad Soyad &lt;user@example.com&gt;'">
 <!ENTITY enigmail.searchForKey.label      "Anahtar arama">
 <!ENTITY enigmail.searchKeyDlg.label               "OpenPGP Anahtarları İndir">
 <!ENTITY enigmail.searchKeyDlgCapt.label           "Bulunan Anahtarlar - Eklemek için Seçin">
 <!ENTITY enigmail.searchKeyDlgSelAll.label         "Select/Deselect all">
 <!ENTITY enigmail.searchRule.label                  "Şunları içeren posta adresleri için kuralları göster:">
-<!ENTITY enigmail.seeAccountSettings.label        "See also account specific Enigmail settings (see Account Settings -> OpenPGP Security)">
+<!ENTITY enigmail.seeAccountSettings.label        "Hesaba özgü Enigmail ayarlarına da bakın (bkz. Hesap Ayarları -> OpenPGP Güvenliği)">
 <!ENTITY enigmail.selKeysButton.accesskey           "S">
 <!ENTITY enigmail.selKeysButton.label               "Anahtar(lar) Seç...">
 <!ENTITY enigmail.send.label                        "Gönder">
@@ -624,8 +625,8 @@
 <!ENTITY enigmail.singleRcptSettings.desc           "(Not: çakışma durumunda, 'Asla', 'Her Zaman' dan önceliklidir)">
 <!ENTITY enigmail.singleRcptSettings.label          "Enigmail - Alıcı Ayarları">
 <!ENTITY enigmail.tempTrustAllKeys.accesskey   "T">
-<!ENTITY enigmail.tempTrustAllKeys.label       "Trust the keys of all recipients">
-<!ENTITY enigmail.transferSettings.label "Transfer Settings">
+<!ENTITY enigmail.tempTrustAllKeys.label       "Bütün alıcıların anahtarlarına güven">
+<!ENTITY enigmail.transferSettings.label "Ayarları Aktarın">
 <!ENTITY enigmail.trustSenderKey.label             "Anahtar Sahibi için Güvenilirlik Belirle ...">
 <!ENTITY enigmail.trustSenderKeyPopup.label        "Gönderenin Anahtarının Güvenilirliğini Belirle ...">
 <!ENTITY enigmail.uidValidity.label                 "Validity">
@@ -633,14 +634,14 @@
 <!ENTITY enigmail.undoencryption.label         "Şifrelemeyi geri al">
 <!ENTITY enigmail.useForSigning.label     "Seçili kimlik için üretilmiş anahtar kullan">
 <!ENTITY enigmail.useInline.accesskey          "I">
-<!ENTITY enigmail.useInline.label              "Protocol: Inline PGP">
+<!ENTITY enigmail.useInline.label              "Protokol: Inline PGP">
 <!ENTITY enigmail.useKeys.label                     "Şu OpenPGP anahtarlarını kullan:">
 <!ENTITY enigmail.useNonDefaultComment.label "OpenPGP imzasına Enigmail içeriği ekle">
 <!ENTITY enigmail.usePGPMimeAlways.label          "Her zaman PGP/MIME kullan">
 <!ENTITY enigmail.usePgpMime.accesskey         "G">
-<!ENTITY enigmail.usePgpMime.label             "Protocol: PGP/MIME">
+<!ENTITY enigmail.usePgpMime.label             "Protokol: PGP/MIME">
 <!ENTITY enigmail.useSmime.accesskey           "S">
-<!ENTITY enigmail.useSmime.label               "Protocol: S/MIME">
+<!ENTITY enigmail.useSmime.label               "Protokol: S/MIME">
 <!ENTITY enigmail.userSelSendEncrypted.accesskey    "E">
 <!ENTITY enigmail.userSelSendEncrypted.label        "Şifreli Gönder">
 <!ENTITY enigmail.userSelSendSigned.accesskey       "S">
@@ -650,7 +651,7 @@
 <!ENTITY enigmail.viewconsole.accesskey     "c">
 <!ENTITY enigmail.viewconsole.label      "Konsol göster">
 <!ENTITY enigmail.viewlog.accesskey         "g">
-<!ENTITY enigmail.viewlog.label          "View Log">
+<!ENTITY enigmail.viewlog.label          "Günlüğü Görüntüle">
 <!ENTITY enigmail.wrapHtmlBeforeSend.label        "İmzalı HTML'yi yollmadan önce tekrar sarmala">
 <!ENTITY enigmail.wrapHtmlBeforeSend.tooltip      "İmzanın bozulmamış olduğunu garantilemek için metni tekrar düzenle.">
 <!ENTITY enigmail.wrapSelectionList.label           "Select wrap">

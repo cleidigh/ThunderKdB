@@ -62,21 +62,29 @@
 
     <div id="progressBox" style="max-width: 100%; width: 440px" class="hidden">
       <p>
-        Downloading GnuPG
+        <span txtId="updateGnuPG.downloadingGnuPG"></span>
       </p>
       <progress id="downloadProgress" style="width: 100%;" max="100" value="0"/>
       <p/>
       <div id="installProgressBox" class="hidden">
         <p id="installLabel">
-          Launching the GnuPG installer
+          <span txtId="updateGnuPG.startingInstaller"></span>
         </p>
         <progress id="installProgress" style="max-width: 100%; width: 440px; :indeterminate;" max="100"/>
       </div>
     </div>
 
+    <div id="convertKeyring" class="hidden">
+      <p>
+        <span txtId="updateGnuPG.importingKeys"></span>
+        <span id="importingKeysProgress" class="enigmailWheel enigmailSpinning"></span>
+        <span id="importingKeysDone" class="enigmailOkSign hidden"></span>
+      </p>
+    </div>
+
     <div id="updateComplete" class="hidden">
       <p>
-        GnuPG has been updated successfully.
+        <span txtId="updateGnuPG.success"></span>
       </p>
     </div>
 

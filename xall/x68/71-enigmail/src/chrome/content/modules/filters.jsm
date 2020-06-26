@@ -21,6 +21,7 @@ const EnigmailData = ChromeUtils.import("chrome://enigmail/content/modules/data.
 const jsmime = ChromeUtils.import("resource:///modules/jsmime.jsm").jsmime;
 const NetUtil = ChromeUtils.import("resource://gre/modules/NetUtil.jsm").NetUtil;
 const EnigmailMime = ChromeUtils.import("chrome://enigmail/content/modules/mime.jsm").EnigmailMime;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 
 const getDialog = EnigmailLazy.loader("enigmail/dialog.jsm", "EnigmailDialog");
 
@@ -474,13 +475,14 @@ function getRequireMessageProcessing(aMsgHdr) {
 
   EnigmailLog.DEBUG("filters.jsm: getRequireMessageProcessing: author: " + aMsgHdr.author + "\n");
 
-  let messenger = Cc["@mozilla.org/messenger;1"].getService(Ci.nsIMessenger);
-  let msgSvc = messenger.messageServiceFromURI(aMsgHdr.folder.getUriForMsg(aMsgHdr));
-  let u = {};
-  msgSvc.GetUrlForUri(aMsgHdr.folder.getUriForMsg(aMsgHdr), u, null);
+  let u = EnigmailCompat.getUrlFromUriSpec(aMsgHdr.folder.getUriForMsg(aMsgHdr));
 
-  let op = (u.value.spec.indexOf("?") > 0 ? "&" : "?");
-  let url = u.value.spec + op + "header=enigmailFilter";
+  if (! u) {
+    return null;
+  }
+
+  let op = (u.spec.indexOf("?") > 0 ? "&" : "?");
+  let url = u.spec + op + "header=enigmailFilter";
 
   return {
     url: url,
@@ -514,7 +516,9 @@ var EnigmailFilters = {
   onStartup: function() {
     let filterService = Cc["@mozilla.org/messenger/services/filters;1"].getService(Ci.nsIMsgFilterService);
     filterService.addCustomTerm(filterTermPGPEncrypted);
-    initNewMailListener();
+    if (!EnigmailCompat.isPostbox()) {
+      initNewMailListener();
+    }
   },
 
   onShutdown: function() {

@@ -29,8 +29,14 @@ var addressbook = {
   },
 
 
-
-
+  // needed due to sogo issue not implementing this method in their Ab
+  getStringValue : function (ab, value, fallback) {
+    try {
+      return ab.getStringValue(value, fallback);
+    } catch (e) {
+      return fallback;
+    }
+  },
   
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   // * AdvancedTargetData, an extended TargetData implementation, providers
@@ -56,13 +62,13 @@ var addressbook = {
     // be whatever you want and is returned by FolderData.targetData.getTarget().
     // If the target does not exist, it should be created. Throw a simple Error, if that
     // failed.
-    getTarget() { 
+    async getTarget() { 
       let target = this._folderData.getFolderProperty("target");
       let directory = TbSync.addressbook.getDirectoryFromDirectoryUID(target);
       
       if (!directory) {
         // create a new addressbook and store its UID in folderData
-        directory = TbSync.addressbook.createAddressbook(this._folderData);
+        directory = await TbSync.addressbook.prepareAndCreateAddressbook(this._folderData);
         if (!directory)
           throw new Error("notargets");
       }
@@ -203,7 +209,9 @@ var addressbook = {
       }
     }
 
-    createAddressbook(newname) {
+    // replace this with your own implementation to create the actual addressbook,
+    // when this class is extended
+    async createAddressbook(newname) {
       let dirPrefId = MailServices.ab.newAddressBook(newname, "", 2);
       let directory = MailServices.ab.getDirectoryFromId(dirPrefId);
       return directory;
@@ -380,20 +388,19 @@ var addressbook = {
       }
     }
     
-    addPhoto(photo, data) {	
+    addPhoto(photo, data, extension = "jpg", url = "") {	
       let dest = [];
       let card = this._card;
       let bookUID = this.abDirectory.UID;
-      
+
       // TbSync storage must be set as last
       let book64 = btoa(bookUID);
       let photo64 = btoa(photo);	    
-      let photoName64 = book64 + "_" + photo64;
-      
-      TbSync.dump("PhotoName", photoName64);
+      let photoName64 = book64 + "_" + photo64 + "." + extension;
       
       dest.push(["Photos", photoName64]);
-      dest.push(["TbSync","Photos", book64, photo64]);
+      // I no longer see a reason for this
+      // dest.push(["TbSync","Photos", book64, photo64]);
       
       let filePath = "";
       for (let i=0; i < dest.length; i++) {
@@ -405,7 +412,7 @@ var addressbook = {
         try {
           binary = atob(data.split(" ").join(""));
         } catch (e) {
-          TbSync.dump("Failed to decode base64 string:", data);
+          console.log("Failed to decode base64 string:", data);
         }
         foStream.write(binary, binary.length);
         foStream.close();
@@ -413,8 +420,8 @@ var addressbook = {
         filePath = 'file:///' + file.path.replace(/\\/g, '\/').replace(/^\s*\/?/, '').replace(/\ /g, '%20');
       }
       card.setProperty("PhotoName", photoName64);
-      card.setProperty("PhotoType", "file");
-      card.setProperty("PhotoURI", filePath);
+      card.setProperty("PhotoType", url ? "web" : "file");
+      card.setProperty("PhotoURI", url ? url : filePath);
       return filePath;
     }
 
@@ -620,36 +627,16 @@ var addressbook = {
   // * Internal Functions
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-  createAddressbook: function (folderData) {
+  prepareAndCreateAddressbook: async function (folderData) {
     let target = folderData.getFolderProperty("target");
     let provider = folderData.accountData.getAccountProperty("provider");
     
     // Get cached or new unique name for new address book
     let cachedName = folderData.getFolderProperty("targetName");                         
     let newname = cachedName == "" ? folderData.accountData.getAccountProperty("accountname") + " (" + folderData.getFolderProperty("foldername")+ ")" : cachedName;
-
-    /* this seems to cause more troube than it helps
-    let count = 1;
-    let unique = false;
-    let newname = basename;
-    do {
-      unique = true;
-      let booksIter = MailServices.ab.directories;
-      while (booksIter.hasMoreElements()) {
-        let data = booksIter.getNext();
-        if (data instanceof Components.interfaces.nsIAbDirectory && data.dirName == newname) {
-          unique = false;
-          break;
-        }
-      }
-      if (!unique) {
-        newname = basename + " #" + count;
-        count = count + 1;
-      }
-    } while (!unique); */
-    
+   
     //Create the new book with the unique name
-    let directory = folderData.targetData.createAddressbook(newname);
+    let directory = await folderData.targetData.createAddressbook(newname);
     if (directory && directory instanceof Components.interfaces.nsIAbDirectory) {
       directory.setStringValue("tbSyncProvider", provider);
       directory.setStringValue("tbSyncAccountID", folderData.accountData.accountID);
@@ -787,9 +774,11 @@ var addressbook = {
             // -> store creation type
             if (aTopic == "addrbook-contact-created") {
               TbSync.db.addItemToChangeLog(bookUID, aSubject.uuid + "#DelayedCreation", itemStatus == "added_by_server" ? itemStatus : "added_by_user"); //uuid = directoryId+localId
+              TbSync.db.addItemToChangeLog(bookUID, aSubject.uuid + "#DelayedCreationOriginalPrimaryKey", abDirectory.primaryKeyField ? abItem.getProperty(abDirectory.primaryKeyField) : ""); //uuid = directoryId+localId
             } 
             // during follow up MODs we can identify this card via
             let delayedCreation = TbSync.db.getItemStatusFromChangeLog(bookUID, aSubject.uuid + "#DelayedCreation");
+            let delayedCreationOriginalPrimaryKey = TbSync.db.getItemStatusFromChangeLog(bookUID, aSubject.uuid + "#DelayedCreationOriginalPrimaryKey");
               
             // during create it could happen, that this card comes without a UID Property - bug 1554782
             // a call to .UID will generate a UID but will also send an update notification for the the card
@@ -800,8 +789,8 @@ var addressbook = {
             }
 
             // new cards must get a NEW(!) primaryKey first
-            if (delayedCreation && abDirectory.primaryKeyField && !abItem.getProperty(abDirectory.primaryKeyField)) {
-              console.log("Missing primary Key, generated!");
+            if (delayedCreation ==  "added_by_user" && abDirectory.primaryKeyField && delayedCreationOriginalPrimaryKey == abItem.getProperty(abDirectory.primaryKeyField)) {
+              console.log("New primary Key generated!");
               abItem.setProperty(abDirectory.primaryKeyField, folderData.targetData.generatePrimaryKey());
               // special case: do not add "modified_by_server"
               abDirectory.modifyItem(abItem, /*pretagChangelogWithByServerEntry */ false);
@@ -824,6 +813,7 @@ var addressbook = {
                 //if delayedCreation is "added_by_server", then itemStatus is "added_by_server" as well, 
                 // we can remove it here
                 TbSync.db.removeItemFromChangeLog(bookUID, aSubject.uuid + "#DelayedCreation");
+                TbSync.db.removeItemFromChangeLog(bookUID, aSubject.uuid + "#DelayedCreationOriginalPrimaryKey");
               default:
                 break;
             }

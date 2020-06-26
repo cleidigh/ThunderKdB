@@ -5,7 +5,7 @@ var { gQuicktext } = ChromeUtils.import("chrome://quicktext/content/modules/wzQu
 
 const kDebug          = true;
 const persistentTags  = ['COUNTER', 'ORGATT', 'ORGHEADER', 'VERSION'];
-const allowedTags     = ['ATT', 'CLIPBOARD', 'COUNTER', 'DATE', 'FILE', 'FROM', 'INPUT', 'ORGATT', 'ORGHEADER', 'SCRIPT', 'SUBJECT', 'TEXT', 'TIME', 'TO', 'URL', 'VERSION'];
+const allowedTags     = ['ATT', 'CLIPBOARD', 'COUNTER', 'DATE', 'FILE', 'IMAGE', 'FROM', 'INPUT', 'ORGATT', 'ORGHEADER', 'SCRIPT', 'SUBJECT', 'TEXT', 'TIME', 'TO', 'URL', 'VERSION', 'SELECTION', 'HEADER'];
 
 function streamListener(aInspector)
 {
@@ -98,7 +98,7 @@ wzQuicktextVar.prototype = {
     this.mData = tmpData;
   }
 ,
-  parse: function(aStr)
+  parse: function(aStr, aType)
   {
     // Reparse the text until there is no difference in the text
     // or that we parse 100 times (so we don't make an infinitive loop)
@@ -108,13 +108,13 @@ wzQuicktextVar.prototype = {
     do {
       count++;
       oldStr = aStr;
-      aStr = this.parseText(aStr);
+      aStr = this.parseText(aStr, aType);
     } while (aStr != oldStr && count < 20);
 
     return aStr;
   }
 ,
-  parseText: function(aStr)
+  parseText: function(aStr, aType)
   {
     var tags = this.getTags(aStr);
 
@@ -131,17 +131,19 @@ wzQuicktextVar.prototype = {
       {
         case 'att':
         case 'clipboard':
+        case 'selection':
         case 'counter':
         case 'date':
         case 'subject':
         case 'time':
         case 'version':
+        case 'orgatt':
           variable_limit = 0;
           break;
         case 'file':
+        case 'image':
         case 'from':
         case 'input':
-        case 'orgatt':
         case 'orgheader':
         case 'script':
         case 'to':
@@ -149,16 +151,19 @@ wzQuicktextVar.prototype = {
           variable_limit = 1;
           break;
         case 'text':
+        case 'header':
           variable_limit = 2;
           break;
       }
 
-      // if the method "get_[tagname]" exists and there is enough arguments we call it
-      if (typeof this["get_"+ tags[i].tagName.toLowerCase()] == "function" && variable_limit >= 0 && tags[i].variables.length >= variable_limit)
-        value = this["get_"+ tags[i].tagName.toLowerCase()](tags[i].variables);
-      else
+      if (tags[i].tagName.toLowerCase() == "image" && aType != 1) {
+        // image tag may only be added in html mode
         value = "";
-
+      } else if (typeof this["get_"+ tags[i].tagName.toLowerCase()] == "function" && variable_limit >= 0 && tags[i].variables.length >= variable_limit) {
+        // if the method "get_[tagname]" exists and there is enough arguments we call it
+        value = this["get_"+ tags[i].tagName.toLowerCase()](tags[i].variables);
+      }
+      
       aStr = this.replaceText(tags[i].tag, value, aStr);
     }
 
@@ -279,6 +284,11 @@ wzQuicktextVar.prototype = {
     return this.process_file(aVariables);
   }
 ,
+  get_image: function(aVariables)
+  {
+    return this.process_image_content(aVariables);
+  }
+,
   get_text: function(aVariables)
   {
     return this.process_text(aVariables);
@@ -323,9 +333,21 @@ wzQuicktextVar.prototype = {
     return "";
   }
 ,
+  get_header: function(aVariables)
+  {
+    // We do not do anything here but to return an empty string, 
+    // to remove the header tags from the body.
+    return "";
+  }
+,
   get_clipboard: function(aVariables)
   {
     return TrimString(this.process_clipboard(aVariables));
+  }
+,  
+  get_selection: function(aVariables)
+  {
+    return TrimString(this.process_selection(aVariables));
   }
 ,
   get_from: function(aVariables)
@@ -344,10 +366,19 @@ wzQuicktextVar.prototype = {
 
     if (typeof data[aVariables[0]] != 'undefined')
     {
-      if (aVariables.length < 2)
-        aVariables[1] = ", ";
-
-      return data[aVariables[0]].join(aVariables[1].replace(/\\n/g, "\n").replace(/\\t/g, "\t"));
+      // use ", " as default seperator
+      let mainSep = (aVariables.length > 1) ? aVariables[1].replace(/\\n/g, "\n").replace(/\\t/g, "\t") : ", ";
+      let lastSep = (aVariables.length > 2) ? aVariables[2].replace(/\\n/g, "\n").replace(/\\t/g, "\t") : mainSep;
+      
+      // clone the data, so we can work on it without mod the source object
+      let entries = data[aVariables[0]].slice(0);
+      let last = entries.pop();
+      
+      // build the final string
+      let all = [];
+      if (entries.length > 0) all.push(entries.join(mainSep));
+      all.push(last);      
+      return all.join(lastSep);
     }
     else
       return "";
@@ -452,6 +483,34 @@ wzQuicktextVar.prototype = {
     return "";
   }
 ,
+  process_image_content: function(aVariables)
+  {
+    let rv = "";
+    
+    if (aVariables.length > 0 && aVariables[0] != "")
+    {
+      let mode = (aVariables.length > 1 && "src" == aVariables[1].toString().toLowerCase()) ? "src" : "tag";
+      
+      // Tries to open the file and returning the content
+      try {
+        let fp = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
+        fp.initWithPath(this.mQuicktext.parseFilePath(aVariables[0]));
+        let rawContent = this.mQuicktext.readBinaryFile(fp);
+        let decoder = new TextDecoder('utf-8');
+        let content = this.mWindow.btoa(rawContent);
+        let type = this.mQuicktext.getTypeFromExtension(fp);
+        let src = "data:" + type + ";filename=" + fp.leafName + ";base64," + content;
+        rv = (mode == "tag") 
+                ? "<img src='"+src+"'>"
+                : src;
+      } catch(e) { 
+        Components.utils.reportError(e); 
+      }
+    }
+
+    return rv;
+  }
+,
   process_text: function(aVariables)
   {
     if (aVariables.length != 2)
@@ -495,6 +554,14 @@ wzQuicktextVar.prototype = {
       if (script.name == scriptName)
       {
         let returnValue = "";
+        
+        var referenceLineNumber = 0
+        try {
+          var error = variableNotAvailable; // provoke an error to create a reference for the other linenumber
+        } catch (eReference) {
+          referenceLineNumber = eReference.lineNumber;
+        }
+        
         try {
           var s = Components.utils.Sandbox(this.mWindow);
           s.mQuicktext = this;
@@ -508,8 +575,10 @@ wzQuicktextVar.prototype = {
             
             // Takes the linenumber where the error where and remove
             // the line that it was run on so we get the line in the script
-            var lineNumber = e.lineNumber-543;
-            this.mWindow.alert("You have an error in your script: "+ script.name +"\n"+ e.name +": "+ e.message +"\nLine ("+ lineNumber +"): "+ lines[lineNumber-1] );
+            // calculate it by using a reference error linenumber and an offset
+            // offset: 10 lines between "variableNotAvailable" and "evalInSandbox"
+            var lineNumber = e.lineNumber - referenceLineNumber - 10;
+            this.mWindow.alert(gQuicktext.mStringBundle.GetStringFromName("scriptError") + " " + script.name + "\n" + e.name + ": "+ e.message + "\n" + gQuicktext.mStringBundle.GetStringFromName("scriptLine") + " " + lineNumber + ": " + lines[lineNumber-1]);
           }
         }
 
@@ -518,7 +587,7 @@ wzQuicktextVar.prototype = {
     }
 
     //if we reach this point, the user requested an non-existing script
-    this.mWindow.alert("Quicktext skript <"+scriptName +"> not found!");
+    this.mWindow.alert(gQuicktext.mStringBundle.formatStringFromName("scriptNotFound", [scriptName], 1))
     return "";
   }
 ,
@@ -576,7 +645,7 @@ wzQuicktextVar.prototype = {
       var value = {};
       if (typeof aVariables[2] != 'undefined')
          value.value = aVariables[2].split(";");
-      if (promptService.select(this.mWindow, this.mWindow.quicktext.mStringBundle.getString("inputTitle"), this.mWindow.quicktext.mStringBundle.getFormattedString("inputText", [aVariables[0]]), value.value.length, value.value, checkValue))
+      if (promptService.select(this.mWindow, gQuicktext.mStringBundle.GetStringFromName("inputTitle"), gQuicktext.mStringBundle.formatStringFromName("inputText", [aVariables[0]], 1), value.value.length, value.value, checkValue))
         this.mData['INPUT'].data[aVariables[0]] = value.value[checkValue.value];
       else
         this.mData['INPUT'].data[aVariables[0]] = "";
@@ -587,13 +656,18 @@ wzQuicktextVar.prototype = {
       var value = {};
       if (typeof aVariables[2] != 'undefined')
         value.value = aVariables[2];
-      if (promptService.prompt(this.mWindow, this.mWindow.quicktext.mStringBundle.getString("inputTitle"), this.mWindow.quicktext.mStringBundle.getFormattedString("inputText", [aVariables[0]]), value, null, checkValue))
+      if (promptService.prompt(this.mWindow, gQuicktext.mStringBundle.GetStringFromName("inputTitle"), gQuicktext.mStringBundle.formatStringFromName("inputText", [aVariables[0]], 1), value, null, checkValue))
         this.mData['INPUT'].data[aVariables[0]] = value.value;
       else
         this.mData['INPUT'].data[aVariables[0]] = "";
     }
 
     return this.mData['INPUT'].data;
+  }
+,
+  process_selection: function(aVariables)
+  {
+    return this.mQuicktext.mSelectionContent;
   }
 ,
   process_clipboard: function(aVariables)
@@ -616,14 +690,13 @@ wzQuicktextVar.prototype = {
         clip.getData(trans,clip.kGlobalClipboard);
 
         var clipboard = {};
-        var clipboardLength = {};
         try {
-          trans.getTransferData("text/unicode", clipboard, clipboardLength);
+          trans.getTransferData("text/unicode", clipboard);
           if (clipboard)
           {
             clipboard = clipboard.value.QueryInterface(Components.interfaces.nsISupportsString);
             if (clipboard)
-              this.mData['CLIPBOARD'].data = clipboard.data.substring(0,clipboardLength.value / 2);
+              this.mData['CLIPBOARD'].data = clipboard.data;
           }
         }
         catch (e) { Components.utils.reportError(e); }
@@ -638,15 +711,24 @@ wzQuicktextVar.prototype = {
     if (this.mData['FROM'] && this.mData['FROM'].checked)
       return this.mData['FROM'].data;
 
+    const identity = this.mWindow.getCurrentIdentity();
+
     this.mData['FROM'] = {};
     this.mData['FROM'].checked = true;
     this.mData['FROM'].data = {
-      'email': this.mWindow.getCurrentIdentity().email,
+      'email': identity.email,
+      'displayname': identity.fullName,
       'firstname': '',
       'lastname': ''
     };
 
-    var card = this.getCardForEmail(this.mData['FROM'].data['email'].toLowerCase());
+    let card = this.getCardForEmail(identity.email.toLowerCase());
+    if (card == null && identity.escapedVCard != null)
+    {
+      const manager = Components.classes["@mozilla.org/abmanager;1"]
+        .getService(Components.interfaces.nsIAbManager);
+      card = manager.escapedVCardToAbCard(identity.escapedVCard);
+    }
     if (card != null)
     {
       var props = this.getPropertiesFromCard(card);
@@ -689,28 +771,13 @@ wzQuicktextVar.prototype = {
         // TODO: Add code for getting info about all people in a mailing list
 
         var k = this.mData['TO'].data['email'].length;
-        this.mData['TO'].data['email'][k] = emailAddresses.value[i];
+        this.mData['TO'].data['email'][k] = emailAddresses.value[i].toLowerCase();
+        this.mData['TO'].data['fullname'][k] = TrimString(names.value[i]);
         this.mData['TO'].data['firstname'][k] = "";
         this.mData['TO'].data['lastname'][k] = "";
 
-        var name = names.value[i];
-        if (name)
-        {
-          if (name.indexOf(",") > -1)
-          {
-            let tempnames = name.split(",");
-            this.mData['TO'].data['lastname'][k] = tempnames.splice(0, 1);
-            this.mData['TO'].data['firstname'][k] = tempnames.join(",");
-          }
-          else
-          {
-            let tempnames = name.split(" ");
-            this.mData['TO'].data['firstname'][k] = tempnames.splice(0, 1);
-            this.mData['TO'].data['lastname'][k] = tempnames.join(" ");
-          }
-        }
-
-        var card = this.getCardForEmail(this.mData['TO'].data['email'][k].toLowerCase());
+        // take card value, if it exists
+        var card = this.getCardForEmail(this.mData['TO'].data['email'][k]);
         if (card != null)
         {
           var props = this.getPropertiesFromCard(card);
@@ -719,11 +786,31 @@ wzQuicktextVar.prototype = {
             if (typeof this.mData['TO'].data[p] == 'undefined')
               this.mData['TO'].data[p] = []
             if (props[p] != "" || typeof this.mData['TO'].data[p][k] == 'undefined' || this.mData['TO'].data[p][k] == "")
-              this.mData['TO'].data[p][k] = props[p];
+              this.mData['TO'].data[p][k] = TrimString(props[p]);
           }
         }
-
-        this.mData['TO'].data['fullname'][k] = TrimString(this.mData['TO'].data['firstname'][k] +" "+ this.mData['TO'].data['lastname'][k]);
+    
+        let validParts = [this.mData['TO'].data['firstname'][k], this.mData['TO'].data['lastname'][k]].filter(e => e.trim() != "");
+        if (validParts.length == 0) {
+          // if no first and last name, generate them from fullname
+          let parts =  this.mData['TO'].data['fullname'][k].replace(/,/g, ", ").split(" ").filter(e => e.trim() != "");
+          this.mData['TO'].data['firstname'][k] = parts.length > 1 ? TrimString(parts.splice(0, 1)) : "";
+          this.mData['TO'].data['lastname'][k] = TrimString(parts.join(" "));
+        } else {
+          // if we have a first and/or last name (which can only happen if read from card), generate fullname from it
+          this.mData['TO'].data['fullname'][k] = validParts.join(" ");          
+        }
+        
+        // swap names if wrong
+        if (this.mData['TO'].data['firstname'][k].endsWith(","))
+        {
+          let temp_firstname = this.mData['TO'].data['firstname'][k].replace(/,/g, "");			  
+          let temp_lastname = this.mData['TO'].data['lastname'][k];			  
+          this.mData['TO'].data['firstname'][k] = temp_lastname;
+          this.mData['TO'].data['lastname'][k] = temp_firstname;
+          // rebuild fullname
+          this.mData['TO'].data['fullname'][k] = [this.mData['TO'].data['firstname'][k], this.mData['TO'].data['lastname'][k]].join(" ");
+        }
       }
     }
 
@@ -778,6 +865,7 @@ wzQuicktextVar.prototype = {
               break;
             case 'subject':
             case 'clipboard':
+            case 'selection':
             case 'counter':
               data = this["process_"+ tag]();
               if (typeof data != 'undefined')
@@ -1020,7 +1108,7 @@ wzQuicktextVar.prototype = {
       i++;
       size = size / 1024;
     }
-    return Math.round(size) + " " + unit[i];
+    return (Math.round(size * 100) / 100) + " " + unit[i];
   }
 ,
   getCardForEmail: function(aAddress) {
@@ -1122,5 +1210,5 @@ var debug = kDebug ?  function(m) {dump("\t *** wzQuicktext: " + m + "\n");} : f
 function TrimString(aStr)
 {
   if (!aStr) return "";
-  return aStr.replace(/(^\s+)|(\s+$)/g, '')
+  return aStr.toString().replace(/(^\s+)|(\s+$)/g, '')
 }

@@ -303,8 +303,23 @@ toolbar[iconsize="small"] #lightning-button-tasks {
   margin-bottom: 0px !important;
 }
 
+#calendar-status-todaypane-button > .toolbarbutton-text {
+  margin-top: -1px !important;
+}
+
 #calendar-show-todaypane-panel > #calendar-status-todaypane-button > stack > .toolbarbutton-day-text {
   color: DarkBlue;
+}
+
+/* task actions */
+
+#task-actions-toolbar .toolbarbutton-1 .toolbarbutton-icon {
+  width: 18px;
+  height: 18px;
+}
+
+#task-actions-toolbar .toolbarbutton-1 .toolbarbutton-text {
+  padding-inline-start: 2px;
 }
 
 #task-actions-category {

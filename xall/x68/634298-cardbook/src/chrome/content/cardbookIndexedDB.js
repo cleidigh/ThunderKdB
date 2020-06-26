@@ -28,26 +28,26 @@ if ("undefined" == typeof(cardbookIndexedDB)) {
 			};
 
 			var request = indexedDB.open(cardbookRepository.cardbookDatabaseName, cardbookRepository.cardbookDatabaseVersion);
-		
+
 			// when version changes
 			// for the moment delete all and recreate one new empty
 			request.onupgradeneeded = function(e) {
 				var db = e.target.result;
 				e.target.transaction.onerror = cardbookRepository.cardbookDatabase.onerror;
-
+            
 				if (db.objectStoreNames.contains("cards")) {
 					db.deleteObjectStore("cards");
 				}
 				var store = db.createObjectStore("cards", {keyPath: "cbid", autoIncrement: false});
 				store.createIndex("cacheuriIndex", "cacheuri", { unique: false });
 			};
-
+            
 			// when success, call the observer for starting the load cache and maybe the sync
 			request.onsuccess = function(e) {
 				cardbookRepository.cardbookDatabase.db = e.target.result;
 				cardbookUtils.notifyObservers("DBOpen");
 			};
-
+            
 			// when error, call the observer for starting the load cache and maybe the sync
 			request.onerror = function(e) {
 				cardbookUtils.notifyObservers("DBOpen");

@@ -33,6 +33,7 @@ const getEnigmailWindows = EnigmailLazy.loader("enigmail/windows.jsm", "Enigmail
 const getEnigmailDialog = EnigmailLazy.loader("enigmail/dialog.jsm", "EnigmailDialog");
 const getEnigmailConfigure = EnigmailLazy.loader("enigmail/configure.jsm", "EnigmailConfigure");
 const getEnigmailApp = EnigmailLazy.loader("enigmail/app.jsm", "EnigmailApp");
+const getMsgRead = EnigmailLazy.loader("enigmail/msgRead.jsm", "EnigmailMsgRead");
 const getEnigmailKeyRefreshService = EnigmailLazy.loader("enigmail/keyRefreshService.jsm", "EnigmailKeyRefreshService");
 const getEnigmailKeyServer = EnigmailLazy.loader("enigmail/keyserver.jsm", "EnigmailKeyServer");
 const getEnigmailWksMimeHandler = EnigmailLazy.loader("enigmail/wksMimeHandler.jsm", "EnigmailWksMimeHandler");
@@ -47,6 +48,7 @@ var EXPORTED_SYMBOLS = ["EnigmailCore"];
 
 // Interfaces
 const nsIEnvironment = Ci.nsIEnvironment;
+const APP_STARTUP = 1;
 
 var gPreferredGpgPath = null;
 var gOverwriteEnvVar = [];
@@ -68,6 +70,7 @@ var EnigmailCore = {
 
   startup: function(reason) {
     let self = this;
+    let observerFired = 0;
 
     let env = getEnvironment();
     initializeLogDirectory();
@@ -82,6 +85,21 @@ var EnigmailCore = {
 
     this.factories = [];
 
+    function initService() {
+      if (observerFired > 0) return;
+
+      ++observerFired;
+      const configuredVersion = getEnigmailPrefs().getPref("configuredVersion");
+
+      if (configuredVersion && configuredVersion.length > 0) {
+        self.createInstance();
+        if (!gEnigmailService.initialized) {
+          // try to initialize Enigmail
+          gEnigmailService.initialize(null, getEnigmailApp().getVersion());
+        }
+      }
+    }
+
     function continueStartup(type) {
       logger.DEBUG(`core.jsm: startup.continueStartup(${type})\n`);
 
@@ -91,14 +109,28 @@ var EnigmailCore = {
         getEnigmailOverlays().startup();
         self.factories.push(new Factory(getEnigmailProtocolHandler()));
         self.factories.push(new Factory(mimeEncrypt.Handler));
-      } catch (ex) {
+
+        if (isPostbox() || reason !== APP_STARTUP) {
+          // Postbox or while not starting up
+          initService();
+        }
+
+      }
+      catch (ex) {
+        gEnigmailService = null;
         logger.DEBUG("core.jsm: startup.continueStartup: error " + ex.message + "\n" + ex.stack + "\n");
       }
+    }
+
+    if ((!isPostbox()) && reason === APP_STARTUP) {
+      // if TB starts up, observe "mail-tabs-session-restored"
+      Services.obs.addObserver(initService, "mail-tabs-session-restored", false);
     }
 
     getEnigmailVerify().registerContentTypeHandler();
     getEnigmailWksMimeHandler().registerContentTypeHandler();
     getEnigmailFiltersWrapper().onStartup();
+    getMsgRead().onStartup();
     getEnigmailPEPAdapter().initialize().then(r => {
       continueStartup(0);
     }).catch(r => {
@@ -119,6 +151,7 @@ var EnigmailCore = {
       }
     }
 
+    getMsgRead().onShutdown();
     getEnigmailFiltersWrapper().onShutdown();
     getEnigmailPEPAdapter().onShutdown();
     getEnigmailVerify().unregisterContentTypeHandler();
@@ -155,7 +188,8 @@ var EnigmailCore = {
     try {
       this.createInstance();
       return gEnigmailService.getService(win, startingPreferences);
-    } catch (ex) {
+    }
+    catch (ex) {
       return null;
     }
 
@@ -200,7 +234,8 @@ var EnigmailCore = {
 function getLogDirectoryPrefix() {
   try {
     return getEnigmailPrefs().getPrefBranch().getCharPref("logDirectory") || "";
-  } catch (ex) {
+  }
+  catch (ex) {
     return "";
   }
 }
@@ -255,7 +290,8 @@ function failureOn(ex, status) {
 function getEnvironment(status) {
   try {
     return Cc["@mozilla.org/process/environment;1"].getService(nsIEnvironment);
-  } catch (ex) {
+  }
+  catch (ex) {
     failureOn(ex, status);
   }
   return null;
@@ -309,7 +345,8 @@ function initializeEnvironment(env) {
 
     if (envName in gOverwriteEnvVar) {
       envValue = gOverwriteEnvVar[envName];
-    } else {
+    }
+    else {
       envValue = env.get(envName);
     }
     if (envValue) {
@@ -344,7 +381,8 @@ Enigmail.prototype = {
 
     try {
       getEnigmailConsole().write("Initializing Enigmail service ...\n");
-    } catch (ex) {
+    }
+    catch (ex) {
       failureOn(ex, this);
     }
 
@@ -357,8 +395,8 @@ Enigmail.prototype = {
 
     this.initialized = true;
 
-    getEnigmailLog().DEBUG("core.jsm: Enigmail.initialize: END\n");
     getEnigmailGnuPGUpdate().runUpdateCheck();
+    getEnigmailLog().DEBUG("core.jsm: Enigmail.initialize: END\n");
   },
 
   reinitialize: function() {
@@ -407,8 +445,10 @@ Enigmail.prototype = {
         try {
           // Reset alert count to default value
           getEnigmailPrefs().getPrefBranch().clearUserPref("initAlert");
-        } catch (ex) {}
-      } catch (ex) {
+        }
+        catch (ex) {}
+      }
+      catch (ex) {
         if (firstInitialization) {
           // Display initialization error alert
           const errMsg = (this.initializationError ? this.initializationError : getEnigmailLocale().getString("accessError")) +
@@ -483,4 +523,11 @@ class Factory {
   unregister() {
     Cm.unregisterFactory(this.component.prototype.classID, this);
   }
+}
+
+function isPostbox() {
+  const POSTBOX_ID = "postbox@postbox-inc.com";
+  const XPCOM_APPINFO = "@mozilla.org/xre/app-info;1";
+
+  return Cc[XPCOM_APPINFO].getService(Ci.nsIXULAppInfo).ID == POSTBOX_ID;
 }

@@ -2132,6 +2132,10 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			cardbookRepository.dateDisplayedFormat = document.getElementById('dateDisplayedFormatMenulist').selectedItem.value;
 		},
 
+		validateUseColor: function () {
+			cardbookRepository.useColor = document.getElementById('useColorRadiogroup').selectedItem.value;
+		},
+
 		showPane: function (paneID) {
 			if (!paneID) {
 				return;
@@ -2209,6 +2213,9 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				case "autocompleteRestrictSearch":
 					wdw_cardbookConfiguration.validateAutocompleteRestrictSearchFields();
 					break;
+				case "useColor":
+					wdw_cardbookConfiguration.validateUseColor();
+					break;
 				case "accountsRestrictions":
 					wdw_cardbookConfiguration.validateRestrictions();
 					break;
@@ -2219,10 +2226,10 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 					cardbookRepository.debugMode = document.getElementById('debugModeCheckBox').checked;
 					break;
 				case "showNameAs":
-					wdw_cardbookConfiguration.validateDisplaySettings();
-					break;
-				case "showNameAs":
 					wdw_cardbookConfiguration.validateShowNameAs();
+					break;
+				case "adrFormula":
+					wdw_cardbookConfiguration.validateAdrFormula();
 					break;
 				case "dateDisplayedFormat":
 					wdw_cardbookConfiguration.validateDateDisplayedFormat();

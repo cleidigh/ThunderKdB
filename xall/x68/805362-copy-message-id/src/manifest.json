@@ -3,13 +3,19 @@
 	"applications": {
 		"gecko": {
 			"id": "copy-message-id@j.kahn",
-			"strict_min_version": "68.0"
+			"strict_min_version": "68.7.0"
 		}
 	},
 	"name": "Copy Message ID",
 	"description": "Adds a button to the message view toolbar to copy the message ID to the clipboard",
-	"version": "1.0.3",
-	"legacy": {
-		"type": "xul"
-	}
+	"options_ui": {
+		"page": "options/options.html"
+	},
+	"permissions": ["storage", "messagesRead", "clipboardWrite"],
+	"message_display_action": {
+		"default_title": "Copy Message ID",
+		"default_icon": "icons/button.png",
+		"default_popup": "popup/popup.html"
+	},
+	"version": "1.3.1"
 }

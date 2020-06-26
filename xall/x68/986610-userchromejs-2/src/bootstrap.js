@@ -50,9 +50,8 @@ var allInOneObserver = {
 }
 
 function startup() {
-    var windows = Services.wm.getEnumerator(null);
-    while (windows.hasMoreElements()) {
-        allInOneObserver.handleExistingWindow(windows.getNext());
+    for (let window of Services.wm.getEnumerator(null)) {
+        allInOneObserver.handleExistingWindow(window);
     }
     Cc["@mozilla.org/embedcomp/window-watcher;1"].
         getService(Ci.nsIWindowWatcher).registerNotification(

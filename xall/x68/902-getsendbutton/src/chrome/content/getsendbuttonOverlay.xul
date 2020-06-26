@@ -1,90 +1,85 @@
 <?xml version="1.0"?>
 
-<?xml-stylesheet href="chrome://getsendbutton/skin/getsendbutton.css"
-                 type="text/css"?>
+<?xml-stylesheet href="chrome://getsendbutton/skin/getsendbutton.css" type="text/css"?>
 
 <!DOCTYPE window [
- <!ENTITY % messengercomposeDTD SYSTEM "chrome://messenger/locale/messenger.dtd" >
+ <!ENTITY % messengercomposeDTD SYSTEM "chrome://messenger/locale/messenger.dtd">
  %messengercomposeDTD;
- <!ENTITY % getsendbuttonDTD SYSTEM "chrome://getsendbutton/locale/getsendbutton.dtd" >
+ <!ENTITY % getsendbuttonDTD SYSTEM "chrome://getsendbutton/locale/getsendbutton.dtd">
  %getsendbuttonDTD;
 ]>
 
-<overlay id="GetSendButton_messengerOverlay"
-    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="GetSendButton_messengerOverlay" 
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-    <toolbarbutton id="button-getmsg"
-        label="&getsendbutton.buttonGetsend.label;"
-        labelgetmsg="&getMsgButton1.label;"
-        labelgetsend="&getsendbutton.buttonGetsend.label;"
-        tooltiptext="&getsendbutton.buttonGetsend.tooltip;"
-        oncommand="GetSendButton_functions.GetSingleAccountOrGetAndSend(event.target._folder,event);">
-      <menupopup id="GetSendButton_popupGetSend"
-      	  hidden="true"
-      	  onpopupshowing="file_init();">
-        <menu id="GetSendButton_messenger_menupopup_ReceiveAccount"
-              label="&getNewMsgForCmd.label;"
-              tooltiptext="&getNewMsgForCmd.label;"
-              observes="button_getNewMessages">
-          <menupopup
-              onpopupshowing="getMsgToolbarMenu_init();"
-              is="folder-menupopup"
-              expandFolders="false"
-              mode="getMail">
-            <menuitem id="GetSendButton_messenger_menupopup_ReceiveAll" class="menuitem-iconic"
-                label="&getsendbutton.menuGetall.label;"
-                tooltiptext="&getsendbutton.menuGetall.tooltip;"
-                oncommand="GetSendButton_functions.GetMessagesForAllAccounts();event.stopPropagation();" />
-            <menuitem id="GetSendButton_messenger_menupopup_ReceiveAuth" class="menuitem-iconic"
-                label="&getsendbutton.menuGetauth.label;"
-                tooltiptext="&getsendbutton.menuGetauth.tooltip;"
-                oncommand="goDoCommand('cmd_getMsgsForAuthAccounts');event.stopPropagation();" />
-            <menuseparator id="button-getAllNewMsgSeparator"/>
-          </menupopup>
-        </menu>
-        <menuitem id="GetSendButton_messenger_menupopup_sendUnsent" class="menuitem-iconic"
-            label="&getsendbutton.menuSendall.label;"
-            tooltiptext="&getsendbutton.menuSendall.tooltip;"
-            oncommand="goDoCommand('cmd_sendUnsentMsgs');event.stopPropagation();">
-            <observes element="cmd_sendUnsentMsgs" attribute="disabled"/>
-        </menuitem>
-        <menuseparator/>
-        <menuitem id="GetSendButton_messenger_menupopup_SyncAll"
-            label="&synchronizeOfflineCmd.label;"
-            tooltiptext="&getsendbutton.menuSyncAll.tooltip;"
-            oncommand="goDoCommand('cmd_synchronizeOffline');event.stopPropagation();">
-            <observes element="cmd_synchronizeOffline" attribute="disabled"/>
-        </menuitem>
-        <menuitem id="GetSendButton_messenger_menupopup_SyncFlagged" class="menuitem-iconic"
-            label="&downloadStarredCmd.label;"
-            oncommand="goDoCommand('cmd_downloadFlagged');event.stopPropagation();">
-            <observes element="cmd_downloadFlagged" attribute="disabled"/>
-        </menuitem>
-        <menuitem id="GetSendButton_messenger_menupopup_SyncSelected"
-            label="&downloadSelectedCmd.label;"
-            oncommand="goDoCommand('cmd_downloadSelected');event.stopPropagation();">
-            <observes element="cmd_downloadSelected" attribute="disabled"/>
-        </menuitem>
-      </menupopup>
+  <toolbarbutton id="button-getmsg" 
+    label="&getsendbutton.buttonGetsend.label;" 
+    labelgetmsg="&getMsgButton1.label;" 
+    labelgetsend="&getsendbutton.buttonGetsend.label;" 
+    tooltiptext="&getsendbutton.buttonGetsend.tooltip;" 
+    oncommand="GetSendButton_functions.GetSingleAccountOrGetAndSend(event.target._folder,event);">
+    <menupopup id="GetSendButton_popupGetSend" 
+      hidden="true" 
+      onpopupshowing="file_init();">
+      <menu id="GetSendButton_messenger_menupopup_ReceiveAccount" 
+        label="&getNewMsgForCmd.label;" 
+        tooltiptext="&getNewMsgForCmd.label;" 
+        observes="button_getNewMessages">
+        <menupopup onpopupshowing="getMsgToolbarMenu_init();" 
+          is="folder-menupopup" 
+          expandFolders="false" 
+          mode="getMail">
+          <menuitem id="GetSendButton_messenger_menupopup_ReceiveAll" 
+            class="menuitem-iconic" 
+            label="&getsendbutton.menuGetall.label;" 
+            tooltiptext="&getsendbutton.menuGetall.tooltip;" 
+            oncommand="GetSendButton_functions.GetMessagesForAllAccounts();event.stopPropagation();" />
+          <menuitem id="GetSendButton_messenger_menupopup_ReceiveAuth" 
+            class="menuitem-iconic" 
+            label="&getsendbutton.menuGetauth.label;" 
+            tooltiptext="&getsendbutton.menuGetauth.tooltip;" 
+            oncommand="goDoCommand('cmd_getMsgsForAuthAccounts');event.stopPropagation();" />
+          <menuseparator id="button-getAllNewMsgSeparator"/>
+        </menupopup>
+      </menu>
+      <menuitem id="GetSendButton_messenger_menupopup_sendUnsent" 
+        class="menuitem-iconic" 
+        label="&getsendbutton.menuSendall.label;" 
+        tooltiptext="&getsendbutton.menuSendall.tooltip;" 
+        oncommand="goDoCommand('cmd_sendUnsentMsgs');event.stopPropagation();">
+      </menuitem>
+      <menuseparator/>
+      <menuitem id="GetSendButton_messenger_menupopup_SyncAll" 
+        label="&synchronizeOfflineCmd.label;" 
+        tooltiptext="&getsendbutton.menuSyncAll.tooltip;" 
+        oncommand="goDoCommand('cmd_synchronizeOffline');event.stopPropagation();">
+      </menuitem>
+      <menuitem id="GetSendButton_messenger_menupopup_SyncFlagged" 
+        class="menuitem-iconic" 
+        label="&downloadStarredCmd.label;" 
+        oncommand="goDoCommand('cmd_downloadFlagged');event.stopPropagation();">
+      </menuitem>
+      <menuitem id="GetSendButton_messenger_menupopup_SyncSelected" 
+        label="&downloadSelectedCmd.label;" 
+        oncommand="goDoCommand('cmd_downloadSelected');event.stopPropagation();">
+      </menuitem>
+    </menupopup>
+  </toolbarbutton>
+
+  <toolbarpalette id="MailToolbarPalette">
+    <toolbarbutton id="GetSendButton_S_all" 
+      class="toolbarbutton-1" 
+      label="&getsendbutton.buttonSendall.label;" 
+      tooltiptext="&getsendbutton.buttonSendall.tooltip;" 
+      oncommand="goDoCommand('cmd_sendUnsentMsgs')">
     </toolbarbutton>
+  </toolbarpalette>
 
-	<toolbarpalette id="MailToolbarPalette">
-		<toolbarbutton id="GetSendButton_S_all"
-		    class="toolbarbutton-1"
-		    label="&getsendbutton.buttonSendall.label;"
-		    tooltiptext="&getsendbutton.buttonSendall.tooltip;"
-		    oncommand="goDoCommand('cmd_sendUnsentMsgs')">
-		</toolbarbutton>
-	</toolbarpalette>
-
-	<script 
-		src="chrome://getsendbutton/content/getsendbuttonPrefsListener.js"
-		type="application/x-javascript"/>
-	<script 
-		src="chrome://getsendbutton/content/getsendbuttonFunctions.js"
-		type="application/x-javascript"/>
-	<script 
-		src="chrome://getsendbutton/content/getsendbuttonButtonListeners.js"
-		type="application/x-javascript"/>
+  <script src="chrome://getsendbutton/content/getsendbuttonPrefsListener.js" 
+    type="application/x-javascript"/>
+  <script src="chrome://getsendbutton/content/getsendbuttonFunctions.js" 
+    type="application/x-javascript"/>
+  <script src="chrome://getsendbutton/content/getsendbuttonButtonListeners.js" 
+    type="application/x-javascript"/>
 
 </overlay>

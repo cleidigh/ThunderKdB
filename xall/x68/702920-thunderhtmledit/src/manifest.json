@@ -2,16 +2,33 @@
   "manifest_version": 2,
   "name": "ThunderHTMLedit",
   "description": "Thunderbird HTML editor. This add-on adds a HTML tab to the composition window where you can see and edit the HTML source of the message. Original idea by Łukasz 'Arivald' Płomiński, author of the 'Stationery' add-on. Based on Ace HTML editor, https://ace.c9.io/. HTML icon by PelFusion (www.pelfusion.com).",
-  "version": "2.1.2",
+  "version": "3.0.4",
   "author": "Jorg K",
-  "legacy": {
-    "type": "xul"
-  },
+  "default_locale": "en",
   "applications": {
     "gecko": {
       "id": "jorgk@thunderHTMLedit",
       "strict_min_version": "68.0a1"
     }
+  },
+  "experiment_apis": {
+    "ThunderHTMLedit": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          ["ThunderHTMLedit"]
+        ],
+        "script": "experiments.js"
+      }
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
   },
   "icons": {
     "32": "chrome/skin/html-icon.png"

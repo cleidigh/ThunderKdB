@@ -17,6 +17,7 @@ const EnigmailOS = ChromeUtils.import("chrome://enigmail/content/modules/os.jsm"
 const XPCOM_APPINFO = "@mozilla.org/xre/app-info;1";
 const NS_IOSERVICE_CONTRACTID = "@mozilla.org/network/io-service;1";
 
+const MAX_LOG_LEN = 2500;
 
 var EnigmailLog = {
   level: 3,
@@ -87,7 +88,7 @@ var EnigmailLog = {
         data += ex.toString() + "\n";
       }
     }
-    return data + "\n" + EnigmailLog.data;
+    return data + "\n" + EnigmailLog.data.join("");
   },
 
   WRITE: function(str) {
@@ -102,16 +103,16 @@ var EnigmailLog = {
       dump(datStr + str);
 
     if (EnigmailLog.data === null) {
-      EnigmailLog.data = "";
+      EnigmailLog.data = [];
       let appInfo = Cc[XPCOM_APPINFO].getService(Ci.nsIXULAppInfo);
       EnigmailLog.WRITE("Mozilla Platform: " + appInfo.name + " " + appInfo.version + "\n");
     }
     // truncate first part of log data if it grow too much
-    if (EnigmailLog.data.length > 5120000) {
-      EnigmailLog.data = EnigmailLog.data.substr(-400000);
+    if (EnigmailLog.data.length > MAX_LOG_LEN) {
+      EnigmailLog.data.splice(0, 200);
     }
 
-    EnigmailLog.data += datStr + str;
+    EnigmailLog.data.push(datStr + str);
 
     if (EnigmailLog.fileStream) {
       EnigmailLog.fileStream.write(datStr, datStr.length);

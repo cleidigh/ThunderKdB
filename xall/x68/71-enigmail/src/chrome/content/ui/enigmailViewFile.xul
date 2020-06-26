@@ -8,14 +8,10 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://enigmail/skin/enigmail.css" type="text/css"?>
 
-<?xul-overlay href="chrome://global/content/globalOverlay.xul"?>
-<?xul-overlay href="chrome://communicator/content/utilityOverlay.xul"?>
 
 <!DOCTYPE window [
   <!ENTITY % enigmailDTD SYSTEM "chrome://enigmail/locale/enigmail.dtd">
    %enigmailDTD;
-  <!ENTITY % utilDTD SYSTEM "chrome://communicator/locale/utilityOverlay.dtd">
-   %utilDTD;
 ]>
 
 <window id="EnigmailViewFile"
@@ -26,16 +22,15 @@
         onload="return enigLoadPage();"
         persist="screenX screenY">
 
-  <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
   <script type="application/x-javascript" src="chrome://enigmail/content/ui/enigmailViewFile.js"/>
 
 
   <html:div id="logFileBox" style="height: 100%; width: 100%">
 
-    <html:p id="contentBox" style="display: block; white-space: pre; overflow: auto; width: 600px; height: 350px;"> </html:p>
+    <html:p id="contentBox" style="display: block; white-space: pre; overflow: auto; width: 600px; height: 315px"> </html:p>
 
-    <html:div style="text-align: center; height: 30px;" >
-      <html:button onclick="saveLogFile()">&enigmail.savelogfile.label;</html:button>
+    <html:div style="position: fixed; left: 0; bottom: 0; width: 100%; text-align: center;">
+        <html:button onclick="saveLogFile()" style="margin: 7px;">&enigmail.savelogfile.label;</html:button>
     </html:div>
   </html:div>
 

@@ -1,6 +1,6 @@
 {
     "name": "userChromeJS",
-    "version": "0.0.5",
+    "version": "0.0.9",
     "description": "Load the contents of chrome/userChrome.js from the user's profile directory every time a window is opened. This is an attempt to re-implement the old userChromeJS extension to make it compatible with Thunderbird 68.",
     "author": "Jonathan Kamens",
     "homepage_url": "https://github.com/jikamens/userChromeJS",
@@ -10,7 +10,8 @@
     "applications": {
         "gecko": {
             "id": "userChromeJS@kamens.us",
-            "strict_min_version": "68.0a1"
+            "strict_min_version": "68.0a1",
+            "strict_max_version": "71.*"
         }
     },
     "manifest_version": 2

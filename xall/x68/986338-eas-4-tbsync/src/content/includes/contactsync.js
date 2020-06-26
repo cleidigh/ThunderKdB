@@ -111,8 +111,9 @@ var Contacts = {
     // --------------------------------------------------------------------------- //
     // Read WBXML and set Thunderbird item
     // --------------------------------------------------------------------------- //
-    setThunderbirdItemFromWbxml: function (abItem, data, id, syncdata) {
+    setThunderbirdItemFromWbxml: function (abItem, data, id, syncdata, mode = "standard") {
         let asversion = syncdata.accountData.getAccountProperty("asversion");
+        if (TbSync.prefs.getIntPref("log.userdatalevel") > 2) TbSync.dump("Processing " + mode + " contact item", id);
 
         abItem.primaryKey = id;
 
@@ -135,7 +136,7 @@ var Contacts = {
                             let parsedInput = MailServices.headerParser.makeFromDisplayAddress(value);
                             let fixedValue =  (parsedInput && parsedInput[0] && parsedInput[0].email) ? parsedInput[0].email : value;
                             if (fixedValue != value) {
-                                if (TbSync.prefs.getIntPref("log.userdatalevel")>2) TbSync.dump("Parsing email display string via RFC 2231 and RFC 2047 ("+EAS_property+")", value + " -> " + fixedValue);
+                                if (TbSync.prefs.getIntPref("log.userdatalevel") > 2) TbSync.dump("Parsing email display string via RFC 2231 and RFC 2047 ("+EAS_property+")", value + " -> " + fixedValue);
                                 value = fixedValue;
                             }
                             break;
@@ -144,7 +145,7 @@ var Contacts = {
                     abItem.setProperty(TB_property, value);
                 } else {
                     //clear
-                    abItem.deleteProperty(TB_property);
+                    abItem.setProperty(TB_property, "");
                 }
             }
         }
@@ -157,9 +158,9 @@ var Contacts = {
             let value = eas.xmltools.checkString(data[dates[p][0]]);
             if (value == "") {
                 //clear
-                abItem.deleteProperty(dates[p][1]);
-                abItem.deleteProperty(dates[p][2]);
-                abItem.deleteProperty(dates[p][3]);
+                abItem.setProperty(dates[p][1], "");
+                abItem.setProperty(dates[p][2], "");
+                abItem.setProperty(dates[p][3], "");
             } else {
                 //set
                 let dateObj = new Date(value);
@@ -180,8 +181,8 @@ var Contacts = {
             let value = eas.xmltools.checkString(data[streets[p][0]]);
             if (value == "") {
                 //clear
-                abItem.deleteProperty(streets[p][1]);
-                abItem.deleteProperty(streets[p][2]);
+                abItem.setProperty(streets[p][1], "");
+                abItem.setProperty(streets[p][2], "");
             } else {
                 //set
                 let lines = value.split(seperator);
@@ -193,7 +194,12 @@ var Contacts = {
 
         //take care of photo
         if (data.Picture) {
-            abItem.addPhoto(id + '.jpg', eas.xmltools.nodeAsArray(data.Picture)[0]); //Kerio sends Picture as container
+            abItem.addPhoto(id, eas.xmltools.nodeAsArray(data.Picture)[0], "jpg"); //Kerio sends Picture as container
+        } else {
+            //clear
+            abItem.setProperty("PhotoName", "");
+            abItem.setProperty("PhotoType", "");
+            abItem.setProperty("PhotoURI", "");
         }
         
 
@@ -298,6 +304,8 @@ var Contacts = {
         //take care of photo
         if (abItem.getProperty("PhotoType", "") == "file") {
             wbxml.atag("Picture", abItem.getPhoto());                    
+        } else {
+            wbxml.atag("Picture", "");                    
         }
         
         

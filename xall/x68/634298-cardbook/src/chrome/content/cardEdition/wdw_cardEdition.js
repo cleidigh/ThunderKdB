@@ -1,4 +1,5 @@
 if ("undefined" == typeof(wdw_cardEdition)) {
+	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { FormHistory } = ChromeUtils.import("resource://gre/modules/FormHistory.jsm");
 	var { AddonManager } = ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
@@ -379,14 +380,13 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				}
 			}
 
-			var useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
 			for (let category of categoryList) {
 				let item = document.createXULElement("menuitem");
 				item.setAttribute("class", "menuitem-iconic cardbook-item cardbookCategoryMenuClass");
 				item.setAttribute("label", category);
 				item.setAttribute("value", category);
 				item.setAttribute("type", "checkbox");
-				if (category in cardbookRepository.cardbookNodeColors && useColor != "nothing") {
+				if (category in cardbookRepository.cardbookNodeColors && cardbookRepository.useColor != "nothing") {
 					item.setAttribute("colorType", 'category_' + cardbookUtils.formatCategoryForCss(category));
 				}
 				if (aCategoryChecked.includes(category)) {
@@ -794,10 +794,10 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		clearCard: function () {
 			cardbookWindowUtils.clearCard();
-			for (var i in cardbookRepository.multilineFields) {
-				let myType = cardbookRepository.multilineFields[i];
-				cardbookElementTools.deleteRows(myType + 'Groupbox');
+			for (let type of cardbookRepository.multilineFields) {
+				cardbookElementTools.deleteRows(type + 'Groupbox');
 			}
+			cardbookElementTools.deleteRows('eventGroupbox');
 			document.getElementById('genderMenulist').selectedIndex = 0;
 			wdw_cardEdition.loadCategories([]);
 		},
@@ -1186,6 +1186,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				window.arguments[0].cardOut = myOutCard;
 				wdw_cardEdition.workingCard = null;
 				wdw_cardEdition.updateFormFields();
+				
+				if (window.arguments[0].editionMode == "AddEmail") {
+					wdw_cardEdition.cloneCard(window.arguments[0].cardOut, window.arguments[0].cardIn);
+				}
+
 				if (window.arguments[0].editionCallback) {
 					window.arguments[0].editionCallback(window.arguments[0].cardIn, window.arguments[0].cardOut, window.arguments[0].editionMode);
 				}

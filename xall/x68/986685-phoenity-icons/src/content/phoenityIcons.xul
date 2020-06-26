@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE overlay>
 
+<!--
 <?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+-->
 <?xml-stylesheet href="chrome://phoenityIcons/skin/primaryToolbar.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/chat.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/quickFilterBar.css" type="text/css"?>
@@ -15,12 +17,17 @@
 <?xml-stylesheet href="chrome://phoenityIcons/skin/searchBox.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/mailWindow1.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/numberinput.css" type="text/css"?>
+<?xml-stylesheet href="chrome://phoenityIcons/skin/richlistbox.css" type="text/css"?>
 
 <?xml-stylesheet href="chrome://phoenityIcons/skin/messengercompose/messengercompose.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/addressbook/addressbook.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/addressbook/abContactsPanel.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/addressbook/abResultsPane.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/addressbook/cardDialog.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://phoenityIcons/skin/smime/msgCompSMIMEOverlay.css" type="text/css"?>
+<?xml-stylesheet href="chrome://phoenityIcons/skin/smime/msgHdrViewSMIMEOverlay.css" type="text/css"?>
+<?xml-stylesheet href="chrome://phoenityIcons/skin/smime/msgReadSMIMEOverlay.css" type="text/css"?>
 
 <?xml-stylesheet href="chrome://phoenityIcons-OS/skin/phoenityIcons.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons-OS/skin/messageHeader.css" type="text/css"?>
@@ -34,6 +41,7 @@
 <?xml-stylesheet href="chrome://phoenityIcons/skin/gContactSync/gContactSync.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/pswitcher2/pswitcher2.css" type="text/css"?>
 <?xml-stylesheet href="chrome://phoenityIcons/skin/cardbook/cardbook.css" type="text/css"?>
+<?xml-stylesheet href="chrome://phoenityIcons/skin/paranoia/paranoia.css" type="text/css"?>
 
 <?xml-stylesheet href="chrome://phoenityIcons/skin/toggleQuotes/toggleQuotes.css" type="text/css"?>
 
@@ -43,5 +51,6 @@
 
 <script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
 <script type="application/javascript" src="chrome://messenger/content/mailWindowOverlay.js"/>
+<script type="application/javascript" src="chrome://phoenityIcons/content/phoenityIcons.js"/>
 
 </overlay>

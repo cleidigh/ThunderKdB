@@ -56,13 +56,13 @@ var tbSyncAccounts = {
       //some item is selected
       let selectedItem = accountsList.selectedItem;
       selectedAccount = selectedItem.value;
-      selectedAccountName = selectedItem.getAttribute("label");
+      selectedAccountName = selectedItem.childNodes[1].getAttribute("value");
       isSyncing = TbSync.core.isSyncing(selectedAccount);
       isConnected = TbSync.core.isConnected(selectedAccount);
       isEnabled = TbSync.core.isEnabled(selectedAccount);
       isInstalled = tbSyncAccounts.hasInstalledProvider(selectedAccount);
     }
-    
+
     //hide if no accounts are avail (which is identical to no account selected)
     if (isActionsDropdown) document.getElementById(selector + "SyncAllAccounts").hidden = (selectedAccount === null);
     
@@ -113,7 +113,7 @@ var tbSyncAccounts = {
       }
       
       if (!tbSyncAccounts.hasInstalledProvider(accountsList.selectedItem.value)) {
-        if (confirm(TbSync.getString("prompt.EraseAccount").replace("##accountName##", accountsList.selectedItem.getAttribute("label")))) {
+        if (confirm(TbSync.getString("prompt.Erase").replace("##accountName##", accountsList.selectedItem.getAttribute("label")))) {
           //delete account and all folders from db
           TbSync.db.removeAccount(accountsList.selectedItem.value);
           //update list
@@ -122,6 +122,13 @@ var tbSyncAccounts = {
       } else if (confirm(TbSync.getString("prompt.DeleteAccount").replace("##accountName##", accountsList.selectedItem.getAttribute("label")))) {
         //cache all folders and remove associated targets 
         TbSync.core.disableAccount(accountsList.selectedItem.value);
+        
+        // the following call might fail, as not all providers provide that method, it was mainly added to cleanup stored passwords
+        try  {
+          let accountData = new TbSync.AccountData(accountsList.selectedItem.value);
+          TbSync.providers[accountData.getAccountProperty("provider")].Base.onDeleteAccount(accountData);
+        } catch (e) {                Components.utils.reportError(e);}
+
         //delete account and all folders from db
         TbSync.db.removeAccount(accountsList.selectedItem.value);
         //update list

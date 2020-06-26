@@ -338,9 +338,9 @@ OWAAccount.ConvertEvent = function(aEvent) {
     itemid: aEvent.ItemId.Id,
     title: aEvent.Subject,
     startDate: aEvent.Start || aEvent.StartDate || aEvent.Recurrence && aEvent.Recurrence.EndDateRecurrence && aEvent.Recurrence.EndDateRecurrence.StartDate.slice(0, 10),
-    startTimeZone: aEvent.StartTimeZone && aEvent.StartTimeZone.Id,
+    startTimeZone: OWAAccount.ExtractTimezone(aEvent.StartTimeZone || {}),
     endDate: aEvent.End,
-    endTimeZone: (aEvent.EndTimeZone || aEvent.StartTimeZone || {}).Id,
+    endTimeZone: OWAAccount.ExtractTimezone(aEvent.EndTimeZone || aEvent.StartTimeZone || {}),
     isAllDayEvent: aEvent.IsAllDayEvent,
     isCancelled: aEvent.IsCancelled,
     creationDate: aEvent.DateTimeCreated,
@@ -364,6 +364,19 @@ OWAAccount.ConvertEvent = function(aEvent) {
     requiredAttendees: aEvent.RequiredAttendees ? aEvent.RequiredAttendees.map(OWAAccount.ConvertAttendee) : [],
     optionalAttendees: aEvent.OptionalAttendees ? aEvent.OptionalAttendees.map(OWAAccount.ConvertAttendee) : [],
   };
+}
+
+/**
+ * Get the time zone from an OWA time zone object.
+ *
+ * @param aTimezone {Object}
+ *          Id      {String} The time zone id
+ *          Name    {String} The time zone name
+ *
+ * For some reason Exchange sometimes uses the Id and sometimes the Name...
+ */
+OWAAccount.ExtractTimezone = function(aTimezone) {
+  return aTimezone.Id || aTimezone.Name;
 }
 
 /**
@@ -662,13 +675,29 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
           SuppressReadRecipts: true,
         },
       };
-      await this.CallService("DeleteItem", request); // owa.js
+      try {
+        await this.CallService("DeleteItem", request); // owa.js
+      } catch (ex) {
+        if (ex.type == "ErrorItemNotFound" ||
+            ex.type == "ErrorCalendarOccurrenceIsDeletedFromRecurrence") {
+          // Already deleted. Ignore.
+        } else {
+          throw ex;
+        }
+      }
       return;
     }
   }
   let action = aNotify && aFolder == "calendar" ? "UpdateCalendarEvent" : "UpdateItem";
   let newEvent = OWAAccount.ConvertToOWA(aFolder, aNewEvent);
   let oldEvent = OWAAccount.ConvertToOWA(aFolder, aOldEvent);
+  // OWA ignores a time zone change unless we include the time as well.
+  if (aNewEvent.startTimeZone != aOldEvent.startTimeZone) {
+    delete oldEvent.Start;
+  }
+  if (aNewEvent.endTimeZone != aOldEvent.endTimeZone) {
+    delete oldEvent.End;
+  }
   let updates = [];
   for (let key in OWAAccount.kFieldMap) {
     if (JSON.stringify(newEvent[key]) != JSON.stringify(oldEvent[key])) {
@@ -809,7 +838,15 @@ OWAAccount.prototype.DeleteEvent = async function(aEventId, aNotify) {
       SuppressReadRecipts: true,
     },
   };
-  await this.CallService("DeleteItem", request); // owa.js
+  try {
+    await this.CallService("DeleteItem", request); // owa.js
+  } catch (ex) {
+    if (ex.type == "ErrorItemNotFound") {
+      // Already deleted. Ignore.
+    } else {
+      throw ex;
+    }
+  }
 }
 
 /**

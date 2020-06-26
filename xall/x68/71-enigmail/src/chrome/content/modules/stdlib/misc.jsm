@@ -27,16 +27,16 @@ var EXPORTED_SYMBOLS = [
   'isOSX', 'isWindows', 'isAccel'
 ]
 
-const {
-  classes: Cc,
-  interfaces: Ci,
-  utils: Cu
-} = Components;
-
 const fixIterator = ChromeUtils.import("resource:///modules/iteratorUtils.jsm").fixIterator;
 const XPCOMUtils = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm").XPCOMUtils;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
-const MailServices = ChromeUtils.import("resource:///modules/MailServices.jsm").MailServices;
+var MailServices;
+try {
+  MailServices = ChromeUtils.import("resource:///modules/MailServices.jsm").MailServices;
+}
+catch (x){
+  MailServices = ChromeUtils.import("resource:///modules/mailServices.js").MailServices;
+}
 
 XPCOMUtils.defineLazyServiceGetter(MailServices, "i18nDateFormatter",
   "@mozilla.org/intl/scriptabledateformat;1");

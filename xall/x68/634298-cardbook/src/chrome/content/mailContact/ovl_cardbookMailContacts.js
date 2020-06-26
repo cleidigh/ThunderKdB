@@ -1,5 +1,6 @@
 if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 	var { msg_search } = ChromeUtils.import("resource:///modules/gloda/msg_search.js");
+	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { AddonManager } = ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
@@ -8,11 +9,9 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 	var ovl_cardbookMailContacts = {
 		knownContacts: false,
 
-		// used by ovl_cardbookMailContacts.isEmailRegistered to apply the mail account restrictions
-		// used by ovl_attachments.setCardBookMenus to apply the mail account restrictions
 		getIdentityKey: function() {
 			var result = "";
-			if (gFolderDisplay.selectedCount == 1) {
+			if (gFolderDisplay && gFolderDisplay.selectedCount == 1) {
 				var accountManager = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager);
 				var identity = accountManager.getFirstIdentityForServer(gFolderDisplay.selectedMessage.folder.server);
 				if (identity) {
@@ -286,10 +285,12 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		var rv = _original.apply(null, arguments);
 
 		// Execute some action afterwards.
-		gContextMenu.showItem("mailContext-addToCardBookMenu", gContextMenu.onMailtoLink && !gContextMenu.inThreadPane);
-		if (gContextMenu.onMailtoLink && !gContextMenu.inThreadPane) {
-			if (cardbookPreferences.getBoolPref("extensions.cardbook.exclusive")) {
-				gContextMenu.showItem("mailContext-addemail", false);
+		if (gContextMenu) {
+			gContextMenu.showItem("mailContext-addToCardBookMenu", gContextMenu.onMailtoLink && !gContextMenu.inThreadPane);
+			if (gContextMenu.onMailtoLink && !gContextMenu.inThreadPane) {
+				if (cardbookPreferences.getBoolPref("extensions.cardbook.exclusive")) {
+					gContextMenu.showItem("mailContext-addemail", false);
+				}
 			}
 		}
 		

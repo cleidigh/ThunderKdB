@@ -2,14 +2,14 @@
 <!ENTITY enigmail.about.accesskey           "M">
 <!ENTITY enigmail.about.label              "Mu Enigmail">
 <!ENTITY enigmail.acKeyTransfer.displayPasswd.title  "Còd na teachdaireachd suidheachadh Autocrypt">
-<!ENTITY enigmail.acKeyTransfer.msgCreated.desc1     "The setup message has been sent to yourself.">
-<!ENTITY enigmail.acKeyTransfer.msgCreated.desc2     "Please switch to the other device now and open the message. You should be prompted for a setup code. Please type the following digits into the prompt:">
+<!ENTITY enigmail.acKeyTransfer.msgCreated.desc1     "Chaidh an teachdaireachd suidheachaidh a chur thugad fhèin.">
+<!ENTITY enigmail.acKeyTransfer.msgCreated.desc2     "Cleachd an t-uidheam eile a-nis ’s fosgail an teachdaireachd air. Bu chòir dha faighneachd dhut dè an còd suidheachaidh. Sgrìobh na h-àireamhan seo mar fhreagairt:">
 <!ENTITY enigmail.acKeyTransfer.selectAccount.label  "Cruthaich teachdaireachd suidheachaidh dhan chunntas:">
 <!ENTITY enigmail.acKeyTransfer.switchDevice.desc    "Nuair a bhios tu air seo a dhèanamh, bidh an t-uidheam eile agad ullamh gus Autocrypt a chleachdadh.">
-<!ENTITY enigmail.acKeyTransfer.welcome.desc1        "If you have another device that is Autocrypt-enabled, you can transfer your key to the other device via a so-called 'Autocrypt Setup Message'.
-                                                      Such a message will allow your other device to send and receive encrypted emails just like Enigmail with just a few clicks.">
-<!ENTITY enigmail.acKeyTransfer.welcome.desc2        "Please select below the account for which you want to transfer your key.
-                                                      We will display a setup code (password) on the following screen that you will need to enter on the other device in order to import your key and related settings.">
+<!ENTITY enigmail.acKeyTransfer.welcome.desc1        "Ma tha uidheam eile agad le Autocrypt an comas air, ’s urrainn dhut an iuchair agad a thar-chur dhan uidheam eile le “teachdaireachd suidheachadh Autocrypt”.
+                                                      Bheir teachdaireachd dhen leithid comas dhan uidheam eile ach an cuir ’s faigh e puist-d chrioptaichte mar a nì Enigmail le briog no dhà.">
+<!ENTITY enigmail.acKeyTransfer.welcome.desc2        "Tagh an cunntas dhan a thèid an iuchair a thar-chur gu h-ìosal.
+                                                      Seallaidh sinn còd suidheachaidh (facal-faire) air an sgrìn a leanas is feumaidh tu a chur a-steach air an uidheam eile ach an ion-phortaich thu an iuchair ’s na roghainnean co-cheangailte rithe.">
 <!ENTITY enigmail.acKeyTransfer.welcome.title        "Tòisich air tar-chur na h-iuchrach">
 <!ENTITY enigmail.acKeyTransfer.window.title         "Tar-chur na h-iuchrach Autocrypt">
 <!ENTITY enigmail.acPreferEncrypt.label              "B’ fhearr leam puist-d chrioptaichte o na daoine leis an dèan mi conaltradh puist-d">
@@ -23,7 +23,7 @@
 <!ENTITY enigmail.action.label                      "Gnìomh">
 <!ENTITY enigmail.add.accesskey                     "C">
 <!ENTITY enigmail.add.label                         "Cuir ris">
-<!ENTITY enigmail.addPhoto.question.label            "Do you want to add the following picture to the key?">
+<!ENTITY enigmail.addPhoto.question.label            "A bheil thu airson an dealbh seo a chur ris an iuchair?">
 <!ENTITY enigmail.addPhoto.title                     "Cuir an dealbh ris an iuchair">
 <!ENTITY enigmail.addToRule.newRuleButton.accesskey  "r">
 <!ENTITY enigmail.addToRule.newRuleButton.label      "Cruthaich riaghailt ùr">
@@ -53,7 +53,7 @@
 <!ENTITY enigmail.amPrefPgpHeader.id.label          "Cuir ID iuchrach OpenPGP">
 <!ENTITY enigmail.amPrefPgpHeader.label             "Cuir bann-cinn “OpenPGP”">
 <!ENTITY enigmail.amPrefPgpHeader.url.label         "Cuir URL gus an iuchair fhaighinn:">
-<!ENTITY enigmail.amPrefSelectKey.label             "Select Key">
+<!ENTITY enigmail.amPrefSelectKey.label             "Tagh iuchair">
 <!ENTITY enigmail.amPrefTitle.label                 "Roghainnean soidhnidh/crioptachaidh…">
 <!ENTITY enigmail.amPrefUseFromAddr.label           "Cleachd seòladh puist-d na dearbh-aithne seo gus an iuchair OpenPGP aice aithneachadh">
 <!ENTITY enigmail.amPrefUseKeyId.label              "Cleachd ID iuchrach OpenPGP sònraichte:">
@@ -69,8 +69,9 @@
 <!ENTITY enigmail.attachkey.label              "Cuir iuchair phoblach ris…">
 <!ENTITY enigmail.attachmykey.accesskey        "m">
 <!ENTITY enigmail.attachmykey.label            "Cuir an iuchair phoblach agam ris">
+<!ENTITY enigmail.attachmykey.short.label      "Attach Key">
 <!ENTITY enigmail.autoDecrypt.accesskey     "o">
-<!ENTITY enigmail.autoDecrypt.label      "Dì-chrioptaich/Dearbhaich teachdaireachdan gu fèin-obrachail">
+<!ENTITY enigmail.autoDecrypt.label      "Dì-chrioptaich/Dearbh teachdaireachdan gu fèin-obrachail">
 <!ENTITY enigmail.autoEncryptDrafts.label         "Crioptaich dreachdan nan teachdaireachdan nuair a thèid an sàbhaladh">
 <!ENTITY enigmail.autoKeyRetrieve.label           "Luchdaich a-nuas iuchraichean gus soidhneadh a dhearbhadh gu fèin-obrachail">
 <!ENTITY enigmail.autoKeyRetrieve2.label          "on fhrithealaiche iuchraichean seo:">
@@ -109,14 +110,14 @@
 <!ENTITY enigmail.cardDetails.lang.label             "Cànan">
 <!ENTITY enigmail.cardDetails.login.label            "Dàta clàraidh a-steach">
 <!ENTITY enigmail.cardDetails.male.label             "Fireann">
-<!ENTITY enigmail.cardDetails.maxpinlen.label        "Faide as motha a’ PIN">
+<!ENTITY enigmail.cardDetails.maxpinlen.label        "Faide as motha a’ PINFaid a’ PIN">
 <!ENTITY enigmail.cardDetails.name.label             "Ainm, Sloinneadh">
 <!ENTITY enigmail.cardDetails.no.label               "Chan eil">
 <!ENTITY enigmail.cardDetails.pinretry.label         "Cunntair ath-fheuchainn a’ PIN">
 <!ENTITY enigmail.cardDetails.reset.label            "Ath-shuidhich">
 <!ENTITY enigmail.cardDetails.save.label             "Sàbhail">
 <!ENTITY enigmail.cardDetails.serial.label           "Àireamh shreathach">
-<!ENTITY enigmail.cardDetails.sex.label              "Gender">
+<!ENTITY enigmail.cardDetails.sex.label              "Gnè">
 <!ENTITY enigmail.cardDetails.sigKey.label           "Iuchair an t-soidhnidh">
 <!ENTITY enigmail.cardDetails.sigcount.label         "Cunntair an t-soidhnidh">
 <!ENTITY enigmail.cardDetails.title                  "Fiosrachadh a’ SmartCard OpenPGP">
@@ -154,9 +155,9 @@
 <!ENTITY enigmail.confirmBeforeSendingIfNotEncrypted.tooltip "Seall còmhradh fiosrachaidh mun t-soidhneadh/chrioptachadh mus dèid teachdaireachd a chur GUN CHRIOPTACHADH">
 <!ENTITY enigmail.confirmBeforeSendingIfRules.label          "Ma dh’atharraich riaghailt bun-roghainn a’ chrioptachaidh">
 <!ENTITY enigmail.confirmBeforeSendingIfRules.tooltip        "Seall còmhradh fiosrachaidh mun t-soidhneadh/chrioptachadh mus dèid a chur, ma chaidh an roghainn agad air crioptachadh atharrachadh le riaghailt a-rèir faighteir no crioptachadh fèin-obrachail">
-<!ENTITY enigmail.confirmBeforeSendingNever.label            "Na dearbhaich idir">
+<!ENTITY enigmail.confirmBeforeSendingNever.label            "Na dearbh idir">
 <!ENTITY enigmail.confirmBeforeSendingNever.tooltip          "Na seall còmhradh fiosrachaidh mun t-soidhneadh/chrioptachadh mus dèid teachdaireachd a chur">
-<!ENTITY enigmail.confirmBeforeSendingOption.label           "Dearbhaich mus dèid a chur">
+<!ENTITY enigmail.confirmBeforeSendingOption.label           "Dearbh mus dèid a chur">
 <!ENTITY enigmail.copySecurityInfo.label           "Dèan lethbhreac dhen fhiosrachadh tèarainteachd Enigmail">
 <!ENTITY enigmail.createRuleFromAddr.label         "Cruthaich riaghailt Enigmail on t-seòladh…">
 <!ENTITY enigmail.created.label                    "Air a chruthachadh">
@@ -167,15 +168,15 @@
 <!ENTITY enigmail.ctxImportKey.accesskey            "I">
 <!ENTITY enigmail.ctxImportKey.label                "Ion-phortaich iuchair OpenPGP">
 <!ENTITY enigmail.ctxVerifyAtt.accesskey            "b">
-<!ENTITY enigmail.ctxVerifyAtt.label                "Dearbhaich an soidhneadh">
+<!ENTITY enigmail.ctxVerifyAtt.label                "Dearbh an soidhneadh">
 <!ENTITY enigmail.debugMenu.accesskey       "g">
 <!ENTITY enigmail.debugMenu.label        "Roghainnean dì-bhugachaidh">
 <!ENTITY enigmail.decryptToFolder.accesskey "p">
 <!ENTITY enigmail.decryptToFolder.label     "Dì-chrioptaich gu pasgan">
 <!ENTITY enigmail.decryptbutton.label     "Dì-chrioptaich">
-<!ENTITY enigmail.decryptbutton.tip       "Dì-chrioptaich no dearbhaich an teachdaireachd le Enigmail">
+<!ENTITY enigmail.decryptbutton.tip       "Dì-chrioptaich no dearbh an teachdaireachd le Enigmail">
 <!ENTITY enigmail.decryptverify.accesskey   "D">
-<!ENTITY enigmail.decryptverify.label    "Dì-chrioptaich/Dearbhaich">
+<!ENTITY enigmail.decryptverify.label    "Dì-chrioptaich/Dearbh">
 <!ENTITY enigmail.defaultEncryption.label         "Crioptaich teachdaireachdan a ghnàth">
 <!ENTITY enigmail.defaultKeySelOpts.accesskey  "u">
 <!ENTITY enigmail.defaultKeySelOpts.label      "Roghainnean taghadh nan iuchair…">
@@ -188,7 +189,7 @@
 <!ENTITY enigmail.displayKeyProperties.label       "Seall roghainnean na h-iuchrach">
 <!ENTITY enigmail.displayNoLonger.label             "Na seall an còmhradh seo a-rithist mura gabh a chrioptachadh">
 <!ENTITY enigmail.doneButton.accesskey    "f">
-<!ENTITY enigmail.doneButton.label        "Done">
+<!ENTITY enigmail.doneButton.label        "Deiseil">
 <!ENTITY enigmail.doubleDashSeparator.label "’S e sgaradair an t-soidhnidh a tha san “--”">
 <!ENTITY enigmail.doubleDashSeparator.tooltip  "Mìnichidh dà dhais air loidhne leotha fhèin bloca soidhnidh">
 <!ENTITY enigmail.edit.accesskey                    "A">
@@ -247,20 +248,20 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.exportWiz.pgExport.exporting       "Tha sàbhaladh a’ dol air adhart. Dh’fhaoidte gun dèid an abairt-fhaire airson iuchair no dhà iarraidh ort.">
 <!ENTITY enigmail.exportWiz.pgExport.failed          "Thachair mearachd rè an às-phortaidh. Cha deach leinn na roghainnean às-phortadh.">
 <!ENTITY enigmail.exportWiz.pgExport.title           "Ag às-phortadh roghainnean Enigmail">
-<!ENTITY enigmail.exportWiz.pgIntro.desc             "Enigmail allows to transfer all its settings including your OpenPGP
-                                                      keys to a new computer. This is done in two steps:">
+<!ENTITY enigmail.exportWiz.pgIntro.desc             "Tha comas aig Enigmail airson na roghainnean uile aige a thar-chur gu coimpiutair ùr, a’ gabhail a-staigh nan iuchraichean OpenPGP
+                                                      agad. Thèid seo a dhèanamh ann an dà cheum:">
 <!ENTITY enigmail.exportWiz.pgIntro.specifyFile      "Sònraich faidhle gus às-phortadh dha:">
-<!ENTITY enigmail.exportWiz.pgIntro.step1            "export your data from your old computer using this wizard">
-<!ENTITY enigmail.exportWiz.pgIntro.step2            "import the data to your new computer using the Setup Wizard.">
+<!ENTITY enigmail.exportWiz.pgIntro.step1            "às-phortaich an dàta on seann-choimpiutair agad leis an draoidh seo">
+<!ENTITY enigmail.exportWiz.pgIntro.step2            "ion-phortaich an dàta dhan choimpiutair ùr agad leis an draoidh stàlaidh.">
 <!ENTITY enigmail.exportWiz.pgIntro.title            "Fàilte gu draoidh às-phortadh nan roghainnean">
 <!ENTITY enigmail.exportWiz.title                    "Às-phortaich na roghainnean Enigmail agad">
 <!ENTITY enigmail.filterEditor.moveError.label       "Cha chuir sinn taic ri gnìomhan a thig às dèidh a’ gnìomha “Dì-chrioptaich gu buan”.">
-<!ENTITY enigmail.finallySignEncrypted.label      "Sign encrypted messages">
-<!ENTITY enigmail.finallySignNotEncrypted.label   "Sign non-encrypted messages">
+<!ENTITY enigmail.finallySignEncrypted.label      "Soidhnich teachdaireachdan crioptaichte">
+<!ENTITY enigmail.finallySignNotEncrypted.label   "Soidhnich teachdaireachdan gun chrioptachadh">
 <!ENTITY enigmail.genCardKey.backupKey.label         "Sàbhail lethbhreac-glèidhidh dhen iuchair taobh a-muigh na cairte">
 <!ENTITY enigmail.genCardKey.desc                    "<a class='enigmailStrong'>AN AIRE: Dh’fhaoidte gun doir e mionaid no dhà gus am bi gintinn nan iuchraichean coileanta.</a> Na fàg an aplacaid fhad ’s a tha iuchair ’ga gintinn. Gheibh thu brath nuair a bhios gintinn nan iuchraichean coileanta.">
 <!ENTITY enigmail.genCardKey.title                   "Gin iuchair OpenPGP">
-<!ENTITY enigmail.general.okLabel         "OK">
+<!ENTITY enigmail.general.okLabel         "Ceart ma-thà">
 <!ENTITY enigmail.generateKey.label        "Gin iuchair">
 <!ENTITY enigmail.generateKey.tooltip     "Ginidh seo iuchair a fhreagras ri OpenPGP airson crioptachadh agus/no soidhneadh">
 <!ENTITY enigmail.help.accesskey            "h">
@@ -270,12 +271,12 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.importMissingKeys.label           "Luchdaich a-nuas iuchraichean a tha a dhìth">
 <!ENTITY enigmail.importMissingKeys.tooltip         "Feuch ris na h-iuchraichean a tha a dhìth ion-phortadh o fhrithealaiche iuchraichean">
 <!ENTITY enigmail.importSetup.dlgTitle               "Aisig na roghainnean is iuchraichean">
-<!ENTITY enigmail.importSetup.importingKeys          "Importing keys in GnuPG. This may take a while ...">
-<!ENTITY enigmail.importSetup.restoringEnigmail      "Restoring Enigmail settings ...">
-<!ENTITY enigmail.importSetup.restoringGnupgSettings "Restoring GnuPG settings ...">
-<!ENTITY enigmail.importSetup.specifyImportFile      "Please specify the backup file to use for restoring your settings and keys:">
-<!ENTITY enigmail.importSetup.startRestoreLabel      "Start Restoring">
-<!ENTITY enigmail.importSetup.topDesc                "Using this dialog, you can restore your settings and keys from an existing Enigmail installation. To create a backup of your settings and keys, use the 'Transfer Settings' tab in the Enigmail preferences.">
+<!ENTITY enigmail.importSetup.importingKeys          "Ion-phortaich iuchraichean ann an GnuPG. Dh’fhaoidte gun doir seo greis…">
+<!ENTITY enigmail.importSetup.restoringEnigmail      "Ag aiseag nan roghainnean Enigmail…">
+<!ENTITY enigmail.importSetup.restoringGnupgSettings "Ag aiseag nan roghainnean GnuPG…">
+<!ENTITY enigmail.importSetup.specifyImportFile      "Sònraich faidhle an lethbhric-ghlèidhidh a thèid a chleachdadh airson na roghainnean ’s na h-iuchraichean agad aiseag:">
+<!ENTITY enigmail.importSetup.startRestoreLabel      "Tòisich air an aiseag">
+<!ENTITY enigmail.importSetup.topDesc                "Leis a’ chomhradh seo, ’s urrainn dhut na roghainnean is na h-iuchraichean agad aiseag o stàladh Enigmail a tha ann. Airson lethbhreac-glèidhidh dhe na roghainnean is iuchraichean uile agad a dhèanamh, cleachd an taba “Tar-chur nan roghainnean” ann an roghainnean Enigmail.">
 <!ENTITY enigmail.importpublickey.accesskey "I">
 <!ENTITY enigmail.importpublickey.label  "Ion-phortaich iuchair phoblach">
 <!ENTITY enigmail.keepCryptoSettingsForReply.label   "Crioptaich/Soidhnich freagairtean ri teachdaireachdan crioptaichte/air an soidhneadh">
@@ -348,7 +349,7 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.keyMan.exportToFile.label        "Às-phortaich iuchraichean gu faidhle">
 <!ENTITY enigmail.keyMan.fileMenu.accesskey        "F">
 <!ENTITY enigmail.keyMan.fileMenu.label            "Faidhle">
-<!ENTITY enigmail.keyMan.filter.label              "Search for keys">
+<!ENTITY enigmail.keyMan.filter.label              "Lorg iuchraichean">
 <!ENTITY enigmail.keyMan.fingerprint.label         "Lorg-mheòir">
 <!ENTITY enigmail.keyMan.genRevoke.accesskey         "r">
 <!ENTITY enigmail.keyMan.genRevoke.label           "Teisteanas cùl-ghairm">
@@ -435,7 +436,7 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.keygenTitle.label       "Gin iuchair OpenPGP">
 <!ENTITY enigmail.keyserver.label         "Frithealaiche iuchraichean">
 <!ENTITY enigmail.keyserverDlg.label      "Tagh frithealaiche iuchraichean">
-<!ENTITY enigmail.keyservers.label        "Specify your keyserver(s):">
+<!ENTITY enigmail.keyservers.label        "Sònraich frithealaiche iuchraichean no dhà:">
 <!ENTITY enigmail.keyservers.sample2      "Mar eisimpleir: pool.sks-keyservers.net, pgp.mit.edu">
 <!ENTITY enigmail.label                   "Enigmail">
 <!ENTITY enigmail.manageUidDlg.addUid.label          "Cuir ris">
@@ -450,7 +451,7 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.matchDescStart.label              "Cuir an riaghailt an sàs ma tha am faightear">
 <!ENTITY enigmail.matchEnd.label                    "a’ crìochnachadh le">
 <!ENTITY enigmail.matchExact.label                  "co-ionnann ri">
-<!ENTITY enigmail.maxIdleMinutes.tooltip   "Remember passphrase for a limited time.">
+<!ENTITY enigmail.maxIdleMinutes.tooltip   "Cuimhnich an abairt-fhaire greis.">
 <!ENTITY enigmail.maxIdleMinutesHead.label "Cuimhnich an abairt-fhaire fad">
 <!ENTITY enigmail.maxIdleMinutesTail.label "mionaidean gun ghnìomhachd (mus fheum thu a cur a-steach a-rithist)">
 <!ENTITY enigmail.maybe.label                       "Cleachd e ma chaidh a thaghadh le sgrìobhadh teachdaireachd">
@@ -477,12 +478,12 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.pEp.privacyStatus.label             "Staid na prìobhaideachd:">
 <!ENTITY enigmail.pEp.revokeTrust.label               "Cuir crìoch air an earbsa p≡p ">
 <!ENTITY enigmail.pEp.trustWordsDlg.btnMistrust       "Faclan-earbsa cearra/Seo iuchair amharasach">
-<!ENTITY enigmail.pEp.trustWordsDlg.btnVerified       "Dearbhaich na faclan-earbsa">
+<!ENTITY enigmail.pEp.trustWordsDlg.btnVerified       "Dearbh na faclan-earbsa">
 <!ENTITY enigmail.pEp.trustWordsDlg.fingerprint       "Lorg-mheòir">
-<!ENTITY enigmail.pEp.trustWordsDlg.keySyncDesc       "Cha thu gu bhith uidheam a chur ris a’ bhuidheann uidheaman p≡p agad. Dearbhaich seo le taic nan faclan-earbsa gu h-ìosal.">
+<!ENTITY enigmail.pEp.trustWordsDlg.keySyncDesc       "Cha thu gu bhith uidheam a chur ris a’ bhuidheann uidheaman p≡p agad. Dearbh seo le taic nam faclan-earbsa gu h-ìosal.">
 <!ENTITY enigmail.pEp.trustWordsDlg.myFingerprint     "Lorg-mheòir na h-iuchrach agam:">
-<!ENTITY enigmail.pEp.trustWordsDlg.overallDesc       "Please ask your correspondent to read his Trustwords in person or via phone to you. They must match the Trustwords below.">
-<!ENTITY enigmail.pEp.trustWordsDlg.title             "Dearbhaich faclan-earbsa p≡p">
+<!ENTITY enigmail.pEp.trustWordsDlg.overallDesc       "Faighnich dhan neach eile ach an leugh e na faclan-earbsa aige dhut gu pearsanta no air an fhòn. Feumaidh iad co-fhreagairt ris na faclan-earbsa gu h-ìosal.">
+<!ENTITY enigmail.pEp.trustWordsDlg.title             "Dearbh faclan-earbsa p≡p">
 <!ENTITY enigmail.pEp.trustWordsDlg.trustwordsLong    "Faclan-earbsa fada">
 <!ENTITY enigmail.pEp.trustWordsDlg.trustwordsShort   "Faclan-earbsa">
 <!ENTITY enigmail.pEp.verifyTrustwords.accesskey      "h">
@@ -505,7 +506,7 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.pepPref.storeSecurely.label        "Glèidh na teachdaireachdan gu tèarainte">
 <!ENTITY enigmail.pepPref.storeSecurely.title        "Glèidh teachdaireachdan nan cunntasan seo gu tèarainte">
 <!ENTITY enigmail.pepPref.thanksTo.label             "Taing gu">
-<!ENTITY enigmail.pepPref.warnReducedSecurity.label  "Show a warning when a message loses security through a reply or forwarding">
+<!ENTITY enigmail.pepPref.warnReducedSecurity.label  "Seall rabhadh ma chailleas teachdaireachd a tèarainteachd ann am freagairt no sìneadh air adhart">
 <!ENTITY enigmail.pepPref.window.title               "Roghainnean Enigmail/p≡p">
 <!ENTITY enigmail.pepPrepHandshake.desc              "A’ luchdadh dàta, fuirich greis…">
 <!ENTITY enigmail.perRecipientsOption.label         "Cruthaich riaghailt(ean) a-rèir faighteir">
@@ -515,7 +516,7 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.pgpMime.label          "PGP/MIME">
 <!ENTITY enigmail.pgpSecurityInfo.label            "Fiosrachadh tèarainteachd Enigmail…">
 <!ENTITY enigmail.photoViewer.title                "Sealladair deilbh OpenPGP">
-<!ENTITY enigmail.pref.acSetupMessage.button "Initiate Autocrypt Setup">
+<!ENTITY enigmail.pref.acSetupMessage.button "Tòisich suidheachadh Autocrypt">
 <!ENTITY enigmail.preferences.label       "Roghainnean Enigmail">
 <!ENTITY enigmail.prefs.accesskey           "R">
 <!ENTITY enigmail.prefs.label            "Roghainnean">
@@ -551,10 +552,10 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.revealAttachments.button          "Nochd">
 <!ENTITY enigmail.revealAttachmentsButton.label     "Chaidh ainmean nan ceanglachan fhalach. Briog air a’ phutan “Nochd” gus ainmean tùsail nam faidhlichean a shealltainn.">
 <!ENTITY enigmail.ruleEmail.label                   "Suidhich riaghailtean Enigmail airson">
-<!ENTITY enigmail.ruleEmail.tooltip                 "Na cuir a-steach ach seòlaidhean puist-d, NA SUIDHICH ainmean nam faightearan\nM.e. bhiodh “Ainm &lt;ainm@seòladh.net&gt;” mì-dhligheach">
+<!ENTITY enigmail.ruleEmail.tooltip                 "Na cuir a-steach ach seòlaidhean puist-d, NA SUIDHICH ainmean nam faightearan\nM.e. bhiodh “Ainm &lt;ainm@seòladh.net&gt;” mì-dhligheachChan eil “Mac màthar &lt;mac.màthar@seòladh.net&gt;” dligheach">
 <!ENTITY enigmail.rulesEditor.label                 "Enigmail - Deasaiche nan riaghailtean a-rèir nam faightearan">
-<!ENTITY enigmail.sKeyDlg.carefulCheck.label       "I have checked very carefully">
-<!ENTITY enigmail.sKeyDlg.casualCheck.label        "I did a quick check">
+<!ENTITY enigmail.sKeyDlg.carefulCheck.label       "Rinn mi dearbhadh cùramach">
+<!ENTITY enigmail.sKeyDlg.casualCheck.label        "Thug mi sùil ghoirid oirre">
 <!ENTITY enigmail.sKeyDlg.checked.label            "Dè cho cùramach ’s a dhearbhaich thu gum buin an iuchair a tha thu airson soidhneadh ris an neach/na daoine ’gan ainmeachadh gu h-àrd?">
 <!ENTITY enigmail.sKeyDlg.createLocal.label        "Soidhneadh ionadail (cha ghabh às-phortadh)">
 <!ENTITY enigmail.sKeyDlg.fingerprint.label        "Lorg-mheòir:">
@@ -568,7 +569,7 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.searchForKey.desc1	    "Lorgaidh “ainm sloinneadh” a h-uile iuchair sa bheil “ainm” NO “sloinneadh”">
 <!ENTITY enigmail.searchForKey.desc2      "Lorgaidh “ainm+sloinneadh” a h-uile iuchair sa bheil an dà chuid “ainm” AGUS “sloinneadh”">
 <!ENTITY enigmail.searchForKey.desc3      "Lorgaidh “ball-eisimpleir.com” a h-uile iuchair sa bheil “ball-eisimpleir.com”, can “cuideigin@ball-eisimpleir.com”">
-<!ENTITY enigmail.searchForKey.example    "Mar eisimpleir: “ainm sloinneadh &lt;cuideigin@ball-eisimpleir.com&gt;”">
+<!ENTITY enigmail.searchForKey.example    "Mar eisimpleir:“ainm sloinneadh &lt;cuideigin@ball-eisimpleir.com&gt;”">
 <!ENTITY enigmail.searchForKey.label      "Lorg iuchair">
 <!ENTITY enigmail.searchKeyDlg.label               "Luchdaich a-nuas iuchraichean OpenPGP">
 <!ENTITY enigmail.searchKeyDlgCapt.label           "Chaidh iuchraichean a lorg - Tagh airson ion-phortadh">
@@ -586,33 +587,33 @@ Thunderbird is tòisich draoidh an rèiteachaidh on chlàr-taice Enigmail.">
 <!ENTITY enigmail.sepratationDesc.label             "(Sgaraich iomadh seòladh puist-d le beàrnan)">
 <!ENTITY enigmail.setDefaultsFor.label              "Na bun-roghainnean airson…">
 <!ENTITY enigmail.setupWiz.accesskey        "r">
-<!ENTITY enigmail.setupWiz.applyExistingKeysBtn      "Apply my Keys">
-<!ENTITY enigmail.setupWiz.checkingSetup             "Checking your existing setup ...">
-<!ENTITY enigmail.setupWiz.existingEncryptedMsg      "We found that you have encrypted messages in your mail folders. We recommend that you export your keys on your existing device, and import them here. (Hint: you may use the 'Import Keys' multiple times, for example to import public and secret keys).">
-<!ENTITY enigmail.setupWiz.existingKeysFound         "We found that you already have OpenPGP keys. We recommend that we set up Enigmail for you so that you can continue to work with these keys.">
-<!ENTITY enigmail.setupWiz.importKeysBtn             "Import Keys">
+<!ENTITY enigmail.setupWiz.applyExistingKeysBtn      "Cuir na h-iuchraichean agam an sàs">
+<!ENTITY enigmail.setupWiz.checkingSetup             "A’ dearbhadh an t-suidheachaidh làithrich agad…">
+<!ENTITY enigmail.setupWiz.existingEncryptedMsg      "Lorg sinn teachdaireachdan crioptaichte sna pasganan puist agad. Mholamaid gun às-phortaich thu na h-iuchraichean agad on uidheam eile a th’ agad ’s gun ion-phortaich thu iad an-seo. (Gliocas: ’s urrainn dhut “Ion-phortaich iuchraichean” a chleachdadh iomadh turas, can airson iuchraichean poblach is dìomhair ion-phortadh).">
+<!ENTITY enigmail.setupWiz.existingKeysFound         "Mhothaich sinn gu bheil iuchraichean OpenPGP agad mu thràth. Mholamaid gun suidhich sinn Enigmail dhut ach an urrainn dhut na h-iuchraichean sin a chleachdadh fhathast.">
+<!ENTITY enigmail.setupWiz.importKeysBtn             "Ion-phortaich iuchraichean">
 <!ENTITY enigmail.setupWiz.label           "Draoidh an rèiteachaidh">
 <!ENTITY enigmail.setupWiz.pgInstall.desc            "Tha Enigmail feumach air GnuPG gus obair an crioptachaidh a dhèanamh.
                                                       Dh’fheuch an draoidh ris am faidhle so-ghnìomhaichte aig GnuPG a lorg ach cha deach leis.">
 <!ENTITY enigmail.setupWiz.pgInstall.downloadLabel   "A’ luchdadh a-nuas GnuPG…">
 <!ENTITY enigmail.setupWiz.pgInstall.installButton   "Stàlaich GnuPG…">
 <!ENTITY enigmail.setupWiz.pgInstall.installDesc1    "’S urrainn do dh’Enigmail GnuPG a luchdadh a-nuas is an stàlaichear a thòiseachadh air do shon.
-Mas e seo a bu toigh leat dèanamh, briog air a’ phutan “Stàlaich GnuPG” gus GnuPG a luchdadh a-nuas is a stàladh.">
+                                                      Mas e seo a bu toigh leat dèanamh, briog air a’ phutan “Stàlaich GnuPG” gus GnuPG a luchdadh a-nuas is a stàladh.">
 <!ENTITY enigmail.setupWiz.pgInstall.installDesc2    "Mar roghainn eile, ma tha thu air GnuPG a stàladh mar-thà, cleachd am putan “Rùraich” gus an t-slighe gu GnuPG a shònrachadh a làimh.">
 <!ENTITY enigmail.setupWiz.pgInstall.installLabel    "A’ tòiseachadh an stàlaicheir. Lean air adhart leis na ceuman aig draoidh an stàlaicheir GnuPG.">
 <!ENTITY enigmail.setupWiz.pgInstall.locateButton    "Rùraich…">
 <!ENTITY enigmail.setupWiz.pgInstall.locateDesc      "Cleachd am putan “Rùraich” gus GnuPG a lorg.">
-<!ENTITY enigmail.setupWiz.pgIntro.desc              "It looks like you started Enigmail for the first time on this computer.
-                                                      In order to use Enigmail, you need to first set it up properly.
-                                                      This assistant will guide you through the setup process.">
-<!ENTITY enigmail.setupWiz.rescanInboxBtn            "Rescan Inbox">
-<!ENTITY enigmail.setupWiz.searchingGnuPG            "Looking for GnuPG ...">
+<!ENTITY enigmail.setupWiz.pgIntro.desc              "Tha coltas gun do chuir thu Enigmail gu dol a’ chiad turas air a’ choimpiutair seo.
+                                                      Feumaidh tu Enigmail a rèiteachadh mus urrainn dhut a chleachdadh.
+                                                      Stiùirichidh an cuidiche thu ach an rèitich thu e.">
+<!ENTITY enigmail.setupWiz.rescanInboxBtn            "Sganaich am bogsa a-steach a-rithist">
+<!ENTITY enigmail.setupWiz.searchingGnuPG            "A’ lorg GnuPG…">
 <!ENTITY enigmail.setupWiz.startSetupButton          "Tòisich air an rèiteachadh">
-<!ENTITY enigmail.setupWiz.synchronizeWithPep        "If you have another device running with p≡p, we recommend that you let the other device synchronize
-                                                      with your PC here. In this case, just close the wizard, and wait for the synchronization to start.">
-<!ENTITY enigmail.setupWiz.title                     "Enigmail Setup">
-<!ENTITY enigmail.setupWiz.useImportKeys             "Alternatively, you can import your keys using the 'Import Keys' button below.">
-<!ENTITY enigmail.setupWiz.usingPepMode              "We determined that you are using Pretty Easy Privacy (p≡p).">
+<!ENTITY enigmail.setupWiz.synchronizeWithPep        "Ma tha uidheam eile agad air a bheil thu a’ ruith p≡p, mholamaid gun sioncronaich thu an t-uidheam eile agad
+                                                      leis a’ PC agad an-seo. Airson seo a dhèanamh, dùin an draoidh seo agus fuirich gus an tòisich an sioncronachadh.">
+<!ENTITY enigmail.setupWiz.title                     "Suidheachadh Enigmail">
+<!ENTITY enigmail.setupWiz.useImportKeys             "Mar roghainn eile, ’s urrainn dhut na h-iuchraichean agad ion-phortadh leis a’ phutan “Ion-phortaich iuchraichean” gu h-ìosal.">
+<!ENTITY enigmail.setupWiz.usingPepMode              "Mhothaich sinn gu bheil thu a’ cleachdadh Pretty Easy Privacy (p≡p).">
 <!ENTITY enigmail.showPhoto.label                  "Seall ID deilbh OpenPGP">
 <!ENTITY enigmail.sign.label                        "Soidhnich">
 <!ENTITY enigmail.signSenderKey.label              "Soidhnich an iuchair…">

@@ -104,7 +104,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		},
 
 		addImageCardFromFile: function () {
-			cardbookWindowUtils.callFilePicker("imageSelectionTitle", "OPEN", "IMAGES", "", wdw_imageEdition.addImageCardFromFileNext);
+			cardbookWindowUtils.callFilePicker("imageSelectionTitle", "OPEN", "IMAGES", "", "", wdw_imageEdition.addImageCardFromFileNext);
 		},
 
 		addImageCardFromFileNext: function (aFile) {
@@ -231,7 +231,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			var myFileURISpec = document.getElementById('photolocalURITextBox').value;
 			var myFileURI = Services.io.newURI(myFileURISpec, null, null);
 			var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-			cardbookWindowUtils.callFilePicker("imageSaveTitle", "SAVE", "IMAGES", myFile.leafName, wdw_imageEdition.saveImageCardNext);
+			cardbookWindowUtils.callFilePicker("imageSaveTitle", "SAVE", "IMAGES", myFile.leafName, "", wdw_imageEdition.saveImageCardNext);
 		},
 
 		saveImageCardNext: function (aFile) {

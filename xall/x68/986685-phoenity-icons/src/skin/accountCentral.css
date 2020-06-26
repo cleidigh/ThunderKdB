@@ -14,9 +14,15 @@
   margin-bottom: 6px;
 }
 
-#CreateAccounts {
+#CreateAccounts,
+#createAccounts {
   margin-top: -18px;
   margin-bottom: -9px;
+}
+
+#CreateAccountsList,
+#createAccountsList {
+  padding-inline-start: 3.9em;
 }
 
 #acctCentralRows spacer.big {
@@ -27,76 +33,95 @@
   margin-bottom: 6px;
 }
 
-#ReadMessages label {
+#ReadMessages label,
+#readMessages label {
   background: url("chrome://phoenityIcons/skin/accountcentral/read-messages.png") no-repeat !important;
 }
 
-#ReadMessages label:-moz-locale-dir(rtl) {
+#ReadMessages label:-moz-locale-dir(rtl),
+#readMessages label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/read-messages.png") right no-repeat !important;
 }
 
-#ComposeMessage label {
+#ComposeMessage label,
+#composeMessage label {
   background: url("chrome://phoenityIcons/skin/accountcentral/write-message.png") no-repeat !important;
 }
 
-#ComposeMessage label:-moz-locale-dir(rtl) {
+#ComposeMessage label:-moz-locale-dir(rtl),
+#composeMessage label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/write-message.png") right no-repeat !important;
 }
 
-#AccountSettings label {
+#AccountSettings label,
+#accountSettings label {
   background: url("chrome://phoenityIcons/skin/accountcentral/account-settings.png") no-repeat !important;
 }
 
-#AccountSettings label:-moz-locale-dir(rtl) {
+#AccountSettings label:-moz-locale-dir(rtl),
+#accountSettings label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/account-settings.png") right no-repeat !important;
 }
 
-#CreateAccount label {
+#CreateAccount label,
+#createAccount label {
   background: url("chrome://phoenityIcons/skin/accountcentral/create-account.png") no-repeat !important;
 }
 
-#CreateAccount label:-moz-locale-dir(rtl) {
+#CreateAccount label:-moz-locale-dir(rtl),
+#createAccount label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/create-account.png") right no-repeat !important;
 }
 
-#SearchMessages label {
+#SearchMessages label,
+#searchMessages label {
   background: url("chrome://phoenityIcons/skin/accountcentral/search-messages.png") no-repeat !important;
 }
 
-#SearchMessages label:-moz-locale-dir(rtl) {
+#SearchMessages label:-moz-locale-dir(rtl),
+#searchMessages label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/search-messages.png") right no-repeat !important;
 }
 
-#CreateFilters label {
+#CreateFilters label,
+#createFilters label {
   background: url("chrome://phoenityIcons/skin/accountcentral/manage-filters.png") no-repeat !important;
 }
 
-#CreateFilters label:-moz-locale-dir(rtl) {
+#CreateFilters label:-moz-locale-dir(rtl),
+#createFilters label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/manage-filters.png") right no-repeat !important;
 }
 
-#OfflineSettings label {
+#OfflineSettings label,
+#offlineSettings label {
   background: url("chrome://phoenityIcons/skin/accountcentral/offline-settings.png") no-repeat !important;
 }
 
-#OfflineSettings label:-moz-locale-dir(rtl) {
+#OfflineSettings label:-moz-locale-dir(rtl),
+#offlineSettings label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/offline-settings.png") right no-repeat !important;
 }
 
 #CreateAccountMail,
-#CreateAccountMovemail {
+#CreateAccountMovemail,
+#createAccountMail,
+#createAccountMovemail {
   background: url("chrome://phoenityIcons/skin/icons/message-small.png") no-repeat;
 }
 
-#CreateAccountChat {
+#CreateAccountChat,
+#createAccountChat {
   background: url("chrome://phoenityIcons/skin/chat/chat-16.png") no-repeat;
 }
 
-#CreateAccountNewsgroups {
+#CreateAccountNewsgroups,
+#createAccountNewsgroups {
   background: url("chrome://phoenityIcons/skin/icons/message-news.png") no-repeat;
 }
 
-#CreateAccountRSS {
+#CreateAccountRSS,
+#createAccountRSS {
   background-image: -moz-image-rect(url("chrome://phoenityIcons/skin/icons/rss-feed.png"), 0, 16, 16, 0);
   background-repeat: no-repeat;
 }
@@ -105,30 +130,41 @@
 #CreateAccountMovemail:-moz-locale-dir(rtl),
 #CreateAccountChat:-moz-locale-dir(rtl),
 #CreateAccountNewsgroups:-moz-locale-dir(rtl),
-#CreateAccountRSS:-moz-locale-dir(rtl) {
+#CreateAccountRSS:-moz-locale-dir(rtl),
+#createAccountMail:-moz-locale-dir(rtl),
+#createAccountMovemail:-moz-locale-dir(rtl),
+#createAccountChat:-moz-locale-dir(rtl),
+#createAccountNewsgroups:-moz-locale-dir(rtl),
+#createAccountRSS:-moz-locale-dir(rtl) {
   background-position: right center;
 }
 
-#SubscribeImapFolders label {
+#SubscribeImapFolders label,
+#subscribeImapFolders label {
   background: url("chrome://phoenityIcons/skin/accountcentral/manage-imap.png") no-repeat !important;
 }
 
-#SubscribeImapFolders label:-moz-locale-dir(rtl) {
+#SubscribeImapFolders label:-moz-locale-dir(rtl),
+#subscribeImapFolders label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/manage-imap.png") right no-repeat !important;
 }
 
-#SubscribeNewsgroups label {
+#SubscribeNewsgroups label,
+#subscribeNewsgroups label {
   background: url("chrome://phoenityIcons/skin/accountcentral/manage-newsgroups.png") no-repeat !important;
 }
 
-#SubscribeNewsgroups label:-moz-locale-dir(rtl) {
+#SubscribeNewsgroups label:-moz-locale-dir(rtl),
+#subscribeNewsgroups label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/manage-newsgroups.png") right no-repeat !important;
 }
 
-#SubscribeRSS label {
+#SubscribeRSS label,
+#subscribeRSS label {
   background: url("chrome://phoenityIcons/skin/accountcentral/manage-rss.png") no-repeat !important;
 }
 
-#SubscribeRSS label:-moz-locale-dir(rtl) {
+#SubscribeRSS label:-moz-locale-dir(rtl),
+#subscribeRSS label:-moz-locale-dir(rtl) {
   background: url("chrome://phoenityIcons/skin/accountcentral/manage-rss.png") right no-repeat !important;
 }

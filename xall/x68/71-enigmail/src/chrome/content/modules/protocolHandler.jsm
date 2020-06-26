@@ -8,7 +8,7 @@
 
 var EXPORTED_SYMBOLS = ["EnigmailProtocolHandler"];
 
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
 const EnigmailData = ChromeUtils.import("chrome://enigmail/content/modules/data.jsm").EnigmailData;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
@@ -44,7 +44,7 @@ EnigmailProtocolHandler.prototype = {
     nsIProtocolHandler.URI_NOAUTH |
     nsIProtocolHandler.URI_OPENING_EXECUTES_SCRIPT,
 
-  QueryInterface: EnigmailTb60Compat.generateQI([nsIProtocolHandler]),
+  QueryInterface: EnigmailCompat.generateQI([nsIProtocolHandler]),
 
   newURI: function(aSpec, originCharset, aBaseURI) {
     EnigmailLog.DEBUG("protocolHandler.jsm: EnigmailProtocolHandler.newURI: aSpec='" + aSpec + "'\n");

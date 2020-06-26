@@ -117,7 +117,8 @@
 										<label value="&useColorLabel;"
 											control="useColorRadiogroup"
 											id="useColor"/>
-										<radiogroup id="useColorRadiogroup" orient="horizontal" preference="extensions.cardbook.useColor" class="indent">
+										<radiogroup id="useColorRadiogroup" orient="horizontal" preference="extensions.cardbook.useColor" class="indent"
+											oncommand="wdw_cardbookConfiguration.preferenceChanged('useColor');">
 											<radio value="background" label="&useColorBackgroundLabel;" accesskey="&useColorBackgroundAccesskey;"/>
 											<radio value="text" label="&useColorTextLabel;" accesskey="&useColorTextAccesskey;"/>
 											<radio value="nothing" label="&useColorNothingLabel;" accesskey="&useColorNothingAccesskey;"/>
@@ -574,7 +575,7 @@
 								<description>&syncWarn;</description>
 								<hbox align="center">
 									<checkbox id="syncAfterChangeCheckBox" label="&syncAfterChangeLabel;"
-										accesskey="&syncAfterChangeAccesskey;" oncommand="wdw_cardbookConfiguration.showInitialSyncDelay();"
+										accesskey="&syncAfterChangeAccesskey;"
 										preference="extensions.cardbook.syncAfterChange"/>
 								</hbox>
 								<hbox align="center">

@@ -8,11 +8,6 @@
  *  Module for interfacing to pEp (Enigmail-specific functions)
  */
 
-
-
-
-
-
 const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
 const EnigmailpEp = ChromeUtils.import("chrome://enigmail/content/modules/pEp.jsm").EnigmailpEp;
 const EnigmailpEpListener = ChromeUtils.import("chrome://enigmail/content/modules/pEpListener.jsm").EnigmailpEpListener;
@@ -36,6 +31,7 @@ const EnigmailTimer = ChromeUtils.import("chrome://enigmail/content/modules/time
 const EnigmailFilters = ChromeUtils.import("chrome://enigmail/content/modules/filters.jsm").EnigmailFilters;
 const EnigmailFiles = ChromeUtils.import("chrome://enigmail/content/modules/files.jsm").EnigmailFiles;
 const EnigmailApp = ChromeUtils.import("chrome://enigmail/content/modules/app.jsm").EnigmailApp;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 
 const getDialog = EnigmailLazy.loader("enigmail/dialog.jsm", "EnigmailDialog");
 const getInstallGnuPG = EnigmailLazy.loader("enigmail/installGnuPG.jsm", "InstallGnuPG");
@@ -138,6 +134,7 @@ var EnigmailPEPAdapter = {
    * @return: Boolean: true - pEp is available / false - pEp is not usable
    */
   usingPep: function() {
+    if (EnigmailCompat.isPostbox()) return false;
     if (!this.getPepJuniorMode()) return false;
 
     if ((gPepVersion !== null) && gPepVersion.api.length > 0) {
@@ -183,6 +180,11 @@ var EnigmailPEPAdapter = {
    * @return {Promise<Boolean>}: true if pEp is available / false otherwise
    */
   isPepAvailable: async function(attemptInstall = true) {
+    if (EnigmailCompat.isPostbox()) {
+      gPepAvailable = false;
+      return false;
+    }
+
     if (gPepAvailable === null) {
       EnigmailLog.DEBUG("pEpAdapter: isPepAvailable()\n");
 
@@ -250,6 +252,12 @@ var EnigmailPEPAdapter = {
    */
   installPep: function(isManual = false) {
     EnigmailLog.DEBUG("pEpAdapter.jsm: installPep()\n");
+
+    if (EnigmailCompat.isPostbox()) {
+      return new Promise((resolve, reject) => {
+        reject(-1);
+      });
+    }
 
     gAttemptedInstall = true;
     let self = this;
@@ -319,12 +327,13 @@ var EnigmailPEPAdapter = {
    */
   getPepJuniorMode: function() {
 
+    if (EnigmailCompat.isPostbox()) return false;
     let mode = EnigmailPrefs.getPref("juniorMode");
     if (mode === 0) return false;
 
     // manual pEp or automatic mode
     if (mode === 2 || (!this.isAccountCryptEnabled())) {
-      return this.isPepAvailable(true);
+      return EnigmailFuncs.syncPromise(this.isPepAvailable(true));
     }
 
     return false;

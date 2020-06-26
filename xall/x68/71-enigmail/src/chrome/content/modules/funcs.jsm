@@ -269,18 +269,6 @@ var EnigmailFuncs = {
     return res;
   },
 
-  /***
-   * Get the text for the encrypted subject (either configured by user or default)
-   */
-  getProtectedSubjectText: function() {
-    if (EnigmailPrefs.getPref("protectedSubjectText").length > 0) {
-      return EnigmailData.convertToUnicode(EnigmailPrefs.getPref("protectedSubjectText"), "utf-8");
-    }
-    else {
-      return "...";
-    }
-  },
-
   cloneObj: function(orig) {
     let newObj;
 
@@ -360,13 +348,16 @@ var EnigmailFuncs = {
 
     let certDb = Cc["@mozilla.org/security/x509certdb;1"].getService(Ci.nsIX509CertDB);
     let certs = certDb.getCerts();
-
-    let e = certs.getEnumerator();
     let nCerts = 0;
 
-    while (e.hasMoreElements()) {
-      nCerts++;
-      e.getNext();
+    if (certs) {
+      // FIXME: API Change: what should happen for TB 70 and newer?
+      let e = certs.getEnumerator();
+
+      while (e.hasMoreElements()) {
+        nCerts++;
+        e.getNext();
+      }
     }
 
     return nCerts;
@@ -389,6 +380,34 @@ var EnigmailFuncs = {
       }
     }
     return null;
+  },
+
+  /**
+   * Get the default identity of the default account
+   */
+  getDefaultIdentity: function() {
+    let accountManager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
+
+    try {
+      let ac;
+      if (accountManager.defaultAccount) {
+        ac = accountManager.defaultAccount;
+      }
+      else {
+        for (let i = 0; i < accountManager.accounts.length; i++) {
+          ac = accountManager.accounts.queryElementAt(i, Ci.nsIMsgAccount);
+          if (ac.incomingServer.type === "imap" || ac.incomingServer.type === "pop3") break;
+        }
+      }
+
+      if (ac.defaultIdentity) {
+        return ac.defaultIdentity;
+      }
+      return ac.identities.queryElementAt(0, Ci.nsIMsgIdentity);
+    }
+    catch (x) {
+      return null;
+    }
   },
 
   /**

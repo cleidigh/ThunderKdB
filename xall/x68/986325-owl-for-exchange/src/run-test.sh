@@ -1,12 +1,16 @@
 #!/bin/sh
-# Set this to the Owl source code checkout
-SOURCE=/set/this/path/to/owl/source/
 # Set this to the Thunderbird executable
 TBEXE=/set/this/path/to/thunderbird
+# Path to OWL checkout (include trailing /)
+SOURCE=/set/this/path/to/owl/source/
+
+# The rest should be working as-is
+PROFILEROOTDIR=~/.thunderbird/
 # Profile name to be created. Random like test-jhFGUZL
 TBPROFILENAME=test-owl-`pwgen -1`
+$TBEXE -no-remote -CreateProfile $TBPROFILENAME
 # Path to profile directory (excluding or including trailing /)
-TBPROFILEDIR=`$TBEXE -no-remote -CreateProfile $TBPROFILENAME 2>&1|sed -e "s|.*'/|/|" -e "s|/prefs.js'||" -e "/Gtk-Message.*/d"`
+TBPROFILEDIR=`ls -d1 $PROFILEROOTDIR/*.$TBPROFILENAME`
 
 mkdir -p $TBPROFILEDIR/extensions
 # If you prefer, adapt to copy the XPI instead. But that's more work so why bother?
@@ -20,8 +24,9 @@ user_pref("general.warnOnAboutConfig", false);
 user_pref("mailnews.auto_config.fetchFromISP.enabled", false);
 user_pref("mailnews.auto_config.fetchFromISP.sendEmailAddress", false);
 user_pref("mailnews.auto_config.guess.enabled", false);
-user_pref("mailnews.auto_config_url", "");
-user_pref("mailnews.mx_service_url", "");
+#user_pref("mailnews.auto_config_url", "");
+#user_pref("mailnews.mx_service_url", "");
+user_pref("app.update.auto", false);
 EOF
 cat <<EOF >>$TBPROFILEDIR/xulstore.json
 {

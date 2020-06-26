@@ -9,12 +9,7 @@
 
 var EXPORTED_SYMBOLS = ["EnigmailCommandLine"];
 
-
-
-
-
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
-
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 
 const NS_ENIGCLINE_SERVICE_CID = Components.ID("{847b3ab1-7ab1-11d4-8f02-006008948af5}");
 const NS_CLINE_SERVICE_CONTRACTID = "@mozilla.org/enigmail/cline-handler;1";
@@ -25,7 +20,7 @@ Handler.prototype = {
   classDescription: "Enigmail Key Management CommandLine Service",
   classID: NS_ENIGCLINE_SERVICE_CID,
   contractID: NS_CLINE_SERVICE_CONTRACTID,
-  QueryInterface: EnigmailTb60Compat.generateQI(["nsICommandLineHandler", "nsIFactory"]),
+  QueryInterface: EnigmailCompat.generateQI(["nsICommandLineHandler", "nsIFactory"]),
 
   // nsICommandLineHandler
   handle: function(cmdLine) {

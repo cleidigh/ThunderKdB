@@ -23,11 +23,10 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 						var dirPrefId = wdw_findDuplicates.gResultsDirPrefId[i];
 						var color = cardbookPreferences.getColor(dirPrefId)
 						var oppositeColor = cardbookRepository.getTextColorFromBackgroundColor(color);
-						var useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
-						if (useColor == "text") {
+						if (cardbookRepository.useColor == "text") {
 							wdw_findDuplicates.createCssTextBoxRules(styleSheet, dirPrefId, color, "color");
 							wdw_findDuplicates.createCssTextBoxRules(styleSheet, dirPrefId, oppositeColor, "background-color");
-						} else if (useColor == "background") {
+						} else if (cardbookRepository.useColor == "background") {
 							wdw_findDuplicates.createCssTextBoxRules(styleSheet, dirPrefId, color, "background-color");
 							wdw_findDuplicates.createCssTextBoxRules(styleSheet, dirPrefId, oppositeColor, "color");
 						}

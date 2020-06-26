@@ -4,118 +4,86 @@
 <overlay id="calendar-event-dialog-inner"
       onload="onLoad();"
       onunload="onEventDialogUnload();"
-      onresize="rearrangeAttendees();"  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+      onresize="rearrangeAttendees();"  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" height="17px">
 
 <toolbarpalette id="event-toolbarpalette">
-<toolbarbutton id="pasteStyle" class="toolbarbutton-1 chromeclass-toolbar-additonal" label=" Paste syntax" type="menu-button">
+<toolbarbutton id="pasteStyle" label=" Paste syntax" type="menu">
 <menupopup>
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[0]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
-window.frames[0].document.activeElement.setRangeText(targetApply);" label=" ** Bold"/>
+var targetApply = syntaxArr[0]; 
+window.frames[0].document.activeElement.setRangeText(targetApply);
+" label=" ** Bold"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[1]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
+var targetApply = syntaxArr[1]; 
 window.frames[0].document.activeElement.setRangeText(targetApply);" label=" ``` Fence"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[2]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
+var targetApply = syntaxArr[2]; 
 window.frames[0].document.activeElement.setRangeText(targetApply);" label=" ### Heading"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[3]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
+var targetApply = syntaxArr[3]; 
 window.frames[0].document.activeElement.setRangeText(targetApply);" label=" ~~ Strike out"/>
 
 <menuitem onclick="
+window.frames[0].document.activeElement.style.fontFamily = 'serif';
+window.frames[0].document.activeElement.style.fontSize = 'medium';
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[4]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
+var targetApply = syntaxArr[4]; 
 window.frames[0].document.activeElement.setRangeText(targetApply);" label=" ---- Horizon"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[5]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
-window.frames[0].document.activeElement.setRangeText(targetApply);" label=" |--- Table right"/>
+var targetApply = syntaxArr[5]; 
+window.frames[0].document.activeElement.setRangeText(targetApply);" label=" |--- Table left"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[6]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
+var targetApply = syntaxArr[6]; 
 window.frames[0].document.activeElement.setRangeText(targetApply);" label=" |---| Table center"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[7]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
-window.frames[0].document.activeElement.setRangeText(targetApply);" label=" ---| Table left"/>
+var targetApply = syntaxArr[7]; 
+window.frames[0].document.activeElement.setRangeText(targetApply);" label=" ---| Table right"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[8]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
-window.frames[0].document.activeElement.setRangeText(targetApply);" label=" |:---| Align right"/>
+var targetApply = syntaxArr[8]; 
+window.frames[0].document.activeElement.setRangeText(targetApply);" label=" |:---| Table align left"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[9]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
-window.frames[0].document.activeElement.setRangeText(targetApply);" label=" |:---:| Align center"/>
+var targetApply = syntaxArr[9]; 
+window.frames[0].document.activeElement.setRangeText(targetApply);" label=" |:---:| Table align center"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[10]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
-window.frames[0].document.activeElement.setRangeText(targetApply);" label=" |---:| Align left"/>
+var targetApply = syntaxArr[10]; 
+window.frames[0].document.activeElement.setRangeText(targetApply);" label=" |---:| Table align right"/>
 
 <menuitem onclick="
 var syntaxArr = new Array; 
 syntaxArr = ['**', '```', '###', '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )']; 
-var targetApply = DOMCursor = HTMLInputElement.apply = syntaxArr[11]; 
-window.frames[0].document.activeElement.allowEvents = true;
-window.frames[0].document.activeElement.contentEditable = true;
-window.frames[0].document.activeElement.__defineGetter__('isContentEditable', function() {return true});
+var targetApply = syntaxArr[11]; 
 window.frames[0].document.activeElement.setRangeText(targetApply);" label=" ![alt text]( ) Image"/>
+
 </menupopup>
 </toolbarbutton>
 </toolbarpalette>

@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+
+    "name": "__MSG_extensionName__",
+    "description": "__MSG_extensionDescription__",
+    "version": "1.3.5",
+
+    "default_locale": "en",
+
+    "author": "Lab5 / fisheater",
+    "homepage_url": "https://lab5.ch/colored-folders",
+    "developer": {
+        "name": "Lab5 - Dennis Riegelsberger - info@lab5.ch",
+        "url": "https://lab5.ch/colored-folders"
+    },
+
+    "applications": {
+        "gecko": {
+            "id": "coloredfolders@lab5.ch",
+            "strict_min_version": "68.0"
+        }
+    },
+
+    "icons": {
+        "16": "chrome/icon/coloredfolders16.png",
+        "32": "chrome/icon/coloredfolders32.png",
+        "64": "chrome/icon/coloredfolders64.png"
+    },
+
+    "legacy": {
+        "type": "xul"
+    },
+
+    "permissions": [
+        "menus",
+        "activeTab"
+    ]
+  
+
+}

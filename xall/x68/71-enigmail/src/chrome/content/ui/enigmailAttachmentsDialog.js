@@ -12,6 +12,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 // Initialize enigmailCommon
 EnigInitCommon("enigmailAttachmentsDialog");
 
@@ -102,9 +106,9 @@ function onAccept() {
   }
   if (optionSel) {
     if (optionSel.value !== "") {
-      gArguments[ENIG_RESULT].selected = optionSel.value;
+      gArguments[ENIG_RESULT].selected = Number(optionSel.value);
       if (gArguments[ENIG_INPUT].restrictedScenario === false) {
-        EnigSetPref("encryptAttachments", optionSel.value);
+        EnigSetPref("encryptAttachments", Number(optionSel.value));
       }
       return true;
     } else {

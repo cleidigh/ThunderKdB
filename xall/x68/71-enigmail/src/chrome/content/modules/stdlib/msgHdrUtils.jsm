@@ -1,3 +1,4 @@
+/* eslint-disable strict */
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -23,15 +24,10 @@ var EXPORTED_SYMBOLS = [
   // Higher-level functions
   'msgHdrGetHeaders',
   // Modify messages, raw.
-  'msgHdrsModifyRaw',
-]
+  'msgHdrsModifyRaw'
+];
 
-const {
-  classes: Cc,
-  interfaces: Ci,
-  utils: Cu,
-  results: Cr
-} = Components;
+const Cr = Components.results;
 
 // from mailnews/base/public/nsMsgFolderFlags.idl
 const nsMsgFolderFlags_SentMail = 0x00000200;
@@ -53,7 +49,15 @@ const {
   fixIterator, toXPCOMArray, toArray
 } =ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
 const Services = ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
-const MailServices = ChromeUtils.import("resource:///modules/MailServices.jsm").MailServices;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
+
+var MailServices;
+try {
+  MailServices = ChromeUtils.import("resource:///modules/MailServices.jsm").MailServices;
+}
+catch (x){
+  MailServices = ChromeUtils.import("resource:///modules/mailServices.js").MailServices;
+}
 
 const {
   gIdentities,
@@ -362,7 +366,7 @@ function createStreamListener(k) {
     _data: "",
     _stream: null,
 
-    QueryInterface: XPCOMUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]),
+    QueryInterface: generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]),
 
     // nsIRequestObserver
     onStartRequest: function(aRequest) {},
@@ -459,14 +463,12 @@ function msgHdrsModifyRaw(aMsgHdrs, aTransformer) {
       msgHdr, tempFile
     } = obj;
 
-    MailServices.copy.CopyFileMessage(
+    EnigmailCompat.copyFileToMailFolder(
       tempFile,
       msgHdr.folder,
-      null,
-      false,
       msgHdr.flags,
       msgHdr.getStringProperty("keywords"), {
-        QueryInterface: XPCOMUtils.generateQI([Ci.nsIMsgCopyServiceListener]),
+        QueryInterface: generateQI([Ci.nsIMsgCopyServiceListener]),
 
         OnStartCopy: function() {},
         OnProgress: function(aProgress, aProgressMax) {},
@@ -531,4 +533,14 @@ function isPlatformNewerThan(requestedVersion) {
   let appVer = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo).platformVersion;
 
   return vc.compare(appVer, requestedVersion) >= 0;
+}
+
+function generateQI(aCid) {
+  if (isPlatformNewerThan("68.0")) {
+    // TB > 60
+    return ChromeUtils.generateQI(aCid);
+  }
+  else {
+    return XPCOMUtils.generateQI(aCid);
+  }
 }

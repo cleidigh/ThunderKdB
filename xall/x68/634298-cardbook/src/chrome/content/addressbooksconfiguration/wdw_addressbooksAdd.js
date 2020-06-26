@@ -283,10 +283,10 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookWindowUtils.callDirPicker("dirChooseTitle", wdw_addressbooksAdd.checkFile);
 					break;
 				case "createFile":
-					cardbookWindowUtils.callFilePicker("fileCreationVCFTitle", "SAVE", "VCF", "", wdw_addressbooksAdd.checkFile);
+					cardbookWindowUtils.callFilePicker("fileCreationVCFTitle", "SAVE", "VCF", "", "", wdw_addressbooksAdd.checkFile);
 					break;
 				case "openFile":
-					cardbookWindowUtils.callFilePicker("fileSelectionVCFTitle", "OPEN", "VCF", "", wdw_addressbooksAdd.checkFile);
+					cardbookWindowUtils.callFilePicker("fileSelectionVCFTitle", "OPEN", "VCF", "", "", wdw_addressbooksAdd.checkFile);
 					break;
 			}
 		},
@@ -1233,7 +1233,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						cardbookRepository.cardbookDirRequest[myAccount.dirPrefId]++;
 						var myMode = "WINDOW";
 						wdw_migrate.importCards(myAccount.sourceDirPrefId, myAccount.dirPrefId, myAccount.name, myAccount.vcard, myMode);
-						cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode);
+						cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode, false, true);
 						// if the first proposed import of standard address books is finished OK
 						// then set CardBook as exclusive
 						if (myAccount.firstAction) {
@@ -1258,7 +1258,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						}
 						var myMode = "WINDOW";
 						cardbookSynchronization.loadFile(myFile, myAccount.dirPrefId, myAccount.dirPrefId, myMode, "NOIMPORTFILE", "");
-						cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode);
+						cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode, false, true);
 					} else if (myAccount.type === "DIRECTORY") {
 						var myDir = myAccount.file;
 						if (myAccount.actionType === "CREATEDIRECTORY") {
@@ -1298,7 +1298,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						cardbookRepository.cardbookDirRequest[myAccount.dirPrefId]++;
 						var myMode = "WINDOW";
 						cardbookSynchronization.loadDir(myDir, myAccount.dirPrefId, myAccount.dirPrefId, myMode, "NOIMPORTDIR", "");
-						cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode);
+						cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode, false, true);
 					}
 					cardbookUtils.formatStringForOutput("addressbookCreated", [myAccount.name]);
 					cardbookActions.addActivity("addressbookCreated", [myAccount.name], "addItem");

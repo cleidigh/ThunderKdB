@@ -26,28 +26,30 @@ var EnigmailPrefOverlay = {
     document.getElementById("enigmail_juniorMode").value = jm;
 
     let prefWindow = document.getElementById("MailPreferences");
-    if (this._windowResized === 0 && prefWindow.currentPane.id === "panePrivacy") {
+    if (this._windowResized === 0 && ("currentPane" in prefWindow) && prefWindow.currentPane.id === "panePrivacy") {
       window.resizeBy(0, prefGroup.clientHeight);
     }
 
     // call check to pEp-avalability asynchronously
-    EnigmailTimer.setTimeout(function _f() {
-      if (EnigmailPEPAdapter.isPepAvailable()) {
+    EnigmailTimer.setTimeout(async function _f() {
+      if (await EnigmailPEPAdapter.isPepAvailable(true)) {
         EnigmailLog.DEBUG("enigmailPrivacyOverlay.js: initJuniorMode - pEp is available\n");
         forceOn.removeAttribute("disabled");
       }
     }, 10);
   },
 
-  onWindowClose: function(event) {
+  onWindowClose: async function(event) {
+    EnigmailLog.DEBUG("enigmailPrivacyOverlay.js: onWindowClose()\n");
     try {
-      if (EnigmailPEPAdapter.isPepAvailable()) {
+      if (await EnigmailPEPAdapter.isPepAvailable(false)) {
         EnigmailPEPAdapter.initialize();
       }
     } catch (ex) {}
   },
 
   onLoad: function() {
+    EnigmailLog.DEBUG("enigmailPrivacyOverlay.js: onLoad()\n");
     window.addEventListener("unload", EnigmailPrefOverlay.onWindowClose, false);
     let prefPane = document.getElementById("panePrivacy");
     prefPane.addEventListener("paneload", EnigmailPrefOverlay.initJuniorMode);
@@ -65,5 +67,4 @@ var EnigmailPrefOverlay = {
   }
 };
 
-window.addEventListener("load-enigmail", EnigmailPrefOverlay.onLoad.bind(EnigmailPrefOverlay), false);
-window.addEventListener("unload-enigmail", EnigmailPrefOverlay.onUnload.bind(EnigmailPrefOverlay), false);
+EnigmailPrefOverlay.onLoad();

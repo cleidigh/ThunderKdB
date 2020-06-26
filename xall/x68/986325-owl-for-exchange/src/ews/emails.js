@@ -18,7 +18,7 @@ EWSAccount.prototype.FindFolders = async function(aMsgWindow) {
   if (this.requestVersion >= kExchange2013) {
     // We only need the root folder for Exchange 2013+
     // The other folders are needed only for Exchange 2010.
-    request.m$GetFolder.m$FolderIds.length = 1;
+    request.m$GetFolder.m$FolderIds.t$DistinguishedFolderId.length = 1;
   }
   let response = await this.CallService(aMsgWindow, request);
   if (response.errors && response.errors.length) {
@@ -63,6 +63,36 @@ EWSAccount.prototype.FindFolders = async function(aMsgWindow) {
   }
   let rootFolder = DistinguishedFolderIds[0];
   return ConvertFolderList(response.RootFolder.Folders.Folder, rootFolder);
+}
+
+/**
+ * Get details for a folder
+ *
+ * @param aMsgWindow {Integer}
+ * @param aFolder    {String}  The folder's id
+ * @returns          {Object}  Some properties of the folder
+ */
+EWSAccount.prototype.GetFolder = async function(aMsgWindow, aFolder) {
+  let request = {
+    m$GetFolder: {
+      m$FolderShape: {
+        t$BaseShape: "Default",
+      },
+      m$FolderIds: {
+        t$FolderId: [{
+          Id: aFolder,
+        }],
+      },
+    },
+  };
+  let result = await this.CallService(aMsgWindow, request); // ews.js
+  let folder = result.Folders.Folder;
+  return {
+    id: folder.FolderId.Id,
+    name: folder.DisplayName,
+    total: Number(folder.TotalCount),
+    unread: Number(folder.UnreadCount),
+  };
 }
 
 /**
@@ -154,7 +184,7 @@ EWSAccount.prototype.MoveFolder = async function(aMsgWindow, aFolder, aTarget) {
  * @param aParent    {String}  The folder's id
  * @param aName      {String}  The folder's new name
  */
-EWSAccount.prototype.UpdateFolder = async function(aMsgWindow, aFolder, aName) {
+EWSAccount.prototype.RenameFolder = async function(aMsgWindow, aFolder, aName) {
   let request = {
     m$UpdateFolder: {
       m$FolderChanges: {
@@ -235,6 +265,8 @@ EWSAccount.prototype.FindMessages = async function(aMsgWindow, aFolder, aSyncSta
           }, {
             FieldURI: "item:ItemClass",
           }, {
+            FieldURI: "item:Categories",
+          }, {
             FieldURI: "item:Flag",
           }, {
             FieldURI: "item:Preview",
@@ -281,6 +313,7 @@ EWSAccount.prototype.FindMessages = async function(aMsgWindow, aFolder, aSyncSta
       author: item.From ? EWS2MailboxObject(item.From.Mailbox) :
               item.Sender ? EWS2MailboxObject(item.Sender.Mailbox) : null,
       dateReceived: Date.parse(item.DateTimeReceived) / 1000 || 0,
+      keywords: ensureArray(item.Categories && item.Categories.String),
       preview: item.Preview || "",
       isMessage: item.ItemClass == "IPM.Note",
     })).concat(ensureArray(response.Changes.ReadFlagChange).map(item => ({
@@ -496,6 +529,7 @@ EWSAccount.prototype.ConvertItemResponse = function(aMessage) {
     recipients: item.ToRecipients ? ensureArray(item.ToRecipients.Mailbox).map(EWS2MailboxObject) : [],
     references: item.References || "",
     dateReceived: Date.parse(item.DateTimeReceived) / 1000 || 0,
+    keywords: ensureArray(item.Categories && item.Categories.String),
     preview: item.Preview || "",
     contentType: item.Body ? "text/" + item.Body.BodyType.toLowerCase() : "",
     body: item.Body ? item.Body.Value : "",
@@ -560,7 +594,7 @@ EWSAccount.prototype.CreateMessage = async function(aMsgWindow, aBody, aContentT
           t$Subject: aSubject,
           t$Body: {
             BodyType: aContentType == "text/html" ? "HTML" : "Text",
-            Value: aBody,
+            _TextContent_: aBody,
           },
           t$Importance: aPriority || "Normal",
           t$ToRecipients: {
@@ -660,9 +694,10 @@ EWSAccount.prototype.ComposeMime = async function(aMsgWindow, aContent, aBccReci
  * @param aIsDraft   {Boolean} Whether the item is a draft
  * @param aRead      {Boolean} Whether the item is read or unread
  * @param aFlagged   {Boolean} Whether the item is flagged
+ * @param aKeywords  {Array[String]}
  * @returns          {String}  The id of the new item
  */
-EWSAccount.prototype.CreateMime = async function(aMsgWindow, aFolder, aContent, aIsDraft, aRead, aFlagged) {
+EWSAccount.prototype.CreateMime = async function(aMsgWindow, aFolder, aContent, aIsDraft, aRead, aFlagged, aKeywords) {
   let create = {
     m$CreateItem: {
       m$SavedItemFolderId: aFolder ? {
@@ -673,6 +708,9 @@ EWSAccount.prototype.CreateMime = async function(aMsgWindow, aFolder, aContent, 
       m$Items: {
         t$Message: [{
           t$MimeContent: btoa(aContent),
+          t$Categories: {
+            t$String: aKeywords,
+          },
           t$ExtendedProperty: [{
             t$ExtendedFieldURI: {
               PropertyTag: "0x0E07",
@@ -695,7 +733,7 @@ EWSAccount.prototype.CreateMime = async function(aMsgWindow, aFolder, aContent, 
   if (this.requestVersion < kExchange2013) {
     // Exchange 2010 needs us to set the Read status via MAPI
     if (aRead) {
-      create.m$CreateItem.m$Items.t$Message.t$ExtendedProperty[0].t$Value |= MAPI_MSGFLAG_READ;
+      create.m$CreateItem.m$Items.t$Message[0].t$ExtendedProperty[0].t$Value |= MAPI_MSGFLAG_READ;
     }
     // t:Flag does not exist in Exchange 2010
     delete create.m$CreateItem.m$Items.t$Message[0].t$Flag;
@@ -717,11 +755,12 @@ EWSAccount.prototype.CreateMime = async function(aMsgWindow, aFolder, aContent, 
 /**
  * Delete messages
  *
- * @param aMsgWindow {Integer}
- * @param aItems     {Array[String]} The ids of the items to delete
- * @param aPermanent {String}  False if this is just a move to Deleted Items
+ * @param aMsgWindow   {Integer}
+ * @param aItems       {Array[String]} The ids of the items to delete
+ * @param aPermanent   {Boolean} False if this is just a move to Deleted Items
+ * @param aAreMessages {Boolean} False unless all items are known to be messages
  */
-EWSAccount.prototype.DeleteMessages = async function(aMsgWindow, aItems, aPermanent) {
+EWSAccount.prototype.DeleteMessages = async function(aMsgWindow, aItems, aPermanent, aAreMessages) {
   let request = {
     m$DeleteItem: {
       m$ItemIds: {
@@ -737,9 +776,12 @@ EWSAccount.prototype.DeleteMessages = async function(aMsgWindow, aItems, aPerman
     // SuppressReadReceipts did not exist in Exchange 2010
     delete request.m$DeleteItem.SuppressReadReceipts;
   }
+  if (!aAreMessages) {
+    request.m$DeleteItem.SendMeetingCancellations = "SendToNone";
+    request.m$DeleteItem.AffectedTaskOccurrences = "AllOccurrences";
+  }
   try {
     let response = await this.CallService(aMsgWindow, request); // ews.js
-
     if (response.errors && response.errors.length) { // some succeeded, some failed
       throw response.errors[0];
     }
@@ -907,6 +949,58 @@ EWSAccount.prototype.UpdateMessages = async function(aMsgWindow, aFolder, aItems
 }
 
 /**
+ * Change categories on a message
+ *
+ * @param aMsgWindow {Integer}
+ * @param aFolder    {String} The target folder's id
+ * @param aItem      {String} The id of the message to update
+ * @param aKeywords  {Array[String]} The categories to set
+ */
+EWSAccount.prototype.UpdateKeywords = async function(aMsgWindow, aFolder, aItem, aKeywords) {
+  let item = {
+    Id: aItem,
+  };
+  if (this.requestVersion < kExchange2013) {
+    let fetch = {
+      m$GetItem: {
+        m$ItemShape: {
+          t$BaseShape: "IdOnly",
+        },
+        m$ItemIds: {
+          t$ItemId: item,
+        },
+      },
+    };
+    let result = await this.CallService(aMsgWindow, fetch); // ews.js
+    item = EWSAccount.GetItem(result.Items).ItemId;
+  }
+  let request = {
+    m$UpdateItem: {
+      m$ItemChanges: {
+        t$ItemChange: {
+          t$ItemId: item,
+          t$Updates: {
+            t$SetItemField: {
+              t$FieldURI: {
+                FieldURI: "item:Categories",
+              },
+              t$Item: {
+                t$Categories: {
+                  t$String: aKeywords,
+                },
+              },
+            },
+          },
+        },
+      },
+      ConflictResolution: "AlwaysOverwrite",
+      MessageDisposition: "SaveOnly",
+    },
+  };
+  await this.CallService(aMsgWindow, request); // ews.js
+}
+
+/**
  * Send a created message
  *
  * @param aMsgWindow {Integer}
@@ -1046,8 +1140,8 @@ EWSAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
     return this.DeleteFolder(aMsgWindow, aParameters.folder, aParameters.permanent);
   case "MoveFolder":
     return this.MoveFolder(aMsgWindow, aParameters.folder, aParameters.target);
-  case "UpdateFolder":
-    return this.UpdateFolder(aMsgWindow, aParameters.folder, aParameters.name);
+  case "RenameFolder":
+    return this.RenameFolder(aMsgWindow, aParameters.folder, aParameters.name);
   case "FindMessages":
     return this.FindMessages(aMsgWindow, aParameters.folder, aParameters.syncState, aParameters.index, aParameters.limit);
   case "GetMessage":
@@ -1071,15 +1165,17 @@ EWSAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "SendMessageFromMime":
     return this.SendMime(aMsgWindow, aParameters.folder, aParameters.content, aParameters.bcc);
   case "CreateMessageFromMime":
-    return this.CreateMime(aMsgWindow, aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged);
+    return this.CreateMime(aMsgWindow, aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged, aParameters.keywords);
   case "DeleteMessages":
-    return this.DeleteMessages(aMsgWindow, aParameters.messages, aParameters.permanent);
+    return this.DeleteMessages(aMsgWindow, aParameters.messages, aParameters.permanent, aParameters.areMessages);
   case "CopyMessages":
     return this.CopyOrMoveMessages(aMsgWindow, aParameters.target, aParameters.messages, "Copy");
   case "MoveMessages":
     return this.CopyOrMoveMessages(aMsgWindow, aParameters.target, aParameters.messages, "Move");
   case "UpdateMessages":
     return this.UpdateMessages(aMsgWindow, aParameters.folder, aParameters.messages, aParameters.read, aParameters.flagged);
+  case "UpdateKeywords":
+    return this.UpdateKeywords(aMsgWindow, aParameters.folder, aParameters.message, aParameters.keywords);
   case "GetAttachment":
     return this.GetAttachment(aMsgWindow, aParameters.folder, aParameters.message, aParameters.attachment);
   case "EmptyTrash":

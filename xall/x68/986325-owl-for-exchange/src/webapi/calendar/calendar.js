@@ -16,8 +16,6 @@ try {
 }
 const nsMsgViewIndex_None = 0xFFFFFFFF;
 
-/// {Map {origin} -> {nsIMsgIncomingServer}}
-var gRegisteredURIs = new Map();
 /// {Map time zone {String} -> {calITimezone}}
 var gTimeZoneCache = new Map();
 /**
@@ -606,7 +604,7 @@ class Calendar extends (cal && cal.provider.BaseClass) {
    * @returns          {Any?}   Operation-dependent return value
    */
   async callExtension(aOperation, aData) {
-    let server = gRegisteredURIs.get(this.uri.prePath);
+    let server = Calendar.gRegisteredURIs.get(this.uri.prePath);
     let error = new Error(); // must capture stack before async call
     try {
       // Calls the function passed to browser.calendarProvider.dispatcher.addListener() in ews.js
@@ -699,15 +697,6 @@ class Calendar extends (cal && cal.provider.BaseClass) {
     });
   }
   async replayChangesOn(aListener, aRetried) {
-    let server = gRegisteredURIs.get(this.uri.prePath);
-    if (!server) {
-      aListener.onResult({ status: Cr.NS_ERROR_NOT_INITIALIZED }, "server is null");
-      return;
-    }
-    if (!Calendar.gListeners.get(server.type)) {
-      aListener.onResult({ status: Cr.NS_ERROR_NOT_INITIALIZED }, "listener is null");
-      return;
-    }
     let success;
     try {
       this.offlineStorage.startBatch();
@@ -845,7 +834,7 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       let identity = MailServices.accounts.getFirstIdentityForServer(server);
       return identity.key;
     case "disabled":
-      if (!gRegisteredURIs.has(this.uri.prePath)) {
+      if (!Calendar.gRegisteredURIs.has(this.uri.prePath)) {
         return true;
       }
       // fall through
@@ -994,6 +983,8 @@ class Calendar extends (cal && cal.provider.BaseClass) {
 
 /// A map of webextensions to the listeners registered with the dispatcher.
 Calendar.gListeners = new Map();
+/// {Map {origin} -> {nsIMsgIncomingServer}}
+Calendar.gRegisteredURIs = new Map();
 
 var gComponentRegistrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
 // First try to unregister the factory in case this is a reinstallation.
@@ -1023,7 +1014,7 @@ this.calendar = class extends ExtensionAPI {
             try {
               let server = MailServices.accounts.getIncomingServer(key);
               let uri = Services.io.newURI(server.serverURI);
-              gRegisteredURIs.set(uri.prePath, server);
+              Calendar.gRegisteredURIs.set(uri.prePath, server);
               reloadCalendars(uri, server);
             } catch (ex) {
               logError(ex);
@@ -1035,6 +1026,11 @@ this.calendar = class extends ExtensionAPI {
           Calendar.gListeners.set(scheme, listener);
           return () => {
             Calendar.gListeners.delete(scheme);
+            for (let [uri, server] of Calendar.gRegisteredURIs) {
+              if (server.type == scheme) {
+                Calendar.gRegisteredURIs.delete(uri);
+              }
+            }
           };
         }).api(),
       }

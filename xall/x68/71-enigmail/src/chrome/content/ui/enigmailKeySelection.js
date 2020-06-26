@@ -8,6 +8,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 /* global EnigInitCommon: false, EnigmailTrust: false, EnigGetString: false, EnigmailCore: false, EnigmailLog: false */
 /* global EnigmailKeyRing: false, EnigGetPref: false, EnigGetTrustLabel: false, EnigSetActive: false, EnigAlert: false */
 /* global EnigSetPref: false, EnigConfirm: false, EnigmailPrefs: false, EnigDownloadKeys: false */
@@ -19,7 +23,8 @@ var EnigmailKey = ChromeUtils.import("chrome://enigmail/content/modules/key.jsm"
 var EnigmailSearchCallback = ChromeUtils.import("chrome://enigmail/content/modules/searchCallback.jsm").EnigmailSearchCallback;
 var EnigmailCryptoAPI = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 var newEnigmailKeyObj = ChromeUtils.import("chrome://enigmail/content/modules/keyObj.jsm").newEnigmailKeyObj;
-
+var EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
+var getCellAt = null;
 
 const INPUT = 0;
 const RESULT = 1;
@@ -59,8 +64,6 @@ var gEnigRemoveListener = false;
 var gKeysNotFound = [];
 const EMPTY_UID = " -";
 
-
-
 function onLoad() {
   EnigmailLog.DEBUG("enigmailKeySelection.js: onLoad\n");
 
@@ -68,7 +71,10 @@ function onLoad() {
   if (window.arguments[INPUT].options.indexOf("private") >= 0) {
     document.getElementById("enigmailKeySelectionDlg").setAttribute("title", EnigGetString("userSel.secretKeySel.title"));
   }
-  document.getElementById("enigmailUserIdSelection").addEventListener('click', onClickCallback, true);
+
+  let tree = document.getElementById("enigmailUserIdSelection");
+  getCellAt = EnigmailCompat.getTreeCompatibleFuncs(tree, null).getCellAt;
+  tree.addEventListener('click', onClickCallback, true);
   EnigmailSearchCallback.setup(document.getElementById("filterKey"), gTimeoutId, applyFilter, 200);
 
   let enigmailSvc = EnigmailCore.getService(window);
@@ -758,7 +764,7 @@ function userSelCallback(event) {
     // Mouse event
     Tree = document.getElementById("enigmailUserIdSelection");
 
-    let treeInfo = Tree.getCellAt(event.clientX, event.clientY);
+    let treeInfo = getCellAt(event.clientX, event.clientY);
     row = treeInfo.row;
     col = treeInfo.col;
 

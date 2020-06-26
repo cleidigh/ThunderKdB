@@ -9,10 +9,6 @@
 
 var EXPORTED_SYMBOLS = ["EnigmailInstallPep"];
 
-
-
-
-
 Components.utils.importGlobalProperties(["XMLHttpRequest"]);
 const subprocess = ChromeUtils.import("chrome://enigmail/content/modules/subprocess.jsm").subprocess;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
@@ -22,13 +18,10 @@ const EnigmailPrefs = ChromeUtils.import("chrome://enigmail/content/modules/pref
 const PromiseUtils = ChromeUtils.import("resource://gre/modules/PromiseUtils.jsm").PromiseUtils;
 const EnigmailFiles = ChromeUtils.import("chrome://enigmail/content/modules/files.jsm").EnigmailFiles;
 const EnigmailXhrUtils = ChromeUtils.import("chrome://enigmail/content/modules/xhrUtils.jsm").EnigmailXhrUtils;
-
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 
 const EXEC_FILE_PERMS = 0x1C0; // 0700
-
-
-const NS_LOCALFILEOUTPUTSTREAM_CONTRACTID =
-  "@mozilla.org/network/file-output-stream;1";
+const NS_LOCALFILEOUTPUTSTREAM_CONTRACTID = "@mozilla.org/network/file-output-stream;1";
 const DIR_SERV_CONTRACTID = "@mozilla.org/file/directory_service;1";
 const NS_LOCAL_FILE_CONTRACTID = "@mozilla.org/file/local;1";
 const XPCOM_APPINFO = "@mozilla.org/xre/app-info;1";
@@ -396,6 +389,7 @@ var EnigmailInstallPep = {
   startInstaller: function(progressListener, manualInstall = false) {
     EnigmailLog.DEBUG("installPep.jsm: startInstaller()\n");
 
+    if (EnigmailCompat.isPostbox()) return null;
     if (!manualInstall) {
       if (!EnigmailPrefs.getPref("pEpAutoDownload")) return null;
     }
@@ -426,6 +420,7 @@ var EnigmailInstallPep = {
   isPepInstallerAvailable: async function(manualInstall = false) {
     EnigmailLog.DEBUG("installPep.jsm: isPepInstallerAvailable()\n");
 
+    if (EnigmailCompat.isPostbox()) return false;
     if (!manualInstall) {
       // don't download anything if auto-download is disabled
       if (!EnigmailPrefs.getPref("pEpAutoDownload")) return false;
@@ -455,6 +450,7 @@ var EnigmailInstallPep = {
   isPepUpdateAvailable: function(manualInstall = false, currentPepVersion) {
     EnigmailLog.DEBUG("installPep.jsm: isPepUpdateAvailable()\n");
 
+    if (EnigmailCompat.isPostbox()) return false;
     if (!manualInstall) {
       // don't download anything if auto-download is disabled
       if (!EnigmailPrefs.getPref("pEpAutoDownload")) return false;

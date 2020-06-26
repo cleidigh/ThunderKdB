@@ -163,6 +163,9 @@ pref("extensions.enigmail.autoWkdLookup", 1);
 // 4: if send (un)encrypted due to rules
 pref("extensions.enigmail.confirmBeforeSending", 0);
 
+// Show or hide the Enigmail (or pEp) column in the message list
+pref("extensions.enigmail.columnVisible", false);
+
 // show "Missing Trust in own keys" message (and remember selected state)
 pref("extensions.enigmail.warnOnMissingOwnerTrust", true);
 
@@ -218,7 +221,10 @@ pref("extensions.enigmail.pEpAutoUpdate", 0);
 // enable encryption/signing of headers like subject, from, to
 // 1: default: ask user at 1st time use / 0: off /  2: on
 pref("extensions.enigmail.protectedHeaders", 1);
-pref("extensions.enigmail.protectedSubjectText", "");
+
+// Create the Legacy Display part of Protected headers
+// false: off / true: on
+pref("extensions.enigmail.protectedHeadersLegacyPart", false);
 
 // do reset the "references" and "in-reply-to" headers?
 pref("extensions.enigmail.protectReferencesHdr", false);

@@ -153,19 +153,20 @@ function loadIntoWindow(window) {
     // DIFFERENT PLACES?! Way, to go, Thunderbird developers, great job making
     // it easy for add-on developers to add new commands!
     if (! isSeaMonkey()) {
-        var appMenu = document.getElementById("appmenu_messageMenuPopup");
         old_menuitem = document.getElementById("appmenu_forwardMsg");
-        new_menuitem = document.createXULElement("menuitem");
+        new_menuitem = document.createXULElement("toolbarbutton");
         new_menuitem.setAttribute("id", "rtmm_appmenu_reply");
         new_menuitem.setAttribute("label", "Reply to Selected");
+        new_menuitem.setAttribute("class", old_menuitem.getAttribute("class"));
         new_menuitem.addEventListener("command", replyToSelectedClosure);
-        appMenu.insertBefore(new_menuitem, old_menuitem);
+        old_menuitem.parentElement.insertBefore(new_menuitem, old_menuitem);
 
-        new_menuitem = document.createXULElement("menuitem");
+        new_menuitem = document.createXULElement("toolbarbutton");
         new_menuitem.setAttribute("id", "rtmm_appmenu_replyAll");
         new_menuitem.setAttribute("label", "Reply All to Selected");
+        new_menuitem.setAttribute("class", old_menuitem.getAttribute("class"));
         new_menuitem.addEventListener("command", replyAllToSelectedClosure);
-        appMenu.insertBefore(new_menuitem, old_menuitem);
+        old_menuitem.parentElement.insertBefore(new_menuitem, old_menuitem);
     }
 
     // So, the object here is for the menu command to be greyed out when no

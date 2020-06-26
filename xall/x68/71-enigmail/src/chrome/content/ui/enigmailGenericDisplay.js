@@ -6,6 +6,10 @@
 
 "use strict";
 
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+
 /* global EnigInitCommon: false, EnigmailLog: false, EnigGetFrame: false */
 
 // Initialize enigmailCommon

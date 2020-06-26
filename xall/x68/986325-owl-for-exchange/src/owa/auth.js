@@ -2,6 +2,7 @@ const kPassword = 3;
 const kLaxPassword = 20;
 const kOAuth2 = 10; // from MailNewsTypes2.idl
 const kVersionLogURL = "https://www.beonex.com/log/exchange?version=";
+const kHotmailServer = "outlook.live.com";
 
 /**
  * Look up the CANARY cookie for the server,
@@ -9,6 +10,7 @@ const kVersionLogURL = "https://www.beonex.com/log/exchange?version=";
  */
 OWAAccount.prototype.getCanary = async function() {
   let cookies = await browser.cookies.getAll({ domain: this.serverURL.hostname, secure: true, name: this.cookieName });
+  cookies = cookies.filter(cookie => this.serverURL.pathname.startsWith(cookie.path));
   return cookies.length ? cookies[0].value : null;
 }
 
@@ -21,14 +23,39 @@ OWAAccount.prototype.ClearCookies = async function() {
 }
 
 /**
+ * Check that cookies are enabled.
+ */
+OWAAccount.prototype.CheckCookiePreferences = async function() {
+  // cookieBehaviour is 0 for accept all cookies (including third party)
+  // lifetimePolicy is 0 for accept until they expire (not session only)
+  let cookieBehaviour = await browser.globalPrefs.getNumberValue("network.cookie.cookieBehavior");
+  let lifetimePolicy = await browser.globalPrefs.getNumberValue("network.cookie.lifetimePolicy");
+  if (cookieBehaviour != 0 || lifetimePolicy != 0) {
+    throw new OwlError("cookie-preferences");
+  }
+  // Also check whether cookies have been blocked for this server.
+  let value = Math.random().toFixed(18);
+  await browser.cookies.set({ url: this.serverURL.href, secure: true, name: "X-OWL-TEST", value: value });
+  let cookies = await browser.cookies.getAll({ domain: this.serverURL.hostname, secure: true, name: "X-OWL-TEST" });
+  if (!cookies.some(cookie => cookie.path == this.serverURL.pathname && cookie.value == value)) {
+    throw new OwlError("cookie-preferences");
+  }
+  await browser.cookies.remove({ url: this.serverURL.href, name: "X-OWL-TEST" });
+}
+
+/**
  * Attempt a login, but does not perform post-login tasks.
  *
  * @returns          {Object}  An object providing the status of the operation
+ *   If success, returns an empty object with no properties.
+ *   If error, returns an object with:
  *   message         {String}  The text of any exception
  *   code            {String?} An internal error identifier
  *
  * - "duplicate-server"
  *   This means that an OWL account already exists with that server.
+ * - "cookies-disabled"
+ *   This means that cookies are not enabled or are blocked for that server.
  * - "password-wrong"
  *   This means that the login form was found
  *   but submitting it failed to set the X-OWA-CANARY cookie.
@@ -50,6 +77,7 @@ OWAAccount.prototype.ClearCookies = async function() {
  */
 OWAAccount.prototype.VerifyLogin = async function() {
   try {
+    await this.CheckCookiePreferences();
     let hostname = await browser.incomingServer.getHostName(this.serverID);
     let servers = await browser.incomingServer.getServersOfTypes(["owl"]);
     for (let otherServerID of servers) {
@@ -232,6 +260,10 @@ OWAAccount.prototype.LoginLock = function(aMsgWindow)
 OWAAccount.prototype.Login = async function(aMsgWindow) {
   // If we have a cookie, then we're logged in.
   if (await this.getCanary()) {
+    if (!this.startedUp) {
+      await this.StartupAfterLogin(aMsgWindow); // owa.js
+      this.startedUp = true;
+    }
     return;
   }
   let authMethod = await browser.incomingServer.getNumberValue(this.serverID, "authMethod");
@@ -272,6 +304,7 @@ OWAAccount.prototype.Login = async function(aMsgWindow) {
     break;
   }
   await this.StartupAfterLogin(aMsgWindow); // owa.js
+  this.startedUp = true;
 }
 
 /**
@@ -289,7 +322,7 @@ OWAAccount.prototype.LoginWithPassword = async function(aMsgWindow)
   let response;
   do {
     response = await this.SubmitLoginForm(elements, aMsgWindow);
-    if (await this.getCanary()) {
+    if (await this.CheckLoginFinished()) {
       return "";
     }
   } while (await browser.incomingServer.promptLoginFailed(this.serverID, aMsgWindow));
@@ -374,7 +407,7 @@ OWAAccount.prototype.LaxLoginWithPassword = async function(aMsgWindow) {
   }
   do {
     await this.SubmitLoginForm(elements, aMsgWindow);
-    if (await this.getCanary()) {
+    if (await this.CheckLoginFinished()) {
       return "";
     }
   } while (await browser.incomingServer.promptLoginFailed(this.serverID, aMsgWindow));
@@ -507,13 +540,39 @@ OWAAccount.prototype.TaggedFetch = async function(aUrl, aOptions) {
  * @throws           {Error}   If the login tab was closed
  */
 OWAAccount.prototype.LoginWithOAuthInTab = async function(aMsgWindow) {
-  let owaURL = this.serverURL;
+  // We want to skip the landing page for personal Microsoft accounts.
+  let isHotmail = this.serverURL.hostname == kHotmailServer;
+  let url = isHotmail ? this.serverURL + "?nlp=1" : this.serverURL.href;
   let hadPasswordError = false;
   return new Promise(async (resolve, reject) => {
-    // Listen for the page to load in case we can fill out out automatically.
-    let loadListener = async details => {
+    var tab;
+    async function open() {
+      tab = await browser.tabs.create({ url });
+      browser.cookies.onChanged.addListener(cookiesListener);
+      browser.tabs.onRemoved.addListener(tabsListener);
+      browser.webNavigation.onCompleted.addListener(loadListener);
+    }
+    async function close(closeTab) {
+      browser.webNavigation.onCompleted.removeListener(loadListener);
+      browser.tabs.onRemoved.removeListener(tabsListener);
+      browser.cookies.onChanged.removeListener(cookiesListener);
+      if (closeTab) {
+        await browser.tabs.remove(tab.id);
+      }
+    }
+
+    // Listen for the page to load.
+    var loadListener = async details => {
       if (details.tabId == tab.id && details.frameId == 0) {
-        let code = await this.autoFillLoginPage();
+        // If the login didn't finish when the canary was set, but we're logged in now, then finish
+        if (await this.CheckLoginFinished()) {
+          await close(true);
+          resolve();
+          return;
+        }
+
+        // Try to fill in the login form automatically.
+        let code = await this.autoFillLoginPage(aMsgWindow);
         let [ status ] = await browser.tabs.executeScript(tab.id, { code });
         if (status && status.passwordErrorMessage) {
           if (await browser.incomingServer.promptLoginFailed(this.serverID, aMsgWindow, status.passwordErrorMessage)) {
@@ -526,28 +585,38 @@ OWAAccount.prototype.LoginWithOAuthInTab = async function(aMsgWindow) {
       }
     };
     // Listen in case the tab is closed.
-    let tabsListener = tabId => {
+    var tabsListener = async tabId => {
       if (tabId == tab.id) {
-        browser.webNavigation.onCompleted.removeListener(loadListener);
-        browser.tabs.onRemoved.removeListener(tabsListener);
-        browser.cookies.onChanged.removeListener(cookiesListener);
+        await close(false);
         reject(new ParameterError(hadPasswordError ? "password-wrong" : "auth-browser-closed"));
       }
     };
-    // Listen for the CANARY cookie that tells us we're logged in.
-    let cookiesListener = async details => {
-      if (details.cookie.name == this.cookieName && details.cookie.domain == owaURL.hostname) {
-        browser.tabs.remove(tab.id);
-        browser.webNavigation.onCompleted.removeListener(loadListener);
-        browser.tabs.onRemoved.removeListener(tabsListener);
-        browser.cookies.onChanged.removeListener(cookiesListener);
-        resolve();
+
+    var cookiesListener = async details => {
+      // For Hotmail, check the path to the CANARY cookie.
+      if (isHotmail &&
+          details.cookie.domain == kHotmailServer &&
+          details.cookie.name == this.cookieName &&
+          details.cookie.path.startsWith("/owa/")) {
+        // Hotmail also sets cookies for /owa/0/, /mail/0/, /calendar/0/ etc.,
+        // but we can use only the /owa/0/ cookie.
+        // We also need to use that URL for the service request.
+        // This needs to happen before CheckLoginFinished().
+        this.serverURL.pathname = details.cookie.path;
+      }
+
+      // If we receive the canary cookie, check whether we're logged in
+      if (details.cookie.name == this.cookieName &&
+          details.cookie.domain == this.serverURL.hostname) {
+        if (await this.CheckLoginFinished()) {
+          await close(true);
+          resolve();
+          return;
+        }
       }
     };
-    let tab = await browser.tabs.create({ url: owaURL.href });
-    browser.cookies.onChanged.addListener(cookiesListener);
-    browser.tabs.onRemoved.addListener(tabsListener);
-    browser.webNavigation.onCompleted.addListener(loadListener);
+
+    await open();
   });
 }
 
@@ -558,23 +627,52 @@ OWAAccount.prototype.LoginWithOAuthInTab = async function(aMsgWindow) {
  * @throws          {Error}  If the login window was closed
  */
 OWAAccount.prototype.LoginWithOAuthInPopup = async function() {
-  let owaURL = this.serverURL;
-  return new Promise((resolve, reject) => {
-    // Listen for the page to load in case we can fill out out automatically.
-    let loadListener = async originalURL => {
-      if (originalURL == owaURL.href) {
-        let code = await this.autoFillLoginPage();
-        browser.request.executeScript(owaURL.href, code);
+  // We want to skip the landing page for personal Microsoft accounts.
+  let isHotmail = this.serverURL.hostname == kHotmailServer;
+  let url = isHotmail ? this.serverURL + "?nlp=1" : this.serverURL.href;
+
+  return new Promise(async (resolve, reject) => {
+    async function open() {
+      browser.request.onCompleted.addListener(loadListener);
+      browser.request.onClosed.addListener(requestListener);
+      browser.cookies.onChanged.addListener(cookiesListener);
+      await browser.request.open(url);
+    }
+    async function close(closeWindow) {
+      browser.request.onCompleted.removeListener(loadListener);
+      browser.request.onClosed.removeListener(requestListener);
+      browser.cookies.onChanged.removeListener(cookiesListener);
+      if (closeWindow) {
+        await browser.request.close(url);
+      }
+    }
+
+    // Listen for the page to load.
+    var loadListener = async originalURL => {
+      if (originalURL == url) {
+        // If the login didn't finish when the canary was set, but we're logged in now, then finish
+        if (await this.CheckLoginFinished()) {
+          await close(true);
+          resolve();
+          return;
+        }
+
+        // Try to fill in the login form automatically.
+        let code = await this.autoFillLoginPage(null);
+        let [ status ] = await browser.request.executeScript(url, code);
+        if (status && status.passwordErrorMessage) {
+          await close(true);
+          reject(new ParameterError("password-wrong", status.passwordErrorMessage, { setup: true }));
+        }
       }
     };
-    let requestListener = async (originalURL, currentURL, browsingHistory) => {
-      if (originalURL == owaURL.href) {
-        browser.request.onCompleted.removeListener(loadListener);
-        browser.request.onClosed.removeListener(requestListener);
-        browser.cookies.onChanged.removeListener(cookiesListener);
+    // Listen in case the window is closed.
+    var requestListener = async (originalURL, currentURL, browsingHistory) => {
+      if (originalURL == url) {
+        await close(false);
         currentURL = stripLongQueryValues(currentURL);
         browsingHistory = browsingHistory.map(stripLongQueryValues);
-        let cookies = await browser.cookies.getAll({ domain: owaURL.hostname, secure: true });
+        let cookies = await browser.cookies.getAll({ domain: this.serverURL.hostname, secure: true });
         cookies = cookies.map(cookie => cookie.name);
         reject(new ParameterError("auth-browser-closed", null, {
           setup: true, // VerifyLogin()
@@ -585,20 +683,57 @@ OWAAccount.prototype.LoginWithOAuthInPopup = async function() {
         }));
       }
     };
-    let cookiesListener = async details => {
-      if (details.cookie.name == this.cookieName && details.cookie.domain == owaURL.hostname) {
-        browser.request.onCompleted.removeListener(loadListener);
-        browser.request.onClosed.removeListener(requestListener);
-        browser.cookies.onChanged.removeListener(cookiesListener);
-        await browser.request.close(owaURL.href);
-        resolve();
+    var cookiesListener = async details => {
+      // For Hotmail, check the path to the CANARY cookie.
+      if (isHotmail &&
+        details.cookie.domain == kHotmailServer &&
+        details.cookie.name == this.cookieName &&
+        details.cookie.path.startsWith("/owa/")) {
+        // Hotmail also sets cookies for /owa/0/, /mail/0/, /calendar/0/ etc.,
+        // but we can use only the /owa/0/ cookie.
+        // We also need to use that URL for the service request.
+        // This needs to happen before CheckLoginFinished().
+        this.serverURL.pathname = details.cookie.path;
+      }
+
+      // If we receive the canary cookie, check whether we're logged in
+      if (details.cookie.name == this.cookieName &&
+          details.cookie.domain == this.serverURL.hostname) {
+        if (await this.CheckLoginFinished()) {
+          await close(true);
+          resolve();
+          return;
+        }
       }
     };
-    browser.request.onCompleted.addListener(loadListener);
-    browser.request.onClosed.addListener(requestListener);
-    browser.cookies.onChanged.addListener(cookiesListener);
-    browser.request.open(owaURL.href);
+
+    await open();
   });
+}
+
+/**
+ * If we have the CANARY cookie, then access the session data.
+ * This is one of the calls OWA performs as it logs in.
+ *
+ * @returns {Boolean} Whether the session data could be accessed.
+ */
+OWAAccount.prototype.CheckLoginFinished = async function() {
+  try {
+    if (!await this.getCanary()) {
+      return false;
+    }
+
+    let url = this.serverURL + "sessiondata.ashx";
+    let response = await fetch(url, {
+      method: "POST",
+      credentials: "include",
+    });
+    await this.CheckJSONResponse(response, url); // owa.js
+    return true;
+  } catch (ex) {
+    logError(ex);
+    return false;
+  }
 }
 
 /**
@@ -606,9 +741,9 @@ OWAAccount.prototype.LoginWithOAuthInPopup = async function() {
  *
  * @returns {String} The context script to be executed
  */
-OWAAccount.prototype.autoFillLoginPage = async function() {
+OWAAccount.prototype.autoFillLoginPage = async function(aMsgWindow) {
   let username = JSON.stringify(await browser.incomingServer.getUsername(this.serverID));
-  let password = JSON.stringify(await browser.incomingServer.getPassword(this.serverID, null));
+  let password = JSON.stringify(await browser.incomingServer.getPassword(this.serverID, aMsgWindow));
   return `
     let observer = new MutationObserver(function(mutations) {
       // Check whether script manipulated the user/password form.
@@ -689,6 +824,11 @@ OWAAccount.prototype.autoFillLoginPage = async function() {
             document.activeElement == pass[0]) {
           // The page is prompting us for the password.
           sessionStorage.setItem("OwlAutoLoginStep", "CheckPassword");
+          // Hotmail: "[x] Keep me signed in"
+          let keep = inputs.filter(input => input.type == "checkbox");
+          if (keep.length == 1 && keep[0].name == "KMSI" && !keep[0].checked) {
+            keep[0].click();
+          }
           pass[0].value = ${password};
           pass[0].dispatchEvent(new Event("change"));
           submit[0].focus();
@@ -748,6 +888,11 @@ OWAAccount.prototype.autoFillPassword = async function(aMsgWindow) {
       if (user.length == 1 && pass.length == 1 && submit.length == 1 &&
           document.activeElement == pass[0]) {
         sessionStorage.setItem("OwlAutoLoginStep", "CheckPassword");
+        // Hotmail: "[x] Keep me signed in"
+        let keep = inputs.filter(input => input.type == "checkbox");
+        if (keep.length == 1 && keep[0].name == "KMSI" && !keep[0].checked) {
+          keep[0].click();
+        }
         pass[0].value = ${password};
         pass[0].dispatchEvent(new Event("change"));
         submit[0].focus();

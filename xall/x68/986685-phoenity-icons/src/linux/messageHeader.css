@@ -2,12 +2,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
 /* OS Specific styles & fixes */
 
 /* Compact Headers */
 
 #expandedHeadersTopBox > #expandedHeaders {
   vertical-align: -80%;
+}
+
+/* Tb71 workarounds */
+
+html|table#expandedHeaders {
+  margin-top: 6px;
 }
 
 /* Attachment Pane button */
@@ -22,6 +31,8 @@
   box-shadow: none;
   min-width: 0px;
   min-height: 0px;
+  -moz-context-properties: fill;
+  fill: currentColor;
 }
 
 #attachmentToggle {
@@ -31,30 +42,3 @@
 #attachmentToggle[checked="true"] {
   list-style-image: url("chrome://global/skin/icons/twisty-expanded.svg");
 }
-
-/* Smart Reply button
-
-#hdrSmartReplyButton > .toolbarbutton-1 {
-  border-radius: var(--toolbarbutton-border-radius);
-  transition-property: background-color, border-color;
-  transition-duration: 150ms;
-}
-
-.toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-button,
-.toolbarbutton-1.msgHeaderView-button:hover > .toolbarbutton-menubutton-button {
-  background: transparent !important;
-  border-right: 1px solid transparent;
-  margin-right: -1px;
-}
-
-.toolbarbutton-1.msgHeaderView-button > .toolbarbutton-menubutton-dropmarker,
-.toolbarbutton-1.msgHeaderView-button:hover > .toolbarbutton-menubutton-dropmarker {
-  background: transparent !important;
-  border-left: 1px solid transparent !important;
-}
-
-.toolbarbutton-1.msgHeaderView-button:active,
-.toolbarbutton-1.msgHeaderView-button[open="true"] {
-  background: var(--toolbarbutton-active-background) !important;
-}
- */

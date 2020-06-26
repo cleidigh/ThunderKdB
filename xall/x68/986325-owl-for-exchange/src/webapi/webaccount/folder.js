@@ -57,14 +57,120 @@ function CreateSubfolder(aServer, aParentFolder, aFolderNameOnServer)
   return msgFolder;
 }
 
+
+/**
+ * Move a folder
+ *
+ * @see note in _MoveOrRenameFolder()
+ *
+ * @param aOldFolder {nsIMsgFolder}  The folder to be moved
+ * @param aNewParent {nsIMsgFolder} The destination of the move
+ * @param aMsgWindow {nsIMsgWindow} (Optional)
+ * @returns          {nsIMsgFolder} The new folder object
+ *
+ * @see note in _MoveOrRenameFolder()
+ */
+function MoveFolder(aOldFolder, aNewParent, aMsgWindow) {
+  return _MoveOrRenameFolder(aOldFolder, aNewParent, null, aMsgWindow);
+}
+
+/**
+ * Rename a folder
+ *
+ * @see note in _MoveOrRenameFolder()
+ *
+ * @param aFolder {nsIMsgFolder}  The folder to be renamed
+ * @param aNewName   {String}       The new name of the folder
+ * @param aMsgWindow {nsIMsgWindow} (Optional)
+ * @returns          {nsIMsgFolder} The new folder object
+ */
+function RenameFolder(aFolder, aNewName, aMsgWindow) {
+  return _MoveOrRenameFolder(aFolder, null, aNewName, aMsgWindow);
+}
+
+/**
+ * Implementation to move or rename a folder
+ *
+ * The top-level rename or move has to be done explicitly by
+ * creating a new folder and manually moving the data to it.
+ * The child folders can then be moved to their new parent.
+ *
+ * @param aOldFolder {nsIMsgFolder} The folder to be moved or renamed
+ * @param aNewParent {nsIMsgFolder} The destination of the move
+ * @param aNewName   {String}       The new name of the folder
+ * @param aMsgWindow {nsIMsgWindow} (Optional)
+ * @returns          {nsIMsgFolder} The new folder object
+ */
+function _MoveOrRenameFolder(aOldFolder, aNewParent, aNewName, aMsgWindow)
+{
+  // Create the folder, but clear out the default content.
+  // The nsIFile objects will still point to where they should be.
+  let destFolder = aNewParent || aOldFolder.parent;
+  let newFolder = CreateSubfolder(destFolder.server, destFolder, aNewName || aOldFolder.name);
+  newFolder.Delete();
+  aOldFolder.ForceDBClosed();
+  let oldFile = aOldFolder.summaryFile;
+  let newFile = newFolder.summaryFile;
+  oldFile.moveTo(newFile.parent, newFile.leafName);
+  oldFile = aOldFolder.filePath;
+  newFile = newFolder.filePath;
+  if (oldFile.exists()) {
+    oldFile.moveTo(newFile.parent, newFile.leafName);
+  }
+  oldFile.leafName += ".sbd";
+  if (oldFile.exists()) {
+    oldFile.moveTo(newFile.parent, newFile.leafName + ".sbd");
+  }
+  if (aOldFolder.matchOrChangeFilterDestination(newFolder, true) && aMsgWindow) {
+    aOldFolder.alertFilterChanged(aMsgWindow);
+  }
+  // Calling this unconditionally for its side-effect of copying the
+  // FolderId from the old folder to the new folder. Sadly the C++ code
+  // code doesn't do this for leaf folders, nor does it return the new
+  // folder, so there's no way to set the FolderId on it in that case.
+  newFolder.renameSubFolders(aMsgWindow, aOldFolder);
+  // Delete aOldFolder
+  aOldFolder.parent.propagateDelete(aOldFolder, false, aMsgWindow);
+  aOldFolder.parent = null;
+  destFolder.NotifyItemAdded(newFolder);
+  return newFolder;
+}
+
+/**
+ * Delete headers directly at the database level.
+ *
+ * This method does not delete the messages on the server. It should be used to
+ * delete headers locally once they have been deleted or moved on the server.
+ *
+ * The two arrays should obviously be the same length. Unfortunately the
+ * underlying APIs use different sorts of arrays so we're stuck with it.
+ *
+ * @param aFolder {nsIMsgFolder}   The folder containing the messages
+ * @param aHdrs   {nsIArray}       The headers to be deleted
+ * @param aKeys   {Array[Integer]} The keys of the headers
+ * @param aNotify {Boolean}        Whether to notify folder listeners
+ */
+function deleteFromDatabase(aFolder, aHdrs, aKeys, aNotify) {
+  if (aNotify) {
+    MailServices.mfn.notifyMsgsDeleted(aHdrs);
+  }
+  if (!aFolder.msgStore.supportsCompaction) {
+    aFolder.msgStore.deleteMessages(aHdrs);
+  }
+  aFolder.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, false);
+  aFolder.msgDatabase.deleteMessages(aKeys.length, aKeys, null);
+  aFolder.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, true);
+}
+
 /**
  * Given an array of message headers, returns the extension's ids,
  * plus optionally the database keys for those headers.
- * @param aMessages {Array[nsIMsgDBHdr]} The message headers
- * @param aKeys     {Array[Number]?}     An array in which to push the keys
- * @returns         {Array[String]}      The extension's ids
+ * @param aMessages  {Array[nsIMsgDBHdr]} The message headers
+ * @param aKeys      {out Array[Number]}  Optional array to push the keys
+ * @param aIsMessage {out Array[Boolean]} Optional array for is message flags
+ * @returns          {Array[String]}      The extension's ids
  */
-function GetIdsAndKeysFromHdrs(aMessages, aKeys)
+function GetIdsAndKeysFromHdrs(aMessages, aKeys, aIsMessage)
 {
   let ids = [];
   for (let i = 0; i < aMessages.length; i++) {
@@ -81,6 +187,9 @@ function GetIdsAndKeysFromHdrs(aMessages, aKeys)
     ids.push(hdr.getStringProperty("X-GM-MSGID"));
     if (aKeys) {
       aKeys.push(hdr.messageKey);
+    }
+    if (aIsMessage) {
+      aIsMessage.push(hdr.getStringProperty("isMessage") == "true");
     }
   }
   return ids;
@@ -224,7 +333,9 @@ function ApplyFilterHit(aFolder, aFilter, aHdr, aMsgWindow, aListener)
       // XXX label on server
       break;
     case Ci.nsMsgFilterAction.AddTag:
-      // XXX TODO
+      hdrArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+      hdrArray.appendElement(aHdr);
+      aFolder.addKeywordsToMessages(hdrArray, action.strValue);
       break;
     case Ci.nsMsgFilterAction.JunkScore:
       aHdr.setStringProperty("junkscore", action.junkScore);
@@ -426,13 +537,7 @@ async function ResyncFolder(aFolder, aMsgWindow, aStatusFeedback, aGettingNewMes
           hdrs.appendElement(database.GetMsgHdrForKey(key));
         }
       }
-      MailServices.mfn.notifyMsgsDeleted(hdrs);
-      if (!aFolder.msgStore.supportsCompaction) {
-        aFolder.msgStore.deleteMessages(hdrs);
-      }
-      aFolder.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, false);
-      database.deleteMessages(keys.length, keys, null);
-      aFolder.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, true);
+      deleteFromDatabase(aFolder, hdrs, keys, true);
     }
     let numNewMsgs = 0;
     // Loop over the headers of the large and small messages.
@@ -490,14 +595,8 @@ async function ResyncFolder(aFolder, aMsgWindow, aStatusFeedback, aGettingNewMes
             // We want to notify gloda and search integration,
             // but we don't want this registered as user activity.
             MailServices.mfn.removeListener(moveCopyModule);
-            MailServices.mfn.notifyMsgsDeleted(hdrArray);
+            deleteFromDatabase(aFolder, hdrArray, [hdr.messageKey], true);
             moveCopyModule.init();
-            if (!aFolder.msgStore.supportsCompaction) {
-              aFolder.msgStore.deleteMessages(hdrs);
-            }
-            aFolder.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, false);
-            database.deleteMessages(1, [hdr.messageKey], null);
-            aFolder.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, true);
           }
           if (result.mime) {
             parser.state = Ci.nsIMsgParseMailMsgState.ParseHeadersState;
@@ -569,7 +668,7 @@ async function ResyncFolder(aFolder, aMsgWindow, aStatusFeedback, aGettingNewMes
           }
           if (listener.delete) {
             // We don't need to wait for the delete to complete.
-            noAwait(CallExtension(aFolder.server, "DeleteMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [id], permanent: false }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
+            noAwait(CallExtension(aFolder.server, "DeleteMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [id], permanent: false, areMessages: partial[id].isMessage }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
           }
           else if (!listener.move) {
             // The message hasn't been moved or deleted, so we're good to add it.
@@ -630,6 +729,12 @@ function UpdateHeaderStates(aHdr, aMessage)
   if (typeof aMessage.hasAttachments == "boolean") {
     aHdr.markHasAttachments(aMessage.hasAttachments);
   }
+  if (typeof aMessage.isMessage == "boolean") {
+    aHdr.setStringProperty("isMessage", String(aMessage.isMessage));
+  }
+  if (Array.isArray(aMessage.keywords)) {
+    SetKeywordsOnHdr(aHdr, aMessage.keywords);
+  }
 }
 
 /**
@@ -650,6 +755,7 @@ function CopyDetailsToHdr(aHdr, aRe, aConv, aDetails, aPreview)
   aHdr.markRead(aDetails.read);
   aHdr.markFlagged(aDetails.flagged);
   aHdr.markHasAttachments(aDetails.hasAttachments);
+  SetKeywordsOnHdr(aHdr, aDetails.keywords);
   aHdr.messageSize = aDetails.messageSize;
   if (aDetails.subject) {
     let subject = aDetails.subject;
@@ -686,6 +792,20 @@ function CopyDetailsToHdr(aHdr, aRe, aConv, aDetails, aPreview)
   }
   if (aDetails.preview || aPreview) {
     aHdr.setStringProperty("preview", aConv.ConvertFromUnicode(aDetails.preview || aPreview) + aConv.Finish());
+  }
+}
+
+/**
+ * Notifies if the keywords were changed on the server.
+ *
+ * @param aHdr      {nsIMsgDBHdr}   The target header
+ * @param aKeywords {Array[String]} The new keywords
+ */
+function SetKeywordsOnHdr(aHdr, aKeywords) {
+  let keywords = aKeywords.join(" ");
+  if (aHdr.getStringProperty("keywords") != keywords) {
+    aHdr.setStringProperty("keywords", keywords);
+    aHdr.folder.NotifyPropertyFlagChanged(aHdr, "Keywords", 0, aKeywords.length);
   }
 }
 
@@ -761,8 +881,9 @@ Folder.prototype = {
     // Worse, the dummy file completely breaks maildir accounts.
     // This can happen on first run when Thunderbird tries to verify
     // Copies and Folders settings, as the folders don't exist yet.
-    // These calls will throw an exception if we're not an existing folder.
-    this.cppBase.filePath.isReadable();
+    if (!this.cppBase.filePath.exists()) {
+      throw new Error("Attempting to get the database for a folder that doesn't exist");
+    }
     let database = this.cppBase.msgDatabase;
     aFolderInfo.value = database.dBFolderInfo;
     return database;
@@ -820,6 +941,7 @@ Folder.prototype = {
    * @param aMsgWindow {nsIMsgWindow}
    */
   deleteSubFolders: async function(aFolders, aMsgWindow) {
+    let strongThis = this.delegator.get();
     try {
       let folder = aFolders.queryElementAt(0, Ci.nsIMsgFolder);
       let message = this.cppBase.isSpecialFolder(Ci.nsMsgFolderFlags.Trash) ? "imapDeleteNoTrash" : "imapMoveFolderToTrash";
@@ -847,9 +969,10 @@ Folder.prototype = {
    * @param aMsgWindow {nsIMsgWindow}
    */
   createSubfolder: async function(aName, aMsgWindow) {
+    let strongThis = this.delegator.get();
     try {
       let id = await CallExtension(this.cppBase.server, "CreateFolder", { parent: this.cppBase.getStringProperty("FolderId"), name: aName }, aMsgWindow);
-      let newFolder = CreateSubfolder(this.cppBase.server, this.delegator.get(), aName);
+      let newFolder = CreateSubfolder(this.cppBase.server, strongThis, aName);
       // Just setting the property doesn't seem to work?!
       if (newFolder.getStringProperty("FolderId") != id) {
         newFolder.setStringProperty("FolderId", id);
@@ -920,6 +1043,7 @@ Folder.prototype = {
    * Core support for Empty Trash on exit only exists for IMAP servers.
    */
   emptyTrash: async function(aMsgWindow, aListener) {
+    let strongThis = this.delegator.get();
     if (this.cppBase.flags & Ci.nsMsgFolderFlags.Trash) {
       try {
         await CallExtension(this.cppBase.server, "EmptyTrash", null, aMsgWindow);
@@ -932,7 +1056,7 @@ Folder.prototype = {
         this.Delete();
         this.cppBase.dBTransferInfo = dBTransferInfo;
         this.cppBase.sizeOnDisk = 0;
-        MailServices.mfn.notifyFolderDeleted(this.delegator.get());
+        MailServices.mfn.notifyFolderDeleted(strongThis);
       } catch (ex) {
         ReportException(ex, aMsgWindow);
       }
@@ -944,37 +1068,13 @@ Folder.prototype = {
    * @param aMsgWindow {nsIMsgWindow}
    */
   rename: async function(aName, aMsgWindow) {
+    let strongThis = this.delegator.get();
     try {
       if (this.cppBase.flags & Ci.nsMsgFolderFlags.Virtual) {
         this.cppBase.rename(aName, aMsgWindow);
       } else {
-        await CallExtension(this.cppBase.server, "UpdateFolder", { folder: this.cppBase.getStringProperty("FolderId"), name: aName }, aMsgWindow);
-        let msgFolder = CreateSubfolder(this.cppBase.server, this.cppBase.parent, aName);
-        msgFolder.Delete();
-        this.cppBase.ForceDBClosed();
-        let srcFile = this.cppBase.summaryFile;
-        let destFile = msgFolder.summaryFile;
-        srcFile.moveTo(destFile.parent, destFile.leafName);
-        srcFile = this.cppBase.filePath;
-        destFile = msgFolder.filePath;
-        if (srcFile.exists()) {
-          srcFile.moveTo(destFile.parent, destFile.leafName);
-        }
-        srcFile.leafName += ".sbd";
-        if (srcFile.exists()) {
-          srcFile.moveTo(destFile.parent, destFile.leafName + ".sbd");
-        }
-        if (this.cppBase.matchOrChangeFilterDestination(msgFolder, true)) {
-          this.cppBase.alertFilterChanged(aMsgWindow);
-        }
-        // Calling this unconditionally for its side-effect of copying the
-        // FolderId from the old folder to the new folder. Sadly the C++ code
-        // code doesn't do this for leaf folders, nor does it return the new
-        // folder, so there's no way to set the FolderId on it in that case.
-        msgFolder.renameSubFolders(aMsgWindow, this.delegator.get());
-        this.cppBase.parent.propagateDelete(this.delegator.get(), false, aMsgWindow);
-        this.cppBase.parent = null;
-        this.cppBase.NotifyItemAdded(msgFolder);
+        await CallExtension(this.cppBase.server, "RenameFolder", { folder: this.cppBase.getStringProperty("FolderId"), name: aName }, aMsgWindow);
+        RenameFolder(strongThis.QueryInterface(Ci.nsIMsgFolder), aName, aMsgWindow);
       }
     } catch (ex) {
       ReportException(ex, aMsgWindow);
@@ -990,7 +1090,7 @@ Folder.prototype = {
     this.cppBase.setStringProperty("FolderId", aOldFolder.getStringProperty("FolderId"));
     for (let child of iterateEnumerator(aOldFolder.subFolders, Ci.nsIMsgFolder)) {
       let newFolder = CreateSubfolder(this.cppBase.server, this.delegator.get(), child.name);
-      if (child.matchOrChangeFilterDestination(newFolder, true)) {
+      if (child.matchOrChangeFilterDestination(newFolder, true) && aMsgWindow) {
         child.alertFilterChanged(aMsgWindow);
       }
       newFolder.renameSubFolders(aMsgWindow, child);
@@ -1014,13 +1114,14 @@ Folder.prototype = {
    * This gets called when we select a folder in the UI.
    */
   updateFolder: async function(aMsgWindow) {
+    let strongThis = this.delegator.get();
     try {
       let dBFolderInfo = this.cppBase.msgDatabase.dBFolderInfo;
       let total = dBFolderInfo.numMessages;
       let unread = dBFolderInfo.numUnreadMessages;
       let folder = this.cppBase.getStringProperty("FolderId");
       if (await CallExtension(this.cppBase.server, "UpdateFolder", { folder, unread, total }, aMsgWindow)) {
-        await ResyncFolder(this.delegator.get().QueryInterface(Ci.nsIMsgFolder), aMsgWindow, aMsgWindow && aMsgWindow.statusFeedback, false, false);
+        await ResyncFolder(strongThis.QueryInterface(Ci.nsIMsgFolder), aMsgWindow, aMsgWindow && aMsgWindow.statusFeedback, false, false);
       } else {
         // Our database matches the server; ensure the UI is correct too.
         this.cppBase.changeNumPendingTotalMessages(-this.cppBase.numPendingTotalMessages);
@@ -1041,6 +1142,7 @@ Folder.prototype = {
    * @param aAllowUndo {Boolean}      Whether this should be undoable // XXX
    */
   deleteMessages: async function(aMessages, aMsgWindow, aPermanent, aWasMove, aListener, aAllowUndo) {
+    let strongThis = this.delegator.get();
     try {
       // The nsMsgDBView warns by default when you're deleting messages from
       // the trash, however it doesn't actually let us know to expect a
@@ -1049,18 +1151,11 @@ Folder.prototype = {
         aPermanent = true;
       }
       let keys = [];
-      let ids = GetIdsAndKeysFromHdrs(aMessages, keys);
-      await CallExtension(this.cppBase.server, "DeleteMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: ids, permanent: aPermanent }, aMsgWindow);
+      let isMessage = [];
+      let ids = GetIdsAndKeysFromHdrs(aMessages, keys, isMessage);
+      await CallExtension(this.cppBase.server, "DeleteMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: ids, permanent: aPermanent, areMessages: !isMessage.includes(false) }, aMsgWindow);
       // XXX TODO add the messages to the trash folder
-      if (!aWasMove) {
-        MailServices.mfn.notifyMsgsDeleted(aMessages);
-      }
-      if (!this.cppBase.msgStore.supportsCompaction) {
-        this.cppBase.msgStore.deleteMessages(aMessages);
-      }
-      this.cppBase.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, false);
-      this.cppBase.msgDatabase.deleteMessages(keys.length, keys, null);
-      this.cppBase.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, true);
+      deleteFromDatabase(this.cppBase, aMessages, keys, !aWasMove);
       this.cppBase.NotifyFolderEvent("DeleteOrMoveMsgCompleted");
     } catch (ex) {
       ReportException(ex, aMsgWindow);
@@ -1078,6 +1173,7 @@ Folder.prototype = {
    * @param aAllowUndo {Boolean}      Whether this should be undoable // XXX
    */
   copyMessages: async function(aSrcFolder, aMessages, aIsMove, aMsgWindow, aListener, aIsFolder, aAllowUndo) {
+    let strongThis = this.delegator.get();
     try {
       let cppBase = this.cppBase;
       let keys = [];
@@ -1097,6 +1193,7 @@ Folder.prototype = {
         let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
         for (let i = 0; i < aMessages.length; i++) {
           let hdr = aMessages.queryElementAt(i, Ci.nsIMsgDBHdr);
+          let keywords = hdr.getStringProperty("keywords");
           let uri = aSrcFolder.getUriForMsg(hdr);
           let messageService = messenger.messageServiceFromURI(uri);
           // Convert the listener-based API into a promise that we can await.
@@ -1128,7 +1225,7 @@ Folder.prototype = {
             };
             messageService.CopyMessage(uri, listener, aIsMove, null, aMsgWindow, {});
           });
-          await CallExtension(cppBase.server, "CreateMessageFromMime", { folder: target, content: await promise, draft: false, read: !!(hdr.flags & Ci.nsMsgMessageFlags.Read), flagged: !!(hdr.flags & Ci.nsMsgMessageFlags.Marked) }, aMsgWindow);
+          await CallExtension(cppBase.server, "CreateMessageFromMime", { folder: target, content: await promise, draft: false, read: !!(hdr.flags & Ci.nsMsgMessageFlags.Read), flagged: !!(hdr.flags & Ci.nsMsgMessageFlags.Marked), keywords: keywords ? keywords.split(" ") : [] }, aMsgWindow);
           if (!(hdr.flags & Ci.nsMsgMessageFlags.Read)) {
             numUnread++;
           }
@@ -1137,28 +1234,23 @@ Folder.prototype = {
       // Rather than performing a full resync, we just fake out the counts.
       this.cppBase.changeNumPendingTotalMessages(aMessages.length);
       this.cppBase.changeNumPendingUnread(numUnread);
-      MailServices.mfn.notifyMsgsMoveCopyCompleted(aIsMove, aMessages, this.delegator.get(), null);
+      MailServices.mfn.notifyMsgsMoveCopyCompleted(aIsMove, aMessages, strongThis, null);
       if (aIsMove) {
         if (aSrcFolder.server == cppBase.server) {
           // The messages were moved so delete their headers.
-          if (!aSrcFolder.msgStore.supportsCompaction) {
-            aSrcFolder.msgStore.deleteMessages(aMessages);
-          }
-          aSrcFolder.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, false);
-          aSrcFolder.msgDatabase.deleteMessages(keys.length, keys, null);
-          aSrcFolder.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, true);
+          deleteFromDatabase(aSrcFolder, aMessages, keys, false);
         } else {
           // The original messages need to be deleted to complete the move.
           aSrcFolder.deleteMessages(aMessages, aMsgWindow, true, true, null, aAllowUndo);
         }
       }
-      MailServices.copy.NotifyCompletion(aSrcFolder, this.delegator.get(), Cr.NS_OK);
+      MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_OK);
       if (aIsMove) {
         aSrcFolder.NotifyFolderEvent("DeleteOrMoveMsgCompleted");
       }
     } catch (ex) {
       ReportException(ex, aMsgWindow);
-      MailServices.copy.NotifyCompletion(aSrcFolder, this.delegator.get(), Cr.NS_ERROR_FAILURE);
+      MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_ERROR_FAILURE);
       if (aIsMove) {
         aSrcFolder.NotifyFolderEvent("DeleteOrMoveMsgFailed");
       }
@@ -1190,37 +1282,15 @@ Folder.prototype = {
       }
     }
     // This bit needs to be async. It's either this or manual .then()/.catch().
+    let strongThis = this.delegator.get();
     (async () => {
       try {
         await CallExtension(this.cppBase.server, "MoveFolder", { folder: aSrcFolder.getStringProperty("FolderId"), target: this.cppBase.getStringProperty("FolderId") }, aMsgWindow);
-        // There's no default C++ implementation for this,
-        // but it's very similar to renaming a folder (above).
-        let msgFolder = CreateSubfolder(this.cppBase.server, this.delegator.get(), aSrcFolder.name);
-        msgFolder.Delete();
-        aSrcFolder.ForceDBClosed();
-        let srcFile = aSrcFolder.summaryFile;
-        let destFile = msgFolder.summaryFile;
-        srcFile.moveTo(destFile.parent, destFile.leafName);
-        srcFile = aSrcFolder.filePath;
-        destFile = msgFolder.filePath;
-        if (srcFile.exists()) {
-          srcFile.moveTo(destFile.parent, destFile.leafName);
-        }
-        srcFile.leafName += ".sbd";
-        if (srcFile.exists()) {
-          srcFile.moveTo(destFile.parent, destFile.leafName + ".sbd");
-        }
-        if (aSrcFolder.matchOrChangeFilterDestination(msgFolder, true)) {
-          aSrcFolder.alertFilterChanged(aMsgWindow);
-        }
-        msgFolder.renameSubFolders(aMsgWindow, aSrcFolder);
-        aSrcFolder.parent.propagateDelete(aSrcFolder, false, aMsgWindow);
-        aSrcFolder.parent = null;
-        this.cppBase.NotifyItemAdded(msgFolder);
+        let msgFolder = MoveFolder(aSrcFolder, strongThis.QueryInterface(Ci.nsIMsgFolder), aMsgWindow);
         MailServices.copy.NotifyCompletion(aSrcFolder, msgFolder, Cr.NS_OK);
       } catch (ex) {
         ReportException(ex, aMsgWindow);
-        MailServices.copy.NotifyCompletion(aSrcFolder, this, Cr.NS_ERROR_FAILURE);
+        MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_ERROR_FAILURE);
       }
     })();
   },
@@ -1235,13 +1305,14 @@ Folder.prototype = {
    * @param aListener     {nsIUrlListener} A listener for the new message key
    */
   copyFileMessage: async function(aFile, aHdrToReplace, aIsDraft, aMsgFlags, aKeywords, aMsgWindow, aListener) {
+    let strongThis = this.delegator.get();
     try {
       let target = this.cppBase.getStringProperty("FolderType") == "Drafts" ? "" : this.cppBase.getStringProperty("FolderId");
       let content = await readFileAsync(aFile);
-      let id = await CallExtension(this.cppBase.server, "CreateMessageFromMime", { folder: target, content: content, draft: aIsDraft, read: !!(aMsgFlags & Ci.nsMsgMessageFlags.Read), flagged: !!(aMsgFlags & Ci.nsMsgMessageFlags.Marked) }, aMsgWindow);
+      let id = await CallExtension(this.cppBase.server, "CreateMessageFromMime", { folder: target, content: content, draft: aIsDraft, read: !!(aMsgFlags & Ci.nsMsgMessageFlags.Read), flagged: !!(aMsgFlags & Ci.nsMsgMessageFlags.Marked), keywords: aKeywords ? aKeywords.split(" ") : [] }, aMsgWindow);
       if (aListener && id) {
         // XXX Thunderbird has a "pending header" system to avoid a full resync
-        await ResyncFolder(this.delegator.get().QueryInterface(Ci.nsIMsgFolder), aMsgWindow, null, false, false);
+        await ResyncFolder(strongThis.QueryInterface(Ci.nsIMsgFolder), aMsgWindow, null, false, false);
         let msgHdr = this.cppBase.msgDatabase.GetMsgHdrForGMMsgID(id);
         if (msgHdr) {
           aListener.SetMessageKey(msgHdr.messageKey);
@@ -1249,10 +1320,10 @@ Folder.prototype = {
       } else {
         this.cppBase.changeNumPendingTotalMessages(1);
       }
-      MailServices.copy.NotifyCompletion(aFile, this.delegator.get(), Cr.NS_OK);
+      MailServices.copy.NotifyCompletion(aFile, strongThis, Cr.NS_OK);
     } catch (ex) {
       ReportException(ex, aMsgWindow);
-      MailServices.copy.NotifyCompletion(aFile, this.delegator.get(), Cr.NS_ERROR_FAILURE);
+      MailServices.copy.NotifyCompletion(aFile, strongThis, Cr.NS_ERROR_FAILURE);
     }
   },
   /**
@@ -1262,6 +1333,7 @@ Folder.prototype = {
    * aParam aListener  {nsIUrlListener} Unused
    */
   getNewMessages: async function(aMsgWindow, aListener) {
+    let strongThis = this.delegator.get();
     let performingBiff = false;
     try {
       // Getting new messages for a server might be a biff.
@@ -1275,7 +1347,7 @@ Folder.prototype = {
       if (this.cppBase.getStringProperty("FolderId")) {
         // Getting new messages for a single folder.
         // Resync the folder, but tell the user if there are no new messages.
-        await ResyncFolder(this.delegator.get().QueryInterface(Ci.nsIMsgFolder), aMsgWindow, aMsgWindow && aMsgWindow.statusFeedback, true, false);
+        await ResyncFolder(strongThis.QueryInterface(Ci.nsIMsgFolder), aMsgWindow, aMsgWindow && aMsgWindow.statusFeedback, true, false);
       } else { // Getting new messages for the server
         // Update the unread counts on all folders. This triggers a
         // resync of the folder when the user switches to it, as needed.
@@ -1298,6 +1370,7 @@ Folder.prototype = {
     }
   },
   markMessagesRead: async function(aMessages, aIsRead) {
+    let strongThis = this.delegator.get();
     try {
       await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: GetIdsAndKeysFromHdrs(aMessages, null), read: aIsRead }, null);
       this.cppBase.markMessagesRead(aMessages, aIsRead);
@@ -1316,6 +1389,7 @@ Folder.prototype = {
     }
   },
   markMessagesFlagged: async function(aMessages, aIsFlagged) {
+    let strongThis = this.delegator.get();
     try {
       await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: GetIdsAndKeysFromHdrs(aMessages, null), flagged: aIsFlagged }, null);
       this.cppBase.markMessagesFlagged(aMessages, aIsFlagged);
@@ -1360,6 +1434,28 @@ Folder.prototype = {
    */
   fetchMsgPreviewText(aKeys, aNumKeys, aLocalOnly, aUrlListener) {
     return false;
+  },
+  addKeywordsToMessages(aMessages, aKeywords) {
+    this.cppBase.addKeywordsToMessages(aMessages, aKeywords);
+    noAwait(this.updateKeywordsForMessages(aMessages), logError);
+  },
+  removeKeywordsFromMessages(aMessages, aKeywords) {
+    this.cppBase.removeKeywordsFromMessages(aMessages, aKeywords);
+    noAwait(this.updateKeywordsForMessages(aMessages), logError);
+  },
+  async updateKeywordsForMessages(aMessages) {
+    let server = this.cppBase.server; // Protect against crash #596
+    let folder = this.cppBase.getStringProperty("FolderId");
+    for (let i = 0; i < aMessages.length; i++) {
+      try {
+        let hdr = aMessages.queryElementAt(i, Ci.nsIMsgDBHdr);
+        let message = hdr.getStringProperty("X-GM-MSGID");
+        let keywords = hdr.getStringProperty("keywords");
+        await CallExtension(server, "UpdateKeywords", { folder, message, keywords: keywords ? keywords.split(" ") : [] });
+      } catch (ex) {
+        logError(ex);
+      }
+    }
   },
   // XXX TODO
 };

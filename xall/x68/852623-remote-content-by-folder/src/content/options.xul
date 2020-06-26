@@ -6,7 +6,10 @@
      Copyright 2017 Jonathan Kamens. -->
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
-<!DOCTYPE dialog SYSTEM "chrome://editor/locale/EditorButtonProperties.dtd">
+<!DOCTYPE dialog [
+<!ENTITY % viewZoomOverlayDTD SYSTEM "chrome://messenger/locale/viewZoomOverlay.dtd">
+%viewZoomOverlayDTD;
+]>
 
 <dialog
     id="rcbf-prefwindow"
@@ -14,7 +17,7 @@
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     title="Remote Content By Folder Preferences"
     buttons="accept,cancel,extra1"
-    buttonlabelextra1="&reset.value;">
+    buttonlabelextra1="&fullZoomResetCmd.label;">
   <script src="chrome://global/content/globalOverlay.js"/>
   <script src="chrome://global/content/editMenuOverlay.js"/>
   <script src="options.js"/>

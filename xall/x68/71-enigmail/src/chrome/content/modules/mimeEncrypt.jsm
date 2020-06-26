@@ -14,7 +14,7 @@ var EXPORTED_SYMBOLS = ["EnigmailMimeEncrypt"];
 const Cr = Components.results;
 
 const jsmime = ChromeUtils.import("resource:///modules/jsmime.jsm").jsmime;
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailFuncs = ChromeUtils.import("chrome://enigmail/content/modules/funcs.jsm").EnigmailFuncs;
 const EnigmailDialog = ChromeUtils.import("chrome://enigmail/content/modules/dialog.jsm").EnigmailDialog;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
@@ -26,6 +26,7 @@ const EnigmailConstants = ChromeUtils.import("chrome://enigmail/content/modules/
 const EnigmailPEPAdapter = ChromeUtils.import("chrome://enigmail/content/modules/pEpAdapter.jsm").EnigmailPEPAdapter;
 const EnigmailKeyRing = ChromeUtils.import("chrome://enigmail/content/modules/keyRing.jsm").EnigmailKeyRing;
 const EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
+const EnigmailPrefs = ChromeUtils.import("chrome://enigmail/content/modules/prefs.jsm").EnigmailPrefs;
 
 // our own contract IDs
 const PGPMIME_ENCRYPT_CID = Components.ID("{96fe88f9-d2cd-466f-93e0-3a351df4c6d2}");
@@ -59,7 +60,7 @@ function PgpMimeEncrypt(sMimeSecurityInfo) {
   this.originalSubject = null;
   this.keyMap = {};
 
-  if (EnigmailTb60Compat.isMessageUriInPgpMime()) {
+  if (EnigmailCompat.isMessageUriInPgpMime()) {
     this.onDataAvailable = this.onDataAvailable68;
   }
   else {
@@ -90,7 +91,7 @@ PgpMimeEncrypt.prototype = {
       return PGPMIME_ENCRYPT_CONTRACTID;
     }
   },
-  QueryInterface: EnigmailTb60Compat.generateQI([
+  QueryInterface: EnigmailCompat.generateQI([
     "nsIMsgComposeSecure",
     "nsIStreamListener",
     "nsIMsgSMIMECompFields" // TB < 64
@@ -191,12 +192,15 @@ PgpMimeEncrypt.prototype = {
 
           if (this.useSmime) return true;
 
-          let securityInfo = msgCompFields.securityInfo.wrappedJSObject;
-          if (!securityInfo) return false;
+          if (msgCompFields.securityInfo) {
+            let securityInfo = msgCompFields.securityInfo.wrappedJSObject;
+            if (!securityInfo) return false;
 
-          for (let prop of ["sendFlags", "UIFlags", "senderEmailAddr", "recipients", "bccRecipients", "originalSubject", "keyMap"]) {
-            this[prop] = securityInfo[prop];
+            for (let prop of ["sendFlags", "UIFlags", "senderEmailAddr", "recipients", "bccRecipients", "originalSubject", "keyMap"]) {
+              this[prop] = securityInfo[prop];
+            }
           }
+          else return false;
         }
         else {
           // TB >= 64: we are not called for S/MIME
@@ -388,10 +392,21 @@ PgpMimeEncrypt.prototype = {
       w += '\r\n';
     }
 
-    w +=  this.getAutocryptGossip() + `\r\n--${this.encHeader}\r\n`;
+    w += this.getAutocryptGossip() + `\r\n--${this.encHeader}\r\n`;
     this.writeToPipe(w);
 
-    if (this.cryptoMode == MIME_SIGNED) this.writeOut(w);
+    if (this.cryptoMode == MIME_SIGNED) {
+      this.writeOut(w);
+    }
+    else if (EnigmailPrefs.getPref("protectedHeadersLegacyPart") &&
+      this.originalSubject && this.originalSubject.length > 0 &&
+      (this.sendFlags & EnigmailConstants.ENCRYPT_HEADERS)) {
+      w = 'Content-Type: text/plain; charset=utf-8; protected-headers="v1"\r\n' +
+        'Content-Disposition: inline\r\n\r\n' +
+        'Subject: ' + EnigmailData.convertFromUnicode(this.originalSubject, "utf-8") + "\r\n\r\n" +
+        `--${this.encHeader}\r\n`;
+      this.writeToPipe(w);
+    }
   },
 
   getAutocryptGossip: function() {
@@ -420,7 +435,7 @@ PgpMimeEncrypt.prototype = {
     let subj = "";
 
     if (this.sendFlags & EnigmailConstants.ENCRYPT_HEADERS) {
-      subj = jsmime.headeremitter.emitStructuredHeader("subject", EnigmailFuncs.getProtectedSubjectText(), {});
+      subj = jsmime.headeremitter.emitStructuredHeader("subject", EnigmailConstants.PROTECTED_SUBJECT, {});
     }
 
     this.writeOut(subj +

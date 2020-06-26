@@ -12,7 +12,7 @@ async function onInit() {
     automatic.onclick = openTBAccountCreation;
     manual.onclick = openManualAccountCreation;
     checkLicenseButton.onclick = checkLicense;
-    getLicenseButton.onclick = OpenPurchasePage; // license.js
+    getLicenseButton.onclick = () => OpenPurchasePage(); // license.js
 
     //let info = await browser.runtime.getBrowserInfo();
     //let versions = info.version.split(".");
@@ -38,8 +38,7 @@ function openTBAccountCreation() {
   try {
     browser.webAccount.wizard();
   } catch (ex) {
-    logError(ex);
-    throw ex;
+    showError(ex);
   }
 }
 
@@ -47,28 +46,36 @@ function openManualAccountCreation() {
   try {
     browser.tabs.create({ url: "/ui/manual-setup/manual-setup.html" });
   } catch (ex) {
-    logError(ex);
-    throw ex;
-  }
-}
-
-async function manuallyEnterLicense() {
-  let ticket = prompt(gBundle.get("enterLicenseKey"));
-  try {
-    await AddTicketFromString(atob(ticket));
-  } catch (ex) {
     showError(ex);
   }
 }
 
-async function checkLicense(aEvent) {
-  if (aEvent.shiftKey) {
-    manuallyEnterLicense();
-    return;
+async function manuallyEnterLicense() {
+  try {
+    let ticket = prompt(gBundle.get("enterLicenseKey"));
+    if (!ticket) {
+      return;
+    }
+
+    await AddTicketFromString(atob(ticket));
+  } catch (ex) {
+    showLicenseError(ex);
   }
-  licenseMessage.textContent = gBundle.get("checkStatus");
-  await FetchTicket();
-  UpdateLicenseStatus();
+}
+
+async function checkLicense(aEvent) {
+  try {
+    licenseFetchError.textContent = "";
+    if (aEvent.shiftKey) {
+      manuallyEnterLicense();
+      return;
+    }
+    licenseMessage.textContent = gBundle.get("checkStatus");
+    await FetchTicket();
+    UpdateLicenseStatus();
+  } catch (ex) {
+    showLicenseError(ex);
+  }
 }
 
 async function UpdateLicenseStatus() {
@@ -80,6 +87,13 @@ async function UpdateLicenseStatus() {
     }
 
     let servers = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews"]);
+    if (servers.length) {
+      let identities = await browser.incomingServer.getIdentities(servers[0]);
+      if (identities.length) {
+        email.textContent = identities[0].email;
+      }
+    }
+
     getLicenseButton.hidden =
       ticket.end > Date.now() + kMinimumRenew &&
       licenseType == "paid";
@@ -102,8 +116,13 @@ async function UpdateLicenseStatus() {
     }
     licenseMessage.textContent = msg;
   } catch (ex) {
-    logError(ex);
+    showLicenseError(ex);
   }
+}
+
+function showLicenseError(ex) {
+  licenseFetchError.textContent = ex.message || ex;
+  showError(ex);
 }
 
 function showError(ex) {

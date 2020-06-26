@@ -70,10 +70,6 @@ if ("undefined" == typeof(ovl_attachments)) {
 						} else {
 							cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : attachment not successfully downloaded, status : " + aStatus);
 						}
-						if (this.mFile.exists() && this.mFile.isFile()) {
-							cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : deleting file : " + this.mFile.path);
-							this.mFile.remove(true);
-						}
 					}
 				};
 				messenger.saveAttachmentToFile(myFile, aAttachment.url, aAttachment.uri, aAttachment.contentType, listener_loadFile);
@@ -85,11 +81,11 @@ if ("undefined" == typeof(ovl_attachments)) {
 			var selectedAttachments = attachmentList.selectedItems;
 			if (selectedAttachments.length == 0) {
 				for (var i = 0; i < currentAttachments.length; i++) {
-					ovl_attachments.loadAttachment(currentAttachments[i], aDirPrefId);
+					ovl_attachments.loadAttachment(currentAttachments[i], aDirPrefId);                                           
 				}
 			} else {
 				for (var i = 0; i < selectedAttachments.length; i++) {
-					ovl_attachments.loadAttachment(selectedAttachments[i].attachment, aDirPrefId);
+					ovl_attachments.loadAttachment(selectedAttachments[i].attachment, aDirPrefId);                               
 				}
 			}
 		}

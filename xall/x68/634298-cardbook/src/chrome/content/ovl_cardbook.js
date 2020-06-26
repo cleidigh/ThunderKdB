@@ -199,7 +199,10 @@ if ("undefined" == typeof(ovl_cardbook)) {
 							if (cardbookWindowUtils.getBroadcasterOnCardBook()) {
 								onViewToolbarsPopupShowing(event, ["navigation-toolbox", "cardbook-toolbox"]);
 							} else {
-								onToolbarsPopupShowingForTabType(event);
+								// does not exist with messengercompose
+								if ("undefined" !== typeof(onToolbarsPopupShowingForTabType)) {
+									onToolbarsPopupShowingForTabType(event);
+								}
 							}
 						});
 					} else {

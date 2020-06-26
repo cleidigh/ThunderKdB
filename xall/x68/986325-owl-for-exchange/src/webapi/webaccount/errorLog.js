@@ -70,7 +70,7 @@ async function logErrorToServer(ex) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body, sanitiseExchangeData),
     });
   } catch (ex) {
     console.error(ex);
@@ -139,4 +139,24 @@ async function getExtensionVersion() {
   let response = await fetch(extBaseURL + "../../manifest.json");
   let manifest = await response.json();
   return manifest.version;
+}
+
+/**
+ * Pass to JSON.stringify to sanitise sensitive values.
+ * Id, ChangeKey and RecurrenceId are trimmed to 23 characters.
+ * Name and EmailAddress properties are replaced with placeholders.
+ */
+function sanitiseExchangeData(aKey, aValue) {
+  switch (aKey) {
+  case "EmailAddress":
+  case "Name":
+    return "***";
+  case "ChangeKey":
+  case "Id":
+  case "RecurrenceId":
+    if (typeof aValue == "string" && aValue.length > 22) {
+      return aValue.slice(0, 10) + "..." + aValue.slice(-10);
+    }
+  }
+  return aValue;
 }

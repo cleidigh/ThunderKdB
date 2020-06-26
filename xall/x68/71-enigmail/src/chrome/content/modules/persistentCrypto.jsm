@@ -15,7 +15,7 @@ const EnigmailArmor = ChromeUtils.import("chrome://enigmail/content/modules/armo
 const EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
 const EnigmailExecution = ChromeUtils.import("chrome://enigmail/content/modules/execution.jsm").EnigmailExecution;
 const GlodaUtils = ChromeUtils.import("chrome://enigmail/content/modules/glodaUtils.jsm").GlodaUtils;
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
 const EnigmailGpg = ChromeUtils.import("chrome://enigmail/content/modules/gpg.jsm").EnigmailGpg;
 const EnigmailStreams = ChromeUtils.import("chrome://enigmail/content/modules/streams.jsm").EnigmailStreams;
@@ -123,14 +123,7 @@ var EnigmailPersistentCrypto = {
     return new Promise(
       function(resolve, reject) {
         let msgUriSpec = hdr.folder.getUriForMsg(hdr);
-
-        const msgSvc = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger).messageServiceFromURI(msgUriSpec);
-
-        let urlObj = {};
-        msgSvc.GetUrlForUri(msgUriSpec, urlObj, null);
-
-        let msgUrl = urlObj.value.spec;
-
+        let msgUrl = EnigmailCompat.getUrlFromUriSpec(msgUriSpec);
 
         const crypt = new CryptMessageIntoFolder(destFolder, move, resolve, targetKey);
 
@@ -854,8 +847,8 @@ CryptMessageIntoFolder.prototype = {
         }
       } catch (ex) {}
 
-      copySvc.CopyFileMessage(fileSpec, EnigmailTb60Compat.getExistingFolder(self.destFolder), self.hdr,
-        false, 0, "", copyListener, null);
+      EnigmailCompat.copyFileToMailFolder(fileSpec, EnigmailCompat.getExistingFolder(self.destFolder),
+        0, "", copyListener, null);
     });
   },
 

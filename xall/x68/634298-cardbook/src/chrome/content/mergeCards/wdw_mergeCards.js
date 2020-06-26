@@ -663,6 +663,8 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 		save: function () {
 			var myOutCard = new cardbookCardParser();
 			wdw_mergeCards.calculateResult(myOutCard);
+			var myDirPrefIdType = cardbookPreferences.getType(myOutCard.dirPrefId);
+			cardbookUtils.cachePutMediaCard(myOutCard, "photo", myDirPrefIdType);
 			window.arguments[0].cardsOut = [myOutCard];
 			close();
 		},

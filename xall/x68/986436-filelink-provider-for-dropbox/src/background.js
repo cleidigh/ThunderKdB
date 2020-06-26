@@ -28,7 +28,6 @@ browser.cloudFile.onFileUpload.addListener(async (account, { id, name, data }) =
     }),
   };
   let fetchInfo = {
-    mode: "cors",
     method: "POST",
     headers,
     body: data,
@@ -45,7 +44,6 @@ browser.cloudFile.onFileUpload.addListener(async (account, { id, name, data }) =
     "content-type": "application/json",
   };
   fetchInfo = {
-    mode: "cors",
     method: "POST",
     headers,
     body: JSON.stringify({
@@ -96,7 +94,6 @@ browser.cloudFile.onFileDeleted.addListener(async (account, id) => {
     "content-type": "application/json",
   };
   let fetchInfo = {
-    mode: "cors",
     method: "POST",
     headers,
     body: JSON.stringify({ path: uploadInfo.path }),
@@ -114,4 +111,8 @@ browser.cloudFile.getAllAccounts().then(async (accounts) => {
     } catch (ex) {
     }
   }
+});
+
+browser.cloudFile.onAccountDeleted.addListener((accountId) => {
+  browser.storage.local.remove(accountId);
 });

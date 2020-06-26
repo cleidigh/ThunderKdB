@@ -118,8 +118,9 @@ var EnigmailFiles = {
   },
 
   createFileStream: function(filePath, permissions) {
+    let localFile;
+
     try {
-      let localFile;
       if (typeof filePath == "string") {
         localFile = Cc[NS_FILE_CONTRACTID].createInstance(Ci.nsIFile);
         EnigmailFiles.initPath(localFile, filePath);
@@ -150,7 +151,7 @@ var EnigmailFiles = {
 
     }
     catch (ex) {
-      lazyLog().ERROR("files.jsm: createFileStream: Failed to create " + filePath + "\n");
+      lazyLog().ERROR("files.jsm: createFileStream: Failed to create " + localFile.path + "\n");
       return null;
     }
   },

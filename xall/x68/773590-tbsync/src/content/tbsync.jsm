@@ -27,9 +27,9 @@ var TbSync = {
   addon: null,
   version: 0,
   debugMode: false,
-  apiVersion: "2.1",
+  apiVersion: "2.2",
 
-  bundle: Services.strings.createBundle("chrome://tbsync/locale/tbSync.strings"),
+  bundle: Services.strings.createBundle("chrome://tbsync/locale/tbSync.properties"),
   prefs: Services.prefs.getBranch("extensions.tbsync."),
   
   decoder: new TextDecoder(),
@@ -49,10 +49,11 @@ var TbSync = {
 
     this.window = window;
     this.addon = await AddonManager.getAddonByID("tbsync@jobisoft.de");
+    this.addon.contributorsURL = "https://github.com/jobisoft/TbSync/blob/master/CONTRIBUTORS.md";
     this.dump("TbSync init","Start (" + this.addon.version.toString() + ")");
 
     //print information about Thunderbird version and OS
-    this.dump(Services.appinfo.name, Services.appinfo.platformVersion + " on " + OS.Constants.Sys.Name);
+    this.dump(Services.appinfo.name, Services.appinfo.version + " on " + OS.Constants.Sys.Name);
 
     // register modules to be used by TbSync
     this.modules.push({name: "db", state: 0});
@@ -67,7 +68,7 @@ var TbSync = {
     this.modules.push({name: "tools", state: 0});
     this.modules.push({name: "manager", state: 0});
     this.modules.push({name: "providers", state: 0});
-	this.modules.push({name: "messenger", state: 0});
+    this.modules.push({name: "messenger", state: 0});
 
     //load modules
     for (let module of this.modules) {
@@ -85,18 +86,18 @@ var TbSync = {
     for (let module of this.modules) {
       if (module.state == 1) {
         try {
+          this.dump("Initializing module", "<" + module.name + ">");
           await this[module.name].load();
           module.state = 2;
-          this.dump("Initializing module <" + module.name + ">", "OK");
         } catch (e) {
-          this.dump("Initializing module <" + module.name + ">", "FAILED!");
+          this.dump("Initialization of module <" + module.name + "> FAILED", e.message + "\n" + e.stack);
           Components.utils.reportError(e);
         }
       }
     }
     
     //was debug mode enabled during startup?
-    this.debugMode = this.prefs.getBoolPref("log.tofile");
+    this.debugMode = (this.prefs.getIntPref("log.userdatalevel") > 0);
 
     //enable TbSync
     this.enabled = true;
@@ -149,10 +150,12 @@ var TbSync = {
           //get all accounts and check, which one needs sync
           let accounts = TbSync.db.getAccounts();
           for (let i=0; i<accounts.IDs.length; i++) {
+            let now = Date.now();
             let syncInterval = accounts.data[accounts.IDs[i]].autosync * 60 * 1000;
             let lastsynctime = accounts.data[accounts.IDs[i]].lastsynctime;
-            if (TbSync.core.isEnabled(accounts.IDs[i]) && (syncInterval > 0) && ((Date.now() - lastsynctime) > syncInterval)) {
-              TbSync.core.syncAccount(accounts.IDs[i]);
+            let noAutosyncUntil = accounts.data[accounts.IDs[i]].noAutosyncUntil || 0;
+            if (TbSync.core.isEnabled(accounts.IDs[i]) && (syncInterval > 0) && (now > (lastsynctime + syncInterval)) && (now > noAutosyncUntil)) {
+                TbSync.core.syncAccount(accounts.IDs[i]);
             }
           }
         }

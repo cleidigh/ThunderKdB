@@ -29,6 +29,27 @@ with (fnxweb.urllink)
 }
 
 
+fnxweb.urllink.listboxAppendItem = function( listbox, item )
+{
+    var newnode = document.createElement("richlistitem");
+    newnode.value = item;
+    var newlabel = document.createElement("label");
+    newlabel.value = item;
+    newnode.appendChild( newlabel );
+    listbox.appendChild( newnode );
+}
+
+fnxweb.urllink.listboxInsertItemAt = function( listbox, idx, item )
+{
+    var newnode = document.createElement("richlistitem");
+    newnode.value = item;
+    var newlabel = document.createElement("label");
+    newlabel.value = item;
+    newnode.appendChild( newlabel );
+    var refnode = listbox.getItemAtIndex( idx );
+    refnode.parentNode.insertBefore( newnode, refnode );
+}
+
 fnxweb.urllink.openNewWindow = function(url)
 {
     if (fnxweb.urllink.common.inThunderbird())
@@ -53,9 +74,11 @@ fnxweb.urllink.itemUp = function(listbox)
     var idx = listbox.selectedIndex;
     if (idx >= 1)
     {
-        var item = listbox.removeItemAt(idx);
+        var item = listbox.getItemAtIndex(idx);
+        var text = item.value;
+        item.remove();
         idx--;
-        listbox.insertItemAt( idx, item.getAttribute("label"), item.getAttribute("value") );
+        fnxweb.urllink.listboxInsertItemAt( listbox, idx, text );
         listbox.selectedIndex = idx;
         listbox.ensureIndexIsVisible( idx );
     }
@@ -67,15 +90,17 @@ fnxweb.urllink.itemDown = function(listbox)
     var idx = listbox.selectedIndex;
     if (idx != -1  &&  idx < listbox.getRowCount() - 1)
     {
-        var item = listbox.removeItemAt(idx);
+        var item = listbox.getItemAtIndex(idx);
+        var text = item.value;
+        item.remove();
         idx++;
         if (idx == listbox.getRowCount())
         {
-            listbox.appendItem( item.getAttribute("label"), item.getAttribute("value") );
+            fnxweb.urllink.listboxAppendItem( listbox, text );
         }
         else
         {
-            listbox.insertItemAt( idx, item.getAttribute("label"), item.getAttribute("value") );
+            fnxweb.urllink.listboxInsertItemAt( listbox, idx, text );
         }
         listbox.selectedIndex = idx;
         listbox.ensureIndexIsVisible( idx );
@@ -87,11 +112,11 @@ fnxweb.urllink.setDefaults = function(listbox,defaults)
 {
     while (listbox.getRowCount() > 0)
     {
-        listbox.removeItemAt(0);
+        listbox.getItemAtIndex(0).remove();
     }
     for (var i=0; i<defaults.length; i++)
     {
-        listbox.appendItem( defaults[i], "" );
+        fnxweb.urllink.listboxAppendItem( listbox, defaults[i] );
     }
 }
 
@@ -112,7 +137,7 @@ fnxweb.urllink.deleteItem = function(listbox)
     var idx = listbox.selectedIndex;
     if (idx != -1)
     {
-        listbox.removeItemAt(idx);
+        listbox.getItemAtIndex(idx).remove();
         var size = listbox.getRowCount();
         if (idx >= 0 && idx < size)
         {
@@ -137,11 +162,11 @@ fnxweb.urllink.addItem = function(listbox,newitembox,force)
     var idx = listbox.selectedIndex;
     if (idx != -1)
     {
-        selecteditem = listbox.getItemAtIndex(idx).getAttribute("label");
+        selecteditem = listbox.getItemAtIndex(idx).value;
     }
     if (newitem != ""  &&  (force  ||  newitem != selecteditem))
     {
-        listbox.appendItem(newitem,"");
+        fnxweb.urllink.listboxAppendItem( listbox, newitem );
         var idx = listbox.getRowCount() - 1;
         listbox.selectedIndex = idx;
         listbox.ensureIndexIsVisible( idx );
@@ -158,7 +183,7 @@ fnxweb.urllink.onPrefsMenuSelect = function()
     var idx = me.menuitemsListbox.selectedIndex;
     if (idx != -1)
     {
-        me.newmenuitembox.value = me.menuitemsListbox.getItemAtIndex(idx).getAttribute("label");
+        me.newmenuitembox.value = me.menuitemsListbox.getItemAtIndex(idx).value;
     }
 }
 
@@ -171,7 +196,7 @@ fnxweb.urllink.onPrefsSandrSelect = function()
     var idx = me.sandritemsListbox.selectedIndex;
     if (idx != -1)
     {
-        me.newsandritembox.value = me.sandritemsListbox.getItemAtIndex(idx).getAttribute("label");
+        me.newsandritembox.value = me.sandritemsListbox.getItemAtIndex(idx).value;
     }
 }
 
@@ -294,13 +319,13 @@ fnxweb.urllink.setPrefs = function(doclose)
     n = 0;
     while (n < me.menuitemsListbox.getRowCount())
     {
-        mc.prefs.setCharPref( "submenu."+n, me.menuitemsListbox.getItemAtIndex(n).getAttribute("label") );
+        mc.prefs.setCharPref( "submenu."+n, me.menuitemsListbox.getItemAtIndex(n).value );
         n++;
     }
     n = 0;
     while (n < me.sandritemsListbox.getRowCount())
     {
-        mc.prefs.setCharPref( "sandr."+n, me.sandritemsListbox.getItemAtIndex(n).getAttribute("label") );
+        mc.prefs.setCharPref( "sandr."+n, me.sandritemsListbox.getItemAtIndex(n).value );
         n++;
     }
     mc.prefs.setBoolPref("topmenu", me.topmenu.checked);

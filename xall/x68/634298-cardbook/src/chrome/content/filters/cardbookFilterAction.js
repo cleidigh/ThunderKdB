@@ -1,4 +1,5 @@
-var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+/* do not work anymore*/
+/*var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 class MozRuleactiontargetCardBookActionABPicker extends MozXULElement {
@@ -67,6 +68,7 @@ customElements.define("cardbookABActionPicker", MozRuleactiontargetCardBookActio
 		}
 	};
 })();
+*/
 /* test
 class MozAbPickerSearch extends MozSearchValue {
   connectedCallback() {

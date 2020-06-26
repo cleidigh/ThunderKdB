@@ -326,14 +326,14 @@ cardbookAutocompleteSearch.prototype = {
 
 		this.stopSearch();
 		
-		aSearchString = cardbookRepository.makeSearchString(aSearchString);
+		var newSearchString = cardbookRepository.makeSearchString(aSearchString);
 
 		this.sortUsePopularity = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteSortByPopularity");
 		this.showAddressbookComments = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
 		this.useOnlyEmail = cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 		this.proposeConcatEmails = cardbookPreferences.getBoolPref("extensions.cardbook.proposeConcatEmails");
 		this.autocompleteWithColor = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteWithColor");
-		this.useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
+		this.useColor = cardbookRepository.useColor;
 
 		if (cardbookRepository.autocompleteRestrictSearch) {
 			var mySearchArray = cardbookRepository.cardbookCardShortSearch;
@@ -357,7 +357,7 @@ cardbookAutocompleteSearch.prototype = {
 						myComment = account[0];
 					}
 					for (var j in mySearchArray[myDirPrefId]) {
-						if (j.indexOf(aSearchString) >= 0 || aSearchString == "") {
+						if (j.indexOf(newSearchString) >= 0 || newSearchString == "") {
 							for (let card of mySearchArray[myDirPrefId][j]) {
 								if (this.catExclRestrictions[myDirPrefId]) {
 									var add = true;
@@ -461,7 +461,7 @@ cardbookAutocompleteSearch.prototype = {
 					for (let category of cardbookRepository.cardbookAccountsCategories[myDirPrefId]) {
 						if (((!(this.catInclRestrictions[myDirPrefId])) && (category != cardbookRepository.cardbookUncategorizedCards)) ||
 								((this.catInclRestrictions[myDirPrefId]) && (this.catInclRestrictions[myDirPrefId][category]))) {
-							if (cardbookRepository.makeSearchString(category).indexOf(aSearchString) >= 0) {
+							if (cardbookRepository.makeSearchString(category).indexOf(newSearchString) >= 0) {
 								if (this.catExclRestrictions[myDirPrefId]) {
 									var add = true;
 									for (var k in this.catExclRestrictions[myDirPrefId]) {
@@ -521,7 +521,7 @@ cardbookAutocompleteSearch.prototype = {
 								if (myPrimaryEmail != "") {
 									var lSearchString = myABCard.getProperty("FirstName","") + myABCard.getProperty("LastName","") + myDisplayName + myABCard.getProperty("NickName","") + myPrimaryEmail;
 									lSearchString = cardbookRepository.makeSearchString(lSearchString);
-									if (lSearchString.indexOf(aSearchString) >= 0) {
+									if (lSearchString.indexOf(newSearchString) >= 0) {
 										if (myDisplayName == "") {
 											var delim = myPrimaryEmail.indexOf("@",0);
 											myDisplayName = myPrimaryEmail.substr(0,delim);
@@ -538,7 +538,7 @@ cardbookAutocompleteSearch.prototype = {
 								if (mySecondEmail != "") {
 									var lSearchString = myABCard.getProperty("FirstName","") + myABCard.getProperty("LastName","") + myDisplayName + myABCard.getProperty("NickName","") + mySecondEmail;
 									lSearchString = cardbookRepository.makeSearchString(lSearchString);
-									if (lSearchString.indexOf(aSearchString) >= 0) {
+									if (lSearchString.indexOf(newSearchString) >= 0) {
 										if (myDisplayName == "") {
 											var delim = mySecondEmail.indexOf("@",0);
 											myDisplayName = mySecondEmail.substr(0,delim);
@@ -555,7 +555,7 @@ cardbookAutocompleteSearch.prototype = {
 								var myABList = contactManager.getDirectory(myABCard.mailListURI);
 								var lSearchString = myDisplayName + myABList.listNickName + myABList.description;
 								lSearchString = cardbookRepository.makeSearchString(lSearchString);
-								if (lSearchString.indexOf(aSearchString) >= 0) {
+								if (lSearchString.indexOf(newSearchString) >= 0) {
 									var myPopularity = myABCard.getProperty("PopularityIndex", "0");
 									this.addResult(result,  MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), myComment, myPopularity, "TH_LIST", myStyle, myDisplayName.toLowerCase(), contact.dirPrefId, myDisplayName);
 								}

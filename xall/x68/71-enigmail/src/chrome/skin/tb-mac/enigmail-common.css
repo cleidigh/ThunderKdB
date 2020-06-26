@@ -413,3 +413,17 @@ treechildren::-moz-tree-cell-text(STYLE) {}
   padding-right: 5px;
   height: 1.3em;
 }
+
+/***************************************************
+ * Styles for Menubar
+ ***************************************************/
+
+#enigmail-menubar {
+  background-color: var(--toolbar-bgcolor);
+  color: var(--toolbar-color);
+}
+
+#enigmail-menubar > menu {
+  color: var(--toolbar-color);
+}
+

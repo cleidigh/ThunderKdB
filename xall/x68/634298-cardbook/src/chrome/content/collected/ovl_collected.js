@@ -1,5 +1,6 @@
 if ("undefined" == typeof(ovl_collected)) {
 	var { jsmime } = ChromeUtils.import("resource:///modules/jsmime.jsm");
+	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
@@ -54,7 +55,7 @@ if ("undefined" == typeof(ovl_collected)) {
 			resultEmailsCollections = cardbookPreferences.getAllEmailsCollections();
 			if (resultEmailsCollections && resultEmailsCollections.length != 0) {
 				var myFields = gMsgCompose.compFields;
-				var listToCollect = ["to", "cc", "bcc", "followupTo"];
+				var listToCollect = ["to", "cc", "bcc"];
 				for (var i = 0; i < listToCollect.length; i++) {
 					if (myFields[listToCollect[i]]) {
 						if (myFields[listToCollect[i]]) {
@@ -69,7 +70,7 @@ if ("undefined" == typeof(ovl_collected)) {
 				}
 			} else {
 				var myFields = gMsgCompose.compFields;
-				var listToCollect = ["to", "cc", "bcc", "followupTo"];
+				var listToCollect = ["to", "cc", "bcc"];
 				for (var i = 0; i < listToCollect.length; i++) {
 					if (myFields[listToCollect[i]]) {
 						if (myFields[listToCollect[i]]) {

@@ -1,25 +1,16 @@
 {
   "manifest_version": 2,
-  "version": "1.1",
+  "version": "2.2",
   "name": "PopmailListRecipients",
   "description": "Expands address book lists to recipients addresses.",
+  "default_locale":"en",
   "developer": {
     "name": "Sven Giermann"
   },
   "applications": {
     "gecko": {
       "id": "popmaillistrecipients@funke.nz",
-      "strict_min_version": "61.0"
-    }
-  },
-  "experiment_apis": {
-    "myapi": {
-      "schema": "myapi/schema.json",
-      "parent": {
-        "scopes":["addon_parent"],
-        "paths": [["myapi"]],
-        "script": "myapi/implementation.js"
-      }
+      "strict_min_version": "74.0"
     }
   },
   "background": {
@@ -31,6 +22,7 @@
      "48": "icons/icon.png"
   },
   "compose_action": {
-    "default_title": "My Expansion"
-  }
+    "default_title": "Explode"
+  },
+  "permissions": ["compose", "addressBooks"]
 }

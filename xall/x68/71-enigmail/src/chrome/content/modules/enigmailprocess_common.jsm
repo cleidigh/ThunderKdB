@@ -9,9 +9,6 @@
 /* global ChromeWorker: false,  */
 
 var {
-  classes: Cc,
-  interfaces: Ci,
-  utils: Cu,
   results: Cr
 } = Components;
 
@@ -41,7 +38,7 @@ function getSetTimeout() {
   if (!_setTimeout) {
     _setTimeout = ChromeUtils.import("resource://gre/modules/Timer.jsm").setTimeout;
   }
-  return _setTimeout;  
+  return _setTimeout;
 }
 
 /* global SubprocessConstants: true */

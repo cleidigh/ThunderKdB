@@ -75,7 +75,7 @@ var sync = {
         if (syncData.accountData.getAccountProperty("asversion", "") == "" || (Date.now() - syncData.accountData.getAccountProperty("lastEasOptionsUpdate")) > 86400000 ) {
             await eas.network.getServerOptions(syncData);
         }
-                        
+
         //only update the actual used asversion, if we are currently not connected or it has not yet been set
         if (syncData.accountData.getAccountProperty("asversion", "") == "" || !syncData.accountData.isConnected()) {
             //eval the currently in the UI selected EAS version
@@ -167,7 +167,7 @@ var sync = {
                             newFolder.setFolderProperty("targetType", "calendar");
                             break;
                         default:
-                            newFolder.setFolderProperty("targetType", "none");
+                            newFolder.setFolderProperty("targetType", "unknown type ("+add[count].Type+")");
                             break;
                         
                     }
@@ -261,7 +261,7 @@ var sync = {
         // add target to syncData (getTarget() will throw "nolightning" if lightning missing)
         try {
             // accessing the target for the first time will check if it is avail and if not will create it (if possible)
-            syncData.target = syncData.currentFolderData.targetData.getTarget();
+            syncData.target = await syncData.currentFolderData.targetData.getTarget();
         } catch (e) {
             Components.utils.reportError(e);        
             throw eas.sync.finish("warning", e.message);
@@ -1044,7 +1044,7 @@ wbxml.ctag();*/
         //EAS Importance: 0 = LOW | 1 = NORMAL | 2 = HIGH
         Importance : { "0":"9", "1":"5", "2":"1"}, //to PRIORITY
         //EAS Sensitivity :  0 = Normal  |  1 = Personal  |  2 = Private  |  3 = Confidential
-        Sensitivity : { "0":"PUBLIC", "1":"unset", "2":"PRIVATE", "3":"CONFIDENTIAL"}, //to CLASS
+        Sensitivity : { "0":"PUBLIC", "1":"PRIVATE", "2":"PRIVATE", "3":"CONFIDENTIAL"}, //to CLASS
         //EAS BusyStatus:  0 = Free  |  1 = Tentative  |  2 = Busy  |  3 = Work  |  4 = Elsewhere
         BusyStatus : {"0":"TRANSPARENT", "1":"unset", "2":"OPAQUE", "3":"OPAQUE", "4":"OPAQUE"}, //to TRANSP
         //EAS AttendeeStatus: 0 =Response unknown (but needed) |  2 = Tentative  |  3 = Accept  |  4 = Decline  |  5 = Not responded (and not needed) || 1 = Organizer in ResponseType
@@ -1055,7 +1055,7 @@ wbxml.ctag();*/
         //TB PRIORITY: 9 = LOW | 5 = NORMAL | 1 = HIGH
         PRIORITY : { "9":"0", "5":"1", "1":"2","unset":"1"}, //to Importance
         //TB CLASS: PUBLIC, PRIVATE, CONFIDENTIAL)
-        CLASS : { "PUBLIC":"0", "PRIVATE":"2", "CONFIDENTIAL":"3", "unset":"1"}, //to Sensitivity
+        CLASS : { "PUBLIC":"0", "PRIVATE":"2", "CONFIDENTIAL":"3", "unset":"0"}, //to Sensitivity
         //TB TRANSP : free = TRANSPARENT, busy = OPAQUE)
         TRANSP : {"TRANSPARENT":"0", "unset":"1", "OPAQUE":"2"}, // to BusyStatus
         //TB STATUS: NEEDS-ACTION, ACCEPTED, DECLINED, TENTATIVE, (DELEGATED, COMPLETED, IN-PROCESS - for todo)
@@ -1203,7 +1203,7 @@ wbxml.ctag();*/
     },
 
     //item is a native lightning item
-    setItemRecurrence: function (item, syncData, data) {
+    setItemRecurrence: function (item, syncData, data, timezone) {
         if (data.Recurrence) {
             item.recurrenceInfo = TbSync.lightning.cal.createRecurrenceInfo();
             item.recurrenceInfo.item = item;
@@ -1287,7 +1287,8 @@ wbxml.ctag();*/
                 // Exception could be an object or an array of objects
                 let exceptions = [].concat(data.Exceptions.Exception);
                 for (let exception of exceptions) {
-                    let dateTime = TbSync.lightning.cal.createDateTime(exception.ExceptionStartTime);
+                    //exception.ExceptionStartTime is in UTC, but the Recurrence Object is in local timezone
+                    let dateTime = TbSync.lightning.cal.createDateTime(exception.ExceptionStartTime).getInTimezone(timezone);
                     if (data.AllDayEvent == "1") {
                         dateTime.isDate = true;
                         // Pass to replacement event unless overriden
@@ -1301,7 +1302,7 @@ wbxml.ctag();*/
                     else {
                         let replacement = item.recurrenceInfo.getOccurrenceFor(dateTime);
                         // replacement is a native lightning item, so we can access its id via .id
-                        eas.sync[syncData.type].setThunderbirdItemFromWbxml(replacement, exception, replacement.id, syncData);
+                        eas.sync[syncData.type].setThunderbirdItemFromWbxml(replacement, exception, replacement.id, syncData, "recurrence");
                         // Reminders should carry over from parent, but setThunderbirdItemFromWbxml clears all alarms
                         if (!exception.Reminder && item.getAlarms({}).length) {
                             replacement.addAlarm(item.getAlarms({})[0]);

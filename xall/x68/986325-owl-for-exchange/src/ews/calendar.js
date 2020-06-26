@@ -297,9 +297,9 @@ EWSAccount.ConvertEvent = function(aEvent) {
     itemid: aEvent.ItemId.Id,
     title: aEvent.Subject,
     startDate: aEvent.Start || aEvent.StartDate || aEvent.Recurrence && aEvent.Recurrence.EndDateRecurrence && aEvent.Recurrence.EndDateRecurrence.StartDate.slice(0, 10),
-    startTimeZone: aEvent.StartTimeZone && aEvent.StartTimeZone.Id,
+    startTimeZone: EWSAccount.ExtractTimezone(aEvent.StartTimeZone || {}),
     endDate: aEvent.End,
-    endTimeZone: (aEvent.EndTimeZone || aEvent.StartTimeZone || {}).Id,
+    endTimeZone: EWSAccount.ExtractTimezone(aEvent.EndTimeZone || aEvent.StartTimeZone || {}),
     isAllDayEvent: aEvent.IsAllDayEvent == "true",
     isCancelled: aEvent.IsCancelled == "true",
     creationDate: aEvent.DateTimeCreated,
@@ -323,6 +323,19 @@ EWSAccount.ConvertEvent = function(aEvent) {
     requiredAttendees: ensureArray(aEvent.RequiredAttendees && aEvent.RequiredAttendees.Attendee).map(EWSAccount.ConvertAttendee),
     optionalAttendees: ensureArray(aEvent.OptionalAttendees && aEvent.OptionalAttendees.Attendee).map(EWSAccount.ConvertAttendee),
   };
+}
+
+/**
+ * Get the time zone from an EWS time zone object.
+ *
+ * @param aTimezone {Object}
+ *          Id      {String} The time zone id
+ *          Name    {String} The time zone name
+ *
+ * For some reason Exchange sometimes uses the Id and sometimes the Name...
+ */
+EWSAccount.ExtractTimezone = function(aTimezone) {
+  return aTimezone.Id || aTimezone.Name;
 }
 
 /**
@@ -428,18 +441,18 @@ EWSAccount.ConvertToEWS = function(aFolder, aEvent) {
     event.t$Location = aEvent.location;
   }
   if (aEvent.requiredAttendees.length) {
-    event.t$RequiredAttendees = aEvent.requiredAttendees.map(attendee => ({
-      t$Attendee: {
+    event.t$RequiredAttendees = {
+      t$Attendee: aEvent.requiredAttendees.map(attendee => ({
         t$Mailbox: MailboxObject2EWS(attendee),
-      },
-    }));
+      })),
+    };
   }
   if (aEvent.optionalAttendees.length) {
-    event.t$OptionalAttendees = aEvent.optionalAttendees.map(attendee => ({
-      t$Attendee: {
+    event.t$OptionalAttendees = {
+      t$Attendee: aEvent.optionalAttendees.map(attendee => ({
         t$Mailbox: MailboxObject2EWS(attendee),
-      },
-    }));
+      })),
+    };
   }
   // Task fields are all in alphabetical order, which simplifies things.
   if (aEvent.completedDate) {
@@ -638,7 +651,19 @@ EWSAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
         // SuppressReadReceipts did not exist in Exchange 2010
         delete request.m$DeleteItem.SuppressReadReceipts;
       }
-      await this.CallService(null, request); // ews.js
+      try {
+        let response = await this.CallService(null, request); // ews.js
+        if (response.errors && response.errors.length) { // some succeeded, some failed
+          throw response.errors[0];
+        }
+      } catch (ex) {
+        if (ex.type == "ErrorItemNotFound" ||
+            ex.type == "ErrorCalendarOccurrenceIsDeletedFromRecurrence") {
+          // Already deleted. Ignore.
+        } else {
+          throw ex;
+        }
+      }
       return;
     }
   }
@@ -699,6 +724,14 @@ EWSAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
   };
   let newEvent = EWSAccount.ConvertToEWS(aFolder, aNewEvent);
   let oldEvent = EWSAccount.ConvertToEWS(aFolder, aOldEvent);
+  // Exchange stores the date in local time, so that changing the time zone
+  // will change the UTC time, unless we remind Exchange of what it should be.
+  if (aNewEvent.startTimeZone != aOldEvent.startTimeZone) {
+    delete oldEvent.t$Start;
+  }
+  if (aNewEvent.endTimeZone != aOldEvent.endTimeZone) {
+    delete oldEvent.t$End;
+  }
   for (let key in kFieldMap) {
     if (JSON.stringify(newEvent[key]) != JSON.stringify(oldEvent[key])) {
       let namespace = kFieldMap[key] ? "item:" : aFolder == "tasks" ? "task:" : "calendar:";
@@ -825,7 +858,15 @@ EWSAccount.prototype.DeleteEvent = async function(aEventId, aNotify) {
     // SuppressReadReceipts did not exist in Exchange 2010
     delete request.m$DeleteItem.SuppressReadReceipts;
   }
-  await this.CallService(null, request); // ews.js
+  try {
+    await this.CallService(null, request); // ews.js
+  } catch (ex) {
+    if (ex.type == "ErrorItemNotFound") {
+      // Already deleted. Ignore.
+    } else {
+      throw ex;
+    }
+  }
 }
 
 /**

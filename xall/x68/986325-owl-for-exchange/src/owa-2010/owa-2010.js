@@ -110,10 +110,41 @@ async CheckLoginPage() {
   }
 }
 
+/**
+ * If we have the CANARY cookie, then access the root folder.
+ *
+ * @returns {Boolean} Whether the root folder could be accessed.
+ */
+async CheckLoginFinished() {
+  if (!await this.getCanary()) {
+    return false;
+  }
+  try {
+    let request = {
+      m$GetFolder: {
+        m$FolderShape: {
+          t$BaseShape: "IdOnly",
+        },
+        m$FolderIds: {
+          t$DistinguishedFolderId: {
+            Id: "msgfolderroot",
+          },
+        },
+      },
+    };
+    await this.CallService(null, request);
+    return true;
+  } catch (ex) {
+    logError(ex);
+    return false;
+  }
+}
+
 } // class OWA2010Account
 
 // We want to "inherit" these from OWAAccount rather than EWSAccount.
-for (authFn of ["getURL", "getCanary", "ClearCookies", "VerifyLogin", "EnsureLoggedIn",
+for (authFn of ["getURL", "getCanary", "ClearCookies",
+    "CheckCookiePreferences", "VerifyLogin", "EnsureLoggedIn",
     "LoginLock", "Login", "LoginWithPassword", "FindLoginElementsStrict",
     "LaxLoginWithPassword", "FindLoginElementsLax", "SubmitLoginForm",
     "TaggedFetch", "LoginWithOAuthInTab", "LoginWithOAuthInPopup"]) {

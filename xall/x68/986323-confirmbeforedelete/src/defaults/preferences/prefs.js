@@ -7,4 +7,6 @@ pref("extensions.confirmbeforedelete.calendar.enable", true);
 pref("extensions.confirmbeforedelete.gotrash.enable", true);
 pref("extensions.confirmbeforedelete.folders.lock", false);
 pref("extensions.confirmbeforedelete.delete.lock", false);
+pref("extensions.confirmbeforedelete.protect.enable", false);
+pref("extensions.confirmbeforedelete.protect.tag", "$label1");
 pref("extensions.confirmbeforedelete.description", "chrome://confirmbeforedelete/locale/confirmbeforedelete.properties");

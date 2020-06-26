@@ -24,7 +24,7 @@ const jsmime = ChromeUtils.import("resource:///modules/jsmime.jsm").jsmime;
 const EnigmailSingletons = ChromeUtils.import("chrome://enigmail/content/modules/singletons.jsm").EnigmailSingletons;
 const EnigmailFuncs = ChromeUtils.import("chrome://enigmail/content/modules/funcs.jsm").EnigmailFuncs;
 const EnigmailMimeDecrypt = ChromeUtils.import("chrome://enigmail/content/modules/mimeDecrypt.jsm").EnigmailMimeDecrypt;
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 
 
 var EXPORTED_SYMBOLS = ["EnigmailPEPDecrypt"];
@@ -187,11 +187,11 @@ function PEPDecryptor(contentType) {
   this.requestingSubpart = false;
   this.ignoreMessage = false;
 
-  if (EnigmailTb60Compat.isMessageUriInPgpMime()) {
+  if (EnigmailCompat.isMessageUriInPgpMime()) {
     this.onDataAvailable = this.onDataAvailable68;
   } else {
     this.onDataAvailable = this.onDataAvailable60;
-  }  
+  }
 }
 
 

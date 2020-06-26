@@ -3,11 +3,12 @@
   "applications": {
     "gecko": {
       "id": "{8845E3B3-E8FB-40E2-95E9-EC40294818C4}",
-      "strict_min_version": "68.0"
+      "strict_min_version": "68.0",
+      "strict_max_version": "68.*"
     }
   },
   "name": "Quicktext",
-  "version": "2.4",
+  "version": "2.15",
   "author": "John Bieling",
   "homepage_url": "https://github.com/thundernest/quicktext",
   "default_locale": "en-US",
@@ -18,7 +19,7 @@
   "legacy": {
     "type": "xul",
     "options": {
-      "page": "chrome://quicktext/content/settings.xul",
+      "page": "chrome://quicktext/content/addonoptions.xul",
       "open_in_tab": false
     }
   }

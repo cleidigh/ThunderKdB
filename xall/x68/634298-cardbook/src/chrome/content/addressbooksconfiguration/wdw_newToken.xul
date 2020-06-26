@@ -4,14 +4,17 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 		id="wdw_newToken"
 		persist="screenX screenY width height"
-		height="740px"
-		width="700px"
+		title=""
+		width="800"
+		height="500"
+		orient="vertical"
 		onload="wdw_newToken.load();"
 		onclose="wdw_newToken.closeKO();">
 
 	<script src="wdw_newToken.js"/>
 	
-	<hbox flex="1">
-		<browser id="browser" src="" flex="1" type="content"/>
-	</hbox>
+	<vbox id="header">
+		<description id="dialogMessage"/>
+	</vbox>
+	<browser id="browser" src="" flex="1" type="content"/>
 </window>

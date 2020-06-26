@@ -103,7 +103,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
 			prefs.setCharPref("categoryColors", "");
-			prefs.setCharPref("addonVersion", "42.4");
+			prefs.setCharPref("addonVersion", "44.6");
 			prefs.setCharPref("defaultRegion", "NOTSET");
 
 			prefs.setBoolPref("localDataEncryption", false);
@@ -138,6 +138,9 @@ if ("undefined" == typeof(ovl_synchro)) {
 				// setting autocompleteRestrictSearch and autocompleteRestrictSearchFields
 				cardbookRepository.autocompleteRestrictSearch = cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteRestrictSearch");
 				cardbookRepository.autocompleteRestrictSearchFields = cardbookPreferences.getStringPref("extensions.cardbook.autocompleteRestrictSearchFields").split('|');
+
+				// setting useColor
+				cardbookRepository.useColor = cardbookPreferences.getStringPref("extensions.cardbook.useColor");
 
 				// setting some display preferences
 				cardbookRepository.showNameAs = cardbookPreferences.getStringPref("extensions.cardbook.showNameAs");
@@ -178,7 +181,6 @@ if ("undefined" == typeof(ovl_synchro)) {
 				
 				// once openDB is finished, it will fire an event
 				// and then load the cache and maybe sync the accounts
-	Services.console.logStringMessage("test1 Services.prefs.getIntPref('network.cookie.cookieBehavior', 2) : " + Services.prefs.getIntPref("network.cookie.cookieBehavior", 2).toSource());
 				cardbookIndexedDB.openDB();
 
 				// query for some undos
@@ -200,7 +202,6 @@ if ("undefined" == typeof(ovl_synchro)) {
 	if (cookieBehavior == 2) {
 		Services.prefs.setIntPref("network.cookie.cookieBehavior", 1);
 	}
-	Services.console.logStringMessage("test0 Services.prefs.getIntPref('network.cookie.cookieBehavior', 2) : " + Services.prefs.getIntPref("network.cookie.cookieBehavior", 2).toSource());
 
 	// need to launch it a bit later
 	ovl_synchro.initPrefs();

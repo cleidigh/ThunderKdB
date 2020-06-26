@@ -16,9 +16,7 @@ var quicktextStateListener = {
 }
 
 var quicktext = {
-  mStringBundle:                null,
   mLoaded:                      false,
-  mSelectionContent:            null,
   mLastFocusedElement:          null,
   mShortcuts:                   {},
   mShortcutString:              "",
@@ -30,8 +28,6 @@ var quicktext = {
     if (!this.mLoaded)
     {
       this.mLoaded = true;
-
-      this.mStringBundle = document.getElementById("quicktextStringBundle");
 
       gQuicktext.addObserver(this);
       if (!gQuicktext.loadSettings(false))
@@ -113,7 +109,7 @@ var quicktext = {
         let field = fields[i];
         let fieldtype = field.split("-")[0];
         if (document.getElementById(field)) {
-            document.getElementById(field).setAttribute("label", this.mStringBundle.getFormattedString(fieldtype, [quicktextUtils.dateTimeFormat(field, timeStamp)]));
+            document.getElementById(field).setAttribute("label", gQuicktext.mStringBundle.formatStringFromName(fieldtype, [quicktextUtils.dateTimeFormat(field, timeStamp)], 1));
         }
     }
 
@@ -313,24 +309,39 @@ var quicktext = {
   /*
    * INSERTING TEXT
    */
-  insertVariable: function(aVar)
+  insertVariable: async function(aVar)
   {
     gQuicktextVar.cleanTagData();
-    this.insertBody("[["+ aVar +"]] ", 0, true);
+    await this.insertBody("[["+ aVar +"]] ", 0, true);
   }
 ,
-  insertTemplate: function(aGroupIndex, aTextIndex, aHandleTransaction)
+  insertTemplate: async function(aGroupIndex, aTextIndex, aHandleTransaction = true)
   {
-    if (typeof aHandleTransaction == "undefined")
-      aHandleTransaction = true;
-
+    //store selected content
+    var editor = GetCurrentEditor();
+    var selection = editor.selection;
+    if (selection.rangeCount > 0) {
+      gQuicktext.mSelectionContent = selection.toString();
+    }
+    
     if (gQuicktext.doTextExists(aGroupIndex, aTextIndex, false))
     {
-      this.mLastFocusedElement = (document.commandDispatcher.focusedWindow != window) ? document.commandDispatcher.focusedWindow : document.commandDispatcher.focusedElement;
-
+      this.mLastFocusedElement = document.activeElement;
       gQuicktextVar.cleanTagData();
 
       var text = gQuicktext.getText(aGroupIndex, aTextIndex, false);
+      
+      // Parse text for HEADER tags and move them to the header object
+      let headers = text.text.match(/\[\[header=[^\]]*\]\]/ig);
+      if (headers && Array.isArray(headers)) {
+        for (let header of headers) {
+          let parts = header.split(/=|\]\]|\|/);
+          if (parts.length==4) {
+            text.addHeader(parts[1], parts[2]);
+          }
+        }
+      }
+      
       this.insertHeaders(text);
       this.insertSubject(text.subject);
       this.insertAttachments(text.attachments);
@@ -342,7 +353,7 @@ var quicktext = {
         this.focusMessageBody();
       }
 
-      this.insertBody(text.text, text.type, aHandleTransaction);
+      await this.insertBody(text.text, text.type, aHandleTransaction);
 
       // If we insert any headers we maybe needs to return the placement of the focus
       setTimeout(function () {quicktext.moveFocus();}, 1);
@@ -454,20 +465,9 @@ var quicktext = {
 
       if (count > 0)
       {
-        var addressingWidgetFocus = false;
-        var focusedElement = this.mLastFocusedElement;
-        var addressingWidget = document.getElementById("addressingWidget");
-        if (focusedElement == addressingWidget || focusedElement.compareDocumentPosition && focusedElement.compareDocumentPosition(addressingWidget) & Node.DOCUMENT_POSITION_CONTAINS)
-          addressingWidgetFocus = true;
-
         for (var header in tmpRecipientHeaders)
           for (var i = 0; i < tmpRecipientHeaders[header].length; i++)
             AddRecipient("addr_"+ convertHeaderToType[header], tmpRecipientHeaders[header][i]);
-
-        // AddRecipient takes focus so if I don't have focus in the addressingWidget
-        // I want to move it back.
-        if (addressingWidgetFocus)
-          this.mLastFocusedElement = null;
       }
     }
   }
@@ -483,12 +483,10 @@ var quicktext = {
 ,
   focusMessageBody: function()
   {
-    // advance focus until we are at the message body
-    var maxsteps = 50;
-    for (var i = 0; this.mLastFocusedElement.name != "browser.message.body" && i < maxsteps; i++)
-    {
-      document.commandDispatcher.advanceFocus();
-      this.mLastFocusedElement = (document.commandDispatcher.focusedWindow != window) ? document.commandDispatcher.focusedWindow : document.commandDispatcher.focusedElement;
+    let editor = GetCurrentEditorElement();//document.getElementsByTagName("editor");
+    if (editor) {
+      editor.focus();
+      this.mLastFocusedElement = editor;
     }
   }
 ,
@@ -503,11 +501,11 @@ var quicktext = {
     }
   }
 ,
-  insertBody: function(aStr, aType, aHandleTransaction)
+  insertBody: async function(aStr, aType, aHandleTransaction)
   {
     if (aStr != "")
     {
-      aStr = gQuicktextVar.parse(aStr);
+      aStr = gQuicktextVar.parse(aStr, aType);
 
       if (aStr != "")
       {
@@ -518,12 +516,6 @@ var quicktext = {
           if (aHandleTransaction)
             editor.beginTransaction();
   
-          if (editor.selection.rangeCount > 0)
-          {
-            var startRange = editor.selection.getRangeAt(0).cloneRange();
-            var specialRange = [startRange.startContainer.parentNode, this.getChildNodeIndex(startRange.startContainer.parentNode, startRange.startContainer), startRange.startOffset];
-          }
-
           try {
             if (gMsgCompose.composeHTML && aType > 0)
             {
@@ -539,18 +531,11 @@ var quicktext = {
           }
           catch(e) { Components.utils.reportError(e); }
   
-          if (editor.selection.rangeCount > 0)
-            var endRange = editor.selection.getRangeAt(0).cloneRange();
-  
           try {
-            if (specialRange && endRange)
+            if (aStr.indexOf('[[CURSOR]]') > -1)
             {
-              var newRange = editor.document.createRange();
-              newRange.setStart(specialRange[0].childNodes[specialRange[1]], specialRange[2]);
-              newRange.setEnd(endRange.endContainer, endRange.endOffset);
-  
               // Take care of the CURSOR-tag
-              this.parseCursorTag(editor, newRange);
+              await this.parseCursorTag(editor);
             }
           }
           catch(e) { Components.utils.reportError(e); }
@@ -562,23 +547,33 @@ var quicktext = {
     }
   }
 ,
-  parseCursorTag: function(aEditor, aSearchRange)
+  parseCursorTag: async function(aEditor)
   {
+    //Based on https://searchfox.org/comm-central/source/editor/ui/dialogs/content/EdReplace.js#255
+    var searchRange = aEditor.document.createRange();
+    var rootNode = aEditor.rootElement;
+    searchRange.selectNodeContents(rootNode);    
+
     var startRange = aEditor.document.createRange();
-    startRange.setStart(aSearchRange.startContainer, aSearchRange.startOffset);
-    startRange.setEnd(aSearchRange.startContainer, aSearchRange.startOffset);
+    startRange.setStart(searchRange.startContainer, searchRange.startOffset);
+    startRange.setEnd(searchRange.startContainer, searchRange.startOffset);
     var endRange = aEditor.document.createRange();
-    endRange.setStart(aSearchRange.endContainer, aSearchRange.endOffset);
-    endRange.setEnd(aSearchRange.endContainer, aSearchRange.endOffset);
+    endRange.setStart(searchRange.endContainer, searchRange.endOffset);
+    endRange.setEnd(searchRange.endContainer, searchRange.endOffset);
 
     var finder = Components.classes["@mozilla.org/embedcomp/rangefind;1"].createInstance().QueryInterface(Components.interfaces.nsIFind);
     finder.caseSensitive = true;
     finder.findBackwards = false;
 
-    setTimeout(function() {
-      var found = false;
-      while ((foundRange = finder.Find("[[CURSOR]]", aSearchRange, startRange, endRange)) != null)
-      {
+    let found = false;
+    let failedSearchAttempts = 0;
+    let foundRange = null;
+
+    // Loop until all tags have been replaced, but limit the loop to 10 failed attempts.
+    while (failedSearchAttempts < 30)
+    {
+      // Process the last found tag and update the search region.
+      if (foundRange) {
         found = true;
         aEditor.selection.removeAllRanges();
         aEditor.selection.addRange(foundRange);
@@ -586,13 +581,30 @@ var quicktext = {
         startRange.setEnd(foundRange.endContainer, foundRange.endOffset);
         startRange.setStart(foundRange.endContainer, foundRange.endOffset);
       }
-
-      if (!found)
-      {
-        aEditor.selection.removeAllRanges();
-        aEditor.selection.addRange(endRange);
+      
+      // Search.
+      foundRange = finder.Find("[[CURSOR]]", searchRange, startRange, endRange);
+      
+      // If we have found at least one tag, but the last search failed, we are done.
+      if (found && !foundRange) {
+        break;
       }
-    });
+      
+      // If we have never found one, we might run into the "searched too early bug" and need to delay and try again
+      if (!found && !foundRange) {
+        await new Promise(resolve => setTimeout(resolve, 2));
+        failedSearchAttempts++;
+      }
+    }
+
+    if (!found)
+    {
+      console.log("CURSOR LOG Failed to find CURSOR tag!");
+      aEditor.selection.removeAllRanges();
+      aEditor.selection.addRange(endRange);
+    } else {
+      console.log("CURSOR LOG failedSearchAttempts : " + failedSearchAttempts);
+    }
   }
 ,
   dumpTree: function(aNode, aLevel)
@@ -606,28 +618,17 @@ var quicktext = {
     }
   }
 ,
-  getChildNodeIndex: function(aParentNode, aChildNode)
+  insertContentFromFile: async function(aType)
   {
-    for(var i = 0; i < aParentNode.childNodes.length; i++)
-    {
-      if (aParentNode.childNodes[i] == aChildNode)
-        return i;
-    }
-
-    return null;
-  }
-,
-  insertContentFromFile: function(aType)
-  {
-    if ((file = gQuicktext.pickFile(window, aType, 0, this.mStringBundle.getString("insertFile"))) != null)
-      this.insertBody(gQuicktext.readFile(file), aType, true);
+    if ((file = await gQuicktext.pickFile(window, aType, 0, gQuicktext.mStringBundle.GetStringFromName("insertFile"))) != null)
+      await this.insertBody(gQuicktext.readFile(file), aType, true);
   }
 ,
 
   /*
    * KEYPRESS
    */
-  windowKeyPress: function(e)
+  windowKeyPress: async function(e)
   {
     if (gQuicktext.shortcutTypeAdv)
     {
@@ -649,7 +650,7 @@ var quicktext = {
           e.ctrlKey && modifier == "control" ||
           e.metaKey && modifier == "meta"))
       {
-        this.insertTemplate(this.mShortcuts[shortcut][0], this.mShortcuts[shortcut][1]);
+        await this.insertTemplate(this.mShortcuts[shortcut][0], this.mShortcuts[shortcut][1]);
 
         e.stopPropagation();
         e.preventDefault();
@@ -667,7 +668,7 @@ var quicktext = {
       this.mShortcutModifierDown = true;
   }
 ,
-  windowKeyUp: function(e)
+  windowKeyUp: async function(e)
   {
     var modifier = gQuicktext.shortcutModifier;
     if (gQuicktext.shortcutTypeAdv && (
@@ -677,7 +678,7 @@ var quicktext = {
     {
       if (this.mShortcutString != "" && typeof this.mShortcuts[this.mShortcutString] != "undefined")
       {
-        this.insertTemplate(this.mShortcuts[this.mShortcutString][0], this.mShortcuts[this.mShortcutString][1]);
+        await this.insertTemplate(this.mShortcuts[this.mShortcutString][0], this.mShortcuts[this.mShortcutString][1]);
 
         e.stopPropagation();
         e.preventDefault();
@@ -688,11 +689,9 @@ var quicktext = {
     }
   }
 ,
-  editorKeyPress: function(e)
+  editorKeyPress: async function(e)
   {
-    var key = (e.keyCode > 0) ? e.keyCode : e.charCode;
-
-    if (key == gQuicktext.keywordKey)
+    if (e.code == gQuicktext.keywordKey)
     {
       var editor = GetCurrentEditor();
       var selection = editor.selection;
@@ -714,7 +713,7 @@ var quicktext = {
       // I set the selection to the beginning of the line save the
       // range and then sets the selection back to was before.
       // Changing the selections was not visible to me. Most likly is
-      // that is not even rendered
+      // that is not even rendered.
       var tmpRange = initialSelectionRange.cloneRange();
       tmpRange.collapse(false);
       editor.selection.removeAllRanges();
@@ -738,17 +737,17 @@ var quicktext = {
       // into a wholeRange and use nsIFind to find lastWord.
       var wholeRange = selection.getRangeAt(0).cloneRange();
 
-      // restore to the initialSelectionRange
+      // Restore to the initialSelectionRange.
       editor.selection.removeAllRanges();
       editor.selection.addRange(initialSelectionRange);
 
-      //if the last word is not a keyword, abort
+      // If the last word is not a keyword, abort.
       if (!lastWordIsKeyword || !lastWord) {
         editor.endTransaction();
         return;
       }
 
-      // prepare a range for backward search
+      // Prepare a range for backward search.
       var startRange = editor.document.createRange();
       startRange.setStart(wholeRange.endContainer, wholeRange.endOffset);
       startRange.setEnd(wholeRange.endContainer, wholeRange.endOffset);
@@ -760,20 +759,20 @@ var quicktext = {
       finder.findBackwards = true;
       var lastWordRange = finder.Find(lastWord, wholeRange, startRange, endRange);
       if (!lastWordRange) {
-        // that should actually never happen, as we know the word is there.
+        // That should actually never happen, as we know the word is there.
         editor.endTransaction();
         return;
       }        
       
-      // replace the keyword
+      // Replace the keyword.
       editor.selection.removeAllRanges();
       editor.selection.addRange(lastWordRange);
       var text = this.mKeywords[lastWord.toLowerCase()];
-      this.insertTemplate(text[0], text[1], false);
       editor.endTransaction();
-
       e.stopPropagation();
       e.preventDefault();
+
+      await this.insertTemplate(text[0], text[1]);      
     }
   },
 

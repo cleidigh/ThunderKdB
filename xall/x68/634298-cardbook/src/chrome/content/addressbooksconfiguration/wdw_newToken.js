@@ -7,8 +7,11 @@ if ("undefined" == typeof(wdw_newToken)) {
 	var wdw_newToken = {
 
 		load: function () {
-			var myWindowTitle = cardbookRepository.strBundle.GetStringFromName(window.arguments[0].operationType + "NewTokenTitle");
+			var myWindowTitle = cardbookRepository.strBundle.formatStringFromName("newTokenTitle", [window.arguments[0].operationMail], 1);
 			document.getElementById('wdw_newToken').setAttribute("title", myWindowTitle);
+			var myWindowDescription = cardbookRepository.strBundle.formatStringFromName("newTokenDescription", [window.arguments[0].operationMail], 1);
+			document.getElementById('dialogMessage').textContent = myWindowDescription;
+			var a = 1;
 		},
 
 		closeKO: function () {

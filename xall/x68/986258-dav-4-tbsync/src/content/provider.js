@@ -27,6 +27,9 @@ var Base = class {
         branch.setIntPref("timeout", 90000);
         branch.setCharPref("clientID.type", "TbSync");
         branch.setCharPref("clientID.useragent", "Thunderbird CalDAV/CardDAV");    
+        branch.setBoolPref("enforceUniqueCalendarUrls", false);    
+        branch.setCharPref("OAuth2_ClientID", "689460414096-e4nddn8tss5c59glidp4bc0qpeu3oper.apps.googleusercontent.com");
+        branch.setCharPref("OAuth2_ClientSecret", "LeTdF3UEpCvP1V3EBygjP-kl");
 
         dav.openWindows = {};
 
@@ -55,7 +58,11 @@ var Base = class {
         // Close all open windows of this provider.
         for (let id in dav.openWindows) {
           if (dav.openWindows.hasOwnProperty(id)) {
-            dav.openWindows[id].close();
+            try {
+                dav.openWindows[id].close();
+            } catch (e) {
+                //NOOP
+            }
           }
         }
     }
@@ -72,7 +79,7 @@ var Base = class {
     /**
      * Returns version of the TbSync API this provider is using
      */
-    static getApiVersion() { return "2.1"; }
+    static getApiVersion() { return "2.2"; }
 
 
 
@@ -113,6 +120,14 @@ var Base = class {
 
 
     /**
+     * Returns the url of a page with details about contributors (used in the manager UI)
+     */
+    static getContributorsUrl() {
+        return "https://github.com/jobisoft/DAV-4-TbSync/blob/master/CONTRIBUTORS.md";
+    }
+
+
+    /**
      * Returns the email address of the maintainer (used for bug reports).
      */
     static getMaintainerEmail() {
@@ -125,7 +140,7 @@ var Base = class {
      * accessed by TbSync.getString(<key>, <provider>)
      */
     static getStringBundleUrl() {
-        return "chrome://dav4tbsync/locale/dav.strings";
+        return "chrome://dav4tbsync/locale/dav.properties";
     }
 
 
@@ -159,9 +174,18 @@ var Base = class {
             "useCalendarCache" : true,
             "calDavHost" : "",            
             "cardDavHost" : "",
+            // these must return null if not defined
+            "calDavPrincipal" : null,
+            "cardDavPrincipal" : null,
+
+            "calDavOptions" : [],
+            "cardDavOptions" : [],
+            
             "serviceprovider" : "",
+            "serviceproviderRevision" : 0,
+
             "user" : "",
-            "https" : true,
+            "https" : true, //deprecated, because this is part of the URL now
             "createdWithProviderVersion" : "0",
             "syncGroups" : false,
             }; 
@@ -179,6 +203,7 @@ var Base = class {
             // servers (as with yahoo, icloud, gmx, ...), so we need to store
             // the fqdn information per folders
             "href" : "",
+            "https" : true,
             "fqdn" : "",
 
             "url" : "", // used by calendar to store the full url of this cal
@@ -202,6 +227,8 @@ var Base = class {
      * manager UI.
      */
     static onEnableAccount(accountData) {
+        accountData.resetAccountProperty("calDavPrincipal");
+        accountData.resetAccountProperty("cardDavPrincipal");
     }
 
 
@@ -214,35 +241,104 @@ var Base = class {
 
 
     /**
+     * Is called everytime an account of this provider is deleted in the
+     * manager UI.
+     */
+    static onDeleteAccount(accountData) {
+        dav.network.getAuthData(accountData).removeLoginData();
+    }
+
+
+    /**
      * Implement this method, if this provider should add additional entries
      * to the autocomplete list while typing something into the address field
      * of the message composer.
      */
     static async abAutoComplete(accountData, currentQuery)  {
+        /**
+         * Encode the string passed as value into an addressbook search term.
+         * The '(' and ')' characters are special for the addressbook
+         * search query language, but are not escaped in encodeURIComponent()
+         * so must be done manually on top of it.
+         */
+        function encodeABTermValue(aString) {
+            return encodeURIComponent(aString)
+                .replace(/\(/g, "%28")
+                .replace(/\)/g, "%29");
+        }        
+        
+        let modelQuery = "";
+        for (let attr of ["NickName", "FirstName", "LastName", "DisplayName", "PrimaryEmail", "SecondEmail", "X-DAV-JSON-Emails","ListName"]) {
+            modelQuery += "("+attr+",c,@V)"
+        }
+        modelQuery = "(or"+modelQuery+")";
+
         // Instead of using accountData.getAllFolders() to get all folders of this account
         // and then request and check the targets of each, we simply run over all address
         // books and check for the directory property "tbSyncAccountID".
         let entries = [];
         let allAddressBooks = MailServices.ab.directories;
+        let fullString = currentQuery && currentQuery.trim().toLocaleLowerCase();
+
+        // If the search string is empty, or contains a comma, then just return
+        // no matches
+        // The comma check is so that we don't autocomplete against the user
+        // entering multiple addresses.
+        if (!fullString || fullString.includes(",")) {
+            return entries;
+        }
+
+        // Array of all the terms from the fullString search query
+        // check 
+        //   https://searchfox.org/comm-central/source/mailnews/addrbook/src/AbAutoCompleteSearch.jsm#460
+        // for quoted terms in search
+        let searchWords = fullString.split(" ");
+        let searchQuery = "";
+        searchWords.forEach(
+            searchWord => (searchQuery += modelQuery.replace(/@V/g, encodeABTermValue(searchWord)))
+        );
+
+        // searchQuery has all the (or(...)) searches, link them up with (and(...)).
+        searchQuery = "?(and" + searchQuery + ")";
+        
         while (allAddressBooks.hasMoreElements()) {
             let abook = allAddressBooks.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
             if (abook instanceof Components.interfaces.nsIAbDirectory) { // or nsIAbItem or nsIAbCollection
-                if (abook.getStringValue("tbSyncAccountID","") == accountData.accountID) {
-                    let cards = MailServices.ab.getDirectory(abook.URI + "?(or(NickName,c,"+currentQuery+")(FirstName,c,"+currentQuery+")(LastName,c,"+currentQuery+")(DisplayName,c,"+currentQuery+")(PrimaryEmail,c,"+currentQuery+")(SecondEmail,c,"+currentQuery+")(X-DAV-JSON-Emails,c,"+currentQuery+"))").childCards;
+                if (TbSync.addressbook.getStringValue(abook, "tbSyncAccountID","") == accountData.accountID) {
+                    let cards = MailServices.ab.getDirectory(abook.URI + searchQuery).childCards;
                     while (cards.hasMoreElements()) {
                         let card = cards.getNext().QueryInterface(Components.interfaces.nsIAbCard);
-                        let emailData = JSON.parse(card.getProperty("X-DAV-JSON-Emails","[]").trim());
-                        for (let i = 0; i < emailData.length; i++) { 
+                        
+                        if (card.isMailList) {
+
                             entries.push({
-                                value: card.getProperty("DisplayName", [card.getProperty("FirstName",""), card.getProperty("LastName","")].join(" ")) + " <"+emailData[i].value+">", 
-                                comment: emailData[i].meta
-                                                    .filter(entry => ["PREF","HOME","WORK"].includes(entry))
-                                                    .map(entry => entry.toUpperCase() != "PREF" ? entry.toUpperCase() : entry.toLowerCase()).sort()
-                                                    .map(entry => TbSync.getString("autocomplete." + entry.toUpperCase() , "dav"))
-                                                    .join(", "),
+                                value: card.getProperty("DisplayName", "") + " <"+ card.getProperty("DisplayName", "") +">", 
+                                comment: "",
                                 icon: dav.Base.getProviderIcon(16, accountData),
                                 style: "",				    
                             });
+                        
+                        } else {                        
+                        
+                            let emailData = [];
+                            try {
+                                emailData = JSON.parse(card.getProperty("X-DAV-JSON-Emails","[]").trim());
+                            } catch (e) {
+                                //Components.utils.reportError(e);                
+                            }
+                            for (let i = 0; i < emailData.length; i++) { 
+                                entries.push({
+                                    value: card.getProperty("DisplayName", [card.getProperty("FirstName",""), card.getProperty("LastName","")].join(" ")) + " <"+emailData[i].value+">", 
+                                    comment: emailData[i].meta
+                                                        .filter(entry => ["PREF","HOME","WORK"].includes(entry))
+                                                        .map(entry => entry.toUpperCase() != "PREF" ? entry.toUpperCase() : entry.toLowerCase()).sort()
+                                                        .map(entry => TbSync.getString("autocomplete." + entry.toUpperCase() , "dav"))
+                                                        .join(", "),
+                                    icon: dav.Base.getProviderIcon(16, accountData),
+                                    style: "",				    
+                                });
+                            }
+                            
                         }
                     }
                 }
@@ -346,8 +442,16 @@ var Base = class {
         // happens inside that function. You may also throw custom errors
         // in that function, which have the StatusData obj attached, which
         // should be returned.
-        //process a single folder
 
+        // Limit auto sync rate, if google
+        let isGoogle = (syncData.accountData.getAccountProperty("serviceprovider") == "google");
+        let isDefaultGoogleApp = (Services.prefs.getDefaultBranch("extensions.dav4tbsync.").getCharPref("OAuth2_ClientID") == dav.sync.prefSettings.getCharPref("OAuth2_ClientID"));
+        if (isGoogle && isDefaultGoogleApp && syncData.accountData.getAccountProperty("autosync") > 0 && syncData.accountData.getAccountProperty("autosync") < 30) {
+            syncData.accountData.setAccountProperty("autosync", 30);
+            TbSync.eventlog.add("warning", syncData.eventLogInfo, "Lowering sync interval to 30 minutes to reduce google request rate on standard TbSync Google APP (limited to 2.000.000 requests per day).");
+        }
+
+        // Process a single folder.
         try {
             await dav.sync.folder(syncData);
         } catch (e) {
@@ -420,6 +524,7 @@ var TargetData_addressbook = class extends TbSync.addressbook.AdvancedTargetData
                 break;
             }
         }
+        dav.sync.onChange(abCardItem);
     }
 
     listObserver(aTopic, abListItem, abListMember) {
@@ -440,9 +545,10 @@ var TargetData_addressbook = class extends TbSync.addressbook.AdvancedTargetData
                 // custom props of lists get updated directly, no need to call .modify()            
                 break;
         }
+        dav.sync.onChange(abListItem);
     }
 
-    createAddressbook(newname) {
+    async createAddressbook(newname) {
         let dirPrefId = MailServices.ab.newAddressBook(newname, "", 2);
         let directory = MailServices.ab.getDirectoryFromId(dirPrefId);
       
@@ -521,18 +627,21 @@ var TargetData_calendar = class extends TbSync.lightning.AdvancedTargetData {
         }
     }
 
-    createCalendar(newname) {
+    async createCalendar(newname) {
         let calManager = TbSync.lightning.cal.getCalendarManager();
         let authData = dav.network.getAuthData(this.folderData.accountData);
       
         let caltype = this.folderData.getFolderProperty("type");
+        let isGoogle = (this.folderData.accountData.getAccountProperty("serviceprovider") == "google");
 
         let baseUrl = "";
-        if (caltype != "ics") {
-            baseUrl =  "http" + (this.folderData.accountData.getAccountProperty("https") ? "s" : "") + "://" + this.folderData.getFolderProperty("fqdn");
+        if (isGoogle) {
+            baseUrl =  "http" + (this.folderData.getFolderProperty("https") ? "s" : "") + "://" + this.folderData.accountID + "@" + this.folderData.getFolderProperty("fqdn");
+        } else if (caltype == "caldav") {
+            baseUrl =  "http" + (this.folderData.getFolderProperty("https") ? "s" : "") + "://" + this.folderData.getFolderProperty("fqdn");
         }
 
-        let url = dav.tools.parseUri(baseUrl + this.folderData.getFolderProperty("href"));        
+        let url = dav.tools.parseUri(baseUrl + this.folderData.getFolderProperty("href") + (dav.sync.prefSettings.getBoolPref("enforceUniqueCalendarUrls") ? "?" + this.folderData.accountID : ""));
         this.folderData.setFolderProperty("url", url.spec);
 
         //check if that calendar already exists
@@ -547,12 +656,13 @@ var TargetData_calendar = class extends TbSync.lightning.AdvancedTargetData {
             }
         }
 
+        
         if (found) {
             newCalendar.setProperty("username", authData.username);
             newCalendar.setProperty("color", this.folderData.getFolderProperty("targetColor"));
             newCalendar.name = newname;                
         } else {
-            newCalendar = calManager.createCalendar(caltype, url); //caldav or ics
+            newCalendar = calManager.createCalendar((isGoogle ? "tbSyncCalDav" : caltype), url); //tbSyncCalDav, caldav or ics
             newCalendar.id = TbSync.lightning.cal.getUUID();
             newCalendar.name = newname;
 
@@ -561,15 +671,18 @@ var TargetData_calendar = class extends TbSync.lightning.AdvancedTargetData {
             newCalendar.setProperty("calendar-main-in-composite", true);
             newCalendar.setProperty("cache.enabled", this.folderData.accountData.getAccountProperty("useCalendarCache"));
         }
-        
+
         if (this.folderData.getFolderProperty("downloadonly")) newCalendar.setProperty("readOnly", true);
 
-        // ICS urls do not need a password
-        if (caltype != "ics") {
+        // Setup password for Lightning calendar, so users do not get prompted (ICS and google urls do not need a password)
+        if (caltype == "caldav" && !isGoogle) {
             TbSync.dump("Searching CalDAV authRealm for", url.host);
-            let realm = (dav.network.listOfRealms.hasOwnProperty(url.host)) ? dav.network.listOfRealms[url.host] : "";
+            let connectionData = new dav.network.ConnectionData(this.folderData);
+            let response = await dav.network.sendRequest("<d:propfind "+dav.tools.xmlns(["d"])+"><d:prop><d:resourcetype /><d:displayname /></d:prop></d:propfind>", url.spec , "PROPFIND", connectionData, {"Depth": "0", "Prefer": "return=minimal"}, {containerRealm: "setup", containerReset: true, passwordRetries: 0});
+            
+            let realm = connectionData.realm || "";
             if (realm !== "") {
-                TbSync.dump("Found CalDAV authRealm",  realm);
+                TbSync.dump("Adding Lightning password", "User <"+authData.username+">, Realm <"+realm+">");
                 //manually create a lightning style entry in the password manager
                 TbSync.passwordManager.updateLoginInfo(url.prePath, realm, /* old */ authData.username, /* new */ authData.username, authData.password);
             }

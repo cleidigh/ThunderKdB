@@ -14,16 +14,18 @@
 /* global EnigCreateRevokeCert: false, EnigmailTimer: false */
 
 // from enigmailKeyManager.js:
-/* global keyMgrAddPhoto: false */
+/* global keyMgrAddPhoto: false, EnigmailCompat: false */
 
 "use strict";
 
-
-
+var Cu = Components.utils;
+var Cc = Components.classes;
+var Ci = Components.interfaces;
 
 var gKeyId = null;
 var gUserId = null;
 var gKeyList = null;
+var gTreeFuncs = null;
 
 function onLoad() {
   window.arguments[1].refresh = false;
@@ -114,7 +116,9 @@ function reloadData() {
 
     if (keyObj.signatures) {
       let sigListViewObj = new SigListView(keyObj);
-      document.getElementById("signatures_tree").view = sigListViewObj;
+      let tree = document.getElementById("signatures_tree");
+      tree.view = sigListViewObj;
+      gTreeFuncs = EnigmailCompat.getTreeCompatibleFuncs(tree, sigListViewObj);
     }
 
     let subkeyListViewObj = new SubkeyListView(keyObj);
@@ -403,7 +407,7 @@ SigListView.prototype = {
     s.expanded = !s.expanded;
     let r = this.rowCount;
     this.updateRowCount();
-    this.treebox.rowCountChanged(row, this.rowCount - r);
+    gTreeFuncs.rowCountChanged(row, this.rowCount - r);
   }
 };
 

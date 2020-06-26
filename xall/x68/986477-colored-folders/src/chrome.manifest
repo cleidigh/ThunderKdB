@@ -1,0 +1,13 @@
+content coloredfolders  chrome/
+
+#jsm modules
+resource coloredfolders  chrome://coloredfolders/content/
+
+locale coloredfolders de locale/de/
+locale coloredfolders en locale/en/
+locale coloredfolders fr locale/fr/
+locale coloredfolders ja locale/ja/
+
+skin coloredfolders classic/1.0 chrome/skin/
+
+overlay chrome://messenger/content/messenger.xul chrome://coloredfolders/content/coloredfolders.xul

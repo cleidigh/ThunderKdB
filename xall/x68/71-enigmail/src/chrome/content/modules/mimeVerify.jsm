@@ -11,7 +11,7 @@ var EXPORTED_SYMBOLS = ["EnigmailVerify"];
  *  implemented as JS module
  */
 
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailFuncs = ChromeUtils.import("chrome://enigmail/content/modules/funcs.jsm").EnigmailFuncs;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 const EnigmailFiles = ChromeUtils.import("chrome://enigmail/content/modules/files.jsm").EnigmailFiles;
@@ -43,7 +43,7 @@ function MimeVerify(protocol) {
   this.exitCode = null;
   this.inStream = Cc["@mozilla.org/scriptableinputstream;1"].createInstance(Ci.nsIScriptableInputStream);
 
-  if (EnigmailTb60Compat.isMessageUriInPgpMime()) {
+  if (EnigmailCompat.isMessageUriInPgpMime()) {
     this.onDataAvailable = this.onDataAvailable68;
   } else {
     this.onDataAvailable = this.onDataAvailable60;
@@ -126,7 +126,7 @@ MimeVerify.prototype = {
   sigData: "",
   mimePartNumber: "",
 
-  QueryInterface: EnigmailTb60Compat.generateQI([Ci.nsIStreamListener]),
+  QueryInterface: EnigmailCompat.generateQI([Ci.nsIStreamListener]),
 
   startStreaming: function(window, msgWindow, msgUriSpec) {
     LOCAL_DEBUG("mimeVerify.jsm: startStreaming\n");
@@ -426,18 +426,16 @@ MimeVerify.prototype = {
           let manUrl = {};
 
           if (EnigmailVerify.getManualUri()) {
-            let msgSvc = messenger.messageServiceFromURI(EnigmailVerify.getManualUri());
-
-            msgSvc.GetUrlForUri(EnigmailVerify.getManualUri(), manUrl, null);
+            manUrl = EnigmailCompat.getUrlFromUriSpec(EnigmailVerify.getManualUri());
           } else {
-            manUrl.value = {
+            manUrl = {
               spec: "enigmail://invalid/message"
             };
           }
 
           // print a message if not message explicitly decrypted
           let currUrlSpec = this.uri.spec.replace(/(\?.*)(number=[0-9]*)(&.*)?$/, "?$2");
-          let manUrlSpec = manUrl.value.spec.replace(/(\?.*)(number=[0-9]*)(&.*)?$/, "?$2");
+          let manUrlSpec = manUrl.spec.replace(/(\?.*)(number=[0-9]*)(&.*)?$/, "?$2");
 
 
           if ((!this.backgroundJob) && currUrlSpec != manUrlSpec) {
@@ -446,9 +444,7 @@ MimeVerify.prototype = {
         }
 
         if (this.msgUriSpec) {
-          let msgSvc = messenger.messageServiceFromURI(this.msgUriSpec);
-
-          msgSvc.GetUrlForUri(this.msgUriSpec, url, null);
+          url = EnigmailCompat.getUrlFromUriSpec(this.msgUriSpec);
         }
 
         if (this.uri.spec.search(/[&?]header=[a-zA-Z0-9]*$/) < 0 &&
@@ -458,17 +454,17 @@ MimeVerify.prototype = {
           if (this.uri.spec.search(/[&?]header=filter&.*$/) > 0)
             return;
 
-          if (this.uri && url && url.value) {
+          if (this.uri && url) {
 
             if ("path" in url) {
               // TB < 57
-              if (url.value.host !== this.uri.host ||
-                url.value.path !== this.uri.path)
+              if (url.host !== this.uri.host ||
+                url.path !== this.uri.path)
                 return;
             } else {
               // TB >= 57
-              if (url.value.host !== this.uri.host ||
-                url.value.pathQueryRef !== this.uri.pathQueryRef)
+              if (url.host !== this.uri.host ||
+                url.pathQueryRef !== this.uri.pathQueryRef)
                 return;
             }
           }
@@ -501,6 +497,12 @@ MimeVerify.prototype = {
         mimeSignatureFile: sigFileName
       };
       const cApi = EnigmailCryptoAPI();
+
+      // ensure all lines end with CRLF as specified in RFC 3156, section 5
+      if (this.signedData.search(/[^\r]\n/) >= 0) {
+        this.signedData = this.signedData.replace(/\r\n/g, "\n").replace(/\n/g, "\r\n");
+      }
+
       this.returnStatus = cApi.sync(cApi.verifyMime(this.signedData, options));
       this.exitCode = this.returnStatus.exitCode;
 

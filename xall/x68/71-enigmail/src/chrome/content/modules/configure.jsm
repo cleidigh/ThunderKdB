@@ -13,7 +13,7 @@ const EnigmailPrefs = ChromeUtils.import("chrome://enigmail/content/modules/pref
 const EnigmailTimer = ChromeUtils.import("chrome://enigmail/content/modules/timer.jsm").EnigmailTimer;
 const EnigmailApp = ChromeUtils.import("chrome://enigmail/content/modules/app.jsm").EnigmailApp;
 const EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
-const EnigmailDialog=ChromeUtils.import("chrome://enigmail/content/modules/dialog.jsm").EnigmailDialog;
+const EnigmailDialog = ChromeUtils.import("chrome://enigmail/content/modules/dialog.jsm").EnigmailDialog;
 const EnigmailWindows = ChromeUtils.import("chrome://enigmail/content/modules/windows.jsm").EnigmailWindows;
 const EnigmailConstants = ChromeUtils.import("chrome://enigmail/content/modules/constants.jsm").EnigmailConstants;
 const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
@@ -211,15 +211,20 @@ var EnigmailConfigure = {
     let vc = Cc["@mozilla.org/xpcom/version-comparator;1"].getService(Ci.nsIVersionComparator);
 
     if (oldVer === "") {
-      let setupResult = await EnigmailAutoSetup.determinePreviousInstallType();
+      try {
+        let setupResult = await EnigmailAutoSetup.determinePreviousInstallType();
 
-      switch (EnigmailAutoSetup.value) {
-        case EnigmailConstants.AUTOSETUP_NOT_INITIALIZED:
-        case EnigmailConstants.AUTOSETUP_NO_ACCOUNT:
-          break;
-        default:
-          EnigmailPrefs.setPref("configuredVersion", EnigmailApp.getVersion());
-          EnigmailWindows.openSetupWizard(win);
+        switch (EnigmailAutoSetup.value) {
+          case EnigmailConstants.AUTOSETUP_NOT_INITIALIZED:
+          case EnigmailConstants.AUTOSETUP_NO_ACCOUNT:
+            break;
+          default:
+            EnigmailPrefs.setPref("configuredVersion", EnigmailApp.getVersion());
+            EnigmailWindows.openSetupWizard(win);
+        }
+      }
+      catch(x) {
+        // ignore exceptions and proceed without setup wizard
       }
     }
     else {

@@ -1,0 +1,2059 @@
+/*
+// Color Folders v1.0
+// Copyright(c) 2011 fisheater
+*/
+
+#folderPaneContext-colorFolders {
+  list-style-image: url("chrome://coloredfolders/content/icon/coloredfolders16.png");
+}
+
+
+/* * * * * * *
+https://developer.mozilla.org/en-US/docs/Archive/Mozilla/XUL/Tutorial/Styling_a_Tree
+* * * * * * */
+
+treechildren::-moz-tree-image(folderNameCol),
+treechildren::-moz-tree-image(folderNameCol, folderColorTypeDefault),
+.folderColorTypeDefault .menuitem-iconic,
+.folderColorTypeDefault .menu-iconic,
+.tabmail-tab[type="folder"],
+.tabmail-tab[type="folder"][selected="true"] {
+ -moz-margin-end: 2px;
+  list-style-image: url("chrome://coloredfolders/skin/folders.png");
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, newMessages-true),
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorTypeDefault) {
+  -moz-margin-end: 2px;
+  list-style-image: url("chrome://coloredfolders/skin/folders.png");
+  -moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, folderColorFFFFFF),
+.folderColorTypeDefault .folderColorFFFFFF {
+  -moz-image-region: rect(0px, 32px, 16px, 16px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFFFFF) {
+  -moz-image-region: rect(16px, 32px, 32px, 16px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorCCCCCC),
+.folderColorTypeDefault .folderColorCCCCCC {
+  -moz-image-region: rect(0px, 48px, 16px, 32px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorCCCCCC) {
+  -moz-image-region: rect(16px, 48px, 32px, 32px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorC0C0C0),
+.folderColorTypeDefault .folderColorC0C0C0 {
+  -moz-image-region: rect(0px, 64px, 16px, 48px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorC0C0C0) {
+  -moz-image-region: rect(16px, 64px, 32px, 48px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor999999),
+.folderColorTypeDefault .folderColor999999 {
+  -moz-image-region: rect(0px, 80px, 16px, 64px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor999999) {
+  -moz-image-region: rect(16px, 80px, 32px, 64px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor666666),
+.folderColorTypeDefault .folderColor666666 {
+  -moz-image-region: rect(0px, 96px, 16px, 80px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor666666) {
+  -moz-image-region: rect(16px, 96px, 32px, 80px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor333333),
+.folderColorTypeDefault .folderColor333333 {
+  -moz-image-region: rect(0px, 112px, 16px, 96px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor333333) {
+  -moz-image-region: rect(16px, 112px, 32px, 96px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor000000),
+.folderColorTypeDefault .folderColor000000 {
+  -moz-image-region: rect(0px, 128px, 16px, 112px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor000000) {
+  -moz-image-region: rect(16px, 128px, 32px, 112px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFCCCC),
+.folderColorTypeDefault .folderColorFFCCCC {
+  -moz-image-region: rect(0px, 144px, 16px, 128px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFCCCC) {
+  -moz-image-region: rect(16px, 144px, 32px, 128px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFF6666),
+.folderColorTypeDefault .folderColorFF6666 {
+  -moz-image-region: rect(0px, 160px, 16px, 144px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFF6666) {
+  -moz-image-region: rect(16px, 160px, 32px, 144px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFF0000),
+.folderColorTypeDefault .folderColorFF0000 {
+  -moz-image-region: rect(0px, 176px, 16px, 160px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFF0000) {
+  -moz-image-region: rect(16px, 176px, 32px, 160px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorCC0000),
+.folderColorTypeDefault .folderColorCC0000 {
+  -moz-image-region: rect(0px, 192px, 16px, 176px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorCC0000) {
+  -moz-image-region: rect(16px, 192px, 32px, 176px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor990000),
+.folderColorTypeDefault .folderColor990000 {
+  -moz-image-region: rect(0px, 208px, 16px, 192px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor990000) {
+  -moz-image-region: rect(16px, 208px, 32px, 192px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor660000),
+.folderColorTypeDefault .folderColor660000 {
+  -moz-image-region: rect(0px, 224px, 16px, 208px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor660000) {
+  -moz-image-region: rect(16px, 224px, 32px, 208px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor330000),
+.folderColorTypeDefault .folderColor330000 {
+  -moz-image-region: rect(0px, 240px, 16px, 224px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor330000) {
+  -moz-image-region: rect(16px, 240px, 32px, 224px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFCC99),
+.folderColorTypeDefault .folderColorFFCC99 {
+  -moz-image-region: rect(0px, 256px, 16px, 240px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFCC99) {
+  -moz-image-region: rect(16px, 256px, 32px, 240px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFF9966),
+.folderColorTypeDefault .folderColorFF9966 {
+  -moz-image-region: rect(0px, 272px, 16px, 256px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFF9966) {
+  -moz-image-region: rect(16px, 272px, 32px, 256px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFF9900),
+.folderColorTypeDefault .folderColorFF9900 {
+  -moz-image-region: rect(0px, 288px, 16px, 272px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFF9900) {
+  -moz-image-region: rect(16px, 288px, 32px, 272px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFF6600),
+.folderColorTypeDefault .folderColorFF6600 {
+  -moz-image-region: rect(0px, 304px, 16px, 288px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFF6600) {
+  -moz-image-region: rect(16px, 304px, 32px, 288px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorCC6600),
+.folderColorTypeDefault .folderColorCC6600 {
+  -moz-image-region: rect(0px, 320px, 16px, 304px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorCC6600) {
+  -moz-image-region: rect(16px, 320px, 32px, 304px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor993300),
+.folderColorTypeDefault .folderColor993300 {
+  -moz-image-region: rect(0px, 336px, 16px, 320px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor993300) {
+  -moz-image-region: rect(16px, 336px, 32px, 320px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor663300),
+.folderColorTypeDefault .folderColor663300 {
+  -moz-image-region: rect(0px, 352px, 16px, 336px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor663300) {
+  -moz-image-region: rect(16px, 352px, 32px, 336px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFFF99),
+.folderColorTypeDefault .folderColorFFFF99 {
+  -moz-image-region: rect(0px, 368px, 16px, 352px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFFF99) {
+  -moz-image-region: rect(16px, 368px, 32px, 352px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFFF66),
+.folderColorTypeDefault .folderColorFFFF66 {
+  -moz-image-region: rect(0px, 384px, 16px, 368px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFFF66) {
+  -moz-image-region: rect(16px, 384px, 32px, 368px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFCC66),
+.folderColorTypeDefault .folderColorFFCC66 {
+  -moz-image-region: rect(0px, 400px, 16px, 384px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFCC66) {
+  -moz-image-region: rect(16px, 400px, 32px, 384px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFCC33),
+.folderColorTypeDefault .folderColorFFCC33 {
+  -moz-image-region: rect(0px, 416px, 16px, 400px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFCC33) {
+  -moz-image-region: rect(16px, 416px, 32px, 400px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorCC9933),
+.folderColorTypeDefault .folderColorCC9933 {
+  -moz-image-region: rect(0px, 432px, 16px, 416px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorCC9933) {
+  -moz-image-region: rect(16px, 432px, 32px, 416px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor996633),
+.folderColorTypeDefault .folderColor996633 {
+  -moz-image-region: rect(0px, 448px, 16px, 432px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor996633) {
+  -moz-image-region: rect(16px, 448px, 32px, 432px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor663333),
+.folderColorTypeDefault .folderColor663333 {
+  -moz-image-region: rect(0px, 464px, 16px, 448px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor663333) {
+  -moz-image-region: rect(16px, 464px, 32px, 448px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFFFCC),
+.folderColorTypeDefault .folderColorFFFFCC {
+  -moz-image-region: rect(0px, 480px, 16px, 464px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFFFCC) {
+  -moz-image-region: rect(16px, 480px, 32px, 464px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFFF33),
+.folderColorTypeDefault .folderColorFFFF33 {
+  -moz-image-region: rect(0px, 496px, 16px, 480px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFFF33) {
+  -moz-image-region: rect(16px, 496px, 32px, 480px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFFF00),
+.folderColorTypeDefault .folderColorFFFF00 {
+  -moz-image-region: rect(0px, 512px, 16px, 496px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFFF00) {
+  -moz-image-region: rect(16px, 512px, 32px, 496px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFCC00),
+.folderColorTypeDefault .folderColorFFCC00 {
+  -moz-image-region: rect(0px, 528px, 16px, 512px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFCC00) {
+  -moz-image-region: rect(16px, 528px, 32px, 512px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor999900),
+.folderColorTypeDefault .folderColor999900 {
+  -moz-image-region: rect(0px, 544px, 16px, 528px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor999900) {
+  -moz-image-region: rect(16px, 544px, 32px, 528px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor666600),
+.folderColorTypeDefault .folderColor666600 {
+  -moz-image-region: rect(0px, 560px, 16px, 544px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor666600) {
+  -moz-image-region: rect(16px, 560px, 32px, 544px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor333300),
+.folderColorTypeDefault .folderColor333300 {
+  -moz-image-region: rect(0px, 576px, 16px, 560px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor333300) {
+  -moz-image-region: rect(16px, 576px, 32px, 560px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor99FF99),
+.folderColorTypeDefault .folderColor99FF99 {
+  -moz-image-region: rect(0px, 592px, 16px, 576px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor99FF99) {
+  -moz-image-region: rect(16px, 592px, 32px, 576px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor66FF99),
+.folderColorTypeDefault .folderColor66FF99 {
+  -moz-image-region: rect(0px, 608px, 16px, 592px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor66FF99) {
+  -moz-image-region: rect(16px, 608px, 32px, 592px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor33FF33),
+.folderColorTypeDefault .folderColor33FF33 {
+  -moz-image-region: rect(0px, 624px, 16px, 608px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor33FF33) {
+  -moz-image-region: rect(16px, 624px, 32px, 608px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor33CC00),
+.folderColorTypeDefault .folderColor33CC00 {
+  -moz-image-region: rect(0px, 640px, 16px, 624px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor33CC00) {
+  -moz-image-region: rect(16px, 640px, 32px, 624px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor009900),
+.folderColorTypeDefault .folderColor009900 {
+  -moz-image-region: rect(0px, 656px, 16px, 640px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor009900) {
+  -moz-image-region: rect(16px, 656px, 32px, 640px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor006600),
+.folderColorTypeDefault .folderColor006600 {
+  -moz-image-region: rect(0px, 672px, 16px, 656px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor006600) {
+  -moz-image-region: rect(16px, 672px, 32px, 656px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor003300),
+.folderColorTypeDefault .folderColor003300 {
+  -moz-image-region: rect(0px, 688px, 16px, 672px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor003300) {
+  -moz-image-region: rect(16px, 688px, 32px, 672px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor99FFFF),
+.folderColorTypeDefault .folderColor99FFFF {
+  -moz-image-region: rect(0px, 704px, 16px, 688px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor99FFFF) {
+  -moz-image-region: rect(16px, 704px, 32px, 688px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor33FFFF),
+.folderColorTypeDefault .folderColor33FFFF {
+  -moz-image-region: rect(0px, 720px, 16px, 704px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor33FFFF) {
+  -moz-image-region: rect(16px, 720px, 32px, 704px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor66CCCC),
+.folderColorTypeDefault .folderColor66CCCC {
+  -moz-image-region: rect(0px, 736px, 16px, 720px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor66CCCC) {
+  -moz-image-region: rect(16px, 736px, 32px, 720px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor00CCCC),
+.folderColorTypeDefault .folderColor00CCCC {
+  -moz-image-region: rect(0px, 752px, 16px, 736px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor00CCCC) {
+  -moz-image-region: rect(16px, 752px, 32px, 736px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor339999),
+.folderColorTypeDefault .folderColor339999 {
+  -moz-image-region: rect(0px, 768px, 16px, 752px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor339999) {
+  -moz-image-region: rect(16px, 768px, 32px, 752px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor336666),
+.folderColorTypeDefault .folderColor336666 {
+  -moz-image-region: rect(0px, 784px, 16px, 768px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor336666) {
+  -moz-image-region: rect(16px, 784px, 32px, 768px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor003333),
+.folderColorTypeDefault .folderColor003333 {
+  -moz-image-region: rect(0px, 800px, 16px, 784px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor003333) {
+  -moz-image-region: rect(16px, 800px, 32px, 784px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorCCFFFF),
+.folderColorTypeDefault .folderColorCCFFFF {
+  -moz-image-region: rect(0px, 816px, 16px, 800px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorCCFFFF) {
+  -moz-image-region: rect(16px, 816px, 32px, 800px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor66FFFF),
+.folderColorTypeDefault .folderColor66FFFF {
+  -moz-image-region: rect(0px, 832px, 16px, 816px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor66FFFF) {
+  -moz-image-region: rect(16px, 832px, 32px, 816px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor33CCFF),
+.folderColorTypeDefault .folderColor33CCFF {
+  -moz-image-region: rect(0px, 848px, 16px, 832px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor33CCFF) {
+  -moz-image-region: rect(16px, 848px, 32px, 832px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor3366FF),
+.folderColorTypeDefault .folderColor3366FF {
+  -moz-image-region: rect(0px, 864px, 16px, 848px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor3366FF) {
+  -moz-image-region: rect(16px, 864px, 32px, 848px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor3333FF),
+.folderColorTypeDefault .folderColor3333FF {
+  -moz-image-region: rect(0px, 880px, 16px, 864px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor3333FF) {
+  -moz-image-region: rect(16px, 880px, 32px, 864px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor000099),
+.folderColorTypeDefault .folderColor000099 {
+  -moz-image-region: rect(0px, 896px, 16px, 880px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor000099) {
+  -moz-image-region: rect(16px, 896px, 32px, 880px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor000066),
+.folderColorTypeDefault .folderColor000066 {
+  -moz-image-region: rect(0px, 912px, 16px, 896px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor000066) {
+  -moz-image-region: rect(16px, 912px, 32px, 896px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorCCCCFF),
+.folderColorTypeDefault .folderColorCCCCFF {
+  -moz-image-region: rect(0px, 928px, 16px, 912px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorCCCCFF) {
+  -moz-image-region: rect(16px, 928px, 32px, 912px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor9999FF),
+.folderColorTypeDefault .folderColor9999FF {
+  -moz-image-region: rect(0px, 944px, 16px, 928px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor9999FF) {
+  -moz-image-region: rect(16px, 944px, 32px, 928px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor6666CC),
+.folderColorTypeDefault .folderColor6666CC {
+  -moz-image-region: rect(0px, 960px, 16px, 944px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor6666CC) {
+  -moz-image-region: rect(16px, 960px, 32px, 944px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor6633FF),
+.folderColorTypeDefault .folderColor6633FF {
+  -moz-image-region: rect(0px, 976px, 16px, 960px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor6633FF) {
+  -moz-image-region: rect(16px, 976px, 32px, 960px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor6600CC),
+.folderColorTypeDefault .folderColor6600CC {
+  -moz-image-region: rect(0px, 992px, 16px, 976px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor6600CC) {
+  -moz-image-region: rect(16px, 992px, 32px, 976px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor333399),
+.folderColorTypeDefault .folderColor333399 {
+  -moz-image-region: rect(0px, 1008px, 16px, 992px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor333399) {
+  -moz-image-region: rect(16px, 1008px, 32px, 992px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor330099),
+.folderColorTypeDefault .folderColor330099 {
+  -moz-image-region: rect(0px, 1024px, 16px, 1008px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor330099) {
+  -moz-image-region: rect(16px, 1024px, 32px, 1008px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFFCCFF),
+.folderColorTypeDefault .folderColorFFCCFF {
+  -moz-image-region: rect(0px, 1040px, 16px, 1024px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFFCCFF) {
+  -moz-image-region: rect(16px, 1040px, 32px, 1024px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorFF99FF),
+.folderColorTypeDefault .folderColorFF99FF {
+  -moz-image-region: rect(0px, 1056px, 16px, 1040px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorFF99FF) {
+  -moz-image-region: rect(16px, 1056px, 32px, 1040px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorCC66CC),
+.folderColorTypeDefault .folderColorCC66CC {
+  -moz-image-region: rect(0px, 1072px, 16px, 1056px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorCC66CC) {
+  -moz-image-region: rect(16px, 1072px, 32px, 1056px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColorCC33CC),
+.folderColorTypeDefault .folderColorCC33CC {
+  -moz-image-region: rect(0px, 1088px, 16px, 1072px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColorCC33CC) {
+  -moz-image-region: rect(16px, 1088px, 32px, 1072px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor993399),
+.folderColorTypeDefault .folderColor993399 {
+  -moz-image-region: rect(0px, 1104px, 16px, 1088px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor993399) {
+  -moz-image-region: rect(16px, 1104px, 32px, 1088px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor663366),
+.folderColorTypeDefault .folderColor663366 {
+  -moz-image-region: rect(0px, 1120px, 16px, 1104px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor663366) {
+  -moz-image-region: rect(16px, 1120px, 32px, 1104px);
+}
+treechildren::-moz-tree-image(folderNameCol, folderColor330033),
+.folderColorTypeDefault .folderColor330033 {
+  -moz-image-region: rect(0px, 1136px, 16px, 1120px);
+}
+treechildren::-moz-tree-image(folderNameCol, newMessages-true, folderColor330033) {
+  -moz-image-region: rect(16px, 1136px, 32px, 1120px);
+}
+
+
+/* "serverType-" have to come before "specialFolder-" */
+treechildren::-moz-tree-image(folderNameCol, serverType-rss),
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorTypeDefault),
+.folderColorTypeRss .menuitem-iconic,
+.folderColorTypeRss .menu-iconic,
+.tabmail-tab[type="folder"][ServerType="rss"] {
+  -moz-margin-end: 2px;
+  list-style-image: url("chrome://coloredfolders/skin/folders.png");
+  -moz-image-region: rect(64px, 16px, 80px, 0px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true),
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorTypeDefault) {
+  -moz-margin-end: 2px;
+  list-style-image: url("chrome://coloredfolders/skin/folders.png");
+  -moz-image-region: rect(80px, 16px, 96px, 0px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFFFFF),
+.folderColorTypeRss .folderColorFFFFFF {
+  -moz-image-region: rect(64px, 32px, 80px, 16px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFFFFF) {
+  -moz-image-region: rect(80px, 32px, 96px, 16px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorCCCCCC),
+.folderColorTypeRss .folderColorCCCCCC {
+  -moz-image-region: rect(64px, 48px, 80px, 32px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorCCCCCC) {
+  -moz-image-region: rect(80px, 48px, 96px, 32px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorC0C0C0),
+.folderColorTypeRss .folderColorC0C0C0 {
+  -moz-image-region: rect(64px, 64px, 80px, 48px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorC0C0C0) {
+  -moz-image-region: rect(80px, 64px, 96px, 48px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor999999),
+.folderColorTypeRss .folderColor999999 {
+  -moz-image-region: rect(64px, 80px, 80px, 64px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor999999) {
+  -moz-image-region: rect(80px, 80px, 96px, 64px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor666666),
+.folderColorTypeRss .folderColor666666 {
+  -moz-image-region: rect(64px, 96px, 80px, 80px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor666666) {
+  -moz-image-region: rect(80px, 96px, 96px, 80px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor333333),
+.folderColorTypeRss .folderColor333333 {
+  -moz-image-region: rect(64px, 112px, 80px, 96px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor333333) {
+  -moz-image-region: rect(80px, 112px, 96px, 96px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor000000),
+.folderColorTypeRss .folderColor000000 {
+  -moz-image-region: rect(64px, 128px, 80px, 112px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor000000) {
+  -moz-image-region: rect(80px, 128px, 96px, 112px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFCCCC),
+.folderColorTypeRss .folderColorFFCCCC {
+  -moz-image-region: rect(64px, 144px, 80px, 128px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFCCCC) {
+  -moz-image-region: rect(80px, 144px, 96px, 128px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFF6666),
+.folderColorTypeRss .folderColorFF6666 {
+  -moz-image-region: rect(64px, 160px, 80px, 144px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFF6666) {
+  -moz-image-region: rect(80px, 160px, 96px, 144px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFF0000),
+.folderColorTypeRss .folderColorFF0000 {
+  -moz-image-region: rect(64px, 176px, 80px, 160px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFF0000) {
+  -moz-image-region: rect(80px, 176px, 96px, 160px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorCC0000),
+.folderColorTypeRss .folderColorCC0000 {
+  -moz-image-region: rect(64px, 192px, 80px, 176px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorCC0000) {
+  -moz-image-region: rect(80px, 192px, 96px, 176px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor990000),
+.folderColorTypeRss .folderColor990000 {
+  -moz-image-region: rect(64px, 208px, 80px, 192px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor990000) {
+  -moz-image-region: rect(80px, 208px, 96px, 192px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor660000),
+.folderColorTypeRss .folderColor660000 {
+  -moz-image-region: rect(64px, 224px, 80px, 208px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor660000) {
+  -moz-image-region: rect(80px, 224px, 96px, 208px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor330000),
+.folderColorTypeRss .folderColor330000 {
+  -moz-image-region: rect(64px, 240px, 80px, 224px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor330000) {
+  -moz-image-region: rect(80px, 240px, 96px, 224px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFCC99),
+.folderColorTypeRss .folderColorFFCC99 {
+  -moz-image-region: rect(64px, 256px, 80px, 240px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFCC99) {
+  -moz-image-region: rect(80px, 256px, 96px, 240px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFF9966),
+.folderColorTypeRss .folderColorFF9966 {
+  -moz-image-region: rect(64px, 272px, 80px, 256px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFF9966) {
+  -moz-image-region: rect(80px, 272px, 96px, 256px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFF9900),
+.folderColorTypeRss .folderColorFF9900 {
+  -moz-image-region: rect(64px, 288px, 80px, 272px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFF9900) {
+  -moz-image-region: rect(80px, 288px, 96px, 272px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFF6600),
+.folderColorTypeRss .folderColorFF6600 {
+  -moz-image-region: rect(64px, 304px, 80px, 288px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFF6600) {
+  -moz-image-region: rect(80px, 304px, 96px, 288px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorCC6600),
+.folderColorTypeRss .folderColorCC6600 {
+  -moz-image-region: rect(64px, 320px, 80px, 304px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorCC6600) {
+  -moz-image-region: rect(80px, 320px, 96px, 304px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor993300),
+.folderColorTypeRss .folderColor993300 {
+  -moz-image-region: rect(64px, 336px, 80px, 320px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor993300) {
+  -moz-image-region: rect(80px, 336px, 96px, 320px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor663300),
+.folderColorTypeRss .folderColor663300 {
+  -moz-image-region: rect(64px, 352px, 80px, 336px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor663300) {
+  -moz-image-region: rect(80px, 352px, 96px, 336px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFFF99),
+.folderColorTypeRss .folderColorFFFF99 {
+  -moz-image-region: rect(64px, 368px, 80px, 352px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFFF99) {
+  -moz-image-region: rect(80px, 368px, 96px, 352px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFFF66),
+.folderColorTypeRss .folderColorFFFF66 {
+  -moz-image-region: rect(64px, 384px, 80px, 368px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFFF66) {
+  -moz-image-region: rect(80px, 384px, 96px, 368px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFCC66),
+.folderColorTypeRss .folderColorFFCC66 {
+  -moz-image-region: rect(64px, 400px, 80px, 384px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFCC66) {
+  -moz-image-region: rect(80px, 400px, 96px, 384px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFCC33),
+.folderColorTypeRss .folderColorFFCC33 {
+  -moz-image-region: rect(64px, 416px, 80px, 400px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFCC33) {
+  -moz-image-region: rect(80px, 416px, 96px, 400px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorCC9933),
+.folderColorTypeRss .folderColorCC9933 {
+  -moz-image-region: rect(64px, 432px, 80px, 416px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorCC9933) {
+  -moz-image-region: rect(80px, 432px, 96px, 416px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor996633),
+.folderColorTypeRss .folderColor996633 {
+  -moz-image-region: rect(64px, 448px, 80px, 432px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor996633) {
+  -moz-image-region: rect(80px, 448px, 96px, 432px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor663333),
+.folderColorTypeRss .folderColor663333 {
+  -moz-image-region: rect(64px, 464px, 80px, 448px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor663333) {
+  -moz-image-region: rect(80px, 464px, 96px, 448px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFFFCC),
+.folderColorTypeRss .folderColorFFFFCC {
+  -moz-image-region: rect(64px, 480px, 80px, 464px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFFFCC) {
+  -moz-image-region: rect(80px, 480px, 96px, 464px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFFF33),
+.folderColorTypeRss .folderColorFFFF33 {
+  -moz-image-region: rect(64px, 496px, 80px, 480px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFFF33) {
+  -moz-image-region: rect(80px, 496px, 96px, 480px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFFF00),
+.folderColorTypeRss .folderColorFFFF00 {
+  -moz-image-region: rect(64px, 512px, 80px, 496px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFFF00) {
+  -moz-image-region: rect(80px, 512px, 96px, 496px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFCC00),
+.folderColorTypeRss .folderColorFFCC00 {
+  -moz-image-region: rect(64px, 528px, 80px, 512px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFCC00) {
+  -moz-image-region: rect(80px, 528px, 96px, 512px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor999900),
+.folderColorTypeRss .folderColor999900 {
+  -moz-image-region: rect(64px, 544px, 80px, 528px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor999900) {
+  -moz-image-region: rect(80px, 544px, 96px, 528px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor666600),
+.folderColorTypeRss .folderColor666600 {
+  -moz-image-region: rect(64px, 560px, 80px, 544px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor666600) {
+  -moz-image-region: rect(80px, 560px, 96px, 544px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor333300),
+.folderColorTypeRss .folderColor333300 {
+  -moz-image-region: rect(64px, 576px, 80px, 560px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor333300) {
+  -moz-image-region: rect(80px, 576px, 96px, 560px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor99FF99),
+.folderColorTypeRss .folderColor99FF99 {
+  -moz-image-region: rect(64px, 592px, 80px, 576px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor99FF99) {
+  -moz-image-region: rect(80px, 592px, 96px, 576px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor66FF99),
+.folderColorTypeRss .folderColor66FF99 {
+  -moz-image-region: rect(64px, 608px, 80px, 592px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor66FF99) {
+  -moz-image-region: rect(80px, 608px, 96px, 592px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor33FF33),
+.folderColorTypeRss .folderColor33FF33 {
+  -moz-image-region: rect(64px, 624px, 80px, 608px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor33FF33) {
+  -moz-image-region: rect(80px, 624px, 96px, 608px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor33CC00),
+.folderColorTypeRss .folderColor33CC00 {
+  -moz-image-region: rect(64px, 640px, 80px, 624px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor33CC00) {
+  -moz-image-region: rect(80px, 640px, 96px, 624px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor009900),
+.folderColorTypeRss .folderColor009900 {
+  -moz-image-region: rect(64px, 656px, 80px, 640px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor009900) {
+  -moz-image-region: rect(80px, 656px, 96px, 640px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor006600),
+.folderColorTypeRss .folderColor006600 {
+  -moz-image-region: rect(64px, 672px, 80px, 656px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor006600) {
+  -moz-image-region: rect(80px, 672px, 96px, 656px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor003300),
+.folderColorTypeRss .folderColor003300 {
+  -moz-image-region: rect(64px, 688px, 80px, 672px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor003300) {
+  -moz-image-region: rect(80px, 688px, 96px, 672px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor99FFFF),
+.folderColorTypeRss .folderColor99FFFF {
+  -moz-image-region: rect(64px, 704px, 80px, 688px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor99FFFF) {
+  -moz-image-region: rect(80px, 704px, 96px, 688px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor33FFFF),
+.folderColorTypeRss .folderColor33FFFF {
+  -moz-image-region: rect(64px, 720px, 80px, 704px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor33FFFF) {
+  -moz-image-region: rect(80px, 720px, 96px, 704px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor66CCCC),
+.folderColorTypeRss .folderColor66CCCC {
+  -moz-image-region: rect(64px, 736px, 80px, 720px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor66CCCC) {
+  -moz-image-region: rect(80px, 736px, 96px, 720px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor00CCCC),
+.folderColorTypeRss .folderColor00CCCC {
+  -moz-image-region: rect(64px, 752px, 80px, 736px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor00CCCC) {
+  -moz-image-region: rect(80px, 752px, 96px, 736px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor339999),
+.folderColorTypeRss .folderColor339999 {
+  -moz-image-region: rect(64px, 768px, 80px, 752px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor339999) {
+  -moz-image-region: rect(80px, 768px, 96px, 752px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor336666),
+.folderColorTypeRss .folderColor336666 {
+  -moz-image-region: rect(64px, 784px, 80px, 768px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor336666) {
+  -moz-image-region: rect(80px, 784px, 96px, 768px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor003333),
+.folderColorTypeRss .folderColor003333 {
+  -moz-image-region: rect(64px, 800px, 80px, 784px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor003333) {
+  -moz-image-region: rect(80px, 800px, 96px, 784px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorCCFFFF),
+.folderColorTypeRss .folderColorCCFFFF {
+  -moz-image-region: rect(64px, 816px, 80px, 800px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorCCFFFF) {
+  -moz-image-region: rect(80px, 816px, 96px, 800px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor66FFFF),
+.folderColorTypeRss .folderColor66FFFF {
+  -moz-image-region: rect(64px, 832px, 80px, 816px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor66FFFF) {
+  -moz-image-region: rect(80px, 832px, 96px, 816px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor33CCFF),
+.folderColorTypeRss .folderColor33CCFF {
+  -moz-image-region: rect(64px, 848px, 80px, 832px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor33CCFF) {
+  -moz-image-region: rect(80px, 848px, 96px, 832px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor3366FF),
+.folderColorTypeRss .folderColor3366FF {
+  -moz-image-region: rect(64px, 864px, 80px, 848px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor3366FF) {
+  -moz-image-region: rect(80px, 864px, 96px, 848px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor3333FF),
+.folderColorTypeRss .folderColor3333FF {
+  -moz-image-region: rect(64px, 880px, 80px, 864px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor3333FF) {
+  -moz-image-region: rect(80px, 880px, 96px, 864px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor000099),
+.folderColorTypeRss .folderColor000099 {
+  -moz-image-region: rect(64px, 896px, 80px, 880px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor000099) {
+  -moz-image-region: rect(80px, 896px, 96px, 880px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor000066),
+.folderColorTypeRss .folderColor000066 {
+  -moz-image-region: rect(64px, 912px, 80px, 896px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor000066) {
+  -moz-image-region: rect(80px, 912px, 96px, 896px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorCCCCFF),
+.folderColorTypeRss .folderColorCCCCFF {
+  -moz-image-region: rect(64px, 928px, 80px, 912px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorCCCCFF) {
+  -moz-image-region: rect(80px, 928px, 96px, 912px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor9999FF),
+.folderColorTypeRss .folderColor9999FF {
+  -moz-image-region: rect(64px, 944px, 80px, 928px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor9999FF) {
+  -moz-image-region: rect(80px, 944px, 96px, 928px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor6666CC),
+.folderColorTypeRss .folderColor6666CC {
+  -moz-image-region: rect(64px, 960px, 80px, 944px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor6666CC) {
+  -moz-image-region: rect(80px, 960px, 96px, 944px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor6633FF),
+.folderColorTypeRss .folderColor6633FF {
+  -moz-image-region: rect(64px, 976px, 80px, 960px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor6633FF) {
+  -moz-image-region: rect(80px, 976px, 96px, 960px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor6600CC),
+.folderColorTypeRss .folderColor6600CC {
+  -moz-image-region: rect(64px, 992px, 80px, 976px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor6600CC) {
+  -moz-image-region: rect(80px, 992px, 96px, 976px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor333399),
+.folderColorTypeRss .folderColor333399 {
+  -moz-image-region: rect(64px, 1008px, 80px, 992px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor333399) {
+  -moz-image-region: rect(80px, 1008px, 96px, 992px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor330099),
+.folderColorTypeRss .folderColor330099 {
+  -moz-image-region: rect(64px, 1024px, 80px, 1008px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor330099) {
+  -moz-image-region: rect(80px, 1024px, 96px, 1008px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFFCCFF),
+.folderColorTypeRss .folderColorFFCCFF {
+  -moz-image-region: rect(64px, 1040px, 80px, 1024px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFFCCFF) {
+  -moz-image-region: rect(80px, 1040px, 96px, 1024px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorFF99FF),
+.folderColorTypeRss .folderColorFF99FF {
+  -moz-image-region: rect(64px, 1056px, 80px, 1040px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorFF99FF) {
+  -moz-image-region: rect(80px, 1056px, 96px, 1040px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorCC66CC),
+.folderColorTypeRss .folderColorCC66CC {
+  -moz-image-region: rect(64px, 1072px, 80px, 1056px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorCC66CC) {
+  -moz-image-region: rect(80px, 1072px, 96px, 1056px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColorCC33CC),
+.folderColorTypeRss .folderColorCC33CC {
+  -moz-image-region: rect(64px, 1088px, 80px, 1072px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColorCC33CC) {
+  -moz-image-region: rect(80px, 1088px, 96px, 1072px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor993399),
+.folderColorTypeRss .folderColor993399 {
+  -moz-image-region: rect(64px, 1104px, 80px, 1088px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor993399) {
+  -moz-image-region: rect(80px, 1104px, 96px, 1088px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor663366),
+.folderColorTypeRss .folderColor663366 {
+  -moz-image-region: rect(64px, 1120px, 80px, 1104px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor663366) {
+  -moz-image-region: rect(80px, 1120px, 96px, 1104px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, folderColor330033),
+.folderColorTypeRss .folderColor330033 {
+  -moz-image-region: rect(64px, 1136px, 80px, 1120px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-rss, newMessages-true, folderColor330033) {
+  -moz-image-region: rect(80px, 1136px, 96px, 1120px);
+}
+
+
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp),
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorTypeDefault),
+.folderColorTypeNntp .menuitem-iconic,
+.folderColorTypeNntp .menu-iconic,
+.tabmail-tab[type="folder"][ServerType="nntp"] {
+  -moz-margin-end: 2px;
+  list-style-image: url("chrome://coloredfolders/skin/folders.png");
+  -moz-image-region: rect(96px, 16px, 112px, 0px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFFFFF),
+.folderColorTypeNntp .folderColorFFFFFF {
+  -moz-image-region: rect(96px, 32px, 112px, 16px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorCCCCCC),
+.folderColorTypeNntp .folderColorCCCCCC {
+  -moz-image-region: rect(96px, 48px, 112px, 32px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorC0C0C0),
+.folderColorTypeNntp .folderColorC0C0C0 {
+  -moz-image-region: rect(96px, 64px, 112px, 48px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor999999),
+.folderColorTypeNntp .folderColor999999 {
+  -moz-image-region: rect(96px, 80px, 112px, 64px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor666666),
+.folderColorTypeNntp .folderColor666666 {
+  -moz-image-region: rect(96px, 96px, 112px, 80px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor333333),
+.folderColorTypeNntp .folderColor333333 {
+  -moz-image-region: rect(96px, 112px, 112px, 96px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor000000),
+.folderColorTypeNntp .folderColor000000 {
+  -moz-image-region: rect(96px, 128px, 112px, 112px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFCCCC),
+.folderColorTypeNntp .folderColorFFCCCC {
+  -moz-image-region: rect(96px, 144px, 112px, 128px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFF6666),
+.folderColorTypeNntp .folderColorFF6666 {
+  -moz-image-region: rect(96px, 160px, 112px, 144px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFF0000),
+.folderColorTypeNntp .folderColorFF0000 {
+  -moz-image-region: rect(96px, 176px, 112px, 160px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorCC0000),
+.folderColorTypeNntp .folderColorCC0000 {
+  -moz-image-region: rect(96px, 192px, 112px, 176px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor990000),
+.folderColorTypeNntp .folderColor990000 {
+  -moz-image-region: rect(96px, 208px, 112px, 192px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor660000),
+.folderColorTypeNntp .folderColor660000 {
+  -moz-image-region: rect(96px, 224px, 112px, 208px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor330000),
+.folderColorTypeNntp .folderColor330000 {
+  -moz-image-region: rect(96px, 240px, 112px, 224px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFCC99),
+.folderColorTypeNntp .folderColorFFCC99 {
+  -moz-image-region: rect(96px, 256px, 112px, 240px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFF9966),
+.folderColorTypeNntp .folderColorFF9966 {
+  -moz-image-region: rect(96px, 272px, 112px, 256px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFF9900),
+.folderColorTypeNntp .folderColorFF9900 {
+  -moz-image-region: rect(96px, 288px, 112px, 272px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFF6600),
+.folderColorTypeNntp .folderColorFF6600 {
+  -moz-image-region: rect(96px, 304px, 112px, 288px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorCC6600),
+.folderColorTypeNntp .folderColorCC6600 {
+  -moz-image-region: rect(96px, 320px, 112px, 304px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor993300),
+.folderColorTypeNntp .folderColor993300 {
+  -moz-image-region: rect(96px, 336px, 112px, 320px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor663300),
+.folderColorTypeNntp .folderColor663300 {
+  -moz-image-region: rect(96px, 352px, 112px, 336px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFFF99),
+.folderColorTypeNntp .folderColorFFFF99 {
+  -moz-image-region: rect(96px, 368px, 112px, 352px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFFF66),
+.folderColorTypeNntp .folderColorFFFF66 {
+  -moz-image-region: rect(96px, 384px, 112px, 368px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFCC66),
+.folderColorTypeNntp .folderColorFFCC66 {
+  -moz-image-region: rect(96px, 400px, 112px, 384px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFCC33),
+.folderColorTypeNntp .folderColorFFCC33 {
+  -moz-image-region: rect(96px, 416px, 112px, 400px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorCC9933),
+.folderColorTypeNntp .folderColorCC9933 {
+  -moz-image-region: rect(96px, 432px, 112px, 416px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor996633),
+.folderColorTypeNntp .folderColor996633 {
+  -moz-image-region: rect(96px, 448px, 112px, 432px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor663333),
+.folderColorTypeNntp .folderColor663333 {
+  -moz-image-region: rect(96px, 464px, 112px, 448px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFFFCC),
+.folderColorTypeNntp .folderColorFFFFCC {
+  -moz-image-region: rect(96px, 480px, 112px, 464px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFFF33),
+.folderColorTypeNntp .folderColorFFFF33 {
+  -moz-image-region: rect(96px, 496px, 112px, 480px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFFF00),
+.folderColorTypeNntp .folderColorFFFF00 {
+  -moz-image-region: rect(96px, 512px, 112px, 496px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFCC00),
+.folderColorTypeNntp .folderColorFFCC00 {
+  -moz-image-region: rect(96px, 528px, 112px, 512px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor999900),
+.folderColorTypeNntp .folderColor999900 {
+  -moz-image-region: rect(96px, 544px, 112px, 528px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor666600),
+.folderColorTypeNntp .folderColor666600 {
+  -moz-image-region: rect(96px, 560px, 112px, 544px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor333300),
+.folderColorTypeNntp .folderColor333300 {
+  -moz-image-region: rect(96px, 576px, 112px, 560px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor99FF99),
+.folderColorTypeNntp .folderColor99FF99 {
+  -moz-image-region: rect(96px, 592px, 112px, 576px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor66FF99),
+.folderColorTypeNntp .folderColor66FF99 {
+  -moz-image-region: rect(96px, 608px, 112px, 592px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor33FF33),
+.folderColorTypeNntp .folderColor33FF33 {
+  -moz-image-region: rect(96px, 624px, 112px, 608px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor33CC00),
+.folderColorTypeNntp .folderColor33CC00 {
+  -moz-image-region: rect(96px, 640px, 112px, 624px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor009900),
+.folderColorTypeNntp .folderColor009900 {
+  -moz-image-region: rect(96px, 656px, 112px, 640px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor006600),
+.folderColorTypeNntp .folderColor006600 {
+  -moz-image-region: rect(96px, 672px, 112px, 656px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor003300),
+.folderColorTypeNntp .folderColor003300 {
+  -moz-image-region: rect(96px, 688px, 112px, 672px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor99FFFF),
+.folderColorTypeNntp .folderColor99FFFF {
+  -moz-image-region: rect(96px, 704px, 112px, 688px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor33FFFF),
+.folderColorTypeNntp .folderColor33FFFF {
+  -moz-image-region: rect(96px, 720px, 112px, 704px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor66CCCC),
+.folderColorTypeNntp .folderColor66CCCC {
+  -moz-image-region: rect(96px, 736px, 112px, 720px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor00CCCC),
+.folderColorTypeNntp .folderColor00CCCC {
+  -moz-image-region: rect(96px, 752px, 112px, 736px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor339999),
+.folderColorTypeNntp .folderColor339999 {
+  -moz-image-region: rect(96px, 768px, 112px, 752px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor336666),
+.folderColorTypeNntp .folderColor336666 {
+  -moz-image-region: rect(96px, 784px, 112px, 768px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor003333),
+.folderColorTypeNntp .folderColor003333 {
+  -moz-image-region: rect(96px, 800px, 112px, 784px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorCCFFFF),
+.folderColorTypeNntp .folderColorCCFFFF {
+  -moz-image-region: rect(96px, 816px, 112px, 800px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor66FFFF),
+.folderColorTypeNntp .folderColor66FFFF {
+  -moz-image-region: rect(96px, 832px, 112px, 816px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor33CCFF),
+.folderColorTypeNntp .folderColor33CCFF {
+  -moz-image-region: rect(96px, 848px, 112px, 832px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor3366FF),
+.folderColorTypeNntp .folderColor3366FF {
+  -moz-image-region: rect(96px, 864px, 112px, 848px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor3333FF),
+.folderColorTypeNntp .folderColor3333FF {
+  -moz-image-region: rect(96px, 880px, 112px, 864px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor000099),
+.folderColorTypeNntp .folderColor000099 {
+  -moz-image-region: rect(96px, 896px, 112px, 880px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor000066),
+.folderColorTypeNntp .folderColor000066 {
+  -moz-image-region: rect(96px, 912px, 112px, 896px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorCCCCFF),
+.folderColorTypeNntp .folderColorCCCCFF {
+  -moz-image-region: rect(96px, 928px, 112px, 912px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor9999FF),
+.folderColorTypeNntp .folderColor9999FF {
+  -moz-image-region: rect(96px, 944px, 112px, 928px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor6666CC),
+.folderColorTypeNntp .folderColor6666CC {
+  -moz-image-region: rect(96px, 960px, 112px, 944px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor6633FF),
+.folderColorTypeNntp .folderColor6633FF {
+  -moz-image-region: rect(96px, 976px, 112px, 960px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor6600CC),
+.folderColorTypeNntp .folderColor6600CC {
+  -moz-image-region: rect(96px, 992px, 112px, 976px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor333399),
+.folderColorTypeNntp .folderColor333399 {
+  -moz-image-region: rect(96px, 1008px, 112px, 992px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor330099),
+.folderColorTypeNntp .folderColor330099 {
+  -moz-image-region: rect(96px, 1024px, 112px, 1008px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFFCCFF),
+.folderColorTypeNntp .folderColorFFCCFF {
+  -moz-image-region: rect(96px, 1040px, 112px, 1024px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorFF99FF),
+.folderColorTypeNntp .folderColorFF99FF {
+  -moz-image-region: rect(96px, 1056px, 112px, 1040px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorCC66CC),
+.folderColorTypeNntp .folderColorCC66CC {
+  -moz-image-region: rect(96px, 1072px, 112px, 1056px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColorCC33CC),
+.folderColorTypeNntp .folderColorCC33CC {
+  -moz-image-region: rect(96px, 1088px, 112px, 1072px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor993399),
+.folderColorTypeNntp .folderColor993399 {
+  -moz-image-region: rect(96px, 1104px, 112px, 1088px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor663366),
+.folderColorTypeNntp .folderColor663366 {
+  -moz-image-region: rect(96px, 1120px, 112px, 1104px);
+}
+treechildren::-moz-tree-image(folderNameCol, serverType-nntp, folderColor330033),
+.folderColorTypeNntp .folderColor330033 {
+  -moz-image-region: rect(96px, 1136px, 112px, 1120px);
+}
+
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorTypeDefault),
+.folderColorTypeVirtual .menuitem-iconic,
+.folderColorTypeVirtual .menu-iconic,
+.tabmail-tab[type="folder"][ServerType="rss"][SpecialFolder="Virtual"],
+.tabmail-tab[type="folder"][SpecialFolder="Virtual"] {
+  -moz-margin-end: 2px;
+  list-style-image: url("chrome://coloredfolders/skin/folders.png");
+  -moz-image-region: rect(32px, 16px, 48px, 0px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorTypeDefault) {
+  -moz-margin-end: 2px;
+  list-style-image: url("chrome://coloredfolders/skin/folders.png");
+  -moz-image-region: rect(48px, 16px, 64px, 0px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFFFFF),
+.folderColorTypeVirtual .folderColorFFFFFF {
+  -moz-image-region: rect(32px, 32px, 48px, 16px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFFFFF) {
+  -moz-image-region: rect(48px, 32px, 64px, 16px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorCCCCCC),
+.folderColorTypeVirtual .folderColorCCCCCC {
+  -moz-image-region: rect(32px, 48px, 48px, 32px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorCCCCCC) {
+  -moz-image-region: rect(48px, 48px, 64px, 32px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorC0C0C0),
+.folderColorTypeVirtual .folderColorC0C0C0 {
+  -moz-image-region: rect(32px, 64px, 48px, 48px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorC0C0C0) {
+  -moz-image-region: rect(48px, 64px, 64px, 48px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor999999),
+.folderColorTypeVirtual .folderColor999999 {
+  -moz-image-region: rect(32px, 80px, 48px, 64px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor999999) {
+  -moz-image-region: rect(48px, 80px, 64px, 64px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor666666),
+.folderColorTypeVirtual .folderColor666666 {
+  -moz-image-region: rect(32px, 96px, 48px, 80px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor666666) {
+  -moz-image-region: rect(48px, 96px, 64px, 80px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor333333),
+.folderColorTypeVirtual .folderColor333333 {
+  -moz-image-region: rect(32px, 112px, 48px, 96px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor333333) {
+  -moz-image-region: rect(48px, 112px, 64px, 96px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor000000),
+.folderColorTypeVirtual .folderColor000000 {
+  -moz-image-region: rect(32px, 128px, 48px, 112px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor000000) {
+  -moz-image-region: rect(48px, 128px, 64px, 112px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFCCCC),
+.folderColorTypeVirtual .folderColorFFCCCC {
+  -moz-image-region: rect(32px, 144px, 48px, 128px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFCCCC) {
+  -moz-image-region: rect(48px, 144px, 64px, 128px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFF6666),
+.folderColorTypeVirtual .folderColorFF6666 {
+  -moz-image-region: rect(32px, 160px, 48px, 144px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFF6666) {
+  -moz-image-region: rect(48px, 160px, 64px, 144px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFF0000),
+.folderColorTypeVirtual .folderColorFF0000 {
+  -moz-image-region: rect(32px, 176px, 48px, 160px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFF0000) {
+  -moz-image-region: rect(48px, 176px, 64px, 160px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorCC0000),
+.folderColorTypeVirtual .folderColorCC0000 {
+  -moz-image-region: rect(32px, 192px, 48px, 176px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorCC0000) {
+  -moz-image-region: rect(48px, 192px, 64px, 176px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor990000),
+.folderColorTypeVirtual .folderColor990000 {
+  -moz-image-region: rect(32px, 208px, 48px, 192px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor990000) {
+  -moz-image-region: rect(48px, 208px, 64px, 192px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor660000),
+.folderColorTypeVirtual .folderColor660000 {
+  -moz-image-region: rect(32px, 224px, 48px, 208px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor660000) {
+  -moz-image-region: rect(48px, 224px, 64px, 208px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor330000),
+.folderColorTypeVirtual .folderColor330000 {
+  -moz-image-region: rect(32px, 240px, 48px, 224px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor330000) {
+  -moz-image-region: rect(48px, 240px, 64px, 224px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFCC99),
+.folderColorTypeVirtual .folderColorFFCC99 {
+  -moz-image-region: rect(32px, 256px, 48px, 240px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFCC99) {
+  -moz-image-region: rect(48px, 256px, 64px, 240px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFF9966),
+.folderColorTypeVirtual .folderColorFF9966 {
+  -moz-image-region: rect(32px, 272px, 48px, 256px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFF9966) {
+  -moz-image-region: rect(48px, 272px, 64px, 256px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFF9900),
+.folderColorTypeVirtual .folderColorFF9900 {
+  -moz-image-region: rect(32px, 288px, 48px, 272px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFF9900) {
+  -moz-image-region: rect(48px, 288px, 64px, 272px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFF6600),
+.folderColorTypeVirtual .folderColorFF6600 {
+  -moz-image-region: rect(32px, 304px, 48px, 288px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFF6600) {
+  -moz-image-region: rect(48px, 304px, 64px, 288px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorCC6600),
+.folderColorTypeVirtual .folderColorCC6600 {
+  -moz-image-region: rect(32px, 320px, 48px, 304px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorCC6600) {
+  -moz-image-region: rect(48px, 320px, 64px, 304px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor993300),
+.folderColorTypeVirtual .folderColor993300 {
+  -moz-image-region: rect(32px, 336px, 48px, 320px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor993300) {
+  -moz-image-region: rect(48px, 336px, 64px, 320px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor663300),
+.folderColorTypeVirtual .folderColor663300 {
+  -moz-image-region: rect(32px, 352px, 48px, 336px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor663300) {
+  -moz-image-region: rect(48px, 352px, 64px, 336px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFFF99),
+.folderColorTypeVirtual .folderColorFFFF99 {
+  -moz-image-region: rect(32px, 368px, 48px, 352px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFFF99) {
+  -moz-image-region: rect(48px, 368px, 64px, 352px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFFF66),
+.folderColorTypeVirtual .folderColorFFFF66 {
+  -moz-image-region: rect(32px, 384px, 48px, 368px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFFF66) {
+  -moz-image-region: rect(48px, 384px, 64px, 368px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFCC66),
+.folderColorTypeVirtual .folderColorFFCC66 {
+  -moz-image-region: rect(32px, 400px, 48px, 384px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFCC66) {
+  -moz-image-region: rect(48px, 400px, 64px, 384px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFCC33),
+.folderColorTypeVirtual .folderColorFFCC33 {
+  -moz-image-region: rect(32px, 416px, 48px, 400px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFCC33) {
+  -moz-image-region: rect(48px, 416px, 64px, 400px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorCC9933),
+.folderColorTypeVirtual .folderColorCC9933 {
+  -moz-image-region: rect(32px, 432px, 48px, 416px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorCC9933) {
+  -moz-image-region: rect(48px, 432px, 64px, 416px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor996633),
+.folderColorTypeVirtual .folderColor996633 {
+  -moz-image-region: rect(32px, 448px, 48px, 432px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor996633) {
+  -moz-image-region: rect(48px, 448px, 64px, 432px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor663333),
+.folderColorTypeVirtual .folderColor663333 {
+  -moz-image-region: rect(32px, 464px, 48px, 448px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor663333) {
+  -moz-image-region: rect(48px, 464px, 64px, 448px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFFFCC),
+.folderColorTypeVirtual .folderColorFFFFCC {
+  -moz-image-region: rect(32px, 480px, 48px, 464px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFFFCC) {
+  -moz-image-region: rect(48px, 480px, 64px, 464px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFFF33),
+.folderColorTypeVirtual .folderColorFFFF33 {
+  -moz-image-region: rect(32px, 496px, 48px, 480px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFFF33) {
+  -moz-image-region: rect(48px, 496px, 64px, 480px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFFF00),
+.folderColorTypeVirtual .folderColorFFFF00 {
+  -moz-image-region: rect(32px, 512px, 48px, 496px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFFF00) {
+  -moz-image-region: rect(48px, 512px, 64px, 496px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFCC00),
+.folderColorTypeVirtual .folderColorFFCC00 {
+  -moz-image-region: rect(32px, 528px, 48px, 512px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFCC00) {
+  -moz-image-region: rect(48px, 528px, 64px, 512px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor999900),
+.folderColorTypeVirtual .folderColor999900 {
+  -moz-image-region: rect(32px, 544px, 48px, 528px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor999900) {
+  -moz-image-region: rect(48px, 544px, 64px, 528px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor666600),
+.folderColorTypeVirtual .folderColor666600 {
+  -moz-image-region: rect(32px, 560px, 48px, 544px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor666600) {
+  -moz-image-region: rect(48px, 560px, 64px, 544px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor333300),
+.folderColorTypeVirtual .folderColor333300 {
+  -moz-image-region: rect(32px, 576px, 48px, 560px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor333300) {
+  -moz-image-region: rect(48px, 576px, 64px, 560px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor99FF99),
+.folderColorTypeVirtual .folderColor99FF99 {
+  -moz-image-region: rect(32px, 592px, 48px, 576px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor99FF99) {
+  -moz-image-region: rect(48px, 592px, 64px, 576px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor66FF99),
+.folderColorTypeVirtual .folderColor66FF99 {
+  -moz-image-region: rect(32px, 608px, 48px, 592px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor66FF99) {
+  -moz-image-region: rect(48px, 608px, 64px, 592px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor33FF33),
+.folderColorTypeVirtual .folderColor33FF33 {
+  -moz-image-region: rect(32px, 624px, 48px, 608px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor33FF33) {
+  -moz-image-region: rect(48px, 624px, 64px, 608px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor33CC00),
+.folderColorTypeVirtual .folderColor33CC00 {
+  -moz-image-region: rect(32px, 640px, 48px, 624px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor33CC00) {
+  -moz-image-region: rect(48px, 640px, 64px, 624px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor009900),
+.folderColorTypeVirtual .folderColor009900 {
+  -moz-image-region: rect(32px, 656px, 48px, 640px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor009900) {
+  -moz-image-region: rect(48px, 656px, 64px, 640px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor006600),
+.folderColorTypeVirtual .folderColor006600 {
+  -moz-image-region: rect(32px, 672px, 48px, 656px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor006600) {
+  -moz-image-region: rect(48px, 672px, 64px, 656px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor003300),
+.folderColorTypeVirtual .folderColor003300 {
+  -moz-image-region: rect(32px, 688px, 48px, 672px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor003300) {
+  -moz-image-region: rect(48px, 688px, 64px, 672px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor99FFFF),
+.folderColorTypeVirtual .folderColor99FFFF {
+  -moz-image-region: rect(32px, 704px, 48px, 688px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor99FFFF) {
+  -moz-image-region: rect(48px, 704px, 64px, 688px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor33FFFF),
+.folderColorTypeVirtual .folderColor33FFFF {
+  -moz-image-region: rect(32px, 720px, 48px, 704px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor33FFFF) {
+  -moz-image-region: rect(48px, 720px, 64px, 704px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor66CCCC),
+.folderColorTypeVirtual .folderColor66CCCC {
+  -moz-image-region: rect(32px, 736px, 48px, 720px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor66CCCC) {
+  -moz-image-region: rect(48px, 736px, 64px, 720px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor00CCCC),
+.folderColorTypeVirtual .folderColor00CCCC {
+  -moz-image-region: rect(32px, 752px, 48px, 736px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor00CCCC) {
+  -moz-image-region: rect(48px, 752px, 64px, 736px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor339999),
+.folderColorTypeVirtual .folderColor339999 {
+  -moz-image-region: rect(32px, 768px, 48px, 752px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor339999) {
+  -moz-image-region: rect(48px, 768px, 64px, 752px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor336666),
+.folderColorTypeVirtual .folderColor336666 {
+  -moz-image-region: rect(32px, 784px, 48px, 768px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor336666) {
+  -moz-image-region: rect(48px, 784px, 64px, 768px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor003333),
+.folderColorTypeVirtual .folderColor003333 {
+  -moz-image-region: rect(32px, 800px, 48px, 784px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor003333) {
+  -moz-image-region: rect(48px, 800px, 64px, 784px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorCCFFFF),
+.folderColorTypeVirtual .folderColorCCFFFF {
+  -moz-image-region: rect(32px, 816px, 48px, 800px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorCCFFFF) {
+  -moz-image-region: rect(48px, 816px, 64px, 800px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor66FFFF),
+.folderColorTypeVirtual .folderColor66FFFF {
+  -moz-image-region: rect(32px, 832px, 48px, 816px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor66FFFF) {
+  -moz-image-region: rect(48px, 832px, 64px, 816px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor33CCFF),
+.folderColorTypeVirtual .folderColor33CCFF {
+  -moz-image-region: rect(32px, 848px, 48px, 832px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor33CCFF) {
+  -moz-image-region: rect(48px, 848px, 64px, 832px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor3366FF),
+.folderColorTypeVirtual .folderColor3366FF {
+  -moz-image-region: rect(32px, 864px, 48px, 848px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor3366FF) {
+  -moz-image-region: rect(48px, 864px, 64px, 848px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor3333FF),
+.folderColorTypeVirtual .folderColor3333FF {
+  -moz-image-region: rect(32px, 880px, 48px, 864px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor3333FF) {
+  -moz-image-region: rect(48px, 880px, 64px, 864px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor000099),
+.folderColorTypeVirtual .folderColor000099 {
+  -moz-image-region: rect(32px, 896px, 48px, 880px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor000099) {
+  -moz-image-region: rect(48px, 896px, 64px, 880px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor000066),
+.folderColorTypeVirtual .folderColor000066 {
+  -moz-image-region: rect(32px, 912px, 48px, 896px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor000066) {
+  -moz-image-region: rect(48px, 912px, 64px, 896px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorCCCCFF),
+.folderColorTypeVirtual .folderColorCCCCFF {
+  -moz-image-region: rect(32px, 928px, 48px, 912px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorCCCCFF) {
+  -moz-image-region: rect(48px, 928px, 64px, 912px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor9999FF),
+.folderColorTypeVirtual .folderColor9999FF {
+  -moz-image-region: rect(32px, 944px, 48px, 928px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor9999FF) {
+  -moz-image-region: rect(48px, 944px, 64px, 928px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor6666CC),
+.folderColorTypeVirtual .folderColor6666CC {
+  -moz-image-region: rect(32px, 960px, 48px, 944px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor6666CC) {
+  -moz-image-region: rect(48px, 960px, 64px, 944px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor6633FF),
+.folderColorTypeVirtual .folderColor6633FF {
+  -moz-image-region: rect(32px, 976px, 48px, 960px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor6633FF) {
+  -moz-image-region: rect(48px, 976px, 64px, 960px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor6600CC),
+.folderColorTypeVirtual .folderColor6600CC {
+  -moz-image-region: rect(32px, 992px, 48px, 976px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor6600CC) {
+  -moz-image-region: rect(48px, 992px, 64px, 976px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor333399),
+.folderColorTypeVirtual .folderColor333399 {
+  -moz-image-region: rect(32px, 1008px, 48px, 992px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor333399) {
+  -moz-image-region: rect(48px, 1008px, 64px, 992px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor330099),
+.folderColorTypeVirtual .folderColor330099 {
+  -moz-image-region: rect(32px, 1024px, 48px, 1008px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor330099) {
+  -moz-image-region: rect(48px, 1024px, 64px, 1008px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFFCCFF),
+.folderColorTypeVirtual .folderColorFFCCFF {
+  -moz-image-region: rect(32px, 1040px, 48px, 1024px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFFCCFF) {
+  -moz-image-region: rect(48px, 1040px, 64px, 1024px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorFF99FF),
+.folderColorTypeVirtual .folderColorFF99FF {
+  -moz-image-region: rect(32px, 1056px, 48px, 1040px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorFF99FF) {
+  -moz-image-region: rect(48px, 1056px, 64px, 1040px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorCC66CC),
+.folderColorTypeVirtual .folderColorCC66CC {
+  -moz-image-region: rect(32px, 1072px, 48px, 1056px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorCC66CC) {
+  -moz-image-region: rect(48px, 1072px, 64px, 1056px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColorCC33CC),
+.folderColorTypeVirtual .folderColorCC33CC {
+  -moz-image-region: rect(32px, 1088px, 48px, 1072px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColorCC33CC) {
+  -moz-image-region: rect(48px, 1088px, 64px, 1072px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor993399),
+.folderColorTypeVirtual .folderColor993399 {
+  -moz-image-region: rect(32px, 1104px, 48px, 1088px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor993399) {
+  -moz-image-region: rect(48px, 1104px, 64px, 1088px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor663366),
+.folderColorTypeVirtual .folderColor663366 {
+  -moz-image-region: rect(32px, 1120px, 48px, 1104px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor663366) {
+  -moz-image-region: rect(48px, 1120px, 64px, 1104px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, folderColor330033),
+.folderColorTypeVirtual .folderColor330033 {
+  -moz-image-region: rect(32px, 1136px, 48px, 1120px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Virtual, newMessages-true, folderColor330033) {
+  -moz-image-region: rect(48px, 1136px, 64px, 1120px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox, newMessages-true),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Sent),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Outbox),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Drafts),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Templates),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Archive),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Junk),
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Trash),
+.tabmail-tab[type="folder"][SpecialFolder="Inbox"],
+.tabmail-tab[type="folder"][SpecialFolder="Sent"],
+.tabmail-tab[type="folder"][SpecialFolder="Outbox"],
+.tabmail-tab[type="folder"][SpecialFolder="Drafts"],
+.tabmail-tab[type="folder"][SpecialFolder="Templates"],
+.tabmail-tab[type="folder"][SpecialFolder="Archive"],
+.tabmail-tab[type="folder"][SpecialFolder="Junk"],
+.tabmail-tab[type="folder"][SpecialFolder="Trash"] {
+/*  list-style-image: url("chrome://messenger/skin/icons/folder.png");	*/
+  list-style-image: url("chrome://coloredfolders/skin/serversSpecials.png");
+}
+
+/* ..... Inbox ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Inbox"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox) {
+  -moz-image-region: rect(0px, 48px, 16px, 32px);
+}
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  -moz-image-region: rect(16px, 48px, 32px, 32px);
+}
+
+/* ..... Sent ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Sent"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Sent) {
+  -moz-image-region: rect(0px, 64px, 16px, 48px);
+}
+
+/* ..... Unsent ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Outbox"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Outbox) {
+  -moz-image-region: rect(0px, 80px, 16px, 64px);
+}
+
+/* ..... Drafts ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Drafts"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Drafts) {
+  -moz-image-region: rect(0px, 96px, 16px, 80px);
+}
+
+/* ..... Templates ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Templates"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Templates) {
+  -moz-image-region: rect(0px, 112px, 16px, 96px);
+}
+
+/* ..... Junk ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Junk"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Junk) {
+  -moz-image-region: rect(0px, 128px, 16px, 112px);
+}
+
+/* ..... Trash ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Trash"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Trash) {
+  -moz-image-region: rect(0px, 144px, 16px, 128px);
+}
+
+/* ..... Archives ..... */
+.tabmail-tab[type="folder"][SpecialFolder="Archive"],
+treechildren::-moz-tree-image(folderNameCol, specialFolder-Archive) {
+  -moz-image-region: rect(0px, 208px, 16px, 192px);
+}
+
+/* ..... Shared folders .....
+treechildren::-moz-tree-image(folderNameCol, imapShared-true) {
+  -moz-image-region: rect(0px, 192px, 16px, 176px);
+}
+*/ 
+
+/* ..... Account nodes ..... */
+.tabmail-tab[type="folder"][IsServer="true"] {
+/*  list-style-image: url("chrome://messenger/skin/icons/server.png");	*/
+  list-style-image: url("chrome://coloredfolders/skin/serversSpecials.png");
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+/* ..... Secure IMAP/POP account nodes ..... */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="imap"][IsSecure="true"],
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="pop3"][IsSecure="true"] {
+  -moz-image-region: rect(0px, 32px, 16px, 16px);
+}
+
+/* ..... Local folders ..... */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="none"] {
+  -moz-image-region: rect(0px, 48px, 16px, 32px);
+}
+
+/* ..... News server ..... */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="nntp"] {
+  -moz-image-region: rect(0px, 64px, 16px, 48px);
+}
+
+/* ..... Secure news server ..... */
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="nntp"][IsSecure="true"] {
+  -moz-image-region: rect(0px, 80px, 16px, 64px);
+}
+
+/* .....  Newsgroup .....  */
+/* This has replaced earlier for colorFolders
+.tabmail-tab[type="folder"][ServerType="nntp"] {
+  -moz-image-region: rect(0px, 160px, 16px, 144px);
+}
+*/
+
+treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true),
+treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  font-weight: bold;
+}
+
+/* ..... Mail server  ..... */
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true) {
+  list-style-image: url("chrome://messenger/skin/icons/server.png");
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, biffState-NewMail, isServer-true) {
+  -moz-image-region: rect(16px, 16px, 32px, 0px);
+}
+
+/* ..... Secure mail server ..... */
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-pop3, isSecure-true),
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-imap, isSecure-true) {
+  -moz-image-region: rect(0px, 32px, 16px, 16px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, biffState-NewMail, isServer-true, isSecure-true) {
+  -moz-image-region: rect(16px, 32px, 32px, 16px);
+}
+
+/* ..... Local folders ..... */
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-none) {
+  -moz-image-region: rect(0px, 48px, 16px, 32px);
+}
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-none, biffState-NewMail) {
+  -moz-image-region: rect(16px, 48px, 32px, 32px);
+}
+
+/* ..... News server ..... */
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp) {
+  -moz-image-region: rect(0px, 64px, 16px, 48px) !important;
+}
+
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-nntp, isSecure-true) {
+  -moz-image-region: rect(0px, 80px, 16px, 64px) !important;
+}
+
+/* ..... Feed server ..... */
+
+.tabmail-tab[type="folder"][IsServer="true"][ServerType="rss"],
+treechildren::-moz-tree-image(folderNameCol, isServer-true, serverType-rss) {
+  list-style-image: url("chrome://messenger-newsblog/skin/icons/server-rss.png");
+  -moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+/* ::::: All Servers ::::: */
+
+treechildren::-moz-tree-cell-text(folderNameCol, biffState-NewMail, isServer-true),
+treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true),
+treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true) {
+  color: -moz-hyperlinktext;
+}
+
+treechildren::-moz-tree-cell-text(folderNameCol, biffState-NewMail, isServer-true, selected),
+treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true, selected),
+treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true, selected) {
+  color: -moz-CellHighlightText;
+}
+
+treechildren::-moz-tree-cell-text(folderNameCol, biffState-NewMail, isServer-true, selected, focus),
+treechildren::-moz-tree-cell-text(folderNameCol, newMessages-true, selected, focus),
+treechildren::-moz-tree-cell-text(folderNameCol, specialFolder-Inbox, newMessages-true, selected, focus) {
+  color: HighlightText;
+}
+
+treechildren::-moz-tree-cell-text(closed, subfoldersHaveUnreadMessages-true) {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-cell-text(folderNameCol, isServer-true),
+treechildren::-moz-tree-cell-text(hasUnreadMessages-true) {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-cell-text(folderNameCol, noSelect-true) {
+  color: gray;
+  font-style: italic;
+}
+
+.tree-folder-checkbox {
+  list-style-image: none;
+}
+
+/* ::::: Folder Summary Popup ::::: */
+
+.folderSummary-message-row {
+  /* This max width ends up dictating the overall width of the popup
+     because it controls how large the preview, subject and sender text can be
+     before cropping kicks in */
+  max-width: 450px;
+}
+
+.folderSummary-subject {
+  font-weight: bold; 
+}
+
+.folderSummary-previewText {
+  color: grey; 
+}

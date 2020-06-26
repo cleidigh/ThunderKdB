@@ -115,7 +115,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		},
 	
 		displaySyncList: function() {
-			var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xul", "", cardbookRepository.modalWindowParams);
+			Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xul", "", cardbookRepository.modalWindowParams);
 		},
 
 		buttonShowing: function () {

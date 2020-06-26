@@ -106,7 +106,7 @@ function unloadModules() {
     try {
       // cannot unload filtersWrapper as you can't unregister filters in TB
       if (mod.search(/filtersWrapper\.jsm$/) < 0) {
-        Cu.unload("chrome://enigmail" + mod);
+        Components.utils.unload("chrome://enigmail" + mod);
       }
     } catch (ex) {
       logException(ex);

@@ -8,7 +8,7 @@
 
 var EXPORTED_SYMBOLS = ["EnigmailStreams"];
 
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 const EnigmailTimer = ChromeUtils.import("chrome://enigmail/content/modules/timer.jsm").EnigmailTimer;
 const Services = ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
@@ -52,7 +52,7 @@ var EnigmailStreams = {
       data: "",
       inStream: Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream),
       _onStopCallback: onStopCallback,
-      QueryInterface: EnigmailTb60Compat.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]),
+      QueryInterface: EnigmailCompat.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]),
 
       onStartRequest: function(channel) {
         // EnigmailLog.DEBUG("enigmailCommon.jsm: stringListener.onStartRequest\n");
@@ -70,7 +70,7 @@ var EnigmailStreams = {
       }
     };
 
-    if (EnigmailTb60Compat.isMessageUriInPgpMime()) {
+    if (EnigmailCompat.isMessageUriInPgpMime()) {
       // TB >= 67
       listener.onDataAvailable = function(req, stream, offset, count) {
         // EnigmailLog.DEBUG("enigmailCommon.jsm: stringListener.onDataAvailable: "+count+"\n");

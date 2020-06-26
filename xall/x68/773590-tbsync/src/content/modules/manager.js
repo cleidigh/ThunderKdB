@@ -42,9 +42,9 @@ var manager = {
     TbSync.dump("Oops", "Trying to open account manager, but init sequence not yet finished");
     let msg = TbSync.getString("OopsMessage") + "\n\n";
     let v = Services.appinfo.platformVersion; 
-    if (!TbSync.prefs.getBoolPref("log.tofile")) {
+    if (TbSync.prefs.getIntPref("log.userdatalevel") == 0) {
       if (TbSync.window.confirm(msg + TbSync.getString("UnableToTraceError"))) {
-        TbSync.prefs.setBoolPref("log.tofile", true);
+        TbSync.prefs.setIntPref("log.userdatalevel", 1);
         TbSync.window.alert(TbSync.getString("RestartThunderbirdAndTryAgain"));
       }
     } else {
@@ -55,15 +55,14 @@ var manager = {
   },
   
   openTBtab: function (url) {
-    let tabmail = null;
-    if (TbSync.window) {
-      tabmail = TbSync.window.document.getElementById("tabmail");
+    let tabmail = TbSync.window.document.getElementById("tabmail");
+    if (TbSync.window && tabmail) {
       TbSync.window.focus();
-      tabmail.openTab("contentTab", {
+      return tabmail.openTab("contentTab", {
         contentPage: url
       });
     }
-    return (tabmail !== null);
+    return null;
   },
 
   openTranslatedLink: function (url) {
@@ -111,9 +110,18 @@ var manager = {
 
     params.composeFields.addAttachment(attachment);        
     MailServices.compose.OpenComposeWindowWithParams (null, params);    
-  }
-}
+  },
 
+  viewDebugLog: function() {
+
+    if (this.debugLogWindow) {
+      let tabmail = TbSync.window.document.getElementById("tabmail");
+      tabmail.closeTab(this.debugLogWindow.tabNode);
+      this.debugLogWindow = null;
+    } 
+    this.debugLogWindow = this.openTBtab('file://' + TbSync.io.getAbsolutePath("debug.log"));
+  },
+}
 
 
 
@@ -230,20 +238,21 @@ manager.FolderList = class {
     //group2
     let itemHGroup2 = document.createXULElement("hbox");
     itemHGroup2.setAttribute("align", "center");
-    itemHGroup2.setAttribute("width", "146");
+    itemHGroup2.setAttribute("style", "border: 1px center");
     itemHGroup2.appendChild(itemLabel);
 
     let itemVGroup2 = document.createXULElement("vbox");
+    itemVGroup2.setAttribute("width", "150");
     itemVGroup2.setAttribute("style", "padding: 3px");
     itemVGroup2.appendChild(itemHGroup2);
 
     //group3
     let itemHGroup3 = document.createXULElement("hbox");
     itemHGroup3.setAttribute("align", "center");
-    itemHGroup3.setAttribute("width", "227");
     itemHGroup3.appendChild(itemStatus);
 
     let itemVGroup3 = document.createXULElement("vbox");
+    itemVGroup3.setAttribute("width", "250");
     itemVGroup3.setAttribute("style", "padding: 3px");
     itemVGroup3.appendChild(itemHGroup3);
 
@@ -271,14 +280,20 @@ manager.FolderList = class {
         return;
     
       if (folder.getFolderProperty("selected")) {
-        if (!folder.targetData.hasTarget() || element.ownerDocument.defaultView.confirm(TbSync.getString("prompt.Unsubscribe"))) {
-          folder.targetData.removeTarget();           
-          folder.setFolderProperty("selected", false);          
-        } else {
-          if (element) {
-            //undo users action
-            element.setAttribute("checked", true);
+        // hasTarget() can throw an error, ignore that here
+        try {
+          if (!folder.targetData.hasTarget() || element.ownerDocument.defaultView.confirm(TbSync.getString("prompt.Unsubscribe"))) {
+            folder.targetData.removeTarget();           
+            folder.setFolderProperty("selected", false);          
+          } else {
+            if (element) {
+              //undo users action
+              element.setAttribute("checked", true);
+            }
           }
+        } catch (e) {
+          folder.setFolderProperty("selected", false);
+          Components.utils.reportError(e);
         }
       } else {
         //select and update status
@@ -337,7 +352,10 @@ manager.FolderList = class {
     // update fields
     fields.foldername.setAttribute("disabled", !selected);
     fields.foldername.setAttribute("style", selected ? "" : "font-style:italic");
-    if (fields.foldername.textContent != foldername) fields.foldername.textContent = foldername;
+    if (fields.foldername.textContent != foldername) {
+      fields.foldername.textContent = foldername;
+      fields.foldername.flex = "1";
+    }
     
     fields.status.setAttribute("style", selected ? "" : "font-style:italic");
     if (fields.status.textContent != status) {

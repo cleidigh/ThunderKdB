@@ -1,0 +1,43 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== subscribe.css ==================================================
+  == Styles for the subscribe dialog.
+  ======================================================================= */
+
+@import url("chrome://phoenityIcons/skin/folderMenus.css");
+
+/* ::::: Folders :::::: */
+
+treechildren::-moz-tree-image(nameColumn) {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(nameColumn, serverType-nntp),
+treechildren::-moz-tree-image(nameColumn2, serverType-nntp),
+treechildren::-moz-tree-image(nameColumn, ServerType-nntp),
+treechildren::-moz-tree-image(nameColumn2, ServerType-nntp),
+treechildren::-moz-tree-image(nameColumn2, nntp) {
+  -moz-image-region: rect(0 160px 16px 144px);
+}
+
+/* ::::: Servers :::::: */
+
+.subscribeMenuItem {
+  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+.subscribeMenuItem[ServerType="imap"][IsSecure="true"] {
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+.subscribeMenuItem[ServerType="nntp"] {
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+.subscribeMenuItem[ServerType="nntp"][IsSecure="true"] {
+  -moz-image-region: rect(0 80px 16px 64px);
+}

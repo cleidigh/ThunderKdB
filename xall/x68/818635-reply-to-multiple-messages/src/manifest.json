@@ -1,6 +1,6 @@
 {
     "name": "Reply to Multiple Messages",
-    "version": "2.0.3",
+    "version": "2.0.8",
     "description": "Add a “Reply to Selected” menu command which opens a message composition window replying to the messages currently selected in the thread pane.",
     "author": "Jonathan Kamens",
     "homepage_url": "https://addons.mozilla.org/thunderbird/addon/reply-to-multiple-messages",
@@ -14,7 +14,8 @@
     "applications": {
         "gecko": {
             "id": "reply-to-multiple-messages@kamens.us",
-            "strict_min_version": "68.0a1"
+            "strict_min_version": "68.0a1",
+            "strict_max_version": "71.*"
         }
     },
     "manifest_version": 2

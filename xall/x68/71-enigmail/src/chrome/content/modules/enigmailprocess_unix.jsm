@@ -13,9 +13,6 @@
 /* global libc: false, LIBC: false */
 
 var {
-  classes: Cc,
-  interfaces: Ci,
-  utils: Cu,
   results: Cr
 } = Components;
 

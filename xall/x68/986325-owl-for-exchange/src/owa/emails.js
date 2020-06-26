@@ -152,7 +152,7 @@ OWAAccount.prototype.MoveFolder = async function(aFolder, aTarget) {
  * @param aParent   {String} The folder's id
  * @param aName     {String} The folder's new name
  */
-OWAAccount.prototype.UpdateFolder = async function(aFolder, aName) {
+OWAAccount.prototype.RenameFolder = async function(aFolder, aName) {
   let request = {
     __type: "UpdateFolderJsonRequest:#Exchange",
     Header: {
@@ -366,6 +366,7 @@ OWAAccount.ConvertItem = function(item) {
     recipients: item.ToRecipients ? item.ToRecipients.map(EWS2MailboxObject) : [],
     references: item.References || "",
     dateReceived: Date.parse(item.DateTimeReceived) / 1000 || 0,
+    keywords: item.Categories || [],
     preview: item.Preview || "",
     contentType: item.Body ? "text/" + item.Body.BodyType.toLowerCase() : "",
     body: item.Body ? item.Body.Value : "",
@@ -518,9 +519,10 @@ OWAAccount.prototype.ComposeMime = async function(aContent, aBccRecipients) {
  * @param aIsDraft  {Boolean} Whether the item is a draft
  * @param aRead     {Boolean} Whether the item is read or unread
  * @param aFlagged  {Boolean} Whether the item is flagged
+ * @param aKeywords {Array[String]}
  * @returns         {String}  The id of the new item
  */
-OWAAccount.prototype.CreateMime = async function(aFolder, aContent, aIsDraft, aRead, aFlagged) {
+OWAAccount.prototype.CreateMime = async function(aFolder, aContent, aIsDraft, aRead, aFlagged, aKeywords) {
   let create = {
     __type: "CreateItemJsonRequest:#Exchange",
     Header: {
@@ -550,6 +552,7 @@ OWAAccount.prototype.CreateMime = async function(aFolder, aContent, aIsDraft, aR
           StartDate: null,
           FlagStatus: aFlagged ? "Flagged" : "NotFlagged",
         },
+        Categories: aKeywords,
       }],
       /* EWS accepts a SavedItemFolderId, but OWA doesn't seem to.
       SavedItemFolderId: {
@@ -574,10 +577,11 @@ OWAAccount.prototype.CreateMime = async function(aFolder, aContent, aIsDraft, aR
 /**
  * Delete messages
  *
- * @param aItems     {Array[String]} The ids of the items to delete
- * @param aPermanent {String} False if this is just a move to Deleted Items
+ * @param aItems       {Array[String]} The ids of the items to delete
+ * @param aPermanent   {Boolean} False if this is just a move to Deleted Items
+ * @param aAreMessages {Boolean} False unless all items are known to be messages
  */
-OWAAccount.prototype.DeleteMessages = async function(aItems, aPermanent) {
+OWAAccount.prototype.DeleteMessages = async function(aItems, aPermanent, aAreMessages) {
   let request = {
     __type: "DeleteItemJsonRequest:#Exchange",
     Header: {
@@ -595,6 +599,10 @@ OWAAccount.prototype.DeleteMessages = async function(aItems, aPermanent) {
       SuppressReadRecipts: true,
     },
   };
+  if (!aAreMessages) {
+    request.Body.SendMeetingCancellations = "SendToNone";
+    request.Body.AffectedTaskOccurrences = "AllOccurrences";
+  }
   try {
     await this.CallService("DeleteItem", request); // owa.js
   } catch (ex) {
@@ -713,6 +721,47 @@ OWAAccount.prototype.UpdateMessages = async function(aFolder, aItems, aRead, aFl
       throw ex;
     }
   }
+}
+
+/**
+ * Change categories on a message
+ *
+ * @param aFolder   {String} The item's folder's id
+ * @param aItem     {String} The ids of the item to update
+ * @param aKeywords {Array[String]} The categories to set
+ */
+OWAAccount.prototype.UpdateKeywords = async function(aFolder, aItem, aKeywords) {
+  let request = {
+    __type: "UpdateItemJsonRequest:#Exchange",
+    Header: {
+      __type: "JsonRequestHeaders:#Exchange",
+      RequestServerVersion: "Exchange2013",
+    },
+    Body: {
+      __type: "UpdateItemRequest:#Exchange",
+      ConflictResolution: "AlwaysOverwrite",
+      ItemChanges: [{
+        __type: "ItemChange:#Exchange",
+        ItemId: {
+          __type: "ItemId:#Exchange",
+          Id: aItem,
+        },
+        Updates: [{
+          __type: "SetItemField:#Exchange",
+          Item: {
+            __type: "Message:#Exchange", // OWA doesn't do Item for some reason
+            Categories: aKeywords,
+          },
+          Path: {
+            __type: "PropertyUri:#Exchange",
+            FieldURI: "Categories",
+          },
+        }],
+      }],
+      MessageDisposition: "SaveOnly",
+    },
+  };
+  await this.CallService("UpdateItem", request); // owa.js
 }
 
 /**
@@ -897,8 +946,8 @@ OWAAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
     return this.DeleteFolder(aParameters.folder, aParameters.permanent);
   case "MoveFolder":
     return this.MoveFolder(aParameters.folder, aParameters.target);
-  case "UpdateFolder":
-    return this.UpdateFolder(aParameters.folder, aParameters.name);
+  case "RenameFolder":
+    return this.RenameFolder(aParameters.folder, aParameters.name);
   case "FindMessages":
     return this.FindMessages(aParameters.folder, aParameters.index, aParameters.limit);
   case "GetMessage":
@@ -916,15 +965,17 @@ OWAAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "ComposeMessageFromMime":
     return this.ComposeMime(aParameters.content, aParameters.bcc);
   case "CreateMessageFromMime":
-    return this.CreateMime(aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged);
+    return this.CreateMime(aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged, aParameters.keywords);
   case "DeleteMessages":
-    return this.DeleteMessages(aParameters.messages, aParameters.permanent);
+    return this.DeleteMessages(aParameters.messages, aParameters.permanent, aParameters.areMessages);
   case "CopyMessages":
     return this.CopyOrMoveMessages(aParameters.target, aParameters.messages, "Copy");
   case "MoveMessages":
     return this.CopyOrMoveMessages(aParameters.target, aParameters.messages, "Move");
   case "UpdateMessages":
     return this.UpdateMessages(aParameters.folder, aParameters.messages, aParameters.read, aParameters.flagged);
+  case "UpdateKeywords":
+    return this.UpdateKeywords(aParameters.folder, aParameters.message, aParameters.keywords);
   case "SendMessageFromMime":
     return this.SendMime(aParameters.folder, aParameters.content, aParameters.bcc);
   case "SendMessage":

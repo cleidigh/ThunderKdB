@@ -10,7 +10,7 @@ const EXPORTED_SYMBOLS = ["EnigmailSocks5Proxy"];
 
 const CC = Components.Constructor;
 
-const EnigmailTb60Compat = ChromeUtils.import("chrome://enigmail/content/modules/tb60compat.jsm").EnigmailTb60Compat;
+const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 const EnigmailLazy = ChromeUtils.import("chrome://enigmail/content/modules/lazy.jsm").EnigmailLazy;
 const getEnigmailPrefs = EnigmailLazy.loader("enigmail/prefs.jsm", "EnigmailPrefs");
@@ -43,10 +43,10 @@ function buildListener(hasFoundTor, isDoneChecking) {
     onStopRequest: function(request, statusCode) {
       isDoneChecking();
     },
-    QueryInterface: EnigmailTb60Compat.generateQI(["nsIRequestObserver", "nsIStreamListener"])
+    QueryInterface: EnigmailCompat.generateQI(["nsIRequestObserver", "nsIStreamListener"])
   };
 
-  if (EnigmailTb60Compat.isMessageUriInPgpMime()) {
+  if (EnigmailCompat.isMessageUriInPgpMime()) {
     // TB >= 67
     listener.onDataAvailable = function(request, inputStream, offset, count) {
       const response = createScriptableInputStream(inputStream).read(count);
@@ -75,7 +75,7 @@ function filterWith(portPref) {
     applyFilter: function(proxyService, uri, proxyInfo) {
       return proxyService.newProxyInfo("socks", getEnigmailPrefs().getPref(TOR_IP_ADDR_PREF), port, CONNECTION_FLAGS, SECONDS_TO_WAIT_FOR_CONNECTION, failoverProxy);
     },
-    QueryInterface: EnigmailTb60Compat.generateQI(["nsIProtocolProxyFilter"])
+    QueryInterface: EnigmailCompat.generateQI(["nsIProtocolProxyFilter"])
   };
 }
 

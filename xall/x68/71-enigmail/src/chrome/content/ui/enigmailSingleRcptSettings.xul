@@ -21,6 +21,7 @@
         xmlns:html="http://www.w3.org/1999/xhtml"
         onload="enigmailDlgOnLoad();"
         minheight="200"
+        theme="default-light"
         buttons="accept,cancel,help">
 
   <script type="application/x-javascript" src="chrome://enigmail/content/ui/enigmailCommon.js"/>
@@ -39,7 +40,7 @@
               <label value="&enigmail.ruleEmail.label;" control="ruleEmail"/>
             </hbox>
             <hbox>
-              <textbox style="max-height: 1em;" id="ruleEmail" tooltip="&enigmail.ruleEmail.tooltip;" size="30"/>
+              <textbox style="max-height: 2em;" id="ruleEmail" tooltip="&enigmail.ruleEmail.tooltip;" size="30"/>
               <description width="130px">&enigmail.sepratationDesc.label;</description>
             </hbox>
           </row>

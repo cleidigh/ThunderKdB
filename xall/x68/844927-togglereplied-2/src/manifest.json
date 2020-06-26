@@ -1,6 +1,6 @@
 {
     "name": "__MSG_appName__",
-    "version": "1.0.1",
+    "version": "1.0.5",
     "description": "__MSG_appDesc__",
     "author": "Jonathan Kamens",
     "default_locale": "en-US",
@@ -9,7 +9,8 @@
     "applications": {
         "gecko": {
             "id": "togglereplied@kamens.us",
-            "strict_min_version": "68.0a1"
+            "strict_min_version": "68.0a1",
+            "strict_max_version": "71.*"
         }
     },
     "manifest_version": 2

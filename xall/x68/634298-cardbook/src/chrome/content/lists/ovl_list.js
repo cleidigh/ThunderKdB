@@ -2,7 +2,7 @@ if ("undefined" == typeof(ovl_list)) {
 	var ovl_list = {
 		expandRecipientsFromCardBook: function () {
 			var myFields = window.gMsgCompose.compFields;
-			var listToCollect = ["to", "cc", "bcc", "followupTo"];
+			var listToCollect = ["to", "cc", "bcc"];
 			for (var i = 0; i < listToCollect.length; i++) {
 				if (myFields[listToCollect[i]]) {
 					if (myFields[listToCollect[i]]) {

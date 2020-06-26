@@ -405,6 +405,15 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return vString.replace(/\\\(/g,"@ESCAPEDLEFTPARENTHESIS@").replace(/\\\)/g,"@ESCAPEDRIGHTPARENTHESIS@").replace(/\\\|/g,"@ESCAPEDPIPE@"); 
 		},
 
+		escapeArray2: function (vArray) {
+			for (let i = 0; i<vArray.length; i++){
+				if (vArray[i] && vArray[i] != ""){
+					vArray[i] = vArray[i].replace(/\(/g,"@ESCAPEDLEFTPARENTHESIS@").replace(/\)/g,"@ESCAPEDRIGHTPARENTHESIS@").replace(/\|/g,"@ESCAPEDPIPE@");
+				}
+			}
+			return vArray;
+		},
+
 		escapeArray: function (vArray) {
 			for (let i = 0; i<vArray.length; i++){
 				if (vArray[i] && vArray[i] != ""){
@@ -764,10 +773,11 @@ if ("undefined" == typeof(cardbookUtils)) {
 		getStringFromFormula: function(aFormula, aArray) {
 			var finalResult = "";
 			var myEscapedFormula = cardbookUtils.escapeString1(aFormula);
-			for (var i = 1; i < aArray.length+1; i++) {
+			var myEscapedArray = cardbookUtils.escapeArray2(aArray);
+			for (var i = 1; i < myEscapedArray.length+1; i++) {
 				if (myEscapedFormula.indexOf("{{" + i + "}}") >= 0) {
 					var myRegExp = new RegExp("\\{\\{" + i + "\\}\\}", "g");
-					myEscapedFormula = myEscapedFormula.replace(myRegExp, aArray[i-1]);
+					myEscapedFormula = myEscapedFormula.replace(myRegExp, myEscapedArray[i-1]);
 				}
 			}
 			var myFormulaArray = myEscapedFormula.split(')');
@@ -1108,7 +1118,7 @@ if ("undefined" == typeof(cardbookUtils)) {
 						}
 						var found = false;
 						for (var i = 0; i < aCard[myField].length; i++) {
-							myTypes = cardbookUtils.getOnlyTypesFromTypes(aCard[myField][i][1]);
+							var myTypes = cardbookUtils.getOnlyTypesFromTypes(aCard[myField][i][1]);
 							if (myTypes.length == 0 && myType == "notype") {
 								aCard[myField][i][0][myPosition] = aValue;
 								found = true;
@@ -2122,55 +2132,6 @@ if ("undefined" == typeof(cardbookUtils)) {
 			return !cardbookUtils.isMyAccountRemote(aType);
 		},
 		
-		openEditionWindow: function(aCard, aMode) {
-			try {
-				var windowsList = Services.wm.getEnumerator("CardBook:contactEditionWindow");
-				var found = false;
-				while (windowsList.hasMoreElements()) {
-					var myWindow = windowsList.getNext();
-					if (myWindow.arguments[0] && myWindow.arguments[0].cardIn && myWindow.arguments[0].cardIn.cbid == aCard.cbid) {
-						myWindow.focus();
-						found = true;
-						break;
-					}
-				}
-				if (!found) {
-					var myArgs = {cardIn: aCard, cardOut: {}, editionMode: aMode, cardEditionAction: "", editionCallback: cardbookWindowUtils.openEditionWindowSave};
-					var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xul", "", cardbookRepository.windowParams, myArgs);
-				}
-			}
-			catch (e) {
-				cardbookLog.updateStatusProgressInformation("cardbookWindowUtils.openEditionWindow error : " + e, "Error");
-			}
-		},
-
-		openEditionWindowSave: function(aOrigCard, aOutCard, aMode) {
-			try {
-				switch (aMode) {
-					// case "EditList":
-					// case "EditContact":
-					// case "CreateContact":
-					// case "CreateList":
-					// case "AddEmail":
-					case "ViewList":
-					case "ViewContact":
-						return;
-						break;
-				}
-				if (cardbookRepository.cardbookCards[aOutCard.dirPrefId+"::"+aOutCard.uid]) {
-					var myTopic = "cardModified";
-				} else {
-					var myTopic = "cardCreated";
-				}
-				var myActionId = cardbookActions.startAction(myTopic, [aOutCard.fn]);
-				cardbookRepository.saveCard(aOrigCard, aOutCard, myActionId, true);
-				cardbookActions.endAction(myActionId);
-			}
-			catch (e) {
-				cardbookLog.updateStatusProgressInformation("cardbookWindowUtils.openEditionWindowSave error : " + e, "Error");
-			}
-		},
-
 		setCardUUID: function (aCard) {
 			var result = cardbookUtils.getUUID();
 			if (aCard.dirPrefId) {

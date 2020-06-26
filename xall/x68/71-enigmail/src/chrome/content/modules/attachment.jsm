@@ -14,6 +14,6 @@ const EnigmailCryptoAPI = ChromeUtils.import("chrome://enigmail/content/modules/
 var EnigmailAttachment = {
   getFileName: function(parent, byteData) {
     const cApi = EnigmailCryptoAPI();
-    return cApi.sync(cApi.getFileName(parent, byteData));
+    return cApi.sync(cApi.getFileName(byteData));
   }
 };

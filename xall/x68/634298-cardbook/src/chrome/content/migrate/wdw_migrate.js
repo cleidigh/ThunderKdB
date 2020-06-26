@@ -4,6 +4,12 @@ if ("undefined" == typeof(wdw_migrate)) {
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
+	try {
+		// import categories
+		let loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
+		loader.loadSubScript("chrome://sendtocategory/content/category_tools.js");
+	} catch (e) {}
+
 	var wdw_migrate = {
 
 		allLists : {},
@@ -101,6 +107,19 @@ if ("undefined" == typeof(wdw_migrate)) {
 				
 				cardbookUtils.setCalculatedFields(myCard);
 				
+				// import categories
+				try {
+					let catsArray = [];
+					catsArray = jbCatMan.getCategoriesfromCard(aABCard);
+					let finalcatArray = [];
+					for (let cat of catsArray) {
+						finalcatArray = finalcatArray.concat(cat.split(" / "));
+					}
+					cardbookUtils.sortArrayByString(finalcatArray,1);
+					finalcatArray = cardbookRepository.arrayUnique(finalcatArray);
+					myCard.categories = JSON.parse(JSON.stringify(finalcatArray));
+				} catch (e) {}
+				
 				// for nested lists within the same address book, the standard address book creates
 				// one unusefull card for the nested lists
 				if (myCard.emails == "" || myCard.emails.join("").includes("@")) {
@@ -113,7 +132,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 						cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
 					}
 				}
-							
+
 				cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
 			}
 			catch (e) {

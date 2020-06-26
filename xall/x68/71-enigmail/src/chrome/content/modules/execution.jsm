@@ -116,7 +116,7 @@ var EnigmailExecution = {
     const errOutput = listener.stderrData;
 
     EnigmailLog.DEBUG("execution.jsm: execEnd: exitCode = " + exitCode + "\n");
-    EnigmailLog.DEBUG("execution.jsm: execEnd: errOutput = " + errOutput + "\n");
+    EnigmailLog.DEBUG("execution.jsm: execEnd: errOutput = " + errOutput.substr(0, 500) + "\n");
 
     const retObj = {};
     errorMsgObj.value = EnigmailErrorHandling.parseErrorOutput(errOutput, retObj);
@@ -190,7 +190,7 @@ var EnigmailExecution = {
     }
 
     EnigmailLog.DEBUG("execution.jsm: EnigmailExecution.simpleExecCmd: exitCode = " + exitCodeObj.value + "\n");
-    EnigmailLog.DEBUG("execution.jsm: EnigmailExecution.simpleExecCmd: errOutput = " + errOutput + "\n");
+    EnigmailLog.DEBUG("execution.jsm: EnigmailExecution.simpleExecCmd: errOutput = " + errOutput.substr(0, 500) + "\n");
 
     return outputData;
   },
@@ -253,7 +253,7 @@ var EnigmailExecution = {
     if (proc.errorData) errOutput = proc.errorData;
 
     EnigmailLog.DEBUG("execution.jsm: EnigmailExecution.execCmd: exitCode = " + exitCodeObj.value + "\n");
-    EnigmailLog.DEBUG("execution.jsm: EnigmailExecution.execCmd: errOutput = " + errOutput + "\n");
+    EnigmailLog.DEBUG("execution.jsm: EnigmailExecution.execCmd: errOutput = " + errOutput.substr(0, 500) + "\n");
 
 
     if (!retStatusObj) {
@@ -348,7 +348,7 @@ var EnigmailExecution = {
           let exitCode = result.exitCode;
           EnigmailLog.DEBUG("  enigmail> DONE\n");
           EnigmailLog.DEBUG("execution.jsm: execAsync: exitCode = " + exitCode + "\n");
-          EnigmailLog.DEBUG("execution.jsm: execAsync: errOutput = " + errOutput + "\n");
+          EnigmailLog.DEBUG("execution.jsm: execAsync: errOutput = " + errOutput.substr(0, 500) + "\n");
 
           let retStatusObj = {};
           let errorMsg = EnigmailErrorHandling.parseErrorOutput(errOutput, retStatusObj);

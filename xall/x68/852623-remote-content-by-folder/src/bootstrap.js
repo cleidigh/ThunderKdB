@@ -111,6 +111,8 @@ function startup(data, reason) {
     loader.parseUri("chrome://remote-content-by-folder/content/prefs.js");
     initLogging();
     addNewMessageListener();
+    Services.obs.addObserver(WindowObserver, "mail-startup-done", false);
+    forEachOpenWindow(loadIntoWindow);
 }
 
 function shutdown(data, reason) {
@@ -177,4 +179,26 @@ function initLogging() {
                                false);
     Services.prefs.addObserver(prefPrefix + ".logging.dump", observer, false);
     logger.debug("Initialized logging for Remote Content By Folder");
+}
+
+function forEachOpenWindow(todo) { // Apply a function to all open windows
+  for (let window of Services.wm.getEnumerator("mail:3pane")) {
+    if (window.document.readyState != "complete")
+      continue;
+    todo(window);
+  }
+}
+
+var WindowObserver = {
+    observe: function(aSubject, aTopic, aData) {
+        var window = aSubject;
+        var document = window.document;
+        if (document.documentElement.getAttribute("windowtype") ==
+            "mail:3pane") {
+            loadIntoWindow(window);
+        }
+    },
+};
+
+function loadIntoWindow(window) {
 }

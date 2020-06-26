@@ -1,3 +1,282 @@
+// The ExtendedFieldURI for the PersonalHomePage property.
+// We're assuming that this is the only extended field we use.
+const kPersonalHomePage = {
+  PropertyTag: "0x3a50",
+  PropertyType: "String",
+};
+
+/**
+ * Map { address book id {string} -> EWS server {EWSAccount}}
+ */
+EWSAccount.gAddressBooks = new Map();
+
+/**
+ * Turns a Thunderbird contact into EWS fields.
+ *
+ * @param aProperties {Object} The Thunderbird contact's properties
+ * @returns           {Object} The EWS fields
+ *
+ * The fields are an intermediate format which can be readily transformed
+ * into either a creation or an update request as desired.
+ */
+EWSAccount.convertProperties = function(aProperties) {
+  let fields = {
+    t$Body: aProperties.Notes ? {
+      BodyType: "Text",
+      _TextContent_: aProperties.Notes,
+    } : "",
+    t$ExtendedProperty: aProperties.WebPage2 ? {
+      t$ExtendedFieldURI: kPersonalHomePage,
+      t$Value: aProperties.WebPage2,
+    } : "",
+    t$DisplayName: aProperties.DisplayName || "",
+    t$GivenName: aProperties.FirstName || "",
+    t$Nickname: aProperties.NickName || "",
+    t$CompanyName: aProperties.Company || "",
+    // Email addresses special-cased below.
+    t$PhysicalAddress$Street$Home: aProperties.HomeAddress || "",
+    t$PhysicalAddress$City$Home: aProperties.HomeCity || "",
+    t$PhysicalAddress$State$Home: aProperties.HomeState || "",
+    t$PhysicalAddress$CountryOrRegion$Home: aProperties.HomeCountry || "",
+    t$PhysicalAddress$PostalCode$Home: aProperties.HomeZipCode || "",
+    t$PhysicalAddress$Street$Business: aProperties.WorkAddress || "",
+    t$PhysicalAddress$City$Business: aProperties.WorkCity || "",
+    t$PhysicalAddress$State$Business: aProperties.WorkState || "",
+    t$PhysicalAddress$CountryOrRegion$Business: aProperties.WorkCountry || "",
+    t$PhysicalAddress$PostalCode$Business: aProperties.WorkZipCode || "",
+    t$PhoneNumber$HomePhone: aProperties.HomePhone || "",
+    t$PhoneNumber$BusinessPhone: aProperties.WorkPhone || "",
+    t$PhoneNumber$BusinessFax: aProperties.FaxNumber || "",
+    t$PhoneNumber$Pager: aProperties.PagerNumber || "",
+    t$PhoneNumber$MobilePhone: aProperties.CellularNumber || "",
+    // The properties are strings so it's easier to concatenate them into a date.
+    t$Birthday: aProperties.BirthMonth && aProperties.BirthDay ? `${aProperties.BirthYear || 1604}-${aProperties.BirthMonth.padStart(2, 0)}-${aProperties.BirthDay.padStart(2, 0)}T00:00:00Z` : "",
+    t$BusinessHomePage: aProperties.WebPage1 || "",
+    t$Department: aProperties.Department || "",
+    t$ImAddress$ImAddress1: aProperties._AimScreenName || "",
+    t$JobTitle: aProperties.JobTitle || "",
+    t$Surname: aProperties.LastName || "",
+  };
+  // Use the original key, if we have it.
+  let primaryEmailKey = aProperties.PrimaryEmailKey || "EmailAddress1";
+  fields["t$EmailAddress$" + primaryEmailKey] = aProperties.PrimaryEmail || "";
+  let primaryNumber = parseInt(primaryEmailKey.replace("EmailAddress", ""));
+  let secondEmailKey = aProperties.SecondEmailKey ? aProperties.SecondEmailKey : `EmailAddress${  primaryNumber ? primaryNumber + 1 : 2 }`;
+  fields["t$EmailAddress$" + secondEmailKey] = aProperties.SecondEmail || "";
+  return fields;
+}
+
+/**
+ * In EWS, contact update and creation APIs need different data formats.
+ *
+ * We internally use update format and this function converts it
+ * into the create format.
+ * Merge EWS fields into an EWS contact suitable for creation.
+ *
+ * @param aFields {Object} EWS fields
+ * @returns       {Object} An EWS contact
+ *
+ * For example, if the flattened contact has the fields:
+ *
+ * t$PhysicalAddress$State$Home: "OR",
+ * t$PhysicalAddress$CountryOrRegion$Home: "USA",
+ * t$PhysicalAddress$State$Business: "CA",
+ * t$PhysicalAddress$CountryOrRegion$Business: "USA",
+ *
+ * then the merged contact will have the field:
+ *
+ * t$PhysicalAddresses: {
+ *   t$Entry: [{
+ *     Key: "Home",
+ *     t$State: "OR",
+ *     t$CountryOrRegion: "USA",
+ *   }, {
+ *     Key: "Business",
+ *     t$State: "CA",
+ *     t$CountryOrRegion: "USA",
+ *   }],
+ * },
+ */
+EWSAccount.mergeFields = function(aFields) {
+  let result = {};
+  for (let key in aFields) {
+    if (aFields[key]) {
+      let parts = key.split("$");
+      if (parts.length > 2) {
+        let fieldIndex = parts.pop();
+        let tag = "t$" + parts[1];
+        let subtag = parts[2] ? "t$" + parts[2] : "_TextContent_";
+        tag += tag.endsWith("s") ? "es" : "s"; // indexed fields are plural
+        if (!result[tag]) {
+          result[tag] = {
+            t$Entry: [],
+          };
+        }
+        let entry = result[tag].t$Entry.find(entry => entry.Key == fieldIndex);
+        if (!entry) {
+          entry = {
+            Key: fieldIndex,
+          };
+          result[tag].t$Entry.push(entry);
+        }
+        entry[subtag] = aFields[key];
+      } else {
+        result[key] = aFields[key];
+      }
+    }
+  }
+  return result;
+}
+
+// Handle contact modifications.
+browser.contacts.onCreated.addListener(async contact => {
+  try {
+    let addressBook = contact.parentId;
+    let account = EWSAccount.gAddressBooks.get(addressBook);
+    if (account) {
+      let fields = EWSAccount.convertProperties(contact.properties);
+      let create = {
+        m$CreateItem: {
+          m$Items: {
+            t$Contact: EWSAccount.mergeFields(fields),
+          },
+        },
+      };
+      let response = await account.CallService(null, create); // ews.js
+      let itemId = response.Items.Contact.ItemId.Id;
+      let changeKey = response.Items.Contact.ItemId.ChangeKey;
+      // Save everything back to storage.
+      account.contacts.fields[itemId] = fields;
+      account.contacts.ids[itemId] = contact.id;
+      account.contacts.itemIds[contact.id] = itemId;
+      account.contacts.changeKeys[itemId] = changeKey;
+      browser.storage.local.set(account.storage);
+      // Update the change key on the Thunderbird contact too.
+      browser.contacts.update(contact.id, { ChangeKey: changeKey });
+    }
+  } catch (ex) {
+    logError(ex);
+  }
+});
+browser.contacts.onUpdated.addListener(async contact => {
+  try {
+    let addressBook = contact.parentId;
+    let account = EWSAccount.gAddressBooks.get(addressBook);
+    if (account) {
+      let itemId = account.contacts.itemIds[contact.id];
+      let changeKey = account.contacts.changeKeys[itemId];
+      let oldFields = account.contacts.fields[itemId];
+      if (!oldFields) {
+        // This must be an error contact. Ignore it.
+        return;
+      }
+      let request = {
+        m$UpdateItem: {
+          m$ItemChanges: {
+            t$ItemChange: {
+              t$ItemId: {
+                Id: itemId,
+                ChangeKey: changeKey,
+              },
+              t$Updates: {
+                t$SetItemField: [],
+                t$DeleteItemField: [],
+              },
+            },
+          },
+          ConflictResolution: "AlwaysOverwrite",
+        },
+      };
+      let newFields = EWSAccount.convertProperties(contact.properties);
+      if (JSON.stringify(newFields) != JSON.stringify(oldFields)) {
+        let updates = request.m$UpdateItem.m$ItemChanges.t$ItemChange.t$Updates;
+        for (let key in newFields) {
+          if (JSON.stringify(newFields[key]) != JSON.stringify(oldFields[key])) {
+            let value = newFields[key];
+            let field = {};
+            if (key == "t$ExtendedProperty") {
+              field.t$ExtendedFieldURI = kPersonalHomePage;
+            } else {
+              let parts = key.split("$");
+              parts[0] = key == "t$Body" ? "item" : "contacts";
+              if (parts.length > 2) {
+                let fieldIndex = parts.pop();
+                field.t$IndexedFieldURI = {
+                  FieldURI: parts.join(":"),
+                  FieldIndex: fieldIndex,
+                };
+                if (value) {
+                  let subtag = parts[2] ? "t$" + parts[2] : "_TextContent_";
+                  let entry = {
+                    Key: fieldIndex,
+                  };
+                  entry[subtag] = value;
+                  value = {
+                    t$Entry: entry,
+                  };
+                  key = "t$" + parts[1];
+                  key += key.endsWith("s") ? "es" : "s"; // indexed fields are plural
+                }
+              } else {
+                field.t$FieldURI = {
+                  FieldURI: parts.join(":"),
+                };
+              }
+            }
+            if (!value) {
+              updates.t$DeleteItemField.push(field);
+            } else {
+              field.t$Contact = {};
+              field.t$Contact[key] = value;
+              updates.t$SetItemField.push(field);
+            }
+          }
+        }
+        let response = await account.CallService(null, request); // ews.js
+        let changeKey = response.Items.Contact.ItemId.ChangeKey;
+        // Save everything back to storage.
+        account.contacts.fields[itemId] = newFields;
+        account.contacts.changeKeys[itemId] = changeKey;
+        browser.storage.local.set(account.storage);
+        // Update the change key on the Thunderbird contact too.
+        browser.contacts.update(contact.id, { ChangeKey: changeKey });
+      }
+    }
+  } catch (ex) {
+    logError(ex);
+  }
+});
+browser.contacts.onDeleted.addListener(async (addressBook, id) => {
+  try {
+    let account = EWSAccount.gAddressBooks.get(addressBook);
+    if (account) {
+      let itemId = account.contacts.itemIds[id];
+      if (itemId) {
+        delete account.contacts.ids[itemId];
+        delete account.contacts.itemIds[id];
+        browser.storage.local.set(account.storage);
+        let request = {
+          m$DeleteItem: {
+            m$ItemIds: {
+              t$ItemId: {
+                Id: itemId,
+              },
+            },
+          },
+          DeleteType: "MoveToDeletedItems",
+        };
+        await account.CallService(null, request);
+      }
+    }
+  } catch (ex) {
+    if (ex.type == "ErrorItemNotFound") {
+      // Already deleted. Ignore.
+    } else {
+      logError(ex);
+    }
+  }
+});
+
 /**
  * Turns an array of entries into a dictionary based on the entry's Key.
  *
@@ -13,7 +292,7 @@ EWSAccount.prototype.explodeEntry = function(aCategory) {
 }
 
 /**
- * Turn an EWS Contact into an addressbook-compatible contact.
+ * Turn an EWS Contact into an TB addressbook-compatible contact.
  *
  * @param aContact {Object}  The EWS Contact
  * @returns        {Object}  The contact
@@ -26,18 +305,20 @@ EWSAccount.prototype.explodeEntry = function(aCategory) {
  * This is in case the value was removed from an existing contact.
  */
 EWSAccount.prototype.convertContact = function(aContact) {
-  aContact.EmailAddresses = this.explodeEntry(aContact.EmailAddresses);
+  aContact.EmailAddresses = ensureArray(aContact.EmailAddresses && aContact.EmailAddresses.Entry).filter(entry => !entry.RoutingType || entry.RoutingType == "SMTP");
   aContact.PhysicalAddresses = this.explodeEntry(aContact.PhysicalAddresses);
   aContact.PhoneNumbers = this.explodeEntry(aContact.PhoneNumbers);
   return {
     ItemId: aContact.ItemId.Id,
     ChangeKey: aContact.ItemId.ChangeKey,
     FirstName: aContact.GivenName || "",
-    LastName: aContact.CompleteName && aContact.CompleteName.LastName || "",
+    LastName: aContact.Surname || "",
     DisplayName: aContact.DisplayName || "",
-    NickName: aContact.CompleteName && aContact.CompleteName.Nickname || "",
-    PrimaryEmail: aContact.EmailAddresses.EmailAddress1 && aContact.EmailAddresses.EmailAddress1.Value || "",
-    SecondEmail: aContact.EmailAddresses.EmailAddress2 && aContact.EmailAddresses.EmailAddress2.Value || "",
+    NickName: aContact.Nickname || "",
+    PrimaryEmail: aContact.EmailAddresses[0] && aContact.EmailAddresses[0].Value || "",
+    PrimaryEmailKey: aContact.EmailAddresses[0] && aContact.EmailAddresses[0].Key || "",
+    SecondEmail: aContact.EmailAddresses[1] && aContact.EmailAddresses[1].Value || "",
+    SecondEmailKey: aContact.EmailAddresses[1] && aContact.EmailAddresses[1].Key || "",
     HomeAddress: aContact.PhysicalAddresses.Home && aContact.PhysicalAddresses.Home.Street || "",
     HomeCity: aContact.PhysicalAddresses.Home && aContact.PhysicalAddresses.Home.City || "",
     HomeState: aContact.PhysicalAddresses.Home && aContact.PhysicalAddresses.Home.State || "",
@@ -45,7 +326,7 @@ EWSAccount.prototype.convertContact = function(aContact) {
     HomeCountry: aContact.PhysicalAddresses.Home && aContact.PhysicalAddresses.Home.CountryOrRegion || "",
     WebPage2: aContact.ExtendedProperty && aContact.ExtendedProperty.Value || "", // this is normally an array, but we're only requesting one property
     WorkAddress: aContact.PhysicalAddresses.Business && aContact.PhysicalAddresses.Business.Street || "",
-    WorkCity: aContact.PhysicalAddresses.Business && aContact.PhysicalAddresses.Business.WorkCity || "",
+    WorkCity: aContact.PhysicalAddresses.Business && aContact.PhysicalAddresses.Business.City || "",
     WorkState: aContact.PhysicalAddresses.Business && aContact.PhysicalAddresses.Business.State || "",
     WorkZipCode: aContact.PhysicalAddresses.Business && aContact.PhysicalAddresses.Business.PostalCode || "",
     WorkCountry: aContact.PhysicalAddresses.Business && aContact.PhysicalAddresses.Business.CountryOrRegion || "",
@@ -70,7 +351,7 @@ EWSAccount.prototype.convertContact = function(aContact) {
  * Updates the mapping between Items and Contacts and removes stale entries.
  *
  * @param aManager     {Object}        browser.contacts or browser.mailingLists
- * @param aCache       {Object}        The stored contacts or lists mappings
+ * @param aCache       {inout Object}  The stored contacts or lists mappings
  *   ids               {Object}        A mapping from item ids to ids
  *   itemIds           {Object}        A mapping from ids to item ids
  * @param aAddressBook {Array[Object]} The Thunderbird contacts or lists
@@ -84,6 +365,7 @@ EWSAccount.prototype.ReconcileDeletions = function(aManager, aCache, aAddressBoo
   let ids = aAddressBook.map(node => node.id);
   for (let id in aCache.itemIds) {
     if (!ids.includes(id)) {
+      delete aCache.fields[aCache.itemIds[id]];
       delete aCache.changeKeys[aCache.itemIds[id]];
       delete aCache.ids[aCache.itemIds[id]];
       delete aCache.itemIds[id];
@@ -93,6 +375,7 @@ EWSAccount.prototype.ReconcileDeletions = function(aManager, aCache, aAddressBoo
   let itemIds = aItems.map(item => item.ItemId.Id);
   for (let itemId in aCache.ids) {
     if (!itemIds.includes(itemId)) {
+      delete aCache.fields[itemId];
       delete aCache.changeKeys[itemId];
       delete aCache.itemIds[aCache.ids[itemId]];
       delete aCache.ids[itemId];
@@ -145,18 +428,28 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
     m$GetItem: {
       m$ItemShape: {
         t$BaseShape: "Default",
+        t$BodyType: "Text",
         t$AdditionalProperties: {
           t$FieldURI: [{
+            FieldURI: "contacts:Birthday",
+          }, {
             FieldURI: "contacts:BusinessHomePage",
           }, {
-            FieldURI: "item:Body",
+            FieldURI: "contacts:Department",
+          }, {
+            FieldURI: "contacts:DisplayName",
+          }, {
+            FieldURI: "contacts:GivenName",
+          }, {
+            FieldURI: "contacts:Nickname",
+          }, {
+            FieldURI: "contacts:Surname",
+          }, {
+            FieldURI: "item:Body", // contacts:Notes requires 2010_SP2
           }],
           // For some reason BusinessHomePage (0x3a51) has a FieldURI,
           // but PersonalHomePage (0x3a50) does not, so we use the tag.
-          t$ExtendedFieldURI: [{
-            PropertyTag: "0x3a50",
-            PropertyType: "String",
-          }],
+          t$ExtendedFieldURI: [kPersonalHomePage],
         },
       },
       m$ItemIds: {
@@ -167,7 +460,8 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
     },
   };
   // These need to be outside the try/catch blocks.
-  let addressBook, hostname, storage;
+  let addressBook;
+  let hostname;
   // Try and find the address book we created last time. If it's no longer
   // there, or if we've never created an address book, then create one.
   try {
@@ -181,6 +475,8 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
     await browser.incomingServer.setStringValue(this.serverID, "addressBook", id);
     addressBook = { id };
   }
+  // Stop listening to contact updates.
+  EWSAccount.gAddressBooks.delete(addressBook.id);
   let contacts = [];
   let lists = [];
   try {
@@ -196,16 +492,25 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
       query.m$FindItem.m$IndexedPageItemView.Offset = response.RootFolder.IndexedPagingOffset;
     }
     hostname = "ews$" + await browser.incomingServer.getHostName(this.serverID);
-    storage = await browser.storage.local.get(hostname);
-    if (!storage[hostname]) {
-      storage[hostname] = {
-        contacts: { ids: {}, itemIds: {}, changeKeys: {}, },
-        mailingLists: { ids: {}, itemIds: {}, changeKeys: {}, },
+    this.storage = await browser.storage.local.get(hostname);
+    if (!this.storage[hostname]) {
+      this.storage[hostname] = {
+        contacts: { fields: {}, ids: {}, itemIds: {}, changeKeys: {}, },
+        mailingLists: { fields: {}, ids: {}, itemIds: {}, changeKeys: {}, },
       };
     };
+    // XXX For old profiles
+    if (!this.storage[hostname].contacts.fields) {
+      this.storage[hostname].contacts.fields = {};
+    }
+    if (!this.storage[hostname].mailingLists.fields) {
+      this.storage[hostname].mailingLists.fields = {};
+    }
+    this.contacts = this.storage[hostname].contacts;
+    this.mailingLists = this.storage[hostname].mailingLists;
     // Delete any stale data.
-    this.ReconcileDeletions(browser.contacts, storage[hostname].contacts, addressBook.contacts || [], contacts);
-    this.ReconcileDeletions(browser.mailingLists, storage[hostname].mailingLists, addressBook.mailingLists || [], lists);
+    this.ReconcileDeletions(browser.contacts, this.contacts, addressBook.contacts || [], contacts);
+    this.ReconcileDeletions(browser.mailingLists, this.mailingLists, addressBook.mailingLists || [], lists);
   } catch (ex) {
     browser.contacts.create(addressBook.id, null, {
       DisplayName: ex.message,
@@ -216,20 +521,24 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
   // Update or create contacts from the server's list of items.
   for (let contact of contacts) {
     try {
-      let id = storage[hostname].contacts.ids[contact.ItemId.Id];
+      let id = this.contacts.ids[contact.ItemId.Id];
       if (!id) {
         fetch.m$GetItem.m$ItemIds.t$ItemId[0].Id = contact.ItemId.Id;
         let response = await this.CallService(aMsgWindow, fetch); // ews.js
-        id = await browser.contacts.create(addressBook.id, null, this.convertContact(response.Items.Contact));
+        let properties = this.convertContact(response.Items.Contact);
+        id = await browser.contacts.create(addressBook.id, null, properties);
         // Also track the new mapping.
-        storage[hostname].contacts.ids[contact.ItemId.Id] = id;
-        storage[hostname].contacts.itemIds[id] = contact.ItemId.Id;
-        storage[hostname].contacts.changeKeys[contact.ItemId.Id] = contact.ItemId.ChangeKey;
-      } else if (contact.ItemId.ChangeKey != storage[hostname].contacts.changeKeys[contact.ItemId.Id]) {
+        this.contacts.ids[contact.ItemId.Id] = id;
+        this.contacts.itemIds[id] = contact.ItemId.Id;
+        this.contacts.changeKeys[contact.ItemId.Id] = contact.ItemId.ChangeKey;
+        this.contacts.fields[contact.ItemId.Id] = EWSAccount.convertProperties(properties);
+      } else if (contact.ItemId.ChangeKey != this.contacts.changeKeys[contact.ItemId.Id]) {
         fetch.m$GetItem.m$ItemIds.t$ItemId[0].Id = contact.ItemId.Id;
         let response = await this.CallService(aMsgWindow, fetch); // ews.js
-        await browser.contacts.update(id, this.convertContact(response.Items.Contact));
-        storage[hostname].contacts.changeKeys[contact.ItemId.Id] = contact.ItemId.ChangeKey;
+        let properties = this.convertContact(response.Items.Contact);
+        await browser.contacts.update(id, properties);
+        this.contacts.changeKeys[contact.ItemId.Id] = contact.ItemId.ChangeKey;
+        this.contacts.fields[contact.ItemId.Id] = EWSAccount.convertProperties(properties);
       }
     } catch (ex) {
       logError(ex);
@@ -245,12 +554,12 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
       fetch.m$GetItem.m$ItemIds.t$ItemId[0].Id = list.ItemId.Id;
       let response = await this.CallService(aMsgWindow, fetch); // ews.js
       list = response.Items.DistributionList;
-      let id = storage[hostname].mailingLists.ids[list.ItemId.Id];
+      let id = this.mailingLists.ids[list.ItemId.Id];
       if (!id) {
         id = await browser.mailingLists.create(addressBook.id, { name: list.DisplayName, description: list.Body ? list.Body.Value : "" });
         // Also track the new mapping.
-        storage[hostname].mailingLists.ids[list.ItemId.Id] = id;
-        storage[hostname].mailingLists.itemIds[id] = list.ItemId.Id;
+        this.mailingLists.ids[list.ItemId.Id] = id;
+        this.mailingLists.itemIds[id] = list.ItemId.Id;
       } else {
         browser.mailingLists.update(id, { name: list.DisplayName, description: list.Body ? list.Body.Value : "" });
       }
@@ -258,8 +567,8 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
       let members = [];
       for (let member of ensureArray(list.Members && list.Members.Member)) {
         let itemId = member.Mailbox && member.Mailbox.ItemId && member.Mailbox.ItemId.Id;
-        if (itemId && storage[hostname].contacts.ids[itemId]) {
-          members.push(storage[hostname].contacts.ids[itemId]);
+        if (itemId && this.contacts.ids[itemId]) {
+          members.push(this.contacts.ids[itemId]);
         }
       }
       for (let member of await browser.mailingLists.listMembers(id)) {
@@ -283,5 +592,119 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
     }
   }
   // Save our updated mappings.
-  browser.storage.local.set(storage);
+  browser.storage.local.set(this.storage);
+  // Start listening to contact updates.
+  EWSAccount.gAddressBooks.set(addressBook.id, this);
+}
+
+EWSAccount.prototype.DownloadGAL = async function(aMsgWindow) {
+  let addressBook;
+  // Try and find the address book we created last time. If it's no longer
+  // there, or if we've never created an address book, then create one.
+  try {
+    let id = await browser.incomingServer.getStringValue(this.serverID, "GAL");
+    addressBook = await browser.addressBooks.get(id, true);
+  } catch (ex) {
+    let identity = await browser.incomingServer.getIdentity(this.serverID);
+    let name = identity.email.slice(identity.email.indexOf("@") + 1) + " GAL";
+    let id = await browser.addressBooks.create({name});
+    await browser.incomingServer.setStringValue(this.serverID, "GAL", id);
+    addressBook = { id: id, contacts: [], mailingLists: [] };
+  }
+  browser.webAccount.markAddressBookAsReadOnly(addressBook.id);
+  try {
+    let response;
+    let contactMap = {};
+    for (let contact of addressBook.contacts) {
+      contactMap[contact.properties.PrimaryEmail] = contact;
+    }
+    let resolvedNames = {};
+    for (let i = 10; i < 36; i++) {
+      let query = {
+        m$ResolveNames: {
+          m$UnresolvedEntry: "smtp:" + i.toString(36), // 'a' .. 'z'
+          ReturnFullContactData: true,
+        },
+      };
+      try {
+        response = await this.CallService(aMsgWindow, query); // ews.js
+      } catch (ex) {
+        if (ex.type == "ErrorNameResolutionNoResults") {
+          continue; // No results for this letter, just continue with next one.
+        }
+        throw ex;
+      }
+      for (let resolution of ensureArray(response.ResolutionSet.Resolution)) {
+        // This API returns up to four email addresses;
+        // the Mailbox contains one while the Contact can contain three.
+        // We'll combine the four addresses into a single array.
+        let emailAddresses = ensureArray(resolution.Contact.EmailAddresses.Entry).map(entry => entry.Value);
+        emailAddresses.unshift(resolution.Mailbox.RoutingType + ":" + resolution.Mailbox.EmailAddress);
+        // The primary SMTP address is always prefixed with SMTP:
+        let primaryEmail = (emailAddresses.find(address => address.startsWith("SMTP:")) || "").slice(5);
+        // Secondary SMTP addresses are prefixed with smtp: so just find one
+        let secondEmail = (emailAddresses.find(address => address.startsWith("smtp:")) || "").slice(5);
+        // Tweak the result to be in convertContact format.
+        resolution.Contact.ItemId = { Id: "", ChangeKey: "" };
+        resolution.Contact.EmailAddresses = {
+          Entry: [{
+            Value: primaryEmail,
+          }, {
+            Value: secondEmail,
+          }],
+        };
+        resolvedNames[primaryEmail] = this.convertContact(resolution.Contact);
+      }
+    }
+    for (let primaryEmail in resolvedNames) {
+      let contact = contactMap[primaryEmail];
+      if (contact) {
+        this.UpdateContact(contact, resolvedNames[primaryEmail]);
+        delete contactMap[primaryEmail];
+      } else {
+        await browser.contacts.create(addressBook.id, null, resolvedNames[primaryEmail]);
+      }
+    }
+    for (let primaryEmail in contactMap) {
+      browser.contacts.delete(contactMap[primaryEmail].id);
+    }
+  } catch (ex) {
+    browser.contacts.create(addressBook.id, null, {
+      DisplayName: ex.message,
+      Notes: ex.stack,
+    });
+    throw ex;
+  }
+}
+
+EWSAccount.prototype.ResyncAddressBooks = async function(aMsgWindow) {
+  noAwait(this.ResyncContacts(aMsgWindow), logError);
+
+  let enableGAL = await browser.incomingServer.getBooleanValue(this.serverID, "GAL_enabled");
+  if (enableGAL) {
+    noAwait(this.DownloadGAL(aMsgWindow), logError);
+  }
+}
+
+/**
+ * Updates a Thunderbird contact if any properties are out of date.
+ *
+ * @param aContact    {Contact} The Thunderbird contact object
+ *        id          {String}  The contact's id
+ *        properties  {Object}  The current properties
+ * @param aProperties {Object}  The desired properties
+ *
+ * Desired properties will be blank where existing properties are to be deleted.
+ */
+EWSAccount.prototype.UpdateContact = function(aContact, aProperties) {
+  let changes = null;
+  for (let prop in aProperties) {
+    if (aProperties[prop] != (aContact.properties[prop] || "")) {
+      if (!changes) {
+        changes = {};
+      }
+      changes[prop] = aProperties[prop];
+    }
+  }
+  return changes && browser.contacts.update(aContact.id, changes);
 }

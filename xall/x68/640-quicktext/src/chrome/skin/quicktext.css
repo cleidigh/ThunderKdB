@@ -42,3 +42,23 @@ caption {
   padding: 3px;
   font-weight: normal;
 }
+
+dialog[OS=WINNT] groupbox > .box-title > .header {
+  font-weight: bold;
+  margin-top: -2px;
+  margin-bottom:1em;
+  margin-inline-start: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+  background-color: -moz-Field;
+}
+
+.textarea-container {
+  margin:4px;
+  overflow: hidden;  
+}
+
+textarea {
+  margin: 0px;
+  resize: none;
+}

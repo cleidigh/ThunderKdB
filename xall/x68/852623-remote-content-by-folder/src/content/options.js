@@ -68,7 +68,6 @@ var RCBFOptions = {
     SetOnLoad: function() {
         window.removeEventListener("load", RCBFOptions.SetOnLoad, false);
         document.addEventListener("dialogextra1", function(event) {
-            console.log("dialogextra1");
             RCBFOptions.LoadPrefs();
         });
         document.addEventListener("dialogaccept", function(event) {

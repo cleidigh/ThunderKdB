@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="chrome://coloredfolders/content/coloredfolders.css"?>
+<!DOCTYPE overlay SYSTEM "chrome://coloredfolders/locale/coloredfolders.dtd">
+<!--
+/////////////////////////////////////////////////////////////////////////////////
+/* *
+ * @package     Lab5 - Colored Folders
+ *
+ * version :  v1.3
+ *
+ * @author	:	Lab5 - Dennis Riegelsberger
+ * @authorUrl	:	https://lab5.ch
+ * @authorEmail	:	info@lab5.ch
+ * @copyright	:	(C) 2019+ Lab5 - Dennis Riegelsberger.  / Copyright(c) 2011-2013 fisheater. All rights reserved.
+ * @copyrightUrl	:	https://lab5.ch
+ * @license	:	GNU General Public License version 2 or later;
+ * @licenseUrl	:	https://www.gnu.org/licenses/gpl-2.0.html
+ * @project	:	https://lab5.ch/blog
+ * @CHANGELOG :
+ * * 
+ */
+/////////////////////////////////////////////////////////////////////////////////
+-->
+<overlay id="coloredfolders-overlay"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<script type="application/javascript" src="chrome://coloredfolders/content/coloredfolders.js"/>
+
+		<menupopup id="folderPaneContext">
+			<menu id="folderPaneContext-colorFolders" class="menu-iconic" label="&menu_coloredfolders.label;"
+					accesskey="C"
+					insertafter="folderPaneContext-properties">
+				<menupopup id="folderColorPopup" class="folderColorTypeDefault">
+				
+					
+					<menu id="folderColorMoreColors" class="menu-iconic folderDefault folderAllColors" label="&menu_allcolors.label;">
+						<menupopup id="folderColorPickerPupup">
+							<!--
+							<html:input type="color" id="folderColorPicker" palettename="standard"/>
+							-->
+							<menuitem class="menuitem-iconic folderColorDefault" value="folderColorDefault" label="&menu_default.label;"/>
+														
+														
+							<menuitem class="menuitem-iconic folderColor333333" value="folderColor333333" label="#333333"/>
+							<menuitem class="menuitem-iconic folderColor333399" value="folderColor333399" label="#333399"/>
+							<menuitem class="menuitem-iconic folderColor993366" value="folderColor993366" label="#993366"/>
+							<menuitem class="menuitem-iconic folderColor993300" value="folderColor993300" label="#993300"/>
+							<menuitem class="menuitem-iconic folderColor333300" value="folderColor333300" label="#333300"/>
+							<menuitem class="menuitem-iconic folderColor003300" value="folderColor003300" label="#003300"/>
+							<menuitem class="menuitem-iconic folderColor339966" value="folderColor339966" label="#339966"/>
+							<menuitem class="menuitem-iconic folderColor003366" value="folderColor003366" label="#003366"/>
+							<menuitem class="menuitem-iconic folderColor969696" value="folderColor969696" label="#969696"/>
+							<menuitem class="menuitem-iconic folderColor666699" value="folderColor666699" label="#666699"/>
+							<menuitem class="menuitem-iconic folderColorFF6600" value="folderColorFF6600" label="#FF6600"/>
+							<menuitem class="menuitem-iconic folderColorFF9900" value="folderColorFF9900" label="#FF9900"/>
+							<menuitem class="menuitem-iconic folderColorFFCC00" value="folderColorFFCC00" label="#FFCC00"/>
+							<menuitem class="menuitem-iconic folderColor99CC00" value="folderColor99CC00" label="#99CC00"/>
+							<menuitem class="menuitem-iconic folderColor33CCCC" value="folderColor33CCCC" label="#33CCCC"/>
+							<menuitem class="menuitem-iconic folderColor3366FF" value="folderColor3366FF" label="#3366FF"/>
+							<menuitem class="menuitem-iconic folderColorFFCC99" value="folderColorFFCC99" label="#FFCC99"/>
+							<menuitem class="menuitem-iconic folderColorCC99FF" value="folderColorCC99FF" label="#CC99FF"/>
+							<menuitem class="menuitem-iconic folderColorFF99CC" value="folderColorFF99CC" label="#FF99CC"/>
+							<menuitem class="menuitem-iconic folderColor99CCFF" value="folderColor99CCFF" label="#99CCFF"/>
+							<menuitem class="menuitem-iconic folderColorFFFF99" value="folderColorFFFF99" label="#FFFF99"/>
+							<menuitem class="menuitem-iconic folderColorCCFFCC" value="folderColorCCFFCC" label="#CCFFCC"/>
+							<menuitem class="menuitem-iconic folderColorCCFFFF" value="folderColorCCFFFF" label="#CCFFFF"/>
+							<menuitem class="menuitem-iconic folderColor00CCFF" value="folderColor00CCFF" label="#00CCFF"/>
+							<menuitem class="menuitem-iconic folderColor0000FF" value="folderColor0000FF" label="#0000FF"/>
+							<menuitem class="menuitem-iconic folderColor008080" value="folderColor008080" label="#008080"/>
+							<menuitem class="menuitem-iconic folderColor800000" value="folderColor800000" label="#800000"/>
+							<menuitem class="menuitem-iconic folderColor800080" value="folderColor800080" label="#800080"/>
+							<menuitem class="menuitem-iconic folderColor00FFFF" value="folderColor00FFFF" label="#00FFFF"/>
+							<menuitem class="menuitem-iconic folderColorFFFF00" value="folderColorFFFF00" label="#FFFF00"/>
+							<menuitem class="menuitem-iconic folderColorFF00FF" value="folderColorFF00FF" label="#FF00FF"/>
+							<menuitem class="menuitem-iconic folderColor000080" value="folderColor000080" label="#000080"/>
+							<menuitem class="menuitem-iconic folderColorCCCCFF" value="folderColorCCCCFF" label="#CCCCFF"/>
+							<menuitem class="menuitem-iconic folderColor0066CC" value="folderColor0066CC" label="#0066CC"/>
+							<menuitem class="menuitem-iconic folderColorFF8080" value="folderColorFF8080" label="#FF8080"/>
+							<menuitem class="menuitem-iconic folderColor660066" value="folderColor660066" label="#660066"/>
+							<menuitem class="menuitem-iconic folderColorCC33CC" value="folderColorCC33CC" label="#CC33CC"/>
+							<menuitem class="menuitem-iconic folderColorFFFFCC" value="folderColorFFFFCC" label="#FFFFCC"/>
+							<menuitem class="menuitem-iconic folderColor6633FF" value="folderColor6633FF" label="#6633FF"/>
+							<menuitem class="menuitem-iconic folderColor9999FF" value="folderColor9999FF" label="#9999FF"/>
+							<menuitem class="menuitem-iconic folderColor808080" value="folderColor808080" label="#808080"/>
+							<menuitem class="menuitem-iconic folderColorC0C0C0" value="folderColorC0C0C0" label="#C0C0C0"/>
+							<menuitem class="menuitem-iconic folderColor000099" value="folderColor000099" label="#000099"/>
+							<menuitem class="menuitem-iconic folderColor00CCCC" value="folderColor00CCCC" label="#00CCCC"/>
+							<menuitem class="menuitem-iconic folderColor808000" value="folderColor808000" label="#808000"/>
+							<menuitem class="menuitem-iconic folderColor009900" value="folderColor009900" label="#009900"/>
+							<menuitem class="menuitem-iconic folderColor008000" value="folderColor008000" label="#008000"/>
+							<menuitem class="menuitem-iconic folderColor33CC00" value="folderColor33CC00" label="#33CC00"/>
+							<menuitem class="menuitem-iconic folderColorCC0000" value="folderColorCC0000" label="#CC0000"/>
+							<menuitem class="menuitem-iconic folderColor999999" value="folderColor999999" label="#999999"/>
+							<menuitem class="menuitem-iconic folderColorCCCCCC" value="folderColorCCCCCC" label="#CCCCCC"/>
+							<menuitem class="menuitem-iconic folderColor00FF00" value="folderColor00FF00" label="#00FF00"/>
+							<menuitem class="menuitem-iconic folderColorFF0000" value="folderColorFF0000" label="#FF0000"/>
+							<menuitem class="menuitem-iconic folderColorFFFFFF" value="folderColorFFFFFF" label="#FFFFFF"/>
+							<menuitem class="menuitem-iconic folderColor000000" value="folderColor000000" label="#000000"/>
+
+
+						</menupopup>
+					</menu>
+					
+					
+					<menuseparator/>
+						
+						<menuitem class="menuitem-iconic folderColorDefault" value="folderColorDefault" label="&menu_default.label;"/>
+						
+	
+							<menuitem class="menuitem-iconic folderColorCCCCCC" value="folderColorCCCCCC" label="&menu_gray0.label;"/>
+							<menuitem class="menuitem-iconic folderColor999999" value="folderColor999999" label="&menu_gray1.label;"/>
+							<menuitem class="menuitem-iconic folderColor333333" value="folderColor333333" label="&menu_gray2.label;"/>
+							<menuitem class="menuitem-iconic folderColorCC0000" value="folderColorCC0000" label="&menu_red.label;"/>
+							<menuitem class="menuitem-iconic folderColorFF9900" value="folderColorFF9900" label="&menu_orange.label;"/>
+							<menuitem class="menuitem-iconic folderColorFFCC00" value="folderColorFFCC00" label="&menu_yellow.label;"/>
+							<menuitem class="menuitem-iconic folderColor99CC00" value="folderColor99CC00" label="&menu_yellowgreen.label;"/>
+							<menuitem class="menuitem-iconic folderColor009900" value="folderColor009900" label="&menu_green.label;"/>
+							<menuitem class="menuitem-iconic folderColor00CCCC" value="folderColor00CCCC" label="&menu_cyan.label;"/>
+							<menuitem class="menuitem-iconic folderColor000099" value="folderColor000099" label="&menu_blue.label;"/>
+							<menuitem class="menuitem-iconic folderColor6633FF" value="folderColor6633FF" label="&menu_violet.label;"/>
+							<menuitem class="menuitem-iconic folderColorCC33CC" value="folderColorCC33CC" label="&menu_magenta.label;"/>
+									
+									
+							<!--
+							
+							<menuitem class="menuitem-iconic folderColorC0C0C0" value="folderColorC0C0C0" label="&menu_gray0.label;"/>
+							<menuitem class="menuitem-iconic folderColor808080" value="folderColor808080" label="&menu_gray1.label;"/>
+							<menuitem class="menuitem-iconic folderColor333333" value="folderColor333333" label="&menu_gray2.label;"/>
+							
+							<menuitem class="menuitem-iconic folderColorFF0000" value="folderColorFF0000" label="&menu_red.label;"/>
+							<menuitem class="menuitem-iconic folderColorFFCC00" value="folderColorFFCC00" label="&menu_yellow.label;"/>
+							<menuitem class="menuitem-iconic folderColor99CC00" value="folderColor99CC00" label="&menu_yellowgreen.label;"/>
+							<menuitem class="menuitem-iconic folderColor009900" value="folderColor009900" label="&menu_green.label;"/>
+							<menuitem class="menuitem-iconic folderColor00FF00" value="folderColor00FF00" label="&menu_cyan.label;"/>
+							<menuitem class="menuitem-iconic folderColor0000FF" value="folderColor0000FF" label="&menu_blue.label;"/>
+							<menuitem class="menuitem-iconic folderColor800080" value="folderColor800080" label="&menu_violet.label;"/>
+							<menuitem class="menuitem-iconic folderColorFF00FF" value="folderColorFF00FF" label="&menu_magenta.label;"/>
+							
+							-->
+					
+				</menupopup>
+			</menu>
+		</menupopup>
+
+</overlay>

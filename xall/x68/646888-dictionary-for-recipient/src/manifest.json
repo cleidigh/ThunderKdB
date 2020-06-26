@@ -2,15 +2,31 @@
   "manifest_version": 2,
   "name": "Dictionary for recipient",
   "description": "Sets the spell check dictionary based on the recipient",
-  "version": "1.0.4",
+  "version": "2.0.2",
   "author": "Jorg K",
-  "legacy": {
-    "type": "bootstrap"
-  },
   "applications": {
     "gecko": {
       "id": "JorgK@dictionaryforrecipient",
       "strict_min_version": "68.0a1"
     }
+  },
+  "experiment_apis": {
+    "DictionaryForRecipient": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          ["DictionaryForRecipient"]
+        ],
+        "script": "experiments.js"
+      }
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
   }
 }

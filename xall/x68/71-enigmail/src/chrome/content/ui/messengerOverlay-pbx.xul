@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+-->
+
+<!--
+  This adds the Enigmail header box to the mail reading window on Postbox
+
+  Please not that is is only a placeholder to reference the location in
+  enigmailMessengerOverlay.xul properly
+-->
+
+<!DOCTYPE window SYSTEM "chrome://enigmail/locale/enigmail.dtd" >
+
+<overlay id="messengerOverlay-pbx"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <window id="messengerWindow">
+    <vbox id="enigmailHdrWrapper" collapsed="true">
+      <vbox id="enigmailHdrBox"/> <!-- Enigmail header box is in here -->
+      <vbox id="button-enigmail-decrypt"/> <!-- dummy decryption button -->
+    </vbox>
+  </window>
+
+  <commandset id="mailToolbarItems">
+    <command id="button_enigmail_decrypt"/>
+  </commandset>
+
+  <keyset id="mailKeys">
+    <key id="enigmailAboutKey" key="A" modifiers="shift alt" oncommand="EnigmailWindows.openAboutWindow();"/>
+    <key id="enigmailAboutKey" key="B" modifiers="shift alt" oncommand="window.openDialog(window.openDialog('chrome://global/content/config.xul', '', 'chrome'));"/>
+  </keyset>
+
+</overlay>

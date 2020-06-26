@@ -9,6 +9,8 @@
 
 var EXPORTED_SYMBOLS = ["CardbookHttpRequest"];
 
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 var containers = [];
 var sandboxes = {};
 
