@@ -8,7 +8,7 @@
 class ContactLine extends React.PureComponent {
   render() {
     return this.props.contacts.map((to, i) => {
-      return React.createElement(ContactLabel, {
+      return /*#__PURE__*/React.createElement(ContactLabel, {
         className: "",
         contact: to,
         detailView: true,
@@ -26,32 +26,32 @@ ContactLine.propTypes = {
 
 class MessageDetails extends React.PureComponent {
   render() {
-    return React.createElement("div", null, !!this.props.from && React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", null, !!this.props.from && /*#__PURE__*/React.createElement("div", {
       className: "detailsLine fromLine"
-    }, React.createElement("u", null, this.props.strings.get("fieldFrom")), " ", React.createElement(ContactLabel, {
+    }, /*#__PURE__*/React.createElement("u", null, browser.i18n.getMessage("message.fromHeader")), " ", /*#__PURE__*/React.createElement(ContactLabel, {
       className: "",
       contact: this.props.from,
       detailView: true
-    })), !!this.props.to.length && React.createElement("div", {
+    })), !!this.props.to.length && /*#__PURE__*/React.createElement("div", {
       className: "detailsLine toLine"
-    }, React.createElement("u", null, this.props.strings.get("fieldTo")), " ", React.createElement(ContactLine, {
+    }, /*#__PURE__*/React.createElement("u", null, browser.i18n.getMessage("message.toHeader")), " ", /*#__PURE__*/React.createElement(ContactLine, {
       className: "to",
       contacts: this.props.to
-    })), !!this.props.cc.length && React.createElement("div", {
+    })), !!this.props.cc.length && /*#__PURE__*/React.createElement("div", {
       className: "detailsLine ccLine"
-    }, React.createElement("u", null, this.props.strings.get("fieldCc")), " ", React.createElement(ContactLine, {
+    }, /*#__PURE__*/React.createElement("u", null, browser.i18n.getMessage("message.ccHeader")), " ", /*#__PURE__*/React.createElement(ContactLine, {
       className: "cc",
       contacts: this.props.cc
-    })), !!this.props.bcc.length && React.createElement("div", {
+    })), !!this.props.bcc.length && /*#__PURE__*/React.createElement("div", {
       className: "detailsLine bccLine"
-    }, React.createElement("u", null, this.props.strings.get("fieldBcc")), " ", React.createElement(ContactLine, {
+    }, /*#__PURE__*/React.createElement("u", null, browser.i18n.getMessage("message.bccHeader")), " ", /*#__PURE__*/React.createElement(ContactLine, {
       className: "bcc",
       contacts: this.props.bcc
     })), this.props.extraLines && !!this.props.extraLines.length && this.props.extraLines.map((line, i) => {
-      return React.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         className: "detailsLine",
         key: i
-      }, React.createElement("u", null, line.key, ":"), " ", line.value);
+      }, /*#__PURE__*/React.createElement("u", null, line.key, ":"), " ", line.value);
     }));
   }
 
@@ -62,6 +62,5 @@ MessageDetails.propTypes = {
   cc: PropTypes.array.isRequired,
   extraLines: PropTypes.array.isRequired,
   from: PropTypes.object.isRequired,
-  strings: PropTypes.object.isRequired,
   to: PropTypes.array.isRequired
 };

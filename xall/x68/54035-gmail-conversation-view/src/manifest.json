@@ -10,31 +10,29 @@
   "name": "__MSG_extensionName__",
   "default_locale": "en",
   "description": "__MSG_extensionDescription__",
-  "version": "3.0.18",
+  "version": "3.1.16",
   "homepage_url": "http://github.com/protz/thunderbird-conversations/wiki",
-  "legacy": {
-    "type": "bootstrap"
-  },
   "background": {
     "page": "background.html"
   },
   "options_ui": {
     "open_in_tab": true,
-    "page": "options.html"
+    "page": "options/options.html"
   },
-  "permissions": ["addressBooks", "messagesRead", "messagesMove", "storage"],
+  "permissions": [
+    "accountsRead",
+    "addressBooks",
+    "messagesRead",
+    "messagesMove",
+    "storage",
+    "tabs"
+  ],
   "experiment_apis": {
     "conversations": {
       "schema": "experiment-api/schema.json",
       "parent": {
-        "scopes": [
-          "addon_parent"
-        ],
-        "paths": [
-          [
-            "conversations"
-          ]
-        ],
+        "scopes": ["addon_parent"],
+        "paths": [["conversations"]],
         "script": "experiment-api/api.js",
         "events": ["startup"]
       }
@@ -42,15 +40,17 @@
     "convContacts": {
       "schema": "experiment-api/contactsSchema.json",
       "parent": {
-        "scopes": [
-          "addon_parent"
-        ],
-        "paths": [
-          [
-            "convContacts"
-          ]
-        ],
+        "scopes": ["addon_parent"],
+        "paths": [["convContacts"]],
         "script": "experiment-api/contactsApi.js"
+      }
+    },
+    "convMsgWindow": {
+      "schema": "experiment-api/msgWindowSchema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["convMsgWindow"]],
+        "script": "experiment-api/msgWindowApi.js"
       }
     }
   },

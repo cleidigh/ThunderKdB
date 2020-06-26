@@ -25,22 +25,21 @@ class _ConversationFooter extends React.PureComponent {
   }
 
   render() {
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "bottom-links"
-    }, React.createElement("a", {
+    }, /*#__PURE__*/React.createElement("a", {
       className: "link",
       onClick: this.forwardConversation
-    }, this.props.strings.get("stub.forward.tooltip")), " "); // TODO: Get printing working again.
+    }, browser.i18n.getMessage("message.forwardConversation")), " "); // TODO: Get printing working again.
     // –{" "}
     // <a className="link" onClick={this.printConversation}>
-    //   {this.props.strings.get("stub.print.tooltip")}
+    //   {browser.i18n.getMessage("message.printConversation")}
     // </a>
   }
 
 }
 
 _ConversationFooter.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  strings: PropTypes.object.isRequired
+  dispatch: PropTypes.func.isRequired
 };
 const ConversationFooter = ReactRedux.connect()(_ConversationFooter);

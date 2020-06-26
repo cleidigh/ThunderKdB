@@ -428,16 +428,27 @@ END LICENSE BLOCK
     # Remove double quote from alt attribute in %file(image,alttext)%
     # [issue 46] In Thunderbird 60, mixed Stationery / SmartTemplate, external html file items added by SmartTemplate⁴ do not work. 
     
-  Version 2.9.1 - WIP
+  Version 2.9.1 - 14/02/2020
     # since v2.9: template may not work if signature path is invalid  
     
   Version 2.10.1 - 14/04/2020
     # [issue 59] supports image tags with relative location
-    # [issue 54] Support including external style sheet with %style()%
+    # [issue 56] Support including external style sheet with %style()%
     # [issue 51] Fixed: Outgoing SMTP always using DEFAULT account.
     # [issue 54] Remove unwanted empty lines in reply/forward headers in plain-text emails
     # [issue 55] Added back some of the support for Postbox
     # [issue 58] Guessing firstName is from AB can  lead to last name duplication 
+
+  Version 2.11 - 09/06/2020
+    # [issue 60] Fixed difficulties with screenreader navigation in Settings Dialog
+    # [issue 24] Allow changing template from Composer screen
+    # Completed Serbian Locale  
+
+  Version 2.11.1 - WIP
+    # [issue 64] Regression: external template is removed when changing "from:" address
+    # Change Template button - translate to 19 languages.
+    # [issue 67] Regression (2.11): License warning screen comes up unexpectedly and number of "To:" rows restricted
+    # [issue 68] Regression (2.11): After update SmartTemplate⁴ always displays nonlicensed support sites
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -687,17 +698,19 @@ var SmartTemplate4 = {
 	// -------------------------------------------------------------------
 	// A handler to add template message
 	// -------------------------------------------------------------------
-	notifyComposeBodyReady: function notifyComposeBodyReady(evt) 	{
+	notifyComposeBodyReady: function notifyComposeBodyReady(evt, isChangeTemplate, win=null) 	{
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util,
 					Ci = Components.interfaces,
 					msgComposeType = Ci.nsIMsgCompType;
+          
+    isChangeTemplate = isChangeTemplate || false; // we need this for [isue 29] change template in composer window
 		// maybe use 		GetCurrentEditor() and find out  stuff from there
 		// get last opened 3pane window - but we really need the owner of the "write button"
 		// we clicked. 
 		// That window stores SmartTemplate4.fileTemplates.armedEntry
 		// we need this to retrieve the file Template path and title!
-		let ownerWin = util.Mail3PaneWindow,
+		let ownerWin = win || util.Mail3PaneWindow, // for changing the template our current composer window is the context
 		    fileTemplateSource = null; // for fileTemplates, echeck if null and o.failed, otherwise o.HTML shoulde be the tempalte
 		
 		// check if a file template is active. we need to get the window from the originating event!
@@ -744,6 +757,9 @@ var SmartTemplate4 = {
 				flags.isFileTemplate = true; // !!! new Stationery substitution
         if (!flags.filePaths) flags.filePaths = [];
         flags.filePaths.push(theFileTemplate.path); // remember the path. let's put it on a stack.
+        /**********      GLOBAL VARIABLE!!! - SCOPED TO COMPOSER WINDOW      **********/
+        // [issue 64] memorize the file template path in Composer! So we can change from address and reload it.
+        window.SmartTemplate4.CurrentTemplate = theFileTemplate;
 			}
 		}
 				
@@ -807,19 +823,41 @@ var SmartTemplate4 = {
 		    isInserted = false;
 		try {
 			if (prefs.isDebugOption('stationery')) debugger;
-			if (!root.getAttribute('smartTemplateInserted') || flags.isThunderbirdTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
+			if (!root.getAttribute('smartTemplateInserted') || flags.isThunderbirdTemplate || isChangeTemplate)  // typeof window.smartTemplateInserted === 'undefined' || window.smartTemplateInserted == false
 			{ 
 				isInserted = true;
 				// if insertTemplate throws, we avoid calling it again
-				this.smartTemplate.insertTemplate(!flags.isThunderbirdTemplate, flags, fileTemplateSource); // if a Tb template is opened, process without removal
+        let isStartup = isChangeTemplate ? false : !flags.isThunderbirdTemplate;
+        if (isChangeTemplate && gMsgCompose.bodyModified) {
+          let cancelled = false,
+              w1 = util.getBundleString("SmartTemplate4.notification.editedChangeWarning",
+                   "You have already typed text and want to change to template {0}"),
+              q1 = util.getBundleString("SmartTemplate4.notification.editedChangeChallenge",
+                   "Any text you entered manually since opening composer will be deleted, without Undo. Continue anyway?");            
+          SmartTemplate4.Message.display(
+            w1.replace("{0}", fileTemplateSource.label) + "\n" + q1, 
+            "centerscreen,titlebar,modal,dialog",
+            { ok: function() { ; },
+              cancel: function() { cancelled = true; }
+            } , win
+          );    
+          if (cancelled) {
+            flags.filePaths.pop();
+            return;
+          }
+        }
+        flags.isChangeTemplate = isChangeTemplate;
+				this.smartTemplate.insertTemplate(isStartup, flags, fileTemplateSource); // if a Tb template is opened, process without removal
 				// store a flag in the document
 			  //let div = SmartTemplate4.Util.mailDocument.createElement("div");
 				root.setAttribute("smartTemplateInserted","true");
 				//editor.insertNode(div, editor.rootElement, 0);
 				// window.smartTemplateInserted = true;
 				this.smartTemplate.resetDocument(editor, true);
-				
-				util.logDebugOptional('functions', 'insertTemplate(startup) complete.');
+				if (isChangeTemplate)
+          util.logDebugOptional('functions', 'Change Template: insertTemplate() complete.');
+        else
+          util.logDebugOptional('functions', 'insertTemplate(startup) complete.');
 			}
 			else {
 				util.logDebug('smartTemplateInserted is already set');
@@ -901,7 +939,19 @@ var SmartTemplate4 = {
         // [issue 51]
         this.original_LoadIdentity(false); // make sure Tb does everything it needs to the from header!
 				// Add template message - will also remove previous template and quoteHeader.
-			  this.smartTemplate.insertTemplate(false);
+        if (window.SmartTemplate4.CurrentTemplate) {
+          //[issue 64] reload the same template if it was remembered.
+          let fileTemplateSource = SmartTemplate4.fileTemplates.retrieveTemplate(window.SmartTemplate4.CurrentTemplate);
+          if (fileTemplateSource.failed) { // shouldn't actually happen as we just loaded it before
+				    let text = util.getBundleString("SmartTemplate4.fileTemplates.error.filePath",
+				      "Could not load the file template '{0}' from path:\n{1}\nThe file may have been removed or renamed.");
+            alert(text); 
+          }
+          else
+            this.smartTemplate.insertTemplate(false, window.SmartTemplate4.PreprocessingFlags, fileTemplateSource);
+        }
+        else
+			    this.smartTemplate.insertTemplate(false);
 				// [Bug 25104] when switching identity, old sig does not get removed.
 				//             (I think what really happens is that it is inserted twice)
 				isTemplateProcessed = true;

@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* globals React, PropTypes, Quoting */
+/* globals React, PropTypes, Quoting, messageActions */
 
 /* exported MessageIFrame */
 let index = 0; // From https://searchfox.org/mozilla-central/rev/ec806131cb7bcd1c26c254d25cd5ab8a61b2aeb6/parser/nsCharsetSource.h
@@ -37,7 +37,7 @@ class MessageIFrame extends React.Component {
 
     this.dueToExpansion = undefined;
 
-    if (prevProps.neckoUrl.spec != this.props.neckoUrl.spec && this.props.expanded) {
+    if (prevProps.neckoUrl != this.props.neckoUrl && this.props.expanded) {
       // This is a hack which ensures that the iframe is a minimal height, so
       // that when the message loads, the scroll height is set correctly, rather
       // than to the potential height of the previously loaded message.
@@ -66,7 +66,7 @@ class MessageIFrame extends React.Component {
       // This ensures that if the message is subsequently expanded, the proper
       // notifications are sent.
 
-      if (prevProps.neckoUrl.spec != this.props.neckoUrl.spec) {
+      if (prevProps.neckoUrl != this.props.neckoUrl) {
         this.iframe.src = "about:blank";
         this.currentUrl = "about:blank";
       }
@@ -81,8 +81,7 @@ class MessageIFrame extends React.Component {
         type: "MSG_STREAM_MSG",
         docshell: this.iframe.contentWindow.docShell,
         dueToExpansion: this.dueToExpansion,
-        msgUri: this.props.msgUri,
-        neckoUrl: this.props.neckoUrl
+        msgUri: this.props.msgUri
       });
     }
   }
@@ -112,8 +111,7 @@ class MessageIFrame extends React.Component {
       this.props.dispatch({
         type: "MSG_STREAM_MSG",
         docshell: docShell,
-        msgUri: this.props.msgUri,
-        neckoUrl: this.props.neckoUrl
+        msgUri: this.props.msgUri
       });
     } else {
       this.iframe.classList.add("hidden");
@@ -198,7 +196,7 @@ class MessageIFrame extends React.Component {
       return [];
     }
 
-    let textSize = Math.round(this.props.prefs.defaultFontSize * this.props.prefs.tenPxFactor * 1.2); // Assuming 16px is the default (like on, say, Linux), this gives
+    let textSize = Math.round(this.props.defaultFontSize * this.props.tenPxFactor * 1.2); // Assuming 16px is the default (like on, say, Linux), this gives
     //  18px and 12px, which is what Andy had in mind.
     // We're applying the style at the beginning of the <head> tag and
     //  on the body element so that it can be easily overridden by the
@@ -217,8 +215,8 @@ class MessageIFrame extends React.Component {
     // usually they just black/white so this is pretty much what we want.
 
 
-    let fg = this.props.prefs.browserForegroundColor;
-    let bg = this.props.prefs.browserBackgroundColor;
+    let fg = this.props.browserForegroundColor;
+    let bg = this.props.browserBackgroundColor;
     styleRules = styleRules.concat(["body {", "  margin: 0; padding: 0;", "  color: " + fg + "; background-color: " + bg + ";", "}"]);
     return styleRules;
   }
@@ -262,12 +260,18 @@ class MessageIFrame extends React.Component {
 
   detectBlocks(iframe, testNode, hideText, showText, linkClass, linkColor) {
     let iframeDoc = iframe.contentDocument;
-    let smallSize = this.props.prefs.tweakChrome ? this.props.prefs.defaultFontSize * this.props.prefs.tenPxFactor * 1.1 : Math.round(100 * this.props.prefs.defaultFontSize * 11 / 12) / 100; // this function adds a show/hide block text link to every topmost
+    let smallSize = this.props.prefs.tweakChrome ? this.props.defaultFontSize * this.props.tenPxFactor * 1.1 : Math.round(100 * this.props.defaultFontSize * 11 / 12) / 100; // this function adds a show/hide block text link to every topmost
     // block. Nested blocks are not taken into account.
 
     function _walk(elt) {
       for (let i = elt.childNodes.length - 1; i >= 0; --i) {
-        let c = elt.childNodes[i];
+        let c = elt.childNodes[i]; // Skip iframes and tables, we shouldn't need to go into those at all.
+
+        let tagName = c.tagName && c.tagName.toLowerCase();
+
+        if (tagName == "iframe" || tagName == "table") {
+          continue;
+        }
 
         if (testNode(c)) {
           let div = iframeDoc.createElement("div");
@@ -288,7 +292,7 @@ class MessageIFrame extends React.Component {
 
     let walk = _walk.bind(this);
 
-    walk(iframeDoc);
+    walk(iframeDoc.body);
   }
 
   detectQuotes(iframe) {
@@ -320,7 +324,7 @@ class MessageIFrame extends React.Component {
 
 
     if (this.props.initialPosition > 0) {
-      this.detectBlocks(iframe, isBlockquote.bind(this), this.props.strings.get("hideQuotedText"), this.props.strings.get("showQuotedText"), "showhidequote", "orange");
+      this.detectBlocks(iframe, isBlockquote.bind(this), browser.i18n.getMessage("messageBody.hideQuotedText"), browser.i18n.getMessage("messageBody.showQuotedText"), "showhidequote", "orange");
     }
   }
 
@@ -333,7 +337,7 @@ class MessageIFrame extends React.Component {
       return node.classList && node.classList.contains("moz-txt-sig");
     }
 
-    this.detectBlocks(iframe, isSignature, this.props.strings.get("hideSigText"), this.props.strings.get("showSigText"), "showhidesig", "rgb(56, 117, 215)");
+    this.detectBlocks(iframe, isSignature, browser.i18n.getMessage("messageBody.hideSigText"), browser.i18n.getMessage("messageBody.showSigText"), "showhidesig", "rgb(56, 117, 215)");
   }
 
   injectCss(iframeDoc) {
@@ -342,7 +346,11 @@ class MessageIFrame extends React.Component {
     return ['blockquote[type="cite"] {', "  border-right-width: 0px;", "  border-left: 1px #ccc solid;", "  color: #666 !important;", "}", "span.moz-txt-formfeed {", "  height: auto;", "}"];
   }
 
-  _onDOMLoaded() {
+  _onDOMLoaded(event) {
+    if (event.target.documentURI == "about:blank") {
+      return;
+    }
+
     const iframeDoc = this.iframe.contentDocument;
     let styleRules = this.tweakFonts(iframeDoc);
 
@@ -363,16 +371,15 @@ class MessageIFrame extends React.Component {
   }
 
   onClickIframe(event) {
-    this.props.dispatch({
-      type: "MSG_CLICK_IFRAME",
+    this.props.dispatch(messageActions.clickIframe({
       event
-    });
+    }));
   }
 
   render() {
     // TODO: See comment in componentDidMount
     // <iframe className={`iframe${this.index}`} type="content" ref={f => this.iframe = f}/>
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: `iframewrap${this.index}`,
       ref: d => this.div = d
     });
@@ -381,13 +388,16 @@ class MessageIFrame extends React.Component {
 }
 
 MessageIFrame.propTypes = {
+  browserBackgroundColor: PropTypes.string.isRequired,
+  browserForegroundColor: PropTypes.string.isRequired,
+  defaultFontSize: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
   expanded: PropTypes.bool.isRequired,
   hasRemoteContent: PropTypes.bool.isRequired,
   initialPosition: PropTypes.number.isRequired,
   msgUri: PropTypes.string.isRequired,
-  neckoUrl: PropTypes.object.isRequired,
+  neckoUrl: PropTypes.string.isRequired,
+  tenPxFactor: PropTypes.number.isRequired,
   prefs: PropTypes.object.isRequired,
-  realFrom: PropTypes.string.isRequired,
-  strings: PropTypes.object.isRequired
+  realFrom: PropTypes.string.isRequired
 };

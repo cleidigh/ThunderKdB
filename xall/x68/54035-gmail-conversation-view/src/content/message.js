@@ -3,8 +3,8 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 /* globals React, PropTypes, Attachments, MessageHeader, MessageFooter,
-           MessageIFrame, StringBundle, SpecialMessageTags, MessageTags,
-           MessageDetails, MessageNotification */
+           MessageIFrame, SpecialMessageTags, MessageTags, QuickReply,
+           MessageDetails, MessageNotification, messageActions */
 
 /* exported Message */
 function isAccel(event) {
@@ -18,20 +18,21 @@ function isAccel(event) {
 class Message extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.strings = new StringBundle("chrome://conversations/locale/template.properties");
     this.onSelected = this.onSelected.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   componentDidMount() {
     if (this.lastScrolledMsgUri != this.props.message.msgUri && this.props.message.scrollTo) {
-      this.lastScrolledMsgUri = this.props.message.msgUri; // The header is 44px high (yes, this is harcodeadly ugly).
+      this.lastScrolledMsgUri = this.props.message.msgUri; // The header is 44px high (yes, this is hard coded and ugly).
 
       window.requestAnimationFrame(() => {
         window.scrollTo(0, this.li.getBoundingClientRect().top + window.scrollY + 5 - 44);
         this.onSelected();
       });
     }
+
+    this.checkLateAttachments();
   }
 
   componentDidUpdate(prevProps) {
@@ -53,10 +54,20 @@ class Message extends React.PureComponent {
         this.onSelected();
       });
     }
+
+    this.checkLateAttachments();
   }
 
   componentWillUnmount() {
     this.removeScrollListener();
+  }
+
+  checkLateAttachments() {
+    if (this.props.message.expanded && this.props.message.needsLateAttachments) {
+      this.props.dispatch(messageActions.getLateAttachments({
+        id: this.props.message.id
+      }));
+    }
   }
 
   removeScrollListener() {
@@ -86,10 +97,9 @@ class Message extends React.PureComponent {
   }
 
   onSelected() {
-    this.props.dispatch({
-      type: "MSG_SELECTED",
+    this.props.dispatch(messageActions.selected({
       msgUri: this.props.message.msgUri
-    });
+    }));
   }
 
   onKeyDown(event = {}) {
@@ -108,33 +118,29 @@ class Message extends React.PureComponent {
     switch (shortcut) {
       case "accel-r":
       case "accel-R":
-        this.props.dispatch({
-          type: "MSG_REPLY",
+        this.props.dispatch(messageActions.reply({
           msgUri: this.props.message.msgUri,
           shiftKey
-        });
+        }));
         stopEvent();
         break;
 
       case "accel-l":
-        this.props.dispatch({
-          type: "MSG_OPEN_FORWARD",
+        this.props.dispatch(messageActions.forward({
           msgUri: this.props.message.msgUri
-        });
+        }));
         break;
 
       case "accel-u":
-        this.props.dispatch({
-          type: "MSG_OPEN_SOURCE",
+        this.props.dispatch(messageActions.openSource({
           msgUri: this.props.message.msgUri
-        });
+        }));
         break;
 
       case "a":
-        this.props.dispatch({
-          type: "MSG_ARCHIVE",
+        this.props.dispatch(messageActions.archive({
           id: this.props.message.id
-        });
+        }));
         break;
 
       case "o":
@@ -153,23 +159,21 @@ class Message extends React.PureComponent {
       case "7":
       case "8":
       case "9":
-        this.props.dispatch({
-          type: "MSG_TOGGLE_TAG_BY_INDEX",
+        this.props.dispatch(messageActions.toggleTagByIndex({
           id: this.props.message.id,
           tags: this.props.message.tags,
           // Tag indexes start at 0
           index: +shortcut - 1
-        });
+        }));
         stopEvent();
         break;
 
       case "0":
         // Remove all tags
-        this.props.dispatch({
-          type: "MSG_SET_TAGS",
+        this.props.dispatch(messageActions.setTags({
           id: this.props.message.id,
           tags: []
-        });
+        }));
         stopEvent();
         break;
 
@@ -210,11 +214,12 @@ class Message extends React.PureComponent {
     }
 
     if (this._topInView && this._bottomInView) {
-      this.read = true;
-      this.props.dispatch({
-        type: "MSG_MARK_AS_READ",
-        msgUri: this.props.message.msgUri
-      });
+      if (!this.props.message.read) {
+        this.props.dispatch(messageActions.markAsRead({
+          id: this.props.message.id
+        }));
+      }
+
       this.removeScrollListener();
     }
   }
@@ -224,7 +229,7 @@ class Message extends React.PureComponent {
     // and attachments container. Need to figure out how to get that back in
     // and working.
     // <div class="body-container"></div>
-    return React.createElement("li", {
+    return /*#__PURE__*/React.createElement("li", {
       className: "message",
       ref: li => {
         this.li = li;
@@ -234,7 +239,7 @@ class Message extends React.PureComponent {
       onFocusCapture: this.onSelected,
       onClickCapture: this.onSelected,
       onKeyDownCapture: this.onKeyDown
-    }, React.createElement(MessageHeader, {
+    }, /*#__PURE__*/React.createElement(MessageHeader, {
       dispatch: this.props.dispatch,
       bcc: this.props.message.bcc,
       cc: this.props.message.cc,
@@ -256,93 +261,92 @@ class Message extends React.PureComponent {
       starred: this.props.message.starred,
       tags: this.props.message.tags,
       specialTags: this.props.message.specialTags
-    }), this.props.message.expanded && this.props.message.detailsShowing && React.createElement(MessageDetails, {
+    }), this.props.message.expanded && this.props.message.detailsShowing && /*#__PURE__*/React.createElement(MessageDetails, {
       bcc: this.props.message.bcc,
       cc: this.props.message.cc,
       extraLines: this.props.message.extraLines,
       from: this.props.message.from,
-      to: this.props.message.to,
-      strings: this.strings
-    }), this.props.message.expanded && React.createElement(MessageNotification, {
+      to: this.props.message.to
+    }), this.props.message.expanded && /*#__PURE__*/React.createElement(MessageNotification, {
       canUnJunk: this.props.message.isJunk && !this.props.displayingMultipleMsgs,
       dispatch: this.props.dispatch,
       extraNotifications: this.props.message.extraNotifications,
       hasRemoteContent: this.props.message.hasRemoteContent,
       isPhishing: this.props.message.isPhishing,
       isOutbox: this.props.message.isOutbox,
+      id: this.props.message.id,
       msgUri: this.props.message.msgUri,
-      realFrom: this.props.message.realFrom,
-      strings: this.strings
-    }), React.createElement("div", {
+      realFrom: this.props.message.realFrom
+    }), /*#__PURE__*/React.createElement("div", {
       className: "messageBody"
-    }, this.props.message.expanded && React.createElement(SpecialMessageTags, {
+    }, this.props.message.expanded && /*#__PURE__*/React.createElement(SpecialMessageTags, {
       onFolderClick: () => {
-        this.props.dispatch({
-          type: "SWITCH_TO_FOLDER",
-          msgUri: this.props.message.msgUri
-        });
+        this.props.dispatch(messageActions.switchToFolderAndMsg({
+          id: this.props.message.id
+        }));
       },
       onTagClick: (event, tag) => {
-        this.props.dispatch({
-          type: "TAG_CLICK",
+        this.props.dispatch(messageActions.tagClick({
           event,
           msgUri: this.props.message.msgUri,
           details: tag.details
-        });
+        }));
       },
       folderName: this.props.message.folderName,
       inView: this.props.message.inView,
-      specialTags: this.props.message.specialTags,
-      strings: this.strings
-    }), this.props.message.expanded && React.createElement(MessageTags, {
+      specialTags: this.props.message.specialTags
+    }), this.props.message.expanded && /*#__PURE__*/React.createElement(MessageTags, {
       onTagsChange: tags => {
-        this.props.dispatch({
-          type: "MSG_SET_TAGS",
+        this.props.dispatch(messageActions.setTags({
           id: this.props.message.id,
           tags
-        });
+        }));
       },
       expanded: true,
       tags: this.props.message.tags
-    }), React.createElement(MessageIFrame, {
+    }), /*#__PURE__*/React.createElement(MessageIFrame, {
+      browserBackgroundColor: this.props.browserBackgroundColor,
+      browserForegroundColor: this.props.browserForegroundColor,
+      defaultFontSize: this.props.defaultFontSize,
       dispatch: this.props.dispatch,
       expanded: this.props.message.expanded,
       hasRemoteContent: this.props.message.hasRemoteContent,
       initialPosition: this.props.message.initialPosition,
       msgUri: this.props.message.msgUri,
       neckoUrl: this.props.message.neckoUrl,
+      tenPxFactor: this.props.tenPxFactor,
       prefs: this.props.prefs,
-      realFrom: this.props.message.realFrom,
-      strings: this.strings
-    }), this.props.message.expanded && !!this.props.message.attachments.length && React.createElement(Attachments, {
+      realFrom: this.props.message.realFrom
+    }), this.props.message.expanded && !!this.props.message.attachments.length && /*#__PURE__*/React.createElement(Attachments, {
       dispatch: this.props.dispatch,
       attachments: this.props.message.attachments,
       attachmentsPlural: this.props.message.attachmentsPlural,
-      msgUri: this.props.message.msgUri,
-      gallery: this.props.message.gallery,
-      strings: this.strings
-    })), this.props.message.expanded && React.createElement(MessageFooter, {
+      messageKey: this.props.message.messageKey,
+      msgUri: this.props.message.msgUri
+    })), this.props.message.expanded && /*#__PURE__*/React.createElement(MessageFooter, {
       dispatch: this.props.dispatch,
       id: this.props.message.id,
       msgUri: this.props.message.msgUri,
       multipleRecipients: this.props.message.multipleRecipients,
       recipientsIncludeLists: this.props.message.recipientsIncludeLists,
       isDraft: this.props.message.isDraft
-    }), this.props.isLastMessage && this.props.message.expanded && React.createElement("div", {
-      dir: "ltr"
-    }, React.createElement("small", null, React.createElement("i", null, "Quick Reply is temporarily disabled due to needing more work for Thunderbird 68."))));
+    }), this.props.isLastMessage && this.props.message.expanded && /*#__PURE__*/React.createElement(QuickReply, null));
   }
 
 }
 
 Message.propTypes = {
   autoMarkAsRead: PropTypes.bool.isRequired,
+  browserBackgroundColor: PropTypes.string.isRequired,
+  browserForegroundColor: PropTypes.string.isRequired,
+  defaultFontSize: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
   displayingMultipleMsgs: PropTypes.bool.isRequired,
   iframesLoading: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   isLastMessage: PropTypes.bool.isRequired,
   message: PropTypes.object.isRequired,
+  tenPxFactor: PropTypes.number.isRequired,
   prefs: PropTypes.object.isRequired,
   setRef: PropTypes.func.isRequired,
   advanceMessage: PropTypes.func.isRequired

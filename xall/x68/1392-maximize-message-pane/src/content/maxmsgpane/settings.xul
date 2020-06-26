@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://maxmsgpane/skin/maxmsgpane.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://maxmsgpane/locale/mmp_settings.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  buttons="accept, cancel"
+  title="&mmpset.title;"
+  id="maxmsgpane-settings"
+  flex="0"
+  onload="initMMPSettings();"
+  style="width:40em;max-width:50em;"
+  persist="screenX screenY">
+
+  <script type="application/javascript" src="chrome://maxmsgpane/content/utils.js"/>
+  <script type="application/javascript" src="chrome://maxmsgpane/content/settings.js"/>
+	<script type="application/javascript" src="chrome://global/content/elements/stringbundle.js"/>
+
+  <stringbundleset id="stringbundleset">
+	<stringbundle id="localeBundle"
+	  src="chrome://maxmsgpane/locale/mmp_settings.properties"/>
+  </stringbundleset>
+  
+  <!--
+  <broadcasterset id="MMPSetBroadcaster">
+	<broadcaster id="MMPSet:UseNavi" disabled="false"/>
+  </broadcasterset>
+  -->
+  <tabbox flex="1">
+	<tabs>
+	  <tab id="mptab" label="&mmpset.mptab;"/>
+	  <tab id="fptab" label="&mmpset.fptab;"/>
+	  <tab id="skeytab" label="&mmpset.skeytab;"/>
+	  <tab id="misctab" label="&mmpset.misctab;"/>
+	</tabs>
+	<tabpanels>
+	  <!-- Options -->
+	  <tabpanel>
+		<vbox flex="1">
+		  <groupbox id="mp_max_grp">
+		  	<!--
+			<caption label="&mmpset.mpmax_cap;"/>
+			-->
+			<hbox  class="groupbox-title">
+			<label value="&mmpset.mpmax_cap;" class="header"/>
+			</hbox>
+			<vbox>
+
+			  <!-- Collapse Options -->
+			  <label value="&mmpset.mpcol_cap;"/>
+			  <hbox>
+				<spacer style="width:2.0em;"/>
+				<vbox>
+				  <checkbox id="MMPCollapseFolder" label="&mmpset.col_folder;"
+						prefstring="maxmsgpane.collapse_folder" defaultpref="false"
+						restart="false"/>
+				  <checkbox id="MMPCollapseHeader" label="&mmpset.col_header;"
+						prefstring="maxmsgpane.collapse_header" defaultpref="false"
+						restart="false"/>
+				  <checkbox id="MMPCollapseAttach" label="&mmpset.col_attach;"
+						prefstring="maxmsgpane.collapse_attach" defaultpref="false"
+						restart="false"/>
+				  <checkbox id="MMPCollapseLtnToday" label="&mmpset.col_ltn;"
+						prefstring="maxmsgpane.collapse_ltntoday" defaultpref="false"
+						restart="false"/>
+					<hbox align="center" flex="1">
+						<label value="&mmpset.col_other;"/>
+						<textbox id="MMPCollapseOther" prefstring="maxmsgpane.usr_idlist" 
+									 defaultpref="" restart="false" flex="1"/>
+					</hbox>
+					<hbox align="center" flex="1">
+						<!--
+					  <spacer style="width:2.0em;"/>
+					  -->
+  					<label value="&mmpset.col_other_note;"/>
+					</hbox>
+				</vbox>
+			  </hbox>
+			  <spacer style="height:1.0em;"/>
+			  
+			  <!-- How to Toggle -->
+			  <label value="&mmpset.mptoggle_cap;"/>
+			  <hbox>
+				<spacer style="width:2.0em;"/>
+				<vbox>
+				  <checkbox id="MMPToggleByHdr" label="&mmpset.use_header;"
+					prefstring="maxmsgpane.hdr" defaultpref="true"
+					restart="true" oncommand="gMMPSettings.initDisabled()"/>
+				  <hbox>
+					<spacer style="width:2.0em;"/>
+					<radiogroup id="HdrMouseEvent" orient="horizontal"
+					  prefstring="maxmsgpane.hdr_toggle_event" defaultpref="1"
+					  restart="true">
+					  <radio id="radio_hdrsclk" value="0"
+						label="&mmpset.header_clk;"/>
+					  <radio id="radio_hdrdclk" value="1"
+						label="&mmpset.header_dclk;"/>
+					</radiogroup>
+					</hbox>
+					<hbox>
+					<spacer style="width:2.0em;"/>
+				  <checkbox id="MMPHdrMouseButton"
+					prefstring="maxmsgpane.forbid_lmb_on_hdr"
+					label = "&mmpset.toggle_mmb;"
+					oncommand="gMMPSettings.initDisabled()"
+					defaultpref="false" restart="false"/>
+				  </hbox>
+				  <checkbox id="MMPToggleByTSplitter"
+					prefstring="maxmsgpane.tsplitter"
+					label = "&mmpset.use_tsplitter;"
+					oncommand="gMMPSettings.initDisabled()"
+					defaultpref="true" restart="true"/>
+				  <hbox>
+					<spacer style="width:2.0em;"/>
+					<vbox flex="1">
+					  <radiogroup id="TSMouseEvent" orient="horizontal"
+						prefstring="maxmsgpane.tsplitter_toggle_event" defaultpref="1"
+						restart="true">
+						  <radio id="tsplitter_sclk" value="0"
+							label="&mmpset.tsplit_clk;"/>
+						  <radio id="tsplitter_dclk" value="1"
+							label="&mmpset.tsplit_dclk;"/>
+					  </radiogroup>
+					  <hbox align="center">
+						<label id="tsplitter_action_label" value="&mmpset.tsplit_act_label;"/>
+						<menulist id="TSActionList" label="..." defaultpref="0"
+						  prefstring="maxmsgpane.tsplitter_hide" restart="true">
+						  <menupopup>
+							<menuitem id="ts_max" label="&mmpset.tsplit_mpmax;"/>
+							<menuitem id="ts_hidden" label="&mmpset.tsplit_mphidden;"/>
+						  </menupopup>
+						</menulist>
+					  </hbox>
+					</vbox>
+				  </hbox>
+				  <checkbox id="MMPToggleByMsgDClick" label="&mmpset.msg_dclk;"
+					prefstring="maxmsgpane.msg_dclicked" defaultpref="true"
+					restart="false"/>
+				  <checkbox id="MMPRestoreByFolSelChange" label="&mmpset.folsel_restore;"
+					prefstring="maxmsgpane.folsel_restore" defaultpref="true"
+					restart="false"/>
+					<!--
+				  <checkbox id="MMPMaxWoSel" label="Maximize even if no message is selected"
+					prefstring="maxmsgpane.allow_max_wo_selection" defaultpref="false"
+					restart="false"/>
+					-->
+				  <checkbox id="MMPUseShortcut" label="&mmpset.mp_use_skey;"
+					prefstring="maxmsgpane.use_shortcut" defaultpref="true"
+					restart="false"/>
+				</vbox>
+			  </hbox>
+			</vbox>
+		  </groupbox>
+		  <vbox align="right">
+			<button id="mp_default" label="&mmpset.restore_default;"
+			  oncommand="gMMPSettings.defaultMP()"/>
+		  </vbox>
+		</vbox>
+	  </tabpanel>
+
+	  <tabpanel>
+		<vbox flex="1">
+		<groupbox id="fp_min_grp">
+			<!--
+		  <caption label = "&mmpset.fpmin_cap;"/>
+		  -->
+	    <hbox class="groupbox-title">
+		  	<label value = "&mmpset.fpmin_cap;" class="header"/>
+		  </hbox>
+		  <label value="&mmpset.fptoggle_cap;"/>
+		  <hbox>
+			<spacer style="width:2.0em;"/>
+			<vbox>
+			  <checkbox id="MMPToggleByFSplitter"
+				prefstring="maxmsgpane.fsplitter"
+				label = "&mmpset.use_fsplitter;"
+				oncommand="gMMPSettings.initDisabled()"
+				defaultpref="true" restart="true"/>
+			  <hbox>
+				<spacer style="width:2.0em;"/>
+				<radiogroup id="FSMouseEvent" orient="horizontal"
+				  prefstring="maxmsgpane.fsplitter_toggle_event" defaultpref="1"
+				  restart="true">
+				  <radio id="fsplitter_sclk" value="0"
+					label="&mmpset.fsplit_clk;"/>
+				  <radio id="fsplitter_dclk" value="1"
+					label="&mmpset.fsplit_dclk;"/>
+				</radiogroup>
+			  </hbox>
+			  <checkbox id="MMPUseFPShortcut" label="&mmpset.fp_use_skey;"
+				prefstring="maxmsgpane.fp_use_shortcut" defaultpref="true"
+				restart="false"/>
+				<!--
+			  <checkbox id="MMPShowFPClsButton" label="&mmpset.fp_close_button;"
+				prefstring="maxmsgpane.fp_close_button" defaultpref="true"
+				restart="false"/>
+				-->
+			</vbox>
+		  </hbox>
+		</groupbox>
+		<vbox align="right">
+		  <button id="fp_default" label="&mmpset.restore_default;"
+			oncommand="gMMPSettings.defaultFP()"/>
+		</vbox>
+	  </vbox>
+	  </tabpanel>
+	  
+	  <!-- Shortcut key configurations -->
+	  <tabpanel>
+		<vbox flex="1">
+		  <label value="&mmpset.skey_notice;"/>
+		  <label value="&mmpset.skey_notice2;"/>
+		  <!-- Message pane -->
+		  <groupbox id="skey_group">
+		  	<!--
+			<caption label="&mmpset.mp_skey;"/>
+			-->
+			<hbox class="groupbox-title">
+				<label value="&mmpset.mp_skey;" class="header"/>
+			</hbox>
+			<vbox>
+			  <spacer style="height:0.5em"/>
+			  <hbox align="center">
+				<label value="&mmpset.skey_lab;"/>
+				<groupbox orient="vertical" align="center" style="min-width:8.5em">
+				  <label id="shortcut_key" value="" skey="" prefstring="maxmsgpane.key"
+					defaultpref="VK_F8" restart="true"/>
+				</groupbox>
+				<spacer style="width:1.0em"/>
+				<button id="change_key" label="&mmpset.chkey_lab;"
+				  disabled="false" onclick="gMMPSettings.controlKeyChange(event)"
+				  onkeypress="gMMPSettings.changeKey(event)"
+				  onblur="gMMPSettings.cancelKeyChange(event)"/>
+			  </hbox>
+			  <spacer style="height:1.0em;"/>
+			  <hbox align="center">
+				<label value="&mmpset.skey_modifier;"/>
+				<spacer style="height:1.0em"/>
+				<checkbox id="shortcut-modifier-accel" label="&mmpset.skey_accel;"
+				  prefstring="maxmsgpane.accel_key" defaultpref="false"
+				  restart="true"/>
+				<checkbox id="shortcut-modifier-alt" label="&mmpset.skey_alt;"
+				  prefstring="maxmsgpane.alt_key" defaultpref="false"
+				  restart="true"/>
+				<checkbox id="shortcut-modifier-ctrl" label="&mmpset.skey_ctrl;"
+				  prefstring="maxmsgpane.ctrl_key" defaultpref="false"
+				  restart="true"/>
+				<checkbox id="shortcut-modifier-meta" label="&mmpset.skey_meta;"
+				  prefstring="maxmsgpane.meta_key" defaultpref="false"
+				  restart="true"/>
+				<checkbox id="shortcut-modifier-shift" label="&mmpset.skey_shift;"
+				  prefstring="maxmsgpane.shift_key" defaultpref="true"
+				  restart="true"/>
+			  </hbox>
+			</vbox>
+		  </groupbox>
+
+		  <!-- Folder pane -->
+		  <groupbox id="fp_skey_group">
+		  <!--
+			<caption label="&mmpset.fp_skey;"/>
+			-->
+			<hbox class="groupbox-title">
+				<label value="&mmpset.fp_skey;" class="header"/>
+			</hbox>
+			<vbox>
+			  <spacer style="height:0.5em"/>
+			  <hbox align="center" flex ="1">
+				<label value="&mmpset.skey_lab;"/>
+				<groupbox orient="vertical" align="center" style="min-width:8.5em">
+				  <label id="fp_shortcut_key" value="" skey=""
+					prefstring="maxmsgpane.fp_key"
+					defaultpref="VK_F9" restart="true"/>
+				</groupbox>
+				<spacer style="width:1.0em"/>
+				<button id="fp_change_key" label="&mmpset.chkey_lab;"
+				  disabled="false" onclick="gMMPSettings.controlKeyChange(event)"
+				  onkeypress="gMMPSettings.changeKey(event)"
+				  onblur="gMMPSettings.cancelKeyChange(event)"/>
+			  </hbox>
+			  <spacer style="height:1.0em;"/>
+			  <hbox align="center">
+				<label value="&mmpset.skey_modifier;"/>
+				<spacer style="height:1.0em"/>
+				<checkbox id="fp-shortcut-modifier-accel" label="&mmpset.skey_accel;"
+				  prefstring="maxmsgpane.fp_accel_key" defaultpref="false"
+				  restart="true"/>
+				<checkbox id="fp-shortcut-modifier-alt" label="&mmpset.skey_alt;"
+				  prefstring="maxmsgpane.fp_alt_key" defaultpref="false"
+				  restart="true"/>
+				<checkbox id="fp-shortcut-modifier-ctrl" label="&mmpset.skey_ctrl;"
+				  prefstring="maxmsgpane.fp_ctrl_key" defaultpref="false"
+				  restart="true"/>
+				<checkbox id="fp-shortcut-modifier-meta" label="&mmpset.skey_meta;"
+				  prefstring="maxmsgpane.fp_meta_key" defaultpref="false"
+				  restart="true"/>
+				<checkbox id="fp-shortcut-modifier-shift" label="&mmpset.skey_shift;"
+				  prefstring="maxmsgpane.fp_shift_key" defaultpref="false"
+				  restart="true"/>
+			  </hbox>
+			</vbox>
+		  </groupbox>
+		  <vbox align="right">
+			<button id="skey_default" label="&mmpset.restore_default;"
+			  oncommand="gMMPSettings.defaultShortcutKey()"/>
+		  </vbox>
+		</vbox>
+	  </tabpanel>
+	  <!-- Misc tab -->
+	  <tabpanel>
+		<vbox flex="1">
+		<groupbox>
+			<!--
+		  <caption label="&mmpset.restart_caption;"/>
+		  -->
+	    <hbox class="groupbox-title">
+			  <label value="&mmpset.restart_caption;" class="header"/>
+			</hbox>
+		  <vbox>
+			<checkbox id="MMPAutoRestart"
+			  prefstring="maxmsgpane.autorestart"
+			  label = "&mmpset.auto_restart;"
+			  oncommand="gMMPSettings.initDisabled()"
+			  defaultpref="true" restart="false"/>
+			<hbox>
+			  <spacer style="width:2.0em;"/>
+			  <checkbox id="MMPWarnRestart"
+				prefstring="maxmsgpane.warn_restart"
+				label = "&mmpset.confirm_restart;"
+				defaultpref="true" restart="false"/>
+			</hbox>
+		  </vbox>
+		</groupbox>
+		<vbox align="right">
+		  <button id="misc_default" label="&mmpset.restore_default;"
+			oncommand="gMMPSettings.defaultMisc()"/>
+		</vbox>
+	  </vbox>
+	  </tabpanel>
+	</tabpanels>
+  </tabbox>
+</dialog>
+

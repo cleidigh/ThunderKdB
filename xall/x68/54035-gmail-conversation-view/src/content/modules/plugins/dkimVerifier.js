@@ -11,43 +11,29 @@ const { XPCOMUtils } = ChromeUtils.import(
 );
 
 XPCOMUtils.defineLazyModuleGetters(this, {
-  getMail3Pane: "chrome://conversations/content/modules/stdlib/msgHdrUtils.js",
+  BrowserSim: "chrome://conversations/content/modules/browserSim.js",
+  getMail3Pane: "chrome://conversations/content/modules/misc.js",
   registerHook: "chrome://conversations/content/modules/hook.js",
-  setupLogging: "chrome://conversations/content/modules/log.js",
-  StringBundle: "resource:///modules/StringBundle.js",
 });
 
-let Log = setupLogging("Conversations.Modules.DKIMVerifier");
+XPCOMUtils.defineLazyGetter(this, "browser", function () {
+  return BrowserSim.getBrowser();
+});
 
 let hasDKIMVerifier = false;
 var AuthVerifier;
 try {
-  AuthVerifier = ChromeUtils.import(
-    "resource://dkim_verifier/AuthVerifier.jsm",
-    null
-  ).AuthVerifier;
+  AuthVerifier = ChromeUtils.import("resource://dkim_verifier/AuthVerifier.jsm")
+    .AuthVerifier;
   if (AuthVerifier.version.match(/^[0-9]+/)[0] === "1") {
     hasDKIMVerifier = true;
-    Log.debug("DKIM Verifier plugin for Thunderbird Conversations loaded!");
-  } else {
-    Log.debug("DKIM Verifier has incompatible version.");
   }
-} catch (e) {
-  Log.debug(
-    "DKIM Verifier doesn't seem to be installed or has incompatible version."
-  );
-}
-
-let stringBundle;
+} catch (e) {}
 
 if (hasDKIMVerifier) {
-  stringBundle = new StringBundle(
-    "chrome://conversations/locale/template.properties"
-  );
-
   let mailWindow = getMail3Pane();
   let onEndHeaders = mailWindow.DKIM_Verifier.Display.onEndHeaders;
-  mailWindow.DKIM_Verifier.Display.onEndHeaders = function() {
+  mailWindow.DKIM_Verifier.Display.onEndHeaders = function () {
     "use strict";
 
     // don't start a verification for the classic view if it is not shown
@@ -70,8 +56,8 @@ function displayResult(result, msg) {
   msg.addSpecialTag({
     canClick: false,
     classNames: `dkim-signed ${warningsClassName} ${result.dkim[0].result}`,
-    icon: "chrome://conversations/skin/material-icons.svg#edit",
-    name: stringBundle.get("messageDKIMSigned"),
+    icon: "material-icons.svg#edit",
+    name: browser.i18n.getMessage("dkimVerifier.messageDKIMSigned"),
     tooltip: {
       type: "dkim",
       strings: [result.dkim[0].result_str, result.dkim[0].warnings_str],
@@ -84,17 +70,16 @@ let dkimVerifierHook = {
     "use strict";
 
     AuthVerifier.verify(msgHdr).then(
-      result => {
+      (result) => {
         displayResult(result, msg);
       },
-      exception => {
-        Log.debug("Exception in dkimVerifierHook: " + exception);
+      (exception) => {
+        console.error("Exception in dkimVerifierHook: " + exception);
       }
     );
   },
 };
 
 if (hasDKIMVerifier) {
-  registerHook(dkimVerifierHook);
-  Log.debug("DKIM Verifier plugin for Thunderbird Conversations loaded!");
+  registerHook("dkimVerifier", dkimVerifierHook);
 }

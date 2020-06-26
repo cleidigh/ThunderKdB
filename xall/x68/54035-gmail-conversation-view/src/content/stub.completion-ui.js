@@ -1,9 +1,10 @@
 "use strict";
 
-/* exported setupAutocomplete, Colors, getDefaultIdentity, getIdentityForEmail,
-            getIdentities, NS_SUCCEEDED, setupLogging, dumpCallStack */
+/* exported setupAutocomplete, getDefaultIdentity, getIdentityForEmail,
+            getIdentities, setupLogging */
 /* global $, showCc, showBcc, strings */
-/* import-globals-from quickReply.js */
+/* import-globals-from quickReplyOld.js */
+/* import-globals-from reducer.js */
 
 var { MailServices } = ChromeUtils.import(
   "resource:///modules/MailServices.jsm"
@@ -16,18 +17,18 @@ const { MultiSuffixTree } = ChromeUtils.import(
   "resource:///modules/gloda/suffixtree.js"
 );
 const {
-  entries,
   escapeHtml,
   getDefaultIdentity,
   getIdentityForEmail,
   getIdentities,
-  NS_SUCCEEDED,
 } = ChromeUtils.import("chrome://conversations/content/modules/stdlib/misc.js");
-const { setupLogging, dumpCallStack, Colors } = ChromeUtils.import(
-  "chrome://conversations/content/modules/log.js"
+const { setupLogging } = ChromeUtils.import(
+  "chrome://conversations/content/modules/misc.js"
 );
 
-let Log = setupLogging("Conversations.Stub.Completion");
+XPCOMUtils.defineLazyGetter(this, "Log", () => {
+  return setupLogging("Conversations.Stub.Completion");
+});
 
 try {
   // eslint-disable-next-line no-unused-vars
@@ -113,11 +114,11 @@ ContactIdentityCompleter.prototype = {
     }
     // and since we can now map from contacts down to identities, map contacts
     //  to the first identity for them that we find...
-    matches = Array.from(entries(contactToThing)).map(([, val]) =>
+    matches = Array.from(Object.entries(contactToThing)).map(([, val]) =>
       val.NOUN_ID == Gloda.NOUN_IDENTITY ? val : val.identities[0]
     );
 
-    let rows = matches.map(match =>
+    let rows = matches.map((match) =>
       asToken(
         match.pictureURL(),
         match.contact.name != match.value ? match.contact.name : null,
@@ -168,13 +169,13 @@ ContactIdentityCompleter.prototype = {
         Gloda.NOUN_IDENTITY
       ];
 
-      let contactNames = this.contactCollection.items.map(function(c) {
+      let contactNames = this.contactCollection.items.map(function (c) {
         return c.name.replace(" ", "").toLowerCase() || "x";
       });
       // if we had no contacts, we will have no identity collection!
       let identityMails;
       if (this.identityCollection) {
-        identityMails = this.identityCollection.items.map(function(i) {
+        identityMails = this.identityCollection.items.map(function (i) {
           return i.value.toLowerCase();
         });
       }
@@ -232,7 +233,7 @@ ContactIdentityCompleter.prototype = {
 
       // sort in order of descending popularity
       possibleDudes.sort(this._popularitySorter);
-      let rows = possibleDudes.map(function(dude) {
+      let rows = possibleDudes.map(function (dude) {
         return asToken(
           dude.pictureURL(),
           dude.contact.name != dude.value ? dude.contact.name : null,
@@ -287,7 +288,7 @@ let autoCompleteClasses = {
 
 function setupAutocomplete(to, cc, bcc) {
   // This function assumes aInput is #something
-  let fill = function(aInput, aList, aData) {
+  let fill = function (aInput, aList, aData) {
     // Cleanup the mess left by tokenInput.
     let $parent = $(aInput).parent();
     $parent.empty();
@@ -298,17 +299,16 @@ function setupAutocomplete(to, cc, bcc) {
         classes: autoCompleteClasses,
         prePopulate: aData,
       });
-    } catch (e) {
-      Log.debug("Error in jquery-autocomplete", e);
-      dumpCallStack(e);
-      throw e;
+    } catch (ex) {
+      console.error("Error in jquery-autocomplete", ex);
+      throw ex;
     }
     $(aList + " li:not(.add-more)").remove();
     $(aList + " .recipientListSeparator").remove();
     let list = document.getElementsByClassName(aList.substring(1))[0];
     let marker = list.getElementsByClassName("add-more")[0];
     // Never, ever use jquery in a loop.
-    aData.forEach(function({ name, email }, i) {
+    aData.forEach(function ({ name, email }, i) {
       if (email) {
         let sep;
         if (aData.length <= 1) {

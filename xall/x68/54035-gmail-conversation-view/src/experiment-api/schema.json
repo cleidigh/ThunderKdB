@@ -3,6 +3,19 @@
     "namespace": "conversations",
     "functions": [
       {
+        "name": "getCorePref",
+        "type": "function",
+        "description": "Temporary. Gets a core preference.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "The preference name"
+          }
+        ]
+      },
+      {
         "name": "getPref",
         "type": "function",
         "description": "Temporary. Gets a conversation preference.",
@@ -34,6 +47,13 @@
         ]
       },
       {
+        "name": "getLocaleDirection",
+        "type": "function",
+        "description": "Temporary. Gets the current locale direction.",
+        "async": true,
+        "parameters": []
+      },
+      {
         "name": "installCustomisations",
         "type": "function",
         "description": "Temporary. Sets initial customisations",
@@ -48,6 +68,13 @@
             }
           }
         ]
+      },
+      {
+        "name": "undoCustomizations",
+        "type": "function",
+        "description": "Removes the installed customizations.",
+        "async": true,
+        "parameters": []
       },
       {
         "name": "getLegacyStorageData",
@@ -70,10 +97,23 @@
         ]
       },
       {
+        "name": "getMessageUriForId",
+        "type": "function",
+        "description": "Temporary. Gets the message uri for a given message id",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "The messageId"
+          }
+        ]
+      },
+      {
         "name": "getAttachmentBody",
         "type": "function",
         "description": "Temporary. Gets the attachment body for a particular message and part (xref bug 1606552)",
-        "async": "true",
+        "async": true,
         "parameters": [
           {
             "name": "id",
@@ -91,7 +131,7 @@
         "name": "formatFileSize",
         "type": "function",
         "description": "Temporary. Formats the file size (xref bug 1606575).",
-        "async": "true",
+        "async": true,
         "parameters": [
           {
             "name": "size",
@@ -104,7 +144,7 @@
         "name": "createTab",
         "type": "function",
         "description": "Temporary. Creates a content or chrome tab. What we'll need to replace with depends on Message Attachments API",
-        "async": "true",
+        "async": true,
         "parameters": [
           {
             "name": "createTabProperties",
@@ -117,8 +157,136 @@
               "type": {
                 "type": "string",
                 "description": "The type of tab to open."
+              },
+              "windowId": {
+                "type": "integer",
+                "optional": true,
+                "minimum": -2,
+                "description": "The window id to create the new tab in."
               }
             }
+          }
+        ]
+      },
+      {
+        "name": "getIsJunk",
+        "type": "function",
+        "description": "Temporary for 68 only. Gets if a message is junk or not",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "The message id to get"
+          }
+        ]
+      },
+      {
+        "name": "resetMessagePane",
+        "type": "function",
+        "description": "Temporary, resets the message pane.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "invalidateCache",
+        "type": "function",
+        "description": "Temporary, invalidates the startup cache.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "getLateAttachments",
+        "type": "function",
+        "description": "Gets the late attachmnent information for a message.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "The message id to get data for."
+          }
+        ]
+      },
+      {
+        "name": "makePlural",
+        "type": "function",
+        "description": "Extracts a plural from a l10n message string.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "pluralForm",
+            "type": "string",
+            "description": "The plural form to use."
+          },
+          {
+            "name": "message",
+            "type": "string",
+            "description": "The l10n message string."
+          },
+          {
+            "name": "value",
+            "type": "integer",
+            "description": "The value to insert into the string."
+          }
+        ]
+      },
+      {
+        "name": "markSelectedAsJunk",
+        "type": "function",
+        "description": "Marks the selected messages as junk. May be replaced once bug 1642225 is fixed.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "isJunk",
+            "type": "boolean",
+            "description": "To mark as junk or not."
+          }
+        ]
+      },
+      {
+        "name": "switchToFolderAndMsg",
+        "type": "function",
+        "description": "Switch to a particular folder/message combination.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "The message id to switch to."
+          }
+        ]
+      },
+      {
+        "name": "sendUnsent",
+        "type": "function",
+        "description": "Triggers sending of unsent messages.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "openInSourceView",
+        "type": "function",
+        "description": "Opens a message source view.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "The message id to view source for."
+          }
+        ]
+      },
+      {
+        "name": "openInClassic",
+        "type": "function",
+        "description": "Opens a message in the classic view.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "The message id to view in classic mode."
           }
         ]
       }
@@ -147,6 +315,25 @@
               "type": "any"
             },
             "description": "The arguments to call."
+          }
+        ]
+      },
+      {
+        "name": "onCorePrefChanged",
+        "type": "function",
+        "description": "Temporary. Listens for pref changes.",
+        "parameters": [
+          {
+            "name": "prefValue",
+            "type": "any",
+            "description": "The new value of the pref."
+          }
+        ],
+        "extraParameters": [
+          {
+            "name": "prefName",
+            "type": "string",
+            "description": "The preference name to listen to."
           }
         ]
       }

@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* globals React, ReactRedux, PropTypes */
+/* globals React, ReactRedux, PropTypes, SvgIcon, messageActions */
 
 /* exported ConversationHeader */
 const LINKS_REGEX = /((\w+):\/\/[^<>()'"\s]+|www(\.[-\w]+){2,})/;
@@ -25,9 +25,9 @@ class LinkifiedSubject extends React.PureComponent {
     let subject = this.props.subject;
 
     if (this.props.loading) {
-      subject = this.props.strings.get("stub.loading");
+      subject = browser.i18n.getMessage("message.loading");
     } else if (!subject) {
-      subject = this.props.strings.get("stub.no.subject");
+      subject = browser.i18n.getMessage("message.noSubject");
     }
 
     if (LINKS_REGEX.test(this.props.subject)) {
@@ -37,7 +37,7 @@ class LinkifiedSubject extends React.PureComponent {
       while (text && LINKS_REGEX.test(text)) {
         let matches = LINKS_REGEX.exec(text);
         let [pre, ...post] = text.split(matches[1]);
-        let link = React.createElement("a", {
+        let link = /*#__PURE__*/React.createElement("a", {
           href: matches[1],
           title: matches[1],
           className: "link",
@@ -56,13 +56,13 @@ class LinkifiedSubject extends React.PureComponent {
         contents.push(text);
       }
 
-      return React.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         className: "subject boxFlex",
         title: this.props.subject
-      }, React.createElement("span", null, contents));
+      }, /*#__PURE__*/React.createElement("span", null, contents));
     }
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "subject boxFlex",
       title: this.props.subject
     }, this.props.subject);
@@ -73,7 +73,6 @@ class LinkifiedSubject extends React.PureComponent {
 LinkifiedSubject.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  strings: PropTypes.object.isRequired,
   subject: PropTypes.string.isRequired
 };
 
@@ -89,15 +88,11 @@ class _ConversationHeader extends React.PureComponent {
   }
 
   archiveToolbar(event) {
-    this.props.dispatch({
-      type: "ARCHIVE_CONVERSATION"
-    });
+    this.props.dispatch(messageActions.archiveConversation());
   }
 
   delete(event) {
-    this.props.dispatch({
-      type: "DELETE_CONVERSATION"
-    });
+    this.props.dispatch(messageActions.deleteConversation());
   }
   /**
    * This function gathers various information, encodes it in a URL query
@@ -107,9 +102,7 @@ class _ConversationHeader extends React.PureComponent {
 
 
   detachTab(event) {
-    this.props.dispatch({
-      type: "DETACH_TAB"
-    });
+    this.props.dispatch(messageActions.detachTab());
   }
 
   get areSomeMessagesCollapsed() {
@@ -126,7 +119,7 @@ class _ConversationHeader extends React.PureComponent {
     // We can never junk a conversation in a new tab, because the junk
     // command only operates on selected messages, and we're not in a
     // 3pane context anymore.
-    return this.props.msgData && this.props.msgData.length <= 1 && this.props.msgData.some(msg => !msg.isJunk); // msgmsgHdrIsJunk(toMsgHdr(this.messages[0]))),
+    return this.props.msgData && this.props.msgData.length <= 1 && this.props.msgData.some(msg => !msg.isJunk);
   }
 
   expandCollapse(event) {
@@ -142,6 +135,7 @@ class _ConversationHeader extends React.PureComponent {
     //  i.e. the currently selected message
     this.props.dispatch({
       type: "MARK_AS_JUNK",
+      id: this.props.msgData[0].id,
       isJunk: true
     });
   } // Mark the current conversation as read/unread. The conversation driver
@@ -150,96 +144,69 @@ class _ConversationHeader extends React.PureComponent {
 
 
   toggleRead(event) {
-    this.props.dispatch({
-      type: "TOGGLE_CONVERSATION_READ",
+    this.props.dispatch(messageActions.toggleConversationRead({
       read: this.areSomeMessagesUnread
-    });
+    }));
   }
 
   render() {
     document.title = this.props.subject;
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "conversationHeaderWrapper"
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "conversationHeader hbox"
-    }, React.createElement(LinkifiedSubject, {
+    }, /*#__PURE__*/React.createElement(LinkifiedSubject, {
       dispatch: this.props.dispatch,
       loading: this.props.loading,
-      strings: this.props.strings,
       subject: this.props.subject
-    }), React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("div", {
       className: "actions"
-    }, React.createElement("button", {
+    }, /*#__PURE__*/React.createElement("button", {
       className: "button-flat",
-      title: this.props.strings.get("stub.trash.tooltip"),
+      title: browser.i18n.getMessage("message.trash.tooltip"),
       onClick: this.delete
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#delete"
-    }))), React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "delete"
+    })), /*#__PURE__*/React.createElement("button", {
       className: "button-flat",
-      title: this.props.strings.get("stub.archive.tooltip"),
+      title: browser.i18n.getMessage("message.archive.tooltip"),
       onClick: this.archiveToolbar
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#archive"
-    }))), this.canJunk && React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "archive"
+    })), this.canJunk && /*#__PURE__*/React.createElement("button", {
       className: "button-flat junk-button",
-      title: this.props.strings.get("stub.junk.tooltip"),
+      title: browser.i18n.getMessage("message.junk.tooltip"),
       onClick: this.junkConversation
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#whatshot"
-    }))), React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "whatshot"
+    })), /*#__PURE__*/React.createElement("button", {
       className: "button-flat",
-      title: this.props.strings.get("stub.expand.tooltip"),
+      title: browser.i18n.getMessage("message.expand.tooltip"),
       onClick: this.expandCollapse
-    }, React.createElement("svg", {
+    }, /*#__PURE__*/React.createElement("svg", {
       className: `icon expand ${this.areSomeMessagesCollapsed ? "" : "collapse"}`,
       viewBox: "0 0 24 24",
       xmlns: "http://www.w3.org/2000/svg",
       xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
+    }, /*#__PURE__*/React.createElement("use", {
       className: "expand-more",
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#expand_more"
-    }), React.createElement("use", {
+      xlinkHref: "material-icons.svg#expand_more"
+    }), /*#__PURE__*/React.createElement("use", {
       className: "expand-less",
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#expand_less"
-    }))), React.createElement("button", {
-      className: "button-flat",
-      title: this.props.strings.get("stub.read.tooltip"),
+      xlinkHref: "material-icons.svg#expand_less"
+    }))), /*#__PURE__*/React.createElement("button", {
+      className: `button-flat ${this.areSomeMessagesUnread ? "unread" : ""}`,
+      title: browser.i18n.getMessage("message.read.tooltip"),
       onClick: this.toggleRead
-    }, React.createElement("svg", {
-      className: `icon read ${this.areSomeMessagesUnread ? "unread" : ""}`,
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#new"
-    }))), React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "new"
+    })), /*#__PURE__*/React.createElement("button", {
       className: "button-flat",
-      title: this.props.strings.get("stub.detach.tooltip2"),
+      title: browser.i18n.getMessage("message.detach.tooltip"),
       onClick: this.detachTab
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#open_in_new"
-    }))))));
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "open_in_new"
+    })))));
   }
 
 }
@@ -247,7 +214,6 @@ class _ConversationHeader extends React.PureComponent {
 _ConversationHeader.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  strings: PropTypes.object.isRequired,
   subject: PropTypes.string.isRequired,
   msgData: PropTypes.array.isRequired
 };

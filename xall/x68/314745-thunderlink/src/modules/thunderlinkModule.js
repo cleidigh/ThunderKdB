@@ -93,6 +93,31 @@ function openThunderlink(mailURL) {
           }
         }
       }
+    } else if (/^mid:/.test(mailURL)) {
+
+      // strip off the "mid:" prefix.
+      let messageID = mailURL.slice("mid:".length);
+
+      // Make sure the folder tree is initialized
+      MailUtils.discoverFolders();
+
+      // Search all folders for messageID.
+      var accountManager = Components.classes["@mozilla.org/messenger/account-manager;1"]
+        .getService(Components.interfaces.nsIMsgAccountManager);
+      var folders = accountManager.allFolders;
+      var foldersArray = fixIterator(folders.enumerate(), Components.interfaces.nsIMsgFolder);
+      for (var msgFolder of foldersArray) {
+        if (msgHdr !== null) {
+          break;
+        }
+        try {
+          msgHdr = msgFolder.msgDatabase.getMsgHdrForMessageID(messageID);
+        } catch (e) {
+          Components.utils.reportError("caught exception while accessing folder " + msgFolder.folderURL + ":\n" + e);
+        }
+      }
+    } else {
+      Components.utils.reportError("unrecognized URL: " + mailURL + "\n");
     }
 
     if (msgHdr) {
@@ -149,12 +174,24 @@ function replaceVariables(template, hdr) {
   result = result.replace(/<messageid>/ig, hdr.messageId);
   result = result.replace(/<subject>/ig, subject);
   result = result.replace(/<filteredSubject>/ig, protectedSubject);
-  result = result.replace(/<sender>/ig, GlodaUtils.deMime(hdr.author));
+
+  var author = GlodaUtils.parseMailAddresses(hdr.author);
+  result = result.replace(/<sender>/ig, author.fullAddresses[0]);
+  result = result.replace(/<senderName>/ig, author.names[0]);
+  result = result.replace(/<senderEmail>/ig, author.addresses[0]);
+
   result = result.replace(/<tbexe>/ig, "\"" + getThunderlinkPathToExe() + "\" -thunderlink ");
 
   const date = new Date(hdr.date / 1000);
-  const dateString = date.toLocaleDateString() + " - " + date.toLocaleTimeString();
-  result = result.replace(/<time>/ig, dateString);
+  const isoDate = date.toISOString();
+  const splitDateTime = date.toISOString().split("T");
+  const dateString = splitDateTime[0];
+  const timeString = splitDateTime[1].substring(0, splitDateTime[1].length-1);
+  const localeDateString = date.toLocaleDateString() + " - " + date.toLocaleTimeString();
+  result = result.replace(/<localeTime>/ig, localeDateString);
+  result = result.replace(/<time>/ig, isoDate);
+  result = result.replace(/<date>/ig, dateString);
+  result = result.replace(/<dateTime>/ig, timeString);
 
   return result;
 }

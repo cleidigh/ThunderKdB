@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "name": "Message Pane Button",
+  "description": "Adds a Message Button",
+  "version": "2.0",
+  "experiment_apis": {
+    "toggleMessagePaneApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "toggleMessagePaneApi"
+          ]
+        ],
+        "script": "implementation.js"
+      }
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_title": "Preview",
+    "default_area": "tabstrip",
+    "default_icon": "toggleMessagePane.svg"
+  },
+  "applications": {
+    "gecko": {
+      "id": "k4bzh7e219izp2893716207utjj1qxnv3kr9yxv5vl3q7y80c84r50w873arh81l@ral.ral",
+      "strict_min_version": "68.0"
+    }
+  },
+  "icons": {
+    "32": "msg-pane-large.png",
+    "64": "msg-pane-large.png"
+  }
+}

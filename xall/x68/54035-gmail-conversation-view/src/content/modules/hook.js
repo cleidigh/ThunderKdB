@@ -76,12 +76,12 @@ var EXPORTED_SYMBOLS = ["registerHook", "getHooks", "removeHook"];
  * */
 let hooks = [];
 
-function registerHook(h) {
+function registerHook(name, h) {
   hooks.push(h);
 }
 
 function removeHook(h) {
-  hooks = hooks.filter(x => x != h);
+  hooks = hooks.filter((x) => x != h);
 }
 
 function getHooks() {

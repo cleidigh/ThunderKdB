@@ -2,9 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* globals PropTypes, React */
+/* globals PropTypes, React, SvgIcon, attachmentActions */
 
 /* exported Attachments */
+const ICON_MAPPING = new Map([["application/msword", "x-office-document"], ["application/vnd.ms-excel", "x-office-spreadsheet"], ["application/vnd.ms-powerpoint", "x-office-presentation"], ["application/rtf", "x-office-document"], ["application/zip", "package-x-generic"], ["application/bzip2", "package-x-generic"], ["application/x-gzip", "package-x-generic"], ["application/x-tar", "package-x-generic"], ["application/x-compressed", "package-x-generic"], // "message/": "email",
+["text/x-vcalendar", "x-office-calendar"], ["text/x-vcard", "x-office-address-book"], ["text/html", "text-html"], ["application/pdf", "application-pdf"], ["application/x-pdf", "application-pdf"], ["application/x-bzpdf", "application-pdf"], ["application/x-gzpdf", "application-pdf"]]);
+const FALLBACK_ICON_MAPPING = new Map([// Fallbacks, at the end.
+["video/", "video-x-generic"], ["audio/", "audio-x-generic"], ["image/", "image-x-generic"], ["text/", "text-x-generic"]]);
+const PDF_MIME_TYPES = ["application/pdf", "application/x-pdf", "application/x-bzpdf", "application/x-gzpdf"];
+const RE_MSGKEY = /number=(\d+)/;
+
 class Attachment extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -16,14 +23,25 @@ class Attachment extends React.PureComponent {
     this.detachAttachment = this.detachAttachment.bind(this);
   }
 
+  isImage(contentType) {
+    return contentType.startsWith("image/");
+  }
+
+  isViewable(contentType) {
+    return this.isImage(contentType) || contentType.startsWith("text/");
+  }
+
+  isPdf(contentType) {
+    return PDF_MIME_TYPES.includes(contentType);
+  }
+
   preview() {
-    this.props.dispatch({
-      type: "PREVIEW_ATTACHMENT",
+    this.props.dispatch(attachmentActions.previewAttachment({
       name: this.props.name,
       url: this.props.url,
-      isPdf: this.props.isPdf,
-      maybeViewable: this.props.maybeViewable
-    });
+      isPdf: this.isPdf(this.props.contentType),
+      maybeViewable: this.isViewable(this.props.contentType)
+    }));
   }
 
   onDragStart(event) {
@@ -44,8 +62,7 @@ class Attachment extends React.PureComponent {
   }
 
   downloadAttachment() {
-    this.props.dispatch({
-      type: "DOWNLOAD_ATTACHMENT",
+    this.props.dispatch(attachmentActions.downloadAttachment({
       msgUri: this.props.msgUri,
       attachment: {
         contentType: this.props.contentType,
@@ -54,12 +71,11 @@ class Attachment extends React.PureComponent {
         size: this.props.size,
         url: this.props.url
       }
-    });
+    }));
   }
 
   openAttachment() {
-    this.props.dispatch({
-      type: "OPEN_ATTACHMENT",
+    this.props.dispatch(attachmentActions.openAttachment({
       msgUri: this.props.msgUri,
       attachment: {
         contentType: this.props.contentType,
@@ -68,12 +84,11 @@ class Attachment extends React.PureComponent {
         size: this.props.size,
         url: this.props.url
       }
-    });
+    }));
   }
 
   detachAttachment() {
-    this.props.dispatch({
-      type: "DETACH_ATTACHMENT",
+    this.props.dispatch(attachmentActions.detachAttachment({
       msgUri: this.props.msgUri,
       shouldSave: true,
       attachment: {
@@ -83,12 +98,11 @@ class Attachment extends React.PureComponent {
         size: this.props.size,
         url: this.props.url
       }
-    });
+    }));
   }
 
   deleteAttachment() {
-    this.props.dispatch({
-      type: "DETACH_ATTACHMENT",
+    this.props.dispatch(attachmentActions.detachAttachment({
       msgUri: this.props.msgUri,
       shouldSave: false,
       attachment: {
@@ -98,85 +112,97 @@ class Attachment extends React.PureComponent {
         size: this.props.size,
         url: this.props.url
       }
-    });
+    }));
+  }
+
+  iconForMimeType(mimeType) {
+    if (ICON_MAPPING.has(mimeType)) {
+      return ICON_MAPPING.get(mimeType) + ".svg";
+    }
+
+    let split = mimeType.split("/");
+
+    if (split.length && FALLBACK_ICON_MAPPING.has(split[0] + "/")) {
+      return FALLBACK_ICON_MAPPING.get(split[0] + "/") + ".svg";
+    }
+
+    return "gtk-file.png";
   }
 
   render() {
-    const enablePreview = this.props.isPdf || this.props.maybeViewable;
-    const imgTitle = enablePreview ? this.props.strings.get("viewAttachment") : ""; // TODO: Drag n drop
-    // Disabled due to contextmenu which is only supported in Gecko.
+    const isPdf = this.isPdf(this.props.contentType);
+    const enablePreview = isPdf || this.isViewable(this.props.contentType);
+    const imgTitle = enablePreview ? browser.i18n.getMessage("attachments.viewAttachment.tooltip") : "";
+    let thumb;
+    let imgClass;
+
+    if (this.isImage(this.props.contentType)) {
+      thumb = this.props.url.replace(RE_MSGKEY, "number=" + this.props.messageKey);
+      imgClass = "resize-me";
+    } else {
+      thumb = "icons/" + this.iconForMimeType(this.props.contentType);
+      imgClass = "mime-icon";
+    } // TODO: Drag n drop
+    // Note: contextmenu is only supported in Gecko, though React will complain
+    // about it.
     // Hoping to turn this into WebExtension based context menus at some
     // stage: https://github.com/protz/thunderbird-conversations/issues/1416
 
     /* eslint-disable react/no-unknown-property */
 
-    return React.createElement("li", {
+
+    return /*#__PURE__*/React.createElement("li", {
       className: "clearfix hbox attachment",
       contextmenu: `attachmentMenu-${this.props.anchor}`
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "attachmentThumb" + (enablePreview ? " view-attachment" : ""),
       draggable: "true",
       onClick: this.preview,
       onDragStart: this.onDragStart
-    }, React.createElement("img", {
-      className: this.props.imgClass,
-      src: this.props.thumb,
+    }, /*#__PURE__*/React.createElement("img", {
+      className: imgClass,
+      src: thumb,
       title: imgTitle
-    })), React.createElement("div", {
+    })), /*#__PURE__*/React.createElement("div", {
       className: "attachmentInfo align"
-    }, React.createElement("span", {
+    }, /*#__PURE__*/React.createElement("span", {
       className: "filename"
-    }, this.props.name), React.createElement("span", {
+    }, this.props.name), /*#__PURE__*/React.createElement("span", {
       className: "filesize"
-    }, this.props.formattedSize), React.createElement("div", {
+    }, this.props.formattedSize), /*#__PURE__*/React.createElement("div", {
       className: "attachActions"
-    }, this.props.isPdf && React.createElement("a", {
+    }, isPdf && /*#__PURE__*/React.createElement("a", {
       className: "icon-link preview-attachment",
-      title: this.props.strings.get("preview"),
+      title: browser.i18n.getMessage("attachments.preview.tooltip"),
       onClick: this.preview
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#visibility"
-    }))), React.createElement("a", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "visibility"
+    })), /*#__PURE__*/React.createElement("a", {
       className: "icon-link download-attachment",
-      title: this.props.strings.get("download2"),
+      title: browser.i18n.getMessage("attachments.download.tooltip"),
       onClick: this.downloadAttachment
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#file_download"
-    }))), React.createElement("a", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "file_download"
+    })), /*#__PURE__*/React.createElement("a", {
       className: "icon-link open-attachment",
-      title: this.props.strings.get("open"),
+      title: browser.i18n.getMessage("attachments.open.tooltip"),
       onClick: this.openAttachment
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#search"
-    }))))), React.createElement("menu", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "search"
+    })))), /*#__PURE__*/React.createElement("menu", {
       id: `attachmentMenu-${this.props.anchor}`,
       type: "context"
-    }, React.createElement("menuitem", {
-      label: this.props.strings.get("stub.context.open"),
+    }, /*#__PURE__*/React.createElement("menuitem", {
+      label: browser.i18n.getMessage("attachments.context.open"),
       onClick: this.openAttachment
-    }), React.createElement("menuitem", {
-      label: this.props.strings.get("stub.context.save"),
+    }), /*#__PURE__*/React.createElement("menuitem", {
+      label: browser.i18n.getMessage("attachments.context.save"),
       onClick: this.downloadAttachment
-    }), React.createElement("menuitem", {
-      label: this.props.strings.get("stub.context.detach"),
+    }), /*#__PURE__*/React.createElement("menuitem", {
+      label: browser.i18n.getMessage("attachments.context.detach"),
       onClick: this.detachAttachment
-    }), React.createElement("menuitem", {
-      label: this.props.strings.get("stub.context.delete"),
+    }), /*#__PURE__*/React.createElement("menuitem", {
+      label: browser.i18n.getMessage("attachments.context.delete"),
       onClick: this.deleteAttachment
     })));
     /* eslint-enable react/no-unknown-property */
@@ -189,15 +215,11 @@ Attachment.propTypes = {
   dispatch: PropTypes.func.isRequired,
   contentType: PropTypes.string.isRequired,
   formattedSize: PropTypes.string.isRequired,
-  imgClass: PropTypes.string.isRequired,
   isExternal: PropTypes.bool.isRequired,
-  isPdf: PropTypes.bool.isRequired,
-  maybeViewable: PropTypes.bool.isRequired,
+  messageKey: PropTypes.number.isRequired,
   msgUri: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
-  strings: PropTypes.object.isRequired,
-  thumb: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired
 };
 
@@ -209,70 +231,54 @@ class Attachments extends React.PureComponent {
   }
 
   showGalleryView() {
-    this.props.dispatch({
+    this.props.dispatch(attachmentActions.showGalleryView({
       type: "SHOW_GALLERY_VIEW",
       msgUri: this.props.msgUri
-    });
+    }));
   }
 
   downloadAll() {
-    this.props.dispatch({
-      type: "DOWNLOAD_ALL",
+    this.props.dispatch(attachmentActions.downloadAll({
       msgUri: this.props.msgUri,
-      attachmentDetails: this.props.attachments.map(attachment => {
-        return {
-          contentType: attachment.contentType,
-          isExternal: attachment.isExternal,
-          name: attachment.name,
-          size: attachment.size,
-          url: attachment.url
-        };
-      })
-    });
+      attachmentDetails: this.props.attachments.map(attachment => ({
+        contentType: attachment.contentType,
+        isExternal: attachment.isExternal,
+        name: attachment.name,
+        size: attachment.size,
+        url: attachment.url
+      }))
+    }));
   }
 
   render() {
-    return React.createElement("ul", {
+    const showGalleryLink = this.props.attachments.some(a => a.contentType.startsWith("image/"));
+    return /*#__PURE__*/React.createElement("ul", {
       className: "attachments"
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "attachHeader"
-    }, this.props.attachmentsPlural, React.createElement("a", {
+    }, this.props.attachmentsPlural, /*#__PURE__*/React.createElement("a", {
       className: "icon-link download-all",
       onClick: this.downloadAll,
-      title: this.props.strings.get("downloadAll2")
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#file_download"
-    }))), this.props.gallery && React.createElement("a", {
+      title: browser.i18n.getMessage("attachments.downloadAll.tooltip")
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "file_download"
+    })), showGalleryLink && /*#__PURE__*/React.createElement("a", {
       onClick: this.showGalleryView,
       className: "icon-link view-all",
-      title: this.props.strings.get("galleryView")
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#photo_library"
-    }))), this.props.attachments.map(attachment => React.createElement(Attachment, {
+      title: browser.i18n.getMessage("attachments.gallery.tooltip")
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "photo_library"
+    })), this.props.attachments.map(attachment => /*#__PURE__*/React.createElement(Attachment, {
       anchor: attachment.anchor,
       dispatch: this.props.dispatch,
       key: attachment.anchor,
       contentType: attachment.contentType,
       isExternal: attachment.isExternal,
-      isPdf: attachment.isPdf,
       formattedSize: attachment.formattedSize,
-      imgClass: attachment.imgClass,
+      messageKey: this.props.messageKey,
       msgUri: this.props.msgUri,
       name: attachment.name,
       size: attachment.size,
-      strings: this.props.strings,
-      thumb: attachment.thumb,
-      maybeViewable: attachment.maybeViewable,
       url: attachment.url
     }))));
   }
@@ -283,7 +289,6 @@ Attachments.propTypes = {
   dispatch: PropTypes.func.isRequired,
   attachments: PropTypes.array.isRequired,
   attachmentsPlural: PropTypes.string.isRequired,
-  msgUri: PropTypes.string.isRequired,
-  gallery: PropTypes.bool.isRequired,
-  strings: PropTypes.object.isRequired
+  messageKey: PropTypes.number.isRequired,
+  msgUri: PropTypes.string.isRequired
 };

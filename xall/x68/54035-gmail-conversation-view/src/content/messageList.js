@@ -27,17 +27,21 @@ function _MessageList(props) {
     ref.focus();
   }
 
-  return React.createElement("ul", {
+  return /*#__PURE__*/React.createElement("ul", {
     id: "messageList"
-  }, !!props.messages.msgData && props.messages.msgData.map((message, index) => React.createElement(Message, {
+  }, !!props.messages.msgData && props.messages.msgData.map((message, index) => /*#__PURE__*/React.createElement(Message, {
     key: index,
     autoMarkAsRead: props.summary.autoMarkAsRead,
+    browserBackgroundColor: props.summary.browserBackgroundColor,
+    browserForegroundColor: props.summary.browserForegroundColor,
+    defaultFontSize: props.summary.defaultFontSize,
     dispatch: props.dispatch,
     displayingMultipleMsgs: !!props.messages.length,
     iframesLoading: props.summary.iframesLoading,
     index: index,
     isLastMessage: index == props.messages.msgData.length - 1,
     message: message,
+    tenPxFactor: props.summary.tenPxFactor,
     prefs: props.summary.prefs,
     advanceMessage: (step = 1) => {
       advanceMessage(index, step);

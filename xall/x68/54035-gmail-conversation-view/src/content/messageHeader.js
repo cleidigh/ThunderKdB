@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* globals React, PropTypes, MessageHeaderOptions, StringBundle, MessageTags
-           SpecialMessageTags, ContactDetail */
+/* globals React, PropTypes, MessageHeaderOptions, MessageTags
+           SpecialMessageTags, ContactDetail, SvgIcon, messageActions */
 
 /* exported MessageHeader */
 class Fade extends React.PureComponent {
@@ -83,7 +83,7 @@ class Fade extends React.PureComponent {
         transition = "transition-out";
       }
 
-      return React.createElement("span", {
+      return /*#__PURE__*/React.createElement("span", {
         className: transition
       }, this.props.children);
     }
@@ -153,38 +153,38 @@ class ContactLabel extends React.PureComponent {
   }
 
   render() {
-    return React.createElement("span", {
+    return /*#__PURE__*/React.createElement("span", {
       className: this.props.className,
       onMouseOver: this.onMouseOver,
       onMouseOut: this.onMouseOut,
       ref: s => this.span = s
-    }, React.createElement(Fade, {
+    }, /*#__PURE__*/React.createElement(Fade, {
       trigger: this.state.hover
-    }, React.createElement(ContactDetail, {
+    }, /*#__PURE__*/React.createElement(ContactDetail, {
       parentSpan: this.span,
       name: this.props.contact.name,
       email: this.props.contact.displayEmail,
       realEmail: this.props.contact.email,
       avatar: this.props.contact.avatar,
-      hasCard: this.props.contact.hasCard
-    })), React.createElement("span", null, this.props.separator), React.createElement("span", {
+      contactId: this.props.contact.contactId
+    })), /*#__PURE__*/React.createElement("span", null, this.props.separator), /*#__PURE__*/React.createElement("span", {
       className: "tooltipWrapper contact"
-    }, React.createElement("span", {
+    }, /*#__PURE__*/React.createElement("span", {
       className: "contactName",
       name: this.props.contact.name,
       email: this.props.contact.displayEmail,
       realemail: this.props.contact.email,
       avatar: this.props.contact.avatar
-    }, this.props.detailView && this.props.contact.hasCard && "\u2605 ", this.props.contact.name.trim(), this.props.contact.extra && React.createElement("label", {
+    }, this.props.detailView && !!this.props.contact.contactId && "\u2605 ", this.props.contact.name.trim(), this.props.contact.extra && /*#__PURE__*/React.createElement("label", {
       xmlns: "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul",
       crop: "center",
       className: "contactExtra",
       value: `(${this.props.contact.extra})`
-    }), !this.props.detailView && this.props.contact.displayEmail && React.createElement("span", {
+    }), !this.props.detailView && this.props.contact.displayEmail && /*#__PURE__*/React.createElement("span", {
       className: "smallEmail"
-    }, " ", "<", this.props.contact.displayEmail.trim(), ">"), this.props.detailView && this.props.contact.email && React.createElement("span", {
+    }, " ", "<", this.props.contact.displayEmail.trim(), ">"), this.props.detailView && this.props.contact.email && /*#__PURE__*/React.createElement("span", {
       className: "smallEmail"
-    }, " ", "<", this.props.contact.email.trim(), ">"), this.props.detailView && React.createElement("br", null))));
+    }, " ", "<", this.props.contact.email.trim(), ">"), this.props.detailView && /*#__PURE__*/React.createElement("br", null))));
   }
 
 }
@@ -201,7 +201,6 @@ class MessageHeader extends React.PureComponent {
     super(props);
     this.onClickHeader = this.onClickHeader.bind(this);
     this.onClickStar = this.onClickStar.bind(this);
-    this.strings = new StringBundle("chrome://conversations/locale/template.properties");
   }
 
   onClickHeader() {
@@ -223,11 +222,10 @@ class MessageHeader extends React.PureComponent {
   onClickStar(event) {
     event.stopPropagation();
     event.preventDefault();
-    this.props.dispatch({
-      type: "MSG_STAR",
+    this.props.dispatch(messageActions.setStarred({
       id: this.props.id,
-      star: !this.props.starred
-    });
+      starred: !this.props.starred
+    }));
   }
 
   _getSeparator(index, length) {
@@ -236,75 +234,67 @@ class MessageHeader extends React.PureComponent {
     }
 
     if (index < length - 1) {
-      return this.strings.get("sepComma");
+      return browser.i18n.getMessage("header.commaSeparator");
     }
 
-    return this.strings.get("sepAnd");
+    return browser.i18n.getMessage("header.andSeparator");
   }
 
   render() {
     const allTo = [...this.props.to, ...this.props.cc, ...this.props.bcc]; // TODO: Maybe insert this after contacts but before snippet:
-    // <span class="bzTo"> {{str "at"}} {{bugzillaUrl}}</span>
+    // <span class="bzTo"> {{str "message.at"}} {{bugzillaUrl}}</span>
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "messageHeader hbox" + (this.props.expanded ? " expanded" : ""),
       onClick: this.onClickHeader
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "shrink-box"
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "star" + (this.props.starred ? " starred" : ""),
       onClick: this.onClickStar
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#star"
-    }))), this.props.from.avatarIsDefault ? React.createElement("abbr", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "star"
+    })), this.props.from.avatarIsDefault ? /*#__PURE__*/React.createElement("abbr", {
       className: "contactInitials",
       style: this.props.from.colorStyle
-    }, this.props.from.initials) : React.createElement("span", {
+    }, this.props.from.initials) : /*#__PURE__*/React.createElement("span", {
       className: "contactAvatar",
       style: {
         backgroundImage: `url('${this.props.from.avatar}')`
       }
-    }, "\u00a0"), " ", React.createElement(ContactLabel, {
+    }, "\u00a0"), " ", /*#__PURE__*/React.createElement(ContactLabel, {
       className: "author",
       contact: this.props.from,
       detailView: false
-    }), this.props.expanded && !this.props.detailsShowing && this.strings.get("to") + " ", this.props.expanded && !this.props.detailsShowing && allTo.map((contact, index) => React.createElement(ContactLabel, {
+    }), this.props.expanded && !this.props.detailsShowing && browser.i18n.getMessage("header.to") + " ", this.props.expanded && !this.props.detailsShowing && allTo.map((contact, index) => /*#__PURE__*/React.createElement(ContactLabel, {
       className: "to",
       contact: contact,
       detailView: false,
       key: index,
       separator: this._getSeparator(index, allTo.length)
-    })), !this.props.expanded && React.createElement("span", {
+    })), !this.props.expanded && /*#__PURE__*/React.createElement("span", {
       className: "snippet"
-    }, React.createElement(MessageTags, {
+    }, /*#__PURE__*/React.createElement(MessageTags, {
       onTagsChange: tags => {
-        this.props.dispatch({
-          type: "MSG_SET_TAGS",
+        this.props.dispatch(messageActions.setTags({
           id: this.props.id,
           tags
-        });
+        }));
       },
       expanded: false,
       tags: this.props.tags
-    }), React.createElement(SpecialMessageTags, {
+    }), /*#__PURE__*/React.createElement(SpecialMessageTags, {
       onTagClick: (event, tag) => {
-        this.props.dispatch({
-          type: "TAG_CLICK",
+        this.props.dispatch(messageActions.tagClick({
           event,
           msgUri: this.props.msgUri,
           details: tag.details
-        });
+        }));
       },
       folderName: this.props.shortFolderName,
       inView: this.props.inView,
-      strings: this.strings,
       specialTags: this.props.specialTags
-    }), this.props.snippet)), React.createElement(MessageHeaderOptions, {
+    }), this.props.snippet)), /*#__PURE__*/React.createElement(MessageHeaderOptions, {
       dispatch: this.props.dispatch,
       date: this.props.date,
       detailsShowing: this.props.detailsShowing,
@@ -342,5 +332,5 @@ MessageHeader.propTypes = {
   starred: PropTypes.bool.isRequired,
   tags: PropTypes.array.isRequired,
   to: PropTypes.array.isRequired,
-  specialTags: PropTypes.array.isRequired
+  specialTags: PropTypes.array
 };

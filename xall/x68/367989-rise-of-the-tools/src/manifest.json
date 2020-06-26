@@ -3,17 +3,26 @@
   "applications": {
     "gecko": {
       "id": "riseofthetools@rsjtdrjgfuzkfg.com",
-      "strict_min_version": "68.0a1"
+      "strict_min_version": "77.0a1"
     }
   },
   "name": "Rise of the Tools",
   "description": "Moves the toolbar back above the tabbar.",
-  "version": "1.2.0.2",
+  "version": "2.0.0.0",
   "author": "rsjtdrjgfuzkfg",
   "icons": {
     "64": "icon.png"
   },
-  "legacy": {
-    "type" : "bootstrap"
-  }
-}
+  "background": {
+    "scripts" : ["background.js"]
+  },
+  "experiment_apis": {
+    "ex_raisetoolbar": {
+      "schema": "experiment.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["ex_raisetoolbar"]],
+        "script": "experiment.js"
+      }
+    }
+  }}

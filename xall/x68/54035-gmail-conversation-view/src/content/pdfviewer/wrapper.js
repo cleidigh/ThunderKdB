@@ -9,12 +9,10 @@ const { XPCOMUtils } = ChromeUtils.import(
 );
 
 XPCOMUtils.defineLazyModuleGetters(this, {
+  BrowserSim: "chrome://conversations/content/modules/browserSim.js",
   NetUtil: "resource://gre/modules/NetUtil.jsm",
   Services: "resource://gre/modules/Services.jsm",
-  setupLogging: "chrome://conversations/content/modules/log.js",
 });
-
-let Log = setupLogging("Conversations.PdfViewer");
 
 let wrapper;
 
@@ -41,7 +39,7 @@ Wrapper.prototype = {
     );
     let chunks = [];
 
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       let listener = {
         onStartRequest(aRequest) {},
 
@@ -72,14 +70,25 @@ Wrapper.prototype = {
   },
 
   async load() {
-    Log.debug("Downloading", this.url);
-
     let chunks = await this._download();
 
     let browser = document.getElementById("browser");
     browser.addEventListener(
       "load",
       () => {
+        let browserSim = BrowserSim.getBrowser();
+        // This section based on https://github.com/erosman/HTML-Internationalization
+        // MPL2 License: https://discourse.mozilla.org/t/translating-options-pages/19604/23
+        for (const node of browser.contentDocument.querySelectorAll(
+          "[data-i18n]"
+        )) {
+          let [text, attr] = node.dataset.i18n.split("|");
+          text = browserSim.i18n.getMessage(text);
+          attr
+            ? (node[attr] = text)
+            : node.appendChild(browser.contentDocument.createTextNode(text));
+        }
+
         let w = browser.contentWindow.wrappedJSObject;
         w.init(Cu.cloneInto({ chunks }, w));
       },
@@ -92,10 +101,10 @@ Wrapper.prototype = {
   },
 };
 
-window.addEventListener("load", function(event) {
+window.addEventListener("load", function (event) {
   const params = new URL(document.location.href).searchParams;
   document.title = params.get("name");
 
   wrapper = new Wrapper(params.get("uri"));
-  wrapper.load().catch(Log.error.bind(Log));
+  wrapper.load().catch(console.error);
 });

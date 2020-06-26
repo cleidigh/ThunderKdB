@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+
+<!--
+<?xul-overlay href="chrome://global/content/charsetOverlay.xul"?>
+-->
+<!DOCTYPE overlay SYSTEM "chrome://maxmsgpane/locale/maxmsgpane.dtd" >
+
+<overlay id="maxmsgpane_overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/javascript" src="chrome://maxmsgpane/content/utils.js"/>
+  <script type="application/javascript" src="chrome://maxmsgpane/content/maxmsgpane.js"/>
+	<script type="application/javascript" src="chrome://global/content/elements/stringbundle.js"/>
+
+  <stringbundleset id="stringbundleset">
+	<stringbundle id="MMP:localeBundle"
+	  src="chrome://maxmsgpane/locale/maxmsgpane.properties"/>
+  </stringbundleset>
+
+  <broadcasterset>
+	<broadcaster id="MMP:MPMax" checked="false" disabled="false"/>
+	<broadcaster id="MMP:FPShow" checked="true" disabled="false"/>
+	<broadcaster id="MMP:FPMin" checked="false" disabled="false"/>
+	<broadcaster id="MMP:MPShow" checked="true" disabled="false"/>
+	<broadcaster id="MMP:MPMin" checked="false" disabled="false"/>
+	<broadcaster id="MMP:ALL" disabled="false"/>
+  </broadcasterset>
+
+  <keyset id="mailKeys">
+    <key id="MMP:key_MaxMsgPane" disabled="false"
+	  oncommand="gMaxMsgPane.toggleMaxMessagePane();"/>
+    <key id="MMP:key_MinFolderPane" disabled="false"
+	  oncommand="gMaxMsgPane.toggleFolderPane();"/>
+  </keyset>
+
+  <popup id="mailContext">
+	<menuitem
+	  label="&maxmsgpane.menustr;"
+	  type="checkbox"
+	  autoCheck="false"
+	  observes="MMP:MPMax"
+	  oncommand="gMaxMsgPane.toggleMaxMessagePane();"/>
+  </popup>
+
+<!--
+  <popup id="messagePaneContext">
+	<menuitem id="context_maxmsgpane"
+	  label="&maxmsgpane.menustr;"
+	  type="checkbox"
+	  autoCheck="false"
+	  observes="MMP:MPMax"
+	  oncommand="ToggleMaxMessagePane();"/>
+	<menuseparator collapse="before"/>
+  </popup>
+-->
+
+  <popup id="folderPaneContext">
+	<menuseparator/>
+	<menuitem
+	  label="&maxmsgpane.folder_context;"
+	  oncommand="gMaxMsgPane.toggleFolderPane();"/>
+  </popup>
+<!--
+  <menuitem id="messagePaneClassic"
+	command="gMaxMsgPane.changeLayout(kClassicMailLayout);"/>
+  <menuitem id="messagePaneWide"
+	command="gMaxMsgPane.changeLayout(kWideMailLayout);"/>
+  <menuitem id="messagePaneVertical"
+	command="gMaxMsgPane.changeLayout(kVerticalMailLayout);"/>
+-->	
+  <menuitem id="menu_showMessage" observe="MMP:MPShow"/>
+  <menuitem id="menu_showFolderPane" observe="MMP:FPShow"/>
+
+  <toolbarpalette id="MailToolbarPalette">
+	<toolbarbutton id="MMP_button-maxmsgpane"
+	  class="toolbarbutton-1"
+	  type="menu-button"
+	  label="&maxmsgpane.iconstr;" tooltiptext="&maxmsgpane.icontip;"
+	  value="MP"
+	  observes="MMP:ALL"
+	  oncommand='gMaxMsgPane.doMMPCommand(event.target.getAttribute("value"));'>
+	  <menupopup>
+		<menuitem label="&maxmsgpane.menustr;"
+		  value="MP" tooltiptext="&maxmsgpane.icontip;"
+		  type="checkbox"
+		  autoCheck="false"
+		  observes="MMP:MPMax"/>
+		<menuitem label="&maxmsgpane.folder_menustr;"
+		  value="FP" tooltiptext="&maxmsgpane.icontip2;"
+		  type="checkbox"
+		  autoCheck="false"
+		  observes="MMP:FPShow"/>
+		<menuitem id="showmsgpane" label="&maxmsgpane.thread_menustr;"
+		  value="TP" tooltiptext="&maxmsgpane.icontip3;"
+		  type="checkbox"
+		  autoCheck="false"
+		  observes="MMP:MPShow"
+		  checked="false"/>
+	  </menupopup>
+	</toolbarbutton>
+
+	<toolbarbutton id="MMP_button-minmsgpane"
+	  class="toolbarbutton-1"
+	  label="&maxmsgpane.hide_msg;" tooltiptext="&maxmsgpane.icontip3;"
+	  oncommand='gMaxMsgPane.doMMPCommand("TP");'
+	  type="checkbox"
+	  observes="MMP:MPMin"
+	  autoCheck="false"
+	  >
+	</toolbarbutton>
+
+	<toolbarbutton id="MMP_button-folderpane"
+	  class="toolbarbutton-1"
+	  label="&maxmsgpane.hide_folder;" tooltiptext="&maxmsgpane.icontip2;"
+	  oncommand='gMaxMsgPane.doMMPCommand("FP");'
+	  type="checkbox"
+	  observes="MMP:FPMin"
+	  autoCheck="false"
+	  >
+	</toolbarbutton>
+  </toolbarpalette>
+	<!-- Removed MMP 1.3.00. No space to put the close button
+  <hbox id="folderPaneHeader">
+	<label id="folderpane-title" flex="1"/>
+	<toolbarbutton id="MMP_button-closefolder" tooltiptext="&maxmsgpane.icontip4;"
+	  oncommand="gMaxMsgPane.toggleFolderPane();" flex="0" collapsed="false"/>
+  </hbox>
+  -->
+  
+</overlay>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<!--
+<?xul-overlay href="chrome://global/content/charsetOverlay.xul"?>
+<?xml-stylesheet href="chrome://messenger/skin/messageHeader.css" type="text/css"?>
+-->
+
+<!DOCTYPE overlay SYSTEM "chrome://maxmsgpane/locale/maxmsgpane.dtd" >
+
+<overlay id="maxmsgpane_hdr_overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<!-- Header view-->
+	<toolbarpalette id="header-view-toolbar-palette">
+		<toolbarbutton id="MMP_button-maxmsgpane-hdr"
+		  class="toolbarbutton-1 msgHeaderView-button"
+		  type="menu-button"
+		  label="&maxmsgpane.iconstr;" tooltiptext="&maxmsgpane.icontip;"
+		  value="MP"
+		  observes="MMP:ALL"
+		  oncommand='gMaxMsgPane.doMMPCommand(event.target.getAttribute("value"));'>
+		  <menupopup>
+			<menuitem label="&maxmsgpane.menustr;"
+			  value="MP" tooltiptext="&maxmsgpane.icontip;"
+			  type="checkbox"
+			  autoCheck="false"
+			  observes="MMP:MPMax"/>
+			<menuitem label="&maxmsgpane.folder_menustr;"
+			  value="FP" tooltiptext="&maxmsgpane.icontip2;"
+			  type="checkbox"
+			  autoCheck="false"
+			  observes="MMP:FPShow"/>
+			<menuitem label="&maxmsgpane.thread_menustr;"
+			  value="TP" tooltiptext="&maxmsgpane.icontip3;"
+  		  type="checkbox"
+			  autoCheck="false"
+			  observes="MMP:MPShow"
+			  checked="false"/>
+		  </menupopup>
+		</toolbarbutton>
+	
+		<toolbarbutton id="MMP_button-minmsgpane-hdr"
+		  class="toolbarbutton-1 msgHeaderView-button"
+		  label="&maxmsgpane.hide_msg;" tooltiptext="&maxmsgpane.icontip3;"
+		  oncommand='gMaxMsgPane.doMMPCommand("TP");'
+		  observes="MMP:MPMin"
+ 		  type="checkbox"
+		  autoCheck="false">
+		</toolbarbutton>
+	
+		<toolbarbutton id="MMP_button-folderpane-hdr"
+		  class="toolbarbutton-1 msgHeaderView-button"
+		  label="&maxmsgpane.hide_folder;" tooltiptext="&maxmsgpane.icontip2;"
+		  oncommand='gMaxMsgPane.doMMPCommand("FP");'
+		  observes="MMP:FPMin"
+ 		  type="checkbox"
+		  autoCheck="false">
+		</toolbarbutton>
+	</toolbarpalette>
+  
+</overlay>

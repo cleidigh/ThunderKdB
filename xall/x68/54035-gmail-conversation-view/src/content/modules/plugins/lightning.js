@@ -10,19 +10,20 @@ const { XPCOMUtils } = ChromeUtils.import(
 
 XPCOMUtils.defineLazyModuleGetters(this, {
   registerHook: "chrome://conversations/content/modules/hook.js",
-  setupLogging: "chrome://conversations/content/modules/log.js",
   topMail3Pane: "chrome://conversations/content/modules/misc.js",
 });
-
-let Log = setupLogging("Conversations.Modules.Lightning");
 
 let hasLightning = false;
 let cal;
 try {
+  // Thunderbird 68
   cal = ChromeUtils.import("resource://calendar/modules/calUtils.jsm").cal;
   hasLightning = true;
 } catch (e) {
-  Log.debug("Did you know, Thunderbird Conversations supports Lightning?");
+  try {
+    cal = ChromeUtils.import("resource:///modules/calendar/calUtils.jsm").cal;
+    hasLightning = true;
+  } catch (ex) {}
 }
 
 // This is a version of setupOptions suitable for Conversations
@@ -33,7 +34,7 @@ function imipOptions(msgWindow, msg, itipItem, rc, actionFunc, foundItems) {
 
   // Set the right globals so that actionFunc works properly.
   w.ltnImipBar.itipItem = itipItem;
-  w.ltnImipBar.actionFunc = function(listener, actionMethod) {
+  w.ltnImipBar.actionFunc = function (listener, actionMethod) {
     // Short-circuit the listeners so that we can add our own routines for
     // adding the buttons, etc.
     let newListener = {
@@ -76,8 +77,8 @@ function imipOptions(msgWindow, msg, itipItem, rc, actionFunc, foundItems) {
 
   const buttons = [];
 
-  let addButton = function(c) {
-    if (buttons.find(b => b.id == c)) {
+  let addButton = function (c) {
+    if (buttons.find((b) => b.id == c)) {
       return;
     }
     let originalButtonElement = w.document.getElementById(c);
@@ -161,6 +162,5 @@ let lightningHook = {
 };
 
 if (hasLightning) {
-  registerHook(lightningHook);
-  Log.debug("Lightning plugin for Thunderbird Conversations loaded!");
+  registerHook("lightning", lightningHook);
 }

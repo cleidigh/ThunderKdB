@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* globals PropTypes, React */
+/* globals PropTypes, React, SvgIcon, messageActions */
 
 /* exported MessageNotification */
 class RemoteContentNotification extends React.PureComponent {
@@ -13,34 +13,32 @@ class RemoteContentNotification extends React.PureComponent {
   }
 
   onShowRemote() {
-    this.props.dispatch({
-      type: "MSG_SHOW_REMOTE_CONTENT",
+    this.props.dispatch(messageActions.showRemoteContent({
       msgUri: this.props.msgUri
-    });
+    }));
   }
 
   onAlwaysShowRemote() {
-    this.props.dispatch({
-      type: "MSG_ALWAYS_SHOW_REMOTE_CONTENT",
-      realFrom: this.props.realFrom,
-      msgUri: this.props.msgUri
-    });
+    this.props.dispatch(messageActions.showRemoteContent({
+      msgUri: this.props.msgUri,
+      realFrom: this.props.realFrom
+    }));
   }
 
   render() {
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "remoteContent notificationBar"
-    }, this.props.strings.get("remoteContentBlocked") + " ", React.createElement("span", {
+    }, browser.i18n.getMessage("notification.remoteContentBlockedMsg") + " ", /*#__PURE__*/React.createElement("span", {
       className: "show-remote-content"
-    }, React.createElement("a", {
+    }, /*#__PURE__*/React.createElement("a", {
       className: "link",
       onClick: this.onShowRemote
-    }, this.props.strings.get("showRemote")), " - "), React.createElement("span", {
+    }, browser.i18n.getMessage("notification.showRemote")), " - "), /*#__PURE__*/React.createElement("span", {
       className: "always-display"
-    }, React.createElement("a", {
+    }, /*#__PURE__*/React.createElement("a", {
       className: "link",
       onClick: this.onAlwaysShowRemote
-    }, this.props.strings.get("alwaysShowRemote", [this.props.realFrom]))));
+    }, browser.i18n.getMessage("notification.alwaysShowRemote", [this.props.realFrom]))));
   }
 
 }
@@ -48,24 +46,18 @@ class RemoteContentNotification extends React.PureComponent {
 RemoteContentNotification.propTypes = {
   dispatch: PropTypes.func.isRequired,
   msgUri: PropTypes.string.isRequired,
-  realFrom: PropTypes.string.isRequired,
-  strings: PropTypes.object.isRequired
+  realFrom: PropTypes.string.isRequired
 };
 
 class GenericSingleButtonNotification extends React.PureComponent {
   render() {
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: this.props.barClassName + " notificationBar"
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: `chrome://conversations/skin/material-icons.svg#${this.props.iconName}`
-    })), this.props.notificationText, " ", React.createElement("span", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: this.props.iconName
+    }), this.props.notificationText, " ", /*#__PURE__*/React.createElement("span", {
       className: this.props.buttonClassName
-    }, React.createElement("a", {
+    }, /*#__PURE__*/React.createElement("a", {
       onClick: this.props.onButtonClick
     }, this.props.buttonTitle)));
   }
@@ -88,25 +80,19 @@ class GenericMultiButtonNotification extends React.PureComponent {
   }
 
   onClick(actionParams) {
-    this.props.dispatch({
-      type: "NOTIFICATION_CLICK",
+    this.props.dispatch(messageActions.notificationClick({
       msgUri: this.props.msgUri,
       notificationType: this.props.type,
       ...actionParams
-    });
+    }));
   }
 
   render() {
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: this.props.barClassName + " notificationBar"
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: `chrome://conversations/skin/material-icons.svg#${this.props.iconName}`
-    })), this.props.notificationText, " ", this.props.buttons.map((button, i) => React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: this.props.iconName
+    }), this.props.notificationText, " ", this.props.buttons.map((button, i) => /*#__PURE__*/React.createElement("button", {
       className: button.classNames,
       tooltiptext: button.tooltiptext,
       key: i,
@@ -137,17 +123,17 @@ class JunkNotification extends React.PureComponent {
     this.props.dispatch({
       type: "MARK_AS_JUNK",
       isJunk: false,
-      msgUri: this.props.msgUri
+      id: this.props.id
     });
   }
 
   render() {
-    return React.createElement(GenericSingleButtonNotification, {
+    return /*#__PURE__*/React.createElement(GenericSingleButtonNotification, {
       barClassName: "junkBar",
       buttonClassName: "notJunk",
-      buttonTitle: this.props.strings.get("notJunk"),
+      buttonTitle: browser.i18n.getMessage("notification.notJunk"),
       iconName: "whatshot",
-      notificationText: this.props.strings.get("junk"),
+      notificationText: browser.i18n.getMessage("notification.junkMsg"),
       onButtonClick: this.onClick
     });
   }
@@ -156,8 +142,7 @@ class JunkNotification extends React.PureComponent {
 
 JunkNotification.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  msgUri: PropTypes.string.isRequired,
-  strings: PropTypes.object.isRequired
+  id: PropTypes.number.isRequired
 };
 
 class OutboxNotification extends React.PureComponent {
@@ -167,18 +152,16 @@ class OutboxNotification extends React.PureComponent {
   }
 
   onClick() {
-    this.props.dispatch({
-      type: "SEND_UNSENT"
-    });
+    this.props.dispatch(messageActions.sendUnsent());
   }
 
   render() {
-    return React.createElement(GenericSingleButtonNotification, {
+    return /*#__PURE__*/React.createElement(GenericSingleButtonNotification, {
       barClassName: "outboxBar",
       buttonClassName: "sendUnsent",
-      buttonTitle: this.props.strings.get("sendUnsent"),
+      buttonTitle: browser.i18n.getMessage("notification.sendUnsent"),
       iconName: "inbox",
-      notificationText: this.props.strings.get("isOutbox"),
+      notificationText: browser.i18n.getMessage("notification.isOutboxMsg"),
       onButtonClick: this.onClick
     });
   }
@@ -186,8 +169,7 @@ class OutboxNotification extends React.PureComponent {
 }
 
 OutboxNotification.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  strings: PropTypes.object.isRequired
+  dispatch: PropTypes.func.isRequired
 };
 
 class PhishingNotification extends React.PureComponent {
@@ -204,12 +186,12 @@ class PhishingNotification extends React.PureComponent {
   }
 
   render() {
-    return React.createElement(GenericSingleButtonNotification, {
+    return /*#__PURE__*/React.createElement(GenericSingleButtonNotification, {
       barClassName: "phishingBar",
       buttonClassName: "ignore-warning",
-      buttonTitle: this.props.strings.get("ignoreWarning"),
+      buttonTitle: browser.i18n.getMessage("notification.ignoreScamWarning"),
       iconName: "warning",
-      notificationText: this.props.strings.get("scam"),
+      notificationText: browser.i18n.getMessage("notification.scamMsg"),
       onButtonClick: this.onClick
     });
   }
@@ -218,48 +200,43 @@ class PhishingNotification extends React.PureComponent {
 
 PhishingNotification.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  msgUri: PropTypes.string.isRequired,
-  strings: PropTypes.object.isRequired
+  msgUri: PropTypes.string.isRequired
 };
 
 class MessageNotification extends React.PureComponent {
   render() {
     if (this.props.isPhishing) {
-      return React.createElement(PhishingNotification, {
+      return /*#__PURE__*/React.createElement(PhishingNotification, {
         dispatch: this.props.dispatch,
-        msgUri: this.props.msgUri,
-        strings: this.props.strings
+        msgUri: this.props.msgUri
       });
     }
 
     if (this.props.hasRemoteContent) {
-      return React.createElement(RemoteContentNotification, {
+      return /*#__PURE__*/React.createElement(RemoteContentNotification, {
         dispatch: this.props.dispatch,
         msgUri: this.props.msgUri,
-        realFrom: this.props.realFrom,
-        strings: this.props.strings
+        realFrom: this.props.realFrom
       });
     }
 
     if (this.props.canUnJunk) {
-      return React.createElement(JunkNotification, {
+      return /*#__PURE__*/React.createElement(JunkNotification, {
         dispatch: this.props.dispatch,
-        msgUri: this.props.msgUri,
-        strings: this.props.strings
+        id: this.props.id
       });
     }
 
     if (this.props.isOutbox) {
-      return React.createElement(OutboxNotification, {
-        dispatch: this.props.dispatch,
-        strings: this.props.strings
+      return /*#__PURE__*/React.createElement(OutboxNotification, {
+        dispatch: this.props.dispatch
       });
     }
 
     if (this.props.extraNotifications && this.props.extraNotifications.length) {
       // Only display the first notification.
       const notification = this.props.extraNotifications[0];
-      return React.createElement(GenericMultiButtonNotification, {
+      return /*#__PURE__*/React.createElement(GenericMultiButtonNotification, {
         barClassName: notification.type + "Bar",
         buttons: notification.buttons || [],
         iconName: notification.iconName,
@@ -282,7 +259,7 @@ MessageNotification.propTypes = {
   hasRemoteContent: PropTypes.bool.isRequired,
   isPhishing: PropTypes.bool.isRequired,
   isOutbox: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
   msgUri: PropTypes.string.isRequired,
-  realFrom: PropTypes.string.isRequired,
-  strings: PropTypes.object.isRequired
+  realFrom: PropTypes.string.isRequired
 };

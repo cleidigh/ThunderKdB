@@ -2,13 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* globals PropTypes, React, ReactDOM, ReactRedux, StringBundle */
+/* globals PropTypes, React, ReactDOM, ReactRedux, SvgIcon, summaryActions */
 
 /* exported ContactDetail */
 class _ContactDetail extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.strings = new StringBundle("chrome://conversations/locale/template.properties");
     this.addContact = this.addContact.bind(this);
     this.editContact = this.editContact.bind(this);
     this.createFilter = this.createFilter.bind(this);
@@ -64,21 +63,19 @@ class _ContactDetail extends React.PureComponent {
   sendEmail(event) {
     event.stopPropagation();
     event.preventDefault();
-    this.props.dispatch({
-      type: "SEND_EMAIL",
+    this.props.dispatch(summaryActions.sendEmail({
       name: this.props.name,
       email: this.props.realEmail
-    });
+    }));
   }
 
   showInvolving(event) {
     event.stopPropagation();
     event.preventDefault();
-    this.props.dispatch({
-      type: "SHOW_MESSAGES_INVOLVING",
+    this.props.dispatch(summaryActions.showMessagesInvolving({
       name: this.props.name,
       email: this.props.realEmail
-    });
+    }));
   }
 
   render() {
@@ -88,94 +85,69 @@ class _ContactDetail extends React.PureComponent {
       top: 0,
       bottom: 0
     };
-    const elm = React.createElement("div", {
+    const elm = /*#__PURE__*/React.createElement("div", {
       className: "tooltip",
       style: {
         left: pos.left,
         top: pos.top + window.scrollY + (pos.bottom - pos.top) * 2
       },
       onClick: this.onGeneralClick
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "arrow"
-    }), React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("div", {
       className: "arrow inside"
-    }), React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("div", {
       className: "authorInfoContainer"
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "authorInfo"
-    }, React.createElement("span", {
+    }, /*#__PURE__*/React.createElement("span", {
       className: "name",
       title: name
-    }, name), React.createElement("span", {
+    }, name), /*#__PURE__*/React.createElement("span", {
       className: "authorEmail"
-    }, React.createElement("span", {
+    }, /*#__PURE__*/React.createElement("span", {
       className: "authorEmailAddress",
       title: this.props.realEmail
-    }, this.props.realEmail), React.createElement("button", {
+    }, this.props.realEmail), /*#__PURE__*/React.createElement("button", {
       className: "copyEmail",
-      title: this.strings.get("copyEmail"),
+      title: browser.i18n.getMessage("contact.copyEmailTooltip"),
       onClick: this.copyEmail
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#content_copy"
-    }))))), React.createElement("div", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "content_copy"
+    })))), /*#__PURE__*/React.createElement("div", {
       className: "authorPicture"
-    }, React.createElement("img", {
+    }, /*#__PURE__*/React.createElement("img", {
       src: this.props.avatar
-    }))), React.createElement("div", {
+    }))), /*#__PURE__*/React.createElement("div", {
       className: "tipFooter"
-    }, React.createElement("button", {
+    }, /*#__PURE__*/React.createElement("button", {
       className: "sendEmail",
-      title: this.strings.get("sendEmail"),
+      title: browser.i18n.getMessage("contact.sendEmailTooltip"),
       onClick: this.sendEmail
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#mail"
-    }))), React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "mail"
+    })), /*#__PURE__*/React.createElement("button", {
       className: "showInvolving",
-      title: this.strings.get("recentConversations"),
+      title: browser.i18n.getMessage("contact.recentConversationsTooltip"),
       onClick: this.showInvolving
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#history"
-    }))), this.props.hasCard ? React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "history"
+    })), this.props.contactId ? /*#__PURE__*/React.createElement("button", {
       className: "editContact",
-      title: this.strings.get("editCardAb"),
+      title: browser.i18n.getMessage("contact.editContactTooltip"),
       onClick: this.editContact
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#edit"
-    }))) : React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "edit"
+    })) : /*#__PURE__*/React.createElement("button", {
       className: "addContact",
-      title: this.strings.get("addToAb"),
+      title: browser.i18n.getMessage("contact.addContactTooltip"),
       onClick: this.addContact
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#add"
-    }))), React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "add"
+    })), /*#__PURE__*/React.createElement("button", {
       className: "createFilter",
       onClick: this.createFilter
-    }, this.strings.get("createFilter")))); // In TB 68, when an element with `tabIndex` gets focused,
+    }, browser.i18n.getMessage("contact.createFilterTooltip")))); // In TB 68, when an element with `tabIndex` gets focused,
     // it gets set as the position parent. It shouldn't. To resolve
     // this issue, reparent the popup to <body> so its parent will never
     // change. See https://github.com/protz/thunderbird-conversations/pull/1432
@@ -191,7 +163,7 @@ _ContactDetail.propTypes = {
   email: PropTypes.string.isRequired,
   realEmail: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
-  hasCard: PropTypes.bool.isRequired,
+  contactId: PropTypes.string,
   parentSpan: PropTypes.object.isRequired
 };
 const ContactDetail = ReactRedux.connect()(_ContactDetail);

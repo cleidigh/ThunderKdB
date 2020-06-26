@@ -16,18 +16,17 @@ const { XPCOMUtils } = ChromeUtils.import(
 );
 
 XPCOMUtils.defineLazyModuleGetters(this, {
-  getMail3Pane: "chrome://conversations/content/modules/stdlib/msgHdrUtils.js",
+  getMail3Pane: "chrome://conversations/content/modules/misc.js",
   fixIterator: "resource:///modules/iteratorUtils.jsm",
   MailUtils: "resource:///modules/MailUtils.jsm",
+  setupLogging: "chrome://conversations/content/modules/misc.js",
   Services: "resource://gre/modules/Services.jsm",
   VirtualFolderHelper: "resource:///modules/virtualFolderWrapper.js",
 });
 
-const { dumpCallStack, setupLogging } = ChromeUtils.import(
-  "chrome://conversations/content/modules/log.js"
-);
-
-let Log = setupLogging("Conversations.Assistant");
+XPCOMUtils.defineLazyGetter(this, "Log", () => {
+  return setupLogging("Conversations.Assistant");
+});
 
 // Thanks, Andrew!
 function getSmartFolderNamed(aFolderName) {
@@ -108,16 +107,16 @@ class PrefCustomization extends SimpleCustomization {
 class MultipleCustomization {
   constructor(aParams) {
     this.customizations = aParams
-      ? aParams.map(p => new PrefCustomization(p))
+      ? aParams.map((p) => new PrefCustomization(p))
       : [];
   }
 
   install() {
-    return this.customizations.map(c => c.install());
+    return this.customizations.map((c) => c.install());
   }
 
   uninstall(uninstallInfos) {
-    this.customizations.forEach(function(x, i) {
+    this.customizations.forEach(function (x, i) {
       x.uninstall(uninstallInfos[i]);
     });
   }
@@ -129,7 +128,7 @@ class MultipleCustomization {
 //  "Illegal operation on WrappedNative prototype object"  nsresult:
 //  "0x8057000c (NS_ERROR_XPC_BAD_OP_ON_WN_PROTO)"
 // So we do a round of eta-expansion.
-let eid = id => getMail3Pane().document.getElementById(id);
+let eid = (id) => getMail3Pane().document.getElementById(id);
 
 var Customizations = {
   actionSetupViewDefaults: new MultipleCustomization([
@@ -211,9 +210,9 @@ var Customizations = {
         ftv.selectFolder(smartInbox);
       }
 
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         let i = 0;
-        let waitForIt = function() {
+        let waitForIt = function () {
           if (
             smartInbox &&
             mainWindow.gFolderDisplay.displayedFolder != smartInbox &&
@@ -356,7 +355,7 @@ var Customizations = {
 
       let vFolder = VirtualFolderHelper.wrapVirtualFolder(smartInbox);
       vFolder.searchFolders = vFolder.searchFolders.filter(
-        x => !(x.URI in aChangedFolders)
+        (x) => !(x.URI in aChangedFolders)
       );
       vFolder.cleanUpMessageDatabase();
       msgAccountManager.saveVirtualFolders();
@@ -429,8 +428,7 @@ var Customizations = {
             server.QueryInterface(Ci.nsIImapIncomingServer);
             server.offlineDownload = false;
           } catch (e) {
-            Log.error(e);
-            dumpCallStack(e);
+            console.error(e);
           }
         }
       }

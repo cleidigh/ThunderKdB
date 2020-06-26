@@ -1,35 +1,22 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
-"use strict"; // const { StringBundle } = ChromeUtils.import(
-//   "resource:///modules/StringBundle.js"
-// );
-// const { MsgHdrToMimeMessage } = ChromeUtils.import(
-//   "resource:///modules/gloda/mimemsg.js"
-// );
-// const { msgUriToMsgHdr } = ChromeUtils.import(
-//   "chrome://conversations/content/modules/stdlib/msgHdrUtils.js"
-// );
-// let strings = new StringBundle(
-//   "chrome://conversations/locale/message.properties"
-// );
-//
-
+"use strict";
 /* globals React, ReactDOM, PropTypes */
 
 class Photo extends React.Component {
   render() {
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "photoWrap"
-    }, React.createElement("img", {
+    }, /*#__PURE__*/React.createElement("img", {
       src: this.props.src
-    }), React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("div", {
       className: "informationline"
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "filename"
-    }, this.props.name), React.createElement("div", {
+    }, this.props.name), /*#__PURE__*/React.createElement("div", {
       className: "size"
-    }, this.props.size), React.createElement("div", {
+    }, this.props.size), /*#__PURE__*/React.createElement("div", {
       className: "count"
     }, this.props.index + " / " + this.props.length)));
   }
@@ -111,7 +98,7 @@ class MyComponent extends React.Component {
   }
 
   render() {
-    return this.state.images.map(image => React.createElement(Photo, {
+    return this.state.images.map(image => /*#__PURE__*/React.createElement(Photo, {
       index: image.index,
       key: image.index,
       name: image.name,

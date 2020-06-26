@@ -36,27 +36,16 @@ const { XPCOMUtils } = ChromeUtils.import(
 );
 
 XPCOMUtils.defineLazyModuleGetters(this, {
+  BrowserSim: "chrome://conversations/content/modules/browserSim.js",
+  escapeHtml: "chrome://conversations/content/modules/misc.js",
+  getMail3Pane: "chrome://conversations/content/modules/misc.js",
+  htmlToPlainText: "chrome://conversations/content/modules/misc.js",
+  msgHdrGetUri: "chrome://conversations/content/modules/misc.js",
   registerHook: "chrome://conversations/content/modules/hook.js",
+  setupLogging: "chrome://conversations/content/modules/misc.js",
   Services: "resource://gre/modules/Services.jsm",
-  StringBundle: "resource:///modules/StringBundle.js",
   topMail3Pane: "chrome://conversations/content/modules/misc.js",
 });
-
-const { getMail3Pane, msgHdrGetUri } = ChromeUtils.import(
-  "chrome://conversations/content/modules/stdlib/msgHdrUtils.js"
-);
-const { escapeHtml, entries } = ChromeUtils.import(
-  "chrome://conversations/content/modules/stdlib/misc.js"
-);
-const { htmlToPlainText, simpleWrap } = ChromeUtils.import(
-  "chrome://conversations/content/modules/stdlib/compose.js"
-);
-const { setupLogging, dumpCallStack } = ChromeUtils.import(
-  "chrome://conversations/content/modules/log.js"
-);
-
-let strings;
-let templateStrings;
 
 let Log = setupLogging("Conversations.Modules.Enigmail");
 
@@ -69,16 +58,13 @@ let Log = setupLogging("Conversations.Modules.Enigmail");
 
 // Enigmail support, thanks to Patrick Brunschwig!
 
-let window = getMail3Pane();
 let hasEnigmail;
 
 try {
   hasEnigmail = true;
   ChromeUtils.import("chrome://enigmail/content/modules/constants.jsm");
-  Log.debug("Enigmail plugin for Thunderbird Conversations loaded!");
 } catch (ex) {
   hasEnigmail = false;
-  Log.debug("Enigmail doesn't seem to be installed...");
 }
 
 if (hasEnigmail) {
@@ -93,14 +79,11 @@ if (hasEnigmail) {
     EnigmailPrefs: "chrome://enigmail/content/modules/prefs.jsm",
     EnigmailRules: "chrome://enigmail/content/modules/rules.jsm",
   });
-
-  strings = new StringBundle(
-    "chrome://conversations/locale/message.properties"
-  );
-  templateStrings = new StringBundle(
-    "chrome://conversations/locale/template.properties"
-  );
 }
+
+XPCOMUtils.defineLazyGetter(this, "browser", function () {
+  return BrowserSim.getBrowser();
+});
 
 let enigmailSvc;
 // used in enigmailMsgComposeOverlay.js
@@ -109,13 +92,17 @@ let gMsgCompose = {
   compFields: {},
 };
 let gSMFields = {};
-let getCurrentIdentity = function() {
+let getCurrentIdentity = function () {
   return Enigmail.msg.identity;
 };
 let global = this;
 let nsIEnigmail = {};
+// eslint-disable-next-line no-redeclare
+/* global window:true */
+let window;
 
 if (hasEnigmail) {
+  window = getMail3Pane();
   nsIEnigmail = EnigmailConstants;
   enigmailSvc = EnigmailCore.getService(window);
   if (!enigmailSvc) {
@@ -135,14 +122,14 @@ if (hasEnigmail) {
     );
   } catch (e) {
     hasEnigmail = false;
-    Log.debug("Enigmail script doesn't seem to be loaded. Error: " + e);
+    console.error("Enigmail script doesn't seem to be loaded. Error: " + e);
   }
 
   let w = getMail3Pane();
   let iframe = w.document.createElement("iframe");
   iframe.addEventListener(
     "load",
-    function() {
+    function () {
       iframe.remove();
     },
     true
@@ -184,7 +171,7 @@ function overrideUpdateSecurity(messagepane, w) {
   // Called after decryption or verification is completed.
   // Security status of a message is updated and shown at the status bar
   // and the header box.
-  headerSink.updateSecurityStatus = function(
+  headerSink.updateSecurityStatus = function (
     unusedUriSpec,
     exitCode,
     statusFlags,
@@ -204,12 +191,12 @@ function overrideUpdateSecurity(messagepane, w) {
     }
     let message;
     let msgHdr = uri.QueryInterface(Ci.nsIMsgMessageUrl).messageHeader;
-    if (w._currentConversation) {
+    if (w.Conversations.currentConversation) {
       let uriSpec = msgHdrGetUri(msgHdr);
-      message = w._currentConversation.getMessage(uriSpec);
+      message = w.Conversations.currentConversation.getMessage(uriSpec);
     }
     if (!message) {
-      Log.error("Message for the security info not found!");
+      console.error("Message for the security info not found!");
       return;
     }
     if (message._updateHdrIcons) {
@@ -235,7 +222,7 @@ function overrideUpdateSecurity(messagepane, w) {
       }
     }
 
-    let updateHdrIcons = function() {
+    let updateHdrIcons = function () {
       w.Enigmail.hdrView.updateHdrIcons(
         exitCode,
         statusFlags,
@@ -255,7 +242,7 @@ function overrideUpdateSecurity(messagepane, w) {
   };
 
   let originalHandleSMimeMessage = headerSink.handleSMimeMessage;
-  headerSink.handleSMimeMessage = function(uri) {
+  headerSink.handleSMimeMessage = function (uri) {
     // Use original if the classic reader is used.
     if (messagepane.contentDocument.location.href !== "about:blank?") {
       originalHandleSMimeMessage.apply(this, arguments);
@@ -264,8 +251,8 @@ function overrideUpdateSecurity(messagepane, w) {
     let message;
     let msgHdr = uri.QueryInterface(Ci.nsIMsgMessageUrl).messageHeader;
     let uriSpec = msgHdrGetUri(msgHdr);
-    if (w._currentConversation) {
-      for (let x of w._currentConversation.messages) {
+    if (w.Conversations.currentConversation) {
+      for (let x of w.Conversations.currentConversation.messages) {
         if (x.message._uri == uriSpec) {
           message = x.message;
           break;
@@ -273,7 +260,7 @@ function overrideUpdateSecurity(messagepane, w) {
       }
     }
     if (!message) {
-      Log.error("Message for the SMIME info not found!");
+      console.error("Message for the SMIME info not found!");
       return;
     }
     w.EnigmailVerify.unregisterContentTypeHandler();
@@ -522,7 +509,7 @@ function tryEnigmail(aDocument, aMessage, aMsgWindow) {
       );
     }
     let w = topMail3Pane(aMessage);
-    showHdrIconsOnStreamed(aMessage, function() {
+    showHdrIconsOnStreamed(aMessage, function () {
       w.Enigmail.hdrView.updateHdrIcons(
         exitCode,
         statusFlagsObj.value,
@@ -536,8 +523,7 @@ function tryEnigmail(aDocument, aMessage, aMsgWindow) {
     });
     return statusFlagsObj.value;
   } catch (ex) {
-    dumpCallStack(ex);
-    Log.error("Enigmail error: " + ex + " --- " + errorMsgObj.value + "\n");
+    console.error("Enigmail error:", errorMsgObj.value, ex);
     return null;
   }
 }
@@ -579,18 +565,6 @@ function verifyAttachments(aMessage) {
   );
 }
 
-// Prepare for showing security info later
-function prepareForShowHdrIcons(aMessage) {
-  let w = topMail3Pane(aMessage);
-  let conversation = aMessage._conversation;
-
-  // w.Conversations.currentConversation is assigned when conversation
-  // _onComplete(), but we need currentConversation in
-  // updateSecurityStatus() which is possible to be called before
-  // _onComplete().
-  w._currentConversation = conversation;
-}
-
 // Update security info display of the message.
 function updateSecurityInfo(aMessage) {
   let w = topMail3Pane(aMessage);
@@ -623,10 +597,10 @@ function patchForShowSecurityInfo(aWindow) {
   );
   w.top.controllers.removeController(oldTreeController);
   let treeController = {};
-  for (let [i, x] of entries(oldTreeController)) {
+  for (let [i, x] of Object.entries(oldTreeController)) {
     treeController[i] = x;
   }
-  treeController.isCommandEnabled = function() {
+  treeController.isCommandEnabled = function () {
     if (w.gFolderDisplay.messageDisplay.visible) {
       if (w.gFolderDisplay.selectedCount == 0) {
         w.Enigmail.hdrView.statusBarHide();
@@ -670,16 +644,16 @@ function addSignedLabel(status, msg) {
     msg.addSpecialTag({
       canClick: true,
       classNames: "enigmail-signed",
-      icon: "chrome://conversations/skin/material-icons.svg#edit",
-      name: templateStrings.get("messageSigned"),
+      icon: "material-icons.svg#edit",
+      name: browser.i18n.getMessage("enigmail.messageSigned"),
       details: {
         type: "enigmail",
         detail: "viewSecurityInfo",
       },
       title:
         status & nsIEnigmail.UNVERIFIED_SIGNATURE
-          ? templateStrings.get("unknownGood")
-          : templateStrings.get("messageSignedLong"),
+          ? browser.i18n.getMessage("enigmail.unknownGood")
+          : browser.i18n.getMessage("enigmail.messageSignedLong"),
     });
   }
 }
@@ -688,20 +662,20 @@ function addEncryptedTag(msg) {
   msg.addSpecialTag({
     canClick: true,
     classNames: "enigmail-decrypted",
-    icon: "chrome://conversations/skin/material-icons.svg#vpn_key",
-    name: templateStrings.get("messageDecrypted"),
+    icon: "material-icons.svg#vpn_key",
+    name: browser.i18n.getMessage("enigmail.messageDecrypted"),
     details: {
       type: "enigmail",
       detail: "viewSecurityInfo",
     },
-    title: templateStrings.get("messageDecryptedLong"),
+    title: browser.i18n.getMessage("enigmail.messageDecryptedLong"),
   });
 }
 
 function removeEncryptedTag(msg) {
   msg.removeSpecialTag({
     classNames: "enigmail-decrypted",
-    name: templateStrings.get("messageDecrypted"),
+    name: browser.i18n.getMessage("enigmail.messageDecrypted"),
   });
 }
 
@@ -716,11 +690,10 @@ let enigmailHook = {
     let w = topMail3Pane(msg);
 
     // Current message uri should be blank to decrypt all PGP/MIME messages.
-    w.Enigmail.msg.getCurrentMsgUriSpec = function() {
+    w.Enigmail.msg.getCurrentMsgUriSpec = function () {
       return "";
     };
     verifyAttachments(msg);
-    prepareForShowHdrIcons(msg);
     patchForShowSecurityInfo(w);
   },
 
@@ -781,7 +754,7 @@ let enigmailHook = {
       fromAddr = userIdValue;
     }
 
-    Enigmail.msg.setOwnKeyStatus = function() {};
+    Enigmail.msg.setOwnKeyStatus = function () {};
     Enigmail.msg.processAccountSpecificDefaultOptions();
     // Get flags from UI checkboxes.
     if (aWindow.document.getElementById("enigmail-reply-encrypt").checked) {
@@ -859,7 +832,7 @@ let enigmailHook = {
         if (
           EnigmailDialog.confirmDlg(
             window,
-            strings.get("attachmentsNotEncrypted"),
+            browser.i18n.getMessage("enigmail.attachmentsNotEncrypted"),
             EnigmailLocale.getString("pgpMime_sMime.dlg.pgpMime.button"),
             EnigmailLocale.getString("dlg.button.cancel")
           )
@@ -976,10 +949,7 @@ let enigmailHook = {
         }
       }
     } catch (ex) {
-      dumpCallStack(ex);
-      Log.error(
-        "Enigmail encrypt error: " + ex + " --- " + errorMsgObj.value + "\n"
-      );
+      console.error("Enigmail encrypt error:", errorMsgObj.value, ex);
       let msg = EnigmailLocale.getString("signFailed");
       if (enigmailSvc && enigmailSvc.initializationError) {
         msg += "\n" + enigmailSvc.initializationError;
@@ -1033,7 +1003,7 @@ let enigmailHook = {
 
     // Set Enigmail.msg.sendMode from identity
     Enigmail.msg.identity = aComposeSession.params.identity;
-    Enigmail.msg.setOwnKeyStatus = function() {};
+    Enigmail.msg.setOwnKeyStatus = function () {};
     Enigmail.msg.processAccountSpecificDefaultOptions();
 
     // Set sendMode from messages
@@ -1121,14 +1091,14 @@ let enigmailHook = {
     // Add listeners to set final mode
     if (!aMessage._conversation._enigmailReplyEventListener) {
       aMessage._conversation._enigmailReplyEventListener = true;
-      replyEncrypt.addEventListener("click", function() {
+      replyEncrypt.addEventListener("click", function () {
         if (this.checked) {
           Enigmail.msg.encryptForced = EnigmailConstants.ENIG_ALWAYS; // force to encrypt
         } else {
           Enigmail.msg.encryptForced = EnigmailConstants.ENIG_NEVER; // force not to encrypt
         }
       });
-      replySign.addEventListener("click", function() {
+      replySign.addEventListener("click", function () {
         if (this.checked) {
           Enigmail.msg.signingNoLongerDependsOnEnc();
           Enigmail.msg.signForced = EnigmailConstants.ENIG_ALWAYS; // force to sign
@@ -1137,7 +1107,7 @@ let enigmailHook = {
           Enigmail.msg.signForced = EnigmailConstants.ENIG_NEVER; // force not to sign
         }
       });
-      replyPgpMime.addEventListener("click", function() {
+      replyPgpMime.addEventListener("click", function () {
         if (this.checked) {
           Enigmail.msg.pgpmimeForced = EnigmailConstants.ENIG_ALWAYS; // force to PGP/Mime
         } else {
@@ -1151,8 +1121,8 @@ let enigmailHook = {
     }
 
     // Replace inline PGP body to decrypted body.
-    let waitLoadingBody = function(complete) {
-      window.setTimeout(function() {
+    let waitLoadingBody = function (complete) {
+      window.setTimeout(function () {
         if (
           aEditor.node.contentDocument.querySelector("blockquote").length === 0
         ) {
@@ -1162,7 +1132,7 @@ let enigmailHook = {
         }
       }, 200);
     };
-    waitLoadingBody(function() {
+    waitLoadingBody(function () {
       // eslint-disable-next-line no-unsanitized/property
       aEditor.node.contentDocument.querySelector(
         "blockquote"
@@ -1181,4 +1151,84 @@ let enigmailHook = {
   },
 };
 
-registerHook(enigmailHook);
+/**
+ * Wrap some text. Beware, that function doesn't do rewrapping, and only
+ *  operates on non-quoted lines. This is only useful in our very specific case
+ *  where the quoted lines have been properly wrapped for format=flowed already,
+ *  and the non-quoted lines are the only ones that need wrapping for
+ *  format=flowed.
+ * Beware, this function will treat all lines starting with >'s as quotations,
+ *  even user-inserted ones. We would need support from the editor to proceed
+ *  otherwise, and the current textarea doesn't provide this.
+ * This function, when breaking lines, will do space-stuffing per the RFC if
+ *  after the break the text starts with From or &gt;.
+ * @param {String} txt The text that should be wrapped.
+ * @param {Number} width (optional) The width we should wrap to. Default to 72.
+ * @return {String} The text with non-quoted lines wrapped. This is suitable for
+ *  sending as format=flowed.
+ */
+function simpleWrap(txt, width) {
+  if (!width) {
+    width = 72;
+  }
+
+  function maybeEscape(line) {
+    if (line.indexOf("From") === 0 || line.indexOf(">") === 0) {
+      return " " + line;
+    }
+    return line;
+  }
+
+  /**
+   * That function takes a (long) line, and splits it into many lines.
+   * @param soFar {Array String} an accumulator of the lines we've wrapped already
+   * @param remaining {String} the remaining string to wrap
+   */
+  function splitLongLine(soFar, remaining) {
+    if (remaining.length > width) {
+      // Start at the end of the line, and move back until we find a word
+      // boundary.
+      let i = width - 1;
+      while (remaining[i] != " " && i > 0) {
+        i--;
+      }
+      // We found a word boundary, break there
+      if (i > 0) {
+        // This includes the trailing space that indicates that we are wrapping
+        //  a long line with format=flowed.
+        soFar.push(maybeEscape(remaining.substring(0, i + 1)));
+        return splitLongLine(
+          soFar,
+          remaining.substring(i + 1, remaining.length)
+        );
+      }
+      // No word boundary, break at the first space
+      let j = remaining.indexOf(" ");
+      if (j > 0) {
+        // Same remark about the trailing space.
+        soFar.push(maybeEscape(remaining.substring(0, j + 1)));
+        return splitLongLine(
+          soFar,
+          remaining.substring(j + 1, remaining.length)
+        );
+      }
+      // Make sure no one interprets this as a line continuation.
+      soFar.push(remaining.trimRight());
+      return soFar.join("\n");
+    }
+    // Same remark about the trailing space.
+    soFar.push(maybeEscape(remaining.trimRight()));
+    return soFar.join("\n");
+  }
+
+  let lines = txt.split(/\r?\n/);
+
+  lines.forEach(function (line, i) {
+    if (line.length > width && line[0] != ">") {
+      lines[i] = splitLongLine([], line);
+    }
+  });
+  return lines.join("\n");
+}
+
+registerHook("enigmail", enigmailHook);

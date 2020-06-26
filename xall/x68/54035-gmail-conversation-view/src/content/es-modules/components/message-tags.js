@@ -17,6 +17,8 @@
 // Make sure all the libraries that need to be in global scope are in global scope.
 import { React, ReactDOM, Redux, ReactRedux, RTK, PropTypes } from "../ui.js";
 Object.assign(window, { React, ReactDOM, Redux, ReactRedux, RTK, PropTypes });
+import { SvgIcon } from "./svg-icon.js";
+Object.assign(window, { SvgIcon });
 
 // Set up an object for the make-shift module emulation
 window.esExports = {};

@@ -11,52 +11,66 @@ const { XPCOMUtils } = ChromeUtils.import(
 );
 
 XPCOMUtils.defineLazyModuleGetters(this, {
-  ConversationUtils: "chrome://conversations/content/modules/conversation.js",
-  GlodaUtils: "resource:///modules/gloda/utils.js",
+  BrowserSim: "chrome://conversations/content/modules/browserSim.js",
+  escapeHtml: "chrome://conversations/content/modules/misc.js",
+  htmlToPlainText: "chrome://conversations/content/modules/misc.js",
   makeFriendlyDateAgo: "resource:///modules/templateUtils.js",
-  MsgHdrToMimeMessage: "resource:///modules/gloda/mimemsg.js",
-  mimeMsgToContentSnippetAndMeta: "resource:///modules/gloda/connotent.js",
-  PluralForm: "resource://gre/modules/PluralForm.jsm",
+  msgHdrGetUri: "chrome://conversations/content/modules/misc.js",
+  msgUriToMsgHdr: "chrome://conversations/content/modules/misc.js",
+  NetUtil: "resource://gre/modules/NetUtil.jsm",
+  parseMimeLine: "chrome://conversations/content/modules/misc.js",
+  setupLogging: "chrome://conversations/content/modules/misc.js",
   Services: "resource://gre/modules/Services.jsm",
-  StringBundle: "resource:///modules/StringBundle.js",
 });
-const {
-  dateAsInMessageList,
-  escapeHtml,
-  getIdentityForEmail,
-  parseMimeLine,
-} = ChromeUtils.import("chrome://conversations/content/modules/stdlib/misc.js");
 
-// It's not really nice to write into someone elses object but this is what the
-// Services object is for.  We prefix with the "m" to ensure we stay out of their
-// namespace.
-XPCOMUtils.defineLazyGetter(Services, "mMessenger", function() {
+XPCOMUtils.defineLazyGetter(this, "browser", function () {
+  return BrowserSim.getBrowser();
+});
+
+XPCOMUtils.defineLazyGetter(this, "GlodaUtils", () => {
+  let tmp = {};
+  try {
+    ChromeUtils.import("resource:///modules/gloda/utils.js", tmp);
+  } catch (ex) {
+    ChromeUtils.import("resource:///modules/gloda/GlodaUtils.jsm", tmp);
+  }
+  return tmp.GlodaUtils;
+});
+
+XPCOMUtils.defineLazyGetter(this, "MimeMessage", () => {
+  let tmp = {};
+  try {
+    ChromeUtils.import("resource:///modules/gloda/mimemsg.js", tmp);
+  } catch (ex) {
+    ChromeUtils.import("resource:///modules/gloda/MimeMessage.jsm", tmp);
+  }
+  return tmp.MimeMessage;
+});
+
+XPCOMUtils.defineLazyGetter(this, "MsgHdrToMimeMessage", () => {
+  let tmp = {};
+  try {
+    ChromeUtils.import("resource:///modules/gloda/mimemsg.js", tmp);
+  } catch (ex) {
+    ChromeUtils.import("resource:///modules/gloda/MimeMessage.jsm", tmp);
+  }
+  return tmp.MsgHdrToMimeMessage;
+});
+
+XPCOMUtils.defineLazyGetter(this, "mimeMsgToContentSnippetAndMeta", () => {
+  let tmp = {};
+  try {
+    ChromeUtils.import("rresource:///modules/gloda/connotent.js", tmp);
+  } catch (ex) {
+    ChromeUtils.import("resource:///modules/gloda/GlodaContent.jsm", tmp);
+  }
+  return tmp.mimeMsgToContentSnippetAndMeta;
+});
+
+XPCOMUtils.defineLazyGetter(this, "gMessenger", function () {
   return Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
 });
 
-let strings = new StringBundle(
-  "chrome://conversations/locale/message.properties"
-);
-
-const {
-  msgHdrGetHeaders,
-  msgHdrGetUri,
-  msgHdrIsDraft,
-  msgHdrIsJunk,
-  msgHdrsMarkAsRead,
-  msgHdrGetTags,
-  msgHdrSetTags,
-  msgHdrToNeckoURL,
-  msgHdrToMessageBody,
-  msgUriToMsgHdr,
-} = ChromeUtils.import(
-  "chrome://conversations/content/modules/stdlib/msgHdrUtils.js",
-  {}
-);
-const { htmlToPlainText, quoteMsgHdr } = ChromeUtils.import(
-  "chrome://conversations/content/modules/stdlib/compose.js",
-  {}
-);
 const { PluginHelpers } = ChromeUtils.import(
   "chrome://conversations/content/modules/plugins/helpers.js",
   {}
@@ -69,7 +83,7 @@ const { Prefs } = ChromeUtils.import(
   "chrome://conversations/content/modules/prefs.js",
   {}
 );
-const { folderName, iconForMimeType, topMail3Pane } = ChromeUtils.import(
+const { folderName, topMail3Pane } = ChromeUtils.import(
   "chrome://conversations/content/modules/misc.js",
   {}
 );
@@ -77,24 +91,16 @@ const { getHooks } = ChromeUtils.import(
   "chrome://conversations/content/modules/hook.js",
   {}
 );
-const { dumpCallStack, setupLogging } = ChromeUtils.import(
-  "chrome://conversations/content/modules/log.js",
-  {}
-);
 
-let Log = setupLogging("Conversations.Message");
+XPCOMUtils.defineLazyGetter(this, "Log", () => {
+  return setupLogging("Conversations.Message");
+});
+
 // This is high because we want enough snippet to extract relevant data from
 // bugzilla snippets.
 const kSnippetLength = 700;
 
-const pdfMimeTypes = [
-  "application/pdf",
-  "application/x-pdf",
-  "application/x-bzpdf",
-  "application/x-gzpdf",
-];
 const RE_BZ_COMMENT = /^--- Comment #\d+ from .* \d{4}.*? ---([\s\S]*)/m;
-const RE_MSGKEY = /number=(\d+)/;
 const RE_LIST_POST = /<mailto:([^>]+)>/;
 
 // Add in the global message listener table a weak reference to the given
@@ -106,10 +112,10 @@ function addMsgListener(aMessage) {
   let weakPtr = Cu.getWeakReference(aMessage);
   let msgListeners = window.Conversations.msgListeners;
   let messageId = aMessage._msgHdr.messageId;
-  if (!(messageId in msgListeners)) {
-    msgListeners[messageId] = [];
+  if (!msgListeners.has(messageId)) {
+    msgListeners.set(messageId, []);
   }
-  msgListeners[messageId].push(weakPtr);
+  msgListeners.get(messageId).push(weakPtr);
 }
 
 function dateAccordingToPref(date) {
@@ -140,7 +146,7 @@ class _MessageUtils {
 
   downloadAllAttachments(win, msgUri, attachments) {
     win.HandleMultipleAttachments(
-      attachments.map(att => this._getAttachmentInfo(win, msgUri, att)),
+      attachments.map((att) => this._getAttachmentInfo(win, msgUri, att)),
       "save"
     );
   }
@@ -214,27 +220,17 @@ class _MessageUtils {
     msgHdr.folder.msgDatabase = null;
   }
 
-  openInClassic(win, msgUri) {
-    const msgHdr = msgUriToMsgHdr(msgUri);
-    const tabmail = win.document.getElementById("tabmail");
-    tabmail.openTab("message", { msgHdr, background: false });
-  }
-
-  openInSourceView(win, msgUri) {
-    win.ViewPageSource([msgUri]);
-  }
-
   getMsgHdrDetails(win, msgUri) {
     const msgHdr = msgUriToMsgHdr(msgUri);
-    msgHdrGetHeaders(msgHdr, headers => {
+    msgHdrGetHeaders(msgHdr, (headers) => {
       try {
         let extraLines = [
           {
-            key: strings.get("header-folder"),
+            key: browser.i18n.getMessage("message.headerFolder"),
             value: folderName(msgHdr.folder)[1],
           },
         ];
-        let interestingHeaders = [
+        const interestingHeaders = [
           "mailed-by",
           "x-mailer",
           "mailer",
@@ -242,22 +238,22 @@ class _MessageUtils {
           "user-agent",
           "reply-to",
         ];
-        for (let h of interestingHeaders) {
+        for (const h of interestingHeaders) {
           if (headers.has(h)) {
             let key = h;
-            try {
-              // Note all the header names are translated.
-              key = strings.get("header-" + h);
-            } catch (e) {}
+            // Not all the header names are translated.
+            if (h == "date") {
+              key = browser.i18n.getMessage("message.headerDate");
+            }
             extraLines.push({
               key,
               value: headers.get(h),
             });
           }
         }
-        let subject = headers.get("subject");
+        const subject = headers.get("subject");
         extraLines.push({
-          key: strings.get("header-subject"),
+          key: browser.i18n.getMessage("message.headerSubject"),
           value: subject ? GlodaUtils.deMime(subject) : "",
         });
 
@@ -266,9 +262,8 @@ class _MessageUtils {
           extraLines,
           msgUri,
         });
-      } catch (e) {
-        Log.error(e);
-        dumpCallStack(e);
+      } catch (ex) {
+        console.error(ex);
       }
     });
   }
@@ -308,6 +303,7 @@ class Message {
     this._uri = msgHdrGetUri(this._msgHdr);
     this._contacts = [];
     this._attachments = [];
+    this.needsLateAttachments = false;
     this.contentType = "";
     this.hasRemoteContent = false;
     this.isPhishing = false;
@@ -326,7 +322,6 @@ class Message {
 
     // Selected state for onSelected function
     this._selected = false;
-    this._specialTags = [];
   }
 
   // Wraps the low-level header parser stuff.
@@ -344,7 +339,7 @@ class Message {
       oldInfos = {};
     }
     let infos = this.bugzillaInfos;
-    let makeArrow = function(oldValue, newValue) {
+    let makeArrow = function (oldValue, newValue) {
       if (oldValue) {
         return oldValue + " \u21d2 " + newValue;
       }
@@ -366,7 +361,7 @@ class Message {
         if ((!aPrevMsg || k in oldInfos) && oldInfos[k] != infos[k]) {
           let key = k
             .split("-")
-            .map(x => x.charAt(0).toUpperCase() + x.slice(1))
+            .map((x) => x.charAt(0).toUpperCase() + x.slice(1))
             .join(" ");
           items.push(key + ": " + makeArrow(oldInfos[k], infos[k]));
         }
@@ -386,48 +381,67 @@ class Message {
     }
   }
 
-  getContactsFrom(detail) {
-    let contacts = detail.map(x => [
-      this._conversation._contactManager.getContactFromNameAndEmail(
-        x.name,
-        x.email
-      ),
-      x.email,
-    ]);
+  async getContactsFrom(detail) {
+    let contacts = [];
+    for (const d of detail) {
+      // Not using Promise.all here as we want to let the contact manager
+      // get the data for the caching to work properly.
+      contacts.push([
+        await this._conversation._contactManager.getContactFromNameAndEmail(
+          d.name,
+          d.email
+        ),
+        d.email,
+      ]);
+    }
     this._contacts = this._contacts.concat(contacts);
     // false means "no colors"
-    return contacts.map(([x, email]) =>
-      x.toTmplData(false, Contacts.kTo, email)
+    return Promise.all(
+      contacts.map(([x, email]) => x.toTmplData(false, Contacts.kTo, email))
     );
   }
 
-  toReactData() {
+  async toReactData() {
     // Ok, brace ourselves for notifications happening during the message load
     //  process.
     addMsgListener(this);
 
+    const messageHeader = await browser.messages.get(this._id);
+    if (!messageHeader) {
+      throw new Error("Message no longer exists");
+    }
+
+    const messageFolderType = messageHeader.folder.type;
+    let isJunk;
+    if (!("junk" in messageHeader)) {
+      // Supports TB 68.
+      isJunk = await browser.conversations.getIsJunk(this._id);
+    } else {
+      isJunk = messageHeader.junk;
+    }
     let data = {
       id: this._id,
       date: this._date,
       hasRemoteContent: this.hasRemoteContent,
-      isDraft: !!msgHdrIsDraft(this._msgHdr),
-      isJunk: msgHdrIsJunk(this._msgHdr),
-      isOutbox: !!this._msgHdr.folder.getFlag(Ci.nsMsgFolderFlags.Queue),
+      isDraft: messageFolderType == "drafts",
+      isJunk,
+      isOutbox: messageFolderType == "outbox",
       isPhishing: this.isPhishing,
+      messageKey: this._msgHdr.messageKey,
       msgUri: this._uri,
       multipleRecipients: this.isReplyAllEnabled,
-      neckoUrl: msgHdrToNeckoURL(this._msgHdr),
+      neckoUrl: msgHdrToNeckoURL(this._msgHdr).spec,
+      needsLateAttachments: this.needsLateAttachments,
       read: this.read,
       realFrom: this._realFrom.email || this._from.email,
       recipientsIncludeLists: this.isReplyListEnabled,
       snippet: this._snippet,
-      specialTags: this._specialTags,
-      starred: this._msgHdr.isFlagged,
+      starred: messageHeader.flagged,
     };
 
     // 1) Generate Contact objects
     let contactFrom = [
-      this._conversation._contactManager.getContactFromNameAndEmail(
+      await this._conversation._contactManager.getContactFromNameAndEmail(
         this._from.name,
         this._from.email
       ),
@@ -435,12 +449,16 @@ class Message {
     ];
     this._contacts.push(contactFrom);
     // true means "with colors"
-    data.from = contactFrom[0].toTmplData(true, Contacts.kFrom, contactFrom[1]);
+    data.from = await contactFrom[0].toTmplData(
+      true,
+      Contacts.kFrom,
+      contactFrom[1]
+    );
     data.from.separator = "";
 
-    data.to = this.getContactsFrom(this._to);
-    data.cc = this.getContactsFrom(this._cc);
-    data.bcc = this.getContactsFrom(this._bcc);
+    data.to = await this.getContactsFrom(this._to);
+    data.cc = await this.getContactsFrom(this._cc);
+    data.bcc = await this.getContactsFrom(this._bcc);
 
     // Don't show "to me" if this is a bugzilla email
     // TODO: Make this work again?
@@ -457,7 +475,7 @@ class Message {
     //   }
     // }
 
-    data = { ...data, ...this.toTmplDataForAttachments(data) };
+    data = { ...data, ...(await this.toTmplDataForAttachments(data)) };
 
     data.fullDate = Prefs.no_friendly_date
       ? ""
@@ -467,12 +485,17 @@ class Message {
     data.folderName = fullName;
     data.shortFolderName = name;
 
-    const tags = msgHdrGetTags(this._msgHdr);
-    data.tags = tags.map(tag => {
+    const userTags = await browser.messages.listTags();
+    data.tags = messageHeader.tags.map((tagKey) => {
+      // The fallback here shouldn't ever happen, but just in case...
+      const tagDetails = userTags.find((t) => t.key == tagKey) || {
+        color: "#FFFFFF",
+        name: "unknown",
+      };
       return {
-        color: tag.color,
-        id: tag.key,
-        name: tag.tag,
+        color: tagDetails.color,
+        key: tagDetails.key,
+        name: tagDetails.tag,
       };
     });
 
@@ -480,39 +503,23 @@ class Message {
   }
 
   // Generate Attachment objects
-  toTmplDataForAttachments() {
+  async toTmplDataForAttachments() {
     let l = this._attachments.length;
-    let [makePlural] = PluralForm.makeGetter(strings.get("pluralForm"));
     const result = {
       attachments: [],
-      attachmentsPlural: makePlural(l, strings.get("attachments")).replace(
-        "#1",
+      attachmentsPlural: await browser.conversations.makePlural(
+        browser.i18n.getMessage("pluralForm"),
+        browser.i18n.getMessage("attachments.numAttachments"),
         l
       ),
-      gallery: false,
     };
     for (let i = 0; i < l; i++) {
       const att = this._attachments[i];
-      // Special treatment for images
-      let isImage = att.contentType.indexOf("image/") === 0;
-      if (isImage) {
-        result.gallery = true;
-      }
-      let isPdf = pdfMimeTypes.includes(att.contentType);
-      let key = this._msgHdr.messageKey;
-      let url = att.url.replace(RE_MSGKEY, "number=" + key);
-      let [thumb, imgClass] = isImage
-        ? [url, "resize-me"]
-        : [
-            "chrome://conversations/skin/icons/" +
-              iconForMimeType(att.contentType),
-            "mime-icon",
-          ];
       // This is bug 630011, remove when fixed
-      let formattedSize = strings.get("sizeUnknown");
+      let formattedSize = browser.i18n.getMessage("attachments.sizeUnknown");
       // -1 means size unknown
       if (att.size != -1) {
-        formattedSize = Services.mMessenger.formatFileSize(att.size);
+        formattedSize = await browser.conversations.formatFileSize(att.size);
       }
 
       // We've got the right data, push it!
@@ -520,17 +527,10 @@ class Message {
         size: att.size,
         contentType: att.contentType,
         formattedSize,
-        thumb,
-        imgClass,
         isExternal: att.isExternal,
         name: att.name,
         url: att.url,
         anchor: "msg" + this.initialPosition + "att" + i,
-        /* Only advertise the preview for PDFs (images have the gallery view). */
-        isPdf,
-        maybeViewable:
-          att.contentType.indexOf("image/") === 0 ||
-          att.contentType.indexOf("text/") === 0,
       });
     }
     return result;
@@ -538,7 +538,7 @@ class Message {
 
   // The global monkey-patch finds us through the weak pointer table and
   //  notifies us.
-  onMsgHasRemoteContent() {
+  async onMsgHasRemoteContent() {
     if (this.notifiedRemoteContentAlready) {
       return;
     }
@@ -546,7 +546,7 @@ class Message {
     this.hasRemoteContent = true;
     Log.debug("This message's remote content was blocked");
 
-    const msgData = this.toReactData();
+    const msgData = await this.toReactData();
     // TODO: make getting the window less ugly.
     this._conversation._htmlPane.conversationDispatch({
       type: "MSG_UPDATE_DATA",
@@ -562,7 +562,7 @@ class Message {
     }
 
     // We run below code only for the first time after messages selected.
-    Log.debug("A message is selected: " + this._uri);
+    Log.debug("A message is selected:", this._uri);
     for (let { message } of this._conversation.messages) {
       message._selected = message == this;
     }
@@ -574,8 +574,7 @@ class Message {
         }
       }
     } catch (e) {
-      Log.warn("Plugin returned an error:", e);
-      dumpCallStack(e);
+      console.error("Plugin returned an error:", e);
     }
   }
 
@@ -588,30 +587,21 @@ class Message {
     return this._msgHdr.isRead;
   }
 
-  set read(v) {
-    msgHdrsMarkAsRead([this._msgHdr], v);
-  }
-
-  get tags() {
-    return msgHdrGetTags(this._msgHdr);
-  }
-
-  set tags(v) {
-    msgHdrSetTags(this._msgHdr, v);
-  }
-
   addSpecialTag(tagDetails) {
-    this._specialTags.push(tagDetails);
-
     this._conversation._htmlPane.conversationDispatch({
-      type: "MSG_UPDATE_SPECIAL_TAGS",
-      specialTags: this._specialTags,
+      type: "MSG_ADD_SPECIAL_TAG",
+      tagDetails,
       uri: this._uri,
     });
   }
 
   removeSpecialTag(tagDetails) {
-    this._specialTags = this.specialTags.filter(t => t.name != tagDetails.name);
+    this._conversation._htmlPane.conversationDispatch({
+      type: "MSG_REMOVE_SPECIAL_TAG",
+      tagDetails,
+      uri: this._uri,
+    });
+    // this._specialTags = this.specialTags.filter(t => t.name != tagDetails.name);
   }
 
   streamMessage(msgWindow, docshell) {
@@ -622,8 +612,7 @@ class Message {
           h.onMessageBeforeStreaming(this);
         }
       } catch (e) {
-        Log.warn("Plugin returned an error:", e);
-        dumpCallStack(e);
+        console.error("Plugin returned an error:", e);
       }
     }
 
@@ -631,7 +620,7 @@ class Message {
 
     const neckoUrl = msgHdrToNeckoURL(this._msgHdr).spec;
 
-    const messageService = Services.mMessenger.messageServiceFromURI(neckoUrl);
+    const messageService = gMessenger.messageServiceFromURI(neckoUrl);
     messageService.DisplayMessage(
       this._uri + "&markRead=false",
       docshell,
@@ -654,12 +643,11 @@ class Message {
             h.onMessageStreamed(this._msgHdr, iframe, msgWindow, this);
           }
         } catch (e) {
-          Log.warn("Plugin returned an error:", e);
-          dumpCallStack(e);
+          console.error("Plugin returned an error:", e);
         }
       }
 
-      this._checkForPhishing(iframe);
+      this._checkForPhishing(iframe).catch(console.error);
     });
   }
 
@@ -671,7 +659,7 @@ class Message {
             h.onMessageNotification(win, notificationType, extraData);
           }
         } catch (ex) {
-          Log.warn("Plugin returned an error:", ex);
+          console.error("Plugin returned an error:", ex);
         }
       }
     });
@@ -688,13 +676,13 @@ class Message {
             h.onMessageTagClick(win, newEvent, ...extraData);
           }
         } catch (ex) {
-          Log.warn("Plugin returned an error:", ex);
+          console.error("Plugin returned an error:", ex);
         }
       }
     });
   }
 
-  _checkForPhishing(iframe) {
+  async _checkForPhishing(iframe) {
     if (!Services.prefs.getBoolPref("mail.phishing.detection.enabled")) {
       return;
     }
@@ -747,7 +735,7 @@ class Message {
       formNodes.length
     ) {
       this.isPhishing = true;
-      const msgData = this.toReactData();
+      const msgData = await this.toReactData();
       // TODO: make getting the window less ugly.
       this._conversation._htmlPane.conversationDispatch({
         type: "MSG_UPDATE_DATA",
@@ -766,7 +754,7 @@ class Message {
     // This function tries to clean up the email's body by removing hidden
     // blockquotes, removing signatures, etc. Note: sometimes there's a little
     // quoted text left over, need to investigate why...
-    let prepare = function(aNode) {
+    let prepare = function (aNode) {
       let node = aNode.cloneNode(true);
       for (let x of node.getElementsByClassName("moz-txt-sig")) {
         if (x) {
@@ -855,70 +843,73 @@ class Message {
   }
 }
 
+function hasIdentity(identityEmails, emailAddress) {
+  const email = emailAddress.toLowerCase();
+  return identityEmails.some((e) => e.toLowerCase() == email);
+}
+
 class MessageFromGloda extends Message {
-  constructor(conversation, glodaMsg, lateAttachments) {
-    super(conversation, glodaMsg.folderMessage);
-    this._glodaMsg = glodaMsg;
+  constructor(conversation, msgHdr, lateAttachments) {
+    super(conversation, msgHdr);
     this.needsLateAttachments = lateAttachments;
   }
 
-  async init() {
-    let browser = ConversationUtils.getBrowser();
+  async init(glodaMsg) {
     this._id = await browser.conversations.getMessageIdForUri(this._uri);
 
     // Our gloda plugin found something for us, thanks dude!
-    if (this._glodaMsg.alternativeSender) {
+    if (glodaMsg.alternativeSender) {
       this._realFrom = this._from;
-      this._from = this.parse(this._glodaMsg.alternativeSender)[0];
+      this._from = this.parse(glodaMsg.alternativeSender)[0];
     }
 
-    if (this._glodaMsg.bugzillaInfos) {
-      this.bugzillaInfos = JSON.parse(this._glodaMsg.bugzillaInfos);
+    if (glodaMsg.bugzillaInfos) {
+      this.bugzillaInfos = JSON.parse(glodaMsg.bugzillaInfos);
     }
 
     // FIXME messages that have no body end up with "..." as a snippet
-    this._snippet = this._glodaMsg._indexedBodyText
-      ? this._glodaMsg._indexedBodyText.substring(0, kSnippetLength - 1)
+    this._snippet = glodaMsg._indexedBodyText
+      ? glodaMsg._indexedBodyText.substring(0, kSnippetLength - 1)
       : "..."; // it's probably an Enigmail message
 
-    if ("attachmentInfos" in this._glodaMsg) {
-      this._attachments = this._glodaMsg.attachmentInfos;
+    if ("attachmentInfos" in glodaMsg) {
+      this._attachments = glodaMsg.attachmentInfos;
     }
 
-    if ("contentType" in this._glodaMsg) {
-      this.contentType = this._glodaMsg.contentType;
+    if ("contentType" in glodaMsg) {
+      this.contentType = glodaMsg.contentType;
     } else {
       this.contentType = "message/rfc822";
     }
 
-    if ("isEncrypted" in this._glodaMsg) {
-      this.isEncrypted = this._glodaMsg.isEncrypted;
+    if ("isEncrypted" in glodaMsg) {
+      this.isEncrypted = glodaMsg.isEncrypted;
     }
 
     if (
-      (this._glodaMsg.contentType + "").search(/^multipart\/encrypted(;|$)/i) ==
-      0
+      (glodaMsg.contentType + "").search(/^multipart\/encrypted(;|$)/i) == 0
     ) {
       this.isEncrypted = true;
     }
 
-    if ("mailingLists" in this._glodaMsg) {
-      this.mailingLists = this._glodaMsg.mailingLists.map(x => x.value);
+    if ("mailingLists" in glodaMsg) {
+      this.mailingLists = glodaMsg.mailingLists.map((x) => x.value);
     }
 
     this.isReplyListEnabled =
-      "mailingLists" in this._glodaMsg && !!this._glodaMsg.mailingLists.length;
-    let seen = {};
+      "mailingLists" in glodaMsg && !!glodaMsg.mailingLists.length;
+    let seen = new Set();
+    const identityEmails = await browser.convContacts.getIdentityEmails({
+      includeNntpIdentities: true,
+    });
     this.isReplyAllEnabled =
-      [this._glodaMsg.from]
-        .concat(this._glodaMsg.to)
-        .concat(this._glodaMsg.cc)
-        .concat(this._glodaMsg.bcc)
-        .filter(function(x) {
-          let r = !getIdentityForEmail(x.value) && !(x.value in seen);
-          seen[x.value] = null;
+      [glodaMsg.from, ...glodaMsg.to, ...glodaMsg.cc, ...glodaMsg.bcc].filter(
+        function (x) {
+          let r = !seen.has(x.value) && !hasIdentity(identityEmails, x.value);
+          seen.add(x.value);
           return r;
-        }).length > 1;
+        }
+      ).length > 1;
   }
 }
 
@@ -958,7 +949,7 @@ class MessageFromDbHdr extends Message {
               PluginHelpers.bugzilla({ mime: aMimeMsg, header: aMsgHdr }) || {};
 
             this._attachments = aMimeMsg.allUserAttachments.filter(
-              x => x.isRealAttachment
+              (x) => x.isRealAttachment
             );
             this.contentType =
               aMimeMsg.headers["content-type"] || "message/rfc822";
@@ -975,19 +966,26 @@ class MessageFromDbHdr extends Message {
               aMimeMsg &&
               aMimeMsg.has("list-post") &&
               RE_LIST_POST.exec(aMimeMsg.get("list-post"));
-            let seen = {};
+            let seen = new Set();
+            const identityEmails = await browser.convContacts.getIdentityEmails(
+              {
+                includeNntpIdentities: true,
+              }
+            );
             this.isReplyAllEnabled =
-              parseMimeLine(aMimeMsg.get("from"), true)
-                .concat(parseMimeLine(aMimeMsg.get("to"), true))
-                .concat(parseMimeLine(aMimeMsg.get("cc"), true))
-                .concat(parseMimeLine(aMimeMsg.get("bcc"), true))
-                .filter(function(x) {
-                  let r = !getIdentityForEmail(x.email) && !(x.email in seen);
-                  seen[x.email] = null;
-                  return r;
-                }).length > 1;
+              [
+                ...parseMimeLine(aMimeMsg.get("from"), true),
+                ...parseMimeLine(aMimeMsg.get("to"), true),
+                ...parseMimeLine(aMimeMsg.get("cc"), true),
+                ...parseMimeLine(aMimeMsg.get("bcc"), true),
+              ].filter(function (x) {
+                let r =
+                  !seen.has(x.email) && !hasIdentity(identityEmails, x.email);
+                seen.add(x.email);
+                return r;
+              }).length > 1;
 
-            let findIsEncrypted = x =>
+            let findIsEncrypted = (x) =>
               x.isEncrypted ||
               (x.parts ? x.parts.some(findIsEncrypted) : false);
             this.isEncrypted = findIsEncrypted(aMimeMsg);
@@ -1006,7 +1004,6 @@ class MessageFromDbHdr extends Message {
   }
 
   async init() {
-    let browser = ConversationUtils.getBrowser();
     this._id = await browser.conversations.getMessageIdForUri(this._uri);
     // Gloda is not with us, so stream the message... the MimeMsg API says that
     //  the streaming will fail and the underlying exception will be re-thrown in
@@ -1035,4 +1032,246 @@ class MessageFromDbHdr extends Message {
     Log.debug("Body is", body);
     this._snippet = body.substring(0, kSnippetLength - 1);
   }
+}
+
+/**
+ * A stupid formatting function that uses Services.intl
+ * to format a date just like in the message list
+ * @param {Date} aDate a javascript Date object
+ * @return {String} a string containing the formatted date
+ */
+function dateAsInMessageList(aDate) {
+  const now = new Date();
+  // Is it today?
+  const isToday =
+    now.getFullYear() == aDate.getFullYear() &&
+    now.getMonth() == aDate.getMonth() &&
+    now.getDate() == aDate.getDate();
+
+  const format = isToday
+    ? { timeStyle: "short" }
+    : { dateStyle: "short", timeStyle: "short" };
+  const dateTimeFormatter = new Services.intl.DateTimeFormat(undefined, format);
+  return dateTimeFormatter.format(aDate);
+}
+
+/**
+ * Use the mailnews component to stream a message, and process it in a way
+ *  that's suitable for quoting (strip signature, remove images, stuff like
+ *  that).
+ * @param {nsIMsgDBHdr} aMsgHdr The message header that you want to quote
+ * @return {Promise}
+ *   Returns a quoted string suitable for insertion in an HTML editor.
+ *   You can pass this to htmlToPlainText if you're running a plaintext editor
+ */
+function quoteMsgHdr(aMsgHdr) {
+  return new Promise((resolve) => {
+    let chunks = [];
+    const decoder = new TextDecoder();
+    let listener = {
+      /** @ignore*/
+      setMimeHeaders() {},
+
+      /** @ignore*/
+      onStartRequest(aRequest) {},
+
+      /** @ignore*/
+      onStopRequest(aRequest, aStatusCode) {
+        let data = chunks.join("");
+        resolve(data);
+      },
+
+      /** @ignore*/
+      onDataAvailable(aRequest, aStream, aOffset, aCount) {
+        // Fortunately, we have in Gecko 2.0 a nice wrapper
+        let data = NetUtil.readInputStreamToString(aStream, aCount);
+        // Now each character of the string is actually to be understood as a byte
+        //  of a UTF-8 string.
+        // So charCodeAt is what we want here...
+        let array = [];
+        for (let i = 0; i < data.length; ++i) {
+          array[i] = data.charCodeAt(i);
+        }
+        // Yay, good to go!
+        chunks.push(decoder.decode(Uint8Array.from(array)));
+      },
+
+      QueryInterface: ChromeUtils.generateQI([
+        Ci.nsIStreamListener,
+        Ci.nsIMsgQuotingOutputStreamListener,
+        Ci.nsIRequestObserver,
+      ]),
+    };
+    // Here's what we want to stream...
+    let msgUri = msgHdrGetUri(aMsgHdr);
+    /**
+     * Quote a particular message specified by its URI.
+     *
+     * @param charset optional parameter - if set, force the message to be
+     *                quoted using this particular charset
+     */
+    //   void quoteMessage(in string msgURI, in boolean quoteHeaders,
+    //                     in nsIMsgQuotingOutputStreamListener streamListener,
+    //                     in string charset, in boolean headersOnly);
+    let quoter = Cc["@mozilla.org/messengercompose/quoting;1"].createInstance(
+      Ci.nsIMsgQuote
+    );
+    quoter.quoteMessage(msgUri, false, listener, "", false, aMsgHdr);
+  });
+}
+
+/**
+ * Recycling the HeaderHandlerBase from mimemsg.js
+ */
+function HeaderHandler(aHeaders) {
+  this.headers = aHeaders;
+}
+
+HeaderHandler.prototype = {
+  __proto__: MimeMessage.prototype.__proto__, // == HeaderHandlerBase
+};
+
+/**
+ * Creates a stream listener that will call k once done, passing it the string
+ * that has been read.
+ */
+function createStreamListener(k) {
+  return {
+    _data: "",
+    _stream: null,
+
+    QueryInterface: ChromeUtils.generateQI([
+      Ci.nsIStreamListener,
+      Ci.nsIRequestObserver,
+    ]),
+
+    // nsIRequestObserver
+    onStartRequest(aRequest) {},
+    onStopRequest(aRequest, aStatusCode) {
+      try {
+        k(this._data);
+      } catch (e) {
+        dump("Error inside stream listener:\n" + e + "\n");
+      }
+    },
+
+    // nsIStreamListener
+    onDataAvailable(aRequest, aInputStream, aOffset, aCount) {
+      if (this._stream == null) {
+        this._stream = Cc[
+          "@mozilla.org/scriptableinputstream;1"
+        ].createInstance(Ci.nsIScriptableInputStream);
+        this._stream.init(aInputStream);
+      }
+      this._data += this._stream.read(aCount);
+    },
+  };
+}
+
+/**
+ * @param aMsgHdr The message header whose headers you want
+ * @param k A function that takes a HeaderHandler object (see mimemsg.js).
+ *  Such an object has a get function, a has function. It has a header property,
+ *  whose keys are lowercased header names, and whose values are list of
+ *  strings corresponding to the multiple entries found for that header.
+ */
+function msgHdrGetHeaders(aMsgHdr, k) {
+  let uri = msgHdrGetUri(aMsgHdr);
+  let messageService = gMessenger.messageServiceFromURI(uri);
+
+  let fallback = () =>
+    MsgHdrToMimeMessage(
+      aMsgHdr,
+      null,
+      function (aMsgHdr, aMimeMsg) {
+        k(aMimeMsg);
+      },
+      true,
+      {
+        partsOnDemand: true,
+      }
+    );
+
+  // This is intentionally disabled because there's a bug in Thunderbird that
+  // renders the supposedly-useful streamHeaders function unusable.
+  if (false && "streamHeaders" in messageService) {
+    try {
+      messageService.streamHeaders(
+        uri,
+        createStreamListener((aRawString) => {
+          let re = /\r?\n\s+/g;
+          let str = aRawString.replace(re, " ");
+          let lines = str.split(/\r?\n/);
+          let obj = {};
+          for (let line of lines) {
+            let i = line.indexOf(":");
+            if (i < 0) {
+              continue;
+            }
+            let k = line.substring(0, i).toLowerCase();
+            let v = line.substring(i + 1).trim();
+            if (!(k in obj)) {
+              obj[k] = [];
+            }
+            obj[k].push(v);
+          }
+          k(new HeaderHandler(obj));
+        }),
+        null,
+        true
+      );
+    } catch (e) {
+      fallback();
+    }
+  } else {
+    fallback();
+  }
+}
+
+/**
+ * Get a nsIURI from a nsIMsgDBHdr
+ * @param {nsIMsgDbHdr} aMsgHdr The message header
+ * @return {nsIURI}
+ */
+function msgHdrToNeckoURL(aMsgHdr) {
+  let uri = aMsgHdr.folder.getUriForMsg(aMsgHdr);
+  let neckoURL = {};
+  let msgService = gMessenger.messageServiceFromURI(uri);
+  msgService.GetUrlForUri(uri, neckoURL, null);
+  return neckoURL.value;
+}
+
+/**
+ * Get a string containing the body of a messsage.
+ * @param {nsIMsgDbHdr} aMessageHeader The message header
+ * @param {bool} aStripHtml Keep html?
+ * @return {string}
+ */
+function msgHdrToMessageBody(aMessageHeader, aStripHtml, aLength) {
+  let messenger = Cc["@mozilla.org/messenger;1"].createInstance(
+    Ci.nsIMessenger
+  );
+  let listener = Cc[
+    "@mozilla.org/network/sync-stream-listener;1"
+  ].createInstance(Ci.nsISyncStreamListener);
+  let uri = aMessageHeader.folder.getUriForMsg(aMessageHeader);
+  messenger
+    .messageServiceFromURI(uri)
+    .streamMessage(uri, listener, null, null, false, "");
+  let folder = aMessageHeader.folder;
+  /*
+   * AUTF8String getMsgTextFromStream(in nsIInputStream aStream, in ACString aCharset,
+                                      in unsigned long aBytesToRead, in unsigned long aMaxOutputLen,
+                                      in boolean aCompressQuotes, in boolean aStripHTMLTags,
+                                      out ACString aContentType);
+  */
+  return folder.getMsgTextFromStream(
+    listener.inputStream,
+    aMessageHeader.Charset,
+    2 * aLength,
+    aLength,
+    false,
+    aStripHtml,
+    {}
+  );
 }

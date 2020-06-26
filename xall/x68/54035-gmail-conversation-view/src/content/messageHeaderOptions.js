@@ -2,81 +2,76 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* globals PropTypes, React, StringBundle, ActionButton */
+/* globals PropTypes, React, ActionButton, SvgIcon, messageActions */
 
 /* exported MessageHeaderOptions */
 class OptionsMoreMenu extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.strings = new StringBundle("chrome://conversations/locale/template.properties");
-  }
-
   render() {
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "tooltip tooltip-menu menu"
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "arrow"
-    }), React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("div", {
       className: "arrow inside"
-    }), React.createElement("ul", null, React.createElement("li", {
+    }), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", {
       className: "action-reply"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.props.msgSendAction,
       className: "optionsButton",
       showString: true,
       type: "reply"
-    })), this.props.multipleRecipients && React.createElement("li", {
+    })), this.props.multipleRecipients && /*#__PURE__*/React.createElement("li", {
       className: "action-replyAll"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.props.msgSendAction,
       className: "optionsButton",
       showString: true,
       type: "replyAll"
-    })), this.props.recipientsIncludeLists && React.createElement("li", {
+    })), this.props.recipientsIncludeLists && /*#__PURE__*/React.createElement("li", {
       className: "action-replyList"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.props.msgSendAction,
       className: "optionsButton",
       showString: true,
       type: "replyList"
-    })), React.createElement("li", {
+    })), /*#__PURE__*/React.createElement("li", {
       className: "action-editNew"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.props.msgSendAction,
       className: "optionsButton",
       showString: true,
       type: "editAsNew"
-    })), React.createElement("li", {
+    })), /*#__PURE__*/React.createElement("li", {
       className: "action-forward dropdown-sep"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.props.msgSendAction,
       className: "optionsButton",
       showString: true,
       type: "forward"
-    })), React.createElement("li", {
+    })), /*#__PURE__*/React.createElement("li", {
       className: "action-archive"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.props.msgSendAction,
       className: "optionsButton",
       showString: true,
       type: "archive"
-    })), React.createElement("li", {
+    })), /*#__PURE__*/React.createElement("li", {
       className: "action-delete"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.props.msgSendAction,
       className: "optionsButton",
       showString: true,
       type: "delete"
-    })), React.createElement("li", {
+    })), /*#__PURE__*/React.createElement("li", {
       className: "action-classic"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.props.msgSendAction,
       className: "optionsButton",
       showString: true,
       type: "classic"
-    })), React.createElement("li", {
+    })), /*#__PURE__*/React.createElement("li", {
       className: "action-source"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.props.msgSendAction,
       className: "optionsButton",
       showString: true,
@@ -95,7 +90,6 @@ OptionsMoreMenu.propTypes = {
 class MessageHeaderOptions extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.strings = new StringBundle("chrome://conversations/locale/template.properties");
     this.replyAction = this.replyAction.bind(this);
     this.showDetails = this.showDetails.bind(this);
     this.displayMenu = this.displayMenu.bind(this);
@@ -117,10 +111,59 @@ class MessageHeaderOptions extends React.PureComponent {
   replyAction(msg, event) {
     event.stopPropagation();
     event.preventDefault();
-    this.props.dispatch({ ...msg,
+    const payload = {
       id: this.props.id,
-      msgUri: this.props.msgUri
-    });
+      msgUri: this.props.msgUri,
+      shiftKey: msg.shiftKey
+    };
+    let action = null;
+
+    switch (msg.type) {
+      case "reply":
+        action = messageActions.reply(payload);
+        break;
+
+      case "replyAll":
+        action = messageActions.replyAll(payload);
+        break;
+
+      case "replyList":
+        action = messageActions.replyList(payload);
+        break;
+
+      case "forward":
+        action = messageActions.forward(payload);
+        break;
+
+      case "editAsNew":
+        action = messageActions.editAsNew(payload);
+        break;
+
+      case "archive":
+        action = messageActions.archive({
+          id: this.props.id
+        });
+        break;
+
+      case "delete":
+        action = messageActions.delete({
+          id: this.props.id
+        });
+        break;
+
+      case "classic":
+        action = messageActions.openClassic(payload);
+        break;
+
+      case "source":
+        action = messageActions.openSource(payload);
+        break;
+
+      default:
+        console.error("Don't know how to create an action for", msg);
+    }
+
+    this.props.dispatch(action);
   }
 
   showDetails(event) {
@@ -189,54 +232,39 @@ class MessageHeaderOptions extends React.PureComponent {
       actionButtonType = "draft";
     }
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "options"
-    }, !!this.props.attachments.length && React.createElement("span", {
+    }, !!this.props.attachments.length && /*#__PURE__*/React.createElement("span", {
       className: "attachmentIcon"
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#attachment"
-    }))), React.createElement("span", {
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "attachment"
+    })), /*#__PURE__*/React.createElement("span", {
       className: "date"
-    }, React.createElement("span", {
+    }, /*#__PURE__*/React.createElement("span", {
       title: this.props.fullDate
-    }, this.props.date)), this.props.expanded && React.createElement("span", {
+    }, this.props.date)), this.props.expanded && /*#__PURE__*/React.createElement("span", {
       className: "mainActionButton"
-    }, React.createElement(ActionButton, {
+    }, /*#__PURE__*/React.createElement(ActionButton, {
       callback: this.replyAction,
       className: "icon-link",
       type: actionButtonType
-    })), this.props.expanded && React.createElement("span", {
+    })), this.props.expanded && /*#__PURE__*/React.createElement("span", {
       className: "details" + this.props.detailsShowing ? "details-hidden" : ""
-    }, React.createElement("a", {
+    }, /*#__PURE__*/React.createElement("a", {
       className: "icon-link",
       onClick: this.showDetails,
-      title: this.props.detailsShowing ? this.strings.get("hideDetails") : this.strings.get("details")
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: this.props.detailsShowing ? "chrome://conversations/skin/material-icons.svg#info" : "chrome://conversations/skin/material-icons.svg#info_outline"
-    })))), this.props.expanded && React.createElement("span", {
+      title: browser.i18n.getMessage(this.props.detailsShowing ? "message.hideDetails.tooltip" : "message.showDetails.tooltip")
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: this.props.detailsShowing ? "info" : "info_outline"
+    }))), this.props.expanded && /*#__PURE__*/React.createElement("span", {
       className: "dropDown"
-    }, React.createElement("button", {
+    }, /*#__PURE__*/React.createElement("button", {
       onClick: this.displayMenu,
       className: "icon-link top-right-more",
-      title: this.strings.get("more")
-    }, React.createElement("svg", {
-      className: "icon",
-      viewBox: "0 0 24 24",
-      xmlns: "http://www.w3.org/2000/svg",
-      xmlnsXlink: "http://www.w3.org/1999/xlink"
-    }, React.createElement("use", {
-      xlinkHref: "chrome://conversations/skin/material-icons.svg#more_vert"
-    }))), this.state.expanded && React.createElement(OptionsMoreMenu, {
+      title: browser.i18n.getMessage("message.moreMenu.tooltip")
+    }, /*#__PURE__*/React.createElement(SvgIcon, {
+      hash: "more_vert"
+    })), this.state.expanded && /*#__PURE__*/React.createElement(OptionsMoreMenu, {
       recipientsIncludeLists: this.props.recipientsIncludeLists,
       msgSendAction: this.replyAction,
       multipleRecipients: this.props.multipleRecipients

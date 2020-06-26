@@ -1,7 +1,18 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
-// These are the templates originally from stub.xhtml for quickReply. Moved here
+
+/* globals React */
+
+/* exported QuickReply */
+function QuickReply() {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "quickReply disabled",
+    dir: "ltr"
+  }, /*#__PURE__*/React.createElement("small", null, /*#__PURE__*/React.createElement("i", null, "Quick Reply is temporarily disabled due to needing rewriting for Thunderbird 68+.")));
+}
+
+QuickReply.propTypes = {}; // These are the templates originally from stub.xhtml for quickReply. Moved here
 // to help tidy that up and prepare.
 // The quick reply goes after the messaeFooter - if it is the last message
 // in the list.
@@ -74,17 +85,17 @@
            <ul class="recipientList toList">
              {{str "fieldTo"}}
              <li>{{str "pleaseWait"}}</li>
-             <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('to');">{{str "edit"}}</a></li>
+             <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('to');">{{str "compose.editField}}</a></li>
            </ul>
            <ul class="recipientList ccList" style="display: none;">
              {{str "fieldCc"}}
              <li>{{str "pleaseWait"}}</li>
-             <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('cc');">{{str "edit"}}</a></li>
+             <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('cc');">{{str "compose.editField"}}</a></li>
            </ul>
            <ul class="recipientList bccList" style="display: none;">
              {{str "fieldBcc"}}
              <li>{{str "pleaseWait"}}</li>
-             <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('bcc');">{{str "edit"}}</a></li>
+             <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('bcc');">{{str "compose.editField"}}</a></li>
            </ul>
          </div>
          <ul class="enigmail" style="display: none;">
@@ -115,14 +126,14 @@
        <ul class="inputs">
          <li class="reply expand" ondragenter="quickReplyDragEnter(event);">
            <div class="textWrap">
-             <div class="quickReplyIcon"><span>{{str "reply"}}</span> <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="chrome://conversations/skin/material-icons.svg#reply"></use></svg></div>
+             <div class="quickReplyIcon"><span>{{str "reply"}}</span> <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="material-icons.svg#reply"></use></svg></div>
              <iframe mozframetype="content" class="textarea sans"></iframe>
            </div>
          </li>
 
          <li class="replyAll expand" ondragenter="quickReplyDragEnter(event);">
            <div class="textWrap">
-             <div class="quickReplyIcon"><span>{{str "replyAll"}}</span> <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="chrome://conversations/skin/material-icons.svg#reply_all"></use></svg></div>
+             <div class="quickReplyIcon"><span>{{str "replyAll"}}</span> <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="material-icons.svg#reply_all"></use></svg></div>
              <iframe mozframetype="content" class="textarea sans"></iframe>
            </div>
          </li>

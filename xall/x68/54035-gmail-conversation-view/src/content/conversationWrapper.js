@@ -3,17 +3,21 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 /* globals ConversationHeader, ConversationFooter, MessageList,
-           React, ReactRedux, PropTypes, StringBundle */
+           React, ReactRedux, PropTypes, messageActions */
 
 /* exported ConversationWrapper */
 class _ConversationWrapper extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.strings = new StringBundle("chrome://conversations/locale/template.properties");
   }
 
   componentDidMount() {
-    this._setHTMLAttributes();
+    this._setHTMLAttributes(); // When moving to a WebExtension page this can simply be moved to CSS (see
+    // options.css).
+
+
+    document.documentElement.setAttribute("dir", browser.conversations.getLocaleDirection());
+    this.props.dispatch(messageActions.waitForStartup());
   }
 
   componentDidUpdate(prevProps) {
@@ -35,19 +39,16 @@ class _ConversationWrapper extends React.PureComponent {
   }
 
   render() {
-    return React.createElement("div", null, React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       className: "hidden",
       id: "tooltipContainer"
-    }), React.createElement(ConversationHeader, {
-      strings: this.strings
-    }), React.createElement(MessageList, null), React.createElement(ConversationFooter, {
-      strings: this.strings
-    }));
+    }), /*#__PURE__*/React.createElement(ConversationHeader, null), /*#__PURE__*/React.createElement(MessageList, null), /*#__PURE__*/React.createElement(ConversationFooter, null));
   }
 
 }
 
 _ConversationWrapper.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   tweakChrome: PropTypes.bool.isRequired,
   OS: PropTypes.string
 };

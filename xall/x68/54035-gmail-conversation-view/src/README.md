@@ -16,44 +16,19 @@ For screenshots and a stable version, please head to
 [AMO](https://addons.thunderbird.net/thunderbird/addon/gmail-conversation-view/) which should
 provide you with a ready-to-install package.
 
-Branches
-========
+Thunderbird support
+===================
 
-The master branch of `thunderbird-conversations` is sometimes only compatible with the `Daily`-version of Thunderbird (sometimes it won't be, but we'll welcome pull requests to fix that). You can build this from source or get a pre-built binary at https://ftp.mozilla.org/pub/mozilla.org/thunderbird/nightly/latest-comm-central/.
+We try to ensure the released version of Conversations supports at least the
+latest released Thunderbird version.
 
-Each major release typically has a release branch for that release (e.g. 2.14+). All pull requests should be against the master branch, we may transplant them after landing to the release if we want them on the release branch.
+Where possible, we also support the previous Thunderbird version, and the latest
+Beta's. However, sometimes support may lag, depending on what changes have
+recently been made in Thunderbird.
 
-Building
-========
+Building, Development and Testing
+=================================
 
-1. Clone the repository
-2. Change into the main folder, run `git submodule update --init`
-3. Run `npm ci`
-4. Run `npm run build`
-
-This will package a `converstions.xpi` file of the latest codebase which can be installed via add-on manager in Thunderbird (hint: you can drag & drop it onto the add-on manager view).
-
-Development
-===========
-
-Some `thunderbird-conversations` components can be developed fully in the browser. To build these components do
-
-```
-$ npm run dev
-```
-
-and then browse to http://localhost:8126 and select a browser-compatible component file. For example, http://localhost:8126/options.html  Missing Thunderbird APIs are mocked in `addon/content/es-modules/thunderbird-compat.js`.
-
-Please see [Development.md](docs/Development.md) for details.
-
-Testing
-=======
-
-To run the tests:
-
-```
-$ npm test
-```
 Please see [Development.md](docs/Development.md) for details.
 
 Contributing
