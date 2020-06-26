@@ -882,7 +882,7 @@ async function g1() {
 	// try {
 	let p = [];
 	let indexStart = 0;	
-	let indexEnd = 69;
+	let indexEnd = 70;
 	console.debug(`StartingGetFiles: ${indexStart} - ${indexEnd} : ${extsJson.length}`);
 	for (let index = indexStart; index < indexEnd; index++) {
 		// console.debug('GetIndex ' + index);
